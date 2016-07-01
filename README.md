@@ -2,6 +2,8 @@
 
 CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end framework based on Bootstrap.
 
+Hopefully get the cname/aname running next week. For now docs at: <https://cast-org.github.io/figuration/>
+
 Get started at <http://figuration.cast.org>!
 
 Several quick start options are available:
@@ -20,10 +22,10 @@ Within the download you'll find the following directories and files, logically g
 ```
 figuration/
 +-- css/
-¦   +-- figuration.css
-¦   +-- figuration.css.map
-¦   +-- figuration.min.css
-¦   +-- figuration.min.css.map
+Â¦   +-- figuration.css
+Â¦   +-- figuration.css.map
+Â¦   +-- figuration.min.css
+Â¦   +-- figuration.min.css.map
 +-- js/
     +-- figuration.js
     +-- figuration.min.js
