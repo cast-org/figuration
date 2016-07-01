@@ -1,0 +1,14 @@
+// Map deep get
+// @author Hugo Giraudel
+// From: https://css-tricks.com/snippets/sass/deep-getset-maps/
+// @access public
+// @param {Map} $map - Map
+// @param {Arglist} $keys - Key chain
+// @return {*} - Desired value
+// Example: $color: map-deep-get($context-themes, "primary", "control-color");
+@function map-deep-get($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+    @return $map;
+}

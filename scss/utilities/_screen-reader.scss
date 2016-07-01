@@ -1,0 +1,22 @@
+// Screenreaders
+.sr-only {
+    @include sr-only();
+}
+
+.sr-only-focusable {
+    @include sr-only-focusable();
+}
+
+// Responsive visibility utilities
+@each $bp in map-keys($grid-breakpoints) {
+    .sr-only-#{$bp}-up {
+        @include media-breakpoint-up($bp) {
+            @include sr-only();
+        }
+    }
+    .sr-only-#{$bp}-down {
+        @include media-breakpoint-down($bp) {
+            @include sr-only();
+        }
+    }
+}

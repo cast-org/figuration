@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<title>Figuration Testing</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
+
+<script type="text/javascript" src="../../node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/transition.js"></script>
+<script type="text/javascript" src="../../js/drag.js"></script>
+<script type="text/javascript" src="../../js/collapse.js"></script>
+<script type="text/javascript" src="../../js/dropdown.js"></script>
+<script type="text/javascript" src="../../js/tab.js"></script>
+<script type="text/javascript" src="../../js/affix.js"></script>
+<script type="text/javascript" src="../../js/tooltip.js"></script>
+<script type="text/javascript" src="../../js/popover.js"></script>
+<script type="text/javascript" src="../../js/modal.js"></script>
+<script type="text/javascript" src="../../js/tab-responsive.js"></script>
+<script type="text/javascript" src="../../js/accordion.js"></script>
+<script type="text/javascript" src="../../js/slideshow.js"></script>
+<script type="text/javascript" src="../../js/scrollspy.js"></script>
+<script type="text/javascript" src="../../js/alert.js"></script>
+<script type="text/javascript" src="../../js/button.js"></script>
+<script type="text/javascript" src="../../js/lazy.js"></script>
+<!-- <script type="text/javascript" src="../../js/slider.js"></script> -->
+<script type="text/javascript" src="../../js/equalize.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+
+<style>
+.tooltip {
+    position: absolute;
+}
+.tooltip .tooltip-inner {
+    width: 24px;
+    height: 24px;
+    font-family: Helvetica;
+}
+</style>
+
+</head>
+<body>
+
+
+<div style="position: fixed; top: 0; left: 0;">
+    <svg width="200" height="200">
+      <circle cx="100" cy="100" r="10" title="m" id="theCircle" />
+    </svg>
+</div>
+
+<script>
+setTimeout(function() {
+    var $styles = $('head style');
+    var $circle = $('#theCircle');
+
+    $circle
+        .on('afterShow.cfw.tooltip', function() {
+            var offset = $('.tooltip').offset();
+            $styles.remove();
+    console.log(offset);
+    console.log(Math.abs(offset.left - 88));
+    console.log(Math.abs(offset.left - 88) <= 1);
+            //assert.ok(Math.abs(offset.left - 88) <= 1, 'tooltip has correct horizontal location');
+            //$circle.CFW_Tooltip('hide');
+            //assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
+            //done();
+        })
+        .CFW_Tooltip({
+            container: 'body',
+            placement: 'top',
+            trigger: 'manual'
+        });
+
+    $circle.CFW_Tooltip('show');
+}, 250);
+</script>
+
+</body>
+</html>

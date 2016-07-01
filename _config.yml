@@ -1,0 +1,39 @@
+# Dependencies
+markdown:         kramdown
+highlighter:      rouge
+
+kramdown:
+  auto_ids: true
+
+# Permalinks
+permalink:        pretty
+
+# Server
+source:           docs
+destination:      _gh_pages
+host:             0.0.0.0
+port:             9001
+baseurl:          ""
+url:              http://figuration.cast.org
+encoding:         UTF-8
+exclude:          [assets/scss/]
+
+gems:
+  - jekyll-redirect-from
+  - jekyll-sitemap
+
+# Custom vars
+current_version:  0.1.0
+repo:             https://github.com/cast-org/figuration
+
+# Downloads
+download:
+  source:         https://github.com/cast-org/figuration/archive/v0.1.0.zip
+  dist:           https://github.com/cast-org/figuration/releases/download/v0.1.0/figuration-v0.1.0-dist.zip
+
+
+# CDN settings
+# See https://www.srihash.org for info on how to generate the hashes
+cdn:
+  jquery:         https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js
+  jquery_hash:    "sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY"

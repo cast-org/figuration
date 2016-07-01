@@ -1,0 +1,33 @@
+.drag {
+    float: right;
+    font-size: $drag-font-size;
+    font-weight: $drag-font-weight;
+    line-height: 1;
+    color: $drag-color;
+    text-decoration: none;
+    text-shadow: $drag-text-shadow;
+    touch-action: none;
+    opacity: .5;
+
+    @include hover-focus {
+        color: $drag-color;
+        text-decoration: none;
+        cursor: move;
+        opacity: .75;
+    }
+}
+
+// Additional properties for button version
+// iOS requires the button element instead of an anchor tag.
+// If you want the anchor version, it requires `href="#"`.
+// See https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+
+// scss-lint:disable QualifyingElement
+button.drag {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+}
+// scss-lint:enable QualifyingElement

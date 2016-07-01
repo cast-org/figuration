@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<title>Figuration Widget Tests</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
+
+<script type="text/javascript" src="../vendor/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/transition.js"></script>
+<script type="text/javascript" src="../../js/drag.js"></script>
+<script type="text/javascript" src="../../js/collapse.js"></script>
+<script type="text/javascript" src="../../js/dropdown.js"></script>
+<script type="text/javascript" src="../../js/tab.js"></script>
+<script type="text/javascript" src="../../js/affix.js"></script>
+<script type="text/javascript" src="../../js/tooltip.js"></script>
+<script type="text/javascript" src="../../js/popover.js"></script>
+<script type="text/javascript" src="../../js/modal.js"></script>
+<script type="text/javascript" src="../../js/tab-responsive.js"></script>
+<script type="text/javascript" src="../../js/accordion.js"></script>
+<script type="text/javascript" src="../../js/slideshow.js"></script>
+<script type="text/javascript" src="../../js/scrollspy.js"></script>
+<script type="text/javascript" src="../../js/alert.js"></script>
+<script type="text/javascript" src="../../js/button.js"></script>
+<script type="text/javascript" src="../../js/lazy.js"></script>
+<script type="text/javascript" src="../../js/slider.js"></script>
+<script type="text/javascript" src="../../js/equalize.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+
+<script type="text/javascript">
+
+$(window).ready(function() {
+    $('body').CFW_Scrollspy({
+        target: '.sidebar',
+        offset: 25
+    });
+    var $sideBar = $('.sidebar');
+    $sideBar.CFW_Affix({
+        offset: {
+            top: function () {
+                var offsetTop      = $sideBar.offset().top;
+                var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
+                var navOuterHeight = $('.topnav').height();
+                return (this.top = offsetTop - navOuterHeight);
+            },
+            bottom: 0
+        }
+    });
+});
+
+</script>
+
+<style type="text/css">
+.sidebar {
+  margin-top: 10px;
+}
+.sidebar.affix {
+  position: static;
+}
+@media (min-width: 992px) {
+  /* Widen the fixed sidebar */
+  .sidebar.affix,
+  .sidebar.affix-bottom {
+    width: 213px;
+  }
+  .sidebar.affix {
+    position: fixed; /* Undo the static from mobile first approach */
+    top: 20px;
+  }
+  .sidebar.affix-bottom {
+    position: absolute; /* Undo the static from mobile first approach */
+  }
+  .sidebar.affix,
+  .sidebar.affix-bottom {
+    margin-top: 0;
+  }
+}
+.sidenav .nav-item +.nav-item {
+    margin-top: 0;
+}
+.sidenav .nav-link {
+  padding: 5px 10px;
+}
+.sidenav .active > a,
+.sidenav .active > a:hover,
+.sidenav .active > a:focus {
+  color: #FFFFFF;
+  background: #428BCA;
+}
+.sidenav .active > a:hover,
+.sidenav .active > a:focus {
+    text-decoration: underline;
+}
+
+.container-viewport {
+    position: relative;
+    height: 150px;
+    background-color: #eee;
+    margin-bottom: 20px;
+}
+.container-viewport .viewport-text {
+    position: absolute;
+    top: 65px;
+    left: 50px;
+    font-weight: bold;
+}
+.container-viewport .tooltip,
+.container-viewport .popover {
+  min-width: 250px;
+  max-width: 500px;
+}
+.container-viewport .tooltip .tooltip-inner {
+  min-width: 250px;
+  max-width: 500px;
+  min-height: 100px;
+  text-align: left;
+}
+.container-viewport .btn-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.container-viewport .btn-drag {
+    position: absolute;
+    bottom: 0;
+    left: 120px;
+}
+
+/* Example CSS */
+@media (min-width: 992px) {
+    .cfw-example-tabRepsonsive h3 {
+        display: none;
+        visibility: hidden;
+    }
+    .cfw-example-tabRepsonsive div[data-cfw-collapse-target] {
+        display: block;
+        visibility: visible;
+    }
+}
+@media (max-width: 991px) {
+    .cfw-example-tabRepsonsive .nav-tabs {
+        display: none;
+    }
+    .cfw-example-tabRepsonsive .tab-pane {
+        display: block;
+    }
+}
+
+.slider-sample .slider {
+    width: 200px;
+}
+
+.well {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+</style>
+
+</head>
+<body>
+<header>
+    <div class="nav navbar navbar-full bg-inverse topnav">
+        <div class="container">
+            <div class="navbar-header">
+                <h1 class="navbar-brand" style="margin: 0;">Figuration Testing</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-3 col-sm-12">
+            <!-- Sidebar placeholder -->
+            <div class="sidebar">
+                <nav>
+                    <ul class="nav nav-stacked sidenav">
+                        <li class="nav-item"><a href="#slider" class="nav-link">Slider</a></li>
+                        <li class="nav-item"><a href="#button" class="nav-link">Button</a></li>
+                        <li class="nav-item"><a href="#alert" class="nav-link">Alert</a></li>
+                        <li class="nav-item"><a href="#slideshow" class="nav-link">Slideshow</a></li>
+                        <li class="nav-item"><a href="#modal" class="nav-link">Modal</a></li>
+                        <li class="nav-item"><a href="#accordion" class="nav-link">Accordion</a></li>
+                        <li class="nav-item"><a href="#popover" class="nav-link">Popover</a></li>
+                        <li class="nav-item"><a href="#tooltip" class="nav-link">Tooltip</a></li>
+                        <li class="nav-item"><a href="#tab-responsive" class="nav-link">Tab-Responsive</a></li>
+                        <li class="nav-item"><a href="#tab" class="nav-link">Tab</a></li>
+                        <li class="nav-item"><a href="#dropdown" class="nav-link">Dropdown</a></li>
+                        <li class="nav-item"><a href="#collapse" class="nav-link">Collapse</a></li>
+                        <li class="nav-item"><a href="#lazy" class="nav-link">Lazy</a></li>
+                        <li class="nav-item"><a href="#equalize" class="nav-link">Equalize</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div class="col-md-9 col-sm-12">
+
+            <h2 id="slider">Slider:</h2>
+
+            <strong>Single Slider:</strong>
+            <div class="slider-sample">
+                <form class="form-inline">
+                    <div id="slider0">
+                        <div class="form-group">
+                            <label id="slider0_0_Label" for="slider0_0">Value</label>
+                            <input id="slider0_0" type="text" class="form-control" value="50" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <script type="text/javascript">
+            $('#slider0').CFW_Slider({
+                min : 0,
+                max : 100,
+                step : 1
+            });
+            </script>
+
+            <strong>Double Slider</strong>
+            <div class="slider-sample">
+                <form class="form-inline">
+                    <div id="slider1">
+                        <div class="form-group">
+                            <label id="slider1_0_Label" for="slider1_0">Min</label>
+                            <input id="slider1_0" type="text" class="form-control" value="-25" />
+                        </div>
+                        <div class="form-group">
+                            <input id="slider1_1" type="text" class="form-control" value="25" />
+                            <label id="slider1_1_Label" for="slider1_1">Max</label>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <script type="text/javascript">
+            $('#slider1').CFW_Slider({
+                min : -50,
+                max : 50,
+                step : 5
+            });
+            </script>
+
+            <strong>Double Select Slider</strong>
+            <div class="slider-sample">
+                <form class="form-inline">
+                    <div id="slider2">
+                        <div class="form-group">
+                            <label id="slider2_0_Label" for="slider2_0">Start</label>
+                            <select id="slider2_0" class="form-control">
+                                <option value="12:00 am">12:00 am</option>
+                                <option value="1:00 am">1:00 am</option>
+                                <option value="2:00 am">2:00 am</option>
+                                <option value="3:00 am">3:00 am</option>
+                                <option value="4:00 am">4:00 am</option>
+                                <option value="5:00 am" selected>5:00 am</option>
+                                <option value="6:00 am">6:00 am</option>
+                                <option value="7:00 am">7:00 am</option>
+                                <option value="8:00 am">8:00 am</option>
+                                <option value="9:00 am">9:00 am</option>
+                                <option value="10:00 am">10:00 am</option>
+                                <option value="11:00 am">11:00 am</option>
+                                <option value="12:00 pm">12:00 pm</option>
+                                <option value="1:00 pm">1:00 pm</option>
+                                <option value="2:00 pm">2:00 pm</option>
+                                <option value="3:00 pm">3:00 pm</option>
+                                <option value="4:00 pm">4:00 pm</option>
+                                <option value="5:00 pm">5:00 pm</option>
+                                <option value="6:00 pm">6:00 pm</option>
+                                <option value="7:00 pm">7:00 pm</option>
+                                <option value="8:00 pm">8:00 pm</option>
+                                <option value="9:00 pm">9:00 pm</option>
+                                <option value="10:00 pm">10:00 pm</option>
+                                <option value="11:00 pm">11:00 pm</option>
+                                <option value="12:00 am">12:00 am</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select id="slider2_1" class="form-control">
+                                <option value="12:00 am">12:00 am</option>
+                                <option value="1:00 am">1:00 am</option>
+                                <option value="2:00 am">2:00 am</option>
+                                <option value="3:00 am">3:00 am</option>
+                                <option value="4:00 am">4:00 am</option>
+                                <option value="5:00 am">5:00 am</option>
+                                <option value="6:00 am">6:00 am</option>
+                                <option value="7:00 am">7:00 am</option>
+                                <option value="8:00 am">8:00 am</option>
+                                <option value="9:00 am">9:00 am</option>
+                                <option value="10:00 am">10:00 am</option>
+                                <option value="11:00 am">11:00 am</option>
+                                <option value="12:00 pm" selected>12:00 pm</option>
+                                <option value="1:00 pm">1:00 pm</option>
+                                <option value="2:00 pm">2:00 pm</option>
+                                <option value="3:00 pm">3:00 pm</option>
+                                <option value="4:00 pm">4:00 pm</option>
+                                <option value="5:00 pm">5:00 pm</option>
+                                <option value="6:00 pm">6:00 pm</option>
+                                <option value="7:00 pm">7:00 pm</option>
+                                <option value="8:00 pm">8:00 pm</option>
+                                <option value="9:00 pm">9:00 pm</option>
+                                <option value="10:00 pm">10:00 pm</option>
+                                <option value="11:00 pm">11:00 pm</option>
+                                <option value="12:00 am">12:00 am</option>
+                            </select>
+                            <label id="slider2_1_Label" for="slider2_1">End</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <script type="text/javascript">
+            $('#slider2').CFW_Slider({
+                min : 0,
+                max : 24,
+                step : 1
+                //enabled : false
+            });
+            </script>
+
+            <h2 id="button">Button:</h2>
+
+            <strong>Toggle State:</strong>
+            <br />
+            <button type="button" data-cfw="button" class="btn btn-info">Single toggle</button>
+            <br />
+            <br />
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <strong>Checkbox:</strong>
+                    <br />
+                    <div class="btn-group" data-cfw="buttons">
+                        <label class="btn btn-info active">
+                            <input type="checkbox" checked /> Check 1
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="checkbox" /> Check 2
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="checkbox" /> Check 3
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <strong>Radio:</strong>
+                    <br />
+                    <div class="btn-group" data-cfw="buttons">
+                        <label class="btn btn-info active">
+                            <input type="radio" name="options" checked /> Radio 1
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" /> Radio 2
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="options" /> Radio 3
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+
+            <hr />
+
+            <h2 id="alert">Alert:</h2>
+
+            <div class="alert alert-warning" id="alert0">
+                <button type="button" class="close" data-cfw-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Hey!</strong> Remove this alert with the default fade animation.
+            </div>
+
+            <div class="alert alert-success" id="alert1">
+                <button type="button" class="close" data-cfw-dismiss="alert" data-cfw-alert-animate=false aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Boom!</strong> Remove this alert without the animation.
+            </div>
+
+            <!--
+            <script type="text/javascript">
+                $('#alert0').CFW_Alert();
+            </script>
+            -->
+
+            <hr />
+
+            <h2 id="slideshow">Slideshow:</h2>
+            <p>Demo using pagination componenent, should also work for tab/pill navigation.</p>
+            <div data-cfw="slideshow">
+                <nav aria-label="Page navigation">
+                    <ul id="slidetest" class="pagination">
+                        <li class="page-item"><a href="#" class="page-link" data-cfw-slideshow-nav="prev" aria-label="Previous">&laquo;</a></li>
+                        <li class="page-item"><a href="#slide0" class="page-link" data-cfw="tab">Slide 1</a></li>
+                        <li class="page-item"><a href="#slide1" class="page-link" data-cfw="tab">Slide 2</a></li>
+                        <li class="page-item"><a href="#slide2" class="page-link" data-cfw="tab">Slide 3</a></li>
+                        <li class="page-item"><a href="#slide3" class="page-link" data-cfw="tab">Slide 4</a></li>
+                        <li class="page-item"><a href="#" class="page-link" data-cfw-slideshow-nav="next" aria-label="Next">&raquo;</a></li>
+                    </ul>
+                </nav>
+                <a href="#" data-cfw-slideshow-nav="prev" title="Previous">&laquo;</a>
+                <a href="#" data-cfw-slideshow-nav="next" title="Next">&raquo;</a>
+                <!--
+                <ul class="nav nav-pills" data-cfw="slideshow">
+                    <li><a href="#" data-cfw-slideshow-nav="prev" title="Previous">&laquo;</a></li>
+                    <li><a href="#slide0" data-cfw="tab">Slide 1</a></li>
+                    <li><a href="#slide1" data-cfw="tab">Slide 2</a></li>
+                    <li><a href="#slide2" data-cfw="tab">Slide 3</a></li>
+                    <li><a href="#slide3" data-cfw="tab">Slide 4</a></li>
+                    <li><a href="#" data-cfw-slideshow-nav="next" title="Next">&raquo;</a></li>
+                </ul>
+                -->
+                <div class="tab-content">
+                    <div class="tab-pane" id="slide0">
+                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                    </div>
+                    <div class="tab-pane" id="slide1">
+                        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                    </div>
+                    <div class="tab-pane" id="slide2">
+                        <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+                    </div>
+                    <div class="tab-pane" id="slide3">
+                        <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+
+            <h2 id="modal">Modal:</h2>
+
+            <p>
+                <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-toggle="#modal3" data-cfw-modal-backdrop="false">Modal: no backdrop</button>
+                <div class="modal" id="modal3">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Small modal</h4>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+            </p>
+
+            <p>
+                <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-toggle="#modal1">Launch demo modal</button>
+                <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-toggle="#modal2">Launch modal - end of body</button>
+            </p>
+            <!-- Modal -->
+            <div class="modal" id="modal1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                            <h4>Text in a modal</h4>
+                            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+                            <h4>Popover in a modal</h4>
+                            <p>This <button type="button"  class="btn btn-default" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="right">button</button> should trigger a popover on click.</p>
+                            <h4>Tooltips in a modal</h4>
+                            <p><a href="#" data-cfw="tooltip" title="Tooltip">This link</a> and <a href="#" data-cfw="tooltip" title="Tooltip">that link</a> should have tooltips on hover.</p>
+                            <h4>Collapse in a modal</h4>
+                            <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-toggle="modal_collapse">Collapse<span class="caret"></span></button>
+                                <div data-cfw-collapse-target="modal_collapse">
+                                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                                </div>
+                            <hr />
+                            <h4>Overflowing text to show scroll behavior</h4>
+                            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-cfw-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <strong>Reusing a Modal</strong>
+            <br />
+            <p>
+                <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-toggle="#modal0" id="modal0_0">Launch demo modal (0)</button>
+                <button type="button" class="btn btn-info" id="modal0_1">Launch demo modal (1)</button>
+                <br />
+                <a href="#" onclick="javascript: modalLinkTest0(); return false;">Unlink 0 - Link 1</a> |
+                <a href="#" onclick="javascript: modalLinkTest1(); return false;">Unlink 1 - Link 0</a> |
+                <a href="#" onclick="javascript: modalLinkTest2(); return false;">Show modal data</a> |
+                <a href="#" onclick="javascript: $('#modal0').CFW_Modal('unlink'); return false;">Unlink</a>
+            </p>
+            <!-- Modal -->
+            <div class="modal" id="modal0">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" onclick="$('#modal0').CFW_Modal('hide');return false">Close modal by calling directly</a>
+                            <button type="button" class="btn btn-default" data-cfw-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                function modalLinkTest0() {
+                    $('#modal0_0').CFW_Modal('unlink');
+                    $('#modal0_1').CFW_Modal({
+                        toggle: '#modal0'
+                    });
+                    $('#modal0').CFW_Modal('show');
+                }
+                function modalLinkTest1() {
+                    $('#modal0').CFW_Modal('unlink');
+                    $('#modal0_0').CFW_Modal('show');
+                }
+                function modalLinkTest2() {
+                    console.log($('#modal0').data('cfw.modal'));
+                }
+            </script>
+
+            <hr />
+
+            <h2 id="accordion">Accordion:</h2>
+
+            <div class="" data-cfw="accordion">
+                <div>
+                    <a href="#" data-cfw="collapse" data-cfw-collapse-toggle="accordion_0" class="open">
+                        Accordion_0
+                        <span class="caret"></span>
+                    </a>
+                    <div data-cfw-collapse-target="accordion_0">
+                         <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                    </div>
+                </div>
+                <div>
+                    <a href="#" data-cfw="collapse" data-cfw-collapse-toggle="accordion_1">
+                        Accordion_1
+                        <span class="caret"></span>
+                    </a>
+                    <div data-cfw-collapse-target="accordion_1">
+                         <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                    </div>
+                </div>
+                <div>
+                    <a href="#" data-cfw="collapse" data-cfw-collapse-toggle="accordion_2">
+                        Accordion_2
+                        <span class="caret"></span>
+                    </a>
+                    <div data-cfw-collapse-target="accordion_2">
+                         <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 id="popover">Popover:</h2>
+
+            <div class="container-viewport" id="viewport-popover">
+                <p class="viewport-text">Test viewport constraints for popovers.</p>
+                <button class="btn btn-default popover-viewport-bottom" title="This should be shifted to the right">Shift Right</button>
+                <button class="btn btn-default popover-viewport-right" title="This should be shifted down">Shift Down</button>
+
+                <button class="btn btn-default pull-xs-right popover-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
+
+                <button class="btn btn-default popover-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
+
+                <button class="btn btn-default popover-viewport-drag btn-drag" title="This should be confined to the viewport box">Drag Test (click)</button>
+            </div>
+            <script type="text/javascript">
+                $('.popover-viewport-right').CFW_Popover({
+                    //trigger: 'hover',
+                    placement: 'right',
+                    viewport: {selector: '#viewport-popover', padding: 2}
+                });
+                $('.popover-viewport-bottom').CFW_Popover({
+                    //trigger: 'hover',
+                    placement: 'bottom',
+                    viewport: {selector: '#viewport-popover', padding: 2}
+                });
+                $('.popover-viewport-drag').CFW_Popover({
+                    drag: true,
+                    viewport: {selector: '#viewport-popover', padding: 2}
+                });
+            </script>
+
+            <button type="button" class="btn btn-info" id="pop_6" title="Yay, you clicked me!" data-cfw-popover-content="blah">Popover Custom Placement</button>
+            <script type="text/javascript">
+                $('#pop_6').CFW_Popover({
+                    drag: true,
+                    placement : popPlace
+                });
+                function popPlace(tip, trigger) {
+                    //return $('.cast-sidebar').offset();
+                    //return this.$triggerElm.offset();
+                    var $tip = $(tip);
+                    var $trigger = $(trigger);
+                    var loc = {};
+                    var pos = $trigger.offset();
+                    loc.top = pos.top;
+                    loc.left = pos.left + $trigger.outerWidth();
+                    return loc;
+                }
+            </script>
+            <br />
+            --
+            <br />
+            <button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-toggle="pop_1" id="pop_1" title="click me">Popover Click</button>
+            <a href="#" onclick="$('#pop_1').CFW_Popover('hide', true); return false;">Force Close</a> -
+            <a href="#" onclick="$('#pop_1').CFW_Popover('hide'); return false;">Normal Close</a>
+            <div class="popover" data-cfw-popover-target="pop_1">
+                <h3 class="popover-title">Popover top</h3>
+                <div class="popover-content">
+                    <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                    <p><a href="#" data-cfw-dismiss="popover">Close popover</a></p>
+                </div>
+                <div class="popover-arrow"></div>
+            </div>
+            --
+            <button type="button" class="btn btn-info" data-cfw-popover-toggle="pop_2" id="pop_2">Popover Hover/focus</button>
+            <div class="popover" data-cfw-popover-target="pop_2">
+                <h3 class="popover-title">Popover top</h3>
+                <div class="popover-content">
+                    <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                </div>
+                <div class="popover-arrow"></div>
+            </div>
+            <br />
+            <button type="button" class="btn btn-info" data-cfw-popover-toggle="pop_3" id="pop_3">Popover Hover/focus</button>
+            &lt;- preventDefault() - should not show popover
+            <div class="popover" data-cfw-popover-target="pop_3">
+                <h3 class="popover-title">Popover top</h3>
+                <div class="popover-content">
+                    <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                </div>
+                <div class="popover-arrow"></div>
+            </div>
+            <button type="button" class="btn btn-info" data-cfw="popover" id="pop_4" title="Yay, you clicked me!" data-cfw-popover-content="blah">Popover Click</button>
+            <br />
+            <!--<button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-toggle="#pop_5p" id="pop_5">Popover from selector</button>-->
+            <button type="button" class="btn btn-info" id="pop_5">Popover from selector</button>
+            <a href="#" onclick="$('#pop_5p').CFW_Popover('hide');return false;">Close by calling on popover</a>
+            <div class="popover" id="pop_5p">
+                <h3 class="popover-title">Popover selector</h3>
+                <div class="popover-content">
+                    <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                    <img src="" data-cfw="lazy" data-cfw-lazy-src="../assets/img/test.gif" alt="test pattern" style="border: 1px solid blue;" class="img-responsive" />
+                </div>
+                <div class="popover-arrow"></div>
+            </div>
+            <br />
+            <button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-toggle="#pop_7p">Popover from selector</button>
+            <div class="popover" id="pop_7p">
+                <h3 class="popover-title">Popover selector</h3>
+                <div class="popover-content">
+                    <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                    <img src="" data-cfw="lazy" data-cfw-lazy-src="../assets/img/test.gif" alt="test pattern" style="border: 1px solid blue;" class="img-responsive" />
+                </div>
+                <div class="popover-arrow"></div>
+            </div>
+
+            <button type="button" data-cfw="popover" data-cfw-popover-trigger="hover focus" title="I have a title">test</button>
+
+            <script type="text/javascript">
+                $(window).ready(function() {
+                    var $zoom = $('#pop_7p').data('cfw.popover').$triggerElm;
+                    $zoom.one('beforeShow.cfw.popover', function(e) {
+                        $(this).data('cfw.popover').$targetElm.find('[data-cfw="lazy"]').each(function() {
+                            $(this).one('load', function() {
+                                $zoom.CFW_Popover('locateTip');
+                            }).CFW_Lazy('show');
+                        });
+                    });
+                });
+                /*
+                $('#pop_1').CFW_Popover({
+                    trigger : 'click',
+                    placement: 'auto top'
+                });
+                */
+                $('#pop_2, #pop_3').CFW_Popover({
+                    container: 'body',
+                    trigger: 'hover focus',
+                    placement: 'auto top'
+                });
+                $('#pop_2, #pop_3').on('click', function(){
+                    return false;
+                });
+                $('#pop_3').on('beforeShow.cfw.popover', function(e) {
+                    return e.preventDefault();
+                });
+                $('#pop_5').CFW_Popover({
+                    toggle: '#pop_5p',
+                    placement: 'bottom'
+                });
+
+            </script>
+
+            <hr />
+
+            <strong>Reusing a Popover</strong>
+            <br />
+            <p>
+                <button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-toggle="#popR" data-cfw-popover-trigger=click id="pop0_0" data-cfw-popover-drag=true>Popover reuse (0)</button>
+                <button type="button" class="btn btn-info" id="pop0_1" data-cfw-popover-drag=true>Popover reuse (1)</button>
+                <br />
+                <a href="#" onclick="javascript: popLinkTest0(); return false;">Unlink 0 - Link 1</a> |
+                <a href="#" onclick="javascript: popLinkTest1(); return false;">Unlink 1 - Link 0</a> |
+                <a href="#" onclick="javascript: popLinkTest2(); return false;">Show popover data</a> |
+                <a href="#" onclick="javascript: $('#popR').CFW_Popover('unlink'); return false;">Unlink</a>
+            </p>
+            <div class="popover" id="popR">
+                <h3 class="popover-title">Popover selector</h3>
+                <div class="popover-content">
+                    <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+                </div>
+                <div class="popover-arrow"></div>
+            </div>
+
+            <script type="text/javascript">
+                function popLinkTest0() {
+                    $('#pop0_0').parent().one('afterUnlink.cfw.popover', function() {
+                        $('#pop0_1').CFW_Popover({
+                            toggle: '#popR',
+                            trigger: 'click',
+                            activate: true
+                        });
+                    });
+                    $('#pop0_0').CFW_Popover('unlink');
+
+                }
+                function popLinkTest1() {
+                    $('#popR').CFW_Popover('unlink');
+                    $('#pop0_0').CFW_Popover();
+                }
+                function popLinkTest2() {
+                    console.log($('#popR').data('cfw.popover'));
+                }
+            </script>
+
+            <hr />
+
+            <strong>Activated Popover:</strong>
+            <br />
+            <button type="button" class="btn btn-warning" data-cfw="popover" data-cfw-popover-title="Automatically shown" data-cfw-popover-content="Nifty eh!" data-cfw-popover-placement="right" data-cfw-popover-activate=true>Auto show popover</button>
+
+            <hr />
+
+            <h2 id="tooltip">Tooltip:</h2>
+
+            <p>
+                <button type="button" class="btn" title="Delayed Tooltip" data-cfw="tooltip" data-cfw-tooltip-delay=500>Delayed</button>
+            </p>
+
+            <div class="container-viewport" id="viewport-tooltip">
+                <p class="viewport-text">Test viewport constraints for tooltips.</p>
+                <button class="btn btn-default tooltip-viewport-bottom" title="This should be shifted to the right">Shift Right</button>
+                <button class="btn btn-default tooltip-viewport-right" title="This should be shifted down">Shift Down</button>
+
+                <button class="btn btn-default pull-xs-right tooltip-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
+
+                <button class="btn btn-default tooltip-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
+            </div>
+            <script type="text/javascript">
+                $('.tooltip-viewport-right').CFW_Tooltip({
+                    placement: 'right',
+                    viewport: {selector: '#viewport-tooltip', padding: 2}
+                });
+                $('.tooltip-viewport-bottom').CFW_Tooltip({
+                    placement: 'bottom',
+                    //viewport: {selector: '#viewport-tooltip', padding: 2}
+                    viewport: function ($element) {
+                        return ($element.closest('.container-viewport'));
+                    }
+                });
+            </script>
+
+            <form>
+                <label for="tip_1">Something:</label>
+                <input type="text" placeholder="click me" title="I have some type of information." id="tip_1" />
+                <br />
+                <label for="tip_2">Something:</label>
+                <input type="text" placeholder="what?" title="I also have information." id="tip_2" data-cfw="tooltip" data-cfw-tooltip-placement="right auto" />
+                <br />
+                <label for="tip_3">A counter:</label>
+                <input type="text" placeholder="hover to count++" id="tip_3" data-cfw-tooltip-placement="right auto" />
+            </form>
+            <br />
+            <script type="text/javascript">
+                $('#tip_1').CFW_Tooltip({
+                    trigger : 'click',
+                    placement: 'auto right'
+                });
+
+                var tipCount = 1;
+                function tipCounter() {
+                    return 'Count: ' + (tipCount++);
+                }
+                $('#tip_3').CFW_Tooltip({
+                    placement: 'auto right',
+                    title: tipCounter
+                });
+            </script>
+
+
+            <strong>Activated Tooltip:</strong>
+            <br />
+            <button type="button" class="btn btn-warning" data-cfw="tooltip" data-cfw-tooltip-title="Automatically shown" data-cfw-tooltip-placement="right" data-cfw-tooltip-activate=true>Auto show tooltip</button>
+
+            <hr />
+
+            <h2 id="tab-responsive">Tab-Responsive:</h2>
+
+            <div data-cfw="tabResponsive" class="cfw-example-tabRepsonsive">
+                <nav>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a href="#tabr0" class="nav-link" data-cfw="tab">First Tab</a></li>
+                    <li class="nav-item"><a href="#tabr1" class="nav-link" data-cfw="tab">Second Tab</a></li>
+                    <li class="nav-item"><a href="#tabr2" class="nav-link" data-cfw="tab">Third Tab</a></li>
+                </ul>
+                </nav>
+                <div class="tab-content">
+                    <div class="tab-pane" id="tabr0">
+                        <h3><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="tabr0_collapse">First Tab <span class="caret"></span></a></h3>
+                        <div data-cfw-collapse-target="tabr0_collapse">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tabr1">
+                        <h3><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="tabr1_collapse">Second Tab <span class="caret"></span></a></h3>
+                        <div data-cfw-collapse-target="tabr1_collapse">
+                            <p>Praesent tristique dolor quis condimentum lobortis. Phasellus accumsan lacus vitae quam elementum, non euismod urna adipiscing. Suspendisse sodales enim non sem consequat dictum. Ut sit amet elementum purus, mattis rhoncus elit.</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tabr2">
+                        <h3><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="tabr2_collapse">Third Tab <span class="caret"></span></a></h3>
+                        <div data-cfw-collapse-target="tabr2_collapse">
+                            <p>Nullam malesuada massa urna, non gravida odio scelerisque sit amet. Donec sit amet rutrum quam, vel faucibus ante. Sed iaculis aliquet tortor vel tristique? In ligula nisi, suscipit vel ipsum id; elementum iaculis dui.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <hr />
+
+            <h2 id="tab">Tab:</h2>
+
+            <div class="bs-example bs-example-tabs">
+                <ul id="myTab" class="nav nav-tabs">
+                    <li class="nav-item"><a href="#tabpanel1" class="nav-link" data-cfw="tab">Tab 1</a></li>
+                    <li class="nav-item active"><a href="#tabpanel2" class="nav-link" data-cfw="tab">Tab 2</a></li>
+                    <li class="nav-item"><a href="#tabpanel3" class="nav-link" data-cfw="tab">Tab 3</a></li>
+                    <li class="nav-item"><a href="#tabpanel4" class="nav-link" data-cfw="tab">Tab 4</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link disabled" data-cfw="tab" data-cfw-tab-target="#tabpanel5">Tab 5</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane" id="tabpanel1">
+                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                    </div>
+                    <div class="tab-pane" id="tabpanel2">
+                        <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                    </div>
+                    <div class="tab-pane" id="tabpanel3">
+                        <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+                    </div>
+                    <div class="tab-pane" id="tabpanel4">
+                        <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+                    </div>
+                    <div class="tab-pane" id="tabpanel5">
+                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+
+            <h2 id="dropdown">Dropdown:</h2>
+
+            <!-- Single button -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownTest_0">
+                    Action
+                </button>
+                <ul data-cfw-dropdown-target="dropdownTest_0">
+                    <li class="dropdown-header">Dropdown header</li>
+                    <li><a href="#0-1">Action</a></li>
+                    <li>
+                        <a href="#0-1">Another action</a>
+                        <ul>
+                            <li><a href="#0-1-0">Action</a></li>
+                            <li>
+                                <a href="#0-1-1">Another action</a>
+                                <ul>
+                                    <li><a href="#0-1-1-0">Action</a></li>
+                                    <li><a href="#0-1-1-1">Another action</a></li>
+                                    <li><a href="#0-1-1-2">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#0-1-1-3">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#0-1-2">Something else here</a>
+                                <ul>
+                                    <li><a href="#0-1-2-0">Action</a></li>
+                                    <li><a href="#0-1-2-1">Another action</a></li>
+                                    <li><a href="#0-1-2-2">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#0-1-2-3">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#0-1-3">Separated link</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Something else here</a>
+                        <!-- <a href="#0-2">Something else here</a> -->
+                        <ul>
+                            <li><a href="#0-2-0">Action</a></li>
+                            <li><a href="#0-2-1">Another action</a></li>
+                            <li>
+                                <a href="#0-2-2">Something else here</a>
+                                <ul>
+                                    <li><a href="#0-2-2-0">Action</a></li>
+                                    <li><a href="#0-2-2-1">Another action</a></li>
+                                    <li><a href="#0-2-2-2">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#0-2-2-3">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#0-2-3">Separated link</a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="disabled"><a href="#0-3">Separated link</a></li>
+                </ul>
+            </div>
+
+            <!-- Split button -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger">Action</button>
+                <button type="button" class="btn btn-danger dropdown-toggle" data-cfw="dropdown">
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <!--
+                <button type="button" class="btn btn-danger dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownTest_1" id="dropdownTest_1">
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul data-cfw-dropdown-target="dropdownTest_1">
+                -->
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+
+            <!-- Split button -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-danger">Action</button>
+                <a href="/foo/" role="button" class="btn btn-danger dropdown-toggle" data-cfw="dropdown">
+                    <span class="sr-only">Toggle Dropdown</span>
+                </a>
+                <!--
+                <button type="button" class="btn btn-danger dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownTest_1" id="dropdownTest_1">
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul data-cfw-dropdown-target="dropdownTest_1">
+                -->
+                <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+
+            <!-- Single button - init through JS -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-cfw-dropdown-toggle="dropdownTest_2" id="js_dropdown_2">
+                    JS init w/ back
+                </button>
+                <ul data-cfw-dropdown-target="dropdownTest_2" class="slide1">
+                    <li><a href="#2-1">Action</a></li>
+                    <li>
+                        <a href="#2-1">Another action with a really long entry</a>
+                        <ul>
+                            <li><a href="#2-1-0">Action</a></li>
+                            <li>
+                                <a href="#2-1-1">Another action</a>
+                                <ul>
+                                    <li><a href="#2-1-1-0">Action</a></li>
+                                    <li><a href="#2-1-1-1">Another action</a></li>
+                                    <li><a href="#2-1-1-2">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#2-1-1-3">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#2-1-2">Something else here</a>
+                                <ul>
+                                    <li><a href="#2-1-2-0">Action</a></li>
+                                    <li><a href="#2-1-2-1">Another action</a></li>
+                                    <li><a href="#2-1-2-2">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#2-1-2-3">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#2-1-3">Separated link</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Something else here</a>
+                        <!-- <a href="#2-2">Something else here</a> -->
+                        <ul>
+                            <li><a href="#2-2-0">Action</a></li>
+                            <li><a href="#2-2-1">Another action</a></li>
+                            <li>
+                                <a href="#2-2-2">Something else here</a>
+                                <ul>
+                                    <li><a href="#2-2-2-0">Action</a></li>
+                                    <li><a href="#2-2-2-1">Another action</a></li>
+                                    <li><a href="#2-2-2-2">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#2-2-2-3">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#2-2-3">Separated link</a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="disabled"><a href="#2-3">Separated link</a></li>
+                </ul>
+            </div>
+            <script type="text/javascript">
+                $("#js_dropdown_2").CFW_Dropdown({
+                    backlink: true,
+                    backtext: 'Back',
+                    animate: true
+                });
+            </script>
+
+            <!-- Single button -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownTest_3" data-cfw-dropdown-hover=true>
+                    Hover Activated
+                </button>
+                <ul data-cfw-dropdown-target="dropdownTest_3">
+                    <li class="dropdown-header">Dropdown header</li>
+                    <li><a href="#3-1">Action</a></li>
+                    <li>
+                        <a href="#3-1">Another action</a>
+                        <ul>
+                            <li><a href="#3-1-0">Action</a></li>
+                            <li>
+                                <a href="#3-1-1">Another action</a>
+                                <ul>
+                                    <li><a href="#3-1-1-0">Action</a></li>
+                                    <li><a href="#3-1-1-1">Another action</a></li>
+                                    <li><a href="#3-1-1-2">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#3-1-1-3">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#3-1-2">Something else here</a>
+                                <ul>
+                                    <li><a href="#3-1-2-0">Action</a></li>
+                                    <li><a href="#3-1-2-1">Another action</a></li>
+                                    <li><a href="#3-1-2-2">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#3-1-2-3">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#3-1-3">Separated link</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#3-2">Something else here</a>
+                        <ul>
+                            <li><a href="#3-2-0">Action</a></li>
+                            <li><a href="#3-2-1">Another action</a></li>
+                            <li>
+                                <a href="#3-2-2">Something else here</a>
+                                <ul>
+                                    <li><a href="#3-2-2-0">Action</a></li>
+                                    <li><a href="#3-2-2-1">Another action</a></li>
+                                    <li><a href="#3-2-2-2">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#3-2-2-3">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#3-2-3">Separated link</a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="disabled"><a href="#3-3">Separated link</a></li>
+                </ul>
+            </div>
+
+            <!-- Single button -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#dropdownTest_3b" data-cfw-dropdown-hover=true>
+                    Hover Activated
+                </button>
+                <ul id="dropdownTest_3b">
+                    <li class="dropdown-header">Dropdown header</li>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a>
+                    <li class="divider"></li>
+                    <li class="disabled"><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+
+
+            <!-- Via Selector -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-warning dropdown-toggle" data-cfw="dropdown" id="dropdownTest_sb"> <!-- data-cfw-dropdown-toggle="#dropdownTest_s">-->
+                    via selector
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul id="dropdownTest_s">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li>
+                        <a href="#">Something else here</a>
+                        <ul>
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+            <script type="text/javascript">
+                $('#dropdownTest_sb').CFW_Dropdown({
+                    toggle: '#dropdownTest_s'
+                });
+            </script>
+
+
+            <br />
+
+            <!-- Single button -->
+            <div class="btn-group dropup">
+                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownTest_4">
+                    Drop Up
+                </button>
+                <ul data-cfw-dropdown-target="dropdownTest_4">
+                    <li class="dropdown-header">Dropdown header</li>
+                    <li><a href="#4-1">Action</a></li>
+                    <li>
+                        <a href="#4-1">Another action</a>
+                        <ul>
+                            <li><a href="#4-1-0">Action</a></li>
+                            <li>
+                                <a href="#4-1-1">Another action</a>
+                                <ul>
+                                    <li><a href="#4-1-1-0">Action</a></li>
+                                    <li><a href="#4-1-1-1">Another action</a></li>
+                                    <li><a href="#4-1-1-2">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#4-1-1-3">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#4-1-2">Something else here</a>
+                                <ul>
+                                    <li><a href="#4-1-2-0">Action</a></li>
+                                    <li><a href="#4-1-2-1">Another action</a></li>
+                                    <li><a href="#4-1-2-2">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#4-1-2-3">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#4-1-3">Separated link</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Something else here</a>
+                        <!-- <a href="#4-2">Something else here</a> -->
+                        <ul>
+                            <li><a href="#4-2-0">Action</a></li>
+                            <li><a href="#4-2-1">Another action</a></li>
+                            <li>
+                                <a href="#4-2-2">Something else here</a>
+                                <ul>
+                                    <li><a href="#4-2-2-0">Action</a></li>
+                                    <li><a href="#4-2-2-1">Another action</a></li>
+                                    <li><a href="#4-2-2-2">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#4-2-2-3">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#4-2-3">Separated link</a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="disabled"><a href="#4-3">Separated link</a></li>
+                </ul>
+            </div>
+
+            <!-- Single button -->
+            <div class="btn-group dropdown-menu-left" style="float: right;">
+                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownTest_5" data-cfw-dropdown-backlink=true>
+                    Drop Left
+                </button>
+                <ul data-cfw-dropdown-target="dropdownTest_5">
+                    <li class="dropdown-header">Dropdown header</li>
+                    <li><a href="#5-1">Action</a></li>
+                    <li>
+                        <a href="#5-1">Another action</a>
+                        <ul>
+                            <li><a href="#5-1-0">Action</a></li>
+                            <li>
+                                <a href="#5-1-1">Another action</a>
+                                <ul>
+                                    <li><a href="#5-1-1-0">Action</a></li>
+                                    <li><a href="#5-1-1-1">Another action</a></li>
+                                    <li><a href="#5-1-1-2">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#5-1-1-3">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#5-1-2">Something else here</a>
+                                <ul>
+                                    <li><a href="#5-1-2-0">Action</a></li>
+                                    <li><a href="#5-1-2-1">Another action</a></li>
+                                    <li><a href="#5-1-2-2">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#5-1-2-3">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#5-1-3">Separated link</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Something else here</a>
+                        <!-- <a href="#5-2">Something else here</a> -->
+                        <ul>
+                            <li><a href="#5-2-0">Action</a></li>
+                            <li><a href="#5-2-1">Another action</a></li>
+                            <li>
+                                <a href="#5-2-2">Something else here</a>
+                                <ul>
+                                    <li><a href="#5-2-2-0">Action</a></li>
+                                    <li><a href="#5-2-2-1">Another action</a></li>
+                                    <li><a href="#5-2-2-2">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#5-2-2-3">Separated link</a></li>
+                                </ul>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#5-2-3">Separated link</a></li>
+                        </ul>
+                    </li>
+                    <li class="divider"></li>
+                    <li class="disabled"><a href="#5-3">Separated link</a></li>
+                </ul>
+            </div>
+
+            <hr />
+
+            <h2 id="collapse">Collapse:</h2>
+
+            <div class="well">
+                <h3>Multiple Triggers - One Target</h3>
+                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-toggle="multi-collapse">Trigger 1 <span class="caret"></span></button>
+                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-toggle="multi-collapse">Trigger 2 <span class="caret"></span></button>
+                <div data-cfw-collapse-target="multi-collapse">
+                    <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
+                </div>
+            </div>
+            <div class="well">
+                <h3>Horizontal Collapse Test</h3>
+                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-toggle="#collapseH" data-cfw-collapse-horizontal=true>Collapse <span class="caret"></span></button>
+                <br />
+                <div id="collapseH" class="collapse">
+                    <div style="width: 500px;">
+                        <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="well">
+                <h3>Collapse Test</h3>
+                <button type="button" id="coll_1" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-toggle="collapseTest">Collapse <span class="caret"></span></button>
+                <!-- <button type="button" class="open" data-cfw="collapse" data-cfw-collapse-toggle="collapseTest">Collapse</button> -->
+                <a href="#" onclick="$('#coll_1').CFW_Collapse('show', false); return false;">Show</a>
+                <a href="#" onclick="$('#coll_1').CFW_Collapse('toggle'); return false;">Toggle</a>
+                <br />
+                <div data-cfw-collapse-target="collapseTest">
+                    <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
+                </div>
+                <div data-cfw-collapse-target="collapseTest">
+                    <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
+                </div>
+            </div>
+            <div class="well">
+                <h3>Collapse Test</h3>
+                <button type="button" id="coll_2" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-toggle="collapseTest_1">Collapse <span class="caret"></span></button>
+                <!-- <button type="button" class="open" data-cfw="collapse" data-cfw-collapse-toggle="collapseTest_1">Collapse</button> -->
+                <br />
+                <div data-cfw-collapse-target="collapseTest_1">
+                    <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
+                </div>
+                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-toggle="collapseTest_3" data-cfw-collapse-animate=false>Collapse (No Animation) <span class="caret"></span></button>
+                <div data-cfw-collapse-target="collapseTest_3">
+                    <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
+                </div>
+                <br />
+                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-toggle="#collapseTest_4">Collapse (via selector) <span class="caret"></span></button>
+                <div id="collapseTest_4">
+                    <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
+                </div>
+                <br />
+                <button type="button" id="collapseTest_5_trigger" class="btn btn-default">Collapse (via programmatic selector) <span class="caret"></span></button>
+                <div id="collapseTest_5">
+                    <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
+                </div>
+                <script type="text/javascript">
+                    $('#collapseTest_5_trigger').CFW_Collapse({
+                     toggle: '#collapseTest_5'
+                    });
+                </script>
+                <br />
+                <a href="#collapseTest_6" role="button" class="btn btn-href" data-cfw="collapse">Collapse (via href) <span class="caret"></span></a>
+                <div id="collapseTest_6">
+                    <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
+                </div>
+                <br />
+            </div>
+
+            <hr />
+
+            <h2 id="lazy">Lazy:</h2>
+            <img src="" data-cfw="lazy" data-cfw-lazy-src="../assets/img/test.gif" alt="test pattern" style="border: 1px solid blue;" data-cfw-lazy-trigger="click" width="320" height="180" />
+            <img src="" data-cfw="lazy" data-cfw-lazy-src="../assets/img/test.gif" alt="test pattern" style="border: 1px solid blue;" width="320" height="180" />
+            <img src="" data-cfw="lazy" data-cfw-lazy-src="../assets/img/test.gif" alt="test pattern" style="border: 1px solid blue;" width="320" height="180" />
+            <img src="" data-cfw="lazy" data-cfw-lazy-src="../assets/img/test.gif" alt="test pattern" style="border: 1px solid blue; display: none;" width="320" height="180" />
+
+            <div id="lazytest" style="height: 125px; overflow: scroll; margin-bottom: 20px;">
+                <p style="margin-top: 65px; margin-bottom: 65px; text-align: center;">
+                    \/ Scroll down \/
+                </p>
+                <p>
+                <img src="" data-cfw="lazy" data-cfw-lazy-container="#lazytest" data-cfw-lazy-effect="fadeIn" data-cfw-lazy-speed=1000 data-cfw-lazy-src="../assets/img/test.gif" alt="test pattern" class="img-responsive" width="320" height="180" />
+                </p>
+                <p>
+                <img src="" data-cfw="lazy" data-cfw-lazy-container="#lazytest" data-cfw-lazy-delay=1000 data-cfw-lazy-effect="fadeIn" data-cfw-lazy-speed=1000 data-cfw-lazy-src="../assets/img/test.gif" alt="test pattern" class="img-responsive" width="320" height="180" />
+                </p>
+                <p>
+                <img src="" data-cfw="lazy" data-cfw-lazy-container="#lazytest" data-cfw-lazy-delay=1000 data-cfw-lazy-src="../assets/img/test.gif" alt="test pattern" class="img-responsive" width="320" height="180" />
+                </p>
+            </div>
+
+            <hr />
+
+            <h2 id="equalize">Equalize:</h2>
+
+            <strong>By data-cfw-equalize-group:</strong>
+            <div class="row" data-cfw="equalize" data-cfw-equalize-target="eqtest0">
+                <div class="col-md-4">
+                    <div class="well" data-cfw-equalize-group="eqtest0">
+                        <h3>Panel 1</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac nisi sem. Maecenas elementum a lectus quis fermentum.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well" data-cfw-equalize-group="eqtest0">
+                        <h3>Panel 2</h3>
+                        <p>Etiam nec pulvinar quam. Duis aliquam ut turpis et vulputate. Proin malesuada sem purus, in hendrerit ex dapibus sed. Cras orci quam, vestibulum eget purus at, ultricies ultricies libero! Morbi fringilla accumsan purus, eu sodales enim suscipit nec.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well" data-cfw-equalize-group="eqtest0">
+                        <h3>Panel 3</h3>
+                        <p>Nam porta malesuada mi, quis hendrerit purus.</p>
+                        <img src="../assets/img/test.gif" alt="test pattern" class="img-responsive" />
+                    </div>
+                </div>
+            </div>
+
+            <strong>By class:</strong>
+            <div class="row" data-cfw="equalize" data-cfw-equalize-target=".well" data-cfw-equalize-hidden=true>
+                <div class="col-md-4">
+                    <div class="well">
+                        <h3>Panel 1</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac nisi sem. Maecenas elementum a lectus quis fermentum.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well">
+                        <h3>Panel 2</h3>
+                        <p>Etiam nec pulvinar quam. Duis aliquam ut turpis et vulputate. Proin malesuada sem purus, in hendrerit ex dapibus sed. Cras orci quam, vestibulum eget purus at, ultricies ultricies libero! Morbi fringilla accumsan purus, eu sodales enim suscipit nec.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well">
+                        <h3>Panel 3</h3>
+                        <p>Nam porta malesuada mi, quis hendrerit purus.</p>
+                        <!-- <img src="../assets/img/test.gif" alt="test pattern" class="img-responsive" /> -->
+                    </div>
+                </div>
+                <div class="col-md-4 hidden">
+                    <div class="well">
+                        <h3>Panel 4</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac nisi sem. Maecenas elementum a lectus quis fermentum.</p>
+                        <p>Etiam nec pulvinar quam. Duis aliquam ut turpis et vulputate. Proin malesuada sem purus, in hendrerit ex dapibus sed. Cras orci quam, vestibulum eget purus at, ultricies ultricies libero! Morbi fringilla accumsan purus, eu sodales enim suscipit nec.</p>
+                        <p>Nam porta malesuada mi, quis hendrerit purus.</p>
+                    </div>
+                </div>
+            </div>
+
+            <strong>Nested:</strong>
+            <div data-cfw="equalize" data-cfw-equalize-target="foo">
+                <div class="row" data-cfw="equalize" data-cfw-equalize-target="bar">
+                    <div class="col-md-4">
+                        <div class="well" data-cfw-equalize-group="foo">
+                            <h3>Panel 1</h3>
+                            one
+                            <div class="well" data-cfw-equalize-group="bar">one</div>
+                            one
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="well" data-cfw-equalize-group="foo">
+                            <h3>Panel 2</h3>
+                            <div class="well" data-cfw-equalize-group="bar">two<br />two</div>
+                            two
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="well" data-cfw-equalize-group="foo">
+                            <h3>Panel 3</h3>
+                            <div class="well" data-cfw-equalize-group="bar">three<br />three<br />three</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <strong>Rows:</strong>
+            <div class="row" data-cfw="equalize" data-cfw-equalize-target=".well" data-cfw-equalize-row=true>
+                <div class="col-md-4">
+                    <div class="well">
+                        <h3>Panel 1-1</h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well">
+                        <h3>Panel 1-2</h3>
+                        <p>row one</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well">
+                        <h3>Panel 1-3</h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well">
+                        <h3>Panel 2-1</h3>
+                        <p>row two</p>
+                        <p>row two</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well">
+                        <h3>Panel 2-2</h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well">
+                        <h3>Panel 2-3</h3>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well">
+                        <h3>Panel 3-1</h3>
+                        row three
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well">
+                        <h3>Panel 3-1</h3>
+                        row three<br />
+                        row three
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</main>
+
+<!-- Modal -->
+<div class="modal" id="modal2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <h4>Text in a modal</h4>
+                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+                <h4>Popover in a modal</h4>
+                <p>This <button type="button"  class="btn btn-default" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="right">button</button> should trigger a popover on click.</p>
+                <h4>Tooltips in a modal</h4>
+                <p><a href="#" data-cfw="tooltip" title="Tooltip">This link</a> and <a href="#" data-cfw="tooltip" title="Tooltip">that link</a> should have tooltips on hover.</p>
+                <h4>Collapse in a modal</h4>
+                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-toggle="modal_collapse">Collapse<span class="caret"></span></button>
+                    <div data-cfw-collapse-target="modal_collapse">
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                    </div>
+                <hr />
+                <h4>Overflowing text to show scroll behavior</h4>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-cfw-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

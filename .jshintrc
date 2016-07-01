@@ -1,0 +1,18 @@
+{
+    "asi"       : false,
+    "browser"   : true,
+    "eqeqeq"    : false,
+    "eqnull"    : true,
+    "esversion" : 3,
+    "expr"      : true,
+    "jquery"    : true,
+    "latedef"   : true,
+    "laxbreak"  : true,
+    "nonbsp"    : true,
+    "strict"    : true,
+    "undef"     : true,
+    "unused"    : true,
+    "globals": {
+        "CFW_API" : true
+    }
+}

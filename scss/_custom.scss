@@ -1,0 +1,30 @@
+// Custom settings
+//
+// Copy settings from `_settings.scss` to this file to override the defaults.
+// This allows for customization without changing core files.
+
+//// Sample of adding more colors using a mixing function
+//$context-themes: (); // <-- only define ONCE - must be before merging maps
+//$custom-context: (
+//    "purple": #990099,
+//    "aqua":   #00ffff
+//);
+//// Process custom colors into context color variants
+//$custom-themes: _mix-context-colors($custom-context);
+//// Merge into master context themes map
+//$context-themes: map-merge($context-themes, $custom-context);
+
+
+//// Adding a single color map
+//$context-themes: ();  // <-- only define ONCE - must be before merging maps
+//$single-color: (
+//    "purple": (
+//        "control-color":  #fff,
+//        "control-bg":     #990099,
+//        "control-border": #800080,
+//        "context-color":  #990099,
+//        "context-bg":     #ffb3ff,
+//        "context-border": #ff29ff
+//    )
+//);
+//$context-themes: map-merge($context-themes, $single-color);

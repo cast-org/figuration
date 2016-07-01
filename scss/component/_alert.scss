@@ -1,0 +1,38 @@
+// Base styles
+.alert {
+    padding: $alert-padding;
+    padding-right: ($alert-padding + 1rem);
+    margin-bottom: $spacer-y;
+    border: $alert-border-width solid transparent;
+    @include border-radius($alert-border-radius);
+
+    // Adjust close link position and color
+    .close {
+        position: relative;
+        top: -.1rem;
+        right: -1.1rem;
+        color: inherit;
+    }
+}
+
+// Headings for larger alerts
+.alert-heading {
+    // Specified to prevent conflicts of changing $headings-color
+    color: inherit;
+}
+
+// Provide class for links that match alerts
+.alert-link {
+    font-weight: $alert-link-font-weight;
+}
+
+// Contextual modifiers
+@each $theme, $colors in $context-themes {
+    $color:     map-get($colors, "context-color");
+    $bg:        map-get($colors, "context-bg");
+    $border:    map-get($colors, "context-border");
+
+    .alert-#{$theme} {
+        @include alert-variant($bg, $border, $color);
+    }
+}

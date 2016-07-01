@@ -1,0 +1,73 @@
+- title: Get Started
+  pages:
+    - title: Quick Start
+    - title: Download
+    - title: Browsers & Devices
+    - title: Options
+    - title: Build Tools
+    - title: Accessibility
+    - title: Examples
+
+- title: Layout
+  pages:
+    - title: Overview
+    - title: Grid
+    - title: Responsive Utilities
+
+- title: Content
+  pages:
+    - title: Reboot
+    - title: Color
+    - title: Typography
+    - title: Code
+    - title: Images
+    - title: Figures
+    - title: Tables
+    - title: Buttons
+    - title: Forms
+
+- title: Components
+  pages:
+    - title: Alerts
+    - title: Breadcrumb
+    - title: Button Group
+    - title: Cards
+    - title: Grid Lines
+    - title: Input Group
+    - title: Jumbotron
+    - title: List Group
+    - title: Media Object
+    - title: Navbar
+    - title: Navs
+    - title: Pagination
+    - title: Progress
+    - title: Tags
+    - title: Utilities
+
+- title: Widgets
+  pages:
+    - title: Overview
+    - title: Accordion
+    - title: Affix
+    - title: Alert
+    - title: Button
+    - title: Collapse
+    - title: Drag
+    - title: Dropdown
+    - title: Equalize
+    - title: Lazy
+    - title: Modal
+    - title: Player
+    - title: Popover
+    - title: Scrollspy
+    - title: Slider
+    - title: Slideshow
+    - title: Tab
+    - title: Tab-Responsive
+    - title: Tooltip
+
+- title: About
+  pages:
+    - title: Overview
+    - title: Team
+    - title: License

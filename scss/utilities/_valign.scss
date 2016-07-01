@@ -1,0 +1,31 @@
+// scss-lint:disable ImportantRule
+
+// Vertical row alignments
+.valign-top,
+.valign-middle,
+.valign-bottom {
+    display: table;
+    width: 100%;
+}
+
+.valign-top {
+    > .valign-item {
+        display: table-cell;
+        float: none !important;
+        vertical-align: top;
+    }
+}
+.valign-middle {
+    > .valign-item {
+        display: table-cell;
+        float: none !important;
+        vertical-align: middle;
+    }
+}
+.valign-bottom {
+    > .valign-item {
+        display: table-cell;
+        float: none !important;
+        vertical-align: bottom;
+    }
+}

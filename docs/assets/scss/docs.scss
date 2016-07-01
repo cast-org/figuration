@@ -1,0 +1,481 @@
+// scss-lint:disable IdSelector, ImportantRule
+
+// Core reusable parts
+@import "../../../scss/functions";
+@import "../../../scss/settings";
+@import "../../../scss/mixins";
+
+$docs-color: #246;
+
+// Skipnav
+.skipnav {
+    position: absolute;
+    top: -100px;
+    z-index: 1001;
+    display: block;
+    width: 12em;
+    max-width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    color: $black;
+    text-align: center;
+    background: $uibase-50;
+    border: 2px solid $uibase-700;
+
+    &:focus {
+        top: .5rem;
+        left: 50%;
+        margin-left: -6em;
+        color: $black;
+    }
+}
+
+// Top navigation
+.navbar-dark .btn-toggler {
+    @include button-outline-variant($uibase-50, $uibase-50, $uibase-700);
+}
+
+.cf-header {
+    color: $white;
+    background-color: $uibase-900;
+}
+
+@include media-breakpoint-down(sm) {
+    .cf-header .nav-item {
+        float: none;
+    }
+    .cf-header .nav-item + .nav-item {
+        margin-left: 0;
+    }
+}
+
+// Home page
+.home-icons .fa {
+    font-size: 3.5rem;
+    vertical-align: middle;
+}
+.home-icons .fa + .fa {
+    margin-left: .5rem;
+}
+.btn-start {
+    padding: .75rem 2rem;
+    margin-bottom: .25rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: rgba(255,255,255,.15);
+    border-color: rgba(255,255,255,.8);
+    border-width: 2px;
+    box-shadow: 2px 2px .2rem rgba(0,0,0,.35);
+
+    @include hover-focus() {
+        color: #222;
+        background-color: rgba(255,255,255,.9);
+    }
+}
+
+// Jumbotrons
+.jumbotron-home {
+    margin-top: -1rem;
+    color: rgba(255,255,255,.9);
+    text-align: center;
+    background-color: $docs-color;
+
+    h1, h2 {
+        font-weight: bold;
+        color: $white;
+    }
+
+    .aka {
+        margin-top: -.5rem;
+        font-size: 1.15rem;
+        font-weight: 600;
+    }
+
+    .lead {
+        margin-top: 1.5rem;
+        margin-bottom: 2.5rem;
+        font-size: 1.5rem;
+    }
+
+    .start {
+        padding-bottom: 2rem;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid rgba(255,255,255,.5);
+    }
+}
+
+.jumbotron-docs {
+    padding: ($jumbotron-padding-xs-y / 2) ($jumbotron-padding-xs-x / 2);
+    margin-top: -1rem;
+    color: rgba(255,255,255,.9);
+    background-color: $docs-color;
+
+    @include media-breakpoint-up(sm) {
+        padding: ($jumbotron-padding-y / 2) ($jumbotron-padding-x / 2);
+    }
+}
+
+// AnchorJS
+.anchorjs-link {
+    transition: opacity .2s ease-in-out .1s;
+
+    @include hover-focus {
+        color: inherit;
+        text-decoration: none;
+    }
+}
+
+// ClipboardJS
+.cf-clipboard {
+    position: relative;
+    display: none;
+    float: right;
+    line-height: 1;
+
+    + .highlight {
+        margin-top: 0;
+    }
+
+    .tooltip {
+        white-space: nowrap;
+    }
+
+    @include media-breakpoint-up(md) {
+        display: block;
+    }
+}
+.btn-clipboard {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+// TOC
+#markdown-toc {
+    ul {
+        padding-left: 2rem;
+        margin-top: .25rem;
+        margin-bottom: .25rem;
+    }
+}
+
+// Sidenav
+.cf-sidebar {
+    .nav {
+        margin-top: -.2rem;
+    }
+
+    .nav-link {
+        display: block;
+        padding: .05rem .5rem;
+        text-decoration: none;
+
+        @include hover-focus {
+            text-decoration: underline;
+        }
+
+        &.active {
+            color: $white;
+            background-color: $docs-color;
+        }
+
+        @include media-breakpoint-down(md) {
+            display: inline-block;
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        margin-bottom: 2em;
+    }
+}
+
+// Title item
+.cf-title {
+    font-size: 3rem;
+
+    + p {
+        font-size: 1.15rem;
+        font-weight: 600;
+    }
+}
+
+// Content
+.cf-content {
+    > h2 {
+        margin-top: 2.5rem;
+    }
+
+    > h3 {
+        margin-top: 1.5rem;
+    }
+}
+
+h2,
+h3,
+h4 {
+    > code {
+        font-weight: 500;
+    }
+}
+
+// Example container
+.cf-example {
+    padding: 1rem;
+    background-color: #fff;
+    border: 1px solid #e1e1e8;
+    border-radius: .25rem .25rem 0 0;
+
+    + .cf-clipboard + .highlight {
+        border-top: 0;
+        @include border-top-radius(0);
+    }
+
+    @include media-breakpoint-up(sm) {
+        padding: 1.5rem;
+    }
+
+    @include clearfix();
+}
+.cf-example-bottom {
+    margin-bottom: 1rem;
+    @include border-bottom-radius(.25rem);
+}
+
+// Highlight
+.highlight {
+    margin-bottom: 1rem;
+    color: #393939;
+    background-color: #f8f8f8;
+    border: 1px solid #e1e1e8;
+    border-radius: .25rem;
+
+    pre {
+        padding: 1.65rem 1rem .5rem;
+        margin: 0;
+        background-color: transparent;
+        border: 0;
+    }
+
+    pre code {
+        font-size: inherit;
+        color: #3f3f3f;
+    }
+}
+
+// Tables - merged .table and .table-bordered styles
+.cf-content > table:not(.table) {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: $spacer;
+    border: $table-border-width solid $table-border-color;
+
+    th,
+    td {
+        padding: $table-cell-padding;
+        vertical-align: top;
+        border: $table-border-width solid $table-border-color;
+    }
+
+    thead {
+        th,
+        td {
+            vertical-align: bottom;
+            border-bottom-width: (2 * $table-border-width);
+        }
+    }
+
+    tbody + tbody {
+        border-top: (2 * $table-border-width) solid $table-border-color;
+    }
+
+    .table {
+        background-color: $body-bg;
+    }
+}
+
+.table-grunt {
+    tr th:first-child,
+    tr td:first-child {
+        white-space: nowrap;
+    }
+}
+
+// Callouts
+.cf-callout {
+    padding: 1rem;
+    margin: 1rem 0;
+    border: $border-width solid $uibase-300;
+    border-left-width: .5rem;
+    border-radius: $border-radius;
+
+    h4 {
+        margin-top: 0;
+        margin-bottom: .5rem;
+    }
+
+    p:last-child,
+    ul:last-child {
+        margin-bottom: 0;
+    }
+
+    + .cf-callout {
+        margin-top: -.25rem;
+    }
+}
+// Callout Contextual modifiers
+@mixin callout-variant($bg, $border, $color) {
+    // color: $color;
+    background-color: $bg;
+    border-color: $border;
+
+    h4 {
+        // color: darken($color, 5%);
+        color: $color;
+    }
+
+    //a {
+    //    color: darken($color, 5%);
+    //
+    //    @include hover-focus {
+    //        color: darken($color, 15%);
+    //    }
+    //}
+}
+@each $theme, $colors in $context-themes {
+    $color:     map-get($colors, "context-color");
+    $bg:        map-get($colors, "context-bg");
+    $border:    map-get($colors, "context-border");
+
+    .cf-callout-#{$theme} {
+        @include callout-variant($bg, $border, $color);
+    }
+}
+.cf-callout-dep > p + ul {
+    margin-top: -1rem;
+}
+
+// Palettes
+.palette {
+    margin-bottom: 1rem;
+}
+.palette-base,
+.palette-item {
+    padding: .5rem 1rem;
+    font-size: .875rem;
+}
+.palette-base {
+    margin-bottom: .25rem;
+}
+
+// Top of page item
+.topLink a {
+    display: inline-block;
+    padding: .15rem .5rem;
+    font-size: .875rem;
+    color: #c3c3c3;
+    text-decoration: none;
+    white-space: nowrap;
+    background: #424242;
+    border-radius: .5rem .5rem 0 0;
+}
+.topLink a:hover,
+.topLink a:focus {
+    color: #fff;
+}
+.topLink .caret {
+    border-top: 0;
+    border-bottom: $caret-width solid;
+}
+.topLink.affix-top,
+.topLink.affix {
+    position: fixed;
+    bottom: 0;
+    backface-visibility: hidden;
+}
+.topLink.affix-top {
+    visibility: hidden;
+}
+.topLink.affix-bottom {
+    position: absolute;
+}
+
+
+// Footer
+.cf-footer {
+    padding: .75rem 0;
+    margin-top: 2rem;
+    font-size: 85%;
+    text-align: center;
+    background-color: $uibase-50;
+    border-top: 2px solid $uibase-700;
+
+    .container > p:last-child {
+        margin-bottom: 0;
+    }
+
+    @include media-breakpoint-up(sm) {
+        text-align: left;
+    }
+}
+
+.footer-partners {
+    margin-top: .25rem;
+    text-align: left;
+
+    .partner-title {
+        margin-bottom: .1rem;
+    }
+}
+
+// Keyboard commands
+.cf-docs-keys dt {
+    float: left;
+    width: 4.5rem;
+    min-height: 1.75rem;
+    overflow: hidden;
+    clear: left;
+    text-align: center;
+    white-space: nowrap;
+}
+.cf-docs-keys dd {
+    min-height: 1.75rem;
+    margin-left: 5rem;
+
+    @include clearfix();
+}
+
+.cf-team a {
+    text-decoration: none;
+}
+.cf-team .github-btn {
+    float: right;
+    width: 180px;
+    height: 1.25rem;
+    margin-top: .25rem;
+    border: 0;
+}
+
+.cf-textalt {
+    text-align: center;
+}
+.cf-textalt div div {
+    padding: .5rem 1rem;
+}
+.bg-light1 {
+    background-color: #ccc;
+}
+.bg-light2 {
+    background-color: #bbb;
+}
+.bg-dark1 {
+    background-color: #333;
+}
+.bg-dark2 {
+    background-color: #222;
+}
+
+
+@import "examples";
+@import "syntax";
+@import "responsive-tests";
+@import "player";
