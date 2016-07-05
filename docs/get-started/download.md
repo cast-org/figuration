@@ -25,10 +25,7 @@ Download just the compiled and minified CSS and JavaScript. Doesn't include any 
 {% endmarkdown %}
         </div>
         <div class="card-footer text-sm-center">
-{% comment %}
-<a href="{{ site.download.dist }}" class="btn btn-outline-primary">Download Figuration</a>
-{% endcomment %}
-Coming soon!
+<a href="{{ site.download.dist }}" class="btn btn-info">Download Figuration</a>
         </div> <!-- /.card-footer -->
       </div> <!-- /.card -->
     </div>
@@ -41,10 +38,7 @@ Download everything: source Sass, JavaScript, and documentation files. **Require
 {% endmarkdown %}
         </div>
         <div class="card-footer text-sm-center">
-{% comment %}
-<a href="{{ site.download.source }}" class="btn btn-outline-primary">Download source</a>
-{% endcomment %}
-Coming soon!
+<a href="{{ site.download.source }}" class="btn">Download source</a>
         </div> <!-- /.card-footer -->
       </div> <!-- /.card -->
     </div>  <!-- /.col -->
