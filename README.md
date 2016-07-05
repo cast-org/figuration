@@ -1,5 +1,8 @@
 # [Figuration](http://figuration.cast.org)
 
+[![npm version](https://img.shields.io/npm/v/figuration.svg)](https://www.npmjs.com/package/figuration)
+[![devDependency Status](https://img.shields.io/david/dev/cast-org/figuration.svg)](https://david-dm.org/cast-org/figuration#info=devDependencies)
+
 CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end framework based on Bootstrap.
 
 Hopefully get the cname/aname running next week. For now docs at: <https://cast-org.github.io/figuration/>
@@ -72,4 +75,4 @@ See [the Releases section of our GitHub project](https://github.com/cast-org/fig
 
 ## Copyright and License
 
-Code and documentation copyright 2013-2016 CAST, Inc. Code released under [the MIT license](https://github.com/cast-org/figuration/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/cast-org/figuration/blob/master/docs/LICENSE).
+Code and documentation copyright 2013-2016 [CAST, Inc.](http://www.cast.org) Code released under [the MIT license](https://github.com/cast-org/figuration/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/cast-org/figuration/blob/master/docs/LICENSE).
