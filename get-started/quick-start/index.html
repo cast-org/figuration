@@ -49,10 +49,8 @@
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
   ga('create', 'UA-9130143-15', 'auto');
   ga('send', 'pageview');
-
 </script>
 
 </head>
@@ -262,7 +260,16 @@
 
 <h2 id="using-the-cdn">Using the CDN</h2>
 
-<p><strong>Coming soon!</strong></p>
+<p>CDN services are provided for free by the awesome folks over at <a href="https://www.jsdelivr.com/">jsDelivr</a>.</p>
+
+<p>Copy-paste the stylesheet <code class="highlighter-rouge">&lt;link&gt;</code> into your <code class="highlighter-rouge">&lt;head&gt;</code> before all other stylesheets to load our CSS.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/figuration/1.0.0/css/figuration.min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-LSPqXumeRbgiQjP29imJjd3x+bMxzSxJRO+zADie509pe3NAHc+x1k9nXNadYJMx"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span></code></pre></figure>
+
+<p>Add our JavaScript widgets and jQuery, either in the <code class="highlighter-rouge">&lt;head&gt;</code>, or near the end of your pages, right before the closing <code class="highlighter-rouge">&lt;/body&gt;</code> tag. Be sure to place jQuery first, as our code depends on it.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/figuration/1.0.0/js/figuration.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-Vbn3LuyIrqE+qs2iboqYFqZblRzHSX2AYUV6fPlyHKuGVVb+4XTxj0c8ER+E4TgI"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></figure>
 
 <h2 id="basic-template">Basic Template</h2>
 <p>Be sure to have your pages set up with the latest design and development standards. That means:</p>
@@ -284,11 +291,11 @@
     <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"x-ua-compatible"</span> <span class="na">content=</span><span class="s">"ie=edge"</span><span class="nt">&gt;</span>
 
     <span class="c">&lt;!-- Figuration CSS --&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/dist/css/figuration.min.css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/figuration/1.0.0/css/figuration.min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-LSPqXumeRbgiQjP29imJjd3x+bMxzSxJRO+zADie509pe3NAHc+x1k9nXNadYJMx"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
 
     <span class="c">&lt;!-- jQuery and Figuration JS --&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/vendor/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/dist/js/figuration.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/figuration/1.0.0/js/figuration.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-Vbn3LuyIrqE+qs2iboqYFqZblRzHSX2AYUV6fPlyHKuGVVb+4XTxj0c8ER+E4TgI"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;h1&gt;</span>Hello, world!<span class="nt">&lt;/h1&gt;</span>
