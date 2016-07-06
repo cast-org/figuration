@@ -1,7 +1,7 @@
 {
   "name": "figuration",
   "description": "A feature rich, responsive, mobile first, accessible, front-end framework based on Bootstrap.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "keywords": [
     "css",
     "sass",
@@ -12,7 +12,7 @@
     "framework",
     "web"
   ],
-  "homepage": "http://figuration.cast.org",
+  "homepage": "http://figuration.org",
   "author": "CAST, Inc.",
   "scripts": {
     "test": "grunt test"

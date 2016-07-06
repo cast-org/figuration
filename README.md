@@ -1,21 +1,19 @@
-# [Figuration](http://figuration.cast.org)
+# [Figuration](http://figuration.org)
 
 [![npm version](https://img.shields.io/npm/v/figuration.svg)](https://www.npmjs.com/package/figuration)
 [![devDependency Status](https://img.shields.io/david/dev/cast-org/figuration.svg)](https://david-dm.org/cast-org/figuration#info=devDependencies)
 
 CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end framework based on Bootstrap.
 
-Hopefully get the cname/aname running next week. For now docs at: <https://cast-org.github.io/figuration/>
-
-Get started at <http://figuration.cast.org>!
+Get started at <http://figuration.org>!
 
 Several quick start options are available:
 
-- [Download the latest release.](https://github.com/cast-org/figuration/archive/v0.1.0.zip)
+- [Download the latest release.](https://github.com/cast-org/figuration/archive/v1.0.0.zip)
 - Clone the repo: `git clone https://github.com/cast-org/figuration.git`
-- Install with [npm](https://www.npmjs.com): `npm install figuration@0.1.0`
+- Install with [npm](https://www.npmjs.com): `npm install figuration`
 
-Read the [Get Started page](http://figuration.cast.org/get-started/quick-start/) for information on the framework, templates, and examples.
+Read the [Get Started page](http://figuration.org/get-started/quick-start/) for information on the framework, templates, and examples.
 
 
 ### What's Included
@@ -44,7 +42,7 @@ Have a bug or a feature request? Please first read the [issue guidelines](https:
 
 ## Documentation
 
-Figurations's documentation, included in this repo in the root directory, is built with [Jekyll](http://jekyllrb.com) and publicly hosted on GitHub Pages at <http://figuration.cast.org>. The docs may also be run locally.
+Figurations's documentation, included in this repo in the root directory, is built with [Jekyll](http://jekyllrb.com) and publicly hosted on GitHub Pages at <http://figuration.org>. The docs may also be run locally.
 
 
 ### Running documentation locally

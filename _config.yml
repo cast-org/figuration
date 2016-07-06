@@ -14,7 +14,7 @@ destination:      _gh_pages
 host:             0.0.0.0
 port:             9001
 baseurl:          ""
-url:              http://figuration.cast.org
+url:              http://figuration.org
 encoding:         UTF-8
 exclude:          [assets/scss/]
 
@@ -23,13 +23,13 @@ gems:
   - jekyll-sitemap
 
 # Custom vars
-current_version:  0.1.0
+current_version:  1.0.0
 repo:             https://github.com/cast-org/figuration
 
 # Downloads
 download:
-  source:         https://github.com/cast-org/figuration/archive/v0.1.0.zip
-  dist:           https://github.com/cast-org/figuration/releases/download/v0.1.0/figuration-0.1.0-dist.zip
+  source:         https://github.com/cast-org/figuration/archive/v1.0.0.zip
+  dist:           https://github.com/cast-org/figuration/releases/download/v1.0.0/figuration-1.0.0-dist.zip
 
 
 # CDN settings
