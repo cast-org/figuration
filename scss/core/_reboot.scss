@@ -309,7 +309,7 @@ button:focus {
     outline: 5px auto -webkit-focus-ring-color;
 }
 
-input,
+input:not([type="checkbox"]):not([type="radio"]),
 button,
 select,
 textarea {
