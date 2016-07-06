@@ -15,25 +15,20 @@ Looking to quickly add Figuration to your project? Use the CDN links. Using a pa
 
 ## Using the CDN
 
-**Coming soon!**
+CDN services are provided for free by the awesome folks over at [jsDelivr](https://www.jsdelivr.com/).
 
-{% comment %}
 Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets to load our CSS.
 
 {% highlight html %}
 <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
 {% endhighlight %}
 
-Add our JavaScript widgets and jQuery, either in the `<head>`, or near the end of your pages, right before the closing `</body>` tag. Be sure to place jQuery first, as our code depends on them.
+Add our JavaScript widgets and jQuery, either in the `<head>`, or near the end of your pages, right before the closing `</body>` tag. Be sure to place jQuery first, as our code depends on it.
 
 {% highlight html %}
 <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
-<script src="{{ site.cdn.tether }}" integrity="{{ site.cdn.tether_hash }}" crossorigin="anonymous"></script>
 <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
 {% endhighlight %}
-
-And that's it---you're on your way to a CAST Figuration powered site. If you're at all unsure about the general page structure, keep reading for an example page template.
-{% endcomment %}
 
 ## Basic Template
 Be sure to have your pages set up with the latest design and development standards. That means:
@@ -54,11 +49,11 @@ Essentially something like this:
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Figuration CSS -->
-    <link rel="stylesheet" href="/dist/css/figuration.min.css">
+    <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
 
     <!-- jQuery and Figuration JS -->
-    <script src="/assets/js/vendor/jquery.min.js"></script>
-    <script src="/dist/js/figuration.min.js"></script>
+    <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
+    <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
   </head>
   <body>
     <h1>Hello, world!</h1>

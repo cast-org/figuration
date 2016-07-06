@@ -35,5 +35,9 @@ download:
 # CDN settings
 # See https://www.srihash.org for info on how to generate the hashes
 cdn:
-  jquery:         https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js
-  jquery_hash:    "sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY"
+  css:          https://cdn.jsdelivr.net/figuration/1.0.0/css/figuration.min.css
+  css_hash:     "sha384-LSPqXumeRbgiQjP29imJjd3x+bMxzSxJRO+zADie509pe3NAHc+x1k9nXNadYJMx"
+  js:           https://cdn.jsdelivr.net/figuration/1.0.0/js/figuration.min.js
+  js_hash:      "sha384-Vbn3LuyIrqE+qs2iboqYFqZblRzHSX2AYUV6fPlyHKuGVVb+4XTxj0c8ER+E4TgI"
+  jquery:       https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js
+  jquery_hash:  "sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY"
