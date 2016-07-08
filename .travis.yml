@@ -1,0 +1,12 @@
+﻿language: node_js
+git:
+  depth: 10
+node_js:
+  - "4"
+  - "6"
+before_install:
+  - bundle install --deployment --jobs=3
+  - npm install -g grunt-cli
+  - npm install
+matrix:
+  fast_finish: true
