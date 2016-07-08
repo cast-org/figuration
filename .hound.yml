@@ -1,0 +1,17 @@
+﻿fail_on_violations: true
+
+scss:
+  config_file: .scss-lint.yml
+  enabled: true
+  ignore_file: scss/base/_normalize.scss
+
+javascript:
+  enabled: true
+  config_file: .jshintrc
+
+jscs:
+  enabled: true
+  config_file: .jscsrc
+
+ruby:
+  enabled: false
