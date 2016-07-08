@@ -1,6 +1,4 @@
 ﻿language: node_js
-sudo: required
-dist: trusty
 git:
   depth: 10
 node_js:
