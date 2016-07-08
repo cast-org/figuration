@@ -1,6 +1,7 @@
 # [Figuration](http://figuration.org)
 
 [![npm version](https://img.shields.io/npm/v/figuration.svg)](https://www.npmjs.com/package/figuration)
+[![Build Status](https://img.shields.io/travis/cast-org/figuration/master.svg)](https://travis-ci.org/cast-org/figuration)
 [![devDependency Status](https://img.shields.io/david/dev/cast-org/figuration.svg)](https://david-dm.org/cast-org/figuration#info=devDependencies)
 
 CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end framework based on Bootstrap.
