@@ -1,4 +1,4 @@
-﻿sudo: required
+﻿#sudo: required
 dist: trusty
 language: node_js
 git:
@@ -13,7 +13,7 @@ before_install:
   - rvm use 2.2 --fuzzy
   - npm install -g npm@3
 install:
-  #- bundle install --deployment --jobs=3
+  # bundle install --deployment --jobs=3
   - npm install -g grunt-cli
   - npm install
 cache:
