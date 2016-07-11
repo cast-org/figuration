@@ -1,26 +1,39 @@
 ﻿#sudo: required
 dist: trusty
 language: node_js
+
 git:
-  depth: 10
+    depth: 10
+
 node_js:
-  - "4"
-  - "6"
+    - '4'
+    - '6'
+
 before_install:
-  # Remove ./node_modules/.bin from PATH so node-which doesn't replace Unix which and cause RVM to barf. See https://github.com/travis-ci/travis-ci/issues/5092
-  - export PATH=$(python -c 'from sys import argv;from collections import OrderedDict as od;print(":".join(od((p,None) for p in argv[1].split(":") if p.startswith("/")).keys()))' "$PATH")
-  - rvm install 2.2
-  - rvm use 2.2 --fuzzy
-  - npm install npm@3
+    - export PATH=$(python -c 'from sys import argv;from collections import OrderedDictas od;print(":".join(od((p,None) for p in argv[1].split(":") if p.startswith("/")).keys()))'"$PATH")
+    - rvm install 2.2
+    - rvm use 2.2 --fuzzy
+    - npm install npm@3
+
 install:
-  - bundle install --jobs=3
-  - npm install
+    - bundle install --jobs=3
+    - npm install
+
 cache:
-  directories:
-    - node_modules
-    - vendor/bundle
+    directories:
+        - node_modules
+        - vendor/bundle
+
 env:
-  global:
-    - NPM_CONFIG_PROGRESS="false"
+    global:
+        - NPM_CONFIG_PROGRESS="false"
+        - SAUCE_USERNAME="figuration"
+        - secure: XhCrmMZJjzdODHryV9QFFNDDnqoncBpDtOA0WL0frQtpKMX2KLkKkgBrWcR/VKvZohWviQB7nZJ/NiKTgGP/8IWGn2cKAUiLAYOm7sRxxkngZniEnHBqYbcYlVU1eiur7cdOc/0Pq22oHaxilEAA0bA7C2ir9G+1rB6bmGPHoFTtNUqhBqMWCvjuMnniZoRXXIJZXlgzIqvEpBiGVcgawChBF2F+jNtg8d2Y4I50hGJc9nxicKMx8/SqZjZN+0EJ1nW6R90sg5ObdfN+ZZ9ccFY7PDxusZYOxsiAvEXpqRVcNRpsbDvTv2prNgYa41rGnnqf3fzovxQzpKBrlyVM7CMx/Vc8Hn4UkGjP0qlI89oEOGVfqt1vfYwMQ9HtdgxrkO1TqBrxoJKuZfPw+qw/+khuekeYne1U56j0gs5ghjcpSYQ1GBrbI0e5x16QUEzUSJ0xa8d9eYUXM9et4KqIh0W/w8+8HCzNe7p83g5J9eHykyqWe83Y06ScNmIz7gStN6l56S0FWc14wQIgWhsv0uSUUGTt3JQEK14K+r8RInHYa8g2ic7t5mWSRSd65Q/fufHShIrK1EmzfOUHT6CwnS7MdqsPAFe8RHrKz+Mdy5IC53X0Kd9itZqjUMi7LuW/qo3Z+evvs3h6tvd/qcZXvQ/MVnxlS4gqKVc4eUZg9CE=
+    matrix:
+        - TEST_SAUCE="true"
+
 matrix:
-  fast_finish: true
+    fast_finish: true
+    exclude:
+        - node_js: "4"
+          env: TEST_SAUCE="false"

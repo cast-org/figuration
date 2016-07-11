@@ -14,8 +14,11 @@ module.exports = function(grunt) {
         return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&');
     };
 
-    // var fs = require('fs');
-    // var path = require('path');
+    var saucekey = null;
+    if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined') {
+        saucekey = process.env.SAUCE_ACCESS_KEY;
+    }
+
     var autoprefixerSettings = require('./grunt/autoprefixer-settings.js');
     var autoprefixer = require('autoprefixer')(autoprefixerSettings);
 
@@ -300,6 +303,19 @@ module.exports = function(grunt) {
                 files: 'docs/assets/scss/**/*.scss',
                 tasks: ['dist-css', 'docs']
             }
+        },
+
+        'saucelabs-qunit': {
+            all: {
+                options: {
+                    build: process.env.TRAVIS_JOB_ID,
+                    concurrency: 10,
+                    maxRetries: 3,
+                    maxPollRetries: 4,
+                    urls: ['http://127.0.0.1:3000/test/js/index.html?hidepassed'],
+                    browsers: grunt.file.readYAML('grunt/sauce_browsers.yml')
+                }
+            }
         }
     });
 
@@ -313,10 +329,17 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['clean:dist', 'test']);
 
     // Test
-    // grunt.registerTask('test', ['dist-css', 'dist-js', 'csslint:dist', 'test-js', 'docs', 'validate-html']);
     grunt.registerTask('test', ['dist-css', 'dist-js', 'test-css', 'test-js']);
     grunt.registerTask('test-css', ['scsslint:core']);
-    grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
+
+    // Test - JS subtasks
+    var jsTestTasks = ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt'];
+    if (saucekey !== null && process.env.TEST_SAUCE === 'true') {
+        jsTestTasks.push('saucelabs-qunit');
+    } else {
+        jsTestTasks.push('qunit');
+    }
+    grunt.registerTask('test-js', jsTestTasks);
 
     // CSS distribution
     grunt.registerTask('dist-css', ['sass:core', 'postcss:core', 'cssmin:core']);
