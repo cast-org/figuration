@@ -22,10 +22,6 @@ module.exports = function(grunt) {
     var autoprefixerSettings = require('./grunt/autoprefixer-settings.js');
     var autoprefixer = require('autoprefixer')(autoprefixerSettings);
 
-    var isUndefOrNonZero = function(val) {
-        return val === undefined || val !== '0';
-    };
-
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         banner: '/*!\n' +
@@ -347,7 +343,7 @@ module.exports = function(grunt) {
 
     // Test - JS subtasks
     var jsTestTasks = ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt'];
-    if (saucekey !== null && !isUndefOrNonZero(process.env.TEST_SAUCE)) {
+    if (saucekey !== null && isUndefOrNonZero === 'true') {
         jsTestTasks.push('connect');
         jsTestTasks.push('saucelabs-qunit');
     } else {
