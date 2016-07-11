@@ -22,7 +22,7 @@ module.exports = function(grunt) {
     var autoprefixerSettings = require('./grunt/autoprefixer-settings.js');
     var autoprefixer = require('autoprefixer')(autoprefixerSettings);
 
-    var isUndefOrNonZero = function (val) {
+    var isUndefOrNonZero = function(val) {
         return val === undefined || val !== '0';
     };
 
