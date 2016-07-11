@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.4.0)
     colorator (0.1)
     ffi (1.9.10-x86-mingw32)
     jekyll (3.1.6)
@@ -12,11 +13,12 @@ GEM
       mercenary (~> 0.3.3)
       rouge (~> 1.7)
       safe_yaml (~> 1.0)
-    jekyll-redirect-from (0.10.0)
+    jekyll-redirect-from (0.11.0)
       jekyll (>= 2.0)
     jekyll-sass-converter (1.4.0)
       sass (~> 3.4)
-    jekyll-sitemap (0.10.0)
+    jekyll-sitemap (0.11.0)
+      addressable (~> 2.4.0)
     jekyll-watch (1.4.0)
       listen (~> 3.0, < 3.1)
     kramdown (1.11.1)
@@ -41,8 +43,8 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll (~> 3.1.2)
-  jekyll-redirect-from (~> 0.10.0)
-  jekyll-sitemap (~> 0.10.0)
+  jekyll-redirect-from (~> 0.11.0)
+  jekyll-sitemap (~> 0.11.0)
   scss_lint (~> 0.49.0)
 
 BUNDLED WITH
