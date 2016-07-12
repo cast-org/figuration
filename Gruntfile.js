@@ -318,7 +318,6 @@ module.exports = function(grunt) {
             all: {
                 options: {
                     build: process.env.TRAVIS_JOB_ID,
-                    // concurrency: 10,
                     throttled: 4,
                     maxRetries: 3,
                     maxPollRetries: 4,

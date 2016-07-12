@@ -5,6 +5,14 @@ language: node_js
 git:
     depth: 10
 
+# For now, only build 'push' items on master branch
+# http://stackoverflow.com/questions/31882306/
+# Most contributions should come through pull requests
+# Helps limit overloading on Sauce tests
+branches:
+    only:
+        - master
+
 node_js:
     - "4"
     - "6"
