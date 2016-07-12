@@ -30,12 +30,12 @@ env:
         - NPM_CONFIG_PROGRESS="false"
     matrix:
         - env: TEST_SAUCE="false"
+        - env: TEST_SAUCE="true"
 
 matrix:
     fast_finish: true
     exclude:
+        - node_js: "4"
+          env: TEST_SAUCE="true"
         - node_js: "6"
           env: TEST_SAUCE="false"
-    include:
-        - node_js: "6"
-          env: TEST_SAUCE="true"
