@@ -343,7 +343,7 @@ module.exports = function(grunt) {
 
     // Test - JS subtasks
     var jsTestTasks = ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt'];
-    if (saucekey !== null && isUndefOrNonZero === 'true') {
+    if (saucekey !== null && process.env.TEST_SAUCE === 'true') {
         jsTestTasks.push('connect');
         jsTestTasks.push('saucelabs-qunit');
     } else {
