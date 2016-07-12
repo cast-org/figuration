@@ -29,8 +29,8 @@ env:
     global:
         - NPM_CONFIG_PROGRESS="false"
     matrix:
-        - env: TEST_SAUCE="false"
-        - env: TEST_SAUCE="true"
+        - TEST_SAUCE="false"
+        - TEST_SAUCE="true"
 
 matrix:
     fast_finish: true
