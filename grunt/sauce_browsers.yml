@@ -78,7 +78,6 @@
     browserName: "android",
     deviceName: "Android Emulator",
     version: "latest",
-    deviceType: "phone",
-    deviceOrientation, "landscape"
+    deviceType: "tablet"
   }
 ]
