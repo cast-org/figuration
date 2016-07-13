@@ -229,7 +229,6 @@
         this.dynamicTip = false;
         this.closeAdded = false;
         this.dragAdded = false;
-        this.docAdded = false;
         this.$arrow = false;
         this.$targetElm = null;
     };
