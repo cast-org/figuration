@@ -70,14 +70,14 @@
     browserName: "firefox",
     platform: "Linux",
     version: "latest"
-  },
+  }
 
   # Android
-  {
-    platform: "Linux",
-    browserName: "android",
-    deviceName: "Android Emulator",
-    version: "latest",
-    deviceType: "tablet"
-  }
+  #{
+  #  platform: "Linux",
+  #  browserName: "android",
+  #  deviceName: "Android Emulator",
+  #  version: "latest",
+  #  deviceType: "phone"
+  #}
 ]
