@@ -1074,6 +1074,7 @@ $(function() {
         var done = assert.async();
 
         var styles = '<style>'
+            + '#qunit-fixture { position: relative; }'
             + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
             + '.tooltip { position: absolute; display: block; font-size: 12px; line-height: 1.4; }'
             + '.tooltip .tooltip-inner { max-width: 200px; padding: 3px 8px; font-family: Helvetica; text-align: center; }'

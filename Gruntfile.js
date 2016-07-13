@@ -318,7 +318,7 @@ module.exports = function(grunt) {
             all: {
                 options: {
                     build: process.env.TRAVIS_JOB_ID,
-                    throttled: 2,
+                    throttled: 3,
                     maxRetries: 3,
                     maxPollRetries: 4,
                     urls: ['http://127.0.0.1:3000/test/js/index.html?hidepassed'],
