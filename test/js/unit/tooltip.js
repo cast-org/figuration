@@ -1070,6 +1070,12 @@ $(function() {
     });
 
     QUnit.test('should correctly determine auto placement based on container rather than parent', function(assert) {
+        if ($(window).width() < 350) {
+            // Skip really narrow browsers since there is no good option in this case.
+            // Tooltip will almost always be in the wrong place.
+            assert.expect(0);
+            return;
+        }
         assert.expect(2);
         var done = assert.async();
 
