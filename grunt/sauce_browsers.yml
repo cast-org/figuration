@@ -13,7 +13,7 @@
   {
     browserName: "firefox",
     platform: "OS X 10.11",
-    version: "latest-1"
+    version: "latest"
   },
 
   # Mac Opera not currently supported by Sauce Labs
@@ -47,7 +47,7 @@
   {
     browserName: "firefox",
     platform: "Windows 10",
-    version: "latest-1"
+    version: "latest"
   },
 
   # Win Opera 15+ not currently supported by Sauce Labs
