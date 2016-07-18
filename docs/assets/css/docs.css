@@ -1141,7 +1141,7 @@ h4 > code {
 }
 
 .video-wrapper {
-  width: 600px;
+  /* width: 600px; */
 }
 
 .video-transcript {
