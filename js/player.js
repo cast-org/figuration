@@ -706,7 +706,7 @@
 
             } else {
                 // Build menu
-                var wrapper = '<span class="player-caption-wrapper dropup dropleft"></span>';
+                var wrapper = '<span class="player-caption-wrapper"></span>';
                 var $menu = $('<ul class="player-caption-menu dropdown-menu"></ul>');
                 $captionElm.wrap(wrapper);
 
@@ -825,7 +825,7 @@
                 });
             } else {
                 // Build menu
-                var wrapper = '<span class="player-script-wrapper dropup dropleft"></span>';
+                var wrapper = '<span class="player-script-wrapper"></span>';
                 var $menu = $('<ul class="player-script-menu dropdown-menu"></ul>');
                 $tsElm.wrap(wrapper);
 
@@ -1291,7 +1291,7 @@
                 if ($control.is('a, button')) {
                     $control.trigger('focus');
                 } else {
-                    $control.find('a:visible, button:visible').get(0).trigger('focus');
+                    $control.find('a:visible, button:visible').eq(0).trigger('focus');
                 }
             }, 150);
         },
