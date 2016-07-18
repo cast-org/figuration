@@ -15,7 +15,7 @@ Due to the widespread use of tables across third-party widgets like calendars an
 
 ## Examples
 
-Using the most basic table markup, here's how `.table`-based tables look in CFW.
+Using the most basic table markup, here's how `.table`-based tables look in Figuration.
 
 {% example html %}
 <table class="table">
@@ -658,7 +658,7 @@ Create responsive tables by wrapping any `.table` in `.table-responsive` to make
 {% callout warning %}
 #### Firefox and Fieldsets
 
-Firefox has some awkward fieldset styling involving `width` that interferes with the responsive table. This cannot be overridden without a Firefox-specific hack that we **don't** provide in CFW:
+Firefox has some awkward fieldset styling involving `width` that interferes with the responsive table. This cannot be overridden without a Firefox-specific hack that we **don't** provide in Figuration:
 
 {% highlight css %}
 @-moz-document url-prefix() {

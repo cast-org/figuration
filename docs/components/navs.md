@@ -18,7 +18,7 @@ If you are using navs to provide a navigation bar, be sure to add a `role="navig
 
 ## Base Nav
 
-Roll your own navigation style by extending the base `.nav` component. All CFW's nav components are built on top of this by specifying additional styles. Includes styles for the disabled state, but **not the active state**.
+Roll your own navigation style by extending the base `.nav` component. All Figurations's nav components are built on top of this by specifying additional styles. Includes styles for the disabled state, but **not the active state**.
 
 {% example html %}
 <ul class="nav">
