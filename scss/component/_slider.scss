@@ -8,15 +8,15 @@
     //width: $slider-horizontal-width;
     width: 100%;
     height: $slider-horizontal-height;
-    margin: 0 $slider-horizontal-margin;
 
     .slider-track {
         top: 50%;
+        right: 0;
         left: 0;
-        width: 100%;
         height: $slider-horizontal-track-height;
         margin-top: -$slider-horizontal-track-margin;
-
+        margin-right: $slider-horizontal-margin;
+        margin-left: $slider-horizontal-margin;
     }
 }
 .slider.slider-horizontal .slider-selection {
@@ -32,13 +32,14 @@
 .slider.slider-vertical {
     width: $slider-vertical-width;
     min-height: $slider-vertical-height;
-    margin: $slider-vertical-margin 0;
 }
 .slider.slider-vertical .slider-track {
     top: 0;
+    bottom: 0;
     left: 50%;
     width: $slider-vertical-track-width;
-    height: 100%;
+    margin-top: $slider-vertical-margin;
+    margin-bottom: $slider-vertical-margin;
     margin-left: -$slider-vertical-track-margin;
 }
 .slider.slider-vertical .slider-selection {
