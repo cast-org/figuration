@@ -55,9 +55,8 @@
   {
     platformName: "iOS",
     browserName: "Safari",
-    deviceName: "iPhone Simulator",
-    platformVersion = "9.3",
-    appiumVersion = "latest"
+    deviceName: "iPhone 6 Simulator",
+    platformVersion = "9.3"
   },
 
   # iOS Chrome not currently supported by Sauce Labs
