@@ -56,7 +56,7 @@
     platformName: "iOS",
     browserName: "Safari",
     deviceName: "iPhone Simulator",
-    version: "latest"
+    platformVersion: "latest"
   },
 
   # iOS Chrome not currently supported by Sauce Labs
