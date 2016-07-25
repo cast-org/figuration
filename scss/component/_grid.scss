@@ -28,6 +28,13 @@
     .row {
         @include make-row();
     }
+
+    @if $enable-flex-opt {
+        .row-flex {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
 }
 
 // Columns
@@ -39,15 +46,27 @@
     // Additional per breakpoint placholders - found in the `make-grid-columns()` mixin
     %col {
         position: relative;
-        min-height: 1px;
+        min-height: 1px; // Prevent collapsing
         padding-right: ($grid-gutter-width / 2);
         padding-left:  ($grid-gutter-width / 2);
+    }
+
+    %col-flex-opt {
+        flex-basis: 100%;
+        flex-grow: 1;
+        max-width: 100%;
     }
 
     @each $breakpoint in map-keys($grid-breakpoints) {
         @for $i from 1 through $grid-columns {
             .col-#{$breakpoint}-#{$i} {
                 @extend %col;
+            }
+
+            @if $enable-flex-opt {
+                .row-flex .col-#{$breakpoint}-#{$i} {
+                    @extend %col-flex-opt;
+                }
             }
         }
     }
