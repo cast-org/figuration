@@ -1,6 +1,9 @@
 [
   # Docs: https://wiki.saucelabs.com/display/DOCS/Platform+Configurator
 
+  # OS X
+  # =====
+  # Mac Opera not currently supported by Sauce Labs
   {
     browserName: "safari",
     platform: "OS X 10.11"
@@ -16,8 +19,9 @@
     version: "latest"
   },
 
-  # Mac Opera not currently supported by Sauce Labs
-
+  # Windows
+  # =====
+  # Win Opera 15+ not currently supported by Sauce Labs
   {
     browserName: "MicrosoftEdge",
     platform: "Windows 10",
@@ -38,7 +42,6 @@
     version: "9",
     platform: "Windows 7"
   },
-
   {
     browserName: "chrome",
     platform: "Windows 10",
@@ -50,8 +53,9 @@
     version: "latest"
   },
 
-  # Win Opera 15+ not currently supported by Sauce Labs
-
+  # iOS
+  # =====
+  # iOS Chrome not currently supported by Sauce Labs
   {
     platformName: "iOS",
     browserName: "Safari",
@@ -59,9 +63,8 @@
     platformVersion = "9.3"
   },
 
-  # iOS Chrome not currently supported by Sauce Labs
-
   # Linux (unofficial)
+  # =====
   {
     browserName: "chrome",
     platform: "Linux",
@@ -74,6 +77,7 @@
   },
 
   # Android
+  # =====
   {
     platform: "Linux",
     browserName: "android",
