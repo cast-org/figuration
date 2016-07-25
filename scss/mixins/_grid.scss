@@ -7,7 +7,9 @@
     margin-right: auto;
     padding-left:  ($gutter / 2);
     padding-right: ($gutter / 2);
-    @include clearfix();
+    @if not $enable-flex-full {
+        @include clearfix();
+    }
 }
 
 
