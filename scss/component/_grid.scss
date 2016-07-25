@@ -35,9 +35,9 @@
 // Common styles for grid columns
 
 @if $enable-grid-classes {
-    // Hack in a base class to extend upon, since it can't be done within the mixins
-    // Additional per breakpoint base classes punched in also - find them in the `make-grid-columns()` mixin
-    .col {
+    // Use a placeholder selector to extend upon
+    // Additional per breakpoint placholders - found in the `make-grid-columns()` mixin
+    %col {
         position: relative;
         min-height: 1px;
         padding-right: ($grid-gutter-width / 2);
@@ -47,7 +47,7 @@
     @each $breakpoint in map-keys($grid-breakpoints) {
         @for $i from 1 through $grid-columns {
             .col-#{$breakpoint}-#{$i} {
-                @extend .col;
+                @extend %col;
             }
         }
     }
