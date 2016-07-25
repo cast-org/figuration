@@ -51,21 +51,23 @@
         padding-left:  ($grid-gutter-width / 2);
     }
 
-    %col-flex-opt {
-        flex-basis: 100%;
-        flex-grow: 1;
-        max-width: 100%;
+    %col-flex {
+        width: 100%;
     }
 
     @each $breakpoint in map-keys($grid-breakpoints) {
         @for $i from 1 through $grid-columns {
             .col-#{$breakpoint}-#{$i} {
                 @extend %col;
+
+                @if $enable-flex-full {
+                    @extend %col-flex;
+                }
             }
 
             @if $enable-flex-opt {
                 .row-flex .col-#{$breakpoint}-#{$i} {
-                    @extend %col-flex-opt;
+                    @extend %col-flex;
                 }
             }
         }
