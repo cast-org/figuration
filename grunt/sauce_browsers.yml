@@ -61,6 +61,7 @@
     browserName: "Safari",
     deviceName: "iPhone Simulator",
     platformVersion: "9.3"
+  },
 
   # Linux (unofficial)
   # =====
