@@ -43,6 +43,10 @@ You can find and customize these variables for key global options in our `_setti
 | `$enable-grid-classes`      | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g. `.col-md-1` etc.).               |
 | `$enable-print-styles`      | `true` (default) or `false`        | Enables predefined style overrides used when printing.                                           |
 | `$enable-palette`           | `true` (default) or `false`        | Enables the generation of CSS classes for the palette color themes (e.g. `.text-blue-500` etc.). |
+| `$enable-flex-opt`          | `true` (default) or `false`        | Enables the opt-in flexbox model using classes, such as `.row-flex`  .                           |
+| `$enable-flex-full`         | `true` or `false` (default)        | Enables the full flexbox model where all supported components will use `display: flex;`.         |
+
+If both `$enable-flex-opt` and `$enable-flex-full` are set to `true` the `$enable-flex-opt` option will be disabled.
 
 ## Component Sizes
 
