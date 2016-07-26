@@ -23,7 +23,6 @@
 }
 
 @mixin make-row($gutter: $grid-gutter-width) {
-
     margin-left:  ($gutter / -2);
     margin-right: ($gutter / -2);
 
@@ -85,7 +84,7 @@
         $breakpoint-counter: ($breakpoint-counter + 1);
         @include media-breakpoint-up($breakpoint, $breakpoints) {
 
-            // Use a placeholder selector to extend upon
+            // Use a placeholders selector to extend upon
             %col-#{$breakpoint} {
                 float: left;
             }
@@ -122,6 +121,27 @@
                     .offset-#{$breakpoint}-#{$i} {
                         @include make-col-modifier(offset, $i, $columns);
                     }
+                }
+            }
+
+            // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+            %col-flex-basic-#{$breakpoint} {
+                position: relative;
+                flex-basis: 0;
+                flex-grow: 1;
+                max-width: 100%;
+                min-height: 1px;
+                padding-right: ($grid-gutter-width / 2);
+                padding-left:  ($grid-gutter-width / 2);
+            }
+            @if $enable-flex-full {
+                .col-#{$breakpoint} {
+                    @extend %col-flex-basic-#{$breakpoint};
+                }
+            }
+            @if $enable-flex-opt {
+                .row-flex .col-#{$breakpoint} {
+                    @extend %col-flex-basic-#{$breakpoint};
                 }
             }
         }

@@ -71,6 +71,21 @@
                 }
             }
         }
+
+        // Default for basic `.col-{bp}` classes for equal-width flexbox columns
+        @if $enable-flex-full {
+            .col-#{$breakpoint} {
+                @extend %col;
+                @extend %col-flex;
+            }
+        }
+
+        @if $enable-flex-opt {
+            .row-flex .col-#{$breakpoint} {
+                @extend %col;
+                @extend %col-flex;
+            }
+        }
     }
 
     @include make-grid-columns();
