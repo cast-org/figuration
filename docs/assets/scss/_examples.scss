@@ -52,6 +52,17 @@
         }
     }
 }
+.cf-example-row-flex {
+    .row {
+        border: $gridline-border-width solid rgba(34,68,102,.5);
+    }
+}
+.cf-example-row-flex-v {
+    .row {
+        height: 7rem;
+        border: $gridline-border-width solid rgba(34,68,102,.5);
+    }
+}
 
 // Form
 .cf-example > .form-control + .form-control {

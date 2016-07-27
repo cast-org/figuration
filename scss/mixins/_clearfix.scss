@@ -1,8 +1,18 @@
+// scss-lint:disable ImportantRule
+
 // http://cssmojo.com/the-very-latest-clearfix-reloaded/
 @mixin clearfix() {
     &::after {
         display: block;
         clear: both;
         content: "";
+    }
+}
+
+@mixin clearfix-disable() {
+    &::after {
+        // display: initial;
+        // clear: initial;
+        content: normal !important;
     }
 }

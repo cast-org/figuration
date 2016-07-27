@@ -7,7 +7,9 @@
     margin-right: auto;
     padding-left:  ($gutter / 2);
     padding-right: ($gutter / 2);
-    @include clearfix();
+    @if not $enable-flex-full {
+        @include clearfix();
+    }
 }
 
 
@@ -21,13 +23,32 @@
 }
 
 @mixin make-row($gutter: $grid-gutter-width) {
-    @include clearfix();
     margin-left:  ($gutter / -2);
     margin-right: ($gutter / -2);
+
+    @if $enable-flex-opt {
+        display: block;
+        flex-wrap: initial;
+    }
+
+    @if $enable-flex-full {
+        display: flex;
+        flex-wrap: wrap;
+    } @else {
+        @include clearfix();
+    }
 }
 
-@mixin make-col($size, $columns: $grid-columns) {
-    width: percentage($size / $columns);
+@mixin make-col($size, $columns: $grid-columns, $flex-mode: false) {
+    @if $flex-mode {
+        flex: 0 0 percentage($size / $columns);
+        // Add a `max-width` to ensure content within each column does not blow out
+        // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+        // do not appear to require this.
+        max-width: percentage($size / $columns);
+    } @else {
+        width: percentage($size / $columns);
+    }
 }
 
 @mixin make-col-offset($size, $columns: $grid-columns) {
@@ -63,15 +84,26 @@
         $breakpoint-counter: ($breakpoint-counter + 1);
         @include media-breakpoint-up($breakpoint, $breakpoints) {
 
-            // Hack in an additional base class per breakpoint to extend upon
-            .col-#{$breakpoint} {
+            // Use a placeholders selector to extend upon
+            %col-#{$breakpoint} {
                 float: left;
             }
 
             @for $i from 1 through $columns {
                 .col-#{$breakpoint}-#{$i} {
-                    @include make-col($i, $columns);
-                    @extend .col-#{$breakpoint};
+                    @include make-col($i, $columns, $enable-flex-full);
+
+                    // No floating if in full flex mode
+                    @if not $enable-flex-full {
+                        @extend %col-#{$breakpoint};
+                    }
+
+                    // Opt-in flex mode
+                    @if $enable-flex-opt {
+                        .row-flex & {
+                            @include make-col($i, $columns, $enable-flex-opt);
+                        }
+                    }
                 }
             }
 
@@ -89,6 +121,27 @@
                     .offset-#{$breakpoint}-#{$i} {
                         @include make-col-modifier(offset, $i, $columns);
                     }
+                }
+            }
+
+            // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+            %col-flex-basic-#{$breakpoint} {
+                position: relative;
+                flex-basis: 0;
+                flex-grow: 1;
+                max-width: 100%;
+                min-height: 1px;
+                padding-right: ($grid-gutter-width / 2);
+                padding-left:  ($grid-gutter-width / 2);
+            }
+            @if $enable-flex-full {
+                .col-#{$breakpoint} {
+                    @extend %col-flex-basic-#{$breakpoint};
+                }
+            }
+            @if $enable-flex-opt {
+                .row-flex .col-#{$breakpoint} {
+                    @extend %col-flex-basic-#{$breakpoint};
                 }
             }
         }

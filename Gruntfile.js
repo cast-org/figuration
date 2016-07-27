@@ -21,6 +21,7 @@ module.exports = function(grunt) {
 
     var autoprefixerSettings = require('./grunt/autoprefixer-settings.js');
     var autoprefixer = require('autoprefixer')(autoprefixerSettings);
+    var flexbugs = require('postcss-flexbugs-fixes');
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -211,13 +212,13 @@ module.exports = function(grunt) {
             core: {
                 options: {
                     map: true,
-                    processors: [autoprefixer]
+                    processors: [autoprefixer, flexbugs]
                 },
                 src: ['dist/css/*.css', '!dist/css/*.min.css']
             },
             docs: {
                 options: {
-                    processors: [autoprefixer]
+                    processors: [autoprefixer, flexbugs]
                 },
                 src: 'docs/assets/css/docs.css'
             }

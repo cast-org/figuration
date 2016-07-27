@@ -1,0 +1,38 @@
+﻿// Flex variation
+// Custom styles for additional flex alignment options.
+
+@if $enable-flex-full or $enable-flex-opt {
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        // Flex column reordering
+        @include media-breakpoint-up($breakpoint) {
+            .flex-#{$breakpoint}-first { order: -1; }
+            .flex-#{$breakpoint}-last { order: 1; }
+            .flex-#{$breakpoint}-unordered { order: 0; }
+        }
+
+        // Horizontal alignment for child items
+        @include media-breakpoint-up($breakpoint) {
+            .flex-#{$breakpoint}-left { justify-content: flex-start; }
+            .flex-#{$breakpoint}-center { justify-content: center; }
+            .flex-#{$breakpoint}-right { justify-content: flex-end; }
+            .flex-#{$breakpoint}-around { justify-content: space-around; }
+            .flex-#{$breakpoint}-between { justify-content: space-between; }
+        }
+
+        // Vertical alignment for child items
+        @include media-breakpoint-up($breakpoint) {
+            .flex-#{$breakpoint}-top { align-items: flex-start; }
+            .flex-#{$breakpoint}-middle { align-items: center; }
+            .flex-#{$breakpoint}-bottom { align-items: flex-end; }
+            .flex-#{$breakpoint}-stretch { align-items: stretch; }
+        }
+
+         // Alignment per item
+        @include media-breakpoint-up($breakpoint) {
+            .flex-self-#{$breakpoint}-top { align-self: flex-start; }
+            .flex-self-#{$breakpoint}-middle { align-self: center; }
+            .flex-self-#{$breakpoint}-bottom { align-self: flex-end; }
+            .flex-self-#{$breakpoint}-stretch { align-self: stretch; }
+        }
+    }
+}
