@@ -37,13 +37,13 @@ If you're using Figuration's compiled CSS, this the example you'll want to start
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
-      One of three columns
+      1 of 3
     </div>
     <div class="col-sm-4">
-      One of three columns
+      1 of 3
     </div>
     <div class="col-sm-4">
-      One of three columns
+      1 of 3
     </div>
   </div>
 </div>
@@ -265,7 +265,7 @@ In addition to column clearing at responsive breakpoints, you may need to **rese
 </div>
 
 <div class="row">
-  <div class="col-sm-6 col-md-5 col-lg-6">.col.col-sm-6.col-md-5.col-lg-6</div>
+  <div class="col-sm-6 col-md-5 col-lg-6">.col-sm-6 .col-md-5 .col-lg-6</div>
   <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
 </div>
 {% endexample %}
@@ -457,3 +457,71 @@ See it in action in <a href="http://jsbin.com/ruxona/edit">this rendered example
   </div>
 </div>
 {% endhighlight %}
+
+
+## Flexbox
+
+Looking for a more modern grid system?  Use the opt-in flexbox mode, or [enable full flexbox support in Figuration](/layout/flexbox#full-flexbox-mode), to take full advantage of CSS's Flexible Box module for even more control over your site's layout, alignment, and distribution of content.
+
+### Opt-in vs Full Mode
+
+The **opt-in mode** for flexbox support is available by default, and is easily triggered by adding `.row-flex` to any `.row` containers.  Any nested containers using just the `.row` class resets to the standard `float` grid layout.
+
+**Full mode** needs to be enabled in the Sass and the CSS needs to be recompiled.  In this mode, you do not need to use the `.row-flex` class, and all grid items will use `display: flex;` for layout.
+
+### What is Available
+
+- Nesting, offsets, pushes, and pulls are all supported in the flexbox grid system.
+- Flexbox grid columns without a set width will automatically layout with equal widths. For example, four columns will each automatically be 25% wide.
+- Flexbox grid columns have significantly more alignment options available, including vertical alignment.
+
+### Auto-Layout Columns
+
+When flexbox support is used/enabled, you can utilize breakpoint-specific column classes for equal-width columns. Add any number of `.col-{breakpoint}`s for each breakpoint you need. For example, here's are two grid layouts that apply to every device and viewport possible.
+
+<div class="cf-example-row">
+{% example html %}
+<div class="row row-flex">
+    <div class="col-xs">
+        1 of 2
+    </div>
+    <div class="col-xs">
+        1 of 2
+    </div>
+</div>
+
+<div class="row row-flex">
+    <div class="col-xs">
+        1 of 3
+    </div>
+    <div class="col-xs">
+        1 of 3
+    </div>
+    <div class="col-xs">
+        1 of 3
+    </div>
+</div>
+{% endexample %}
+</div>
+
+Auto-layout for flexbox grid columns also means you can set the width of one column and the others will automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths.
+
+<div class="cf-example-row">
+{% example html %}
+<div class="row row-flex">
+    <div class="col-xs">
+        1 of 3
+    </div>
+    <div class="col-xs-6">
+        2 of 3 (wider)
+    </div>
+    <div class="col-xs">
+        3 of 3
+    </div>
+</div>
+{% endexample %}
+</div>
+
+### Alignment
+
+If you wish to have better control over your flexbox grid alignment, there are a handful of utility classes that might be helpful.  Information and examples can be found in the Flexbox Alignment section of the [Utility Classes page]({{ site.baseurl }}/components/utilities/#flexbox-alignment).

@@ -33,6 +33,9 @@
         .row-flex {
             display: flex;
             flex-wrap: wrap;
+
+            // Disable clearfix or strange things happen with flex alignments
+            @include clearfix-disable();
         }
     }
 }

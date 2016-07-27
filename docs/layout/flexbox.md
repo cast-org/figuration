@@ -16,7 +16,8 @@ Flexbox support is coming to Figuration.  The goal is to have both an opt-in sys
 
 Flexbox support is available for a number of Figurations's components:
 
-- [Grid layout]({{ site.baseurl }}/layout/grid/), which switches from `float`s to `display: flex;`.
+- [Grid layout]({{ site.baseurl }}/layout/grid/#flexbox), which switches from `float`s to `display: flex;`.
+- [Utility classes]({{ site.baseurl }}/components/utilities/#flexbox-alignment), for alignment options for flexbox enabled components.
 - More coming!
 
 Vendor prefixes are provided in our compiled CSS with [Autoprefixer](https://github.com/postcss/autoprefixer) via Grunt. Some bugs in IE10-11's Flexbox implementation are worked around via [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes).
