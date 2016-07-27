@@ -60,7 +60,9 @@
     platformName: "iOS",
     browserName: "Safari",
     deviceName: "iPhone Simulator",
-    platformVersion: "9.3"
+    platformVersion: "latest",
+    platform: "iOS",
+    version: "latest"
   },
 
   # Linux (unofficial)
