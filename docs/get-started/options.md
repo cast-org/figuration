@@ -40,7 +40,7 @@ You can find and customize these variables for key global options in our `_setti
 | `$enable-rounded`           | `true` (default) or `false`        | Enables predefined `border-radius` styles on various components.                                 |
 | `$enable-shadows`           | `true` or `false` (default)        | Enables predefined `box-shadow` styles on various components.                                    |
 | `$enable-transitions`       | `true` (default) or `false`        | Enables predefined `transition`s on various components.                                          |
-| `$enable-grid-classes`      | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g. `.col-md-1` etc.).               |
+| `$enable-grid-classes`      | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g. `container`, `row', `.col-md-1`, etc.). |
 | `$enable-print-styles`      | `true` (default) or `false`        | Enables predefined style overrides used when printing.                                           |
 | `$enable-palette`           | `true` (default) or `false`        | Enables the generation of CSS classes for the palette color themes (e.g. `.text-blue-500` etc.). |
 | `$enable-flex-opt`          | `true` (default) or `false`        | Enables the opt-in flexbox model using classes, such as `.row-flex`  .                           |
