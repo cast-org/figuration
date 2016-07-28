@@ -492,7 +492,7 @@ Need a set of equal width and height cards that aren't attached to one another? 
 
 Only applies to small devices and above.
 
-If you wish to have a card deck that matches the grid layout, you will need to use the `.card-deck-wrapper` for both the `float` and `flexbox` styles.  Note that unless you are using the full flexbox mode, there will be a horizontal scroll is used within a full body-width `.container-fluid` element.  This can be mitigated by using `overflow: hidden;` style on a wrapping container.
+If you wish to have a card deck that matches the grid layout, you will need to use the `.card-deck-wrapper` for both the `table` and `flexbox` styles.  Note that unless you are using the full flexbox mode, there will be a horizontal scroll is used within a full body-width `.container-fluid` element.  This can be mitigated by using `overflow: hidden;` style on a wrapping container.
 
 {% example html %}
 <div class="card-deck-wrapper">
