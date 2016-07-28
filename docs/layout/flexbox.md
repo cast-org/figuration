@@ -14,9 +14,11 @@ Flexbox support is coming to Figuration.  The goal is to have both an opt-in sys
 
 ## What's Included
 
-Flexbox support is available for a number of Figurations's components:
+Flexbox support is available for a number of Figuration's components:
 
-- [Grid layout]({{ site.baseurl }}/layout/grid/#flexbox), which switches from `float`s to `display: flex;`.
+- [Grid Layout]({{ site.baseurl }}/layout/grid/#flexbox), which switches from `float`s to `display: flex;`.
+- [Card Decks]({{ site.baseurl }}/components/cards/#decks), which switches from `display: table;` to `display: flex;`.
+- [Card Groups]({{ site.baseurl }}/components/cards/#groups), which switches from `display: table;` to `display: flex;`.
 - [Utility classes]({{ site.baseurl }}/components/utilities/#flexbox-alignment), for alignment options for flexbox enabled components.
 - More coming!
 

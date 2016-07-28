@@ -219,15 +219,25 @@
 // Card groups
 @include media-breakpoint-up(sm) {
     .card-group {
-        display: table;
-        width: 100%;
-        margin-bottom: $card-spacer-y;
-        table-layout: fixed;
+        @if $enable-flex-full {
+            display: flex;
+            flex-flow: row wrap;
+        } @else {
+            display: table;
+            width: 100%;
+            margin-bottom: $card-spacer-y;
+            table-layout: fixed;
+        }
 
         .card {
-            display: table-cell;
             margin-bottom: 0;
-            vertical-align: top;
+
+            @if $enable-flex-full {
+                flex: 1 0 0;
+            } @else {
+                display: table-cell;
+                vertical-align: top;
+            }
 
             + .card {
                 margin-left: 0;
@@ -264,6 +274,21 @@
                         border-radius: 0;
                     }
                 }
+            }
+        }
+    }
+
+    @if $enable-flex-opt {
+        .card-group-flex {
+            display: flex;
+            flex-flow: row wrap;
+            width: initial;
+            table-layout: initial;
+
+            .card {
+                display: initial;
+                flex: 1 0 0;
+                vertical-align: initial;
             }
         }
     }
