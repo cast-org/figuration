@@ -309,7 +309,7 @@ button:focus {
     outline: 5px auto -webkit-focus-ring-color;
 }
 
-input:not([type="checkbox"]):not([type="radio"]),
+input,
 button,
 select,
 textarea {
@@ -322,6 +322,17 @@ textarea {
     // iOS adds rounded borders by default
     border-radius: 0;
 }
+// scss-lint:disable VendorPrefix
+[type="checkbox"] {
+    -webkit-border-radius: 5px;
+    -webkit-appearance: checkbox;
+
+}
+[type="radio"] {
+    -webkit-border-radius: 8px;
+    -webkit-appearance: radio;
+}
+// scss-lint:enable VendorPrefix
 
 textarea {
     // Textareas should really only resize vertically so they don't break their (horizontal) containers.
