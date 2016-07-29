@@ -457,6 +457,8 @@ Use card groups to render cards as a single, attached element with equal width a
 
 Only applies to small devices and above.
 
+Groups have support for both a `table` style layout, along with both the opt-in flexbox and [full flexbox](/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.card-group-flex` class to the `.card-group` element.
+
 {% example html %}
 <div class="card-group">
   <div class="card">
@@ -491,6 +493,10 @@ Only applies to small devices and above.
 Need a set of equal width and height cards that aren't attached to one another? Use card decks. By default, card decks require two wrapping elements: `.card-deck-wrapper` and a `.card-deck`. We use table styles for the sizing and the gutters on `.card-deck`. The `.card-deck-wrapper` is used to negative margin out the `border-spacing` on the `.card-deck`.
 
 Only applies to small devices and above.
+
+Decks have support for both a `table` style layout, along with both the opt-in flexbox and [full flexbox](/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.card-deck-flex` class to the `.card-deck` element.
+
+If you wish to have a card deck that matches the grid layout, you will need to use the `.card-deck-wrapper` for both the `table` and `flexbox` styles.  Note that unless you are using the full flexbox mode, there will be a horizontal scroll is used within a full body-width `.container-fluid` element.  This can be mitigated by using `overflow: hidden;` style on a wrapping container.
 
 {% example html %}
 <div class="card-deck-wrapper">

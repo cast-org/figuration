@@ -14,9 +14,11 @@ Flexbox support is coming to Figuration.  The goal is to have both an opt-in sys
 
 ## What's Included
 
-Flexbox support is available for a number of Figurations's components:
+Flexbox support is available for a number of Figuration's components:
 
-- [Grid layout]({{ site.baseurl }}/layout/grid/#flexbox), which switches from `float`s to `display: flex;`.
+- [Grid Layout]({{ site.baseurl }}/layout/grid/#flexbox), which switches from `float`s to `display: flex;`.
+- [Card Decks]({{ site.baseurl }}/components/cards/#decks), which switches from `display: table;` to `display: flex;`.
+- [Card Groups]({{ site.baseurl }}/components/cards/#groups), which switches from `display: table;` to `display: flex;`.
 - [Utility classes]({{ site.baseurl }}/components/utilities/#flexbox-alignment), for alignment options for flexbox enabled components.
 - More coming!
 
@@ -31,6 +33,18 @@ In a nutshell, flexbox provides simpler and more flexible layout options in CSS.
 - Easy CSS-only equal height columns for your grid-based layouts.
 
 All these things are possible outside flexbox, but typically require extra hacks and workarounds to do right.
+
+## Opt-in Flexbox Mode
+
+The opt-in mode is compiled into Figuration's base CSS by default.  This can be controlled by changing the `$enable-flex-opt` Sass variable.
+
+To use the opt-in mode, simply add another class to parent element.  More information and caveats can be found in the documentation for each component, see the [What's Included section](#whats-included) above.
+
+A quick list of the opt-in classes are:
+
+- `.row-flex`
+- `.card-deck-flex`
+- `.card-group-flex`
 
 ## Full Flexbox Mode
 

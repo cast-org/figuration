@@ -148,40 +148,96 @@
     @include border-radius(0 0 $card-border-radius $card-border-radius);
 }
 
-// Card set
+// Card deck
+// Some style resetting here for margins across the two variations
+// (one flex, one table). Individual cards have margin-bottom by
+// default, but they're ignored due to table styles. For a consistent design,
+// we've done the same to the flex variation.
+//
+// Those changes are noted by `// Margin balancing`
 @include media-breakpoint-up(sm) {
-    .card-deck {
-        display: table;
-        width: 100%;
-        margin-bottom: $card-spacer-y;
-        table-layout: fixed;
-        border-spacing: $card-deck-margin 0;
+    @if $enable-flex-full {
+        .card-deck {
+            @extend %card-deck-flex;
+        }
 
-        .card {
-            display: table-cell;
-            margin-bottom: 0;
-            vertical-align: top;
+        .card-deck-wrapper {
+            margin-right: ($card-deck-margin / -2);
+            margin-left: ($card-deck-margin / -2);
+        }
+    } @else {
+        .card-deck {
+            display: table;
+            width: 100%;
+            margin-bottom: $card-spacer-y;
+            table-layout: fixed;
+            border-spacing: $card-deck-margin 0;
+
+            .card {
+                display: table-cell;
+                margin-bottom: 0;
+                vertical-align: top;
+            }
+        }
+
+        .card-deck-wrapper {
+            margin-right: (-$card-deck-margin);
+            margin-left: (-$card-deck-margin);
+        }
+
+        @if $enable-flex-opt {
+            .card-deck-flex {
+                @extend %card-deck-flex;
+            }
+
+            .card-deck-wrapper .card-deck-flex {
+                padding-right: ($card-deck-margin / 2);
+                padding-left: ($card-deck-margin / 2);
+                margin-right: 0;
+                margin-left: 0;
+            }
         }
     }
 
-    .card-deck-wrapper {
-        margin-right: ($card-deck-margin / -2);
-        margin-left: ($card-deck-margin / -2);
+    // This needs to come later so the CSS if generated after .card-deck
+    %card-deck-flex {
+        display: flex;
+        flex-flow: row wrap;
+        margin-right: 0;
+        margin-bottom: $card-spacer-y; // Margin balancing
+        margin-left: 0;
+
+        .card {
+            flex: 1 0 0;
+            margin-right: ($card-deck-margin / 2);
+            margin-bottom: 0; // Margin balancing
+            margin-left: ($card-deck-margin / 2);
+        }
     }
 }
 
 // Card groups
 @include media-breakpoint-up(sm) {
     .card-group {
-        display: table;
-        width: 100%;
-        margin-bottom: $card-spacer-y;
-        table-layout: fixed;
+        @if $enable-flex-full {
+            display: flex;
+            flex-flow: row wrap;
+        } @else {
+            display: table;
+            width: 100%;
+            margin-bottom: $card-spacer-y;
+            table-layout: fixed;
+        }
 
         .card {
-            display: table-cell;
             margin-bottom: 0;
-            vertical-align: top;
+
+            @if $enable-flex-full {
+                flex: 1 0 0;
+            } @else {
+                display: table-cell;
+                vertical-align: top;
+            }
 
             + .card {
                 margin-left: 0;
@@ -218,6 +274,21 @@
                         border-radius: 0;
                     }
                 }
+            }
+        }
+    }
+
+    @if $enable-flex-opt {
+        .card-group-flex {
+            display: flex;
+            flex-flow: row wrap;
+            width: initial;
+            table-layout: initial;
+
+            .card {
+                display: initial;
+                flex: 1 0 0;
+                vertical-align: initial;
             }
         }
     }

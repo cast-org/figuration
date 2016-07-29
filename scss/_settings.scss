@@ -729,7 +729,7 @@ $card-padding-y:           1rem !default;
 $card-padding-x:           1rem !default;
 $card-img-overlay-padding: $card-padding-y $card-padding-x !default;
 
-$card-deck-margin:         ($grid-gutter-width / 2) !default;
+$card-deck-margin:         $grid-gutter-width !default;
 
 $card-columns-sm-up-column-gap: 1.25rem !default;
 
