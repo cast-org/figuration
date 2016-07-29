@@ -322,14 +322,17 @@ textarea {
     // iOS adds rounded borders by default
     border-radius: 0;
 }
+// scss-lint:disable VendorPrefix
 [type="checkbox"] {
-    -webkit-appearance: checkbox;
     -webkit-border-radius: 5px;
+    -webkit-appearance: checkbox;
+
 }
 [type="radio"] {
-    -webkit-appearance: radio;
     -webkit-border-radius: 8px;
+    -webkit-appearance: radio;
 }
+// scss-lint:enable VendorPrefix
 
 textarea {
     // Textareas should really only resize vertically so they don't break their (horizontal) containers.
