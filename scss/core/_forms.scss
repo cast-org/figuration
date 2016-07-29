@@ -15,9 +15,7 @@ $select-height:     unquote("calc(#{$input-height} + #{($border-width * 2)})") !
     // height: $input-height;
     padding: $input-padding-y ($input-padding-x / 2);
     font-size: $font-size-base;
-    // scss-lint:disable ImportantRule
-    line-height: $input-line-height !important;
-    // scss-lint:enable ImportantRule
+    line-height: $input-line-height;
     color: $input-color;
     background-color: $input-bg;
     // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214.
