@@ -19,6 +19,7 @@ Flexbox support is available for a number of Figuration's components:
 - [Grid Layout]({{ site.baseurl }}/layout/grid/#flexbox), which switches from `float`s to `display: flex;`.
 - [Card Decks]({{ site.baseurl }}/components/cards/#decks), which switches from `display: table;` to `display: flex;`.
 - [Card Groups]({{ site.baseurl }}/components/cards/#groups), which switches from `display: table;` to `display: flex;`.
+- [Input Groups]({{ site.baseurl }}/components/input-group/), which switches from `display: table;` to `display: flex;`.
 - [Utility classes]({{ site.baseurl }}/components/utilities/#flexbox-alignment), for alignment options for flexbox enabled components.
 - More coming!
 
@@ -38,17 +39,18 @@ All these things are possible outside flexbox, but typically require extra hacks
 
 The opt-in mode is compiled into Figuration's base CSS by default.  This can be controlled by changing the `$enable-flex-opt` Sass variable.
 
-To use the opt-in mode, simply add another class to parent element.  More information and caveats can be found in the documentation for each component, see the [What's Included section](#whats-included) above.
+To use the opt-in mode, simply add another class to parent element. An example would be to use the grid layout in flexbox mode, you would add a `.row-flex` class to the `.row` element.  More information and caveats can be found in the documentation for each component, see the [What's Included section](#whats-included) above.
 
 A quick list of the opt-in classes are:
 
 - `.row-flex`
 - `.card-deck-flex`
 - `.card-group-flex`
+- `.input-group-flex`
 
 ## Full Flexbox Mode
 
-If you're familiar with modifying variables in Sass---or any other CSS preprocessor---you'll be right at home to move into flexbox mode.
+If you're familiar with modifying variables in Sass---or any other CSS preprocessor---you'll be right at home to move into flexbox mode.  Compiling the Sass in full flexbox mode will not generate the opt-in flexbox classes, as they are no longer needed.
 
 1. Open the `_settings.scss` file and find the `$enable-flex-full` variable.
     - You may also copy the setting into the `_custom.scss` file if you wish to use a custom configuration.
