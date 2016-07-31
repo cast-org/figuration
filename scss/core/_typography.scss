@@ -96,9 +96,11 @@ mark,
 
 // Horizonatal description list using grid markup
 // scss-lint:disable QualifyingElement
-dl.row {
-    > dd + dt {
-        clear: left;
+@if not $enable-flex-full {
+    dl.row {
+        > dd + dt {
+            clear: left;
+        }
     }
 }
 // scss-lint:enable QualifyingElement
@@ -137,12 +139,3 @@ dl.row {
     border-right: $blockquote-border-width solid $blockquote-border-color;
     border-left: 0;
 }
-
-//.blockquote-reverse .blockquote-footer {
-//    &::before {
-//        content: "";
-//    }
-//    &::after {
-//        content: "\00A0 \2014"; // nbsp, em dash
-//    }
-//}
