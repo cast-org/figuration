@@ -10,24 +10,68 @@
         }
     }
 }
-.media,
-.media-body {
-    overflow: hidden;
+
+@if $enable-flex-full {
+    .media {
+        display: flex;
+        margin-bottom: $spacer;
+    }
+    .media-body {
+        flex: 1;
+    }
+    .media-middle {
+        align-self: center;
+    }
+    .media-bottom {
+        align-self: flex-end;
+    }
+} @else {
+    .media,
+    .media-body {
+        overflow: hidden;
+    }
+    .media-body {
+        width: 10000px;
+    }
+    .media-left,
+    .media-right,
+    .media-body {
+        display: table-cell;
+        vertical-align: top;
+    }
+    .media-middle {
+        vertical-align: middle;
+    }
+    .media-bottom {
+        vertical-align: bottom;
+    }
 }
-.media-body {
-    width: 10000px;
-}
-.media-left,
-.media-right,
-.media-body {
-    display: table-cell;
-    vertical-align: top;
-}
-.media-middle {
-    vertical-align: middle;
-}
-.media-bottom {
-    vertical-align: bottom;
+
+@if $enable-flex-opt {
+    .media-flex {
+        display: flex;
+        overflow: initial;
+
+        .media-left,
+        .media-right,
+        .media-body {
+            display: block;
+            overflow: initial;
+            vertical-align: initial;
+        }
+        .media-body {
+            flex: 1;
+            width: auto;
+        }
+        .media-middle {
+            vertical-align: initial;
+            align-self: center;
+        }
+        .media-bottom {
+            vertical-align: initial;
+            align-self: flex-end;
+        }
+    }
 }
 
 // Images/elements as the media anchor
