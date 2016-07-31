@@ -4,12 +4,20 @@
 .btn-group,
 .btn-group-vertical {
     position: relative;
-    display: inline-block;
     vertical-align: middle; // match .btn alignment given font-size hack above
+
+    @if $enable-flex-full {
+        display: inline-flex;
+    } @else {
+        display: inline-block;
+    }
 
     > .btn {
         position: relative;
-        float: left;
+
+        @if not $enable-flex-full {
+            float: left;
+        }
 
         // Bring the "active" button to the front
         &:focus,
@@ -20,6 +28,17 @@
 
         @include hover {
             z-index: 2;
+        }
+    }
+}
+
+@if $enable-flex-opt {
+    .btn-group-flex,
+    .btn-group-vertical-flex {
+        display: inline-flex;
+
+        > .btn {
+            float: initial;
         }
     }
 }
@@ -132,13 +151,20 @@
 
 // Vertical button groups
 .btn-group-vertical {
+    @if $enable-flex-full {
+        flex-direction: column;
+    }
+
     > .btn,
     > .btn-group,
     > .btn-group > .btn {
-        display: block;
-        float: none;
         width: 100%;
         max-width: 100%;
+
+        @if not $enable-flex-full {
+            display: block;
+            float: none;
+        }
     }
 
     // Clear floats so dropdown menus can be properly placed
@@ -156,6 +182,19 @@
     > .btn-group + .btn-group {
         margin-top: -$input-border-width;
         margin-left: 0;
+    }
+}
+
+@if $enable-flex-opt {
+    .btn-group-vertical-flex {
+        flex-direction: column;
+
+        > .btn,
+        > .btn-group,
+        > .btn-group > .btn {
+            display: initial;
+            float: initial;
+        }
     }
 }
 
