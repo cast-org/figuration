@@ -320,7 +320,7 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   color: #292929;
@@ -468,13 +468,23 @@ button:focus {
   outline: 5px auto -webkit-focus-ring-color;
 }
 
-input:not([type="checkbox"]):not([type="radio"]),
+input,
 button,
 select,
 textarea {
   margin: 0;
   line-height: inherit;
   border-radius: 0;
+}
+
+[type="checkbox"] {
+  -webkit-border-radius: 5px;
+  -webkit-appearance: checkbox;
+}
+
+[type="radio"] {
+  -webkit-border-radius: 8px;
+  -webkit-appearance: radio;
 }
 
 textarea {
@@ -4678,8 +4688,8 @@ button.list-group-item-danger.active:hover {
 .btn-group,
 .btn-group-vertical {
   position: relative;
-  display: inline-block;
   vertical-align: middle;
+  display: inline-block;
 }
 
 .btn-group > .btn,
@@ -4698,6 +4708,19 @@ button.list-group-item-danger.active:hover {
 .btn-group > .btn:hover,
 .btn-group-vertical > .btn:hover {
   z-index: 2;
+}
+
+.btn-group-flex,
+.btn-group-vertical-flex {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.btn-group-flex > .btn,
+.btn-group-vertical-flex > .btn {
+  float: initial;
 }
 
 .btn-group .btn + .btn,
@@ -4803,10 +4826,10 @@ button.list-group-item-danger.active:hover {
 .btn-group-vertical > .btn,
 .btn-group-vertical > .btn-group,
 .btn-group-vertical > .btn-group > .btn {
-  display: block;
-  float: none;
   width: 100%;
   max-width: 100%;
+  display: block;
+  float: none;
 }
 
 .btn-group-vertical > .btn-group::after {
@@ -4825,6 +4848,21 @@ button.list-group-item-danger.active:hover {
 .btn-group-vertical > .btn-group + .btn-group {
   margin-top: -1px;
   margin-left: 0;
+}
+
+.btn-group-vertical-flex {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.btn-group-vertical-flex > .btn,
+.btn-group-vertical-flex > .btn-group,
+.btn-group-vertical-flex > .btn-group > .btn {
+  display: initial;
+  float: initial;
 }
 
 .btn-group-vertical > .btn:not(:first-child):not(:last-child) {
@@ -4867,8 +4905,8 @@ button.list-group-item-danger.active:hover {
 
 .input-group {
   position: relative;
-  display: table;
   width: 100%;
+  display: table;
   border-collapse: separate;
 }
 
@@ -4884,6 +4922,22 @@ button.list-group-item-danger.active:hover {
   z-index: 3;
 }
 
+.input-group-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-collapse: initial;
+}
+
+.input-group-flex .form-control {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 0%;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
+  float: initial;
+}
+
 .input-group-addon,
 .input-group-btn,
 .input-group .form-control {
@@ -4896,11 +4950,25 @@ button.list-group-item-danger.active:hover {
   border-radius: 0;
 }
 
+.input-group-flex .input-group-addon,
+.input-group-flex .input-group-btn {
+  display: inline-block;
+}
+
+.input-group-flex .form-control {
+  display: block;
+}
+
 .input-group-addon,
 .input-group-btn {
   width: 1%;
   white-space: nowrap;
   vertical-align: middle;
+}
+
+.input-group-flex .input-group-addon,
+.input-group-flex .input-group-btn {
+  width: auto;
 }
 
 .input-group-addon {
@@ -6042,6 +6110,44 @@ a.tag:focus, a.tag:hover {
   vertical-align: bottom;
 }
 
+.media-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: initial;
+}
+
+.media-flex .media-left,
+.media-flex .media-right,
+.media-flex .media-body {
+  display: block;
+  overflow: initial;
+  vertical-align: initial;
+}
+
+.media-flex .media-body {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 0%;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
+  width: auto;
+}
+
+.media-flex .media-middle {
+  vertical-align: initial;
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+}
+
+.media-flex .media-bottom {
+  vertical-align: initial;
+  -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
+          align-self: flex-end;
+}
+
 .media-object {
   display: block;
 }
@@ -6323,7 +6429,7 @@ a.tag:focus, a.tag:hover {
     width: 100%;
     margin-bottom: 1rem;
     table-layout: fixed;
-    border-spacing: 0.9375rem 0;
+    border-spacing: 1.875rem 0;
   }
   .card-deck .card {
     display: table-cell;
@@ -6331,21 +6437,63 @@ a.tag:focus, a.tag:hover {
     vertical-align: top;
   }
   .card-deck-wrapper {
-    margin-right: -0.46875rem;
-    margin-left: -0.46875rem;
+    margin-right: -1.875rem;
+    margin-left: -1.875rem;
+  }
+  .card-deck-wrapper .card-deck-flex {
+    padding-right: 0.9375rem;
+    padding-left: 0.9375rem;
+  }
+}
+
+@media all and (min-width: 34em) and (-ms-high-contrast: none), (min-width: 34em) and (-ms-high-contrast: active) {
+  .card-deck-wrapper .card-deck-flex {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 34em) {
+  @supports (-ms-ime-align: auto) {
+    .card-deck-wrapper .card-deck-flex {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+  .card-deck-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-right: 0;
+    margin-bottom: 1rem;
+    margin-left: 0;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+  }
+  .card-deck-flex .card {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 0%;
+        -ms-flex: 1 0 0%;
+            flex: 1 0 0%;
+    width: 1%;
+    margin-right: 0.9375rem;
+    margin-bottom: 0;
+    margin-left: 0.9375rem;
   }
 }
 
 @media (min-width: 34em) {
   .card-group {
+    margin-bottom: 1rem;
     display: table;
     width: 100%;
-    margin-bottom: 1rem;
     table-layout: fixed;
   }
   .card-group .card {
-    display: table-cell;
     margin-bottom: 0;
+    display: table-cell;
     vertical-align: top;
   }
   .card-group .card + .card {
@@ -6378,6 +6526,25 @@ a.tag:focus, a.tag:hover {
   .card-group .card:not(:first-child):not(:last-child) .card-img-top,
   .card-group .card:not(:first-child):not(:last-child) .card-img-bottom {
     border-radius: 0;
+  }
+  .card-group-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+    width: initial;
+    table-layout: initial;
+  }
+  .card-group-flex .card {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 0%;
+        -ms-flex: 1 0 0%;
+            flex: 1 0 0%;
+    width: 1%;
+    vertical-align: initial;
   }
 }
 
@@ -6667,7 +6834,7 @@ a.tag:focus, a.tag:hover {
   position: absolute;
   z-index: 1030;
   display: block;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6778,7 +6945,7 @@ a.tag:focus, a.tag:hover {
   z-index: 1025;
   display: none;
   max-width: 276px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
