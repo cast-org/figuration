@@ -193,8 +193,23 @@
             .card-deck-wrapper .card-deck-flex {
                 padding-right: ($card-deck-margin / 2);
                 padding-left: ($card-deck-margin / 2);
-                margin-right: 0;
-                margin-left: 0;
+            }
+
+            // Remove the padding for IE10+
+            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                .card-deck-wrapper .card-deck-flex {
+                    padding-right: 0;
+                    padding-left: 0;
+                }
+            }
+
+            // Remove the padding for Edge 12+
+            // https://jeffclayton.wordpress.com/2015/04/07/css-hacks-for-windows-10-and-spartan-browser-preview/
+            @supports (-ms-ime-align:auto) {
+                .card-deck-wrapper .card-deck-flex {
+                    padding-right: 0;
+                    padding-left: 0;
+                }
             }
         }
     }
@@ -202,13 +217,14 @@
     // This needs to come later so the CSS if generated after .card-deck
     %card-deck-flex {
         display: flex;
-        flex-flow: row wrap;
         margin-right: 0;
         margin-bottom: $card-spacer-y; // Margin balancing
         margin-left: 0;
+        flex-wrap: wrap;
 
         .card {
             flex: 1 0 0;
+            width: 1%;
             margin-right: ($card-deck-margin / 2);
             margin-bottom: 0; // Margin balancing
             margin-left: ($card-deck-margin / 2);
@@ -219,13 +235,14 @@
 // Card groups
 @include media-breakpoint-up(sm) {
     .card-group {
+        margin-bottom: $card-spacer-y;
+
         @if $enable-flex-full {
             display: flex;
             flex-flow: row wrap;
         } @else {
             display: table;
             width: 100%;
-            margin-bottom: $card-spacer-y;
             table-layout: fixed;
         }
 
@@ -286,8 +303,8 @@
             table-layout: initial;
 
             .card {
-                display: initial;
                 flex: 1 0 0;
+                width: 1%;
                 vertical-align: initial;
             }
         }
