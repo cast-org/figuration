@@ -212,13 +212,13 @@ module.exports = function(grunt) {
             core: {
                 options: {
                     map: true,
-                    processors: [autoprefixer, flexbugs]
+                    processors: [flexbugs, autoprefixer]
                 },
                 src: ['dist/css/*.css', '!dist/css/*.min.css']
             },
             docs: {
                 options: {
-                    processors: [autoprefixer, flexbugs]
+                    processors: [flexbugs, autoprefixer]
                 },
                 src: 'docs/assets/css/docs.css'
             }

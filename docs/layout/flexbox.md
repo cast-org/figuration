@@ -17,9 +17,10 @@ Flexbox support is coming to Figuration.  The goal is to have both an opt-in sys
 Flexbox support is available for a number of Figuration's components:
 
 - [Grid Layout]({{ site.baseurl }}/layout/grid/#flexbox), which switches from `float`s to `display: flex;`.
-- [Card Decks]({{ site.baseurl }}/components/cards/#decks), which switches from `display: table;` to `display: flex;`.
-- [Card Groups]({{ site.baseurl }}/components/cards/#groups), which switches from `display: table;` to `display: flex;`.
-- [Input Groups]({{ site.baseurl }}/components/input-group/), which switches from `display: table;` to `display: flex;`.
+- [Button Group]({{ site.baseurl }}/components/button-group/), which switches from `float`s to `display: flex;`.
+- [Card Deck]({{ site.baseurl }}/components/cards/#decks), which switches from `display: table;` to `display: flex;`.
+- [Card Group]({{ site.baseurl }}/components/cards/#groups), which switches from `display: table;` to `display: flex;`.
+- [Input Group]({{ site.baseurl }}/components/input-group/), which switches from `display: table;` to `display: flex;`.
 - [Utility classes]({{ site.baseurl }}/components/utilities/#flexbox-alignment), for alignment options for flexbox enabled components.
 - More coming!
 
@@ -44,6 +45,8 @@ To use the opt-in mode, simply add another class to parent element. An example w
 A quick list of the opt-in classes are:
 
 - `.row-flex`
+- `.btn-group-flex`
+- `.btn-group-vertical-flex`
 - `.card-deck-flex`
 - `.card-group-flex`
 - `.input-group-flex`
