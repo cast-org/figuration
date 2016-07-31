@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<title>Figuration - Flexbox Media Object</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
+
+<script type="text/javascript" src="../vendor/jquery.min.js"></script>
+<script type="text/javascript" src="../../dist/js/figuration.js"></script>
+
+<script type="text/javascript" src="../../docs/assets/js/vendor/holder.min.js"></script>
+<script type="text/javascript">
+Holder.addTheme("gray", {
+    bg: "#999",
+    fg: "#111",
+    size: 12,
+    font: 'sans-serif',
+    fontweight: "normal"
+});
+</script>
+
+<style>
+.media {
+    border: 1px solid blue;
+}
+</style>
+
+<html
+<body>
+
+<div class="container"><div class="row"><div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
+    <h1>Media object</h1>
+
+    <p>
+        Here we are testing the two different styles for media object layouts using the opt-in flexbox classes.
+        They are designated as follows:
+    </p>
+    <ul>
+        <li><strong>normal:</strong> table model</li>
+        <li><strong>flex:</strong> opt-in flexbox model</li>
+    </ul>
+
+    normal:
+    <div class="media">
+        <a class="media-left" href="#">
+            <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        </div>
+    </div>
+
+    flex:
+    <div class="media media-flex">
+        <a class="media-left" href="#">
+            <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+        </a>
+        <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        </div>
+    </div>
+
+    <hr />
+
+    normal:
+    <div class="media">
+        <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        </div>
+        <a class="media-right" href="#">
+            <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+        </a>
+    </div>
+
+    flex:
+    <div class="media media-flex">
+        <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        </div>
+        <a class="media-right" href="#">
+            <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+        </a>
+    </div>
+
+    <hr />
+
+    <h2>Nested media</h2>
+
+    normal:
+    <div class="media">
+        <div class="media-left">
+            <a href="#">
+                <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            <div class="media">
+                <a class="media-left" href="#">
+                    <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">Nested media heading</h4>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    flex:
+    <div class="media media-flex">
+        <div class="media-left">
+            <a href="#">
+                <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            <div class="media media-flex">
+                <a class="media-left" href="#">
+                    <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">Nested media heading</h4>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <h2>Media alignment</h2>
+
+    normal:
+    <div class="media">
+        <div class="media-left">
+            <a href="#">
+                <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">Top aligned media</h4>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+            <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+    </div>
+
+    flex:
+    <div class="media media-flex">
+        <div class="media-left">
+            <a href="#">
+                <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">Top aligned media</h4>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+            <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+    </div>
+
+    normal:
+    <div class="media">
+        <div class="media-left media-middle">
+            <a href="#">
+                <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">Middle aligned media</h4>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+            <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+    </div>
+
+    flex:
+    <div class="media media-flex">
+        <div class="media-left media-middle">
+            <a href="#">
+                <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">Middle aligned media</h4>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+            <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+    </div>
+
+    normal:
+    <div class="media">
+        <div class="media-left media-bottom">
+            <a href="#">
+                <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">Bottom aligned media</h4>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+            <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+    </div>
+
+    flex:
+    <div class="media media-flex">
+        <div class="media-left media-bottom">
+            <a href="#">
+                <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">Bottom aligned media</h4>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+            <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        </div>
+    </div>
+
+    <hr />
+
+    <h2>Media list</h2>
+
+normal:
+<ul class="media-list">
+    <li class="media">
+        <div class="media-left">
+            <a href="#">
+                <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+            <!-- Nested media object -->
+            <div class="media">
+                <a class="media-left" href="#">
+                    <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">Nested media heading</h4>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                    <!-- Nested media object -->
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Nested media heading</h4>
+                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Nested media object -->
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Nested media heading</h4>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="media">
+        <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+        </div>
+        <div class="media-right">
+            <a href="#">
+                <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+            </a>
+        </div>
+    </li>
+</ul>
+
+flex:
+<ul class="media-list">
+    <li class="media media-flex">
+        <div class="media-left">
+            <a href="#">
+                <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+            <!-- Nested media object -->
+            <div class="media media-flex">
+                <a class="media-left" href="#">
+                    <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">Nested media heading</h4>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                    <!-- Nested media object -->
+                    <div class="media media-flex">
+                        <div class="media-left">
+                            <a href="#">
+                                <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Nested media heading</h4>
+                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Nested media object -->
+            <div class="media media-flex">
+                <div class="media-left">
+                    <a href="#">
+                        <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Nested media heading</h4>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="media media-flex">
+        <div class="media-body">
+            <h4 class="media-heading">Media heading</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+        </div>
+        <div class="media-right">
+            <a href="#">
+                <img data-src="holder.js/64x64" class="media-object" alt="64x64" />
+            </a>
+        </div>
+    </li>
+</ul>
+
+</div></div></div>
+
+</body>
+</html>
