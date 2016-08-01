@@ -28,11 +28,45 @@
     }
 }
 
+@if $enable-flex-full {
+    .nav {
+        display: flex;
+
+        // Simulate space between links
+        .nav-link + .nav-link {
+            margin-left: .25rem;
+        }
+    }
+
+    // scss-lint:disable QualifyingElement
+    ul.nav:not(.nav-inline):not(.nav-tabs):not(.nav-pills) {
+        flex-direction: column;
+    }
+    // scss-lint:enable QualifyingElement
+}
+@if $enable-flex-opt {
+    .nav-flex {
+        display: flex;
+
+        // Simulate space between links
+        .nav-link + .nav-link {
+            margin-left: .25rem;
+        }
+    }
+
+    // scss-lint:disable QualifyingElement
+    ul.nav-flex:not(.nav-inline):not(.nav-tabs):not(.nav-pills) {
+        flex-direction: column;
+    }
+    // scss-lint:enable QualifyingElement
+}
 
 // Nav inline
 .nav-inline {
     .nav-item {
-        display: inline-block;
+        @if not $enable-flex-full {
+            display: inline-block;
+        }
     }
 
     .nav-item + .nav-item,
@@ -40,15 +74,34 @@
         margin-left: $nav-item-inline-spacer;
     }
 }
+if $enable-flex-full {
+    .nav-inline {
+        flex-flow: row wrap;
+    }
+}
+@if $enable-flex-opt {
+    .nav-flex.nav-inline {
+        flex-flow: row wrap;
+    }
+}
 
 
 // Tabs
 .nav-tabs {
     border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
-    @include clearfix();
+
+    @if $enable-flex-full {
+        flex-flow: row wrap;
+    } @else {
+        @include clearfix();
+    }
 
     .nav-item {
-        float: left;
+        @if $enable-flex-full {
+           //flex: 1;
+        } @else {
+            float: left;
+        }
         // Make the list-items overlay the bottom border
         margin-bottom: -$nav-tabs-border-width;
 
@@ -97,11 +150,19 @@
         @include border-top-radius(0);
     }
 }
-
+@if $enable-flex-opt {
+    .nav-flex.nav-tabs {
+        flex-flow: row wrap;
+    }
+}
 
 // Pills
 .nav-pills {
-    @include clearfix();
+    @if $enable-flex-full {
+        flex-flow: row wrap;
+    } @else {
+        @include clearfix();
+    }
 
     .nav-item {
         float: left;
@@ -151,8 +212,17 @@
         }
     }
 }
+@if $enable-flex-opt {
+    .nav-flex.nav-pills {
+        flex-flow: row wrap;
+    }
+}
 
 .nav-stacked {
+    @if $enable-flex-full {
+        flex-direction: column;
+    }
+
     .nav-item {
         display: block;
         float: none;
@@ -167,7 +237,11 @@
         display: block;
     }
 }
-
+@if $enable-flex-opt {
+    .nav-flex.nav-stacked {
+        flex-direction: column;
+    }
+}
 
 // Tab content panes
 // Hide tabbable panes to start, show them when `.active`
