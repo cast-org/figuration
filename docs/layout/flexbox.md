@@ -22,6 +22,7 @@ Flexbox support is available for a number of Figuration's components:
 - [Card Group]({{ site.baseurl }}/components/cards/#groups), which switches from `display: table;` to `display: flex;`.
 - [Input Group]({{ site.baseurl }}/components/input-group/), which switches from `display: table;` to `display: flex;`.
 - [Media Object]({{ site.baseurl }}/components/media-object/), which switches from `display: table;` to `display: flex;`.
+- [Navs]({{ site.baseurl }}/components/navs/), which switches from `float`s to `display: flex;`.
 - [Utility classes]({{ site.baseurl }}/components/utilities/#flexbox-alignment), for alignment options for flexbox enabled components.
 - More coming!
 
@@ -52,6 +53,7 @@ A quick list of the opt-in classes are:
 - `.card-group-flex`
 - `.input-group-flex`
 - `.media-flex`
+- `.nav-flex`
 
 ## Full Flexbox Mode
 
