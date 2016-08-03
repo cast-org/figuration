@@ -12,7 +12,6 @@
     }
 }
 
-
 // Navbar alignment options
 // Display the navbar across the entirety of the page or fixed it to the top or
 // bottom of the page.
@@ -105,31 +104,14 @@
     }
 }
 
-// scss-lint:disable ImportantRule
-// Custom override for
-.navbar-toggleable {
-    &-xs {
-        @include media-breakpoint-up(sm) {
-            display: block !important;
-        }
-    }
-    &-sm {
-        @include media-breakpoint-up(md) {
-            display: block !important;
-        }
-    }
-    &-md {
-        @include media-breakpoint-up(lg) {
-            display: block !important;
-        }
-    }
-}
-// scss-lint:enable ImportantRule
-
-
 // Navigation
 // Custom navbar navigation built on the base `.nav` styles.
 .navbar-nav {
+    @if $enable-flex-full {
+        // Override flexbox layout
+        display: block;
+    }
+
     .nav-item {
         float: left;
     }
@@ -239,3 +221,35 @@
         background-color: $navbar-dark-divider-color;
     }
 }
+
+
+// Navbar toggleable
+// Custom override for collapse widget in navbar
+
+// scss-lint:disable ImportantRule
+.navbar-toggleable {
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        $nextbp: breakpoint-next($breakpoint);
+
+        @if $nextbp != null {
+            &-#{$breakpoint} {
+                @include clearfix;
+                @include media-breakpoint-down(#{$breakpoint}) {
+                    .navbar-nav .nav-item {
+                        float: none;
+                        margin-left: 0;
+                    }
+                }
+                @include media-breakpoint-up(#{$nextbp}) {
+                    display: block !important;
+                }
+            }
+            @include media-breakpoint-down(#{$breakpoint}) {
+                &-#{$breakpoint} {
+                    clear: both;
+                }
+            }
+        }
+    }
+}
+// scss-lint:enable ImportantRule
