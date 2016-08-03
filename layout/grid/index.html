@@ -27,7 +27,7 @@
   <link href="/assets/css/docs.min.css" rel="stylesheet">
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
 
 <!-- Core JS -->
@@ -161,6 +161,18 @@
           </a>
         </li>
       
+        
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/layout/flexbox" class="nav-link ">
+            Flexbox
+          </a>
+        </li>
+      
     </ul>
     
 
@@ -219,6 +231,13 @@
       <li><a href="#example-usage" id="markdown-toc-example-usage">Example Usage</a></li>
     </ul>
   </li>
+  <li><a href="#flexbox" id="markdown-toc-flexbox">Flexbox</a>    <ul>
+      <li><a href="#opt-in-vs-full-mode" id="markdown-toc-opt-in-vs-full-mode">Opt-in vs Full Mode</a></li>
+      <li><a href="#what-is-available" id="markdown-toc-what-is-available">What is Available</a></li>
+      <li><a href="#auto-layout-columns" id="markdown-toc-auto-layout-columns">Auto-Layout Columns</a></li>
+      <li><a href="#alignment" id="markdown-toc-alignment">Alignment</a></li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="how-it-works">How It Works</h2>
@@ -248,13 +267,13 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
-      One of three columns
+      1 of 3
     </div>
     <div class="col-sm-4">
-      One of three columns
+      1 of 3
     </div>
     <div class="col-sm-4">
-      One of three columns
+      1 of 3
     </div>
   </div>
 </div>
@@ -262,13 +281,13 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-4"</span><span class="nt">&gt;</span>
-      One of three columns
+      1 of 3
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-4"</span><span class="nt">&gt;</span>
-      One of three columns
+      1 of 3
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-4"</span><span class="nt">&gt;</span>
-      One of three columns
+      1 of 3
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
@@ -566,7 +585,7 @@
 </div>
 
 <div class="row">
-  <div class="col-sm-6 col-md-5 col-lg-6">.col.col-sm-6.col-md-5.col-lg-6</div>
+  <div class="col-sm-6 col-md-5 col-lg-6">.col-sm-6 .col-md-5 .col-lg-6</div>
   <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
 </div>
 </div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
@@ -575,7 +594,7 @@
 <span class="nt">&lt;/div&gt;</span>
 
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-6 col-md-5 col-lg-6"</span><span class="nt">&gt;</span>.col.col-sm-6.col-md-5.col-lg-6<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-6 col-md-5 col-lg-6"</span><span class="nt">&gt;</span>.col-sm-6 .col-md-5 .col-lg-6<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0"</span><span class="nt">&gt;</span>.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
@@ -651,7 +670,7 @@
 
 <h3 id="example-column-ordering">Example: Column Ordering</h3>
 
-<p>Easily change the order of our built-in grid columns with <code class="highlighter-rouge">.col-md-push-*</code> and <code class="highlighter-rouge">.col-md-pull-*</code> modifier classes.</p>
+<p>Easily change the order of our built-in grid columns with <code class="highlighter-rouge">.push-md-*</code> and <code class="highlighter-rouge">.pull-md-*</code> modifier classes.</p>
 
 <div class="cf-example-row">
 
@@ -789,6 +808,107 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
+<h2 id="flexbox">Flexbox</h2>
+
+<p>Looking for a more modern grid system?  Use the opt-in flexbox mode, or <a href="/layout/flexbox#full-flexbox-mode">enable full flexbox support in Figuration</a>, to take full advantage of CSS’s Flexible Box module for even more control over your site’s layout, alignment, and distribution of content.</p>
+
+<h3 id="opt-in-vs-full-mode">Opt-in vs Full Mode</h3>
+
+<p>The <strong>opt-in mode</strong> for flexbox support is available by default, and is easily triggered by adding <code class="highlighter-rouge">.row-flex</code> to any <code class="highlighter-rouge">.row</code> containers.  Any nested containers using just the <code class="highlighter-rouge">.row</code> class resets to the standard <code class="highlighter-rouge">float</code> grid layout.</p>
+
+<p><strong>Full mode</strong> needs to be enabled in the Sass and the CSS needs to be recompiled.  In this mode, you do not need to use the <code class="highlighter-rouge">.row-flex</code> class, and all grid items will use <code class="highlighter-rouge">display: flex;</code> for layout.</p>
+
+<h3 id="what-is-available">What is Available</h3>
+
+<ul>
+  <li>Nesting, offsets, pushes, and pulls are all supported in the flexbox grid system.</li>
+  <li>Flexbox grid columns without a set width will automatically layout with equal widths. For example, four columns will each automatically be 25% wide.</li>
+  <li>Flexbox grid columns have significantly more alignment options available, including vertical alignment.</li>
+</ul>
+
+<h3 id="auto-layout-columns">Auto-Layout Columns</h3>
+
+<p>When flexbox support is used/enabled, you can utilize breakpoint-specific column classes for equal-width columns. Add any number of <code class="highlighter-rouge">.col-{breakpoint}</code>s for each breakpoint you need. For example, here’s are two grid layouts that apply to every device and viewport possible.</p>
+
+<div class="cf-example-row">
+
+<div class="cf-example" data-example-id="">
+<div class="row row-flex">
+    <div class="col-xs">
+        1 of 2
+    </div>
+    <div class="col-xs">
+        1 of 2
+    </div>
+</div>
+
+<div class="row row-flex">
+    <div class="col-xs">
+        1 of 3
+    </div>
+    <div class="col-xs">
+        1 of 3
+    </div>
+    <div class="col-xs">
+        1 of 3
+    </div>
+</div>
+</div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-flex"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        1 of 2
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        1 of 2
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-flex"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        1 of 3
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        1 of 3
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        1 of 3
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+</div>
+
+<p>Auto-layout for flexbox grid columns also means you can set the width of one column and the others will automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths.</p>
+
+<div class="cf-example-row">
+
+<div class="cf-example" data-example-id="">
+<div class="row row-flex">
+    <div class="col-xs">
+        1 of 3
+    </div>
+    <div class="col-xs-6">
+        2 of 3 (wider)
+    </div>
+    <div class="col-xs">
+        3 of 3
+    </div>
+</div>
+</div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-flex"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        1 of 3
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-6"</span><span class="nt">&gt;</span>
+        2 of 3 (wider)
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        3 of 3
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+</div>
+
+<h3 id="alignment">Alignment</h3>
+
+<p>If you wish to have better control over your flexbox grid alignment, there are a handful of utility classes that might be helpful.  Information and examples can be found in the Flexbox Alignment section of the <a href="/components/utilities/#flexbox-alignment">Utility Classes page</a>.</p>
 
             </div>
         </div>
@@ -801,7 +921,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p>
-            Currently version: 1.0.0
+            Currently version: 1.1.0
             <br />
             <a href="https://github.com/cast-org/figuration">GitHub Project</a> - <a href="https://github.com/cast-org/figuration/issues">Issues</a>
         </p>

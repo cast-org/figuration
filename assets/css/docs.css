@@ -601,6 +601,15 @@ h4 > code {
   border: 1px solid rgba(34, 68, 102, 0.2);
 }
 
+.cf-example-row-flex .row {
+  border: 1px solid rgba(34, 68, 102, 0.5);
+}
+
+.cf-example-row-flex-v .row {
+  height: 7rem;
+  border: 1px solid rgba(34, 68, 102, 0.5);
+}
+
 .cf-example > .form-control + .form-control {
   margin-top: .5rem;
 }
@@ -1141,7 +1150,7 @@ h4 > code {
 }
 
 .video-wrapper {
-  width: 600px;
+  /* width: 600px; */
 }
 
 .video-transcript {

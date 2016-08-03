@@ -67,6 +67,9 @@
 <loc>http://figuration.org/content/figures/</loc>
 </url>
 <url>
+<loc>http://figuration.org/layout/flexbox/</loc>
+</url>
+<url>
 <loc>http://figuration.org/content/forms/</loc>
 </url>
 <url>
@@ -112,10 +115,10 @@
 <loc>http://figuration.org/get-started/options/</loc>
 </url>
 <url>
-<loc>http://figuration.org/about/overview/</loc>
+<loc>http://figuration.org/layout/overview/</loc>
 </url>
 <url>
-<loc>http://figuration.org/layout/overview/</loc>
+<loc>http://figuration.org/about/overview/</loc>
 </url>
 <url>
 <loc>http://figuration.org/widgets/overview/</loc>
@@ -176,10 +179,10 @@
 </url>
 <url>
 <loc>http://figuration.org/examples/grid/index.html</loc>
-<lastmod>2016-07-01T16:24:39-04:00</lastmod>
+<lastmod>2016-08-03T14:09:53-04:00</lastmod>
 </url>
 <url>
 <loc>http://figuration.org/examples/starter-template/index.html</loc>
-<lastmod>2016-07-01T16:24:39-04:00</lastmod>
+<lastmod>2016-08-03T14:09:53-04:00</lastmod>
 </url>
 </urlset>

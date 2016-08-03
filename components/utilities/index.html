@@ -27,7 +27,7 @@
   <link href="/assets/css/docs.min.css" rel="stylesheet">
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
 
 <!-- Core JS -->
@@ -367,6 +367,12 @@
   <li><a href="#image-replacement" id="markdown-toc-image-replacement">Image Replacement</a></li>
   <li><a href="#responsive-embeds" id="markdown-toc-responsive-embeds">Responsive Embeds</a>    <ul>
       <li><a href="#special-case-video" id="markdown-toc-special-case-video">Special Case: Video</a></li>
+    </ul>
+  </li>
+  <li><a href="#flexbox-alignment" id="markdown-toc-flexbox-alignment">Flexbox Alignment</a>    <ul>
+      <li><a href="#vertical-alignment" id="markdown-toc-vertical-alignment">Vertical Alignment</a></li>
+      <li><a href="#horizontal-alignment" id="markdown-toc-horizontal-alignment">Horizontal Alignment</a></li>
+      <li><a href="#ordering" id="markdown-toc-ordering">Ordering</a></li>
     </ul>
   </li>
 </ul>
@@ -925,6 +931,338 @@
   <span class="nt">&lt;video&gt;</span>...<span class="nt">&lt;/video&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
+<h2 id="flexbox-alignment">Flexbox Alignment</h2>
+
+<p>Flexbox makes horizontal and vertical alignment easier with the CSS properties <code class="highlighter-rouge">align-content</code>, <code class="highlighter-rouge">align-self</code>, and <code class="highlighter-rouge">justify-content</code>.  Figuration provides some utility classes for these properties, which work with any flexbox enabled component.</p>
+
+<p>It is important to understand the parent-child relationship created with flexbox. An element with <code class="highlighter-rouge">display: flex;</code> is a <strong>flex parent</strong>, and can horizontally or vertically align its children. All immediate children of the flex parent are <strong>flex children</strong>. A flex child can vertically align itself.</p>
+
+<p>A simple example, using the grid layout, shows the <code class="highlighter-rouge">.row</code> as a flex parent, and the <code class="highlighter-rouge">.col-*</code>s as flex children.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-flex"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">col-xs-4"</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">col-xs-4"</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">col-xs-4"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<h3 id="vertical-alignment">Vertical Alignment</h3>
+
+<p>Vertical alignment can be applied to a flex parent—which will align all the children automatically—or to a flex child which will align only that element.</p>
+
+<p>To set the parent alignment, the available classes, per breakpoint, are:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">.flex-{breakpoint}-top</code></li>
+  <li><code class="highlighter-rouge">.flex-{breakpoint}-middle</code></li>
+  <li><code class="highlighter-rouge">.flex-{breakpoint}-bottom</code></li>
+  <li><code class="highlighter-rouge">.flex-{breakpoint}-stretch</code> - this is the default alignment</li>
+</ul>
+
+<div class="cf-example-row cf-example-row-flex">
+
+<div class="cf-example" data-example-id="">
+<div class="row row-flex flex-xs-top">
+    <div class="col-xs">
+        <code>.flex-*-top</code>
+    </div>
+    <div class="col-xs">
+        1 of 3
+    </div>
+    <div class="col-xs">
+        Align top - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor felis pretium!
+    </div>
+</div>
+
+<div class="row row-flex flex-xs-middle">
+    <div class="col-xs">
+        <code>.flex-*-middle</code>
+    </div>
+    <div class="col-xs">
+        1 of 3
+    </div>
+    <div class="col-xs">
+        Align middle - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor felis pretium!
+    </div>
+</div>
+
+<div class="row row-flex flex-xs-bottom">
+    <div class="col-xs">
+        <code>.flex-*-bottom</code>
+    </div>
+    <div class="col-xs">
+        1 of 3
+    </div>
+    <div class="col-xs">
+        Align bottom - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor felis pretium!
+    </div>
+</div>
+
+<div class="row row-flex flex-xs-stretch">
+    <div class="col-xs">
+        <code>.flex-*-stretch</code>
+    </div>
+    <div class="col-xs">
+        1 of 3
+    </div>
+    <div class="col-xs">
+        Equal height - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor felis pretium!
+    </div>
+</div>
+</div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-flex flex-xs-top"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;code&gt;</span>.flex-*-top<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        1 of 3
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        Align top - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor felis pretium!
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-flex flex-xs-middle"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;code&gt;</span>.flex-*-middle<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        1 of 3
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        Align middle - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor felis pretium!
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-flex flex-xs-bottom"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;code&gt;</span>.flex-*-bottom<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        1 of 3
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        Align bottom - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor felis pretium!
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-flex flex-xs-stretch"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;code&gt;</span>.flex-*-stretch<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        1 of 3
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs"</span><span class="nt">&gt;</span>
+        Equal height - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor felis pretium!
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+</div>
+
+<p>To align an individual child, we use the same alignment terms as the flex parent classes, but the child specific ones start with <code class="highlighter-rouge">.flex-self-*</code> instead of <code class="highlighter-rouge">.flex-*</code>.</p>
+
+<p>To set the child alignment, the available classes, per breakpoint, are:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">.flex-self-{breakpoint}-top</code></li>
+  <li><code class="highlighter-rouge">.flex-self-{breakpoint}-middle</code></li>
+  <li><code class="highlighter-rouge">.flex-self-{breakpoint}-bottom</code></li>
+  <li><code class="highlighter-rouge">.flex-self-{breakpoint}-stretch</code> - this is the default alignment</li>
+</ul>
+
+<div class="cf-example-row cf-example-row-flex-v">
+
+<div class="cf-example" data-example-id="">
+<div class="row row-flex">
+    <div class="col-xs flex-self-xs-top">
+        align top
+    </div>
+    <div class="col-xs flex-self-xs-middle">
+        align middle
+    </div>
+    <div class="col-xs flex-self-xs-bottom">
+        align bottom
+    </div>
+    <div class="col-xs flex-self-xs-stretch">
+        align stretch
+    </div>
+</div>
+</div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-flex"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs flex-self-xs-top"</span><span class="nt">&gt;</span>
+        align top
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs flex-self-xs-middle"</span><span class="nt">&gt;</span>
+        align middle
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs flex-self-xs-bottom"</span><span class="nt">&gt;</span>
+        align bottom
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs flex-self-xs-stretch"</span><span class="nt">&gt;</span>
+        align stretch
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+</div>
+
+<h3 id="horizontal-alignment">Horizontal Alignment</h3>
+
+<p>Horizontal alignment classes are applied to the flex parent.</p>
+
+<p>To set the alignment, the available classes, per breakpoint, are:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">.flex-{breakpoint}-left</code>  - this is the default alignment</li>
+  <li><code class="highlighter-rouge">.flex-{breakpoint}-center</code></li>
+  <li><code class="highlighter-rouge">.flex-{breakpoint}-right</code></li>
+  <li><code class="highlighter-rouge">.flex-{breakpoint}-around</code></li>
+  <li><code class="highlighter-rouge">.flex-{breakpoint}-between</code></li>
+</ul>
+
+<div class="cf-example-row cf-example-row-flex">
+
+<div class="cf-example" data-example-id="">
+<div class="row row-flex flex-xs-left">
+    <div class="col-xs-4">
+        aligned to
+    </div>
+    <div class="col-xs-4">
+        the left
+    </div>
+</div>
+
+<div class="row row-flex flex-xs-center">
+    <div class="col-xs-4">
+        aligned to
+    </div>
+    <div class="col-xs-4">
+        the center
+    </div>
+</div>
+
+<div class="row row-flex flex-xs-right">
+    <div class="col-xs-4">
+        aligned to
+    </div>
+    <div class="col-xs-4">
+        the right
+    </div>
+</div>
+
+<div class="row row-flex flex-xs-around">
+    <div class="col-xs-4">
+        aliged to
+    </div>
+    <div class="col-xs-4">
+        the space around
+    </div>
+</div>
+
+<div class="row row-flex flex-xs-between">
+    <div class="col-xs-4">
+        aligned to
+    </div>
+    <div class="col-xs-4">
+        the space between
+    </div>
+</div>
+</div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-flex flex-xs-left"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-4"</span><span class="nt">&gt;</span>
+        aligned to
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-4"</span><span class="nt">&gt;</span>
+        the left
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-flex flex-xs-center"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-4"</span><span class="nt">&gt;</span>
+        aligned to
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-4"</span><span class="nt">&gt;</span>
+        the center
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-flex flex-xs-right"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-4"</span><span class="nt">&gt;</span>
+        aligned to
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-4"</span><span class="nt">&gt;</span>
+        the right
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-flex flex-xs-around"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-4"</span><span class="nt">&gt;</span>
+        aliged to
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-4"</span><span class="nt">&gt;</span>
+        the space around
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-flex flex-xs-between"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-4"</span><span class="nt">&gt;</span>
+        aligned to
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-4"</span><span class="nt">&gt;</span>
+        the space between
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+</div>
+
+<h3 id="ordering">Ordering</h3>
+
+<p>Need a quick way to reorder your flexbox items.  Here are a few helper classes.</p>
+
+<p>The available classes, per breakpoint, are:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">.flex-{breakpoint}-first</code></li>
+  <li><code class="highlighter-rouge">.flex-{breakpoint}-last</code></li>
+  <li><code class="highlighter-rouge">.flex-{breakpoint}-unordered</code></li>
+</ul>
+
+<div class="cf-example-row">
+
+<div class="cf-example" data-example-id="">
+<div class="row row-flex">
+    <div class="col-xs-1 flex-xs-last">
+        1
+    </div>
+    <div class="col-xs-1 flex-xs-unordered">
+        2
+    </div>
+    <div class="col-xs-1 flex-xs-last">
+        3
+    </div>
+    <div class="col-xs-1 flex-xs-first">
+        4
+    </div>
+    <div class="col-xs-1 flex-xs-first">
+        5
+    </div>
+</div>
+</div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row row-flex"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-1 flex-xs-last"</span><span class="nt">&gt;</span>
+        1
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-1 flex-xs-unordered"</span><span class="nt">&gt;</span>
+        2
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-1 flex-xs-last"</span><span class="nt">&gt;</span>
+        3
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-1 flex-xs-first"</span><span class="nt">&gt;</span>
+        4
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-xs-1 flex-xs-first"</span><span class="nt">&gt;</span>
+        5
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+</div>
+
             </div>
         </div>
 
@@ -936,7 +1274,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p>
-            Currently version: 1.0.0
+            Currently version: 1.1.0
             <br />
             <a href="https://github.com/cast-org/figuration">GitHub Project</a> - <a href="https://github.com/cast-org/figuration/issues">Issues</a>
         </p>

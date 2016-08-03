@@ -27,7 +27,7 @@
   <link href="/assets/css/docs.min.css" rel="stylesheet">
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
 
 <!-- Core JS -->
@@ -1112,6 +1112,8 @@
 
 <p>Only applies to small devices and above.</p>
 
+<p>Groups have support for both a <code class="highlighter-rouge">table</code> style layout, along with both the opt-in flexbox and <a href="/layout/flexbox#full-flexbox-mode">full flexbox</a> modes.  To use the opt-in method, simply add a <code class="highlighter-rouge">.card-group-flex</code> class to the <code class="highlighter-rouge">.card-group</code> element.</p>
+
 <div class="cf-example" data-example-id="">
 <div class="card-group">
   <div class="card">
@@ -1172,6 +1174,10 @@
 <p>Need a set of equal width and height cards that aren’t attached to one another? Use card decks. By default, card decks require two wrapping elements: <code class="highlighter-rouge">.card-deck-wrapper</code> and a <code class="highlighter-rouge">.card-deck</code>. We use table styles for the sizing and the gutters on <code class="highlighter-rouge">.card-deck</code>. The <code class="highlighter-rouge">.card-deck-wrapper</code> is used to negative margin out the <code class="highlighter-rouge">border-spacing</code> on the <code class="highlighter-rouge">.card-deck</code>.</p>
 
 <p>Only applies to small devices and above.</p>
+
+<p>Decks have support for both a <code class="highlighter-rouge">table</code> style layout, along with both the opt-in flexbox and <a href="/layout/flexbox#full-flexbox-mode">full flexbox</a> modes.  To use the opt-in method, simply add a <code class="highlighter-rouge">.card-deck-flex</code> class to the <code class="highlighter-rouge">.card-deck</code> element.</p>
+
+<p>If you wish to have a card deck that matches the grid layout, you will need to use the <code class="highlighter-rouge">.card-deck-wrapper</code> for both the <code class="highlighter-rouge">table</code> and <code class="highlighter-rouge">flexbox</code> styles.  Note that unless you are using the full flexbox mode, there will be a horizontal scroll is used within a full body-width <code class="highlighter-rouge">.container-fluid</code> element.  This can be mitigated by using <code class="highlighter-rouge">overflow: hidden;</code> style on a wrapping container.</p>
 
 <div class="cf-example" data-example-id="">
 <div class="card-deck-wrapper">
@@ -1386,7 +1392,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p>
-            Currently version: 1.0.0
+            Currently version: 1.1.0
             <br />
             <a href="https://github.com/cast-org/figuration">GitHub Project</a> - <a href="https://github.com/cast-org/figuration/issues">Issues</a>
         </p>

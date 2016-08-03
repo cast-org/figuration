@@ -1,5 +1,5 @@
 /*!
- * Figuration (v1.0.0)
+ * Figuration (v1.1.0)
  * http://figuration.org
  * Copyright 2013-2016 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
@@ -107,6 +107,12 @@ function rgb2hex(rgb) {
     }
     return '#' + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
 }
+
+// Direction for player dropdown menus
+$(document, '[data-cfw="player"]').on('ready.cfw.player', function(e) {
+    $(e.target).closest('[data-cfw="player"]').find('.player-caption-wrapper').addClass('dropup dropdown-menu-left');
+    $(e.target).closest('[data-cfw="player"]').find('.player-script-wrapper').addClass('dropup dropdown-menu-left');
+});
 
 $(window).ready(function() {
     addAnchors();

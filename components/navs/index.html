@@ -27,7 +27,7 @@
   <link href="/assets/css/docs.min.css" rel="stylesheet">
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
 
 <!-- Core JS -->
@@ -339,6 +339,8 @@
 
                 <p>Navigation share general markup and styles, from the base <code class="highlighter-rouge">.nav</code> class to the active and disabled states. Swap modifier classes to switch between each style.</p>
 
+<p>Navs have support for both a <code class="highlighter-rouge">float</code> style layout, along with both the opt-in flexbox and <a href="/layout/flexbox#full-flexbox-mode">full flexbox</a> modes.  To use the opt-in method, simply add a <code class="highlighter-rouge">.nav-flex</code> class to the <code class="highlighter-rouge">.nav</code> element.</p>
+
 <h2 class="no_toc" id="contents">Contents</h2>
 
 <ul id="markdown-toc">
@@ -363,7 +365,7 @@
 
 <h2 id="base-nav">Base Nav</h2>
 
-<p>Roll your own navigation style by extending the base <code class="highlighter-rouge">.nav</code> component. All CFW’s nav components are built on top of this by specifying additional styles. Includes styles for the disabled state, but <strong>not the active state</strong>.</p>
+<p>Roll your own navigation style by extending the base <code class="highlighter-rouge">.nav</code> component. All Figurations’s nav components are built on top of this by specifying additional styles. Includes styles for the disabled state, but <strong>not the active state</strong>.</p>
 
 <div class="cf-example" data-example-id="">
 <ul class="nav">
@@ -702,7 +704,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p>
-            Currently version: 1.0.0
+            Currently version: 1.1.0
             <br />
             <a href="https://github.com/cast-org/figuration">GitHub Project</a> - <a href="https://github.com/cast-org/figuration/issues">Issues</a>
         </p>

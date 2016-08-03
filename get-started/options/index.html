@@ -27,7 +27,7 @@
   <link href="/assets/css/docs.min.css" rel="stylesheet">
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
 
 <!-- Core JS -->
@@ -100,7 +100,7 @@
             
     <h1>Get Started</h1>
     <p class="lead">
-        An overview of CFW, including why we built it, how to use it, basic templates, examples, and more.
+        An overview of Figuration, including why we built it, how to use it, basic templates, examples, and more.
     </p>
 
 
@@ -308,7 +308,7 @@
     <tr>
       <td><code class="highlighter-rouge">$enable-grid-classes</code></td>
       <td><code class="highlighter-rouge">true</code> (default) or <code class="highlighter-rouge">false</code></td>
-      <td>Enables the generation of CSS classes for the grid system (e.g. <code class="highlighter-rouge">.col-md-1</code> etc.).</td>
+      <td>Enables the generation of CSS classes for the grid system (e.g. <code class="highlighter-rouge">container</code>, <code class="highlighter-rouge">row</code>, <code class="highlighter-rouge">.col-md-1</code>, etc.).</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">$enable-print-styles</code></td>
@@ -320,8 +320,20 @@
       <td><code class="highlighter-rouge">true</code> (default) or <code class="highlighter-rouge">false</code></td>
       <td>Enables the generation of CSS classes for the palette color themes (e.g. <code class="highlighter-rouge">.text-blue-500</code> etc.).</td>
     </tr>
+    <tr>
+      <td><code class="highlighter-rouge">$enable-flex-opt</code></td>
+      <td><code class="highlighter-rouge">true</code> (default) or <code class="highlighter-rouge">false</code></td>
+      <td>Enables the opt-in flexbox model using classes, such as <code class="highlighter-rouge">.row-flex</code>  .</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">$enable-flex-full</code></td>
+      <td><code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">false</code> (default)</td>
+      <td>Enables the full flexbox model where all supported components will use <code class="highlighter-rouge">display: flex;</code>.</td>
+    </tr>
   </tbody>
 </table>
+
+<p>If both <code class="highlighter-rouge">$enable-flex-opt</code> and <code class="highlighter-rouge">$enable-flex-full</code> are set to <code class="highlighter-rouge">true</code> the <code class="highlighter-rouge">$enable-flex-opt</code> option will be disabled.</p>
 
 <h2 id="component-sizes">Component Sizes</h2>
 
@@ -454,7 +466,7 @@ $</span><span class="na">context-themes</span><span class="p">:</span> <span cla
     <footer class="cf-footer">
     <div class="container">
         <p>
-            Currently version: 1.0.0
+            Currently version: 1.1.0
             <br />
             <a href="https://github.com/cast-org/figuration">GitHub Project</a> - <a href="https://github.com/cast-org/figuration/issues">Issues</a>
         </p>
