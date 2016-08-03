@@ -9,6 +9,19 @@ CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end
 
 Get started at <http://figuration.org>!
 
+## Table of Contents
+
+- [Quick Start](#quick-start)
+- [Bugs and Feature Requests](#bugs-and-feature-requests)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [Community](#community)
+- [Versioning](#versioning)
+- [Changelog](#changelog)
+- [Copyright and License](#copyright-and-license)
+
+## Quick Start
+
 Several quick start options are available:
 
 - [Download the latest release.](https://github.com/cast-org/figuration/archive/v1.0.0.zip)
@@ -37,7 +50,7 @@ figuration/
 We provide compiled CSS and JS (`figuration.*`), as well as compiled and minified CSS and JS (`figuration.min.*`). CSS [source maps](https://developer.chrome.com/devtools/docs/css-preprocessors) (`figuration.*.map`) are available for use with certain browsers' developer tools.
 
 
-## Bugs and feature requests
+## Bugs and Feature Requests
 
 Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/cast-org/figuration/blob/master/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/cast-org/figuration/issues/new).
 
@@ -47,7 +60,7 @@ Have a bug or a feature request? Please first read the [issue guidelines](https:
 Figurations's documentation, included in this repo in the root directory, is built with [Jekyll](http://jekyllrb.com) and publicly hosted on GitHub Pages at <http://figuration.org>. The docs may also be run locally.
 
 
-### Running documentation locally
+### Running Documentation Locally
 
 1. Run through the [tooling setup](https://github.com/cast-org/figuration/blob/master/docs/get-started/build-tools.md#tooling-setup) to install Jekyll (the site builder) and other Ruby dependencies with `bundle install`.
 2. Run `grunt` (or a specific set of Grunt tasks) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
@@ -69,6 +82,9 @@ Editor preferences are available in the [editor config](https://github.com/cast-
 ## Versioning
 
 For transparency into our release cycle and in striving to maintain backward compatibility, Figuration is maintained under [the Semantic Versioning guidelines](http://semver.org/). We might screw up, but we'll try sticking to those rules whenever possible.
+
+
+## Changelog
 
 See [the Releases section of our GitHub project](https://github.com/cast-org/figuration/releases) for changelogs for each release version.
 
