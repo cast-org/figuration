@@ -39,7 +39,7 @@
     }
 
     // scss-lint:disable QualifyingElement
-    ul.nav:not(.nav-inline):not(.nav-tabs):not(.nav-pills) {
+    ul.nav:not(.nav-inline):not(.nav-tabs):not(.nav-pills):not(.navbar-nav) {
         flex-direction: column;
     }
     // scss-lint:enable QualifyingElement
@@ -55,7 +55,7 @@
     }
 
     // scss-lint:disable QualifyingElement
-    ul.nav-flex:not(.nav-inline):not(.nav-tabs):not(.nav-pills) {
+    ul.nav-flex:not(.nav-inline):not(.nav-tabs):not(.nav-pills):not(.navbar-nav) {
         flex-direction: column;
     }
     // scss-lint:enable QualifyingElement

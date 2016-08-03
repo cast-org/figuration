@@ -29,6 +29,8 @@ Navbars come with built-in support for a handful of sub-components. Mix and matc
 - `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns)
 - `.navbar-toggler` for use with our [Collapse widget]({{ site.baseurl }}/widgets/collapse/) and other [navigation toggling](#collapsing-content) behaviors.
 
+Note that the `.navbar-nav` builds off the `.nav` component, but currently does not support flexbox layout, so it will get reset back to `display: block;` in [full flexbox](/layout/flexbox#full-flexbox-mode) mode.
+
 Here's an example of all the sub-components included in a default, light navbar:
 
 {% example html %}
@@ -316,25 +318,23 @@ For more complex navbar patterns, use the `.navbar-toggleable-*` classes in conj
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-  <button class="navbar-toggler hidden-sm-up" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#exCollapsingNavbar2" aria-label="Toggle navigation">
-    &#9776;
-  </button>
-  <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
     <a class="navbar-brand" href="#">Responsive navbar</a>
-    <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-    </ul>
-  </div>
+    <button class="navbar-toggler hidden-lg-up pull-xs-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav0" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#9776;</button>
+    <div class="collapse navbar-toggleable-md" id="respNav0">
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 {% endexample %}
