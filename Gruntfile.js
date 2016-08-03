@@ -220,7 +220,7 @@ module.exports = function(grunt) {
                 options: {
                     processors: [flexbugs, autoprefixer]
                 },
-                src: 'docs/assets/css/docs.css'
+                src: ['docs/assets/css/*.css', '!docs/assets/css/*.min.css']
             }
         },
 
@@ -243,10 +243,16 @@ module.exports = function(grunt) {
                 ]
             },
             docs: {
-                src: 'docs/assets/css/docs.css',
-                dest: 'docs/assets/css/docs.min.css'
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'docs/assets/css',
+                        src: ['*.css', '!*.min.css'],
+                        dest: 'docs/assets/css',
+                        ext: '.min.css'
+                    }
+                ]
             }
-
         },
 
         jekyll: {
