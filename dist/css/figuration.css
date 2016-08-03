@@ -5585,6 +5585,25 @@ li .dropdown-header {
   background-color: transparent;
 }
 
+.nav-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.nav-flex .nav-link + .nav-link {
+  margin-left: .25rem;
+}
+
+ul.nav-flex:not(.nav-inline):not(.nav-tabs):not(.nav-pills):not(.navbar-nav) {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .nav-inline .nav-item {
   display: inline-block;
 }
@@ -5592,6 +5611,18 @@ li .dropdown-header {
 .nav-inline .nav-item + .nav-item,
 .nav-inline .nav-link + .nav-link {
   margin-left: 1rem;
+}
+
+if $enable-flex-full .nav-inline {
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
+.nav-flex.nav-inline {
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
 }
 
 .nav-tabs {
@@ -5652,6 +5683,12 @@ li .dropdown-header {
   border-top-left-radius: 0;
 }
 
+.nav-flex.nav-tabs {
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
 .nav-pills::after {
   display: block;
   clear: both;
@@ -5709,6 +5746,12 @@ li .dropdown-header {
   background-color: #0e328c;
 }
 
+.nav-flex.nav-pills {
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+}
+
 .nav-stacked .nav-item {
   display: block;
   float: none;
@@ -5721,6 +5764,14 @@ li .dropdown-header {
 
 .nav-stacked .nav-link {
   display: block;
+}
+
+.nav-flex.nav-stacked {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .tab-content > .tab-pane {
@@ -5836,24 +5887,6 @@ li .dropdown-header {
   text-decoration: none;
 }
 
-@media (min-width: 34em) {
-  .navbar-toggleable-xs {
-    display: block !important;
-  }
-}
-
-@media (min-width: 48em) {
-  .navbar-toggleable-sm {
-    display: block !important;
-  }
-}
-
-@media (min-width: 62em) {
-  .navbar-toggleable-md {
-    display: block !important;
-  }
-}
-
 .navbar-nav .nav-item {
   float: left;
 }
@@ -5959,6 +5992,106 @@ li .dropdown-header {
 
 .navbar-dark .navbar-divider {
   background-color: rgba(255, 255, 255, 0.7);
+}
+
+.navbar-toggleable-xs::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+@media (max-width: 33.9375em) {
+  .navbar-toggleable-xs .navbar-nav .nav-item {
+    float: none;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 34em) {
+  .navbar-toggleable-xs {
+    display: block !important;
+  }
+}
+
+@media (max-width: 33.9375em) {
+  .navbar-toggleable-xs {
+    clear: both;
+  }
+}
+
+.navbar-toggleable-sm::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+@media (max-width: 47.9375em) {
+  .navbar-toggleable-sm .navbar-nav .nav-item {
+    float: none;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 48em) {
+  .navbar-toggleable-sm {
+    display: block !important;
+  }
+}
+
+@media (max-width: 47.9375em) {
+  .navbar-toggleable-sm {
+    clear: both;
+  }
+}
+
+.navbar-toggleable-md::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+@media (max-width: 61.9375em) {
+  .navbar-toggleable-md .navbar-nav .nav-item {
+    float: none;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 62em) {
+  .navbar-toggleable-md {
+    display: block !important;
+  }
+}
+
+@media (max-width: 61.9375em) {
+  .navbar-toggleable-md {
+    clear: both;
+  }
+}
+
+.navbar-toggleable-lg::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+@media (max-width: 74.9375em) {
+  .navbar-toggleable-lg .navbar-nav .nav-item {
+    float: none;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 75em) {
+  .navbar-toggleable-lg {
+    display: block !important;
+  }
+}
+
+@media (max-width: 74.9375em) {
+  .navbar-toggleable-lg {
+    clear: both;
+  }
 }
 
 .jumbotron {
@@ -6714,7 +6847,7 @@ a.tag:focus, a.tag:hover {
 .modal.fade .modal-dialog {
   -webkit-transition: -webkit-transform .3s ease-out;
   transition: -webkit-transform .3s ease-out;
-  -o-transition: transform .3s ease-out, -o-transform .3s ease-out;
+  -o-transition: -o-transform .3s ease-out;
   transition: transform .3s ease-out;
   transition: transform .3s ease-out, -webkit-transform .3s ease-out, -o-transform .3s ease-out;
   -webkit-transform: translate(0, -25%);
