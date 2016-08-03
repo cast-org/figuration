@@ -3,8 +3,6 @@
 scss:
   enabled: true
   config_file: .scss-lint.yml
-  exclude:
-    - "scss/base/_normalize.scss"
 
 javascript:
   enabled: true

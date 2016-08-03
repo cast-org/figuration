@@ -1,6 +1,9 @@
 # Default application configuration that all configurations inherit from.
 scss_files: "**/*.scss"
 
+exclude:
+  - "scss/base/_normalize.scss"
+
 # Default severity of all linters.
 severity: warning
 
