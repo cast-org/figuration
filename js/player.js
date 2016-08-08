@@ -960,21 +960,20 @@
 
             var cues = tracks[this.scriptCurrent].cues;
             if (cues == null || cues.length <= 0) {
-                var hold = tracks[this.scriptCurrent].mode;
+                var hold = tracks[this.trackCurrent].mode;
                 // preload all tracks to stop future `load` event triggers on transcript change
                 for (var i = 0; i < tracks.length; i++) {
                     tracks[i].mode = 'hidden';
-                    if (hold == 'showing') {
-                        tracks[i].mode = 'showing';
-                    }
                 }
+                // reset the caption track state
+                tracks[this.trackCurrent].mode = hold;
             }
 
             function scriptLoad2(forced) {
                 var tracks = $selfRef.media.textTracks; // Reload object to get update
                 var cues = tracks[$selfRef.scriptCurrent].cues;
 
-                if (cues.length <= 0 && !forced) {
+                if (cues && cues.length <= 0 && !forced) {
                     // Force media to load
                     $selfRef.$media.one('loadeddata.cfw.player.script', function() {
                         $selfRef.scriptLoad(true);
