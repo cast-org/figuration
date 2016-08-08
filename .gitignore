@@ -38,6 +38,7 @@ docs/.jekyll-metadata
 *.sublime-workspace
 nbproject
 Thumbs.db
+desktop.ini
 
 # grunt-html-validation
 validation-report.json
