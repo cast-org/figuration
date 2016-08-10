@@ -3,10 +3,17 @@
 // Copy settings from this file into the provided `_custom.scss` to override the defaults.
 // This allows for customization without changing core files.
 
-@mixin _assert-ascending($map, $map-name) {
+@mixin _assert-ascending($map, $map-type, $map-name) {
     $prev-key: null;
     $prev-num: null;
     @each $key, $num in $map {
+        // Handle %-based container max-width by using the breakpoint dimension
+        // to generate a rem-based size to compare with.
+        @if $map-type == "container" and unit($num) == "%" {
+            $bp-num: map-get($grid-breakpoints, $key);
+            $num: strip-unit(($num / 100%) * $bp-num) * 1rem;
+        }
+
         @if $prev-num == null {
             // Do nothing
         } @else if not comparable($prev-num, $num) {
@@ -149,19 +156,19 @@ $grid-breakpoints: (
     lg: bp-to-em(992px),
     xl: bp-to-em(1200px)
 ) !default;
-@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-ascending($grid-breakpoints, "breakpoint", "$grid-breakpoints");
 
 
 // Grid containers
 // =====
 // Define the maximum width of `.container` for different screen sizes.
 $container-max-widths: (
-    sm: rem-calc(576px),
+    sm: rem-calc(576px),    // allow for some growth for `sm` screens
     md: rem-calc(720px),
-    lg: rem-calc(940px),
-    xl: rem-calc(1140px)
+    lg: rem-calc(960px),
+    xl: rem-calc(1152px)
 ) !default;
-@include _assert-ascending($container-max-widths, "$container-max-widths");
+@include _assert-ascending($container-max-widths, "container", "$container-max-widths");
 
 
 // Grid columns

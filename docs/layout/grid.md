@@ -100,8 +100,8 @@ The example pixel values are calculated based upon assumption where the average 
         <td>None (auto)</td>
         <td>576px (36rem)</td>
         <td>720px (45rem)</td>
-        <td>940px (58.75rem)</td>
-        <td>1140px (71.25rem)</td>
+        <td>960px (60rem)</td>
+        <td>1152px (72rem)</td>
       </tr>
       <tr>
         <th class="text-nowrap" scope="row">Class prefix</th>
