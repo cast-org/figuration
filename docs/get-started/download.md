@@ -34,7 +34,7 @@ Download just the compiled and minified CSS and JavaScript. Doesn't include any 
         <h3 class="h4 card-header card-inverse margin-b-0" style="background-color: #246;">Source Files</h3>
         <div class="card-block">
 {% markdown %}
-Download everything: source Sass, JavaScript, and documentation files. **Requires a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), and [some setup]({{ site.baseurl }}/get-started/build-tools/#tooling-setup).**
+Download everything: source Sass, JavaScript, and documentation files. **Requires a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes), and [some setup]({{ site.baseurl }}/get-started/build-tools/#tooling-setup).**
 {% endmarkdown %}
         </div>
         <div class="card-footer text-sm-center">
