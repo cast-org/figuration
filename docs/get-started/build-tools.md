@@ -10,6 +10,7 @@ group: get-started
 [libsass]: https://github.com/sass/libsass
 [grunt-sass]: https://github.com/sindresorhus/grunt-sass
 [autoprefixer]: https://github.com/postcss/autoprefixer
+[postcss-flexbugs-fixes]: https://github.com/luisrudge/postcss-flexbugs-fixes
 [qunit]: http://qunitjs.com/
 [jshint]: http://jshint.com/
 
@@ -39,8 +40,8 @@ Our Gruntfile includes the following commands and tasks:
 
 | Task | Description |
 | --- | --- |
-| `grunt` | Run `grunt` to run tests locally and compile the CSS and JavaScript into `/dist`. **Uses [Sass][sass], [Autoprefixer][autoprefixer], and [UglifyJS](http://lisperator.net/uglifyjs/).** |
-| `grunt dist` | `grunt dist` creates the `/dist` directory with compiled files. **Uses [Sass][sass], [Autoprefixer][autoprefixer], and [UglifyJS](http://lisperator.net/uglifyjs/).** |
+| `grunt` | Run `grunt` to run tests locally and compile the CSS and JavaScript into `/dist`. **Uses [Sass][sass], [Autoprefixer][autoprefixer], [postcss-flexbugs-fixes][postcss-flexbugs-fixes], and [UglifyJS](http://lisperator.net/uglifyjs/).** |
+| `grunt dist` | `grunt dist` creates the `/dist` directory with compiled files. **Uses [Sass][sass], [Autoprefixer][autoprefixer], [postcss-flexbugs-fixes][postcss-flexbugs-fixes], and [UglifyJS](http://lisperator.net/uglifyjs/).** |
 | `grunt test` | Runs [scss-lint](https://github.com/brigade/scss-lint), [JSHint][jshint] and [QUnit][qunit] tests headlessly in [PhantomJS](http://phantomjs.org/). |
 | `grunt docs` | Builds and tests CSS, JavaScript, and other assets which are used when running the documentation locally via `jekyll serve`. |
 | `grunt watch` | This is a convenience method for watching just Sass files and automatically building them whenever you save. |
@@ -55,6 +56,11 @@ Figuration is compiled with [libsass][libsass] via [grunt-sass][grunt-sass]. The
 Figuration uses [Autoprefixer][autoprefixer] (included in our Gruntfile and build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins.
 
 We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [`/grunt/autoprefixer-settings.json`](https://github.com/cast-org/figuration/blob/master/grunt/autoprefixer-settings.js) for details.
+
+## postcss-flexbugs-fixes
+
+Also included in our Gruntfile and build process is [postcss-flexbugs-fixes][postcss-flexbugs-fixes] to work around some browser issues for flexbox layout.  More information about these issues can be found over at the [Flexbugs](https://github.com/philipwalton/flexbugs) repository.
+
 
 
 ## Local Documentation
