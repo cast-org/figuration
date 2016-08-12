@@ -2593,13 +2593,13 @@ input[type="button"].btn-block {
 
 @media (min-width: 62em) {
   .container {
-    max-width: 58.75rem;
+    max-width: 60rem;
   }
 }
 
 @media (min-width: 75em) {
   .container {
-    max-width: 71.25rem;
+    max-width: 72rem;
   }
 }
 
