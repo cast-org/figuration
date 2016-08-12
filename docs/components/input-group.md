@@ -203,7 +203,7 @@ Buttons in input groups are a bit different and require one extra level of nesti
     <div class="input-group">
       <div class="input-group-btn">
         <button type="button" class="btn">Action</button>
-        <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#inputGroupDropdown3">
+        <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-cfw="dropdown" data-cfw-dropdown-toggle="#inputGroupDropdown3">
           <span class="sr-only">Toggle Dropdown</span>
         </button>
         <ul class="dropdown-menu" id="inputGroupDropdown3">
@@ -222,7 +222,7 @@ Buttons in input groups are a bit different and require one extra level of nesti
       <input type="text" class="form-control" aria-label="Text input with segmented button dropdown">
       <div class="input-group-btn">
         <button type="button" class="btn">Action</button>
-        <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#inputGroupDropdown4">
+        <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-cfw="dropdown" data-cfw-dropdown-toggle="#inputGroupDropdown4">
           <span class="sr-only">Toggle Dropdown</span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right" id="inputGroupDropdown4">
