@@ -76,3 +76,5 @@ Using/enabling flexbox means **reduced browser and device support:**
 - Internet Explorer 10 has a few known quirks (see the "Known issues" tab in [Can I use...](http://caniuse.com/#feat=flexbox)), requires using a prefix, and only supports the syntax from the old 2012 version of the spec.
 
 Please be extra conscious of your user base when enabling flexbox in your project. Visit [Can I use...](http://caniuse.com/#feat=flexbox) for details on browser support of flexbox.
+
+There are also a number of browser bugs and cross-browser issues with flexbox.  Some of which do not have possible workarounds, while there are other that do.  Check out the [Flexbugs](https://github.com/philipwalton/flexbugs) repository for additional information.
