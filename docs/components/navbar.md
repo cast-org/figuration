@@ -110,7 +110,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
 </nav>
 {% endexample %}
 
-## Text
+### Text
 
 Add normal text to your navbars with the help of `.navbar-text`.  This class adjusts vertical alignment for strings of text.
 
@@ -138,6 +138,32 @@ You can also use utility classes to align navbar text to other navbar elements l
     <span class="navbar-text pull-xs-left">
         Navbar text floated left
     </span>
+</nav>
+{% endexample %}
+
+### Divider
+
+Place a visual separator between segments of the navbar.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+    <div class="nav navbar-nav">
+        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="#">Features</a>
+        <span class="navbar-divider"></span>
+        <a class="nav-item nav-link" href="#">Pricing</a>
+        <a class="nav-item nav-link" href="#">About</a>
+    </div>
+</nav>
+
+<nav class="navbar navbar-dark bg-inverse">
+    <div class="nav navbar-nav">
+        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="#">Features</a>
+        <span class="navbar-divider"></span>
+        <a class="nav-item nav-link" href="#">Pricing</a>
+        <a class="nav-item nav-link" href="#">About</a>
+    </div>
 </nav>
 {% endexample %}
 
@@ -227,32 +253,6 @@ Here are some examples to show what we mean.
 </nav>
 {% endhighlight %}
 
-## Divider
-
-Place a visual separator between segments of the navbar.
-
-{% example html %}
-<nav class="navbar navbar-light bg-faded">
-    <div class="nav navbar-nav">
-        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="#">Features</a>
-        <span class="navbar-divider"></span>
-        <a class="nav-item nav-link" href="#">Pricing</a>
-        <a class="nav-item nav-link" href="#">About</a>
-    </div>
-</nav>
-
-<nav class="navbar navbar-dark bg-inverse">
-    <div class="nav navbar-nav">
-        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="#">Features</a>
-        <span class="navbar-divider"></span>
-        <a class="nav-item nav-link" href="#">Pricing</a>
-        <a class="nav-item nav-link" href="#">About</a>
-    </div>
-</nav>
-{% endexample %}
-
 ## Containers
 
 Although it's not required, you can wrap a navbar in a `.container` to center it on a page or add one within to only center the contents of a [fixed or static top navbar](#placement).
@@ -316,6 +316,12 @@ Our [Collapse widget]({{ site.baseurl }}/widgets/collapse/) allows you to use a 
 
 For more complex navbar patterns, use the `.navbar-toggleable-*` classes in conjunction with the `.navbar-toggler`. These classes override our responsive utilities to show navigation only when content is meant to be shown.
 
+### Responsive Variant
+
+To see the navbar switch between modes, you will need to resize your browser window below/above the `lg` breakpoint for this example.
+
+Note the use of the `hidden` option for the [Collapse widget]({{ site.baseurl }}/widgets/collapse) to allow the navigation items to be read by screen readers when not in a collapsed mode for larger screens.
+
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
     <a class="navbar-brand" href="#">Responsive navbar</a>
@@ -335,6 +341,65 @@ For more complex navbar patterns, use the `.navbar-toggleable-*` classes in conj
                 <a class="nav-link" href="#">About</a>
             </li>
         </ul>
+    </div>
+</nav>
+{% endexample %}
+
+## Navbar Group
+
+Further extending the wierdness that is the navbar, we have added the `.navbar-group` container to allow support for a `table` style layout.
+
+This also adds support for both the opt-in flexbox and [full flexbox](/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.navbar-group-flex` class to the `.navbar-group`.
+
+Each 'segment' of a navbar group will also need to be wrapped in, or classed with `.navbar-item`.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+    <div class="navbar-group">
+        <a class="navbar-item navbar-brand" href="#">Navbar</a>
+        <ul class="navbar-item nav navbar-item-max navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+        </ul>
+        <form class="navbar-item navbar-item-min form-inline text-xs-right">
+            <input class="form-control" type="text" placeholder="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+{% endexample %}
+
+### Justified Navbar
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+    <div class="navbar-group navbar-group-justified">
+        <a class="navbar-item navbar-brand" href="#">Navbar</a>
+        <ul class="navbar-item nav navbar-nav text-xs-center">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+        </ul>
+        <span class="navbar-item navbar-text text-xs-right text-success">Justified!</span>
     </div>
 </nav>
 {% endexample %}

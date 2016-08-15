@@ -253,3 +253,84 @@
     }
 }
 // scss-lint:enable ImportantRule
+
+
+// Alternate navbar layout - either table or flexbox
+// Uses `.navbar-group` to allow for opt-in to new layout, while keeping old style.
+.navbar-group {
+    @if $enable-flex-full {
+        display: flex;
+    } @else {
+        display: table;
+        width: 100%;
+    }
+}
+.navbar-group-justified {
+    @if $enable-flex-full {
+        align-content: space-between;
+
+        .navbar-brand {
+            margin-right: 0;
+        }
+
+        .navbar-item {
+            flex: 1;
+        }
+    } @else {
+        table-layout: fixed;
+    }
+
+    .navbar-item.navbar-nav .nav-item {
+        display: inline-block;
+        float: none;
+    }
+}
+
+.navbar-item {
+    // Leaving this just incase it is actually needed
+    //@if $enable-flex-full {
+    //    flex: 0;
+    //} @else {
+    @if not $enable-flex-full {
+        display: table-cell;
+        white-space: nowrap;
+        vertical-align: top;
+    }
+}
+.navbar-item-min {
+    @if $enable-flex-full {
+        flex: 1;
+    }
+    width: 0%;
+}
+.navbar-item-max {
+    @if $enable-flex-full {
+        flex: 1;
+    }
+    width: 100%;
+}
+
+@if $enable-flex-opt {
+    .navbar-group-flex {
+        display: flex;
+    }
+    .navbar-group-flex.navbar-group-justified {
+        align-content: space-between;
+
+        .navbar-brand {
+            margin-right: 0;
+        }
+        .navbar-item {
+            flex: 1;
+        }
+    }
+
+    // Leaving this just incase it is actually needed
+    //.navbar-group-flex .navbar-item {
+    //    flex: 0;
+    //}
+    .navbar-group-flex .navbar-item-min,
+    .navbar-group-flex .navbar-item-max {
+        flex: 1;
+    }
+}

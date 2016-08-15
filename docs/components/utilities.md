@@ -205,9 +205,11 @@ Easily make an element as wide as its parent using the `.width-100` utility clas
 
 There is also a `.height-100` utility class, which sets `height: 100%`.
 
-## CSS `display` (`block`, `inline`, `inline-block`)
+## CSS `display`
 
-Use `.display-block`, `.display-inline`, or `.display-inline-block` to simply set an element's [`display` property](https://developer.mozilla.org/en-US/docs/Web/CSS/display) to `block`, `inline`, or `inline-block` (respectively).
+Use `.display-block`, `.display-inline`, `.display-inline-block`, `.display-flex` to simply set an element's [`display` property](https://developer.mozilla.org/en-US/docs/Web/CSS/display) to `block`, `inline`, `inline-block`, or `flex` (respectively).
+
+These classes are also available in repsonsive variants, in the form of `.display-{breakpoint}-{value}`, such as `.display-lg-block`.
 
 To make an element `display: none`, use our [responsive utilities]({{ site.baseurl }}/layout/responsive-utilities/) instead.
 

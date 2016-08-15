@@ -10,3 +10,15 @@
 .display-inline {
     display: inline !important;
 }
+.display-flex {
+    display: flex !important;
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        .display-#{$breakpoint}-block { display: block !important; }
+        .display-#{$breakpoint}-inline-block { display: inline-block !important; }
+        .display-#{$breakpoint}-inline { display: inline !important; }
+        .display-#{$breakpoint}-flex { display: flex !important; }
+    }
+}
