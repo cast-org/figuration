@@ -313,7 +313,12 @@
 @if $enable-flex-opt {
     .navbar-group-flex {
         display: flex;
+
+        .navbar-item {
+            display: inline-block;
+        }
     }
+
     .navbar-group-flex.navbar-group-justified {
         align-content: space-between;
 
