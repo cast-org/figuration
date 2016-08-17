@@ -6,21 +6,17 @@ group: get-started
 
 Figuration follows common web standards and---with minimal extra effort---can be used to create sites that are accessible to those using <abbr title="Assistive Technology" class="initialism">AT</abbr>.
 
-## Component requirements
-
-Some common HTML elements are always in need for basic accessibility enhancements through `role`s and Aria attributes. Below is a list of some of the most frequently used ones.
-
 {% callout info %}
-**Heads up!** As we go through the alphas, we'll be moving more accessibility notes here with links to specific sections from other areas of the docs.
+**More to come!** Over time, we hope to add more accessibility notes here with links to specific sections from other areas of the docs.
 {% endcallout %}
 
-### Button groups
+## Contents
+{:.no_toc}
 
-In order for assistive technologies---such as screen readers---to convey that a series of buttons is grouped, an appropriate `role` attribute needs to be provided. For button groups, this would be `role="group"`, while toolbars should have a `role="toolbar"`.
+* ToC goes here
+{:toc}
 
-In addition, groups and toolbars should be given an explicit label, as most assistive technologies will otherwise not announce them, despite the presence of the correct `role` attribute. In the examples provided here, we use `aria-label`, but alternatives such as `aria-labelledby` can also be used.
-
-## Skip navigation
+## Skip Navigation
 
 If your navigation contains many links and comes before the main content in the DOM, add a `Skip to main content` link before the navigation (for a simple explanation, see this [A11Y Project article on skip navigation links](http://a11yproject.com/posts/skip-nav-links)). Using the `.sr-only` class will visually hide the skip link, and the <code>.sr-only-focusable</code> class will ensure that the link becomes visible once focused (for sighted keyboard users).
 
@@ -42,13 +38,36 @@ Note that this bug will also affect any other in-page links your site may be usi
 </body>
 {% endhighlight %}
 
-## Nested headings
+## Nested Headings
 
 When nesting headings (`<h1>` - `<h6>`), your primary document header should be an `<h1>`. Subsequent headings should make logical use of `<h2>` - `<h6>` such that screen readers can construct a table of contents for your pages.
 
 Learn more at [HTML CodeSniffer](http://squizlabs.github.io/HTML_CodeSniffer/Standards/Section508/) and [Penn State's Accessability](http://accessibility.psu.edu/headings).
 
-## Additional resources
+## Screen Reader Only Content
+
+In some cases the design might call for content or layout that works fine for visual users, but screen reader users might need additional context to help with what the content is trying to convey.
+
+Some quick examples would be using icons for layout, or links that might all visually contain the same information (the ever present 'read more' links).  In both cases a screen reader is left with no context.
+
+Using [screen reader only content]({{ site.baseurl }}/components/utilities/#screen-readers-and-keyboard-users) is a way to provide this context without overloading the visual display.
+
+Some helpful references:
+
+- [Text for Screen Readers Only](http://www.coolfields.co.uk/2016/05/text-for-screen-readers-only-updated/)
+- [Invisible Content Just for Screen Reader Users](http://webaim.org/techniques/css/invisiblecontent/)
+
+## Component Requirements
+
+Some common HTML elements are always in need for basic accessibility enhancements through `role`s and Aria attributes. Below is a list of some of the most frequently used ones.
+
+### Button Groups
+
+In order for assistive technologies---such as screen readers---to convey that a series of buttons is grouped, an appropriate `role` attribute needs to be provided. For button groups, this would be `role="group"`, while toolbars should have a `role="toolbar"`.
+
+In addition, groups and toolbars should be given an explicit label, as most assistive technologies will otherwise not announce them, despite the presence of the correct `role` attribute. In the examples provided here, we use `aria-label`, but alternatives such as `aria-labelledby` can also be used.
+
+## Additional Resources
 
 - ["HTML Codesniffer" bookmarklet for identifying accessibility issues](https://github.com/squizlabs/HTML_CodeSniffer)
 - [The A11Y Project](http://a11yproject.com/)
