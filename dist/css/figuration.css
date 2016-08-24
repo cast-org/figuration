@@ -6129,6 +6129,10 @@ if $enable-flex-full .nav-inline {
   display: flex;
 }
 
+.navbar-group-flex .navbar-item {
+  display: inline-block;
+}
+
 .navbar-group-flex.navbar-group-justified {
   -webkit-align-content: space-between;
       -ms-flex-line-pack: justify;
