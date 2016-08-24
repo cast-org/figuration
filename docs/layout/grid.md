@@ -506,6 +506,8 @@ When flexbox support is used/enabled, you can utilize breakpoint-specific column
 
 Auto-layout for flexbox grid columns also means you can set the width of one column and the others will automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths.
 
+In the examples below, note that the other columns will resize no matter the width of the center column.
+
 <div class="cf-example-row">
 {% example html %}
 <div class="row row-flex">
@@ -513,7 +515,19 @@ Auto-layout for flexbox grid columns also means you can set the width of one col
         1 of 3
     </div>
     <div class="col-xs-6">
-        2 of 3 (wider)
+        2 of 3 (col-xs-6)
+    </div>
+    <div class="col-xs">
+        3 of 3
+    </div>
+</div>
+
+<div class="row row-flex">
+    <div class="col-xs">
+        1 of 3
+    </div>
+    <div class="col-xs-5">
+        2 of 3 (col-xs-5)
     </div>
     <div class="col-xs">
         3 of 3
