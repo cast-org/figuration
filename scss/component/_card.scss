@@ -319,7 +319,7 @@
         column-gap: $card-columns-sm-up-column-gap;
 
         .card {
-            display: inline-block;
+            display: inline-table;
             width: 100%; // Don't let them exceed the column width
         }
     }
