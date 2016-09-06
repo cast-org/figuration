@@ -5,16 +5,10 @@
 
 @mixin form-control-validation($color, $border-color) {
     // Color the label and help text
-    .text-help,
+    .form-control-feedback,
     .form-control-label,
-    .radio,
-    .checkbox,
-    .radio-inline,
-    .checkbox-inline,
-    &.radio label,
-    &.checkbox label,
-    &.radio-inline label,
-    &.checkbox-inline label,
+    .form-check-label,
+    .form-check-inline,
     .custom-control {
         color: $color;
     }
@@ -39,10 +33,6 @@
         color: $color;
         background-color: lighten($color, 40%);
         border-color: $color;
-    }
-    // Optional feedback icon
-    .form-control-feedback {
-        color: $color;
     }
 }
 

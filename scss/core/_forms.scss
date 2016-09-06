@@ -234,87 +234,64 @@ input[type="month"] {
 // Checkboxes and radios
 //
 // Indent the labels to position radios/checkboxes as hanging controls.
-.radio,
-.checkbox {
+.form-check {
     position: relative;
     display: block;
-    // margin-top:    ($spacer * .75);
     margin-bottom: ($spacer * .75);
 
-    label {
-        padding-left: 1.25rem;
-        margin-bottom: 0;
-        cursor: pointer;
-
-        // When there's no labels, don't position the input.
-        input:only-child {
-            position: static;
-        }
-    }
-}
-.radio input[type="radio"],
-.radio-inline input[type="radio"],
-.checkbox input[type="checkbox"],
-.checkbox-inline input[type="checkbox"] {
-    position: absolute;
-    margin-top: .25rem;
-    // margin-top: 4px \9;
-    margin-left: -1.25rem;
-}
-
-.radio + .radio,
-.checkbox + .checkbox {
     // Move up sibling radios or checkboxes for tighter spacing
-    margin-top: -.25rem;
-}
-
-// Radios and checkboxes on same line
-.radio-inline,
-.checkbox-inline {
-    position: relative;
-    display: inline-block;
-    padding-left: 1.25rem;
-    margin-bottom: 0;
-    vertical-align: middle;
-    cursor: pointer;
-}
-.radio-inline + .radio-inline,
-.checkbox-inline + .checkbox-inline {
-    margin-top: 0;
-    margin-left: .75rem;
-}
-
-// Apply same disabled cursor tweak as for inputs
-// Some special care is needed because <label>s don't inherit their parent's `cursor`.
-//
-// Note: Neither radios nor checkboxes can be readonly.
-input[type="radio"],
-input[type="checkbox"] {
-    &:disabled,
-    &.disabled {
-        cursor: $cursor-disabled;
+    + .form-check {
+        margin-top: -.25rem;
     }
-}
-// These classes are used directly on <label>s
-.radio-inline,
-.checkbox-inline {
+
     &.disabled {
-        cursor: $cursor-disabled;
-    }
-}
-// These classes are used on elements with <label> descendants
-.radio,
-.checkbox {
-    &.disabled {
-        label {
+        .form-check-label {
+            color: $text-muted;
             cursor: $cursor-disabled;
         }
     }
 }
 
+.form-check-label {
+    padding-left: 1.25rem;
+    margin-bottom: 0; // Override default `<label>` bottom margin
+    cursor: pointer;
+}
+
+.form-check-input {
+    position: absolute;
+    margin-top: .25rem;
+    margin-left: -1.25rem;
+
+    &:only-child {
+        position: static;
+    }
+}
+
+// Radios and checkboxes on same line
+.form-check-inline {
+    position: relative;
+    display: inline-block;
+    padding-left: 1.25rem;
+    margin-bottom: 0; // Override default `<label>` bottom margin
+    vertical-align: middle;
+    cursor: pointer;
+
+    + .form-check-inline {
+        margin-left: .75rem;
+    }
+
+    &.disabled {
+        cursor: $cursor-disabled;
+    }
+}
 
 // Form control feedback states
 // Apply contextual and semantic states to individual form controls.
+.form-control-feedback {
+    margin-top: ($spacer * .25);
+}
+
 .form-control-success,
 .form-control-warning,
 .form-control-danger {
@@ -411,19 +388,18 @@ input[type="checkbox"] {
 
         // Remove default margin on radios/checkboxes that were used for stacking, and
         // then undo the floating of radios and checkboxes to match.
-        .radio,
-        .checkbox {
+        .form-check {
             display: inline-block;
             margin-top: 0;
             margin-bottom: 0;
             vertical-align: middle;
-
-            label {
-                padding-left: 0;
-            }
         }
-        .radio input[type="radio"],
-        .checkbox input[type="checkbox"] {
+
+        .form-check-label {
+            padding-left: 0;
+        }
+
+        .form-check-input {
             position: relative;
             margin-left: 0;
         }
