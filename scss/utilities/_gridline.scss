@@ -25,16 +25,33 @@
 
         // Vertical lines
         .gridline-#{$breakpoint}-vr {
-            display: table;
-            width: 100%;
+            @if $enable-flex-full {
+                display: flex;
+            } @else {
+                display: table;
+                width: 100%;
+            }
 
             > .gridline-item {
-                display: table-cell;
-                float: none;
+                @if not $enable-flex-full {
+                    display: table-cell;
+                    float: none;
+                }
+
                 border-left: $gridline-border-width solid $gridline-border-color;
 
                 &:first-child {
                     border-left: 0;
+                }
+            }
+        }
+
+        @if $enable-flex-opt {
+            .gridline-flex.gridline-#{$breakpoint}-vr {
+                display: flex;
+
+                > .gridline-item {
+                    display: initial;
                 }
             }
         }
