@@ -260,11 +260,13 @@ input[type="month"] {
 
 .form-check-input {
     position: absolute;
-    margin-top: .25rem;
+    margin-top: .3125rem;
     margin-left: -1.25rem;
+    vertical-align: baseline;
 
     &:only-child {
         position: static;
+        vertical-align: top;
     }
 }
 
