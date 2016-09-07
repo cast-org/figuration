@@ -33,7 +33,6 @@ linters:
   Comment:
     enabled: true
     exclude:
-      - _normalize.scss
       - scss/figuration.scss
     style: silent
 
@@ -115,6 +114,10 @@ linters:
 
   PlaceholderInExtend:
     enabled: false
+
+  PrivateNamingConvention:
+    enabled: false
+    prefix: _
 
   PropertyCount:
     enabled: false
@@ -466,6 +469,10 @@ linters:
   SpaceAfterPropertyName:
     enabled: true
 
+  SpaceAfterVariableColon:
+    enabled: false
+    style: one_space # or 'no_space', 'at_least_one_space' or 'one_space_or_newline'
+
   SpaceAfterVariableName:
     enabled: true
 
@@ -519,8 +526,6 @@ linters:
     identifier_list: base
     additional_identifiers: []
     excluded_identifiers: []
-    exclude:
-      - _normalize.scss
 
   ZeroUnit:
     enabled: true
