@@ -846,27 +846,27 @@ Showing a <kbd>kdb sample</kbd>
     <input type="file" class="form-control-file" id="exampleInputFile" />
     <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
   </fieldset>
-  <div class="radio">
-    <label>
-      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="" />
+  <div class="form-check">
+    <label class=form-check-label">
+      <input type="radio" class=form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="" />
       Option one is this and that&mdash;be sure to include why it's great
     </label>
   </div>
-  <div class="radio">
-    <label>
-      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" />
+  <div class="form-check">
+    <label class=form-check-label">
+      <input type="radio" class=form-check-input"  name="optionsRadios" id="optionsRadios2" value="option2" />
       Option two can be something else and selecting it will deselect option one
     </label>
   </div>
-  <div class="radio disabled">
-    <label>
-      <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled="" />
+  <div class="form-check disabled">
+    <label class="form-check-label">
+      <input type="radio" class=form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled="" />
       Option three is disabled
     </label>
   </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" /> Check me out
+  <div class="form-check">
+    <label class="form-check-label">
+      <input type="checkbox" class="form-check-input"/> Check me out
     </label>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
@@ -907,9 +907,9 @@ Showing a <kbd>kdb sample</kbd>
     <label class="sr-only" for="exampleInputPassword3">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
   </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox"> Remember me
+  <div class="form-check">
+    <label class="form-check-label">
+      <input type="checkbox" class="form-check-input" /> Remember me
     </label>
   </div>
   <button type="submit" class="btn btn-primary">Sign in</button>
@@ -945,21 +945,21 @@ Showing a <kbd>kdb sample</kbd>
   <div class="form-group row">
     <label class="col-sm-2">Radios</label>
     <div class="col-sm-10">
-      <div class="radio">
-        <label>
-          <input type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="gridRadios" id="gridRadios1" value="option1" checked>
           Option one is this and that&mdash;be sure to include why it's great
         </label>
       </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="gridRadios" id="gridRadios2" value="option2">
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="gridRadios" id="gridRadios2" value="option2">
           Option two can be something else and selecting it will deselect option one
         </label>
       </div>
-      <div class="radio disabled">
-        <label>
-          <input type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+      <div class="form-check disabled">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="gridRadios" id="gridRadios3" value="option3" disabled>
           Option three is disabled
         </label>
       </div>
@@ -968,9 +968,9 @@ Showing a <kbd>kdb sample</kbd>
   <div class="form-group row">
     <label class="col-sm-2">Checkbox</label>
     <div class="col-sm-10">
-      <div class="checkbox">
-        <label>
-          <input type="checkbox"> Check me out
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" /> Check me out
         </label>
       </div>
     </div>
@@ -983,58 +983,101 @@ Showing a <kbd>kdb sample</kbd>
 </form>
 
 <h3>Stacked checkbox/radio</h3>
-<div class="checkbox">
-  <label>
-    <input type="checkbox" value="">
+<div class="form-check">
+  <label class="form-check-label">
+    <input type="checkbox" class="form-check-input" value="">
     Option one is this and that&mdash;be sure to include why it's great
   </label>
 </div>
-<div class="checkbox disabled">
-  <label>
-    <input type="checkbox" value="" disabled>
+<div class="form-check disabled">
+  <label class="form-check-label">
+    <input type="checkbox" class="form-check-input" value="" disabled>
     Option two is disabled
   </label>
 </div>
 
-<div class="radio">
-  <label>
-    <input type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+<div class="form-check">
+  <label class="form-check-label">
+    <input type="radio" class=""form-check-input" name="exampleRadios" id="exampleRadios1" value="option1" checked>
     Option one is this and that&mdash;be sure to include why it's great
   </label>
 </div>
-<div class="radio">
-  <label>
-    <input type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+<div class="form-check">
+  <label class="form-check-label">
+    <input type="radio" class="form-check-input" name="exampleRadios" id="exampleRadios2" value="option2">
     Option two can be something else and selecting it will deselect option one
   </label>
 </div>
-<div class="radio disabled">
-  <label>
-    <input type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
+<div class="form-check disabled">
+  <label class="form-check-label">
+    <input type="radio" class="form-check-input" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
     Option three is disabled
   </label>
 </div>
 
 <h3>Inline checkbox/radio</h3>
-<label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+<label class="form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
 </label>
-<label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+<label class="form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
 </label>
-<label class="checkbox-inline">
-  <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+<label class="form-check-inline">
+  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3"> 3
 </label>
 
-<label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+<label class="form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
 </label>
-<label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+<label class="form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
 </label>
-<label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+<label class="form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
 </label>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="form-group row">
+        <div class="col-sm-2">Criteria 1:
+        </div>
+        <div class="col-sm-10">
+          <label class="form-check-inline"><input class="form-check-input" type="checkbox" id="inputCriteria1" name="checkCriteria1" value="yes"> Yes, I want!</label>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-2">Criteria 2:
+        </div>
+        <div class="col-sm-10">
+          <label class="form-check-inline"><input class="form-check-input" type="checkbox" id="inputCriteria2" name="checkCriteria2" value="yes"> Yes, it's me: <a href="mailto:john@doe.com">john@doe.com</a></label>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-2">Criteria 3:
+        </div>
+        <div class="col-sm-10">
+          <label class="form-check-inline"><input class="form-check-input" type="checkbox" id="inputCriteria3" name="checkCriteria2" value="yes"> Yes, I <em>really</em> want it!</label>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-2">Criteria 4:
+        </div>
+        <div class="col-sm-10">
+          <label class="form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
+          </label>
+          <label class="form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2<em>italic</em>
+          </label>
+          <label class="form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3"> 3
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <h3>Static controls</h3>
 <form>
@@ -1078,9 +1121,9 @@ Showing a <kbd>kdb sample</kbd>
         <option>Disabled select</option>
       </select>
     </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"> Can't check this
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input" /> Can't check this
       </label>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
@@ -1242,21 +1285,21 @@ Showing a <kbd>kdb sample</kbd>
   <input type="text" class="form-control form-control-danger" id="inputDanger1">
 </div>
 
-<div class="checkbox has-success">
-  <label>
-    <input type="checkbox" id="checkboxSuccess" value="option1">
+<div class="form-check has-success">
+  <label class="form-check-label">
+    <input type="checkbox" class="form-check-input" id="checkboxSuccess" value="option1">
     Checkbox with success
   </label>
 </div>
-<div class="checkbox has-warning">
-  <label>
-    <input type="checkbox" id="checkboxWarning" value="option1">
+<div class="form-check has-warning">
+  <label class="form-check-label">
+    <input type="checkbox" class="form-check-input" id="checkboxWarning" value="option1">
     Checkbox with warning
   </label>
 </div>
-<div class="checkbox has-danger">
-  <label>
-    <input type="checkbox" id="checkboxDanger" value="option1">
+<div class="form-check has-danger">
+  <label class="form-check-label">
+    <input type="checkbox" class="form-check-input" id="checkboxDanger" value="option1">
     Checkbox with danger
   </label>
 </div>
