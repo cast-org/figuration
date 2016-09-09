@@ -9,8 +9,9 @@
 // Base class takes care of all the key behavioral aspects.
 .custom-control {
     position: relative;
-    display: inline;
+    display: inline-block;
     padding-left: $custom-control-gutter;
+    margin-bottom: 0;
     cursor: pointer;
 
     + .custom-control {
@@ -58,7 +59,7 @@
 // Generates a shadow element to create our makeshift checkbox/radio background.
 .custom-control-indicator {
     position: absolute;
-    top: .0625rem;
+    top: .1875rem;
     left: 0;
     display: block;
     width: $custom-control-indicator-size;
@@ -111,13 +112,8 @@
 // set. Use these optional classes to tweak the layout.
 .custom-controls-stacked {
     .custom-control {
-        display: inline;
-
-        &::after {
-            display: block;
-            margin-bottom: $custom-control-spacer-y;
-            content: "";
-        }
+        display: block;
+        margin-bottom: $custom-control-spacer-y;
 
         + .custom-control {
             margin-left: 0;

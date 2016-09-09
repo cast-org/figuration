@@ -439,7 +439,7 @@ $icon-danger: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.o
 // =====
 $custom-control-gutter:                 1.5rem !default;
 $custom-control-spacer-x:               1rem !default;
-$custom-control-spacer-y:               .25rem !default;
+$custom-control-spacer-y:               .5rem !default;
 
 $custom-control-indicator-size:         1rem !default;
 $custom-control-indicator-bg:           $uibase-50 !default;
@@ -456,7 +456,7 @@ $custom-control-checked-indicator-color:      $white !default;
 $custom-control-checked-indicator-bg:         map-get($context-colors, "primary") !default;
 $custom-control-checked-indicator-box-shadow: none !default;
 
-$custom-control-focus-indicator-box-shadow:  0 0 0 .075rem #fff, 0 0 0 .2rem $input-border-focus !default;
+$custom-control-focus-indicator-box-shadow:  0 0 0 .0625rem #fff, 0 0 0 .1875rem $input-border-focus !default;
 
 $custom-control-active-indicator-color:      $white !default;
 $custom-control-active-indicator-bg:         palette-context("primary", 300) !default;
