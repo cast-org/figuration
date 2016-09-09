@@ -36,9 +36,7 @@ a.tag {
 }
 // scss-lint:enable QualifyingElement
 
-// Pill tags
-// Make them extra rounded with a modifier to replace v3's badges.
-
+// Pill
 .tag-pill {
     padding-right: $tag-pill-padding-x;
     padding-left: $tag-pill-padding-x;
@@ -50,9 +48,21 @@ a.tag {
     @include tag-variant($tag-bg);
 }
 @each $theme, $colors in $context-themes {
-    $bg: map-get($colors, "control-bg");
+    $color: map-get($colors, "control-bg");
 
     .tag-#{$theme} {
-        @include tag-variant($bg);
+        @include tag-variant($color);
+    }
+}
+
+// Outline (linked tags get color fill on :hover)
+.tag-outline {
+    @include tag-outline-variant($tag-bg);
+}
+@each $theme, $colors in $context-themes {
+    $color: map-get($colors, "control-bg");
+
+    .tag-outline-#{$theme} {
+        @include tag-outline-variant($color);
     }
 }

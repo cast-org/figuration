@@ -695,14 +695,17 @@ $tag-bg:                    $uibase-400 !default;
 $tag-link-hover-color:      $white !default;
 $tag-font-size:             75% !default;
 $tag-font-weight:           bold !default;
-$tag-padding-x:             .4em !default;
+$tag-padding-x:             .375em !default;
 $tag-padding-y:             .25em !default;
 $tag-border-radius:         .25em !default;
+$tag-border-width:          $border-width !default;
 
 $tag-pill-padding-x:        .5em !default;
 // Use a higher than normal value to ensure completely rounded edges when
 // customizing padding or font-size on tags.
 $tag-pill-border-radius:    10rem !default;
+
+$tag-outline-link-hover-color:  $white !default;
 
 
 // Alerts
