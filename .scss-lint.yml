@@ -1,5 +1,7 @@
 # Default application configuration that all configurations inherit from.
-scss_files: "**/*.scss"
+scss_files:
+    - "scss/**/*.scss"
+    - "docs/assets/scss/**/*.scss"
 
 exclude:
   - "scss/base/_normalize.scss"
