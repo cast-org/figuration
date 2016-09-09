@@ -129,7 +129,7 @@
 
 // Card image
 .card-img {
-    @include border-radius($card-border-radius);
+    @include border-radius($card-border-radius-inner);
 }
 .card-img-overlay {
     position: absolute;
@@ -142,10 +142,10 @@
 
 // Card image caps
 .card-img-top {
-    @include border-radius($card-border-radius $card-border-radius 0 0);
+    @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
 }
 .card-img-bottom {
-    @include border-radius(0 0 $card-border-radius $card-border-radius);
+    @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
 }
 
 // Card deck

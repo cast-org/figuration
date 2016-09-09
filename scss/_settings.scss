@@ -726,6 +726,7 @@ $card-spacer-x:            1.25rem !default;
 $card-spacer-y:            1rem !default;
 $card-border-width:        $border-width !default;
 $card-border-radius:       $border-radius !default;
+$card-border-radius-inner: calc(#{$border-radius} - #{$card-border-width}) !default;
 $card-border-color:        $uibase-300 !default;
 $card-cap-bg:              $uibase-50 !default;
 $card-bg:                  $white !default;
