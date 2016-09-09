@@ -20,7 +20,7 @@ Cards require a small amount of markup and classes to provide you with as much c
 
 {% example html %}
 <div class="card">
-  <img class="card-img-top img-reponsive" data-src="holder.js/100px180/" alt="Card image cap">
+  <img class="card-img-top img-responsive" data-src="holder.js/100px180/" alt="Card image cap">
   <div class="card-block">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -35,7 +35,7 @@ Cards support a wide variety of content, including images, text, list groups, li
 
 {% example html %}
 <div class="card">
-  <img class="card-img-top img-reponsive" data-src="holder.js/100px180/?text=Image cap" alt="Card image cap">
+  <img class="card-img-top img-responsive" data-src="holder.js/100px180/?text=Image cap" alt="Card image cap">
   <div class="card-block">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -68,7 +68,7 @@ Lists can be added to a card by adding a list group.
 
 {% example html %}
 <div class="card">
-  <img class="card-img-top img-reponsive" data-src="holder.js/100px180/?text=Image cap" alt="Card image cap">
+  <img class="card-img-top img-responsive" data-src="holder.js/100px180/?text=Image cap" alt="Card image cap">
   <div class="card-block">
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>
@@ -280,7 +280,7 @@ Similar to headers and footers, cards include top and bottom image caps.
 
 {% example html %}
 <div class="card">
-  <img class="card-img-top img-reponsive" data-src="holder.js/100px180/" alt="Card image cap">
+  <img class="card-img-top img-responsive" data-src="holder.js/100px180/" alt="Card image cap">
   <div class="card-block">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -293,7 +293,7 @@ Similar to headers and footers, cards include top and bottom image caps.
     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
-  <img class="card-img-bottom img-reponsive" data-src="holder.js/100px180/" alt="Card image cap">
+  <img class="card-img-bottom img-responsive" data-src="holder.js/100px180/" alt="Card image cap">
 </div>
 {% endexample %}
 
@@ -303,7 +303,7 @@ Turn an image into a card background and overlay your card's text. Depending on 
 
 {% example html %}
 <div class="card card-inverse">
-  <img class="card-img img-reponsive" data-src="holder.js/100px270/#55595c:#373a3c/text:Card image" alt="Card image">
+  <img class="card-img img-responsive" data-src="holder.js/100px270/#55595c:#373a3c/text:Card image" alt="Card image">
   <div class="card-img-overlay">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -462,7 +462,7 @@ Groups have support for both a `table` style layout, along with both the opt-in 
 {% example html %}
 <div class="card-group">
   <div class="card">
-    <img class="card-img-top img-reponsive" data-src="holder.js/100px180/" alt="Card image cap">
+    <img class="card-img-top img-responsive" data-src="holder.js/100px180/" alt="Card image cap">
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -470,7 +470,7 @@ Groups have support for both a `table` style layout, along with both the opt-in 
     </div>
   </div>
   <div class="card">
-    <img class="card-img-top img-reponsive" data-src="holder.js/100px180/" alt="Card image cap">
+    <img class="card-img-top img-responsive" data-src="holder.js/100px180/" alt="Card image cap">
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -478,7 +478,7 @@ Groups have support for both a `table` style layout, along with both the opt-in 
     </div>
   </div>
   <div class="card">
-    <img class="card-img-top img-reponsive" data-src="holder.js/100px180/" alt="Card image cap">
+    <img class="card-img-top img-responsive" data-src="holder.js/100px180/" alt="Card image cap">
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -502,7 +502,7 @@ If you wish to have a card deck that matches the grid layout, you will need to u
 <div class="card-deck-wrapper">
   <div class="card-deck">
     <div class="card">
-      <img class="card-img-top img-reponsive" data-src="holder.js/100px200/" alt="Card image cap">
+      <img class="card-img-top img-responsive" data-src="holder.js/100px200/" alt="Card image cap">
       <div class="card-block">
         <h4 class="card-title">Card title</h4>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -510,7 +510,7 @@ If you wish to have a card deck that matches the grid layout, you will need to u
       </div>
     </div>
     <div class="card">
-      <img class="card-img-top img-reponsive" data-src="holder.js/100px200/" alt="Card image cap">
+      <img class="card-img-top img-responsive" data-src="holder.js/100px200/" alt="Card image cap">
       <div class="card-block">
         <h4 class="card-title">Card title</h4>
         <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -518,7 +518,7 @@ If you wish to have a card deck that matches the grid layout, you will need to u
       </div>
     </div>
     <div class="card">
-      <img class="card-img-top img-reponsive" data-src="holder.js/100px200/" alt="Card image cap">
+      <img class="card-img-top img-responsive" data-src="holder.js/100px200/" alt="Card image cap">
       <div class="card-block">
         <h4 class="card-title">Card title</h4>
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
