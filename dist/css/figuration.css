@@ -6496,6 +6496,7 @@ a.tag:focus, a.tag:hover {
 
 .card-header {
   padding: 1rem 1rem;
+  margin-bottom: 0;
   background-color: #f0f0f0;
   border-bottom: 1px solid #a3a3a3;
 }
