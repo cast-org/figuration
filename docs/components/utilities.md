@@ -651,7 +651,7 @@ To set the alignment, the available classes, per breakpoint, are:
 
 ### Ordering
 
-Need a quick way to reorder your flexbox items.  Here are a few helper classes.
+Quickly change the **visual order** of your flexbox items.
 
 The available classes, per breakpoint, are:
 
