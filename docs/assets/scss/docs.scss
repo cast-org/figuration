@@ -35,6 +35,14 @@ $docs-color: #246;
     @include button-outline-variant($uibase-50, $uibase-50, $uibase-700);
 }
 
+.icon-menu {
+    display: inline-block;
+    margin-top: -.25rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: .75;
+}
+
 .cf-header {
     color: $white;
     background-color: $uibase-900;
