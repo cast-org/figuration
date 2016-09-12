@@ -303,7 +303,7 @@ Our [Collapse widget]({{ site.baseurl }}/widgets/collapse/) allows you to use a 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
   <button class="navbar-toggler" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#exCollapsingNavbar" aria-label="Toggle navigation">
-    &#9776;
+    <span aria-hidden="true">&#8801;</span>
   </button>
   <div class="collapse" id="exCollapsingNavbar">
     <div class="bg-inverse padding-a-1">
@@ -325,7 +325,7 @@ Note the use of the `hidden` option for the [Collapse widget]({{ site.baseurl }}
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
     <a class="navbar-brand" href="#">Responsive navbar</a>
-    <button class="navbar-toggler hidden-lg-up pull-xs-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav0" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#9776;</button>
+    <button class="navbar-toggler hidden-lg-up pull-xs-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav0" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
     <div class="collapse navbar-toggleable-md" id="respNav0">
         <ul class="nav navbar-nav">
             <li class="nav-item active">
