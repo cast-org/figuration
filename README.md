@@ -79,6 +79,11 @@ Moreover, if your pull request contains JavaScript patches or features, you must
 
 Editor preferences are available in the [editor config](https://github.com/cast-org/figuration/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
 
+## Community
+
+Keep up with Figuration's development and announcements.
+
+- Follow [@figuration_org on Twitter](https://twitter.com/figuration_org)
 
 ## Versioning
 
