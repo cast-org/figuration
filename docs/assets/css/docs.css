@@ -80,7 +80,7 @@
   background-color: #292929;
 }
 
-@media (max-width: 47.9375em) {
+@media (max-width: 61.9375em) {
   .cf-header .nav-item {
     float: none;
   }

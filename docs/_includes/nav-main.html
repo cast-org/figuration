@@ -2,12 +2,12 @@
     <div class="container">
         <nav>
             <a class="navbar-brand" href="{{ site.baseurl }}/">CAST Figuration</a>
-            <div class="clearfix hidden-md-up">
+            <div class="clearfix hidden-lg-up">
                 <button class="navbar-toggler btn btn-toggler pull-xs-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">
                     <span class="icon-menu" aria-hidden="true">&#8801;</span>
                 </button>
             </div>
-            <div class="collapse navbar-toggleable-sm" id="cf-topnav">
+            <div class="collapse navbar-toggleable-md" id="cf-topnav">
                 <ul class="nav navbar-nav">
                     <li class="nav-item {% if page.group == "get-started" %}active{% endif %}">
                         <a href="{{ site.baseurl }}/get-started/quick-start/" class="nav-link">Get Started</a>
@@ -21,15 +21,18 @@
                     <li class="nav-item {% if page.group == "components" %}active{% endif %}">
                         <a href="{{ site.baseurl }}/components/alerts/" class="nav-link">Components</a>
                     </li>
+                    <li class="nav-item {% if page.group == "utilities" %}active{% endif %}">
+                        <a href="{{ site.baseurl }}/utilities/clearfix/" class="nav-link">Utilities</a>
+                    </li>
                     <li class="nav-item {% if page.group == "widgets" %}active{% endif %}">
-                        <a href="{{ site.baseurl }}/widgets/overview" class="nav-link">Widgets</a>
+                        <a href="{{ site.baseurl }}/widgets/overview/" class="nav-link">Widgets</a>
                     </li>
                     <li class="nav-item {% if page.group == "about" %}active{% endif %}">
-                        <a href="{{ site.baseurl }}/about/overview" class="nav-link">About</a>
+                        <a href="{{ site.baseurl }}/about/overview/" class="nav-link">About</a>
                     </li>
-                    <li class="nav-item pull-md-right">
+                    <li class="nav-item pull-lg-right">
                         <a href="{{ site.repo }}" class="nav-link"><small>GitHub</small></a>
-                    <li>
+                    </li>
                 </ul>
             </div>
         </nav>

@@ -43,7 +43,20 @@
     - title: Pagination
     - title: Progress
     - title: Tags
-    - title: Utilities
+
+- title: Utilities
+  pages:
+    - title: Clearfix
+    - title: Color
+    - title: Display Property
+    - title: Flexbox
+    - title: Icons
+    - title: Responsive Embeds
+    - title: Responsive Floats
+    - title: Screen Readers & Visibility
+    - title: Sizing & Positioning
+    - title: Spacing
+    - title: Typography
 
 - title: Widgets
   pages:
