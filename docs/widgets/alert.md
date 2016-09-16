@@ -2,7 +2,6 @@
 layout: docs
 title: Alerts
 group: widgets
-redirect_from: "/components/"
 ---
 
 Enable dismiss functionality for alert messages.
