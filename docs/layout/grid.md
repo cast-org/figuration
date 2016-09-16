@@ -538,4 +538,4 @@ In the examples below, note that the other columns will resize no matter the wid
 
 ### Alignment
 
-If you wish to have better control over your flexbox grid alignment, there are a handful of utility classes that might be helpful.  Information and examples can be found in the Flexbox Alignment section of the [Utility Classes page]({{ site.baseurl }}/components/utilities/#flexbox-alignment).
+If you wish to have better control over your flexbox grid alignment, there are a handful of utility classes that might be helpful.  Information and examples can be found in the [Flexbox utilities page]({{ site.baseurl }}/utilities/flexbox/).

@@ -4,7 +4,7 @@ title: Typography
 group: content
 ---
 
-Figuration includes simple and easily customized typography for headings, body text, lists, and more. For even more control, check out the [textual utility classes]({{ site.baseurl }}/components/utilities/).
+Figuration includes simple and easily customized typography for headings, body text, lists, and more. For even more control, check out the [utility classes]({{ site.baseurl }}/utilities/typography/).
 
 ## Contents
 {:.no_toc}
@@ -98,7 +98,7 @@ While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant
 
 ## Text Utilities
 
-Change text alignment, transform, style, weight, and color with our [text utilities]({{ site.baseurl }}/components/utilities/#text-alignment).
+Change text alignment, transform, style, weight, and color with our [text utilities]({{ site.baseurl }}/utilities/typography/#text-alignment).
 
 ## Abbreviations
 

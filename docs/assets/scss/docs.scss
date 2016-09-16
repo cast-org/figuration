@@ -48,7 +48,7 @@ $docs-color: #246;
     background-color: $uibase-900;
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
     .cf-header .nav-item {
         float: none;
     }

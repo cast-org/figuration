@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Utility Classes
-group: components
+group: utilities
 ---
 
 We include dozens of utilities---classes with a single purpose. They're designed to reduce the frequency of highly repetitive declarations in your CSS while allowing for quick and easy development.
@@ -187,14 +187,13 @@ Sometimes contextual classes cannot be applied due to the specificity of another
 
 ### Palette Colors
 
-If enabled, any color theme that is added to the `$palette-themes` Sass map will become available for use.  For example a theme named `blue`, then becomes available as `.text-blue-[level]` or `.bg-blue-[level]`, where `level` is in the set defined by the `$palette-levels` variable.
+If the [color palette]({{ site.baseurl }}/content/color/) is enabled, any color theme that is added to the `$palette-themes` Sass map will become available for use.  For example a theme named `blue`, then becomes available as `.text-blue-[level]` or `.bg-blue-[level]`, where `level` is in the set defined by the `$palette-levels` variable.
 
 {% example html %}
 <p class="text-blue-700">blue-700 text sample</p>
 <p><a href="#" class="text-blue-400">blue-400 link example</a></p>
 <div class="bg-blue-100 text-dark">Blue-100 background with dark text</div>
 {% endexample %}
-
 
 ## Widths/Heights
 
@@ -204,7 +203,7 @@ Easily make an element as wide as its parent using the `.width-100` utility clas
 <img class="width-100" data-src="holder.js/200px100?outline=yes&text=Width%20%3D%20100%25" alt="Width = 100%">
 {% endexample %}
 
-There is also a `.height-100` utility class, which sets `height: 100%`.
+There is also a `.height-100` utility class, which sets `height: 100%`.  However, it probabaly won't work the way you think it does.  [This article](http://webdesign.about.com/od/csstutorials/f/set-css-height-100-percent.htm) has a few details on working with precentage heights.
 
 ## CSS `display`
 
