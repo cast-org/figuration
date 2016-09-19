@@ -61,12 +61,12 @@
     <div class="container">
         <nav>
             <a class="navbar-brand" href="/">CAST Figuration</a>
-            <div class="clearfix hidden-md-up">
+            <div class="clearfix hidden-lg-up">
                 <button class="navbar-toggler btn btn-toggler pull-xs-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">
-                    <span aria-hidden="true">&#9776;</span>
+                    <span class="icon-menu" aria-hidden="true">&#8801;</span>
                 </button>
             </div>
-            <div class="collapse navbar-toggleable-sm" id="cf-topnav">
+            <div class="collapse navbar-toggleable-md" id="cf-topnav">
                 <ul class="nav navbar-nav">
                     <li class="nav-item active">
                         <a href="/get-started/quick-start/" class="nav-link">Get Started</a>
@@ -81,14 +81,17 @@
                         <a href="/components/alerts/" class="nav-link">Components</a>
                     </li>
                     <li class="nav-item ">
-                        <a href="/widgets/overview" class="nav-link">Widgets</a>
+                        <a href="/utilities/clearfix/" class="nav-link">Utilities</a>
                     </li>
                     <li class="nav-item ">
-                        <a href="/about/overview" class="nav-link">About</a>
+                        <a href="/widgets/overview/" class="nav-link">Widgets</a>
                     </li>
-                    <li class="nav-item pull-md-right">
+                    <li class="nav-item ">
+                        <a href="/about/overview/" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item pull-lg-right">
                         <a href="https://github.com/cast-org/figuration" class="nav-link"><small>GitHub</small></a>
-                    <li>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -112,100 +115,107 @@
             <div class="col-xs-12 col-md-3 cf-sidebar">
                 <nav class="cf-links">
 
-  
-  
 
   
+  
 
-    <div class="h4">Get Started</div>
-    <ul class="nav">
-      
-        
-        
-
-        
-        
-
-        <li class="nav-item">
-          <a href="/get-started/quick-start" class="nav-link ">
-            Quick Start
-          </a>
-        </li>
-      
-        
-        
-
-        
-        
-
-        <li class="nav-item">
-          <a href="/get-started/download" class="nav-link ">
-            Download
-          </a>
-        </li>
-      
-        
-        
-
-        
-        
-
-        <li class="nav-item">
-          <a href="/get-started/browsers-devices" class="nav-link ">
-            Browsers & Devices
-          </a>
-        </li>
-      
-        
-        
-
-        
-        
-
-        <li class="nav-item">
-          <a href="/get-started/options" class="nav-link ">
-            Options
-          </a>
-        </li>
-      
-        
-        
-
-        
-        
-
-        <li class="nav-item">
-          <a href="/get-started/build-tools" class="nav-link active">
-            Build Tools
-          </a>
-        </li>
-      
-        
-        
-
-        
-        
-
-        <li class="nav-item">
-          <a href="/get-started/accessibility" class="nav-link ">
-            Accessibility
-          </a>
-        </li>
-      
-        
-        
-
-        
-        
-
-        <li class="nav-item">
-          <a href="/get-started/examples" class="nav-link ">
-            Examples
-          </a>
-        </li>
-      
-    </ul>
+  
     
+      <div class="h4">Get Started</div>
+      <ul class="nav">
+        
+          
+          
+
+          
+          
+
+          <li class="nav-item">
+            <a href="/get-started/quick-start" class="nav-link ">
+              Quick Start
+            </a>
+          </li>
+        
+          
+          
+
+          
+          
+
+          <li class="nav-item">
+            <a href="/get-started/download" class="nav-link ">
+              Download
+            </a>
+          </li>
+        
+          
+          
+
+          
+          
+
+          <li class="nav-item">
+            <a href="/get-started/browsers-devices" class="nav-link ">
+              Browsers & Devices
+            </a>
+          </li>
+        
+          
+          
+
+          
+          
+
+          <li class="nav-item">
+            <a href="/get-started/options" class="nav-link ">
+              Options
+            </a>
+          </li>
+        
+          
+          
+
+          
+          
+
+          <li class="nav-item">
+            <a href="/get-started/build-tools" class="nav-link active">
+              Build Tools
+            </a>
+          </li>
+        
+          
+          
+
+          
+          
+
+          <li class="nav-item">
+            <a href="/get-started/accessibility" class="nav-link ">
+              Accessibility
+            </a>
+          </li>
+        
+          
+          
+
+          
+          
+
+          <li class="nav-item">
+            <a href="/get-started/examples" class="nav-link ">
+              Examples
+            </a>
+          </li>
+        
+      </ul>
+    
+  
+
+  
+  
+
+  
 
   
   
@@ -251,6 +261,7 @@
   <li><a href="#using-grunt" id="markdown-toc-using-grunt">Using Grunt</a></li>
   <li><a href="#sass-compiler" id="markdown-toc-sass-compiler">Sass Compiler</a></li>
   <li><a href="#autoprefixer" id="markdown-toc-autoprefixer">Autoprefixer</a></li>
+  <li><a href="#postcss-flexbugs-fixes" id="markdown-toc-postcss-flexbugs-fixes">postcss-flexbugs-fixes</a></li>
   <li><a href="#local-documentation" id="markdown-toc-local-documentation">Local Documentation</a></li>
   <li><a href="#troubleshooting" id="markdown-toc-troubleshooting">Troubleshooting</a></li>
 </ul>
@@ -286,11 +297,11 @@
   <tbody>
     <tr>
       <td><code class="highlighter-rouge">grunt</code></td>
-      <td>Run <code class="highlighter-rouge">grunt</code> to run tests locally and compile the CSS and JavaScript into <code class="highlighter-rouge">/dist</code>. <strong>Uses <a href="http://sass-lang.com/">Sass</a>, <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, and <a href="http://lisperator.net/uglifyjs/">UglifyJS</a>.</strong></td>
+      <td>Run <code class="highlighter-rouge">grunt</code> to run tests locally and compile the CSS and JavaScript into <code class="highlighter-rouge">/dist</code>. <strong>Uses <a href="http://sass-lang.com/">Sass</a>, <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, <a href="https://github.com/luisrudge/postcss-flexbugs-fixes">postcss-flexbugs-fixes</a>, and <a href="http://lisperator.net/uglifyjs/">UglifyJS</a>.</strong></td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">grunt dist</code></td>
-      <td><code class="highlighter-rouge">grunt dist</code> creates the <code class="highlighter-rouge">/dist</code> directory with compiled files. <strong>Uses <a href="http://sass-lang.com/">Sass</a>, <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, and <a href="http://lisperator.net/uglifyjs/">UglifyJS</a>.</strong></td>
+      <td><code class="highlighter-rouge">grunt dist</code> creates the <code class="highlighter-rouge">/dist</code> directory with compiled files. <strong>Uses <a href="http://sass-lang.com/">Sass</a>, <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, <a href="https://github.com/luisrudge/postcss-flexbugs-fixes">postcss-flexbugs-fixes</a>, and <a href="http://lisperator.net/uglifyjs/">UglifyJS</a>.</strong></td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">grunt test</code></td>
@@ -316,6 +327,10 @@
 <p>Figuration uses <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> (included in our Gruntfile and build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins.</p>
 
 <p>We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See <a href="https://github.com/cast-org/figuration/blob/master/grunt/autoprefixer-settings.js"><code class="highlighter-rouge">/grunt/autoprefixer-settings.json</code></a> for details.</p>
+
+<h2 id="postcss-flexbugs-fixes">postcss-flexbugs-fixes</h2>
+
+<p>Also included in our Gruntfile and build process is <a href="https://github.com/luisrudge/postcss-flexbugs-fixes">postcss-flexbugs-fixes</a> to work around some browser issues for flexbox layout.  More information about these issues can be found over at the <a href="https://github.com/philipwalton/flexbugs">Flexbugs</a> repository.</p>
 
 <h2 id="local-documentation">Local Documentation</h2>
 
@@ -344,7 +359,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p>
-            Currently version: 1.1.0
+            Currently version: 1.2.0
             <br />
             <a href="https://github.com/cast-org/figuration">GitHub Project</a> - <a href="https://github.com/cast-org/figuration/issues">Issues</a>
         </p>

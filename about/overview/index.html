@@ -61,12 +61,12 @@
     <div class="container">
         <nav>
             <a class="navbar-brand" href="/">CAST Figuration</a>
-            <div class="clearfix hidden-md-up">
+            <div class="clearfix hidden-lg-up">
                 <button class="navbar-toggler btn btn-toggler pull-xs-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">
-                    <span aria-hidden="true">&#9776;</span>
+                    <span class="icon-menu" aria-hidden="true">&#8801;</span>
                 </button>
             </div>
-            <div class="collapse navbar-toggleable-sm" id="cf-topnav">
+            <div class="collapse navbar-toggleable-md" id="cf-topnav">
                 <ul class="nav navbar-nav">
                     <li class="nav-item ">
                         <a href="/get-started/quick-start/" class="nav-link">Get Started</a>
@@ -81,14 +81,17 @@
                         <a href="/components/alerts/" class="nav-link">Components</a>
                     </li>
                     <li class="nav-item ">
-                        <a href="/widgets/overview" class="nav-link">Widgets</a>
+                        <a href="/utilities/clearfix/" class="nav-link">Utilities</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="/widgets/overview/" class="nav-link">Widgets</a>
                     </li>
                     <li class="nav-item active">
-                        <a href="/about/overview" class="nav-link">About</a>
+                        <a href="/about/overview/" class="nav-link">About</a>
                     </li>
-                    <li class="nav-item pull-md-right">
+                    <li class="nav-item pull-lg-right">
                         <a href="https://github.com/cast-org/figuration" class="nav-link"><small>GitHub</small></a>
-                    <li>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -112,10 +115,6 @@
             <div class="col-xs-12 col-md-3 cf-sidebar">
                 <nav class="cf-links">
 
-  
-  
-
-  
 
   
   
@@ -142,47 +141,58 @@
 
   
 
-    <div class="h4">About</div>
-    <ul class="nav">
-      
-        
-        
+  
+  
 
-        
-        
+  
 
-        <li class="nav-item">
-          <a href="/about/overview" class="nav-link active">
-            Overview
-          </a>
-        </li>
-      
-        
-        
+  
+  
 
-        
-        
-
-        <li class="nav-item">
-          <a href="/about/team" class="nav-link ">
-            Team
-          </a>
-        </li>
-      
-        
-        
-
-        
-        
-
-        <li class="nav-item">
-          <a href="/about/license" class="nav-link ">
-            License
-          </a>
-        </li>
-      
-    </ul>
+  
     
+      <div class="h4">About</div>
+      <ul class="nav">
+        
+          
+          
+
+          
+          
+
+          <li class="nav-item">
+            <a href="/about/overview" class="nav-link active">
+              Overview
+            </a>
+          </li>
+        
+          
+          
+
+          
+          
+
+          <li class="nav-item">
+            <a href="/about/team" class="nav-link ">
+              Team
+            </a>
+          </li>
+        
+          
+          
+
+          
+          
+
+          <li class="nav-item">
+            <a href="/about/license" class="nav-link ">
+              License
+            </a>
+          </li>
+        
+      </ul>
+    
+  
 
 </nav>
 
@@ -193,13 +203,44 @@
                     
                 </h1>
 
-                <p>Figuration was started as an in-house project at <a href="http://www.cast.org">CAST, Inc</a> based off Bootstrap v.3.</p>
+                <h2 id="figuration-smallfig-yuh-rey-shuhnsmall">Figuration <small>[fig-yuh-<strong>rey</strong>-shuhn]</small></h2>
+
+<ul>
+  <li>the act of marking or adorning with a design</li>
+  <li>ornamentation of a musical passage by using decorative and usually repetitive figures</li>
+</ul>
+
+<p>The goal is to make Figuration a consistent, robust, but easy to use front-end framework for developing web sites and applications.</p>
+
+<h2 id="about">About</h2>
+
+<p>Figuration was started as an in-house project at <a href="http://www.cast.org">CAST, Inc</a> based off Bootstrap v.3.</p>
 
 <p>At the time Boostrap did not have the level of accessibility that it does now.  They have made amazing strides in accessibility and usability since then.</p>
 
 <p>Since CAST is a small, nonprofit education research and development organization, our work is mostly funded through grants, some private and some from the U.S. Federal Government.  This requires us to comply to Section 508 laws regarding our web-based research tools, which were not being met by the released versions of Bootstrap at that time.</p>
 
 <p>CAST took a slightly different approach towards adding accessibility to the framework than Bootstrap and their developers.  We decided to embed most of the accessibility functionality into the widgets so it is automatically applied as needed.  This decision allows us to make functionality updates without having to revisit each research project and make individual updates.  Also our small development teams did not have to worry about accessibility if the primary focus was not on the front-end development.</p>
+
+<h2 id="faq">FAQ</h2>
+
+<ul>
+  <li><strong>Is Figuration better then Bootstrap?</strong>
+    <ul>
+      <li>Figuration is based on Bootstrap so many pieces are similar, but we take a different approach with our interactive widgets.  So the best answer would be that Figuration is different.</li>
+    </ul>
+  </li>
+  <li><strong>Is Figuration just another Bootstrap clone?</strong>
+    <ul>
+      <li>Bootstrap is currently seen as a major inspiration and resource for Figuration.  Since Figuration is still getting ‘out of the blocks’, Bootstrap is an invaluable resource and also considered an upstream provider of technology. Figuration has already changed how many pieces of the framework are designed and integrated.  As time goes on, the differences between the two frameworks may become more diverse.</li>
+    </ul>
+  </li>
+  <li><strong>Why do you call Figuration accessible?</strong>
+    <ul>
+      <li>We aim to build the interactive widgets with all the needed accessibility functionality included.  This elimates the need for pre-setting attributes on elements, and allows the widgets to keep a consistent usability and interactivity model.  This also eliminates setting accessibility attributes for features that might not be currently enabled, resulting in confusion to those using Assistive Technology (AT).</li>
+    </ul>
+  </li>
+</ul>
 
             </div>
         </div>
@@ -212,7 +253,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p>
-            Currently version: 1.1.0
+            Currently version: 1.2.0
             <br />
             <a href="https://github.com/cast-org/figuration">GitHub Project</a> - <a href="https://github.com/cast-org/figuration/issues">Issues</a>
         </p>

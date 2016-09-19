@@ -3,6 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/figuration.svg)](https://www.npmjs.com/package/figuration)
 [![Build Status](https://img.shields.io/travis/cast-org/figuration/master.svg)](https://travis-ci.org/cast-org/figuration)
 [![devDependency Status](https://img.shields.io/david/dev/cast-org/figuration.svg)](https://david-dm.org/cast-org/figuration?type=dev)
+
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/figuration.svg)](https://saucelabs.com/u/figuration)
 
 CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end framework based on Bootstrap.
@@ -78,6 +79,11 @@ Moreover, if your pull request contains JavaScript patches or features, you must
 
 Editor preferences are available in the [editor config](https://github.com/cast-org/figuration/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
 
+## Community
+
+Keep up with Figuration's development and announcements.
+
+- Follow [@figuration_org on Twitter](https://twitter.com/figuration_org)
 
 ## Versioning
 
