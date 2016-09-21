@@ -174,7 +174,6 @@ Available seek and volume sliders.
 Add an interactive transcript to your video using the `transcript` control.  The content will be taken from the selected item and placed in another container.  This content will highlight the current caption, and also allow seeking within the media item if one of the passages is clicked.
 
 {% example html %}
-
 <p><small>Source: <a href="https://videos.pexels.com/videos/tourists-looking-at-niagara-falls-333">Tourists Looking at Niagara Falls</a></small></p>
 
 <div data-cfw="player" data-cfw-player-transcript="0" class="video-wrapper">
