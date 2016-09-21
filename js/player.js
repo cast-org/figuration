@@ -960,7 +960,6 @@
 
             var cues = tracks[this.scriptCurrent].cues;
             if (cues == null || cues.length <= 0) {
-
                 var hold = (this.trackCurrent == -1) ? null : tracks[this.trackCurrent].mode;
                 // preload all tracks to stop future `load` event triggers on transcript change
                 for (var i = 0; i < tracks.length; i++) {
