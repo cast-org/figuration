@@ -1157,28 +1157,9 @@ h4 > code {
   }
 }
 
-.video-wrapper {
-  /* width: 600px; */
-}
-
-.video-transcript {
-  position: relative;
-}
-
-.video-transcript .video-wrapper {
-  width: 600px;
-}
-
-.video-transcript .player-scripttxt {
+.player-fulldisplay .player-scripttxt {
   position: absolute;
   top: 0;
-  left: 620px;
-  width: 350px;
-  height: 337px;
-  overflow: auto;
-}
-
-.video-transcript .player-fulldisplay .player-scripttxt {
   left: auto;
   right: 0;
   width: 25%;
