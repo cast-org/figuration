@@ -960,13 +960,15 @@
 
             var cues = tracks[this.scriptCurrent].cues;
             if (cues == null || cues.length <= 0) {
-                var hold = tracks[this.trackCurrent].mode;
+                var hold = (this.trackCurrent == -1) ? null : tracks[this.trackCurrent].mode;
                 // preload all tracks to stop future `load` event triggers on transcript change
                 for (var i = 0; i < tracks.length; i++) {
                     tracks[i].mode = 'hidden';
                 }
                 // reset the caption track state
-                tracks[this.trackCurrent].mode = hold;
+                if (hold !== null) {
+                    tracks[this.trackCurrent].mode = hold;
+                }
             }
 
             function scriptLoad2(forced) {
