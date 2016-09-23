@@ -83,6 +83,7 @@
 // Close
 .tooltip {
     .close {
+        position: static;
         padding: 0 .15em;
         font-size: 1.25rem;
         color: $white;
@@ -94,3 +95,4 @@
         }
     }
 }
+
