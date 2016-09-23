@@ -52,12 +52,12 @@ There are also two special text color cases for use with either light and dark b
     <div class="col-sm-6">
         <div class="text-dark bg-info">Light text <a href="#" class="text-dark">anchor link</a></div>
         <div class="text-dark bg-danger">Light text <a href="#" class="text-dark">anchor link</a></div>
-        <div class="text-dark bg-light1">Dark text <a href="#" class="text-dark">anchor link</a></div>
-        <div class="text-dark bg-light2">Dark text <a href="#" class="text-dark">anchor link</a></div>
+        <div class="text-dark bg-gray-100">Dark text <a href="#" class="text-dark">anchor link</a></div>
+        <div class="text-dark bg-gray-200">Dark text <a href="#" class="text-dark">anchor link</a></div>
     </div>
     <div class="col-sm-6">
-        <div class="text-light bg-dark1">Light text <a href="#" class="text-light">anchor link</a></div>
-        <div class="text-light bg-dark2">Light text <a href="#" class="text-light">anchor link</a></div>
+        <div class="text-light bg-gray-800">Light text <a href="#" class="text-light">anchor link</a></div>
+        <div class="text-light bg-gray-900">Light text <a href="#" class="text-light">anchor link</a></div>
         <div class="text-light bg-danger">Light text <a href="#" class="text-light">anchor link</a></div>
         <div class="text-light bg-info">Light text <a href="#" class="text-light">anchor link</a></div>
     </div>
