@@ -15,7 +15,7 @@ Due to the widespread use of tables across third-party widgets like calendars an
 
 ## Examples
 
-Using the most basic table markup, here's how `.table`-based tables look in Figuration.
+Using the most basic table markup, here's how `.table`-based tables look in Figuration. All table styles are inherited, meaning any nested tables will be styled in the same manner as the parent.
 
 {% example html %}
 <table class="table">
