@@ -540,22 +540,6 @@ h4 > code {
   padding: .5rem 1rem;
 }
 
-.bg-light1 {
-  background-color: #ccc;
-}
-
-.bg-light2 {
-  background-color: #bbb;
-}
-
-.bg-dark1 {
-  background-color: #333;
-}
-
-.bg-dark2 {
-  background-color: #222;
-}
-
 .cf-example-container {
   min-width: 16rem;
   max-width: 25rem;
