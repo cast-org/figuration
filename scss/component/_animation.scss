@@ -13,8 +13,17 @@
     &.in {
         display: block;
     }
-    // tr&.in    { display: table-row; }
-    // tbody&.in { display: table-row-group; }
+}
+
+tr {
+    &.collapse.in {
+        display: table-row;
+    }
+}
+tbody {
+    &.collapse.in {
+        display: table-row-group;
+    }
 }
 
 .collapsing {
