@@ -284,6 +284,7 @@ input[type="month"] {
     }
 
     &.disabled {
+        color: $text-muted;
         cursor: $cursor-disabled;
     }
 }
