@@ -14,7 +14,10 @@
         *::before,
         *::after,
         *::first-letter,
-        *::first-line {
+        p::first-line,
+        div::first-line,
+        blockquote::first-line,
+        li::first-line {
             // Figuration change - Remove overkill `color` and `background` overrides
             //color: #000 !important; // Black prints faster: http://www.sanbeiji.com/archives/953
             text-shadow: none !important;
@@ -32,27 +35,27 @@
         //    content: " (" attr(href) ")";
         //}
 
-        abbr[title]::after {
-            content: " (" attr(title) ")";
-        }
-
         // Figuration change - Don't show links that are fragments or `javascript:`
         //a[href^="#"]::after,
         //a[href^="javascript:"]::after {
         //    content: "";
         //}
 
+        abbr[title]::after {
+            content: " (" attr(title) ")";
+        }
+
+        pre {
+            white-space: pre-wrap !important;
+        }
         pre,
         blockquote {
             border: $border-width solid #999;   // Figuration change - use `$border-width` setting instead of 1px default
             page-break-inside: avoid;
         }
 
-        //
         // Printing Tables:
         // http://css-discuss.incutio.com/wiki/Printing_Tables
-        //
-
         thead {
             display: table-header-group;
         }
