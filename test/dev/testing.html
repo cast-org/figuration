@@ -547,6 +547,35 @@ $(window).ready(function() {
                 }
             </script>
 
+            <strong>Dynamic Content Load</strong>
+            <p>
+                <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-toggle="#modal4">Modal</button>
+                <div class="modal" id="modal4">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Dynamic Load Test</h4>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-cfw-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">OK</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+            </p>
+
+            <script>
+            $('#modal4').on('beforeShow.cfw.modal', function(e) {
+                $(this).find('.modal-body')
+                    .load('https://baconipsum.com/api/?paras=10&type=all-meat');
+                });
+            </script>
+
             <hr />
 
             <h2 id="accordion">Accordion:</h2>
