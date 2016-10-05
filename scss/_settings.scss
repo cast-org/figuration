@@ -192,7 +192,7 @@ $border-width: 1px !default;
 // =====
 // Style anchor elements
 $link-color:            map-get($context-colors, "primary") !default;
-$link-decoration:       undeline !default;
+$link-decoration:       underline !default;
 $link-hover-color:      darken($link-color, 25%) !default;
 $link-hover-decoration: underline !default;
 
