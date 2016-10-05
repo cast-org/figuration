@@ -4,7 +4,7 @@
     background-color: $jumbotron-bg;
     @include border-radius($jumbotron-border-radius);
 
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(#{$jumbotron-breakpoint}) {
         padding: $jumbotron-padding-y $jumbotron-padding-x;
     }
 }

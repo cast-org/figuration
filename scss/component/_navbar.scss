@@ -7,7 +7,7 @@
     margin-bottom: $navbar-margin-bottom;
     @include clearfix;
 
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(#{$navbar-breakpoint}) {
         @include border-radius($navbar-border-radius);
     }
 }

@@ -156,7 +156,7 @@
 // we've done the same to the flex variation.
 //
 // Those changes are noted by `// Margin balancing`
-@include media-breakpoint-up(sm) {
+@include media-breakpoint-up(#{$card-deck-breakpoint}) {
     @if $enable-flex-full {
         .card-deck {
             @extend %card-deck-flex;
@@ -233,8 +233,8 @@
     }
 }
 
-// Card groups
-@include media-breakpoint-up(sm) {
+// Card group
+@include media-breakpoint-up(#{$card-group-breakpoint}) {
     .card-group {
         margin-bottom: $card-spacer-y;
 
@@ -314,10 +314,10 @@
 
 
 // Card columns
-@include media-breakpoint-up(sm) {
+@include media-breakpoint-up(#{$card-columns-breakpoint}) {
     .card-columns {
         column-count: 3;
-        column-gap: $card-columns-sm-up-column-gap;
+        column-gap: $card-columns-column-gap;
 
         .card {
             display: inline-table;
