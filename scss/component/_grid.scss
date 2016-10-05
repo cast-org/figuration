@@ -46,7 +46,7 @@
 
 @if $enable-grid-classes {
     // Use a placeholder selector to extend upon
-    // Additional per breakpoint placholders - found in the `make-grid-columns()` mixin
+    // Additional per breakpoint placeholders are created in the `make-grid-columns()` mixin
     %col {
         position: relative;
         min-height: 1px; // Prevent collapsing
@@ -54,6 +54,10 @@
         padding-left:  ($grid-gutter-width / 2);
     }
 
+    // In flexbox modes, prevent columns from becoming too narrow when at
+    // smaller grid tiers by always setting `width: 100%;`. This works
+    // because we use `flex-basis` values  (using shorthand property `flex`)
+    // later on to override this initial width.
     %col-flex {
         width: 100%;
     }
