@@ -240,7 +240,10 @@ textarea {
   *::before,
   *::after,
   *::first-letter,
-  *::first-line {
+  p::first-line,
+  div::first-line,
+  blockquote::first-line,
+  li::first-line {
     text-shadow: none !important;
     -webkit-box-shadow: none !important;
             box-shadow: none !important;
@@ -251,6 +254,9 @@ textarea {
   }
   abbr[title]::after {
     content: " (" attr(title) ")";
+  }
+  pre {
+    white-space: pre-wrap !important;
   }
   pre,
   blockquote {
@@ -6968,7 +6974,6 @@ a.tag:focus, a.tag:hover {
   display: none;
   overflow: hidden;
   outline: 0;
-  -webkit-overflow-scrolling: touch;
 }
 
 .modal.fade .modal-dialog {
