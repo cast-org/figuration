@@ -173,13 +173,15 @@ $container-max-widths: (
 
 // Grid columns
 // =====
-// Set the number of columns
+// Set the number of columns.
 $grid-columns:      12 !default;
 
 // Grid gutters
 // =====
-// Specify the width of the gutters for each breakpoint
-// These settings affect container, row, and col components
+// Specify the width of the gutters for each breakpoint.
+// These settings affect container, row, and col components.
+// If modifying, you will also have to adjust the `$container-max-widths`
+// values also to prevent horizontal scrolling.
 $grid-gutter-width: 1.875rem !default;
 $grid-gutter-widths: (
     xs: $grid-gutter-width,
@@ -755,7 +757,14 @@ $card-padding-x:           1rem !default;
 $card-img-overlay-padding: $card-padding-y $card-padding-x !default;
 
 $card-deck-breakpoint:      sm !default;
-$card-deck-margin:          $grid-gutter-width !default;
+// `xs` gutter is not defined since is it below the `$card-deck-breakpoint` setting
+$card-deck-gutter-widths: (
+    sm: map-get($grid-gutter-widths, sm),
+    md: map-get($grid-gutter-widths, md),
+    lg: map-get($grid-gutter-widths, lg),
+    xl: map-get($grid-gutter-widths, xl),
+) !default;
+
 
 $card-group-breakpoint:     sm !default;
 

@@ -162,17 +162,12 @@
             @extend %card-deck-flex;
         }
 
-        .card-deck-wrapper {
-            margin-right: ($card-deck-margin / -2);
-            margin-left: ($card-deck-margin / -2);
-        }
     } @else {
         .card-deck {
             display: table;
             width: 100%;
             margin-bottom: $card-spacer-y;
             table-layout: fixed;
-            border-spacing: $card-deck-margin 0;
 
             .card {
                 display: table-cell;
@@ -181,19 +176,9 @@
             }
         }
 
-        .card-deck-wrapper {
-            margin-right: (-$card-deck-margin);
-            margin-left: (-$card-deck-margin);
-        }
-
         @if $enable-flex-opt {
             .card-deck-flex {
                 @extend %card-deck-flex;
-            }
-
-            .card-deck-wrapper .card-deck-flex {
-                padding-right: ($card-deck-margin / 2);
-                padding-left: ($card-deck-margin / 2);
             }
 
             // Remove the padding for IE10+
@@ -226,12 +211,49 @@
         .card {
             flex: 1 0 0;
             width: 1%;
-            margin-right: ($card-deck-margin / 2);
             margin-bottom: 0; // Margin balancing
-            margin-left: ($card-deck-margin / 2);
         }
     }
 }
+
+// Card deck gutters
+@each $breakpoint, $gutter in $card-deck-gutter-widths {
+    @include media-breakpoint-up($breakpoint) {
+        @if $enable-flex-full {
+            .card-deck .card {
+                margin-right: ($gutter / 2);
+                margin-left: ($gutter / 2);
+            }
+
+            .card-deck-wrapper {
+                margin-right: ($gutter / -2);
+                margin-left: ($gutter / -2);
+            }
+        } @else {
+            .card-deck {
+                border-spacing: $gutter 0;
+            }
+            .card-deck-wrapper {
+                margin-right: (-$gutter);
+                margin-left: (-$gutter);
+            }
+
+            @if $enable-flex-opt {
+                .card-deck-flex .card {
+                    margin-right: ($gutter / 2);
+                    margin-left: ($gutter / 2);
+                }
+
+                .card-deck-wrapper .card-deck-flex {
+                    padding-right: ($gutter / 2);
+                    padding-left: ($gutter / 2);
+                }
+
+            }
+        }
+    }
+}
+
 
 // Card group
 @include media-breakpoint-up(#{$card-group-breakpoint}) {
