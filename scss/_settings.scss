@@ -173,9 +173,21 @@ $container-max-widths: (
 
 // Grid columns
 // =====
-// Set the number of columns and specify the width of the gutters.
+// Set the number of columns
 $grid-columns:      12 !default;
+
+// Grid gutters
+// =====
+// Specify the width of the gutters for each breakpoint
+// These settings affect container, row, and col components
 $grid-gutter-width: 1.875rem !default;
+$grid-gutter-widths: (
+    xs: $grid-gutter-width,
+    sm: $grid-gutter-width,
+    md: $grid-gutter-width,
+    lg: $grid-gutter-width,
+    xl: $grid-gutter-width
+) !default;
 
 
 // Body
