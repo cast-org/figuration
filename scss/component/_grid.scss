@@ -50,8 +50,6 @@
     %col {
         position: relative;
         min-height: 1px; // Prevent collapsing
-        padding-right: ($grid-gutter-width / 2);
-        padding-left:  ($grid-gutter-width / 2);
     }
 
     // In flexbox modes, prevent columns from becoming too narrow when at
@@ -91,6 +89,26 @@
             .row-flex .col-#{$breakpoint} {
                 @extend %col;
                 @extend %col-flex;
+            }
+        }
+    }
+
+    // Create repsonsive grid gutters
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        %col-gutter {
+            @include media-breakpoint-up($breakpoint) {
+                $gutter: map-get($grid-gutter-widths, $breakpoint);
+                padding-right: ($gutter / 2);
+                padding-left:  ($gutter / 2);
+            }
+        }
+
+        @for $i from 1 through $grid-columns {
+            .col-#{$breakpoint} {
+                @extend %col-gutter;
+            }
+            .col-#{$breakpoint}-#{$i} {
+                @extend %col-gutter;
             }
         }
     }
