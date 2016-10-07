@@ -348,7 +348,7 @@ input[type="month"] {
 .form-inline {
 
     // Kick in the inline
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-up(#{$form-inline-breakpoint}) {
         // Inline-block all the things for "inline"
         .form-group {
             display: inline-block;
