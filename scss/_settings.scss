@@ -423,7 +423,7 @@ $form-group-margin-bottom:       1rem !default;
 $input-group-addon-bg:           $uibase-50 !default;
 $input-group-addon-border-color: $input-border-color !default;
 
-$form-inline-breakpoint:         "sm" !default;
+$form-inline-breakpoint:         sm !default;
 
 // Form icons
 // =====
@@ -653,7 +653,7 @@ $navbar-border-radius:              $border-radius !default;
 $navbar-padding-x:                  $spacer !default;
 $navbar-padding-y:                  ($spacer / 2) !default;
 $navbar-margin-bottom:              1rem !default;
-$navbar-breakpoint:                 "sm" !default;
+$navbar-breakpoint:                 sm !default;
 
 $navbar-item-padding-y:             .425rem !default;
 
@@ -688,7 +688,7 @@ $jumbotron-padding-xs-y:    1.5rem !default;
 $jumbotron-padding-xs-x:    .75rem !default;
 $jumbotron-bg:              $uibase-50 !default;
 $jumbotron-border-radius:   .3rem !default;
-$jumbotron-breakpoint:      "sm" !default;
+$jumbotron-breakpoint:      sm !default;
 
 // Tags
 // =====
@@ -742,12 +742,12 @@ $card-padding-y:           1rem !default;
 $card-padding-x:           1rem !default;
 $card-img-overlay-padding: $card-padding-y $card-padding-x !default;
 
-$card-deck-breakpoint:      "sm" !default;
+$card-deck-breakpoint:      sm !default;
 $card-deck-margin:          $grid-gutter-width !default;
 
-$card-group-breakpoint:     "sm" !default;
+$card-group-breakpoint:     sm !default;
 
-$card-columns-breakpoint:   "sm" !default;
+$card-columns-breakpoint:   sm !default;
 $card-columns-column-gap:   1.25rem !default;
 
 
@@ -827,8 +827,8 @@ $modal-sm:                      rem-calc(300px) !default;
 $modal-md:                      rem-calc(600px) !default;
 $modal-lg:                      rem-calc(900px) !default;
 
-$modal-breakpoint:              "sm" !default; // When to start scaling up modal width
-$modal-lg-breakpoint:           "lg" !default; // The minimum breakpoint to allow `.modal-lg`
+$modal-breakpoint:              sm !default; // When to start scaling up modal width
+$modal-lg-breakpoint:           lg !default; // The minimum breakpoint to allow `.modal-lg`
 
 
 // Grid lines
