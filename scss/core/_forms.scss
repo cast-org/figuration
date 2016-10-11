@@ -204,9 +204,9 @@ input[type="month"] {
     $select-height-size:     calc(#{$input-height-size} + #{($border-width * 2)});
 
     .form-control-#{$size} {
+        height: $select-height-size;
         padding: $padding-y ($padding-x / 2);
         font-size: $font-size;
-        height: $select-height-size;
         @include border-radius($border-radius);
 
         // Color input - reduce horizontal padding otherwise visualy unsable in Chrome
