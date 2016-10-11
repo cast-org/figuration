@@ -151,7 +151,7 @@ $spacers: (
 // adapting to different screen sizes, for use in media queries.
 $grid-breakpoints: (
     xs: 0,
-    sm: bp-to-em(544px),
+    sm: bp-to-em(576px),
     md: bp-to-em(768px),
     lg: bp-to-em(992px),
     xl: bp-to-em(1200px)
@@ -163,7 +163,7 @@ $grid-breakpoints: (
 // =====
 // Define the maximum width of `.container` for different screen sizes.
 $container-max-widths: (
-    sm: rem-calc(576px),    // allow for some growth for `sm` screens
+    sm: rem-calc(544px),
     md: rem-calc(720px),
     lg: rem-calc(960px),
     xl: rem-calc(1152px)
