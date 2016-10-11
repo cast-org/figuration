@@ -123,6 +123,20 @@ Allow users to move popovers around the screen by enabling the `drag` option.  D
 <button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-html="true" data-cfw-popover-placement="right" data-cfw-popover-content="<em>Popover</em> <u>with</u> <b>HTML</b>" title="<em>Popover</em> <u>with</u> <b>HTML</b>">Popover with HTML</button>
 {% endexample %}
 
+If using more complex HTML, using a data attribute might not be optimal.  A better option would be to use the Javascript options, or with a pre-generated popover, as shown in the following example.
+
+{% example html %}
+<button type="button" class="btn btn-info" id="html-popover">Popover with HTML</button>
+
+<script>
+$('#html-popover').CFW_Popover({
+    html: true,
+    title: '<em>Popover</em> <u>with</u> <b>HTML</b>',
+    content: '<span aria-hidden="true">&middot;</span> <em>Popover</em> <u>with</u> <b>HTML</b>'
+});
+</script>
+{% endexample %}
+
 ### Pre-generated Popover
 
 Have a complex content that you would like to show in a popover, or one that is updated dynamically?  Create the popover and then link to it with the `toggle` option.
