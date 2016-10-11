@@ -753,7 +753,6 @@ pre code {
 }
 
 .img-responsive {
-  display: block;
   max-width: 100%;
   height: auto;
 }
@@ -767,7 +766,6 @@ pre code {
   background-color: #fff;
   border: 1px solid #a3a3a3;
   border-radius: 0.25rem;
-  display: inline-block;
   max-width: 100%;
   height: auto;
 }
@@ -1515,7 +1513,7 @@ input[type="month"].form-control {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23c81d0e' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23c81d0e' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E");
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .form-inline .form-group {
     display: inline-block;
     margin-bottom: 0;
@@ -1531,6 +1529,7 @@ input[type="month"].form-control {
   }
   .form-inline .input-group {
     display: inline-table;
+    width: auto;
     vertical-align: middle;
   }
   .form-inline .input-group .input-group-addon,
@@ -2549,7 +2548,7 @@ input[type="button"].btn-block {
   content: "";
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .container {
     padding-right: 0.9375rem;
     padding-left: 0.9375rem;
@@ -2577,27 +2576,31 @@ input[type="button"].btn-block {
   }
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .container {
-    max-width: 36rem;
+    width: 34rem;
+    max-width: 100%;
   }
 }
 
 @media (min-width: 48em) {
   .container {
-    max-width: 45rem;
+    width: 45rem;
+    max-width: 100%;
   }
 }
 
 @media (min-width: 62em) {
   .container {
-    max-width: 60rem;
+    width: 60rem;
+    max-width: 100%;
   }
 }
 
 @media (min-width: 75em) {
   .container {
-    max-width: 72rem;
+    width: 72rem;
+    max-width: 100%;
   }
 }
 
@@ -2614,7 +2617,7 @@ input[type="button"].btn-block {
   content: "";
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .container-fluid {
     padding-right: 0.9375rem;
     padding-left: 0.9375rem;
@@ -2651,7 +2654,7 @@ input[type="button"].btn-block {
           flex-wrap: initial;
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .row {
     margin-right: -0.9375rem;
     margin-left: -0.9375rem;
@@ -2713,7 +2716,7 @@ input[type="button"].btn-block {
   padding-left: 0.9375rem;
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .col-xs, .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-xl, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12 {
     padding-right: 0.9375rem;
     padding-left: 0.9375rem;
@@ -3048,7 +3051,7 @@ input[type="button"].btn-block {
   max-width: 100%;
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
     float: left;
   }
@@ -5872,7 +5875,7 @@ if $enable-flex-full .nav-inline {
   content: "";
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .navbar {
     border-radius: 0.25rem;
   }
@@ -6074,20 +6077,20 @@ if $enable-flex-full .nav-inline {
   content: "";
 }
 
-@media (max-width: 33.9375em) {
+@media (max-width: 35.9375em) {
   .navbar-toggleable-xs .navbar-nav .nav-item {
     float: none;
     margin-left: 0;
   }
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .navbar-toggleable-xs {
     display: block !important;
   }
 }
 
-@media (max-width: 33.9375em) {
+@media (max-width: 35.9375em) {
   .navbar-toggleable-xs {
     clear: both;
   }
@@ -6239,7 +6242,7 @@ if $enable-flex-full .nav-inline {
   border-radius: 0.3rem;
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .jumbotron {
     padding: 3rem 1.5rem;
   }
@@ -6794,7 +6797,7 @@ a.tag:focus, a.tag:hover {
   border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .card-deck {
     display: table;
     width: 100%;
@@ -6808,14 +6811,14 @@ a.tag:focus, a.tag:hover {
   }
 }
 
-@media all and (min-width: 34em) and (-ms-high-contrast: none), (min-width: 34em) and (-ms-high-contrast: active) {
+@media all and (min-width: 36em) and (-ms-high-contrast: none), (min-width: 36em) and (-ms-high-contrast: active) {
   .card-deck-wrapper .card-deck-flex {
     padding-right: 0;
     padding-left: 0;
   }
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   @supports (-ms-ime-align: auto) {
     .card-deck-wrapper .card-deck-flex {
       padding-right: 0;
@@ -6844,7 +6847,7 @@ a.tag:focus, a.tag:hover {
   }
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .card-deck {
     border-spacing: 1.875rem 0;
   }
@@ -6916,7 +6919,7 @@ a.tag:focus, a.tag:hover {
   }
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .card-group {
     margin-bottom: 1rem;
     display: table;
@@ -6980,7 +6983,7 @@ a.tag:focus, a.tag:hover {
   }
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .card-columns {
     -webkit-column-count: 3;
        -moz-column-count: 3;
@@ -7245,7 +7248,7 @@ a.tag:focus, a.tag:hover {
   overflow: scroll;
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .modal-dialog {
     max-width: 37.5rem;
     margin: 1.875rem auto;
@@ -8240,7 +8243,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   display: flex !important;
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .display-sm-block {
     display: block !important;
   }
@@ -8421,7 +8424,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
           align-self: stretch;
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .flex-sm-first {
     -webkit-box-ordinal-group: 0;
     -webkit-order: -1;
@@ -8442,7 +8445,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   }
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .flex-sm-left {
     -webkit-box-pack: start;
     -webkit-justify-content: flex-start;
@@ -8474,7 +8477,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   }
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .flex-sm-top {
     -webkit-box-align: start;
     -webkit-align-items: flex-start;
@@ -8501,7 +8504,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   }
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .flex-self-sm-top {
     -webkit-align-self: flex-start;
         -ms-flex-item-align: start;
@@ -8902,7 +8905,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   display: initial;
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .gridline-sm-hr {
     border-bottom: 1px solid #858585;
   }
@@ -9090,7 +9093,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   float: none !important;
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .pull-sm-left {
     float: left !important;
   }
@@ -9169,7 +9172,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   border: 0;
 }
 
-@media (max-width: 33.9375em) {
+@media (max-width: 35.9375em) {
   .sr-only-xs-down {
     position: absolute;
     width: 1px;
@@ -9182,7 +9185,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   }
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .sr-only-sm-up {
     position: absolute;
     width: 1px;
@@ -9577,7 +9580,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   text-align: center !important;
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .text-sm-left {
     text-align: left !important;
   }
@@ -10248,13 +10251,13 @@ a.text-dark:focus, a.text-dark:hover {
   display: none !important;
 }
 
-@media (max-width: 33.9375em) {
+@media (max-width: 35.9375em) {
   .hidden-xs-down {
     display: none !important;
   }
 }
 
-@media (min-width: 34em) {
+@media (min-width: 36em) {
   .hidden-sm-up {
     display: none !important;
   }
