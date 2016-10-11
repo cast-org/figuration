@@ -64,13 +64,13 @@ The example pixel values are calculated based upon assumption where the average 
         <th></th>
         <th class="text-xs-center">
           Extra small<br>
-          <small>&lt;544px</small><br>
-          <small>&lt;34em</small>
+          <small>&lt;576px</small><br>
+          <small>&lt;36em</small>
         </th>
         <th class="text-xs-center">
           Small<br>
-          <small>&ge;544px</small><br>
-          <small>&ge;34em</small>
+          <small>&ge;576px</small><br>
+          <small>&ge;36em</small>
         </th>
         <th class="text-xs-center">
           Medium<br>
@@ -96,9 +96,9 @@ The example pixel values are calculated based upon assumption where the average 
         <td colspan="4">Collapsed to start, horizontal above breakpoints</td>
       </tr>
       <tr>
-        <th class="text-nowrap" scope="row">Container width</th>
+        <th class="text-nowrap" scope="row">Max container width</th>
         <td>None (auto)</td>
-        <td>576px (36rem)</td>
+        <td>544px (33.75rem)</td>
         <td>720px (45rem)</td>
         <td>960px (60rem)</td>
         <td>1152px (72rem)</td>
@@ -366,7 +366,7 @@ $grid-breakpoints: (
   // Extra small screen / phone
   xs: 0,
   // Small screen / phone
-  sm: bp-to-em(544px),
+  sm: bp-to-em(576px),
   // Medium screen / tablet
   md: bp-to-em(768px),
   // Large screen / desktop
@@ -376,7 +376,7 @@ $grid-breakpoints: (
 );
 
 $container-max-widths: (
-  sm: rem-calc(576px),
+  sm: rem-calc(544px),
   md: rem-calc(720px),
   lg: rem-calc(940px),
   xl: rem-calc(1140px)
