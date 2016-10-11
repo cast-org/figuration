@@ -101,6 +101,20 @@ Four options are available: top, right, bottom, and left aligned.
 <button type="button" class="btn btn-info" data-cfw="tooltip" data-cfw-tooltip-html="true" data-cfw-tooltip-placement="right" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Tooltip with HTML</button>
 {% endexample %}
 
+When using more complex HTML, using a data attribute might not be optimal.  A better option would be to use the Javascript options.
+
+{% example html %}
+<button type="button" class="btn btn-info" id="html-tooltip">Tooltip with HTML</button>
+
+<script>
+$('#html-tooltip').CFW_Tooltip({
+    html: true,
+    placement: 'right',
+    title: '<span aria-hidden="true">&middot;</span> <em>Tooltip</em> <u>with</u> <b>HTML</b>'
+});
+</script>
+{% endexample %}
+
 ### Viewport Constrainment
 
 Keep tooltips in their place with the `viewport` option.
