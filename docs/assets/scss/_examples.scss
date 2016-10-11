@@ -65,7 +65,8 @@
 }
 
 // Form
-.cf-example > .form-control + .form-control {
+.cf-example > .form-control + .form-control,
+.cf-example > .custom-select + .custom-select {
     margin-top: .5rem;
 }
 

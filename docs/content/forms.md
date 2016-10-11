@@ -629,7 +629,7 @@ The heights of select elements is a bit off in Internet Explorer, usually just s
 
 {% example html %}
 <select class="form-control form-control-xl">
-  <option>Large select</option>
+  <option>Extra large select</option>
 </select>
 <select class="form-control form-control-lg">
   <option>Large select</option>
@@ -641,7 +641,7 @@ The heights of select elements is a bit off in Internet Explorer, usually just s
   <option>Small select</option>
 </select>
 <select class="form-control form-control-xs">
-  <option>Small select</option>
+  <option>Extra small select</option>
 </select>
 {% endexample %}
 
@@ -909,6 +909,27 @@ Custom `<select>` menus need only a custom class, `.custom-select` to trigger th
 {% endexample %}
 
 Custom selects degrade nicely in IE9, receiving only a handful of overrides to remove the custom `background-image`. **Multiple selects (e.g., `<select multiple>`) are not currently supported.**
+
+Multiple size are also available.
+
+{% example html %}
+<select class="custom-select custom-select-xl">
+  <option>Extra large select</option>
+</select>
+<select class="custom-select custom-select-lg">
+  <option>Large select</option>
+</select>
+<select class="custom-select">
+  <option>Default select</option>
+</select>
+<select class="custom-select custom-select-sm">
+  <option>Small select</option>
+</select>
+<select class="custom-select custom-select-xs">
+  <option>Extra small select</option>
+</select>
+{% endexample %}
+
 
 ### Color Picker
 

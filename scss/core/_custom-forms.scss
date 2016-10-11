@@ -128,8 +128,9 @@
 //
 // Includes IE9-specific hacks (noted by ` \9`).
 .custom-select {
-    display: inline-block;
-    max-width: 100%;
+    display: block;
+    width: 100%;
+    height: $select-height;
     padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
     padding-right: $custom-select-padding-x \9;
     color: $custom-select-color;
@@ -169,17 +170,20 @@
     }
 }
 
-.custom-select-sm {
-    padding-top: $custom-select-padding-y;
-    padding-bottom: $custom-select-padding-y;
-    font-size: $custom-select-sm-font-size;
+// Select sizes
+@each $size, $dims in $component-sizes {
+    $font-size:     map-get($dims, "font-size");
+    $padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $font-size / 2);
+    $padding-x:     map-get($dims, "padding-x");
+    $input-height-size:     (($font-size * $input-line-height) + ($padding-y * 2));
+    $select-height-size:    calc(#{$input-height-size} + #{($border-width * 2)});
 
-    // &:not([multiple]) {
-    //   height: 26px;
-    //   min-height: 26px;
-    // }
+    .custom-select-#{$size} {
+        height: $select-height-size;
+        padding: $padding-y ($padding-x / 2);
+        font-size:  $font-size;
+    }
 }
-
 
 // File
 // Custom file input.
