@@ -602,7 +602,8 @@ h4 > code {
   border: 1px solid rgba(34, 68, 102, 0.5);
 }
 
-.cf-example > .form-control + .form-control {
+.cf-example > .form-control + .form-control,
+.cf-example > .custom-select + .custom-select {
   margin-top: .5rem;
 }
 
