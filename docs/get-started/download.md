@@ -58,7 +58,7 @@ Pull in Figuration's **source files** into nearly any project with some of the m
 Install Figuration in your Node powered apps with [the npm package](https://www.npmjs.org/package/figuration):
 
 {% highlight bash %}
-$ npm install figuration@{{ site.current_version }}
+npm install figuration@{{ site.current_version }}
 {% endhighlight %}
 
 {% comment %}
@@ -80,7 +80,7 @@ The [quick download versions](#quick-download) listed above, contain the followi
 
 Once downloaded, unzip the compressed folder to see the structure of (the compiled) Figuration. You'll see something like this:
 
-{% highlight bash %}
+{% highlight plaintext %}
 figuration/
 +-- css/
 |   +-- figuration.css
@@ -98,7 +98,7 @@ This is the most basic form of Figuration: precompiled files for quick drop-in u
 
 The Figuration source code download includes the precompiled CSS and JavaScript, along with source Sass, JavaScript, and documentation. More specifically, it includes the following and more:
 
-{% highlight bash %}
+{% highlight plaintext %}
 figuration/
 +-- dist/
 |   +-- css/
