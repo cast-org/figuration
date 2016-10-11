@@ -411,11 +411,14 @@ $btn-border-radius:             $border-radius !default;
 
 // Forms
 // =====
-// Padding and line-height should match up with buttons
+// Padding and line-height should add up to buttons for inputs and selects
+// An included line-height-delta routine is included to make this easier
 // Implemented horizontal padding will be 1/2 of stated `padding-x`
-$input-padding-y:               $btn-padding-y !default;
+$input-line-height:             1.5 !default;
+$input-line-height-delta:      ($input-line-height - $btn-line-height) !default;
+
+$input-padding-y:               $btn-padding-y - ($input-line-height-delta / 2) !default;
 $input-padding-x:               $btn-padding-x !default;
-$input-line-height:             1.25 !default;
 
 $input-bg:                      $white !default;
 $input-bg-disabled:             $uibase-50 !default;
@@ -439,12 +442,15 @@ $input-group-addon-border-color: $input-border-color !default;
 
 $form-inline-breakpoint:         sm !default;
 
+// Base input/select height calculation
+// Additional ones for each size are done during size processing generation
+$input-height:      (($font-size-base * $input-line-height) + ($input-padding-y * 2)) !default;
+$select-height:     calc(#{$input-height} + #{($border-width * 2)}) !default;
+
+
 // Form icons
 // =====
 // Use some functions to recolor icons to match context colors
-//$icon-success: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%235cb85c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E") !default;
-//$icon-warning: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23f0ad4e' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E") !default;
-//$icon-danger: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d9534f' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E") !default;
 $icon-success: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{palette-context-nohash('success', 500)}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E") !default;
 $icon-warning: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{palette-context-nohash('warning', 500)}' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E") !default;
 $icon-danger: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{palette-context-nohash('danger', 500)}' viewBox='-2 -2 7 7'%3E%3Cpath stroke='#{palette-context-nohash('danger', 500)}' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E") !default;
