@@ -4,9 +4,10 @@
  * Copyright 2013-2016 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  */
-/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
+/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
+  line-height: 1.15;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -17,38 +18,38 @@ body {
 
 article,
 aside,
-details,
-figcaption,
-figure,
 footer,
 header,
-main,
-menu,
 nav,
-section,
-summary {
+section {
   display: block;
 }
 
-audio,
-canvas,
-progress,
-video {
-  display: inline-block;
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
 }
 
-audio:not([controls]) {
-  display: none;
+figcaption,
+figure,
+main {
+  display: block;
+}
+
+figure {
+  margin: 1em 40px;
+}
+
+hr {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   height: 0;
+  overflow: visible;
 }
 
-progress {
-  vertical-align: baseline;
-}
-
-template,
-[hidden] {
-  display: none;
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
 }
 
 a {
@@ -77,13 +78,15 @@ strong {
   font-weight: bolder;
 }
 
-dfn {
-  font-style: italic;
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
 }
 
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
+dfn {
+  font-style: italic;
 }
 
 mark {
@@ -111,6 +114,16 @@ sup {
   top: -0.5em;
 }
 
+audio,
+video {
+  display: inline-block;
+}
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
 img {
   border-style: none;
 }
@@ -119,36 +132,15 @@ svg:not(:root) {
   overflow: hidden;
 }
 
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-figure {
-  margin: 1em 40px;
-}
-
-hr {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-  height: 0;
-  overflow: visible;
-}
-
 button,
 input,
 optgroup,
 select,
 textarea {
-  font: inherit;
+  font-family: sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
   margin: 0;
-}
-
-optgroup {
-  font-weight: bold;
 }
 
 button,
@@ -199,6 +191,11 @@ legend {
   white-space: normal;
 }
 
+progress {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
 textarea {
   overflow: auto;
 }
@@ -225,14 +222,30 @@ textarea {
   -webkit-appearance: none;
 }
 
-::-webkit-input-placeholder {
-  color: inherit;
-  opacity: 0.54;
-}
-
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
   font: inherit;
+}
+
+details,
+menu {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+canvas {
+  display: inline-block;
+}
+
+template {
+  display: none;
+}
+
+[hidden] {
+  display: none;
 }
 
 @media print {
@@ -476,8 +489,11 @@ button:focus {
 
 input,
 button,
+optgroup,
 select,
 textarea {
+  font-family: inherit;
+  font-size: inherit;
   line-height: inherit;
   border-radius: 0;
 }
@@ -5100,7 +5116,7 @@ button.list-group-item-danger.active:hover {
 .input-group-addon.form-control-xs,
 .input-group-xs > .input-group-addon,
 .input-group-xs > .input-group-btn > .input-group-addon.btn {
-  padding: 0.1875rem 0.375rem;
+  padding: 0.09375rem 0.375rem;
   font-size: 0.75rem;
   border-radius: 0.1875rem;
 }
@@ -5108,7 +5124,7 @@ button.list-group-item-danger.active:hover {
 .input-group-addon.form-control-sm,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .input-group-addon.btn {
-  padding: 0.25rem 0.5rem;
+  padding: 0.140625rem 0.5rem;
   font-size: 0.875rem;
   border-radius: 0.1875rem;
 }
@@ -5116,7 +5132,7 @@ button.list-group-item-danger.active:hover {
 .input-group-addon.form-control-lg,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .input-group-addon.btn {
-  padding: 0.625rem 1.25rem;
+  padding: 0.46875rem 1.25rem;
   font-size: 1.25rem;
   border-radius: 0.3125rem;
 }
@@ -5124,7 +5140,7 @@ button.list-group-item-danger.active:hover {
 .input-group-addon.form-control-xl,
 .input-group-xl > .input-group-addon,
 .input-group-xl > .input-group-btn > .input-group-addon.btn {
-  padding: 0.75rem 1.5rem;
+  padding: 0.5625rem 1.5rem;
   font-size: 1.5rem;
   border-radius: 0.3125rem;
 }
