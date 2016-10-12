@@ -113,7 +113,7 @@
     // Sizing
     @each $size, $dims in $component-sizes {
         $font-size:     map-get($dims, "font-size");
-        $padding-y:     map-get($dims, "padding-y");
+        $padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $font-size / 2);
         $padding-x:     map-get($dims, "padding-x");
         $border-radius: map-get($dims, "border-radius");
 
