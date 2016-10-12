@@ -311,10 +311,14 @@ button:focus {
 
 input,
 button,
+optgroup,
 select,
 textarea {
-    // Normalize includes `font: inherit;`, so `font-family`. `font-size`, etc are
-    // properly inherited. However, `line-height` isn't addressed there.
+    // Normalize v4.x used to include `font: inherit;`, but they now use some opinionated settings
+    // This reverts that for v5.0 so `font-family`. `font-size`, etc are inherited again
+    // Also undo the opinionated `line-height`
+    font-family: inherit;
+    font-size: inherit;
     line-height: inherit;
     // iOS adds rounded borders by default
     border-radius: 0;
