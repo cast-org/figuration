@@ -13,10 +13,10 @@ Two similar non-responsive Sass mixins (`pull-left` and `pull-right`) are also a
 <div class="pull-xs-right">Float right on all viewport sizes</div><br>
 <div class="pull-xs-none">Don't float on all viewport sizes</div><br>
 
-<div class="pull-sm-left">Float left on viewports sized SM (small) or wider</div><br>
-<div class="pull-md-left">Float left on viewports sized MD (medium) or wider</div><br>
-<div class="pull-lg-left">Float left on viewports sized LG (large) or wider</div><br>
-<div class="pull-xl-left">Float left on viewports sized XL (extra-large) or wider</div><br>
+<div class="pull-sm-right">Float right on viewports sized SM (small) or wider</div><br>
+<div class="pull-md-right">Float right on viewports sized MD (medium) or wider</div><br>
+<div class="pull-lg-right">Float right on viewports sized LG (large) or wider</div><br>
+<div class="pull-xl-right">Float right on viewports sized XL (extra-large) or wider</div><br>
 {% endexample %}
 
 {% highlight scss %}
