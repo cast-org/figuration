@@ -22,9 +22,9 @@ A simple example, using the grid layout, shows the `.row` as a flex parent, and 
 
 {% highlight html %}
 <div class="row row-flex">
-    <div class=col-xs-4"></div>
-    <div class=col-xs-4"></div>
-    <div class=col-xs-4"></div>
+    <div class="col-xs-4"></div>
+    <div class="col-xs-4"></div>
+    <div class="col-xs-4"></div>
 </div>
 {% endhighlight %}
 
@@ -162,7 +162,7 @@ To set the alignment, the available classes, per breakpoint, are:
 
 <div class="row row-flex flex-xs-around">
     <div class="col-xs-4">
-        aliged to
+        aligned to
     </div>
     <div class="col-xs-4">
         the space around
