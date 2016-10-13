@@ -36,9 +36,9 @@ download:
 # See https://www.srihash.org for info on how to generate the hashes
 cdn:
   css:          https://cdn.jsdelivr.net/figuration/1.3.0/css/figuration.min.css
-  css_hash:     "sha384-ct+UhDFXHd00CaRp3Jm8/att5k9sS2gATqTzl+Nrl27rLz/d5cagFNXFn3Xz3uT0"
+  css_hash:     "sha384-QGoOlSi7NTKCPEYxZxZ/cBTKgaA1sgj2MKSsTd7i6IQLk1LL9dDmTcQPAap7TG3C"
   js:           https://cdn.jsdelivr.net/figuration/1.3.0/js/figuration.min.js
-  js_hash:      "sha384-K3NuZ4g/IYJh8g9u5d791SgzBberoH5pY0+aQnAT8OHLoayUjjIJKAit72xBXZs4"
+  js_hash:      "sha384-dhf4AQwEoYTs4kTw6+HaeZ5Dqgcc8Y3IUq3FNLKLvrUT9YdUQoncLlw/3g/Axvs7"
   jquery:       https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js
   jquery_hash:  "sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
   fontawe:      https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css
