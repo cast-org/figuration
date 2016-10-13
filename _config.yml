@@ -39,7 +39,7 @@ cdn:
   css_hash:     "sha384-ct+UhDFXHd00CaRp3Jm8/att5k9sS2gATqTzl+Nrl27rLz/d5cagFNXFn3Xz3uT0"
   js:           https://cdn.jsdelivr.net/figuration/1.2.0/js/figuration.min.js
   js_hash:      "sha384-K3NuZ4g/IYJh8g9u5d791SgzBberoH5pY0+aQnAT8OHLoayUjjIJKAit72xBXZs4"
-  jquery:       https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js
-  jquery_hash:  "sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq"
+  jquery:       https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js
+  jquery_hash:  "sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
   fontawe:      https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css
   fontawe_hash: "sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1"
