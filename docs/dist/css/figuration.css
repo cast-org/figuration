@@ -9202,6 +9202,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+  white-space: nowrap;
 }
 
 .sr-only-focusable:active, .sr-only-focusable:focus {
@@ -9211,6 +9212,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   margin: 0;
   overflow: visible;
   clip: auto;
+  white-space: inherit;
 }
 
 .sr-only-xs-up {
@@ -9222,6 +9224,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+  white-space: nowrap;
 }
 
 @media (max-width: 35.9375em) {
@@ -9234,6 +9237,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+    white-space: nowrap;
   }
 }
 
@@ -9247,6 +9251,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+    white-space: nowrap;
   }
 }
 
@@ -9260,6 +9265,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+    white-space: nowrap;
   }
 }
 
@@ -9273,6 +9279,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+    white-space: nowrap;
   }
 }
 
@@ -9286,6 +9293,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+    white-space: nowrap;
   }
 }
 
@@ -9299,6 +9307,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+    white-space: nowrap;
   }
 }
 
@@ -9312,6 +9321,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+    white-space: nowrap;
   }
 }
 
@@ -9325,6 +9335,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+    white-space: nowrap;
   }
 }
 
@@ -9337,6 +9348,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+  white-space: nowrap;
 }
 
 .width-100 {
