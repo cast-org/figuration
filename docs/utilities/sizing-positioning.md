@@ -20,7 +20,18 @@ Easily make an element as wide as its parent using the `.width-100` utility clas
 <img class="width-100" data-src="holder.js/200px100?outline=yes&text=Width%20%3D%20100%25" alt="Width = 100%">
 {% endexample %}
 
-There is also a `.height-100` utility class, which sets `height: 100%`.  However, it probabaly won't work the way you think it does.  [This article](http://webdesign.about.com/od/csstutorials/f/set-css-height-100-percent.htm) has a few details on working with precentage heights.
+There is also a `.height-100` utility class, which sets `height: 100%`.  However, it probabaly won't always work the way you think it should.  Some good information can be found in this article &mdash; [How Do You Set the Height of an HTML Element to 100%?](http://webdesign.about.com/od/csstutorials/f/set-css-height-100-percent.htm)
+
+{% example html %}
+<div class="cf-example-height">
+    <div class="bg-gray-50 padding-x-3 display-inline-block" style="height: 150px;">
+        <div class="height-100 bg-gray-300 text-center padding-a-1 display-inline-block">
+            Full height<br />
+            <code>.height-100</code>
+        </div>
+    </div>
+</div>
+{% endexample %}
 
 ## Fixed Positioning
 
@@ -38,7 +49,7 @@ The `.position-f-t` class can be used to easily position elements at the top of 
 
 ## Vertical Row Alignment
 
-Give some vertical alignment,  using `display: table;` to keep items in a full width row.  Child items need to be defined with `.valign-item` in order to receive alignment.
+Give some vertical alignment, using `display: table;` to keep items in a full width row.  Child items need to be defined with `.valign-item` in order to receive alignment.
 
 {% example html %}
 <div class="valign-top">
