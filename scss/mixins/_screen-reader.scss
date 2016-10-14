@@ -1,6 +1,10 @@
 // Only display content to screen readers
 //
 // See: http://a11yproject.com/posts/how-to-hide-content
+//
+// 1. For long content, line feeds are not interpreted as spaces and small width
+//    causes content to wrap 1 word per line:
+//    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
 
 @mixin sr-only {
     position: absolute;
@@ -11,6 +15,7 @@
     overflow: hidden;
     clip: rect(0,0,0,0);
     border: 0;
+    white-space: nowrap; // 1
 }
 
 // Use in conjunction with .sr-only to only display content when it's focused.
@@ -28,5 +33,6 @@
         margin: 0;
         overflow: visible;
         clip: auto;
+        white-space: inherit;
     }
 }
