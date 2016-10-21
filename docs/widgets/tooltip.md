@@ -439,3 +439,29 @@ A quick example:<br />
     <li>Initialize the tooltip: <code>$('#myTooltip').CFW_Tooltip(options);</code> with desired options.</li>
     <li>Show tooltip: <code>$('#myTooltip').CFW_Tooltip('show');</code></li>
 </ol>
+
+## Accessibility
+
+### Consider Keyboard and Assistive Technology Users
+
+You should only add tooltips to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as `<span>`s) can be made focusable by adding the `tabindex="0"` attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users. In addition, most assistive technologies currently do not announce the tooltip in this situation.
+
+### Key Commands
+
+The following key commands are handled when focus is inside the toolip:
+
+- <kbd>Esc</kbd> - Close the tooltip (when using `trigger: click`)
+
+### Focus Handling
+
+Tooltips have additional focus handling when using keyboard navigation.
+
+If navigating from **above** the tooltip's trigger (typically with the `tab` key), when the trigger becomes focused, focus will be moved from the trigger to the **top of the tooltip**.
+
+If navigating from **below** the tooltip's trigger (typically with the `shift`-`tab` key combination), when the trigger is focused, focus will be moved from the trigger to the **last focusable item** inside the tooltip.
+
+When navigating **forward**, out the *bottom* of the tooltip, the focus will be moved to the next focusable item in the document relative to the trigger.  This is done so that if the `container` option is used, the focus will move to next logical item.  Otherwise, when using `container: body`, the focus will potentially drop off the end of the HTML document, leaving a keyboard user in an akward situation.
+
+When navigating **backward**, out the *top* of the tooltip, the focus will be moved to the preceding focusable item in the document relative to the trigger.
+
+This will not necessarily work with some assistive technologies reading modes.

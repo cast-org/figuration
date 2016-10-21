@@ -200,6 +200,7 @@
             this.$targetElm.addClass('in').removeAttr('aria-hidden');
 
             this.enforceFocus();
+            this.enforceFocusLast();
 
             if (transition) {
                 // wait for modal to slide in
@@ -243,8 +244,11 @@
                         $selfRef.$targetElm.trigger('focus');
                     }
                 });
+        },
 
-            // Also inject an item to fake loss of focus in case the modal
+        enforceFocusLast : function() {
+            var $selfRef = this;
+            // Inject an item to fake loss of focus in case the modal
             // is last tabbable item in document - otherwise focus drops off page
             if (!this.$focusLast) {
                 this.$focusLast = $(document.createElement('span'))
