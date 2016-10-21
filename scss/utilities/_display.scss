@@ -13,6 +13,12 @@
 .display-flex {
     display: flex !important;
 }
+.display-table {
+    display: table !important;
+}
+.display-table-cell {
+    display: table-cell !important;
+}
 
 @each $breakpoint in map-keys($grid-breakpoints) {
     @include media-breakpoint-up($breakpoint) {
@@ -20,5 +26,7 @@
         .display-#{$breakpoint}-inline-block { display: inline-block !important; }
         .display-#{$breakpoint}-inline { display: inline !important; }
         .display-#{$breakpoint}-flex { display: flex !important; }
+        .display-#{$breakpoint}-table { display: table !important; }
+        .display-#{$breakpoint}-table-cell { display: table-cell !important; }
     }
 }
