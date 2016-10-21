@@ -535,7 +535,7 @@ $('#myPopover').on('afterHide.cfw.popover', function () {
 
 ### Server-side Apps
 
-Popvers are designed to hopefully work with server side applications, such as Apache Wicket, and other instances where the server-side application might need to create or update the popover content after the initial page load.
+Popovers are designed to hopefully work with server side applications, such as Apache Wicket, and other instances where the server-side application might need to create or update the popover content after the initial page load.
 
 A quick example:<br />
 <ol>
@@ -552,3 +552,25 @@ A quick example:<br />
     <li>Initialize the popover: <code>$('#myPopover').CFW_Popover(options);</code> with desired options.</li>
     <li>Show popover: <code>$('#myPopover').CFW_Popover('show');</code></li>
 </ol>
+
+## Accessibility
+
+### Key Commands
+
+The following key commands are handled when focus is inside the popover:
+
+- <kbd>Esc</kbd> - Close the popover
+
+### Focus Handling
+
+Popovers have additional focus handling when using keyboard navigation.
+
+If navigating from **above** the popover's trigger (typically with the `tab` key), when the trigger becomes focused, focus will be moved from the trigger to the **top of the popover**.
+
+If navigating from **below** the popover's trigger (typically with the `shift`-`tab` key combination), when the trigger is focused, focus will be moved from the trigger to the **last focusable item** inside the popover.
+
+When navigating **forward**, out the *bottom* of the popover, the focus will be moved to the next focusable item in the document relative to the trigger.  This is done so that if the `container` option is used, the focus will move to next logical item.  Otherwise, when using `container: body`, the focus will potentially drop off the end of the HTML document, leaving a keyboard user in an akward situation.
+
+When navigating **backward**, out the *top* of the popover, the focus will be moved to the preceding focusable item in the document relative to the trigger.
+
+This will not necessarily work with some assistive technologies reading modes.

@@ -500,3 +500,48 @@ A quick example:<br />
     <li>Initialize the modal: <code>$('#myModal').CFW_Modal(options);</code> with desired options.</li>
     <li>Show modal: <code>$('#myModal').CFW_Modal('show');</code></li>
 </ol>
+
+## Accessibility
+
+### Key Commands
+
+The following key commands are handled when focus is inside the modal:
+
+- <kbd>Esc</kbd> - Close the modal
+
+### Enforced Focus
+
+In order to keep assistive technology users from interacting with the rest of the page when a modal is open, the focus is automatically forced back to the modal when a user tries to navigate out.
+
+When navigating **forward**, out the *bottom* of the modal, focus will be moved to the **top of the modal**.
+
+When navigation **backward**, out the *top* of the modal, focus will be moved back to the **top of the modal**.
+
+If for some reason you need to disable the enforced focus for modals, you can override the `enforceFocus()` method.
+
+{% highlight js %}
+// This needs to be loaded after Figuration's JavaScript
+// PLEASE DO NOT DO THIS!!! - Just here for reference
+$.fn.CFW_Modal.Constructor.prototype.enforceFocus = function() {};
+// SERIOUSLY DO NOT DO THIS!!!
+{% endhighlight %}
+
+However, we do not advise disabling it completely, but overriding the function to handle the focus conditionally.
+
+{% highlight js %}
+// This needs to be loaded after Figuration's JavaScript
+$.fn.CFW_Modal.Constructor.prototype.enforceFocus = function() {
+    var $selfRef = this;
+    $(document)
+        .off('focusin.cfw.modal') // guard against infinite focus loop
+        .on('focusin.cfw.modal', function(e) {
+            if (document !== e.target && $selfRef.$targetElm[0] !== e.target && !$selfRef.$targetElm.has(e.target).length)
+                // Add conditions here
+                // In this case items with a 'focusuable-item' class
+                && !$(e.target.parentNode).hasClass('focusuable-item') {
+                    $selfRef.$targetElm.trigger('focus');
+            }
+        });
+    }
+};
+{% endhighlight %}
