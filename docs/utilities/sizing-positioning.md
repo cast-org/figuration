@@ -72,7 +72,7 @@ Give some vertical alignment, using `display: table;` to keep items in a full wi
     </div>
 </div>
 
-<div class="valign-bottom valign-sample">
+<div class="valign-bottom">
     <div class="valign-item">
         <a href="#">View more in teacher's guide</a> |
         <a href="#">Common Core alignment</a>
