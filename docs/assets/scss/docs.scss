@@ -426,6 +426,23 @@ h4 {
     }
 }
 
+.footer-links {
+    padding-left: 0;
+    margin-bottom: 1rem;
+    list-style: none;
+
+    @include clearfix();
+}
+.footer-links li {
+    float: left;
+}
+.footer-links li + li::before {
+    display: inline-block;
+    padding-right: .25rem;
+    padding-left: .25rem;
+    content: "-";
+}
+
 .footer-partners {
     margin-top: .25rem;
     text-align: left;
