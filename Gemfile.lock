@@ -5,7 +5,8 @@ GEM
     colorator (1.1.0)
     ffi (1.9.14-x86-mingw32)
     forwardable-extended (2.6.0)
-    jekyll (3.2.1)
+    jekyll (3.3.0)
+      addressable (~> 2.4)
       colorator (~> 1.0)
       jekyll-sass-converter (~> 1.0)
       jekyll-watch (~> 1.1)
@@ -19,8 +20,8 @@ GEM
       jekyll (>= 2.0)
     jekyll-sass-converter (1.4.0)
       sass (~> 3.4)
-    jekyll-sitemap (0.11.0)
-      addressable (~> 2.4.0)
+    jekyll-sitemap (0.12.0)
+      jekyll (~> 3.3)
     jekyll-watch (1.5.0)
       listen (~> 3.0, < 3.1)
     kramdown (1.12.0)
@@ -46,10 +47,10 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  jekyll (~> 3.2.1)
+  jekyll (~> 3.3.0)
   jekyll-redirect-from (~> 0.11.0)
-  jekyll-sitemap (~> 0.11.0)
+  jekyll-sitemap (~> 0.12.0)
   scss_lint (~> 0.50.2)
 
 BUNDLED WITH
-   1.12.5
+   1.13.6
