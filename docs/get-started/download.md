@@ -25,7 +25,7 @@ Download just the compiled and minified CSS and JavaScript. Doesn't include any 
 {% endmarkdown %}
         </div>
         <div class="card-footer text-sm-center">
-<a href="{{ site.download.dist }}" class="btn btn-info" onclick="ga('send', 'event', 'Get Started', 'Download', 'Download compiled');">Download Figuration</a>
+<a href="{{ site.download.dist }}" class="btn btn-info" onclick="ga('send', 'event', 'Get Started', 'Download', 'Download compiled {{ site.current_version }}');">Download Figuration</a>
         </div> <!-- /.card-footer -->
       </div> <!-- /.card -->
     </div>
@@ -38,7 +38,7 @@ Download everything: source Sass, JavaScript, and documentation files. **Require
 {% endmarkdown %}
         </div>
         <div class="card-footer text-sm-center">
-<a href="{{ site.download.source }}" class="btn" onclick="ga('send', 'event', 'Get Started', 'Download', 'Download source');">Download source</a>
+<a href="{{ site.download.source }}" class="btn" onclick="ga('send', 'event', 'Get Started', 'Download', 'Download source {{ site.current_version }}');">Download source</a>
         </div> <!-- /.card-footer -->
       </div> <!-- /.card -->
     </div>  <!-- /.col -->
