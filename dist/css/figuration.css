@@ -341,6 +341,7 @@ html {
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
+  font-weight: normal;
   line-height: 1.5;
   color: #292929;
   background-color: #fff;
@@ -6612,15 +6613,6 @@ a.tag:focus, a.tag:hover {
   border-radius: 0.25rem;
 }
 
-.card .list-group {
-  margin-bottom: 0;
-}
-
-.card .list-group-flush .list-group-item {
-  border-right-width: 0;
-  border-left-width: 0;
-}
-
 .card-block {
   padding: 1rem 1rem;
 }
@@ -6646,6 +6638,15 @@ a.tag:focus, a.tag:hover {
 
 .card-link + .card-link {
   margin-left: 1.25rem;
+}
+
+.card .list-group {
+  margin-bottom: 0;
+}
+
+.card .list-group-flush .list-group-item {
+  border-right-width: 0;
+  border-left-width: 0;
 }
 
 .card > .list-group:first-child .list-group-item:first-child {
