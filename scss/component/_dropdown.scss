@@ -71,7 +71,7 @@
     display: block;
     padding: $dropdown-item-padding-y $dropdown-item-padding-x;
     clear: both;
-    font-weight: normal;
+    font-weight: $font-weight-normal;
     color: $dropdown-link-color;
     text-decoration: none;
     white-space: nowrap; // prevent links from randomly breaking onto new lines

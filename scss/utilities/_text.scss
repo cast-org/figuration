@@ -22,8 +22,8 @@
 .text-capitalize     { text-transform: capitalize !important; }
 
 // Weight and italics
-.font-weight-normal  { font-weight: normal; }
-.font-weight-bold    { font-weight: bold; }
+.font-weight-normal  { font-weight: $font-weight-normal; }
+.font-weight-bold    { font-weight: $font-weight-bold; }
 .font-italic         { font-style: italic; }
 
 // Contextual colors
