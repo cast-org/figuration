@@ -6940,12 +6940,12 @@ a.tag:focus, a.tag:hover {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    margin-right: 0;
-    margin-bottom: 1rem;
-    margin-left: 0;
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
+    margin-right: 0;
+    margin-bottom: 1rem;
+    margin-left: 0;
   }
   .card-deck-flex .card {
     -webkit-box-flex: 1;
