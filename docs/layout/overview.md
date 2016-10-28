@@ -190,7 +190,7 @@ $zindex-popover:           1025 !default;
 $zindex-tooltip:           1030 !default;
 $zindex-navbar-fixed:      1020 !default;
 $zindex-navbar-sticky:     1020 !default;
-$zindex-modal-bg:          1040 !default;
+$zindex-modal-backdrop:    1040 !default;
 $zindex-modal:             1050 !default;
 {% endhighlight %}
 
