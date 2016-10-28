@@ -51,7 +51,12 @@
 .input-group-addon,
 .input-group-btn,
 .input-group .form-control {
-    @if not $enable-flex-full {
+    @if $enable-flex-full {
+        // Vertically centers the content of the addons within the input group
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    } @else {
         display: table-cell;
     }
     &:not(:first-child):not(:last-child) {
@@ -61,11 +66,11 @@
 @if $enable-flex-opt {
     .input-group-flex {
         .input-group-addon,
-        .input-group-btn {
-            display: inline-block;
-        }
+        .input-group-btn,
         .form-control {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
     }
 }
@@ -172,9 +177,16 @@
     // element above the siblings.
     > .btn {
         position: relative;
+
+        @if $enable-flex-full {
+            // Vertically stretch the button and center its content
+            flex: 1;
+        }
+
         + .btn {
             margin-left: (-$input-border-width);
         }
+
         // Bring the "active" button to the front
         @include hover-focus-active {
             z-index: 3;
@@ -196,6 +208,17 @@
             // Because specificity
             @include hover-focus-active {
                 z-index: 3;
+            }
+        }
+    }
+}
+
+@if $enable-flex-opt {
+    .input-group-flex {
+        .input-group-btn {
+            > .btn {
+                // Vertically stretch the button and center its content
+                flex: 1;
             }
         }
     }
