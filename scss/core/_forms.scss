@@ -4,7 +4,7 @@
 .form-control {
     display: block;
     width: 100%;
-    // // Make inputs the height of their button counterpart (line-height + padding + border)
+    // Make inputs the height of their button counterpart (line-height + padding + border)
     height: $select-height;
     padding: $input-padding-y ($input-padding-x / 2);
     font-size: $font-size-base;
@@ -89,6 +89,10 @@ select.form-control {
         color: $input-color;
         background-color: $input-bg;
     }
+}
+
+textarea.form-control {
+    height: auto;
 }
 
 // Make color, file, range inputs better match text inputs by forcing them to new lines.
