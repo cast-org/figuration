@@ -142,14 +142,26 @@
                 flex-grow: 1;
                 max-width: 100%;
             }
+
+            %col-flex-auto-#{$breakpoint} {
+                flex: 0 0 auto;
+                width: auto;
+            }
+
             @if $enable-flex-full {
                 .col-#{$breakpoint} {
                     @extend %col-flex-basic-#{$breakpoint};
+                }
+                .col-#{$breakpoint}-auto {
+                    @extend %col-flex-auto-#{$breakpoint};
                 }
             }
             @if $enable-flex-opt {
                 .row-flex .col-#{$breakpoint} {
                     @extend %col-flex-basic-#{$breakpoint};
+                }
+                .row-flex .col-#{$breakpoint}-auto {
+                    @extend %col-flex-auto-#{$breakpoint};
                 }
             }
         }

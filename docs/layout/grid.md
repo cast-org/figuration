@@ -536,6 +536,37 @@ In the examples below, note that the other columns will resize no matter the wid
 {% endexample %}
 </div>
 
+Sometimes it's useful to have a column that lays itself out based on the natural width of its content, especially single line content like inputs, numbers, etc. Using the `col-{breakpoint}-auto` classes, you can guide this behavior as desired. This, in conjunction with [horizontal alignment]({{ site.baseurl }}/utilities/flexbox/#horizontal-alignment) utility classes, is very useful for centering layouts with uneven column sizes as viewport width grows.
+
+<div class="cf-example-row">
+{% example html %}
+<div class="container">
+    <div class="row row-flex flex-md-center">
+        <div class="col-xs col-lg-2">
+            1 of 3
+        </div>
+        <div class="col-xs-12 col-md-auto">
+            Variable width content
+        </div>
+        <div class="col-xs col-lg-2">
+            3 of 3
+        </div>
+    </div>
+    <div class="row row-flex">
+        <div class="col-xs">
+            1 of 3
+        </div>
+        <div class="col-xs-12 col-md-auto">
+            Variable width content
+        </div>
+        <div class="col-xs col-lg-2">
+            3 of 3
+        </div>
+    </div>
+</div>
+{% endexample %}
+ </div>
+
 ### Alignment
 
 If you wish to have better control over your flexbox grid alignment, there are a handful of utility classes that might be helpful.  Information and examples can be found in the [Flexbox utilities page]({{ site.baseurl }}/utilities/flexbox/).
