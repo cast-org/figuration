@@ -10,6 +10,7 @@
 .custom-control {
     position: relative;
     display: inline-block;
+    min-height: (1rem * $line-height-base);
     padding-left: $custom-control-gutter;
     margin-bottom: 0;
     cursor: pointer;
