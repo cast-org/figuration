@@ -51,7 +51,7 @@ Use `.container-fluid` for a full width container, spanning the entire width of 
 </div>
 {% endhighlight %}
 
-## Responsive breakpoints
+## Responsive Breakpoints
 
 Since Figuration is developed to be mobile first, we use a handful of [media queries](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries) to create sensible breakpoints for our layouts and interfaces. These breakpoints are mostly based on minimum viewport widths and allow us to scale up elements as the viewport changes.
 
@@ -175,3 +175,23 @@ The Sass mixin for the above example look like that shown beneath:
 {% highlight scss %}
 @include media-breakpoint-between(md, lg) { ... }
 {% endhighlight %}
+
+## Z-index
+
+Several Figuration components utilize `z-index`, the CSS property that helps control layout by providing a third axis to arrange content. We utilize a default z-index scale in Figuration that's been designed to properly layer navigation, tooltips and popovers, modals, and more.
+
+Customizing these values is most likely not needed, and we don't recommened customizing the values.  However, if you change one, you will need to review and possibly update all of the other values.
+
+{% highlight scss %}
+$zindex-dropdown-backdrop:  990 !default;
+$zindex-navbar:            1000 !default;
+$zindex-dropdown:          1000 !default;
+$zindex-popover:           1025 !default;
+$zindex-tooltip:           1030 !default;
+$zindex-navbar-fixed:      1020 !default;
+$zindex-navbar-sticky:     1020 !default;
+$zindex-modal-bg:          1040 !default;
+$zindex-modal:             1050 !default;
+{% endhighlight %}
+
+Background elements&mdash;like the backdrops that allow click-dismissing&mdash;tend to reside on a lower `z-index`s, while navigation and popovers utilize higher `z-index`s to ensure they overlay surrounding content.  Modals get a higher z-index so they are placed above popover/tooltip items, in the case that one or more of those items is held open.
