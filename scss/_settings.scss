@@ -26,6 +26,14 @@
     }
 }
 
+@mixin _assert-starts-at-zero($map) {
+    $values: map-values($map);
+    $first-value: nth($values, 1);
+    @if $first-value != 0 {
+        @warn "First breakpoint in `$grid-breakpoints` must start at 0, but starts at #{$first-value}.";
+    }
+}
+
 // Root font size
 // =====
 // Pixel value used to responsively scale all typography. Applied to the `<html>` element.
@@ -157,6 +165,7 @@ $grid-breakpoints: (
     xl: bp-to-em(1200px)
 ) !default;
 @include _assert-ascending($grid-breakpoints, "breakpoint", "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints);
 
 
 // Grid containers
