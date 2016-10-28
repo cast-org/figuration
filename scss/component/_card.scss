@@ -202,10 +202,10 @@
     // This needs to come later so the CSS if generated after .card-deck
     %card-deck-flex {
         display: flex;
+        flex-wrap: wrap;
         margin-right: 0;
         margin-bottom: $card-spacer-y; // Margin balancing
         margin-left: 0;
-        flex-wrap: wrap;
 
         .card {
             flex: 1 0 0;
