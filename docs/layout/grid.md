@@ -477,7 +477,13 @@ The **opt-in mode** for flexbox support is available by default, and is easily t
 
 ### Auto-Layout Columns
 
-When flexbox support is used/enabled, you can utilize breakpoint-specific column classes for equal-width columns. Add any number of `.col-{breakpoint}`s for each breakpoint you need. For example, here's are two grid layouts that apply to every device and viewport possible.
+When flexbox support is used/enabled, you can utilize breakpoint-specific column classes to control column widths.
+
+#### Equal Width Columns
+
+Equal-width columns are easliy done by adding any number of `.col-{breakpoint}`s for each breakpoint you need and every column will be the same width.
+
+For example, here's are two grid layouts that apply to every device and viewport possible.
 
 <div class="cf-example-row">
 {% example html %}
@@ -504,7 +510,9 @@ When flexbox support is used/enabled, you can utilize breakpoint-specific column
 {% endexample %}
 </div>
 
-Auto-layout for flexbox grid columns also means you can set the width of one column and the others will automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths.
+#### Controlled Width Column
+
+You can also set the width of one column and the others will automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths.
 
 In the examples below, note that the other columns will resize no matter the width of the center column.
 
@@ -536,7 +544,9 @@ In the examples below, note that the other columns will resize no matter the wid
 {% endexample %}
 </div>
 
-Sometimes it's useful to have a column that lays itself out based on the natural width of its content, especially single line content like inputs, numbers, etc. Using the `col-{breakpoint}-auto` classes, you can guide this behavior as desired. This, in conjunction with [horizontal alignment]({{ site.baseurl }}/utilities/flexbox/#horizontal-alignment) utility classes, is very useful for centering layouts with uneven column sizes as viewport width grows.
+#### Variable Width Column
+
+Using the `col-{breakpoint}-auto` classes, a column can size itself based on the natural width of its content. This can be handy when dealing with single line content like inputs, numbers, etc.  This, in conjunction with [horizontal alignment]({{ site.baseurl }}/utilities/flexbox/#horizontal-alignment) utility classes, is very useful for centering layouts with uneven column sizes as viewport width changes.
 
 <div class="cf-example-row">
 {% example html %}
