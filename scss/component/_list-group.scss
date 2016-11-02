@@ -1,17 +1,35 @@
 // Base class
 // Easily usable on <ul>, <ol>, or <div>.
 .list-group {
+    @if $enable-flex-full {
+        display: flex;
+        flex-direction: column;
+    }
+
     // No need to set list-style: none; since .list-group-item is block level
     padding-left: 0; // reset padding because ul and ol
     margin-bottom: 1rem;
 }
 
+@if $enable-flex-opt {
+    .list-group-flex {
+        display: flex;
+        flex-direction: column;
+    }
+}
 
 // Individual list items
 // Use on `li`s or `div`s within the `.list-group` parent.
 .list-group-item {
+    @if $enable-flex-full {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+    } @else {
+        display: block;
+    }
+
     position: relative;
-    display: block;
     padding: $list-group-item-padding-y $list-group-item-padding-x;
     // Place the border on the list items and negative margin up for better styling
     margin-bottom: -$list-group-border-width;
@@ -59,6 +77,14 @@
         .list-group-item-text {
             color: $list-group-active-text-color;
         }
+    }
+}
+
+@if $enable-flex-opt {
+    .list-group-flex .list-group-item {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
     }
 }
 
