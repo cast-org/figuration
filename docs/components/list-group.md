@@ -6,6 +6,8 @@ group: components
 
 List groups are a flexible and powerful component for displaying not only simple lists of elements, but complex ones with custom content.
 
+List groups have support for both a `block` style layout, along with both the opt-in flexbox and [full flexbox](/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.list-group-flex` class to the `.list-group` element.
+
 ## Contents
 {:.no_toc}
 
@@ -42,6 +44,25 @@ Add tags to any list group item to show unread counts, activity, etc.
   <li class="list-group-item">
     <span class="tag tag-default tag-pill pull-xs-right">1</span>
     Morbi leo risus
+  </li>
+</ul>
+{% endexample %}
+
+If using flexbox mode, to replicate the right-aligned tags, you will need to rework the contents of your list group items. See the following example. Note the re-ordering of sub-items, the use of the [`flex-xs-between` utility class]({{ site.baseurl }}/utilities/flexbox/#horizontal-alignment) for sub-item layout, and the removal of the pull utility on tags.
+
+{% example html %}
+<ul class="list-group list-group-flex">
+  <li class="list-group-item flex-xs-between">
+    Cras justo odio
+    <span class="tag tag-default tag-pill">14</span>
+  </li>
+  <li class="list-group-item flex-xs-between">
+    Dapibus ac facilisis in
+    <span class="tag tag-default tag-pill">2</span>
+  </li>
+  <li class="list-group-item flex-xs-between">
+    Morbi leo risus
+    <span class="tag tag-default tag-pill">1</span>
   </li>
 </ul>
 {% endexample %}
