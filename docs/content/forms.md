@@ -705,11 +705,15 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
 
 Figuration includes validation styles for danger, warning, and success states on form controls. Here's a rundown of how they work:
 
+### How It Works
+
 - To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.form-control-label`, `.form-control`, or custom form element will receive the validation styles.
 - Contextual validation text, in addition to your usual form field help text, can be added with the use of `.form-control-feedback`. This text will adapt to the parent `.has-*` class. By default it only includes a bit of `margin` for spacing and a modified `color` for each state.
 - Validation icons are `url()`s configured via Sass variables that are applied to `background-image` declarations for each state.
 - You may use your own base64 PNGs or SVGs by updating the Sass variables and recompiling.
 - Icons can also be disabled entirely by setting the variables to `none` or commenting out the source Sass.
+
+### Defining States
 
 Generally speaking, you'll want to use a particular state for specific types of feedback:
 
@@ -728,6 +732,8 @@ Using these validation styles to denote the state of a form control only provide
 Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's `<label>` text itself (as is the case in the following code example), include a [Glyphicon](../components/#glyphicons) (with appropriate alternative text using the `.sr-only` class - see the [Glyphicon examples](../components/#glyphicons-examples)), or by providing an additional [help text](#forms-help-text) block. Specifically for assistive technologies, invalid form controls can also be assigned an `aria-invalid="true"` attribute.
 {% endcallout %}
 {% endcomment %}
+
+### Examples
 
 {% example html %}
 <div class="form-group has-success">
@@ -768,6 +774,35 @@ Ensure that an alternative indication of state is also provided. For instance, y
     <input type="checkbox" class="form-check-input" id="checkboxDanger" value="option1">
     Checkbox with danger
   </label>
+</div>
+{% endexample %}
+
+Also a slightly more horizontal layout.
+
+{% example html %}
+<div class="form-group row has-success">
+  <label for="inputHorizontalSuccess" class="col-sm-2 form-control-label">Email</label>
+  <div class="col-sm-10">
+    <input type="email" class="form-control form-control-success" id="inputHorizontalSuccess" placeholder="name@example.com">
+    <div class="form-control-feedback">Success! You've done it.</div>
+    <small class="form-text text-muted">Example help text that remains unchanged.</small>
+  </div>
+</div>
+<div class="form-group row has-warning">
+  <label for="inputHorizontalWarning" class="col-sm-2 form-control-label">Email</label>
+  <div class="col-sm-10">
+    <input type="email" class="form-control form-control-warning" id="inputHorizontalWarning" placeholder="name@example.com">
+    <div class="form-control-feedback">Check the formatting of that and try again.</div>
+    <small class="form-text text-muted">Example help text that remains unchanged.</small>
+  </div>
+</div>
+<div class="form-group row has-danger">
+  <label for="inputHorizontalDnger" class="col-sm-2 form-control-label">Email</label>
+  <div class="col-sm-10">
+    <input type="email" class="form-control form-control-danger" id="inputHorizontalDnger" placeholder="name@example.com">
+    <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
+    <small class="form-text text-muted">Example help text that remains unchanged.</small>
+  </div>
 </div>
 {% endexample %}
 
