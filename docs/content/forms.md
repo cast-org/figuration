@@ -368,7 +368,7 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
       </div>
     </div>
     <fieldset class="form-group row">
-      <legend class="col-form-legend col-sm-2">Radios</legend>
+      <label class="col-sm-2">Radios</label>
       <div class="col-sm-10">
         <div class="form-check">
           <label class="form-check-label">
