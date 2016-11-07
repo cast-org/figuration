@@ -335,6 +335,9 @@
 
 
 // Card columns
+// If using `display: block;` on child cards - encounter problem with bottom margin being applied in the next column sometimes
+// https://bugs.chromium.org/p/chromium/issues/detail?id=440362
+
 @include media-breakpoint-up(#{$card-columns-breakpoint}) {
     .card-columns {
         column-count: 3;
@@ -343,6 +346,7 @@
         .card {
             display: inline-table;
             width: 100%; // Don't let them exceed the column width
+            break-inside: avoid;
         }
     }
 }
