@@ -420,6 +420,12 @@
       <li><a href="#server-side-apps" id="markdown-toc-server-side-apps">Server-side Apps</a></li>
     </ul>
   </li>
+  <li><a href="#accessibility" id="markdown-toc-accessibility">Accessibility</a>    <ul>
+      <li><a href="#consider-keyboard-and-assistive-technology-users" id="markdown-toc-consider-keyboard-and-assistive-technology-users">Consider Keyboard and Assistive Technology Users</a></li>
+      <li><a href="#key-commands" id="markdown-toc-key-commands">Key Commands</a></li>
+      <li><a href="#focus-handling" id="markdown-toc-focus-handling">Focus Handling</a></li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="overview">Overview</h2>
@@ -890,6 +896,34 @@ function myTipAlign(tip, trigger) {
     <li>Show tooltip: <code>$('#myTooltip').CFW_Tooltip('show');</code></li>
 </ol>
 
+<h2 id="accessibility">Accessibility</h2>
+
+<h3 id="consider-keyboard-and-assistive-technology-users">Consider Keyboard and Assistive Technology Users</h3>
+
+<p>You should only add tooltips to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as <code class="highlighter-rouge">&lt;span&gt;</code>s) can be made focusable by adding the <code class="highlighter-rouge">tabindex="0"</code> attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users. In addition, most assistive technologies currently do not announce the tooltip in this situation.</p>
+
+<h3 id="key-commands">Key Commands</h3>
+
+<p>The following key commands are handled when focus is inside the toolip:</p>
+
+<ul>
+  <li><kbd>Esc</kbd> - Close the tooltip (when using <code class="highlighter-rouge">trigger: click</code>)</li>
+</ul>
+
+<h3 id="focus-handling">Focus Handling</h3>
+
+<p>Tooltips have additional focus handling when using keyboard navigation.</p>
+
+<p>If navigating from <strong>above</strong> the tooltip’s trigger (typically with the <code class="highlighter-rouge">tab</code> key), when the trigger becomes focused, focus will be moved from the trigger to the <strong>top of the tooltip</strong>.</p>
+
+<p>If navigating from <strong>below</strong> the tooltip’s trigger (typically with the <code class="highlighter-rouge">shift</code>-<code class="highlighter-rouge">tab</code> key combination), when the trigger is focused, focus will be moved from the trigger to the <strong>last focusable item</strong> inside the tooltip.</p>
+
+<p>When navigating <strong>forward</strong>, out the <em>bottom</em> of the tooltip, the focus will be moved to the next focusable item in the document relative to the trigger.  This is done so that if the <code class="highlighter-rouge">container</code> option is used, the focus will move to next logical item.  Otherwise, when using <code class="highlighter-rouge">container: body</code>, the focus will potentially drop off the end of the HTML document, leaving a keyboard user in an akward situation.</p>
+
+<p>When navigating <strong>backward</strong>, out the <em>top</em> of the tooltip, the focus will be moved to the preceding focusable item in the document relative to the trigger.</p>
+
+<p>This will not necessarily work with some assistive technologies reading modes.</p>
+
             </div>
         </div>
 
@@ -900,11 +934,12 @@ function myTipAlign(tip, trigger) {
 
     <footer class="cf-footer">
     <div class="container">
-        <p>
-            Currently version: 1.3.0
-            <br />
-            <a href="https://github.com/cast-org/figuration">GitHub Project</a> - <a href="https://github.com/cast-org/figuration/issues">Issues</a>
-        </p>
+        Currently version: 1.3.1
+        <ul class="footer-links">
+            <li><a href="https://github.com/cast-org/figuration">GitHub Project</a></li>
+            <li><a href="https://github.com/cast-org/figuration/issues">Issues</a></li>
+            <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
+        </ul>
         <p>
             &copy; 2013-2016 <a href="http://www.cast.org">CAST, Inc.</a>
             <br />

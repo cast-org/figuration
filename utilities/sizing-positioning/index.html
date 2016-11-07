@@ -318,7 +318,26 @@
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"width-100"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Width = 100%"</span><span class="nt">&gt;</span></code></pre></div>
 
-<p>There is also a <code class="highlighter-rouge">.height-100</code> utility class, which sets <code class="highlighter-rouge">height: 100%</code>.  However, it probabaly won’t work the way you think it does.  <a href="http://webdesign.about.com/od/csstutorials/f/set-css-height-100-percent.htm">This article</a> has a few details on working with precentage heights.</p>
+<p>There is also a <code class="highlighter-rouge">.height-100</code> utility class, which sets <code class="highlighter-rouge">height: 100%</code>.  However, it probabaly won’t always work the way you think it should.  Some good information can be found in this article — <a href="http://webdesign.about.com/od/csstutorials/f/set-css-height-100-percent.htm">How Do You Set the Height of an HTML Element to 100%?</a></p>
+
+<div class="cf-example" data-example-id="">
+<div class="cf-example-height">
+    <div class="bg-gray-50 padding-x-3 display-inline-block" style="height: 150px;">
+        <div class="height-100 bg-gray-300 text-center padding-a-1 display-inline-block">
+            Full height<br />
+            <code>.height-100</code>
+        </div>
+    </div>
+</div>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"cf-example-height"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bg-gray-50 padding-x-3 display-inline-block"</span> <span class="na">style=</span><span class="s">"height: 150px;"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"height-100 bg-gray-300 text-center padding-a-1 display-inline-block"</span><span class="nt">&gt;</span>
+            Full height<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;code&gt;</span>.height-100<span class="nt">&lt;/code&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 <h2 id="fixed-positioning">Fixed Positioning</h2>
 
@@ -334,7 +353,7 @@
 
 <h2 id="vertical-row-alignment">Vertical Row Alignment</h2>
 
-<p>Give some vertical alignment,  using <code class="highlighter-rouge">display: table;</code> to keep items in a full width row.  Child items need to be defined with <code class="highlighter-rouge">.valign-item</code> in order to receive alignment.</p>
+<p>Give some vertical alignment, using <code class="highlighter-rouge">display: table;</code> to keep items in a full width row.  Child items need to be defined with <code class="highlighter-rouge">.valign-item</code> in order to receive alignment.</p>
 
 <div class="cf-example" data-example-id="">
 <div class="valign-top">
@@ -357,7 +376,7 @@
     </div>
 </div>
 
-<div class="valign-bottom valign-sample">
+<div class="valign-bottom">
     <div class="valign-item">
         <a href="#">View more in teacher's guide</a> |
         <a href="#">Common Core alignment</a>
@@ -387,7 +406,7 @@
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"valign-bottom valign-sample"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"valign-bottom"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"valign-item"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>View more in teacher's guide<span class="nt">&lt;/a&gt;</span> |
         <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Common Core alignment<span class="nt">&lt;/a&gt;</span>
@@ -408,11 +427,12 @@
 
     <footer class="cf-footer">
     <div class="container">
-        <p>
-            Currently version: 1.3.0
-            <br />
-            <a href="https://github.com/cast-org/figuration">GitHub Project</a> - <a href="https://github.com/cast-org/figuration/issues">Issues</a>
-        </p>
+        Currently version: 1.3.1
+        <ul class="footer-links">
+            <li><a href="https://github.com/cast-org/figuration">GitHub Project</a></li>
+            <li><a href="https://github.com/cast-org/figuration/issues">Issues</a></li>
+            <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
+        </ul>
         <p>
             &copy; 2013-2016 <a href="http://www.cast.org">CAST, Inc.</a>
             <br />

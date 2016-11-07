@@ -443,6 +443,11 @@
       <li><a href="#server-side-apps" id="markdown-toc-server-side-apps">Server-side Apps</a></li>
     </ul>
   </li>
+  <li><a href="#accessibility" id="markdown-toc-accessibility">Accessibility</a>    <ul>
+      <li><a href="#key-commands" id="markdown-toc-key-commands">Key Commands</a></li>
+      <li><a href="#enforced-focus" id="markdown-toc-enforced-focus">Enforced Focus</a></li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="examples">Examples</h2>
@@ -913,6 +918,50 @@
     <li>Show modal: <code>$('#myModal').CFW_Modal('show');</code></li>
 </ol>
 
+<h2 id="accessibility">Accessibility</h2>
+
+<h3 id="key-commands">Key Commands</h3>
+
+<p>The following key commands are handled when focus is inside the modal:</p>
+
+<ul>
+  <li><kbd>Esc</kbd> - Close the modal</li>
+</ul>
+
+<h3 id="enforced-focus">Enforced Focus</h3>
+
+<p>In order to keep assistive technology users from interacting with the rest of the page when a modal is open, the focus is automatically forced back to the modal when a user tries to navigate out.</p>
+
+<p>When navigating <strong>forward</strong>, out the <em>bottom</em> of the modal, focus will be moved to the <strong>top of the modal</strong>.</p>
+
+<p>When navigation <strong>backward</strong>, out the <em>top</em> of the modal, focus will be moved back to the <strong>top of the modal</strong>.</p>
+
+<p>If for some reason you need to disable the enforced focus for modals, you can override the <code class="highlighter-rouge">enforceFocus()</code> method.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// This needs to be loaded after Figuration's JavaScript</span>
+<span class="c1">// PLEASE DO NOT DO THIS!!! - Just here for reference</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">CFW_Modal</span><span class="p">.</span><span class="nx">Constructor</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">enforceFocus</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{};</span>
+<span class="c1">// SERIOUSLY DO NOT DO THIS!!!</span></code></pre></figure>
+
+<p>However, we do not advise disabling it completely, but overriding the function to handle the focus conditionally.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// This needs to be loaded after Figuration's JavaScript</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">CFW_Modal</span><span class="p">.</span><span class="nx">Constructor</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">enforceFocus</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">$selfRef</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">off</span><span class="p">(</span><span class="s1">'focusin.cfw.modal'</span><span class="p">)</span> <span class="c1">// guard against infinite focus loop</span>
+        <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'focusin.cfw.modal'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">document</span> <span class="o">!==</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="o">&amp;&amp;</span> <span class="nx">$selfRef</span><span class="p">.</span><span class="nx">$targetElm</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!==</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">$selfRef</span><span class="p">.</span><span class="nx">$targetElm</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">length</span><span class="p">)</span>
+                <span class="c1">// Add conditions here</span>
+                <span class="c1">// In this case items with a 'focusuable-item' class</span>
+                <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">).</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">'focusuable-item'</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">$selfRef</span><span class="p">.</span><span class="nx">$targetElm</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">'focus'</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+
             </div>
         </div>
 
@@ -923,11 +972,12 @@
 
     <footer class="cf-footer">
     <div class="container">
-        <p>
-            Currently version: 1.3.0
-            <br />
-            <a href="https://github.com/cast-org/figuration">GitHub Project</a> - <a href="https://github.com/cast-org/figuration/issues">Issues</a>
-        </p>
+        Currently version: 1.3.1
+        <ul class="footer-links">
+            <li><a href="https://github.com/cast-org/figuration">GitHub Project</a></li>
+            <li><a href="https://github.com/cast-org/figuration/issues">Issues</a></li>
+            <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
+        </ul>
         <p>
             &copy; 2013-2016 <a href="http://www.cast.org">CAST, Inc.</a>
             <br />

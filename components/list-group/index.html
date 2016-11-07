@@ -337,6 +337,8 @@
 
                 <p>List groups are a flexible and powerful component for displaying not only simple lists of elements, but complex ones with custom content.</p>
 
+<p>List groups have support for both a <code class="highlighter-rouge">block</code> style layout, along with both the opt-in flexbox and <a href="/layout/flexbox#full-flexbox-mode">full flexbox</a> modes.  To use the opt-in method, simply add a <code class="highlighter-rouge">.list-group-flex</code> class to the <code class="highlighter-rouge">.list-group</code> element.</p>
+
 <h2 class="no_toc" id="contents">Contents</h2>
 
 <ul id="markdown-toc">
@@ -400,6 +402,39 @@
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag tag-default tag-pill pull-xs-right"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/span&gt;</span>
     Morbi leo risus
+  <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
+
+<p>If using flexbox mode, to replicate the right-aligned tags, you will need to rework the contents of your list group items. See the following example. Note the re-ordering of sub-items, the use of the <a href="/utilities/flexbox/#horizontal-alignment"><code class="highlighter-rouge">flex-xs-between</code> utility class</a> for sub-item layout, and the removal of the pull utility on tags.</p>
+
+<div class="cf-example" data-example-id="">
+<ul class="list-group list-group-flex">
+  <li class="list-group-item flex-xs-between">
+    Cras justo odio
+    <span class="tag tag-default tag-pill">14</span>
+  </li>
+  <li class="list-group-item flex-xs-between">
+    Dapibus ac facilisis in
+    <span class="tag tag-default tag-pill">2</span>
+  </li>
+  <li class="list-group-item flex-xs-between">
+    Morbi leo risus
+    <span class="tag tag-default tag-pill">1</span>
+  </li>
+</ul>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-group list-group-flex"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item flex-xs-between"</span><span class="nt">&gt;</span>
+    Cras justo odio
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag tag-default tag-pill"</span><span class="nt">&gt;</span>14<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item flex-xs-between"</span><span class="nt">&gt;</span>
+    Dapibus ac facilisis in
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag tag-default tag-pill"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item flex-xs-between"</span><span class="nt">&gt;</span>
+    Morbi leo risus
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"tag tag-default tag-pill"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span></code></pre></div>
 
@@ -546,11 +581,12 @@
 
     <footer class="cf-footer">
     <div class="container">
-        <p>
-            Currently version: 1.3.0
-            <br />
-            <a href="https://github.com/cast-org/figuration">GitHub Project</a> - <a href="https://github.com/cast-org/figuration/issues">Issues</a>
-        </p>
+        Currently version: 1.3.1
+        <ul class="footer-links">
+            <li><a href="https://github.com/cast-org/figuration">GitHub Project</a></li>
+            <li><a href="https://github.com/cast-org/figuration/issues">Issues</a></li>
+            <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
+        </ul>
         <p>
             &copy; 2013-2016 <a href="http://www.cast.org">CAST, Inc.</a>
             <br />

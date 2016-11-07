@@ -437,6 +437,11 @@
       <li><a href="#server-side-apps" id="markdown-toc-server-side-apps">Server-side Apps</a></li>
     </ul>
   </li>
+  <li><a href="#accessibility" id="markdown-toc-accessibility">Accessibility</a>    <ul>
+      <li><a href="#key-commands" id="markdown-toc-key-commands">Key Commands</a></li>
+      <li><a href="#focus-handling" id="markdown-toc-focus-handling">Focus Handling</a></li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="overview">Overview</h2>
@@ -1026,7 +1031,7 @@ function myPopoverAlign(tip, trigger) {
 
 <h3 id="server-side-apps">Server-side Apps</h3>
 
-<p>Popvers are designed to hopefully work with server side applications, such as Apache Wicket, and other instances where the server-side application might need to create or update the popover content after the initial page load.</p>
+<p>Popovers are designed to hopefully work with server side applications, such as Apache Wicket, and other instances where the server-side application might need to create or update the popover content after the initial page load.</p>
 
 <p>A quick example:<br /></p>
 <ol>
@@ -1044,6 +1049,30 @@ function myPopoverAlign(tip, trigger) {
     <li>Show popover: <code>$('#myPopover').CFW_Popover('show');</code></li>
 </ol>
 
+<h2 id="accessibility">Accessibility</h2>
+
+<h3 id="key-commands">Key Commands</h3>
+
+<p>The following key commands are handled when focus is inside the popover:</p>
+
+<ul>
+  <li><kbd>Esc</kbd> - Close the popover</li>
+</ul>
+
+<h3 id="focus-handling">Focus Handling</h3>
+
+<p>Popovers have additional focus handling when using keyboard navigation.</p>
+
+<p>If navigating from <strong>above</strong> the popover’s trigger (typically with the <code class="highlighter-rouge">tab</code> key), when the trigger becomes focused, focus will be moved from the trigger to the <strong>top of the popover</strong>.</p>
+
+<p>If navigating from <strong>below</strong> the popover’s trigger (typically with the <code class="highlighter-rouge">shift</code>-<code class="highlighter-rouge">tab</code> key combination), when the trigger is focused, focus will be moved from the trigger to the <strong>last focusable item</strong> inside the popover.</p>
+
+<p>When navigating <strong>forward</strong>, out the <em>bottom</em> of the popover, the focus will be moved to the next focusable item in the document relative to the trigger.  This is done so that if the <code class="highlighter-rouge">container</code> option is used, the focus will move to next logical item.  Otherwise, when using <code class="highlighter-rouge">container: body</code>, the focus will potentially drop off the end of the HTML document, leaving a keyboard user in an akward situation.</p>
+
+<p>When navigating <strong>backward</strong>, out the <em>top</em> of the popover, the focus will be moved to the preceding focusable item in the document relative to the trigger.</p>
+
+<p>This will not necessarily work with some assistive technologies reading modes.</p>
+
             </div>
         </div>
 
@@ -1054,11 +1083,12 @@ function myPopoverAlign(tip, trigger) {
 
     <footer class="cf-footer">
     <div class="container">
-        <p>
-            Currently version: 1.3.0
-            <br />
-            <a href="https://github.com/cast-org/figuration">GitHub Project</a> - <a href="https://github.com/cast-org/figuration/issues">Issues</a>
-        </p>
+        Currently version: 1.3.1
+        <ul class="footer-links">
+            <li><a href="https://github.com/cast-org/figuration">GitHub Project</a></li>
+            <li><a href="https://github.com/cast-org/figuration/issues">Issues</a></li>
+            <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
+        </ul>
         <p>
             &copy; 2013-2016 <a href="http://www.cast.org">CAST, Inc.</a>
             <br />
