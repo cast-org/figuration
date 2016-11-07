@@ -7131,6 +7131,9 @@ a.tag:focus, a.tag:hover {
   .card-columns .card {
     display: inline-table;
     width: 100%;
+    -webkit-column-break-inside: avoid;
+       page-break-inside: avoid;
+            break-inside: avoid;
   }
 }
 
