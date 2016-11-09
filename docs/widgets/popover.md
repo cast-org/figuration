@@ -189,7 +189,7 @@ Keep popovers in their place with the `viewport` option.
 
     <button class="btn btn-info popover-viewport-right" title="This should be shifted down">Shift Down</button>
 
-    <button class="btn btn-info pull-xs-right popover-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
+    <button class="btn btn-info float-right popover-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
 
     <button class="btn btn-info popover-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
 
