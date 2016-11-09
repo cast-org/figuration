@@ -226,12 +226,12 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
 
 ## Header Nav
 
-Use nav pills or tabs within a card header. Be sure to always include a `.pull-*-*` utility class for proper alignment.
+Use nav pills or tabs within a card header. Be sure to always include a `.float-*-*` utility class for proper alignment.
 
 {% example html %}
 <div class="card text-xs-center">
   <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs pull-xs-left">
+    <ul class="nav nav-tabs card-header-tabs float-left">
       <li class="nav-item">
         <a class="nav-link active" href="#">Active</a>
       </li>
@@ -254,7 +254,7 @@ Use nav pills or tabs within a card header. Be sure to always include a `.pull-*
 {% example html %}
 <div class="card text-xs-center">
   <div class="card-header">
-    <ul class="nav nav-pills card-header-pills pull-xs-left">
+    <ul class="nav nav-pills card-header-pills float-left">
       <li class="nav-item">
         <a class="nav-link active" href="#">Active</a>
       </li>

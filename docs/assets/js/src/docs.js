@@ -93,7 +93,7 @@ function paletteHex() {
         $items.each(function() {
             $this = $(this);
             color = rgb2hex($this.css('background-color'));
-            $this.append('<span class="pull-right">' + color + '</span>');
+            $this.append('<span class="float-right">' + color + '</span>');
         });
     }
 }

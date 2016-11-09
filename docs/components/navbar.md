@@ -18,7 +18,7 @@ Here's what you need to know before getting started with the navbar:
 
 - Navbars require a wrapping `.navbar` and a [color scheme](#color-schemes).
 - Navbars and their contents are fluid by default. Use [optional containers](#containers) to limit their horizontal width.
-- Use `.pull-*-left` and `.pull-*-right` to quickly align sub-components.
+- Use `.float-*-left` and `.float-*-right` to quickly align sub-components.
 - Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
 
 ## Supported Content
@@ -50,7 +50,7 @@ Here's an example of all the sub-components included in a default, light navbar:
       <a class="nav-link" href="#">About</a>
     </li>
   </ul>
-  <form class="form-inline pull-xs-right">
+  <form class="form-inline float-right">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
@@ -124,7 +124,7 @@ Using the utility classes, you can change the alignment and appearance of your n
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-    <span class="navbar-text pull-xs-right text-danger">
+    <span class="navbar-text float-right text-danger">
         Navbar text floated right
     </span>
 </nav>
@@ -135,7 +135,7 @@ You can also use utility classes to align navbar text to other navbar elements l
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
     <a href="#" class="navbar-brand">Navbar</a>
-    <span class="navbar-text pull-xs-left">
+    <span class="navbar-text float-left">
         Navbar text floated left
     </span>
 </nav>
@@ -190,7 +190,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline pull-xs-right">
+    <form class="form-inline float-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-secondary" type="submit">Search</button>
     </form>
@@ -211,7 +211,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline pull-xs-right">
+    <form class="form-inline float-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-secondary" type="submit">Search</button>
     </form>
@@ -232,7 +232,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline pull-xs-right">
+    <form class="form-inline float-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
@@ -325,7 +325,7 @@ Note the use of the `hidden` option for the [Collapse widget]({{ site.baseurl }}
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
     <a class="navbar-brand" href="#">Responsive navbar</a>
-    <button class="navbar-toggler hidden-lg-up pull-xs-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav0" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
+    <button class="navbar-toggler hidden-lg-up float-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav0" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
     <div class="collapse navbar-toggleable-md" id="respNav0">
         <ul class="nav navbar-nav">
             <li class="nav-item active">
