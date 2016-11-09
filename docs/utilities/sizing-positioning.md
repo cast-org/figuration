@@ -46,39 +46,3 @@ The `.position-f-t` class can be used to easily position elements at the top of 
   z-index: $zindex-navbar-fixed;
 }
 {% endhighlight %}
-
-## Vertical Row Alignment
-
-Give some vertical alignment, using `display: table;` to keep items in a full width row.  Child items need to be defined with `.valign-item` in order to receive alignment.
-
-{% example html %}
-<div class="valign-top">
-    <div class="valign-item">
-        <a href="#">View more in teacher's guide</a> |
-        <a href="#">Common Core alignment</a>
-    </div>
-    <div class="valign-item text-right">
-        <button type="button" class="btn btn-primary btn-lg">Continue</button>
-    </div>
-</div>
-
-<div class="valign-middle">
-    <div class="valign-item">
-        <a href="#">View more in teacher's guide</a> |
-        <a href="#">Common Core alignment</a>
-    </div>
-    <div class="valign-item text-right">
-        <button type="button" class="btn btn-primary btn-lg">Continue</button>
-    </div>
-</div>
-
-<div class="valign-bottom">
-    <div class="valign-item">
-        <a href="#">View more in teacher's guide</a> |
-        <a href="#">Common Core alignment</a>
-    </div>
-    <div class="valign-item text-right">
-        <button type="button" class="btn btn-primary btn-lg">Continue</button>
-    </div>
-</div>
-{% endexample %}

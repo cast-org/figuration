@@ -1,31 +1,14 @@
 // scss-lint:disable ImportantRule
 
-// Vertical row alignments
-.valign-top,
-.valign-middle,
-.valign-bottom {
-    display: table;
-    width: 100%;
-}
+@each $breakpoint in map-keys($grid-breakpoints) {
+    $bprule: breakpoint-designator($breakpoint);
 
-.valign-top {
-    > .valign-item {
-        display: table-cell;
-        float: none !important;
-        vertical-align: top;
-    }
-}
-.valign-middle {
-    > .valign-item {
-        display: table-cell;
-        float: none !important;
-        vertical-align: middle;
-    }
-}
-.valign-bottom {
-    > .valign-item {
-        display: table-cell;
-        float: none !important;
-        vertical-align: bottom;
+    @include media-breakpoint-up($breakpoint) {
+        .valign#{$bprule}-baseline { vertical-align: baseline !important; }
+        .valign#{$bprule}-top { vertical-align: top !important; }
+        .valign#{$bprule}-middle { vertical-align: middle !important; }
+        .valign#{$bprule}-bottom { vertical-align: bottom !important; }
+        .valign#{$bprule}-text-bottom { vertical-align: text-bottom !important; }
+        .valign#{$bprule}-text-top { vertical-align: text-top !important; }
     }
 }
