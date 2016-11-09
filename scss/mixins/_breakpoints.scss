@@ -39,6 +39,17 @@
     @return if($next, breakpoint-min($next, $breakpoints) - bp-to-em(1px), null);
 }
 
+// String value for breakpoint class name designation.
+//
+//    >> breakpoint-designator(xs)
+//    `empty string`
+//    >> breakpoint-designator(lg)
+//    -lg
+@function breakpoint-designator($name, $breakpoints: $grid-breakpoints) {
+    $min: map-get($breakpoints, $name);
+    @return if($min != 0, -#{$name}, "");
+}
+
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
 // Makes the @content apply to the given breakpoint and wider.
 @mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
