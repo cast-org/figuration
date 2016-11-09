@@ -4,11 +4,19 @@ title: Display Property
 group: utilities
 ---
 
-Use `.display-block`, `.display-inline`, `.display-inline-block`, `.display-flex`, `.display-table`, and `.display-table-cell` to simply set an element's [`display` property](https://developer.mozilla.org/en-US/docs/Web/CSS/display) to `block`, `inline`, `inline-block`, `flex`, `table`, or `table-cell` (respectively).
+Control an element's [`display` property](https://developer.mozilla.org/en-US/docs/Web/CSS/display).
 
-These classes are also available in repsonsive variants, in the form of `.display-{breakpoint}-{value}`, such as `.display-lg-block`.
+Available utilities:
+- `.display-block` sets `display: block;`
+- `.display-flex` sets `display: flex;`
+- `.display-inline` sets `display: inline;`
+- `.display-inline-block` sets `display: inline-block;`
+- `.display-table`sets `display: table;`
+- `.display-table-cell`  sets `display: table-cell;`
 
-To make an element `display: none`, use our [responsive utilities]({{ site.baseurl }}/layout/responsive-utilities/) instead.
+These classes are also available in repsonsive variants, in the form of `.display{-breakpoint}-{value}`, such as `.display-lg-block`.
+
+While we also have a `.display-none` utility to make an element `display: none;`, using the [responsive utilities]({{ site.baseurl }}/layout/responsive-utilities/) would be a better option.
 
 {% example html %}
 <div class="display-inline bg-success">Inline</div>
