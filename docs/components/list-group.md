@@ -48,19 +48,19 @@ Add tags to any list group item to show unread counts, activity, etc.
 </ul>
 {% endexample %}
 
-If using flexbox mode, to replicate the right-aligned tags, you will need to rework the contents of your list group items. See the following example. Note the re-ordering of sub-items, the use of the [`flex-xs-between` utility class]({{ site.baseurl }}/utilities/flexbox/#horizontal-alignment) for sub-item layout, and the removal of the pull utility on tags.
+If using flexbox mode, to replicate the right-aligned tags, you will need to rework the contents of your list group items. See the following example. Note the re-ordering of sub-items, the use of the [`flex-between` utility class]({{ site.baseurl }}/utilities/flexbox/#horizontal-alignment) for sub-item layout, and the removal of the pull utility on tags.
 
 {% example html %}
 <ul class="list-group list-group-flex">
-  <li class="list-group-item flex-xs-between">
+  <li class="list-group-item flex-between">
     Cras justo odio
     <span class="tag tag-default tag-pill">14</span>
   </li>
-  <li class="list-group-item flex-xs-between">
+  <li class="list-group-item flex-between">
     Dapibus ac facilisis in
     <span class="tag tag-default tag-pill">2</span>
   </li>
-  <li class="list-group-item flex-xs-between">
+  <li class="list-group-item flex-between">
     Morbi leo risus
     <span class="tag tag-default tag-pill">1</span>
   </li>
