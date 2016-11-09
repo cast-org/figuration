@@ -34,14 +34,14 @@ Vertical alignment can be applied to a flex parent---which will align all the ch
 
 To set the parent alignment, the available classes, per breakpoint, are:
 
-- `.flex-{breakpoint}-top`
-- `.flex-{breakpoint}-middle`
-- `.flex-{breakpoint}-bottom`
-- `.flex-{breakpoint}-stretch` - this is the default alignment
+- `.flex{-breakpoint}-top`
+- `.flex{-breakpoint}-middle`
+- `.flex{-breakpoint}-bottom`
+- `.flex{-breakpoint}-stretch` - this is the default alignment
 
 <div class="cf-example-row cf-example-row-flex">
 {% example html %}
-<div class="row row-flex flex-xs-top">
+<div class="row row-flex flex-top">
     <div class="col-xs">
         <code>.flex-*-top</code>
     </div>
@@ -53,7 +53,7 @@ To set the parent alignment, the available classes, per breakpoint, are:
     </div>
 </div>
 
-<div class="row row-flex flex-xs-middle">
+<div class="row row-flex flex-middle">
     <div class="col-xs">
         <code>.flex-*-middle</code>
     </div>
@@ -65,7 +65,7 @@ To set the parent alignment, the available classes, per breakpoint, are:
     </div>
 </div>
 
-<div class="row row-flex flex-xs-bottom">
+<div class="row row-flex flex-bottom">
     <div class="col-xs">
         <code>.flex-*-bottom</code>
     </div>
@@ -77,7 +77,7 @@ To set the parent alignment, the available classes, per breakpoint, are:
     </div>
 </div>
 
-<div class="row row-flex flex-xs-stretch">
+<div class="row row-flex flex-stretch">
     <div class="col-xs">
         <code>.flex-*-stretch</code>
     </div>
@@ -95,24 +95,24 @@ To align an individual child, we use the same alignment terms as the flex parent
 
 To set the child alignment, the available classes, per breakpoint, are:
 
-- `.flex-self-{breakpoint}-top`
-- `.flex-self-{breakpoint}-middle`
-- `.flex-self-{breakpoint}-bottom`
-- `.flex-self-{breakpoint}-stretch` - this is the default alignment
+- `.flex-self{-breakpoint}-top`
+- `.flex-self{-breakpoint}-middle`
+- `.flex-self{-breakpoint}-bottom`
+- `.flex-self{-breakpoint}-stretch` - this is the default alignment
 
 <div class="cf-example-row cf-example-row-flex-v">
 {% example html %}
 <div class="row row-flex">
-    <div class="col-xs flex-self-xs-top">
+    <div class="col-xs flex-self-top">
         align top
     </div>
-    <div class="col-xs flex-self-xs-middle">
+    <div class="col-xs flex-self-middle">
         align middle
     </div>
-    <div class="col-xs flex-self-xs-bottom">
+    <div class="col-xs flex-self-bottom">
         align bottom
     </div>
-    <div class="col-xs flex-self-xs-stretch">
+    <div class="col-xs flex-self-stretch">
         align stretch
     </div>
 </div>
@@ -133,7 +133,7 @@ To set the alignment, the available classes, per breakpoint, are:
 
 <div class="cf-example-row cf-example-row-flex">
 {% example html %}
-<div class="row row-flex flex-xs-left">
+<div class="row row-flex flex-left">
     <div class="col-xs-4">
         aligned to
     </div>
@@ -142,7 +142,7 @@ To set the alignment, the available classes, per breakpoint, are:
     </div>
 </div>
 
-<div class="row row-flex flex-xs-center">
+<div class="row row-flex flex-center">
     <div class="col-xs-4">
         aligned to
     </div>
@@ -151,7 +151,7 @@ To set the alignment, the available classes, per breakpoint, are:
     </div>
 </div>
 
-<div class="row row-flex flex-xs-right">
+<div class="row row-flex flex-right">
     <div class="col-xs-4">
         aligned to
     </div>
@@ -160,7 +160,7 @@ To set the alignment, the available classes, per breakpoint, are:
     </div>
 </div>
 
-<div class="row row-flex flex-xs-around">
+<div class="row row-flex flex-around">
     <div class="col-xs-4">
         aligned to
     </div>
@@ -169,7 +169,7 @@ To set the alignment, the available classes, per breakpoint, are:
     </div>
 </div>
 
-<div class="row row-flex flex-xs-between">
+<div class="row row-flex flex-between">
     <div class="col-xs-4">
         aligned to
     </div>
@@ -194,19 +194,19 @@ The available classes, per breakpoint, are:
 <div class="cf-example-row">
 {% example html %}
 <div class="row row-flex">
-    <div class="col-xs-1 flex-xs-last">
+    <div class="col-xs-1 flex-last">
         1
     </div>
-    <div class="col-xs-1 flex-xs-unordered">
+    <div class="col-xs-1 flex-unordered">
         2
     </div>
-    <div class="col-xs-1 flex-xs-last">
+    <div class="col-xs-1 flex-last">
         3
     </div>
-    <div class="col-xs-1 flex-xs-first">
+    <div class="col-xs-1 flex-first">
         4
     </div>
-    <div class="col-xs-1 flex-xs-first">
+    <div class="col-xs-1 flex-first">
         5
     </div>
 </div>
