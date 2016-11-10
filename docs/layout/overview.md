@@ -176,6 +176,26 @@ The Sass mixin for the above example look like that shown beneath:
 @include media-breakpoint-between(md, lg) { ... }
 {% endhighlight %}
 
+## Breakpoint Nomenclature
+
+Since Figuration is built as a mobile first framework, we have created our class naming structure to **not** use the smallest breakpoint designation, except for a few certain instances.
+
+Classes that apply to all breakpoints, from `xs` to `xl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
+
+Building from the base component or utility name, classes are named using the format `.base-{direction}-{dimension}` for `xs` and `.base-{breakpoint}-{direction}-{dimension}` for `sm`, `md`, `lg`, and `xl`.
+
+The only special case is where there are `*-up` or `*-down` variants for certain components or classes, the breakpoint designation.  Only then is the minimum breakpoint designation used in the class name.
+
+A quick example using some of Figuration's [Typography utility classes]({{ site.baseurl }}/utilities/typography).
+
+{% example html %}
+<p class="text-right">Right aligned text on all viewport sizes. (<strong>No <code>xs</code> class designation!</strong>)</p>
+<p class="text-sm-right">Right aligned text on viewports sized SM (small) or wider.</p>
+<p class="text-md-right">Right aligned text on viewports sized MD (medium) or wider.</p>
+<p class="text-lg-right">Right aligned text on viewports sized LG (large) or wider.</p>
+<p class="text-xl-right">Right aligned text on viewports sized XL (extra-large) or wider.</p>
+{% endexample %}
+
 ## Z-index
 
 Several Figuration components utilize `z-index`, the CSS property that helps control layout by providing a third axis to arrange content. We utilize a default z-index scale in Figuration that's been designed to properly layer navigation, tooltips and popovers, modals, and more.

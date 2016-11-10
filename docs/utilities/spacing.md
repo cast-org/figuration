@@ -4,14 +4,16 @@ title: Spacing
 group: utilities
 ---
 
-Assign `margin` or `padding` to an element or a subset of its sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. All classes are multiples on the global default value, `1rem`.
+Assign `margin` or `padding` to an element or a subset of its sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. Classes are generated from a Sass map with values ranging from `0.25rem` to `3rem`.
 
-The classes are named using the format: `{property}-{sides}-{size}`
+The classes are named using the format: `{property}{-breakpoint}-{sides}-{size}`.
 
 Where *property* is one of:
 
 * `margin` - for classes that set `margin`
 * `padding` - for classes that set `padding`
+
+Where *breakpoint* is one of the repsonsive breakpoints, if above the minimum `xs` size.  Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) is used.
 
 Where *sides* is one of:
 
@@ -26,8 +28,11 @@ Where *sides* is one of:
 Where *size* is one of:
 
 * `0` - for classes that eliminate the `margin` or `padding` by setting it to `0`
+* `0_25` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 0.25` or `$spacer-y * 0.25`
+* `0_5` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 0.5` or `$spacer-y * 0.5`
 * `1` - (by default) for classes that set the `margin` or `padding` to `$spacer-x` or `$spacer-y`
-* `2` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 1.5` or `$spacer-y * 1.5`
+* `1_5` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 1.5` or `$spacer-y * 1.5`
+* `2` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 2` or `$spacer-y * 2`
 * `3` - (by default) for classes that set the `margin` or `padding` to `$spacer-x * 3` or `$spacer-y * 3`
 
 (You can add more sizes by adding entries to the `$spacers` Sass map variable.)
@@ -43,7 +48,11 @@ Here are some representative examples of these classes:
   margin-left: $spacer-x !important;
 }
 
-.padding-x-2 {
+.margin-md-t-1 {
+  margin-top: $spacer-x !important;
+}
+
+.padding-x-1_5 {
   padding-left: ($spacer-x * 1.5) !important;
   padding-right: ($spacer-x * 1.5) !important;
 }
