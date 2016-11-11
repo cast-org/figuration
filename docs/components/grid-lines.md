@@ -21,7 +21,7 @@ Start off with a parent `.gridline` container and add `.gridline-item` child con
 To get consitent spacing, some elements might require utility classes or custom styles.  `.gridline-item` containers can be mixed with the grid system to create the layout.
 
 {% example html %}
-<div class="gridline gridline-xs-vr gridline-xs-hr">
+<div class="gridline gridline-vr gridline-hr">
     <div class="gridline-item col-md-6">
         <h4>Header Level 4</h4>
         <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.</p>
@@ -33,7 +33,7 @@ To get consitent spacing, some elements might require utility classes or custom 
         <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum.</p>
     </div>
 </div>
-<div class="gridline gridline-xs-hr">
+<div class="gridline gridline-hr">
     <div class="gridline-item col-md-6">
         <h4>Header Level 4</h4>
         <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
@@ -49,7 +49,7 @@ To get consitent spacing, some elements might require utility classes or custom 
 
 The grid line options for horizontal and vertical lines both use the responsive grid system for showing the rules to that a responsive layout that converts from rows to columns is supported.
 
-Use `.gridline-{breakpoint}-hr` for horizontal lines, and `.gridline-{breakpoint}-vr` for vertical lines.
+Use `.gridline-{breakpoint}-hr` for horizontal lines, and `.gridline-{breakpoint}-vr` for vertical lines. Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) is used.
 
 ### Horizontal
 
@@ -69,14 +69,19 @@ To add an outer border, just add the class `.gridline-bordered` to a container a
 
 {% example html %}
 <strong>Rule: Horizontal</strong>
-<div class="gridline gridline-xs-hr">
+<div class="gridline gridline-hr">
     <div class="gridline-item col-md-12">
         <p>Row 1 - Column 1</p>
     </div>
 </div>
-<div class="gridline gridline-xs-hr">
+<div class="gridline gridline-hr">
     <div class="gridline-item col-md-12">
         <p>Row 2 - Column 1</p>
+    </div>
+</div>
+<div class="gridline gridline-hr">
+    <div class="gridline-item col-md-12">
+        <p>Row 3 - Column 1</p>
     </div>
 </div>
 {% endexample %}
@@ -97,7 +102,7 @@ To add an outer border, just add the class `.gridline-bordered` to a container a
 
 {% example html %}
 <strong>Rule: Horizontal</strong>
-<div class="gridline gridline-xs-hr">
+<div class="gridline gridline-hr">
     <div class="gridline-item col-md-6">
         <p>Row 1 - Column 1</p>
     </div>
@@ -105,19 +110,27 @@ To add an outer border, just add the class `.gridline-bordered` to a container a
         <p>Row 1 - Column 2</p>
     </div>
 </div>
-<div class="gridline gridline-xs-hr">
+<div class="gridline gridline-hr">
     <div class="gridline-item col-md-6">
         <p>Row 2 - Column 1</p>
     </div>
     <div class="gridline-item col-md-6">
         <p>Row 2 - Column 2</p>
+    </div>
+</div>
+<div class="gridline gridline-hr">
+    <div class="gridline-item col-md-6">
+        <p>Row 3 - Column 1</p>
+    </div>
+    <div class="gridline-item col-md-6">
+        <p>Row 3 - Column 2</p>
     </div>
 </div>
 {% endexample %}
 
 {% example html %}
 <strong>Rule: Both</strong>
-<div class="gridline gridline-xs-hr gridline-md-vr">
+<div class="gridline gridline-hr gridline-md-vr">
     <div class="gridline-item col-md-6">
         <p>Row 1 - Column 1</p>
     </div>
@@ -125,12 +138,20 @@ To add an outer border, just add the class `.gridline-bordered` to a container a
         <p>Row 1 - Column 2</p>
     </div>
 </div>
-<div class="gridline gridline-xs-hr gridline-md-vr">
+<div class="gridline gridline-hr gridline-md-vr">
     <div class="gridline-item col-md-6">
         <p>Row 2 - Column 1</p>
     </div>
     <div class="gridline-item col-md-6">
         <p>Row 2 - Column 2</p>
+    </div>
+</div>
+<div class="gridline gridline-hr gridline-md-vr">
+    <div class="gridline-item col-md-6">
+        <p>Row 3 - Column 1</p>
+    </div>
+    <div class="gridline-item col-md-6">
+        <p>Row 3 - Column 2</p>
     </div>
 </div>
 {% endexample %}
@@ -154,7 +175,7 @@ To add an outer border, just add the class `.gridline-bordered` to a container a
 
 {% example html %}
 <strong>Rule: Horizontal</strong>
-<div class="gridline gridline-xs-hr">
+<div class="gridline gridline-hr">
     <div class="gridline-item col-md-4">
         <p>Row 1 - Column 1</p>
     </div>
@@ -165,7 +186,7 @@ To add an outer border, just add the class `.gridline-bordered` to a container a
         <p>Row 1 - Column 3</p>
     </div>
 </div>
-<div class="gridline gridline-xs-hr">
+<div class="gridline gridline-hr">
     <div class="gridline-item col-md-4">
         <p>Row 2 - Column 1</p>
     </div>
@@ -174,13 +195,24 @@ To add an outer border, just add the class `.gridline-bordered` to a container a
     </div>
     <div class="gridline-item col-md-4">
         <p>Row 2 - Column 3</p>
+    </div>
+</div>
+<div class="gridline gridline-hr">
+    <div class="gridline-item col-md-4">
+        <p>Row 3 - Column 1</p>
+    </div>
+    <div class="gridline-item col-md-4">
+        <p>Row 3 - Column 2</p>
+    </div>
+    <div class="gridline-item col-md-4">
+        <p>Row 3 - Column 3</p>
     </div>
 </div>
 {% endexample %}
 
 {% example html %}
 <strong>Rule: Both</strong>
-<div class="gridline gridline-xs-hr gridline-md-vr">
+<div class="gridline gridline-hr gridline-md-vr">
     <div class="gridline-item col-md-4">
         <p>Row 1 - Column 1</p>
     </div>
@@ -191,7 +223,7 @@ To add an outer border, just add the class `.gridline-bordered` to a container a
         <p>Row 1 - Column 3</p>
     </div>
 </div>
-<div class="gridline gridline-xs-hr gridline-md-vr">
+<div class="gridline gridline-hr gridline-md-vr">
     <div class="gridline-item col-md-4">
         <p>Row 2 - Column 1</p>
     </div>
@@ -200,6 +232,17 @@ To add an outer border, just add the class `.gridline-bordered` to a container a
     </div>
     <div class="gridline-item col-md-4">
         <p>Row 2 - Column 3</p>
+    </div>
+</div>
+<div class="gridline gridline-hr gridline-md-vr">
+    <div class="gridline-item col-md-4">
+        <p>Row 3 - Column 1</p>
+    </div>
+    <div class="gridline-item col-md-4">
+        <p>Row 3 - Column 2</p>
+    </div>
+    <div class="gridline-item col-md-4">
+        <p>Row 3 - Column 3</p>
     </div>
 </div>
 {% endexample %}
@@ -207,7 +250,7 @@ To add an outer border, just add the class `.gridline-bordered` to a container a
 ### Bordered
 {% example html %}
 <div class="gridline-bordered">
-    <div class="gridline gridline-xs-hr gridline-md-vr">
+    <div class="gridline gridline-hr gridline-md-vr">
         <div class="gridline-item col-md-4">
             <p>Row 1 - Column 1</p>
         </div>
@@ -218,7 +261,7 @@ To add an outer border, just add the class `.gridline-bordered` to a container a
             <p>Row 1 - Column 3</p>
         </div>
     </div>
-    <div class="gridline gridline-xs-hr gridline-md-vr">
+    <div class="gridline gridline-md-hr gridline-md-vr">
         <div class="gridline-item col-md-4">
             <p>Row 2 - Column 1</p>
         </div>
@@ -227,6 +270,17 @@ To add an outer border, just add the class `.gridline-bordered` to a container a
         </div>
         <div class="gridline-item col-md-4">
             <p>Row 2 - Column 3</p>
+        </div>
+    </div>
+    <div class="gridline gridline-lg-hr gridline-md-vr">
+        <div class="gridline-item col-md-4">
+            <p>Row 3 - Column 1</p>
+        </div>
+        <div class="gridline-item col-md-4">
+            <p>Row 3 - Column 2</p>
+        </div>
+        <div class="gridline-item col-md-4">
+            <p>Row 3 - Column 3</p>
         </div>
     </div>
 </div>
