@@ -38,6 +38,8 @@ These classes are exceptionally useful helping to follow [accessibility best pra
 
 Force an element to be hidden (including for screen readers) with the use of `.hidden-{breakpoint}-{up/down}` classes. These classes use `!important` to avoid specificity conflicts. For example, to hide content for `lg` or larger screens you would use `.hidden-lg-up`.
 
+A section on the [responsive utilities layout page]({{ site.baseurl }}/layout/responsive-utilities/#available-classes) gives more detail about how these classes and breakpoints are related.
+
 {% highlight html %}
 <span class="hidden-lg-up">...</span>
 <span class="hidden-sm-down">...</span>
@@ -45,20 +47,28 @@ Force an element to be hidden (including for screen readers) with the use of `.h
 
 ## Invisible Content
 
-The `.invisible` class can be used to toggle only the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document.
+The `.invisible` and `.visible` classes can be used to toggle only the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document.
 
 {% highlight html %}
 <div class="invisible">...</div>
+<div class="visible">...</div>
 {% endhighlight %}
 
 {% highlight scss %}
 // Class
 .invisible {
-  visibility: hidden;
+  visibility: hidden !important;
+}
+.visible {
+  visibility: visible !important;
 }
 
-// Usage as a mixin
+// Usage as a mixins
 .element {
   @include invisible;
 }
+.element {
+  @include visible;
+}
+
 {% endhighlight %}
