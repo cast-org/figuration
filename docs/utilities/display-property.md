@@ -14,7 +14,7 @@ Available utilities:
 - `.display-table`sets `display: table;`
 - `.display-table-cell`  sets `display: table-cell;`
 
-These classes are also available in repsonsive variants, in the form of `.display{-breakpoint}-{value}`, such as `.display-lg-block`.
+These classes are also available in repsonsive variants, in the form of `.display{-breakpoint}-{value}`, such as `.display-lg-block`. Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) is used.
 
 While we also have a `.display-none` utility to make an element `display: none;`, using the [responsive utilities]({{ site.baseurl }}/layout/responsive-utilities/) would be a better option.
 
