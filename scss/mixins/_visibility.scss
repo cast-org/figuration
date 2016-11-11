@@ -5,3 +5,7 @@
 @mixin invisible {
     visibility: hidden !important;
 }
+
+@mixin visible {
+    visibility: visible !important;
+}
