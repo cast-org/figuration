@@ -44,7 +44,8 @@
     }
 
     .row {
-        > [class^="col-"] {
+        > [class^="col-"],
+          .col {
             padding-top: .75rem;
             padding-bottom: .75rem;
             background-color: rgba(34,68,102,.15);

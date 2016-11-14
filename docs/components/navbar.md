@@ -371,7 +371,7 @@ Each 'segment' of a navbar group will also need to be wrapped in, or classed wit
                 <a class="nav-link" href="#">About</a>
             </li>
         </ul>
-        <form class="navbar-item navbar-item-min form-inline text-xs-right">
+        <form class="navbar-item navbar-item-min form-inline text-right">
             <input class="form-control" type="text" placeholder="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
@@ -385,7 +385,7 @@ Each 'segment' of a navbar group will also need to be wrapped in, or classed wit
 <nav class="navbar navbar-light bg-faded">
     <div class="navbar-group navbar-group-justified">
         <a class="navbar-item navbar-brand" href="#">Navbar</a>
-        <ul class="navbar-item nav navbar-nav text-xs-center">
+        <ul class="navbar-item nav navbar-nav text-center">
             <li class="nav-item active">
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -399,7 +399,7 @@ Each 'segment' of a navbar group will also need to be wrapped in, or classed wit
                 <a class="nav-link" href="#">About</a>
             </li>
         </ul>
-        <span class="navbar-item navbar-text text-xs-right text-success">Justified!</span>
+        <span class="navbar-item navbar-text text-right text-success">Justified!</span>
     </div>
 </nav>
 {% endexample %}

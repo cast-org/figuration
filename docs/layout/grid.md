@@ -62,27 +62,27 @@ The example pixel values are calculated based upon assumption where the average 
     <thead>
       <tr>
         <th></th>
-        <th class="text-xs-center">
+        <th class="text-center">
           Extra small<br>
           <small>&lt;576px</small><br>
           <small>&lt;36em</small>
         </th>
-        <th class="text-xs-center">
+        <th class="text-center">
           Small<br>
           <small>&ge;576px</small><br>
           <small>&ge;36em</small>
         </th>
-        <th class="text-xs-center">
+        <th class="text-center">
           Medium<br>
           <small>&ge;768px</small><br>
           <small>&ge;48em</small>
         </th>
-        <th class="text-xs-center">
+        <th class="text-center">
           Large<br>
           <small>&ge;992px</small><br>
           <small>&ge;62em</small>
         </th>
-        <th class="text-xs-center">
+        <th class="text-center">
           Extra large<br>
           <small>&ge;1200px</small><br>
           <small>&ge;75em</small>
@@ -105,7 +105,7 @@ The example pixel values are calculated based upon assumption where the average 
       </tr>
       <tr>
         <th class="text-nowrap" scope="row">Class prefix</th>
-        <td><code>.col-xs-</code></td>
+        <td><code>.col-</code></td>
         <td><code>.col-sm-</code></td>
         <td><code>.col-md-</code></td>
         <td><code>.col-lg-</code></td>
@@ -177,27 +177,27 @@ Using a single set of `.col-md-*` grid classes, you can create a basic grid syst
 
 ### Example: Mobile and Desktop
 
-Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid classes by adding `.col-xs-*` and `.col-md-*` to your columns. See the example below for a better idea of how it all works.
+Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid classes by adding `.col-*` and `.col-md-*` to your columns. See the example below for a better idea of how it all works.
 
 <div class="cf-example-row">
 {% example html %}
 <!-- Stack the columns on mobile by making one full-width and the other half-width -->
 <div class="row">
-  <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+  <div class="col-12 col-md-8">.col-12 .col-md-8</div>
+  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
 </div>
 
 <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
 <div class="row">
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
 </div>
 
 <!-- Columns are always 50% wide, on mobile and desktop -->
 <div class="row">
-  <div class="col-xs-6">.col-xs-6</div>
-  <div class="col-xs-6">.col-xs-6</div>
+  <div class="col-6">.col-6</div>
+  <div class="col-6">.col-6</div>
 </div>
 {% endexample %}
 </div>
@@ -209,15 +209,15 @@ Build on the previous example by creating even more dynamic and powerful layouts
 <div class="cf-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-8">.col-xs-12 .col-sm-6 .col-md-8</div>
-  <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+  <div class="col-12 col-sm-6 col-md-8">.col-12 .col-sm-6 .col-md-8</div>
+  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
 </div>
 <div class="row">
-  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
-  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
   <!-- Optional: clear the XS cols if their content doesn't match in height -->
   <div class="clearfix hidden-sm-up"></div>
-  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
 </div>
 {% endexample %}
 </div>
@@ -229,9 +229,9 @@ If more than 12 columns are placed within a single row, each group of extra colu
 <div class="cf-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-xs-9">.col-xs-9</div>
-  <div class="col-xs-4">.col-xs-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
-  <div class="col-xs-6">.col-xs-6<br>Subsequent columns continue along the new line.</div>
+  <div class="col-9">.col-9</div>
+  <div class="col-4">.col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
+  <div class="col-6">.col-6<br>Subsequent columns continue along the new line.</div>
 </div>
 {% endexample %}
 </div>
@@ -243,14 +243,14 @@ With the four tiers of grids available you're bound to run into issues where, at
 <div class="cf-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
-  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
 
   <!-- Add the extra clearfix for only the required viewport -->
   <div class="clearfix hidden-sm-up"></div>
 
-  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
-  <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
 </div>
 {% endexample %}
 </div>
@@ -301,11 +301,11 @@ To nest your content with the default grid, add a new `.row` and set of `.col-sm
   <div class="col-sm-9">
     Level 1: .col-sm-9
     <div class="row">
-      <div class="col-xs-8 col-sm-6">
-        Level 2: .col-xs-8 .col-sm-6
+      <div class="col-8 col-sm-6">
+        Level 2: .col-8 .col-sm-6
       </div>
-      <div class="col-xs-4 col-sm-6">
-        Level 2: .col-xs-4 .col-sm-6
+      <div class="col-4 col-sm-6">
+        Level 2: .col-4 .col-sm-6
       </div>
     </div>
   </div>
@@ -328,9 +328,9 @@ Easily change the order of our built-in grid columns with `.push-md-*` and `.pul
 
 ## Customizing the Grid
 
-Using our built-in grid Sass variables and maps, it's possible to completely customize the predefined grid classes. Change the number of tiers, the media query dimensions, and the container widths---then recompile.
+Using our built-in grid Sass variables and maps, it's possible to completely customize the predefined grid classes. Change the number of tiers, the media query dimensions, the container widths, and the grid gutter widths---then recompile.
 
-For example, if you wanted just three grid tiers, you'd update the `$grid-breakpoints` and `$container-max-widths` to something like this:
+For example, if you wanted just three grid tiers, you'd update the `$grid-breakpoints`, `$container-max-widths`, and `$grid-gutter-widths` to something like this:
 
 {% highlight scss %}
 $grid-breakpoints: (
@@ -343,6 +343,12 @@ $container-max-widths: (
   sm: rem-calc(420px),
   md: rem-calc(720px),
   lg: rem-calc(940px)
+);
+
+$grid-gutter-widths: (
+    sm: 1.5rem,
+    md: 2rem,
+    lg: 2rem
 );
 {% endhighlight %}
 
@@ -360,7 +366,6 @@ Some Sass functions are in use here.  Simply put `bp-to-em()` converts a pixel v
 
 {% highlight scss %}
 $grid-columns:      12;
-$grid-gutter-width: 2rem;
 
 $grid-breakpoints: (
   // Extra small screen / phone
@@ -380,6 +385,15 @@ $container-max-widths: (
   md: rem-calc(720px),
   lg: rem-calc(940px),
   xl: rem-calc(1140px)
+);
+
+$grid-gutter-width: 2rem;
+$grid-gutter-widths: (
+    xs: $grid-gutter-width,
+    sm: $grid-gutter-width,
+    md: $grid-gutter-width,
+    lg: $grid-gutter-width,
+    xl: $grid-gutter-width
 );
 {% endhighlight %}
 
@@ -488,22 +502,22 @@ For example, here's are two grid layouts that apply to every device and viewport
 <div class="cf-example-row">
 {% example html %}
 <div class="row row-flex">
-    <div class="col-xs">
+    <div class="col">
         1 of 2
     </div>
-    <div class="col-xs">
+    <div class="col">
         1 of 2
     </div>
 </div>
 
 <div class="row row-flex">
-    <div class="col-xs">
+    <div class="col">
         1 of 3
     </div>
-    <div class="col-xs">
+    <div class="col">
         1 of 3
     </div>
-    <div class="col-xs">
+    <div class="col">
         1 of 3
     </div>
 </div>
@@ -519,25 +533,25 @@ In the examples below, note that the other columns will resize no matter the wid
 <div class="cf-example-row">
 {% example html %}
 <div class="row row-flex">
-    <div class="col-xs">
+    <div class="col">
         1 of 3
     </div>
-    <div class="col-xs-6">
-        2 of 3 (col-xs-6)
+    <div class="col-6">
+        2 of 3 (col-6)
     </div>
-    <div class="col-xs">
+    <div class="col">
         3 of 3
     </div>
 </div>
 
 <div class="row row-flex">
-    <div class="col-xs">
+    <div class="col">
         1 of 3
     </div>
-    <div class="col-xs-5">
-        2 of 3 (col-xs-5)
+    <div class="col-5">
+        2 of 3 (col-5)
     </div>
-    <div class="col-xs">
+    <div class="col">
         3 of 3
     </div>
 </div>
@@ -552,24 +566,24 @@ Using the `col-{breakpoint}-auto` classes, a column can size itself based on the
 {% example html %}
 <div class="container">
     <div class="row row-flex flex-md-center">
-        <div class="col-xs col-lg-2">
+        <div class="col col-lg-2">
             1 of 3
         </div>
-        <div class="col-xs-12 col-md-auto">
+        <div class="col-12 col-md-auto">
             Variable width content
         </div>
-        <div class="col-xs col-lg-2">
+        <div class="col col-lg-2">
             3 of 3
         </div>
     </div>
     <div class="row row-flex">
-        <div class="col-xs">
+        <div class="col">
             1 of 3
         </div>
-        <div class="col-xs-12 col-md-auto">
+        <div class="col-12 col-md-auto">
             Variable width content
         </div>
-        <div class="col-xs col-lg-2">
+        <div class="col col-lg-2">
             3 of 3
         </div>
     </div>
