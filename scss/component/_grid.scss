@@ -6,6 +6,7 @@
     .container {
         @include make-container();
         @include make-container-max-widths();
+        max-width: 100%;
     }
 }
 
@@ -61,6 +62,10 @@
     }
 
     @each $breakpoint in map-keys($grid-breakpoints) {
+        .col-#{$breakpoint} {
+            @extend %col;
+        }
+
         @for $i from 1 through $grid-columns {
             .col-#{$breakpoint}-#{$i} {
                 @extend %col;
@@ -87,7 +92,6 @@
 
         @if $enable-flex-opt {
             .row-flex .col-#{$breakpoint} {
-                @extend %col;
                 @extend %col-flex;
             }
         }
@@ -95,18 +99,21 @@
 
     // Create repsonsive grid gutters
     @each $breakpoint in map-keys($grid-breakpoints) {
-        %col-gutter {
-            @include media-breakpoint-up($breakpoint) {
-                $gutter: map-get($grid-gutter-widths, $breakpoint);
-                padding-right: ($gutter / 2);
-                padding-left:  ($gutter / 2);
+        @include check-gutter-change($breakpoint, $grid-gutter-widths) {
+            %col-gutter {
+                @include media-breakpoint-up($breakpoint) {
+                    $gutter: map-get($grid-gutter-widths, $breakpoint);
+                    padding-right: ($gutter / 2);
+                    padding-left:  ($gutter / 2);
+                }
             }
         }
 
+        .col-#{$breakpoint} {
+            @extend %col-gutter;
+        }
+
         @for $i from 1 through $grid-columns {
-            .col-#{$breakpoint} {
-                @extend %col-gutter;
-            }
             .col-#{$breakpoint}-#{$i} {
                 @extend %col-gutter;
             }
