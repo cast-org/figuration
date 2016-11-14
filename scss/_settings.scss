@@ -203,7 +203,7 @@ $grid-columns:      12 !default;
 // These settings affect container, row, and col components.
 // If modifying, you will also have to adjust the `$container-max-widths`
 // values also to prevent horizontal scrolling.
-$grid-gutter-width: 1.875rem !default;
+$grid-gutter-width: 2rem !default;
 $grid-gutter-widths: (
     xs: $grid-gutter-width,
     sm: $grid-gutter-width,
@@ -319,6 +319,7 @@ $drag-text-shadow:      0 .0625rem 0 #fff !default;
 // Component sizes
 // =====
 // Used for button, button groups, pagination, form-control, and input-group
+// 'md' is considered to be the default size, so no classes for this size designator are generated, as in *no* `.btn-md`.
 $component-sizes: (
     xs: (
         font-size:      .75rem,
@@ -331,7 +332,7 @@ $component-sizes: (
         padding-y:      .25rem,
         padding-x:      .5rem,
         border-radius:  .1875rem
-   ),
+    ),
     lg: (
         font-size:      1.25rem,
         padding-y:      .625rem,
