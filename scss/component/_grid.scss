@@ -62,12 +62,14 @@
     }
 
     @each $breakpoint in map-keys($grid-breakpoints) {
-        .col-#{$breakpoint} {
+        $bprule: breakpoint-designator($breakpoint);
+
+        .col#{$bprule} {
             @extend %col;
         }
 
         @for $i from 1 through $grid-columns {
-            .col-#{$breakpoint}-#{$i} {
+            .col#{$bprule}-#{$i} {
                 @extend %col;
 
                 @if $enable-flex-full {
@@ -76,7 +78,7 @@
             }
 
             @if $enable-flex-opt {
-                .row-flex .col-#{$breakpoint}-#{$i} {
+                .row-flex .col#{$bprule}-#{$i} {
                     @extend %col-flex;
                 }
             }
@@ -84,14 +86,14 @@
 
         // Default for basic `.col-{bp}` classes for equal-width flexbox columns
         @if $enable-flex-full {
-            .col-#{$breakpoint} {
+            .col#{$bprule} {
                 @extend %col;
                 @extend %col-flex;
             }
         }
 
         @if $enable-flex-opt {
-            .row-flex .col-#{$breakpoint} {
+            .row-flex .col#{$bprule} {
                 @extend %col-flex;
             }
         }
@@ -99,6 +101,8 @@
 
     // Create repsonsive grid gutters
     @each $breakpoint in map-keys($grid-breakpoints) {
+        $bprule: breakpoint-designator($breakpoint);
+
         @include check-gutter-change($breakpoint, $grid-gutter-widths) {
             %col-gutter {
                 @include media-breakpoint-up($breakpoint) {
@@ -109,12 +113,12 @@
             }
         }
 
-        .col-#{$breakpoint} {
+        .col#{$bprule} {
             @extend %col-gutter;
         }
 
         @for $i from 1 through $grid-columns {
-            .col-#{$breakpoint}-#{$i} {
+            .col#{$bprule}-#{$i} {
                 @extend %col-gutter;
             }
         }

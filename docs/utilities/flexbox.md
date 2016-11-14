@@ -22,9 +22,9 @@ A simple example, using the grid layout, shows the `.row` as a flex parent, and 
 
 {% highlight html %}
 <div class="row row-flex">
-    <div class="col-xs-4"></div>
-    <div class="col-xs-4"></div>
-    <div class="col-xs-4"></div>
+    <div class="col-4"></div>
+    <div class="col-4"></div>
+    <div class="col-4"></div>
 </div>
 {% endhighlight %}
 
@@ -42,49 +42,49 @@ To set the parent alignment, the available classes, per breakpoint, are:
 <div class="cf-example-row cf-example-row-flex">
 {% example html %}
 <div class="row row-flex flex-top">
-    <div class="col-xs">
+    <div class="col">
         <code>.flex-*-top</code>
     </div>
-    <div class="col-xs">
+    <div class="col">
         1 of 3
     </div>
-    <div class="col-xs">
+    <div class="col">
         Align top - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor felis pretium!
     </div>
 </div>
 
 <div class="row row-flex flex-middle">
-    <div class="col-xs">
+    <div class="col">
         <code>.flex-*-middle</code>
     </div>
-    <div class="col-xs">
+    <div class="col">
         1 of 3
     </div>
-    <div class="col-xs">
+    <div class="col">
         Align middle - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor felis pretium!
     </div>
 </div>
 
 <div class="row row-flex flex-bottom">
-    <div class="col-xs">
+    <div class="col">
         <code>.flex-*-bottom</code>
     </div>
-    <div class="col-xs">
+    <div class="col">
         1 of 3
     </div>
-    <div class="col-xs">
+    <div class="col">
         Align bottom - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor felis pretium!
     </div>
 </div>
 
 <div class="row row-flex flex-stretch">
-    <div class="col-xs">
+    <div class="col">
         <code>.flex-*-stretch</code>
     </div>
-    <div class="col-xs">
+    <div class="col">
         1 of 3
     </div>
-    <div class="col-xs">
+    <div class="col">
         Equal height - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor felis pretium!
     </div>
 </div>
@@ -103,16 +103,16 @@ To set the child alignment, the available classes, per breakpoint, are:
 <div class="cf-example-row cf-example-row-flex-v">
 {% example html %}
 <div class="row row-flex">
-    <div class="col-xs flex-self-top">
+    <div class="col flex-self-top">
         align top
     </div>
-    <div class="col-xs flex-self-middle">
+    <div class="col flex-self-middle">
         align middle
     </div>
-    <div class="col-xs flex-self-bottom">
+    <div class="col flex-self-bottom">
         align bottom
     </div>
-    <div class="col-xs flex-self-stretch">
+    <div class="col flex-self-stretch">
         align stretch
     </div>
 </div>
@@ -134,46 +134,46 @@ To set the alignment, the available classes, per breakpoint, are:
 <div class="cf-example-row cf-example-row-flex">
 {% example html %}
 <div class="row row-flex flex-left">
-    <div class="col-xs-4">
+    <div class="col-4">
         aligned to
     </div>
-    <div class="col-xs-4">
+    <div class="col-4">
         the left
     </div>
 </div>
 
 <div class="row row-flex flex-center">
-    <div class="col-xs-4">
+    <div class="col-4">
         aligned to
     </div>
-    <div class="col-xs-4">
+    <div class="col-4">
         the center
     </div>
 </div>
 
 <div class="row row-flex flex-right">
-    <div class="col-xs-4">
+    <div class="col-4">
         aligned to
     </div>
-    <div class="col-xs-4">
+    <div class="col-4">
         the right
     </div>
 </div>
 
 <div class="row row-flex flex-around">
-    <div class="col-xs-4">
+    <div class="col-4">
         aligned to
     </div>
-    <div class="col-xs-4">
+    <div class="col-4">
         the space around
     </div>
 </div>
 
 <div class="row row-flex flex-between">
-    <div class="col-xs-4">
+    <div class="col-4">
         aligned to
     </div>
-    <div class="col-xs-4">
+    <div class="col-4">
         the space between
     </div>
 </div>
@@ -194,19 +194,19 @@ The available classes, per breakpoint, are:
 <div class="cf-example-row">
 {% example html %}
 <div class="row row-flex">
-    <div class="col-xs-1 flex-last">
+    <div class="col-1 flex-last">
         1
     </div>
-    <div class="col-xs-1 flex-unordered">
+    <div class="col-1 flex-unordered">
         2
     </div>
-    <div class="col-xs-1 flex-last">
+    <div class="col-1 flex-last">
         3
     </div>
-    <div class="col-xs-1 flex-first">
+    <div class="col-1 flex-first">
         4
     </div>
-    <div class="col-xs-1 flex-first">
+    <div class="col-1 flex-first">
         5
     </div>
 </div>
