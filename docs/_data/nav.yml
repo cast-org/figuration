@@ -46,6 +46,7 @@
 
 - title: Utilities
   pages:
+    - title: Borders
     - title: Clearfix
     - title: Color
     - title: Display Property

@@ -347,10 +347,9 @@ $component-sizes: (
     )
 ) !default;
 
-
-// Image rounded
+// Radius utility
 // =====
-$rounded-border-radius: $border-radius !default;
+$radius-border-radius: $border-radius !default;
 
 
 // Image thumbnails
@@ -611,6 +610,7 @@ $breadcrumb-divider-color:      $uibase-400 !default;
 $breadcrumb-active-color:       $uibase-500 !default;
 $breadcrumb-divider:            "/" !default;
 
+
 // Pagination
 // =====
 $pagination-padding-x:                $btn-padding-x !default;
@@ -726,6 +726,7 @@ $navbar-light-active-color:         rgba(0,0,0,.95) !default;
 $navbar-light-disabled-color:       rgba(0,0,0,.25) !default;
 $navbar-light-divider-color:        rgba(0,0,0,.65) !default;
 
+
 // Jumbotron
 // =====
 $jumbotron-padding-y:       3rem !default;
@@ -735,6 +736,7 @@ $jumbotron-padding-xs-x:    .75rem !default;
 $jumbotron-bg:              $uibase-50 !default;
 $jumbotron-border-radius:   .3rem !default;
 $jumbotron-breakpoint:      sm !default;
+
 
 // Tags
 // =====
@@ -891,6 +893,7 @@ $gridline-margin-y:         1rem !default;
 $gridline-border-width:     $border-width !default;
 $gridline-border-color:     $uibase-400 !default;
 $gridline-border-radius:    $border-radius !default;
+
 
 // Slider
 // =====

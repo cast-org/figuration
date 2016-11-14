@@ -2,7 +2,6 @@
 layout: docs
 title: Clearfix
 group: utilities
-redirect_from: "/utilities/"
 ---
 
 Easily clear `float`s by adding `.clearfix` **to the parent element**. A detailed explanation of [how the clearfix works](http://cssmojo.com/the-very-latest-clearfix-reloaded/) is available.
