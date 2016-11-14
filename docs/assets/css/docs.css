@@ -609,7 +609,8 @@ h4 > code {
   margin-top: 1rem;
 }
 
-.cf-example-row .row > [class^="col-"] {
+.cf-example-row .row > [class^="col-"],
+.cf-example-row .row .col {
   padding-top: .75rem;
   padding-bottom: .75rem;
   background-color: rgba(34, 68, 102, 0.15);
@@ -1125,7 +1126,7 @@ h4 > code {
   margin-top: .25rem;
 }
 
-.responsive-utilities-test .col-xs-6 {
+.responsive-utilities-test .col-6 {
   margin-top: .5rem;
   margin-bottom: .5rem;
 }
@@ -1140,14 +1141,14 @@ h4 > code {
   border-radius: .25rem;
 }
 
-.visible-on .col-xs-6 > .not-visible,
-.hidden-on .col-xs-6 > .not-visible {
+.visible-on .col-6 > .not-visible,
+.hidden-on .col-6 > .not-visible {
   color: #666;
   border: 1px solid #a3a3a3;
 }
 
-.visible-on .col-xs-6 .visible,
-.hidden-on .col-xs-6 .visible {
+.visible-on .col-6 .visible,
+.hidden-on .col-6 .visible {
   color: #108918;
   background-color: #d9ecda;
   border: 1px solid #70b874;
