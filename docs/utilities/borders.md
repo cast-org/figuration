@@ -85,7 +85,7 @@ There is also the special case size of `0` (zero) to remove  a radius.
 
 {% example html %}
 <button type="button" class="btn radius-l-0">Button</button>
-{% example %}
+{% endexample %}
 
 ### Circles
 
