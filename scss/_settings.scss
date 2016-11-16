@@ -738,24 +738,24 @@ $jumbotron-border-radius:   .3rem !default;
 $jumbotron-breakpoint:      sm !default;
 
 
-// Tags
+// Badges
 // =====
-$tag-color:                 $white !default;
-$tag-bg:                    $uibase-400 !default;
-$tag-link-hover-color:      $white !default;
-$tag-font-size:             75% !default;
-$tag-font-weight:           $font-weight-bold !default;
-$tag-padding-x:             .375em !default;
-$tag-padding-y:             .25em !default;
-$tag-border-radius:         .25em !default;
-$tag-border-width:          $border-width !default;
+$badge-color:               $white !default;
+$badge-bg:                  $uibase-400 !default;
+$badge-link-hover-color:    $white !default;
+$badge-font-size:           75% !default;
+$badge-font-weight:         $font-weight-bold !default;
+$badge-padding-x:           .375em !default;
+$badge-padding-y:           .25em !default;
+$badge-border-radius:       .25em !default;
+$badge-border-width:        $border-width !default;
 
-$tag-pill-padding-x:        .5em !default;
+$badge-pill-padding-x:      .5em !default;
 // Use a higher than normal value to ensure completely rounded edges when
-// customizing padding or font-size on tags.
-$tag-pill-border-radius:    10rem !default;
+// customizing padding or font-size on badges.
+$badge-pill-border-radius:  10rem !default;
 
-$tag-outline-link-hover-color:  $white !default;
+$badge-outline-link-hover-color:  $white !default;
 
 
 // Alerts

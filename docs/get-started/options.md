@@ -103,7 +103,7 @@ Extend the default contextual color map with your own custom colors.
 Yes, it is a substantial and confusing piece of SCSS, but allows for reasonable flexibility.
 The line `$context-themes: ();` should only be defined once in the `_custom.scss` file even if merging multiple color maps.
 
-The `control-*` keys are used by mainly by control items---specifically---buttons, button groups, pagination, progress bars, tags, and background context.
+The `control-*` keys are used by mainly by control items---specifically---buttons, button groups, pagination, progress bars, badges, and background context.
 
 The `context-*` keys are used for contextual items---specifically---tables, list groups, form validation, and alerts.
 
