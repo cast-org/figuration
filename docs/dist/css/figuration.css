@@ -300,7 +300,7 @@ template {
   .dropup > .btn > .caret {
     border-top-color: #000 !important;
   }
-  .tag {
+  .badge {
     border: 1px solid #000;
   }
   .table {
@@ -6267,7 +6267,7 @@ if $enable-flex-full .nav-inline {
   border-radius: 0;
 }
 
-.tag {
+.badge {
   display: inline-block;
   padding: 0.25em 0.375em;
   font-size: 75%;
@@ -6280,180 +6280,180 @@ if $enable-flex-full .nav-inline {
   border-radius: 0.25em;
 }
 
-.tag:empty {
+.badge:empty {
   display: none;
 }
 
-.btn .tag {
+.btn .badge {
   position: relative;
   top: -1px;
 }
 
-a.tag {
+a.badge {
   text-decoration: none;
 }
 
-a.tag:focus, a.tag:hover {
+a.badge:focus, a.badge:hover {
   color: #fff;
   text-decoration: none;
   cursor: pointer;
 }
 
-.tag-pill {
+.badge-pill {
   padding-right: 0.5em;
   padding-left: 0.5em;
   border-radius: 10rem;
 }
 
-.tag {
+.badge {
   background-color: #858585;
   border: #858585 solid 1px;
 }
 
-.tag[href]:focus, .tag[href]:hover {
+.badge[href]:focus, .badge[href]:hover {
   background-color: #6c6c6c;
   border-color: #6c6c6c;
 }
 
-.tag-primary {
+.badge-primary {
   background-color: #1242ba;
   border: #1242ba solid 1px;
 }
 
-.tag-primary[href]:focus, .tag-primary[href]:hover {
+.badge-primary[href]:focus, .badge-primary[href]:hover {
   background-color: #0e328c;
   border-color: #0e328c;
 }
 
-.tag-secondary {
+.badge-secondary {
   background-color: #757575;
   border: #757575 solid 1px;
 }
 
-.tag-secondary[href]:focus, .tag-secondary[href]:hover {
+.badge-secondary[href]:focus, .badge-secondary[href]:hover {
   background-color: #5c5c5c;
   border-color: #5c5c5c;
 }
 
-.tag-info {
+.badge-info {
   background-color: #117cba;
   border: #117cba solid 1px;
 }
 
-.tag-info[href]:focus, .tag-info[href]:hover {
+.badge-info[href]:focus, .badge-info[href]:hover {
   background-color: #0d5d8b;
   border-color: #0d5d8b;
 }
 
-.tag-success {
+.badge-success {
   background-color: #108918;
   border: #108918 solid 1px;
 }
 
-.tag-success[href]:focus, .tag-success[href]:hover {
+.badge-success[href]:focus, .badge-success[href]:hover {
   background-color: #0b5b10;
   border-color: #0b5b10;
 }
 
-.tag-warning {
+.badge-warning {
   background-color: #c98800;
   border: #c98800 solid 1px;
 }
 
-.tag-warning[href]:focus, .tag-warning[href]:hover {
+.badge-warning[href]:focus, .badge-warning[href]:hover {
   background-color: #966500;
   border-color: #966500;
 }
 
-.tag-danger {
+.badge-danger {
   background-color: #c81d0e;
   border: #c81d0e solid 1px;
 }
 
-.tag-danger[href]:focus, .tag-danger[href]:hover {
+.badge-danger[href]:focus, .badge-danger[href]:hover {
   background-color: #98160b;
   border-color: #98160b;
 }
 
-.tag-outline {
+.badge-outline {
   color: #858585;
   background-color: transparent;
   border: #858585 solid 1px;
 }
 
-.tag-outline[href]:focus, .tag-outline[href]:hover {
+.badge-outline[href]:focus, .badge-outline[href]:hover {
   color: #fff;
   background-color: #858585;
   border-color: #858585;
 }
 
-.tag-outline-primary {
+.badge-outline-primary {
   color: #1242ba;
   background-color: transparent;
   border: #1242ba solid 1px;
 }
 
-.tag-outline-primary[href]:focus, .tag-outline-primary[href]:hover {
+.badge-outline-primary[href]:focus, .badge-outline-primary[href]:hover {
   color: #fff;
   background-color: #1242ba;
   border-color: #1242ba;
 }
 
-.tag-outline-secondary {
+.badge-outline-secondary {
   color: #757575;
   background-color: transparent;
   border: #757575 solid 1px;
 }
 
-.tag-outline-secondary[href]:focus, .tag-outline-secondary[href]:hover {
+.badge-outline-secondary[href]:focus, .badge-outline-secondary[href]:hover {
   color: #fff;
   background-color: #757575;
   border-color: #757575;
 }
 
-.tag-outline-info {
+.badge-outline-info {
   color: #117cba;
   background-color: transparent;
   border: #117cba solid 1px;
 }
 
-.tag-outline-info[href]:focus, .tag-outline-info[href]:hover {
+.badge-outline-info[href]:focus, .badge-outline-info[href]:hover {
   color: #fff;
   background-color: #117cba;
   border-color: #117cba;
 }
 
-.tag-outline-success {
+.badge-outline-success {
   color: #108918;
   background-color: transparent;
   border: #108918 solid 1px;
 }
 
-.tag-outline-success[href]:focus, .tag-outline-success[href]:hover {
+.badge-outline-success[href]:focus, .badge-outline-success[href]:hover {
   color: #fff;
   background-color: #108918;
   border-color: #108918;
 }
 
-.tag-outline-warning {
+.badge-outline-warning {
   color: #c98800;
   background-color: transparent;
   border: #c98800 solid 1px;
 }
 
-.tag-outline-warning[href]:focus, .tag-outline-warning[href]:hover {
+.badge-outline-warning[href]:focus, .badge-outline-warning[href]:hover {
   color: #fff;
   background-color: #c98800;
   border-color: #c98800;
 }
 
-.tag-outline-danger {
+.badge-outline-danger {
   color: #c81d0e;
   background-color: transparent;
   border: #c81d0e solid 1px;
 }
 
-.tag-outline-danger[href]:focus, .tag-outline-danger[href]:hover {
+.badge-outline-danger[href]:focus, .badge-outline-danger[href]:hover {
   color: #fff;
   background-color: #c81d0e;
   border-color: #c81d0e;
