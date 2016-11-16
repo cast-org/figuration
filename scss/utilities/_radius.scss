@@ -1,42 +1,20 @@
 ﻿// Perfect circle
-.radius-c {
+.radius-circle {
     border-radius: 50%;
 }
 
-// Rounded corners - default radius
-.radius-a {
-    @include border-radius($radius-border-radius);
-}
-.radius-t {
-    @include border-top-radius($radius-border-radius);
-}
-.radius-r {
-    @include border-right-radius($radius-border-radius);
-}
-.radius-b {
-    @include border-bottom-radius($radius-border-radius);
-}
-.radius-l {
-    @include border-left-radius($radius-border-radius);
-}
+// Radius - Default
+@include radius-sides($radius-border-radius);
+@include radius-corners($radius-border-radius);
 
-// Radius corners - using component sizes
+// Radius - Component sizes
 @each $size, $dims in $component-sizes {
     $border-radius: map-get($dims, "border-radius");
 
-    .radius-a-#{$size} {
-        @include border-radius($border-radius);
-    }
-    .radius-t-#{$size} {
-        @include border-top-radius($border-radius);
-    }
-    .radius-r-#{$size} {
-        @include border-right-radius($border-radius);
-    }
-    .radius-b-#{$size} {
-        @include border-bottom-radius($border-radius);
-    }
-    .radius-l-#{$size} {
-        @include border-left-radius($border-radius);
-    }
+    @include radius-sides($border-radius, $size);
+    @include radius-corners($border-radius, $size);
 }
+
+// Radius removal
+@include radius-sides(0, 0);
+@include radius-corners(0, 0);
