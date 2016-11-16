@@ -1,0 +1,20 @@
+﻿// Perfect circle
+.radius-circle {
+    border-radius: 50%;
+}
+
+// Radius - Default
+@include radius-sides($radius-border-radius);
+@include radius-corners($radius-border-radius);
+
+// Radius - Component sizes
+@each $size, $dims in $component-sizes {
+    $border-radius: map-get($dims, "border-radius");
+
+    @include radius-sides($border-radius, $size);
+    @include radius-corners($border-radius, $size);
+}
+
+// Radius removal
+@include radius-sides(0, 0);
+@include radius-corners(0, 0);

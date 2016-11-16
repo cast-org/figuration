@@ -9,11 +9,6 @@
     @include img-responsive;
 }
 
-// Rounded corners
-.img-rounded {
-    @include border-radius($rounded-border-radius);
-}
-
 // Image thumbnails
 .img-thumbnail {
     padding: $thumbnail-padding;
@@ -27,15 +22,7 @@
     @include img-responsive;
 }
 
-// Perfect circle
-.img-circle {
-    border-radius: 50%;
-}
-
-//
 // Figures
-//
-
 .figure {
     // Ensures the caption's text aligns with the image.
     display: inline-block;
