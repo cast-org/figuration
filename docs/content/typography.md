@@ -57,7 +57,7 @@ You can also use the included utility classes to recolor the secondary text.
 {% example html %}
 <h3>
   Fancy display heading
-  <small>With secondary text</small>
+  <small class="text-muted">With secondary text</small>
 </h3>
 
 <h3>
