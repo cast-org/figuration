@@ -613,8 +613,8 @@ $breadcrumb-divider:            "/" !default;
 
 // Pagination
 // =====
-$pagination-padding-x:                $btn-padding-x !default;
-$pagination-padding-y:                $btn-padding-y !default;
+$pagination-padding-x:                 $btn-padding-x !default;
+$pagination-padding-y:                 $btn-padding-y !default;
 
 $pagination-color:                     $link-color !default;
 $pagination-bg:                        $white !default;
@@ -627,11 +627,11 @@ $pagination-hover-border:              $uibase-300 !default;
 
 $pagination-active-color:              $active-color !default;
 $pagination-active-bg:                 $active-bg !default;
-$pagination-active-border:             $active-border !default;
+$pagination-active-hover-color:        $active-color !default;
+$pagination-active-hover-bg:           $active-hover-bg !default;
 
 $pagination-disabled-color:            $uibase-500 !default;
 $pagination-disabled-bg:               darken($uibase-50, 10) !default;
-$pagination-disabled-border:           $uibase-300 !default;
 
 
 // Dropdowns
