@@ -13,8 +13,14 @@
 
     @include media-breakpoint-up($breakpoint) {
         // Horizontal lines
-        .gridline#{$bprule}-hr {
-            border-top: $gridline-border-width solid $gridline-border-color;
+        @each $bpinner in map-keys($grid-breakpoints) {
+            $bpirule: breakpoint-designator($bpinner);
+            .gridline#{$bpirule}-hr {
+                + .gridline#{$bprule}-hr {
+                    border-top: $gridline-border-width solid $gridline-border-color;
+                }
+            }
+
         }
 
         .gridline#{$bprule}-hr:first-child {
