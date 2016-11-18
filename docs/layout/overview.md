@@ -182,7 +182,7 @@ Since Figuration is built as a mobile first framework, we have created our class
 
 Classes that apply to all breakpoints, from `xs` to `xl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
 
-Building from the base component or utility name, classes are named using the format `.base-{direction}-{dimension}` for `xs` and `.base-{breakpoint}-{direction}-{dimension}` for `sm`, `md`, `lg`, and `xl`.
+Building from the base component or utility name, most classes are named using the format `.base-{direction}-{dimension}` for `xs` and `.base-{breakpoint}-{direction}-{dimension}` for `sm`, `md`, `lg`, and `xl`.  In the case of some utilites that have abbreviated names, such as the [spacing utilities]({{ site.baseurl }}/utilities/spacing), the format is `.abbr{direction}-{breakpoint}-{dimension}`.
 
 The only special case is where there are `*-up` or `*-down` variants for certain components or classes, the breakpoint designation.  Only then is the minimum breakpoint designation used in the class name.
 

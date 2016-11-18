@@ -15,10 +15,10 @@ group: get-started
 ## Quick Download
 
 <div data-cfw="equalize" data-cfw-equalize-target=".card-block">
-  <div class="row margin-t-2" data-cfw="equalize" data-cfw-equalize-target=".card-footer">
+  <div class="row mt-2" data-cfw="equalize" data-cfw-equalize-target=".card-footer">
     <div class="col-sm-6">
       <div class="card card-download">
-        <h3 class="h4 card-header card-inverse margin-b-0" style="background-color: #246;">Compiled</h3>
+        <h3 class="h4 card-header card-inverse" style="background-color: #246;">Compiled</h3>
         <div class="card-block">
 {% markdown %}
 Download just the compiled and minified CSS and JavaScript. Doesn't include any documentation or original source files.
@@ -31,7 +31,7 @@ Download just the compiled and minified CSS and JavaScript. Doesn't include any 
     </div>
     <div class="col-sm-6">
       <div class="card card-download">
-        <h3 class="h4 card-header card-inverse margin-b-0" style="background-color: #246;">Source Files</h3>
+        <h3 class="h4 card-header card-inverse" style="background-color: #246;">Source Files</h3>
         <div class="card-block">
 {% markdown %}
 Download everything: source Sass, JavaScript, and documentation files. **Requires a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes), and [some setup]({{ site.baseurl }}/get-started/build-tools/#tooling-setup).**

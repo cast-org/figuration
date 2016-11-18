@@ -67,7 +67,7 @@ The `.navbar-brand` can be applied to most elements, but an anchor works best as
 </nav>
 
 <nav class="navbar navbar-light bg-faded">
-  <h1 class="navbar-brand margin-b-0">Navbar</h1>
+  <h1 class="navbar-brand mb-0">Navbar</h1>
 </nav>
 
 {% endexample %}
@@ -306,7 +306,7 @@ Our [Collapse widget]({{ site.baseurl }}/widgets/collapse/) allows you to use a 
     <span aria-hidden="true">&#8801;</span>
   </button>
   <div class="collapse" id="exCollapsingNavbar">
-    <div class="bg-inverse padding-a-1">
+    <div class="bg-inverse p-1">
       <h4>Collapsed content</h4>
       Toggleable via the navbar button.
     </div>
@@ -325,7 +325,7 @@ Note the use of the `hidden` option for the [Collapse widget]({{ site.baseurl }}
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
     <a class="navbar-brand" href="#">Responsive navbar</a>
-    <button class="navbar-toggler hidden-lg-up float-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav0" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
+    <button class="navbar-toggler hide-lg-up float-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav0" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
     <div class="collapse navbar-toggleable-md" id="respNav0">
         <ul class="nav navbar-nav">
             <li class="nav-item active">
