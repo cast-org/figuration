@@ -19,7 +19,7 @@ Add a class to your element to round the corners.  You can target various sides 
 
 Where *sides* is one of:
 
-* `a` - for `all` 4 corners of the element
+* blank - for `all` 4 corners of the element
 * `t` - for both corners on the `top` side
 * `b` - for both corners on the `bottom` side
 * `r` - for both corners on the `right` side
@@ -31,8 +31,8 @@ Where *sides* is one of:
 
 
 <div class="cf-example">
-    <div class="margin-b-1">
-        <img data-src="holder.js/100x100/?text=All" class="radius-a" alt="A generic square placeholder image with rounded corners" />
+    <div class="mb-1">
+        <img data-src="holder.js/100x100/?text=All" class="radius" alt="A generic square placeholder image with rounded corners" />
         <img data-src="holder.js/100x100/?text=Top" class="radius-t" alt="A generic square placeholder image with rounded corners on the top edge" />
         <img data-src="holder.js/100x100/?text=Bottom" class="radius-b" alt="A generic square placeholder image with rounded corners on the bottom edge" />
         <img data-src="holder.js/100x100/?text=Right" class="radius-r" alt="A generic square placeholder image with rounded corners on the right edge" />
@@ -48,7 +48,7 @@ Where *sides* is one of:
 
 {% highlight html %}
 <!-- Sides -->
-<img src="..." class="radius-a" alt="...">
+<img src="..." class="radius" alt="...">
 <img src="..." class="radius-t" alt="...">
 <img src="..." class="radius-b" alt="...">
 <img src="..." class="radius-r" alt="...">
@@ -68,15 +68,15 @@ A few sizes are available using the [component sizing options]({{ site.baseurl }
 By default the `xs` and `sm` sizes are the same radius.  Also the `lg` and `xl` sizes are the same radius.
 
 <div class="cf-example">
-    <img data-src="holder.js/100x100?text=Small" class="radius-a-sm" alt="A generic square placeholder image with lightly rounded corners" />
-    <img data-src="holder.js/100x100?text=Default" class="radius-a" alt="A generic square placeholder image with rounded corners" />
-    <img data-src="holder.js/100x100?text=Large" class="radius-a-lg" alt="A generic square placeholder image with more rounded corners" />
+    <img data-src="holder.js/100x100?text=Small" class="radius-sm" alt="A generic square placeholder image with lightly rounded corners" />
+    <img data-src="holder.js/100x100?text=Default" class="radius" alt="A generic square placeholder image with rounded corners" />
+    <img data-src="holder.js/100x100?text=Large" class="radius-lg" alt="A generic square placeholder image with more rounded corners" />
 </div>
 
 {% highlight html %}
-<img src="..." class="radius-a-sm" alt="...">
-<img src="..." class="radius-a" alt="...">
-<img src="..." class="radius-a-lg" alt="...">
+<img src="..." class="radius-sm" alt="...">
+<img src="..." class="radius" alt="...">
+<img src="..." class="radius-lg" alt="...">
 {% endhighlight %}
 
 ### Removing

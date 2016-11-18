@@ -5,12 +5,12 @@
     $bprule: breakpoint-designator($breakpoint);
 
     @include media-breakpoint-up($breakpoint) {
-        .display#{$bprule}-none { display: none !important; }
-        .display#{$bprule}-block { display: block !important; }
-        .display#{$bprule}-flex { display: flex !important; }
-        .display#{$bprule}-inline-block { display: inline-block !important; }
-        .display#{$bprule}-inline { display: inline !important; }
-        .display#{$bprule}-table { display: table !important; }
-        .display#{$bprule}-table-cell { display: table-cell !important; }
+        .d#{$bprule}-none { display: none !important; }
+        .d#{$bprule}-block { display: block !important; }
+        .d#{$bprule}-flex { display: flex !important; }
+        .d#{$bprule}-inline-block { display: inline-block !important; }
+        .d#{$bprule}-inline { display: inline !important; }
+        .d#{$bprule}-table { display: table !important; }
+        .d#{$bprule}-table-cell { display: table-cell !important; }
     }
 }

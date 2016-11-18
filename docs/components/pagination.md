@@ -30,7 +30,7 @@ Simple pagination, great for apps and search results. The large block is hard to
     <li class="page-item"><a class="page-link" href="#">3</a></li>
     <li class="page-item"><a class="page-link" href="#">4</a></li>
     <li class="page-item"><a class="page-link" href="#">5</a></li>
-    <li class="page-item margin-l-0_5">
+    <li class="page-item ml-0_5">
       <a class="page-link" href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>

@@ -46,7 +46,7 @@ You might also want to check the [border utilites]({{ site.baseurl }}/utilities/
 
 ## Aligning Images
 
-Align images with the [helper float classes]({{ site.baseurl }}/utilities/responsive-floats/) or [text alignment classes]({{ site.baseurl }}/utilities/typography/#text-alignment). `block`-level images can be centered using [the `.margin-x-auto` margin utility class]({{ site.baseurl }}/utilities/spacing/#horizontal-centering).
+Align images with the [helper float classes]({{ site.baseurl }}/utilities/responsive-floats/) or [text alignment classes]({{ site.baseurl }}/utilities/typography/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/utilities/spacing/#horizontal-centering).
 
 <div class="cf-example clearfix">
   <img data-src="holder.js/200x200" class="img-rounded float-left" alt="A generic square placeholder image with rounded corners">
@@ -59,11 +59,11 @@ Align images with the [helper float classes]({{ site.baseurl }}/utilities/respon
 {% endhighlight %}
 
 <div class="cf-example clearfix">
-  <img data-src="holder.js/200x200" class="img-rounded margin-x-auto display-block" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="img-rounded mx-auto d-block" alt="A generic square placeholder image with rounded corners">
 </div>
 
 {% highlight html %}
-<img src="..." class="img-rounded margin-x-auto display-block" alt="...">
+<img src="..." class="img-rounded mx-auto d-block" alt="...">
 {% endhighlight %}
 
 <div class="cf-example clearfix">

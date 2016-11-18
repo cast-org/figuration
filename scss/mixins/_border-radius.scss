@@ -65,7 +65,7 @@
     // Add the dash for rule naming
     $sizerule: if($size, -#{$size}, "");
 
-    .radius-a#{$sizerule} {
+    .radius#{$sizerule} {
         @include border-radius($radius);
     }
     .radius-t#{$sizerule} {

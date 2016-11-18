@@ -1,17 +1,17 @@
 // scss-lint:disable ImportantRule
 
 // Width
-.width-100 {
+.w-100 {
     width: 100% !important;
 }
 
 // Height
-.height-100 {
+.h-100 {
     height: 100% !important;
 }
 
 // Margin and Padding
-.margin-x-auto {
+.mx-auto {
     margin-right: auto !important;
     margin-left:  auto !important;
 }
@@ -20,23 +20,23 @@
     $bprule: breakpoint-designator($breakpoint);
 
     @include media-breakpoint-up($breakpoint) {
-        @each $prop, $abbrev in (margin: margin, padding: padding) {
+        @each $prop, $abbrev in (margin: m, padding: p) {
             @each $size, $lengths in $spacers {
                 $length-x:   map-get($lengths, x);
                 $length-y:   map-get($lengths, y);
 
-                .#{$abbrev}#{$bprule}-a-#{$size} { #{$prop}:        $length-y $length-x !important; } // a = All sides
-                .#{$abbrev}#{$bprule}-t-#{$size} { #{$prop}-top:    $length-y !important; }
-                .#{$abbrev}#{$bprule}-r-#{$size} { #{$prop}-right:  $length-x !important; }
-                .#{$abbrev}#{$bprule}-b-#{$size} { #{$prop}-bottom: $length-y !important; }
-                .#{$abbrev}#{$bprule}-l-#{$size} { #{$prop}-left:   $length-x !important; }
+                .#{$abbrev}#{$bprule}-#{$size}  { #{$prop}:        $length-y $length-x !important; } // All sides
+                .#{$abbrev}t#{$bprule}-#{$size} { #{$prop}-top:    $length-y !important; }
+                .#{$abbrev}r#{$bprule}-#{$size} { #{$prop}-right:  $length-x !important; }
+                .#{$abbrev}b#{$bprule}-#{$size} { #{$prop}-bottom: $length-y !important; }
+                .#{$abbrev}l#{$bprule}-#{$size} { #{$prop}-left:   $length-x !important; }
 
                 // Axes
-                .#{$abbrev}#{$bprule}-x-#{$size} {
+                .#{$abbrev}x#{$bprule}-#{$size} {
                     #{$prop}-right:  $length-x !important;
                     #{$prop}-left:   $length-x !important;
                 }
-                .#{$abbrev}#{$bprule}-y-#{$size} {
+                .#{$abbrev}y#{$bprule}-#{$size} {
                     #{$prop}-top:    $length-y !important;
                     #{$prop}-bottom: $length-y !important;
                 }
@@ -46,7 +46,7 @@
 }
 
 // Positioning
-.position-f-t {
+.pos-f-t {
     position: fixed;
     top: 0;
     right: 0;

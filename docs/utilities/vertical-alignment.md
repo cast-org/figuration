@@ -56,12 +56,12 @@ Using table cells.
 Slightly more complex uses, such as being able to align items in a row, become quick and easy.
 
 {% example html %}
-<div class="bg-gray-50 width-100 display-table">
-    <div class="display-table-cell valign-bottom">
+<div class="bg-gray-50 w-100 d-table">
+    <div class="d-table-cell valign-bottom">
         <a href="#">View more in teacher's guide</a> |
         <a href="#">Common Core alignment</a>
     </div>
-    <div class="display-table-cell valign-bottom text-right">
+    <div class="d-table-cell valign-bottom text-right">
         <button type="button" class="btn btn-primary btn-lg">Continue</button>
     </div>
 </div>
