@@ -246,19 +246,19 @@
 
 // Tab-Responsive
 @media (min-width: 62em) {
-    .cf-example-tabRepsonsive h4 {
+    .cf-example-tabResponsive h4 {
         display: none;
     }
-    .cf-example-tabRepsonsive .collapse {
+    .cf-example-tabResponsive .collapse {
         display: block;
         visibility: visible;
     }
 }
 @media (max-width: 61.9375em) {
-    .cf-example-tabRepsonsive .nav-tabs {
+    .cf-example-tabResponsive .nav-tabs {
         display: none;
     }
-    .cf-example-tabRepsonsive .tab-pane {
+    .cf-example-tabResponsive .tab-pane {
         display: block;
         visibility: visible;
     }
