@@ -25,7 +25,7 @@
                 $length-x:   map-get($lengths, x);
                 $length-y:   map-get($lengths, y);
 
-                .#{$abbrev}#{$bprule}-#{$size}  { #{$prop}:        $length-y $length-x !important; } // All sides
+                .#{$abbrev}#{$bprule}-#{$size} { #{$prop}:         $length-y $length-x !important; } // All sides
                 .#{$abbrev}t#{$bprule}-#{$size} { #{$prop}-top:    $length-y !important; }
                 .#{$abbrev}r#{$bprule}-#{$size} { #{$prop}-right:  $length-x !important; }
                 .#{$abbrev}b#{$bprule}-#{$size} { #{$prop}-bottom: $length-y !important; }
