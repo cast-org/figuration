@@ -811,20 +811,20 @@ h4 > code {
 }
 
 @media (min-width: 62em) {
-  .cf-example-tabRepsonsive h4 {
+  .cf-example-tabResponsive h4 {
     display: none;
   }
-  .cf-example-tabRepsonsive .collapse {
+  .cf-example-tabResponsive .collapse {
     display: block;
     visibility: visible;
   }
 }
 
 @media (max-width: 61.9375em) {
-  .cf-example-tabRepsonsive .nav-tabs {
+  .cf-example-tabResponsive .nav-tabs {
     display: none;
   }
-  .cf-example-tabRepsonsive .tab-pane {
+  .cf-example-tabResponsive .tab-pane {
     display: block;
     visibility: visible;
   }
@@ -1155,31 +1155,31 @@ h4 > code {
 }
 
 @media (max-width: 35.9375em) {
-  .hidden-xs-only {
+  .hide-xs-only {
     display: none !important;
   }
 }
 
 @media (min-width: 36em) and (max-width: 47.9375em) {
-  .hidden-sm-only {
+  .hide-sm-only {
     display: none !important;
   }
 }
 
 @media (min-width: 48em) and (max-width: 61.9375em) {
-  .hidden-md-only {
+  .hide-md-only {
     display: none !important;
   }
 }
 
 @media (min-width: 62em) and (max-width: 74.9375em) {
-  .hidden-lg-only {
+  .hide-lg-only {
     display: none !important;
   }
 }
 
 @media (min-width: 75em) {
-  .hidden-xl-only {
+  .hide-xl-only {
     display: none !important;
   }
 }
