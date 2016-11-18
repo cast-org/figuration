@@ -29,7 +29,10 @@
             color: $pagination-active-color;
             cursor: default;
             background-color: $pagination-active-bg;
-            border-color: $pagination-active-border;
+        }
+        @include hover-focus {
+            color: $pagination-active-hover-color;
+            background-color: $pagination-active-hover-bg;
         }
     }
 
@@ -39,7 +42,6 @@
             pointer-events: none;
             cursor: $cursor-disabled;
             background-color: $pagination-disabled-bg;
-            border-color: $pagination-disabled-border;
         }
     }
 }

@@ -14,7 +14,7 @@ Provide pagination links for your site or app with the multi-page pagination com
 
 ## Overview
 
-Simple pagination inspired by Rdio, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.
+Simple pagination, great for apps and search results. The large block is hard to miss, easily scalable, and provides large click areas.
 
 {% example html %}
 <nav aria-label="Page navigation">
@@ -30,7 +30,7 @@ Simple pagination inspired by Rdio, great for apps and search results. The large
     <li class="page-item"><a class="page-link" href="#">3</a></li>
     <li class="page-item"><a class="page-link" href="#">4</a></li>
     <li class="page-item"><a class="page-link" href="#">5</a></li>
-    <li class="page-item">
+    <li class="page-item margin-l-0_5">
       <a class="page-link" href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
