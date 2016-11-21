@@ -457,7 +457,7 @@ Use card groups to render cards as a single, attached element with equal width a
 
 Only applies to small devices and above.
 
-Groups have support for both a `table` style layout, along with both the opt-in flexbox and [full flexbox](/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.card-group-flex` class to the `.card-group` element.
+Groups have support for both a `table` style layout, along with both the opt-in flexbox and [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.card-group-flex` class to the `.card-group` element.
 
 {% example html %}
 <div class="card-group">
@@ -494,7 +494,7 @@ Need a set of equal width and height cards that aren't attached to one another? 
 
 Only applies to small devices and above.
 
-Decks have support for both a `table` style layout, along with both the opt-in flexbox and [full flexbox](/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.card-deck-flex` class to the `.card-deck` element.
+Decks have support for both a `table` style layout, along with both the opt-in flexbox and [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.card-deck-flex` class to the `.card-deck` element.
 
 If you wish to have a card deck that matches the grid layout, you will need to use the `.card-deck-wrapper` for both the `table` and `flexbox` styles.  Note that unless you are using the full flexbox mode, there will be a horizontal scroll is used within a full body-width `.container-fluid` element.  This can be mitigated by using `overflow: hidden;` style on a wrapping container.
 
@@ -535,7 +535,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
 
 Only applies to small devices and above.
 
-**Heads up!** This is **not available in IE9 and below** as they have no support for the [`column-*` CSS properties](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_multi-column_layouts).
+**Heads up!** This is **not available in IE9 and below** as they have no support for the [`column-*` CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Using_multi-column_layouts).
 
 {% example html %}
 <div class="card-columns">

@@ -6,7 +6,7 @@ group: components
 
 List groups are a flexible and powerful component for displaying not only simple lists of elements, but complex ones with custom content.
 
-List groups have support for both a `block` style layout, along with both the opt-in flexbox and [full flexbox](/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.list-group-flex` class to the `.list-group` element.
+List groups have support for both a `block` style layout, along with both the opt-in flexbox and [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.list-group-flex` class to the `.list-group` element.
 
 ## Contents
 {:.no_toc}

@@ -29,7 +29,7 @@ Navbars come with built-in support for a handful of sub-components. Mix and matc
 - `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns)
 - `.navbar-toggler` for use with our [Collapse widget]({{ site.baseurl }}/widgets/collapse/) and other [navigation toggling](#collapsing-content) behaviors.
 
-Note that the `.navbar-nav` builds off the `.nav` component, but currently does not support flexbox layout, so it will get reset back to `display: block;` in [full flexbox](/layout/flexbox#full-flexbox-mode) mode.
+Note that the `.navbar-nav` builds off the `.nav` component, but currently does not support flexbox layout, so it will get reset back to `display: block;` in [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) mode.
 
 Here's an example of all the sub-components included in a default, light navbar:
 
@@ -349,7 +349,7 @@ Note the use of the `hidden` option for the [Collapse widget]({{ site.baseurl }}
 
 Further extending the wierdness that is the navbar, we have added the `.navbar-group` container to allow support for a `table` style layout.
 
-This also adds support for both the opt-in flexbox and [full flexbox](/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.navbar-group-flex` class to the `.navbar-group`.
+This also adds support for both the opt-in flexbox and [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.navbar-group-flex` class to the `.navbar-group`.
 
 Each 'segment' of a navbar group will also need to be wrapped in, or classed with `.navbar-item`.
 

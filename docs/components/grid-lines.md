@@ -6,7 +6,7 @@ group: components
 
 Grid lines is a simple component to create visual lines (rules) between content containers.
 
-Grid lines have support for both a `table` style layout, along with both the opt-in flexbox and [full flexbox](/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.gridline-flex` class to the `.gridline` element.
+Grid lines have support for both a `table` style layout, along with both the opt-in flexbox and [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.gridline-flex` class to the `.gridline` element.
 
 ## Contents
 {:.no_toc}
