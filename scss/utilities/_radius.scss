@@ -8,11 +8,13 @@
 @include radius-corners($radius-border-radius);
 
 // Radius - Component sizes
-@each $size, $dims in $component-sizes {
-    $border-radius: map-get($dims, "border-radius");
+@if $enable-sizing {
+    @each $size, $dims in $component-sizes {
+        $sz-border-radius: map-get($dims, "border-radius");
 
-    @include radius-sides($border-radius, $size);
-    @include radius-corners($border-radius, $size);
+        @include radius-sides($sz-border-radius, $size);
+        @include radius-corners($sz-border-radius, $size);
+    }
 }
 
 // Radius removal

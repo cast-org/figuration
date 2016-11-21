@@ -172,17 +172,19 @@
 }
 
 // Select sizes
-@each $size, $dims in $component-sizes {
-    $font-size:     map-get($dims, "font-size");
-    $padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $font-size / 2);
-    $padding-x:     map-get($dims, "padding-x");
-    $input-height-size:     (($font-size * $input-line-height) + ($padding-y * 2));
-    $select-height-size:    calc(#{$input-height-size} + #{($border-width * 2)});
+@if $enable-sizing {
+    @each $size, $dims in $component-sizes {
+        $sz-font-size:     map-get($dims, "font-size");
+        $sz-padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $sz-font-size / 2);
+        $sz-padding-x:     map-get($dims, "padding-x");
+        $sz-input-height:  (($sz-font-size * $input-line-height) + ($sz-padding-y * 2));
+        $sz-select-height: calc(#{$sz-input-height} + #{($border-width * 2)});
 
-    .custom-select-#{$size} {
-        height: $select-height-size;
-        padding: $padding-y ($padding-x / 2);
-        font-size:  $font-size;
+        .custom-select-#{$size} {
+            height: $sz-select-height;
+            padding: $sz-padding-y ($sz-padding-x / 2);
+            font-size: $sz-font-size;
+        }
     }
 }
 

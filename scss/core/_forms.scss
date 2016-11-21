@@ -66,17 +66,19 @@ select.form-control {
     }
 
     // Sizes
-    @each $size, $dims in $component-sizes {
-        $font-size:     map-get($dims, "font-size");
-        $padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $font-size / 2);
-        $input-height-size:      (($font-size * $input-line-height) + ($padding-y * 2));
-        $select-height-size:     calc(#{$input-height-size} + #{($border-width * 2)});
+    @if $enable-sizing {
+        @each $size, $dims in $component-sizes {
+            $sz-font-size:     map-get($dims, "font-size");
+            $sz-padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $sz-font-size / 2);
+            $sz-input-height:  (($sz-font-size * $input-line-height) + ($sz-padding-y * 2));
+            $sz-select-height: calc(#{$sz-input-height} + #{($border-width * 2)});
 
-        &.form-control-#{$size}:not([size]):not([multiple]),
-        .input-group-#{$size} &.form-control:not([size]):not([multiple]) {
-            height: $select-height-size;
-            padding-top: $padding-y;
-            padding-bottom: $padding-y;
+            &.form-control-#{$size}:not([size]):not([multiple]),
+            .input-group-#{$size} &.form-control:not([size]):not([multiple]) {
+                height: $sz-select-height;
+                padding-top: $sz-padding-y;
+                padding-bottom: $sz-padding-y;
+            }
         }
     }
 
@@ -113,17 +115,17 @@ textarea.form-control {
     margin-bottom: 0; // Override the `<label>` default
 }
 // Label sizes
-@each $size, $dims in $component-sizes {
-    $font-size:     map-get($dims, "font-size");
-    $padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $font-size / 2);
-    $input-height-size:      (($font-size * $input-line-height) + ($padding-y * 2));
-    $select-height-size:     calc(#{$input-height-size} + #{($border-width * 2)});
+@if $enable-sizing {
+    @each $size, $dims in $component-sizes {
+        $sz-font-size:     map-get($dims, "font-size");
+        $sz-padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $sz-font-size / 2);
 
-    .form-control-label-#{$size} {
-        height: $select-height-size;
-        padding-top: $padding-y;
-        padding-bottom: $padding-y;
-        font-size:  $font-size;
+        .form-control-label-#{$size} {
+            padding-top: calc(#{$sz-padding-y} + #{$border-width});
+            padding-bottom: calc(#{$sz-padding-y} + #{$border-width});
+            margin-bottom: 0;
+            font-size: $sz-font-size;
+        }
     }
 }
 
@@ -158,14 +160,16 @@ input[type="month"] {
         line-height: $input-height;
     }
 
-    @each $size, $dims in $component-sizes {
-        $font-size:     map-get($dims, "font-size");
-        $padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $font-size / 2);
-        $input-height-size: (($font-size * $input-line-height) + ($padding-y * 2));
+    @if $enable-sizing {
+        @each $size, $dims in $component-sizes {
+            $sz-font-size:    map-get($dims, "font-size");
+            $sz-padding-y:    map-get($dims, "padding-y") - ($input-line-height-delta * $sz-font-size / 2);
+            $sz-input-height: (($sz-font-size * $input-line-height) + ($sz-padding-y * 2));
 
-        &.form-control-#{$size},
-        .input-group-#{$size} &.form-control {
-            line-height: $input-height-size;
+            &.form-control-#{$size},
+            .input-group-#{$size} &.form-control {
+                line-height: $sz-input-height;
+            }
         }
     }
 }
@@ -184,10 +188,12 @@ input[type="month"] {
     // Remove default margin from `p`
     margin-bottom: 0;
 
-    @each $size, $dims in $component-sizes {
-        &.form-control-#{$size} {
-            padding-right: 0;
-            padding-left: 0;
+    @if $enable-sizing {
+        @each $size, $dims in $component-sizes {
+            &.form-control-#{$size} {
+                padding-right: 0;
+                padding-left: 0;
+            }
         }
     }
 }
@@ -199,24 +205,26 @@ input[type="month"] {
 //
 // The `.form-group-* form-control` variations are sadly duplicated to avoid the
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
-@each $size, $dims in $component-sizes {
-    $font-size:     map-get($dims, "font-size");
-    $padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $font-size / 2);
-    $padding-x:     map-get($dims, "padding-x");
-    $border-radius: map-get($dims, "border-radius");
-    $input-height-size:      (($font-size * $input-line-height) + ($padding-y * 2));
-    $select-height-size:     calc(#{$input-height-size} + #{($border-width * 2)});
+@if $enable-sizing {
+    @each $size, $dims in $component-sizes {
+        $sz-font-size:     map-get($dims, "font-size");
+        $sz-padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $sz-font-size / 2);
+        $sz-padding-x:     map-get($dims, "padding-x");
+        $sz-border-radius: map-get($dims, "border-radius");
+        $sz-input-height:  (($sz-font-size * $input-line-height) + ($sz-padding-y * 2));
+        $sz-select-height: calc(#{$sz-input-height} + #{($border-width * 2)});
 
-    .form-control-#{$size} {
-        height: $select-height-size;
-        padding: $padding-y ($padding-x / 2);
-        font-size: $font-size;
-        @include border-radius($border-radius);
+        .form-control-#{$size} {
+            height: $sz-select-height;
+            padding: $sz-padding-y ($sz-padding-x / 2);
+            font-size: $sz-font-size;
+            @include border-radius($sz-border-radius);
 
-        // Color input - reduce horizontal padding otherwise visualy unsable in Chrome
-        &[type="color"] {
-            padding-top: ($input-padding-y / 2);
-            padding-bottom: ($input-padding-y / 2);
+            // Color input - reduce horizontal padding otherwise visualy unsable in Chrome
+            &[type="color"] {
+                padding-top: ($input-padding-y / 2);
+                padding-bottom: ($input-padding-y / 2);
+            }
         }
     }
 }
