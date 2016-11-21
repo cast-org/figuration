@@ -53,7 +53,7 @@ Use `.container-fluid` for a full width container, spanning the entire width of 
 
 ## Responsive Breakpoints
 
-Since Figuration is developed to be mobile first, we use a handful of [media queries](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries) to create sensible breakpoints for our layouts and interfaces. These breakpoints are mostly based on minimum viewport widths and allow us to scale up elements as the viewport changes.
+Since Figuration is developed to be mobile first, we use a handful of [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) to create sensible breakpoints for our layouts and interfaces. These breakpoints are mostly based on minimum viewport widths and allow us to scale up elements as the viewport changes.
 
 For accessibility reasons, the Sass internally maps the pixel defined breakpoints into `em` values.  We assume a 16px default root font size, since this is the default for most browsers.
 

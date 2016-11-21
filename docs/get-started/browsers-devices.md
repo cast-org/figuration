@@ -107,7 +107,7 @@ For Firefox, in addition to the latest normal stable release, we also support th
 
 Unofficially, Figuration should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 8 and below, though they are not officially supported.
 
-For a list of some of the browser bugs that Bootstrap has to grapple with, see their [Wall of browser bugs](http://getboostrap.com/browser-bugs/).
+For a list of some of the browser bugs that Bootstrap has to grapple with, see their [Wall of browser bugs](http://getbootstrap.com/browser-bugs/).
 
 ## Internet Explorer 9 & 10
 
@@ -150,7 +150,7 @@ Figuration does not officially support IE8.
 
 You may add some third party JavaScript to backfill support for IE8 to Figuration. You'll need the following:
 
-* [The HTML5 shiv](https://en.wikipedia.org/wiki/HTML5_Shiv)
+* [HTML5 shiv](https://github.com/aFarkas/html5shiv)
 * [Respond.js](https://github.com/scottjehl/Respond)
 * [Rem unit polyfill](https://github.com/chuckcarpenter/REM-unit-polyfill)
 
@@ -168,7 +168,7 @@ Confirm the document mode by opening the debugging tools: press <kbd>F12</kbd> a
 
 This tag is included in all of Figuration's documentation and examples to ensure the best rendering possible in each supported version of Internet Explorer.
 
-See [this StackOverflow question](https://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge) for more information.
+See [this StackOverflow question](https://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do) for more information.
 
 ## Internet Explorer 10 in Windows Phone 8
 

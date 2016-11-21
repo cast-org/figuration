@@ -475,7 +475,7 @@ See it in action in <a href="http://jsbin.com/ruxona/edit">this rendered example
 
 ## Flexbox
 
-Looking for a more modern grid system?  Use the opt-in flexbox mode, or [enable full flexbox support in Figuration](/layout/flexbox#full-flexbox-mode), to take full advantage of CSS's Flexible Box module for even more control over your site's layout, alignment, and distribution of content.
+Looking for a more modern grid system?  Use the opt-in flexbox mode, or [enable full flexbox support in Figuration]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode), to take full advantage of CSS's Flexible Box module for even more control over your site's layout, alignment, and distribution of content.
 
 ### Opt-in vs Full Mode
 

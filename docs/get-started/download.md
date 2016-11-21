@@ -92,7 +92,7 @@ figuration/
     +-- figuration.min.js
 {% endhighlight %}
 
-This is the most basic form of Figuration: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JavaScript (`figuration.*`), as well as compiled and minified CSS and JavaScript (`figuration.min.*`). CSS <a href="https://developer.chrome.com/devtools/docs/css-preprocessors">source maps</a> (`figuration.*.map`) are available for use with certain browsers' developer tools.
+This is the most basic form of Figuration: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JavaScript (`figuration.*`), as well as compiled and minified CSS and JavaScript (`figuration.min.*`). CSS <a href="https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps">source maps</a> (`figuration.*.map`) are available for use with certain browsers' developer tools.
 
 ### Source Version
 

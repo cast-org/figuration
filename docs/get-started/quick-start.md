@@ -5,7 +5,7 @@ group: get-started
 redirect_from: "/get-started/"
 ---
 
-Looking to quickly add Figuration to your project? Use the CDN links. Using a package manager or need to download the source files? [Head to the downloads page.]({{ site.baseurl }}/get-started/download)
+Looking to quickly add Figuration to your project? Use the CDN links. Using a package manager or need to download the source files? [Head to the downloads page.]({{ site.baseurl }}/get-started/download/)
 
 ## Contents
 {:.no_toc}
@@ -61,7 +61,7 @@ Essentially something like this:
 </html>
 {% endhighlight %}
 
-That should be all you need for overall page requirements. Visit the [Layout docs]({{ site.baseurl }}/layout/overview) to begin building out your content and components.
+That should be all you need for overall page requirements. Visit the [Layout docs]({{ site.baseurl }}/layout/overview/) to begin building out your content and components.
 
 ## Important Markup
 
@@ -113,3 +113,5 @@ For improved cross-browser rendering, we use [Normalize.css](http://necolas.gith
 ## Community
 
 We are just getting started so there is not much of a community yet.  Please spread the word and help us expand.
+
+- Follow [@figuration_org on Twitter](https://twitter.com/figuration_org)

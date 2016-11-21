@@ -16,7 +16,7 @@ Figuration includes simple and easily customized typography for headings, body t
 
 Figuration sets basic global display, typography, and link styles. Specifically, we:
 
-- Use a [native font stack](/content/reboot/#native-font-stack) that selects the best `font-family` for each OS and device.
+- Use a [native font stack]({{ site.baseurl }}/content/reboot/#native-font-stack) that selects the best `font-family` for each OS and device.
 - Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base applied to the `<body>`.
 - Set the global link color via `$link-color` and apply link underlines only on `:hover`.
 - Use `$body-bg` to set a `background-color` on the `<body>` (`#fff` by default).
