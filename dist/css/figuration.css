@@ -1077,30 +1077,30 @@ textarea.form-control {
 }
 
 .form-control-label-xs {
-  height: calc(1.3125rem + 2px);
-  padding-top: 0.09375rem;
-  padding-bottom: 0.09375rem;
+  padding-top: calc(0.09375rem + 1px);
+  padding-bottom: calc(0.09375rem + 1px);
+  margin-bottom: 0;
   font-size: 0.75rem;
 }
 
 .form-control-label-sm {
-  height: calc(1.59375rem + 2px);
-  padding-top: 0.140625rem;
-  padding-bottom: 0.140625rem;
+  padding-top: calc(0.140625rem + 1px);
+  padding-bottom: calc(0.140625rem + 1px);
+  margin-bottom: 0;
   font-size: 0.875rem;
 }
 
 .form-control-label-lg {
-  height: calc(2.8125rem + 2px);
-  padding-top: 0.46875rem;
-  padding-bottom: 0.46875rem;
+  padding-top: calc(0.46875rem + 1px);
+  padding-bottom: calc(0.46875rem + 1px);
+  margin-bottom: 0;
   font-size: 1.25rem;
 }
 
 .form-control-label-xl {
-  height: calc(3.375rem + 2px);
-  padding-top: 0.5625rem;
-  padding-bottom: 0.5625rem;
+  padding-top: calc(0.5625rem + 1px);
+  padding-bottom: calc(0.5625rem + 1px);
+  margin-bottom: 0;
   font-size: 1.5rem;
 }
 
@@ -5017,7 +5017,7 @@ button.list-group-item-danger.active:hover {
   text-align: center;
   background-color: #f0f0f0;
   border: 1px solid rgba(0, 0, 0, 0.25);
-  border-radius: 0.3125rem;
+  border-radius: 0.25rem;
 }
 
 .input-group-addon.form-control-xs,
@@ -5135,7 +5135,7 @@ button.list-group-item-danger.active:hover {
   margin-bottom: 1rem;
   list-style: none;
   background-color: #f0f0f0;
-  border-radius: 0.3125rem;
+  border-radius: 0.25rem;
 }
 
 .breadcrumb::after {
@@ -5175,7 +5175,7 @@ button.list-group-item-danger.active:hover {
   line-height: 1.25;
   white-space: nowrap;
   vertical-align: middle;
-  border-radius: 0.3125rem;
+  border-radius: 0.25rem;
 }
 
 .page-item {
@@ -5184,13 +5184,13 @@ button.list-group-item-danger.active:hover {
 
 .page-item:first-child .page-link {
   margin-left: 0;
-  border-top-left-radius: 0.3125rem;
-  border-bottom-left-radius: 0.3125rem;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
 }
 
 .page-item:last-child .page-link {
-  border-top-right-radius: 0.3125rem;
-  border-bottom-right-radius: 0.3125rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 
 .page-item.active .page-link, .page-item.active .page-link:focus, .page-item.active .page-link:hover {
@@ -5340,7 +5340,7 @@ button.list-group-item-danger.active:hover {
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
   border: 1px solid #a3a3a3;
-  border-radius: 0 0.3125rem 0.3125rem 0.3125rem;
+  border-radius: 0 0.25rem 0.25rem 0.25rem;
 }
 
 .dropdown-menu > li > a {
@@ -5389,7 +5389,7 @@ button.list-group-item-danger.active:hover {
   top: 0;
   left: 100%;
   margin-top: calc(-0.425rem + 1px);
-  border-radius: 0 0.3125rem 0.3125rem 0.3125rem;
+  border-radius: 0 0.25rem 0.25rem 0.25rem;
 }
 
 .dropdown-submenu > a::after {
@@ -5442,14 +5442,14 @@ button.list-group-item-danger.active:hover {
 .dropdown-menu-right {
   right: 0;
   left: auto;
-  border-radius: 0.3125rem 0 0.3125rem 0.3125rem;
+  border-radius: 0.25rem 0 0.25rem 0.25rem;
 }
 
 .dropdown-submenu.dropdown-menu-right > .dropdown-menu {
   right: -100%;
   left: auto;
   margin-right: -2px;
-  border-radius: 0 0.3125rem 0.3125rem 0.3125rem;
+  border-radius: 0 0.25rem 0.25rem 0.25rem;
 }
 
 .dropdown-menu-left {
@@ -5461,7 +5461,7 @@ button.list-group-item-danger.active:hover {
   right: auto;
   left: -100%;
   margin-left: -2px;
-  border-radius: 0.3125rem 0 0.3125rem 0.3125rem;
+  border-radius: 0.25rem 0 0.25rem 0.25rem;
 }
 
 .dropdown-header {
@@ -5514,7 +5514,7 @@ li .dropdown-header {
   bottom: 100%;
   margin-top: 0;
   margin-bottom: 0.125rem;
-  border-radius: 0.3125rem 0.3125rem 0.3125rem 0;
+  border-radius: 0.25rem 0.25rem 0.25rem 0;
 }
 
 .dropup .dropdown-submenu > .dropdown-menu,
@@ -5523,13 +5523,13 @@ li .dropdown-header {
   bottom: 0;
   margin-top: 0;
   margin-bottom: calc(-0.425rem + 1px);
-  border-radius: 0.3125rem 0.3125rem 0.3125rem 0;
+  border-radius: 0.25rem 0.25rem 0.25rem 0;
 }
 
 .dropdown-menu-left .dropdown-menu {
   right: 0;
   left: auto;
-  border-radius: 0.3125rem 0 0.3125rem 0.3125rem;
+  border-radius: 0.25rem 0 0.25rem 0.25rem;
 }
 
 .dropdown-menu-left .dropdown-menu.dropdown-menu-left {
@@ -5552,15 +5552,15 @@ li .dropdown-header {
   right: 100%;
   left: auto;
   margin-left: auto;
-  border-radius: 0.3125rem 0 0.3125rem 0.3125rem;
+  border-radius: 0.25rem 0 0.25rem 0.25rem;
 }
 
 .dropup.dropdown-menu-left .dropdown-menu {
-  border-radius: 0.3125rem 0.3125rem 0 0.3125rem;
+  border-radius: 0.25rem 0.25rem 0 0.25rem;
 }
 
 .dropup.dropdown-menu-left .dropdown-submenu > .dropdown-menu {
-  border-radius: 0.3125rem 0.3125rem 0 0.3125rem;
+  border-radius: 0.25rem 0.25rem 0 0.25rem;
 }
 
 .dropdown-back {
@@ -5695,7 +5695,7 @@ if $enable-flex-full .nav-inline {
   padding: 0.5rem 1rem;
   text-decoration: none;
   border: 1px solid transparent;
-  border-radius: 0.3125rem 0.3125rem 0 0;
+  border-radius: 0.25rem 0.25rem 0 0;
 }
 
 .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
