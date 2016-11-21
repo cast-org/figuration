@@ -49,6 +49,7 @@ $enable-transitions:    true !default;      // true
 $enable-grid-classes:   true !default;      // true
 $enable-print-styles:   true !default;      // true
 $enable-palette:        true !default;      // true
+$enable-sizing:         true !default;      // true
 $enable-flex-full:      false !default;     // false -- all-in flex mode
 $enable-flex-opt:       true !default;      // true -- opt-in via class mode
 
@@ -599,6 +600,7 @@ $list-group-item-heading-margin-bottom: .3em !default;
 $breadcrumb-padding-y:          .75rem !default;
 $breadcrumb-padding-x:          1rem !default;
 $breadcrumb-item-padding:       .5rem !default;
+$breadcrumb-border-radius:      $border-radius !default;
 
 $breadcrumb-bg:                 $uibase-50 !default;
 $breadcrumb-divider-color:      $uibase-400 !default;
@@ -608,25 +610,26 @@ $breadcrumb-divider:            "/" !default;
 
 // Pagination
 // =====
-$pagination-padding-x:                 $btn-padding-x !default;
-$pagination-padding-y:                 $btn-padding-y !default;
+$pagination-padding-x:          $btn-padding-x !default;
+$pagination-padding-y:          $btn-padding-y !default;
 
-$pagination-color:                     $link-color !default;
-$pagination-bg:                        $white !default;
-$pagination-border-width:              $border-width !default;
-$pagination-border-color:              $uibase-300 !default;
+$pagination-color:              $link-color !default;
+$pagination-bg:                 $white !default;
+$pagination-border-width:       $border-width !default;
+$pagination-border-color:       $uibase-300 !default;
+$pagination-border-radius:      $border-radius !default;
 
-$pagination-hover-color:               $link-hover-color !default;
-$pagination-hover-bg:                  $uibase-50 !default;
-$pagination-hover-border:              $uibase-300 !default;
+$pagination-hover-color:        $link-hover-color !default;
+$pagination-hover-bg:           $uibase-50 !default;
+$pagination-hover-border:       $uibase-300 !default;
 
-$pagination-active-color:              $active-color !default;
-$pagination-active-bg:                 $active-bg !default;
-$pagination-active-hover-color:        $active-color !default;
-$pagination-active-hover-bg:           $active-hover-bg !default;
+$pagination-active-color:       $active-color !default;
+$pagination-active-bg:          $active-bg !default;
+$pagination-active-hover-color: $active-color !default;
+$pagination-active-hover-bg:    $active-hover-bg !default;
 
-$pagination-disabled-color:            $uibase-500 !default;
-$pagination-disabled-bg:               darken($uibase-50, 10) !default;
+$pagination-disabled-color:     $uibase-500 !default;
+$pagination-disabled-bg:        darken($uibase-50, 10) !default;
 
 
 // Dropdowns

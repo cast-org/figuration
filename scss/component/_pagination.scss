@@ -14,12 +14,12 @@
     &:first-child {
         .page-link {
             margin-left: 0;
-            @include border-left-radius($border-radius);
+            @include border-left-radius($pagination-border-radius);
         }
     }
     &:last-child {
         .page-link {
-            @include border-right-radius($border-radius);
+            @include border-right-radius($pagination-border-radius);
         }
     }
 
@@ -65,13 +65,15 @@
 
 
 // Sizing
-@each $size, $dims in $component-sizes {
-    $font-size:     map-get($dims, "font-size");
-    $padding-y:     map-get($dims, "padding-y");
-    $padding-x:     map-get($dims, "padding-x");
-    $border-radius: map-get($dims, "border-radius");
+@if $enable-sizing {
+    @each $size, $dims in $component-sizes {
+        $sz-font-size:     map-get($dims, "font-size");
+        $sz-padding-y:     map-get($dims, "padding-y");
+        $sz-padding-x:     map-get($dims, "padding-x");
+        $sz-border-radius: map-get($dims, "border-radius");
 
-    .pagination-#{$size} {
-        @include pagination-size($padding-y, $padding-x, $font-size, $border-radius);
+        .pagination-#{$size} {
+            @include pagination-size($sz-padding-y, $sz-padding-x, $sz-font-size, $sz-border-radius);
+        }
     }
 }
