@@ -211,6 +211,50 @@ $(function() {
             .scrollTop(201);
     });
 
+    QUnit.test('should NOT clear selection if above the first section and first section is at the top', function(assert) {
+        assert.expect(4);
+        var done = assert.async();
+
+        var sectionHTML = '<div id="header" style="height: 500px;"></div>'
+            + '<nav id="navigation" class="navbar">'
+            + '<ul class="nav navbar-nav">'
+            + '<li class="active"><a id="one-link" href="#one">One</a></li>'
+            + '<li><a id="two-link" href="#two">Two</a></li>'
+            + '<li><a id="three-link" href="#three">Three</a></li>'
+            + '</ul>'
+            + '</nav>';
+        $(sectionHTML).appendTo('#qunit-fixture');
+
+        var negativeHeight = -10;
+        var startOfSectionTwo = 101;
+
+        var scrollspyHTML = '<div id="content" style="height: 200px; overflow-y: auto;">'
+            + '<div id="one" style="height: 100px;"/>'
+            + '<div id="two" style="height: 100px;"/>'
+            + '<div id="three" style="height: 100px;"/>'
+            + '<div id="spacer" style="height: 100px;"/>'
+            + '</div>';
+        var $scrollspy = $(scrollspyHTML).appendTo('#qunit-fixture');
+
+        $scrollspy
+            .CFW_Scrollspy({
+                target: '#navigation',
+                offset: $scrollspy.position().top
+            })
+            .one('scroll.cfw.scrollspy', function() {
+                assert.strictEqual($('.active').length, 1, '"active" class on only one element present');
+                assert.strictEqual($('.active').is($('#two-link').parent()), true, '"active" class on second section');
+                $scrollspy
+                    .one('scroll.cfw.scrollspy', function() {
+                        assert.strictEqual($('.active').length, 1, '"active" class on only one element present');
+                        assert.strictEqual($('.active').is($('#one-link').parent()), true, '"active" class on first section');
+                       // done();
+                    })
+                    .scrollTop(negativeHeight);
+            })
+            .scrollTop(startOfSectionTwo);
+    });
+
     QUnit.test('should correctly select navigation element on backward scrolling when each target section height is 100%', function(assert) {
         assert.expect(5);
         var navbarHtml = '<nav class="navbar">'
