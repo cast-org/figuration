@@ -14,7 +14,7 @@ Customize Figuration with our built-in custom variables file and easily toggle g
 
 ## Customizing Variables
 
-Figuration ships with a `_custom.scss` file for easy variable overrides. Copy and paste relevant lines from `_settings.scss` into the custom file and recompile your Sass to change our default values. **Be sure to remove the `!default` flag from override values.**
+Figuration ships with a `_custom.scss` file for an easy method of overriding the default variables found in `_settings.scss`. Copy and paste relevant lines from `_settings.scss` into the custom file, modify the values, and recompile your Sass to change our default values. **Be sure to remove the `!default` flag from override values.**
 
 For example, to change out the `background-color` and `color` for the `<body>`, you'd do the following:
 
