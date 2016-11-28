@@ -94,7 +94,7 @@
                 return activeTarget != (i = targets[targets.length - 1]) && this.activate(i);
             }
 
-            if (activeTarget && scrollTop < offsets[0]) {
+            if (activeTarget && scrollTop < offsets[0] && offsets[0] > 0) {
                 this.activeTarget = null;
                 return this.clear();
             }
