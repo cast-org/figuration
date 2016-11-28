@@ -20,9 +20,10 @@ At a high level, here's how the grid system works:
 - Containers---`.container` for fixed width or `.container-fluid` for full width---center your site's contents and help align your grid content.
 - Rows are horizontal groups of columns that ensure your columns are lined up properly.
 - Content should be placed within columns, and only columns may be immediate children of rows.
-- Column classes indicate the number of columns you'd like to use out of the possible 12 per row. So if you want three equal-width columns, you'd use `.col-sm-4`.
+- Column classes indicate the number of columns you'd like to use out of the possible 12 per row. So if you want three equal-width columns, you'd use `.col-4`.
 - Column `width`s are set in percentages, so they're always fluid and sized relative to their parent element.
 - Columns have horizontal `padding` to create the gutters between individual columns.
+- You can remove the `margin` from rows and `padding` from columns with `.no-gutters` on the `.row`.
 - There are five grid tiers, one for each [responsive breakpoint]({{ site.baseurl }}/layout/overview/#responsive-breakpoints): extra small, small, medium, large, and extra large.
 - Grid tiers are based on minimum widths, meaning they apply to that one tier and all those above it (e.g., `.col-sm-4` applies to small, medium, large, and extra large devices).
 - You can use predefined grid classes or Sass mixins for more semantic markup.
@@ -218,6 +219,36 @@ Build on the previous example by creating even more dynamic and powerful layouts
   <!-- Optional: clear the XS cols if their content doesn't match in height -->
   <div class="clearfix hide-sm-up"></div>
   <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+</div>
+{% endexample %}
+</div>
+
+### Example: Remove Gutters
+
+The gutters between columns in our default, predefined grid classes can be removed with `.no-gutters`. This removes the negative `margin`s from `.row` and the horizontal `padding` from all immediate children columns.
+
+Here's the source code for creating these styles. Note that column overrides are scoped to only the first children columns and are targeted via [attribute selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors). While this generates a more specific selector, column padding can still be further customized with [spacing utilities]({{ site.baseurl }}/utilities/spacing/).
+
+{% highlight sass %}
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+
+    > [class*="col-"],
+    > .col {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+{% endhighlight %}
+
+In practice, here's how it looks. Note you can continue to use this with all other predefined grid classes (including column widths, responsive tiers, reorders, and more).
+
+<div class="cf-example-row">
+{% example html %}
+<div class="row no-gutters">
+  <div class="col-12 col-sm-6 col-md-8">.col-12 .col-sm-6 .col-md-8</div>
+  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
 </div>
 {% endexample %}
 </div>
@@ -485,7 +516,7 @@ The **opt-in mode** for flexbox support is available by default, and is easily t
 
 ### What is Available
 
-- Nesting, offsets, pushes, and pulls are all supported in the flexbox grid system.
+- Nesting, offsets, pushes, pulls, and `.no-gutters` are all supported in the flexbox grid system.
 - Flexbox grid columns without a set width will automatically layout with equal widths. For example, four columns will each automatically be 25% wide.
 - Flexbox grid columns have significantly more alignment options available, including vertical alignment.
 
@@ -497,7 +528,7 @@ When flexbox support is used/enabled, you can utilize breakpoint-specific column
 
 Equal-width columns are easliy done by adding any number of `.col-{breakpoint}`s for each breakpoint you need and every column will be the same width.
 
-For example, here's are two grid layouts that apply to every device and viewport possible.
+For example, here's are some grid layouts that apply to every device and viewport possible.
 
 <div class="cf-example-row">
 {% example html %}
@@ -520,6 +551,12 @@ For example, here's are two grid layouts that apply to every device and viewport
     <div class="col">
         1 of 3
     </div>
+</div>
+
+<div class="row row-flex no-gutters">
+  <div class="col">Columns</div>
+  <div class="col">with no</div>
+  <div class="col">gutters</div>
 </div>
 {% endexample %}
 </div>
