@@ -141,6 +141,47 @@ You can also use utility classes to align navbar text to other navbar elements l
 </nav>
 {% endexample %}
 
+### Disabled Items
+
+Add `.disabled` to a `.nav-link` to indicate a disabled state.
+
+It should also be noted that:
+- `<a>`s don't support the `disabled` attribute, so you must add the `.disabled` class to make it visually appear disabled.
+- Some future-friendly styles are included to disable all `pointer-events` on anchor link. In browsers which support that property, you won't see the disabled cursor at all.
+- Disabled links should include the `aria-disabled="true"` attribute to indicate the state of the element to assistive technologies.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+    <a href="#" class="navbar-brand">Navbar</a>
+    <ul class="nav navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#" aria-disabled="true">Disabled</a>
+        </li>
+        <li class="nav-item">
+            <span class="nav-link disabled">Disabled</span>
+        </li>
+    </ul>
+</nav>
+
+<nav class="navbar navbar-dark bg-inverse">
+    <a href="#" class="navbar-brand">Navbar</a>
+    <ul class="nav navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#" aria-disabled="true">Disabled</a>
+        </li>
+        <li class="nav-item">
+            <span class="nav-link disabled">Disabled</span>
+        </li>
+    </ul>
+</nav>
+{% endexample %}
+
 ### Divider
 
 Place a visual separator between segments of the navbar.
