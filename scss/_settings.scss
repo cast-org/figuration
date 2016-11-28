@@ -877,9 +877,9 @@ $modal-header-border-width:     $modal-content-border-width !default;
 $modal-footer-border-width:     $modal-header-border-width !default;
 $modal-border-radius:           .3rem !default;
 
-$modal-sm:                      rem-calc(300px) !default;
-$modal-md:                      rem-calc(600px) !default;
-$modal-lg:                      rem-calc(900px) !default;
+$modal-sm:                      rem-calc(304px) !default; // 304px=>19rem
+$modal-md:                      rem-calc(528px) !default; // 528px=>33rem
+$modal-lg:                      rem-calc(896px) !default; // 896px=>56rem
 
 $modal-breakpoint:              sm !default; // When to start scaling up modal width
 $modal-lg-breakpoint:           lg !default; // The minimum breakpoint to allow `.modal-lg`

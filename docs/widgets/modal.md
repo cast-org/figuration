@@ -224,7 +224,7 @@ To take advantage of the grid system within a modal, just nest `.container-fluid
 
 ### Optional Sizes
 
-Modals have two optional sizes, provided by Bootstrap's base CSS, available via modifier classes to be placed on a `.modal-dialog`.
+Modals have two optional sizes, provided by Figuration's base CSS, available via modifier classes to be placed on a `.modal-dialog`.
 
 <div class="modal" id="modalLg">
     <div class="modal-dialog modal-lg">
