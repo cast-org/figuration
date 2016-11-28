@@ -2613,6 +2613,17 @@ input[type="button"].btn-block {
   content: "";
 }
 
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.no-gutters > [class*="col-"],
+.no-gutters > .col {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 .row-flex {
   display: -webkit-box;
   display: -webkit-flex;
@@ -7179,17 +7190,17 @@ a.badge:focus, a.badge:hover {
 
 @media (min-width: 36em) {
   .modal-dialog {
-    max-width: 37.5rem;
+    max-width: 33rem;
     margin: 1.875rem auto;
   }
   .modal-sm {
-    max-width: 18.75rem;
+    max-width: 19rem;
   }
 }
 
 @media (min-width: 62em) {
   .modal-lg {
-    max-width: 56.25rem;
+    max-width: 56rem;
   }
 }
 
@@ -9297,6 +9308,26 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
 
 .radius-bl-0 {
   border-bottom-left-radius: 0;
+}
+
+.border-0 {
+  border: 0 !important;
+}
+
+.border-t-0 {
+  border-top: 0 !important;
+}
+
+.border-r-0 {
+  border-right: 0 !important;
+}
+
+.border-b-0 {
+  border-bottom: 0 !important;
+}
+
+.border-l-0 {
+  border-left: 0 !important;
 }
 
 .sr-only {
