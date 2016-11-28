@@ -29,7 +29,6 @@ Where *sides* is one of:
 * `br` - for the `bottom right` corner
 * `bl` - for the `bottom left` corner
 
-
 <div class="cf-example">
     <div class="mb-1">
         <img data-src="holder.js/100x100/?text=All" class="radius" alt="A generic square placeholder image with rounded corners" />
@@ -100,3 +99,25 @@ When elements are of a square (1:1) aspect ratio, you can create a circle using 
 {% highlight html %}
 <img src="..." class="radius-circle" alt="...">
 {% endhighlight %}
+
+## Border Removal
+
+Add a class to remove a border on a given side of an element, using the format `.border-0-{sides}`.
+
+Where *sides* is one of:
+
+* blank - for `all` 4 sides of the element
+* `t` - for the `top` side
+* `b` - for the `bottom` side
+* `r` - for the `right` side
+* `l` - for the `left` side
+
+See the following example of removing various borders from some buttons.
+
+{% example html %}
+<button type="button" class="btn radius-0 border-0">all</button>
+<button type="button" class="btn radius-0 border-t-0">top</button>
+<button type="button" class="btn radius-0 border-r-0">right</button>
+<button type="button" class="btn radius-0 border-b-0">bottom</button>
+<button type="button" class="btn radius-0 border-l-0">left</button>
+{% endexample %}
