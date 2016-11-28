@@ -27,3 +27,32 @@ Can also be used as a mixin.
   @include clearfix;
 }
 {% endhighlight %}
+
+The following example shows how the clearfix can be used. Without the clearfix the wrapping div would not span around the buttons which would cause a broken layout, as shown in the second part of the example.
+
+<div class="cf-example">
+    <strong>With <code>.clearfix</code></strong>
+    <div class="bg-info clearfix mb-1">
+        <button class="btn float-left">Button floated left</button>
+        <button class="btn float-right">Button floated right</button>
+    </div>
+
+    <strong>Without <code>.clearfix</code></strong>
+    <div class="bg-info">
+        <button class="btn float-left">Button floated left</button>
+        <button class="btn float-right">Button floated right</button>
+    </div>
+</div>
+{% highlight html %}
+    <!-- With .clearfix -->
+    <div class="bg-info clearfix">
+        <button class="btn float-left">Button floated left</button>
+        <button class="btn float-right">Button floated right</button>
+    </div>
+
+    <!-- Without .clearfix -->
+    <div class="bg-info">
+        <button class="btn float-left">Button floated left</button>
+        <button class="btn float-right">Button floated right</button>
+    </div>
+{% endhighlight %}

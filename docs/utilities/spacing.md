@@ -62,7 +62,7 @@ Here are some representative examples of these classes:
 {% endhighlight %}
 
 ## Horizontal Centering
-Additionally, we also include an `.mx-auto` class for horizontally centering fixed-width block level content by setting the horizontal margins to `auto`.
+Additionally, we also include an `.mx-auto` class for horizontally centering fixed-width block level content&mdash; an element with `display: block;` and a defined `width`&mdash;by setting the horizontal margins to `auto`.
 
 <div class="cf-example">
   <div class="mx-auto" style="width: 200px; background-color: rgba(86,61,124,.15);">
