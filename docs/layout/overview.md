@@ -72,11 +72,11 @@ Some reference material - may be competing points of view:
 Figuration primarily uses the following media query ranges---or breakpoints---in our source Sass files for our layout, grid system, and components.
 
 {% highlight scss %}
-// Extra small devices (portrait phones, less than 34em)
+// Extra small devices (portrait phones, less than 36em/576px)
 // No media query since this is the default in Bootstrap
 
-// Small devices (landscape phones, 34em/544px and up)
-@media (min-width: 34em) { ... }
+// Small devices (landscape phones, 36em/576px and up)
+@media (min-width: 36em) { ... }
 
 // Medium devices (tablets, 48em/768px and up)
 @media (min-width: 48em) { ... }
@@ -108,8 +108,8 @@ Since we write our source CSS in Sass, all our media queries are available via S
 We occasionally use media queries that go in the other direction (the given screen size *or smaller*):
 
 {% highlight scss %}
-// Extra small devices (portrait phones, less than 34em/544px)
-@media (max-width: 33.9375em) { ... }
+// Extra small devices (portrait phones, less than 36em/576px)
+@media (max-width: 35.9375em) { ... }
 
 // Small devices (landscape phones, less than 48em/768px)
 @media (max-width: 47.9375em) { ... }
@@ -136,11 +136,11 @@ Once again, these media queries are also available via Sass mixins:
 We also have media between the breakpoint's minimum and maximum widths for only the given screen size:
 
 {% highlight scss %}
-// Extra small devices (portrait phones, less than 544px)
-@media (max-width: 543px) { ... }
+// Extra small devices (portrait phones, less than 36em/576px)
+@media (max-width: 35.9375em) { ... }
 
-// Small devices (landscape phones, 34em/544px and up)
-@media (min-width: 34em) and (max-width: 47.9375em) { ... }
+// Small devices (landscape phones, 36em/576px and up)
+@media (min-width: 36em) and (max-width: 47.9375em) { ... }
 
 // Medium devices (tablets, 48em/768px and up)
 @media (min-width: 48em) and (max-width: 61.9375em) { ... }
