@@ -257,13 +257,22 @@ template {
   div::first-line,
   blockquote::first-line,
   li::first-line {
+    color: #000 !important;
     text-shadow: none !important;
+    background: transparent !important;
     -webkit-box-shadow: none !important;
             box-shadow: none !important;
   }
   a,
   a:visited {
     text-decoration: underline;
+  }
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
   }
   abbr[title]::after {
     content: " (" attr(title) ")";
@@ -5217,6 +5226,7 @@ button.list-group-item-danger.active:hover {
   float: left;
   padding: 0.375rem 0.75rem;
   margin-left: -1px;
+  line-height: 1.25;
   color: #1242ba;
   text-decoration: none;
   background-color: #fff;
@@ -5225,6 +5235,7 @@ button.list-group-item-danger.active:hover {
 
 .page-link:focus, .page-link:hover {
   color: #071946;
+  text-decoration: none;
   background-color: #f0f0f0;
   border-color: #a3a3a3;
 }
