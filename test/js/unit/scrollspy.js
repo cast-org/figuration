@@ -248,7 +248,7 @@ $(function() {
                     .one('scroll.cfw.scrollspy', function() {
                         assert.strictEqual($('.active').length, 1, '"active" class on only one element present');
                         assert.strictEqual($('.active').is($('#one-link').parent()), true, '"active" class on first section');
-                       // done();
+                        done();
                     })
                     .scrollTop(negativeHeight);
             })
