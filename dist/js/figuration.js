@@ -1878,6 +1878,12 @@ if (typeof jQuery === 'undefined') {
                     .on('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]', function(e) {
                         $selfRef.toggle(e);
                     });
+                // Hide tooltips on modal close
+                this.$triggerElm.closest('.modal')
+                    .off('beforeHide.cfw.modal')
+                    .on('beforeHide.cfw.modal', function() {
+                        $selfRef.hide(true);
+                    });
             }
         },
 
@@ -2099,6 +2105,7 @@ if (typeof jQuery === 'undefined') {
 
             this.$triggerElm
                 .off('.cfw.' + this.type + '.focusStart')
+                .off('.cfw.modal')
                 .removeAttr('aria-describedby');
             this.$targetElm
                 .off('.cfw.' + this.type)
@@ -2143,6 +2150,7 @@ if (typeof jQuery === 'undefined') {
                     .removeData('cfw.' + this.type);
             }
             this.$triggerElm.off('.cfw.' + this.type)
+                .off('.cfw.modal')
                 .removeAttr('data-cfw')
                 .removeData('cfw.' + this.type);
             this.unlinking = false;
