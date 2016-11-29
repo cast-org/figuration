@@ -6040,106 +6040,6 @@ if $enable-flex-full .nav-inline {
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-.navbar-toggleable-xs::after {
-  display: block;
-  clear: both;
-  content: "";
-}
-
-@media (max-width: 35.9375em) {
-  .navbar-toggleable-xs .navbar-nav .nav-item {
-    float: none;
-    margin-left: 0;
-  }
-}
-
-@media (min-width: 36em) {
-  .navbar-toggleable-xs {
-    display: block !important;
-  }
-}
-
-@media (max-width: 35.9375em) {
-  .navbar-toggleable-xs {
-    clear: both;
-  }
-}
-
-.navbar-toggleable-sm::after {
-  display: block;
-  clear: both;
-  content: "";
-}
-
-@media (max-width: 47.9375em) {
-  .navbar-toggleable-sm .navbar-nav .nav-item {
-    float: none;
-    margin-left: 0;
-  }
-}
-
-@media (min-width: 48em) {
-  .navbar-toggleable-sm {
-    display: block !important;
-  }
-}
-
-@media (max-width: 47.9375em) {
-  .navbar-toggleable-sm {
-    clear: both;
-  }
-}
-
-.navbar-toggleable-md::after {
-  display: block;
-  clear: both;
-  content: "";
-}
-
-@media (max-width: 61.9375em) {
-  .navbar-toggleable-md .navbar-nav .nav-item {
-    float: none;
-    margin-left: 0;
-  }
-}
-
-@media (min-width: 62em) {
-  .navbar-toggleable-md {
-    display: block !important;
-  }
-}
-
-@media (max-width: 61.9375em) {
-  .navbar-toggleable-md {
-    clear: both;
-  }
-}
-
-.navbar-toggleable-lg::after {
-  display: block;
-  clear: both;
-  content: "";
-}
-
-@media (max-width: 74.9375em) {
-  .navbar-toggleable-lg .navbar-nav .nav-item {
-    float: none;
-    margin-left: 0;
-  }
-}
-
-@media (min-width: 75em) {
-  .navbar-toggleable-lg {
-    display: block !important;
-  }
-}
-
-@media (max-width: 74.9375em) {
-  .navbar-toggleable-lg {
-    clear: both;
-  }
-}
-
 .navbar-group {
   display: table;
   width: 100%;
@@ -6202,6 +6102,142 @@ if $enable-flex-full .nav-inline {
   -webkit-flex: 1 1 0%;
       -ms-flex: 1 1 0%;
           flex: 1 1 0%;
+}
+
+.navbar-toggleable::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+@media (max-width: 35.9375em) {
+  .navbar-toggleable .navbar-brand {
+    display: block;
+    float: none;
+    margin-right: 0;
+  }
+  .navbar-toggleable .navbar-nav .dropdown-menu {
+    position: static;
+    float: none;
+  }
+  .navbar-toggleable .navbar-nav .nav-item {
+    float: none;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 36em) {
+  .navbar-toggleable {
+    display: block !important;
+  }
+}
+
+@media (max-width: 35.9375em) {
+  .navbar-toggleable {
+    clear: both;
+  }
+}
+
+.navbar-toggleable-sm::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+@media (max-width: 47.9375em) {
+  .navbar-toggleable-sm .navbar-brand {
+    display: block;
+    float: none;
+    margin-right: 0;
+  }
+  .navbar-toggleable-sm .navbar-nav .dropdown-menu {
+    position: static;
+    float: none;
+  }
+  .navbar-toggleable-sm .navbar-nav .nav-item {
+    float: none;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 48em) {
+  .navbar-toggleable-sm {
+    display: block !important;
+  }
+}
+
+@media (max-width: 47.9375em) {
+  .navbar-toggleable-sm {
+    clear: both;
+  }
+}
+
+.navbar-toggleable-md::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+@media (max-width: 61.9375em) {
+  .navbar-toggleable-md .navbar-brand {
+    display: block;
+    float: none;
+    margin-right: 0;
+  }
+  .navbar-toggleable-md .navbar-nav .dropdown-menu {
+    position: static;
+    float: none;
+  }
+  .navbar-toggleable-md .navbar-nav .nav-item {
+    float: none;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 62em) {
+  .navbar-toggleable-md {
+    display: block !important;
+  }
+}
+
+@media (max-width: 61.9375em) {
+  .navbar-toggleable-md {
+    clear: both;
+  }
+}
+
+.navbar-toggleable-lg::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+@media (max-width: 74.9375em) {
+  .navbar-toggleable-lg .navbar-brand {
+    display: block;
+    float: none;
+    margin-right: 0;
+  }
+  .navbar-toggleable-lg .navbar-nav .dropdown-menu {
+    position: static;
+    float: none;
+  }
+  .navbar-toggleable-lg .navbar-nav .nav-item {
+    float: none;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 75em) {
+  .navbar-toggleable-lg {
+    display: block !important;
+  }
+}
+
+@media (max-width: 74.9375em) {
+  .navbar-toggleable-lg {
+    clear: both;
+  }
 }
 
 .jumbotron {
