@@ -84,7 +84,8 @@
 .tooltip {
     .close {
         position: static;
-        padding: 0 .15em;
+        padding: $tooltip-padding-y $tooltip-padding-x;
+        margin-top: -$tooltip-padding-y;
         font-size: 1.25rem;
         color: $white;
         text-shadow: none;
