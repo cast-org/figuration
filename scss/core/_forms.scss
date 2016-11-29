@@ -71,7 +71,7 @@ select.form-control {
             $sz-font-size:     map-get($dims, "font-size");
             $sz-padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $sz-font-size / 2);
             $sz-input-height:  (($sz-font-size * $input-line-height) + ($sz-padding-y * 2));
-            $sz-select-height: calc(#{$sz-input-height} + #{($border-width * 2)});
+            $sz-select-height: calc(#{$sz-input-height} + #{($input-border-width * 2)});
 
             &.form-control-#{$size}:not([size]):not([multiple]),
             .input-group-#{$size} &.form-control:not([size]):not([multiple]) {
@@ -106,12 +106,11 @@ textarea.form-control {
 
 
 // Labels
-
 // For use with horizontal and inline forms, when you need the label text to
 // align with the form controls.
 .form-control-label {
-    padding-top: $input-padding-y;
-    padding-bottom: $input-padding-y;
+    padding-top: calc(#{$input-padding-y} + #{$input-border-width});
+    padding-bottom: calc(#{$input-padding-y} + #{$input-border-width});
     margin-bottom: 0; // Override the `<label>` default
 }
 // Label sizes
@@ -121,20 +120,19 @@ textarea.form-control {
         $sz-padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $sz-font-size / 2);
 
         .form-control-label-#{$size} {
-            padding-top: calc(#{$sz-padding-y} + #{$border-width});
-            padding-bottom: calc(#{$sz-padding-y} + #{$border-width});
-            margin-bottom: 0;
+            padding-top: calc(#{$sz-padding-y} + #{$input-border-width});
+            padding-bottom: calc(#{$sz-padding-y} + #{$input-border-width});
             font-size: $sz-font-size;
         }
     }
 }
 
 // Legends
-
 // For use with horizontal and inline forms, when you need the legend text to
 // be the same size as regular labels, and to align with the form controls.
 .form-control-legend {
-    padding: $input-padding-y $input-padding-x;
+    padding-top: $input-padding-y;
+    padding-bottom: $input-padding-y;
     margin-bottom: 0;
     font-size: $font-size-base;
 }
@@ -212,7 +210,7 @@ input[type="month"] {
         $sz-padding-x:     map-get($dims, "padding-x");
         $sz-border-radius: map-get($dims, "border-radius");
         $sz-input-height:  (($sz-font-size * $input-line-height) + ($sz-padding-y * 2));
-        $sz-select-height: calc(#{$sz-input-height} + #{($border-width * 2)});
+        $sz-select-height: calc(#{$sz-input-height} + #{($input-border-width * 2)});
 
         .form-control-#{$size} {
             height: $sz-select-height;
@@ -285,20 +283,19 @@ input[type="month"] {
 
 // Radios and checkboxes on same line
 .form-check-inline {
-    position: relative;
     display: inline-block;
-    padding-left: 1.25rem;
-    margin-bottom: 0; // Override default `<label>` bottom margin
-    vertical-align: middle;
-    cursor: pointer;
 
-    + .form-check-inline {
-        margin-left: .75rem;
+    .form-check-label {
+        vertical-align: middle;
     }
 
     &.disabled {
         color: $text-muted;
         cursor: $cursor-disabled;
+    }
+
+    + .form-check-inline {
+        margin-left: .75rem;
     }
 }
 
