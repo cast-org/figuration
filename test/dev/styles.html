@@ -967,7 +967,7 @@ Showing a <kbd>kdb sample</kbd>
     </div>
   </div>
   <div class="form-group row">
-    <label class="col-sm-2">Radios</label>
+    <legend class="col-sm-2 form-control-legend">Radios</legend>
     <div class="col-sm-10">
       <div class="form-check">
         <label class="form-check-label">
@@ -990,7 +990,7 @@ Showing a <kbd>kdb sample</kbd>
     </div>
   </div>
   <div class="form-group row">
-    <label class="col-sm-2">Checkbox</label>
+    <legend class="col-sm-2 form-control-legend">Checkbox</legend>
     <div class="col-sm-10">
       <div class="form-check">
         <label class="form-check-label">
@@ -1040,25 +1040,41 @@ Showing a <kbd>kdb sample</kbd>
 </div>
 
 <h3>Inline checkbox/radio</h3>
-<label class="form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3"> 3
-</label>
+<div>
+  <div class="form-check form-check-inline">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
+    </label>
+  </div>
+  <div class="form-check form-check-inline">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
+    </label>
+  </div>
+  <div class="form-check form-check-inline disabled">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled> 3
+    </label>
+  </div>
+</div>
 
-<label class="form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
-</label>
+<div>
+  <div class="form-check form-check-inline">
+    <label class="form-check-label">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+    </label>
+  </div>
+  <div class="form-check form-check-inline">
+    <label class="form-check-label">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+    </label>
+  </div>
+  <div class="form-check form-check-inline disabled">
+    <label class="form-check-label">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled> 3
+    </label>
+  </div>
+</div>
 
 <div class="container">
   <div class="row">
@@ -1066,35 +1082,35 @@ Showing a <kbd>kdb sample</kbd>
       <div class="form-group row">
         <div class="col-sm-2">Criteria 1:
         </div>
-        <div class="col-sm-10">
-          <label class="form-check-inline"><input class="form-check-input" type="checkbox" value="yes"> Yes, I want!</label>
+        <div class="col-sm-10 form-check-inline">
+          <label class="form-check-label"><input class="form-check-input" type="checkbox" value="yes"> Yes, I want!</label>
         </div>
       </div>
       <div class="form-group row">
         <div class="col-sm-2">Criteria 2:
         </div>
-        <div class="col-sm-10">
-          <label class="form-check-inline"><input class="form-check-input" type="checkbox" value="yes"> Yes, it's me: <a href="mailto:john@doe.com">john@doe.com</a></label>
+        <div class="col-sm-10 form-check-inline">
+          <label class="form-check-label"><input class="form-check-input" type="checkbox" value="yes"> Yes, it's me: <a href="mailto:john@doe.com">john@doe.com</a></label>
         </div>
       </div>
       <div class="form-group row">
         <div class="col-sm-2">Criteria 3:
         </div>
-        <div class="col-sm-10">
-          <label class="form-check-inline"><input class="form-check-input" type="checkbox" value="yes"> Yes, I <em>really</em> want it!</label>
+        <div class="col-sm-10 form-check-inline">
+          <label class="form-check-label"><input class="form-check-input" type="checkbox" value="yes"> Yes, I <em>really</em> want it!</label>
         </div>
       </div>
       <div class="form-group row">
         <div class="col-sm-2">Criteria 4:
         </div>
-        <div class="col-sm-10">
-          <label class="form-check-inline">
+        <div class="col-sm-10 form-check-inline">
+          <label class="form-check-label">
             <input class="form-check-input" type="checkbox" id="inlineCheckbox4-1" value="option1"> 1
           </label>
-          <label class="form-check-inline">
+          <label class="form-check-label">
             <input class="form-check-input" type="checkbox" id="inlineCheckbox4-2" value="option2"> 2<em>italic</em>
           </label>
-          <label class="form-check-inline">
+          <label class="form-check-label">
             <input class="form-check-input" type="checkbox" id="inlineCheckbox4-3" value="option3"> 3
           </label>
         </div>
@@ -1102,8 +1118,8 @@ Showing a <kbd>kdb sample</kbd>
       <div class="form-group row">
         <div class="col-sm-2">Criteria 5:
         </div>
-        <div class="col-sm-10">
-          <label class="form-check-inline disabled"><input class="form-check-input" type="checkbox" value="yes" disabled> Yes, I <em>really</em> want it!</label>
+        <div class="col-sm-10 form-check-inline">
+          <label class="form-check-label disabled"><input class="form-check-input" type="checkbox" value="yes" disabled> Yes, I <em>really</em> want it!</label>
         </div>
       </div>
     </div>

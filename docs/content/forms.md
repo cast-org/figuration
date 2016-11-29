@@ -166,8 +166,7 @@ Below is a complete list of the specific form controls supported by Figuration a
     <tr>
       <td class="text-nowrap">
 {% markdown %}
-`.form-check`<br>
-`.form-check-inline`
+`.form-check`
 {% endmarkdown %}
       </td>
       <td class="text-nowrap">
@@ -368,7 +367,7 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
       </div>
     </div>
     <fieldset class="form-group row">
-      <label class="col-sm-2">Radios</label>
+      <legend class="col-sm-2 form-control-legend">Radios</legend>
       <div class="col-sm-10">
         <div class="form-check">
           <label class="form-check-label">
@@ -391,7 +390,7 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
       </div>
     </fieldset>
     <div class="form-group row">
-      <label class="col-sm-2">Checkbox</label>
+      <legend class="col-sm-2 form-control-legend">Checkbox</legend>
       <div class="col-sm-10">
         <div class="form-check">
           <label class="form-check-label">
@@ -479,30 +478,42 @@ By default, any number of checkboxes and radios that are immediate sibling will 
 
 ### Inline
 
-Groups of checkboxes or radios that appear on the same horizontal row are similar to their stacked counterparts, but require different HTML and a single class. To switch from stacked to inline, drop the surrounding `<div>`, add `.form-check-inline` to the `<label>`, and keep the `.form-check-input` on the `<input>`.
+Group checkboxes or radios on the same horizontal row by adding `.form-check-inline` to any `.form-check`.
 
 {% example html %}
-<label class="form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3"> 3
-</label>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
+  </label>
+</div>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
+  </label>
+</div>
+<div class="form-check form-check-inline disabled">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled> 3
+  </label>
+</div>
 {% endexample %}
 
 {% example html %}
-<label class="form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
-</label>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+  </label>
+</div>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+  </label>
+</div>
+<div class="form-check form-check-inline disabled">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled> 3
+  </label>
+</div>
 {% endexample %}
 
 ### Without Labels
