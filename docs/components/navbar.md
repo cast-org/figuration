@@ -355,13 +355,13 @@ Our [Collapse widget]({{ site.baseurl }}/widgets/collapse/) allows you to use a 
 </nav>
 {% endexample %}
 
+### Responsive Variants
+
 For more complex navbar patterns, use the `.navbar-toggleable-*` classes in conjunction with the `.navbar-toggler`. These classes override our responsive utilities to show navigation only when content is meant to be shown.
 
-### Responsive Variant
+For the examples in this section, you will need to resize your browser window below/above the `lg` breakpoint to see the navbars switch between modes.
 
-To see the navbar switch between modes, you will need to resize your browser window below/above the `lg` breakpoint for this example.
-
-Note the use of the `hidden` option for the [Collapse widget]({{ site.baseurl }}/widgets/collapse) to allow the navigation items to be read by screen readers when not in a collapsed mode for larger screens.
+Note the use of the `data-cfw-collapse-hidden="false"` option for the [Collapse widget]({{ site.baseurl }}/widgets/collapse) to allow the navigation items to be read by screen readers when not in a collapsed mode for larger screens.
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
@@ -377,6 +377,60 @@ Note the use of the `hidden` option for the [Collapse widget]({{ site.baseurl }}
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+{% endexample %}
+
+With the `.navbar-brand` in the collapsing area.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+    <button class="navbar-toggler hide-lg-up float-left" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav1" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
+    <div class="collapse navbar-toggleable-md" id="respNav1">
+        <a class="navbar-brand" href="#">Responsive navbar</a>
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+{% endexample %}
+
+When using dropdowns, they will display 'inline' with the rest of the navbar menu.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+    <button class="navbar-toggler hide-lg-up float-left" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav2" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
+    <div class="collapse navbar-toggleable-md" id="respNav2">
+        <a class="navbar-brand" href="#">Responsive navbar</a>
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#navDropdown1">Dropdown</a>
+                <ul class="dropdown-menu" id="navDropdown1">
+                    <li><a href="#" class="dropdown-item">Action</a></li>
+                    <li><a href="#" class="dropdown-item">Another action</a></li>
+                    <li><a href="#" class="dropdown-item">Something else here</a></li>
+                    <li class="dropdown-divider"></li>
+                    <li><a href="#" class="dropdown-item">Separated link</a></li>
+                </ul>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
