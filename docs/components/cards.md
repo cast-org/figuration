@@ -314,7 +314,7 @@ Turn an image into a card background and overlay your card's text. Depending on 
 
 ## Inverted Text
 
-Cards include a class for quickly toggling **the text color**. By default, cards use dark text and assume a light background. **Add `.card-inverse` for white text** and specify the `background-color` and `border-color` to go with it.
+By default, cards use dark text and assume a light background. You can reverse that by toggling the `color` of text within, as well as that of the card's subcomponents, with `.card-inverse`. Then, specify a dark `background-color` and `border-color` to go with it.
 
 You can also use `.card-inverse` with the [contextual backgrounds variants](#background-variants).
 
@@ -323,6 +323,19 @@ You can also use `.card-inverse` with the [contextual backgrounds variants](#bac
   <div class="card-block">
     <h3 class="card-title">Special title treatment</h3>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+<div class="card card-inverse text-center" style="background-color: #333; border-color: #333;">
+  <div class="card-header">
+    Inverse card
+  </div>
+  <div class="card-block">
+    <h3 class="card-title">Special title treatment</h3>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  </div>
+  <div class="card-footer">
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
