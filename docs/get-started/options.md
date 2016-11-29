@@ -14,7 +14,7 @@ Customize Figuration with our built-in custom variables file and easily toggle g
 
 ## Customizing Variables
 
-Figuration ships with a `_custom.scss` file for an easy method of overriding the default variables found in `_settings.scss`. Copy and paste relevant lines from `_settings.scss` into the custom file, modify the values, and recompile your Sass to change our default values. **Be sure to remove the `!default` flag from override values.**
+Figuration ships with a `/scss/_custom.scss` file for an easy method of overriding the default variables found in `/scss/_settings.scss`. Copy and paste relevant lines from `/scss/_settings.scss` into the `/scss/_custom.scss` file, modify the values, and recompile your Sass to change our default values. **Be sure to remove the `!default` flag from override values.**
 
 For example, to change out the `background-color` and `color` for the `<body>`, you'd do the following:
 
@@ -44,6 +44,7 @@ You can find and customize these variables for key global options in our `_setti
 | `$enable-print-styles`      | `true` (default) or `false`        | Enables predefined style overrides used when printing.                                           |
 | `$enable-palette`           | `true` (default) or `false`        | Enables the generation of CSS classes for the palette color themes (e.g. `.text-blue-500`, etc.). |
 | `$enable-sizing`            | `true` (default) or `false`        | Enables the generation of CSS classes for component sizes, and also for some utilites. (e.g. `.btn-sm`, `.radius-t-xs`, etc.). |
+| `$enable-bp-smallest`       | `true` or `false` (default)        | Enables the generation of CSS classes for breakpoint sizes that include the smallest breakpoint designator. (e.g. `.col-xs-12`).  Also refer to the [Breakpoint Nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) section. |
 | `$enable-flex-opt`          | `true` (default) or `false`        | Enables the opt-in flexbox model using classes, such as `.row-flex`.                             |
 | `$enable-flex-full`         | `true` or `false` (default)        | Enables the full flexbox model where all supported components will use `display: flex;`.         |
 

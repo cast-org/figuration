@@ -61,7 +61,7 @@
 //    -lg
 @function breakpoint-designator($name, $breakpoints: $grid-breakpoints) {
     $min: map-get($breakpoints, $name);
-    @return if($min != 0, -#{$name}, "");
+    @return if($min != 0 or $enable-bp-smallest, -#{$name}, "");
 }
 
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
