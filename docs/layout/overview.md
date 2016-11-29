@@ -178,7 +178,7 @@ The Sass mixin for the above example look like that shown beneath:
 
 ## Breakpoint Nomenclature
 
-Since Figuration is built as a mobile first framework, we have created our class naming structure to **not** use the smallest breakpoint designation, except for a few certain instances.
+Since Figuration is built as a mobile first framework, by default, we have created our class naming structure to **not** use the smallest breakpoint designation, except for a few certain instances.  However, this is configurable for custom builds by overriding `$enable-bp-smallest` option referenced in the [Global Options]({{ site.baseurl }}/get-started/options/#global-options) settings.
 
 Classes that apply to all breakpoints, from `xs` to `xl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
 
