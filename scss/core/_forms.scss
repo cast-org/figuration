@@ -122,6 +122,7 @@ textarea.form-control {
         .form-control-label-#{$size} {
             padding-top: calc(#{$sz-padding-y} + #{$input-border-width});
             padding-bottom: calc(#{$sz-padding-y} + #{$input-border-width});
+            margin-bottom: 0;
             font-size: $sz-font-size;
         }
     }
