@@ -64,6 +64,7 @@
     @include clearfix;
     padding: $card-padding-y $card-padding-x;
     margin-bottom: 0; // Removes the default margin-bottom of <hN>
+    color: $card-cap-color;
     background-color: $card-cap-bg;
     border-bottom: $card-border-width solid $card-border-color;
 
@@ -75,6 +76,7 @@
 .card-footer {
     @include clearfix;
     padding: $card-padding-y $card-padding-x;
+    color: $card-cap-color;
     background-color: $card-cap-bg;
     border-top: $card-border-width solid $card-border-color;
 
