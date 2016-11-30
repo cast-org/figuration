@@ -178,6 +178,42 @@ $(function() {
         $trigger.CFW_Modal('show');
     });
 
+    QUnit.test('should not close modal when clicking outside of modal-content with "backdrop:static"', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal" data-cfw-modal-backdrop="static">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                $target.trigger('click');
+                assert.ok($target.is(':visible'), 'modal still visible');
+                done();
+            });
+
+        $trigger.CFW_Modal();
+        $trigger.CFW_Modal('show');
+    });
+
+    QUnit.test('should not close modal when clicking outside of modal-content with "backdrop:false"', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal" data-cfw-modal-backdrop="false">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                $target.trigger('click');
+                assert.ok($target.is(':visible'), 'modal still visible');
+                done();
+            });
+
+        $trigger.CFW_Modal();
+        $trigger.CFW_Modal('show');
+    });
+
     QUnit.test('should close modal when clicking outside of modal-content', function(assert) {
         assert.expect(2);
         var done = assert.async();
