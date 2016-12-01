@@ -1,0 +1,95 @@
+// scss-lint:disable ImportantRule
+
+// Some wacky hacky stuff to rework the search result look a bit
+
+.docsearch {
+    width: 11rem;
+    padding-left: 1.5rem;
+}
+.docsearch-wrapper {
+    position: relative;
+    width: 11rem;
+    clear: both;
+
+    &::before {
+        position: absolute;
+        top: 50%;
+        left: .25rem;
+        z-index: 1;
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        margin-top: -.5rem;
+        content: " ";
+        background: url("/assets/img/magnifying-glass.svg") no-repeat center;
+        background-size: 1rem 1rem;
+    }
+}
+
+.algolia-autocomplete {
+    .ds-dropdown-menu {
+
+        @include media-breakpoint-up(sm) {
+            min-width: 450px;
+        }
+
+        .ds-suggestions {
+            margin-top: 6px;
+            border-bottom: 1px solid #858585;
+        }
+        .ds-suggestion.ds-cursor {
+            .algolia-docsearch-suggestion.suggestion-layout-simple,
+            .algolia-docsearch-suggestion:not(.suggestion-layout-simple) .algolia-docsearch-suggestion--content {
+                background-color: rgba(69, 142, 225, .1);
+            }
+        }
+    }
+
+    .algolia-docsearch-suggestion {
+        padding: 0;
+    }
+
+    .algolia-docsearch-suggestion--category-header {
+        padding: 2px 6px;
+        margin-top: 0;
+        font-weight: bold;
+        color: #292929;
+        background-color: #a0cbe3;
+        border-top: 1px solid #858585;
+        border-bottom: 0;
+    }
+    .algolia-docsearch-suggestion--wrapper {
+        display: table !important;
+        padding: 0;
+    }
+    .algolia-docsearch-suggestion--subcategory-column {
+        display: table-cell !important;
+        float: none !important;
+        padding: 6px 10px;
+        color: #383838;
+        background-color: #f0f0f0;
+
+        &::before {
+            background: #858585;
+        }
+    }
+    .algolia-docsearch-suggestion--content {
+        display: table-cell !important;
+        float: none !important;
+        padding: 6px 10px;
+        background-color: #fff;
+
+        &::before {
+            background: #858585;
+        }
+    }
+    .algolia-docsearch-suggestion--highlight {
+        background-color: rgba(143,187,237,.2);
+    }
+    .algolia-docsearch-suggestion--title {
+        margin-bottom: 0;
+    }
+    .algolia-docsearch-footer {
+        margin-top: 8px;
+    }
+}
