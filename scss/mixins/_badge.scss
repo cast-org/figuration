@@ -1,7 +1,7 @@
 // Badges
 @mixin badge-variant($color) {
     background-color: $color;
-    border: $color solid $badge-border-width;
+    border-color: $color;
 
     &[href] {
         @include hover-focus {
@@ -13,8 +13,8 @@
 
 @mixin badge-outline-variant($color) {
     color: $color;
-    background-color: transparent;
-    border: $color solid $badge-border-width;
+    background-color: $badge-outline-background;
+    border-color: $color;
 
     &[href] {
         @include hover-focus {
