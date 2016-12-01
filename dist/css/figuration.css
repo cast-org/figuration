@@ -6260,6 +6260,7 @@ if $enable-flex-full .nav-inline {
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
+  border: 1px solid transparent;
   border-radius: 0.25em;
 }
 
@@ -6290,7 +6291,7 @@ a.badge:focus, a.badge:hover {
 
 .badge {
   background-color: #858585;
-  border: #858585 solid 1px;
+  border-color: #858585;
 }
 
 .badge[href]:focus, .badge[href]:hover {
@@ -6300,7 +6301,7 @@ a.badge:focus, a.badge:hover {
 
 .badge-primary {
   background-color: #1242ba;
-  border: #1242ba solid 1px;
+  border-color: #1242ba;
 }
 
 .badge-primary[href]:focus, .badge-primary[href]:hover {
@@ -6310,7 +6311,7 @@ a.badge:focus, a.badge:hover {
 
 .badge-secondary {
   background-color: #757575;
-  border: #757575 solid 1px;
+  border-color: #757575;
 }
 
 .badge-secondary[href]:focus, .badge-secondary[href]:hover {
@@ -6320,7 +6321,7 @@ a.badge:focus, a.badge:hover {
 
 .badge-info {
   background-color: #117cba;
-  border: #117cba solid 1px;
+  border-color: #117cba;
 }
 
 .badge-info[href]:focus, .badge-info[href]:hover {
@@ -6330,7 +6331,7 @@ a.badge:focus, a.badge:hover {
 
 .badge-success {
   background-color: #108918;
-  border: #108918 solid 1px;
+  border-color: #108918;
 }
 
 .badge-success[href]:focus, .badge-success[href]:hover {
@@ -6340,7 +6341,7 @@ a.badge:focus, a.badge:hover {
 
 .badge-warning {
   background-color: #c98800;
-  border: #c98800 solid 1px;
+  border-color: #c98800;
 }
 
 .badge-warning[href]:focus, .badge-warning[href]:hover {
@@ -6350,7 +6351,7 @@ a.badge:focus, a.badge:hover {
 
 .badge-danger {
   background-color: #c81d0e;
-  border: #c81d0e solid 1px;
+  border-color: #c81d0e;
 }
 
 .badge-danger[href]:focus, .badge-danger[href]:hover {
@@ -6361,7 +6362,7 @@ a.badge:focus, a.badge:hover {
 .badge-outline {
   color: #858585;
   background-color: transparent;
-  border: #858585 solid 1px;
+  border-color: #858585;
 }
 
 .badge-outline[href]:focus, .badge-outline[href]:hover {
@@ -6373,7 +6374,7 @@ a.badge:focus, a.badge:hover {
 .badge-outline-primary {
   color: #1242ba;
   background-color: transparent;
-  border: #1242ba solid 1px;
+  border-color: #1242ba;
 }
 
 .badge-outline-primary[href]:focus, .badge-outline-primary[href]:hover {
@@ -6385,7 +6386,7 @@ a.badge:focus, a.badge:hover {
 .badge-outline-secondary {
   color: #757575;
   background-color: transparent;
-  border: #757575 solid 1px;
+  border-color: #757575;
 }
 
 .badge-outline-secondary[href]:focus, .badge-outline-secondary[href]:hover {
@@ -6397,7 +6398,7 @@ a.badge:focus, a.badge:hover {
 .badge-outline-info {
   color: #117cba;
   background-color: transparent;
-  border: #117cba solid 1px;
+  border-color: #117cba;
 }
 
 .badge-outline-info[href]:focus, .badge-outline-info[href]:hover {
@@ -6409,7 +6410,7 @@ a.badge:focus, a.badge:hover {
 .badge-outline-success {
   color: #108918;
   background-color: transparent;
-  border: #108918 solid 1px;
+  border-color: #108918;
 }
 
 .badge-outline-success[href]:focus, .badge-outline-success[href]:hover {
@@ -6421,7 +6422,7 @@ a.badge:focus, a.badge:hover {
 .badge-outline-warning {
   color: #c98800;
   background-color: transparent;
-  border: #c98800 solid 1px;
+  border-color: #c98800;
 }
 
 .badge-outline-warning[href]:focus, .badge-outline-warning[href]:hover {
@@ -6433,7 +6434,7 @@ a.badge:focus, a.badge:hover {
 .badge-outline-danger {
   color: #c81d0e;
   background-color: transparent;
-  border: #c81d0e solid 1px;
+  border-color: #c81d0e;
 }
 
 .badge-outline-danger[href]:focus, .badge-outline-danger[href]:hover {
