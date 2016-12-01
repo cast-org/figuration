@@ -755,7 +755,8 @@ $badge-pill-padding-x:      .5em !default;
 // customizing padding or font-size on badges.
 $badge-pill-border-radius:  10rem !default;
 
-$badge-outline-link-hover-color:  $white !default;
+$badge-outline-background:       transparent !default;
+$badge-outline-link-hover-color: $white !default;
 
 
 // Alerts
