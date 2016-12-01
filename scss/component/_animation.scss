@@ -31,11 +31,7 @@ tbody {
     height: 0;
     overflow: hidden;
 
-    @if $enable-transitions {
-        transition-timing-function: ease;
-        transition-duration: .35s;
-        transition-property: height;
-    }
+    @include transition(height .35s ease);
 
     // Horizontal collapse variant
     &.width {
