@@ -12,14 +12,9 @@
     border-color: $border;
     @include box-shadow($btn-box-shadow);
 
-    @include hover {
-        color: $color;
-        background-color: $active-background;
-        border-color: $active-border;
-    }
-
     &:focus,
-    &.focus {
+    &.focus,
+    &:hover {
         color: $color;
         background-color: $active-background;
         border-color: $active-border;
@@ -32,9 +27,9 @@
         background-color: $active-background;
         border-color: $active-border;
 
-        &:hover,
         &:focus,
-        &.focus {
+        &.focus,
+        &:hover {
             color: $color;
             background-color: darken($background, 17%);
             border-color: darken($border, 25%);
@@ -44,11 +39,8 @@
     &.disabled,
     &:disabled {
         &:focus,
-        &.focus {
-            background-color: $background;
-            border-color: $border;
-        }
-        @include hover {
+        &.focus,
+        &:hover {
             background-color: $background;
             border-color: $border;
         }
@@ -58,16 +50,12 @@
 @mixin button-outline-variant($color, $border, $hover-color: $white) {
     color: $color;
     background-color: transparent;
+    background-image: none;
     border-color: $border;
 
-    @include hover {
-        color: $hover-color;
-        background-color: $color;
-        border-color: $border;
-    }
-
     &:focus,
-    &.focus {
+    &.focus,
+    &:hover {
         color: $hover-color;
         background-color: $color;
         border-color: $border;
@@ -80,9 +68,9 @@
         background-color: $color;
         border-color: $border;
 
-        &:hover,
         &:focus,
-        &.focus {
+        &.focus,
+        &:hover {
             color: $hover-color;
             background-color: darken($color, 10%);
             border-color: darken($border, 10%);
@@ -92,12 +80,8 @@
     &.disabled,
     &:disabled {
         &:focus,
-        &.focus {
-            color: $color;
-            background-color: transparent;
-            border-color: $border;
-        }
-        @include hover {
+        &.focus,
+        &:hover {
             color: $color;
             background-color: transparent;
             border-color: $border;

@@ -13,7 +13,6 @@
     user-select: none;
     border: $input-border-width solid transparent;
     @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
-    // @include transition(all .2s ease-in-out);
 
     &,
     &:active,
@@ -24,10 +23,9 @@
         }
     }
 
-    @include hover-focus {
-        text-decoration: none;
-    }
-    &.focus {
+    &:focus,
+    &.focus,
+    &:hover {
         text-decoration: none;
     }
 
@@ -101,9 +99,9 @@ fieldset[disabled] a.btn {
         color: $link-hover-color;
         @include box-shadow(none);
 
-        &:hover,
         &:focus,
-        &.focus {
+        &.focus,
+        &:hover {
             color: darken($link-hover-color, 25%);
         }
     }
