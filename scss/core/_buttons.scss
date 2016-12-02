@@ -33,8 +33,13 @@
 
     &:active,
     &.active {
+        // Remove the gradient for the pressed/active state
         background-image: none;
         outline: 0;
+        @include box-shadow($btn-active-box-shadow);
+    }
+
+    .open > &.dropdown-toggle {
         @include box-shadow($btn-active-box-shadow);
     }
 
@@ -69,9 +74,6 @@ fieldset[disabled] a.btn {
 
 
 // Outline variant - remove all backgrounds
-//.btn-outline {
-//    @include button-outline-variant($btn-default-outline-color, $btn-default-border, true);
-//}
 @each $theme, $colors in $context-themes {
     $color:     map-get($colors, "control-bg");
     $border:    map-get($colors, "control-border");
@@ -86,6 +88,7 @@ fieldset[disabled] a.btn {
 // Make a button look and behave like a link
 .btn-link {
     @include button-variant($link-color, transparent, transparent);
+    @include box-shadow(none);
 
     @include hover-focus {
         color: $link-hover-color;
@@ -96,6 +99,7 @@ fieldset[disabled] a.btn {
     &.active,
     .open > &.dropdown-toggle {
         color: $link-hover-color;
+        @include box-shadow(none);
 
         &:hover,
         &:focus,
