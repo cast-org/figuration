@@ -22,18 +22,12 @@
 
 .navbar-dark .btn-toggler {
   color: #f0f0f0;
-  background-image: none;
   background-color: transparent;
+  background-image: none;
   border-color: #f0f0f0;
 }
 
-.navbar-dark .btn-toggler:hover {
-  color: #474747;
-  background-color: #f0f0f0;
-  border-color: #f0f0f0;
-}
-
-.navbar-dark .btn-toggler:focus, .navbar-dark .btn-toggler.focus {
+.navbar-dark .btn-toggler:focus, .navbar-dark .btn-toggler.focus, .navbar-dark .btn-toggler:hover {
   color: #474747;
   background-color: #f0f0f0;
   border-color: #f0f0f0;
@@ -46,22 +40,16 @@
   border-color: #f0f0f0;
 }
 
-.navbar-dark .btn-toggler:active:hover, .navbar-dark .btn-toggler:active:focus, .navbar-dark .btn-toggler:active.focus, .navbar-dark .btn-toggler.active:hover, .navbar-dark .btn-toggler.active:focus, .navbar-dark .btn-toggler.active.focus,
-.open > .navbar-dark .btn-toggler.dropdown-toggle:hover,
+.navbar-dark .btn-toggler:active:focus, .navbar-dark .btn-toggler:active.focus, .navbar-dark .btn-toggler:active:hover, .navbar-dark .btn-toggler.active:focus, .navbar-dark .btn-toggler.active.focus, .navbar-dark .btn-toggler.active:hover,
 .open > .navbar-dark .btn-toggler.dropdown-toggle:focus,
-.open > .navbar-dark .btn-toggler.dropdown-toggle.focus {
+.open > .navbar-dark .btn-toggler.dropdown-toggle.focus,
+.open > .navbar-dark .btn-toggler.dropdown-toggle:hover {
   color: #474747;
   background-color: #d7d7d7;
   border-color: #d7d7d7;
 }
 
-.navbar-dark .btn-toggler.disabled:focus, .navbar-dark .btn-toggler.disabled.focus, .navbar-dark .btn-toggler:disabled:focus, .navbar-dark .btn-toggler:disabled.focus {
-  color: #f0f0f0;
-  background-color: transparent;
-  border-color: #f0f0f0;
-}
-
-.navbar-dark .btn-toggler.disabled:hover, .navbar-dark .btn-toggler:disabled:hover {
+.navbar-dark .btn-toggler.disabled:focus, .navbar-dark .btn-toggler.disabled.focus, .navbar-dark .btn-toggler.disabled:hover, .navbar-dark .btn-toggler:disabled:focus, .navbar-dark .btn-toggler:disabled.focus, .navbar-dark .btn-toggler:disabled:hover {
   color: #f0f0f0;
   background-color: transparent;
   border-color: #f0f0f0;
