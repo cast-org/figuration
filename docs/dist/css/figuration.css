@@ -252,7 +252,10 @@ template {
   *,
   *::before,
   *::after,
-  *::first-letter,
+  p::first-letter,
+  div::first-letter,
+  blockquote::first-letter,
+  li::first-letter,
   p::first-line,
   div::first-line,
   blockquote::first-line,
@@ -1556,12 +1559,9 @@ input[type="month"].form-control {
   display: inline-block;
   min-height: 1.5rem;
   padding-left: 1.5rem;
+  margin-right: 1rem;
   margin-bottom: 0;
   cursor: pointer;
-}
-
-.custom-control + .custom-control {
-  margin-left: 1rem;
 }
 
 .custom-control-input {
