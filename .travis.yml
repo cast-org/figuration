@@ -1,14 +1,14 @@
-﻿#sudo: required
+﻿sudo: false
 dist: trusty
 language: node_js
 
 git:
-    depth: 10
+    depth: 3
 
-# For now, only build 'push' items on master branch
+# For now, only build 'push' items on master or development branches
 # http://stackoverflow.com/questions/31882306/
 # Most contributions should come through pull requests
-# Helps limit overloading on Sauce tests
+# Should help limit overloading on Sauce tests
 branches:
     only:
         - master
@@ -19,14 +19,10 @@ node_js:
     - "6"
 
 before_install:
-    # Remove ./node_modules/.bin from PATH so node-which doesn't replace Unix which and cause RVM to barf. See https://github.com/travis-ci/travis-ci/issues/5092
-    - export PATH=$(python -c 'from sys import argv;from collections import OrderedDict as od;print(":".join(od((p,None) for p in argv[1].split(":") if p.startswith("/")).keys()))' "$PATH")
-    - rvm install 2.2
-    - rvm use 2.2 --fuzzy
-    - npm install npm@3
+    - if [[ `npm -v` != 3* ]]; then npm install -g npm@3; fi
 
 install:
-    - bundle install --jobs=3
+    - bundle install --jobs=3 --retry=3
     - npm install
 
 cache:
@@ -35,13 +31,10 @@ cache:
         - vendor/bundle
 
 env:
-    global:
-        - NPM_CONFIG_PROGRESS="false"
     matrix:
         - TEST_SAUCE="false"
 
 matrix:
-    fast_finish: true
     exclude:
         - node_js: "6"
           env: TEST_SAUCE="false"
