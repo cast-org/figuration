@@ -25,6 +25,7 @@ gems:
 # Custom vars
 current_version:  1.3.1
 repo:             https://github.com/cast-org/figuration
+changelog:        https://github.com/cast-org/figuration/releases/tag/v1.3.1
 
 # Downloads
 download:
