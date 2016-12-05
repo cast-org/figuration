@@ -1,4 +1,4 @@
-﻿sudo: false
+﻿#sudo: false
 dist: trusty
 language: node_js
 
@@ -19,10 +19,12 @@ node_js:
     - "6"
 
 before_install:
+    - rvm install 2.2
+    - rvm use 2.2 --fuzzy
     - if [[ `npm -v` != 3* ]]; then npm install -g npm@3; fi
 
 install:
-    - bundle install --jobs=3 --retry=3
+    - bundle install --jobs=3
     - npm install
 
 cache:
@@ -31,10 +33,13 @@ cache:
         - vendor/bundle
 
 env:
+    global:
+        - NPM_CONFIG_PROGRESS="false"
     matrix:
         - TEST_SAUCE="false"
 
 matrix:
+    fast_finish: true
     exclude:
         - node_js: "6"
           env: TEST_SAUCE="false"
