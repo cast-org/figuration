@@ -47,6 +47,6 @@
 
     var nonEmulated = actualNonEmulatedIEMajorVersion();
     if (emulated !== nonEmulated) {
-        window.alert('WARNING: You appear to be using IE' + nonEmulated + ' in IE' + emulated + ' emulation mode.\nIE emulation modes can behave significantly differently from ACTUAL older versions of IE.\nPLEASE DON\'T FILE CAST FRAMEWOEK BUGS based on testing in IE emulation modes!');
+        window.alert('WARNING: You appear to be using IE' + nonEmulated + ' in IE' + emulated + ' emulation mode.\nIE emulation modes can behave significantly differently from ACTUAL older versions of IE.\nPLEASE DON\'T FILE CAST FIGURATION BUGS based on testing in IE emulation modes!');
     }
 })();
