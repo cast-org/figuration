@@ -1690,24 +1690,32 @@ input[type="month"].form-control {
 .custom-select-xs {
   height: calc(1.3125rem + 2px);
   padding: 0.09375rem 0.1875rem;
+  padding-right: 1.375rem;
+  padding-right: 0.75rem \9;
   font-size: 0.75rem;
 }
 
 .custom-select-sm {
   height: calc(1.59375rem + 2px);
   padding: 0.140625rem 0.25rem;
+  padding-right: 1.5rem;
+  padding-right: 0.75rem \9;
   font-size: 0.875rem;
 }
 
 .custom-select-lg {
   height: calc(2.8125rem + 2px);
   padding: 0.46875rem 0.625rem;
+  padding-right: 2.25rem;
+  padding-right: 0.75rem \9;
   font-size: 1.25rem;
 }
 
 .custom-select-xl {
   height: calc(3.375rem + 2px);
   padding: 0.5625rem 0.75rem;
+  padding-right: 2.5rem;
+  padding-right: 0.75rem \9;
   font-size: 1.5rem;
 }
 
