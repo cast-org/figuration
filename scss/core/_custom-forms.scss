@@ -127,11 +127,11 @@
     display: block;
     width: 100%;
     height: $select-height;
-    padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
-    padding-right: $custom-select-padding-x \9;
+    padding: $input-padding-y (($input-padding-x / 2) + $custom-select-indicator-padding) $input-padding-y ($input-padding-x / 2);
+    padding-right: ($input-padding-x / 2) \9;
     color: $custom-select-color;
     vertical-align: middle;
-    background: $custom-select-bg $custom-select-indicator no-repeat right $custom-select-padding-x center;
+    background: $custom-select-bg $custom-select-indicator no-repeat right ($input-padding-x / 2) center;
     background-image: none \9;
     background-size: $custom-select-bg-size;
     border: $custom-select-border-width solid $custom-select-border-color;
@@ -180,8 +180,9 @@
             height: $sz-select-height;
             padding: $sz-padding-y ($sz-padding-x / 2);
             padding-right: ($sz-padding-x + $custom-select-indicator-padding);
-            padding-right: $custom-select-padding-x \9;
+            padding-right: ($sz-padding-x / 2) \9;
             font-size: $sz-font-size;
+            background-position: right ($sz-padding-x / 2) center;
         }
         //scss-lint:enable DuplicateProperty
     }
@@ -193,7 +194,7 @@
     position: relative;
     display: inline-block;
     max-width: 100%;
-    height: $custom-file-height;
+    height: $select-height;
     cursor: pointer;
 }
 
@@ -215,9 +216,9 @@
     right: 0;
     left: 0;
     z-index: 5;
-    height: $custom-file-height;
-    padding: $custom-file-padding-x $custom-file-padding-y;
-    line-height: $custom-file-line-height;
+    height: $select-height;
+    padding: $input-padding-y ($input-padding-x / 2);
+    line-height: $input-line-height;
     color: $custom-file-color;
     user-select: none;
     background-color: $custom-file-bg;
@@ -238,9 +239,9 @@
         bottom: -$custom-file-border-width;
         z-index: 6;
         display: block;
-        height: $custom-file-height;
-        padding: $custom-file-padding-x $custom-file-padding-y;
-        line-height: $custom-file-line-height;
+        height: $select-height;
+        padding: $input-padding-y $input-padding-x;
+        line-height: $input-line-height;
         color: $custom-file-button-color;
         background-color: $custom-file-button-bg;
         border: $custom-file-border-width solid $custom-file-border-color;
