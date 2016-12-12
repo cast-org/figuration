@@ -21,7 +21,6 @@
     &.top {
         margin-top: -$popover-arrow-width;
 
-        > .arrow,
         .popover-arrow {
             bottom: -$popover-arrow-outer-width;
             left: 50%;
@@ -40,7 +39,6 @@
     &.right {
         margin-left: $popover-arrow-width;
 
-        > .arrow,
         .popover-arrow {
             top: 50%;
             left: -$popover-arrow-outer-width;
@@ -59,7 +57,6 @@
     &.bottom {
         margin-top: $popover-arrow-width;
 
-        > .arrow,
         .popover-arrow {
             top: -$popover-arrow-outer-width;
             left: 50%;
@@ -78,7 +75,6 @@
     &.left {
         margin-left: -$popover-arrow-width;
 
-        > .arrow,
         .popover-arrow {
             top: 50%;
             right: -$popover-arrow-outer-width;
@@ -116,7 +112,6 @@
 
 // Arrows
 // .popover-arrow is outer, .popover-arrow::after is inner
-.popover > .arrow,
 .popover-arrow {
     &,
     &::after {
@@ -128,7 +123,6 @@
         border-style: solid;
     }
 }
-.popover > .arrow,
 .popover-arrow {
     border-width: $popover-arrow-outer-width;
 
@@ -149,7 +143,6 @@
 .popover.draggable {
     margin: 0;
 
-    > .arrow,
     .popover-arrow {
         display: none;
     }
