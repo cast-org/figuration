@@ -1054,17 +1054,17 @@ select.form-control.form-control-sm:not([size]):not([multiple]), .input-group-sm
 select.form-control.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.form-control:not([size]):not([multiple]),
 .input-group-lg > .input-group-btn > select.form-control.btn:not([size]):not([multiple]),
 .input-group-lg select.form-control.form-control:not([size]):not([multiple]) {
-  height: calc(2.8125rem + 2px);
-  padding-top: 0.46875rem;
-  padding-bottom: 0.46875rem;
+  height: calc(2.40625rem + 2px);
+  padding-top: 0.359375rem;
+  padding-bottom: 0.359375rem;
 }
 
 select.form-control.form-control-xl:not([size]):not([multiple]), .input-group-xl > select.form-control:not([size]):not([multiple]),
 .input-group-xl > .input-group-btn > select.form-control.btn:not([size]):not([multiple]),
 .input-group-xl select.form-control.form-control:not([size]):not([multiple]) {
-  height: calc(3.375rem + 2px);
-  padding-top: 0.5625rem;
-  padding-bottom: 0.5625rem;
+  height: calc(2.8125rem + 2px);
+  padding-top: 0.46875rem;
+  padding-bottom: 0.46875rem;
 }
 
 select.form-control:focus::-ms-value {
@@ -1103,17 +1103,17 @@ textarea.form-control {
 }
 
 .form-control-label-lg {
+  padding-top: calc(0.359375rem + 1px);
+  padding-bottom: calc(0.359375rem + 1px);
+  margin-bottom: 0;
+  font-size: 1.125rem;
+}
+
+.form-control-label-xl {
   padding-top: calc(0.46875rem + 1px);
   padding-bottom: calc(0.46875rem + 1px);
   margin-bottom: 0;
   font-size: 1.25rem;
-}
-
-.form-control-label-xl {
-  padding-top: calc(0.5625rem + 1px);
-  padding-bottom: calc(0.5625rem + 1px);
-  margin-bottom: 0;
-  font-size: 1.5rem;
 }
 
 .form-control-legend {
@@ -1221,7 +1221,7 @@ input[type="month"].form-control-lg,
 .input-group-lg > .input-group-btn > input[type="month"].btn,
 .input-group-lg
 input[type="month"].form-control {
-  line-height: 2.8125rem;
+  line-height: 2.40625rem;
 }
 
 _::-webkit-full-page-media.form-control-xl, .input-group-xl > _.form-control::-webkit-full-page-media,
@@ -1252,7 +1252,7 @@ input[type="month"].form-control-xl,
 .input-group-xl > .input-group-btn > input[type="month"].btn,
 .input-group-xl
 input[type="month"].form-control {
-  line-height: 3.375rem;
+  line-height: 2.8125rem;
 }
 
 .form-control-static {
@@ -1325,9 +1325,9 @@ input[type="month"].form-control {
 .form-control-lg, .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
-  height: calc(2.8125rem + 2px);
-  padding: 0.46875rem 0.625rem;
-  font-size: 1.25rem;
+  height: calc(2.40625rem + 2px);
+  padding: 0.359375rem 0.5625rem;
+  font-size: 1.125rem;
   border-radius: 0.3125rem;
 }
 
@@ -1341,9 +1341,9 @@ input[type="month"].form-control {
 .form-control-xl, .input-group-xl > .form-control,
 .input-group-xl > .input-group-addon,
 .input-group-xl > .input-group-btn > .btn {
-  height: calc(3.375rem + 2px);
-  padding: 0.5625rem 0.75rem;
-  font-size: 1.5rem;
+  height: calc(2.8125rem + 2px);
+  padding: 0.46875rem 0.625rem;
+  font-size: 1.25rem;
   border-radius: 0.3125rem;
 }
 
@@ -1706,21 +1706,21 @@ input[type="month"].form-control {
 }
 
 .custom-select-lg {
+  height: calc(2.40625rem + 2px);
+  padding: 0.359375rem 0.5625rem;
+  padding-right: 1.875rem;
+  padding-right: 0.5625rem \9;
+  font-size: 1.125rem;
+  background-position: right 0.5625rem center;
+}
+
+.custom-select-xl {
   height: calc(2.8125rem + 2px);
   padding: 0.46875rem 0.625rem;
   padding-right: 2rem;
   padding-right: 0.625rem \9;
   font-size: 1.25rem;
   background-position: right 0.625rem center;
-}
-
-.custom-select-xl {
-  height: calc(3.375rem + 2px);
-  padding: 0.5625rem 0.75rem;
-  padding-right: 2.25rem;
-  padding-right: 0.75rem \9;
-  font-size: 1.5rem;
-  background-position: right 0.75rem center;
 }
 
 .custom-file {
@@ -2358,14 +2358,14 @@ fieldset[disabled] a.btn {
 }
 
 .btn-lg, .btn-group-lg > .btn {
-  padding: 0.625rem 1.25rem;
-  font-size: 1.25rem;
+  padding: 0.5rem 1.125rem;
+  font-size: 1.125rem;
   border-radius: 0.3125rem;
 }
 
 .btn-xl, .btn-group-xl > .btn {
-  padding: 0.75rem 1.5rem;
-  font-size: 1.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 1.25rem;
   border-radius: 0.3125rem;
 }
 
@@ -4666,13 +4666,13 @@ button.list-group-item-danger.active:hover {
 }
 
 .btn-lg > .dropdown-toggle-split, .btn-group-lg > .btn > .dropdown-toggle-split {
-  padding-right: 0.9375rem;
-  padding-left: 0.9375rem;
+  padding-right: 0.84375rem;
+  padding-left: 0.84375rem;
 }
 
 .btn-xl > .dropdown-toggle-split, .btn-group-xl > .btn > .dropdown-toggle-split {
-  padding-right: 1.125rem;
-  padding-left: 1.125rem;
+  padding-right: 0.9375rem;
+  padding-left: 0.9375rem;
 }
 
 .btn .caret {
@@ -4868,16 +4868,16 @@ button.list-group-item-danger.active:hover {
 .input-group-addon.form-control-lg,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .input-group-addon.btn {
-  padding: 0.46875rem 1.25rem;
-  font-size: 1.25rem;
+  padding: 0.359375rem 1.125rem;
+  font-size: 1.125rem;
   border-radius: 0.3125rem;
 }
 
 .input-group-addon.form-control-xl,
 .input-group-xl > .input-group-addon,
 .input-group-xl > .input-group-btn > .input-group-addon.btn {
-  padding: 0.5625rem 1.5rem;
-  font-size: 1.5rem;
+  padding: 0.46875rem 1.25rem;
+  font-size: 1.25rem;
   border-radius: 0.3125rem;
 }
 
@@ -5091,8 +5091,8 @@ button.list-group-item-danger.active:hover {
 }
 
 .pagination-lg .page-link {
-  padding: 0.625rem 1.25rem;
-  font-size: 1.25rem;
+  padding: 0.5rem 1.125rem;
+  font-size: 1.125rem;
 }
 
 .pagination-lg .page-item:first-child .page-link {
@@ -5106,8 +5106,8 @@ button.list-group-item-danger.active:hover {
 }
 
 .pagination-xl .page-link {
-  padding: 0.75rem 1.5rem;
-  font-size: 1.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 1.25rem;
 }
 
 .pagination-xl .page-item:first-child .page-link {
@@ -7195,7 +7195,6 @@ a.badge:focus, a.badge:hover {
   margin-top: -10px;
 }
 
-.popover.top > .arrow,
 .popover.top .popover-arrow {
   bottom: -11px;
   left: 50%;
@@ -7204,7 +7203,6 @@ a.badge:focus, a.badge:hover {
   border-bottom-width: 0;
 }
 
-.popover.top > .arrow::after,
 .popover.top .popover-arrow::after {
   bottom: 1px;
   margin-left: -10px;
@@ -7217,7 +7215,6 @@ a.badge:focus, a.badge:hover {
   margin-left: 10px;
 }
 
-.popover.right > .arrow,
 .popover.right .popover-arrow {
   top: 50%;
   left: -11px;
@@ -7226,7 +7223,6 @@ a.badge:focus, a.badge:hover {
   border-left-width: 0;
 }
 
-.popover.right > .arrow::after,
 .popover.right .popover-arrow::after {
   bottom: -10px;
   left: 1px;
@@ -7239,7 +7235,6 @@ a.badge:focus, a.badge:hover {
   margin-top: 10px;
 }
 
-.popover.bottom > .arrow,
 .popover.bottom .popover-arrow {
   top: -11px;
   left: 50%;
@@ -7248,7 +7243,6 @@ a.badge:focus, a.badge:hover {
   border-bottom-color: rgba(0, 0, 0, 0.25);
 }
 
-.popover.bottom > .arrow::after,
 .popover.bottom .popover-arrow::after {
   top: 1px;
   margin-left: -10px;
@@ -7261,7 +7255,6 @@ a.badge:focus, a.badge:hover {
   margin-left: -10px;
 }
 
-.popover.left > .arrow,
 .popover.left .popover-arrow {
   top: 50%;
   right: -11px;
@@ -7270,7 +7263,6 @@ a.badge:focus, a.badge:hover {
   border-left-color: rgba(0, 0, 0, 0.25);
 }
 
-.popover.left > .arrow::after,
 .popover.left .popover-arrow::after {
   right: 1px;
   bottom: -10px;
@@ -7297,9 +7289,7 @@ a.badge:focus, a.badge:hover {
   padding: 0.5rem 0.75rem;
 }
 
-.popover > .arrow, .popover > .arrow::after,
-.popover-arrow,
-.popover-arrow::after {
+.popover-arrow, .popover-arrow::after {
   position: absolute;
   display: block;
   width: 0;
@@ -7308,12 +7298,10 @@ a.badge:focus, a.badge:hover {
   border-style: solid;
 }
 
-.popover > .arrow,
 .popover-arrow {
   border-width: 11px;
 }
 
-.popover > .arrow::after,
 .popover-arrow::after {
   content: "";
   border-width: 10px;
@@ -7329,7 +7317,6 @@ a.badge:focus, a.badge:hover {
   margin: 0;
 }
 
-.popover.draggable > .arrow,
 .popover.draggable .popover-arrow {
   display: none;
 }
