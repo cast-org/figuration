@@ -23,23 +23,23 @@ gems:
   - jekyll-sitemap
 
 # Custom vars
-current_version:  1.3.1
+current_version:  2.0.0
 repo:             https://github.com/cast-org/figuration
-changelog:        https://github.com/cast-org/figuration/releases/tag/v1.3.1
+changelog:        https://github.com/cast-org/figuration/releases/tag/v2.0.0
 
 # Downloads
 download:
-  source:         https://github.com/cast-org/figuration/archive/v1.3.1.zip
-  dist:           https://github.com/cast-org/figuration/releases/download/v1.3.1/figuration-1.3.1-dist.zip
+  source:         https://github.com/cast-org/figuration/archive/v2.0.0.zip
+  dist:           https://github.com/cast-org/figuration/releases/download/v2.0.0/figuration-2.0.0-dist.zip
 
 
 # CDN settings
 # See https://www.srihash.org for info on how to generate the hashes
 cdn:
-  css:          https://cdn.jsdelivr.net/figuration/1.3.1/css/figuration.min.css
-  css_hash:     "sha384-jGVJM2f0Zq8UhosAIjZaco0wpYiPPPZ7FcUXmZUjhTLxlLtKS9BvPaGh+LFnpr2z"
-  js:           https://cdn.jsdelivr.net/figuration/1.3.1/js/figuration.min.js
-  js_hash:      "sha384-rZeLN+g9btcV0KAPEvhS0f2ltBtQ81IuEUrc7yA6kQYQK6Kx1n478ycS3qoDbOOG"
+  css:          https://cdn.jsdelivr.net/figuration/2.0.0/css/figuration.min.css
+  css_hash:     "sha384-4NEYqGqlkFmjCXappSYTanA6sCbHfuAbTw0y9/n3iEx6JVK5TzYEVyQWroUSR3vo"
+  js:           https://cdn.jsdelivr.net/figuration/2.0.0/js/figuration.min.js
+  js_hash:      "sha384-CYqCLcTJYBDbNhvb4Y5FSqooQB6ZZZUBboJ2YkdFnNrf5BLWOy1WsKdaiSpOAZf/"
   jquery:       https://code.jquery.com/jquery-3.1.1.min.js
   jquery_hash:  "sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7"
   fontawe:      https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css
