@@ -12,7 +12,6 @@ git:
 branches:
     only:
         - master
-        - v2-dev
 
 node_js:
     - "4"
