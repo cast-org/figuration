@@ -22,18 +22,12 @@
 
 .navbar-dark .btn-toggler {
   color: #f0f0f0;
-  background-image: none;
   background-color: transparent;
+  background-image: none;
   border-color: #f0f0f0;
 }
 
-.navbar-dark .btn-toggler:hover {
-  color: #474747;
-  background-color: #f0f0f0;
-  border-color: #f0f0f0;
-}
-
-.navbar-dark .btn-toggler:focus, .navbar-dark .btn-toggler.focus {
+.navbar-dark .btn-toggler:focus, .navbar-dark .btn-toggler.focus, .navbar-dark .btn-toggler:hover {
   color: #474747;
   background-color: #f0f0f0;
   border-color: #f0f0f0;
@@ -46,22 +40,16 @@
   border-color: #f0f0f0;
 }
 
-.navbar-dark .btn-toggler:active:hover, .navbar-dark .btn-toggler:active:focus, .navbar-dark .btn-toggler:active.focus, .navbar-dark .btn-toggler.active:hover, .navbar-dark .btn-toggler.active:focus, .navbar-dark .btn-toggler.active.focus,
-.open > .navbar-dark .btn-toggler.dropdown-toggle:hover,
+.navbar-dark .btn-toggler:active:focus, .navbar-dark .btn-toggler:active.focus, .navbar-dark .btn-toggler:active:hover, .navbar-dark .btn-toggler.active:focus, .navbar-dark .btn-toggler.active.focus, .navbar-dark .btn-toggler.active:hover,
 .open > .navbar-dark .btn-toggler.dropdown-toggle:focus,
-.open > .navbar-dark .btn-toggler.dropdown-toggle.focus {
+.open > .navbar-dark .btn-toggler.dropdown-toggle.focus,
+.open > .navbar-dark .btn-toggler.dropdown-toggle:hover {
   color: #474747;
   background-color: #d7d7d7;
   border-color: #d7d7d7;
 }
 
-.navbar-dark .btn-toggler.disabled:focus, .navbar-dark .btn-toggler.disabled.focus, .navbar-dark .btn-toggler:disabled:focus, .navbar-dark .btn-toggler:disabled.focus {
-  color: #f0f0f0;
-  background-color: transparent;
-  border-color: #f0f0f0;
-}
-
-.navbar-dark .btn-toggler.disabled:hover, .navbar-dark .btn-toggler:disabled:hover {
+.navbar-dark .btn-toggler.disabled:focus, .navbar-dark .btn-toggler.disabled.focus, .navbar-dark .btn-toggler.disabled:hover, .navbar-dark .btn-toggler:disabled:focus, .navbar-dark .btn-toggler:disabled.focus, .navbar-dark .btn-toggler:disabled:hover {
   color: #f0f0f0;
   background-color: transparent;
   border-color: #f0f0f0;
@@ -563,6 +551,102 @@ h4 > code {
   padding: .5rem 1rem;
 }
 
+.docsearch {
+  width: 11rem;
+  padding-left: 1.5rem;
+}
+
+.docsearch-wrapper {
+  position: relative;
+  width: 11rem;
+  clear: both;
+}
+
+.docsearch-wrapper::before {
+  position: absolute;
+  top: 50%;
+  left: .25rem;
+  z-index: 1;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  margin-top: -.5rem;
+  content: " ";
+  background: url("/assets/img/magnifying-glass.svg") no-repeat center;
+  -webkit-background-size: 1rem 1rem;
+          background-size: 1rem 1rem;
+}
+
+@media (min-width: 36em) {
+  .algolia-autocomplete .ds-dropdown-menu {
+    min-width: 450px;
+  }
+}
+
+.algolia-autocomplete .ds-dropdown-menu .ds-suggestions {
+  margin-top: 6px;
+  border-bottom: 1px solid #858585;
+}
+
+.algolia-autocomplete .ds-dropdown-menu .ds-suggestion.ds-cursor .algolia-docsearch-suggestion.suggestion-layout-simple,
+.algolia-autocomplete .ds-dropdown-menu .ds-suggestion.ds-cursor .algolia-docsearch-suggestion:not(.suggestion-layout-simple) .algolia-docsearch-suggestion--content {
+  background-color: rgba(69, 142, 225, 0.1);
+}
+
+.algolia-autocomplete .algolia-docsearch-suggestion {
+  padding: 0;
+}
+
+.algolia-autocomplete .algolia-docsearch-suggestion--category-header {
+  padding: 2px 6px;
+  margin-top: 0;
+  font-weight: bold;
+  color: #292929;
+  background-color: #a0cbe3;
+  border-top: 1px solid #858585;
+  border-bottom: 0;
+}
+
+.algolia-autocomplete .algolia-docsearch-suggestion--wrapper {
+  display: table !important;
+  padding: 0;
+}
+
+.algolia-autocomplete .algolia-docsearch-suggestion--subcategory-column {
+  display: table-cell !important;
+  float: none !important;
+  padding: 6px 10px;
+  color: #383838;
+  background-color: #f0f0f0;
+}
+
+.algolia-autocomplete .algolia-docsearch-suggestion--subcategory-column::before {
+  background: #858585;
+}
+
+.algolia-autocomplete .algolia-docsearch-suggestion--content {
+  display: table-cell !important;
+  float: none !important;
+  padding: 6px 10px;
+  background-color: #fff;
+}
+
+.algolia-autocomplete .algolia-docsearch-suggestion--content::before {
+  background: #858585;
+}
+
+.algolia-autocomplete .algolia-docsearch-suggestion--highlight {
+  background-color: rgba(143, 187, 237, 0.2);
+}
+
+.algolia-autocomplete .algolia-docsearch-suggestion--title {
+  margin-bottom: 0;
+}
+
+.algolia-autocomplete .algolia-docsearch-footer {
+  margin-top: 8px;
+}
+
 .cf-example-container {
   min-width: 16rem;
   max-width: 25rem;
@@ -609,7 +693,8 @@ h4 > code {
   margin-top: 1rem;
 }
 
-.cf-example-row .row > [class^="col-"] {
+.cf-example-row .row > [class^="col-"],
+.cf-example-row .row .col {
   padding-top: .75rem;
   padding-bottom: .75rem;
   background-color: rgba(34, 68, 102, 0.15);
@@ -810,20 +895,20 @@ h4 > code {
 }
 
 @media (min-width: 62em) {
-  .cf-example-tabRepsonsive h4 {
+  .cf-example-tabResponsive h4 {
     display: none;
   }
-  .cf-example-tabRepsonsive .collapse {
+  .cf-example-tabResponsive .collapse {
     display: block;
     visibility: visible;
   }
 }
 
 @media (max-width: 61.9375em) {
-  .cf-example-tabRepsonsive .nav-tabs {
+  .cf-example-tabResponsive .nav-tabs {
     display: none;
   }
-  .cf-example-tabRepsonsive .tab-pane {
+  .cf-example-tabResponsive .tab-pane {
     display: block;
     visibility: visible;
   }
@@ -1125,7 +1210,7 @@ h4 > code {
   margin-top: .25rem;
 }
 
-.responsive-utilities-test .col-xs-6 {
+.responsive-utilities-test .col-6 {
   margin-top: .5rem;
   margin-bottom: .5rem;
 }
@@ -1140,45 +1225,45 @@ h4 > code {
   border-radius: .25rem;
 }
 
-.visible-on .col-xs-6 > .not-visible,
-.hidden-on .col-xs-6 > .not-visible {
+.visible-on .col-6 > .not-visible,
+.hidden-on .col-6 > .not-visible {
   color: #666;
   border: 1px solid #a3a3a3;
 }
 
-.visible-on .col-xs-6 .visible,
-.hidden-on .col-xs-6 .visible {
+.visible-on .col-6 .visible,
+.hidden-on .col-6 .visible {
   color: #108918;
   background-color: #d9ecda;
   border: 1px solid #70b874;
 }
 
 @media (max-width: 35.9375em) {
-  .hidden-xs-only {
+  .hide-xs-only {
     display: none !important;
   }
 }
 
 @media (min-width: 36em) and (max-width: 47.9375em) {
-  .hidden-sm-only {
+  .hide-sm-only {
     display: none !important;
   }
 }
 
 @media (min-width: 48em) and (max-width: 61.9375em) {
-  .hidden-md-only {
+  .hide-md-only {
     display: none !important;
   }
 }
 
 @media (min-width: 62em) and (max-width: 74.9375em) {
-  .hidden-lg-only {
+  .hide-lg-only {
     display: none !important;
   }
 }
 
 @media (min-width: 75em) {
-  .hidden-xl-only {
+  .hide-xl-only {
     display: none !important;
   }
 }

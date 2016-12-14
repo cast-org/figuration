@@ -22,12 +22,18 @@
   <link href="/dist/css/figuration.min.css" rel="stylesheet">
 
 
+
+<!-- Algolia DocSearch CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+
 <!-- Docs CSS -->
 
   <link href="/assets/css/docs.min.css" rel="stylesheet">
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
 
 <!-- Core JS -->
@@ -61,11 +67,18 @@
     <div class="container">
         <nav>
             <a class="navbar-brand" href="/">CAST Figuration</a>
-            <div class="clearfix hidden-lg-up">
-                <button class="navbar-toggler btn btn-toggler pull-xs-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">
+            <div class="hide-lg-up float-right">
+                <button class="navbar-toggler btn btn-toggler" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">
                     <span class="icon-menu" aria-hidden="true">&#8801;</span>
                 </button>
             </div>
+            
+            <div class="hide-xs-down float-right mt-0_25 mr-1 mr-lg-0">
+                <form class="form-inline docsearch-wrapper">
+                    <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
+                </form>
+            </div>
+            
             <div class="collapse navbar-toggleable-md" id="cf-topnav">
                 <ul class="nav navbar-nav">
                     <li class="nav-item ">
@@ -81,7 +94,7 @@
                         <a href="/components/alerts/" class="nav-link">Components</a>
                     </li>
                     <li class="nav-item ">
-                        <a href="/utilities/clearfix/" class="nav-link">Utilities</a>
+                        <a href="/utilities/borders/" class="nav-link">Utilities</a>
                     </li>
                     <li class="nav-item ">
                         <a href="/widgets/overview/" class="nav-link">Widgets</a>
@@ -89,9 +102,7 @@
                     <li class="nav-item ">
                         <a href="/about/overview/" class="nav-link">About</a>
                     </li>
-                    <li class="nav-item pull-lg-right">
-                        <a href="https://github.com/cast-org/figuration" class="nav-link"><small>GitHub</small></a>
-                    </li>
+                    
                 </ul>
             </div>
         </nav>
@@ -101,7 +112,7 @@
     <div class="jumbotron jumbotron-full jumbotron-docs">
         <div class="container">
             
-    <h1>Components</h1>
+    <div class="h1">Components</div>
     <p class="lead">
         Reusable components built to provide alerts, button groups, cards, input groups, media objects, navigation, and much more.
     </p>
@@ -112,7 +123,7 @@
 
     <main class="container">
         <div class="row">
-            <div class="col-xs-12 col-md-3 cf-sidebar">
+            <div class="col-12 col-md-3 cf-sidebar">
                 <nav class="cf-links">
 
 
@@ -135,180 +146,164 @@
   
 
   
-    
-      <div class="h4">Components</div>
-      <ul class="nav">
+    <div class="h4">Components</div>
+    <ul class="nav">
+      
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/alerts" class="nav-link ">
-              Alerts
-            </a>
-          </li>
         
-          
-          
-
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/breadcrumb" class="nav-link ">
-              Breadcrumb
-            </a>
-          </li>
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/button-group" class="nav-link ">
-              Button Group
-            </a>
-          </li>
+        <li class="nav-item">
+          <a href="/components/alerts/" class="nav-link ">
+            Alerts
+          </a>
+        </li>
+      
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/cards" class="nav-link ">
-              Cards
-            </a>
-          </li>
         
-          
-          
-
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/grid-lines" class="nav-link active">
-              Grid Lines
-            </a>
-          </li>
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/input-group" class="nav-link ">
-              Input Group
-            </a>
-          </li>
+        <li class="nav-item">
+          <a href="/components/badges/" class="nav-link ">
+            Badges
+          </a>
+        </li>
+      
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/jumbotron" class="nav-link ">
-              Jumbotron
-            </a>
-          </li>
         
-          
-          
-
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/list-group" class="nav-link ">
-              List Group
-            </a>
-          </li>
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/media-object" class="nav-link ">
-              Media Object
-            </a>
-          </li>
+        <li class="nav-item">
+          <a href="/components/breadcrumb/" class="nav-link ">
+            Breadcrumb
+          </a>
+        </li>
+      
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/navbar" class="nav-link ">
-              Navbar
-            </a>
-          </li>
         
-          
-          
-
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/navs" class="nav-link ">
-              Navs
-            </a>
-          </li>
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/pagination" class="nav-link ">
-              Pagination
-            </a>
-          </li>
+        <li class="nav-item">
+          <a href="/components/button-group/" class="nav-link ">
+            Button Group
+          </a>
+        </li>
+      
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/progress" class="nav-link ">
-              Progress
-            </a>
-          </li>
         
-          
-          
-
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/tags" class="nav-link ">
-              Tags
-            </a>
-          </li>
         
-      </ul>
-    
+
+        <li class="nav-item">
+          <a href="/components/cards/" class="nav-link ">
+            Cards
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/grid-lines/" class="nav-link active">
+            Grid Lines
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/input-group/" class="nav-link ">
+            Input Group
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/jumbotron/" class="nav-link ">
+            Jumbotron
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/list-group/" class="nav-link ">
+            List Group
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/media-object/" class="nav-link ">
+            Media Object
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/navbar/" class="nav-link ">
+            Navbar
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/navs/" class="nav-link ">
+            Navs
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/pagination/" class="nav-link ">
+            Pagination
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/progress/" class="nav-link ">
+            Progress
+          </a>
+        </li>
+      
+    </ul>
   
 
   
@@ -329,7 +324,7 @@
 </nav>
 
             </div>
-            <div class="col-xs-12 col-md-9 cf-content">
+            <div class="col-12 col-md-9 cf-content">
                 <h1 class="cf-title" id="content">
                     Grid Lines
                     
@@ -365,7 +360,7 @@
 <p>To get consitent spacing, some elements might require utility classes or custom styles.  <code class="highlighter-rouge">.gridline-item</code> containers can be mixed with the grid system to create the layout.</p>
 
 <div class="cf-example" data-example-id="">
-<div class="gridline gridline-xs-vr gridline-xs-hr">
+<div class="gridline gridline-vr gridline-hr">
     <div class="gridline-item col-md-6">
         <h4>Header Level 4</h4>
         <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.</p>
@@ -377,7 +372,7 @@
         <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum.</p>
     </div>
 </div>
-<div class="gridline gridline-xs-hr">
+<div class="gridline gridline-hr">
     <div class="gridline-item col-md-6">
         <h4>Header Level 4</h4>
         <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
@@ -388,7 +383,7 @@
     </div>
 </div>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-xs-vr gridline-xs-hr"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-vr gridline-hr"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-6"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;h4&gt;</span>Header Level 4<span class="nt">&lt;/h4&gt;</span>
         <span class="nt">&lt;p&gt;</span>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.<span class="nt">&lt;/p&gt;</span>
@@ -400,7 +395,7 @@
         <span class="nt">&lt;p&gt;</span>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum.<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-xs-hr"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-hr"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-6"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;h4&gt;</span>Header Level 4<span class="nt">&lt;/h4&gt;</span>
         <span class="nt">&lt;p&gt;</span>Raw denim you probably haven't heard of them jean shorts Austin.<span class="nt">&lt;/p&gt;</span>
@@ -415,7 +410,7 @@
 
 <p>The grid line options for horizontal and vertical lines both use the responsive grid system for showing the rules to that a responsive layout that converts from rows to columns is supported.</p>
 
-<p>Use <code class="highlighter-rouge">.gridline-{breakpoint}-hr</code> for horizontal lines, and <code class="highlighter-rouge">.gridline-{breakpoint}-vr</code> for vertical lines.</p>
+<p>Use <code class="highlighter-rouge">.gridline-{breakpoint}-hr</code> for horizontal lines, and <code class="highlighter-rouge">.gridline-{breakpoint}-vr</code> for vertical lines. Please refer to how our <a href="/layout/overview/#breakpoint-nomenclature">breakpoint nomenclature</a> is used.</p>
 
 <h3 id="horizontal">Horizontal</h3>
 
@@ -435,26 +430,36 @@
 
 <div class="cf-example" data-example-id="">
 <strong>Rule: Horizontal</strong>
-<div class="gridline gridline-xs-hr">
+<div class="gridline gridline-hr">
     <div class="gridline-item col-md-12">
         <p>Row 1 - Column 1</p>
     </div>
 </div>
-<div class="gridline gridline-xs-hr">
+<div class="gridline gridline-hr">
     <div class="gridline-item col-md-12">
         <p>Row 2 - Column 1</p>
     </div>
 </div>
+<div class="gridline gridline-hr">
+    <div class="gridline-item col-md-12">
+        <p>Row 3 - Column 1</p>
+    </div>
+</div>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;strong&gt;</span>Rule: Horizontal<span class="nt">&lt;/strong&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-xs-hr"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-hr"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-12"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>Row 1 - Column 1<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-xs-hr"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-hr"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-12"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>Row 2 - Column 1<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-hr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-12"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Row 3 - Column 1<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
@@ -483,7 +488,7 @@
 
 <div class="cf-example" data-example-id="">
 <strong>Rule: Horizontal</strong>
-<div class="gridline gridline-xs-hr">
+<div class="gridline gridline-hr">
     <div class="gridline-item col-md-6">
         <p>Row 1 - Column 1</p>
     </div>
@@ -491,7 +496,7 @@
         <p>Row 1 - Column 2</p>
     </div>
 </div>
-<div class="gridline gridline-xs-hr">
+<div class="gridline gridline-hr">
     <div class="gridline-item col-md-6">
         <p>Row 2 - Column 1</p>
     </div>
@@ -499,9 +504,17 @@
         <p>Row 2 - Column 2</p>
     </div>
 </div>
+<div class="gridline gridline-hr">
+    <div class="gridline-item col-md-6">
+        <p>Row 3 - Column 1</p>
+    </div>
+    <div class="gridline-item col-md-6">
+        <p>Row 3 - Column 2</p>
+    </div>
+</div>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;strong&gt;</span>Rule: Horizontal<span class="nt">&lt;/strong&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-xs-hr"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-hr"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-6"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>Row 1 - Column 1<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
@@ -509,18 +522,26 @@
         <span class="nt">&lt;p&gt;</span>Row 1 - Column 2<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-xs-hr"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-hr"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-6"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>Row 2 - Column 1<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-6"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>Row 2 - Column 2<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-hr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-6"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Row 3 - Column 1<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-6"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Row 3 - Column 2<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 <div class="cf-example" data-example-id="">
 <strong>Rule: Both</strong>
-<div class="gridline gridline-xs-hr gridline-md-vr">
+<div class="gridline gridline-hr gridline-md-vr">
     <div class="gridline-item col-md-6">
         <p>Row 1 - Column 1</p>
     </div>
@@ -528,7 +549,7 @@
         <p>Row 1 - Column 2</p>
     </div>
 </div>
-<div class="gridline gridline-xs-hr gridline-md-vr">
+<div class="gridline gridline-hr gridline-md-vr">
     <div class="gridline-item col-md-6">
         <p>Row 2 - Column 1</p>
     </div>
@@ -536,9 +557,17 @@
         <p>Row 2 - Column 2</p>
     </div>
 </div>
+<div class="gridline gridline-hr gridline-md-vr">
+    <div class="gridline-item col-md-6">
+        <p>Row 3 - Column 1</p>
+    </div>
+    <div class="gridline-item col-md-6">
+        <p>Row 3 - Column 2</p>
+    </div>
+</div>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;strong&gt;</span>Rule: Both<span class="nt">&lt;/strong&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-xs-hr gridline-md-vr"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-hr gridline-md-vr"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-6"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>Row 1 - Column 1<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
@@ -546,12 +575,20 @@
         <span class="nt">&lt;p&gt;</span>Row 1 - Column 2<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-xs-hr gridline-md-vr"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-hr gridline-md-vr"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-6"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>Row 2 - Column 1<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-6"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>Row 2 - Column 2<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-hr gridline-md-vr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-6"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Row 3 - Column 1<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-6"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Row 3 - Column 2<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
@@ -586,7 +623,7 @@
 
 <div class="cf-example" data-example-id="">
 <strong>Rule: Horizontal</strong>
-<div class="gridline gridline-xs-hr">
+<div class="gridline gridline-hr">
     <div class="gridline-item col-md-4">
         <p>Row 1 - Column 1</p>
     </div>
@@ -597,7 +634,7 @@
         <p>Row 1 - Column 3</p>
     </div>
 </div>
-<div class="gridline gridline-xs-hr">
+<div class="gridline gridline-hr">
     <div class="gridline-item col-md-4">
         <p>Row 2 - Column 1</p>
     </div>
@@ -608,9 +645,20 @@
         <p>Row 2 - Column 3</p>
     </div>
 </div>
+<div class="gridline gridline-hr">
+    <div class="gridline-item col-md-4">
+        <p>Row 3 - Column 1</p>
+    </div>
+    <div class="gridline-item col-md-4">
+        <p>Row 3 - Column 2</p>
+    </div>
+    <div class="gridline-item col-md-4">
+        <p>Row 3 - Column 3</p>
+    </div>
+</div>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;strong&gt;</span>Rule: Horizontal<span class="nt">&lt;/strong&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-xs-hr"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-hr"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-4"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>Row 1 - Column 1<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
@@ -621,7 +669,7 @@
         <span class="nt">&lt;p&gt;</span>Row 1 - Column 3<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-xs-hr"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-hr"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-4"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>Row 2 - Column 1<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
@@ -630,12 +678,23 @@
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-4"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>Row 2 - Column 3<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-hr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-4"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Row 3 - Column 1<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-4"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Row 3 - Column 2<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-4"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Row 3 - Column 3<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 <div class="cf-example" data-example-id="">
 <strong>Rule: Both</strong>
-<div class="gridline gridline-xs-hr gridline-md-vr">
+<div class="gridline gridline-hr gridline-md-vr">
     <div class="gridline-item col-md-4">
         <p>Row 1 - Column 1</p>
     </div>
@@ -646,7 +705,7 @@
         <p>Row 1 - Column 3</p>
     </div>
 </div>
-<div class="gridline gridline-xs-hr gridline-md-vr">
+<div class="gridline gridline-hr gridline-md-vr">
     <div class="gridline-item col-md-4">
         <p>Row 2 - Column 1</p>
     </div>
@@ -657,9 +716,20 @@
         <p>Row 2 - Column 3</p>
     </div>
 </div>
+<div class="gridline gridline-hr gridline-md-vr">
+    <div class="gridline-item col-md-4">
+        <p>Row 3 - Column 1</p>
+    </div>
+    <div class="gridline-item col-md-4">
+        <p>Row 3 - Column 2</p>
+    </div>
+    <div class="gridline-item col-md-4">
+        <p>Row 3 - Column 3</p>
+    </div>
+</div>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;strong&gt;</span>Rule: Both<span class="nt">&lt;/strong&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-xs-hr gridline-md-vr"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-hr gridline-md-vr"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-4"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>Row 1 - Column 1<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
@@ -670,7 +740,7 @@
         <span class="nt">&lt;p&gt;</span>Row 1 - Column 3<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-xs-hr gridline-md-vr"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-hr gridline-md-vr"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-4"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>Row 2 - Column 1<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
@@ -679,6 +749,17 @@
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-4"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>Row 2 - Column 3<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-hr gridline-md-vr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-4"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Row 3 - Column 1<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-4"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Row 3 - Column 2<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-4"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Row 3 - Column 3<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
@@ -686,7 +767,7 @@
 
 <div class="cf-example" data-example-id="">
 <div class="gridline-bordered">
-    <div class="gridline gridline-xs-hr gridline-md-vr">
+    <div class="gridline gridline-hr gridline-md-vr">
         <div class="gridline-item col-md-4">
             <p>Row 1 - Column 1</p>
         </div>
@@ -697,7 +778,7 @@
             <p>Row 1 - Column 3</p>
         </div>
     </div>
-    <div class="gridline gridline-xs-hr gridline-md-vr">
+    <div class="gridline gridline-md-hr gridline-md-vr">
         <div class="gridline-item col-md-4">
             <p>Row 2 - Column 1</p>
         </div>
@@ -708,10 +789,21 @@
             <p>Row 2 - Column 3</p>
         </div>
     </div>
+    <div class="gridline gridline-lg-hr gridline-md-vr">
+        <div class="gridline-item col-md-4">
+            <p>Row 3 - Column 1</p>
+        </div>
+        <div class="gridline-item col-md-4">
+            <p>Row 3 - Column 2</p>
+        </div>
+        <div class="gridline-item col-md-4">
+            <p>Row 3 - Column 3</p>
+        </div>
+    </div>
 </div>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-bordered"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-xs-hr gridline-md-vr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-hr gridline-md-vr"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-4"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;p&gt;</span>Row 1 - Column 1<span class="nt">&lt;/p&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
@@ -722,7 +814,7 @@
             <span class="nt">&lt;p&gt;</span>Row 1 - Column 3<span class="nt">&lt;/p&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-xs-hr gridline-md-vr"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-md-hr gridline-md-vr"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-4"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;p&gt;</span>Row 2 - Column 1<span class="nt">&lt;/p&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
@@ -731,6 +823,17 @@
         <span class="nt">&lt;/div&gt;</span>
         <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-4"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;p&gt;</span>Row 2 - Column 3<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline gridline-lg-hr gridline-md-vr"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-4"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;p&gt;</span>Row 3 - Column 1<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-4"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;p&gt;</span>Row 3 - Column 2<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"gridline-item col-md-4"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;p&gt;</span>Row 3 - Column 3<span class="nt">&lt;/p&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
@@ -745,7 +848,7 @@
 
     <footer class="cf-footer">
     <div class="container">
-        Currently version: 1.3.1
+        Current version: 2.0.0
         <ul class="footer-links">
             <li><a href="https://github.com/cast-org/figuration">GitHub Project</a></li>
             <li><a href="https://github.com/cast-org/figuration/issues">Issues</a></li>
@@ -775,6 +878,17 @@
 
     </div>
 </footer>
+
+
+<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script>
+docsearch({
+    apiKey: '3b9b6e000775400f4833a14c4daa6049',
+    indexName: 'figuration',
+    inputSelector: '#docsearch'
+});
+</script>
+
 
 </body>
 </html>

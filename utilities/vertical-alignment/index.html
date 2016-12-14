@@ -9,7 +9,7 @@
 
 <title>
   
-    Responsive Floats &#124; CAST Figuration
+    Vertical Alignment &#124; CAST Figuration
   
 </title>
 
@@ -237,7 +237,7 @@
         
 
         <li class="nav-item">
-          <a href="/utilities/responsive-floats/" class="nav-link active">
+          <a href="/utilities/responsive-floats/" class="nav-link ">
             Responsive Floats
           </a>
         </li>
@@ -292,7 +292,7 @@
         
 
         <li class="nav-item">
-          <a href="/utilities/vertical-alignment/" class="nav-link ">
+          <a href="/utilities/vertical-alignment/" class="nav-link active">
             Vertical Alignment
           </a>
         </li>
@@ -315,42 +315,108 @@
             </div>
             <div class="col-12 col-md-9 cf-content">
                 <h1 class="cf-title" id="content">
-                    Responsive Floats
+                    Vertical Alignment
                     
                 </h1>
 
-                <p>These utility classes float an element to the left or right, or disable floating, based on the current viewport size using the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/float">CSS <code class="highlighter-rouge">float</code> property</a>. <code class="highlighter-rouge">!important</code> is included to avoid specificity issues. These use the same viewport width breakpoints as the grid system.</p>
+                <p>Give some vertical alignment to elements by manipulating their <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align"><code class="highlighter-rouge">vertical-align</code> property</a>.</p>
+
+<p>Note that only items with the following display properties can be vertically aligned:</p>
+<ul>
+  <li>inline</li>
+  <li>inline-block</li>
+  <li>inline-table</li>
+  <li>table-cell</li>
+</ul>
+
+<p>The alignments consist of the items in the following list and are also available in responsive variants, in the form <code class="highlighter-rouge">.visible-{breakpoint}-{alignment}</code>. Please refer to how our <a href="/layout/overview/#breakpoint-nomenclature">breakpoint nomenclature</a> is used.</p>
+<ul>
+  <li><code class="highlighter-rouge">.valign-baseline</code></li>
+  <li><code class="highlighter-rouge">.valign-top</code></li>
+  <li><code class="highlighter-rouge">.valign-middle</code></li>
+  <li><code class="highlighter-rouge">.valign-bottom</code></li>
+  <li><code class="highlighter-rouge">.valign-text-top</code></li>
+  <li><code class="highlighter-rouge">.valign-text-bottom</code></li>
+</ul>
+
+<p>Example with inline elements.</p>
 
 <div class="cf-example" data-example-id="">
-<div class="float-left">Float left on all viewport sizes</div><br />
-<div class="float-right">Float right on all viewport sizes</div><br />
-<div class="float-none">Don't float on all viewport sizes</div><br />
-
-<div class="float-sm-right">Float right on viewports sized SM (small) or wider</div><br />
-<div class="float-md-right">Float right on viewports sized MD (medium) or wider</div><br />
-<div class="float-lg-right">Float right on viewports sized LG (large) or wider</div><br />
-<div class="float-xl-right">Float right on viewports sized XL (extra-large) or wider</div><br />
+<div class="bg-gray-50">
+    <span class="bg-cyan-100 valign-baseline">baseline</span>
+    -
+    <span class="bg-cyan-100 valign-top">top</span>
+    -
+    <span class="bg-cyan-100 valign-middle">middle</span>
+    -
+    <span class="bg-cyan-100 valign-bottom">bottom</span>
+    -
+    <span class="bg-cyan-100 valign-text-top">text-top</span>
+    -
+    <span class="bg-cyan-100 valign-text-bottom">text-bottom</span>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"float-left"</span><span class="nt">&gt;</span>Float left on all viewport sizes<span class="nt">&lt;/div&gt;&lt;br&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"float-right"</span><span class="nt">&gt;</span>Float right on all viewport sizes<span class="nt">&lt;/div&gt;&lt;br&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"float-none"</span><span class="nt">&gt;</span>Don't float on all viewport sizes<span class="nt">&lt;/div&gt;&lt;br&gt;</span>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bg-gray-50"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"bg-cyan-100 valign-baseline"</span><span class="nt">&gt;</span>baseline<span class="nt">&lt;/span&gt;</span>
+    -
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"bg-cyan-100 valign-top"</span><span class="nt">&gt;</span>top<span class="nt">&lt;/span&gt;</span>
+    -
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"bg-cyan-100 valign-middle"</span><span class="nt">&gt;</span>middle<span class="nt">&lt;/span&gt;</span>
+    -
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"bg-cyan-100 valign-bottom"</span><span class="nt">&gt;</span>bottom<span class="nt">&lt;/span&gt;</span>
+    -
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"bg-cyan-100 valign-text-top"</span><span class="nt">&gt;</span>text-top<span class="nt">&lt;/span&gt;</span>
+    -
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"bg-cyan-100 valign-text-bottom"</span><span class="nt">&gt;</span>text-bottom<span class="nt">&lt;/span&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"float-sm-right"</span><span class="nt">&gt;</span>Float right on viewports sized SM (small) or wider<span class="nt">&lt;/div&gt;&lt;br&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"float-md-right"</span><span class="nt">&gt;</span>Float right on viewports sized MD (medium) or wider<span class="nt">&lt;/div&gt;&lt;br&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"float-lg-right"</span><span class="nt">&gt;</span>Float right on viewports sized LG (large) or wider<span class="nt">&lt;/div&gt;&lt;br&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"float-xl-right"</span><span class="nt">&gt;</span>Float right on viewports sized XL (extra-large) or wider<span class="nt">&lt;/div&gt;&lt;br&gt;</span></code></pre></div>
+<p>Using table cells.</p>
 
-<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Related simple non-responsive mixins
-</span><span class="nc">.element</span> <span class="p">{</span>
-  <span class="k">@include</span> <span class="nd">float-left</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nc">.another-element</span> <span class="p">{</span>
-  <span class="k">@include</span> <span class="nd">float-right</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nc">.unfloated-element</span> <span class="p">{</span>
-  <span class="k">@include</span> <span class="nd">float-none</span><span class="p">;</span>
-<span class="p">}</span></code></pre></figure>
+<div class="cf-example" data-example-id="">
+<table class="table table-bordered" style="height: 100px;">
+    <tbody>
+        <td class="valign-baseline">baseline</td>
+        <td class="valign-top">top</td>
+        <td class="valign-middle">middle</td>
+        <td class="valign-bottom">bottom</td>
+        <td class="valign-text-top">text-top</td>
+        <td class="valign-text-bottom">text-bottom</td>
+    </tbody>
+</table>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-bordered"</span> <span class="na">style=</span><span class="s">"height: 100px;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tbody&gt;</span>
+        <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"valign-baseline"</span><span class="nt">&gt;</span>baseline<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"valign-top"</span><span class="nt">&gt;</span>top<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"valign-middle"</span><span class="nt">&gt;</span>middle<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"valign-bottom"</span><span class="nt">&gt;</span>bottom<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"valign-text-top"</span><span class="nt">&gt;</span>text-top<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"valign-text-bottom"</span><span class="nt">&gt;</span>text-bottom<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
 
+<p>Slightly more complex uses, such as being able to align items in a row, become quick and easy.</p>
+
+<div class="cf-example" data-example-id="">
+<div class="bg-gray-50 w-100 d-table">
+    <div class="d-table-cell valign-bottom">
+        <a href="#">View more in teacher's guide</a> |
+        <a href="#">Common Core alignment</a>
+    </div>
+    <div class="d-table-cell valign-bottom text-right">
+        <button type="button" class="btn btn-primary btn-lg">Continue</button>
+    </div>
+</div>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bg-gray-50 w-100 d-table"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"d-table-cell valign-bottom"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>View more in teacher's guide<span class="nt">&lt;/a&gt;</span> |
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Common Core alignment<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"d-table-cell valign-bottom text-right"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-lg"</span><span class="nt">&gt;</span>Continue<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
 
             </div>
         </div>

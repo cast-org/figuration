@@ -22,12 +22,18 @@
   <link href="/dist/css/figuration.min.css" rel="stylesheet">
 
 
+
+<!-- Algolia DocSearch CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+
 <!-- Docs CSS -->
 
   <link href="/assets/css/docs.min.css" rel="stylesheet">
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
 
 <!-- Core JS -->
@@ -61,11 +67,18 @@
     <div class="container">
         <nav>
             <a class="navbar-brand" href="/">CAST Figuration</a>
-            <div class="clearfix hidden-lg-up">
-                <button class="navbar-toggler btn btn-toggler pull-xs-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">
+            <div class="hide-lg-up float-right">
+                <button class="navbar-toggler btn btn-toggler" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">
                     <span class="icon-menu" aria-hidden="true">&#8801;</span>
                 </button>
             </div>
+            
+            <div class="hide-xs-down float-right mt-0_25 mr-1 mr-lg-0">
+                <form class="form-inline docsearch-wrapper">
+                    <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
+                </form>
+            </div>
+            
             <div class="collapse navbar-toggleable-md" id="cf-topnav">
                 <ul class="nav navbar-nav">
                     <li class="nav-item ">
@@ -81,7 +94,7 @@
                         <a href="/components/alerts/" class="nav-link">Components</a>
                     </li>
                     <li class="nav-item ">
-                        <a href="/utilities/clearfix/" class="nav-link">Utilities</a>
+                        <a href="/utilities/borders/" class="nav-link">Utilities</a>
                     </li>
                     <li class="nav-item ">
                         <a href="/widgets/overview/" class="nav-link">Widgets</a>
@@ -89,9 +102,7 @@
                     <li class="nav-item ">
                         <a href="/about/overview/" class="nav-link">About</a>
                     </li>
-                    <li class="nav-item pull-lg-right">
-                        <a href="https://github.com/cast-org/figuration" class="nav-link"><small>GitHub</small></a>
-                    </li>
+                    
                 </ul>
             </div>
         </nav>
@@ -101,7 +112,7 @@
     <div class="jumbotron jumbotron-full jumbotron-docs">
         <div class="container">
             
-    <h1>Components</h1>
+    <div class="h1">Components</div>
     <p class="lead">
         Reusable components built to provide alerts, button groups, cards, input groups, media objects, navigation, and much more.
     </p>
@@ -112,7 +123,7 @@
 
     <main class="container">
         <div class="row">
-            <div class="col-xs-12 col-md-3 cf-sidebar">
+            <div class="col-12 col-md-3 cf-sidebar">
                 <nav class="cf-links">
 
 
@@ -135,180 +146,164 @@
   
 
   
-    
-      <div class="h4">Components</div>
-      <ul class="nav">
+    <div class="h4">Components</div>
+    <ul class="nav">
+      
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/alerts" class="nav-link ">
-              Alerts
-            </a>
-          </li>
         
-          
-          
-
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/breadcrumb" class="nav-link ">
-              Breadcrumb
-            </a>
-          </li>
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/button-group" class="nav-link ">
-              Button Group
-            </a>
-          </li>
+        <li class="nav-item">
+          <a href="/components/alerts/" class="nav-link ">
+            Alerts
+          </a>
+        </li>
+      
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/cards" class="nav-link active">
-              Cards
-            </a>
-          </li>
         
-          
-          
-
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/grid-lines" class="nav-link ">
-              Grid Lines
-            </a>
-          </li>
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/input-group" class="nav-link ">
-              Input Group
-            </a>
-          </li>
+        <li class="nav-item">
+          <a href="/components/badges/" class="nav-link ">
+            Badges
+          </a>
+        </li>
+      
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/jumbotron" class="nav-link ">
-              Jumbotron
-            </a>
-          </li>
         
-          
-          
-
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/list-group" class="nav-link ">
-              List Group
-            </a>
-          </li>
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/media-object" class="nav-link ">
-              Media Object
-            </a>
-          </li>
+        <li class="nav-item">
+          <a href="/components/breadcrumb/" class="nav-link ">
+            Breadcrumb
+          </a>
+        </li>
+      
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/navbar" class="nav-link ">
-              Navbar
-            </a>
-          </li>
         
-          
-          
-
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/navs" class="nav-link ">
-              Navs
-            </a>
-          </li>
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/pagination" class="nav-link ">
-              Pagination
-            </a>
-          </li>
+        <li class="nav-item">
+          <a href="/components/button-group/" class="nav-link ">
+            Button Group
+          </a>
+        </li>
+      
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/progress" class="nav-link ">
-              Progress
-            </a>
-          </li>
         
-          
-          
-
-          
-          
-
-          <li class="nav-item">
-            <a href="/components/tags" class="nav-link ">
-              Tags
-            </a>
-          </li>
         
-      </ul>
-    
+
+        <li class="nav-item">
+          <a href="/components/cards/" class="nav-link active">
+            Cards
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/grid-lines/" class="nav-link ">
+            Grid Lines
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/input-group/" class="nav-link ">
+            Input Group
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/jumbotron/" class="nav-link ">
+            Jumbotron
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/list-group/" class="nav-link ">
+            List Group
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/media-object/" class="nav-link ">
+            Media Object
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/navbar/" class="nav-link ">
+            Navbar
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/navs/" class="nav-link ">
+            Navs
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/pagination/" class="nav-link ">
+            Pagination
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/progress/" class="nav-link ">
+            Progress
+          </a>
+        </li>
+      
+    </ul>
   
 
   
@@ -329,7 +324,7 @@
 </nav>
 
             </div>
-            <div class="col-xs-12 col-md-9 cf-content">
+            <div class="col-12 col-md-9 cf-content">
                 <h1 class="cf-title" id="content">
                     Cards
                     
@@ -572,13 +567,13 @@
   <a href="#" class="btn btn-primary">Go somewhere</a>
 </div>
 
-<div class="card card-block text-xs-center">
+<div class="card card-block text-center">
   <h4 class="card-title">Special title treatment</h4>
   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
   <a href="#" class="btn btn-primary">Go somewhere</a>
 </div>
 
-<div class="card card-block text-xs-right">
+<div class="card card-block text-right">
   <h4 class="card-title">Special title treatment</h4>
   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
   <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -590,13 +585,13 @@
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Go somewhere<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-block text-xs-center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-block text-center"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;h4</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Special title treatment<span class="nt">&lt;/h4&gt;</span>
   <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>With supporting text below as a natural lead-in to additional content.<span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Go somewhere<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-block text-xs-right"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-block text-right"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;h4</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Special title treatment<span class="nt">&lt;/h4&gt;</span>
   <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>With supporting text below as a natural lead-in to additional content.<span class="nt">&lt;/p&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Go somewhere<span class="nt">&lt;/a&gt;</span>
@@ -676,7 +671,7 @@
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 <div class="cf-example" data-example-id="">
-<div class="card text-xs-center">
+<div class="card text-center">
   <div class="card-header">
     Featured
   </div>
@@ -690,7 +685,7 @@
   </div>
 </div>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card text-xs-center"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card text-center"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>
     Featured
   <span class="nt">&lt;/div&gt;</span>
@@ -706,12 +701,12 @@
 
 <h2 id="header-nav">Header Nav</h2>
 
-<p>Use nav pills or tabs within a card header. Be sure to always include a <code class="highlighter-rouge">.pull-*-*</code> utility class for proper alignment.</p>
+<p>Use nav pills or tabs within a card header.</p>
 
 <div class="cf-example" data-example-id="">
-<div class="card text-xs-center">
+<div class="card text-center">
   <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs pull-xs-left">
+    <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
         <a class="nav-link active" href="#">Active</a>
       </li>
@@ -730,9 +725,9 @@
   </div>
 </div>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card text-xs-center"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card text-center"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs card-header-tabs pull-xs-left"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs card-header-tabs"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
       <span class="nt">&lt;/li&gt;</span>
@@ -752,9 +747,9 @@
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 <div class="cf-example" data-example-id="">
-<div class="card text-xs-center">
+<div class="card text-center">
   <div class="card-header">
-    <ul class="nav nav-pills card-header-pills pull-xs-left">
+    <ul class="nav nav-pills card-header-pills">
       <li class="nav-item">
         <a class="nav-link active" href="#">Active</a>
       </li>
@@ -773,9 +768,9 @@
   </div>
 </div>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card text-xs-center"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card text-center"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-pills card-header-pills pull-xs-left"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-pills card-header-pills"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
       <span class="nt">&lt;/li&gt;</span>
@@ -858,7 +853,7 @@
 
 <h2 id="inverted-text">Inverted Text</h2>
 
-<p>Cards include a class for quickly toggling <strong>the text color</strong>. By default, cards use dark text and assume a light background. <strong>Add <code class="highlighter-rouge">.card-inverse</code> for white text</strong> and specify the <code class="highlighter-rouge">background-color</code> and <code class="highlighter-rouge">border-color</code> to go with it.</p>
+<p>By default, cards use dark text and assume a light background. You can reverse that by toggling the <code class="highlighter-rouge">color</code> of text within, as well as that of the card’s subcomponents, with <code class="highlighter-rouge">.card-inverse</code>. Then, specify a dark <code class="highlighter-rouge">background-color</code> and <code class="highlighter-rouge">border-color</code> to go with it.</p>
 
 <p>You can also use <code class="highlighter-rouge">.card-inverse</code> with the <a href="#background-variants">contextual backgrounds variants</a>.</p>
 
@@ -870,11 +865,37 @@
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
+
+<div class="card card-inverse text-center" style="background-color: #333; border-color: #333;">
+  <div class="card-header">
+    Inverse card
+  </div>
+  <div class="card-block">
+    <h3 class="card-title">Special title treatment</h3>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  </div>
+  <div class="card-footer">
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-inverse"</span> <span class="na">style=</span><span class="s">"background-color: #333; border-color: #333;"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-block"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Special title treatment<span class="nt">&lt;/h3&gt;</span>
     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>With supporting text below as a natural lead-in to additional content.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Go somewhere<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-inverse text-center"</span> <span class="na">style=</span><span class="s">"background-color: #333; border-color: #333;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>
+    Inverse card
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-block"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Special title treatment<span class="nt">&lt;/h3&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>With supporting text below as a natural lead-in to additional content.<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-footer"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Go somewhere<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
@@ -884,7 +905,7 @@
 <p>Cards include their own variant classes for quickly changing the <code class="highlighter-rouge">background-color</code> and <code class="highlighter-rouge">border-color</code> of a card. <strong>Darker colors require the use of <code class="highlighter-rouge">.card-inverse</code>.</strong></p>
 
 <div class="cf-example" data-example-id="">
-<div class="card card-inverse card-primary text-xs-center">
+<div class="card card-inverse card-primary text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -892,7 +913,7 @@
     </blockquote>
   </div>
 </div>
-<div class="card card-inverse card-success text-xs-center">
+<div class="card card-inverse card-success text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -900,7 +921,7 @@
     </blockquote>
   </div>
 </div>
-<div class="card card-inverse card-info text-xs-center">
+<div class="card card-inverse card-info text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -908,7 +929,7 @@
     </blockquote>
   </div>
 </div>
-<div class="card card-inverse card-warning text-xs-center">
+<div class="card card-inverse card-warning text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -916,7 +937,7 @@
     </blockquote>
   </div>
 </div>
-<div class="card card-inverse card-danger text-xs-center">
+<div class="card card-inverse card-danger text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -925,7 +946,7 @@
   </div>
 </div>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-inverse card-primary text-xs-center"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-inverse card-primary text-center"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-block"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">"card-blockquote"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<span class="nt">&lt;/p&gt;</span>
@@ -933,7 +954,7 @@
     <span class="nt">&lt;/blockquote&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-inverse card-success text-xs-center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-inverse card-success text-center"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-block"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">"card-blockquote"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<span class="nt">&lt;/p&gt;</span>
@@ -941,7 +962,7 @@
     <span class="nt">&lt;/blockquote&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-inverse card-info text-xs-center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-inverse card-info text-center"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-block"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">"card-blockquote"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<span class="nt">&lt;/p&gt;</span>
@@ -949,7 +970,7 @@
     <span class="nt">&lt;/blockquote&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-inverse card-warning text-xs-center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-inverse card-warning text-center"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-block"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">"card-blockquote"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<span class="nt">&lt;/p&gt;</span>
@@ -957,7 +978,7 @@
     <span class="nt">&lt;/blockquote&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-inverse card-danger text-xs-center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-inverse card-danger text-center"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-block"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">"card-blockquote"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<span class="nt">&lt;/p&gt;</span>
@@ -977,7 +998,7 @@
 <p>In need of a colored card, but not the hefty background colors they bring? Replace the default modifier classes with the <code class="highlighter-rouge">.card-outline-*</code> ones to style just the <code class="highlighter-rouge">border-color</code> of a card.</p>
 
 <div class="cf-example" data-example-id="">
-<div class="card card-outline-primary text-xs-center">
+<div class="card card-outline-primary text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -985,7 +1006,7 @@
     </blockquote>
   </div>
 </div>
-<div class="card card-outline-secondary text-xs-center">
+<div class="card card-outline-secondary text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -993,7 +1014,7 @@
     </blockquote>
   </div>
 </div>
-<div class="card card-outline-success text-xs-center">
+<div class="card card-outline-success text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -1001,7 +1022,7 @@
     </blockquote>
   </div>
 </div>
-<div class="card card-outline-info text-xs-center">
+<div class="card card-outline-info text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -1009,7 +1030,7 @@
     </blockquote>
   </div>
 </div>
-<div class="card card-outline-warning text-xs-center">
+<div class="card card-outline-warning text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -1017,7 +1038,7 @@
     </blockquote>
   </div>
 </div>
-<div class="card card-outline-danger text-xs-center">
+<div class="card card-outline-danger text-center">
   <div class="card-block">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -1026,7 +1047,7 @@
   </div>
 </div>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-outline-primary text-xs-center"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-outline-primary text-center"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-block"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">"card-blockquote"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<span class="nt">&lt;/p&gt;</span>
@@ -1034,7 +1055,7 @@
     <span class="nt">&lt;/blockquote&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-outline-secondary text-xs-center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-outline-secondary text-center"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-block"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">"card-blockquote"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<span class="nt">&lt;/p&gt;</span>
@@ -1042,7 +1063,7 @@
     <span class="nt">&lt;/blockquote&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-outline-success text-xs-center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-outline-success text-center"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-block"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">"card-blockquote"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<span class="nt">&lt;/p&gt;</span>
@@ -1050,7 +1071,7 @@
     <span class="nt">&lt;/blockquote&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-outline-info text-xs-center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-outline-info text-center"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-block"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">"card-blockquote"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<span class="nt">&lt;/p&gt;</span>
@@ -1058,7 +1079,7 @@
     <span class="nt">&lt;/blockquote&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-outline-warning text-xs-center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-outline-warning text-center"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-block"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">"card-blockquote"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<span class="nt">&lt;/p&gt;</span>
@@ -1066,7 +1087,7 @@
     <span class="nt">&lt;/blockquote&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-outline-danger text-xs-center"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-outline-danger text-center"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-block"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">"card-blockquote"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<span class="nt">&lt;/p&gt;</span>
@@ -1242,7 +1263,7 @@
 
 <p>Only applies to small devices and above.</p>
 
-<p><strong>Heads up!</strong> This is <strong>not available in IE9 and below</strong> as they have no support for the <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_multi-column_layouts"><code class="highlighter-rouge">column-*</code> CSS properties</a>.</p>
+<p><strong>Heads up!</strong> This is <strong>not available in IE9 and below</strong> as they have no support for the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Using_multi-column_layouts"><code class="highlighter-rouge">column-*</code> CSS properties</a>.</p>
 
 <div class="cf-example" data-example-id="">
 <div class="card-columns">
@@ -1271,7 +1292,7 @@
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
-  <div class="card card-block card-inverse card-primary text-xs-center">
+  <div class="card card-block card-inverse card-primary text-center">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
       <footer>
@@ -1281,7 +1302,7 @@
       </footer>
     </blockquote>
   </div>
-  <div class="card card-block text-xs-center">
+  <div class="card card-block text-center">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
@@ -1289,7 +1310,7 @@
   <div class="card">
     <img class="card-img img-responsive" data-src="holder.js/100px260/" alt="Card image" />
   </div>
-  <div class="card card-block text-xs-right">
+  <div class="card card-block text-right">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
       <footer>
@@ -1332,7 +1353,7 @@
       <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Last updated 3 mins ago<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-block card-inverse card-primary text-xs-center"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-block card-inverse card-primary text-center"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">"card-blockquote"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.<span class="nt">&lt;/p&gt;</span>
       <span class="nt">&lt;footer&gt;</span>
@@ -1342,7 +1363,7 @@
       <span class="nt">&lt;/footer&gt;</span>
     <span class="nt">&lt;/blockquote&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-block text-xs-center"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-block text-center"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h4</span> <span class="na">class=</span><span class="s">"card-title"</span><span class="nt">&gt;</span>Card title<span class="nt">&lt;/h4&gt;</span>
     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>This card has supporting text below as a natural lead-in to additional content.<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Last updated 3 mins ago<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
@@ -1350,7 +1371,7 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"card-img img-responsive"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Card image"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-block text-xs-right"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card card-block text-right"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;blockquote</span> <span class="na">class=</span><span class="s">"card-blockquote"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;p&gt;</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.<span class="nt">&lt;/p&gt;</span>
       <span class="nt">&lt;footer&gt;</span>
@@ -1389,7 +1410,7 @@
 
     <footer class="cf-footer">
     <div class="container">
-        Currently version: 1.3.1
+        Current version: 2.0.0
         <ul class="footer-links">
             <li><a href="https://github.com/cast-org/figuration">GitHub Project</a></li>
             <li><a href="https://github.com/cast-org/figuration/issues">Issues</a></li>
@@ -1419,6 +1440,17 @@
 
     </div>
 </footer>
+
+
+<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script>
+docsearch({
+    apiKey: '3b9b6e000775400f4833a14c4daa6049',
+    indexName: 'figuration',
+    inputSelector: '#docsearch'
+});
+</script>
+
 
 </body>
 </html>

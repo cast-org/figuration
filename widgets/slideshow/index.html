@@ -22,12 +22,18 @@
   <link href="/dist/css/figuration.min.css" rel="stylesheet">
 
 
+
+<!-- Algolia DocSearch CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+
+
 <!-- Docs CSS -->
 
   <link href="/assets/css/docs.min.css" rel="stylesheet">
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
 
 <!-- Core JS -->
@@ -61,11 +67,18 @@
     <div class="container">
         <nav>
             <a class="navbar-brand" href="/">CAST Figuration</a>
-            <div class="clearfix hidden-lg-up">
-                <button class="navbar-toggler btn btn-toggler pull-xs-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">
+            <div class="hide-lg-up float-right">
+                <button class="navbar-toggler btn btn-toggler" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">
                     <span class="icon-menu" aria-hidden="true">&#8801;</span>
                 </button>
             </div>
+            
+            <div class="hide-xs-down float-right mt-0_25 mr-1 mr-lg-0">
+                <form class="form-inline docsearch-wrapper">
+                    <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
+                </form>
+            </div>
+            
             <div class="collapse navbar-toggleable-md" id="cf-topnav">
                 <ul class="nav navbar-nav">
                     <li class="nav-item ">
@@ -81,7 +94,7 @@
                         <a href="/components/alerts/" class="nav-link">Components</a>
                     </li>
                     <li class="nav-item ">
-                        <a href="/utilities/clearfix/" class="nav-link">Utilities</a>
+                        <a href="/utilities/borders/" class="nav-link">Utilities</a>
                     </li>
                     <li class="nav-item active">
                         <a href="/widgets/overview/" class="nav-link">Widgets</a>
@@ -89,9 +102,7 @@
                     <li class="nav-item ">
                         <a href="/about/overview/" class="nav-link">About</a>
                     </li>
-                    <li class="nav-item pull-lg-right">
-                        <a href="https://github.com/cast-org/figuration" class="nav-link"><small>GitHub</small></a>
-                    </li>
+                    
                 </ul>
             </div>
         </nav>
@@ -101,7 +112,7 @@
     <div class="jumbotron jumbotron-full jumbotron-docs">
         <div class="container">
             
-    <h1>Widgets</h1>
+    <div class="h1">Widgets</div>
     <p class="lead">
         Bring interactivity to your site with a selection of jQuery widgets (plugins) all built with accessibility and usability in mind.
     </p>
@@ -112,7 +123,7 @@
 
     <main class="container">
         <div class="row">
-            <div class="col-xs-12 col-md-3 cf-sidebar">
+            <div class="col-12 col-md-3 cf-sidebar">
                 <nav class="cf-links">
 
 
@@ -145,240 +156,219 @@
   
 
   
-    
-      <div class="h4">Widgets</div>
-      <ul class="nav">
+    <div class="h4">Widgets</div>
+    <ul class="nav">
+      
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/overview" class="nav-link ">
-              Overview
-            </a>
-          </li>
         
-          
-          
-
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/accordion" class="nav-link ">
-              Accordion
-            </a>
-          </li>
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/affix" class="nav-link ">
-              Affix
-            </a>
-          </li>
+        <li class="nav-item">
+          <a href="/widgets/overview/" class="nav-link ">
+            Overview
+          </a>
+        </li>
+      
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/alert" class="nav-link ">
-              Alert
-            </a>
-          </li>
         
-          
-          
-
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/button" class="nav-link ">
-              Button
-            </a>
-          </li>
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/collapse" class="nav-link ">
-              Collapse
-            </a>
-          </li>
+        <li class="nav-item">
+          <a href="/widgets/accordion/" class="nav-link ">
+            Accordion
+          </a>
+        </li>
+      
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/drag" class="nav-link ">
-              Drag
-            </a>
-          </li>
         
-          
-          
-
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/dropdown" class="nav-link ">
-              Dropdown
-            </a>
-          </li>
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/equalize" class="nav-link ">
-              Equalize
-            </a>
-          </li>
+        <li class="nav-item">
+          <a href="/widgets/affix/" class="nav-link ">
+            Affix
+          </a>
+        </li>
+      
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/lazy" class="nav-link ">
-              Lazy
-            </a>
-          </li>
         
-          
-          
-
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/modal" class="nav-link ">
-              Modal
-            </a>
-          </li>
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/player" class="nav-link ">
-              Player
-            </a>
-          </li>
+        <li class="nav-item">
+          <a href="/widgets/alert/" class="nav-link ">
+            Alert
+          </a>
+        </li>
+      
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/popover" class="nav-link ">
-              Popover
-            </a>
-          </li>
         
-          
-          
-
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/scrollspy" class="nav-link ">
-              Scrollspy
-            </a>
-          </li>
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/slider" class="nav-link ">
-              Slider
-            </a>
-          </li>
+        <li class="nav-item">
+          <a href="/widgets/button/" class="nav-link ">
+            Button
+          </a>
+        </li>
+      
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/slideshow" class="nav-link active">
-              Slideshow
-            </a>
-          </li>
         
-          
-          
-
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/tab" class="nav-link ">
-              Tab
-            </a>
-          </li>
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/tab-responsive" class="nav-link ">
-              Tab-Responsive
-            </a>
-          </li>
+        <li class="nav-item">
+          <a href="/widgets/collapse/" class="nav-link ">
+            Collapse
+          </a>
+        </li>
+      
         
-          
-          
 
-          
-          
-
-          <li class="nav-item">
-            <a href="/widgets/tooltip" class="nav-link ">
-              Tooltip
-            </a>
-          </li>
         
-      </ul>
-    
+        
+
+        <li class="nav-item">
+          <a href="/widgets/drag/" class="nav-link ">
+            Drag
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/widgets/dropdown/" class="nav-link ">
+            Dropdown
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/widgets/equalize/" class="nav-link ">
+            Equalize
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/widgets/lazy/" class="nav-link ">
+            Lazy
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/widgets/modal/" class="nav-link ">
+            Modal
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/widgets/player/" class="nav-link ">
+            Player
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/widgets/popover/" class="nav-link ">
+            Popover
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/widgets/scrollspy/" class="nav-link ">
+            Scrollspy
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/widgets/slider/" class="nav-link ">
+            Slider
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/widgets/slideshow/" class="nav-link active">
+            Slideshow
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/widgets/tab/" class="nav-link ">
+            Tab
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/widgets/tab-responsive/" class="nav-link ">
+            Tab-Responsive
+          </a>
+        </li>
+      
+        
+
+        
+        
+
+        <li class="nav-item">
+          <a href="/widgets/tooltip/" class="nav-link ">
+            Tooltip
+          </a>
+        </li>
+      
+    </ul>
   
 
   
@@ -389,11 +379,11 @@
 </nav>
 
             </div>
-            <div class="col-xs-12 col-md-9 cf-content">
+            <div class="col-12 col-md-9 cf-content">
                 <h1 class="cf-title" id="content">
                     Slideshow
                     
-                        <small>slideshow.js</small>
+                        <small class="text-muted">slideshow.js</small>
                     
                 </h1>
 
@@ -504,17 +494,17 @@
 
 <h3 id="methods">Methods</h3>
 
-<h4 class="no_toc" id="cfwslideshow"><code class="highlighter-rouge">.CFW_Slideshow()</code></h4>
+<h4 class="no_toc" id="cfw_slideshow"><code class="highlighter-rouge">.CFW_Slideshow()</code></h4>
 
 <p>Activates the slideshow element.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#mySlideshow'</span><span class="p">).</span><span class="nx">CFW_Slideshow</span><span class="p">();</span></code></pre></figure>
 
-<h4 class="no_toc" id="cfwslideshowprev"><code class="highlighter-rouge">.CFW_Slideshow('prev')</code></h4>
+<h4 class="no_toc" id="cfw_slideshowprev"><code class="highlighter-rouge">.CFW_Slideshow('prev')</code></h4>
 
 <p>Shows the previous slide, unless the first slide is current.</p>
 
-<h4 class="no_toc" id="cfwslideshownext"><code class="highlighter-rouge">.CFW_Slideshow('next')</code></h4>
+<h4 class="no_toc" id="cfw_slideshownext"><code class="highlighter-rouge">.CFW_Slideshow('next')</code></h4>
 
 <p>Shows the next slide, unless the last slide is current.</p>
 
@@ -560,7 +550,7 @@
 
     <footer class="cf-footer">
     <div class="container">
-        Currently version: 1.3.1
+        Current version: 2.0.0
         <ul class="footer-links">
             <li><a href="https://github.com/cast-org/figuration">GitHub Project</a></li>
             <li><a href="https://github.com/cast-org/figuration/issues">Issues</a></li>
@@ -590,6 +580,17 @@
 
     </div>
 </footer>
+
+
+<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script>
+docsearch({
+    apiKey: '3b9b6e000775400f4833a14c4daa6049',
+    indexName: 'figuration',
+    inputSelector: '#docsearch'
+});
+</script>
+
 
 </body>
 </html>
