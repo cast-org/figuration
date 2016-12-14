@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v1.3.1): tooltip.js
+ * Figuration (v2.0.0): tooltip.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -229,6 +229,12 @@
                     .on('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]', function(e) {
                         $selfRef.toggle(e);
                     });
+                // Hide tooltips on modal close
+                this.$triggerElm.closest('.modal')
+                    .off('beforeHide.cfw.modal')
+                    .on('beforeHide.cfw.modal', function() {
+                        $selfRef.hide(true);
+                    });
             }
         },
 
@@ -450,6 +456,7 @@
 
             this.$triggerElm
                 .off('.cfw.' + this.type + '.focusStart')
+                .off('.cfw.modal')
                 .removeAttr('aria-describedby');
             this.$targetElm
                 .off('.cfw.' + this.type)
@@ -494,6 +501,7 @@
                     .removeData('cfw.' + this.type);
             }
             this.$triggerElm.off('.cfw.' + this.type)
+                .off('.cfw.modal')
                 .removeAttr('data-cfw')
                 .removeData('cfw.' + this.type);
             this.unlinking = false;

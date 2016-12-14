@@ -53,7 +53,7 @@ Use `.container-fluid` for a full width container, spanning the entire width of 
 
 ## Responsive Breakpoints
 
-Since Figuration is developed to be mobile first, we use a handful of [media queries](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries) to create sensible breakpoints for our layouts and interfaces. These breakpoints are mostly based on minimum viewport widths and allow us to scale up elements as the viewport changes.
+Since Figuration is developed to be mobile first, we use a handful of [media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries) to create sensible breakpoints for our layouts and interfaces. These breakpoints are mostly based on minimum viewport widths and allow us to scale up elements as the viewport changes.
 
 For accessibility reasons, the Sass internally maps the pixel defined breakpoints into `em` values.  We assume a 16px default root font size, since this is the default for most browsers.
 
@@ -72,11 +72,11 @@ Some reference material - may be competing points of view:
 Figuration primarily uses the following media query ranges---or breakpoints---in our source Sass files for our layout, grid system, and components.
 
 {% highlight scss %}
-// Extra small devices (portrait phones, less than 34em)
+// Extra small devices (portrait phones, less than 36em/576px)
 // No media query since this is the default in Bootstrap
 
-// Small devices (landscape phones, 34em/544px and up)
-@media (min-width: 34em) { ... }
+// Small devices (landscape phones, 36em/576px and up)
+@media (min-width: 36em) { ... }
 
 // Medium devices (tablets, 48em/768px and up)
 @media (min-width: 48em) { ... }
@@ -108,8 +108,8 @@ Since we write our source CSS in Sass, all our media queries are available via S
 We occasionally use media queries that go in the other direction (the given screen size *or smaller*):
 
 {% highlight scss %}
-// Extra small devices (portrait phones, less than 34em/544px)
-@media (max-width: 33.9375em) { ... }
+// Extra small devices (portrait phones, less than 36em/576px)
+@media (max-width: 35.9375em) { ... }
 
 // Small devices (landscape phones, less than 48em/768px)
 @media (max-width: 47.9375em) { ... }
@@ -136,11 +136,11 @@ Once again, these media queries are also available via Sass mixins:
 We also have media between the breakpoint's minimum and maximum widths for only the given screen size:
 
 {% highlight scss %}
-// Extra small devices (portrait phones, less than 544px)
-@media (max-width: 543px) { ... }
+// Extra small devices (portrait phones, less than 36em/576px)
+@media (max-width: 35.9375em) { ... }
 
-// Small devices (landscape phones, 34em/544px and up)
-@media (min-width: 34em) and (max-width: 47.9375em) { ... }
+// Small devices (landscape phones, 36em/576px and up)
+@media (min-width: 36em) and (max-width: 47.9375em) { ... }
 
 // Medium devices (tablets, 48em/768px and up)
 @media (min-width: 48em) and (max-width: 61.9375em) { ... }
@@ -175,6 +175,26 @@ The Sass mixin for the above example look like that shown beneath:
 {% highlight scss %}
 @include media-breakpoint-between(md, lg) { ... }
 {% endhighlight %}
+
+## Breakpoint Nomenclature
+
+Since Figuration is built as a mobile first framework, by default, we have created our class naming structure to **not** use the smallest breakpoint designation, except for a few certain instances.  However, this is configurable for custom builds by overriding `$enable-bp-smallest` option referenced in the [Global Options]({{ site.baseurl }}/get-started/options/#global-options) settings.
+
+Classes that apply to all breakpoints, from `xs` to `xl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
+
+Building from the base component or utility name, most classes are named using the format `.base-{direction}-{dimension}` for `xs` and `.base-{breakpoint}-{direction}-{dimension}` for `sm`, `md`, `lg`, and `xl`.  In the case of some utilites that have abbreviated names, such as the [spacing utilities]({{ site.baseurl }}/utilities/spacing), the format is `.abbr{direction}-{breakpoint}-{dimension}`.
+
+The only special case is where there are `*-up` or `*-down` variants for certain components or classes, the breakpoint designation.  Only then is the minimum breakpoint designation used in the class name.
+
+A quick example using some of Figuration's [Typography utility classes]({{ site.baseurl }}/utilities/typography).
+
+{% example html %}
+<p class="text-right">Right aligned text on all viewport sizes. (<strong>No <code>xs</code> class designation!</strong>)</p>
+<p class="text-sm-right">Right aligned text on viewports sized SM (small) or wider.</p>
+<p class="text-md-right">Right aligned text on viewports sized MD (medium) or wider.</p>
+<p class="text-lg-right">Right aligned text on viewports sized LG (large) or wider.</p>
+<p class="text-xl-right">Right aligned text on viewports sized XL (extra-large) or wider.</p>
+{% endexample %}
 
 ## Z-index
 

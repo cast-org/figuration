@@ -18,7 +18,7 @@ Here's what you need to know before getting started with the navbar:
 
 - Navbars require a wrapping `.navbar` and a [color scheme](#color-schemes).
 - Navbars and their contents are fluid by default. Use [optional containers](#containers) to limit their horizontal width.
-- Use `.pull-*-left` and `.pull-*-right` to quickly align sub-components.
+- Use `.float-*-left` and `.float-*-right` to quickly align sub-components.
 - Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
 
 ## Supported Content
@@ -29,7 +29,7 @@ Navbars come with built-in support for a handful of sub-components. Mix and matc
 - `.navbar-nav` for a full-height and lightweight navigation (including support for dropdowns)
 - `.navbar-toggler` for use with our [Collapse widget]({{ site.baseurl }}/widgets/collapse/) and other [navigation toggling](#collapsing-content) behaviors.
 
-Note that the `.navbar-nav` builds off the `.nav` component, but currently does not support flexbox layout, so it will get reset back to `display: block;` in [full flexbox](/layout/flexbox#full-flexbox-mode) mode.
+Note that the `.navbar-nav` builds off the `.nav` component, but currently does not support flexbox layout, so it will get reset back to `display: block;` in [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) mode.
 
 Here's an example of all the sub-components included in a default, light navbar:
 
@@ -50,7 +50,7 @@ Here's an example of all the sub-components included in a default, light navbar:
       <a class="nav-link" href="#">About</a>
     </li>
   </ul>
-  <form class="form-inline pull-xs-right">
+  <form class="form-inline float-right">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
@@ -67,7 +67,7 @@ The `.navbar-brand` can be applied to most elements, but an anchor works best as
 </nav>
 
 <nav class="navbar navbar-light bg-faded">
-  <h1 class="navbar-brand margin-b-0">Navbar</h1>
+  <h1 class="navbar-brand mb-0">Navbar</h1>
 </nav>
 
 {% endexample %}
@@ -124,7 +124,7 @@ Using the utility classes, you can change the alignment and appearance of your n
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-    <span class="navbar-text pull-xs-right text-danger">
+    <span class="navbar-text float-right text-danger">
         Navbar text floated right
     </span>
 </nav>
@@ -135,9 +135,50 @@ You can also use utility classes to align navbar text to other navbar elements l
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
     <a href="#" class="navbar-brand">Navbar</a>
-    <span class="navbar-text pull-xs-left">
+    <span class="navbar-text float-left">
         Navbar text floated left
     </span>
+</nav>
+{% endexample %}
+
+### Disabled Items
+
+Add `.disabled` to a `.nav-link` to indicate a disabled state.
+
+It should also be noted that:
+- `<a>`s don't support the `disabled` attribute, so you must add the `.disabled` class to make it visually appear disabled.
+- Some future-friendly styles are included to disable all `pointer-events` on anchor link. In browsers which support that property, you won't see the disabled cursor at all.
+- Disabled links should include the `aria-disabled="true"` attribute to indicate the state of the element to assistive technologies.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+    <a href="#" class="navbar-brand">Navbar</a>
+    <ul class="nav navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#" aria-disabled="true">Disabled</a>
+        </li>
+        <li class="nav-item">
+            <span class="nav-link disabled">Disabled</span>
+        </li>
+    </ul>
+</nav>
+
+<nav class="navbar navbar-dark bg-inverse">
+    <a href="#" class="navbar-brand">Navbar</a>
+    <ul class="nav navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#" aria-disabled="true">Disabled</a>
+        </li>
+        <li class="nav-item">
+            <span class="nav-link disabled">Disabled</span>
+        </li>
+    </ul>
 </nav>
 {% endexample %}
 
@@ -190,7 +231,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline pull-xs-right">
+    <form class="form-inline float-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-secondary" type="submit">Search</button>
     </form>
@@ -211,7 +252,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline pull-xs-right">
+    <form class="form-inline float-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-secondary" type="submit">Search</button>
     </form>
@@ -232,7 +273,7 @@ Here are some examples to show what we mean.
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <form class="form-inline pull-xs-right">
+    <form class="form-inline float-right">
       <input class="form-control" type="text" placeholder="Search">
       <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
@@ -306,7 +347,7 @@ Our [Collapse widget]({{ site.baseurl }}/widgets/collapse/) allows you to use a 
     <span aria-hidden="true">&#8801;</span>
   </button>
   <div class="collapse" id="exCollapsingNavbar">
-    <div class="bg-inverse padding-a-1">
+    <div class="bg-inverse p-1">
       <h4>Collapsed content</h4>
       Toggleable via the navbar button.
     </div>
@@ -314,18 +355,18 @@ Our [Collapse widget]({{ site.baseurl }}/widgets/collapse/) allows you to use a 
 </nav>
 {% endexample %}
 
+### Responsive Variants
+
 For more complex navbar patterns, use the `.navbar-toggleable-*` classes in conjunction with the `.navbar-toggler`. These classes override our responsive utilities to show navigation only when content is meant to be shown.
 
-### Responsive Variant
+For the examples in this section, you will need to resize your browser window below/above the `lg` breakpoint to see the navbars switch between modes.
 
-To see the navbar switch between modes, you will need to resize your browser window below/above the `lg` breakpoint for this example.
-
-Note the use of the `hidden` option for the [Collapse widget]({{ site.baseurl }}/widgets/collapse) to allow the navigation items to be read by screen readers when not in a collapsed mode for larger screens.
+Note the use of the `data-cfw-collapse-hidden="false"` option for the [Collapse widget]({{ site.baseurl }}/widgets/collapse) to allow the navigation items to be read by screen readers when not in a collapsed mode for larger screens.
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
     <a class="navbar-brand" href="#">Responsive navbar</a>
-    <button class="navbar-toggler hidden-lg-up pull-xs-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav0" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
+    <button class="navbar-toggler hide-lg-up float-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav0" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
     <div class="collapse navbar-toggleable-md" id="respNav0">
         <ul class="nav navbar-nav">
             <li class="nav-item active">
@@ -345,11 +386,65 @@ Note the use of the `hidden` option for the [Collapse widget]({{ site.baseurl }}
 </nav>
 {% endexample %}
 
+With the `.navbar-brand` in the collapsing area.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+    <button class="navbar-toggler hide-lg-up float-left" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav1" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
+    <div class="collapse navbar-toggleable-md" id="respNav1">
+        <a class="navbar-brand" href="#">Responsive navbar</a>
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+{% endexample %}
+
+When using dropdowns, they will display 'inline' with the rest of the navbar menu.
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded">
+    <button class="navbar-toggler hide-lg-up float-left" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav2" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
+    <div class="collapse navbar-toggleable-md" id="respNav2">
+        <a class="navbar-brand" href="#">Responsive navbar</a>
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#navDropdown1">Dropdown</a>
+                <ul class="dropdown-menu" id="navDropdown1">
+                    <li><a href="#" class="dropdown-item">Action</a></li>
+                    <li><a href="#" class="dropdown-item">Another action</a></li>
+                    <li><a href="#" class="dropdown-item">Something else here</a></li>
+                    <li class="dropdown-divider"></li>
+                    <li><a href="#" class="dropdown-item">Separated link</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+{% endexample %}
+
 ## Navbar Group
 
 Further extending the wierdness that is the navbar, we have added the `.navbar-group` container to allow support for a `table` style layout.
 
-This also adds support for both the opt-in flexbox and [full flexbox](/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.navbar-group-flex` class to the `.navbar-group`.
+This also adds support for both the opt-in flexbox and [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.navbar-group-flex` class to the `.navbar-group`.
 
 Each 'segment' of a navbar group will also need to be wrapped in, or classed with `.navbar-item`.
 
@@ -371,7 +466,7 @@ Each 'segment' of a navbar group will also need to be wrapped in, or classed wit
                 <a class="nav-link" href="#">About</a>
             </li>
         </ul>
-        <form class="navbar-item navbar-item-min form-inline text-xs-right">
+        <form class="navbar-item navbar-item-min form-inline text-right">
             <input class="form-control" type="text" placeholder="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
@@ -385,7 +480,7 @@ Each 'segment' of a navbar group will also need to be wrapped in, or classed wit
 <nav class="navbar navbar-light bg-faded">
     <div class="navbar-group navbar-group-justified">
         <a class="navbar-item navbar-brand" href="#">Navbar</a>
-        <ul class="navbar-item nav navbar-nav text-xs-center">
+        <ul class="navbar-item nav navbar-nav text-center">
             <li class="nav-item active">
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -399,7 +494,7 @@ Each 'segment' of a navbar group will also need to be wrapped in, or classed wit
                 <a class="nav-link" href="#">About</a>
             </li>
         </ul>
-        <span class="navbar-item navbar-text text-xs-right text-success">Justified!</span>
+        <span class="navbar-item navbar-text text-right text-success">Justified!</span>
     </div>
 </nav>
 {% endexample %}

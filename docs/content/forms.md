@@ -166,8 +166,7 @@ Below is a complete list of the specific form controls supported by Figuration a
     <tr>
       <td class="text-nowrap">
 {% markdown %}
-`.form-check`<br>
-`.form-check-inline`
+`.form-check`
 {% endmarkdown %}
       </td>
       <td class="text-nowrap">
@@ -186,74 +185,74 @@ Here are examples of `.form-control` applied to each textual HTML5 `<input>` `ty
 
 {% example html %}
 <div class="form-group row">
-  <label for="example-text-input" class="col-xs-2 form-control-label">Text</label>
-  <div class="col-xs-10">
+  <label for="example-text-input" class="col-2 form-control-label">Text</label>
+  <div class="col-10">
     <input class="form-control" type="text" value="awesome frameworks" id="example-text-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-search-input" class="col-xs-2 form-control-label">Search</label>
-  <div class="col-xs-10">
+  <label for="example-search-input" class="col-2 form-control-label">Search</label>
+  <div class="col-10">
     <input class="form-control" type="search" value="How do I move mountains" id="example-search-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-email-input" class="col-xs-2 form-control-label">Email</label>
-  <div class="col-xs-10">
+  <label for="example-email-input" class="col-2 form-control-label">Email</label>
+  <div class="col-10">
     <input class="form-control" type="email" value="name@example.com" id="example-email-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-url-input" class="col-xs-2 form-control-label">URL</label>
-  <div class="col-xs-10">
+  <label for="example-url-input" class="col-2 form-control-label">URL</label>
+  <div class="col-10">
     <input class="form-control" type="url" value="http://cast.org" id="example-url-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-tel-input" class="col-xs-2 form-control-label">Telephone</label>
-  <div class="col-xs-10">
+  <label for="example-tel-input" class="col-2 form-control-label">Telephone</label>
+  <div class="col-10">
     <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-password-input" class="col-xs-2 form-control-label">Password</label>
-  <div class="col-xs-10">
+  <label for="example-password-input" class="col-2 form-control-label">Password</label>
+  <div class="col-10">
     <input class="form-control" type="password" value="hunter2" id="example-password-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-number-input" class="col-xs-2 form-control-label">Number</label>
-  <div class="col-xs-10">
+  <label for="example-number-input" class="col-2 form-control-label">Number</label>
+  <div class="col-10">
     <input class="form-control" type="number" value="42" id="example-number-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-datetime-local-input" class="col-xs-2 form-control-label">Date and time</label>
-  <div class="col-xs-10">
+  <label for="example-datetime-local-input" class="col-2 form-control-label">Date and time</label>
+  <div class="col-10">
     <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-date-input" class="col-xs-2 form-control-label">Date</label>
-  <div class="col-xs-10">
+  <label for="example-date-input" class="col-2 form-control-label">Date</label>
+  <div class="col-10">
     <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-month-input" class="col-xs-2 form-control-label">Month</label>
-  <div class="col-xs-10">
+  <label for="example-month-input" class="col-2 form-control-label">Month</label>
+  <div class="col-10">
     <input class="form-control" type="month" value="2011-08" id="example-month-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-week-input" class="col-xs-2 form-control-label">Week</label>
-  <div class="col-xs-10">
+  <label for="example-week-input" class="col-2 form-control-label">Week</label>
+  <div class="col-10">
     <input class="form-control" type="week" value="2011-W33" id="example-week-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-time-input" class="col-xs-2 form-control-label">Time</label>
-  <div class="col-xs-10">
+  <label for="example-time-input" class="col-2 form-control-label">Time</label>
+  <div class="col-10">
     <input class="form-control" type="time" value="13:45:00" id="example-time-input">
   </div>
 </div>
@@ -348,7 +347,7 @@ Assistive technologies such as screen readers will have trouble with your forms 
 
 ### Using the Grid
 
-For more structured form layouts that are also responsive, you can utilize Figuration's [predefined grid classes](/layout/grid/#predefined-classes) or [mixins](/layout/grid/#sass-mixins) to create horizontal forms. Add the `.row` class to form groups and use the `.col-*-*` classes to specify the width of your labels and controls.
+For more structured form layouts that are also responsive, you can utilize Figuration's [predefined grid classes]({{ site.baseurl }}/layout/grid/#predefined-classes) or [mixins]({{ site.baseurl }}/layout/grid/#sass-mixins) to create horizontal forms. Add the `.row` class to form groups and use the `.col-*-*` classes to specify the width of your labels and controls.
 
 Be sure to add `.form-control-label` to your `<label>`s as well so they're vertically centered with their associated form controls. For `<legend>` elements, you can use `.col-form-legend` to make them appear similar to regular `<label>` elements.
 
@@ -368,7 +367,7 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
       </div>
     </div>
     <fieldset class="form-group row">
-      <label class="col-sm-2">Radios</label>
+      <legend class="col-sm-2 form-control-legend">Radios</legend>
       <div class="col-sm-10">
         <div class="form-check">
           <label class="form-check-label">
@@ -391,7 +390,7 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
       </div>
     </fieldset>
     <div class="form-group row">
-      <label class="col-sm-2">Checkbox</label>
+      <legend class="col-sm-2 form-control-legend">Checkbox</legend>
       <div class="col-sm-10">
         <div class="form-check">
           <label class="form-check-label">
@@ -479,30 +478,42 @@ By default, any number of checkboxes and radios that are immediate sibling will 
 
 ### Inline
 
-Groups of checkboxes or radios that appear on the same horizontal row are similar to their stacked counterparts, but require different HTML and a single class. To switch from stacked to inline, drop the surrounding `<div>`, add `.form-check-inline` to the `<label>`, and keep the `.form-check-input` on the `<input>`.
+Group checkboxes or radios on the same horizontal row by adding `.form-check-inline` to any `.form-check`.
 
 {% example html %}
-<label class="form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3"> 3
-</label>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
+  </label>
+</div>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
+  </label>
+</div>
+<div class="form-check form-check-inline disabled">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled> 3
+  </label>
+</div>
 {% endexample %}
 
 {% example html %}
-<label class="form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
-</label>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+  </label>
+</div>
+<div class="form-check form-check-inline">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+  </label>
+</div>
+<div class="form-check form-check-inline disabled">
+  <label class="form-check-label">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled> 3
+  </label>
+</div>
 {% endexample %}
 
 ### Without Labels
@@ -651,14 +662,14 @@ Wrap inputs in grid columns, or any custom parent element, to easily enforce des
 
 {% example html %}
 <div class="row">
-  <div class="col-xs-2">
-    <input type="text" class="form-control" placeholder=".col-xs-2">
+  <div class="col-2">
+    <input type="text" class="form-control" placeholder=".col-2">
   </div>
-  <div class="col-xs-3">
-    <input type="text" class="form-control" placeholder=".col-xs-3">
+  <div class="col-3">
+    <input type="text" class="form-control" placeholder=".col-3">
   </div>
-  <div class="col-xs-4">
-    <input type="text" class="form-control" placeholder=".col-xs-4">
+  <div class="col-4">
+    <input type="text" class="form-control" placeholder=".col-4">
   </div>
 </div>
 {% endexample %}
@@ -902,7 +913,7 @@ Add other states to your custom forms with our validation classes.
     <span class="custom-control-description">Check this custom checkbox</span>
   </label>
 </div>
-<div class="form-group has-danger margin-b-0">
+<div class="form-group has-danger mb-0">
   <label class="custom-control custom-checkbox">
     <input type="checkbox" class="custom-control-input">
     <span class="custom-control-indicator"></span>

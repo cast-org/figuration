@@ -25,14 +25,14 @@ Sideshow requires the following:
 
 ## Overview
 
-Tab-Responsive, removes and disables the use of `aria-hidden` attributes on the tab and collapse target items for accessibility, otherwise all content inside a Tab-Repsonsive widget would be hidden to screen readers.
+Tab-Responsive, removes and disables the use of `aria-hidden` attributes on the tab and collapse target items for accessibility, otherwise all content inside a Tab-Responsive widget would be hidden to screen readers.
 
 ## Example
 
 This example uses a breakpoint of 62em/992px.  Larger widths will see the tab style navigation, smaller widths will see a simple accordion using headers as the collapse triggers.  If you change the browser width between the two sides of the breakpoint, you will see the active tab becomes the active collapse, and vice-versa.
 
 <div class="cf-example">
-    <div data-cfw="tabResponsive" class="cf-example-tabRepsonsive">
+    <div data-cfw="tabResponsive" class="cf-example-tabResponsive">
         <ul class="nav nav-tabs">
             <li class="nav-item"><a href="#tabr0" class="nav-link" data-cfw="tab">First Tab</a></li>
             <li class="nav-item"><a href="#tabr1" class="nav-link" data-cfw="tab">Second Tab</a></li>
@@ -62,7 +62,7 @@ This example uses a breakpoint of 62em/992px.  Larger widths will see the tab st
 </div>
 
 {% highlight html %}
-<div data-cfw="tabResponsive" class="cf-example-tabRepsonsive">
+<div data-cfw="tabResponsive" class="cf-example-tabResponsive">
     <ul class="nav nav-tabs">
         <li class="nav-item"><a href="#tabr0" class="nav-link" data-cfw="tab">First Tab</a></li>
         <li class="nav-item"><a href="#tabr1" class="nav-link" data-cfw="tab">Second Tab</a></li>
@@ -94,19 +94,19 @@ This example uses a breakpoint of 62em/992px.  Larger widths will see the tab st
 {% highlight css %}
 /* Example CSS */
 @media (min-width: 62em) {
-    .cf-example-tabRepsonsive h4 {
+    .cf-example-tabResponsive h4 {
         display: none;
     }
-    .cf-example-tabRepsonsive .collapse {
+    .cf-example-tabResponsive .collapse {
         display: block;
         visibility: visible;
     }
 }
 @media (max-width: 61.9375em) {
-    .cf-example-tabRepsonsive .nav-tabs {
+    .cf-example-tabResponsive .nav-tabs {
         display: none;
     }
-    .cf-example-tabRepsonsive .tab-pane {
+    .cf-example-tabResponsive .tab-pane {
         display: block;
         visibility: visible;
     }

@@ -287,8 +287,8 @@ Holder.addTheme("gray", {
     <span class="text-capitalize">capitalize text</span><br />
 </p>
 
-<p><abbr>attr (no title)</abbr></p>
-<p><abbr title="attribute">attr</abbr></p>
+<p><abbr>abbr (no title)</abbr></p>
+<p><abbr title="abbreviation">abbr</abbr></p>
 <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr></p>
 
 <h3>Text - context</h3>
@@ -415,8 +415,6 @@ Showing a <kbd>kdb sample</kbd>
 
 <h3>Image shapes</h3>
 <p>
-  <img data-src="holder.js/150x150" class="img-rounded" alt="Square placeholder image with rounded corners" />
-  <img data-src="holder.js/150x150" class="img-circle" alt="Square placeholder image where only the portion within the circle circumscribed about said square is visible" />
   <img data-src="holder.js/150x150" class="img-thumbnail" alt="Square placeholder image with a white border around it." />
 </p>
 
@@ -427,8 +425,8 @@ Showing a <kbd>kdb sample</kbd>
 </figure>
 
 <figure class="figure">
-  <img data-src="holder.js/300x200" class="figure-img img-responsive img-rounded" alt="A square placeholder image with rounded corners in a figure.">
-  <figcaption class="figure-caption text-xs-right">A caption for the above image.</figcaption>
+  <img data-src="holder.js/300x200" class="figure-img img-responsive radius-a" alt="A square placeholder image with rounded corners in a figure.">
+  <figcaption class="figure-caption text-right">A caption for the above image.</figcaption>
 </figure>
 
 <figure class="figure">
@@ -746,10 +744,6 @@ Showing a <kbd>kdb sample</kbd>
 <h3>Contextual table</h3>
 <div class="table-responsive">
   <table class="table table-bordered">
-    <colgroup>
-      <col class="col-xs-1">
-      <col class="col-xs-7">
-    </colgroup>
     <thead>
       <tr>
         <th>Class</th>
@@ -973,7 +967,7 @@ Showing a <kbd>kdb sample</kbd>
     </div>
   </div>
   <div class="form-group row">
-    <label class="col-sm-2">Radios</label>
+    <legend class="col-sm-2 form-control-legend">Radios</legend>
     <div class="col-sm-10">
       <div class="form-check">
         <label class="form-check-label">
@@ -996,7 +990,7 @@ Showing a <kbd>kdb sample</kbd>
     </div>
   </div>
   <div class="form-group row">
-    <label class="col-sm-2">Checkbox</label>
+    <legend class="col-sm-2 form-control-legend">Checkbox</legend>
     <div class="col-sm-10">
       <div class="form-check">
         <label class="form-check-label">
@@ -1046,25 +1040,41 @@ Showing a <kbd>kdb sample</kbd>
 </div>
 
 <h3>Inline checkbox/radio</h3>
-<label class="form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3"> 3
-</label>
+<div>
+  <div class="form-check form-check-inline">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
+    </label>
+  </div>
+  <div class="form-check form-check-inline">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
+    </label>
+  </div>
+  <div class="form-check form-check-inline disabled">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled> 3
+    </label>
+  </div>
+</div>
 
-<label class="form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
-</label>
-<label class="form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
-</label>
+<div>
+  <div class="form-check form-check-inline">
+    <label class="form-check-label">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+    </label>
+  </div>
+  <div class="form-check form-check-inline">
+    <label class="form-check-label">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+    </label>
+  </div>
+  <div class="form-check form-check-inline disabled">
+    <label class="form-check-label">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled> 3
+    </label>
+  </div>
+</div>
 
 <div class="container">
   <div class="row">
@@ -1072,35 +1082,35 @@ Showing a <kbd>kdb sample</kbd>
       <div class="form-group row">
         <div class="col-sm-2">Criteria 1:
         </div>
-        <div class="col-sm-10">
-          <label class="form-check-inline"><input class="form-check-input" type="checkbox" value="yes"> Yes, I want!</label>
+        <div class="col-sm-10 form-check-inline">
+          <label class="form-check-label"><input class="form-check-input" type="checkbox" value="yes"> Yes, I want!</label>
         </div>
       </div>
       <div class="form-group row">
         <div class="col-sm-2">Criteria 2:
         </div>
-        <div class="col-sm-10">
-          <label class="form-check-inline"><input class="form-check-input" type="checkbox" value="yes"> Yes, it's me: <a href="mailto:john@doe.com">john@doe.com</a></label>
+        <div class="col-sm-10 form-check-inline">
+          <label class="form-check-label"><input class="form-check-input" type="checkbox" value="yes"> Yes, it's me: <a href="mailto:john@doe.com">john@doe.com</a></label>
         </div>
       </div>
       <div class="form-group row">
         <div class="col-sm-2">Criteria 3:
         </div>
-        <div class="col-sm-10">
-          <label class="form-check-inline"><input class="form-check-input" type="checkbox" value="yes"> Yes, I <em>really</em> want it!</label>
+        <div class="col-sm-10 form-check-inline">
+          <label class="form-check-label"><input class="form-check-input" type="checkbox" value="yes"> Yes, I <em>really</em> want it!</label>
         </div>
       </div>
       <div class="form-group row">
         <div class="col-sm-2">Criteria 4:
         </div>
-        <div class="col-sm-10">
-          <label class="form-check-inline">
+        <div class="col-sm-10 form-check-inline">
+          <label class="form-check-label">
             <input class="form-check-input" type="checkbox" id="inlineCheckbox4-1" value="option1"> 1
           </label>
-          <label class="form-check-inline">
+          <label class="form-check-label">
             <input class="form-check-input" type="checkbox" id="inlineCheckbox4-2" value="option2"> 2<em>italic</em>
           </label>
-          <label class="form-check-inline">
+          <label class="form-check-label">
             <input class="form-check-input" type="checkbox" id="inlineCheckbox4-3" value="option3"> 3
           </label>
         </div>
@@ -1108,8 +1118,8 @@ Showing a <kbd>kdb sample</kbd>
       <div class="form-group row">
         <div class="col-sm-2">Criteria 5:
         </div>
-        <div class="col-sm-10">
-          <label class="form-check-inline disabled"><input class="form-check-input" type="checkbox" value="yes" disabled> Yes, I <em>really</em> want it!</label>
+        <div class="col-sm-10 form-check-inline">
+          <label class="form-check-label disabled"><input class="form-check-input" type="checkbox" value="yes" disabled> Yes, I <em>really</em> want it!</label>
         </div>
       </div>
     </div>
@@ -1297,14 +1307,14 @@ Showing a <kbd>kdb sample</kbd>
 
 <h3>Custom sizing</h3>
 <div class="row">
-  <div class="col-xs-2">
-    <input type="text" class="form-control" placeholder=".col-xs-2">
+  <div class="col-2">
+    <input type="text" class="form-control" placeholder=".col-2">
   </div>
-  <div class="col-xs-3">
-    <input type="text" class="form-control" placeholder=".col-xs-3">
+  <div class="col-3">
+    <input type="text" class="form-control" placeholder=".col-3">
   </div>
-  <div class="col-xs-4">
-    <input type="text" class="form-control" placeholder=".col-xs-4">
+  <div class="col-4">
+    <input type="text" class="form-control" placeholder=".col-4">
   </div>
 </div>
 
@@ -1381,7 +1391,7 @@ Showing a <kbd>kdb sample</kbd>
 </div>
 
 <h3>Custom Forms: Checkbox</h3>
-<div class="margin-b-1">
+<div class="mb-1">
   <label class="custom-control custom-checkbox">
     <input type="checkbox" class="custom-control-input">
     <span class="custom-control-indicator"></span>
@@ -1389,7 +1399,7 @@ Showing a <kbd>kdb sample</kbd>
   </label>
 </div>
 
-<div class="margin-b-1">
+<div class="mb-1">
   <label class="custom-control custom-checkbox">
     <input type="checkbox" class="custom-control-input">
     <span class="custom-control-indicator"></span>
@@ -1398,7 +1408,7 @@ Showing a <kbd>kdb sample</kbd>
 </div>
 
 <h3>Custom Forms: Radio</h3>
-<div class="margin-b-1">
+<div class="mb-1">
   <label class="custom-control custom-radio">
     <input id="radio1" name="radio" type="radio" class="custom-control-input">
     <span class="custom-control-indicator"></span>
@@ -1412,7 +1422,7 @@ Showing a <kbd>kdb sample</kbd>
 </div>
 
 <h3>Custom Forms: Disabled</h3>
-<div class="margin-b-1">
+<div class="mb-1">
   <label class="custom-control custom-checkbox">
     <input type="checkbox" class="custom-control-input" disabled>
     <span class="custom-control-indicator"></span>
@@ -1446,7 +1456,7 @@ Showing a <kbd>kdb sample</kbd>
 </div>
 
 <h3>Custom Forms: Stacked</h3>
-<div class="custom-controls-stacked margin-b-1">
+<div class="custom-controls-stacked mb-1">
   <label class="custom-control custom-radio">
     <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input">
     <span class="custom-control-indicator"></span>
@@ -1459,7 +1469,7 @@ Showing a <kbd>kdb sample</kbd>
   </label>
 </div>
 
-<div class="custom-controls-stacked margin-b-1">
+<div class="custom-controls-stacked mb-1">
   <label class="custom-control custom-radio">
     <input id="checkStacked1" type="checkbox" class="custom-control-input">
     <span class="custom-control-indicator"></span>
@@ -1474,7 +1484,7 @@ Showing a <kbd>kdb sample</kbd>
 
 
 <h3>Custom Forms: Select Menu</h3>
-<div class="margin-b-1">
+<div class="mb-1">
   <select class="custom-select">
     <option selected>Open this select menu</option>
     <option value="1">One</option>
@@ -1484,12 +1494,12 @@ Showing a <kbd>kdb sample</kbd>
 </div>
 
 <h3>Custom Forms: Color Picker</h3>
-<div class="margin-b-1">
+<div class="mb-1">
   <input class="custom-color" type="color" value="#117dba" id="color">
 </div>
 
 <h3>Custom Forms: File Browser</h3>
-<div class="margin-b-1">
+<div class="mb-1">
   <label class="custom-file">
     <input type="file" id="file" class="custom-file-input">
     <span class="custom-file-control"></span>
@@ -1684,18 +1694,18 @@ Anchor variants:<br />
   <li class="list-group-item active">Vestibulum at eros</li>
 </ul>
 
-<h3>List group with labels</h3>
+<h3>List group with badges</h3>
 <ul class="list-group">
   <li class="list-group-item">
-    <span class="tag tag-pill pull-xs-right">14</span>
+    <span class="badge badge-pill float-right">14</span>
     Cras justo odio
   </li>
   <li class="list-group-item">
-    <span class="tag tag-pill pull-xs-right">2</span>
+    <span class="badge badge-pill float-right">2</span>
     Dapibus ac facilisis in
   </li>
   <li class="list-group-item">
-    <span class="tag tag-pill pull-xs-right">1</span>
+    <span class="badge badge-pill float-right">1</span>
     Morbi leo risus
   </li>
 </ul>
@@ -2067,7 +2077,6 @@ Anchor variants:<br />
 </ul>
 
 <h3>Pagination</h3>
-<small>https://github.com/twbs/bootstrap/pull/19705</small><br />
 <nav aria-label="Page navigation">
   <ul class="pagination">
     <li class="page-item">
@@ -2796,7 +2805,7 @@ Anchor variants:<br />
       <a class="nav-link disabled" href="#">Disabled</a>
     </li>
   </ul>
-  <form class="form-inline pull-xs-right">
+  <form class="form-inline float-right">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn btn-outline-primary" type="submit">Search</button>
   </form>
@@ -2818,7 +2827,7 @@ Anchor variants:<br />
       <a class="nav-link disabled" href="#">Disabled</a>
     </li>
   </ul>
-  <form class="form-inline pull-xs-right">
+  <form class="form-inline float-right">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn" type="submit">Search</button>
   </form>
@@ -2840,7 +2849,7 @@ Anchor variants:<br />
       <a class="nav-link disabled" href="#">Disabled</a>
     </li>
   </ul>
-  <form class="form-inline pull-xs-right">
+  <form class="form-inline float-right">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn" type="submit">Search</button>
   </form>
@@ -2862,7 +2871,7 @@ Anchor variants:<br />
       <a class="nav-link disabled" href="#">Disabled</a>
     </li>
   </ul>
-  <form class="form-inline pull-xs-right">
+  <form class="form-inline float-right">
     <input class="form-control" type="text" placeholder="Search">
     <button class="btn btn-outline-primary" type="submit">Search</button>
   </form>
@@ -2902,7 +2911,7 @@ Anchor variants:<br />
 <small>resize screen below 'md' breakpoint</small><br />
 <nav class="navbar navbar-light bg-faded">
   <a class="navbar-brand" href="#">Responsive navbar</a>
-  <button class="navbar-toggler hidden-lg-up pull-xs-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#exCollapsingNavbar2" aria-label="Toggle navigation">
+  <button class="navbar-toggler hide-lg-up float-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#exCollapsingNavbar2" aria-label="Toggle navigation">
     <span class="icon-menu" aria-hidden="true">&#8801;</span>
   </button>
   <div class="collapse navbar-toggleable-md" id="exCollapsingNavbar2">
@@ -2942,58 +2951,58 @@ Anchor variants:<br />
   </div>
 </div>
 
-<h3>Tags</h3>
-<h1>Example heading <span class="tag">New</span></h1>
-<h2>Example heading <span class="tag">New</span></h2>
-<h3>Example heading <span class="tag">New</span></h3>
-<h4>Example heading <span class="tag">New</span></h4>
-<h5>Example heading <span class="tag">New</span></h5>
-<h6>Example heading <span class="tag">New</span></h6>
+<h3>Badge</h3>
+<h1>Example heading <span class="badge">New</span></h1>
+<h2>Example heading <span class="badge">New</span></h2>
+<h3>Example heading <span class="badge">New</span></h3>
+<h4>Example heading <span class="badge">New</span></h4>
+<h5>Example heading <span class="badge">New</span></h5>
+<h6>Example heading <span class="badge">New</span></h6>
 
-<h3>Tags contextual</h3>
-<span class="tag">Default</span>
-<span class="tag tag-primary">Primary</span>
-<span class="tag tag-secondary">Secondary</span>
-<span class="tag tag-success">Success</span>
-<span class="tag tag-info">Info</span>
-<span class="tag tag-warning">Warning</span>
-<span class="tag tag-danger">Danger</span>
+<h3>Badge contextual</h3>
+<span class="badge">Default</span>
+<span class="badge badge-primary">Primary</span>
+<span class="badge badge-secondary">Secondary</span>
+<span class="badge badge-success">Success</span>
+<span class="badge badge-info">Info</span>
+<span class="badge badge-warning">Warning</span>
+<span class="badge badge-danger">Danger</span>
 
-<h3>Tags anchors</h3>
-<a href="#" class="tag">Default</a>
-<a href="#"  class="tag tag-primary">Primary</a>
-<a href="#"  class="tag tag-secondary">Secondary</a>
-<a href="#"  class="tag tag-success">Success</a>
-<a href="#"  class="tag tag-info">Info</a>
-<a href="#"  class="tag tag-warning">Warning</a>
-<a href="#"  class="tag tag-danger">Danger</a>
+<h3>Badge anchors</h3>
+<a href="#" class="badge">Default</a>
+<a href="#" class="badge badge-primary">Primary</a>
+<a href="#" class="badge badge-secondary">Secondary</a>
+<a href="#" class="badge badge-success">Success</a>
+<a href="#" class="badge badge-info">Info</a>
+<a href="#" class="badge badge-warning">Warning</a>
+<a href="#" class="badge badge-danger">Danger</a>
 
-<h3>Tag pills</h3>
-<span class="tag tag-pill">Default</span>
-<span class="tag tag-pill tag-primary">Primary</span>
-<span class="tag tag-pill tag-secondary">Secondary</span>
-<span class="tag tag-pill tag-success">Success</span>
-<span class="tag tag-pill tag-info">Info</span>
-<span class="tag tag-pill tag-warning">Warning</span>
-<span class="tag tag-pill tag-danger">Danger</span>
+<h3>Badge pills</h3>
+<span class="badge badge-pill">Default</span>
+<span class="badge badge-pill badge-primary">Primary</span>
+<span class="badge badge-pill badge-secondary">Secondary</span>
+<span class="badge badge-pill badge-success">Success</span>
+<span class="badge badge-pill badge-info">Info</span>
+<span class="badge badge-pill badge-warning">Warning</span>
+<span class="badge badge-pill badge-danger">Danger</span>
 
-<h3>Tags outline</h3>
-<span class="tag tag-outline">Default</span>
-<span class="tag tag-outline-primary">Primary</span>
-<span class="tag tag-outline-secondary">Secondary</span>
-<span class="tag tag-outline-success">Success</span>
-<span class="tag tag-outline-info">Info</span>
-<span class="tag tag-outline-warning">Warning</span>
-<span class="tag tag-outline-danger">Danger</span>
+<h3>Badge outline</h3>
+<span class="badge badge-outline">Default</span>
+<span class="badge badge-outline-primary">Primary</span>
+<span class="badge badge-outline-secondary">Secondary</span>
+<span class="badge badge-outline-success">Success</span>
+<span class="badge badge-outline-info">Info</span>
+<span class="badge badge-outline-warning">Warning</span>
+<span class="badge badge-outline-danger">Danger</span>
 
-<h3>Tags outline anchors</h3>
-<a href="#" class="tag tag-outline">Default</a>
-<a href="#"  class="tag tag-outline-primary">Primary</a>
-<a href="#"  class="tag tag-outline-secondary">Secondary</a>
-<a href="#"  class="tag tag-outline-success">Success</a>
-<a href="#"  class="tag tag-outline-info">Info</a>
-<a href="#"  class="tag tag-outline-warning">Warning</a>
-<a href="#"  class="tag tag-outline-danger">Danger</a>
+<h3>Badge outline anchors</h3>
+<a href="#" class="badge badge-outline">Default</a>
+<a href="#"  class="badge badge-outline-primary">Primary</a>
+<a href="#"  class="badge badge-outline-secondary">Secondary</a>
+<a href="#"  class="badge badge-outline-success">Success</a>
+<a href="#"  class="badge badge-outline-info">Info</a>
+<a href="#"  class="badge badge-outline-warning">Warning</a>
+<a href="#"  class="badge badge-outline-danger">Danger</a>
 
 
 <h3>Alerts</h3>
@@ -3280,13 +3289,13 @@ Anchor variants:<br />
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
 
-    <div class="card card-block text-xs-center">
+    <div class="card card-block text-center">
       <h4 class="card-title">Special title treatment</h4>
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
 
-    <div class="card card-block text-xs-right">
+    <div class="card card-block text-right">
       <h4 class="card-title">Special title treatment</h4>
       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
       <a href="#" class="btn btn-primary">Go somewhere</a>
@@ -3327,7 +3336,7 @@ Anchor variants:<br />
       </div>
     </div>
 
-    <div class="card text-xs-center">
+    <div class="card text-center">
       <div class="card-header">
         Featured
       </div>
@@ -3378,7 +3387,7 @@ Anchor variants:<br />
     </div>
 
     <h3>Card - context variants</h3>
-    <div class="card card-inverse card-primary text-xs-center">
+    <div class="card card-inverse card-primary text-center">
       <div class="card-block">
         <blockquote class="card-blockquote">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -3386,7 +3395,7 @@ Anchor variants:<br />
         </blockquote>
       </div>
     </div>
-    <div class="card card-inverse card-secondary text-xs-center">
+    <div class="card card-inverse card-secondary text-center">
       <div class="card-block">
         <blockquote class="card-blockquote">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -3394,7 +3403,7 @@ Anchor variants:<br />
         </blockquote>
       </div>
     </div>
-    <div class="card card-inverse card-success text-xs-center">
+    <div class="card card-inverse card-success text-center">
       <div class="card-block">
         <blockquote class="card-blockquote">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -3402,7 +3411,7 @@ Anchor variants:<br />
         </blockquote>
       </div>
     </div>
-    <div class="card card-inverse card-info text-xs-center">
+    <div class="card card-inverse card-info text-center">
       <div class="card-block">
         <blockquote class="card-blockquote">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -3410,7 +3419,7 @@ Anchor variants:<br />
         </blockquote>
       </div>
     </div>
-    <div class="card card-inverse card-warning text-xs-center">
+    <div class="card card-inverse card-warning text-center">
       <div class="card-block">
         <blockquote class="card-blockquote">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -3418,7 +3427,7 @@ Anchor variants:<br />
         </blockquote>
       </div>
     </div>
-    <div class="card card-inverse card-danger text-xs-center">
+    <div class="card card-inverse card-danger text-center">
       <div class="card-block">
         <blockquote class="card-blockquote">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -3428,7 +3437,7 @@ Anchor variants:<br />
     </div>
 
     <h3>Card - outline variants</h3>
-    <div class="card card-outline-primary text-xs-center">
+    <div class="card card-outline-primary text-center">
       <div class="card-block">
         <blockquote class="card-blockquote">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -3436,7 +3445,7 @@ Anchor variants:<br />
         </blockquote>
       </div>
     </div>
-    <div class="card card-outline-secondary text-xs-center">
+    <div class="card card-outline-secondary text-center">
       <div class="card-block">
         <blockquote class="card-blockquote">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -3444,7 +3453,7 @@ Anchor variants:<br />
         </blockquote>
       </div>
     </div>
-    <div class="card card-outline-success text-xs-center">
+    <div class="card card-outline-success text-center">
       <div class="card-block">
         <blockquote class="card-blockquote">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -3452,7 +3461,7 @@ Anchor variants:<br />
         </blockquote>
       </div>
     </div>
-    <div class="card card-outline-info text-xs-center">
+    <div class="card card-outline-info text-center">
       <div class="card-block">
         <blockquote class="card-blockquote">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -3460,7 +3469,7 @@ Anchor variants:<br />
         </blockquote>
       </div>
     </div>
-    <div class="card card-outline-warning text-xs-center">
+    <div class="card card-outline-warning text-center">
       <div class="card-block">
         <blockquote class="card-blockquote">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -3468,7 +3477,7 @@ Anchor variants:<br />
         </blockquote>
       </div>
     </div>
-    <div class="card card-outline-danger text-xs-center">
+    <div class="card card-outline-danger text-center">
       <div class="card-block">
         <blockquote class="card-blockquote">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -3614,7 +3623,7 @@ Anchor variants:<br />
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
-  <div class="card card-block card-inverse card-primary text-xs-center">
+  <div class="card card-block card-inverse card-primary text-center">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
       <footer>
@@ -3624,7 +3633,7 @@ Anchor variants:<br />
       </footer>
     </blockquote>
   </div>
-  <div class="card card-block text-xs-center">
+  <div class="card card-block text-center">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
@@ -3632,7 +3641,7 @@ Anchor variants:<br />
   <div class="card">
     <img class="card-img img-responsive" data-src="holder.js/100px200" alt="Card image" />
   </div>
-  <div class="card card-block text-xs-right">
+  <div class="card card-block text-right">
     <blockquote class="card-blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
       <footer>
@@ -3664,9 +3673,9 @@ Anchor variants:<br />
 
 
 <h3>Card - heading nav</h3>
-<div class="card text-xs-center">
+<div class="card text-center">
   <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs pull-xs-left">
+    <ul class="nav nav-tabs card-header-tabs float-left">
       <li class="nav-item">
         <a class="nav-link active" href="#">Active</a>
       </li>
@@ -3685,9 +3694,9 @@ Anchor variants:<br />
   </div>
 </div>
 
-<div class="card text-xs-center">
+<div class="card text-center">
   <div class="card-header">
-    <ul class="nav nav-pills card-header-pills pull-xs-left">
+    <ul class="nav nav-pills card-header-pills float-left">
       <li class="nav-item">
         <a class="nav-link active" href="#">Active</a>
       </li>
@@ -3807,40 +3816,9 @@ Anchor variants:<br />
 </button>
 </p>
 
-<h3>Row alignment</h3>
-<div class="valign-top valign-sample">
-    <div class="valign-item">
-        <a href="#">View more in teacher's guide</a> |
-        <a href="#">Common Core alignment</a>
-    </div>
-    <div class="valign-item text-right">
-        <button type="button" class="btn btn-primary">ok, got it!</button>
-    </div>
-</div>
-<br />
-<div class="valign-middle valign-sample">
-    <div class="valign-item">
-        <a href="#">View more in teacher's guide</a> |
-        <a href="#">Common Core alignment</a>
-    </div>
-    <div class="valign-item text-right">
-        <button type="button" class="btn btn-primary">ok, got it!</button>
-    </div>
-</div>
-<br />
-<div class="valign-bottom valign-sample">
-    <div class="valign-item">
-        <a href="#">View more in teacher's guide</a> |
-        <a href="#">Common Core alignment</a>
-    </div>
-    <div class="valign-item text-right">
-        <button type="button" class="btn btn-primary">ok, got it!</button>
-    </div>
-</div>
-
 <h3>Grid lines</h3>
 <div class="card bg-faded gridline-sample0">
-    <div class="gridline gridline-xs-vr gridline-xs-hr">
+    <div class="gridline gridline-vr gridline-hr">
         <div class="gridline-item col-md-6">
             <h4>Header Level 4</h4>
             <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
@@ -3852,7 +3830,7 @@ Anchor variants:<br />
             <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown.</p>
         </div>
     </div>
-    <div class="gridline gridline-xs-hr">
+    <div class="gridline gridline-hr">
         <div class="gridline-item col-md-6">
             <h4>Header Level 4</h4>
             <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
@@ -3867,12 +3845,12 @@ Anchor variants:<br />
 <h3>Grid: Single column</h3>
 <div class="card bg-faded gridline-sample">
     Rule: Horizontal
-    <div class="gridline gridline-xs-hr">
+    <div class="gridline gridline-hr">
         <div class="gridline-item col-md-12">
             <p>Row 1 - Column 1</p>
         </div>
     </div>
-    <div class="gridline gridline-xs-hr">
+    <div class="gridline gridline-hr">
         <div class="gridline-item col-md-12">
             <p>Row 2 - Column 1</p>
         </div>
@@ -3904,7 +3882,7 @@ Anchor variants:<br />
 </div>
 <div class="card bg-faded gridline-sample">
     Rule: Horizontal
-    <div class="gridline gridline-xs-hr">
+    <div class="gridline gridline-hr">
         <div class="gridline-item col-md-6">
             <p>Row 1 - Column 1</p>
         </div>
@@ -3912,18 +3890,26 @@ Anchor variants:<br />
             <p>Row 1 - Column 2</p>
         </div>
     </div>
-    <div class="gridline gridline-xs-hr">
+    <div class="gridline gridline-hr">
         <div class="gridline-item col-md-6">
             <p>Row 2 - Column 1</p>
         </div>
         <div class="gridline-item col-md-6">
             <p>Row 2 - Column 2</p>
+        </div>
+    </div>
+    <div class="gridline gridline-hr">
+        <div class="gridline-item col-md-6">
+            <p>Row 3 - Column 1</p>
+        </div>
+        <div class="gridline-item col-md-6">
+            <p>Row 3 - Column 2</p>
         </div>
     </div>
 </div>
 <div class="card bg-faded gridline-sample">
     Rule: Both
-    <div class="gridline gridline-xs-hr gridline-md-vr">
+    <div class="gridline gridline-hr gridline-md-vr">
         <div class="gridline-item col-md-6">
             <p>Row 1 - Column 1</p>
         </div>
@@ -3931,12 +3917,20 @@ Anchor variants:<br />
             <p>Row 1 - Column 2</p>
         </div>
     </div>
-    <div class="gridline gridline-xs-hr gridline-md-vr">
+    <div class="gridline gridline-hr gridline-md-vr">
         <div class="gridline-item col-md-6">
             <p>Row 2 - Column 1</p>
         </div>
         <div class="gridline-item col-md-6">
             <p>Row 2 - Column 2</p>
+        </div>
+    </div>
+    <div class="gridline gridline-hr gridline-md-vr">
+        <div class="gridline-item col-md-6">
+            <p>Row 3 - Column 1</p>
+        </div>
+        <div class="gridline-item col-md-6">
+            <p>Row 3 - Column 2</p>
         </div>
     </div>
 </div>
@@ -3972,7 +3966,7 @@ Anchor variants:<br />
 </div>
 <div class="card bg-faded gridline-sample">
     Rule: Horizontal
-    <div class="gridline gridline-xs-hr">
+    <div class="gridline gridline-hr">
         <div class="gridline-item col-md-4">
             <p>Row 1 - Column 1</p>
         </div>
@@ -3983,7 +3977,7 @@ Anchor variants:<br />
             <p>Row 1 - Column 3</p>
         </div>
     </div>
-    <div class="gridline gridline-xs-hr">
+    <div class="gridline gridline-hr">
         <div class="gridline-item col-md-4">
             <p>Row 2 - Column 1</p>
         </div>
@@ -3992,12 +3986,23 @@ Anchor variants:<br />
         </div>
         <div class="gridline-item col-md-4">
             <p>Row 2 - Column 3</p>
+        </div>
+    </div>
+    <div class="gridline gridline-hr">
+        <div class="gridline-item col-md-4">
+            <p>Row 3 - Column 1</p>
+        </div>
+        <div class="gridline-item col-md-4">
+            <p>Row 3 - Column 2</p>
+        </div>
+        <div class="gridline-item col-md-4">
+            <p>Row 3 - Column 3</p>
         </div>
     </div>
 </div>
 <div class="card bg-faded gridline-sample">
     Rule: Both
-    <div class="gridline gridline-xs-hr gridline-md-vr">
+    <div class="gridline gridline-hr gridline-md-vr">
         <div class="gridline-item col-md-4">
             <p>Row 1 - Column 1</p>
         </div>
@@ -4008,7 +4013,7 @@ Anchor variants:<br />
             <p>Row 1 - Column 3</p>
         </div>
     </div>
-    <div class="gridline gridline-xs-hr gridline-md-vr">
+    <div class="gridline gridline-hr gridline-md-vr">
         <div class="gridline-item col-md-4">
             <p>Row 2 - Column 1</p>
         </div>
@@ -4017,6 +4022,17 @@ Anchor variants:<br />
         </div>
         <div class="gridline-item col-md-4">
             <p>Row 2 - Column 3</p>
+        </div>
+    </div>
+    <div class="gridline gridline-hr gridline-md-vr">
+        <div class="gridline-item col-md-4">
+            <p>Row 3 - Column 1</p>
+        </div>
+        <div class="gridline-item col-md-4">
+            <p>Row 3 - Column 2</p>
+        </div>
+        <div class="gridline-item col-md-4">
+            <p>Row 3 - Column 3</p>
         </div>
     </div>
 </div>

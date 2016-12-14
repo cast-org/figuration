@@ -20,13 +20,15 @@
     margin-top: 1rem;
     margin-bottom: 0;
 }
-[class^="col-"] {
+[class^="col-"],
+.col {
     padding-top: .75rem;
     padding-bottom: .75rem;
     background-color: rgba(34,68,102,.15);
     border: 1px solid rgba(34,68,102,.2);
 }
-.row-flex > [class^="col-"] {
+.row-flex > [class^="col-"],
+.row-flex > .col {
     background-color: rgba(102,0,102,.15);
 }
 </style>
@@ -63,15 +65,15 @@
 
     normal:
     <div class="row">
-      <div class="col-xs-4">.col-xs-4</div>
-      <div class="col-xs-4">.col-xs-4</div>
-      <div class="col-xs-4">.col-xs-4</div>
+      <div class="col-4">.col-4</div>
+      <div class="col-4">.col-4</div>
+      <div class="col-4">.col-4</div>
     </div>
     flex:
     <div class="row row-flex">
-      <div class="col-xs-4">.col-xs-4</div>
-      <div class="col-xs-4">.col-xs-4</div>
-      <div class="col-xs-4">.col-xs-4</div>
+      <div class="col-4">.col-4</div>
+      <div class="col-4">.col-4</div>
+      <div class="col-4">.col-4</div>
     </div>
 
     normal:
@@ -207,37 +209,37 @@
     <p>Each tier of classes scales up, meaning if you plan on setting the same widths for xs and sm, you only need to specify xs.</p>
     normal:
     <div class="row">
-        <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
-        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        <div class="col-12 col-md-8">.col-12 .col-md-8</div>
+        <div class="col-6 col-md-4">.col-6 .col-md-4</div>
     </div>
     flex:
     <div class="row row-flex">
-        <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
-        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        <div class="col-12 col-md-8">.col-12 .col-md-8</div>
+        <div class="col-6 col-md-4">.col-6 .col-md-4</div>
     </div>
 
     normal:
     <div class="row">
-        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+        <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+        <div class="col-6 col-md-4">.col-6 .col-md-4</div>
     </div>
     flex:
     <div class="row row-flex">
-        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
-        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+        <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+        <div class="col-6 col-md-4">.col-6 .col-md-4</div>
     </div>
 
     normal:
     <div class="row">
-        <div class="col-xs-6">.col-xs-6</div>
-        <div class="col-xs-6">.col-xs-6</div>
+        <div class="col-6">.col-6</div>
+        <div class="col-6">.col-6</div>
     </div>
     flex:
     <div class="row row-flex">
-        <div class="col-xs-6">.col-xs-6</div>
-        <div class="col-xs-6">.col-xs-6</div>
+        <div class="col-6">.col-6</div>
+        <div class="col-6">.col-6</div>
     </div>
 
     <hr />
@@ -245,26 +247,26 @@
     <h2>Mixed: mobile, tablet, and desktop</h2>
     normal:
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-lg-8">.col-xs-12 .col-sm-6 .col-lg-8</div>
-        <div class="col-xs-6 col-lg-4">.col-xs-6 .col-lg-4</div>
+        <div class="col-12 col-sm-6 col-lg-8">.col-12 .col-sm-6 .col-lg-8</div>
+        <div class="col-6 col-lg-4">.col-6 .col-lg-4</div>
     </div>
     flex:
     <div class="row row-flex">
-        <div class="col-xs-12 col-sm-6 col-lg-8">.col-xs-12 .col-sm-6 .col-lg-8</div>
-        <div class="col-xs-6 col-lg-4">.col-xs-6 .col-lg-4</div>
+        <div class="col-12 col-sm-6 col-lg-8">.col-12 .col-sm-6 .col-lg-8</div>
+        <div class="col-6 col-lg-4">.col-6 .col-lg-4</div>
     </div>
 
     normal:
     <div class="row">
-        <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
-        <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
-        <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+        <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+        <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+        <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
     </div>
     flex:
     <div class="row row-flex">
-        <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
-        <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
-        <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+        <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+        <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+        <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
     </div>
 
     <hr />
@@ -273,33 +275,33 @@
     <p>Use <a href="../layout/grid/#example-responsive-column-resets">responsive column resets</a> at specific breakpoints to prevent awkward wrapping with uneven content.</p>
     normal:
     <div class="row">
-        <div class="col-xs-6 col-sm-3">
-            .col-xs-6 .col-sm-3
+        <div class="col-6 col-sm-3">
+            .col-6 .col-sm-3
             <br />
             Resize your viewport or check it out on your phone for an example.
         </div>
-        <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+        <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
 
         <!-- Add the extra clearfix for only the required viewport -->
-        <div class="clearfix hidden-sm-up"></div>
+        <div class="clearfix hide-sm-up"></div>
 
-        <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
-        <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+        <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+        <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
     </div>
     flex:
     <div class="row row-flex">
-        <div class="col-xs-6 col-sm-3">
-            .col-xs-6 .col-sm-3
+        <div class="col-6 col-sm-3">
+            .col-6 .col-sm-3
             <br />
             Resize your viewport or check it out on your phone for an example.
         </div>
-        <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+        <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
 
         <!-- Add the extra clearfix for only the required viewport -->
-        <div class="clearfix hidden-sm-up"></div>
+        <div class="clearfix hide-sm-up"></div>
 
-        <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
-        <div class="col-xs-6 col-sm-3">.col-xs-6 .col-sm-3</div>
+        <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+        <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
     </div>
 
     <hr />
@@ -363,10 +365,10 @@
 
     <code>xs</code> breakpoint
     <div class="row row-flex">
-        <div class="col-xs">
+        <div class="col">
             1 of 2
         </div>
-        <div class="col-xs">
+        <div class="col">
             1 of 2
         </div>
     </div>
@@ -386,19 +388,19 @@
 
     <code>xs</code> breakpoint
     <div class="row row-flex">
-        <div class="col-xs">
+        <div class="col">
             1 of 5
         </div>
-        <div class="col-xs">
+        <div class="col">
             1 of 5
         </div>
-        <div class="col-xs">
+        <div class="col">
             1 of 5
         </div>
-        <div class="col-xs">
+        <div class="col">
             1 of 5
         </div>
-        <div class="col-xs">
+        <div class="col">
             1 of 5
         </div>
     </div>
@@ -407,112 +409,112 @@
 
     <h2>Vertical Flex Alignment</h2>
 
-    <div class="row row-flex flex-xs-top">
-        <div class="col-xs">
+    <div class="row row-flex flex-top">
+        <div class="col">
             <code>.flex-*-top</code>
         </div>
-        <div class="col-xs">
+        <div class="col">
             1 of 3
         </div>
-        <div class="col-xs">
+        <div class="col">
             Align top - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor felis pretium!
         </div>
     </div>
 
-    <div class="row row-flex flex-xs-middle">
-        <div class="col-xs">
+    <div class="row row-flex flex-middle">
+        <div class="col">
             <code>.flex-*-middle</code>
         </div>
-        <div class="col-xs">
+        <div class="col">
             1 of 3
         </div>
-        <div class="col-xs">
+        <div class="col">
             Align middle - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor felis pretium!
         </div>
     </div>
 
-    <div class="row row-flex flex-xs-bottom">
-        <div class="col-xs">
+    <div class="row row-flex flex-bottom">
+        <div class="col">
             <code>.flex-*-bottom</code>
         </div>
-        <div class="col-xs">
+        <div class="col">
             1 of 3
         </div>
-        <div class="col-xs">
+        <div class="col">
             Align bottom - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor felis pretium!
         </div>
     </div>
 
-    <div class="row row-flex flex-xs-stretch">
-        <div class="col-xs">
+    <div class="row row-flex flex-stretch">
+        <div class="col">
             <code>.flex-*-stretch</code>
         </div>
-        <div class="col-xs">
+        <div class="col">
             1 of 3
         </div>
-        <div class="col-xs">
+        <div class="col">
             Equal height - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dolor felis pretium!
         </div>
     </div>
 
     <div class="row row-flex" style="height: 7rem;">
-        <div class="col-xs flex-self-xs-top">
+        <div class="col flex-self-top">
             align top
         </div>
-        <div class="col-xs flex-self-xs-middle">
+        <div class="col flex-self-middle">
             align middle
         </div>
-        <div class="col-xs flex-self-xs-bottom">
+        <div class="col flex-self-bottom">
             align bottom
         </div>
-        <div class="col-xs flex-self-xs-stretch">
+        <div class="col flex-self-stretch">
             align stretch
         </div>
     </div>
 
     <h2>Horizontal Flex Alignment</h2>
 
-    <div class="row row-flex flex-xs-left">
-        <div class="col-xs-4">
+    <div class="row row-flex flex-left">
+        <div class="col-4">
             aligned to
         </div>
-        <div class="col-xs-4">
+        <div class="col-4">
             the left
         </div>
     </div>
 
-    <div class="row row-flex flex-xs-center">
-        <div class="col-xs-4">
+    <div class="row row-flex flex-center">
+        <div class="col-4">
             aligned to
         </div>
-        <div class="col-xs-4">
+        <div class="col-4">
             the center
         </div>
     </div>
 
-    <div class="row row-flex flex-xs-right">
-        <div class="col-xs-4">
+    <div class="row row-flex flex-right">
+        <div class="col-4">
             aligned to
         </div>
-        <div class="col-xs-4">
+        <div class="col-4">
             the right
         </div>
     </div>
 
-    <div class="row row-flex flex-xs-around">
-        <div class="col-xs-4">
+    <div class="row row-flex flex-around">
+        <div class="col-4">
             aliged to
         </div>
-        <div class="col-xs-4">
+        <div class="col-4">
             the space around
         </div>
     </div>
 
-    <div class="row row-flex flex-xs-between">
-        <div class="col-xs-4">
+    <div class="row row-flex flex-between">
+        <div class="col-4">
             aligned to
         </div>
-        <div class="col-xs-4">
+        <div class="col-4">
             the space between
         </div>
     </div>

@@ -6,6 +6,7 @@
     .container {
         @include make-container();
         @include make-container-max-widths();
+        max-width: 100%;
     }
 }
 
@@ -27,6 +28,19 @@
 @if $enable-grid-classes {
     .row {
         @include make-row();
+    }
+
+    // Remove the negative margin from default .row, then the horizontal padding
+    // from all immediate children columns (to prevent runaway style inheritance).
+    .no-gutters {
+        margin-right: 0;
+        margin-left: 0;
+
+        > [class*="col-"],
+        > .col {
+            padding-right: 0;
+            padding-left: 0;
+        }
     }
 
     @if $enable-flex-opt {
@@ -61,8 +75,14 @@
     }
 
     @each $breakpoint in map-keys($grid-breakpoints) {
+        $bprule: breakpoint-designator($breakpoint);
+
+        .col#{$bprule} {
+            @extend %col;
+        }
+
         @for $i from 1 through $grid-columns {
-            .col-#{$breakpoint}-#{$i} {
+            .col#{$bprule}-#{$i} {
                 @extend %col;
 
                 @if $enable-flex-full {
@@ -71,7 +91,7 @@
             }
 
             @if $enable-flex-opt {
-                .row-flex .col-#{$breakpoint}-#{$i} {
+                .row-flex .col#{$bprule}-#{$i} {
                     @extend %col-flex;
                 }
             }
@@ -79,15 +99,14 @@
 
         // Default for basic `.col-{bp}` classes for equal-width flexbox columns
         @if $enable-flex-full {
-            .col-#{$breakpoint} {
+            .col#{$bprule} {
                 @extend %col;
                 @extend %col-flex;
             }
         }
 
         @if $enable-flex-opt {
-            .row-flex .col-#{$breakpoint} {
-                @extend %col;
+            .row-flex .col#{$bprule} {
                 @extend %col-flex;
             }
         }
@@ -95,19 +114,24 @@
 
     // Create repsonsive grid gutters
     @each $breakpoint in map-keys($grid-breakpoints) {
-        %col-gutter {
-            @include media-breakpoint-up($breakpoint) {
-                $gutter: map-get($grid-gutter-widths, $breakpoint);
-                padding-right: ($gutter / 2);
-                padding-left:  ($gutter / 2);
+        $bprule: breakpoint-designator($breakpoint);
+
+        @include check-gutter-change($breakpoint, $grid-gutter-widths) {
+            %col-gutter {
+                @include media-breakpoint-up($breakpoint) {
+                    $gutter: map-get($grid-gutter-widths, $breakpoint);
+                    padding-right: ($gutter / 2);
+                    padding-left:  ($gutter / 2);
+                }
             }
         }
 
+        .col#{$bprule} {
+            @extend %col-gutter;
+        }
+
         @for $i from 1 through $grid-columns {
-            .col-#{$breakpoint} {
-                @extend %col-gutter;
-            }
-            .col-#{$breakpoint}-#{$i} {
+            .col#{$bprule}-#{$i} {
                 @extend %col-gutter;
             }
         }

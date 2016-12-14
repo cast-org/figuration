@@ -30,6 +30,7 @@
 - title: Components
   pages:
     - title: Alerts
+    - title: Badges
     - title: Breadcrumb
     - title: Button Group
     - title: Cards
@@ -42,10 +43,10 @@
     - title: Navs
     - title: Pagination
     - title: Progress
-    - title: Tags
 
 - title: Utilities
   pages:
+    - title: Borders
     - title: Clearfix
     - title: Color
     - title: Display Property
@@ -57,6 +58,7 @@
     - title: Sizing & Positioning
     - title: Spacing
     - title: Typography
+    - title: Vertical Alignment
 
 - title: Widgets
   pages:

@@ -6,7 +6,7 @@ group: components
 
 Easily extend form controls by adding text, buttons, or button groups on either side of textual `<input>`s.
 
-Input groups have support for both a `table` style layout, along with both the opt-in flexbox and [full flexbox](/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.input-group-flex` class to the `.input-group` element.
+Input groups have support for both a `table` style layout, along with both the opt-in flexbox and [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.input-group-flex` class to the `.input-group` element.
 
 ## Contents
 {:.no_toc}
@@ -58,7 +58,7 @@ Add the relative form sizing classes to the `.input-group` itself and contents w
   <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
 </div>
 <br>
-<div class="input-group">
+<div class="input-group input-group-sm">
   <span class="input-group-addon" id="sizing-addon2">@</span>
   <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2">
 </div>
@@ -117,7 +117,7 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
 
 ## Button Addons
 
-Buttons in input groups are a bit different and require one extra level of nesting. Instead of `.input-group-addon`, you'll need to use `.input-group-btn` to wrap the buttons. This is required due to default browser styles that cannot be overridden.
+Buttons in input groups must wrapped in a `.input-group-btn` for proper alignment and sizing.  This is required due to default browser styles that cannot be overridden.
 
 {% example html %}
 <div class="row">

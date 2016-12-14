@@ -1,5 +1,5 @@
 /*!
- * Figuration (v1.3.1)
+ * Figuration (v2.0.0)
  * http://figuration.org
  * Copyright 2013-2016 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
@@ -55,7 +55,8 @@ function addClipboard() {
     });
 
     clipboard.on('error', function(e) {
-        var fallbackMsg = /Mac/i.test(navigator.userAgent) ? 'Press \u2318 to copy' : 'Press Ctrl-C to copy';
+        var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-';
+        var fallbackMsg = 'Press ' + modifierKey + 'C to copy';
 
         $(e.trigger)
             .CFW_Tooltip('hide')
@@ -93,7 +94,7 @@ function paletteHex() {
         $items.each(function() {
             $this = $(this);
             color = rgb2hex($this.css('background-color'));
-            $this.append('<span class="pull-right">' + color + '</span>');
+            $this.append('<span class="float-right">' + color + '</span>');
         });
     }
 }
@@ -124,7 +125,7 @@ $(window).ready(function() {
     $('.cf-example-indeterminate [type="checkbox"]').prop('indeterminate', true);
 
     // Disable empty links in docs examples
-    $('.cf-example [href="#"]').click(function(e) {
+    $('.cf-content [href="#"]').click(function(e) {
         e.preventDefault();
     });
 });

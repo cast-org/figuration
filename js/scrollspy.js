@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v1.3.1): scrollspy.js
+ * Figuration (v2.0.0): scrollspy.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -94,7 +94,7 @@
                 return activeTarget != (i = targets[targets.length - 1]) && this.activate(i);
             }
 
-            if (activeTarget && scrollTop < offsets[0]) {
+            if (activeTarget && scrollTop < offsets[0] && offsets[0] > 0) {
                 this.activeTarget = null;
                 return this.clear();
             }

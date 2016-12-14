@@ -16,7 +16,7 @@ Figuration includes simple and easily customized typography for headings, body t
 
 Figuration sets basic global display, typography, and link styles. Specifically, we:
 
-- Use a [native font stack](/content/reboot/#native-font-stack) that selects the best `font-family` for each OS and device.
+- Use a [native font stack]({{ site.baseurl }}/content/reboot/#native-font-stack) that selects the best `font-family` for each OS and device.
 - Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base applied to the `<body>`.
 - Set the global link color via `$link-color` and apply link underlines only on `:hover`.
 - Use `$body-bg` to set a `background-color` on the `<body>` (`#fff` by default).
@@ -57,7 +57,7 @@ You can also use the included utility classes to recolor the secondary text.
 {% example html %}
 <h3>
   Fancy display heading
-  <small>With secondary text</small>
+  <small class="text-muted">With secondary text</small>
 </h3>
 
 <h3>
@@ -117,7 +117,7 @@ For quoting blocks of content from another source within your document. Wrap `<b
 
 {% example html %}
 <blockquote class="blockquote">
-  <p class="margin-b-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 </blockquote>
 {% endexample %}
 
@@ -127,7 +127,7 @@ Add a `<footer class="blockquote-footer">` for identifying the source. Wrap the 
 
 {% example html %}
 <blockquote class="blockquote">
-  <p class="margin-b-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
   <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>
 {% endexample %}
@@ -138,7 +138,7 @@ Add `.blockquote-reverse` for a blockquote with right-aligned content.
 
 {% example html %}
 <blockquote class="blockquote blockquote-reverse">
-  <p class="margin-b-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
   <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>
 {% endexample %}

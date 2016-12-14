@@ -1,19 +1,22 @@
 // scss-lint:disable ImportantRule
 
 // Visibility utilities
-
 .invisible {
     @include invisible();
 }
+.visible {
+    @include visible();
+}
 
-// Responsive visibility utilities
+
+// Hidden utilities
 @each $bp in map-keys($grid-breakpoints) {
-    .hidden-#{$bp}-up {
+    .hide-#{$bp}-up {
         @include media-breakpoint-up($bp) {
             display: none !important;
         }
     }
-    .hidden-#{$bp}-down {
+    .hide-#{$bp}-down {
         @include media-breakpoint-down($bp) {
             display: none !important;
         }
@@ -22,21 +25,21 @@
 
 // Print utilities
 // Media queries are placed on the inside to be mixin-friendly.
-.visible-print-block {
+.print-show-block {
     display: none !important;
 
     @media print {
         display: block !important;
     }
 }
-.visible-print-inline {
+.print-show-inline {
     display: none !important;
 
     @media print {
         display: inline !important;
     }
 }
-.visible-print-inline-block {
+.print-show-inline-block {
     display: none !important;
 
     @media print {
@@ -44,7 +47,7 @@
     }
 }
 
-.hidden-print {
+.print-hide {
     @media print {
         display: none !important;
     }

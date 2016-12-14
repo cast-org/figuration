@@ -1,7 +1,7 @@
-// Tags
-@mixin tag-variant($color) {
+// Badges
+@mixin badge-variant($color) {
     background-color: $color;
-    border: $color solid $tag-border-width;
+    border-color: $color;
 
     &[href] {
         @include hover-focus {
@@ -11,14 +11,14 @@
     }
 }
 
-@mixin tag-outline-variant($color) {
+@mixin badge-outline-variant($color) {
     color: $color;
-    background-color: transparent;
-    border: $color solid $tag-border-width;
+    background-color: $badge-outline-background;
+    border-color: $color;
 
     &[href] {
         @include hover-focus {
-            color: $tag-outline-link-hover-color;
+            color: $badge-outline-link-hover-color;
             background-color: $color;
             border-color: $color;
         }

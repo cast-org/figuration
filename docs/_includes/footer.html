@@ -1,6 +1,6 @@
 <footer class="cf-footer">
     <div class="container">
-        Currently version: {{ site.current_version }}
+        Current version: {{ site.current_version }}
         <ul class="footer-links">
             <li><a href="https://github.com/cast-org/figuration">GitHub Project</a></li>
             <li><a href="https://github.com/cast-org/figuration/issues">Issues</a></li>
@@ -30,3 +30,14 @@
 
     </div>
 </footer>
+
+{% if site.github %}
+<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script>
+docsearch({
+    apiKey: '3b9b6e000775400f4833a14c4daa6049',
+    indexName: 'figuration',
+    inputSelector: '#docsearch'
+});
+</script>
+{% endif %}

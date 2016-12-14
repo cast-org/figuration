@@ -12,12 +12,9 @@
     display: inline-block;
     min-height: (1rem * $line-height-base);
     padding-left: $custom-control-gutter;
+    margin-right: $custom-control-spacer-x;
     margin-bottom: 0;
     cursor: pointer;
-
-    + .custom-control {
-        margin-left: $custom-control-spacer-x;
-    }
 }
 
 .custom-control-input {
@@ -124,19 +121,17 @@
 
 
 // Select
-// Replaces the browser default select with a custom one, mostly pulled from
-// http://primercss.io.
-//
+// Replaces the browser default select with a custom one.
 // Includes IE9-specific hacks (noted by ` \9`).
 .custom-select {
     display: block;
     width: 100%;
     height: $select-height;
-    padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
-    padding-right: $custom-select-padding-x \9;
+    padding: $input-padding-y (($input-padding-x / 2) + $custom-select-indicator-padding) $input-padding-y ($input-padding-x / 2);
+    padding-right: ($input-padding-x / 2) \9;
     color: $custom-select-color;
     vertical-align: middle;
-    background: $custom-select-bg $custom-select-indicator no-repeat right $custom-select-padding-x center;
+    background: $custom-select-bg $custom-select-indicator no-repeat right ($input-padding-x / 2) center;
     background-image: none \9;
     background-size: $custom-select-bg-size;
     border: $custom-select-border-width solid $custom-select-border-color;
@@ -172,17 +167,24 @@
 }
 
 // Select sizes
-@each $size, $dims in $component-sizes {
-    $font-size:     map-get($dims, "font-size");
-    $padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $font-size / 2);
-    $padding-x:     map-get($dims, "padding-x");
-    $input-height-size:     (($font-size * $input-line-height) + ($padding-y * 2));
-    $select-height-size:    calc(#{$input-height-size} + #{($border-width * 2)});
+@if $enable-sizing {
+    @each $size, $dims in $component-sizes {
+        $sz-font-size:     map-get($dims, "font-size");
+        $sz-padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $sz-font-size / 2);
+        $sz-padding-x:     map-get($dims, "padding-x");
+        $sz-input-height:  (($sz-font-size * $input-line-height) + ($sz-padding-y * 2));
+        $sz-select-height: calc(#{$sz-input-height} + #{($border-width * 2)});
 
-    .custom-select-#{$size} {
-        height: $select-height-size;
-        padding: $padding-y ($padding-x / 2);
-        font-size:  $font-size;
+        //scss-lint:disable DuplicateProperty
+        .custom-select-#{$size} {
+            height: $sz-select-height;
+            padding: $sz-padding-y ($sz-padding-x / 2);
+            padding-right: ($sz-padding-x + $custom-select-indicator-padding);
+            padding-right: ($sz-padding-x / 2) \9;
+            font-size: $sz-font-size;
+            background-position: right ($sz-padding-x / 2) center;
+        }
+        //scss-lint:enable DuplicateProperty
     }
 }
 
@@ -192,7 +194,7 @@
     position: relative;
     display: inline-block;
     max-width: 100%;
-    height: $custom-file-height;
+    height: $select-height;
     cursor: pointer;
 }
 
@@ -214,9 +216,9 @@
     right: 0;
     left: 0;
     z-index: 5;
-    height: $custom-file-height;
-    padding: $custom-file-padding-x $custom-file-padding-y;
-    line-height: $custom-file-line-height;
+    height: $select-height;
+    padding: $input-padding-y ($input-padding-x / 2);
+    line-height: $input-line-height;
     color: $custom-file-color;
     user-select: none;
     background-color: $custom-file-bg;
@@ -237,9 +239,9 @@
         bottom: -$custom-file-border-width;
         z-index: 6;
         display: block;
-        height: $custom-file-height;
-        padding: $custom-file-padding-x $custom-file-padding-y;
-        line-height: $custom-file-line-height;
+        height: $select-height;
+        padding: $input-padding-y $input-padding-x;
+        line-height: $input-line-height;
         color: $custom-file-button-color;
         background-color: $custom-file-button-bg;
         border: $custom-file-border-width solid $custom-file-border-color;

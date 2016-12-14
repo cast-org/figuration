@@ -1,30 +1,27 @@
 <nav class="cf-links">
 
 {% for group in site.data.nav %}
-  {% assign slug = group.title | downcase | replace: ' ', '-' %}
-  {% assign partial = slug | prepend: '-' }} %}
+  {% assign group_slug = group.title | slugify %}
+  {% assign page_slug = page.url | split: '/' | last %}
 
-  {% if page.url contains slug %}
-    {% unless page.url contains partial %}
-      <div class="h4">{{ group.title }}</div>
-      <ul class="nav">
-        {% for doc in group.pages %}
-          {% assign slug = doc.title | downcase | replace: ' ', '-' | replace:'-&-','-' %}
-          {% capture slug %}/{{ slug }}/{% endcapture %}
+  {% if page.group == group_slug %}
+    <div class="h4">{{ group.title }}</div>
+    <ul class="nav">
+      {% for doc in group.pages %}
+        {% assign doc_slug = doc.title | slugify %}
 
-          {% assign active = nil %}
-          {% if page.url contains slug %}
-            {% assign active = 'active' %}
-          {% endif %}
+        {% assign active = nil %}
+        {% if doc_slug == page_slug %}
+          {% assign active = 'active' %}
+        {% endif %}
 
-          <li class="nav-item">
-            <a href="{{ site.baseurl }}/{{ group.title | downcase | replace: ' ', '-' }}/{{ doc.title | downcase | replace: ' ', '-' | replace:'-&-','-' }}" class="nav-link {{ active }}">
-              {{ doc.title }}
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    {% endunless %}
+        <li class="nav-item">
+          <a href="{{ site.baseurl }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link {{ active }}">
+            {{ doc.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
   {% endif %}
 {% endfor %}
 </nav>

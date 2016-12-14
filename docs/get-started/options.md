@@ -14,7 +14,7 @@ Customize Figuration with our built-in custom variables file and easily toggle g
 
 ## Customizing Variables
 
-Figuration ships with a `_custom.scss` file for easy variable overrides. Copy and paste relevant lines from `_settings.scss` into the custom file and recompile your Sass to change our default values. **Be sure to remove the `!default` flag from override values.**
+Figuration ships with a `/scss/_custom.scss` file for an easy method of overriding the default variables found in `/scss/_settings.scss`. Copy and paste relevant lines from `/scss/_settings.scss` into the `/scss/_custom.scss` file, modify the values, and recompile your Sass to change our default values. **Be sure to remove the `!default` flag from override values.**
 
 For example, to change out the `background-color` and `color` for the `<body>`, you'd do the following:
 
@@ -40,10 +40,12 @@ You can find and customize these variables for key global options in our `_setti
 | `$enable-rounded`           | `true` (default) or `false`        | Enables predefined `border-radius` styles on various components.                                 |
 | `$enable-shadows`           | `true` or `false` (default)        | Enables predefined `box-shadow` styles on various components.                                    |
 | `$enable-transitions`       | `true` (default) or `false`        | Enables predefined `transition`s on various components.                                          |
-| `$enable-grid-classes`      | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g. `container`, `row`, `.col-md-1`, etc.). |
+| `$enable-grid-classes`      | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g. `.container`, `.row`, `.col-md-1`, etc.). |
 | `$enable-print-styles`      | `true` (default) or `false`        | Enables predefined style overrides used when printing.                                           |
-| `$enable-palette`           | `true` (default) or `false`        | Enables the generation of CSS classes for the palette color themes (e.g. `.text-blue-500` etc.). |
-| `$enable-flex-opt`          | `true` (default) or `false`        | Enables the opt-in flexbox model using classes, such as `.row-flex`  .                           |
+| `$enable-palette`           | `true` (default) or `false`        | Enables the generation of CSS classes for the palette color themes (e.g. `.text-blue-500`, etc.). |
+| `$enable-sizing`            | `true` (default) or `false`        | Enables the generation of CSS classes for component sizes, and also for some utilites. (e.g. `.btn-sm`, `.radius-t-xs`, etc.). |
+| `$enable-bp-smallest`       | `true` or `false` (default)        | Enables the generation of CSS classes for breakpoint sizes that include the smallest breakpoint designator. (e.g. `.col-xs-12`).  Also refer to the [Breakpoint Nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) section. |
+| `$enable-flex-opt`          | `true` (default) or `false`        | Enables the opt-in flexbox model using classes, such as `.row-flex`.                             |
 | `$enable-flex-full`         | `true` or `false` (default)        | Enables the full flexbox model where all supported components will use `display: flex;`.         |
 
 If both `$enable-flex-opt` and `$enable-flex-full` are set to `true` the `$enable-flex-opt` option will be disabled.
@@ -103,7 +105,7 @@ Extend the default contextual color map with your own custom colors.
 Yes, it is a substantial and confusing piece of SCSS, but allows for reasonable flexibility.
 The line `$context-themes: ();` should only be defined once in the `_custom.scss` file even if merging multiple color maps.
 
-The `control-*` keys are used by mainly by control items---specifically---buttons, button groups, pagination, progress bars, tags, and background context.
+The `control-*` keys are used by mainly by control items---specifically---buttons, button groups, pagination, progress bars, badges, and background context.
 
 The `context-*` keys are used for contextual items---specifically---tables, list groups, form validation, and alerts.
 

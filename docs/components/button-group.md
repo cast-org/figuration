@@ -6,7 +6,7 @@ group: components
 
 Group a series of buttons together on a single line with the button group. Add on optional JavaScript radio and checkbox style behavior with [our Buttons widget]({{ site.baseurl }}/widgets/button).
 
-Button groups have support for both a `float` style layout, along with both the opt-in flexbox and [full flexbox](/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.btn-group-flex` class to the `.btn-group` element, or a `.btn-group-vertical-flex` class to the `.btn-group-vertical`.
+Button groups have support for both a `float` style layout, along with both the opt-in flexbox and [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.btn-group-flex` class to the `.btn-group` element, or a `.btn-group-vertical-flex` class to the `.btn-group-vertical`.
 
 ## Contents
 {:.no_toc}

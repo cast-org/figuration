@@ -16,7 +16,7 @@ Be sure not to open a modal while another is still visible. Showing more than on
 {% callout warning %}
 #### Modal Markup Placement
 
-Always try to place a modal's HTML code in a top-level position in your document, such as a direct chld of the `<body>` element, to avoid other components affecting the modal's appearance and/or functionality.
+Always try to place a modal's HTML code in a top-level position in your document, such as a direct chld of the `<body>` element, to avoid other components affecting the modal's appearance and/or functionality. Placing it within a `position: fixed;` element may adversely affect placement.
 {% endcallout %}
 
 {% callout warning %}
@@ -164,11 +164,11 @@ To take advantage of the grid system within a modal, just nest `.container-fluid
                         <div class="col-sm-9">
                             Level 1: .col-sm-9
                             <div class="row">
-                                <div class="col-xs-8 col-sm-6">
-                                    Level 2: .col-xs-8 .col-sm-6
+                                <div class="col-8 col-sm-6">
+                                    Level 2: .col-8 .col-sm-6
                                 </div>
-                                <div class="col-xs-4 col-sm-6">
-                                    Level 2: .col-xs-4 .col-sm-6
+                                <div class="col-4 col-sm-6">
+                                    Level 2: .col-4 .col-sm-6
                                 </div>
                             </div>
                         </div>
@@ -224,7 +224,7 @@ To take advantage of the grid system within a modal, just nest `.container-fluid
 
 ### Optional Sizes
 
-Modals have two optional sizes, provided by Bootstrap's base CSS, available via modifier classes to be placed on a `.modal-dialog`.
+Modals have two optional sizes, provided by Figuration's base CSS, available via modifier classes to be placed on a `.modal-dialog`.
 
 <div class="modal" id="modalLg">
     <div class="modal-dialog modal-lg">

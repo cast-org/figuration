@@ -49,6 +49,8 @@ $enable-transitions:    true !default;      // true
 $enable-grid-classes:   true !default;      // true
 $enable-print-styles:   true !default;      // true
 $enable-palette:        true !default;      // true
+$enable-sizing:         true !default;      // true
+$enable-bp-smallest:    false !default;     // false
 $enable-flex-full:      false !default;     // false -- all-in flex mode
 $enable-flex-opt:       true !default;      // true -- opt-in via class mode
 
@@ -138,17 +140,25 @@ $spacers: (
         x: 0,
         y: 0
     ),
+    0_25: (
+        x: ($spacer-x * .25),
+        y: ($spacer-y * .25)
+    ),
+    0_5: (
+        x: ($spacer-x * .5),
+        y: ($spacer-y * .5)
+    ),
     1: (
         x: $spacer-x,
         y: $spacer-y
     ),
-    2: (
+    1_5: (
         x: ($spacer-x * 1.5),
         y: ($spacer-y * 1.5)
     ),
-    3: (
-        x: ($spacer-x * 3),
-        y: ($spacer-y * 3)
+    2: (
+        x: ($spacer-x * 2),
+        y: ($spacer-y * 2)
     )
 ) !default;
 
@@ -191,7 +201,7 @@ $grid-columns:      12 !default;
 // These settings affect container, row, and col components.
 // If modifying, you will also have to adjust the `$container-max-widths`
 // values also to prevent horizontal scrolling.
-$grid-gutter-width: 1.875rem !default;
+$grid-gutter-width: 2rem !default;
 $grid-gutter-widths: (
     xs: $grid-gutter-width,
     sm: $grid-gutter-width,
@@ -251,7 +261,6 @@ $headings-font-family:      inherit !default;
 $headings-font-weight:      600 !default;
 $headings-line-height:      1.1 !default;
 $headings-color:            inherit !default;
-$headings-small-color:      $uibase-500 !default;
 
 $lead-font-size:    1.25rem !default;
 $lead-font-weight:  600 !default;
@@ -307,6 +316,7 @@ $drag-text-shadow:      0 .0625rem 0 #fff !default;
 // Component sizes
 // =====
 // Used for button, button groups, pagination, form-control, and input-group
+// 'md' is considered to be the default size, so no classes for this size designator are generated, as in *no* `.btn-md`.
 $component-sizes: (
     xs: (
         font-size:      .75rem,
@@ -319,25 +329,24 @@ $component-sizes: (
         padding-y:      .25rem,
         padding-x:      .5rem,
         border-radius:  .1875rem
-   ),
+    ),
     lg: (
+        font-size:      1.125rem,
+        padding-y:      .5rem,
+        padding-x:      1.125rem,
+        border-radius:  .3125rem
+    ),
+    xl: (
         font-size:      1.25rem,
         padding-y:      .625rem,
         padding-x:      1.25rem,
         border-radius:  .3125rem
-    ),
-    xl: (
-        font-size:      1.5rem,
-        padding-y:      .75rem,
-        padding-x:      1.5rem,
-        border-radius:  .3125rem
     )
 ) !default;
 
-
-// Image rounded
+// Radius utility
 // =====
-$rounded-border-radius: $border-radius !default;
+$radius-border-radius: $border-radius !default;
 
 
 // Image thumbnails
@@ -505,9 +514,7 @@ $custom-checkbox-indeterminate-box-shadow:  none !default;
 $custom-radio-radius:               50% !default;
 $custom-radio-checked-icon:         url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%23fff'/%3E%3C/svg%3E") !default;
 
-$custom-select-padding-y:           $input-padding-y !default;
-$custom-select-padding-x:           $input-padding-x !default;
-$custom-select-indicator-padding:   1rem !default; // Extra padding to account for the presence of the background-image based indicator
+$custom-select-indicator-padding:   .75rem !default; // Extra padding to account for the presence of the background-image based indicator
 $custom-select-color:               $input-color !default;
 $custom-select-disabled-color:      $text-muted !default;
 $custom-select-bg:                  $white !default;
@@ -524,13 +531,9 @@ $custom-select-focus-box-shadow:    inset 0 .0625rem .125rem rgba(0,0,0,.075), 0
 $custom-select-sm-padding-y:        .2rem !default;
 $custom-select-sm-font-size:        75% !default;
 
-$custom-file-height:                2.5rem !default;
 $custom-file-width:                 14rem !default;
 $custom-file-focus-box-shadow:      0 0 0 .075rem #fff, 0 0 0 .2rem map-get($context-colors, "primary") !default;
 
-$custom-file-padding-x:             .5rem !default;
-$custom-file-padding-y:             1rem !default;
-$custom-file-line-height:           1.5 !default;
 $custom-file-color:                 $uibase-600 !default;
 $custom-file-bg:                    $white !default;
 $custom-file-border-width:          $border-width !default;
@@ -592,33 +595,37 @@ $list-group-item-heading-margin-bottom: .3em !default;
 $breadcrumb-padding-y:          .75rem !default;
 $breadcrumb-padding-x:          1rem !default;
 $breadcrumb-item-padding:       .5rem !default;
+$breadcrumb-border-radius:      $border-radius !default;
 
 $breadcrumb-bg:                 $uibase-50 !default;
 $breadcrumb-divider-color:      $uibase-400 !default;
 $breadcrumb-active-color:       $uibase-500 !default;
 $breadcrumb-divider:            "/" !default;
 
+
 // Pagination
 // =====
-$pagination-padding-x:                $btn-padding-x !default;
-$pagination-padding-y:                $btn-padding-y !default;
+$pagination-line-height:        $btn-line-height !default;
+$pagination-padding-x:          $btn-padding-x !default;
+$pagination-padding-y:          $btn-padding-y !default;
 
-$pagination-color:                     $link-color !default;
-$pagination-bg:                        $white !default;
-$pagination-border-width:              $border-width !default;
-$pagination-border-color:              $uibase-300 !default;
+$pagination-color:              $link-color !default;
+$pagination-bg:                 $white !default;
+$pagination-border-width:       $border-width !default;
+$pagination-border-color:       $uibase-300 !default;
+$pagination-border-radius:      $border-radius !default;
 
-$pagination-hover-color:               $link-hover-color !default;
-$pagination-hover-bg:                  $uibase-50 !default;
-$pagination-hover-border:              $uibase-300 !default;
+$pagination-hover-color:        $link-hover-color !default;
+$pagination-hover-bg:           $uibase-50 !default;
+$pagination-hover-border:       $uibase-300 !default;
 
-$pagination-active-color:              $active-color !default;
-$pagination-active-bg:                 $active-bg !default;
-$pagination-active-border:             $active-border !default;
+$pagination-active-color:       $active-color !default;
+$pagination-active-bg:          $active-bg !default;
+$pagination-active-hover-color: $active-color !default;
+$pagination-active-hover-bg:    $active-hover-bg !default;
 
-$pagination-disabled-color:            $uibase-500 !default;
-$pagination-disabled-bg:               darken($uibase-50, 10) !default;
-$pagination-disabled-border:           $uibase-300 !default;
+$pagination-disabled-color:     $uibase-500 !default;
+$pagination-disabled-bg:        darken($uibase-50, 10) !default;
 
 
 // Dropdowns
@@ -713,6 +720,7 @@ $navbar-light-active-color:         rgba(0,0,0,.95) !default;
 $navbar-light-disabled-color:       rgba(0,0,0,.25) !default;
 $navbar-light-divider-color:        rgba(0,0,0,.65) !default;
 
+
 // Jumbotron
 // =====
 $jumbotron-padding-y:       3rem !default;
@@ -723,29 +731,33 @@ $jumbotron-bg:              $uibase-50 !default;
 $jumbotron-border-radius:   .3rem !default;
 $jumbotron-breakpoint:      sm !default;
 
-// Tags
+
+// Badges
 // =====
-$tag-color:                 $white !default;
-$tag-bg:                    $uibase-400 !default;
-$tag-link-hover-color:      $white !default;
-$tag-font-size:             75% !default;
-$tag-font-weight:           $font-weight-bold !default;
-$tag-padding-x:             .375em !default;
-$tag-padding-y:             .25em !default;
-$tag-border-radius:         .25em !default;
-$tag-border-width:          $border-width !default;
+$badge-color:               $white !default;
+$badge-bg:                  $uibase-400 !default;
+$badge-link-hover-color:    $white !default;
+$badge-font-size:           75% !default;
+$badge-font-weight:         $font-weight-bold !default;
+$badge-padding-x:           .375em !default;
+$badge-padding-y:           .25em !default;
+$badge-border-radius:       .25em !default;
+$badge-border-width:        $border-width !default;
 
-$tag-pill-padding-x:        .5em !default;
+$badge-pill-padding-x:      .5em !default;
 // Use a higher than normal value to ensure completely rounded edges when
-// customizing padding or font-size on tags.
-$tag-pill-border-radius:    10rem !default;
+// customizing padding or font-size on badges.
+$badge-pill-border-radius:  10rem !default;
 
-$tag-outline-link-hover-color:  $white !default;
+$badge-outline-background:       transparent !default;
+$badge-outline-link-hover-color: $white !default;
 
 
 // Alerts
 // =====
-$alert-padding:             1rem !default;
+$alert-padding-x:           1rem !default;
+$alert-padding-y:           1rem !default;
+$alert-margin-bottom:       $spacer-y !default;
 $alert-border-radius:       $border-radius !default;
 $alert-link-font-weight:    $font-weight-bold !default;
 $alert-border-width:        $border-width !default;
@@ -766,6 +778,7 @@ $card-border-width:        $border-width !default;
 $card-border-radius:       $border-radius !default;
 $card-border-radius-inner: calc(#{$border-radius} - #{$card-border-width}) !default;
 $card-border-color:        $uibase-300 !default;
+$card-cap-color:           $uibase-900 !default;
 $card-cap-bg:              $uibase-50 !default;
 $card-bg:                  $white !default;
 
@@ -819,10 +832,10 @@ $popover-border-radius:               .3rem !default;
 $popover-box-shadow:                  0 .2rem .3rem rgba(0,0,0,.175) !default;
 
 $popover-title-bg:                    $uibase-50 !default;
-$popover-title-padding-x:             .8rem !default;
+$popover-title-padding-x:             .75rem !default;
 $popover-title-padding-y:             .5rem !default;
 
-$popover-content-padding-x:           .8rem !default;
+$popover-content-padding-x:           .75rem !default;
 $popover-content-padding-y:           .5rem !default;
 
 // Arrow dimension in pixels to get proper visual layout
@@ -839,8 +852,8 @@ $popover-arrow-outer-color:           fade-in($popover-border-color, .05) !defau
 $modal-dialog-margin:           .625rem !default;
 $modal-dialog-sm-up-margin-y:   1.875rem !default;
 
-$modal-title-padding-y:         .75rem !default;
-$modal-title-padding-x:         1rem !default;
+$modal-header-padding-y:        .75rem !default;
+$modal-header-padding-x:        1rem !default;
 $modal-title-line-height:       $line-height-base !default;
 
 $modal-inner-padding-y:         .75rem !default;
@@ -863,9 +876,9 @@ $modal-header-border-width:     $modal-content-border-width !default;
 $modal-footer-border-width:     $modal-header-border-width !default;
 $modal-border-radius:           .3rem !default;
 
-$modal-sm:                      rem-calc(300px) !default;
-$modal-md:                      rem-calc(600px) !default;
-$modal-lg:                      rem-calc(900px) !default;
+$modal-sm:                      rem-calc(304px) !default; // 304px=>19rem
+$modal-md:                      rem-calc(528px) !default; // 528px=>33rem
+$modal-lg:                      rem-calc(896px) !default; // 896px=>56rem
 
 $modal-breakpoint:              sm !default; // When to start scaling up modal width
 $modal-lg-breakpoint:           lg !default; // The minimum breakpoint to allow `.modal-lg`
@@ -878,6 +891,7 @@ $gridline-margin-y:         1rem !default;
 $gridline-border-width:     $border-width !default;
 $gridline-border-color:     $uibase-400 !default;
 $gridline-border-radius:    $border-radius !default;
+
 
 // Slider
 // =====

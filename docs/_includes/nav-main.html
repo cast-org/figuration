@@ -2,11 +2,18 @@
     <div class="container">
         <nav>
             <a class="navbar-brand" href="{{ site.baseurl }}/">CAST Figuration</a>
-            <div class="clearfix hidden-lg-up">
-                <button class="navbar-toggler btn btn-toggler pull-xs-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">
+            <div class="hide-lg-up float-right">
+                <button class="navbar-toggler btn btn-toggler" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">
                     <span class="icon-menu" aria-hidden="true">&#8801;</span>
                 </button>
             </div>
+            {% if site.github %}
+            <div class="hide-xs-down float-right mt-0_25 mr-1 mr-lg-0">
+                <form class="form-inline docsearch-wrapper">
+                    <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
+                </form>
+            </div>
+            {% endif %}
             <div class="collapse navbar-toggleable-md" id="cf-topnav">
                 <ul class="nav navbar-nav">
                     <li class="nav-item {% if page.group == "get-started" %}active{% endif %}">
@@ -22,7 +29,7 @@
                         <a href="{{ site.baseurl }}/components/alerts/" class="nav-link">Components</a>
                     </li>
                     <li class="nav-item {% if page.group == "utilities" %}active{% endif %}">
-                        <a href="{{ site.baseurl }}/utilities/clearfix/" class="nav-link">Utilities</a>
+                        <a href="{{ site.baseurl }}/utilities/borders/" class="nav-link">Utilities</a>
                     </li>
                     <li class="nav-item {% if page.group == "widgets" %}active{% endif %}">
                         <a href="{{ site.baseurl }}/widgets/overview/" class="nav-link">Widgets</a>
@@ -30,9 +37,11 @@
                     <li class="nav-item {% if page.group == "about" %}active{% endif %}">
                         <a href="{{ site.baseurl }}/about/overview/" class="nav-link">About</a>
                     </li>
-                    <li class="nav-item pull-lg-right">
+                    {% unless site.github %}
+                    <li class="nav-item float-lg-right">
                         <a href="{{ site.repo }}" class="nav-link"><small>GitHub</small></a>
                     </li>
+                    {% endunless %}
                 </ul>
             </div>
         </nav>

@@ -127,7 +127,7 @@ Keep tooltips in their place with the `viewport` option.
 
     <button type="button" class="btn btn-default tooltip-viewport-right" title="This should be shifted down">Shift Down</button>
 
-    <button type="button" class="btn btn-default pull-xs-right tooltip-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
+    <button type="button" class="btn btn-default float-right tooltip-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
 
     <button type="button" class="btn btn-default tooltip-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
 </div>

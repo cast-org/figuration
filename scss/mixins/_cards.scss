@@ -16,8 +16,11 @@
 
 // Inverse text within a card for use with dark backgrounds
 @mixin card-inverse {
+    color: rgba(255,255,255,.65);
+
     .card-header,
     .card-footer {
+        background-color: transparent;
         border-color: rgba(255,255,255,.2);
     }
     .card-header,
@@ -29,12 +32,6 @@
     &.card-header,
     &.card-footer {
         color: $white;
-    }
-    .card-link,
-    .card-text,
-    .card-subtitle,
-    .card-blockquote .blockquote-footer {
-        color: rgba(255,255,255,.65);
     }
     .card-link {
         @include hover-focus {

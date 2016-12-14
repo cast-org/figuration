@@ -1,0 +1,69 @@
+// Base class
+.badge {
+    display: inline-block;
+    padding: $badge-padding-y $badge-padding-x;
+    font-size: $badge-font-size;
+    font-weight: $badge-font-weight;
+    line-height: 1;
+    color: $badge-color;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border: $badge-border-width solid transparent;
+    @include border-radius($badge-border-radius);
+
+    // Empty badges collapse automatically
+    &:empty {
+        display: none;
+    }
+}
+
+// Quick fix for badges in buttons
+.btn .badge {
+    position: relative;
+    top: -1px;
+}
+
+// scss-lint:disable QualifyingElement
+// Add hover effects, but only for links
+a.badge {
+    text-decoration: none;
+
+    @include hover-focus {
+        color: $badge-link-hover-color;
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
+// scss-lint:enable QualifyingElement
+
+// Pill
+.badge-pill {
+    padding-right: $badge-pill-padding-x;
+    padding-left: $badge-pill-padding-x;
+    @include border-radius($badge-pill-border-radius);
+}
+
+// Colors (linked badges get darker on :hover)
+.badge {
+    @include badge-variant($badge-bg);
+}
+@each $theme, $colors in $context-themes {
+    $color: map-get($colors, "control-bg");
+
+    .badge-#{$theme} {
+        @include badge-variant($color);
+    }
+}
+
+// Outline (linked badges get color fill on :hover)
+.badge-outline {
+    @include badge-outline-variant($badge-bg);
+}
+@each $theme, $colors in $context-themes {
+    $color: map-get($colors, "control-bg");
+
+    .badge-outline-#{$theme} {
+        @include badge-outline-variant($color);
+    }
+}

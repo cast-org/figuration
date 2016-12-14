@@ -21,7 +21,6 @@
     &.top {
         margin-top: -$popover-arrow-width;
 
-        > .arrow,
         .popover-arrow {
             bottom: -$popover-arrow-outer-width;
             left: 50%;
@@ -40,7 +39,6 @@
     &.right {
         margin-left: $popover-arrow-width;
 
-        > .arrow,
         .popover-arrow {
             top: 50%;
             left: -$popover-arrow-outer-width;
@@ -59,7 +57,6 @@
     &.bottom {
         margin-top: $popover-arrow-width;
 
-        > .arrow,
         .popover-arrow {
             top: -$popover-arrow-outer-width;
             left: 50%;
@@ -78,7 +75,6 @@
     &.left {
         margin-left: -$popover-arrow-width;
 
-        > .arrow,
         .popover-arrow {
             top: 50%;
             right: -$popover-arrow-outer-width;
@@ -98,6 +94,7 @@
 
 .popover-title {
     padding: $popover-title-padding-y $popover-title-padding-x;
+    padding-right: ($popover-title-padding-x * 2);
     margin: 0; // reset heading margin
     font-size: $font-size-base;
     background-color: $popover-title-bg;
@@ -115,7 +112,6 @@
 
 // Arrows
 // .popover-arrow is outer, .popover-arrow::after is inner
-.popover > .arrow,
 .popover-arrow {
     &,
     &::after {
@@ -127,7 +123,6 @@
         border-style: solid;
     }
 }
-.popover > .arrow,
 .popover-arrow {
     border-width: $popover-arrow-outer-width;
 
@@ -140,14 +135,14 @@
 // Control buttons
 .popover .close,
 .popover .drag {
-    padding: 0 .15em;
+    padding: ($popover-title-padding-y / 2) ($popover-title-padding-x / 2);
+    margin-top: -($popover-title-padding-y / 2);
 }
 
 // Draggable variant
 .popover.draggable {
     margin: 0;
 
-    > .arrow,
     .popover-arrow {
         display: none;
     }

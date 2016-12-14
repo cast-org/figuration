@@ -33,7 +33,7 @@
 .responsive-utilities-test {
     margin-top: .25rem;
 }
-.responsive-utilities-test .col-xs-6 {
+.responsive-utilities-test .col-6 {
     margin-top: .5rem;
     margin-bottom: .5rem;
 }
@@ -48,7 +48,7 @@
 }
 .visible-on,
 .hidden-on {
-    .col-xs-6 {
+    .col-6 {
         > .not-visible {
             color: $uibase-500;
             border: 1px solid $uibase-300;
@@ -57,7 +57,7 @@
 }
 .visible-on,
 .hidden-on {
-    .col-xs-6 {
+    .col-6 {
         .visible {
             color: map-deep-get($context-themes, "success", "context-color");
             background-color: map-deep-get($context-themes, "success", "context-bg");
@@ -67,27 +67,27 @@
 }
 
 @include media-breakpoint-only(xs) {
-    .hidden-xs-only {
+    .hide-xs-only {
         display: none !important;
     }
 }
 @include media-breakpoint-only(sm) {
-    .hidden-sm-only {
+    .hide-sm-only {
         display: none !important;
     }
 }
 @include media-breakpoint-only(md) {
-    .hidden-md-only {
+    .hide-md-only {
         display: none !important;
     }
 }
 @include media-breakpoint-only(lg) {
-    .hidden-lg-only {
+    .hide-lg-only {
         display: none !important;
     }
 }
 @include media-breakpoint-only(xl) {
-    .hidden-xl-only {
+    .hide-xl-only {
         display: none !important;
     }
 }

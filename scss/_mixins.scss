@@ -21,6 +21,7 @@
 
 // Components
 @import "mixins/alert";
+@import "mixins/badge";
 @import "mixins/buttons";
 @import "mixins/cards";
 @import "mixins/forms";
@@ -29,7 +30,6 @@
 @import "mixins/pagination";
 @import "mixins/progress";
 @import "mixins/tables";
-@import "mixins/tag";
 
 // Context
 @import "mixins/background-variant";
@@ -37,4 +37,4 @@
 // Layout
 @import "mixins/clearfix";
 @import "mixins/grid";
-@import "mixins/pulls";
+@import "mixins/float";

@@ -13,7 +13,6 @@
     user-select: none;
     border: $input-border-width solid transparent;
     @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
-    // @include transition(all .2s ease-in-out);
 
     &,
     &:active,
@@ -24,17 +23,21 @@
         }
     }
 
-    @include hover-focus {
-        text-decoration: none;
-    }
-    &.focus {
+    &:focus,
+    &.focus,
+    &:hover {
         text-decoration: none;
     }
 
     &:active,
     &.active {
+        // Remove the gradient for the pressed/active state
         background-image: none;
         outline: 0;
+        @include box-shadow($btn-active-box-shadow);
+    }
+
+    .open > &.dropdown-toggle {
         @include box-shadow($btn-active-box-shadow);
     }
 
@@ -69,9 +72,6 @@ fieldset[disabled] a.btn {
 
 
 // Outline variant - remove all backgrounds
-//.btn-outline {
-//    @include button-outline-variant($btn-default-outline-color, $btn-default-border, true);
-//}
 @each $theme, $colors in $context-themes {
     $color:     map-get($colors, "control-bg");
     $border:    map-get($colors, "control-border");
@@ -86,6 +86,7 @@ fieldset[disabled] a.btn {
 // Make a button look and behave like a link
 .btn-link {
     @include button-variant($link-color, transparent, transparent);
+    @include box-shadow(none);
 
     @include hover-focus {
         color: $link-hover-color;
@@ -96,10 +97,11 @@ fieldset[disabled] a.btn {
     &.active,
     .open > &.dropdown-toggle {
         color: $link-hover-color;
+        @include box-shadow(none);
 
-        &:hover,
         &:focus,
-        &.focus {
+        &.focus,
+        &:hover {
             color: darken($link-hover-color, 25%);
         }
     }
@@ -115,14 +117,16 @@ fieldset[disabled] a.btn {
 }
 
 // Button sizes
-@each $size, $dims in $component-sizes {
-    $font-size:     map-get($dims, "font-size");
-    $padding-y:     map-get($dims, "padding-y");
-    $padding-x:     map-get($dims, "padding-x");
-    $border-radius: map-get($dims, "border-radius");
+@if $enable-sizing {
+    @each $size, $dims in $component-sizes {
+        $sz-font-size:     map-get($dims, "font-size");
+        $sz-padding-y:     map-get($dims, "padding-y");
+        $sz-padding-x:     map-get($dims, "padding-x");
+        $sz-border-radius: map-get($dims, "border-radius");
 
-    .btn-#{$size} {
-        @include button-size($padding-y, $padding-x, $font-size, $border-radius);
+        .btn-#{$size} {
+            @include button-size($sz-padding-y, $sz-padding-x, $sz-font-size, $sz-border-radius);
+        }
     }
 }
 

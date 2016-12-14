@@ -14,12 +14,12 @@
     &:first-child {
         .page-link {
             margin-left: 0;
-            @include border-left-radius($border-radius);
+            @include border-left-radius($pagination-border-radius);
         }
     }
     &:last-child {
         .page-link {
-            @include border-right-radius($border-radius);
+            @include border-right-radius($pagination-border-radius);
         }
     }
 
@@ -29,7 +29,10 @@
             color: $pagination-active-color;
             cursor: default;
             background-color: $pagination-active-bg;
-            border-color: $pagination-active-border;
+        }
+        @include hover-focus {
+            color: $pagination-active-hover-color;
+            background-color: $pagination-active-hover-bg;
         }
     }
 
@@ -39,7 +42,6 @@
             pointer-events: none;
             cursor: $cursor-disabled;
             background-color: $pagination-disabled-bg;
-            border-color: $pagination-disabled-border;
         }
     }
 }
@@ -49,6 +51,7 @@
     float: left; // Collapse white-space
     padding: $pagination-padding-y $pagination-padding-x;
     margin-left: -1px;
+    line-height: $pagination-line-height;
     color: $pagination-color;
     text-decoration: none;
     background-color: $pagination-bg;
@@ -56,6 +59,7 @@
 
     @include hover-focus {
         color: $pagination-hover-color;
+        text-decoration: none;
         background-color: $pagination-hover-bg;
         border-color: $pagination-hover-border;
     }
@@ -63,13 +67,15 @@
 
 
 // Sizing
-@each $size, $dims in $component-sizes {
-    $font-size:     map-get($dims, "font-size");
-    $padding-y:     map-get($dims, "padding-y");
-    $padding-x:     map-get($dims, "padding-x");
-    $border-radius: map-get($dims, "border-radius");
+@if $enable-sizing {
+    @each $size, $dims in $component-sizes {
+        $sz-font-size:     map-get($dims, "font-size");
+        $sz-padding-y:     map-get($dims, "padding-y");
+        $sz-padding-x:     map-get($dims, "padding-x");
+        $sz-border-radius: map-get($dims, "border-radius");
 
-    .pagination-#{$size} {
-        @include pagination-size($padding-y, $padding-x, $font-size, $border-radius);
+        .pagination-#{$size} {
+            @include pagination-size($sz-padding-y, $sz-padding-x, $sz-font-size, $sz-border-radius);
+        }
     }
 }
