@@ -105,7 +105,7 @@
     padding: $modal-footer-padding-y $modal-footer-padding-x;
     text-align: right; // right align buttons
     border-top: $modal-footer-border-width solid $modal-footer-border-color;
-    @include clearfix(); // clear it in case folks use .pull-* classes on buttons
+    @include clearfix(); // clear it in case folks use .float-* classes on buttons
 }
 
 // Measure scrollbar width for padding body during modal show/hide
