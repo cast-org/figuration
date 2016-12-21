@@ -112,7 +112,7 @@
         }
     }
 
-    // Create repsonsive grid gutters
+    // Create responsive grid gutters
     @each $breakpoint in map-keys($grid-breakpoints) {
         $bprule: breakpoint-designator($breakpoint);
 
