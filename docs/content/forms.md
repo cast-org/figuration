@@ -535,7 +535,7 @@ Should you have no text within the `<label>`, the input is positioned as you'd e
 
 ## Static Controls
 
-When you need to place plain text next to a form label within a form, use the `.form-control-static` class on a `<p>`.
+When you need to place plain text next to a form label within a form, use the `.form-control-static` class on a `<p>`, or another element of your choice.
 
 {% example html %}
 <form>
