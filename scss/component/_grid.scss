@@ -135,6 +135,12 @@
                 @extend %col-gutter;
             }
         }
+
+        @if $enable-flex-full or $enable-flex-opt {
+            .col#{$bprule}-auto {
+                @extend %col-gutter;
+            }
+        }
     }
 
     @include make-grid-columns();
