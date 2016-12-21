@@ -49,31 +49,31 @@ You might also want to check the [border utilites]({{ site.baseurl }}/utilities/
 Align images with the [helper float classes]({{ site.baseurl }}/utilities/responsive-floats/) or [text alignment classes]({{ site.baseurl }}/utilities/typography/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/utilities/spacing/#horizontal-centering).
 
 <div class="cf-example clearfix">
-  <img data-src="holder.js/200x200" class="img-rounded float-left" alt="A generic square placeholder image with rounded corners">
-  <img data-src="holder.js/200x200" class="img-rounded float-right" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="radius float-left" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="radius float-right" alt="A generic square placeholder image with rounded corners">
 </div>
 
 {% highlight html %}
-<img src="..." class="img-rounded float-left" alt="...">
-<img src="..." class="img-rounded float-right" alt="...">
+<img src="..." class="radius float-left" alt="...">
+<img src="..." class="radius float-right" alt="...">
 {% endhighlight %}
 
 <div class="cf-example clearfix">
-  <img data-src="holder.js/200x200" class="img-rounded mx-auto d-block" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="radius mx-auto d-block" alt="A generic square placeholder image with rounded corners">
 </div>
 
 {% highlight html %}
-<img src="..." class="img-rounded mx-auto d-block" alt="...">
+<img src="..." class="radius mx-auto d-block" alt="...">
 {% endhighlight %}
 
 <div class="cf-example clearfix">
   <div class="text-center">
-    <img data-src="holder.js/200x200" class="img-rounded" alt="A generic square placeholder image with rounded corners">
+    <img data-src="holder.js/200x200" class="radius" alt="A generic square placeholder image with rounded corners">
   </div>
 </div>
 
 {% highlight html %}
 <div class="text-center">
-  <img src="..." class="img-rounded" alt="...">
+  <img src="..." class="radius" alt="...">
 </div>
 {% endhighlight %}
