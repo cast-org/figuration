@@ -806,7 +806,7 @@ $card-columns-column-gap:   1.25rem !default;
 
 // Tooltips
 // =====
-$tooltip-max-width:     200px !default;
+$tooltip-max-width:     rem-calc(208px) !default;  // 208px=>13rem
 $tooltip-padding-y:     .25rem !default;
 $tooltip-padding-x:     .5rem !default;
 $tooltip-margin:        .2rem !default;
@@ -825,7 +825,7 @@ $tooltip-arrow-color:   $tooltip-bg !default;
 // Popovers
 // =====
 $popover-bg:                          $white !default;
-$popover-max-width:                   276px !default;
+$popover-max-width:                   rem-calc(288px) !default;  // 288px=>18rem
 $popover-border-width:                $border-width !default;
 $popover-border-color:                rgba(0,0,0,.2) !default;
 $popover-border-radius:               .3rem !default;
