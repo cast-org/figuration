@@ -187,10 +187,10 @@
             });
             this.$media.on('play canplay pause', function() {
                 $selfRef.controlStatus();
-                $selfRef.unplayedStatus();
+                $selfRef.playedStatus();
             });
             this.$media.on('loadedmetadata loadeddata progress canplay canplaythrough timeupdate durationchange', function() {
-                $selfRef.unplayedStatus();
+                $selfRef.playedStatus();
                 $selfRef.timeStatus();
                 $selfRef.seekStatus();
             });
@@ -319,7 +319,7 @@
 
         toggle : function() {
             if (this.media.paused) {
-                this.unplayedStatus(true);
+                this.playedStatus(true);
                 this.media.play();
             } else {
                 this.media.pause();
@@ -327,7 +327,7 @@
         },
 
         play : function() {
-            this.unplayedStatus(true);
+            this.playedStatus(true);
             this.media.play();
         },
 
@@ -361,7 +361,7 @@
             }
         },
 
-        unplayedStatus : function(force) {
+        playedStatus : function(force) {
             if (force === undefined) { force = false; }
             if (!this.played) {
                 if (force || this.media.played.length > 0) {
