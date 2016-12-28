@@ -61,7 +61,7 @@
     background-color: $dropdown-bg;
     background-clip: padding-box;
     border: $dropdown-border-width solid $dropdown-border-color;
-    @include border-radius(0 $border-radius $border-radius $border-radius);
+    @include border-radius($dropdown-attach-border-radius $dropdown-border-radius $dropdown-border-radius $dropdown-border-radius);
     @include box-shadow($dropdown-box-shadow);
 }
 
@@ -123,7 +123,7 @@
         left: 100%;
         //margin-top: -($dropdown-margin-top + $dropdown-padding-y - $border-width);
         margin-top: calc(-#{($dropdown-margin-top + $dropdown-padding-y)} + #{$border-width});
-        @include border-radius(0 $border-radius $border-radius $border-radius);
+        @include border-radius($dropdown-attach-border-radius $dropdown-border-radius $dropdown-border-radius $dropdown-border-radius);
     }
     > a::after {
         position: absolute;
@@ -138,20 +138,8 @@
         border-bottom: $dropdown-caret-width solid transparent;
         border-left: $dropdown-caret-width solid $dropdown-caret-color;
     }
-    &:hover > a::after {
-        border-left-color: $dropdown-caret-color;
-    }
-
-    &.dropdown-menu-left {
-        > a::after {
-            right: auto;
-            left: .35rem;
-            border-right: $dropdown-caret-width solid $dropdown-caret-color;
-            border-left: 0;
-        }
-        &:hover > a::after {
-            border-right-color: $dropdown-caret-color;
-        }
+    &.active > a::after {
+        border-left-color: $dropdown-caret-active-color;
     }
 }
 
@@ -184,33 +172,6 @@
     }
 }
 
-// Menu positioning
-//
-// Add extra class to `.dropdown-menu` to flip the alignment of the dropdown
-// menu with the parent.
-.dropdown-menu-right {
-    right: 0;
-    left: auto; // Reset the default from `.dropdown-menu`
-    @include border-radius($border-radius 0 $border-radius $border-radius);
-}
-.dropdown-submenu.dropdown-menu-right > .dropdown-menu {
-    right: -100%;
-    left: auto;
-    margin-right: -($border-width * 2);
-    @include border-radius(0 $border-radius $border-radius $border-radius);
-}
-
-.dropdown-menu-left {
-    right: auto;
-    left: 0;
-}
-.dropdown-submenu.dropdown-menu-left > .dropdown-menu {
-    right: auto;
-    left: -100%;
-    margin-left: -($border-width * 2);
-    @include border-radius($border-radius 0 $border-radius $border-radius);
-}
-
 // Dropdown section headers
 .dropdown-header {
     display: block;
@@ -226,8 +187,7 @@
     }
 }
 
-// Dividers (basically an `<hr>`) within the dropdown
-.dropdown-menu .divider,
+// Divider (basically an `<hr>`) within the dropdown
 .dropdown-divider {
     @include nav-divider($dropdown-divider-color);
 }
@@ -242,10 +202,8 @@
     z-index: $zindex-dropdown-backdrop;
 }
 
-
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 // Just add .dropup after the standard .dropdown class and you're set.
-// TODO: abstract this so that the navbar fixed styles are not placed here?
 .dropup,
 .navbar-fixed-bottom .dropdown {
     // Reverse the caret
@@ -267,7 +225,7 @@
         bottom: 100%;
         margin-top: 0;
         margin-bottom: $dropdown-margin-top;
-        @include border-radius($border-radius $border-radius $border-radius 0);
+        @include border-radius($dropdown-border-radius $dropdown-border-radius $dropdown-border-radius $dropdown-attach-border-radius);
     }
 
     .dropdown-submenu {
@@ -275,55 +233,8 @@
             top: auto;
             bottom: 0;
             margin-top: 0;
-            //margin-bottom: -($dropdown-margin-top + $dropdown-padding-y - $border-width);
             margin-bottom: calc(-#{($dropdown-margin-top + $dropdown-padding-y)} + #{$border-width});
-            @include border-radius($border-radius $border-radius $border-radius 0);
-        }
-    }
-}
-
-// Allow for menus and submenus to go left
-.dropdown-menu-left {
-    .dropdown-menu {
-        right: 0;
-        left: auto;
-        @include border-radius($border-radius 0 $border-radius $border-radius);
-
-        &.dropdown-menu-left {
-            right: auto;
-            left: 0;
-        }
-    }
-
-    //.dropdown-submenu {
-    .dropdown-submenu:not(.dropdown-menu-right) {
-        > a::after {
-            right: auto;
-            left: .35rem;
-            border-right: $dropdown-caret-width solid $dropdown-caret-color;
-            border-left: 0;
-        }
-        &:hover > a::after {
-            border-right-color: $dropdown-caret-color;
-        }
-
-        > .dropdown-menu {
-            right: 100%;
-            left: auto;
-            margin-left: auto;
-            @include border-radius($border-radius 0 $border-radius $border-radius);
-        }
-    }
-}
-
-.dropup.dropdown-menu-left {
-    .dropdown-menu {
-        @include border-radius($border-radius $border-radius 0 $border-radius);
-    }
-
-    .dropdown-submenu {
-        > .dropdown-menu {
-            @include border-radius($border-radius $border-radius 0 $border-radius);
+            @include border-radius($dropdown-border-radius $dropdown-border-radius $dropdown-border-radius $dropdown-attach-border-radius);
         }
     }
 }
@@ -345,34 +256,76 @@
         border-right: $dropdown-caret-width solid $dropdown-caret-color;
         border-bottom: $dropdown-caret-width solid transparent;
     }
-    &:hover > a::before {
-        border-right-color: $dropdown-caret-color;
-    }
+}
 
-    // Back caret alignment and sub-aligment overrides
-    .dropdown-menu-left &,
-    .dropdown-menu-right .dropdown-menu-left & {
-        > a::before {
-            right: .35rem;
-            left: auto;
-            border-right: 0;
-            border-left: $dropdown-caret-width solid $dropdown-caret-color;
-        }
-        &:hover a::before {
-            border-left-color: $dropdown-caret-color;
+// Change back caret direction for left facing menus
+// The `.dropdown-back-left` class is added automatically by the dropdown.js widget
+// This removes the need for overly convoluted CSS rules
+.dropdown-back-left {
+    > a::before {
+        right: .35rem;
+        left: auto;
+        border-right: 0;
+        border-left: $dropdown-caret-width solid $dropdown-caret-color;
+    }
+}
+
+// Allow for menus to go left - aligning to right side of the control
+.dropdown-menu-left {
+    .dropdown-menu {
+        right: 0;
+        left: auto;
+        @include border-radius($dropdown-border-radius $dropdown-attach-border-radius $dropdown-border-radius $dropdown-border-radius);
+    }
+}
+
+// Submenu alignment
+// The `.dropdown-subalign-*` classes are added automatically by the dropdown.js widget
+// This removes the need for overly convoluted CSS rules
+.dropdown-subalign-right {
+    > .dropdown-menu {
+        right: auto;
+        left: 100%;
+        margin-right: -($border-width * 2);
+        margin-left: 0;
+        @include border-radius($dropdown-attach-border-radius $dropdown-border-radius $dropdown-border-radius $dropdown-border-radius);
+    }
+}
+
+.dropdown-subalign-left {
+    > .dropdown-menu {
+        right: 100%;
+        left: auto;
+        margin-right: 0;
+        margin-left: -($border-width * 2);
+        @include border-radius($dropdown-border-radius $dropdown-attach-border-radius $dropdown-border-radius $dropdown-border-radius);
+    }
+    > a::after {
+        right: auto;
+        left: .35rem;
+        border-right: $dropdown-caret-width solid $dropdown-caret-color;
+        border-left: 0;
+    }
+    &.active > a::after {
+        border-right-color: $dropdown-caret-active-color;
+    }
+}
+
+// Dropup corner overrides
+&.dropup {
+    &.dropdown-menu-left {
+        .dropdown-menu {
+            @include border-radius($dropdown-border-radius $dropdown-border-radius $dropdown-attach-border-radius $dropdown-border-radius);
         }
     }
-
-    .dropdown-menu-right &,
-    .dropdown-menu-left .dropdown-menu-right & {
-        > a::before {
-            right: auto;
-            left: .35rem;
-            border-right: $dropdown-caret-width solid $dropdown-caret-color;
-            border-left: 0;
+    .dropdown-subalign-right {
+        > .dropdown-menu {
+            @include border-radius($dropdown-border-radius $dropdown-border-radius $dropdown-border-radius $dropdown-attach-border-radius);
         }
-        &:hover a::before {
-            border-right-color: $dropdown-caret-color;
+    }
+    .dropdown-subalign-left {
+        > .dropdown-menu {
+            @include border-radius($dropdown-border-radius $dropdown-border-radius $dropdown-attach-border-radius $dropdown-border-radius);
         }
     }
 }

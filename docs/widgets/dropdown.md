@@ -46,7 +46,7 @@ Here is a static example showing the dropdown layout and content pieces.
                     <li><a href="#">Something else here</a></li>
                 </ul>
             </li>
-            <li class="divider"></li>
+            <li class="dropdown-divider"></li>
             <li><a href="#">Separated link</a></li>
         </ul>
     </div>
@@ -60,10 +60,10 @@ Because of the support for nested dropdown menus, it is currently **required to 
 
 {% example html %}
 <div class="dropdown">
-  <a href="#" role="button" class="dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#dropdownMenu1">
+  <a href="#" role="button" class="dropdown-toggle" data-cfw="dropdown">
     Dropdown
   </a>
-  <ul class="dropdown-menu" id="dropdownMenu1">
+  <ul class="dropdown-menu">
     <li><a href="#">Action</a></li>
     <li><a href="#">Another action</a></li>
     <li><a href="#">Something else here</a></li>
@@ -77,10 +77,10 @@ You can optionally use `<button>` elements in your dropdowns instead of `<a>`s. 
 
 {% example html %}
 <div class="btn-group">
-  <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#dropdownMenu2">
+  <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
     Dropdown
   </button>
-  <ul class="dropdown-menu" id="dropdownMenu2">
+  <ul class="dropdown-menu">
     <li><a href="#">Action</a></li>
     <li><a href="#">Another action</a></li>
     <li><a href="#">Something else here</a></li>
@@ -97,10 +97,10 @@ We use this extra class to reduce the horizontal `padding` on either side of the
 {% example html %}
 <div class="btn-group">
   <button type="button" class="btn">Default</button>
-  <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-cfw="dropdown" data-cfw-dropdown-toggle="#dropdownMenu3">
+  <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-cfw="dropdown">
     <span class="sr-only">Toggle Dropdown</span>
   </button>
-  <ul class="dropdown-menu" id="dropdownMenu3">
+  <ul class="dropdown-menu">
     <li><a href="#">Action</a></li>
     <li><a href="#">Another action</a></li>
     <li><a href="#">Something else here</a></li>
@@ -117,12 +117,12 @@ Dropdowns also work in a navbar, but require the use of a wrapping element for p
     <a href="#" class="navbar-brand">Navbar</a>
     <ul class="nav navbar-nav">
         <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownNav1">Dropdown</a>
-            <ul class="dropdown-menu" data-cfw-dropdown-target="dropdownNav1">
+            <a href="#" class="nav-link dropdown-toggle" data-cfw="dropdown">Dropdown</a>
+            <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
+                <li class="dropdown-divider"></li>
                 <li><a href="#">Separated link</a></li>
             </ul>
         </li>
@@ -196,22 +196,48 @@ Add `.active` to the `li` item in the dropdown to show a visual emphasis.
 
 ### 'Back' Menu Items
 
-Using the [dropdown widget options](#options) you can have 'back' menu items automatically inserted into all submenus.  These links will close the current submenu and move focus back onto the parent menu item.  This can be useful if the parent menu/submenu item is being hidden, or obscured by the current submenu.
+Using the [`backlink` option](#options), you can have 'back' menu items automatically inserted into all submenus.  These links will close the current submenu and move focus back onto the parent menu item.  This can be useful if the parent menu/submenu item is being hidden, or obscured by the current submenu.
 
-See the [menu alignment](#menu-alignment) section for an example of injected 'back' menu items.
+{% example html %}
+<div class="dropdown">
+    <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+        Dropdown
+    </button>
+    <ul class="dropdown-menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li>
+            <a href="#">Something else here</a>
+            <ul>
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li>
+                    <a href="#">Something else here</a>
+                    <ul>
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown-divider"></li>
+        <li class="disabled"><a href="#">Disabled item</a></li>
+    </ul>
+</div>
+{% endexample %}
 
 ## Variants
 
 ### Dropup
 
-Trigger dropdown menus above elements by adding `.dropup` to the parent element.  A `.caret` or `.dropdown-toggle` will reverse direction automatically.
+Trigger dropdown menus above elements by adding `.dropup` to the parent element.  The visual `.caret` or `.dropdown-toggle` for the toggle control will reverse direction automatically.
 
 {% example html %}
 <div class="dropdown dropup">
-  <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#dropdownVar1">
+  <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
     Dropup
   </button>
-  <ul class="dropdown-menu" id="dropdownVar1">
+  <ul class="dropdown-menu">
     <li><a href="#">Action</a></li>
     <li><a href="#">Another action</a></li>
     <li><a href="#">Something else here</a></li>
@@ -220,10 +246,10 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
 
 <div class="btn-group dropup">
   <button type="button" class="btn">Split Dropup</button>
-  <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-cfw="dropdown" data-cfw-dropdown-toggle="#dropdownVar2">
+  <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-cfw="dropdown">
     <span class="sr-only">Toggle Dropdown</span>
   </button>
-  <ul class="dropdown-menu" id="dropdownVar2">
+  <ul class="dropdown-menu">
     <li><a href="#">Action</a></li>
     <li><a href="#">Another action</a></li>
     <li><a href="#">Something else here</a></li>
@@ -238,11 +264,11 @@ By default, a dropdown menu is automatically positioned 100% from the top and al
 Add `.dropdown-menu-left` to a `.dropdown-menu` to right align the dropdown menu, this will also make all submenus open to the left side.  This can also be combined with `.dropup`.
 
 {% example html %}
-<div class="btn-group dropdown-menu-left" style="float: right;">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownVar3" data-cfw-dropdown-backlink="true">
+<div class="btn-group dropdown-menu-left float-right">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
         Drop Left
     </button>
-    <ul data-cfw-dropdown-target="dropdownVar3">
+    <ul class="dropdown-menu">
         <li class="dropdown-header">Dropdown header</li>
         <li><a href="#">Action</a></li>
         <li><a href="#">Another action</a></li>
@@ -258,11 +284,11 @@ Add `.dropdown-menu-left` to a `.dropdown-menu` to right align the dropdown menu
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="divider"></li>
+                <li class="dropdown-divider"></li>
                 <li><a href="#">Separated link</a></li>
             </ul>
         </li>
-        <li class="divider"></li>
+        <li class="dropdown-divider"></li>
         <li class="disabled"><a href="#">Disabled link</a></li>
     </ul>
 </div>
@@ -274,10 +300,10 @@ The menu alignment class of `.dropdown-menu-left` will also work with submenu it
 
 {% example html %}
 <div class="btn-group">
-    <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownSub1" data-cfw-dropdown-backlink="true">
+    <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
         Dropdown
     </button>
-    <ul data-cfw-dropdown-target="dropdownSub1">
+    <ul class="dropdown-menu">
         <li class="dropdown-header">Dropdown header</li>
         <li><a href="#">Action</a></li>
         <li class="dropdown-menu-left">
@@ -318,7 +344,7 @@ The menu alignment class of `.dropdown-menu-left` will also work with submenu it
                 </li>
             </ul>
         </li>
-        <li class="divider"></li>
+        <li class="dropdown-divider"></li>
         <li class="disabled"><a href="#">Separated link</a></li>
     </ul>
 </div>
@@ -334,13 +360,15 @@ Note: The `data-cfw="dropdown"` attribute is relied on for closing dropdown menu
 
 ### Via Data Attributes
 
-Add `data-cfw="dropdown"` and a `data-cfw-dropdown-toggle` with a selector (jQuery style) or string value to then element to automatically assign control of a dropdown element.
-If using a string value, then assign a `data-cfw-dropdown-target` attribute, with a matching value to the element to apply the collapse to.
+Add `data-cfw="dropdown"` to the dropdown toggle element, and the widget will automatically link to the sibling `.dropdown-menu` list element.
+
+Optionally, you can use a `data-cfw-dropdown-toggle` with a selector (jQuery style) or string value to then element to automatically assign control of a dropdown element.
+If using a string value, then assign a `data-cfw-dropdown-target` attribute, with a matching value to the element to apply the control to.
 Be sure to add the class `dropdown-menu` to the dropdown menu to ensure there is no flash of content at page load.
 
 {% highlight html %}
 <div class="dropdown">
-  <a href="#" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownExample">Dropdown trigger</a>
+  <a href="#" role="button" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownExample">Dropdown trigger</a>
   <ul class="dropdown-menu" data-cfw-dropdown-target="dropdownExample">
     ...
   </ul>

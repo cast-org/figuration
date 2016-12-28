@@ -28,7 +28,7 @@ Scroll the area below the navbar and watch the active class change. The dropdown
                 <ul data-cfw-dropdown-target="dropdownS">
                     <li><a href="#one" tabindex="-1">one</a></li>
                     <li><a href="#two" tabindex="-1">two</a></li>
-                    <li class="divider"></li>
+                    <li class="dropdown-divider"></li>
                     <li><a href="#three" tabindex="-1">three</a></li>
                 </ul>
             </li>

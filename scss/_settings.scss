@@ -636,8 +636,12 @@ $dropdown-margin-top:            .125rem !default;
 $dropdown-bg:                    $white !default;
 $dropdown-border-color:          $uibase-300 !default;
 $dropdown-border-width:          $border-width !default;
+$dropdown-border-radius:         $border-radius !default;
 $dropdown-divider-color:         $uibase-300 !default;
 $dropdown-box-shadow:            0 .2rem .3rem rgba(0,0,0,.175) !default;
+
+// Border radius where menu/submenu aligns or 'attaches' to control item.
+$dropdown-attach-border-radius:  0 !default;
 
 $dropdown-link-color:            $uibase-900 !default;
 $dropdown-link-hover-color:      $uibase-900 !default;
@@ -656,8 +660,9 @@ $dropdown-header-font-size:      .875rem !default;
 $dropdown-header-font-weight:    $font-weight-normal !default;
 $dropdown-header-color:          $uibase-400 !default;
 
-$dropdown-caret-color:          $uibase-400 !default;
 $dropdown-caret-width:          .45rem !default;
+$dropdown-caret-color:          $uibase-400 !default;
+$dropdown-caret-active-color:   $active-color !default;
 
 
 // Navs
