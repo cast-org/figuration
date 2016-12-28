@@ -5237,19 +5237,8 @@ button.list-group-item-danger.active:hover {
   border-left: 0.45rem solid #858585;
 }
 
-.dropdown-submenu:hover > a::after {
-  border-left-color: #858585;
-}
-
-.dropdown-submenu.dropdown-menu-left > a::after {
-  right: auto;
-  left: .35rem;
-  border-right: 0.45rem solid #858585;
-  border-left: 0;
-}
-
-.dropdown-submenu.dropdown-menu-left:hover > a::after {
-  border-right-color: #858585;
+.dropdown-submenu.active > a::after {
+  border-left-color: #fff;
 }
 
 .open > .dropdown-menu {
@@ -5270,31 +5259,6 @@ button.list-group-item-danger.active:hover {
   outline: 0;
 }
 
-.dropdown-menu-right {
-  right: 0;
-  left: auto;
-  border-radius: 0.25rem 0 0.25rem 0.25rem;
-}
-
-.dropdown-submenu.dropdown-menu-right > .dropdown-menu {
-  right: -100%;
-  left: auto;
-  margin-right: -2px;
-  border-radius: 0 0.25rem 0.25rem 0.25rem;
-}
-
-.dropdown-menu-left {
-  right: auto;
-  left: 0;
-}
-
-.dropdown-submenu.dropdown-menu-left > .dropdown-menu {
-  right: auto;
-  left: -100%;
-  margin-left: -2px;
-  border-radius: 0.25rem 0 0.25rem 0.25rem;
-}
-
 .dropdown-header {
   display: block;
   padding: 0.2rem 1.25rem;
@@ -5309,7 +5273,6 @@ li .dropdown-header {
   margin-bottom: 0;
 }
 
-.dropdown-menu .divider,
 .dropdown-divider {
   height: 1px;
   margin: 0.5rem 0;
@@ -5357,43 +5320,6 @@ li .dropdown-header {
   border-radius: 0.25rem 0.25rem 0.25rem 0;
 }
 
-.dropdown-menu-left .dropdown-menu {
-  right: 0;
-  left: auto;
-  border-radius: 0.25rem 0 0.25rem 0.25rem;
-}
-
-.dropdown-menu-left .dropdown-menu.dropdown-menu-left {
-  right: auto;
-  left: 0;
-}
-
-.dropdown-menu-left .dropdown-submenu:not(.dropdown-menu-right) > a::after {
-  right: auto;
-  left: .35rem;
-  border-right: 0.45rem solid #858585;
-  border-left: 0;
-}
-
-.dropdown-menu-left .dropdown-submenu:not(.dropdown-menu-right):hover > a::after {
-  border-right-color: #858585;
-}
-
-.dropdown-menu-left .dropdown-submenu:not(.dropdown-menu-right) > .dropdown-menu {
-  right: 100%;
-  left: auto;
-  margin-left: auto;
-  border-radius: 0.25rem 0 0.25rem 0.25rem;
-}
-
-.dropup.dropdown-menu-left .dropdown-menu {
-  border-radius: 0.25rem 0.25rem 0 0.25rem;
-}
-
-.dropup.dropdown-menu-left .dropdown-submenu > .dropdown-menu {
-  border-radius: 0.25rem 0.25rem 0 0.25rem;
-}
-
 .dropdown-back {
   position: relative;
 }
@@ -5412,34 +5338,56 @@ li .dropdown-header {
   border-bottom: 0.45rem solid transparent;
 }
 
-.dropdown-back:hover > a::before {
-  border-right-color: #858585;
-}
-
-.dropdown-menu-left .dropdown-back > a::before,
-.dropdown-menu-right .dropdown-menu-left .dropdown-back > a::before {
+.dropdown-back-left > a::before {
   right: .35rem;
   left: auto;
   border-right: 0;
   border-left: 0.45rem solid #858585;
 }
 
-.dropdown-menu-left .dropdown-back:hover a::before,
-.dropdown-menu-right .dropdown-menu-left .dropdown-back:hover a::before {
-  border-left-color: #858585;
+.dropdown-menu-left .dropdown-menu {
+  right: 0;
+  left: auto;
+  border-radius: 0.25rem 0 0.25rem 0.25rem;
 }
 
-.dropdown-menu-right .dropdown-back > a::before,
-.dropdown-menu-left .dropdown-menu-right .dropdown-back > a::before {
+.dropdown-subalign-right > .dropdown-menu {
+  right: auto;
+  left: 100%;
+  margin-right: -2px;
+  margin-left: 0;
+  border-radius: 0 0.25rem 0.25rem 0.25rem;
+}
+
+.dropdown-subalign-left > .dropdown-menu {
+  right: 100%;
+  left: auto;
+  margin-right: 0;
+  margin-left: -2px;
+  border-radius: 0.25rem 0 0.25rem 0.25rem;
+}
+
+.dropdown-subalign-left > a::after {
   right: auto;
   left: .35rem;
   border-right: 0.45rem solid #858585;
   border-left: 0;
 }
 
-.dropdown-menu-right .dropdown-back:hover a::before,
-.dropdown-menu-left .dropdown-menu-right .dropdown-back:hover a::before {
-  border-right-color: #858585;
+.dropdown-subalign-left.active > a::after {
+  border-right-color: #fff;
+}
+
+.dropup.dropdown-menu-left .dropdown-menu {
+  border-radius: 0.25rem 0.25rem 0 0.25rem;
+}
+
+.dropup .dropdown-subalign-right > .dropdown-menu {
+  border-radius: 0.25rem 0.25rem 0.25rem 0;
+}
+
+.dropup .dropdown-subalign-left > .dropdown-menu {
+  border-radius: 0.25rem 0.25rem 0 0.25rem;
 }
 
 .nav {
