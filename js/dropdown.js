@@ -123,19 +123,34 @@
                 'aria-expanded': 'false'
             });
 
-            if ($selfRef.settings.backlink && $selfRef.settings.backtop) {
-                this.$menuElm.prepend('<li class="' + CFW_Widget_Dropdown.CLASSES.backLink + '"><a href="#">' + $selfRef.settings.backtext + '</a></li>');
+            if (this.settings.backlink && this.settings.backtop) {
+                var $backTop = $('<li class="' + CFW_Widget_Dropdown.CLASSES.backLink + '"><a href="#">' + $selfRef.settings.backtext + '</a></li>')
+                    .prependTo(this.$menuElm);
+                if (this.$menuElm.hasClass('dropdown-menu-left')) {
+                    $backTop.addClass('dropdown-back-left');
+                }
             }
 
-            // Check for sub menu items and add indicator and id as needed
+            // Check for sub menu items and add indicator, id, and direction as needed
             this.$menuElm.find('ul').each(function() {
                 var $subMenu = $(this);
                 var $subLink = $subMenu.closest('li').find('a').eq(0);
                 var subLinkID = $selfRef._getID($subLink, 'cfw-dropdown');
                 // var subMenuID = $selfRef._getID($subMenu, 'cfw-dropdown');
 
+                var $dirNode = $subMenu.closest('.dropdown-menu-left, .dropdown-menu-right');
+                if ($dirNode.hasClass('dropdown-menu-left')) {
+                    $subMenu.closest('li').addClass('dropdown-subalign-left');
+                } else {
+                    $subMenu.closest('li').addClass('dropdown-subalign-right');
+                }
+
                 if ($selfRef.settings.backlink) {
-                    $subMenu.prepend('<li class="' + CFW_Widget_Dropdown.CLASSES.backLink + '"><a href="#">' + $selfRef.settings.backtext + '</a></li>');
+                    var $backElm = $('<li class="' + CFW_Widget_Dropdown.CLASSES.backLink + '"><a href="#">' + $selfRef.settings.backtext + '</a></li>')
+                        .prependTo($subMenu);
+                    if ($dirNode.hasClass('dropdown-menu-left')) {
+                        $backElm.addClass('dropdown-back-left');
+                    }
                 }
 
                 $subMenu.attr({
@@ -152,9 +167,8 @@
                 });
             });
 
-            // Set role on all li items - including any injected ones
-            // $('li', this.$menuElm).attr('role', 'presentation');
-            $('li.divider, .dropdown-divider', this.$menuElm).attr('role', 'separator');
+            // Set role on dividers
+            $('.dropdown-divider', this.$menuElm).attr('role', 'separator');
 
             // Touch OFF - Hover mode
             if (!this.settings.isTouch && this.settings.hover) {
