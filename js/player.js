@@ -845,7 +845,7 @@
                 }
                 if (this.settings.transcriptOption) {
                     // Add scroll toggle
-                    $menuItem = $('<li role="separator" class="divider"></li>');
+                    $menuItem = $('<li class="dropdown-divider"></li>');
                     $menu.append($menuItem);
                     var scrollVal = (this.settings.transcriptScroll) ? 'true' : 'false';
                     var scrollClass = (this.settings.transcriptScroll) ? 'active' : '';
