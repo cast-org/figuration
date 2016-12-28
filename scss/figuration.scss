@@ -9,9 +9,11 @@
 @import "functions";
 
 // Variables and mixins
-@import "custom";
 @import "settings";
 @import "mixins";
+
+// Custom overrides
+@import "custom";
 
 // Base reset
 @import "base/normalize";
