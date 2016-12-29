@@ -15,7 +15,11 @@
 
     &:focus,
     &.focus {
-        @include focus-ring();
+        @if $enable-focus-ring {
+            @include focus-ring();
+        } @else {
+            @include focus-outline();
+        }
     }
 
     &:focus,
@@ -28,8 +32,12 @@
     &.disabled,
     &:disabled {
         cursor: $cursor-disabled;
-        opacity: .6;
-        @include box-shadow(none);
+        opacity: $btn-disabled-opacity;
+        @if $enable-focus-ring {
+            box-shadow: none;
+        } else {
+            outline: 0;
+        }
     }
 
     &:active,

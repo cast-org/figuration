@@ -51,8 +51,10 @@ $enable-print-styles:   true !default;      // true
 $enable-palette:        true !default;      // true
 $enable-sizing:         true !default;      // true
 $enable-bp-smallest:    false !default;     // false
+$enable-focus-ring:     true !default;      // true
 $enable-flex-full:      false !default;     // false -- all-in flex mode
 $enable-flex-opt:       true !default;      // true -- opt-in via class mode
+
 
 // If both flex modes selected -- disable the opt-in mode
 @if $enable-flex-full and $enable-flex-opt {
@@ -239,8 +241,9 @@ $link-hover-decoration: underline !default;
 
 // Focus Indicator
 // =====
-$focus-outline: 0 !default;
-$focus-shadow:  0 0 .125rem .1875rem rgba(map-get($context-colors, "info"), .5) !default;
+$focus-outline:         5px auto -webkit-focus-ring-color;
+$focus-outline-offset:  -2px !default;
+$focus-ring-shadow:     0 0 .125rem .1875rem rgba(map-get($context-colors, "info"), .5) !default;
 
 // Cursors
 // =====
@@ -437,6 +440,7 @@ $btn-default-hover-color:       $uibase-600 !default;
 $btn-default-hover-bg:          $uibase-75 !default;
 $btn-default-hover-border:      $uibase-700 !default;
 
+$btn-disabled-opacity:          .6 !default;
 $btn-link-disabled-color:       $uibase-400 !default;
 
 $btn-block-spacing-y:           .3rem !default;
