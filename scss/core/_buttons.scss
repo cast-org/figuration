@@ -9,18 +9,13 @@
     text-decoration: none;
     white-space: nowrap;
     vertical-align: middle;
-    cursor: pointer;
     user-select: none;
     border: $input-border-width solid transparent;
     @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
 
-    &,
-    &:active,
-    &.active {
-        &:focus,
-        &.focus {
-            @include keyboard-focus();
-        }
+    &:focus,
+    &.focus {
+        @include focus-ring();
     }
 
     &:focus,

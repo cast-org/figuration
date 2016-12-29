@@ -169,7 +169,7 @@ a {
     }
 
     &:focus {
-        @include keyboard-focus();
+        @include focus-ring();
     }
 }
 

@@ -237,6 +237,10 @@ $link-decoration:       underline !default;
 $link-hover-color:      darken($link-color, 25%) !default;
 $link-hover-decoration: underline !default;
 
+// Focus Indicator
+// =====
+$focus-outline: 0 !default;
+$focus-shadow:  0 0 .125rem .1875rem rgba(map-get($context-colors, "info"), .5) !default;
 
 // Cursors
 // =====
