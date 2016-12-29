@@ -19,11 +19,6 @@
         border-right: $caret-width solid transparent;
         border-left: $caret-width solid transparent;
     }
-
-    // Prevent the focus on the dropdown toggle when closing dropdowns
-    &:focus {
-        outline: 0;
-    }
 }
 
 .dropup {
@@ -80,6 +75,8 @@
         color: $dropdown-link-hover-color;
         text-decoration: none;
         background-color: $dropdown-link-hover-bg;
+        outline: 0;
+        box-shadow: none;  // remove focus ring
     }
 }
 .dropdown-menu {
@@ -88,13 +85,11 @@
         color: $dropdown-link-active-color;
         text-decoration: none;
         background-color: $dropdown-link-active-bg;
-        outline: 0;
 
         @include hover-focus {
             color: $dropdown-link-active-color;
             text-decoration: none;
             background-color: $dropdown-link-active-hover-bg;
-            outline: 0;
         }
     }
 
@@ -149,8 +144,10 @@
     > .dropdown-menu {
         display: block;
     }
-    // Reverse normal toggle caret
+    // Remove focus ring and reverse toggle caret
     .dropdown-toggle {
+        box-shadow: none;
+
         &::after {
             border-top: 0;
             border-bottom: $caret-width solid;
@@ -166,9 +163,10 @@
         }
     }
 
-    // Remove the outline when :focus is triggered
+    // Remove the focus ring when :focus is triggered
     > a {
         outline: 0;
+        box-shadow: none;
     }
 }
 
