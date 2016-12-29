@@ -38,18 +38,25 @@
 
     @each $theme, $color in $map {
         // Color adjustments
-        $control-color:     $white;
-        $control-bg:        $color;
-        $control-border:    palette($color, 600); //darken($color, 7%);
-        $context-color:     $color;
-        $context-bg:        palette($color, 80); //lighten($color, 54%);
-        $context-border:    palette($color, 300); //lighten($color, 28%);
+        $control-color:         $white;
+        $control-bg:            $color;
+        $control-border:        palette($color, $level-control-border);
+        $control-hover-color:   $white;
+        $control-hover-bg:      palette($color, $level-control-hover-bg);
+        $control-hover-border:  palette($color, $level-control-hover-border);
+        $context-color:         $color;
+        $context-bg:            palette($color, $level-context-bg);
+        $context-border:        palette($color, $level-context-border);
+
 
         // Build new map
         $new-map: (
             "control-color": $control-color,
             "control-bg": $control-bg,
             "control-border": $control-border,
+            "control-hover-color": $control-hover-color,
+            "control-hover-bg": $control-hover-bg,
+            "control-hover-border": $control-hover-border,
             "context-color": $context-color,
             "context-bg": $context-bg,
             "context-border": $context-border

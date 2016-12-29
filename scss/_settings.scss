@@ -114,6 +114,14 @@ $context-colors: (
     "danger":    $red
 ) !default;
 
+// Palette levels for use in _mix-context-colors() to determine standardized
+// contextual color mapping
+$level-control-border:       600 !default;
+$level-control-hover-bg:     650 !default;
+$level-control-hover-border: 700 !default;
+$level-context-bg:           80 !default;
+$level-context-border:       300 !default;
+
 // Process brand colors
 $brand-themes: _mix-context-colors($context-colors);
 // Merge into master themes map

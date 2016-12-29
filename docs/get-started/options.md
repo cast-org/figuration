@@ -103,7 +103,6 @@ $component-sizes: (
 Extend the default contextual color map with your own custom colors.
 
 Yes, it is a substantial and confusing piece of SCSS, but allows for reasonable flexibility.
-The line `$context-themes: ();` should only be defined once in the `_custom.scss` file even if merging multiple color maps.
 
 The `control-*` keys are used by mainly by control items---specifically---buttons, button groups, pagination, progress bars, badges, and background context.
 
@@ -114,7 +113,6 @@ The `context-*` keys are used for contextual items---specifically---tables, list
 
 {% highlight scss %}
 // Sample of adding more colors using a mixing function
-$context-themes: ();    // <-- only define ONCE - must be before merging maps
 $custom-context: (
     purple: #990099,
     aqua:   #00ffff
@@ -133,15 +131,17 @@ You can also add a single color map without all the additional color mixing func
 
 {% highlight scss %}
 // Adding a single color map
-$context-themes: ();    // <-- only define ONCE - must be before merging maps
 $single-color: (
     "purple": (
-        "control-color":  #fff,
-        "control-bg":     #990099,
-        "control-border": #800080,
-        "context-color":  #990099,
-        "context-bg":     #ffb3ff,
-        "context-border": #ff29ff
+        "control-color":        #fff,
+        "control-bg":           #990099,
+        "control-border":       #800080,
+        "control-hover-color":  #fff,
+        "control-hover-bg":     #770077,
+        "control-hover-border": #660066,
+        "context-color":        #990099,
+        "context-bg":           #ffb3ff,
+        "context-border":       #ff29ff
     );
 );
 $context-themes: map-merge($context-themes, $single-color);
