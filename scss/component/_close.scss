@@ -14,6 +14,14 @@
         cursor: pointer;
         opacity: .75;
     }
+
+    &:focus {
+        @if $enable-focus-ring {
+            @include focus-ring();
+        } @else {
+            @include focus-outline();
+        }
+    }
 }
 
 // Additional properties for button version
