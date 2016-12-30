@@ -15,11 +15,17 @@
     .form-control {
         border-color: $border-color;
 
-        @if not $enable-shadows {
-            @include form-control-focus(darken($border-color, 20%));
-        } @else {
-            &:focus {
-                box-shadow: $input-box-shadow, 0 0 6px lighten($border-color, 20%);
+        &:focus {
+            @if $enable-shadows {
+                @if $enable-focus-ring {
+                    box-shadow: $focus-ring-shadow, $input-focus-box-shadow;
+                } @else {
+                    box-shadow: $input-focus-box-shadow;
+                }
+            } @else {
+                @if $enable-focus-ring {
+                    box-shadow: $focus-ring-shadow;
+                }
             }
         }
     }
@@ -44,37 +50,23 @@
 //
 // Example usage: change the default blue border and shadow to white for better
 // contrast against a dark gray background.
-@mixin form-control-focus($border-color: $input-border-focus) {
+@mixin form-control-focus() {
     &:focus {
-        border-color: $border-color;
+        color: $input-focus-color;
+        background-color: $input-focus-bg;
+        border-color: $input-focus-border;
         outline: none;
-        $shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px $input-box-shadow-focus;
-        @include box-shadow($shadow);
+
+        @if $enable-shadows {
+            @if $enable-focus-ring {
+                box-shadow: $focus-ring-shadow, $input-focus-box-shadow;
+            } @else {
+                box-shadow: $input-focus-box-shadow;
+            }
+        } @else {
+            @if $enable-focus-ring {
+                box-shadow: $focus-ring-shadow;
+            }
+        }
     }
 }
-
-// Form control sizing
-//
-// Relative text size, padding, and border-radii changes for form controls. For
-// horizontal sizing, wrap controls in the predefined grid classes. `<select>`
-// element gets special love because it's special, and that's a fact!
-
-//@mixin input-size($parent, $input-height, $padding-y, $padding-x, $font-size, $line-height, $border-radius) {
-//    #{$parent} {
-//        height: $input-height;
-//        padding: $padding-y $padding-x;
-//        font-size: $font-size;
-//        line-height: $line-height;
-//        @include border-radius($border-radius);
-//    }
-//
-//    select#{$parent} {
-//        height: $input-height;
-//        line-height: $input-height;
-//    }
-//
-//    textarea#{$parent},
-//    select[multiple]#{$parent} {
-//        height: auto;
-//    }
-//}

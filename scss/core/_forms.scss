@@ -31,7 +31,7 @@
 
     // Placeholder
     &::placeholder {
-        color: $input-color-placeholder;
+        color: $input-placeholder-color;
         // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
         opacity: 1;
     }
@@ -49,13 +49,13 @@
     // don't honor that edge case; we style them as disabled anyway.
     &:disabled,
     &[readonly] {
-        background-color: $input-bg-disabled;
+        background-color: $input-disabled-bg;
         // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
         opacity: 1;
     }
 
     &:disabled {
-        color: $text-muted;
+        color: $input-disabled-color;
         cursor: $cursor-disabled;
     }
 }
@@ -88,9 +88,13 @@ select.form-control {
         // in IE and (under certain conditions) Edge, as it looks bad and cannot be made to
         // match the appearance of the native widget.
         // See https://github.com/twbs/bootstrap/issues/19398.
-        color: $input-color;
-        background-color: $input-bg;
+        color: $input-focus-color;
+        background-color: $input-focus-bg;
     }
+}
+
+select[multiple].form-control {
+    height: auto;
 }
 
 textarea.form-control {
@@ -279,6 +283,14 @@ input[type="month"] {
     &:only-child {
         position: static;
         vertical-align: top;
+    }
+
+    &:focus {
+        @if $enable-focus-ring {
+            @include focus-ring();
+        } @else {
+            @include focus-outline();
+        }
     }
 }
 

@@ -234,9 +234,9 @@ $border-width: 1px !default;
 // Links
 // =====
 // Style anchor elements
-$link-color:            map-get($context-colors, "primary") !default;
+$link-color:            palette(map-get($context-colors, "primary"), 500) !default;
 $link-decoration:       underline !default;
-$link-hover-color:      darken($link-color, 25%) !default;
+$link-hover-color:      palette(map-get($context-colors, "primary"), 800) !default;
 $link-hover-decoration: underline !default;
 
 // Focus Indicator
@@ -311,9 +311,9 @@ $dt-font-weight:    $font-weight-bold !default;
 $border-radius:          .25rem !default;
 
 $active-color:      $white !default;
-$active-bg:         map-get($context-colors, "primary") !default;
-$active-border:     map-get($context-colors, "primary") !default;
-$active-hover-bg:   darken($active-bg, 10) !default;
+$active-bg:         map-deep-get($context-themes, "primary", "control-bg") !default;
+$active-border:     map-deep-get($context-themes, "primary", "control-border") !default;
+$active-hover-bg:   map-deep-get($context-themes, "primary", "control-hover-bg") !default;
 
 $caret-width:           .325rem !default;
 
@@ -461,20 +461,23 @@ $input-line-height-delta:      ($input-line-height - $btn-line-height) !default;
 $input-padding-y:               $btn-padding-y - ($input-line-height-delta / 2) !default;
 $input-padding-x:               $btn-padding-x !default;
 
-$input-bg:                      $white !default;
-$input-bg-disabled:             $uibase-50 !default;
-
 $input-color:                   $uibase-700 !default;
+$input-bg:                      $white !default;
 $input-border-color:            rgba(0,0,0,.25) !default;
 $input-border-width:            $border-width !default;
-$input-box-shadow:              inset 0 .0625rem .0625rem rgba(0,0,0,.075) !default;
-
 $input-border-radius:           $border-radius !default;
+$input-box-shadow:              inset 0 .125rem .125rem rgba(0,0,0,.1) !default;
 
-$input-border-focus:            #66afe9 !default;
-$input-box-shadow-focus:        rgba(102,175,233,.6) !default;
+$input-focus-color:             $input-color !default;
+$input-focus-bg:                $input-bg !default;
+$input-focus-border:            palette(map-get($context-colors, "primary"), 300) !default;
+$input-focus-box-shadow:        inset 0 .125rem .125rem rgba(0,0,0,.15) !default;
 
-$input-color-placeholder:       #999 !default;
+$input-disabled-color:          $text-muted !default;
+$input-disabled-bg:             $uibase-50 !default;
+$input-disabled-border:         rgba(0,0,0,.25) !default;
+
+$input-placeholder-color:       #999 !default;
 
 $form-group-margin-bottom:       1rem !default;
 
@@ -499,6 +502,7 @@ $icon-danger: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.o
 
 // Custom form controls
 // =====
+// Custom checkbox/radio
 $custom-control-gutter:                 1.5rem !default;
 $custom-control-spacer-x:               1rem !default;
 $custom-control-spacer-y:               .5rem !default;
@@ -518,7 +522,7 @@ $custom-control-checked-indicator-color:      $white !default;
 $custom-control-checked-indicator-bg:         map-get($context-colors, "primary") !default;
 $custom-control-checked-indicator-box-shadow: none !default;
 
-$custom-control-focus-indicator-box-shadow:  0 0 0 .0625rem #fff, 0 0 0 .1875rem $input-border-focus !default;
+$custom-control-focus-indicator-box-shadow:  0 0 0 .0625rem #fff, 0 0 0 .1875rem $input-focus-border !default;
 
 $custom-control-active-indicator-color:      $white !default;
 $custom-control-active-indicator-bg:         palette-context("primary", 300) !default;
@@ -533,23 +537,12 @@ $custom-checkbox-indeterminate-box-shadow:  none !default;
 $custom-radio-radius:               50% !default;
 $custom-radio-checked-icon:         url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%23fff'/%3E%3C/svg%3E") !default;
 
+// Custom select
 $custom-select-indicator-padding:   .75rem !default; // Extra padding to account for the presence of the background-image based indicator
-$custom-select-color:               $input-color !default;
-$custom-select-disabled-color:      $text-muted !default;
-$custom-select-bg:                  $white !default;
-$custom-select-disabled-bg:         $input-bg-disabled !default;
-$custom-select-bg-size:             8px 10px !default; // In pixels because image dimensions
+$custom-select-indicator-size:      8px 10px !default; // In pixels because image dimensions
 $custom-select-indicator:           url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") !default;
-$custom-select-border-width:        $input-border-width !default;
-$custom-select-border-color:        $input-border-color !default;
-$custom-select-border-radius:       $border-radius !default;
 
-$custom-select-focus-border-color:  $input-border-focus !default;
-$custom-select-focus-box-shadow:    inset 0 .0625rem .125rem rgba(0,0,0,.075), 0 0 .3125rem rgba(81,167,232,.5) !default;
-
-$custom-select-sm-padding-y:        .2rem !default;
-$custom-select-sm-font-size:        75% !default;
-
+// Custom file
 $custom-file-width:                 14rem !default;
 $custom-file-focus-box-shadow:      0 0 0 .075rem #fff, 0 0 0 .2rem map-get($context-colors, "primary") !default;
 
@@ -593,8 +586,8 @@ $list-group-active-color:           $active-color !default;
 $list-group-active-bg:              $active-bg !default;
 $list-group-active-hover-color:     $active-color !default;
 $list-group-active-hover-bg:        $active-hover-bg !default;
-$list-group-active-border:          $list-group-active-bg !default;
-$list-group-active-text-color:      lighten($list-group-active-bg, 40%) !default;
+$list-group-active-border:          $active-border !default;
+$list-group-active-text-color:      $text-light-color !default;
 
 $list-group-disabled-color:         $uibase-400 !default;
 $list-group-disabled-bg:            darken($uibase-50, 5) !default;
@@ -935,10 +928,10 @@ $slider-thumb-width:                1.25rem !default;
 $slider-thumb-height:               1.25rem !default;
 $slider-thumb-border-radius:        50% !default;
 
-$slider-thumb-min-bg:               map-get($context-colors, "primary") !default;
-$slider-thumb-min-hover-bg:         darken($slider-thumb-min-bg, 10%) !default;
-$slider-thumb-max-bg:               map-get($context-colors, "danger") !default;
-$slider-thumb-max-hover-bg:         darken($slider-thumb-max-bg, 10%) !default;
+$slider-thumb-min-bg:               $active-bg !default;
+$slider-thumb-min-hover-bg:         $active-hover-bg !default;
+$slider-thumb-max-bg:               map-deep-get($context-themes, "danger", "control-bg") !default;
+$slider-thumb-max-hover-bg:         map-deep-get($context-themes, "danger", "control-hover-bg") !default;
 
 $slider-track-bg:                   $uibase-100 !default;
 $slider-track-border-radius:        $border-radius !default;
