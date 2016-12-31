@@ -99,6 +99,7 @@
 // Use anchor or button elements instead of `li`s or `div`s to create interactive
 // list items. Includes an extra `.active` modifier class for selected items.
 .list-group-item-action {
+    position: relative;
     width: 100%; // For `<button>`s (anchors become 100% by default though)
     color: $list-group-link-color;
     text-align: inherit; // For `<button>`s (anchors inherit)
@@ -106,6 +107,13 @@
 
     .list-group-item-heading {
         color: $list-group-link-heading-color;
+    }
+
+    &:focus {
+        @if $enable-focus-ring {
+            z-index: 2;
+            @include focus-ring();
+        }
     }
 
     // Hover state
