@@ -330,8 +330,7 @@ input[type="month"] {
 // Form validation states
 @if map-has-key($context-themes, "success") {
     .has-success {
-        //@include form-control-validation($state-success-color, $state-success-border-color);
-        @include form-control-validation(map-deep-get($context-themes, "success", "context-color"), map-deep-get($context-themes, "success", "context-border"));
+        @include form-control-validation("success");
 
         .form-control-success {
             background-image: $icon-success;
@@ -340,8 +339,7 @@ input[type="month"] {
 }
 @if map-has-key($context-themes, "warning") {
     .has-warning {
-        //@include form-control-validation($state-warning-color, $state-warning-border-color);
-        @include form-control-validation(map-deep-get($context-themes, "warning", "context-color"), map-deep-get($context-themes, "warning", "context-border"));
+        @include form-control-validation("warning");
 
         .form-control-warning {
             background-image: $icon-warning;
@@ -350,8 +348,7 @@ input[type="month"] {
 }
 @if map-has-key($context-themes, "danger") {
     .has-danger {
-        //@include form-control-validation($state-danger-color, $state-danger-border-color);
-        @include form-control-validation(map-deep-get($context-themes, "danger", "context-color"), map-deep-get($context-themes, "danger", "context-border"));
+        @include form-control-validation("danger");
 
         .form-control-danger {
             background-image: $icon-danger;

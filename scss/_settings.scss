@@ -123,6 +123,7 @@ $level-control-hover-bg:     650 !default;
 $level-control-hover-border: 700 !default;
 $level-context-bg:           80 !default;
 $level-context-border:       300 !default;
+$level-context-hover-border: 550 !default;
 
 // Process brand colors
 $brand-themes: _mix-context-colors($context-colors);
@@ -234,9 +235,9 @@ $border-width: 1px !default;
 // Links
 // =====
 // Style anchor elements
-$link-color:            palette(map-get($context-colors, "primary"), 500) !default;
+$link-color:            palette-context("primary", 500) !default;
 $link-decoration:       underline !default;
-$link-hover-color:      palette(map-get($context-colors, "primary"), 800) !default;
+$link-hover-color:      palette-context("primary", 800) !default;
 $link-hover-decoration: underline !default;
 
 // Focus Indicator
@@ -470,7 +471,7 @@ $input-box-shadow:              inset 0 .125rem .125rem rgba(0,0,0,.1) !default;
 
 $input-focus-color:             $input-color !default;
 $input-focus-bg:                $input-bg !default;
-$input-focus-border:            palette(map-get($context-colors, "primary"), 300) !default;
+$input-focus-border:            palette-context("primary", 300) !default;
 $input-focus-box-shadow:        inset 0 .125rem .125rem rgba(0,0,0,.15) !default;
 
 $input-disabled-color:          $text-muted !default;
