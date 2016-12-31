@@ -203,17 +203,15 @@
 
             var $node = $(node);
             var $ul = $node.closest('ul[role="tablist"]');
-            var $items = $ul.find('[role="tab"]:visible');
+            var $items = $ul.find('[role="tab"]:visible').not('.disabled');
             var index = $items.index($items.filter('[aria-selected="true"]'));
 
             if ((k == 38 || k == 37) && index > 0)                 { index--; }     // up & left
             if ((k == 39 || k == 40) && index < $items.length - 1) { index++; }     // down & right
             if (!~index)                                           { index = 0; }   // force first item
 
-            var $nextTab = $items.eq(index);
-            if (!$nextTab.hasClass('disabled')) {
-                $nextTab.CFW_Tab('show').trigger('focus');
-            }
+            var nextTab = $items.eq(index);
+            nextTab.CFW_Tab('show').trigger('focus');
         },
 
         _activateTab : function(node, container, isPanel, $previous) {
