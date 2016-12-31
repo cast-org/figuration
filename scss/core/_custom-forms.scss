@@ -30,7 +30,15 @@
 
     &:focus ~ .custom-control-indicator {
         // the mixin is not used here to make sure there is feedback
-        box-shadow: $custom-control-focus-indicator-box-shadow;
+        //box-shadow: $custom-control-focus-indicator-box-shadow;
+
+        outline: none;
+
+        @if $enable-focus-ring {
+            box-shadow: $focus-ring-shadow;
+        } @else {
+            box-shadow: $custom-control-focus-indicator-box-shadow;
+        }
     }
 
     &:active ~ .custom-control-indicator {
@@ -283,7 +291,10 @@
     background-image: none;
     background-clip: padding-box;
     border: $input-border-width solid $input-border-color;
+
     @include border-radius($input-border-radius);
     @include box-shadow($input-box-shadow);
     @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
+
+    @include form-control-focus();
 }

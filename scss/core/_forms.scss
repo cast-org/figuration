@@ -36,12 +36,6 @@
         opacity: 1;
     }
 
-    // Color input - reduce horizontal padding otherwise visualy unsable in Chrome
-    &[type="color"] {
-        padding-top: ($input-padding-y / 2);
-        padding-bottom: ($input-padding-y / 2);
-    }
-
     // Disabled and read-only inputs
     //
     // HTML5 says that controls under a fieldset > legend:first-child won't be
@@ -222,12 +216,6 @@ input[type="month"] {
             padding: $sz-padding-y ($sz-padding-x / 2);
             font-size: $sz-font-size;
             @include border-radius($sz-border-radius);
-
-            // Color input - reduce horizontal padding otherwise visualy unsable in Chrome
-            &[type="color"] {
-                padding-top: ($input-padding-y / 2);
-                padding-bottom: ($input-padding-y / 2);
-            }
         }
     }
 }
