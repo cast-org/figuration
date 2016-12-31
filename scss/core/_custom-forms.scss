@@ -222,12 +222,24 @@
 .custom-file-input {
     min-width: $custom-file-width;
     max-width: 100%;
+    height: $select-height;
     margin: 0;
-    filter: alpha(opacity = 0);
     opacity: 0;
 
     &:focus ~ .custom-file-control {
-        @include box-shadow($custom-file-focus-box-shadow);
+        border-color: $input-focus-border;
+
+        @if $enable-shadows {
+            @if $enable-focus-ring {
+                box-shadow: $focus-ring-shadow, $input-focus-box-shadow;
+            } @else {
+                box-shadow: $input-focus-box-shadow;
+            }
+        } @else {
+            @if $enable-focus-ring {
+                box-shadow: $focus-ring-shadow;
+            }
+        }
     }
 }
 
@@ -240,12 +252,12 @@
     height: $select-height;
     padding: $input-padding-y ($input-padding-x / 2);
     line-height: $input-line-height;
-    color: $custom-file-color;
+    color: $input-color;
     user-select: none;
-    background-color: $custom-file-bg;
-    border: $custom-file-border-width solid $custom-file-border-color;
-    @include border-radius($custom-file-border-radius);
-    @include box-shadow($custom-file-box-shadow);
+    background-color: $input-bg;
+    border: $input-border-width solid $input-border-color;
+    @include border-radius($input-border-radius);
+    @include box-shadow($input-box-shadow);
 
     @each $lang, $text in map-get($custom-file-text, placeholder) {
         &:lang(#{$lang})::after {
@@ -255,9 +267,9 @@
 
     &::before {
         position: absolute;
-        top: -$custom-file-border-width;
-        right: -$custom-file-border-width;
-        bottom: -$custom-file-border-width;
+        top: -$input-border-width;
+        right: -$input-border-width;
+        bottom: -$input-border-width;
         z-index: 6;
         display: block;
         height: $select-height;
@@ -265,8 +277,8 @@
         line-height: $input-line-height;
         color: $custom-file-button-color;
         background-color: $custom-file-button-bg;
-        border: $custom-file-border-width solid $custom-file-border-color;
-        @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
+        border: $input-border-width solid $input-border-color;
+        @include border-radius(0 $input-border-radius $input-border-radius 0);
     }
 
     @each $lang, $text in map-get($custom-file-text, button-label) {
