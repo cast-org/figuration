@@ -5,6 +5,7 @@
 
 @mixin form-control-validation($color-name) {
     $color:        palette-context($color-name);
+    $bg:           palette-context($color-name, $level-context-bg);
     $border:       palette-context($color-name, $level-context-border);
     $border-hover: palette-context($color-name, $level-context-hover-border);
 
@@ -39,7 +40,7 @@
     // Set validation states also for addons
     .input-group-addon {
         color: $color;
-        background-color: lighten($color, 40%);
+        background-color: $bg;
         border-color: $color;
     }
 }
