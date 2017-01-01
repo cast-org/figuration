@@ -244,7 +244,7 @@ $link-hover-decoration: underline !default;
 // =====
 $focus-outline:         5px auto -webkit-focus-ring-color;
 $focus-outline-offset:  -2px !default;
-$focus-ring-shadow:     0 0 .125rem .1875rem rgba(map-get($context-colors, "info"), .5) !default;
+$focus-ring-shadow:     0 0 .125rem .1875rem rgba(palette-context("info", 400), .75) !default;
 
 // Cursors
 // =====
