@@ -7,5 +7,5 @@
 // Use browser defaults
 @mixin focus-outline() {
     outline: $focus-outline;
-    outline-offset: -2px;
+    outline-offset: $focus-outline-offset;
 }
