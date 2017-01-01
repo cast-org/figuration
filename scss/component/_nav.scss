@@ -139,7 +139,7 @@ if $enable-flex-full {
             color: $nav-tabs-active-link-hover-color;
             cursor: default;
             background-color: $nav-tabs-active-link-hover-bg;
-            border-color: $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-border-color transparent;
+            border-color: $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-bg;
         }
     }
 
