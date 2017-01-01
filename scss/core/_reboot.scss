@@ -194,6 +194,9 @@ a:not([href]):not([tabindex]) {
 
     &:focus {
         outline: none;
+        @if $enable-focus-ring {
+            box-shadow: none;
+        }
     }
 }
 
