@@ -425,8 +425,8 @@ a:focus, a:hover {
 
 a:focus {
   outline: 0;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
+  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
+          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 a:not([href]):not([tabindex]) {
@@ -441,6 +441,8 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
 
 a:not([href]):not([tabindex]):focus {
   outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 pre {
@@ -995,10 +997,10 @@ pre code {
 .form-control:focus {
   color: #474747;
   background-color: #fff;
-  border-color: #718ed6;
+  border-color: #7d97d9;
   outline: none;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
+  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
+          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .form-control::-webkit-input-placeholder {
@@ -1021,11 +1023,6 @@ pre code {
   opacity: 1;
 }
 
-.form-control[type="color"] {
-  padding-top: 0.125rem;
-  padding-bottom: 0.125rem;
-}
-
 .form-control:disabled, .form-control[readonly] {
   background-color: #f0f0f0;
   opacity: 1;
@@ -1036,49 +1033,13 @@ pre code {
   cursor: not-allowed;
 }
 
-select.form-control:not([size]):not([multiple]) {
-  height: calc(2rem + 2px);
-}
-
-select.form-control.form-control-xs:not([size]):not([multiple]), .input-group-xs > select.form-control:not([size]):not([multiple]),
-.input-group-xs > .input-group-btn > select.form-control.btn:not([size]):not([multiple]),
-.input-group-xs select.form-control.form-control:not([size]):not([multiple]) {
-  height: calc(1.3125rem + 2px);
-  padding-top: 0.09375rem;
-  padding-bottom: 0.09375rem;
-}
-
-select.form-control.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.form-control:not([size]):not([multiple]),
-.input-group-sm > .input-group-btn > select.form-control.btn:not([size]):not([multiple]),
-.input-group-sm select.form-control.form-control:not([size]):not([multiple]) {
-  height: calc(1.59375rem + 2px);
-  padding-top: 0.140625rem;
-  padding-bottom: 0.140625rem;
-}
-
-select.form-control.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.form-control:not([size]):not([multiple]),
-.input-group-lg > .input-group-btn > select.form-control.btn:not([size]):not([multiple]),
-.input-group-lg select.form-control.form-control:not([size]):not([multiple]) {
-  height: calc(2.40625rem + 2px);
-  padding-top: 0.359375rem;
-  padding-bottom: 0.359375rem;
-}
-
-select.form-control.form-control-xl:not([size]):not([multiple]), .input-group-xl > select.form-control:not([size]):not([multiple]),
-.input-group-xl > .input-group-btn > select.form-control.btn:not([size]):not([multiple]),
-.input-group-xl select.form-control.form-control:not([size]):not([multiple]) {
-  height: calc(2.8125rem + 2px);
-  padding-top: 0.46875rem;
-  padding-bottom: 0.46875rem;
+select.form-control[size], select.form-control[multiple] {
+  height: auto;
 }
 
 select.form-control:focus::-ms-value {
   color: #474747;
   background-color: #fff;
-}
-
-select[multiple].form-control {
-  height: auto;
 }
 
 textarea.form-control {
@@ -1097,34 +1058,6 @@ textarea.form-control {
   margin-bottom: 0;
 }
 
-.form-control-label-xs {
-  padding-top: calc(0.09375rem + 1px);
-  padding-bottom: calc(0.09375rem + 1px);
-  margin-bottom: 0;
-  font-size: 0.75rem;
-}
-
-.form-control-label-sm {
-  padding-top: calc(0.140625rem + 1px);
-  padding-bottom: calc(0.140625rem + 1px);
-  margin-bottom: 0;
-  font-size: 0.875rem;
-}
-
-.form-control-label-lg {
-  padding-top: calc(0.359375rem + 1px);
-  padding-bottom: calc(0.359375rem + 1px);
-  margin-bottom: 0;
-  font-size: 1.125rem;
-}
-
-.form-control-label-xl {
-  padding-top: calc(0.46875rem + 1px);
-  padding-bottom: calc(0.46875rem + 1px);
-  margin-bottom: 0;
-  font-size: 1.25rem;
-}
-
 .form-control-legend {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -1132,171 +1065,11 @@ textarea.form-control {
   font-size: 1rem;
 }
 
-_::-webkit-full-page-media.form-control,
-input[type="date"].form-control,
-input[type="time"].form-control,
-input[type="datetime-local"].form-control,
-input[type="month"].form-control {
-  line-height: 2rem;
-}
-
-_::-webkit-full-page-media.form-control-xs, .input-group-xs > _.form-control::-webkit-full-page-media,
-.input-group-xs > _.input-group-addon::-webkit-full-page-media,
-.input-group-xs > .input-group-btn > _.btn::-webkit-full-page-media,
-.input-group-xs _::-webkit-full-page-media.form-control,
-input[type="date"].form-control-xs,
-.input-group-xs > input[type="date"].form-control,
-.input-group-xs > input[type="date"].input-group-addon,
-.input-group-xs > .input-group-btn > input[type="date"].btn,
-.input-group-xs
-input[type="date"].form-control,
-input[type="time"].form-control-xs,
-.input-group-xs > input[type="time"].form-control,
-.input-group-xs > input[type="time"].input-group-addon,
-.input-group-xs > .input-group-btn > input[type="time"].btn,
-.input-group-xs
-input[type="time"].form-control,
-input[type="datetime-local"].form-control-xs,
-.input-group-xs > input[type="datetime-local"].form-control,
-.input-group-xs > input[type="datetime-local"].input-group-addon,
-.input-group-xs > .input-group-btn > input[type="datetime-local"].btn,
-.input-group-xs
-input[type="datetime-local"].form-control,
-input[type="month"].form-control-xs,
-.input-group-xs > input[type="month"].form-control,
-.input-group-xs > input[type="month"].input-group-addon,
-.input-group-xs > .input-group-btn > input[type="month"].btn,
-.input-group-xs
-input[type="month"].form-control {
-  line-height: 1.3125rem;
-}
-
-_::-webkit-full-page-media.form-control-sm, .input-group-sm > _.form-control::-webkit-full-page-media,
-.input-group-sm > _.input-group-addon::-webkit-full-page-media,
-.input-group-sm > .input-group-btn > _.btn::-webkit-full-page-media,
-.input-group-sm _::-webkit-full-page-media.form-control,
-input[type="date"].form-control-sm,
-.input-group-sm > input[type="date"].form-control,
-.input-group-sm > input[type="date"].input-group-addon,
-.input-group-sm > .input-group-btn > input[type="date"].btn,
-.input-group-sm
-input[type="date"].form-control,
-input[type="time"].form-control-sm,
-.input-group-sm > input[type="time"].form-control,
-.input-group-sm > input[type="time"].input-group-addon,
-.input-group-sm > .input-group-btn > input[type="time"].btn,
-.input-group-sm
-input[type="time"].form-control,
-input[type="datetime-local"].form-control-sm,
-.input-group-sm > input[type="datetime-local"].form-control,
-.input-group-sm > input[type="datetime-local"].input-group-addon,
-.input-group-sm > .input-group-btn > input[type="datetime-local"].btn,
-.input-group-sm
-input[type="datetime-local"].form-control,
-input[type="month"].form-control-sm,
-.input-group-sm > input[type="month"].form-control,
-.input-group-sm > input[type="month"].input-group-addon,
-.input-group-sm > .input-group-btn > input[type="month"].btn,
-.input-group-sm
-input[type="month"].form-control {
-  line-height: 1.59375rem;
-}
-
-_::-webkit-full-page-media.form-control-lg, .input-group-lg > _.form-control::-webkit-full-page-media,
-.input-group-lg > _.input-group-addon::-webkit-full-page-media,
-.input-group-lg > .input-group-btn > _.btn::-webkit-full-page-media,
-.input-group-lg _::-webkit-full-page-media.form-control,
-input[type="date"].form-control-lg,
-.input-group-lg > input[type="date"].form-control,
-.input-group-lg > input[type="date"].input-group-addon,
-.input-group-lg > .input-group-btn > input[type="date"].btn,
-.input-group-lg
-input[type="date"].form-control,
-input[type="time"].form-control-lg,
-.input-group-lg > input[type="time"].form-control,
-.input-group-lg > input[type="time"].input-group-addon,
-.input-group-lg > .input-group-btn > input[type="time"].btn,
-.input-group-lg
-input[type="time"].form-control,
-input[type="datetime-local"].form-control-lg,
-.input-group-lg > input[type="datetime-local"].form-control,
-.input-group-lg > input[type="datetime-local"].input-group-addon,
-.input-group-lg > .input-group-btn > input[type="datetime-local"].btn,
-.input-group-lg
-input[type="datetime-local"].form-control,
-input[type="month"].form-control-lg,
-.input-group-lg > input[type="month"].form-control,
-.input-group-lg > input[type="month"].input-group-addon,
-.input-group-lg > .input-group-btn > input[type="month"].btn,
-.input-group-lg
-input[type="month"].form-control {
-  line-height: 2.40625rem;
-}
-
-_::-webkit-full-page-media.form-control-xl, .input-group-xl > _.form-control::-webkit-full-page-media,
-.input-group-xl > _.input-group-addon::-webkit-full-page-media,
-.input-group-xl > .input-group-btn > _.btn::-webkit-full-page-media,
-.input-group-xl _::-webkit-full-page-media.form-control,
-input[type="date"].form-control-xl,
-.input-group-xl > input[type="date"].form-control,
-.input-group-xl > input[type="date"].input-group-addon,
-.input-group-xl > .input-group-btn > input[type="date"].btn,
-.input-group-xl
-input[type="date"].form-control,
-input[type="time"].form-control-xl,
-.input-group-xl > input[type="time"].form-control,
-.input-group-xl > input[type="time"].input-group-addon,
-.input-group-xl > .input-group-btn > input[type="time"].btn,
-.input-group-xl
-input[type="time"].form-control,
-input[type="datetime-local"].form-control-xl,
-.input-group-xl > input[type="datetime-local"].form-control,
-.input-group-xl > input[type="datetime-local"].input-group-addon,
-.input-group-xl > .input-group-btn > input[type="datetime-local"].btn,
-.input-group-xl
-input[type="datetime-local"].form-control,
-input[type="month"].form-control-xl,
-.input-group-xl > input[type="month"].form-control,
-.input-group-xl > input[type="month"].input-group-addon,
-.input-group-xl > .input-group-btn > input[type="month"].btn,
-.input-group-xl
-input[type="month"].form-control {
-  line-height: 2.8125rem;
-}
-
 .form-control-static {
   min-height: 2rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   margin-bottom: 0;
-}
-
-.form-control-static.form-control-xs, .input-group-xs > .form-control-static.form-control,
-.input-group-xs > .form-control-static.input-group-addon,
-.input-group-xs > .input-group-btn > .form-control-static.btn {
-  padding-right: 0;
-  padding-left: 0;
-}
-
-.form-control-static.form-control-sm, .input-group-sm > .form-control-static.form-control,
-.input-group-sm > .form-control-static.input-group-addon,
-.input-group-sm > .input-group-btn > .form-control-static.btn {
-  padding-right: 0;
-  padding-left: 0;
-}
-
-.form-control-static.form-control-lg, .input-group-lg > .form-control-static.form-control,
-.input-group-lg > .form-control-static.input-group-addon,
-.input-group-lg > .input-group-btn > .form-control-static.btn {
-  padding-right: 0;
-  padding-left: 0;
-}
-
-.form-control-static.form-control-xl, .input-group-xl > .form-control-static.form-control,
-.input-group-xl > .form-control-static.input-group-addon,
-.input-group-xl > .input-group-btn > .form-control-static.btn {
-  padding-right: 0;
-  padding-left: 0;
 }
 
 .form-control-xs, .input-group-xs > .form-control,
@@ -1308,11 +1081,11 @@ input[type="month"].form-control {
   border-radius: 0.1875rem;
 }
 
-.form-control-xs[type="color"], .input-group-xs > [type="color"].form-control,
-.input-group-xs > [type="color"].input-group-addon,
-.input-group-xs > .input-group-btn > [type="color"].btn {
-  padding-top: 0.125rem;
-  padding-bottom: 0.125rem;
+.form-control-label-xs,
+.form-control-static-xs {
+  padding-top: calc(0.09375rem + 1px);
+  padding-bottom: calc(0.09375rem + 1px);
+  font-size: 0.75rem;
 }
 
 .form-control-sm, .input-group-sm > .form-control,
@@ -1324,11 +1097,11 @@ input[type="month"].form-control {
   border-radius: 0.1875rem;
 }
 
-.form-control-sm[type="color"], .input-group-sm > [type="color"].form-control,
-.input-group-sm > [type="color"].input-group-addon,
-.input-group-sm > .input-group-btn > [type="color"].btn {
-  padding-top: 0.125rem;
-  padding-bottom: 0.125rem;
+.form-control-label-sm,
+.form-control-static-sm {
+  padding-top: calc(0.140625rem + 1px);
+  padding-bottom: calc(0.140625rem + 1px);
+  font-size: 0.875rem;
 }
 
 .form-control-lg, .input-group-lg > .form-control,
@@ -1340,11 +1113,11 @@ input[type="month"].form-control {
   border-radius: 0.3125rem;
 }
 
-.form-control-lg[type="color"], .input-group-lg > [type="color"].form-control,
-.input-group-lg > [type="color"].input-group-addon,
-.input-group-lg > .input-group-btn > [type="color"].btn {
-  padding-top: 0.125rem;
-  padding-bottom: 0.125rem;
+.form-control-label-lg,
+.form-control-static-lg {
+  padding-top: calc(0.359375rem + 1px);
+  padding-bottom: calc(0.359375rem + 1px);
+  font-size: 1.125rem;
 }
 
 .form-control-xl, .input-group-xl > .form-control,
@@ -1356,11 +1129,11 @@ input[type="month"].form-control {
   border-radius: 0.3125rem;
 }
 
-.form-control-xl[type="color"], .input-group-xl > [type="color"].form-control,
-.input-group-xl > [type="color"].input-group-addon,
-.input-group-xl > .input-group-btn > [type="color"].btn {
-  padding-top: 0.125rem;
-  padding-bottom: 0.125rem;
+.form-control-label-xl,
+.form-control-static-xl {
+  padding-top: calc(0.46875rem + 1px);
+  padding-bottom: calc(0.46875rem + 1px);
+  font-size: 1.25rem;
 }
 
 .form-group {
@@ -1407,8 +1180,8 @@ input[type="month"].form-control {
 
 .form-check-input:focus {
   outline: 0;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
+  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
+          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .form-check-inline {
@@ -1454,13 +1227,14 @@ input[type="month"].form-control {
 }
 
 .has-success .form-control:focus {
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
+  border-color: #0f7f16;
+  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
+          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .has-success .input-group-addon {
   color: #108918;
-  background-color: #76ef7e;
+  background-color: #d9ecda;
   border-color: #108918;
 }
 
@@ -1480,13 +1254,14 @@ input[type="month"].form-control {
 }
 
 .has-warning .form-control:focus {
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
+  border-color: #ba7e00;
+  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
+          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .has-warning .input-group-addon {
   color: #c98800;
-  background-color: #ffdd96;
+  background-color: #f6ecd6;
   border-color: #c98800;
 }
 
@@ -1506,13 +1281,14 @@ input[type="month"].form-control {
 }
 
 .has-danger .form-control:focus {
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
+  border-color: #b91b0d;
+  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
+          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .has-danger .input-group-addon {
   color: #c81d0e;
-  background-color: #f9afa9;
+  background-color: #f6dbd8;
   border-color: #c81d0e;
 }
 
@@ -1591,8 +1367,9 @@ input[type="month"].form-control {
 }
 
 .custom-control-input:focus ~ .custom-control-indicator {
-  -webkit-box-shadow: 0 0 0 0.0625rem #fff, 0 0 0 0.1875rem #718ed6;
-          box-shadow: 0 0 0 0.0625rem #fff, 0 0 0 0.1875rem #718ed6;
+  outline: none;
+  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
+          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .custom-control-input:active ~ .custom-control-indicator {
@@ -1685,10 +1462,10 @@ input[type="month"].form-control {
 .custom-select:focus {
   color: #474747;
   background-color: #fff;
-  border-color: #718ed6;
+  border-color: #7d97d9;
   outline: none;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
+  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
+          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .custom-select:focus::-ms-value {
@@ -1753,9 +1530,15 @@ input[type="month"].form-control {
 .custom-file-input {
   min-width: 14rem;
   max-width: 100%;
+  height: calc(2rem + 2px);
   margin: 0;
-  filter: alpha(opacity=0);
   opacity: 0;
+}
+
+.custom-file-input:focus ~ .custom-file-control {
+  border-color: #7d97d9;
+  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
+          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .custom-file-control {
@@ -1767,7 +1550,7 @@ input[type="month"].form-control {
   height: calc(2rem + 2px);
   padding: 0.25rem 0.375rem;
   line-height: 1.5;
-  color: #575757;
+  color: #474747;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -1823,6 +1606,15 @@ input[type="month"].form-control {
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
 }
 
+.custom-color:focus {
+  color: #474747;
+  background-color: #fff;
+  border-color: #7d97d9;
+  outline: none;
+  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
+          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
+}
+
 .btn {
   display: inline-block;
   font-weight: normal;
@@ -1843,8 +1635,8 @@ input[type="month"].form-control {
 
 .btn:focus, .btn.focus {
   outline: 0;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
+  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
+          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .btn:focus, .btn.focus, .btn:hover {
@@ -3811,8 +3603,8 @@ tbody.collapse.in {
 
 .close:focus {
   outline: 0;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
+  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
+          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 button.close {
@@ -3845,8 +3637,8 @@ button.close {
 
 .drag:focus {
   outline: 0;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
+  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
+          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 button.drag {
@@ -4233,6 +4025,7 @@ base::-moz-progress-bar,
 }
 
 .list-group-item-action {
+  position: relative;
   width: 100%;
   color: #474747;
   text-align: inherit;
@@ -4241,6 +4034,13 @@ base::-moz-progress-bar,
 
 .list-group-item-action .list-group-item-heading {
   color: #292929;
+}
+
+.list-group-item-action:focus {
+  z-index: 2;
+  outline: 0;
+  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
+          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .list-group-item-action:focus, .list-group-item-action:hover {
@@ -4759,71 +4559,9 @@ button.list-group-item-danger.active:hover {
   border-radius: 0.25rem;
 }
 
-.input-group-addon.form-control-xs,
-.input-group-xs > .input-group-addon,
-.input-group-xs > .input-group-btn > .input-group-addon.btn {
-  padding: 0.09375rem 0.375rem;
-  font-size: 0.75rem;
-  border-radius: 0.1875rem;
-}
-
-.input-group-addon.form-control-sm,
-.input-group-sm > .input-group-addon,
-.input-group-sm > .input-group-btn > .input-group-addon.btn {
-  padding: 0.140625rem 0.5rem;
-  font-size: 0.875rem;
-  border-radius: 0.1875rem;
-}
-
-.input-group-addon.form-control-lg,
-.input-group-lg > .input-group-addon,
-.input-group-lg > .input-group-btn > .input-group-addon.btn {
-  padding: 0.359375rem 1.125rem;
-  font-size: 1.125rem;
-  border-radius: 0.3125rem;
-}
-
-.input-group-addon.form-control-xl,
-.input-group-xl > .input-group-addon,
-.input-group-xl > .input-group-btn > .input-group-addon.btn {
-  padding: 0.46875rem 1.25rem;
-  font-size: 1.25rem;
-  border-radius: 0.3125rem;
-}
-
 .input-group-addon input[type="radio"],
 .input-group-addon input[type="checkbox"] {
   margin-top: 0;
-}
-
-.input-group .form-control:not(:last-child),
-.input-group-addon:not(:last-child),
-.input-group-btn:not(:last-child) > .btn,
-.input-group-btn:not(:last-child) > .btn-group > .btn,
-.input-group-btn:not(:last-child) > .dropdown-toggle,
-.input-group-btn:not(:first-child) > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.input-group-addon:not(:last-child) {
-  border-right: 0;
-}
-
-.input-group .form-control:not(:first-child),
-.input-group-addon:not(:first-child),
-.input-group-btn:not(:first-child) > .btn,
-.input-group-btn:not(:first-child) > .btn-group > .btn,
-.input-group-btn:not(:first-child) > .dropdown-toggle,
-.input-group-btn:not(:last-child) > .btn:not(:first-child),
-.input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.form-control + .input-group-addon:not(:first-child) {
-  border-left: 0;
 }
 
 .input-group-btn {
@@ -4860,6 +4598,60 @@ button.list-group-item-danger.active:hover {
 .input-group-btn:not(:first-child) > .btn-group:active,
 .input-group-btn:not(:first-child) > .btn-group:hover {
   z-index: 3;
+}
+
+.input-group-xs > .input-group-addon,
+.input-group-xs > .input-group-btn > .btn {
+  padding-right: 0.375rem;
+  padding-left: 0.375rem;
+}
+
+.input-group-sm > .input-group-addon,
+.input-group-sm > .input-group-btn > .btn {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.input-group-lg > .input-group-addon,
+.input-group-lg > .input-group-btn > .btn {
+  padding-right: 1.125rem;
+  padding-left: 1.125rem;
+}
+
+.input-group-xl > .input-group-addon,
+.input-group-xl > .input-group-btn > .btn {
+  padding-right: 1.25rem;
+  padding-left: 1.25rem;
+}
+
+.input-group .form-control:not(:last-child),
+.input-group-addon:not(:last-child),
+.input-group-btn:not(:last-child) > .btn,
+.input-group-btn:not(:last-child) > .btn-group > .btn,
+.input-group-btn:not(:last-child) > .dropdown-toggle,
+.input-group-btn:not(:first-child) > .btn:not(:last-child):not(.dropdown-toggle),
+.input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group-addon:not(:last-child) {
+  border-right: 0;
+}
+
+.input-group .form-control:not(:first-child),
+.input-group-addon:not(:first-child),
+.input-group-btn:not(:first-child) > .btn,
+.input-group-btn:not(:first-child) > .btn-group > .btn,
+.input-group-btn:not(:first-child) > .dropdown-toggle,
+.input-group-btn:not(:last-child) > .btn:not(:first-child),
+.input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-control + .input-group-addon:not(:first-child) {
+  border-left: 0;
 }
 
 .input-group-flex .input-group-btn > .btn {
@@ -5414,7 +5206,7 @@ if $enable-flex-full .nav-inline {
   color: #666;
   cursor: default;
   background-color: #fff;
-  border-color: #858585 #858585 transparent;
+  border-color: #858585 #858585 #fff;
 }
 
 .nav-tabs .dropdown-menu {
@@ -7216,8 +7008,8 @@ a.badge:focus, a.badge:hover {
 
 .slider-thumb:focus {
   outline: 0;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(17, 124, 186, 0.5);
+  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
+          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .slider-thumb:focus, .slider-thumb:hover {
