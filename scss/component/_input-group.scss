@@ -92,18 +92,6 @@
     }
 }
 
-// Sizing options
-// Remix the default form control sizing classes into new ones for easier manipulation.
-@if $enable-sizing {
-    @each $size, $dims in $component-sizes {
-        .input-group-#{$size} > .form-control,
-        .input-group-#{$size} > .input-group-addon,
-        .input-group-#{$size} > .input-group-btn > .btn {
-            @extend .form-control-#{$size};
-        }
-    }
-}
-
 // Text input groups
 .input-group-addon {
     padding: $input-padding-y $input-padding-x;
@@ -117,22 +105,6 @@
     border: $input-border-width solid $input-group-addon-border-color;
     @include border-radius($border-radius);
 
-    // Sizing
-    @if $enable-sizing {
-        @each $size, $dims in $component-sizes {
-            $sz-font-size:     map-get($dims, "font-size");
-            $sz-padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $sz-font-size / 2);
-            $sz-padding-x:     map-get($dims, "padding-x");
-            $sz-border-radius: map-get($dims, "border-radius");
-
-            &.form-control-#{$size} {
-                padding: $sz-padding-y $sz-padding-x;
-                font-size: $sz-font-size;
-                @include border-radius($sz-border-radius);
-            }
-        }
-    }
-
     // scss-lint:disable QualifyingElement
     // Nuke default margins from checkboxes and radios to vertically center within.
     input[type="radio"],
@@ -140,33 +112,6 @@
         margin-top: 0;
     }
     // scss-lint:enable QualifyingElement
-}
-
-
-// Reset rounded corners
-.input-group .form-control:not(:last-child),
-.input-group-addon:not(:last-child),
-.input-group-btn:not(:last-child) > .btn,
-.input-group-btn:not(:last-child) > .btn-group > .btn,
-.input-group-btn:not(:last-child) > .dropdown-toggle,
-.input-group-btn:not(:first-child) > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
-    @include border-right-radius(0);
-}
-.input-group-addon:not(:last-child) {
-    border-right: 0;
-}
-.input-group .form-control:not(:first-child),
-.input-group-addon:not(:first-child),
-.input-group-btn:not(:first-child) > .btn,
-.input-group-btn:not(:first-child) > .btn-group > .btn,
-.input-group-btn:not(:first-child) > .dropdown-toggle,
-.input-group-btn:not(:last-child) > .btn:not(:first-child),
-.input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
-    @include border-left-radius(0);
-}
-.form-control + .input-group-addon:not(:first-child) {
-    border-left: 0;
 }
 
 // Button input groups
@@ -215,6 +160,52 @@
             }
         }
     }
+}
+
+// Sizing options
+// Remix the default form control sizing classes into new ones for easier manipulation.
+@if $enable-sizing {
+    @each $size, $dims in $component-sizes {
+        $sz-padding-x:     map-get($dims, "padding-x");
+
+        .input-group-#{$size} > .form-control,
+        .input-group-#{$size} > .input-group-addon,
+        .input-group-#{$size} > .input-group-btn > .btn {
+            @extend .form-control-#{$size};
+        }
+        .input-group-#{$size} > .input-group-addon,
+        .input-group-#{$size} > .input-group-btn > .btn {
+            padding-right: $sz-padding-x;
+            padding-left: $sz-padding-x;
+        }
+    }
+}
+
+
+// Reset rounded corners
+.input-group .form-control:not(:last-child),
+.input-group-addon:not(:last-child),
+.input-group-btn:not(:last-child) > .btn,
+.input-group-btn:not(:last-child) > .btn-group > .btn,
+.input-group-btn:not(:last-child) > .dropdown-toggle,
+.input-group-btn:not(:first-child) > .btn:not(:last-child):not(.dropdown-toggle),
+.input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
+    @include border-right-radius(0);
+}
+.input-group-addon:not(:last-child) {
+    border-right: 0;
+}
+.input-group .form-control:not(:first-child),
+.input-group-addon:not(:first-child),
+.input-group-btn:not(:first-child) > .btn,
+.input-group-btn:not(:first-child) > .btn-group > .btn,
+.input-group-btn:not(:first-child) > .dropdown-toggle,
+.input-group-btn:not(:last-child) > .btn:not(:first-child),
+.input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
+    @include border-left-radius(0);
+}
+.form-control + .input-group-addon:not(:first-child) {
+    border-left: 0;
 }
 
 @if $enable-flex-opt {

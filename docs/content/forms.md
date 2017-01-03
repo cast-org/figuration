@@ -633,11 +633,6 @@ Set heights using classes like `.form-control-lg`, and set widths using grid col
 <input class="form-control form-control-xs" type="text" placeholder=".form-control-xs">
 {% endexample %}
 
-{% callout info %}
-#### `<select>` Heights in IE 9+
-The heights of select elements is a bit off in Internet Explorer, usually just slightly shorter.  Still looking into it.
-{% endcallout %}
-
 {% example html %}
 <select class="form-control form-control-xl">
   <option>Extra large select</option>

@@ -459,7 +459,7 @@ $btn-border-radius:             $border-radius !default;
 $input-line-height:             1.5 !default;
 $input-line-height-delta:      ($input-line-height - $btn-line-height) !default;
 
-$input-padding-y:               $btn-padding-y - ($input-line-height-delta / 2) !default;
+$input-padding-y:               $btn-padding-y - ($input-line-height-delta * $font-size-base / 2) !default;
 $input-padding-x:               $btn-padding-x !default;
 
 $input-color:                   $uibase-700 !default;
