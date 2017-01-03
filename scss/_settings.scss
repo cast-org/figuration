@@ -480,7 +480,14 @@ $input-disabled-border:         rgba(0,0,0,.25) !default;
 
 $input-placeholder-color:       #999 !default;
 
-$form-group-margin-bottom:       1rem !default;
+$form-text-margin-top:          .25rem !default;
+$form-feedback-margin-top:      $form-text-margin-top !default;
+$form-check-margin-bottom:      1rem !default;
+$form-check-sibling-margin-top: -.5rem !default;
+$form-check-input-gutter:       1.25rem !default;
+$form-check-input-margin-y:     .3125rem !default;
+$form-check-inline-margin-x:    .75rem !default;
+$form-group-margin-bottom:      1rem !default;
 
 $input-group-addon-bg:           $uibase-50 !default;
 $input-group-addon-border-color: $input-border-color !default;
