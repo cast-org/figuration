@@ -253,6 +253,7 @@
     padding: $input-padding-y ($input-padding-x / 2);
     line-height: $input-line-height;
     color: $input-color;
+    pointer-events: none;
     user-select: none;
     background-color: $input-bg;
     border: $input-border-width solid $input-border-color;
