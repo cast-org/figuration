@@ -11,8 +11,8 @@
         display: inline-block;
         width: 0;
         height: 0;
-        margin-right: .25rem;
-        margin-left: .25rem;
+        margin-right: $dropdown-toggle-margin-x;
+        margin-left: $dropdown-toggle-margin-x;
         vertical-align: middle;
         content: "";
         border-top: $caret-width solid;
@@ -123,7 +123,7 @@
     > a::after {
         position: absolute;
         top: 50%;
-        right: .35rem;
+        right: $dropdown-caret-spacer-x;
         display: block;
         width: 0;
         height: 0;
@@ -243,15 +243,15 @@
     > a::before {
         position: absolute;
         top: 50%;
-        left: .35rem;
+        left: $dropdown-back-spacer-x;
         display: block;
         width: 0;
         height: 0;
         margin-top: -$dropdown-caret-width;
         content: " ";
-        border-top: $dropdown-caret-width solid transparent;
-        border-right: $dropdown-caret-width solid $dropdown-caret-color;
-        border-bottom: $dropdown-caret-width solid transparent;
+        border-top: $dropdown-back-width solid transparent;
+        border-right: $dropdown-back-width solid $dropdown-back-color;
+        border-bottom: $dropdown-back-width solid transparent;
     }
 }
 
@@ -260,10 +260,10 @@
 // This removes the need for overly convoluted CSS rules
 .dropdown-back-left {
     > a::before {
-        right: .35rem;
+        right: $dropdown-back-spacer-x;
         left: auto;
         border-right: 0;
-        border-left: $dropdown-caret-width solid $dropdown-caret-color;
+        border-left: $dropdown-back-width solid $dropdown-back-color;
     }
 }
 
