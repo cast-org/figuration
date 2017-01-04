@@ -642,47 +642,48 @@ $pagination-disabled-bg:        darken($uibase-50, 10) !default;
 
 // Dropdowns
 // =====
-$dropdown-min-width:             160px !default;
-$dropdown-padding-y:             .3rem !default;
-$dropdown-margin-top:            .125rem !default;
-$dropdown-bg:                    $white !default;
-$dropdown-border-color:          $uibase-300 !default;
-$dropdown-border-width:          $border-width !default;
-$dropdown-border-radius:         $border-radius !default;
-$dropdown-divider-color:         $uibase-300 !default;
-$dropdown-box-shadow:            0 .2rem .3rem rgba(0,0,0,.175) !default;
+$dropdown-min-width:            10rem !default;
+$dropdown-padding-y:            .3125rem !default;
+$dropdown-margin-top:           .125rem !default;
+$dropdown-bg:                   $white !default;
+$dropdown-border-color:         $uibase-300 !default;
+$dropdown-border-width:         $border-width !default;
+$dropdown-border-radius:        $border-radius !default;
+$dropdown-divider-color:        $uibase-300 !default;
+$dropdown-box-shadow:           0 .2rem .3rem rgba(0,0,0,.175) !default;
 
 // Border radius where menu/submenu aligns or 'attaches' to control item.
-$dropdown-attach-border-radius:  0 !default;
+$dropdown-attach-border-radius: 0 !default;
 
-$dropdown-link-color:            $uibase-900 !default;
-$dropdown-link-hover-color:      $uibase-900 !default;
-$dropdown-link-hover-bg:         $uibase-50 !default;
+$dropdown-link-color:           $uibase-900 !default;
+$dropdown-link-hover-color:     $uibase-900 !default;
+$dropdown-link-hover-bg:        $uibase-50 !default;
 
-$dropdown-link-active-color:     $active-color !default;
-$dropdown-link-active-bg:        $active-bg !default;
-$dropdown-link-active-hover-bg:  $active-hover-bg !default;
+$dropdown-link-active-color:    $active-color !default;
+$dropdown-link-active-bg:       $active-bg !default;
+$dropdown-link-active-hover-bg: $active-hover-bg !default;
 
-$dropdown-link-disabled-color:   $uibase-400 !default;
+$dropdown-link-disabled-color:  $uibase-400 !default;
 
-$dropdown-item-padding-x:        1.25rem !default;
-$dropdown-item-padding-y:        .2rem !default;
+$dropdown-item-padding-x:       1.25rem !default;
+$dropdown-item-padding-y:       .1875rem !default;
 
-$dropdown-header-font-size:      .875rem !default;
-$dropdown-header-font-weight:    $font-weight-normal !default;
-$dropdown-header-color:          $uibase-400 !default;
+$dropdown-header-font-size:     .875rem !default;
+$dropdown-header-font-weight:   $font-weight-normal !default;
+$dropdown-header-color:         $uibase-400 !default;
 
-$dropdown-caret-width:          .45rem !default;
+$dropdown-caret-width:          .4375rem !default;
 $dropdown-caret-color:          $uibase-400 !default;
 $dropdown-caret-active-color:   $active-color !default;
-$dropdown-caret-spacer-x:       .35rem !default;
+$dropdown-caret-spacer-x:       .375rem !default;
 
-$dropdown-back-width:          .45rem !default;
-$dropdown-back-color:          $uibase-400 !default;
-$dropdown-back-active-color:   $active-color !default;
-$dropdown-back-spacer-x:       .35rem !default;
+$dropdown-back-width:           .4375rem !default;
+$dropdown-back-color:           $uibase-400 !default;
+$dropdown-back-active-color:    $active-color !default;
+$dropdown-back-spacer-x:        .375rem !default;
 
 $dropdown-toggle-margin-x:      .25rem !default;
+
 
 // Navs
 // =====

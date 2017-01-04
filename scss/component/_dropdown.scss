@@ -299,7 +299,7 @@
     }
     > a::after {
         right: auto;
-        left: .35rem;
+        left: $dropdown-caret-spacer-x;
         border-right: $dropdown-caret-width solid $dropdown-caret-color;
         border-left: 0;
     }
