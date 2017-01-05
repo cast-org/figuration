@@ -237,7 +237,7 @@ $border-width: 1px !default;
 // Style anchor elements
 $link-color:            palette-context("primary", 500) !default;
 $link-decoration:       underline !default;
-$link-hover-color:      palette-context("primary", 800) !default;
+$link-hover-color:      palette-context("primary", 850) !default;
 $link-hover-decoration: underline !default;
 
 // Focus Indicator
@@ -687,29 +687,26 @@ $dropdown-toggle-margin-x:      .25rem !default;
 
 // Navs
 // =====
-$nav-item-margin:               .2rem !default;
+$nav-item-margin:               .25rem !default;
 $nav-item-inline-spacer:        1rem !default;
 $nav-link-padding:              .5rem 1rem !default;
-$nav-link-hover-bg:             $uibase-300 !default;
-$nav-disabled-link-color:       $uibase-300 !default;
-$nav-disabled-link-hover-color: $uibase-300 !default;
-$nav-disabled-link-hover-bg:    transparent !default;
+$nav-link-disabled-opacity:     .6 !default;
+$nav-link-disabled-color:       $uibase-600 !default;
 
 $nav-divider-color:             $uibase-50 !default;
 
-$nav-tabs-border-color:                       $uibase-400 !default;
-$nav-tabs-border-width:                       $border-width !default;
-$nav-tabs-link-hover-border-color:            $uibase-50 !default;
-$nav-tabs-link-hover-bg:                      $uibase-50 !default;
-$nav-tabs-active-link-hover-color:            $uibase-500 !default;
-$nav-tabs-active-link-hover-bg:               $body-bg !default;
-$nav-tabs-active-link-hover-border-color:     $uibase-400 !default;
+$nav-tabs-border-color:         $uibase-400 !default;
+$nav-tabs-border-width:         $border-width !default;
+$nav-tabs-hover-border-color:   $uibase-50 !default;
+$nav-tabs-hover-bg:             $uibase-50 !default;
+$nav-tabs-active-color:         $uibase-500 !default;
+$nav-tabs-active-bg:            $body-bg !default;
+$nav-tabs-active-border-color:  $uibase-400 !default;
 
 $nav-pills-border-radius:       $border-radius !default;
 $nav-pills-hover-bg:            $uibase-50 !default;
-$nav-pills-active-link-color:   $active-color !default;
-$nav-pills-active-link-bg:      $active-bg !default;
-$nav-pills-active-hover-bg:     $active-hover-bg !default;
+$nav-pills-active-color:        $active-color !default;
+$nav-pills-active-bg:           $active-bg !default;
 
 
 // Navbar
