@@ -156,11 +156,9 @@
             }
 
             &.disabled {
-                @include plain-hover-focus {
-                    color: $navbar-light-disabled-color;
-                    background-color: transparent;
-                    border-color: transparent;
-                }
+                color: $navbar-light-disabled-color;
+                background-color: transparent;
+                border-color: transparent;
             }
         }
 
@@ -168,9 +166,7 @@
         .active > .nav-link,
         .nav-link.open,
         .nav-link.active {
-            @include plain-hover-focus {
-                color: $navbar-light-active-color;
-            }
+            color: $navbar-light-active-color;
         }
     }
 
@@ -199,11 +195,9 @@
             }
 
             &.disabled {
-                @include plain-hover-focus {
-                    color: $navbar-dark-disabled-color;
-                    background-color: transparent;
-                    border-color: transparent;
-                }
+                color: $navbar-dark-disabled-color;
+                background-color: transparent;
+                border-color: transparent;
             }
         }
 
@@ -211,9 +205,7 @@
         .active > .nav-link,
         .nav-link.open,
         .nav-link.active {
-            @include plain-hover-focus {
-                color: $navbar-dark-active-color;
-            }
+            color: $navbar-dark-active-color;
         }
     }
 
