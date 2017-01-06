@@ -79,6 +79,7 @@
         box-shadow: none;  // remove focus ring
     }
 }
+// scss-lint:disable QualifyingElement
 .dropdown-menu {
     // Active state
     > li.active > a {
@@ -98,6 +99,7 @@
         @include reset-filter();
     }
 }
+// scss-lint:enable QualifyingElement
 
 // Dropdown submenu additions
 .dropdown-submenu {
