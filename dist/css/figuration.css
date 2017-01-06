@@ -634,6 +634,7 @@ small,
 
 mark,
 .mark {
+  padding: 0.125em;
   background-color: #ff0;
 }
 
@@ -720,19 +721,16 @@ kbd kbd {
 
 pre {
   display: block;
-  padding: 0.25rem 0.5rem;
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: 87.5%;
   color: #474747;
-  background-color: #f0f0f0;
-  border: 1px solid #a3a3a3;
 }
 
 pre code {
   padding: 0;
   font-size: inherit;
-  color: #c81d0e;
+  color: inherit;
   background-color: transparent;
   border-radius: 0;
 }
@@ -1671,7 +1669,7 @@ fieldset[disabled] a.btn {
   border-color: #666;
 }
 
-.btn:focus, .btn.focus, .btn:hover {
+.btn:hover {
   color: #575757;
   background-color: #e8e8e8;
   border-color: #474747;
@@ -1696,7 +1694,7 @@ fieldset[disabled] a.btn {
   border-color: #0f389e;
 }
 
-.btn-primary:focus, .btn-primary.focus, .btn-primary:hover {
+.btn-primary:hover {
   color: #fff;
   background-color: #0e3390;
   border-color: #0d2e82;
@@ -1721,7 +1719,7 @@ fieldset[disabled] a.btn {
   border-color: #636363;
 }
 
-.btn-secondary:focus, .btn-secondary.focus, .btn-secondary:hover {
+.btn-secondary:hover {
   color: #fff;
   background-color: #5b5b5b;
   border-color: #525252;
@@ -1746,7 +1744,7 @@ fieldset[disabled] a.btn {
   border-color: #0e699e;
 }
 
-.btn-info:focus, .btn-info.focus, .btn-info:hover {
+.btn-info:hover {
   color: #fff;
   background-color: #0d6090;
   border-color: #0c5782;
@@ -1771,7 +1769,7 @@ fieldset[disabled] a.btn {
   border-color: #0e7414;
 }
 
-.btn-success:focus, .btn-success.focus, .btn-success:hover {
+.btn-success:hover {
   color: #fff;
   background-color: #0c6a13;
   border-color: #0b6011;
@@ -1796,7 +1794,7 @@ fieldset[disabled] a.btn {
   border-color: #ab7400;
 }
 
-.btn-warning:focus, .btn-warning.focus, .btn-warning:hover {
+.btn-warning:hover {
   color: #fff;
   background-color: #9c6900;
   border-color: #8d5f00;
@@ -1821,7 +1819,7 @@ fieldset[disabled] a.btn {
   border-color: #aa190c;
 }
 
-.btn-danger:focus, .btn-danger.focus, .btn-danger:hover {
+.btn-danger:hover {
   color: #fff;
   background-color: #9b160b;
   border-color: #8c140a;
@@ -2002,7 +2000,7 @@ fieldset[disabled] a.btn {
   border-color: transparent;
 }
 
-.btn-link:focus, .btn-link.focus, .btn-link:hover {
+.btn-link:hover {
   color: #091f58;
   background-color: transparent;
   border-color: transparent;
@@ -4861,23 +4859,14 @@ button.list-group-item-danger.active {
           box-shadow: none;
 }
 
-.dropdown-menu > .active > a {
+.dropdown-menu > li.active > a {
   color: #fff;
   text-decoration: none;
   background-color: #1242ba;
 }
 
-.dropdown-menu > .active > a:focus, .dropdown-menu > .active > a:hover {
-  color: #fff;
-  text-decoration: none;
-  background-color: #0e3390;
-}
-
-.dropdown-menu > .disabled > a, .dropdown-menu > .disabled > a:focus, .dropdown-menu > .disabled > a:hover {
+.dropdown-menu > li.disabled > a {
   color: #858585;
-}
-
-.dropdown-menu > .disabled > a:focus, .dropdown-menu > .disabled > a:hover {
   text-decoration: none;
   cursor: not-allowed;
   background-color: transparent;
