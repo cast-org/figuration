@@ -4858,23 +4858,14 @@ button.list-group-item-danger.active {
           box-shadow: none;
 }
 
-.dropdown-menu > .active > a {
+.dropdown-menu > li.active > a {
   color: #fff;
   text-decoration: none;
   background-color: #1242ba;
 }
 
-.dropdown-menu > .active > a:focus, .dropdown-menu > .active > a:hover {
-  color: #fff;
-  text-decoration: none;
-  background-color: #0e3390;
-}
-
-.dropdown-menu > .disabled > a, .dropdown-menu > .disabled > a:focus, .dropdown-menu > .disabled > a:hover {
+.dropdown-menu > li.disabled > a {
   color: #858585;
-}
-
-.dropdown-menu > .disabled > a:focus, .dropdown-menu > .disabled > a:hover {
   text-decoration: none;
   cursor: not-allowed;
   background-color: transparent;
