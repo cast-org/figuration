@@ -439,7 +439,6 @@ $btn-default-hover-bg:          $uibase-75 !default;
 $btn-default-hover-border:      $uibase-700 !default;
 
 $btn-disabled-opacity:          .6 !default;
-$btn-link-disabled-color:       $uibase-400 !default;
 
 $btn-block-spacing-y:           .3rem !default;
 $btn-toolbar-margin:            .3rem !default;
@@ -473,7 +472,6 @@ $input-focus-box-shadow:        inset 0 .125rem .125rem rgba(0,0,0,.15) !default
 
 $input-disabled-color:          $text-muted !default;
 $input-disabled-bg:             $uibase-50 !default;
-$input-disabled-border:         rgba(0,0,0,.25) !default;
 
 $input-placeholder-color:       #999 !default;
 
@@ -581,8 +579,6 @@ $list-group-border-radius:          $border-radius !default;
 $list-group-hover-bg:               $uibase-100 !default;
 $list-group-active-color:           $active-color !default;
 $list-group-active-bg:              $active-bg !default;
-$list-group-active-hover-color:     $active-color !default;
-$list-group-active-hover-bg:        $active-hover-bg !default;
 $list-group-active-border:          $active-border !default;
 $list-group-active-text-color:      $text-light-color !default;
 
@@ -674,7 +670,6 @@ $dropdown-caret-spacer-x:       .375rem !default;
 
 $dropdown-back-width:           .4375rem !default;
 $dropdown-back-color:           $uibase-400 !default;
-$dropdown-back-active-color:    $active-color !default;
 $dropdown-back-spacer-x:        .375rem !default;
 
 $dropdown-toggle-margin-x:      .25rem !default;
@@ -903,8 +898,6 @@ $modal-lg-breakpoint:           lg !default; // The minimum breakpoint to allow 
 
 // Grid lines
 // =====
-$gridline-padding-y:        1rem !default;
-$gridline-margin-y:         1rem !default;
 $gridline-border-width:     $border-width !default;
 $gridline-border-color:     $uibase-400 !default;
 $gridline-border-radius:    $border-radius !default;
@@ -912,7 +905,6 @@ $gridline-border-radius:    $border-radius !default;
 
 // Slider
 // =====
-//$slider-horizontal-width:         200px !default;
 $slider-horizontal-height:          1.25rem !default;
 $slider-horizontal-margin:          .75rem !default;
 $slider-horizontal-track-height:    ($slider-horizontal-height / 2) !default;
