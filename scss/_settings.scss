@@ -627,16 +627,14 @@ $pagination-border-color:       $uibase-300 !default;
 $pagination-border-radius:      $border-radius !default;
 
 $pagination-hover-color:        $link-hover-color !default;
-$pagination-hover-bg:           $uibase-50 !default;
+$pagination-hover-bg:           $uibase-100 !default;
 $pagination-hover-border:       $uibase-300 !default;
 
 $pagination-active-color:       $active-color !default;
 $pagination-active-bg:          $active-bg !default;
-$pagination-active-hover-color: $active-color !default;
-$pagination-active-hover-bg:    $active-hover-bg !default;
 
-$pagination-disabled-color:     $uibase-500 !default;
-$pagination-disabled-bg:        darken($uibase-50, 10) !default;
+$pagination-disabled-color:     $uibase-400 !default;
+$pagination-disabled-bg:        $uibase-50 !default;
 
 
 // Dropdowns

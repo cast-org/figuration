@@ -23,26 +23,18 @@
         }
     }
 
-    &.active .page-link {
-        @include plain-hover-focus {
-            z-index: 2;
-            color: $pagination-active-color;
-            cursor: default;
-            background-color: $pagination-active-bg;
-        }
-        @include hover-focus {
-            color: $pagination-active-hover-color;
-            background-color: $pagination-active-hover-bg;
-        }
+    &.disabled .page-link {
+        color: $pagination-disabled-color;
+        pointer-events: none;
+        cursor: $cursor-disabled;
+        background-color: $pagination-disabled-bg;
     }
 
-    &.disabled .page-link {
-        @include plain-hover-focus {
-            color: $pagination-disabled-color;
-            pointer-events: none;
-            cursor: $cursor-disabled;
-            background-color: $pagination-disabled-bg;
-        }
+    &.active .page-link {
+        z-index: 2;
+        color: $pagination-active-color;
+        cursor: default;
+        background-color: $pagination-active-bg;
     }
 }
 
