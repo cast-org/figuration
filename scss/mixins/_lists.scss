@@ -27,11 +27,9 @@
         }
 
         &.active {
-            @include plain-hover-focus {
-                color: $white;
-                background-color: $color;
-                border-color: $color;
-            }
+            color: $white;
+            background-color: $color;
+            border-color: $color;
         }
     }
 }

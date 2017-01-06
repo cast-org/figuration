@@ -581,7 +581,7 @@ $list-group-border-color:           $uibase-300 !default;
 $list-group-border-width:           $border-width !default;
 $list-group-border-radius:          $border-radius !default;
 
-$list-group-hover-bg:               $uibase-50 !default;
+$list-group-hover-bg:               $uibase-100 !default;
 $list-group-active-color:           $active-color !default;
 $list-group-active-bg:              $active-bg !default;
 $list-group-active-hover-color:     $active-color !default;
@@ -590,16 +590,15 @@ $list-group-active-border:          $active-border !default;
 $list-group-active-text-color:      $text-light-color !default;
 
 $list-group-disabled-color:         $uibase-400 !default;
-$list-group-disabled-bg:            darken($uibase-50, 5) !default;
+$list-group-disabled-bg:            $uibase-50 !default;
 $list-group-disabled-text-color:    $list-group-disabled-color !default;
 
 $list-group-link-color:             $uibase-700 !default;
 $list-group-link-hover-color:       $list-group-link-color !default;
 $list-group-link-heading-color:     $uibase-900 !default;
 
-$list-group-item-padding-y:             .75rem !default;
-$list-group-item-padding-x:             1rem !default;
-$list-group-item-heading-margin-bottom: .3em !default;
+$list-group-item-padding-y:         .75rem !default;
+$list-group-item-padding-x:         1rem !default;
 
 
 // Breadcrumbs
