@@ -1,7 +1,7 @@
 // Generate palette colors
 // Valid levels 0-1000
 // Darker levels (>500) get narrower step interval than light
-@function palette($color: $uigray, $level: 500) {
+@function palette($color: $uibase, $level: 500) {
     $base: 500;
     $light-interval: .2%;
     $dark-interval: .15%;
