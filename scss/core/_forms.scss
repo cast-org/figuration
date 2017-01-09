@@ -194,7 +194,11 @@ textarea.form-control {
     }
 
     &:focus {
-        @include focus-ring();
+        @if $enable-focus-ring {
+            @include focus-ring();
+        } @else {
+            @include focus-outline();
+        }
     }
 }
 
