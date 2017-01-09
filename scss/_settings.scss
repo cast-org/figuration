@@ -858,26 +858,28 @@ $tooltip-arrow-color:   $tooltip-bg !default;
 
 // Popovers
 // =====
-$popover-bg:                          $white !default;
-$popover-max-width:                   rem-calc(288px) !default;  // 288px=>18rem
-$popover-border-width:                $border-width !default;
-$popover-border-color:                rgba(0,0,0,.2) !default;
-$popover-border-radius:               .3rem !default;
-$popover-box-shadow:                  0 .2rem .3rem rgba(0,0,0,.175) !default;
+$popover-bg:                    $white !default;
+$popover-max-width:             rem-calc(288px) !default;  // 288px=>18rem
+$popover-border-width:          $border-width !default;
+$popover-border-color:          $uibase-200 !default;
+$popover-border-radius:         .3125rem !default;
+$popover-box-shadow:            0 .2rem .3rem rgba(0,0,0,.175) !default;
 
-$popover-title-bg:                    $uibase-50 !default;
-$popover-title-padding-x:             .75rem !default;
-$popover-title-padding-y:             .5rem !default;
+$popover-title-padding-x:       .75rem !default;
+$popover-title-padding-y:       .5rem !default;
+$popover-title-bg:              $uibase-50 !default;
+$popover-title-border-width:    $border-width !default;
+$popover-title-border-color:    $uibase-100 !default;
 
-$popover-content-padding-x:           .75rem !default;
-$popover-content-padding-y:           .5rem !default;
+$popover-content-padding-x:     .75rem !default;
+$popover-content-padding-y:     .5rem !default;
 
 // Arrow dimension in pixels to get proper visual layout
-$popover-arrow-width:                 10px !default;
-$popover-arrow-color:                 $popover-bg !default;
-$popover-arrow-border-width:          $border-width !default;
-$popover-arrow-outer-width:           ($popover-arrow-width + $popover-arrow-border-width) !default;
-$popover-arrow-outer-color:           fade-in($popover-border-color, .05) !default;
+$popover-arrow-width:           10px !default;
+$popover-arrow-color:           $popover-bg !default;
+$popover-arrow-border-width:    $border-width !default;
+$popover-arrow-outer-width:     ($popover-arrow-width + $popover-arrow-border-width) !default;
+$popover-arrow-outer-color:     $popover-border-color !default;
 
 
 // Modals
