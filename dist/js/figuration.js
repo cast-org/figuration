@@ -295,7 +295,7 @@ if (typeof jQuery === 'undefined') {
 
     CFW_Widget_Collapse.DEFAULTS = {
         animate     : true,     // If collapse targets should expand and contract
-        speed       : 350,      // Speed of animation (milliseconds)
+        speed       : 300,      // Speed of animation (milliseconds)
         follow      : false,    // If browser focus should move when a collapse toggle is activated
         horizontal  : false,    // If collapse should transition horizontal (vertical is default)
         hidden      : true      // Use aria-hidden on target containers by default

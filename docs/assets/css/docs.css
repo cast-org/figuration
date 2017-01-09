@@ -27,7 +27,7 @@
   border-color: #f0f0f0;
 }
 
-.navbar-dark .btn-toggler:focus, .navbar-dark .btn-toggler.focus, .navbar-dark .btn-toggler:hover {
+.navbar-dark .btn-toggler:hover {
   color: #474747;
   background-color: #f0f0f0;
   border-color: #f0f0f0;
