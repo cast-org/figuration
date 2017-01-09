@@ -29,11 +29,12 @@
 
 // Contextual modifiers
 @each $theme, $colors in $context-themes {
-    $color:     map-get($colors, "context-color");
-    $bg:        map-get($colors, "context-bg");
-    $border:    map-get($colors, "context-border");
+    $color:       map-get($colors, "context-color");
+    $bg:          map-get($colors, "context-bg");
+    $border:      map-get($colors, "context-border");
+    $hover-color: map-get($colors, "context-hover-color");
 
     .alert-#{$theme} {
-        @include alert-variant($bg, $border, $color);
+        @include alert-variant($color, $bg, $border, $hover-color);
     }
 }

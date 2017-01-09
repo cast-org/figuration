@@ -47,6 +47,7 @@
         $context-color:         $color;
         $context-bg:            palette($color, $level-context-bg);
         $context-border:        palette($color, $level-context-border);
+        $context-hover-color:   palette($color, $level-context-hover-color);
 
 
         // Build new map
@@ -59,7 +60,8 @@
             "control-hover-border": $control-hover-border,
             "context-color": $context-color,
             "context-bg": $context-bg,
-            "context-border": $context-border
+            "context-border": $context-border,
+            "context-hover-color": $context-hover-color
         );
         // Merge into theme map
         $result: map-merge($result, ($theme: $new-map));
