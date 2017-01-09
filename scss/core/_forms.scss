@@ -167,19 +167,18 @@ textarea.form-control {
     + .form-check {
         margin-top: $form-check-sibling-margin-top;
     }
-
-    &.disabled {
-        .form-check-label {
-            color: $text-muted;
-            cursor: $cursor-disabled;
-        }
-    }
 }
 
 .form-check-label {
     padding-left: $form-check-input-gutter;
     margin-bottom: 0; // Override default `<label>` bottom margin
     cursor: pointer;
+
+    .form-check.disabled &,
+    fieldset[disabled] & {
+        color: $form-check-disabled-color;
+        cursor: $cursor-disabled;
+    }
 }
 
 .form-check-input {
@@ -204,11 +203,6 @@ textarea.form-control {
 
     .form-check-label {
         vertical-align: middle;
-    }
-
-    &.disabled {
-        color: $text-muted;
-        cursor: $cursor-disabled;
     }
 
     + .form-check-inline {

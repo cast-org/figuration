@@ -75,6 +75,7 @@ $uibase-100:  palette($uibase, 100);
 $uibase-200:  palette($uibase, 200);
 $uibase-300:  palette($uibase, 300);
 $uibase-400:  palette($uibase, 400);
+$uibase-450:  palette($uibase, 450);
 $uibase-500:  palette($uibase, 500);
 $uibase-600:  palette($uibase, 600);
 $uibase-700:  palette($uibase, 700);
@@ -317,6 +318,9 @@ $active-bg:         map-deep-get($context-themes, "primary", "control-bg") !defa
 $active-border:     map-deep-get($context-themes, "primary", "control-border") !default;
 $active-hover-bg:   map-deep-get($context-themes, "primary", "control-hover-bg") !default;
 
+$disabled-color:    $uibase-450 !default;
+$disabled-bg:       transparent !default;
+
 $caret-width:           .325rem !default;
 
 $close-font-size:       ($font-size-base * 1.5) !default;
@@ -471,18 +475,21 @@ $input-focus-bg:                $input-bg !default;
 $input-focus-border:            palette-context("primary", 275) !default;
 $input-focus-box-shadow:        inset 0 .125rem .125rem rgba(0,0,0,.15) !default;
 
-$input-disabled-color:          $text-muted !default;
+$input-disabled-color:          $disabled-color !default;
 $input-disabled-bg:             $uibase-50 !default;
 
 $input-placeholder-color:       #999 !default;
 
 $form-text-margin-top:          .25rem !default;
 $form-feedback-margin-top:      $form-text-margin-top !default;
+
 $form-check-margin-bottom:      1rem !default;
 $form-check-sibling-margin-top: -.5rem !default;
 $form-check-input-gutter:       1.25rem !default;
 $form-check-input-margin-y:     .3125rem !default;
 $form-check-inline-margin-x:    .75rem !default;
+$form-check-disabled-color:     $disabled-color !default;
+
 $form-group-margin-bottom:      1rem !default;
 
 $input-group-addon-bg:           $uibase-50 !default;
@@ -583,8 +590,8 @@ $list-group-active-bg:              $active-bg !default;
 $list-group-active-border:          $active-border !default;
 $list-group-active-text-color:      $text-light-color !default;
 
-$list-group-disabled-color:         $uibase-400 !default;
-$list-group-disabled-bg:            $uibase-50 !default;
+$list-group-disabled-color:         $disabled-color !default;
+$list-group-disabled-bg:            $disabled-bg !default;
 $list-group-disabled-text-color:    $list-group-disabled-color !default;
 
 $list-group-link-color:             $uibase-700 !default;
@@ -627,8 +634,8 @@ $pagination-hover-border:       $uibase-300 !default;
 $pagination-active-color:       $active-color !default;
 $pagination-active-bg:          $active-bg !default;
 
-$pagination-disabled-color:     $uibase-400 !default;
-$pagination-disabled-bg:        $uibase-50 !default;
+$pagination-disabled-color:     $disabled-color !default;
+$pagination-disabled-bg:        $disabled-bg !default;
 
 
 // Dropdowns
@@ -654,8 +661,8 @@ $dropdown-link-active-color:    $active-color !default;
 $dropdown-link-active-bg:       $active-bg !default;
 $dropdown-link-active-hover-bg: $active-hover-bg !default;
 
-$dropdown-link-disabled-color:  $uibase-400 !default;
-$dropdown-link-disabled-bg:     transparent !default;
+$dropdown-link-disabled-color:  $disabled-color !default;
+$dropdown-link-disabled-bg:     $disabled-bg !default;
 
 $dropdown-item-padding-x:       1.25rem !default;
 $dropdown-item-padding-y:       .1875rem !default;
@@ -682,7 +689,7 @@ $nav-item-margin:               .25rem !default;
 $nav-item-inline-spacer:        1rem !default;
 $nav-link-padding:              .5rem 1rem !default;
 $nav-link-disabled-opacity:     .6 !default;
-$nav-link-disabled-color:       $uibase-600 !default;
+$nav-link-disabled-color:       $disabled-color !default;
 
 $nav-divider-color:             $uibase-50 !default;
 
