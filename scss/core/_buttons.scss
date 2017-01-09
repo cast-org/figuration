@@ -12,6 +12,7 @@
     user-select: none;
     border: $input-border-width solid transparent;
     @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
+    @include transition($btn-transition);
 
     &:focus,
     &.focus {

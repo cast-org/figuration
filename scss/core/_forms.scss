@@ -18,7 +18,7 @@
     // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
     @include border-radius($input-border-radius);
     @include box-shadow($input-box-shadow);
-    @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
+    @include transition($input-transition);
 
     // Unstyle the caret on `<select>`s in IE10+.
     &::-ms-expand {
@@ -186,6 +186,7 @@ textarea.form-control {
     margin-top: $form-check-input-margin-y;
     margin-left: -$form-check-input-gutter;
     vertical-align: baseline;
+    @include transition($input-transition);
 
     &:only-child {
         position: static;

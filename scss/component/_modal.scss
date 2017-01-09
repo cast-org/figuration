@@ -30,7 +30,7 @@
     // When fading in the modal, animate it to slide down
     &.fade .modal-dialog {
         @if $enable-transitions {
-            transition: transform .3s ease-out;
+            transition: $modal-transition;
             transform: translate(0, -25%);
         }
     }
