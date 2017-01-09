@@ -88,6 +88,7 @@ fieldset[disabled] a.btn {
 // Link buttons
 // Make a button look and behave like a link
 .btn-link {
+    text-decoration: $link-decoration;
     @include button-variant($link-color, transparent, transparent, $link-hover-color, transparent, transparent);
     @include box-shadow(none);
 
