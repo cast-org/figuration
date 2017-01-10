@@ -342,57 +342,57 @@ h4 > code {
 }
 
 .cf-callout-primary {
-  background-color: #d9e1f4;
+  background-color: #dbe3f5;
   border-color: #718ed6;
 }
 
 .cf-callout-primary h4 {
-  color: #1242ba;
+  color: #0f389e;
 }
 
 .cf-callout-secondary {
-  background-color: #e9e9e9;
+  background-color: #eaeaea;
   border-color: #acacac;
 }
 
 .cf-callout-secondary h4 {
-  color: #757575;
+  color: #636363;
 }
 
 .cf-callout-info {
-  background-color: #d9eaf4;
+  background-color: #dbebf5;
   border-color: #70b0d6;
 }
 
 .cf-callout-info h4 {
-  color: #117cba;
+  color: #0e699e;
 }
 
 .cf-callout-success {
-  background-color: #d9ecda;
+  background-color: #dbeddc;
   border-color: #70b874;
 }
 
 .cf-callout-success h4 {
-  color: #108918;
+  color: #0e7414;
 }
 
 .cf-callout-warning {
-  background-color: #f6ecd6;
+  background-color: #f7edd9;
   border-color: #dfb866;
 }
 
 .cf-callout-warning h4 {
-  color: #c98800;
+  color: #ab7400;
 }
 
 .cf-callout-danger {
-  background-color: #f6dbd8;
+  background-color: #f7dddb;
   border-color: #de776e;
 }
 
 .cf-callout-danger h4 {
-  color: #c81d0e;
+  color: #aa190c;
 }
 
 .cf-callout-dep > p + ul {
@@ -1188,8 +1188,8 @@ h4 > code {
 }
 
 .responsive-utilities .is-visible {
-  color: #108918;
-  background-color: #d9ecda !important;
+  color: #0e7414;
+  background-color: #dbeddc !important;
 }
 
 .responsive-utilities .is-hidden {
@@ -1224,8 +1224,8 @@ h4 > code {
 
 .visible-on .col-6 .visible,
 .hidden-on .col-6 .visible {
-  color: #108918;
-  background-color: #d9ecda;
+  color: #0e7414;
+  background-color: #dbeddc;
   border: 1px solid #70b874;
 }
 
