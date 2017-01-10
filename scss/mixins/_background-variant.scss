@@ -1,30 +1,26 @@
 // scss-lint:disable ImportantRule
 
 // Contextual backgrounds
-@mixin bg-variant($parent, $background, $color:"") {
+@mixin bg-variant($parent, $color, $bg, $hover-bg) {
     #{$parent} {
-        @if $color != "" {
-            color: $color !important;
-        } @else {
-            color: $white !important;
-        }
-        background-color: $background !important;
+        color: $color !important;
+        background-color: $bg !important;
     }
     a#{$parent} {
         @include hover-focus {
-            background-color: darken($background, 10%) !important;
+            background-color: $hover-bg !important;
         }
     }
 }
 
 // Palette backgrounds
-@mixin bg-palette-variant($parent, $background) {
+@mixin bg-palette-variant($parent, $color, $level, $level-delta) {
     #{$parent} {
-        background-color: $background !important;
+        background-color: palette($color, $level) !important;
     }
     a#{$parent} {
         @include hover-focus {
-            background-color: darken($background, 10%) !important;
+            background-color: palette($color, $level + $level-delta) !important;
         }
     }
 }

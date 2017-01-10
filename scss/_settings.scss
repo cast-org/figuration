@@ -126,7 +126,13 @@ $level-context-color:        600 !default;
 $level-context-bg:           75 !default;
 $level-context-border:       300 !default;
 $level-context-hover-color:  700 !default;
+$level-context-hover-bg:     125 !default;
 $level-context-hover-border: 550 !default;
+
+// Increase (or decrease with negative number) to alter color for the hover state of
+//`.text-{color}-(palette-level} and `.bg-{color}-(palette-level} utilities
+$level-color-hover-delta:    250 !default;
+$level-bg-hover-delta:       200 !default;
 
 // Process brand colors
 $brand-themes: _mix-context-colors($context-colors);
@@ -137,9 +143,11 @@ $context-themes: map-merge($context-themes, $brand-themes);
 // Inverse Color
 // =====
 $inverse-color: (
-    color:  $uibase-50,
-    bg:     $uibase-700,
-    border: $uibase-500
+    color:    $uibase-50,
+    bg:       $uibase-700,
+    border:   $uibase-500,
+    active:   $uibase-600,
+    hover-bg: $uibase-500
 ) !default;
 
 
@@ -230,7 +238,8 @@ $grid-gutter-widths: (
 $body-bg:       $white !default;
 $body-color:    $uibase-900 !default;
 
-$faded-bg:      $uibase-50 !default;
+$faded-bg:       $uibase-50 !default;
+$faded-hover-bg: $uibase-100 !default;
 
 // Border dimension in pixels to get proper visual layout
 $border-width: 1px !default;
@@ -425,9 +434,10 @@ $table-cell-padding:            .75rem !default;
 $table-condensed-cell-padding:  .3125rem .5rem !default;
 
 $table-bg:                  transparent !default;
-$table-bg-accent:           rgba(0,0,0,.04) !default;
-$table-bg-hover:            rgba(0,0,0,.075) !default;
+$table-bg-accent:           $uibase-50 !default;
+$table-bg-hover:            $uibase-75 !default;
 $table-bg-active:           $table-bg-hover !default;
+$table-bg-active-hover:     $uibase-100 !default;
 
 $table-head-color:          $uibase-900 !default;
 $table-head-bg:             $uibase-300 !default;
@@ -435,8 +445,8 @@ $table-head-bg:             $uibase-300 !default;
 $table-inverse-color:       map-get($inverse-color, "color") !default;
 $table-inverse-bg:          map-get($inverse-color, "bg") !default;
 $table-inverse-border:      map-get($inverse-color, "border") !default;
-$table-inverse-bg-accent:   rgba(255,255,255,.075) !default;
-$table-inverse-bg-hover:    rgba(255,255,255,.1) !default;
+$table-inverse-bg-accent:   map-get($inverse-color, "active") !default;
+$table-inverse-bg-hover:    map-get($inverse-color, "hover-bg") !default;
 
 $table-border-width:        $border-width !default;
 $table-border-color:        $uibase-300 !default;

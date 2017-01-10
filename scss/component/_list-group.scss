@@ -126,8 +126,9 @@
 // Add modifier classes to change text and background color on individual items.
 // Organizationally, this must come after the `:hover` states.
 @each $theme, $colors in $context-themes {
-    $color: map-get($colors, "context-color");
-    $bg:    map-get($colors, "context-bg");
+    $color:    map-get($colors, "context-color");
+    $bg:       map-get($colors, "context-bg");
+    $hover-bg: map-get($colors, "context-hover-bg");
 
-    @include list-group-item-variant(#{$theme}, $bg, $color);
+    @include list-group-item-variant(#{$theme}, $bg, $color, $hover-bg);
 }

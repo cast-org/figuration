@@ -1,13 +1,26 @@
 // scss-lint:disable ImportantRule
 
-// Typography
-@mixin text-emphasis-variant($parent, $color) {
+
+// Contextual text
+@mixin text-emphasis-variant($parent, $color, $level-delta) {
     #{$parent} {
         color: $color !important;
     }
     a#{$parent} {
         @include hover-focus {
-            color: darken($color, 15%) !important;
+            color: palette($color, 500 + $level-delta) !important;
+        }
+    }
+}
+
+// Palette text
+@mixin text-emphasis-palette-variant($parent, $color, $level, $level-delta) {
+    #{$parent} {
+        color: palette($color, $level) !important;
+    }
+    a#{$parent} {
+        @include hover-focus {
+            color: palette($color, $level + $level-delta) !important;
         }
     }
 }

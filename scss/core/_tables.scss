@@ -88,13 +88,14 @@
 // inheritance to nested tables.
 
 // Active variant
-@include table-row-variant(active, $table-bg-active);
+@include table-row-variant(active, $table-bg-active, $table-bg-active-hover);
 
 // Contextual variants
 @each $theme, $colors in $context-themes {
-    $bg: map-get($colors, "context-bg");
+    $bg:       map-get($colors, "context-bg");
+    $hover-bg: map-get($colors, "context-hover-bg");
 
-    @include table-row-variant('#{$theme}', $bg);
+    @include table-row-variant('#{$theme}', $bg, $hover-bg);
 }
 
 
