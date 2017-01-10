@@ -44,7 +44,7 @@
         $control-hover-color:   $white;
         $control-hover-bg:      palette($color, $level-control-hover-bg);
         $control-hover-border:  palette($color, $level-control-hover-border);
-        $context-color:         $color;
+        $context-color:         palette($color, $level-context-color);
         $context-bg:            palette($color, $level-context-bg);
         $context-border:        palette($color, $level-context-border);
         $context-hover-color:   palette($color, $level-context-hover-color);
