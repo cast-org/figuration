@@ -1,6 +1,6 @@
 .fade {
     opacity: 0;
-    @include transition(opacity .15s linear);
+    @include transition($transition-fade);
 
     &.in {
         opacity: 1;
@@ -31,7 +31,7 @@ tbody {
     height: 0;
     overflow: hidden;
 
-    @include transition(height .35s ease);
+    @include transition($transition-collapse-y);
 
     // Horizontal collapse variant
     &.width {
@@ -39,7 +39,7 @@ tbody {
         height: auto;
 
         @if $enable-transitions {
-            transition-property: width;
+            @include transition($transition-collapse-x);
         }
     }
 }

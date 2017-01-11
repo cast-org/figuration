@@ -1,0 +1,11 @@
+// WebKit-style visual focus ring indicating focus state
+@mixin focus-ring() {
+    outline: 0;
+    box-shadow: $focus-ring-shadow;
+}
+
+// Use browser defaults
+@mixin focus-outline() {
+    outline: $focus-outline;
+    outline-offset: $focus-outline-offset;
+}

@@ -57,6 +57,21 @@ Some helpful references:
 - [Text for Screen Readers Only](http://www.coolfields.co.uk/2016/05/text-for-screen-readers-only-updated/)
 - [Invisible Content Just for Screen Reader Users](http://webaim.org/techniques/css/invisiblecontent/)
 
+## Disabled Anchors
+
+While there is the `disabled` attribute available for `<button>`s, HTML does not have an easy way to disable user interaction with `<a>`s. Some of Figuration's components make use of a `.disabled` class that uses `pointer-events: none` to try to disable the link functionality of `<a>`s, but that CSS property is not yet standardized. In addition, even in browsers that do support `pointer-events: none`, keyboard navigation remains unaffected, meaning that sighted keyboard users and users of assistive technologies will still be able to activate these links.
+
+One solution is to add a `tabindex="-1"` attribute on these links (to prevent them from receiving keyboard focus) and use custom JavaScript to disable their functionality.
+
+{% highlight js %}
+$('.disabled').click(function(e) {
+    e.preventDefault();
+});
+{% endhighlight %}
+
+In some cases, the solution could be to replace the `<a>` element with a `<span>` to allow for a similar layout.  This is due to `<span>`s also having a default `display: inline` and are not clickable or focusable through keyboard interaction.
+
+
 ## Component Requirements
 
 Some common HTML elements are always in need for basic accessibility enhancements through `role`s and Aria attributes. Below is a list of some of the most frequently used ones.

@@ -30,7 +30,7 @@
             var $selfRef = this;
 
             // Find nav and target elements
-            this.$navElm = this.$triggerElm.closest('ul:not(.dropdown-menu)');
+            this.$navElm = this.$triggerElm.closest('ul, ol');
             this.$navElm.attr('role', 'tablist');
 
             var $selector = $(this.settings.target);
@@ -50,7 +50,6 @@
 
             // Target should have id already - set ARIA attributes
             this.$targetElm.attr({
-                'tabindex': -1,
                 'role': 'tabpanel',
                 'aria-labelledby': triggerID
             });
@@ -89,8 +88,7 @@
                     'aria-selected': 'true',
                     'aria-expanded': 'true'
                 });
-                this.$targetElm.attr('tabindex', 0)
-                    .addClass('active');
+                this.$targetElm.addClass('active');
 
                 if (this.settings.hidden) {
                     this.$targetElm.attr('aria-hidden', false);
@@ -113,8 +111,7 @@
                     'aria-selected': 'true',
                     'aria-expanded': 'true'
                 });
-                this.$targetElm.attr('tabindex', 0)
-                    .addClass('active');
+                this.$targetElm.addClass('active');
 
                 if (this.settings.hidden) {
                     this.$targetElm.attr('aria-hidden', 'false');
@@ -202,8 +199,8 @@
             e.preventDefault();
 
             var $node = $(node);
-            var $ul = $node.closest('ul[role="tablist"]');
-            var $items = $ul.find('[role="tab"]:visible');
+            var $list = $node.closest('[role="tablist"]');
+            var $items = $list.find('[role="tab"]:visible').not('.disabled');
             var index = $items.index($items.filter('[aria-selected="true"]'));
 
             if ((k == 38 || k == 37) && index > 0)                 { index--; }     // up & left
@@ -220,21 +217,13 @@
             var doTransition = isPanel && $.support.transitionEnd && this.settings.animate;
 
             function displayTab() {
-                $prevActive.removeClass('active')
-                    .find('> .dropdown-menu > .active')
-                    .removeClass('active');
+                $prevActive.removeClass('active');
 
                 node.addClass('active');
 
                 if (isPanel) {
-                    $prevActive.attr({
-                        'tabindex': -1,
-                        'aria-hidden': 'true'
-                    });
-                    node.attr({
-                        'tabindex': 0,
-                        'aria-hidden': 'false'
-                    });
+                    $prevActive.attr('aria-hidden', 'true');
+                    node.attr('aria-hidden', 'false');
                 }
 
                 if (doTransition) {
@@ -245,10 +234,6 @@
                         $selfRef.settings.animate = false;
                     }
                     node.removeClass('fade');
-                }
-
-                if (node.parent('.dropdown-menu').length) {
-                    node.closest('li.dropdown').addClass('active');
                 }
 
                 if (isPanel) {

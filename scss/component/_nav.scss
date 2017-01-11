@@ -10,20 +10,17 @@
 
 .nav-link {
     display: inline-block;
-    //text-decoration: none;
 
-    //@include hover-focus {
-        //text-decoration: none;
-    //}
-
-    // Disabled state lightens text and removes hover/tab effects
+    // Disabled state lightens text and removes hover/focus effects
+    // By default it also influences `.nav-tab` and `.nav-pills`
     &.disabled {
-        color: $nav-disabled-link-color;
-
-        @include plain-hover-focus {
-            color: $nav-disabled-link-hover-color;
-            cursor: $cursor-disabled;
-            background-color: $nav-disabled-link-hover-bg;
+        color: $nav-link-disabled-color;
+        cursor: $cursor-disabled;
+        opacity: $nav-link-disabled-opacity;
+        @if $enable-focus-ring {
+            box-shadow: none;
+        } else {
+            outline: 0;
         }
     }
 }
@@ -34,7 +31,7 @@
 
         // Simulate space between links
         .nav-link + .nav-link {
-            margin-left: .25rem;
+            margin-left: $nav-item-margin;
         }
     }
 
@@ -50,7 +47,7 @@
 
         // Simulate space between links
         .nav-link + .nav-link {
-            margin-left: .25rem;
+            margin-left: $nav-item-margin;
         }
     }
 
@@ -119,28 +116,24 @@ if $enable-flex-full {
 
         @include hover-focus {
             text-decoration: none;
-            background-color: $nav-tabs-link-hover-bg;
-            border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-border-color;
+            background-color: $nav-tabs-hover-bg;
+            border-color: $nav-tabs-hover-border-color $nav-tabs-hover-border-color $nav-tabs-border-color;
         }
 
         &.disabled {
-            @include plain-hover-focus {
-                color: $nav-disabled-link-color;
-                background-color: transparent;
-                border-color: transparent;
-            }
+            color: $nav-link-disabled-color;
+            background-color: transparent;
+            border-color: transparent;
         }
     }
 
     .nav-link.active,
     .nav-item.open .nav-link,
     .nav-item.active .nav-link {
-        @include plain-hover-focus {
-            color: $nav-tabs-active-link-hover-color;
-            cursor: default;
-            background-color: $nav-tabs-active-link-hover-bg;
-            border-color: $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-border-color transparent;
-        }
+        color: $nav-tabs-active-color;
+        cursor: default;
+        background-color: $nav-tabs-active-bg;
+        border-color: $nav-tabs-active-border-color $nav-tabs-active-border-color $nav-tabs-active-bg;
     }
 
     .dropdown-menu {
@@ -177,39 +170,26 @@ if $enable-flex-full {
         padding: $nav-link-padding;
         text-decoration: none;
         @include border-radius($nav-pills-border-radius);
-    }
 
-    a,
-    button {
-        &.nav-link:not(.disabled) {
-            @include hover-focus {
-                color: inherit;
-                text-decoration: none;
-                background-color: $nav-pills-hover-bg;
-            }
+        @include hover-focus {
+            color: inherit;
+            text-decoration: none;
+            background-color: $nav-pills-hover-bg;
+        }
+
+        &.disabled {
+            color: $nav-link-disabled-color;
+            background-color: transparent;
+            border-color: transparent;
         }
     }
 
     .nav-link.active,
     .nav-item.open .nav-link,
     .nav-item.active .nav-link {
-        color: $nav-pills-active-link-color;
+        color: $nav-pills-active-color;
         cursor: default;
-        background-color: $nav-pills-active-link-bg;
-    }
-
-    a,
-    button {
-        &.nav-link.active,
-        .nav-item.open &.nav-link,
-        .nav-item.active &.nav-link {
-            @include hover-focus {
-                color: $nav-pills-active-link-color;
-                cursor: default;
-                background-color: $nav-pills-active-hover-bg;
-
-            }
-        }
+        background-color: $nav-pills-active-bg;
     }
 }
 @if $enable-flex-opt {
@@ -235,6 +215,10 @@ if $enable-flex-full {
 
     .nav-link {
         display: block;
+
+        + .nav-link {
+            margin-top: $nav-item-margin;
+        }
     }
 }
 @if $enable-flex-opt {

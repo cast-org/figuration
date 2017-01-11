@@ -46,13 +46,14 @@ a.badge {
 
 // Colors (linked badges get darker on :hover)
 .badge {
-    @include badge-variant($badge-bg);
+    @include badge-variant($badge-bg, $badge-hover-bg);
 }
 @each $theme, $colors in $context-themes {
-    $color: map-get($colors, "control-bg");
+    $bg:       map-get($colors, "control-bg");
+    $hover-bg: map-get($colors, "control-hover-bg");
 
     .badge-#{$theme} {
-        @include badge-variant($color);
+        @include badge-variant($bg, $hover-bg);
     }
 }
 

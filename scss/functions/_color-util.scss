@@ -1,7 +1,7 @@
 // Generate palette colors
 // Valid levels 0-1000
 // Darker levels (>500) get narrower step interval than light
-@function palette($color: $uigray, $level: 500) {
+@function palette($color: $uibase, $level: 500) {
     $base: 500;
     $light-interval: .2%;
     $dark-interval: .15%;
@@ -38,21 +38,32 @@
 
     @each $theme, $color in $map {
         // Color adjustments
-        $control-color:     $white;
-        $control-bg:        $color;
-        $control-border:    palette($color, 600); //darken($color, 7%);
-        $context-color:     $color;
-        $context-bg:        palette($color, 80); //lighten($color, 54%);
-        $context-border:    palette($color, 300); //lighten($color, 28%);
+        $control-color:         $white;
+        $control-bg:            $color;
+        $control-border:        palette($color, $level-control-border);
+        $control-hover-color:   $white;
+        $control-hover-bg:      palette($color, $level-control-hover-bg);
+        $control-hover-border:  palette($color, $level-control-hover-border);
+        $context-color:         palette($color, $level-context-color);
+        $context-bg:            palette($color, $level-context-bg);
+        $context-border:        palette($color, $level-context-border);
+        $context-hover-color:   palette($color, $level-context-hover-color);
+        $context-hover-bg:      palette($color, $level-context-hover-bg);
+
 
         // Build new map
         $new-map: (
             "control-color": $control-color,
             "control-bg": $control-bg,
             "control-border": $control-border,
+            "control-hover-color": $control-hover-color,
+            "control-hover-bg": $control-hover-bg,
+            "control-hover-border": $control-hover-border,
             "context-color": $context-color,
             "context-bg": $context-bg,
-            "context-border": $context-border
+            "context-border": $context-border,
+            "context-hover-color": $context-hover-color,
+            "context-hover-bg": $context-hover-bg
         );
         // Merge into theme map
         $result: map-merge($result, ($theme: $new-map));

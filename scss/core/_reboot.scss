@@ -169,7 +169,11 @@ a {
     }
 
     &:focus {
-        @include keyboard-focus();
+        @if $enable-focus-ring {
+            @include focus-ring();
+        } @else {
+            @include focus-outline();
+        }
     }
 }
 
@@ -190,6 +194,9 @@ a:not([href]):not([tabindex]) {
 
     &:focus {
         outline: none;
+        @if $enable-focus-ring {
+            box-shadow: none;
+        }
     }
 }
 
@@ -404,7 +411,7 @@ input[type="search"] {
 output {
     display: inline-block;
     // font-size: $font-size-base;
-    // line-height: $line-height;
+    // line-height: $line-height-base;
     // color: $input-color;
 }
 

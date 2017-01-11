@@ -1,10 +1,10 @@
 /*!
  * Figuration (v2.0.0)
  * http://figuration.org
- * Copyright 2013-2016 CAST, Inc.
+ * Copyright 2013-2017 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * -----
- * Portions Copyright 2011-2016  the Bootstrap Authors and Twitter, Inc.
+ * Portions Copyright 2011-2017  the Bootstrap Authors and Twitter, Inc.
  * Used under MIT License (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -295,7 +295,7 @@ if (typeof jQuery === 'undefined') {
 
     CFW_Widget_Collapse.DEFAULTS = {
         animate     : true,     // If collapse targets should expand and contract
-        speed       : 350,      // Speed of animation (milliseconds)
+        speed       : 300,      // Speed of animation (milliseconds)
         follow      : false,    // If browser focus should move when a collapse toggle is activated
         horizontal  : false,    // If collapse should transition horizontal (vertical is default)
         hidden      : true      // Use aria-hidden on target containers by default
@@ -1203,7 +1203,7 @@ if (typeof jQuery === 'undefined') {
             var $selfRef = this;
 
             // Find nav and target elements
-            this.$navElm = this.$triggerElm.closest('ul:not(.dropdown-menu)');
+            this.$navElm = this.$triggerElm.closest('ul, ol');
             this.$navElm.attr('role', 'tablist');
 
             var $selector = $(this.settings.target);
@@ -1223,7 +1223,6 @@ if (typeof jQuery === 'undefined') {
 
             // Target should have id already - set ARIA attributes
             this.$targetElm.attr({
-                'tabindex': -1,
                 'role': 'tabpanel',
                 'aria-labelledby': triggerID
             });
@@ -1262,8 +1261,7 @@ if (typeof jQuery === 'undefined') {
                     'aria-selected': 'true',
                     'aria-expanded': 'true'
                 });
-                this.$targetElm.attr('tabindex', 0)
-                    .addClass('active');
+                this.$targetElm.addClass('active');
 
                 if (this.settings.hidden) {
                     this.$targetElm.attr('aria-hidden', false);
@@ -1286,8 +1284,7 @@ if (typeof jQuery === 'undefined') {
                     'aria-selected': 'true',
                     'aria-expanded': 'true'
                 });
-                this.$targetElm.attr('tabindex', 0)
-                    .addClass('active');
+                this.$targetElm.addClass('active');
 
                 if (this.settings.hidden) {
                     this.$targetElm.attr('aria-hidden', 'false');
@@ -1375,8 +1372,8 @@ if (typeof jQuery === 'undefined') {
             e.preventDefault();
 
             var $node = $(node);
-            var $ul = $node.closest('ul[role="tablist"]');
-            var $items = $ul.find('[role="tab"]:visible');
+            var $list = $node.closest('[role="tablist"]');
+            var $items = $list.find('[role="tab"]:visible').not('.disabled');
             var index = $items.index($items.filter('[aria-selected="true"]'));
 
             if ((k == 38 || k == 37) && index > 0)                 { index--; }     // up & left
@@ -1393,21 +1390,13 @@ if (typeof jQuery === 'undefined') {
             var doTransition = isPanel && $.support.transitionEnd && this.settings.animate;
 
             function displayTab() {
-                $prevActive.removeClass('active')
-                    .find('> .dropdown-menu > .active')
-                    .removeClass('active');
+                $prevActive.removeClass('active');
 
                 node.addClass('active');
 
                 if (isPanel) {
-                    $prevActive.attr({
-                        'tabindex': -1,
-                        'aria-hidden': 'true'
-                    });
-                    node.attr({
-                        'tabindex': 0,
-                        'aria-hidden': 'false'
-                    });
+                    $prevActive.attr('aria-hidden', 'true');
+                    node.attr('aria-hidden', 'false');
                 }
 
                 if (doTransition) {
@@ -1418,10 +1407,6 @@ if (typeof jQuery === 'undefined') {
                         $selfRef.settings.animate = false;
                     }
                     node.removeClass('fade');
-                }
-
-                if (node.parent('.dropdown-menu').length) {
-                    node.closest('li.dropdown').addClass('active');
                 }
 
                 if (isPanel) {

@@ -47,7 +47,8 @@ small,
 
 mark,
 .mark {
-    //padding: $mark-padding;
+    padding-right: $mark-padding-x;
+    padding-left: $mark-padding-x;
     background-color: $mark-bg;
 }
 

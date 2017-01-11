@@ -18,6 +18,8 @@ Navs have support for both a `float` style layout, along with both the opt-in fl
 
 If you are using navs to provide a navigation bar, be sure to add a `role="navigation"` to the most logical parent container of the `<ul>`, or wrap a `<nav>` element around the whole navigation. Do not add the role to the `<ul>` itself, as this would prevent it from being announced as an actual list by assistive technologies.
 
+Also, refer to our [Accessibility notes regarding disabled anchors]({{ site.baseurl }}/get-started/accessibility/#disabled-anchors).
+
 ## Base Nav
 
 Roll your own navigation style by extending the base `.nav` component. All Figurations's nav components are built on top of this by specifying additional styles. Includes styles for the disabled state, but **not the active state**.
@@ -34,7 +36,7 @@ Roll your own navigation style by extending the base `.nav` component. All Figur
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
+    <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
   </li>
 </ul>
 {% endexample %}
@@ -46,7 +48,7 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
   <a class="nav-link active" href="#">Active</a>
   <a class="nav-link" href="#">Link</a>
   <a class="nav-link" href="#">Link</a>
-  <a class="nav-link disabled" href="#">Disabled</a>
+  <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
 </nav>
 {% endexample %}
 
@@ -59,7 +61,7 @@ Space out nav links in a horizontal band with `.nav-inline`. Longer series of li
   <a class="nav-link active" href="#">Active</a>
   <a class="nav-link" href="#">Link</a>
   <a class="nav-link" href="#">Link</a>
-  <a class="nav-link disabled" href="#">Disabled</a>
+  <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
 </nav>
 {% endexample %}
 
@@ -77,7 +79,7 @@ The same works for a navigation built with lists.
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
+    <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
   </li>
 </ul>
 {% endexample %}
@@ -98,7 +100,7 @@ Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabb
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
+    <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
   </li>
 </ul>
 {% endexample %}
@@ -119,7 +121,7 @@ Take that same HTML, but use `.nav-pills` instead:
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
+    <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
   </li>
 </ul>
 {% endexample %}
@@ -140,7 +142,7 @@ Add `.nav-stacked` to the `.nav.nav-pills` to stack them vertically. Each `.nav-
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
+    <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
   </li>
 </ul>
 {% endexample %}
@@ -152,7 +154,7 @@ As always, stacked pills are possible without `<ul>`s.
   <a class="nav-link active" href="#">Active</a>
   <a class="nav-link" href="#">Link</a>
   <a class="nav-link" href="#">Link</a>
-  <a class="nav-link disabled" href="#">Disabled</a>
+  <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
 </nav>
 {% endexample %}
 
@@ -186,7 +188,7 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
+    <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
   </li>
 </ul>
 {% endexample %}
@@ -212,7 +214,7 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
+    <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
   </li>
 </ul>
 {% endexample %}

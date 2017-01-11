@@ -11,18 +11,13 @@
         display: inline-block;
         width: 0;
         height: 0;
-        margin-right: .25rem;
-        margin-left: .25rem;
+        margin-right: $dropdown-toggle-margin-x;
+        margin-left: $dropdown-toggle-margin-x;
         vertical-align: middle;
         content: "";
         border-top: $caret-width solid;
         border-right: $caret-width solid transparent;
         border-left: $caret-width solid transparent;
-    }
-
-    // Prevent the focus on the dropdown toggle when closing dropdowns
-    &:focus {
-        outline: 0;
     }
 }
 
@@ -80,41 +75,31 @@
         color: $dropdown-link-hover-color;
         text-decoration: none;
         background-color: $dropdown-link-hover-bg;
+        outline: 0;
+        box-shadow: none;  // remove focus ring
     }
 }
+// scss-lint:disable QualifyingElement
 .dropdown-menu {
     // Active state
-    > .active > a {
+    > li.active > a {
         color: $dropdown-link-active-color;
         text-decoration: none;
         background-color: $dropdown-link-active-bg;
-        outline: 0;
-
-        @include hover-focus {
-            color: $dropdown-link-active-color;
-            text-decoration: none;
-            background-color: $dropdown-link-active-hover-bg;
-            outline: 0;
-        }
     }
 
     // Disabled state
     // Gray out text and ensure the hover/focus state remains gray
-    > .disabled > a {
-        @include plain-hover-focus {
-            color: $dropdown-link-disabled-color;
-        }
-
-        // Nuke hover/focus effects
-        @include hover-focus {
-            text-decoration: none;
-            cursor: $cursor-disabled;
-            background-color: transparent;
-            background-image: none; // Remove CSS gradient
-            @include reset-filter();
-        }
+    > li.disabled > a {
+        color: $dropdown-link-disabled-color;
+        text-decoration: none;
+        cursor: $cursor-disabled;
+        background-color: $dropdown-link-disabled-bg;
+        background-image: none; // Remove CSS gradient
+        @include reset-filter();
     }
 }
+// scss-lint:enable QualifyingElement
 
 // Dropdown submenu additions
 .dropdown-submenu {
@@ -128,7 +113,7 @@
     > a::after {
         position: absolute;
         top: 50%;
-        right: .35rem;
+        right: $dropdown-caret-spacer-x;
         display: block;
         width: 0;
         height: 0;
@@ -149,8 +134,10 @@
     > .dropdown-menu {
         display: block;
     }
-    // Reverse normal toggle caret
+    // Remove focus ring and reverse toggle caret
     .dropdown-toggle {
+        box-shadow: none;
+
         &::after {
             border-top: 0;
             border-bottom: $caret-width solid;
@@ -166,9 +153,10 @@
         }
     }
 
-    // Remove the outline when :focus is triggered
+    // Remove the focus ring when :focus is triggered
     > a {
         outline: 0;
+        box-shadow: none;
     }
 }
 
@@ -204,8 +192,7 @@
 
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 // Just add .dropup after the standard .dropdown class and you're set.
-.dropup,
-.navbar-fixed-bottom .dropdown {
+.dropup {
     // Reverse the caret
     .caret {
         content: "";
@@ -246,15 +233,15 @@
     > a::before {
         position: absolute;
         top: 50%;
-        left: .35rem;
+        left: $dropdown-back-spacer-x;
         display: block;
         width: 0;
         height: 0;
         margin-top: -$dropdown-caret-width;
         content: " ";
-        border-top: $dropdown-caret-width solid transparent;
-        border-right: $dropdown-caret-width solid $dropdown-caret-color;
-        border-bottom: $dropdown-caret-width solid transparent;
+        border-top: $dropdown-back-width solid transparent;
+        border-right: $dropdown-back-width solid $dropdown-back-color;
+        border-bottom: $dropdown-back-width solid transparent;
     }
 }
 
@@ -263,10 +250,10 @@
 // This removes the need for overly convoluted CSS rules
 .dropdown-back-left {
     > a::before {
-        right: .35rem;
+        right: $dropdown-back-spacer-x;
         left: auto;
         border-right: 0;
-        border-left: $dropdown-caret-width solid $dropdown-caret-color;
+        border-left: $dropdown-back-width solid $dropdown-back-color;
     }
 }
 
@@ -302,7 +289,7 @@
     }
     > a::after {
         right: auto;
-        left: .35rem;
+        left: $dropdown-caret-spacer-x;
         border-right: $dropdown-caret-width solid $dropdown-caret-color;
         border-left: 0;
     }

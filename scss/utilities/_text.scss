@@ -27,23 +27,22 @@
 
 // Contextual colors
 @each $theme, $colors in $context-themes {
-    $color: map-get($colors, "context-color");
+    $color: map-get($colors, "control-bg");
 
-    @include text-emphasis-variant(".text-#{$theme}", $color);
+    @include text-emphasis-variant(".text-#{$theme}", $color, $level-color-hover-delta);
 }
 
 // Palette colors
 @if $enable-palette {
     @each $theme, $color in $palette-themes {
         @each $level in $palette-levels {
-            $level-color: palette($color, $level);
-            @include text-emphasis-variant(".text-#{$theme}-#{$level}", $level-color);
+            @include text-emphasis-palette-variant(".text-#{$theme}-#{$level}", $color, $level, $level-color-hover-delta);
         }
     }
 }
 
 // Muted text
-@include text-emphasis-variant('.text-muted', $text-muted);
+@include text-emphasis-variant('.text-muted', $text-muted, $level-color-hover-delta);
 
 // Hidden text
 .text-hide {

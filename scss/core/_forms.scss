@@ -18,7 +18,7 @@
     // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
     @include border-radius($input-border-radius);
     @include box-shadow($input-box-shadow);
-    @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
+    @include transition($input-transition);
 
     // Unstyle the caret on `<select>`s in IE10+.
     &::-ms-expand {
@@ -31,15 +31,9 @@
 
     // Placeholder
     &::placeholder {
-        color: $input-color-placeholder;
+        color: $input-placeholder-color;
         // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
         opacity: 1;
-    }
-
-    // Color input - reduce horizontal padding otherwise visualy unsable in Chrome
-    &[type="color"] {
-        padding-top: ($input-padding-y / 2);
-        padding-bottom: ($input-padding-y / 2);
     }
 
     // Disabled and read-only inputs
@@ -49,37 +43,21 @@
     // don't honor that edge case; we style them as disabled anyway.
     &:disabled,
     &[readonly] {
-        background-color: $input-bg-disabled;
+        background-color: $input-disabled-bg;
         // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
         opacity: 1;
     }
 
     &:disabled {
-        color: $text-muted;
+        color: $input-disabled-color;
         cursor: $cursor-disabled;
     }
 }
 
 select.form-control {
-    &:not([size]):not([multiple]) {
-        height: $select-height;
-    }
-
-    // Sizes
-    @if $enable-sizing {
-        @each $size, $dims in $component-sizes {
-            $sz-font-size:     map-get($dims, "font-size");
-            $sz-padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $sz-font-size / 2);
-            $sz-input-height:  (($sz-font-size * $input-line-height) + ($sz-padding-y * 2));
-            $sz-select-height: calc(#{$sz-input-height} + #{($input-border-width * 2)});
-
-            &.form-control-#{$size}:not([size]):not([multiple]),
-            .input-group-#{$size} &.form-control:not([size]):not([multiple]) {
-                height: $sz-select-height;
-                padding-top: $sz-padding-y;
-                padding-bottom: $sz-padding-y;
-            }
-        }
+    &[size],
+    &[multiple] {
+        height: auto;
     }
 
     &:focus::-ms-value {
@@ -88,8 +66,8 @@ select.form-control {
         // in IE and (under certain conditions) Edge, as it looks bad and cannot be made to
         // match the appearance of the native widget.
         // See https://github.com/twbs/bootstrap/issues/19398.
-        color: $input-color;
-        background-color: $input-bg;
+        color: $input-focus-color;
+        background-color: $input-focus-bg;
     }
 }
 
@@ -113,20 +91,6 @@ textarea.form-control {
     padding-bottom: calc(#{$input-padding-y} + #{$input-border-width});
     margin-bottom: 0; // Override the `<label>` default
 }
-// Label sizes
-@if $enable-sizing {
-    @each $size, $dims in $component-sizes {
-        $sz-font-size:     map-get($dims, "font-size");
-        $sz-padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $sz-font-size / 2);
-
-        .form-control-label-#{$size} {
-            padding-top: calc(#{$sz-padding-y} + #{$input-border-width});
-            padding-bottom: calc(#{$sz-padding-y} + #{$input-border-width});
-            margin-bottom: 0;
-            font-size: $sz-font-size;
-        }
-    }
-}
 
 // Legends
 // For use with horizontal and inline forms, when you need the legend text to
@@ -138,72 +102,20 @@ textarea.form-control {
     font-size: $font-size-base;
 }
 
-
-// Todo: clear this up
-
-// Special styles for iOS temporal inputs
-//
-// In Mobile Safari, setting `display: block` on temporal inputs causes the
-// text within the input to become vertically misaligned. As a workaround, we
-// set a pixel line-height that matches the given height of the input, but only
-// for Safari. See https://bugs.webkit.org/show_bug.cgi?id=139848
-//
-// Note that as of 8.3, iOS doesn't support `week`.
-
-_::-webkit-full-page-media, // Hack to make this CSS be Safari-only; see http://browserbu.gs/css-hacks/webkit-full-page-media/
-input[type="date"],
-input[type="time"],
-input[type="datetime-local"],
-input[type="month"] {
-    &.form-control {
-        line-height: $input-height;
-    }
-
-    @if $enable-sizing {
-        @each $size, $dims in $component-sizes {
-            $sz-font-size:    map-get($dims, "font-size");
-            $sz-padding-y:    map-get($dims, "padding-y") - ($input-line-height-delta * $sz-font-size / 2);
-            $sz-input-height: (($sz-font-size * $input-line-height) + ($sz-padding-y * 2));
-
-            &.form-control-#{$size},
-            .input-group-#{$size} &.form-control {
-                line-height: $sz-input-height;
-            }
-        }
-    }
-}
-
-
 // Static form control text
-//
 // Apply class to an element to make any string of text align with labels in a
 // horizontal form layout.
-
 .form-control-static {
     min-height: $input-height;
     // Size it appropriately next to real form controls
     padding-top: $input-padding-y;
     padding-bottom: $input-padding-y;
-    // Remove default margin from `p`
     margin-bottom: 0;
-
-    @if $enable-sizing {
-        @each $size, $dims in $component-sizes {
-            &.form-control-#{$size} {
-                padding-right: 0;
-                padding-left: 0;
-            }
-        }
-    }
 }
 
 // Form control sizing
-//
 // Build on `.form-control` with modifier classes to decrease or increase the
 // height and font-size of form controls.
-//
-// The `.form-group-* form-control` variations are sadly duplicated to avoid the
-// issue documented in https://github.com/twbs/bootstrap/issues/15074.
 @if $enable-sizing {
     @each $size, $dims in $component-sizes {
         $sz-font-size:     map-get($dims, "font-size");
@@ -218,12 +130,13 @@ input[type="month"] {
             padding: $sz-padding-y ($sz-padding-x / 2);
             font-size: $sz-font-size;
             @include border-radius($sz-border-radius);
+        }
 
-            // Color input - reduce horizontal padding otherwise visualy unsable in Chrome
-            &[type="color"] {
-                padding-top: ($input-padding-y / 2);
-                padding-bottom: ($input-padding-y / 2);
-            }
+        .form-control-label-#{$size},
+        .form-control-static-#{$size} {
+            padding-top: calc(#{$sz-padding-y} + #{$input-border-width});
+            padding-bottom: calc(#{$sz-padding-y} + #{$input-border-width});
+            font-size: $sz-font-size;
         }
     }
 }
@@ -232,14 +145,13 @@ input[type="month"] {
 //
 // Designed to help with the organization and spacing of vertical forms. For
 // horizontal forms, use the predefined grid classes.
-
 .form-group {
     margin-bottom: $form-group-margin-bottom;
 }
 
 .form-text {
     display: block;
-    margin-top: ($spacer * .25);
+    margin-top: $form-text-margin-top;
 }
 
 
@@ -249,36 +161,44 @@ input[type="month"] {
 .form-check {
     position: relative;
     display: block;
-    margin-bottom: ($spacer * .75);
+    margin-bottom: $form-check-margin-bottom;
 
     // Move up sibling radios or checkboxes for tighter spacing
     + .form-check {
-        margin-top: -.25rem;
-    }
-
-    &.disabled {
-        .form-check-label {
-            color: $text-muted;
-            cursor: $cursor-disabled;
-        }
+        margin-top: $form-check-sibling-margin-top;
     }
 }
 
 .form-check-label {
-    padding-left: 1.25rem;
+    padding-left: $form-check-input-gutter;
     margin-bottom: 0; // Override default `<label>` bottom margin
     cursor: pointer;
+
+    .form-check.disabled &,
+    fieldset[disabled] & {
+        color: $form-check-disabled-color;
+        cursor: $cursor-disabled;
+    }
 }
 
 .form-check-input {
     position: absolute;
-    margin-top: .3125rem;
-    margin-left: -1.25rem;
+    margin-top: $form-check-input-margin-y;
+    margin-left: -$form-check-input-gutter;
     vertical-align: baseline;
+    @include transition($input-transition);
 
     &:only-child {
         position: static;
         vertical-align: top;
+    }
+
+    &:focus {
+        @if $enable-focus-ring {
+            @include focus-ring();
+        } @else {
+            @include focus-outline();
+        }
     }
 }
 
@@ -290,20 +210,15 @@ input[type="month"] {
         vertical-align: middle;
     }
 
-    &.disabled {
-        color: $text-muted;
-        cursor: $cursor-disabled;
-    }
-
     + .form-check-inline {
-        margin-left: .75rem;
+        margin-left: $form-check-inline-margin-x;
     }
 }
 
 // Form control feedback states
 // Apply contextual and semantic states to individual form controls.
 .form-control-feedback {
-    margin-top: ($spacer * .25);
+    margin-top: $form-feedback-margin-top;
 }
 
 .form-control-success,
@@ -318,8 +233,7 @@ input[type="month"] {
 // Form validation states
 @if map-has-key($context-themes, "success") {
     .has-success {
-        //@include form-control-validation($state-success-color, $state-success-border-color);
-        @include form-control-validation(map-deep-get($context-themes, "success", "context-color"), map-deep-get($context-themes, "success", "context-border"));
+        @include form-control-validation("success");
 
         .form-control-success {
             background-image: $icon-success;
@@ -328,8 +242,7 @@ input[type="month"] {
 }
 @if map-has-key($context-themes, "warning") {
     .has-warning {
-        //@include form-control-validation($state-warning-color, $state-warning-border-color);
-        @include form-control-validation(map-deep-get($context-themes, "warning", "context-color"), map-deep-get($context-themes, "warning", "context-border"));
+        @include form-control-validation("warning");
 
         .form-control-warning {
             background-image: $icon-warning;
@@ -338,8 +251,7 @@ input[type="month"] {
 }
 @if map-has-key($context-themes, "danger") {
     .has-danger {
-        //@include form-control-validation($state-danger-color, $state-danger-border-color);
-        @include form-control-validation(map-deep-get($context-themes, "danger", "context-color"), map-deep-get($context-themes, "danger", "context-border"));
+        @include form-control-validation("danger");
 
         .form-control-danger {
             background-image: $icon-danger;
