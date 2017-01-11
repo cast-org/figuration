@@ -12,6 +12,7 @@ git:
 branches:
     only:
         - master
+        - v3-dev
 
 node_js:
     - "4"
