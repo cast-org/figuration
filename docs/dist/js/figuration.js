@@ -21,7 +21,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v2.0.0): transition.js
+ * Figuration (v2.0.0): util.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -30,6 +30,10 @@ if (typeof jQuery === 'undefined') {
     'use strict';
 
     function CFW_transitionEnd() {
+        if (window.QUnit) {
+            return false;
+        }
+
         var div = document.createElement('div');
 
         // Set name/event name pairs
@@ -77,6 +81,29 @@ if (typeof jQuery === 'undefined') {
         };
     });
 
+    $.fn.CFW_getID = function(prefix) {
+        var $node = $(this);
+        var nodeID = $node.attr('id');
+        if (nodeID === undefined) {
+            do nodeID = prefix + '-' + ~~(Math.random() * 1000000); // "~~" acts like a faster Math.floor() here
+            while (document.getElementById(nodeID));
+            $node.attr('id', nodeID);
+        }
+        return nodeID;
+    };
+
+    $.fn.CFW_trigger = function(eventName, extraData) {
+        var e = $.Event(eventName);
+        if ($.isPlainObject(extraData)) {
+            e = $.extend({}, e, extraData);
+        }
+        $(this).trigger(e);
+        if (e.isDefaultPrevented()) {
+            return false;
+        }
+        return true;
+    };
+
 })(jQuery);
 
 /**
@@ -109,7 +136,7 @@ if (typeof jQuery === 'undefined') {
         _init : function() {
             this._reset();
             this._dragStartOn();
-            this._trigger('init.cfw.drag');
+            this.$element.CFW_trigger('init.cfw.drag');
         },
 
         destroy : function() {
@@ -164,7 +191,7 @@ if (typeof jQuery === 'undefined') {
             this.dragdata.originalY = e.currentTarget.offsetTop;
 
             var props = this._properties(coord, this.dragdata);
-            this._trigger('dragStart.cfw.drag', props);
+            this.$element.CFW_trigger('dragStart.cfw.drag', props);
         },
 
         _drag : function(e) {
@@ -175,7 +202,7 @@ if (typeof jQuery === 'undefined') {
             e.preventDefault();
             var coord = this._coordinates(e);
             var props = this._properties(coord, this.dragdata);
-            this._trigger('drag.cfw.drag', props);
+            this.$element.CFW_trigger('drag.cfw.drag', props);
         },
 
         _dragEnd : function(e) {
@@ -186,7 +213,7 @@ if (typeof jQuery === 'undefined') {
 
             var coord = this._coordinates(e);
             var props = this._properties(coord, this.dragdata);
-            this._trigger('dragEnd.cfw.drag', props);
+            this.$element.CFW_trigger('dragEnd.cfw.drag', props);
 
             this._reset();
             this._dragStartOn();
@@ -233,18 +260,6 @@ if (typeof jQuery === 'undefined') {
 
         __dontstart : function() {
             return false;
-        },
-
-        _trigger : function(eventName, extraData) {
-            var e = $.Event(eventName);
-            if ($.isPlainObject(extraData)) {
-                e = $.extend({}, e, extraData);
-            }
-            this.$element.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
@@ -304,7 +319,6 @@ if (typeof jQuery === 'undefined') {
     CFW_Widget_Collapse.prototype = {
 
         _init : function() {
-            var $selfRef = this;
             // Get collapse group ID
             var collapseID = this.settings.toggle;
 
@@ -331,7 +345,7 @@ if (typeof jQuery === 'undefined') {
             this.$triggerColl = $('[data-cfw="collapse"][data-cfw-collapse-toggle="' + collapseID + '"]');
 
             // Check for presence of trigger id - set if not present
-            // var triggerID = this._getID(this.$triggerElm, 'cfw-collapse');
+            // var triggerID = this.$triggerElm.CFW_getID('cfw-collapse');
 
             // Add collpase class(es)
             this.$targetElm.addClass('collapse');
@@ -343,7 +357,7 @@ if (typeof jQuery === 'undefined') {
             var targetList = '';
 
             this.$targetElm.each(function() {
-                var tempID = $selfRef._getID($(this), 'cfw-collapse');
+                var tempID = $(this).CFW_getID('cfw-collapse');
                 targetList += (tempID + ' ');
             });
             // Set ARIA on trigger
@@ -364,7 +378,7 @@ if (typeof jQuery === 'undefined') {
             // Bind click handler
             this.$triggerElm.on('click.cfw.collapse.toggle', $.proxy(this.toggle, this));
 
-            this._trigger('init.cfw.collapse');
+            this.$triggerElm.CFW_trigger('init.cfw.collapse');
         },
 
         toggle : function(e) {
@@ -392,7 +406,7 @@ if (typeof jQuery === 'undefined') {
             if (this.inTransition || this.$targetElm.hasClass('in')) { return; }
 
             // Start open transition
-            if (!this._trigger('beforeShow.cfw.collapse')) {
+            if (!this.$triggerElm.CFW_trigger('beforeShow.cfw.collapse')) {
                 return;
             }
 
@@ -423,7 +437,7 @@ if (typeof jQuery === 'undefined') {
             if (this.inTransition || !this.$targetElm.hasClass('in')) { return; }
 
             // Start close transition
-            if (!this._trigger('beforeHide.cfw.collapse')) {
+            if (!this.$triggerElm.CFW_trigger('beforeHide.cfw.collapse')) {
                 return;
             }
 
@@ -463,7 +477,7 @@ if (typeof jQuery === 'undefined') {
             if (this.settings.showFollow) {
                 this.$targetElm.attr('tabindex', '-1').get(0).trigger('focus');
             }
-            this._trigger('afterShow.cfw.collapse');
+            this.$triggerElm.CFW_trigger('afterShow.cfw.collapse');
         },
 
         _hideComplete : function() {
@@ -476,17 +490,7 @@ if (typeof jQuery === 'undefined') {
             if (this.settings.hideFollow) {
                 this.$triggerColl.get(0).trigger('focus');
             }
-            this._trigger('afterHide.cfw.collapse');
-        },
-
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
+            this.$triggerElm.CFW_trigger('afterHide.cfw.collapse');
         },
 
         _parseDataAttr : function() {
@@ -501,15 +505,6 @@ if (typeof jQuery === 'undefined') {
             if (typeof data.cfwCollapseHidden     !== 'undefined') { parsedData.hidden     = data.cfwCollapseHidden;     }
 
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$triggerElm.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
@@ -638,13 +633,13 @@ if (typeof jQuery === 'undefined') {
             this.$triggerElm.attr('data-cfw', 'dropdown');
 
             // Check for presence of trigger id - set if not present
-            var triggerID = this._getID(this.$triggerElm, 'cfw-dropdown');
+            var triggerID = this.$triggerElm.CFW_getID('cfw-dropdown');
 
             // Top Level: add ARIA/roles and define all sub-menu links as menuitem (unless 'disabled')
             // Set tabIndex=-1 so that sub-menu links can't receive keyboard focus from tabbing
 
             // Check for id on top level menu - set if not present
-            menuID = this._getID(this.$menuElm, 'cfw-dropdown');
+            menuID = this.$menuElm.CFW_getID('cfw-dropdown');
             this.$menuElm.attr({
                 // 'role': 'menu',
                 'aria-hidden': 'true',
@@ -671,8 +666,8 @@ if (typeof jQuery === 'undefined') {
             this.$menuElm.find('ul').each(function() {
                 var $subMenu = $(this);
                 var $subLink = $subMenu.closest('li').find('a').eq(0);
-                var subLinkID = $selfRef._getID($subLink, 'cfw-dropdown');
-                // var subMenuID = $selfRef._getID($subMenu, 'cfw-dropdown');
+                var subLinkID = $subLink.CFW_getID('cfw-dropdown');
+                // var subMenuID = $subMenu.CFW_getID('cfw-dropdown');
 
                 var $dirNode = $subMenu.closest('.dropdown-menu-left, .dropdown-menu-right');
                 if ($dirNode.hasClass('dropdown-menu-left')) {
@@ -733,7 +728,7 @@ if (typeof jQuery === 'undefined') {
             });
             */
 
-            this._trigger(this.$triggerElm, 'init.cfw.dropdown');
+            this.$triggerElm.CFW_trigger('init.cfw.dropdown');
         },
 
         navEnableClick : function() {
@@ -851,7 +846,7 @@ if (typeof jQuery === 'undefined') {
             var showing = $parent.hasClass('open');
             if (showing) { return; }
 
-            if (!this._trigger($nodeTrigger, 'beforeShow.cfw.dropdown')) {
+            if (!$nodeTrigger.CFW_trigger('beforeShow.cfw.dropdown')) {
                 return;
             }
 
@@ -886,7 +881,7 @@ if (typeof jQuery === 'undefined') {
             //  .children('a').attr('tabIndex', 0);
             this.$menuElm.find('li').redraw();
 
-            this._trigger($nodeTrigger, 'afterShow.cfw.dropdown');
+            $nodeTrigger.CFW_trigger('afterShow.cfw.dropdown');
         },
 
         hideMenu : function(e, $nodeTrigger, $nodeMenu) {
@@ -898,7 +893,7 @@ if (typeof jQuery === 'undefined') {
             var showing = $parent.hasClass('open');
             if (!showing) { return; }
 
-            if (!this._trigger($nodeTrigger, 'beforeHide.cfw.dropdown')) {
+            if (!$nodeTrigger.CFW_trigger('beforeHide.cfw.dropdown')) {
                 return;
             }
 
@@ -925,7 +920,7 @@ if (typeof jQuery === 'undefined') {
                 $nodeTrigger.trigger('focus');
             }
             $parent.removeClass('hover');
-            this._trigger($nodeTrigger, 'afterHide.cfw.dropdown');
+            $nodeTrigger.CFW_trigger('afterHide.cfw.dropdown');
         },
 
         toggle : function() {
@@ -1092,16 +1087,6 @@ if (typeof jQuery === 'undefined') {
             }
         },
 
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
-        },
-
         _parseDataAttr : function() {
             var parsedData = {};
             var data = this.$triggerElm.data();
@@ -1113,15 +1098,6 @@ if (typeof jQuery === 'undefined') {
             if (typeof data.cfwDropdownBacktop  !== 'undefined') { parsedData.backtop  = data.cfwDropdownBacktop;   }
             if (typeof data.cfwDropdownBacktext !== 'undefined') { parsedData.backtext = data.cfwDropdownBacktext;  }
             return parsedData;
-        },
-
-        _trigger : function($callingElm, eventName) {
-            var e = $.Event(eventName);
-            $callingElm.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
@@ -1219,7 +1195,7 @@ if (typeof jQuery === 'undefined') {
             this.$triggerElm.attr('data-cfw', 'tab');
 
             // Check for presence of trigger id - set if not present
-            var triggerID = this._getID(this.$triggerElm, 'cfw-tab');
+            var triggerID = this.$triggerElm.CFW_getID('cfw-tab');
 
             // Target should have id already - set ARIA attributes
             this.$targetElm.attr({
@@ -1294,7 +1270,7 @@ if (typeof jQuery === 'undefined') {
                 }
             }
 
-            this._trigger(this.$triggerElm, 'init.cfw.tab');
+            this.$triggerElm.CFW_trigger('init.cfw.tab');
         },
 
         show : function(e) {
@@ -1310,25 +1286,22 @@ if (typeof jQuery === 'undefined') {
 
             var $previous = this.$navElm.find('.active:last a[data-cfw="tab"]');
             if ($previous.length) {
-
-                if (!this._trigger($previous, 'beforeHide.cfw.tab', { relatedTarget: this.$triggerElm[0] })) {
+                if (!$previous.CFW_trigger('beforeHide.cfw.tab', { relatedTarget: this.$triggerElm[0] })) {
                     return;
                 }
             }
 
-            if (!this._trigger(this.$triggerElm, 'beforeShow.cfw.tab', { relatedTarget: $previous[0] })) {
+            if (!this.$triggerElm.CFW_trigger('beforeShow.cfw.tab', { relatedTarget: $previous[0] })) {
                 return;
             }
 
             if ($previous.length) {
                 $previous.attr({
-                    'tabindex': -1,
-                    'aria-selected': 'false',
-                    'aria-expanded': 'false'
-                });
-                this._trigger($previous, 'afterHide.cfw.tab', { relatedTarget: this.$triggerElm[0] });
-                // Following line for backwards compatibility (not sure if used anywhere)
-                this._trigger($previous, 'hide.cfw.tab');
+                        'tabindex': -1,
+                        'aria-selected': 'false',
+                        'aria-expanded': 'false'
+                    })
+                    .CFW_trigger('afterHide.cfw.tab', { relatedTarget: this.$triggerElm[0] });
             }
 
             this.$triggerElm.attr({
@@ -1410,28 +1383,18 @@ if (typeof jQuery === 'undefined') {
                 }
 
                 if (isPanel) {
-                    $selfRef._trigger($selfRef.$triggerElm, 'afterShow.cfw.tab', { relatedTarget: $previous[0] });
+                    $selfRef.$triggerElm.CFW_trigger('afterShow.cfw.tab', { relatedTarget: $previous[0] });
                 }
             }
 
             if (doTransition) {
                 node.one('cfwTransitionEnd', displayTab)
-                .CFW_emulateTransitionEnd(this.settings.speed);
+                    .CFW_emulateTransitionEnd(this.settings.speed);
             } else {
                 displayTab();
             }
 
             $prevActive.removeClass('in');
-        },
-
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
         },
 
         _parseDataAttr : function() {
@@ -1443,18 +1406,6 @@ if (typeof jQuery === 'undefined') {
             if (typeof data.cfwTabSpeed   !== 'undefined') { parsedData.speed   = data.cfwTabSpeed;   }
             if (typeof data.cfwTabHidden  !== 'undefined') { parsedData.hidden  = data.cfwTabHidden;  }
             return parsedData;
-        },
-
-        _trigger : function($callingElm, eventName, extraData) {
-            var e = $.Event(eventName);
-            if ($.isPlainObject(extraData)) {
-                e = $.extend({}, e, extraData);
-            }
-            $callingElm.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
@@ -1518,7 +1469,7 @@ if (typeof jQuery === 'undefined') {
                 .on('scroll.cfw.affix)',  $.proxy(this.checkPosition, this))
                 .on('click.cfw.affix',  $.proxy(this.checkPositionDelayed, this));
 
-            this._trigger('init.cfw.affix');
+            this.$element.CFW_trigger('init.cfw.affix');
 
             this.checkPosition();
         },
@@ -1584,7 +1535,7 @@ if (typeof jQuery === 'undefined') {
                 var affixType = 'affix' + (affix ? '-' + affix : '');
                 var eventName = affixType + '.cfw.affix';
 
-                if (!this._trigger(eventName)) {
+                if (!this.$element.CFW_trigger(eventName)) {
                     return;
                 }
 
@@ -1593,8 +1544,8 @@ if (typeof jQuery === 'undefined') {
 
                 this.$element
                     .removeClass(CFW_Widget_Affix.RESET)
-                    .addClass(affixType);
-                this._trigger(eventName.replace('affix', 'affixed'));
+                    .addClass(affixType)
+                    .CFW_trigger(eventName.replace('affix', 'affixed'));
             }
 
             if (affix == 'bottom') {
@@ -1613,15 +1564,6 @@ if (typeof jQuery === 'undefined') {
             if (typeof data.cfwAffixOffsetBottom !== 'undefined') { parsedData.offset.bottom = data.cfwAffixOffsetBottom; }
             if (typeof data.cfwAffixOffsetTop !== 'undefined')    { parsedData.offset.top    = data.cfwAffixOffsetTop;    }
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$element.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
@@ -1750,7 +1692,7 @@ if (typeof jQuery === 'undefined') {
                 this.show();
             }
 
-            this._trigger('init.cfw.' + this.type);
+            this.$triggerElm.CFW_trigger('init.cfw.' + this.type);
         },
 
         getDefaults: function() {
@@ -1809,8 +1751,8 @@ if (typeof jQuery === 'undefined') {
 
         linkTip : function() {
             // Check for presence of trigger and target ids - set if not present
-            this.triggerID = this._getID(this.$triggerElm, 'cfw-' + this.type);
-            this.targetID = this._getID(this.$targetElm, 'cfw-' + this.type);
+            this.triggerID = this.$triggerElm.CFW_getID('cfw-' + this.type);
+            this.targetID = this.$targetElm.CFW_getID('cfw-' + this.type);
 
             // Set ARIA attributes on target
             this.$targetElm.attr({
@@ -1955,7 +1897,7 @@ if (typeof jQuery === 'undefined') {
 
             if (!this.activate) {
                 // Start show transition
-                if (!this._trigger('beforeShow.cfw.' + this.type)) {
+                if (!this.$triggerElm.CFW_trigger('beforeShow.cfw.' + this.type)) {
                     return;
                 }
             }
@@ -2096,7 +2038,7 @@ if (typeof jQuery === 'undefined') {
             }
 
             // Start hide transition
-            if (!this._trigger('beforeHide.cfw.' + this.type)) {
+            if (!this.$triggerElm.CFW_trigger('beforeHide.cfw.' + this.type)) {
                 return;
             }
 
@@ -2130,7 +2072,7 @@ if (typeof jQuery === 'undefined') {
 
             clearTimeout(this.delayTimer);
 
-            this._trigger('beforeUnlink.cfw.' + this.type);
+            this.$triggerElm.CFW_trigger('beforeUnlink.cfw.' + this.type);
             this.unlinking = true;
 
             if (this.$targetElm && this.$targetElm.hasClass('in')) {
@@ -2153,7 +2095,7 @@ if (typeof jQuery === 'undefined') {
                 .removeAttr('data-cfw')
                 .removeData('cfw.' + this.type);
             this.unlinking = false;
-            this._trigger('afterUnlink.cfw.' + this.type);
+            this.$triggerElm.CFW_trigger('afterUnlink.cfw.' + this.type);
         },
 
         destroy : function() {
@@ -2162,7 +2104,7 @@ if (typeof jQuery === 'undefined') {
                 if ($selfRef.$targetElm !== null) {
                     $selfRef.$targetElm.remove();
                 }
-                $selfRef._trigger('destroy.cfw.' + $selfRef.type);
+                $selfRef.$triggerElm.CFW_trigger('destroy.cfw.' + $selfRef.type);
             });
             this.unlink(true);
 
@@ -2188,7 +2130,7 @@ if (typeof jQuery === 'undefined') {
                 // Custom placement
                 this.settings.container = 'body';
                 $tip.appendTo(this.settings.container);
-                this._trigger('inserted.cfw.' + this.type);
+                this.$triggerElm.CFW_trigger('inserted.cfw.' + this.type);
                 $tip.offset(placement);
                 $tip.addClass('in');
             } else {
@@ -2207,7 +2149,7 @@ if (typeof jQuery === 'undefined') {
                 } else {
                     $tip.insertAfter(this.$triggerElm);
                 }
-                this._trigger('inserted.cfw.' + this.type);
+                this.$triggerElm.CFW_trigger('inserted.cfw.' + this.type);
 
                 var pos          = this._getPosition();
                 var actualWidth  = $tip[0].offsetWidth;
@@ -2256,7 +2198,7 @@ if (typeof jQuery === 'undefined') {
             }, 25);
 
             if (!this.activate) {
-                this._trigger('afterShow.cfw.' + this.type);
+                this.$triggerElm.CFW_trigger('afterShow.cfw.' + this.type);
             }
             this.activate = false;
 
@@ -2283,7 +2225,7 @@ if (typeof jQuery === 'undefined') {
                 this._removeDynamicTip();
             }
 
-            this._trigger('afterHide.cfw.' + this.type);
+            this.$triggerElm.CFW_trigger('afterHide.cfw.' + this.type);
 
             if (!this.unlinking) {
                 if (this.settings.unlink) { this.unlink(); }
@@ -2565,27 +2507,8 @@ if (typeof jQuery === 'undefined') {
             return parsedData;
         },
 
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
-        },
-
         _parseDataAttrExt : function() {
             return;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$triggerElm.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
@@ -2687,7 +2610,7 @@ if (typeof jQuery === 'undefined') {
 
         // Use '.popover-title' for labelledby
         if ($title.length) {
-            var labelledby = this._getID($title.eq(0), 'cfw-popover');
+            var labelledby = $title.eq(0).CFW_getID('cfw-popover');
             this.$targetElm.attr('aria-labelledby', labelledby);
         }
 
@@ -2757,7 +2680,7 @@ if (typeof jQuery === 'undefined') {
             limit.right = limit.left + $viewport.outerWidth() - $(this).outerWidth();
 
             $selfRef._updateZ();
-            $selfRef._trigger('dragStart.cfw.' + $selfRef.type);
+            $selfRef.$triggerElm.CFW_trigger('dragStart.cfw.' + $selfRef.type);
         })
         .on('drag.cfw.drag', function(e) {
             var viewportPadding = 0;
@@ -2771,14 +2694,14 @@ if (typeof jQuery === 'undefined') {
             });
         })
         .on('dragEnd.cfw.drag', function() {
-            $selfRef._trigger('dragEnd.cfw.' + $selfRef.type);
+            $selfRef.$triggerElm.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
         })
         .on('keydown.cfw.' + this.type + '.drag', '[data-cfw-drag="' + this.type + '"]', function(e) {
             if (/(37|38|39|40)/.test(e.which)) {
                 if (e) { e.stopPropagation(); }
 
                 if (!$selfRef.keyTimer) {
-                    $selfRef._trigger('dragStart.cfw.' + $selfRef.type);
+                    $selfRef.$triggerElm.CFW_trigger('dragStart.cfw.' + $selfRef.type);
                 }
 
                 clearTimeout($selfRef.keyTimer);
@@ -2817,7 +2740,7 @@ if (typeof jQuery === 'undefined') {
                 });
 
                 $selfRef.keyTimer = setTimeout(function() {
-                    $selfRef._trigger('dragEnd.cfw.' + $selfRef.type);
+                    $selfRef.$triggerElm.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
                     $selfRef.keyTimer = null;
                 }, $selfRef.keyDelay);
 
@@ -2832,7 +2755,7 @@ if (typeof jQuery === 'undefined') {
     CFW_Widget_Popover.prototype.hide = function() {
         // Fire key drag end if needed
         if (this.keyTimer) {
-            this._trigger('dragEnd.cfw.' + this.type);
+            this.$triggerElm.CFW_trigger('dragEnd.cfw.' + this.type);
             clearTimeout(this.keyTimer);
         }
         // Call tooltip hide
@@ -2979,8 +2902,8 @@ if (typeof jQuery === 'undefined') {
             this.$triggerElm.attr('data-cfw', 'modal');
 
             // Check for presence of ids - set if not present
-            // var triggerID = this._getID(this.$triggerElm, 'cfw-modal');
-            var targetID = this._getID(this.$targetElm, 'cfw-modal');
+            // var triggerID = this.$triggerElm.CFW_getID('cfw-modal');
+            var targetID = this.$targetElm.CFW_getID('cfw-modal');
 
             // Set ARIA attributes on trigger
             this.$triggerElm.attr('aria-controls', targetID);
@@ -2988,7 +2911,7 @@ if (typeof jQuery === 'undefined') {
             // Use '.modal-title' for labelledby
             var $title = this.$targetElm.find('.modal-title');
             if ($title.length) {
-                var labelledby = this._getID($title.eq(0), 'cfw-modal');
+                var labelledby = $title.eq(0).CFW_getID('cfw-modal');
                 this.$targetElm.attr('aria-labelledby', labelledby);
             }
 
@@ -3005,7 +2928,7 @@ if (typeof jQuery === 'undefined') {
 
             this.$targetElm.data('cfw.modal', this);
 
-            this._trigger('init.cfw.modal');
+            this.$targetElm.CFW_trigger('init.cfw.modal');
 
             if (this.settings.show) {
                 this.show();
@@ -3028,7 +2951,7 @@ if (typeof jQuery === 'undefined') {
             if (this.isShown) { return; }
 
             // Start open transition
-            if (!this._trigger('beforeShow.cfw.modal')) {
+            if (!this.$targetElm.CFW_trigger('beforeShow.cfw.modal')) {
                 return;
             }
 
@@ -3065,7 +2988,7 @@ if (typeof jQuery === 'undefined') {
             if (!this.isShown) { return; }
 
             // Start close transition
-            if (!this._trigger('beforeHide.cfw.modal')) {
+            if (!this.$targetElm.CFW_trigger('beforeHide.cfw.modal')) {
                 return;
             }
 
@@ -3121,11 +3044,11 @@ if (typeof jQuery === 'undefined') {
                 // wait for modal to slide in
                 this.$dialog.one('cfwTransitionEnd', function() {
                     $selfRef.$targetElm.trigger('focus');
-                    $selfRef._trigger('afterShow.cfw.modal');
+                    $selfRef.$targetElm.CFW_trigger('afterShow.cfw.modal');
                 }).CFW_emulateTransitionEnd(this.settings.speed.modal);
             } else {
                 this.$targetElm.trigger('focus');
-                this._trigger('afterShow.cfw.modal');
+                this.$targetElm.CFW_trigger('afterShow.cfw.modal');
             }
         },
 
@@ -3140,7 +3063,7 @@ if (typeof jQuery === 'undefined') {
                 $selfRef.$body.removeClass('modal-open');
                 $selfRef.resetAdjustments();
                 $selfRef.resetScrollbar();
-                $selfRef._trigger('afterHide.cfw.modal');
+                $selfRef.$targetElm.CFW_trigger('afterHide.cfw.modal');
             });
             this.$triggerElm.trigger('focus');
 
@@ -3243,12 +3166,12 @@ if (typeof jQuery === 'undefined') {
             if (this.bodyIsOverflowing) {
                 this.$body.css('padding-right', bodyPad + this.scrollbarWidth);
             }
-            this._trigger('scrollbarSet.cfw.modal');
+            this.$targetElm.CFW_trigger('scrollbarSet.cfw.modal');
         },
 
         resetScrollbar : function() {
             this.$body.css('padding-right', this.originalBodyPad);
-            this._trigger('scrollbarReset.cfw.modal');
+            this.$targetElm.CFW_trigger('scrollbarReset.cfw.modal');
         },
 
         measureScrollbar : function() {
@@ -3321,7 +3244,7 @@ if (typeof jQuery === 'undefined') {
         unlink : function() {
             var $selfRef = this;
 
-            this._trigger('beforeUnlink.cfw.modal');
+            this.$targetElm.CFW_trigger('beforeUnlink.cfw.modal');
             this.unlinking = true;
 
             if (this.isShown) {
@@ -3343,27 +3266,17 @@ if (typeof jQuery === 'undefined') {
                 .removeData('cfw.modal');
 
             this.unlinking = false;
-            this._trigger('afterUnlink.cfw.modal');
+            this.$targetElm.CFW_trigger('afterUnlink.cfw.modal');
         },
 
         destroy : function() {
             var $selfRef = this;
 
             $(document).one('afterUnlink.cfw.modal', this.$targetElm, function() {
-                $selfRef._trigger('destroy.cfw.modal');
+                $selfRef.$targetElm.CFW_trigger('destroy.cfw.modal');
                 $selfRef.$targetElm.remove();
             });
             this.unlink();
-        },
-
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
         },
 
         _parseDataAttr : function() {
@@ -3380,15 +3293,6 @@ if (typeof jQuery === 'undefined') {
             if (typeof data.cfwModalShow     !== 'undefined') { parsedData.show     = data.cfwModalShow;     }
             if (typeof data.cfwModalRemote   !== 'undefined') { parsedData.remote   = data.cfwModalRemote;   }
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$targetElm.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
@@ -3451,7 +3355,7 @@ if (typeof jQuery === 'undefined') {
                 $selfRef.updateCollapse(e);
             });
 
-            this._trigger('init.cfw.accordion');
+            this.$element.CFW_trigger('init.cfw.accordion');
         },
 
         updateCollapse : function(e) {
@@ -3485,15 +3389,6 @@ if (typeof jQuery === 'undefined') {
 
             if (typeof data.cfwAccordionActive !== 'undefined') { parsedData.active = data.cfwAccordionActive; }
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$element.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
@@ -3585,7 +3480,7 @@ if (typeof jQuery === 'undefined') {
                 this.updateCollapse(this.$tabActive);
             }
 
-            this._trigger('init.cfw.tabResponsive');
+            this.$element.CFW_trigger('init.cfw.tabResponsive');
         },
 
         // Open the collapse element in the active panel
@@ -3663,15 +3558,6 @@ if (typeof jQuery === 'undefined') {
 
             if (typeof data.cfwTabresponsiveActive !== 'undefined') { parsedData.active = data.cfwTabresponsiveActive; }
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$element.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
@@ -3763,12 +3649,12 @@ if (typeof jQuery === 'undefined') {
 
             this.update();
 
-            this._trigger('init.cfw.slideshow');
+            this.$element.CFW_trigger('init.cfw.slideshow');
         },
 
         prev : function() {
             if (this.currIndex > 0) {
-                this._trigger('prev.cfw.slideshow');
+                this.$element.CFW_trigger('prev.cfw.slideshow');
                 var newIndex = this.currIndex - 1;
                 this.$tabs.eq(newIndex).CFW_Tab('show');
             }
@@ -3776,7 +3662,7 @@ if (typeof jQuery === 'undefined') {
 
         next : function() {
             if (this.currIndex < this.tabLen - 1) {
-                this._trigger('next.cfw.slideshow');
+                this.$element.CFW_trigger('next.cfw.slideshow');
                 var newIndex = this.currIndex + 1;
                 this.$tabs.eq(newIndex).CFW_Tab('show');
             }
@@ -3825,15 +3711,6 @@ if (typeof jQuery === 'undefined') {
 
             // if (typeof data.cfwSlideshowActive !== 'undefined') { parsedData.active = data.cfwSlideshowActive; }
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$element.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
@@ -3892,7 +3769,7 @@ if (typeof jQuery === 'undefined') {
 
             this.$scrollElement.on('scroll.bs.scrollspy', process);
             this.selector = (this.settings.target || '') + ' .nav li > a';
-            this._trigger(this.$scrollElement, 'init.cfw.scrollspy');
+            this.$scrollElement.CFW_trigger('init.cfw.scrollspy');
 
             this.refresh();
             this.process();
@@ -3976,17 +3853,17 @@ if (typeof jQuery === 'undefined') {
                 '[data-target="' + target + '"],' +
                 this.selector + '[href="' + target + '"]';
 
-            var active = $(selector)
+            var $active = $(selector)
                 .parents('li')
                 .addClass('active');
 
-            if (active.parent('.dropdown-menu').length) {
-                active = active
+            if ($active.parent('.dropdown-menu').length) {
+                $active = $active
                     .closest('li.dropdown')
                     .addClass('active');
             }
 
-            this._trigger(active, 'activate.cfw.scrollspy');
+            $active.CFW_trigger('activate.cfw.scrollspy');
         },
 
         clear : function() {
@@ -4002,15 +3879,6 @@ if (typeof jQuery === 'undefined') {
             if (typeof data.cfwScrollspyTarget !== 'undefined') { parsedData.target = data.cfwScrollspyTarget; }
             if (typeof data.cfwScrollspyOffset !== 'undefined') { parsedData.offset = data.cfwScrollspyOffset; }
             return parsedData;
-        },
-
-        _trigger : function($callingElm, eventName) {
-            var e = $.Event(eventName);
-            $callingElm.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
@@ -4080,7 +3948,7 @@ if (typeof jQuery === 'undefined') {
             this.$parent.data('cfw.alert', this);
             this.$parent.find(dismiss).data('cfw.alert', this);
 
-            this._trigger('init.cfw.alert');
+            this.$parent.CFW_trigger('init.cfw.alert');
         },
 
         close : function(e) {
@@ -4090,7 +3958,7 @@ if (typeof jQuery === 'undefined') {
 
             if (this.inTransition) { return; }
 
-            if (!this._trigger('beforeClose.cfw.alert')) {
+            if (!this.$parent.CFW_trigger('beforeClose.cfw.alert')) {
                 return;
             }
 
@@ -4100,7 +3968,7 @@ if (typeof jQuery === 'undefined') {
                 // Detach from parent, fire event then clean up data
                 $selfRef.$parent.detach();
                 $selfRef.inTransition = 0;
-                $selfRef._trigger('afterClose.cfw.alert');
+                $selfRef.$parent.CFW_trigger('afterClose.cfw.alert');
                 $selfRef.$parent.remove();
             }
 
@@ -4140,15 +4008,6 @@ if (typeof jQuery === 'undefined') {
             if (typeof data.cfwAlertAnimate !== 'undefined') { parsedData.animate = data.cfwAlertAnimate; }
             if (typeof data.cfwAlertSpeed   !== 'undefined') { parsedData.speed   = data.cfwAlertSpeed;   }
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$parent.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
@@ -4338,7 +4197,7 @@ if (typeof jQuery === 'undefined') {
                 }
             }
 
-            this.id = this._getID(this.$element, 'cfw-lazy');
+            this.id = this.$element.CFW_getID('cfw-lazy');
 
             // Bind events
             this.eventTypes = this.settings.trigger.split(' ');
@@ -4352,7 +4211,7 @@ if (typeof jQuery === 'undefined') {
                 }
             }
 
-            this._trigger('init.cfw.lazy');
+            this.$element.CFW_trigger('init.cfw.lazy');
 
             if (checkInitViewport && this.inViewport()) { this.show(); }
         },
@@ -4413,7 +4272,7 @@ if (typeof jQuery === 'undefined') {
             this.$element[this.settings.effect](this.settings.speed);
 
             setTimeout(function() {
-                $selfRef._trigger('afterShow.cfw.lazy');
+                $selfRef.$element.CFW_trigger('afterShow.cfw.lazy');
             }, this.settings.speed);
 
             // Unbind events and unset data
@@ -4427,7 +4286,7 @@ if (typeof jQuery === 'undefined') {
             var $selfRef = this;
             if (this.isLoading) { return; }
 
-            if (!this._trigger('beforeShow.cfw.lazy')) {
+            if (!this.$element.CFW_trigger('beforeShow.cfw.lazy')) {
                 return;
             }
 
@@ -4466,16 +4325,6 @@ if (typeof jQuery === 'undefined') {
             };
         },
 
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
-        },
-
         _parseDataAttr : function() {
             var parsedData = {};
             var data = this.$element.data();
@@ -4491,15 +4340,6 @@ if (typeof jQuery === 'undefined') {
             if (typeof data.cfwLazyInvisible !== 'undefined') { parsedData.invisible = data.cfwLazyInvisible; }
 
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$element.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
@@ -4604,7 +4444,7 @@ if (typeof jQuery === 'undefined') {
 
             this.$element.attr('data-cfw', 'slider');
 
-            this._trigger('init.cfw.slider');
+            this.$slider.CFW_trigger('init.cfw.slider');
         },
 
         _initInputs : function() {
@@ -4617,17 +4457,17 @@ if (typeof jQuery === 'undefined') {
             }
 
             this.$inputMin = $inputs.eq(0);
-            this.inputMinID = this._getID(this.$inputMin, 'cfw-slider');
+            this.inputMinID = this.$inputMin.CFW_getID('cfw-slider');
             var $labelMin = this._getLabel(this.$inputMin);
-            this.inputMinLabelID = this._getID($labelMin, 'cfw-slider');
+            this.inputMinLabelID = $labelMin.CFW_getID('cfw-slider');
             this.inputMinLabelTxt = $labelMin.text();
 
             if (this.$inputMin[0].nodeName == 'SELECT') { this.ordinal = true; }
             if ($inputs.length > 1) {
                 this.$inputMax = $inputs.eq($inputs.length - 1);
-                this.inputMaxID = this._getID(this.$inputMax, 'cfw-slider');
+                this.inputMaxID = this.$inputMax.CFW_getID('cfw-slider');
                 var $labelMax = this._getLabel(this.$inputMax);
-                this.inputMaxLabelID = this._getID($labelMax, 'cfw-slider');
+                this.inputMaxLabelID = $labelMax.CFW_getID('cfw-slider');
                 this.inputMaxLabelTxt = $labelMax.text();
 
                 this.range = true;
@@ -4650,7 +4490,7 @@ if (typeof jQuery === 'undefined') {
             } else {
                 $(slider).addClass('slider-horizontal');
             }
-            // var sliderID = this._getID(this.$slider, 'cfw-slider');
+            // var sliderID = this.$slider.CFW_getID('cfw-slider');
 
             /* Track elements */
             var sliderTrack = document.createElement('div');
@@ -4676,8 +4516,8 @@ if (typeof jQuery === 'undefined') {
                         'aria-labelledby': this.inputMaxLabelID
                     });
 
-                this.$sliderThumbMin.attr('aria-controls', this._getID(this.$sliderThumbMax, 'cfw-slider'));
-                this.$sliderThumbMax.attr('aria-controls', this._getID(this.$sliderThumbMin, 'cfw-slider'));
+                this.$sliderThumbMin.attr('aria-controls', this.$sliderThumbMax.CFW_getID('cfw-slider'));
+                this.$sliderThumbMax.attr('aria-controls', this.$sliderThumbMin.CFW_getID('cfw-slider'));
             }
 
             // Attach elements together and insert
@@ -4785,7 +4625,7 @@ if (typeof jQuery === 'undefined') {
             this.settings.enabled = true;
             this.$slider.removeClass('disabled');
             this.bindSlider();
-            this._trigger('enabled.cfw.slider');
+            this.$slider.CFW_trigger('enabled.cfw.slider');
         },
 
         disable : function() {
@@ -4793,7 +4633,7 @@ if (typeof jQuery === 'undefined') {
             this.settings.enabled = false;
             this.$slider.addClass('disabled');
             this.unbindSlider();
-            this._trigger('disabled.cfw.slider');
+            this.$slider.CFW_trigger('disabled.cfw.slider');
         },
 
         bindSlider : function() {
@@ -4895,10 +4735,10 @@ if (typeof jQuery === 'undefined') {
             this.updateLabels();
 
             if (!inputUpdate) {
-                this._trigger('slid.cfw.slider');
+                this.$slider.CFW_trigger('slid.cfw.slider');
             }
             if (inputUpdate || (updVal != oldVal)) {
-                this._trigger('changed.cfw.slider');
+                this.$slider.CFW_trigger('changed.cfw.slider');
             }
         },
 
@@ -4974,7 +4814,7 @@ if (typeof jQuery === 'undefined') {
             var $input = this._getInput($node[0]);
             this.changeValue(newVal, $input);
 
-            this._trigger('dragStart.cfw.slider');
+            this.$slider.CFW_trigger('dragStart.cfw.slider');
         },
 
         _drag : function(e) {
@@ -4989,7 +4829,7 @@ if (typeof jQuery === 'undefined') {
         _dragEnd : function() {
             this.inDrag = null;
             this.startPos = null;
-            this._trigger('dragEnd.cfw.slider');
+            this.$slider.CFW_trigger('dragEnd.cfw.slider');
         },
 
         _positionToValue : function(pos) {
@@ -5020,16 +4860,6 @@ if (typeof jQuery === 'undefined') {
             return $node;
         },
 
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
-        },
-
         _parseDataAttr : function() {
             var parsedData = {};
             var data = this.$element.data();
@@ -5043,15 +4873,6 @@ if (typeof jQuery === 'undefined') {
 
             if (typeof data.cfwSliderTooltip    !== 'undefined') { parsedData.tooltip   = data.cfwSliderTooltip;    }
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$slider.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
@@ -5109,7 +4930,7 @@ if (typeof jQuery === 'undefined') {
         _init : function() {
             this.$window.on('resize.cfw.equalize', this._throttle($.proxy(this.update, this), this.settings.throttle));
 
-            this._trigger('init.cfw.equalize');
+            this.$element.CFW_trigger('init.cfw.equalize');
             this.update();
         },
 
@@ -5125,7 +4946,7 @@ if (typeof jQuery === 'undefined') {
             if (!nest && this.$element.find('[data-cfw="equalize"]').length > 0) {
                 return;
             }
-            if (!this._trigger('beforeEqual.cfw.equalize')) {
+            if (!this.$element.CFW_trigger('beforeEqual.cfw.equalize')) {
                 return;
             }
 
@@ -5189,7 +5010,7 @@ if (typeof jQuery === 'undefined') {
                 this._applyHeight($targetElm);
             }
 
-            this._trigger('afterEqual.cfw.equalize');
+            this.$element.CFW_trigger('afterEqual.cfw.equalize');
 
             // Handle any nested equalize
             this.$element.parent().closest('[data-cfw="equalize"]').CFW_Equalize('update', true);
@@ -5317,15 +5138,6 @@ if (typeof jQuery === 'undefined') {
             if (typeof data.cfwEqualizeRow      !== 'undefined') { parsedData.row      = data.cfwEqualizeRow;      }
             if (typeof data.cfwEqualizeMinimum  !== 'undefined') { parsedData.minimum  = data.cfwEqualizeMinimum;  }
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$element.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
@@ -5474,7 +5286,7 @@ if (typeof jQuery === 'undefined') {
             }
 
             if ((this.type == 'audio' && !html5.audio) || (this.type == 'video' && !html5.video)) {
-                this._trigger('noSupport.cfw.player');
+                this.$media.CFW_trigger('noSupport.cfw.player');
                 return false;
             }
 
@@ -5657,7 +5469,7 @@ if (typeof jQuery === 'undefined') {
             this.$focus = $(focusDiv);
             this.$element.prepend(this.$focus);
 
-            this._trigger('ready.cfw.player');
+            this.$media.CFW_trigger('ready.cfw.player');
 
             // Handle element attributes
             if (this.media.autoplay) {
@@ -5666,7 +5478,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         error : function() {
-            this._trigger('error.cfw.player');
+            this.$media.CFW_trigger('error.cfw.player');
         },
 
         toggle : function() {
@@ -5996,11 +5808,11 @@ if (typeof jQuery === 'undefined') {
             if (this.isFullScreen()) {
                 $fullElm.addClass('active');
                 this.$element.addClass('player-fulldisplay');
-                this._trigger('enterFullscreen.cfw.player');
+                this.$media.CFW_trigger('enterFullscreen.cfw.player');
             } else {
                 $fullElm.removeClass('active');
                 this.$element.removeClass('player-fulldisplay');
-                this._trigger('exitFullscreen.cfw.player');
+                this.$media.CFW_trigger('exitFullscreen.cfw.player');
             }
         },
 
@@ -6065,7 +5877,7 @@ if (typeof jQuery === 'undefined') {
                 var $wrapper = $captionElm.parent(); /* Because $().wrap() clones element */
 
                 $wrapper.append($menu);
-                var menuID = this._getID($menu, 'cfw-player');
+                var menuID = $menu.CFW_getID('cfw-player');
 
                 var $menuItem = $('<li class="player-caption-off"><a href="#" data-cfw-player-track="-1">Off</a></li>');
                 $menu.append($menuItem);
@@ -6184,7 +5996,7 @@ if (typeof jQuery === 'undefined') {
                 var $wrapper = $tsElm.parent(); /* Because $().wrap() clones element */
 
                 $wrapper.append($menu);
-                var menuID = this._getID($menu, 'cfw-player');
+                var menuID = $menu.CFW_getID('cfw-player');
 
                 var $menuItem = $('<li class="player-script-off"><a href="#" data-cfw-player-script="-1">Off</a></li>');
                 $menu.append($menuItem);
@@ -6247,11 +6059,11 @@ if (typeof jQuery === 'undefined') {
             }
 
             if (trackID == -1 && this.$scriptElm !== null) {
-                if (!this._trigger('beforeTranscriptHide.cfw.player')) {
+                if (!this.$media.CFW_trigger('beforeTranscriptHide.cfw.player')) {
                     return;
                 }
             } else {
-                if (!this._trigger('beforeTranscriptShow.cfw.player')) {
+                if (!this.$media.CFW_trigger('beforeTranscriptShow.cfw.player')) {
                     return;
                 }
             }
@@ -6288,7 +6100,7 @@ if (typeof jQuery === 'undefined') {
 
             if (trackID == -1) {
                 this.scriptCues = null;
-                this._trigger('afterTranscriptHide.cfw.player');
+                this.$media.CFW_trigger('afterTranscriptHide.cfw.player');
             } else {
                 this.scriptLoad();
             }
@@ -6465,7 +6277,7 @@ if (typeof jQuery === 'undefined') {
                 this.$media.trigger(cueEvent);
             }
 
-            this._trigger('afterTranscriptShow.cfw.player');
+            this.$media.CFW_trigger('afterTranscriptShow.cfw.player');
         },
 
         scriptHighlight : function(activeCues) {
@@ -6660,16 +6472,6 @@ if (typeof jQuery === 'undefined') {
             }, 10);
         },
 
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
-        },
-
         _parseDataAttr : function() {
             var parsedData = {};
             var data = this.$element.data();
@@ -6680,15 +6482,6 @@ if (typeof jQuery === 'undefined') {
             if (typeof data.cfwPlayerTranscriptOption !== 'undefined') { parsedData.transcriptOption = data.cfwPlayerTranscriptOption; }
 
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$media.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
