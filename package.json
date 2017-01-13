@@ -19,7 +19,7 @@
   },
   "style": "dist/css/figuration.css",
   "sass": "scss/figuration.scss",
-  "main": "./js/_npm.js",
+  "main": "dist/js/figuration.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/cast-org/figuration.git"
