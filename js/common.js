@@ -12,6 +12,9 @@
         var $scope = $(this);
         if (!$scope) { $scope = $(document.body); }
 
+        $('[data-cfw^="button"]', $scope).each(function() {
+            $(this).CFW_Button();
+        });
         $('[data-cfw="collapse"]', $scope).each(function() {
             $(this).CFW_Collapse();
         });
