@@ -334,6 +334,8 @@ $(window).ready(function() {
             <strong>Toggle State:</strong>
             <br />
             <button type="button" data-cfw="button" class="btn btn-info">Single toggle</button>
+            &nbsp;
+            <button type="button" data-cfw="button" class="btn btn-info active">Single toggle</button>
             <br />
             <br />
 
@@ -342,22 +344,27 @@ $(window).ready(function() {
                     <strong>Checkbox:</strong>
                     <br />
                     <div class="btn-group" data-cfw="buttons">
-                        <label class="btn btn-info active">
+                        <label class="btn btn-info" id="btnTog1">
                             <input type="checkbox" checked /> Check 1
                         </label>
-                        <label class="btn btn-info">
+                        <label class="btn btn-info" id="btnTog2">
                             <input type="checkbox" /> Check 2
                         </label>
-                        <label class="btn btn-info">
+                        <label class="btn btn-info" id="btnTog3">
                             <input type="checkbox" /> Check 3
                         </label>
                     </div>
+                    <br />
+                    <a href="#" onclick="$('#btnTog1').CFW_Button('toggle'); return false;">Toggle 1</a>
+                    <a href="#" onclick="$('#btnTog2').CFW_Button('toggle'); return false;">Toggle 2</a>
+                    <a href="#" onclick="$('#btnTog3').CFW_Button('toggle'); return false;">Toggle 3</a>
+
                 </div>
                 <div class="col-sm-6">
                     <strong>Radio:</strong>
                     <br />
                     <div class="btn-group" data-cfw="buttons">
-                        <label class="btn btn-info active">
+                        <label class="btn btn-info">
                             <input type="radio" name="options" checked /> Radio 1
                         </label>
                         <label class="btn btn-info">
@@ -366,6 +373,15 @@ $(window).ready(function() {
                         <label class="btn btn-info">
                             <input type="radio" name="options" /> Radio 3
                         </label>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <strong>Buttons:</strong>
+                    <br />
+                    <div class="btn-group" data-cfw="buttons">
+                        <button class="btn" type="button">One</button>
+                        <button class="btn active" type="button">Two</button>
+                        <button class="btn" type="button">Three</button>
                     </div>
                 </div>
             </div>
