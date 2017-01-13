@@ -78,7 +78,7 @@
 
             this.$element.attr('data-cfw', 'slider');
 
-            this._trigger('init.cfw.slider');
+            this.$slider.CFW_trigger('init.cfw.slider');
         },
 
         _initInputs : function() {
@@ -91,17 +91,17 @@
             }
 
             this.$inputMin = $inputs.eq(0);
-            this.inputMinID = this._getID(this.$inputMin, 'cfw-slider');
+            this.inputMinID = this.$inputMin.CFW_getID('cfw-slider');
             var $labelMin = this._getLabel(this.$inputMin);
-            this.inputMinLabelID = this._getID($labelMin, 'cfw-slider');
+            this.inputMinLabelID = $labelMin.CFW_getID('cfw-slider');
             this.inputMinLabelTxt = $labelMin.text();
 
             if (this.$inputMin[0].nodeName == 'SELECT') { this.ordinal = true; }
             if ($inputs.length > 1) {
                 this.$inputMax = $inputs.eq($inputs.length - 1);
-                this.inputMaxID = this._getID(this.$inputMax, 'cfw-slider');
+                this.inputMaxID = this.$inputMax.CFW_getID('cfw-slider');
                 var $labelMax = this._getLabel(this.$inputMax);
-                this.inputMaxLabelID = this._getID($labelMax, 'cfw-slider');
+                this.inputMaxLabelID = $labelMax.CFW_getID('cfw-slider');
                 this.inputMaxLabelTxt = $labelMax.text();
 
                 this.range = true;
@@ -124,7 +124,7 @@
             } else {
                 $(slider).addClass('slider-horizontal');
             }
-            // var sliderID = this._getID(this.$slider, 'cfw-slider');
+            // var sliderID = this.$slider.CFW_getID('cfw-slider');
 
             /* Track elements */
             var sliderTrack = document.createElement('div');
@@ -150,8 +150,8 @@
                         'aria-labelledby': this.inputMaxLabelID
                     });
 
-                this.$sliderThumbMin.attr('aria-controls', this._getID(this.$sliderThumbMax, 'cfw-slider'));
-                this.$sliderThumbMax.attr('aria-controls', this._getID(this.$sliderThumbMin, 'cfw-slider'));
+                this.$sliderThumbMin.attr('aria-controls', this.$sliderThumbMax.CFW_getID('cfw-slider'));
+                this.$sliderThumbMax.attr('aria-controls', this.$sliderThumbMin.CFW_getID('cfw-slider'));
             }
 
             // Attach elements together and insert
@@ -259,7 +259,7 @@
             this.settings.enabled = true;
             this.$slider.removeClass('disabled');
             this.bindSlider();
-            this._trigger('enabled.cfw.slider');
+            this.$slider.CFW_trigger('enabled.cfw.slider');
         },
 
         disable : function() {
@@ -267,7 +267,7 @@
             this.settings.enabled = false;
             this.$slider.addClass('disabled');
             this.unbindSlider();
-            this._trigger('disabled.cfw.slider');
+            this.$slider.CFW_trigger('disabled.cfw.slider');
         },
 
         bindSlider : function() {
@@ -369,10 +369,10 @@
             this.updateLabels();
 
             if (!inputUpdate) {
-                this._trigger('slid.cfw.slider');
+                this.$slider.CFW_trigger('slid.cfw.slider');
             }
             if (inputUpdate || (updVal != oldVal)) {
-                this._trigger('changed.cfw.slider');
+                this.$slider.CFW_trigger('changed.cfw.slider');
             }
         },
 
@@ -448,7 +448,7 @@
             var $input = this._getInput($node[0]);
             this.changeValue(newVal, $input);
 
-            this._trigger('dragStart.cfw.slider');
+            this.$slider.CFW_trigger('dragStart.cfw.slider');
         },
 
         _drag : function(e) {
@@ -463,7 +463,7 @@
         _dragEnd : function() {
             this.inDrag = null;
             this.startPos = null;
-            this._trigger('dragEnd.cfw.slider');
+            this.$slider.CFW_trigger('dragEnd.cfw.slider');
         },
 
         _positionToValue : function(pos) {
@@ -494,16 +494,6 @@
             return $node;
         },
 
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
-        },
-
         _parseDataAttr : function() {
             var parsedData = {};
             var data = this.$element.data();
@@ -517,15 +507,6 @@
 
             if (typeof data.cfwSliderTooltip    !== 'undefined') { parsedData.tooltip   = data.cfwSliderTooltip;    }
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$slider.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 

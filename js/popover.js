@@ -72,7 +72,7 @@
 
         // Use '.popover-title' for labelledby
         if ($title.length) {
-            var labelledby = this._getID($title.eq(0), 'cfw-popover');
+            var labelledby = $title.eq(0).CFW_getID('cfw-popover');
             this.$targetElm.attr('aria-labelledby', labelledby);
         }
 
@@ -142,7 +142,7 @@
             limit.right = limit.left + $viewport.outerWidth() - $(this).outerWidth();
 
             $selfRef._updateZ();
-            $selfRef._trigger('dragStart.cfw.' + $selfRef.type);
+            $selfRef.$triggerElm.CFW_trigger('dragStart.cfw.' + $selfRef.type);
         })
         .on('drag.cfw.drag', function(e) {
             var viewportPadding = 0;
@@ -156,14 +156,14 @@
             });
         })
         .on('dragEnd.cfw.drag', function() {
-            $selfRef._trigger('dragEnd.cfw.' + $selfRef.type);
+            $selfRef.$triggerElm.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
         })
         .on('keydown.cfw.' + this.type + '.drag', '[data-cfw-drag="' + this.type + '"]', function(e) {
             if (/(37|38|39|40)/.test(e.which)) {
                 if (e) { e.stopPropagation(); }
 
                 if (!$selfRef.keyTimer) {
-                    $selfRef._trigger('dragStart.cfw.' + $selfRef.type);
+                    $selfRef.$triggerElm.CFW_trigger('dragStart.cfw.' + $selfRef.type);
                 }
 
                 clearTimeout($selfRef.keyTimer);
@@ -202,7 +202,7 @@
                 });
 
                 $selfRef.keyTimer = setTimeout(function() {
-                    $selfRef._trigger('dragEnd.cfw.' + $selfRef.type);
+                    $selfRef.$triggerElm.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
                     $selfRef.keyTimer = null;
                 }, $selfRef.keyDelay);
 
@@ -217,7 +217,7 @@
     CFW_Widget_Popover.prototype.hide = function() {
         // Fire key drag end if needed
         if (this.keyTimer) {
-            this._trigger('dragEnd.cfw.' + this.type);
+            this.$triggerElm.CFW_trigger('dragEnd.cfw.' + this.type);
             clearTimeout(this.keyTimer);
         }
         // Call tooltip hide

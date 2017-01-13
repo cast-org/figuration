@@ -31,7 +31,7 @@
         _init : function() {
             this.$window.on('resize.cfw.equalize', this._throttle($.proxy(this.update, this), this.settings.throttle));
 
-            this._trigger('init.cfw.equalize');
+            this.$element.CFW_trigger('init.cfw.equalize');
             this.update();
         },
 
@@ -47,7 +47,7 @@
             if (!nest && this.$element.find('[data-cfw="equalize"]').length > 0) {
                 return;
             }
-            if (!this._trigger('beforeEqual.cfw.equalize')) {
+            if (!this.$element.CFW_trigger('beforeEqual.cfw.equalize')) {
                 return;
             }
 
@@ -111,7 +111,7 @@
                 this._applyHeight($targetElm);
             }
 
-            this._trigger('afterEqual.cfw.equalize');
+            this.$element.CFW_trigger('afterEqual.cfw.equalize');
 
             // Handle any nested equalize
             this.$element.parent().closest('[data-cfw="equalize"]').CFW_Equalize('update', true);
@@ -239,15 +239,6 @@
             if (typeof data.cfwEqualizeRow      !== 'undefined') { parsedData.row      = data.cfwEqualizeRow;      }
             if (typeof data.cfwEqualizeMinimum  !== 'undefined') { parsedData.minimum  = data.cfwEqualizeMinimum;  }
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$element.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 

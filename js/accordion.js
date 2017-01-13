@@ -33,7 +33,7 @@
                 $selfRef.updateCollapse(e);
             });
 
-            this._trigger('init.cfw.accordion');
+            this.$element.CFW_trigger('init.cfw.accordion');
         },
 
         updateCollapse : function(e) {
@@ -67,15 +67,6 @@
 
             if (typeof data.cfwAccordionActive !== 'undefined') { parsedData.active = data.cfwAccordionActive; }
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$element.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 

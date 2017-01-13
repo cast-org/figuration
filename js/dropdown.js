@@ -102,13 +102,13 @@
             this.$triggerElm.attr('data-cfw', 'dropdown');
 
             // Check for presence of trigger id - set if not present
-            var triggerID = this._getID(this.$triggerElm, 'cfw-dropdown');
+            var triggerID = this.$triggerElm.CFW_getID('cfw-dropdown');
 
             // Top Level: add ARIA/roles and define all sub-menu links as menuitem (unless 'disabled')
             // Set tabIndex=-1 so that sub-menu links can't receive keyboard focus from tabbing
 
             // Check for id on top level menu - set if not present
-            menuID = this._getID(this.$menuElm, 'cfw-dropdown');
+            menuID = this.$menuElm.CFW_getID('cfw-dropdown');
             this.$menuElm.attr({
                 // 'role': 'menu',
                 'aria-hidden': 'true',
@@ -135,8 +135,8 @@
             this.$menuElm.find('ul').each(function() {
                 var $subMenu = $(this);
                 var $subLink = $subMenu.closest('li').find('a').eq(0);
-                var subLinkID = $selfRef._getID($subLink, 'cfw-dropdown');
-                // var subMenuID = $selfRef._getID($subMenu, 'cfw-dropdown');
+                var subLinkID = $subLink.CFW_getID('cfw-dropdown');
+                // var subMenuID = $subMenu.CFW_getID('cfw-dropdown');
 
                 var $dirNode = $subMenu.closest('.dropdown-menu-left, .dropdown-menu-right');
                 if ($dirNode.hasClass('dropdown-menu-left')) {
@@ -197,7 +197,7 @@
             });
             */
 
-            this._trigger(this.$triggerElm, 'init.cfw.dropdown');
+            this.$triggerElm.CFW_trigger('init.cfw.dropdown');
         },
 
         navEnableClick : function() {
@@ -315,7 +315,7 @@
             var showing = $parent.hasClass('open');
             if (showing) { return; }
 
-            if (!this._trigger($nodeTrigger, 'beforeShow.cfw.dropdown')) {
+            if (!$nodeTrigger.CFW_trigger('beforeShow.cfw.dropdown')) {
                 return;
             }
 
@@ -350,7 +350,7 @@
             //  .children('a').attr('tabIndex', 0);
             this.$menuElm.find('li').redraw();
 
-            this._trigger($nodeTrigger, 'afterShow.cfw.dropdown');
+            $nodeTrigger.CFW_trigger('afterShow.cfw.dropdown');
         },
 
         hideMenu : function(e, $nodeTrigger, $nodeMenu) {
@@ -362,7 +362,7 @@
             var showing = $parent.hasClass('open');
             if (!showing) { return; }
 
-            if (!this._trigger($nodeTrigger, 'beforeHide.cfw.dropdown')) {
+            if (!$nodeTrigger.CFW_trigger('beforeHide.cfw.dropdown')) {
                 return;
             }
 
@@ -389,7 +389,7 @@
                 $nodeTrigger.trigger('focus');
             }
             $parent.removeClass('hover');
-            this._trigger($nodeTrigger, 'afterHide.cfw.dropdown');
+            $nodeTrigger.CFW_trigger('afterHide.cfw.dropdown');
         },
 
         toggle : function() {
@@ -556,16 +556,6 @@
             }
         },
 
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
-        },
-
         _parseDataAttr : function() {
             var parsedData = {};
             var data = this.$triggerElm.data();
@@ -577,15 +567,6 @@
             if (typeof data.cfwDropdownBacktop  !== 'undefined') { parsedData.backtop  = data.cfwDropdownBacktop;   }
             if (typeof data.cfwDropdownBacktext !== 'undefined') { parsedData.backtext = data.cfwDropdownBacktext;  }
             return parsedData;
-        },
-
-        _trigger : function($callingElm, eventName) {
-            var e = $.Event(eventName);
-            $callingElm.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 

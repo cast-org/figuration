@@ -102,7 +102,7 @@
                 this.show();
             }
 
-            this._trigger('init.cfw.' + this.type);
+            this.$triggerElm.CFW_trigger('init.cfw.' + this.type);
         },
 
         getDefaults: function() {
@@ -161,8 +161,8 @@
 
         linkTip : function() {
             // Check for presence of trigger and target ids - set if not present
-            this.triggerID = this._getID(this.$triggerElm, 'cfw-' + this.type);
-            this.targetID = this._getID(this.$targetElm, 'cfw-' + this.type);
+            this.triggerID = this.$triggerElm.CFW_getID('cfw-' + this.type);
+            this.targetID = this.$targetElm.CFW_getID('cfw-' + this.type);
 
             // Set ARIA attributes on target
             this.$targetElm.attr({
@@ -307,7 +307,7 @@
 
             if (!this.activate) {
                 // Start show transition
-                if (!this._trigger('beforeShow.cfw.' + this.type)) {
+                if (!this.$triggerElm.CFW_trigger('beforeShow.cfw.' + this.type)) {
                     return;
                 }
             }
@@ -448,7 +448,7 @@
             }
 
             // Start hide transition
-            if (!this._trigger('beforeHide.cfw.' + this.type)) {
+            if (!this.$triggerElm.CFW_trigger('beforeHide.cfw.' + this.type)) {
                 return;
             }
 
@@ -482,7 +482,7 @@
 
             clearTimeout(this.delayTimer);
 
-            this._trigger('beforeUnlink.cfw.' + this.type);
+            this.$triggerElm.CFW_trigger('beforeUnlink.cfw.' + this.type);
             this.unlinking = true;
 
             if (this.$targetElm && this.$targetElm.hasClass('in')) {
@@ -505,7 +505,7 @@
                 .removeAttr('data-cfw')
                 .removeData('cfw.' + this.type);
             this.unlinking = false;
-            this._trigger('afterUnlink.cfw.' + this.type);
+            this.$triggerElm.CFW_trigger('afterUnlink.cfw.' + this.type);
         },
 
         destroy : function() {
@@ -514,7 +514,7 @@
                 if ($selfRef.$targetElm !== null) {
                     $selfRef.$targetElm.remove();
                 }
-                $selfRef._trigger('destroy.cfw.' + $selfRef.type);
+                $selfRef.$triggerElm.CFW_trigger('destroy.cfw.' + $selfRef.type);
             });
             this.unlink(true);
 
@@ -540,7 +540,7 @@
                 // Custom placement
                 this.settings.container = 'body';
                 $tip.appendTo(this.settings.container);
-                this._trigger('inserted.cfw.' + this.type);
+                this.$triggerElm.CFW_trigger('inserted.cfw.' + this.type);
                 $tip.offset(placement);
                 $tip.addClass('in');
             } else {
@@ -559,7 +559,7 @@
                 } else {
                     $tip.insertAfter(this.$triggerElm);
                 }
-                this._trigger('inserted.cfw.' + this.type);
+                this.$triggerElm.CFW_trigger('inserted.cfw.' + this.type);
 
                 var pos          = this._getPosition();
                 var actualWidth  = $tip[0].offsetWidth;
@@ -608,7 +608,7 @@
             }, 25);
 
             if (!this.activate) {
-                this._trigger('afterShow.cfw.' + this.type);
+                this.$triggerElm.CFW_trigger('afterShow.cfw.' + this.type);
             }
             this.activate = false;
 
@@ -635,7 +635,7 @@
                 this._removeDynamicTip();
             }
 
-            this._trigger('afterHide.cfw.' + this.type);
+            this.$triggerElm.CFW_trigger('afterHide.cfw.' + this.type);
 
             if (!this.unlinking) {
                 if (this.settings.unlink) { this.unlink(); }
@@ -917,27 +917,8 @@
             return parsedData;
         },
 
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
-        },
-
         _parseDataAttrExt : function() {
             return;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$triggerElm.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 

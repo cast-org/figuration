@@ -46,7 +46,7 @@
             this.$triggerElm.attr('data-cfw', 'tab');
 
             // Check for presence of trigger id - set if not present
-            var triggerID = this._getID(this.$triggerElm, 'cfw-tab');
+            var triggerID = this.$triggerElm.CFW_getID('cfw-tab');
 
             // Target should have id already - set ARIA attributes
             this.$targetElm.attr({
@@ -121,7 +121,7 @@
                 }
             }
 
-            this._trigger(this.$triggerElm, 'init.cfw.tab');
+            this.$triggerElm.CFW_trigger('init.cfw.tab');
         },
 
         show : function(e) {
@@ -137,25 +137,22 @@
 
             var $previous = this.$navElm.find('.active:last a[data-cfw="tab"]');
             if ($previous.length) {
-
-                if (!this._trigger($previous, 'beforeHide.cfw.tab', { relatedTarget: this.$triggerElm[0] })) {
+                if (!$previous.CFW_trigger('beforeHide.cfw.tab', { relatedTarget: this.$triggerElm[0] })) {
                     return;
                 }
             }
 
-            if (!this._trigger(this.$triggerElm, 'beforeShow.cfw.tab', { relatedTarget: $previous[0] })) {
+            if (!this.$triggerElm.CFW_trigger('beforeShow.cfw.tab', { relatedTarget: $previous[0] })) {
                 return;
             }
 
             if ($previous.length) {
                 $previous.attr({
-                    'tabindex': -1,
-                    'aria-selected': 'false',
-                    'aria-expanded': 'false'
-                });
-                this._trigger($previous, 'afterHide.cfw.tab', { relatedTarget: this.$triggerElm[0] });
-                // Following line for backwards compatibility (not sure if used anywhere)
-                this._trigger($previous, 'hide.cfw.tab');
+                        'tabindex': -1,
+                        'aria-selected': 'false',
+                        'aria-expanded': 'false'
+                    })
+                    .CFW_trigger('afterHide.cfw.tab', { relatedTarget: this.$triggerElm[0] });
             }
 
             this.$triggerElm.attr({
@@ -237,28 +234,18 @@
                 }
 
                 if (isPanel) {
-                    $selfRef._trigger($selfRef.$triggerElm, 'afterShow.cfw.tab', { relatedTarget: $previous[0] });
+                    $selfRef.$triggerElm.CFW_trigger('afterShow.cfw.tab', { relatedTarget: $previous[0] });
                 }
             }
 
             if (doTransition) {
                 node.one('cfwTransitionEnd', displayTab)
-                .CFW_emulateTransitionEnd(this.settings.speed);
+                    .CFW_emulateTransitionEnd(this.settings.speed);
             } else {
                 displayTab();
             }
 
             $prevActive.removeClass('in');
-        },
-
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
         },
 
         _parseDataAttr : function() {
@@ -270,18 +257,6 @@
             if (typeof data.cfwTabSpeed   !== 'undefined') { parsedData.speed   = data.cfwTabSpeed;   }
             if (typeof data.cfwTabHidden  !== 'undefined') { parsedData.hidden  = data.cfwTabHidden;  }
             return parsedData;
-        },
-
-        _trigger : function($callingElm, eventName, extraData) {
-            var e = $.Event(eventName);
-            if ($.isPlainObject(extraData)) {
-                e = $.extend({}, e, extraData);
-            }
-            $callingElm.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 

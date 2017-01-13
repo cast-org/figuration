@@ -28,7 +28,7 @@
         _init : function() {
             this._reset();
             this._dragStartOn();
-            this._trigger('init.cfw.drag');
+            this.$element.CFW_trigger('init.cfw.drag');
         },
 
         destroy : function() {
@@ -83,7 +83,7 @@
             this.dragdata.originalY = e.currentTarget.offsetTop;
 
             var props = this._properties(coord, this.dragdata);
-            this._trigger('dragStart.cfw.drag', props);
+            this.$element.CFW_trigger('dragStart.cfw.drag', props);
         },
 
         _drag : function(e) {
@@ -94,7 +94,7 @@
             e.preventDefault();
             var coord = this._coordinates(e);
             var props = this._properties(coord, this.dragdata);
-            this._trigger('drag.cfw.drag', props);
+            this.$element.CFW_trigger('drag.cfw.drag', props);
         },
 
         _dragEnd : function(e) {
@@ -105,7 +105,7 @@
 
             var coord = this._coordinates(e);
             var props = this._properties(coord, this.dragdata);
-            this._trigger('dragEnd.cfw.drag', props);
+            this.$element.CFW_trigger('dragEnd.cfw.drag', props);
 
             this._reset();
             this._dragStartOn();
@@ -152,18 +152,6 @@
 
         __dontstart : function() {
             return false;
-        },
-
-        _trigger : function(eventName, extraData) {
-            var e = $.Event(eventName);
-            if ($.isPlainObject(extraData)) {
-                e = $.extend({}, e, extraData);
-            }
-            this.$element.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
