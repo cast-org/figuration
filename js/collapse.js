@@ -30,7 +30,6 @@
     CFW_Widget_Collapse.prototype = {
 
         _init : function() {
-            var $selfRef = this;
             // Get collapse group ID
             var collapseID = this.settings.toggle;
 
@@ -57,7 +56,7 @@
             this.$triggerColl = $('[data-cfw="collapse"][data-cfw-collapse-toggle="' + collapseID + '"]');
 
             // Check for presence of trigger id - set if not present
-            // var triggerID = this._getID(this.$triggerElm, 'cfw-collapse');
+            // var triggerID = this.$triggerElm.CFW_getID('cfw-collapse');
 
             // Add collpase class(es)
             this.$targetElm.addClass('collapse');
@@ -69,7 +68,7 @@
             var targetList = '';
 
             this.$targetElm.each(function() {
-                var tempID = $selfRef._getID($(this), 'cfw-collapse');
+                var tempID = $(this).CFW_getID('cfw-collapse');
                 targetList += (tempID + ' ');
             });
             // Set ARIA on trigger
@@ -90,7 +89,7 @@
             // Bind click handler
             this.$triggerElm.on('click.cfw.collapse.toggle', $.proxy(this.toggle, this));
 
-            this._trigger('init.cfw.collapse');
+            this.$triggerElm.CFW_trigger('init.cfw.collapse');
         },
 
         toggle : function(e) {
@@ -118,7 +117,7 @@
             if (this.inTransition || this.$targetElm.hasClass('in')) { return; }
 
             // Start open transition
-            if (!this._trigger('beforeShow.cfw.collapse')) {
+            if (!this.$triggerElm.CFW_trigger('beforeShow.cfw.collapse')) {
                 return;
             }
 
@@ -149,7 +148,7 @@
             if (this.inTransition || !this.$targetElm.hasClass('in')) { return; }
 
             // Start close transition
-            if (!this._trigger('beforeHide.cfw.collapse')) {
+            if (!this.$triggerElm.CFW_trigger('beforeHide.cfw.collapse')) {
                 return;
             }
 
@@ -189,7 +188,7 @@
             if (this.settings.showFollow) {
                 this.$targetElm.attr('tabindex', '-1').get(0).trigger('focus');
             }
-            this._trigger('afterShow.cfw.collapse');
+            this.$triggerElm.CFW_trigger('afterShow.cfw.collapse');
         },
 
         _hideComplete : function() {
@@ -202,17 +201,7 @@
             if (this.settings.hideFollow) {
                 this.$triggerColl.get(0).trigger('focus');
             }
-            this._trigger('afterHide.cfw.collapse');
-        },
-
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
+            this.$triggerElm.CFW_trigger('afterHide.cfw.collapse');
         },
 
         _parseDataAttr : function() {
@@ -227,15 +216,6 @@
             if (typeof data.cfwCollapseHidden     !== 'undefined') { parsedData.hidden     = data.cfwCollapseHidden;     }
 
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$triggerElm.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 

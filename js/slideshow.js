@@ -65,12 +65,12 @@
 
             this.update();
 
-            this._trigger('init.cfw.slideshow');
+            this.$element.CFW_trigger('init.cfw.slideshow');
         },
 
         prev : function() {
             if (this.currIndex > 0) {
-                this._trigger('prev.cfw.slideshow');
+                this.$element.CFW_trigger('prev.cfw.slideshow');
                 var newIndex = this.currIndex - 1;
                 this.$tabs.eq(newIndex).CFW_Tab('show');
             }
@@ -78,7 +78,7 @@
 
         next : function() {
             if (this.currIndex < this.tabLen - 1) {
-                this._trigger('next.cfw.slideshow');
+                this.$element.CFW_trigger('next.cfw.slideshow');
                 var newIndex = this.currIndex + 1;
                 this.$tabs.eq(newIndex).CFW_Tab('show');
             }
@@ -127,15 +127,6 @@
 
             // if (typeof data.cfwSlideshowActive !== 'undefined') { parsedData.active = data.cfwSlideshowActive; }
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$element.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v2.0.0): transition.js
+ * Figuration (v2.0.0): util.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -9,6 +9,10 @@
     'use strict';
 
     function CFW_transitionEnd() {
+        if (window.QUnit) {
+            return false;
+        }
+
         var div = document.createElement('div');
 
         // Set name/event name pairs
@@ -55,5 +59,28 @@
             }
         };
     });
+
+    $.fn.CFW_getID = function(prefix) {
+        var $node = $(this);
+        var nodeID = $node.attr('id');
+        if (nodeID === undefined) {
+            do nodeID = prefix + '-' + ~~(Math.random() * 1000000); // "~~" acts like a faster Math.floor() here
+            while (document.getElementById(nodeID));
+            $node.attr('id', nodeID);
+        }
+        return nodeID;
+    };
+
+    $.fn.CFW_trigger = function(eventName, extraData) {
+        var e = $.Event(eventName);
+        if ($.isPlainObject(extraData)) {
+            e = $.extend({}, e, extraData);
+        }
+        $(this).trigger(e);
+        if (e.isDefaultPrevented()) {
+            return false;
+        }
+        return true;
+    };
 
 })(jQuery);

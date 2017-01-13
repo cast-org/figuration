@@ -37,7 +37,7 @@
                 .on('scroll.cfw.affix)',  $.proxy(this.checkPosition, this))
                 .on('click.cfw.affix',  $.proxy(this.checkPositionDelayed, this));
 
-            this._trigger('init.cfw.affix');
+            this.$element.CFW_trigger('init.cfw.affix');
 
             this.checkPosition();
         },
@@ -103,7 +103,7 @@
                 var affixType = 'affix' + (affix ? '-' + affix : '');
                 var eventName = affixType + '.cfw.affix';
 
-                if (!this._trigger(eventName)) {
+                if (!this.$element.CFW_trigger(eventName)) {
                     return;
                 }
 
@@ -112,8 +112,8 @@
 
                 this.$element
                     .removeClass(CFW_Widget_Affix.RESET)
-                    .addClass(affixType);
-                this._trigger(eventName.replace('affix', 'affixed'));
+                    .addClass(affixType)
+                    .CFW_trigger(eventName.replace('affix', 'affixed'));
             }
 
             if (affix == 'bottom') {
@@ -132,15 +132,6 @@
             if (typeof data.cfwAffixOffsetBottom !== 'undefined') { parsedData.offset.bottom = data.cfwAffixOffsetBottom; }
             if (typeof data.cfwAffixOffsetTop !== 'undefined')    { parsedData.offset.top    = data.cfwAffixOffsetTop;    }
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$element.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 

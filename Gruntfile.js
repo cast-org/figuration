@@ -47,7 +47,7 @@ module.exports = function(grunt) {
         // File definitions
         // ==========
         jsCore: [
-            'js/transition.js',
+            'js/util.js',
             'js/drag.js',
             'js/collapse.js',
             'js/dropdown.js',

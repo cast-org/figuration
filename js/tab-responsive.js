@@ -65,7 +65,7 @@
                 this.updateCollapse(this.$tabActive);
             }
 
-            this._trigger('init.cfw.tabResponsive');
+            this.$element.CFW_trigger('init.cfw.tabResponsive');
         },
 
         // Open the collapse element in the active panel
@@ -143,15 +143,6 @@
 
             if (typeof data.cfwTabresponsiveActive !== 'undefined') { parsedData.active = data.cfwTabresponsiveActive; }
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$element.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 

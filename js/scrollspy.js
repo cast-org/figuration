@@ -32,7 +32,7 @@
 
             this.$scrollElement.on('scroll.bs.scrollspy', process);
             this.selector = (this.settings.target || '') + ' .nav li > a';
-            this._trigger(this.$scrollElement, 'init.cfw.scrollspy');
+            this.$scrollElement.CFW_trigger('init.cfw.scrollspy');
 
             this.refresh();
             this.process();
@@ -116,17 +116,17 @@
                 '[data-target="' + target + '"],' +
                 this.selector + '[href="' + target + '"]';
 
-            var active = $(selector)
+            var $active = $(selector)
                 .parents('li')
                 .addClass('active');
 
-            if (active.parent('.dropdown-menu').length) {
-                active = active
+            if ($active.parent('.dropdown-menu').length) {
+                $active = $active
                     .closest('li.dropdown')
                     .addClass('active');
             }
 
-            this._trigger(active, 'activate.cfw.scrollspy');
+            $active.CFW_trigger('activate.cfw.scrollspy');
         },
 
         clear : function() {
@@ -142,15 +142,6 @@
             if (typeof data.cfwScrollspyTarget !== 'undefined') { parsedData.target = data.cfwScrollspyTarget; }
             if (typeof data.cfwScrollspyOffset !== 'undefined') { parsedData.offset = data.cfwScrollspyOffset; }
             return parsedData;
-        },
-
-        _trigger : function($callingElm, eventName) {
-            var e = $.Event(eventName);
-            $callingElm.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 

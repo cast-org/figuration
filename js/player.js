@@ -122,7 +122,7 @@
             }
 
             if ((this.type == 'audio' && !html5.audio) || (this.type == 'video' && !html5.video)) {
-                this._trigger('noSupport.cfw.player');
+                this.$media.CFW_trigger('noSupport.cfw.player');
                 return false;
             }
 
@@ -305,7 +305,7 @@
             this.$focus = $(focusDiv);
             this.$element.prepend(this.$focus);
 
-            this._trigger('ready.cfw.player');
+            this.$media.CFW_trigger('ready.cfw.player');
 
             // Handle element attributes
             if (this.media.autoplay) {
@@ -314,7 +314,7 @@
         },
 
         error : function() {
-            this._trigger('error.cfw.player');
+            this.$media.CFW_trigger('error.cfw.player');
         },
 
         toggle : function() {
@@ -644,11 +644,11 @@
             if (this.isFullScreen()) {
                 $fullElm.addClass('active');
                 this.$element.addClass('player-fulldisplay');
-                this._trigger('enterFullscreen.cfw.player');
+                this.$media.CFW_trigger('enterFullscreen.cfw.player');
             } else {
                 $fullElm.removeClass('active');
                 this.$element.removeClass('player-fulldisplay');
-                this._trigger('exitFullscreen.cfw.player');
+                this.$media.CFW_trigger('exitFullscreen.cfw.player');
             }
         },
 
@@ -713,7 +713,7 @@
                 var $wrapper = $captionElm.parent(); /* Because $().wrap() clones element */
 
                 $wrapper.append($menu);
-                var menuID = this._getID($menu, 'cfw-player');
+                var menuID = $menu.CFW_getID('cfw-player');
 
                 var $menuItem = $('<li class="player-caption-off"><a href="#" data-cfw-player-track="-1">Off</a></li>');
                 $menu.append($menuItem);
@@ -832,7 +832,7 @@
                 var $wrapper = $tsElm.parent(); /* Because $().wrap() clones element */
 
                 $wrapper.append($menu);
-                var menuID = this._getID($menu, 'cfw-player');
+                var menuID = $menu.CFW_getID('cfw-player');
 
                 var $menuItem = $('<li class="player-script-off"><a href="#" data-cfw-player-script="-1">Off</a></li>');
                 $menu.append($menuItem);
@@ -895,11 +895,11 @@
             }
 
             if (trackID == -1 && this.$scriptElm !== null) {
-                if (!this._trigger('beforeTranscriptHide.cfw.player')) {
+                if (!this.$media.CFW_trigger('beforeTranscriptHide.cfw.player')) {
                     return;
                 }
             } else {
-                if (!this._trigger('beforeTranscriptShow.cfw.player')) {
+                if (!this.$media.CFW_trigger('beforeTranscriptShow.cfw.player')) {
                     return;
                 }
             }
@@ -936,7 +936,7 @@
 
             if (trackID == -1) {
                 this.scriptCues = null;
-                this._trigger('afterTranscriptHide.cfw.player');
+                this.$media.CFW_trigger('afterTranscriptHide.cfw.player');
             } else {
                 this.scriptLoad();
             }
@@ -1113,7 +1113,7 @@
                 this.$media.trigger(cueEvent);
             }
 
-            this._trigger('afterTranscriptShow.cfw.player');
+            this.$media.CFW_trigger('afterTranscriptShow.cfw.player');
         },
 
         scriptHighlight : function(activeCues) {
@@ -1308,16 +1308,6 @@
             }, 10);
         },
 
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
-        },
-
         _parseDataAttr : function() {
             var parsedData = {};
             var data = this.$element.data();
@@ -1328,15 +1318,6 @@
             if (typeof data.cfwPlayerTranscriptOption !== 'undefined') { parsedData.transcriptOption = data.cfwPlayerTranscriptOption; }
 
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$media.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 

@@ -43,7 +43,7 @@
             this.$parent.data('cfw.alert', this);
             this.$parent.find(dismiss).data('cfw.alert', this);
 
-            this._trigger('init.cfw.alert');
+            this.$parent.CFW_trigger('init.cfw.alert');
         },
 
         close : function(e) {
@@ -53,7 +53,7 @@
 
             if (this.inTransition) { return; }
 
-            if (!this._trigger('beforeClose.cfw.alert')) {
+            if (!this.$parent.CFW_trigger('beforeClose.cfw.alert')) {
                 return;
             }
 
@@ -63,7 +63,7 @@
                 // Detach from parent, fire event then clean up data
                 $selfRef.$parent.detach();
                 $selfRef.inTransition = 0;
-                $selfRef._trigger('afterClose.cfw.alert');
+                $selfRef.$parent.CFW_trigger('afterClose.cfw.alert');
                 $selfRef.$parent.remove();
             }
 
@@ -103,15 +103,6 @@
             if (typeof data.cfwAlertAnimate !== 'undefined') { parsedData.animate = data.cfwAlertAnimate; }
             if (typeof data.cfwAlertSpeed   !== 'undefined') { parsedData.speed   = data.cfwAlertSpeed;   }
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$parent.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 

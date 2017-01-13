@@ -46,7 +46,7 @@
                 }
             }
 
-            this.id = this._getID(this.$element, 'cfw-lazy');
+            this.id = this.$element.CFW_getID('cfw-lazy');
 
             // Bind events
             this.eventTypes = this.settings.trigger.split(' ');
@@ -60,7 +60,7 @@
                 }
             }
 
-            this._trigger('init.cfw.lazy');
+            this.$element.CFW_trigger('init.cfw.lazy');
 
             if (checkInitViewport && this.inViewport()) { this.show(); }
         },
@@ -121,7 +121,7 @@
             this.$element[this.settings.effect](this.settings.speed);
 
             setTimeout(function() {
-                $selfRef._trigger('afterShow.cfw.lazy');
+                $selfRef.$element.CFW_trigger('afterShow.cfw.lazy');
             }, this.settings.speed);
 
             // Unbind events and unset data
@@ -135,7 +135,7 @@
             var $selfRef = this;
             if (this.isLoading) { return; }
 
-            if (!this._trigger('beforeShow.cfw.lazy')) {
+            if (!this.$element.CFW_trigger('beforeShow.cfw.lazy')) {
                 return;
             }
 
@@ -174,16 +174,6 @@
             };
         },
 
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
-        },
-
         _parseDataAttr : function() {
             var parsedData = {};
             var data = this.$element.data();
@@ -199,15 +189,6 @@
             if (typeof data.cfwLazyInvisible !== 'undefined') { parsedData.invisible = data.cfwLazyInvisible; }
 
             return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$element.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
