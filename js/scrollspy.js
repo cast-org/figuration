@@ -17,12 +17,14 @@
         this.activeTarget = null;
         this.scrollHeight = 0;
 
-        this.settings = $.extend({}, CFW_Widget_Scrollspy.DEFAULTS, this._parseDataAttr(), options);
+        var parsedData = this.$scrollElement.CFW_parseData('scrollspy', CFW_Widget_Scrollspy.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Scrollspy.DEFAULTS, parsedData, options);
 
         this._init();
     };
 
     CFW_Widget_Scrollspy.DEFAULTS = {
+        target: null,
         offset: 10
     };
 
@@ -133,15 +135,6 @@
             $(this.selector)
                 .parentsUntil(this.settings.target, '.active')
                 .removeClass('active');
-        },
-
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$scrollElement.data();
-
-            if (typeof data.cfwScrollspyTarget !== 'undefined') { parsedData.target = data.cfwScrollspyTarget; }
-            if (typeof data.cfwScrollspyOffset !== 'undefined') { parsedData.offset = data.cfwScrollspyOffset; }
-            return parsedData;
         }
     };
 

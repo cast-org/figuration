@@ -134,11 +134,13 @@ Keep tooltips in their place with the `viewport` option.
 <script>
     $('.tooltip-viewport-right').CFW_Tooltip({
         placement: 'right',
-        viewport: {selector: '#viewport-tooltip', padding: 2}
+        viewport: '#viewport-tooltip',
+        padding: 2
     });
     $('.tooltip-viewport-bottom').CFW_Tooltip({
         placement: 'bottom',
-        viewport: {selector: '#viewport-tooltip', padding: 2}
+        viewport: '#viewport-tooltip',
+        padding: 2
     });
 </script>
 {% endexample %}
@@ -257,12 +259,18 @@ function myTipAlign(tip, trigger) {
         </tr>
         <tr>
             <td>viewport</td>
-            <td>string | object | function</td>
-            <td>{ selector: 'body', padding: 0 }</td>
+            <td>string | function</td>
+            <td>'body'</td>
             <td>
-                <p>Keeps the tooltip within the bounds of this element. Example: <code>viewport: '#viewport'</code> or <code>{ selector: '#viewport', padding: 0 }</code></p>
+                <p>Keep the tooltip within the bounds of this element. Example: <code>viewport: '#viewport'</code>.</p>
                 <p>If a function is given, it is called with the triggering element DOM node as its only argument. The <code>this</code> context is set to the tooltip instance.</p>
             </td>
+        </tr>
+        <tr>
+            <td>padding</td>
+            <td>integer</td>
+            <td>0</td>
+            <td>Spacing, in pixels, to keep the tooltip away from the viewport edge.</td>
         </tr>
         <tr>
             <td>html</td>

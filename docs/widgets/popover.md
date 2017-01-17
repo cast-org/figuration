@@ -198,15 +198,18 @@ Keep popovers in their place with the `viewport` option.
 <script>
     $('.popover-viewport-right').CFW_Popover({
         placement: 'right',
-        viewport: {selector: '#viewport-popover', padding: 2}
+        viewport: '#viewport-popover',
+        padding: 2
     });
     $('.popover-viewport-bottom').CFW_Popover({
         placement: 'bottom',
-        viewport: {selector: '#viewport-popover', padding: 2}
+        viewport: '#viewport-popover',
+        padding: 2
     });
     $('.popover-viewport-drag').CFW_Popover({
         drag: true,
-        viewport: {selector: '#viewport-popover', padding: 2}
+        viewport: '#viewport-popover',
+        padding: 2
     });
 </script>
 {% endexample %}
@@ -335,12 +338,18 @@ function myPopoverAlign(tip, trigger) {
         </tr>
         <tr>
             <td>viewport</td>
-            <td>string | object</td>
-            <td>{ selector: 'body', padding: 0 }</td>
+            <td>string | function</td>
+            <td>'body'</td>
             <td>
-                <p>Keeps the popover within the bounds of this element. Example: <code>viewport: '#viewport'</code> or <code>{ selector: '#viewport', padding: 0 }</code></p>
+                <p>Keeps the popover within the bounds of this element. Example: <code>viewport: '#viewport'</code>.</p>
                 <p>If a function is given, it is called with the triggering element DOM node as its only argument. The <code>this</code> context is set to the popover instance.</p>
             </td>
+        </tr>
+        <tr>
+            <td>padding</td>
+            <td>integer</td>
+            <td>0</td>
+            <td>Spacing, in pixels, to keep the popover away from the viewport edge.</td>
         </tr>
         <tr>
             <td>html</td>

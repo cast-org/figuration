@@ -15,12 +15,14 @@
         this.id = null;
         this.isLoading = null;
 
-        this.settings = $.extend({}, CFW_Widget_Lazy.DEFAULTS, this._parseDataAttr(), options);
+        var parsedData = this.$element.CFW_parseData('lazy', CFW_Widget_Lazy.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Lazy.DEFAULTS, parsedData, options);
 
         this._init();
     };
 
     CFW_Widget_Lazy.DEFAULTS = {
+        src       : '',
         throttle  : 250,        // Throttle speed to limit event firing
         trigger   : 'scroll resize',   // Events to trigger loading source
         delay     : 0,          // Delay before loading source
@@ -172,23 +174,6 @@
                     fn.apply(context, args);
                 }
             };
-        },
-
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$element.data();
-
-            if (typeof data.cfwLazySrc       !== 'undefined') { parsedData.src       = data.cfwLazySrc;       }
-            if (typeof data.cfwLazyThrottle  !== 'undefined') { parsedData.throttle  = data.cfwLazyThrottle;  }
-            if (typeof data.cfwLazyTrigger   !== 'undefined') { parsedData.trigger   = data.cfwLazyTrigger;   }
-            if (typeof data.cfwLazyDelay     !== 'undefined') { parsedData.delay     = data.cfwLazyDelay;     }
-            if (typeof data.cfwLazyEffect    !== 'undefined') { parsedData.effect    = data.cfwLazyEffect;    }
-            if (typeof data.cfwLazySpeed     !== 'undefined') { parsedData.speed     = data.cfwLazySpeed;     }
-            if (typeof data.cfwLazyThreshold !== 'undefined') { parsedData.threshold = data.cfwLazyThreshold; }
-            if (typeof data.cfwLazyContainer !== 'undefined') { parsedData.container = data.cfwLazyContainer; }
-            if (typeof data.cfwLazyInvisible !== 'undefined') { parsedData.invisible = data.cfwLazyInvisible; }
-
-            return parsedData;
         }
     };
 

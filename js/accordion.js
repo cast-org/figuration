@@ -13,13 +13,14 @@
     var CFW_Widget_Accordion = function(element, options) {
         this.$element = $(element);
 
-        this.settings = $.extend({}, CFW_Widget_Accordion.DEFAULTS, this._parseDataAttr(), options);
+        var parsedData = this.$element.CFW_parseData('accordion', CFW_Widget_Accordion.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Accordion.DEFAULTS, parsedData, options);
 
         this._init();
     };
 
     CFW_Widget_Accordion.DEFAULTS = {
-        active      : false     // [TODO} ???
+        active: false     // [TODO} ???
     };
 
     CFW_Widget_Accordion.prototype = {
@@ -59,14 +60,6 @@
                 }
                 $this.CFW_Collapse('hide');
             });
-        },
-
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$element.data();
-
-            if (typeof data.cfwAccordionActive !== 'undefined') { parsedData.active = data.cfwAccordionActive; }
-            return parsedData;
         }
     };
 

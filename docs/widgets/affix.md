@@ -28,7 +28,7 @@ Here's how the affix widget works:
 
 - To start, the widget adds `.affix-top` to indicate the element is in its top-most position. At this point no CSS positioning is required.
 - Scrolling past the element you want affixed should trigger the actual affixing. This is where `.affix` replaces `.affix-top` and sets `position: fixed;` (provided by Bootstrap's CSS).
-- If a bottom offset is defined, scrolling past it should replace `.affix` with `.affix-bottom`. Since offsets are optional, setting one requires you to set the appropriate CSS. In this case, add `position: absolute;` when necessary. The widget uses the data attribute or JavaScript option to determine where to position the element from there.
+- If a `bottom` offset is defined, scrolling past it should replace `.affix` with `.affix-bottom`. Since offsets are optional, setting one requires you to set the appropriate CSS. In this case, add `position: absolute;` when necessary. The widget uses the data attribute or JavaScript option to determine where to position the element from there.
 
 Follow the above steps to set your CSS for either of the usage options below.
 
@@ -37,7 +37,7 @@ Follow the above steps to set your CSS for either of the usage options below.
 To easily add affix behavior to any element, just add `data-cfw="affix"` to the element you want to spy on. Use offsets to define when to toggle the pinning of an element.
 
 {% highlight html %}
-<div data-cfw="affix" data-cfw-affix-offset-top="60" data-cfw-affix-offset-bottom="200">
+<div data-cfw="affix" data-cfw-affix-top="60" data-cfw-affix-bottom="200">
   ...
 </div>
 {% endhighlight %}
@@ -47,18 +47,16 @@ To easily add affix behavior to any element, just add `data-cfw="affix"` to the 
 Call the affix widget via JavaScript:
 {% highlight js %}
 $('#myAffix').CFW_Affix({
-    offset: {
-        top: 100,
-        bottom: function () {
-            return (this.bottom = $('.footer').outerHeight(true));
-        }
+    top: 100,
+    bottom: function() {
+        return ($('.footer').outerHeight(true));
     }
 });
 {% endhighlight %}
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-affix-`, as in `data-cfw-affix-offset-top="200"`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-affix-`, as in `data-cfw-affix-top="200"`.
 
 <div class="table-responsive">
     <table class="table table-bordered table-striped">
@@ -72,10 +70,16 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </thead>
     <tbody>
         <tr>
-            <td>offset</td>
-            <td>number | function | object</td>
+            <td>top</td>
+            <td>number | function</td>
             <td>0</td>
-            <td>Pixels to offset from screen when calculating position of scroll. If a single number is provided, the offset will be applied in both top and bottom directions. To provide a unique, bottom and top offset just provide an object <code>offset: { top: 10 }</code> or <code>offset: { top: 10, bottom: 5 }</code>. Use a function when you need to dynamically calculate an offset.</td>
+            <td>Pixel offset from top of the `window` or `target` when calculating position of scroll. Use a function when you need to dynamically calculate an offset.</td>
+        </tr>
+        <tr>
+            <td>bottom</td>
+            <td>number | function</td>
+            <td>0</td>
+            <td>Pixel offset from bottom of `window` or `target` when calculating position of scroll. Use a function when you need to dynamically calculate an offset.</td>
         </tr>
         <tr>
             <td>target</td>
@@ -96,7 +100,7 @@ Activates an element to be affixed. Accepts an optional options object.
 
 {% highlight js %}
 $('#myAffix').CFW_Affix({
-    offset: {top: 10}
+    top: 10
 });
 {% endhighlight %}
 

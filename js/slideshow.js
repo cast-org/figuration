@@ -21,7 +21,8 @@
         this.currTab = null;
         this.currIndex = 0;
 
-        this.settings = $.extend({}, CFW_Widget_Slideshow.DEFAULTS, this._parseDataAttr(), options);
+        var parsedData = this.$element.CFW_parseData('slideshow', CFW_Widget_Slideshow.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Slideshow.DEFAULTS, parsedData, options);
 
         this._init();
     };
@@ -119,14 +120,6 @@
 
         _findIndex : function(node) {
             return $.inArray(node, this.$tabs);
-        },
-
-        _parseDataAttr : function() {
-            var parsedData = {};
-            // var data = this.$element.data();
-
-            // if (typeof data.cfwSlideshowActive !== 'undefined') { parsedData.active = data.cfwSlideshowActive; }
-            return parsedData;
         }
     };
 

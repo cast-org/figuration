@@ -35,7 +35,8 @@
         this.val0 = 0;
         this.val1 = 0;
 
-        this.settings = $.extend({}, CFW_Widget_Slider.DEFAULTS, this._parseDataAttr(), options);
+        var parsedData = this.$element.CFW_parseData('slider', CFW_Widget_Slider.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Slider.DEFAULTS, parsedData, options);
 
         this.inDrag = null;
         this.startPos = null;
@@ -46,16 +47,16 @@
     };
 
     CFW_Widget_Slider.DEFAULTS = {
-        min : null,             // min value
-        max : null,             // max value
-        step: 1,                // small step increment
-        chunk: null,            // large step increment (will be auto determined if not defined)
-        enabled : true,         // true - enabled / false - disabled
-        vertical : false,       // alternate orientation
-        reversed : false,       // show thumbs in opposite order
+        min : null,         // min value
+        max : null,         // max value
+        step : 1,           // small step increment
+        chunk : null,       // large step increment (will be auto determined if not defined)
+        enabled : true,     // true - enabled / false - disabled
+        vertical : false,   // alternate orientation
+        reversed : false    // show thumbs in opposite order
 
         // TODO
-        tooltip : 'show'        // 'show,hide,always'
+        // tooltip : 'show'        // 'show,hide,always'
     };
 
     CFW_Widget_Slider.prototype = {
@@ -492,21 +493,6 @@
                 $node = this.$sliderThumbMin;
             }
             return $node;
-        },
-
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$element.data();
-            if (typeof data.cfwSliderMin        !== 'undefined') { parsedData.min       = data.cfwSliderMin;        }
-            if (typeof data.cfwSliderMax        !== 'undefined') { parsedData.max       = data.cfwSliderMax;        }
-            if (typeof data.cfwSliderStep       !== 'undefined') { parsedData.step      = data.cfwSliderStep;       }
-            if (typeof data.cfwSliderChunk      !== 'undefined') { parsedData.chunk     = data.cfwSliderChunk;      }
-            if (typeof data.cfwSliderVertical   !== 'undefined') { parsedData.vertical  = data.cfwSliderVertical;   }
-            if (typeof data.cfwSliderReversed   !== 'undefined') { parsedData.reversed  = data.cfwSliderReversed;   }
-            if (typeof data.cfwSliderEnabled    !== 'undefined') { parsedData.enabled   = data.cfwSliderEnabled;    }
-
-            if (typeof data.cfwSliderTooltip    !== 'undefined') { parsedData.tooltip   = data.cfwSliderTooltip;    }
-            return parsedData;
         }
     };
 

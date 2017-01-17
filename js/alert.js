@@ -15,14 +15,16 @@
         this.$parent = null;
         this.inTransition = null;
 
-        this.settings = $.extend({}, CFW_Widget_Alert.DEFAULTS, this._parseDataAttr(), options);
+        var parsedData = this.$element.CFW_parseData('alert', CFW_Widget_Alert.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Alert.DEFAULTS, parsedData, options);
 
         this._init();
     };
 
     CFW_Widget_Alert.DEFAULTS = {
-        animate     : true,     // If alert targets should fade out
-        speed       : 150       // Speed of animation (milliseconds)
+        target  : null,
+        animate : true, // If alert targets should fade out
+        speed   : 150   // Speed of animation (milliseconds)
     };
 
     CFW_Widget_Alert.prototype = {
@@ -93,16 +95,6 @@
             }
 
             this.$parent = $parent;
-        },
-
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$element.data();
-
-            if (typeof data.cfwAlertTarget  !== 'undefined') { parsedData.animate = data.cfwAlertTarget;  }
-            if (typeof data.cfwAlertAnimate !== 'undefined') { parsedData.animate = data.cfwAlertAnimate; }
-            if (typeof data.cfwAlertSpeed   !== 'undefined') { parsedData.speed   = data.cfwAlertSpeed;   }
-            return parsedData;
         }
     };
 

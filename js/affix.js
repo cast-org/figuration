@@ -16,7 +16,8 @@
         this.unpin = null;
         this.pinnedOffset = null;
 
-        this.settings = $.extend({}, CFW_Widget_Affix.DEFAULTS, this._parseDataAttr(), options);
+        var parsedData = this.$element.CFW_parseData('affix', CFW_Widget_Affix.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Affix.DEFAULTS, parsedData, options);
 
         this._init();
     };
@@ -24,8 +25,9 @@
     CFW_Widget_Affix.RESET = 'affix affix-top affix-bottom';
 
     CFW_Widget_Affix.DEFAULTS = {
-        offset: 0,
-        target: window
+        target : window,
+        top    : 0,
+        bottom : 0
     };
 
     CFW_Widget_Affix.prototype = {
@@ -81,14 +83,12 @@
             if (!this.$element.is(':visible')) { return; }
 
             var height       = this.$element.height();
-            var offset       = this.settings.offset;
-            var offsetTop    = offset.top;
-            var offsetBottom = offset.bottom;
+            var offsetTop    = this.settings.top;
+            var offsetBottom = this.settings.bottom;
             var scrollHeight =  Math.max($(document).height(), $(document.body).height());
 
-            if (typeof offset != 'object')         { offsetBottom = offsetTop = offset; }
-            if (typeof offsetTop == 'function')    { offsetTop    = offset.top(this.$element); }
-            if (typeof offsetBottom == 'function') { offsetBottom = offset.bottom(this.$element); }
+            if (typeof offsetTop == 'function')    { offsetTop    = offsetTop(this.$element); }
+            if (typeof offsetBottom == 'function') { offsetBottom = offsetBottom(this.$element); }
 
             var affix = this.getState(scrollHeight, height, offsetTop, offsetBottom);
 
@@ -121,17 +121,6 @@
                     top: scrollHeight - height - offsetBottom
                 });
             }
-        },
-
-        _parseDataAttr : function() {
-            var parsedData = {};
-            parsedData.offset = {};
-            var data = this.$element.data();
-
-            // data.cfwAffixOffset = data.cfwAffixOffset || {};
-            if (typeof data.cfwAffixOffsetBottom !== 'undefined') { parsedData.offset.bottom = data.cfwAffixOffsetBottom; }
-            if (typeof data.cfwAffixOffsetTop !== 'undefined')    { parsedData.offset.top    = data.cfwAffixOffsetTop;    }
-            return parsedData;
         }
     };
 

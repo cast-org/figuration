@@ -39,15 +39,10 @@ $(window).ready(function() {
     });
     var $sideBar = $('.sidebar');
     $sideBar.CFW_Affix({
-        offset: {
-            top: function () {
-                var offsetTop      = $sideBar.offset().top;
-                var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10)
-                var navOuterHeight = $('.topnav').height();
-                return (this.top = offsetTop - navOuterHeight);
-            },
-            bottom: 0
-        }
+        offsetTop:
+            function() {
+                return $('.topnav').height();
+            }
     });
 });
 

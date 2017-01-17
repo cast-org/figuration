@@ -14,17 +14,19 @@
         this.inTransition = null;
         this.$triggerColl = null;
 
-        this.settings = $.extend({}, CFW_Widget_Collapse.DEFAULTS, this._parseDataAttr(), options);
+        var parsedData = this.$triggerElm.CFW_parseData('collapse', CFW_Widget_Collapse.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Collapse.DEFAULTS, parsedData, options);
 
         this._init();
     };
 
     CFW_Widget_Collapse.DEFAULTS = {
-        animate     : true,     // If collapse targets should expand and contract
-        speed       : 300,      // Speed of animation (milliseconds)
-        follow      : false,    // If browser focus should move when a collapse toggle is activated
-        horizontal  : false,    // If collapse should transition horizontal (vertical is default)
-        hidden      : true      // Use aria-hidden on target containers by default
+        toggle     : null,
+        animate    : true,  // If collapse targets should expand and contract
+        speed      : 300,   // Speed of animation (milliseconds)
+        follow     : false, // If browser focus should move when a collapse toggle is activated
+        horizontal : false, // If collapse should transition horizontal (vertical is default)
+        hidden     : true   // Use aria-hidden on target containers by default
     };
 
     CFW_Widget_Collapse.prototype = {
@@ -202,20 +204,6 @@
                 this.$triggerColl.get(0).trigger('focus');
             }
             this.$triggerElm.CFW_trigger('afterHide.cfw.collapse');
-        },
-
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$triggerElm.data();
-
-            if (typeof data.cfwCollapseToggle     !== 'undefined') { parsedData.toggle     = data.cfwCollapseToggle;     }
-            if (typeof data.cfwCollapseAnimate    !== 'undefined') { parsedData.animate    = data.cfwCollapseAnimate;    }
-            if (typeof data.cfwCollapseSpeed      !== 'undefined') { parsedData.speed      = data.cfwCollapseSpeed;      }
-            if (typeof data.cfwCollapseFollow     !== 'undefined') { parsedData.follow     = data.cfwCollapseFollow;     }
-            if (typeof data.cfwCollapseHorizontal !== 'undefined') { parsedData.horizontal = data.cfwCollapseHorizontal; }
-            if (typeof data.cfwCollapseHidden     !== 'undefined') { parsedData.hidden     = data.cfwCollapseHidden;     }
-
-            return parsedData;
         }
     };
 

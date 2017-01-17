@@ -21,7 +21,8 @@
         this.ignoreBackdropClick = false;
         this.$focusLast = null;
 
-        this.settings = $.extend({}, CFW_Widget_Modal.DEFAULTS, this._parseDataAttr(), options);
+        var parsedData = this.$triggerElm.CFW_parseData('modal', CFW_Widget_Modal.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Modal.DEFAULTS, parsedData, options);
         if (this.settings.speed && typeof this.settings.speed == 'number') {
             this.settings.speed = {
                 backdrop: this.settings.speed,
@@ -33,18 +34,17 @@
     };
 
     CFW_Widget_Modal.DEFAULTS = {
-        toggle       : false,       // Target selector
-        animate      : true,        // If modal windows should animate
+        toggle       : false,   // Target selector
+        animate      : true,    // If modal windows should animate
         speed : {
-            backdrop : 150,         // Speed of backdrop animation (milliseconds)
-            modal    : 300          // Speed of modal animation (milliseconds)
+            backdrop : 150,     // Speed of backdrop animation (milliseconds)
+            modal    : 300      // Speed of modal animation (milliseconds)
         },
-        unlink       : false,       // If on hide to remove events and attributes from modal and trigger
-        destroy      : false,       // If on hide to unlink, then remove modal from DOM
-        backdrop     : true,        // Show backdrop, or 'static' for no close on click
-        keyboard     : true,        // Close modal on ESC press
-        show         : false,       // Show modal afer initialize
-        remote       : false        // Remote URL to load one time
+        unlink       : false,   // If on hide to remove events and attributes from modal and trigger
+        destroy      : false,   // If on hide to unlink, then remove modal from DOM
+        backdrop     : true,    // Show backdrop, or 'static' for no close on click
+        keyboard     : true,    // Close modal on ESC press
+        show         : false    // Show modal afer initialize
     };
 
     CFW_Widget_Modal.prototype = {
@@ -439,22 +439,6 @@
                 $selfRef.$targetElm.remove();
             });
             this.unlink();
-        },
-
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$triggerElm.data();
-
-            if (typeof data.cfwModalToggle   !== 'undefined') { parsedData.toggle   = data.cfwModalToggle;  }
-            if (typeof data.cfwModalAnimate  !== 'undefined') { parsedData.animate  = data.cfwModalAnimate;  }
-            if (typeof data.cfwModalSpeed    !== 'undefined') { parsedData.speed    = data.cfwModalSpeed;    }
-            if (typeof data.cfwModalUnlink   !== 'undefined') { parsedData.unlink   = data.cfwModalUnlink;   }
-            if (typeof data.cfwModalDestroy  !== 'undefined') { parsedData.destroy  = data.cfwModalDestroy;  }
-            if (typeof data.cfwModalBackdrop !== 'undefined') { parsedData.backdrop = data.cfwModalBackdrop; }
-            if (typeof data.cfwModalKeyboard !== 'undefined') { parsedData.keyboard = data.cfwModalKeyboard; }
-            if (typeof data.cfwModalShow     !== 'undefined') { parsedData.show     = data.cfwModalShow;     }
-            if (typeof data.cfwModalRemote   !== 'undefined') { parsedData.remote   = data.cfwModalRemote;   }
-            return parsedData;
         }
     };
 

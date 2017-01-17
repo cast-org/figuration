@@ -609,10 +609,8 @@ $(function() {
             .appendTo($container)
             .CFW_Tooltip({
                 placement: 'right',
-                viewport: {
-                    selector: 'body',
-                    padding: 12
-                }
+                viewport: 'body',
+                padding: 12
             });
 
         $target.CFW_Tooltip('show');
@@ -637,10 +635,8 @@ $(function() {
             .appendTo($container)
             .CFW_Tooltip({
                 placement: 'right',
-                viewport: {
-                    selector: 'body',
-                    padding: 12
-                }
+                viewport: 'body',
+                padding: 12
             });
 
         $target.CFW_Tooltip('show');
@@ -667,10 +663,8 @@ $(function() {
             .appendTo($container)
             .CFW_Tooltip({
                 placement: 'bottom',
-                viewport: {
-                    selector: 'body',
-                    padding: 12
-                }
+                viewport: 'body',
+                padding: 12
             });
 
         $target.CFW_Tooltip('show');
@@ -696,10 +690,8 @@ $(function() {
             .appendTo($container)
             .CFW_Tooltip({
                 placement: 'bottom',
-                viewport: {
-                    selector: 'body',
-                    padding: 12
-                }
+                viewport: 'body',
+                padding: 12
             });
 
         $target.CFW_Tooltip('show');
