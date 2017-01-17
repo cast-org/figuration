@@ -55,7 +55,7 @@
             for (var i = this.eventTypes.length; i--;) {
                 var eventType = this.eventTypes[i];
                 if (eventType == 'scroll' || eventType == 'resize') {
-                    $(this.settings.container).on(eventType + '.cfw.lazy.' + this.id, this._throttle($.proxy(this._handleTrigger, this), this.settings.throttle));
+                    $(this.settings.container).on(eventType + '.cfw.lazy.' + this.id, $().CFW_throttle($.proxy(this._handleTrigger, this), this.settings.throttle));
                     checkInitViewport = true;
                 } else {
                     $(this.$element).on(eventType + '.cfw.lazy.' + this.id, $.proxy(this.show, this));
@@ -150,30 +150,6 @@
 
         _handleTrigger : function() {
             if (this.inViewport()) { this.show(); }
-        },
-
-        _throttle : function(fn, threshhold, scope) {
-            /* From: http://remysharp.com/2010/07/21/throttling-function-calls/ */
-            threshhold || (threshhold = 250);
-            var last;
-            var deferTimer;
-            return function() {
-                var context = scope || this;
-
-                var now = +new Date();
-                var args = arguments;
-                if (last && now < last + threshhold) {
-                    // hold on to it
-                    clearTimeout(deferTimer);
-                    deferTimer = setTimeout(function() {
-                        last = now;
-                        fn.apply(context, args);
-                    }, threshhold);
-                } else {
-                    last = now;
-                    fn.apply(context, args);
-                }
-            };
         }
     };
 
