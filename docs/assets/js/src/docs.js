@@ -72,15 +72,11 @@ function topLinkAffix() {
     var $topLink = $('.topLink');
 
     $topLink.CFW_Affix({
-        offset: {
-            top: function() {
-                // return $('header').outerHeight() + $('.jumbotron-docs').outerHeight();
-                $title = $('.cf-title');
-                return $title.offset().top + $title.outerHeight();
-            },
-            bottom: function() {
-                return $('footer').outerHeight();
-            }
+        offsetTop: function() {
+            return $('.cf-title').offset().top;
+        },
+        offsetBottom: function() {
+            return $('footer').outerHeight();
         }
     });
     $(window).scroll();

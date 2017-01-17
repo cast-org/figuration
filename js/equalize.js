@@ -15,12 +15,14 @@
         this.$element = $(element);
         this.$window = $(window);
 
-        this.settings = $.extend({}, CFW_Widget_Equalize.DEFAULTS, this._parseDataAttr(), options);
+        var parsedData = this.$element.CFW_parseData('equalize', CFW_Widget_Equalize.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Equalize.DEFAULTS, parsedData, options);
 
         this._init();
     };
 
     CFW_Widget_Equalize.DEFAULTS = {
+        target   : '',
         throttle : 250,     // Throttle speed to limit event firing
         stack    : false,   // Equalize items when stacked
         row      : false,   // Equalize items by row
@@ -227,18 +229,6 @@
                     fn.apply(context, args);
                 }
             };
-        },
-
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$element.data();
-
-            if (typeof data.cfwEqualizeTarget   !== 'undefined') { parsedData.target   = data.cfwEqualizeTarget;   }
-            if (typeof data.cfwEqualizeThrottle !== 'undefined') { parsedData.throttle = data.cfwEqualizeThrottle; }
-            if (typeof data.cfwEqualizeStack    !== 'undefined') { parsedData.stack    = data.cfwEqualizeStack;    }
-            if (typeof data.cfwEqualizeRow      !== 'undefined') { parsedData.row      = data.cfwEqualizeRow;      }
-            if (typeof data.cfwEqualizeMinimum  !== 'undefined') { parsedData.minimum  = data.cfwEqualizeMinimum;  }
-            return parsedData;
         }
     };
 

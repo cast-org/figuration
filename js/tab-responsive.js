@@ -14,7 +14,8 @@
     var CFW_Widget_TabResponsive = function(element, options) {
         this.$element = $(element);
 
-        this.settings = $.extend({}, CFW_Widget_TabResponsive.DEFAULTS, this._parseDataAttr(), options);
+        var parsedData = this.$element.CFW_parseData('tabresponsive', CFW_Widget_TabResponsive.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_TabResponsive.DEFAULTS, parsedData, options);
 
         this.$tabFirst = this.$element.find('[data-cfw="tab"]').eq(0);
         this.$navElm = this.$tabFirst.closest('ul:not(.dropdown-menu)');
@@ -24,7 +25,7 @@
     };
 
     CFW_Widget_TabResponsive.DEFAULTS = {
-        active      : false     // Open the collase for the default active tab
+        active: false   // Open the collapse for the default active tab
     };
 
     CFW_Widget_TabResponsive.prototype = {
@@ -135,14 +136,6 @@
                     $triggerElm.CFW_Tab('show');
                 }
             });
-        },
-
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$element.data();
-
-            if (typeof data.cfwTabresponsiveActive !== 'undefined') { parsedData.active = data.cfwTabresponsiveActive; }
-            return parsedData;
         }
     };
 

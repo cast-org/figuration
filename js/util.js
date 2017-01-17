@@ -8,6 +8,10 @@
 (function($) {
     'use strict';
 
+    String.prototype.capitalize = function() {
+        return this.charAt(0).toUpperCase() + this.slice(1);
+    };
+
     function CFW_transitionEnd() {
         if (window.QUnit) {
             return false;
@@ -81,6 +85,23 @@
             return false;
         }
         return true;
+    };
+
+    $.fn.CFW_parseData = function(name, object) {
+        var parsedData = {};
+        var $node = $(this);
+        var data = $node.data();
+        name = name.capitalize();
+
+        for (var prop in object) {
+            if (object.hasOwnProperty(prop)) {
+                var propName = prop.capitalize();
+                if (typeof data['cfw' + name + propName] !== 'undefined') {
+                    parsedData[prop] = data['cfw' + name + propName];
+                }
+            }
+        }
+        return parsedData;
     };
 
 })(jQuery);

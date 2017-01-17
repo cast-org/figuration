@@ -97,12 +97,14 @@
         this.scriptCurrent = -1;
         this.scriptCues = null;
 
-        this.settings = $.extend({}, CFW_Widget_Player.DEFAULTS, this._parseDataAttr(), options);
+        var parsedData = this.$element.CFW_parseData('player', CFW_Widget_Player.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Player.DEFAULTS, parsedData, options);
 
         this._init();
     };
 
     CFW_Widget_Player.DEFAULTS = {
+        src: '',
         transcript: -1,             // Default transcript off
         transcriptScroll : true,    // Scroll transcript
         transcriptOption : true     // Show transcript options
@@ -1306,18 +1308,6 @@
                     $selfRef.$focus.trigger('focus');
                 }
             }, 10);
-        },
-
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$element.data();
-
-            if (typeof data.cfwPlayerSrc              !== 'undefined') { parsedData.src              = data.cfwPlayerSrc;              }
-            if (typeof data.cfwPlayerTranscript       !== 'undefined') { parsedData.transcript       = data.cfwPlayerTranscript;       }
-            if (typeof data.cfwPlayerTranscriptScroll !== 'undefined') { parsedData.transcriptScroll = data.cfwPlayerTranscriptScroll; }
-            if (typeof data.cfwPlayerTranscriptOption !== 'undefined') { parsedData.transcriptOption = data.cfwPlayerTranscriptOption; }
-
-            return parsedData;
         }
     };
 

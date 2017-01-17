@@ -20,7 +20,8 @@
 
         this.timerHide = null;
 
-        this.settings = $.extend({}, CFW_Widget_Dropdown.DEFAULTS, this._parseDataAttr(), options);
+        var parsedData = this.$triggerElm.CFW_parseData('dropdown', CFW_Widget_Dropdown.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Dropdown.DEFAULTS, parsedData, options);
         this.settings.isTouch = $isTouch;   // Touch enabled-browser flag - override not allowed
 
         this.c = CFW_Widget_Dropdown.CLASSES;
@@ -30,20 +31,20 @@
 
     CFW_Widget_Dropdown.CLASSES = {
         // Class names
-        isMenu          : 'dropdown-menu',
-        hasSubMenu      : 'dropdown-submenu',
-        showSubMenu     : 'show-menu',
-        backdrop        : 'dropdown-backdrop',
-        backLink        : 'dropdown-back'
+        isMenu      : 'dropdown-menu',
+        hasSubMenu  : 'dropdown-submenu',
+        showSubMenu : 'show-menu',
+        backdrop    : 'dropdown-backdrop',
+        backLink    : 'dropdown-back'
     };
 
     CFW_Widget_Dropdown.DEFAULTS = {
-        // Default Settings
-        delay           : 350,          // Delay for hiding menu (milliseconds)
-        hover           : false,        // Enable hover style navigation
-        backlink        : false,        // Insert back links into submenus
-        backtop         : false,        // Should back links start at top level
-        backtext        : 'Back'        // Text for back links
+        toggle   : null,
+        delay    : 350,     // Delay for hiding menu (milliseconds)
+        hover    : false,   // Enable hover style navigation
+        backlink : false,   // Insert back links into submenus
+        backtop  : false,   // Should back links start at top level
+        backtext : 'Back'   // Text for back links
     };
 
     function getParent($node) {
@@ -554,19 +555,6 @@
                 }, $selfRef.settings.delay);
                 return;
             }
-        },
-
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$triggerElm.data();
-
-            if (typeof data.cfwDropdownToggle   !== 'undefined') { parsedData.toggle   = data.cfwDropdownToggle;    }
-            if (typeof data.cfwDropdownDelay    !== 'undefined') { parsedData.delay    = data.cfwDropdownDelay;     }
-            if (typeof data.cfwDropdownHover    !== 'undefined') { parsedData.hover    = data.cfwDropdownHover;     }
-            if (typeof data.cfwDropdownBacklink !== 'undefined') { parsedData.backlink = data.cfwDropdownBacklink;  }
-            if (typeof data.cfwDropdownBacktop  !== 'undefined') { parsedData.backtop  = data.cfwDropdownBacktop;   }
-            if (typeof data.cfwDropdownBacktext !== 'undefined') { parsedData.backtext = data.cfwDropdownBacktext;  }
-            return parsedData;
         }
     };
 

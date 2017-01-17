@@ -24,10 +24,9 @@
     };
 
     CFW_Widget_Popover.DEFAULTS = $.extend({}, $.fn.CFW_Tooltip.Constructor.DEFAULTS, {
-        placement   : 'top',        // Where to locate tooltip (top/bottom/left/right/auto)
-        trigger     : 'click',      // How tooltip is triggered (click/hover/focus/manual)
+        placement   : 'top',        // Where to locate popover (top/bottom/left/right/auto)
+        trigger     : 'click',      // How popover is triggered (click/hover/focus/manual)
         content     : '',           // Content text/html to be inserted
-        closetext   : '<span aria-hidden="true">&times;</span>', // Text for close links
         drag        : false,        // If the popover should be draggable
         dragtext    : '<span aria-hidden="true">+</span>', // Text for drag handle
         dragsrtext  : 'Drag',       // Screen reader text for drag handle
@@ -256,22 +255,6 @@
             this.$arrow = this.$targetElm.find('.arrow, .popover-arrow');
         }
         return this.$arrow;
-    };
-
-    CFW_Widget_Popover.prototype._parseDataAttrExt = function() {
-        var parsedData = {};
-        var $e = this.$triggerElm;
-
-        var string = this.type;
-        var dataType = string.charAt(0).toUpperCase() + string.slice(1);
-
-        if (typeof $e.data('cfw' + dataType + 'Content')    !== 'undefined') { parsedData.content    = $e.data('cfw' + dataType + 'Content');    }
-        if (typeof $e.data('cfw' + dataType + 'Drag')       !== 'undefined') { parsedData.drag       = $e.data('cfw' + dataType + 'Drag');       }
-        if (typeof $e.data('cfw' + dataType + 'Dragtext')   !== 'undefined') { parsedData.dragtext   = $e.data('cfw' + dataType + 'Dragtext');   }
-        if (typeof $e.data('cfw' + dataType + 'Dragsrtext') !== 'undefined') { parsedData.dragsrtext = $e.data('cfw' + dataType + 'Dragsrtext'); }
-        if (typeof $e.data('cfw' + dataType + 'Dragstep')   !== 'undefined') { parsedData.dragstep   = $e.data('cfw' + dataType + 'Dragstep');   }
-
-        return parsedData;
     };
 
     function Plugin(option) {

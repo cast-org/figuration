@@ -43,14 +43,13 @@
             hide        : 250               // Delay for hiding tooltip (milliseconds)
         },
         container       : false,            // Where to place tooltip if moving is needed
-        viewport: {                         // Viewport to constrain tooltip within
-            selector: 'body',
-            padding: 0
-        },
+        viewport        : 'body',           // Viewport to constrain tooltip within
+        padding         : 0,                // Padding from viewport edge
         html            : false,            // Use HTML or text insertion mode
         closetext       : '<span aria-hidden="true">&times;</span>', // Text for close links
         closesrtext     : 'Close',          // Screen reader text for close links
         title           : '',               // Title text/html to be inserted
+        activate        : false,            // Auto show after init
         unlink          : false,            // If on hide to remove events and attributes from tooltip and trigger
         destroy         : false,            // If on hide to unlink, then remove tooltip from DOM
         template        : '<div class="tooltip"><div class="tooltip-inner"></div><div class="tooltip-arrow"></div></div>'
@@ -110,7 +109,8 @@
         },
 
         getSettings : function(options) {
-            var settings = $.extend({}, this.getDefaults(), this._parseDataAttr(), this._parseDataAttrExt(), options);
+            var parsedData = this.$triggerElm.CFW_parseData(this.type, this.getDefaults());
+            var settings = $.extend({}, this.getDefaults(), parsedData, options);
             if (settings.delay && typeof settings.delay == 'number') {
                 settings.delay = {
                     show: settings.delay,
@@ -763,7 +763,7 @@
             var delta = { top: 0, left: 0 };
             if (!this.$viewport) return delta;
 
-            var viewportPadding = this.settings.viewport && this.settings.viewport.padding || 0;
+            var viewportPadding = this.settings.padding;
             // var viewportDimensions = this._getPosition(this.$viewport);
             var viewportDimensions = this.getViewportBounds(this.$viewport);
 
@@ -887,38 +887,6 @@
                 return (isTabIndexNaN || tabIndex >= 0) && $selfRef._focusable(this, !isTabIndexNaN);
             });
             return items;
-        },
-
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var $e = this.$triggerElm;
-
-            var string = this.type;
-            var dataType = string.charAt(0).toUpperCase() + string.slice(1);
-
-            if (typeof $e.data('cfw' + dataType + 'Toggle')      !== 'undefined') { parsedData.toggle      = $e.data('cfw' + dataType + 'Toggle');      }
-            if (typeof $e.data('cfw' + dataType + 'Trigger')     !== 'undefined') { parsedData.trigger     = $e.data('cfw' + dataType + 'Trigger');     }
-            if (typeof $e.data('cfw' + dataType + 'Placement')   !== 'undefined') { parsedData.placement   = $e.data('cfw' + dataType + 'Placement');   }
-            if (typeof $e.data('cfw' + dataType + 'Follow')      !== 'undefined') { parsedData.follow      = $e.data('cfw' + dataType + 'Follow');      }
-            if (typeof $e.data('cfw' + dataType + 'Animate')     !== 'undefined') { parsedData.animate     = $e.data('cfw' + dataType + 'Animate');     }
-            if (typeof $e.data('cfw' + dataType + 'Speed')       !== 'undefined') { parsedData.speed       = $e.data('cfw' + dataType + 'Speed');       }
-            if (typeof $e.data('cfw' + dataType + 'Delay')       !== 'undefined') { parsedData.delay       = $e.data('cfw' + dataType + 'Delay');       }
-            if (typeof $e.data('cfw' + dataType + 'DelayShow')   !== 'undefined') { parsedData.delay.show  = $e.data('cfw' + dataType + 'DelayShow');   }
-            if (typeof $e.data('cfw' + dataType + 'DelayHide')   !== 'undefined') { parsedData.delay.hide  = $e.data('cfw' + dataType + 'DelayHide');   }
-            if (typeof $e.data('cfw' + dataType + 'Container')   !== 'undefined') { parsedData.container   = $e.data('cfw' + dataType + 'Container');   }
-            if (typeof $e.data('cfw' + dataType + 'Viewport')    !== 'undefined') { parsedData.viewport    = $e.data('cfw' + dataType + 'Viewport');    }
-            if (typeof $e.data('cfw' + dataType + 'Html')        !== 'undefined') { parsedData.html        = $e.data('cfw' + dataType + 'Html');        }
-            if (typeof $e.data('cfw' + dataType + 'Closetext')   !== 'undefined') { parsedData.closetext   = $e.data('cfw' + dataType + 'Closetext');   }
-            if (typeof $e.data('cfw' + dataType + 'Closesrtext') !== 'undefined') { parsedData.closesrtext = $e.data('cfw' + dataType + 'Closesrtext'); }
-            if (typeof $e.data('cfw' + dataType + 'Title')       !== 'undefined') { parsedData.title       = $e.data('cfw' + dataType + 'Title');       }
-            if (typeof $e.data('cfw' + dataType + 'Unlink')      !== 'undefined') { parsedData.unlink      = $e.data('cfw' + dataType + 'Unlink');      }
-            if (typeof $e.data('cfw' + dataType + 'Destroy')     !== 'undefined') { parsedData.destroy     = $e.data('cfw' + dataType + 'Destroy');     }
-            if (typeof $e.data('cfw' + dataType + 'Activate')    !== 'undefined') { parsedData.activate    = $e.data('cfw' + dataType + 'Activate');    }
-            return parsedData;
-        },
-
-        _parseDataAttrExt : function() {
-            return;
         }
     };
 

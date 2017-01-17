@@ -13,15 +13,17 @@
         this.$navElm = null;
         this.$targetElm = null;
 
-        this.settings = $.extend({}, CFW_Widget_Tab.DEFAULTS, this._parseDataAttr(), options);
+        var parsedData = this.$triggerElm.CFW_parseData('tab', CFW_Widget_Tab.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Tab.DEFAULTS, parsedData, options);
 
         this._init();
     };
 
     CFW_Widget_Tab.DEFAULTS = {
-        animate     : true,     // If tabs should be allowed fade in and out
-        speed       : 150,      // Speed of animation in milliseconds
-        hidden      : true      // Use aria-hidden on target containers by default
+        target  : null,
+        animate : true, // If tabs should be allowed fade in and out
+        speed   : 150,  // Speed of animation in milliseconds
+        hidden  : true  // Use aria-hidden on target containers by default
     };
 
     CFW_Widget_Tab.prototype = {
@@ -246,17 +248,6 @@
             }
 
             $prevActive.removeClass('in');
-        },
-
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$triggerElm.data();
-
-            if (typeof data.cfwTabTarget  !== 'undefined') { parsedData.target  = data.cfwTabTarget;  }
-            if (typeof data.cfwTabAnimate !== 'undefined') { parsedData.animate = data.cfwTabAnimate; }
-            if (typeof data.cfwTabSpeed   !== 'undefined') { parsedData.speed   = data.cfwTabSpeed;   }
-            if (typeof data.cfwTabHidden  !== 'undefined') { parsedData.hidden  = data.cfwTabHidden;  }
-            return parsedData;
         }
     };
 
