@@ -23,8 +23,7 @@
 
     CFW_Widget_Alert.DEFAULTS = {
         target  : null,
-        animate : true, // If alert targets should fade out
-        speed   : 150   // Speed of animation (milliseconds)
+        animate : true  // If alert targets should fade out
     };
 
     CFW_Widget_Alert.prototype = {
@@ -71,14 +70,7 @@
 
             this.$parent.removeClass('in');
 
-            if ($.support.transitionEnd && this.$parent.hasClass('fade')) {
-                this.$parent
-                    .one('cfwTransitionEnd', $.proxy(removeElement, this))
-                    .CFW_emulateTransitionEnd(this.settings.speed);
-                return;
-            }
-
-            removeElement();
+            this.$parent.CFW_transition(null, removeElement);
         },
 
         findParent : function() {

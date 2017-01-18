@@ -23,7 +23,6 @@
     CFW_Widget_Collapse.DEFAULTS = {
         toggle     : null,
         animate    : true,  // If collapse targets should expand and contract
-        speed      : 300,   // Speed of animation (milliseconds)
         follow     : false, // If browser focus should move when a collapse toggle is activated
         horizontal : false, // If collapse should transition horizontal (vertical is default)
         hidden     : true   // Use aria-hidden on target containers by default
@@ -112,6 +111,7 @@
         },
 
         show : function(follow) {
+            var $selfRef = this;
             if (follow === null) { follow = this.settings.follow; }
             this.settings.showFollow = follow;
 
@@ -129,20 +129,21 @@
             this.$triggerColl.addClass('open');
             this.$targetElm.removeClass('collapse').addClass('collapsing')[dimension](0);
 
-            // Fallback for non-transition browsers
-            if (!this.settings.animate || !$.support.transitionEnd) { return this._showComplete(); }
-
-            // Determine/set height for each target (triggers the transition), then bind transition callback to first target
-            this.$targetElm
-                .eq(0).one('cfwTransitionEnd', $.proxy(this._showComplete, this))
-                .CFW_emulateTransitionEnd(this.settings.speed);
             var scrollSize = $.camelCase(['scroll', dimension].join('-'));
-            this.$targetElm.each(function() {
-                $(this)[dimension]($(this)[0][scrollSize]);
-            });
+
+            // Determine/set dimension size for each target (triggers the transition)
+            function start() {
+                $selfRef.$targetElm.each(function() {
+                    $(this)[dimension]($(this)[0][scrollSize]);
+                });
+            }
+            // Bind transition callback to first target
+            this.$targetElm.eq(0).CFW_transition(start, $.proxy(this._showComplete, this));
         },
 
         hide : function(follow) {
+            var $selfRef = this;
+
             if (follow === null) { follow = this.settings.follow; }
             this.settings.hideFollow = follow;
 
@@ -159,21 +160,19 @@
             this.inTransition = 1;
             this.$triggerColl.removeClass('open');
 
-            // Determine/set height for each target (triggers the transition), then bind transition callback to first target
+            // Set dimension size and reflow before class changes for Chrome/Webkit or no animation occurs
             this.$targetElm.each(function() {
-                // Set height seperate from class changes for Chrome/Webkit or no animation occurs
                 var $this = $(this);
                 $this[dimension]($this[dimension]())[0].offsetHeight;
             });
-            this.$targetElm.addClass('collapsing').removeClass('collapse').removeClass('in');
+            this.$targetElm.addClass('collapsing').removeClass('collapse in');
 
-            // Fallback for non-transition browsers
-            if (!this.settings.animate || !$.support.transitionEnd) return this._hideComplete();
-
-            // Set '0' height for each target (triggers the transition), then bind transition callback to first target
-            this.$targetElm[dimension](0)
-                .eq(0).one('cfwTransitionEnd', $.proxy(this._hideComplete, this))
-                .CFW_emulateTransitionEnd(this.settings.speed);
+            // Determine/unset dimension size for each target (triggers the transition)
+            function start() {
+                $selfRef.$targetElm[dimension]('');
+            }
+            // Bind transition callback to first target
+            this.$targetElm.eq(0).CFW_transition(start, $.proxy(this._hideComplete, this));
 
         },
 

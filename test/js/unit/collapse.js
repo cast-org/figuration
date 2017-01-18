@@ -16,23 +16,65 @@ $(function() {
         assert.strictEqual($col[0], $el[0], 'collection contains element');
     });
 
-    QUnit.test('should show a collapsed element', function(assert) {
+    QUnit.test('should show a collapsed element (no transition)', function(assert) {
         assert.expect(2);
         var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
-        var $target = $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
+        var $target = $('<div id="test" class="collapse" />').css('transition', 'none').appendTo('#qunit-fixture');
         $trigger.CFW_Collapse();
         $trigger.CFW_Collapse('show');
         assert.ok($target.hasClass('in'), 'has class "in"');
         assert.ok(!/height/i.test($target.attr('style')), 'has height reset');
     });
 
-    QUnit.test('should hide a collapsed element', function(assert) {
-        assert.expect(1);
+    QUnit.test('should show a collapsed element (with transition)', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
         var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
-        var $target = $('<div id="test" />').appendTo('#qunit-fixture');
+        var $target = $('<div id="test" class="collapse" />').css('transition', '.05s').appendTo('#qunit-fixture');
         $trigger.CFW_Collapse();
-        $trigger.CFW_Collapse('hide');
-        assert.ok(!$target.hasClass('in'), 'does not have class "in"');
+        $trigger
+            .one('afterShow.cfw.collapse', function() {
+                assert.ok($target.hasClass('in'), 'has class "in"');
+                assert.ok(!/height/i.test($target.attr('style')), 'has height reset');
+                done();
+            });
+        $trigger.CFW_Collapse('show');
+    });
+
+    QUnit.test('should hide a collapsed element (no transition)', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $target = $('<div id="test" class="collapse" />').css('transition', 'none').appendTo('#qunit-fixture');
+        $trigger.CFW_Collapse();
+        $trigger
+            .one('afterShow.cfw.collapse', function() {
+                assert.ok($target.hasClass('in'), 'has class "in"');
+                $trigger.CFW_Collapse('hide');
+            })
+            .one('afterHide.cfw.collapse', function() {
+                assert.ok(!$target.hasClass('in'), 'does not have class "in"');
+                done();
+            })
+            .CFW_Collapse('show');
+    });
+
+    QUnit.test('should hide a collapsed element (with transition)', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $target = $('<div id="test" class="collapse" />').css('transition', '.05s').appendTo('#qunit-fixture');
+        $trigger.CFW_Collapse();
+        $trigger
+            .one('afterShow.cfw.collapse', function() {
+                assert.ok($target.hasClass('in'), 'has class "in"');
+                $trigger.CFW_Collapse('hide');
+            })
+            .one('afterHide.cfw.collapse', function() {
+                assert.ok(!$target.hasClass('in'), 'does not have class "in"');
+                done();
+            })
+            .CFW_Collapse('show');
     });
 
     QUnit.test('should not fire afterShow when beforeShow is prevented', function(assert) {
@@ -43,12 +85,12 @@ $(function() {
         /* var $target = */ $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger
-            .on('beforeShow.cfw.collapse', function(e) {
+            .one('beforeShow.cfw.collapse', function(e) {
                 e.preventDefault();
                 assert.ok(true, 'beforeShow event fired');
                 done();
             })
-            .on('afterShow.cfw.collapse', function() {
+            .one('afterShow.cfw.collapse', function() {
                 assert.ok(false, 'afterShow event fired');
             });
         $trigger.CFW_Collapse();
@@ -63,10 +105,10 @@ $(function() {
         var $target = $('<div id="test" class="collapse" style="height: 0px" />').appendTo('#qunit-fixture');
 
         $trigger
-            .on('beforeShow.cfw.collapse', function() {
+            .one('beforeShow.cfw.collapse', function() {
                 assert.strictEqual($target.get(0).style.height, '0px', 'height is 0px');
             })
-            .on('afterShow.cfw.collapse', function() {
+            .one('afterShow.cfw.collapse', function() {
                 assert.strictEqual($target.get(0).style.height, '', 'height is auto');
                 done();
             });
@@ -82,7 +124,7 @@ $(function() {
         var $target = $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger
-            .on('afterShow.cfw.collapse', function() {
+            .one('afterShow.cfw.collapse', function() {
                 assert.ok($target.hasClass('in'), 'target has in class');
                 done();
             });
@@ -108,7 +150,7 @@ $(function() {
         var $target = $('<div id="test" class="collapse in" />').appendTo('#qunit-fixture');
 
         $trigger
-            .on('afterHide.cfw.collapse', function() {
+            .one('afterHide.cfw.collapse', function() {
                 assert.ok(!$target.hasClass('in'), 'target does not have in class');
                 done();
             });
@@ -126,7 +168,7 @@ $(function() {
         /* var $target = */ $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger0
-            .on('afterShow.cfw.collapse', function() {
+            .one('afterShow.cfw.collapse', function() {
                 assert.ok($trigger0.hasClass('open'), 'trigger0 has open class');
                 assert.ok($trigger1.hasClass('open'), 'trigger1 has open class');
                 done();
@@ -146,7 +188,7 @@ $(function() {
         /* var $target = */ $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger0
-            .on('afterHide.cfw.collapse', function() {
+            .one('afterHide.cfw.collapse', function() {
                 assert.ok(!$trigger0.hasClass('open'), 'trigger0 does not have open class');
                 assert.ok(!$trigger1.hasClass('open'), 'trigger1 does not have open class');
                 done();
@@ -165,7 +207,7 @@ $(function() {
         /* var $target = */ $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger
-            .on('afterHide.cfw.collapse', function() {
+            .one('afterHide.cfw.collapse', function() {
                 assert.ok(false);
             });
 
@@ -182,7 +224,7 @@ $(function() {
         /* var $target =  */ $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger
-            .on('afterShow.cfw.collapse', function() {
+            .one('afterShow.cfw.collapse', function() {
                 assert.ok(true, 'show a previously-uninitialized hidden collapse when the "show" method is called');
             });
 
@@ -199,7 +241,7 @@ $(function() {
         /* var $target = */ $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger
-            .on('afterShow.cfw.collapse', function() {
+            .one('afterShow.cfw.collapse', function() {
                 assert.ok(false);
             });
 
@@ -216,7 +258,7 @@ $(function() {
         /* var $target = */ $('<div id="test" class="collapse in" />').appendTo('#qunit-fixture');
 
         $trigger
-            .on('afterHide.cfw.collapse', function() {
+            .one('afterHide.cfw.collapse', function() {
                 assert.ok(true, 'hiding a previously-uninitialized shown collapse when the "hide" method is called');
             });
 
@@ -233,7 +275,7 @@ $(function() {
         var $target = $('<div id="test" class="collapse" aria-hidden="true" />').appendTo('#qunit-fixture');
 
         $trigger
-            .on('afterShow.cfw.collapse', function() {
+            .one('afterShow.cfw.collapse', function() {
                 assert.notOk($target.is('[aria-hidden]'), 'aria-hidden attribute removed');
                 done();
             });
@@ -250,7 +292,7 @@ $(function() {
         var $target = $('<div id="test" class="collapse in" />').appendTo('#qunit-fixture');
 
         $trigger
-            .on('afterHide.cfw.collapse', function() {
+            .one('afterHide.cfw.collapse', function() {
                 assert.strictEqual($target.attr('aria-hidden'), 'true', 'aria-hidden on target is "true"');
                 done();
             });
@@ -268,7 +310,7 @@ $(function() {
         /* var $target = */ $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger0
-            .on('afterShow.cfw.collapse', function() {
+            .one('afterShow.cfw.collapse', function() {
                 assert.strictEqual($trigger0.attr('aria-expanded'), 'true', 'aria-expanded on trigger0 is "true"');
                 assert.strictEqual($trigger1.attr('aria-expanded'), 'true', 'aria-expanded on trigger1 is "true"');
                 done();
@@ -288,7 +330,7 @@ $(function() {
         /* var $target = */ $('<div id="test" class="collapse in" />').appendTo('#qunit-fixture');
 
         $trigger0
-            .on('afterHide.cfw.collapse', function() {
+            .one('afterHide.cfw.collapse', function() {
                 assert.strictEqual($trigger0.attr('aria-expanded'), 'false', 'aria-expanded on trigger0 is "true"');
                 assert.strictEqual($trigger1.attr('aria-expanded'), 'false', 'aria-expanded on trigger1 is "true"');
                 done();
@@ -307,7 +349,7 @@ $(function() {
         var $target = $('<div id="test" class="collapse in" />').appendTo('#qunit-fixture');
 
         $trigger
-            .on('afterHide.cfw.collapse', function() {
+            .one('afterHide.cfw.collapse', function() {
                 assert.ok(!$target.hasClass('in'));
                 done();
             });
@@ -324,7 +366,7 @@ $(function() {
         var $target = $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger
-            .on('afterShow.cfw.collapse', function() {
+            .one('afterShow.cfw.collapse', function() {
                 assert.ok($target.hasClass('in'));
                 done();
             });

@@ -106,12 +106,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
             <td>If collapse targets should expand and contract.</td>
         </tr>
         <tr>
-            <td>speed</td>
-            <td>integer</td>
-            <td>350</td>
-            <td>Speed of animation (milliseconds) - corresponds the animation speed specified in CSS.</td>
-        </tr>
-        <tr>
             <td>follow</td>
             <td>boolean</td>
             <td>false</td>

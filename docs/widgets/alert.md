@@ -87,12 +87,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
             <td>true</td>
             <td>If alert targets should fade out.</td>
         </tr>
-        <tr>
-            <td>speed</td>
-            <td>integer</td>
-            <td>150</td>
-            <td>Speed of animation (milliseconds) - corresponds the animation speed specified in CSS.</td>
-        </tr>
     </tbody>
     </table>
 </div> <!-- /.table-responsive -->
