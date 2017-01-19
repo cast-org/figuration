@@ -3982,10 +3982,6 @@ base::-moz-progress-bar,
   text-decoration: none;
 }
 
-.list-group-item-action .list-group-item-heading {
-  color: #292929;
-}
-
 .list-group-item-action:focus {
   z-index: 2;
   outline: 0;
@@ -4026,29 +4022,11 @@ base::-moz-progress-bar,
   background-color: transparent;
 }
 
-.list-group-item.disabled .list-group-item-heading, .list-group-item:disabled .list-group-item-heading {
-  color: inherit;
-}
-
-.list-group-item.disabled .list-group-item-text, .list-group-item:disabled .list-group-item-text {
-  color: #757575;
-}
-
 .list-group-item.active {
   z-index: 2;
   color: #fff;
   background-color: #1242ba;
   border-color: #0f389e;
-}
-
-.list-group-item.active .list-group-item-heading,
-.list-group-item.active .list-group-item-heading > small,
-.list-group-item.active .list-group-item-heading > .small {
-  color: inherit;
-}
-
-.list-group-item.active .list-group-item-text {
-  color: rgba(255, 255, 255, 0.875);
 }
 
 .list-group-flex .list-group-item {
@@ -4079,11 +4057,6 @@ button.list-group-item-primary {
   color: #0f389e;
 }
 
-a.list-group-item-primary .list-group-item-heading,
-button.list-group-item-primary .list-group-item-heading {
-  color: inherit;
-}
-
 a.list-group-item-primary:focus, a.list-group-item-primary:hover,
 button.list-group-item-primary:focus,
 button.list-group-item-primary:hover {
@@ -4106,11 +4079,6 @@ button.list-group-item-primary.active {
 a.list-group-item-secondary,
 button.list-group-item-secondary {
   color: #636363;
-}
-
-a.list-group-item-secondary .list-group-item-heading,
-button.list-group-item-secondary .list-group-item-heading {
-  color: inherit;
 }
 
 a.list-group-item-secondary:focus, a.list-group-item-secondary:hover,
@@ -4137,11 +4105,6 @@ button.list-group-item-info {
   color: #0e699e;
 }
 
-a.list-group-item-info .list-group-item-heading,
-button.list-group-item-info .list-group-item-heading {
-  color: inherit;
-}
-
 a.list-group-item-info:focus, a.list-group-item-info:hover,
 button.list-group-item-info:focus,
 button.list-group-item-info:hover {
@@ -4164,11 +4127,6 @@ button.list-group-item-info.active {
 a.list-group-item-success,
 button.list-group-item-success {
   color: #0e7414;
-}
-
-a.list-group-item-success .list-group-item-heading,
-button.list-group-item-success .list-group-item-heading {
-  color: inherit;
 }
 
 a.list-group-item-success:focus, a.list-group-item-success:hover,
@@ -4195,11 +4153,6 @@ button.list-group-item-warning {
   color: #ab7400;
 }
 
-a.list-group-item-warning .list-group-item-heading,
-button.list-group-item-warning .list-group-item-heading {
-  color: inherit;
-}
-
 a.list-group-item-warning:focus, a.list-group-item-warning:hover,
 button.list-group-item-warning:focus,
 button.list-group-item-warning:hover {
@@ -4222,11 +4175,6 @@ button.list-group-item-warning.active {
 a.list-group-item-danger,
 button.list-group-item-danger {
   color: #aa190c;
-}
-
-a.list-group-item-danger .list-group-item-heading,
-button.list-group-item-danger .list-group-item-heading {
-  color: inherit;
 }
 
 a.list-group-item-danger:focus, a.list-group-item-danger:hover,
@@ -8935,12 +8883,20 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   white-space: nowrap;
 }
 
+.w-auto {
+  width: auto !important;
+}
+
 .w-100 {
   width: 100% !important;
 }
 
 .mw-100 {
   max-width: 100% !important;
+}
+
+.h-auto {
+  height: auto !important;
 }
 
 .h-100 {
@@ -11074,6 +11030,10 @@ a.text-muted:focus, a.text-muted:hover {
   text-shadow: none;
   background-color: transparent;
   border: 0;
+}
+
+.text-body {
+  color: #292929 !important;
 }
 
 .text-light {
