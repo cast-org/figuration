@@ -614,15 +614,12 @@ $list-group-hover-bg:               $uibase-100 !default;
 $list-group-active-color:           $active-color !default;
 $list-group-active-bg:              $active-bg !default;
 $list-group-active-border:          $active-border !default;
-$list-group-active-text-color:      $text-light-color !default;
 
 $list-group-disabled-color:         $disabled-color !default;
 $list-group-disabled-bg:            $disabled-bg !default;
-$list-group-disabled-text-color:    $list-group-disabled-color !default;
 
 $list-group-link-color:             $uibase-700 !default;
 $list-group-link-hover-color:       $list-group-link-color !default;
-$list-group-link-heading-color:     $uibase-900 !default;
 
 $list-group-item-padding-y:         .75rem !default;
 $list-group-item-padding-x:         1rem !default;
@@ -685,7 +682,6 @@ $dropdown-link-hover-bg:        $uibase-50 !default;
 
 $dropdown-link-active-color:    $active-color !default;
 $dropdown-link-active-bg:       $active-bg !default;
-$dropdown-link-active-hover-bg: $active-hover-bg !default;
 
 $dropdown-link-disabled-color:  $disabled-color !default;
 $dropdown-link-disabled-bg:     $disabled-bg !default;
