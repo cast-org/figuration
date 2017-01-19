@@ -137,7 +137,7 @@ $(function() {
             .CFW_Popover({
                 title: 'Test',
                 content: 'Test',
-                template: '<div class="popover foobar"><div class="arrow"></div><div class="inner"><h3 class="title"/><div class="content"><p/></div></div></div>'
+                template: '<div class="popover foobar"><div class="popover-arrow"></div><div class="inner"><h3 class="title"/><div class="content"><p/></div></div></div>'
             })
             .CFW_Popover('show');
 
