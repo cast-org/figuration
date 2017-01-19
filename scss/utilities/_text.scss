@@ -51,6 +51,9 @@
 
 // Special case colors
 // scss-lint:disable QualifyingElement
+.text-body {
+    color: $body-color !important;
+}
 .text-light {
     color: $text-light-color !important;
 }
