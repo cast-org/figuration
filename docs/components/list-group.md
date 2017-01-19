@@ -136,16 +136,19 @@ Add nearly any HTML within, even for linked list groups like the one below.
 {% example html %}
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action active">
-    <h5 class="list-group-item-heading">List group item heading</h5>
-    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <h5>List group item heading</h5>
+    <p class="mb-0_25">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <small>Donec id elit non mi porta.</small>
   </a>
   <a href="#" class="list-group-item list-group-item-action">
-    <h5 class="list-group-item-heading">List group item heading</h5>
-    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <h5>List group item heading</h5>
+    <p class="mb-0_25">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <small class="text-muted">Donec id elit non mi porta.</small>
   </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <h5 class="list-group-item-heading">List group item heading</h5>
-    <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+  <a href="#" class="list-group-item list-group-item-action disabled">
+    <h5>List group item heading</h5>
+    <p class="mb-0_25">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <small class="text-muted">Donec id elit non mi porta.</small>
   </a>
 </div>
 {% endexample %}

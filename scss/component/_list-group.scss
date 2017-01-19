@@ -28,10 +28,6 @@
     text-align: inherit; // For `<button>`s (anchors inherit)
     text-decoration: none;
 
-    .list-group-item-heading {
-        color: $list-group-link-heading-color;
-    }
-
     &:focus {
         @if $enable-focus-ring {
             z-index: 2;
@@ -80,14 +76,6 @@
         text-decoration: none;
         cursor: $cursor-disabled;
         background-color: $list-group-disabled-bg;
-
-        // Force color to inherit for custom content
-        .list-group-item-heading {
-            color: inherit;
-        }
-        .list-group-item-text {
-            color: $list-group-disabled-text-color;
-        }
     }
 
     &.active {
@@ -95,16 +83,6 @@
         color: $list-group-active-color;
         background-color: $list-group-active-bg;
         border-color: $list-group-active-border;
-
-        // Force color to inherit for custom content
-        .list-group-item-heading,
-        .list-group-item-heading > small,
-        .list-group-item-heading > .small {
-            color: inherit;
-        }
-        .list-group-item-text {
-            color: $list-group-active-text-color;
-        }
     }
 }
 
