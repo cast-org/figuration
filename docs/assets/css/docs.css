@@ -493,12 +493,11 @@ h4 > code {
 }
 
 .footer-partners {
-  margin-top: .25rem;
   text-align: left;
 }
 
 .footer-partners .partner-title {
-  margin-bottom: .1rem;
+  margin-bottom: .125rem;
 }
 
 .cf-docs-keys dt {
