@@ -72,10 +72,10 @@ function topLinkAffix() {
     var $topLink = $('.topLink');
 
     $topLink.CFW_Affix({
-        offsetTop: function() {
+        top: function() {
             return $('.cf-title').offset().top;
         },
-        offsetBottom: function() {
+        bottom: function() {
             return $('footer').outerHeight();
         }
     });
