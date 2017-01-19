@@ -29,19 +29,29 @@ if (typeof jQuery === 'undefined') {
 (function($) {
     'use strict';
 
+    // =====
+    // Private util helpers
+    // =====
+
     String.prototype.capitalize = function() {
         return this.charAt(0).toUpperCase() + this.slice(1);
     };
 
-    function CFW_transitionEnd() {
-        if (window.QUnit) {
-            return false;
-        }
+    function doCallback(callback) {
+        if (callback) { callback(); }
+    }
 
+    // =====
+    // TransitionEnd support/emulation
+    // =====
+
+    var transition = false;
+    var TRANSITION_END = 'cfwTransitionEnd';
+
+    function CFW_transitionEndTest() {
         var div = document.createElement('div');
 
-        // Set name/event name pairs
-        var transitionEndEventNames = {
+        var transitionEndEvents = {
             transition       : 'transitionend',
             MozTransition    : 'transitionend',
             OTransition      : 'oTransitionEnd otransitionend',
@@ -49,41 +59,86 @@ if (typeof jQuery === 'undefined') {
         };
 
         // Test for browser specific event name to bind
-        for (var eventName in transitionEndEventNames) {
+        for (var eventName in transitionEndEvents) {
             if (div.style[eventName] !== undefined) {
-                return transitionEndEventNames[eventName];
+                return { end: transitionEndEvents[eventName] };
             }
         }
 
-        return false;
+        // No browser transitionEnd support - use custom event name
+        return { end: TRANSITION_END };
     }
 
-    // http://blog.alexmaccaw.com/css-transitions
-    $.fn.CFW_emulateTransitionEnd = function(duration) {
-        var called = false;
-        var $el = this;
-        $(this).one('cfwTransitionEnd', function() { called = true; });
-        var callback = function() { if (!called) $($el).trigger($.support.transitionEnd); };
-        setTimeout(callback, duration);
+    // Get longest CSS transition duration
+    function CFW_transitionCssDuration($node) {
+        var durationArray = [0]; // Set a min value -- otherwise get `Infinity`
+        $node.each(function() {
+            var durations = $node.css('transition-duration') || $node.css('-webkit-transition-duration') || $node.css('-moz-transition-duration') || $node.css('-ms-transition-duration') || $node.css('-o-transition-duration');
+            if (durations) {
+                var times = durations.split(',');
+                for (var i = times.length; i--;) { // Reverse loop should be faster
+                    durationArray = durationArray.concat(parseFloat(times[i]));
+                }
+            }
+        });
+
+        var duration = Math.max.apply(Math, durationArray); // http://stackoverflow.com/a/1379560
+        duration = duration * 1000; // convert to milliseconds
+
+        return duration;
+    }
+
+    function CFW_transitionEndEmulate(start, complete) {
+        var duration = CFW_transitionCssDuration(this);
+
+        if (duration) {
+            var called = false;
+            this.one(TRANSITION_END, function() {
+                if (!called) {
+                    called = true;
+                    doCallback(complete);
+                }
+            });
+
+            // Set timeout as fallback for instances where transitionEnd is not called.
+            // This way the complete callback is always executed.
+            setTimeout(function() {
+                if (!called) {
+                    called = true;
+                    doCallback(complete);
+                }
+            }, duration);
+
+            doCallback(start);
+        } else {
+            doCallback(start);
+            doCallback(complete);
+        }
         return this;
-    };
+    }
 
-    // Add detected events to jQuery.support for easy retrieval
-    $(function() {
-        $.support.transitionEnd = CFW_transitionEnd();
-
-        if (!$.support.transitionEnd) { return; }
-
-        $.event.special.cfwTransitionEnd = {
-            bindType: $.support.transitionEnd,
-            delegateType: $.support.transitionEnd,
+    function CFW_transitionEndSpecial() {
+        return {
+            bindType: transition.end,
+            delegateType: transition.end,
             handle: function(e) {
                 if ($(e.target).is(this)) {
                     return e.handleObj.handler.apply(this, arguments);
                 }
+                return undefined;
             }
         };
+    }
+
+    $(function() {
+        transition = CFW_transitionEndTest();
+        $.fn.CFW_transition = CFW_transitionEndEmulate;
+        $.event.special[TRANSITION_END] = CFW_transitionEndSpecial();
     });
+
+    // =====
+    // Public Utils
+    // =====
 
     $.fn.CFW_getID = function(prefix) {
         var $node = $(this);
@@ -357,7 +412,6 @@ if (typeof jQuery === 'undefined') {
     CFW_Widget_Collapse.DEFAULTS = {
         toggle     : null,
         animate    : true,  // If collapse targets should expand and contract
-        speed      : 300,   // Speed of animation (milliseconds)
         follow     : false, // If browser focus should move when a collapse toggle is activated
         horizontal : false, // If collapse should transition horizontal (vertical is default)
         hidden     : true   // Use aria-hidden on target containers by default
@@ -446,6 +500,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         show : function(follow) {
+            var $selfRef = this;
             if (follow === null) { follow = this.settings.follow; }
             this.settings.showFollow = follow;
 
@@ -463,20 +518,21 @@ if (typeof jQuery === 'undefined') {
             this.$triggerColl.addClass('open');
             this.$targetElm.removeClass('collapse').addClass('collapsing')[dimension](0);
 
-            // Fallback for non-transition browsers
-            if (!this.settings.animate || !$.support.transitionEnd) { return this._showComplete(); }
-
-            // Determine/set height for each target (triggers the transition), then bind transition callback to first target
-            this.$targetElm
-                .eq(0).one('cfwTransitionEnd', $.proxy(this._showComplete, this))
-                .CFW_emulateTransitionEnd(this.settings.speed);
             var scrollSize = $.camelCase(['scroll', dimension].join('-'));
-            this.$targetElm.each(function() {
-                $(this)[dimension]($(this)[0][scrollSize]);
-            });
+
+            // Determine/set dimension size for each target (triggers the transition)
+            function start() {
+                $selfRef.$targetElm.each(function() {
+                    $(this)[dimension]($(this)[0][scrollSize]);
+                });
+            }
+            // Bind transition callback to first target
+            this.$targetElm.eq(0).CFW_transition(start, $.proxy(this._showComplete, this));
         },
 
         hide : function(follow) {
+            var $selfRef = this;
+
             if (follow === null) { follow = this.settings.follow; }
             this.settings.hideFollow = follow;
 
@@ -493,21 +549,19 @@ if (typeof jQuery === 'undefined') {
             this.inTransition = 1;
             this.$triggerColl.removeClass('open');
 
-            // Determine/set height for each target (triggers the transition), then bind transition callback to first target
+            // Set dimension size and reflow before class changes for Chrome/Webkit or no animation occurs
             this.$targetElm.each(function() {
-                // Set height seperate from class changes for Chrome/Webkit or no animation occurs
                 var $this = $(this);
                 $this[dimension]($this[dimension]())[0].offsetHeight;
             });
-            this.$targetElm.addClass('collapsing').removeClass('collapse').removeClass('in');
+            this.$targetElm.addClass('collapsing').removeClass('collapse in');
 
-            // Fallback for non-transition browsers
-            if (!this.settings.animate || !$.support.transitionEnd) return this._hideComplete();
-
-            // Set '0' height for each target (triggers the transition), then bind transition callback to first target
-            this.$targetElm[dimension](0)
-                .eq(0).one('cfwTransitionEnd', $.proxy(this._hideComplete, this))
-                .CFW_emulateTransitionEnd(this.settings.speed);
+            // Determine/unset dimension size for each target (triggers the transition)
+            function start() {
+                $selfRef.$targetElm[dimension]('');
+            }
+            // Bind transition callback to first target
+            this.$targetElm.eq(0).CFW_transition(start, $.proxy(this._hideComplete, this));
 
         },
 
@@ -1192,7 +1246,6 @@ if (typeof jQuery === 'undefined') {
     CFW_Widget_Tab.DEFAULTS = {
         target  : null,
         animate : true, // If tabs should be allowed fade in and out
-        speed   : 150,  // Speed of animation in milliseconds
         hidden  : true  // Use aria-hidden on target containers by default
     };
 
@@ -1338,7 +1391,6 @@ if (typeof jQuery === 'undefined') {
         },
 
         fadeEnable : function() {
-            if (!$.support.transitionEnd) { return; }
             this.$targetElm.addClass('fade');
             if (this.$targetElm.hasClass('active')) {
                 this.$targetElm.addClass('in');
@@ -1380,29 +1432,29 @@ if (typeof jQuery === 'undefined') {
             nextTab.CFW_Tab('show').trigger('focus');
         },
 
-        _activateTab : function(node, container, isPanel, $previous) {
+        _activateTab : function($node, container, isPanel, $previous) {
             var $selfRef = this;
             var $prevActive = container.find('> .active');
-            var doTransition = isPanel && $.support.transitionEnd && this.settings.animate;
+            var doTransition = isPanel && this.settings.animate;
 
             function displayTab() {
                 $prevActive.removeClass('active');
 
-                node.addClass('active');
+                $node.addClass('active');
 
                 if (isPanel) {
                     $prevActive.attr('aria-hidden', 'true');
-                    node.attr('aria-hidden', 'false');
+                    $node.attr('aria-hidden', 'false');
                 }
 
                 if (doTransition) {
-                    node[0].offsetWidth; // Reflow for transition
-                    node.addClass('in');
+                    $node[0].offsetWidth; // Reflow for transition
+                    $node.addClass('in');
                 } else {
                     if (isPanel) {
                         $selfRef.settings.animate = false;
                     }
-                    node.removeClass('fade');
+                    $node.removeClass('fade');
                 }
 
                 if (isPanel) {
@@ -1410,12 +1462,7 @@ if (typeof jQuery === 'undefined') {
                 }
             }
 
-            if (doTransition) {
-                node.one('cfwTransitionEnd', displayTab)
-                    .CFW_emulateTransitionEnd(this.settings.speed);
-            } else {
-                displayTab();
-            }
+            $node.CFW_transition(null, displayTab);
 
             $prevActive.removeClass('in');
         }
@@ -1628,7 +1675,6 @@ if (typeof jQuery === 'undefined') {
         trigger         : 'hover focus',    // How tooltip is triggered (click/hover/focus/manual)
         follow          : false,            // If the browser focus should follow active tooltip
         animate         : true,             // Should the tooltip fade in and out
-        speed           : 150,              // Speed of animation (milliseconds)
         delay : {
             show        : 0,                // Delay for showing tooltip (milliseconda)
             hide        : 250               // Delay for hiding tooltip (milliseconds)
@@ -2015,12 +2061,7 @@ if (typeof jQuery === 'undefined') {
                     });
             }
 
-            if ($.support.transitionEnd && this.$targetElm.hasClass('fade')) {
-                this.$targetElm.one('cfwTransitionEnd', $.proxy(this._showComplete, this))
-                    .CFW_emulateTransitionEnd(this.settings.speed);
-            } else {
-                this._showComplete();
-            }
+            this.$targetElm.CFW_transition(null, $.proxy(this._showComplete, this));
         },
 
         hide : function(force) {
@@ -2057,12 +2098,7 @@ if (typeof jQuery === 'undefined') {
             }
             $(document).off('.cfw.' + this.type + '.tabmove');
 
-            if ($.support.transitionEnd && this.$targetElm.hasClass('fade')) {
-                this.$targetElm.one('cfwTransitionEnd', $.proxy(this._hideComplete, this))
-                    .CFW_emulateTransitionEnd(this.settings.speed);
-            } else {
-                this._hideComplete();
-            }
+            this.$targetElm.CFW_transition(null, $.proxy(this._hideComplete, this));
 
             this.hoverState = null;
         },
@@ -2813,12 +2849,6 @@ if (typeof jQuery === 'undefined') {
 
         var parsedData = this.$triggerElm.CFW_parseData('modal', CFW_Widget_Modal.DEFAULTS);
         this.settings = $.extend({}, CFW_Widget_Modal.DEFAULTS, parsedData, options);
-        if (this.settings.speed && typeof this.settings.speed == 'number') {
-            this.settings.speed = {
-                backdrop: this.settings.speed,
-                modal: this.settings.speed
-            };
-        }
 
         this._init();
     };
@@ -2826,10 +2856,6 @@ if (typeof jQuery === 'undefined') {
     CFW_Widget_Modal.DEFAULTS = {
         toggle       : false,   // Target selector
         animate      : true,    // If modal windows should animate
-        speed : {
-            backdrop : 150,     // Speed of backdrop animation (milliseconds)
-            modal    : 300      // Speed of modal animation (milliseconds)
-        },
         unlink       : false,   // If on hide to remove events and attributes from modal and trigger
         destroy      : false,   // If on hide to unlink, then remove modal from DOM
         backdrop     : true,    // Show backdrop, or 'static' for no close on click
@@ -2934,8 +2960,6 @@ if (typeof jQuery === 'undefined') {
         },
 
         hide : function() {
-            var $selfRef = this;
-
             // Bail if not showing
             if (!this.isShown) { return; }
 
@@ -2958,20 +2982,13 @@ if (typeof jQuery === 'undefined') {
                 this.$focusLast.off('.cfw.' + this.type + '.focusLast');
             }
 
-            if (this.settings.animate && $.support.transitionEnd) {
-                this.$targetElm.one('cfwTransitionEnd', function() {
-                    $selfRef._hideComplete();
-                }).CFW_emulateTransitionEnd(this.settings.speed.modal);
-            } else {
-                this._hideComplete();
-            }
+            this.$targetElm.CFW_transition(null, $.proxy(this._hideComplete, this));
         },
 
         _showComplete : function() {
             var $selfRef = this;
 
-            var transition = this.settings.animate && $.support.transitionEnd;
-            if (transition) {
+            if (this.settings.animate) {
                 this.$targetElm.addClass('fade');
             }
 
@@ -2983,25 +3000,19 @@ if (typeof jQuery === 'undefined') {
 
             this.adjustDialog();
 
-            if (transition) {
-                this.$targetElm[0].offsetWidth; // Force Reflow
-            }
+            this.$targetElm[0].offsetWidth; // Force Reflow
 
             this.$targetElm.addClass('in').removeAttr('aria-hidden');
 
             this.enforceFocus();
             this.enforceFocusLast();
 
-            if (transition) {
-                // wait for modal to slide in
-                this.$dialog.one('cfwTransitionEnd', function() {
-                    $selfRef.$targetElm.trigger('focus');
-                    $selfRef.$targetElm.CFW_trigger('afterShow.cfw.modal');
-                }).CFW_emulateTransitionEnd(this.settings.speed.modal);
-            } else {
-                this.$targetElm.trigger('focus');
-                this.$targetElm.CFW_trigger('afterShow.cfw.modal');
+            function complete() {
+                $selfRef.$targetElm.trigger('focus');
+                $selfRef.$targetElm.CFW_trigger('afterShow.cfw.modal');
             }
+
+            this.$targetElm.CFW_transition(null, complete);
         },
 
         _hideComplete : function() {
@@ -3142,8 +3153,6 @@ if (typeof jQuery === 'undefined') {
             var animate = (this.settings.animate) ? 'fade' : '';
 
             if (this.isShown && this.settings.backdrop) {
-                var doAnimate = $.support.transitionEnd && animate;
-
                 this.$backdrop = $(document.createElement('div'))
                     .addClass('modal-backdrop ' + animate)
                     .appendTo(this.$body);
@@ -3159,17 +3168,11 @@ if (typeof jQuery === 'undefined') {
                         : $selfRef.hide();
                 });
 
-                if (doAnimate) this.$backdrop[0].offsetWidth; // Force Reflow
+                this.$backdrop[0].offsetWidth; // Force Reflow
 
                 this.$backdrop.addClass('in');
 
-                if (!callback) { return; }
-
-                if (doAnimate) {
-                    this.$backdrop.one('cfwTransitionEnd', callback).CFW_emulateTransitionEnd(this.settings.speed.backdrop);
-                } else {
-                    callback();
-                }
+                this.$backdrop.CFW_transition(null, callback);
             } else if (!this.isShown && this.$backdrop) {
                 this.$backdrop.removeClass('in');
 
@@ -3178,11 +3181,7 @@ if (typeof jQuery === 'undefined') {
                     callback && callback();
                 };
 
-                if (this.settings.animate && $.support.transitionEnd) {
-                    this.$backdrop.one('cfwTransitionEnd', callbackRemove).CFW_emulateTransitionEnd(this.settings.speed.backdrop);
-                } else {
-                    callbackRemove();
-                }
+                this.$backdrop.CFW_transition(null, callbackRemove);
             } else if (callback) {
                 callback();
             }
@@ -3836,8 +3835,7 @@ if (typeof jQuery === 'undefined') {
 
     CFW_Widget_Alert.DEFAULTS = {
         target  : null,
-        animate : true, // If alert targets should fade out
-        speed   : 150   // Speed of animation (milliseconds)
+        animate : true  // If alert targets should fade out
     };
 
     CFW_Widget_Alert.prototype = {
@@ -3884,14 +3882,7 @@ if (typeof jQuery === 'undefined') {
 
             this.$parent.removeClass('in');
 
-            if ($.support.transitionEnd && this.$parent.hasClass('fade')) {
-                this.$parent
-                    .one('cfwTransitionEnd', $.proxy(removeElement, this))
-                    .CFW_emulateTransitionEnd(this.settings.speed);
-                return;
-            }
-
-            removeElement();
+            this.$parent.CFW_transition(null, removeElement);
         },
 
         findParent : function() {
