@@ -23,12 +23,6 @@
 
         var parsedData = this.$triggerElm.CFW_parseData('modal', CFW_Widget_Modal.DEFAULTS);
         this.settings = $.extend({}, CFW_Widget_Modal.DEFAULTS, parsedData, options);
-        if (this.settings.speed && typeof this.settings.speed == 'number') {
-            this.settings.speed = {
-                backdrop: this.settings.speed,
-                modal: this.settings.speed
-            };
-        }
 
         this._init();
     };
@@ -36,10 +30,6 @@
     CFW_Widget_Modal.DEFAULTS = {
         toggle       : false,   // Target selector
         animate      : true,    // If modal windows should animate
-        speed : {
-            backdrop : 150,     // Speed of backdrop animation (milliseconds)
-            modal    : 300      // Speed of modal animation (milliseconds)
-        },
         unlink       : false,   // If on hide to remove events and attributes from modal and trigger
         destroy      : false,   // If on hide to unlink, then remove modal from DOM
         backdrop     : true,    // Show backdrop, or 'static' for no close on click
@@ -144,8 +134,6 @@
         },
 
         hide : function() {
-            var $selfRef = this;
-
             // Bail if not showing
             if (!this.isShown) { return; }
 
@@ -168,20 +156,13 @@
                 this.$focusLast.off('.cfw.' + this.type + '.focusLast');
             }
 
-            if (this.settings.animate && $.support.transitionEnd) {
-                this.$targetElm.one('cfwTransitionEnd', function() {
-                    $selfRef._hideComplete();
-                }).CFW_emulateTransitionEnd(this.settings.speed.modal);
-            } else {
-                this._hideComplete();
-            }
+            this.$targetElm.CFW_transition(null, $.proxy(this._hideComplete, this));
         },
 
         _showComplete : function() {
             var $selfRef = this;
 
-            var transition = this.settings.animate && $.support.transitionEnd;
-            if (transition) {
+            if (this.settings.animate) {
                 this.$targetElm.addClass('fade');
             }
 
@@ -193,25 +174,19 @@
 
             this.adjustDialog();
 
-            if (transition) {
-                this.$targetElm[0].offsetWidth; // Force Reflow
-            }
+            this.$targetElm[0].offsetWidth; // Force Reflow
 
             this.$targetElm.addClass('in').removeAttr('aria-hidden');
 
             this.enforceFocus();
             this.enforceFocusLast();
 
-            if (transition) {
-                // wait for modal to slide in
-                this.$dialog.one('cfwTransitionEnd', function() {
-                    $selfRef.$targetElm.trigger('focus');
-                    $selfRef.$targetElm.CFW_trigger('afterShow.cfw.modal');
-                }).CFW_emulateTransitionEnd(this.settings.speed.modal);
-            } else {
-                this.$targetElm.trigger('focus');
-                this.$targetElm.CFW_trigger('afterShow.cfw.modal');
+            function complete() {
+                $selfRef.$targetElm.trigger('focus');
+                $selfRef.$targetElm.CFW_trigger('afterShow.cfw.modal');
             }
+
+            this.$targetElm.CFW_transition(null, complete);
         },
 
         _hideComplete : function() {
@@ -352,8 +327,6 @@
             var animate = (this.settings.animate) ? 'fade' : '';
 
             if (this.isShown && this.settings.backdrop) {
-                var doAnimate = $.support.transitionEnd && animate;
-
                 this.$backdrop = $(document.createElement('div'))
                     .addClass('modal-backdrop ' + animate)
                     .appendTo(this.$body);
@@ -369,17 +342,11 @@
                         : $selfRef.hide();
                 });
 
-                if (doAnimate) this.$backdrop[0].offsetWidth; // Force Reflow
+                this.$backdrop[0].offsetWidth; // Force Reflow
 
                 this.$backdrop.addClass('in');
 
-                if (!callback) { return; }
-
-                if (doAnimate) {
-                    this.$backdrop.one('cfwTransitionEnd', callback).CFW_emulateTransitionEnd(this.settings.speed.backdrop);
-                } else {
-                    callback();
-                }
+                this.$backdrop.CFW_transition(null, callback);
             } else if (!this.isShown && this.$backdrop) {
                 this.$backdrop.removeClass('in');
 
@@ -388,11 +355,7 @@
                     callback && callback();
                 };
 
-                if (this.settings.animate && $.support.transitionEnd) {
-                    this.$backdrop.one('cfwTransitionEnd', callbackRemove).CFW_emulateTransitionEnd(this.settings.speed.backdrop);
-                } else {
-                    callbackRemove();
-                }
+                this.$backdrop.CFW_transition(null, callbackRemove);
             } else if (callback) {
                 callback();
             }

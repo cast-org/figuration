@@ -37,7 +37,6 @@
         trigger         : 'hover focus',    // How tooltip is triggered (click/hover/focus/manual)
         follow          : false,            // If the browser focus should follow active tooltip
         animate         : true,             // Should the tooltip fade in and out
-        speed           : 150,              // Speed of animation (milliseconds)
         delay : {
             show        : 0,                // Delay for showing tooltip (milliseconda)
             hide        : 250               // Delay for hiding tooltip (milliseconds)
@@ -424,12 +423,7 @@
                     });
             }
 
-            if ($.support.transitionEnd && this.$targetElm.hasClass('fade')) {
-                this.$targetElm.one('cfwTransitionEnd', $.proxy(this._showComplete, this))
-                    .CFW_emulateTransitionEnd(this.settings.speed);
-            } else {
-                this._showComplete();
-            }
+            this.$targetElm.CFW_transition(null, $.proxy(this._showComplete, this));
         },
 
         hide : function(force) {
@@ -466,12 +460,7 @@
             }
             $(document).off('.cfw.' + this.type + '.tabmove');
 
-            if ($.support.transitionEnd && this.$targetElm.hasClass('fade')) {
-                this.$targetElm.one('cfwTransitionEnd', $.proxy(this._hideComplete, this))
-                    .CFW_emulateTransitionEnd(this.settings.speed);
-            } else {
-                this._hideComplete();
-            }
+            this.$targetElm.CFW_transition(null, $.proxy(this._hideComplete, this));
 
             this.hoverState = null;
         },

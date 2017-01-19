@@ -8,19 +8,29 @@
 (function($) {
     'use strict';
 
+    // =====
+    // Private util helpers
+    // =====
+
     String.prototype.capitalize = function() {
         return this.charAt(0).toUpperCase() + this.slice(1);
     };
 
-    function CFW_transitionEnd() {
-        if (window.QUnit) {
-            return false;
-        }
+    function doCallback(callback) {
+        if (callback) { callback(); }
+    }
 
+    // =====
+    // TransitionEnd support/emulation
+    // =====
+
+    var transition = false;
+    var TRANSITION_END = 'cfwTransitionEnd';
+
+    function CFW_transitionEndTest() {
         var div = document.createElement('div');
 
-        // Set name/event name pairs
-        var transitionEndEventNames = {
+        var transitionEndEvents = {
             transition       : 'transitionend',
             MozTransition    : 'transitionend',
             OTransition      : 'oTransitionEnd otransitionend',
@@ -28,41 +38,86 @@
         };
 
         // Test for browser specific event name to bind
-        for (var eventName in transitionEndEventNames) {
+        for (var eventName in transitionEndEvents) {
             if (div.style[eventName] !== undefined) {
-                return transitionEndEventNames[eventName];
+                return { end: transitionEndEvents[eventName] };
             }
         }
 
-        return false;
+        // No browser transitionEnd support - use custom event name
+        return { end: TRANSITION_END };
     }
 
-    // http://blog.alexmaccaw.com/css-transitions
-    $.fn.CFW_emulateTransitionEnd = function(duration) {
-        var called = false;
-        var $el = this;
-        $(this).one('cfwTransitionEnd', function() { called = true; });
-        var callback = function() { if (!called) $($el).trigger($.support.transitionEnd); };
-        setTimeout(callback, duration);
+    // Get longest CSS transition duration
+    function CFW_transitionCssDuration($node) {
+        var durationArray = [0]; // Set a min value -- otherwise get `Infinity`
+        $node.each(function() {
+            var durations = $node.css('transition-duration') || $node.css('-webkit-transition-duration') || $node.css('-moz-transition-duration') || $node.css('-ms-transition-duration') || $node.css('-o-transition-duration');
+            if (durations) {
+                var times = durations.split(',');
+                for (var i = times.length; i--;) { // Reverse loop should be faster
+                    durationArray = durationArray.concat(parseFloat(times[i]));
+                }
+            }
+        });
+
+        var duration = Math.max.apply(Math, durationArray); // http://stackoverflow.com/a/1379560
+        duration = duration * 1000; // convert to milliseconds
+
+        return duration;
+    }
+
+    function CFW_transitionEndEmulate(start, complete) {
+        var duration = CFW_transitionCssDuration(this);
+
+        if (duration) {
+            var called = false;
+            this.one(TRANSITION_END, function() {
+                if (!called) {
+                    called = true;
+                    doCallback(complete);
+                }
+            });
+
+            // Set timeout as fallback for instances where transitionEnd is not called.
+            // This way the complete callback is always executed.
+            setTimeout(function() {
+                if (!called) {
+                    called = true;
+                    doCallback(complete);
+                }
+            }, duration);
+
+            doCallback(start);
+        } else {
+            doCallback(start);
+            doCallback(complete);
+        }
         return this;
-    };
+    }
 
-    // Add detected events to jQuery.support for easy retrieval
-    $(function() {
-        $.support.transitionEnd = CFW_transitionEnd();
-
-        if (!$.support.transitionEnd) { return; }
-
-        $.event.special.cfwTransitionEnd = {
-            bindType: $.support.transitionEnd,
-            delegateType: $.support.transitionEnd,
+    function CFW_transitionEndSpecial() {
+        return {
+            bindType: transition.end,
+            delegateType: transition.end,
             handle: function(e) {
                 if ($(e.target).is(this)) {
                     return e.handleObj.handler.apply(this, arguments);
                 }
+                return undefined;
             }
         };
+    }
+
+    $(function() {
+        transition = CFW_transitionEndTest();
+        $.fn.CFW_transition = CFW_transitionEndEmulate;
+        $.event.special[TRANSITION_END] = CFW_transitionEndSpecial();
     });
+
+    // =====
+    // Public Utils
+    // =====
 
     $.fn.CFW_getID = function(prefix) {
         var $node = $(this);

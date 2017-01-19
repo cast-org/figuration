@@ -129,12 +129,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
             <td>If the tab pane target should fade in and out.</td>
         </tr>
         <tr>
-            <td>speed</td>
-            <td>integer</td>
-            <td>350</td>
-            <td>Speed of animation (milliseconds) - corresponds the animation speed specified in CSS.</td>
-        </tr>
-        <tr>
             <td>hidden</td>
             <td>boolean</td>
             <td>true</td>

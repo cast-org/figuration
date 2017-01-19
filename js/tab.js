@@ -22,7 +22,6 @@
     CFW_Widget_Tab.DEFAULTS = {
         target  : null,
         animate : true, // If tabs should be allowed fade in and out
-        speed   : 150,  // Speed of animation in milliseconds
         hidden  : true  // Use aria-hidden on target containers by default
     };
 
@@ -168,7 +167,6 @@
         },
 
         fadeEnable : function() {
-            if (!$.support.transitionEnd) { return; }
             this.$targetElm.addClass('fade');
             if (this.$targetElm.hasClass('active')) {
                 this.$targetElm.addClass('in');
@@ -210,29 +208,29 @@
             nextTab.CFW_Tab('show').trigger('focus');
         },
 
-        _activateTab : function(node, container, isPanel, $previous) {
+        _activateTab : function($node, container, isPanel, $previous) {
             var $selfRef = this;
             var $prevActive = container.find('> .active');
-            var doTransition = isPanel && $.support.transitionEnd && this.settings.animate;
+            var doTransition = isPanel && this.settings.animate;
 
             function displayTab() {
                 $prevActive.removeClass('active');
 
-                node.addClass('active');
+                $node.addClass('active');
 
                 if (isPanel) {
                     $prevActive.attr('aria-hidden', 'true');
-                    node.attr('aria-hidden', 'false');
+                    $node.attr('aria-hidden', 'false');
                 }
 
                 if (doTransition) {
-                    node[0].offsetWidth; // Reflow for transition
-                    node.addClass('in');
+                    $node[0].offsetWidth; // Reflow for transition
+                    $node.addClass('in');
                 } else {
                     if (isPanel) {
                         $selfRef.settings.animate = false;
                     }
-                    node.removeClass('fade');
+                    $node.removeClass('fade');
                 }
 
                 if (isPanel) {
@@ -240,12 +238,7 @@
                 }
             }
 
-            if (doTransition) {
-                node.one('cfwTransitionEnd', displayTab)
-                    .CFW_emulateTransitionEnd(this.settings.speed);
-            } else {
-                displayTab();
-            }
+            $node.CFW_transition(null, displayTab);
 
             $prevActive.removeClass('in');
         }

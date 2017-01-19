@@ -335,16 +335,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
             <td>If modal targets should fade and slide in.</td>
         </tr>
         <tr>
-            <td>speed</td>
-            <td>number| object</td>
-            <td>backdrop:150, modal:300</td>
-            <td>
-                <p>Speed of animations for fading backdrop and sliding the modal dialog (ms).</p>
-                <p>If a number is supplied, speed is applied to both fade/slide.  These numbers need to correspsond to the CSS animation settings.</p>
-                Object structure is: `speed: { backdrop: 150, modal: 300 }`
-            </td>
-        </tr>
-        <tr>
             <td>unlink</td>
             <td>boolean</td>
             <td>false</td>
