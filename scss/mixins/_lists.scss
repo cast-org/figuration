@@ -17,10 +17,6 @@
     button.list-group-item-#{$state} {
         color: $color;
 
-        .list-group-item-heading {
-            color: inherit;
-        }
-
         @include hover-focus {
             color: $color;
             background-color: $hover-bg;
