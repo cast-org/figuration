@@ -191,12 +191,12 @@ To take advantage of the grid system within a modal, just nest `.container-fluid
 
 {% highlight html %}
 <!-- Button trigger -->
-<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalLive">
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalGrid">
     Launch demo modal
 </button>
 
 <!-- Modal -->
-<div class="modal" id="modalLive">
+<div class="modal" id="modalGrid">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
