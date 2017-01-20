@@ -66,7 +66,7 @@ Card titles and subtitles are used by adding `.card-title` or `.card-subtitle` t
 
 With `.card-text`, text can be added to the card. Text within `.card-text` can also be styled with the standard HTML tags.
 
-`.card-text` will also remove the bottom margin from the ***last child*** in a section.
+`.card-text` will also remove the bottom margin from the **last child** in a section.
 
 {% example html %}
 <div class="card">
@@ -518,7 +518,7 @@ Recolor the header and footer sections of your cards by using the background con
 
 In addition to styling the content within cards, Figuration includes a few options for laying out series of cards.
 
-For the time being, these layout options only apply to small devices and above, so ***they are not yet fully responsive***.
+For the time being, these layout options only apply to small devices and above, so **they are not yet fully responsive**.
 
 ### Card Groups
 
