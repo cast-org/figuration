@@ -6,10 +6,6 @@
     padding: $navbar-padding-y $navbar-padding-x;
     margin-bottom: $navbar-margin-bottom;
     @include clearfix;
-
-    @include media-breakpoint-up(#{$navbar-breakpoint}) {
-        @include border-radius($navbar-border-radius);
-    }
 }
 
 // Navbar alignment options
@@ -19,7 +15,6 @@
 // A static, full width modifier with no rounded corners.
 .navbar-full {
     z-index: $zindex-navbar;
-    @include border-radius(0);
 }
 
 // Fix the top/bottom navbars when screen real estate supports it
@@ -30,7 +25,6 @@
     left: 0;
     z-index: $zindex-navbar-fixed;
     margin-bottom: 0;
-    @include border-radius(0);
 }
 .navbar-fixed-top {
     top: 0;
@@ -44,7 +38,6 @@
     top: 0;
     z-index: $zindex-navbar-sticky;
     width: 100%;
-    @include border-radius(0);
 }
 
 
