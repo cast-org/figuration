@@ -710,10 +710,6 @@ h4 > code {
   margin-top: .5rem;
 }
 
-.cf-example > .card {
-  max-width: 20rem;
-}
-
 .cf-example > .list-group {
   max-width: 25rem;
 }

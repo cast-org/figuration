@@ -418,7 +418,7 @@ a {
   text-decoration: underline;
 }
 
-a:focus, a:hover {
+a:hover {
   color: #091f58;
   text-decoration: underline;
 }
@@ -5942,11 +5942,26 @@ a.badge:focus, a.badge:hover {
 
 .card {
   position: relative;
-  display: block;
   margin-bottom: 1rem;
   background-color: #fff;
   border: 1px solid #a3a3a3;
   border-radius: 0.25rem;
+}
+
+.card else {
+  display: block;
+}
+
+.card-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .card-block {
@@ -5957,6 +5972,13 @@ a.badge:focus, a.badge:hover {
   display: block;
   clear: both;
   content: "";
+}
+
+.card-flex .card-block {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 
 .card-title {
@@ -5998,7 +6020,7 @@ a.badge:focus, a.badge:hover {
 }
 
 .card-header {
-  padding: 1rem 1rem;
+  padding: 0.75rem 1rem;
   margin-bottom: 0;
   color: #292929;
   background-color: #f0f0f0;
@@ -6016,7 +6038,7 @@ a.badge:focus, a.badge:hover {
 }
 
 .card-footer {
-  padding: 1rem 1rem;
+  padding: 0.75rem 1rem;
   color: #292929;
   background-color: #f0f0f0;
   border-top: 1px solid #a3a3a3;
@@ -6033,15 +6055,15 @@ a.badge:focus, a.badge:hover {
 }
 
 .card-header-tabs {
-  margin-right: -0.625rem;
-  margin-bottom: -1rem;
-  margin-left: -0.625rem;
+  margin-right: -0.5rem;
+  margin-bottom: -0.75rem;
+  margin-left: -0.5rem;
   border-bottom: 0;
 }
 
 .card-header-pills {
-  margin-right: -0.625rem;
-  margin-left: -0.625rem;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
 }
 
 .card-primary {
@@ -6234,6 +6256,12 @@ a.badge:focus, a.badge:hover {
     width: 1%;
     margin-bottom: 0;
   }
+  .card-deck-flex .card-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 
 @media (min-width: 36em) {
@@ -6315,6 +6343,12 @@ a.badge:focus, a.badge:hover {
             flex: 1 0 0%;
     width: 1%;
     vertical-align: initial;
+  }
+  .card-group-flex .card-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
   }
 }
 
