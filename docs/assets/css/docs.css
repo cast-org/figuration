@@ -714,24 +714,26 @@ h4 > code {
   max-width: 25rem;
 }
 
-.cf-example .navbar-fixed-top {
+.cf-example .fixed-top,
+.cf-example .sticky-top {
   position: static;
   margin: -1rem -1rem 1rem;
 }
 
 @media (min-width: 36em) {
-  .cf-example .navbar-fixed-top {
+  .cf-example .fixed-top,
+  .cf-example .sticky-top {
     margin: -1.5rem -1.5rem 1rem;
   }
 }
 
-.cf-example .navbar-fixed-bottom {
+.cf-example .fixed-bottom {
   position: static;
   margin: 1rem -1rem -1rem;
 }
 
 @media (min-width: 36em) {
-  .cf-example .navbar-fixed-bottom {
+  .cf-example .fixed-bottom {
     margin: 1rem -1.5rem -1.5rem;
   }
 }
