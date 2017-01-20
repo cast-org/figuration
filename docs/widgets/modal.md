@@ -7,39 +7,34 @@ group: widgets
 
 The modal widget allows you to add dialog style windows to your site or application.
 
-{% callout warning %}
-#### Overlapping modals not supported
-
-Be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.
-{% endcallout %}
-
-{% callout warning %}
-#### Modal Markup Placement
-
-Always try to place a modal's HTML code in a top-level position in your document, such as a direct chld of the `<body>` element, to avoid other components affecting the modal's appearance and/or functionality. Placing it within a `position: fixed;` element may adversely affect placement.
-{% endcallout %}
-
-{% callout warning %}
-#### Mobile Device Caveats
-
-There are some caveats regarding using modals on mobile devices. See [our browser support docs]({{ site.baseurl }}/get-started/browsers-devices/#modals-and-dropdowns-on-mobile) for details.
-{% endcallout %}
-
-{% callout info %}
-#### Embedding YouTube Videos
-
-Embedding YouTube videos in modals requires additional JavaScript not in Figuration to automatically stop playback and more. [See this helpful Stack Overflow post](https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal) for more information.
-{% endcallout %}
-
 ## Contents
 {:.no_toc}
 
 * ToC goes here
 {:toc}
 
+## Important Notes
+
+- Modals get positioned over everything else in the document and remove scroll from the `<body>` so that modal content scrolls instead.
+- By default, clicking on the modal "backdrop" will automatically close the modal.
+- Figuration only supports one modal at a time.  Nested modals are not supported, as this can cause difficult usability and accessibility issues.
+- Modals use `position: fixed`. Always try to place modal HTML code in a top-level position in your document, such as a direct chld of the `<body>` element. Putting modal HTML within a fixed position element will adversely affect placement.
+- There are some caveats regarding using modals on mobile devices. See [our browser support docs]({{ site.baseurl }}/get-started/browsers-devices/#modals-and-dropdowns-on-mobile) for details.
+- Embedding YouTube videos in modals requires additional JavaScript not in Figuration to automatically stop playback and more. [See this helpful Stack Overflow post](https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal) for more information.
+- The [`autofocus`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-autofocus) HTML attribute has no affect in modals. To achieve the same effect you will need some custom JavaScript:
+{% highlight js %}
+$('#myModal').on('afterShow.cfw.modal', function() {
+  $('#myInput').focus();
+});
+{% endhighlight %}
+
+
+
 ## Examples
 
 ### Static Example
+
+Below is a static modal example (meaning its `position` and `display` have been overridden). Included are the modal header, modal body (required for `padding`), and modal footer (optional). It is highly suggested to include modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.
 
 {% example html %}
 <div class="modal">
@@ -306,6 +301,10 @@ $('#myModal').CFW_Modal();
 ### Close Triggers
 
 Any an element with a data attribute of `data-cfw-dismiss="modal"` within the modal element will act as a close trigger for the modal.  There can be multiple close triggers, such as a header/titlebar close and a cancel button in the footer.
+
+### Dynamic Heights
+
+If the height of a modal changes while it is open, you will need to call `$('#myModal').CFW_Modal('handleUpdate');` to readjust the modal's position and backdrop.
 
 ### Options
 
