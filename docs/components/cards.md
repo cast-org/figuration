@@ -51,9 +51,7 @@ A basic building block of a card is the `.card-block`. Use it whenever you need 
 
 ### Titles
 
-Card titles are used by adding `.card-title` to a `<h*>` tag.
-
-Subtitles are used by adding a `.card-subtitle` to an `<h*>` tag. If the `.card-title` and the `.card-subtitle` items are placed in a `.card-block` item, the card title and subtitle are aligned nicely.
+Card titles and subtitles are used by adding `.card-title` or `.card-subtitle` to a `<h*>` tag. If the `.card-title` and the `.card-subtitle` items are placed in a `.card-block` item, the card title and subtitle are aligned nicely.
 
 {% example html %}
 <div class="card">
