@@ -731,11 +731,9 @@ $nav-pills-active-bg:           $active-bg !default;
 
 // Navbar
 // =====
-$navbar-border-radius:              $border-radius !default;
 $navbar-padding-x:                  $spacer !default;
 $navbar-padding-y:                  ($spacer / 2) !default;
 $navbar-margin-bottom:              1rem !default;
-$navbar-breakpoint:                 sm !default;
 
 $navbar-item-padding-y:             .425rem !default;
 
@@ -982,15 +980,13 @@ $slider-disabled-thumb-opacity:     .9 !default;
 // Warning: Avoid customizing these values. They're used for a bird's eye view
 // of components dependent on the z-axis and are designed to all work together.
 
-// Figuration alters Bootstrap defaults to put modals above popover/tooltip items that are held open.
-// Tooltips/popovers should also be able to appear over navbars.
-// (older BS 3.2 refrerence: bugs #13216, #13217)
+// Figuration puts modals above popover/tooltip items that could be held open.
+// Tooltips/popovers should also be able to appear over fixed/sticky navbars.
 $zindex-dropdown-backdrop:  990 !default;
-$zindex-navbar:            1000 !default;
 $zindex-dropdown:          1000 !default;
-$zindex-popover:           1025 !default; //1060 !default;
-$zindex-tooltip:           1030 !default; //1070 !default;
-$zindex-navbar-fixed:      1020 !default; //1030 !default;
-$zindex-navbar-sticky:     1020 !default; //1030 !default;
+$zindex-fixed:             1020 !default;
+$zindex-sticky:            1020 !default;
+$zindex-popover:           1025 !default;
+$zindex-tooltip:           1030 !default;
 $zindex-modal-backdrop:    1040 !default;
 $zindex-modal:             1050 !default;

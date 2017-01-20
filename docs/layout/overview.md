@@ -200,16 +200,15 @@ A quick example using some of Figuration's [Typography utility classes]({{ site.
 
 Several Figuration components utilize `z-index`, the CSS property that helps control layout by providing a third axis to arrange content. We utilize a default z-index scale in Figuration that's been designed to properly layer navigation, tooltips and popovers, modals, and more.
 
-Customizing these values is most likely not needed, and we don't recommened customizing the values.  However, if you change one, you will need to review and possibly update all of the other values.
+Customizing these values is most likely not needed, and we don't recommend customizing the values.  However, if you change one, you will need to review and possibly update all of the other values.
 
 {% highlight scss %}
 $zindex-dropdown-backdrop:  990 !default;
-$zindex-navbar:            1000 !default;
 $zindex-dropdown:          1000 !default;
+$zindex-fixed:      1020 !default;
+$zindex-sticky:     1020 !default;
 $zindex-popover:           1025 !default;
 $zindex-tooltip:           1030 !default;
-$zindex-navbar-fixed:      1020 !default;
-$zindex-navbar-sticky:     1020 !default;
 $zindex-modal-backdrop:    1040 !default;
 $zindex-modal:             1050 !default;
 {% endhighlight %}

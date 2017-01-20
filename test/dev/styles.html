@@ -53,11 +53,11 @@ Holder.addTheme("gray", {
     background-color: #fff;
     border: 1px solid #222;
 }
-.navbar-sample .navbar-fixed-top {
+.navbar-sample .fixed-top {
     position: static;
     margin: -1.5rem -1.5rem 1rem;
 }
-.navbar-sample .navbar-fixed-bottom {
+.navbar-sample .fixed-bottom {
     position: static;
     margin: 1rem -1.5rem -1.5rem;
 }
@@ -3033,18 +3033,23 @@ Anchor variants:<br />
 
 <h3>Navbar positions</h3>
 <div class="navbar-sample">
-    <nav class="navbar navbar-full navbar-light bg-faded">
-        <a class="navbar-brand" href="#">Full width</a>
+    <nav class="navbar navbar-light bg-faded">
+        <a class="navbar-brand" href="#">Static default</a>
     </nav>
 </div>
 <div class="navbar-sample">
-    <nav class="navbar navbar-fixed-top navbar-light bg-faded">
+    <nav class="navbar fixed-top navbar-light bg-faded">
         <a class="navbar-brand" href="#">Fixed top</a>
     </nav>
 </div>
 <div class="navbar-sample">
-    <nav class="navbar navbar-fixed-bottom navbar-light bg-faded">
+    <nav class="navbar fixed-bottom navbar-light bg-faded">
         <a class="navbar-brand" href="#">Fixed bottom</a>
+    </nav>
+</div>
+<div class="navbar-sample">
+    <nav class="navbar sticky-top navbar-light bg-faded">
+        <a class="navbar-brand" href="#">Sticky top</a>
     </nav>
 </div>
 

@@ -83,7 +83,8 @@
 }
 
 // Navbar
-.cf-example .navbar-fixed-top {
+.cf-example .fixed-top,
+.cf-example .sticky-top {
     position: static;
     margin: -1rem -1rem 1rem;
 
@@ -91,7 +92,7 @@
         margin: -1.5rem -1.5rem 1rem;
     }
 }
-.cf-example .navbar-fixed-bottom {
+.cf-example .fixed-bottom {
     position: static;
     margin: 1rem -1rem -1rem;
 
