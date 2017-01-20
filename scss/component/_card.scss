@@ -1,15 +1,36 @@
 .card {
     position: relative;
-    display: block;
     margin-bottom: $card-spacer-y;
     background-color: $card-bg;
     border: $card-border-width solid $card-border-color;
     @include border-radius($card-border-radius);
+    @if $enable-flex-full {
+        display: flex;
+        flex-direction: column;
+    } else {
+        display: block;
+    }
+}
+@if $enable-flex-opt {
+    .card-flex {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .card-block {
     @include clearfix;
     padding: $card-padding-y $card-padding-x;
+    @if $enable-flex-full {
+        flex: 1 1 auto;
+    }
+}
+@if $enable-flex-opt {
+    .card-flex {
+        .card-block {
+            flex: 1 1 auto;
+        }
+    }
 }
 
 .card-title {
@@ -62,7 +83,7 @@
 // Optional textual caps
 .card-header {
     @include clearfix;
-    padding: $card-padding-y $card-padding-x;
+    padding: $card-cap-padding-y $card-cap-padding-x;
     margin-bottom: 0; // Removes the default margin-bottom of <hN>
     color: $card-cap-color;
     background-color: $card-cap-bg;
@@ -75,7 +96,7 @@
 
 .card-footer {
     @include clearfix;
-    padding: $card-padding-y $card-padding-x;
+    padding: $card-cap-padding-y $card-cap-padding-x;
     color: $card-cap-color;
     background-color: $card-cap-bg;
     border-top: $card-border-width solid $card-border-color;
@@ -85,17 +106,16 @@
     }
 }
 
-
 // Header navs
 .card-header-tabs {
-    margin-right: -($card-spacer-x / 2);
-    margin-bottom: -$card-spacer-y;
-    margin-left: -($card-spacer-x / 2);
+    margin-right: -($card-cap-padding-x / 2);
+    margin-bottom: -$card-cap-padding-y;
+    margin-left: -($card-cap-padding-x / 2);
     border-bottom: 0;
 }
 .card-header-pills {
-    margin-right: -($card-spacer-x / 2);
-    margin-left: -($card-spacer-x / 2);
+    margin-right: -($card-cap-padding-x / 2);
+    margin-left: -($card-cap-padding-x / 2);
 }
 
 // Background variations
@@ -213,6 +233,12 @@
             flex: 1 0 0;
             width: 1%;
             margin-bottom: 0; // Margin balancing
+        }
+
+        @if $enable-flex-opt {
+            .card-flex {
+                display: flex;
+            }
         }
     }
 }
@@ -332,6 +358,10 @@
                 flex: 1 0 0;
                 width: 1%;
                 vertical-align: initial;
+            }
+
+            .card-flex {
+                display: flex;
             }
         }
     }
