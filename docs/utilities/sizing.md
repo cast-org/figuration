@@ -1,10 +1,10 @@
 ---
 layout: docs
-title: Sizing & Positioning
+title: Sizing
 group: utilities
 ---
 
-Gain a little more control over your layout.
+Adjust the width or height of an element with some utilities.
 
 ## Contents
 {:.no_toc}
@@ -12,7 +12,7 @@ Gain a little more control over your layout.
 * ToC goes here
 {:toc}
 
-## Widths/Heights
+## 100% Width/Height
 
 Easily make an element as wide as its parent using the `.w-100` utility class, which sets `width: 100%`.
 
@@ -33,6 +33,8 @@ There is also a `.h-100` utility class, which sets `height: 100%`.  However, it 
 </div>
 {% endexample %}
 
+## Max Width/Height
+
 You can also use the `.mw-100` and `.mh-100`, to set `max-width: 100%;` or `max-height: 100%;`, utilities as needed.
 
 {% example html %}
@@ -49,16 +51,6 @@ You can also use the `.mw-100` and `.mh-100`, to set `max-width: 100%;` or `max-
 </div>
 {% endexample %}
 
-## Fixed Positioning
+## Auto Width/Height
 
-The `.pos-f-t` class can be used to easily position elements at the top of the viewport and make them as wide as the viewport. **Be sure you understand the ramifications of fixed-position elements within your project.** Here's how the class is defined:
-
-{% highlight scss %}
-.pos-f-t {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: $zindex-navbar-fixed;
-}
-{% endhighlight %}
+In those cases when you need to reset the dimension of an element to `auto`, you can use `.w-auto` or `.h-auto`.

@@ -316,23 +316,31 @@ Although it's not required, you can wrap a navbar in a `.container` to center it
 
 ## Placement
 
-Navbars can be statically placed (their default behavior), static without rounded corners, or fixed to the top or bottom of the viewport.
+Navbars are statically placed by default, or use the [position utilities]({{ site.baseurl }}/utilities/position/) to alter their location.
+
+**Note: `position: sticky`, used for `.sticky-top`, isn't fully supported in every browser.**
 
 {% example html %}
-<nav class="navbar navbar-full navbar-light bg-faded">
-  <a class="navbar-brand" href="#">Full width</a>
+<nav class="navbar navbar-light bg-faded">
+  <a class="navbar-brand" href="#">Static default</a>
 </nav>
 {% endexample %}
 
 {% example html %}
-<nav class="navbar navbar-fixed-top navbar-light bg-faded">
+<nav class="navbar navbar-light bg-faded fixed-top">
   <a class="navbar-brand" href="#">Fixed top</a>
 </nav>
 {% endexample %}
 
 {% example html %}
-<nav class="navbar navbar-fixed-bottom navbar-light bg-faded">
+<nav class="navbar navbar-light bg-faded fixed-bottom">
   <a class="navbar-brand" href="#">Fixed bottom</a>
+</nav>
+{% endexample %}
+
+{% example html %}
+<nav class="navbar navbar-light bg-faded sticky-top">
+  <a class="navbar-brand" href="#">Sticky top</a>
 </nav>
 {% endexample %}
 
