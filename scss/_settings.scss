@@ -405,6 +405,11 @@ $thumbnail-border-radius:       $border-radius !default;
 $thumbnail-box-shadow:          0 .0625rem .125rem rgba(0,0,0,.075) !default;
 
 
+// Responsive embed
+// =====
+$embed-ratio: percentage(9 / 16) !default;
+
+
 // Code
 // =====
 $code-font-size:            87.5% !default;
