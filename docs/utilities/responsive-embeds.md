@@ -16,7 +16,7 @@ Rules are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<object>` e
 </div>
 {% endexample %}
 
-Aspect ratios can be customized with modifier classes.
+By default the aspect ratio is set to 16:9, this can be customized by overriding the `$embed-ratio` variable by copying it into your `/scss/_custom.scss` file.  Also, the aspect ratios can be customized with the included modifier classes.
 
 {% highlight html %}
 <!-- 21:9 aspect ratio -->
@@ -37,16 +37,5 @@ Aspect ratios can be customized with modifier classes.
 <!-- 1:1 aspect ratio -->
 <div class="embed-responsive embed-responsive-1x1">
   <iframe class="embed-responsive-item" src="..."></iframe>
-</div>
-{% endhighlight %}
-
-## Special Case: Video
-
-As a quick alternative, using the class `.video-responsive` uses the same settings as `.embed-responsive` but sets a default aspect ratio of 16:9.
-
-{% highlight html %}
-<!-- 16:9 aspect ratio -->
-<div class="video-responsive">
-  <video>...</video>
 </div>
 {% endhighlight %}
