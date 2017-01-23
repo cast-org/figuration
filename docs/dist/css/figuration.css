@@ -3850,9 +3850,15 @@ base::-moz-progress-bar,
 .embed-responsive {
   position: relative;
   display: block;
-  height: 0;
+  width: 100%;
   padding: 0;
   overflow: hidden;
+}
+
+.embed-responsive::before {
+  display: block;
+  padding-top: 56.25%;
+  content: "";
 }
 
 .embed-responsive .embed-responsive-item,
@@ -3869,92 +3875,44 @@ base::-moz-progress-bar,
   border: 0;
 }
 
-.video-responsive {
-  position: relative;
-  display: block;
-  height: 0;
-  padding: 0;
-  padding-bottom: 56.25%;
-  overflow: hidden;
+.embed-responsive-21x9::before {
+  padding-top: 42.857143%;
 }
 
-.video-responsive .video-responsive-item,
-.video-responsive iframe,
-.video-responsive embed,
-.video-responsive object,
-.video-responsive video {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
+.embed-responsive-16x9::before {
+  padding-top: 56.25%;
 }
 
-.embed-responsive-21x9 {
-  padding-bottom: 42.857143%;
+.embed-responsive-4x3::before {
+  padding-top: 75%;
 }
 
-.embed-responsive-16x9 {
-  padding-bottom: 56.25%;
+.embed-responsive-1x1::before {
+  padding-top: 100%;
 }
 
-.embed-responsive-4x3 {
-  padding-bottom: 75%;
-}
-
-.embed-responsive-1x1 {
-  padding-bottom: 100%;
-}
-
-:-moz-full-screen .video-responsive,
-:-moz-full-screen .embed-responsive {
-  position: initial;
-}
-
-:-webkit-full-screen .video-responsive,
 :-webkit-full-screen .embed-responsive {
   position: initial;
 }
 
-:-ms-fullscreen .video-responsive,
+:-moz-full-screen .embed-responsive {
+  position: initial;
+}
+
 :-ms-fullscreen .embed-responsive {
   position: initial;
 }
 
-:fullscreen .video-responsive,
 :fullscreen .embed-responsive {
   position: initial;
 }
 
-:-moz-full-screen video {
-  width: 100% !important;
-  max-width: 100%;
-  height: 100% !important;
-  max-height: 100%;
-}
-
-:-webkit-full-screen video {
-  width: 100% !important;
-  max-width: 100%;
-  height: 100% !important;
-  max-height: 100%;
-}
-
-:-ms-fullscreen video {
-  position: -ms-device-fixed !important;
-  width: 100% !important;
-  max-width: 100%;
-  height: 100% !important;
-  max-height: 100%;
-}
-
-:fullscreen video {
-  width: 100% !important;
-  max-width: 100%;
-  height: 100% !important;
-  max-height: 100%;
+:-ms-fullscreen .embed-responsive .embed-responsive-item,
+:-ms-fullscreen .embed-responsive iframe,
+:-ms-fullscreen .embed-responsive embed,
+:-ms-fullscreen .embed-responsive object,
+:-ms-fullscreen .embed-responsive video {
+  position: -ms-device-fixed;
 }
 
 .list-group {
@@ -4034,6 +3992,8 @@ base::-moz-progress-bar,
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
   -webkit-flex-flow: row wrap;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
@@ -5071,12 +5031,16 @@ ul.nav-flex:not(.nav-inline):not(.nav-tabs):not(.nav-pills):not(.navbar-nav) {
 }
 
 if $enable-flex-full .nav-inline {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
   -webkit-flex-flow: row wrap;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
 }
 
 .nav-flex.nav-inline {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
   -webkit-flex-flow: row wrap;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
@@ -5137,6 +5101,8 @@ if $enable-flex-full .nav-inline {
 }
 
 .nav-flex.nav-tabs {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
   -webkit-flex-flow: row wrap;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
@@ -5184,6 +5150,8 @@ if $enable-flex-full .nav-inline {
 }
 
 .nav-flex.nav-pills {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
   -webkit-flex-flow: row wrap;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
@@ -6292,6 +6260,8 @@ a.badge:focus, a.badge:hover {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
     -webkit-flex-flow: row wrap;
         -ms-flex-flow: row wrap;
             flex-flow: row wrap;
