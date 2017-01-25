@@ -63,7 +63,7 @@ Remember, since Figuration utilizes the HTML5 doctype, **all inputs must have a 
     <input type="color" class="form-control-color" value="#117dba" id="exampleInputColor">
   </div>
   <fieldset class="form-group">
-    <legend>Radio buttons</legend>
+    <legend class="form-control-legend">Radio buttons</legend>
     <div class="form-check">
       <label class="form-check-label">
         <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
@@ -84,9 +84,12 @@ Remember, since Figuration utilizes the HTML5 doctype, **all inputs must have a 
     </div>
   </fieldset>
   <div class="form-check">
-    <label class="form-check-label">
-      <input type="checkbox" class="form-check-input"> Check me out
-    </label>
+    <fieldset>
+      <legend class="form-control-legend">Checkbox</legend>
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input"> Check me out
+      </label>
+    </fieldset>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
@@ -349,7 +352,7 @@ Assistive technologies such as screen readers will have trouble with your forms 
 
 For more structured form layouts that are also responsive, you can utilize Figuration's [predefined grid classes]({{ site.baseurl }}/layout/grid/#predefined-classes) or [mixins]({{ site.baseurl }}/layout/grid/#sass-mixins) to create horizontal forms. Add the `.row` class to form groups and use the `.col-*-*` classes to specify the width of your labels and controls.
 
-Be sure to add `.form-control-label` to your `<label>`s as well so they're vertically centered with their associated form controls. For `<legend>` elements, you can use `.col-form-legend` to make them appear similar to regular `<label>` elements.
+Be sure to add `.form-control-label` to your `<label>`s as well so they're vertically centered with their associated form controls. For `<legend>` elements, you can use `.form-control-legend` to make them appear similar to regular `<label>` elements.
 
 {% example html %}
 <div class="container">
@@ -389,16 +392,16 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
         </div>
       </div>
     </fieldset>
-    <div class="form-group row">
-      <legend class="col-sm-2 form-control-legend">Checkbox</legend>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="checkbox"> Check me out
-          </label>
+    <fieldset class="form-group row">
+        <legend class="col-sm-2 form-control-legend">Checkbox</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox"> Check me out
+            </label>
+          </div>
         </div>
-      </div>
-    </div>
+    </fieldset>
     <div class="form-group row">
       <div class="offset-sm-2 col-sm-10">
         <button type="submit" class="btn btn-primary">Sign in</button>

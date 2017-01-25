@@ -43,12 +43,14 @@ Using table cells.
 {% example html %}
 <table class="table table-bordered" style="height: 100px;">
     <tbody>
+    <tr>
         <td class="valign-baseline">baseline</td>
         <td class="valign-top">top</td>
         <td class="valign-middle">middle</td>
         <td class="valign-bottom">bottom</td>
         <td class="valign-text-top">text-top</td>
         <td class="valign-text-bottom">text-bottom</td>
+    </tr>
     </tbody>
 </table>
 {% endexample %}
