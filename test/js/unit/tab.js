@@ -190,20 +190,20 @@ $(function() {
         var $last = $tabs.last();
 
         $first.CFW_Tab('show');
-        assert.strictEqual($tabsObj.find('.active a').attr('aria-expanded'), 'true', 'shown tab has aria-expanded = true');
-        assert.strictEqual($tabsObj.find('li:not(.active) a').attr('aria-expanded'), 'false', 'hidden tab has aria-expanded = false');
+        assert.strictEqual($tabsObj.find('a.active').attr('aria-expanded'), 'true', 'shown tab has aria-expanded = true');
+        assert.strictEqual($tabsObj.find('a:not(.active)').attr('aria-expanded'), 'false', 'hidden tab has aria-expanded = false');
 
         $last.trigger('click');
-        assert.strictEqual($tabsObj.find('.active a').attr('aria-expanded'), 'true', 'after click, shown tab has aria-expanded = true');
-        assert.strictEqual($tabsObj.find('li:not(.active) a').attr('aria-expanded'), 'false', 'after click, hidden tab has aria-expanded = false');
+        assert.strictEqual($tabsObj.find('a.active').attr('aria-expanded'), 'true', 'after click, shown tab has aria-expanded = true');
+        assert.strictEqual($tabsObj.find('a:not(.active)').attr('aria-expanded'), 'false', 'after click, hidden tab has aria-expanded = false');
 
         $first.CFW_Tab('show');
-        assert.strictEqual($tabsObj.find('.active a').attr('aria-expanded'), 'true', 'shown tab has aria-expanded = true');
-        assert.strictEqual($tabsObj.find('li:not(.active) a').attr('aria-expanded'), 'false', 'hidden tab has aria-expanded = false');
+        assert.strictEqual($tabsObj.find('a.active').attr('aria-expanded'), 'true', 'shown tab has aria-expanded = true');
+        assert.strictEqual($tabsObj.find('a:not(.active)').attr('aria-expanded'), 'false', 'hidden tab has aria-expanded = false');
 
         $first.trigger('click');
-        assert.strictEqual($tabsObj.find('.active a').attr('aria-expanded'), 'true', 'after second show event, shown tab still has aria-expanded = true');
-        assert.strictEqual($tabsObj.find('li:not(.active) a').attr('aria-expanded'), 'false', 'after second show event, hidden tab has aria-expanded = false');
+        assert.strictEqual($tabsObj.find('a.active').attr('aria-expanded'), 'true', 'after second show event, shown tab still has aria-expanded = true');
+        assert.strictEqual($tabsObj.find('a:not(.active)').attr('aria-expanded'), 'false', 'after second show event, hidden tab has aria-expanded = false');
     });
 
     QUnit.test('selected tab should have aria-selected', function(assert) {
@@ -221,20 +221,20 @@ $(function() {
         var $last = $tabs.last();
 
         $first.CFW_Tab('show');
-        assert.strictEqual($tabsObj.find('.active a').attr('aria-selected'), 'true', 'shown tab has aria-selected = true');
-        assert.strictEqual($tabsObj.find('li:not(.active) a').attr('aria-selected'), 'false', 'hidden tab has aria-selected = false');
+        assert.strictEqual($tabsObj.find('a.active').attr('aria-selected'), 'true', 'shown tab has aria-selected = true');
+        assert.strictEqual($tabsObj.find('a:not(.active)').attr('aria-selected'), 'false', 'hidden tab has aria-selected = false');
 
         $last.trigger('click');
-        assert.strictEqual($tabsObj.find('.active a').attr('aria-selected'), 'true', 'after click, shown tab has aria-selected = true');
-        assert.strictEqual($tabsObj.find('li:not(.active) a').attr('aria-selected'), 'false', 'after click, hidden tab has aria-selected = false');
+        assert.strictEqual($tabsObj.find('a.active').attr('aria-selected'), 'true', 'after click, shown tab has aria-selected = true');
+        assert.strictEqual($tabsObj.find('a:not(.active)').attr('aria-selected'), 'false', 'after click, hidden tab has aria-selected = false');
 
         $first.CFW_Tab('show');
-        assert.strictEqual($tabsObj.find('.active a').attr('aria-selected'), 'true', 'shown tab has aria-selected = true');
-        assert.strictEqual($tabsObj.find('li:not(.active) a').attr('aria-selected'), 'false', 'hidden tab has aria-selected = false');
+        assert.strictEqual($tabsObj.find('a.active').attr('aria-selected'), 'true', 'shown tab has aria-selected = true');
+        assert.strictEqual($tabsObj.find('a:not(.active)').attr('aria-selected'), 'false', 'hidden tab has aria-selected = false');
 
         $first.trigger('click');
-        assert.strictEqual($tabsObj.find('.active a').attr('aria-selected'), 'true', 'after second show event, shown tab still has aria-selected = true');
-        assert.strictEqual($tabsObj.find('li:not(.active) a').attr('aria-selected'), 'false', 'after second show event, hidden tab has aria-selected = false');
+        assert.strictEqual($tabsObj.find('a.active').attr('aria-selected'), 'true', 'after second show event, shown tab still has aria-selected = true');
+        assert.strictEqual($tabsObj.find('a:not(.active)').attr('aria-selected'), 'false', 'after second show event, hidden tab has aria-selected = false');
     });
 
     QUnit.test('should not show if trigger disabled by class', function(assert) {
