@@ -128,8 +128,7 @@ if $enable-flex-full {
     }
 
     .nav-link.active,
-    .nav-item.open .nav-link,
-    .nav-item.active .nav-link {
+    .nav-item.open .nav-link {
         color: $nav-tabs-active-color;
         cursor: default;
         background-color: $nav-tabs-active-bg;
@@ -185,8 +184,7 @@ if $enable-flex-full {
     }
 
     .nav-link.active,
-    .nav-item.open .nav-link,
-    .nav-item.active .nav-link {
+    .nav-item.open .nav-link {
         color: $nav-pills-active-color;
         cursor: default;
         background-color: $nav-pills-active-bg;

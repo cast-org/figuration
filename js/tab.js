@@ -31,7 +31,7 @@
             var $selfRef = this;
 
             // Find nav and target elements
-            this.$navElm = this.$triggerElm.closest('ul, ol');
+            this.$navElm = this.$triggerElm.closest('ul, ol, nav');
             this.$navElm.attr('role', 'tablist');
 
             var $selector = $(this.settings.target);
@@ -74,6 +74,7 @@
 
             // Bind click handler
             this.$triggerElm.on('click', function(e) {
+                e.preventDefault();
                 $selfRef.show(e);
             });
 
@@ -83,7 +84,7 @@
             });
 
             // Display panel if trigger is marked active
-            if (this.$triggerElm.closest('li').hasClass('active')) {
+            if (this.$triggerElm.hasClass('active')) {
                 this.$triggerElm.attr({
                     'tabindex': 0,
                     'aria-selected': 'true',
@@ -100,12 +101,8 @@
             }
 
             // Check to see if there is an active element defined - if not set current one as active
-            if (this.$navElm.find('li.active').length <= 0) {
-                this.$triggerElm.closest('li').addClass('active');
-
-                if (this.$triggerElm.parent('.dropdown-menu').length) {
-                    this.$triggerElm.closest('li.dropdown').addClass('active');
-                }
+            if (this.$navElm.find('.active').length <= 0) {
+                this.$triggerElm.addClass('active');
 
                 this.$triggerElm.attr({
                     'tabindex': 0,
@@ -130,13 +127,13 @@
                 e.preventDefault();
             }
 
-            if (this.$triggerElm.parent('li').hasClass('active')
+            if (this.$triggerElm.hasClass('active')
                 || this.$triggerElm.hasClass('disabled')
                 || this.$triggerElm[0].hasAttribute('disabled')) {
                 return;
             }
 
-            var $previous = this.$navElm.find('.active:last a[data-cfw="tab"]');
+            var $previous = this.$navElm.find('.active:last');
             if ($previous.length) {
                 if (!$previous.CFW_trigger('beforeHide.cfw.tab', { relatedTarget: this.$triggerElm[0] })) {
                     return;
@@ -162,7 +159,7 @@
                 'aria-expanded': 'true'
             });
 
-            this._activateTab(this.$triggerElm.closest('li'), this.$navElm, false, $previous);
+            this._activateTab(this.$triggerElm, this.$navElm, false, $previous);
             this._activateTab(this.$targetElm, this.$targetElm.parent(), true, $previous);
         },
 
@@ -210,7 +207,7 @@
 
         _activateTab : function($node, container, isPanel, $previous) {
             var $selfRef = this;
-            var $prevActive = container.find('> .active');
+            var $prevActive = container.find('.active');
             var doTransition = isPanel && this.settings.animate;
 
             function displayTab() {
