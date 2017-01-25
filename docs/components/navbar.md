@@ -37,8 +37,8 @@ Here's an example of all the sub-components included in a default, light navbar:
 <nav class="navbar navbar-light bg-faded">
   <a class="navbar-brand" href="#">Navbar</a>
   <ul class="nav navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">Features</a>
@@ -81,8 +81,8 @@ Add `.active` directly to a `.nav-link`, or its parent `.nav-item`, to indicate 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
   <ul class="nav navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">Features</a>
@@ -218,8 +218,8 @@ Here are some examples to show what we mean.
   <nav class="navbar navbar-dark bg-inverse">
     <a class="navbar-brand" href="#">Navbar</a>
     <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Features</a>
@@ -239,8 +239,8 @@ Here are some examples to show what we mean.
   <nav class="navbar navbar-dark bg-primary">
     <a class="navbar-brand" href="#">Navbar</a>
     <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Features</a>
@@ -260,8 +260,8 @@ Here are some examples to show what we mean.
   <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
     <a class="navbar-brand" href="#">Navbar</a>
     <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Features</a>
@@ -377,8 +377,8 @@ Note the use of the `data-cfw-collapse-hidden="false"` option for the [Collapse 
     <button class="navbar-toggler hide-lg-up float-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav0" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
     <div class="collapse navbar-toggleable-md" id="respNav0">
         <ul class="nav navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Features</a>
@@ -402,8 +402,8 @@ With the `.navbar-brand` in the collapsing area.
     <div class="collapse navbar-toggleable-md" id="respNav1">
         <a class="navbar-brand" href="#">Responsive navbar</a>
         <ul class="nav navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Features</a>
@@ -427,8 +427,8 @@ When using dropdowns, they will display 'inline' with the rest of the navbar men
     <div class="collapse navbar-toggleable-md" id="respNav2">
         <a class="navbar-brand" href="#">Responsive navbar</a>
         <ul class="nav navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
                 <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#navDropdown1">Dropdown</a>
@@ -461,8 +461,8 @@ Each 'segment' of a navbar group will also need to be wrapped in, or classed wit
     <div class="navbar-group">
         <a class="navbar-item navbar-brand" href="#">Navbar</a>
         <ul class="navbar-item nav navbar-item-max navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Features</a>
@@ -489,8 +489,8 @@ Each 'segment' of a navbar group will also need to be wrapped in, or classed wit
     <div class="navbar-group navbar-group-justified">
         <a class="navbar-item navbar-brand" href="#">Navbar</a>
         <ul class="navbar-item nav navbar-nav text-center">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Features</a>

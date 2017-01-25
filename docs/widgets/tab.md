@@ -25,7 +25,7 @@ The tab widget works with [tab]({{ site.baseurl }}/components/navs/#tabs) or [pi
 <div class="cf-example cf-example-tabs">
     <ul class="nav nav-tabs">
         <li class="nav-item"><a href="#tabpanel1" class="nav-link" data-cfw="tab">Tab 1</a></li>
-        <li class="nav-item active"><a href="#tabpanel2" class="nav-link" data-cfw="tab">Tab 2</a></li>
+        <li class="nav-item"><a href="#tabpanel2" class="nav-link active" data-cfw="tab">Tab 2</a></li>
         <li class="nav-item"><a href="#tabpanel3" class="nav-link" data-cfw="tab">Tab 3</a></li>
         <li class="nav-item"><a href="#tabpanel4" class="nav-link disabled" data-cfw="tab">Tab 4</a></li>
     </ul>
@@ -48,7 +48,7 @@ The tab widget works with [tab]({{ site.baseurl }}/components/navs/#tabs) or [pi
 {% highlight html %}
 <ul class="nav nav-tabs">
     <li class="nav-item"><a href="#tabpanel1" class="nav-link" data-cfw="tab">Tab 1</a></li>
-    <li class="nav-item active"><a href="#tabpanel2" class="nav-link" data-cfw="tab">Tab 2</a></li>
+    <li class="nav-item"><a href="#tabpanel2" class="nav-link active" data-cfw="tab">Tab 2</a></li>
     <li class="nav-item"><a href="#tabpanel3" class="nav-link" data-cfw="tab">Tab 3</a></li>
     <li class="nav-item"><a href="#tabpanel4" class="nav-link disabled" data-cfw="tab">Tab 4</a></li>
 </ul>
@@ -81,7 +81,7 @@ To set a default active tab, add the class `.active` to the parent `<li>` of the
 {% highlight html %}
 <!-- Nav tabs -->
 <ul class="nav nav-tabs">
-    <li class="nav-item active"><a href="#home" class="nav-link" data-cfw="tab">Home</a></li>
+    <li class="nav-item"><a href="#home" class="nav-link active" data-cfw="tab">Home</a></li>
     <li class="nav-item"><a href="#profile" class="nav-link" data-cfw="tab">Profile</a></li>
     <li class="nav-item"><a href="#messages" class="nav-link" data-cfw="tab">Messages</a></li>
     <li class="nav-item"><a href="#" class="nav-link" data-cfw="tab" data-cfw-tab-target="#settings">Settings</a></li>
