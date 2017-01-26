@@ -119,13 +119,16 @@
                 this.selector + '[href="' + target + '"]';
 
             var $active = $(selector)
-                .parents('li')
                 .addClass('active');
 
-            if ($active.parent('.dropdown-menu').length) {
+            if ($active.closest('.dropdown-menu').length) {
                 $active = $active
-                    .closest('li.dropdown')
+                    .closest('.dropdown')
+                    .find('[data-cfw="dropdown"]')
                     .addClass('active');
+            } else {
+                // Set parents as active
+                $active.parents('ul, ol, nav').prev('li, a').addClass('active');
             }
 
             $active.CFW_trigger('activate.cfw.scrollspy');
@@ -133,7 +136,7 @@
 
         clear : function() {
             $(this.selector)
-                .parentsUntil(this.settings.target, '.active')
+                .filter('.active')
                 .removeClass('active');
         }
     };

@@ -68,15 +68,15 @@ $(function() {
         var sectionHTML = '<div id="header" style="height: 500px;"></div>'
             + '<nav id="navigation" class="navbar">'
             + '<ul class="nav navbar-nav">'
-            + '<li class="active"><a id="one-link" href="#one">One</a></li>'
-            + '<li><a id="two-link" href="#two">Two</a></li>'
-            + '<li><a id="three-link" href="#three">Three</a></li>'
+            + '<li><a href="#div-1" id="a-1" class="active">One</a></li>'
+            + '<li><a href="#div-2" id="a-2">Two</a></li>'
+            + '<li><a href="#div-3" id="a-3">Three</a></li>'
             + '</ul>'
             + '</nav>'
             + '<div id="content" style="height: 200px; overflow-y: auto;">'
-            + '<div id="one" style="height: 500px;"></div>'
-            + '<div id="two" style="height: 300px;"></div>'
-            + '<div id="three" style="height: 10px;"></div>'
+            + '<div id="div-1" style="height: 500px;"></div>'
+            + '<div id="div-2" style="height: 300px;"></div>'
+            + '<div id="div-3" style="height: 10px;"></div>'
             + '</div>';
         var $section = $(sectionHTML).appendTo('#qunit-fixture');
         var $scrollspy = $section
@@ -86,9 +86,9 @@ $(function() {
         $scrollspy.CFW_Scrollspy({ target: '#navigation', offset: $scrollspy.position().top });
 
         $scrollspy.on('scroll.cfw.scrollspy', function() {
-            assert.ok(!$section.find('#one-link').parent().hasClass('active'), '"active" class removed from first section');
-            assert.ok($section.find('#two-link').parent().hasClass('active'), '"active" class on middle section');
-            assert.ok(!$section.find('#three-link').parent().hasClass('active'), '"active" class not on last section');
+            assert.ok(!$section.find('#a-1').hasClass('active'), '"active" class removed from first section');
+            assert.ok($section.find('#a-2').hasClass('active'), '"active" class on middle section');
+            assert.ok(!$section.find('#a-3').hasClass('active'), '"active" class not on last section');
             done();
         });
 
@@ -99,8 +99,8 @@ $(function() {
         assert.expect(2);
         var navbarHtml = '<nav class="navbar">'
             + '<ul class="nav">'
-            + '<li id="li-1"><a href="#div-1">div 1</a></li>'
-            + '<li id="li-2"><a href="#div-2">div 2</a></li>'
+            + '<li><a href="#div-1" id="a-1">div 1</a></li>'
+            + '<li><a href="#div-2" id="a-2">div 2</a></li>'
             + '</ul>'
             + '</nav>';
         var contentHtml = '<div class="content" style="overflow: auto; height: 50px">'
@@ -125,8 +125,8 @@ $(function() {
         };
 
         var done = assert.async();
-        $.when(testElementIsActiveAfterScroll('#li-1', '#div-1'))
-            .then(function() { return testElementIsActiveAfterScroll('#li-2', '#div-2'); })
+        $.when(testElementIsActiveAfterScroll('#a-1', '#div-1'))
+            .then(function() { return testElementIsActiveAfterScroll('#a-2', '#div-2'); })
             .then(function() { done(); });
     });
 
@@ -136,9 +136,9 @@ $(function() {
         var done = assert.async();
         var navbarHtml = '<nav id="navigation" class="navbar">'
             + '<ul class="nav">'
-            + '<li id="li-1"><a href="#div-1">div 1</a>'
+            + '<li><a href="#div-1" id="a-1">div 1</a>'
             + '<ul>'
-            + '<li id="li-2"><a href="#div-2">div 2</a></li>'
+            + '<li><a href="#div-2" id="a-2">div 2</a></li>'
             + '</ul>'
             + '</li>'
             + '</ul>'
@@ -160,8 +160,8 @@ $(function() {
             if (++times > 3) return done();
 
             $content.one('scroll', function() {
-                assert.ok($('#li-1').hasClass('active'), 'nav item for outer element has "active" class');
-                assert.ok($('#li-2').hasClass('active'), 'nav item for inner element has "active" class');
+                assert.ok($('#a-1').hasClass('active'), 'nav item for outer element has "active" class');
+                assert.ok($('#a-2').hasClass('active'), 'nav item for inner element has "active" class');
                 testActiveElements();
             });
 
@@ -176,18 +176,18 @@ $(function() {
         var sectionHTML = '<div id="header" style="height: 500px;"></div>'
             + '<nav id="navigation" class="navbar">'
             + '<ul class="nav navbar-nav">'
-            + '<li class="active"><a id="one-link" href="#one">One</a></li>'
-            + '<li><a id="two-link" href="#two">Two</a></li>'
-            + '<li><a id="three-link" href="#three">Three</a></li>'
+            + '<li><a href="#div-1" id="a-1" class="active">One</a></li>'
+            + '<li><a href="#div-2" id="a-2">Two</a></li>'
+            + '<li><a href="#div-3" id="a-3">Three</a></li>'
             + '</ul>'
             + '</nav>';
         $(sectionHTML).appendTo('#qunit-fixture');
 
         var scrollspyHTML = '<div id="content" style="height: 200px; overflow-y: auto;">'
             + '<div id="spacer" style="height: 100px;"/>'
-            + '<div id="one" style="height: 100px;"/>'
-            + '<div id="two" style="height: 100px;"/>'
-            + '<div id="three" style="height: 100px;"/>'
+            + '<div id="div-1" style="height: 100px;"/>'
+            + '<div id="div-2" style="height: 100px;"/>'
+            + '<div id="div-3" style="height: 100px;"/>'
             + '<div id="spacer" style="height: 100px;"/>'
             + '</div>';
         var $scrollspy = $(scrollspyHTML).appendTo('#qunit-fixture');
@@ -199,7 +199,7 @@ $(function() {
             })
             .one('scroll.cfw.scrollspy', function() {
                 assert.strictEqual($('.active').length, 1, '"active" class on only one element present');
-                assert.strictEqual($('.active').has('#two-link').length, 1, '"active" class on second section');
+                assert.strictEqual($('.active').is($('#a-2')), true, '"active" class on second section');
 
                 $scrollspy
                     .one('scroll.cfw.scrollspy', function() {
@@ -218,9 +218,9 @@ $(function() {
         var sectionHTML = '<div id="header" style="height: 500px;"></div>'
             + '<nav id="navigation" class="navbar">'
             + '<ul class="nav navbar-nav">'
-            + '<li class="active"><a id="one-link" href="#one">One</a></li>'
-            + '<li><a id="two-link" href="#two">Two</a></li>'
-            + '<li><a id="three-link" href="#three">Three</a></li>'
+            + '<li><a href="#div-1" id="a-1" class="active">One</a></li>'
+            + '<li><a href="#div-2" id="a-2">Two</a></li>'
+            + '<li><a href="#div-3" id="a-3">Three</a></li>'
             + '</ul>'
             + '</nav>';
         $(sectionHTML).appendTo('#qunit-fixture');
@@ -229,9 +229,9 @@ $(function() {
         var startOfSectionTwo = 101;
 
         var scrollspyHTML = '<div id="content" style="height: 200px; overflow-y: auto;">'
-            + '<div id="one" style="height: 100px;"/>'
-            + '<div id="two" style="height: 100px;"/>'
-            + '<div id="three" style="height: 100px;"/>'
+            + '<div id="div-1" style="height: 100px;"/>'
+            + '<div id="div-2" style="height: 100px;"/>'
+            + '<div id="div-3" style="height: 100px;"/>'
             + '<div id="spacer" style="height: 100px;"/>'
             + '</div>';
         var $scrollspy = $(scrollspyHTML).appendTo('#qunit-fixture');
@@ -243,11 +243,11 @@ $(function() {
             })
             .one('scroll.cfw.scrollspy', function() {
                 assert.strictEqual($('.active').length, 1, '"active" class on only one element present');
-                assert.strictEqual($('.active').is($('#two-link').parent()), true, '"active" class on second section');
+                assert.strictEqual($('.active').is($('#a-2')), true, '"active" class on second section');
                 $scrollspy
                     .one('scroll.cfw.scrollspy', function() {
                         assert.strictEqual($('.active').length, 1, '"active" class on only one element present');
-                        assert.strictEqual($('.active').is($('#one-link').parent()), true, '"active" class on first section');
+                        assert.strictEqual($('.active').is($('#a-1')), true, '"active" class on first section');
                         done();
                     })
                     .scrollTop(negativeHeight);
@@ -259,19 +259,19 @@ $(function() {
         assert.expect(5);
         var navbarHtml = '<nav class="navbar">'
             + '<ul class="nav">'
-            + '<li id="li-100-1"><a href="#div-100-1">div 1</a></li>'
-            + '<li id="li-100-2"><a href="#div-100-2">div 2</a></li>'
-            + '<li id="li-100-3"><a href="#div-100-3">div 3</a></li>'
-            + '<li id="li-100-4"><a href="#div-100-4">div 4</a></li>'
-            + '<li id="li-100-5"><a href="#div-100-5">div 5</a></li>'
+            + '<li><a href="#div-1" id="a-1">div 1</a></li>'
+            + '<li><a href="#div-2" id="a-2">div 2</a></li>'
+            + '<li><a href="#div-3" id="a-3">div 3</a></li>'
+            + '<li><a href="#div-4" id="a-4">div 4</a></li>'
+            + '<li><a href="#div-5" id="a-5">div 5</a></li>'
             + '</ul>'
             + '</nav>';
         var contentHtml = '<div class="content" style="position: relative; overflow: auto; height: 100px">'
-            + '<div id="div-100-1" style="position: relative; height: 100%; padding: 0; margin: 0">div 1</div>'
-            + '<div id="div-100-2" style="position: relative; height: 100%; padding: 0; margin: 0">div 2</div>'
-            + '<div id="div-100-3" style="position: relative; height: 100%; padding: 0; margin: 0">div 3</div>'
-            + '<div id="div-100-4" style="position: relative; height: 100%; padding: 0; margin: 0">div 4</div>'
-            + '<div id="div-100-5" style="position: relative; height: 100%; padding: 0; margin: 0">div 5</div>'
+            + '<div id="div-1" style="position: relative; height: 100%; padding: 0; margin: 0">div 1</div>'
+            + '<div id="div-2" style="position: relative; height: 100%; padding: 0; margin: 0">div 2</div>'
+            + '<div id="div-3" style="position: relative; height: 100%; padding: 0; margin: 0">div 3</div>'
+            + '<div id="div-4" style="position: relative; height: 100%; padding: 0; margin: 0">div 4</div>'
+            + '<div id="div-5" style="position: relative; height: 100%; padding: 0; margin: 0">div 5</div>'
             + '</div>';
 
         $(navbarHtml).appendTo('#qunit-fixture');
@@ -291,11 +291,11 @@ $(function() {
         };
 
         var done = assert.async();
-        $.when(testElementIsActiveAfterScroll('#li-100-5', '#div-100-5'))
-            .then(function() { return testElementIsActiveAfterScroll('#li-100-4', '#div-100-4'); })
-            .then(function() { return testElementIsActiveAfterScroll('#li-100-3', '#div-100-3'); })
-            .then(function() { return testElementIsActiveAfterScroll('#li-100-2', '#div-100-2'); })
-            .then(function() { return testElementIsActiveAfterScroll('#li-100-1', '#div-100-1'); })
+        $.when(testElementIsActiveAfterScroll('#a-5', '#div-5'))
+            .then(function() { return testElementIsActiveAfterScroll('#a-4', '#div-4'); })
+            .then(function() { return testElementIsActiveAfterScroll('#a-3', '#div-3'); })
+            .then(function() { return testElementIsActiveAfterScroll('#a-2', '#div-2'); })
+            .then(function() { return testElementIsActiveAfterScroll('#a-1', '#div-1'); })
             .then(function() { done(); });
     });
 });
