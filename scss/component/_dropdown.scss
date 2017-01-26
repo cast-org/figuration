@@ -123,9 +123,11 @@
         border-bottom: $dropdown-caret-width solid transparent;
         border-left: $dropdown-caret-width solid $dropdown-caret-color;
     }
+    // scss-lint:disable QualifyingElement
     > a.active:not(:hover):not(:focus)::after {
         border-left-color: $dropdown-caret-active-color;
     }
+    // scss-lint:enable QualifyingElement
 }
 
 // Open state for the dropdown and dropdown-toggle
@@ -293,9 +295,11 @@
         border-right: $dropdown-caret-width solid $dropdown-caret-color;
         border-left: 0;
     }
+    // scss-lint:disable QualifyingElement
     > a.active:not(:hover):not(:focus)::after {
         border-right-color: $dropdown-caret-active-color;
     }
+    // scss-lint:enable QualifyingElement
 }
 
 // Dropup corner overrides
