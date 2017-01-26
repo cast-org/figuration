@@ -79,15 +79,9 @@ $(window).ready(function() {
 .sidenav .nav-link {
   padding: 5px 10px;
 }
-.sidenav .active > a,
-.sidenav .active > a:hover,
-.sidenav .active > a:focus {
+.sidenav .active {
   color: #FFFFFF;
   background: #428BCA;
-}
-.sidenav .active > a:hover,
-.sidenav .active > a:focus {
-    text-decoration: underline;
 }
 
 .container-viewport {
@@ -159,6 +153,13 @@ $(window).ready(function() {
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
 }
 
+.cf-example-scrollspy {
+    position: relative;
+    height: 200px;
+    margin-top: 10px;
+    overflow: auto;
+}
+
 </style>
 
 </head>
@@ -194,6 +195,7 @@ $(window).ready(function() {
                         <li class="nav-item"><a href="#tab" class="nav-link">Tab</a></li>
                         <li class="nav-item"><a href="#dropdown" class="nav-link">Dropdown</a></li>
                         <li class="nav-item"><a href="#collapse" class="nav-link">Collapse</a></li>
+                        <li class="nav-item"><a href="#scrollspy" class="nav-link">Scrollspy</a></li>
                         <li class="nav-item"><a href="#lazy" class="nav-link">Lazy</a></li>
                         <li class="nav-item"><a href="#equalize" class="nav-link">Equalize</a></li>
                     </ul>
@@ -1330,6 +1332,38 @@ $(window).ready(function() {
             </div>
 
             <hr />
+
+            <h2 id="scrollspy">Scrollspy</h2>
+
+            <nav id="navbar-example" class="navbar navbar-light bg-faded">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><a href="#alpha" class="nav-link">Alpha</a></li>
+                    <li class="nav-item"><a href="#beta" class="nav-link">Beta</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownS">Dropdown</a>
+                        <ul data-cfw-dropdown-target="dropdownS">
+                            <li><a href="#one" tabindex="-1">one</a></li>
+                            <li><a href="#two" tabindex="-1">two</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a href="#three" tabindex="-1">three</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div data-cfw="scrollspy" data-cfw-scrollspy-target="#navbar-example" data-cfw-scrollspy-offset="0" class="cf-example-scrollspy">
+                <h4 id="alpha">Alpha</h4>
+                <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+                <h4 id="beta">Beta</h4>
+                <p>Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney's vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney's quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.</p>
+                <h4 id="one">one</h4>
+                <p>Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.</p>
+                <h4 id="two">two</h4>
+                <p>In incididunt echo park, officia deserunt mcsweeney's proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven't heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.</p>
+                <h4 id="three">three</h4>
+                <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+                <p>Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.</p>
+            </div>
 
             <h2 id="collapse">Collapse:</h2>
 
