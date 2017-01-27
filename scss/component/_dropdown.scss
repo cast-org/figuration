@@ -62,7 +62,7 @@
 
 // Links within a dropdown menu
 //Because we support nested dropdown, force list usage not the `.dropdown-item` syntax
-.dropdown-menu > li > a {
+.dropdown-menu a {
     display: block;
     padding: $dropdown-item-padding-y $dropdown-item-padding-x;
     clear: both;
@@ -71,6 +71,12 @@
     text-decoration: none;
     white-space: nowrap; // prevent links from randomly breaking onto new lines
 
+    &.active {
+        color: $dropdown-link-active-color;
+        text-decoration: none;
+        background-color: $dropdown-link-active-bg;
+    }
+
     @include hover-focus {
         color: $dropdown-link-hover-color;
         text-decoration: none;
@@ -78,19 +84,8 @@
         outline: 0;
         box-shadow: none;  // remove focus ring
     }
-}
-// scss-lint:disable QualifyingElement
-.dropdown-menu {
-    // Active state
-    a.active {
-        color: $dropdown-link-active-color;
-        text-decoration: none;
-        background-color: $dropdown-link-active-bg;
-    }
 
-    // Disabled state
-    // Gray out text and ensure the hover/focus state remains gray
-    a.disabled {
+    &.disabled {
         color: $dropdown-link-disabled-color;
         text-decoration: none;
         cursor: $cursor-disabled;
@@ -99,7 +94,6 @@
         @include reset-filter();
     }
 }
-// scss-lint:enable QualifyingElement
 
 // Dropdown submenu additions
 .dropdown-submenu {
@@ -110,24 +104,26 @@
         margin-top: calc(-#{($dropdown-margin-top + $dropdown-padding-y)} + #{$border-width});
         @include border-radius($dropdown-attach-border-radius $dropdown-border-radius $dropdown-border-radius $dropdown-border-radius);
     }
-    > a::after {
-        position: absolute;
-        top: 50%;
-        right: $dropdown-caret-spacer-x;
-        display: block;
-        width: 0;
-        height: 0;
-        margin-top: -$dropdown-caret-width;
-        content: " ";
-        border-top: $dropdown-caret-width solid transparent;
-        border-bottom: $dropdown-caret-width solid transparent;
-        border-left: $dropdown-caret-width solid $dropdown-caret-color;
+
+    > a {
+        &::after {
+            position: absolute;
+            top: 50%;
+            right: $dropdown-caret-spacer-x;
+            display: block;
+            width: 0;
+            height: 0;
+            margin-top: -$dropdown-caret-width;
+            content: " ";
+            border-top: $dropdown-caret-width solid transparent;
+            border-bottom: $dropdown-caret-width solid transparent;
+            border-left: $dropdown-caret-width solid $dropdown-caret-color;
+        }
+
+        &.active:not(:hover):not(:focus)::after {
+            border-left-color: $dropdown-caret-active-color;
+        }
     }
-    // scss-lint:disable QualifyingElement
-    > a.active:not(:hover):not(:focus)::after {
-        border-left-color: $dropdown-caret-active-color;
-    }
-    // scss-lint:enable QualifyingElement
 }
 
 // Open state for the dropdown and dropdown-toggle
@@ -289,17 +285,18 @@
         margin-left: -($border-width * 2);
         @include border-radius($dropdown-border-radius $dropdown-attach-border-radius $dropdown-border-radius $dropdown-border-radius);
     }
-    > a::after {
-        right: auto;
-        left: $dropdown-caret-spacer-x;
-        border-right: $dropdown-caret-width solid $dropdown-caret-color;
-        border-left: 0;
+    > a {
+        &::after {
+            right: auto;
+            left: $dropdown-caret-spacer-x;
+            border-right: $dropdown-caret-width solid $dropdown-caret-color;
+            border-left: 0;
+        }
+
+        &.active:not(:hover):not(:focus)::after {
+            border-right-color: $dropdown-caret-active-color;
+        }
     }
-    // scss-lint:disable QualifyingElement
-    > a.active:not(:hover):not(:focus)::after {
-        border-right-color: $dropdown-caret-active-color;
-    }
-    // scss-lint:enable QualifyingElement
 }
 
 // Dropup corner overrides
