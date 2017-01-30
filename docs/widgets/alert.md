@@ -96,7 +96,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 #### `.CFW_Alert(options)`
 {:.no_toc}
 
-Activates the alert as a closable element. Accepts an optional options `object`.
+Activates the alert as a closable element by listening for click events on descendant elements which have the `data-cfw-dismiss="alert"` attribute. (Not necessary when using the Figuration widget API is enabled.) Accepts an optional options `object`.
 
 {% highlight js %}
 $('#myAlert').CFW_Alert({
@@ -108,6 +108,11 @@ $('#myAlert').CFW_Alert({
 {:.no_toc}
 
 Closes an alert.
+
+#### `.CFW_Alert('dipose')`
+{:.no_toc}
+
+Removes the click event listener from an alert. This will not disable a dismiss item if the Figuration widget API is enabled.
 
 ### Events
 
