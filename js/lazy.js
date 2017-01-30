@@ -122,7 +122,6 @@
             this.$element[this.settings.effect](this.settings.speed);
 
             setTimeout(function() {
-console.log($selfRef.$element);
                 $selfRef.$element.CFW_trigger('afterShow.cfw.lazy');
                 $selfRef.dispose();
             }, this.settings.speed);
