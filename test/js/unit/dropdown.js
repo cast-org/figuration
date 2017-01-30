@@ -222,7 +222,7 @@ $(function() {
         var dropdownHTML = '<div class="dropdown">'
             + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
             + '<ul class="dropdown-menu">'
-            + '<li class="disabled"><a href="#">Disabled link</a></li>'
+            + '<li><a href="#" class="disabled">Disabled link</a></li>'
             + '<li><a href="#">Menu link</a></li>'
             + '</ul>'
             + '</div>';
