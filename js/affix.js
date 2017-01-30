@@ -66,7 +66,6 @@
             return false;
         },
 
-
         getPinnedOffset : function() {
             if (this.pinnedOffset) { return this.pinnedOffset; }
             this.$element.removeClass(CFW_Widget_Affix.RESET).addClass('affix');
@@ -121,6 +120,21 @@
                     top: scrollHeight - height - offsetBottom
                 });
             }
+        },
+
+        dispose : function() {
+            this.$element
+                .off('.cfw.affix')
+                .removeClass(CFW_Widget_Affix.RESET)
+                .removeData('cfw.affix');
+
+            this.$element = null;
+            this.$window = null;
+            this.$target = null;
+            this.affixed = null;
+            this.unpin = null;
+            this.pinnedOffset = null;
+            this.settings = null;
         }
     };
 

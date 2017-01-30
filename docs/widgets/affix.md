@@ -113,6 +113,10 @@ Recalculates the state of the affix based on the dimensions, position, and scrol
 $('#myAffix').CFW_Affix('checkPosition');
 {% endhighlight %}
 
+#### `.CFW_Affix('dispose')`
+{:.no_toc}
+
+Disables the affix functionality and removes any `.affix`, `.affix-top`, or `.affix-bottom` from the designated element.
 
 ### Events
 
