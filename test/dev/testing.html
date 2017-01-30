@@ -39,9 +39,9 @@ $(window).ready(function() {
     });
     var $sideBar = $('.sidebar');
     $sideBar.CFW_Affix({
-        offsetTop:
+        top:
             function() {
-                return $('.topnav').height();
+                return $('header').height();
             }
     });
 });
@@ -979,11 +979,11 @@ $(window).ready(function() {
                                 </ul>
                             </li>
                             <li class="dropdown-divider"></li>
-                            <li><a href="#0-1-3">Separated link</a></li>
+                            <li><a href="#0-1-3" class="disabled">Disabled link</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#">Something else here</a>
+                        <a href="#" class="active">Something else here</a>
                         <!-- <a href="#0-2">Something else here</a> -->
                         <ul>
                             <li><a href="#0-2-0">Action</a></li>
@@ -1003,7 +1003,7 @@ $(window).ready(function() {
                         </ul>
                     </li>
                     <li class="dropdown-divider"></li>
-                    <li class="disabled"><a href="#0-3">Separated link</a></li>
+                    <li><a href="#0-3" class="disabled">Disabled link</a></li>
                 </ul>
             </div>
 
@@ -1093,7 +1093,7 @@ $(window).ready(function() {
                         </ul>
                     </li>
                     <li class="dropdown-divider"></li>
-                    <li class="disabled"><a href="#2-3">Separated link</a></li>
+                    <li><a href="#2-3" class="disabled">Separated link</a></li>
                 </ul>
             </div>
             <script type="text/javascript">
@@ -1160,7 +1160,7 @@ $(window).ready(function() {
                         </ul>
                     </li>
                     <li class="dropdown-divider"></li>
-                    <li class="disabled"><a href="#3-3">Separated link</a></li>
+                    <li><a href="#3-3" class="disabled">Separated link</a></li>
                 </ul>
             </div>
 
@@ -1174,7 +1174,7 @@ $(window).ready(function() {
                     <li><a href="#">Action</a></li>
                     <li><a href="#">Another action</a>
                     <li class="dropdown-divider"></li>
-                    <li class="disabled"><a href="#">Separated link</a></li>
+                    <li><a href="#" class="disabled">Separated link</a></li>
                 </ul>
             </div>
 
@@ -1266,7 +1266,7 @@ $(window).ready(function() {
                         </ul>
                     </li>
                     <li class="dropdown-divider"></li>
-                    <li class="disabled"><a href="#4-3">Separated link</a></li>
+                    <li><a href="#4-3" class="disabled">Separated link</a></li>
                 </ul>
             </div>
 
@@ -1327,7 +1327,7 @@ $(window).ready(function() {
                         </ul>
                     </li>
                     <li class="dropdown-divider"></li>
-                    <li class="disabled"><a href="#5-3">Separated link</a></li>
+                    <li><a href="#5-3" class="disabled">Separated link</a></li>
                 </ul>
             </div>
 
@@ -1516,12 +1516,11 @@ $(window).ready(function() {
             </div>
 
             <strong>Nested:</strong>
-            <div data-cfw="equalize" data-cfw-equalize-target="foo">
+            <div data-cfw="equalize" data-cfw-equalize-target="foo" data-cfw-equalize-row=true>
                 <div class="row" data-cfw="equalize" data-cfw-equalize-target="bar">
                     <div class="col-md-4">
                         <div class="well" data-cfw-equalize-group="foo">
                             <h3>Panel 1</h3>
-                            one
                             <div class="well" data-cfw-equalize-group="bar">one</div>
                             one
                         </div>
@@ -1530,13 +1529,14 @@ $(window).ready(function() {
                         <div class="well" data-cfw-equalize-group="foo">
                             <h3>Panel 2</h3>
                             <div class="well" data-cfw-equalize-group="bar">two<br />two</div>
-                            two
+                            two<br />two
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="well" data-cfw-equalize-group="foo">
                             <h3>Panel 3</h3>
                             <div class="well" data-cfw-equalize-group="bar">three<br />three<br />three</div>
+                            three<br />three<br />three
                         </div>
                     </div>
                 </div>

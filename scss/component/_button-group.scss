@@ -21,14 +21,15 @@
         }
 
         // Bring the "active" button to the front
-        &:focus,
         &:active,
         &.active {
             z-index: 2;
         }
-
-        @include hover {
+        &:hover {
             z-index: 2;
+        }
+        &:focus {
+            z-index: 3;
         }
     }
 }

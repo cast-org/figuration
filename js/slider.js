@@ -318,7 +318,7 @@
                 $inputs = $inputs.add(this.$inputMax);
             }
             $thumbs.attr('tabindex', '').off('.cfw.slider');
-            this.$sliderTrack.CFW_Drag('destroy');
+            this.$sliderTrack.CFW_Drag('dispose');
             $inputs.off('.cfw.slider');
         },
 

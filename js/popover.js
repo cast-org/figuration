@@ -8,7 +8,7 @@
 (function($) {
     'use strict';
 
-    if ($.fn.CFW_Tooltip === undefined) throw new Error('CFW_Popover requires tooltip.js');
+    if ($.fn.CFW_Tooltip === undefined) throw new Error('CFW_Popover requires CFW_Tooltip');
 
     var CFW_Widget_Popover = function(element, options) {
         this.dragAdded = false;
