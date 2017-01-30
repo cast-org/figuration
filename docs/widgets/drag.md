@@ -64,7 +64,7 @@ Options can be passed via JavaScript.
 
 Activates the equalizer widget. Accepts an optional options `object`.
 
-#### `.CFW_Drag('destroy')`
+#### `.CFW_Drag('dispose')`
 {:.no_toc}
 
 Disables the drag functionality.

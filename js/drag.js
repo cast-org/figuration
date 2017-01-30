@@ -9,7 +9,6 @@
     'use strict';
 
     var CFW_Widget_Drag = function(element, options) {
-        this.element = element;
         this.$element = $(element);
         this.dragging = false;
         this.dragdata = {};
@@ -31,29 +30,34 @@
             this.$element.CFW_trigger('init.cfw.drag');
         },
 
-        destroy : function() {
-            this.dragging = false;
-            this.dragdata = null;
+        dispose : function() {
+            this._dragStartOff();
             this.$element
                 .off('.cfw.drag')
                 .removeData('cfw.drag');
-            if (this.detachEvent) {
-                this.detachEvent('ondragstart', this.__dontstart);
+
+            this.$element = null;
+            this.dragging = null;
+            this.dragdata = null;
+            this.settings = null;
+
+            if (this.$element[0].detachEvent) {
+                this.$element[0].detachEvent('ondragstart', this._dontStart);
             }
         },
 
         _dragStartOn : function() {
             this.$element.on('mousedown.cfw.dragstart touchstart.cfw.dragstart MSPointerDown.cfw.dragstart', $.proxy(this._dragStart, this));
+            // prevent image dragging in IE...
+            if (this.$element[0].attachEvent) {
+                this.$element[0].attachEvent('ondragstart', this._dontStart);
+            }
         },
 
         _dragStartOff : function(e) {
-            e.preventDefault();
+            if (e) e.preventDefault();
             $(document).off('.cfw.dragin');
             this.$element.off('.cfw.dragstart');
-            // prevent image dragging in IE...
-            if (this.element.attachEvent) {
-                this.element.attachEvent('ondragstart', this.__dontstart);
-            }
         },
 
         _dragStart : function(e) {
@@ -150,7 +154,7 @@
             return p;
         },
 
-        __dontstart : function() {
+        _dontStart : function() {
             return false;
         }
     };
@@ -162,7 +166,7 @@
             var data = $this.data('cfw.drag');
             var options = typeof option === 'object' && option;
 
-            if (!data && /destroy/.test(option)) {
+            if (!data && /dispose/.test(option)) {
                 return false;
             }
             if (!data) {
