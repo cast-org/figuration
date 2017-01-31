@@ -49,7 +49,6 @@ Scroll the area below the navbar and watch the active class change. The dropdown
     </div>
 </div> <!-- /.cf-example -->
 
-
 ## Usage
 
 ### Requires Relative Positioning
@@ -59,7 +58,7 @@ No matter the implementation method, scrollspy requires the use of `position: re
 {% callout danger %}
 #### Resolvable ID targets required
 
-Navbar links must have resolvable id targets. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`.
+Navigation links must have resolvable id targets. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`. Using a `data-target` attribute is also matched, in the example case the attribute would be `data-target="#home"`.
 {% endcallout %}
 
 {% callout info %}
@@ -70,7 +69,7 @@ Target elements that are not [`:visible` according to jQuery](https://api.jquery
 
 ### Via Data Attributes
 
-To easily add scrollspy behavior to your topbar navigation, add `data-cfw="scrollspy"` to the element you want to spy on (most typically this would be the `<body>`). Then add the `data-cfw-scrollspy-target` attribute with the ID or class of the parent element of any `.nav` component.
+To easily add scrollspy behavior to a navigation section, add `data-cfw="scrollspy"` to the element you want to spy on (most typically this would be the `<body>`). Then add the `data-cfw-scrollspy-target` attribute with the ID or class of any `<ul>`, `<ol>`, or `<nav>`, that use [Figuration nav component]({{ site.baseurl }}/components/navs/) markup, containing the subset of navigation links.
 
 {% highlight css %}
 body {
@@ -119,6 +118,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
             <td>10</td>
             <td>Pixels to offset from top when calculating position of scroll.</td>
         </tr>
+        <tr>
+            <td>throttle</td>
+            <td>integer</td>
+            <td>100</td>
+            <td>Timeout rate (milliseconds) for the throttle function helps to decrease function calls through scroll event.</td>
+        </tr>
     </tbody>
     </table>
 </div> <!-- /.table-responsive -->
@@ -146,6 +151,11 @@ $('[data-cfw="scrollspy"]').each(function() {
     var $spy = $(this).CFW_Scrollspy('refresh');
 });
 {% endhighlight %}
+
+#### `.CFW_Scrollspy('dispose')`
+{:.no_toc}
+
+Removes the associated event listener for the given scrollspy element, leaving the target navigation in its current state.
 
 ### Events
 

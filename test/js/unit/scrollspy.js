@@ -51,7 +51,7 @@ $(function() {
         var $scrollspy = $section
             .show()
             .find('#scrollspy-example')
-            .CFW_Scrollspy({ target: '#ss-target' });
+            .CFW_Scrollspy({ target: '#ss-target', throttle: 0 });
 
         $scrollspy.on('scroll.cfw.scrollspy', function() {
             assert.ok($section.hasClass('active'), '"active" class still on root node');
@@ -83,7 +83,7 @@ $(function() {
             .show()
             .filter('#content');
 
-        $scrollspy.CFW_Scrollspy({ target: '#navigation', offset: $scrollspy.position().top });
+        $scrollspy.CFW_Scrollspy({ target: '#navigation', offset: $scrollspy.position().top, throttle: 0 });
 
         $scrollspy.on('scroll.cfw.scrollspy', function() {
             assert.ok(!$section.find('#a-1').hasClass('active'), '"active" class removed from first section');
@@ -111,7 +111,7 @@ $(function() {
         $(navbarHtml).appendTo('#qunit-fixture');
         var $content = $(contentHtml)
             .appendTo('#qunit-fixture')
-            .CFW_Scrollspy({ offset: 0, target: '.navbar' });
+            .CFW_Scrollspy({ target: '.navbar', offset: 0, throttle: 0 });
 
         var testElementIsActiveAfterScroll = function(element, target) {
             var deferred = $.Deferred();
@@ -154,7 +154,7 @@ $(function() {
 
         var $content = $(contentHtml)
             .appendTo('#qunit-fixture')
-            .CFW_Scrollspy({ offset: 0, target: '#navigation' });
+            .CFW_Scrollspy({ target: '#navigation', offset: 0, throttle: 0 });
 
         !function testActiveElements() {
             if (++times > 3) return done();
@@ -195,7 +195,8 @@ $(function() {
         $scrollspy
             .CFW_Scrollspy({
                 target: '#navigation',
-                offset: $scrollspy.position().top
+                offset: $scrollspy.position().top,
+                throttle: 0
             })
             .one('scroll.cfw.scrollspy', function() {
                 assert.strictEqual($('.active').length, 1, '"active" class on only one element present');
@@ -239,7 +240,8 @@ $(function() {
         $scrollspy
             .CFW_Scrollspy({
                 target: '#navigation',
-                offset: $scrollspy.position().top
+                offset: $scrollspy.position().top,
+                throttle: 0
             })
             .one('scroll.cfw.scrollspy', function() {
                 assert.strictEqual($('.active').length, 1, '"active" class on only one element present');
@@ -277,7 +279,7 @@ $(function() {
         $(navbarHtml).appendTo('#qunit-fixture');
         var $content = $(contentHtml)
             .appendTo('#qunit-fixture')
-            .CFW_Scrollspy({ offset: 0, target: '.navbar' });
+            .CFW_Scrollspy({ target: '.navbar', offset: 0, throttle: 0 });
 
         var testElementIsActiveAfterScroll = function(element, target) {
             var deferred = $.Deferred();
