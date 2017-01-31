@@ -340,10 +340,10 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
             <td>If the `unlink` method should be called when the modal is hidden.  This leaves the modal behind in the DOM.</td>
         </tr>
         <tr>
-            <td>destroy</td>
+            <td>dispose</td>
             <td>boolean</td>
             <td>false</td>
-            <td>If the `destroy` method should be called when the modal is hidden. This will remove the modal from the DOM.</td>
+            <td>If the `dispose` method should be called when the modal is hidden. This will remove the modal from the DOM.</td>
         </tr>
         <tr>
             <td>backdrop</td>
@@ -402,7 +402,7 @@ Hides a modal dialog.
 
 Hides the modal, removes events and attributes from both trigger and modal.
 
-#### `.CFW_Modal('destroy')`
+#### `.CFW_Modal('dispose')`
 {:.no_toc}
 
 Calls the `unlink` method, and then removes the modal from the DOM.
@@ -457,7 +457,7 @@ Event callbacks happen on the target `<div class="modal">` element.
             <td>This event is fired when a modal item has been unlinked from its trigger item and the data-api removed. This event can occur after the `afterHide` event when invoked from the `unlink` method, or before if set to automatically unlink.</td>
         </tr>
         <tr>
-            <td>destroy.cfw.modal</td>
+            <td>dispose.cfw.modal</td>
             <td>This event is fired immediately before the modal item is removed from the DOM.</td>
         </tr>
     </tbody>
@@ -482,7 +482,7 @@ A quick example:<br />
         <ul>
             <li><code>$('#myModal').CFW_Modal('hide');</code></li>
             <li>or <code>$('#myModal').CFW_Modal('unlink');</code></li>
-            <li>or <code>$('#myModal').CFW_Modal('destroy');</code></li>
+            <li>or <code>$('#myModal').CFW_Modal('dispose');</code></li>
         </ul>
     </li>
     <li>Update/create the modal object and insert into DOM.</li>
