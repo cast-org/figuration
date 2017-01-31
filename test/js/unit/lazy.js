@@ -26,17 +26,24 @@ $(function() {
         assert.equal($imgHtml.attr('src'), placeholder, 'image src replaced with placeholder');
     });
 
-    QUnit.test('should change src to match data-src when visible within the viewport at load', function(assert) {
+    QUnit.test('should change src to match data-src when visible within the viewport at init', function(assert) {
         assert.expect(2);
         var done = assert.async();
-        var $content = $('<style>#qunit-fixture { position: static; }</style>' +
-            '<img src="" id="img-1" data-cfw="lazy" data-cfw-lazy-src="../assets/img/test.gif" />');
-        $content.appendTo('#qunit-fixture');
-        var $img1 = $('#img-1')
+        var styles = '<style>'
+            + '.container-viewport { position: absolute; top: 50px; left: 60px; width: 300px; height: 300px; }'
+            + '</style>';
+        var $styles = $(styles).appendTo('head');
+        var $container = $('<div class="container-viewport"/>').appendTo(document.body);
+
+        var $imgHtml = $('<img src="" id="img-1" data-cfw="lazy" data-cfw-lazy-src="../assets/img/test.gif" />');
+        $imgHtml
+            .appendTo($container)
             .one('afterShow.cfw.lazy', function() {
                 assert.ok('show event fired');
-                assert.equal($img1.attr('src'), '../assets/img/test.gif', 'image src was updated');
+                assert.equal($('#img-1').attr('src'), '../assets/img/test.gif', 'image src was updated');
                 done();
+                $container.remove();
+                $styles.remove();
             })
             .CFW_Lazy();
     });
