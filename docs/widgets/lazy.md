@@ -80,7 +80,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
             <td>throttle</td>
             <td>integer</td>
             <td>250</td>
-            <td>Timeout rate (milliseconds) for the throttle function helps to decrease unnecessary function calls through scroll or resize events.</td>
+            <td>Timeout rate (milliseconds) for the throttle function helps to decrease function calls through scroll or resize events.</td>
         </tr>
         <tr>
             <td>trigger</td>
