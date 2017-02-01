@@ -22,20 +22,6 @@
             @include border-right-radius($pagination-border-radius);
         }
     }
-
-    &.disabled .page-link {
-        color: $pagination-disabled-color;
-        pointer-events: none;
-        cursor: $cursor-disabled;
-        background-color: $pagination-disabled-bg;
-    }
-
-    &.active .page-link {
-        z-index: 2;
-        color: $pagination-active-color;
-        cursor: default;
-        background-color: $pagination-active-bg;
-    }
 }
 
 .page-link {
@@ -49,12 +35,30 @@
     background-color: $pagination-bg;
     border: $pagination-border-width solid $pagination-border-color;
 
-    @include hover-focus {
+    &:hover {
         z-index: 2;
         color: $pagination-hover-color;
         text-decoration: none;
         background-color: $pagination-hover-bg;
         border-color: $pagination-hover-border;
+    }
+
+    &.active {
+        z-index: 2;
+        color: $pagination-active-color;
+        cursor: default;
+        background-color: $pagination-active-bg;
+    }
+
+    &:focus {
+        z-index: 3;
+    }
+
+    &.disabled {
+        color: $pagination-disabled-color;
+        pointer-events: none;
+        cursor: $cursor-disabled;
+        background-color: $pagination-disabled-bg;
     }
 }
 
