@@ -150,6 +150,11 @@ $('#myTab a').CFW_Tab({
 
 Shows the `tab-pane` for a given tab, and hides all sibling `tab-pane` items.
 
+#### `.CFW_Tab('dispose')`
+{:.no_toc}
+
+Will disable the listen events for the given tab, but leave it otherwise unchanged.
+
 ### Events
 Event callbacks happen on the toggle/trigger element.
 
