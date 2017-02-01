@@ -8,18 +8,14 @@
 (function($) {
     'use strict';
 
-    if ($.fn.CFW_Tab === undefined) throw new Error('CFW_TabResponsive requires tab.js');
-    if ($.fn.CFW_Collapse === undefined) throw new Error('CFW_TabResponsive requires collapse.js');
+    if ($.fn.CFW_Tab === undefined) throw new Error('CFW_TabResponsive requires CFW_Tab');
+    if ($.fn.CFW_Collapse === undefined) throw new Error('CFW_TabResponsive requires CFW_Collapse');
 
     var CFW_Widget_TabResponsive = function(element, options) {
         this.$element = $(element);
 
         var parsedData = this.$element.CFW_parseData('tabresponsive', CFW_Widget_TabResponsive.DEFAULTS);
         this.settings = $.extend({}, CFW_Widget_TabResponsive.DEFAULTS, parsedData, options);
-
-        this.$tabFirst = this.$element.find('[data-cfw="tab"]').eq(0);
-        this.$navElm = this.$tabFirst.closest('ul:not(.dropdown-menu)');
-        this.$tabActive = this.$navElm.find('li.active').find('[data-cfw="tab"]');
 
         this._init();
     };
@@ -37,30 +33,23 @@
             // Set tab -> collapse
             this.$element.on('beforeShow.cfw.tab', function(e) {
                 if (e.isDefaultPrevented()) { return; }
-                var callingNode = e.target;
-                $selfRef.updateCollapse(callingNode);
+                $selfRef.updateCollapse(e.target);
             });
 
             // Set collapse -> tab
             this.$element.on('beforeShow.cfw.collapse', function(e) {
                 if (e.isDefaultPrevented()) { return; }
-                var callingNode = e.target;
-                $selfRef.updateTab(callingNode);
+                $selfRef.updateTab(e.target);
             });
 
-            // Remove 0px height from a collapsed item so the tab appears normally
-            // when browser enlarged.
-            this.$element.on('afterHide.cfw.collapse', function(e) {
-                var callingNode = e.target;
-                $(callingNode).data('cfw.collapse').$targetElm.css('height', '');
-            });
-
-            // Remove fade animations for tabs
+            // Remove animations (needs to be revisited)
             this.$element.find('[data-cfw="tab"]').CFW_Tab('fadeDisable');
+            this.$element.find('[data-cfw="collapse"]').CFW_Collapse('animDisable');
 
             // Open collapse on active item
             if (this.settings.active) {
-                this.updateCollapse(this.$tabActive);
+                var active = this.$element.find('[data-cfw="tab"].active');
+                this.updateCollapse(active);
             }
 
             this.$element.CFW_trigger('init.cfw.tabResponsive');
@@ -72,26 +61,22 @@
             var $activeTab = $(node);
             var data = $($activeTab).data('cfw.tab');
             if (data) {
-                var $activePane = data.$targetElm;
-
+                var $activePane = data.$target;
                 var $paneContainer = $activePane.closest('.tab-content');
-                $paneContainer.find('[data-cfw="collapse"]').each(function() {
-                    var $this = $(this);
-                    $this.one('afterHide.cfw.collapse', function(e) {
-                        e.stopPropagation();
-                        e.preventDefault();
-                    });
-                    $this.CFW_Collapse('_hideComplete');
-                    $this.removeClass('open');
+                this.$element.find('[data-cfw="collapse"]').each(function() {
+                    $(this).one('afterHide.cfw.collapse', function(e) {
+                            e.stopPropagation();
+                            e.preventDefault();
+                        })
+                        .CFW_Collapse('hide');
                 });
 
                 var $collapseItem = $activePane.find('[data-cfw="collapse"]');
                 $collapseItem.one('afterShow.cfw.collapse', function(e) {
-                    e.stopPropagation();
-                    e.preventDefault();
-                });
-                $collapseItem.CFW_Collapse('_showComplete');
-                $collapseItem.addClass('open');
+                        e.stopPropagation();
+                        e.preventDefault();
+                    })
+                    .CFW_Collapse('show');
             }
         },
 
@@ -108,31 +93,33 @@
                 if ($this[0] === $activeCollapse[0]) {
                     return;
                 }
-                /*
-                $this.one('beforeShow.cfw.collapse', function(e) {
-                  e.stopPropagation();
-                  e.preventDefault();
-                });
-                */
                 $this.CFW_Collapse('hide');
             });
 
-            var $tabList = this.$navElm.find('[data-cfw="tab"]');
+            var $tabList = this.$element.find('[data-cfw="tab"]');
             $tabList.each(function() {
-                var $triggerElm = $(this);
-                var selector = $triggerElm.attr('data-cfw-tab-target');
+                var $this = $(this);
+                var selector = $this.attr('data-cfw-tab-target');
                 if (!selector) {
-                    selector = $triggerElm.attr('href');
+                    selector = $this.attr('href');
                 }
                 selector = selector.replace(/^#/, '');
                 if (selector == $paneID) {
-                    $triggerElm.one('beforeShow.cfw.tab', function(e) {
-                        e.stopPropagation();
-                        // e.preventDefault();
-                    });
-                    $triggerElm.CFW_Tab('show');
+                    $this.one('beforeShow.cfw.tab', function(e) {
+                            e.stopPropagation();
+                        })
+                        .CFW_Tab('show');
                 }
             });
+        },
+
+        dispose : function() {
+            this.$element
+                .off('.cfw.tab .cfw.collapse')
+                .removeData('cfw.tabResponsive');
+
+            this.$element = null;
+            this.settings = null;
         }
     };
 

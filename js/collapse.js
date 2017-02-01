@@ -123,7 +123,11 @@
 
             this.inTransition = true;
             this.$triggers.addClass('open');
-            this.$target.removeClass('collapse').addClass('collapsing')[dimension](0);
+
+            this.$target.removeClass('collapse')[dimension](0);
+            if (this.settings.animate) {
+                this.$target.addClass('collapsing');
+            }
 
             var scrollSize = $.camelCase(['scroll', dimension].join('-'));
 
@@ -171,7 +175,10 @@
                 var $this = $(this);
                 $this[dimension]($this[dimension]())[0].offsetHeight;
             });
-            this.$target.addClass('collapsing').removeClass('collapse in');
+            this.$target.removeClass('collapse in');
+            if (this.settings.animate) {
+                this.$target.addClass('collapsing');
+            }
 
             // Determine/unset dimension size for each target (triggers the transition)
             function start() {
@@ -190,6 +197,14 @@
 
             // Bind transition callback to first target
             this.$target.eq(0).CFW_transition(start, complete);
+        },
+
+        animDisable : function() {
+            this.settings.animate = false;
+        },
+
+        animEnable: function() {
+            this.settings.animate = true;
         },
 
         dispose : function() {

@@ -162,9 +162,6 @@
 
         fadeDisable : function() {
             this.$target.removeClass('fade in');
-            if (this.$target.hasClass('active')) {
-                this.$target.addClass('in');
-            }
             this.settings.animate = false;
         },
 
