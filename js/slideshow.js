@@ -8,26 +8,15 @@
 (function($) {
     'use strict';
 
-    if (!$.fn.CFW_Tab) throw new Error('CFW_Slideshow requires tab.js');
+    if (!$.fn.CFW_Tab) throw new Error('CFW_Slideshow requires CFW_Tab');
 
-    var CFW_Widget_Slideshow = function(element, options) {
+    var CFW_Widget_Slideshow = function(element) {
         this.$element = $(element);
-        this.$tabs = null;
         this.$navPrev = this.$element.find('[data-cfw-slideshow-nav="prev"]');
-        this.$navPrevParent = this.$navPrev.parent('li');
         this.$navNext = this.$element.find('[data-cfw-slideshow-nav="next"]');
-        this.$navNextParent = this.$navNext.parent('li');
-        this.tabLen = null;
-        this.currTab = null;
         this.currIndex = 0;
 
-        var parsedData = this.$element.CFW_parseData('slideshow', CFW_Widget_Slideshow.DEFAULTS);
-        this.settings = $.extend({}, CFW_Widget_Slideshow.DEFAULTS, parsedData, options);
-
         this._init();
-    };
-
-    CFW_Widget_Slideshow.DEFAULTS = {
     };
 
     CFW_Widget_Slideshow.prototype = {
@@ -36,30 +25,23 @@
 
             this.$element.attr('data-cfw', 'slideshow');
 
-            // Find and bind tabs
-            this.$tabs = this.$element.find('a[data-cfw="tab"]');
-            this.tabLen = this.$tabs.length;
-            if (!this.tabLen) { return; }
+            if (!this._getTabs().length) { return; }
 
-            // Bind tabs
-            this.$tabs.on('beforeShow.cfw.tab', function(e) {
-                if (e.isDefaultPrevented()) { return; }
-                var callingNode = e.target;
-                $selfRef.update(callingNode);
+            // Listen for tabs
+            this.$element.on('afterShow.cfw.tab', function() {
+                $selfRef.update();
             });
 
             // Bind nav
             this.$navPrev.on('click.cfw.slideshow', function(e) {
                 e.preventDefault();
-                var $btn = $(e.target);
-                if (!$btn.hasClass('disabled') && !$btn.parent('li').hasClass('disabled')) {
+                if ($(e.target).not('.disabled, :disabled')) {
                     $selfRef.prev();
                 }
             });
             this.$navNext.on('click.cfw.slideshow', function(e) {
                 e.preventDefault();
-                var $btn = $(e.target);
-                if (!$btn.hasClass('disabled') && !$btn.parent('li').hasClass('disabled')) {
+                if ($(e.target).not('.disabled, :disabled')) {
                     $selfRef.next();
                 }
             });
@@ -70,56 +52,56 @@
         },
 
         prev : function() {
-            if (this.currIndex > 0) {
+            var $tabs = this._getTabs();
+            var currIndex = this._currIndex($tabs);
+            if (currIndex > 0) {
                 this.$element.CFW_trigger('prev.cfw.slideshow');
-                var newIndex = this.currIndex - 1;
-                this.$tabs.eq(newIndex).CFW_Tab('show');
+                $tabs.eq(currIndex - 1).CFW_Tab('show');
             }
         },
 
         next : function() {
-            if (this.currIndex < this.tabLen - 1) {
+            var $tabs = this._getTabs();
+            var currIndex = this._currIndex($tabs);
+            if (currIndex < $tabs.length - 1) {
                 this.$element.CFW_trigger('next.cfw.slideshow');
-                var newIndex = this.currIndex + 1;
-                this.$tabs.eq(newIndex).CFW_Tab('show');
+                $tabs.eq(currIndex + 1).CFW_Tab('show');
             }
         },
 
-        update : function(node) {
-            if (node === undefined) {
-                // Find active tab
-                this.$tabs.each(function() {
-                    if ($(this).parent('li').hasClass('active')) {
-                        node = this;
-                        return false;
-                    }
-                });
-            }
-
-            this.currTab = node;
-            this.currIndex = this._findIndex(node);
-            this.updateNav();
-        },
-
-        updateNav : function() {
-            // Reset
+        update : function() {
             this.$navPrev.removeClass('disabled');
-            this.$navPrevParent.removeClass('disabled');
             this.$navNext.removeClass('disabled');
-            this.$navNextParent.removeClass('disabled');
 
-            if (this.currIndex <= 0) {
+            var $tabs = this._getTabs();
+            var currIndex = this._currIndex($tabs);
+            if (currIndex <= 0) {
                 this.$navPrev.addClass('disabled');
-                this.$navPrevParent.addClass('disabled');
             }
-            if (this.currIndex >= this.tabLen - 1) {
+            if (currIndex >= $tabs.length - 1) {
                 this.$navNext.addClass('disabled');
-                this.$navNextParent.addClass('disabled');
             }
         },
 
-        _findIndex : function(node) {
-            return $.inArray(node, this.$tabs);
+        _getTabs : function() {
+            return this.$element.find('[role="tab"]:visible').not('.disabled');
+        },
+
+        _currIndex : function($tabs) {
+            var $node = $tabs.filter('.active');
+            return $tabs.index($node);
+        },
+
+        dispose : function() {
+            this.$navPrev.off('.cfw.slideshow');
+            this.$navNext.off('.cfw.slideshow');
+            this.$element
+                .off('.cfw.tab')
+                .removeData('cfw.slideshow');
+
+            this.$element = null;
+            this.$navPrev = null;
+            this.$navNext = null;
         }
     };
 
@@ -128,10 +110,9 @@
         return this.each(function() {
             var $this = $(this);
             var data = $this.data('cfw.Slideshow');
-            var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.Slideshow', (data = new CFW_Widget_Slideshow(this, options)));
+                $this.data('cfw.Slideshow', (data = new CFW_Widget_Slideshow(this)));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
