@@ -24,8 +24,7 @@
         toggle     : null,
         animate    : true,  // If collapse targets should expand and contract
         follow     : false, // If browser focus should move when a collapse toggle is activated
-        horizontal : false, // If collapse should transition horizontal (vertical is default)
-        hidden     : true   // Use aria-hidden on target containers by default
+        horizontal : false  // If collapse should transition horizontal (vertical is default)
     };
 
     CFW_Widget_Collapse.prototype = {
@@ -83,9 +82,6 @@
                 this.$target.addClass('collapse in')[dimension]('');
             } else {
                 this.$triggers.attr('aria-expanded', 'false');
-                if (this.settings.hidden) {
-                    this.$target.attr('aria-hidden', 'true');
-                }
             }
 
             // Bind click handler
@@ -140,7 +136,7 @@
 
             function complete() {
                 $selfRef.$triggers.attr('aria-expanded', 'true');
-                $selfRef.$target.removeClass('collapsing').addClass('collapse in').removeAttr('aria-hidden')[dimension]('');
+                $selfRef.$target.removeClass('collapsing').addClass('collapse in')[dimension]('');
                 $selfRef.inTransition = false;
                 if (follow) {
                     $selfRef.$target.attr('tabindex', '-1').get(0).trigger('focus');
@@ -185,9 +181,6 @@
             function complete() {
                 $selfRef.$triggers.attr('aria-expanded', 'false');
                 $selfRef.$target.removeClass('collapsing in').addClass('collapse');
-                if ($selfRef.settings.hidden){
-                    $selfRef.$target.attr('aria-hidden', 'true');
-                }
                 $selfRef.inTransition = false;
                 if (follow) {
                     $selfRef.$element.trigger('focus');
@@ -197,11 +190,6 @@
 
             // Bind transition callback to first target
             this.$target.eq(0).CFW_transition(start, complete);
-        },
-
-        hiddenDisable : function() {
-            this.$target.removeAttr('aria-hidden');
-            this.settings.hidden = false;
         },
 
         dispose : function() {

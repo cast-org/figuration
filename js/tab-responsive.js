@@ -55,11 +55,8 @@
                 $(callingNode).data('cfw.collapse').$targetElm.css('height', '');
             });
 
-            // Remove fade animations and aria-hidden for all tabs
-            this.$element.find('[data-cfw="tab"]').CFW_Tab('fadeDisable').CFW_Tab('hiddenDisable');
-
-            // Remove aria-hidden for all collapse
-            this.$element.find('[data-cfw="collapse"]').CFW_Collapse('hiddenDisable');
+            // Remove fade animations for tabs
+            this.$element.find('[data-cfw="tab"]').CFW_Tab('fadeDisable');
 
             // Open collapse on active item
             if (this.settings.active) {

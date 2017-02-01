@@ -128,12 +128,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
             <td>true</td>
             <td>If the tab pane target should fade in and out.</td>
         </tr>
-        <tr>
-            <td>hidden</td>
-            <td>boolean</td>
-            <td>true</td>
-            <td>Use the <code>aria-hidden</code> attribute on the target container to indicate visibility status to screen readers.</td>
-        </tr>
     </tbody>
     </table>
 </div> <!-- /.table-responsive -->

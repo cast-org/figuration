@@ -21,8 +21,7 @@
 
     CFW_Widget_Tab.DEFAULTS = {
         target  : null,
-        animate : true, // If tabs should be allowed fade in and out
-        hidden  : true  // Use aria-hidden on target containers by default
+        animate : true // If tabs should be allowed fade in and out
     };
 
     CFW_Widget_Tab.prototype = {
@@ -54,9 +53,6 @@
                 'role': 'tabpanel',
                 'aria-labelledby': triggerID
             });
-            if (this.settings.hidden) {
-                this.$targetElm.attr('aria-hidden', true);
-            }
             if (this.settings.animate) {
                 this.fadeEnable();
             } else {
@@ -92,9 +88,6 @@
                 });
                 this.$targetElm.addClass('active');
 
-                if (this.settings.hidden) {
-                    this.$targetElm.attr('aria-hidden', false);
-                }
                 if (this.settings.animate) {
                     this.$targetElm.addClass('in');
                 }
@@ -111,9 +104,6 @@
                 });
                 this.$targetElm.addClass('active');
 
-                if (this.settings.hidden) {
-                    this.$targetElm.attr('aria-hidden', 'false');
-                }
                 if (this.settings.animate) {
                     this.$targetElm.addClass('in');
                 }
@@ -179,11 +169,6 @@
             this.settings.animate = false;
         },
 
-        hiddenDisable : function() {
-            this.$targetElm.removeAttr('aria-hidden');
-            this.settings.hidden = false;
-        },
-
         _actionsKeydown : function(e, node) {
             // 37-left, 38-up, 39-right, 40-down
             var k = e.which;
@@ -212,13 +197,7 @@
 
             function displayTab() {
                 $prevActive.removeClass('active');
-
                 $node.addClass('active');
-
-                if (isPanel) {
-                    $prevActive.attr('aria-hidden', 'true');
-                    $node.attr('aria-hidden', 'false');
-                }
 
                 if (doTransition) {
                     $node[0].offsetWidth; // Reflow for transition
