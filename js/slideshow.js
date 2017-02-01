@@ -81,6 +81,7 @@
             if (currIndex >= $tabs.length - 1) {
                 this.$navNext.addClass('disabled');
             }
+            this.$element.CFW_trigger('update.cfw.slideshow');
         },
 
         _getTabs : function() {
