@@ -11,17 +11,10 @@
     if ($.fn.CFW_Tab === undefined) throw new Error('CFW_TabResponsive requires CFW_Tab');
     if ($.fn.CFW_Collapse === undefined) throw new Error('CFW_TabResponsive requires CFW_Collapse');
 
-    var CFW_Widget_TabResponsive = function(element, options) {
+    var CFW_Widget_TabResponsive = function(element) {
         this.$element = $(element);
 
-        var parsedData = this.$element.CFW_parseData('tabresponsive', CFW_Widget_TabResponsive.DEFAULTS);
-        this.settings = $.extend({}, CFW_Widget_TabResponsive.DEFAULTS, parsedData, options);
-
         this._init();
-    };
-
-    CFW_Widget_TabResponsive.DEFAULTS = {
-        active: false   // Open the collapse for the default active tab
     };
 
     CFW_Widget_TabResponsive.prototype = {
@@ -43,14 +36,11 @@
             });
 
             // Remove animations (needs to be revisited)
-            this.$element.find('[data-cfw="tab"]').CFW_Tab('fadeDisable');
+            this.$element.find('[data-cfw="tab"]').CFW_Tab('animDisable');
             this.$element.find('[data-cfw="collapse"]').CFW_Collapse('animDisable');
 
-            // Open collapse on active item
-            if (this.settings.active) {
-                var active = this.$element.find('[data-cfw="tab"].active');
-                this.updateCollapse(active);
-            }
+            var active = this.$element.find('[data-cfw="tab"].active');
+            this.updateCollapse(active);
 
             this.$element.CFW_trigger('init.cfw.tabResponsive');
         },
@@ -63,7 +53,7 @@
             if (data) {
                 var $activePane = data.$target;
                 var $paneContainer = $activePane.closest('.tab-content');
-                this.$element.find('[data-cfw="collapse"]').each(function() {
+                $paneContainer.find('[data-cfw="collapse"]').each(function() {
                     $(this).one('afterHide.cfw.collapse', function(e) {
                             e.stopPropagation();
                             e.preventDefault();
@@ -128,10 +118,9 @@
         return this.each(function() {
             var $this = $(this);
             var data = $this.data('cfw.tabResponsive');
-            var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.tabResponsive', (data = new CFW_Widget_TabResponsive(this, options)));
+                $this.data('cfw.tabResponsive', (data = new CFW_Widget_TabResponsive(this)));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);

@@ -129,6 +129,9 @@ $('#myTabResponsive').CFW_TabResponsive();
 
 ### Options
 
+None.
+
+{% comment %}
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-tabResponsive`, as in `data-cfw-tabResponsive-active=true`.
 
 <div class="table-responsive">
@@ -151,6 +154,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </tbody>
     </table>
 </div> <!-- /.table-responsive -->
+{% endcomment %}
 
 ### Methods
 

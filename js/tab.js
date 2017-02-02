@@ -53,9 +53,9 @@
                 'aria-labelledby': triggerID
             });
             if (this.settings.animate) {
-                this.fadeEnable();
+                this.animEnable();
             } else {
-                this.fadeDisable();
+                this.animDisable();
             }
 
             // Set ARIA attributes on trigger
@@ -152,7 +152,7 @@
             this._activateTab(this.$target, this.$target.parent(), true, $previous);
         },
 
-        fadeEnable : function() {
+        animEnable : function() {
             this.$target.addClass('fade');
             if (this.$target.hasClass('active')) {
                 this.$target.addClass('in');
@@ -160,7 +160,7 @@
             this.settings.animate = true;
         },
 
-        fadeDisable : function() {
+        animDisable : function() {
             this.$target.removeClass('fade in');
             this.settings.animate = false;
         },
