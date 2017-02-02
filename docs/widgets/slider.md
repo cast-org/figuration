@@ -249,6 +249,11 @@ Enable the slider.
 
 Disable the slider.
 
+#### `.CFW_Slider('dispose')`
+{:.no_toc}
+
+Detach the listen events and data for the slider, and remove the slider controls from the DOM.
+
 ### Events
 
 Event callbacks happen on the created slider element.

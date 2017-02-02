@@ -20,13 +20,9 @@
         this.$sliderThumbMax = null;
 
         this.$inputMin = null;
-        this.inputMinID = '';
-        this.inputMinLabelID = '';
         this.inputMinLabelTxt = '';
 
         this.$inputMax = null;
-        this.inputMaxID = '';
-        this.inputMaxLabelID = '';
         this.inputMaxLabelTxt = '';
 
         this.ordinal = false;
@@ -54,9 +50,6 @@
         enabled : true,     // true - enabled / false - disabled
         vertical : false,   // alternate orientation
         reversed : false    // show thumbs in opposite order
-
-        // TODO
-        // tooltip : 'show'        // 'show,hide,always'
     };
 
     CFW_Widget_Slider.prototype = {
@@ -92,19 +85,10 @@
             }
 
             this.$inputMin = $inputs.eq(0);
-            this.inputMinID = this.$inputMin.CFW_getID('cfw-slider');
-            var $labelMin = this._getLabel(this.$inputMin);
-            this.inputMinLabelID = $labelMin.CFW_getID('cfw-slider');
-            this.inputMinLabelTxt = $labelMin.text();
 
             if (this.$inputMin[0].nodeName == 'SELECT') { this.ordinal = true; }
             if ($inputs.length > 1) {
                 this.$inputMax = $inputs.eq($inputs.length - 1);
-                this.inputMaxID = this.$inputMax.CFW_getID('cfw-slider');
-                var $labelMax = this._getLabel(this.$inputMax);
-                this.inputMaxLabelID = $labelMax.CFW_getID('cfw-slider');
-                this.inputMaxLabelTxt = $labelMax.text();
-
                 this.range = true;
             }
         },
@@ -134,21 +118,29 @@
             this.$sliderTrackSelection = $(sliderTrackSelection).addClass('slider-selection');
 
             /* Thumb/handle elements */
+            var $labelMin = this._getLabel(this.$inputMin);
+            var inputMinLabelID = $labelMin.CFW_getID('cfw-slider');
+            this.inputMinLabelTxt = $labelMin.text();
+
             var sliderThumbMin = document.createElement('div');
             this.$sliderThumbMin = $(sliderThumbMin).addClass('slider-thumb slider-thumb-min')
                 .attr({
                     'role': 'slider',
                     'tabindex': -1,
-                    'aria-labelledby': this.inputMinLabelID
+                    'aria-labelledby': inputMinLabelID
                 });
 
             if (this.range) {
+                var $labelMax = this._getLabel(this.$inputMax);
+                var inputMaxLabelID = $labelMax.CFW_getID('cfw-slider');
+                this.inputMaxLabelTxt = $labelMax.text();
+
                 var sliderThumbMax = document.createElement('div');
                 this.$sliderThumbMax = $(sliderThumbMax).addClass('slider-thumb slider-thumb-max')
                     .attr({
                         'role': 'slider',
                         'tabindex': -1,
-                        'aria-labelledby': this.inputMaxLabelID
+                        'aria-labelledby': inputMaxLabelID
                     });
 
                 this.$sliderThumbMin.attr('aria-controls', this.$sliderThumbMax.CFW_getID('cfw-slider'));
@@ -493,6 +485,32 @@
                 $node = this.$sliderThumbMin;
             }
             return $node;
+        },
+
+        dispose : function() {
+            this.unbindSlider();
+            this.$element.removeData('cfw.slider');
+            this.$slider.remove();
+
+            this.$element = null;
+            this.$slider = null;
+            this.$sliderTrack = null;
+            this.$sliderTrackSelection = null;
+            this.$sliderThumbMin = null;
+            this.$sliderThumbMax = null;
+            this.$inputMin = null;
+            this.inputMinLabelTxt = null;
+            this.$inputMax = null;
+            this.inputMaxLabelTxt = null;
+            this.ordinal = null;
+            this.range = null;
+            this.val0 = null;
+            this.val1 = null;
+            this.settings = null;
+            this.inDrag = null;
+            this.startPos = null;
+            this.offsetPos = null;
+            this.stepsTotal = null;
         }
     };
 
