@@ -31,6 +31,9 @@
         },
 
         dispose : function() {
+            if (this.$element[0].detachEvent) {
+                this.$element[0].detachEvent('ondragstart', this._dontStart);
+            }
             this._dragStartOff();
             this.$element
                 .off('.cfw.drag')
@@ -40,10 +43,6 @@
             this.dragging = null;
             this.dragdata = null;
             this.settings = null;
-
-            if (this.$element[0].detachEvent) {
-                this.$element[0].detachEvent('ondragstart', this._dontStart);
-            }
         },
 
         _dragStartOn : function() {
