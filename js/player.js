@@ -1308,6 +1308,56 @@
                     $selfRef.$focus.trigger('focus');
                 }
             }, 10);
+        },
+
+        dispose : function() {
+            clearTimeout(this.activityTimer);
+            if (this.$scriptElm) {
+                $('.player-scripttxt-seekpoint', this.$scriptElm).off();
+                this.$scriptElm.remove();
+            }
+            if (this.$sliderSeek) {
+                this.$sliderSeek.CFW_Slider('dispose');
+            }
+            if (this.$volSeek) {
+                this.$volSeek.CFW_Slider('dispose');
+            }
+            if ($.hasData(this.$player.find('[data-cfw-player="caption"]'))) {
+                this.$player.find('[data-cfw-player="caption"]').CFW_Dropdown('dispose');
+            }
+            if ($.hasData(this.$player.find('[data-cfw-player="transcript"]'))) {
+                this.$player.find('[data-cfw-player="transcript"]').CFW_Dropdown('dispose');
+            }
+            this.$player.off();
+            this.$media.off();
+
+            this.$element
+                .off()
+                .removeData('cfw.player');
+
+            this.$element = null;
+            this.type = null;
+            this.$media = null;
+            this.media = null;
+            this.$player = null;
+            this.$focus = null;
+            this.$sliderSeek = null;
+            this.$volSeek = null;
+            this.activity = null;
+            this.over = null;
+            this.userActive = null;
+            this.activityTimer = null;
+            this.mouseActivity = null;
+            this.scrubPlay = null;
+            this.played = null;
+            this.status = null;
+            this.support = null;
+            this.trackValid = null;
+            this.trackCurrent = null;
+            this.$scriptElm = null;
+            this.scriptCurrent = null;
+            this.scriptCues = null;
+            this.settings = null;
         }
     };
 
@@ -1330,15 +1380,4 @@
     $.fn.CFW_Player = Plugin;
     $.fn.CFW_Player.Constructor = CFW_Widget_Player;
 
-    /*
-    // API
-    // ===
-    $(window).ready(function() {
-        if (typeof CFW_API === 'undefined' || CFW_API !== false) {
-            $('[data-cfw="player"]').each(function() {
-                $(this).CFW_Player();
-            });
-        }
-    });
-    */
 })(jQuery);
