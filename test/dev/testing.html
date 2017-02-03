@@ -734,11 +734,11 @@ $(window).ready(function() {
 
             <script type="text/javascript">
                 $(window).ready(function() {
-                    var $zoom = $('#pop_7p').data('cfw.popover').$triggerElm;
-                    $zoom.one('beforeShow.cfw.popover', function(e) {
-                        $(this).data('cfw.popover').$targetElm.find('[data-cfw="lazy"]').each(function() {
+                    $('#pop_7p').one('beforeShow.cfw.popover', function(e) {
+                        var $popover = $(this);
+                        $popover.data('cfw.popover').$targetElm.find('[data-cfw="lazy"]').each(function() {
                             $(this).one('load', function() {
-                                $zoom.CFW_Popover('locateTip');
+                                $popover.CFW_Popover('locateTip');
                             }).CFW_Lazy('show');
                         });
                     });
@@ -778,7 +778,8 @@ $(window).ready(function() {
                 <a href="#" onclick="javascript: popLinkTest0(); return false;">Unlink 0 - Link 1</a> |
                 <a href="#" onclick="javascript: popLinkTest1(); return false;">Unlink 1 - Link 0</a> |
                 <a href="#" onclick="javascript: popLinkTest2(); return false;">Show popover data</a> |
-                <a href="#" onclick="javascript: $('#popR').CFW_Popover('unlink'); return false;">Unlink</a>
+                <a href="#" onclick="javascript: $('#popR').CFW_Popover('unlink'); return false;">Unlink</a> |
+                <a href="#" onclick="javascript: $('#popR').CFW_Popover('dispose'); return false;">Dispose</a>
             </p>
             <div class="popover" id="popR">
                 <h3 class="popover-title">Popover selector</h3>

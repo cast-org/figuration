@@ -48,7 +48,7 @@
     };
 
     CFW_Widget_Popover.prototype.setContent = function() {
-        var $tip = this.$targetElm;
+        var $tip = this.$target;
         var $title = $tip.find('.popover-title');
         var $content = $tip.find('.popover-content');
 
@@ -72,19 +72,19 @@
         // Use '.popover-title' for labelledby
         if ($title.length) {
             var labelledby = $title.eq(0).CFW_getID('cfw-popover');
-            this.$targetElm.attr('aria-labelledby', labelledby);
+            this.$target.attr('aria-labelledby', labelledby);
         }
 
         if (this.settings.drag && !this.dragAdded) {
-            if (this.$targetElm.find('[data-cfw-drag="' + this.type + '"]').length <= 0) {
+            if (this.$target.find('[data-cfw-drag="' + this.type + '"]').length <= 0) {
                 var $drag = $('<span role="button" tabindex="0" class="drag" data-cfw-drag="' + this.type +  '" aria-label="' + this.settings.dragsrtext + '">' + this.settings.dragtext + '</span>');
-                $drag.insertAfter(this.$targetElm.find('.close').eq(0));
+                $drag.insertAfter(this.$target.find('.close').eq(0));
                 this.dragAdded = true;
             }
         }
 
-        if (this.$targetElm.find('[data-cfw-drag="' + this.type + '"]').length) {
-            this.$targetElm.addClass('draggable');
+        if (this.$target.find('[data-cfw-drag="' + this.type + '"]').length) {
+            this.$target.addClass('draggable');
             // Force settings
             this.settings.trigger = 'click';
             this.settings.container = 'body';
@@ -96,22 +96,22 @@
 
         if (!$title.html()) { $title.hide(); }
 
-        if ((this.$targetElm.attr('role') == 'dialog') && (!this.docAdded)) {
+        if ((this.$target.attr('role') == 'dialog') && (!this.docAdded)) {
             // Inject a role="document" container
-            var $children = this.$targetElm.children().not(this.$arrow);
+            var $children = this.$target.children().not(this.$arrow);
             var docDiv = document.createElement('div');
             docDiv.setAttribute('role', 'document');
             $children.wrapAll(docDiv);
             // Make sure arrow is at end of popover for roles to work properly with screen readers
             this._arrow();
-            this.$arrow.appendTo(this.$targetElm);
+            this.$arrow.appendTo(this.$target);
             this.docAdded = true;
         }
     };
 
     CFW_Widget_Popover.prototype.getContent = function() {
         var content;
-        var $e = this.$triggerElm;
+        var $e = this.$element;
         var s = this.settings;
 
         content = (typeof s.content == 'function' ? s.content.call($e[0]) :  s.content);
@@ -126,9 +126,9 @@
         var dragOpt = { handle: '[data-cfw-drag="' + this.type + '"]' };
 
         // Unset any previous drag events
-        this.$targetElm.off('.cfw.drag');
+        this.$target.off('.cfw.drag');
 
-        this.$targetElm.on('dragStart.cfw.drag', function() {
+        this.$target.on('dragStart.cfw.drag', function() {
             var $viewport;
             if ($selfRef.$viewport) {
                 $viewport = $selfRef.$viewport;
@@ -141,7 +141,7 @@
             limit.right = limit.left + $viewport.outerWidth() - $(this).outerWidth();
 
             $selfRef._updateZ();
-            $selfRef.$triggerElm.CFW_trigger('dragStart.cfw.' + $selfRef.type);
+            $selfRef.$element.CFW_trigger('dragStart.cfw.' + $selfRef.type);
         })
         .on('drag.cfw.drag', function(e) {
             var viewportPadding = 0;
@@ -155,14 +155,14 @@
             });
         })
         .on('dragEnd.cfw.drag', function() {
-            $selfRef.$triggerElm.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
+            $selfRef.$element.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
         })
         .on('keydown.cfw.' + this.type + '.drag', '[data-cfw-drag="' + this.type + '"]', function(e) {
             if (/(37|38|39|40)/.test(e.which)) {
                 if (e) { e.stopPropagation(); }
 
                 if (!$selfRef.keyTimer) {
-                    $selfRef.$triggerElm.CFW_trigger('dragStart.cfw.' + $selfRef.type);
+                    $selfRef.$element.CFW_trigger('dragStart.cfw.' + $selfRef.type);
                 }
 
                 clearTimeout($selfRef.keyTimer);
@@ -176,7 +176,7 @@
                     $viewport = $(document.body);
                 }
 
-                var $node = $selfRef.$targetElm;
+                var $node = $selfRef.$target;
                 var step = $selfRef.settings.dragstep;
                 limit = $viewport.offset();
                 limit.bottom = limit.top + $viewport.outerHeight() - $node.outerHeight();
@@ -201,7 +201,7 @@
                 });
 
                 $selfRef.keyTimer = setTimeout(function() {
-                    $selfRef.$triggerElm.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
+                    $selfRef.$element.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
                     $selfRef.keyTimer = null;
                 }, $selfRef.keyDelay);
 
@@ -210,27 +210,27 @@
             }
         });
 
-        this.$targetElm.CFW_Drag(dragOpt);
+        this.$target.CFW_Drag(dragOpt);
     };
 
-    CFW_Widget_Popover.prototype.hide = function() {
+    CFW_Widget_Popover.prototype.hide = function(force) {
         // Fire key drag end if needed
         if (this.keyTimer) {
-            this.$triggerElm.CFW_trigger('dragEnd.cfw.' + this.type);
+            this.$element.CFW_trigger('dragEnd.cfw.' + this.type);
             clearTimeout(this.keyTimer);
         }
         // Call tooltip hide
-        $.fn.CFW_Tooltip.Constructor.prototype.hide.apply(this);
+        $.fn.CFW_Tooltip.Constructor.prototype.hide.call(this, force);
     };
 
     CFW_Widget_Popover.prototype._removeDynamicTip = function() {
-        this.$targetElm.detach();
+        this.$target.detach();
         this.dynamicTip = false;
         this.closeAdded = false;
         this.dragAdded = false;
         this.docAdded = false;
         this.$arrow = false;
-        this.$targetElm = null;
+        this.$target = null;
     };
 
     CFW_Widget_Popover.prototype._updateZ = function() {
@@ -245,16 +245,23 @@
             }
         });
         // Only increase if highest is not current popover
-        if (this.$targetElm[0] !== $zObj[0]) {
-            this.$targetElm.css('z-index', ++zMax);
+        if (this.$target[0] !== $zObj[0]) {
+            this.$target.css('z-index', ++zMax);
         }
     };
 
     CFW_Widget_Popover.prototype._arrow = function() {
         if (!this.$arrow) {
-            this.$arrow = this.$targetElm.find('.arrow, .popover-arrow');
+            this.$arrow = this.$target.find('.arrow, .popover-arrow');
         }
         return this.$arrow;
+    };
+
+    CFW_Widget_Popover.prototype._disposeExt = function() {
+        this.dragAdded = null;
+        this.docAdded = null;
+        this.keyTimer = null;
+        this.keyDelay = null;
     };
 
     function Plugin(option) {

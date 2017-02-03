@@ -1000,12 +1000,12 @@ $(function() {
             .CFW_Tooltip({ delay: { show: 0, hide: 150 }});
 
         setTimeout(function() {
-            assert.ok($tooltip.data('cfw.tooltip').$targetElm.is('.fade.in'), '1ms: tooltip faded in');
+            assert.ok($tooltip.data('cfw.tooltip').$target.is('.fade.in'), '1ms: tooltip faded in');
 
             $tooltip.trigger('mouseout');
 
             setTimeout(function() {
-                assert.ok($tooltip.data('cfw.tooltip').$targetElm.is('.fade.in'), '100ms: tooltip still faded in');
+                assert.ok($tooltip.data('cfw.tooltip').$target.is('.fade.in'), '100ms: tooltip still faded in');
             }, 100);
 
             setTimeout(function() {
@@ -1174,7 +1174,7 @@ $(function() {
         $('<a href="#" title="tooltip title" style="position: absolute; bottom: 0; right: 0;">Foobar</a>')
             .appendTo('body')
             .on('afterShow.cfw.tooltip', function() {
-                var arrowStyles = $(this).data('cfw.tooltip').$targetElm.find('.tooltip-arrow').attr('style');
+                var arrowStyles = $(this).data('cfw.tooltip').$target.find('.tooltip-arrow').attr('style');
                 assert.ok(/left/i.test(arrowStyles) && !/top/i.test(arrowStyles), 'arrow positioned correctly');
                 $(this).CFW_Tooltip('hide');
             })
