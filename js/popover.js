@@ -15,6 +15,10 @@
         this.docAdded = false;
         this.keyTimer = null;
         this.keyDelay = 750;
+        this.flags = {
+            keyShift: false,
+            keyTab : false
+        };
 
         this._init('popover', element, options);
     };
