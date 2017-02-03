@@ -317,7 +317,7 @@
             var scrollDiv = document.createElement('div');
             scrollDiv.className = 'modal-scrollbar-measure';
             $body.append(scrollDiv);
-            var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+            var scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;
             $body[0].removeChild(scrollDiv);
             return scrollbarWidth;
         },
