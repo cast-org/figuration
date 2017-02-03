@@ -456,20 +456,20 @@ $(window).ready(function() {
 
             <p>
                 <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-toggle="#modal3" data-cfw-modal-backdrop="false">Modal: no backdrop</button>
-                <div class="modal" id="modal3">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">Small modal</h4>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
             </p>
+            <div class="modal" id="modal3">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Small modal</h4>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
 
             <p>
                 <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-toggle="#modal1">Launch demo modal</button>
@@ -565,24 +565,24 @@ $(window).ready(function() {
             <strong>Dynamic Content Load</strong>
             <p>
                 <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-toggle="#modal4">Modal</button>
-                <div class="modal" id="modal4">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">Dynamic Load Test</h4>
-                            </div>
-                            <div class="modal-body">
-                                ...
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-cfw-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">OK</button>
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
             </p>
+            <div class="modal" id="modal4">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Dynamic Load Test</h4>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-cfw-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">OK</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
 
             <script>
             $('#modal4').on('beforeShow.cfw.modal', function(e) {
