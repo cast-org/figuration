@@ -187,11 +187,11 @@ When showing a new tab, the events fire in the following order:
             <td>This event fires on tab show after a tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
         </tr>
         <tr>
-            <td>beforeHhide.cfw.tab</td>
+            <td>beforeHide.cfw.tab</td>
             <td>This event fires when a new tab is to be shown (and thus the previous active tab is to be hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the current active tab and the new soon-to-be-active tab, respectively.</td>
         </tr>
         <tr>
-            <td>afterHhide.cfw.tab</td>
+            <td>afterHide.cfw.tab</td>
             <td>This event fires after a new tab is shown (and thus the previous active tab is hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the previous active tab and the new active tab, respectively.</td>
         </tr>
     </tbody>
