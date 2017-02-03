@@ -10,8 +10,8 @@
 
     var CFW_Widget_Tooltip = function(element, options) {
         this.$triggerElm = null;
-        this.dataToggle = null;
         this.$targetElm = null;
+        this.dataToggle = null;
         this.type = null;
         this.eventTypes = null;
         this.delayTimer = null;
@@ -50,7 +50,7 @@
         title           : '',               // Title text/html to be inserted
         activate        : false,            // Auto show after init
         unlink          : false,            // If on hide to remove events and attributes from tooltip and trigger
-        destroy         : false,            // If on hide to unlink, then remove tooltip from DOM
+        dispose         : false,            // If on hide to unlink, then remove tooltip from DOM
         template        : '<div class="tooltip"><div class="tooltip-inner"></div><div class="tooltip-arrow"></div></div>'
     };
 
@@ -497,13 +497,13 @@
             this.$triggerElm.CFW_trigger('afterUnlink.cfw.' + this.type);
         },
 
-        destroy : function() {
+        dispose : function() {
             var $selfRef = this;
             $(document).one('afterUnlink.cfw.' + this.type, this.$triggerElm, function() {
                 if ($selfRef.$targetElm !== null) {
                     $selfRef.$targetElm.remove();
                 }
-                $selfRef.$triggerElm.CFW_trigger('destroy.cfw.' + $selfRef.type);
+                $selfRef.$triggerElm.CFW_trigger('dispose.cfw.' + $selfRef.type);
             });
             this.unlink(true);
 
@@ -590,7 +590,7 @@
 
             // Delay to keep NVDA (and other screen readers?) from reading dialog header twice
             setTimeout(function() {
-                // Handle case of immediate destroy after show
+                // Handle case of immediate dispose after show
                 if ($selfRef.$triggerElm) {
                     $selfRef.$triggerElm.attr('aria-describedby', $selfRef.targetID);
                 }
@@ -628,7 +628,7 @@
 
             if (!this.unlinking) {
                 if (this.settings.unlink) { this.unlink(); }
-                if (this.settings.destroy) { this.destroy(); }
+                if (this.settings.dispose) { this.dispose(); }
             }
         },
 
@@ -886,7 +886,7 @@
             var data = $this.data('cfw.tooltip');
             var options = typeof option === 'object' && option;
 
-            if (!data && /unlink|destroy|hide/.test(option)) {
+            if (!data && /unlink|dispose|hide/.test(option)) {
                 return false;
             }
             if (!data) {

@@ -15,10 +15,6 @@
         this.docAdded = false;
         this.keyTimer = null;
         this.keyDelay = 750;
-        this.flags = {
-            keyShift: false,
-            keyTab : false
-        };
 
         this._init('popover', element, options);
     };
@@ -264,7 +260,7 @@
             var data = $this.data('cfw.popover');
             var options = typeof option === 'object' && option;
 
-            if (!data && /unlink|destroy|hide/.test(option)) {
+            if (!data && /unlink|dispose|hide/.test(option)) {
                 return false;
             }
             if (!data) {

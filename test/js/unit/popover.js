@@ -148,7 +148,7 @@ $(function() {
         assert.strictEqual($('.popover').length, 0, 'popover was removed');
     });
 
-    QUnit.test('should destroy popover', function(assert) {
+    QUnit.test('should dispose popover', function(assert) {
         assert.expect(7);
         var $popover = $('<div />')
             .appendTo('#qunit-fixture')
@@ -162,7 +162,7 @@ $(function() {
         assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover has extra click.foo event');
 
         $popover.CFW_Popover('show');
-        $popover.CFW_Popover('destroy');
+        $popover.CFW_Popover('dispose');
 
         assert.ok(!$popover.hasClass('in'), 'popover is hidden');
         assert.ok(!$popover.data('popover'), 'popover does not have data');
@@ -198,7 +198,7 @@ $(function() {
                         $div
                             .one('afterShow.cfw.popover', function() {
                                 $('.content-with-handler .btn').trigger('click');
-                                $div.CFW_Popover('destroy');
+                                $div.CFW_Popover('dispose');
                                 assert.ok(handlerCalled, 'content\'s event handler still present');
                                 done();
                             })

@@ -232,7 +232,7 @@ $(function() {
             .CFW_Tooltip('show');
     });
 
-    QUnit.test('should destroy tooltip', function(assert) {
+    QUnit.test('should dispose tooltip', function(assert) {
         assert.expect(7);
         var $tooltip = $('<div/>')
             .appendTo('#qunit-fixture')
@@ -244,7 +244,7 @@ $(function() {
         assert.strictEqual($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip has extra click.foo event');
 
         $tooltip.CFW_Tooltip('show');
-        $tooltip.CFW_Tooltip('destroy');
+        $tooltip.CFW_Tooltip('dispose');
 
         assert.ok(!$tooltip.hasClass('in'), 'tooltip is hidden');
         assert.ok(!$._data($tooltip[0], 'cfw.tooltip'), 'tooltip does not have data');
