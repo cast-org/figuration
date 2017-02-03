@@ -14,16 +14,16 @@
         this.$element = $(element);
 
         this.$slider = null;
-        this.$sliderTrack = null;
-        this.$sliderTrackSelection = null;
-        this.$sliderThumbMin = null;
-        this.$sliderThumbMax = null;
+        this.$track = null;
+        this.$selection = null;
+        this.$thumbMin = null;
+        this.$thumbMax = null;
 
         this.$inputMin = null;
-        this.inputMinLabelTxt = '';
+        this.labelMinTxt = '';
 
         this.$inputMax = null;
-        this.inputMaxLabelTxt = '';
+        this.labelMaxTxt = '';
 
         this.ordinal = false;
         this.range = false;
@@ -54,7 +54,6 @@
 
     CFW_Widget_Slider.prototype = {
         _init : function() {
-
             var inputs = this._initInputs();
             if (inputs === false) { return; }
 
@@ -112,47 +111,47 @@
             // var sliderID = this.$slider.CFW_getID('cfw-slider');
 
             /* Track elements */
-            var sliderTrack = document.createElement('div');
-            this.$sliderTrack = $(sliderTrack).addClass('slider-track');
-            var sliderTrackSelection = document.createElement('div');
-            this.$sliderTrackSelection = $(sliderTrackSelection).addClass('slider-selection');
+            var track = document.createElement('div');
+            this.$track = $(track).addClass('slider-track');
+            var selection = document.createElement('div');
+            this.$selection = $(selection).addClass('slider-selection');
 
             /* Thumb/handle elements */
             var $labelMin = this._getLabel(this.$inputMin);
-            var inputMinLabelID = $labelMin.CFW_getID('cfw-slider');
-            this.inputMinLabelTxt = $labelMin.text();
+            var labelMinID = $labelMin.CFW_getID('cfw-slider');
+            this.labelMinTxt = $labelMin.text();
 
-            var sliderThumbMin = document.createElement('div');
-            this.$sliderThumbMin = $(sliderThumbMin).addClass('slider-thumb slider-thumb-min')
+            var thumbMin = document.createElement('div');
+            this.$thumbMin = $(thumbMin).addClass('slider-thumb slider-thumb-min')
                 .attr({
                     'role': 'slider',
                     'tabindex': -1,
-                    'aria-labelledby': inputMinLabelID
+                    'aria-labelledby': labelMinID
                 });
 
             if (this.range) {
                 var $labelMax = this._getLabel(this.$inputMax);
-                var inputMaxLabelID = $labelMax.CFW_getID('cfw-slider');
-                this.inputMaxLabelTxt = $labelMax.text();
+                var labelMaxID = $labelMax.CFW_getID('cfw-slider');
+                this.labelMaxTxt = $labelMax.text();
 
-                var sliderThumbMax = document.createElement('div');
-                this.$sliderThumbMax = $(sliderThumbMax).addClass('slider-thumb slider-thumb-max')
+                var thumbMax = document.createElement('div');
+                this.$thumbMax = $(thumbMax).addClass('slider-thumb slider-thumb-max')
                     .attr({
                         'role': 'slider',
                         'tabindex': -1,
-                        'aria-labelledby': inputMaxLabelID
+                        'aria-labelledby': labelMaxID
                     });
 
-                this.$sliderThumbMin.attr('aria-controls', this.$sliderThumbMax.CFW_getID('cfw-slider'));
-                this.$sliderThumbMax.attr('aria-controls', this.$sliderThumbMin.CFW_getID('cfw-slider'));
+                this.$thumbMin.attr('aria-controls', this.$thumbMax.CFW_getID('cfw-slider'));
+                this.$thumbMax.attr('aria-controls', this.$thumbMin.CFW_getID('cfw-slider'));
             }
 
             // Attach elements together and insert
-            this.$sliderTrack.append(this.$sliderTrackSelection);
-            this.$sliderTrack.append(this.$sliderThumbMin);
-            if (this.range) { this.$sliderTrack.append(this.$sliderThumbMax); }
+            this.$track.append(this.$selection);
+            this.$track.append(this.$thumbMin);
+            if (this.range) { this.$track.append(this.$thumbMax); }
 
-            this.$slider.append(this.$sliderTrack);
+            this.$slider.append(this.$track);
 
             this.$element.append(this.$slider);
         },
@@ -160,19 +159,19 @@
         updateValues : function() {
             this.val0 = (this.ordinal) ? this.$inputMin[0].selectedIndex : parseFloat(this.$inputMin.val());
             if (!this.range) {
-                this.$sliderThumbMin.attr({
+                this.$thumbMin.attr({
                     'aria-valuemin': this.settings.min,
                     'aria-valuemax': this.settings.max,
                     'aria-valuenow': this.val0
                 });
             } else {
                 this.val1 = (this.ordinal) ? this.$inputMax[0].selectedIndex : parseFloat(this.$inputMax.val());
-                this.$sliderThumbMin.attr({
+                this.$thumbMin.attr({
                     'aria-valuemin': this.settings.min,
                     'aria-valuemax': this.val1,
                     'aria-valuenow': this.val0
                 });
-                this.$sliderThumbMax.attr({
+                this.$thumbMax.attr({
                     'aria-valuemin': this.val0,
                     'aria-valuemax': this.settings.max,
                     'aria-valuenow': this.val1
@@ -189,18 +188,18 @@
             var selStart;
 
             // Reset visuals
-            this.$sliderTrackSelection.css({
+            this.$selection.css({
                 'top': '',
                 'left': '',
                 'width': '',
                 'height': ''
             });
-            this.$sliderThumbMin.css({
+            this.$thumbMin.css({
                 'top': '',
                 'left': ''
             });
             if (this.range) {
-                this.$sliderThumbMax.css({
+                this.$thumbMax.css({
                     'top': '',
                     'left': ''
                 });
@@ -230,19 +229,19 @@
             var pos = (this.settings.vertical) ? 'top' : 'left';
             var dim = (this.settings.vertical) ? 'height' : 'width';
 
-            this.$sliderTrackSelection.css(pos, selStart + '%').css(dim, pctSize + '%');
+            this.$selection.css(pos, selStart + '%').css(dim, pctSize + '%');
             if (!this.range) {
-                this.$sliderThumbMin.css(pos, pctEnd + '%');
+                this.$thumbMin.css(pos, pctEnd + '%');
             } else {
-                this.$sliderThumbMin.css(pos, pctStart + '%');
-                this.$sliderThumbMax.css(pos, pctEnd + '%');
+                this.$thumbMin.css(pos, pctStart + '%');
+                this.$thumbMax.css(pos, pctEnd + '%');
             }
         },
 
         updateLabels : function() {
-            this.$sliderThumbMin.attr('aria-valuetext', this.inputMinLabelTxt + ' ' + this.$inputMin.val());
+            this.$thumbMin.attr('aria-valuetext', this.labelMinTxt + ' ' + this.$inputMin.val());
             if (this.range) {
-                this.$sliderThumbMax.attr('aria-valuetext', this.inputMaxLabelTxt + ' ' + this.$inputMax.val());
+                this.$thumbMax.attr('aria-valuetext', this.labelMaxTxt + ' ' + this.$inputMax.val());
             }
         },
 
@@ -265,10 +264,10 @@
 
         bindSlider : function() {
             var $selfRef = this;
-            var $thumbs = this.$sliderThumbMin;
+            var $thumbs = this.$thumbMin;
             var $inputs = this.$inputMin;
             if (this.range) {
-                $thumbs = $thumbs.add(this.$sliderThumbMax);
+                $thumbs = $thumbs.add(this.$thumbMax);
                 $inputs = $inputs.add(this.$inputMax);
             }
 
@@ -282,7 +281,7 @@
                     $(this).css('z-index', '');
                 });
 
-            this.$sliderTrack
+            this.$track
                 .on('dragStart.cfw.drag', function(e) {
                     $selfRef._dragStart(e);
                 })
@@ -291,9 +290,8 @@
                 })
                 .on('dragEnd.cfw.drag', function() {
                     $selfRef._dragEnd();
-                });
-
-            this.$sliderTrack.CFW_Drag();
+                })
+                .CFW_Drag();
 
             $inputs.on('change.cfw.slider', function() {
                 var $node = $(this);
@@ -303,14 +301,14 @@
         },
 
         unbindSlider : function() {
-            var $thumbs = this.$sliderThumbMin;
+            var $thumbs = this.$thumbMin;
             var $inputs = this.$inputMin;
             if (this.range) {
-                $thumbs = $thumbs.add(this.$sliderThumbMax);
+                $thumbs = $thumbs.add(this.$thumbMax);
                 $inputs = $inputs.add(this.$inputMax);
             }
             $thumbs.attr('tabindex', '').off('.cfw.slider');
-            this.$sliderTrack.CFW_Drag('dispose');
+            this.$track.CFW_Drag('dispose');
             $inputs.off('.cfw.slider');
         },
 
@@ -371,7 +369,7 @@
 
         _getInput : function(node) {
             var $node = $(node);
-            if ($node.is(this.$sliderThumbMax)) {
+            if ($node.is(this.$thumbMax)) {
                 return this.$inputMax;
             } else {
                 return this.$inputMin;
@@ -380,11 +378,9 @@
 
         _getLabel : function($input) {
             var $label = $('label[for="' + $input.attr('id') + '"]');
-
             if ($label.length <= 0) {
                 $label = $input.closest('label');
             }
-
             return $label;
         },
 
@@ -425,7 +421,7 @@
 
         _dragStart : function(e) {
             var $node = $(e.currentTarget);
-            if ($node.is(this.$sliderTrack)) {
+            if ($node.is(this.$track)) {
                 $node = this._closestThumb(e);
             }
             $node.trigger('focus');
@@ -433,7 +429,7 @@
             this.inDrag = $node[0];
 
             var pos = this.settings.vertical ? e.startY : e.startX;
-            var trackOff = this.$sliderTrack.offset();
+            var trackOff = this.$track.offset();
             var newPos = pos - trackOff[this.offsetPos];
             this.startPos = newPos;
 
@@ -445,7 +441,7 @@
         },
 
         _drag : function(e) {
-            if (this.startPos == null) { return; }
+            if (this.inDrag == null) { return; }
             var delta = this.settings.vertical ? e.deltaY : e.deltaX;
             var newPos = this.startPos + delta;
             var $input = this._getInput(this.inDrag);
@@ -462,9 +458,9 @@
         _positionToValue : function(pos) {
             var trackDim;
             if (this.settings.vertical) {
-                trackDim = this.$sliderTrack.outerHeight();
+                trackDim = this.$track.outerHeight();
             } else {
-                trackDim = this.$sliderTrack.outerWidth();
+                trackDim = this.$track.outerWidth();
             }
 
             var ratio = trackDim / this.stepsTotal;
@@ -477,12 +473,12 @@
             var $node;
             if (this.range) {
                 var pos = this.settings.vertical ? e.pageY : e.pageX;
-                var trackOff = this.$sliderTrack.offset();
-                var diff1 = Math.abs(pos - trackOff[this.offsetPos] - this.$sliderThumbMin.position()[this.offsetPos]);
-                var diff2 = Math.abs(pos - trackOff[this.offsetPos] - this.$sliderThumbMax.position()[this.offsetPos]);
-                $node = (diff1 < diff2) ? this.$sliderThumbMin : this.$sliderThumbMax;
+                var trackOff = this.$track.offset();
+                var diff1 = Math.abs(pos - trackOff[this.offsetPos] - this.$thumbMin.position()[this.offsetPos]);
+                var diff2 = Math.abs(pos - trackOff[this.offsetPos] - this.$thumbMax.position()[this.offsetPos]);
+                $node = (diff1 < diff2) ? this.$thumbMin : this.$thumbMax;
             } else {
-                $node = this.$sliderThumbMin;
+                $node = this.$thumbMin;
             }
             return $node;
         },
@@ -494,14 +490,14 @@
 
             this.$element = null;
             this.$slider = null;
-            this.$sliderTrack = null;
-            this.$sliderTrackSelection = null;
-            this.$sliderThumbMin = null;
-            this.$sliderThumbMax = null;
+            this.$track = null;
+            this.$selection = null;
+            this.$thumbMin = null;
+            this.$thumbMax = null;
             this.$inputMin = null;
-            this.inputMinLabelTxt = null;
+            this.labelMinTxt = null;
             this.$inputMax = null;
-            this.inputMaxLabelTxt = null;
+            this.labelMaxTxt = null;
             this.ordinal = null;
             this.range = null;
             this.val0 = null;
