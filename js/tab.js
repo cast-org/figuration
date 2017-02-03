@@ -191,7 +191,7 @@
             var $prevActive = container.find('.active');
             var doTransition = isPanel && this.settings.animate;
 
-            function displayTab() {
+            function complete() {
                 $prevActive.removeClass('active');
                 $node.addClass('active');
 
@@ -210,7 +210,7 @@
                 }
             }
 
-            $node.CFW_transition(null, displayTab);
+            $node.CFW_transition(null, complete);
 
             $prevActive.removeClass('in');
         },
