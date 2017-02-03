@@ -112,7 +112,14 @@ $('#myModal').on('beforeShow.cfw.modal', function(e) {
 {% endhighlight %}
 
 ## No Fallbacks
+
 Figuration's widgets don't fallback or degrade gracefully when JavaScript is disabled. If you care about the user experience in this case, use `<noscript>` to explain the situation (and how to re-enable JavaScript) to your users, and/or add your own custom fallbacks.
+
+## Dipose Methods
+
+Every widget has a `dispose` method that should remove any event listeners and data, as well as nullify any constructed JavaScript variables associated with a given widget.  Certain widgets will also remove their dynamically created content or controls from the DOM.
+
+While most likely not needed in everyday use, there may be specific circumstances when this might be useful.  For example, if you are doing large amounts of dynamic content, in order to help with memory garbage collection, it might be beneficial to call the `dispose` on a widget before you remove the content from the DOM.
 
 ## Accessibility
 
