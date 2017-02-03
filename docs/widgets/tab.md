@@ -128,12 +128,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
             <td>true</td>
             <td>If the tab pane target should fade in and out.</td>
         </tr>
-        <tr>
-            <td>hidden</td>
-            <td>boolean</td>
-            <td>true</td>
-            <td>Use the <code>aria-hidden</code> attribute on the target container to indicate visibility status to screen readers.</td>
-        </tr>
     </tbody>
     </table>
 </div> <!-- /.table-responsive -->
@@ -155,6 +149,11 @@ $('#myTab a').CFW_Tab({
 {:.no_toc}
 
 Shows the `tab-pane` for a given tab, and hides all sibling `tab-pane` items.
+
+#### `.CFW_Tab('dispose')`
+{:.no_toc}
+
+Will disable the listen events for the given tab, but leave it otherwise unchanged.
 
 ### Events
 Event callbacks happen on the toggle/trigger element.
@@ -188,11 +187,11 @@ When showing a new tab, the events fire in the following order:
             <td>This event fires on tab show after a tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
         </tr>
         <tr>
-            <td>beforeHhide.cfw.tab</td>
+            <td>beforeHide.cfw.tab</td>
             <td>This event fires when a new tab is to be shown (and thus the previous active tab is to be hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the current active tab and the new soon-to-be-active tab, respectively.</td>
         </tr>
         <tr>
-            <td>afterHhide.cfw.tab</td>
+            <td>afterHide.cfw.tab</td>
             <td>This event fires after a new tab is shown (and thus the previous active tab is hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the previous active tab and the new active tab, respectively.</td>
         </tr>
     </tbody>

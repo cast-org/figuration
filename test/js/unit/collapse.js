@@ -267,40 +267,6 @@ $(function() {
         setTimeout(done, 10);
     });
 
-    QUnit.test('should remove aria-hidden on target when collapse is shown', function(assert) {
-        assert.expect(1);
-        var done = assert.async();
-
-        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
-        var $target = $('<div id="test" class="collapse" aria-hidden="true" />').appendTo('#qunit-fixture');
-
-        $trigger
-            .one('afterShow.cfw.collapse', function() {
-                assert.notOk($target.is('[aria-hidden]'), 'aria-hidden attribute removed');
-                done();
-            });
-
-        $trigger.CFW_Collapse();
-        $trigger.trigger('click');
-    });
-
-    QUnit.test('should set aria-hidden="true" on target when collapse is hidden', function(assert) {
-        assert.expect(1);
-        var done = assert.async();
-
-        var $trigger = $('<a role="button" class="open" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
-        var $target = $('<div id="test" class="collapse in" />').appendTo('#qunit-fixture');
-
-        $trigger
-            .one('afterHide.cfw.collapse', function() {
-                assert.strictEqual($target.attr('aria-hidden'), 'true', 'aria-hidden on target is "true"');
-                done();
-            });
-
-        $trigger.CFW_Collapse();
-        $trigger.trigger('click');
-    });
-
     QUnit.test('should set aria-expanded="true" on all triggers when the collapse is shown', function(assert) {
         assert.expect(2);
         var done = assert.async();

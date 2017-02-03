@@ -71,20 +71,31 @@
                     }
 
                     if (changed) {
-                        $input.prop('checked', !this.$element.hasClass('active'));
-                        $input.trigger('change');
+                        $input.prop('checked', !this.$element.hasClass('active'))
+                            .trigger('change');
                     }
                 }
             }
 
             if (changed) {
-                this.$element.attr('aria-pressed', !this.$element.hasClass('active'));
-                this.$element.toggleClass('active');
+                this.$element
+                    .attr('aria-pressed', !this.$element.hasClass('active'))
+                    .toggleClass('active');
             }
+        },
+
+        dispose : function() {
+            this.$element
+                .off('.cfw.button')
+                .removeData('cfw.button');
+
+            this.$element = null;
+            this.$parent = null;
         }
     };
 
     function Plugin(option) {
+        var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
             var data = $this.data('cfw.button');
@@ -99,7 +110,9 @@
                 if (!data) {
                     $this.data('cfw.button', (data = new CFW_Widget_Button(this, options)));
                 }
-                if (option == 'toggle') data.toggle();
+                if (typeof option === 'string') {
+                    data[option].apply(data, args);
+                }
             }
         });
     }

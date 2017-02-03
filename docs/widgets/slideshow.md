@@ -22,30 +22,140 @@ Sideshow requires the following:
 * ToC goes here
 {:toc}
 
-## Example
+## Examples
 
-This example uses the [pagination componenent]({{ site.baseurl }}/components/pagination/), but it will also work with [tab]({{ site.baseurl }}/components/navs/#tabs) or [pill]({{ site.baseurl }}/components/navs/#pills) style navigation.
+### Using Tabs
+
+The slideshow works well with [tab navigation]({{ site.baseurl }}/components/navs/#tabs).
+
+<div class="cf-example">
+    <ul class="nav nav-tabs" data-cfw="slideshow">
+        <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
+        <li class="nav-item"><a href="#tab-slide0" class="nav-link" data-cfw="tab">Slide 1</a></li>
+        <li class="nav-item"><a href="#tab-slide1" class="nav-link" data-cfw="tab">Slide 2</a></li>
+        <li class="nav-item"><a href="#tab-slide2" class="nav-link" data-cfw="tab">Slide 3</a></li>
+        <li class="nav-item"><a href="#tab-slide3" class="nav-link" data-cfw="tab">Slide 4</a></li>
+        <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" id="tab-slide0">
+            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+        <div class="tab-pane" id="tab-slide1">
+            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit.</p>
+        </div>
+        <div class="tab-pane" id="tab-slide2">
+            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+        </div>
+        <div class="tab-pane" id="tab-slide3">
+            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+        </div>
+    </div>
+</div>
+
+{% highlight html %}
+<ul class="nav nav-tabs" data-cfw="slideshow">
+    <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
+    <li class="nav-item"><a href="#tab-slide0" class="nav-link" data-cfw="tab">Slide 1</a></li>
+    <li class="nav-item"><a href="#tab-slide1" class="nav-link" data-cfw="tab">Slide 2</a></li>
+    <li class="nav-item"><a href="#tab-slide2" class="nav-link" data-cfw="tab">Slide 3</a></li>
+    <li class="nav-item"><a href="#tab-slide3" class="nav-link" data-cfw="tab">Slide 4</a></li>
+    <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane" id="tab-slide0">
+        ...
+    </div>
+    <div class="tab-pane" id="tab-slide1">
+        ...
+    </div>
+    <div class="tab-pane" id="tab-slide2">
+        ...
+    </div>
+    <div class="tab-pane" id="tab-slide3">
+        ...
+    </div>
+</div>
+{% endhighlight %}
+
+### Using Pills
+
+The slideshow also works with [pill navigation]({{ site.baseurl }}/components/navs/#pills).
+
+<div class="cf-example">
+    <nav class="nav nav-pills" data-cfw="slideshow">
+        <a href="#" class="nav-item nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a>
+        <a href="#pill-slide0" class="nav-item nav-link" data-cfw="tab">Slide 1</a>
+        <a href="#pill-slide1" class="nav-item nav-link" data-cfw="tab">Slide 2</a>
+        <a href="#pill-slide2" class="nav-item nav-link" data-cfw="tab">Slide 3</a>
+        <a href="#pill-slide3" class="nav-item nav-link" data-cfw="tab">Slide 4</a>
+        <a href="#" class="nav-item nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a>
+    </nav>
+    <div class="tab-content">
+        <div class="tab-pane" id="pill-slide0">
+            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+        <div class="tab-pane" id="pill-slide1">
+            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit.</p>
+        </div>
+        <div class="tab-pane" id="pill-slide2">
+            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+        </div>
+        <div class="tab-pane" id="pill-slide3">
+            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+        </div>
+    </div>
+</div>
+
+{% highlight html %}
+<nav class="nav nav-pills" data-cfw="slideshow">
+    <a href="#" class="nav-item nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a>
+    <a href="#pill-slide0" class="nav-item nav-link" data-cfw="tab">Slide 1</a>
+    <a href="#pill-slide1" class="nav-item nav-link" data-cfw="tab">Slide 2</a>
+    <a href="#pill-slide2" class="nav-item nav-link" data-cfw="tab">Slide 3</a>
+    <a href="#pill-slide3" class="nav-item nav-link" data-cfw="tab">Slide 4</a>
+    <a href="#" class="nav-item nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a>
+</nav>
+<div class="tab-content">
+    <div class="tab-pane" id="pill-slide0">
+        ...
+    </div>
+    <div class="tab-pane" id="pill-slide1">
+        ...
+    </div>
+    <div class="tab-pane" id="pill-slide2">
+        ...
+    </div>
+    <div class="tab-pane" id="pill-slide3">
+        ...
+    </div>
+</div>
+{% endhighlight %}
+
+### Using Pagination
+
+You can even use the [pagination componenent]({{ site.baseurl }}/components/pagination/).
 
 <div class="cf-example">
     <ul class="pagination" data-cfw="slideshow">
         <li class="page-item"><a href="#" class="page-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
-        <li class="page-item"><a href="#slide0" class="page-link" data-cfw="tab">Slide 1</a></li>
-        <li class="page-item"><a href="#slide1" class="page-link" data-cfw="tab">Slide 2</a></li>
-        <li class="page-item"><a href="#slide2" class="page-link" data-cfw="tab">Slide 3</a></li>
-        <li class="page-item"><a href="#slide3" class="page-link" data-cfw="tab">Slide 4</a></li>
+        <li class="page-item"><a href="#page-slide0" class="page-link" data-cfw="tab">Slide 1</a></li>
+        <li class="page-item"><a href="#page-slide1" class="page-link" data-cfw="tab">Slide 2</a></li>
+        <li class="page-item"><a href="#page-slide2" class="page-link" data-cfw="tab">Slide 3</a></li>
+        <li class="page-item"><a href="#page-slide3" class="page-link" data-cfw="tab">Slide 4</a></li>
         <li class="page-item"><a href="#" class="page-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" id="slide0">
+        <div class="tab-pane" id="page-slide0">
             <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
         </div>
-        <div class="tab-pane" id="slide1">
-            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+        <div class="tab-pane" id="page-slide1">
+            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit.</p>
         </div>
-        <div class="tab-pane" id="slide2">
+        <div class="tab-pane" id="page-slide2">
             <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
         </div>
-        <div class="tab-pane" id="slide3">
+        <div class="tab-pane" id="page-slide3">
             <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
         </div>
     </div>
@@ -53,24 +163,78 @@ This example uses the [pagination componenent]({{ site.baseurl }}/components/pag
 
 {% highlight html %}
 <ul class="pagination" data-cfw="slideshow">
-    <li><a href="#" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
-    <li><a href="#slide0" data-cfw="tab">Slide 1</a></li>
-    <li><a href="#slide1" data-cfw="tab">Slide 2</a></li>
-    <li><a href="#slide2" data-cfw="tab">Slide 3</a></li>
-    <li><a href="#slide3" data-cfw="tab">Slide 4</a></li>
-    <li><a href="#" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
+    <li class="page-item"><a href="#" class="page-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
+    <li class="page-item"><a href="#page-slide0" class="page-link" data-cfw="tab">Slide 1</a></li>
+    <li class="page-item"><a href="#page-slide1" class="page-link" data-cfw="tab">Slide 2</a></li>
+    <li class="page-item"><a href="#page-slide2" class="page-link" data-cfw="tab">Slide 3</a></li>
+    <li class="page-item"><a href="#page-slide3" class="page-link" data-cfw="tab">Slide 4</a></li>
+    <li class="page-item"><a href="#" class="page-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
 </ul>
 <div class="tab-content">
-    <div class="tab-pane" id="slide0">
+    <div class="tab-pane" id="page-slide0">
         ...
     </div>
-    <div class="tab-pane" id="slide1">
+    <div class="tab-pane" id="page-slide1">
         ...
     </div>
-    <div class="tab-pane" id="slide2">
+    <div class="tab-pane" id="page-slide2">
         ...
     </div>
-    <div class="tab-pane" id="slide3">
+    <div class="tab-pane" id="page-slide3">
+        ...
+    </div>
+</div>
+{% endhighlight %}
+
+### Disabled Tabs
+
+If there is a tab that is disabled, the previous and next navigation items will skip over the disabled item.
+
+<div class="cf-example">
+    <ul class="nav nav-tabs" data-cfw="slideshow">
+        <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
+        <li class="nav-item"><a href="#ex-slide0" class="nav-link" data-cfw="tab">Slide 1</a></li>
+        <li class="nav-item"><a href="#ex-slide1" class="nav-link disabled" data-cfw="tab">Slide 2</a></li>
+        <li class="nav-item"><a href="#ex-slide2" class="nav-link" data-cfw="tab">Slide 3</a></li>
+        <li class="nav-item"><a href="#ex-slide3" class="nav-link" data-cfw="tab">Slide 4</a></li>
+        <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" id="ex-slide0">
+            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+        <div class="tab-pane" id="ex-slide1">
+            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit.</p>
+        </div>
+        <div class="tab-pane" id="ex-slide2">
+            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+        </div>
+        <div class="tab-pane" id="ex-slide3">
+            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+        </div>
+    </div>
+</div>
+
+{% highlight html %}
+<ul class="nav nav-tabs" data-cfw="slideshow">
+    <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
+    <li class="nav-item"><a href="#ex-slide0" class="nav-link" data-cfw="tab">Slide 1</a></li>
+    <li class="nav-item"><a href="#ex-slide1" class="nav-link disabled" data-cfw="tab">Slide 2</a></li>
+    <li class="nav-item"><a href="#ex-slide2" class="nav-link" data-cfw="tab">Slide 3</a></li>
+    <li class="nav-item"><a href="#ex-slide3" class="nav-link" data-cfw="tab">Slide 4</a></li>
+    <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane" id="ex-slide0">
+        ...
+    </div>
+    <div class="tab-pane" id="ex-slide1">
+        ...
+    </div>
+    <div class="tab-pane" id="ex-slide2">
+        ...
+    </div>
+    <div class="tab-pane" id="ex-slide3">
         ...
     </div>
 </div>
@@ -124,6 +288,20 @@ Shows the previous slide, unless the first slide is current.
 
 Shows the next slide, unless the last slide is current.
 
+#### `.CFW_Slideshow('update')`
+{:.no_toc}
+
+Update the state of the navigation controls. Useful if there is a change to the tabs.
+
+#### `.CFW_Slideshow('dispose')`
+{:.no_toc}
+
+Disable the slideshow navigation controls and listeners.  This will leave the tab widget controls active.
+
+### Options
+
+None.
+
 ### Events
 
 Event callbacks happen on the slideshow element.
@@ -150,6 +328,10 @@ You can also get the tab events as indicated in the [Tab widget]({{ site.baseurl
         <tr>
             <td>next.cfw.slideshow</td>
             <td>This event fires before the call to activate the next slide.</td>
+        </tr>
+        <tr>
+            <td>update.cfw.slideshow</td>
+            <td>This event fires after the state of the navigation controls is updated.</td>
         </tr>
     </tbody>
     </table>

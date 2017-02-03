@@ -60,18 +60,59 @@ Note that pre-checked buttons will automatically add the `.active` class  and `a
 </div>
 {% endexample %}
 
+### Grouped Buttons
+
+You couls also use `.btn`s inside a `.btn-group` for interface controls.
+
+{% example html %}
+<div class="btn-group" data-cfw="buttons">
+    <button class="btn" type="button">One</button>
+    <button class="btn active" type="button">Two</button>
+    <button class="btn" type="button">Three</button>
+</div>
+{% endexample %}
+
 ## Usage
 
+### Via Data Attributes
+
+See the above examples to determine the appropriate data attribute for your use case.
+
+Typically, use `data-cfw="button"` on a single button for toggle, and 'data-cfw="buttons"` on a ancestor element for grouped buttons.
+
+### Via JavaScript
+
+Enable manually with:
+
+{% highlight js %}
+$('#myCollapse').CFW_Button();
+{% endhighlight %}
+
+### Options
+
+None.
+
 ### Methods
+
+#### `.CFW_Button()`
+{:.no_toc}
+
+Activate a single or group of buttons to act as toggles.
 
 #### `.CFW_Button('toggle')`
 {:.no_toc}
 
 Toggles push state. Changes the button the appearance and `aria-pressed` state to indicate that it has been activated or deactivated.
 
+#### `.CFW_Button('dispose')`
+{:.no_toc}
+
+Removes the toggle functionality for a single or group of buttons.  This will leave the button or group of buttons in their current state.
+
 ## Accessibility
 
 ### Widget Initialization
+
 If used on a group of buttons using the `data-toggle="buttons"`, the Button widget will initialize individually on each descendant `.btn` element.
 
 Upon initialization, the Button widget will automatically apply the visual `.active` class and the `aria-pressed` attribute in the following manner.

@@ -500,6 +500,11 @@ Change the caption/subtitle track.  `trackID` is the 0-indexed array of track it
 
 Change the transcript track.  `trackID` is the 0-indexed array of track items defined in the `<video>` element. Setting `trackID` to `-1` will turn off the transcript.
 
+#### `.CFW_Player('dispose')`
+{:.no_toc}
+
+Remove any associated transcript, sliders, dropdowns, data, and event listeners created by the player widget.
+
 ### Events
 
 Event callbacks happen on the `<audio>`/`<video>` element, but will bubble up through the DOM and can be captured on the `data-cfw="player"` wrapping container if needed.

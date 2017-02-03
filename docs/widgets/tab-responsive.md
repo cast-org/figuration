@@ -23,10 +23,6 @@ Sideshow requires the following:
 * ToC goes here
 {:toc}
 
-## Overview
-
-Tab-Responsive, removes and disables the use of `aria-hidden` attributes on the tab and collapse target items for accessibility, otherwise all content inside a Tab-Responsive widget would be hidden to screen readers.
-
 ## Example
 
 This example uses a breakpoint of 62em/992px.  Larger widths will see the tab style navigation, smaller widths will see a simple accordion using headers as the collapse triggers.  If you change the browser width between the two sides of the breakpoint, you will see the active tab becomes the active collapse, and vice-versa.
@@ -133,6 +129,9 @@ $('#myTabResponsive').CFW_TabResponsive();
 
 ### Options
 
+None.
+
+{% comment %}
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-tabResponsive`, as in `data-cfw-tabResponsive-active=true`.
 
 <div class="table-responsive">
@@ -155,6 +154,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </tbody>
     </table>
 </div> <!-- /.table-responsive -->
+{% endcomment %}
 
 ### Methods
 

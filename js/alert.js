@@ -37,14 +37,13 @@
                 this.$parent.addClass('fade in');
             }
 
-            this.$parent.on('click.cfw.alert', dismiss, function() {
-                $selfRef.close();
-            });
-
-            this.$parent.data('cfw.alert', this);
-            this.$parent.find(dismiss).data('cfw.alert', this);
-
-            this.$parent.CFW_trigger('init.cfw.alert');
+            this.$parent
+                .on('click.cfw.alert', dismiss, function() {
+                    $selfRef.close();
+                })
+                .data('cfw.alert', this)
+                .find(dismiss).data('cfw.alert', this)
+                .CFW_trigger('init.cfw.alert');
         },
 
         close : function(e) {
@@ -62,15 +61,16 @@
 
             function removeElement() {
                 // Detach from parent, fire event then clean up data
-                $selfRef.$parent.detach();
-                $selfRef.inTransition = 0;
-                $selfRef.$parent.CFW_trigger('afterClose.cfw.alert');
+                $selfRef.$parent
+                    .detach()
+                    .CFW_trigger('afterClose.cfw.alert');
                 $selfRef.$parent.remove();
+                $selfRef.inTransition = 0;
             }
 
-            this.$parent.removeClass('in');
-
-            this.$parent.CFW_transition(null, removeElement);
+            this.$parent
+                .removeClass('in')
+                .CFW_transition(null, removeElement);
         },
 
         findParent : function() {
@@ -87,6 +87,16 @@
             }
 
             this.$parent = $parent;
+        },
+
+        dispose : function() {
+            this.$parent.off('.cfw.alert');
+            this.$element.removeData('cfw.alert');
+
+            this.$element = null;
+            this.$parent = null;
+            this.inTransition = null;
+            this.settings = null;
         }
     };
 
@@ -111,8 +121,9 @@
 
     // API
     // ===
-    $(document).on('click.cfw.alert', dismiss, function() {
-        $(this).CFW_Alert('close');
-    });
-
+    if (typeof CFW_API === 'undefined' || CFW_API !== false) {
+        $(document).on('click.cfw.alert', dismiss, function() {
+            $(this).CFW_Alert('close');
+        });
+    }
 })(jQuery);

@@ -22,7 +22,10 @@ Accordion requires the following:
 * ToC goes here
 {:toc}
 
-## Example
+## Examples
+
+### Basic Example
+
 A simple accordion.
 
 {% example html %}
@@ -38,6 +41,45 @@ A simple accordion.
     <h4><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="accordion2">Collapse Toggle #3</a></h4>
     <div class="collapse" data-cfw-collapse-target="accordion2">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.
+    </div>
+</div>
+{% endexample %}
+
+### Using Cards
+
+Here some cards are used to add a bit of layout.
+
+{% example html %}
+<div data-cfw="accordion">
+    <div class="card mb-0">
+        <div class="card-header">
+            <h4 class="mb-0"><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="card0">Collapse Toggle #1</a></h4>
+        </div>
+        <div class="collapse" data-cfw-collapse-target="card0">
+            <div class="card-block">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.
+            </div>
+        </div>
+    </div>
+    <div class="card mb-0">
+        <div class="card-header">
+            <h4 class="mb-0"><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="card1">Collapse Toggle #2</a></h4>
+        </div>
+        <div class="collapse" data-cfw-collapse-target="card1">
+            <div class="card-block">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.
+            </div>
+        </div>
+    </div>
+    <div class="card mb-0">
+        <div class="card-header">
+            <h4 class="mb-0"><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="card2">Collapse Toggle #3</a></h4>
+        </div>
+        <div class="collapse" data-cfw-collapse-target="card2">
+            <div class="card-block">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.
+            </div>
+        </div>
     </div>
 </div>
 {% endexample %}
@@ -63,11 +105,12 @@ $('#myAccordion').CFW_Accordion();
 #### `.CFW_Accordion()`
 {:.no_toc}
 
-Activates the an accordion element.
+Activates the element as an accordion listener.
 
-{% highlight js %}
-$('#myAccordion').CFW_Accordion();
-{% endhighlight %}
+#### `.CFW_Accordion('dispose')`
+{:.no_toc}
+
+Removes the accordion listener and data from the element. Falls back to non-associated, or individual, collapse controls.
 
 ### Events
 
@@ -85,7 +128,7 @@ You can also get the collapse events as indicated in the [Collapse widget]({{ si
     </thead>
     <tbody>
         <tr>
-            <td>init.cfw.accordion</td>
+            <td><code>init.cfw.accordion</code></td>
             <td>This event fires after the accordion item is initialized.</td>
         </tr>
     </tbody>

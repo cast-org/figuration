@@ -5,7 +5,7 @@ subtitle: collapse.js
 group: widgets
 ---
 
-Get base styles and flexible support for collapsible components like accordions and navigation.
+Get base styles and flexible support for toggling content on your page.
 
 ## Contents
 {:.no_toc}
@@ -29,7 +29,7 @@ Click the buttons below to show and hide another element via class changes.
 
 ### Multiple Triggers
 
-You can assign multiple triggers to control one collapse target, but you need to use the `data-cfw-collapse-toggle` and matching `data-cfw-collapse-target` attributes so that the toggle and target states are all synchronised.
+You can assign multiple triggers to control one collapse target, but you either need to use the `data-cfw-collapse-toggle` and matching `data-cfw-collapse-target` attributes, or matching `href` attributes with the associated `id`, so that the toggle and target states are all synchronised.
 
 {% example html %}
 <a href="#" role="button" class="btn btn-outline-primary" data-cfw="collapse" data-cfw-collapse-toggle="multi-collapse">Trigger 1 <span class="caret"></span></a>
@@ -38,6 +38,17 @@ You can assign multiple triggers to control one collapse target, but you need to
     <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
 </div>
 {% endexample %}
+
+Using `id` and matching `href` attributes.
+
+{% example html %}
+<a href="#href-collapse" role="button" class="btn btn-outline-primary" data-cfw="collapse">ID Trigger 1 <span class="caret"></span></a>
+<a href="#href-collapse" role="button" class="btn btn-outline-primary" data-cfw="collapse">ID Trigger 2 <span class="caret"></span></a>
+<div id="href-collapse">
+    <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
+</div>
+{% endexample %}
+
 
 ### Horizonal
 
@@ -117,12 +128,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
             <td>false</td>
             <td>Use a horizontal transition instead of the default vertical transition.</td>
         </tr>
-        <tr>
-            <td>hidden</td>
-            <td>boolean</td>
-            <td>true</td>
-            <td>Use the <code>aria-hidden</code> attribute on the target container to indicate visibility status to screen readers.</td>
-        </tr>
     </tbody>
     </table>
 </div> <!-- /.table-responsive -->
@@ -154,6 +159,12 @@ Shows a collapsible element.
 {:.no_toc}
 
 Hides a collapsible element.
+
+#### `.CFW_Collapse('dispose')`
+{:.no_toc}
+
+Disables the collapse control functionality for a given element, leaving the collapse target is its current state.
+
 
 ### Events
 

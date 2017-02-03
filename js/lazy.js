@@ -11,9 +11,8 @@
     var CFW_Widget_Lazy = function(element, options) {
         this.$element = $(element);
         this.$window = $(window);
-        this.eventTypes = null;
-        this.id = null;
-        this.isLoading = null;
+        this.instance = null;
+        this.inTransition = null;
 
         var parsedData = this.$element.CFW_parseData('lazy', CFW_Widget_Lazy.DEFAULTS);
         this.settings = $.extend({}, CFW_Widget_Lazy.DEFAULTS, parsedData, options);
@@ -30,7 +29,7 @@
         speed     : 0,          // Speed of effect (milliseconds)
         threshold : 0,          // Amount of pixels below viewport to triger show
         container : window,     // Where to watch for events
-        invisible : false,       // Load sources that are not :visible
+        invisible : false,      // Load sources that are not :visible
         placeholder: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
     };
 
@@ -48,17 +47,17 @@
                 }
             }
 
-            this.id = this.$element.CFW_getID('cfw-lazy');
+            this.instance = this.$element.CFW_getID('cfw-lazy');
 
             // Bind events
-            this.eventTypes = this.settings.trigger.split(' ');
-            for (var i = this.eventTypes.length; i--;) {
-                var eventType = this.eventTypes[i];
+            var eventTypes = this.settings.trigger.split(' ');
+            for (var i = eventTypes.length; i--;) {
+                var eventType = eventTypes[i];
                 if (eventType == 'scroll' || eventType == 'resize') {
-                    $(this.settings.container).on(eventType + '.cfw.lazy.' + this.id, $().CFW_throttle($.proxy(this._handleTrigger, this), this.settings.throttle));
+                    $(this.settings.container).on(eventType + '.cfw.lazy.' + this.instance, $().CFW_throttle($.proxy(this._handleTrigger, this), this.settings.throttle));
                     checkInitViewport = true;
                 } else {
-                    $(this.$element).on(eventType + '.cfw.lazy.' + this.id, $.proxy(this.show, this));
+                    $(this.$element).on(eventType + '.cfw.lazy', $.proxy(this.show, this));
                 }
             }
 
@@ -76,7 +75,7 @@
 
         belowFold : function() {
             var fold;
-            if (this.settings.container === undefined || this.settings.container === window) {
+            if (this.settings.container === window) {
                 fold = (window.innerHeight ? window.innerHeight : this.$window.height()) + this.$window.scrollTop();
             } else {
                 fold = $(this.settings.container).offset().top + $(this.settings.container).height();
@@ -86,7 +85,7 @@
 
         afterRight : function() {
             var fold;
-            if (this.settings.container === undefined || this.settings.container === window) {
+            if (this.settings.container === window) {
                 fold = this.$window.width() + this.$window.scrollLeft();
             } else {
                 fold = $(this.settings.container).offset().left + $(this.settings.container).width();
@@ -96,7 +95,7 @@
 
         aboveTop : function() {
             var fold;
-            if (this.settings.container === undefined || this.settings.container === window) {
+            if (this.settings.container === window) {
                 fold = this.$window.scrollTop();
             } else {
                 fold = $(this.settings.container).offset().top;
@@ -106,7 +105,7 @@
 
         beforeLeft: function() {
             var fold;
-            if (this.settings.container === undefined || this.settings.container === window) {
+            if (this.settings.container === window) {
                 fold = this.$window.scrollLeft();
             } else {
                 fold = $(this.settings.container).offset().left;
@@ -124,24 +123,19 @@
 
             setTimeout(function() {
                 $selfRef.$element.CFW_trigger('afterShow.cfw.lazy');
+                $selfRef.dispose();
             }, this.settings.speed);
-
-            // Unbind events and unset data
-            $(this.settings.container).off('.cfw.lazy.' + this.id);
-            this.$element.off('.cfw.lazy.' + this.id)
-                .removeData('cfw.lazy')
-                .removeAttr('data-cfw');
         },
 
         show : function() {
             var $selfRef = this;
-            if (this.isLoading) { return; }
+            if (this.inTransition) { return; }
 
             if (!this.$element.CFW_trigger('beforeShow.cfw.lazy')) {
                 return;
             }
 
-            this.isLoading = true;
+            this.inTransition = true;
 
             setTimeout(function() {
                 $selfRef.loadSrc();
@@ -149,7 +143,24 @@
         },
 
         _handleTrigger : function() {
-            if (this.inViewport()) { this.show(); }
+            // Handle delayed event calls by checking for null
+            if (this.$element !== null) {
+                if (this.inViewport()) { this.show(); }
+            }
+        },
+
+        dispose : function() {
+            $(this.settings.container).off('.cfw.lazy.' + this.instance);
+            this.$element.off('.cfw.lazy')
+                .removeData('cfw.lazy')
+                .removeAttr('data-cfw');
+
+            this.$element = null;
+            this.$window = null;
+            this.instance = null;
+            this.inTransition = null;
+            this.settings = null;
+
         }
     };
 

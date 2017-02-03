@@ -9,8 +9,9 @@
     'use strict';
 
     var CFW_Widget_Scrollspy = function(element, options) {
-        this.$body  = $('body');
-        this.$scrollElement = $(element).is('body') ? $(window) : $(element);
+        this.$body = $('body');
+        this.$element = $(element);
+        this.$scrollElement = this.$element.is('body') ? $(window) : this.$element;
         this.selector = null;
         this.offsets = [];
         this.targets = [];
@@ -25,15 +26,14 @@
 
     CFW_Widget_Scrollspy.DEFAULTS = {
         target: null,
-        offset: 10
+        offset: 10,
+        throttle: 100
     };
 
     CFW_Widget_Scrollspy.prototype = {
         _init : function() {
-            var process  = $.proxy(this.process, this);
-
-            this.$scrollElement.on('scroll.bs.scrollspy', process);
-            this.selector = (this.settings.target || '') + ' .nav li > a';
+            this.$scrollElement.on('scroll.cfw.scrollspy', $().CFW_throttle($.proxy(this.process, this), this.settings.throttle));
+            this.selector = (this.settings.target || '') + ' a';
             this.$scrollElement.CFW_trigger('init.cfw.scrollspy');
 
             this.refresh();
@@ -60,7 +60,6 @@
 
             this.$body
                 .find(this.selector)
-                // .filter(':visible')
                 .map(function() {
                     var $el   = $(this);
                     var href  = $el.data('target') || $el.attr('href');
@@ -138,6 +137,21 @@
             $(this.selector)
                 .filter('.active')
                 .removeClass('active');
+        },
+
+        dispose : function() {
+            this.$scrollElement.off('.cfw.scrollspy');
+            this.$element.removeData('cfw.scrollspy');
+
+            this.$body = null;
+            this.$element = null;
+            this.$scrollElement = null;
+            this.selector = null;
+            this.offsets = null;
+            this.targets = null;
+            this.activeTarget = null;
+            this.scrollHeight = null;
+            this.settings = null;
         }
     };
 
@@ -145,11 +159,11 @@
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
-            var data = $this.data('cfw.Scrollspy');
+            var data = $this.data('cfw.scrollspy');
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.Scrollspy', (data = new CFW_Widget_Scrollspy(this, options)));
+                $this.data('cfw.scrollspy', (data = new CFW_Widget_Scrollspy(this, options)));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);

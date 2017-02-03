@@ -9,11 +9,11 @@
     'use strict';
 
     var CFW_Widget_Tab = function(element, options) {
-        this.$triggerElm = $(element);
+        this.$element = $(element);
+        this.$target = null;
         this.$navElm = null;
-        this.$targetElm = null;
 
-        var parsedData = this.$triggerElm.CFW_parseData('tab', CFW_Widget_Tab.DEFAULTS);
+        var parsedData = this.$element.CFW_parseData('tab', CFW_Widget_Tab.DEFAULTS);
         this.settings = $.extend({}, CFW_Widget_Tab.DEFAULTS, parsedData, options);
 
         this._init();
@@ -21,105 +21,94 @@
 
     CFW_Widget_Tab.DEFAULTS = {
         target  : null,
-        animate : true, // If tabs should be allowed fade in and out
-        hidden  : true  // Use aria-hidden on target containers by default
+        animate : true // If tabs should be allowed fade in and out
     };
 
     CFW_Widget_Tab.prototype = {
-
         _init : function() {
             var $selfRef = this;
 
             // Find nav and target elements
-            this.$navElm = this.$triggerElm.closest('ul, ol, nav');
+            this.$navElm = this.$element.closest('ul, ol, nav');
             this.$navElm.attr('role', 'tablist');
 
             var $selector = $(this.settings.target);
             if (!$selector.length) {
-                $selector = $(this.$triggerElm.attr('href'));
+                $selector = $(this.$element.attr('href'));
             }
-            this.$targetElm = $($selector);
+            this.$target = $($selector);
 
-            if (!this.$targetElm.length) {
+            if (!this.$target.length) {
                 return false;
             }
 
-            this.$triggerElm.attr('data-cfw', 'tab');
+            this.$element.attr('data-cfw', 'tab');
 
             // Check for presence of trigger id - set if not present
-            var triggerID = this.$triggerElm.CFW_getID('cfw-tab');
+            var triggerID = this.$element.CFW_getID('cfw-tab');
 
             // Target should have id already - set ARIA attributes
-            this.$targetElm.attr({
+            this.$target.attr({
                 'role': 'tabpanel',
                 'aria-labelledby': triggerID
             });
-            if (this.settings.hidden) {
-                this.$targetElm.attr('aria-hidden', true);
-            }
             if (this.settings.animate) {
-                this.fadeEnable();
+                this.animEnable();
             } else {
-                this.fadeDisable();
+                this.animDisable();
             }
 
             // Set ARIA attributes on trigger
-            this.$triggerElm.attr({
+            this.$element.attr({
                 'tabindex': -1,
                 'role': 'tab',
                 'aria-selected': 'false',
                 'aria-expanded': 'false',
-                'aria-controls': this.$targetElm.attr('id')
+                'aria-controls': this.$target.attr('id')
             });
 
             // Bind click handler
-            this.$triggerElm.on('click', function(e) {
+            this.$element.on('click.cfw.tab', function(e) {
                 e.preventDefault();
                 $selfRef.show(e);
             });
 
             // Bind key handler
-            this.$triggerElm.on('keydown', function(e) {
+            this.$element.on('keydown.cfw.tab', function(e) {
                 $selfRef._actionsKeydown(e, this);
             });
 
             // Display panel if trigger is marked active
-            if (this.$triggerElm.hasClass('active')) {
-                this.$triggerElm.attr({
+            if (this.$element.hasClass('active')) {
+                this.$element.attr({
                     'tabindex': 0,
                     'aria-selected': 'true',
                     'aria-expanded': 'true'
                 });
-                this.$targetElm.addClass('active');
+                this.$target.addClass('active');
 
-                if (this.settings.hidden) {
-                    this.$targetElm.attr('aria-hidden', false);
-                }
                 if (this.settings.animate) {
-                    this.$targetElm.addClass('in');
+                    this.$target.addClass('in');
                 }
             }
 
             // Check to see if there is an active element defined - if not set current one as active
             if (this.$navElm.find('.active').length <= 0) {
-                this.$triggerElm.addClass('active');
+                this.$element.addClass('active');
 
-                this.$triggerElm.attr({
+                this.$element.attr({
                     'tabindex': 0,
                     'aria-selected': 'true',
                     'aria-expanded': 'true'
                 });
-                this.$targetElm.addClass('active');
+                this.$target.addClass('active');
 
-                if (this.settings.hidden) {
-                    this.$targetElm.attr('aria-hidden', 'false');
-                }
                 if (this.settings.animate) {
-                    this.$targetElm.addClass('in');
+                    this.$target.addClass('in');
                 }
             }
 
-            this.$triggerElm.CFW_trigger('init.cfw.tab');
+            this.$element.CFW_trigger('init.cfw.tab');
         },
 
         show : function(e) {
@@ -127,20 +116,20 @@
                 e.preventDefault();
             }
 
-            if (this.$triggerElm.hasClass('active')
-                || this.$triggerElm.hasClass('disabled')
-                || this.$triggerElm[0].hasAttribute('disabled')) {
+            if (this.$element.hasClass('active')
+                || this.$element.hasClass('disabled')
+                || this.$element[0].hasAttribute('disabled')) {
                 return;
             }
 
             var $previous = this.$navElm.find('.active:last');
             if ($previous.length) {
-                if (!$previous.CFW_trigger('beforeHide.cfw.tab', { relatedTarget: this.$triggerElm[0] })) {
+                if (!$previous.CFW_trigger('beforeHide.cfw.tab', { relatedTarget: this.$element[0] })) {
                     return;
                 }
             }
 
-            if (!this.$triggerElm.CFW_trigger('beforeShow.cfw.tab', { relatedTarget: $previous[0] })) {
+            if (!this.$element.CFW_trigger('beforeShow.cfw.tab', { relatedTarget: $previous[0] })) {
                 return;
             }
 
@@ -150,38 +139,30 @@
                         'aria-selected': 'false',
                         'aria-expanded': 'false'
                     })
-                    .CFW_trigger('afterHide.cfw.tab', { relatedTarget: this.$triggerElm[0] });
+                    .CFW_trigger('afterHide.cfw.tab', { relatedTarget: this.$element[0] });
             }
 
-            this.$triggerElm.attr({
+            this.$element.attr({
                 'tabindex': 0,
                 'aria-selected': 'true',
                 'aria-expanded': 'true'
             });
 
-            this._activateTab(this.$triggerElm, this.$navElm, false, $previous);
-            this._activateTab(this.$targetElm, this.$targetElm.parent(), true, $previous);
+            this._activateTab(this.$element, this.$navElm, false, $previous);
+            this._activateTab(this.$target, this.$target.parent(), true, $previous);
         },
 
-        fadeEnable : function() {
-            this.$targetElm.addClass('fade');
-            if (this.$targetElm.hasClass('active')) {
-                this.$targetElm.addClass('in');
+        animEnable : function() {
+            this.$target.addClass('fade');
+            if (this.$target.hasClass('active')) {
+                this.$target.addClass('in');
             }
             this.settings.animate = true;
         },
 
-        fadeDisable : function() {
-            this.$targetElm.removeClass('fade in');
-            if (this.$targetElm.hasClass('active')) {
-                this.$targetElm.addClass('in');
-            }
+        animDisable : function() {
+            this.$target.removeClass('fade in');
             this.settings.animate = false;
-        },
-
-        hiddenDisable : function() {
-            this.$targetElm.removeAttr('aria-hidden');
-            this.settings.hidden = false;
         },
 
         _actionsKeydown : function(e, node) {
@@ -210,15 +191,9 @@
             var $prevActive = container.find('.active');
             var doTransition = isPanel && this.settings.animate;
 
-            function displayTab() {
+            function complete() {
                 $prevActive.removeClass('active');
-
                 $node.addClass('active');
-
-                if (isPanel) {
-                    $prevActive.attr('aria-hidden', 'true');
-                    $node.attr('aria-hidden', 'false');
-                }
 
                 if (doTransition) {
                     $node[0].offsetWidth; // Reflow for transition
@@ -231,13 +206,25 @@
                 }
 
                 if (isPanel) {
-                    $selfRef.$triggerElm.CFW_trigger('afterShow.cfw.tab', { relatedTarget: $previous[0] });
+                    $selfRef.$element.CFW_trigger('afterShow.cfw.tab', { relatedTarget: $previous[0] });
                 }
             }
 
-            $node.CFW_transition(null, displayTab);
+            $node.CFW_transition(null, complete);
 
             $prevActive.removeClass('in');
+        },
+
+        dispose : function() {
+            this.$element
+                .off('.cfw.tab')
+                .removeData('cfw.tab');
+
+            this.$element = null;
+            this.$target = null;
+            this.$navElm = null;
+            this.settings = null;
+
         }
     };
 

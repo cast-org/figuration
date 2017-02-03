@@ -12,6 +12,9 @@
         var $scope = $(this);
         if (!$scope) { $scope = $(document.body); }
 
+        $('[data-cfw-dismisss="alert"]', $scope).each(function() {
+            $(this).CFW_Alert();
+        });
         $('[data-cfw^="button"]', $scope).each(function() {
             $(this).CFW_Button();
         });

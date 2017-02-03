@@ -9,9 +9,14 @@
     'use strict';
 
     var CFW_Widget_Tooltip = function(element, options) {
-        this.$triggerElm = null;
+        this.$element = null;
+        this.$target = null;
+        this.$viewport = null;
+        this.$arrow = null;
+        this.$focusLast = null;
+        this.instance = null;
+        this.settings = null;
         this.dataToggle = null;
-        this.$targetElm = null;
         this.type = null;
         this.eventTypes = null;
         this.delayTimer = null;
@@ -22,7 +27,6 @@
         this.hoverState = null;
         this.inState = null;
         this.dynamicTip = false;
-        this.$focusLast = null;
         this.flags = {
             keyShift: false,
             keyTab : false
@@ -50,21 +54,21 @@
         title           : '',               // Title text/html to be inserted
         activate        : false,            // Auto show after init
         unlink          : false,            // If on hide to remove events and attributes from tooltip and trigger
-        destroy         : false,            // If on hide to unlink, then remove tooltip from DOM
+        dispose         : false,            // If on hide to unlink, then remove tooltip from DOM
         template        : '<div class="tooltip"><div class="tooltip-inner"></div><div class="tooltip-arrow"></div></div>'
     };
 
     CFW_Widget_Tooltip.prototype = {
         _init : function(type, element, options) {
             this.type = type;
-            this.$triggerElm = $(element);
+            this.$element = $(element);
             this.settings = this.getSettings(options);
 
-            this.$viewport = this.settings.viewport && $($.isFunction(this.settings.viewport) ? this.settings.viewport.call(this, this.$triggerElm) : (this.settings.viewport.selector || this.settings.viewport));
+            this.$viewport = this.settings.viewport && $($.isFunction(this.settings.viewport) ? this.settings.viewport.call(this, this.$element) : (this.settings.viewport.selector || this.settings.viewport));
 
             this.inState = { click: false, hover: false, focus: false };
 
-            this.$triggerElm.attr('data-cfw', this.type);
+            this.$element.attr('data-cfw', this.type);
 
             // Find target by id/css selector - only pick first one found
             var dataToggle;
@@ -73,12 +77,12 @@
                 dataToggle = this.settings.toggle;
             } else {
                 // If not found by selector - find by 'toggle' data
-                dataToggle = this.$triggerElm.attr('data-cfw-' + this.type + '-toggle');
+                dataToggle = this.$element.attr('data-cfw-' + this.type + '-toggle');
                 $findTarget = $('[data-cfw-' + this.type + '-target="' + dataToggle + '"]');
             }
             if ($findTarget.length) {
                 this.dataToggle = dataToggle;
-                this.$targetElm = $findTarget;
+                this.$target = $findTarget;
             } else {
                 this.fixTitle();
             }
@@ -91,8 +95,8 @@
             this.eventTypes = this.settings.trigger.split(' ');
             this.bindTip(true);
 
-            if (this.$targetElm) {
-                this.$targetElm.data('cfw.' + this.type, this);
+            if (this.$target) {
+                this.$target.data('cfw.' + this.type, this);
             }
 
             if (this.settings.activate) {
@@ -100,7 +104,7 @@
                 this.show();
             }
 
-            this.$triggerElm.CFW_trigger('init.cfw.' + this.type);
+            this.$element.CFW_trigger('init.cfw.' + this.type);
         },
 
         getDefaults: function() {
@@ -108,7 +112,7 @@
         },
 
         getSettings : function(options) {
-            var parsedData = this.$triggerElm.CFW_parseData(this.type, this.getDefaults());
+            var parsedData = this.$element.CFW_parseData(this.type, this.getDefaults());
             var settings = $.extend({}, this.getDefaults(), parsedData, options);
             if (settings.delay && typeof settings.delay == 'number') {
                 settings.delay = {
@@ -125,7 +129,7 @@
         },
 
         fixTitle : function() {
-            var $e = this.$triggerElm;
+            var $e = this.$element;
             if ($e.attr('title') || typeof($e.attr('data-cfw-' + this.type +  '-original-title')) != 'string') {
                 $e.attr('data-cfw-' + this.type +  '-original-title', $e.attr('title') || '').attr('title', '');
             }
@@ -133,7 +137,7 @@
 
         getTitle : function() {
             var title;
-            var $e = this.$triggerElm;
+            var $e = this.$element;
             var s = this.settings;
 
             title = (typeof s.title == 'function' ? s.title.call($e[0]) :  s.title) || $e.attr('data-cfw-' + this.type +  '-original-title');
@@ -142,7 +146,7 @@
         },
 
         setContent : function() {
-            var $tip = this.$targetElm;
+            var $tip = this.$target;
             var $inner = $tip.find('.tooltip-inner');
 
             if (!this.dataToggle) {
@@ -160,11 +164,11 @@
 
         linkTip : function() {
             // Check for presence of trigger and target ids - set if not present
-            this.triggerID = this.$triggerElm.CFW_getID('cfw-' + this.type);
-            this.targetID = this.$targetElm.CFW_getID('cfw-' + this.type);
+            this.instance = this.$element.CFW_getID('cfw-' + this.type);
+            this.targetID = this.$target.CFW_getID('cfw-' + this.type);
 
             // Set ARIA attributes on target
-            this.$targetElm.attr({
+            this.$target.attr({
                 'role': (this.type == 'tooltip' ? 'tooltip' : (this.settings.follow ? 'dialog' : 'tooltip')),
                 'aria-hidden': 'true',
                 'tabindex': -1
@@ -178,16 +182,16 @@
                 var eventType = this.eventTypes[i];
                 if (eventType == 'click') {
                     // Click events
-                    this.$triggerElm
+                    this.$element
                         .off('click.cfw.' + this.type)
                         .on('click.cfw.' + this.type, $.proxy(this.toggle, this));
 
                     // Inject close button
-                    if (this.$targetElm != null && !this.closeAdded) {
+                    if (this.$target != null && !this.closeAdded) {
                         // Check for pre-existing close buttons
-                        if (!this.$targetElm.find('[data-cfw-dismiss="' + this.type +  '"]').length) {
+                        if (!this.$target.find('[data-cfw-dismiss="' + this.type +  '"]').length) {
                             var $close = $('<button type="button" class="close" data-cfw-dismiss="' + this.type +  '" aria-label="' + this.settings.closesrtext + '">' + this.settings.closetext + '</button>');
-                            $close.prependTo(this.$targetElm);
+                            $close.prependTo(this.$target);
                             this.closeAdded = true;
                         }
                     }
@@ -197,26 +201,26 @@
                     var eventOut = (eventType == 'hover') ? 'mouseleave' : 'focusout';
 
                     if (modeInit) {
-                        this.$triggerElm.on(eventIn  + '.cfw.' + this.type, $.proxy(this.enter, this));
-                        this.$triggerElm.on(eventOut + '.cfw.' + this.type, $.proxy(this.leave, this));
+                        this.$element.on(eventIn  + '.cfw.' + this.type, $.proxy(this.enter, this));
+                        this.$element.on(eventOut + '.cfw.' + this.type, $.proxy(this.leave, this));
                     } else {
-                        this.$targetElm.off('.cfw.' + this.type);
-                        this.$targetElm.on(eventIn  + '.cfw.' + this.type, $.proxy(this.enter, this));
-                        this.$targetElm.on(eventOut + '.cfw.' + this.type, $.proxy(this.leave, this));
+                        this.$target.off('.cfw.' + this.type);
+                        this.$target.on(eventIn  + '.cfw.' + this.type, $.proxy(this.enter, this));
+                        this.$target.on(eventOut + '.cfw.' + this.type, $.proxy(this.leave, this));
                     }
                 }
             }
 
-            if (this.$targetElm) {
+            if (this.$target) {
                 // Key handling for closing
-                this.$targetElm.off('keydown.cfw.' + this.type + '.close')
+                this.$target.off('keydown.cfw.' + this.type + '.close')
                     .on('keydown.cfw.' + this.type + '.close', function(e) {
                         var code = e.charCode || e.which;
                         if (code && code == 27) {// if ESC is pressed
                             e.stopPropagation();
                             // Click the close button if it exists otherwise force tooltip closed
-                            if ($('.close', $selfRef.$targetElm).length > 0) {
-                                $('.close', $selfRef.$targetElm).eq(0).trigger('click');
+                            if ($('.close', $selfRef.$target).length > 0) {
+                                $('.close', $selfRef.$target).eq(0).trigger('click');
                             } else {
                                 $selfRef.hide(true);
                             }
@@ -224,12 +228,12 @@
                     });
 
                 // Bind 'close' buttons
-                this.$targetElm.off('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]')
+                this.$target.off('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]')
                     .on('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]', function(e) {
                         $selfRef.toggle(e);
                     });
                 // Hide tooltips on modal close
-                this.$triggerElm.closest('.modal')
+                this.$element.closest('.modal')
                     .off('beforeHide.cfw.modal')
                     .on('beforeHide.cfw.modal', function() {
                         $selfRef.hide(true);
@@ -245,7 +249,7 @@
                 this.settings.follow = true;
             }
 
-            if (this.$targetElm && this.$targetElm.hasClass('in')) {
+            if (this.$target && this.$target.hasClass('in')) {
                 var holdDelay = this.settings.delay.hide;
                 this.settings.delay.hide = 0;
                 this.hide();
@@ -260,7 +264,7 @@
                 this.inState[e.type == 'focusin' ? 'focus' : 'hover'] = true;
             }
 
-            if ((this.$targetElm && this.$targetElm.hasClass('in')) || this.hoverState == 'in') {
+            if ((this.$target && this.$target.hasClass('in')) || this.hoverState == 'in') {
                 this.hoverState = 'in';
                 return;
             }
@@ -287,7 +291,6 @@
             clearTimeout(this.delayTimer);
 
             this.hoverState = 'out';
-
             if (!this.settings.delay.hide) { return this.hide(); }
 
             var $selfRef = this;
@@ -302,11 +305,11 @@
 
             // Bail if transition in progress or already shown
             if (this.inTransition) { return; }
-            if (this.$targetElm && this.$targetElm.hasClass('in')) { return; }
+            if (this.$target && this.$target.hasClass('in')) { return; }
 
             if (!this.activate) {
                 // Start show transition
-                if (!this.$triggerElm.CFW_trigger('beforeShow.cfw.' + this.type)) {
+                if (!this.$element.CFW_trigger('beforeShow.cfw.' + this.type)) {
                     return;
                 }
             }
@@ -314,29 +317,29 @@
             this.inTransition = 1;
 
             // Create/link the tooltip container
-            if (!this.$targetElm) {
-                var targetElm = this.createTip();
-                if (targetElm.length <= 0) { return false; }
+            if (!this.$target) {
+                var target = this.createTip();
+                if (target.length <= 0) { return false; }
                 this.dynamicTip = true;
-                this.$targetElm = targetElm;
+                this.$target = target;
             }
-            if (this.$targetElm.length != 1) {
+            if (this.$target.length != 1) {
                 throw new Error(this.type + ' `template` option must consist of exactly 1 top-level element!');
             }
             this.linkTip();
             this.bindTip(false);
             this.setContent();
 
-            if (this.settings.animate) { this.$targetElm.addClass('fade'); }
+            if (this.settings.animate) { this.$target.addClass('fade'); }
 
             this.locateTip();
 
             // Additional tab/focus handlers for non-inline items
             if (this.settings.container) {
-                this.$triggerElm
+                this.$element
                     .off('focusin.cfw.' + this.type + '.focusStart')
                     .on('focusin.cfw.' + this.type + '.focusStart', function(e) {
-                        if ($selfRef.$targetElm.hasClass('in')) {
+                        if ($selfRef.$target.hasClass('in')) {
                             // Check related target and move to start or end of popover
                             var selectables = $selfRef._tabItems();
                             var prevIndex = selectables.length - 1;
@@ -347,32 +350,31 @@
                                 $prevNode = null;
                             }
                             if ($prevNode && $prevNode.length === 1) {
-                                var currIndex = selectables.index($selfRef.$triggerElm);
+                                var currIndex = selectables.index($selfRef.$element);
                                 prevIndex = selectables.index($prevNode);
                                 if (currIndex < prevIndex) {
-                                    var tipSels = $selfRef._tabItems($selfRef.$targetElm);
+                                    var tipSels = $selfRef._tabItems($selfRef.$target);
 
                                     var selsIndex = tipSels.length - 2;
                                     tipSels.eq(selsIndex).trigger('focus');
                                 } else {
-                                    $selfRef.$targetElm.trigger('focus');
+                                    $selfRef.$target.trigger('focus');
                                 }
                             } else {
-                                $selfRef.$targetElm.trigger('focus');
+                                $selfRef.$target.trigger('focus');
                             }
                         }
                     });
-                this.$targetElm
-                    .off('keydown.cfw.' + this.type + '.tabmove')
-                    .on('keydown.cfw.' + this.type + '.tabmove', function(e) {
+                this.$target
+                    .off('keydown.cfw.' + this.type)
+                    .on('keydown.cfw.' + this.type, function(e) {
                         if (e.which == 9) {
                             $selfRef.flags.keyTab = true;
                             if (e.shiftKey) { $selfRef.flags.keyShift = true; }
                         }
-                    });
-                this.$targetElm
-                    .off('keyup.cfw.' + this.type + '.tabmove')
-                    .on('keyup.cfw.' + this.type + '.tabmove', function(e) {
+                    })
+                    .off('keyup.cfw.' + this.type)
+                    .on('keyup.cfw.' + this.type, function(e) {
                         if (e.which == 9) {
                             $selfRef.flags.keyTab = false;
                             $selfRef.flags.keyShift = false;
@@ -385,32 +387,32 @@
                     this.$focusLast = $(document.createElement('span'))
                     .addClass(this.type + '-focuslast')
                     .attr('tabindex', 0)
-                    .appendTo(this.$targetElm);
+                    .appendTo(this.$target);
                 }
                 if (this.$focusLast) {
                     this.$focusLast
                         .off('focusin.cfw.' + this.type + '.focusLast')
                         .on('focusin.cfw.' + this.type + '.focusLast', function(e) {
                             // Bypass this item if coming from outside of tip
-                            if ($selfRef.$targetElm[0] !== e.relatedTarget && !$selfRef.$targetElm.has(e.relatedTarget).length) {
+                            if ($selfRef.$target[0] !== e.relatedTarget && !$selfRef.$target.has(e.relatedTarget).length) {
                                 e.preventDefault();
                                 return;
                             }
-                            $selfRef._tabNext($selfRef.$triggerElm[0]);
+                            $selfRef._tabNext($selfRef.$element[0]);
                         });
                 }
-                this.$targetElm
-                    .off('focusout.cfw.' + this.type + '.tabmove')
-                    .on('focusout.cfw.' + this.type + '.tabmove', function() {
+                this.$target
+                    .off('focusout.cfw.' + this.type)
+                    .on('focusout.cfw.' + this.type, function() {
                         $(document)
-                            .off('focusin.cfw.' + this.type + '.tabmove')
-                            .one('focusin.cfw.' + this.type + '.tabmove', function(e) {
-                                if (document !== e.target && $selfRef.$targetElm[0] !== e.target && !$selfRef.$targetElm.has(e.target).length) {
+                            .off('focusin.cfw.' + this.type + '.' + this.instance)
+                            .one('focusin.cfw.' + this.type + '.' + this.instance, function(e) {
+                                if (document !== e.target && $selfRef.$target[0] !== e.target && !$selfRef.$target.has(e.target).length) {
                                     if ($selfRef.flags.keyTab) {
                                         if ($selfRef.flags.keyShift) {
-                                            $selfRef._tabPrev($selfRef.$triggerElm[0]);
+                                            $selfRef._tabPrev($selfRef.$element[0]);
                                         } else {
-                                            $selfRef._tabNext($selfRef.$triggerElm[0]);
+                                            $selfRef._tabNext($selfRef.$element[0]);
                                         }
                                     }
                                     // Reset flags
@@ -423,17 +425,14 @@
                     });
             }
 
-            this.$targetElm.CFW_transition(null, $.proxy(this._showComplete, this));
+            this.$target.CFW_transition(null, $.proxy(this._showComplete, this));
         },
 
         hide : function(force) {
             clearTimeout(this.delayTimer);
 
             // Handle delayed show and target not created
-            if (!this.$targetElm) { return; }
-
-            // Bail if transition in progress or already hidden
-            if (this.inTransition || !this.$targetElm.hasClass('in')) { return; }
+            if (!this.$target) { return; }
 
             if (force === undefined) { force = false; }
             if (force) {
@@ -441,26 +440,17 @@
                 return;
             }
 
+            // Bail if transition in progress or already hidden
+            if (this.inTransition || !this.$target.hasClass('in')) { return; }
+
             // Start hide transition
-            if (!this.$triggerElm.CFW_trigger('beforeHide.cfw.' + this.type)) {
+            if (!this.$element.CFW_trigger('beforeHide.cfw.' + this.type)) {
                 return;
             }
 
             this.inTransition = 1;
 
-            this.$triggerElm
-                .off('.cfw.' + this.type + '.focusStart')
-                .off('.cfw.modal')
-                .removeAttr('aria-describedby');
-            this.$targetElm
-                .off('.cfw.' + this.type)
-                .removeClass('in');
-            if (this.$focusLast) {
-                this.$focusLast.off('.cfw.' + this.type + '.focusLast');
-            }
-            $(document).off('.cfw.' + this.type + '.tabmove');
-
-            this.$targetElm.CFW_transition(null, $.proxy(this._hideComplete, this));
+            this.$target.CFW_transition(null, $.proxy(this._hideComplete, this));
 
             this.hoverState = null;
         },
@@ -468,14 +458,13 @@
         unlink : function(force) {
             var $selfRef = this;
             if (force === undefined) { force = false; }
-
             clearTimeout(this.delayTimer);
 
-            this.$triggerElm.CFW_trigger('beforeUnlink.cfw.' + this.type);
+            this.$element.CFW_trigger('beforeUnlink.cfw.' + this.type);
             this.unlinking = true;
 
-            if (this.$targetElm && this.$targetElm.hasClass('in')) {
-                this.$triggerElm.one('afterHide.cfw.' + this.type, function() {
+            if (this.$target && this.$target.hasClass('in')) {
+                this.$element.one('afterHide.cfw.' + this.type, function() {
                     $selfRef.unlinkComplete();
                 });
                 this.hide(force);
@@ -485,36 +474,64 @@
         },
 
         unlinkComplete : function() {
-            if (this.$targetElm) {
-                this.$targetElm.off('.cfw.' + this.type)
+            if (this.$target) {
+                this.$target.off('.cfw.' + this.type)
                     .removeData('cfw.' + this.type);
             }
-            this.$triggerElm.off('.cfw.' + this.type)
+            this.$element.off('.cfw.' + this.type)
                 .off('.cfw.modal')
                 .removeAttr('data-cfw')
                 .removeData('cfw.' + this.type);
             this.unlinking = false;
-            this.$triggerElm.CFW_trigger('afterUnlink.cfw.' + this.type);
+            this.$element.CFW_trigger('afterUnlink.cfw.' + this.type);
         },
 
-        destroy : function() {
+        dispose : function() {
             var $selfRef = this;
-            $(document).one('afterUnlink.cfw.' + this.type, this.$triggerElm, function() {
-                if ($selfRef.$targetElm !== null) {
-                    $selfRef.$targetElm.remove();
+            $(document).one('afterUnlink.cfw.' + this.type, this.$element, function() {
+                if ($selfRef.$target !== null) {
+                    $selfRef.$target.removeData('cfw.' + $selfRef.type).remove();
                 }
-                $selfRef.$triggerElm.CFW_trigger('destroy.cfw.' + $selfRef.type);
+                $selfRef.$element.CFW_trigger('dispose.cfw.' + $selfRef.type);
+
+                $selfRef.$element.removeData('cfw.' + $selfRef.type);
+
+
+                $selfRef.$element = null;
+                $selfRef.$target = null;
+                $selfRef.$viewport = null;
+                $selfRef.$arrow = null;
+                $selfRef.$focusLast = null;
+                // $selfRef.settings = null; (throws error ???)
+                $selfRef.dataToggle = null;
+                $selfRef.type = null;
+                $selfRef.eventTypes = null;
+                $selfRef.delayTimer = null;
+                $selfRef.inTransition = null;
+                $selfRef.closeAdded = null;
+                $selfRef.unlinking = null;
+                $selfRef.activate = null;
+                $selfRef.hoverState = null;
+                $selfRef.inState = null;
+                $selfRef.dynamicTip = null;
+                $selfRef.flags = {
+                    keyShift: null,
+                    keyTab : null
+                };
+
+
+                $selfRef._disposeExt();
             });
             this.unlink(true);
+        },
 
-            this.$arrow = null;
-            this.$viewport = null;
-            this.$targetElm = null;
-            this.$triggerElm = null;
+        _disposeExt : function() {
+            // dispose extend
+            return;
         },
 
         locateTip : function() {
-            var $tip = this.$targetElm;
+            var $tip = this.$target;
 
             $tip.removeClass('top left bottom right');
 
@@ -522,14 +539,14 @@
                 .css({ top: 0, left: 0, display: 'block' });
 
             var placement = typeof this.settings.placement == 'function' ?
-                this.settings.placement.call(this, this.$targetElm[0], this.$triggerElm[0]) :
+                this.settings.placement.call(this, this.$target[0], this.$element[0]) :
                 this.settings.placement;
 
             if (typeof placement == 'object') {
                 // Custom placement
                 this.settings.container = 'body';
                 $tip.appendTo(this.settings.container);
-                this.$triggerElm.CFW_trigger('inserted.cfw.' + this.type);
+                this.$element.CFW_trigger('inserted.cfw.' + this.type);
                 $tip.offset(placement);
                 $tip.addClass('in');
             } else {
@@ -546,9 +563,9 @@
                 if (this.settings.container) {
                     $tip.appendTo(this.settings.container);
                 } else {
-                    $tip.insertAfter(this.$triggerElm);
+                    $tip.insertAfter(this.$element);
                 }
-                this.$triggerElm.CFW_trigger('inserted.cfw.' + this.type);
+                this.$element.CFW_trigger('inserted.cfw.' + this.type);
 
                 var pos          = this._getPosition();
                 var actualWidth  = $tip[0].offsetWidth;
@@ -581,23 +598,23 @@
             var prevHoverState = this.hoverState;
             this.hoverState = null;
 
-            // this.$targetElm.addClass('in')
-            this.$targetElm.removeAttr('aria-hidden');
+            // this.$target.addClass('in')
+            this.$target.removeAttr('aria-hidden');
             this.inTransition = 0;
             if (this.settings.follow) {
-                this.$targetElm.trigger('focus');
+                this.$target.trigger('focus');
             }
 
             // Delay to keep NVDA (and other screen readers?) from reading dialog header twice
             setTimeout(function() {
-                // Handle case of immediate destroy after show
-                if ($selfRef.$triggerElm) {
-                    $selfRef.$triggerElm.attr('aria-describedby', $selfRef.targetID);
+                // Handle case of immediate dispose after show
+                if ($selfRef.$element) {
+                    $selfRef.$element.attr('aria-describedby', $selfRef.targetID);
                 }
             }, 25);
 
             if (!this.activate) {
-                this.$triggerElm.CFW_trigger('afterShow.cfw.' + this.type);
+                this.$element.CFW_trigger('afterShow.cfw.' + this.type);
             }
             this.activate = false;
 
@@ -605,7 +622,19 @@
         },
 
         _hideComplete : function() {
-            this.$targetElm.removeClass('in')
+            this.$element
+                .off('.cfw.' + this.type + '.focusStart')
+                .off('.cfw.modal')
+                .removeAttr('aria-describedby');
+            this.$target
+                .off('.cfw.' + this.type)
+                .removeClass('in');
+            if (this.$focusLast) {
+                this.$focusLast.off('.cfw.' + this.type + '.focusLast');
+            }
+            $(document).off('.cfw.' + this.type + '.' + this.instance);
+
+            this.$target.removeClass('in')
                 .css('display', 'none')
                 .attr({
                     'aria-hidden': 'true',
@@ -614,8 +643,8 @@
 
             this.inTransition = 0;
             if (this.settings.follow) {
-                this.$targetElm.attr('tabindex', -1);
-                this.$triggerElm.trigger('focus');
+                this.$target.attr('tabindex', -1);
+                this.$element.trigger('focus');
             }
             this.settings.follow = false;
 
@@ -624,24 +653,24 @@
                 this._removeDynamicTip();
             }
 
-            this.$triggerElm.CFW_trigger('afterHide.cfw.' + this.type);
+            this.$element.CFW_trigger('afterHide.cfw.' + this.type);
 
             if (!this.unlinking) {
                 if (this.settings.unlink) { this.unlink(); }
-                if (this.settings.destroy) { this.destroy(); }
+                if (this.settings.dispose) { this.dispose(); }
             }
         },
 
         _removeDynamicTip : function() {
-            this.$targetElm.detach();
+            this.$target.detach();
             this.dynamicTip = false;
             this.closeAdded = false;
             this.$arrow = null;
-            this.$targetElm = null;
+            this.$target = null;
         },
 
         _getPosition : function($element) {
-            $element   = $element || this.$triggerElm;
+            $element   = $element || this.$element;
 
             var el     = $element[0];
             var isBody = el.tagName == 'BODY';
@@ -672,7 +701,7 @@
         },
 
         _applyPlacement : function(offset, placement) {
-            var $tip   = this.$targetElm;
+            var $tip   = this.$target;
             var width  = $tip[0].offsetWidth;
             var height = $tip[0].offsetHeight;
 
@@ -731,7 +760,7 @@
                 elRect = $.extend({}, elRect, { width: elRect.right - elRect.left, height: elRect.bottom - elRect.top });
             }
 
-            if ($viewport.is('body') && (/fixed|absolute/).test(this.$triggerElm.css('position'))) {
+            if ($viewport.is('body') && (/fixed|absolute/).test(this.$element.css('position'))) {
                 // fixed and absolute elements should be tested against the window
                 return $.extend({}, elRect, this.getScreenSpaceBounds($viewport));
             }
@@ -789,7 +818,7 @@
 
         _arrow : function() {
             if (!this.$arrow) {
-                this.$arrow = this.$targetElm.find('.tooltip-arrow');
+                this.$arrow = this.$target.find('.tooltip-arrow');
             }
             return this.$arrow;
         },
@@ -886,7 +915,7 @@
             var data = $this.data('cfw.tooltip');
             var options = typeof option === 'object' && option;
 
-            if (!data && /unlink|destroy|hide/.test(option)) {
+            if (!data && /unlink|dispose|hide/.test(option)) {
                 return false;
             }
             if (!data) {

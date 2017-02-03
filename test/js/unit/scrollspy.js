@@ -51,7 +51,7 @@ $(function() {
         var $scrollspy = $section
             .show()
             .find('#scrollspy-example')
-            .CFW_Scrollspy({ target: '#ss-target' });
+            .CFW_Scrollspy({ target: '#ss-target', throttle: 0 });
 
         $scrollspy.on('scroll.cfw.scrollspy', function() {
             assert.ok($section.hasClass('active'), '"active" class still on root node');
@@ -83,7 +83,7 @@ $(function() {
             .show()
             .filter('#content');
 
-        $scrollspy.CFW_Scrollspy({ target: '#navigation', offset: $scrollspy.position().top });
+        $scrollspy.CFW_Scrollspy({ target: '#navigation', offset: $scrollspy.position().top, throttle: 0 });
 
         $scrollspy.on('scroll.cfw.scrollspy', function() {
             assert.ok(!$section.find('#a-1').hasClass('active'), '"active" class removed from first section');
@@ -95,13 +95,77 @@ $(function() {
         $scrollspy.scrollTop(550);
     });
 
-    QUnit.test('should add the active class to the correct element', function(assert) {
+    QUnit.test('should add the active class to the correct element (ul markup)', function(assert) {
         assert.expect(2);
-        var navbarHtml = '<nav class="navbar">'
-            + '<ul class="nav">'
+        var navbarHtml = '<ul>'
             + '<li><a href="#div-1" id="a-1">div 1</a></li>'
             + '<li><a href="#div-2" id="a-2">div 2</a></li>'
-            + '</ul>'
+            + '</ul>';
+        var contentHtml = '<div class="content" style="overflow: auto; height: 50px">'
+            + '<div id="div-1" style="height: 100px; padding: 0; margin: 0">div 1</div>'
+            + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+            + '</div>';
+
+        $(navbarHtml).appendTo('#qunit-fixture');
+        var $content = $(contentHtml)
+            .appendTo('#qunit-fixture')
+            .CFW_Scrollspy({ target: 'ul', offset: 0, throttle: 0 });
+
+        var testElementIsActiveAfterScroll = function(element, target) {
+            var deferred = $.Deferred();
+            var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top);
+            $content.one('scroll', function() {
+                assert.ok($(element).hasClass('active'), 'target:' + target + ', element' + element);
+                deferred.resolve();
+            });
+            $content.scrollTop(scrollHeight);
+            return deferred.promise();
+        };
+
+        var done = assert.async();
+        $.when(testElementIsActiveAfterScroll('#a-1', '#div-1'))
+            .then(function() { return testElementIsActiveAfterScroll('#a-2', '#div-2'); })
+            .then(function() { done(); });
+    });
+
+    QUnit.test('should add the active class to the correct element (ol markup)', function(assert) {
+        assert.expect(2);
+        var navbarHtml = '<ol>'
+            + '<li><a href="#div-1" id="a-1">div 1</a></li>'
+            + '<li><a href="#div-2" id="a-2">div 2</a></li>'
+            + '</ol>';
+        var contentHtml = '<div class="content" style="overflow: auto; height: 50px">'
+            + '<div id="div-1" style="height: 100px; padding: 0; margin: 0">div 1</div>'
+            + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+            + '</div>';
+
+        $(navbarHtml).appendTo('#qunit-fixture');
+        var $content = $(contentHtml)
+            .appendTo('#qunit-fixture')
+            .CFW_Scrollspy({ target: 'ol', offset: 0, throttle: 0 });
+
+        var testElementIsActiveAfterScroll = function(element, target) {
+            var deferred = $.Deferred();
+            var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top);
+            $content.one('scroll', function() {
+                assert.ok($(element).hasClass('active'), 'target:' + target + ', element' + element);
+                deferred.resolve();
+            });
+            $content.scrollTop(scrollHeight);
+            return deferred.promise();
+        };
+
+        var done = assert.async();
+        $.when(testElementIsActiveAfterScroll('#a-1', '#div-1'))
+            .then(function() { return testElementIsActiveAfterScroll('#a-2', '#div-2'); })
+            .then(function() { done(); });
+    });
+
+    QUnit.test('should add the active class to the correct element (nav markup)', function(assert) {
+        assert.expect(2);
+        var navbarHtml = '<nav>'
+            + '<a href="#div-1" id="a-1">div 1</a>'
+            + '<a href="#div-2" id="a-2">div 2</a>'
             + '</nav>';
         var contentHtml = '<div class="content" style="overflow: auto; height: 50px">'
             + '<div id="div-1" style="height: 100px; padding: 0; margin: 0">div 1</div>'
@@ -111,7 +175,7 @@ $(function() {
         $(navbarHtml).appendTo('#qunit-fixture');
         var $content = $(contentHtml)
             .appendTo('#qunit-fixture')
-            .CFW_Scrollspy({ offset: 0, target: '.navbar' });
+            .CFW_Scrollspy({ target: 'nav', offset: 0, throttle: 0 });
 
         var testElementIsActiveAfterScroll = function(element, target) {
             var deferred = $.Deferred();
@@ -154,7 +218,7 @@ $(function() {
 
         var $content = $(contentHtml)
             .appendTo('#qunit-fixture')
-            .CFW_Scrollspy({ offset: 0, target: '#navigation' });
+            .CFW_Scrollspy({ target: '#navigation', offset: 0, throttle: 0 });
 
         !function testActiveElements() {
             if (++times > 3) return done();
@@ -167,6 +231,88 @@ $(function() {
 
             $content.scrollTop($content.scrollTop() + 10);
         }();
+    });
+
+    QUnit.test('should add the active class correctly when there are nested elements (list markup)', function(assert) {
+        assert.expect(6);
+        var times = 0;
+        var done = assert.async();
+        var navbarHtml = '<ul id="navigation">'
+            + '<li>'
+            + '<a id="a-1" class="nav-link" href="#div-1">div 1</a>'
+            + '<ol class="nav">'
+            + '<li>'
+            + '<a id="a-2" class="nav-link" href="#div-2">div 2</a>'
+            + '</li>'
+            + '</ol>'
+            + '</li>'
+            + '</ul>';
+
+        var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">'
+            + '<div id="div-1" style="padding: 0; margin: 0">'
+            + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+            + '</div>'
+            + '</div>';
+
+        $(navbarHtml).appendTo('#qunit-fixture');
+
+        var $content = $(contentHtml)
+            .appendTo('#qunit-fixture')
+            .CFW_Scrollspy({ offset: 0, target: '#navigation' });
+
+        function testActiveElements() {
+            if (++times > 3) { return done(); }
+
+            $content.one('scroll', function() {
+                assert.ok($('#a-1').hasClass('active'), 'nav item for outer element has "active" class');
+                assert.ok($('#a-2').hasClass('active'), 'nav item for inner element has "active" class');
+                testActiveElements();
+            });
+
+            $content.scrollTop($content.scrollTop() + 10);
+        }
+
+        testActiveElements();
+    });
+
+    QUnit.test('should add the active class correctly when there are nested elements (nav markup)', function(assert) {
+        assert.expect(6);
+        var times = 0;
+        var done = assert.async();
+        var navbarHtml = '<nav id="navigation">'
+            + '<nav>'
+            + '<a id="a-1" class="nav-link" href="#div-1">div 1</a>'
+            + '<nav>'
+            + '<a id="a-2" class="nav-link" href="#div-2">div 2</a>'
+            + '</nav>'
+            + '</nav>'
+            + '</nav>';
+
+        var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">'
+            + '<div id="div-1" style="padding: 0; margin: 0">'
+            + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+            + '</div>'
+            + '</div>';
+
+        $(navbarHtml).appendTo('#qunit-fixture');
+
+        var $content = $(contentHtml)
+            .appendTo('#qunit-fixture')
+            .CFW_Scrollspy({ offset: 0, target: '#navigation' });
+
+        function testActiveElements() {
+            if (++times > 3) { return done(); }
+
+            $content.one('scroll', function() {
+                assert.ok($('#a-1').hasClass('active'), 'nav item for outer element has "active" class');
+                assert.ok($('#a-2').hasClass('active'), 'nav item for inner element has "active" class');
+                testActiveElements();
+            });
+
+            $content.scrollTop($content.scrollTop() + 10);
+        }
+
+        testActiveElements();
     });
 
     QUnit.test('should clear selection if above the first section', function(assert) {
@@ -195,7 +341,8 @@ $(function() {
         $scrollspy
             .CFW_Scrollspy({
                 target: '#navigation',
-                offset: $scrollspy.position().top
+                offset: $scrollspy.position().top,
+                throttle: 0
             })
             .one('scroll.cfw.scrollspy', function() {
                 assert.strictEqual($('.active').length, 1, '"active" class on only one element present');
@@ -239,7 +386,8 @@ $(function() {
         $scrollspy
             .CFW_Scrollspy({
                 target: '#navigation',
-                offset: $scrollspy.position().top
+                offset: $scrollspy.position().top,
+                throttle: 0
             })
             .one('scroll.cfw.scrollspy', function() {
                 assert.strictEqual($('.active').length, 1, '"active" class on only one element present');
@@ -277,7 +425,7 @@ $(function() {
         $(navbarHtml).appendTo('#qunit-fixture');
         var $content = $(contentHtml)
             .appendTo('#qunit-fixture')
-            .CFW_Scrollspy({ offset: 0, target: '.navbar' });
+            .CFW_Scrollspy({ target: '.navbar', offset: 0, throttle: 0 });
 
         var testElementIsActiveAfterScroll = function(element, target) {
             var deferred = $.Deferred();

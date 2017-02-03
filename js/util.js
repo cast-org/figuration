@@ -161,7 +161,7 @@
 
     $.fn.CFW_throttle = function(fn, threshhold, scope) {
         /* From: http://remysharp.com/2010/07/21/throttling-function-calls/ */
-        threshhold || (threshhold = 250);
+        if (threshhold === undefined) { threshhold = 250; }
         var last;
         var deferTimer;
         return function() {

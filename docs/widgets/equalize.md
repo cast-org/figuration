@@ -237,6 +237,11 @@ $('#myContainer').CFW_Equalize({
 
 Update the container heights. This will also bubble up the DOM to equalize any ancestor equalize widgets in the case of nesting.
 
+#### `.CFW_Equalize('dispose')`
+{:.no_toc}
+
+Remove the data and global event listener for a given instance of equalize.  This does not alter any nested child equalize instances.
+
 ### Events
 
 Event callbacks happen on the parent equalize element.

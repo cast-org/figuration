@@ -5,7 +5,7 @@ subtitle: dropdown.js
 group: widgets
 ---
 
-Add dropdown menus to nearly anything with this widget, including buttons, navbars, tabs, and pills.
+Add a context menu or list of links to a control item.  Support for nested lists is included automatically.  There is also an expand on hover option, even though we recommend that you use the default click to toggle mode for consitent usability across devices.
 
 {% callout warning %}
 #### Incompatible Widgets
@@ -36,7 +36,7 @@ Here is a static example showing the dropdown layout and content pieces.
         <ul class="dropdown-menu">
             <li class="dropdown-header">Sample Header</li>
             <li><a href="#">Action</a></li>
-            <li class="disabled"><a href="#">Disabled action</a></li>
+            <li><a href="#" class="disabled">Disabled action</a></li>
             <li class="dropdown-submenu open">
                 <a href="#">Something else here</a>
                 <ul class="dropdown-menu">
@@ -166,12 +166,12 @@ Separate groups of related menu items with a divider.
 
 ### Disabled Menu Items
 
-Add `.disabled` to the `li` item in the dropdown to **style them as disabled**.
+Add `.disabled` to the `a` item in the dropdown to **style them as disabled**.
 
 {% example html %}
 <ul class="dropdown-menu">
   <li><a href="#">Regular link</a></li>
-  <li class="disabled"><a href="#">Disabled link</a></li>
+  <li><a href="#" class="disabled">Disabled link</a></li>
   <li><a href="#">Another link</a></li>
 </ul>
 {% endexample %}
@@ -189,7 +189,7 @@ Add `.active` to the `li` item in the dropdown to show a visual emphasis.
 {% example html %}
 <ul class="dropdown-menu">
   <li><a href="#">Regular link</a></li>
-  <li class="active"><a href="#">Active link</a></li>
+  <li><a href="#" class="active">Active link</a></li>
   <li><a href="#">Another link</a></li>
 </ul>
 {% endexample %}
@@ -221,7 +221,7 @@ Using the [`backlink` option](#options), you can have 'back' menu items automati
             </ul>
         </li>
         <li class="dropdown-divider"></li>
-        <li class="disabled"><a href="#">Disabled item</a></li>
+        <li><a href="#" class="disabled">Disabled item</a></li>
     </ul>
 </div>
 {% endexample %}
@@ -289,7 +289,7 @@ Add `.dropdown-menu-left` to a `.dropdown-menu` to right align the dropdown menu
             </ul>
         </li>
         <li class="dropdown-divider"></li>
-        <li class="disabled"><a href="#">Disabled link</a></li>
+        <li><a href="#" class="disabled">Disabled link</a></li>
     </ul>
 </div>
 {% endexample %}
@@ -345,7 +345,7 @@ The menu alignment class of `.dropdown-menu-left` will also work with submenu it
             </ul>
         </li>
         <li class="dropdown-divider"></li>
-        <li class="disabled"><a href="#">Separated link</a></li>
+        <li><a href="#" class="disabled">Separated link</a></li>
     </ul>
 </div>
 {% endexample %}
@@ -465,6 +465,11 @@ Shows the root menu element.
 {:.no_toc}
 
 Hides the root menu element.
+
+#### `.CFW_Dropdown('dispose')`
+{:.no_toc}
+
+Hides the root menu element and disconnect all the event listeners and data from the menu items and the trigger element.
 
 ### Events
 
