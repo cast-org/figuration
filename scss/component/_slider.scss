@@ -6,7 +6,6 @@
 
 .slider-track {
     position: absolute;
-    cursor: pointer;
     background-color: $slider-track-bg;
     @include border-radius($slider-track-border-radius);
 
