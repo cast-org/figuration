@@ -300,7 +300,7 @@
 }
 
 // Dropup corner overrides
-&.dropup {
+.dropup {
     &.dropdown-menu-left {
         .dropdown-menu {
             @include border-radius($dropdown-border-radius $dropdown-border-radius $dropdown-attach-border-radius $dropdown-border-radius);

@@ -158,27 +158,27 @@ $spacer:   1rem !default;
 $spacer-x: $spacer !default;
 $spacer-y: $spacer !default;
 $spacers: (
-    0: (
+    "0": (
         x: 0,
         y: 0
     ),
-    0_25: (
+    "0_25": (
         x: ($spacer-x * .25),
         y: ($spacer-y * .25)
     ),
-    0_5: (
+    "0_5": (
         x: ($spacer-x * .5),
         y: ($spacer-y * .5)
     ),
-    1: (
+    "1": (
         x: $spacer-x,
         y: $spacer-y
     ),
-    1_5: (
+    "1_5": (
         x: ($spacer-x * 1.5),
         y: ($spacer-y * 1.5)
     ),
-    2: (
+    "2": (
         x: ($spacer-x * 2),
         y: ($spacer-y * 2)
     )
