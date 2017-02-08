@@ -71,7 +71,7 @@
         margin-left: $nav-item-inline-spacer;
     }
 }
-if $enable-flex-full {
+@if $enable-flex-full {
     .nav-inline {
         flex-flow: row wrap;
     }
