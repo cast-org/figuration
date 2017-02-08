@@ -5038,14 +5038,6 @@ ul.nav-flex:not(.nav-inline):not(.nav-tabs):not(.nav-pills):not(.navbar-nav) {
   margin-left: 1rem;
 }
 
-if $enable-flex-full .nav-inline {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-flow: row wrap;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-}
-
 .nav-flex.nav-inline {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
