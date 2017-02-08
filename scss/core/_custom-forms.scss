@@ -14,7 +14,6 @@
     padding-left: $custom-control-gutter;
     margin-right: $custom-control-spacer-x;
     margin-bottom: 0;
-    cursor: pointer;
 }
 
 .custom-control-input {
@@ -218,7 +217,6 @@
     display: inline-block;
     max-width: 100%;
     height: $select-height;
-    cursor: pointer;
 }
 
 .custom-file-input {
@@ -302,7 +300,6 @@
     font-size: $font-size-base;
     line-height: $input-line-height;
     color: $input-color;
-    cursor: pointer;
     background-color: $input-bg;
     background-image: none;
     background-clip: padding-box;

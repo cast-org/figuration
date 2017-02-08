@@ -130,7 +130,6 @@
     .nav-link.active,
     .nav-item.open .nav-link {
         color: $nav-tabs-active-color;
-        cursor: default;
         background-color: $nav-tabs-active-bg;
         border-color: $nav-tabs-active-border-color $nav-tabs-active-border-color $nav-tabs-active-bg;
     }
@@ -186,7 +185,6 @@
     .nav-link.active,
     .nav-item.open .nav-link {
         color: $nav-pills-active-color;
-        cursor: default;
         background-color: $nav-pills-active-bg;
     }
 }
