@@ -129,12 +129,7 @@
         this.$target.off('.cfw.drag');
 
         this.$target.on('dragStart.cfw.drag', function() {
-            var $viewport;
-            if ($selfRef.$viewport) {
-                $viewport = $selfRef.$viewport;
-            } else {
-                $viewport = $(document.body);
-            }
+            var $viewport = $selfRef.$viewport;
 
             limit = $viewport.offset();
             limit.bottom = limit.top + $viewport.outerHeight() - $(this).outerHeight();
@@ -144,10 +139,7 @@
             $selfRef.$element.CFW_trigger('dragStart.cfw.' + $selfRef.type);
         })
         .on('drag.cfw.drag', function(e) {
-            var viewportPadding = 0;
-            if ($selfRef.$viewport) {
-                viewportPadding = $selfRef.settings.viewport && $selfRef.settings.viewport.padding || 0;
-            }
+            var viewportPadding = $selfRef.settings.padding;
 
             $(this).css({
                 top: Math.min((limit.bottom - viewportPadding), Math.max((limit.top + viewportPadding), e.offsetY)),
@@ -157,7 +149,7 @@
         .on('dragEnd.cfw.drag', function() {
             $selfRef.$element.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
         })
-        .on('keydown.cfw.' + this.type + '.drag', '[data-cfw-drag="' + this.type + '"]', function(e) {
+        .on('keydown.cfw.drag', '[data-cfw-drag="' + this.type + '"]', function(e) {
             if (/(37|38|39|40)/.test(e.which)) {
                 if (e) { e.stopPropagation(); }
 
@@ -167,14 +159,8 @@
 
                 clearTimeout($selfRef.keyTimer);
 
-                var $viewport;
-                var viewportPadding = 0;
-                if ($selfRef.$viewport) {
-                    $viewport = $selfRef.$viewport;
-                    viewportPadding = $selfRef.settings.viewport && $selfRef.settings.viewport.padding || 0;
-                } else {
-                    $viewport = $(document.body);
-                }
+                var $viewport = $selfRef.$viewport;
+                var viewportPadding = $selfRef.settings.padding;
 
                 var $node = $selfRef.$target;
                 var step = $selfRef.settings.dragstep;

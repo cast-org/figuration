@@ -642,16 +642,19 @@ $(window).ready(function() {
                 $('.popover-viewport-right').CFW_Popover({
                     //trigger: 'hover',
                     placement: 'right',
-                    viewport: {selector: '#viewport-popover', padding: 2}
+                    viewport: '#viewport-popover',
+                    padding: 2
                 });
                 $('.popover-viewport-bottom').CFW_Popover({
                     //trigger: 'hover',
                     placement: 'bottom',
-                    viewport: {selector: '#viewport-popover', padding: 2}
+                    viewport: '#viewport-popover',
+                    padding: 2
                 });
                 $('.popover-viewport-drag').CFW_Popover({
                     drag: true,
-                    viewport: {selector: '#viewport-popover', padding: 2}
+                    viewport: '#viewport-popover',
+                    padding: 2
                 });
             </script>
 
@@ -836,14 +839,15 @@ $(window).ready(function() {
             <script type="text/javascript">
                 $('.tooltip-viewport-right').CFW_Tooltip({
                     placement: 'right',
-                    viewport: {selector: '#viewport-tooltip', padding: 2}
+                    viewport: '#viewport-tooltip',
+                    padding: 2
                 });
                 $('.tooltip-viewport-bottom').CFW_Tooltip({
                     placement: 'bottom',
-                    //viewport: {selector: '#viewport-tooltip', padding: 2}
-                    viewport: function ($element) {
+                    viewport: function($element) {
                         return ($element.closest('.container-viewport'));
-                    }
+                    },
+                    padding: 2
                 });
             </script>
 

@@ -366,15 +366,14 @@
                         }
                     });
                 this.$target
-                    .off('keydown.cfw.' + this.type)
-                    .on('keydown.cfw.' + this.type, function(e) {
+                    .off('.cfw.' + this.type + '.keyflag')
+                    .on('keydown.cfw.' + this.type + '.keyflag', function(e) {
                         if (e.which == 9) {
                             $selfRef.flags.keyTab = true;
                             if (e.shiftKey) { $selfRef.flags.keyShift = true; }
                         }
                     })
-                    .off('keyup.cfw.' + this.type)
-                    .on('keyup.cfw.' + this.type, function(e) {
+                    .on('keyup.cfw.' + this.type + '.keyflag', function(e) {
                         if (e.which == 9) {
                             $selfRef.flags.keyTab = false;
                             $selfRef.flags.keyShift = false;
@@ -574,7 +573,7 @@
                 if (autoPlace) {
                     var orgPlacement = placement;
 
-                    var viewportDim = this._getPosition(this.$viewport);
+                    var viewportDim = this.getViewportBounds();
 
                     placement = placement == 'bottom' && pos.bottom + actualHeight > viewportDim.bottom ? 'top'    :
                                 placement == 'top'    && pos.top    - actualHeight < viewportDim.top    ? 'bottom' :
@@ -669,18 +668,16 @@
             this.$target = null;
         },
 
-        _getPosition : function($element) {
-            $element   = $element || this.$element;
-
-            var el     = $element[0];
+        _getPosition : function() {
+            var $element = this.$element;
+            var el = $element[0];
             var isBody = el.tagName == 'BODY';
 
             var elRect = el.getBoundingClientRect();
-
-            if (elRect.width == null) {
-                // width and height are missing in IE8, so compute them manually; see https://github.com/twbs/bootstrap/issues/14093
-                elRect = $.extend({}, elRect, { width: elRect.right - elRect.left, height: elRect.bottom - elRect.top });
-            }
+            elRect = $.extend({}, elRect, {
+                top: elRect.top + window.pageYOffset,
+                left: elRect.left + window.pageXOffset
+            });
 
             var elOffset  = isBody ? { top: 0, left: 0 } : $element.offset();
             // SVG/Chrome issue: https://github.com/jquery/jquery/issues/2895
@@ -709,7 +706,7 @@
             var marginTop = parseInt($tip.css('margin-top'), 10);
             var marginLeft = parseInt($tip.css('margin-left'), 10);
 
-            // we must check for NaN for ie 8/9
+            // we must check for NaN for IE 9
             if (isNaN(marginTop))  marginTop  = 0;
             if (isNaN(marginLeft)) marginLeft = 0;
 
@@ -753,12 +750,9 @@
             this._replaceArrow(arrowDelta, $tip[0][arrowOffsetPosition], isVertical);
         },
 
-        getViewportBounds : function($viewport) {
+        getViewportBounds : function() {
+            var $viewport = this.$viewport;
             var elRect = $viewport[0].getBoundingClientRect();
-            if (elRect.width == null) {
-                // width and height are missing in IE8, so compute them manually; see https://github.com/twbs/bootstrap/issues/14093
-                elRect = $.extend({}, elRect, { width: elRect.right - elRect.left, height: elRect.bottom - elRect.top });
-            }
 
             if ($viewport.is('body') && (/fixed|absolute/).test(this.$element.css('position'))) {
                 // fixed and absolute elements should be tested against the window
@@ -782,12 +776,9 @@
             if (!this.$viewport) return delta;
 
             var viewportPadding = this.settings.padding;
-            // var viewportDimensions = this._getPosition(this.$viewport);
-            var viewportDimensions = this.getViewportBounds(this.$viewport);
+            var viewportDimensions = this.getViewportBounds();
 
             if (/right|left/.test(placement)) {
-                // var topEdgeOffset    = pos.top - viewportPadding - viewportDimensions.scroll;
-                // var bottomEdgeOffset = pos.top + viewportPadding - viewportDimensions.scroll + actualHeight;
                 var topEdgeOffset    = pos.top - viewportPadding;
                 var bottomEdgeOffset = pos.top + viewportPadding + actualHeight;
 
@@ -865,18 +856,6 @@
             var mapName;
             var $img;
             var nodeName = element.nodeName.toLowerCase();
-            // var isTabIndexNotNaN = !isNaN($.attr(element, 'tabindex'));
-
-            // Support: IE 8 only
-            // IE 8 doesn't resolve inherit to visible/hidden for computed values
-            function visible(element) {
-                var visibility = element.css('visibility');
-                while (visibility === 'inherit') {
-                    element = element.parent();
-                    visibility = element.css('visibility');
-                }
-                return visibility !== 'hidden';
-            }
 
             if ('area' === nodeName) {
                 map = element.parentNode;
@@ -893,7 +872,7 @@
                 'a' === nodeName ?
                     element.href || isTabIndexNotNaN :
                     isTabIndexNotNaN) &&
-                $(element).is(':visible') && visible($(element));
+                $(element).is(':visible');
         },
 
         _tabItems : function($node) {
