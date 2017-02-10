@@ -31,7 +31,7 @@
 		"../../../scss/mixins/_cards.scss",
 		"../../../scss/mixins/_forms.scss",
 		"../../../scss/mixins/_lists.scss",
-		"../../../scss/mixins/_nav-divider.scss",
+		"../../../scss/mixins/_divider.scss",
 		"../../../scss/mixins/_pagination.scss",
 		"../../../scss/mixins/_progress.scss",
 		"../../../scss/mixins/_tables.scss",
