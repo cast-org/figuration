@@ -105,7 +105,7 @@ Similarly, the latest versions of most desktop browsers are supported.
 
 For Firefox, in addition to the latest normal stable release, we also support the latest [Extended Support Release (ESR)](https://www.mozilla.org/en-US/firefox/organizations/faq/) version of Firefox.
 
-Unofficially, Figuration should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 8 and below, though they are not officially supported.
+Unofficially, Figuration should look and behave well enough in Chromium and Chrome for Linux, and Firefox for Linux, though they are not officially supported.
 
 For a list of some of the browser bugs that Bootstrap has to grapple with, see their [Wall of browser bugs](http://getbootstrap.com/browser-bugs/).
 
@@ -143,18 +143,6 @@ Internet Explorer 9 & 10 are also supported, however, please be aware that some 
 </div>
 
 Visit [Can I use...](http://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
-
-## Supporting Internet Explorer 8
-
-Figuration does not officially support IE8.
-
-You may add some third party JavaScript to backfill support for IE8 to Figuration. You'll need the following:
-
-* [HTML5 shiv](https://github.com/aFarkas/html5shiv)
-* [Respond.js](https://github.com/scottjehl/Respond)
-* [Rem unit polyfill](https://github.com/chuckcarpenter/REM-unit-polyfill)
-
-No support will be provided for this.
 
 ## IE Compatibility Modes
 
