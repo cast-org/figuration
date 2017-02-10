@@ -289,12 +289,7 @@
         },
 
         checkScrollbar : function() {
-            var fullWindowWidth = window.innerWidth;
-            if (!fullWindowWidth) { // workaround for missing window.innerWidth in IE8
-                var documentElementRect = document.documentElement.getBoundingClientRect();
-                fullWindowWidth = documentElementRect.right - Math.abs(documentElementRect.left);
-            }
-            this.bodyIsOverflowing = document.body.clientWidth < fullWindowWidth;
+            this.bodyIsOverflowing = document.body.clientWidth < window.innerWidth;
             this.scrollbarWidth = this.measureScrollbar();
         },
 
