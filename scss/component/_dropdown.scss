@@ -175,7 +175,7 @@
 
 // Divider (basically an `<hr>`) within the dropdown
 .dropdown-divider {
-    @include nav-divider($dropdown-divider-color);
+    @include divider-h($dropdown-divider-color, $dropdown-divider-width, $dropdown-divider-spacer);
 }
 
 // Backdrop to catch body clicks on mobile, etc.
