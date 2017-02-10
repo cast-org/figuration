@@ -28,13 +28,10 @@
 }
 
 .navbar-divider {
+    @include divider-v($navbar-divider-color, $navbar-divider-width, $navbar-padding-x);
     float: left;
-    width: $border-width;
     padding-top: $navbar-divider-padding-y;
     padding-bottom: $navbar-divider-padding-y;
-    margin-right: $navbar-padding-x;
-    margin-left:  $navbar-padding-x;
-    overflow: hidden;
 
     &::before {
         content: "\00a0";
@@ -131,7 +128,7 @@
     }
 
     .navbar-divider {
-        background-color: $navbar-light-divider-color;
+        border-color: $navbar-light-divider-color;
     }
 }
 
@@ -170,7 +167,7 @@
     }
 
     .navbar-divider {
-        background-color: $navbar-dark-divider-color;
+        border-color: $navbar-dark-divider-color;
     }
 }
 

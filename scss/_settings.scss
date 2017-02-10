@@ -666,6 +666,13 @@ $pagination-disabled-color:     $disabled-color !default;
 $pagination-disabled-bg:        $disabled-bg !default;
 
 
+// Divider
+// =====
+$divider-border-color:  $uibase-50 !default;
+$divider-border-width:  $border-width !default;
+$divider-spacer:        ($spacer / 2) !default;
+
+
 // Dropdowns
 // =====
 $dropdown-min-width:            10rem !default;
@@ -675,7 +682,9 @@ $dropdown-bg:                   $white !default;
 $dropdown-border-color:         $uibase-300 !default;
 $dropdown-border-width:         $border-width !default;
 $dropdown-border-radius:        $border-radius !default;
-$dropdown-divider-color:        $uibase-300 !default;
+$dropdown-divider-width:        $border-width !default;
+$dropdown-divider-color:        $uibase-200 !default;
+$dropdown-divider-spacer:       ($spacer-y / 2) !default;
 $dropdown-box-shadow:           0 .2rem .3rem rgba(0,0,0,.175) !default;
 
 // Border radius where menu/submenu aligns or 'attaches' to control item.
@@ -718,8 +727,6 @@ $nav-link-padding:              .5rem 1rem !default;
 $nav-link-disabled-opacity:     .6 !default;
 $nav-link-disabled-color:       $disabled-color !default;
 
-$nav-divider-color:             $uibase-50 !default;
-
 $nav-tabs-border-color:         $uibase-400 !default;
 $nav-tabs-border-width:         $border-width !default;
 $nav-tabs-hover-border-color:   $uibase-50 !default;
@@ -747,6 +754,8 @@ $navbar-brand-margin-x:             1rem !default;
 $navbar-brand-font-size:            1.25rem !default;
 $navbar-brand-font-weight:          $font-weight-bold !default;
 
+$navbar-divider-width:              $border-width !default;
+$navbar-divider-color:              rgba(0,0,0,.65) !default;
 $navbar-divider-padding-y:          .425rem !default;
 
 $navbar-toggler-font-size:          1.25rem !default;
@@ -757,9 +766,9 @@ $navbar-dark-color:                 rgba(255,255,255,.65) !default;
 $navbar-dark-hover-color:           rgba(255,255,255,.9) !default;
 $navbar-dark-active-color:          rgba(255,255,255,.95) !default;
 $navbar-dark-disabled-color:        rgba(255,255,255,.5) !default;
-$navbar-dark-divider-color:         rgba(255,255,255,.70) !default;
+$navbar-dark-divider-color:         rgba(255,255,255,.7) !default;
 
-$navbar-light-color:                rgba(0,0,0,.60) !default;
+$navbar-light-color:                rgba(0,0,0,.6) !default;
 $navbar-light-hover-color:          rgba(0,0,0,.85) !default;
 $navbar-light-active-color:         rgba(0,0,0,.95) !default;
 $navbar-light-disabled-color:       rgba(0,0,0,.5) !default;
