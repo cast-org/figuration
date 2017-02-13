@@ -29,10 +29,9 @@ $('#myModal').on('afterShow.cfw.modal', function() {
 {% endhighlight %}
 
 
-
 ## Examples
 
-### Static Example
+### Modal Components
 
 Below is a static modal example (meaning its `position` and `display` have been overridden). Included are the modal header, modal body (required for `padding`), and modal footer (optional). It is highly suggested to include modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.
 
@@ -51,9 +50,9 @@ Below is a static modal example (meaning its `position` and `display` have been 
                 <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+    </div>
+</div>
 {% endexample %}
 
 ### Live Demo
@@ -95,9 +94,9 @@ Toggle a modal via JavaScript by clicking the button below. It will slide down a
                 <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+    </div>
+</div>
 
 <div class="cf-example">
     <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalLive">
@@ -131,7 +130,73 @@ Toggle a modal via JavaScript by clicking the button below. It will slide down a
 </div>
 {% endhighlight %}
 
-### Grid Usage in Modals
+### Scrolling Long Content
+
+When modals become too long for the user's viewport or device, they scroll independent of the page itself.  Try the demo below for an example.
+
+<div class="modal" id="modalScroll">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <h5>Overflowing text to show scroll behavior</h5>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-cfw-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cf-example">
+    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalScroll">
+        Scrolling modal
+    </button>
+</div>
+
+{% highlight html %}
+<!-- Button trigger -->
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalScroll">
+    Scrolling modal
+</button>
+
+<!-- Modal -->
+<div class="modal" id="modalScroll">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endhighlight %}
+
+### Grid Usage
 
 To take advantage of the grid system within a modal, just nest `.container-fluid` within the `.modal-body` and then use the normal grid system classes within this container.
 
@@ -174,9 +239,9 @@ To take advantage of the grid system within a modal, just nest `.container-fluid
                 <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+    </div>
+</div>
 
 <div class="cf-example">
     <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalGrid">
@@ -185,37 +250,74 @@ To take advantage of the grid system within a modal, just nest `.container-fluid
 </div>
 
 {% highlight html %}
-<!-- Button trigger -->
-<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalGrid">
-    Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal" id="modalGrid">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid
-                    <div class="row">
-                        <div class="col-md-4">.col-md-4</div>
-                        <div class="col-md-4">.col-md-4</div>
-                        <div class="col-md-4">.col-md-4</div>
+<div class="modal-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4 offset-md-4">.col-md-4 .offset-md-4</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+            <div class="col-md-2 offset-md-4">.col-md-2 .offset-md-4</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">.col-md-6 .offset-md-3</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-9">
+                Level 1: .col-sm-9
+                <div class="row">
+                    <div class="col-8 col-sm-6">
+                        Level 2: .col-8 .col-sm-6
                     </div>
-                    ...
+                    <div class="col-4 col-sm-6">
+                        Level 2: .col-4 .col-sm-6
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
 </div>
 {% endhighlight %}
+
+### Tooltips and Popovers
+
+[Tooltips]({{ site.baseurl }}/widgets/tooltip/) and [popovers]({{ site.baseurl }}/widgets/popover/) can be placed within modal as needed.  When modals are closed, any tooltips or popovers within are also automatically dismissed.
+
+<div class="modal" id="modalTips">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="mySmallModalLabel">Small modal</h4>
+            </div>
+            <div class="modal-body">
+                <h5>Popover in a modal</h5>
+                <p>This <a href="#" role="button" class="btn" title="Popover title" data-cfw="popover" data-cfw-popover-content="Popover body content is set in this attribute." data-cfw-popover-placement="right">button</a> triggers a popover on click.</p>
+                <hr>
+                <h5>Tooltips in a modal</h5>
+                <p><a href="#" title="Tooltip" data-cfw="tooltip">This link</a> and <a href="#" title="Tooltip" data-cfw="tooltip">that link</a> have tooltips on hover.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cf-example">
+    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalTips">
+        Launch demo modal
+    </button>
+</div>
+
+{% highlight html %}
+<div class="modal-body">
+    <h5>Popover in a modal</h5>
+    <p>This <a href="#" role="button" class="btn" title="Popover title" data-cfw="popover" data-cfw-popover-content="Popover body content is set in this attribute." data-cfw-popover-placement="right">button</a> triggers a popover on click.</p>
+    <hr>
+    <h5>Tooltips in a modal</h5>
+    <p><a href="#" title="Tooltip" data-cfw="tooltip">This link</a> and <a href="#" title="Tooltip" data-cfw="tooltip">that link</a> have tooltips on hover.</p>
+</div>
+{% endhighlight %}
+
 
 ### Optional Sizes
 
@@ -231,9 +333,9 @@ Modals have two optional sizes, provided by Figuration's base CSS, available via
             <div class="modal-body">
                 ...
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+    </div>
+</div>
 
 <div class="modal" id="modalSm">
     <div class="modal-dialog modal-sm">
@@ -245,9 +347,9 @@ Modals have two optional sizes, provided by Figuration's base CSS, available via
             <div class="modal-body">
                 ...
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+    </div>
+</div>
 
 <div class="cf-example">
     <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalLg">Large modal</button>
@@ -305,6 +407,12 @@ Any an element with a data attribute of `data-cfw-dismiss="modal"` within the mo
 ### Dynamic Heights
 
 If the height of a modal changes while it is open, you will need to call `$('#myModal').CFW_Modal('handleUpdate');` to readjust the modal's position and backdrop.
+
+### With Fixed Position Content
+
+Since the scrollbar is removed from the `<body>` when a modal is shown, there can be some shifting of content in fixed position elements.  To help with this issue, when a modal is shown, any elements using the [fixed positioning utility]({{ site.baseurl }}/utilities/position/) classes, (`.fixed-top` and `.fixed-bottom`), will have additional padding added to their right side.  This padding width should match the width of the scrollbar that becomes hidden.  When the modal is hidden, the `padding-right` CSS value will be reset.
+
+There is also an additional special classname that the modal widget will look for when adjusting padding values.  Simply add the `.is-fixed` class to your element, and it will automatically be handled.
 
 ### Options
 
@@ -454,7 +562,7 @@ Event callbacks happen on the target `<div class="modal">` element.
         </tr>
         <tr>
             <td>afterUnlink.cfw.modal</td>
-            <td>This event is fired when a modal item has been unlinked from its trigger item and the data-api removed. This event can occur after the `afterHide` event when invoked from the `unlink` method, or before if set to automatically unlink.</td>
+            <td>This event is fired when a modal item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</td>
         </tr>
         <tr>
             <td>dispose.cfw.modal</td>

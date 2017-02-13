@@ -18,9 +18,8 @@
         this.isShown = null;
         this.scrollbarWidth = 0;
         this.unlinking = false;
-        this.originalBodyPad = 0;
+        this.fixedContent = '.fixed-top, .fixed-botton, .is-fixed';
         this.ignoreBackdropClick = false;
-
 
         var parsedData = this.$element.CFW_parseData('modal', CFW_Widget_Modal.DEFAULTS);
         this.settings = $.extend({}, CFW_Widget_Modal.DEFAULTS, parsedData, options);
@@ -294,17 +293,40 @@
         },
 
         setScrollbar : function() {
-            var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10);
-            this.originalBodyPad = document.body.style.paddingRight || '';
+            var $selfRef = this;
+
             if (this.bodyIsOverflowing) {
-                this.$body.css('padding-right', bodyPad + this.scrollbarWidth);
+                // Update fixed element padding
+                $(this.fixedContent).each(function() {
+                    var $this = $(this);
+                    $this.data('cfw.padding-right', this.style.paddingRight || '');
+                    var padding = parseFloat($this.css('padding-right') || 0);
+                    $this.css('padding-right', padding + $selfRef.scrollbarWidth);
+                });
+
+                // Update body padding
+                this.$body.data('cfw.padding-right', document.body.style.paddingRight || '');
+                var padding = parseFloat(this.$body.css('padding-right') || 0);
+                this.$body.css('padding-right', padding + this.scrollbarWidth);
             }
             this.$target.CFW_trigger('scrollbarSet.cfw.modal');
         },
 
         resetScrollbar : function() {
-            this.$body.css('padding-right', this.originalBodyPad);
-            this.$target.CFW_trigger('scrollbarReset.cfw.modal');
+            // Restore fixed element padding
+            $(this.fixedContent).each(function() {
+                var $this = $(this);
+                var padding = $this.data('cfw.padding-right');
+                $this.css('padding-right', padding);
+                $this.removeData('cfw.padding-right');
+            });
+
+            // Restore body padding
+            var padding = this.$body.data('cfw.padding-right');
+            if (typeof padding !== undefined) {
+                this.$body.css('padding-right', padding);
+                this.$body.removeData('cfw.padding-right');
+            }
         },
 
         measureScrollbar : function() {
@@ -397,7 +419,7 @@
             this.isShown = null;
             this.scrollbarWidth = null;
             this.unlinking = null;
-            this.originalBodyPad = null;
+            this.fixedContent = null;
             this.ignoreBackdropClick = null;
             this.settings = null;
 
