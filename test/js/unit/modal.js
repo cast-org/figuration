@@ -448,7 +448,7 @@ $(function() {
         var $style = $('<style>.modal-scrollbar-measure { position: absolute; top: -9999px; width: 50px; height: 50px; overflow: scroll;}</style>').appendTo('head');
 
         var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
-        var $target = $('<div class="modal" id="modal" style="height: 1100px;" />').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target
             .on('afterShow.cfw.modal', function() {
@@ -473,7 +473,7 @@ $(function() {
         var $style = $('<style>.modal-scrollbar-measure { position: absolute; top: -9999px; width: 50px; height: 50px; overflow: scroll;}</style>').appendTo('head');
 
         var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
-        var $target = $('<div class="modal" id="modal" style="height: 1100px;" />').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target
             .on('afterShow.cfw.modal', function() {
