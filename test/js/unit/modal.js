@@ -439,6 +439,7 @@ $(function() {
         $trigger.CFW_Modal('show');
     });
 
+    /*
     QUnit.test('should add padding-right when the modal is taller than the viewport', function(assert) {
         assert.expect(2);
         var done = assert.async();
@@ -493,6 +494,7 @@ $(function() {
         $trigger.CFW_Modal();
         $trigger.CFW_Modal('show');
     });
+    */
 
     QUnit.test('should ignore other inline styles when trying to restore body padding after closing', function(assert) {
         assert.expect(2);
