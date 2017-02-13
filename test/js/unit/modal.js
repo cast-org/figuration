@@ -363,6 +363,32 @@ $(function() {
         $trigger.CFW_Modal('show');
     });
 
+    QUnit.test('should store original body padding in data-cfw.padding-right before showing', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var originalPadding = '';
+        var $body = $(document.body);
+
+        $body.css('padding-right', originalPadding);
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                assert.strictEqual($body.data('cfw.padding-right'), originalPadding, 'stored original body padding in data attribute');
+                $trigger.CFW_Modal('hide');
+            })
+            .on('afterHide.cfw.modal', function() {
+                assert.strictEqual($body.data('cfw.padding-right'), undefined, 'stored original body padding in data attribute');
+                $body.removeAttr('style');
+                done();
+            });
+
+        $trigger.CFW_Modal();
+        $trigger.CFW_Modal('show');
+    });
+
     QUnit.test('should restore inline body padding after closing', function(assert) {
         assert.expect(2);
         var done = assert.async();
@@ -405,6 +431,61 @@ $(function() {
             })
             .on('afterHide.cfw.modal', function() {
                 assert.ok(!$body.attr('style'), 'body does not have inline padding set');
+                $style.remove();
+                done();
+            });
+
+        $trigger.CFW_Modal();
+        $trigger.CFW_Modal('show');
+    });
+
+    QUnit.test('should add padding-right when the modal is taller than the viewport', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var $body = $(document.body);
+        $('<div class="fixed-top fixed-bottom sticky-top is-fixed">Something</div>').appendTo('#qunit-fixture');
+        $('.fixed-top, .fixed-bottom, .sticky-top, .is-fixed').css('padding-right', '10px');
+        var $style = $('<style>.modal-scrollbar-measure { position: absolute; top: -9999px; width: 50px; height: 50px; overflow: scroll;}</style>').appendTo('head');
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal" style="height: 1100px;" />').appendTo('#qunit-fixture');
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                var paddingRight = parseFloat($body.css('padding-right'));
+                assert.strictEqual(isNaN(paddingRight), false);
+                assert.strictEqual(paddingRight !== 0, true);
+                $body.css('padding-right', ''); // Reset body padding for following tests
+                $style.remove();
+                done();
+            });
+
+        $trigger.CFW_Modal();
+        $trigger.CFW_Modal('show');
+    });
+
+    QUnit.test('should remove padding-right on modal after closing', function(assert) {
+        assert.expect(3);
+        var done = assert.async();
+        var $body = $(document.body);
+        $('<div class="fixed-top fixed-bottom sticky-top is-fixed">Something</div>').appendTo('#qunit-fixture');
+        $('.fixed-top, .fixed-bottom, .sticky-top, .is-fixed').css('padding-right', '10px');
+        var $style = $('<style>.modal-scrollbar-measure { position: absolute; top: -9999px; width: 50px; height: 50px; overflow: scroll;}</style>').appendTo('head');
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal" style="height: 1100px;" />').appendTo('#qunit-fixture');
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                var paddingRight = parseFloat($body.css('padding-right'));
+                assert.strictEqual(isNaN(paddingRight), false);
+                assert.strictEqual(paddingRight !== 0, true);
+                $trigger.CFW_Modal('hide');
+            })
+            .on('afterHide.cfw.modal', function() {
+                var paddingRight = parseFloat($body.css('padding-right'));
+                assert.strictEqual(paddingRight, 0);
+                $body.css('padding-right', ''); // Reset body padding for following tests
                 $style.remove();
                 done();
             });
