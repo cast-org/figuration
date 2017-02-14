@@ -289,7 +289,7 @@ To take advantage of the grid system within a modal, just nest `.container-fluid
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="mySmallModalLabel">Small modal</h4>
+                <h4 class="modal-title">Modal title</h4>
             </div>
             <div class="modal-body">
                 <h5>Popover in a modal</h5>
