@@ -1703,10 +1703,6 @@ fieldset[disabled] .form-check-label {
           box-shadow: none;
 }
 
-.btn.disabled else, .btn:disabled else {
-  outline: 0;
-}
-
 .btn:active, .btn.active,
 .open > .btn.dropdown-toggle {
   background-image: none;
@@ -4222,6 +4218,10 @@ button.list-group-item-danger.active {
 
 .btn-group-flex > .btn,
 .btn-group-vertical-flex > .btn {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 auto;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
   float: initial;
 }
 
@@ -4230,10 +4230,6 @@ button.list-group-item-danger.active {
 .btn-group .btn-group + .btn,
 .btn-group .btn-group + .btn-group {
   margin-left: -1px;
-}
-
-.btn-toolbar {
-  margin-left: -0.3rem;
 }
 
 .btn-toolbar::after {
@@ -4247,18 +4243,31 @@ button.list-group-item-danger.active {
   float: left;
 }
 
-.btn-toolbar > .btn,
-.btn-toolbar > .btn-group,
-.btn-toolbar > .input-group {
-  margin-left: 0.3rem;
+.btn-toolbar-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.btn-toolbar-flex .btn-group,
+.btn-toolbar-flex .input-group {
+  float: initial;
+}
+
+.btn-toolbar-flex .input-group {
+  width: auto;
 }
 
 .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
   border-radius: 0;
-}
-
-.btn-group > .btn:first-child {
-  margin-left: 0;
 }
 
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
@@ -4321,10 +4330,6 @@ button.list-group-item-danger.active {
   padding-left: 0.9375rem;
 }
 
-.btn .caret {
-  margin-left: 0;
-}
-
 .btn-group-vertical > .btn,
 .btn-group-vertical > .btn-group,
 .btn-group-vertical > .btn-group > .btn {
@@ -4358,6 +4363,14 @@ button.list-group-item-danger.active {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .btn-group-vertical-flex > .btn,
@@ -5034,10 +5047,6 @@ li .dropdown-header {
   opacity: 0.6;
   -webkit-box-shadow: none;
           box-shadow: none;
-}
-
-.nav-link.disabled else {
-  outline: 0;
 }
 
 .nav-flex {
@@ -5901,9 +5910,6 @@ a.badge:focus, a.badge:hover {
   background-color: #fff;
   border: 1px solid #a3a3a3;
   border-radius: 0.25rem;
-}
-
-.card else {
   display: block;
 }
 
