@@ -1200,9 +1200,7 @@ fieldset[disabled] .form-check-label {
   margin-top: 0.25rem;
 }
 
-.form-control-success,
-.form-control-warning,
-.form-control-danger {
+.form-control-icon {
   padding-right: 2.25rem;
   background-repeat: no-repeat;
   background-position: center right 0.5rem;
@@ -1237,7 +1235,7 @@ fieldset[disabled] .form-check-label {
   border-color: #108918;
 }
 
-.has-success .form-control-success {
+.has-success .form-control-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23108918' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E");
 }
 
@@ -1268,7 +1266,7 @@ fieldset[disabled] .form-check-label {
   border-color: #c98800;
 }
 
-.has-warning .form-control-warning {
+.has-warning .form-control-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23c98800' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E");
 }
 
@@ -1299,8 +1297,40 @@ fieldset[disabled] .form-check-label {
   border-color: #c81d0e;
 }
 
-.has-danger .form-control-danger {
+.has-danger .form-control-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23c81d0e' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23c81d0e' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E");
+}
+
+.form-control-xs.form-control-icon,
+.input-group-xs > .form-control.form-control-icon {
+  padding-right: 1.125rem;
+  background-position: center right 0.328125rem;
+  -webkit-background-size: 0.65625rem 0.65625rem;
+          background-size: 0.65625rem 0.65625rem;
+}
+
+.form-control-sm.form-control-icon,
+.input-group-sm > .form-control.form-control-icon {
+  padding-right: 1.5rem;
+  background-position: center right 0.398438rem;
+  -webkit-background-size: 0.796875rem 0.796875rem;
+          background-size: 0.796875rem 0.796875rem;
+}
+
+.form-control-lg.form-control-icon,
+.input-group-lg > .form-control.form-control-icon {
+  padding-right: 3.375rem;
+  background-position: center right 0.601563rem;
+  -webkit-background-size: 1.203125rem 1.203125rem;
+          background-size: 1.203125rem 1.203125rem;
+}
+
+.form-control-xl.form-control-icon,
+.input-group-xl > .form-control.form-control-icon {
+  padding-right: 3.75rem;
+  background-position: center right 0.703125rem;
+  -webkit-background-size: 1.40625rem 1.40625rem;
+          background-size: 1.40625rem 1.40625rem;
 }
 
 @media (min-width: 36em) {
