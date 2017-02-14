@@ -21,7 +21,7 @@ The modal widget allows you to add dialog style windows to your site or applicat
 - Modals use `position: fixed`. Always try to place modal HTML code in a top-level position in your document, such as a direct chld of the `<body>` element. Putting modal HTML within a fixed position element will adversely affect placement.
 - There are some caveats regarding using modals on mobile devices. See [our browser support docs]({{ site.baseurl }}/get-started/browsers-devices/#modals-and-dropdowns-on-mobile) for details.
 - Embedding YouTube videos in modals requires additional JavaScript not in Figuration to automatically stop playback and more. [See this helpful Stack Overflow post](https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal) for more information.
-- The [`autofocus`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-autofocus) HTML attribute has no affect in modals. To achieve the same effect you will need some custom JavaScript:
+- The [`autofocus`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-autofocus) HTML attribute has no effect in modals. To achieve the same effect you will need some custom JavaScript:
 {% highlight js %}
 $('#myModal').on('afterShow.cfw.modal', function() {
   $('#myInput').focus();
