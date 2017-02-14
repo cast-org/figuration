@@ -28,6 +28,7 @@
 @if $enable-flex-full {
     .nav {
         display: flex;
+        flex-wrap: wrap;
 
         // Simulate space between links
         .nav-link + .nav-link {
@@ -44,6 +45,7 @@
 @if $enable-flex-opt {
     .nav-flex {
         display: flex;
+        flex-wrap: wrap;
 
         // Simulate space between links
         .nav-link + .nav-link {
