@@ -7,7 +7,7 @@
     @if $enable-flex-full {
         display: flex;
         flex-direction: column;
-    } else {
+    } @else {
         display: block;
     }
 }

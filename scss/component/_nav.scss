@@ -19,7 +19,7 @@
         opacity: $nav-link-disabled-opacity;
         @if $enable-focus-ring {
             box-shadow: none;
-        } else {
+        } @else {
             outline: 0;
         }
     }
