@@ -16,7 +16,9 @@
         position: relative;
         margin-bottom: 0;
 
-        @if not $enable-flex-full {
+        @if $enable-flex-full {
+            flex: 0 1 auto;
+        } @else {
             float: left;
         }
 
@@ -40,6 +42,7 @@
         display: inline-flex;
 
         > .btn {
+            flex: 0 1 auto;
             float: initial;
         }
     }
@@ -51,24 +54,44 @@
     .btn + .btn-group,
     .btn-group + .btn,
     .btn-group + .btn-group {
-        margin-left: -$input-border-width;
+        margin-left: -$border-width;
     }
 }
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
-    margin-left: -$btn-toolbar-margin; // Offset the first child's margin
-    @include clearfix();
+    @if $enable-flex-full {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
 
-    .btn-group,
-    .input-group {
-        float: left;
+        .input-group {
+            width: auto;
+        }
+    } @else {
+        @include clearfix();
+
+        .btn-group,
+        .input-group {
+            float: left;
+        }
     }
+}
 
-    > .btn,
-    > .btn-group,
-    > .input-group {
-        margin-left: $btn-toolbar-margin;
+@if $enable-flex-opt {
+    .btn-toolbar-flex {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        .btn-group,
+        .input-group {
+            float: initial;
+        }
+
+        .input-group {
+            width: auto;
+        }
     }
 }
 
@@ -78,8 +101,6 @@
 
 // Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
 .btn-group > .btn:first-child {
-    margin-left: 0;
-
     &:not(:last-child):not(.dropdown-toggle) {
         @include border-right-radius(0);
     }
@@ -149,16 +170,12 @@
     }
 }
 
-
-// Reposition the caret
-.btn .caret {
-    margin-left: 0;
-}
-
 // Vertical button groups
 .btn-group-vertical {
     @if $enable-flex-full {
         flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
     }
 
     > .btn,
@@ -186,7 +203,7 @@
     > .btn + .btn-group,
     > .btn-group + .btn,
     > .btn-group + .btn-group {
-        margin-top: -$input-border-width;
+        margin-top: -$border-width;
         margin-left: 0;
     }
 }
@@ -194,6 +211,8 @@
 @if $enable-flex-opt {
     .btn-group-vertical-flex {
         flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
 
         > .btn,
         > .btn-group,
