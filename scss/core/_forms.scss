@@ -125,11 +125,15 @@ textarea.form-control {
         $sz-input-height:  (($sz-font-size * $input-line-height) + ($sz-padding-y * 2));
         $sz-select-height: calc(#{$sz-input-height} + #{($input-border-width * 2)});
 
-        .form-control-#{$size} {
+        %form-control-#{$size} {
             height: $sz-select-height;
             padding: $sz-padding-y ($sz-padding-x / 2);
             font-size: $sz-font-size;
             @include border-radius($sz-border-radius);
+        }
+
+        .form-control-#{$size} {
+            @extend %form-control-#{$size};
         }
 
         .form-control-label-#{$size},
@@ -220,9 +224,7 @@ textarea.form-control {
     margin-top: $form-feedback-margin-top;
 }
 
-.form-control-success,
-.form-control-warning,
-.form-control-danger {
+.form-control-icon {
     padding-right: ($input-padding-x * 3);
     background-repeat: no-repeat;
     background-position: center right ($input-height / 4);
@@ -234,7 +236,7 @@ textarea.form-control {
     .has-success {
         @include form-control-validation("success");
 
-        .form-control-success {
+        .form-control-icon {
             background-image: $icon-success;
         }
     }
@@ -243,7 +245,7 @@ textarea.form-control {
     .has-warning {
         @include form-control-validation("warning");
 
-        .form-control-warning {
+        .form-control-icon {
             background-image: $icon-warning;
         }
     }
@@ -252,8 +254,26 @@ textarea.form-control {
     .has-danger {
         @include form-control-validation("danger");
 
-        .form-control-danger {
+        .form-control-icon {
             background-image: $icon-danger;
+        }
+    }
+}
+
+@if $enable-sizing {
+    @each $size, $dims in $component-sizes {
+        $sz-font-size:     map-get($dims, "font-size");
+        $sz-padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $sz-font-size / 2);
+        $sz-padding-x:     map-get($dims, "padding-x");
+        $sz-input-height:  (($sz-font-size * $input-line-height) + ($sz-padding-y * 2));
+
+        .form-control-#{$size},
+        .input-group-#{$size} > .form-control {
+            &.form-control-icon {
+                padding-right: ($sz-padding-x * 3);
+                background-position: center right ($sz-input-height / 4);
+                background-size: ($sz-input-height / 2) ($sz-input-height / 2);
+            }
         }
     }
 }

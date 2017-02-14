@@ -718,6 +718,7 @@ Figuration includes validation styles for danger, warning, and success states on
 
 - To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.form-control-label`, `.form-control`, or custom form element will receive the validation styles.
 - Contextual validation text, in addition to your usual form field help text, can be added with the use of `.form-control-feedback`. This text will adapt to the parent `.has-*` class. By default it only includes a bit of `margin` for spacing and a modified `color` for each state.
+- Add a visual validation icon to an input field by adding the `.form-control-icon` class to a `.form-control` element.  These icons will also scale with the component size.
 - Validation icons are `url()`s configured via Sass variables that are applied to `background-image` declarations for each state.
 - You may use your own base64 PNGs or SVGs by updating the Sass variables and recompiling.
 - Icons can also be disabled entirely by setting the variables to `none` or commenting out the source Sass.
@@ -747,19 +748,19 @@ Ensure that an alternative indication of state is also provided. For instance, y
 {% example html %}
 <div class="form-group has-success">
   <label class="form-control-label" for="inputSuccess1">Input with success</label>
-  <input type="text" class="form-control form-control-success" id="inputSuccess1">
+  <input type="text" class="form-control form-control-icon" id="inputSuccess1">
   <div class="form-control-feedback">Success! You've done it.</div>
   <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 <div class="form-group has-warning">
   <label class="form-control-label" for="inputWarning1">Input with warning</label>
-  <input type="text" class="form-control form-control-warning" id="inputWarning1">
+  <input type="text" class="form-control form-control-icon" id="inputWarning1">
   <div class="form-control-feedback">Check the formatting of that and try again.</div>
   <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 <div class="form-group has-danger">
   <label class="form-control-label" for="inputDanger1">Input with danger</label>
-  <input type="text" class="form-control form-control-danger" id="inputDanger1">
+  <input type="text" class="form-control form-control-icon" id="inputDanger1">
   <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
   <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
@@ -792,7 +793,7 @@ Also a slightly more horizontal layout.
 <div class="form-group row has-success">
   <label for="inputHorizontalSuccess" class="col-sm-2 form-control-label">Email</label>
   <div class="col-sm-10">
-    <input type="email" class="form-control form-control-success" id="inputHorizontalSuccess" placeholder="name@example.com">
+    <input type="email" class="form-control form-control-icon" id="inputHorizontalSuccess" placeholder="name@example.com">
     <div class="form-control-feedback">Success! You've done it.</div>
     <small class="form-text text-muted">Example help text that remains unchanged.</small>
   </div>
@@ -800,7 +801,7 @@ Also a slightly more horizontal layout.
 <div class="form-group row has-warning">
   <label for="inputHorizontalWarning" class="col-sm-2 form-control-label">Email</label>
   <div class="col-sm-10">
-    <input type="email" class="form-control form-control-warning" id="inputHorizontalWarning" placeholder="name@example.com">
+    <input type="email" class="form-control form-control-icon" id="inputHorizontalWarning" placeholder="name@example.com">
     <div class="form-control-feedback">Check the formatting of that and try again.</div>
     <small class="form-text text-muted">Example help text that remains unchanged.</small>
   </div>
@@ -808,8 +809,50 @@ Also a slightly more horizontal layout.
 <div class="form-group row has-danger">
   <label for="inputHorizontalDnger" class="col-sm-2 form-control-label">Email</label>
   <div class="col-sm-10">
-    <input type="email" class="form-control form-control-danger" id="inputHorizontalDnger" placeholder="name@example.com">
+    <input type="email" class="form-control form-control-icon" id="inputHorizontalDnger" placeholder="name@example.com">
     <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
+    <small class="form-text text-muted">Example help text that remains unchanged.</small>
+  </div>
+</div>
+{% endexample %}
+
+Validation icons can be added optionally.
+
+{% example html %}
+<div class="form-group row has-success">
+  <label for="inputOptSuccessY" class="col-sm-2 form-control-label">Email</label>
+  <div class="col-sm-10">
+    <input type="email" class="form-control form-control-icon" id="inputOptSuccessY" placeholder="name@example.com">
+    <div class="form-control-feedback">Success! You've done it.</div>
+    <small class="form-text text-muted">Example help text that remains unchanged.</small>
+  </div>
+</div>
+<div class="form-group row has-success">
+  <label for="inputOptSuccessN" class="col-sm-2 form-control-label">Email</label>
+  <div class="col-sm-10">
+    <input type="email" class="form-control" id="inputOptSuccessN" placeholder="name@example.com">
+    <div class="form-control-feedback">Success! You've done it.</div>
+    <small class="form-text text-muted">Example help text that remains unchanged.</small>
+  </div>
+</div>
+{% endexample %}
+
+Validation icons will also scale with the component size.
+
+{% example html %}
+<div class="form-group row has-success">
+  <label for="inputSizeSuccessSm" class="col-sm-2 form-control-label">Email</label>
+  <div class="col-sm-10">
+    <input type="email" class="form-control form-control-sm form-control-icon" id="inputSizeSuccessSm" placeholder="name@example.com">
+    <div class="form-control-feedback">Success! You've done it.</div>
+    <small class="form-text text-muted">Example help text that remains unchanged.</small>
+  </div>
+</div>
+<div class="form-group row has-success">
+  <label for="inputSizeSuccessLg" class="col-sm-2 form-control-label">Email</label>
+  <div class="col-sm-10">
+    <input type="email" class="form-control form-control-lg form-control-icon" id="inputSizeSuccessLg" placeholder="name@example.com">
+    <div class="form-control-feedback">Success! You've done it.</div>
     <small class="form-text text-muted">Example help text that remains unchanged.</small>
   </div>
 </div>
