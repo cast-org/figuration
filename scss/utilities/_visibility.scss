@@ -26,20 +26,36 @@
 // Print utilities
 // Media queries are placed on the inside to be mixin-friendly.
 .print-show-block {
+    @media print {
+        display: block !important;
+    }
+}
+.print-show-inline {
+    @media print {
+        display: inline !important;
+    }
+}
+.print-show-inline-block {
+    @media print {
+        display: inline-block !important;
+    }
+}
+
+.print-only-block {
     display: none !important;
 
     @media print {
         display: block !important;
     }
 }
-.print-show-inline {
+.print-only-inline {
     display: none !important;
 
     @media print {
         display: inline !important;
     }
 }
-.print-show-inline-block {
+.print-only-inline-block {
     display: none !important;
 
     @media print {
