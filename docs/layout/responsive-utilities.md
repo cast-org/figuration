@@ -14,7 +14,7 @@ Try to use these on a limited basis and avoid creating entirely different versio
 * ToC goes here
 {:toc}
 
-##  Available classes
+##  Available Classes
 
 * The `.hide-*-up` classes hide the element when the viewport is at the given breakpoint or wider. For example, `.hide-md-up` hides an element on medium, large, and extra-large viewports.
 * The `.hide-*-down` classes hide the element when the viewport is at the given breakpoint or smaller. For example, `.hide-md-down` hides an element on extra-small, small, and medium viewports.
@@ -134,30 +134,34 @@ Try to use these on a limited basis and avoid creating entirely different versio
   </table>
 </div>
 
-<h2 id="responsive-utilities-print">Print classes</h2>
-<p>Similar to the regular responsive classes, use these for toggling content for print.</p>
+## Print Classes
+
+Similar to the regular responsive classes, use these for toggling content for print.
+
+These utilities only affect the `display` property.  You will need to take into account any other CSS properties, such as `visibility`, that might cause issues for the print layout.
+
 <div class="table-responsive">
   <table class="table table-bordered responsive-utilities">
     <thead>
       <tr>
         <th>Class</th>
-        <th>Browser</th>
+        <th>Screen</th>
         <th>Print</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <th><code>.print-show-block</code></th>
+        <th><code>.print-only-block</code></th>
         <td class="is-hidden">Hidden</td>
         <td class="is-visible">Visible<br>(as <code>display: block</code>)</td>
       </tr>
       <tr>
-        <th><code>.print-show-inline</code></th>
+        <th><code>.print-only-inline</code></th>
         <td class="is-hidden">Hidden</td>
         <td class="is-visible">Visible<br>(as <code>display: inline</code>)</td>
       </tr>
       <tr>
-        <th><code>.print-show-inline-block</code></th>
+        <th><code>.print-only-inline-block</code></th>
         <td class="is-hidden">Hidden</td>
         <td class="is-visible">Visible<br>(as <code>display: inline-block</code>)</td>
       </tr>
@@ -166,11 +170,26 @@ Try to use these on a limited basis and avoid creating entirely different versio
         <td class="is-visible">Visible</td>
         <td class="is-hidden">Hidden</td>
       </tr>
+      <tr>
+        <th><code>.print-show-block</code></th>
+        <td>Any</td>
+        <td class="is-visible">Visible<br>(as <code>display: block</code>)</td>
+      </tr>
+      <tr>
+        <th><code>.print-show-inline</code></th>
+        <td>Any</td>
+        <td class="is-visible">Visible<br>(as <code>display: inline</code>)</td>
+      </tr>
+      <tr>
+        <th><code>.print-show-inline-block</code></th>
+        <td>Any</td>
+        <td class="is-visible">Visible<br>(as <code>display: inline-block</code>)</td>
+      </tr>
     </tbody>
   </table>
 </div>
 
-## Test cases
+## Test Cases
 
 Resize your browser or load on different devices to test the responsive utility classes.
 
