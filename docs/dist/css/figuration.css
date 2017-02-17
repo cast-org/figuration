@@ -11244,18 +11244,10 @@ a.text-dark:focus, a.text-dark:hover {
   display: none !important;
 }
 
-.print-show-block {
-  display: none !important;
-}
-
 @media print {
   .print-show-block {
     display: block !important;
   }
-}
-
-.print-show-inline {
-  display: none !important;
 }
 
 @media print {
@@ -11264,12 +11256,38 @@ a.text-dark:focus, a.text-dark:hover {
   }
 }
 
-.print-show-inline-block {
+@media print {
+  .print-show-inline-block {
+    display: inline-block !important;
+  }
+}
+
+.print-only-block {
   display: none !important;
 }
 
 @media print {
-  .print-show-inline-block {
+  .print-only-block {
+    display: block !important;
+  }
+}
+
+.print-only-inline {
+  display: none !important;
+}
+
+@media print {
+  .print-only-inline {
+    display: inline !important;
+  }
+}
+
+.print-only-inline-block {
+  display: none !important;
+}
+
+@media print {
+  .print-only-inline-block {
     display: inline-block !important;
   }
 }
