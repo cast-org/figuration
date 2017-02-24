@@ -392,10 +392,10 @@ function myPopoverAlign(tip, trigger) {
             <td>If the <code>unlink</code> method should be called when the popover is hidden.  This leaves the popover behind in the DOM.</td>
         </tr>
         <tr>
-            <td>destroy</td>
+            <td>dispose</td>
             <td>boolean</td>
             <td>false</td>
-            <td>If the <code>destroy</code> method should be called when the popover is hidden. This will remove the popover from the DOM.</td>
+            <td>If the <code>dispose</code> method should be called when the popover is hidden. This will remove the popover from the DOM.</td>
         </tr>
         <tr>
             <td>drag</td>
@@ -464,7 +464,7 @@ Hides an element's popover.
 
 Hides the popover, removes events and attributes from both trigger and popover.
 
-#### `.CFW_Popover('destroy')`
+#### `.CFW_Popover('dispose')`
 {:.no_toc}
 
 Calls the `unlink` method, and then removes the popover from the DOM.
@@ -523,7 +523,7 @@ Event callbacks happen on the toggle/trigger element.
             <td>This event is fired when a popover item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</td>
         </tr>
         <tr>
-            <td>destroy.cfw.popover</td>
+            <td>dispose.cfw.popover</td>
             <td>This event is fired immediately before the popover item is removed from the DOM.</td>
         </tr>
     </tbody>
@@ -548,7 +548,7 @@ A quick example:<br />
         <ul>
             <li><code>$('#myPopover').CFW_Popover('hide');</code></li>
             <li>or <code>$('#myPopover').CFW_Popover('unlink');</code></li>
-            <li>or <code>$('#myPopover').CFW_Popover('destroy');</code></li>
+            <li>or <code>$('#myPopover').CFW_Popover('dispose');</code></li>
         </ul>
     </li>
     <li>Update/create the popover object and insert into DOM.</li>

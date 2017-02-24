@@ -310,10 +310,10 @@ function myTipAlign(tip, trigger) {
             <td>If the <code>unlink</code> method should be called when the tooltip is hidden.  This leaves the tooltip behind in the DOM.</td>
         </tr>
         <tr>
-            <td>destroy</td>
+            <td>dispose</td>
             <td>boolean</td>
             <td>false</td>
-            <td>If the <code>destroy</code> method should be called when the tooltip is hidden. This will remove the tooltip from the DOM.</td>
+            <td>If the <code>dispose</code> method should be called when the tooltip is hidden. This will remove the tooltip from the DOM.</td>
         </tr>
         <tr>
             <td>activate</td>
@@ -358,7 +358,7 @@ Hides an element's tooltip.
 
 Hides the tooltip, removes events and attributes from both trigger and tooltip.
 
-#### `.CFW_Tooltip('destroy')`
+#### `.CFW_Tooltip('dispose')`
 {:.no_toc}
 
 Calls the `unlink` method, and then removes the tooltip from the DOM.
@@ -409,7 +409,7 @@ Event callbacks happen on the toggle/trigger element.
             <td>This event is fired when a tooltip item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</td>
         </tr>
         <tr>
-            <td>destroy.cfw.tooltip</td>
+            <td>dispose.cfw.tooltip</td>
             <td>This event is fired immediately before the tooltip item is removed from the DOM.</td>
         </tr>
     </tbody>
@@ -434,7 +434,7 @@ A quick example:<br />
         <ul>
             <li><code>$('#myTooltip').CFW_Tooltip('hide');</code></li>
             <li>or <code>$('#myTooltip').CFW_Tooltip('unlink');</code></li>
-            <li>or <code>$('#myTooltip').CFW_Tooltip('destroy');</code></li>
+            <li>or <code>$('#myTooltip').CFW_Tooltip('dispose');</code></li>
         </ul>
     </li>
     <li>Update/create the tooltip object and insert into DOM.</li>
