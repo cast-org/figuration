@@ -18,6 +18,11 @@ Figuration's form controls expand on [the Rebooted form styles]({{ site.baseurl 
 
 Remember, since Figuration utilizes the HTML5 doctype, **all inputs must have a `type` attribute**.
 
+{% callout warning %}
+#### Alternatives to Hidden Labels
+Assistive technologies such as screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the `.sr-only` class. There are further alternative methods of providing a label for assistive technologies, such as the `aria-label`, `aria-labelledby` or `title` attribute. If none of these are present, assistive technologies may resort to using the `placeholder` attribute, if present, but note that use of `placeholder` as a replacement for other labelling methods is not advised.
+{% endcallout %}
+
 {% example html %}
 <form>
   <div class="form-group">
@@ -284,69 +289,272 @@ The `.form-group` class is the easiest way to add some structure to forms. Its o
 
 ### Inline Forms
 
-Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms behave differently:
+Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms vary slightly from their default states.
 
-- Controls are `display: inline-block` to provide alignment control via `vertical-align` and `margin`.
-- Controls receive `width: auto` to override the Figuration default `width: 100%`.
-- Controls **only appear inline in viewports that are at least 48em/768px wide** to account for narrow viewports on mobile devices.
+Inline forms have support for both a `inline-block` style layout, along with both the opt-in flexbox and [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.form-inline-flex` class to the `.form-inline` element.
 
-Because of this, you may need to manually address the width and alignment of individual form controls. Lastly, as shown below, you should always include a `<label>` with each form control.
+- Default Layout: Controls are `display: inline-block` to provide alignment control via `vertical-align` and `margin`.
+- Flexbox Layout: Controls are `display: flex`, collapsing any HTML white space and allowing you to provide alignment control with [spacing]({{ site.baseurl }}/utilities/spacing/) and [flexbox]({{ site.baseurl }}/utilities/flexbox/) utilities.
+- Controls and input groups receive `width: auto` to override the Figuration default `width: 100%`.
+- Controls **only appear inline in viewports that are at least 36em/576px wide** to account for narrow viewports on mobile devices.
 
-#### Visible Labels
+You may need to manually address the width and alignment of individual form controls with [spacing utilities]({{ site.baseurl }}/utilities/spacing/) (as shown below). Lastly, as shown below, you should always include a `<label>` with each form control, , even if you need to hide it from non-screenreader users with `.sr-only`.
 
-{% example html %}
+<div class="cf-example">
+    <strong>Default Layout</strong>
+    <form class="form-inline">
+        <div class="form-group mb-0_5 mr-sm-0_25 mb-sm-0">
+            <label for="inlineName0" class="form-control-label mr-sm-0_25">Name</label>
+            <input type="text" class="form-control" id="inlineName0" placeholder="Jane Doe">
+        </div>
+        <div class="form-group mb-0_5 mr-sm-0_25 mb-sm-0">
+            <label for="inlineEmail0" class="form-control-label mr-sm-0_25">Email</label>
+            <input type="email" class="form-control" id="inlineEmail0" placeholder="jane.doe@example.com">
+        </div>
+        <button type="submit" class="btn btn-primary">Send invitation</button>
+    </form>
+    <hr />
+    <strong>Flexbox Layout</strong>
+    <form class="form-inline form-inline-flex">
+        <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
+            <label for="inlineNameF0" class="form-control-label mr-sm-0_5">Name</label>
+            <input type="text" class="form-control" id="inlineNameF0" placeholder="Jane Doe">
+        </div>
+        <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
+            <label for="inlineEmail0" class="form-control-label mr-sm-0_5">Email</label>
+            <input type="email" class="form-control" id="inlineEmailF0" placeholder="jane.doe@example.com">
+        </div>
+        <button type="submit" class="btn btn-primary">Send invitation</button>
+    </form>
+</div>
+{% highlight html %}
+<!-- Default Mode -->
 <form class="form-inline">
-  <div class="form-group">
-    <label for="exampleInputName2">Name</label>
-    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail2">Email</label>
-    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-  </div>
-  <button type="submit" class="btn btn-primary">Send invitation</button>
-</form>
-{% endexample %}
-
-#### Hidden Labels
-
-{% example html %}
-<form class="form-inline">
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputEmail3">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
-  </div>
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputPassword3">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
-  </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input class="form-check-input" type="checkbox"> Remember me
-    </label>
-  </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
-</form>
-{% endexample %}
-
-{% example html %}
-<form class="form-inline">
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-    <div class="input-group">
-      <div class="input-group-addon">$</div>
-      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
-      <div class="input-group-addon">.00</div>
+    <div class="form-group mb-0_5 mr-sm-0_25 mb-sm-0">
+        <label for="inlineName0" class="form-control-label mr-sm-0_25">Name</label>
+        <input type="text" class="form-control" id="inlineName0" placeholder="Jane Doe">
     </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Transfer cash</button>
+    <div class="form-group mb-0_5 mr-sm-0_25 mb-sm-0">
+        <label for="inlineEmail0" class="form-control-label mr-sm-0_25">Email</label>
+        <input type="email" class="form-control" id="inlineEmail0" placeholder="jane.doe@example.com">
+    </div>
+    <button type="submit" class="btn btn-primary">Send invitation</button>
 </form>
-{% endexample %}
 
-{% callout warning %}
-#### Alternatives to Hidden Labels
-Assistive technologies such as screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the `.sr-only` class. There are further alternative methods of providing a label for assistive technologies, such as the `aria-label`, `aria-labelledby` or `title` attribute. If none of these are present, assistive technologies may resort to using the `placeholder` attribute, if present, but note that use of `placeholder` as a replacement for other labelling methods is not advised.
-{% endcallout %}
+<!-- Flexbox Mode -->
+<form class="form-inline form-inline-flex">
+    <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
+        <label for="inlineNameF0" class="form-control-label mr-sm-0_5">Name</label>
+        <input type="text" class="form-control" id="inlineNameF0" placeholder="Jane Doe">
+    </div>
+    <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
+        <label for="inlineEmail0" class="form-control-label mr-sm-0_5">Email</label>
+        <input type="email" class="form-control" id="inlineEmailF0" placeholder="jane.doe@example.com">
+    </div>
+    <button type="submit" class="btn btn-primary">Send invitation</button>
+</form>
+{% endhighlight %}
+
+<div class="cf-example">
+    <strong>Default Layout</strong>
+    <form class="form-inline">
+        <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
+            <label class="sr-only" for="inlineEmail1">Email address</label>
+            <input type="email" class="form-control" id="inlineEmail1" placeholder="Enter email">
+        </div>
+        <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
+            <label class="sr-only" for="inlinePassword1">Password</label>
+            <input type="password" class="form-control" id="inlinePassword1" placeholder="Password">
+        </div>
+        <div class="form-check mb-0_5 mr-sm-0_5 mb-sm-0">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox"> Remember me
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
+    <hr />
+    <strong>Flexbox Layout</strong>
+    <form class="form-inline form-inline-checkbox">
+        <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
+            <label class="sr-only" for="inlineEmailF1">Email address</label>
+            <input type="email" class="form-control" id="inlineEmailF1" placeholder="Enter email">
+        </div>
+        <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
+            <label class="sr-only" for="inlinePasswordF1">Password</label>
+            <input type="password" class="form-control" id="inlinePasswordF1" placeholder="Password">
+        </div>
+        <div class="form-check mb-0_5 mr-sm-0_5 mb-sm-0">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox"> Remember me
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
+</div>
+{% highlight html %}
+<!-- Default Layout -->
+<form class="form-inline">
+    <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
+        <label class="sr-only" for="inlineEmail1">Email address</label>
+        <input type="email" class="form-control" id="inlineEmail1" placeholder="Enter email">
+    </div>
+    <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
+        <label class="sr-only" for="inlinePassword1">Password</label>
+        <input type="password" class="form-control" id="inlinePassword1" placeholder="Password">
+    </div>
+    <div class="form-check mb-0_5 mr-sm-0_5 mb-sm-0">
+        <label class="form-check-label">
+            <input class="form-check-input" type="checkbox"> Remember me
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
+
+<!-- Flexbox Layout -->
+<form class="form-inline form-inline-checkbox">
+    <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
+        <label class="sr-only" for="inlineEmailF1">Email address</label>
+        <input type="email" class="form-control" id="inlineEmailF1" placeholder="Enter email">
+    </div>
+    <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
+        <label class="sr-only" for="inlinePasswordF1">Password</label>
+        <input type="password" class="form-control" id="inlinePasswordF1" placeholder="Password">
+    </div>
+    <div class="form-check mb-0_5 mr-sm-0_5 mb-sm-0">
+        <label class="form-check-label">
+            <input class="form-check-input" type="checkbox"> Remember me
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
+{% endhighlight %}
+
+<div class="cf-example">
+    <strong>Default Layout</strong>
+    <form class="form-inline">
+        <div class="form-group mr-sm-0_25">
+            <label class="sr-only" for="inputAmount2">Amount (in dollars)</label>
+            <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="text" class="form-control" id="inputAmount2" placeholder="Amount">
+                <div class="input-group-addon">.00</div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Transfer cash</button>
+    </form>
+    <hr />
+    <strong>Flexbox Layout</strong>
+    <form class="form-inline form-inline-flex">
+        <div class="form-group mr-sm-0_5">
+            <label class="sr-only" for="inputAmountF2">Amount (in dollars)</label>
+            <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="text" class="form-control" id="inputAmountF2" placeholder="Amount">
+                <div class="input-group-addon">.00</div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Transfer cash</button>
+    </form>
+</div>
+{% highlight html %}
+<!-- Default Layout -->
+<form class="form-inline">
+    <div class="form-group mr-sm-0_25">
+        <label class="sr-only" for="inputAmount2">Amount (in dollars)</label>
+        <div class="input-group">
+            <div class="input-group-addon">$</div>
+            <input type="text" class="form-control" id="inputAmount2" placeholder="Amount">
+            <div class="input-group-addon">.00</div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Transfer cash</button>
+</form>
+
+<!-- Flexbox Layout -->
+<form class="form-inline form-inline-flex">
+    <div class="form-group mr-sm-0_5">
+        <label class="sr-only" for="inputAmountF2">Amount (in dollars)</label>
+        <div class="input-group">
+            <div class="input-group-addon">$</div>
+            <input type="text" class="form-control" id="inputAmountF2" placeholder="Amount">
+            <div class="input-group-addon">.00</div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Transfer cash</button>
+</form>
+{% endhighlight %}
+
+<div class="cf-example">
+    <strong>Default Layout</strong>
+    <form class="form-inline">
+        <label class="mr-sm-0_25" for="inlinePref4">Preference</label>
+        <select class="custom-select mb-0_5 mr-sm-0_25 mb-sm-0" id="inlinePref4">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        <label class="custom-control custom-checkbox mb-0_5 mr-sm-0_25 mb-sm-0">
+            <input type="checkbox" class="custom-control-input">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Remember my preference</span>
+        </label>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <hr />
+    <strong>Flexbox Layout</strong>
+    <form class="form-inline form-inline-flex">
+        <label class="mr-sm-0_5" for="inlinePrefF4">Preference</label>
+        <select class="custom-select mb-0_5 mr-sm-0_5 mb-sm-0" id="inlinePrefF4">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        <label class="custom-control custom-checkbox mb-0_5 mr-sm-0_5 mb-sm-0">
+            <input type="checkbox" class="custom-control-input">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Remember my preference</span>
+        </label>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% highlight html %}
+<!-- Default Layout -->
+<form class="form-inline">
+    <label class="mr-sm-0_25" for="inlinePref4">Preference</label>
+    <select class="custom-select mb-0_5 mr-sm-0_25 mb-sm-0" id="inlinePref4">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <label class="custom-control custom-checkbox mb-0_5 mr-sm-0_25 mb-sm-0">
+        <input type="checkbox" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Remember my preference</span>
+    </label>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<!-- Flexbox Layout -->
+<form class="form-inline form-inline-flex">
+    <label class="mr-sm-0_5" for="inlinePrefF4">Preference</label>
+    <select class="custom-select mb-0_5 mr-sm-0_5 mb-sm-0" id="inlinePrefF4">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <label class="custom-control custom-checkbox mb-0_5 mr-sm-0_5 mb-sm-0">
+        <input type="checkbox" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Remember my preference</span>
+    </label>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endhighlight %}
 
 ### Using the Grid
 
