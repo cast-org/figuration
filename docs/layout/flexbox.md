@@ -23,6 +23,7 @@ Flexbox support is available for a number of Figuration's components:
 - [Card Deck]({{ site.baseurl }}/components/cards/#decks), which switches from `display: table;` to `display: flex;`.
 - [Card Group]({{ site.baseurl }}/components/cards/#groups), which switches from `display: table;` to `display: flex;`.
 - [Grid Lines]({{ site.baseurl }}/components/grid-lines/), which switches from `display: table;` to `display: flex;`.
+- [Inline Forms]({{ site.baseurl }}/content/forms/#inline-forms), which switches from `display: inline-block;` to `display: flex;`.
 - [Input Group]({{ site.baseurl }}/components/input-group/), which switches from `display: table;` to `display: flex;`.
 - [List Group]({{ site.baseurl }}/components/list-group/), which switches from `block`s to `display: flex;`.
 - [Media Object]({{ site.baseurl }}/components/media-object/), which switches from `display: table;` to `display: flex;`.
@@ -57,6 +58,7 @@ A quick list of the opt-in classes are:
 - `.card-flex`
 - `.card-deck-flex`
 - `.card-group-flex`
+- `.form-inline-flex`
 - `.gridline-flex`
 - `.input-group-flex`
 - `.list-group-flex`
