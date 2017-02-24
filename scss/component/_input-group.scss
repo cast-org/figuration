@@ -17,13 +17,18 @@
         // proper border colors.
         position: relative;
         z-index: 2;
+        margin-bottom: 0;
+
         // Bring the "active" form control to the front
         @include hover-focus-active {
             z-index: 3;
         }
 
         @if $enable-flex-full {
-            flex: 1;
+            // Add width 1% and flex-basis auto to ensure that button will not wrap out
+            // the column. Applies to IE Edge+ and Firefox. Chrome does not require this.
+            flex: 1 1 auto;
+            width: 1%;
         } @else {
             // IE9 fubars the placeholder attribute in text inputs and the arrows on
             // select elements in input groups. To fix it, we float the input. Details:
@@ -31,8 +36,6 @@
             float: left;
             width: 100%;
         }
-
-        margin-bottom: 0;
     }
 }
 
@@ -42,7 +45,8 @@
         border-collapse: initial;
 
         .form-control {
-            flex: 1;
+            flex: 1 1 auto;
+            width: 1%;
             float: initial;
         }
     }
@@ -54,8 +58,7 @@
     @if $enable-flex-full {
         // Vertically centers the content of the addons within the input group
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        align-items: center;
     } @else {
         display: table-cell;
     }
@@ -69,8 +72,7 @@
         .input-group-btn,
         .form-control {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            align-items: center;
         }
     }
 }
@@ -129,7 +131,7 @@
 
         @if $enable-flex-full {
             // Vertically stretch the button and center its content
-            flex: 1;
+            align-self: stretch;
         }
 
         + .btn {
@@ -213,7 +215,7 @@
         .input-group-btn {
             > .btn {
                 // Vertically stretch the button and center its content
-                flex: 1;
+                align-self: stretch;
             }
         }
     }
