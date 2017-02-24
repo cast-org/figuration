@@ -1334,12 +1334,16 @@ fieldset[disabled] .form-check-label {
 }
 
 @media (min-width: 36em) {
-  .form-inline .form-group {
-    display: inline-block;
+  .form-inline label {
     margin-bottom: 0;
+  }
+  .form-inline .form-group {
+    margin-bottom: 0;
+    display: inline-block;
     vertical-align: middle;
   }
-  .form-inline .form-control {
+  .form-inline .form-control,
+  .form-inline .custom-select {
     display: inline-block;
     width: auto;
     vertical-align: middle;
@@ -1348,13 +1352,15 @@ fieldset[disabled] .form-check-label {
     display: inline-block;
   }
   .form-inline .input-group {
-    display: inline-table;
     width: auto;
+  }
+  .form-inline .input-group:not(.input-group-flex) {
+    display: inline-table;
     vertical-align: middle;
   }
   .form-inline .input-group .input-group-addon,
   .form-inline .input-group .input-group-btn,
-  .form-inline .input-group .form-control {
+  .form-inline .input-group .form-control .custom-select {
     width: auto;
   }
   .form-inline .input-group > .form-control {
@@ -1365,9 +1371,9 @@ fieldset[disabled] .form-check-label {
     vertical-align: middle;
   }
   .form-inline .form-check {
-    display: inline-block;
     margin-top: 0;
     margin-bottom: 0;
+    display: inline-block;
     vertical-align: middle;
   }
   .form-inline .form-check-label {
@@ -1377,8 +1383,110 @@ fieldset[disabled] .form-check-label {
     position: relative;
     margin-left: 0;
   }
+  .form-inline .custom-control {
+    padding-left: 0;
+    vertical-align: middle;
+  }
+  .form-inline .custom-control-indicator {
+    position: static;
+    display: inline-block;
+    vertical-align: text-bottom;
+  }
   .form-inline .has-feedback .form-control-feedback {
     top: 0;
+  }
+}
+
+.form-inline-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.form-inline-flex .form-check {
+  width: 100%;
+}
+
+@media (min-width: 36em) {
+  .form-inline-flex label {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .form-inline-flex .form-group {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-flow: row wrap;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+    vertical-align: initial;
+  }
+  .form-inline-flex .input-group > .form-control {
+    width: auto;
+  }
+  .form-inline-flex .form-check {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    vertical-align: initial;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .form-inline-flex .form-check-input {
+    margin-top: 0;
+    margin-right: 0.25rem;
+  }
+  .form-inline-flex .custom-control {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    vertical-align: initial;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .form-inline-flex .custom-control-indicator {
+    margin-right: .25rem;
   }
 }
 
