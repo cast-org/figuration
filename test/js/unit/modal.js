@@ -446,7 +446,6 @@ $(function() {
         var $body = $(document.body);
         $('<div class="fixed-top fixed-bottom sticky-top is-fixed">Something</div>').appendTo('#qunit-fixture');
         $('.fixed-top, .fixed-bottom, .sticky-top, .is-fixed').css('padding-right', '10px');
-        var $style = $('<style>.modal-scrollbar-measure { position: absolute; top: -9999px; width: 50px; height: 50px; overflow: scroll;}</style>').appendTo('head');
 
         var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
@@ -457,7 +456,6 @@ $(function() {
                 assert.strictEqual(isNaN(paddingRight), false);
                 assert.strictEqual(paddingRight !== 0, true);
                 $body.css('padding-right', ''); // Reset body padding for following tests
-                $style.remove();
                 done();
             });
 
@@ -471,7 +469,6 @@ $(function() {
         var $body = $(document.body);
         $('<div class="fixed-top fixed-bottom sticky-top is-fixed">Something</div>').appendTo('#qunit-fixture');
         $('.fixed-top, .fixed-bottom, .sticky-top, .is-fixed').css('padding-right', '10px');
-        var $style = $('<style>.modal-scrollbar-measure { position: absolute; top: -9999px; width: 50px; height: 50px; overflow: scroll;}</style>').appendTo('head');
 
         var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
@@ -487,7 +484,6 @@ $(function() {
                 var paddingRight = parseFloat($body.css('padding-right'));
                 assert.strictEqual(paddingRight, 0);
                 $body.css('padding-right', ''); // Reset body padding for following tests
-                $style.remove();
                 done();
             });
 
