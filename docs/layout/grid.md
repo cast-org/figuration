@@ -561,6 +561,22 @@ For example, here's are some grid layouts that apply to every device and viewpor
 {% endexample %}
 </div>
 
+#### Equal Width with Multiple Rows
+
+Create equal-width columns that span multiple rows by inserting a `.w-100` where you want the columns to break to a new line. Make the breaks responsive by mixing the `.w-100` with some [responsive display utilities]({{ site.baseurl }}/utilities/display-property/).
+
+<div class="cf-example-row">
+{% example html %}
+<div class="row row-flex">
+  <div class="col">1 of 4</div>
+  <div class="col">2 of 4</div>
+  <div class="w-100"></div>
+  <div class="col">3 of 4</div>
+  <div class="col">4 of 4</div>
+</div>
+{% endexample %}
+</div>
+
 #### Controlled Width Column
 
 You can also set the width of one column and the others will automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths.
