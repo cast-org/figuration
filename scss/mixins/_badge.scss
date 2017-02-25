@@ -1,10 +1,16 @@
 // Badges
-@mixin badge-variant($bg, $hover-bg) {
+@mixin badge-variant($color, $bg, $hover-color, $hover-bg) {
+    @if ($color != $badge-color) {
+        color: $color;
+    }
     background-color: $bg;
     border-color: $bg;
 
     &[href] {
         @include hover-focus {
+            @if ($hover-color != $badge-link-hover-color) {
+                color: $hover-color;
+            }
             background-color: $hover-bg;
             border-color: $hover-bg;
         }
