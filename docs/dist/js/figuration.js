@@ -204,6 +204,16 @@ if (typeof jQuery === 'undefined') {
         };
     };
 
+    $.fn.CFW_measureScrollbar = function() {
+        var $body = $(document.body);
+        var scrollDiv = document.createElement('div');
+        scrollDiv.setAttribute('style', ' position: absolute; top: -9999px; width: 50px; height: 50px; overflow: scroll;');
+        $body.append(scrollDiv);
+        var scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;
+        $body[0].removeChild(scrollDiv);
+        return scrollbarWidth;
+    };
+
 })(jQuery);
 
 /**
@@ -3138,7 +3148,7 @@ if (typeof jQuery === 'undefined') {
 
         checkScrollbar : function() {
             this.bodyIsOverflowing = document.body.clientWidth < window.innerWidth;
-            this.scrollbarWidth = this.measureScrollbar();
+            this.scrollbarWidth = $().CFW_measureScrollbar();
         },
 
         setScrollbar : function() {

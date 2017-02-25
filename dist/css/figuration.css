@@ -6683,14 +6683,6 @@ a.badge:focus, a.badge:hover {
   content: "";
 }
 
-.modal-scrollbar-measure {
-  position: absolute;
-  top: -9999px;
-  width: 50px;
-  height: 50px;
-  overflow: scroll;
-}
-
 @media (min-width: 36em) {
   .modal-dialog {
     max-width: 33rem;
