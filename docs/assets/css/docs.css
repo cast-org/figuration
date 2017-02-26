@@ -738,7 +738,8 @@ h4 > code {
   }
 }
 
-.cf-example > [class*="bg-"]:not(.navbar) {
+.cf-example > [class*="bg-"]:not(.navbar),
+.cf-example .d-table-cell {
   padding: .5rem;
   margin-top: .5rem;
   margin-bottom: .5rem;
@@ -900,6 +901,11 @@ h4 > code {
     display: block;
     visibility: visible;
   }
+}
+
+.cf-example-flex > div div {
+  background-color: rgba(34, 68, 102, 0.15);
+  border: 1px solid rgba(34, 68, 102, 0.2);
 }
 
 .hll {
