@@ -8,11 +8,9 @@ Control an element's [`display` property](https://developer.mozilla.org/en-US/do
 
 Available utilities:
 - `.d-block` sets `display: block;`
-- `.d-flex` sets `display: flex;`
 - `.d-inline` sets `display: inline;`
-- `.d-inline-block` sets `display: inline-block;`
-- `.d-table`sets `display: table;`
-- `.d-table-cell`  sets `display: table-cell;`
+- `.d-table` sets `display: table;`
+- `.d-table-cell` sets `display: table-cell;`
 
 These classes are also available in responsive variants, in the form of `.d{-breakpoint}-{value}`, such as `.d-lg-block`. Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) is used.
 
@@ -21,9 +19,13 @@ While we also have a `.d-none` utility to make an element `display: none;`, usin
 {% example html %}
 <div class="d-inline bg-success">Inline</div>
 <div class="d-inline bg-success">Inline</div>
+{% endexample %}
 
+{% example html %}
 <span class="d-block bg-primary">Block</span>
+{% endexample %}
 
+{% example html %}
 <div class="d-inline-block bg-warning">
   <h3>inline-block</h3>
   Paint the fence!
@@ -32,7 +34,9 @@ While we also have a `.d-none` utility to make an element `display: none;`, usin
   <h3>inline-block</h3>
   Sand the floor!
 </div>
+{% endexample %}
 
+{% example html %}
 <div class="d-table bg-info">
     Table
     <div class="d-table">
