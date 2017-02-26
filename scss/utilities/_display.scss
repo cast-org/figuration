@@ -8,8 +8,9 @@
         .d#{$bprule}-none { display: none !important; }
         .d#{$bprule}-block { display: block !important; }
         .d#{$bprule}-flex { display: flex !important; }
-        .d#{$bprule}-inline-block { display: inline-block !important; }
         .d#{$bprule}-inline { display: inline !important; }
+        .d#{$bprule}-inline-block { display: inline-block !important; }
+        .d#{$bprule}-inline-flex { display: inline-flex !important; }
         .d#{$bprule}-table { display: table !important; }
         .d#{$bprule}-table-cell { display: table-cell !important; }
     }
