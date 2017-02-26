@@ -102,7 +102,8 @@
 }
 
 // Utilities
-.cf-example > [class*="bg-"]:not(.navbar) {
+.cf-example > [class*="bg-"]:not(.navbar),
+.cf-example .d-table-cell {
     padding: .5rem;
     margin-top: .5rem;
     margin-bottom: .5rem;
@@ -257,5 +258,14 @@
     .cf-example-tabResponsive .tab-pane {
         display: block;
         visibility: visible;
+    }
+}
+
+
+// Flex utilities
+.cf-example-flex {
+    > div div {
+        background-color: rgba(34,68,102,.15);
+        border: $gridline-border-width solid rgba(34,68,102,.2);
     }
 }
