@@ -1,9 +1,5 @@
 // scss-lint:disable ImportantRule
 // Margin and Padding
-.mx-auto {
-    margin-right: auto !important;
-    margin-left:  auto !important;
-}
 
 @each $breakpoint in map-keys($grid-breakpoints) {
     $bprule: breakpoint-designator($breakpoint);
@@ -30,6 +26,21 @@
                     #{$prop}-bottom: $length-y !important;
                 }
             }
+        }
+
+        // Auto margin
+        .m#{$bprule}-auto { margin:        auto !important; }
+        .mt#{$bprule}-auto { margin-top:    auto !important; }
+        .mr#{$bprule}-auto { margin-right:  auto !important; }
+        .mb#{$bprule}-auto { margin-bottom: auto !important; }
+        .ml#{$bprule}-auto { margin-left:   auto !important; }
+        .mx#{$bprule}-auto {
+            margin-right: auto !important;
+            margin-left:  auto !important;
+        }
+        .my#{$bprule}-auto {
+            margin-top:    auto !important;
+            margin-bottom: auto !important;
         }
     }
 }
