@@ -1,34 +1,57 @@
-﻿// Flex variation
-// Custom styles for additional flex alignment options.
+// scss-lint:disable ImportantRule
+
+// Flexbox utilities
+// Custom styles for additional flexbox alignment
 
 @if $enable-flex-full or $enable-flex-opt {
     @each $breakpoint in map-keys($grid-breakpoints) {
         $bprule: breakpoint-designator($breakpoint);
 
         @include media-breakpoint-up($breakpoint) {
-            // Flex column reordering
+            // Order
             .flex#{$bprule}-first { order: -1; }
             .flex#{$bprule}-last { order: 1; }
             .flex#{$bprule}-unordered { order: 0; }
 
-            // Horizontal alignment for child items
-            .flex#{$bprule}-left { justify-content: flex-start; }
-            .flex#{$bprule}-center { justify-content: center; }
-            .flex#{$bprule}-right { justify-content: flex-end; }
-            .flex#{$bprule}-around { justify-content: space-around; }
-            .flex#{$bprule}-between { justify-content: space-between; }
+            // Rows and Columns
+            .flex#{$bprule}-row { flex-direction: row !important; }
+            .flex#{$bprule}-column { flex-direction: column !important; }
+            .flex#{$bprule}-row-reverse { flex-direction: row-reverse !important; }
+            .flex#{$bprule}-column-reverse { flex-direction: column-reverse !important; }
 
-            // Vertical alignment for child items
-            .flex#{$bprule}-top { align-items: flex-start; }
-            .flex#{$bprule}-middle { align-items: center; }
-            .flex#{$bprule}-bottom { align-items: flex-end; }
-            .flex#{$bprule}-stretch { align-items: stretch; }
+            // Wrap
+            .flex#{$bprule}-wrap { flex-wrap: wrap !important; }
+            .flex#{$bprule}-nowrap { flex-wrap: nowrap !important; }
+            .flex#{$bprule}-wrap-reverse { flex-wrap: wrap-reverse !important; }
+
+            // Justify content of child items
+            .flex#{$bprule}-start { justify-content: flex-start !important; }
+            .flex#{$bprule}-center { justify-content: center !important; }
+            .flex#{$bprule}-end { justify-content: flex-end !important; }
+            .flex#{$bprule}-around { justify-content: space-around !important; }
+            .flex#{$bprule}-between { justify-content: space-between !important; }
+
+            // Alignment of child items
+            .flex#{$bprule}-items-start { align-items: flex-start !important; }
+            .flex#{$bprule}-items-center { align-items: center !important; }
+            .flex#{$bprule}-items-end { align-items: flex-end !important; }
+            .flex#{$bprule}-items-baseline { align-items: baseline !important; }
+            .flex#{$bprule}-items-stretch { align-items: stretch !important; }
+
+            // Align content
+            .flex#{$bprule}-content-start { align-content: flex-start !important; }
+            .flex#{$bprule}-content-end { align-content: flex-end !important; }
+            .flex#{$bprule}-content-center { align-content: center !important; }
+            .flex#{$bprule}-content-between { align-content: space-between !important; }
+            .flex#{$bprule}-content-around { align-content: space-around !important; }
+            .flex#{$bprule}-content-stretch { align-content: stretch !important; }
 
             // Alignment per item
-            .flex-self#{$bprule}-top { align-self: flex-start; }
-            .flex-self#{$bprule}-middle { align-self: center; }
-            .flex-self#{$bprule}-bottom { align-self: flex-end; }
-            .flex-self#{$bprule}-stretch { align-self: stretch; }
+            .flex#{$bprule}-self-start { align-self: flex-start !important; }
+            .flex#{$bprule}-self-center { align-self: center !important; }
+            .flex#{$bprule}-self-end { align-self: flex-end !important; }
+            .flex#{$bprule}-self-baseline { align-self: baseline !important; }
+            .flex#{$bprule}-self-stretch { align-self: stretch !important; }
         }
     }
 }
