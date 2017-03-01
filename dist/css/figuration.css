@@ -423,12 +423,6 @@ a:hover {
   text-decoration: underline;
 }
 
-a:focus {
-  outline: 0;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
-}
-
 a:not([href]):not([tabindex]) {
   color: inherit;
   text-decoration: none;
@@ -440,9 +434,7 @@ a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
 }
 
 a:not([href]):not([tabindex]):focus {
-  outline: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  outline: 0;
 }
 
 pre {
@@ -977,11 +969,11 @@ pre code {
           background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 0.25rem;
-  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
-  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
 .form-control::-ms-expand {
@@ -992,10 +984,8 @@ pre code {
 .form-control:focus {
   color: #474747;
   background-color: #fff;
-  border-color: #7d97d9;
+  border-color: #70b0d6;
   outline: none;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .form-control::-webkit-input-placeholder {
@@ -1166,22 +1156,16 @@ fieldset[disabled] .form-check-label {
   margin-top: 0.3125rem;
   margin-left: -1.25rem;
   vertical-align: baseline;
-  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
-  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
 .form-check-input:only-child {
   position: static;
   vertical-align: top;
-}
-
-.form-check-input:focus {
-  outline: 0;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .form-check-inline {
@@ -1225,8 +1209,6 @@ fieldset[disabled] .form-check-label {
 .has-success .custom-select:focus,
 .has-success .custom-file-control:focus {
   border-color: #0f7f16;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .has-success .input-group-addon {
@@ -1256,8 +1238,6 @@ fieldset[disabled] .form-check-label {
 .has-warning .custom-select:focus,
 .has-warning .custom-file-control:focus {
   border-color: #ba7e00;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .has-warning .input-group-addon {
@@ -1287,8 +1267,6 @@ fieldset[disabled] .form-check-label {
 .has-danger .custom-select:focus,
 .has-danger .custom-file-control:focus {
   border-color: #b91b0d;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .has-danger .input-group-addon {
@@ -1511,9 +1489,8 @@ fieldset[disabled] .form-check-label {
 }
 
 .custom-control-input:focus ~ .custom-control-indicator {
-  outline: none;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
+  -webkit-box-shadow: 0 0 0 0.0625rem #fff, 0 0 0 0.1875rem #70b0d6;
+          box-shadow: 0 0 0 0.0625rem #fff, 0 0 0 0.1875rem #70b0d6;
 }
 
 .custom-control-input:active ~ .custom-control-indicator {
@@ -1550,11 +1527,11 @@ fieldset[disabled] .form-check-label {
   -webkit-background-size: 50% 50%;
           background-size: 50% 50%;
   border: 1px solid rgba(0, 0, 0, 0.25);
-  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
-  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
 .custom-checkbox .custom-control-indicator {
@@ -1603,11 +1580,11 @@ fieldset[disabled] .form-check-label {
           background-size: 8px 10px;
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 0.25rem;
-  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
-  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -1616,10 +1593,8 @@ fieldset[disabled] .form-check-label {
 .custom-select:focus {
   color: #474747;
   background-color: #fff;
-  border-color: #7d97d9;
+  border-color: #70b0d6;
   outline: none;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .custom-select:focus::-ms-value {
@@ -1689,9 +1664,7 @@ fieldset[disabled] .form-check-label {
 }
 
 .custom-file-input:focus ~ .custom-file-control {
-  border-color: #7d97d9;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
+  border-color: #70b0d6;
 }
 
 .custom-file-control {
@@ -1712,11 +1685,11 @@ fieldset[disabled] .form-check-label {
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 0.25rem;
-  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
-  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
 .custom-file-control:lang(en)::after {
@@ -1757,20 +1730,18 @@ fieldset[disabled] .form-check-label {
           background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 0.25rem;
-  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
-  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
 .custom-color:focus {
   color: #474747;
   background-color: #fff;
-  border-color: #7d97d9;
+  border-color: #70b0d6;
   outline: none;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .btn {
@@ -1789,26 +1760,25 @@ fieldset[disabled] .form-check-label {
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   border-radius: 0.25rem;
-  -webkit-transition: all 0.15s ease-in-out;
-  -o-transition: all 0.15s ease-in-out;
-  transition: all 0.15s ease-in-out;
+  -webkit-transition: -webkit-box-shadow 0.15s ease-in-out;
+  transition: -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: box-shadow 0.15s ease-in-out;
+  transition: box-shadow 0.15s ease-in-out;
+  transition: box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.btn:focus, .btn:hover {
+  text-decoration: none;
 }
 
 .btn:focus, .btn.focus {
-  outline: 0;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
-}
-
-.btn:focus, .btn.focus, .btn:hover {
-  text-decoration: none;
+  -webkit-box-shadow: 0 0 0 2px rgba(113, 142, 214, 0.75);
+          box-shadow: 0 0 0 2px rgba(113, 142, 214, 0.75);
 }
 
 .btn.disabled, .btn:disabled {
   cursor: not-allowed;
   opacity: 0.6;
-  -webkit-box-shadow: none;
-          box-shadow: none;
 }
 
 .btn:active, .btn.active,
@@ -1846,6 +1816,13 @@ fieldset[disabled] a.btn {
   border-color: #474747;
 }
 
+.btn:active:hover, .btn.active:hover,
+.open > .btn.dropdown-toggle:hover {
+  color: #575757;
+  background-color: #cfcfcf;
+  border-color: #474747;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #1242ba;
@@ -1868,6 +1845,13 @@ fieldset[disabled] a.btn {
 .open > .btn-primary.dropdown-toggle {
   color: #fff;
   background-color: #0e3390;
+  border-color: #0d2e82;
+}
+
+.btn-primary:active:hover, .btn-primary.active:hover,
+.open > .btn-primary.dropdown-toggle:hover {
+  color: #fff;
+  background-color: #092362;
   border-color: #0d2e82;
 }
 
@@ -1896,6 +1880,13 @@ fieldset[disabled] a.btn {
   border-color: #525252;
 }
 
+.btn-secondary:active:hover, .btn-secondary.active:hover,
+.open > .btn-secondary.dropdown-toggle:hover {
+  color: #fff;
+  background-color: #424242;
+  border-color: #525252;
+}
+
 .btn-info {
   color: #fff;
   background-color: #117cba;
@@ -1918,6 +1909,13 @@ fieldset[disabled] a.btn {
 .open > .btn-info.dropdown-toggle {
   color: #fff;
   background-color: #0d6090;
+  border-color: #0c5782;
+}
+
+.btn-info:active:hover, .btn-info.active:hover,
+.open > .btn-info.dropdown-toggle:hover {
+  color: #fff;
+  background-color: #094161;
   border-color: #0c5782;
 }
 
@@ -1946,6 +1944,13 @@ fieldset[disabled] a.btn {
   border-color: #0b6011;
 }
 
+.btn-success:active:hover, .btn-success.active:hover,
+.open > .btn-success.dropdown-toggle:hover {
+  color: #fff;
+  background-color: #073c0b;
+  border-color: #0b6011;
+}
+
 .btn-warning {
   color: #fff;
   background-color: #c98800;
@@ -1971,6 +1976,13 @@ fieldset[disabled] a.btn {
   border-color: #8d5f00;
 }
 
+.btn-warning:active:hover, .btn-warning.active:hover,
+.open > .btn-warning.dropdown-toggle:hover {
+  color: #fff;
+  background-color: #694700;
+  border-color: #8d5f00;
+}
+
 .btn-danger {
   color: #fff;
   background-color: #c81d0e;
@@ -1993,6 +2005,13 @@ fieldset[disabled] a.btn {
 .open > .btn-danger.dropdown-toggle {
   color: #fff;
   background-color: #9b160b;
+  border-color: #8c140a;
+}
+
+.btn-danger:active:hover, .btn-danger.active:hover,
+.open > .btn-danger.dropdown-toggle:hover {
+  color: #fff;
+  background-color: #6b0f08;
   border-color: #8c140a;
 }
 
@@ -2022,6 +2041,13 @@ fieldset[disabled] a.btn {
   border-color: #0f389e;
 }
 
+.btn-outline-primary:active:hover, .btn-outline-primary.active:hover,
+.open > .btn-outline-primary.dropdown-toggle:hover {
+  color: #fff;
+  background-color: #0e328c;
+  border-color: #0f389e;
+}
+
 .btn-outline-secondary {
   color: #757575;
   background-color: transparent;
@@ -2045,6 +2071,13 @@ fieldset[disabled] a.btn {
 .open > .btn-outline-secondary.dropdown-toggle {
   color: #fff;
   background-color: #757575;
+  border-color: #636363;
+}
+
+.btn-outline-secondary:active:hover, .btn-outline-secondary.active:hover,
+.open > .btn-outline-secondary.dropdown-toggle:hover {
+  color: #fff;
+  background-color: #5c5c5c;
   border-color: #636363;
 }
 
@@ -2074,6 +2107,13 @@ fieldset[disabled] a.btn {
   border-color: #0e699e;
 }
 
+.btn-outline-info:active:hover, .btn-outline-info.active:hover,
+.open > .btn-outline-info.dropdown-toggle:hover {
+  color: #fff;
+  background-color: #0d5d8b;
+  border-color: #0e699e;
+}
+
 .btn-outline-success {
   color: #108918;
   background-color: transparent;
@@ -2097,6 +2137,13 @@ fieldset[disabled] a.btn {
 .open > .btn-outline-success.dropdown-toggle {
   color: #fff;
   background-color: #108918;
+  border-color: #0e7414;
+}
+
+.btn-outline-success:active:hover, .btn-outline-success.active:hover,
+.open > .btn-outline-success.dropdown-toggle:hover {
+  color: #fff;
+  background-color: #0b5b10;
   border-color: #0e7414;
 }
 
@@ -2126,6 +2173,13 @@ fieldset[disabled] a.btn {
   border-color: #ab7400;
 }
 
+.btn-outline-warning:active:hover, .btn-outline-warning.active:hover,
+.open > .btn-outline-warning.dropdown-toggle:hover {
+  color: #fff;
+  background-color: #966500;
+  border-color: #ab7400;
+}
+
 .btn-outline-danger {
   color: #c81d0e;
   background-color: transparent;
@@ -2152,6 +2206,13 @@ fieldset[disabled] a.btn {
   border-color: #aa190c;
 }
 
+.btn-outline-danger:active:hover, .btn-outline-danger.active:hover,
+.open > .btn-outline-danger.dropdown-toggle:hover {
+  color: #fff;
+  background-color: #98160b;
+  border-color: #aa190c;
+}
+
 .btn-link {
   text-decoration: underline;
   color: #1242ba;
@@ -2173,6 +2234,13 @@ fieldset[disabled] a.btn {
 
 .btn-link:active, .btn-link.active,
 .open > .btn-link.dropdown-toggle {
+  color: #091f58;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.btn-link:active:hover, .btn-link.active:hover,
+.open > .btn-link.dropdown-toggle:hover {
   color: #091f58;
   background-color: transparent;
   border-color: transparent;
@@ -3758,12 +3826,6 @@ tbody.collapse.in {
   opacity: .75;
 }
 
-.close:focus {
-  outline: 0;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
-}
-
 button.close {
   padding: 0;
   background: transparent;
@@ -3789,12 +3851,6 @@ button.close {
   text-decoration: none;
   cursor: move;
   opacity: .75;
-}
-
-.drag:focus {
-  outline: 0;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 button.drag {
@@ -4077,9 +4133,6 @@ base::-moz-progress-bar,
 
 .list-group-item-action:focus {
   z-index: 2;
-  outline: 0;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .list-group-item-action:focus, .list-group-item-action:hover {
@@ -4311,8 +4364,9 @@ button.list-group-item-danger.active {
   z-index: 2;
 }
 
-.btn-group > .btn:focus,
-.btn-group-vertical > .btn:focus {
+.btn-group > .btn:focus, .btn-group > .btn.focus,
+.btn-group-vertical > .btn:focus,
+.btn-group-vertical > .btn.focus {
   z-index: 3;
 }
 
@@ -4406,11 +4460,6 @@ button.list-group-item-danger.active {
 .btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-}
-
-.btn-group .dropdown-toggle:active,
-.btn-group.open .dropdown-toggle {
-  outline: 0;
 }
 
 .btn + .dropdown-toggle-split {
@@ -5149,8 +5198,6 @@ li .dropdown-header {
   color: #757575;
   cursor: not-allowed;
   opacity: 0.6;
-  -webkit-box-shadow: none;
-          box-shadow: none;
 }
 
 .nav-flex {
@@ -6996,12 +7043,6 @@ a.badge:focus, a.badge:hover {
       touch-action: none;
   background-color: #1242ba;
   border-radius: 50%;
-}
-
-.slider-thumb:focus {
-  outline: 0;
-  -webkit-box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
-          box-shadow: 0 0 0.125rem 0.1875rem rgba(65, 150, 200, 0.75);
 }
 
 .slider-thumb:focus, .slider-thumb:hover {

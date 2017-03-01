@@ -46,6 +46,13 @@
   border-color: #f0f0f0;
 }
 
+.navbar-dark .btn-toggler:active:hover, .navbar-dark .btn-toggler.active:hover,
+.open > .navbar-dark .btn-toggler.dropdown-toggle:hover {
+  color: #474747;
+  background-color: #d7d7d7;
+  border-color: #f0f0f0;
+}
+
 .icon-menu {
   display: inline-block;
   margin-top: -.25rem;
@@ -188,11 +195,6 @@
 .cf-sidebar .nav-link {
   display: block;
   padding: .05rem .5rem;
-  text-decoration: none;
-}
-
-.cf-sidebar .nav-link:focus, .cf-sidebar .nav-link:hover {
-  text-decoration: underline;
 }
 
 .cf-sidebar .nav-link.active {
