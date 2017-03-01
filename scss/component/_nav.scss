@@ -17,11 +17,6 @@
         color: $nav-link-disabled-color;
         cursor: $cursor-disabled;
         opacity: $nav-link-disabled-opacity;
-        @if $enable-focus-ring {
-            box-shadow: none;
-        } @else {
-            outline: 0;
-        }
     }
 }
 

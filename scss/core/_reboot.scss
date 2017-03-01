@@ -167,14 +167,6 @@ a {
         color: $link-hover-color;
         text-decoration: $link-hover-decoration;
     }
-
-    &:focus {
-        @if $enable-focus-ring {
-            @include focus-ring();
-        } @else {
-            @include focus-outline();
-        }
-    }
 }
 
 // And undo these styles for placeholder links/named anchors (without href)
@@ -193,10 +185,7 @@ a:not([href]):not([tabindex]) {
     }
 
     &:focus {
-        outline: none;
-        @if $enable-focus-ring {
-            box-shadow: none;
-        }
+        outline: 0;
     }
 }
 

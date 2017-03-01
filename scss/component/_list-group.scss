@@ -29,10 +29,7 @@
     text-decoration: none;
 
     &:focus {
-        @if $enable-focus-ring {
-            z-index: 2;
-            @include focus-ring();
-        }
+        z-index: 2;
     }
 
     // Hover state
