@@ -28,6 +28,12 @@
         color: $hover-color;
         background-color: $hover-bg;
         border-color: $hover-border;
+
+        &:hover {
+            color: $hover-color;
+            background-color: darken($hover-bg, 10%);
+            border-color: $hover-border;
+        }
     }
 }
 
@@ -56,6 +62,12 @@
         color: $hover-color;
         background-color: $color;
         border-color: $border;
+
+        &:hover {
+            color: $hover-color;
+            background-color: darken($color, 10%);
+            border-color: $border;
+        }
     }
 }
 

@@ -29,15 +29,7 @@
 
     &:focus ~ .custom-control-indicator {
         // the mixin is not used here to make sure there is feedback
-        //box-shadow: $custom-control-focus-indicator-box-shadow;
-
-        outline: none;
-
-        @if $enable-focus-ring {
-            box-shadow: $focus-ring-shadow;
-        } @else {
-            box-shadow: $custom-control-focus-indicator-box-shadow;
-        }
+        box-shadow: $custom-control-focus-indicator-box-shadow;
     }
 
     &:active ~ .custom-control-indicator {
@@ -144,6 +136,7 @@
     background-size: $custom-select-indicator-size;
     border: $input-border-width solid $input-border-color;
     @include border-radius($input-border-radius);
+    @include box-shadow($input-box-shadow);
     @include transition($input-transition);
     appearance: none;
 
@@ -152,18 +145,7 @@
         background-color: $input-focus-bg;
         border-color: $input-focus-border;
         outline: none;
-
-        @if $enable-shadows {
-            @if $enable-focus-ring {
-                box-shadow: $focus-ring-shadow, $input-focus-box-shadow;
-            } @else {
-                box-shadow: $input-focus-box-shadow;
-            }
-        } @else {
-            @if $enable-focus-ring {
-                box-shadow: $focus-ring-shadow;
-            }
-        }
+        @include box-shadow($input-focus-box-shadow);
 
         &::-ms-value {
             // For visual consistency with other platforms/browsers,
@@ -228,18 +210,7 @@
 
     &:focus ~ .custom-file-control {
         border-color: $input-focus-border;
-
-        @if $enable-shadows {
-            @if $enable-focus-ring {
-                box-shadow: $focus-ring-shadow, $input-focus-box-shadow;
-            } @else {
-                box-shadow: $input-focus-box-shadow;
-            }
-        } @else {
-            @if $enable-focus-ring {
-                box-shadow: $focus-ring-shadow;
-            }
-        }
+        @include box-shadow($input-focus-box-shadow);
     }
 }
 

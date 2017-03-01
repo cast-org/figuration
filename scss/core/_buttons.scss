@@ -14,19 +14,13 @@
     @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
     @include transition($btn-transition);
 
-    &:focus,
-    &.focus {
-        @if $enable-focus-ring {
-            @include focus-ring();
-        } @else {
-            @include focus-outline();
-        }
+    @include hover-focus {
+        text-decoration: none;
     }
 
     &:focus,
-    &.focus,
-    &:hover {
-        text-decoration: none;
+    &.focus {
+        box-shadow: $btn-focus-box-shadow;
     }
 
     // Disabled comes first so active can restyle
@@ -34,11 +28,7 @@
     &:disabled {
         cursor: $cursor-disabled;
         opacity: $btn-disabled-opacity;
-        @if $enable-focus-ring {
-            box-shadow: none;
-        } @else {
-            outline: 0;
-        }
+        @include box-shadow(none);
     }
 
     &:active,

@@ -24,18 +24,7 @@
 
         &:focus {
             border-color: $border-hover;
-
-            @if $enable-shadows {
-                @if $enable-focus-ring {
-                    box-shadow: $focus-ring-shadow, $input-focus-box-shadow;
-                } @else {
-                    box-shadow: $input-focus-box-shadow;
-                }
-            } @else {
-                @if $enable-focus-ring {
-                    box-shadow: $focus-ring-shadow;
-                }
-            }
+            @include box-shadow($input-focus-box-shadow);
         }
     }
 
@@ -65,17 +54,6 @@
         background-color: $input-focus-bg;
         border-color: $input-focus-border;
         outline: none;
-
-        @if $enable-shadows {
-            @if $enable-focus-ring {
-                box-shadow: $focus-ring-shadow, $input-focus-box-shadow;
-            } @else {
-                box-shadow: $input-focus-box-shadow;
-            }
-        } @else {
-            @if $enable-focus-ring {
-                box-shadow: $focus-ring-shadow;
-            }
-        }
+        @include box-shadow($input-focus-box-shadow);
     }
 }

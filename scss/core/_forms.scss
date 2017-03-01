@@ -195,14 +195,6 @@ textarea.form-control {
         position: static;
         vertical-align: top;
     }
-
-    &:focus {
-        @if $enable-focus-ring {
-            @include focus-ring();
-        } @else {
-            @include focus-outline();
-        }
-    }
 }
 
 // Radios and checkboxes on same line

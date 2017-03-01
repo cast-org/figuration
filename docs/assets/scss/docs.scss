@@ -176,11 +176,6 @@ $docs-color: #246;
     .nav-link {
         display: block;
         padding: .05rem .5rem;
-        text-decoration: none;
-
-        @include hover-focus {
-            text-decoration: underline;
-        }
 
         &.active {
             color: $white;

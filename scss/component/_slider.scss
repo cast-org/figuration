@@ -37,14 +37,6 @@
         box-shadow: $slider-thumb-shadow;
     }
 
-    &:focus {
-        @if $enable-focus-ring {
-            @include focus-ring();
-        } @else {
-            @include focus-outline();
-        }
-    }
-
     @include hover-focus {
         background-color: $slider-thumb-min-hover-bg;
     }
