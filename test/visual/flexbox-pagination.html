@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<title>Figuration - Flexbox Pagination</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
+
+<script type="text/javascript" src="../vendor/jquery.min.js"></script>
+<script type="text/javascript" src="../../dist/js/figuration.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+    <h1>Pagination</h1>
+
+    <p>
+        Here we are testing the two different styles for button group layouts using the opt-in flexbox classes.
+        They are designated as follows:
+    </p>
+    <ul>
+        <li><strong>normal:</strong> float model</li>
+        <li><strong>flex:</strong> opt-in flexbox model</li>
+    </ul>
+
+    normal:
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li class="page-item"><a href="#" class="page-link">Previous</a></li>
+            <li class="page-item"><a href="#" class="page-link">1</a></li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item"><a href="#" class="page-link">3</a></li>
+            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+    </nav>
+
+    flexbox:
+    <nav aria-label="Page navigation">
+        <ul class="pagination pagination-flex">
+            <li class="page-item"><a href="#" class="page-link">Previous</a></li>
+            <li class="page-item"><a href="#" class="page-link">1</a></li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item"><a href="#" class="page-link">3</a></li>
+            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+    </nav>
+
+    <hr />
+
+    normal:
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="page-item">
+                <a href="#" class="page-link disabled" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link active">
+                    1
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item"><a href="#" class="page-link">3</a></li>
+            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+    </nav>
+
+    flexbox:
+    <nav aria-label="...">
+        <ul class="pagination pagination-flex">
+            <li class="page-item">
+                <a href="#" class="page-link disabled" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link active">
+                    1
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item"><a href="#" class="page-link">3</a></li>
+            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+    </nav>
+
+    <hr />
+
+    normal:
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="page-item">
+                <span class="page-link disabled">Previous</span>
+            </li>
+            <li class="page-item">
+                <span class="page-link active">
+                    1
+                    <span class="sr-only">(current)</span>
+                </span>
+            </li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item"><a href="#" class="page-link">3</a></li>
+            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+    </nav>
+
+    flexbox:
+    <nav aria-label="...">
+        <ul class="pagination pagination-flex">
+            <li class="page-item">
+                <span class="page-link disabled">Previous</span>
+            </li>
+            <li class="page-item">
+                <span class="page-link active">
+                    1
+                    <span class="sr-only">(current)</span>
+                </span>
+            </li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item"><a href="#" class="page-link">3</a></li>
+            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+    </nav>
+
+
+
+</div>
+
+</body>
+</html>
