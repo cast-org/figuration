@@ -740,6 +740,11 @@ h4 > code {
   }
 }
 
+.cf-example .pagination {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
 .cf-example > [class*="bg-"]:not(.navbar),
 .cf-example .d-table-cell {
   padding: .5rem;
