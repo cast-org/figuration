@@ -541,17 +541,17 @@ Use contextual classes to color table rows or individual cells.
 <!-- On rows -->
 <tr class="table-active">...</tr>
 <tr class="table-success">...</tr>
+<tr class="table-info">...</tr>
 <tr class="table-warning">...</tr>
 <tr class="table-danger">...</tr>
-<tr class="table-info">...</tr>
 
 <!-- On cells (`td` or `th`) -->
 <tr>
   <td class="table-active">...</td>
   <td class="table-success">...</td>
+  <td class="table-info">...</td>
   <td class="table-warning">...</td>
   <td class="table-danger">...</td>
-  <td class="table-info">...</td>
 </tr>
 {% endhighlight %}
 
@@ -630,17 +630,17 @@ Regular table background variants are not available with the inverse table, howe
 <!-- On rows -->
 <tr class="bg-primary">...</tr>
 <tr class="bg-success">...</tr>
+<tr class="bg-info">...</tr>
 <tr class="bg-warning">...</tr>
 <tr class="bg-danger">...</tr>
-<tr class="bg-info">...</tr>
 
 <!-- On cells (`td` or `th`) -->
 <tr>
   <td class="bg-primary">...</td>
   <td class="bg-success">...</td>
+  <td class="bg-info">...</td>
   <td class="bg-warning">...</td>
   <td class="bg-danger">...</td>
-  <td class="bg-info">...</td>
 </tr>
 {% endhighlight %}
 
