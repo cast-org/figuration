@@ -110,13 +110,13 @@ Please refer to the [Accessiblity notes about conveying meaning with color]({{ s
 {% endcallout %}
 
 {% example html %}
-<div class="list-group">
+<ul class="list-group">
   <li class="list-group-item">Cras justo odio</li>
   <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
   <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
   <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
   <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
-</div>
+</ul>
 {% endexample %}
 
 Contextual classes also work with `.list-group-item-action`. Note the addition of the hover styles here not present in the previous example. Also supported is the `.active` state; apply it to indicate an active selection on a contextual list group item.
