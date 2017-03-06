@@ -3,7 +3,7 @@
     display: block;
     width: 100%;
     height: $progress-height;
-    margin-bottom: $spacer-y;
+    margin-bottom: $progress-spacer-y;
     // Force rounded corners by use of cropping
     overflow: hidden;
     // Set overall background
@@ -53,7 +53,7 @@ base::-moz-progress-bar, // Absurd-but-syntactically-valid selector to make thes
 // IE9
 .progress-bar {
     display: inline-block;
-    height: $spacer-y;
+    height: $progress-height;
     text-indent: -999rem; // Simulate hiding of value as in native `<progress>`
     vertical-align: top;
     background-color: $progress-bar-bg;
@@ -62,20 +62,20 @@ base::-moz-progress-bar, // Absurd-but-syntactically-valid selector to make thes
 // Striped
 .progress-striped[value]::-webkit-progress-value {
     @include gradient-striped();
-    background-size: $spacer-y  $spacer-y;
+    background-size: $progress-height $progress-height;
 }
 .progress-striped[value]::-moz-progress-bar {
     @include gradient-striped();
-    background-size: $spacer-y  $spacer-y;
+    background-size: $progress-height $progress-height;
 }
 .progress-striped[value]::-ms-fill {
     @include gradient-striped();
-    background-size: $spacer-y  $spacer-y;
+    background-size: $progress-height $progress-height;
 }
 // IE9
 .progress-striped .progress-bar {
     @include gradient-striped();
-    background-size: $spacer-y  $spacer-y;
+    background-size: $progress-height $progress-height;
 }
 
 // Context variations

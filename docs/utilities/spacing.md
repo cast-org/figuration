@@ -28,11 +28,11 @@ Where *sides* is one of:
 Where *size* is one of:
 
 * `0` - for classes that eliminate the `margin` or `padding` by setting it to `0`
-* `0_25` - for classes that set the property to `$spacer-x * 0.25` or `$spacer-y * 0.25`
-* `0_5` - for classes that set the property to `$spacer-x * 0.5` or `$spacer-y * 0.5`
-* `1` - for classes that set the property to `$spacer-x` or `$spacer-y`
-* `1_5` - for classes that set the property to `$spacer-x * 1.5` or `$spacer-y * 1.5`
-* `2` - for classes that set the property to `$spacer-x * 2` or `$spacer-y * 2`
+* `0_25` - for classes that set the property to `$spacer * 0.25`
+* `0_5` - for classes that set the property to `$spacer * 0.5`
+* `1` - for classes that set the property to `$spacer`
+* `1_5` - for classes that set the property to `$spacer * 1.5`
+* `2` - for classes that set the property to `$spacer * 2`
 
 (You can add more sizes by adding entries to the `$spacers` Sass map variable.)
 
@@ -44,20 +44,20 @@ Here are some representative examples of these classes:
 }
 
 .ml-1 {
-  margin-left: $spacer-x !important;
+  margin-left: $spacer !important;
 }
 
 .mt-md-1 {
-  margin-top: $spacer-y !important;
+  margin-top: $spacer !important;
 }
 
 .px-1_5 {
-  padding-left: ($spacer-x * 1.5) !important;
-  padding-right: ($spacer-x * 1.5) !important;
+  padding-left: ($spacer * 1.5) !important;
+  padding-right: ($spacer * 1.5) !important;
 }
 
 .p-2 {
-  padding: ($spacer-y * 2) ($spacer-x * 2) !important;
+  padding: ($spacer * 2) ($spacer * 2) !important;
 }
 {% endhighlight %}
 

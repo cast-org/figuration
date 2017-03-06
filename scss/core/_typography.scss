@@ -31,8 +31,8 @@ h6, .h6 { font-size: $font-size-h6; }
 // Horizontal Rule
 
 hr {
-    margin-top: $spacer-y;
-    margin-bottom: $spacer-y;
+    margin-top: $hr-spacer-y;
+    margin-bottom: $hr-spacer-y;
     border: 0;
     border-top: $hr-border-width solid $hr-border-color;
 }
