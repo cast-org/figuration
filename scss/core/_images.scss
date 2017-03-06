@@ -27,7 +27,7 @@
     display: inline-block;
 }
 .figure-img {
-    margin-bottom: ($spacer-y / 2);
+    margin-bottom: $figure-spacer-y;
     line-height: 1;
 }
 .figure-caption {
