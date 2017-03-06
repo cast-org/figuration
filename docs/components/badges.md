@@ -29,6 +29,13 @@ Badges scale to match the size of the immediate parent element by using relative
 
 Add any of the below mentioned modifier classes to change the appearance of a badge.
 
+{% callout warning %}
+Conveying Meaning to Assistive Technologies
+{:.h5}
+
+Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
+{% endcallout %}
+
 {% example html %}
 <strong>Basic Badges:</strong>
 <p>
@@ -53,9 +60,6 @@ Add any of the below mentioned modifier classes to change the appearance of a ba
 </p>
 
 {% endexample %}
-
-{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
-{{ callout-include | markdownify }}
 
 ## Pill Badges
 

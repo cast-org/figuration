@@ -108,8 +108,12 @@ The `control-*` keys are used by mainly by control items---specifically---button
 
 The `context-*` keys are used for contextual items---specifically---tables, list groups, form validation, and alerts.
 
-{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
-{{ callout-include | markdownify }}
+{% callout warning %}
+Conveying Meaning to Assistive Technologies
+{:.h5}
+
+Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
+{% endcallout %}
 
 {% highlight scss %}
 // Sample of adding more colors using a mixing function

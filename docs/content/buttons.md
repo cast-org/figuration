@@ -16,6 +16,13 @@ Use Figuration's custom button styles for actions in forms, dialogs, and more. I
 
 Figuration includes a few predefined button styles, each serving its own semantic purpose.
 
+{% callout warning %}
+Conveying Meaning to Assistive Technologies
+{:.h5}
+
+Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
+{% endcallout %}
+
 {% example html %}
 <!-- Base button style -->
 <button type="button" class="btn">Default</button>
@@ -41,9 +48,6 @@ Figuration includes a few predefined button styles, each serving its own semanti
 <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
 <button type="button" class="btn btn-link">Link</button>
 {% endexample %}
-
-{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
-{{ callout-include | markdownify }}
 
 ## Button Tags
 

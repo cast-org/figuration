@@ -42,6 +42,8 @@ Note that this bug will also affect any other in-page links your site may be usi
 
 When nesting headings (`<h1>` - `<h6>`), your primary document header should be an `<h1>`. Subsequent headings should make logical use of `<h2>` - `<h6>` such that screen readers can construct a table of contents for your pages.
 
+Avoid skipping heading levels when structuring your document, as it is confusing for screen readers. For example, after using an `<h2>` in your code, the next heading used should be either `<h2>` or `<h3>`. If you need a heading to look bigger or smaller to match a specific style, use CSS to override the default size.
+
 Learn more at [HTML CodeSniffer](http://squizlabs.github.io/HTML_CodeSniffer/Standards/Section508/) and [Penn State's Accessibility](http://accessibility.psu.edu/headings/).
 
 ## Screen Reader Only Content
@@ -59,22 +61,32 @@ Some helpful references:
 
 ## Disabled Anchors
 
-While there is the `disabled` attribute available for `<button>`s, HTML does not have an easy way to disable user interaction with `<a>`s. Some of Figuration's components make use of a `.disabled` class that uses `pointer-events: none` to try to disable the link functionality of `<a>`s, but that CSS property is not yet standardized. In addition, even in browsers that do support `pointer-events: none`, keyboard navigation remains unaffected, meaning that sighted keyboard users and users of assistive technologies will still be able to activate these links.
+Many of Figuration's components use of a `.disabled` class to make items _visually_ appear disabled.  While there is the `disabled` attribute available for `<button>`s, HTML does not have an easy way to disable user interaction with `<a>`s.
 
-One solution is to add a `tabindex="-1"` attribute on these links (to prevent them from receiving keyboard focus) and use custom JavaScript to disable their functionality.
+It should also be noted that:
+- `<a>`s don't support the `disabled` attribute.
+- The `.disabled` class uses a future-friendly `pointer-events: none` property to try to disable the `pointer-events` and link functionality of `<a>`s, but that CSS property is not yet standardized.
+- In browsers which support `pointer-events: none`, keyboard navigation remains unaffected, meaning that sighted keyboard users and users of assistive technologies will still be able to activate these links.
+- When using both the `pointer-events:none` and `cursor: not-allowed` styles, the disabled cursor is not shown when hovering over the item.
 
+Some solutions include:
+- In some cases, an acceptable solution would be to replace the `<a>` element with a `<span>` to allow for a similar layout.  This is due to `<span>`s also having a default `display: inline` and are not clickable or focusable through keyboard interaction.
+- Disabled links may benefit from the inclusion of an `aria-disabled="true"` attribute to indicate the state of the element to assistive technologies.
+- Add a `tabindex="-1"` attribute on disabled links to prevent them from receiving keyboard focus.
+- Use custom JavaScript to disable their functionality. For example:
 {% highlight js %}
 $('.disabled').click(function(e) {
     e.preventDefault();
 });
 {% endhighlight %}
 
-In some cases, the solution could be to replace the `<a>` element with a `<span>` to allow for a similar layout.  This is due to `<span>`s also having a default `display: inline` and are not clickable or focusable through keyboard interaction.
+## Conveying Meaning With Color
 
+Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies—such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the `.sr-only` class.
 
 ## Component Requirements
 
-Some common HTML elements are always in need for basic accessibility enhancements through `role`s and Aria attributes. Below is a list of some of the most frequently used ones.
+Some common HTML elements are always in need for basic accessibility enhancements through `role`s and ARIA attributes. Below is a list of some of the most frequently used ones.
 
 ### Button Groups
 

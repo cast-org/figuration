@@ -95,6 +95,13 @@ With `<button>`s, you can also make use of the `disabled` attribute instead of t
 
 Use contextual classes to style list items with a stateful background and color.
 
+{% callout warning %}
+Conveying Meaning to Assistive Technologies
+{:.h5}
+
+Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
+{% endcallout %}
+
 {% example html %}
 <div class="list-group">
   <li class="list-group-item">Cras justo odio</li>
@@ -116,9 +123,6 @@ Contextual classes also work with `.list-group-item-action`. Note the addition o
   <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Vestibulum at eros</a>
 </div>
 {% endexample %}
-
-{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
-{{ callout-include | markdownify }}
 
 ## Adding Badges
 

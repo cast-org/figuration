@@ -395,6 +395,13 @@ You can also use `.card-inverse` with the [contextual backgrounds variants](#bac
 
 Cards include their own variant classes for quickly changing the `background-color` and `border-color` of a card. **Darker colors require the use of `.card-inverse`.**
 
+{% callout warning %}
+Conveying Meaning to Assistive Technologies
+{:.h5}
+
+Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
+{% endcallout %}
+
 {% example html %}
 <div class="card card-inverse card-primary text-center">
   <div class="card-block">
@@ -437,9 +444,6 @@ Cards include their own variant classes for quickly changing the `background-col
   </div>
 </div>
 {% endexample %}
-
-{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
-{{ callout-include | markdownify }}
 
 ### Outline Variants
 

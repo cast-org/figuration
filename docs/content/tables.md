@@ -425,6 +425,13 @@ Add `.table-condensed` to make tables more compact by reducing the cell padding.
 
 Use contextual classes to color table rows or individual cells.
 
+{% callout warning %}
+Conveying Meaning to Assistive Technologies
+{:.h5}
+
+Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
+{% endcallout %}
+
 <div class="table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
@@ -643,9 +650,6 @@ Regular table background variants are not available with the inverse table, howe
   <td class="bg-danger">...</td>
 </tr>
 {% endhighlight %}
-
-{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
-{{ callout-include | markdownify }}
 
 ## Responsive Tables
 
