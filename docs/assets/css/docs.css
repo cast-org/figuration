@@ -329,9 +329,10 @@ h4 > code {
   border-radius: 0.25rem;
 }
 
-.cf-callout h4 {
+.cf-callout .h3, .cf-callout .h4, .cf-callout .h5, .cf-callout .h6 {
   margin-top: 0;
   margin-bottom: .5rem;
+  font-size: 1.25rem;
 }
 
 .cf-callout p:last-child,
@@ -348,7 +349,7 @@ h4 > code {
   border-color: #718ed6;
 }
 
-.cf-callout-primary h4 {
+.cf-callout-primary .h3, .cf-callout-primary .h4, .cf-callout-primary .h5, .cf-callout-primary .h6 {
   color: #0f389e;
 }
 
@@ -357,7 +358,7 @@ h4 > code {
   border-color: #acacac;
 }
 
-.cf-callout-secondary h4 {
+.cf-callout-secondary .h3, .cf-callout-secondary .h4, .cf-callout-secondary .h5, .cf-callout-secondary .h6 {
   color: #636363;
 }
 
@@ -366,7 +367,7 @@ h4 > code {
   border-color: #70b0d6;
 }
 
-.cf-callout-info h4 {
+.cf-callout-info .h3, .cf-callout-info .h4, .cf-callout-info .h5, .cf-callout-info .h6 {
   color: #0e699e;
 }
 
@@ -375,7 +376,7 @@ h4 > code {
   border-color: #70b874;
 }
 
-.cf-callout-success h4 {
+.cf-callout-success .h3, .cf-callout-success .h4, .cf-callout-success .h5, .cf-callout-success .h6 {
   color: #0e7414;
 }
 
@@ -384,7 +385,7 @@ h4 > code {
   border-color: #dfb866;
 }
 
-.cf-callout-warning h4 {
+.cf-callout-warning .h3, .cf-callout-warning .h4, .cf-callout-warning .h5, .cf-callout-warning .h6 {
   color: #ab7400;
 }
 
@@ -393,7 +394,7 @@ h4 > code {
   border-color: #de776e;
 }
 
-.cf-callout-danger h4 {
+.cf-callout-danger .h3, .cf-callout-danger .h4, .cf-callout-danger .h5, .cf-callout-danger .h6 {
   color: #aa190c;
 }
 
