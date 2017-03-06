@@ -49,7 +49,7 @@ figuration/
     +-- figuration.min.js
 ```
 
-We provide compiled CSS and JS (`figuration.*`), as well as compiled and minified CSS and JS (`figuration.min.*`). CSS [source maps](https://developer.chrome.com/devtools/docs/css-preprocessors) (`figuration.*.map`) are available for use with certain browsers' developer tools.
+We provide compiled CSS and JS (`figuration.*`), as well as compiled and minified CSS and JS (`figuration.min.*`). CSS [source maps](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps) (`figuration.*.map`) are available for use with certain browsers' developer tools.
 
 
 ## Bugs and Feature Requests
