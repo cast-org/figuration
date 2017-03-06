@@ -18,7 +18,12 @@ Navs have support for both a `float` style layout, along with both the opt-in fl
 
 If you are using navs to provide a navigation bar, be sure to add a `role="navigation"` to the most logical parent container of the `<ul>`, or wrap a `<nav>` element around the whole navigation. Do not add the role to the `<ul>` itself, as this would prevent it from being announced as an actual list by assistive technologies.
 
-Also, refer to our [Accessibility notes regarding disabled anchors]({{ site.baseurl }}/get-started/accessibility/#disabled-anchors).
+{% callout warning %}
+Disabling Anchors
+{:.h5}
+
+Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl }}/get-started/accessibility/#disabled-anchors).
+{% endcallout %}
 
 ## Base Nav
 
@@ -27,16 +32,16 @@ Roll your own navigation style by extending the base `.nav` component. All Figur
 {% example html %}
 <ul class="nav">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a href="#" class="nav-link active">Active</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
+    <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
   </li>
 </ul>
 {% endexample %}
@@ -45,10 +50,10 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
 
 {% example html %}
 <nav class="nav">
-  <a class="nav-link active" href="#">Active</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
+  <a href="#" class="nav-link active">Active</a>
+  <a href="#" class="nav-link">Link</a>
+  <a href="#" class="nav-link">Link</a>
+  <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
 </nav>
 {% endexample %}
 
@@ -58,10 +63,10 @@ Space out nav links in a horizontal band with `.nav-inline`. Longer series of li
 
 {% example html %}
 <nav class="nav nav-inline">
-  <a class="nav-link active" href="#">Active</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
+  <a href="#" class="nav-link active">Active</a>
+  <a href="#" class="nav-link">Link</a>
+  <a href="#" class="nav-link">Link</a>
+  <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
 </nav>
 {% endexample %}
 
@@ -70,16 +75,16 @@ The same works for a navigation built with lists.
 {% example html %}
 <ul class="nav nav-inline">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a href="#" class="nav-link active">Active</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
+    <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
   </li>
 </ul>
 {% endexample %}
@@ -91,16 +96,16 @@ Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabb
 {% example html %}
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a href="#" class="nav-link active">Active</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
+    <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
   </li>
 </ul>
 {% endexample %}
@@ -112,16 +117,16 @@ Take that same HTML, but use `.nav-pills` instead:
 {% example html %}
 <ul class="nav nav-pills">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a href="#" class="nav-link active">Active</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
+    <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
   </li>
 </ul>
 {% endexample %}
@@ -133,16 +138,16 @@ Add `.nav-stacked` to the `.nav.nav-pills` to stack them vertically. Each `.nav-
 {% example html %}
 <ul class="nav nav-pills nav-stacked">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a href="#" class="nav-link active">Active</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
+    <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
   </li>
 </ul>
 {% endexample %}
@@ -151,10 +156,10 @@ As always, stacked pills are possible without `<ul>`s.
 
 {% example html %}
 <nav class="nav nav-pills nav-stacked">
-  <a class="nav-link active" href="#">Active</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
+  <a href="#" class="nav-link active">Active</a>
+  <a href="#" class="nav-link">Link</a>
+  <a href="#" class="nav-link">Link</a>
+  <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
 </nav>
 {% endexample %}
 
@@ -172,7 +177,7 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}
 {% example html %}
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a href="#" class="nav-link active">Active</a>
   </li>
   <li class="nav-item dropdown">
     <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#navDropdown1">Dropdown</a>
@@ -185,10 +190,10 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
+    <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
   </li>
 </ul>
 {% endexample %}
@@ -198,7 +203,7 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}
 {% example html %}
 <ul class="nav nav-pills">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a href="#" class="nav-link active">Active</a>
   </li>
   <li class="nav-item dropdown">
     <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#navDropdown2">Dropdown</a>
@@ -211,10 +216,10 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a href="#" class="nav-link">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1">Disabled</a>
+    <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
   </li>
 </ul>
 {% endexample %}

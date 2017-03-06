@@ -47,6 +47,13 @@ Add `.active` to a `.list-group-item` to indicate the current active selection.
 
 Add `.disabled` to a `.list-group-item` to make it out to _appear_ disabled. Note that some elements with `.disabled` will also require custom JavaScript to fully disable their click events (e.g., links).
 
+{% callout warning %}
+Disabling Anchors
+{:.h5}
+
+Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl }}/get-started/accessibility/#disabled-anchors).
+{% endcallout %}
+
 {% example html %}
 <ul class="list-group">
   <li class="list-group-item disabled">
@@ -73,7 +80,7 @@ Be sure to **not use the standard `.btn` classes here**.
   <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
   <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
   <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-  <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+  <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1">Vestibulum at eros</a>
 </div>
 {% endexample %}
 
@@ -180,7 +187,7 @@ Add nearly any HTML within, even for linked list groups like the one below.
     <p class="mb-0_25">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
     <small class="text-muted">Donec id elit non mi porta.</small>
   </a>
-  <a href="#" class="list-group-item list-group-item-action disabled">
+  <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1">
     <h5>List group item heading</h5>
     <p class="mb-0_25">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
     <small class="text-muted">Donec id elit non mi porta.</small>

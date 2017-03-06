@@ -166,7 +166,14 @@ Separate groups of related menu items with a divider.
 
 ### Disabled Menu Items
 
-Add `.disabled` to the `a` item in the dropdown to **style them as disabled**.
+Add `.disabled` to the `a` item in the dropdown to make them visually _appear_ disabled.
+
+{% callout warning %}
+Disabling Anchors
+{:.h5}
+
+Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl }}/get-started/accessibility/#disabled-anchors).
+{% endcallout %}
 
 {% example html %}
 <ul class="dropdown-menu">
@@ -175,12 +182,6 @@ Add `.disabled` to the `a` item in the dropdown to **style them as disabled**.
   <li><a href="#">Another link</a></li>
 </ul>
 {% endexample %}
-
-{% callout warning %}
-#### Link Functionality Caveat
-
-The `.disabled` class uses `pointer-events: none` to try to disable the link functionality of `<a>`s, but that CSS property is not yet standardized. In addition, even in browsers that do support `pointer-events: none`, keyboard navigation remains unaffected, meaning that sighted keyboard users and users of assistive technologies will still be able to activate these links. So to be safe, add a `tabindex="-1"` attribute on these links (to prevent them from receiving keyboard focus) and use custom JavaScript to disable their functionality.
-{% endcallout %}
 
 ### Active Menu Items
 
