@@ -236,26 +236,32 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
 
 {% example html %}
 <div class="dropdown dropup">
-  <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
-    Dropup
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-  </ul>
-</div>
-
-<div class="btn-group dropup">
-  <button type="button" class="btn">Split Dropup</button>
-  <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-cfw="dropdown">
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-  </ul>
+    <button type="button" class="btn btn-primary dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+        Dropup
+    </button>
+    <ul class="dropdown-menu">
+        <li class="dropdown-header">Dropdown header</li>
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li>
+           <a href="#">Something else here</a>
+            <ul>
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li>
+                    <a href="#">Something else here</a>
+                    <ul>
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown-divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </li>
+        <li class="dropdown-divider"></li>
+        <li><a href="#" class="disabled">Disabled link</a></li>
+    </ul>
 </div>
 {% endexample %}
 
@@ -266,7 +272,7 @@ By default, a dropdown menu is automatically positioned 100% from the top and al
 Add `.dropdown-menu-left` to a `.dropdown-menu` to right align the dropdown menu, this will also make all submenus open to the left side.  This can also be combined with `.dropup`.
 
 {% example html %}
-<div class="btn-group dropdown-menu-left float-right">
+<div class="dropdown dropdown-menu-left float-right">
     <button type="button" class="btn btn-primary dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
         Drop Left
     </button>
@@ -301,7 +307,7 @@ Add `.dropdown-menu-left` to a `.dropdown-menu` to right align the dropdown menu
 The menu alignment class of `.dropdown-menu-left` will also work with submenu items, and you can use the available `.dropdown-menu-right` to switch submenu directions if needed.  Simply place either class on the `li` parent of the submenu list.
 
 {% example html %}
-<div class="btn-group">
+<div class="dropdown">
     <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
         Dropdown
     </button>
