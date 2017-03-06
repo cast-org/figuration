@@ -8,7 +8,8 @@ group: widgets
 A simple widget that extends on the [Tab widget]({{ site.baseurl }}/widgets/tab/) to add previous and next navigation items that update their disabled state based on the currently active tab/slide.
 
 {% callout info %}
-#### Widget Dependencies
+Widget Dependencies
+{:.h5}
 
 Sideshow requires the following:
 

@@ -25,7 +25,8 @@ Images in Figuration are made responsive with `.img-responsive`. `max-width: 100
 {% endhighlight %}
 
 {% callout warning %}
-#### SVG Images and IE 9-10
+SVG Images and IE 9-10
+{:.h5}
 
 In Internet Explorer 9-10, SVG images with `.img-responsive` are disproportionately sized. To fix this, add `width: 100% \9;` where necessary. This fix improperly sizes other image formats, so Figuration doesn't apply it automatically.
 {% endcallout %}

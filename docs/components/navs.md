@@ -168,7 +168,9 @@ As always, stacked pills are possible without `<ul>`s.
 Add dropdown menus with a little extra HTML and the [Dropdown JavaScript widget]({{ site.baseurl }}/widgets/dropdown/).
 
 {% callout warning %}
-#### Incompatible Widgets
+Incompatible Widgets
+{:.h5}
+
 For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}/widgets/tab/) and [Dropdown widget]({{ site.baseurl }}/widgets/dropdown/) in the same nav item.  This will cause navigation and usability issues.  One or the other, but not both.
 {% endcallout %}
 

@@ -8,7 +8,8 @@ group: widgets
 Accordion extends upon the Collapse widget to associate multiple collapse items in the same container.
 
 {% callout info %}
-#### Widget Dependencies
+Widget Dependencies
+{:.h5}
 
 Accordion requires the following:
 

@@ -8,7 +8,8 @@ group: widgets
 Slider is a robust replacement for the HTML5 element `<input type="range">` with the addition of being able to be used for ranged/multi-thumb input.
 
 {% callout info %}
-#### Widget Dependencies
+Widget Dependencies
+{:.h5}
 
 Slider requires the following:
 

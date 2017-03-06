@@ -57,7 +57,8 @@ The button, button group, pagination, form-control and input-group components al
 By using a map, we can be sure the components are all the same height when horizontally aligned.
 
 {% callout info %}
-#### `<select>` Sizing Caveat
+`<select>` Sizing Caveat
+{:.h5}
 
 Currently there is a minor issue with vertical sizing and `<select>` elements with Internet Explorer.  IE will render `<select>` elements slightly shorter in vertical height than other browsers.
 

@@ -8,7 +8,9 @@ group: widgets
 Add quick, dynamic tab functionality to transition through panes of content.
 
 {% callout warning %}
-#### Incompatible Widgets
+Incompatible Widgets
+{:.h5}
+
 For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}/widgets/tab/) and [Dropdown widget]({{ site.baseurl }}/widgets/dropdown/) in the same nav item.  This will cause navigation and usability issues.  One or the other, but not both.
 {% endcallout %}
 

@@ -56,13 +56,15 @@ Scroll the area below the navbar and watch the active class change. The dropdown
 No matter the implementation method, scrollspy requires the use of `position: relative;` on the element you're spying on. In most cases this is the `<body>`. When scrollspying on elements other than the `<body>`, be sure to have a `height` set and `overflow-y: scroll;` applied.
 
 {% callout danger %}
-#### Resolvable ID targets required
+Resolvable ID targets required
+{:.h5}
 
 Navigation links must have resolvable id targets. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`. Using a `data-target` attribute is also matched, in the example case the attribute would be `data-target="#home"`.
 {% endcallout %}
 
 {% callout info %}
-#### Non-`:visible` target elements ignored
+Non-`:visible` target elements ignored
+{:.h5}
 
 Target elements that are not [`:visible` according to jQuery](https://api.jquery.com/visible-selector/) will be ignored and their corresponding nav items will never be highlighted.
 {% endcallout %}

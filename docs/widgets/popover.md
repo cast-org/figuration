@@ -8,7 +8,8 @@ group: widgets
 A more robust version of a tooltip, that allows for larger pieces of content or interactive functionality.
 
 {% callout info %}
-#### Widget Dependencies
+Widget Dependencies
+{:.h5}
 
 Popover requires the following:
 

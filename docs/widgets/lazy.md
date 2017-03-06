@@ -28,7 +28,8 @@ A lazy loaded image with delay and a fade in animation.
 ## Usage
 
 {% callout info %}
-#### Default Placeholder
+Default Placeholder
+{:.h5}
 
 In the case where the `src` attribute is missing, for set to an emtpy string, a placeholder image is inserted via a `data:image` string on the `src` attribute that equates to a 1x1px transparent GIF.
 
@@ -38,7 +39,8 @@ Default placeholder: <small>(no spaces or line-breaks when used)</small>
 {% endcallout %}
 
 {% callout info %}
-#### Image Dimensions
+Image Dimensions
+{:.h5}
 
 If you do not wish to have the document height change when an image is loaded, then it would be a good idea to specify the `width` and `height` dimensions of the image either through attributes or CSS.
 {% endcallout %}

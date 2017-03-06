@@ -17,7 +17,8 @@ Player is a way to enable customized controls while using the browser's built in
 Currently, there is no base CSS provided by Figuration in either the `figuration.css` or `figuration.min.css` files.  The examples below use CSS that is specific to our docs pages.
 
 {% callout info %}
-#### HTML5 Audio/Video Support
+HTML5 Audio/Video Support
+{:.h5}
 
 Player builds on top of the browser's built in HTML5 `<audio>`/`<video>` player. The limits and supported media types are determined by the browser itself.
 
@@ -25,7 +26,8 @@ W3School's HTML [`<audio>`](http://www.w3schools.com/tags/tag_audio.asp) and [`<
 {% endcallout %}
 
 {% callout info %}
-#### Widget Dependencies
+Widget Dependencies
+{:.h5}
 
 Player requires the following:
 
@@ -35,7 +37,8 @@ Player requires the following:
 {:.cf-callout-dep}
 
 {% callout warning %}
-#### No Media Service Support
+No Media Service Support
+{:.h5}
 
 Player does not support media services such as YouTube, Vimeo, SoundCloud, and others.  There are currently no plans to support these types of services.
 {% endcallout %}

@@ -318,7 +318,8 @@ HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.o
 {% endhighlight %}
 
 {% callout warning %}
-#### jQuery Incompatibility
+jQuery Incompatibility
+{:.h5}
 
 `[hidden]` is not compatible with jQuery's `$(...).hide()` and `$(...).show()` methods. This could potentially change in jQuery 3, but we're not holding our breath. Therefore, we don't currently especially endorse `[hidden]` over other techniques for managing the `display` of elements.
 {% endcallout %}

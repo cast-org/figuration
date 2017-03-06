@@ -58,7 +58,9 @@ Since Figuration is developed to be mobile first, we use a handful of [media que
 For accessibility reasons, the Sass internally maps the pixel defined breakpoints into `em` values.  We assume a 16px default root font size, since this is the default for most browsers.
 
 {% callout info %}
-#### PX vs EM Controversy
+PX vs EM Controversy
+{:.h5}
+
 While this is a very opinionated topic, Figuration has chosen the `em` route for greater accessibility. We believe strongly that this is the correct direction moving forward.
 
 Some reference material - may be competing points of view:

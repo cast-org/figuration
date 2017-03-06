@@ -19,7 +19,9 @@ Figuration's form controls expand on [the Rebooted form styles]({{ site.baseurl 
 Remember, since Figuration utilizes the HTML5 doctype, **all inputs must have a `type` attribute**.
 
 {% callout warning %}
-#### Alternatives to Hidden Labels
+Alternatives to Hidden Labels
+{:.h5}
+
 Assistive technologies such as screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the `.sr-only` class. There are further alternative methods of providing a label for assistive technologies, such as the `aria-label`, `aria-labelledby` or `title` attribute. If none of these are present, assistive technologies may resort to using the `placeholder` attribute, if present, but note that use of `placeholder` as a replacement for other labelling methods is not advised.
 {% endcallout %}
 
@@ -813,13 +815,15 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
 {% endexample %}
 
 {% callout warning %}
-#### Caveat About Link Functionality of `<a>`
+Caveat About Link Functionality of `<a>`
+{:.h5}
 
-By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`. As noted in the section about [disabled state for buttons](../buttons/#disabled-state) (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.
+By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`. As noted in the section about [disabled state for buttons](../buttons/#disabled-state) (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in all browsers, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.
 {% endcallout %}
 
 {% callout danger %}
-#### Cross-browser Compatibility
+Cross-browser Compatibility
+{:.h5}
 
 While Figuration will apply these styles in all browsers, Internet Explorer 11 and below don't fully support the `disabled` attribute on a `<fieldset>`. Use custom JavaScript to disable the fieldset in these browsers.
 {% endcallout %}
@@ -885,7 +889,8 @@ Wrap inputs in grid columns, or any custom parent element, to easily enforce des
 Block-level help text in forms can be created using `.form-text`. Inline help text can be flexibly implemented using any inline HTML element and utility classes like `.text-muted`.
 
 {% callout warning %}
-#### Associating Help Text With Form Controls
+Associating Help Text With Form Controls
+{:.h5}
 
 Help text should be explicitly associated with the form control it relates to using the `aria-describedby` attribute. This will ensure that assistive technologies---such as screen readers---will announce this help text when the user focuses or enters the control.
 {% endcallout %}
@@ -939,17 +944,14 @@ Generally speaking, you'll want to use a particular state for specific types of 
 - **Warning** works well for input values that are in progress, like password strength, or soft validation before a user attempts to submit a form.
 - And lastly, **success** is ideal for situations when you have per-field validation throughout a form and want to encourage a user through the rest of the fields.
 
-Here are some examples of the aforementioned classes in action.
-
-{% comment %}
 {% callout warning %}
-#### Conveying Validation State to Assistive Technologies and Colorblind Users
+Conveying Meaning to Assistive Technologies
+{:.h5}
 
-Using these validation styles to denote the state of a form control only provides a visual, color-based indication, which will not be conveyed to users of assistive technologies - such as screen readers - or to colorblind users.
-
-Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's `<label>` text itself (as is the case in the following code example), include a [Glyphicon](../components/#glyphicons) (with appropriate alternative text using the `.sr-only` class - see the [Glyphicon examples](../components/#glyphicons-examples)), or by providing an additional [help text](#forms-help-text) block. Specifically for assistive technologies, invalid form controls can also be assigned an `aria-invalid="true"` attribute.
+Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
 {% endcallout %}
-{% endcomment %}
+
+Here are some examples of the aforementioned classes in action.
 
 ### Examples
 
@@ -1228,13 +1230,14 @@ Multiple size are also available.
 
 ### Color Picker
 
+`<input type="color">` element need only a custom class, `.custom-color` to trigger the custom styles.
+
 {% callout danger %}
-#### Browser Compatibility
+Browser Compatibility
+{:.h5}
 
 While Figuration supports styling `<input type="color">` elements, some browsers don't. Use custom JavaScript to handle it in these browsers.  For support details, see [Can I Use](http://caniuse.com/#feat=input-color).
 {% endcallout %}
-
-`<input type="color">` element need only a custom class, `.custom-color` to trigger the custom styles.
 
 {% example html %}
 <input class="custom-color" type="color" value="#117dba" id="color">

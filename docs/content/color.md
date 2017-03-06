@@ -12,7 +12,9 @@ Please note that the `warning/mustard` color is not compliant with a 4.5:1 contr
 These can used for text or background colors. If applied to links, the colors will darken on hover.  Foregound items use the class format `.text-blue-500` and background items use `.bg-blue-500`.
 
 {% callout warning %}
-### Conveying Meaning to Assistive Technologies
+Conveying Meaning to Assistive Technologies
+{:.h5}
+
 Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
 {% endcallout %}
 

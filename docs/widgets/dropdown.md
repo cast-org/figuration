@@ -8,7 +8,8 @@ group: widgets
 Add a context menu or list of links to a control item.  Support for nested lists is included automatically.  There is also an expand on hover option, even though we recommend that you use the default click to toggle mode for consitent usability across devices.
 
 {% callout warning %}
-#### Incompatible Widgets
+Incompatible Widgets
+{:.h5}
 For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}/widgets/tab/) and [Dropdown widget]({{ site.baseurl }}/widgets/dropdown/) in the same nav item.  This will cause navigation and usability issues.  One or the other, but not both.
 {% endcallout %}
 

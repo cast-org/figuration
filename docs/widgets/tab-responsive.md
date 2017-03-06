@@ -8,7 +8,8 @@ group: widgets
 The primary goal with this widget is to provide a method of communication between the [Collapse]({{ site.baseurl }}/widgets/collapse/) and [Tab]({{ site.baseurl }}/widgets/tab/) widgets.  It does not take into account the visual aspects itself, this needs to be handled by CSS.
 
 {% callout info %}
-#### Widget Dependencies
+Widget Dependencies
+{:.h5}
 
 Sideshow requires the following:
 
