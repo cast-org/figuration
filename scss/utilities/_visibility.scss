@@ -8,21 +8,6 @@
     @include visible();
 }
 
-
-// Hidden utilities
-@each $bp in map-keys($grid-breakpoints) {
-    .hide-#{$bp}-up {
-        @include media-breakpoint-up($bp) {
-            display: none !important;
-        }
-    }
-    .hide-#{$bp}-down {
-        @include media-breakpoint-down($bp) {
-            display: none !important;
-        }
-    }
-}
-
 // Print utilities
 // Media queries are placed on the inside to be mixin-friendly.
 .print-show-block {
