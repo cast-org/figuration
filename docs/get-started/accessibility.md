@@ -52,7 +52,7 @@ In some cases the design might call for content or layout that works fine for vi
 
 Some quick examples would be using icons for layout, or links that might all visually contain the same information (the ever present 'read more' links).  In both cases a screen reader is left with no context.
 
-Using [screen reader only content]({{ site.baseurl }}/utilities/screen-readers-visibility/#screen-readers-and-keyboard-users) is a way to provide this context without overloading the visual display.
+Using [screen reader only content]({{ site.baseurl }}/utilities/screen-readers/#screen-reader-only-content) is a way to provide this context without overloading the visual display.
 
 Some helpful references:
 

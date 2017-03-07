@@ -376,7 +376,7 @@ Note the use of the `data-cfw-collapse-hidden="false"` option for the [Collapse 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
     <a href="#" class="navbar-brand">Responsive navbar</a>
-    <button class="navbar-toggler hide-lg-up float-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav0" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
+    <button class="navbar-toggler d-lg-none float-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav0" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
     <div class="collapse navbar-toggleable-md" id="respNav0">
         <ul class="nav navbar-nav">
             <li class="nav-item">
@@ -400,7 +400,7 @@ With the `.navbar-brand` in the collapsing area.
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-    <button class="navbar-toggler hide-lg-up float-left" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav1" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
+    <button class="navbar-toggler d-lg-none float-left" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav1" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
     <div class="collapse navbar-toggleable-md" id="respNav1">
         <a href="#" class="navbar-brand">Responsive navbar</a>
         <ul class="nav navbar-nav">
@@ -425,7 +425,7 @@ When using dropdowns, they will display 'inline' with the rest of the navbar men
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
-    <button class="navbar-toggler hide-lg-up float-left" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav2" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
+    <button class="navbar-toggler d-lg-none float-left" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav2" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
     <div class="collapse navbar-toggleable-md" id="respNav2">
         <a href="#" class="navbar-brand">Responsive navbar</a>
         <ul class="nav navbar-nav">

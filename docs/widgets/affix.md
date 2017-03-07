@@ -27,7 +27,7 @@ The affix widget toggles between three classes, each representing a particular s
 Here's how the affix widget works:
 
 - To start, the widget adds `.affix-top` to indicate the element is in its top-most position. At this point no CSS positioning is required.
-- Scrolling past the element you want affixed should trigger the actual affixing. This is where `.affix` replaces `.affix-top` and sets `position: fixed;` (provided by Bootstrap's CSS).
+- Scrolling past the element you want affixed should trigger the actual affixing. This is where `.affix` replaces `.affix-top` and sets `position: fixed;` (provided by Figuration's CSS).
 - If a `bottom` offset is defined, scrolling past it should replace `.affix` with `.affix-bottom`. Since offsets are optional, setting one requires you to set the appropriate CSS. In this case, add `position: absolute;` when necessary. The widget uses the data attribute or JavaScript option to determine where to position the element from there.
 
 Follow the above steps to set your CSS for either of the usage options below.

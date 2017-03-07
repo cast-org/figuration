@@ -217,7 +217,7 @@ Build on the previous example by creating even more dynamic and powerful layouts
   <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
   <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
   <!-- Optional: clear the XS cols if their content doesn't match in height -->
-  <div class="clearfix hide-sm-up"></div>
+  <div class="clearfix d-sm-none"></div>
   <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
 </div>
 {% endexample %}
@@ -269,7 +269,7 @@ If more than 12 columns are placed within a single row, each group of extra colu
 
 ### Example: Responsive Column Resets
 
-With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a `.clearfix` and our [responsive utility classes]({{ site.baseurl }}/layout/responsive-utilities/).
+With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a `.clearfix` and our [display utilities]({{ site.baseurl }}/utilities/display/#responsively-hiding-content).
 
 <div class="cf-example-row">
 {% example html %}
@@ -278,7 +278,7 @@ With the four tiers of grids available you're bound to run into issues where, at
   <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
 
   <!-- Add the extra clearfix for only the required viewport -->
-  <div class="clearfix hide-sm-up"></div>
+  <div class="clearfix d-sm-none"></div>
 
   <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
   <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>

@@ -9,14 +9,21 @@
 
 // Responsive visibility utilities
 @each $bp in map-keys($grid-breakpoints) {
-    .sr-only-#{$bp}-up {
-        @include media-breakpoint-up($bp) {
-            @include sr-only();
+    // Skip smallest breakpoint for up (equivalent to `.sr-only`)
+    @if breakpoint-min($bp, $grid-breakpoints) != null {
+        .sr-only-#{$bp} {
+            @include media-breakpoint-up($bp) {
+                @include sr-only();
+            }
         }
     }
-    .sr-only-#{$bp}-down {
-        @include media-breakpoint-down($bp) {
-            @include sr-only();
+
+    // Skip largest breakpoint for down (equivalent to `.sr-only`)
+    @if breakpoint-max($bp, $grid-breakpoints) != null {
+        .sr-only-#{$bp}-down {
+            @include media-breakpoint-down($bp) {
+                @include sr-only();
+            }
         }
     }
 }

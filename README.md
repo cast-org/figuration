@@ -6,7 +6,7 @@
 
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/figuration.svg)](https://saucelabs.com/u/figuration)
 
-CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end framework based on Bootstrap.
+CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end framework inspired by Bootstrap.
 
 Get started at <http://figuration.org>!
 

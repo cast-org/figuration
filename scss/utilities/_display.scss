@@ -1,10 +1,10 @@
 // scss-lint:disable ImportantRule
 
 // Display utilities
-@each $breakpoint in map-keys($grid-breakpoints) {
-    $bprule: breakpoint-designator($breakpoint);
+@each $bp in map-keys($grid-breakpoints) {
+    $bprule: breakpoint-designator($bp);
 
-    @include media-breakpoint-up($breakpoint) {
+    @include media-breakpoint-up($bp) {
         .d#{$bprule}-none { display: none !important; }
         .d#{$bprule}-block { display: block !important; }
         .d#{$bprule}-flex { display: flex !important; }
@@ -13,5 +13,59 @@
         .d#{$bprule}-inline-flex { display: inline-flex !important; }
         .d#{$bprule}-table { display: table !important; }
         .d#{$bprule}-table-cell { display: table-cell !important; }
+    }
+
+    // Skip largest breakpoint for down (equivalent to `.d-none`)
+    @if breakpoint-max($bp, $grid-breakpoints) != null {
+        .d-#{$bp}-down-none {
+            @include media-breakpoint-down($bp) {
+                display: none !important;
+            }
+        }
+    }
+}
+
+// Print display utilities
+.print-show-block {
+    @media print {
+        display: block !important;
+    }
+}
+.print-show-inline {
+    @media print {
+        display: inline !important;
+    }
+}
+.print-show-inline-block {
+    @media print {
+        display: inline-block !important;
+    }
+}
+
+.print-only-block {
+    display: none !important;
+
+    @media print {
+        display: block !important;
+    }
+}
+.print-only-inline {
+    display: none !important;
+
+    @media print {
+        display: inline !important;
+    }
+}
+.print-only-inline-block {
+    display: none !important;
+
+    @media print {
+        display: inline-block !important;
+    }
+}
+
+.print-hide {
+    @media print {
+        display: none !important;
     }
 }
