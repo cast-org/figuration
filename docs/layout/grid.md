@@ -269,7 +269,7 @@ If more than 12 columns are placed within a single row, each group of extra colu
 
 ### Example: Responsive Column Resets
 
-With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a `.clearfix` and our [responsive utility classes]({{ site.baseurl }}/layout/responsive-utilities/).
+With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a `.clearfix` and our [display utilities]({{ site.baseurl }}/utilities/display/#responsively-hiding-content).
 
 <div class="cf-example-row">
 {% example html %}
