@@ -563,7 +563,7 @@ For example, here's are some grid layouts that apply to every device and viewpor
 
 #### Equal Width with Multiple Rows
 
-Create equal-width columns that span multiple rows by inserting a `.w-100` where you want the columns to break to a new line. Make the breaks responsive by mixing the `.w-100` with some [responsive display utilities]({{ site.baseurl }}/utilities/display-property/).
+Create equal-width columns that span multiple rows by inserting a `.w-100` where you want the columns to break to a new line. Make the breaks responsive by mixing the `.w-100` with some [responsive display utilities]({{ site.baseurl }}/utilities/display/#responsively-hiding-content).
 
 <div class="cf-example-row">
 {% example html %}
@@ -613,7 +613,7 @@ In the examples below, note that the other columns will resize no matter the wid
 
 #### Variable Width Column
 
-Using the `col-{breakpoint}-auto` classes, a column can size itself based on the natural width of its content. This can be handy when dealing with single line content like inputs, numbers, etc.  This, in conjunction with [horizontal alignment]({{ site.baseurl }}/utilities/flexbox/#horizontal-alignment) utility classes, is very useful for centering layouts with uneven column sizes as viewport width changes.
+Using the `col-{breakpoint}-auto` classes, a column can size itself based on the natural width of its content. This can be handy when dealing with single line content like inputs, numbers, etc.  This, in conjunction with [justify content utilities]({{ site.baseurl }}/utilities/flexbox/#justify-content) utility classes, is very useful for centering layouts with uneven column sizes as viewport width changes.
 
 <div class="cf-example-row">
 {% example html %}
