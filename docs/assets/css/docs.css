@@ -1241,31 +1241,31 @@ h4 > code {
 }
 
 @media (max-width: 35.9375em) {
-  .hide-xs-only {
+  .d-xs-only {
     display: none !important;
   }
 }
 
 @media (min-width: 36em) and (max-width: 47.9375em) {
-  .hide-sm-only {
+  .d-sm-only {
     display: none !important;
   }
 }
 
 @media (min-width: 48em) and (max-width: 61.9375em) {
-  .hide-md-only {
+  .d-md-only {
     display: none !important;
   }
 }
 
 @media (min-width: 62em) and (max-width: 74.9375em) {
-  .hide-lg-only {
+  .d-lg-only {
     display: none !important;
   }
 }
 
 @media (min-width: 75em) {
-  .hide-xl-only {
+  .d-xl-only {
     display: none !important;
   }
 }
