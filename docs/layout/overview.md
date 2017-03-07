@@ -75,7 +75,7 @@ Figuration primarily uses the following media query ranges---or breakpoints---in
 
 {% highlight scss %}
 // Extra small devices (portrait phones, less than 36em/576px)
-// No media query since this is the default in Bootstrap
+// No media query since this is the default in Figuration
 
 // Small devices (landscape phones, 36em/576px and up)
 @media (min-width: 36em) { ... }
