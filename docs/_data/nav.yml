@@ -12,7 +12,7 @@
   pages:
     - title: Overview
     - title: Grid
-    - title: Responsive Utilities
+    - title: Layout Utilities
     - title: Flexbox
 
 - title: Content
@@ -49,17 +49,18 @@
     - title: Borders
     - title: Clearfix
     - title: Color
-    - title: Display Property
+    - title: Display
     - title: Flexbox
     - title: Icons
     - title: Position
     - title: Responsive Embeds
     - title: Responsive Floats
-    - title: Screen Readers & Visibility
+    - title: Screen Readers
     - title: Sizing
     - title: Spacing
     - title: Typography
     - title: Vertical Alignment
+    - title: Visibility
 
 - title: Widgets
   pages:
