@@ -17,7 +17,6 @@
         this.$focusLast = null;
         this.isShown = null;
         this.scrollbarWidth = 0;
-        this.unlinking = false;
         this.fixedContent = '.fixed-top, .fixed-botton, .is-fixed';
         this.ignoreBackdropClick = false;
 
@@ -202,12 +201,7 @@
                 $selfRef.resetScrollbar();
                 $selfRef.$target.CFW_trigger('afterHide.cfw.modal');
             });
-            this.$element.trigger('focus');
-
-            if (!this.unlinking) {
-                if (this.settings.unlink) { this.unlink(); }
-                if (this.settings.dispose) { this.dispose(); }
-            }
+            this.$element && this.$element.trigger('focus');
         },
 
         enforceFocus : function() {
@@ -388,19 +382,18 @@
             var $selfRef = this;
 
             this.$target.CFW_trigger('beforeUnlink.cfw.modal');
-            this.unlinking = true;
 
             if (this.isShown) {
                 this.$target.one('afterHide.cfw.modal', function() {
-                    $selfRef.unlinkComplete();
+                    $selfRef._unlinkComplete();
                 });
                 this.hide();
             } else {
-                this.unlinkComplete();
+                this._unlinkComplete();
             }
         },
 
-        unlinkComplete : function() {
+        _unlinkComplete : function() {
             var $target = this.$target;
 
             this.$target.off('.cfw.modal')
@@ -418,7 +411,6 @@
             this.$focusLast = null;
             this.isShown = null;
             this.scrollbarWidth = null;
-            this.unlinking = null;
             this.fixedContent = null;
             this.ignoreBackdropClick = null;
             this.settings = null;
@@ -427,11 +419,10 @@
         },
 
         dispose : function() {
-            var $selfRef = this;
-
-            $(document).one('afterUnlink.cfw.modal', this.$target, function() {
-                $selfRef.$target.CFW_trigger('dispose.cfw.modal');
-                $selfRef.$target.remove();
+            $(document).one('afterUnlink.cfw.modal', this.$target, function(e) {
+                var $this = $(e.target);
+                $this.CFW_trigger('dispose.cfw.modal');
+                $this.remove();
             });
             this.unlink();
         }

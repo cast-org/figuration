@@ -243,7 +243,7 @@
         return this.$arrow;
     };
 
-    CFW_Widget_Popover.prototype._disposeExt = function() {
+    CFW_Widget_Popover.prototype._unlinkCompleteExt = function() {
         this.dragAdded = null;
         this.docAdded = null;
         this.keyTimer = null;

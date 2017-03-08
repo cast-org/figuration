@@ -484,7 +484,7 @@ $(window).ready(function() {
             <h2 id="modal">Modal:</h2>
 
             <p>
-                <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-toggle="#modal3" data-cfw-modal-backdrop="false">Modal: no backdrop</button>
+                <button type="button" class="btn btn-info" id="modal3t" data-cfw="modal" data-cfw-modal-toggle="#modal3" data-cfw-modal-backdrop="false">Modal: no backdrop</button>
             </p>
             <div class="modal" id="modal3">
                 <div class="modal-dialog modal-sm">
@@ -752,8 +752,8 @@ $(window).ready(function() {
                 <div class="popover-arrow"></div>
             </div>
             <br />
-            <button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-toggle="#pop_7p">Popover from selector</button>
-            <div class="popover" id="pop_7p">
+            <button type="button" class="btn btn-info" id="pop_7t" data-cfw="popover" data-cfw-popover-toggle="#pop_7">Popover from selector</button>
+            <div class="popover" id="pop_7">
                 <h3 class="popover-title">Popover selector</h3>
                 <div class="popover-content">
                     <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
@@ -766,9 +766,10 @@ $(window).ready(function() {
 
             <script type="text/javascript">
                 $(window).ready(function() {
-                    $('#pop_7p').one('beforeShow.cfw.popover', function(e) {
+                    $('#pop_7t').one('beforeShow.cfw.popover', function(e) {
                         var $popover = $(this);
-                        $popover.data('cfw.popover').$targetElm.find('[data-cfw="lazy"]').each(function() {
+                        console.log($popover.data('cfw.popover').$target);
+                        $popover.data('cfw.popover').$target.find('[data-cfw="lazy"]').each(function() {
                             $(this).one('load', function() {
                                 $popover.CFW_Popover('locateTip');
                             }).CFW_Lazy('show');

@@ -22,7 +22,6 @@
         this.delayTimer = null;
         this.inTransition = null;
         this.closeAdded = false;
-        this.unlinking = false;
         this.activate = false;
         this.hoverState = null;
         this.inState = null;
@@ -460,73 +459,69 @@
             clearTimeout(this.delayTimer);
 
             this.$element.CFW_trigger('beforeUnlink.cfw.' + this.type);
-            this.unlinking = true;
 
             if (this.$target && this.$target.hasClass('in')) {
                 this.$element.one('afterHide.cfw.' + this.type, function() {
-                    $selfRef.unlinkComplete();
+                    $selfRef._unlinkComplete();
                 });
                 this.hide(force);
             } else {
-                this.unlinkComplete();
+                this._unlinkComplete();
             }
         },
 
-        unlinkComplete : function() {
+        _unlinkComplete : function() {
+            var $element = this.$element;
+            var type = this.type;
+
             if (this.$target) {
                 this.$target.off('.cfw.' + this.type)
                     .removeData('cfw.' + this.type);
             }
             this.$element.off('.cfw.' + this.type)
-                .off('.cfw.modal')
                 .removeAttr('data-cfw')
                 .removeData('cfw.' + this.type);
-            this.unlinking = false;
-            this.$element.CFW_trigger('afterUnlink.cfw.' + this.type);
+
+            this.$element = null;
+            this.$target = null;
+            this.$viewport = null;
+            this.$arrow = null;
+            this.$focusLast = null;
+            this.instance = null;
+            this.settings = null;
+            this.dataToggle = null;
+            this.type = null;
+            this.eventTypes = null;
+            this.delayTimer = null;
+            this.inTransition = null;
+            this.closeAdded = null;
+            this.activate = null;
+            this.hoverState = null;
+            this.inState = null;
+            this.dynamicTip = null;
+            this.flags = null;
+
+            this._unlinkCompleteExt();
+
+            $element.CFW_trigger('afterUnlink.cfw.' + type);
+        },
+
+        _unlinkCompleteExt : function() {
+            // unlink complete extend
+            return;
         },
 
         dispose : function() {
-            var $selfRef = this;
-            $(document).one('afterUnlink.cfw.' + this.type, this.$element, function() {
-                if ($selfRef.$target !== null) {
-                    $selfRef.$target.removeData('cfw.' + $selfRef.type).remove();
+            var $target = this.$target;
+
+            $(document).one('afterUnlink.cfw.' + this.type, this.$element, function(e) {
+                var $this = $(e.target);
+                if ($target) {
+                    $target.remove();
                 }
-                $selfRef.$element.CFW_trigger('dispose.cfw.' + $selfRef.type);
-
-                $selfRef.$element.removeData('cfw.' + $selfRef.type);
-
-
-                $selfRef.$element = null;
-                $selfRef.$target = null;
-                $selfRef.$viewport = null;
-                $selfRef.$arrow = null;
-                $selfRef.$focusLast = null;
-                // $selfRef.settings = null; (throws error ???)
-                $selfRef.dataToggle = null;
-                $selfRef.type = null;
-                $selfRef.eventTypes = null;
-                $selfRef.delayTimer = null;
-                $selfRef.inTransition = null;
-                $selfRef.closeAdded = null;
-                $selfRef.unlinking = null;
-                $selfRef.activate = null;
-                $selfRef.hoverState = null;
-                $selfRef.inState = null;
-                $selfRef.dynamicTip = null;
-                $selfRef.flags = {
-                    keyShift: null,
-                    keyTab : null
-                };
-
-
-                $selfRef._disposeExt();
+                $this.CFW_trigger('dispose.cfw.' + this.type);
             });
-            this.unlink(true);
-        },
-
-        _disposeExt : function() {
-            // dispose extend
-            return;
+            this.unlink();
         },
 
         locateTip : function() {
@@ -653,11 +648,6 @@
             }
 
             this.$element.CFW_trigger('afterHide.cfw.' + this.type);
-
-            if (!this.unlinking) {
-                if (this.settings.unlink) { this.unlink(); }
-                if (this.settings.dispose) { this.dispose(); }
-            }
         },
 
         _removeDynamicTip : function() {
