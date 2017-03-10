@@ -135,6 +135,23 @@ $(function() {
         assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class removed');
     });
 
+    QUnit.test('should remove "open" class if body is focused', function(assert) {
+        assert.expect(2);
+        var dropdownHTML = '<div class="dropdown">'
+            + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
+            + '<ul class="dropdown-menu">'
+            + '<li><a href="#">Menu link</a></li>'
+            + '</ul>'
+            + '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+        $dropdown.trigger('click');
+
+        assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click');
+        $(document.body).trigger('focusin');
+        assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class removed');
+    });
+
     QUnit.test('should remove "open" class if body is clicked, with multiple dropdowns', function(assert) {
         assert.expect(7);
         var dropdownHTML = '<div class="dropdown">'
@@ -162,6 +179,36 @@ $(function() {
         assert.strictEqual($last.parent('.open').length, 1, '"open" class added on click');
         assert.strictEqual($('#qunit-fixture .open').length, 1, 'only one dropdown is open');
         $(document.body).trigger('click');
+        assert.strictEqual($('#qunit-fixture .open').length, 0, '"open" class removed');
+    });
+
+    QUnit.test('should remove "open" class if body is focused, with multiple dropdowns', function(assert) {
+        assert.expect(7);
+        var dropdownHTML = '<div class="dropdown">'
+            + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
+            + '<ul class="dropdown-menu">'
+            + '<li><a href="#">Menu link</a></li>'
+            + '</ul>'
+            + '</div>';
+        $(dropdownHTML).appendTo('#qunit-fixture');
+        $(dropdownHTML).appendTo('#qunit-fixture');
+
+        var $dropdowns = $('#qunit-fixture').find('[data-cfw="dropdown"]').CFW_Dropdown();
+        var $first = $dropdowns.first();
+        var $last = $dropdowns.last();
+
+        assert.strictEqual($dropdowns.length, 2, 'two dropdowns');
+
+        $first.trigger('click');
+        assert.strictEqual($first.parents('.open').length, 1, '"open" class added on click');
+        assert.strictEqual($('#qunit-fixture .open').length, 1, 'only one dropdown is open');
+        $(document.body).trigger('focusin');
+        assert.strictEqual($('#qunit-fixture .open').length, 0, '"open" class removed');
+
+        $last.trigger('click');
+        assert.strictEqual($last.parent('.open').length, 1, '"open" class added on click');
+        assert.strictEqual($('#qunit-fixture .open').length, 1, 'only one dropdown is open');
+        $(document.body).trigger('focusin');
         assert.strictEqual($('#qunit-fixture .open').length, 0, '"open" class removed');
     });
 
@@ -218,12 +265,12 @@ $(function() {
     });
 
     QUnit.test('should skip disabled element when using keyboard navigation', function(assert) {
-        assert.expect(1);
+        assert.expect(2);
         var dropdownHTML = '<div class="dropdown">'
             + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
             + '<ul class="dropdown-menu">'
             + '<li><a href="#" class="disabled">Disabled link</a></li>'
-            + '<li><a href="#">Menu link</a></li>'
+            + '<li><a href="#" id="focusable">Menu link</a></li>'
             + '</ul>'
             + '</div>';
         var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
@@ -231,8 +278,8 @@ $(function() {
         $dropdown.trigger('click');
 
         $dropdown.trigger($.Event('keydown', { which: 40 }));
-        $dropdown.trigger($.Event('keydown', { which: 40 }));
 
-        assert.ok(!$(document.activeElement).parent().is('.disabled'), '.disabled is not focused');
+        assert.ok(!$(document.activeElement).is('.disabled'), '.disabled is not focused');
+        assert.ok($(document.activeElement).is('#focusable'), '#focusable is focused');
     });
 });
