@@ -402,11 +402,17 @@ h4 {
     position: absolute;
 }
 
+// Feed
+.cf-feed {
+    padding: 2rem 0;
+    margin-top: 2rem;
+    background-color: #47a;
+}
 
 // Footer
 .cf-footer {
     padding: .75rem 0;
-    margin-top: 2rem;
+    // margin-top: 2rem;
     font-size: 85%;
     text-align: center;
     background-color: $uibase-50;
