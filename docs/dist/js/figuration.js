@@ -662,6 +662,7 @@ if (typeof jQuery === 'undefined') {
     var CFW_Widget_Dropdown = function(element, options) {
         this.$element = $(element);
         this.$target = null;
+        this.instance = null;
 
         this.timerHide = null;
 
@@ -749,7 +750,7 @@ if (typeof jQuery === 'undefined') {
             this.$element.attr('data-cfw', 'dropdown');
 
             // Check for presence of trigger id - set if not present
-            var triggerID = this.$element.CFW_getID('cfw-dropdown');
+            this.instance = this.$element.CFW_getID('cfw-dropdown');
 
             // Top Level: add ARIA/roles and define all sub-menu links as menuitem (unless 'disabled')
             // Set tabindex=-1 so that sub-menu links can't receive keyboard focus from tabbing
@@ -758,7 +759,7 @@ if (typeof jQuery === 'undefined') {
             menuID = this.$target.CFW_getID('cfw-dropdown');
             this.$target.attr({
                 'aria-hidden': 'true',
-                'aria-labelledby': triggerID
+                'aria-labelledby': this.instance
             })
             .addClass(this.c.isMenu);
             $('a', this.$target).attr('tabIndex', -1).not('.disabled, :disabled');
@@ -827,21 +828,6 @@ if (typeof jQuery === 'undefined') {
 
             // Always on - Keyboard navigation
             this.navEnableKeyboard();
-
-            // Loss of focus
-            /*
-             ** Causing issues with nested dropdowns on touchscreen **
-             *
-            $(this.$element).add(this.$target).on('focusout.cfw.dropdown', function(e) {
-                // Need slight delay or <body> will always be reported
-                setTimeout(function() {
-                    if (!$.contains($selfRef.$target[0], document.activeElement)
-                        && $selfRef.$element[0] != document.activeElement) {
-                        $selfRef.hideRev();
-                    }
-                }, 150);
-            });
-            */
 
             this.$element.CFW_trigger('init.cfw.dropdown');
         },
@@ -970,6 +956,14 @@ if (typeof jQuery === 'undefined') {
                 if (!$parent.hasClass(this.c.hover)) {
                     $trigger.trigger('focus');
                 }
+
+                // Handle loss of focus
+                $(document)
+                    .on('focusin.cfw.dropdown.' + this.instance, function(e) {
+                        if ($selfRef.$element[0] !== e.target && !$selfRef.$target.has(e.target).length) {
+                            $selfRef.hideRev();
+                        }
+                    });
             }
 
             // Find other open sub menus and close them
@@ -1004,6 +998,7 @@ if (typeof jQuery === 'undefined') {
             }
 
             if ($trigger.is(this.$element)) {
+                $(document).off('focusin.cfw.dropdown.' + this.instance);
                 $('.' + this.c.backdrop).remove();
             }
 
@@ -1194,6 +1189,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         dispose : function() {
+            $(document).off('focusin.cfw.dropdown.' + this.instance);
             this.$element.CFW_Dropdown('hideRev');
             this.$target.find('.' + this.c.backLink).remove();
             this.$target.find('.' + this.c.hasSubMenu).off('.cfw.dropdown');
@@ -1205,6 +1201,7 @@ if (typeof jQuery === 'undefined') {
 
             this.$element = null;
             this.$target = null;
+            this.instance = null;
             this.timerHide = null;
             this.settings = null;
         }

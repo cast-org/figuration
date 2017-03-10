@@ -453,9 +453,14 @@ h4 > code {
   position: absolute;
 }
 
+.cf-feed {
+  padding: 2rem 0;
+  margin-top: 2rem;
+  background-color: #47a;
+}
+
 .cf-footer {
   padding: .75rem 0;
-  margin-top: 2rem;
   font-size: 85%;
   text-align: center;
   background-color: #f0f0f0;
