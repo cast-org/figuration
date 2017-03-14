@@ -30,6 +30,7 @@ Flexbox support is available for a number of Figuration's components:
 - [Navs]({{ site.baseurl }}/components/navs/), which switches from `float`s to `display: flex;`.
 - [Navbar Group]({{ site.baseurl }}/components/navbar/#navbar-group), which switches from `display: table;` to `display: flex;`.
 - [Pagination]({{ site.baseurl }}/components/pagination/), which switches from `display: inline-block;` to `display: flex;`.
+- [Progress]({{ site.baseurl }}/components/progress/), which switches from `display: block;` to `display: flex;`.
 - [Utility classes]({{ site.baseurl }}/utilities/flexbox/), for alignment options for flexbox enabled components.
 
 Vendor prefixes are provided in our compiled CSS with [Autoprefixer](https://github.com/postcss/autoprefixer) via Grunt. Some bugs in IE10-11's Flexbox implementation are worked around via [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes).
@@ -67,6 +68,7 @@ A quick list of the opt-in classes are:
 - `.nav-flex`
 - `.navbar-group-flex`
 - `.pagination-flex`
+- `.progress-flex`
 
 ## Full Flexbox Mode
 

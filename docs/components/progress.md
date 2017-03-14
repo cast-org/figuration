@@ -6,6 +6,8 @@ group: components
 
 Use the custom progress component for displaying simple or complex progress bars. We don't use [the HTML5 `<progress>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress), allowing you to stack progress bars, animate them, and place text labels over them.
 
+Progress bars have support for both a `block` style layout, along with both the opt-in flexbox and [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.progress-flex` class to the `.progress` element.
+
 ## Contents
 {:.no_toc}
 
