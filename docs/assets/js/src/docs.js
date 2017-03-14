@@ -124,4 +124,9 @@ $(window).ready(function() {
     $('.cf-content [href="#"]').click(function(e) {
         e.preventDefault();
     });
+
+    // Toggle animated progress bar
+    $('.cf-toggle-animated-progress').on('click', function() {
+        $(this).siblings('.progress').find('.progress-bar-striped').toggleClass('progress-bar-animated');
+    })
 });

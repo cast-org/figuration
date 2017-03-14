@@ -107,8 +107,16 @@
     margin-bottom: .5rem;
 }
 
+// Progress
+.cf-example > .progress {
+    +.progress,
+    + .btn {
+        margin-top: 1rem;
+    }
+}
+
 // Utilities
-.cf-example > [class*="bg-"]:not(.navbar),
+.cf-example > [class*="bg-"]:not(.navbar):not(.progress),
 .cf-example .d-table-cell {
     padding: .5rem;
     margin-top: .5rem;
