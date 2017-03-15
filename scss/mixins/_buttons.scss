@@ -31,7 +31,7 @@
 
         &:hover {
             color: $hover-color;
-            background-color: darken($hover-bg, 10%);
+            background-color: if(strip-unit($btn-active-hover-adjust) <= 0, lighten($hover-bg, $btn-active-hover-adjust * -1), darken($hover-bg, $btn-active-hover-adjust));
             border-color: $hover-border;
         }
     }
@@ -65,7 +65,7 @@
 
         &:hover {
             color: $hover-color;
-            background-color: darken($color, 10%);
+            background-color: if(strip-unit($btn-active-hover-adjust) <= 0, lighten($color, $btn-active-hover-adjust * -1), darken($color, $btn-active-hover-adjust));
             border-color: $border;
         }
     }

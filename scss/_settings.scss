@@ -468,6 +468,10 @@ $btn-default-hover-color:   $uibase-600 !default;
 $btn-default-hover-bg:      $uibase-75 !default;
 $btn-default-hover-border:  $uibase-700 !default;
 
+// Background color darken/lighten for ':active:hover' button state
+// Negative value will lighten, positive value will darken
+$btn-active-hover-adjust:   6% !default;
+
 $btn-disabled-opacity:      .6 !default;
 
 $btn-block-spacing-y:       .3rem !default;
