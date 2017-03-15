@@ -28,7 +28,7 @@ Wrap a series of buttons with `.btn` in `.btn-group`.
 
 ## Button Toolbar
 
-Combine sets of button groups into button toolbars for more complex components.
+Combine sets of button groups into button toolbars for more complex components. Use utility classes as needed to space out groups, buttons, and more.
 
 {% example html %}
 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
@@ -45,6 +45,38 @@ Combine sets of button groups into button toolbars for more complex components.
   </div>
   <div class="btn-group" role="group" aria-label="Third group">
     <button type="button" class="btn btn-danger">8</button>
+  </div>
+</div>
+{% endexample %}
+
+### With Input Groups
+
+Mix input groups with button groups in your toolbars. Similar to the example above, you may need some utilities classes to space things out.
+
+{% example html %}
+<div class="btn-toolbar mb-1" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group mr-0_5" role="group" aria-label="First group">
+    <button type="button" class="btn">1</button>
+    <button type="button" class="btn">2</button>
+    <button type="button" class="btn">3</button>
+    <button type="button" class="btn">4</button>
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon" id="btnGroupAddon">@</span>
+    <input type="text" class="form-control" placeholder="Input group example" aria-describedby="btnGroupAddon">
+  </div>
+</div>
+
+<div class="btn-toolbar btn-toolbar-flex flex-between mb-1" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group btn-group-flex" role="group" aria-label="First group">
+    <button type="button" class="btn">1</button>
+    <button type="button" class="btn">2</button>
+    <button type="button" class="btn">3</button>
+    <button type="button" class="btn">4</button>
+  </div>
+  <div class="input-group input-group-flex">
+    <span class="input-group-addon" id="btnGroupAddon2">@</span>
+    <input type="text" class="form-control" placeholder="Input group example" aria-describedby="btnGroupAddon2">
   </div>
 </div>
 {% endexample %}

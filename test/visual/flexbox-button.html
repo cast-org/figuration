@@ -203,6 +203,76 @@
         </label>
     </div>
 
+    <hr />
+
+    normal:
+    <br />
+    <div class="btn-toolbar mb-1" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-0_5" role="group" aria-label="First group">
+            <button type="button" class="btn">1</button>
+            <button type="button" class="btn">2</button>
+            <button type="button" class="btn">3</button>
+            <button type="button" class="btn">4</button>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon" id="btnGroupAddon">@</span>
+            <input type="text" class="form-control" placeholder="Input group example" aria-describedby="btnGroupAddon">
+          </div>
+    </div>
+
+    flex:
+    <br />
+    <div class="btn-toolbar btn-toolbar-flex flex-between mb-1" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group btn-group-flex" role="group" aria-label="First group">
+            <button type="button" class="btn">1</button>
+            <button type="button" class="btn">2</button>
+            <button type="button" class="btn">3</button>
+            <button type="button" class="btn">4</button>
+        </div>
+        <div class="input-group input-group-flex">
+            <span class="input-group-addon" id="btnGroupAddon2">@</span>
+            <input type="text" class="form-control" placeholder="Input group example" aria-describedby="btnGroupAddon2">
+        </div>
+    </div>
+
+    <hr />
+
+    normal:
+    <br />
+    <div class="btn-group mb-1" role="group" aria-label="Button group with nested dropdown">
+        <button type="button" class="btn">1</button>
+        <button type="button" class="btn">2</button>
+
+        <div class="btn-group" role="group">
+            <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#btnGroupDrop1">
+                Dropdown
+            </button>
+            <ul class="dropdown-menu" id="btnGroupDrop1">
+                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+            </ul>
+        </div>
+    </div>
+    <br />
+
+    flex:
+    <br />
+    <div class="btn-group btn-group-flex mb-1" role="group" aria-label="Button group with nested dropdown">
+        <button type="button" class="btn">1</button>
+        <button type="button" class="btn">2</button>
+
+        <div class="btn-group btn-group-flex" role="group">
+            <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#btnGroupDrop1">
+                Dropdown
+            </button>
+            <ul class="dropdown-menu" id="btnGroupDrop1">
+                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+            </ul>
+        </div>
+    </div>
+    <br />
+
 </div>
 
 </div>
