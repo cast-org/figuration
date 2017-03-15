@@ -255,7 +255,7 @@
     }
 
     @each $lang, $text in map-get($custom-file-text, button-label) {
-        &:lang(#{$lang})::before {
+        &:lang(#{$lang}):empty::before {
             content: $text;
         }
     }
