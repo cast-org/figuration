@@ -246,4 +246,42 @@ $(function() {
             .CFW_Popover()
             .CFW_Popover('show');
     });
+
+    QUnit.test('should hide popover when their ancestor modal is closed', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var template = '<div id="modal" class="modal">' +
+            '<div class="modal-dialog">' +
+            '<div class="modal-content">' +
+            '<div class="modal-body">' +
+            '<a href="#" id="popover" title="Some tooltip text!">Tooltip</a>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+
+        var $target = $(template).appendTo('#qunit-fixture');
+        $('#popover')
+            .CFW_Popover({
+                trigger: 'manual'
+            })
+            .on('afterShow.cfw.popover', function() {
+                $trigger.CFW_Modal('hide');
+            })
+            .on('afterHide.cfw.popover', function() {
+                assert.ok(true, 'popover hidden');
+                done();
+            });
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                $('#popover').CFW_Popover('show');
+            });
+
+        $trigger
+            .CFW_Modal()
+            .CFW_Modal('show');
+    });
 });

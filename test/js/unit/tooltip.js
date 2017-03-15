@@ -1253,6 +1253,44 @@ $(function() {
         }, new Error('tooltip `template` option must consist of exactly 1 top-level element!'));
     });
 
+    QUnit.test('should hide tooltip when their ancestor modal is closed', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var template = '<div id="modal" class="modal">' +
+            '<div class="modal-dialog">' +
+            '<div class="modal-content">' +
+            '<div class="modal-body">' +
+            '<a href="#" id="tooltip" title="Some tooltip text!">Tooltip</a>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+
+        var $target = $(template).appendTo('#qunit-fixture');
+        $('#tooltip')
+            .CFW_Tooltip({
+                trigger: 'manual'
+            })
+            .on('afterShow.cfw.tooltip', function() {
+                $trigger.CFW_Modal('hide');
+            })
+            .on('afterHide.cfw.tooltip', function() {
+                assert.ok(true, 'tooltip hidden');
+                done();
+            });
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                $('#tooltip').CFW_Tooltip('show');
+            });
+
+        $trigger
+            .CFW_Modal()
+            .CFW_Modal('show');
+    });
+
     //    QUnit.test('should not remove tooltip if multiple triggers (hover focus) are set and one is still active', function(assert) {
     //        assert.expect(21);
     //        var $el = $('<button>Trigger</button>')
