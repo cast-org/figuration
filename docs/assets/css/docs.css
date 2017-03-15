@@ -49,7 +49,7 @@
 .navbar-dark .btn-toggler:active:hover, .navbar-dark .btn-toggler.active:hover,
 .open > .navbar-dark .btn-toggler.dropdown-toggle:hover {
   color: #474747;
-  background-color: #d7d7d7;
+  background-color: #e1e1e1;
   border-color: #f0f0f0;
 }
 
