@@ -65,10 +65,6 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
-
-        .input-group {
-            width: auto;
-        }
     } @else {
         @include clearfix();
 
@@ -76,6 +72,10 @@
         .input-group {
             float: left;
         }
+    }
+
+    .input-group {
+        width: auto;
     }
 }
 
@@ -85,13 +85,13 @@
         flex-wrap: wrap;
         justify-content: flex-start;
 
-        .btn-group,
-        .input-group {
-            float: initial;
+        &::after {
+            content: none;
         }
 
+        .btn-group,
         .input-group {
-            width: auto;
+            float: none;
         }
     }
 }

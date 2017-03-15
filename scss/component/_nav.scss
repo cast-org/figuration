@@ -141,6 +141,10 @@
 @if $enable-flex-opt {
     .nav-flex.nav-tabs {
         flex-flow: row wrap;
+
+        &::after {
+            content: none;
+        }
     }
 }
 
@@ -188,6 +192,10 @@
 @if $enable-flex-opt {
     .nav-flex.nav-pills {
         flex-flow: row wrap;
+
+        &::after {
+            content: none;
+        }
     }
 }
 
