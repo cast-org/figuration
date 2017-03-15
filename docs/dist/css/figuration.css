@@ -4303,6 +4303,18 @@ button.list-group-item-danger.active {
   float: left;
 }
 
+.btn-toolbar .input-group {
+  width: 1%;
+}
+
+.btn-toolbar .input-group .form-control {
+  width: auto;
+}
+
+.btn-toolbar .input-group-flex {
+  width: auto;
+}
+
 .btn-toolbar-flex {
   display: -webkit-box;
   display: -webkit-flex;
@@ -4317,13 +4329,13 @@ button.list-group-item-danger.active {
           justify-content: flex-start;
 }
 
-.btn-toolbar-flex .btn-group,
-.btn-toolbar-flex .input-group {
-  float: initial;
+.btn-toolbar-flex::after {
+  content: none;
 }
 
+.btn-toolbar-flex .btn-group,
 .btn-toolbar-flex .input-group {
-  width: auto;
+  float: none;
 }
 
 .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
@@ -5205,6 +5217,10 @@ ul.nav-flex:not(.nav-inline):not(.nav-tabs):not(.nav-pills):not(.navbar-nav) {
           flex-flow: row wrap;
 }
 
+.nav-flex.nav-tabs::after {
+  content: none;
+}
+
 .nav-pills::after {
   display: block;
   clear: both;
@@ -5250,6 +5266,10 @@ ul.nav-flex:not(.nav-inline):not(.nav-tabs):not(.nav-pills):not(.navbar-nav) {
   -webkit-flex-flow: row wrap;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
+}
+
+.nav-flex.nav-pills::after {
+  content: none;
 }
 
 .nav-stacked .nav-item {
