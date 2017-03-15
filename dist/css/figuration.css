@@ -1712,7 +1712,7 @@ fieldset[disabled] .form-check-label {
   border-radius: 0 0.25rem 0.25rem 0;
 }
 
-.custom-file-control:lang(en)::before {
+.custom-file-control:lang(en):empty::before {
   content: "Browse";
 }
 
@@ -9362,6 +9362,8 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
   border: 0;
   white-space: nowrap;
 }
@@ -9373,6 +9375,8 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   margin: 0;
   overflow: visible;
   clip: auto;
+  -webkit-clip-path: none;
+          clip-path: none;
   white-space: inherit;
 }
 
@@ -9385,6 +9389,8 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
+    -webkit-clip-path: inset(50%);
+            clip-path: inset(50%);
     border: 0;
     white-space: nowrap;
   }
@@ -9399,6 +9405,8 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
+    -webkit-clip-path: inset(50%);
+            clip-path: inset(50%);
     border: 0;
     white-space: nowrap;
   }
@@ -9413,6 +9421,8 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
+    -webkit-clip-path: inset(50%);
+            clip-path: inset(50%);
     border: 0;
     white-space: nowrap;
   }
@@ -9427,6 +9437,8 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
+    -webkit-clip-path: inset(50%);
+            clip-path: inset(50%);
     border: 0;
     white-space: nowrap;
   }
@@ -9441,6 +9453,8 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
+    -webkit-clip-path: inset(50%);
+            clip-path: inset(50%);
     border: 0;
     white-space: nowrap;
   }
@@ -9455,6 +9469,8 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
+    -webkit-clip-path: inset(50%);
+            clip-path: inset(50%);
     border: 0;
     white-space: nowrap;
   }
@@ -9469,6 +9485,8 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
+    -webkit-clip-path: inset(50%);
+            clip-path: inset(50%);
     border: 0;
     white-space: nowrap;
   }
@@ -9483,6 +9501,8 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
+    -webkit-clip-path: inset(50%);
+            clip-path: inset(50%);
     border: 0;
     white-space: nowrap;
   }
