@@ -471,7 +471,7 @@ textarea.form-control {
             }
 
             .custom-control-indicator {
-                margin-right: .25rem; // Flexbox alignment means we lose our HTML space here, so we compensate.
+                margin-right: $form-check-input-margin-x; // Flexbox alignment means we lose our HTML space here, so we compensate.
             }
         }
     }
