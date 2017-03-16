@@ -1291,36 +1291,37 @@ $(function() {
             .CFW_Modal('show');
     });
 
-    //    QUnit.test('should not remove tooltip if multiple triggers (hover focus) are set and one is still active', function(assert) {
-    //        assert.expect(21);
-    //        var $el = $('<button>Trigger</button>')
-    //            .appendTo('#qunit-fixture')
-    //            .CFW_Tooltip({ trigger: 'hover focus', animate: false });
-    //        var tooltip = $el.data('cfw.tooltip');
-    //        var $tooltip = tooltip.createTip();
-    //
-    //        function showingTooltip() {
-    //            return $tooltip.hasClass('in') || tooltip.hoverState == 'in';
-    //        }
-    //
-    //        var tests = [
-    //            ['mouseenter', 'mouseleave'], // <-- has error here on leave ??
-    //            ['focusin', 'focusout'],
-    //            ['mouseenter', 'focusin', 'focusout', 'mouseleave'],
-    //            ['mouseenter', 'focusin', 'mouseleave', 'focusout'],
-    //            ['focusin', 'mouseenter', 'mouseleave', 'focusout'],
-    //            ['focusin', 'mouseenter', 'focusout', 'mouseleave'],
-    //        ];
-    //
-    //        assert.ok(!showingTooltip());
-    //
-    //        $.each(tests, function (idx, triggers) {
-    //            for (var i = 0, len = triggers.length; i < len; i++) {
-    //                $el.trigger(triggers[i]);
-    //                assert.equal(i < (len - 1), showingTooltip());
-    //            }
-    //        });
-    //    });
+    QUnit.test('should not remove tooltip if multiple triggers (hover focus) are set and one is still active', function(assert) {
+        assert.expect(21);
+        var $el = $('<button>Trigger</button>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({ trigger: 'hover focus', animate: false, delay: 0 });
+
+        function showingTooltip() {
+            var tooltip = $el.data('cfw.tooltip');
+            var $tooltip = tooltip.$target;
+            var hasIn = ($tooltip !== null) ? $tooltip.hasClass('in') : false;
+            return hasIn || tooltip.hoverState === 'in';
+        }
+
+        var tests = [
+            ['mouseenter', 'mouseleave'],
+            ['focusin', 'focusout'],
+            ['mouseenter', 'focusin', 'focusout', 'mouseleave'],
+            ['mouseenter', 'focusin', 'mouseleave', 'focusout'],
+            ['focusin', 'mouseenter', 'mouseleave', 'focusout'],
+            ['focusin', 'mouseenter', 'focusout', 'mouseleave']
+        ];
+
+        assert.ok(!showingTooltip());
+
+        $.each(tests, function(idx, triggers) {
+            for (var i = 0, len = triggers.length; i < len; i++) {
+                $el.trigger(triggers[i]);
+                assert.equal(i < (len - 1), showingTooltip());
+            }
+        });
+    });
 
     QUnit.test('should show on first trigger after hide', function(assert) {
         assert.expect(3);
@@ -1331,7 +1332,8 @@ $(function() {
         function showingTooltip() {
             var tooltip = $el.data('cfw.tooltip');
             var $tooltip = tooltip.$target;
-            return ($tooltip && $tooltip.hasClass('in')) || tooltip.hoverState === 'in';
+            var hasIn = ($tooltip !== null) ? $tooltip.hasClass('in') : false;
+            return hasIn || tooltip.hoverState === 'in';
         }
 
         $el.trigger('click');
