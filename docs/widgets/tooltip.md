@@ -193,12 +193,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
             <td>If tooltip items should fade in and out.</td>
         </tr>
         <tr>
-            <td>follow</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>If browser focus should move when a tooltip is activated - overridden to true when click trigger is used.</td>
-        </tr>
-        <tr>
             <td>placement</td>
             <td>string | object | function</td>
             <td>'top'</td>
