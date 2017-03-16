@@ -106,11 +106,11 @@ textarea.form-control {
 // Apply class to an element to make any string of text align with labels in a
 // horizontal form layout.
 .form-control-static {
-    min-height: $input-height;
     // Size it appropriately next to real form controls
-    padding-top: $input-padding-y;
-    padding-bottom: $input-padding-y;
+    padding-top: calc(#{$input-padding-y} + #{$input-border-width});
+    padding-bottom: calc(#{$input-padding-y} + #{$input-border-width});
     margin-bottom: 0;
+    line-height: $input-line-height;
 }
 
 // Form control sizing
@@ -141,6 +141,7 @@ textarea.form-control {
             padding-top: calc(#{$sz-padding-y} + #{$input-border-width});
             padding-bottom: calc(#{$sz-padding-y} + #{$input-border-width});
             font-size: $sz-font-size;
+            //line-height: ($sz-font-size * $input-line-height);
         }
     }
 }
