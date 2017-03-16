@@ -96,7 +96,7 @@
 
         if (!$title.html()) { $title.hide(); }
 
-        if ((this.$target.attr('role') == 'dialog') && (!this.docAdded)) {
+        if (this.isDialog && !this.docAdded) {
             // Inject a role="document" container
             var $children = this.$target.children().not(this.$arrow);
             var docDiv = document.createElement('div');

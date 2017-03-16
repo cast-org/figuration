@@ -18,6 +18,7 @@
         this.settings = null;
         this.dataToggle = null;
         this.type = null;
+        this.isDialog = false;
         this.eventTypes = null;
         this.delayTimer = null;
         this.inTransition = null;
@@ -38,11 +39,10 @@
         toggle          : false,            // Target selector
         placement       : 'top',            // Where to locate tooltip (top/bottom/left/right/auto)
         trigger         : 'hover focus',    // How tooltip is triggered (click/hover/focus/manual)
-        follow          : false,            // If the browser focus should follow active tooltip
         animate         : true,             // Should the tooltip fade in and out
         delay : {
             show        : 0,                // Delay for showing tooltip (milliseconda)
-            hide        : 250               // Delay for hiding tooltip (milliseconds)
+            hide        : 100               // Delay for hiding tooltip (milliseconds)
         },
         container       : false,            // Where to place tooltip if moving is needed
         viewport        : 'body',           // Viewport to constrain tooltip within
@@ -100,6 +100,7 @@
 
             if (this.settings.activate) {
                 this.activate = true;
+                this.inState.click = true;
                 this.show();
             }
 
@@ -168,7 +169,7 @@
 
             // Set ARIA attributes on target
             this.$target.attr({
-                'role': (this.type == 'tooltip' ? 'tooltip' : (this.settings.follow ? 'dialog' : 'tooltip')),
+                'role': (this.type == 'tooltip' ? 'tooltip' : (this.isDialog ? 'dialog' : 'tooltip')),
                 'aria-hidden': 'true',
                 'tabindex': -1
             });
@@ -179,6 +180,9 @@
 
             for (var i = this.eventTypes.length; i--;) {
                 var eventType = this.eventTypes[i];
+                if (eventType == 'click' || eventType == 'manual') {
+                    this.isDialog = true;
+                }
                 if (eventType == 'click') {
                     // Click events
                     this.$element
@@ -241,20 +245,25 @@
         },
 
         toggle : function(e) {
-            if (e) { e.preventDefault(); }
-
             if (e) {
                 this.inState.click = !this.inState.click;
-                this.settings.follow = true;
-            }
 
-            if (this.$target && this.$target.hasClass('in')) {
-                var holdDelay = this.settings.delay.hide;
-                this.settings.delay.hide = 0;
-                this.hide();
-                this.settings.delay.hide = holdDelay;
+                if (!this._isInState()) {
+                    this.leave();
+                } else {
+                    this.enter();
+                }
             } else {
-                this.show();
+                // Disable delay when toggle programatically invoked
+                var holdDelay = this.settings.delay;
+                if (this.$target && this.$target.hasClass('in')) {
+                    this.settings.delay.hide = 0;
+                    this.leave();
+                } else {
+                    this.settings.delay.show = 0;
+                    this.enter();
+                }
+                this.settings.delay = holdDelay;
             }
         },
 
@@ -313,7 +322,7 @@
                 }
             }
 
-            this.inTransition = 1;
+            this.inTransition = true;
 
             // Create/link the tooltip container
             if (!this.$target) {
@@ -446,7 +455,10 @@
                 return;
             }
 
-            this.inTransition = 1;
+            this.inTransition = true;
+            this.$target.removeClass('in');
+
+            this.inState = { click: false, hover: false, focus: false };
 
             this.$target.CFW_transition(null, $.proxy(this._hideComplete, this));
 
@@ -491,6 +503,7 @@
             this.settings = null;
             this.dataToggle = null;
             this.type = null;
+            this.isDialog = null;
             this.eventTypes = null;
             this.delayTimer = null;
             this.inTransition = null;
@@ -594,10 +607,12 @@
 
             // this.$target.addClass('in')
             this.$target.removeAttr('aria-hidden');
-            this.inTransition = 0;
-            if (this.settings.follow) {
+
+            if (this.isDialog) {
                 this.$target.trigger('focus');
             }
+
+            this.inTransition = false;
 
             // Delay to keep NVDA (and other screen readers?) from reading dialog header twice
             setTimeout(function() {
@@ -612,7 +627,7 @@
             }
             this.activate = false;
 
-            if (prevHoverState == 'out') this.leave();
+            if (prevHoverState == 'out') { this.leave(); }
         },
 
         _hideComplete : function() {
@@ -628,19 +643,19 @@
             }
             $(document).off('.cfw.' + this.type + '.' + this.instance);
 
-            this.$target.removeClass('in')
+            this.$target
+                .removeClass('in')
                 .css('display', 'none')
                 .attr({
                     'aria-hidden': 'true',
                     'role':  ''
                 });
 
-            this.inTransition = 0;
-            if (this.settings.follow) {
+            this.inTransition = false;
+            if (this.isDialog) {
                 this.$target.attr('tabindex', -1);
                 this.$element.trigger('focus');
             }
-            this.settings.follow = false;
 
             // Only remove dynamically created tips
             if (this.hoverState != 'in' && this.dynamicTip) {
@@ -651,7 +666,7 @@
         },
 
         _removeDynamicTip : function() {
-            this.$target.detach();
+            this.$target.remove();
             this.dynamicTip = false;
             this.closeAdded = false;
             this.$arrow = null;
