@@ -1321,4 +1321,26 @@ $(function() {
     //            }
     //        });
     //    });
+
+    QUnit.test('should show on first trigger after hide', function(assert) {
+        assert.expect(3);
+        var $el = $('<a href="#" rel="tooltip" title="Test tooltip"/>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({ trigger: 'click hover focus', animate: false });
+
+        function showingTooltip() {
+            var tooltip = $el.data('cfw.tooltip');
+            var $tooltip = tooltip.$target;
+            return ($tooltip && $tooltip.hasClass('in')) || tooltip.hoverState === 'in';
+        }
+
+        $el.trigger('click');
+        assert.ok(showingTooltip(), 'tooltip is shown');
+
+        $el.CFW_Tooltip('hide');
+        assert.ok(!showingTooltip(), 'tooltip is hidden');
+
+        $el.trigger('click');
+        assert.ok(showingTooltip(), 'tooltip is shown again');
+    });
 });
