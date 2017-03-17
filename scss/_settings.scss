@@ -892,14 +892,14 @@ $popover-border-color:          $uibase-200 !default;
 $popover-border-radius:         .3125rem !default;
 $popover-box-shadow:            0 .2rem .3rem rgba(0,0,0,.175) !default;
 
-$popover-title-padding-x:       .75rem !default;
-$popover-title-padding-y:       .5rem !default;
-$popover-title-bg:              $uibase-50 !default;
-$popover-title-border-width:    $border-width !default;
-$popover-title-border-color:    $uibase-100 !default;
+$popover-header-padding-x:     .75rem !default;
+$popover-header-padding-y:     .5rem !default;
+$popover-header-bg:            $uibase-50 !default;
+$popover-header-border-width:  $border-width !default;
+$popover-header-border-color:  $uibase-100 !default;
 
-$popover-content-padding-x:     .75rem !default;
-$popover-content-padding-y:     .5rem !default;
+$popover-body-padding-x:       .75rem !default;
+$popover-body-padding-y:       .5rem !default;
 
 // Arrow dimension in pixels to get proper visual layout
 $popover-arrow-width:           10px !default;

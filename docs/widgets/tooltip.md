@@ -27,28 +27,28 @@ Four options are available: top, right, bottom, and left aligned.
 
 <div class="cf-example cf-example-bottom cf-example-tooltip">
     <div class="tooltip top" role="tooltip">
-        <div class="tooltip-inner">
+        <div class="tooltip-body">
             Tooltip on the top
         </div>
         <div class="tooltip-arrow"></div>
     </div>
 
     <div class="tooltip right" role="tooltip">
-        <div class="tooltip-inner">
+        <div class="tooltip-body">
             Tooltip on the right
         </div>
         <div class="tooltip-arrow"></div>
     </div>
 
     <div class="tooltip bottom" role="tooltip">
-        <div class="tooltip-inner">
+        <div class="tooltip-body">
             Tooltip on the bottom
         </div>
         <div class="tooltip-arrow"></div>
     </div>
 
     <div class="tooltip left" role="tooltip">
-        <div class="tooltip-inner">
+        <div class="tooltip-body">
             Tooltip on the left
         </div>
         <div class="tooltip-arrow"></div>

@@ -63,8 +63,8 @@ $(function() {
         $popover.CFW_Popover('show');
 
         assert.notEqual($('.popover').length, 0, 'popover was inserted');
-        assert.strictEqual($('.popover .popover-title').text(), 'popover title', 'title correctly inserted');
-        assert.strictEqual($('.popover .popover-content').text(), 'popover content', 'content correctly inserted');
+        assert.strictEqual($('.popover .popover-header').text(), 'popover title', 'title correctly inserted');
+        assert.strictEqual($('.popover .popover-body').text(), 'popover content', 'content correctly inserted');
 
         $popover.CFW_Popover('hide');
         assert.strictEqual($('.popover').length, 0, 'popover was removed');
@@ -84,14 +84,14 @@ $(function() {
 
         $popover.CFW_Popover('show');
         assert.notEqual($('.popover').length, 0, 'popover was inserted');
-        assert.equal($('.popover .popover-content').html(), $div, 'content correctly inserted');
+        assert.equal($('.popover .popover-body').html(), $div, 'content correctly inserted');
 
         $popover.CFW_Popover('hide');
         assert.strictEqual($('.popover').length, 0, 'popover was removed');
 
         $popover.CFW_Popover('show');
         assert.notEqual($('.popover').length, 0, 'popover was inserted');
-        assert.equal($('.popover .popover-content').html(), $div, 'content correctly inserted');
+        assert.equal($('.popover .popover-body').html(), $div, 'content correctly inserted');
 
         $popover.CFW_Popover('hide');
         assert.strictEqual($('.popover').length, 0, 'popover was removed');
@@ -105,8 +105,8 @@ $(function() {
             .CFW_Popover('show');
 
         assert.notEqual($('.popover').length, 0, 'popover was inserted');
-        assert.strictEqual($('.popover .popover-title').text(), 'popover title', 'title correctly inserted');
-        assert.strictEqual($('.popover .popover-content').text(), 'popover content', 'content correctly inserted');
+        assert.strictEqual($('.popover .popover-header').text(), 'popover title', 'title correctly inserted');
+        assert.strictEqual($('.popover .popover-body').text(), 'popover content', 'content correctly inserted');
 
         $popover.CFW_Popover('hide');
         assert.strictEqual($('.popover').length, 0, 'popover was removed');
@@ -123,8 +123,8 @@ $(function() {
             .CFW_Popover('show');
 
         assert.notEqual($('.popover').length, 0, 'popover was inserted');
-        assert.strictEqual($('.popover .popover-title').text(), 'popover title', 'title correctly inserted');
-        assert.strictEqual($('.popover .popover-content').text(), 'popover content', 'content correctly inserted');
+        assert.strictEqual($('.popover .popover-header').text(), 'popover title', 'title correctly inserted');
+        assert.strictEqual($('.popover .popover-body').text(), 'popover content', 'content correctly inserted');
 
         $popover.CFW_Popover('hide');
         assert.strictEqual($('.popover').length, 0, 'popover was removed');

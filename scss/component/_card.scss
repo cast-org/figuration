@@ -18,7 +18,7 @@
     }
 }
 
-.card-block {
+.card-body {
     @include clearfix;
     padding: $card-padding-y $card-padding-x;
     @if $enable-flex-full {
@@ -27,7 +27,7 @@
 }
 @if $enable-flex-opt {
     .card-flex {
-        .card-block {
+        .card-body {
             flex: 1 1 auto;
         }
     }

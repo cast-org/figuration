@@ -92,13 +92,13 @@
     }
 }
 
-.popover-title {
-    padding: $popover-title-padding-y $popover-title-padding-x;
-    padding-right: ($popover-title-padding-x * 2);
+.popover-header {
+    padding: $popover-header-padding-y $popover-header-padding-x;
+    padding-right: ($popover-header-padding-x * 2);
     margin: 0; // reset heading margin
     font-size: $font-size-base;
-    background-color: $popover-title-bg;
-    border-bottom: $popover-title-border-width solid $popover-title-border-color;
+    background-color: $popover-header-bg;
+    border-bottom: $popover-header-border-width solid $popover-header-border-color;
     @include border-radius($popover-border-radius $popover-border-radius 0 0);
 
     &:empty {
@@ -106,8 +106,8 @@
     }
 }
 
-.popover-content {
-    padding: $popover-content-padding-y $popover-content-padding-x;
+.popover-body {
+    padding: $popover-body-padding-y $popover-body-padding-x;
 }
 
 // Arrows
@@ -135,8 +135,8 @@
 // Control buttons
 .popover .close,
 .popover .drag {
-    padding: ($popover-title-padding-y / 2) ($popover-title-padding-x / 2);
-    margin-top: -($popover-title-padding-y / 2);
+    padding: ($popover-header-padding-y / 2) ($popover-header-padding-x / 2);
+    margin-top: -($popover-header-padding-y / 2);
 }
 
 // Draggable variant

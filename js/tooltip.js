@@ -54,7 +54,7 @@
         activate        : false,            // Auto show after init
         unlink          : false,            // If on hide to remove events and attributes from tooltip and trigger
         dispose         : false,            // If on hide to unlink, then remove tooltip from DOM
-        template        : '<div class="tooltip"><div class="tooltip-inner"></div><div class="tooltip-arrow"></div></div>'
+        template        : '<div class="tooltip"><div class="tooltip-body"></div><div class="tooltip-arrow"></div></div>'
     };
 
     CFW_Widget_Tooltip.prototype = {
@@ -147,7 +147,7 @@
 
         setContent : function() {
             var $tip = this.$target;
-            var $inner = $tip.find('.tooltip-inner');
+            var $inner = $tip.find('.tooltip-body');
 
             if (!this.dataToggle) {
                 var title = this.getTitle();

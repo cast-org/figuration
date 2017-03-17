@@ -40,32 +40,32 @@ Four options are available: top, right, bottom, and left aligned.
 
 <div class="cf-example cf-example-bottom cf-example-popover">
     <div class="popover top">
-        <h3 class="popover-title">Popover top</h3>
-        <div class="popover-content">
+        <h3 class="popover-header">Popover top</h3>
+        <div class="popover-body">
             <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         </div>
         <div class="popover-arrow"></div>
     </div>
 
     <div class="popover right">
-        <h3 class="popover-title">Popover right</h3>
-        <div class="popover-content">
+        <h3 class="popover-header">Popover right</h3>
+        <div class="popover-body">
             <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         </div>
         <div class="popover-arrow"></div>
     </div>
 
     <div class="popover bottom">
-        <h3 class="popover-title">Popover bottom</h3>
-        <div class="popover-content">
+        <h3 class="popover-header">Popover bottom</h3>
+        <div class="popover-body">
             <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         </div>
         <div class="popover-arrow"></div>
     </div>
 
     <div class="popover left">
-        <h3 class="popover-title">Popover left</h3>
-        <div class="popover-content">
+        <h3 class="popover-header">Popover left</h3>
+        <div class="popover-body">
             <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         </div>
         <div class="popover-arrow"></div>
@@ -146,8 +146,8 @@ Have a complex content that you would like to show in a popover, or one that is 
 <button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-toggle="#popoverExample0" data-cfw-popover-placement="right">Show Popover</button>
 
 <div class="popover" id="popoverExample0">
-    <h3 class="popover-title">Popover title</h3>
-    <div class="popover-content">
+    <h3 class="popover-header">Popover title</h3>
+    <div class="popover-body">
         <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         <figure class="figure">
           <img src="{{ site.baseurl }}/assets/img/test.gif" class="figure-img img-responsive" alt="Sample image">
