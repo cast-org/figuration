@@ -315,6 +315,7 @@ textarea.form-control {
                 display: flex;
                 flex: 0 0 auto;
                 flex-flow: row wrap;
+                align-items: center;
             } @else {
                 display: inline-block;
                 vertical-align: middle;
@@ -445,7 +446,7 @@ textarea.form-control {
                 display: flex;
                 flex: 0 0 auto;
                 flex-flow: row wrap;
-                vertical-align: initial;
+                align-items: center;
             }
 
             .input-group > .form-control {
@@ -454,7 +455,6 @@ textarea.form-control {
 
             .form-check {
                 display: flex;
-                vertical-align: initial;
                 align-items: center;
                 justify-content: center;
             }
@@ -466,7 +466,6 @@ textarea.form-control {
 
             .custom-control {
                 display: flex;
-                vertical-align: initial;
                 align-items: center;
                 justify-content: center;
             }
