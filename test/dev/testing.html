@@ -101,7 +101,7 @@ $(window).ready(function() {
   min-width: 250px;
   max-width: 500px;
 }
-.container-viewport .tooltip .tooltip-inner {
+.container-viewport .tooltip .tooltip-body {
   min-width: 250px;
   max-width: 500px;
   min-height: 100px;
@@ -712,8 +712,8 @@ $(window).ready(function() {
             <a href="#" onclick="$('#pop_1').CFW_Popover('hide', true); return false;">Force Close</a> -
             <a href="#" onclick="$('#pop_1').CFW_Popover('hide'); return false;">Normal Close</a>
             <div class="popover" data-cfw-popover-target="pop_1">
-                <h3 class="popover-title">Popover top</h3>
-                <div class="popover-content">
+                <h3 class="popover-header">Popover top</h3>
+                <div class="popover-body">
                     <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
                     <p><a href="#" data-cfw-dismiss="popover">Close popover</a></p>
                 </div>
@@ -722,8 +722,8 @@ $(window).ready(function() {
             --
             <button type="button" class="btn btn-info" data-cfw-popover-toggle="pop_2" id="pop_2">Popover Hover/focus</button>
             <div class="popover" data-cfw-popover-target="pop_2">
-                <h3 class="popover-title">Popover top</h3>
-                <div class="popover-content">
+                <h3 class="popover-header">Popover top</h3>
+                <div class="popover-body">
                     <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
                 </div>
                 <div class="popover-arrow"></div>
@@ -732,8 +732,8 @@ $(window).ready(function() {
             <button type="button" class="btn btn-info" data-cfw-popover-toggle="pop_3" id="pop_3">Popover Hover/focus</button>
             &lt;- preventDefault() - should not show popover
             <div class="popover" data-cfw-popover-target="pop_3">
-                <h3 class="popover-title">Popover top</h3>
-                <div class="popover-content">
+                <h3 class="popover-header">Popover top</h3>
+                <div class="popover-body">
                     <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
                 </div>
                 <div class="popover-arrow"></div>
@@ -744,8 +744,8 @@ $(window).ready(function() {
             <button type="button" class="btn btn-info" id="pop_5">Popover from selector</button>
             <a href="#" onclick="$('#pop_5p').CFW_Popover('hide');return false;">Close by calling on popover</a>
             <div class="popover" id="pop_5p">
-                <h3 class="popover-title">Popover selector</h3>
-                <div class="popover-content">
+                <h3 class="popover-header">Popover selector</h3>
+                <div class="popover-body">
                     <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
                     <img src="" data-cfw="lazy" data-cfw-lazy-src="../assets/img/test.gif" alt="test pattern" style="border: 1px solid blue;" class="img-responsive" />
                 </div>
@@ -754,8 +754,8 @@ $(window).ready(function() {
             <br />
             <button type="button" class="btn btn-info" id="pop_7t" data-cfw="popover" data-cfw-popover-toggle="#pop_7">Popover from selector</button>
             <div class="popover" id="pop_7">
-                <h3 class="popover-title">Popover selector</h3>
-                <div class="popover-content">
+                <h3 class="popover-header">Popover selector</h3>
+                <div class="popover-body">
                     <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
                     <img src="" data-cfw="lazy" data-cfw-lazy-src="../assets/img/test.gif" alt="test pattern" style="border: 1px solid blue;" class="img-responsive" />
                 </div>
@@ -815,8 +815,8 @@ $(window).ready(function() {
                 <a href="#" onclick="javascript: $('#popR').CFW_Popover('dispose'); return false;">Dispose</a>
             </p>
             <div class="popover" id="popR">
-                <h3 class="popover-title">Popover selector</h3>
-                <div class="popover-content">
+                <h3 class="popover-header">Popover selector</h3>
+                <div class="popover-body">
                     <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
                 </div>
                 <div class="popover-arrow"></div>

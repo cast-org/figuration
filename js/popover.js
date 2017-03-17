@@ -31,7 +31,7 @@
         dragtext    : '<span aria-hidden="true">+</span>', // Text for drag handle
         dragsrtext  : 'Drag',       // Screen reader text for drag handle
         dragstep     : 10,          // 'Drag' increment for keyboard
-        template    : '<div class="popover"><h3 class="popover-title"></h3><div class="popover-content"></div><div class="popover-arrow"></div></div>'
+        template    : '<div class="popover"><h3 class="popover-header"></h3><div class="popover-body"></div><div class="popover-arrow"></div></div>'
     });
 
     CFW_Widget_Popover.prototype = $.extend({}, $.fn.CFW_Tooltip.Constructor.prototype);
@@ -49,8 +49,8 @@
 
     CFW_Widget_Popover.prototype.setContent = function() {
         var $tip = this.$target;
-        var $title = $tip.find('.popover-title');
-        var $content = $tip.find('.popover-content');
+        var $title = $tip.find('.popover-header');
+        var $content = $tip.find('.popover-body');
 
         if (!this.dataToggle) {
             var title = this.getTitle();
@@ -69,7 +69,7 @@
             }
         }
 
-        // Use '.popover-title' for labelledby
+        // Use '.popover-header' for labelledby
         if ($title.length) {
             var labelledby = $title.eq(0).CFW_getID('cfw-popover');
             this.$target.attr('aria-labelledby', labelledby);

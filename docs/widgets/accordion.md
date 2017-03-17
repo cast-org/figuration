@@ -57,7 +57,7 @@ Here some cards are used to add a bit of layout.
             <h4 class="mb-0"><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="card0">Collapse Toggle #1</a></h4>
         </div>
         <div class="collapse" data-cfw-collapse-target="card0">
-            <div class="card-block">
+            <div class="card-body">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.
             </div>
         </div>
@@ -67,7 +67,7 @@ Here some cards are used to add a bit of layout.
             <h4 class="mb-0"><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="card1">Collapse Toggle #2</a></h4>
         </div>
         <div class="collapse" data-cfw-collapse-target="card1">
-            <div class="card-block">
+            <div class="card-body">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.
             </div>
         </div>
@@ -77,7 +77,7 @@ Here some cards are used to add a bit of layout.
             <h4 class="mb-0"><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="card2">Collapse Toggle #3</a></h4>
         </div>
         <div class="collapse" data-cfw-collapse-target="card2">
-            <div class="card-block">
+            <div class="card-body">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.
             </div>
         </div>

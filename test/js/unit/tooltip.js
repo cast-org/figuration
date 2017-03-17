@@ -116,7 +116,7 @@ $(function() {
         assert.expect(2);
         var $tooltip = $('<a href="#" title="Another tooltip"/>')
             .appendTo('#qunit-fixture')
-            .CFW_Tooltip({ template: '<div class="tooltip some-class"><div class="tooltip-arrow"/><div class="tooltip-inner"/></div>' });
+            .CFW_Tooltip({ template: '<div class="tooltip some-class"><div class="tooltip-arrow"/><div class="tooltip-body"/></div>' });
 
         $tooltip.CFW_Tooltip('show');
         assert.ok($('.tooltip').hasClass('some-class'), 'custom class is present');
@@ -291,7 +291,7 @@ $(function() {
         assert.expect(1);
         var styles = '<style>'
             + '.tooltip.right { white-space: nowrap; }'
-            + '.tooltip.right .tooltip-inner { max-width: none; }'
+            + '.tooltip.right .tooltip-body { max-width: none; }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
 
@@ -323,7 +323,7 @@ $(function() {
             .CFW_Tooltip();
 
         $tooltip.CFW_Tooltip('show');
-        assert.strictEqual($('.tooltip').children('.tooltip-inner').text(), 'Simple tooltip', 'title from title attribute is set');
+        assert.strictEqual($('.tooltip').children('.tooltip-body').text(), 'Simple tooltip', 'title from title attribute is set');
 
         $tooltip.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -338,7 +338,7 @@ $(function() {
             });
 
         $tooltip.CFW_Tooltip('show');
-        assert.strictEqual($('.tooltip').children('.tooltip-inner').text(), 'tooltip title', 'title from title option is set');
+        assert.strictEqual($('.tooltip').children('.tooltip-body').text(), 'tooltip title', 'title from title option is set');
 
         $tooltip.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -353,7 +353,7 @@ $(function() {
             });
 
         $tooltip.CFW_Tooltip('show');
-        assert.strictEqual($('.tooltip').children('.tooltip-inner').text(), 'tooltip title', 'title is set from title option while preferred over title attribute');
+        assert.strictEqual($('.tooltip').children('.tooltip-body').text(), 'tooltip title', 'title is set from title option while preferred over title attribute');
 
         $tooltip.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -599,7 +599,7 @@ $(function() {
     QUnit.test('should adjust the tip\'s top position when up against the top of the viewport', function(assert) {
         assert.expect(2);
         var styles = '<style>'
-            + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+            + '.tooltip .tooltip-body { width: 200px; height: 200px; max-width: none; }'
             + '.trigger { position: fixed; }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
@@ -625,7 +625,7 @@ $(function() {
     QUnit.test('should adjust the tip\'s top position when up against the bottom of the viewport', function(assert) {
         assert.expect(2);
         var styles = '<style>'
-            + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+            + '.tooltip .tooltip-body { width: 200px; height: 200px; max-width: none; }'
             + '.trigger { position: fixed; }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
@@ -653,7 +653,7 @@ $(function() {
     QUnit.test('should adjust the tip\'s left position when up against the left of the viewport', function(assert) {
         assert.expect(2);
         var styles = '<style>'
-            + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+            + '.tooltip .tooltip-body { width: 200px; height: 200px; max-width: none; }'
             + '.trigger { position: fixed; }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
@@ -680,7 +680,7 @@ $(function() {
     QUnit.test('should adjust the tip\'s left position when up against the right of the viewport', function(assert) {
         assert.expect(2);
         var styles = '<style>'
-            + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+            + '.tooltip .tooltip-body { width: 200px; height: 200px; max-width: none; }'
             + '.trigger { position: fixed; }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
@@ -708,7 +708,7 @@ $(function() {
     QUnit.test('should adjust the tip when up against the right of an arbitrary viewport', function(assert) {
         assert.expect(2);
         var styles = '<style>'
-            + '.tooltip, .tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+            + '.tooltip, .tooltip .tooltip-body { width: 200px; height: 200px; max-width: none; }'
             + '.container-viewport { position: absolute; top: 50px; left: 60px; width: 300px; height: 300px; }'
             + '.trigger { position: fixed; }'
             + '</style>';
@@ -736,7 +736,7 @@ $(function() {
     QUnit.test('should get viewport element from function', function(assert) {
         assert.expect(3);
         var styles = '<style>'
-            + '.tooltip, .tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+            + '.tooltip, .tooltip .tooltip-body { width: 200px; height: 200px; max-width: none; }'
             + '.container-viewport { position: absolute; top: 50px; left: 60px; width: 300px; height: 300px; }'
             + '.trigger { position: fixed; }'
             + '</style>';
@@ -769,7 +769,7 @@ $(function() {
         var styles = '<style>'
             + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
             + '.container-viewport, .container-viewport *, .container-viewport *:before, .container-viewport *:after { box-sizing: border-box; }'
-            + '.tooltip .tooltip-inner { width: 50px; height: 50px; max-width: none; background: red; }'
+            + '.tooltip .tooltip-body { width: 50px; height: 50px; max-width: none; background: red; }'
             + '.container-viewport { padding: 100px; margin-left: 100px; width: 100px; }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
@@ -1031,7 +1031,7 @@ $(function() {
         var styles = '<style>'
             + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
             + '.tooltip { position: absolute; }'
-            + '.tooltip .tooltip-inner { width: 24px; height: 24px; font-family: Helvetica; }'
+            + '.tooltip .tooltip-body { width: 24px; height: 24px; font-family: Helvetica; }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
 
@@ -1074,7 +1074,7 @@ $(function() {
         var styles = '<style>'
             + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
             + '.tooltip { position: absolute; display: block; font-size: 12px; line-height: 1.4; }'
-            + '.tooltip .tooltip-inner { max-width: 200px; padding: 3px 8px; font-family: Helvetica; text-align: center; }'
+            + '.tooltip .tooltip-body { max-width: 200px; padding: 3px 8px; font-family: Helvetica; text-align: center; }'
             + '#trigger-parent {'
             + '  position: fixed;'
             + '  top: 100px;'
@@ -1088,7 +1088,7 @@ $(function() {
 
         $trigger
             .on('afterShow.cfw.tooltip', function() {
-                var $tip = $('.tooltip-inner');
+                var $tip = $('.tooltip-body');
                 var tipXrightEdge = $tip.offset().left + $tip.width();
                 var triggerXleftEdge = $trigger.offset().left;
                 assert.ok(tipXrightEdge < triggerXleftEdge, 'tooltip with auto left placement, when near the right edge of the viewport, gets left placement');
@@ -1167,7 +1167,7 @@ $(function() {
             + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
             + '.tooltip { position: absolute; }'
             + '.tooltip-arrow { position: absolute; width: 0; height: 0; }'
-            + '.tooltip .tooltip-inner { max-width: 200px; padding: 3px 8px; }'
+            + '.tooltip .tooltip-body { max-width: 200px; padding: 3px 8px; }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
 
@@ -1205,7 +1205,7 @@ $(function() {
             + '#qunit-fixture { top: 0; left: 0; }'
             + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
             + '.tooltip { position: absolute; }'
-            + '.tooltip .tooltip-inner { width: 24px; height: 24px; font-family: Helvetica; }'
+            + '.tooltip .tooltip-body { width: 24px; height: 24px; font-family: Helvetica; }'
             + '#target { position: absolute; top: 100px; left: 50px; width: 100px; height: 200px; -webkit-transform: rotate(270deg); -ms-transform: rotate(270deg); transform: rotate(270deg); }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
