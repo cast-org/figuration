@@ -1721,7 +1721,7 @@ if (typeof jQuery === 'undefined') {
         activate        : false,            // Auto show after init
         unlink          : false,            // If on hide to remove events and attributes from tooltip and trigger
         dispose         : false,            // If on hide to unlink, then remove tooltip from DOM
-        template        : '<div class="tooltip"><div class="tooltip-inner"></div><div class="tooltip-arrow"></div></div>'
+        template        : '<div class="tooltip"><div class="tooltip-body"></div><div class="tooltip-arrow"></div></div>'
     };
 
     CFW_Widget_Tooltip.prototype = {
@@ -1814,7 +1814,7 @@ if (typeof jQuery === 'undefined') {
 
         setContent : function() {
             var $tip = this.$target;
-            var $inner = $tip.find('.tooltip-inner');
+            var $inner = $tip.find('.tooltip-body');
 
             if (!this.dataToggle) {
                 var title = this.getTitle();
@@ -2616,7 +2616,7 @@ if (typeof jQuery === 'undefined') {
         dragtext    : '<span aria-hidden="true">+</span>', // Text for drag handle
         dragsrtext  : 'Drag',       // Screen reader text for drag handle
         dragstep     : 10,          // 'Drag' increment for keyboard
-        template    : '<div class="popover"><h3 class="popover-title"></h3><div class="popover-content"></div><div class="popover-arrow"></div></div>'
+        template    : '<div class="popover"><h3 class="popover-header"></h3><div class="popover-body"></div><div class="popover-arrow"></div></div>'
     });
 
     CFW_Widget_Popover.prototype = $.extend({}, $.fn.CFW_Tooltip.Constructor.prototype);
@@ -2634,8 +2634,8 @@ if (typeof jQuery === 'undefined') {
 
     CFW_Widget_Popover.prototype.setContent = function() {
         var $tip = this.$target;
-        var $title = $tip.find('.popover-title');
-        var $content = $tip.find('.popover-content');
+        var $title = $tip.find('.popover-header');
+        var $content = $tip.find('.popover-body');
 
         if (!this.dataToggle) {
             var title = this.getTitle();
@@ -2654,7 +2654,7 @@ if (typeof jQuery === 'undefined') {
             }
         }
 
-        // Use '.popover-title' for labelledby
+        // Use '.popover-header' for labelledby
         if ($title.length) {
             var labelledby = $title.eq(0).CFW_getID('cfw-popover');
             this.$target.attr('aria-labelledby', labelledby);

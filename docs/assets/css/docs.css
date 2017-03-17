@@ -856,7 +856,7 @@ h4 > code {
   max-width: 500px;
 }
 
-.container-viewport .tooltip .tooltip-inner {
+.container-viewport .tooltip .tooltip-body {
   min-width: 250px;
   max-width: 500px;
   min-height: 100px;

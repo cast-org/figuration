@@ -1424,7 +1424,10 @@ fieldset[disabled] .form-check-label {
     -webkit-flex-flow: row wrap;
         -ms-flex-flow: row wrap;
             flex-flow: row wrap;
-    vertical-align: initial;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .form-inline-flex .input-group > .form-control {
     width: auto;
@@ -1434,7 +1437,6 @@ fieldset[disabled] .form-check-label {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    vertical-align: initial;
     -webkit-box-align: center;
     -webkit-align-items: center;
         -ms-flex-align: center;
@@ -1453,7 +1455,6 @@ fieldset[disabled] .form-check-label {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    vertical-align: initial;
     -webkit-box-align: center;
     -webkit-align-items: center;
         -ms-flex-align: center;
@@ -3918,7 +3919,6 @@ button.drag {
 
 .progress-flex .progress-bar {
   display: initial;
-  vertical-align: initial;
 }
 
 .progress-bar-striped {
@@ -4282,7 +4282,6 @@ button.list-group-item-danger.active {
   -webkit-flex: 0 1 auto;
       -ms-flex: 0 1 auto;
           flex: 0 1 auto;
-  float: initial;
 }
 
 .btn-group .btn + .btn,
@@ -4444,7 +4443,6 @@ button.list-group-item-danger.active {
 .btn-group-vertical-flex > .btn-group,
 .btn-group-vertical-flex > .btn-group > .btn {
   display: initial;
-  float: initial;
 }
 
 .btn-group-vertical > .btn:not(:first-child):not(:last-child) {
@@ -4517,7 +4515,6 @@ button.list-group-item-danger.active {
   -webkit-flex: 1 1 auto;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
-  float: initial;
   width: 1%;
 }
 
@@ -5926,7 +5923,7 @@ a.badge:focus, a.badge:hover {
 .media-flex .media-left,
 .media-flex .media-right,
 .media-flex .media-body {
-  display: block;
+  display: initial;
   overflow: initial;
   vertical-align: initial;
 }
@@ -6005,17 +6002,17 @@ a.badge:focus, a.badge:hover {
           flex-direction: column;
 }
 
-.card-block {
+.card-body {
   padding: 1rem 1rem;
 }
 
-.card-block::after {
+.card-body::after {
   display: block;
   clear: both;
   content: "";
 }
 
-.card-flex .card-block {
+.card-flex .card-body {
   -webkit-box-flex: 1;
   -webkit-flex: 1 1 auto;
       -ms-flex: 1 1 auto;
@@ -6385,7 +6382,6 @@ a.badge:focus, a.badge:hover {
         -ms-flex: 1 0 0%;
             flex: 1 0 0%;
     width: 1%;
-    vertical-align: initial;
   }
   .card-group-flex .card-flex {
     display: -webkit-box;
@@ -6719,7 +6715,7 @@ a.badge:focus, a.badge:hover {
   margin-left: -0.2rem;
 }
 
-.tooltip-inner {
+.tooltip-body {
   max-width: 13rem;
   padding: 0.25rem 0.5rem;
   color: #fff;
@@ -6892,7 +6888,7 @@ a.badge:focus, a.badge:hover {
   border-left-color: #fff;
 }
 
-.popover-title {
+.popover-header {
   padding: 0.5rem 0.75rem;
   padding-right: 1.5rem;
   margin: 0;
@@ -6902,11 +6898,11 @@ a.badge:focus, a.badge:hover {
   border-radius: 0.3125rem 0.3125rem 0 0;
 }
 
-.popover-title:empty {
+.popover-header:empty {
   display: none;
 }
 
-.popover-content {
+.popover-body {
   padding: 0.5rem 0.75rem;
 }
 
