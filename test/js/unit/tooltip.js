@@ -306,7 +306,7 @@ $(function() {
         var $tooltip = $container.find('.tooltip');
 
         // handle sub pixels in firefox
-        var top = Math.round($target.offset().top + ($target[0].offsetHeight / 2) - ($tooltip[0].offsetHeight / 2));
+        var top = Math.round($target.offset().top + ($target[0].getBoundingClientRect().height / 2) - ($tooltip[0].getBoundingClientRect().height / 2));
         var top2 = Math.round($tooltip.offset().top);
         var topDiff = top - top2;
         assert.ok(topDiff <= 1 && topDiff >= -1);
@@ -641,7 +641,7 @@ $(function() {
 
         $target.CFW_Tooltip('show');
         var $tooltip = $container.find('.tooltip');
-        assert.strictEqual(Math.round($tooltip.offset().top), Math.round($(window).height() - 12 - $tooltip[0].offsetHeight));
+        assert.strictEqual(Math.round($tooltip.offset().top), Math.round($(window).height() - 12 - $tooltip[0].getBoundingClientRect().height));
 
         $target.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -696,7 +696,7 @@ $(function() {
 
         $target.CFW_Tooltip('show');
         var $tooltip = $container.find('.tooltip');
-        assert.strictEqual(Math.round($tooltip.offset().left), Math.round($(window).width() - 12 - $tooltip[0].offsetWidth));
+        assert.strictEqual(Math.round($tooltip.offset().left), Math.round($(window).width() - 12 - $tooltip[0].getBoundingClientRect().width));
 
         $target.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -724,7 +724,7 @@ $(function() {
 
         $target.CFW_Tooltip('show');
         var $tooltip = $container.find('.tooltip');
-        assert.strictEqual(Math.round($tooltip.offset().left), Math.round(60 + $container.width() - $tooltip[0].offsetWidth));
+        assert.strictEqual(Math.round($tooltip.offset().left), Math.round(60 + $container.width() - $tooltip[0].getBoundingClientRect().width));
 
         $target.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -755,7 +755,7 @@ $(function() {
 
         $target.CFW_Tooltip('show');
         var $tooltip = $container.find('.tooltip');
-        assert.strictEqual(Math.round($tooltip.offset().left), Math.round(60 + $container.width() - $tooltip[0].offsetWidth));
+        assert.strictEqual(Math.round($tooltip.offset().left), Math.round(60 + $container.width() - $tooltip[0].getBoundingClientRect().width));
 
         $target.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -764,7 +764,7 @@ $(function() {
         $styles.remove();
     });
 
-    QUnit.test('should not misplace the tip when the right edge offset is greater or equal than the viewport width', function(assert) {
+    QUnit.test('should not misplace the tip when the right edge offset is greater than or equal to the viewport width', function(assert) {
         assert.expect(2);
         var styles = '<style>'
             + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
@@ -778,12 +778,13 @@ $(function() {
         var $target = $('<a href="#" title="tip">foobar</a>')
             .appendTo($container)
             .CFW_Tooltip({
-                viewport: '.container-viewport'
+                viewport: '.container-viewport',
+                animate: false
             });
 
         $target.CFW_Tooltip('show');
         var $tooltip = $container.find('.tooltip');
-        assert.strictEqual(Math.round($tooltip.offset().left), Math.round($target.position().left + $target.width() / 2 - $tooltip[0].offsetWidth / 2));
+        assert.strictEqual(Math.round($tooltip.offset().left), Math.round($target.position().left + $target[0].getBoundingClientRect().width / 2 - $tooltip[0].getBoundingClientRect().width / 2));
 
         $target.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');

@@ -575,8 +575,8 @@
                 this.$element.CFW_trigger('inserted.cfw.' + this.type);
 
                 var pos          = this._getPosition();
-                var actualWidth  = $tip[0].offsetWidth;
-                var actualHeight = $tip[0].offsetHeight;
+                var actualWidth  = $tip[0].getBoundingClientRect().width;
+                var actualHeight = $tip[0].getBoundingClientRect().height;
 
                 if (autoPlace) {
                     var orgPlacement = placement;
@@ -704,8 +704,8 @@
 
         _applyPlacement : function(offset, placement) {
             var $tip   = this.$target;
-            var width  = $tip[0].offsetWidth;
-            var height = $tip[0].offsetHeight;
+            var width  = $tip[0].getBoundingClientRect().width;
+            var height = $tip[0].getBoundingClientRect().height;
 
             // manually read margins because getBoundingClientRect includes difference
             var marginTop = parseInt($tip.css('margin-top'), 10);
@@ -732,8 +732,8 @@
             $tip.addClass('in');
 
             // check to see if placing tip in new offset caused the tip to resize itself
-            var actualWidth  = $tip[0].offsetWidth;
-            var actualHeight = $tip[0].offsetHeight;
+            var actualWidth  = $tip[0].getBoundingClientRect().width;
+            var actualHeight = $tip[0].getBoundingClientRect().height;
 
             if (placement == 'top' && actualHeight != height) {
                 offset.top = offset.top + height - actualHeight;
