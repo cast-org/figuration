@@ -43,15 +43,8 @@
 // Individual list items
 // Use on `li`s or `div`s within the `.list-group` parent.
 .list-group-item {
-    @if $enable-flex-full {
-        display: flex;
-        flex-flow: row wrap;
-        align-items: center;
-    } @else {
-        display: block;
-    }
-
     position: relative;
+    display: block;
     padding: $list-group-item-padding-y $list-group-item-padding-x;
     // Place the border on the list items and negative margin up for better styling
     margin-bottom: -$list-group-border-width;
@@ -80,14 +73,6 @@
         color: $list-group-active-color;
         background-color: $list-group-active-bg;
         border-color: $list-group-active-border;
-    }
-}
-
-@if $enable-flex-opt {
-    .list-group-flex .list-group-item {
-        display: flex;
-        flex-flow: row wrap;
-        align-items: center;
     }
 }
 
