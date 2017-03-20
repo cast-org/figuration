@@ -3,7 +3,7 @@
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 
-@mixin button-variant($color, $bg, $border, $hover-color, $hover-bg, $hover-border) {
+@mixin button-variant($color, $bg, $border, $hover-color, $hover-bg, $hover-border, $active-hover-adjust: $btn-active-hover-adjust) {
     color: $color;
     background-color: $bg;
     border-color: $border;
@@ -31,13 +31,13 @@
 
         &:hover {
             color: $hover-color;
-            background-color: if(strip-unit($btn-active-hover-adjust) <= 0, lighten($hover-bg, $btn-active-hover-adjust * -1), darken($hover-bg, $btn-active-hover-adjust));
+            background-color: if(strip-unit($active-hover-adjust) <= 0, lighten($hover-bg, $active-hover-adjust * -1), darken($hover-bg, $active-hover-adjust));
             border-color: $hover-border;
         }
     }
 }
 
-@mixin button-outline-variant($color, $border, $hover-color: $white) {
+@mixin button-outline-variant($color, $border, $hover-color: $white, $active-hover-adjust: $btn-active-hover-adjust) {
     color: $color;
     background-color: transparent;
     background-image: none;
@@ -65,7 +65,7 @@
 
         &:hover {
             color: $hover-color;
-            background-color: if(strip-unit($btn-active-hover-adjust) <= 0, lighten($color, $btn-active-hover-adjust * -1), darken($color, $btn-active-hover-adjust));
+            background-color: if(strip-unit($active-hover-adjust) <= 0, lighten($color, $active-hover-adjust * -1), darken($color, $active-hover-adjust));
             border-color: $border;
         }
     }
