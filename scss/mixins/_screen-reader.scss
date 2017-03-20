@@ -16,7 +16,6 @@
     width: 1px;
     height: 1px;
     padding: 0;
-    margin: -1px;
     overflow: hidden;
     clip: rect(0,0,0,0);
     clip-path: inset(50%); //2
@@ -36,7 +35,6 @@
         position: static;
         width: auto;
         height: auto;
-        margin: 0;
         overflow: visible;
         clip: auto;
         clip-path: none;
