@@ -656,18 +656,10 @@ Regular table background variants are not available with the inverse table, howe
 Create responsive tables by wrapping any `.table` in `.table-responsive` to make them scroll horizontally if they become too wide, otherwise, you will not see any difference in these tables.  You might need to reduce the size of your browser in order for the examples scroll.
 
 {% callout warning %}
-Firefox and Fieldsets
+Vertical Clipping
 {:.h5}
 
-Firefox has some awkward fieldset styling involving `width` that interferes with the responsive table. This cannot be overridden without a Firefox-specific hack that we **don't** provide in Figuration:
-
-{% highlight css %}
-@-moz-document url-prefix() {
-  fieldset { display: table-cell; }
-}
-{% endhighlight %}
-
-For more information, read [this Stack Overflow answer](https://stackoverflow.com/questions/17408815/fieldset-resizes-wrong-appears-to-have-unremovable-min-width-min-content/17863685#17863685).
+Responsive tables make use of `overflow-y: hidden`, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off dropdown menus and other third-party widgets.
 {% endcallout %}
 
 <div class="cf-example">
