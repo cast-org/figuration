@@ -25,7 +25,7 @@ RegExp.quoteReplacement = function(string) {
     return string.replace(/[$]/g, '$$');
 };
 
-var DRY_RUN = false;
+var DRY_RUN = true;
 
 function walkAsync(directory, excludedDirectories, fileCallback, errback) {
     if (excludedDirectories.has(path.parse(directory).base)) {
