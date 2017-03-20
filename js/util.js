@@ -109,11 +109,9 @@
         };
     }
 
-    $(function() {
-        transition = CFW_transitionEndTest();
-        $.fn.CFW_transition = CFW_transitionEndEmulate;
-        $.event.special[TRANSITION_END] = CFW_transitionEndSpecial();
-    });
+    transition = CFW_transitionEndTest();
+    $.fn.CFW_transition = CFW_transitionEndEmulate;
+    $.event.special[TRANSITION_END] = CFW_transitionEndSpecial();
 
     // =====
     // Public Utils
