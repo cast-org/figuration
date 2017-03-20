@@ -367,7 +367,7 @@ Our [Collapse widget]({{ site.baseurl }}/widgets/collapse/) allows you to use a 
 
 ### Responsive Variants
 
-For more complex navbar patterns, use the `.navbar-toggleable-*` classes in conjunction with the `.navbar-toggler`. These classes override our responsive utilities to show navigation only when content is meant to be shown.
+For more complex navbar patterns, use the `.navbar-toggleable{-breakpoint}` classes in conjunction with the `.navbar-toggler`. These classes override our responsive utilities to show navigation only when content is meant to be shown. Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) is used.
 
 For the examples in this section, you will need to resize your browser window below/above the `lg` breakpoint to see the navbars switch between modes.
 
