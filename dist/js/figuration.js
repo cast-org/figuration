@@ -130,11 +130,9 @@ if (typeof jQuery === 'undefined') {
         };
     }
 
-    $(function() {
-        transition = CFW_transitionEndTest();
-        $.fn.CFW_transition = CFW_transitionEndEmulate;
-        $.event.special[TRANSITION_END] = CFW_transitionEndSpecial();
-    });
+    transition = CFW_transitionEndTest();
+    $.fn.CFW_transition = CFW_transitionEndEmulate;
+    $.event.special[TRANSITION_END] = CFW_transitionEndSpecial();
 
     // =====
     // Public Utils
@@ -2242,8 +2240,8 @@ if (typeof jQuery === 'undefined') {
                 this.$element.CFW_trigger('inserted.cfw.' + this.type);
 
                 var pos          = this._getPosition();
-                var actualWidth  = $tip[0].offsetWidth;
-                var actualHeight = $tip[0].offsetHeight;
+                var actualWidth  = $tip[0].getBoundingClientRect().width;
+                var actualHeight = $tip[0].getBoundingClientRect().height;
 
                 if (autoPlace) {
                     var orgPlacement = placement;
@@ -2371,8 +2369,8 @@ if (typeof jQuery === 'undefined') {
 
         _applyPlacement : function(offset, placement) {
             var $tip   = this.$target;
-            var width  = $tip[0].offsetWidth;
-            var height = $tip[0].offsetHeight;
+            var width  = $tip[0].getBoundingClientRect().width;
+            var height = $tip[0].getBoundingClientRect().height;
 
             // manually read margins because getBoundingClientRect includes difference
             var marginTop = parseInt($tip.css('margin-top'), 10);
@@ -2399,8 +2397,8 @@ if (typeof jQuery === 'undefined') {
             $tip.addClass('in');
 
             // check to see if placing tip in new offset caused the tip to resize itself
-            var actualWidth  = $tip[0].offsetWidth;
-            var actualHeight = $tip[0].offsetHeight;
+            var actualWidth  = $tip[0].getBoundingClientRect().width;
+            var actualHeight = $tip[0].getBoundingClientRect().height;
 
             if (placement == 'top' && actualHeight != height) {
                 offset.top = offset.top + height - actualHeight;
