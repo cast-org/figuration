@@ -17,8 +17,7 @@ Quick and easy utilities to add some style to your text.
 Easily realign text to components with text alignment classes.
 
 {% example html %}
-<p class="text-justify">Justified text.</p>
-<p class="text-nowrap">No wrap text.</p>
+<p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit et mauris suscipit fermentum. Mauris massa dolor, mollis id augue ac, pretium faucibus massa. Ut posuere efficitur justo et luctus. Integer eget aliquam magna. In in vulputate nulla. Vivamus tristique leo id odio efficitur interdum eu ut metus.</p>
 {% endexample %}
 
 For left, right, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.  Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) is used.
@@ -32,6 +31,31 @@ For left, right, and center alignment, responsive classes are available that use
 <p class="text-md-right">Right aligned text on viewports sized MD (medium) or wider.</p>
 <p class="text-lg-right">Right aligned text on viewports sized LG (large) or wider.</p>
 <p class="text-xl-right">Right aligned text on viewports sized XL (extra-large) or wider.</p>
+{% endexample %}
+
+## Text Wrap and Truncate
+
+Prevent text from wrapping with a `.text-nowrap` class.
+
+{% example html %}
+<div class="row">
+  <div class="col-2 text-nowrap">
+    Curabitur blandit tempus ardua ridiculus sed magna.
+  </div>
+  <div class="col-10">
+    <img data-src="holder.js/50x50" alt="An image to show the text doesn't wrap">
+  </div>
+</div>
+{% endexample %}
+
+For longer content, you can add a `.text-truncate` class to truncate the text with an ellipsis.
+
+{% example html %}
+<div class="row">
+  <div class="col-2 text-truncate">
+    Praeterea iter est quasdam res quas ex communi.
+  </div>
+</div>
 {% endexample %}
 
 ## Text Transform
