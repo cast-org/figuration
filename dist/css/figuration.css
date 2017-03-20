@@ -4040,8 +4040,8 @@ button.drag {
 }
 
 .list-group-item {
-  display: block;
   position: relative;
+  display: block;
   padding: 0.75rem 1rem;
   margin-bottom: -1px;
   background-color: #fff;
@@ -4071,22 +4071,6 @@ button.drag {
   color: #fff;
   background-color: #1242ba;
   border-color: #0f389e;
-}
-
-.list-group-flex .list-group-item {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-flow: row wrap;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .list-group-flush .list-group-item {
@@ -9355,7 +9339,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   width: 1px;
   height: 1px;
   padding: 0;
-  margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   -webkit-clip-path: inset(50%);
@@ -9368,7 +9351,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   position: static;
   width: auto;
   height: auto;
-  margin: 0;
   overflow: visible;
   clip: auto;
   -webkit-clip-path: none;
@@ -9382,7 +9364,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     width: 1px;
     height: 1px;
     padding: 0;
-    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     -webkit-clip-path: inset(50%);
@@ -9398,7 +9379,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     width: 1px;
     height: 1px;
     padding: 0;
-    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     -webkit-clip-path: inset(50%);
@@ -9414,7 +9394,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     width: 1px;
     height: 1px;
     padding: 0;
-    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     -webkit-clip-path: inset(50%);
@@ -9430,7 +9409,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     width: 1px;
     height: 1px;
     padding: 0;
-    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     -webkit-clip-path: inset(50%);
@@ -9446,7 +9424,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     width: 1px;
     height: 1px;
     padding: 0;
-    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     -webkit-clip-path: inset(50%);
@@ -9462,7 +9439,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     width: 1px;
     height: 1px;
     padding: 0;
-    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     -webkit-clip-path: inset(50%);
@@ -9478,7 +9454,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     width: 1px;
     height: 1px;
     padding: 0;
-    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     -webkit-clip-path: inset(50%);
@@ -9494,7 +9469,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     width: 1px;
     height: 1px;
     padding: 0;
-    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     -webkit-clip-path: inset(50%);
