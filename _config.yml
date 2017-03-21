@@ -40,7 +40,7 @@ cdn:
   css_hash:     "sha384-CfAxtCsn1XvCjQrhkUaBUlpCs84VR0D+0C3lNUzd7DyAAWBCJ+iaiavREVLUyYm5"
   js:           https://cdn.jsdelivr.net/figuration/3.0.0-alpha.1/js/figuration.min.js
   js_hash:      "sha384-bglbCnOVw5CFaEWTy5dBLZIzEPVCafIWv6FQbsVjKsNb5ZPWR6sJsZoae6ZhB0wu"
-  jquery:       https://code.jquery.com/jquery-3.2.0.min.js
-  jquery_hash:  "sha384-o9KO9jVK1Q4ybtHgJCCHfgQrTRNlkT6SL3j/qMuBMlDw3MmFrgrOHCOaIMJWGgK5"
+  jquery:       https://code.jquery.com/jquery-3.2.1.min.js
+  jquery_hash:  "sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f"
   fontawe:      https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css
   fontawe_hash: "sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
