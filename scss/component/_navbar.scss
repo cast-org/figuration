@@ -4,7 +4,6 @@
 .navbar {
     position: relative;
     padding: $navbar-padding-y $navbar-padding-x;
-    margin-bottom: $navbar-margin-bottom;
     @include clearfix;
 }
 
