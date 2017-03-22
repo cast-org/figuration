@@ -1,4 +1,4 @@
-// Wrapper and base class
+// Navbar
 // Provide a static navbar from which we expand to create full-width, fixed, and
 // other navbar variations.
 .navbar {
@@ -7,7 +7,8 @@
     @include clearfix;
 }
 
-// Brand/project name
+// Navbar Brand
+// Used for brand, project, or site name.
 .navbar-brand {
     float: left;
     padding-top:    $navbar-brand-padding-y;
@@ -26,42 +27,8 @@
     }
 }
 
-.navbar-divider {
-    @include divider-v($navbar-divider-color, $navbar-divider-width, $navbar-padding-x);
-    float: left;
-    padding-top: $navbar-divider-padding-y;
-    padding-bottom: $navbar-divider-padding-y;
-
-    &::before {
-        content: "\00a0";
-    }
-}
-
-//Navbar text
-.navbar-text {
-    display: inline-block;
-    padding-top: $navbar-item-padding-y;
-    padding-bottom: $navbar-item-padding-y;
-}
-
-
-// Navbar toggle
-// Custom button for toggling the `.navbar-collapse`, powered by the collapse plugin.
-.navbar-toggler {
-    padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
-    font-size: $navbar-toggler-font-size;
-    line-height: 1;
-    background: none;
-    border: $border-width solid transparent;
-    @include border-radius($btn-border-radius);
-
-    @include hover-focus {
-        text-decoration: none;
-    }
-}
-
-// Navigation
-// Custom navbar navigation built on the base `.nav` styles.
+// Navbar Nav
+// Navbar navigation based the base `.nav` styles.
 .navbar-nav {
     @if $enable-flex-full {
         // Override flexbox layout
@@ -92,84 +59,41 @@
     }
 }
 
-// Dark links against a light background
-.navbar-light {
-    .navbar-brand,
-    .navbar-toggler {
-        color: $navbar-light-active-color;
+//Navbar Text
+.navbar-text {
+    display: inline-block;
+    padding-top: $navbar-item-padding-y;
+    padding-bottom: $navbar-item-padding-y;
+}
 
-        @include hover-focus {
-            color: $navbar-light-active-color;
-        }
-    }
+// Navbar Divider
+.navbar-divider {
+    @include divider-v($navbar-divider-color, $navbar-divider-width, $navbar-padding-x);
+    float: left;
+    padding-top: $navbar-divider-padding-y;
+    padding-bottom: $navbar-divider-padding-y;
 
-    .navbar-nav {
-        .nav-link {
-            color: $navbar-light-color;
-
-            @include hover-focus {
-                color: $navbar-light-hover-color;
-            }
-
-            &.disabled {
-                color: $navbar-light-disabled-color;
-                background-color: transparent;
-                border-color: transparent;
-            }
-        }
-
-        .open > .nav-link,
-        .active > .nav-link,
-        .nav-link.open,
-        .nav-link.active {
-            color: $navbar-light-active-color;
-        }
-    }
-
-    .navbar-divider {
-        border-color: $navbar-light-divider-color;
+    &::before {
+        content: "\00a0";
     }
 }
 
-// White links against a dark background
-.navbar-dark {
-    .navbar-brand,
-    .navbar-toggler {
-        color: $navbar-dark-active-color;
+// Navbar Toggle
+// Custom button for toggling the `.navbar-collapse`, powered by the collapse plugin.
+.navbar-toggler {
+    padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
+    font-size: $navbar-toggler-font-size;
+    line-height: 1;
+    background: none;
+    border: $border-width solid transparent;
+    @include border-radius($btn-border-radius);
 
-        @include hover-focus {
-            color: $navbar-dark-hover-color;
-        }
-    }
-
-    .navbar-nav {
-        .nav-link {
-            color: $navbar-dark-color;
-
-            @include hover-focus {
-                color: $navbar-dark-hover-color;
-            }
-
-            &.disabled {
-                color: $navbar-dark-disabled-color;
-                background-color: transparent;
-                border-color: transparent;
-            }
-        }
-
-        .open > .nav-link,
-        .active > .nav-link,
-        .nav-link.open,
-        .nav-link.active {
-            color: $navbar-dark-active-color;
-        }
-    }
-
-    .navbar-divider {
-        border-color: $navbar-dark-divider-color;
+    @include hover-focus {
+        text-decoration: none;
     }
 }
 
+// Navbar Group
 // Alternate navbar layout - either table or flexbox
 // Uses `.navbar-group` to allow for opt-in to new layout, while keeping old style.
 .navbar-group {
@@ -257,7 +181,6 @@
 
 // Navbar toggleable
 // Custom override for collapse widget in navbar
-
 .navbar-toggleable {
     @each $breakpoint in map-keys($grid-breakpoints) {
         $nextbp: breakpoint-next($breakpoint);
@@ -299,5 +222,84 @@
                 }
             }
         }
+    }
+}
+
+// Navbar Themes
+// Dark links against a light background
+.navbar-light {
+    .navbar-brand,
+    .navbar-toggler {
+        color: $navbar-light-active-color;
+
+        @include hover-focus {
+            color: $navbar-light-active-color;
+        }
+    }
+
+    .navbar-nav {
+        .nav-link {
+            color: $navbar-light-color;
+
+            @include hover-focus {
+                color: $navbar-light-hover-color;
+            }
+
+            &.disabled {
+                color: $navbar-light-disabled-color;
+                background-color: transparent;
+                border-color: transparent;
+            }
+        }
+
+        .open > .nav-link,
+        .active > .nav-link,
+        .nav-link.open,
+        .nav-link.active {
+            color: $navbar-light-active-color;
+        }
+    }
+
+    .navbar-divider {
+        border-color: $navbar-light-divider-color;
+    }
+}
+
+// White links against a dark background
+.navbar-dark {
+    .navbar-brand,
+    .navbar-toggler {
+        color: $navbar-dark-active-color;
+
+        @include hover-focus {
+            color: $navbar-dark-hover-color;
+        }
+    }
+
+    .navbar-nav {
+        .nav-link {
+            color: $navbar-dark-color;
+
+            @include hover-focus {
+                color: $navbar-dark-hover-color;
+            }
+
+            &.disabled {
+                color: $navbar-dark-disabled-color;
+                background-color: transparent;
+                border-color: transparent;
+            }
+        }
+
+        .open > .nav-link,
+        .active > .nav-link,
+        .nav-link.open,
+        .nav-link.active {
+            color: $navbar-dark-active-color;
+        }
+    }
+
+    .navbar-divider {
+        border-color: $navbar-dark-divider-color;
     }
 }
