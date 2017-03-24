@@ -6,10 +6,26 @@
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
+
+    @if $enable-flex-full {
+        display: flex;
+        flex-wrap: wrap;
+    } @else {
+        @include clearfix();
+    }
+}
+
+.nav-item {
+    @if not $enable-flex-full {
+        display: inline-block;
+        float: left;
+    }
 }
 
 .nav-link {
     display: inline-block;
+    float: left;
+    padding: $nav-link-padding-y $nav-link-padding-x;
 
     // Disabled state lightens text and removes hover/focus effects
     // By default it also influences `.nav-tab` and `.nav-pills`
@@ -20,65 +36,23 @@
     }
 }
 
-@if $enable-flex-full {
-    .nav {
-        display: flex;
-        flex-wrap: wrap;
-
-        // Simulate space between links
-        .nav-link + .nav-link {
-            margin-left: $nav-item-margin;
-        }
-    }
-
-    // scss-lint:disable QualifyingElement
-    ul.nav:not(.nav-inline):not(.nav-tabs):not(.nav-pills):not(.navbar-nav) {
-        flex-direction: column;
-    }
-    // scss-lint:enable QualifyingElement
-}
 @if $enable-flex-opt {
     .nav-flex {
         display: flex;
         flex-wrap: wrap;
+        @include clearfix-disable();
 
-        // Simulate space between links
-        .nav-link + .nav-link {
-            margin-left: $nav-item-margin;
+        .nav-item {
+            display: block;
+            float: none;
+        }
+
+        .nav-link {
+            display: block;
+            float: none;
         }
     }
-
-    // scss-lint:disable QualifyingElement
-    ul.nav-flex:not(.nav-inline):not(.nav-tabs):not(.nav-pills):not(.navbar-nav) {
-        flex-direction: column;
-    }
-    // scss-lint:enable QualifyingElement
 }
-
-// Nav inline
-.nav-inline {
-    .nav-item {
-        @if not $enable-flex-full {
-            display: inline-block;
-        }
-    }
-
-    .nav-item + .nav-item,
-    .nav-link + .nav-link {
-        margin-left: $nav-item-inline-spacer;
-    }
-}
-@if $enable-flex-full {
-    .nav-inline {
-        flex-flow: row wrap;
-    }
-}
-@if $enable-flex-opt {
-    .nav-flex.nav-inline {
-        flex-flow: row wrap;
-    }
-}
-
 
 // Tabs
 .nav-tabs {
@@ -98,15 +72,10 @@
         }
         // Make the list-items overlay the bottom border
         margin-bottom: -$nav-tabs-border-width;
-
-        + .nav-item {
-            margin-left: $nav-item-margin;
-        }
     }
 
     .nav-link {
         display: block;
-        padding: $nav-link-padding;
         text-decoration: none;
         border: $nav-tabs-border-width solid transparent;
         @include border-radius($border-radius $border-radius 0 0);
@@ -141,10 +110,6 @@
 @if $enable-flex-opt {
     .nav-flex.nav-tabs {
         flex-flow: row wrap;
-
-        &::after {
-            content: none;
-        }
     }
 }
 
@@ -158,15 +123,10 @@
 
     .nav-item {
         float: left;
-
-        + .nav-item {
-            margin-left: $nav-item-margin;
-        }
     }
 
     .nav-link {
         display: block;
-        padding: $nav-link-padding;
         text-decoration: none;
         @include border-radius($nav-pills-border-radius);
 
@@ -192,14 +152,11 @@
 @if $enable-flex-opt {
     .nav-flex.nav-pills {
         flex-flow: row wrap;
-
-        &::after {
-            content: none;
-        }
     }
 }
 
-.nav-stacked {
+// Vertical navigation
+.nav-vertical {
     @if $enable-flex-full {
         flex-direction: column;
     }
@@ -207,23 +164,15 @@
     .nav-item {
         display: block;
         float: none;
-
-        + .nav-item {
-            margin-top: $nav-item-margin;
-            margin-left: 0;
-        }
     }
 
     .nav-link {
         display: block;
-
-        + .nav-link {
-            margin-top: $nav-item-margin;
-        }
+        float: none;
     }
 }
 @if $enable-flex-opt {
-    .nav-flex.nav-stacked {
+    .nav-flex.nav-vertical {
         flex-direction: column;
     }
 }
@@ -233,12 +182,7 @@
 .tab-content {
     > .tab-pane {
         display: none;
-
-        &:focus {
-            outline: none;
-        }
     }
-
     > .active {
         display: block;
     }

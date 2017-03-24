@@ -724,9 +724,8 @@ $dropdown-toggle-margin-x:      .25rem !default;
 
 // Navs
 // =====
-$nav-item-margin:               .25rem !default;
-$nav-item-inline-spacer:        1rem !default;
-$nav-link-padding:              .5rem 1rem !default;
+$nav-link-padding-x:            1rem !default;
+$nav-link-padding-y:            .3125rem !default;
 $nav-link-disabled-opacity:     .6 !default;
 $nav-link-disabled-color:       $disabled-color !default;
 
@@ -749,9 +748,9 @@ $nav-pills-active-bg:           $active-bg !default;
 $navbar-padding-x:                  $spacer !default;
 $navbar-padding-y:                  ($spacer / 2) !default;
 
-$navbar-item-padding-y:             .4375rem !default;
+$navbar-item-padding-y:             .3125rem !default;
 
-$navbar-brand-padding-y:            .25rem !default;
+$navbar-brand-padding-y:            .125rem !default;
 $navbar-brand-margin-x:             1rem !default;
 $navbar-brand-font-size:            1.25rem !default;
 $navbar-brand-font-weight:          $font-weight-bold !default;
