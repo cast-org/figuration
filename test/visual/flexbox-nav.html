@@ -12,20 +12,8 @@
 <script type="text/javascript" src="../vendor/jquery.min.js"></script>
 <script type="text/javascript" src="../../dist/js/figuration.js"></script>
 
-<script type="text/javascript" src="../../docs/assets/js/vendor/holder.min.js"></script>
-<script type="text/javascript">
-Holder.addTheme("gray", {
-    bg: "#999",
-    fg: "#111",
-    size: 12,
-    font: 'sans-serif',
-    fontweight: "normal"
-});
-</script>
-
 <style>
 .nav {
-    border: 1px solid;
     margin-bottom: 1rem;
 }
 </style>
@@ -50,7 +38,7 @@ Holder.addTheme("gray", {
     normal:
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link active" href="#">Active</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -66,7 +54,7 @@ Holder.addTheme("gray", {
     flex:
     <ul class="nav nav-flex">
         <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link active" href="#">Active</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -97,10 +85,10 @@ Holder.addTheme("gray", {
         <a class="nav-link disabled" href="#">Disabled</a>
     </nav>
 
-    <h2>Inline List</h2>
+    <h2>Vertical List</h2>
 
     normal:
-    <ul class="nav nav-inline">
+    <ul class="nav nav-vertical">
         <li class="nav-item">
             <a class="nav-link active" href="#">Active</a>
         </li>
@@ -116,7 +104,7 @@ Holder.addTheme("gray", {
     </ul>
 
     flex:
-    <ul class="nav nav-flex nav-inline">
+    <ul class="nav nav-flex nav-vertical">
         <li class="nav-item">
             <a class="nav-link active" href="#">Active</a>
         </li>
@@ -131,10 +119,10 @@ Holder.addTheme("gray", {
         </li>
     </ul>
 
-    <h2>Inline Anchor</h2>
+    <h2>Vertical Anchor</h2>
 
     normal:
-    <nav class="nav nav-inline">
+    <nav class="nav nav-vertical">
         <a class="nav-link active" href="#">Active</a>
         <a class="nav-link" href="#">Link</a>
         <a class="nav-link" href="#">Another link</a>
@@ -142,7 +130,7 @@ Holder.addTheme("gray", {
     </nav>
 
     flex:
-    <nav class="nav nav-flex nav-inline">
+    <nav class="nav nav-flex nav-vertical">
         <a class="nav-link active" href="#">Active</a>
         <a class="nav-link" href="#">Link</a>
         <a class="nav-link" href="#">Another link</a>
@@ -220,7 +208,7 @@ Holder.addTheme("gray", {
     <h2>Stacked Pills</h2>
 
     normal:
-    <ul class="nav nav-pills nav-stacked">
+    <ul class="nav nav-pills nav-vertical">
         <li class="nav-item">
             <a class="nav-link active" href="#">Active</a>
         </li>
@@ -236,7 +224,7 @@ Holder.addTheme("gray", {
     </ul>
 
     flex:
-    <ul class="nav nav-flex nav-pills nav-stacked">
+    <ul class="nav nav-flex nav-pills nav-vertical">
         <li class="nav-item">
             <a class="nav-link active" href="#">Active</a>
         </li>
