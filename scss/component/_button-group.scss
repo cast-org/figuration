@@ -93,10 +93,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
-
-        &::after {
-            content: none;
-        }
+        @include clearfix-disable();
 
         .btn-group,
         .input-group {
