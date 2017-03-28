@@ -30,11 +30,6 @@ $docs-color: #246;
     }
 }
 
-// Top navigation
-.navbar-dark .btn-toggler {
-    @include button-outline-variant($uibase-50, $uibase-50, $uibase-700);
-}
-
 .icon-menu {
     display: inline-block;
     margin-top: -.25rem;
@@ -177,7 +172,7 @@ $docs-color: #246;
 
     .nav-link {
         display: block;
-        padding: .05rem .5rem;
+        padding: .15rem .5rem;
 
         &.active {
             color: $white;

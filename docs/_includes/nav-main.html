@@ -1,49 +1,44 @@
-<header class="navbar navbar-dark cf-header">
-    <div class="container">
-        <nav>
-            <a class="navbar-brand" href="{{ site.baseurl }}/">CAST Figuration</a>
-            <div class="d-lg-none float-right">
-                <button class="navbar-toggler btn btn-toggler" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" aria-label="Toggle navigation">
-                    <span class="icon-menu" aria-hidden="true">&#8801;</span>
-                </button>
-            </div>
+<header class="navbar navbar-expand-lg navbar-dark cf-header">
+    <nav class="container">
+        <a class="navbar-brand" href="{{ site.baseurl }}/">CAST Figuration</a>
+        <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" aria-label="Toggle navigation">
+            <span class="icon-menu" aria-hidden="true">&#8801;</span>
+        </button>
+        <div class="navbar-collapse collapse" id="cf-topnav">
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <a href="{{ site.baseurl }}/get-started/quick-start/" class="nav-link {% if page.group == "get-started" %}active{% endif %}">Get Started</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ site.baseurl }}/layout/overview/" class="nav-link {% if page.group == "layout" %}active{% endif %}">Layout</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ site.baseurl }}/content/reboot/" class="nav-link {% if page.group == "content" %}active{% endif %}">Content</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ site.baseurl }}/components/alerts/" class="nav-link {% if page.group == "components" %}active{% endif %}">Components</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ site.baseurl }}/utilities/borders/" class="nav-link {% if page.group == "utilities" %}active{% endif %}">Utilities</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ site.baseurl }}/widgets/overview/" class="nav-link {% if page.group == "widgets" %}active{% endif %}">Widgets</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ site.baseurl }}/about/overview/" class="nav-link {% if page.group == "about" %}active{% endif %}">About</a>
+                </li>
+            </ul>
             {% if site.github %}
-            <div class="d-sm-down-none float-right mt-0_25 mr-1 mr-lg-0">
+            <div class="my-0_5 mt-lg-0_25 mb-lg-0 ml-lg-auto">
                 <form class="form-inline docsearch-wrapper">
                     <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
                 </form>
             </div>
-            {% endif %}
-            <div class="collapse navbar-toggleable-md" id="cf-topnav">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item">
-                        <a href="{{ site.baseurl }}/get-started/quick-start/" class="nav-link {% if page.group == "get-started" %}active{% endif %}">Get Started</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ site.baseurl }}/layout/overview/" class="nav-link {% if page.group == "layout" %}active{% endif %}">Layout</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ site.baseurl }}/content/reboot/" class="nav-link {% if page.group == "content" %}active{% endif %}">Content</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ site.baseurl }}/components/alerts/" class="nav-link {% if page.group == "components" %}active{% endif %}">Components</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ site.baseurl }}/utilities/borders/" class="nav-link {% if page.group == "utilities" %}active{% endif %}">Utilities</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ site.baseurl }}/widgets/overview/" class="nav-link {% if page.group == "widgets" %}active{% endif %}">Widgets</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ site.baseurl }}/about/overview/" class="nav-link {% if page.group == "about" %}active{% endif %}">About</a>
-                    </li>
-                    {% unless site.github %}
-                    <li class="nav-item float-lg-right">
-                        <a href="{{ site.repo }}" class="nav-link"><small>GitHub</small></a>
-                    </li>
-                    {% endunless %}
-                </ul>
+            {% else %}
+            <div class="navbar-nav ml-lg-auto">
+                <a href="{{ site.repo }}" class="nav-link"><small>GitHub</small></a>
             </div>
-        </nav>
-    </div> <!-- /.container -->
+            {% endif %}
+        </div>
+    </nav> <!-- /.container -->
 </header>
