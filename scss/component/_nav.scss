@@ -102,6 +102,22 @@
     flex-direction: column;
 }
 
+// Justified variants
+.nav-fill {
+    .nav-item {
+        flex: 1 1 auto;
+        text-align: center;
+    }
+}
+
+.nav-justify {
+    .nav-item {
+        flex-basis: 0;
+        flex-grow: 1;
+        text-align: center;
+    }
+}
+
 // Tab content panes
 // Hide tabbable panes to start, show them when `.active`
 .tab-content {
