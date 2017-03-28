@@ -18,7 +18,7 @@ The Scrollspy widget is for automatically updating nav targets based on scroll p
 Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.
 
 <div class="cf-example">
-    <nav id="navbar-example" class="navbar navbar-light bg-faded">
+    <nav id="navbar-example" class="navbar navbar-expand navbar-light bg-faded">
         <a class="navbar-brand" href="#">Navbar</a>
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="#alpha" class="nav-link">Alpha</a></li>
@@ -83,7 +83,7 @@ body {
 <body data-cfw="scroll" data-cfw-scrollspy-target="#navbar-example">
   ...
   <nav id="navbar-example">
-    <ul class="nav navbar-nav">
+    <ul class="navbar-nav">
         ...
     </ul>
     </nav>

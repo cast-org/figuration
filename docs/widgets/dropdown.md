@@ -114,9 +114,9 @@ We use this extra class to reduce the horizontal `padding` on either side of the
 Dropdowns also work in a navbar, but require the use of a wrapping element for positioning.  Make sure to use seperate and nested `.nav-item` and `.nav-link` elements as in the following example.
 
 {% example html %}
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-expand navbar-light bg-faded">
     <a href="#" class="navbar-brand">Navbar</a>
-    <ul class="nav navbar-nav">
+    <ul class="navbar-nav">
         <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-cfw="dropdown">Dropdown</a>
             <ul class="dropdown-menu">
