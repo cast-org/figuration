@@ -3,28 +3,15 @@
 // `<nav>`s or `<ul>`s.
 
 .nav {
+    display: flex;
+    flex-wrap: wrap;
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
-
-    @if $enable-flex-full {
-        display: flex;
-        flex-wrap: wrap;
-    } @else {
-        @include clearfix();
-    }
-}
-
-.nav-item {
-    @if not $enable-flex-full {
-        display: inline-block;
-        float: left;
-    }
 }
 
 .nav-link {
-    display: inline-block;
-    float: left;
+    display: block;
     padding: $nav-link-padding-y $nav-link-padding-x;
 
     // Disabled state lightens text and removes hover/focus effects
@@ -36,46 +23,18 @@
     }
 }
 
-@if $enable-flex-opt {
-    .nav-flex {
-        display: flex;
-        flex-wrap: wrap;
-        @include clearfix-disable();
-
-        .nav-item {
-            display: block;
-            float: none;
-        }
-
-        .nav-link {
-            display: block;
-            float: none;
-        }
-    }
-}
 
 // Tabs
 .nav-tabs {
+    flex-flow: row wrap;
     border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
 
-    @if $enable-flex-full {
-        flex-flow: row wrap;
-    } @else {
-        @include clearfix();
-    }
-
     .nav-item {
-        @if $enable-flex-full {
-           //flex: 1;
-        } @else {
-            float: left;
-        }
         // Make the list-items overlay the bottom border
         margin-bottom: -$nav-tabs-border-width;
     }
 
     .nav-link {
-        display: block;
         text-decoration: none;
         border: $nav-tabs-border-width solid transparent;
         @include border-radius($border-radius $border-radius 0 0);
@@ -107,26 +66,13 @@
         @include border-top-radius(0);
     }
 }
-@if $enable-flex-opt {
-    .nav-flex.nav-tabs {
-        flex-flow: row wrap;
-    }
-}
+
 
 // Pills
 .nav-pills {
-    @if $enable-flex-full {
-        flex-flow: row wrap;
-    } @else {
-        @include clearfix();
-    }
-
-    .nav-item {
-        float: left;
-    }
+    flex-flow: row wrap;
 
     .nav-link {
-        display: block;
         text-decoration: none;
         @include border-radius($nav-pills-border-radius);
 
@@ -149,32 +95,11 @@
         background-color: $nav-pills-active-bg;
     }
 }
-@if $enable-flex-opt {
-    .nav-flex.nav-pills {
-        flex-flow: row wrap;
-    }
-}
+
 
 // Vertical navigation
 .nav-vertical {
-    @if $enable-flex-full {
-        flex-direction: column;
-    }
-
-    .nav-item {
-        display: block;
-        float: none;
-    }
-
-    .nav-link {
-        display: block;
-        float: none;
-    }
-}
-@if $enable-flex-opt {
-    .nav-flex.nav-vertical {
-        flex-direction: column;
-    }
+    flex-direction: column;
 }
 
 // Tab content panes

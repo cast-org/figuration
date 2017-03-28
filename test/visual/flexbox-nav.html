@@ -24,35 +24,9 @@
 <div class="container">
     <h1>Navs</h1>
 
-    <p>
-        Here we are testing the two different styles for nav layouts using the opt-in flexbox classes.
-        They are designated as follows:
-    </p>
-    <ul>
-        <li><strong>normal:</strong> table model</li>
-        <li><strong>flex:</strong> opt-in flexbox model</li>
-    </ul>
-
     <h2>List</h2>
 
-    normal:
     <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Another link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-    </ul>
-
-    flex:
-    <ul class="nav nav-flex">
         <li class="nav-item">
             <a class="nav-link active" href="#">Active</a>
         </li>
@@ -69,16 +43,7 @@
 
     <h2>Anchor</h2>
 
-    normal:
     <nav class="nav">
-        <a class="nav-link active" href="#">Active</a>
-        <a class="nav-link" href="#">Link</a>
-        <a class="nav-link" href="#">Another link</a>
-        <a class="nav-link disabled" href="#">Disabled</a>
-    </nav>
-
-    flex:
-    <nav class="nav nav-flex">
         <a class="nav-link active" href="#">Active</a>
         <a class="nav-link" href="#">Link</a>
         <a class="nav-link" href="#">Another link</a>
@@ -87,24 +52,7 @@
 
     <h2>Vertical List</h2>
 
-    normal:
     <ul class="nav nav-vertical">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Another link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-    </ul>
-
-    flex:
-    <ul class="nav nav-flex nav-vertical">
         <li class="nav-item">
             <a class="nav-link active" href="#">Active</a>
         </li>
@@ -121,16 +69,7 @@
 
     <h2>Vertical Anchor</h2>
 
-    normal:
     <nav class="nav nav-vertical">
-        <a class="nav-link active" href="#">Active</a>
-        <a class="nav-link" href="#">Link</a>
-        <a class="nav-link" href="#">Another link</a>
-        <a class="nav-link disabled" href="#">Disabled</a>
-    </nav>
-
-    flex:
-    <nav class="nav nav-flex nav-vertical">
         <a class="nav-link active" href="#">Active</a>
         <a class="nav-link" href="#">Link</a>
         <a class="nav-link" href="#">Another link</a>
@@ -139,24 +78,7 @@
 
     <h2>Tabs</h2>
 
-    normal:
     <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Another link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-    </ul>
-
-    flex:
-    <ul class="nav nav-flex nav-tabs">
         <li class="nav-item">
             <a class="nav-link active" href="#">Active</a>
         </li>
@@ -173,24 +95,7 @@
 
     <h2>Pills</h2>
 
-    normal:
     <ul class="nav nav-pills">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Another link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-    </ul>
-
-    flex:
-    <ul class="nav nav-flex nav-pills">
         <li class="nav-item">
             <a class="nav-link active" href="#">Active</a>
         </li>
@@ -207,24 +112,7 @@
 
     <h2>Stacked Pills</h2>
 
-    normal:
     <ul class="nav nav-pills nav-vertical">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-    </ul>
-
-    flex:
-    <ul class="nav nav-flex nav-pills nav-vertical">
         <li class="nav-item">
             <a class="nav-link active" href="#">Active</a>
         </li>
@@ -241,31 +129,7 @@
 
     <h2>Tabs w/ Dropdown</h2>
 
-    normal:
     <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#dropNav1">Dropdown</a>
-            <ul class="dropdown-menu" id="dropNav1">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Another link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-    </ul>
-
-    flex:
-    <ul class="nav nav-flex nav-tabs">
         <li class="nav-item">
             <a class="nav-link active" href="#">Active</a>
         </li>
@@ -289,7 +153,6 @@
 
     <h2>Pills w/ Dropdown</h2>
 
-    normal:
     <ul class="nav nav-pills">
         <li class="nav-item">
             <a class="nav-link active" href="#">Active</a>
@@ -312,28 +175,7 @@
         </li>
     </ul>
 
-    flex:
-    <ul class="nav nav-flex nav-pills">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#dropNav1">Dropdown</a>
-            <ul class="dropdown-menu" id="dropNav1">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Another link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-    </ul>
+</div>
 
 </body>
 </html>
