@@ -22,6 +22,15 @@
             margin-left: 0;
         }
     }
+
+    &:not([class*=".navbar-expand"]) {
+        .navbar-nav {
+            .dropdown-menu {
+                position: static;
+                float: none;
+            }
+        }
+    }
 }
 
 // Navbar Brand
@@ -76,14 +85,9 @@
 
 // Navbar Divider
 .navbar-divider {
-    @include divider-v($navbar-divider-color, $navbar-divider-width, $navbar-padding-x);
-    float: left;
-    padding-top: $navbar-divider-padding-y;
-    padding-bottom: $navbar-divider-padding-y;
-
-    &::before {
-        content: "\00a0";
-    }
+    width: 0;
+    border-left: $navbar-divider-width solid $navbar-divider-color;
+    overflow: hidden;
 }
 
 // Responsive navbar
@@ -120,11 +124,12 @@
 .navbar-expand {
     @each $bp in map-keys($grid-breakpoints) {
         $bprule: breakpoint-designator($bp);
+        $prev: breakpoint-prev($bp, $grid-breakpoints);
 
         &#{$bprule} {
             // Skip smallest breakpoint
             @if breakpoint-min($bp, $grid-breakpoints) != null {
-                @include media-breakpoint-down($bp) {
+                @include media-breakpoint-down($prev) {
                     .navbar-nav {
                         .dropdown-menu {
                             position: static;
@@ -136,6 +141,13 @@
                     > .container-fluid {
                         padding-right: 0;
                         padding-left: 0;
+                    }
+
+                    .navbar-divider {
+                        width: auto;
+                        height: 0;
+                        border-top: $navbar-divider-width solid $navbar-divider-color;
+                        border-left: none;
                     }
                 }
             }
