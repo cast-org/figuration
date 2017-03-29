@@ -86,8 +86,8 @@
 // Navbar Divider
 .navbar-divider {
     width: 0;
-    border-left: $navbar-divider-width solid $navbar-divider-color;
     overflow: hidden;
+    border-left: $navbar-divider-width solid $navbar-divider-color;
 }
 
 // Responsive navbar
@@ -147,7 +147,7 @@
                         width: auto;
                         height: 0;
                         border-top: $navbar-divider-width solid $navbar-divider-color;
-                        border-left: none;
+                        border-left: 0;
                     }
                 }
             }
