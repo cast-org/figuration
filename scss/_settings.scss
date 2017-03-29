@@ -724,9 +724,8 @@ $dropdown-toggle-margin-x:      .25rem !default;
 
 // Navs
 // =====
-$nav-item-margin:               .25rem !default;
-$nav-item-inline-spacer:        1rem !default;
-$nav-link-padding:              .5rem 1rem !default;
+$nav-link-padding-x:            1rem !default;
+$nav-link-padding-y:            .3125rem !default;
 $nav-link-disabled-opacity:     .6 !default;
 $nav-link-disabled-color:       $disabled-color !default;
 
@@ -748,34 +747,38 @@ $nav-pills-active-bg:           $active-bg !default;
 // =====
 $navbar-padding-x:                  $spacer !default;
 $navbar-padding-y:                  ($spacer / 2) !default;
-$navbar-margin-bottom:              1rem !default;
 
-$navbar-item-padding-y:             .425rem !default;
+$navbar-item-padding-x:             .5rem !default;
+$navbar-item-padding-y:             .3125rem !default;
 
-$navbar-brand-padding-y:            .25rem !default;
+$navbar-brand-padding-y:            .125rem !default;
 $navbar-brand-margin-x:             1rem !default;
 $navbar-brand-font-size:            1.25rem !default;
 $navbar-brand-font-weight:          $font-weight-bold !default;
 
 $navbar-divider-width:              $border-width !default;
 $navbar-divider-color:              rgba(0,0,0,.65) !default;
-$navbar-divider-padding-y:          .425rem !default;
+$navbar-divider-padding-x:          $navbar-item-padding-x !default;
+$navbar-divider-padding-y:          $navbar-item-padding-y !default;
 
-$navbar-toggler-font-size:          1.25rem !default;
-$navbar-toggler-padding-y:          .5rem !default;
-$navbar-toggler-padding-x:          .75rem !default;
+$navbar-toggle-font-size:           1.25rem !default;
+$navbar-toggle-padding-y:           $btn-padding-y !default;
+$navbar-toggle-padding-x:           $btn-padding-x !default;
+$navbar-toggle-border-radius:       $btn-border-radius !default;
 
 $navbar-dark-color:                 rgba(255,255,255,.65) !default;
 $navbar-dark-hover-color:           rgba(255,255,255,.9) !default;
 $navbar-dark-active-color:          rgba(255,255,255,.95) !default;
 $navbar-dark-disabled-color:        rgba(255,255,255,.5) !default;
 $navbar-dark-divider-color:         rgba(255,255,255,.7) !default;
+$navbar-dark-toggle-border:         rgba(255,255,255,.35) !default;
 
 $navbar-light-color:                rgba(0,0,0,.6) !default;
 $navbar-light-hover-color:          rgba(0,0,0,.85) !default;
 $navbar-light-active-color:         rgba(0,0,0,.95) !default;
 $navbar-light-disabled-color:       rgba(0,0,0,.5) !default;
 $navbar-light-divider-color:        rgba(0,0,0,.65) !default;
+$navbar-light-toggle-border:        rgba(0,0,0,.35) !default;
 
 
 // Jumbotron

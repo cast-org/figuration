@@ -6,7 +6,7 @@
 
   {% if page.group == group_slug %}
     <div class="h4">{{ group.title }}</div>
-    <ul class="nav">
+    <ul class="nav flex-column">
       {% for doc in group.pages %}
         {% assign doc_slug = doc.title | slugify %}
 
