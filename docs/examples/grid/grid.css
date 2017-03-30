@@ -18,7 +18,3 @@ h2 {
     background-color: rgba(34,68,102,.15);
     border: 1px solid rgba(34,68,102,.2);
 }
-.row-flex > [class^="col-"],
-.row-flex > .col {
-    background-color: rgba(102,0,102,.15);
-}

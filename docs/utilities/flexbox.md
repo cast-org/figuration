@@ -333,7 +333,7 @@ Responsive order utilities:
 
 <div class="cf-example-row">
 {% example html %}
-<div class="row row-flex">
+<div class="row">
     <div class="col-1 flex-last">
         1
     </div>
