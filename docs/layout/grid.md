@@ -222,13 +222,13 @@ Use `col-{breakpoint}-auto` classes to size columns based on the natural width o
 {% example html %}
 <div class="container">
     <div class="row flex-md-center">
-        <div class="col col-lg-2">
+        <div class="col-lg-2">
             1 of 3
         </div>
-        <div class="col-12 col-md-auto">
+        <div class="col-md-auto">
             Variable width content
         </div>
-        <div class="col col-lg-2">
+        <div class="col-lg-2">
             3 of 3
         </div>
     </div>
@@ -236,10 +236,10 @@ Use `col-{breakpoint}-auto` classes to size columns based on the natural width o
         <div class="col">
             1 of 3
         </div>
-        <div class="col-12 col-md-auto">
+        <div class="col-md-auto">
             Variable width content
         </div>
-        <div class="col col-lg-2">
+        <div class="col-lg-2">
             3 of 3
         </div>
     </div>
@@ -316,7 +316,7 @@ Don't want your columns to simply stack in some grid tiers. Use a combination of
 {% example html %}
 <!-- Stack the columns on mobile by making one full-width and the other half-width -->
 <div class="row">
-  <div class="col-12 col-md-8">.col .col-md-8</div>
+  <div class="col col-md-8">.col .col-md-8</div>
   <div class="col-6 col-md-4">.col-6 .col-md-4</div>
 </div>
 
@@ -472,7 +472,7 @@ In practice, here's how it looks. Note you can continue to use this with all oth
 <div class="cf-example-row">
 {% example html %}
 <div class="row no-gutters">
-  <div class="col-12 col-sm-6 col-md-8">.col .col-sm-6 .col-md-8</div>
+  <div class="col-12 col-sm-6 col-md-8">.col-12 .col-sm-6 .col-md-8</div>
   <div class="col-6 col-md-4">.col-6 .col-md-4</div>
 </div>
 {% endexample %}
