@@ -141,7 +141,7 @@ The example pixel values are calculated based upon assumption where the average 
 
 ## Auto-Layout Columns
 
-Utilize breakpoint-specific column classes for equal-width columns. Add any number of unit-less classes for each breakpoint you need and every column will be the same width.
+Utilize breakpoint-specific column classes for easy column sizing without an explicit numbered class like `.col-sm-6`.
 
 ### Equal Width
 
@@ -182,7 +182,7 @@ For example, here's are some grid layouts that apply to every device and viewpor
 
 ### Controlling One Column Width
 
-You can also set the width of one column and the others will automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths.
+Auto-layout for flexbox grid columns also means you can set the width of one column and have the sibling columns automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths.
 
 Note that the other columns will resize no matter the width of the center column.
 
@@ -214,9 +214,9 @@ Note that the other columns will resize no matter the width of the center column
 {% endexample %}
 </div>
 
-### Variable Width
+### Variable Width Content
 
-Using the `col-{breakpoint}-auto` classes, a column can size itself based on the natural width of its content. This can be handy when dealing with single line content like inputs, numbers, etc.  This, in conjunction with [justify content utilities]({{ site.baseurl }}/utilities/flexbox/#justify-content) utility classes, is very useful for centering layouts with uneven column sizes as viewport width changes.
+Use `col-{breakpoint}-auto` classes to size columns based on the natural width of their content. Use these classes in conjunction with [horizontal alignment](#horizontal-alignment) classes for centering layouts with uneven column sizes as viewport width changes.
 
 <div class="cf-example-row">
 {% example html %}
