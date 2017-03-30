@@ -579,30 +579,33 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
         <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
       </div>
     </div>
-    <fieldset class="form-group row">
-      <legend class="col-sm-2 form-control-legend">Radios</legend>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-            Option one is this and that&mdash;be sure to include why it's great
-          </label>
-        </div>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-            Option two can be something else and selecting it will deselect option one
-          </label>
-        </div>
-        <div class="form-check disabled">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-            Option three is disabled
-          </label>
+    <fieldset class="form-group">
+      <div class="row">
+        <legend class="col-sm-2 form-control-legend">Radios</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+              Option one is this and that&mdash;be sure to include why it's great
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+              Option two can be something else and selecting it will deselect option one
+            </label>
+          </div>
+          <div class="form-check disabled">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+              Option three is disabled
+            </label>
+          </div>
         </div>
       </div>
     </fieldset>
-    <fieldset class="form-group row">
+    <fieldset class="form-group">
+      <div class="row">
         <legend class="col-sm-2 form-control-legend">Checkbox</legend>
         <div class="col-sm-10">
           <div class="form-check">
@@ -611,6 +614,7 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
             </label>
           </div>
         </div>
+      </div>
     </fieldset>
     <div class="form-group row">
       <div class="offset-sm-2 col-sm-10">
