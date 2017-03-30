@@ -1,28 +1,11 @@
 /// Grid system
-//
 // Generate semantic grid columns with these mixins.
 
-@mixin check-gutter-change($breakpoint, $gutters: $grid-gutter-widths) {
-    $prev-breakpoint: breakpoint-prev($breakpoint, $gutters);
-
-    @if $prev-breakpoint {
-        $prev-gutter: map-get($gutters, $prev-breakpoint);
-        $curr-gutter: map-get($gutters, $breakpoint);
-
-        @if $prev-gutter != $curr-gutter {
-            @content;
-        }
-    } @else {
-        @content;
-    }
-}
-
+// Containers
 @mixin make-container($gutters: $grid-gutter-widths) {
+    max-width: 100%;
     margin-right: auto;
     margin-left: auto;
-    @if not $enable-flex-full {
-        @include clearfix();
-    }
 
     @each $breakpoint in map-keys($gutters) {
         @include check-gutter-change($breakpoint, $gutters) {
@@ -35,7 +18,6 @@
     }
 }
 
-
 // For each breakpoint, define the maximum width of the container in a media query
 @mixin make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
     @each $breakpoint, $container-max-width in $max-widths {
@@ -45,7 +27,12 @@
     }
 }
 
+
+// Rows
 @mixin make-row($gutters: $grid-gutter-widths) {
+    display: flex;
+    flex-wrap: wrap;
+
     @each $breakpoint in map-keys($gutters) {
         @include check-gutter-change($breakpoint, $gutters) {
             @include media-breakpoint-up($breakpoint) {
@@ -55,30 +42,30 @@
             }
         }
     }
+}
 
-    @if $enable-flex-opt {
-        display: block;
-        flex-wrap: initial;
-    }
 
-    @if $enable-flex-full {
-        display: flex;
-        flex-wrap: wrap;
-    } @else {
-        @include clearfix();
+// Columns
+@mixin make-col-ready($gutters: $grid-gutter-widths) {
+    position: relative;
+    width: 100%; // Prevent too narrow
+    min-height: 1px; // Prevent collapsing
+
+    @each $breakpoint in map-keys($gutters) {
+        @include media-breakpoint-up($breakpoint) {
+            $gutter: map-get($gutters, $breakpoint);
+            padding-right: ($gutter / 2);
+            padding-left:  ($gutter / 2);
+        }
     }
 }
 
-@mixin make-col($size, $columns: $grid-columns, $flex-mode: false) {
-    @if $flex-mode {
-        flex: 0 0 percentage($size / $columns);
-        // Add a `max-width` to ensure content within each column does not blow out
-        // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
-        // do not appear to require this.
-        max-width: percentage($size / $columns);
-    } @else {
-        width: percentage($size / $columns);
-    }
+@mixin make-col($size, $columns: $grid-columns) {
+    flex: 0 0 percentage($size / $columns);
+    // Add a `max-width` to ensure content within each column does not blow out
+    // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+    // do not appear to require this.
+    max-width: percentage($size / $columns);
 }
 
 @mixin make-col-offset($size, $columns: $grid-columns) {
@@ -104,38 +91,99 @@
     }
 }
 
-// Grid generation
-//
-// Generate the correct number of grid classes given any value of `$grid-columns`
 
-@mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
-    $breakpoint-counter: 0;
+// Gutters
+@mixin check-gutter-change($breakpoint, $gutters: $grid-gutter-widths) {
+    $prev-breakpoint: breakpoint-prev($breakpoint, $gutters);
+
+    @if $prev-breakpoint {
+        $prev-gutter: map-get($gutters, $prev-breakpoint);
+        $curr-gutter: map-get($gutters, $breakpoint);
+
+        @if $prev-gutter != $curr-gutter {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+@mixin make-grid-gutters($gutters: $grid-gutter-widths) {
+    // Create responsive grid gutters
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        $bprule: breakpoint-designator($breakpoint);
+
+        @include check-gutter-change($breakpoint, $grid-gutter-widths) {
+            %col-gutter {
+                @include media-breakpoint-up($breakpoint) {
+                    $gutter: map-get($grid-gutter-widths, $breakpoint);
+                    padding-right: ($gutter / 2);
+                    padding-left:  ($gutter / 2);
+                }
+            }
+        }
+
+        .col#{$bprule},
+        .col#{$bprule}-auto {
+            @extend %col-gutter;
+        }
+
+        @for $i from 1 through $grid-columns {
+            .col#{$bprule}-#{$i} {
+                @extend %col-gutter;
+            }
+        }
+    }
+}
+
+// Grid generation
+// Generate the correct number of grid classes given any value of `$grid-columns`
+@mixin make-grid-columns($columns: $grid-columns, $breakpoints: $grid-breakpoints) {
+    // Use a placeholder selector to extend upon
+    %col {
+        position: relative;
+        width: 100%; // Prevent too narrow
+        min-height: 1px; // Prevent collapsing
+    }
+
+    @include make-grid-gutters();
+
     @each $breakpoint in map-keys($breakpoints) {
         $bprule: breakpoint-designator($breakpoint);
 
-        $breakpoint-counter: ($breakpoint-counter + 1);
-        @include media-breakpoint-up($breakpoint, $breakpoints) {
+        // Allow columns to stretch full width below their breakpoints
+        .col#{$bprule},
+        .col#{$bprule}-auto {
+            @extend %col;
+        }
+        @for $i from 1 through $grid-columns {
+            .col#{$bprule}-#{$i} {
+                @extend %col;
+            }
+        }
 
-            // Use a placeholders selector to extend upon
-            %col-#{$breakpoint} {
-                float: left;
+        @include media-breakpoint-up($breakpoint, $breakpoints) {
+            // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+            %col-flex-basic-#{$breakpoint} {
+                flex-basis: 0;
+                flex-grow: 1;
+                max-width: 100%;
             }
 
+            %col-flex-auto-#{$breakpoint} {
+                flex: 0 0 auto;
+                width: auto;
+            }
+
+            .col#{$bprule} {
+                @extend %col-flex-basic-#{$breakpoint};
+            }
+            .col#{$bprule}-auto {
+                @extend %col-flex-auto-#{$breakpoint};
+            }
             @for $i from 1 through $columns {
                 .col#{$bprule}-#{$i} {
-                    @include make-col($i, $columns, $enable-flex-full);
-
-                    // No floating if in full flex mode
-                    @if not $enable-flex-full {
-                        @extend %col-#{$breakpoint};
-                    }
-
-                    // Opt-in flex mode
-                    @if $enable-flex-opt {
-                        .row-flex & {
-                            @include make-col($i, $columns, $enable-flex-opt);
-                        }
-                    }
+                    @include make-col($i, $columns);
                 }
             }
 
@@ -149,39 +197,10 @@
 
             // `$columns - 1` because offsetting by the width of an entire row isn't possible
             @for $i from 0 through ($columns - 1) {
-                @if $breakpoint-counter != 1 or $i != 0 { // Avoid emitting useless .offset-0
+                @if not($bprule == "" and $i == 0) { // Avoid emitting useless .offset-0
                     .offset#{$bprule}-#{$i} {
                         @include make-col-modifier(offset, $i, $columns);
                     }
-                }
-            }
-
-            // Provide basic `.col-{bp}` classes for equal-width flexbox columns
-            %col-flex-basic-#{$breakpoint} {
-                flex-basis: 0;
-                flex-grow: 1;
-                max-width: 100%;
-            }
-
-            %col-flex-auto-#{$breakpoint} {
-                flex: 0 0 auto;
-                width: auto;
-            }
-
-            @if $enable-flex-full {
-                .col#{$bprule} {
-                    @extend %col-flex-basic-#{$breakpoint};
-                }
-                .col#{$bprule}-auto {
-                    @extend %col-flex-auto-#{$breakpoint};
-                }
-            }
-            @if $enable-flex-opt {
-                .row-flex .col#{$bprule} {
-                    @extend %col-flex-basic-#{$breakpoint};
-                }
-                .row-flex .col#{$bprule}-auto {
-                    @extend %col-flex-auto-#{$breakpoint};
                 }
             }
         }
