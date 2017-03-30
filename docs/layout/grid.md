@@ -37,7 +37,7 @@ Sounds good? Great, let's move on to seeing all that in an example.
 
 This example creates three equal-width columns on small, medium, large, and extra large devices using our [predefined grid classes](#predefined-classes). Those columns are centered in the page with the parent `.container`.
 
-Examples further down the page include some row and column colors to give a better visual example of their relationship.
+Examples further down the page add some color, padding, and borders, to the rows and columns to give a better visual example of their relationship.  These do not appear in the base Figuration grid.
 
 {% example html %}
 <div class="container">
