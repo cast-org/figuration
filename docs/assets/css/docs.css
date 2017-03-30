@@ -667,6 +667,10 @@ h4 > code {
   border: 1px solid rgba(34, 68, 102, 0.2);
 }
 
+.cf-example-row-grid .row {
+  background-color: rgba(34, 68, 102, 0.05);
+}
+
 .cf-example-row-flex .row {
   border: 1px solid rgba(34, 68, 102, 0.5);
 }
@@ -890,7 +894,7 @@ h4 > code {
 }
 
 .cf-example-flex > div div {
-  background-color: rgba(34, 68, 102, 0.15);
+  background-color: rgba(34, 68, 102, 0.05);
   border: 1px solid rgba(34, 68, 102, 0.2);
 }
 
@@ -1218,7 +1222,7 @@ h4 > code {
   border: 1px solid #70b874;
 }
 
-@media (max-width: 35.9375em) {
+@media (min-width: null) and (max-width: 35.9375em) {
   .d-xs-only {
     display: none !important;
   }
@@ -1242,7 +1246,7 @@ h4 > code {
   }
 }
 
-@media (min-width: 75em) {
+@media (min-width: 75em) and (max-width: null) {
   .d-xl-only {
     display: none !important;
   }
