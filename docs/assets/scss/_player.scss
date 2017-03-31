@@ -17,7 +17,7 @@
     white-space: nowrap;
 }
 .player.ready {
-    display: block;
+    display: flex;
 }
 .player-control > .off {
     display: none;
