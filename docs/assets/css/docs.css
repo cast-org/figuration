@@ -1395,7 +1395,9 @@ h4 > code {
 }
 
 .player.ready {
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .player-control > .off {
