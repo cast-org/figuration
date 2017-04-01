@@ -6,8 +6,6 @@ group: components
 
 Group a series of buttons together on a single line with the button group. Add on optional JavaScript radio and checkbox style behavior with [our Buttons widget]({{ site.baseurl }}/widgets/button).
 
-Button groups have support for both a `float` style layout, along with both the opt-in flexbox and [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.btn-group-flex` class to the `.btn-group` element, or a `.btn-group-vertical-flex` class to the `.btn-group-vertical`.
-
 ## Contents
 {:.no_toc}
 
@@ -31,7 +29,7 @@ Wrap a series of buttons with `.btn` in `.btn-group`.
 Combine sets of button groups into button toolbars for more complex components. Use utility classes as needed to space out groups, buttons, and more.
 
 {% example html %}
-<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+<div class="btn-toolbar mb-1" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-0_5" role="group" aria-label="First group">
     <button type="button" class="btn">1</button>
     <button type="button" class="btn">2</button>
@@ -47,6 +45,24 @@ Combine sets of button groups into button toolbars for more complex components. 
     <button type="button" class="btn btn-danger">8</button>
   </div>
 </div>
+
+<div class="btn-toolbar flex-between" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group mr-0_5" role="group" aria-label="First group">
+    <button type="button" class="btn">1</button>
+    <button type="button" class="btn">2</button>
+    <button type="button" class="btn">3</button>
+    <button type="button" class="btn">4</button>
+  </div>
+  <div class="btn-group mr-0_5" role="group" aria-label="Second group">
+    <button type="button" class="btn btn-primary">5</button>
+    <button type="button" class="btn btn-primary">6</button>
+    <button type="button" class="btn btn-primary">7</button>
+  </div>
+  <div class="btn-group" role="group" aria-label="Third group">
+    <button type="button" class="btn btn-danger">8</button>
+  </div>
+</div>
+
 {% endexample %}
 
 ### With Input Groups
@@ -67,14 +83,14 @@ Mix input groups with button groups in your toolbars. Similar to the example abo
   </div>
 </div>
 
-<div class="btn-toolbar btn-toolbar-flex flex-between mb-1" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="btn-group btn-group-flex" role="group" aria-label="First group">
+<div class="btn-toolbar flex-between mb-1" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group" role="group" aria-label="First group">
     <button type="button" class="btn">1</button>
     <button type="button" class="btn">2</button>
     <button type="button" class="btn">3</button>
     <button type="button" class="btn">4</button>
   </div>
-  <div class="input-group input-group-flex">
+  <div class="input-group">
     <span class="input-group-addon" id="btnGroupAddon2">@</span>
     <input type="text" class="form-control" placeholder="Input group example" aria-describedby="btnGroupAddon2">
   </div>
