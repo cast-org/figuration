@@ -44,83 +44,13 @@ Holder.addTheme("gray", {
 
     <h2>Deck</h2>
 
-    <p>
-        Here we are testing the two different styles for card layouts using the opt-in flexbox classes.
-        They are designated as follows:
-    </p>
-    <ul>
-        <li><strong>normal:</strong> float model</li>
-        <li><strong>flex:</strong> opt-in flexbox model</li>
-    </ul>
-
     <div class="row">
         <div class="col-4">.col-4</div>
         <div class="col-4">.col-4</div>
         <div class="col-4">.col-4</div>
     </div>
 
-    normal:
-    <div class="card-deck-wrapper">
-        <div class="card-deck">
-            <div class="card">
-                <img class="card-img-top" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    flex:
-    <div class="card-deck-wrapper">
-        <div class="card-deck card-deck-flex">
-            <div class="card">
-                <img class="card-img-top" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img-top" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    flex(no wrapper):
-    <div class="card-deck card-deck-flex">
+    <div class="card-deck">
         <div class="card">
             <img class="card-img-top" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
             <div class="card-body">
@@ -156,60 +86,7 @@ Holder.addTheme("gray", {
         <div class="col-3">.col-3</div>
     </div>
 
-    normal:
-    <div class="card-deck-wrapper">
-        <div class="card-deck">
-            <div class="card">
-                <div class="card-body">
-                    Card 1
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    Card 2
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    Card 3
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    Card 4
-                </div>
-            </div>
-        </div>
-    </div>
-
-    flex:
-    <div class="card-deck-wrapper">
-        <div class="card-deck card-deck-flex">
-            <div class="card">
-                <div class="card-body">
-                    Card 1
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    Card 2
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    Card 3
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    Card 4
-                </div>
-            </div>
-        </div>
-    </div>
-
-    flex (no wrapper):
-    <div class="card-deck card-deck-flex">
+    <div class="card-deck">
         <div class="card">
             <div class="card-body">
                 Card 1
@@ -236,7 +113,6 @@ Holder.addTheme("gray", {
 
     <h2>Group</h2>
 
-    normal:
     <div class="card-group">
       <div class="card">
         <img class="card-img-top" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
@@ -264,33 +140,6 @@ Holder.addTheme("gray", {
       </div>
     </div>
 
-    flex:
-    <div class="card-group card-group-flex">
-      <div class="card">
-        <img class="card-img-top" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-    </div>
 
     <hr />
 
@@ -298,8 +147,8 @@ Holder.addTheme("gray", {
 
     <h3>Deck</h3>
     <div class="card-deck-wrapper">
-      <div class="card-deck card-deck-flex">
-        <div class="card card-flex">
+      <div class="card-deck">
+        <div class="card">
           <img class="card-img-top img-responsive" data-src="holder.js/100px200/" alt="Card image cap">
           <div class="card-body">
             <h4 class="card-title">Card title</h4>
@@ -309,7 +158,7 @@ Holder.addTheme("gray", {
             <small class="text-muted">Last updated 3 mins ago</small>
           </div>
         </div>
-        <div class="card card-flex">
+        <div class="card">
           <img class="card-img-top img-responsive" data-src="holder.js/100px200/" alt="Card image cap">
           <div class="card-body">
             <h4 class="card-title">Card title</h4>
@@ -319,7 +168,7 @@ Holder.addTheme("gray", {
             <small class="text-muted">Last updated 3 mins ago</small>
           </div>
         </div>
-        <div class="card card-flex">
+        <div class="card">
           <img class="card-img-top img-responsive" data-src="holder.js/100px200/" alt="Card image cap">
           <div class="card-body">
             <h4 class="card-title">Card title</h4>
@@ -334,8 +183,8 @@ Holder.addTheme("gray", {
 
     <h3>Group</h3>
 
-    <div class="card-group card-group-flex">
-      <div class="card card-flex">
+    <div class="card-group">
+      <div class="card">
         <img class="card-img-top img-responsive" data-src="holder.js/100px180/" alt="Card image cap">
         <div class="card-body">
           <h4 class="card-title">Card title</h4>
@@ -345,7 +194,7 @@ Holder.addTheme("gray", {
           <small class="text-muted">Last updated 3 mins ago</small>
         </div>
       </div>
-      <div class="card card-flex">
+      <div class="card">
         <img class="card-img-top img-responsive" data-src="holder.js/100px180/" alt="Card image cap">
         <div class="card-body">
           <h4 class="card-title">Card title</h4>
@@ -355,7 +204,7 @@ Holder.addTheme("gray", {
           <small class="text-muted">Last updated 3 mins ago</small>
         </div>
       </div>
-      <div class="card card-flex">
+      <div class="card">
         <img class="card-img-top img-responsive" data-src="holder.js/100px180/" alt="Card image cap">
         <div class="card-body">
           <h4 class="card-title">Card title</h4>
@@ -365,6 +214,67 @@ Holder.addTheme("gray", {
           <small class="text-muted">Last updated 3 mins ago</small>
         </div>
       </div>
+    </div>
+
+    <hr />
+
+    <h2>Altering Deck Column Count</h2>
+
+    <style>
+    .card-deck-col {
+        justify-content: flex-start;
+        flex-flow: row wrap;
+        align-items: stretch;
+        margin-bottom: 0;
+    }
+    .card-deck-col .card {
+        flex-basis: 100%;
+        margin-bottom: 1rem;
+    }
+
+    @media (min-width: 35em) {
+        .card-deck-col .card {
+            /* need to account for margin */
+            flex-basis: calc(50% - 2rem);
+        }
+    }
+    @media (min-width: 62em) {
+        .card-deck-col .card {
+            /* need to account for margin */
+            flex-basis: calc(25% - 2rem);
+        }
+    }
+    </style>
+
+    <div class="card-deck card-deck-col">
+        <div class="card">
+            <img class="card-img-top img-responsive" data-src="holder.js/100px150/" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This is a card with some amount of text. This is a card with some amount of text.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top img-responsive" data-src="holder.js/100px150/" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This is a card with some amount of text. This is a card with some amount of text.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top img-responsive" data-src="holder.js/100px150/" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This is a card with some amount of text. This is a card with some amount of text.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top img-responsive" data-src="holder.js/100px150/" alt="Card image cap">
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This is a card with some amount of text. This is a card with some amount of text.</p>
+            </div>
+        </div>
     </div>
 
 </div>

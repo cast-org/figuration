@@ -22,22 +22,28 @@ Create equal height containers using a few data attributes. Apply the `data-cfw=
 <div class="cf-example">
     <div class="row" data-cfw="equalize" data-cfw-equalize-target="foo">
         <div class="col-md-4">
-            <div class="card card-body" data-cfw-equalize-group="foo">
-                <h4>Card 1</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac nisi sem. Maecenas elementum a lectus quis fermentum.</p>
+            <div class="card" data-cfw-equalize-group="foo">
+                <div class="card-body">
+                    <h4>Card 1</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac nisi sem. Maecenas elementum a lectus quis fermentum.</p>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card card-body" data-cfw-equalize-group="foo">
-                <h4>Card 2</h4>
-                <p>Etiam nec pulvinar quam. Duis aliquam ut turpis et vulputate. Proin malesuada sem purus, in hendrerit ex dapibus sed. Cras orci quam, vestibulum eget purus at, ultricies ultricies libero! Morbi fringilla accumsan purus, eu sodales enim suscipit nec.</p>
+            <div class="card" data-cfw-equalize-group="foo">
+                <div class="card-body">
+                    <h4>Card 2</h4>
+                    <p>Etiam nec pulvinar quam. Duis aliquam ut turpis et vulputate. Proin malesuada sem purus, in hendrerit ex dapibus sed. Cras orci quam, vestibulum eget purus at, ultricies ultricies libero! Morbi fringilla accumsan purus, eu sodales enim suscipit nec.</p>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card card-body" data-cfw-equalize-group="foo">
-                <h4>Card 3</h4>
-                <p>Nam porta malesuada mi, quis hendrerit purus.</p>
-                <img src="{{ site.baseurl }}/assets/img/test.gif" alt="test pattern" class="img-responsive" />
+            <div class="card" data-cfw-equalize-group="foo">
+                <div class="card-body">
+                    <h4>Card 3</h4>
+                    <p>Nam porta malesuada mi, quis hendrerit purus.</p>
+                    <img src="{{ site.baseurl }}/assets/img/test.gif" alt="test pattern" class="img-responsive" />
+                </div>
             </div>
         </div>
     </div>
@@ -45,18 +51,24 @@ Create equal height containers using a few data attributes. Apply the `data-cfw=
 {% highlight html %}
 <div class="row" data-cfw="equalize" data-cfw-equalize-target="foo">
     <div class="col-md-4">
-        <div class="card card-body" data-cfw-equalize-group="foo">
-            ...
+        <div class="card" data-cfw-equalize-group="foo">
+            <div class="card-body">
+                ...
+            </div>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card card-body" data-cfw-equalize-group="foo">
-            ...
+        <div class="card" data-cfw-equalize-group="foo">
+            <div class="card-body">
+                ...
+            </div>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card card-body" data-cfw-equalize-group="foo">
-            ...
+        <div class="card" data-cfw-equalize-group="foo">
+            <div class="card-body">
+                ...
+            </div>
         </div>
     </div>
 </div>
@@ -70,23 +82,29 @@ Creating nested Equalize behaviour is as simple as creating another Equalize set
     <div data-cfw="equalize" data-cfw-equalize-target="foo">
         <div class="row" data-cfw="equalize" data-cfw-equalize-target="bar">
             <div class="col-md-4">
-                <div class="card card-body" data-cfw-equalize-group="foo">
-                    <h4>Card 1</h4>
-                    <div class="card card-body" data-cfw-equalize-group="bar">one</div>
-                    one<br />one
+                <div class="card" data-cfw-equalize-group="foo">
+                    <div class="card-body">
+                        <h4>Card 1</h4>
+                        <div class="card" data-cfw-equalize-group="bar"><div class="card-body">one</div></div>
+                        one<br />one
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card card-body" data-cfw-equalize-group="foo">
-                    <h4>Card 2</h4>
-                    <div class="card card-body" data-cfw-equalize-group="bar">two<br />two</div>
-                    two
+                <div class="card" data-cfw-equalize-group="foo">
+                    <div class="card-body">
+                        <h4>Card 2</h4>
+                        <div class="card" data-cfw-equalize-group="bar"><div class="card-body">two<br />two</div></div>
+                        two
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card card-body" data-cfw-equalize-group="foo">
-                    <h4>Card 3</h4>
-                    <div class="card card-body" data-cfw-equalize-group="bar">three<br />three<br />three</div>
+                <div class="card" data-cfw-equalize-group="foo">
+                    <div class="card-body">
+                        <h4>Card 3</h4>
+                        <div class="card" data-cfw-equalize-group="bar"><div class="card-body">three<br />three<br />three</div></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,18 +114,23 @@ Creating nested Equalize behaviour is as simple as creating another Equalize set
 <div data-cfw="equalize" data-cfw-equalize-target="foo">
     <div class="row" data-cfw="equalize" data-cfw-equalize-target="bar">
         <div class="col-md-4">
-            <div class="card card-body" data-cfw-equalize-group="foo">
-                <div class="card card-body" data-cfw-equalize-group="bar">...</div>
+            <div class="card" data-cfw-equalize-group="foo">
+                <div class="card-body">
+                    <div class="card" data-cfw-equalize-group="bar">...</div>
+                </div>
+            </div>
+        <div class="col-md-4">
+            <div class="card" data-cfw-equalize-group="foo">
+                <div class="card-body">
+                    <div class="card" data-cfw-equalize-group="bar">...</div>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card card-body" data-cfw-equalize-group="foo">
-                <div class="card card-body" data-cfw-equalize-group="bar">...</div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card card-body" data-cfw-equalize-group="foo">
-                <div class="card card-body" data-cfw-equalize-group="bar">...</div>
+            <div class="card" data-cfw-equalize-group="foo">
+                <div class="card-body">
+                    <div class="card" data-cfw-equalize-group="bar">...</div>
+                </div>
             </div>
         </div>
     </div>
