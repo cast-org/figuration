@@ -37,6 +37,7 @@
 // Used for brand, project, or site name.
 .navbar-brand {
     display: inline-block;
+    align-self: flex-start;
     padding-top: $navbar-brand-padding-y;
     padding-bottom: $navbar-brand-padding-y;
     margin-right: $navbar-brand-margin-x;
@@ -45,7 +46,6 @@
     line-height: inherit;
     text-decoration: none;
     white-space: nowrap;
-    align-self: flex-start;
 
     @include hover-focus {
         text-decoration: none;
@@ -106,13 +106,13 @@
 // Navbar Toggle
 // Custom button for toggling the `.navbar-collapse`, powered by the collapse plugin.
 .navbar-toggle {
+    align-self: flex-start; // Prevent toggle from growing to full width when it's the only visible navbar child
     padding: $navbar-toggle-padding-y $navbar-toggle-padding-x;
     font-size: $navbar-toggle-font-size;
     line-height: 1;
     background: transparent; // Remove default button style
     border: $border-width solid transparent; // Remove default button style
     @include border-radius($navbar-toggle-border-radius);
-    align-self: flex-start; // Prevent toggle from growing to full width when it's the only visible navbar child
 
     @include hover-focus {
         text-decoration: none;
