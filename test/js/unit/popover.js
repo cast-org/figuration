@@ -284,4 +284,22 @@ $(function() {
             .CFW_Modal()
             .CFW_Modal('show');
     });
+
+    QUnit.test('should allow number in title and content', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        $('<a href="#" />')
+            .appendTo('#qunit-fixture')
+            .on('afterShow.cfw.popover', function() {
+                assert.strictEqual($('.popover .popover-header').text(), '4', 'title number has been converted to string');
+                assert.strictEqual($('.popover .popover-body').text(), '6', 'content number has been converted to string');
+                done();
+            })
+            .CFW_Popover({
+                title: 4,
+                content: 6
+            })
+            .CFW_Popover('show');
+    });
 });

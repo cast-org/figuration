@@ -1346,4 +1346,20 @@ $(function() {
         $el.trigger('click');
         assert.ok(showingTooltip(), 'tooltip is shown again');
     });
+
+    QUnit.test('should allow number in title', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        $('<a href="#" />')
+            .appendTo('#qunit-fixture')
+            .on('afterShow.cfw.tooltip', function() {
+                assert.strictEqual($('.tooltip .tooltip-body').text(), '4', 'title number has been converted to string');
+                done();
+            })
+            .CFW_Tooltip({
+                title: 4
+            })
+            .CFW_Tooltip('show');
+    });
 });
