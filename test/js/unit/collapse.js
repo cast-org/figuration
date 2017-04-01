@@ -340,4 +340,23 @@ $(function() {
         $trigger.CFW_Collapse();
         $trigger.CFW_Collapse('show');
     });
+
+    QUnit.test('should show a collapse when initialized with "show" option if not already shown', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        var $trigger = $('<input type="checkbox" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        /* var $target = */ $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
+
+        $trigger
+            .one('afterShow.cfw.collapse', function() {
+                assert.strictEqual($trigger.attr('aria-expanded'), 'true', 'aria-expanded on trigger is "true"');
+                assert.ok($trigger.prop('checked'), 'trigger is checked');
+                done();
+            });
+
+        $trigger
+            .CFW_Collapse()
+            .trigger('click');
+    });
 });

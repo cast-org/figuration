@@ -91,7 +91,9 @@
         },
 
         toggle : function(e) {
-            if (e) { e.preventDefault(); }
+            if (e && !/input|textarea/i.test(e.target.tagName)) {
+                e.preventDefault();
+            }
             if (this.$element.hasClass('open') || this.$target.hasClass('in')) {
                 this.hide();
             } else {
