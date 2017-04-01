@@ -1,36 +1,16 @@
 .card {
     position: relative;
+    display: flex;
+    flex-direction: column;
     margin-bottom: $card-spacer-y;
     background-color: $card-bg;
     border: $card-border-width solid $card-border-color;
     @include border-radius($card-border-radius);
-    @if $enable-flex-full {
-        display: flex;
-        flex-direction: column;
-    } @else {
-        display: block;
-    }
-}
-@if $enable-flex-opt {
-    .card-flex {
-        display: flex;
-        flex-direction: column;
-    }
 }
 
 .card-body {
-    @include clearfix;
+    flex: 1 1 auto;
     padding: $card-padding-y $card-padding-x;
-    @if $enable-flex-full {
-        flex: 1 1 auto;
-    }
-}
-@if $enable-flex-opt {
-    .card-flex {
-        .card-body {
-            flex: 1 1 auto;
-        }
-    }
 }
 
 .card-title {
@@ -82,7 +62,6 @@
 
 // Optional textual caps
 .card-header {
-    @include clearfix;
     padding: $card-cap-padding-y $card-cap-padding-x;
     margin-bottom: 0; // Removes the default margin-bottom of <hN>
     color: $card-cap-color;
@@ -95,7 +74,6 @@
 }
 
 .card-footer {
-    @include clearfix;
     padding: $card-cap-padding-y $card-cap-padding-x;
     color: $card-cap-color;
     background-color: $card-cap-bg;
@@ -171,74 +149,17 @@
 }
 
 // Card deck
-// Some style resetting here for margins across the two variations
-// (one flex, one table). Individual cards have margin-bottom by
-// default, but they're ignored due to table styles. For a consistent design,
-// we've done the same to the flex variation.
-//
-// Those changes are noted by `// Margin balancing`
+// 1. Individual cards have margin-bottom by default.
+//    Replace with single margin on the deck.
 @include media-breakpoint-up(#{$card-deck-breakpoint}) {
-    @if $enable-flex-full {
-        .card-deck {
-            @extend %card-deck-flex;
-        }
-
-    } @else {
-        .card-deck {
-            display: table;
-            width: 100%;
-            margin-bottom: $card-spacer-y;
-            table-layout: fixed;
-
-            .card {
-                display: table-cell;
-                margin-bottom: 0;
-                vertical-align: top;
-            }
-        }
-
-        @if $enable-flex-opt {
-            .card-deck-flex {
-                @extend %card-deck-flex;
-            }
-
-            // Remove the padding for IE10+
-            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-                .card-deck-wrapper .card-deck-flex {
-                    padding-right: 0;
-                    padding-left: 0;
-                }
-            }
-
-            // Remove the padding for Edge 12+
-            // https://jeffclayton.wordpress.com/2015/04/07/css-hacks-for-windows-10-and-spartan-browser-preview/
-            @supports (-ms-ime-align:auto) {
-                .card-deck-wrapper .card-deck-flex {
-                    padding-right: 0;
-                    padding-left: 0;
-                }
-            }
-        }
-    }
-
-    // This needs to come later so the CSS if generated after .card-deck
-    %card-deck-flex {
+    .card-deck {
         display: flex;
         flex-wrap: wrap;
-        margin-right: 0;
-        margin-bottom: $card-spacer-y; // Margin balancing
-        margin-left: 0;
+        margin-bottom: $card-spacer-y; // 1
 
         .card {
             flex: 1 0 0;
-            width: 1%;
-            margin-bottom: 0; // Margin balancing
-        }
-
-        @if $enable-flex-opt {
-            .card-flex {
-                display: flex;
-            }
+            margin-bottom: 0; // 1
         }
     }
 }
@@ -247,36 +168,13 @@
 @each $breakpoint, $gutter in $card-deck-gutter-widths {
     @include check-gutter-change($breakpoint, $card-deck-gutter-widths) {
         @include media-breakpoint-up($breakpoint) {
-            @if $enable-flex-full {
-                .card-deck .card {
+            .card-deck {
+                margin-right: -($gutter / 2);
+                margin-left: -($gutter / 2);
+
+                .card {
                     margin-right: ($gutter / 2);
                     margin-left: ($gutter / 2);
-                }
-
-                .card-deck-wrapper {
-                    margin-right: ($gutter / -2);
-                    margin-left: ($gutter / -2);
-                }
-            } @else {
-                .card-deck {
-                    border-spacing: $gutter 0;
-                }
-                .card-deck-wrapper {
-                    margin-right: (-$gutter);
-                    margin-left: (-$gutter);
-                }
-
-                @if $enable-flex-opt {
-                    .card-deck-flex .card {
-                        margin-right: ($gutter / 2);
-                        margin-left: ($gutter / 2);
-                    }
-
-                    .card-deck-wrapper .card-deck-flex {
-                        padding-right: ($gutter / 2);
-                        padding-left: ($gutter / 2);
-                    }
-
                 }
             }
         }
@@ -285,28 +183,17 @@
 
 
 // Card group
+// 1. Individual cards have margin-bottom by default,
+//    Replace with single margin on the group.
 @include media-breakpoint-up(#{$card-group-breakpoint}) {
     .card-group {
-        margin-bottom: $card-spacer-y;
-
-        @if $enable-flex-full {
-            display: flex;
-            flex-flow: row wrap;
-        } @else {
-            display: table;
-            width: 100%;
-            table-layout: fixed;
-        }
+        display: flex;
+        flex-flow: row wrap;
+        margin-bottom: $card-spacer-y; // 1
 
         .card {
-            margin-bottom: 0;
-
-            @if $enable-flex-full {
-                flex: 1 0 0;
-            } @else {
-                display: table-cell;
-                vertical-align: top;
-            }
+            flex: 1 0 0;
+            margin-bottom: 0; // 1
 
             + .card {
                 margin-left: 0;
@@ -346,24 +233,6 @@
             }
         }
     }
-
-    @if $enable-flex-opt {
-        .card-group-flex {
-            display: flex;
-            flex-flow: row wrap;
-            width: initial;
-            table-layout: initial;
-
-            .card {
-                flex: 1 0 0;
-                width: 1%;
-            }
-
-            .card-flex {
-                display: flex;
-            }
-        }
-    }
 }
 
 
@@ -373,7 +242,7 @@
 
 @include media-breakpoint-up(#{$card-columns-breakpoint}) {
     .card-columns {
-        column-count: 3;
+        column-count: $card-columns-count;
         column-gap: $card-columns-column-gap;
 
         .card {
