@@ -191,8 +191,7 @@
 // Navbar Themes
 // Dark links against a light background
 .navbar-light {
-    .navbar-brand,
-    .navbar-toggle {
+    .navbar-brand {
         color: $navbar-light-active-color;
 
         @include hover-focus {
@@ -226,6 +225,10 @@
     .navbar-toggle {
         color: $navbar-light-color;
         border-color: $navbar-light-toggle-border;
+
+        @include hover-focus {
+            color: $navbar-light-active-color;
+        }
     }
 
     .navbar-text {
@@ -239,8 +242,7 @@
 
 // White links against a dark background
 .navbar-dark {
-    .navbar-brand,
-    .navbar-toggle {
+    .navbar-brand {
         color: $navbar-dark-active-color;
 
         @include hover-focus {
@@ -274,6 +276,10 @@
     .navbar-toggle {
         color: $navbar-dark-color;
         border-color: $navbar-dark-toggle-border;
+
+        @include hover-focus {
+            color: $navbar-dark-active-color;
+        }
     }
 
     .navbar-text {
