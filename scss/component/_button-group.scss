@@ -4,23 +4,12 @@
 .btn-group,
 .btn-group-vertical {
     position: relative;
+    display: inline-flex;
     vertical-align: middle; // match .btn alignment given font-size hack above
-
-    @if $enable-flex-full {
-        display: inline-flex;
-    } @else {
-        display: inline-block;
-    }
 
     > .btn {
         position: relative;
-        margin-bottom: 0;
-
-        @if $enable-flex-full {
-            flex: 0 1 auto;
-        } @else {
-            float: left;
-        }
+        flex: 0 1 auto;
 
         // Bring the "active" button to the front
         &:active,
@@ -37,17 +26,6 @@
     }
 }
 
-@if $enable-flex-opt {
-    .btn-group-flex,
-    .btn-group-vertical-flex {
-        display: inline-flex;
-
-        > .btn {
-            flex: 0 1 auto;
-        }
-    }
-}
-
 // Prevent double borders when buttons are next to each other
 .btn-group {
     .btn + .btn,
@@ -60,44 +38,15 @@
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
-    @if $enable-flex-full {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-    } @else {
-        @include clearfix();
-
-        .btn-group,
-        .input-group {
-            float: left;
-        }
-    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 
     .input-group {
         width: 1%;
 
         .form-control {
             width: auto;
-        }
-    }
-
-    @if $enable-flex-opt {
-        .input-group-flex {
-            width: auto;
-        }
-    }
-}
-
-@if $enable-flex-opt {
-    .btn-toolbar-flex {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        @include clearfix-disable();
-
-        .btn-group,
-        .input-group {
-            float: none;
         }
     }
 }
@@ -134,13 +83,6 @@
 .btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
     @include border-left-radius(0);
 }
-
-// On active and open, don't show outline
-//.btn-group .dropdown-toggle:active,
-//.btn-group.open .dropdown-toggle {
-//    outline: 0;
-//}
-
 
 // Sizing
 // Remix the button sizing classes into new ones for easier manipulation
@@ -179,31 +121,15 @@
 
 // Vertical button groups
 .btn-group-vertical {
-    @if $enable-flex-full {
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-    }
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 
     > .btn,
     > .btn-group,
     > .btn-group > .btn {
         width: 100%;
         max-width: 100%;
-
-        @if not $enable-flex-full {
-            display: block;
-            float: none;
-        }
-    }
-
-    // Clear floats so dropdown menus can be properly placed
-    > .btn-group {
-        @include clearfix();
-
-        > .btn {
-            float: none;
-        }
     }
 
     > .btn + .btn,
@@ -212,20 +138,6 @@
     > .btn-group + .btn-group {
         margin-top: -$border-width;
         margin-left: 0;
-    }
-}
-
-@if $enable-flex-opt {
-    .btn-group-vertical-flex {
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-
-        > .btn,
-        > .btn-group,
-        > .btn-group > .btn {
-            display: initial;
-        }
     }
 }
 
