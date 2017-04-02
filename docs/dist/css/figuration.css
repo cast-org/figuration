@@ -4186,16 +4186,12 @@ button.list-group-item-danger.active {
 }
 
 .pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   padding-left: 0;
   list-style: none;
   border-radius: 0.25rem;
-  display: inline-block;
-  white-space: nowrap;
-  vertical-align: middle;
-}
-
-.page-item {
-  display: inline;
 }
 
 .page-item:first-child .page-link {
@@ -4211,6 +4207,7 @@ button.list-group-item-danger.active {
 
 .page-link {
   position: relative;
+  display: block;
   padding: 0.375rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
@@ -4218,7 +4215,6 @@ button.list-group-item-danger.active {
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #a3a3a3;
-  float: left;
 }
 
 .page-link:hover {
@@ -4244,23 +4240,6 @@ button.list-group-item-danger.active {
   pointer-events: none;
   cursor: not-allowed;
   background-color: transparent;
-}
-
-.pagination-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  white-space: normal;
-  vertical-align: baseline;
-}
-
-.pagination-flex .page-item {
-  display: initial;
-}
-
-.pagination-flex .page-link {
-  display: block;
-  float: none;
 }
 
 .pagination-xs .page-link {
