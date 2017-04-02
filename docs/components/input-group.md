@@ -6,8 +6,6 @@ group: components
 
 Easily extend form controls by adding text, buttons, or button groups on either side of textual `<input>`s.
 
-Input groups have support for both a `table` style layout, along with both the opt-in flexbox and [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.input-group-flex` class to the `.input-group` element.
-
 ## Contents
 {:.no_toc}
 
