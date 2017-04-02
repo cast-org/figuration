@@ -1,109 +1,18 @@
 .media {
+    display: flex;
+    align-items: flex-start;
     margin-bottom: $media-margin-y;
 
     // Nested media
     .media {
         margin-top: $media-margin-y;
 
-        + .media {
-            margin-top: -$media-margin-y;
+        &:last-child {
+            margin-bottom: 0;
         }
     }
 }
 
-@if $enable-flex-full {
-    .media {
-        display: flex;
-        margin-bottom: $spacer;
-    }
-    .media-body {
-        flex: 1;
-    }
-    .media-middle {
-        align-self: center;
-    }
-    .media-bottom {
-        align-self: flex-end;
-    }
-} @else {
-    .media,
-    .media-body {
-        overflow: hidden;
-    }
-    .media-body {
-        width: 10000px;
-    }
-    .media-left,
-    .media-right,
-    .media-body {
-        display: table-cell;
-        vertical-align: top;
-    }
-    .media-middle {
-        vertical-align: middle;
-    }
-    .media-bottom {
-        vertical-align: bottom;
-    }
-}
-
-@if $enable-flex-opt {
-    .media-flex {
-        display: flex;
-        overflow: initial;
-
-        .media-left,
-        .media-right,
-        .media-body {
-            display: initial;
-            overflow: initial;
-            vertical-align: initial;
-        }
-        .media-body {
-            flex: 1;
-            width: auto;
-        }
-        .media-middle {
-            align-self: center;
-            vertical-align: initial;
-        }
-        .media-bottom {
-            align-self: flex-end;
-            vertical-align: initial;
-        }
-    }
-}
-
-// Images/elements as the media anchor
-.media-object {
-    display: block;
-
-    // Fix collapse in webkit from max-width: 100% and display: table-cell.
-    &.img-thumbnail {
-        max-width: none;
-    }
-}
-
-// Alignment
-.media-right {
-    padding-left: $media-alignment-padding-x;
-}
-.media-left {
-    padding-right: $media-alignment-padding-x;
-}
-
-// Headings
-.media-heading {
-    margin-top: 0;
-    margin-bottom: $media-heading-margin-bottom;
-}
-
-// Media list variation
-.media-list {
-    padding-left: 0;
-    list-style: none;
-
-    .media + .media {
-        margin-top: -$media-margin-y;
-    }
+.media-body {
+    flex: 1;
 }

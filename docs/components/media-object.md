@@ -4,9 +4,7 @@ title: Media Object
 group: components
 ---
 
-The [media object](http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/) is an abstract element used as the basis for building more complex and repetitive components (like blog comments, Tweets, etc). Included is support for left and right aligned content, content alignment options, nesting, and more.
-
-Media objects have support for both a `table` style layout, along with both the opt-in flexbox and [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.media-flex` class to the `.media` element.
+The media object helps build complex and repetitive components where some media is positioned alongside content that doesn't wrap around said media.
 
 ## Contents
 {:.no_toc}
@@ -14,42 +12,45 @@ Media objects have support for both a `table` style layout, along with both the 
 * ToC goes here
 {:toc}
 
-## Default Media
+## Basic Example
 
-The default media allow to float a media object (images, video, audio) to the left or right of a content block.
+Below is an example of a single media object. Only two classes are required—the wrapping `.media` and the `.media-body` around your content. Optional padding and margin can be controlled through [spacing utilities]({{ site.baseurl }}/utilities/spacing/).
 
 {% example html %}
 <div class="media">
-  <a class="media-left" href="#">
-    <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
-  </a>
+  <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
-    <h4 class="media-heading">Media heading</h4>
+    <h5>Media heading</h5>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
   </div>
 </div>
 {% endexample %}
 
+{% callout warning %}
+Flexbug #12: Inline elements aren't treated as flex items
+{:.h5}
+
+Internet Explorer 10-11 do not render inline elements like links or images (or `::before` and `::after` pseudo-elements) as flex items. The only workaround is to set a non-inline `display` value (e.g., `block`, `inline-block`, or `flex`). You can also use one of our [display utilities]({{ site.baseurl }}/utilities/display-property/), such as `.d-flex`, for an easy fix.
+
+**Source:** [Flexbugs on GitHub](https://github.com/philipwalton/flexbugs#12-inline-elements-are-not-treated-as-flex-items)
+{% endcallout %}
+
 ## Nesting
 
-Media components can also be nested.
+Media components can also be nested as many times as needed. Place nested `.media` within the `.media-body` of a parent media object.
 
 {% example html %}
 <div class="media">
-  <div class="media-left">
-    <a href="#">
-      <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
-    </a>
-  </div>
+  <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
-    <h4 class="media-heading">Media heading</h4>
+    <h5>Media heading</h5>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     <div class="media">
-      <a class="media-left" href="#">
-        <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
+      <a href="#" class="d-flex mr-1">
+        <img data-src="holder.js/64x64" alt="Generic placeholder image">
       </a>
       <div class="media-body">
-        <h4 class="media-heading">Nested media heading</h4>
+        <h5>Nested media heading</h5>
         Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
       </div>
     </div>
@@ -59,114 +60,162 @@ Media components can also be nested.
 
 ## Alignment
 
-The images or other media can be aligned top, middle, or bottom. The default is top aligned.
+Media in a media object can be aligned with [flexbox utilities]({{ site.baseurl }}/utilities/flexbox/) to the top (default), middle, or end of your `.media-body` content.
 
 {% example html %}
 <div class="media">
-  <div class="media-left">
-    <a href="#">
-      <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
-    </a>
-  </div>
+  <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
-    <h4 class="media-heading">Top aligned media</h4>
+    <h5>Top aligned media</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-    <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+    <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
   </div>
 </div>
 {% endexample %}
 
 {% example html %}
 <div class="media">
-  <div class="media-left media-middle">
-    <a href="#">
-      <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
-    </a>
-  </div>
+  <img class="d-flex flex-self-center mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
-    <h4 class="media-heading">Middle aligned media</h4>
+    <h5>Center aligned media</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-    <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+    <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
   </div>
 </div>
 {% endexample %}
 
 {% example html %}
 <div class="media">
-  <div class="media-left media-bottom">
-    <a href="#">
-      <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
-    </a>
-  </div>
+  <img class="d-flex flex-self-end mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
-    <h4 class="media-heading">Bottom aligned media</h4>
+    <h5>Bottom aligned media</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-    <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+    <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
   </div>
+</div>
+{% endexample %}
+
+## Order
+
+Change the order of content in media objects by modifying the HTML itself, or by adding some custom flexbox CSS to set the `order` property (to an integer of your choosing).
+
+{% example html %}
+<div class="media">
+  <div class="media-body">
+    <h5>Media heading</h5>
+    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+  </div>
+  <img class="d-flex ml-1" data-src="holder.js/64x64" alt="Generic placeholder image">
 </div>
 {% endexample %}
 
 ## Media List
 
-With a bit of extra markup, you can use media inside list (useful for comment threads or articles lists).
+Because the media object has so few structural requirements, you can also use these classes on list HTML elements. On your `<ul>` or `<ol>`, add the `.list-unstyled` to remove any browser default list styles, and then apply `.media` to your `<li>`s. As always, use spacing utilities wherever needed to fine tune.
 
 {% example html %}
-<ul class="media-list">
+<ul class="list-unstyled">
   <li class="media">
-    <div class="media-left">
-      <a href="#">
-        <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
-      </a>
-    </div>
+    <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
     <div class="media-body">
-      <h4 class="media-heading">Media heading</h4>
-      <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-      <!-- Nested media object -->
-      <div class="media">
-        <a class="media-left" href="#">
-          <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
-        </a>
-        <div class="media-body">
-          <h4 class="media-heading">Nested media heading</h4>
-          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-          <!-- Nested media object -->
-          <div class="media">
-            <div class="media-left">
-              <a href="#">
-                <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
-              </a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Nested media heading</h4>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Nested media object -->
-      <div class="media">
-        <div class="media-left">
-          <a href="#">
-            <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
-          </a>
-        </div>
-        <div class="media-body">
-          <h4 class="media-heading">Nested media heading</h4>
-          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-        </div>
-      </div>
+      <h5>List-based media object</h5>
+      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     </div>
   </li>
   <li class="media">
+    <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
     <div class="media-body">
-      <h4 class="media-heading">Media heading</h4>
-      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+      <h5>List-based media object</h5>
+      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     </div>
-    <div class="media-right">
-      <a href="#">
-        <img class="media-object" data-src="holder.js/64x64" alt="Generic placeholder image">
-      </a>
+  </li>
+  <li class="media">
+    <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+    <div class="media-body">
+      <h5>List-based media object</h5>
+      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     </div>
   </li>
 </ul>
+{% endexample %}
+
+## Other Content
+
+You can include many other components, such as forms, buttons, and more.
+
+{% example html %}
+<div class="media">
+  <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <div class="media-body">
+    <form>
+      <div class="form-group mb-0_5">
+        <label for="exampleTextarea" class="sr-only">Example textarea</label>
+        <textarea class="form-control" id="exampleTextarea" placeholder="Add a comment..." rows="4"></textarea>
+      </div>
+      <div class="d-flex flex-between flex-items-center">
+        <div class="form-check mb-0">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox"> Some item to check
+          </label>
+        </div>
+        <button type="submit" class="btn btn-outline-secondary">Post Comment</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endexample %}
+
+Put media items on the both sides.
+
+{% example html %}
+<div class="media">
+  <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <div class="media-body">
+    <h5>Media heading</h5>
+    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+  </div>
+  <img class="d-flex ml-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+</div>
+{% endexample %}
+
+Even create your own social media layout.
+
+{% example html %}
+<div class="media">
+  <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <div class="media-body">
+    <h5>Media heading</h5>
+    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+    <div class="media">
+      <a href="#" class="d-flex mr-1">
+        <img data-src="holder.js/64x64" alt="Generic placeholder image">
+      </a>
+      <div class="media-body">
+        <h5>Nested media heading</h5>
+        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+      </div>
+    </div>
+    <div class="media">
+      <a href="#" class="d-flex mr-1">
+        <img data-src="holder.js/64x64" alt="Generic placeholder image">
+      </a>
+      <div class="media-body">
+        <h5>Nested media heading</h5>
+        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+      </div>
+    </div>
+  </div>
+</div>
+<div class="media">
+  <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <div class="media-body">
+    <form>
+      <div class="form-group mb-0_5">
+        <label for="exampleTextarea" class="sr-only">Example textarea</label>
+        <textarea class="form-control" id="exampleTextarea" placeholder="Add a comment..." rows="4"></textarea>
+      </div>
+      <button type="submit" class="btn btn-outline-secondary">Post Comment</button>
+    </form>
+  </div>
+</div>
 {% endexample %}
