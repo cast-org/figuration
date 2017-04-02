@@ -29,33 +29,13 @@
 
         // Vertical lines
         .gridline#{$bprule}-vr {
-            @if $enable-flex-full {
-                display: flex;
-            } @else {
-                display: table;
-                width: 100%;
-            }
+            display: flex;
 
             > .gridline-item {
-                @if not $enable-flex-full {
-                    display: table-cell;
-                    float: none;
-                }
-
                 border-left: $gridline-border-width solid $gridline-border-color;
 
                 &:first-child {
                     border-left: 0;
-                }
-            }
-        }
-
-        @if $enable-flex-opt {
-            .gridline-flex.gridline#{$bprule}-vr {
-                display: flex;
-
-                > .gridline-item {
-                    display: initial;
                 }
             }
         }
