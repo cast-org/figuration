@@ -1293,71 +1293,7 @@ fieldset[disabled] .form-check-label {
   background-size: 1.40625rem 1.40625rem;
 }
 
-@media (min-width: 36em) {
-  .form-inline label {
-    margin-bottom: 0;
-  }
-  .form-inline .form-group {
-    margin-bottom: 0;
-    display: inline-block;
-    vertical-align: middle;
-  }
-  .form-inline .form-control,
-  .form-inline .custom-select {
-    display: inline-block;
-    width: auto;
-    vertical-align: middle;
-  }
-  .form-inline .form-control-static {
-    display: inline-block;
-  }
-  .form-inline .input-group {
-    width: auto;
-  }
-  .form-inline .input-group:not(.input-group-flex) {
-    display: inline-table;
-    vertical-align: middle;
-  }
-  .form-inline .input-group .input-group-addon,
-  .form-inline .input-group .input-group-btn,
-  .form-inline .input-group .form-control .custom-select {
-    width: auto;
-  }
-  .form-inline .input-group > .form-control {
-    width: 100%;
-  }
-  .form-inline .form-control-label {
-    margin-bottom: 0;
-    vertical-align: middle;
-  }
-  .form-inline .form-check {
-    margin-top: 0;
-    margin-bottom: 0;
-    display: inline-block;
-    vertical-align: middle;
-  }
-  .form-inline .form-check-label {
-    padding-left: 0;
-  }
-  .form-inline .form-check-input {
-    position: relative;
-    margin-left: 0;
-  }
-  .form-inline .custom-control {
-    padding-left: 0;
-    vertical-align: middle;
-  }
-  .form-inline .custom-control-indicator {
-    position: static;
-    display: inline-block;
-    vertical-align: text-bottom;
-  }
-  .form-inline .has-feedback .form-control-feedback {
-    top: 0;
-  }
-}
-
-.form-inline-flex {
+.form-inline {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1370,12 +1306,12 @@ fieldset[disabled] .form-check-label {
           align-items: center;
 }
 
-.form-inline-flex .form-check {
+.form-inline .form-check {
   width: 100%;
 }
 
 @media (min-width: 36em) {
-  .form-inline-flex label {
+  .form-inline label {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1385,8 +1321,9 @@ fieldset[disabled] .form-check-label {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    margin-bottom: 0;
   }
-  .form-inline-flex .form-group {
+  .form-inline .form-group {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1400,11 +1337,25 @@ fieldset[disabled] .form-check-label {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    margin-bottom: 0;
   }
-  .form-inline-flex .input-group > .form-control {
+  .form-inline .form-control,
+  .form-inline .custom-select {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+  }
+  .form-inline .form-control-static {
+    display: inline-block;
+  }
+  .form-inline .input-group {
     width: auto;
   }
-  .form-inline-flex .form-check {
+  .form-inline .form-control-label {
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
+  .form-inline .form-check {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1414,12 +1365,20 @@ fieldset[disabled] .form-check-label {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    width: auto;
+    margin-top: 0;
+    margin-bottom: 0;
   }
-  .form-inline-flex .form-check-input {
+  .form-inline .form-check-label {
+    padding-left: 0;
+  }
+  .form-inline .form-check-input {
+    position: relative;
     margin-top: 0;
     margin-right: 0.25rem;
+    margin-left: 0;
   }
-  .form-inline-flex .custom-control {
+  .form-inline .custom-control {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1429,9 +1388,16 @@ fieldset[disabled] .form-check-label {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    padding-left: 0;
   }
-  .form-inline-flex .custom-control-indicator {
+  .form-inline .custom-control-indicator {
+    position: static;
+    display: inline-block;
     margin-right: 0.25rem;
+    vertical-align: text-bottom;
+  }
+  .form-inline .has-feedback .form-control-feedback {
+    top: 0;
   }
 }
 
@@ -4027,52 +3993,29 @@ button.list-group-item-danger.active {
 
 .input-group {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   width: 100%;
-  display: table;
-  border-collapse: separate;
 }
 
 .input-group .form-control {
   position: relative;
   z-index: 2;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  width: 1%;
   margin-bottom: 0;
-  float: left;
-  width: 100%;
 }
 
 .input-group .form-control:focus, .input-group .form-control:active, .input-group .form-control:hover {
   z-index: 3;
 }
 
-.input-group-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  border-collapse: initial;
-}
-
-.input-group-flex .form-control {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-  width: 1%;
-}
-
 .input-group-addon,
 .input-group-btn,
 .input-group .form-control {
-  display: table-cell;
-}
-
-.input-group-addon:not(:first-child):not(:last-child),
-.input-group-btn:not(:first-child):not(:last-child),
-.input-group .form-control:not(:first-child):not(:last-child) {
-  border-radius: 0;
-}
-
-.input-group-flex .input-group-addon,
-.input-group-flex .input-group-btn,
-.input-group-flex .form-control {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4081,16 +4024,16 @@ button.list-group-item-danger.active {
           align-items: center;
 }
 
-.input-group-addon,
-.input-group-btn {
-  width: 1%;
-  white-space: nowrap;
-  vertical-align: middle;
+.input-group-addon:not(:first-child):not(:last-child),
+.input-group-btn:not(:first-child):not(:last-child),
+.input-group .form-control:not(:first-child):not(:last-child) {
+  border-radius: 0;
 }
 
-.input-group-flex .input-group-addon,
-.input-group-flex .input-group-btn {
-  width: auto;
+.input-group-addon,
+.input-group-btn {
+  white-space: nowrap;
+  vertical-align: middle;
 }
 
 .input-group-addon {
@@ -4119,6 +4062,9 @@ button.list-group-item-danger.active {
 
 .input-group-btn > .btn {
   position: relative;
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
 }
 
 .input-group-btn > .btn + .btn {
@@ -4199,12 +4145,6 @@ button.list-group-item-danger.active {
 
 .form-control + .input-group-addon:not(:first-child) {
   border-left: 0;
-}
-
-.input-group-flex .input-group-btn > .btn {
-  -ms-flex-item-align: stretch;
-      -ms-grid-row-align: stretch;
-      align-self: stretch;
 }
 
 .breadcrumb {
@@ -8191,28 +8131,17 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
 }
 
 .gridline-vr {
-  display: table;
-  width: 100%;
-}
-
-.gridline-vr > .gridline-item {
-  display: table-cell;
-  float: none;
-  border-left: 1px solid #858585;
-}
-
-.gridline-vr > .gridline-item:first-child {
-  border-left: 0;
-}
-
-.gridline-flex.gridline-vr {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.gridline-flex.gridline-vr > .gridline-item {
-  display: initial;
+.gridline-vr > .gridline-item {
+  border-left: 1px solid #858585;
+}
+
+.gridline-vr > .gridline-item:first-child {
+  border-left: 0;
 }
 
 @media (min-width: 36em) {
@@ -8235,24 +8164,15 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     border-top: 0;
   }
   .gridline-sm-vr {
-    display: table;
-    width: 100%;
-  }
-  .gridline-sm-vr > .gridline-item {
-    display: table-cell;
-    float: none;
-    border-left: 1px solid #858585;
-  }
-  .gridline-sm-vr > .gridline-item:first-child {
-    border-left: 0;
-  }
-  .gridline-flex.gridline-sm-vr {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
   }
-  .gridline-flex.gridline-sm-vr > .gridline-item {
-    display: initial;
+  .gridline-sm-vr > .gridline-item {
+    border-left: 1px solid #858585;
+  }
+  .gridline-sm-vr > .gridline-item:first-child {
+    border-left: 0;
   }
 }
 
@@ -8276,24 +8196,15 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     border-top: 0;
   }
   .gridline-md-vr {
-    display: table;
-    width: 100%;
-  }
-  .gridline-md-vr > .gridline-item {
-    display: table-cell;
-    float: none;
-    border-left: 1px solid #858585;
-  }
-  .gridline-md-vr > .gridline-item:first-child {
-    border-left: 0;
-  }
-  .gridline-flex.gridline-md-vr {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
   }
-  .gridline-flex.gridline-md-vr > .gridline-item {
-    display: initial;
+  .gridline-md-vr > .gridline-item {
+    border-left: 1px solid #858585;
+  }
+  .gridline-md-vr > .gridline-item:first-child {
+    border-left: 0;
   }
 }
 
@@ -8317,24 +8228,15 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     border-top: 0;
   }
   .gridline-lg-vr {
-    display: table;
-    width: 100%;
-  }
-  .gridline-lg-vr > .gridline-item {
-    display: table-cell;
-    float: none;
-    border-left: 1px solid #858585;
-  }
-  .gridline-lg-vr > .gridline-item:first-child {
-    border-left: 0;
-  }
-  .gridline-flex.gridline-lg-vr {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
   }
-  .gridline-flex.gridline-lg-vr > .gridline-item {
-    display: initial;
+  .gridline-lg-vr > .gridline-item {
+    border-left: 1px solid #858585;
+  }
+  .gridline-lg-vr > .gridline-item:first-child {
+    border-left: 0;
   }
 }
 
@@ -8358,24 +8260,15 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
     border-top: 0;
   }
   .gridline-xl-vr {
-    display: table;
-    width: 100%;
-  }
-  .gridline-xl-vr > .gridline-item {
-    display: table-cell;
-    float: none;
-    border-left: 1px solid #858585;
-  }
-  .gridline-xl-vr > .gridline-item:first-child {
-    border-left: 0;
-  }
-  .gridline-flex.gridline-xl-vr {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
   }
-  .gridline-flex.gridline-xl-vr > .gridline-item {
-    display: initial;
+  .gridline-xl-vr > .gridline-item {
+    border-left: 1px solid #858585;
+  }
+  .gridline-xl-vr > .gridline-item:first-child {
+    border-left: 0;
   }
 }
 
