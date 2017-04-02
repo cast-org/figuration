@@ -18,45 +18,21 @@
 <div class="container mb-1">
     <h1>Inline Forms</h1>
 
-    <p>
-        Here we are testing the two different styles for inline form layouts using the opt-in flexbox classes.
-        They are designated as follows:
-    </p>
-    <ul>
-        <li><strong>normal:</strong> float model</li>
-        <li><strong>flex:</strong> opt-in flexbox model</li>
-    </ul>
-
-    normal:
     <form class="form-inline">
-        <div class="form-group mb-0_5 mr-sm-0_25 mb-sm-0">
-            <label for="inlineName0" class="form-control-label mr-sm-0_25">Name</label>
-            <input type="text" class="form-control" id="inlineName0" placeholder="Jane Doe">
-        </div>
-        <div class="form-group mb-0_5 mr-sm-0_25 mb-sm-0">
-            <label for="inlineEmail0" class="form-control-label mr-sm-0_25">Email</label>
-            <input type="email" class="form-control" id="inlineEmail0" placeholder="jane.doe@example.com">
-        </div>
-        <button type="submit" class="btn btn-primary">Send invitation</button>
-    </form>
-
-    flexbox:
-    <form class="form-inline form-inline-flex">
         <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
-            <label for="inlineNameF0" class="form-control-label mr-sm-0_5">Name</label>
-            <input type="text" class="form-control" id="inlineNameF0" placeholder="Jane Doe">
+            <label for="inlineName0" class="form-control-label mr-sm-0_5">Name</label>
+            <input type="text" class="form-control" id="inlineName0" placeholder="Jane Doe">
         </div>
         <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
             <label for="inlineEmail0" class="form-control-label mr-sm-0_5">Email</label>
-            <input type="email" class="form-control" id="inlineEmailF0" placeholder="jane.doe@example.com">
+            <input type="email" class="form-control" id="inlineEmail0" placeholder="jane.doe@example.com">
         </div>
         <button type="submit" class="btn btn-primary">Send invitation</button>
     </form>
 
     <hr />
 
-    normal:
-    <form class="form-inline">
+    <form class="form-inline form-inline-checkbox">
         <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
             <label class="sr-only" for="inlineEmail1">Email address</label>
             <input type="email" class="form-control" id="inlineEmail1" placeholder="Enter email">
@@ -73,29 +49,10 @@
         <button type="submit" class="btn btn-primary">Sign in</button>
     </form>
 
-    flexbox:
-    <form class="form-inline form-inline-checkbox">
-        <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
-            <label class="sr-only" for="inlineEmailF1">Email address</label>
-            <input type="email" class="form-control" id="inlineEmailF1" placeholder="Enter email">
-        </div>
-        <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
-            <label class="sr-only" for="inlinePasswordF1">Password</label>
-            <input type="password" class="form-control" id="inlinePasswordF1" placeholder="Password">
-        </div>
-        <div class="form-check mb-0_5 mr-sm-0_5 mb-sm-0">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox"> Remember me
-            </label>
-        </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
-    </form>
-
     <hr />
 
-    normal:
     <form class="form-inline">
-        <div class="form-group mr-sm-0_25">
+        <div class="form-group mr-sm-0_5">
             <label class="sr-only" for="inputAmount2">Amount (in dollars)</label>
             <div class="input-group">
                 <div class="input-group-addon">$</div>
@@ -106,70 +63,11 @@
         <button type="submit" class="btn btn-primary">Transfer cash</button>
     </form>
 
-    flexbox:
-    <form class="form-inline form-inline-flex">
-        <div class="form-group mr-sm-0_5">
-            <label class="sr-only" for="inputAmountF2">Amount (in dollars)</label>
-            <div class="input-group">
-                <div class="input-group-addon">$</div>
-                <input type="text" class="form-control" id="inputAmountF2" placeholder="Amount">
-                <div class="input-group-addon">.00</div>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Transfer cash</button>
-    </form>
-
     <hr />
 
-    normal w/ nested input-group-flex:
     <form class="form-inline">
-        <div class="form-group mr-sm-0_25">
-            <label class="sr-only" for="inputAmount3">Amount (in dollars)</label>
-            <div class="input-group input-group-flex">
-                <div class="input-group-addon">$</div>
-                <input type="text" class="form-control" id="inputAmount3" placeholder="Amount">
-                <div class="input-group-addon">.00</div>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Transfer cash</button>
-    </form>
-
-    flexbox  w/ nested input-group-flex:
-    <form class="form-inline form-inline-flex">
-        <div class="form-group mr-sm-0_5">
-            <label class="sr-only" for="inputAmountF3">Amount (in dollars)</label>
-            <div class="input-group input-group-flex">
-                <div class="input-group-addon">$</div>
-                <input type="text" class="form-control" id="inputAmountF3" placeholder="Amount">
-                <div class="input-group-addon">.00</div>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Transfer cash</button>
-    </form>
-
-    <hr />
-
-    normal:
-    <form class="form-inline">
-        <label class="mr-sm-0_25" for="inlinePref4">Preference</label>
-        <select class="form-control mb-0_5 mr-sm-0_25 mb-sm-0" id="inlinePref4">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-        <label class="custom-control custom-checkbox mb-0_5 mr-sm-0_25 mb-sm-0">
-            <input type="checkbox" class="custom-control-input">
-            <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">Remember my preference</span>
-        </label>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-
-    flexbox:
-    <form class="form-inline form-inline-flex">
-        <label class="mr-sm-0_5" for="inlinePrefF4">Preference</label>
-        <select class="form-control mb-0_5 mr-sm-0_5 mb-sm-0" id="inlinePrefF4">
+        <label class="mr-sm-0_5" for="inlinePref4">Preference</label>
+        <select class="form-control mb-0_5 mr-sm-0_5 mb-sm-0" id="inlinePref4">
             <option selected>Choose...</option>
             <option value="1">One</option>
             <option value="2">Two</option>
@@ -184,27 +82,10 @@
     </form>
 
     <hr />
-    normal:
-    <form class="form-inline">
-        <label class="mr-sm-0_25" for="inlinePref5">Preference</label>
-        <select class="custom-select mb-0_5 mr-sm-0_25 mb-sm-0" id="inlinePref5">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-        <label class="custom-control custom-checkbox mb-0_5 mr-sm-0_25 mb-sm-0">
-            <input type="checkbox" class="custom-control-input">
-            <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">Remember my preference</span>
-        </label>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
 
-    flexbox:
-    <form class="form-inline form-inline-flex">
-        <label class="mr-sm-0_5" for="inlinePrefF5">Preference</label>
-        <select class="custom-select mb-0_5 mr-sm-0_5 mb-sm-0" id="inlinePrefF5">
+    <form class="form-inline">
+        <label class="mr-sm-0_5" for="inlinePref5">Preference</label>
+        <select class="custom-select mb-0_5 mr-sm-0_5 mb-sm-0" id="inlinePref5">
             <option selected>Choose...</option>
             <option value="1">One</option>
             <option value="2">Two</option>

@@ -293,110 +293,28 @@ The `.form-group` class is the easiest way to add some structure to forms. Its o
 
 Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms vary slightly from their default states.
 
-Inline forms have support for both a `inline-block` style layout, along with both the opt-in flexbox and [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.form-inline-flex` class to the `.form-inline` element.
-
-- Default Layout: Controls are `display: inline-block` to provide alignment control via `vertical-align` and `margin`.
-- Flexbox Layout: Controls are `display: flex`, collapsing any HTML white space and allowing you to provide alignment control with [spacing]({{ site.baseurl }}/utilities/spacing/) and [flexbox]({{ site.baseurl }}/utilities/flexbox/) utilities.
+- Controls are `display: flex`, collapsing any HTML white space and allowing you to provide alignment control with [spacing]({{ site.baseurl }}/utilities/spacing/) and [flexbox]({{ site.baseurl }}/utilities/flexbox/) utilities.
 - Controls and input groups receive `width: auto` to override the Figuration default `width: 100%`.
 - Controls **only appear inline in viewports that are at least 36em/576px wide** to account for narrow viewports on mobile devices.
 
-You may need to manually address the width and alignment of individual form controls with [spacing utilities]({{ site.baseurl }}/utilities/spacing/) (as shown below). Lastly, as shown below, you should always include a `<label>` with each form control, , even if you need to hide it from non-screenreader users with `.sr-only`.
+You may need to manually address the width and alignment of individual form controls with [spacing utilities]({{ site.baseurl }}/utilities/spacing/) (as shown below). Lastly, as shown below, you should always include a `<label>` with each form control, even if you need to hide it from non-screenreader users with `.sr-only`.
 
-<div class="cf-example">
-    <strong>Default Layout</strong>
-    <form class="form-inline">
-        <div class="form-group mb-0_5 mr-sm-0_25 mb-sm-0">
-            <label for="inlineName0" class="form-control-label mr-sm-0_25">Name</label>
-            <input type="text" class="form-control" id="inlineName0" placeholder="Jane Doe">
-        </div>
-        <div class="form-group mb-0_5 mr-sm-0_25 mb-sm-0">
-            <label for="inlineEmail0" class="form-control-label mr-sm-0_25">Email</label>
-            <input type="email" class="form-control" id="inlineEmail0" placeholder="jane.doe@example.com">
-        </div>
-        <button type="submit" class="btn btn-primary">Send invitation</button>
-    </form>
-    <hr />
-    <strong>Flexbox Layout</strong>
-    <form class="form-inline form-inline-flex">
-        <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
-            <label for="inlineNameF0" class="form-control-label mr-sm-0_5">Name</label>
-            <input type="text" class="form-control" id="inlineNameF0" placeholder="Jane Doe">
-        </div>
-        <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
-            <label for="inlineEmail0" class="form-control-label mr-sm-0_5">Email</label>
-            <input type="email" class="form-control" id="inlineEmailF0" placeholder="jane.doe@example.com">
-        </div>
-        <button type="submit" class="btn btn-primary">Send invitation</button>
-    </form>
-</div>
-{% highlight html %}
-<!-- Default Mode -->
+{% example html %}
 <form class="form-inline">
-    <div class="form-group mb-0_5 mr-sm-0_25 mb-sm-0">
-        <label for="inlineName0" class="form-control-label mr-sm-0_25">Name</label>
-        <input type="text" class="form-control" id="inlineName0" placeholder="Jane Doe">
-    </div>
-    <div class="form-group mb-0_5 mr-sm-0_25 mb-sm-0">
-        <label for="inlineEmail0" class="form-control-label mr-sm-0_25">Email</label>
-        <input type="email" class="form-control" id="inlineEmail0" placeholder="jane.doe@example.com">
-    </div>
-    <button type="submit" class="btn btn-primary">Send invitation</button>
-</form>
-
-<!-- Flexbox Mode -->
-<form class="form-inline form-inline-flex">
     <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
-        <label for="inlineNameF0" class="form-control-label mr-sm-0_5">Name</label>
-        <input type="text" class="form-control" id="inlineNameF0" placeholder="Jane Doe">
+        <label for="inlineName0" class="form-control-label mr-sm-0_5">Name</label>
+        <input type="text" class="form-control" id="inlineName0" placeholder="Jane Doe">
     </div>
     <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
         <label for="inlineEmail0" class="form-control-label mr-sm-0_5">Email</label>
-        <input type="email" class="form-control" id="inlineEmailF0" placeholder="jane.doe@example.com">
+        <input type="email" class="form-control" id="inlineEmail0" placeholder="jane.doe@example.com">
     </div>
-    <button type="submit" class="btn btn-primary">Send invitation</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-{% endhighlight %}
+{% endexample %}
 
-<div class="cf-example">
-    <strong>Default Layout</strong>
-    <form class="form-inline">
-        <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
-            <label class="sr-only" for="inlineEmail1">Email address</label>
-            <input type="email" class="form-control" id="inlineEmail1" placeholder="Enter email">
-        </div>
-        <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
-            <label class="sr-only" for="inlinePassword1">Password</label>
-            <input type="password" class="form-control" id="inlinePassword1" placeholder="Password">
-        </div>
-        <div class="form-check mb-0_5 mr-sm-0_5 mb-sm-0">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox"> Remember me
-            </label>
-        </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
-    </form>
-    <hr />
-    <strong>Flexbox Layout</strong>
-    <form class="form-inline form-inline-checkbox">
-        <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
-            <label class="sr-only" for="inlineEmailF1">Email address</label>
-            <input type="email" class="form-control" id="inlineEmailF1" placeholder="Enter email">
-        </div>
-        <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
-            <label class="sr-only" for="inlinePasswordF1">Password</label>
-            <input type="password" class="form-control" id="inlinePasswordF1" placeholder="Password">
-        </div>
-        <div class="form-check mb-0_5 mr-sm-0_5 mb-sm-0">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox"> Remember me
-            </label>
-        </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
-    </form>
-</div>
-{% highlight html %}
-<!-- Default Layout -->
-<form class="form-inline">
+{% example html %}
+<form class="form-inline form-inline-checkbox">
     <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
         <label class="sr-only" for="inlineEmail1">Email address</label>
         <input type="email" class="form-control" id="inlineEmail1" placeholder="Enter email">
@@ -412,57 +330,13 @@ You may need to manually address the width and alignment of individual form cont
     </div>
     <button type="submit" class="btn btn-primary">Sign in</button>
 </form>
+{% endexample %}
 
-<!-- Flexbox Layout -->
-<form class="form-inline form-inline-checkbox">
-    <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
-        <label class="sr-only" for="inlineEmailF1">Email address</label>
-        <input type="email" class="form-control" id="inlineEmailF1" placeholder="Enter email">
-    </div>
-    <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
-        <label class="sr-only" for="inlinePasswordF1">Password</label>
-        <input type="password" class="form-control" id="inlinePasswordF1" placeholder="Password">
-    </div>
-    <div class="form-check mb-0_5 mr-sm-0_5 mb-sm-0">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox"> Remember me
-        </label>
-    </div>
-    <button type="submit" class="btn btn-primary">Sign in</button>
-</form>
-{% endhighlight %}
+Input groups are supported.
 
-<div class="cf-example">
-    <strong>Default Layout</strong>
-    <form class="form-inline">
-        <div class="form-group mr-sm-0_25">
-            <label class="sr-only" for="inputAmount2">Amount (in dollars)</label>
-            <div class="input-group">
-                <div class="input-group-addon">$</div>
-                <input type="text" class="form-control" id="inputAmount2" placeholder="Amount">
-                <div class="input-group-addon">.00</div>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Transfer cash</button>
-    </form>
-    <hr />
-    <strong>Flexbox Layout</strong>
-    <form class="form-inline form-inline-flex">
-        <div class="form-group mr-sm-0_5">
-            <label class="sr-only" for="inputAmountF2">Amount (in dollars)</label>
-            <div class="input-group">
-                <div class="input-group-addon">$</div>
-                <input type="text" class="form-control" id="inputAmountF2" placeholder="Amount">
-                <div class="input-group-addon">.00</div>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Transfer cash</button>
-    </form>
-</div>
-{% highlight html %}
-<!-- Default Layout -->
+{% example html %}
 <form class="form-inline">
-    <div class="form-group mr-sm-0_25">
+    <div class="form-group mr-sm-0_5">
         <label class="sr-only" for="inputAmount2">Amount (in dollars)</label>
         <div class="input-group">
             <div class="input-group-addon">$</div>
@@ -472,78 +346,14 @@ You may need to manually address the width and alignment of individual form cont
     </div>
     <button type="submit" class="btn btn-primary">Transfer cash</button>
 </form>
+{% endexample %}
 
-<!-- Flexbox Layout -->
-<form class="form-inline form-inline-flex">
-    <div class="form-group mr-sm-0_5">
-        <label class="sr-only" for="inputAmountF2">Amount (in dollars)</label>
-        <div class="input-group">
-            <div class="input-group-addon">$</div>
-            <input type="text" class="form-control" id="inputAmountF2" placeholder="Amount">
-            <div class="input-group-addon">.00</div>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Transfer cash</button>
-</form>
-{% endhighlight %}
+Custom form controls and selects are also supported.
 
-<div class="cf-example">
-    <strong>Default Layout</strong>
-    <form class="form-inline">
-        <label class="mr-sm-0_25" for="inlinePref4">Preference</label>
-        <select class="custom-select mb-0_5 mr-sm-0_25 mb-sm-0" id="inlinePref4">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-        <label class="custom-control custom-checkbox mb-0_5 mr-sm-0_25 mb-sm-0">
-            <input type="checkbox" class="custom-control-input">
-            <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">Remember my preference</span>
-        </label>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    <hr />
-    <strong>Flexbox Layout</strong>
-    <form class="form-inline form-inline-flex">
-        <label class="mr-sm-0_5" for="inlinePrefF4">Preference</label>
-        <select class="custom-select mb-0_5 mr-sm-0_5 mb-sm-0" id="inlinePrefF4">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-        <label class="custom-control custom-checkbox mb-0_5 mr-sm-0_5 mb-sm-0">
-            <input type="checkbox" class="custom-control-input">
-            <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">Remember my preference</span>
-        </label>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
-{% highlight html %}
-<!-- Default Layout -->
+{% example html %}
 <form class="form-inline">
-    <label class="mr-sm-0_25" for="inlinePref4">Preference</label>
-    <select class="custom-select mb-0_5 mr-sm-0_25 mb-sm-0" id="inlinePref4">
-        <option selected>Choose...</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select>
-    <label class="custom-control custom-checkbox mb-0_5 mr-sm-0_25 mb-sm-0">
-        <input type="checkbox" class="custom-control-input">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">Remember my preference</span>
-    </label>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-<!-- Flexbox Layout -->
-<form class="form-inline form-inline-flex">
-    <label class="mr-sm-0_5" for="inlinePrefF4">Preference</label>
-    <select class="custom-select mb-0_5 mr-sm-0_5 mb-sm-0" id="inlinePrefF4">
+    <label class="form-control-label mr-sm-0_5" for="inlinePref4">Preference</label>
+    <select class="custom-select mb-0_5 mr-sm-0_5 mb-sm-0" id="inlinePref4">
         <option selected>Choose...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -556,7 +366,7 @@ You may need to manually address the width and alignment of individual form cont
     </label>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-{% endhighlight %}
+{% endexample %}
 
 ### Using the Grid
 

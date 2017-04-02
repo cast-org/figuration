@@ -276,50 +276,39 @@ textarea.form-control {
 //
 // Make forms appear inline(-block) by adding the `.form-inline` class. Inline
 // forms begin stacked on extra small (mobile) devices and then go inline when
-// viewports reach <48em/768px.
+// viewports reach > 36em/576px.
 //
 // Requires wrapping inputs and labels with `.form-group` for proper display of
 // default HTML form controls and our custom form controls (e.g., input groups).
 .form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center; // Prevent shorter elements from growing to same height as others (e.g., small buttons growing to normal sized button height)
 
-    @if $enable-flex-full {
-        display: flex;
-        flex-flow: row wrap;
-        align-items: center; // Prevent shorter elements from growing to same height as others (e.g., small buttons growing to normal sized button height)
-
-        // Because we use flex, the initial sizing of checkboxes is collapsed and
-        // doesn't occupy the full-width (which is what we want for xs grid tier),
-        // so we force that here.
-        .form-check {
-            width: 100%;
-        }
+    // Because we use flex, the initial sizing of checkboxes is collapsed and
+    // doesn't occupy the full-width (which is what we want for xs grid tier),
+    // so we force that here.
+    .form-check {
+        width: 100%;
     }
 
     // Kick in the inline
     @include media-breakpoint-up(#{$form-inline-breakpoint}) {
         label {
-            @if $enable-flex-full {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 0;
         }
 
 
         // Inline-block all the things for "inline"
         .form-group {
+            display: flex;
+            flex: 0 0 auto;
+            flex-flow: row wrap;
+            align-items: center;
             margin-bottom: 0;
-
-            @if $enable-flex-full {
-                display: flex;
-                flex: 0 0 auto;
-                flex-flow: row wrap;
-                align-items: center;
-            } @else {
-                display: inline-block;
-                vertical-align: middle;
-            }
         }
 
         // Allow folks to *not* use `.form-group`
@@ -337,27 +326,6 @@ textarea.form-control {
 
         .input-group {
             width: auto;
-
-            @if not $enable-flex-full {
-                &:not(.input-group-flex) {
-                    display: inline-table;
-                    vertical-align: middle;
-                }
-
-                .input-group-addon,
-                .input-group-btn,
-                .form-control
-                .custom-select {
-                    width: auto;
-                }
-            }
-        }
-
-        // Input groups need that 100% width though
-        .input-group > .form-control {
-            @if not $enable-flex-full {
-                width: 100%;
-            }
         }
 
         .form-control-label {
@@ -368,17 +336,12 @@ textarea.form-control {
         // Remove default margin on radios/checkboxes that were used for stacking, and
         // then undo the floating of radios and checkboxes to match.
         .form-check {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: auto;
             margin-top: 0;
             margin-bottom: 0;
-
-            @if $enable-flex-full {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            } @else {
-                display: inline-block;
-                vertical-align: middle;
-            }
         }
 
         .form-check-label {
@@ -387,92 +350,29 @@ textarea.form-control {
 
         .form-check-input {
             position: relative;
+            margin-top: 0;
+            margin-right: $form-check-input-margin-x;
             margin-left: 0;
-
-            @if $enable-flex-full {
-                margin-top: 0;
-                margin-right: $form-check-input-margin-x;
-            }
         }
 
         // Custom form controls
         .custom-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding-left: 0;
-
-            @if $enable-flex-full {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            } @else {
-                vertical-align: middle;
-            }
         }
 
         .custom-control-indicator {
             position: static;
             display: inline-block;
+            margin-right: $form-check-input-margin-x; // Flexbox alignment means we lose our HTML space here, so we compensate.
             vertical-align: text-bottom;
-
-            @if $enable-flex-full {
-                margin-right: $form-check-input-margin-x; // Flexbox alignment means we lose our HTML space here, so we compensate.
-            }
         }
 
         // Re-override the feedback icon.
         .has-feedback .form-control-feedback {
             top: 0;
-        }
-    }
-}
-
-@if $enable-flex-opt {
-    .form-inline-flex {
-        display: flex;
-        flex-flow: row wrap;
-        align-items: center;
-
-        .form-check {
-            width: 100%;
-        }
-
-        @include media-breakpoint-up(#{$form-inline-breakpoint}) {
-            label {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .form-group {
-                display: flex;
-                flex: 0 0 auto;
-                flex-flow: row wrap;
-                align-items: center;
-            }
-
-            .input-group > .form-control {
-                width: auto;
-            }
-
-            .form-check {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .form-check-input {
-                margin-top: 0;
-                margin-right: $form-check-input-margin-x;
-            }
-
-            .custom-control {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .custom-control-indicator {
-                margin-right: $form-check-input-margin-x; // Flexbox alignment means we lose our HTML space here, so we compensate.
-            }
         }
     }
 }
