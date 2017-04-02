@@ -6,8 +6,6 @@ group: components
 
 Pagination links indicate a series of related content exists across multiple pages. Typically these are used where a multi-page approach to long lists of content improves general performance, such as in search results.
 
-List groups have support for both an `inline-block` style layout, along with both the opt-in flexbox and [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.pagination-flex` class to the `.pagination` element.
-
 ## Contents
 {:.no_toc}
 
@@ -221,14 +219,14 @@ Fancy larger or smaller pagination? Add `.pagination-xs`, `.pagination-sm`, `.pa
 {% endhighlight %}
 
 
-## Flexbox Alignment
+## Alignment
 
-Change the alignment of pagination components using the flexbox modes and the [flexbox utilities]({{ sitebaseurl }}/utilities/flexbox/).
+Change the alignment of pagination components using the [flexbox utilities]({{ sitebaseurl }}/utilities/flexbox/).
 
 {% example html %}
 <nav aria-label="...">
-  <ul class="pagination pagination-flex flex-center">
-    <li class="page-item"><a href="#" class="page-link">Previous</a></li>
+  <ul class="pagination flex-center">
+    <li class="page-item"><span class="page-link disabled">Previous</span></li>
     <li class="page-item"><a href="#" class="page-link">1</a></li>
     <li class="page-item"><a href="#" class="page-link">2</a></li>
     <li class="page-item"><a href="#" class="page-link">3</a></li>
@@ -239,8 +237,8 @@ Change the alignment of pagination components using the flexbox modes and the [f
 
 {% example html %}
 <nav aria-label="...">
-  <ul class="pagination pagination-flex flex-end">
-    <li class="page-item"><a href="#" class="page-link">Previous</a></li>
+  <ul class="pagination flex-end">
+    <li class="page-item"><span class="page-link disabled">Previous</span></li>
     <li class="page-item"><a href="#" class="page-link">1</a></li>
     <li class="page-item"><a href="#" class="page-link">2</a></li>
     <li class="page-item"><a href="#" class="page-link">3</a></li>

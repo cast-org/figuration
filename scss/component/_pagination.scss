@@ -1,22 +1,11 @@
 .pagination {
+    display: flex;
     padding-left: 0;
     list-style: none;
     @include border-radius();
-
-    @if $enable-flex-full {
-        display: flex;
-    } @else {
-        display: inline-block;
-        white-space: nowrap;
-        vertical-align: middle;
-    }
 }
 
 .page-item {
-    @if not $enable-flex-full {
-        display: inline; // Remove list-style and block-level defaults
-    }
-
     &:first-child {
         .page-link {
             margin-left: 0;
@@ -32,6 +21,7 @@
 
 .page-link {
     position: relative;
+    display: block;
     padding: $pagination-padding-y $pagination-padding-x;
     margin-left: -1px;
     line-height: $pagination-line-height;
@@ -39,12 +29,6 @@
     text-decoration: none;
     background-color: $pagination-bg;
     border: $pagination-border-width solid $pagination-border-color;
-
-    @if $enable-flex-full {
-        display: block;
-    } @else {
-        float: left; // Collapse white-space
-    }
 
     &:hover {
         z-index: 2;
@@ -71,24 +55,6 @@
         background-color: $pagination-disabled-bg;
     }
 }
-
-@if $enable-flex-opt {
-    .pagination-flex {
-        display: flex;
-        white-space: normal;
-        vertical-align: baseline;
-
-        .page-item {
-            display: initial;
-        }
-
-        .page-link {
-            display: block;
-            float: none;
-        }
-    }
-}
-
 
 // Sizing
 @if $enable-sizing {
