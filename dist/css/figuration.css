@@ -3484,20 +3484,14 @@ button.drag {
 }
 
 .progress {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   overflow: hidden;
   font-size: 0.75rem;
   line-height: 0;
   background-color: #f0f0f0;
   border-radius: 0.25rem;
-  display: block;
-  width: 100%;
-}
-
-.progress-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: initial;
 }
 
 .progress-bar {
@@ -3506,13 +3500,6 @@ button.drag {
   color: #fff;
   text-align: center;
   background-color: #1242ba;
-  display: inline-block;
-  float: left;
-  vertical-align: top;
-}
-
-.progress-flex .progress-bar {
-  display: initial;
 }
 
 .progress-bar-striped {
