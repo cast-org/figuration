@@ -1614,40 +1614,38 @@ Anchor variants:<br />
 
 
 <h3>Progress bars</h3>
-<small>recommend IE9 fallback usage for all cases</small><br />
-<progress class="progress" value="10" max="100">10%</progress>
-<progress class="progress progress-primary" value="15" max="100">15%</progress>
-<progress class="progress progress-success" value="25" max="100">25%</progress>
-<progress class="progress progress-info" value="50" max="100">50%</progress>
-<progress class="progress progress-warning" value="75" max="100">75%</progress>
-<progress class="progress progress-danger" value="100" max="100">100%</progress>
+<div class="progress mb-1">
+    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress mb-1">
+    <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress mb-1">
+    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress mb-1">
+    <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress mb-1">
+    <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
 
 <h3>Stripped Progress bars</h3>
-<small>recommend IE9 fallback usage for all cases</small><br />
-<small>removed animation since it does not work on &lt;progress&gt; elements due to Shadow DOM</small><br />
-<progress class="progress progress-striped" value="10" max="100">10%</progress>
-<progress class="progress progress-striped progress-primary" value="15" max="100">15%</progress>
-<progress class="progress progress-striped progress-success" value="25" max="100">25%</progress>
-<progress class="progress progress-striped progress-info" value="50" max="100">50%</progress>
-<progress class="progress progress-striped progress-warning" value="75" max="100">75%</progress>
-<progress class="progress progress-striped progress-danger" value="100" max="100">100%</progress>
-
-<h3>IE9-compatible Progress bars</h3>
-<progress class="progress" value="25" max="100">
-    <div class="progress">
-        <span class="progress-bar" style="width: 25%;">25%</span>
-    </div>
-</progress>
-<progress class="progress progress-primary" value="25" max="100">
-    <div class="progress">
-        <span class="progress-bar" style="width: 25%;">25%</span>
-    </div>
-</progress>
-<progress class="progress progress-striped progress-success" value="25" max="100">
-  <div class="progress">
-    <span class="progress-bar" style="width: 25%;">25%</span>
-  </div>
-</progress>
+<div class="progress mb-1">
+    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress mb-1">
+    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress mb-1">
+    <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress mb-1">
+    <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress mb-1">
+    <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
 
 <h3>Embed responsive</h3>
 <div class="video-sample">

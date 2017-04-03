@@ -4,26 +4,13 @@
 }
 
 .progress {
+    display: flex;
     overflow: hidden; // Force rounded corners by cropping
     font-size: $progress-font-size;
     line-height: 0;  // Allow bar to control min-height
     background-color: $progress-bg;
     @include border-radius($progress-border-radius);
     @include box-shadow($progress-box-shadow);
-
-    @if $enable-flex-full {
-        display: flex;
-    } @else {
-        display: block;
-        width: 100%;
-    }
-}
-
-@if $enable-flex-opt {
-    .progress-flex {
-        display: flex;
-        width: initial;
-    }
 }
 
 .progress-bar {
@@ -33,22 +20,6 @@
     text-align: center;
     background-color: $progress-bar-bg;
     @include box-shadow($progress-bar-box-shadow);
-
-    @if not $enable-flex-full {
-        display: inline-block;
-        float: left;
-        vertical-align: top;
-    }
-}
-
-@if $enable-flex-opt {
-    .progress-flex {
-        .progress-bar {
-            display: initial;
-            // Leave out for IE 9 stacked bars?
-            //float: none;
-        }
-    }
 }
 
 .progress-bar-striped {
