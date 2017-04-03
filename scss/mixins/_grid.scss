@@ -3,7 +3,6 @@
 
 // Containers
 @mixin make-container($gutters: $grid-gutter-widths) {
-    width: 100%; // Prevent too narrow
     max-width: 100%; // Prevent too wide
     margin-right: auto;
     margin-left: auto;
