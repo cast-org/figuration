@@ -460,7 +460,7 @@ $(function() {
                 assert.strictEqual(currentPadding, originalPadding, 'fixed element padding should be reset after closing');
                 $element.remove();
                 done();
-            })
+            });
 
         $trigger.CFW_Modal();
         $trigger.CFW_Modal('show');
