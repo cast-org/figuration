@@ -439,58 +439,32 @@ $(function() {
         $trigger.CFW_Modal('show');
     });
 
-    /*
-    QUnit.test('should add padding-right when the modal is taller than the viewport', function(assert) {
+    QUnit.test('should adjust the inline padding of fixed elements when opening and restore when closing', function(assert) {
         assert.expect(2);
         var done = assert.async();
-        var $body = $(document.body);
-        $('<div class="fixed-top fixed-bottom sticky-top is-fixed">Something</div>').appendTo('#qunit-fixture');
-        $('.fixed-top, .fixed-bottom, .sticky-top, .is-fixed').css('padding-right', '10px');
+        var $element = $('<div class="fixed-top"></div>').appendTo('#qunit-fixture');
+        var originalPadding = $element.css('padding-right');
 
         var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target
             .on('afterShow.cfw.modal', function() {
-                var paddingRight = parseFloat($body.css('padding-right'));
-                assert.strictEqual(isNaN(paddingRight), false);
-                assert.strictEqual(paddingRight !== 0, true);
-                $body.css('padding-right', ''); // Reset body padding for following tests
-                done();
-            });
-
-        $trigger.CFW_Modal();
-        $trigger.CFW_Modal('show');
-    });
-
-    QUnit.test('should remove padding-right on modal after closing', function(assert) {
-        assert.expect(3);
-        var done = assert.async();
-        var $body = $(document.body);
-        $('<div class="fixed-top fixed-bottom sticky-top is-fixed">Something</div>').appendTo('#qunit-fixture');
-        $('.fixed-top, .fixed-bottom, .sticky-top, .is-fixed').css('padding-right', '10px');
-
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
-        var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
-
-        $target
-            .on('afterShow.cfw.modal', function() {
-                var paddingRight = parseFloat($body.css('padding-right'));
-                assert.strictEqual(isNaN(paddingRight), false);
-                assert.strictEqual(paddingRight !== 0, true);
+                var expectedPadding = parseFloat(originalPadding) + $().CFW_measureScrollbar() + 'px';
+                var currentPadding = $element.css('padding-right');
+                assert.strictEqual(currentPadding, expectedPadding, 'fixed element padding should be adjusted while opening');
                 $trigger.CFW_Modal('hide');
             })
             .on('afterHide.cfw.modal', function() {
-                var paddingRight = parseFloat($body.css('padding-right'));
-                assert.strictEqual(paddingRight, 0);
-                $body.css('padding-right', ''); // Reset body padding for following tests
+                var currentPadding = $element.css('padding-right');
+                assert.strictEqual(currentPadding, originalPadding, 'fixed element padding should be reset after closing');
+                $element.remove();
                 done();
-            });
+            })
 
         $trigger.CFW_Modal();
         $trigger.CFW_Modal('show');
     });
-    */
 
     QUnit.test('should ignore other inline styles when trying to restore body padding after closing', function(assert) {
         assert.expect(2);
