@@ -639,10 +639,6 @@ mark,
   margin-right: 0.3em;
 }
 
-dl.row > dd + dt {
-  clear: left;
-}
-
 .initialism {
   font-size: 90%;
   text-transform: uppercase;
@@ -3583,11 +3579,6 @@ button.drag {
 }
 
 .list-group {
-  padding-left: 0;
-  margin-bottom: 1rem;
-}
-
-.list-group-flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3595,21 +3586,19 @@ button.drag {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 1rem;
 }
 
 .list-group-item-action {
-  position: relative;
   width: 100%;
   color: #474747;
   text-align: inherit;
   text-decoration: none;
 }
 
-.list-group-item-action:focus {
-  z-index: 2;
-}
-
 .list-group-item-action:focus, .list-group-item-action:hover {
+  z-index: 2;
   color: #474747;
   text-decoration: none;
   background-color: #e0e0e0;
