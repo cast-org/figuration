@@ -51,15 +51,6 @@ $enable-print-styles:   true !default;      // true
 $enable-palette:        true !default;      // true
 $enable-sizing:         true !default;      // true
 $enable-bp-smallest:    false !default;     // false
-$enable-flex-full:      false !default;     // false -- all-in flex mode
-$enable-flex-opt:       true !default;      // true -- opt-in via class mode
-
-
-// If both flex modes selected -- disable the opt-in mode
-@if $enable-flex-full and $enable-flex-opt {
-    $enable-flex-opt: false;
-    @warn "Both flex modes cannot be enabled at the same time.  Opt-in mode CSS generation is being disabled.";
-}
 
 
 // Grayscale
