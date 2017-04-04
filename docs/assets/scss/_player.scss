@@ -13,6 +13,7 @@
 
 .player {
     display: none;
+    align-items: center;
     margin-bottom: 20px;
     white-space: nowrap;
 }
@@ -35,10 +36,9 @@
     line-height: inherit;
 }
 .player-seek {
-    display: inline-block;
-    margin-bottom: 0;
+    display: inline-flex;
     width: 100px;
-    vertical-align: initial;
+    vertical-align: middle;
 }
 .player-seek.progress {
     vertical-align: middle;
@@ -52,7 +52,7 @@
     display: none;
 }
 .player-seek .slider.slider-horizontal {
-    width: 80px;
+    width: 100px;
 }
 .player-mute {
     display: inline-block;
