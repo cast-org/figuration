@@ -7,7 +7,7 @@
 }
 
 // List Groups
-@mixin list-group-item-variant($state, $bg, $color, $hover-bg) {
+@mixin list-group-item-variant($state, $bg, $color, $hover-bg, $hover-color) {
     .list-group-item-#{$state} {
         color: $color;
         background-color: $bg;
@@ -23,7 +23,7 @@
         }
 
         &.active {
-            color: $white;
+            color: $hover-color;
             background-color: $color;
             border-color: $color;
         }

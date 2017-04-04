@@ -6,8 +6,6 @@ group: components
 
 List groups are a flexible and powerful component for displaying a series of content. List group items can be modified and extended to support just about any content within. They can also be used as navigation with the right modifier class.
 
-List groups have support for both a `block` style layout, along with both the opt-in flexbox and [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.list-group-flex` class to the `.list-group` element.
-
 ## Contents
 {:.no_toc}
 
@@ -74,7 +72,7 @@ Be sure to **not use the standard `.btn` classes here**.
 
 {% example html %}
 <div class="list-group">
-  <a href="#" class="list-group-item active">
+  <a href="#" class="list-group-item list-group-item-action active">
     Cras justo odio
   </a>
   <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
@@ -133,29 +131,10 @@ Contextual classes also work with `.list-group-item-action`. Note the addition o
 
 ## Adding Badges
 
-Add badges to any list group item to show unread counts, activity, etc.
+Add badges to any list group item to show unread counts, activity, and more with the help of some [flexbox utility classes]({{ site.baseurl }}/utilities/flexbox/).
 
 {% example html %}
 <ul class="list-group">
-  <li class="list-group-item">
-    <span class="badge badge-pill float-right">14</span>
-    Cras justo odio
-  </li>
-  <li class="list-group-item">
-    <span class="badge badge-pill float-right">2</span>
-    Dapibus ac facilisis in
-  </li>
-  <li class="list-group-item">
-    <span class="badge badge-pill float-right">1</span>
-    Morbi leo risus
-  </li>
-</ul>
-{% endexample %}
-
-If using flexbox mode, to replicate the right-aligned badges, you will need to rework the contents of your list group items. See the following example. Note the re-ordering of sub-items, the use some [flexbox utility classes]({{ site.baseurl }}/utilities/flexbox/) for sub-item layout, and the removal of the [`.float-right` utility]({{ site.baseurl }}/utilities/responsive-floats/) on badges.
-
-{% example html %}
-<ul class="list-group list-group-flex">
   <li class="list-group-item d-flex flex-between flex-items-center">
     Cras justo odio
     <span class="badge badge-pill">14</span>
@@ -173,29 +152,7 @@ If using flexbox mode, to replicate the right-aligned badges, you will need to r
 
 ## Custom Content
 
-Add nearly any HTML within, even for linked list groups like the one below.
-
-{% example html %}
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action active">
-    <h5>List group item heading</h5>
-    <p class="mb-0_25">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    <small>Donec id elit non mi porta.</small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <h5>List group item heading</h5>
-    <p class="mb-0_25">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    <small class="text-muted">Donec id elit non mi porta.</small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1">
-    <h5>List group item heading</h5>
-    <p class="mb-0_25">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    <small class="text-muted">Donec id elit non mi porta.</small>
-  </a>
-</div>
-{% endexample %}
-
-Even more layout flexibility can be accomplished using the flexbox modes and the [flexbox utilities]({{ sitebaseurl }}/utilities/flexbox/)
+Add nearly any HTML within, even for linked list groups like the one below, using [flexbox utilities]({{ sitebaseurl }}/utilities/flexbox/) for layout.
 
 {% example html %}
 <div class="list-group">

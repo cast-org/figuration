@@ -1,39 +1,25 @@
 // Base class
 // Easily usable on <ul>, <ol>, or <div>.
 .list-group {
-    @if $enable-flex-full {
-        display: flex;
-        flex-direction: column;
-    }
-
+    display: flex;
+    flex-direction: column;
     // No need to set list-style: none; since .list-group-item is block level
     padding-left: 0; // reset padding because ul and ol
     margin-bottom: 1rem;
-}
-
-@if $enable-flex-opt {
-    .list-group-flex {
-        display: flex;
-        flex-direction: column;
-    }
 }
 
 // Interactive list items
 // Use anchor or button elements instead of `li`s or `div`s to create interactive
 // list items. Includes an extra `.active` modifier class for selected items.
 .list-group-item-action {
-    position: relative;
     width: 100%; // For `<button>`s (anchors become 100% by default though)
     color: $list-group-link-color;
     text-align: inherit; // For `<button>`s (anchors inherit)
     text-decoration: none;
 
-    &:focus {
-        z-index: 2;
-    }
-
     // Hover state
     @include hover-focus {
+        z-index: 2;
         color: $list-group-link-hover-color;
         text-decoration: none;
         background-color: $list-group-hover-bg;
@@ -86,9 +72,10 @@
 // Add modifier classes to change text and background color on individual items.
 // Organizationally, this must come after the `:hover` states.
 @each $theme, $colors in $context-themes {
-    $color:    map-get($colors, "context-color");
-    $bg:       map-get($colors, "context-bg");
-    $hover-bg: map-get($colors, "context-hover-bg");
+    $color:       map-get($colors, "context-color");
+    $bg:          map-get($colors, "context-bg");
+    $hover-bg:    map-get($colors, "context-hover-bg");
+    $hover-color: $white;
 
-    @include list-group-item-variant(#{$theme}, $bg, $color, $hover-bg);
+    @include list-group-item-variant(#{$theme}, $bg, $color, $hover-bg, $hover-color);
 }
