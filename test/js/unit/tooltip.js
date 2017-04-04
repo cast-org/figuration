@@ -1362,4 +1362,72 @@ $(function() {
             })
             .CFW_Tooltip('show');
     });
+
+    QUnit.test('should not move focus if non-event toggle called when in dialog mode', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        var $trigger = $('<a href="#" title="Another tooltip"/>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({
+                trigger: 'click'
+            });
+
+        $trigger
+            .on('afterShow.cfw.tooltip', function() {
+                assert.notStrictEqual($('.tooltip')[0], document.activeElement, 'has a unique id');
+                $trigger.CFW_Tooltip('toggle');
+            })
+            .on('afterHide.cfw.tooltip', function() {
+                assert.notStrictEqual($trigger[0], document.activeElement, 'has a unique id');
+                done();
+            })
+            .CFW_Tooltip('toggle');
+    });
+
+    QUnit.test('should not move focus if show/hide called when in dialog mode', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        var $trigger = $('<a href="#" title="Another tooltip"/>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({
+                trigger: 'click'
+            });
+
+        $trigger
+            .on('afterShow.cfw.tooltip', function() {
+                assert.notStrictEqual($('.tooltip')[0], document.activeElement, 'has a unique id');
+                $trigger.CFW_Tooltip('hide');
+            })
+            .on('afterHide.cfw.tooltip', function() {
+                assert.notStrictEqual($trigger[0], document.activeElement, 'has a unique id');
+                done();
+            })
+            .CFW_Tooltip('show');
+    });
+
+    QUnit.test('should move focus if event-driven toggle called when in dialog mode', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        var $trigger = $('<a href="#" title="Another tooltip"/>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({
+                trigger: 'click'
+            });
+
+        $trigger
+            .on('afterShow.cfw.tooltip', function() {
+                assert.strictEqual($('.tooltip')[0], document.activeElement, 'has a unique id');
+                $trigger.trigger('click');
+            })
+            .on('afterHide.cfw.tooltip', function() {
+                assert.strictEqual($trigger[0], document.activeElement, 'has a unique id');
+                done();
+            })
+            .trigger('click');
+    });
+
+
 });
