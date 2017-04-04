@@ -1428,6 +1428,9 @@ h4 > code {
 
 .player {
   display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-bottom: 20px;
   white-space: nowrap;
 }
@@ -1457,10 +1460,11 @@ h4 > code {
 }
 
 .player-seek {
-  display: inline-block;
-  margin-bottom: 0;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   width: 100px;
-  vertical-align: initial;
+  vertical-align: middle;
 }
 
 .player-seek.progress {
@@ -1477,7 +1481,7 @@ h4 > code {
 }
 
 .player-seek .slider.slider-horizontal {
-  width: 80px;
+  width: 100px;
 }
 
 .player-mute {

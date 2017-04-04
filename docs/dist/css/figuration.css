@@ -3485,7 +3485,7 @@ button.drag {
   display: flex;
   overflow: hidden;
   font-size: 0.75rem;
-  line-height: 0;
+  line-height: 1rem;
   background-color: #f0f0f0;
   border-radius: 0.25rem;
 }
@@ -5873,13 +5873,11 @@ a.badge:focus, a.badge:hover {
   transition: transform 0.3s ease-out;
   transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
   -webkit-transform: translate(0, -25%);
-      -ms-transform: translate(0, -25%);
           transform: translate(0, -25%);
 }
 
 .modal.in .modal-dialog {
   -webkit-transform: translate(0, 0);
-      -ms-transform: translate(0, 0);
           transform: translate(0, 0);
 }
 
@@ -6198,6 +6196,7 @@ a.badge:focus, a.badge:hover {
   padding-right: 1.5rem;
   margin: 0;
   font-size: 1rem;
+  color: inherit;
   background-color: #f0f0f0;
   border-bottom: 1px solid #e0e0e0;
   border-radius: 0.3125rem 0.3125rem 0 0;
@@ -6209,6 +6208,7 @@ a.badge:focus, a.badge:hover {
 
 .popover-body {
   padding: 0.5rem 0.75rem;
+  color: #292929;
 }
 
 .popover-arrow, .popover-arrow::after {
