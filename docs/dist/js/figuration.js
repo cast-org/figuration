@@ -1686,6 +1686,7 @@ if (typeof jQuery === 'undefined') {
         this.dataToggle = null;
         this.type = null;
         this.isDialog = false;
+        this.follow = false;
         this.eventTypes = null;
         this.delayTimer = null;
         this.inTransition = null;
@@ -1914,6 +1915,7 @@ if (typeof jQuery === 'undefined') {
         toggle : function(e) {
             if (e) {
                 this.inState.click = !this.inState.click;
+                this.follow = true;
 
                 if (!this._isInState()) {
                     this.leave();
@@ -2171,6 +2173,7 @@ if (typeof jQuery === 'undefined') {
             this.dataToggle = null;
             this.type = null;
             this.isDialog = null;
+            this.follow = null;
             this.eventTypes = null;
             this.delayTimer = null;
             this.inTransition = null;
@@ -2275,8 +2278,9 @@ if (typeof jQuery === 'undefined') {
             // this.$target.addClass('in')
             this.$target.removeAttr('aria-hidden');
 
-            if (this.isDialog) {
+            if (this.isDialog && this.follow) {
                 this.$target.trigger('focus');
+                this.follow = false;
             }
 
             this.inTransition = false;
@@ -2321,8 +2325,12 @@ if (typeof jQuery === 'undefined') {
             this.inTransition = false;
             if (this.isDialog) {
                 this.$target.attr('tabindex', -1);
-                this.$element.trigger('focus');
+                if (this.follow) {
+                    this.$element.trigger('focus');
+                }
             }
+
+            this.follow = false;
 
             // Only remove dynamically created tips
             if (this.hoverState != 'in' && this.dynamicTip) {
