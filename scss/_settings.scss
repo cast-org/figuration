@@ -887,12 +887,14 @@ $popover-box-shadow:            0 .2rem .3rem rgba(0,0,0,.175) !default;
 
 $popover-header-padding-x:     .75rem !default;
 $popover-header-padding-y:     .5rem !default;
+$popover-header-color:         $headings-color !default;
 $popover-header-bg:            $uibase-50 !default;
 $popover-header-border-width:  $border-width !default;
 $popover-header-border-color:  $uibase-100 !default;
 
 $popover-body-padding-x:       .75rem !default;
 $popover-body-padding-y:       .5rem !default;
+$popover-content-color:        $body-color !default;
 
 // Arrow dimension in pixels to get proper visual layout
 $popover-arrow-width:           10px !default;
