@@ -5388,13 +5388,7 @@ a.badge:focus, a.badge:hover {
 
 .card {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  display: block;
   margin-bottom: 1rem;
   background-color: #fff;
   border: 1px solid #a3a3a3;
@@ -5402,9 +5396,6 @@ a.badge:focus, a.badge:hover {
 }
 
 .card-body {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
   padding: 1rem 1rem;
 }
 
@@ -5602,10 +5593,6 @@ a.badge:focus, a.badge:hover {
   border-left: 0;
 }
 
-.card-img {
-  border-radius: calc(0.25rem - 1px);
-}
-
 .card-img-overlay {
   position: absolute;
   top: 0;
@@ -5613,6 +5600,10 @@ a.badge:focus, a.badge:hover {
   bottom: 0;
   left: 0;
   padding: 1rem 1rem;
+}
+
+.card-img {
+  border-radius: calc(0.25rem - 1px);
 }
 
 .card-img-top {
