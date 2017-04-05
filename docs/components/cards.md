@@ -153,7 +153,7 @@ Turn an image into a card background and overlay your card's text. The use of `.
 
 {% example html %}
 <div class="card card-inverse" style="width: 20rem;">
-  <img class="card-img" data-src="holder.js/100px225/?text=Image background" alt="Card image">
+  <img class="card-img img-responsive" data-src="holder.js/100px225/?text=Image background" alt="Card image">
   <div class="card-img-overlay">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -817,7 +817,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
     </div>
   </div>
   <div class="card">
-    <img class="card-img" data-src="holder.js/100px260/" alt="Card image">
+    <img class="card-img img-responsive" data-src="holder.js/100px260/" alt="Card image">
   </div>
   <div class="card text-right">
     <div class="card-body">
