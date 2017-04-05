@@ -125,10 +125,7 @@
     border-left: 0;
 }
 
-// Card image
-.card-img {
-    @include border-radius($card-border-radius-inner);
-}
+// Card image overlay
 .card-img-overlay {
     position: absolute;
     top: 0;
@@ -138,13 +135,17 @@
     padding: $card-img-overlay-padding;
 }
 
-// Card image caps
+// Card images
+.card-img {
+    @include border-radius($card-border-radius-inner);
+}
 .card-img-top {
     @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
 }
 .card-img-bottom {
     @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
 }
+
 
 // Card deck
 // 1. Individual cards have margin-bottom by default.
