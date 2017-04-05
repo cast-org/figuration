@@ -1712,11 +1712,11 @@ h4 > code {
   height: auto !important;
 }
 
-.player-unstarted .embed-responsive:hover {
+.player-unstarted .embed-fluid:hover {
   cursor: pointer;
 }
 
-.player-unstarted .embed-responsive:after {
+.player-unstarted .embed-fluid:after {
   display: inline-block;
   position: absolute;
   top: 50%;
@@ -1738,7 +1738,7 @@ h4 > code {
   pointer-events: none;
 }
 
-.player-unstarted .embed-responsive:hover:after {
+.player-unstarted .embed-fluid:hover:after {
   filter: alpha(opacity=100);
   opacity: 1;
 }

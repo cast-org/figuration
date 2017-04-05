@@ -714,7 +714,7 @@ pre code {
   border-radius: 0;
 }
 
-.img-responsive {
+.img-fluid {
   max-width: 100%;
   height: auto;
 }
@@ -3510,7 +3510,7 @@ button.drag {
           animation: progress-bar-stripes 1s linear infinite;
 }
 
-.embed-responsive {
+.embed-fluid {
   position: relative;
   display: block;
   width: 100%;
@@ -3518,17 +3518,17 @@ button.drag {
   overflow: hidden;
 }
 
-.embed-responsive::before {
+.embed-fluid::before {
   display: block;
   padding-top: 56.25%;
   content: "";
 }
 
-.embed-responsive .embed-responsive-item,
-.embed-responsive iframe,
-.embed-responsive embed,
-.embed-responsive object,
-.embed-responsive video {
+.embed-fluid .embed-fluid-item,
+.embed-fluid iframe,
+.embed-fluid embed,
+.embed-fluid object,
+.embed-fluid video {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -3538,43 +3538,43 @@ button.drag {
   border: 0;
 }
 
-.embed-responsive-21x9::before {
+.embed-fluid-21x9::before {
   padding-top: 42.857143%;
 }
 
-.embed-responsive-16x9::before {
+.embed-fluid-16x9::before {
   padding-top: 56.25%;
 }
 
-.embed-responsive-4x3::before {
+.embed-fluid-4x3::before {
   padding-top: 75%;
 }
 
-.embed-responsive-1x1::before {
+.embed-fluid-1x1::before {
   padding-top: 100%;
 }
 
-:-webkit-full-screen .embed-responsive {
+:-webkit-full-screen .embed-fluid {
   position: initial;
 }
 
-:-moz-full-screen .embed-responsive {
+:-moz-full-screen .embed-fluid {
   position: initial;
 }
 
-:-ms-fullscreen .embed-responsive {
+:-ms-fullscreen .embed-fluid {
   position: initial;
 }
 
-:fullscreen .embed-responsive {
+:fullscreen .embed-fluid {
   position: initial;
 }
 
-:-ms-fullscreen .embed-responsive .embed-responsive-item,
-:-ms-fullscreen .embed-responsive iframe,
-:-ms-fullscreen .embed-responsive embed,
-:-ms-fullscreen .embed-responsive object,
-:-ms-fullscreen .embed-responsive video {
+:-ms-fullscreen .embed-fluid .embed-fluid-item,
+:-ms-fullscreen .embed-fluid iframe,
+:-ms-fullscreen .embed-fluid embed,
+:-ms-fullscreen .embed-fluid object,
+:-ms-fullscreen .embed-fluid video {
   position: -ms-device-fixed;
 }
 
