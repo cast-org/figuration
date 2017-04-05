@@ -4,7 +4,7 @@ title: Images
 group: content
 ---
 
-Opt your images into responsive behavior (so they never become larger than their parent elements) and add lightweight styles to them---all via classes.
+Allow images to become responsively resized, or add a bit of style to them.
 
 ## Contents
 {:.no_toc}
@@ -12,23 +12,23 @@ Opt your images into responsive behavior (so they never become larger than their
 * ToC goes here
 {:toc}
 
-## Responsive Images
+## Repsonsive Images
 
-Images in Figuration are made responsive with `.img-responsive`. `max-width: 100%;` and `height: auto;` are applied to the image so that it scales with the parent element.
+Images can be made to scale with their container width by using `.img-fluid`. This applies `max-width: 100%;` and `height: auto;` the image, allowing the aspect ratio to be maintained.
 
 <div class="cf-example">
-  <img data-src="holder.js/100px250" class="img-responsive" alt="Generic responsive image">
+  <img data-src="holder.js/100px250" class="img-fluid" alt="Generic responsive image">
 </div>
 
 {% highlight html %}
-<img src="..." class="img-responsive" alt="Responsive image">
+<img src="..." class="img-fluid" alt="Fluidly sized image">
 {% endhighlight %}
 
 {% callout warning %}
 SVG Images and IE 9-10
 {:.h5}
 
-In Internet Explorer 9-10, SVG images with `.img-responsive` are disproportionately sized. To fix this, add `width: 100% \9;` where necessary. This fix improperly sizes other image formats, so Figuration doesn't apply it automatically.
+In Internet Explorer 10, SVG images with `.img-fluid` are disproportionately sized. To fix this, add `width: 100% \9;` where necessary. This fix improperly sizes other image formats, so we do not apply it automatically.
 {% endcallout %}
 
 ## Image Thumbnail

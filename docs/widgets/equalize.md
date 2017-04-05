@@ -42,7 +42,7 @@ Create equal height containers using a few data attributes. Apply the `data-cfw=
                 <div class="card-body">
                     <h4>Card 3</h4>
                     <p>Nam porta malesuada mi, quis hendrerit purus.</p>
-                    <img src="{{ site.baseurl }}/assets/img/test.gif" alt="test pattern" class="img-responsive" />
+                    <img src="{{ site.baseurl }}/assets/img/test.gif" alt="test pattern" class="img-fluid" />
                 </div>
             </div>
         </div>
