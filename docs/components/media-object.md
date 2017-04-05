@@ -149,8 +149,8 @@ You can include many other components, such as forms, buttons, and more.
   <div class="media-body">
     <form>
       <div class="form-group mb-0_5">
-        <label for="exampleTextarea" class="sr-only">Example textarea</label>
-        <textarea class="form-control" id="exampleTextarea" placeholder="Add a comment..." rows="4"></textarea>
+        <label for="exampleTextarea0" class="sr-only">Example textarea</label>
+        <textarea class="form-control" id="exampleTextarea0" placeholder="Add a comment..." rows="4"></textarea>
       </div>
       <div class="d-flex flex-between flex-items-center">
         <div class="form-check mb-0">
@@ -211,8 +211,8 @@ Even create your own social media layout.
   <div class="media-body">
     <form>
       <div class="form-group mb-0_5">
-        <label for="exampleTextarea" class="sr-only">Example textarea</label>
-        <textarea class="form-control" id="exampleTextarea" placeholder="Add a comment..." rows="4"></textarea>
+        <label for="exampleTextarea1" class="sr-only">Example textarea</label>
+        <textarea class="form-control" id="exampleTextarea1" placeholder="Add a comment..." rows="4"></textarea>
       </div>
       <button type="submit" class="btn btn-outline-secondary">Post Comment</button>
     </form>
