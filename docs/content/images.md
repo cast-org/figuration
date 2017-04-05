@@ -47,7 +47,7 @@ You might also want to check the [border utilites]({{ site.baseurl }}/utilities/
 
 ## Aligning Images
 
-Align images with the [helper float classes]({{ site.baseurl }}/utilities/responsive-floats/) or [text alignment classes]({{ site.baseurl }}/utilities/typography/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/utilities/spacing/#horizontal-centering).
+Align images with the [helper float classes]({{ site.baseurl }}/utilities/floating/) or [text alignment classes]({{ site.baseurl }}/utilities/typography/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/utilities/spacing/#horizontal-centering).
 
 <div class="cf-example clearfix">
   <img data-src="holder.js/200x200" class="radius float-left" alt="A generic square placeholder image with rounded corners">

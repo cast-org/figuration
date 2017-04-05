@@ -1,5 +1,5 @@
 //scss-lint:disable VendorPrefix
-.embed-responsive {
+.embed-fluid {
     position: relative;
     display: block;
     width: 100%;
@@ -12,7 +12,7 @@
         content: "";
     }
 
-    .embed-responsive-item,
+    .embed-fluid-item,
     iframe,
     embed,
     object,
@@ -27,36 +27,36 @@
     }
 }
 
-.embed-responsive-21x9 {
+.embed-fluid-21x9 {
     &::before {
         padding-top: percentage(9 / 21);
     }
 }
 
-.embed-responsive-16x9 {
+.embed-fluid-16x9 {
     &::before {
         padding-top: percentage(9 / 16);
     }
 }
 
-.embed-responsive-4x3 {
+.embed-fluid-4x3 {
     &::before {
         padding-top: percentage(3 / 4);
     }
 }
 
-.embed-responsive-1x1 {
+.embed-fluid-1x1 {
     &::before {
         padding-top: percentage(1 / 1);
     }
 }
 
 // Fullscreen video
-:fullscreen .embed-responsive {
+:fullscreen .embed-fluid {
     position: initial;
 }
-:-ms-fullscreen .embed-responsive {
-    .embed-responsive-item,
+:-ms-fullscreen .embed-fluid {
+    .embed-fluid-item,
     iframe,
     embed,
     object,

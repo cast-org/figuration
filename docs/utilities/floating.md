@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Responsive Floats
+title: Floating
 group: utilities
 ---
 

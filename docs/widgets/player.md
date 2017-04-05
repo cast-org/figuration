@@ -128,7 +128,7 @@ Available seek and volume sliders.
 <p><small>Source: <a href="https://videos.pexels.com/videos/tourists-looking-at-niagara-falls-333">Tourists Looking at Niagara Falls</a></small></p>
 
 <div data-cfw="player" class="video-wrapper">
-    <div class="embed-responsive">
+    <div class="embed-fluid">
         <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
             <source src="{{ site.baseurl }}/assets/video/niagara_falls.mp4" type="video/mp4" />
             <track src="{{ site.baseurl }}/assets/video/niagara_falls-en.vtt" label="English subtitles" kind="subtitles" srclang="en" default />
@@ -180,7 +180,7 @@ Add an interactive transcript to your video using the `transcript` control.  The
 <p><small>Source: <a href="https://videos.pexels.com/videos/tourists-looking-at-niagara-falls-333">Tourists Looking at Niagara Falls</a></small></p>
 
 <div data-cfw="player" data-cfw-player-transcript="0" class="video-wrapper">
-    <div class="embed-responsive">
+    <div class="embed-fluid">
         <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
             <source src="{{ site.baseurl }}/assets/video/niagara_falls.mp4" type="video/mp4" />
             <track src="{{ site.baseurl }}/assets/video/niagara_falls-en.vtt" label="English subtitles" kind="subtitles" srclang="en" />
