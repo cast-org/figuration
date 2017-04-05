@@ -150,7 +150,7 @@ Have a complex content that you would like to show in a popover, or one that is 
     <div class="popover-body">
         <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         <figure class="figure">
-          <img src="{{ site.baseurl }}/assets/img/test.gif" class="figure-img img-responsive" alt="Sample image">
+          <img src="{{ site.baseurl }}/assets/img/test.gif" class="figure-img img-fluid" alt="Sample image">
           <figcaption class="figure-caption">Sample image caption.</figcaption>
         </figure>
     </div>
