@@ -379,7 +379,7 @@
                     $trigger.trigger('focus');
                 }
                 this.follow = true;
-            } else if (!$parent.hasClass(this.c.hover)) {
+            } else if (!$parent.hasClass(this.c.hover) && this.follow) {
                 $trigger.trigger('focus');
             }
             $parent.removeClass(this.c.hover);

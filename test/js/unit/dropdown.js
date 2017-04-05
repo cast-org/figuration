@@ -294,7 +294,7 @@ $(function() {
             + '</ul>'
             + '</div>';
         var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
-        var $target = $('<a href="#"><a/>').appendTo('#qunit-fixture');
+        var $target = $('<a href="#">target<a/>').appendTo('#qunit-fixture');
 
         $dropdown
             .on('afterShow.cfw.dropdown', function() {
