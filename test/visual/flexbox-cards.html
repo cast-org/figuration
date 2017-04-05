@@ -52,7 +52,7 @@ Holder.addTheme("gray", {
 
     <div class="card-deck">
         <div class="card">
-            <img class="card-img-top" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
+            <img class="card-img-top img-responsive" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
             <div class="card-body">
                 <h4 class="card-title">Card title</h4>
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -60,7 +60,7 @@ Holder.addTheme("gray", {
             </div>
         </div>
         <div class="card">
-            <img class="card-img-top" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
+            <img class="card-img-top img-responsive" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
             <div class="card-body">
                 <h4 class="card-title">Card title</h4>
                 <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -68,7 +68,7 @@ Holder.addTheme("gray", {
             </div>
         </div>
         <div class="card">
-            <img class="card-img-top" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
+            <img class="card-img-top img-responsive" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
             <div class="card-body">
                 <h4 class="card-title">Card title</h4>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -115,7 +115,7 @@ Holder.addTheme("gray", {
 
     <div class="card-group">
       <div class="card">
-        <img class="card-img-top" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
+        <img class="card-img-top img-responsive" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
         <div class="card-body">
           <h4 class="card-title">Card title</h4>
           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -123,7 +123,7 @@ Holder.addTheme("gray", {
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
+        <img class="card-img-top img-responsive" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
         <div class="card-body">
           <h4 class="card-title">Card title</h4>
           <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -131,7 +131,7 @@ Holder.addTheme("gray", {
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
+        <img class="card-img-top img-responsive" data-src="holder.js/100px150/?text=Image Cap" alt="Card image cap">
         <div class="card-body">
           <h4 class="card-title">Card title</h4>
           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -228,20 +228,20 @@ Holder.addTheme("gray", {
         margin-bottom: 0;
     }
     .card-deck-col .card {
-        flex-basis: 100%;
+        flex-basis: auto;
+        width: calc(100% - 2rem);
+        margin-right: 1rem;
         margin-bottom: 1rem;
+        margin-left: 1rem;
     }
-
     @media (min-width: 35em) {
         .card-deck-col .card {
-            /* need to account for margin */
-            flex-basis: calc(50% - 2rem);
+            width: calc(50% - 2rem);
         }
     }
     @media (min-width: 62em) {
         .card-deck-col .card {
-            /* need to account for margin */
-            flex-basis: calc(25% - 2rem);
+           width: calc(25% - 2rem);
         }
     }
     </style>
