@@ -18,6 +18,7 @@
         this.$element = $(element);
         this.$target = null;
         this.instance = null;
+        this.follow = true;
 
         this.timerHide = null;
 
@@ -372,7 +373,13 @@
             $trigger.attr('aria-expanded', 'false');
             $menu.attr('aria-hidden', 'true')
                 .find('a').attr('tabIndex', -1);
-            if (!$parent.hasClass(this.c.hover)) {
+
+            if ($trigger.is(this.$element)) {
+                if (this.follow) {
+                    $trigger.trigger('focus');
+                }
+                this.follow = true;
+            } else if (!$parent.hasClass(this.c.hover)) {
                 $trigger.trigger('focus');
             }
             $parent.removeClass(this.c.hover);
@@ -392,6 +399,7 @@
         },
 
         hideRev : function() {
+            this.follow = false;
             this.hideMenu(null, this.$element, this.$target);
         },
 
@@ -557,6 +565,7 @@
             this.$element = null;
             this.$target = null;
             this.instance = null;
+            this.follow = null;
             this.timerHide = null;
             this.settings = null;
         }

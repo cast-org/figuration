@@ -282,4 +282,31 @@ $(function() {
         assert.ok(!$(document.activeElement).is('.disabled'), '.disabled is not focused');
         assert.ok($(document.activeElement).is('#focusable'), '#focusable is focused');
     });
+
+    QUnit.test('should not focus trigger for open menu if another item is focused', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        var dropdownHTML = '<div class="dropdown">'
+            + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
+            + '<ul class="dropdown-menu">'
+            + '<li><a href="#">Menu link</a></li>'
+            + '</ul>'
+            + '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        var $target = $('<a href="#"><a/>').appendTo('#qunit-fixture');
+
+        $dropdown
+            .on('afterShow.cfw.dropdown', function() {
+                assert.strictEqual($dropdown[0], document.activeElement, 'trigger is focused');
+                $target.trigger('focus');
+            })
+            .on('afterHide.cfw.dropdown', function() {
+                assert.notStrictEqual($dropdown[0], document.activeElement, 'trigger is not focused');
+                done();
+            })
+            .CFW_Dropdown()
+            .trigger('click');
+    });
+
 });
