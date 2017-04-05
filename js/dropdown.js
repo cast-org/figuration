@@ -18,7 +18,6 @@
         this.$element = $(element);
         this.$target = null;
         this.instance = null;
-        this.follow = true;
 
         this.timerHide = null;
 
@@ -342,8 +341,10 @@
             $trigger.CFW_trigger('afterShow.cfw.dropdown');
         },
 
-        hideMenu : function(e, $trigger, $menu) {
+        hideMenu : function(e, $trigger, $menu, triggerFocus) {
             if (e) e.preventDefault();
+
+            if (triggerFocus === undefined) { triggerFocus = true; }
 
             var $parent  = getParent($trigger);
             var showing = $parent.hasClass('open');
@@ -375,11 +376,10 @@
                 .find('a').attr('tabIndex', -1);
 
             if ($trigger.is(this.$element)) {
-                if (this.follow) {
+                if (triggerFocus) {
                     $trigger.trigger('focus');
                 }
-                this.follow = true;
-            } else if (!$parent.hasClass(this.c.hover) && this.follow) {
+            } else if (!$parent.hasClass(this.c.hover)) {
                 $trigger.trigger('focus');
             }
             $parent.removeClass(this.c.hover);
@@ -399,8 +399,7 @@
         },
 
         hideRev : function() {
-            this.follow = false;
-            this.hideMenu(null, this.$element, this.$target);
+            this.hideMenu(null, this.$element, this.$target, false);
         },
 
         closeUp : function($node) {
@@ -565,7 +564,6 @@
             this.$element = null;
             this.$target = null;
             this.instance = null;
-            this.follow = null;
             this.timerHide = null;
             this.settings = null;
         }

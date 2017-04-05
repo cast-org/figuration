@@ -283,7 +283,7 @@ $(function() {
         assert.ok($(document.activeElement).is('#focusable'), '#focusable is focused');
     });
 
-    QUnit.test('should not focus trigger for open menu if another item is focused', function(assert) {
+    QUnit.test('should not focus trigger when click occurs outside menu', function(assert) {
         assert.expect(2);
         var done = assert.async();
 
@@ -294,12 +294,14 @@ $(function() {
             + '</ul>'
             + '</div>';
         var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
-        var $target = $('<a href="#">target<a/>').appendTo('#qunit-fixture');
+        var $target = $('<a href="#">Target link</a>').appendTo('#qunit-fixture');
 
         $dropdown
             .on('afterShow.cfw.dropdown', function() {
                 assert.strictEqual($dropdown[0], document.activeElement, 'trigger is focused');
+                // Simulate change of focus with click
                 $target.trigger('focus');
+                $target.trigger('click');
             })
             .on('afterHide.cfw.dropdown', function() {
                 assert.notStrictEqual($dropdown[0], document.activeElement, 'trigger is not focused');
