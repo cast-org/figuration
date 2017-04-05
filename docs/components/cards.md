@@ -89,13 +89,75 @@ Links can placed next to each other with some spacing by adding `.card-link` to 
 
 ### Images
 
-`.card-img-top` places an image to the top of the card.
+Cards include a few options for working with images. Choose from embedding an image in a card, appending "image caps" at either end of a card, or overlaying images with card content.
+
+#### Standard Images
+
+Images can help add some visual interest to your cards.
 
 {% example html %}
-<div class="card">
-  <img class="card-img-top img-responsive" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
+<div class="card" style="width: 20rem;">
+  <h4 class="card-header">Sample Card</h4>
+  <img class="img-responsive" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image">
   <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  </div>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="card" style="width: 20rem;">
+  <div class="card-body">
+    <h4 class="card-title">Card title</h4>
+    <p class="card-text">This is a card with text and a nested image.</p>
+    <img class="img-responsive mb-0_5" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image">
+    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  </div>
+</div>
+{% endexample %}
+
+#### Image Caps
+
+Similar to headers and footers, cards can include top and bottom image caps.
+
+Use `.card-img-top` to round over the top corners when placing an image at the top of a card.
+
+{% example html %}
+<div class="card" style="width: 20rem;">
+  <img class="card-img-top img-responsive" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">Card title</h4>
+    <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  </div>
+</div>
+{% endexample %}
+
+Use `.card-img-bottom` to round over the bottom corners when placing an image at the bottom of a card.
+
+{% example html %}
+<div class="card" style="width: 20rem;">
+  <div class="card-body">
+    <h4 class="card-title">Card title</h4>
+    <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  </div>
+  <img class="card-img-bottom img-responsive" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image cap">
+</div>
+{% endexample %}
+
+#### Image Overlay
+
+Turn an image into a card background and overlay your card's text. The use of `.card-img` will round over all corners of the image, and `.card-img-overlay` will allow content to overlay the image. Depending on the image, you may or may not need `.card-inverse` (see below).
+
+{% example html %}
+<div class="card card-inverse" style="width: 20rem;">
+  <img class="card-img" data-src="holder.js/100px225/?text=Image background" alt="Card image">
+  <div class="card-img-overlay">
+    <h4 class="card-title">Card title</h4>
+    <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text"><small>Last updated 3 mins ago</small></p>
   </div>
 </div>
 {% endexample %}
@@ -324,48 +386,6 @@ Add navigation items within a card's header (or block) with Figuration's [naviga
 </div>
 {% endexample %}
 
-## Images
-
-Cards include a few options for working with images. Choose from appending "image caps" at either end of a card, overlaying images with card content, or simply embedding the image in a card.
-
-### Image Caps
-
-Similar to headers and footers, cards include top and bottom image caps.
-
-{% example html %}
-<div class="card">
-  <img class="card-img-top img-responsive" data-src="holder.js/100px150/" alt="Card image cap">
-  <div class="card-body">
-    <h4 class="card-title">Card title</h4>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-  </div>
-</div>
-<div class="card">
-  <div class="card-body">
-    <h4 class="card-title">Card title</h4>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-  </div>
-  <img class="card-img-bottom img-responsive" data-src="holder.js/100px150/" alt="Card image cap">
-</div>
-{% endexample %}
-
-### Image Overlays
-
-Turn an image into a card background and overlay your card's text. Depending on the image, you may or may not need `.card-inverse` (see below).
-
-{% example html %}
-<div class="card card-inverse">
-  <img class="card-img img-responsive" data-src="holder.js/100px270/#55595c:#373a3c/text:Card image" alt="Card image">
-  <div class="card-img-overlay">
-    <h4 class="card-title">Card title</h4>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-  </div>
-</div>
-{% endexample %}
-
 ## Styling Cards
 
 Cards include various options for customizing their backgrounds, borders, and color.
@@ -542,7 +562,7 @@ Use card groups to render cards as a single, attached element with equal width a
     <img class="card-img-top img-responsive" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
@@ -558,22 +578,23 @@ Use card groups to render cards as a single, attached element with equal width a
     <img class="card-img-top img-responsive" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
 </div>
 {% endexample %}
 
-When using card groups with footers, their content will automatically line up.
+When using card groups with footers, they will not automatically line up.  However, you can use the [Equalize widget]({{ site.baseurl }}/widgets/equalize) to achieve this layout.
 
 {% example html %}
-<div class="card-group">
+<div class="card-group" data-cfw="equalize" data-cfw-equalize-target=".card-body">
   <div class="card">
     <img class="card-img-top img-responsive" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text">This is a card with text and an image.</p>
+      <img class="img-responsive mb-0_5" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image">
     </div>
     <div class="card-footer">
       <small class="text-muted">Last updated 3 mins ago</small>
@@ -593,7 +614,7 @@ When using card groups with footers, their content will automatically line up.
     <img class="card-img-top img-responsive" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
     </div>
     <div class="card-footer">
       <small class="text-muted">Last updated 3 mins ago</small>
@@ -628,22 +649,23 @@ Need a set of equal width and height cards that aren't attached to one another? 
     <img class="card-img-top img-responsive" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
 </div>
 {% endexample %}
 
-Just like with card groups, card footers in decks will automatically line up.
+Just like with card groups, card footers in decks will not automatically line up. Again, the [Equalize widget]({{ site.baseurl }}/widgets/equalize) can achieve this layout.
 
 {% example html %}
-<div class="card-deck">
+<div class="card-deck" data-cfw="equalize" data-cfw-equalize-target=".card-body">
   <div class="card">
     <img class="card-img-top img-responsive" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text">This is a card with text and an image.</p>
+      <img class="img-responsive mb-0_5" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image">
     </div>
     <div class="card-footer">
       <small class="text-muted">Last updated 3 mins ago</small>
@@ -663,7 +685,7 @@ Just like with card groups, card footers in decks will automatically line up.
     <img class="card-img-top img-responsive" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
     </div>
     <div class="card-footer">
       <small class="text-muted">Last updated 3 mins ago</small>
@@ -676,9 +698,9 @@ Just like with card groups, card footers in decks will automatically line up.
 
 Controlling the number of cards in a row, based on the screen width is also possible using `flex-basis`.  Here is an example a way to achieve 1-across on `xs` screens, 2-across on `sm` and `md` screens, and 4-across on `lg` and up.
 
-**Heads Up!** In order for this to work, the width of the card deck gutter (margins) need to be accounted for when assigning the width with `flex-basis`.
+**Heads Up!** In order for this to work, the width of the card deck gutter (margins) need to be accounted for when assigning the `width`.  We are using `width` and `flex-basis: auto;` due to [Flexbug #8](https://github.com/philipwalton/flexbugs#8-flex-basis-doesnt-support-calc).
 
-{% example css html %}
+{% highlight scss %}
 <style>
 .card-deck-col {
     flex-flow: row wrap;
@@ -689,26 +711,25 @@ Controlling the number of cards in a row, based on the screen width is also poss
     margin-left: -1rem;
 }
 .card-deck-col .card {
-    flex-basis: 100%;
+    flex-basis: auto;
+    width: calc(100% - 2rem);
     margin-right: 1rem;
     margin-bottom: 1rem;
     margin-left: 1rem;
 }
-
 @media (min-width: 35em) {
     .card-deck-col .card {
-        /* need to account for card deck gutter */
-        flex-basis: calc(50% - 2rem);
+        width: calc(50% - 2rem);
     }
 }
 @media (min-width: 62em) {
     .card-deck-col .card {
-        /* need to account for card deck gutter */
-        flex-basis: calc(25% - 2rem);
+       width: calc(25% - 2rem);
     }
 }
 </style>
-
+{% endhighlight %}
+{% example html %}
 <div class="card-deck card-deck-col">
     <div class="card">
         <img class="card-img-top img-responsive" data-src="holder.js/100px150/" alt="Card image cap">
@@ -796,7 +817,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
     </div>
   </div>
   <div class="card">
-    <img class="card-img img-responsive" data-src="holder.js/100px260/" alt="Card image">
+    <img class="card-img" data-src="holder.js/100px260/" alt="Card image">
   </div>
   <div class="card text-right">
     <div class="card-body">
@@ -813,7 +834,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
