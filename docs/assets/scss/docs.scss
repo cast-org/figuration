@@ -78,7 +78,6 @@ $docs-color: #246;
 
 // Jumbotrons
 .jumbotron-home {
-    margin-top: -1rem;
     color: rgba(255,255,255,.9);
     text-align: center;
     background-color: $docs-color;
@@ -109,7 +108,6 @@ $docs-color: #246;
 
 .jumbotron-docs {
     padding: ($jumbotron-padding-xs-y / 2) ($jumbotron-padding-xs-x / 2);
-    margin-top: -1rem;
     color: rgba(255,255,255,.9);
     background-color: $docs-color;
 
