@@ -25,7 +25,7 @@ Images can be made to scale with their container width by using `.img-fluid`. Th
 {% endhighlight %}
 
 {% callout warning %}
-SVG Images and IE 9-10
+SVG Images and IE 10
 {:.h5}
 
 In Internet Explorer 10, SVG images with `.img-fluid` are disproportionately sized. To fix this, add `width: 100% \9;` where necessary. This fix improperly sizes other image formats, so we do not apply it automatically.

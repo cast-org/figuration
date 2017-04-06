@@ -1019,7 +1019,7 @@ Custom `<select>` menus need only a custom class, `.custom-select` to trigger th
 </select>
 {% endexample %}
 
-Custom selects degrade nicely in IE9, receiving only a handful of overrides to remove the custom `background-image`. **Multiple selects (e.g., `<select multiple>`) are not currently supported.**
+**Multiple selects (e.g., `<select multiple>`) are not currently supported.**
 
 Multiple size are also available.
 

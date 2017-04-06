@@ -143,10 +143,6 @@ Buttons will appear pressed (with a darker background, darker border, and inset 
 
 Make buttons look inactive by adding the `disabled` boolean attribute to any `<button>` element.
 
-{% callout info %}
-**Heads up!** IE9 and below render disabled buttons with gray, shadowed text that we can't override.
-{% endcallout %}
-
 {% example html %}
 <strong>Standard Buttons:</strong>
 <p>
