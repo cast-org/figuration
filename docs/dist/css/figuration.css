@@ -249,29 +249,32 @@ template {
   *,
   *::before,
   *::after,
+  h1::first-letter,
+  h2::first-letter,
+  h3::first-letter,
+  h4::first-letter,
+  h5::first-letter,
+  h6::first-letter,
   p::first-letter,
   div::first-letter,
   blockquote::first-letter,
   li::first-letter,
+  h1::first-line,
+  h2::first-line,
+  h3::first-line,
+  h4::first-line,
+  h5::first-line,
+  h6::first-line,
   p::first-line,
   div::first-line,
   blockquote::first-line,
   li::first-line {
-    color: #000 !important;
     text-shadow: none !important;
-    background: transparent !important;
     box-shadow: none !important;
   }
   a,
   a:visited {
     text-decoration: underline;
-  }
-  a[href]::after {
-    content: " (" attr(href) ")";
-  }
-  a[href^="#"]::after,
-  a[href^="javascript:"]::after {
-    content: "";
   }
   abbr[title]::after {
     content: " (" attr(title) ")";
@@ -300,9 +303,6 @@ template {
   h2,
   h3 {
     page-break-after: avoid;
-  }
-  .navbar {
-    display: none;
   }
   .btn > .caret,
   .dropup > .btn > .caret {
