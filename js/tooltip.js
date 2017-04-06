@@ -716,12 +716,9 @@
             var height = $tip[0].getBoundingClientRect().height;
 
             // manually read margins because getBoundingClientRect includes difference
-            var marginTop = parseInt($tip.css('margin-top'), 10);
-            var marginLeft = parseInt($tip.css('margin-left'), 10);
-
-            // we must check for NaN for IE 9
-            if (isNaN(marginTop))  marginTop  = 0;
-            if (isNaN(marginLeft)) marginLeft = 0;
+            // includes protection against NaN
+            var marginTop = parseInt($tip.css('margin-top'), 10) || 0;
+            var marginLeft = parseInt($tip.css('margin-left'), 10) || 0;
 
             offset.top  = offset.top  + marginTop;
             offset.left = offset.left + marginLeft;
