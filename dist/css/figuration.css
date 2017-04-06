@@ -746,6 +746,7 @@ pre code {
   width: 100%;
   max-width: 100%;
   margin-bottom: 1rem;
+  background-color: transparent;
 }
 
 .table th,
@@ -765,7 +766,7 @@ pre code {
 }
 
 .table .table {
-  background-color: #fff;
+  background-color: transparent;
 }
 
 .table-condensed th,
@@ -908,16 +909,15 @@ pre code {
   background-color: #f1c7c3;
 }
 
-.table-responsive {
+.table-scroll {
   display: block;
   width: 100%;
-  min-height: .01%;
-  margin-bottom: 1rem;
   overflow-x: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
-.table-responsive > .table {
-  margin-bottom: 0;
+.table-scroll.table-bordered {
+  border: 0;
 }
 
 .thead-inverse th {

@@ -1325,7 +1325,7 @@ h4 > code {
           user-select: none;
 }
 
-.table-responsive .highlight pre {
+.table .highlight pre {
   white-space: normal;
 }
 
