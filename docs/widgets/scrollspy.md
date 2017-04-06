@@ -103,32 +103,30 @@ $('body').CFW_Scrollspy({ target: '#navbar-example' });
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-scrollspy`, as in `data-cfw-scrollspy-target=".navbar-example"`.
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 100px;">Name</th>
-            <th style="width: 50px;">Type</th>
-            <th style="width: 50px;">Default</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>offset</td>
-            <td>integer</td>
-            <td>10</td>
-            <td>Pixels to offset from top when calculating position of scroll.</td>
-        </tr>
-        <tr>
-            <td>throttle</td>
-            <td>integer</td>
-            <td>100</td>
-            <td>Timeout rate (milliseconds) for the throttle function helps to decrease function calls through scroll event.</td>
-        </tr>
-    </tbody>
-    </table>
-</div> <!-- /.table-responsive -->
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>offset</td>
+        <td>integer</td>
+        <td>10</td>
+        <td>Pixels to offset from top when calculating position of scroll.</td>
+    </tr>
+    <tr>
+        <td>throttle</td>
+        <td>integer</td>
+        <td>100</td>
+        <td>Timeout rate (milliseconds) for the throttle function helps to decrease function calls through scroll event.</td>
+    </tr>
+</tbody>
+</table>
 
 ### Methods
 
@@ -163,26 +161,24 @@ Removes the associated event listener for the given scrollspy element, leaving t
 
 Event callbacks happen on the or designated scrolling region (for `init.cfw.scrollspy`) or the activated navigation element (for `activate.cfw.scrollspy`).
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 150px;">Event Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>init.cfw.scrollspy</td>
-            <td>This event fires after the scrollspy is initialized.</td>
-        </tr>
-        <tr>
-            <td>activate.cfw.scrollspy</td>
-            <td>This event fires whenever a new item becomes activated by the scrollspy.</td>
-        </tr>
-    </tbody>
-    </table>
-</div> <!-- /.table-responsive -->
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 150px;">Event Type</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>init.cfw.scrollspy</td>
+        <td>This event fires after the scrollspy is initialized.</td>
+    </tr>
+    <tr>
+        <td>activate.cfw.scrollspy</td>
+        <td>This event fires whenever a new item becomes activated by the scrollspy.</td>
+    </tr>
+</tbody>
+</table>
 
 {% highlight js %}
 $('#myScrollspy').on('activate.cfw.scrollspy', function () {

@@ -418,65 +418,63 @@ There is also an additional special classname that the modal widget will look fo
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-modal-`, as in `data-cfw-modal-animate=false`.
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 100px;">Name</th>
-            <th style="width: 50px;">Type</th>
-            <th style="width: 50px;">Default</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>toggle</td>
-            <td>string</td>
-            <td>null</td>
-            <td>Either the selector (jQuery style), or the string related to the target tooltip having a `data-cfw-modal-target` attribute.</td>
-        </tr>
-        <tr>
-            <td>animate</td>
-            <td>boolean</td>
-            <td>true</td>
-            <td>If modal targets should fade and slide in.</td>
-        </tr>
-        <tr>
-            <td>unlink</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>If the `unlink` method should be called when the modal is hidden.  This leaves the modal behind in the DOM.</td>
-        </tr>
-        <tr>
-            <td>dispose</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>If the `dispose` method should be called when the modal is hidden. This will remove the modal from the DOM.</td>
-        </tr>
-        <tr>
-            <td>backdrop</td>
-            <td>boolean or the string `'static'`</td>
-            <td>true</td>
-            <td>
-                <p>Includes a modal-backdrop element. Alternatively, specify `static` for a backdrop which doesn't close the modal on click.</p>
-                <p>The backdrop is the semi-opaque overlay used to visually seperate the modal from the page content.</p>
-             </td>
-        </tr>
-        <tr>
-            <td>keyboard</td>
-            <td>boolean</td>
-            <td>true</td>
-            <td>Closes the modal when escape key is pressed</td>
-        </tr>
-        <tr>
-            <td>show</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>Shows the modal when initialized.</td>
-        </tr>
-    </tbody>
-    </table>
-</div> <!-- /.table-responsive -->
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>toggle</td>
+        <td>string</td>
+        <td>null</td>
+        <td>Either the selector (jQuery style), or the string related to the target tooltip having a `data-cfw-modal-target` attribute.</td>
+    </tr>
+    <tr>
+        <td>animate</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>If modal targets should fade and slide in.</td>
+    </tr>
+    <tr>
+        <td>unlink</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>If the `unlink` method should be called when the modal is hidden.  This leaves the modal behind in the DOM.</td>
+    </tr>
+    <tr>
+        <td>dispose</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>If the `dispose` method should be called when the modal is hidden. This will remove the modal from the DOM.</td>
+    </tr>
+    <tr>
+        <td>backdrop</td>
+        <td>boolean or the string `'static'`</td>
+        <td>true</td>
+        <td>
+            <p>Includes a modal-backdrop element. Alternatively, specify `static` for a backdrop which doesn't close the modal on click.</p>
+            <p>The backdrop is the semi-opaque overlay used to visually seperate the modal from the page content.</p>
+         </td>
+    </tr>
+    <tr>
+        <td>keyboard</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>Closes the modal when escape key is pressed</td>
+    </tr>
+    <tr>
+        <td>show</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Shows the modal when initialized.</td>
+    </tr>
+</tbody>
+</table>
 
 ### Methods
 
@@ -519,58 +517,56 @@ Calls the `unlink` method, and then removes the modal from the DOM.
 
 Event callbacks happen on the target `<div class="modal">` element.
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 150px;">Event Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>init.cfw.modal</td>
-            <td>This event fires after the modal item is initialized.</td>
-        </tr>
-        <tr>
-            <td>beforeShow.cfw.modal</td>
-            <td>This event is fired immediately when the <code>show</code> method is called.</td>
-        </tr>
-        <tr>
-            <td>scrollbarSet.cfw.modal</td>
-            <td>This event is fired immediately when the <code>&lt;body&gt;</code> padding is adjusted for the scrollbar width.</td>
-        </tr>
-        <tr>
-            <td>afterShow.cfw.modal</td>
-            <td>This event is fired when a modal dialog has been made visible to the user (will wait for CSS transitions to complete).</td>
-        </tr>
-        <tr>
-            <td>scrollbarReset.cfw.modal</td>
-            <td>This event is fired immediately when the <code>&lt;body&gt;</code> padding adjustment for the scrollbar is removed.</td>
-        </tr>
-        <tr>
-            <td>beforeHide.cfw.modal</td>
-            <td>This event is fired immediately when the <code>hide</code> method is called.</td>
-        </tr>
-        <tr>
-            <td>afterHide.cfw.modal</td>
-            <td>This event is fired when a modal dialog has been hidden from the user (will wait for CSS transitions to complete).</td>
-        </tr>
-        <tr>
-            <td>beforeUnlink.cfw.modal</td>
-            <td>This event is fired immediately when the <code>unlink</code> method is called. This event can occur after the `beforeHide` event if set to automatically unlink, or before if called via method.</td>
-        </tr>
-        <tr>
-            <td>afterUnlink.cfw.modal</td>
-            <td>This event is fired when a modal item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</td>
-        </tr>
-        <tr>
-            <td>dispose.cfw.modal</td>
-            <td>This event is fired immediately before the modal item is removed from the DOM.</td>
-        </tr>
-    </tbody>
-    </table>
-</div> <!-- /.table-responsive -->
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 150px;">Event Type</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>init.cfw.modal</td>
+        <td>This event fires after the modal item is initialized.</td>
+    </tr>
+    <tr>
+        <td>beforeShow.cfw.modal</td>
+        <td>This event is fired immediately when the <code>show</code> method is called.</td>
+    </tr>
+    <tr>
+        <td>scrollbarSet.cfw.modal</td>
+        <td>This event is fired immediately when the <code>&lt;body&gt;</code> padding is adjusted for the scrollbar width.</td>
+    </tr>
+    <tr>
+        <td>afterShow.cfw.modal</td>
+        <td>This event is fired when a modal dialog has been made visible to the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+        <td>scrollbarReset.cfw.modal</td>
+        <td>This event is fired immediately when the <code>&lt;body&gt;</code> padding adjustment for the scrollbar is removed.</td>
+    </tr>
+    <tr>
+        <td>beforeHide.cfw.modal</td>
+        <td>This event is fired immediately when the <code>hide</code> method is called.</td>
+    </tr>
+    <tr>
+        <td>afterHide.cfw.modal</td>
+        <td>This event is fired when a modal dialog has been hidden from the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+        <td>beforeUnlink.cfw.modal</td>
+        <td>This event is fired immediately when the <code>unlink</code> method is called. This event can occur after the `beforeHide` event if set to automatically unlink, or before if called via method.</td>
+    </tr>
+    <tr>
+        <td>afterUnlink.cfw.modal</td>
+        <td>This event is fired when a modal item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</td>
+    </tr>
+    <tr>
+        <td>dispose.cfw.modal</td>
+        <td>This event is fired immediately before the modal item is removed from the DOM.</td>
+    </tr>
+</tbody>
+</table>
 
 {% highlight js %}
 $('#myModal').on('afterHide.cfw.modal', function () {

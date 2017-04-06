@@ -194,53 +194,51 @@ $('#myContainer').CFW_Equalize({
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-equalize`, as in `data-cfw-equalize-stack=false`.
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 100px;">Name</th>
-            <th style="width: 50px;">Type</th>
-            <th style="width: 50px;">Default</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>target</td>
-            <td>string</td>
-            <td>null</td>
-            <td>
-                <p>Either the selector (jQuery style), or the string related to the target containers having a <code>data-cfw-equalize-group</code> attribute.</p>
-                <p>The containers to be equalized are scoped by the calling container, so same selector/groupID can be resused if needed.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>throttle</td>
-            <td>integer</td>
-            <td>250</td>
-            <td>Timeout rate (milliseconds) for the throttle function helps to decrease function calls through resize events.</td>
-        </tr>
-        <tr>
-            <td>stack</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>Whether or not the specified containers should be equalized in height when they become stacked, either due to responsive reflow, or wrapping.  Otherwise, the specified containers all need to have the same top offset in order to be equalized.</td>
-        </tr>
-        <tr>
-            <td>row</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>Whether or not the specified containers should be equalized in height by rows, by determining each container in a row by their top offset.</td>
-        </tr>
-        <tr>
-            <td>minimum</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>If set to true, the specified containers will be equalized to the shortest container.  In this case, you may want to use <code>overflow: hidden;</code> to deal with the overflowing content.</td>
-        </tr>
-    </tbody>
-    </table>
-</div> <!-- /.table-responsive -->
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>target</td>
+        <td>string</td>
+        <td>null</td>
+        <td>
+            <p>Either the selector (jQuery style), or the string related to the target containers having a <code>data-cfw-equalize-group</code> attribute.</p>
+            <p>The containers to be equalized are scoped by the calling container, so same selector/groupID can be resused if needed.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>throttle</td>
+        <td>integer</td>
+        <td>250</td>
+        <td>Timeout rate (milliseconds) for the throttle function helps to decrease function calls through resize events.</td>
+    </tr>
+    <tr>
+        <td>stack</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Whether or not the specified containers should be equalized in height when they become stacked, either due to responsive reflow, or wrapping.  Otherwise, the specified containers all need to have the same top offset in order to be equalized.</td>
+    </tr>
+    <tr>
+        <td>row</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Whether or not the specified containers should be equalized in height by rows, by determining each container in a row by their top offset.</td>
+    </tr>
+    <tr>
+        <td>minimum</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>If set to true, the specified containers will be equalized to the shortest container.  In this case, you may want to use <code>overflow: hidden;</code> to deal with the overflowing content.</td>
+    </tr>
+</tbody>
+</table>
 
 ### Methods
 
@@ -269,30 +267,28 @@ Remove the data and global event listener for a given instance of equalize.  Thi
 
 Event callbacks happen on the parent equalize element.
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 150px;">Event Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>init.cfw.equalize</td>
-            <td>This event fires after the equalize widget is initialized.</td>
-        </tr>
-        <tr>
-            <td>beforeEqual.cfw.equalize</td>
-            <td>This event fires before the container heights are reset and the heights are adjusted.</td>
-        </tr>
-        <tr>
-            <td>afterEqual.cfw.equalize</td>
-            <td>This event fires after the container heights are adjusted.</td>
-        </tr>
-    </tbody>
-    </table>
-</div> <!-- /.table-responsive -->
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 150px;">Event Type</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>init.cfw.equalize</td>
+        <td>This event fires after the equalize widget is initialized.</td>
+    </tr>
+    <tr>
+        <td>beforeEqual.cfw.equalize</td>
+        <td>This event fires before the container heights are reset and the heights are adjusted.</td>
+    </tr>
+    <tr>
+        <td>afterEqual.cfw.equalize</td>
+        <td>This event fires after the container heights are adjusted.</td>
+    </tr>
+</tbody>
+</table>
 
 {% highlight js %}
 $('#myContainer').on('afterEqual.cfw.equalize', function () {

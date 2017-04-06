@@ -169,51 +169,50 @@ Any element with a data attribute of `data-cfw-dismiss="tooltip"` within the too
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-tooltip`, as in `data-cfw-tooltip-placement="right"`.
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 100px;">Name</th>
-            <th style="width: 50px;">Type</th>
-            <th style="width: 50px;">Default</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>toggle</td>
-            <td>string</td>
-            <td>null</td>
-            <td>Either the selector (jQuery style), or the string related to the target tooltip having a <code>data-cfw-tooltip-target</code> attribute.</td>
-        </tr>
-        <tr>
-            <td>animate</td>
-            <td>boolean</td>
-            <td>true</td>
-            <td>If tooltip items should fade in and out.</td>
-        </tr>
-        <tr>
-            <td>placement</td>
-            <td>string | object | function</td>
-            <td>'top'</td>
-            <td>
-                <p>
-                    <strong>string:</strong><br />
-                    How to position the tooltip - top | bottom | left | right | auto.
-                    <br />
-                    When "auto" is specified, it will dynamically reorient the tooltip. For example, if placement is "auto left", the tooltip will display to the left when possible, otherwise it will display right.
-                </p>
-                <p>
-                    <strong>object:</strong><br />
-                    This is a way to custom position a tooltip in a specific place not handled by the standard placement locations.
-                    A custom positioned tooltip is forced to using the <code>&lt;body&gt;</code> as the container to make positioning easier.
-                    Object structure is: <code>placement: { top: 5, left: 10 }</code>, the same as jQuery offset.
-                </p>
-                <p>
-                    <strong>function:</strong><br />
-                    A function call can return either a string or object placement type.
-                    The function allows access to the complete tooltip data-api, as well as passing the tooltip target and trigger as arguments.
-                </p>
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>toggle</td>
+        <td>string</td>
+        <td>null</td>
+        <td>Either the selector (jQuery style), or the string related to the target tooltip having a <code>data-cfw-tooltip-target</code> attribute.</td>
+    </tr>
+    <tr>
+        <td>animate</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>If tooltip items should fade in and out.</td>
+    </tr>
+    <tr>
+        <td>placement</td>
+        <td>string | object | function</td>
+        <td>'top'</td>
+        <td>
+            <p>
+                <strong>string:</strong><br />
+                How to position the tooltip - top | bottom | left | right | auto.
+                <br />
+                When "auto" is specified, it will dynamically reorient the tooltip. For example, if placement is "auto left", the tooltip will display to the left when possible, otherwise it will display right.
+            </p>
+            <p>
+                <strong>object:</strong><br />
+                This is a way to custom position a tooltip in a specific place not handled by the standard placement locations.
+                A custom positioned tooltip is forced to using the <code>&lt;body&gt;</code> as the container to make positioning easier.
+                Object structure is: <code>placement: { top: 5, left: 10 }</code>, the same as jQuery offset.
+            </p>
+            <p>
+                <strong>function:</strong><br />
+                A function call can return either a string or object placement type.
+                The function allows access to the complete tooltip data-api, as well as passing the tooltip target and trigger as arguments.
+            </p>
 <pre>
 function myTipAlign(tip, trigger) {
     // this - tooltip data-api
@@ -221,103 +220,102 @@ function myTipAlign(tip, trigger) {
     // trigger -> tooltip trigger
 }
 </pre>
-            </td>
-        </tr>
-        <tr>
-            <td>trigger</td>
-            <td>string</td>
-            <td>'hover focus'</td>
-            <td>How tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. <code>manual</code> cannot be combined with any other trigger.</td>
-        </tr>
-        <tr>
-            <td>delay</td>
-            <td>number| object</td>
-            <td>show:0, hide:250</td>
-            <td>
-                <p>Delay showing and hiding the tooltip (ms) - does not apply to manual trigger type.</p>
-                <p>If a number is supplied, delay is applied to both hide/show.</p>
-                Object structure is: <code>delay: { show: 500, hide: 100 }</code>
-            </td>
-        </tr>
-        <tr>
-            <td>container</td>
-            <td>string | false</td>
-            <td>false</td>
-            <td>Appends the tooltip to a specific element. Example: <code>container: 'body'</code></td>
-        </tr>
-        <tr>
-            <td>viewport</td>
-            <td>string | function</td>
-            <td>'body'</td>
-            <td>
-                <p>Keep the tooltip within the bounds of this element. Example: <code>viewport: '#viewport'</code>.</p>
-                <p>If a function is given, it is called with the triggering element DOM node as its only argument. The <code>this</code> context is set to the tooltip instance.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>padding</td>
-            <td>integer</td>
-            <td>0</td>
-            <td>Spacing, in pixels, to keep the tooltip away from the viewport edge.</td>
-        </tr>
-        <tr>
-            <td>html</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>
-                <p>Allow HTML in the tooltip.</p>
-                <p>If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>closetext</td>
-            <td>string</td>
-            <td>'&lt;span aria-hidden="true" &gt;&amp;times;&lt;/span&gt;'</td>
-            <td>Visible text for close links when using option <code>trigger: 'click'</code></td>
-        </tr>
-        <tr>
-            <td>closesrtext</td>
-            <td>string</td>
-            <td>'Close'</td>
-            <td>Screen reader only text alternative for close links when using option <code>trigger: 'click'</code></td>
-        </tr>
-        <tr>
-            <td>toggle</td>
-            <td>string</td>
-            <td>null</td>
-            <td>
-                <p>If the tooltip item is already created, you can link to it using <code>data-cfw-tooltip-toggle="someTooltip"</code>.</p>
-                <p>The target tooltip item will then need the associated attribute <code>data-cfw-tooltip-target="someTooltip"</code>.</p>
-                <p>The proper role and ARIA attributes will be automatically created to link the trigger and target elements.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>title</td>
-            <td>string | function</td>
-            <td>''</td>
-            <td>Default title value if <code>title</code> attribute isn't present.</td>
-        </tr>
-        <tr>
-            <td>unlink</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>If the <code>unlink</code> method should be called when the tooltip is hidden.  This leaves the tooltip behind in the DOM.</td>
-        </tr>
-        <tr>
-            <td>dispose</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>If the <code>dispose</code> method should be called when the tooltip is hidden. This will remove the tooltip from the DOM.</td>
-        </tr>
-        <tr>
-            <td>activate</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>Show the tooltip automatically at the end of initialization. This will force the <code>trigger</code> option to a setting of <code>'click'</code>.</td>
-        </tr>
-    </tbody>
-    </table>
-</div> <!-- /.table-responsive -->
+        </td>
+    </tr>
+    <tr>
+        <td>trigger</td>
+        <td>string</td>
+        <td>'hover focus'</td>
+        <td>How tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. <code>manual</code> cannot be combined with any other trigger.</td>
+    </tr>
+    <tr>
+        <td>delay</td>
+        <td>number| object</td>
+        <td>show:0, hide:250</td>
+        <td>
+            <p>Delay showing and hiding the tooltip (ms) - does not apply to manual trigger type.</p>
+            <p>If a number is supplied, delay is applied to both hide/show.</p>
+            Object structure is: <code>delay: { show: 500, hide: 100 }</code>
+        </td>
+    </tr>
+    <tr>
+        <td>container</td>
+        <td>string | false</td>
+        <td>false</td>
+        <td>Appends the tooltip to a specific element. Example: <code>container: 'body'</code></td>
+    </tr>
+    <tr>
+        <td>viewport</td>
+        <td>string | function</td>
+        <td>'body'</td>
+        <td>
+            <p>Keep the tooltip within the bounds of this element. Example: <code>viewport: '#viewport'</code>.</p>
+            <p>If a function is given, it is called with the triggering element DOM node as its only argument. The <code>this</code> context is set to the tooltip instance.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>padding</td>
+        <td>integer</td>
+        <td>0</td>
+        <td>Spacing, in pixels, to keep the tooltip away from the viewport edge.</td>
+    </tr>
+    <tr>
+        <td>html</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>
+            <p>Allow HTML in the tooltip.</p>
+            <p>If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>closetext</td>
+        <td>string</td>
+        <td>'&lt;span aria-hidden="true" &gt;&amp;times;&lt;/span&gt;'</td>
+        <td>Visible text for close links when using option <code>trigger: 'click'</code></td>
+    </tr>
+    <tr>
+        <td>closesrtext</td>
+        <td>string</td>
+        <td>'Close'</td>
+        <td>Screen reader only text alternative for close links when using option <code>trigger: 'click'</code></td>
+    </tr>
+    <tr>
+        <td>toggle</td>
+        <td>string</td>
+        <td>null</td>
+        <td>
+            <p>If the tooltip item is already created, you can link to it using <code>data-cfw-tooltip-toggle="someTooltip"</code>.</p>
+            <p>The target tooltip item will then need the associated attribute <code>data-cfw-tooltip-target="someTooltip"</code>.</p>
+            <p>The proper role and ARIA attributes will be automatically created to link the trigger and target elements.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>string | function</td>
+        <td>''</td>
+        <td>Default title value if <code>title</code> attribute isn't present.</td>
+    </tr>
+    <tr>
+        <td>unlink</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>If the <code>unlink</code> method should be called when the tooltip is hidden.  This leaves the tooltip behind in the DOM.</td>
+    </tr>
+    <tr>
+        <td>dispose</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>If the <code>dispose</code> method should be called when the tooltip is hidden. This will remove the tooltip from the DOM.</td>
+    </tr>
+    <tr>
+        <td>activate</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Show the tooltip automatically at the end of initialization. This will force the <code>trigger</code> option to a setting of <code>'click'</code>.</td>
+    </tr>
+</tbody>
+</table>
 
 ### Methods
 
@@ -361,54 +359,52 @@ Calls the `unlink` method, and then removes the tooltip from the DOM.
 
 Event callbacks happen on the toggle/trigger element.
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 150px;">Event Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>init.cfw.tooltip</td>
-            <td>This event fires after the tooltip item is initialized.</td>
-        </tr>
-        <tr>
-            <td>beforeShow.cfw.tooltip</td>
-            <td>This event is fired immediately when the <code>show</code> method is called.  If the tooltip container is not present, it is created just after this event is called.</td>
-        </tr>
-        <tr>
-            <td>afterShow.cfw.tooltip</td>
-            <td>This event is fired when a tooltip has been made visible to the user (will wait for CSS transitions to complete).</td>
-        </tr>
-        <tr>
-            <td>beforeHide.cfw.tooltip</td>
-            <td>This event is fired immediately when the <code>hide</code> method is called.</td>
-        </tr>
-        <tr>
-            <td>afterHide.cfw.tooltip</td>
-            <td>This event is fired when a tooltip has been hidden from the user (will wait for CSS transitions to complete).</td>
-        </tr>
-        <tr>
-            <td>inserted.cfw.tooltip</td>
-            <td>This event is fired after the <code>beforeShow.cfw.tooltip</code> event when the tooltip has been added to the DOM.</td>
-        </tr>
-        <tr>
-            <td>beforeUnlink.cfw.tooltip</td>
-            <td>This event is fired immediately when the <code>unlink</code> method is called. This event can occur after the <code>beforeHide</code> event if set to automatically unlink, or before if called via method.</td>
-        </tr>
-        <tr>
-            <td>afterUnlink.cfw.tooltip</td>
-            <td>This event is fired when a tooltip item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</td>
-        </tr>
-        <tr>
-            <td>dispose.cfw.tooltip</td>
-            <td>This event is fired immediately before the tooltip item is removed from the DOM.</td>
-        </tr>
-    </tbody>
-    </table>
-</div> <!-- /.table-responsive -->
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 150px;">Event Type</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>init.cfw.tooltip</td>
+        <td>This event fires after the tooltip item is initialized.</td>
+    </tr>
+    <tr>
+        <td>beforeShow.cfw.tooltip</td>
+        <td>This event is fired immediately when the <code>show</code> method is called.  If the tooltip container is not present, it is created just after this event is called.</td>
+    </tr>
+    <tr>
+        <td>afterShow.cfw.tooltip</td>
+        <td>This event is fired when a tooltip has been made visible to the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+        <td>beforeHide.cfw.tooltip</td>
+        <td>This event is fired immediately when the <code>hide</code> method is called.</td>
+    </tr>
+    <tr>
+        <td>afterHide.cfw.tooltip</td>
+        <td>This event is fired when a tooltip has been hidden from the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+        <td>inserted.cfw.tooltip</td>
+        <td>This event is fired after the <code>beforeShow.cfw.tooltip</code> event when the tooltip has been added to the DOM.</td>
+    </tr>
+    <tr>
+        <td>beforeUnlink.cfw.tooltip</td>
+        <td>This event is fired immediately when the <code>unlink</code> method is called. This event can occur after the <code>beforeHide</code> event if set to automatically unlink, or before if called via method.</td>
+    </tr>
+    <tr>
+        <td>afterUnlink.cfw.tooltip</td>
+        <td>This event is fired when a tooltip item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</td>
+    </tr>
+    <tr>
+        <td>dispose.cfw.tooltip</td>
+        <td>This event is fired immediately before the tooltip item is removed from the DOM.</td>
+    </tr>
+</tbody>
+</table>
 
 {% highlight js %}
 $('#myTooltip').on('afterHide.cfw.tooltip', function () {

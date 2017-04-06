@@ -249,51 +249,50 @@ Draggable popovers will force the following settings:
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-popover`, as in `data-cfw-popover-placement="right"`.
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 100px;">Name</th>
-            <th style="width: 50px;">Type</th>
-            <th style="width: 50px;">Default</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>toggle</td>
-            <td>string</td>
-            <td>null</td>
-            <td>Either the selector (jQuery style), or the string related to the target popover having a <code>data-cfw-popover-target</code> attribute.</td>
-        </tr>
-        <tr>
-            <td>animate</td>
-            <td>boolean</td>
-            <td>true</td>
-            <td>If popover items should fade in and out.</td>
-        </tr>
-        <tr>
-            <td>placement</td>
-            <td>string | object | function</td>
-            <td>'top'</td>
-            <td>
-                <p>
-                    <strong>string:</strong><br />
-                    How to position the popover - top | bottom | left | right | auto.
-                    <br />
-                    When "auto" is specified, it will dynamically reorient the popover. For example, if placement is "auto left", the popover will display to the left when possible, otherwise it will display right.
-                </p>
-                <p>
-                    <strong>object:</strong><br />
-                    This is a way to custom position a popover in a specific place not handled by the standard placement locations.
-                    A custom positioned popover is forced to using the <code>&lt;body&gt;</code> as the container to make positioning easier.
-                    Object structure is: <code>placement: { top: 5, left: 10 }</code>, the same as jQuery offset.
-                </p>
-                <p>
-                    <strong>function:</strong><br />
-                    A function call can return either a string or object placement type.
-                    The function allows access to the complete popover data-api, as well as passing the popover target and trigger as arguments.
-                </p>
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>toggle</td>
+        <td>string</td>
+        <td>null</td>
+        <td>Either the selector (jQuery style), or the string related to the target popover having a <code>data-cfw-popover-target</code> attribute.</td>
+    </tr>
+    <tr>
+        <td>animate</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>If popover items should fade in and out.</td>
+    </tr>
+    <tr>
+        <td>placement</td>
+        <td>string | object | function</td>
+        <td>'top'</td>
+        <td>
+            <p>
+                <strong>string:</strong><br />
+                How to position the popover - top | bottom | left | right | auto.
+                <br />
+                When "auto" is specified, it will dynamically reorient the popover. For example, if placement is "auto left", the popover will display to the left when possible, otherwise it will display right.
+            </p>
+            <p>
+                <strong>object:</strong><br />
+                This is a way to custom position a popover in a specific place not handled by the standard placement locations.
+                A custom positioned popover is forced to using the <code>&lt;body&gt;</code> as the container to make positioning easier.
+                Object structure is: <code>placement: { top: 5, left: 10 }</code>, the same as jQuery offset.
+            </p>
+            <p>
+                <strong>function:</strong><br />
+                A function call can return either a string or object placement type.
+                The function allows access to the complete popover data-api, as well as passing the popover target and trigger as arguments.
+            </p>
 <pre>
 function myPopoverAlign(tip, trigger) {
     // this - popover data-api
@@ -301,130 +300,129 @@ function myPopoverAlign(tip, trigger) {
     // trigger -> popover trigger
 }
 </pre>
-            </td>
-        </tr>
-        <tr>
-            <td>trigger</td>
-            <td>string</td>
-            <td>'hover focus'</td>
-            <td>How popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. <code>manual</code> cannot be combined with any other trigger.</td>
-        </tr>
-        <tr>
-            <td>delay</td>
-            <td>number| object</td>
-            <td>show:0, hide:250</td>
-            <td>
-                <p>Delay showing and hiding the popover (ms) - does not apply to manual trigger type.</p>
-                <p>If a number is supplied, delay is applied to both hide/show.</p>
-                Object structure is: <code>delay: { show: 500, hide: 100 }</code>
-            </td>
-        </tr>
-        <tr>
-            <td>container</td>
-            <td>string | false</td>
-            <td>false</td>
-            <td>Appends the popover to a specific element. Example: <code>container: 'body'</code></td>
-        </tr>
-        <tr>
-            <td>viewport</td>
-            <td>string | function</td>
-            <td>'body'</td>
-            <td>
-                <p>Keeps the popover within the bounds of this element. Example: <code>viewport: '#viewport'</code>.</p>
-                <p>If a function is given, it is called with the triggering element DOM node as its only argument. The <code>this</code> context is set to the popover instance.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>padding</td>
-            <td>integer</td>
-            <td>0</td>
-            <td>Spacing, in pixels, to keep the popover away from the viewport edge.</td>
-        </tr>
-        <tr>
-            <td>html</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>Insert HTML into the popover. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
-        </tr>
-        <tr>
-            <td>closetext</td>
-            <td>string</td>
-            <td>'&lt;span aria-hidden="true" &gt;&amp;times;&lt;/span&gt;'</td>
-            <td>Visible text for close links when using option <code>trigger: 'click'</code></td>
-        </tr>
-        <tr>
-            <td>closesrtext</td>
-            <td>string</td>
-            <td>'Close'</td>
-            <td>Screen reader only text alternative for close links when using option <code>trigger: 'click'</code></td>
-        </tr>
-        <tr>
-            <td>toggle</td>
-            <td>string</td>
-            <td>null</td>
-            <td>
-                <p>If the popover item is already created, you can link to it using <code>data-cfw-popover-toggle="somePopover"</code>.</p>
-                <p>The target popover item will then need the associated attribute <code>data-cfw-popover-target="somePopover"</code>.</p>
-                <p>The proper role and ARIA attributes will be automatically created to link the trigger and target elements.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>title</td>
-            <td>string | function</td>
-            <td>''</td>
-            <td>Default title value if <code>title</code> attribute isn't present.</td>
-        </tr>
-        <tr>
-            <td>content</td>
-            <td>string | function</td>
-            <td>''</td>
-            <td>Default title value if <code>data-cfw-popover-content</code> attribute isn't present.</td>
-        </tr>
-        <tr>
-            <td>unlink</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>If the <code>unlink</code> method should be called when the popover is hidden.  This leaves the popover behind in the DOM.</td>
-        </tr>
-        <tr>
-            <td>dispose</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>If the <code>dispose</code> method should be called when the popover is hidden. This will remove the popover from the DOM.</td>
-        </tr>
-        <tr>
-            <td>drag</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>If the popover should have a drag handle inserted.</td>
-        </tr>
-        <tr>
-            <td>dragtext</td>
-            <td>string</td>
-            <td>'&lt;span aria-hidden="true" &gt;+&lt;/span&gt;'</td>
-            <td>Visible text for the auto-inserted drag handle.</td>
-        </tr>
-        <tr>
-            <td>dragsrtext</td>
-            <td>string</td>
-            <td>'Drag'</td>
-            <td>Screen reader only text alternative for the auto-inserted drag handle.</td>
-        </tr>
-        <tr>
-            <td>dragstep</td>
-            <td>integer</td>
-            <td>10</td>
-            <td>Pixel increment to move the popover when using arrow keys on a drag handle.</td>
-        </tr>
-        <tr>
-            <td>activate</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>Show the popover automatically at the end of initialization. This will force the <code>trigger</code> option to a setting of <code>'click'</code>.</td>
-        </tr>
-    </tbody>
-    </table>
-</div> <!-- /.table-responsive -->
+        </td>
+    </tr>
+    <tr>
+        <td>trigger</td>
+        <td>string</td>
+        <td>'hover focus'</td>
+        <td>How popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. <code>manual</code> cannot be combined with any other trigger.</td>
+    </tr>
+    <tr>
+        <td>delay</td>
+        <td>number| object</td>
+        <td>show:0, hide:250</td>
+        <td>
+            <p>Delay showing and hiding the popover (ms) - does not apply to manual trigger type.</p>
+            <p>If a number is supplied, delay is applied to both hide/show.</p>
+            Object structure is: <code>delay: { show: 500, hide: 100 }</code>
+        </td>
+    </tr>
+    <tr>
+        <td>container</td>
+        <td>string | false</td>
+        <td>false</td>
+        <td>Appends the popover to a specific element. Example: <code>container: 'body'</code></td>
+    </tr>
+    <tr>
+        <td>viewport</td>
+        <td>string | function</td>
+        <td>'body'</td>
+        <td>
+            <p>Keeps the popover within the bounds of this element. Example: <code>viewport: '#viewport'</code>.</p>
+            <p>If a function is given, it is called with the triggering element DOM node as its only argument. The <code>this</code> context is set to the popover instance.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>padding</td>
+        <td>integer</td>
+        <td>0</td>
+        <td>Spacing, in pixels, to keep the popover away from the viewport edge.</td>
+    </tr>
+    <tr>
+        <td>html</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Insert HTML into the popover. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
+    </tr>
+    <tr>
+        <td>closetext</td>
+        <td>string</td>
+        <td>'&lt;span aria-hidden="true" &gt;&amp;times;&lt;/span&gt;'</td>
+        <td>Visible text for close links when using option <code>trigger: 'click'</code></td>
+    </tr>
+    <tr>
+        <td>closesrtext</td>
+        <td>string</td>
+        <td>'Close'</td>
+        <td>Screen reader only text alternative for close links when using option <code>trigger: 'click'</code></td>
+    </tr>
+    <tr>
+        <td>toggle</td>
+        <td>string</td>
+        <td>null</td>
+        <td>
+            <p>If the popover item is already created, you can link to it using <code>data-cfw-popover-toggle="somePopover"</code>.</p>
+            <p>The target popover item will then need the associated attribute <code>data-cfw-popover-target="somePopover"</code>.</p>
+            <p>The proper role and ARIA attributes will be automatically created to link the trigger and target elements.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>string | function</td>
+        <td>''</td>
+        <td>Default title value if <code>title</code> attribute isn't present.</td>
+    </tr>
+    <tr>
+        <td>content</td>
+        <td>string | function</td>
+        <td>''</td>
+        <td>Default title value if <code>data-cfw-popover-content</code> attribute isn't present.</td>
+    </tr>
+    <tr>
+        <td>unlink</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>If the <code>unlink</code> method should be called when the popover is hidden.  This leaves the popover behind in the DOM.</td>
+    </tr>
+    <tr>
+        <td>dispose</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>If the <code>dispose</code> method should be called when the popover is hidden. This will remove the popover from the DOM.</td>
+    </tr>
+    <tr>
+        <td>drag</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>If the popover should have a drag handle inserted.</td>
+    </tr>
+    <tr>
+        <td>dragtext</td>
+        <td>string</td>
+        <td>'&lt;span aria-hidden="true" &gt;+&lt;/span&gt;'</td>
+        <td>Visible text for the auto-inserted drag handle.</td>
+    </tr>
+    <tr>
+        <td>dragsrtext</td>
+        <td>string</td>
+        <td>'Drag'</td>
+        <td>Screen reader only text alternative for the auto-inserted drag handle.</td>
+    </tr>
+    <tr>
+        <td>dragstep</td>
+        <td>integer</td>
+        <td>10</td>
+        <td>Pixel increment to move the popover when using arrow keys on a drag handle.</td>
+    </tr>
+    <tr>
+        <td>activate</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Show the popover automatically at the end of initialization. This will force the <code>trigger</code> option to a setting of <code>'click'</code>.</td>
+    </tr>
+</tbody>
+</table>
 
 ### Methods
 
@@ -468,62 +466,60 @@ Calls the `unlink` method, and then removes the popover from the DOM.
 
 Event callbacks happen on the toggle/trigger element.
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 150px;">Event Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>init.cfw.popover</td>
-            <td>This event fires after the popover item is initialized.</td>
-        </tr>
-        <tr>
-            <td>beforeShow.cfw.popover</td>
-            <td>This event is fired immediately when the <code>show</code> method is called.  If the popover container is not present, it is created just after this event is called.</td>
-        </tr>
-        <tr>
-            <td>afterShow.cfw.popover</td>
-            <td>This event is fired when a popover has been made visible to the user (will wait for CSS transitions to complete).</td>
-        </tr>
-        <tr>
-            <td>beforeHide.cfw.popover</td>
-            <td>This event is fired immediately when the <code>hide</code> method is called.</td>
-        </tr>
-        <tr>
-            <td>afterHide.cfw.popover</td>
-            <td>This event is fired when a popover has been hidden from the user (will wait for CSS transitions to complete).</td>
-        </tr>
-        <tr>
-            <td>inserted.cfw.popover</td>
-            <td>This event is fired after the <code>beforeShow.cfw.popover</code> event when the popover has been added to the DOM.</td>
-        </tr>
-        <tr>
-            <td>dragStart.cfw.popover</td>
-            <td>This event is fired at the start of the drag action.</td>
-        </tr>
-        <tr>
-            <td>dragEnd.cfw.popover</td>
-            <td>This event is fired at the end of the drag action.</td>
-        </tr>
-        <tr>
-            <td>beforeUnlink.cfw.popover</td>
-            <td>This event is fired immediately when the <code>unlink</code> method is called. This event can occur after the <code>beforeHide</code> event if set to automatically unlink, or before if called via method.</td>
-        </tr>
-        <tr>
-            <td>afterUnlink.cfw.popover</td>
-            <td>This event is fired when a popover item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</td>
-        </tr>
-        <tr>
-            <td>dispose.cfw.popover</td>
-            <td>This event is fired immediately before the popover item is removed from the DOM.</td>
-        </tr>
-    </tbody>
-    </table>
-</div> <!-- /.table-responsive -->
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 150px;">Event Type</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>init.cfw.popover</td>
+        <td>This event fires after the popover item is initialized.</td>
+    </tr>
+    <tr>
+        <td>beforeShow.cfw.popover</td>
+        <td>This event is fired immediately when the <code>show</code> method is called.  If the popover container is not present, it is created just after this event is called.</td>
+    </tr>
+    <tr>
+        <td>afterShow.cfw.popover</td>
+        <td>This event is fired when a popover has been made visible to the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+        <td>beforeHide.cfw.popover</td>
+        <td>This event is fired immediately when the <code>hide</code> method is called.</td>
+    </tr>
+    <tr>
+        <td>afterHide.cfw.popover</td>
+        <td>This event is fired when a popover has been hidden from the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+        <td>inserted.cfw.popover</td>
+        <td>This event is fired after the <code>beforeShow.cfw.popover</code> event when the popover has been added to the DOM.</td>
+    </tr>
+    <tr>
+        <td>dragStart.cfw.popover</td>
+        <td>This event is fired at the start of the drag action.</td>
+    </tr>
+    <tr>
+        <td>dragEnd.cfw.popover</td>
+        <td>This event is fired at the end of the drag action.</td>
+    </tr>
+    <tr>
+        <td>beforeUnlink.cfw.popover</td>
+        <td>This event is fired immediately when the <code>unlink</code> method is called. This event can occur after the <code>beforeHide</code> event if set to automatically unlink, or before if called via method.</td>
+    </tr>
+    <tr>
+        <td>afterUnlink.cfw.popover</td>
+        <td>This event is fired when a popover item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</td>
+    </tr>
+    <tr>
+        <td>dispose.cfw.popover</td>
+        <td>This event is fired immediately before the popover item is removed from the DOM.</td>
+    </tr>
+</tbody>
+</table>
 
 {% highlight js %}
 $('#myPopover').on('afterHide.cfw.popover', function () {
