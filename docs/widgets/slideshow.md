@@ -309,31 +309,29 @@ Event callbacks happen on the slideshow element.
 
 You can also get the tab events as indicated in the [Tab widget]({{ site.baseurl }}/widgets/tab/) due to event bubbling.
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 150px;">Event Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>init.cfw.slideshow</td>
-            <td>This event fires after the slideshow item is initialized.</td>
-        </tr>
-        <tr>
-            <td>prev.cfw.slideshow</td>
-            <td>This event fires before the call to activate the previous slide.</td>
-        </tr>
-        <tr>
-            <td>next.cfw.slideshow</td>
-            <td>This event fires before the call to activate the next slide.</td>
-        </tr>
-        <tr>
-            <td>update.cfw.slideshow</td>
-            <td>This event fires after the state of the navigation controls is updated.</td>
-        </tr>
-    </tbody>
-    </table>
-</div> <!-- /.table-responsive -->
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 150px;">Event Type</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>init.cfw.slideshow</td>
+        <td>This event fires after the slideshow item is initialized.</td>
+    </tr>
+    <tr>
+        <td>prev.cfw.slideshow</td>
+        <td>This event fires before the call to activate the previous slide.</td>
+    </tr>
+    <tr>
+        <td>next.cfw.slideshow</td>
+        <td>This event fires before the call to activate the next slide.</td>
+    </tr>
+    <tr>
+        <td>update.cfw.slideshow</td>
+        <td>This event fires after the state of the navigation controls is updated.</td>
+    </tr>
+</tbody>
+</table>

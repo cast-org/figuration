@@ -432,48 +432,46 @@ Conveying Meaning to Assistive Technologies
 Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
 {% endcallout %}
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>Class</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">
-          <code>.table-active</code>
-        </th>
-        <td>Applies the hover color to a particular row or cell</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.table-success</code>
-        </th>
-        <td>Indicates a successful or positive action</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.table-info</code>
-        </th>
-        <td>Indicates a neutral informative change or action</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.table-warning</code>
-        </th>
-        <td>Indicates a warning that might need attention</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.table-danger</code>
-        </th>
-        <td>Indicates a dangerous or potentially negative action</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-scroll table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">
+        <code>.table-active</code>
+      </th>
+      <td>Applies the hover color to a particular row or cell</td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <code>.table-success</code>
+      </th>
+      <td>Indicates a successful or positive action</td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <code>.table-info</code>
+      </th>
+      <td>Indicates a neutral informative change or action</td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <code>.table-warning</code>
+      </th>
+      <td>Indicates a warning that might need attention</td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <code>.table-danger</code>
+      </th>
+      <td>Indicates a dangerous or potentially negative action</td>
+    </tr>
+  </tbody>
+</table>
 
 <div class="cf-example">
   <table class="table">
@@ -651,113 +649,123 @@ Regular table background variants are not available with the inverse table, howe
 </tr>
 {% endhighlight %}
 
-## Responsive Tables
+## Scrolling Tables
 
-Create responsive tables by wrapping any `.table` in `.table-responsive` to make them scroll horizontally if they become too wide, otherwise, you will not see any difference in these tables.  You might need to reduce the size of your browser in order for the examples scroll.
+Having an issue with tables becoming too wide for their containers? Add `.table-scroll` to any `.table` to make them scroll horizontally if they become wider than their container.
 
 {% callout warning %}
 Vertical Clipping
 {:.h5}
 
-Responsive tables make use of `overflow-y: hidden`, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off dropdown menus and other third-party widgets.
+Scrolling tables make use of `overflow-y: hidden`, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off dropdown menus and other third-party widgets.
 {% endcallout %}
 
 <div class="cf-example">
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <table class="table table-scroll">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+    </tbody>
+  </table>
 
-  <div class="table-responsive">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <table class="table table-scroll table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 {% highlight html %}
-<div class="table-responsive">
-  <table class="table">
-    ...
-  </table>
-</div>
+<table class="table table-scroll">
+  ...
+</table>
 {% endhighlight %}

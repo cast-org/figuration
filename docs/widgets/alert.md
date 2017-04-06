@@ -64,32 +64,30 @@ $(".alert").CFW_Alert();
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-alert`, as in `data-cfw-alert-animate="false"`.
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 100px;">Name</th>
-            <th style="width: 50px;">Type</th>
-            <th style="width: 50px;">Default</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>target</td>
-            <td>string</td>
-            <td>null</td>
-            <td>The selector (jQuery style) of the target item to be closed.</td>
-        </tr>
-        <tr>
-            <td>animate</td>
-            <td>boolean</td>
-            <td>true</td>
-            <td>If alert targets should fade out.</td>
-        </tr>
-    </tbody>
-    </table>
-</div> <!-- /.table-responsive -->
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>target</td>
+        <td>string</td>
+        <td>null</td>
+        <td>The selector (jQuery style) of the target item to be closed.</td>
+    </tr>
+    <tr>
+        <td>animate</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>If alert targets should fade out.</td>
+    </tr>
+</tbody>
+</table>
 
 ### Methods
 
@@ -118,30 +116,28 @@ Removes the click event listener from an alert. This will not disable a dismiss 
 
 Event callbacks happen on the target alert container.
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 150px;">Event Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>init.cfw.alert</td>
-            <td>This event fires after the collapse item is initialized.</td>
-        </tr>
-        <tr>
-            <td>beforeClose.cfw.alert</td>
-            <td>This event is fired immediately when the <code>close</code> method is called.</td>
-        </tr>
-        <tr>
-            <td>afterClose.cfw.alert</td>
-            <td>This event is fired when an alert has been closed. (will wait for CSS transitions to complete).</td>
-        </tr>
-    </tbody>
-    </table>
-</div> <!-- /.table-responsive -->
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 150px;">Event Type</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>init.cfw.alert</td>
+        <td>This event fires after the collapse item is initialized.</td>
+    </tr>
+    <tr>
+        <td>beforeClose.cfw.alert</td>
+        <td>This event is fired immediately when the <code>close</code> method is called.</td>
+    </tr>
+    <tr>
+        <td>afterClose.cfw.alert</td>
+        <td>This event is fired when an alert has been closed. (will wait for CSS transitions to complete).</td>
+    </tr>
+</tbody>
+</table>
 
 {% highlight js %}
 $('#myAlert').on('beforeClose.cfw.alert', function () {

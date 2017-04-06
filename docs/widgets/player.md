@@ -290,110 +290,113 @@ Note: If the player uses sliders, the slider keyboard commands will take precend
 
 Regions and controls are specified by data attributes `data-cfw-player="name"` to seperate functionality from layout.  See the following table for the names:
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 100px;">Name</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>player</td>
-            <td>The main player container element.</td>
-        </tr>
-        <tr>
-            <td>control</td>
-            <td>Wraps the play, pause, and stop control buttons.</td>
-        </tr>
-        <tr>
-            <td>play</td>
-            <td>Play control button.</td>
-        </tr>
-        <tr>
-            <td>pause</td>
-            <td>Pause control button.</td>
-        </tr>
-        <tr>
-            <td>stop</td>
-            <td>Stop control button.</td>
-        </tr>
-        <tr>
-            <td>time</td>
-            <td>Wraps the time displays and seek progress bar or slider.</td>
-        </tr>
-        <tr>
-            <td>current</td>
-            <td>Current time location.</td>
-        </tr>
-        <tr>
-            <td>remainder</td>
-            <td>Remaining playback time.</td>
-        </tr>
-        <tr>
-            <td>duration</td>
-            <td>Time playback duration.</td>
-        </tr>
-        <tr>
-            <td>seek</td>
-            <td>
-                <p>Container for the seek progress bar or slider.</p>
-                <p>If container has a class of <code>progress</code> a progress bar will be assumed. There must be a chlid <code>.progress-bar</code> element in order for the progress bar to display.  For example <code>&lt;span class="progress-bar" role="progressbar" data-cfw-player="seek-current"&gt;&lt;/span&gt;</code></p>
-                <p>If container has a child <code>input</code> element, then a slider will be used.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>seek-current</td>
-            <td>Used for seek progress bar to display current time location.</td>
-        </tr>
-        <tr>
-            <td>seek-buffer</td>
-            <td>Unused.</td>
-        </tr>
-        <tr>
-            <td>mute</td>
-            <td>Mute toggle button.</td>
-        </tr>
-        <tr>
-            <td>volume</td>
-            <td>
-                <p>Volume control.</p>
-                <p>If container has a child <code>input</code> element, then a slider will be inserted.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>loop</td>
-            <td>Loop toggle button.</td>
-        </tr>
-        <tr>
-            <td>caption</td>
-            <td>
-                <p>Caption menu toggle button. Currently only supported for <code>&lt;video&gt;</code> elements.</p>
-                <p>The menu is dynamically generated based on the <code>&lt;track&gt;</code> elements, and associated with the button automatically.</p>
-                <p>Only tracks with a <code>kind</code> property of <strong>captions</strong> or <strong>subtitles</strong> will be added to the menu.</p>
-                <p>If there is only one valid track, then the button will act as a toggle button and not display the menu when clicked.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>transcript</td>
-            <td>
-                <p>Transcript menu toggle button. Transcript text content is genereated from selected track item.</p>
-                <p>The menu is dynamically generated based on the <code>&lt;track&gt;</code> elements, and associated with the button automatically.</p>
-                <p>Only tracks with a <code>kind</code> property of <strong>captions</strong> or <strong>subtitles</strong> will be added to the menu.</p>
-                <p>If there is only one valid track, and the <code>transcriptOption</code> setting is false, then the button will act as a toggle button and not display the menu when clicked.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>fullscreen</td>
-            <td>Fullscreen toggle button. Currently only supported for <code>&lt;video&gt;</code> elements.</td>
-        </tr>
-    </tbody>
-    </table>
-    <p>
-        <small>Some mobile devices do not allow for mute or volume control, citing user should have preference through physical hardware controls.  Mostly this applies to iOS devices.</small>
-    </p>
-</div> <!-- /.table-responsive -->
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 100px;">Name</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>player</td>
+        <td>The main player container element.</td>
+    </tr>
+    <tr>
+        <td>control</td>
+        <td>Wraps the play, pause, and stop control buttons.</td>
+    </tr>
+    <tr>
+        <td>play</td>
+        <td>Play control button.</td>
+    </tr>
+    <tr>
+        <td>pause</td>
+        <td>Pause control button.</td>
+    </tr>
+    <tr>
+        <td>stop</td>
+        <td>Stop control button.</td>
+    </tr>
+    <tr>
+        <td>time</td>
+        <td>Wraps the time displays and seek progress bar or slider.</td>
+    </tr>
+    <tr>
+        <td>current</td>
+        <td>Current time location.</td>
+    </tr>
+    <tr>
+        <td>remainder</td>
+        <td>Remaining playback time.</td>
+    </tr>
+    <tr>
+        <td>duration</td>
+        <td>Time playback duration.</td>
+    </tr>
+    <tr>
+        <td>seek</td>
+        <td>
+            <p>Container for the seek progress bar or slider.</p>
+            <p>If container has a class of <code>progress</code> a progress bar will be assumed. There must be a chlid <code>.progress-bar</code> element in order for the progress bar to display.  For example <code>&lt;span class="progress-bar" role="progressbar" data-cfw-player="seek-current"&gt;&lt;/span&gt;</code></p>
+            <p>If container has a child <code>input</code> element, then a slider will be used.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>seek-current</td>
+        <td>Used for seek progress bar to display current time location.</td>
+    </tr>
+    <tr>
+        <td>seek-buffer</td>
+        <td>Unused.</td>
+    </tr>
+    <tr>
+        <td>mute</td>
+        <td>
+            <p>Mute toggle button.</p>
+            <p class="small mb-0">
+                Some mobile devices do not allow for mute or volume control, citing user should have preference through physical hardware controls.  Mostly this applies to iOS devices.
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>volume</td>
+        <td>
+            <p>Volume control.</p>
+            <p>If container has a child <code>input</code> element, then a slider will be inserted.</p>
+            <p class="small mb-0">
+                Some mobile devices do not allow for mute or volume control, citing user should have preference through physical hardware controls.  Mostly this applies to iOS devices.
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>loop</td>
+        <td>Loop toggle button.</td>
+    </tr>
+    <tr>
+        <td>caption</td>
+        <td>
+            <p>Caption menu toggle button. Currently only supported for <code>&lt;video&gt;</code> elements.</p>
+            <p>The menu is dynamically generated based on the <code>&lt;track&gt;</code> elements, and associated with the button automatically.</p>
+            <p>Only tracks with a <code>kind</code> property of <strong>captions</strong> or <strong>subtitles</strong> will be added to the menu.</p>
+            <p>If there is only one valid track, then the button will act as a toggle button and not display the menu when clicked.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>transcript</td>
+        <td>
+            <p>Transcript menu toggle button. Transcript text content is genereated from selected track item.</p>
+            <p>The menu is dynamically generated based on the <code>&lt;track&gt;</code> elements, and associated with the button automatically.</p>
+            <p>Only tracks with a <code>kind</code> property of <strong>captions</strong> or <strong>subtitles</strong> will be added to the menu.</p>
+            <p>If there is only one valid track, and the <code>transcriptOption</code> setting is false, then the button will act as a toggle button and not display the menu when clicked.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>fullscreen</td>
+        <td>Fullscreen toggle button. Currently only supported for <code>&lt;video&gt;</code> elements.</td>
+    </tr>
+</tbody>
+</table>
 
 ### Via Data Attributes
 
@@ -411,38 +414,36 @@ $('#myPlayer').CFW_Player();
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-player`, as in `data-cfw-player-transcript-scroll=true`.
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 100px;">Name</th>
-            <th style="width: 50px;">Type</th>
-            <th style="width: 50px;">Default</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>transcript</td>
-            <td>integer</td>
-            <td>-1</td>
-            <td>Turn on the interactive transcript by default.  The integer value reflects the track count (starting from 0) for the desired <code>&lt;track&gt;</code> element to enable.  Default value is -1 which leaves the transcript turned off. Currently only tracks of type <strong>caption</strong> or <strong>subtitles</strong> are supported.</td>
-        </tr>
-        <tr>
-            <td>transcriptScroll</td>
-            <td>booelan</td>
-            <td>true</td>
-            <td>If the transcript should automatically scroll to keep the current caption in the visible area.</td>
-        </tr>
-        <tr>
-            <td>transcriptOption</td>
-            <td>booelan</td>
-            <td>true</td>
-            <td>If the transcript options should be shown in the transcript menu.</td>
-        </tr>
-    </tbody>
-    </table>
-</div> <!-- /.table-responsive -->
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>transcript</td>
+        <td>integer</td>
+        <td>-1</td>
+        <td>Turn on the interactive transcript by default.  The integer value reflects the track count (starting from 0) for the desired <code>&lt;track&gt;</code> element to enable.  Default value is -1 which leaves the transcript turned off. Currently only tracks of type <strong>caption</strong> or <strong>subtitles</strong> are supported.</td>
+    </tr>
+    <tr>
+        <td>transcriptScroll</td>
+        <td>booelan</td>
+        <td>true</td>
+        <td>If the transcript should automatically scroll to keep the current caption in the visible area.</td>
+    </tr>
+    <tr>
+        <td>transcriptOption</td>
+        <td>booelan</td>
+        <td>true</td>
+        <td>If the transcript options should be shown in the transcript menu.</td>
+    </tr>
+</tbody>
+</table>
 
 ### Methods
 
@@ -512,54 +513,52 @@ Remove any associated transcript, sliders, dropdowns, data, and event listeners 
 
 Event callbacks happen on the `<audio>`/`<video>` element, but will bubble up through the DOM and can be captured on the `data-cfw="player"` wrapping container if needed.
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 150px;">Event Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>noSupport.cfw.player</td>
-            <td>This event fires if it is determined the browser does not support HTML5 audio or the specified MIME type.</td>
-        </tr>
-        <tr>
-            <td>ready.cfw.player</td>
-            <td>This event fires after the player item is initialized.</td>
-        </tr>
-        <tr>
-            <td>error.cfw.player</td>
-            <td>This event fires when there is an error that cannot be handled.</td>
-        </tr>
-        <tr>
-            <td>beforeTranscriptShow.cfw.player</td>
-            <td>This event fires before the transcript is shown.</td>
-        </tr>
-        <tr>
-            <td>afterTranscriptShow.cfw.player</td>
-            <td>This event fires after the transcript is shown.</td>
-        </tr>
-        <tr>
-            <td>beforeTranscriptHide.cfw.player</td>
-            <td>This event fires before the transcript is hidden/disabled.</td>
-        </tr>
-        <tr>
-            <td>afterTranscriptHide.cfw.player</td>
-            <td>This event fires after the transcript is hidden/disabled.</td>
-        </tr>
-        <tr>
-            <td>enterFullscreen.cfw.player</td>
-            <td>This event fires after the player is put into fullscreen mode.</td>
-        </tr>
-        <tr>
-            <td>exitFullscreen.cfw.player</td>
-            <td>This event fires after the player exits fullscreen mode.</td>
-        </tr>
-    </tbody>
-    </table>
-</div> <!-- /.table-responsive -->
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 150px;">Event Type</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>noSupport.cfw.player</td>
+        <td>This event fires if it is determined the browser does not support HTML5 audio or the specified MIME type.</td>
+    </tr>
+    <tr>
+        <td>ready.cfw.player</td>
+        <td>This event fires after the player item is initialized.</td>
+    </tr>
+    <tr>
+        <td>error.cfw.player</td>
+        <td>This event fires when there is an error that cannot be handled.</td>
+    </tr>
+    <tr>
+        <td>beforeTranscriptShow.cfw.player</td>
+        <td>This event fires before the transcript is shown.</td>
+    </tr>
+    <tr>
+        <td>afterTranscriptShow.cfw.player</td>
+        <td>This event fires after the transcript is shown.</td>
+    </tr>
+    <tr>
+        <td>beforeTranscriptHide.cfw.player</td>
+        <td>This event fires before the transcript is hidden/disabled.</td>
+    </tr>
+    <tr>
+        <td>afterTranscriptHide.cfw.player</td>
+        <td>This event fires after the transcript is hidden/disabled.</td>
+    </tr>
+    <tr>
+        <td>enterFullscreen.cfw.player</td>
+        <td>This event fires after the player is put into fullscreen mode.</td>
+    </tr>
+    <tr>
+        <td>exitFullscreen.cfw.player</td>
+        <td>This event fires after the player exits fullscreen mode.</td>
+    </tr>
+</tbody>
+</table>
 
 {% highlight js %}
 $('#myPlayer').on('ready.cfw.player', function () {
