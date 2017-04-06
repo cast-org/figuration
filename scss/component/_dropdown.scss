@@ -90,7 +90,6 @@
         cursor: $cursor-disabled;
         background-color: $dropdown-link-disabled-bg;
         background-image: none; // Remove CSS gradient
-        @include reset-filter();
     }
 }
 

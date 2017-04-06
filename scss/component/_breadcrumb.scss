@@ -19,7 +19,7 @@
         content: "#{$breadcrumb-divider}";
     }
 
-    // IE9-11 hack to properly handle hyperlink underlines for breadcrumbs built
+    // IE10-11 hack to properly handle hyperlink underlines for breadcrumbs built
     // without `<ul>`s. The `::before` pseudo-element generates an element
     // *within* the .breadcrumb-item and thereby inherits the `text-decoration`.
     //
