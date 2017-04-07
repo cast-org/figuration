@@ -14,7 +14,7 @@ Figuration supports a wide variety of modern browsers and devices, and some olde
 
 ## Supported Browsers
 
-Figuration supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 9-11 / Microsoft Edge**.
+Figuration supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 10-11 / Microsoft Edge**.
 
 Alternative browsers which use the latest version of WebKit, Blink, or Gecko, whether directly or via the platform's web view API, are not explicitly supported. However, Figuration should (in most cases) display and function correctly in these browsers as well. More specific support information is provided below.
 
@@ -91,7 +91,7 @@ Similarly, the latest versions of most desktop browsers are supported.
       <th scope="row">Windows</th>
       <td class="text-success">Supported</td>
       <td class="text-success">Supported</td>
-      <td class="text-success">Supported</td>
+      <td class="text-success">Supported IE10+</td>
       <td class="text-success">Supported</td>
       <td class="text-success">Supported</td>
       <td class="text-danger">Not supported</td>
@@ -103,58 +103,13 @@ For Firefox, in addition to the latest normal stable release, we also support th
 
 Unofficially, Figuration should look and behave well enough in Chromium and Chrome for Linux, and Firefox for Linux, though they are not officially supported.
 
-For a list of some of the browser bugs that Bootstrap has to grapple with, see their [Wall of browser bugs](http://getbootstrap.com/browser-bugs/).
+## Internet Explorer
 
-## Internet Explorer 9 & 10
-
-Internet Explorer 9 & 10 are also supported, however, please be aware that some CSS3 properties and HTML5 elements are not fully supported.
-
-<table class="table table-scroll table-bordered table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Feature</th>
-      <th scope="col">Internet Explorer 9</th>
-      <th scope="col">Internet Explorer 10</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition"><code>transition</code></a></th>
-      <td class="text-danger">Not supported</td>
-      <td class="text-success">Supported</td>
-    </tr>
-    <tr>
-      <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#attr-placeholder"><code>placeholder</code></a></th>
-      <td class="text-danger">Not supported</td>
-      <td class="text-success">Supported</td>
-    </tr>
-    <tr>
-      <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes">Flexbox</a></th>
-      <td class="text-danger">Not supported</td>
-      <td class="text-warning">Partially supported, with <code>-ms</code> prefix<br><a href="http://caniuse.com/#feat=flexbox">See <em>Can I use</em> for details</a></td>
-    </tr>
-  </tbody>
-</table>
-
-Visit [Can I use...](http://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
-
-## IE Compatibility Modes
-
-Figuration is not supported in the old Internet Explorer compatibility modes. To be sure you're using the latest rendering mode for IE, consider including the appropriate `<meta>` tag in your pages:
-
-{% highlight html %}
-<meta http-equiv="x-ua-compatible" content="ie=edge">
-{% endhighlight %}
-
-Confirm the document mode by opening the debugging tools: press <kbd>F12</kbd> and check the "Document Mode".
-
-This tag is included in all of Figuration's documentation and examples to ensure the best rendering possible in each supported version of Internet Explorer.
-
-See [this StackOverflow question](https://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do) for more information.
+Internet Explorer 10+ are also supported, IE9 and down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit [Can I use…](http://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
 
 ## Internet Explorer 10 in Windows Phone 8
 
-Internet Explorer 10 in Windows Phone 8 versions older than [Update 3 (a.k.a. GDR3)](http://blogs.windows.com/windows_phone/b/wpdev/archive/2013/10/14/introducing-windows-phone-preview-for-developers.aspx) doesn't differentiate **device width** from **viewport width** in `@-ms-viewport` at-rules, and thus doesn't properly apply the media queries in Figuration's CSS. To address this, you'll need to **include the following JavaScript to work around the bug**.
+Internet Explorer 10 in Windows Phone 8 versions older than [Update 3 (a.k.a. GDR3)](http://blogs.windows.com/windows_phone/b/wpdev/archive/2013/10/14/introducing-windows-phone-preview-for-developers.aspx) doesn't differentiate **device width** from **viewport width** in `@-ms-viewport` at-rules, and thus doesn't properly apply the media queries in Figuration's CSS. To address this, you'll need to **include the following JavaScript, provided by Bootstrap, to work around the bug**.
 
 {% highlight js %}
 // Copyright 2014-2015 The Bootstrap Authors
@@ -187,7 +142,7 @@ As of iOS 9.2, while a modal is open, if the initial touch of a scroll gesture i
 
 ## Browser Zooming
 
-Page zooming inevitably presents rendering artifacts in some components, both in Bootstrap and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.
+Page zooming inevitably presents rendering artifacts in some components, both in Figuration and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.
 
 ## Sticky `:hover`/`:focus` on Mobile
 Even though real hovering isn't possible on most touchscreens, most mobile browsers emulate hovering support and make `:hover` "sticky". In other words, `:hover` styles start applying after tapping an element and only stop applying after the user taps some other element. On mobile-first sites, this behavior is normally undesirable.
