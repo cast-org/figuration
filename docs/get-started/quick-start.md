@@ -43,10 +43,9 @@ Essentially something like this:
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <!-- Required meta tags always come first -->
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Figuration CSS -->
     <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
