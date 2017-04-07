@@ -68,7 +68,6 @@
 }
 
 .jumbotron-home {
-  margin-top: -1rem;
   color: rgba(255, 255, 255, 0.9);
   text-align: center;
   background-color: #246;
@@ -99,7 +98,6 @@
 
 .jumbotron-docs {
   padding: 0.75rem 0.375rem;
-  margin-top: -1rem;
   color: rgba(255, 255, 255, 0.9);
   background-color: #246;
 }

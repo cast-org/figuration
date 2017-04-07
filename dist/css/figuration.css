@@ -1495,11 +1495,9 @@ fieldset[disabled] .form-check-label {
   width: 100%;
   height: calc(2rem + 2px);
   padding: 0.25rem 1.125rem 0.25rem 0.375rem;
-  padding-right: 0.375rem \9;
   color: #474747;
   vertical-align: middle;
   background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.375rem center;
-  background-image: none \9;
   background-size: 8px 10px;
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 0.25rem;
@@ -1536,7 +1534,6 @@ fieldset[disabled] .form-check-label {
   height: calc(1.3125rem + 2px);
   padding: 0.09375rem 0.1875rem;
   padding-right: 1.125rem;
-  padding-right: 0.1875rem \9;
   font-size: 0.75rem;
   background-position: right 0.1875rem center;
 }
@@ -1545,7 +1542,6 @@ fieldset[disabled] .form-check-label {
   height: calc(1.59375rem + 2px);
   padding: 0.140625rem 0.25rem;
   padding-right: 1.25rem;
-  padding-right: 0.25rem \9;
   font-size: 0.875rem;
   background-position: right 0.25rem center;
 }
@@ -1554,7 +1550,6 @@ fieldset[disabled] .form-check-label {
   height: calc(2.40625rem + 2px);
   padding: 0.359375rem 0.5625rem;
   padding-right: 1.875rem;
-  padding-right: 0.5625rem \9;
   font-size: 1.125rem;
   background-position: right 0.5625rem center;
 }
@@ -1563,7 +1558,6 @@ fieldset[disabled] .form-check-label {
   height: calc(2.8125rem + 2px);
   padding: 0.46875rem 0.625rem;
   padding-right: 2rem;
-  padding-right: 0.625rem \9;
   font-size: 1.25rem;
   background-position: right 0.625rem center;
 }
@@ -3499,7 +3493,6 @@ button.drag {
 }
 
 .progress-bar-striped {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAARUlEQVQYV43QwQ0AIAhDUTuT+4/ATBg4GIuAcu3LP4BRnKrOc0LmIjJzwRQBQrBCVOzQhi/k8AelEIDET1iMihWiYocMLqDbL/tU0QugAAAAAElFTkSuQmCC");
   background-image: -webkit-linear-gradient(315deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
   background-size: 1rem 1rem;
@@ -4357,7 +4350,6 @@ button.list-group-item-danger.active {
   cursor: not-allowed;
   background-color: transparent;
   background-image: none;
-  filter: "progid:DXImageTransform.Microsoft.gradient(enabled = false)";
 }
 
 .dropdown-submenu > .dropdown-menu {
