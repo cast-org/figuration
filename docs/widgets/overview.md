@@ -34,6 +34,12 @@ Some widgets and CSS components depend on other widgets. If you include widgets 
 * ToC goes here
 {:toc}
 
+## Util
+
+All of Figuration's widgets depend on `util.js` and it has to be included alongside the other JS files. If you're using the compiled (or minified) `figuration.js`, there is no need to include this---it's already there.
+
+`util.js` includes utility functions and a basic helper for `transitionEnd` events as well as a CSS transition emulator. It's used by the other plugins to check for CSS transition support and to catch hanging transitions.
+
 ## No Conflict
 Figuration has opted to not go with a .noConflict mode.  Due to crosstalk between some of the widgets, we extended the namespaces by marking all functionalty with `CFW` or `cfw`, as in **C**AST **F**iguration **W**idget.
 
@@ -112,6 +118,29 @@ All before events provide `preventDefault` functionality. This provides the abil
 $('#myModal').on('beforeShow.cfw.modal', function(e) {
     if (!data) return e.preventDefault(); // stops modal from being shown
 });
+{% endhighlight %}
+
+## Asynchronous Functions and Transitions
+
+All programmatic API methods are **asynchronous** and returns to the caller once the transition is started but **before it ends**.
+
+In order to execute an action once the transition is complete, you can listen to the corresponding event.
+
+{% highlight js %}
+$('#myCollapse').on('afterShow.cfw.collapse', function(e) {
+  // Action to execute once the collapsible area is expanded
+})
+{% endhighlight %}
+
+In addition a method call on a **transitioning component will be ignored**.
+
+{% highlight js %}
+$('#myCollapse').on('afterShow.cfw.carousel', function(e) {
+  $('#myCollapse').CFW_Collapse('hide'); // Will hide the collapsible area as soon as the transition for opening the area is finished
+})
+
+$('#myCollapse').CFW_Collapse('show'); // Will start opening the collapsible area and returns to the caller
+$('#myCollapse').CFW_Collapse('hide'); // ** Will be ignored, as the opening transition has not completed **
 {% endhighlight %}
 
 ## No Fallbacks
