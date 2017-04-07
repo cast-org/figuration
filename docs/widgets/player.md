@@ -239,15 +239,15 @@ The player will use the settings of the `<audio>`/`<video>` element to determine
         Play / pause
     </dd>
     <dt>
-        <kbd title="up arrow"><span class="fa fa-arrow-up"></span></kbd> /
-        <kbd title="down arrow"><span class="fa fa-arrow-down"></span></kbd>
+        <kbd title="up arrow" aria-label="up arrow"><span class="fa fa-arrow-up" aria-hidden="true"></span></kbd> /
+        <kbd title="down arrow" aria-label="down arrow"><span class="fa fa-arrow-down" aria-hidden="true"></span></kbd>
     </dt>
     <dd>
         Raise or lower the volume in 5% increments
     </dd>
     <dt>
-        <kbd title="left arrow"><span class="fa fa-arrow-left"></span></kbd> /
-        <kbd title="right arrow"><span class="fa fa-arrow-right"></span></kbd>
+        <kbd title="left arrow" aria-label="left arrow"><span class="fa fa-arrow-left" aria-hidden="true"></span></kbd> /
+        <kbd title="right arrow" aria-label="right arrow"><span class="fa fa-arrow-right" aria-hidden="true"></span></kbd>
     </dt>
     <dd>
         Skip backwards or forwards in the timeline by 5 seconds
