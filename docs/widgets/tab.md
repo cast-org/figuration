@@ -5,6 +5,13 @@ subtitle: tab.js
 group: widgets
 ---
 
+<!-- Font CSS -->
+{% if site.github %}
+  <link href="{{ site.cdn.fontawe }}" integrity="{{ site.cdn.fontawe_hash }}" crossorigin="anonymous" rel="stylesheet" property="stylesheet">
+{% else %}
+  <link href="{{ site.baseurl }}/assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" property="stylesheet">
+{% endif %}
+
 Add quick, dynamic tab functionality to transition through panes of content.
 
 {% callout warning %}
@@ -20,28 +27,30 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}
 * ToC goes here
 {:toc}
 
-## Example
+## Examples
 
-The tab widget works with [tab]({{ site.baseurl }}/components/navs/#tabs) or [pill]({{ site.baseurl }}/components/navs/#pills) style navigation.
+### Tabs
+
+The tab widget works with [tab]({{ site.baseurl }}/components/navs/#tabs) style navigation.
 
 <div class="cf-example cf-example-tabs">
     <ul class="nav nav-tabs">
-        <li class="nav-item"><a href="#tabpanel1" class="nav-link" data-cfw="tab">Tab 1</a></li>
-        <li class="nav-item"><a href="#tabpanel2" class="nav-link active" data-cfw="tab">Tab 2</a></li>
-        <li class="nav-item"><a href="#tabpanel3" class="nav-link" data-cfw="tab">Tab 3</a></li>
-        <li class="nav-item"><a href="#tabpanel4" class="nav-link disabled" data-cfw="tab">Tab 4</a></li>
+        <li class="nav-item"><a href="#tab1" class="nav-link" data-cfw="tab">Tab 1</a></li>
+        <li class="nav-item"><a href="#tab2" class="nav-link active" data-cfw="tab">Tab 2</a></li>
+        <li class="nav-item"><a href="#tab3" class="nav-link" data-cfw="tab">Tab 3</a></li>
+        <li class="nav-item"><a href="#tab4" class="nav-link disabled" data-cfw="tab">Tab 4</a></li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" id="tabpanel1">
+        <div class="tab-pane" id="tab1">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pulvinar ligula ac sapien auctor viverra. Aliquam elit tortor, consequat at ultrices sit amet, vehicula eu leo. In fermentum lacus purus, ac dictum orci placerat ut. Integer magna lacus, adipiscing sed justo ut, sollicitudin rhoncus libero. Pellentesque accumsan pretium sem eu euismod? Nunc id facilisis sem? Quisque quis laoreet mi.</p>
         </div>
-        <div class="tab-pane" id="tabpanel2">
+        <div class="tab-pane" id="tab2">
             <p>Phasellus at nisl et arcu tincidunt sagittis et nec nunc. Fusce ultrices venenatis felis, in faucibus mauris egestas nec. Etiam malesuada dictum nisi, at pulvinar orci. Aenean venenatis metus in pharetra aliquam. Mauris ac odio tortor! Maecenas eget orci in ipsum ullamcorper malesuada. Nunc interdum lobortis velit sed accumsan.</p>
         </div>
-        <div class="tab-pane" id="tabpanel3">
+        <div class="tab-pane" id="tab3">
             <p> Praesent laoreet augue sed mauris vulputate, ut commodo justo malesuada. Pellentesque adipiscing; lorem vel convallis dignissim, leo est condimentum sapien, nec viverra dui risus at metus! Phasellus tellus magna, hendrerit eget tempor quis, fringilla id sem.</p>
         </div>
-        <div class="tab-pane" id="tabpanel4">
+        <div class="tab-pane" id="tab4">
             <p>Duis pharetra suscipit felis, id congue purus tempus sed. Nunc porttitor nec arcu at interdum. Nulla placerat odio luctus malesuada dapibus. Suspendisse et auctor metus. Suspendisse fringilla commodo cursus. Suspendisse sodales vitae enim ut commodo. Nunc ut nibh quis tellus varius fermentum at et nibh. Nulla nisl leo, hendrerit ut rutrum faucibus, ullamcorper ut lectus. Donec tristique justo justo, nec imperdiet leo porttitor non. Donec vehicula purus dapibus hendrerit ornare.</p>
         </div>
     </div>
@@ -49,43 +58,131 @@ The tab widget works with [tab]({{ site.baseurl }}/components/navs/#tabs) or [pi
 
 {% highlight html %}
 <ul class="nav nav-tabs">
-    <li class="nav-item"><a href="#tabpanel1" class="nav-link" data-cfw="tab">Tab 1</a></li>
-    <li class="nav-item"><a href="#tabpanel2" class="nav-link active" data-cfw="tab">Tab 2</a></li>
-    <li class="nav-item"><a href="#tabpanel3" class="nav-link" data-cfw="tab">Tab 3</a></li>
-    <li class="nav-item"><a href="#tabpanel4" class="nav-link disabled" data-cfw="tab">Tab 4</a></li>
+    <li class="nav-item"><a href="#tab1" class="nav-link" data-cfw="tab">Tab 1</a></li>
+    <li class="nav-item"><a href="#tab2" class="nav-link active" data-cfw="tab">Tab 2</a></li>
+    <li class="nav-item"><a href="#tab3" class="nav-link" data-cfw="tab">Tab 3</a></li>
+    <li class="nav-item"><a href="#tab4" class="nav-link disabled" data-cfw="tab">Tab 4</a></li>
 </ul>
 <div class="tab-content">
-    <div class="tab-pane" id="tabpanel1">
-        ...
+    <div class="tab-pane" id="tab1">...</div>
+    <div class="tab-pane" id="tab2">...</div>
+    <div class="tab-pane" id="tab3">...</div>
+    <div class="tab-pane" id="tab4">...</div>
+</div>
+{% endhighlight %}
+
+### Pills
+
+The tab widget also works with [pill]({{ site.baseurl }}/components/navs/#pills) style navigation.
+
+<div class="cf-example cf-example-tabs">
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a href="#pill1" class="nav-link" data-cfw="tab">Tab 1</a></li>
+        <li class="nav-item"><a href="#pill2" class="nav-link active" data-cfw="tab">Tab 2</a></li>
+        <li class="nav-item"><a href="#pill3" class="nav-link" data-cfw="tab">Tab 3</a></li>
+        <li class="nav-item"><a href="#pill4" class="nav-link disabled" data-cfw="tab">Tab 4</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" id="pill1">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pulvinar ligula ac sapien auctor viverra. Aliquam elit tortor, consequat at ultrices sit amet, vehicula eu leo. In fermentum lacus purus, ac dictum orci placerat ut. Integer magna lacus, adipiscing sed justo ut, sollicitudin rhoncus libero. Pellentesque accumsan pretium sem eu euismod? Nunc id facilisis sem? Quisque quis laoreet mi.</p>
+        </div>
+        <div class="tab-pane" id="pill2">
+            <p>Phasellus at nisl et arcu tincidunt sagittis et nec nunc. Fusce ultrices venenatis felis, in faucibus mauris egestas nec. Etiam malesuada dictum nisi, at pulvinar orci. Aenean venenatis metus in pharetra aliquam. Mauris ac odio tortor! Maecenas eget orci in ipsum ullamcorper malesuada. Nunc interdum lobortis velit sed accumsan.</p>
+        </div>
+        <div class="tab-pane" id="pill3">
+            <p> Praesent laoreet augue sed mauris vulputate, ut commodo justo malesuada. Pellentesque adipiscing; lorem vel convallis dignissim, leo est condimentum sapien, nec viverra dui risus at metus! Phasellus tellus magna, hendrerit eget tempor quis, fringilla id sem.</p>
+        </div>
+        <div class="tab-pane" id="pill4">
+            <p>Duis pharetra suscipit felis, id congue purus tempus sed. Nunc porttitor nec arcu at interdum. Nulla placerat odio luctus malesuada dapibus. Suspendisse et auctor metus. Suspendisse fringilla commodo cursus. Suspendisse sodales vitae enim ut commodo. Nunc ut nibh quis tellus varius fermentum at et nibh. Nulla nisl leo, hendrerit ut rutrum faucibus, ullamcorper ut lectus. Donec tristique justo justo, nec imperdiet leo porttitor non. Donec vehicula purus dapibus hendrerit ornare.</p>
+        </div>
     </div>
-    <div class="tab-pane" id="tabpanel2">
-        ...
+</div>
+
+{% highlight html %}
+<ul class="nav nav-tabs">
+    <li class="nav-item"><a href="#pill1" class="nav-link" data-cfw="tab">Pill 1</a></li>
+    <li class="nav-item"><a href="#pill2" class="nav-link active" data-cfw="tab">Pill 2</a></li>
+    <li class="nav-item"><a href="#pill3" class="nav-link" data-cfw="tab">Pill 3</a></li>
+    <li class="nav-item"><a href="#pill4" class="nav-link disabled" data-cfw="tab">Pill 4</a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane" id="pill1">...</div>
+    <div class="tab-pane" id="pill2">...</div>
+    <div class="tab-pane" id="pill3">...</div>
+    <div class="tab-pane" id="pill4">...</div>
+</div>
+{% endhighlight %}
+
+### List Group
+
+The tab widget even work with a [list group]({{ site.baseurl }}/components/list-group/).
+
+<div class="cf-example cf-example-tabs">
+    <div class="row">
+        <div class="col-md-4">
+            <nav class="list-group">
+                <a href="#lgroup1" data-cfw="tab" class="list-group-item list-group-item-action">List Item 1</a>
+                <a href="#lgroup2" data-cfw="tab" class="list-group-item list-group-item-action active">List Item 2</a>
+                <a href="#lgroup3" data-cfw="tab" class="list-group-item list-group-item-action">List Item 3</a>
+                <a href="#lgroup4" data-cfw="tab" class="list-group-item list-group-item-action disabled">List Item 4</a>
+            </nav>
+        </div>
+        <div class="col-md-8">
+            <div class="tab-content">
+                <div class="tab-pane" id="lgroup1">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pulvinar ligula ac sapien auctor viverra. Aliquam elit tortor, consequat at ultrices sit amet, vehicula eu leo. In fermentum lacus purus, ac dictum orci placerat ut. Integer magna lacus, adipiscing sed justo ut, sollicitudin rhoncus libero. Pellentesque accumsan pretium sem eu euismod? Nunc id facilisis sem? Quisque quis laoreet mi.</p>
+                </div>
+                <div class="tab-pane" id="lgroup2">
+                    <p>Phasellus at nisl et arcu tincidunt sagittis et nec nunc. Fusce ultrices venenatis felis, in faucibus mauris egestas nec. Etiam malesuada dictum nisi, at pulvinar orci. Aenean venenatis metus in pharetra aliquam. Mauris ac odio tortor! Maecenas eget orci in ipsum ullamcorper malesuada. Nunc interdum lobortis velit sed accumsan.</p>
+                </div>
+                <div class="tab-pane" id="lgroup3">
+                    <p> Praesent laoreet augue sed mauris vulputate, ut commodo justo malesuada. Pellentesque adipiscing; lorem vel convallis dignissim, leo est condimentum sapien, nec viverra dui risus at metus! Phasellus tellus magna, hendrerit eget tempor quis, fringilla id sem.</p>
+                </div>
+                <div class="tab-pane" id="lgroup4">
+                    <p>Duis pharetra suscipit felis, id congue purus tempus sed. Nunc porttitor nec arcu at interdum. Nulla placerat odio luctus malesuada dapibus. Suspendisse et auctor metus. Suspendisse fringilla commodo cursus. Suspendisse sodales vitae enim ut commodo. Nunc ut nibh quis tellus varius fermentum at et nibh. Nulla nisl leo, hendrerit ut rutrum faucibus, ullamcorper ut lectus. Donec tristique justo justo, nec imperdiet leo porttitor non. Donec vehicula purus dapibus hendrerit ornare.</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="tab-pane" id="tabpanel3">
-        ...
+</div>
+
+{% highlight html %}
+div class="row">
+    <div class="col-md-4">
+        <nav class="list-group">
+            <a href="#lgroup1" class="list-group-item list-group-item-action">List Item 1</a>
+            <a href="#lgroup2" class="list-group-item list-group-item-action active">List Item 2</a>
+            <a href="#lgroup3" class="list-group-item list-group-item-action">List Item 3</a>
+            <a href="#lgroup4" class="list-group-item list-group-item-action disabled">List Item 4</a>
+        </nav>
     </div>
-    <div class="tab-pane" id="tabpanel4">
-        ...
+    <div class="col-md-8">
+        <div class="tab-content">
+            <div class="tab-pane" id="lgroup1">...</div>
+            <div class="tab-pane" id="lgroup2">...</div>
+            <div class="tab-pane" id="lgroup3">...</div>
+            <div class="tab-pane" id="lgroup4">...</div>
+        </div>
     </div>
 </div>
 {% endhighlight %}
 
 ## Usage
 
-Tabs need to be activated individually.
+Tabs need to be activated individually, and require the use of a `ul`, `ol`, or `nav` as an ancestor item of all tab triggers, especially if they are to be grouped together.
 
 ### Via Data Attributes
 
 Add `data-cfw="tab"` to each tab element. The target tab pane can be specified either by the data attribue `data-cfw-tab-target="#tabPane0"` or from the `<a href="#tabPane0">`, where the target pane has an `id="tabPane0"`.
 
-To set a default active tab, add the class `.active` to the parent `<li>` of the trigger item.
+To set a default active tab, add the class `.active` to the trigger item.
 
 {% highlight html %}
 <!-- Nav tabs -->
 <ul class="nav nav-tabs">
     <li class="nav-item"><a href="#home" class="nav-link active" data-cfw="tab">Home</a></li>
     <li class="nav-item"><a href="#profile" class="nav-link" data-cfw="tab">Profile</a></li>
-    <li class="nav-item"><a href="#messages" class="nav-link" data-cfw="tab">Messages</a></li>
+    <li class="nav-item"><a href="#" class="nav-link" data-cfw="tab" data-cfw-tab-target="#messages">Messages</a></li>
     <li class="nav-item"><a href="#" class="nav-link" data-cfw="tab" data-cfw-tab-target="#settings">Settings</a></li>
 </ul>
 
@@ -202,3 +299,31 @@ $('a[data-cfw="tab"]').on('afterShow.cfw.tab', function(e) {
     e.relatedTarget // previous active tab
 });
 {% endhighlight %}
+
+## Accessibility
+
+### Keyboard Navigation
+
+<dl class="cf-docs-keys">
+    <dt>
+        <kbd>tab</kbd>
+    </dt>
+    <dd>
+        When the tab list if recieving focus, the active tab element becomes focused.
+        When the tab list has the focus, moves the focus to the next focusable item on the page.
+    </dd>
+    <dt>
+        <kbd title="right arrow" aria-label="right arrow"><span class="fa fa-arrow-right" aria-hidden="true"></span></kbd> /
+        <kbd title="down arrow" aria-label="down arrow"><span class="fa fa-arrow-down" aria-hidden="true"></span></kbd>
+    </dt>
+    <dd>
+        Moves focus to the next tab and activates it, displaying the related tabpanel content.
+    </dd>
+    <dt>
+        <kbd title="left arrow" aria-label="left arrow"><span class="fa fa-arrow-left" aria-hidden="true"></span></kbd> /
+        <kbd title="up arrow" aria-label="up arrow"><span class="fa fa-arrow-up" aria-hidden="true"></span></kbd>
+    </dt>
+    <dd>
+        Moves focus to the previous tab and activates it, displaying the related tabpanel content.
+    </dd>
+</dl>
