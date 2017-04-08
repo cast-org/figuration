@@ -82,6 +82,33 @@
         </div>
     </div>
 
+    <hr />
+
+    <div class="progress">
+        <div id="transition-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div class="form-group col-4 pl-0">
+        <label for="transition-val">Transition value</label>
+        <select class="form-control" id="transition-val">
+          <option value="0">0</option>
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="75">75</option>
+          <option value="100">100</option>
+        </select>
+      </div>
+
+    <script>
+    $('#transition-val').on('change', function() {
+        var val = $(this).val();
+        $('#transition-bar')
+            .attr('aria-valuenow', val)
+            .css('width', val + '%');
+    });
+    </script>
+
+
 </div>
 
 </body>
