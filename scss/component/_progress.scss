@@ -20,6 +20,7 @@
     text-align: center;
     background-color: $progress-bar-bg;
     @include box-shadow($progress-bar-box-shadow);
+    @include transition($progress-bar-transition);
 }
 
 .progress-bar-striped {
