@@ -737,19 +737,13 @@ h4 > code {
 
 @media (min-width: 36em) {
   .example-content-main {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 50%;
-            flex: 0 0 50%;
-    max-width: 50%;
+    width: 50%;
   }
 }
 
 @media (min-width: 62em) {
   .example-content-main {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 66.666667%;
-            flex: 0 0 66.666667%;
-    max-width: 66.666667%;
+    width: 66.666667%;
   }
 }
 
@@ -791,19 +785,13 @@ h4 > code {
 
 @media (min-width: 36em) {
   .example-content-secondary {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 50%;
-            flex: 0 0 50%;
-    max-width: 50%;
+    width: 50%;
   }
 }
 
 @media (min-width: 62em) {
   .example-content-secondary {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 33.333333%;
-            flex: 0 0 33.333333%;
-    max-width: 33.333333%;
+    width: 33.333333%;
   }
 }
 
