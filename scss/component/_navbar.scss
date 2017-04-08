@@ -17,13 +17,13 @@
         justify-content: space-between;
 
         @include media-breakpoint-down(nth(map-keys($grid-breakpoints), 1)) {
-            width: 100%; // prevent flex parent container(-fluid) from collapsing
+            width: 100%; // prevent flex parent container from collapsing
             margin-right: 0;
             margin-left: 0;
         }
     }
 
-    &:not([class*=".navbar-expand"]) {
+    &:not([class*="navbar-expand"]) {
         .navbar-nav {
             .dropdown-menu {
                 position: static;
@@ -160,6 +160,10 @@
 
                 .navbar-nav {
                     flex-direction: row;
+
+                    .dropdown-menu {
+                        position: absolute;
+                    }
 
                     .nav-link {
                         padding-right: $navbar-item-padding-x;
