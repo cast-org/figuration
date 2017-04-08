@@ -1013,8 +1013,15 @@ h4 > code {
 
 .cf-example-scrollspy {
   position: relative;
-  height: 200px;
-  margin-top: 10px;
+  height: 12rem;
+  margin-top: .5rem;
+  overflow: auto;
+}
+
+.cf-example-scrollspy2 {
+  position: relative;
+  height: 20rem;
+  margin-top: .5rem;
   overflow: auto;
 }
 
