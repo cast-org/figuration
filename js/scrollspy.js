@@ -33,7 +33,8 @@
     CFW_Widget_Scrollspy.prototype = {
         _init : function() {
             this.$scrollElement.on('scroll.cfw.scrollspy', $().CFW_throttle($.proxy(this.process, this), this.settings.throttle));
-            this.selector = (this.settings.target || '') + ' a';
+            this.selector = (this.settings.target || '') + ' a, ' +
+                            (this.settings.target || '') + ' [data-cfw-scrollspy-target]';
             this.$scrollElement.CFW_trigger('init.cfw.scrollspy');
 
             this.refresh();
@@ -62,7 +63,7 @@
                 .find(this.selector)
                 .map(function() {
                     var $el   = $(this);
-                    var href  = $el.data('target') || $el.attr('href');
+                    var href  = $el.attr('data-cfw-scrollspy-target') || $el.attr('href');
                     var $href = /^#./.test(href) && $(href);
 
                     return ($href
@@ -113,9 +114,8 @@
 
             this.clear();
 
-            var selector = this.selector +
-                '[data-target="' + target + '"],' +
-                this.selector + '[href="' + target + '"]';
+            var selector = this.settings.target + ' [href="' + target + '"],' +
+                           this.settings.target + ' [data-cfw-scrollspy-target="' + target + '"]';
 
             var $active = $(selector)
                 .addClass('active');

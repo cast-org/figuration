@@ -237,7 +237,7 @@ No matter the implementation method, scrollspy requires the use of `position: re
 Resolvable ID targets required
 {:.h5}
 
-Navigation links must have resolvable id targets. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`. Using a `data-target` attribute is also matched, in the example case the attribute would be `data-target="#home"`.
+Navigation links must have resolvable id targets. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`. Using a `data-cfw-scrollspy-target` attribute is also matched, in the example case the attribute would be `data-cfw-scrollspy-target="#home"`.
 {% endcallout %}
 
 {% callout info %}
