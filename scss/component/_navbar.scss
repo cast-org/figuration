@@ -5,6 +5,7 @@
     position: relative;
     display: flex;
     flex-wrap: wrap; // allow us to do the line break for collapsing content
+    align-items: center;
     // justify-content: space-between; // space out brand from logo
     padding: $navbar-padding-y $navbar-padding-x;
 
@@ -14,6 +15,7 @@
     > .container-fluid {
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
         justify-content: space-between;
 
         @include media-breakpoint-down(nth(map-keys($grid-breakpoints), 1)) {
@@ -37,7 +39,6 @@
 // Used for brand, project, or site name.
 .navbar-brand {
     display: inline-block;
-    align-self: flex-start;
     padding-top: $navbar-brand-padding-y;
     padding-bottom: $navbar-brand-padding-y;
     margin-right: $navbar-brand-margin-x;
@@ -106,7 +107,6 @@
 // Navbar Toggle
 // Custom button for toggling the `.navbar-collapse`, powered by the collapse plugin.
 .navbar-toggle {
-    align-self: flex-start; // Prevent toggle from growing to full width when it's the only visible navbar child
     padding: $navbar-toggle-padding-y $navbar-toggle-padding-x;
     font-size: $navbar-toggle-font-size;
     line-height: 1;
@@ -155,11 +155,11 @@
             @include media-breakpoint-up($bp) {
                 flex-direction: row;
                 flex-wrap: nowrap;
-                align-items: center;
                 justify-content: flex-start;
 
                 .navbar-nav {
                     flex-direction: row;
+                    align-items: center;
 
                     .dropdown-menu {
                         position: absolute;
@@ -175,7 +175,6 @@
                 > .container,
                 > .container-fluid {
                     flex-wrap: nowrap;
-                    align-items: center;
                 }
 
                 // scss-lint:disable ImportantRule
