@@ -58,8 +58,8 @@ Scroll the area below the navbar and watch the active class change. The dropdown
         <li class="nav-item"><a href="#alpha" class="nav-link">Alpha</a></li>
         <li class="nav-item"><a href="#beta" class="nav-link">Beta</a></li>
         <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownS">Dropdown</a>
-            <ul data-cfw-dropdown-target="dropdownS">
+            <a href="#" class="nav-link dropdown-toggle" data-cfw="dropdown">Dropdown</a>
+            <ul class="dropdown-menu">
                 <li><a href="#one" tabindex="-1">one</a></li>
                 <li><a href="#two" tabindex="-1">two</a></li>
                 <li class="dropdown-divider"></li>

@@ -41,7 +41,7 @@
     };
 
     CFW_Widget_Dropdown.DEFAULTS = {
-        toggle   : null,
+        target   : null,
         delay    : 350,     // Delay for hiding menu (milliseconds)
         hover    : false,   // Enable hover style navigation
         backlink : false,   // Insert back links into submenus
@@ -51,15 +51,12 @@
 
     function getParent($node) {
         var $parent;
-        var selector = $node.attr('data-cfw-dropdown-target');
+        var selector = $node.CFW_getSelectorFromElement('dropdown');
         if (selector) {
-            $parent = $(selector);
+            $parent = $(selector).parent();
         }
-        if ($parent && $parent.length) {
-            return $parent;
-        } else {
-            return $node.parent();
-        }
+
+        return $parent || $node.parent();
     }
 
     function clearMenus(e) {
@@ -78,23 +75,9 @@
             var $selfRef = this;
 
             // Get target menu
-            var menuID = this.settings.toggle;
-            // if ((menuID === undefined) || (menuID.length <= 0)) { return false; }
+            var selector = this.$element.CFW_getSelectorFromChain('dropdown', this.settings.target);
+            var $target = $(selector);
 
-            // Find target by id/css selector
-            var $target = $(this.settings.toggle);
-            if (menuID !== undefined && !$target.length) {
-                $target = $('[data-cfw-dropdown-target="' + menuID + '"]');
-            }
-            // Target by href selector
-            if (!$target.length) {
-                var selector = this.$element.attr('href');
-                selector = selector && /#[]A-Za-z]/.test(selector);
-                if (selector) {
-                    $target = $(selector);
-                }
-                // $target = $(this.$element.attr('href'));
-            }
             // Target by sibling class
             if (!$target.length) {
                 $target = $(this.$element.siblings('.dropdown-menu')[0]);
@@ -111,7 +94,7 @@
             // Set tabindex=-1 so that sub-menu links can't receive keyboard focus from tabbing
 
             // Check for id on top level menu - set if not present
-            menuID = this.$target.CFW_getID('cfw-dropdown');
+            /* var menuID = */ this.$target.CFW_getID('cfw-dropdown');
             this.$target.attr({
                 'aria-hidden': 'true',
                 'aria-labelledby': this.instance

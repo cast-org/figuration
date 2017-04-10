@@ -98,9 +98,7 @@ We use this extra class to reduce the horizontal `padding` on either side of the
 {% example html %}
 <div class="btn-group">
   <button type="button" class="btn">Default</button>
-  <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-cfw="dropdown">
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
+  <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-cfw="dropdown" aria-label="Toggle Dropdown"></button>
   <ul class="dropdown-menu">
     <li><a href="#">Action</a></li>
     <li><a href="#">Another action</a></li>
@@ -370,14 +368,12 @@ Note: The `data-cfw="dropdown"` attribute is relied on for closing dropdown menu
 
 Add `data-cfw="dropdown"` to the dropdown toggle element, and the widget will automatically link to the sibling `.dropdown-menu` list element.
 
-Optionally, you can use a `data-cfw-dropdown-toggle` with a selector (jQuery style) or string value to then element to automatically assign control of a dropdown element.
-If using a string value, then assign a `data-cfw-dropdown-target` attribute, with a matching value to the element to apply the control to.
 Be sure to add the class `dropdown-menu` to the dropdown menu to ensure there is no flash of content at page load.
 
 {% highlight html %}
 <div class="dropdown">
-  <a href="#" role="button" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownExample">Dropdown trigger</a>
-  <ul class="dropdown-menu" data-cfw-dropdown-target="dropdownExample">
+  <a href="#" role="button" data-cfw="dropdown">Dropdown trigger</a>
+  <ul class="dropdown-menu">
     ...
   </ul>
 </div>
@@ -406,7 +402,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 </thead>
 <tbody>
     <tr>
-        <td>toggle</td>
+        <td>target</td>
         <td>string</td>
         <td>null</td>
         <td>Either the selector (jQuery style), or the string related to the target dropdown having a <code>data-cfw-dropdown-target</code> attribute.</td>

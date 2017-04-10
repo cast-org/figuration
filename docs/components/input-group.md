@@ -159,10 +159,10 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
   <div class="col-lg-6">
     <div class="input-group">
       <div class="input-group-btn">
-        <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#inputGroupDropdown1">
+        <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
           Action
         </button>
-        <ul class="dropdown-menu" id="inputGroupDropdown1">
+        <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Action</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -177,10 +177,10 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
     <div class="input-group">
       <input type="text" class="form-control" aria-label="Text input with dropdown button">
       <div class="input-group-btn">
-        <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#inputGroupDropdown2">
+        <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
           Action
         </button>
-        <ul class="dropdown-menu dropdown-menu-right" id="inputGroupDropdown2">
+        <ul class="dropdown-menu dropdown-menu-right">
           <li><a class="dropdown-item" href="#">Action</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -201,10 +201,10 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
     <div class="input-group">
       <div class="input-group-btn">
         <button type="button" class="btn">Action</button>
-        <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-cfw="dropdown" data-cfw-dropdown-toggle="#inputGroupDropdown3">
+        <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-cfw="dropdown">
           <span class="sr-only">Toggle Dropdown</span>
         </button>
-        <ul class="dropdown-menu" id="inputGroupDropdown3">
+        <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Action</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -220,10 +220,10 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
       <input type="text" class="form-control" aria-label="Text input with segmented button dropdown">
       <div class="input-group-btn">
         <button type="button" class="btn">Action</button>
-        <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-cfw="dropdown" data-cfw-dropdown-toggle="#inputGroupDropdown4">
+        <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-cfw="dropdown">
           <span class="sr-only">Toggle Dropdown</span>
         </button>
-        <ul class="dropdown-menu dropdown-menu-right" id="inputGroupDropdown4">
+        <ul class="dropdown-menu dropdown-menu-right">
           <li><a class="dropdown-item" href="#">Action</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>

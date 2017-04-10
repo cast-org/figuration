@@ -151,10 +151,10 @@ Place a `.btn-group` within another `.btn-group` when you want dropdown menus mi
   <button type="button" class="btn">2</button>
 
   <div class="btn-group" role="group">
-    <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#btnGroupDrop1">
+    <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
       Dropdown
     </button>
-    <ul class="dropdown-menu" id="btnGroupDrop1">
+    <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="#">Dropdown link</a></li>
       <li><a class="dropdown-item" href="#">Dropdown link</a></li>
     </ul>
@@ -171,10 +171,10 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
     <button type="button" class="btn">Button</button>
     <button type="button" class="btn">Button</button>
     <div class="btn-group" role="group">
-      <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#btnGroupVerticalDrop1">
+      <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
         Dropdown
       </button>
-      <ul class="dropdown-menu" id="btnGroupVerticalDrop1">
+      <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#">Dropdown link</a></li>
         <li><a class="dropdown-item" href="#">Dropdown link</a></li>
       </ul>
@@ -182,28 +182,28 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
     <button type="button" class="btn">Button</button>
     <button type="button" class="btn">Button</button>
     <div class="btn-group" role="group">
-      <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#btnGroupVerticalDrop2">
+      <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
         Dropdown
       </button>
-      <ul class="dropdown-menu" id="btnGroupVerticalDrop2">
+      <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#">Dropdown link</a></li>
         <li><a class="dropdown-item" href="#">Dropdown link</a></li>
       </ul>
     </div>
     <div class="btn-group" role="group">
-      <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#btnGroupVerticalDrop3">
+      <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
         Dropdown
       </button>
-      <ul class="dropdown-menu" id="btnGroupVerticalDrop3">
+      <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#">Dropdown link</a></li>
         <li><a class="dropdown-item" href="#">Dropdown link</a></li>
       </ul>
     </div>
     <div class="btn-group" role="group">
-      <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#btnGroupVerticalDrop1">
+      <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
         Dropdown
       </button>
-      <ul class="dropdown-menu" id="btnGroupVerticalDrop4">
+      <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#">Dropdown link</a></li>
         <li><a class="dropdown-item" href="#">Dropdown link</a></li>
       </ul>

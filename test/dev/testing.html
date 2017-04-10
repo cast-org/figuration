@@ -979,10 +979,10 @@ $(window).ready(function() {
 
             <!-- Single button -->
             <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownTest_0">
+                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown">
                     Action
                 </button>
-                <ul class="dropdown-menu" data-cfw-dropdown-target="dropdownTest_0">
+                <ul class="dropdown-menu">
                     <li class="dropdown-header">Dropdown header</li>
                     <li><a href="#0-1">Action</a></li>
                     <li>
@@ -1070,10 +1070,10 @@ $(window).ready(function() {
 
             <!-- Single button - init through JS -->
             <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-cfw-dropdown-toggle="dropdownTest_2" id="js_dropdown_2">
+                <button type="button" class="btn btn-default dropdown-toggle" id="js_dropdown_2">
                     JS init w/ back
                 </button>
-                <ul class="dropdown-menu" data-cfw-dropdown-target="dropdownTest_2" class="slide1">
+                <ul class="dropdown-menu" class="slide1">
                     <li><a href="#2-1">Action</a></li>
                     <li>
                         <a href="#2-1">Another action with a really long entry</a>
@@ -1137,10 +1137,10 @@ $(window).ready(function() {
 
             <!-- Single button -->
             <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownTest_3" data-cfw-dropdown-hover=true>
+                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-target="#dropdownTest_3" data-cfw-dropdown-hover="true">
                     Hover Activated
                 </button>
-                <ul class="dropdown-menu" data-cfw-dropdown-target="dropdownTest_3">
+                <ul class="dropdown-menu" id="dropdownTest_3">
                     <li class="dropdown-header">Dropdown header</li>
                     <li><a href="#3-1">Action</a></li>
                     <li>
@@ -1197,10 +1197,10 @@ $(window).ready(function() {
 
             <!-- Single button -->
             <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#dropdownTest_3b" data-cfw-dropdown-hover=true>
+                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-hover="true">
                     Hover Activated
                 </button>
-                <ul id="dropdownTest_3b">
+                <ul class="dropdown-menu">
                     <li class="dropdown-header">Dropdown header</li>
                     <li><a href="#">Action</a></li>
                     <li><a href="#">Another action</a>
@@ -1212,7 +1212,7 @@ $(window).ready(function() {
 
             <!-- Via Selector -->
             <div class="btn-group">
-                <button type="button" class="btn btn-warning dropdown-toggle" data-cfw="dropdown" id="dropdownTest_sb"> <!-- data-cfw-dropdown-toggle="#dropdownTest_s">-->
+                <button type="button" class="btn btn-warning dropdown-toggle" data-cfw="dropdown" id="dropdownTest_sb"> <!-- data-cfw-dropdown-target="#dropdownTest_s">-->
                     via selector
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
@@ -1233,7 +1233,7 @@ $(window).ready(function() {
             </div>
             <script type="text/javascript">
                 $('#dropdownTest_sb').CFW_Dropdown({
-                    toggle: '#dropdownTest_s'
+                    target: '#dropdownTest_s'
                 });
             </script>
 
@@ -1242,10 +1242,10 @@ $(window).ready(function() {
 
             <!-- Single button -->
             <div class="btn-group dropup">
-                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownTest_4">
+                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-target="#dropdownTest_4">
                     Drop Up
                 </button>
-                <ul class="dropdown-menu" data-cfw-dropdown-target="dropdownTest_4">
+                <ul class="dropdown-menu" id="dropdownTest_4">
                     <li class="dropdown-header">Dropdown header</li>
                     <li><a href="#4-1">Action</a></li>
                     <li>
@@ -1303,10 +1303,10 @@ $(window).ready(function() {
 
             <!-- Single button -->
             <div class="btn-group dropdown-menu-left" style="float: right;">
-                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownTest_5" data-cfw-dropdown-backlink=true>
+                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-target="#dropdownTest_5" data-cfw-dropdown-backlink=true>
                     Drop Left
                 </button>
-                <ul class="dropdown-menu" data-cfw-dropdown-target="dropdownTest_5">
+                <ul class="dropdown-menu" id="dropdownTest_5">
                     <li class="dropdown-header">Dropdown header</li>
                     <li><a href="#5-1">Action</a></li>
                     <li>
@@ -1372,8 +1372,8 @@ $(window).ready(function() {
                     <li class="nav-item"><a href="#alpha" class="nav-link">Alpha</a></li>
                     <li class="nav-item"><a href="#beta" class="nav-link">Beta</a></li>
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="dropdownS">Dropdown</a>
-                        <ul data-cfw-dropdown-target="dropdownS">
+                        <a href="#dropdownS" class="nav-link dropdown-toggle" data-cfw="dropdown">Dropdown</a>
+                        <ul id="dropdownS">
                             <li><a href="#one" tabindex="-1">one</a></li>
                             <li><a href="#two" tabindex="-1">two</a></li>
                             <li class="dropdown-divider"></li>
