@@ -478,7 +478,7 @@ $(window).ready(function() {
             <h2 id="modal">Modal:</h2>
 
             <p>
-                <button type="button" class="btn btn-info" id="modal3t" data-cfw="modal" data-cfw-modal-toggle="#modal3" data-cfw-modal-backdrop="false">Modal: no backdrop</button>
+                <button type="button" class="btn btn-info" id="modal3t" data-cfw="modal" data-cfw-modal-target="#modal3" data-cfw-modal-backdrop="false">Modal: no backdrop</button>
             </p>
             <div class="modal" id="modal3">
                 <div class="modal-dialog modal-sm">
@@ -495,8 +495,8 @@ $(window).ready(function() {
             </div><!-- /.modal -->
 
             <p>
-                <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-toggle="#modal1">Launch demo modal</button>
-                <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-toggle="#modal2">Launch modal - end of body</button>
+                <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-target="#modal1">Launch demo modal</button>
+                <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-target="#modal2">Launch modal - end of body</button>
             </p>
             <!-- Modal -->
             <div class="modal" id="modal1">
@@ -541,7 +541,7 @@ $(window).ready(function() {
             <strong>Reusing a Modal</strong>
             <br />
             <p>
-                <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-toggle="#modal0" id="modal0_0">Launch demo modal (0)</button>
+                <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-target="#modal0" id="modal0_0">Launch demo modal (0)</button>
                 <button type="button" class="btn btn-info" id="modal0_1">Launch demo modal (1)</button>
                 <br />
                 <a href="#" onclick="javascript: modalLinkTest0(); return false;">Unlink 0 - Link 1</a> |
@@ -587,7 +587,7 @@ $(window).ready(function() {
 
             <strong>Dynamic Content Load</strong>
             <p>
-                <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-toggle="#modal4">Modal</button>
+                <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-target="#modal4">Modal</button>
             </p>
             <div class="modal" id="modal4">
                 <div class="modal-dialog">

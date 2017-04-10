@@ -27,7 +27,7 @@
     };
 
     CFW_Widget_Modal.DEFAULTS = {
-        toggle       : false,   // Target selector
+        target       : false,   // Target selector
         animate      : true,    // If modal windows should animate
         unlink       : false,   // If on hide to remove events and attributes from modal and trigger
         dispose      : false,   // If on hide to unlink, then remove modal from DOM
@@ -39,15 +39,9 @@
     CFW_Widget_Modal.prototype = {
 
         _init : function() {
-            // Find target by id/css selector - only pick first one found
-            var $findTarget = $(this.settings.toggle).eq(0);
-            if ($findTarget.length <= 0) {
-                // If not found by selector - find by 'toggle' data
-                var dataToggle = this.$element.attr('data-cfw-modal-toggle');
-                $findTarget = $('[data-cfw-modal-target="' + dataToggle + '"]');
-            }
-            if ($findTarget.length <= 0) { return false; }
-            this.$target = $findTarget;
+            var selector = this.$element.CFW_getSelectorFromChain('modal', this.settings.target);
+            if (!selector) { return; }
+            this.$target = $(selector);
             this.$dialog = this.$target.find('.modal-dialog');
 
             this.$element.attr('data-cfw', 'modal');
@@ -75,7 +69,7 @@
             this.$dialog.attr('role', 'document');
 
             // Bind click handler
-            this.$element.on('click.cfw.modal.toggle', $.proxy(this.toggle, this));
+            this.$element.on('click.cfw.modal', $.proxy(this.toggle, this));
 
             this.$target.data('cfw.modal', this);
 

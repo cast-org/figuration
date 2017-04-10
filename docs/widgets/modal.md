@@ -99,14 +99,14 @@ Toggle a modal via JavaScript by clicking the button below. It will slide down a
 </div>
 
 <div class="cf-example">
-    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalLive">
+    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalLive">
         Launch demo modal
     </button>
 </div>
 
 {% highlight html %}
 <!-- Button trigger -->
-<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalLive">
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalLive">
     Launch demo modal
 </button>
 
@@ -165,14 +165,14 @@ When modals become too long for the user's viewport or device, they scroll indep
 </div>
 
 <div class="cf-example">
-    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalScroll">
+    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalScroll">
         Scrolling modal
     </button>
 </div>
 
 {% highlight html %}
 <!-- Button trigger -->
-<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalScroll">
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalScroll">
     Scrolling modal
 </button>
 
@@ -244,7 +244,7 @@ To take advantage of the grid system within a modal, just nest `.container-fluid
 </div>
 
 <div class="cf-example">
-    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalGrid">
+    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalGrid">
         Grid in a Modal
     </button>
 </div>
@@ -303,7 +303,7 @@ To take advantage of the grid system within a modal, just nest `.container-fluid
 </div>
 
 <div class="cf-example">
-    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalTips">
+    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalTips">
         Launch demo modal
     </button>
 </div>
@@ -352,13 +352,13 @@ Modals have two optional sizes, provided by Figuration's base CSS, available via
 </div>
 
 <div class="cf-example">
-    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalLg">Large modal</button>
-    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalSm">Small modal</button>
+    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalLg">Large modal</button>
+    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalSm">Small modal</button>
 </div>
 
 {% highlight html %}
 <!-- Large modal -->
-<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalLg">Large modal</button>
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalLg">Large modal</button>
 
 <div class="modal" id="modalLg">
     <div class="modal-dialog modal-lg">
@@ -369,7 +369,7 @@ Modals have two optional sizes, provided by Figuration's base CSS, available via
 </div>
 
 <!-- Small modal -->
-<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalSm">Small modal</button>
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalSm">Small modal</button>
 
 <div class="modal" id="modalSm">
     <div class="modal-dialog modal-sm">
@@ -386,10 +386,10 @@ The modal widget toggles your hidden content on demand, via data attributes or J
 
 ### Via Data Attributes
 
-Activate a modal without writing JavaScript. Set `data-cfw="modal"` on a controller element, like a button, along with a `data-cfw-modal-toggle="#foo"` or `href="#foo"` to target a specific modal to toggle.
+Activate a modal without writing JavaScript. Set `data-cfw="modal"` on a controller element, like a button, along with a `data-cfw-modal-target="#foo"` or `href="#foo"` to target a specific modal to toggle.
 
 {% highlight html %}
-<button type="button" data-cfw="modal" data-cfw-modal-toggle="#foo">Launch modal</button>
+<button type="button" data-cfw="modal" data-cfw-modal-target="#foo">Launch modal</button>
 {% endhighlight %}
 
 ### Via JavaScript
@@ -429,7 +429,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 </thead>
 <tbody>
     <tr>
-        <td>toggle</td>
+        <td>target</td>
         <td>string</td>
         <td>null</td>
         <td>Either the selector (jQuery style), or the string related to the target tooltip having a `data-cfw-modal-target` attribute.</td>
