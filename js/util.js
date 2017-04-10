@@ -165,9 +165,9 @@
         }
 
         try {
-            const $selector = $(selector);
+            var $selector = $(selector);
             return $selector.length > 0 ? selector : null;
-        } catch(error) {
+        } catch (error) {
             return null;
         }
     };
@@ -179,9 +179,9 @@
         }
 
         try {
-            const $setting = $(setting);
+            var $setting = $(setting);
             return $setting.length > 0 ? setting : null;
-        } catch(error) {
+        } catch (error) {
             return null;
         }
     };
