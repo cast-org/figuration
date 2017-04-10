@@ -733,7 +733,7 @@
                     $selfRef.trackSet(num);
                 });
 
-                $captionElm.CFW_Dropdown({ toggle: '#' + menuID });
+                $captionElm.CFW_Dropdown({ target: '#' + menuID });
             }
 
             this.trackStatus();
@@ -871,7 +871,7 @@
                     });
                 }
 
-                $tsElm.CFW_Dropdown({ toggle: '#' + menuID });
+                $tsElm.CFW_Dropdown({ target: '#' + menuID });
             }
 
             // Show transcript if set
