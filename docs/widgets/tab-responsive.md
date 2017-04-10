@@ -36,21 +36,21 @@ This example uses a breakpoint of 62em/992px.  Larger widths will see the tab st
             <li class="nav-item"><a href="#tabr2" class="nav-link" data-cfw="tab">Third Tab</a></li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane" id="tabr0">
-                <h4><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="tabr0_collapse">First Tab <span class="caret"></span></a></h4>
-                <div class="collapse" data-cfw-collapse-target="tabr0_collapse">
+            <div id="tabr0" class="tab-pane">
+                <h4><a href="#tabr0_collapse" data-cfw="collapse">First Tab <span class="caret"></span></a></h4>
+                <div  id="tabr0_collapse" class="collapse">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.</p>
                 </div>
             </div>
-            <div class="tab-pane" id="tabr1">
-                <h4><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="tabr1_collapse">Second Tab <span class="caret"></span></a></h4>
-                <div class="collapse" data-cfw-collapse-target="tabr1_collapse">
+            <div id="tabr1" class="tab-pane">
+                <h4><a href="#tabr1_collapse" data-cfw="collapse">Second Tab <span class="caret"></span></a></h4>
+                <div id="tabr1_collapse" class="collapse">
                     <p>Praesent tristique dolor quis condimentum lobortis. Phasellus accumsan lacus vitae quam elementum, non euismod urna adipiscing. Suspendisse sodales enim non sem consequat dictum. Ut sit amet elementum purus, mattis rhoncus elit.</p>
                 </div>
             </div>
-            <div class="tab-pane" id="tabr2">
-                <h4><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="tabr2_collapse">Third Tab <span class="caret"></span></a></h4>
-                <div class="collapse" data-cfw-collapse-target="tabr2_collapse">
+            <div id="tabr2" class="tab-pane">
+                <h4><a href="#tabr2_collapse" data-cfw="collapse">Third Tab <span class="caret"></span></a></h4>
+                <div id="tabr2_collapse" class="collapse">
                     <p>Nullam malesuada massa urna, non gravida odio scelerisque sit amet. Donec sit amet rutrum quam, vel faucibus ante. Sed iaculis aliquet tortor vel tristique? In ligula nisi, suscipit vel ipsum id; elementum iaculis dui.</p>
                 </div>
             </div>
@@ -66,21 +66,21 @@ This example uses a breakpoint of 62em/992px.  Larger widths will see the tab st
         <li class="nav-item"><a href="#tabr2" class="nav-link" data-cfw="tab">Third Tab</a></li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" id="tabr0">
-            <h4><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="tabr0_collapse">First Tab <span class="caret"></span></a></h4>
-            <div class="collapse" data-cfw-collapse-target="tabr0_collapse">
+        <div id="tabr0" class="tab-pane">
+            <h4><a href="#tabr0_collapse" data-cfw="collapse">First Tab <span class="caret"></span></a></h4>
+            <div  id="tabr0_collapse" class="collapse">
                 ...
             </div>
         </div>
-        <div class="tab-pane" id="tabr1">
-            <h4><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="tabr1_collapse">Second Tab <span class="caret"></span></a></h4>
-            <div class="collapse" data-cfw-collapse-target="tabr1_collapse">
+        <div id="tabr1" class="tab-pane">
+            <h4><a href="#tabr1_collapse" data-cfw="collapse">Second Tab <span class="caret"></span></a></h4>
+            <div  id="tabr1_collapse" class="collapse">
                 ...
             </div>
         </div>
-        <div class="tab-pane" id="tabr2">
-            <h4><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="tabr2_collapse">Third Tab <span class="caret"></span></a></h4>
-            <div class="collapse" data-cfw-collapse-target="tabr2_collapse">
+        <div id="tabr2" class="tab-pane">
+            <h4><a href="#tabr2_collapse" data-cfw="collapse">Third Tab <span class="caret"></span></a></h4>
+            <div  id="tabr2_collapse" class="collapse">
                 ...
             </div>
         </div>
