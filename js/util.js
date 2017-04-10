@@ -157,6 +157,35 @@
         return parsedData;
     };
 
+    $.fn.CFW_getSelectorFromElement = function(name) {
+        var $node = $(this);
+        var selector = $node.attr('data-cfw-' + name + '-target');
+        if (!selector || selector === '#') {
+            selector = $node.attr('href') || '';
+        }
+
+        try {
+            const $selector = $(selector);
+            return $selector.length > 0 ? selector : null;
+        } catch(error) {
+            return null;
+        }
+    };
+
+    $.fn.CFW_getSelectorFromChain = function(name, setting) {
+        var $node = $(this);
+        if (!setting || setting === '#') {
+            return $node.CFW_getSelectorFromElement();
+        }
+
+        try {
+            const $setting = $(setting);
+            return $setting.length > 0 ? setting : null;
+        } catch(error) {
+            return null;
+        }
+    };
+
     $.fn.CFW_throttle = function(fn, threshhold, scope) {
         /* From: http://remysharp.com/2010/07/21/throttling-function-calls/ */
         if (threshhold === undefined) { threshhold = 250; }
