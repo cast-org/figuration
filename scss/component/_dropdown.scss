@@ -11,13 +11,16 @@
         display: inline-block;
         width: 0;
         height: 0;
-        margin-right: $dropdown-toggle-margin-x;
         margin-left: $dropdown-toggle-margin-x;
         vertical-align: middle;
         content: "";
         border-top: $caret-width solid;
         border-right: $caret-width solid transparent;
         border-left: $caret-width solid transparent;
+    }
+
+    &:empty::after {
+        margin-left: 0;
     }
 }
 
