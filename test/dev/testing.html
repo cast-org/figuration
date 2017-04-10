@@ -118,7 +118,7 @@ $(window).ready(function() {
         display: none;
         visibility: hidden;
     }
-    .cfw-example-tabResponsive div[data-cfw-collapse-target] {
+    .cfw-example-tabResponsive .collapse {
         display: block;
         visibility: visible;
     }
@@ -514,8 +514,8 @@ $(window).ready(function() {
                             <h4>Tooltips in a modal</h4>
                             <p><a href="#" data-cfw="tooltip" title="Tooltip">This link</a> and <a href="#" data-cfw="tooltip" title="Tooltip">that link</a> should have tooltips on hover.</p>
                             <h4>Collapse in a modal</h4>
-                            <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-toggle="modal_collapse">Collapse<span class="caret"></span></button>
-                                <div data-cfw-collapse-target="modal_collapse">
+                            <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target="#modal_collapse">Collapse<span class="caret"></span></button>
+                                <div id="modal_collapse">
                                     <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
                                 </div>
                             <hr />
@@ -618,31 +618,31 @@ $(window).ready(function() {
 
             <h2 id="accordion">Accordion:</h2>
 
-            <div class="" data-cfw="accordion">
+            <div data-cfw="accordion">
                 <div>
-                    <a href="#" data-cfw="collapse" data-cfw-collapse-toggle="accordion_0" class="open">
+                    <a href="#" data-cfw="collapse" data-cfw-collapse-target="#accordion_0" class="open">
                         Accordion_0
                         <span class="caret"></span>
                     </a>
-                    <div data-cfw-collapse-target="accordion_0">
+                    <div id="accordion_0">
                          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
                     </div>
                 </div>
                 <div>
-                    <a href="#" data-cfw="collapse" data-cfw-collapse-toggle="accordion_1">
+                    <a href="#" data-cfw="collapse" data-cfw-collapse-target="#accordion_1">
                         Accordion_1
                         <span class="caret"></span>
                     </a>
-                    <div data-cfw-collapse-target="accordion_1">
+                    <div id="accordion_1">
                          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
                     </div>
                 </div>
                 <div>
-                    <a href="#" data-cfw="collapse" data-cfw-collapse-toggle="accordion_2">
+                    <a href="#" data-cfw="collapse" data-cfw-collapse-target="#accordion_2">
                         Accordion_2
                         <span class="caret"></span>
                     </a>
-                    <div data-cfw-collapse-target="accordion_2">
+                    <div id="accordion_2">
                          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
                     </div>
                 </div>
@@ -927,14 +927,14 @@ $(window).ready(function() {
                         </div>
                     </div>
                     <div class="tab-pane" id="tabr1">
-                        <h3><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="tabr1_collapse">Second Tab <span class="caret"></span></a></h3>
-                        <div data-cfw-collapse-target="tabr1_collapse">
+                        <h3><a href="#" data-cfw="collapse" data-cfw-collapse-target="#tabr1_collapse">Second Tab <span class="caret"></span></a></h3>
+                        <div id="tabr1_collapse">
                             <p>Praesent tristique dolor quis condimentum lobortis. Phasellus accumsan lacus vitae quam elementum, non euismod urna adipiscing. Suspendisse sodales enim non sem consequat dictum. Ut sit amet elementum purus, mattis rhoncus elit.</p>
                         </div>
                     </div>
                     <div class="tab-pane" id="tabr2">
-                        <h3><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="tabr2_collapse">Third Tab <span class="caret"></span></a></h3>
-                        <div data-cfw-collapse-target="tabr2_collapse">
+                        <h3><a href="#" data-cfw="collapse" data-cfw-collapse-target="#tabr2_collapse">Third Tab <span class="caret"></span></a></h3>
+                        <div id="tabr2_collapse">
                             <p>Nullam malesuada massa urna, non gravida odio scelerisque sit amet. Donec sit amet rutrum quam, vel faucibus ante. Sed iaculis aliquet tortor vel tristique? In ligula nisi, suscipit vel ipsum id; elementum iaculis dui.</p>
                         </div>
                     </div>
@@ -1427,23 +1427,23 @@ $(window).ready(function() {
             <div class="well">
                 <label>
                     Toggle Collapse
-                    <input type="checkbox" data-cfw="collapse" data-cfw-collapse-toggle="#collapseCheck">
-                <label>
+                    <input type="checkbox" data-cfw="collapse" data-cfw-collapse-target="#collapseCheck2">
+                </label>
                 <div id="collapseCheck" class="collapse">
                     <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
                 </div>
             </div>
             <div class="well">
                 <h3>Multiple Triggers - One Target</h3>
-                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-toggle="multi-collapse">Trigger 1 <span class="caret"></span></button>
-                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-toggle="multi-collapse">Trigger 2 <span class="caret"></span></button>
-                <div data-cfw-collapse-target="multi-collapse">
+                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target="#multi-collapse">Trigger 1 <span class="caret"></span></button>
+                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target="#multi-collapse">Trigger 2 <span class="caret"></span></button>
+                <div id="multi-collapse">
                     <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
                 </div>
             </div>
             <div class="well">
                 <h3>Horizontal Collapse Test</h3>
-                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-toggle="#collapseH" data-cfw-collapse-horizontal=true>Collapse <span class="caret"></span></button>
+                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target="#collapseH" data-cfw-collapse-horizontal=true>Collapse <span class="caret"></span></button>
                 <br />
                 <div id="collapseH" class="collapse">
                     <div style="width: 500px;">
@@ -1453,32 +1453,32 @@ $(window).ready(function() {
             </div>
             <div class="well">
                 <h3>Collapse Test</h3>
-                <button type="button" id="coll_1" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-toggle="collapseTest">Collapse <span class="caret"></span></button>
-                <!-- <button type="button" class="open" data-cfw="collapse" data-cfw-collapse-toggle="collapseTest">Collapse</button> -->
+                <button type="button" id="coll_1" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target=".collapseTest">Collapse <span class="caret"></span></button>
+                <!-- <button type="button" class="open" data-cfw="collapse" data-cfw-collapse-target=".collapseTest">Collapse</button> -->
                 <a href="#" onclick="$('#coll_1').CFW_Collapse('show', false); return false;">Show</a>
                 <a href="#" onclick="$('#coll_1').CFW_Collapse('toggle'); return false;">Toggle</a>
                 <br />
-                <div data-cfw-collapse-target="collapseTest">
+                <div class="collapseTest">
                     <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
                 </div>
-                <div data-cfw-collapse-target="collapseTest">
+                <div class="collapseTest">
                     <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
                 </div>
             </div>
             <div class="well">
                 <h3>Collapse Test</h3>
-                <button type="button" id="coll_2" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-toggle="collapseTest_1">Collapse <span class="caret"></span></button>
-                <!-- <button type="button" class="open" data-cfw="collapse" data-cfw-collapse-toggle="collapseTest_1">Collapse</button> -->
+                <button type="button" id="coll_2" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target="#collapseTest_1">Collapse <span class="caret"></span></button>
+                <!-- <button type="button" class="open" data-cfw="collapse" data-cfw-collapse-target="#collapseTest_1">Collapse</button> -->
                 <br />
-                <div data-cfw-collapse-target="collapseTest_1">
+                <div id="collapseTest_1">
                     <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
                 </div>
-                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-toggle="collapseTest_3" data-cfw-collapse-animate=false>Collapse (No Animation) <span class="caret"></span></button>
-                <div data-cfw-collapse-target="collapseTest_3">
+                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target="#collapseTest_3" data-cfw-collapse-animate=false>Collapse (No Animation) <span class="caret"></span></button>
+                <div id="collapseTest_3">
                     <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
                 </div>
                 <br />
-                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-toggle="#collapseTest_4">Collapse (via selector) <span class="caret"></span></button>
+                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target="#collapseTest_4">Collapse (via selector) <span class="caret"></span></button>
                 <div id="collapseTest_4">
                     <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
                 </div>
@@ -1489,7 +1489,7 @@ $(window).ready(function() {
                 </div>
                 <script type="text/javascript">
                     $('#collapseTest_5_trigger').CFW_Collapse({
-                     toggle: '#collapseTest_5'
+                     target: '#collapseTest_5'
                     });
                 </script>
                 <br />
@@ -1680,7 +1680,7 @@ $(window).ready(function() {
                 <h4>Tooltips in a modal</h4>
                 <p><a href="#" data-cfw="tooltip" title="Tooltip">This link</a> and <a href="#" data-cfw="tooltip" title="Tooltip">that link</a> should have tooltips on hover.</p>
                 <h4>Collapse in a modal</h4>
-                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-toggle="modal_collapse">Collapse<span class="caret"></span></button>
+                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target="#modal_collapse">Collapse<span class="caret"></span></button>
                     <div data-cfw-collapse-target="modal_collapse">
                         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
                     </div>

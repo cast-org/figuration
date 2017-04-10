@@ -21,7 +21,7 @@
     };
 
     CFW_Widget_Collapse.DEFAULTS = {
-        toggle     : null,
+        target     : null,
         animate    : true,  // If collapse targets should expand and contract
         follow     : false, // If browser focus should move when a collapse toggle is activated
         horizontal : false  // If collapse should transition horizontal (vertical is default)
@@ -30,31 +30,18 @@
     CFW_Widget_Collapse.prototype = {
 
         _init : function() {
-            // Get collapse group ID
-            var collapseID = this.settings.toggle;
-
-            // Find target by id/css selector
-            var $target = $(this.settings.toggle);
-            if (!$target.length) {
-                // Get target (box) items
-                $target = $('[data-cfw-collapse-target="' + collapseID + '"]');
-            }
-            if (!$target.length) {
-                collapseID = this.$element.attr('href');
-                $target = $(collapseID);
-            }
-            if (!$target.length) { return false; }
-            if ((collapseID === undefined) || (collapseID.length <= 0)) { return false; }
-            this.$target = $target;
+            var selector = this.$element.CFW_getSelectorFromChain('collapse', this.settings.target);
+            if (!selector) { return; }
+            this.$target = $(selector);
 
             this.$element.attr({
                 'data-cfw': 'collapse',
-                'data-cfw-collapse-toggle': collapseID
+                'data-cfw-collapse-target': selector
             });
 
             // Build trigger collection
-            this.$triggers = $('[data-cfw="collapse"][data-cfw-collapse-toggle="' + collapseID + '"],' +
-                '[data-cfw="collapse"][href="' + collapseID + '"]');
+            this.$triggers = $('[data-cfw="collapse"][data-cfw-collapse-target="' + selector + '"],' +
+                '[data-cfw="collapse"][href="' + selector + '"]');
 
             // Check for presence of trigger id - set if not present
             // var triggerID = this.$element.CFW_getID('cfw-collapse');
@@ -86,7 +73,7 @@
 
             // Bind click handler
             this.$element
-                .on('click.cfw.collapse.toggle', $.proxy(this.toggle, this))
+                .on('click.cfw.collapse', $.proxy(this.toggle, this))
                 .CFW_trigger('init.cfw.collapse');
         },
 
