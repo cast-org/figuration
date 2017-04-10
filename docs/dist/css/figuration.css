@@ -3211,8 +3211,6 @@ tbody.collapse.in {
   display: inline-block;
   width: 0;
   height: 0;
-  margin-top: -0.08125rem;
-  margin-left: 0.1625rem;
   vertical-align: middle;
   border-top: 0.325rem solid;
   border-right: 0.325rem solid transparent;
@@ -3310,6 +3308,8 @@ button.drag {
   color: #fff;
   text-align: center;
   background-color: #1242ba;
+  -webkit-transition: width 0.3s ease;
+  transition: width 0.3s ease;
 }
 
 .progress-bar-striped {
@@ -4102,13 +4102,16 @@ button.list-group-item-danger.active {
   display: inline-block;
   width: 0;
   height: 0;
-  margin-right: 0.25rem;
   margin-left: 0.25rem;
   vertical-align: middle;
   content: "";
   border-top: 0.325rem solid;
   border-right: 0.325rem solid transparent;
   border-left: 0.325rem solid transparent;
+}
+
+.dropdown-toggle:empty::after {
+  margin-left: 0;
 }
 
 .dropup .dropdown-toggle::after {
