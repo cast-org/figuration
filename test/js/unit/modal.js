@@ -20,7 +20,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target.on('beforeShow.cfw.modal', function() {
@@ -35,7 +35,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target
@@ -56,7 +56,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').css('transition', 'none').appendTo('#qunit-fixture');
 
         $target
@@ -72,7 +72,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').css('transition', '.05s').appendTo('#qunit-fixture');
 
         $target
@@ -88,7 +88,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').css('transition', 'none').appendTo('#qunit-fixture');
 
         $target
@@ -108,7 +108,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').css('transition', '.05s').appendTo('#qunit-fixture');
 
         $target
@@ -128,7 +128,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target
@@ -148,7 +148,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal"><span class="close" data-cfw-dismiss="modal" /></div>').appendTo('#qunit-fixture');
 
         $target
@@ -169,7 +169,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal" data-cfw-modal-backdrop="false">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal" data-cfw-modal-backdrop="false">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target
@@ -190,7 +190,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target
@@ -212,7 +212,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target
@@ -234,7 +234,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal" data-cfw-modal-backdrop="static">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal" data-cfw-modal-backdrop="static">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target
@@ -252,7 +252,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal" data-cfw-modal-backdrop="false">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal" data-cfw-modal-backdrop="false">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target
@@ -270,7 +270,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal"><div class="contents"></div>').appendTo('#qunit-fixture');
 
         $target
@@ -294,7 +294,7 @@ $(function() {
 
         var triggered;
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target
@@ -316,7 +316,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal"><span class="close" data-cfw-dismiss="modal" /></div>').appendTo('#qunit-fixture');
 
         $target
@@ -345,7 +345,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target
@@ -371,7 +371,7 @@ $(function() {
 
         $body.css('padding-right', originalPadding);
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target
@@ -397,7 +397,7 @@ $(function() {
 
         $body.css('padding-right', originalBodyPad);
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target
@@ -422,7 +422,7 @@ $(function() {
         var $body = $(document.body);
         var $style = $('<style>body { padding-right: 42px; }</style>').appendTo('head');
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target
@@ -445,7 +445,7 @@ $(function() {
         var $element = $('<div class="fixed-top"></div>').appendTo('#qunit-fixture');
         var originalPadding = $element.css('padding-right');
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target
@@ -474,7 +474,7 @@ $(function() {
 
         $body.css('color', 'red');
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target
@@ -500,7 +500,7 @@ $(function() {
 
         $body.css('padding-right', '5%');
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target

@@ -280,8 +280,8 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}
     <a href="#" class="nav-link active">Active</a>
   </li>
   <li class="nav-item dropdown">
-    <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#navDropdown1">Dropdown</a>
-    <ul class="dropdown-menu" id="navDropdown1">
+    <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown">Dropdown</a>
+    <ul class="dropdown-menu">
       <li><a href="#" class="dropdown-item">Action</a></li>
       <li><a href="#" class="dropdown-item">Another action</a></li>
       <li><a href="#" class="dropdown-item">Something else here</a></li>
@@ -306,8 +306,8 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}
     <a href="#" class="nav-link active">Active</a>
   </li>
   <li class="nav-item dropdown">
-    <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#navDropdown2">Dropdown</a>
-    <ul class="dropdown-menu" id="navDropdown2">
+    <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown">Dropdown</a>
+    <ul class="dropdown-menu">
       <li><a href="#" class="dropdown-item">Action</a></li>
       <li><a href="#" class="dropdown-item">Another action</a></li>
       <li><a href="#" class="dropdown-item">Something else here</a></li>

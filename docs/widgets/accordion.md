@@ -31,16 +31,16 @@ A simple accordion.
 
 {% example html %}
 <div data-cfw="accordion">
-    <h4><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="accordion0">Collapse Toggle #1</a></h4>
-    <div class="collapse" data-cfw-collapse-target="accordion0">
+    <h4><a href="#accordion0" data-cfw="collapse" class="open">Collapse Toggle #1</a></h4>
+    <div id="accordion0" class="collapse">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.
     </div>
-    <h4><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="accordion1">Collapse Toggle #2</a></h4>
-    <div class="collapse" data-cfw-collapse-target="accordion1">
+    <h4><a href="#accordion1" data-cfw="collapse">Collapse Toggle #2</a></h4>
+    <div id="accordion1" class="collapse">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.
     </div>
-    <h4><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="accordion2">Collapse Toggle #3</a></h4>
-    <div class="collapse" data-cfw-collapse-target="accordion2">
+    <h4><a href="#accordion2" data-cfw="collapse">Collapse Toggle #3</a></h4>
+    <div id="accordion2" class="collapse">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.
     </div>
 </div>
@@ -54,9 +54,11 @@ Here some cards are used to add a bit of layout.
 <div data-cfw="accordion">
     <div class="card mb-0">
         <div class="card-header">
-            <h4 class="mb-0"><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="card0">Collapse Toggle #1</a></h4>
+            <h4 class="mb-0">
+                <a href="#card0" data-cfw="collapse" class="open">Collapse Toggle #1</a>
+            </h4>
         </div>
-        <div class="collapse" data-cfw-collapse-target="card0">
+        <div id="card0" class="collapse">
             <div class="card-body">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.
             </div>
@@ -64,9 +66,11 @@ Here some cards are used to add a bit of layout.
     </div>
     <div class="card mb-0">
         <div class="card-header">
-            <h4 class="mb-0"><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="card1">Collapse Toggle #2</a></h4>
+            <h4 class="mb-0">
+                <a href="#card1" data-cfw="collapse">Collapse Toggle #2</a>
+            </h4>
         </div>
-        <div class="collapse" data-cfw-collapse-target="card1">
+        <div id="card1" class="collapse">
             <div class="card-body">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.
             </div>
@@ -74,9 +78,11 @@ Here some cards are used to add a bit of layout.
     </div>
     <div class="card mb-0">
         <div class="card-header">
-            <h4 class="mb-0"><a href="#" data-cfw="collapse" data-cfw-collapse-toggle="card2">Collapse Toggle #3</a></h4>
+            <h4 class="mb-0">
+                <a href="#card2" data-cfw="collapse">Collapse Toggle #3</a>
+            </h4>
         </div>
-        <div class="collapse" data-cfw-collapse-target="card2">
+        <div id="card2" class="collapse">
             <div class="card-body">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.
             </div>

@@ -251,7 +251,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-toggle="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
         var template = '<div id="modal" class="modal">' +
             '<div class="modal-dialog">' +
             '<div class="modal-content">' +

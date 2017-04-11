@@ -16,7 +16,6 @@
         this.$focusLast = null;
         this.instance = null;
         this.settings = null;
-        this.dataToggle = null;
         this.type = null;
         this.isDialog = false;
         this.follow = false;
@@ -37,7 +36,7 @@
     };
 
     CFW_Widget_Tooltip.DEFAULTS = {
-        toggle          : false,            // Target selector
+        target          : false,            // Target selector
         placement       : 'top',            // Where to locate tooltip (top/bottom/left/right/auto)
         trigger         : 'hover focus',    // How tooltip is triggered (click/hover/focus/manual)
         animate         : true,             // Should the tooltip fade in and out
@@ -70,19 +69,9 @@
 
             this.$element.attr('data-cfw', this.type);
 
-            // Find target by id/css selector - only pick first one found
-            var dataToggle;
-            var $findTarget = $(this.settings.toggle).eq(0);
-            if ($findTarget.length) {
-                dataToggle = this.settings.toggle;
-            } else {
-                // If not found by selector - find by 'toggle' data
-                dataToggle = this.$element.attr('data-cfw-' + this.type + '-toggle');
-                $findTarget = $('[data-cfw-' + this.type + '-target="' + dataToggle + '"]');
-            }
-            if ($findTarget.length) {
-                this.dataToggle = dataToggle;
-                this.$target = $findTarget;
+            var selector = this.$element.CFW_getSelectorFromChain(this.type, this.settings.target);
+            if (selector !== null) {
+                this.$target = $(selector);
             } else {
                 this.fixTitle();
             }
@@ -150,7 +139,7 @@
             var $tip = this.$target;
             var $inner = $tip.find('.tooltip-body');
 
-            if (!this.dataToggle) {
+            if (this.dynamicTip) {
                 var title = this.getTitle();
 
                 if (this.settings.html) {
@@ -503,7 +492,6 @@
             this.$focusLast = null;
             this.instance = null;
             this.settings = null;
-            this.dataToggle = null;
             this.type = null;
             this.isDialog = null;
             this.follow = null;

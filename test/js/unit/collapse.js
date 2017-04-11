@@ -18,7 +18,7 @@ $(function() {
 
     QUnit.test('should show a collapsed element (no transition)', function(assert) {
         assert.expect(2);
-        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         var $target = $('<div id="test" class="collapse" />').css('transition', 'none').appendTo('#qunit-fixture');
         $trigger.CFW_Collapse();
         $trigger.CFW_Collapse('show');
@@ -29,7 +29,7 @@ $(function() {
     QUnit.test('should show a collapsed element (with transition)', function(assert) {
         assert.expect(2);
         var done = assert.async();
-        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         var $target = $('<div id="test" class="collapse" />').css('transition', '.05s').appendTo('#qunit-fixture');
         $trigger.CFW_Collapse();
         $trigger
@@ -44,7 +44,7 @@ $(function() {
     QUnit.test('should hide a collapsed element (no transition)', function(assert) {
         assert.expect(2);
         var done = assert.async();
-        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         var $target = $('<div id="test" class="collapse" />').css('transition', 'none').appendTo('#qunit-fixture');
         $trigger.CFW_Collapse();
         $trigger
@@ -62,7 +62,7 @@ $(function() {
     QUnit.test('should hide a collapsed element (with transition)', function(assert) {
         assert.expect(2);
         var done = assert.async();
-        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         var $target = $('<div id="test" class="collapse" />').css('transition', '.05s').appendTo('#qunit-fixture');
         $trigger.CFW_Collapse();
         $trigger
@@ -81,7 +81,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         /* var $target = */ $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger
@@ -101,7 +101,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         var $target = $('<div id="test" class="collapse" style="height: 0px" />').appendTo('#qunit-fixture');
 
         $trigger
@@ -120,7 +120,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         var $target = $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger
@@ -135,7 +135,7 @@ $(function() {
 
     QUnit.test('should add "in" class to target when collapse trigger has "open" class', function(assert) {
         assert.expect(1);
-        var $trigger = $('<a role="button" class="open" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger = $('<a role="button" class="open" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         var $target = $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger.CFW_Collapse();
@@ -146,7 +146,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var $trigger = $('<a role="button" class="open" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger = $('<a role="button" class="open" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         var $target = $('<div id="test" class="collapse in" />').appendTo('#qunit-fixture');
 
         $trigger
@@ -163,8 +163,8 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $trigger0 = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
-        var $trigger1 = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger0 = $('<a role="button" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
+        var $trigger1 = $('<a role="button" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         /* var $target = */ $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger0
@@ -183,8 +183,8 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $trigger0 = $('<a role="button" class="open" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
-        var $trigger1 = $('<a role="button" class="open" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger0 = $('<a role="button" class="open" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
+        var $trigger1 = $('<a role="button" class="open" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         /* var $target = */ $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger0
@@ -203,7 +203,7 @@ $(function() {
         assert.expect(0);
         var done = assert.async();
 
-        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         /* var $target = */ $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger
@@ -220,7 +220,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         /* var $target =  */ $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger
@@ -237,7 +237,7 @@ $(function() {
         assert.expect(0);
         var done = assert.async();
 
-        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         /* var $target = */ $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger
@@ -254,7 +254,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var $trigger = $('<a role="button" class="open" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger = $('<a role="button" class="open" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         /* var $target = */ $('<div id="test" class="collapse in" />').appendTo('#qunit-fixture');
 
         $trigger
@@ -271,8 +271,8 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $trigger0 = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
-        var $trigger1 = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger0 = $('<a role="button" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
+        var $trigger1 = $('<a role="button" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         /* var $target = */ $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger0
@@ -291,8 +291,8 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $trigger0 = $('<a role="button" class="open" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
-        var $trigger1 = $('<a role="button" class="open" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger0 = $('<a role="button" class="open" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
+        var $trigger1 = $('<a role="button" class="open" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         /* var $target = */ $('<div id="test" class="collapse in" />').appendTo('#qunit-fixture');
 
         $trigger0
@@ -311,7 +311,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var $trigger = $('<a role="button" class="open" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger = $('<a role="button" class="open" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         var $target = $('<div id="test" class="collapse in" />').appendTo('#qunit-fixture');
 
         $trigger
@@ -328,7 +328,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger = $('<a role="button" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         var $target = $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger
@@ -345,7 +345,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $trigger = $('<input type="checkbox" data-cfw="collapse" data-cfw-collapse-toggle="#test" />').appendTo('#qunit-fixture');
+        var $trigger = $('<input type="checkbox" data-cfw="collapse" data-cfw-collapse-target="#test" />').appendTo('#qunit-fixture');
         /* var $target = */ $('<div id="test" class="collapse" />').appendTo('#qunit-fixture');
 
         $trigger

@@ -143,7 +143,7 @@ $('#html-popover').CFW_Popover({
 Have a complex content that you would like to show in a popover, or one that is updated dynamically?  Create the popover and then link to it with the `toggle` option.
 
 {% example html %}
-<button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-toggle="#popoverExample0" data-cfw-popover-placement="right">Show Popover</button>
+<button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-target="#popoverExample0" data-cfw-popover-placement="right">Show Popover</button>
 
 <div class="popover" id="popoverExample0">
     <h3 class="popover-header">Popover title</h3>
@@ -223,6 +223,8 @@ The popover widget, by default, generates content and markup on demand, and by d
 
 The required markup for a popover is only a `data-cfw="popover"` attribute and `title` or a `data-cfw-popover-content=""` on the HTML element you wish to have a popover. The generated markup of a popover is rather simple, though it does require a position (by default, set to top by the widget).
 
+If the popover item is already created, you can link to it using <code>data-cfw-popover-target="#somePopover"</code>, or href="#somePopover". The proper role and ARIA attributes will be automatically created to link the trigger and target elements.
+
 ### Via JavaScript
 
 Enable manually with:
@@ -260,10 +262,10 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 </thead>
 <tbody>
     <tr>
-        <td>toggle</td>
+        <td>target</td>
         <td>string</td>
         <td>null</td>
-        <td>Either the selector (jQuery style), or the string related to the target popover having a <code>data-cfw-popover-target</code> attribute.</td>
+        <td>The selector (jQuery style) of the target popover.</td>
     </tr>
     <tr>
         <td>animate</td>
@@ -356,16 +358,6 @@ function myPopoverAlign(tip, trigger) {
         <td>string</td>
         <td>'Close'</td>
         <td>Screen reader only text alternative for close links when using option <code>trigger: 'click'</code></td>
-    </tr>
-    <tr>
-        <td>toggle</td>
-        <td>string</td>
-        <td>null</td>
-        <td>
-            <p>If the popover item is already created, you can link to it using <code>data-cfw-popover-toggle="somePopover"</code>.</p>
-            <p>The target popover item will then need the associated attribute <code>data-cfw-popover-target="somePopover"</code>.</p>
-            <p>The proper role and ARIA attributes will be automatically created to link the trigger and target elements.</p>
-        </td>
     </tr>
     <tr>
         <td>title</td>
