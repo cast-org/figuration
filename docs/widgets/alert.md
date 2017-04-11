@@ -30,7 +30,7 @@ Enable dismiss functionality for alert messages.
 </div>
 {% endexample %}
 
-The dismiss even works with dynamically inserted alerts.
+The dismiss will work with dynamically inserted alerts.
 
 <div class="cf-example cf-example-bottom">
     <p>
@@ -78,7 +78,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>target</td>
         <td>string</td>
         <td>null</td>
-        <td>The selector (jQuery style) of the target item to be closed.</td>
+        <td>The selector (jQuery style) of the target item to be dismissed.</td>
     </tr>
     <tr>
         <td>animate</td>
@@ -94,7 +94,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 #### `.CFW_Alert(options)`
 {:.no_toc}
 
-Activates the alert as a closable element by listening for click events on descendant elements which have the `data-cfw-dismiss="alert"` attribute. (Not necessary when using the Figuration widget API is enabled.) Accepts an optional options `object`.
+Activates the element as a dismiss trigger. (Not necessary when using the Figuration widget API is enabled.) Accepts an optional options `object`.
 
 {% highlight js %}
 $('#myAlert').CFW_Alert({
@@ -110,7 +110,7 @@ Closes an alert.
 #### `.CFW_Alert('dipose')`
 {:.no_toc}
 
-Removes the click event listener from an alert. This will not disable a dismiss item if the Figuration widget API is enabled.
+Removes the click event listener from a trigger. This will not disable a dismiss item if the Figuration widget API is enabled.
 
 ### Events
 
@@ -125,16 +125,12 @@ Event callbacks happen on the target alert container.
 </thead>
 <tbody>
     <tr>
-        <td>init.cfw.alert</td>
-        <td>This event fires after the collapse item is initialized.</td>
-    </tr>
-    <tr>
         <td>beforeClose.cfw.alert</td>
         <td>This event is fired immediately when the <code>close</code> method is called.</td>
     </tr>
     <tr>
         <td>afterClose.cfw.alert</td>
-        <td>This event is fired when an alert has been closed. (will wait for CSS transitions to complete).</td>
+        <td>This event is fired when an alert has been closed (will wait for CSS transitions to complete).</td>
     </tr>
 </tbody>
 </table>
