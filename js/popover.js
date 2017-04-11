@@ -52,7 +52,7 @@
         var $title = $tip.find('.popover-header');
         var $content = $tip.find('.popover-body');
 
-        if (!this.dataToggle) {
+        if (this.dynamicTip) {
             var title = this.getTitle();
             var content = this.getContent();
 

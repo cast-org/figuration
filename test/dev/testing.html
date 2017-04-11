@@ -572,7 +572,7 @@ $(window).ready(function() {
                 function modalLinkTest0() {
                     $('#modal0_0').CFW_Modal('unlink');
                     $('#modal0_1').CFW_Modal({
-                        toggle: '#modal0'
+                        target: '#modal0'
                     });
                     $('#modal0').CFW_Modal('show');
                 }
@@ -702,10 +702,10 @@ $(window).ready(function() {
             <br />
             --
             <br />
-            <button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-toggle="pop_1" id="pop_1" title="click me">Popover Click</button>
+            <button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-target="#pop_1p" id="pop_1" title="click me">Popover Click</button>
             <a href="#" onclick="$('#pop_1').CFW_Popover('hide', true); return false;">Force Close</a> -
             <a href="#" onclick="$('#pop_1').CFW_Popover('hide'); return false;">Normal Close</a>
-            <div class="popover" data-cfw-popover-target="pop_1">
+            <div class="popover" id="pop_1p">
                 <h3 class="popover-header">Popover top</h3>
                 <div class="popover-body">
                     <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
@@ -714,8 +714,8 @@ $(window).ready(function() {
                 <div class="popover-arrow"></div>
             </div>
             --
-            <button type="button" class="btn btn-info" data-cfw-popover-toggle="pop_2" id="pop_2">Popover Hover/focus</button>
-            <div class="popover" data-cfw-popover-target="pop_2">
+            <button type="button" class="btn btn-info" data-cfw-popover-target="#pop_2p" id="pop_2">Popover Hover/focus</button>
+            <div class="popover" id="pop_2p">
                 <h3 class="popover-header">Popover top</h3>
                 <div class="popover-body">
                     <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
@@ -723,9 +723,9 @@ $(window).ready(function() {
                 <div class="popover-arrow"></div>
             </div>
             <br />
-            <button type="button" class="btn btn-info" data-cfw-popover-toggle="pop_3" id="pop_3">Popover Hover/focus</button>
+            <button type="button" class="btn btn-info" data-cfw-popover-target="#pop_3p" id="pop_3">Popover Hover/focus</button>
             &lt;- preventDefault() - should not show popover
-            <div class="popover" data-cfw-popover-target="pop_3">
+            <div class="popover" id="pop_3p">
                 <h3 class="popover-header">Popover top</h3>
                 <div class="popover-body">
                     <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
@@ -734,7 +734,7 @@ $(window).ready(function() {
             </div>
             <button type="button" class="btn btn-info" data-cfw="popover" id="pop_4" title="Yay, you clicked me!" data-cfw-popover-content="blah">Popover Click</button>
             <br />
-            <!--<button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-toggle="#pop_5p" id="pop_5">Popover from selector</button>-->
+            <!--<button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-target="#pop_5p" id="pop_5">Popover from selector</button>-->
             <button type="button" class="btn btn-info" id="pop_5">Popover from selector</button>
             <a href="#" onclick="$('#pop_5p').CFW_Popover('hide');return false;">Close by calling on popover</a>
             <div class="popover" id="pop_5p">
@@ -746,8 +746,8 @@ $(window).ready(function() {
                 <div class="popover-arrow"></div>
             </div>
             <br />
-            <button type="button" class="btn btn-info" id="pop_7t" data-cfw="popover" data-cfw-popover-toggle="#pop_7">Popover from selector</button>
-            <div class="popover" id="pop_7">
+            <button type="button" class="btn btn-info" id="pop_7t" data-cfw="popover" data-cfw-popover-target="#pop_7p">Popover from selector</button>
+            <div class="popover" id="pop_7p">
                 <h3 class="popover-header">Popover selector</h3>
                 <div class="popover-body">
                     <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
@@ -788,7 +788,7 @@ $(window).ready(function() {
                     return e.preventDefault();
                 });
                 $('#pop_5').CFW_Popover({
-                    toggle: '#pop_5p',
+                    target: '#pop_5p',
                     placement: 'bottom'
                 });
 
@@ -799,7 +799,7 @@ $(window).ready(function() {
             <strong>Reusing a Popover</strong>
             <br />
             <p>
-                <button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-toggle="#popR" data-cfw-popover-trigger=click id="pop0_0" data-cfw-popover-drag=true>Popover reuse (0)</button>
+                <button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-target="#popR" data-cfw-popover-trigger=click id="pop0_0" data-cfw-popover-drag=true>Popover reuse (0)</button>
                 <button type="button" class="btn btn-info" id="pop0_1" data-cfw-popover-drag=true>Popover reuse (1)</button>
                 <br />
                 <a href="#" onclick="javascript: popLinkTest0(); return false;">Unlink 0 - Link 1</a> |
@@ -820,7 +820,7 @@ $(window).ready(function() {
                 function popLinkTest0() {
                     $('#pop0_0').parent().one('afterUnlink.cfw.popover', function() {
                         $('#pop0_1').CFW_Popover({
-                            toggle: '#popR',
+                            target: '#popR',
                             trigger: 'click',
                             activate: true
                         });
@@ -1680,8 +1680,8 @@ $(window).ready(function() {
                 <h4>Tooltips in a modal</h4>
                 <p><a href="#" data-cfw="tooltip" title="Tooltip">This link</a> and <a href="#" data-cfw="tooltip" title="Tooltip">that link</a> should have tooltips on hover.</p>
                 <h4>Collapse in a modal</h4>
-                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target="#modal_collapse">Collapse<span class="caret"></span></button>
-                    <div data-cfw-collapse-target="modal_collapse">
+                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target="#modal_collapse2">Collapse<span class="caret"></span></button>
+                    <div id="modal_collapse2">
                         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
                     </div>
                 <hr />
