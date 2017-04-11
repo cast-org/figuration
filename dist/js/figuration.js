@@ -2122,8 +2122,6 @@ if (typeof jQuery === 'undefined') {
             this.inTransition = true;
             this.$target.removeClass('in');
 
-            this.inState = { click: false, hover: false, focus: false };
-
             this.$target.CFW_transition(null, $.proxy(this._hideComplete, this));
 
             this.hoverState = null;
@@ -2307,6 +2305,8 @@ if (typeof jQuery === 'undefined') {
                 this.$focusLast.off('.cfw.' + this.type + '.focusLast');
             }
             $(document).off('.cfw.' + this.type + '.' + this.instance);
+
+            this.inState = { click: false, hover: false, focus: false };
 
             this.$target
                 .removeClass('in')
@@ -3859,16 +3859,14 @@ if (typeof jQuery === 'undefined') {
 
             this.findParent();
 
-            if (this.settings.animate) {
-                this.$parent.addClass('fade in');
-            }
+            this.$element
+                .data('cfw.alert', this)
+                .on('click.cfw.alert', function(e) {
+                    e.preventDefault();
+                    $selfRef.close();
+                });
 
             this.$parent
-                .on('click.cfw.alert', dismiss, function() {
-                    $selfRef.close();
-                })
-                .data('cfw.alert', this)
-                .find(dismiss).data('cfw.alert', this)
                 .CFW_trigger('init.cfw.alert');
         },
 
@@ -3881,6 +3879,10 @@ if (typeof jQuery === 'undefined') {
 
             if (!this.$parent.CFW_trigger('beforeClose.cfw.alert')) {
                 return;
+            }
+
+            if (this.settings.animate) {
+                this.$parent.addClass('fade in');
             }
 
             this.inTransition = 1;
@@ -3900,19 +3902,12 @@ if (typeof jQuery === 'undefined') {
         },
 
         findParent : function() {
-            var selector = this.settings.target;
-            var $parent = null;
-
-            if (!selector) {
-                selector = this.$element.attr('href');
+            var selector = this.$element.CFW_getSelectorFromChain('alert', this.settings.target);
+            if (selector) {
+                this.$parent = $(selector);
+            } else {
+                this.$parent = this.$element.closest('.alert');
             }
-
-            $parent = $(selector === '#' ? [] : selector);
-            if (!$parent.length) {
-                $parent = this.$element.closest('.alert');
-            }
-
-            this.$parent = $parent;
         },
 
         dispose : function() {
