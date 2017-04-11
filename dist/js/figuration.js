@@ -178,6 +178,35 @@ if (typeof jQuery === 'undefined') {
         return parsedData;
     };
 
+    $.fn.CFW_getSelectorFromElement = function(name) {
+        var $node = $(this);
+        var selector = $node.attr('data-cfw-' + name + '-target');
+        if (!selector || selector === '#') {
+            selector = $node.attr('href') || '';
+        }
+
+        try {
+            var $selector = $(selector);
+            return $selector.length > 0 ? selector : null;
+        } catch (error) {
+            return null;
+        }
+    };
+
+    $.fn.CFW_getSelectorFromChain = function(name, setting) {
+        var $node = $(this);
+        if (!setting || setting === '#') {
+            return $node.CFW_getSelectorFromElement();
+        }
+
+        try {
+            var $setting = $(setting);
+            return $setting.length > 0 ? setting : null;
+        } catch (error) {
+            return null;
+        }
+    };
+
     $.fn.CFW_throttle = function(fn, threshhold, scope) {
         /* From: http://remysharp.com/2010/07/21/throttling-function-calls/ */
         if (threshhold === undefined) { threshhold = 250; }
@@ -421,7 +450,7 @@ if (typeof jQuery === 'undefined') {
     };
 
     CFW_Widget_Collapse.DEFAULTS = {
-        toggle     : null,
+        target     : null,
         animate    : true,  // If collapse targets should expand and contract
         follow     : false, // If browser focus should move when a collapse toggle is activated
         horizontal : false  // If collapse should transition horizontal (vertical is default)
@@ -430,31 +459,18 @@ if (typeof jQuery === 'undefined') {
     CFW_Widget_Collapse.prototype = {
 
         _init : function() {
-            // Get collapse group ID
-            var collapseID = this.settings.toggle;
-
-            // Find target by id/css selector
-            var $target = $(this.settings.toggle);
-            if (!$target.length) {
-                // Get target (box) items
-                $target = $('[data-cfw-collapse-target="' + collapseID + '"]');
-            }
-            if (!$target.length) {
-                collapseID = this.$element.attr('href');
-                $target = $(collapseID);
-            }
-            if (!$target.length) { return false; }
-            if ((collapseID === undefined) || (collapseID.length <= 0)) { return false; }
-            this.$target = $target;
+            var selector = this.$element.CFW_getSelectorFromChain('collapse', this.settings.target);
+            if (!selector) { return; }
+            this.$target = $(selector);
 
             this.$element.attr({
                 'data-cfw': 'collapse',
-                'data-cfw-collapse-toggle': collapseID
+                'data-cfw-collapse-target': selector
             });
 
             // Build trigger collection
-            this.$triggers = $('[data-cfw="collapse"][data-cfw-collapse-toggle="' + collapseID + '"],' +
-                '[data-cfw="collapse"][href="' + collapseID + '"]');
+            this.$triggers = $('[data-cfw="collapse"][data-cfw-collapse-target="' + selector + '"],' +
+                '[data-cfw="collapse"][href="' + selector + '"]');
 
             // Check for presence of trigger id - set if not present
             // var triggerID = this.$element.CFW_getID('cfw-collapse');
@@ -486,7 +502,7 @@ if (typeof jQuery === 'undefined') {
 
             // Bind click handler
             this.$element
-                .on('click.cfw.collapse.toggle', $.proxy(this.toggle, this))
+                .on('click.cfw.collapse', $.proxy(this.toggle, this))
                 .CFW_trigger('init.cfw.collapse');
         },
 
@@ -686,7 +702,7 @@ if (typeof jQuery === 'undefined') {
     };
 
     CFW_Widget_Dropdown.DEFAULTS = {
-        toggle   : null,
+        target   : null,
         delay    : 350,     // Delay for hiding menu (milliseconds)
         hover    : false,   // Enable hover style navigation
         backlink : false,   // Insert back links into submenus
@@ -696,15 +712,12 @@ if (typeof jQuery === 'undefined') {
 
     function getParent($node) {
         var $parent;
-        var selector = $node.attr('data-cfw-dropdown-target');
+        var selector = $node.CFW_getSelectorFromElement('dropdown');
         if (selector) {
-            $parent = $(selector);
+            $parent = $(selector).parent();
         }
-        if ($parent && $parent.length) {
-            return $parent;
-        } else {
-            return $node.parent();
-        }
+
+        return $parent || $node.parent();
     }
 
     function clearMenus(e) {
@@ -723,23 +736,9 @@ if (typeof jQuery === 'undefined') {
             var $selfRef = this;
 
             // Get target menu
-            var menuID = this.settings.toggle;
-            // if ((menuID === undefined) || (menuID.length <= 0)) { return false; }
+            var selector = this.$element.CFW_getSelectorFromChain('dropdown', this.settings.target);
+            var $target = $(selector);
 
-            // Find target by id/css selector
-            var $target = $(this.settings.toggle);
-            if (menuID !== undefined && !$target.length) {
-                $target = $('[data-cfw-dropdown-target="' + menuID + '"]');
-            }
-            // Target by href selector
-            if (!$target.length) {
-                var selector = this.$element.attr('href');
-                selector = selector && /#[]A-Za-z]/.test(selector);
-                if (selector) {
-                    $target = $(selector);
-                }
-                // $target = $(this.$element.attr('href'));
-            }
             // Target by sibling class
             if (!$target.length) {
                 $target = $(this.$element.siblings('.dropdown-menu')[0]);
@@ -756,7 +755,7 @@ if (typeof jQuery === 'undefined') {
             // Set tabindex=-1 so that sub-menu links can't receive keyboard focus from tabbing
 
             // Check for id on top level menu - set if not present
-            menuID = this.$target.CFW_getID('cfw-dropdown');
+            /* var menuID = */ this.$target.CFW_getID('cfw-dropdown');
             this.$target.attr({
                 'aria-hidden': 'true',
                 'aria-labelledby': this.instance
@@ -1690,7 +1689,6 @@ if (typeof jQuery === 'undefined') {
         this.$focusLast = null;
         this.instance = null;
         this.settings = null;
-        this.dataToggle = null;
         this.type = null;
         this.isDialog = false;
         this.follow = false;
@@ -1711,7 +1709,7 @@ if (typeof jQuery === 'undefined') {
     };
 
     CFW_Widget_Tooltip.DEFAULTS = {
-        toggle          : false,            // Target selector
+        target          : false,            // Target selector
         placement       : 'top',            // Where to locate tooltip (top/bottom/left/right/auto)
         trigger         : 'hover focus',    // How tooltip is triggered (click/hover/focus/manual)
         animate         : true,             // Should the tooltip fade in and out
@@ -1744,19 +1742,9 @@ if (typeof jQuery === 'undefined') {
 
             this.$element.attr('data-cfw', this.type);
 
-            // Find target by id/css selector - only pick first one found
-            var dataToggle;
-            var $findTarget = $(this.settings.toggle).eq(0);
-            if ($findTarget.length) {
-                dataToggle = this.settings.toggle;
-            } else {
-                // If not found by selector - find by 'toggle' data
-                dataToggle = this.$element.attr('data-cfw-' + this.type + '-toggle');
-                $findTarget = $('[data-cfw-' + this.type + '-target="' + dataToggle + '"]');
-            }
-            if ($findTarget.length) {
-                this.dataToggle = dataToggle;
-                this.$target = $findTarget;
+            var selector = this.$element.CFW_getSelectorFromChain(this.type, this.settings.target);
+            if (selector !== null) {
+                this.$target = $(selector);
             } else {
                 this.fixTitle();
             }
@@ -1824,7 +1812,7 @@ if (typeof jQuery === 'undefined') {
             var $tip = this.$target;
             var $inner = $tip.find('.tooltip-body');
 
-            if (!this.dataToggle) {
+            if (this.dynamicTip) {
                 var title = this.getTitle();
 
                 if (this.settings.html) {
@@ -2177,7 +2165,6 @@ if (typeof jQuery === 'undefined') {
             this.$focusLast = null;
             this.instance = null;
             this.settings = null;
-            this.dataToggle = null;
             this.type = null;
             this.isDialog = null;
             this.follow = null;
@@ -2649,7 +2636,7 @@ if (typeof jQuery === 'undefined') {
         var $title = $tip.find('.popover-header');
         var $content = $tip.find('.popover-body');
 
-        if (!this.dataToggle) {
+        if (this.dynamicTip) {
             var title = this.getTitle();
             var content = this.getContent();
 
@@ -2900,7 +2887,7 @@ if (typeof jQuery === 'undefined') {
     };
 
     CFW_Widget_Modal.DEFAULTS = {
-        toggle       : false,   // Target selector
+        target       : false,   // Target selector
         animate      : true,    // If modal windows should animate
         unlink       : false,   // If on hide to remove events and attributes from modal and trigger
         dispose      : false,   // If on hide to unlink, then remove modal from DOM
@@ -2912,15 +2899,9 @@ if (typeof jQuery === 'undefined') {
     CFW_Widget_Modal.prototype = {
 
         _init : function() {
-            // Find target by id/css selector - only pick first one found
-            var $findTarget = $(this.settings.toggle).eq(0);
-            if ($findTarget.length <= 0) {
-                // If not found by selector - find by 'toggle' data
-                var dataToggle = this.$element.attr('data-cfw-modal-toggle');
-                $findTarget = $('[data-cfw-modal-target="' + dataToggle + '"]');
-            }
-            if ($findTarget.length <= 0) { return false; }
-            this.$target = $findTarget;
+            var selector = this.$element.CFW_getSelectorFromChain('modal', this.settings.target);
+            if (!selector) { return; }
+            this.$target = $(selector);
             this.$dialog = this.$target.find('.modal-dialog');
 
             this.$element.attr('data-cfw', 'modal');
@@ -2948,7 +2929,7 @@ if (typeof jQuery === 'undefined') {
             this.$dialog.attr('role', 'document');
 
             // Bind click handler
-            this.$element.on('click.cfw.modal.toggle', $.proxy(this.toggle, this));
+            this.$element.on('click.cfw.modal', $.proxy(this.toggle, this));
 
             this.$target.data('cfw.modal', this);
 
@@ -5803,7 +5784,7 @@ if (typeof jQuery === 'undefined') {
                     $selfRef.trackSet(num);
                 });
 
-                $captionElm.CFW_Dropdown({ toggle: '#' + menuID });
+                $captionElm.CFW_Dropdown({ target: '#' + menuID });
             }
 
             this.trackStatus();
@@ -5941,7 +5922,7 @@ if (typeof jQuery === 'undefined') {
                     });
                 }
 
-                $tsElm.CFW_Dropdown({ toggle: '#' + menuID });
+                $tsElm.CFW_Dropdown({ target: '#' + menuID });
             }
 
             // Show transcript if set
