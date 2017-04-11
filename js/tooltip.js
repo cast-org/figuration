@@ -449,8 +449,6 @@
             this.inTransition = true;
             this.$target.removeClass('in');
 
-            this.inState = { click: false, hover: false, focus: false };
-
             this.$target.CFW_transition(null, $.proxy(this._hideComplete, this));
 
             this.hoverState = null;
@@ -634,6 +632,8 @@
                 this.$focusLast.off('.cfw.' + this.type + '.focusLast');
             }
             $(document).off('.cfw.' + this.type + '.' + this.instance);
+
+            this.inState = { click: false, hover: false, focus: false };
 
             this.$target
                 .removeClass('in')
