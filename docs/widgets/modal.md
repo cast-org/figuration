@@ -432,7 +432,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>target</td>
         <td>string</td>
         <td>null</td>
-        <td>Either the selector (jQuery style), or the string related to the target tooltip having a `data-cfw-modal-target` attribute.</td>
+        <td>The selector (jQuery style) of the target modal.</td>
     </tr>
     <tr>
         <td>animate</td>
