@@ -395,7 +395,7 @@ Input groups work, too:
   <form class="form-inline">
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">@</span>
-      <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+      <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
     </div>
   </form>
 </nav>

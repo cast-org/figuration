@@ -79,7 +79,7 @@ Mix input groups with button groups in your toolbars. Similar to the example abo
   </div>
   <div class="input-group">
     <span class="input-group-addon" id="btnGroupAddon">@</span>
-    <input type="text" class="form-control" placeholder="Input group example" aria-describedby="btnGroupAddon">
+    <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon">
   </div>
 </div>
 
@@ -92,7 +92,7 @@ Mix input groups with button groups in your toolbars. Similar to the example abo
   </div>
   <div class="input-group">
     <span class="input-group-addon" id="btnGroupAddon2">@</span>
-    <input type="text" class="form-control" placeholder="Input group example" aria-describedby="btnGroupAddon2">
+    <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
   </div>
 </div>
 {% endexample %}
