@@ -132,7 +132,11 @@
     background: $input-bg $custom-select-indicator no-repeat right ($input-padding-x / 2) center;
     background-size: $custom-select-indicator-size;
     border: $input-border-width solid $input-border-color;
-    @include border-radius($input-border-radius);
+    @if $enable-rounded {
+        border-radius: $input-border-radius;
+    } @else {
+        border-radius: 0;
+    }
     @include box-shadow($input-box-shadow);
     @include transition($input-transition);
     appearance: none;
