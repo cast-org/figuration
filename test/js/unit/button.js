@@ -16,6 +16,22 @@ $(function() {
         assert.strictEqual($col[0], $el[0], 'collection contains element');
     });
 
+    QUnit.test('should not add aria-pressed on labels for radio/checkbox inputs in a data-toggle="buttons" group', function(assert) {
+        assert.expect(2);
+        var groupHTML = '<div class="btn-group" data-cfw="buttons">'
+            + '<label id="btn1" class="btn btn-primary"><input type="checkbox" autocomplete="off"> Checkbox</label>'
+            + '<label id="btn2" class="btn btn-primary"><input type="radio" name="options" autocomplete="off"> Radio</label>'
+            + '</div>';
+        var $group = $(groupHTML).appendTo('#qunit-fixture');
+        var $btn1 = $('#btn1');
+        var $btn2 = $('#btn2');
+        $group.CFW_Button();
+        $btn1.find('input').trigger('click');
+        assert.ok($btn1.is(':not([aria-pressed])'), 'label for nested checkbox input has not been given an aria-pressed attribute');
+        $btn2.find('input').trigger('click');
+        assert.ok($btn2.is(':not([aria-pressed])'), 'label for nested radio input has not been given an aria-pressed attribute');
+    });
+
     QUnit.test('should set active if btn child is checked radio', function(assert) {
         assert.expect(2);
         var groupHTML = '<div class="btn-group" data-cfw="buttons">'
@@ -30,7 +46,7 @@ $(function() {
         assert.ok($btn.hasClass('active'), 'btn has active class');
     });
 
-    QUnit.test('should set aria-pressed=true if btn child is checked radio', function(assert) {
+    QUnit.test('should not set aria-pressed if btn child is checked radio', function(assert) {
         assert.expect(1);
         var groupHTML = '<div class="btn-group" data-cfw="buttons">'
             + '<label id="btn1" class="btn btn-primary">'
@@ -39,10 +55,10 @@ $(function() {
             + '</div>';
         var $group = $(groupHTML).appendTo('#qunit-fixture');
         $group.CFW_Button();
-        assert.strictEqual($('#btn1').attr('aria-pressed'), 'true');
+        assert.ok($('#btn1').is(':not([aria-pressed])'));
     });
 
-    QUnit.test('should set aria-pressed=false if btn child is unchecked radio', function(assert) {
+    QUnit.test('should not set aria-pressed if btn child is unchecked radio', function(assert) {
         assert.expect(1);
         var groupHTML = '<div class="btn-group" data-cfw="buttons">'
             + '<label id="btn1" class="btn btn-primary">'
@@ -51,7 +67,7 @@ $(function() {
             + '</div>';
         var $group = $(groupHTML).appendTo('#qunit-fixture');
         $group.CFW_Button();
-        assert.strictEqual($('#btn1').attr('aria-pressed'), 'false');
+        assert.ok($('#btn1').is(':not([aria-pressed])'));
     });
 
     QUnit.test('should remove active if btn child is unchecked radio', function(assert) {
@@ -82,7 +98,7 @@ $(function() {
         assert.ok($btn.hasClass('active'), 'btn has active class');
     });
 
-    QUnit.test('should set aria-pressed=true if btn child is checked checkbox', function(assert) {
+    QUnit.test('should not set aria-pressed if btn child is checked checkbox', function(assert) {
         assert.expect(1);
         var groupHTML = '<div class="btn-group" data-cfw="buttons">'
             + '<label id="btn1" class="btn btn-primary">'
@@ -91,10 +107,10 @@ $(function() {
             + '</div>';
         var $group = $(groupHTML).appendTo('#qunit-fixture');
         $group.CFW_Button();
-        assert.strictEqual($('#btn1').attr('aria-pressed'), 'true');
+        assert.ok($('#btn1').is(':not([aria-pressed])'));
     });
 
-    QUnit.test('should set aria-pressed=false if btn child is unchecked checkbox', function(assert) {
+    QUnit.test('should not set aria-pressed if btn child is unchecked checkbox', function(assert) {
         assert.expect(1);
         var groupHTML = '<div class="btn-group" data-cfw="buttons">'
             + '<label id="btn1" class="btn btn-primary active">'
@@ -103,7 +119,7 @@ $(function() {
             + '</div>';
         var $group = $(groupHTML).appendTo('#qunit-fixture');
         $group.CFW_Button();
-        assert.strictEqual($('#btn1').attr('aria-pressed'), 'false');
+        assert.ok($('#btn1').is(':not([aria-pressed])'));
     });
 
     QUnit.test('should remove active if btn child is unchecked checkbox', function(assert) {

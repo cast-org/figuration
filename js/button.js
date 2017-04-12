@@ -27,7 +27,14 @@
                     this.$element.removeClass('active');
                 }
             }
-            this.$element.attr('aria-pressed', this.$element.hasClass('active'));
+
+            this.$element.each(function() {
+                var $this = $(this);
+                $input = $this.find('input');
+                if (!$input.length) {
+                    $this.attr('aria-pressed', $this.hasClass('active'));
+                }
+            });
 
             // Event handlers
             this.$element
@@ -56,17 +63,19 @@
 
         toggle : function() {
             var changed = true;
+            var useAria = true;
 
             if (this.$parent.length) {
                 var $input = this.$element.find('input');
                 if ($input.length) {
+                    useAria = false;
+
                     if ($input.prop('type') == 'radio') {
                         if ($input.prop('checked') && this.$element.hasClass('active')) {
                             changed = false;
                         } else {
                             this.$parent.find('.active')
-                                .removeClass('active')
-                                .attr('aria-pressed', false);
+                                .removeClass('active');
                         }
                     }
 
@@ -77,10 +86,13 @@
                 }
             }
 
-            if (changed) {
+            if (useAria) {
                 this.$element
-                    .attr('aria-pressed', !this.$element.hasClass('active'))
-                    .toggleClass('active');
+                    .attr('aria-pressed', !this.$element.hasClass('active'));
+            }
+
+            if (changed) {
+                this.$element.toggleClass('active');
             }
         },
 
