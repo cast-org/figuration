@@ -360,7 +360,7 @@ The menu alignment class of `.dropdown-menu-left` will also work with submenu it
 
 Via data attributes or JavaScript, the dropdown widget toggles hidden content (dropdown menus) by toggling the `.open` class on the parent list item.
 
-On touch capable devices, the optional expand on hover functionality is forced off in favor of the default click interaction. Also, opening a dropdown adds a `.dropdown-backdrop` as a tap area for closing dropdown menus when tapping outside the menu, a requirement for proper iOS support. **This means that switching from an open dropdown menu to a different dropdown menu requires an extra tap on mobile.**
+On touch capable devices, the optional expand on hover functionality is forced off in favor of the default click interaction. Also, opening a dropdown adds a `.dropdown-backdrop` as a tap area for closing dropdown menus when tapping outside the menu, to work around a quirk in iOS' event delegation. **This means that once a dropdown menu is open, any tap or click (including with a mouse, on a multi-input device such as a laptop with a touchscreen) outside of the menu will be intercepted to close the menu. Opening another dropdown menu, or activating any other control or link, will therefore require an extra tap or click.**
 
 Note: The `data-cfw="dropdown"` attribute is relied on for closing dropdown menus at an application level, so it's a good idea to always use it.
 
