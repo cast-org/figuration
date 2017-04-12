@@ -211,6 +211,7 @@
                         var code = e.charCode || e.which;
                         if (code && code == 27) {// if ESC is pressed
                             e.stopPropagation();
+                            e.preventDefault();
                             // Click the close button if it exists otherwise force tooltip closed
                             if ($('.close', $selfRef.$target).length > 0) {
                                 $('.close', $selfRef.$target).eq(0).trigger('click');

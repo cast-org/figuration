@@ -232,7 +232,10 @@
             var $selfRef = this;
             if (this.isShown && this.settings.keyboard) {
                 this.$target.on('keydown.dismiss.cfw.modal', function(e) {
-                    e.which == 27 && $selfRef.hide();
+                    if (e.which == 27) {
+                        e.preventDefault();
+                        $selfRef.hide();
+                    }
                 });
             } else if (!this.isShown) {
                 this.$target.off('keydown.dismiss.cfw.modal');
