@@ -389,10 +389,10 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
         <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
       </div>
     </div>
-    <fieldset class="form-group">
-      <div class="row">
-        <legend class="col-sm-2 form-control-legend">Radios</legend>
-        <div class="col-sm-10">
+    <div class="form-group row">
+      <fieldset class="w-100 clearfix">
+        <legend class="col-sm-2 float-sm-left form-control-legend">Radios</legend>
+        <div class="col-sm-10 float-sm-right">
           <div class="form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
@@ -412,20 +412,20 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
             </label>
           </div>
         </div>
-      </div>
-    </fieldset>
-    <fieldset class="form-group">
-      <div class="row">
-        <legend class="col-sm-2 form-control-legend">Checkbox</legend>
-        <div class="col-sm-10">
+      </fieldset>
+    </div>
+    <div class="form-group row">
+      <fieldset class="w-100 clearfix">
+        <legend class="col-sm-2 float-sm-left form-control-legend">Checkbox</legend>
+        <div class="col-sm-10 float-sm-right">
           <div class="form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="checkbox"> Check me out
             </label>
           </div>
         </div>
-      </div>
-    </fieldset>
+      </fieldset>
+    </div>
     <div class="form-group row">
       <div class="offset-sm-2 col-sm-10">
         <button type="submit" class="btn btn-primary">Sign in</button>
