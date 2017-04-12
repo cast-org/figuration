@@ -6,8 +6,6 @@ group: components
 
 Navigation share general markup and styles, from the base `.nav` class to the active and disabled states. Swap modifier classes to switch between each style.
 
-Navs have support for both a `float` style layout, along with both the opt-in flexbox and [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.nav-flex` class to the `.nav` element.
-
 ## Contents
 {:.no_toc}
 

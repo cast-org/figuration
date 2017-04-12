@@ -24,8 +24,8 @@ For example, to change out the `background-color` and `color` for the `<body>`, 
 // Copy settings from `_settings.scss` to this file to override the defaults.
 // This allows for customization without changing core files.
 
-$body-bg:    $gray-darker;
-$body-color: $gray-lighter;
+$body-bg:    $gray-900;
+$body-color: $gray-100;
 {% endhighlight %}
 
 Do the same for any variable you need to override, including the global options listed below.
@@ -45,10 +45,6 @@ You can find and customize these variables for key global options in our `_setti
 | `$enable-palette`           | `true` (default) or `false`        | Enables the generation of CSS classes for the palette color themes (e.g. `.text-blue-500`, etc.). |
 | `$enable-sizing`            | `true` (default) or `false`        | Enables the generation of CSS classes for component sizes, and also for some utilites. (e.g. `.btn-sm`, `.radius-t-xs`, etc.). |
 | `$enable-bp-smallest`       | `true` or `false` (default)        | Enables the generation of CSS classes for breakpoint sizes that include the smallest breakpoint designator. (e.g. `.col-xs-12`).  Also refer to the [Breakpoint Nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) section. |
-| `$enable-flex-opt`          | `true` (default) or `false`        | Enables the opt-in flexbox model using classes, such as `.row-flex`.                             |
-| `$enable-flex-full`         | `true` or `false` (default)        | Enables the full flexbox model where all supported components will use `display: flex;`.         |
-
-If both `$enable-flex-opt` and `$enable-flex-full` are set to `true` the `$enable-flex-opt` option will be disabled.
 
 ## Component Sizes
 

@@ -203,8 +203,6 @@ Navbars come with built-in support for a handful of sub-components. Mix and matc
 - `.navbar-toggle` for use with our [Collapse widget]({{ site.baseurl }}/widgets/collapse/) and other [navigation toggling](#collapsible-content) behaviors.
 - `.collapse.navbar-collapse` for grouping and hiding navbar contents by a parent breakpoint.
 
-Note that the `.navbar-nav` builds off the `.nav` component, but currently does not support flexbox layout, so it will get reset back to `display: block;` in [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) mode.
-
 Here's an example of some sub-components included in a default, light navbar:
 
 {% example html %}
