@@ -5355,7 +5355,19 @@ a.badge:focus, a.badge:hover {
   border-color: #718ed6;
 }
 
+.card-outline-primary .card-header,
+.card-outline-primary .card-footer {
+  background-color: transparent;
+  border-color: #718ed6;
+}
+
 .card-outline-secondary {
+  background-color: transparent;
+  border-color: #acacac;
+}
+
+.card-outline-secondary .card-header,
+.card-outline-secondary .card-footer {
   background-color: transparent;
   border-color: #acacac;
 }
@@ -5365,7 +5377,19 @@ a.badge:focus, a.badge:hover {
   border-color: #70b0d6;
 }
 
+.card-outline-info .card-header,
+.card-outline-info .card-footer {
+  background-color: transparent;
+  border-color: #70b0d6;
+}
+
 .card-outline-success {
+  background-color: transparent;
+  border-color: #70b874;
+}
+
+.card-outline-success .card-header,
+.card-outline-success .card-footer {
   background-color: transparent;
   border-color: #70b874;
 }
@@ -5375,7 +5399,19 @@ a.badge:focus, a.badge:hover {
   border-color: #dfb866;
 }
 
+.card-outline-warning .card-header,
+.card-outline-warning .card-footer {
+  background-color: transparent;
+  border-color: #dfb866;
+}
+
 .card-outline-danger {
+  background-color: transparent;
+  border-color: #de776e;
+}
+
+.card-outline-danger .card-header,
+.card-outline-danger .card-footer {
   background-color: transparent;
   border-color: #de776e;
 }

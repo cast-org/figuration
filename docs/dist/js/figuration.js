@@ -1884,6 +1884,7 @@ if (typeof jQuery === 'undefined') {
                         var code = e.charCode || e.which;
                         if (code && code == 27) {// if ESC is pressed
                             e.stopPropagation();
+                            e.preventDefault();
                             // Click the close button if it exists otherwise force tooltip closed
                             if ($('.close', $selfRef.$target).length > 0) {
                                 $('.close', $selfRef.$target).eq(0).trigger('click');
@@ -3092,7 +3093,10 @@ if (typeof jQuery === 'undefined') {
             var $selfRef = this;
             if (this.isShown && this.settings.keyboard) {
                 this.$target.on('keydown.dismiss.cfw.modal', function(e) {
-                    e.which == 27 && $selfRef.hide();
+                    if (e.which == 27) {
+                        e.preventDefault();
+                        $selfRef.hide();
+                    }
                 });
             } else if (!this.isShown) {
                 this.$target.off('keydown.dismiss.cfw.modal');
@@ -3978,7 +3982,14 @@ if (typeof jQuery === 'undefined') {
                     this.$element.removeClass('active');
                 }
             }
-            this.$element.attr('aria-pressed', this.$element.hasClass('active'));
+
+            this.$element.each(function() {
+                var $this = $(this);
+                $input = $this.find('input');
+                if (!$input.length) {
+                    $this.attr('aria-pressed', $this.hasClass('active'));
+                }
+            });
 
             // Event handlers
             this.$element
@@ -4007,17 +4018,19 @@ if (typeof jQuery === 'undefined') {
 
         toggle : function() {
             var changed = true;
+            var useAria = true;
 
             if (this.$parent.length) {
                 var $input = this.$element.find('input');
                 if ($input.length) {
+                    useAria = false;
+
                     if ($input.prop('type') == 'radio') {
                         if ($input.prop('checked') && this.$element.hasClass('active')) {
                             changed = false;
                         } else {
                             this.$parent.find('.active')
-                                .removeClass('active')
-                                .attr('aria-pressed', false);
+                                .removeClass('active');
                         }
                     }
 
@@ -4028,10 +4041,13 @@ if (typeof jQuery === 'undefined') {
                 }
             }
 
-            if (changed) {
+            if (useAria) {
                 this.$element
-                    .attr('aria-pressed', !this.$element.hasClass('active'))
-                    .toggleClass('active');
+                    .attr('aria-pressed', !this.$element.hasClass('active'));
+            }
+
+            if (changed) {
+                this.$element.toggleClass('active');
             }
         },
 
