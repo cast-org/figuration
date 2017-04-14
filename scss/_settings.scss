@@ -995,7 +995,6 @@ $slider-disabled-thumb-opacity:     .9 !default;
 
 // Figuration puts modals above popover/tooltip items that could be held open.
 // Tooltips/popovers should also be able to appear over fixed/sticky navbars.
-$zindex-dropdown-backdrop:  990 !default;
 $zindex-dropdown:          1000 !default;
 $zindex-fixed:             1020 !default;
 $zindex-sticky:            1020 !default;
