@@ -156,7 +156,6 @@ $(function() {
         assert.strictEqual($('#btn1').attr('aria-pressed'), 'false');
     });
 
-
     QUnit.test('should toggle active', function(assert) {
         assert.expect(2);
         var $btn = $('<button class="btn" data-cfw="button">test</button>');
@@ -263,5 +262,53 @@ $(function() {
         assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is not checked');
         assert.ok($btn2.hasClass('active'), 'btn2 has active class');
         assert.ok($btn2.find('input').prop('checked'), 'btn2 is checked');
+    });
+
+    QUnit.test('should not toggle active on `.disabled` button', function(assert) {
+        assert.expect(2);
+        var $btn = $('<button class="btn disabled" data-cfw="button">test</button>');
+        assert.ok(!$btn.hasClass('active'), 'btn does not have active class');
+        $btn.CFW_Button('toggle');
+        assert.ok(!$btn.hasClass('active'), 'btn still does not have class active');
+    });
+
+    QUnit.test('should not toggle active on `:disabled` button', function(assert) {
+        assert.expect(2);
+        var $btn = $('<button class="btn" data-cfw="button" disabled>test</button>');
+        assert.ok(!$btn.hasClass('active'), 'btn does not have active class');
+        $btn.CFW_Button('toggle');
+        assert.ok(!$btn.hasClass('active'), 'btn still does not have class active');
+    });
+
+    QUnit.test('should not toggle active state for `.disabled` radio/checkbox', function(assert) {
+        assert.expect(2);
+        var groupHTML = '<div class="btn-group" data-cfw="buttons">'
+            + '<label id="btn1" class="btn btn-primary disabled"><input type="checkbox" autocomplete="off"> Checkbox</label>'
+            + '<label id="btn2" class="btn btn-primary disabled"><input type="radio" name="options" autocomplete="off"> Radio</label>'
+            + '</div>';
+        var $group = $(groupHTML).appendTo('#qunit-fixture');
+        var $btn1 = $('#btn1');
+        var $btn2 = $('#btn2');
+        $group.CFW_Button();
+        $btn1.find('input').trigger('click');
+        assert.ok(!$btn1.hasClass('active'), '`.disabled` checkbox does not have active class');
+        $btn2.find('input').trigger('click');
+        assert.ok(!$btn2.hasClass('active'), '`.disabled` radio does not have active class');
+    });
+
+    QUnit.test('should not toggle active state for `:disabled` radio/checkbox', function(assert) {
+        assert.expect(2);
+        var groupHTML = '<div class="btn-group" data-cfw="buttons">'
+            + '<label id="btn1" class="btn btn-primary"><input type="checkbox" autocomplete="off" disabled> Checkbox</label>'
+            + '<label id="btn2" class="btn btn-primary"><input type="radio" name="options" autocomplete="off" disabled> Radio</label>'
+            + '</div>';
+        var $group = $(groupHTML).appendTo('#qunit-fixture');
+        var $btn1 = $('#btn1');
+        var $btn2 = $('#btn2');
+        $group.CFW_Button();
+        $btn1.find('input').trigger('click');
+        assert.ok(!$btn1.hasClass('active'), '`.disabled` checkbox does not have active class');
+        $btn2.find('input').trigger('click');
+        assert.ok(!$btn2.hasClass('active'), '`.disabled` radio does not have active class');
     });
 });

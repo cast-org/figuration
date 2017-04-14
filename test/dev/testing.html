@@ -325,12 +325,11 @@ $(window).ready(function() {
             <h2 id="button">Button:</h2>
 
             <strong>Toggle State:</strong>
-            <br />
+            <p>
             <button type="button" data-cfw="button" class="btn btn-info">Single toggle</button>
             &nbsp;
             <button type="button" data-cfw="button" class="btn btn-info active">Single toggle</button>
-            <br />
-            <br />
+            </p>
 
             <div class="row mb-1">
                 <div class="col-12">
@@ -406,6 +405,42 @@ $(window).ready(function() {
                         <button class="btn" type="button">One</button>
                         <button class="btn active" type="button">Two</button>
                         <button class="btn" type="button">Three</button>
+                    </div>
+                </div>
+            </div>
+
+            <strong>Toggle State (Disabled):</strong>
+            <p>
+            <button type="button" data-cfw="button" class="btn btn-info disabled">Single toggle</button>
+            &nbsp;
+            <button type="button" data-cfw="button" class="btn btn-info" disabled>Single toggle</button>
+            <p>
+            <div class="row mb-1">
+                <div class="col-sm-6">
+                    <div class="btn-group" data-cfw="buttons">
+                        <label class="btn btn-outline-info" id="btnTogO1">
+                            <input type="checkbox" checked /> Check 1
+                        </label>
+                        <label class="btn btn-outline-info" id="btnTogO2">
+                            <input type="checkbox" disabled /> Check 2
+                        </label>
+                        <label class="btn btn-outline-info disabled" id="btnTogO3">
+                            <input type="checkbox" /> Check 3
+                        </label>
+                    </div>
+
+                </div>
+                <div class="col-sm-6">
+                    <div class="btn-group" data-cfw="buttons">
+                        <label class="btn btn-info">
+                            <input type="radio" name="optionsD" /> Radio 1
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="optionsD" disabled /> Radio 2
+                        </label>
+                        <label class="btn btn-info disabled">
+                            <input type="radio" name="optionsD" /> Radio 3
+                        </label>
                     </div>
                 </div>
             </div>

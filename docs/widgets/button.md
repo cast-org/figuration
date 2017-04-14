@@ -62,13 +62,29 @@ Note that pre-checked buttons will automatically add the `.active` class  and `a
 
 ### Grouped Buttons
 
-You couls also use `.btn`s inside a `.btn-group` for interface controls.
+You could also use `.btn`s inside a `.btn-group` for interface controls.
 
 {% example html %}
 <div class="btn-group" data-cfw="buttons">
     <button class="btn" type="button">One</button>
     <button class="btn active" type="button">Two</button>
     <button class="btn" type="button">Three</button>
+</div>
+{% endexample %}
+
+### Disabled Buttons
+
+The button widget will not toggle items that have either a `disabled` class or attribute on the button or input elements.  Note that you will need to add the `.disabled` class on the `.btn` element in order to convey the **visually** disabled state.
+
+{% example html %}
+<div class="btn-group" data-cfw="buttons">
+    <button class="btn btn-info disabled" type="button">Disabled Button</button>
+    <label class="btn btn-info disabled">
+        <input type="checkbox" disabled>Disabled Checkbox
+    </label>
+    <label class="btn btn-info disabled">
+        <input type="radio" name="optionsD" disabled>Disabled Radio
+    </label>
 </div>
 {% endexample %}
 
