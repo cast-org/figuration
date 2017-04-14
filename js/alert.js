@@ -85,8 +85,9 @@
         },
 
         dispose : function() {
-            this.$parent.off('.cfw.alert');
-            this.$element.removeData('cfw.alert');
+            this.$element
+                .off('.cfw.alert')
+                .removeData('cfw.alert');
 
             this.$element = null;
             this.$parent = null;
