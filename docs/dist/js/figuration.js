@@ -3915,8 +3915,9 @@ if (typeof jQuery === 'undefined') {
         },
 
         dispose : function() {
-            this.$parent.off('.cfw.alert');
-            this.$element.removeData('cfw.alert');
+            this.$element
+                .off('.cfw.alert')
+                .removeData('cfw.alert');
 
             this.$element = null;
             this.$parent = null;
@@ -4017,11 +4018,18 @@ if (typeof jQuery === 'undefined') {
         },
 
         toggle : function() {
+            if (this.$element.is('.disabled, :disabled')) {
+                return;
+            }
+
             var changed = true;
             var useAria = true;
 
             if (this.$parent.length) {
                 var $input = this.$element.find('input');
+                if ($input.is('.disabled, :disabled')) {
+                    return;
+                }
                 if ($input.length) {
                     useAria = false;
 
