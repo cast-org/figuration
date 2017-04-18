@@ -30,7 +30,7 @@ Pagination is designed to be a large block of connected links that is hard to mi
 
 ## Using Icons
 
-Want to use an icon or symbol in place of text for some pagination links? Be sure to provide proper screen reader support with `aria` attributes and the `.sr-only` utility.
+Want to use an icon or symbol in place of text for some pagination links? Be sure to provide proper screen reader support with `aria-` attributes and the `.sr-only` utility.
 
 {% example html %}
 <nav aria-label="Page navigation">

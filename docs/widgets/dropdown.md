@@ -5,6 +5,13 @@ subtitle: dropdown.js
 group: widgets
 ---
 
+<!-- Font CSS -->
+{% if site.github %}
+  <link href="{{ site.cdn.fontawe }}" integrity="{{ site.cdn.fontawe_hash }}" crossorigin="anonymous" rel="stylesheet" property="stylesheet">
+{% else %}
+  <link href="{{ site.baseurl }}/assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" property="stylesheet">
+{% endif %}
+
 Add a context menu or list of links to a control item.  Support for nested lists is included automatically.  There is also an expand on hover option, even though we recommend that you use the default click to toggle mode for consitent usability across devices.
 
 {% callout warning %}
@@ -513,3 +520,53 @@ $('#mDropdown').on('afterHide.cfw.dropdown', function () {
   // do something...
 });
 {% endhighlight %}
+
+## Accessibility
+
+### General Purpose
+
+While there is an official [<abbr title="Web Accessibility Initiative">WAI</abbr>-<abbr title="Accessible Rich Internet Applications">ARIA</abbr>](https://www.w3.org/TR/wai-aria/) specification for a [`role="menu"` widget](https://www.w3.org/TR/wai-aria/roles#menu), it is mainly intended for application-style menus that invoke functionality or actions.
+
+The dropdown widget provided by Figuration is intended be generic and apply to a wider number of use-cases. If you require full <abbr title="Accessible Rich Internet Applications">ARIA</abbr> compliant menus, then you will need to add the appropriate `role` and `aria-` attributes as needed.
+
+### Keyboard Navigation
+
+<dl class="cf-docs-keys">
+    <dt>
+        <kbd>tab</kbd>
+    </dt>
+    <dd>
+        Closes the currently focused menu, and moves focus to the next focusable items in the document.
+    </dd>
+    <dt>
+        <kbd>enter</kbd>
+    </dt>
+    <dd>
+        When the focus is on the main trigger item, the menu is opened, and the menu items can be navigated using the arrow keys.
+    </dd>
+    <dt>
+        <kbd>esc</kbd>
+    </dt>
+    <dd>
+        Closes the currently focused menu, and moved focus to the main trigger.
+    </dd>
+    <dt>
+        <kbd title="up arrow" aria-label="up arrow"><span class="fa fa-arrow-up" aria-hidden="true"></span></kbd> /
+        <kbd title="down arrow" aria-label="down arrow"><span class="fa fa-arrow-down" aria-hidden="true"></span></kbd>
+    </dt>
+    <dd>
+        Moves focus to the previous or next item in the menu list.
+    </dd>
+    <dt>
+        <kbd title="right arrow" aria-label="right arrow"><span class="fa fa-arrow-right" aria-hidden="true"></span></kbd>
+    </dt>
+    <dd>
+        Opens the submenu if one exists.
+    </dd>
+    <dt>
+        <kbd title="left arrow" aria-label="left arrow"><span class="fa fa-arrow-left" aria-hidden="true"></span></kbd>
+    </dt>
+    <dd>
+        Closes the currently focused submenu, and returns focus back to the triggering element.  If there are no submenus open, focus will be returned to the main trigger.
+    </dd>
+</dl>

@@ -153,7 +153,7 @@ The tooltip widget, by default, generates content and markup on demand, and by d
 
 The required markup for a tooltip is only a `data-cfw="tooltip"` attribute and `title` on the HTML element you wish to have a tooltip. The generated markup of a tooltip is rather simple, though it does require a position (by default, set to top by the widget).
 
-If the tooltip item is already created, you can link to it using <code>data-cfw-tooltip-target="#someTooltip"</code>, or href="#someTooltip". The proper role and ARIA attributes will be automatically created to link the trigger and target elements.
+If the tooltip item is already created, you can link to it using <code>data-cfw-tooltip-target="#someTooltip"</code>, or href="#someTooltip". The proper `role` and `aria-` attributes will be automatically created to link the trigger and target elements.
 
 ### Via JavaScript
 

@@ -6,15 +6,17 @@ group: get-started
 
 Figuration follows common web standards and---with minimal extra effort---can be used to create sites that are accessible to those using <abbr title="Assistive Technology" class="initialism">AT</abbr>.
 
-{% callout info %}
-**More to come!** Over time, we hope to add more accessibility notes here with links to specific sections from other areas of the docs.
-{% endcallout %}
-
 ## Contents
 {:.no_toc}
 
 * ToC goes here
 {:toc}
+
+## Disclaimer
+
+As stated on our [about page]({{ site.baseurl }}/about/overview/), our goal is to make Figuration a consistent, robust, but easy to use front-end framework for developing web sites and applications. Figuration includes generalized components and functionality designed to work for keyboard, mouse, and touch users, while providing basic accessibility requirements.
+
+It is possible to create projects that meet the [<abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.0](https://www.w3.org/TR/WCAG20/) (A/AA/AAA), [Section 508](https://www.section508.gov/), or other accessibility requirements. However, creators may need to include additional styling, JavaScript functionality, and markup, along with additional <abbr title="Accessible Rich Internet Applications">ARIA</abbr> roles and attributes to meet certain requirements.
 
 ## Skip Navigation
 
@@ -84,18 +86,12 @@ $('.disabled').click(function(e) {
 
 Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies---such as screen readers---or users that might be colorbind. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the `.sr-only` class.
 
-## Component Requirements
-
-Some common HTML elements are always in need for basic accessibility enhancements through `role`s and ARIA attributes. Below is a list of some of the most frequently used ones.
-
-### Button Groups
-
-In order for assistive technologies---such as screen readers---to convey that a series of buttons is grouped, an appropriate `role` attribute needs to be provided. For button groups, this would be `role="group"`, while toolbars should have a `role="toolbar"`.
-
-In addition, groups and toolbars should be given an explicit label, as most assistive technologies will otherwise not announce them, despite the presence of the correct `role` attribute. In the examples provided here, we use `aria-label`, but alternatives such as `aria-labelledby` can also be used.
-
 ## Additional Resources
 
-- ["HTML Codesniffer" bookmarklet for identifying accessibility issues](https://github.com/squizlabs/HTML_CodeSniffer)
+- [Web Content Accessibility Guidelines (WCAG) 2.0](https://www.w3.org/TR/WCAG20/)
 - [The A11Y Project](http://a11yproject.com/)
 - [MDN accessibility documentation](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
+- [Colour Contrast Check](https://snook.ca/technical/colour_contrast/colour.html)
+- [Colour Contrast Analyser (CCA)](https://www.paciellogroup.com/resources/contrastanalyser/)
+- [WAVE Web Accessibility Tool](http://wave.webaim.org/)
+- ["HTML Codesniffer" bookmarklet for identifying accessibility issues](https://github.com/squizlabs/HTML_CodeSniffer)

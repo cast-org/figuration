@@ -19,7 +19,7 @@ Progress components are built with two HTML elements, some CSS to set the width,
 - Use the `.progress` as a wrapper to indicate the max value of the progress bar.
 - Use the inner `.progress-bar` to indicate the progress so far.
 - The `.progress-bar` requires an inline style or custom CSS to set their width.
-- The `.progress-bar` also requires `role="progressbar"` and some ARIA attributes to make it accessible.
+- The `.progress-bar` also requires `role="progressbar"` and some `aria-` attributes to make it accessible.
 
 ## Example
 
