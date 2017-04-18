@@ -47,11 +47,12 @@
 
   # Win Opera 15+ not currently supported by Sauce Labs
 
-  #{
-  #  browserName: "iphone",
-  #  platform: "OS X 10.10",
-  #  version: "latest"
-  #},
+  {
+    browserName: "iphone",
+    deviceName: "iPhone Simulator",
+    platformName: "OS X 10.11",
+    version: "9.3"
+  },
 
   # iOS Chrome not currently supported by Sauce Labs
 
