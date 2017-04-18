@@ -25,10 +25,10 @@ Get started at <http://figuration.org>!
 
 Several quick start options are available:
 
-- [Download the latest release.](https://github.com/cast-org/figuration/archive/v3.0.0-alpha.1.zip)
+- [Download the latest release.](https://github.com/cast-org/figuration/archive/v3.0.0-alpha.2.zip)
 - Clone the repo: `git clone https://github.com/cast-org/figuration.git`
-- Install with [npm](https://www.npmjs.com): `npm install figuration@3.0.0-alpha.1`
-- Install with [yarn](https://yarnpkg.com/): `yarn add figuration@3.0.0-alpha.1`
+- Install with [npm](https://www.npmjs.com): `npm install figuration@3.0.0-alpha.2`
+- Install with [yarn](https://yarnpkg.com/): `yarn add figuration@3.0.0-alpha.2`
 
 Read the [Get Started page](http://figuration.org/get-started/quick-start/) for information on the framework, templates, and examples.
 
