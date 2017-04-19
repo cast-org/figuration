@@ -583,11 +583,11 @@ When you need to place plain text next to a form label within a form, use the `.
 
 {% example html %}
 <form class="form-inline">
-  <div class="form-group">
+  <div class="form-group mr-0_5">
     <label class="sr-only">Email</label>
     <p class="form-control-static">email@example.com</p>
   </div>
-  <div class="form-group">
+  <div class="form-group mr-0_5">
     <label for="inputPassword2" class="sr-only">Password</label>
     <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
   </div>
@@ -728,8 +728,8 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
 {% example html %}
 <form class="form-inline">
   <div class="form-group">
-    <label for="inputPassword4">Password</label>
-    <input type="password" id="inputPassword4" class="form-control" aria-describedby="passwordHelpInline">
+    <label for="inputPassword4" class="mr-0_5">Password</label>
+    <input type="password" id="inputPassword4" class="form-control mr-0_5" aria-describedby="passwordHelpInline">
     <small id="passwordHelpInline" class="text-muted">
       Must be 8-20 characters long.
     </small>
