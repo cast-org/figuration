@@ -226,7 +226,6 @@ module.exports = function(grunt) {
 
         cssmin: {
             options: {
-                compatibility: 'ie9',
                 specialComments: '*',
                 sourceMap: true,
                 advanced: false
