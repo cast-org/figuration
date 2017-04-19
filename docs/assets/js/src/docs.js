@@ -29,11 +29,12 @@ function addAnchors() {
 function addClipboard() {
     // Insert copy to clipboard button before .highlight
     $('.highlight').each(function() {
-        var btnHtml = '<div class="cf-clipboard" aria-hidden="true"><span class="btn btn-sm btn-secondary btn-clipboard" title="Copy to clipboard">Copy</span></div>';
+        var btnHtml = '<div class="cf-clipboard" aria-hidden="true"><button type="button" class="btn btn-sm btn-secondary btn-clipboard" title="Copy to clipboard">Copy</button></div>';
         $(this).before(btnHtml);
-        $('.btn-clipboard').CFW_Tooltip({
-            'animate': false
-        });
+        $('.btn-clipboard')
+            .CFW_Tooltip({
+                'animate': false
+            });
     });
 
     var clipboard = new Clipboard('.btn-clipboard', {
