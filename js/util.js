@@ -114,6 +114,17 @@
     $.event.special[TRANSITION_END] = CFW_transitionEndSpecial();
 
     // =====
+    // Touch Detection
+    // =====
+
+    // Includes touch recognition fix for IE11
+    // Partially from: https://github.com/Modernizr/Modernizr/blob/master/feature-detects/touchevents.js
+    /* global DocumentTouch */
+    var msTouch = window.navigator.msMaxTouchPoints === undefined ? false : window.navigator.msMaxTouchPoints;
+    var isTouch = (('ontouchstart' in window) || msTouch || window.DocumentTouch && document instanceof DocumentTouch) ? true : false;
+    $.fn.CFW_isTouch = isTouch;
+
+    // =====
     // Public Utils
     // =====
 

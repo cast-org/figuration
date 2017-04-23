@@ -8,12 +8,6 @@
 (function($) {
     'use strict';
 
-    // Includes touch recognition fix for IE11
-    // Partially from: https://github.com/Modernizr/Modernizr/blob/master/feature-detects/touchevents.js
-    /* global DocumentTouch */
-    var $msTouch = window.navigator.msMaxTouchPoints === undefined ? false : window.navigator.msMaxTouchPoints;
-    var $isTouch = (('ontouchstart' in window) || $msTouch || window.DocumentTouch && document instanceof DocumentTouch) ? true : false;
-
     var CFW_Widget_Dropdown = function(element, options) {
         this.$element = $(element);
         this.$target = null;
@@ -23,7 +17,9 @@
 
         var parsedData = this.$element.CFW_parseData('dropdown', CFW_Widget_Dropdown.DEFAULTS);
         this.settings = $.extend({}, CFW_Widget_Dropdown.DEFAULTS, parsedData, options);
-        this.settings.isTouch = $isTouch;   // Touch enabled-browser flag - override not allowed
+
+        // Touch enabled-browser flag - override not allowed
+        this.settings.isTouch = $().CFW_isTouch;
 
         this.c = CFW_Widget_Dropdown.CLASSES;
 
