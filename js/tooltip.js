@@ -421,6 +421,14 @@
                     });
             }
 
+            if ($().CFW_isTouch) {
+                // Add empty function for mouseover listeners on immediate
+                // children of `<body>` due to missing event delegation on iOS
+                // Allows 'click' event to bubble up in Safari
+                // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+                $('body').children().on('mouseover', null, $.noop);
+            }
+
             this.$target.CFW_transition(null, $.proxy(this._showComplete, this));
         },
 
@@ -446,6 +454,11 @@
 
             this.inTransition = true;
             this.$target.removeClass('in');
+
+            if ($().CFW_isTouch) {
+                // Remove empty mouseover listener for iOS work-around
+                $('body').children().off('mouseover', null, $.noop);
+            }
 
             this.$target.CFW_transition(null, $.proxy(this._hideComplete, this));
 

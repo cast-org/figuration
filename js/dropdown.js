@@ -283,7 +283,7 @@
                     // children of `<body>` due to missing event delegation on iOS
                     // Allows 'click' event to bubble up in Safari
                     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
-                    $('body').children().on('mouseover', '*', $.noop);
+                    $('body').children().on('mouseover', null, $.noop);
                 }
                 clearMenus();
                 if (!$parent.hasClass(this.c.hover)) {
@@ -336,7 +336,7 @@
                 $(document).off('focusin.cfw.dropdown.' + this.instance);
                 if (this.settings.isTouch) {
                     // Remove empty mouseover listener for iOS work-around
-                    $('body').children().off('mouseover', '*', $.noop);
+                    $('body').children().off('mouseover', null, $.noop);
                 }
             }
 
