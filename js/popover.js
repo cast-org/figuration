@@ -15,10 +15,6 @@
         this.docAdded = false;
         this.keyTimer = null;
         this.keyDelay = 750;
-        this.flags = {
-            keyShift: false,
-            keyTab : false
-        };
 
         this._init('popover', element, options);
     };
@@ -97,14 +93,16 @@
         if (!$title.html()) { $title.hide(); }
 
         if (this.isDialog && !this.docAdded) {
-            // Inject a role="document" container
-            var $children = this.$target.children().not(this.$arrow);
-            var docDiv = document.createElement('div');
-            docDiv.setAttribute('role', 'document');
-            $children.wrapAll(docDiv);
-            // Make sure arrow is at end of popover for roles to work properly with screen readers
-            this._arrow();
-            this.$arrow.appendTo(this.$target);
+            if (!this.$target.find('[role="document"]').length) {
+                // Inject a role="document" container
+                var $children = this.$target.children().not(this.$arrow);
+                var docDiv = document.createElement('div');
+                docDiv.setAttribute('role', 'document');
+                $children.wrapAll(docDiv);
+                // Make sure arrow is at end of popover for roles to work properly with screen readers
+                this._arrow();
+                this.$arrow.appendTo(this.$target);
+            }
             this.docAdded = true;
         }
     };
@@ -209,14 +207,11 @@
         $.fn.CFW_Tooltip.Constructor.prototype.hide.call(this, force);
     };
 
-    CFW_Widget_Popover.prototype._removeDynamicTip = function() {
+    CFW_Widget_Popover.prototype._removeDynamicTipExt = function() {
         this.$target.detach();
-        this.dynamicTip = false;
-        this.closeAdded = false;
+        this.$target = null;
         this.dragAdded = false;
         this.docAdded = false;
-        this.$arrow = false;
-        this.$target = null;
     };
 
     CFW_Widget_Popover.prototype._updateZ = function() {

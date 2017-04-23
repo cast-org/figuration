@@ -9,29 +9,6 @@
     'use strict';
 
     var CFW_Widget_Tooltip = function(element, options) {
-        this.$element = null;
-        this.$target = null;
-        this.$viewport = null;
-        this.$arrow = null;
-        this.$focusLast = null;
-        this.instance = null;
-        this.settings = null;
-        this.type = null;
-        this.isDialog = false;
-        this.follow = false;
-        this.eventTypes = null;
-        this.delayTimer = null;
-        this.inTransition = null;
-        this.closeAdded = false;
-        this.activate = false;
-        this.hoverState = null;
-        this.inState = null;
-        this.dynamicTip = false;
-        this.flags = {
-            keyShift: false,
-            keyTab : false
-        };
-
         this._init('tooltip', element, options);
     };
 
@@ -61,6 +38,25 @@
         _init : function(type, element, options) {
             this.type = type;
             this.$element = $(element);
+            this.$target = null;
+            this.$arrow = null;
+            this.$focusLast = null;
+            this.instance = null;
+            this.isDialog = false;
+            this.follow = false;
+            this.eventTypes = null;
+            this.delayTimer = null;
+            this.inTransition = null;
+            this.closeAdded = false;
+            this.activate = false;
+            this.hoverState = null;
+            this.dynamicTip = false;
+            this.inserted = false;
+            this.flags = {
+                keyShift: false,
+                keyTab : false
+            };
+
             this.settings = this.getSettings(options);
 
             this.$viewport = this.settings.viewport && $($.isFunction(this.settings.viewport) ? this.settings.viewport.call(this, this.$element) : (this.settings.viewport.selector || this.settings.viewport));
@@ -326,6 +322,7 @@
             if (this.$target.length != 1) {
                 throw new Error(this.type + ' `template` option must consist of exactly 1 top-level element!');
             }
+            this.$target.data('cfw.' + this.type, this);
             this.linkTip();
             this.bindTip(false);
             this.setContent();
@@ -502,6 +499,7 @@
             this.hoverState = null;
             this.inState = null;
             this.dynamicTip = null;
+            this.inserted = null;
             this.flags = null;
 
             this._unlinkCompleteExt();
@@ -527,67 +525,79 @@
             this.unlink();
         },
 
+        _insertTip : function(placement) {
+            if (this.inserted) { return; }
+
+            var $tip = this.$target;
+            $tip.detach();
+
+            if (typeof placement == 'object') {
+                // Custom placement
+                this.settings.container = 'body';
+                $tip.appendTo(this.settings.container);
+                $tip.offset(placement);
+                $tip.addClass('in');
+            } else {
+                // Standard Placement
+                if (this.settings.container) {
+                    $tip.appendTo(this.settings.container);
+                } else {
+                    $tip.insertAfter(this.$element);
+                }
+            }
+
+            this.inserted = true;
+            this.$element.CFW_trigger('inserted.cfw.' + this.type);
+        },
+
         locateTip : function() {
             var $tip = this.$target;
 
-            $tip.removeClass('top left bottom right');
-
-            $tip.detach()
+            $tip.removeClass('top left bottom right')
                 .css({ top: 0, left: 0, display: 'block' });
 
             var placement = typeof this.settings.placement == 'function' ?
                 this.settings.placement.call(this, this.$target[0], this.$element[0]) :
                 this.settings.placement;
 
+            this._insertTip(placement);
+
             if (typeof placement == 'object') {
                 // Custom placement
-                this.settings.container = 'body';
-                $tip.appendTo(this.settings.container);
-                this.$element.CFW_trigger('inserted.cfw.' + this.type);
-                $tip.offset(placement);
-                $tip.addClass('in');
-            } else {
-                // Standard Placement
-                var autoToken = /\s?auto?\s?/i;
-                var autoPlace = autoToken.test(placement);
-                if (autoPlace) {
-                    placement = placement.replace(autoToken, '') || CFW_Widget_Tooltip.DEFAULTS.placement;
-                }
-
-                $tip.addClass(placement)
-                    .data('cfw.' + this.type, this);
-
-                if (this.settings.container) {
-                    $tip.appendTo(this.settings.container);
-                } else {
-                    $tip.insertAfter(this.$element);
-                }
-                this.$element.CFW_trigger('inserted.cfw.' + this.type);
-
-                var pos          = this._getPosition();
-                var actualWidth  = $tip[0].getBoundingClientRect().width;
-                var actualHeight = $tip[0].getBoundingClientRect().height;
-
-                if (autoPlace) {
-                    var orgPlacement = placement;
-
-                    var viewportDim = this.getViewportBounds();
-
-                    placement = placement == 'bottom' && pos.bottom + actualHeight > viewportDim.bottom ? 'top'    :
-                                placement == 'top'    && pos.top    - actualHeight < viewportDim.top    ? 'bottom' :
-                                placement == 'right'  && pos.right  + actualWidth  > viewportDim.width  ? 'left'   :
-                                placement == 'left'   && pos.left   - actualWidth  < viewportDim.left   ? 'right'  :
-                                placement;
-
-                    $tip.removeClass(orgPlacement)
-                        .addClass(placement)
-                        .data('cfw.' + this.type, this);
-                }
-
-                var calculatedOffset = this._getCalculatedOffset(placement, pos, actualWidth, actualHeight);
-
-                this._applyPlacement(calculatedOffset, placement);
+                return;
             }
+
+            // Standard Placement
+            var autoToken = /\s?auto?\s?/i;
+            var autoPlace = autoToken.test(placement);
+            if (autoPlace) {
+                placement = placement.replace(autoToken, '') || CFW_Widget_Tooltip.DEFAULTS.placement;
+            }
+
+            $tip.addClass(placement);
+
+            var pos          = this._getPosition();
+            var actualWidth  = $tip[0].getBoundingClientRect().width;
+            var actualHeight = $tip[0].getBoundingClientRect().height;
+
+            if (autoPlace) {
+                var orgPlacement = placement;
+
+                var viewportDim = this.getViewportBounds();
+
+                placement = placement == 'bottom' && pos.bottom + actualHeight > viewportDim.bottom ? 'top'    :
+                            placement == 'top'    && pos.top    - actualHeight < viewportDim.top    ? 'bottom' :
+                            placement == 'right'  && pos.right  + actualWidth  > viewportDim.width  ? 'left'   :
+                            placement == 'left'   && pos.left   - actualWidth  < viewportDim.left   ? 'right'  :
+                            placement;
+
+                $tip.removeClass(orgPlacement)
+                    .addClass(placement);
+            }
+
+            var calculatedOffset = this._getCalculatedOffset(placement, pos, actualWidth, actualHeight);
+
+            this._applyPlacement(calculatedOffset, placement);
         },
 
         _showComplete : function() {
@@ -663,10 +673,16 @@
         },
 
         _removeDynamicTip : function() {
-            this.$target.remove();
+            this._removeDynamicTipExt();
             this.dynamicTip = false;
+            this.inserted = false;
             this.closeAdded = false;
             this.$arrow = null;
+        },
+
+        _removeDynamicTipExt : function() {
+            // remove dynamic tip extend
+            this.$target.remove();
             this.$target = null;
         },
 
