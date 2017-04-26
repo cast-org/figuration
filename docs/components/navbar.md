@@ -570,7 +570,7 @@ Place a visual separator between segments of the navbar.
     </button>
 
     <div class="navbar-collapse collapse flex-between" id="navbar9">
-        <div class="navbar-nav">
+      <div class="navbar-nav">
         <a href="#" class="nav-item nav-link active">Home <span class="sr-only">(current)</span></a>
         <a href="#" class="nav-item nav-link">Features</a>
         <span class="navbar-divider"></span>
@@ -587,13 +587,21 @@ Place a visual separator between segments of the navbar.
     </button>
 
     <div class="navbar-collapse collapse flex-between" id="navbar10">
-        <div class="navbar-nav">
-        <a href="#" class="nav-item nav-link active">Home <span class="sr-only">(current)</span></a>
-        <a href="#" class="nav-item nav-link">Features</a>
-        <span class="navbar-divider"></span>
-        <a href="#" class="nav-item nav-link">Pricing</a>
-        <a href="#" class="nav-item nav-link">About</a>
-      </div>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-item nav-link">Features</a>
+        </li>
+        <li class="navbar-divider"></li>
+        <li class="nav-item">
+          <a href="#" class="nav-item nav-link">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-item nav-link">About</a>
+        </li>
+      </ul>
     </div>
   </nav>
 </div>
@@ -622,12 +630,21 @@ Place a visual separator between segments of the navbar.
   </button>
 
   <div class="navbar-collapse collapse flex-between" id="navbar10">
-      <div class="navbar-nav">
-      <a href="#" class="nav-item nav-link active">Home <span class="sr-only">(current)</span></a>
-      <a href="#" class="nav-item nav-link">Features</a>
-      <span class="navbar-divider"></span>
-      <a href="#" class="nav-item nav-link">Pricing</a>
-      <a href="#" class="nav-item nav-link">About</a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-item nav-link">Features</a>
+        </li>
+        <li class="navbar-divider"></li>
+        <li class="nav-item">
+          <a href="#" class="nav-item nav-link">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-item nav-link">About</a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

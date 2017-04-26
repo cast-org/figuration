@@ -86,7 +86,7 @@
 
 // Navbar Divider
 .navbar-divider {
-    width: 0;
+    align-self: stretch;
     overflow: hidden;
     border-left: $navbar-divider-width solid $navbar-divider-color;
 }
@@ -144,8 +144,6 @@
                     }
 
                     .navbar-divider {
-                        width: auto;
-                        height: 0;
                         border-top: $navbar-divider-width solid $navbar-divider-color;
                         border-left: 0;
                     }
