@@ -2111,6 +2111,9 @@ if (typeof jQuery === 'undefined') {
                 $('body').children().on('mouseover', null, $.noop);
             }
 
+            // Basic resize handler
+            $(window).on('resize.cfw.' + this.type + '.' + this.instance, $.proxy(this.locateTip, this));
+
             this.$target.CFW_transition(null, $.proxy(this._showComplete, this));
         },
 
@@ -2338,6 +2341,7 @@ if (typeof jQuery === 'undefined') {
                 this.$focusLast.off('.cfw.' + this.type + '.focusLast');
             }
             $(document).off('.cfw.' + this.type + '.' + this.instance);
+            $(window).off('.cfw.' + this.type + '.' + this.instance);
 
             this.inState = { click: false, hover: false, focus: false };
 

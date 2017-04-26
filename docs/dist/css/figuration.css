@@ -4536,7 +4536,9 @@ li .dropdown-header {
 }
 
 .navbar-divider {
-  width: 0;
+  -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
+      align-self: stretch;
   overflow: hidden;
   border-left: 1px solid rgba(0, 0, 0, 0.65);
 }
@@ -4617,8 +4619,6 @@ li .dropdown-header {
     padding-left: 0;
   }
   .navbar-expand-sm .navbar-divider {
-    width: auto;
-    height: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.65);
     border-left: 0;
   }
@@ -4678,8 +4678,6 @@ li .dropdown-header {
     padding-left: 0;
   }
   .navbar-expand-md .navbar-divider {
-    width: auto;
-    height: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.65);
     border-left: 0;
   }
@@ -4739,8 +4737,6 @@ li .dropdown-header {
     padding-left: 0;
   }
   .navbar-expand-lg .navbar-divider {
-    width: auto;
-    height: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.65);
     border-left: 0;
   }
@@ -4800,8 +4796,6 @@ li .dropdown-header {
     padding-left: 0;
   }
   .navbar-expand-xl .navbar-divider {
-    width: auto;
-    height: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.65);
     border-left: 0;
   }
