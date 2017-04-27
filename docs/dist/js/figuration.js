@@ -729,6 +729,12 @@ if (typeof jQuery === 'undefined') {
     function clearMenus(e) {
         // Ignore right-click
         if (e && e.which === 3) { return; }
+
+        // Ignore clicks into input areas
+        if (e && e.type === 'click' && /input|textarea/i.test(e.target.tagName)) {
+            return;
+        }
+
         // Find currently open menu root
         $('[data-cfw="dropdown"]').each(function() {
             var $parent = getParent($(this));
@@ -757,9 +763,6 @@ if (typeof jQuery === 'undefined') {
             // Check for presence of trigger id - set if not present
             this.instance = this.$element.CFW_getID('cfw-dropdown');
 
-            // Top Level: add ARIA/roles and define all sub-menu links as menuitem (unless 'disabled')
-            // Set tabindex=-1 so that sub-menu links can't receive keyboard focus from tabbing
-
             // Check for id on top level menu - set if not present
             /* var menuID = */ this.$target.CFW_getID('cfw-dropdown');
             this.$target.attr({
@@ -767,6 +770,8 @@ if (typeof jQuery === 'undefined') {
                 'aria-labelledby': this.instance
             })
             .addClass(this.c.isMenu);
+
+            // Set tabindex=-1 so that sub-menu links can't receive keyboard focus from tabbing
             $('a', this.$target).attr('tabIndex', -1).not('.disabled, :disabled');
 
             // Set ARIA on trigger
@@ -1074,16 +1079,29 @@ if (typeof jQuery === 'undefined') {
         },
 
         _actionsKeydown : function(e, node) {
+            var isInput = /input|textarea/i.test(e.target.tagName);
+            var isCheck = isInput && /checkbox|radio/i.test($(e.target).prop('type'));
+
             // 37-left, 38-up, 39-right, 40-down, 27-esc, 32-space, 9-tab
-            if (!/(37|38|39|40|27|32|9)/.test(e.which)) { return; }
+            if (!/^(37|38|39|40|27|32|9)$/.test(e.which)) { return; }
+            // Ignore space in inputs
+            if (isInput && e.which == 32) { return; }
+            // Ignore arrows in inputs, except for checkbox/radio
+            if (isInput && !isCheck && /^(37|38|39|40)$/.test(e.which)) { return; }
 
             var $node = $(node);
             var $items = null;
 
             // Close menu when tab pressed, move to next item
             if (e.which == 9) {
-                clearMenus();
-                return;
+                // Emulate arrow up/down if input
+                if (isInput) {
+                    e.which = (e.shiftKey) ? 38 : 40;
+                } else {
+                    clearMenus();
+                    this.$element.trigger('focus');
+                    return;
+                }
             }
 
             e.stopPropagation();
@@ -1121,11 +1139,15 @@ if (typeof jQuery === 'undefined') {
                     return;
                 }
 
-                $items = $parent.children('li').children('a:not(.disabled):visible');
+                $items = $parent.children('li').find('a, .dropdown-item, input, textarea');
+                $items = $items.filter(':not(.disabled, :disabled):not(:has(input)):not(:has(textarea)):visible');
                 if (!$items.length) { return; }
 
                 // Find current focused menu item
                 var index = $items.index(e.target);
+                if (index < 0 && isCheck) {
+                    index = $items.index($(e.target).closest('.dropdown-item')[0]);
+                }
 
                 if (e.which == 38 && index > 0)                 { index--;   } // up
                 if (e.which == 40 && index < $items.length - 1) { index++;   } // down
@@ -1149,7 +1171,8 @@ if (typeof jQuery === 'undefined') {
 
                 if (e.which == 39 && subHidden) {
                     this.showMenu(null, $eTarget, $subMenuElm);
-                    $items = $subMenuElm.children('li').children('a:not(.disabled):visible');
+                    $items = $subMenuElm.children('li').find('a, .dropdown-item, input, textarea');
+                    $items = $items.filter(':not(.disabled, :disabled):not(:has(input)):not(:has(textarea)):visible');
                     $items.eq(0).trigger('focus');
                     return;
                 }
