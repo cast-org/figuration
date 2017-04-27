@@ -64,15 +64,24 @@
 }
 
 // Links within a dropdown menu
-//Because we support nested dropdown, force list usage not the `.dropdown-item` syntax
-.dropdown-menu a {
+// Because we support nested dropdowns, it is currently required to use a
+// list for semantic markup, but we include a `.dropdown-item`
+// for non-anchor items
+// 1- `<button>`s require some overrides
+.dropdown-menu a,
+.dropdown-item {
     display: block;
+    width: 100%; // 1
     padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+    margin: 0;
     clear: both;
     font-weight: $font-weight-normal;
     color: $dropdown-link-color;
+    text-align: inherit; // 1
     text-decoration: none;
     white-space: nowrap; // prevent links from randomly breaking onto new lines
+    background: none; // 1
+    border: 0; // 1
 
     &.active {
         color: $dropdown-link-active-color;
@@ -87,12 +96,21 @@
         outline: 0;
     }
 
-    &.disabled {
+    &.disabled,
+    &:disabled {
         color: $dropdown-link-disabled-color;
         text-decoration: none;
         cursor: $cursor-disabled;
         background-color: $dropdown-link-disabled-bg;
         background-image: none; // Remove CSS gradient
+    }
+}
+
+.dropdown-item {
+    &.form-check-label {
+        .form-check-input {
+            margin-left: $dropdown-form-check-input-margin-x - $form-check-input-gutter;
+        }
     }
 }
 
@@ -106,7 +124,8 @@
         @include border-radius($dropdown-attach-border-radius $dropdown-border-radius $dropdown-border-radius $dropdown-border-radius);
     }
 
-    > a {
+    > a,
+    > .dropdown-item {
         &::after {
             position: absolute;
             top: 50%;
@@ -148,11 +167,6 @@
                 border-bottom: 0;
             }
         }
-    }
-
-    // Remove the outline when :focus is triggered
-    > a {
-        outline: 0;
     }
 }
 
@@ -273,7 +287,8 @@
         margin-left: -($border-width * 2);
         @include border-radius($dropdown-border-radius $dropdown-attach-border-radius $dropdown-border-radius $dropdown-border-radius);
     }
-    > a {
+    > a
+    > .dropdown-item {
         &::after {
             right: auto;
             left: $dropdown-caret-spacer-x;
