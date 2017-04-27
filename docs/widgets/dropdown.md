@@ -28,7 +28,9 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}
 
 ## Overview
 
-The Dropdown widget in Figuration is primarily designed for menus and navigation.  Not a container for forms or editable content, such as a login or registration.  You might want to consider using the [Popover widget]({{ site.baseurl }}/widgets/popover/) instead, or reworking the workflow or interface design.
+Wrap the dropdown's toggle (your button or link) and the dropdown menu within `.dropdown`, or another element that declares `position: relative;`. Dropdowns can be triggered from `<a>` or `<button>` elements.
+
+Because of the support for nested dropdown menus, it is currently **required to use a `ul` element** to build your dropdown menus.
 
 ## Examples
 
@@ -63,8 +65,6 @@ Here is a static example showing the dropdown layout and content pieces.
 ### Basic Dropdown
 
 Wrap the dropdown's trigger and the dropdown menu within `.dropdown`, or another element that declares `position: relative;`. Then, add the menu's HTML.
-
-Because of the support for nested dropdown menus, it is currently **required to use a `ul` element** to build your dropdown menus.
 
 {% example html %}
 <div class="dropdown">
@@ -201,6 +201,31 @@ Add `.active` to the `li` item in the dropdown to show a visual emphasis.
 </ul>
 {% endexample %}
 
+### Submenus
+
+You can nest submenus by adding a nested list along side it's toggle.
+
+{% example html %}
+<div class="dropdown">
+        <button type="button" class="btn btn-info dropdown-toggle" data-cfw="dropdown">
+            Dropdown
+        </button>
+        <ul class="dropdown-menu">
+            <li class="dropdown-header">Sample Header</li>
+            <li><a href="#">Action</a></li>
+            <li>
+                <a href="#">Something else here</a>
+                <ul>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Another action</a></li>
+        </ul>
+    </div>
+
+{% endexample %}
+
 ### 'Back' Menu Items
 
 Using the [`backlink` option](#options), you can have 'back' menu items automatically inserted into all submenus.  These links will close the current submenu and move focus back onto the parent menu item.  This can be useful if the parent menu/submenu item is being hidden, or obscured by the current submenu.
@@ -232,6 +257,96 @@ Using the [`backlink` option](#options), you can have 'back' menu items automati
     </ul>
 </div>
 {% endexample %}
+
+### Special Items
+
+The Dropdown widget in Figuration is primarily designed for menus and navigation, not a container for forms or editable content, such as a login or registration.  You might want to consider using the [Popover widget]({{ site.baseurl }}/widgets/popover/) instead, or reworking the workflow or interface design.
+
+However, there is some support for handling `<input>` and `<textarea>` items within the parent `.dropdown` container, and within the menu itself.  Each of these special items require the use of the `.dropdown-item` helper class, when inside the menu, to adjust their layout and become available to the dropdown menu keyboard navigation.
+
+#### Buttons
+
+You can optionally use `<button>` elements in your dropdowns instead of just `<a>`s.
+
+{% example html %}
+<div class="dropdown">
+  <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+    Dropdown
+  </button>
+  <ul class="dropdown-menu">
+    <li><button type="button" class="dropdown-item">Regular button</button></li>
+    <li><button type="button" class="dropdown-item active">Active button</button></li>
+    <li><button type="button" class="dropdown-item">Another button</button></li>
+    <li class="dropdown-divider"></li>
+    <li><button type="button" class="dropdown-item disabled">Disabled button</button></li>
+    <li><button type="button" class="dropdown-item" disabled>Disabled button</button></li>
+  </ul>
+</div>
+{% endexample %}
+
+#### Checkbox and Radio Inputs
+
+Checkbox and radio inputs are allowed, but only **one per menu item**.
+
+{% example html %}
+<div class="dropdown">
+  <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+    Dropdown
+  </button>
+  <ul class="dropdown-menu">
+    <li><label class="dropdown-item form-check-label"><input type="checkbox" class="form-check-input"> Checkbox 1</label></li>
+    <li><label class="dropdown-item form-check-label"><input type="checkbox" class="form-check-input"> Checkbox 2</label></li>
+    <li><label class="dropdown-item form-check-label"><input type="checkbox" class="form-check-input"> Checkbox 3</label></li>
+  </ul>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="dropdown">
+  <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+    Dropdown
+  </button>
+  <ul class="dropdown-menu">
+    <li><label class="dropdown-item form-check-label"><input type="radio" name="dropradio" class="form-check-input"> Radio 1</label></li>
+    <li><label class="dropdown-item form-check-label"><input type="radio" name="dropradio" class="form-check-input"> Radio 2</label></li>
+    <li><label class="dropdown-item form-check-label"><input type="radio" name="dropradio" class="form-check-input"> Radio 3</label></li>
+  </ul>
+</div>
+{% endexample %}
+
+#### Textual Inputs
+
+Add `<input type="text">` or `textarea` items to your dropdown menu.  Other types of [textual inputs]({{ site.baseurl }}/content/forms/#textual-inputs) have not been tested, and may cause issues.  Again, use only **one per menu item**.
+
+Since keyboard navigation needs to change once you enter one of these elements, for ease of editing, they use the <kbd>tab</kbd> key to navigate out.
+
+{% example html %}
+<div class="dropdown">
+  <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+    Dropdown
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="#">Action</a></li>
+    <li>
+      <label class="dropdown-item">
+        <span class="sr-only">Example input</span>
+        <input type="text" class="form-control" placeholder="text input"/>
+      </label>
+    </li>
+    <li><a href="#">Action</a></li>
+    <li>
+      <label class="dropdown-item">
+        <span class="sr-only">Example textarea</span>
+        <textarea class="form-control" placeholder="textarea"></textarea>
+      </label>
+    </li>
+    <li><a href="#">Action</a></li>
+  </ul>
+</div>
+{% endexample %}
+
+
+
 
 ## Variants
 
@@ -537,6 +652,7 @@ The dropdown widget provided by Figuration is intended be generic and apply to a
     </dt>
     <dd>
         Closes the currently focused menu, and moves focus to the next focusable items in the document.
+        If current focus is on an input or textarea in the menu, the focus moves to the next focusable item in the menu.
     </dd>
     <dt>
         <kbd>enter</kbd>
@@ -556,17 +672,21 @@ The dropdown widget provided by Figuration is intended be generic and apply to a
     </dt>
     <dd>
         Moves focus to the previous or next item in the menu list.
+        If current focus is in a textarea, the text caret will move accordingly.
+        If current focus is on a checkbox or radio input, moves focus to the previous or next item in the menu list.
     </dd>
     <dt>
         <kbd title="right arrow" aria-label="right arrow"><span class="fa fa-arrow-right" aria-hidden="true"></span></kbd>
     </dt>
     <dd>
         Opens the submenu if one exists.
+        If current focus is in a text input or textarea, the text caret will move accordingly.
     </dd>
     <dt>
         <kbd title="left arrow" aria-label="left arrow"><span class="fa fa-arrow-left" aria-hidden="true"></span></kbd>
     </dt>
     <dd>
         Closes the currently focused submenu, and returns focus back to the triggering element.  If there are no submenus open, focus will be returned to the main trigger.
+        If current focus is in a text input or textarea, the text caret will move accordingly.
     </dd>
 </dl>
