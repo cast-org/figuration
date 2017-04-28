@@ -599,9 +599,9 @@ When you need to place plain text next to a form label within a form, use the `.
 
 Add the `disabled` boolean attribute on an input to prevent user interactions. Disabled inputs appear lighter and add a `not-allowed` cursor.
 
-{% highlight html %}
-<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
-{% endhighlight %}
+{% example html %}
+<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled>
+{% endexample %}
 
 Add the `disabled` attribute to a `<fieldset>` to disable all the controls within.
 
@@ -647,7 +647,7 @@ While Figuration will apply these styles in all browsers, Internet Explorer 11 a
 Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
 
 {% example html %}
-<input class="form-control" type="text" placeholder="Readonly input here&hellip;" readonly>
+<input class="form-control" type="text" placeholder="Readonly input" readonly>
 {% endexample %}
 
 ## Control Sizing
