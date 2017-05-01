@@ -61,8 +61,8 @@ The icons shown in the examples are from [Font Awesome](http://fontawesome.io/),
 <div data-cfw="player">
     <div class="player" role="region" aria-label="audio player" data-cfw-player="player">
         <span class="player-control" data-cfw-player="control">
-            <button type="button" class="btn player-play" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
-            <button type="button" class="btn player-pause" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
+            <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
+            <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
         </span>
         <span class="player-time" data-cfw-player="time">
             <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -75,7 +75,7 @@ The icons shown in the examples are from [Font Awesome](http://fontawesome.io/),
             <button type="button" class="btn player-mute-on" title="Unmute" aria-label="Unmute"><span class="fa fa-fw fa-volume-off" aria-hidden="true"></span></button>
             <button type="button" class="btn player-mute-off" title="Mute" aria-label="Mute"><span class="fa fa-fw fa-volume-up" aria-hidden="true"></span></button>
         </span>
-        <button type="button" class="btn player-loop" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fa fa-fw fa-refresh" aria-hidden="true"></span></button>
+        <button type="button" class="btn" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fa fa-fw fa-refresh" aria-hidden="true"></span></button>
     </div>
     <audio controls>
         <source src="{{ site.baseurl }}/assets/audio/Drumroll-Heigh-hoo.mp3" type="audio/mpeg" />
@@ -94,9 +94,9 @@ Available seek and volume sliders.
 <div data-cfw="player">
     <div class="player" role="region" aria-label="audio player" data-cfw-player="player">
         <span class="player-control" data-cfw-player="control">
-            <button type="button" class="btn player-play" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
-            <button type="button" class="btn player-pause" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
-            <button type="button" class="btn player-stop" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop" aria-hidden="true"></span></button>
+            <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
+            <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
+            <button type="button" class="btn" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop" aria-hidden="true"></span></button>
         </span>
         <span class="player-time" data-cfw-player="time">
             <span class="player-time-remainder" data-cfw-player="time-remainder"></span>
@@ -112,7 +112,7 @@ Available seek and volume sliders.
         <span class="player-volume" data-cfw-player="volume">
             <label>Volume slider<input type="text" /></label>
         </span>
-        <button type="button" class="btn player-loop" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fa fa-fw fa-refresh"></span></button>
+        <button type="button" class="btn" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fa fa-fw fa-refresh"></span></button>
     </div>
     <audio controls>
         <source src="{{ site.baseurl }}/assets/audio/Ambient_Acoustic-StrangerEight.mp3" type="audio/mpeg" />
@@ -140,9 +140,9 @@ Available seek and volume sliders.
         <div class="player row"  role="region" aria-label="video player" data-cfw-player="player">
             <div class="col-md-6">
                 <span class="player-control" data-cfw-player="control">
-                    <button type="button" class="btn player-play" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
-                    <button type="button" class="btn player-pause" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
-                    <button type="button" class="btn player-stop" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop" aria-hidden="true"></span></button>
+                    <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
+                    <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
+                    <button type="button" class="btn" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop" aria-hidden="true"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -160,8 +160,8 @@ Available seek and volume sliders.
                 <span class="player-volume" data-cfw-player="volume">
                     <label>Volume slider<input type="text" /></label>
                 </span>
-                <button type="button" class="btn player-loop" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fa fa-fw fa-refresh" aria-hidden="true"></span></button>
-                <button type="button" class="btn player-caption" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fa fa-fw fa-cc" aria-hidden="true"></span></button>
+                <button type="button" class="btn" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fa fa-fw fa-refresh" aria-hidden="true"></span></button>
+                <button type="button" class="btn" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fa fa-fw fa-cc" aria-hidden="true"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
                     <button type="button" class="btn player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
                     <button type="button" class="btn player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
@@ -192,9 +192,9 @@ Add an interactive transcript to your video using the `transcript` control.  The
         <div class="player row"  role="region" aria-label="video player" data-cfw-player="player">
             <div class="col-md-6">
                 <span class="player-control" data-cfw-player="control">
-                    <button type="button" class="btn player-play" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
-                    <button type="button" class="btn player-pause" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
-                    <button type="button" class="btn player-stop" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop" aria-hidden="true"></span></button>
+                    <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
+                    <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
+                    <button type="button" class="btn" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop" aria-hidden="true"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -212,7 +212,7 @@ Add an interactive transcript to your video using the `transcript` control.  The
                 <span class="player-volume" data-cfw-player="volume">
                     <label>Volume slider<input type="text" /></label>
                 </span>
-                <button type="button" class="btn player-caption" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fa fa-fw fa-cc" aria-hidden="true"></span></button>
+                <button type="button" class="btn" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fa fa-fw fa-cc" aria-hidden="true"></span></button>
                 <button type="button" class="btn player-transcript" data-cfw-player="transcript" title="Transcript captions" aria-label="Closed captions"><span class="fa fa-fw fa-file-text-o" aria-hidden="true"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
                     <button type="button" class="btn player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
@@ -435,6 +435,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>booelan</td>
         <td>true</td>
         <td>If the transcript should automatically scroll to keep the current caption in the visible area.</td>
+    </tr>
+    <tr>
+        <td>transcriptDescribe</td>
+        <td>booelan</td>
+        <td>true</td>
+        <td>If the transcript should show the matching <code>descriptions</code> track for the currently active transcript.</td>
     </tr>
     <tr>
         <td>transcriptOption</td>
