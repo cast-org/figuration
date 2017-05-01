@@ -147,6 +147,24 @@ body {
 .player-fullscreen.active .player-fullscreen-off {
     display: none;
 }
+.player-describe {
+    display: inline-block;
+}
+.player-describe.disabled {
+    display: none;
+}
+.player-describe > .on {
+    display: none;
+}
+.player-describe > .off {
+    display: inline-block;
+}
+.player-describe.active > .on {
+    display: inline-block;
+}
+.player-describe.active > .off {
+    display: none;
+}
 
 .player-wrapper {
     margin-top: 5px;
@@ -737,11 +755,11 @@ body {
 <div class="video-transcript">
     <!-- <div data-cfw="player" class="video-wrapper" data-cfw-player-transcript="0" role="region" aria-label="video player"> -->
     <!-- <div data-cfw="player" class="video-wrapper" data-cfw-player-transcript="0" data-cfw-player-transcript-describe="false" role="region" aria-label="video player"> -->
-    <div data-cfw="player" class="video-wrapper" role="region" aria-label="video player">
+    <div data-cfw="player" id="desc1" class="video-wrapper" role="region" aria-label="video player">
         <div class="embed-fluid">
             <!-- <video poster="../../docs/assets/video/niagara_falls.jpg" controls preload="none"> -->
             <video poster="../../docs/assets/video/niagara_falls.jpg" controls>
-                <source src="../../docs/assets/video/niagara_falls.mp4">
+                <source src="../../docs/assets/video/niagara_falls.mp4" data-src-describe="../../docs/assets/video/niagara_falls-describe-en.mp4">
                 <track src="../../docs/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" />
                 <track src="../../docs/assets/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es" />
                 <track src="../../docs/assets/video/niagara_falls-describe-en.vtt" label="English Description" kind="descriptions" srclang="en" />
@@ -753,7 +771,10 @@ body {
                 <span class="player-control" data-cfw-player="control">
                     <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
                     <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop"></span></button>
+                </span>
+                <span class="player-describe" data-cfw-player="description">
+                    <button type="button" class="btn btn-default on" title="Turn Off Audio Description" aria-label="Turn Off Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
+                    <button type="button" class="btn btn-default off" title="Turn On Audio Description" aria-label="Turn On Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
