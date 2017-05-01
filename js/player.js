@@ -70,6 +70,7 @@
         this.media = null;
         this.$player = null;
         this.$focus = null;
+        this.$sources = null;
         this.$sliderSeek = null;
         this.$volSeek = null;
         this.activity = null;
@@ -131,6 +132,15 @@
                 this.$media.CFW_trigger('noSupport.cfw.player');
                 return false;
             }
+
+            // Save source items for later use
+            this.$sources = this.$media.find('source');
+            if (!this.$sources.length) { return; }
+
+            // Also set data attr for original source
+            this.$sources.each(function() {
+                $(this).attr('data-src-orig', $(this).attr('src'));
+            });
 
             this.$element.attr('data-cfw', 'player')
                 .addClass('player-unstarted');
@@ -279,6 +289,11 @@
             this.$player.on('click', '[data-cfw-player="fullscreen"]', function(e) {
                 e.preventDefault();
                 $selfRef.fullscreen();
+                $selfRef._focusControl(this);
+            });
+            this.$player.on('click', '[data-cfw-player="description"]', function(e) {
+                e.preventDefault();
+                $selfRef.description();
                 $selfRef._focusControl(this);
             });
 
@@ -656,6 +671,35 @@
                 this.$element.removeClass('player-fulldisplay');
                 this.$media.CFW_trigger('exitFullscreen.cfw.player');
             }
+        },
+
+        srcIsAlternate : function(name) {
+            return (this.$sources.first().attr('data-src-' + name) === this.$sources.first().attr('src'));
+        },
+
+        description : function() {
+            if (this.type == 'audio') { return; }
+            var $descElm = this.$player.find('[data-cfw-player="description"]');
+            var currTime = this.media.currentTime;
+            var isPaused = this.media.paused;
+
+            if (this.srcIsAlternate('describe')) {
+                // Reset to original source
+                this.$sources.each(function() {
+                    $(this).attr('src', $(this).attr('data-src-orig'));
+                });
+                $descElm.removeClass('active');
+            } else {
+                this.$sources.each(function() {
+                    $(this).attr('src', $(this).attr('data-src-describe'));
+                });
+                $descElm.addClass('active');
+            }
+
+            // Reload the source, skip ahead, and resume playing
+            this.media.load();
+            this.media.currentTime = currTime;
+            if (!isPaused) { this.media.play(); }
         },
 
         trackList : function() {
@@ -1450,6 +1494,7 @@
             this.$media = null;
             this.media = null;
             this.$player = null;
+            this.$sources = null;
             this.$focus = null;
             this.$sliderSeek = null;
             this.$volSeek = null;
