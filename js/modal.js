@@ -280,7 +280,7 @@
 
         checkScrollbar : function() {
             this.bodyIsOverflowing = document.body.clientWidth < window.innerWidth;
-            this.scrollbarWidth = $().CFW_measureScrollbar();
+            this.scrollbarWidth = $.CFW_measureScrollbar();
         },
 
         setScrollbar : function() {

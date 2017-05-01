@@ -122,7 +122,7 @@
     /* global DocumentTouch */
     var msTouch = window.navigator.msMaxTouchPoints === undefined ? false : window.navigator.msMaxTouchPoints;
     var isTouch = (('ontouchstart' in window) || msTouch || window.DocumentTouch && document instanceof DocumentTouch) ? true : false;
-    $.fn.CFW_isTouch = isTouch;
+    $.CFW_isTouch = isTouch;
 
     // =====
     // Public Utils
@@ -197,7 +197,7 @@
         }
     };
 
-    $.fn.CFW_throttle = function(fn, threshhold, scope) {
+    $.CFW_throttle = function(fn, threshhold, scope) {
         /* From: http://remysharp.com/2010/07/21/throttling-function-calls/ */
         if (threshhold === undefined) { threshhold = 250; }
         var last;
@@ -221,7 +221,7 @@
         };
     };
 
-    $.fn.CFW_measureScrollbar = function() {
+    $.CFW_measureScrollbar = function() {
         var $body = $(document.body);
         var scrollDiv = document.createElement('div');
         scrollDiv.setAttribute('style', ' position: absolute; top: -9999px; width: 50px; height: 50px; overflow: scroll;');

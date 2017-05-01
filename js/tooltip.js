@@ -421,7 +421,7 @@
                     });
             }
 
-            if ($().CFW_isTouch) {
+            if ($.CFW_isTouch) {
                 // Add empty function for mouseover listeners on immediate
                 // children of `<body>` due to missing event delegation on iOS
                 // Allows 'click' event to bubble up in Safari
@@ -458,7 +458,7 @@
             this.inTransition = true;
             this.$target.removeClass('in');
 
-            if ($().CFW_isTouch) {
+            if ($.CFW_isTouch) {
                 // Remove empty mouseover listener for iOS work-around
                 $('body').children().off('mouseover', null, $.noop);
             }

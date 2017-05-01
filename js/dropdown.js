@@ -19,7 +19,7 @@
         this.settings = $.extend({}, CFW_Widget_Dropdown.DEFAULTS, parsedData, options);
 
         // Touch enabled-browser flag - override not allowed
-        this.settings.isTouch = $().CFW_isTouch;
+        this.settings.isTouch = $.CFW_isTouch;
 
         this.c = CFW_Widget_Dropdown.CLASSES;
 

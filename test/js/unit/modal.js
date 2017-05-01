@@ -450,7 +450,7 @@ $(function() {
 
         $target
             .on('afterShow.cfw.modal', function() {
-                var expectedPadding = parseFloat(originalPadding) + $().CFW_measureScrollbar() + 'px';
+                var expectedPadding = parseFloat(originalPadding) + $.CFW_measureScrollbar() + 'px';
                 var currentPadding = $element.css('padding-right');
                 assert.strictEqual(currentPadding, expectedPadding, 'fixed element padding should be adjusted while opening');
                 $trigger.CFW_Modal('hide');

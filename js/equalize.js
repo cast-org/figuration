@@ -30,7 +30,7 @@
     CFW_Widget_Equalize.prototype = {
         _init : function() {
             this.instance = $('<div/>').CFW_getID('cfw-equalize');
-            this.$window.on('resize.cfw.equalize.' + this.instance, $().CFW_throttle($.proxy(this.update, this), this.settings.throttle));
+            this.$window.on('resize.cfw.equalize.' + this.instance, $.CFW_throttle($.proxy(this.update, this), this.settings.throttle));
 
             this.$element.attr('data-cfw', 'equalize');
             this.$element.CFW_trigger('init.cfw.equalize');

@@ -32,7 +32,7 @@
 
     CFW_Widget_Scrollspy.prototype = {
         _init : function() {
-            this.$scrollElement.on('scroll.cfw.scrollspy', $().CFW_throttle($.proxy(this.process, this), this.settings.throttle));
+            this.$scrollElement.on('scroll.cfw.scrollspy', $.CFW_throttle($.proxy(this.process, this), this.settings.throttle));
             this.selector = (this.settings.target || '') + ' a, ' +
                             (this.settings.target || '') + ' [data-cfw-scrollspy-target]';
             this.$scrollElement.CFW_trigger('init.cfw.scrollspy');

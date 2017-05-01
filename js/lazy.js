@@ -54,7 +54,7 @@
             for (var i = eventTypes.length; i--;) {
                 var eventType = eventTypes[i];
                 if (eventType == 'scroll' || eventType == 'resize') {
-                    $(this.settings.container).on(eventType + '.cfw.lazy.' + this.instance, $().CFW_throttle($.proxy(this._handleTrigger, this), this.settings.throttle));
+                    $(this.settings.container).on(eventType + '.cfw.lazy.' + this.instance, $.CFW_throttle($.proxy(this._handleTrigger, this), this.settings.throttle));
                     checkInitViewport = true;
                 } else {
                     this.$element.on(eventType + '.cfw.lazy', $.proxy(this.show, this));
