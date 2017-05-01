@@ -878,10 +878,12 @@
                         $selfRef.settings.transcriptScroll = !$selfRef.settings.transcriptScroll;
                         $(this).prop('checked', $selfRef.settings.transcriptScroll);
                     });
-                    this.$player.on('click', '[data-cfw-player-script-describe]', function() {
-                        $selfRef.settings.transcriptDescribe = !$selfRef.settings.transcriptDescribe;
-                        $(this).prop('checked', $selfRef.settings.transcriptDescribe);
-                        $selfRef.scriptLoad();
+                    this.$player.on('click', '[data-cfw-player-script-describe]', function(e) {
+                        if (!$selfRef._controlIsDisabled($(e.target))) {
+                            $selfRef.settings.transcriptDescribe = !$selfRef.settings.transcriptDescribe;
+                            $(this).prop('checked', $selfRef.settings.transcriptDescribe);
+                            $selfRef.scriptLoad();
+                        }
                     });
                 }
 
@@ -1001,6 +1003,13 @@
                         $selfRef.descCurrent = j;
                     }
                 }
+            }
+
+            var $descControl = this.$player.find('[data-cfw-player-script-describe]');
+            if (this.descCurrent == -1 && this.scriptCurrent > -1) {
+                this._controlDisable($descControl);
+            } else {
+                this._controlEnable($descControl);
             }
 
             function scriptLoad2(forced) {
@@ -1388,22 +1397,27 @@
             }, 10);
         },
 
-        _controlEnable : function(control) {
-            $(control)
+        _controlEnable : function($control) {
+            $control
                 .removeClass('disabled')
-                .removeAttr('disabled');
+                .removeAttr('disabled')
+                .closest('label')
+                .removeClass('disabled');
         },
 
         _controlDisable : function($control) {
             if ($control.is('button, input')) {
                 $control.prop('disabled', true);
+                $control
+                    .closest('label')
+                    .addClass('disabled');
             } else {
                 $control.addClass('disabled');
             }
         },
 
-        _controlIsDisabled : function(control) {
-            return $(control).is('.disabled, :disabled');
+        _controlIsDisabled : function($control) {
+            return $control.is('.disabled, :disabled');
         },
 
         dispose : function() {
