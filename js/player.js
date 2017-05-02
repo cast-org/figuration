@@ -108,7 +108,7 @@
     };
 
     CFW_Widget_Player.DEFAULTS = {
-        mediaAlt: false,            // Show alternate source media
+        mediaDescribe: false,       // Show description source media
         transcript: -1,             // Default transcript off
         transcriptScroll : true,    // Scroll transcript
         transcriptDescribe: true,   // Show descriptions in transcript
@@ -149,6 +149,11 @@
             if (this.$player.length > 0) {
                 // Hide browsers default player
                 this.media.controls = false;
+            }
+
+            // Swap to description media
+            if (this.settings.mediaDescribe) {
+                this.description();
             }
 
             // Check if loaded
@@ -673,33 +678,46 @@
             }
         },
 
-        srcIsAlternate : function(name) {
+        _srcHasAlternate : function(name) {
+            return (this.$sources[0].hasAttribute('data-src-' + name));
+        },
+
+        _srcIsAlternate : function(name) {
             return (this.$sources.first().attr('data-src-' + name) === this.$sources.first().attr('src'));
         },
 
-        description : function() {
-            if (this.type == 'audio') { return; }
-            var $descElm = this.$player.find('[data-cfw-player="description"]');
+        _srcLoadAlternate : function(name) {
+            var $selfRef = this;
             var currTime = this.media.currentTime;
             var isPaused = this.media.paused;
 
-            if (this.srcIsAlternate('describe')) {
-                // Reset to original source
-                this.$sources.each(function() {
-                    $(this).attr('src', $(this).attr('data-src-orig'));
-                });
-                $descElm.removeClass('active');
-            } else {
-                this.$sources.each(function() {
-                    $(this).attr('src', $(this).attr('data-src-describe'));
-                });
-                $descElm.addClass('active');
-            }
+            this.$sources.each(function() {
+                $(this).attr('src', $(this).attr('data-src-' + name));
+            });
 
             // Reload the source, skip ahead, and resume playing
+            this.$media
+                .one('loadeddata', function() {
+                    $selfRef.seekTo(currTime);
+                    if (!isPaused) {  $selfRef.media.play(); }
+                });
             this.media.load();
-            this.media.currentTime = currTime;
-            if (!isPaused) { this.media.play(); }
+        },
+
+        description : function() {
+            if (this._srcHasAlternate('describe')) {
+                var $descElm = this.$player.find('[data-cfw-player="description"]');
+
+                if (this._srcIsAlternate('describe')) {
+                    // Reset to original source
+                    this._srcLoadAlternate('orig');
+                    $descElm.removeClass('active');
+                } else {
+                    // Load description source
+                    this._srcLoadAlternate('describe');
+                    $descElm.addClass('active');
+                }
+            }
         },
 
         trackList : function() {
