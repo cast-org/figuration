@@ -143,7 +143,7 @@ if (typeof jQuery === 'undefined') {
     /* global DocumentTouch */
     var msTouch = window.navigator.msMaxTouchPoints === undefined ? false : window.navigator.msMaxTouchPoints;
     var isTouch = (('ontouchstart' in window) || msTouch || window.DocumentTouch && document instanceof DocumentTouch) ? true : false;
-    $.fn.CFW_isTouch = isTouch;
+    $.CFW_isTouch = isTouch;
 
     // =====
     // Public Utils
@@ -218,7 +218,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    $.fn.CFW_throttle = function(fn, threshhold, scope) {
+    $.CFW_throttle = function(fn, threshhold, scope) {
         /* From: http://remysharp.com/2010/07/21/throttling-function-calls/ */
         if (threshhold === undefined) { threshhold = 250; }
         var last;
@@ -242,7 +242,7 @@ if (typeof jQuery === 'undefined') {
         };
     };
 
-    $.fn.CFW_measureScrollbar = function() {
+    $.CFW_measureScrollbar = function() {
         var $body = $(document.body);
         var scrollDiv = document.createElement('div');
         scrollDiv.setAttribute('style', ' position: absolute; top: -9999px; width: 50px; height: 50px; overflow: scroll;');
@@ -691,7 +691,7 @@ if (typeof jQuery === 'undefined') {
         this.settings = $.extend({}, CFW_Widget_Dropdown.DEFAULTS, parsedData, options);
 
         // Touch enabled-browser flag - override not allowed
-        this.settings.isTouch = $().CFW_isTouch;
+        this.settings.isTouch = $.CFW_isTouch;
 
         this.c = CFW_Widget_Dropdown.CLASSES;
 
@@ -2126,7 +2126,7 @@ if (typeof jQuery === 'undefined') {
                     });
             }
 
-            if ($().CFW_isTouch) {
+            if ($.CFW_isTouch) {
                 // Add empty function for mouseover listeners on immediate
                 // children of `<body>` due to missing event delegation on iOS
                 // Allows 'click' event to bubble up in Safari
@@ -2163,7 +2163,7 @@ if (typeof jQuery === 'undefined') {
             this.inTransition = true;
             this.$target.removeClass('in');
 
-            if ($().CFW_isTouch) {
+            if ($.CFW_isTouch) {
                 // Remove empty mouseover listener for iOS work-around
                 $('body').children().off('mouseover', null, $.noop);
             }
@@ -3201,7 +3201,7 @@ if (typeof jQuery === 'undefined') {
 
         checkScrollbar : function() {
             this.bodyIsOverflowing = document.body.clientWidth < window.innerWidth;
-            this.scrollbarWidth = $().CFW_measureScrollbar();
+            this.scrollbarWidth = $.CFW_measureScrollbar();
         },
 
         setScrollbar : function() {
@@ -3744,7 +3744,7 @@ if (typeof jQuery === 'undefined') {
 
     CFW_Widget_Scrollspy.prototype = {
         _init : function() {
-            this.$scrollElement.on('scroll.cfw.scrollspy', $().CFW_throttle($.proxy(this.process, this), this.settings.throttle));
+            this.$scrollElement.on('scroll.cfw.scrollspy', $.CFW_throttle($.proxy(this.process, this), this.settings.throttle));
             this.selector = (this.settings.target || '') + ' a, ' +
                             (this.settings.target || '') + ' [data-cfw-scrollspy-target]';
             this.$scrollElement.CFW_trigger('init.cfw.scrollspy');
@@ -4213,7 +4213,7 @@ if (typeof jQuery === 'undefined') {
             for (var i = eventTypes.length; i--;) {
                 var eventType = eventTypes[i];
                 if (eventType == 'scroll' || eventType == 'resize') {
-                    $(this.settings.container).on(eventType + '.cfw.lazy.' + this.instance, $().CFW_throttle($.proxy(this._handleTrigger, this), this.settings.throttle));
+                    $(this.settings.container).on(eventType + '.cfw.lazy.' + this.instance, $.CFW_throttle($.proxy(this._handleTrigger, this), this.settings.throttle));
                     checkInitViewport = true;
                 } else {
                     this.$element.on(eventType + '.cfw.lazy', $.proxy(this.show, this));
@@ -4909,7 +4909,7 @@ if (typeof jQuery === 'undefined') {
     CFW_Widget_Equalize.prototype = {
         _init : function() {
             this.instance = $('<div/>').CFW_getID('cfw-equalize');
-            this.$window.on('resize.cfw.equalize.' + this.instance, $().CFW_throttle($.proxy(this.update, this), this.settings.throttle));
+            this.$window.on('resize.cfw.equalize.' + this.instance, $.CFW_throttle($.proxy(this.update, this), this.settings.throttle));
 
             this.$element.attr('data-cfw', 'equalize');
             this.$element.CFW_trigger('init.cfw.equalize');
@@ -5200,6 +5200,7 @@ if (typeof jQuery === 'undefined') {
         this.media = null;
         this.$player = null;
         this.$focus = null;
+        this.$sources = null;
         this.$sliderSeek = null;
         this.$volSeek = null;
         this.activity = null;
@@ -5225,6 +5226,10 @@ if (typeof jQuery === 'undefined') {
         this.$scriptElm = null;
         this.scriptCurrent = -1;
         this.scriptCues = null;
+        this.seekPoint = '.player-transcript-seekpoint, .player-description-seekpoint';
+
+        this.descCurrent = -1;
+        this.descCues = null;
 
         var parsedData = this.$element.CFW_parseData('player', CFW_Widget_Player.DEFAULTS);
         this.settings = $.extend({}, CFW_Widget_Player.DEFAULTS, parsedData, options);
@@ -5233,9 +5238,10 @@ if (typeof jQuery === 'undefined') {
     };
 
     CFW_Widget_Player.DEFAULTS = {
-        src: '',
+        mediaDescribe: false,       // Show description source media
         transcript: -1,             // Default transcript off
         transcriptScroll : true,    // Scroll transcript
+        transcriptDescribe: true,   // Show descriptions in transcript
         transcriptOption : true     // Show transcript options
     };
 
@@ -5257,6 +5263,15 @@ if (typeof jQuery === 'undefined') {
                 return false;
             }
 
+            // Save source items for later use
+            this.$sources = this.$media.find('source');
+            if (!this.$sources.length) { return; }
+
+            // Also set data attr for original source
+            this.$sources.each(function() {
+                $(this).attr('data-src-orig', $(this).attr('src'));
+            });
+
             this.$element.attr('data-cfw', 'player')
                 .addClass('player-unstarted');
 
@@ -5264,6 +5279,11 @@ if (typeof jQuery === 'undefined') {
             if (this.$player.length > 0) {
                 // Hide browsers default player
                 this.media.controls = false;
+            }
+
+            // Swap to description media
+            if (this.settings.mediaDescribe) {
+                this.description();
             }
 
             // Check if loaded
@@ -5404,6 +5424,11 @@ if (typeof jQuery === 'undefined') {
             this.$player.on('click', '[data-cfw-player="fullscreen"]', function(e) {
                 e.preventDefault();
                 $selfRef.fullscreen();
+                $selfRef._focusControl(this);
+            });
+            this.$player.on('click', '[data-cfw-player="description"]', function(e) {
+                e.preventDefault();
+                $selfRef.description();
                 $selfRef._focusControl(this);
             });
 
@@ -5646,7 +5671,7 @@ if (typeof jQuery === 'undefined') {
             var $muteElm = this.$player.find('[data-cfw-player="mute"]');
 
             if (!this.support.mute) {
-                $muteElm.addClass('disabled');
+                this._controlDisable($muteElm);
             } else if (this.media.muted) {
                 $muteElm.addClass('active');
             } else {
@@ -5678,7 +5703,7 @@ if (typeof jQuery === 'undefined') {
             if ($volElm.find('input').length <= 0) { return; }
 
             if (!this.support.mute) {
-                $volElm.addClass('disabled');
+                this._controlDisable($volElm);
                 return;
             }
 
@@ -5783,6 +5808,48 @@ if (typeof jQuery === 'undefined') {
             }
         },
 
+        _srcHasAlternate : function(name) {
+            return (this.$sources[0].hasAttribute('data-src-' + name));
+        },
+
+        _srcIsAlternate : function(name) {
+            return (this.$sources.first().attr('data-src-' + name) === this.$sources.first().attr('src'));
+        },
+
+        _srcLoadAlternate : function(name) {
+            var $selfRef = this;
+            var currTime = this.media.currentTime;
+            var isPaused = this.media.paused;
+
+            this.$sources.each(function() {
+                $(this).attr('src', $(this).attr('data-src-' + name));
+            });
+
+            // Reload the source, skip ahead, and resume playing
+            this.$media
+                .one('loadeddata', function() {
+                    $selfRef.seekTo(currTime);
+                    if (!isPaused) {  $selfRef.media.play(); }
+                });
+            this.media.load();
+        },
+
+        description : function() {
+            if (this._srcHasAlternate('describe')) {
+                var $descElm = this.$player.find('[data-cfw-player="description"]');
+
+                if (this._srcIsAlternate('describe')) {
+                    // Reset to original source
+                    this._srcLoadAlternate('orig');
+                    $descElm.removeClass('active');
+                } else {
+                    // Load description source
+                    this._srcLoadAlternate('describe');
+                    $descElm.addClass('active');
+                }
+            }
+        },
+
         trackList : function() {
             var $selfRef = this;
 
@@ -5815,7 +5882,7 @@ if (typeof jQuery === 'undefined') {
             }
 
             if (this.trackValid.length <= 0) {
-                $captionElm.addClass('disabled');
+                this._controlDisable($captionElm);
                 return;
             }
 
@@ -5846,13 +5913,13 @@ if (typeof jQuery === 'undefined') {
                 $wrapper.append($menu);
                 var menuID = $menu.CFW_getID('cfw-player');
 
-                var $menuItem = $('<li class="player-caption-off"><a href="#" data-cfw-player-track="-1">Off</a></li>');
+                var $menuItem = $('<li class="player-caption-off"><button type="button" class="dropdown-item" data-cfw-player-track="-1">Off</button></li>');
                 $menu.append($menuItem);
 
                 var tracks = this.media.textTracks;
                 for (var i = 0; i < this.trackValid.length; i++) {
                     var trackID = this.trackValid[i];
-                    $menuItem = $('<li><a href="#" data-cfw-player-track="' + trackID + '">' + tracks[trackID].label + '</a></li>');
+                    $menuItem = $('<li><button type="button" class="dropdown-item" data-cfw-player-track="' + trackID + '">' + tracks[trackID].label + '</button></li>');
                     $menu.append($menuItem);
                 }
 
@@ -5916,13 +5983,17 @@ if (typeof jQuery === 'undefined') {
                 var $captionPar = $captionElm.parent();
                 $captionElm.removeClass('active');
                 $captionPar.removeClass('active');
-                $captionPar.find('[data-cfw-player-track]').closest('li').removeClass('active');
+                $captionPar.find('[data-cfw-player-track]')
+                    .removeClass('active')
+                    .removeAttr('aria-pressed');
 
                 for (var i = 0; i < tracks.length; i++) {
                     if (tracks[i].mode == 'showing') {
                         $captionElm.addClass('active');
                         $captionPar.addClass('active');
-                        $captionPar.find('[data-cfw-player-track="' + i + '"]').closest('li').addClass('active');
+                        $captionPar.find('[data-cfw-player-track="' + i + '"]')
+                            .addClass('active')
+                            .attr('aria-pressed', 'true');
                         this.trackCurrent = i;
                     }
                 }
@@ -5937,7 +6008,7 @@ if (typeof jQuery === 'undefined') {
             }
 
             if (this.trackValid.length <= 0) {
-                $tsElm.addClass('disabled');
+                this._controlDisable($tsElm);
                 return;
             }
 
@@ -5965,22 +6036,25 @@ if (typeof jQuery === 'undefined') {
                 $wrapper.append($menu);
                 var menuID = $menu.CFW_getID('cfw-player');
 
-                var $menuItem = $('<li class="player-script-off"><a href="#" data-cfw-player-script="-1">Off</a></li>');
+                var $menuItem = $('<li class="player-script-off"><button type="button" class="dropdown-item" data-cfw-player-script="-1">Off</button></li>');
                 $menu.append($menuItem);
 
                 var tracks = this.media.textTracks;
                 for (var i = 0; i < this.trackValid.length; i++) {
                     var trackID = this.trackValid[i];
-                    $menuItem = $('<li><a href="#" data-cfw-player-script="' + trackID + '">' + tracks[trackID].label + '</a></li>');
+                    $menuItem = $('<li><button type="button" class="dropdown-item" data-cfw-player-script="' + trackID + '">' + tracks[trackID].label + '</a></li>');
                     $menu.append($menuItem);
                 }
                 if (this.settings.transcriptOption) {
-                    // Add scroll toggle
                     $menuItem = $('<li class="dropdown-divider"></li>');
                     $menu.append($menuItem);
-                    var scrollVal = (this.settings.transcriptScroll) ? 'true' : 'false';
-                    var scrollClass = (this.settings.transcriptScroll) ? 'active' : '';
-                    $menuItem = $('<li><a href="#" class="player-script-scroll-check ' + scrollClass + '" data-cfw-player-script-scroll="' + scrollVal + '" aria-checked="' + scrollVal + '"><span class="player-script-scroll-check-icon"></span>Auto-scroll</a></li>');
+                    // Add scroll toggle
+                    var scrollCheck = (this.settings.transcriptScroll) ? 'checked' : '';
+                    $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-script-scroll class="form-check-input" ' + scrollCheck + '> Auto-scroll</label></li>');
+                    $menu.append($menuItem);
+                    // Add description toggle
+                    var descCheck = (this.settings.transcriptDescribe) ? 'checked' : '';
+                    $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-script-describe class="form-check-input" ' + descCheck + '> Show Description</label></li>');
                     $menu.append($menuItem);
                 }
 
@@ -5992,12 +6066,16 @@ if (typeof jQuery === 'undefined') {
                     $selfRef.scriptSet(num);
                 });
                 if (this.settings.transcriptOption) {
-                    this.$player.on('click', '[data-cfw-player-script-scroll]', function(e) {
-                        e.preventDefault();
-                        var $this = $(this);
+                    this.$player.on('click', '[data-cfw-player-script-scroll]', function() {
                         $selfRef.settings.transcriptScroll = !$selfRef.settings.transcriptScroll;
-                        $this.attr('aria-checked', $selfRef.settings.transcriptScroll);
-                        $this.toggleClass('active');
+                        $(this).prop('checked', $selfRef.settings.transcriptScroll);
+                    });
+                    this.$player.on('click', '[data-cfw-player-script-describe]', function(e) {
+                        if (!$selfRef._controlIsDisabled($(e.target))) {
+                            $selfRef.settings.transcriptDescribe = !$selfRef.settings.transcriptDescribe;
+                            $(this).prop('checked', $selfRef.settings.transcriptDescribe);
+                            $selfRef.scriptLoad();
+                        }
                     });
                 }
 
@@ -6053,7 +6131,9 @@ if (typeof jQuery === 'undefined') {
                     var $tsPar = $tsElm.parent();
                     $tsElm.removeClass('active');
                     $tsPar.removeClass('active');
-                    $tsPar.find('[data-cfw-player-script]').closest('li').removeClass('active');
+                    $tsPar.find('[data-cfw-player-script]')
+                        .removeClass('active')
+                        .removeAttr('aria-pressed');
                 }
             }
 
@@ -6067,11 +6147,11 @@ if (typeof jQuery === 'undefined') {
 
             if (trackID == -1) {
                 this.scriptCues = null;
+                this.descCues = null;
                 this.$media.CFW_trigger('afterTranscriptHide.cfw.player');
             } else {
                 this.scriptLoad();
             }
-
         },
 
         scriptLoad : function(forced) {
@@ -6084,8 +6164,11 @@ if (typeof jQuery === 'undefined') {
             this.$media.off('loadeddata.cfw.player.script');
 
             var tracks = this.media.textTracks;
-            if (tracks.length <= 0 || this.scriptCurrent == -1) {
+            var tracksLength = tracks.length;
+            if (tracksLength <= 0 || this.scriptCurrent == -1) {
                 this.scriptCues = null;
+                this.descCurrent = -1;
+                this.descCues = null;
                 return;
             }
 
@@ -6093,7 +6176,7 @@ if (typeof jQuery === 'undefined') {
             if (cues == null || cues.length <= 0) {
                 var hold = (this.trackCurrent == -1) ? null : tracks[this.trackCurrent].mode;
                 // preload all tracks to stop future `load` event triggers on transcript change
-                for (var i = 0; i < tracks.length; i++) {
+                for (var i = 0; i < tracksLength; i++) {
                     tracks[i].mode = 'hidden';
                 }
                 // reset the caption track state
@@ -6102,9 +6185,29 @@ if (typeof jQuery === 'undefined') {
                 }
             }
 
+            // Find description track
+            this.descCurrent = -1;
+            this.descCues = null;
+            if ($selfRef.settings.transcriptDescribe) {
+                var descLang = tracks[this.scriptCurrent].language;
+                for (var j = 0; j < tracksLength; j++) {
+                    if (descLang == tracks[j].language && 'descriptions' == tracks[j].kind) {
+                        $selfRef.descCurrent = j;
+                    }
+                }
+            }
+
+            var $descControl = this.$player.find('[data-cfw-player-script-describe]');
+            if (this.descCurrent == -1 && this.scriptCurrent > -1) {
+                this._controlDisable($descControl);
+            } else {
+                this._controlEnable($descControl);
+            }
+
             function scriptLoad2(forced) {
                 var tracks = $selfRef.media.textTracks; // Reload object to get update
                 var cues = tracks[$selfRef.scriptCurrent].cues;
+                var descCues = ($selfRef.descCurrent == -1) ? null : tracks[$selfRef.descCurrent].cues;
 
                 if (cues && cues.length <= 0 && !forced) {
                     // Force media to load
@@ -6116,6 +6219,7 @@ if (typeof jQuery === 'undefined') {
                 }
 
                 $selfRef.scriptCues = cues;
+                $selfRef.descCues = descCues;
                 $selfRef.scriptProcess();
             }
 
@@ -6128,7 +6232,7 @@ if (typeof jQuery === 'undefined') {
         scriptProcess : function() {
             var $selfRef = this;
 
-            if (this.scriptCues == null) {
+            if (this.scriptCues == null && this.descCues == null) {
                 return;
             }
 
@@ -6138,8 +6242,8 @@ if (typeof jQuery === 'undefined') {
              *
              * Modified/simplified to handle *basic text string* cues in DOM object format
              */
-            var addCaption = function(div, cap) {
-                var $capSpan = $('<span class="player-scripttxt-seekpoint player-scripttxt-caption"></span>');
+            var addCaption = function($div, cap) {
+                var $capSpan = $('<span class="player-transcript-seekpoint player-transcript-caption"></span>');
 
                 var flattenString = function(str) {
                     var result = [];
@@ -6156,15 +6260,17 @@ if (typeof jQuery === 'undefined') {
 
                     if ((hasParens && hasBrackets && openBracket < openParen) || hasBrackets) {
                         result = result.concat(flattenString(str.substring(0, openBracket)));
-                        result.push($('<span class="player-scripttxt-unspoken">' + str.substring(openBracket, closeBracket + 1) + '</span>'));
+                        result.push($('<span class="player-transcript-unspoken">' + str.substring(openBracket, closeBracket + 1) + '</span>'));
                         result = result.concat(flattenString(str.substring(closeBracket + 1)));
                     } else if (hasParens) {
                         result = result.concat(flattenString(str.substring(0, openParen)));
-                        result.push($('<span class="player-scripttxt-unspoken">' + str.substring(openParen, closeParen + 1) + '</span>'));
+                        result.push($('<span class="player-transcript-unspoken">' + str.substring(openParen, closeParen + 1) + '</span>'));
                         result = result.concat(flattenString(str.substring(closeParen + 1)));
                     } else {
                         result.push(str);
                     }
+
+
 
                     return result;
                 };
@@ -6174,8 +6280,24 @@ if (typeof jQuery === 'undefined') {
                     'data-start' : cap.startTime.toString(),
                     'data-end'   : cap.endTime.toString()
                 });
-                div.append($capSpan);
-                div.append('\n');
+                $div.append($capSpan);
+                $div.append('\n');
+            };
+
+            var addDescription = function($div, desc) {
+                var $descDiv = $('<div class="player-description"></div>');
+                $descDiv.append('<span class="sr-only">Description: </span>');
+
+                var $descSpan = $('<span class="player-description-seekpoint player-description-caption"></span>');
+                $descSpan.append(desc.text);
+                $descSpan.attr({
+                    'data-start' : desc.startTime.toString(),
+                    'data-end'   : desc.endTime.toString()
+                });
+                $descDiv.append($descSpan);
+
+                $div.append($descDiv);
+                $div.append('\n');
             };
 
             var $tsElm = this.$player.find('[data-cfw-player="transcript"]');
@@ -6191,47 +6313,75 @@ if (typeof jQuery === 'undefined') {
                     var $tsPar = $tsElm.parent();
                     $tsElm.addClass('active');
                     $tsPar.addClass('active');
-                    $tsPar.find('[data-cfw-player-script="' + this.scriptCurrent + '"]').closest('li').addClass('active');
+                    $tsPar.find('[data-cfw-player-script="' + this.scriptCurrent + '"]')
+                        .addClass('active')
+                        .attr('aria-pressed', 'true');
                 }
             }
 
             // Insert transcript container
-            var $newElm = $('<div class="player-scripttxt"></div>');
+            var $newElm = $('<div class="player-transcript"></div>');
             this.$element.append($newElm);
-            this.$scriptElm = this.$element.find('.player-scripttxt');
+            this.$scriptElm = this.$element.find('.player-transcript');
 
-            // Loop through all captions and add to transcript container
-            var cueIdx = 0;
-            while (cueIdx < this.scriptCues.length) {
-                addCaption(this.$scriptElm, this.scriptCues[cueIdx]);
-                cueIdx += 1;
+            // Loop through all captions/descriptions and add to transcript container
+            var captions = this.scriptCues || [];
+            var descriptions = this.descCues || [];
+            var capIdx = 0;
+            var descIdx = 0;
+            var timeStamp = null;
+
+            while ((capIdx < captions.length) || (descIdx < descriptions.length)) {
+                if ((descIdx < descriptions.length) && (capIdx < captions.length)) {
+                    // Both descriptions and captions have content
+                    timeStamp = Math.min(descriptions[descIdx].startTime, captions[capIdx].startTime);
+                } else {
+                    // Only one item has content
+                    timeStamp = null;
+                }
+
+                if (timeStamp !== null) {
+                    if (typeof descriptions[descIdx] !== 'undefined' && descriptions[descIdx].startTime === timeStamp) {
+                        addDescription(this.$scriptElm, descriptions[descIdx]);
+                        descIdx += 1;
+                    } else {
+                        addCaption(this.$scriptElm, captions[capIdx]);
+                        capIdx += 1;
+                    }
+                } else {
+                    if (descIdx < descriptions.length) {
+                        addDescription(this.$scriptElm, descriptions[descIdx]);
+                        descIdx += 1;
+                    } else if (capIdx < captions.length) {
+                        addCaption(this.$scriptElm, captions[capIdx]);
+                        capIdx += 1;
+                    }
+                }
             }
 
             // Hook in cuechange handler
             if (this.media.textTracks[this.scriptCurrent].oncuechange !== undefined) {
-                $(this.media.textTracks[this.scriptCurrent]).on('cuechange.cfw.player.transcript', function() {
-                    $selfRef.scriptHighlight(this.activeCues);
-                });
+                $(this.media.textTracks[this.scriptCurrent])
+                    .off('cuechange.cfw.player.transcript')
+                    .on('cuechange.cfw.player.transcript', function() {
+                        $selfRef.scriptHighlight(this.activeCues);
+                    });
             } else {
                 // Firefox does not currently support oncuechange event
-                this.$media.on('timeupdate.cfw.player.transcript', function() {
-                    $selfRef.scriptHighlight($selfRef.media.textTracks[$selfRef.scriptCurrent].activeCues);
-                });
+                this.$media
+                    .off('timeupdate.cfw.player.transcript')
+                    .on('timeupdate.cfw.player.transcript', function() {
+                        $selfRef.scriptHighlight($selfRef.media.textTracks[$selfRef.scriptCurrent].activeCues);
+                    });
             }
 
             // Seekpoint event handlers
-            $('.player-scripttxt-seekpoint', this.$scriptElm).on('click.cfw.player.scriptseek', function() {
-                var spanStart = parseFloat($(this).attr('data-start'));
-                $selfRef.scriptSeek(spanStart);
-            });
-            $('.player-scripttxt-seekpoint', this.$scriptElm).on('keydown.cfw.player.scriptseek', function(e) {
-                // 13-enter
-                if (!/(13)/.test(e.which)) { return; }
-                e.stopPropagation();
-                e.preventDefault();
-                var spanStart = parseFloat($(this).attr('data-start'));
-                $selfRef.scriptSeek(spanStart);
-            });
+            $(this.seekPoint, this.$scriptElm)
+                .off('click.cfw.player.scriptseek')
+                .on('click.cfw.player.scriptseek', function() {
+                    var spanStart = parseFloat($(this).attr('data-start'));
+                    $selfRef.scriptSeek(spanStart);
+                });
 
             // Artificially trigger first cuechange - in case already in middle of a cue
             var cueEvent;
@@ -6249,15 +6399,15 @@ if (typeof jQuery === 'undefined') {
 
         scriptHighlight : function(activeCues) {
             // Remove any active highlights
-            $('.player-scripttxt-active', this.$scriptElm).removeClass('player-scripttxt-active');
+            $('.player-transcript-active', this.$scriptElm).removeClass('player-transcript-active');
 
             if (activeCues.length <= 0) {
                 return;
             }
 
             var cueStart = activeCues[0].startTime;
-            var $matchCap = $('.player-scripttxt-caption[data-start="' + cueStart + '"]', this.$scriptElm);
-            $matchCap.addClass('player-scripttxt-active');
+            var $matchCap = $('.player-transcript-caption[data-start="' + cueStart + '"]', this.$scriptElm);
+            $matchCap.addClass('player-transcript-active');
 
             if (this.settings.transcriptScroll) {
                 var tsScroll = this.$scriptElm.scrollTop();
@@ -6439,10 +6589,33 @@ if (typeof jQuery === 'undefined') {
             }, 10);
         },
 
+        _controlEnable : function($control) {
+            $control
+                .removeClass('disabled')
+                .removeAttr('disabled')
+                .closest('label')
+                .removeClass('disabled');
+        },
+
+        _controlDisable : function($control) {
+            if ($control.is('button, input')) {
+                $control.prop('disabled', true);
+                $control
+                    .closest('label')
+                    .addClass('disabled');
+            } else {
+                $control.addClass('disabled');
+            }
+        },
+
+        _controlIsDisabled : function($control) {
+            return $control.is('.disabled, :disabled');
+        },
+
         dispose : function() {
             clearTimeout(this.activityTimer);
             if (this.$scriptElm) {
-                $('.player-scripttxt-seekpoint', this.$scriptElm).off();
+                $(this.seekPoint, this.$scriptElm).off('.cfw.player.seekpoint');
                 this.$scriptElm.remove();
             }
             if (this.$sliderSeek) {
@@ -6469,6 +6642,7 @@ if (typeof jQuery === 'undefined') {
             this.$media = null;
             this.media = null;
             this.$player = null;
+            this.$sources = null;
             this.$focus = null;
             this.$sliderSeek = null;
             this.$volSeek = null;
@@ -6486,6 +6660,7 @@ if (typeof jQuery === 'undefined') {
             this.$scriptElm = null;
             this.scriptCurrent = null;
             this.scriptCues = null;
+            this.descCues = null;
             this.settings = null;
         }
     };
