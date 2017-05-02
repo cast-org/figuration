@@ -755,10 +755,10 @@ body {
 <div class="video-transcript">
     <!-- <div data-cfw="player" class="video-wrapper" data-cfw-player-transcript="0" role="region" aria-label="video player"> -->
     <!-- <div data-cfw="player" class="video-wrapper" data-cfw-player-transcript="0" data-cfw-player-transcript-describe="false" role="region" aria-label="video player"> -->
-    <div data-cfw="player" id="desc1" class="video-wrapper" role="region" aria-label="video player">
+    <div data-cfw="player" id="desc1" class="video-wrapper" role="region" aria-label="video player" data-cfw-player-media-describe="true">
         <div class="embed-fluid">
-            <!-- <video poster="../../docs/assets/video/niagara_falls.jpg" controls preload="none"> -->
-            <video poster="../../docs/assets/video/niagara_falls.jpg" controls>
+            <video poster="../../docs/assets/video/niagara_falls.jpg" controls preload="none">
+            <!-- <video poster="../../docs/assets/video/niagara_falls.jpg" controls> -->
                 <source src="../../docs/assets/video/niagara_falls.mp4" data-src-describe="../../docs/assets/video/niagara_falls-describe-en.mp4">
                 <track src="../../docs/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" />
                 <track src="../../docs/assets/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es" />
@@ -773,7 +773,7 @@ body {
                     <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
                 </span>
                 <span class="player-describe" data-cfw-player="description">
-                    <button type="button" class="btn btn-default on" title="Turn Off Audio Description" aria-label="Turn Off Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
+                    <button type="button" class="btn btn-default on active" title="Turn Off Audio Description" aria-label="Turn Off Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
                     <button type="button" class="btn btn-default off" title="Turn On Audio Description" aria-label="Turn On Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
@@ -783,7 +783,6 @@ body {
                     </span>
                     <span class="player-time-duration" data-cfw-player="time-duration"></span>
                 </span>
-
                 <span class="player-mute" data-cfw-player="mute">
                     <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fa fa-fw fa-volume-off"></span></button>
                     <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fa fa-fw fa-volume-up"></span></button>

@@ -179,7 +179,7 @@ Add an interactive transcript to your video using the `transcript` control.  The
 {% example html %}
 <p><small>Source: <a href="https://videos.pexels.com/videos/tourists-looking-at-niagara-falls-333">Tourists Looking at Niagara Falls</a></small></p>
 
-<div data-cfw="player" data-cfw-player-transcript="0" class="video-wrapper">
+<div data-cfw="player" data-cfw-player-transcript="0" class="video-wrapper" role="region" aria-label="video player">
     <div class="embed-fluid">
         <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
             <source src="{{ site.baseurl }}/assets/video/niagara_falls.mp4" type="video/mp4" />
@@ -213,12 +213,84 @@ Add an interactive transcript to your video using the `transcript` control.  The
                     <label>Volume slider<input type="text" /></label>
                 </span>
                 <button type="button" class="btn" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fa fa-fw fa-cc" aria-hidden="true"></span></button>
-                <button type="button" class="btn player-transcript" data-cfw-player="transcript" title="Transcript captions" aria-label="Closed captions"><span class="fa fa-fw fa-file-text-o" aria-hidden="true"></span></button>
+                <button type="button" class="btn" data-cfw-player="transcript" title="Transcript captions" aria-label="Closed captions"><span class="fa fa-fw fa-file-text-o" aria-hidden="true"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
                     <button type="button" class="btn player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
                     <button type="button" class="btn player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
                 </span>
             </div>
+        </div>
+    </div>
+</div>
+{% endexample %}
+
+### Audio Description
+
+Improve accessibility for blind and visually impaired users by including an audio description with your video. Extend the `<source>` elements with a `data-src-describe=""` attribute pointing to the video source that contains the additional narration  description. Also add a control with a `data-cfw-player="description"` attribute.  This will allow the user to toggle the audio description version of the video on and off.
+
+{% example html %}
+<div data-cfw="player" data-cfw-player-media-describe="true" class="video-wrapper" role="region" aria-label="video player">
+    <div class="embed-fluid">
+        <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
+            <source src="{{ site.baseurl }}/assets/video/niagara_falls.mp4" data-src-describe="{{ site.baseurl }}/assets/video/niagara_falls-describe-en.mp4">
+        </video>
+    </div>
+    <div class="player-wrapper">
+        <div class="player" data-cfw-player="player">
+            <span class="player-control mr-0_5" data-cfw-player="control">
+                <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
+            </span>
+            <span class="player-time mr-0_5" data-cfw-player="time">
+                <span class="player-time-current" data-cfw-player="time-current"></span>
+                <span class="player-seek" data-cfw-player="seek">
+                	<label>Seek slider<input type="text" /></label>
+                </span>
+                <span class="player-time-duration" data-cfw-player="time-duration"></span>
+            </span>
+            <span class="player-describe" data-cfw-player="description">
+                <button type="button" class="btn btn-default on active" title="Turn Off Audio Description" aria-label="Turn Off Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
+                <button type="button" class="btn btn-default off" title="Turn On Audio Description" aria-label="Turn On Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
+            </span>
+        </div>
+    </div>
+</div>
+{% endexample %}
+
+### Transcript Description
+
+Further improve accessibility for blind and visually impaired users by including the audio description narration within the interactive transcript. Add a `<track kind="descriptions">`with the content of the description narration.  Also add matching `srclang` attributes to both the caption (or subtitle) track, and to the descriptions track.  For example, to specify the English language, use `srclang="en"` on both elements.
+
+{% example html %}
+<div data-cfw="player" data-cfw-player-transcript="0" data-cfw-player-media-describe="true" class="video-wrapper" role="region" aria-label="video player">
+    <div class="embed-fluid">
+        <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
+            <source src="{{ site.baseurl }}/assets/video/niagara_falls.mp4" data-src-describe="{{ site.baseurl }}/assets/video/niagara_falls-describe-en.mp4">
+            <track src="{{ site.baseurl }}/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" default />
+            <track src="{{ site.baseurl }}/assets/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es" />
+            <track src="{{ site.baseurl }}/assets/video/niagara_falls-describe-en.vtt" label="English Description" kind="descriptions" srclang="en" />
+            <track src="{{ site.baseurl }}/assets/video/niagara_falls-describe-es.vtt" label="Descripción Espa&ntilde;ola" kind="descriptions" srclang="es" />
+        </video>
+    </div>
+    <div class="player-wrapper">
+        <div class="player" data-cfw-player="player">
+            <span class="player-control mr-0_5" data-cfw-player="control">
+                <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
+            </span>
+            <span class="player-time mr-0_5" data-cfw-player="time">
+                <span class="player-time-current" data-cfw-player="time-current"></span>
+                <span class="player-seek" data-cfw-player="seek">
+                	<label>Seek slider<input type="text" /></label>
+                </span>
+                <span class="player-time-duration" data-cfw-player="time-duration"></span>
+            </span>
+            <span class="player-describe mr-0_25" data-cfw-player="description">
+                <button type="button" class="btn btn-default on active" title="Turn Off Audio Description" aria-label="Turn Off Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
+                <button type="button" class="btn btn-default off" title="Turn On Audio Description" aria-label="Turn On Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
+            </span>
+            <button type="button" class="btn btn-default mr-0_25" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fa fa-fw fa-cc"></span></button>
+            <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="fa fa-fw fa-file-text-o"></span></button>
         </div>
     </div>
 </div>
@@ -392,6 +464,10 @@ Regions and controls are specified by data attributes `data-cfw-player="name"` t
         </td>
     </tr>
     <tr>
+        <td>description</td>
+        <td>Audio description toggle button.</td>
+    </tr>
+    <tr>
         <td>fullscreen</td>
         <td>Fullscreen toggle button. Currently only supported for <code>&lt;video&gt;</code> elements.</td>
     </tr>
@@ -424,6 +500,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </tr>
 </thead>
 <tbody>
+    <tr>
+        <td>mediaDescribe</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Use the description media source.</td>
+    </tr>
     <tr>
         <td>transcript</td>
         <td>integer</td>
@@ -509,6 +591,16 @@ Change the caption/subtitle track.  `trackID` is the 0-indexed array of track it
 {:.no_toc}
 
 Change the transcript track.  `trackID` is the 0-indexed array of track items defined in the `<video>` element. Setting `trackID` to `-1` will turn off the transcript.
+
+#### `.CFW_Player('fullscreen')`
+{:.no_toc}
+
+Toggle the fullscreen mode of the player.
+
+#### `.CFW_Player('description')`
+{:.no_toc}
+
+Toggle the use of the audio description video source.
 
 #### `.CFW_Player('dispose')`
 {:.no_toc}
