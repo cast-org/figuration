@@ -72,6 +72,7 @@
 
             this.$parent
                 .removeClass('in')
+                .CFW_mutateTrigger()
                 .CFW_transition(null, removeElement);
         },
 

@@ -798,11 +798,13 @@ $(window).ready(function() {
                     $('#pop_7t').one('beforeShow.cfw.popover', function(e) {
                         var $popover = $(this);
                         console.log($popover.data('cfw.popover').$target);
+                        /*
                         $popover.data('cfw.popover').$target.find('[data-cfw="lazy"]').each(function() {
                             $(this).one('load', function() {
                                 $popover.CFW_Popover('locateTip');
                             }).CFW_Lazy('show');
                         });
+                        */
                     });
                 });
                 /*
@@ -1736,6 +1738,7 @@ $(window).ready(function() {
                 <h4 class="modal-title">Modal title</h4>
             </div>
             <div class="modal-body">
+                <img src="" data-cfw="lazy" data-cfw-lazy-src="../../docs/assets/img/test.gif" alt="test pattern" style="border: 1px solid blue;" class="img-fluid" />
                 <h4>Text in a modal</h4>
                 <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
                 <h4>Popover in a modal</h4>

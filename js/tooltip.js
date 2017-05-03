@@ -456,7 +456,9 @@
             }
 
             this.inTransition = true;
-            this.$target.removeClass('in');
+            this.$target
+                .CFW_mutationIgnore()
+                .removeClass('in');
 
             if ($.CFW_isTouch) {
                 // Remove empty mouseover listener for iOS work-around
@@ -488,10 +490,10 @@
         _unlinkComplete : function() {
             var $element = this.$element;
             var type = this.type;
-
             if (this.$target) {
                 this.$target.off('.cfw.' + this.type)
-                    .removeData('cfw.' + this.type);
+                    .removeData('cfw.' + this.type)
+                    .CFW_mutationIgnore();
             }
             this.$element.off('.cfw.' + this.type)
                 .removeAttr('data-cfw')
@@ -622,7 +624,16 @@
             this.hoverState = null;
 
             // this.$target.addClass('in')
-            this.$target.removeAttr('aria-hidden');
+            this.$target
+                .removeAttr('aria-hidden')
+                .CFW_mutateTrigger();
+
+            // Mutation handler
+            this.$target
+                .CFW_mutationListen()
+                .on('mutate.cfw.mutate', function() {
+                    $selfRef.locateTip();
+                });
 
             if (this.isDialog && this.follow) {
                 this.$target.trigger('focus');
@@ -654,7 +665,10 @@
                 .removeAttr('aria-describedby');
             this.$target
                 .off('.cfw.' + this.type)
-                .removeClass('in');
+                .removeClass('in')
+                .css('display', 'none')
+                .attr('aria-hidden', true)
+                .CFW_mutationIgnore();
             if (this.$focusLast) {
                 this.$focusLast.off('.cfw.' + this.type + '.focusLast');
             }
@@ -662,14 +676,6 @@
             $(window).off('.cfw.' + this.type + '.' + this.instance);
 
             this.inState = { click: false, hover: false, focus: false };
-
-            this.$target
-                .removeClass('in')
-                .css('display', 'none')
-                .attr({
-                    'aria-hidden': 'true',
-                    'role':  ''
-                });
 
             this.inTransition = false;
             if (this.isDialog) {

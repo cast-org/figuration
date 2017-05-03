@@ -123,6 +123,11 @@
 
         var dragOpt = { handle: '[data-cfw-drag="' + this.type + '"]' };
 
+        // Remove mutation handler
+        this.$element.on('afterShow.cfw.' + this.type, function() {
+            $selfRef.$target.CFW_mutationIgnore();
+        });
+
         // Unset any previous drag events
         this.$target.off('.cfw.drag');
 

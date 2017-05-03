@@ -125,6 +125,70 @@
     $.CFW_isTouch = isTouch;
 
     // =====
+    // Mutation Helper
+    // =====
+
+    // Not available in IE 10-
+    // Polyfill that seems work, and can be used as a <script>
+    // Github: https://github.com/talee/mutationobserver-breaks-characterdata
+    // NPM: https://www.npmjs.com/package/mutationobserver-polyfill
+    var CFW_MutationObserverTest = function() {
+        return ('MutationObserver' in window) ? window.MutationObserver : false;
+    }();
+    var CFW_mutationObserver = CFW_MutationObserverTest;
+
+    function CFW_mutationObserved(records) {
+        if (!MutationObserver) { return; }
+        var $target = $(records[0].target);
+        var $parent = $target.parents('[data-cfw-mutate]').first();
+console.log(records.length, records);
+console.log('target', $target);
+console.log('parent', $parent);
+
+        if ($parent.is($target)) { return; }
+        $parent.triggerHandler('mutate.cfw.mutate');
+    }
+
+    $.fn.CFW_mutateTrigger = function() {
+        this.find('[data-cfw-mutate]').triggerHandler('mutate.cfw.mutate');
+        return this;
+    };
+
+    $.fn.CFW_mutationIgnore = function() {
+        var elmObserver = this.data('cfw-mutationobserver');
+        elmObserver && elmObserver.disconnect();
+        this.removeData('cfw-mutationobserver')
+            .removeAttr('data-cfw-mutate')
+            .off('mutated.cfw.mutate');
+        return this;
+    };
+
+    $.fn.CFW_mutationListen = function() {
+        if (!CFW_mutationObserver) { return; }
+
+        this.CFW_mutationIgnore();
+
+        var elmObserver = new MutationObserver(CFW_mutationObserved);
+        elmObserver.observe(
+            this[0], {
+                attributes: true,
+                childList: true,
+                characterData: false,
+                subtree: true,
+                attributeFilter : [
+                    'style',
+                    'class'
+                ]
+            }
+        );
+
+        this.data('cfw-mutationobserver', elmObserver)
+            .attr('data-cfw-mutate', '')
+            .on('mutated.cfw.mutate', CFW_mutationObserved);
+        return this;
+    };
+
+    // =====
     // Public Utils
     // =====
 
