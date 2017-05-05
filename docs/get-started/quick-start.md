@@ -31,11 +31,7 @@ Add our JavaScript widgets and jQuery, either in the `<head>`, or near the end o
 {% endhighlight %}
 
 ## Basic Template
-Be sure to have your pages set up with the latest design and development standards. That means:
-
-* Use the HTML5 doctype
-* Force Internet Explorer to use its latest rendering mode ([read more](http://stackoverflow.com/q/6771258))
-* Utilize the viewport meta tag
+Be sure to have your pages set up with the latest design and development standards. That means using the HTML5 doctype, and including the viewport meta tag to allow responsive behaviors.
 
 Essentially something like this:
 
@@ -108,6 +104,16 @@ Learn more about [box model and sizing at CSS Tricks](https://css-tricks.com/box
 ### Normalize.css
 
 For improved cross-browser rendering, we use [Normalize.css](http://necolas.github.io/normalize.css/) to correct small inconsistencies across browsers and devices. We further build on this with our own, slightly more opinionated styles with [Reboot]({{ site.baseurl }}/content/reboot/).
+
+### MutationObserver
+
+This is not shown in the Basic Template shown above, but if you require supporting Internet Explorer 10, you may need to add a [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) polyfill to use our [JavaScript Widgets]({{ site.baseurl }}/widgets/overview/) to their fullest potential.  We have done some brief testing with the [webcomponents.org MutationObserver polyfill](https://github.com/webcomponents/webcomponentsjs) have found it to be work reasonably.  You can load it conditionally for Internet Explorer 10 as shown in the following example.  This snippet needs to be placed **before** loading the Figuration JavaScript.
+
+{% highlight html %}
+<!--[if lt IE 10]>
+  <script src="{{ site.cdn.mutate }}" integrity="{{ site.cdn.mutate_hash }}" crossorigin="anonymous"></script>
+<![endif]-->
+{% endhighlight %}
 
 ## Community
 

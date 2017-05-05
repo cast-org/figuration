@@ -174,6 +174,28 @@ When using `row` mode, Equalize looks for items at the same starting top offset 
 </div>
 {% endexample %}
 
+### Stacked Equalize
+
+When using `stack` mode, when items are stacked, they will all be given the same height, regardless of their top offset.
+
+{% example html %}
+<div data-cfw="equalize" data-cfw-equalize-target=".card" data-cfw-equalize-stack="true">
+    <div class="card card-body">
+        <h4>Card 1</h4>
+        One
+    </div>
+    <div class="card card-body">
+        <h4>Card 2</h4>
+        Two<br>Two
+
+    </div>
+    <div class="card card-body">
+        <h4>Card 3</h4>
+        Three<br>Three<br>Three
+    </div>
+</div>
+{% endexample %}
+
 ## Usage
 
 ### Via Data Attributes

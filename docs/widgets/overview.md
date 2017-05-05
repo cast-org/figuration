@@ -40,6 +40,8 @@ All of Figuration's widgets depend on `util.js` and it has to be included alongs
 
 `util.js` includes utility functions and a basic helper for `transitionEnd` events as well as a CSS transition emulator. It's used by the other plugins to check for CSS transition support and to catch hanging transitions.
 
+Also, some of the widgets use [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) utilities to watch for and respond to DOM changes.
+
 ## No Conflict
 Figuration has opted to not go with a .noConflict mode.  Due to crosstalk between some of the widgets, we extended the namespaces by marking all functionalty with `CFW` or `cfw`, as in **C**AST **F**iguration **W**idget.
 
