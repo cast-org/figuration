@@ -79,6 +79,7 @@
                 return;
             }
 
+            if (!this.$target || !this.$target.length) { return; }
             var $targetElm = this.$target.filter(':visible');
             var total = $targetElm.length;
             if (total <= 0) { return false; }
