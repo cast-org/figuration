@@ -222,12 +222,6 @@
                     .on('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]', function(e) {
                         $selfRef.toggle(e);
                     });
-                // Hide tooltips on modal close
-                this.$element.closest('.modal')
-                    .off('beforeHide.cfw.modal')
-                    .on('beforeHide.cfw.modal', function() {
-                        $selfRef.hide(true);
-                    });
             }
         },
 
@@ -493,9 +487,7 @@
             var type = this.type;
             if (this.$target) {
                 this.$target.off('.cfw.' + this.type)
-                    .removeData('cfw.' + this.type)
-                    .removeAttr('data-cfw-mutate')
-                    .CFW_mutationIgnore();
+                    .removeData('cfw.' + this.type);
             }
             this.$element.off('.cfw.' + this.type)
                 .removeAttr('data-cfw')
@@ -630,12 +622,20 @@
                 .removeAttr('aria-hidden')
                 .CFW_mutateTrigger();
 
-            // Mutation handler
+            // Mutation handlers
             this.$target
                 .attr('data-cfw-mutate', '')
                 .CFW_mutationListen()
                 .on('mutate.cfw.mutate', function() {
                     $selfRef.locateTip();
+                });
+            this.$element
+                .attr('data-cfw-mutate', '')
+                .CFW_mutationListen()
+                .on('mutate.cfw.mutate', function() {
+                    if ($(this).is(':hidden')) {
+                        $selfRef.hide(true);
+                    }
                 });
 
             if (this.isDialog && this.follow) {
@@ -664,8 +664,9 @@
         _hideComplete : function() {
             this.$element
                 .off('.cfw.' + this.type + '.focusStart')
-                .off('.cfw.modal')
-                .removeAttr('aria-describedby');
+                .removeAttr('aria-describedby')
+                .removeAttr('data-cfw-mutate')
+                .CFW_mutationIgnore();
             this.$target
                 .off('.cfw.' + this.type)
                 .removeClass('in')

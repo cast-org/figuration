@@ -140,9 +140,6 @@
                         'aria-expanded': 'false'
                     })
                     .CFW_trigger('afterHide.cfw.tab', { relatedTarget: this.$element[0] });
-
-                var $prevPanel = $previous.data('cfw.tab').$target;
-                $prevPanel && $prevPanel.CFW_mutateTrigger();
             }
 
             this.$element.attr({
@@ -211,6 +208,7 @@
                 if (isPanel) {
                     $selfRef.$element.CFW_trigger('afterShow.cfw.tab', { relatedTarget: $previous[0] });
                     $node.CFW_mutateTrigger();
+                    $prevActive.CFW_mutateTrigger();
                 }
             }
 

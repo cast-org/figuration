@@ -141,12 +141,7 @@
         if (!MutationObserver) { return; }
         var $target = $(records[0].target);
         var $parent = $target.parents('[data-cfw-mutate]').first();
-        if($target.is($node)) { return; } // Ignore elements own mutation
-console.log(records.length, records);
-console.log('node', $node);
-console.log('target', $target);
-console.log('parent', $parent);
-console.log($parent.is($node));
+        if ($target.is($node)) { return; } // Ignore elements own mutation
         $parent.triggerHandler('mutate.cfw.mutate');
     }
 
@@ -191,11 +186,11 @@ console.log($parent.is($node));
             // Don't pass node so that this can force a mutation obeservation
             $(this).data('cfw-mutationobserver', elmObserver)
                 .on('mutated.cfw.mutate', CFW_mutationObserved);
-                /*
+            /*
                 .on('mutated.cfw.mutate', function(e) {
                     CFW_mutationObserved(e, $node);
                 });
-                */
+            */
         });
         return this;
     };
