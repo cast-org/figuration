@@ -30,9 +30,6 @@
 
     CFW_Widget_Equalize.prototype = {
         _init : function() {
-            this.instance = $('<div/>').CFW_getID('cfw-equalize');
-            this.$window.on('resize.cfw.equalize.' + this.instance, $.CFW_throttle($.proxy(this.update, this), this.settings.throttle));
-
             // Get group ID
             var groupID = this.settings.target;
             if ((groupID === undefined) || (groupID.length <= 0)) { return false; }
@@ -48,9 +45,13 @@
             this.$target.CFW_mutationListen();
             var isNested = (!this.$element.parent().closest('[data-cfw="equalize"]').length) ? false : true;
             if (!isNested) {
-                this.$element.attr('data-cfw-mutate', '');
-                this.$element.on('mutate.cfw.mutate', $.proxy(this.update, this));
+                this.$element
+                    .attr('data-cfw-mutate', '')
+                    .on('mutate.cfw.mutate', $.proxy(this.update, this));
             }
+
+            this.instance = $('<div/>').CFW_getID('cfw-equalize');
+            this.$window.on('resize.cfw.equalize.' + this.instance, $.CFW_throttle($.proxy(this.update, this), this.settings.throttle));
 
             this.$element.attr('data-cfw', 'equalize');
             this.$element.CFW_trigger('init.cfw.equalize');
@@ -79,7 +80,7 @@
                 return;
             }
 
-            if (!this.$target || !this.$target.length) { return; }
+            //if (!this.$target || !this.$target.length) { return; }
             var $targetElm = this.$target.filter(':visible');
             var total = $targetElm.length;
             if (total <= 0) { return false; }
