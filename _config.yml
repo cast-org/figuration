@@ -44,3 +44,5 @@ cdn:
   jquery_hash:  "sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f"
   fontawe:      https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css
   fontawe_hash: "sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+  mutate:       https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.24/MutationObserver.min.js
+  mutate_hash:  "sha384-8HHYYRe45k4Xq40fi/cZaaby4FJgnOOVmnRzX3OWtwpfiUPfx7tnK2QkDPuIRGm0"

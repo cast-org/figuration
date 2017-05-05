@@ -222,12 +222,6 @@
                     .on('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]', function(e) {
                         $selfRef.toggle(e);
                     });
-                // Hide tooltips on modal close
-                this.$element.closest('.modal')
-                    .off('beforeHide.cfw.modal')
-                    .on('beforeHide.cfw.modal', function() {
-                        $selfRef.hide(true);
-                    });
             }
         },
 
@@ -456,7 +450,10 @@
             }
 
             this.inTransition = true;
-            this.$target.removeClass('in');
+            this.$target
+                .removeAttr('data-cfw-mutate')
+                .CFW_mutationIgnore()
+                .removeClass('in');
 
             if ($.CFW_isTouch) {
                 // Remove empty mouseover listener for iOS work-around
@@ -488,7 +485,6 @@
         _unlinkComplete : function() {
             var $element = this.$element;
             var type = this.type;
-
             if (this.$target) {
                 this.$target.off('.cfw.' + this.type)
                     .removeData('cfw.' + this.type);
@@ -622,7 +618,25 @@
             this.hoverState = null;
 
             // this.$target.addClass('in')
-            this.$target.removeAttr('aria-hidden');
+            this.$target
+                .removeAttr('aria-hidden')
+                .CFW_mutateTrigger();
+
+            // Mutation handlers
+            this.$target
+                .attr('data-cfw-mutate', '')
+                .CFW_mutationListen()
+                .on('mutate.cfw.mutate', function() {
+                    $selfRef.locateTip();
+                });
+            this.$element
+                .attr('data-cfw-mutate', '')
+                .CFW_mutationListen()
+                .on('mutate.cfw.mutate', function() {
+                    if ($(this).is(':hidden')) {
+                        $selfRef.hide(true);
+                    }
+                });
 
             if (this.isDialog && this.follow) {
                 this.$target.trigger('focus');
@@ -650,11 +664,16 @@
         _hideComplete : function() {
             this.$element
                 .off('.cfw.' + this.type + '.focusStart')
-                .off('.cfw.modal')
-                .removeAttr('aria-describedby');
+                .removeAttr('aria-describedby')
+                .removeAttr('data-cfw-mutate')
+                .CFW_mutationIgnore();
             this.$target
                 .off('.cfw.' + this.type)
-                .removeClass('in');
+                .removeClass('in')
+                .css('display', 'none')
+                .attr('aria-hidden', true)
+                .removeAttr('data-cfw-mutate')
+                .CFW_mutationIgnore();
             if (this.$focusLast) {
                 this.$focusLast.off('.cfw.' + this.type + '.focusLast');
             }
@@ -662,14 +681,6 @@
             $(window).off('.cfw.' + this.type + '.' + this.instance);
 
             this.inState = { click: false, hover: false, focus: false };
-
-            this.$target
-                .removeClass('in')
-                .css('display', 'none')
-                .attr({
-                    'aria-hidden': 'true',
-                    'role':  ''
-                });
 
             this.inTransition = false;
             if (this.isDialog) {

@@ -171,12 +171,22 @@
 
             this.$target.addClass('in').removeAttr('aria-hidden');
 
+            // Mutation handler
+            this.$target
+                .attr('data-cfw-mutate', '')
+                .CFW_mutationListen()
+                .on('mutate.cfw.mutate', function() {
+                    $selfRef.handleUpdate();
+                });
+
             this.enforceFocus();
             this.enforceFocusLast();
 
             function complete() {
                 $selfRef.$target.trigger('focus');
-                $selfRef.$target.CFW_trigger('afterShow.cfw.modal');
+                $selfRef.$target
+                    .CFW_mutateTrigger()
+                    .CFW_trigger('afterShow.cfw.modal');
             }
 
             this.$target.CFW_transition(null, complete);
@@ -188,12 +198,17 @@
             this.escape();
             this.resize();
 
-            this.$target.hide();
+            this.$target
+                .removeAttr('data-cfw-mutate')
+                .CFW_mutationIgnore()
+                .hide();
             this.backdrop(function() {
                 $selfRef.$body.removeClass('modal-open');
                 $selfRef.resetAdjustments();
                 $selfRef.resetScrollbar();
-                $selfRef.$target.CFW_trigger('afterHide.cfw.modal');
+                $selfRef.$target
+                    .CFW_mutateTrigger()
+                    .CFW_trigger('afterHide.cfw.modal');
             });
             this.$element && this.$element.trigger('focus');
         },

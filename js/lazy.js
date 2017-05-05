@@ -23,7 +23,7 @@
     CFW_Widget_Lazy.DEFAULTS = {
         src       : '',
         throttle  : 250,        // Throttle speed to limit event firing
-        trigger   : 'scroll resize',   // Events to trigger loading source
+        trigger   : 'scroll resize mutate',   // Events to trigger loading source
         delay     : 0,          // Delay before loading source
         effect    : 'show',     // jQuery effect to use for showing source (http://api.jquery.com/category/effects/)
         speed     : 0,          // Speed of effect (milliseconds)
@@ -56,6 +56,10 @@
                 if (eventType == 'scroll' || eventType == 'resize') {
                     $(this.settings.container).on(eventType + '.cfw.lazy.' + this.instance, $.CFW_throttle($.proxy(this._handleTrigger, this), this.settings.throttle));
                     checkInitViewport = true;
+                } else if (eventType == 'mutate') {
+                    this.$element
+                        .attr('data-cfw-mutate', '')
+                        .on('mutate.cfw.mutate', $.proxy(this._handleTrigger, this));
                 } else {
                     this.$element.on(eventType + '.cfw.lazy', $.proxy(this.show, this));
                 }
@@ -152,8 +156,10 @@
         dispose : function() {
             $(this.settings.container).off('.cfw.lazy.' + this.instance);
             this.$element.off('.cfw.lazy')
+                .off('.cfw.mutate')
                 .removeData('cfw.lazy')
-                .removeAttr('data-cfw');
+                .removeAttr('data-cfw')
+                .removeAttr('data-cfw-mutate');
 
             this.$element = null;
             this.$window = null;

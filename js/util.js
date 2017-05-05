@@ -125,6 +125,75 @@
     $.CFW_isTouch = isTouch;
 
     // =====
+    // Mutation Helper
+    // =====
+
+    // Not available in IE 10-, need polyfill (see docs for recommendation)
+    var CFW_MutationObserverTest = function() {
+        return ('MutationObserver' in window) ? window.MutationObserver : false;
+    }();
+    var CFW_mutationObserver = CFW_MutationObserverTest;
+
+    function CFW_mutationObserved(records, $node) {
+        if (!MutationObserver) { return; }
+        var $target = $(records[0].target);
+        var $parent = $target.parents('[data-cfw-mutate]').first();
+        if ($target.is($node)) { return; } // Ignore elements own mutation
+        $parent.triggerHandler('mutate.cfw.mutate');
+    }
+
+    $.fn.CFW_mutateTrigger = function() {
+        this.find('[data-cfw-mutate]').triggerHandler('mutate.cfw.mutate');
+        return this;
+    };
+
+    $.fn.CFW_mutationIgnore = function() {
+        if (!CFW_mutationObserver) { return this; }
+        this.each(function() {
+            var elmObserver = $(this).data('cfw-mutationobserver');
+            elmObserver && elmObserver.disconnect();
+            $(this).removeData('cfw-mutationobserver')
+                .off('mutated.cfw.mutate');
+        });
+        return this;
+    };
+
+    $.fn.CFW_mutationListen = function() {
+        if (!CFW_mutationObserver) { return this; }
+
+        this.CFW_mutationIgnore();
+
+        this.each(function() {
+            var $node = this;
+            var elmObserver = new MutationObserver(function(records) {
+                CFW_mutationObserved(records, $node);
+            });
+            elmObserver.observe(
+                this, {
+                    attributes: true,
+                    childList: true,
+                    characterData: false,
+                    subtree: true,
+                    attributeFilter : [
+                        'style',
+                        'class'
+                    ]
+                }
+            );
+
+            // Don't pass node so that this can force a mutation obeservation
+            $(this).data('cfw-mutationobserver', elmObserver)
+                .on('mutated.cfw.mutate', CFW_mutationObserved);
+            /*
+                .on('mutated.cfw.mutate', function(e) {
+                    CFW_mutationObserved(e, $node);
+                });
+            */
+        });
+        return this;
+    };
+
+    // =====
     // Public Utils
     // =====
 

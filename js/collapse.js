@@ -129,7 +129,10 @@
 
             function complete() {
                 $selfRef.$triggers.attr('aria-expanded', 'true');
-                $selfRef.$target.removeClass('collapsing').addClass('collapse in')[dimension]('');
+                $selfRef.$target
+                    .removeClass('collapsing')
+                    .addClass('collapse in')[dimension]('')
+                    .CFW_mutateTrigger();
                 $selfRef.inTransition = false;
                 if (follow) {
                     $selfRef.$target.attr('tabindex', '-1').get(0).trigger('focus');
@@ -176,7 +179,10 @@
 
             function complete() {
                 $selfRef.$triggers.attr('aria-expanded', 'false');
-                $selfRef.$target.removeClass('collapsing in').addClass('collapse');
+                $selfRef.$target
+                    .removeClass('collapsing in')
+                    .addClass('collapse')
+                    .CFW_mutateTrigger();
                 $selfRef.inTransition = false;
                 if (follow) {
                     $selfRef.$element.trigger('focus');

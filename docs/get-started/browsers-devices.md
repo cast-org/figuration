@@ -107,6 +107,10 @@ Unofficially, Figuration should look and behave well enough in Chromium and Chro
 
 Internet Explorer 10+ are also supported, IE9 and down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit [Can I use…](http://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
 
+### MutationObserver
+
+Some of Figuration's [JavaScript Widgets]({{ site.baseurl }}/widgets/overview/) have some support for the use of [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) to watch for and respond to changes in the DOM.  Internet Explorer 10 does not support MutationObserver, but this can be mitigated with the use of a Polyfill.  Check out the [Quick Start page]({{ site.baseurl }}/get-started/quick-start/#mutationobserver) for more details.
+
 ## Internet Explorer 10 in Windows Phone 8
 
 Internet Explorer 10 in Windows Phone 8 versions older than [Update 3 (a.k.a. GDR3)](http://blogs.windows.com/windows_phone/b/wpdev/archive/2013/10/14/introducing-windows-phone-preview-for-developers.aspx) doesn't differentiate **device width** from **viewport width** in `@-ms-viewport` at-rules, and thus doesn't properly apply the media queries in Figuration's CSS. To address this, you'll need to **include the following JavaScript, provided by Bootstrap, to work around the bug**.

@@ -10,6 +10,7 @@
 
     var CFW_Widget_Equalize = function(element, options) {
         this.$element = $(element);
+        this.$target = null;
         this.$window = $(window);
         this.instance = '';
 
@@ -29,6 +30,26 @@
 
     CFW_Widget_Equalize.prototype = {
         _init : function() {
+            // Get group ID
+            var groupID = this.settings.target;
+            if ((groupID === undefined) || (groupID.length <= 0)) { return false; }
+
+            // Find target by id/css selector
+            this.$target = $(groupID, this.$element);
+            if (!this.$target.length) {
+                // Get group items
+                this.$target = $('[data-cfw-equalize-group="' + groupID + '"]', this.$element);
+            }
+            if (!this.$target.length) { return; }
+
+            this.$target.CFW_mutationListen();
+            var isNested = (!this.$element.parent().closest('[data-cfw="equalize"]').length) ? false : true;
+            if (!isNested) {
+                this.$element
+                    .attr('data-cfw-mutate', '')
+                    .on('mutate.cfw.mutate', $.proxy(this.update, this));
+            }
+
             this.instance = $('<div/>').CFW_getID('cfw-equalize');
             this.$window.on('resize.cfw.equalize.' + this.instance, $.CFW_throttle($.proxy(this.update, this), this.settings.throttle));
 
@@ -59,18 +80,7 @@
                 return;
             }
 
-            // Get group ID
-            var groupID = this.settings.target;
-            if ((groupID === undefined) || (groupID.length <= 0)) { return false; }
-
-            // Find target by id/css selector
-            var $targetElm = $(this.settings.target, this.$element);
-            if (!$targetElm.length) {
-                // Get group items
-                $targetElm = $('[data-cfw-equalize-group="' + groupID + '"]', this.$element);
-            }
-            $targetElm = $targetElm.filter(':visible');
-
+            var $targetElm = this.$target.filter(':visible');
             var total = $targetElm.length;
             if (total <= 0) { return false; }
 
@@ -220,8 +230,10 @@
         dispose : function() {
             this.$window.off('.cfw.equalize.' +  this.instance);
             this.$element.removeData('cfw.equalize');
+            this.$target.CFW_mutationIgnore();
 
             this.$element = null;
+            this.$target = null;
             this.$window = null;
             this.instance = null;
             this.settings = null;
