@@ -151,6 +151,7 @@
     };
 
     $.fn.CFW_mutationIgnore = function() {
+        if (!CFW_mutationObserver) { return this; }
         this.each(function() {
             var elmObserver = $(this).data('cfw-mutationobserver');
             elmObserver && elmObserver.disconnect();
@@ -161,7 +162,7 @@
     };
 
     $.fn.CFW_mutationListen = function() {
-        if (!CFW_mutationObserver) { return; }
+        if (!CFW_mutationObserver) { return this; }
 
         this.CFW_mutationIgnore();
 
