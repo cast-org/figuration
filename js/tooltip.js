@@ -457,6 +457,7 @@
 
             this.inTransition = true;
             this.$target
+                .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore()
                 .removeClass('in');
 
@@ -493,6 +494,7 @@
             if (this.$target) {
                 this.$target.off('.cfw.' + this.type)
                     .removeData('cfw.' + this.type)
+                    .removeAttr('data-cfw-mutate')
                     .CFW_mutationIgnore();
             }
             this.$element.off('.cfw.' + this.type)
@@ -630,6 +632,7 @@
 
             // Mutation handler
             this.$target
+                .attr('data-cfw-mutate', '')
                 .CFW_mutationListen()
                 .on('mutate.cfw.mutate', function() {
                     $selfRef.locateTip();
@@ -668,6 +671,7 @@
                 .removeClass('in')
                 .css('display', 'none')
                 .attr('aria-hidden', true)
+                .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore();
             if (this.$focusLast) {
                 this.$focusLast.off('.cfw.' + this.type + '.focusLast');

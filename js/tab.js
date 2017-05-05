@@ -140,6 +140,9 @@
                         'aria-expanded': 'false'
                     })
                     .CFW_trigger('afterHide.cfw.tab', { relatedTarget: this.$element[0] });
+
+                var $prevPanel = $previous.data('cfw.tab').$target;
+                $prevPanel && $prevPanel.CFW_mutateTrigger();
             }
 
             this.$element.attr({
@@ -191,22 +194,23 @@
             var $prevActive = container.find('.active');
             var doTransition = isPanel && this.settings.animate;
 
+            if (doTransition) {
+                $node[0].offsetWidth; // Reflow for transition
+                $node.addClass('in');
+            } else {
+                if (isPanel) {
+                    $selfRef.settings.animate = false;
+                }
+                $node.removeClass('fade');
+            }
+
             function complete() {
                 $prevActive.removeClass('active');
                 $node.addClass('active');
 
-                if (doTransition) {
-                    $node[0].offsetWidth; // Reflow for transition
-                    $node.addClass('in');
-                } else {
-                    if (isPanel) {
-                        $selfRef.settings.animate = false;
-                    }
-                    $node.removeClass('fade');
-                }
-
                 if (isPanel) {
                     $selfRef.$element.CFW_trigger('afterShow.cfw.tab', { relatedTarget: $previous[0] });
+                    $node.CFW_mutateTrigger();
                 }
             }
 

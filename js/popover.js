@@ -125,7 +125,9 @@
 
         // Remove mutation handler
         this.$element.on('afterShow.cfw.' + this.type, function() {
-            $selfRef.$target.CFW_mutationIgnore();
+            $selfRef.$target
+                .removeAttr('data-cfw-mutate')
+                .CFW_mutationIgnore();
         });
 
         // Unset any previous drag events

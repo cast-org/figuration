@@ -173,6 +173,7 @@
 
             // Mutation handler
             this.$target
+                .attr('data-cfw-mutate', '')
                 .CFW_mutationListen()
                 .on('mutate.cfw.mutate', function() {
                     $selfRef.handleUpdate();
@@ -198,6 +199,7 @@
             this.resize();
 
             this.$target
+                .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore()
                 .hide();
             this.backdrop(function() {
