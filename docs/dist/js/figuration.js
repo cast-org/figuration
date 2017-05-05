@@ -146,6 +146,75 @@ if (typeof jQuery === 'undefined') {
     $.CFW_isTouch = isTouch;
 
     // =====
+    // Mutation Helper
+    // =====
+
+    // Not available in IE 10-, need polyfill (see docs for recommendation)
+    var CFW_MutationObserverTest = function() {
+        return ('MutationObserver' in window) ? window.MutationObserver : false;
+    }();
+    var CFW_mutationObserver = CFW_MutationObserverTest;
+
+    function CFW_mutationObserved(records, $node) {
+        if (!MutationObserver) { return; }
+        var $target = $(records[0].target);
+        var $parent = $target.parents('[data-cfw-mutate]').first();
+        if ($target.is($node)) { return; } // Ignore elements own mutation
+        $parent.triggerHandler('mutate.cfw.mutate');
+    }
+
+    $.fn.CFW_mutateTrigger = function() {
+        this.find('[data-cfw-mutate]').triggerHandler('mutate.cfw.mutate');
+        return this;
+    };
+
+    $.fn.CFW_mutationIgnore = function() {
+        if (!CFW_mutationObserver) { return this; }
+        this.each(function() {
+            var elmObserver = $(this).data('cfw-mutationobserver');
+            elmObserver && elmObserver.disconnect();
+            $(this).removeData('cfw-mutationobserver')
+                .off('mutated.cfw.mutate');
+        });
+        return this;
+    };
+
+    $.fn.CFW_mutationListen = function() {
+        if (!CFW_mutationObserver) { return this; }
+
+        this.CFW_mutationIgnore();
+
+        this.each(function() {
+            var $node = this;
+            var elmObserver = new MutationObserver(function(records) {
+                CFW_mutationObserved(records, $node);
+            });
+            elmObserver.observe(
+                this, {
+                    attributes: true,
+                    childList: true,
+                    characterData: false,
+                    subtree: true,
+                    attributeFilter : [
+                        'style',
+                        'class'
+                    ]
+                }
+            );
+
+            // Don't pass node so that this can force a mutation obeservation
+            $(this).data('cfw-mutationobserver', elmObserver)
+                .on('mutated.cfw.mutate', CFW_mutationObserved);
+            /*
+                .on('mutated.cfw.mutate', function(e) {
+                    CFW_mutationObserved(e, $node);
+                });
+            */
+        });
+        return this;
+    };
+
+    // =====
     // Public Utils
     // =====
 
@@ -569,7 +638,10 @@ if (typeof jQuery === 'undefined') {
 
             function complete() {
                 $selfRef.$triggers.attr('aria-expanded', 'true');
-                $selfRef.$target.removeClass('collapsing').addClass('collapse in')[dimension]('');
+                $selfRef.$target
+                    .removeClass('collapsing')
+                    .addClass('collapse in')[dimension]('')
+                    .CFW_mutateTrigger();
                 $selfRef.inTransition = false;
                 if (follow) {
                     $selfRef.$target.attr('tabindex', '-1').get(0).trigger('focus');
@@ -616,7 +688,10 @@ if (typeof jQuery === 'undefined') {
 
             function complete() {
                 $selfRef.$triggers.attr('aria-expanded', 'false');
-                $selfRef.$target.removeClass('collapsing in').addClass('collapse');
+                $selfRef.$target
+                    .removeClass('collapsing in')
+                    .addClass('collapse')
+                    .CFW_mutateTrigger();
                 $selfRef.inTransition = false;
                 if (follow) {
                     $selfRef.$element.trigger('focus');
@@ -1484,22 +1559,24 @@ if (typeof jQuery === 'undefined') {
             var $prevActive = container.find('.active');
             var doTransition = isPanel && this.settings.animate;
 
+            if (doTransition) {
+                $node[0].offsetWidth; // Reflow for transition
+                $node.addClass('in');
+            } else {
+                if (isPanel) {
+                    $selfRef.settings.animate = false;
+                }
+                $node.removeClass('fade');
+            }
+
             function complete() {
                 $prevActive.removeClass('active');
                 $node.addClass('active');
 
-                if (doTransition) {
-                    $node[0].offsetWidth; // Reflow for transition
-                    $node.addClass('in');
-                } else {
-                    if (isPanel) {
-                        $selfRef.settings.animate = false;
-                    }
-                    $node.removeClass('fade');
-                }
-
                 if (isPanel) {
                     $selfRef.$element.CFW_trigger('afterShow.cfw.tab', { relatedTarget: $previous[0] });
+                    $node.CFW_mutateTrigger();
+                    $prevActive.CFW_mutateTrigger();
                 }
             }
 
@@ -1927,12 +2004,6 @@ if (typeof jQuery === 'undefined') {
                     .on('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]', function(e) {
                         $selfRef.toggle(e);
                     });
-                // Hide tooltips on modal close
-                this.$element.closest('.modal')
-                    .off('beforeHide.cfw.modal')
-                    .on('beforeHide.cfw.modal', function() {
-                        $selfRef.hide(true);
-                    });
             }
         },
 
@@ -2161,7 +2232,10 @@ if (typeof jQuery === 'undefined') {
             }
 
             this.inTransition = true;
-            this.$target.removeClass('in');
+            this.$target
+                .removeAttr('data-cfw-mutate')
+                .CFW_mutationIgnore()
+                .removeClass('in');
 
             if ($.CFW_isTouch) {
                 // Remove empty mouseover listener for iOS work-around
@@ -2193,7 +2267,6 @@ if (typeof jQuery === 'undefined') {
         _unlinkComplete : function() {
             var $element = this.$element;
             var type = this.type;
-
             if (this.$target) {
                 this.$target.off('.cfw.' + this.type)
                     .removeData('cfw.' + this.type);
@@ -2327,7 +2400,25 @@ if (typeof jQuery === 'undefined') {
             this.hoverState = null;
 
             // this.$target.addClass('in')
-            this.$target.removeAttr('aria-hidden');
+            this.$target
+                .removeAttr('aria-hidden')
+                .CFW_mutateTrigger();
+
+            // Mutation handlers
+            this.$target
+                .attr('data-cfw-mutate', '')
+                .CFW_mutationListen()
+                .on('mutate.cfw.mutate', function() {
+                    $selfRef.locateTip();
+                });
+            this.$element
+                .attr('data-cfw-mutate', '')
+                .CFW_mutationListen()
+                .on('mutate.cfw.mutate', function() {
+                    if ($(this).is(':hidden')) {
+                        $selfRef.hide(true);
+                    }
+                });
 
             if (this.isDialog && this.follow) {
                 this.$target.trigger('focus');
@@ -2355,11 +2446,16 @@ if (typeof jQuery === 'undefined') {
         _hideComplete : function() {
             this.$element
                 .off('.cfw.' + this.type + '.focusStart')
-                .off('.cfw.modal')
-                .removeAttr('aria-describedby');
+                .removeAttr('aria-describedby')
+                .removeAttr('data-cfw-mutate')
+                .CFW_mutationIgnore();
             this.$target
                 .off('.cfw.' + this.type)
-                .removeClass('in');
+                .removeClass('in')
+                .css('display', 'none')
+                .attr('aria-hidden', true)
+                .removeAttr('data-cfw-mutate')
+                .CFW_mutationIgnore();
             if (this.$focusLast) {
                 this.$focusLast.off('.cfw.' + this.type + '.focusLast');
             }
@@ -2367,14 +2463,6 @@ if (typeof jQuery === 'undefined') {
             $(window).off('.cfw.' + this.type + '.' + this.instance);
 
             this.inState = { click: false, hover: false, focus: false };
-
-            this.$target
-                .removeClass('in')
-                .css('display', 'none')
-                .attr({
-                    'aria-hidden': 'true',
-                    'role':  ''
-                });
 
             this.inTransition = false;
             if (this.isDialog) {
@@ -2773,6 +2861,13 @@ if (typeof jQuery === 'undefined') {
 
         var dragOpt = { handle: '[data-cfw-drag="' + this.type + '"]' };
 
+        // Remove mutation handler
+        this.$element.on('afterShow.cfw.' + this.type, function() {
+            $selfRef.$target
+                .removeAttr('data-cfw-mutate')
+                .CFW_mutationIgnore();
+        });
+
         // Unset any previous drag events
         this.$target.off('.cfw.drag');
 
@@ -3092,12 +3187,22 @@ if (typeof jQuery === 'undefined') {
 
             this.$target.addClass('in').removeAttr('aria-hidden');
 
+            // Mutation handler
+            this.$target
+                .attr('data-cfw-mutate', '')
+                .CFW_mutationListen()
+                .on('mutate.cfw.mutate', function() {
+                    $selfRef.handleUpdate();
+                });
+
             this.enforceFocus();
             this.enforceFocusLast();
 
             function complete() {
                 $selfRef.$target.trigger('focus');
-                $selfRef.$target.CFW_trigger('afterShow.cfw.modal');
+                $selfRef.$target
+                    .CFW_mutateTrigger()
+                    .CFW_trigger('afterShow.cfw.modal');
             }
 
             this.$target.CFW_transition(null, complete);
@@ -3109,12 +3214,17 @@ if (typeof jQuery === 'undefined') {
             this.escape();
             this.resize();
 
-            this.$target.hide();
+            this.$target
+                .removeAttr('data-cfw-mutate')
+                .CFW_mutationIgnore()
+                .hide();
             this.backdrop(function() {
                 $selfRef.$body.removeClass('modal-open');
                 $selfRef.resetAdjustments();
                 $selfRef.resetScrollbar();
-                $selfRef.$target.CFW_trigger('afterHide.cfw.modal');
+                $selfRef.$target
+                    .CFW_mutateTrigger()
+                    .CFW_trigger('afterHide.cfw.modal');
             });
             this.$element && this.$element.trigger('focus');
         },
@@ -3962,6 +4072,7 @@ if (typeof jQuery === 'undefined') {
 
             this.$parent
                 .removeClass('in')
+                .CFW_mutateTrigger()
                 .CFW_transition(null, removeElement);
         },
 
@@ -4182,7 +4293,7 @@ if (typeof jQuery === 'undefined') {
     CFW_Widget_Lazy.DEFAULTS = {
         src       : '',
         throttle  : 250,        // Throttle speed to limit event firing
-        trigger   : 'scroll resize',   // Events to trigger loading source
+        trigger   : 'scroll resize mutate',   // Events to trigger loading source
         delay     : 0,          // Delay before loading source
         effect    : 'show',     // jQuery effect to use for showing source (http://api.jquery.com/category/effects/)
         speed     : 0,          // Speed of effect (milliseconds)
@@ -4215,6 +4326,10 @@ if (typeof jQuery === 'undefined') {
                 if (eventType == 'scroll' || eventType == 'resize') {
                     $(this.settings.container).on(eventType + '.cfw.lazy.' + this.instance, $.CFW_throttle($.proxy(this._handleTrigger, this), this.settings.throttle));
                     checkInitViewport = true;
+                } else if (eventType == 'mutate') {
+                    this.$element
+                        .attr('data-cfw-mutate', '')
+                        .on('mutate.cfw.mutate', $.proxy(this._handleTrigger, this));
                 } else {
                     this.$element.on(eventType + '.cfw.lazy', $.proxy(this.show, this));
                 }
@@ -4311,8 +4426,10 @@ if (typeof jQuery === 'undefined') {
         dispose : function() {
             $(this.settings.container).off('.cfw.lazy.' + this.instance);
             this.$element.off('.cfw.lazy')
+                .off('.cfw.mutate')
                 .removeData('cfw.lazy')
-                .removeAttr('data-cfw');
+                .removeAttr('data-cfw')
+                .removeAttr('data-cfw-mutate');
 
             this.$element = null;
             this.$window = null;
@@ -4889,6 +5006,7 @@ if (typeof jQuery === 'undefined') {
 
     var CFW_Widget_Equalize = function(element, options) {
         this.$element = $(element);
+        this.$target = null;
         this.$window = $(window);
         this.instance = '';
 
@@ -4908,6 +5026,26 @@ if (typeof jQuery === 'undefined') {
 
     CFW_Widget_Equalize.prototype = {
         _init : function() {
+            // Get group ID
+            var groupID = this.settings.target;
+            if ((groupID === undefined) || (groupID.length <= 0)) { return false; }
+
+            // Find target by id/css selector
+            this.$target = $(groupID, this.$element);
+            if (!this.$target.length) {
+                // Get group items
+                this.$target = $('[data-cfw-equalize-group="' + groupID + '"]', this.$element);
+            }
+            if (!this.$target.length) { return; }
+
+            this.$target.CFW_mutationListen();
+            var isNested = (!this.$element.parent().closest('[data-cfw="equalize"]').length) ? false : true;
+            if (!isNested) {
+                this.$element
+                    .attr('data-cfw-mutate', '')
+                    .on('mutate.cfw.mutate', $.proxy(this.update, this));
+            }
+
             this.instance = $('<div/>').CFW_getID('cfw-equalize');
             this.$window.on('resize.cfw.equalize.' + this.instance, $.CFW_throttle($.proxy(this.update, this), this.settings.throttle));
 
@@ -4938,18 +5076,7 @@ if (typeof jQuery === 'undefined') {
                 return;
             }
 
-            // Get group ID
-            var groupID = this.settings.target;
-            if ((groupID === undefined) || (groupID.length <= 0)) { return false; }
-
-            // Find target by id/css selector
-            var $targetElm = $(this.settings.target, this.$element);
-            if (!$targetElm.length) {
-                // Get group items
-                $targetElm = $('[data-cfw-equalize-group="' + groupID + '"]', this.$element);
-            }
-            $targetElm = $targetElm.filter(':visible');
-
+            var $targetElm = this.$target.filter(':visible');
             var total = $targetElm.length;
             if (total <= 0) { return false; }
 
@@ -5099,8 +5226,10 @@ if (typeof jQuery === 'undefined') {
         dispose : function() {
             this.$window.off('.cfw.equalize.' +  this.instance);
             this.$element.removeData('cfw.equalize');
+            this.$target.CFW_mutationIgnore();
 
             this.$element = null;
+            this.$target = null;
             this.$window = null;
             this.instance = null;
             this.settings = null;
