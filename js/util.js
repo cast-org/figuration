@@ -128,10 +128,7 @@
     // Mutation Helper
     // =====
 
-    // Not available in IE 10-
-    // Polyfill that seems work, and can be used as a <script>
-    // Github: https://github.com/talee/mutationobserver-breaks-characterdata
-    // NPM: https://www.npmjs.com/package/mutationobserver-polyfill
+    // Not available in IE 10-, need polyfill (see docs for recommendation)
     var CFW_MutationObserverTest = function() {
         return ('MutationObserver' in window) ? window.MutationObserver : false;
     }();
