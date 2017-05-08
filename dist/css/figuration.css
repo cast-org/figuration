@@ -335,6 +335,10 @@ body {
   background-color: #fff;
 }
 
+dialog {
+  display: block;
+}
+
 [tabindex="-1"]:focus {
   outline: none !important;
 }
@@ -350,7 +354,8 @@ p {
 }
 
 abbr[title],
-abbr[data-original-title] {
+abbr[data-cfw-tooltip-original-title],
+abbr[data-cfw-popover-original-title] {
   text-decoration: none;
   cursor: help;
   border-bottom: 1px dotted #858585;
@@ -4552,6 +4557,7 @@ li .dropdown-header {
   -ms-flex-item-align: stretch;
       -ms-grid-row-align: stretch;
       align-self: stretch;
+  margin: 0 0.3125rem;
   overflow: hidden;
   border-left: 1px solid rgba(0, 0, 0, 0.65);
 }
@@ -4632,6 +4638,7 @@ li .dropdown-header {
     padding-left: 0;
   }
   .navbar-expand-sm .navbar-divider {
+    margin: 0.5rem 0;
     border-top: 1px solid rgba(0, 0, 0, 0.65);
     border-left: 0;
   }
@@ -4691,6 +4698,7 @@ li .dropdown-header {
     padding-left: 0;
   }
   .navbar-expand-md .navbar-divider {
+    margin: 0.5rem 0;
     border-top: 1px solid rgba(0, 0, 0, 0.65);
     border-left: 0;
   }
@@ -4750,6 +4758,7 @@ li .dropdown-header {
     padding-left: 0;
   }
   .navbar-expand-lg .navbar-divider {
+    margin: 0.5rem 0;
     border-top: 1px solid rgba(0, 0, 0, 0.65);
     border-left: 0;
   }
@@ -4809,6 +4818,7 @@ li .dropdown-header {
     padding-left: 0;
   }
   .navbar-expand-xl .navbar-divider {
+    margin: 0.5rem 0;
     border-top: 1px solid rgba(0, 0, 0, 0.65);
     border-left: 0;
   }
