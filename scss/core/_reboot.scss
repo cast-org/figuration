@@ -119,7 +119,8 @@ p {
 // Abbreviations
 abbr[title],
 // Add data-* attribute to help out our tooltip widget
-abbr[data-cfw-*-original-title] {
+abbr[data-cfw-tooltip-original-title],
+abbr[data-cfw-popover-original-title] {
     text-decoration: none;
     cursor: help;
     border-bottom: 1px dotted $abbr-border-color;
