@@ -3840,7 +3840,6 @@ button.list-group-item-danger.active {
 .input-group-btn > .btn {
   position: relative;
   -ms-flex-item-align: stretch;
-      -ms-grid-row-align: stretch;
       align-self: stretch;
 }
 
@@ -4555,7 +4554,6 @@ li .dropdown-header {
 
 .navbar-divider {
   -ms-flex-item-align: stretch;
-      -ms-grid-row-align: stretch;
       align-self: stretch;
   margin: 0 0.3125rem;
   overflow: hidden;
@@ -7133,7 +7131,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
 
 .flex-self-center {
   -ms-flex-item-align: center !important;
-      -ms-grid-row-align: center !important;
       align-self: center !important;
 }
 
@@ -7149,7 +7146,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
 
 .flex-self-stretch {
   -ms-flex-item-align: stretch !important;
-      -ms-grid-row-align: stretch !important;
       align-self: stretch !important;
 }
 
@@ -7284,7 +7280,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   }
   .flex-sm-self-center {
     -ms-flex-item-align: center !important;
-        -ms-grid-row-align: center !important;
         align-self: center !important;
   }
   .flex-sm-self-end {
@@ -7297,7 +7292,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   }
   .flex-sm-self-stretch {
     -ms-flex-item-align: stretch !important;
-        -ms-grid-row-align: stretch !important;
         align-self: stretch !important;
   }
 }
@@ -7433,7 +7427,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   }
   .flex-md-self-center {
     -ms-flex-item-align: center !important;
-        -ms-grid-row-align: center !important;
         align-self: center !important;
   }
   .flex-md-self-end {
@@ -7446,7 +7439,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   }
   .flex-md-self-stretch {
     -ms-flex-item-align: stretch !important;
-        -ms-grid-row-align: stretch !important;
         align-self: stretch !important;
   }
 }
@@ -7582,7 +7574,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   }
   .flex-lg-self-center {
     -ms-flex-item-align: center !important;
-        -ms-grid-row-align: center !important;
         align-self: center !important;
   }
   .flex-lg-self-end {
@@ -7595,7 +7586,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   }
   .flex-lg-self-stretch {
     -ms-flex-item-align: stretch !important;
-        -ms-grid-row-align: stretch !important;
         align-self: stretch !important;
   }
 }
@@ -7731,7 +7721,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   }
   .flex-xl-self-center {
     -ms-flex-item-align: center !important;
-        -ms-grid-row-align: center !important;
         align-self: center !important;
   }
   .flex-xl-self-end {
@@ -7744,7 +7733,6 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   }
   .flex-xl-self-stretch {
     -ms-flex-item-align: stretch !important;
-        -ms-grid-row-align: stretch !important;
         align-self: stretch !important;
   }
 }
