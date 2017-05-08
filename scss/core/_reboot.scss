@@ -2,7 +2,7 @@
 
 // Reboot
 //
-// Global resets to common HTML elements and more for easier usage by Bootstrap.
+// Global resets to common HTML elements and more for easier usage.
 // Adds additional rules on top of Normalize.css, including several overrides.
 
 
@@ -13,9 +13,9 @@
 // change. For example, `width: 100px;` will always be `100px` despite the
 // `border: 10px solid red;` and `padding: 20px;`.
 //
-// Heads up! This reset may cause conflicts with some third-party widgets. For
+// This reset may cause conflicts with some third-party widgets. For
 // recommendations on resolving such conflicts, see
-// http://getbootstrap.com/getting-started/#third-box-sizing.
+// http://figuration.org/get-started/quick-start/#box-sizing
 //
 // Credit: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
 
@@ -37,14 +37,12 @@ html {
 // Eventually @viewport will replace <meta name="viewport">.
 //
 // However, `device-width` is broken on IE 10 on Windows (Phone) 8,
-// (see http://timkadlec.com/2013/01/windows-phone-8-and-device-width/ and https://github.com/twbs/bootstrap/issues/10497)
 // and the fix for that involves a snippet of JavaScript to sniff the user agent
 // and apply some conditional CSS.
 //
-// See http://getbootstrap.com/getting-started/#support-ie10-width for the relevant hack.
-//
-// Wrap `@viewport` with `@at-root` for when folks do a nested import (e.g.,
-// `.class-name { @import "bootstrap"; }`).
+// See:
+// * http://timkadlec.com/2013/01/windows-phone-8-and-device-width/
+// * http://figuration.org/get-started/browsers-devices/#internet-explorer-10-in-windows-phone-8
 @at-root {
     @-ms-viewport { width: device-width; }
 }
@@ -62,7 +60,6 @@ html {
     // Unfortunately, the auto-showing of the scrollbar is sometimes too sensitive,
     // thus making it hard to click on stuff near the right edge of the page.
     // So we add this style to force IE11 & Edge to use a "normal", non-overlapping, non-auto-hiding scrollbar.
-    // See https://github.com/twbs/bootstrap/issues/18543
     -ms-overflow-style: scrollbar;
     // Changes the default tap highlight to be completely transparent in iOS.
     -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -80,6 +77,11 @@ body {
     color: $body-color;
     // By default, `<body>` has no `background-color` so we set one as a best practice.
     background-color: $body-bg;
+}
+
+// Add the correct display in IE 10-
+dialog {
+    display: block;
 }
 
 // Suppress the focus outline on elements that cannot be accessed via keyboard.
@@ -116,8 +118,8 @@ p {
 
 // Abbreviations
 abbr[title],
-// Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
-abbr[data-original-title] {
+// Add data-* attribute to help out our tooltip widget
+abbr[data-cfw-*-original-title] {
     text-decoration: none;
     cursor: help;
     border-bottom: 1px dotted $abbr-border-color;
@@ -175,7 +177,6 @@ a {
 // which have not been made explicitily keyboard-focusable (without tabindex).
 // It would be more straightforward to just use a[href] in previous block, but that
 // causes specificity issues in many other styles that are too complex to fix.
-// See https://github.com/twbs/bootstrap/issues/19402
 
 a:not([href]):not([tabindex]) {
     color: inherit;
@@ -232,7 +233,7 @@ img {
 // DON'T remove the click delay when `<meta name="viewport" content="width=device-width">` is present.
 // However, they DO support removing the click delay via `touch-action: manipulation`.
 // See:
-// * http://v4-alpha.getbootstrap.com/content/reboot/#click-delay-optimization-for-touch
+// * http://figuration.org/content/reboot/#click-delay-optimization-for-touch
 // * http://caniuse.com/#feat=css-touch-action
 // * http://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
 
@@ -332,7 +333,7 @@ input[type="month"] {
     // Remove the default appearance of temporal inputs to avoid a Mobile Safari
     // bug where setting a custom line-height prevents text from being vertically
     // centered within the input.
-    // Bug report: https://github.com/twbs/bootstrap/issues/11266
+    // See https://bugs.webkit.org/show_bug.cgi?id=139848
     -webkit-appearance: listbox;
 }
 
@@ -344,7 +345,7 @@ textarea {
 fieldset {
     // Chrome and Firefox set a `min-width: min-content;` on fieldsets,
     // so we reset that to ensure it behaves more like a standard block element.
-    // See https://github.com/twbs/bootstrap/issues/12359.
+    //See https://html.spec.whatwg.org/multipage/#the-fieldset-and-legend-elements
     min-width: 0;
     // Reset the default outline behavior of fieldsets so they don't affect page layout.
     padding: 0;
@@ -375,8 +376,7 @@ legend label {
 input[type="search"] {
     // This overrides the extra rounded corners on search inputs in iOS so that our
     // `.form-control` class can properly style them. Note that this cannot simply
-    // be added to `.form-control` as it's not specific enough. For details, see
-    // https://github.com/twbs/bootstrap/issues/11586.
+    // be added to `.form-control` as it's not specific enough.
     -webkit-appearance: none;
 }
 
