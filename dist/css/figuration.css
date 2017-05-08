@@ -1024,10 +1024,12 @@ textarea.form-control {
 }
 
 .form-control-static {
-  padding-top: calc(0.25rem + 1px);
-  padding-bottom: calc(0.25rem + 1px);
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   margin-bottom: 0;
   line-height: 1.5;
+  border: solid transparent;
+  border-width: 1px 0;
 }
 
 .form-control-xs, .input-group-xs > .form-control,
