@@ -833,7 +833,7 @@ Showing a <kbd>kdb sample</kbd>
     </tr>
     </thead>
     <tbody>
-    <tr data-cfw="collapse" href="#row-1">
+    <tr data-cfw="collapse" data-cfw-collapse-target="#row-1">
         <td>Click</td>
         <td>this</td>
         <td>row</td>
@@ -993,38 +993,42 @@ Showing a <kbd>kdb sample</kbd>
     </div>
   </div>
   <div class="form-group row">
-    <legend class="col-sm-2 form-control-legend">Radios</legend>
-    <div class="col-sm-10">
-      <div class="form-check">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="gridRadios" id="gridRadios1" value="option1" checked>
-          Option one is this and that&mdash;be sure to include why it's great
-        </label>
-      </div>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="gridRadios" id="gridRadios2" value="option2">
-          Option two can be something else and selecting it will deselect option one
-        </label>
-      </div>
-      <div class="form-check disabled">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="gridRadios" id="gridRadios3" value="option3" disabled>
-          Option three is disabled
-        </label>
-      </div>
+      <fieldset class="w-100 clearfix">
+        <legend class="col-sm-2 float-sm-left form-control-legend">Radios</legend>
+        <div class="col-sm-10 float-sm-left">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+              Option one is this and that&mdash;be sure to include why it's great
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+              Option two can be something else and selecting it will deselect option one
+            </label>
+          </div>
+          <div class="form-check disabled">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+              Option three is disabled
+            </label>
+          </div>
+        </div>
+      </fieldset>
     </div>
-  </div>
-  <div class="form-group row">
-    <legend class="col-sm-2 form-control-legend">Checkbox</legend>
-    <div class="col-sm-10">
-      <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" /> Check me out
-        </label>
-      </div>
+    <div class="form-group row">
+      <fieldset class="w-100 clearfix">
+        <legend class="col-sm-2 float-sm-left form-control-legend">Checkbox</legend>
+        <div class="col-sm-10 float-sm-left">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox"> Check me out
+            </label>
+          </div>
+        </div>
+      </fieldset>
     </div>
-  </div>
   <div class="form-group row">
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-secondary">Sign in</button>
@@ -1155,9 +1159,9 @@ Showing a <kbd>kdb sample</kbd>
 <h3>Static controls</h3>
 <form>
   <div class="form-group row">
-    <label class="col-sm-2 form-control-label">Email</label>
+    <label for="inputEmail" class="col-sm-2 form-control-label">Email</label>
     <div class="col-sm-10">
-      <p class="form-control-static">email@example.com</p>
+      <input type="text" readonly class="form-control-static" id="inputEmail" value="email@example.com">
     </div>
   </div>
   <div class="form-group row">
@@ -1171,8 +1175,8 @@ Showing a <kbd>kdb sample</kbd>
 <h3>Inline static controls</h3>
 <form class="form-inline">
   <div class="form-group">
-    <label class="sr-only">Email</label>
-    <p class="form-control-static">email@example.com</p>
+    <label for="inputEmail2" class="sr-only">Email</label>
+    <input type="text" class="form-control-static" id="inputEmail2" value="email@example.com">
   </div>
   <div class="form-group">
     <label for="inputPassword2" class="sr-only">Password</label>

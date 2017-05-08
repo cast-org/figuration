@@ -392,7 +392,7 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
     <div class="form-group row">
       <fieldset class="w-100 clearfix">
         <legend class="col-sm-2 float-sm-left form-control-legend">Radios</legend>
-        <div class="col-sm-10 float-sm-right">
+        <div class="col-sm-10 float-sm-left">
           <div class="form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
@@ -417,7 +417,7 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
     <div class="form-group row">
       <fieldset class="w-100 clearfix">
         <legend class="col-sm-2 float-sm-left form-control-legend">Checkbox</legend>
-        <div class="col-sm-10 float-sm-right">
+        <div class="col-sm-10 float-sm-left">
           <div class="form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="checkbox"> Check me out
@@ -562,14 +562,14 @@ Should you have no text within the `<label>`, the input is positioned as you'd e
 
 ## Static Controls
 
-When you need to place plain text next to a form label within a form, use the `.form-control-static` class on a `<p>`, or another element of your choice.
+When you want to have read-only fields in your form styled as plain text, use the `.form-control-static` class to remove the default form field styling and preserve the correct margin and padding.
 
 {% example html %}
 <form>
   <div class="form-group row">
-    <label class="col-sm-2 form-control-label">Email</label>
+    <label for="inputEmail" class="col-sm-2 form-control-label">Email</label>
     <div class="col-sm-10">
-      <p class="form-control-static">email@example.com</p>
+      <input type="text" readonly class="form-control-static" id="inputEmail" value="email@example.com">
     </div>
   </div>
   <div class="form-group row">
@@ -584,8 +584,8 @@ When you need to place plain text next to a form label within a form, use the `.
 {% example html %}
 <form class="form-inline">
   <div class="form-group mr-0_5">
-    <label class="sr-only">Email</label>
-    <p class="form-control-static">email@example.com</p>
+    <label for="inputEmail2" class="sr-only">Email</label>
+    <input type="text" readonly class="form-control-static" id="inputEmail2" value="email@example.com">
   </div>
   <div class="form-group mr-0_5">
     <label for="inputPassword2" class="sr-only">Password</label>
