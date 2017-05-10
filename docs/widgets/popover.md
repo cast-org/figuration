@@ -408,7 +408,7 @@ function myPopoverAlign(tip, trigger) {
         <td>Pixel increment to move the popover when using arrow keys on a drag handle.</td>
     </tr>
     <tr>
-        <td>activate</td>
+        <td>show</td>
         <td>boolean</td>
         <td>false</td>
         <td>Show the popover automatically at the end of initialization. This will force the <code>trigger</code> option to a setting of <code>'click'</code>.</td>

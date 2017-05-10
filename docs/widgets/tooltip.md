@@ -307,7 +307,7 @@ function myTipAlign(tip, trigger) {
         <td>If the <code>dispose</code> method should be called when the tooltip is hidden. This will remove the tooltip from the DOM.</td>
     </tr>
     <tr>
-        <td>activate</td>
+        <td>show</td>
         <td>boolean</td>
         <td>false</td>
         <td>Show the tooltip automatically at the end of initialization. This will force the <code>trigger</code> option to a setting of <code>'click'</code>.</td>
