@@ -1810,7 +1810,7 @@ if (typeof jQuery === 'undefined') {
         closetext       : '<span aria-hidden="true">&times;</span>', // Text for close links
         closesrtext     : 'Close',          // Screen reader text for close links
         title           : '',               // Title text/html to be inserted
-        activate        : false,            // Auto show after init
+        show            : false,            // Auto show after init
         unlink          : false,            // If on hide to remove events and attributes from tooltip and trigger
         dispose         : false,            // If on hide to unlink, then remove tooltip from DOM
         template        : '<div class="tooltip"><div class="tooltip-body"></div><div class="tooltip-arrow"></div></div>'
@@ -1854,7 +1854,7 @@ if (typeof jQuery === 'undefined') {
                 this.fixTitle();
             }
 
-            if (this.settings.activate) {
+            if (this.settings.show) {
                 this.settings.trigger = 'click';
             }
 
@@ -1866,7 +1866,7 @@ if (typeof jQuery === 'undefined') {
                 this.$target.data('cfw.' + this.type, this);
             }
 
-            if (this.settings.activate) {
+            if (this.settings.show) {
                 this.activate = true;
                 this.inState.click = true;
                 this.show();

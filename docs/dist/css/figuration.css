@@ -3853,6 +3853,10 @@ button.list-group-item-danger.active {
   z-index: 3;
 }
 
+.input-group-btn:first-child > .btn + .btn {
+  margin-left: 0;
+}
+
 .input-group-btn:not(:last-child) > .btn,
 .input-group-btn:not(:last-child) > .btn-group {
   margin-right: -1px;
