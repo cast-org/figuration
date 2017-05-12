@@ -8,12 +8,12 @@
 // Functions
 @import "functions";
 
+// Custom overrides
+@import "custom";
+
 // Variables and mixins
 @import "settings";
 @import "mixins";
-
-// Custom overrides
-@import "custom";
 
 // Base reset
 @import "base/normalize";
