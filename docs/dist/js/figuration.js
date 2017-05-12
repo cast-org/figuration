@@ -6315,19 +6315,21 @@ if (typeof jQuery === 'undefined') {
             }
 
             // Find description track
+            var descAvailable = false;
             this.descCurrent = -1;
             this.descCues = null;
-            if ($selfRef.settings.transcriptDescribe) {
-                var descLang = tracks[this.scriptCurrent].language;
-                for (var j = 0; j < tracksLength; j++) {
-                    if (descLang == tracks[j].language && 'descriptions' == tracks[j].kind) {
+            var descLang = tracks[this.scriptCurrent].language;
+            for (var j = 0; j < tracksLength; j++) {
+                if (descLang == tracks[j].language && 'descriptions' == tracks[j].kind) {
+                    if ($selfRef.settings.transcriptDescribe) {
                         $selfRef.descCurrent = j;
                     }
+                    descAvailable = true;
                 }
             }
 
             var $descControl = this.$player.find('[data-cfw-player-script-describe]');
-            if (this.descCurrent == -1 && this.scriptCurrent > -1) {
+            if (!descAvailable) {
                 this._controlDisable($descControl);
             } else {
                 this._controlEnable($descControl);
