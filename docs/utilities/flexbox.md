@@ -351,7 +351,7 @@ Responsive order utilities:
 {% endexample %}
 </div>
 
-## Align content
+## Align Content
 
 Use `flex-content` utilities on flexbox containers to align flex items *together* on the cross axis. Choose from `start` (browser default), `center`, `end`, `between`, `around`, or `stretch`. To demonstrate these utilities, we've enforced `flex-wrap: wrap` and increased the number of flex items.
 
@@ -492,6 +492,64 @@ Responsive align content utilities:
   <div class="p-0_5">Flex item</div>
   <div class="p-0_5">Flex item</div>
   <div class="p-0_5">Flex item</div>
+  <div class="p-0_5">Flex item</div>
+</div>
+{% endexample %}
+</div>
+
+## Sizing
+
+Change the sizing of individual flexbox items to with sizing utilities.
+
+Responsive sizing utilities:
+- `.flex-{breakpoint}-fill`
+- `.flex-{breakpoint}-grow`
+- `.flex-{breakpoint}-shrink`
+- `.flex-{breakpoint}-none`
+
+To make an element grow or shrink as needed, use the `.flex-fill` utility.
+
+<div class="cf-example-flex">
+{% example html %}
+<div class="d-flex">
+  <div class="p-0_5">Flex item</div>
+  <div class="flex-fill p-0_5">Auto sizing flex item - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum ipsum ut efficitur imperdiet.</div>
+  <div class="p-0_5">Flex item</div>
+</div>
+{% endexample %}
+</div>
+
+To make an element grow, but not shrink, use the `.flex-grow` utility.
+
+<div class="cf-example-flex">
+{% example html %}
+<div class="d-flex">
+  <div class="p-0_5">Flex item</div>
+  <div class="flex-grow p-0_5">Growing flex item - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum ipsum ut efficitur imperdiet.</div>
+  <div class="p-0_5">Flex item</div>
+</div>
+{% endexample %}
+</div>
+
+To make an element shrink, but not grow, use the `.flex-shrink` utility.
+
+<div class="cf-example-flex">
+{% example html %}
+<div class="d-flex">
+  <div class="p-0_5">Flex item</div>
+  <div class="flex-shrink p-0_5">Shrinking flex item - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum ipsum ut efficitur imperdiet.</div>
+  <div class="p-0_5">Flex item</div>
+</div>
+{% endexample %}
+</div>
+
+To prevent an element from growing or shrinking, use the `.flex-none` utility.
+
+<div class="cf-example-flex">
+{% example html %}
+<div class="d-flex">
+  <div class="p-0_5">Flex item</div>
+  <div class="flex-none p-0_5">Non-flex item - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum ipsum ut efficitur imperdiet.</div>
   <div class="p-0_5">Flex item</div>
 </div>
 {% endexample %}
