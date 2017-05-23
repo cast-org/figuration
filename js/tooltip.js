@@ -72,7 +72,7 @@
                 this.fixTitle();
             }
 
-            if (this.settings.show) {
+            if (this.settings.show && this.settings.trigger !== 'manual') {
                 this.settings.trigger = 'click';
             }
 
