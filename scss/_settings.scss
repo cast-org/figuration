@@ -880,6 +880,7 @@ $tooltip-arrow-color:   $tooltip-bg !default;
 
 // Popovers
 // =====
+$popover-font-size:             $font-size-base;
 $popover-bg:                    $white !default;
 $popover-max-width:             rem-calc(288px) !default;  // 288px=>18rem
 $popover-border-width:          $border-width !default;
