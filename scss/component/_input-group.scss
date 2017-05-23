@@ -49,6 +49,7 @@
     color: $input-color;
     text-align: center;
     background-color: $input-group-addon-bg;
+    background-clip: padding-box;
     border: $input-border-width solid $input-group-addon-border-color;
     @include border-radius($border-radius);
 
@@ -75,6 +76,7 @@
         position: relative;
         // Vertically stretch the button and center its content
         align-self: stretch;
+        background-clip: padding-box;
 
         + .btn {
             margin-left: (-$input-border-width);
