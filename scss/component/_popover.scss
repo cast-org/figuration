@@ -100,7 +100,7 @@
     color: $popover-header-color;
     background-color: $popover-header-bg;
     border-bottom: $popover-header-border-width solid $popover-header-border-color;
-    @include border-radius($popover-border-radius $popover-border-radius 0 0);
+    @include border-radius($popover-border-radius-inner $popover-border-radius-inner 0 0);
 
     &:empty {
         display: none;

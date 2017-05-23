@@ -828,7 +828,7 @@ $card-spacer-x:            1.25rem !default;
 $card-spacer-y:            1rem !default;
 $card-border-width:        $border-width !default;
 $card-border-radius:       $border-radius !default;
-$card-border-radius-inner: calc(#{$border-radius} - #{$card-border-width}) !default;
+$card-border-radius-inner: calc(#{$card-border-radius} - #{$card-border-width}) !default;
 $card-border-color:        $uibase-300 !default;
 $card-cap-color:           $uibase-900 !default;
 $card-cap-bg:              $uibase-50 !default;
@@ -886,6 +886,7 @@ $popover-max-width:             rem-calc(288px) !default;  // 288px=>18rem
 $popover-border-width:          $border-width !default;
 $popover-border-color:          $uibase-200 !default;
 $popover-border-radius:         .3125rem !default;
+$popover-border-radius-inner:   calc(#{$popover-border-radius} - #{$popover-border-width}) !default;
 $popover-box-shadow:            0 .2rem .3rem rgba(0,0,0,.175) !default;
 
 $popover-header-padding-x:     .75rem !default;
