@@ -1854,7 +1854,7 @@ if (typeof jQuery === 'undefined') {
                 this.fixTitle();
             }
 
-            if (this.settings.show) {
+            if (this.settings.show && this.settings.trigger !== 'manual') {
                 this.settings.trigger = 'click';
             }
 
@@ -2001,8 +2001,8 @@ if (typeof jQuery === 'undefined') {
 
                 // Bind 'close' buttons
                 this.$target.off('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]')
-                    .on('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]', function(e) {
-                        $selfRef.toggle(e);
+                    .on('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]', function() {
+                        $selfRef.hide();
                     });
             }
         },
