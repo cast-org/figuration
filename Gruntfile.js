@@ -155,7 +155,9 @@ module.exports = function(grunt) {
                     warnings: false
                 },
                 mangle: true,
-                preserveComments: /^!|@preserve|@license|@cc_on/i
+                output: {
+                    comments: /^!|@preserve|@license|@cc_on/i
+                }
             },
             core: {
                 src: '<%= concat.core.dest %>',
