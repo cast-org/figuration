@@ -4021,6 +4021,15 @@ button.list-group-item-danger.active {
   margin-top: 0;
 }
 
+.has-sucess .input-group-btn:not(:first-child) > .btn,
+.has-sucess .input-group-btn:not(:first-child) > .btn-group,
+.has-warning .input-group-btn:not(:first-child) > .btn,
+.has-warning .input-group-btn:not(:first-child) > .btn-group,
+.has-danger .input-group-btn:not(:first-child) > .btn,
+.has-danger .input-group-btn:not(:first-child) > .btn-group {
+  z-index: 1;
+}
+
 .input-group-btn {
   position: relative;
   font-size: 0;
@@ -5918,10 +5927,12 @@ a.badge:focus, a.badge:hover {
   position: relative;
   width: auto;
   margin: 0.625rem;
+  pointer-events: none;
 }
 
 .modal-content {
   position: relative;
+  pointer-events: auto;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
