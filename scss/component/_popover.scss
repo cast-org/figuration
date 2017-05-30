@@ -96,7 +96,7 @@
     padding: $popover-header-padding-y $popover-header-padding-x;
     padding-right: ($popover-header-padding-x * 2);
     margin: 0; // reset heading margin
-    font-size: $font-size-base;
+    font-size: $popover-header-font-size;
     color: $popover-header-color;
     background-color: $popover-header-bg;
     border-bottom: $popover-header-border-width solid $popover-header-border-color;
