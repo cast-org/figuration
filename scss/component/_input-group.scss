@@ -4,7 +4,6 @@
     display: flex;
     width: 100%;
 
-
     .form-control {
         // Ensure that the input is always above the *appended* addon button for
         // proper border colors.
@@ -60,6 +59,19 @@
         margin-top: 0;
     }
     // scss-lint:enable QualifyingElement
+}
+
+.has-sucess,
+.has-warning,
+.has-danger {
+    .input-group-btn {
+        &:not(:first-child) {
+            > .btn,
+            > .btn-group {
+                z-index: 1;
+            }
+        }
+    }
 }
 
 // Button input groups
