@@ -737,13 +737,19 @@ h4 > code {
 
 @media (min-width: 36em) {
   .example-content-main {
-    width: 50%;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+    max-width: 50%;
   }
 }
 
 @media (min-width: 62em) {
   .example-content-main {
-    width: 66.666667%;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 66.666667%;
+            flex: 0 0 66.666667%;
+    max-width: 66.666667%;
   }
 }
 
@@ -785,13 +791,19 @@ h4 > code {
 
 @media (min-width: 36em) {
   .example-content-secondary {
-    width: 50%;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+    max-width: 50%;
   }
 }
 
 @media (min-width: 62em) {
   .example-content-secondary {
-    width: 33.333333%;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 33.333333%;
+            flex: 0 0 33.333333%;
+    max-width: 33.333333%;
   }
 }
 
