@@ -409,11 +409,13 @@
         _actionsKeydown : function(e, node) {
             var isInput = /input|textarea/i.test(e.target.tagName);
             var isCheck = isInput && /checkbox|radio/i.test($(e.target).prop('type'));
+            var isRealButton = /button/i.test(e.target.tagName);
+            var isRoleButton = /button/i.test($(e.target).attr('role'));
 
             // 37-left, 38-up, 39-right, 40-down, 27-esc, 32-space, 9-tab
             if (!/^(37|38|39|40|27|32|9)$/.test(e.which)) { return; }
-            // Ignore space in inputs
-            if (isInput && e.which == 32) { return; }
+            // Ignore space in inputs and buttons
+            if ((isInput || isRealButton) && e.which == 32) { return; }
             // Ignore arrows in inputs, except for checkbox/radio
             if (isInput && !isCheck && /^(37|38|39|40)$/.test(e.which)) { return; }
 
@@ -459,6 +461,12 @@
             }
 
             $parent.removeClass(this.c.hover);
+
+            // Emulate button behaviour
+            if (isRoleButton && e.which == 32) {
+                this.toggleMenu(null, $node, $parent);
+                return;
+            }
 
             // Up/Down
             if (e.which == 38 || e.which == 40) {

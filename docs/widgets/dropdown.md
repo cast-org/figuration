@@ -123,7 +123,7 @@ Dropdowns also work in a navbar, but require the use of a wrapping element for p
     <a href="#" class="navbar-brand">Navbar</a>
     <ul class="navbar-nav">
         <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-cfw="dropdown">Dropdown</a>
+            <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown">Dropdown</a>
             <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>

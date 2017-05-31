@@ -88,7 +88,7 @@ $(function() {
         $(document.body).trigger('click');
     });
 
-    QUnit.test('should add class open to menu parent if clicked', function(assert) {
+    QUnit.test('should add "open" class to menu parent if clicked', function(assert) {
         assert.expect(1);
         var dropdownHTML = '<div class="dropdown">'
             + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
@@ -152,6 +152,37 @@ $(function() {
         assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class removed');
     });
 
+    // Cannot reliably emulate spacebar press on true buttons since browsers can use a 'stack' of events
+    // Spacebar on a button event order could be: `keydown, kepress, keyup, click`
+    // this may not be the correct order for all browsers
+
+    QUnit.test('should toggle "open" class if spacebar used on role="button"', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">'
+            + '<a role="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</a>'
+            + '<ul class="dropdown-menu">'
+            + '<li><a href="#">Menu link</a></li>'
+            + '</ul>'
+            + '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        var eventSpace = $.Event('keydown', { which: 32 });
+        $dropdown.CFW_Dropdown();
+
+        $dropdown
+            .on('afterShow.cfw.dropdown', function() {
+                assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on spacebar');
+                var eventSpace = $.Event('keydown', { which: 32 }); // Need new event
+                $dropdown.trigger(eventSpace);
+            })
+            .on('afterHide.cfw.dropdown', function() {
+                assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class removed');
+                done();
+            })
+            .trigger(eventSpace);
+    });
+
+
     QUnit.test('should remove "open" class if tabbing from trigger', function(assert) {
         assert.expect(2);
         var done = assert.async();
@@ -166,12 +197,12 @@ $(function() {
 
         $dropdown
             .on('afterShow.cfw.dropdown', function() {
-                assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"show" class added on click');
+                assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click');
                 var e = $.Event('keydown', { which: 9 }); // Tab
                 $dropdown.trigger(e);
             })
             .on('afterHide.cfw.dropdown', function() {
-                assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"show" class removed');
+                assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class removed');
                 done();
             })
             .trigger('click');
@@ -191,7 +222,7 @@ $(function() {
 
         $dropdown
             .on('afterShow.cfw.dropdown', function() {
-                assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"show" class added on click');
+                assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click');
                 var $menuItem = $dropdown.parent().find('a');
                 $menuItem.trigger('focus');
                 assert.ok($(document.activeElement).is($menuItem), 'menu item is focused');
@@ -199,7 +230,7 @@ $(function() {
                 $menuItem.trigger(e);
             })
             .on('afterHide.cfw.dropdown', function() {
-                assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"show" class removed');
+                assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class removed');
                 done();
             })
             .trigger('click');
@@ -219,7 +250,7 @@ $(function() {
 
         $dropdown
             .on('afterShow.cfw.dropdown', function() {
-                assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"show" class added on click');
+                assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click');
                 var $menuItem = $dropdown.parent().find('button');
                 $menuItem.trigger('focus');
                 assert.ok($(document.activeElement).is($menuItem), 'menu item is focused');
@@ -227,7 +258,7 @@ $(function() {
                 $menuItem.trigger(e);
             })
             .on('afterHide.cfw.dropdown', function() {
-                assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"show" class removed');
+                assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class removed');
                 done();
             })
             .trigger('click');
