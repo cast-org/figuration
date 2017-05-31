@@ -70,14 +70,14 @@ To ensure that the label text remains legible even for low percentages, consider
 
 ### Height
 
-By setting a `height` value on the `.progress-bar`, you change the height accordingly.
+By setting a `height` value on the outer `.progress`, you change the height accordingly.
 
 {% example html %}
-<div class="progress">
-    <div class="progress-bar" role="progressbar" style="width: 25%; height: 5px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+<div class="progress" style="height: .5rem;">
+    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
-<div class="progress">
-    <div class="progress-bar" role="progressbar" style="width: 25%; height: 20px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+<div class="progress" style="height: 2rem">
+    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 {% endexample %}
 
