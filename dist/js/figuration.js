@@ -2011,6 +2011,7 @@ if (typeof jQuery === 'undefined') {
                 // Bind 'close' buttons
                 this.$target.off('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]')
                     .on('click.dismiss.cfw.' + this.type, '[data-cfw-dismiss="' + this.type + '"]', function() {
+                        $selfRef.follow = true;
                         $selfRef.hide();
                     });
             }
