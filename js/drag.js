@@ -12,6 +12,7 @@
         this.$element = $(element);
         this.dragging = false;
         this.dragdata = {};
+        this.instance = null;
 
         this.settings = $.extend({}, CFW_Widget_Drag.DEFAULTS, options);
 
@@ -25,6 +26,7 @@
     CFW_Widget_Drag.prototype = {
 
         _init : function() {
+            this.instance = $('<div/>').CFW_getID('cfw-drag');
             this._reset();
             this._dragStartOn();
             this.$element.CFW_trigger('init.cfw.drag');
@@ -35,13 +37,12 @@
                 this.$element[0].detachEvent('ondragstart', this._dontStart);
             }
             this._dragStartOff();
-            this.$element
-                .off('.cfw.drag')
-                .removeData('cfw.drag');
+            this.$element.removeData('cfw.drag');
 
             this.$element = null;
             this.dragging = null;
             this.dragdata = null;
+            this.instance = null;
             this.settings = null;
         },
 
@@ -55,7 +56,7 @@
 
         _dragStartOff : function(e) {
             if (e) e.preventDefault();
-            $(document).off('.cfw.dragin');
+            $(document).off('.cfw.dragin.' + this.instance);
             this.$element.off('.cfw.dragstart');
         },
 
@@ -71,11 +72,11 @@
             this.dragging = true;
 
             $(document)
-                .off('.cfw.dragin')
-                .on('mousemove.cfw.dragin touchmove.cfw.dragin MSPointerMove.cfw.dragin', function(e) {
+                .off('.cfw.dragin.' + this.instance)
+                .on('mousemove.cfw.dragin.' + this.instance + ' touchmove.cfw.dragin.' + this.instance + ' MSPointerMove.cfw.dragin.' + this.instance, function(e) {
                     $selfRef._drag(e);
                 })
-                .on('mouseup.cfw.dragin touchend.cfw.dragin MSPointerUp.cfw.dragin MSPointerCancel.cfw.dragin', function() {
+                .on('mouseup.cfw.dragin.' + this.instance + ' touchend.cfw.dragin.' + this.instance + ' MSPointerUp.cfw.dragin.' + this.instance + ' MSPointerCancel.cfw.dragin.' + this.instance, function() {
                     $selfRef._dragEnd(e);
                 });
 
@@ -104,7 +105,7 @@
             e.preventDefault();
             this.dragging = false;
             this.dragStart = null;
-            $(document).off('.cfw.dragin');
+            $(document).off('.cfw.dragin.' + this.instance);
 
             var coord = this._coordinates(e);
             var props = this._properties(coord, this.dragdata);
