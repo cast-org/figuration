@@ -1,7 +1,9 @@
 .card {
     position: relative;
     display: block;
+    min-width: 0;
     margin-bottom: $card-spacer-y;
+    word-wrap: break-word;
     background-color: $card-bg;
     border: $card-border-width solid $card-border-color;
     @include border-radius($card-border-radius);
