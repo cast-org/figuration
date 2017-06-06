@@ -412,9 +412,11 @@ You can also use `.card-inverse` with the [contextual backgrounds variants](#bac
   <div class="card-body">
     <h3 class="card-title">Special title treatment</h3>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <p class="card-text"><a href="#" class="card-link">Go somewhere</a></p>
+    <p class="card-text"><button type="button" class="btn btn-primary">Do something</button></p>
   </div>
   <div class="card-footer">
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    Card footer
   </div>
 </div>
 {% endexample %}
