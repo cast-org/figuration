@@ -237,7 +237,7 @@
     @include transition($input-transition);
 
     @each $lang, $text in map-get($custom-file-text, placeholder) {
-        &:lang(#{$lang})::after {
+        &:lang(#{$lang}):empty::after {
             content: $text;
         }
     }
@@ -257,7 +257,7 @@
     }
 
     @each $lang, $text in map-get($custom-file-text, button-label) {
-        &:lang(#{$lang}):empty::before {
+        &:lang(#{$lang})::before {
             content: $text;
         }
     }
