@@ -139,13 +139,13 @@
 
 // Card images
 .card-img {
-    @include border-radius($card-border-radius-inner);
+    @include border-radius($card-inner-border-radius);
 }
 .card-img-top {
-    @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
+    @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
 }
 .card-img-bottom {
-    @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
+    @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
 }
 
 
