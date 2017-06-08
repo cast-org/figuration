@@ -59,6 +59,7 @@ $white:     #fff !default;
 $black:     #000 !default;
 $uibase:    #666 !default;
 
+$uibase-25:  palette($uibase, 25);
 $uibase-50:  palette($uibase, 50);
 $uibase-75:  palette($uibase, 75);
 $uibase-100:  palette($uibase, 100);
@@ -368,10 +369,12 @@ $transition-collapse-y: height .3s ease !default;
 $transition-collapse-x: width .3s ease !default;
 
 // Component transitions
-$btn-transition:          box-shadow .15s ease-in-out !default;
-$input-transition:        border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
-$modal-transition:        transform .3s ease-out !default;
-$progress-bar-transition: width .3s ease !default;
+$btn-transition:            box-shadow .15s ease-in-out !default;
+$input-transition:          border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+$modal-transition:          transform .3s ease-out !default;
+$progress-bar-transition:   width .3s ease !default;
+$switch-control-transition: background-color .3s ease !default;
+$switch-indicator-transition: left .3s ease, transform .3s ease, background-color .3s ease !default;
 
 
 // Radius utility
@@ -523,7 +526,6 @@ $form-inline-breakpoint:         sm !default;
 $input-height:      (($font-size-base * $input-line-height) + ($input-padding-y * 2)) !default;
 $select-height:     calc(#{$input-height} + #{($border-width * 2)}) !default;
 
-
 // Form icons
 // =====
 // From OpenIconic: https://useiconic.com/open
@@ -587,6 +589,26 @@ $custom-file-text: (
         en: "Browse"
     )
 ) !default;
+
+
+// Switch
+// =====
+$switch-control-bg:                 $input-bg !default;
+$switch-indicator-bg:               $uibase-200 !default;
+
+$switch-active-control-bg:          $uibase-25 !default;
+$switch-active-indicator-bg:        $uibase-300 !default;
+
+$switch-focus-control-border-color: $input-focus-border-color !default;
+$switch-focus-control-box-shadow:   $input-focus-box-shadow !default;
+
+$switch-disabled-control-bg:        $input-disabled-bg !default;
+$switch-disabled-description-color: $uibase-400 !default;
+$switch-disabled-cursor:            $cursor-disabled !default;
+$switch-disabled-opacity:           .6 !default;
+
+$switch-indicator-box-shadow:       $btn-box-shadow !default;
+$switch-active-indicator-box-shadow: $btn-active-box-shadow !default;
 
 
 // Progress bars

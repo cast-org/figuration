@@ -1,0 +1,185 @@
+.switch {
+    position: relative;
+    display: inline-block;
+}
+
+.switch-control {
+    position: relative;
+    display: inline-block;
+    width: ($font-size-base * 4);
+    height: $select-height;
+    overflow: hidden;
+    font-size: $font-size-base;
+    line-height: $input-line-height;
+    vertical-align: middle;
+    background-color: $switch-control-bg;
+    background-image: none;
+    background-clip: padding-box;
+    border: $input-border-width solid $input-border-color;
+    @include border-radius($input-border-radius);
+    @include box-shadow($input-box-shadow);
+    @include transition($input-transition, $switch-control-transition);
+
+    &::before {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -#{$input-border-width};
+        display: block;
+        width: 40%;
+        content: " ";
+        background-color: $switch-indicator-bg;
+        @include border-radius(calc(#{$input-border-radius} - #{$input-border-width}));
+        @include box-shadow($switch-indicator-box-shadow);
+        @include transition($switch-indicator-transition)
+    }
+}
+
+.switch-description {
+    vertical-align: middle;
+}
+
+.switch-input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    &:checked ~ .switch-control {
+        background-color: $switch-active-control-bg;
+
+        &::before {
+            left: 100%;
+            background-color: $switch-active-indicator-bg;
+            // Need to use double translate due to IE bug with
+            // calc() use in transform
+            //transform: translateX(calc(-100% + #{$input-border-width}));
+            transform: translateX(-100%) translateX(#{$input-border-width});
+            @include box-shadow($switch-active-indicator-box-shadow);
+        }
+    }
+
+    &:focus ~ .switch-control {
+        border-color: $switch-focus-control-border-color;
+        @include box-shadow($switch-focus-control-box-shadow);
+    }
+
+    &:disabled {
+        ~ .switch-control {
+            cursor: $switch-disabled-cursor;
+            opacity: $switch-disabled-opacity;
+
+            &::before {
+                opacity: $switch-disabled-opacity;
+            }
+        }
+
+        ~ .switch-description {
+            color: $switch-disabled-description-color;
+            cursor: $switch-disabled-cursor;
+            opacity: $switch-disabled-opacity;
+        }
+    }
+}
+
+// Reverse switch direction
+.switch-reverse {
+    .switch-control {
+        &::before {
+            left: 100%;
+            //transform: translateX(calc(-100% + #{$input-border-width}));
+            transform: translateX(-100%) translateX(#{$input-border-width});
+        }
+    }
+
+    .switch-input {
+        &:checked ~ .switch-control {
+            &::before {
+                left: -#{$input-border-width};
+                transform: none;
+
+            }
+        }
+    }
+}
+
+// Rounded variant
+.switch-rounded {
+    .switch-control {
+        @include border-radius($select-height);
+
+        &::before {
+            width: $input-height;
+            @include border-radius($input-height);
+        }
+    }
+}
+
+// Color variants
+@each $theme, $colors in $context-themes {
+    // Lighter variation for consideration
+    //$var-control-bg:          map-get($colors, "context-border");
+    //$var-active-control-bg:   map-get($colors, "context-bg");
+    //$var-active-indicator-bg: map-get($colors, "control-bg");
+
+    $var-indicator-bg:        map-get($colors, "control-bg");
+    $var-active-control-bg:   map-get($colors, "context-bg");
+    $var-active-indicator-bg: map-get($colors, "control-hover-bg");
+
+    .switch-#{$theme} {
+        .switch-control {
+            &::before {
+                background-color: $var-indicator-bg;
+            }
+        }
+
+        .switch-input {
+            &:checked ~ .switch-control {
+                background-color: $var-active-control-bg;
+
+                &::before {
+                    background-color: $var-active-indicator-bg;
+                }
+            }
+        }
+    }
+}
+
+// Switch sizes
+@if $enable-sizing {
+    @each $size, $dims in $component-sizes {
+        $sz-font-size:     map-get($dims, "font-size");
+        $sz-padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $sz-font-size / 2);
+        $sz-padding-x:     map-get($dims, "padding-x");
+        $sz-border-radius: map-get($dims, "border-radius");
+        $sz-input-height:  (($sz-font-size * $input-line-height) + ($sz-padding-y * 2));
+        $sz-select-height: calc(#{$sz-input-height} + #{($input-border-width * 2)});
+
+        .switch-#{$size} {
+            .switch-control {
+                width: ($sz-font-size * 4);
+                height: $sz-select-height;
+                font-size: $sz-font-size;
+                @include border-radius($sz-border-radius);
+
+                &::before {
+                    @include border-radius(calc(#{$sz-border-radius} - #{$input-border-width}));
+                }
+            }
+
+            .switch-description {
+                font-size: $sz-font-size;
+            }
+
+            &.switch-rounded {
+                .switch-control {
+                    @include border-radius($sz-select-height);
+
+                    &::before {
+                        width: $sz-input-height;
+                        @include border-radius($sz-input-height);
+                    }
+                }
+            }
+        }
+    }
+}
