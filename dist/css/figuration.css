@@ -5900,6 +5900,274 @@ a.badge:focus, a.badge:hover {
   color: #8c140a;
 }
 
+.switch {
+  position: relative;
+  display: inline-block;
+}
+
+.switch-control {
+  position: relative;
+  display: inline-block;
+  width: 4rem;
+  height: calc(2rem + 2px);
+  overflow: hidden;
+  font-size: 1rem;
+  line-height: 1.5;
+  vertical-align: middle;
+  background-color: #fff;
+  background-image: none;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 0.25rem;
+  -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.3s ease;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.3s ease;
+}
+
+.switch-control::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -1px;
+  display: block;
+  width: 40%;
+  content: " ";
+  background-color: #c2c2c2;
+  border-radius: calc(0.25rem - 1px);
+  -webkit-transition: left 0.3s ease, background-color 0.3s ease, -webkit-transform 0.3s ease;
+  transition: left 0.3s ease, background-color 0.3s ease, -webkit-transform 0.3s ease;
+  transition: left 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+  transition: left 0.3s ease, transform 0.3s ease, background-color 0.3s ease, -webkit-transform 0.3s ease;
+}
+
+.switch-description {
+  vertical-align: middle;
+}
+
+.switch-input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.switch-input:checked ~ .switch-control {
+  background-color: #f7f7f7;
+}
+
+.switch-input:checked ~ .switch-control::before {
+  left: 100%;
+  background-color: #a3a3a3;
+  -webkit-transform: translateX(-100%) translateX(1px);
+          transform: translateX(-100%) translateX(1px);
+}
+
+.switch-input:focus ~ .switch-control {
+  border-color: #70b0d6;
+}
+
+.switch-input:disabled ~ .switch-control {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.switch-input:disabled ~ .switch-control::before {
+  opacity: 0.6;
+}
+
+.switch-input:disabled ~ .switch-description {
+  color: #858585;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.switch-reverse .switch-control::before {
+  left: 100%;
+  -webkit-transform: translateX(-100%) translateX(1px);
+          transform: translateX(-100%) translateX(1px);
+}
+
+.switch-reverse .switch-input:checked ~ .switch-control::before {
+  left: -1px;
+  -webkit-transform: none;
+          transform: none;
+}
+
+.switch-rounded .switch-control {
+  border-radius: calc(2rem + 2px);
+}
+
+.switch-rounded .switch-control::before {
+  width: 2rem;
+  border-radius: 2rem;
+}
+
+.switch-primary .switch-control::before {
+  background-color: #1242ba;
+}
+
+.switch-primary .switch-input:checked ~ .switch-control {
+  background-color: #dbe3f5;
+}
+
+.switch-primary .switch-input:checked ~ .switch-control::before {
+  background-color: #0e3390;
+}
+
+.switch-secondary .switch-control::before {
+  background-color: #757575;
+}
+
+.switch-secondary .switch-input:checked ~ .switch-control {
+  background-color: #eaeaea;
+}
+
+.switch-secondary .switch-input:checked ~ .switch-control::before {
+  background-color: #5b5b5b;
+}
+
+.switch-info .switch-control::before {
+  background-color: #117cba;
+}
+
+.switch-info .switch-input:checked ~ .switch-control {
+  background-color: #dbebf5;
+}
+
+.switch-info .switch-input:checked ~ .switch-control::before {
+  background-color: #0d6090;
+}
+
+.switch-success .switch-control::before {
+  background-color: #108918;
+}
+
+.switch-success .switch-input:checked ~ .switch-control {
+  background-color: #dbeddc;
+}
+
+.switch-success .switch-input:checked ~ .switch-control::before {
+  background-color: #0c6a13;
+}
+
+.switch-warning .switch-control::before {
+  background-color: #c98800;
+}
+
+.switch-warning .switch-input:checked ~ .switch-control {
+  background-color: #f7edd9;
+}
+
+.switch-warning .switch-input:checked ~ .switch-control::before {
+  background-color: #9c6900;
+}
+
+.switch-danger .switch-control::before {
+  background-color: #c81d0e;
+}
+
+.switch-danger .switch-input:checked ~ .switch-control {
+  background-color: #f7dddb;
+}
+
+.switch-danger .switch-input:checked ~ .switch-control::before {
+  background-color: #9b160b;
+}
+
+.switch-xs .switch-control {
+  width: 3rem;
+  height: calc(1.3125rem + 2px);
+  font-size: 0.75rem;
+  border-radius: 0.1875rem;
+}
+
+.switch-xs .switch-control::before {
+  border-radius: calc(0.1875rem - 1px);
+}
+
+.switch-xs .switch-description {
+  font-size: 0.75rem;
+}
+
+.switch-xs.switch-rounded .switch-control {
+  border-radius: calc(1.3125rem + 2px);
+}
+
+.switch-xs.switch-rounded .switch-control::before {
+  width: 1.3125rem;
+  border-radius: 1.3125rem;
+}
+
+.switch-sm .switch-control {
+  width: 3.5rem;
+  height: calc(1.59375rem + 2px);
+  font-size: 0.875rem;
+  border-radius: 0.1875rem;
+}
+
+.switch-sm .switch-control::before {
+  border-radius: calc(0.1875rem - 1px);
+}
+
+.switch-sm .switch-description {
+  font-size: 0.875rem;
+}
+
+.switch-sm.switch-rounded .switch-control {
+  border-radius: calc(1.59375rem + 2px);
+}
+
+.switch-sm.switch-rounded .switch-control::before {
+  width: 1.59375rem;
+  border-radius: 1.59375rem;
+}
+
+.switch-lg .switch-control {
+  width: 4.5rem;
+  height: calc(2.40625rem + 2px);
+  font-size: 1.125rem;
+  border-radius: 0.3125rem;
+}
+
+.switch-lg .switch-control::before {
+  border-radius: calc(0.3125rem - 1px);
+}
+
+.switch-lg .switch-description {
+  font-size: 1.125rem;
+}
+
+.switch-lg.switch-rounded .switch-control {
+  border-radius: calc(2.40625rem + 2px);
+}
+
+.switch-lg.switch-rounded .switch-control::before {
+  width: 2.40625rem;
+  border-radius: 2.40625rem;
+}
+
+.switch-xl .switch-control {
+  width: 5rem;
+  height: calc(2.8125rem + 2px);
+  font-size: 1.25rem;
+  border-radius: 0.3125rem;
+}
+
+.switch-xl .switch-control::before {
+  border-radius: calc(0.3125rem - 1px);
+}
+
+.switch-xl .switch-description {
+  font-size: 1.25rem;
+}
+
+.switch-xl.switch-rounded .switch-control {
+  border-radius: calc(2.8125rem + 2px);
+}
+
+.switch-xl.switch-rounded .switch-control::before {
+  width: 2.8125rem;
+  border-radius: 2.8125rem;
+}
+
 .modal-open {
   overflow: hidden;
 }
