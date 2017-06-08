@@ -492,7 +492,7 @@ $input-box-shadow:              inset 0 .125rem .125rem rgba(0,0,0,.1) !default;
 
 $input-focus-color:             $input-color !default;
 $input-focus-bg:                $input-bg !default;
-$input-focus-border:            palette-context("info", 300) !default;
+$input-focus-border-color:      palette-context("info", 300) !default;
 $input-focus-box-shadow:        inset 0 .125rem .125rem rgba(0,0,0,.15) !default;
 
 $input-disabled-color:          $disabled-color !default;
@@ -555,7 +555,7 @@ $custom-control-checked-indicator-color:      $white !default;
 $custom-control-checked-indicator-bg:         map-get($context-colors, "primary") !default;
 $custom-control-checked-indicator-box-shadow: none !default;
 
-$custom-control-focus-indicator-box-shadow:  0 0 0 .0625rem #fff, 0 0 0 .1875rem $input-focus-border !default;
+$custom-control-focus-indicator-box-shadow:  0 0 0 .0625rem #fff, 0 0 0 .1875rem $input-focus-border-color !default;
 
 $custom-control-active-indicator-color:      $white !default;
 $custom-control-active-indicator-bg:         palette-context("primary", 300) !default;
