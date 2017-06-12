@@ -3360,11 +3360,17 @@ input[type="button"].btn-block {
   display: block;
 }
 
-tr.collapse.in {
+.collapse.in-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+tr.collapse.in, tr.collapse.in-flex {
   display: table-row;
 }
 
-tbody.collapse.in {
+tbody.collapse.in, tbody.collapse.in-flex {
   display: table-row-group;
 }
 
