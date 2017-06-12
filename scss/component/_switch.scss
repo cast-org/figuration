@@ -1,12 +1,13 @@
 .switch {
     position: relative;
     display: inline-block;
+    margin-bottom: 0;   // Remove default label margin
 }
 
 .switch-control {
     position: relative;
     display: inline-block;
-    width: ($font-size-base * 4);
+    width: ($font-size-base * $switch-width-multiplier);
     height: $select-height;
     overflow: hidden;
     font-size: $font-size-base;
@@ -156,7 +157,7 @@
 
         .switch-#{$size} {
             .switch-control {
-                width: ($sz-font-size * 4);
+                width: ($sz-font-size * $switch-width-multiplier);
                 height: $sz-select-height;
                 font-size: $sz-font-size;
                 @include border-radius($sz-border-radius);
