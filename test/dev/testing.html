@@ -1552,6 +1552,17 @@ $(window).ready(function() {
 
             <h2 id="collapse">Collapse:</h2>
             <div class="well">
+                <button type="button" data-cfw="collapse" data-cfw-collapse-target=".collFlex0">Flexbox collapse check</button>
+                <br />
+                <div class="collFlex0 collapse row">
+                    Flex item
+                </div>
+                <div class="collFlex0 collapse">
+                    Block item
+                </div>
+
+            </div>
+            <div class="well">
                 <label>
                     Toggle Collapse
                     <input type="checkbox" data-cfw="collapse" data-cfw-collapse-target="#collapseCheck2">

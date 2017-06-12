@@ -341,7 +341,7 @@ $(function() {
         $trigger.CFW_Collapse('show');
     });
 
-    QUnit.test('should show a collapse when initialized with "show" option if not already shown', function(assert) {
+    QUnit.test('should not prevent event for input', function(assert) {
         assert.expect(2);
         var done = assert.async();
 

@@ -81,7 +81,7 @@
             if (e && !/input|textarea/i.test(e.target.tagName)) {
                 e.preventDefault();
             }
-            if (this.$element.hasClass('open') || this.$target.hasClass('in')) {
+            if (this.$element.hasClass('open') || this.$target.hasClass('in') || this.$target.hasClass('in-flex')) {
                 this.hide();
             } else {
                 this.show();
@@ -101,7 +101,7 @@
             if (follow === null) { follow = this.settings.follow; }
 
             // Bail if transition in progress
-            if (this.inTransition || this.$target.hasClass('in')) { return; }
+            if (this.inTransition || this.$target.hasClass('in') || this.$target.hasClass('in-flex')) { return; }
 
             // Start open transition
             if (!this.$element.CFW_trigger('beforeShow.cfw.collapse')) {
@@ -130,9 +130,12 @@
             function complete() {
                 $selfRef.$triggers.attr('aria-expanded', 'true');
                 $selfRef.$target
-                    .removeClass('collapsing')
-                    .addClass('collapse in')[dimension]('')
-                    .CFW_mutateTrigger();
+                    .removeClass('collapsing')[dimension]('');
+                $selfRef.$target.each(function() {
+                    var flexClass = $selfRef._isFlex(this) ? 'in-flex' : 'in';
+                    $(this).addClass('collapse ' + flexClass);
+                });
+                $selfRef.$target.CFW_mutateTrigger();
                 $selfRef.inTransition = false;
                 if (follow) {
                     $selfRef.$target.attr('tabindex', '-1').get(0).trigger('focus');
@@ -150,7 +153,7 @@
             if (follow === null) { follow = this.settings.follow; }
 
             // Bail if transition in progress
-            if (this.inTransition || !this.$target.hasClass('in')) { return; }
+            if (this.inTransition || (!this.$target.hasClass('in') && !this.$target.hasClass('in-flex'))) { return; }
 
             // Start close transition
             if (!this.$element.CFW_trigger('beforeHide.cfw.collapse')) {
@@ -167,7 +170,7 @@
                 var $this = $(this);
                 $this[dimension]($this[dimension]())[0].offsetHeight;
             });
-            this.$target.removeClass('collapse in');
+            this.$target.removeClass('collapse in in-flex');
             if (this.settings.animate) {
                 this.$target.addClass('collapsing');
             }
@@ -180,7 +183,7 @@
             function complete() {
                 $selfRef.$triggers.attr('aria-expanded', 'false');
                 $selfRef.$target
-                    .removeClass('collapsing in')
+                    .removeClass('collapsing in in-flex')
                     .addClass('collapse')
                     .CFW_mutateTrigger();
                 $selfRef.inTransition = false;
@@ -200,6 +203,11 @@
 
         animEnable: function() {
             this.settings.animate = true;
+        },
+
+        _isFlex: function(node) {
+            var displayVal = window.getComputedStyle(node, null).getPropertyValue('display');
+            return (displayVal.indexOf('flex') !== -1);
         },
 
         dispose : function() {
