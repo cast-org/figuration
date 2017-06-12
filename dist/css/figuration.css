@@ -5903,6 +5903,7 @@ a.badge:focus, a.badge:hover {
 .switch {
   position: relative;
   display: inline-block;
+  margin-bottom: 0;
 }
 
 .switch-control {
