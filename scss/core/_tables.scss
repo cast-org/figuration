@@ -21,6 +21,13 @@
         border-top: (2 * $table-border-width) solid $table-border-color;
     }
 
+    tfoot {
+        th,
+        td {
+            border-top: (2 * $table-border-width) solid $table-border-color;
+        }
+    }
+
     .table {
         background-color: $table-bg;
     }
@@ -34,7 +41,6 @@
         padding: $table-condensed-cell-padding;
     }
 }
-
 
 // Bordered table
 .table-bordered {
@@ -51,8 +57,38 @@
             border-bottom-width: (2 * $table-border-width);
         }
     }
+
+    tfoot {
+        th,
+        td {
+            border-top-width: (2 * $table-border-width);
+        }
+    }
 }
 
+// Borderless table
+.table-borderless {
+    th,
+    td {
+        border: 0;
+    }
+}
+
+// Table with no borders
+.table-noborder {
+    th,
+    td {
+        border: 0;
+    }
+
+    thead,
+    tfoot {
+        th,
+        td {
+            border: 0;
+        }
+    }
+}
 
 // Striped table
 .table-striped {
@@ -112,13 +148,15 @@
 }
 
 // Table color variants
-.thead-inverse {
+.thead-inverse,
+.tfoot-inverse {
     th {
         color: $table-inverse-color;
         background-color: $table-inverse-bg;
     }
 }
-.thead-default {
+.thead-default,
+.tfoot-default {
     th {
         color: $table-head-color;
         background-color: $table-head-bg;
@@ -134,7 +172,8 @@
 
     th,
     td,
-    thead th {
+    thead th,
+    tfoot th {
         border-color: $table-inverse-border;
     }
 }

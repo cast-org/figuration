@@ -46,6 +46,14 @@ Using the most basic table markup, here's how `.table`-based tables look in Figu
       <td>table cell</td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
 </table>
 {% endexample %}
 
@@ -80,6 +88,14 @@ You can also invert the colors---with light text on dark backgrounds---with `.ta
       <td>table cell</td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
 </table>
 {% endexample %}
 
@@ -146,6 +162,88 @@ Similar to default and inverse tables, use one of two modifier classes to make `
       <td>table cell</td>
     </tr>
   </tbody>
+</table>
+{% endexample %}
+
+## Table Footer Options
+
+Just like the headers, use one of two modifier classes to make `<tfoot>`s appear light or dark gray.
+
+{% example html %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td colspan="2">table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+  </tbody>
+  <tfoot class="tfoot-inverse">
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
+</table>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td colspan="2">table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+  </tbody>
+  <tfoot class="tfoot-default">
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
 </table>
 {% endexample %}
 
@@ -250,6 +348,14 @@ Add `.table-bordered` for borders on all sides of the table and cells.
       <td>table cell</td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
 </table>
 {% endexample %}
 
@@ -282,6 +388,266 @@ Add `.table-bordered` for borders on all sides of the table and cells.
       <td>table cell</td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
+</table>
+{% endexample %}
+
+## Borderless Table
+
+Add `.table-borderless` to remove borders from all sides of the cells, but leave a border between the table's header or footer and the table body.
+
+{% example html %}
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td colspan="2">table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
+</table>
+{% endexample %}
+
+{% example html %}
+<table class="table table-borderless table-inverse">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td colspan="2">table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
+</table>
+{% endexample %}
+
+## Non-Bordered Table
+
+Add `.table-noborder` to remove borders from all sides of the cells, including the border between the table's header or footer and the table body.
+
+{% example html %}
+<table class="table table-noborder">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td colspan="2">table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
+</table>
+{% endexample %}
+
+{% example html %}
+<table class="table table-noborder table-inverse">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td colspan="2">table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
+</table>
+{% endexample %}
+
+## Mixed-Border Table
+
+Mix `.table-bordered` along with `.table-borderless` or `.table-noborder` to vary the table's borders.
+
+{% example html %}
+<table class="table table-bordered table-borderless">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td colspan="2">table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
+</table>
+{% endexample %}
+
+{% example html %}
+<table class="table table-bordered table-noborder">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td colspan="2">table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
 </table>
 {% endexample %}
 
@@ -386,6 +752,14 @@ Add `.table-condensed` to make tables more compact by reducing the cell padding.
       <td>table cell</td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
 </table>
 {% endexample %}
 
@@ -418,6 +792,14 @@ Add `.table-condensed` to make tables more compact by reducing the cell padding.
       <td>table cell</td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
 </table>
 {% endexample %}
 
@@ -539,6 +921,14 @@ Please refer to the [Accessiblity notes about conveying meaning with color]({{ s
         <td>Column content</td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Column footer</th>
+        <th>Column footer</th>
+        <th>Column footer</th>
+      </tr>
+    </tfoot>
   </table>
 </div>
 
@@ -628,6 +1018,14 @@ Regular table background variants are not available with the inverse table, howe
         <td>Column content</td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Column footer</th>
+        <th>Column footer</th>
+        <th>Column footer</th>
+      </tr>
+    </tfoot>
   </table>
 </div>
 
@@ -648,6 +1046,48 @@ Regular table background variants are not available with the inverse table, howe
   <td class="bg-danger">...</td>
 </tr>
 {% endhighlight %}
+
+You can also use [text or background utilities]({{ site.baseurl }}/utilities/color/#contextual-colors-and-backgrounds) to achieve multiple styles.
+
+{% example html %}
+<table class="table">
+  <thead class="text-light bg-blue-500">
+    <tr>
+      <th>#</th>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="text-cyan-500">
+      <th scope="row">1</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td colspan="2" class="text-success">table cell</td>
+      <td class="text-danger">table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td class="text-light bg-success">table cell</td>
+      <td>table cell</td>
+      <td class="text-dark bg-red-100">table cell</td>
+    </tr>
+  </tbody>
+  <tfoot class="bg-blue-100">
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
+</table>
+{% endexample %}
 
 ## Scrolling Tables
 
@@ -710,6 +1150,19 @@ Scrolling tables make use of `overflow-y: hidden`, which clips off any content t
         <td>Table cell</td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+      </tr>
+    </tfoot>
   </table>
 
   <table class="table table-scroll table-bordered">
@@ -761,6 +1214,19 @@ Scrolling tables make use of `overflow-y: hidden`, which clips off any content t
         <td>Table cell</td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+      </tr>
+    </tfoot>
   </table>
 </div>
 
