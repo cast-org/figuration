@@ -25,3 +25,18 @@
         }
     }
 }
+
+// Scrolling table
+// Tables will scroll when they will no longer fit width-wise in their container.
+@mixin table-scroll() {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+    // Prevent double border on horizontal scroll due to `display: block;`
+    &.table-bordered {
+        border: 0;
+    }
+}

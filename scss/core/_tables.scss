@@ -136,14 +136,20 @@
 // Add `.table-scroll` to table to enable horizontal scrolling.
 // Tables will scroll when they will no longer fit width-wise in their container.
 .table-scroll {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
+    @include table-scroll();
+}
 
-    // Prevent double border on horizontal scroll due to `display: block;`
-    &.table-bordered {
-        border: 0;
+// Responsive scrolling table
+@each $bp in map-keys($grid-breakpoints) {
+    $bprule: breakpoint-designator($bp);
+
+    // Skip largest breakpoint for down (equivalent to `.table-scroll`)
+    @if breakpoint-max($bp, $grid-breakpoints) != null {
+        .table-scroll-#{$bp}-down {
+            @include media-breakpoint-down($bp) {
+                @include table-scroll();
+            }
+        }
     }
 }
 

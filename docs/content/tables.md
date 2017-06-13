@@ -1235,3 +1235,69 @@ Scrolling tables make use of `overflow-y: hidden`, which clips off any content t
   ...
 </table>
 {% endhighlight %}
+
+Table scrolling is also available in repsonsive variants of the form `.table-scroll-*-down`, where the table will horizontally scroll when the table is wider than it's container and when the viewport is at the given breakpoint or smaller.
+
+Responsive variants are:
+- `.table-scroll-xs-down`
+- `.table-scroll-sm-down`
+- `.table-scroll-md-down`
+- `.table-scroll-lg-down`
+
+**Heads up!** There is no `.table-scroll-*-down` class created for the largest breakpoint, `.table-scroll-xl-down`, since it is functionally equivalent to using `.table-scroll`.
+
+{% example html %}
+  <table class="table table-scroll-md-down">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+      </tr>
+    </tfoot>
+  </table>
+{% endexample %}
