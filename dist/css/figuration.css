@@ -664,7 +664,7 @@ samp {
 }
 
 code {
-  padding: 0.2rem 0.4rem;
+  padding: 0.125rem 0.4375rem;
   font-size: 87.5%;
   color: #c81d0e;
   background-color: #e8e8e8;
@@ -672,7 +672,7 @@ code {
 }
 
 kbd {
-  padding: 0.2rem 0.4rem;
+  padding: 0.125rem 0.4375rem;
   font-size: 87.5%;
   color: #f0f0f0;
   background-color: #292929;
@@ -927,11 +927,64 @@ pre code {
   display: block;
   width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 .table-scroll.table-bordered {
   border: 0;
+}
+
+@media (max-width: 35.9375em) {
+  .table-scroll-xs-down {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .table-scroll-xs-down.table-bordered {
+    border: 0;
+  }
+}
+
+@media (max-width: 47.9375em) {
+  .table-scroll-sm-down {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .table-scroll-sm-down.table-bordered {
+    border: 0;
+  }
+}
+
+@media (max-width: 61.9375em) {
+  .table-scroll-md-down {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .table-scroll-md-down.table-bordered {
+    border: 0;
+  }
+}
+
+@media (max-width: 74.9375em) {
+  .table-scroll-lg-down {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .table-scroll-lg-down.table-bordered {
+    border: 0;
+  }
 }
 
 .thead-inverse th,
