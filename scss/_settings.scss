@@ -400,8 +400,8 @@ $embed-ratio: percentage(9 / 16) !default;
 // Code
 // =====
 $code-font-size:            87.5% !default;
-$code-padding-x:            .4rem !default;
-$code-padding-y:            .2rem !default;
+$code-padding-x:            .4375rem !default;
+$code-padding-y:            .125rem !default;
 $code-color:                map-get($context-colors, "danger") !default;
 $code-bg:                   $uibase-75 !default;
 
