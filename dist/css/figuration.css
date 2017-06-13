@@ -752,6 +752,11 @@ pre code {
   border-top: 2px solid #a3a3a3;
 }
 
+.table tfoot th,
+.table tfoot td {
+  border-top: 2px solid #a3a3a3;
+}
+
 .table .table {
   background-color: transparent;
 }
@@ -773,6 +778,28 @@ pre code {
 .table-bordered thead th,
 .table-bordered thead td {
   border-bottom-width: 2px;
+}
+
+.table-bordered tfoot th,
+.table-bordered tfoot td {
+  border-top-width: 2px;
+}
+
+.table-borderless th,
+.table-borderless td {
+  border: 0;
+}
+
+.table-noborder th,
+.table-noborder td {
+  border: 0;
+}
+
+.table-noborder thead th,
+.table-noborder thead td,
+.table-noborder tfoot th,
+.table-noborder tfoot td {
+  border: 0;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -907,12 +934,14 @@ pre code {
   border: 0;
 }
 
-.thead-inverse th {
+.thead-inverse th,
+.tfoot-inverse th {
   color: #f0f0f0;
   background-color: #474747;
 }
 
-.thead-default th {
+.thead-default th,
+.tfoot-default th {
   color: #292929;
   background-color: #a3a3a3;
 }
@@ -928,7 +957,8 @@ pre code {
 
 .table-inverse th,
 .table-inverse td,
-.table-inverse thead th {
+.table-inverse thead th,
+.table-inverse tfoot th {
   border-color: #666;
 }
 
