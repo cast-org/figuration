@@ -12,6 +12,7 @@
     user-select: none;
     border: $input-border-width solid transparent;
     @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
+    @include box-shadow($btn-box-shadow, 0 0 transparent);
     @include transition($btn-transition);
 
     @include hover-focus {
@@ -20,7 +21,12 @@
 
     &:focus,
     &.focus {
-        box-shadow: $btn-focus-box-shadow;
+        outline: 0;
+        @if $enable-shadows {
+            box-shadow: $btn-box-shadow, $btn-focus-box-shadow;
+        } @else {
+            box-shadow: $btn-focus-box-shadow;
+        }
     }
 
     // Disabled comes first so active can restyle
@@ -37,6 +43,18 @@
         // Remove the gradient for the pressed/active state
         background-image: none;
         @include box-shadow($btn-active-box-shadow);
+    }
+
+    &:active,
+    &.active {
+        &:focus,
+        &.focus {
+            @if $enable-shadows {
+                box-shadow: $btn-active-box-shadow, $btn-focus-box-shadow;
+            } @else {
+                box-shadow: $btn-focus-box-shadow;
+            }
+        }
     }
 }
 

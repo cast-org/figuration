@@ -7,7 +7,6 @@
     color: $color;
     background-color: $bg;
     border-color: $border;
-    @include box-shadow($btn-box-shadow);
 
     &:hover {
         color: $hover-color;

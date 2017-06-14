@@ -453,7 +453,7 @@ $btn-padding-x:             .75rem !default;
 $btn-line-height:           1.25 !default;
 $btn-font-weight:           $font-weight-normal !default;
 $btn-box-shadow:            inset 0 .125rem .25rem rgba(255,255,255,.25);
-$btn-focus-box-shadow:      0 0 0 2px rgba(palette-context("primary", 300), .75) !default; // px because simulating outline
+$btn-focus-box-shadow:      0 0 2px 3px rgba(palette-context("info", 300),.75) !default; // px because simulating outline
 $btn-active-box-shadow:     inset 0 .125rem .25rem rgba(0,0,0,.25) !default;
 
 $btn-default-color:         $uibase-500 !default;
@@ -496,7 +496,8 @@ $input-box-shadow:              inset 0 .125rem .125rem rgba(0,0,0,.1) !default;
 $input-focus-color:             $input-color !default;
 $input-focus-bg:                $input-bg !default;
 $input-focus-border-color:      palette-context("info", 300) !default;
-$input-focus-box-shadow:        inset 0 .125rem .125rem rgba(0,0,0,.15) !default;
+$input-focus-box-shadow-outer:  $btn-focus-box-shadow !default;
+$input-focus-box-shadow-inner:  inset 0 .125rem .125rem rgba(0,0,0,.15) !default;
 
 $input-disabled-color:          $disabled-color !default;
 $input-disabled-bg:             $uibase-50 !default;
@@ -593,23 +594,24 @@ $custom-file-text: (
 
 // Switch
 // =====
-$switch-width-multiplier:           4 !default;
-$switch-control-bg:                 $input-bg !default;
-$switch-indicator-bg:               $uibase-200 !default;
+$switch-width-multiplier:               4 !default;
+$switch-control-bg:                     $input-bg !default;
+$switch-indicator-bg:                   $uibase-200 !default;
 
-$switch-active-control-bg:          $uibase-25 !default;
-$switch-active-indicator-bg:        $uibase-300 !default;
+$switch-active-control-bg:              $uibase-25 !default;
+$switch-active-indicator-bg:            $uibase-300 !default;
 
-$switch-focus-control-border-color: $input-focus-border-color !default;
-$switch-focus-control-box-shadow:   $input-focus-box-shadow !default;
+$switch-focus-control-border-color:     $input-focus-border-color !default;
+$switch-focus-control-box-shadow-outer: $input-focus-box-shadow-outer !default;
+$switch-focus-control-box-shadow-inner: $input-focus-box-shadow-inner !default;
 
-$switch-disabled-control-bg:        $input-disabled-bg !default;
-$switch-disabled-description-color: $uibase-400 !default;
-$switch-disabled-cursor:            $cursor-disabled !default;
-$switch-disabled-opacity:           .6 !default;
+$switch-disabled-control-bg:            $input-disabled-bg !default;
+$switch-disabled-description-color:     $uibase-400 !default;
+$switch-disabled-cursor:                $cursor-disabled !default;
+$switch-disabled-opacity:               .6 !default;
 
-$switch-indicator-box-shadow:       $btn-box-shadow !default;
-$switch-active-indicator-box-shadow: $btn-active-box-shadow !default;
+$switch-indicator-box-shadow:           $btn-box-shadow !default;
+$switch-active-indicator-box-shadow:    $btn-active-box-shadow !default;
 
 
 // Progress bars

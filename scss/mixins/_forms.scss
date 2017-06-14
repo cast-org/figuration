@@ -24,7 +24,11 @@
 
         &:focus {
             border-color: $border-hover;
-            @include box-shadow($input-focus-box-shadow);
+            @if ($enable-shadows) {
+                box-shadow: $input-focus-box-shadow-inner, $input-focus-box-shadow-outer;
+            } @else {
+                box-shadow: $input-focus-box-shadow-outer;
+            }
         }
     }
 
@@ -54,6 +58,10 @@
         background-color: $input-focus-bg;
         border-color: $input-focus-border-color;
         outline: none;
-        @include box-shadow($input-focus-box-shadow);
+        @if ($enable-shadows) {
+            box-shadow: $input-focus-box-shadow-inner, $input-focus-box-shadow-outer;
+        } @else {
+            box-shadow: $input-focus-box-shadow-outer;
+        }
     }
 }

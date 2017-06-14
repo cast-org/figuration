@@ -17,7 +17,7 @@
     border: $input-border-width solid $input-border-color;
     // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
     @include border-radius($input-border-radius);
-    @include box-shadow($input-box-shadow);
+    @include box-shadow($input-box-shadow, 0 0 transparent);
     @include transition($input-transition);
 
     // Unstyle the caret on `<select>`s in IE10+.
@@ -34,6 +34,15 @@
         color: $input-placeholder-color;
         // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
         opacity: 1;
+    }
+
+    &:focus,
+    &.focus {
+        @if ($enable-shadows) {
+            box-shadow: $input-focus-box-shadow-inner, $input-focus-box-shadow-outer;
+        } @else {
+            box-shadow: $input-focus-box-shadow-outer;
+        }
     }
 
     // Disabled and read-only inputs

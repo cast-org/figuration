@@ -138,7 +138,7 @@
     } @else {
         border-radius: 0;
     }
-    @include box-shadow($input-box-shadow);
+    @include box-shadow($input-box-shadow, 0 0 transparent);
     @include transition($input-transition);
     appearance: none;
 
@@ -147,7 +147,12 @@
         background-color: $input-focus-bg;
         border-color: $input-focus-border-color;
         outline: none;
-        @include box-shadow($input-focus-box-shadow);
+
+        @if ($enable-shadows) {
+            box-shadow: $input-focus-box-shadow-inner, $input-focus-box-shadow-outer;
+        } @else {
+            box-shadow: $input-focus-box-shadow-outer;
+        }
 
         &::-ms-value {
             // For visual consistency with other platforms/browsers,
@@ -212,7 +217,11 @@
 
     &:focus ~ .custom-file-control {
         border-color: $input-focus-border-color;
-        @include box-shadow($input-focus-box-shadow);
+        @if ($enable-shadows) {
+            box-shadow: $input-focus-box-shadow-inner, $input-focus-box-shadow-outer;
+        } @else {
+            box-shadow: $input-focus-box-shadow-outer;
+        }
     }
 }
 
@@ -233,7 +242,7 @@
     background-clip: padding-box;
     border: $input-border-width solid $input-border-color;
     @include border-radius($input-border-radius);
-    @include box-shadow($input-box-shadow);
+    @include box-shadow($input-box-shadow, 0 0 transparent);
     @include transition($input-transition);
 
     @each $lang, $text in map-get($custom-file-text, placeholder) {
@@ -279,7 +288,7 @@
     border: $input-border-width solid $input-border-color;
 
     @include border-radius($input-border-radius);
-    @include box-shadow($input-box-shadow);
+    @include box-shadow($input-box-shadow, 0 0 transparent);
     @include transition($input-transition);
 
     @include form-control-focus();
