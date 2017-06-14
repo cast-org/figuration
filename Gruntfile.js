@@ -330,7 +330,7 @@ module.exports = function(grunt) {
                     throttled: 3,
                     maxRetries: 3,
                     maxPollRetries: 4,
-                    urls: ['http://127.0.0.1:3000/test/js/index.html?hidepassed'],
+                    urls: ['http://localhost:3000/test/js/index.html?hidepassed'],
                     browsers: grunt.file.readYAML('grunt/sauce_browsers.yml'),
                     sauceConfig: {
                         'video-upload-on-pass': false
