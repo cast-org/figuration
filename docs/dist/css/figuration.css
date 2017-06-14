@@ -1042,6 +1042,7 @@ pre code {
   background-color: #fff;
   border-color: #70b0d6;
   outline: none;
+  box-shadow: 0 0 2px 3px rgba(112, 176, 214, 0.75);
 }
 
 .form-control::-webkit-input-placeholder {
@@ -1062,6 +1063,10 @@ pre code {
 .form-control::placeholder {
   color: #999;
   opacity: 1;
+}
+
+.form-control:focus, .form-control.focus {
+  box-shadow: 0 0 2px 3px rgba(112, 176, 214, 0.75);
 }
 
 .form-control:disabled, .form-control[readonly] {
@@ -1263,6 +1268,7 @@ fieldset[disabled] .form-check-label {
 .has-success .custom-select:focus,
 .has-success .custom-file-control:focus {
   border-color: #0f7f16;
+  box-shadow: 0 0 2px 3px rgba(112, 176, 214, 0.75);
 }
 
 .has-success .input-group-addon {
@@ -1292,6 +1298,7 @@ fieldset[disabled] .form-check-label {
 .has-warning .custom-select:focus,
 .has-warning .custom-file-control:focus {
   border-color: #ba7e00;
+  box-shadow: 0 0 2px 3px rgba(112, 176, 214, 0.75);
 }
 
 .has-warning .input-group-addon {
@@ -1321,6 +1328,7 @@ fieldset[disabled] .form-check-label {
 .has-danger .custom-select:focus,
 .has-danger .custom-file-control:focus {
   border-color: #b91b0d;
+  box-shadow: 0 0 2px 3px rgba(112, 176, 214, 0.75);
 }
 
 .has-danger .input-group-addon {
@@ -1586,6 +1594,7 @@ fieldset[disabled] .form-check-label {
   background-color: #fff;
   border-color: #70b0d6;
   outline: none;
+  box-shadow: 0 0 2px 3px rgba(112, 176, 214, 0.75);
 }
 
 .custom-select:focus::-ms-value {
@@ -1653,6 +1662,7 @@ fieldset[disabled] .form-check-label {
 
 .custom-file-input:focus ~ .custom-file-control {
   border-color: #70b0d6;
+  box-shadow: 0 0 2px 3px rgba(112, 176, 214, 0.75);
 }
 
 .custom-file-control {
@@ -1723,6 +1733,7 @@ fieldset[disabled] .form-check-label {
   background-color: #fff;
   border-color: #70b0d6;
   outline: none;
+  box-shadow: 0 0 2px 3px rgba(112, 176, 214, 0.75);
 }
 
 .btn {
@@ -1750,7 +1761,8 @@ fieldset[disabled] .form-check-label {
 }
 
 .btn:focus, .btn.focus {
-  box-shadow: 0 0 0 2px rgba(113, 142, 214, 0.75);
+  outline: 0;
+  box-shadow: 0 0 2px 3px rgba(112, 176, 214, 0.75);
 }
 
 .btn.disabled, .btn:disabled {
@@ -1761,6 +1773,10 @@ fieldset[disabled] .form-check-label {
 .btn:active, .btn.active,
 .open > .btn.dropdown-toggle {
   background-image: none;
+}
+
+.btn:active:focus, .btn:active.focus, .btn.active:focus, .btn.active.focus {
+  box-shadow: 0 0 2px 3px rgba(112, 176, 214, 0.75);
 }
 
 a.btn.disabled,
@@ -6052,6 +6068,7 @@ a.badge:focus, a.badge:hover {
 
 .switch-input:focus ~ .switch-control {
   border-color: #70b0d6;
+  box-shadow: 0 0 2px 3px rgba(112, 176, 214, 0.75);
 }
 
 .switch-input:disabled ~ .switch-control {
