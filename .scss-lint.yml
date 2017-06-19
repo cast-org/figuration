@@ -149,11 +149,11 @@ linters:
       - flex-wrap
       - flex-flow
       - flex-grow
-      - flex-order
       - flex-pack
       - align-items
       - align-self
       - justify-content
+      - order
       - float
       - width
       - min-width
