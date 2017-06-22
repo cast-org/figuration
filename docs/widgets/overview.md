@@ -51,11 +51,22 @@ This is to hopefully reduce the chance of conflicting with other frameworks and 
 
 ## Scoped Initilization
 
-Initizliaing the widgets in AJAX inserted content can be accomplished easily by calling the `$().CFW_Init()` function.  This also happens automatically at page load using `document.body` as the initial scope.
+Initializing the widgets in AJAX inserted content can be accomplished easily by calling the `$().CFW_Init()` function.  Widgets set with data attributes on both the specified element, and it's descendants, will be initialized.
+
+This function that also called at page load using `document.body` as the initial scope.
 
 {% highlight js %}
 $("#myContainer").CFW_Init();
 // Where '#myContainer' is the region of new content to initialize the Figuration widgets.
+{% endhighlight %}
+
+## Scoped Dispose
+
+In those cases where you are need to call the `dispose` method on every Figuration widget for a given region, you can use the `$().CFW_Dispose()` function.  Any widget encountered on the specified element, and it's descendants, will have their `dispose` methods invoked.
+
+{% highlight js %}
+$("#myContainer").CFW_Dispose();
+// Where '#myContainer' is the region to `dispose` of Figuration widgets.
 {% endhighlight %}
 
 ## Data Attributes
