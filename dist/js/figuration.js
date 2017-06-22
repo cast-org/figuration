@@ -1648,7 +1648,6 @@ if (typeof jQuery === 'undefined') {
 
     var CFW_Widget_Affix = function(element, options) {
         this.$element = $(element);
-        this.$window = $(window);
         this.$target = null;
         this.affixed = null;
         this.unpin = null;
@@ -1674,7 +1673,7 @@ if (typeof jQuery === 'undefined') {
 
             // Bind events
             this.$target = $(this.settings.target)
-                .on('scroll.cfw.affix)',  $.proxy(this.checkPosition, this))
+                .on('scroll.cfw.affix',  $.proxy(this.checkPosition, this))
                 .on('click.cfw.affix',  $.proxy(this.checkPositionDelayed, this));
 
             this.$element.CFW_trigger('init.cfw.affix');
@@ -1761,13 +1760,13 @@ if (typeof jQuery === 'undefined') {
         },
 
         dispose : function() {
+            this.$target
+                .off('.cfw.affix');
             this.$element
-                .off('.cfw.affix')
                 .removeClass(CFW_Widget_Affix.RESET)
                 .removeData('cfw.affix');
 
             this.$element = null;
-            this.$window = null;
             this.$target = null;
             this.affixed = null;
             this.unpin = null;
@@ -3858,7 +3857,7 @@ if (typeof jQuery === 'undefined') {
         this.activeTarget = null;
         this.scrollHeight = 0;
 
-        var parsedData = this.$scrollElement.CFW_parseData('scrollspy', CFW_Widget_Scrollspy.DEFAULTS);
+        var parsedData = this.$element.CFW_parseData('scrollspy', CFW_Widget_Scrollspy.DEFAULTS);
         this.settings = $.extend({}, CFW_Widget_Scrollspy.DEFAULTS, parsedData, options);
 
         this._init();
@@ -6845,61 +6844,50 @@ if (typeof jQuery === 'undefined') {
 (function($) {
     'use strict';
 
-    $.fn.CFW_Init = function() {
-        var $scope = $(this);
-        if (!$scope) { $scope = $(document.body); }
+    var cfwList = {
+        '[data-cfw-dismisss="alert"]': 'CFW_Alert',
+        '[data-cfw="button"]': 'CFW_Button',
+        '[data-cfw="collapse"]': 'CFW_Collapse',
+        '[data-cfw="dropdown"]': 'CFW_Dropdown',
+        '[data-cfw="tab"]': 'CFW_Tab',
+        '[data-cfw="tooltip"]': 'CFW_Tooltip',
+        '[data-cfw="popover"]': 'CFW_Popover',
+        '[data-cfw="modal"]': 'CFW_Modal',
+        '[data-cfw="affix"]': 'CFW_Affix',
+        '[data-cfw="tabResponsive"]': 'CFW_TabResponsive',
+        '[data-cfw="accordion"]': 'CFW_Accordion',
+        '[data-cfw="slideshow"]': 'CFW_Slideshow',
+        '[data-cfw="scrollspy"]': 'CFW_Scrollspy',
+        '[data-cfw="lazy"]': 'CFW_Lazy',
+        '[data-cfw="slider"]': 'CFW_Slider',
+        '[data-cfw="equalize"]': 'CFW_Equalize',
+        '[data-cfw="player"]': 'CFW_Player'
+    };
 
-        $('[data-cfw-dismisss="alert"]', $scope).each(function() {
-            $(this).CFW_Alert();
-        });
-        $('[data-cfw^="button"]', $scope).each(function() {
-            $(this).CFW_Button();
-        });
-        $('[data-cfw="collapse"]', $scope).each(function() {
-            $(this).CFW_Collapse();
-        });
-        $('[data-cfw="dropdown"]', $scope).each(function() {
-            $(this).CFW_Dropdown();
-        });
-        $('[data-cfw="tab"]', $scope).each(function() {
-            $(this).CFW_Tab();
-        });
-        $('[data-cfw="tooltip"]', $scope).each(function() {
-            $(this).CFW_Tooltip();
-        });
-        $('[data-cfw="popover"]', $scope).each(function() {
-            $(this).CFW_Popover();
-        });
-        $('[data-cfw="modal"]', $scope).each(function() {
-            $(this).CFW_Modal();
-        });
-        $('[data-cfw="affix"]', $scope).each(function() {
-            $(this).CFW_Affix();
-        });
-        $('[data-cfw="tabResponsive"]', $scope).each(function() {
-            $(this).CFW_TabResponsive();
-        });
-        $('[data-cfw="accordion"]', $scope).each(function() {
-            $(this).CFW_Accordion();
-        });
-        $('[data-cfw="slideshow"]', $scope).each(function() {
-            $(this).CFW_Slideshow();
-        });
-        $('[data-cfw="scrollspy"]', $scope).each(function() {
-            $(this).CFW_Scrollspy();
-        });
-        $('[data-cfw="lazy"]', $scope).each(function() {
-            $(this).CFW_Lazy();
-        });
-        $('[data-cfw="slider"]', $scope).each(function() {
-            $(this).CFW_Slider();
-        });
-        $('[data-cfw="equalize"]', $scope).each(function() {
-            $(this).CFW_Equalize();
-        });
-        $('[data-cfw="player"]', $scope).each(function() {
-            $(this).CFW_Player();
-        });
+    $.fn.CFW_Init = function() {
+        /* jshint -W083 */
+        var $scope = $(this);
+        if (!$scope.length) { $scope = $(document.body); }
+
+        for (var key in cfwList) {
+            $scope.find(key).add($scope.filter(key)).each(function() {
+                $(this)[cfwList[key]]();
+            });
+        }
+        return this;
+    };
+
+    $.fn.CFW_Dispose = function() {
+        /* jshint -W083 */
+        var $scope = $(this);
+        if (!$scope.length) { $scope = $(document.body); }
+
+        for (var key in cfwList) {
+            $scope.find(key).add($scope.filter(key)).each(function() {
+                $(this)[cfwList[key]]('dispose');
+            });
+        }
+        return this;
     };
 
     $(window).ready(function() {
