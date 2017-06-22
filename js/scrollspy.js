@@ -18,7 +18,7 @@
         this.activeTarget = null;
         this.scrollHeight = 0;
 
-        var parsedData = this.$scrollElement.CFW_parseData('scrollspy', CFW_Widget_Scrollspy.DEFAULTS);
+        var parsedData = this.$element.CFW_parseData('scrollspy', CFW_Widget_Scrollspy.DEFAULTS);
         this.settings = $.extend({}, CFW_Widget_Scrollspy.DEFAULTS, parsedData, options);
 
         this._init();
