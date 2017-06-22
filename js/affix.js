@@ -10,7 +10,6 @@
 
     var CFW_Widget_Affix = function(element, options) {
         this.$element = $(element);
-        this.$window = $(window);
         this.$target = null;
         this.affixed = null;
         this.unpin = null;
@@ -36,7 +35,7 @@
 
             // Bind events
             this.$target = $(this.settings.target)
-                .on('scroll.cfw.affix)',  $.proxy(this.checkPosition, this))
+                .on('scroll.cfw.affix',  $.proxy(this.checkPosition, this))
                 .on('click.cfw.affix',  $.proxy(this.checkPositionDelayed, this));
 
             this.$element.CFW_trigger('init.cfw.affix');
@@ -123,13 +122,13 @@
         },
 
         dispose : function() {
+            this.$target
+                .off('.cfw.affix');
             this.$element
-                .off('.cfw.affix')
                 .removeClass(CFW_Widget_Affix.RESET)
                 .removeData('cfw.affix');
 
             this.$element = null;
-            this.$window = null;
             this.$target = null;
             this.affixed = null;
             this.unpin = null;
