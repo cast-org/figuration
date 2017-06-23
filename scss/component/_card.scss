@@ -159,7 +159,7 @@
         margin-bottom: $card-spacer-y; // 1
 
         .card {
-            flex: 1 0 0;
+            flex: 1 0 0%;
             margin-bottom: 0; // 1
         }
     }
@@ -193,7 +193,7 @@
         margin-bottom: $card-spacer-y; // 1
 
         .card {
-            flex: 1 0 0;
+            flex: 1 0 0%;
             margin-bottom: 0; // 1
 
             + .card {

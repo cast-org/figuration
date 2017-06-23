@@ -55,7 +55,7 @@
         // Sizing
         .flex#{$bprule}-fill { flex: 1 1 auto !important; }
         .flex#{$bprule}-grow { flex: 1 0 auto !important; }
-        .flex#{$bprule}-shrink { flex: 0 1 0 !important; }
+        .flex#{$bprule}-shrink { flex: 0 1 0% !important; }
         .flex#{$bprule}-none { flex: none !important; }
     }
 }
