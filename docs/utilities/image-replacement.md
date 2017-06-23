@@ -21,25 +21,12 @@ Hiding the text and showing an image replacement is easily done using a `backgro
 Below is an example of using the `text-hide()` mixin in your Sass.
 
 <div class="cf-example">
-<style>
-.heading {
-  width : 3rem;
-  height: 3rem;
-  background-image: url('{{ site.baseurl}}/assets/brand/figuration-solid.svg');
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
-</style>
-
-<h1 class="heading">CAST Figuration</h1>
+    <h1 class="heading">CAST Figuration</h1>
 </div>
 {% highlight scss html %}
 // Usage as a mixin
 .heading {
-  width : 3rem;
+  width: 3rem;
   height: 3rem;
   background-image: url('{{ site.baseurl}}/assets/brand/figuration-solid.svg');
 
