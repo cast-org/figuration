@@ -36,10 +36,12 @@
 <script type="text/javascript">
 
 $(window).ready(function() {
+    /*
     $('body').CFW_Scrollspy({
         target: '.sidebar',
         offset: 25
     });
+    */
     var $sideBar = $('.sidebar');
     $sideBar.CFW_Affix({
         top:
@@ -161,7 +163,7 @@ $(window).ready(function() {
 </style>
 
 </head>
-<body>
+<body data-cfw="scrollspy" data-cfw-scrollspy-target=".sidebar">
 <header>
     <div class="navbar bg-inverse mb-1">
         <div class="container">
