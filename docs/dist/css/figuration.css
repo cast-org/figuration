@@ -8951,11 +8951,13 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   z-index: 1020;
 }
 
-.sticky-top {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 1010;
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .sticky-top {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1010;
+  }
 }
 
 .sr-only {
