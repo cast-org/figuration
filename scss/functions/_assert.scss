@@ -1,3 +1,5 @@
+// Ascending
+// Used to evaluate grid breakpoint Sass map.
 @mixin _assert-ascending($map, $map-type, $map-name) {
     $prev-key: null;
     $prev-num: null;
@@ -21,6 +23,8 @@
     }
 }
 
+// Starts at zero
+// Grid related mixin that ensures the min-width of the lowest breakpoint starts at 0.
 @mixin _assert-starts-at-zero($map) {
     $values: map-values($map);
     $first-value: nth($values, 1);
