@@ -19,11 +19,6 @@ Every Sass variable in Figuration includes the !default flag, meaning you can ov
 For example, to change out the `background-color` and `color` for the `<body>`, you'd do the following:
 
 {% highlight scss %}
-// Custom settings
-//
-// Copy settings from `_settings.scss` to this file to override the defaults.
-// This allows for customization without changing core files.
-
 $body-bg:    $gray-900;
 $body-color: $gray-100;
 {% endhighlight %}
