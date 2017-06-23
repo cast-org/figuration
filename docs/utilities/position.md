@@ -38,6 +38,8 @@ Position an element at the bottom of the viewport, from edge to edge.
 
 Position an element at the top of the viewport, from edge to edge, but only after you scroll past it.
 
+**Microsoft Edge and IE11 will render `position: sticky` as `position: relative`.** As such, we wrap the styles in a `@supports` query, limiting the stickiness to only browsers that properly can render it.
+
 {% highlight html %}
 <div class="sticky-top">...</div>
 {% endhighlight %}
