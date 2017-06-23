@@ -1,8 +1,3 @@
-// Default settings
-//
-// Copy settings from this file into the provided `_custom.scss` to override the defaults.
-// This allows for customization without changing core files.
-
 // Root font size
 // =====
 // Pixel value used to responsively scale all typography. Applied to the `<html>` element.
@@ -98,6 +93,32 @@ $level-bg-hover-delta:       200 !default;
 $brand-themes: _mix-context-colors($context-colors);
 // Merge into master themes map
 $context-themes: map-merge($context-themes, $brand-themes);
+
+// Sample of adding more colors using a mixing function
+// $custom-context: (
+//     "purple": #990099,
+//     "aqua":   #00ffff
+// );
+// Process custom colors into context color variants
+// $custom-themes: _mix-context-colors($custom-context);
+// Merge into master context themes map
+// $context-themes: map-merge($context-themes, $custom-themes);
+
+// Adding a single color map
+// $single-color: (
+//     "purple": (
+//         "control-color":        #fff,
+//         "control-bg":           #990099,
+//         "control-border":       #800080,
+//         "control-hover-color":  #fff,
+//         "control-hover-bg":     #770077,
+//         "control-hover-border": #660066,
+//         "context-color":        #990099,
+//         "context-bg":           #ffb3ff,
+//         "context-border":       #ff29ff
+//     )
+// );
+// $context-themes: map-merge($context-themes, $single-color);
 
 
 // Inverse Color

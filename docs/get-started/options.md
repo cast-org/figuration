@@ -4,7 +4,7 @@ title: Customization Options
 group: get-started
 ---
 
-Customize Figuration with our built-in custom variables file and easily toggle global CSS preferences with new `$enable-*` Sass variables. Override a variable's value and recompile with the included Gruntfile as needed.
+Customize Figuration using Sass variables for global style preferences, easy theming, and component adjustments.
 
 ## Contents
 {:.no_toc}
@@ -14,7 +14,7 @@ Customize Figuration with our built-in custom variables file and easily toggle g
 
 ## Customizing Variables
 
-Figuration ships with a `/scss/_custom.scss` file for an easy method of overriding the default variables found in `/scss/_settings.scss`. Copy and paste relevant lines from `/scss/_settings.scss` into the `/scss/_custom.scss` file, modify the values, and recompile your Sass to change our default values. **Be sure to remove the `!default` flag from override values.**
+Every Sass variable in Figuration includes the !default flag, meaning you can override that default value in your own Sass even after that original variable's been defined. Copy and paste variables as needed, modify the values, remove the !default flag, and recompile with the included [build tools]({{ site.baseurl }}/get-started/build-tools/) as needed.
 
 For example, to change out the `background-color` and `color` for the `<body>`, you'd do the following:
 

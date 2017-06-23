@@ -16,7 +16,7 @@ Rules are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<object>` e
 </div>
 {% endexample %}
 
-By default the aspect ratio is set to 16:9, this can be customized by overriding the `$embed-ratio` variable by copying it into your `/scss/_custom.scss` file.  Also, the aspect ratios can be customized with the included modifier classes.
+By default the aspect ratio is set to 16:9, this can be customized by overriding the `$embed-ratio` settings variable.  Also, the aspect ratios can be customized with the included modifier classes.
 
 {% highlight html %}
 <!-- 21:9 aspect ratio -->
