@@ -26,6 +26,8 @@ gems:
 current_version:  3.0.0-alpha.3
 repo:             https://github.com/cast-org/figuration
 changelog:        https://github.com/cast-org/figuration/releases/tag/v3.0.0-alpha.3
+twitter:          https://twitter.com/figuration_org
+
 
 # Downloads
 download:

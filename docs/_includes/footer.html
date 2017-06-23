@@ -1,7 +1,9 @@
 <footer class="cf-footer">
     <div class="container">
-        Current version: {{ site.current_version }}
-        <ul class="footer-links">
+        <p class="mb-0">
+            Current version: {{ site.current_version }}
+        </p>
+        <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="https://github.com/cast-org/figuration">GitHub Project</a></li>
             <li><a href="https://github.com/cast-org/figuration/issues">Issues</a></li>
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
@@ -19,7 +21,7 @@
 
         <p class="font-weight-bold mb-0_25">Funding generously provided by:</p>
         <div class="media footer-partners">
-            <div class="media-left">
+            <div class="d-flex mr-0_5">
                 <img src="{{ site.baseurl }}/assets/img/aem-logo.png" class="media-object" width="40" height="40" alt="AEM logo" />
             </div>
             <div class="media-body">
@@ -30,14 +32,3 @@
 
     </div>
 </footer>
-
-{% if site.github %}
-<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
-<script>
-docsearch({
-    apiKey: '3b9b6e000775400f4833a14c4daa6049',
-    indexName: 'figuration',
-    inputSelector: '#docsearch'
-});
-</script>
-{% endif %}

@@ -566,7 +566,7 @@ Move columns to the right using `.offset-*` classes. These classes increase the 
 {% endexample %}
 </div>
 
-### Push an Pull
+### Push and Pull
 
 Easily change the order of our built-in grid columns with `.push-*` and `.pull-*` modifier classes.
 

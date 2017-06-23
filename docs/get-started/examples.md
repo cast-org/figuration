@@ -8,6 +8,12 @@ Get a project underway with examples showing concepts from basic framework compo
 
 [Download the source code]({{ site.baseurl }}/get-started/download/) to get all the files used in the examples.  They can be found in the `docs/examples/` directory.
 
+## Contents
+{:.no_toc}
+
+* ToC goes here
+{:toc}
+
 ## The Basics
 
 Examples focusing on the use of the standard components.

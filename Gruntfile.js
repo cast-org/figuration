@@ -276,6 +276,7 @@ module.exports = function(grunt) {
                 ignore: [
                     'Attribute "autocomplete" is only allowed when the input type is "color", "date", "datetime", "datetime-local", "email", "hidden", "month", "number", "password", "range", "search", "tel", "text", "time", "url", or "week".',
                     'Attribute "autocomplete" not allowed on element "button" at this point.',
+                    'Attribute "focusable" not allowed on element "svg" at this point.',
                     'Consider using the "h1" element as a top-level heading only (all "h1" elements are treated as top-level headings by many screen readers and other tools).',
                     'Element "div" not allowed as child of element "progress" in this context. (Suppressing further errors from this subtree.)',
                     'Element "img" is missing required attribute "src".',

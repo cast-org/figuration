@@ -106,6 +106,28 @@ function rgb2hex(rgb) {
     return '#' + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
 }
 
+function sectionToc() {
+    var $toc = $('#markdown-toc');
+    if (!$toc.length) { return; }
+
+    var $clone = $toc.clone();
+    $clone.find('ul li').addClass('section-toc-h3');
+    $clone.find('ul ul li').addClass('section-toc-h4').removeClass('section-toc-h3');
+    $clone.find('ul ul ul li').addClass('section-toc-h5').removeClass('section-toc-h4');
+    $clone.find('a').removeAttr('id');
+
+    // Ouput new section toc
+    var $section = $('<ul class="section-toc"></ul>');
+    var $items = $clone.find('li');
+    $section.append($items);
+    $('.cf-toc').append($section);
+
+    // Add scrollspy here - using <body> data attributes comes too early
+    $('body').CFW_Scrollspy({
+        target: '.section-toc'
+    });
+}
+
 // Direction for player dropdown menus
 $(document, '[data-cfw="player"]').on('ready.cfw.player', function(e) {
     $(e.target).closest('[data-cfw="player"]').find('.player-caption-wrapper').addClass('dropup dropdown-menu-left');
@@ -117,6 +139,7 @@ $(window).ready(function() {
     addClipboard();
     topLinkAffix();
     paletteHex();
+    sectionToc();
 
     // Indeterminate checkbox example
     $('.cf-example-indeterminate [type="checkbox"]').prop('indeterminate', true);
@@ -129,5 +152,5 @@ $(window).ready(function() {
     // Toggle animated progress bar
     $('.cf-toggle-animated-progress').on('click', function() {
         $(this).siblings('.progress').find('.progress-bar-striped').toggleClass('progress-bar-animated');
-    })
+    });
 });

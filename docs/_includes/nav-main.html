@@ -1,44 +1,60 @@
 <header class="navbar navbar-expand-lg navbar-dark print-hide cf-header">
-    <nav class="container">
-        <a class="navbar-brand" href="{{ site.baseurl }}/">CAST Figuration</a>
-        <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
-            <span class="icon-menu" aria-hidden="true">&#8801;</span>
-        </button>
-        <div class="navbar-collapse collapse" id="cf-topnav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="{{ site.baseurl }}/get-started/quick-start/" class="nav-link {% if page.group == "get-started" %}active{% endif %}">Get Started</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ site.baseurl }}/layout/overview/" class="nav-link {% if page.group == "layout" %}active{% endif %}">Layout</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ site.baseurl }}/content/reboot/" class="nav-link {% if page.group == "content" %}active{% endif %}">Content</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ site.baseurl }}/components/alerts/" class="nav-link {% if page.group == "components" %}active{% endif %}">Components</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ site.baseurl }}/utilities/borders/" class="nav-link {% if page.group == "utilities" %}active{% endif %}">Utilities</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ site.baseurl }}/widgets/overview/" class="nav-link {% if page.group == "widgets" %}active{% endif %}">Widgets</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ site.baseurl }}/about/overview/" class="nav-link {% if page.group == "about" %}active{% endif %}">About</a>
-                </li>
-            </ul>
-            {% if site.github %}
-            <div class="my-0_5 mt-lg-0_25 mb-lg-0 ml-lg-auto">
-                <form class="form-inline docsearch-wrapper">
-                    <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
-                </form>
-            </div>
-            {% else %}
-            <div class="navbar-nav ml-lg-auto">
-                <a href="{{ site.repo }}" class="nav-link"><small>GitHub</small></a>
-            </div>
-            {% endif %}
+    <a class="navbar-brand" href="{{ site.baseurl }}/" aria-label="CAST Figuration">
+        <img src="{{ site.baseurl }}/assets/brand/figuration-outline.svg" class="navbar-brand-logo" alt="" />
+        <span class="sr-only-xs-down">CAST Figuration</span>
+    </a>
+    <button class="navbar-toggle flex-first mr-0_5" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
+        <span class="cf-header-menu" aria-hidden="true">&#8801;</span>
+    </button>
+    <div class="navbar-collapse collapse flex-last flex-lg-unordered" id="cf-topnav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="{{ site.baseurl }}/get-started/quick-start/" class="nav-link {% if page.group == "get-started" %}active{% endif %}">Get Started{% if page.group == "get-started" %} <span class="sr-only">(current section)</span>{% endif %}</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ site.baseurl }}/layout/overview/" class="nav-link {% if page.group == "layout" %}active{% endif %}">Layout{% if page.group == "layout" %} <span class="sr-only">(current section)</span>{% endif %}</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ site.baseurl }}/content/reboot/" class="nav-link {% if page.group == "content" %}active{% endif %}">Content{% if page.group == "content" %} <span class="sr-only">(current section)</span>{% endif %}</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ site.baseurl }}/components/alerts/" class="nav-link {% if page.group == "components" %}active{% endif %}">Components{% if page.group == "components" %} <span class="sr-only">(current section)</span>{% endif %}</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ site.baseurl }}/utilities/borders/" class="nav-link {% if page.group == "utilities" %}active{% endif %}">Utilities{% if page.group == "utilities" %} <span class="sr-only">(current section)</span>{% endif %}</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ site.baseurl }}/widgets/overview/" class="nav-link {% if page.group == "widgets" %}active{% endif %}">Widgets{% if page.group == "widgets" %} <span class="sr-only">(current section)</span>{% endif %}</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ site.baseurl }}/about/overview/" class="nav-link {% if page.group == "about" %}active{% endif %}">About{% if page.group == "about" %} <span class="sr-only">(current section)</span>{% endif %}</a>
+            </li>
+        </ul>
+
+        {% if site.github %}
+        <div class="my-0_5 mt-lg-0_25 mb-lg-0 ml-lg-auto">
+            <form class="form-inline docsearch-wrapper">
+                <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
+            </form>
         </div>
-    </nav> <!-- /.container -->
+        {% endif %}
+    </div>
+
+    <ul class="navbar-nav ml-auto cf-header-social">
+        <li class="nav-item">
+            <a href="{{ site.twitter }}" class="nav-link" aria-label="Twitter">
+                {% include icons/twitter.svg class="cf-header-icon" %}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ site.repo }}" class="nav-link" aria-label="Github">
+                {% include icons/github.svg class="cf-header-icon" %}
+            </a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline docsearch-wrapper">
+                <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
+            </form>
+        </li>
+    </ul>
 </header>
