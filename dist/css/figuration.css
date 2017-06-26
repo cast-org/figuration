@@ -4,228 +4,6 @@
  * Copyright 2013-2017 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  */
-/*! normalize.css v6.0.0 | MIT License | github.com/necolas/normalize.css */
-html {
-  line-height: 1.15;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-
-article,
-aside,
-footer,
-header,
-nav,
-section {
-  display: block;
-}
-
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
-figcaption,
-figure,
-main {
-  display: block;
-}
-
-figure {
-  margin: 1em 40px;
-}
-
-hr {
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible;
-}
-
-pre {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-a {
-  background-color: transparent;
-  -webkit-text-decoration-skip: objects;
-}
-
-abbr[title] {
-  border-bottom: none;
-  text-decoration: underline;
-  text-decoration: underline dotted;
-}
-
-b,
-strong {
-  font-weight: inherit;
-}
-
-b,
-strong {
-  font-weight: bolder;
-}
-
-code,
-kbd,
-samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-
-dfn {
-  font-style: italic;
-}
-
-mark {
-  background-color: #ff0;
-  color: #000;
-}
-
-small {
-  font-size: 80%;
-}
-
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-audio,
-video {
-  display: inline-block;
-}
-
-audio:not([controls]) {
-  display: none;
-  height: 0;
-}
-
-img {
-  border-style: none;
-}
-
-svg:not(:root) {
-  overflow: hidden;
-}
-
-button,
-input,
-optgroup,
-select,
-textarea {
-  margin: 0;
-}
-
-button,
-input {
-  overflow: visible;
-}
-
-button,
-select {
-  text-transform: none;
-}
-
-button,
-html [type="button"],
-[type="reset"],
-[type="submit"] {
-  -webkit-appearance: button;
-}
-
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
-}
-
-button:-moz-focusring,
-[type="button"]:-moz-focusring,
-[type="reset"]:-moz-focusring,
-[type="submit"]:-moz-focusring {
-  outline: 1px dotted ButtonText;
-}
-
-legend {
-  box-sizing: border-box;
-  color: inherit;
-  display: table;
-  max-width: 100%;
-  padding: 0;
-  white-space: normal;
-}
-
-progress {
-  display: inline-block;
-  vertical-align: baseline;
-}
-
-textarea {
-  overflow: auto;
-}
-
-[type="checkbox"],
-[type="radio"] {
-  box-sizing: border-box;
-  padding: 0;
-}
-
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-[type="search"] {
-  -webkit-appearance: textfield;
-  outline-offset: -2px;
-}
-
-[type="search"]::-webkit-search-cancel-button,
-[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  font: inherit;
-}
-
-details,
-menu {
-  display: block;
-}
-
-summary {
-  display: list-item;
-}
-
-canvas {
-  display: inline-block;
-}
-
-template {
-  display: none;
-}
-
-[hidden] {
-  display: none;
-}
-
 @media print {
   *,
   *::before,
@@ -307,6 +85,12 @@ template {
 
 html {
   box-sizing: border-box;
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: transparent;
 }
 
 *,
@@ -319,10 +103,18 @@ html {
   width: device-width;
 }
 
-html {
-  font-size: 100%;
-  -ms-overflow-style: scrollbar;
-  -webkit-tap-highlight-color: transparent;
+article,
+aside,
+dialog,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+  display: block;
 }
 
 body {
@@ -332,15 +124,18 @@ body {
   font-weight: normal;
   line-height: 1.5;
   color: #292929;
+  text-align: left;
   background-color: #fff;
-}
-
-dialog {
-  display: block;
 }
 
 [tabindex="-1"]:focus {
   outline: none !important;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -356,9 +151,10 @@ p {
 abbr[title],
 abbr[data-cfw-tooltip-original-title],
 abbr[data-cfw-popover-original-title] {
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration: underline dotted;
   cursor: help;
-  border-bottom: 1px dotted #858585;
+  border-bottom: 0;
 }
 
 address {
@@ -394,9 +190,40 @@ blockquote {
   margin: 0 0 1rem;
 }
 
+dfn {
+  font-style: italic;
+}
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -.25em;
+}
+
+sup {
+  top: -.5em;
+}
+
 a {
   color: #1242ba;
   text-decoration: underline;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
 }
 
 a:hover {
@@ -418,6 +245,14 @@ a:not([href]):not([tabindex]):focus {
   outline: 0;
 }
 
+pre,
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
 pre {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -430,6 +265,11 @@ figure {
 
 img {
   vertical-align: middle;
+  border-style: none;
+}
+
+svg:not(:root) {
+  overflow: hidden;
 }
 
 a,
@@ -447,7 +287,6 @@ textarea {
 
 table {
   border-collapse: collapse;
-  background-color: transparent;
 }
 
 caption {
@@ -459,7 +298,7 @@ caption {
 }
 
 th {
-  text-align: left;
+  text-align: inherit;
 }
 
 label {
@@ -474,23 +313,44 @@ button:focus {
 
 input,
 button,
-optgroup,
 select,
+optgroup,
 textarea {
+  margin: 0;
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  border-radius: 0;
 }
 
-[type="checkbox"] {
-  -webkit-border-radius: 5px;
-  -webkit-appearance: checkbox;
+button,
+input {
+  overflow: visible;
 }
 
-[type="radio"] {
-  -webkit-border-radius: 8px;
-  -webkit-appearance: radio;
+button,
+select {
+  text-transform: none;
+}
+
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  padding: 0;
+  border-style: none;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
 }
 
 input[type="radio"]:disabled,
@@ -506,6 +366,7 @@ input[type="month"] {
 }
 
 textarea {
+  overflow: auto;
   resize: vertical;
 }
 
@@ -519,26 +380,49 @@ fieldset {
 legend {
   display: block;
   width: 100%;
+  max-width: 100%;
   padding: 0;
   margin-bottom: .5rem;
   font-size: 1.5rem;
-  line-height: 1;
+  line-height: inherit;
+  color: inherit;
+  white-space: normal;
 }
 
-legend label {
-  position: relative;
-  top: -.25rem;
-  margin-bottom: -.25rem;
-  font-size: 1rem;
-  line-height: 1.5;
+progress {
+  vertical-align: baseline;
 }
 
-input[type="search"] {
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type="search"] {
+  outline-offset: -2px;
   -webkit-appearance: none;
+}
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  font: inherit;
+  -webkit-appearance: button;
 }
 
 output {
   display: inline-block;
+}
+
+summary {
+  display: list-item;
+}
+
+template {
+  display: none;
 }
 
 [hidden] {
@@ -1105,8 +989,6 @@ textarea.form-control {
 }
 
 .form-control-legend {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
   margin-bottom: 0;
   font-size: 1rem;
 }
@@ -1136,6 +1018,10 @@ textarea.form-control {
   font-size: 0.75rem;
 }
 
+.form-control-legend-xs {
+  font-size: 0.75rem;
+}
+
 .form-control-sm, .input-group-sm > .form-control,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
@@ -1149,6 +1035,10 @@ textarea.form-control {
 .form-control-static-sm {
   padding-top: calc(0.140625rem + 1px);
   padding-bottom: calc(0.140625rem + 1px);
+  font-size: 0.875rem;
+}
+
+.form-control-legend-sm {
   font-size: 0.875rem;
 }
 
@@ -1168,6 +1058,10 @@ textarea.form-control {
   font-size: 1.125rem;
 }
 
+.form-control-legend-lg {
+  font-size: 1.125rem;
+}
+
 .form-control-xl, .input-group-xl > .form-control,
 .input-group-xl > .input-group-addon,
 .input-group-xl > .input-group-btn > .btn {
@@ -1181,6 +1075,10 @@ textarea.form-control {
 .form-control-static-xl {
   padding-top: calc(0.46875rem + 1px);
   padding-bottom: calc(0.46875rem + 1px);
+  font-size: 1.25rem;
+}
+
+.form-control-legend-xl {
   font-size: 1.25rem;
 }
 
