@@ -183,7 +183,7 @@ module.exports = function(grunt) {
                 configFile: '.scss-lint.yml'
             },
             core: {
-                src: ['scss/*.scss', 'scss/**/*.scss', '!scss/base/_normalize.scss']
+                src: ['scss/*.scss', 'scss/**/*.scss']
             },
             docs: {
                 src: ['docs/assets/scss/*.scss']

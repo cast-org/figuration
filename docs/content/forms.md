@@ -70,7 +70,7 @@ Assistive technologies such as screen readers will have trouble with your forms 
     <input type="color" class="form-control-color" value="#117dba" id="exampleInputColor">
   </div>
   <fieldset class="form-group">
-    <legend class="form-control-legend">Radio buttons</legend>
+    <legend>Radio buttons</legend>
     <div class="form-check">
       <label class="form-check-label">
         <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
@@ -92,7 +92,7 @@ Assistive technologies such as screen readers will have trouble with your forms 
   </fieldset>
   <div class="form-check">
     <fieldset>
-      <legend class="form-control-legend">Checkbox</legend>
+      <legend>Checkbox</legend>
       <label class="form-check-label">
         <input type="checkbox" class="form-check-input"> Check me out
       </label>

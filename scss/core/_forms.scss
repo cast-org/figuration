@@ -102,12 +102,9 @@ textarea.form-control {
 }
 
 // Legends
-// For use with horizontal and inline forms, when you need the legend text to
-// be the same size as regular labels, and to align with the form controls.
+// When you need the legend text to be the same size as regular labels.
 .form-control-legend {
-    padding-top: $input-padding-y;
-    padding-bottom: $input-padding-y;
-    margin-bottom: 0;
+    margin-bottom: 0; // Override the `<legend>` default
     font-size: $font-size-base;
 }
 
@@ -153,6 +150,10 @@ textarea.form-control {
             padding-bottom: calc(#{$sz-padding-y} + #{$input-border-width});
             font-size: $sz-font-size;
             //line-height: ($sz-font-size * $input-line-height);
+        }
+
+        .form-control-legend-#{$size} {
+            font-size: $sz-font-size;
         }
     }
 }

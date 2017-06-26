@@ -3,9 +3,6 @@ scss_files:
     - "scss/**/*.scss"
     - "docs/assets/scss/**/*.scss"
 
-exclude:
-  - "scss/base/_normalize.scss"
-
 # Default severity of all linters.
 severity: warning
 

@@ -7,7 +7,7 @@ redirect_from: "/content/"
 
 Part of Figuration's job is to provide an elegant, consistent, and simple baseline to build upon. We use Reboot, a collection of element-specific CSS changes in a single file, to kickstart that.
 
-Borrowed from Bootstrap, Reboot builds upon Normalize, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some `<table>` styles for a simpler baseline and later provide `.table`, `.table-bordered`, and more.
+Borrowed from Bootstrap, Reboot heavily builds upon Normalize.css, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some `<table>` styles for a simpler baseline and later provide `.table`, `.table-bordered`, and more.
 
 ## Contents
 {:.no_toc}
@@ -30,7 +30,7 @@ The `<html>` and `<body>` elements are updated to provide better page-wide defau
 
 - The `box-sizing` is globally set on every element---including `*:before` and `*:after`, to `border-box`. This ensures that the declared width of element is never exceeded due to padding or border.
 - A base `font-size: 100%` (assuming a 16px browser default) is declared on the `<html>` and `font-size: 1rem` on the `<body>` for easy responsive type-scaling via media queries while respecting user preferences allowing for a more accessible approach.
-- The `<body>` also sets a global `font-family` and `line-height`. This is inherited later by some form elements to prevent font inconsistencies.
+- The `<body>` also sets a global `font-family`, `line-height`, and `text-align`. This is inherited later by some form elements to prevent font inconsistencies.
 - For safety, the `<body>` has a declared `background-color`, defaulting to `#fff`.
 
 ## Native Font Stack

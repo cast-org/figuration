@@ -101,9 +101,9 @@ With the above snippet, nested elements---including generated content via `:befo
 
 Learn more about [box model and sizing at CSS Tricks](https://css-tricks.com/box-sizing/).
 
-### Normalize.css
+### Reboot
 
-For improved cross-browser rendering, we use [Normalize.css](http://necolas.github.io/normalize.css/) to correct small inconsistencies across browsers and devices. We further build on this with our own, slightly more opinionated styles with [Reboot]({{ site.baseurl }}/content/reboot/).
+For improved cross-browser rendering, we use [Bootstrap's Reboot](http://v4-alpha.getbootstrap.com/content/reboot/) to correct inconsistencies across browsers and devices while providing slightly more opinionated resets to common HTML elements.
 
 ### MutationObserver
 

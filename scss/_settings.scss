@@ -1,9 +1,3 @@
-// Root font size
-// =====
-// Pixel value used to responsively scale all typography. Applied to the `<html>` element.
-$font-size-root:    100% !default;
-
-
 // Options
 // =====
 // Quickly modify global styling by enabling or disabling optional features.
@@ -274,8 +268,6 @@ $text-light-color:  rgba(255,255,255,.875) !default;
 $text-light-hover:  rgba(255,255,255,1) !default;
 $text-dark-color:   rgba(0,0,0,.875) !default;
 $text-dark-hover:   rgba(0,0,0,1) !default;
-
-$abbr-border-color: $uibase-400 !default;
 
 $mark-padding-x:    .25rem !default;
 $mark-bg:           #ff0 !default;
@@ -595,7 +587,6 @@ $switch-focus-control-border-color:     $input-focus-border-color !default;
 $switch-focus-control-box-shadow-outer: $input-focus-box-shadow-outer !default;
 $switch-focus-control-box-shadow-inner: $input-focus-box-shadow-inner !default;
 
-$switch-disabled-control-bg:            $input-disabled-bg !default;
 $switch-disabled-description-color:     $uibase-400 !default;
 $switch-disabled-cursor:                $cursor-disabled !default;
 $switch-disabled-opacity:               .6 !default;

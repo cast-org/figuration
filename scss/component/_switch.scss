@@ -122,7 +122,7 @@
 // Color variants
 @each $theme, $colors in $context-themes {
     // Lighter variation for consideration
-    //$var-control-bg:          map-get($colors, "context-border");
+    //$var-indicator-bg:        map-get($colors, "context-border");
     //$var-active-control-bg:   map-get($colors, "context-bg");
     //$var-active-indicator-bg: map-get($colors, "control-bg");
 
