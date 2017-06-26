@@ -20,6 +20,17 @@
 .text-uppercase      { text-transform: uppercase !important; }
 .text-capitalize     { text-transform: capitalize !important; }
 
+// Hidden text
+@each $breakpoint in map-keys($grid-breakpoints) {
+    $bprule: breakpoint-designator($breakpoint);
+
+    @include media-breakpoint-up($breakpoint) {
+        .text#{$bprule}-hide {
+            @include text-hide();
+        }
+    }
+}
+
 // Weight and italics
 .font-weight-normal  { font-weight: $font-weight-normal; }
 .font-weight-bold    { font-weight: $font-weight-bold; }
@@ -43,11 +54,6 @@
 
 // Muted text
 @include text-emphasis-variant('.text-muted', $text-muted, $level-color-hover-delta);
-
-// Hidden text
-.text-hide {
-    @include text-hide();
-}
 
 // Special case colors
 // scss-lint:disable QualifyingElement

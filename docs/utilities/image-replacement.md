@@ -8,6 +8,9 @@ Utilize the `.text-hide` class or mixin to help replace an element's text conten
 
 Hiding text with `.text-hide` will keep it accessible to assistive technology users.  `.text-hide` is different from `.sr-only`, where `.text-hide` will hide only the text, and `.sr-only` will hide the entire element.
 
+This utility is also available in responsive variants of the form `.text{-sm|-md|-lg|-xl}-hide`, similar to the other [typography utilities]({{ site.baseurl }}/utilities/typography/).
+
+
 {% highlight html %}
 <h1 class="text-hide">Custom heading</h1>
 {% endhighlight %}
