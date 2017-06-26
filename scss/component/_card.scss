@@ -152,10 +152,14 @@
 // Card deck
 // 1. Individual cards have margin-bottom by default.
 //    Replace with single margin on the deck.
+.card-deck {
+    display: flex;
+    flex-direction: column;
+}
+
 @include media-breakpoint-up(#{$card-deck-breakpoint}) {
     .card-deck {
-        display: flex;
-        flex-wrap: wrap;
+        flex-flow: row wrap;
         margin-bottom: $card-spacer-y; // 1
 
         .card {
@@ -186,9 +190,13 @@
 // Card group
 // 1. Individual cards have margin-bottom by default,
 //    Replace with single margin on the group.
+.card-group {
+    display: flex;
+    flex-direction: column;
+}
+
 @include media-breakpoint-up(#{$card-group-breakpoint}) {
     .card-group {
-        display: flex;
         flex-flow: row wrap;
         margin-bottom: $card-spacer-y; // 1
 
