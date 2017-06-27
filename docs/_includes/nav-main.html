@@ -30,14 +30,6 @@
                 <a href="{{ site.baseurl }}/about/overview/" class="nav-link {% if page.group == "about" %}active{% endif %}">About{% if page.group == "about" %} <span class="sr-only">(current section)</span>{% endif %}</a>
             </li>
         </ul>
-
-        {% if site.github %}
-        <div class="my-0_5 mt-lg-0_25 mb-lg-0 ml-lg-auto">
-            <form class="form-inline docsearch-wrapper">
-                <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
-            </form>
-        </div>
-        {% endif %}
     </div>
 
     <ul class="navbar-nav ml-auto cf-header-social">
@@ -51,10 +43,12 @@
                 {% include icons/github.svg class="cf-header-icon" %}
             </a>
         </li>
+        {% if site.github %}
         <li class="nav-item">
             <form class="form-inline docsearch-wrapper">
                 <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
             </form>
         </li>
+        {% endif %}
     </ul>
 </header>
