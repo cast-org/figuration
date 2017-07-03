@@ -48,13 +48,19 @@ Prevent text from wrapping with a `.text-nowrap` class.
 </div>
 {% endexample %}
 
-For longer content, you can add a `.text-truncate` class to truncate the text with an ellipsis.
+For longer content, you can add a `.text-truncate` class to truncate the text with an ellipsis.  **Requires `display: block;` or `display: inline-block;`.**
 
 {% example html %}
+<!-- Block -->
 <div class="row">
   <div class="col-2 text-truncate">
-    Praeterea iter est quasdam res quas ex communi.
+      Praeterea iter est quasdam res quas ex communi.
   </div>
+</div>
+
+<!-- Inline block -->
+<div class="d-inline-block text-truncate" style="max-width: 150px;">
+  Praeterea iter est quasdam res quas ex communi.
 </div>
 {% endexample %}
 
