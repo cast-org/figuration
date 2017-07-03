@@ -517,7 +517,7 @@ mark,
 
 .blockquote {
   margin-bottom: 1rem;
-  font-size: 1.25rem;
+  font-size: 1.1875rem;
   color: #292929;
 }
 
@@ -5460,12 +5460,6 @@ a.badge:focus, a.badge:hover {
 
 .card-inverse .card-link:focus, .card-inverse .card-link:hover {
   color: #fff;
-}
-
-.card-blockquote {
-  padding: 0;
-  margin-bottom: 0;
-  border-left: 0;
 }
 
 .card-img-overlay {
