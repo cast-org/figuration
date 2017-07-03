@@ -116,6 +116,9 @@
                 e.preventDefault();
             }
 
+            var inTransition = this.$navElm.data('cfw.tab.inTransition');
+            if (inTransition) { return; }
+
             if (this.$element.hasClass('active')
                 || this.$element.hasClass('disabled')
                 || this.$element[0].hasAttribute('disabled')) {
@@ -132,6 +135,8 @@
             if (!this.$element.CFW_trigger('beforeShow.cfw.tab', { relatedTarget: $previous[0] })) {
                 return;
             }
+
+            this.$navElm.data('cfw.tab.inTransition', true);
 
             if ($previous.length) {
                 $previous.attr({
@@ -209,6 +214,7 @@
                     $selfRef.$element.CFW_trigger('afterShow.cfw.tab', { relatedTarget: $previous[0] });
                     $node.CFW_mutateTrigger();
                     $prevActive.CFW_mutateTrigger();
+                    $selfRef.$navElm.removeData('cfw.tab.inTransition');
                 }
             }
 
