@@ -1,11 +1,12 @@
 // Toggles
 // Used in conjunction with global variables to enable certain theme features.
-@import "mixins/border-radius";
 @import "mixins/box-shadow";
 @import "mixins/gradients";
 @import "mixins/transition";
 
 // Utilities
+@import "mixins/background";
+@import "mixins/border";
 @import "mixins/breakpoints";
 @import "mixins/hover";
 @import "mixins/images";
@@ -27,9 +28,6 @@
 @import "mixins/pagination";
 @import "mixins/switch";
 @import "mixins/tables";
-
-// Context
-@import "mixins/background-variant";
 
 // Layout
 @import "mixins/clearfix";

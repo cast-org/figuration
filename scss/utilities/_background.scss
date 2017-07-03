@@ -1,3 +1,5 @@
+// scss-lint:disable ImportantRule
+
 // Special backgrounds
 @include bg-variant('.bg-inverse', map-get($inverse-color, "color"), map-get($inverse-color, "bg"), map-get($inverse-color, "hover-bg"));
 @include bg-variant('.bg-faded', inherit, $faded-bg, $faded-hover-bg);
@@ -19,3 +21,6 @@
         }
     }
 }
+
+// Transparent background
+.bg-transparent { background-color: transparent !important; }
