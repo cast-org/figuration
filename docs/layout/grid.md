@@ -526,19 +526,39 @@ In addition to column clearing at responsive breakpoints, you may need to **rese
 
 ### Flex Order
 
-Use flexbox utilities for controlling the **visual order** of your content.
+Use [flexbox order utilities]({{ site.baseurl }}/utilities/flexbox/#order) for controlling the **visual order** of your content.
 
 <div class="cf-example-row">
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col flex-unordered">
+    <div class="col">
       First, but unordered
     </div>
     <div class="col flex-last">
       Second, but last
     </div>
     <div class="col flex-first">
+      Third, but first
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
+Order utilities are also available in column counts.
+
+<div class="cf-example-row">
+{% example html %}
+<div class="container">
+  <div class="row">
+    <div class="col flex-order-2">
+      First, but second
+    </div>
+    <div class="col flex-order-12">
+      Second, but last
+    </div>
+    <div class="col flex-order-1">
       Third, but first
     </div>
   </div>

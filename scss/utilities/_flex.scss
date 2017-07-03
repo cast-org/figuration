@@ -12,6 +12,12 @@
         .flex#{$bprule}-last { order: 1; }
         .flex#{$bprule}-unordered { order: 0; }
 
+        @for $col from 1 through $grid-columns {
+            .flex#{$bprule}-order-#{$col} {
+                order: $col;
+            }
+        }
+
         // Rows and Columns
         .flex#{$bprule}-row { flex-direction: row !important; }
         .flex#{$bprule}-column { flex-direction: column !important; }

@@ -322,12 +322,14 @@ Responsive wrap utilities:
 
 ## Order
 
-Change the *visual* order of specific flex items with a handful of `order` utilities. We only provide options for making an item first or last, as well as a reset to use the DOM order. As `order` takes any integer value (e.g., `5`), add custom CSS for any additional values needed.
+Change the *visual* order of specific flex items with a handful of `order` utilities. We provide quick options for making an item first or last, as well as a reset to use the DOM order.
 
 Responsive order utilities:
 - `.flex-{breakpoint}-first`
 - `.flex-{breakpoint}-last`
 - `.flex-{breakpoint}-unordered`
+
+Even greater control is available with responsive order classes that match the column counts.  These are in the form of `.flex-order-{breakpoint}-{col}`, such as `.flex-order-2.flex-order-md-4`.
 
 <div class="cf-example-row">
 {% example html %}
@@ -345,6 +347,28 @@ Responsive order utilities:
         4
     </div>
     <div class="col-1 flex-first">
+        5
+    </div>
+</div>
+{% endexample %}
+</div>
+
+<div class="cf-example-row">
+{% example html %}
+<div class="row">
+    <div class="col-1 flex-order-12">
+        1
+    </div>
+    <div class="col-1">
+        2
+    </div>
+    <div class="col-1 flex-order-10">
+        3
+    </div>
+    <div class="col-1 flex-order-1">
+        4
+    </div>
+    <div class="col-1 flex-order-2">
         5
     </div>
 </div>
