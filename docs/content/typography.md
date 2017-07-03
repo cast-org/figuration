@@ -132,12 +132,19 @@ Add a `<footer class="blockquote-footer">` for identifying the source. Wrap the 
 </blockquote>
 {% endexample %}
 
-### Reverse Layout
+### Alignment
 
-Add `.blockquote-reverse` for a blockquote with right-aligned content.
+Use [text alignment utilities]({{ site.baseurl }}/utilities/typography/#text-alignment) to alter the layout of the blockquote.
 
 {% example html %}
-<blockquote class="blockquote blockquote-reverse">
+<blockquote class="blockquote text-center">
+  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+</blockquote>
+{% endexample %}
+
+{% example html %}
+<blockquote class="blockquote text-right">
   <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
   <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>

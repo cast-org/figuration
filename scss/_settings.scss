@@ -276,9 +276,8 @@ $hr-spacer-y:       1rem !default;
 $hr-border-color:   rgba(0,0,0,.1) !default;
 $hr-border-width:   $border-width !default;
 
-$blockquote-font-size:          ($font-size-base * 1.15) !default;
-$blockquote-border-color:       $uibase-300 !default;
-$blockquote-border-width:       .1875rem !default;
+$blockquote-font-size:          1.25rem !default;
+$blockquote-color:              $body-color !default;
 $blockquote-footer-font-size:   $font-size-base !default;
 $blockquote-footer-color:       $uibase-400 !default;
 
