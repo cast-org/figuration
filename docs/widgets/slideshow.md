@@ -241,6 +241,61 @@ If there is a tab that is disabled, the previous and next navigation items will 
 </div>
 {% endhighlight %}
 
+### Looping
+
+By default the previous or next navigation controls become disabled when the first or last slide, respectively, is active.  Use the `loop` option to override this behaviour and allow users to loop around the ends of the slidehow.
+
+<div class="cf-example">
+    <ul class="nav nav-tabs" data-cfw="slideshow" data-cfw-slideshow-loop="true">
+        <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
+        <li class="nav-item"><a href="#loop-slide0" class="nav-link" data-cfw="tab">Slide 1</a></li>
+        <li class="nav-item"><a href="#loop-slide1" class="nav-link" data-cfw="tab">Slide 2</a></li>
+        <li class="nav-item"><a href="#loop-slide2" class="nav-link" data-cfw="tab">Slide 3</a></li>
+        <li class="nav-item"><a href="#loop-slide3" class="nav-link" data-cfw="tab">Slide 4</a></li>
+        <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" id="loop-slide0">
+            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+        <div class="tab-pane" id="loop-slide1">
+            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit.</p>
+        </div>
+        <div class="tab-pane" id="loop-slide2">
+            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+        </div>
+        <div class="tab-pane" id="loop-slide3">
+            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+        </div>
+    </div>
+</div>
+
+{% highlight html %}
+<ul class="nav nav-tabs" data-cfw="slideshow" data-cfw-slideshow-loop="true">
+    <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
+    <li class="nav-item"><a href="#loop-slide0" class="nav-link" data-cfw="tab">Slide 1</a></li>
+    <li class="nav-item"><a href="#loop-slide1" class="nav-link" data-cfw="tab">Slide 2</a></li>
+    <li class="nav-item"><a href="#loop-slide2" class="nav-link" data-cfw="tab">Slide 3</a></li>
+    <li class="nav-item"><a href="#loop-slide3" class="nav-link" data-cfw="tab">Slide 4</a></li>
+    <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane" id="loop-slide0">
+        ...
+    </div>
+    <div class="tab-pane" id="loop-slide1">
+        ...
+    </div>
+    <div class="tab-pane" id="loop-slide2">
+        ...
+    </div>
+    <div class="tab-pane" id="loop-slide3">
+        ...
+    </div>
+</div>
+{% endhighlight %}
+
+
 ## Usage
 
 To set up a slideshow, all tabs must be under the same slideshow ancestor.  Nesting of slideshows is not possible or recommended as conflicts will occur.
@@ -301,7 +356,27 @@ Disable the slideshow navigation controls and listeners.  This will leave the ta
 
 ### Options
 
-None.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-slideshow`, as in `data-cfw-slideshow-loop="false"`.
+
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>loop</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Enable looping from the last slide to the first slide, and vice versa.</td>
+    </tr>
+</tbody>
+</table>
+
 
 ### Events
 

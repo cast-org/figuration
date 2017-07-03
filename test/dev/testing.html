@@ -474,6 +474,32 @@ $(window).ready(function() {
             <hr />
 
             <h2 id="slideshow">Slideshow:</h2>
+
+            <h3>Loop enabled</h3>
+            <div data-cfw="slideshow" data-cfw-slideshow-loop="true">
+                <nav aria-label="Page navigation">
+                    <ul id="slidetest" class="pagination">
+                        <li class="page-item"><a href="#" class="page-link" data-cfw-slideshow-nav="prev" aria-label="Previous">&laquo;</a></li>
+                        <li class="page-item"><a href="#slideL0" class="page-link" data-cfw="tab">Slide 1</a></li>
+                        <li class="page-item"><a href="#slideL1" class="page-link" data-cfw="tab">Slide 2</a></li>
+                        <li class="page-item"><a href="#slideL2" class="page-link" data-cfw="tab">Slide 3</a></li>
+                        <li class="page-item"><a href="#" class="page-link" data-cfw-slideshow-nav="next" aria-label="Next">&raquo;</a></li>
+                    </ul>
+                </nav>
+                <div class="tab-content">
+                    <div class="tab-pane" id="slideL0">
+                        <p>Slide one</p>
+                    </div>
+                    <div class="tab-pane" id="slideL1">
+                        <p>Slide two</p>
+                    </div>
+                    <div class="tab-pane" id="slideL2">
+                        <p>slide three</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Regular</h3>
             <p>Demo using pagination componenent, should also work for tab/pill navigation.</p>
             <div data-cfw="slideshow">
                 <nav aria-label="Page navigation">
