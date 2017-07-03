@@ -14,6 +14,6 @@ module.exports = {
         'iOS >= 9',
         'Safari >= 9',
         // The following remain NOT officially supported, but we're lenient and include their prefixes to avoid severely breaking in them.
-        'Android >= 4'
+        'Android >= 4.4'
     ]
 };
