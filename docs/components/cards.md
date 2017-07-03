@@ -235,9 +235,9 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
     Quote
   </div>
   <div class="card-body">
-    <blockquote class="card-blockquote">
+    <blockquote class="blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
     </blockquote>
   </div>
 </div>
@@ -423,7 +423,7 @@ You can also use `.card-inverse` with the [contextual backgrounds variants](#bac
 
 ### Background Variants
 
-Cards include their own variant classes for quickly changing the `background-color` and `border-color` of a card. **Darker colors require the use of `.card-inverse`.**
+Cards include their own variant classes for quickly changing the `background-color` and `border-color` of a card. **Darker colors require the use of `.card-inverse` or `.text-light`**.
 
 {% callout warning %}
 Conveying Meaning to Assistive Technologies
@@ -435,41 +435,46 @@ Please refer to the [Accessiblity notes about conveying meaning with color]({{ s
 {% example html %}
 <div class="card card-inverse card-primary text-center">
   <div class="card-body">
-    <blockquote class="card-blockquote">
+    <p>This is some text within a card body.</p>
+    <blockquote class="blockquote text-light">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+      <footer class="blockquote-footer card-inverse">Someone famous in <cite title="Source Title">Source Title</cite></footer>
     </blockquote>
   </div>
 </div>
 <div class="card card-inverse card-success text-center">
   <div class="card-body">
-    <blockquote class="card-blockquote">
+    <p>This is some text within a card body.</p>
+    <blockquote class="blockquote text-light">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+      <footer class="blockquote-footer card-inverse">Someone famous in <cite title="Source Title">Source Title</cite></footer>
     </blockquote>
   </div>
 </div>
 <div class="card card-inverse card-info text-center">
   <div class="card-body">
-    <blockquote class="card-blockquote">
+    <p>This is some text within a card body.</p>
+    <blockquote class="blockquote text-light">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+      <footer class="blockquote-footer card-inverse">Someone famous in <cite title="Source Title">Source Title</cite></footer>
     </blockquote>
   </div>
 </div>
 <div class="card card-inverse card-warning text-center">
   <div class="card-body">
-    <blockquote class="card-blockquote">
+    <p>This is some text within a card body.</p>
+    <blockquote class="blockquote text-light">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+      <footer class="blockquote-footer card-inverse">Someone famous in <cite title="Source Title">Source Title</cite></footer>
     </blockquote>
   </div>
 </div>
 <div class="card card-inverse card-danger text-center">
   <div class="card-body">
-    <blockquote class="card-blockquote">
+    <p>This is some text within a card body.</p>
+    <blockquote class="blockquote text-light">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+      <footer class="blockquote-footer card-inverse">Someone famous in <cite title="Source Title">Source Title</cite></footer>
     </blockquote>
   </div>
 </div>
@@ -482,49 +487,49 @@ In need of a colored card, but not the hefty background colors they bring? Repla
 {% example html %}
 <div class="card card-outline-primary text-center">
   <div class="card-body">
-    <blockquote class="card-blockquote">
+    <blockquote class="blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
     </blockquote>
   </div>
 </div>
 <div class="card card-outline-secondary text-center">
   <div class="card-body">
-    <blockquote class="card-blockquote">
+    <blockquote class="blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
     </blockquote>
   </div>
 </div>
 <div class="card card-outline-success text-center">
   <div class="card-body">
-    <blockquote class="card-blockquote">
+    <blockquote class="blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
     </blockquote>
   </div>
 </div>
 <div class="card card-outline-info text-center">
   <div class="card-body">
-    <blockquote class="card-blockquote">
+    <blockquote class="blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
     </blockquote>
   </div>
 </div>
 <div class="card card-outline-warning text-center">
   <div class="card-body">
-    <blockquote class="card-blockquote">
+    <blockquote class="blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
     </blockquote>
   </div>
 </div>
 <div class="card card-outline-danger text-center">
   <div class="card-body">
-    <blockquote class="card-blockquote">
+    <blockquote class="blockquote">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
     </blockquote>
   </div>
 </div>
@@ -781,9 +786,9 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
   </div>
   <div class="card">
     <div class="card-body">
-      <blockquote class="card-blockquote">
+      <blockquote class="blockquote">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer>
+        <footer class="blockquote-footer">
           <small class="text-muted">
             Someone famous in <cite title="Source Title">Source Title</cite>
           </small>
@@ -801,9 +806,9 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
   </div>
   <div class="card card-inverse card-primary text-center">
     <div class="card-body">
-      <blockquote class="card-blockquote">
+      <blockquote class="blockquote">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-        <footer>
+        <footer class="blockquote-footer">
           <small>
             Someone famous in <cite title="Source Title">Source Title</cite>
           </small>
@@ -823,9 +828,9 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
   </div>
   <div class="card text-right">
     <div class="card-body">
-      <blockquote class="card-blockquote">
+      <blockquote class="blockquote">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer>
+        <footer class="blockquote-footer">
           <small class="text-muted">
             Someone famous in <cite title="Source Title">Source Title</cite>
           </small>
