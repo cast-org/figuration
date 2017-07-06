@@ -30,6 +30,7 @@
     CFW_Widget_Collapse.prototype = {
 
         _init : function() {
+            var $selfRef = this;
             var selector = this.$element.CFW_getSelectorFromChain('collapse', this.settings.target);
             if (!selector) { return; }
             this.$target = $(selector);
@@ -46,12 +47,6 @@
             // Check for presence of trigger id - set if not present
             // var triggerID = this.$element.CFW_getID('cfw-collapse');
 
-            // Add collpase class(es)
-            this.$target.addClass('collapse');
-            if (this.settings.horizontal) {
-                this.$target.addClass('width');
-            }
-
             // A button can control multiple boxes so we need to id each on box individually
             var targetList = '';
 
@@ -66,9 +61,17 @@
             var dimension = this.dimension();
             if (this.$triggers.hasClass('open')) {
                 this.$triggers.attr('aria-expanded', 'true');
-                this.$target.addClass('collapse in')[dimension]('');
+                this.$target.each(function() {
+                    var flexClass = $selfRef._isFlex(this) ? 'in-flex' : 'in';
+                    $(this).addClass('collapse ' + flexClass)[dimension]('');
+                });
             } else {
                 this.$triggers.attr('aria-expanded', 'false');
+                this.$target.addClass('collapse');
+            }
+
+            if (this.settings.horizontal) {
+                this.$target.addClass('width');
             }
 
             // Bind click handler
