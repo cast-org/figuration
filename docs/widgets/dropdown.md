@@ -140,7 +140,7 @@ Dropdowns also work in a navbar, but require the use of a wrapping element for p
 
 ### Menu Headers
 
-Add a header to label sections of actions in any dropdown menu.
+Add a header to label sections of actions in any dropdown menu with `.dropdown-header`.
 
 {% example html %}
 <ul class="dropdown-menu">
@@ -156,9 +156,21 @@ Add a header to label sections of actions in any dropdown menu.
 </ul>
 {% endexample %}
 
+### Menu Text
+
+Add a non-interactive text item to a dropdown menu with `.dropdown-text`.
+
+{% example html %}
+<ul class="dropdown-menu">
+  <li class="dropdown-text">Non-interactive text</li>
+  <li><a href="#">Action</a></li>
+  <li><a href="#">Another action</a></li>
+</ul>
+{% endexample %}
+
 ### Menu Dividers
 
-Separate groups of related menu items with a divider.
+Separate groups of related menu items with a divider by using `.dropdown-divider`.
 
 {% example html %}
 <ul class="dropdown-menu">

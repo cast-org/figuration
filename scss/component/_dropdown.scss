@@ -185,6 +185,13 @@
     }
 }
 
+// Dropdown non-interactive text item
+.dropdown-text {
+    display: block;
+    padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+    color: $dropdown-text-color;
+}
+
 // Divider (basically an `<hr>`) within the dropdown
 .dropdown-divider {
     @include divider-h($dropdown-divider-color, $dropdown-divider-width, $dropdown-divider-spacer);
