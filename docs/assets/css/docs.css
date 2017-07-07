@@ -707,7 +707,7 @@ h4 > code {
   clear: both;
 }
 
-@media (min-width: 62rem) and (max-width: 66em) {
+@media (max-width: 66em) {
   .docsearch-wrapper {
     width: 7.5rem;
   }

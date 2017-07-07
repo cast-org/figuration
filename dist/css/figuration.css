@@ -90,7 +90,6 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
-  -webkit-tap-highlight-color: transparent;
 }
 
 *,
@@ -152,7 +151,8 @@ abbr[title],
 abbr[data-cfw-tooltip-original-title],
 abbr[data-cfw-popover-original-title] {
   text-decoration: underline;
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
   cursor: help;
   border-bottom: 0;
 }
@@ -535,7 +535,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 code {
@@ -4311,6 +4311,12 @@ button.list-group-item-danger.active {
 
 li .dropdown-header {
   margin-bottom: 0;
+}
+
+.dropdown-text {
+  display: block;
+  padding: 0.1875rem 1.25rem;
+  color: #292929;
 }
 
 .dropdown-divider {
