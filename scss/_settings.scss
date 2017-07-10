@@ -853,19 +853,14 @@ $card-cap-padding-x:       1rem !default;
 
 $card-img-overlay-padding: $card-padding-y $card-padding-x !default;
 
-$card-deck-breakpoint:      sm !default;
-// `xs` gutter is not defined since is it below the `$card-deck-breakpoint` setting
 $card-deck-gutter-widths: (
+    xs: map-get($grid-gutter-widths, xs),
     sm: map-get($grid-gutter-widths, sm),
     md: map-get($grid-gutter-widths, md),
     lg: map-get($grid-gutter-widths, lg),
-    xl: map-get($grid-gutter-widths, xl),
+    xl: map-get($grid-gutter-widths, xl)
 ) !default;
 
-
-$card-group-breakpoint:     sm !default;
-
-$card-columns-breakpoint:   sm !default;
 $card-columns-count:        3 !default;
 $card-columns-column-gap:   1.25rem !default;
 

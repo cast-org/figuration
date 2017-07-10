@@ -557,14 +557,12 @@ Recolor the header and footer sections of your cards by using the background con
 
 In addition to styling the content within cards, Figuration includes a few options for laying out series of cards.
 
-For the time being, these layout options only apply to small devices and above, so **they are not yet fully responsive**.
-
 ### Card Groups
 
-Use card groups to render cards as a single, attached element with equal width and height columns. Card groups use `display: flex;` to achieve their uniform sizing.
+Use card groups to render cards as a single, attached element with equal width and height columns. Card groups use `display: flex;` to achieve their uniform sizing.  Card groups are available with the class syntax of `.card-group{-breakpoint}`, such as `.card-group-md` to enable the group layout for `md` screens and above.
 
 {% example html %}
-<div class="card-group">
+<div class="card-group-sm">
   <div class="card">
     <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
@@ -595,7 +593,7 @@ Use card groups to render cards as a single, attached element with equal width a
 When using card groups with footers, they will not automatically line up.  However, you can use the [Equalize widget]({{ site.baseurl }}/widgets/equalize) to achieve this layout.
 
 {% example html %}
-<div class="card-group" data-cfw="equalize" data-cfw-equalize-target=".card-body">
+<div class="card-group-sm" data-cfw="equalize" data-cfw-equalize-target=".card-body">
   <div class="card">
     <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
@@ -632,10 +630,10 @@ When using card groups with footers, they will not automatically line up.  Howev
 
 ### Card Decks
 
-Need a set of equal width and height cards that aren't attached to one another? Use card decks.
+Need a set of equal width and height cards that aren't attached to one another? Use card decks, with the class syntax of `.card-deck{-breakpoint}`, such as `.card-deck-sm` to enable the deck layout for `sm` screens and above.
 
 {% example html %}
-<div class="card-deck">
+<div class="card-deck-sm">
   <div class="card">
     <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
@@ -666,7 +664,7 @@ Need a set of equal width and height cards that aren't attached to one another? 
 Just like with card groups, card footers in decks will not automatically line up. Again, the [Equalize widget]({{ site.baseurl }}/widgets/equalize) can achieve this layout.
 
 {% example html %}
-<div class="card-deck" data-cfw="equalize" data-cfw-equalize-target=".card-body">
+<div class="card-deck-sm" data-cfw="equalize" data-cfw-equalize-target=".card-body">
   <div class="card">
     <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
@@ -737,7 +735,7 @@ Controlling the number of cards in a row, based on the screen width is also poss
 </style>
 {% endhighlight %}
 {% example html %}
-<div class="card-deck card-deck-col">
+<div class="card-deck-sm card-deck-col">
     <div class="card">
         <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
         <div class="card-body">
@@ -773,10 +771,12 @@ Controlling the number of cards in a row, based on the screen width is also poss
 
 Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns with just CSS by wrapping them in `.card-columns`. Cards are ordered from top to bottom and left to right when wrapped in `.card-columns`. Card columns use the [`column-*` CSS properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Using_multi-column_layouts).
 
+Responsive variants are available with the class syntax of `.card-columns{-breakpoint}`, such as `.card-columns-sm` to enable the columns layout for `sm` screens and above.
+
 **Heads up!** Your mileage with card columns may vary. To prevent cards breaking across columns, we set them to `display: inline-table`, as `column-break-inside: avoid` isn't a fully supported option yet.
 
 {% example html %}
-<div class="card-columns">
+<div class="card-columns-sm">
   <div class="card">
     <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
@@ -806,9 +806,9 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
   </div>
   <div class="card card-inverse card-primary text-center">
     <div class="card-body">
-      <blockquote class="blockquote">
+      <blockquote class="blockquote text-light">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-        <footer class="blockquote-footer">
+        <footer class="blockquote-footer card-inverse">
           <small>
             Someone famous in <cite title="Source Title">Source Title</cite>
           </small>
@@ -848,10 +848,27 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
 </div>
 {% endexample %}
 
-Card columns can also be extended and customized with some additional code. Shown below is an extension of the `.card-columns` class using the same CSS we use---CSS columns--- to generate a set of responsive tiers for changing the number of columns.
+Card columns can also be extended and customized with some additional code. Shown below is an extension of the `.card-columns` class using Sass to generate a set of responsive tiers for changing the number of CSS columns.
 
 {% highlight scss %}
 .card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
+  }
+}
+{% endhighlight %}
+
+If you are using repsonsive variants of the card columns, you may need to include all variations, or a combination, of the responsive `.card-{breakpoint}-columns` classes, if it applies to your use-case.
+
+{% highlight scss %}
+.card-columns
+.card-columns-sm
+.card-columns-md
+.card-columns-lg
+.card-columns-xl {
   @include media-breakpoint-only(lg) {
     column-count: 4;
   }
