@@ -137,7 +137,7 @@ Available seek and volume sliders.
         </video>
     </div>
     <div class="player-wrapper">
-        <div class="player row"  role="region" aria-label="video player" data-cfw-player="player">
+        <div class="player row" role="region" aria-label="video player" data-cfw-player="player">
             <div class="col-md-6">
                 <span class="player-control" data-cfw-player="control">
                     <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
@@ -189,7 +189,7 @@ Add an interactive transcript to your video using the `transcript` control.  The
         </video>
     </div>
     <div class="player-wrapper">
-        <div class="player row"  role="region" aria-label="video player" data-cfw-player="player">
+        <div class="player row" role="region" aria-label="video player" data-cfw-player="player">
             <div class="col-md-6">
                 <span class="player-control" data-cfw-player="control">
                     <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
@@ -291,6 +291,44 @@ Further improve accessibility for blind and visually impaired users by including
             </span>
             <button type="button" class="btn btn-default mr-0_25" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fa fa-fw fa-cc"></span></button>
             <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="fa fa-fw fa-file-text-o"></span></button>
+        </div>
+    </div>
+</div>
+{% endexample %}
+
+### Custom Captions
+
+Take control over how captions are displayed by adding a container with a `data-cfw-player="caption-display"` attribute.  This will hide the default browser captions, and instead place the content in the designated container.
+
+{% example html %}
+<div data-cfw="player" class="video-wrapper">
+    <div class="embed-fluid">
+        <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
+            <source src="{{ site.baseurl }}/assets/video/niagara_falls.mp4" type="video/mp4" />
+            <track src="{{ site.baseurl }}/assets/video/niagara_falls-en.vtt" label="English subtitles" kind="subtitles" srclang="en" default />
+            <track src="{{ site.baseurl }}/assets/video/niagara_falls-es.vtt" label="Subt&iacute;tulos en espa&ntilde;ol" kind="subtitles" srclang="es" />
+            <p>HTML5 video not supported</p>
+        </video>
+        <div class="player-caption-display" data-cfw-player="caption-display"></div>
+    </div>
+    <div class="player-wrapper">
+        <div class="player mr-0_5" role="region" aria-label="video player" data-cfw-player="player">
+            <span class="player-control " data-cfw-player="control">
+                <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
+                <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
+            </span>
+            <span class="player-time mr-0_5" data-cfw-player="time">
+                <span class="player-time-current" data-cfw-player="time-current"></span>
+                <span class="player-seek" data-cfw-player="seek">
+                	<label>Seek slider<input type="text" /></label>
+                </span>
+                <span class="player-time-duration" data-cfw-player="time-duration"></span>
+            </span>
+            <button type="button" class="btn  mr-0_25" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fa fa-fw fa-cc" aria-hidden="true"></span></button>
+            <span class="player-fullscreen" data-cfw-player="fullscreen">
+                <button type="button" class="btn player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
+                <button type="button" class="btn player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
+            </span>
         </div>
     </div>
 </div>
@@ -452,6 +490,13 @@ Regions and controls are specified by data attributes `data-cfw-player="name"` t
             <p>The menu is dynamically generated based on the <code>&lt;track&gt;</code> elements, and associated with the button automatically.</p>
             <p>Only tracks with a <code>kind</code> property of <strong>captions</strong> or <strong>subtitles</strong> will be added to the menu.</p>
             <p>If there is only one valid track, then the button will act as a toggle button and not display the menu when clicked.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>caption-display</td>
+        <td>
+            <p>Container for custom styling of captions.</p>
+            <p>If this container is present, the default browser captions will be hidden. The currently active caption content will be displayed in this container, allowing for custom styling or placement of the captions.</p>
         </td>
     </tr>
     <tr>
