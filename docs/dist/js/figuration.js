@@ -5441,6 +5441,7 @@ if (typeof jQuery === 'undefined') {
         };
         this.trackValid = [];
         this.trackCurrent = -1;
+        this.$captionWrapper = null;
 
         this.$scriptElm = null;
         this.scriptCurrent = -1;
@@ -5665,10 +5666,17 @@ if (typeof jQuery === 'undefined') {
             this.volumeStatus();
             this.loopStatus();
 
-            this.trackList();
-            if (this.type == 'video') {
-                this.trackInit();
+
+            // Check for caption container {
+            var $captionWrapper =  this.$element.find('[data-cfw-player="caption-display"]');
+            if ($captionWrapper.length) {
+                this.$captionWrapper = $captionWrapper;
+                // Hide wrapper to start
+                this.captionDisplayUpdate(null);
             }
+
+            this.trackList();
+            this.trackInit();
             this.scriptInit();
 
             this.$player.addClass('ready');
@@ -6118,7 +6126,7 @@ if (typeof jQuery === 'undefined') {
                 });
 
                 if (this.media.textTracks[0].mode == 'showing') {
-                    $selfRef.trackSet(0);
+                    this.trackSet(0);
                 }
 
             } else {
@@ -6136,6 +6144,13 @@ if (typeof jQuery === 'undefined') {
                 $menu.append($menuItem);
 
                 var tracks = this.media.textTracks;
+
+                for (var j = 0; j < tracks.length; j++) {
+                    if (tracks[j].mode == 'showing') {
+                        this.trackSet(j);
+                    }
+                }
+
                 for (var i = 0; i < this.trackValid.length; i++) {
                     var trackID = this.trackValid[i];
                     $menuItem = $('<li><button type="button" class="dropdown-item" data-cfw-player-track="' + trackID + '">' + tracks[trackID].label + '</button></li>');
@@ -6156,11 +6171,19 @@ if (typeof jQuery === 'undefined') {
         },
 
         trackSet : function(trackID) {
+            var $selfRef = this;
+
             trackID = parseInt(trackID, 10);
 
             var tracks = this.media.textTracks;
             if (tracks.length <= 0) {
                 return;
+            }
+
+            // Disable any previouse cuechange handling
+            if (this.trackCurrent !== -1) {
+                $(this.media.textTracks[this.trackCurrent]).off('cuechange.cfw.player.captionDisplay');
+                this.$media.off('timeupdate.cfw.player.captionDisplay');
             }
 
             this.trackCurrent = trackID;
@@ -6170,7 +6193,36 @@ if (typeof jQuery === 'undefined') {
                     tracks[i].mode = 'hidden';
                 }
                 if (i === trackID) {
-                    tracks[i].mode = 'showing';
+                    // tracks[i].mode = 'showing';
+                    tracks[i].mode = (this.$captionWrapper !== null) ? 'hidden' : 'showing';
+                }
+            }
+
+            // Hook in cuechange handler if using custom captions
+            if (this.trackCurrent !== -1 && this.$captionWrapper !== null) {
+                if (this.media.textTracks[this.trackCurrent].oncuechange !== undefined) {
+                    $(this.media.textTracks[this.trackCurrent])
+                        .on('cuechange.cfw.player.captionDisplay', function() {
+                            $selfRef.captionDisplayUpdate(this.activeCues);
+                        });
+                } else {
+                    // Firefox does not currently support oncuechange event
+                    this.$media
+                        .on('timeupdate.cfw.player.captionDisplay', function() {
+                            var activeCues = $selfRef.media.textTracks[$selfRef.trackCurrent].activeCues;
+                            $selfRef.captionDisplayUpdate(activeCues);
+                        });
+                }
+
+                // Artificially trigger a cuechange - in case already in middle of a cue
+                var cueEvent;
+                if (this.media.textTracks[this.trackCurrent].oncuechange !== undefined) {
+                    cueEvent = $.Event('cuechange');
+                    $(this.media.textTracks[this.trackCurrent]).trigger(cueEvent);
+                } else {
+                    // Firefox
+                    cueEvent = $.Event('timeupdate');
+                    this.$media.trigger(cueEvent);
                 }
             }
 
@@ -6207,13 +6259,12 @@ if (typeof jQuery === 'undefined') {
                     .removeAttr('aria-pressed');
 
                 for (var i = 0; i < tracks.length; i++) {
-                    if (tracks[i].mode == 'showing') {
+                    if (i == this.trackCurrent) {
                         $captionElm.addClass('active');
                         $captionPar.addClass('active');
                         $captionPar.find('[data-cfw-player-track="' + i + '"]')
                             .addClass('active')
                             .attr('aria-pressed', 'true');
-                        this.trackCurrent = i;
                     }
                 }
             }
@@ -6356,7 +6407,7 @@ if (typeof jQuery === 'undefined') {
                 }
             }
 
-            // Disable cuechange handling
+            // Disable any previous cuechange handling
             if (this.scriptCurrent !== -1) {
                 $(this.media.textTracks[this.scriptCurrent]).off('cuechange.cfw.player.transcript');
                 this.$media.off('timeupdate.cfw.player.transcript');
@@ -6491,8 +6542,6 @@ if (typeof jQuery === 'undefined') {
                         result.push(str);
                     }
 
-
-
                     return result;
                 };
 
@@ -6540,6 +6589,9 @@ if (typeof jQuery === 'undefined') {
                 }
             }
 
+            // Remove any existing transcript container
+            this.$element.find('.player-transcript').remove();
+
             // Insert transcript container
             var $newElm = $('<div class="player-transcript"></div>');
             this.$element.append($newElm);
@@ -6583,16 +6635,15 @@ if (typeof jQuery === 'undefined') {
             // Hook in cuechange handler
             if (this.media.textTracks[this.scriptCurrent].oncuechange !== undefined) {
                 $(this.media.textTracks[this.scriptCurrent])
-                    .off('cuechange.cfw.player.transcript')
                     .on('cuechange.cfw.player.transcript', function() {
                         $selfRef.scriptHighlight(this.activeCues);
                     });
             } else {
                 // Firefox does not currently support oncuechange event
                 this.$media
-                    .off('timeupdate.cfw.player.transcript')
                     .on('timeupdate.cfw.player.transcript', function() {
-                        $selfRef.scriptHighlight($selfRef.media.textTracks[$selfRef.scriptCurrent].activeCues);
+                        var activeCues = $selfRef.media.textTracks[$selfRef.scriptCurrent].activeCues;
+                        $selfRef.scriptHighlight(activeCues);
                     });
             }
 
@@ -6695,6 +6746,24 @@ if (typeof jQuery === 'undefined') {
                     });
                     this.$element.addClass('player-inactive');
                 }
+            }
+        },
+
+        captionDisplayUpdate : function(activeCues) {
+            if (this.$captionWrapper == null) { return; }
+
+            if (this.trackCurrent === -1 || activeCues === null || activeCues.length <= 0) {
+                // Clear and hide caption area - nothing to show
+                this.$captionWrapper
+                    .attr('aria-hidden', 'true')
+                    .css('display', 'none')
+                    .empty();
+            } else {
+                // Show caption area and update caption
+                this.$captionWrapper
+                    .removeAttr('aria-hidden')
+                    .css('display', '')
+                    .text(activeCues[0].text);
             }
         },
 
@@ -6878,6 +6947,7 @@ if (typeof jQuery === 'undefined') {
             this.support = null;
             this.trackValid = null;
             this.trackCurrent = null;
+            this.$captionWrapper = null;
             this.$scriptElm = null;
             this.scriptCurrent = null;
             this.scriptCues = null;
