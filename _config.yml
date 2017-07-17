@@ -9,9 +9,8 @@ kramdown:
 permalink:        pretty
 
 # Server
-source:           docs
-destination:      _gh_pages
-host:             0.0.0.0
+source:           ./docs
+destination:      ./_gh_pages
 port:             9001
 baseurl:          ""
 url:              http://figuration.org
