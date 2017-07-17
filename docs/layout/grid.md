@@ -94,11 +94,6 @@ The example pixel values are calculated based upon assumption where the average 
   </thead>
   <tbody>
     <tr>
-      <th class="text-nowrap" scope="row">Grid behavior</th>
-      <td>Horizontal at all times</td>
-      <td colspan="4">Collapsed to start, horizontal above breakpoints</td>
-    </tr>
-    <tr>
       <th class="text-nowrap" scope="row">Max container width</th>
       <td>None (auto)</td>
       <td>544px (33.75rem)</td>
@@ -451,6 +446,8 @@ Use [Flexbox alignment utilities]({{ site.baseurl }}/utilities/flexbox/) to vert
 The gutters between columns in our default, predefined grid classes can be removed with `.no-gutters`. This removes the negative `margin`s from `.row` and the horizontal `padding` from all immediate children columns.
 
 Here's the source code for creating these styles. Note that column overrides are scoped to only the first children columns and are targeted via [attribute selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors). While this generates a more specific selector, column padding can still be further customized with [spacing utilities]({{ site.baseurl }}/utilities/spacing/).
+
+**Need an edge-to-edge design?** Drop the parent `.container` or `.container-fluid`.
 
 {% highlight sass %}
 .no-gutters {
