@@ -333,6 +333,7 @@
                 this.$body.css('padding-right', padding);
                 this.$body.removeData('cfw.padding-right');
             }
+            this.$target.CFW_trigger('scrollbarReset.cfw.modal');
         },
 
         measureScrollbar : function() {
