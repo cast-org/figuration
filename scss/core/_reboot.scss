@@ -18,19 +18,18 @@
 // 4. Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.
 // 5. Setting @viewport causes scrollbars to overlap content in IE11 and Edge, so
 //    we force a non-overlapping, non-auto-hiding scrollbar to counteract.
-html {
+*,
+*::before,
+*::after {
     box-sizing: border-box; // 1
+}
+
+html {
     font-family: sans-serif; // 2
     line-height: 1.15; // 3
     -webkit-text-size-adjust: 100%; // 4
     -ms-text-size-adjust: 100%; // 4
     -ms-overflow-style: scrollbar; // 5
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: inherit; // 1
 }
 
 // IE10+ doesn't honor `<meta name="viewport">` in some cases.
