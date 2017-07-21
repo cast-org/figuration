@@ -111,29 +111,6 @@ Internet Explorer 10+ are also supported, IE9 and down is not. Please be aware t
 
 Some of Figuration's [JavaScript Widgets]({{ site.baseurl }}/widgets/overview/) have some support for the use of [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) to watch for and respond to changes in the DOM.  Internet Explorer 10 does not support MutationObserver, but this can be mitigated with the use of a Polyfill.  Check out the [Quick Start page]({{ site.baseurl }}/get-started/quick-start/#mutationobserver) for more details.
 
-## Internet Explorer 10 in Windows Phone 8
-
-Internet Explorer 10 in Windows Phone 8 versions older than [Update 3 (a.k.a. GDR3)](http://blogs.windows.com/windows_phone/b/wpdev/archive/2013/10/14/introducing-windows-phone-preview-for-developers.aspx) doesn't differentiate **device width** from **viewport width** in `@-ms-viewport` at-rules, and thus doesn't properly apply the media queries in Figuration's CSS. To address this, you'll need to **include the following JavaScript, provided by Bootstrap, to work around the bug**.
-
-{% highlight js %}
-// Copyright 2014-2015 The Bootstrap Authors
-// Copyright 2014-2015 Twitter, Inc.
-// Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-  var msViewportStyle = document.createElement('style')
-  msViewportStyle.appendChild(
-    document.createTextNode(
-      '@-ms-viewport{width:auto!important}'
-    )
-  )
-  document.head.appendChild(msViewportStyle)
-}
-{% endhighlight %}
-
-For more information and usage guidelines, read [Windows Phone 8 and Device-Width](http://timkadlec.com/2013/01/windows-phone-8-and-device-width/).
-
-As a heads up, we include this in all of Figuration's documentation and examples as a demonstration.
-
 ## Modals and Dropdowns on Mobile
 
 ### Overflow and Scrolling
