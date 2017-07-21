@@ -6509,44 +6509,10 @@ if (typeof jQuery === 'undefined') {
                 return;
             }
 
-            /* Borrowed from:
-             * http://ableplayer.github.io/ableplayer/
-             * https://github.com/ableplayer/ableplayer/blob/master/scripts/transcript.js
-             *
-             * Modified/simplified to handle *basic text string* cues in DOM object format
-             */
             var addCaption = function($div, cap) {
                 var $capSpan = $('<span class="player-transcript-seekpoint player-transcript-caption"></span>');
-
-                var flattenString = function(str) {
-                    var result = [];
-                    if (str === '') {
-                        return result;
-                    }
-                    var openBracket  = str.indexOf('[');
-                    var closeBracket = str.indexOf(']');
-                    var openParen    = str.indexOf('(');
-                    var closeParen   = str.indexOf(')');
-
-                    var hasBrackets = openBracket !== -1 && closeBracket !== -1;
-                    var hasParens = openParen !== -1 && closeParen !== -1;
-
-                    if ((hasParens && hasBrackets && openBracket < openParen) || hasBrackets) {
-                        result = result.concat(flattenString(str.substring(0, openBracket)));
-                        result.push($('<span class="player-transcript-unspoken">' + str.substring(openBracket, closeBracket + 1) + '</span>'));
-                        result = result.concat(flattenString(str.substring(closeBracket + 1)));
-                    } else if (hasParens) {
-                        result = result.concat(flattenString(str.substring(0, openParen)));
-                        result.push($('<span class="player-transcript-unspoken">' + str.substring(openParen, closeParen + 1) + '</span>'));
-                        result = result.concat(flattenString(str.substring(closeParen + 1)));
-                    } else {
-                        result.push(str);
-                    }
-
-                    return result;
-                };
-
-                $capSpan.append(flattenString(cap.text));
+                var capHTML = cap.getCueAsHTML();
+                $capSpan.append(capHTML);
                 $capSpan.attr({
                     'data-start' : cap.startTime.toString(),
                     'data-end'   : cap.endTime.toString()
@@ -6560,7 +6526,8 @@ if (typeof jQuery === 'undefined') {
                 $descDiv.append('<span class="sr-only">Description: </span>');
 
                 var $descSpan = $('<span class="player-description-seekpoint player-description-caption"></span>');
-                $descSpan.append(desc.text);
+                var descHTML = desc.getCueAsHTML();
+                $descSpan.append(descHTML);
                 $descSpan.attr({
                     'data-start' : desc.startTime.toString(),
                     'data-end'   : desc.endTime.toString()
@@ -6761,10 +6728,14 @@ if (typeof jQuery === 'undefined') {
                     .empty();
             } else {
                 // Show caption area and update caption
+                var $tmp = $(document.createElement('div'));
+                $tmp.append(activeCues[0].getCueAsHTML());
+
+                var cueHTML = $tmp.html().replace('\n', '<br>');
                 this.$captionWrapper
                     .removeAttr('aria-hidden')
                     .css('display', '')
-                    .text(activeCues[0].text);
+                    .append(cueHTML);
             }
         },
 
