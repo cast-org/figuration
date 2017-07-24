@@ -11,6 +11,7 @@
     var cfwList = {
         '[data-cfw-dismisss="alert"]': 'CFW_Alert',
         '[data-cfw="button"]': 'CFW_Button',
+        '[data-cfw="buttons"]': 'CFW_Button',
         '[data-cfw="collapse"]': 'CFW_Collapse',
         '[data-cfw="dropdown"]': 'CFW_Dropdown',
         '[data-cfw="tab"]': 'CFW_Tab',
