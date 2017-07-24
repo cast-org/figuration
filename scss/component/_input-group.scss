@@ -13,6 +13,10 @@
         width: 1%;
         margin-bottom: 0;
 
+        + .form-control {
+            margin-left: -$input-border-width;
+        }
+
         // Bring the "active" form control to the front
         @include hover-focus-active {
             z-index: 3;
@@ -120,6 +124,13 @@
             @include hover-focus-active {
                 z-index: 3;
             }
+        }
+    }
+
+    + .input-group-btn {
+        > .btn,
+        > .btn-group {
+            margin-left: 0;
         }
     }
 }
