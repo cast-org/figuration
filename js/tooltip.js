@@ -228,6 +228,8 @@
 
         toggle : function(e) {
             if (e) {
+                e.preventDefault();
+
                 this.inState.click = !this.inState.click;
                 this.follow = true;
 
