@@ -866,6 +866,7 @@ h4 > code {
 
 .example-container {
   width: 800px;
+  width: 100%;
   max-width: 100%;
   margin-right: auto;
   margin-left: auto;

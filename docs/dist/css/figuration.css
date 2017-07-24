@@ -2137,6 +2137,7 @@ input[type="button"].btn-block {
 }
 
 .container {
+  width: 100%;
   max-width: 100%;
   margin-right: auto;
   margin-left: auto;
@@ -2146,25 +2147,25 @@ input[type="button"].btn-block {
 
 @media (min-width: 36em) {
   .container {
-    width: 34rem;
+    max-width: 34rem;
   }
 }
 
 @media (min-width: 48em) {
   .container {
-    width: 45rem;
+    max-width: 45rem;
   }
 }
 
 @media (min-width: 62em) {
   .container {
-    width: 60rem;
+    max-width: 60rem;
   }
 }
 
 @media (min-width: 75em) {
   .container {
-    width: 72rem;
+    max-width: 72rem;
   }
 }
 
@@ -3835,6 +3836,10 @@ button.list-group-item-danger.active {
   margin-bottom: 0;
 }
 
+.input-group .form-control + .form-control {
+  margin-left: -1px;
+}
+
 .input-group .form-control:focus, .input-group .form-control:active, .input-group .form-control:hover {
   z-index: 3;
 }
@@ -3929,6 +3934,11 @@ button.list-group-item-danger.active {
 .input-group-btn:not(:first-child) > .btn-group:active,
 .input-group-btn:not(:first-child) > .btn-group:hover {
   z-index: 3;
+}
+
+.input-group-btn + .input-group-btn > .btn,
+.input-group-btn + .input-group-btn > .btn-group {
+  margin-left: 0;
 }
 
 .input-group-xs > .input-group-addon,
