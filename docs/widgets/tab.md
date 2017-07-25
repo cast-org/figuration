@@ -147,7 +147,7 @@ The tab widget even work with a [list group]({{ site.baseurl }}/components/list-
 </div>
 
 {% highlight html %}
-div class="row">
+<div class="row">
     <div class="col-md-4">
         <nav class="list-group">
             <a href="#lgroup1" class="list-group-item list-group-item-action">List Item 1</a>
