@@ -91,13 +91,15 @@ There is also the special case size of `0` (zero) to remove  a radius.
 When elements are of a square (1:1) aspect ratio, you can create a circle using `.radius-circle`.  If the element has an unequal aspect ratio, you will get more on an elipse shape.
 
 <div class="cf-example">
-    <img data-src="holder.js/100x100/?text=Circle" class="radius-circle" alt="A generic square placeholder image where only the portion within the circle circumscribed about said square is visible" />
-    <img data-src="holder.js/100x50/?text=Elipse" class="radius-circle" alt="A generic horizontal rectangle placeholder image where only the portion within the elipse circumscribed about said square is visible" />
-    <img data-src="holder.js/50x100/?text=Elipse" class="radius-circle" alt="A generic vertical rectangle placeholder image where only the portion within the elipse circumscribed about said square is visible" />
+    <img data-src="holder.js/100x100/?text=Circle" class="radius-circle" width="100" height="100" alt="A generic square placeholder image where only the portion within the circle circumscribed about said square is visible" />
+    <img data-src="holder.js/100x50/?text=Elipse" class="radius-circle" width="100" height="50" alt="A generic horizontal rectangle placeholder image where only the portion within the elipse circumscribed about said square is visible" />
+    <img data-src="holder.js/50x100/?text=Elipse" class="radius-circle" width="50" height="100" alt="A generic vertical rectangle placeholder image where only the portion within the elipse circumscribed about said square is visible" />
 </div>
 
 {% highlight html %}
-<img src="..." class="radius-circle" alt="...">
+<img src="..." class="radius-circle" width="100" height="100" alt="...">
+<img src="..." class="radius-circle" width="100" height="50" alt="...">
+<img src="..." class="radius-circle" width="50" height="100" alt="...">
 {% endhighlight %}
 
 ## Border Removal
