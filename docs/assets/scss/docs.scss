@@ -63,7 +63,7 @@ $docs-color: #246;
         .cf-header {
             position: sticky;
             top: 0;
-            z-index: $zindex-fixed;
+            z-index: 1045;
         }
 
         .cf-content {
