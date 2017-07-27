@@ -81,7 +81,8 @@ module.exports = function(grunt) {
         // ==========
         clean: {
             dist: 'dist',
-            docs: 'docs/dist'
+            docs: 'docs/dist',
+            docscss: 'docs/assets/css'
         },
 
         jshint: {
@@ -226,6 +227,35 @@ module.exports = function(grunt) {
             }
         },
 
+        rtlcss: {
+            core: {
+                map: {
+                    inline: false
+                },
+                opts: {
+                    clean: false
+                },
+                expand: true,
+                cwd: 'dist/css',
+                src: ['*.css', '!*.min.css'],
+                dest: 'dist/css',
+                ext: '-rtl.css'
+            },
+            docs: {
+                map: {
+                    inline: false
+                },
+                opts: {
+                    clean: false
+                },
+                expand: true,
+                cwd: 'docs/assets/css',
+                src: ['*.css', '!*.min.css, !*-rtl.css'],
+                dest: 'docs/assets/css',
+                ext: '-rtl.css'
+            }
+        },
+
         cssmin: {
             options: {
                 specialComments: '*',
@@ -365,7 +395,7 @@ module.exports = function(grunt) {
     grunt.registerTask('test-js', jsTestTasks);
 
     // CSS distribution
-    grunt.registerTask('dist-css', ['sass:core', 'postcss:core', 'cssmin:core']);
+    grunt.registerTask('dist-css', ['sass:core', 'postcss:core', 'rtlcss:core', 'cssmin:core']);
 
     // JS distribution
     grunt.registerTask('dist-js', ['concat', 'uglify:core']);
@@ -376,10 +406,10 @@ module.exports = function(grunt) {
     // Docs tasks
     grunt.registerTask('docs-test-html', ['jekyll:docs', 'htmllint:docs']);
     grunt.registerTask('docs-test-css', ['scsslint:docs']);
-    grunt.registerTask('docs-dist-css', ['sass:docs', 'postcss:docs', 'cssmin:docs']);
+    grunt.registerTask('docs-dist-css', ['sass:docs', 'postcss:docs', 'rtlcss:docs', 'cssmin:docs']);
     grunt.registerTask('docs-test-js', ['jscs:docs']);
     grunt.registerTask('docs-dist-js', ['uglify:docs']);
-    grunt.registerTask('docs', ['docs-test-css', 'docs-dist-css', 'docs-test-js', 'docs-dist-js', 'clean:docs', 'copy:docs']);
+    grunt.registerTask('docs', ['docs-test-css', 'clean:docscss', 'docs-dist-css', 'docs-test-js', 'docs-dist-js', 'clean:docs', 'copy:docs']);
     grunt.registerTask('docs-github', ['jekyll:github']);
 
 };
