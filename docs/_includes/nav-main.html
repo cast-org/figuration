@@ -34,14 +34,24 @@
 
     <ul class="navbar-nav ml-auto cf-header-social">
         <li class="nav-item">
-            <a href="{{ site.twitter }}" class="nav-link" aria-label="Twitter">
+            <a href="{{ site.twitter }}" class="nav-link" aria-label="Twitter" title="Twitter">
                 {% include icons/twitter.svg class="cf-header-icon" %}
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ site.repo }}" class="nav-link" aria-label="Github">
+            <a href="{{ site.repo }}" class="nav-link" aria-label="Github" title="GitHub">
                 {% include icons/github.svg class="cf-header-icon" %}
             </a>
+        </li>
+        <li class="nav-item dropdown dropdown-menu-left">
+            <a href="#" role="button" class="nav-link" aria-label="Settings" title="Settings" data-cfw="dropdown">
+                {% include icons/cog.svg class="cf-header-icon" %}
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">Direction</li>
+                <li><button type="button" class="dropdown-item" id="dir-ltr">Left to right <span aria-hidden="true">(LTR)</span></button></li>
+                <li><button type="button" class="dropdown-item" id="dir-rtl">Right to left <span aria-hidden="true">(RTL)</span></button></li>
+            </ul>
         </li>
         {% if site.github %}
         <li class="nav-item">

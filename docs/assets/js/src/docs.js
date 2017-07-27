@@ -128,6 +128,70 @@ function sectionToc() {
     });
 }
 
+function docsDirection() {
+    function fileRename(id, filename) {
+        var re = /^(.*\/)?[^\/]+\.(css|min\.css)$/i;
+        var rep_str = '$1' + filename + '.$2';
+        var $node = $('#' + id);
+        var path = $node.attr('href');
+        path = path.replace(re, rep_str);
+        $node.attr('href', path);
+    }
+
+    function setLTR() {
+        $('#dir-ltr').closest('ul').find('.active').removeClass('active').removeAttr('aria-current');
+        $('#dir-ltr').addClass('active').attr('aria-current', 'true');
+        $('html').removeAttr('dir');
+        fileRename('cssCore', 'figuration');
+        fileRename('cssDocs', 'docs');
+        document.cookie = 'docsDir=';
+    }
+
+    function setRTL() {
+        $('#dir-rtl').closest('ul').find('.active').removeClass('active').removeAttr('aria-current');
+        $('#dir-rtl').addClass('active').attr('aria-current', 'true');
+        $('html').attr('dir', 'rtl');
+        fileRename('cssCore', 'figuration-rtl');
+        fileRename('cssDocs', 'docs-rtl');
+        document.cookie = 'docsDir=rtl';
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+
+    $('#dir-ltr').on('click', function(e) {
+        e.preventDefault();
+        setLTR();
+    });
+    $('#dir-rtl').on('click', function(e) {
+        e.preventDefault();
+        setRTL();
+    });
+
+    // Check on load
+    var settings = document.cookie;
+    if (getCookie('docsDir') === 'rtl') {
+        setRTL();
+    } else {
+        setLTR();
+    }
+
+}
+
 // Direction for player dropdown menus
 $(document, '[data-cfw="player"]').on('ready.cfw.player', function(e) {
     $(e.target).closest('[data-cfw="player"]').find('.player-caption-wrapper').addClass('dropup dropdown-menu-left');
@@ -140,6 +204,7 @@ $(window).ready(function() {
     topLinkAffix();
     paletteHex();
     sectionToc();
+    docsDirection();
 
     // Indeterminate checkbox example
     $('.cf-example-indeterminate [type="checkbox"]').prop('indeterminate', true);
