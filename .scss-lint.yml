@@ -129,6 +129,7 @@ linters:
     min_properties: 2
     separate_groups: false
     order:
+      - direction
       - position
       - top
       - right
