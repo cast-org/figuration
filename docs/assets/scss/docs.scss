@@ -224,7 +224,7 @@ $docs-color: #246;
     position: relative;
     z-index: 2;
     display: block;
-    float: right;
+    float: right #{"/*rtl:ignore*/"};
     line-height: 1;
 
     + .highlight {
@@ -238,7 +238,7 @@ $docs-color: #246;
 .btn-clipboard {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 0 #{"/*rtl:ignore*/"};
 }
 
 // TOC
@@ -425,9 +425,12 @@ h4 {
     border: 1px solid #e1e1e8;
     border-radius: .25rem;
 
+    // Use SASS interpolation syntax, for passing comment as string
     pre {
+        direction: ltr #{"/*rtl:ignore*/"};
         padding: 1.65rem 1rem .5rem;
         margin: 0;
+        text-align: left #{"/*rtl:ignore*/"};
         background-color: transparent;
         border: 0;
     }
