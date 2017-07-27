@@ -1,9 +1,9 @@
 // scss-lint:disable ImportantRule
 
-@mixin float-left {
+@mixin float-start {
     float: left !important;
 }
-@mixin float-right {
+@mixin float-end {
     float: right !important;
 }
 @mixin float-none {
