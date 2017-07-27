@@ -9,8 +9,8 @@
     $bprule: breakpoint-designator($breakpoint);
 
     @include media-breakpoint-up($breakpoint) {
-        .text#{$bprule}-left    { text-align: left !important; }
-        .text#{$bprule}-right   { text-align: right !important; }
+        .text#{$bprule}-start    { text-align: left !important; }
+        .text#{$bprule}-end   { text-align: right !important; }
         .text#{$bprule}-center  { text-align: center !important; }
     }
 }

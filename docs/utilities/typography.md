@@ -22,15 +22,17 @@ Easily realign text to components with text alignment classes.
 
 For left, right, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.  Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) is used.
 
-{% example html %}
-<p class="text-left">Left aligned text on all viewport sizes.</p>
-<p class="text-center">Center aligned text on all viewport sizes.</p>
-<p class="text-right">Right aligned text on all viewport sizes.</p>
+Instead of using `left/right` designators, the text alignment utilities use `start/end` designators to match up with the [flexbox utilities]({{ site.baseurl }}/utilities/flexbox/).
 
-<p class="text-sm-right">Right aligned text on viewports sized SM (small) or wider.</p>
-<p class="text-md-right">Right aligned text on viewports sized MD (medium) or wider.</p>
-<p class="text-lg-right">Right aligned text on viewports sized LG (large) or wider.</p>
-<p class="text-xl-right">Right aligned text on viewports sized XL (extra-large) or wider.</p>
+{% example html %}
+<p class="text-start">Start aligned text on all viewport sizes.</p>
+<p class="text-center">Center aligned text on all viewport sizes.</p>
+<p class="text-end">End aligned text on all viewport sizes.</p>
+
+<p class="text-sm-end">End aligned text on viewports sized SM (small) or wider.</p>
+<p class="text-md-end">End aligned text on viewports sized MD (medium) or wider.</p>
+<p class="text-lg-end">End aligned text on viewports sized LG (large) or wider.</p>
+<p class="text-xl-end">End aligned text on viewports sized XL (extra-large) or wider.</p>
 {% endexample %}
 
 ## Text Wrap and Truncate
