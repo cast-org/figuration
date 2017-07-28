@@ -175,6 +175,7 @@ $(window).ready(function() {
 </header>
 
 <main>
+
 <div class="container">
     <div class="row">
 
@@ -543,6 +544,9 @@ $(window).ready(function() {
             <hr />
 
             <h2 id="modal">Modal:</h2>
+            <p>
+                <button type="button" onclick="javascript:console.log($('html').CFW_getScrollbarSide()); return false;">Scrollbar check</button>
+            </p>
 
             <p>
                 <button type="button" class="btn btn-info" id="modal3t" data-cfw="modal" data-cfw-modal-target="#modal3" data-cfw-modal-backdrop="false">Modal: no backdrop</button>
@@ -759,7 +763,7 @@ $(window).ready(function() {
             </script>
 
 
-            <p>
+            <div class="mb-1">
                 <button type="button" class="btn btn-info" id="pop_manual" data-cfw="popover" data-cfw-popover-trigger="manual" data-cfw-popover-target="#popman" data-cfw-popover-drag=true>Popover Manual</button>
                 <a href="#" role="button" onclick="$('#pop_manual').CFW_Popover('show'); return false;">Show</a>
                 <a href="#" role="button" onclick="$('#pop_manual').CFW_Popover('hide'); return false;">Hide</a>
@@ -773,7 +777,7 @@ $(window).ready(function() {
                     </div>
                     <div class="popover-arrow"></div>
                 </div>
-            </p>
+            </div>
 
             <button type="button" class="btn btn-info" id="pop_6" title="Yay, you clicked me!" data-cfw-popover-content="blah">Popover Custom Placement</button>
             <script type="text/javascript">

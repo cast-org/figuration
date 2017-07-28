@@ -17,6 +17,7 @@
         this.$focusLast = null;
         this.isShown = null;
         this.scrollbarWidth = 0;
+        this.scrollbarSide = 'right';
         this.fixedContent = '.fixed-top, .fixed-botton, .is-fixed';
         this.ignoreBackdropClick = false;
 
@@ -296,6 +297,7 @@
         checkScrollbar : function() {
             this.bodyIsOverflowing = document.body.clientWidth < window.innerWidth;
             this.scrollbarWidth = $.CFW_measureScrollbar();
+            this.scrollbarSide =  $('html').CFW_getScrollbarSide();
         },
 
         setScrollbar : function() {
@@ -305,45 +307,45 @@
                 // Update fixed element padding
                 $(this.fixedContent).each(function() {
                     var $this = $(this);
-                    $this.data('cfw.padding-right', this.style.paddingRight || '');
-                    var padding = parseFloat($this.css('padding-right') || 0);
-                    $this.css('padding-right', padding + $selfRef.scrollbarWidth);
+                    if ($selfRef.scrollbarSide === 'left') {
+                        $this.data('cfw.padding-dim', this.style.paddingLeft || '');
+                    } else {
+                        $this.data('cfw.padding-dim', this.style.paddingRight || '');
+                    }
+                    var padding = parseFloat($this.css('padding-' + $selfRef.scrollbarSide) || 0);
+                    $this.css('padding-' + $selfRef.scrollbarSide, padding + $selfRef.scrollbarWidth);
                 });
 
                 // Update body padding
-                this.$body.data('cfw.padding-right', document.body.style.paddingRight || '');
-                var padding = parseFloat(this.$body.css('padding-right') || 0);
-                this.$body.css('padding-right', padding + this.scrollbarWidth);
+                if (this.scrollbarSide === 'left') {
+                    this.$body.data('cfw.padding-dim', document.body.style.paddingLeft || '');
+                } else {
+                    this.$body.data('cfw.padding-dim', document.body.style.paddingRight || '');
+                }
+                var padding = parseFloat(this.$body.css('padding-' + this.scrollbarSide) || 0);
+                this.$body.css('padding-' + this.scrollbarSide, padding + this.scrollbarWidth);
             }
             this.$target.CFW_trigger('scrollbarSet.cfw.modal');
         },
 
         resetScrollbar : function() {
+            var $selfRef = this;
+
             // Restore fixed element padding
             $(this.fixedContent).each(function() {
                 var $this = $(this);
-                var padding = $this.data('cfw.padding-right');
-                $this.css('padding-right', padding);
-                $this.removeData('cfw.padding-right');
+                var padding = $this.data('cfw.padding-dim');
+                $this.css('padding-' + $selfRef.scrollbarSide, padding);
+                $this.removeData('cfw.padding-dim');
             });
 
             // Restore body padding
-            var padding = this.$body.data('cfw.padding-right');
+            var padding = this.$body.data('cfw.padding-dim');
             if (typeof padding !== undefined) {
-                this.$body.css('padding-right', padding);
-                this.$body.removeData('cfw.padding-right');
+                this.$body.css('padding-' + this.scrollbarSide, padding);
+                this.$body.removeData('cfw.padding-dim');
             }
             this.$target.CFW_trigger('scrollbarReset.cfw.modal');
-        },
-
-        measureScrollbar : function() {
-            var $body = $(document.body);
-            var scrollDiv = document.createElement('div');
-            scrollDiv.className = 'modal-scrollbar-measure';
-            $body.append(scrollDiv);
-            var scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;
-            $body[0].removeChild(scrollDiv);
-            return scrollbarWidth;
         },
 
         backdrop : function(callback) {
@@ -424,6 +426,7 @@
             this.$focusLast = null;
             this.isShown = null;
             this.scrollbarWidth = null;
+            this.scrollbarSide = null;
             this.fixedContent = null;
             this.ignoreBackdropClick = null;
             this.settings = null;

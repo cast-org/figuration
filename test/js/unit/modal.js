@@ -363,7 +363,7 @@ $(function() {
         $trigger.CFW_Modal('show');
     });
 
-    QUnit.test('should store original body padding in data-cfw.padding-right before showing', function(assert) {
+    QUnit.test('should store original body padding in data-cfw.padding-dim before showing', function(assert) {
         assert.expect(2);
         var done = assert.async();
         var originalPadding = '';
@@ -376,11 +376,11 @@ $(function() {
 
         $target
             .on('afterShow.cfw.modal', function() {
-                assert.strictEqual($body.data('cfw.padding-right'), originalPadding, 'stored original body padding in data attribute');
+                assert.strictEqual($body.data('cfw.padding-dim'), originalPadding, 'stored original body padding in data attribute');
                 $trigger.CFW_Modal('hide');
             })
             .on('afterHide.cfw.modal', function() {
-                assert.strictEqual($body.data('cfw.padding-right'), undefined, 'stored original body padding in data attribute');
+                assert.strictEqual($body.data('cfw.padding-dim'), undefined, 'stored original body padding in data attribute');
                 $body.removeAttr('style');
                 done();
             });
