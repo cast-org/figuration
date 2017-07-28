@@ -13,7 +13,11 @@
     clear: both;
 
     @media (max-width: 66em) {
-        width: 7.5rem;
+        width: 10rem;
+    }
+
+    @include media-breakpoint-down(xs) {
+        width: 5.5rem;
     }
 
     &::before {
