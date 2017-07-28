@@ -94,6 +94,11 @@ $docs-color: #246;
         padding-right: .5rem;
         padding-left: .5rem;
     }
+
+    .dropdown-menu {
+        position: absolute !important;
+        float: left !important;
+    }
 }
 
 .cf-header-menu {
@@ -155,6 +160,7 @@ $docs-color: #246;
 
     .logo-home {
         display: block;
+        width: 100%;
         margin: 0 auto;
         filter: drop-shadow(0 0 7px rgba(255,255,255,.15));
     }
