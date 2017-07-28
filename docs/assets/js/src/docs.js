@@ -130,20 +130,24 @@ function sectionToc() {
 
 function docsDirection() {
     function fileRename(id, filename) {
-        var re = /^(.*\/)?[^\/]+\.(css|min\.css)$/i;
-        var rep_str = '$1' + filename + '.$2';
         var $node = $('#' + id);
         var path = $node.attr('href');
+        var isMin = (path.indexOf('.min.css') >= 0) ? true : false;
+        var re = /^(.*\/)?[^\/]+\.(css)$/i;
+        var rep_str = '$1' + filename;
         path = path.replace(re, rep_str);
+        path += (isMin) ? '.min.css' : '.css';
         $node.attr('href', path);
     }
 
-    function setLTR() {
+    function setLTR(doReset) {
         $('#dir-ltr').closest('ul').find('.active').removeClass('active').removeAttr('aria-current');
         $('#dir-ltr').addClass('active').attr('aria-current', 'true');
         $('html').removeAttr('dir');
-        fileRename('cssCore', 'figuration');
-        fileRename('cssDocs', 'docs');
+        if (doReset) {
+            fileRename('cssCore', 'figuration');
+            fileRename('cssDocs', 'docs');
+        }
         document.cookie = 'docsDir=';
     }
 
@@ -175,7 +179,7 @@ function docsDirection() {
 
     $('#dir-ltr').on('click', function(e) {
         e.preventDefault();
-        setLTR();
+        setLTR(true);
     });
     $('#dir-rtl').on('click', function(e) {
         e.preventDefault();
@@ -187,7 +191,7 @@ function docsDirection() {
     if (getCookie('docsDir') === 'rtl') {
         setRTL();
     } else {
-        setLTR();
+        setLTR(false);
     }
 
 }
