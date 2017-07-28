@@ -237,7 +237,7 @@ module.exports = function(grunt) {
                 },
                 expand: true,
                 cwd: 'dist/css',
-                src: ['*.css', '!*.min.css'],
+                src: ['*.css', '!*.min.css', '!*-rtl.css'],
                 dest: 'dist/css',
                 ext: '-rtl.css'
             },
@@ -250,7 +250,7 @@ module.exports = function(grunt) {
                 },
                 expand: true,
                 cwd: 'docs/assets/css',
-                src: ['*.css', '!*.min.css, !*-rtl.css'],
+                src: ['*.css', '!*.min.css', '!*-rtl.css'],
                 dest: 'docs/assets/css',
                 ext: '-rtl.css'
             }
