@@ -91,7 +91,7 @@ function paletteHex() {
         $items.each(function() {
             $this = $(this);
             color = rgb2hex($this.css('background-color'));
-            $this.append('<span class="float-right">' + color + '</span>');
+            $this.append('<span class="float-end">' + color + '</span>');
         });
     }
 }
@@ -198,8 +198,8 @@ function docsDirection() {
 
 // Direction for player dropdown menus
 $(document, '[data-cfw="player"]').on('ready.cfw.player', function(e) {
-    $(e.target).closest('[data-cfw="player"]').find('.player-caption-wrapper').addClass('dropup dropdown-menu-left');
-    $(e.target).closest('[data-cfw="player"]').find('.player-script-wrapper').addClass('dropup dropdown-menu-left');
+    $(e.target).closest('[data-cfw="player"]').find('.player-caption-wrapper').addClass('dropup dropdown-menu-reverse');
+    $(e.target).closest('[data-cfw="player"]').find('.player-script-wrapper').addClass('dropup dropdown-menu-reverse');
 });
 
 $(window).ready(function() {
