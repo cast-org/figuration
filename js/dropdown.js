@@ -111,8 +111,8 @@
             if (this.settings.backlink && this.settings.backtop) {
                 var $backTop = $('<li class="' + this.c.backLink + '"><a href="#">' + this.settings.backtext + '</a></li>')
                     .prependTo(this.$target);
-                if (this.$target.hasClass('dropdown-menu-left')) {
-                    $backTop.addClass('dropdown-back-left');
+                if (this.$target.hasClass('dropdown-menu-reverse')) {
+                    $backTop.addClass('dropdown-back-reverse');
                 }
             }
 
@@ -123,18 +123,18 @@
                 var subLinkID = $subLink.CFW_getID('cfw-dropdown');
                 // var subMenuID = $subMenu.CFW_getID('cfw-dropdown');
 
-                var $dirNode = $subMenu.closest('.dropdown-menu-left, .dropdown-menu-right');
-                if ($dirNode.hasClass('dropdown-menu-left')) {
-                    $subMenu.closest('li').addClass('dropdown-subalign-left');
+                var $dirNode = $subMenu.closest('.dropdown-menu-reverse, .dropdown-menu-forward');
+                if ($dirNode.hasClass('dropdown-menu-reverse')) {
+                    $subMenu.closest('li').addClass('dropdown-subalign-reverse');
                 } else {
-                    $subMenu.closest('li').addClass('dropdown-subalign-right');
+                    $subMenu.closest('li').addClass('dropdown-subalign-forward');
                 }
 
                 if ($selfRef.settings.backlink) {
                     var $backElm = $('<li class="' + $selfRef.c.backLink + '"><a href="#">' + $selfRef.settings.backtext + '</a></li>')
                         .prependTo($subMenu);
-                    if ($dirNode.hasClass('dropdown-menu-left')) {
-                        $backElm.addClass('dropdown-back-left');
+                    if ($dirNode.hasClass('dropdown-menu-reverse')) {
+                        $backElm.addClass('dropdown-back-reverse');
                     }
                 }
 
@@ -581,24 +581,8 @@
         }
     };
 
-    /*
-    $.fn.redraw = function(){
-        $(this).each(function(){
-            var redraw = this.offsetHeight;
-        });
-    };
-    */
-    // Force [lte IE 10] to redraw to correct layout
-    // Also force Edge reflow - using bad UA test and method
-    // TODO: Need to revisit this to find better options
-    // Note: Parent element must be visible in order to redraw
     $.fn.redraw = function() {
-        // if ((document.documentMode || 100) <= 10) {
-        if (document.documentMode !== undefined){
-            return this.hide(0, function() {$(this).show(); $(this).css('display', ''); });
-        } else if (/Edge\/\d+/.test(navigator.userAgent)) {
-            $(this).css('list-style', 'none').css('list-style', '');
-        }
+        return this.offsetHeight;
     };
 
     function Plugin(option) {

@@ -252,10 +252,10 @@
     }
 }
 
-// Change back caret direction for left facing menus
-// The `.dropdown-back-left` class is added automatically by the dropdown.js widget
+// Change back caret direction for reverse facing menus
+// The `.dropdown-back-reverse` class is added automatically by the dropdown.js widget
 // This removes the need for overly convoluted CSS rules
-.dropdown-back-left {
+.dropdown-back-reverse {
     > a::before {
         right: $dropdown-back-spacer-x;
         left: auto;
@@ -265,7 +265,7 @@
 }
 
 // Allow for menus to go left - aligning to right side of the control
-.dropdown-menu-left {
+.dropdown-menu-reverse {
     .dropdown-menu {
         right: 0;
         left: auto;
@@ -276,7 +276,7 @@
 // Submenu alignment
 // The `.dropdown-subalign-*` classes are added automatically by the dropdown.js widget
 // This removes the need for overly convoluted CSS rules
-.dropdown-subalign-right {
+.dropdown-subalign-forward {
     > .dropdown-menu {
         right: auto;
         left: 100%;
@@ -286,7 +286,7 @@
     }
 }
 
-.dropdown-subalign-left {
+.dropdown-subalign-reverse {
     > .dropdown-menu {
         right: 100%;
         left: auto;
@@ -294,7 +294,7 @@
         margin-left: -($border-width * 2);
         @include border-radius($dropdown-border-radius $dropdown-attach-border-radius $dropdown-border-radius $dropdown-border-radius);
     }
-    > a
+    > a,
     > .dropdown-item {
         &::after {
             right: auto;
@@ -311,17 +311,17 @@
 
 // Dropup corner overrides
 .dropup {
-    &.dropdown-menu-left {
+    &.dropdown-menu-reverse {
         .dropdown-menu {
             @include border-radius($dropdown-border-radius $dropdown-border-radius $dropdown-attach-border-radius $dropdown-border-radius);
         }
     }
-    .dropdown-subalign-right {
+    .dropdown-subalign-forward {
         > .dropdown-menu {
             @include border-radius($dropdown-border-radius $dropdown-border-radius $dropdown-border-radius $dropdown-attach-border-radius);
         }
     }
-    .dropdown-subalign-left {
+    .dropdown-subalign-reverse {
         > .dropdown-menu {
             @include border-radius($dropdown-border-radius $dropdown-border-radius $dropdown-attach-border-radius $dropdown-border-radius);
         }
