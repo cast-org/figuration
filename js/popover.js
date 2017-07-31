@@ -20,7 +20,7 @@
     };
 
     CFW_Widget_Popover.DEFAULTS = $.extend({}, $.fn.CFW_Tooltip.Constructor.DEFAULTS, {
-        placement   : 'top',        // Where to locate popover (top/bottom/left/right/auto)
+        placement   : 'top',        // Where to locate popover (top/bottom/reverse(left)/forward(right)/auto)
         trigger     : 'click',      // How popover is triggered (click/hover/focus/manual)
         content     : '',           // Content text/html to be inserted
         drag        : false,        // If the popover should be draggable
@@ -88,7 +88,7 @@
             this.enableDrag();
         }
 
-        $tip.removeClass('fade in top bottom left right');
+        $tip.removeClass('fade in top bottom reverse forward');
 
         if (!$title.html()) { $title.hide(); }
 

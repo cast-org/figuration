@@ -290,8 +290,8 @@ $(function() {
     QUnit.test('should add position class before positioning so that position-specific styles are taken into account', function(assert) {
         assert.expect(1);
         var styles = '<style>'
-            + '.tooltip.right { white-space: nowrap; }'
-            + '.tooltip.right .tooltip-body { max-width: none; }'
+            + '.tooltip.forward { white-space: nowrap; }'
+            + '.tooltip.forward .tooltip-body { max-width: none; }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
 
@@ -299,7 +299,7 @@ $(function() {
         var $target = $('<a href="#" title="very very very very very very very very long tooltip in one line"/>')
             .appendTo($container)
             .CFW_Tooltip({
-                placement: 'right',
+                placement: 'forward',
                 viewport: null
             })
             .CFW_Tooltip('show');
@@ -383,25 +383,25 @@ $(function() {
         $topTooltip.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'top positioned tooltip removed from dom');
 
-        var $rightTooltip = $('<div class="trigger" style="right: 0;" title="Right tooltip">Right Dynamic Tooltip</div>')
+        var $forwardTooltip = $('<div class="trigger" style="right: 0;" title="forward tooltip">forward Dynamic Tooltip</div>')
             .appendTo($container)
-            .CFW_Tooltip({ placement: 'right auto', viewport: '#qunit-fixture' });
+            .CFW_Tooltip({ placement: 'forward auto', viewport: '#qunit-fixture' });
 
-        $rightTooltip.CFW_Tooltip('show');
-        assert.ok($('.tooltip').is('.left'), 'right positioned tooltip is dynamically positioned left');
+        $forwardTooltip.CFW_Tooltip('show');
+        assert.ok($('.tooltip').is('.reverse'), 'forward positioned tooltip is dynamically positioned reverse');
 
-        $rightTooltip.CFW_Tooltip('hide');
-        assert.strictEqual($('.tooltip').length, 0, 'right positioned tooltip removed from dom');
+        $forwardTooltip.CFW_Tooltip('hide');
+        assert.strictEqual($('.tooltip').length, 0, 'forward positioned tooltip removed from dom');
 
-        var $leftTooltip = $('<div class="trigger" style="left: 0;" title="Left tooltip">Left Dynamic Tooltip</div>')
+        var $reverseTooltip = $('<div class="trigger" style="left: 0;" title="Reverse tooltip">Reverse Dynamic Tooltip</div>')
             .appendTo($container)
-            .CFW_Tooltip({ placement: 'auto left', viewport: '#qunit-fixture' });
+            .CFW_Tooltip({ placement: 'auto reverse', viewport: '#qunit-fixture' });
 
-        $leftTooltip.CFW_Tooltip('show');
-        assert.ok($('.tooltip').is('.right'), 'left positioned tooltip is dynamically positioned right');
+        $reverseTooltip.CFW_Tooltip('show');
+        assert.ok($('.tooltip').is('.forward'), 'reverse positioned tooltip is dynamically positioned forward');
 
-        $leftTooltip.CFW_Tooltip('hide');
-        assert.strictEqual($('.tooltip').length, 0, 'left positioned tooltip removed from dom');
+        $reverseTooltip.CFW_Tooltip('hide');
+        assert.strictEqual($('.tooltip').length, 0, 'reverse positioned tooltip removed from dom');
 
         $container.remove();
         $styles.remove();
@@ -608,7 +608,7 @@ $(function() {
         var $target = $('<a href="#" class="trigger" title="tip" style="top: 0px; left: 0px;"/>')
             .appendTo($container)
             .CFW_Tooltip({
-                placement: 'right',
+                placement: 'forward',
                 viewport: 'body',
                 padding: 12
             });
@@ -634,7 +634,7 @@ $(function() {
         var $target = $('<a href="#" class="trigger" title="tip" style="bottom: 0px; left: 0px;"/>')
             .appendTo($container)
             .CFW_Tooltip({
-                placement: 'right',
+                placement: 'forward',
                 viewport: 'body',
                 padding: 12
             });
@@ -1092,7 +1092,7 @@ $(function() {
                 var $tip = $('.tooltip-body');
                 var tipXrightEdge = $tip.offset().left + $tip.width();
                 var triggerXleftEdge = $trigger.offset().left;
-                assert.ok(tipXrightEdge < triggerXleftEdge, 'tooltip with auto left placement, when near the right edge of the viewport, gets left placement');
+                assert.ok(tipXrightEdge < triggerXleftEdge, 'tooltip with auto reverse placement, when near the right edge of the viewport, gets left placement');
                 $trigger.CFW_Tooltip('hide');
             })
             .on('afterHide.cfw.tooltip', function() {
@@ -1103,7 +1103,7 @@ $(function() {
             })
             .CFW_Tooltip({
                 container: 'body',
-                placement: 'auto left',
+                placement: 'auto reverse',
                 trigger: 'manual'
             });
 

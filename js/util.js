@@ -280,7 +280,7 @@
                 msie: /(msie|trident)/i.test(navigator.userAgent)
             };
             var directionVal = window.getComputedStyle($node[0], null).getPropertyValue('direction').toLowerCase();
-            if ((directionVal) === 'rtl' && (browser.msedge || browser.msie)) {
+            if ((directionVal === 'rtl') && (browser.msedge || browser.msie)) {
                 return 'left';
             }
             return 'right';
