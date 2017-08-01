@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en-us" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <title>Figuration Widget Tests</title>
 
-<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
+<!--<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" /> -->
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration-rtl.css" />
 
 <!--[if lt IE 10]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.24/MutationObserver.min.js" integrity="sha384-8HHYYRe45k4Xq40fi/cZaaby4FJgnOOVmnRzX3OWtwpfiUPfx7tnK2QkDPuIRGm0" crossorigin="anonymous"></script>
@@ -175,6 +176,7 @@ $(window).ready(function() {
 </header>
 
 <main>
+
 <div class="container">
     <div class="row">
 
@@ -543,6 +545,9 @@ $(window).ready(function() {
             <hr />
 
             <h2 id="modal">Modal:</h2>
+            <p>
+                <button type="button" onclick="javascript:console.log($('html').CFW_getScrollbarSide()); return false;">Scrollbar check</button>
+            </p>
 
             <p>
                 <button type="button" class="btn btn-info" id="modal3t" data-cfw="modal" data-cfw-modal-target="#modal3" data-cfw-modal-backdrop="false">Modal: no backdrop</button>
@@ -577,7 +582,7 @@ $(window).ready(function() {
                             <h4>Text in a modal</h4>
                             <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
                             <h4>Popover in a modal</h4>
-                            <p>This <button type="button"  class="btn btn-default" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="right">button</button> should trigger a popover on click.</p>
+                            <p>This <button type="button"  class="btn btn-default" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="forward">button</button> should trigger a popover on click.</p>
                             <h4>Tooltips in a modal</h4>
                             <p><a href="#" data-cfw="tooltip" title="Tooltip">This link</a> and <a href="#" data-cfw="tooltip" title="Tooltip">that link</a> should have tooltips on hover.</p>
                             <h4>Collapse in a modal</h4>
@@ -732,7 +737,7 @@ $(window).ready(function() {
                 <button class="btn btn-default popover-viewport-bottom" title="This should be shifted to the right">Shift Right</button>
                 <button class="btn btn-default popover-viewport-right" title="This should be shifted down">Shift Down</button>
 
-                <button class="btn btn-default float-right popover-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
+                <button class="btn btn-default float-end popover-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
 
                 <button class="btn btn-default popover-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
 
@@ -741,7 +746,7 @@ $(window).ready(function() {
             <script type="text/javascript">
                 $('.popover-viewport-right').CFW_Popover({
                     //trigger: 'hover',
-                    placement: 'right',
+                    placement: 'forward',
                     viewport: '#viewport-popover',
                     padding: 2
                 });
@@ -759,7 +764,7 @@ $(window).ready(function() {
             </script>
 
 
-            <p>
+            <div class="mb-1">
                 <button type="button" class="btn btn-info" id="pop_manual" data-cfw="popover" data-cfw-popover-trigger="manual" data-cfw-popover-target="#popman" data-cfw-popover-drag=true>Popover Manual</button>
                 <a href="#" role="button" onclick="$('#pop_manual').CFW_Popover('show'); return false;">Show</a>
                 <a href="#" role="button" onclick="$('#pop_manual').CFW_Popover('hide'); return false;">Hide</a>
@@ -773,7 +778,7 @@ $(window).ready(function() {
                     </div>
                     <div class="popover-arrow"></div>
                 </div>
-            </p>
+            </div>
 
             <button type="button" class="btn btn-info" id="pop_6" title="Yay, you clicked me!" data-cfw-popover-content="blah">Popover Custom Placement</button>
             <script type="text/javascript">
@@ -939,7 +944,7 @@ $(window).ready(function() {
 
             <strong>Activated Popover:</strong>
             <br />
-            <button type="button" class="btn btn-warning" data-cfw="popover" data-cfw-popover-title="Automatically shown" data-cfw-popover-content="Nifty eh!" data-cfw-popover-placement="right" data-cfw-popover-show=true>Auto show popover</button>
+            <button type="button" class="btn btn-warning" data-cfw="popover" data-cfw-popover-title="Automatically shown" data-cfw-popover-content="Nifty eh!" data-cfw-popover-placement="forward" data-cfw-popover-show=true>Auto show popover</button>
 
             <hr />
 
@@ -954,13 +959,13 @@ $(window).ready(function() {
                 <button class="btn btn-default tooltip-viewport-bottom" title="This should be shifted to the right">Shift Right</button>
                 <button class="btn btn-default tooltip-viewport-right" title="This should be shifted down">Shift Down</button>
 
-                <button class="btn btn-default float-right tooltip-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
+                <button class="btn btn-default float-end tooltip-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
 
                 <button class="btn btn-default tooltip-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
             </div>
             <script type="text/javascript">
                 $('.tooltip-viewport-right').CFW_Tooltip({
-                    placement: 'right',
+                    placement: 'forward',
                     viewport: '#viewport-tooltip',
                     padding: 2
                 });
@@ -978,16 +983,16 @@ $(window).ready(function() {
                 <input type="text" placeholder="click me" title="I have some type of information." id="tip_1" />
                 <br />
                 <label for="tip_2">Something:</label>
-                <input type="text" placeholder="what?" title="I also have information." id="tip_2" data-cfw="tooltip" data-cfw-tooltip-placement="right auto" />
+                <input type="text" placeholder="what?" title="I also have information." id="tip_2" data-cfw="tooltip" data-cfw-tooltip-placement="forward auto" />
                 <br />
                 <label for="tip_3">A counter:</label>
-                <input type="text" placeholder="hover to count++" id="tip_3" data-cfw-tooltip-placement="right auto" />
+                <input type="text" placeholder="hover to count++" id="tip_3" data-cfw-tooltip-placement="forward auto" />
             </form>
             <br />
             <script type="text/javascript">
                 $('#tip_1').CFW_Tooltip({
                     trigger : 'click',
-                    placement: 'auto right'
+                    placement: 'auto forward'
                 });
 
                 var tipCount = 1;
@@ -995,7 +1000,7 @@ $(window).ready(function() {
                     return 'Count: ' + (tipCount++);
                 }
                 $('#tip_3').CFW_Tooltip({
-                    placement: 'auto right',
+                    placement: 'auto forward',
                     title: tipCounter
                 });
             </script>
@@ -1003,7 +1008,7 @@ $(window).ready(function() {
 
             <strong>Activated Tooltip:</strong>
             <br />
-            <button type="button" class="btn btn-warning" data-cfw="tooltip" data-cfw-tooltip-title="Automatically shown" data-cfw-tooltip-placement="right" data-cfw-tooltip-show=true>Auto show tooltip</button>
+            <button type="button" class="btn btn-warning" data-cfw="tooltip" data-cfw-tooltip-title="Automatically shown" data-cfw-tooltip-placement="forward" data-cfw-tooltip-show=true>Auto show tooltip</button>
 
             <hr />
 
@@ -1055,7 +1060,7 @@ $(window).ready(function() {
                 <div class="tab-content">
                     <div class="tab-pane" id="tabpanel1">
                         <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-                        <p>This <button type="button"  class="btn btn-default" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="right">button</button> should trigger a popover on click.</p>
+                        <p>This <button type="button"  class="btn btn-default" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="forward">button</button> should trigger a popover on click.</p>
                     </div>
                     <div class="tab-pane" id="tabpanel2">
                         <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
@@ -1465,9 +1470,9 @@ $(window).ready(function() {
             </div>
 
             <!-- Single button -->
-            <div class="btn-group dropdown-menu-left" style="float: right;">
+            <div class="btn-group dropdown-menu-reverse" style="float: right;">
                 <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-target="#dropdownTest_5" data-cfw-dropdown-backlink=true>
-                    Drop Left
+                    Reverse Dropdown
                 </button>
                 <ul class="dropdown-menu" id="dropdownTest_5">
                     <li class="dropdown-header">Dropdown header</li>
@@ -1860,7 +1865,7 @@ $(window).ready(function() {
                 <h4>Text in a modal</h4>
                 <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
                 <h4>Popover in a modal</h4>
-                <p>This <button type="button"  class="btn btn-default" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="right">button</button> should trigger a popover on click.</p>
+                <p>This <button type="button"  class="btn btn-default" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="forward">button</button> should trigger a popover on click.</p>
                 <h4>Tooltips in a modal</h4>
                 <p><a href="#" data-cfw="tooltip" title="Tooltip">This link</a> and <a href="#" data-cfw="tooltip" title="Tooltip">that link</a> should have tooltips on hover.</p>
                 <h4>Collapse in a modal</h4>

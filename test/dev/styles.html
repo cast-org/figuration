@@ -396,7 +396,7 @@ Holder.addTheme("gray", {
   <footer class="blockquote-footer">Someone famous in <cite>Source Title</cite></footer>
 </blockquote>
 
-<blockquote class="blockquote text-right">
+<blockquote class="blockquote text-end">
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
   <footer class="blockquote-footer">Someone famous in <cite>Source Title</cite></footer>
 </blockquote>
@@ -431,7 +431,7 @@ Showing a <kbd>kdb sample</kbd>
 
 <figure class="figure">
   <img data-src="holder.js/300x200" class="figure-img img-fluid radius-a" alt="A square placeholder image with rounded corners in a figure.">
-  <figcaption class="figure-caption text-right">A caption for the above image.</figcaption>
+  <figcaption class="figure-caption text-end">A caption for the above image.</figcaption>
 </figure>
 
 <figure class="figure">
@@ -999,8 +999,8 @@ Showing a <kbd>kdb sample</kbd>
   </div>
   <div class="form-group row">
       <fieldset class="w-100 clearfix">
-        <legend class="col-sm-2 float-sm-left form-control-legend">Radios</legend>
-        <div class="col-sm-10 float-sm-left">
+        <legend class="col-sm-2 float-sm-start form-control-legend">Radios</legend>
+        <div class="col-sm-10 float-sm-start">
           <div class="form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
@@ -1024,8 +1024,8 @@ Showing a <kbd>kdb sample</kbd>
     </div>
     <div class="form-group row">
       <fieldset class="w-100 clearfix">
-        <legend class="col-sm-2 float-sm-left form-control-legend">Checkbox</legend>
-        <div class="col-sm-10 float-sm-left">
+        <legend class="col-sm-2 float-sm-start form-control-legend">Checkbox</legend>
+        <div class="col-sm-10 float-sm-start">
           <div class="form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="checkbox"> Check me out
@@ -1244,7 +1244,7 @@ Showing a <kbd>kdb sample</kbd>
 <h3>Select sizing test</h3>
 <div class="select-sizing">
     <form class="row">
-      <div class="col-md-2 text-right">
+      <div class="col-md-2 text-end">
         <button type="button" class="btn btn-primary btn-xs">Test</button>
       </div>
       <fieldset class="form-group col-md-5">
@@ -1263,7 +1263,7 @@ Showing a <kbd>kdb sample</kbd>
       </fieldset>
     </form>
     <form class="row">
-      <div class="col-md-2 text-right">
+      <div class="col-md-2 text-end">
         <button type="button" class="btn btn-primary btn-sm">Test</button>
       </div>
       <fieldset class="form-group col-md-5">
@@ -1282,7 +1282,7 @@ Showing a <kbd>kdb sample</kbd>
       </fieldset>
     </form>
     <form class="row">
-      <div class="col-md-2 text-right">
+      <div class="col-md-2 text-end">
         <button type="button" class="btn btn-primary">Test</button>
       </div>
       <fieldset class="form-group col-md-5">
@@ -1301,7 +1301,7 @@ Showing a <kbd>kdb sample</kbd>
       </fieldset>
     </form>
     <form class="row">
-      <div class="col-md-2 text-right">
+      <div class="col-md-2 text-end">
         <button type="button" class="btn btn-primary btn-lg">Test</button>
       </div>
       <fieldset class="form-group col-md-5">
@@ -1320,7 +1320,7 @@ Showing a <kbd>kdb sample</kbd>
       </fieldset>
     </form>
     <form class="row">
-      <div class="col-md-2 text-right">
+      <div class="col-md-2 text-end">
         <button type="button" class="btn btn-primary btn-xl">Test</button>
       </div>
       <fieldset class="form-group col-md-5">
@@ -1716,15 +1716,15 @@ Anchor variants:<br />
 <h3>List group with badges</h3>
 <ul class="list-group">
   <li class="list-group-item">
-    <span class="badge badge-pill float-right">14</span>
+    <span class="badge badge-pill float-end">14</span>
     Cras justo odio
   </li>
   <li class="list-group-item">
-    <span class="badge badge-pill float-right">2</span>
+    <span class="badge badge-pill float-end">2</span>
     Dapibus ac facilisis in
   </li>
   <li class="list-group-item">
-    <span class="badge badge-pill float-right">1</span>
+    <span class="badge badge-pill float-end">1</span>
     Morbi leo risus
   </li>
 </ul>
@@ -2015,11 +2015,11 @@ Anchor variants:<br />
   <div class="col-lg-6">
     <div class="input-group">
       <input type="text" class="form-control" aria-label="Text input with dropdown button">
-      <div class="input-group-btn">
+      <div class="input-group-btn dropdown-menu-reverse">
         <button type="button" class="btn btn-secondary dropdown-toggle" data-cfw="dropdown">
           Action
         </button>
-        <ul class="dropdown-menu dropdown-menu-right">
+        <ul class="dropdown-menu">
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
           <li><a href="#">Something else here</a></li>
@@ -2054,7 +2054,7 @@ Anchor variants:<br />
   <div class="col-lg-6">
     <div class="input-group">
       <input type="text" class="form-control" aria-label="Text input with segmented button dropdown">
-      <div class="input-group-btn">
+      <div class="input-group-btn dropdown-menu-reverse">
         <button type="button" class="btn btn-secondary">Action</button>
         <button type="button" class="btn btn-secondary dropdown-toggle" data-cfw="dropdown">
           <span class="sr-only">Toggle Dropdown</span>
@@ -2442,7 +2442,7 @@ Anchor variants:<br />
         </ul>
     </div>
 
-    <div class="btn-group dropdown-menu-left" style="float: right;">
+    <div class="btn-group dropdown-menu-reverse" style="float: right;">
         <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
             Drop Left <!-- <span class="caret" aria-hidden="true"></span> -->
         </button>
@@ -2510,17 +2510,17 @@ Anchor variants:<br />
     <ul class="dropdown-menu">
         <li class="dropdown-header">Dropdown header</li>
         <li><a href="#">Action</a></li>
-        <li class="dropdown-menu-left">
+        <li class="dropdown-menu-reverse">
             <a href="#">Left menu</a>
             <ul>
-                <li class="dropdown-menu-left">
+                <li class="dropdown-menu-reverse">
                     <a href="#">Left menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-menu-right">
+                <li class="dropdown-menu-forward">
                     <a href="#">Right menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
@@ -2529,17 +2529,17 @@ Anchor variants:<br />
                 </li>
             </ul>
         </li>
-        <li class="dropdown-menu-right">
+        <li class="dropdown-menu-forward">
             <a href="#">Right menu</a>
             <ul>
-                <li class="dropdown-menu-left">
+                <li class="dropdown-menu-reverse">
                     <a href="#">Left menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-menu-right">
+                <li class="dropdown-menu-forward">
                     <a href="#">Right menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
@@ -2553,24 +2553,24 @@ Anchor variants:<br />
     </ul>
 </div>
 
-<div class="btn-group dropdown-menu-right">
+<div class="btn-group dropdown-menu-forward">
     <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
         Drop Right <!-- <span class="caret" aria-hidden="true"></span> -->
     </button>
     <ul class="dropdown-menu">
         <li class="dropdown-header">Dropdown header</li>
         <li><a href="#">Action</a></li>
-        <li class="dropdown-menu-left">
+        <li class="dropdown-menu-reverse">
             <a href="#">Left menu</a>
             <ul>
-                <li class="dropdown-menu-left">
+                <li class="dropdown-menu-reverse">
                     <a href="#">Left menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-menu-right">
+                <li class="dropdown-menu-forward">
                     <a href="#">Right menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
@@ -2579,17 +2579,17 @@ Anchor variants:<br />
                 </li>
             </ul>
         </li>
-        <li class="dropdown-menu-right">
+        <li class="dropdown-menu-forward">
             <a href="#">Right menu</a>
             <ul>
-                <li class="dropdown-menu-left">
+                <li class="dropdown-menu-reverse">
                     <a href="#">Left menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-menu-right">
+                <li class="dropdown-menu-forward">
                     <a href="#">Right menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
@@ -2603,24 +2603,24 @@ Anchor variants:<br />
     </ul>
 </div>
 
-<div class="btn-group dropdown-menu-left" style="float: right;">
+<div class="btn-group dropdown-menu-reverse" style="float: right;">
     <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
         Drop Left <!-- <span class="caret" aria-hidden="true"></span> -->
     </button>
     <ul class="dropdown-menu">
         <li class="dropdown-header">Dropdown header</li>
         <li><a href="#">Action</a></li>
-        <li class="dropdown-menu-left">
+        <li class="dropdown-menu-reverse">
             <a href="#">Left menu</a>
             <ul>
-                <li class="dropdown-menu-left">
+                <li class="dropdown-menu-reverse">
                     <a href="#">Left menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-menu-right">
+                <li class="dropdown-menu-forward">
                     <a href="#">Right menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
@@ -2629,17 +2629,17 @@ Anchor variants:<br />
                 </li>
             </ul>
         </li>
-        <li class="dropdown-menu-right">
+        <li class="dropdown-menu-forward">
             <a href="#">Right menu</a>
             <ul>
-                <li class="dropdown-menu-left">
+                <li class="dropdown-menu-reverse">
                     <a href="#">Left menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-menu-right">
+                <li class="dropdown-menu-forward">
                     <a href="#">Right menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
@@ -2662,17 +2662,17 @@ Anchor variants:<br />
     <ul class="dropdown-menu">
         <li class="dropdown-header">Dropdown header</li>
         <li><a href="#">Action</a></li>
-        <li class="dropdown-menu-left">
+        <li class="dropdown-menu-reverse">
             <a href="#">Left menu</a>
             <ul>
-                <li class="dropdown-menu-left">
+                <li class="dropdown-menu-reverse">
                     <a href="#">Left menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-menu-right">
+                <li class="dropdown-menu-forward">
                     <a href="#">Right menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
@@ -2681,17 +2681,17 @@ Anchor variants:<br />
                 </li>
             </ul>
         </li>
-        <li class="dropdown-menu-right">
+        <li class="dropdown-menu-forward">
             <a href="#">Right menu</a>
             <ul>
-                <li class="dropdown-menu-left">
+                <li class="dropdown-menu-reverse">
                     <a href="#">Left menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-menu-right">
+                <li class="dropdown-menu-forward">
                     <a href="#">Right menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
@@ -2706,24 +2706,24 @@ Anchor variants:<br />
 </div>
 
 
-<div class="btn-group dropup dropdown-menu-right">
+<div class="btn-group dropup dropdown-menu-forward">
     <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true" data-cfw-dropdown-backtop="true">
         Dropup Right
     </button>
     <ul class="dropdown-menu">
         <li class="dropdown-header">Dropdown header</li>
         <li><a href="#">Action</a></li>
-        <li class="dropdown-menu-left">
+        <li class="dropdown-menu-reverse">
             <a href="#">Left menu</a>
             <ul>
-                <li class="dropdown-menu-left">
+                <li class="dropdown-menu-reverse">
                     <a href="#">Left menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-menu-right">
+                <li class="dropdown-menu-forward">
                     <a href="#">Right menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
@@ -2732,17 +2732,17 @@ Anchor variants:<br />
                 </li>
             </ul>
         </li>
-        <li class="dropdown-menu-right">
+        <li class="dropdown-menu-forward">
             <a href="#">Right menu</a>
             <ul>
-                <li class="dropdown-menu-left">
+                <li class="dropdown-menu-reverse">
                     <a href="#">Left menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-menu-right">
+                <li class="dropdown-menu-forward">
                     <a href="#">Right menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
@@ -2756,24 +2756,24 @@ Anchor variants:<br />
     </ul>
 </div>
 
-<div class="btn-group dropup dropdown-menu-left">
+<div class="btn-group dropup dropdown-menu-reverse">
     <button type="button" class="btn dropdown-toggle" data-cfw="dropdown data-cfw-dropdown-backlink="true" data-cfw-dropdown-backtop="true">
         Dropup Left
     </button>
     <ul class="dropdown-menu">
         <li class="dropdown-header">Dropdown header</li>
         <li><a href="#">Action</a></li>
-        <li class="dropdown-menu-left">
+        <li class="dropdown-menu-reverse">
             <a href="#">Left menu</a>
             <ul>
-                <li class="dropdown-menu-left">
+                <li class="dropdown-menu-reverse">
                     <a href="#">Left menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-menu-right">
+                <li class="dropdown-menu-forward">
                     <a href="#">Right menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
@@ -2782,17 +2782,17 @@ Anchor variants:<br />
                 </li>
             </ul>
         </li>
-        <li class="dropdown-menu-right">
+        <li class="dropdown-menu-forward">
             <a href="#">Right menu</a>
             <ul>
-                <li class="dropdown-menu-left">
+                <li class="dropdown-menu-reverse">
                     <a href="#">Left menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-menu-right">
+                <li class="dropdown-menu-forward">
                     <a href="#">Right menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
@@ -3089,7 +3089,7 @@ Anchor variants:<br />
 <small>resize screen below 'md' breakpoint</small><br />
 <nav class="navbar navbar-light bg-faded mb-1">
   <a class="navbar-brand" href="#">Responsive navbar</a>
-  <button class="navbar-toggle d-lg-none float-right" type="button" data-cfw="collapse" data-cfw-collapse-target="#exCollapsingNavbar2" aria-label="Toggle navigation">
+  <button class="navbar-toggle d-lg-none float-end" type="button" data-cfw="collapse" data-cfw-collapse-target="#exCollapsingNavbar2" aria-label="Toggle navigation">
     <span class="icon-menu" aria-hidden="true">&#8801;</span>
   </button>
   <div class="collapse navbar-toggleable-md" id="exCollapsingNavbar2">
@@ -3469,7 +3469,7 @@ Anchor variants:<br />
       </div>
     </div>
 
-    <div class="card text-right">
+    <div class="card text-end">
       <div class="card-body">
         <h4 class="card-title">Special title treatment</h4>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -3844,7 +3844,7 @@ Anchor variants:<br />
   <div class="card">
     <img class="card-img img-fluid" data-src="holder.js/100px200" alt="Card image" />
   </div>
-  <div class="card text-right">
+  <div class="card text-end">
     <div class="card-body">
       <blockquote class="blockquote">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
@@ -3962,13 +3962,13 @@ Anchor variants:<br />
 <button type="button" class="btn" data-cfw="tooltip" data-cfw-tooltip-placement="top" title="Tooltip on top">
   Tooltip on top
 </button>
-<button type="button" class="btn" data-cfw="tooltip" data-cfw-tooltip-placement="right" title="Tooltip on right">
+<button type="button" class="btn" data-cfw="tooltip" data-cfw-tooltip-placement="forward" title="Tooltip forward">
   Tooltip on right
 </button>
 <button type="button" class="btn" data-cfw="tooltip" data-cfw-tooltip-placement="bottom" title="Tooltip on bottom">
   Tooltip on bottom
 </button>
-<button type="button" class="btn" data-cfw="tooltip" data-cfw-tooltip-placement="left" title="Tooltip on left">
+<button type="button" class="btn" data-cfw="tooltip" data-cfw-tooltip-placement="reverse" title="Tooltip reverse">
   Tooltip on left
 </button>
 </p>
@@ -3983,8 +3983,8 @@ Anchor variants:<br />
     <div class="popover-arrow"></div>
   </div>
 
-  <div class="popover right">
-    <h3 class="popover-header">Popover right</h3>
+  <div class="popover forward">
+    <h3 class="popover-header">Popover forward</h3>
     <div class="popover-body">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
@@ -3999,8 +3999,8 @@ Anchor variants:<br />
     <div class="popover-arrow"></div>
   </div>
 
-  <div class="popover left">
-    <h3 class="popover-header">Popover left</h3>
+  <div class="popover reverse">
+    <h3 class="popover-header">Popover reverse</h3>
     <div class="popover-body">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
@@ -4016,7 +4016,7 @@ Anchor variants:<br />
   Popover on top
 </button>
 
-<button type="button" class="btn" data-cfw-popover-container="body" data-cfw="popover" data-cfw-popover-placement="right" data-cfw-popover-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+<button type="button" class="btn" data-cfw-popover-container="body" data-cfw="popover" data-cfw-popover-placement="forward" data-cfw-popover-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
   Popover on right
 </button>
 
@@ -4024,7 +4024,7 @@ Anchor variants:<br />
   Popover on bottom
 </button>
 
-<button type="button" class="btn" data-cfw-popover-container="body" data-cfw="popover" data-cfw-popover-placement="left" data-cfw-popover-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+<button type="button" class="btn" data-cfw-popover-container="body" data-cfw="popover" data-cfw-popover-placement="reverse" data-cfw-popover-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
   Popover on left
 </button>
 </p>

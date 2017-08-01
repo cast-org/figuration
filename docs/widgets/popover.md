@@ -36,7 +36,9 @@ Important notes about using the popover widget:
 
 ### Static Popover
 
-Four options are available: top, right, bottom, and left aligned.
+Four options are available: top, forward( right), bottom, and reverse (left) aligned.
+
+**Heads up!** When using the right-to-left, `rtl`, variant of Figuration all horizontal directions will be reversed.  Meaning left becomes right, and vice-versa.
 
 <div class="cf-example cf-example-bottom cf-example-popover">
     <div class="popover top">
@@ -47,8 +49,8 @@ Four options are available: top, right, bottom, and left aligned.
         <div class="popover-arrow"></div>
     </div>
 
-    <div class="popover right">
-        <h3 class="popover-header">Popover right</h3>
+    <div class="popover forward">
+        <h3 class="popover-header">Forward popover</h3>
         <div class="popover-body">
             <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         </div>
@@ -63,8 +65,8 @@ Four options are available: top, right, bottom, and left aligned.
         <div class="popover-arrow"></div>
     </div>
 
-    <div class="popover left">
-        <h3 class="popover-header">Popover left</h3>
+    <div class="popover reverse">
+        <h3 class="popover-header">Reverse popover</h3>
         <div class="popover-body">
             <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         </div>
@@ -79,29 +81,29 @@ Four options are available: top, right, bottom, and left aligned.
   Popover on top
 </button>
 
-<button type="button" class="btn" data-cfw="popover" data-cfw-popover-container="body" data-cfw-popover-placement="right" data-cfw-popover-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-  Popover on right
+<button type="button" class="btn" data-cfw="popover" data-cfw-popover-container="body" data-cfw-popover-placement="forward" data-cfw-popover-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Forward popover
 </button>
 
 <button type="button" class="btn" data-cfw="popover" data-cfw-popover-container="body" data-cfw-popover-placement="bottom" data-cfw-popover-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
   Popover on bottom
 </button>
 
-<button type="button" class="btn" data-cfw="popover" data-cfw-popover-container="body" data-cfw-popover-placement="left" data-cfw-popover-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-  Popover on left
+<button type="button" class="btn" data-cfw="popover" data-cfw-popover-container="body" data-cfw-popover-placement="reverse" data-cfw-popover-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Reverse popover
 </button>
 {% endexample %}
 
 ### Default Toggle Example
 
 {% example html %}
-<button type="button" class="btn btn-info" data-cfw="popover" title="Click Popover Example" data-cfw-popover-content="Click the trigger or close button to close me." data-cfw-popover-placement="right">Click to toggle popover</button>
+<button type="button" class="btn btn-info" data-cfw="popover" title="Click Popover Example" data-cfw-popover-content="Click the trigger or close button to close me." data-cfw-popover-placement="forward">Click to toggle popover</button>
 {% endexample %}
 
 ### Hover Example
 
 {% example html %}
-<button type="button" class="btn btn-info" id="cf-example-hover-popover" data-cfw="popover" title="Hover Popover Example" data-cfw-popover-content="Stop hovering over the trigger or the popover to auto-close." data-cfw-popover-placement="right" data-cfw-popover-trigger="hover focus">Hover/focus to show popover</button>
+<button type="button" class="btn btn-info" id="cf-example-hover-popover" data-cfw="popover" title="Hover Popover Example" data-cfw-popover-content="Stop hovering over the trigger or the popover to auto-close." data-cfw-popover-placement="forward" data-cfw-popover-trigger="hover focus">Hover/focus to show popover</button>
 {% endexample %}
 
 <script>
@@ -115,13 +117,13 @@ Four options are available: top, right, bottom, and left aligned.
 Allow users to move popovers around the screen by enabling the `drag` option.  Drag support mouse, keyboard (with arrow keys), and touch movement.
 
 {% example html %}
-<button type="button" class="btn btn-info" data-cfw="popover" title="Draggable Popover Example" data-cfw-popover-content="Click the trigger or close link to close me." data-cfw-popover-placement="right" data-cfw-popover-drag="true">Draggable popover</button>
+<button type="button" class="btn btn-info" data-cfw="popover" title="Draggable Popover Example" data-cfw-popover-content="Click the trigger or close link to close me." data-cfw-popover-placement="forward" data-cfw-popover-drag="true">Draggable popover</button>
 {% endexample %}
 
 ### Popover with HTML
 
 {% example html %}
-<button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-html="true" data-cfw-popover-placement="right" data-cfw-popover-content="<em>Popover</em> <u>with</u> <b>HTML</b>" title="<em>Popover</em> <u>with</u> <b>HTML</b>">Popover with HTML</button>
+<button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-html="true" data-cfw-popover-placement="forward" data-cfw-popover-content="<em>Popover</em> <u>with</u> <b>HTML</b>" title="<em>Popover</em> <u>with</u> <b>HTML</b>">Popover with HTML</button>
 {% endexample %}
 
 If using more complex HTML, using a data attribute might not be optimal.  A better option would be to use the Javascript options, or with a pre-generated popover, as shown in the following example.
@@ -140,10 +142,10 @@ $('#html-popover').CFW_Popover({
 
 ### Pre-generated Popover
 
-Have a complex content that you would like to show in a popover, or one that is updated dynamically?  Create the popover and then link to it with the `toggle` option.
+Have a complex content that you would like to show in a popover, or one that is updated dynamically?  Create the popover and then link to it with the `target` option.
 
 {% example html %}
-<button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-target="#popoverExample0" data-cfw-popover-placement="right">Show Popover</button>
+<button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-target="#popoverExample0" data-cfw-popover-placement="forward">Show Popover</button>
 
 <div class="popover" id="popoverExample0">
     <h3 class="popover-header">Popover title</h3>
@@ -190,7 +192,7 @@ Keep popovers in their place with the `viewport` option.
 
     <button class="btn btn-info popover-viewport-right" title="This should be shifted down">Shift Down</button>
 
-    <button class="btn btn-info float-right popover-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
+    <button class="btn btn-info float-end popover-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
 
     <button class="btn btn-info popover-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
 
@@ -198,7 +200,7 @@ Keep popovers in their place with the `viewport` option.
 </div>
 <script>
     $('.popover-viewport-right').CFW_Popover({
-        placement: 'right',
+        placement: 'forward',
         viewport: '#viewport-popover',
         padding: 2
     });
@@ -249,7 +251,7 @@ Draggable popovers will force the following settings:
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-popover`, as in `data-cfw-popover-placement="right"`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-popover`, as in `data-cfw-popover-placement="forward"`.
 
 <table class="table table-scroll table-bordered table-striped">
 <thead>
@@ -280,9 +282,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>
             <p>
                 <strong>string:</strong><br />
-                How to position the popover - top | bottom | left | right | auto.
+                How to position the popover - top | bottom | reverse | forward | auto.
                 <br />
-                When "auto" is specified, it will dynamically reorient the popover. For example, if placement is "auto left", the popover will display to the left when possible, otherwise it will display right.
+                When "auto" is specified, it will dynamically reorient the popover. For example, if placement is "auto reverse", the popover will display to the left when possible, otherwise it will display right. (Opposite horizontal directions apply for <code>rtl</code> mode.)
             </p>
             <p>
                 <strong>object:</strong><br />
@@ -425,7 +427,7 @@ Activates a popover on a given element. Accepts an optional options `object`.
 
 {% highlight js %}
 $('#myPopover').CFW_Popover({
-    placement: 'right'
+    placement: 'forward'
 });
 {% endhighlight %}
 

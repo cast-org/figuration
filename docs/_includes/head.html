@@ -17,9 +17,9 @@
 
 <!-- Core CSS -->
 {% if site.github %}
-  <link href="{{ site.baseurl }}/dist/css/figuration.min.css" rel="stylesheet">
+  <link href="{{ site.baseurl }}/dist/css/figuration.min.css" rel="stylesheet" id="cssCore">
 {% else %}
-  <link href="{{ site.baseurl }}/dist/css/figuration.css" rel="stylesheet">
+  <link href="{{ site.baseurl }}/dist/css/figuration.css" rel="stylesheet" id="cssCore">
 {% endif %}
 
 <!-- Algolia DocSearch CSS -->
@@ -29,9 +29,9 @@
 
 <!-- Docs CSS -->
 {% if site.github %}
-  <link href="{{ site.baseurl }}/assets/css/docs.min.css" rel="stylesheet">
+  <link href="{{ site.baseurl }}/assets/css/docs.min.css" rel="stylesheet" id="cssDocs">
 {% else %}
-  <link href="{{ site.baseurl }}/assets/css/docs.css" rel="stylesheet">
+  <link href="{{ site.baseurl }}/assets/css/docs.css" rel="stylesheet" id="cssDocs">
 {% endif %}
 
 <!-- jQuery -->

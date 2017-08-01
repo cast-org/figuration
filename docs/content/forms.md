@@ -391,8 +391,8 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
     </div>
     <div class="form-group row">
       <fieldset class="w-100 clearfix">
-        <legend class="col-sm-2 float-sm-left form-control-legend">Radios</legend>
-        <div class="col-sm-10 float-sm-left">
+        <legend class="col-sm-2 float-sm-start form-control-legend">Radios</legend>
+        <div class="col-sm-10 float-sm-start">
           <div class="form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
@@ -416,8 +416,8 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
     </div>
     <div class="form-group row">
       <fieldset class="w-100 clearfix">
-        <legend class="col-sm-2 float-sm-left form-control-legend">Checkbox</legend>
-        <div class="col-sm-10 float-sm-left">
+        <legend class="col-sm-2 float-sm-start form-control-legend">Checkbox</legend>
+        <div class="col-sm-10 float-sm-start">
           <div class="form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="checkbox"> Check me out

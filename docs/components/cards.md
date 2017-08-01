@@ -327,7 +327,7 @@ You can quickly change the text alignment of any card---in its entirety or speci
   </div>
 </div>
 
-<div class="card text-right" style="width: 20rem;">
+<div class="card text-end" style="width: 20rem;">
   <div class="card-body">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -826,7 +826,7 @@ Responsive variants are available with the class syntax of `.card-columns{-break
   <div class="card">
     <img class="card-img img-fluid" data-src="holder.js/100px260/" alt="Card image">
   </div>
-  <div class="card text-right">
+  <div class="card text-end">
     <div class="card-body">
       <blockquote class="blockquote">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>

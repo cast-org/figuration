@@ -191,11 +191,11 @@ The only special case is where there are `*-up` or `*-down` variants for certain
 A quick example using some of Figuration's [Typography utility classes]({{ site.baseurl }}/utilities/typography).
 
 {% example html %}
-<p class="text-right">Right aligned text on all viewport sizes. (<strong>No <code>xs</code> class designation!</strong>)</p>
-<p class="text-sm-right">Right aligned text on viewports sized SM (small) or wider.</p>
-<p class="text-md-right">Right aligned text on viewports sized MD (medium) or wider.</p>
-<p class="text-lg-right">Right aligned text on viewports sized LG (large) or wider.</p>
-<p class="text-xl-right">Right aligned text on viewports sized XL (extra-large) or wider.</p>
+<p class="text-end">Right aligned text on all viewport sizes. (<strong>No <code>xs</code> class designation!</strong>)</p>
+<p class="text-sm-end">Right aligned text on viewports sized SM (small) or wider.</p>
+<p class="text-md-end">Right aligned text on viewports sized MD (medium) or wider.</p>
+<p class="text-lg-end">Right aligned text on viewports sized LG (large) or wider.</p>
+<p class="text-xl-end">Right aligned text on viewports sized XL (extra-large) or wider.</p>
 {% endexample %}
 
 ## Z-index

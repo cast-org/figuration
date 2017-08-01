@@ -94,6 +94,11 @@ $docs-color: #246;
         padding-right: .5rem;
         padding-left: .5rem;
     }
+
+    .dropdown-menu {
+        position: absolute !important;
+        float: left !important;
+    }
 }
 
 .cf-header-menu {
@@ -155,6 +160,7 @@ $docs-color: #246;
 
     .logo-home {
         display: block;
+        width: 100%;
         margin: 0 auto;
         filter: drop-shadow(0 0 7px rgba(255,255,255,.15));
     }
@@ -224,7 +230,7 @@ $docs-color: #246;
     position: relative;
     z-index: 2;
     display: block;
-    float: right;
+    float: right #{"/*rtl:ignore*/"};
     line-height: 1;
 
     + .highlight {
@@ -238,7 +244,7 @@ $docs-color: #246;
 .btn-clipboard {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 0 #{"/*rtl:ignore*/"};
 }
 
 // TOC
@@ -425,9 +431,12 @@ h4 {
     border: 1px solid #e1e1e8;
     border-radius: .25rem;
 
+    // Use SASS interpolation syntax, for passing comment as string
     pre {
+        direction: ltr #{"/*rtl:ignore*/"};
         padding: 1.65rem 1rem .5rem;
         margin: 0;
+        text-align: left #{"/*rtl:ignore*/"};
         background-color: transparent;
         border: 0;
     }

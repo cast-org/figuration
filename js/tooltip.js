@@ -14,7 +14,7 @@
 
     CFW_Widget_Tooltip.DEFAULTS = {
         target          : false,            // Target selector
-        placement       : 'top',            // Where to locate tooltip (top/bottom/left/right/auto)
+        placement       : 'top',            // Where to locate tooltip (top/bottom/reverse(left))/forward(right)/auto)
         trigger         : 'hover focus',    // How tooltip is triggered (click/hover/focus/manual)
         animate         : true,             // Should the tooltip fade in and out
         delay : {
@@ -145,7 +145,7 @@
                 }
             }
 
-            $tip.removeClass('fade in top bottom left right');
+            $tip.removeClass('fade in top bottom reverse forward');
         },
 
         linkTip : function() {
@@ -568,12 +568,13 @@
         locateTip : function() {
             var $tip = this.$target;
 
-            $tip.removeClass('top left bottom right')
+            $tip.removeClass('top reverse bottom forward')
                 .css({ top: 0, left: 0, display: 'block' });
 
             var placement = typeof this.settings.placement == 'function' ?
                 this.settings.placement.call(this, this.$target[0], this.$element[0]) :
                 this.settings.placement;
+            var directionVal = window.getComputedStyle($('html')[0], null).getPropertyValue('direction').toLowerCase();
 
             this._insertTip(placement);
 
@@ -600,17 +601,26 @@
 
                 var viewportDim = this.getViewportBounds();
 
-                placement = placement == 'bottom' && pos.bottom + actualHeight > viewportDim.bottom ? 'top'    :
-                            placement == 'top'    && pos.top    - actualHeight < viewportDim.top    ? 'bottom' :
-                            placement == 'right'  && pos.right  + actualWidth  > viewportDim.width  ? 'left'   :
-                            placement == 'left'   && pos.left   - actualWidth  < viewportDim.left   ? 'right'  :
-                            placement;
+                if (directionVal === 'rtl') {
+                    placement = placement == 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
+                                placement == 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
+                                placement == 'reverse' && pos.left   - actualWidth  > viewportDim.left   ? 'forward' :
+                                placement == 'forward' && pos.right  + actualWidth  < viewportDim.width  ? 'reverse' :
+                                placement;
+
+                } else {
+                    placement = placement == 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
+                                placement == 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
+                                placement == 'forward' && pos.right  + actualWidth  > viewportDim.width  ? 'reverse' :
+                                placement == 'reverse' && pos.left   - actualWidth  < viewportDim.left   ? 'forward' :
+                                placement;
+                }
 
                 $tip.removeClass(orgPlacement)
                     .addClass(placement);
             }
 
-            var calculatedOffset = this._getCalculatedOffset(placement, pos, actualWidth, actualHeight);
+            var calculatedOffset = this._getCalculatedOffset(placement, pos, actualWidth, actualHeight, directionVal);
 
             this._applyPlacement(calculatedOffset, placement);
         },
@@ -739,11 +749,19 @@
             return $.extend({}, elRect, scroll, outerDims, elOffset);
         },
 
-        _getCalculatedOffset : function(placement, pos, actualWidth, actualHeight) {
-            return placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 } :
-                   placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 } :
-                   placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-                /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
+        _getCalculatedOffset : function(placement, pos, actualWidth, actualHeight, directionVal) {
+            if (directionVal === 'rtl') {
+                return placement == 'bottom'   ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 }  :
+                       placement == 'top'      ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }  :
+                       placement == 'forward'  ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
+                    /* placement == 'reverse' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
+            } else {
+                return placement == 'bottom'    ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 }  :
+                       placement == 'top'       ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }  :
+                       placement == 'reverse'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
+                    /* placement == 'forward' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
+            }
+
         },
 
         _applyPlacement : function(offset, placement) {
@@ -824,7 +842,7 @@
             var viewportPadding = this.settings.padding;
             var viewportDimensions = this.getViewportBounds();
 
-            if (/right|left/.test(placement)) {
+            if (/forward|reverse/.test(placement)) {
                 var topEdgeOffset    = pos.top - viewportPadding;
                 var bottomEdgeOffset = pos.top + viewportPadding + actualHeight;
 

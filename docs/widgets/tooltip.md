@@ -23,7 +23,9 @@ Important notes about using the tooltip widget:
 
 ### Static Tooltip
 
-Four options are available: top, right, bottom, and left aligned.
+Four options are available: top, forward (right), bottom, and reverse (left) aligned.
+
+**Heads up!** When using the right-to-left, `rtl`, variant of Figuration all horizontal directions will be reversed.  Meaning left becomes right, and vice-versa.
 
 <div class="cf-example cf-example-bottom cf-example-tooltip">
     <div class="tooltip top" role="tooltip">
@@ -33,9 +35,9 @@ Four options are available: top, right, bottom, and left aligned.
         <div class="tooltip-arrow"></div>
     </div>
 
-    <div class="tooltip right" role="tooltip">
+    <div class="tooltip forward" role="tooltip">
         <div class="tooltip-body">
-            Tooltip on the right
+            Forward tooltip
         </div>
         <div class="tooltip-arrow"></div>
     </div>
@@ -47,9 +49,9 @@ Four options are available: top, right, bottom, and left aligned.
         <div class="tooltip-arrow"></div>
     </div>
 
-    <div class="tooltip left" role="tooltip">
+    <div class="tooltip reverse" role="tooltip">
         <div class="tooltip-body">
-            Tooltip on the left
+            Reverse tooltip
         </div>
         <div class="tooltip-arrow"></div>
     </div>
@@ -62,16 +64,16 @@ Four options are available: top, right, bottom, and left aligned.
     Tooltip on top
 </button>
 
-<button type="button" class="btn" data-cfw="tooltip" data-cfw-tooltip-container="body" data-cfw-tooltip-placement="right" title="Tooltip on right">
-    Tooltip on right
+<button type="button" class="btn" data-cfw="tooltip" data-cfw-tooltip-container="body" data-cfw-tooltip-placement="forward" title="Forward tooltip">
+    Forward tooltip
 </button>
 
 <button type="button" class="btn" data-cfw="tooltip" data-cfw-tooltip-container="body" data-cfw-tooltip-placement="bottom" title="Tooltip on bottom">
     Tooltip on bottom
 </button>
 
-<button type="button" class="btn" data-cfw="tooltip" data-cfw-tooltip-container="body" data-cfw-tooltip-placement="left" title="Tooltip on left">
-    Tooltip on left
+<button type="button" class="btn" data-cfw="tooltip" data-cfw-tooltip-container="body" data-cfw-tooltip-placement="reverse" title="Reverse tooltip">
+    Reverse tooltip
 </button>
 {% endexample %}
 
@@ -92,13 +94,13 @@ Four options are available: top, right, bottom, and left aligned.
 ### Toggle Example
 
 {% example html %}
-<button type="button" class="btn btn-info" data-cfw="tooltip" title="Click the trigger or close button to close me." data-cfw-tooltip-placement="right" data-cfw-tooltip-trigger="click">Click to toggle tooltip</button>
+<button type="button" class="btn btn-info" data-cfw="tooltip" title="Click the trigger or close button to close me." data-cfw-tooltip-placement="forward" data-cfw-tooltip-trigger="click">Click to toggle tooltip</button>
 {% endexample %}
 
 ### Tooltip with HTML
 
 {% example html %}
-<button type="button" class="btn btn-info" data-cfw="tooltip" data-cfw-tooltip-html="true" data-cfw-tooltip-placement="right" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Tooltip with HTML</button>
+<button type="button" class="btn btn-info" data-cfw="tooltip" data-cfw-tooltip-html="true" data-cfw-tooltip-placement="forward" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Tooltip with HTML</button>
 {% endexample %}
 
 When using more complex HTML, using a data attribute might not be optimal.  A better option would be to use the Javascript options.
@@ -109,7 +111,7 @@ When using more complex HTML, using a data attribute might not be optimal.  A be
 <script>
 $('#html-tooltip').CFW_Tooltip({
     html: true,
-    placement: 'right',
+    placement: 'forward',
     title: '<span aria-hidden="true">&middot;</span> <em>Tooltip</em> <u>with</u> <b>HTML</b>'
 });
 </script>
@@ -127,13 +129,13 @@ Keep tooltips in their place with the `viewport` option.
 
     <button type="button" class="btn btn-default tooltip-viewport-right" title="This should be shifted down">Shift Down</button>
 
-    <button type="button" class="btn btn-default float-right tooltip-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
+    <button type="button" class="btn btn-default float-end tooltip-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
 
     <button type="button" class="btn btn-default tooltip-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
 </div>
 <script>
     $('.tooltip-viewport-right').CFW_Tooltip({
-        placement: 'right',
+        placement: 'forward',
         viewport: '#viewport-tooltip',
         padding: 2
     });
@@ -169,7 +171,7 @@ Any element with a data attribute of `data-cfw-dismiss="tooltip"` within the too
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-tooltip`, as in `data-cfw-tooltip-placement="right"`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-tooltip`, as in `data-cfw-tooltip-placement="forward"`.
 
 <table class="table table-scroll table-bordered table-striped">
 <thead>
@@ -182,10 +184,10 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 </thead>
 <tbody>
     <tr>
-        <td>toggle</td>
+        <td>target</td>
         <td>string</td>
         <td>null</td>
-        <td>Either the selector (jQuery style), or the string related to the target tooltip having a <code>data-cfw-tooltip-target</code> attribute.</td>
+        <td>The selector (jQuery style) of the target popover.</td>
     </tr>
     <tr>
         <td>animate</td>
@@ -200,9 +202,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>
             <p>
                 <strong>string:</strong><br />
-                How to position the tooltip - top | bottom | left | right | auto.
+                How to position the tooltip - top | bottom | reverse | forward| auto.
                 <br />
-                When "auto" is specified, it will dynamically reorient the tooltip. For example, if placement is "auto left", the tooltip will display to the left when possible, otherwise it will display right.
+                When "auto" is specified, it will dynamically reorient the tooltip. For example, if placement is "auto reverse", the tooltip will display to the left when possible, otherwise it will display right. (Opposite horizontal directions apply for <code>rtl</code> mode.)
             </p>
             <p>
                 <strong>object:</strong><br />
@@ -324,7 +326,7 @@ Activates a tooltip on a given element. Accepts an optional options `object`.
 
 {% highlight js %}
 $('#myTooltip').CFW_Tooltip({
-    placement: 'right'
+    placement: 'forward'
 });
 {% endhighlight %}
 

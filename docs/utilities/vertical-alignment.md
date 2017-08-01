@@ -63,7 +63,7 @@ Slightly more complex uses, such as being able to align items in a row, become q
         <a href="#">View more in teacher's guide</a> |
         <a href="#">Common Core alignment</a>
     </div>
-    <div class="d-table-cell valign-bottom text-right">
+    <div class="d-table-cell valign-bottom text-end">
         <button type="button" class="btn btn-primary btn-lg">Continue</button>
     </div>
 </div>

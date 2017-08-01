@@ -33,26 +33,26 @@ The following example shows how the clearfix can be used. Without the clearfix t
 <div class="cf-example">
     <strong>With <code>.clearfix</code></strong>
     <div class="bg-info clearfix mb-1">
-        <button class="btn float-left">Button floated left</button>
-        <button class="btn float-right">Button floated right</button>
+        <button class="btn float-start">Button floated to start</button>
+        <button class="btn float-end">Button floated to end</button>
     </div>
 
     <strong>Without <code>.clearfix</code></strong>
     <div class="bg-info">
-        <button class="btn float-left">Button floated left</button>
-        <button class="btn float-right">Button floated right</button>
+        <button class="btn float-start">Button floated to start</button>
+        <button class="btn float-end">Button floated to end</button>
     </div>
 </div>
 {% highlight html %}
     <!-- With .clearfix -->
     <div class="bg-info clearfix">
-        <button class="btn float-left">Button floated left</button>
-        <button class="btn float-right">Button floated right</button>
+        <button class="btn float-start">Button floated to start</button>
+        <button class="btn float-end">Button floated to end</button>
     </div>
 
     <!-- Without .clearfix -->
     <div class="bg-info">
-        <button class="btn float-left">Button floated left</button>
-        <button class="btn float-right">Button floated right</button>
+        <button class="btn float-start">Button floated to start</button>
+        <button class="btn float-end">Button floated to end</button>
     </div>
 {% endhighlight %}

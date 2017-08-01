@@ -11,6 +11,7 @@
 
 // Container that the modal scrolls within
 .modal {
+    direction: ltr #{"/*rtl:ignore*/"};
     position: fixed;
     top: 0;
     right: 0;
@@ -43,6 +44,7 @@
 
 // Shell div to position the modal with bottom padding
 .modal-dialog {
+    direction: ltr;
     position: relative;
     width: auto;
     margin: $modal-dialog-margin;

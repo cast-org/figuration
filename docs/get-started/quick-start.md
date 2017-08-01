@@ -58,6 +58,48 @@ Essentially something like this:
 
 That should be all you need for overall page requirements. Visit the [Layout docs]({{ site.baseurl }}/layout/overview/) to begin building out your content and components.
 
+## Right-to-left Support
+
+Working with a language that reads from right to left? Use the `rtl` version of the Figuration CSS.  The markup and classes are the same between the `ltr` and `rtl` versions of Figuration.
+
+**Pro Tip!** We have included a way to preview layout, component, and widget behavior with the documentation.  Use the **settings** menu in the top navbar to change between text directions.
+
+The steps needed to switch from `ltr` to `rtl` mode are:
+- Add the `dir="rtl"` attribute to the `<html>` tag.
+- Update the `lang` attribute on the `<html>` tag to match the language being used.
+    - Refer to this [list of language codes](https://www.loc.gov/standards/iso639-2/php/code_list.php) provided by the US Library of Congress to find the one you require.
+    {% highlight html %}
+    <!-- This example is for a right-to-left Arabic layout -->
+    <html lang="ar" dir="rtl">
+    {% endhighlight %}
+- Load the `rtl` version of the Figuration CSS.  Load this **in place of** the default Figuration CSS.
+    {% highlight html %}
+    <!-- Figuration RTL CSS -->
+    <link rel="stylesheet" href="{{ site.cdn.css_rtl }}" integrity="{{ site.cdn.css_rtl_hash }}" crossorigin="anonymous">
+    {% endhighlight %}
+
+When complete, the basic template for a right-to-left markup should look like the following example.
+{% highlight html %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Figuration RTL CSS -->
+    <link rel="stylesheet" href="{{ site.cdn.css_rtl }}" integrity="{{ site.cdn.css_rtl_hash }}" crossorigin="anonymous">
+
+    <!-- jQuery and Figuration JS -->
+    <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
+    <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+  </body>
+</html>
+{% endhighlight %}
+
 ## Important Markup
 
 Figuration depends a handful of important global styles and settings that you'll need to be aware of when using it, all of which are almost exclusively geared towards the *normalization* of cross browser styles.

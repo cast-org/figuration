@@ -693,7 +693,7 @@ Here are some examples to show what we mean.
           <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
         </li>
       </ul>
-      <form class="form-inline float-right">
+      <form class="form-inline float-end">
         <input class="form-control mr-0_25" type="text" placeholder="Search" aria-label="Search">
         <button class="btn btn-secondary" type="submit">Search</button>
       </form>
@@ -717,7 +717,7 @@ Here are some examples to show what we mean.
           <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
         </li>
       </ul>
-      <form class="form-inline float-right">
+      <form class="form-inline float-end">
         <input class="form-control mr-0_25" type="text" placeholder="Search" aria-label="Search">
         <button class="btn btn-secondary" type="submit">Search</button>
       </form>
@@ -741,7 +741,7 @@ Here are some examples to show what we mean.
           <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
         </li>
       </ul>
-      <form class="form-inline float-right">
+      <form class="form-inline float-end">
         <input class="form-control mr-0_25" type="text" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-primary" type="submit">Search</button>
       </form>

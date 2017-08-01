@@ -399,14 +399,16 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
 
 ### Menu Alignment
 
-By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent.  While submenu items are aligned 100% to the left and to the top of its parent.
+By default, a dropdown menu is automatically positioned 100% from the top and aligned to the left side of its parent.  While submenu items are aligned 100% from the left and to the top of its parent.
 
-Add `.dropdown-menu-left` to a `.dropdown-menu` to right align the dropdown menu, this will also make all submenus open to the left side.  This can also be combined with `.dropup`.
+Add `.dropdown-menu-reverse` to a `.dropdown-menu` to align the dropdown menu to the right side of the parent. This will also make all submenus open out to the left side.  This can also be combined with `.dropup`.
+
+**Heads up!** When using the right-to-left, `rtl`, variant of Figuration all horizontal directions will be reversed.  Meaning left becomes right, and vice-versa.
 
 {% example html %}
-<div class="dropdown dropdown-menu-left float-right">
+<div class="dropdown dropdown-menu-reverse float-end">
     <button type="button" class="btn btn-primary dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
-        Drop Left
+        Reverse Dropdown
     </button>
     <ul class="dropdown-menu">
         <li class="dropdown-header">Dropdown header</li>
@@ -436,7 +438,7 @@ Add `.dropdown-menu-left` to a `.dropdown-menu` to right align the dropdown menu
 
 ### Submenu Alignment
 
-The menu alignment class of `.dropdown-menu-left` will also work with submenu items, and you can use the available `.dropdown-menu-right` to switch submenu directions if needed.  Simply place either class on the `li` parent of the submenu list.
+The menu alignment class of `.dropdown-menu-reverse` will also work with submenu items, and you can use the available `.dropdown-menu-forward` to switch submenu directions if needed.  Simply place either class on the `li` parent of the submenu list.
 
 {% example html %}
 <div class="dropdown">
@@ -446,18 +448,18 @@ The menu alignment class of `.dropdown-menu-left` will also work with submenu it
     <ul class="dropdown-menu">
         <li class="dropdown-header">Dropdown header</li>
         <li><a href="#">Action</a></li>
-        <li class="dropdown-menu-left">
-            <a href="#">Left menu</a>
+        <li class="dropdown-menu-reverse">
+            <a href="#">Reverse menu</a>
             <ul>
-                <li class="dropdown-menu-left">
-                    <a href="#">Left menu</a>
+                <li class="dropdown-menu-reverse">
+                    <a href="#">Reverse menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-menu-right">
-                    <a href="#">Right menu</a>
+                <li class="dropdown-menu-forward">
+                    <a href="#">Forward menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
@@ -465,18 +467,18 @@ The menu alignment class of `.dropdown-menu-left` will also work with submenu it
                 </li>
             </ul>
         </li>
-        <li class="dropdown-menu-right">
-            <a href="#">Right menu</a>
+        <li class="dropdown-menu-forward">
+            <a href="#">Forward menu</a>
             <ul>
-                <li class="dropdown-menu-left">
-                    <a href="#">Left menu</a>
+                <li class="dropdown-menu-reverse">
+                    <a href="#">Reverse menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-menu-right">
-                    <a href="#">Right menu</a>
+                <li class="dropdown-menu-forward">
+                    <a href="#">Forward menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>

@@ -50,13 +50,13 @@ You might also want to check the [border utilites]({{ site.baseurl }}/utilities/
 Align images with the [helper float classes]({{ site.baseurl }}/utilities/floating/) or [text alignment classes]({{ site.baseurl }}/utilities/typography/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/utilities/spacing/#horizontal-centering).
 
 <div class="cf-example clearfix">
-  <img data-src="holder.js/200x200" class="radius float-left" alt="A generic square placeholder image with rounded corners">
-  <img data-src="holder.js/200x200" class="radius float-right" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="radius float-start" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="radius float-end" alt="A generic square placeholder image with rounded corners">
 </div>
 
 {% highlight html %}
-<img src="..." class="radius float-left" alt="...">
-<img src="..." class="radius float-right" alt="...">
+<img src="..." class="radius float-start" alt="...">
+<img src="..." class="radius float-end" alt="...">
 {% endhighlight %}
 
 <div class="cf-example clearfix">

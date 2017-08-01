@@ -1,7 +1,5 @@
 .popover {
     position: absolute;
-    top: 0;
-    left: 0;
     z-index: $zindex-popover;
     display: none;
     max-width: $popover-max-width;
@@ -36,8 +34,8 @@
             }
         }
     }
-    &.right {
-        margin-left: $popover-arrow-width;
+    &.forward {
+        margin-left: $popover-arrow-width #{"/*rtl:"}-$popover-arrow-width#{"*/"};
 
         .popover-arrow {
             top: 50%;
@@ -59,7 +57,7 @@
 
         .popover-arrow {
             top: -$popover-arrow-outer-width;
-            left: 50%;
+            left: 50% #{"/*rtl:ignore*/"};
             margin-left: -$popover-arrow-outer-width;
             border-top-width: 0;
             border-bottom-color: $popover-arrow-outer-color;
@@ -72,8 +70,8 @@
             }
         }
     }
-    &.left {
-        margin-left: -$popover-arrow-width;
+    &.reverse {
+        margin-left: -$popover-arrow-width #{"/*rtl:"}$popover-arrow-width#{"*/"};
 
         .popover-arrow {
             top: 50%;
