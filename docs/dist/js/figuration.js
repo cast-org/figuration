@@ -287,6 +287,37 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
+    $.fn.CFW_getScrollbarSide = function() {
+        // Unable to detect side when 0-width scrollbars (such as mobile)
+        // are found.  So we use 'right` side as default (more common case).
+
+        // Hacky support for IE/Edge and their placment of scrollbar on window
+        // for 'rtl' mode.
+        var $node = $(this);
+
+        if ($node.is($('html'))) {
+            var browser = {
+                msedge: /edge\/\d+/i.test(navigator.userAgent),
+                msie: /(msie|trident)/i.test(navigator.userAgent)
+            };
+            var directionVal = window.getComputedStyle($node[0], null).getPropertyValue('direction').toLowerCase();
+            if ((directionVal === 'rtl') && (browser.msedge || browser.msie)) {
+                return 'left';
+            }
+            return 'right';
+        } else {
+            var scrollDiv = document.createElement('div');
+            scrollDiv.setAttribute('style', 'overflow-y: scroll;');
+            var scrollP = document.createElement('p');
+            $(scrollDiv).append(scrollP);
+            $node.append(scrollDiv);
+            var scrollWidth = $.CFW_measureScrollbar();
+            var posLeft = scrollP.getBoundingClientRect().left;
+            $node[0].removeChild(scrollDiv);
+            return (posLeft < scrollWidth) ? 'right' : 'left';
+        }
+    };
+
     $.CFW_throttle = function(fn, threshhold, scope) {
         /* From: http://remysharp.com/2010/07/21/throttling-function-calls/ */
         if (threshhold === undefined) { threshhold = 250; }
@@ -870,8 +901,8 @@ if (typeof jQuery === 'undefined') {
             if (this.settings.backlink && this.settings.backtop) {
                 var $backTop = $('<li class="' + this.c.backLink + '"><a href="#">' + this.settings.backtext + '</a></li>')
                     .prependTo(this.$target);
-                if (this.$target.hasClass('dropdown-menu-left')) {
-                    $backTop.addClass('dropdown-back-left');
+                if (this.$target.hasClass('dropdown-menu-reverse')) {
+                    $backTop.addClass('dropdown-back-reverse');
                 }
             }
 
@@ -882,18 +913,18 @@ if (typeof jQuery === 'undefined') {
                 var subLinkID = $subLink.CFW_getID('cfw-dropdown');
                 // var subMenuID = $subMenu.CFW_getID('cfw-dropdown');
 
-                var $dirNode = $subMenu.closest('.dropdown-menu-left, .dropdown-menu-right');
-                if ($dirNode.hasClass('dropdown-menu-left')) {
-                    $subMenu.closest('li').addClass('dropdown-subalign-left');
+                var $dirNode = $subMenu.closest('.dropdown-menu-reverse, .dropdown-menu-forward');
+                if ($dirNode.hasClass('dropdown-menu-reverse')) {
+                    $subMenu.closest('li').addClass('dropdown-subalign-reverse');
                 } else {
-                    $subMenu.closest('li').addClass('dropdown-subalign-right');
+                    $subMenu.closest('li').addClass('dropdown-subalign-forward');
                 }
 
                 if ($selfRef.settings.backlink) {
                     var $backElm = $('<li class="' + $selfRef.c.backLink + '"><a href="#">' + $selfRef.settings.backtext + '</a></li>')
                         .prependTo($subMenu);
-                    if ($dirNode.hasClass('dropdown-menu-left')) {
-                        $backElm.addClass('dropdown-back-left');
+                    if ($dirNode.hasClass('dropdown-menu-reverse')) {
+                        $backElm.addClass('dropdown-back-reverse');
                     }
                 }
 
@@ -1340,24 +1371,8 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    /*
-    $.fn.redraw = function(){
-        $(this).each(function(){
-            var redraw = this.offsetHeight;
-        });
-    };
-    */
-    // Force [lte IE 10] to redraw to correct layout
-    // Also force Edge reflow - using bad UA test and method
-    // TODO: Need to revisit this to find better options
-    // Note: Parent element must be visible in order to redraw
     $.fn.redraw = function() {
-        // if ((document.documentMode || 100) <= 10) {
-        if (document.documentMode !== undefined){
-            return this.hide(0, function() {$(this).show(); $(this).css('display', ''); });
-        } else if (/Edge\/\d+/.test(navigator.userAgent)) {
-            $(this).css('list-style', 'none').css('list-style', '');
-        }
+        return this.offsetHeight;
     };
 
     function Plugin(option) {
@@ -1821,7 +1836,7 @@ if (typeof jQuery === 'undefined') {
 
     CFW_Widget_Tooltip.DEFAULTS = {
         target          : false,            // Target selector
-        placement       : 'top',            // Where to locate tooltip (top/bottom/left/right/auto)
+        placement       : 'top',            // Where to locate tooltip (top/bottom/reverse(left))/forward(right)/auto)
         trigger         : 'hover focus',    // How tooltip is triggered (click/hover/focus/manual)
         animate         : true,             // Should the tooltip fade in and out
         delay : {
@@ -1952,7 +1967,7 @@ if (typeof jQuery === 'undefined') {
                 }
             }
 
-            $tip.removeClass('fade in top bottom left right');
+            $tip.removeClass('fade in top bottom reverse forward');
         },
 
         linkTip : function() {
@@ -2375,12 +2390,13 @@ if (typeof jQuery === 'undefined') {
         locateTip : function() {
             var $tip = this.$target;
 
-            $tip.removeClass('top left bottom right')
+            $tip.removeClass('top reverse bottom forward')
                 .css({ top: 0, left: 0, display: 'block' });
 
             var placement = typeof this.settings.placement == 'function' ?
                 this.settings.placement.call(this, this.$target[0], this.$element[0]) :
                 this.settings.placement;
+            var directionVal = window.getComputedStyle($('html')[0], null).getPropertyValue('direction').toLowerCase();
 
             this._insertTip(placement);
 
@@ -2407,17 +2423,26 @@ if (typeof jQuery === 'undefined') {
 
                 var viewportDim = this.getViewportBounds();
 
-                placement = placement == 'bottom' && pos.bottom + actualHeight > viewportDim.bottom ? 'top'    :
-                            placement == 'top'    && pos.top    - actualHeight < viewportDim.top    ? 'bottom' :
-                            placement == 'right'  && pos.right  + actualWidth  > viewportDim.width  ? 'left'   :
-                            placement == 'left'   && pos.left   - actualWidth  < viewportDim.left   ? 'right'  :
-                            placement;
+                if (directionVal === 'rtl') {
+                    placement = placement == 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
+                                placement == 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
+                                placement == 'reverse' && pos.left   - actualWidth  > viewportDim.left   ? 'forward' :
+                                placement == 'forward' && pos.right  + actualWidth  < viewportDim.width  ? 'reverse' :
+                                placement;
+
+                } else {
+                    placement = placement == 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
+                                placement == 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
+                                placement == 'forward' && pos.right  + actualWidth  > viewportDim.width  ? 'reverse' :
+                                placement == 'reverse' && pos.left   - actualWidth  < viewportDim.left   ? 'forward' :
+                                placement;
+                }
 
                 $tip.removeClass(orgPlacement)
                     .addClass(placement);
             }
 
-            var calculatedOffset = this._getCalculatedOffset(placement, pos, actualWidth, actualHeight);
+            var calculatedOffset = this._getCalculatedOffset(placement, pos, actualWidth, actualHeight, directionVal);
 
             this._applyPlacement(calculatedOffset, placement);
         },
@@ -2546,11 +2571,19 @@ if (typeof jQuery === 'undefined') {
             return $.extend({}, elRect, scroll, outerDims, elOffset);
         },
 
-        _getCalculatedOffset : function(placement, pos, actualWidth, actualHeight) {
-            return placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 } :
-                   placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 } :
-                   placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-                /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
+        _getCalculatedOffset : function(placement, pos, actualWidth, actualHeight, directionVal) {
+            if (directionVal === 'rtl') {
+                return placement == 'bottom'   ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 }  :
+                       placement == 'top'      ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }  :
+                       placement == 'forward'  ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
+                    /* placement == 'reverse' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
+            } else {
+                return placement == 'bottom'    ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 }  :
+                       placement == 'top'       ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }  :
+                       placement == 'reverse'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
+                    /* placement == 'forward' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
+            }
+
         },
 
         _applyPlacement : function(offset, placement) {
@@ -2631,7 +2664,7 @@ if (typeof jQuery === 'undefined') {
             var viewportPadding = this.settings.padding;
             var viewportDimensions = this.getViewportBounds();
 
-            if (/right|left/.test(placement)) {
+            if (/forward|reverse/.test(placement)) {
                 var topEdgeOffset    = pos.top - viewportPadding;
                 var bottomEdgeOffset = pos.top + viewportPadding + actualHeight;
 
@@ -2786,7 +2819,7 @@ if (typeof jQuery === 'undefined') {
     };
 
     CFW_Widget_Popover.DEFAULTS = $.extend({}, $.fn.CFW_Tooltip.Constructor.DEFAULTS, {
-        placement   : 'top',        // Where to locate popover (top/bottom/left/right/auto)
+        placement   : 'top',        // Where to locate popover (top/bottom/reverse(left)/forward(right)/auto)
         trigger     : 'click',      // How popover is triggered (click/hover/focus/manual)
         content     : '',           // Content text/html to be inserted
         drag        : false,        // If the popover should be draggable
@@ -2854,7 +2887,7 @@ if (typeof jQuery === 'undefined') {
             this.enableDrag();
         }
 
-        $tip.removeClass('fade in top bottom left right');
+        $tip.removeClass('fade in top bottom reverse forward');
 
         if (!$title.html()) { $title.hide(); }
 
@@ -3061,6 +3094,7 @@ if (typeof jQuery === 'undefined') {
         this.$focusLast = null;
         this.isShown = null;
         this.scrollbarWidth = 0;
+        this.scrollbarSide = 'right';
         this.fixedContent = '.fixed-top, .fixed-botton, .is-fixed';
         this.ignoreBackdropClick = false;
 
@@ -3340,6 +3374,7 @@ if (typeof jQuery === 'undefined') {
         checkScrollbar : function() {
             this.bodyIsOverflowing = document.body.clientWidth < window.innerWidth;
             this.scrollbarWidth = $.CFW_measureScrollbar();
+            this.scrollbarSide =  $('html').CFW_getScrollbarSide();
         },
 
         setScrollbar : function() {
@@ -3349,45 +3384,45 @@ if (typeof jQuery === 'undefined') {
                 // Update fixed element padding
                 $(this.fixedContent).each(function() {
                     var $this = $(this);
-                    $this.data('cfw.padding-right', this.style.paddingRight || '');
-                    var padding = parseFloat($this.css('padding-right') || 0);
-                    $this.css('padding-right', padding + $selfRef.scrollbarWidth);
+                    if ($selfRef.scrollbarSide === 'left') {
+                        $this.data('cfw.padding-dim', this.style.paddingLeft || '');
+                    } else {
+                        $this.data('cfw.padding-dim', this.style.paddingRight || '');
+                    }
+                    var padding = parseFloat($this.css('padding-' + $selfRef.scrollbarSide) || 0);
+                    $this.css('padding-' + $selfRef.scrollbarSide, padding + $selfRef.scrollbarWidth);
                 });
 
                 // Update body padding
-                this.$body.data('cfw.padding-right', document.body.style.paddingRight || '');
-                var padding = parseFloat(this.$body.css('padding-right') || 0);
-                this.$body.css('padding-right', padding + this.scrollbarWidth);
+                if (this.scrollbarSide === 'left') {
+                    this.$body.data('cfw.padding-dim', document.body.style.paddingLeft || '');
+                } else {
+                    this.$body.data('cfw.padding-dim', document.body.style.paddingRight || '');
+                }
+                var padding = parseFloat(this.$body.css('padding-' + this.scrollbarSide) || 0);
+                this.$body.css('padding-' + this.scrollbarSide, padding + this.scrollbarWidth);
             }
             this.$target.CFW_trigger('scrollbarSet.cfw.modal');
         },
 
         resetScrollbar : function() {
+            var $selfRef = this;
+
             // Restore fixed element padding
             $(this.fixedContent).each(function() {
                 var $this = $(this);
-                var padding = $this.data('cfw.padding-right');
-                $this.css('padding-right', padding);
-                $this.removeData('cfw.padding-right');
+                var padding = $this.data('cfw.padding-dim');
+                $this.css('padding-' + $selfRef.scrollbarSide, padding);
+                $this.removeData('cfw.padding-dim');
             });
 
             // Restore body padding
-            var padding = this.$body.data('cfw.padding-right');
+            var padding = this.$body.data('cfw.padding-dim');
             if (typeof padding !== undefined) {
-                this.$body.css('padding-right', padding);
-                this.$body.removeData('cfw.padding-right');
+                this.$body.css('padding-' + this.scrollbarSide, padding);
+                this.$body.removeData('cfw.padding-dim');
             }
             this.$target.CFW_trigger('scrollbarReset.cfw.modal');
-        },
-
-        measureScrollbar : function() {
-            var $body = $(document.body);
-            var scrollDiv = document.createElement('div');
-            scrollDiv.className = 'modal-scrollbar-measure';
-            $body.append(scrollDiv);
-            var scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;
-            $body[0].removeChild(scrollDiv);
-            return scrollbarWidth;
         },
 
         backdrop : function(callback) {
@@ -3468,6 +3503,7 @@ if (typeof jQuery === 'undefined') {
             this.$focusLast = null;
             this.isShown = null;
             this.scrollbarWidth = null;
+            this.scrollbarSide = null;
             this.fixedContent = null;
             this.ignoreBackdropClick = null;
             this.settings = null;
