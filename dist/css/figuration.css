@@ -1244,7 +1244,8 @@ fieldset[disabled] .form-check-label {
       align-items: center;
 }
 
-.form-inline .form-check {
+.form-inline .form-check,
+.form-inline .form-group {
   width: 100%;
 }
 
@@ -1267,6 +1268,7 @@ fieldset[disabled] .form-check-label {
         flex-flow: row wrap;
     -ms-flex-align: center;
         align-items: center;
+    width: auto;
     margin-bottom: 0;
   }
   .form-inline .form-control,
