@@ -131,30 +131,12 @@ $inverse-color: (
 // Control the default spacing of most elements by modifying these variables.
 $spacer:   1rem !default;
 $spacers: (
-    "0": (
-        x: 0,
-        y: 0
-    ),
-    "0_25": (
-        x: ($spacer * .25),
-        y: ($spacer * .25)
-    ),
-    "0_5": (
-        x: ($spacer * .5),
-        y: ($spacer * .5)
-    ),
-    "1": (
-        x: $spacer,
-        y: $spacer
-    ),
-    "1_5": (
-        x: ($spacer * 1.5),
-        y: ($spacer * 1.5)
-    ),
-    "2": (
-        x: ($spacer * 2),
-        y: ($spacer * 2)
-    )
+    "0":    0,
+    "0_25": ($spacer * .25),
+    "0_5":  ($spacer * .5),
+    "1":    $spacer,
+    "1_5":  ($spacer * 1.5),
+    "2":    ($spacer * 2),
 ) !default;
 
 
