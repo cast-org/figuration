@@ -5,6 +5,7 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     colorator (1.1.0)
     ffi (1.9.18-x64-mingw32)
+    ffi (1.9.18-x86-mingw32)
     forwardable-extended (2.6.0)
     jekyll (3.4.5)
       addressable (~> 2.4)
@@ -48,11 +49,12 @@ GEM
 
 PLATFORMS
   x64-mingw32
+  x86-mingw32
 
 DEPENDENCIES
   jekyll (~> 3.4.5)
   jekyll-redirect-from (~> 0.12.1)
-  jekyll-sitemap (~> 1.1.0)
+  jekyll-sitemap (~> 1.1.1)
   scss_lint (~> 0.54.0)
   wdm (~> 0.1.0)
 
