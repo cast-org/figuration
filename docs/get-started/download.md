@@ -75,14 +75,15 @@ Once downloaded, unzip the compressed folder to see the structure of (the compil
 
 {% highlight plaintext %}
 figuration/
-+-- css/
-|   +-- figuration.css
-|   +-- figuration.css.map
-|   +-- figuration.min.css
-|   +-- figuration.min.css.map
-+-- js/
-    +-- figuration.js
-    +-- figuration.min.js
++-- dist/
+    +-- css/
+    |   +-- figuration.css
+    |   +-- figuration.min.css
+    |   +-- figuration-rtl.css
+    |   +-- figuration-rtl.min.css
+    +-- js/
+        +-- figuration.js
+        +-- figuration.min.js
 {% endhighlight %}
 
 This is the most basic form of Figuration: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JavaScript (`figuration.*`), as well as compiled and minified CSS and JavaScript (`figuration.min.*`). CSS <a href="https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps">source maps</a> (`figuration.*.map`) are available for use with certain browsers' developer tools.
@@ -99,9 +100,6 @@ figuration/
 +-- docs/
 +-- js/
 +-- scss/
-{% comment %}
-    +-- examples/
-{% endcomment %}
 {% endhighlight %}
 
 The `scss/`, and `js/` folders are the source code for our CSS and JS (respectively). The `dist/` folder includes everything listed in the precompiled download section above. The `docs/` folder includes the source code for our documentation. Beyond that, any other included file provides support for packages, license information, and development.

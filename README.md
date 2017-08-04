@@ -40,14 +40,15 @@ Within the download you'll find the following directories and files, logically g
 
 ```
 figuration/
-+-- css/
-¦   +-- figuration.css
-¦   +-- figuration.css.map
-¦   +-- figuration.min.css
-¦   +-- figuration.min.css.map
-+-- js/
-    +-- figuration.js
-    +-- figuration.min.js
++-- dist/
+    +-- css/
+    ¦   +-- figuration.css
+    ¦   +-- figuration.min.css
+    ¦   +-- figuration-rtl.css
+    ¦   +-- figuration-rtl.min.css
+    +-- js/
+        +-- figuration.js
+        +-- figuration.min.js
 ```
 
 We provide compiled CSS and JS (`figuration.*`), as well as compiled and minified CSS and JS (`figuration.min.*`). CSS [source maps](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps) (`figuration.*.map`) are available for use with certain browsers' developer tools.
