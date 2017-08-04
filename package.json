@@ -56,5 +56,16 @@
     "qunitjs": "^2.0.0",
     "shelljs": "^0.7.7",
     "time-grunt": "^1.3.0"
-  }
+  },
+  "files" : [
+    ".jscsrc",
+    ".jshintrc",
+    ".scss-lint",
+    "Gruntfile.js",
+    "LICENSE",
+    "dist",
+    "grunt",
+    "js",
+    "scss"
+  ]
 }
