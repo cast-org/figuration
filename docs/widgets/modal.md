@@ -70,7 +70,7 @@ Toggle a modal via JavaScript by clicking the button below. It will slide down a
                 <h4>Text in a modal</h4>
                 <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
                 <h4>Popover in a modal</h4>
-                <p>This <button type="button" class="btn btn-secondary" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="right">button</button> should trigger a popover on click.</p>
+                <p>This <button type="button" class="btn btn-secondary" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="forward">button</button> should trigger a popover on click.</p>
                 <h4>Tooltips in a modal</h4>
                 <p><a href="#" data-cfw="tooltip" title="Tooltip">This link</a> and <a href="#" data-cfw="tooltip" title="Tooltip">that link</a> should have tooltips on hover.</p>
                 <h4>Collapse in a modal</h4>
@@ -293,7 +293,7 @@ To take advantage of the grid system within a modal, just nest `.container-fluid
             </div>
             <div class="modal-body">
                 <h5>Popover in a modal</h5>
-                <p>This <a href="#" role="button" class="btn" title="Popover title" data-cfw="popover" data-cfw-popover-content="Popover body content is set in this attribute." data-cfw-popover-placement="right">button</a> triggers a popover on click.</p>
+                <p>This <a href="#" role="button" class="btn" title="Popover title" data-cfw="popover" data-cfw-popover-content="Popover body content is set in this attribute." data-cfw-popover-placement="forward">button</a> triggers a popover on click.</p>
                 <hr>
                 <h5>Tooltips in a modal</h5>
                 <p><a href="#" title="Tooltip" data-cfw="tooltip">This link</a> and <a href="#" title="Tooltip" data-cfw="tooltip">that link</a> have tooltips on hover.</p>
@@ -311,7 +311,7 @@ To take advantage of the grid system within a modal, just nest `.container-fluid
 {% highlight html %}
 <div class="modal-body">
     <h5>Popover in a modal</h5>
-    <p>This <a href="#" role="button" class="btn" title="Popover title" data-cfw="popover" data-cfw-popover-content="Popover body content is set in this attribute." data-cfw-popover-placement="right">button</a> triggers a popover on click.</p>
+    <p>This <a href="#" role="button" class="btn" title="Popover title" data-cfw="popover" data-cfw-popover-content="Popover body content is set in this attribute." data-cfw-popover-placement="forward">button</a> triggers a popover on click.</p>
     <hr>
     <h5>Tooltips in a modal</h5>
     <p><a href="#" title="Tooltip" data-cfw="tooltip">This link</a> and <a href="#" title="Tooltip" data-cfw="tooltip">that link</a> have tooltips on hover.</p>
