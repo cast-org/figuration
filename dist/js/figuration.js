@@ -2640,9 +2640,15 @@ if (typeof jQuery === 'undefined') {
             var $viewport = this.$viewport;
             var elRect = $viewport[0].getBoundingClientRect();
 
-            if ($viewport.is('body') && (/fixed|absolute/).test(this.$element.css('position'))) {
-                // fixed and absolute elements should be tested against the window
-                return $.extend({}, elRect, this.getScreenSpaceBounds($viewport));
+            if ($viewport.is('body')) {
+                var $node = this.$element;
+                while ($node.length && !($node.is('body') || $node.is('html'))) {
+                    if ((/fixed|absolute/).test($node.css('position'))) {
+                        // fixed and absolute elements should be tested against the window
+                        return $.extend({}, elRect, this.getScreenSpaceBounds($viewport));
+                    }
+                    $node = $node.offsetParent();
+                }
             }
 
             return $.extend({}, elRect, $viewport.offset(), { width: $viewport.outerWidth(), height: $viewport.outerHeight() });
