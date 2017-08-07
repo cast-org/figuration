@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
-<html lang="en-us" dir="rtl">
+<html lang="en-us">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <title>Figuration - Flexbox Inline Forms</title>
 
-<link type="text/css" rel="stylesheet" href="../../dist/css/figuration-rtl.css" />
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
 
 <!--
 <script type="text/javascript" src="../../docs/assets/js/vendor/jquery.min.js"></script>
@@ -45,6 +45,46 @@
 
 <button class="btn btn-default" style="position: absolute; bottom: 0;" title="Tooltip at bottom" data-cfw="tooltip" data-cfw-tooltip-placement="bottom auto">Tooltip at bottom</button>
 
+
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#saveModal">New</button>
+
+<div class="modal" id="saveModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <button id="btnTest" class="btn btn-primary" data-cfw="tooltip" data-cfw-tooltip-placement="forward" data-cfw-tooltip-trigger="click" title="Test">Test tooltip</button>
+                <p>This <button type="button"  class="btn btn-default" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="forward">button</button> should trigger a popover on click.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-cfw-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="save">Save</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal" id="saveModal2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <button id="btnTest" class="btn btn-primary" data-cfw="tooltip" data-cfw-tooltip-placement="forward" data-cfw-tooltip-trigger="click" title="Test">Test tooltip</button>
+                <p>This <button type="button"  class="btn btn-default" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="forward">button</button> should trigger a popover on click.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-cfw-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="save">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
