@@ -4556,15 +4556,6 @@ li .dropdown-header {
       justify-content: space-between;
 }
 
-@media (max-width: 35.9375em) {
-  .navbar > .container,
-  .navbar > .container-fluid {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
 .navbar:not([class*="navbar-expand"]) .navbar-nav .dropdown-menu {
   position: static;
   float: none;
