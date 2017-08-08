@@ -203,11 +203,6 @@ textarea.form-control {
     margin-left: -$form-check-input-gutter;
     vertical-align: baseline;
     @include transition($input-transition);
-
-    &:only-child {
-        position: static;
-        vertical-align: top;
-    }
 }
 
 // Radios and checkboxes on same line
