@@ -96,6 +96,8 @@
 // on the `.navbar` parent.
 .navbar-collapse {
     flex-basis: 100%;
+    // Align content vertically in all instances.  Use flexbox utils to override.
+    align-items: center;
 }
 
 
