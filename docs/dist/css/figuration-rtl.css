@@ -1089,11 +1089,6 @@ fieldset[disabled] .form-check-label {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.form-check-input:only-child {
-  position: static;
-  vertical-align: top;
-}
-
 .form-check-inline {
   display: inline-block;
 }
@@ -9326,6 +9321,113 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
 
 .border-transparent {
   border-color: transparent !important;
+}
+
+.position-static {
+  position: static !important;
+}
+
+.position-relative {
+  position: relative !important;
+}
+
+.position-absolute {
+  position: absolute !important;
+}
+
+.position-fixed {
+  position: fixed !important;
+}
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .position-sticky {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+  }
+}
+
+@media (min-width: 36em) {
+  .position-sm-static {
+    position: static !important;
+  }
+  .position-sm-relative {
+    position: relative !important;
+  }
+  .position-sm-absolute {
+    position: absolute !important;
+  }
+  .position-sm-fixed {
+    position: fixed !important;
+  }
+  @supports ((position: -webkit-sticky) or (position: sticky)) {
+    .position-sm-sticky {
+      position: -webkit-sticky !important;
+      position: sticky !important;
+    }
+  }
+}
+
+@media (min-width: 48em) {
+  .position-md-static {
+    position: static !important;
+  }
+  .position-md-relative {
+    position: relative !important;
+  }
+  .position-md-absolute {
+    position: absolute !important;
+  }
+  .position-md-fixed {
+    position: fixed !important;
+  }
+  @supports ((position: -webkit-sticky) or (position: sticky)) {
+    .position-md-sticky {
+      position: -webkit-sticky !important;
+      position: sticky !important;
+    }
+  }
+}
+
+@media (min-width: 62em) {
+  .position-lg-static {
+    position: static !important;
+  }
+  .position-lg-relative {
+    position: relative !important;
+  }
+  .position-lg-absolute {
+    position: absolute !important;
+  }
+  .position-lg-fixed {
+    position: fixed !important;
+  }
+  @supports ((position: -webkit-sticky) or (position: sticky)) {
+    .position-lg-sticky {
+      position: -webkit-sticky !important;
+      position: sticky !important;
+    }
+  }
+}
+
+@media (min-width: 75em) {
+  .position-xl-static {
+    position: static !important;
+  }
+  .position-xl-relative {
+    position: relative !important;
+  }
+  .position-xl-absolute {
+    position: absolute !important;
+  }
+  .position-xl-fixed {
+    position: fixed !important;
+  }
+  @supports ((position: -webkit-sticky) or (position: sticky)) {
+    .position-xl-sticky {
+      position: -webkit-sticky !important;
+      position: sticky !important;
+    }
+  }
 }
 
 .fixed-top {
