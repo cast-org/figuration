@@ -24,7 +24,7 @@ Here's what you need to know before getting started with the navbar:
 
 ## Responsive Behaviors
 
-Navbars are built with repsonsive design in mind.  Using a `.navbar-expand{-sm|-md|-lg|-xl}` on the `.navbar` along with a `.navbar-collapse` container.
+Navbars are built with responsive design in mind.  Using a `.navbar-expand{-sm|-md|-lg|-xl}` on the `.navbar` along with a `.navbar-collapse` container.
 
 The following list gives a quick run-down of how the breakpoints are utilized.
 

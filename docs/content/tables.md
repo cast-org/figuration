@@ -1236,7 +1236,7 @@ Scrolling tables make use of `overflow-y: hidden`, which clips off any content t
 </table>
 {% endhighlight %}
 
-Table scrolling is also available in repsonsive variants of the form `.table-scroll-*-down`, where the table will horizontally scroll when the table is wider than it's container and when the viewport is at the given breakpoint or smaller.
+Table scrolling is also available in responsive variants of the form `.table-scroll-*-down`, where the table will horizontally scroll when the table is wider than it's container and when the viewport is at the given breakpoint or smaller.
 
 Responsive variants are:
 - `.table-scroll-xs-down`

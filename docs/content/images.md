@@ -12,7 +12,7 @@ Allow images to become responsively resized, or add a bit of style to them.
 * ToC goes here
 {:toc}
 
-## Repsonsive Images
+## Responsive Images
 
 Images can be made to scale with their container width by using `.img-fluid`. This applies `max-width: 100%;` and `height: auto;` the image, allowing the aspect ratio to be maintained.
 

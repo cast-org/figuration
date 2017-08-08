@@ -861,7 +861,7 @@ Card columns can also be extended and customized with some additional code. Show
 }
 {% endhighlight %}
 
-If you are using repsonsive variants of the card columns, you may need to include all variations, or a combination, of the responsive `.card-{breakpoint}-columns` classes, if it applies to your use-case.
+If you are using responsive variants of the card columns, you may need to include all variations, or a combination, of the responsive `.card-{breakpoint}-columns` classes, if it applies to your use-case.
 
 {% highlight scss %}
 .card-columns
