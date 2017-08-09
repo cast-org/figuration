@@ -5,13 +5,13 @@ group: widgets
 redirect_from: "/widgets/"
 ---
 
-Widgets can be included individually (using Figuration's individual `*.js` files), or all at once (using `figuration.js` or the minified `figuration.min.js`).
+Add more functionality and interactivity to to Figuration with our optional jQuery powered widgets.  Each one is designed with accessibility already built-in.
 
 {% callout warning %}
 Using the compiled JavaScript
 {:.h5}
 
-Both `figuration.js` and `figuration.min.js` contain all widgets in a single file. **Include only one.**
+Both `figuration.js` and `figuration.min.js` contain all widgets and helper utilities in a single file. **Include only one.**
 {% endcallout %}
 
 {% callout danger %}
