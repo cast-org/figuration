@@ -379,7 +379,7 @@ Even greater control is available with responsive order classes that match the c
 
 Use `flex-content` utilities on flexbox containers to align flex items *together* on the cross axis. Choose from `start` (browser default), `center`, `end`, `between`, `around`, or `stretch`. To demonstrate these utilities, we've enforced `flex-wrap: wrap` and increased the number of flex items.
 
-**Heads up!** This property has no affect on single rows of flex items.
+**Heads up!** This property has no effect on single rows of flex items.
 
 Responsive align content utilities:
 - `.flex{-breakpoint}-content-start`
