@@ -65,6 +65,18 @@ yarn add figuration@{{ site.current_version }}
 
 Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
 
+{% highlight plaintext %}
+figuration/
++-- dist/
+|   +-- css/
+|   +-- js/
++-- grunt/
++-- js/
++-- scss/
+{% endhighlight %}
+
+Basically just the dist, along with the source `js` and `scss` files, and just enough to build the dist. If you need the docs and all the tests for local dev, then download the source version, or clone the [Figuration repository from GitHub]({{ site.repo }}).
+
 ## What's Included
 
 The [quick download versions](#quick-download) listed above, contain the following directories and files, logically grouping common resources and providing both compiled and minified variations.
@@ -98,8 +110,10 @@ figuration/
 |   +-- css/
 |   +-- js/
 +-- docs/
++-- grunt/
 +-- js/
 +-- scss/
++-- test/
 {% endhighlight %}
 
 The `scss/`, and `js/` folders are the source code for our CSS and JS (respectively). The `dist/` folder includes everything listed in the precompiled download section above. The `docs/` folder includes the source code for our documentation. Beyond that, any other included file provides support for packages, license information, and development.
