@@ -279,7 +279,7 @@ $active-hover-bg:   map-deep-get($context-themes, "primary", "control-hover-bg")
 $disabled-color:    $uibase-450 !default;
 $disabled-bg:       transparent !default;
 
-$caret-width:           .325rem !default;
+$caret-width:           .3125rem !default;
 
 $close-font-size:       ($font-size-base * 1.5) !default;
 $close-font-weight:     $font-weight-bold !default;
