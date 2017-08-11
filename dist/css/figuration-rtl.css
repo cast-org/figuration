@@ -3259,14 +3259,14 @@ tbody.collapse.in, tbody.collapse.in-flex {
   width: 0;
   height: 0;
   vertical-align: middle;
-  border-top: 0.325rem solid;
-  border-left: 0.325rem solid transparent;
-  border-right: 0.325rem solid transparent;
+  border-top: 0.3125rem solid;
+  border-left: 0.3125rem solid transparent;
+  border-right: 0.3125rem solid transparent;
 }
 
 .open .caret {
   border-top: 0;
-  border-bottom: 0.325rem solid;
+  border-bottom: 0.3125rem solid;
 }
 
 .close {
@@ -4159,9 +4159,9 @@ button.list-group-item-danger.active {
   margin-right: 0.25rem;
   vertical-align: middle;
   content: "";
-  border-top: 0.325rem solid;
-  border-left: 0.325rem solid transparent;
-  border-right: 0.325rem solid transparent;
+  border-top: 0.3125rem solid;
+  border-left: 0.3125rem solid transparent;
+  border-right: 0.3125rem solid transparent;
 }
 
 .dropdown-toggle:empty::after {
@@ -4170,11 +4170,11 @@ button.list-group-item-danger.active {
 
 .dropup .dropdown-toggle::after {
   border-top: 0;
-  border-bottom: 0.325rem solid;
+  border-bottom: 0.3125rem solid;
 }
 
 .dropup.open .dropdown-toggle::after {
-  border-top: 0.325rem solid;
+  border-top: 0.3125rem solid;
   border-bottom: 0;
 }
 
@@ -4277,11 +4277,11 @@ button.list-group-item-danger.active {
 
 .open .dropdown-toggle::after {
   border-top: 0;
-  border-bottom: 0.325rem solid;
+  border-bottom: 0.3125rem solid;
 }
 
 .open .dropup .dropdown-toggle::after {
-  border-top: 0.325rem solid;
+  border-top: 0.3125rem solid;
   border-bottom: 0;
 }
 
@@ -4315,11 +4315,11 @@ li .dropdown-header {
 .dropup .caret {
   content: "";
   border-top: 0;
-  border-bottom: 0.325rem solid;
+  border-bottom: 0.3125rem solid;
 }
 
 .dropup.open .caret {
-  border-top: 0.325rem solid;
+  border-top: 0.3125rem solid;
   border-bottom: 0;
 }
 

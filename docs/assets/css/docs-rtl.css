@@ -581,7 +581,7 @@ h4 > code {
 
 .topLink .caret {
   border-top: 0;
-  border-bottom: 0.325rem solid;
+  border-bottom: 0.3125rem solid;
 }
 
 .topLink.affix-top,
