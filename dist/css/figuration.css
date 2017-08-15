@@ -1091,14 +1091,11 @@ fieldset[disabled] .form-check-label {
 
 .form-check-inline {
   display: inline-block;
+  margin-right: 0.75rem;
 }
 
 .form-check-inline .form-check-label {
   vertical-align: middle;
-}
-
-.form-check-inline + .form-check-inline {
-  margin-left: 0.75rem;
 }
 
 .form-control-feedback {
@@ -3821,6 +3818,8 @@ button.list-group-item-danger.active {
   position: relative;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
+      align-items: center;
   width: 100%;
 }
 
@@ -3841,15 +3840,6 @@ button.list-group-item-danger.active {
   z-index: 3;
 }
 
-.input-group-addon,
-.input-group-btn,
-.input-group .form-control {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-      align-items: center;
-}
-
 .input-group-addon:not(:first-child):not(:last-child),
 .input-group-btn:not(:first-child):not(:last-child),
 .input-group .form-control:not(:first-child):not(:last-child) {
@@ -3859,7 +3849,6 @@ button.list-group-item-danger.active {
 .input-group-addon,
 .input-group-btn {
   white-space: nowrap;
-  vertical-align: middle;
 }
 
 .input-group-addon {
