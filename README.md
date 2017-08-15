@@ -67,9 +67,10 @@ Figurations's documentation, included in this repo in the root directory, is bui
 ### Running Documentation Locally
 
 1. Run through the [tooling setup](https://github.com/cast-org/figuration/blob/master/docs/get-started/build-tools.md#tooling-setup) to install Jekyll (the site builder) and other Ruby dependencies with `bundle install`.
-2. Run `grunt` (or a specific set of Grunt tasks) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
-3. From the root `/figuration` directory, run `bundle exec jekyll serve` in the command line.
-4. Open <http://localhost:9001> in your browser, and enjoy.
+2. Run `npm install` to install Node.js dependencies.
+4. Run `grunt` (or a specific set of Grunt tasks) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
+5. From the root `/figuration` directory, run `bundle exec jekyll serve` in the command line.
+6. Open <http://localhost:9001> in your browser, and enjoy.
 
 Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com/docs/home/).
 

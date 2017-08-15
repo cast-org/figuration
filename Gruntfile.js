@@ -372,7 +372,7 @@ module.exports = function(grunt) {
     require('time-grunt')(grunt);
 
     // Default
-    grunt.registerTask('default', ['clean:dist', 'test']);
+    grunt.registerTask('default', ['clean:dist', 'test', 'docs']);
 
     // Test
     grunt.registerTask('test', ['dist-css', 'dist-js', 'test-css', 'test-js']);
