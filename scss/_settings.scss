@@ -207,6 +207,10 @@ $link-decoration:       underline !default;
 $link-hover-color:      palette-context("primary", 850) !default;
 $link-hover-decoration: underline !default;
 
+// Paragraph
+// =====
+$paragraph-spacer-y:    1rem;
+
 // Cursors
 // =====
 $cursor-disabled:                not-allowed !default;
