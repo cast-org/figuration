@@ -18,7 +18,7 @@ url:              http://figuration.org
 encoding:         UTF-8
 exclude:          [assets/scss/]
 
-gems:
+plugins:
   - jekyll-redirect-from
   - jekyll-sitemap
 
