@@ -154,7 +154,7 @@ Be default, navbars start out collapsed, but when the target breakpoint is reach
       </li>
     </ul>
     <form class="form-inline ml-auto">
-      <input class="form-control mr-0_25" type="text" placeholder="Search" aria-label="Search">
+      <input class="form-control mr-0_25" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
   </div>
@@ -183,7 +183,7 @@ With the `.navbar-brand` in the collapsing area.
       </li>
     </ul>
     <form class="form-inline ml-auto">
-      <input class="form-control mr-0_25" type="text" placeholder="Search" aria-label="Search">
+      <input class="form-control mr-0_25" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
   </div>
@@ -223,7 +223,7 @@ Here's an example of some sub-components included in a default, light navbar:
       </li>
     </ul>
     <form class="form-inline ml-auto">
-      <input class="form-control mr-0_25" type="text" placeholder="Search" aria-label="Search">
+      <input class="form-control mr-0_25" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
   </div>
@@ -370,7 +370,7 @@ Place various form controls and components within a navbar with `.form-inline`.
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
   <form class="form-inline">
-    <input class="form-control mr-0_25" type="text" placeholder="Search" aria-label="Search">
+    <input class="form-control mr-0_25" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-primary" type="submit">Search</button>
   </form>
 </nav>
@@ -382,7 +382,7 @@ Align the contents of your inline forms with utilities as needed.
 <nav class="navbar navbar-light bg-faded flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
   <form class="form-inline">
-    <input class="form-control mr-0_25" type="text" placeholder="Search" aria-label="Search">
+    <input class="form-control mr-0_25" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-primary" type="submit">Search</button>
   </form>
 </nav>
@@ -694,7 +694,7 @@ Here are some examples to show what we mean.
         </li>
       </ul>
       <form class="form-inline float-end">
-        <input class="form-control mr-0_25" type="text" placeholder="Search" aria-label="Search">
+        <input class="form-control mr-0_25" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-secondary" type="submit">Search</button>
       </form>
     </div>
@@ -718,7 +718,7 @@ Here are some examples to show what we mean.
         </li>
       </ul>
       <form class="form-inline float-end">
-        <input class="form-control mr-0_25" type="text" placeholder="Search" aria-label="Search">
+        <input class="form-control mr-0_25" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-secondary" type="submit">Search</button>
       </form>
     </div>
@@ -742,7 +742,7 @@ Here are some examples to show what we mean.
         </li>
       </ul>
       <form class="form-inline float-end">
-        <input class="form-control mr-0_25" type="text" placeholder="Search" aria-label="Search">
+        <input class="form-control mr-0_25" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-primary" type="submit">Search</button>
       </form>
     </div>
