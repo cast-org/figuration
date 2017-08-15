@@ -1593,7 +1593,7 @@ fieldset[disabled] .form-check-label {
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   border-radius: 0.25rem;
-  transition: box-shadow 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .btn:focus, .btn:hover {
@@ -11063,16 +11063,20 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   }
 }
 
+.font-weight-light {
+  font-weight: 300 !important;
+}
+
 .font-weight-normal {
-  font-weight: normal;
+  font-weight: normal !important;
 }
 
 .font-weight-bold {
-  font-weight: bold;
+  font-weight: bold !important;
 }
 
 .font-italic {
-  font-style: italic;
+  font-style: italic !important;
 }
 
 .text-primary {
