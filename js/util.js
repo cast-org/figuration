@@ -137,8 +137,8 @@
     function CFW_mutationObserved(records, $node) {
         if (!MutationObserver) { return; }
         var $target = $(records[0].target);
-        var $parent = $target.parents('[data-cfw-mutate]').first();
         if ($target.is($node)) { return; } // Ignore elements own mutation
+        var $parent = $target.parents('[data-cfw-mutate]').first();
         $parent.triggerHandler('mutate.cfw.mutate');
     }
 

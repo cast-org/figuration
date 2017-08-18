@@ -126,6 +126,7 @@
         // Remove mutation handler
         this.$element.on('afterShow.cfw.' + this.type, function() {
             $selfRef.$target
+                .off('mutate.cfw.mutate')
                 .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore();
         });

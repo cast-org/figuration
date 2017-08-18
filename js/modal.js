@@ -200,6 +200,7 @@
             this.resize();
 
             this.$target
+                .off('mutate.cfw.mutate')
                 .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore()
                 .hide();

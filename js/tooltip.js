@@ -454,6 +454,7 @@
 
             this.inTransition = true;
             this.$target
+                .off('mutate.cfw.mutate')
                 .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore()
                 .removeClass('in');
@@ -677,11 +678,13 @@
         _hideComplete : function() {
             this.$element
                 .off('.cfw.' + this.type + '.focusStart')
+                .off('mutate.cfw.mutate')
                 .removeAttr('aria-describedby')
                 .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore();
             this.$target
                 .off('.cfw.' + this.type)
+                .off('mutate.cfw.mutate')
                 .removeClass('in')
                 .css('display', 'none')
                 .attr('aria-hidden', true)

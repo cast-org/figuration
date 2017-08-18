@@ -229,7 +229,10 @@
 
         dispose : function() {
             this.$window.off('.cfw.equalize.' +  this.instance);
-            this.$element.removeData('cfw.equalize');
+            this.$element
+                .off('mutate.cfw.mutate')
+                .removeAttr('data-cfw-mutate')
+                .removeData('cfw.equalize');
             this.$target.CFW_mutationIgnore();
 
             this.$element = null;
