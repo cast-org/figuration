@@ -1596,6 +1596,12 @@ h4 > code {
   border: 1px solid #70b874;
 }
 
+@media (max-width: 35.9375em) {
+  .d-xs-only {
+    display: none !important;
+  }
+}
+
 @media (min-width: 36em) and (max-width: 47.9375em) {
   .d-sm-only {
     display: none !important;
@@ -1610,6 +1616,12 @@ h4 > code {
 
 @media (min-width: 62em) and (max-width: 74.9375em) {
   .d-lg-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 75em) {
+  .d-xl-only {
     display: none !important;
   }
 }
