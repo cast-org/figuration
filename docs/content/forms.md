@@ -301,12 +301,12 @@ You may need to manually address the width and alignment of individual form cont
 
 {% example html %}
 <form class="form-inline">
-    <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
-        <label for="inlineName0" class="form-control-label mr-sm-0_5">Name</label>
+    <div class="form-group mb-0_5 me-sm-0_5 mb-sm-0">
+        <label for="inlineName0" class="form-control-label me-sm-0_5">Name</label>
         <input type="text" class="form-control" id="inlineName0" placeholder="Jane Doe">
     </div>
-    <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
-        <label for="inlineEmail0" class="form-control-label mr-sm-0_5">Email</label>
+    <div class="form-group mb-0_5 me-sm-0_5 mb-sm-0">
+        <label for="inlineEmail0" class="form-control-label me-sm-0_5">Email</label>
         <input type="email" class="form-control" id="inlineEmail0" placeholder="jane.doe@example.com">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
@@ -315,15 +315,15 @@ You may need to manually address the width and alignment of individual form cont
 
 {% example html %}
 <form class="form-inline form-inline-checkbox">
-    <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
+    <div class="form-group mb-0_5 me-sm-0_5 mb-sm-0">
         <label class="sr-only" for="inlineEmail1">Email address</label>
         <input type="email" class="form-control" id="inlineEmail1" placeholder="Enter email">
     </div>
-    <div class="form-group mb-0_5 mr-sm-0_5 mb-sm-0">
+    <div class="form-group mb-0_5 me-sm-0_5 mb-sm-0">
         <label class="sr-only" for="inlinePassword1">Password</label>
         <input type="password" class="form-control" id="inlinePassword1" placeholder="Password">
     </div>
-    <div class="form-check mb-0_5 mr-sm-0_5 mb-sm-0">
+    <div class="form-check mb-0_5 me-sm-0_5 mb-sm-0">
         <label class="form-check-label">
             <input class="form-check-input" type="checkbox"> Remember me
         </label>
@@ -336,7 +336,7 @@ Input groups are supported.
 
 {% example html %}
 <form class="form-inline">
-    <div class="form-group mr-sm-0_5">
+    <div class="form-group me-sm-0_5">
         <label class="sr-only" for="inputAmount2">Amount (in dollars)</label>
         <div class="input-group">
             <div class="input-group-addon">$</div>
@@ -352,14 +352,14 @@ Custom form controls and selects are also supported.
 
 {% example html %}
 <form class="form-inline">
-    <label class="form-control-label mr-sm-0_5" for="inlinePref4">Preference</label>
-    <select class="custom-select mb-0_5 mr-sm-0_5 mb-sm-0" id="inlinePref4">
+    <label class="form-control-label me-sm-0_5" for="inlinePref4">Preference</label>
+    <select class="custom-select mb-0_5 me-sm-0_5 mb-sm-0" id="inlinePref4">
         <option selected>Choose...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
     </select>
-    <label class="custom-control custom-checkbox mb-0_5 mr-sm-0_5 mb-sm-0">
+    <label class="custom-control custom-checkbox mb-0_5 me-sm-0_5 mb-sm-0">
         <input type="checkbox" class="custom-control-input">
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description">Remember my preference</span>
@@ -583,11 +583,11 @@ When you want to have read-only fields in your form styled as plain text, use th
 
 {% example html %}
 <form class="form-inline">
-  <div class="form-group mr-0_5">
+  <div class="form-group me-0_5">
     <label for="inputEmail2" class="sr-only">Email</label>
     <input type="text" readonly class="form-control-static" id="inputEmail2" value="email@example.com">
   </div>
-  <div class="form-group mr-0_5">
+  <div class="form-group me-0_5">
     <label for="inputPassword2" class="sr-only">Password</label>
     <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
   </div>
@@ -728,8 +728,8 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
 {% example html %}
 <form class="form-inline">
   <div class="form-group">
-    <label for="inputPassword4" class="mr-0_5">Password</label>
-    <input type="password" id="inputPassword4" class="form-control mr-0_5" aria-describedby="passwordHelpInline">
+    <label for="inputPassword4" class="me-0_5">Password</label>
+    <input type="password" id="inputPassword4" class="form-control me-0_5" aria-describedby="passwordHelpInline">
     <small id="passwordHelpInline" class="text-muted">
       Must be 8-20 characters long.
     </small>

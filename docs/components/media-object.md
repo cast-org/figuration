@@ -18,7 +18,7 @@ Below is an example of a single media object. Only two classes are required—th
 
 {% example html %}
 <div class="media">
-  <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <img class="d-flex me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
     <h5>Media heading</h5>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
@@ -41,12 +41,12 @@ Media components can also be nested as many times as needed. Place nested `.medi
 
 {% example html %}
 <div class="media">
-  <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <img class="d-flex me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
     <h5>Media heading</h5>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     <div class="media">
-      <a href="#" class="d-flex mr-1">
+      <a href="#" class="d-flex me-1">
         <img data-src="holder.js/64x64" alt="Generic placeholder image">
       </a>
       <div class="media-body">
@@ -64,7 +64,7 @@ Media in a media object can be aligned with [flexbox utilities]({{ site.baseurl 
 
 {% example html %}
 <div class="media">
-  <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <img class="d-flex me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
     <h5>Top aligned media</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
@@ -75,7 +75,7 @@ Media in a media object can be aligned with [flexbox utilities]({{ site.baseurl 
 
 {% example html %}
 <div class="media">
-  <img class="d-flex flex-self-center mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <img class="d-flex flex-self-center me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
     <h5>Center aligned media</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
@@ -86,7 +86,7 @@ Media in a media object can be aligned with [flexbox utilities]({{ site.baseurl 
 
 {% example html %}
 <div class="media">
-  <img class="d-flex flex-self-end mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <img class="d-flex flex-self-end me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
     <h5>Bottom aligned media</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
@@ -105,7 +105,7 @@ Change the order of content in media objects by modifying the HTML itself, or by
     <h5>Media heading</h5>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
   </div>
-  <img class="d-flex ml-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <img class="d-flex ms-1" data-src="holder.js/64x64" alt="Generic placeholder image">
 </div>
 {% endexample %}
 
@@ -116,21 +116,21 @@ Because the media object has so few structural requirements, you can also use th
 {% example html %}
 <ul class="list-unstyled">
   <li class="media">
-    <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+    <img class="d-flex me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
     <div class="media-body">
       <h5>List-based media object</h5>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     </div>
   </li>
   <li class="media">
-    <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+    <img class="d-flex me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
     <div class="media-body">
       <h5>List-based media object</h5>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     </div>
   </li>
   <li class="media">
-    <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+    <img class="d-flex me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
     <div class="media-body">
       <h5>List-based media object</h5>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
@@ -145,7 +145,7 @@ You can include many other components, such as forms, buttons, and more.
 
 {% example html %}
 <div class="media">
-  <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <img class="d-flex me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
     <form>
       <div class="form-group mb-0_5">
@@ -169,12 +169,12 @@ Put media items on the both sides.
 
 {% example html %}
 <div class="media">
-  <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <img class="d-flex me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
     <h5>Media heading</h5>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
   </div>
-  <img class="d-flex ml-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <img class="d-flex ms-1" data-src="holder.js/64x64" alt="Generic placeholder image">
 </div>
 {% endexample %}
 
@@ -182,12 +182,12 @@ Even create your own social media layout.
 
 {% example html %}
 <div class="media">
-  <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <img class="d-flex me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
     <h5>Media heading</h5>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     <div class="media">
-      <a href="#" class="d-flex mr-1">
+      <a href="#" class="d-flex me-1">
         <img data-src="holder.js/64x64" alt="Generic placeholder image">
       </a>
       <div class="media-body">
@@ -196,7 +196,7 @@ Even create your own social media layout.
       </div>
     </div>
     <div class="media">
-      <a href="#" class="d-flex mr-1">
+      <a href="#" class="d-flex me-1">
         <img data-src="holder.js/64x64" alt="Generic placeholder image">
       </a>
       <div class="media-body">
@@ -207,7 +207,7 @@ Even create your own social media layout.
   </div>
 </div>
 <div class="media">
-  <img class="d-flex mr-1" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <img class="d-flex me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
     <form>
       <div class="form-group mb-0_5">

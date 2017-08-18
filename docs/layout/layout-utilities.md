@@ -24,7 +24,7 @@ Should you need to add `display: flex` to an element, do so with `.d-flex` or on
 
 ## Margin and Padding
 
-Use the `margin` and `padding` [spacing utilities]({{ site.baseurl }}/utilities/spacing/) to control how elements and components are spaced and sized. Figuration includes scaled spacing utilities, based on a `1rem` value default `$spacer` variable. Choose values for all viewports (e.g., `.mr-1` for `margin-right: 1rem`), or pick responsive variants to target specific viewports (e.g., `.mr-md-0_5` for `margin-right: 0.5rem` starting at the `md` breakpoint).
+Use the `margin` and `padding` [spacing utilities]({{ site.baseurl }}/utilities/spacing/) to control how elements and components are spaced and sized. Figuration includes scaled spacing utilities, based on a `1rem` value default `$spacer` variable. Choose values for all viewports (e.g., `.me-1` for `margin-right: 1rem`), or pick responsive variants to target specific viewports (e.g., `.me-md-0_5` for `margin-right: 0.5rem` starting at the `md` breakpoint).
 
 ## Toggle `visibility`
 

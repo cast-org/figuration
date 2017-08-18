@@ -212,7 +212,7 @@ Easily move all flex items to one side, but keep another on the opposite end by 
 <div class="cf-example-flex">
 {% example html %}
 <div class="d-flex flex-end mb-1">
-  <div class="mr-auto p-0_5">Flex item</div>
+  <div class="me-auto p-0_5">Flex item</div>
   <div class="p-0_5">Flex item</div>
   <div class="p-0_5">Flex item</div>
 </div>
@@ -220,7 +220,7 @@ Easily move all flex items to one side, but keep another on the opposite end by 
 <div class="d-flex flex-start">
   <div class="p-0_5">Flex item</div>
   <div class="p-0_5">Flex item</div>
-  <div class="ml-auto p-0_5">Flex item</div>
+  <div class="ms-auto p-0_5">Flex item</div>
 </div>
 {% endexample %}
 </div>

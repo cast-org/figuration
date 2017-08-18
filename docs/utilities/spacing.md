@@ -20,10 +20,19 @@ Where *sides* is one of:
 * blank - for classes that set a `margin` or `padding` on all 4 sides of the element
 * `t` - for classes that set `margin-top` or `padding-top`
 * `b` - for classes that set `margin-bottom` or `padding-bottom`
-* `l` - for classes that set `margin-left` or `padding-left`
-* `r` - for classes that set `margin-right` or `padding-right`
+* `s` - for classes that set `margin` or `padding` on the `start` side
+* `e` - for classes that set `margin` or `padding` on the `end` side
 * `x` - for classes that set both `*-left` and `*-right`
 * `y` - for classes that set both `*-top` and `*-bottom`
+
+The *start/end sides* are designated as follows depending on which version of the Figuration CSS you are using.  The default `figuration.*.css` uses the `ltr` mode, where `figuration-rtl.*.css` uses the `rtl` mode.
+
+- For `left-to-right` mode (`ltr` - default);
+  - `start` refers to the `left` side
+  - `end` refers to the `right` side
+- For `right-to-left` mode (`rtl`);
+  - `start` refers to the `right` side
+  - `end` refers to the `left` side
 
 Where *size* is one of:
 
@@ -43,7 +52,7 @@ Here are some representative examples of these classes:
   margin-top: 0 !important;
 }
 
-.ml-1 {
+.ms-1 {
   margin-left: $spacer !important;
 }
 

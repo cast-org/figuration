@@ -81,7 +81,7 @@ Use the `.switch-rounded` modifier class to make switches more rounded.
 Switches can also be disabled. Add the `disabled` boolean attribute to the `<input>` and the custom control and label descriptions will be automatically styled.
 
 {% example html %}
-<label class="switch mr-1">
+<label class="switch me-1">
     <input type="checkbox" class="switch-input" disabled>
     <span class="switch-control"></span>
     <span class="switch-description">Disabled checkbox</span>
@@ -98,27 +98,27 @@ Switches can also be disabled. Add the `disabled` boolean attribute to the `<inp
 Want a smaller or larger switch?  Add `.switch-xs`, `.switch-sm`, `.switch-lg`, or `.switch-xl` for additional sizes.
 
 {% example html %}
-<label class="switch switch-xs mr-1">
+<label class="switch switch-xs me-1">
     <input type="checkbox" class="switch-input">
     <span class="switch-control"></span>
     <span class="switch-description">Extra small</span>
 </label>
-<label class="switch switch-sm mr-1">
+<label class="switch switch-sm me-1">
     <input type="checkbox" class="switch-input">
     <span class="switch-control"></span>
     <span class="switch-description">Small</span>
 </label>
-<label class="switch mr-1">
+<label class="switch me-1">
     <input type="checkbox" class="switch-input">
     <span class="switch-control"></span>
     <span class="switch-description">Default</span>
 </label>
-<label class="switch switch-lg mr-1">
+<label class="switch switch-lg me-1">
     <input type="checkbox" class="switch-input">
     <span class="switch-control"></span>
     <span class="switch-description">Large</span>
 </label>
-<label class="switch switch-xl mr-1">
+<label class="switch switch-xl me-1">
     <input type="checkbox" class="switch-input">
     <span class="switch-control"></span>
     <span class="switch-description">Extra large</span>
@@ -128,27 +128,27 @@ Want a smaller or larger switch?  Add `.switch-xs`, `.switch-sm`, `.switch-lg`, 
 Sizing also works for rounded switches.
 
 {% example html %}
-<label class="switch switch-rounded switch-xs mr-1">
+<label class="switch switch-rounded switch-xs me-1">
     <input type="checkbox" class="switch-input">
     <span class="switch-control"></span>
     <span class="switch-description">Extra small</span>
 </label>
-<label class="switch switch-rounded switch-sm mr-1">
+<label class="switch switch-rounded switch-sm me-1">
     <input type="checkbox" class="switch-input">
     <span class="switch-control"></span>
     <span class="switch-description">Small</span>
 </label>
-<label class="switch switch-rounded mr-1">
+<label class="switch switch-rounded me-1">
     <input type="checkbox" class="switch-input">
     <span class="switch-control"></span>
     <span class="switch-description">Default</span>
 </label>
-<label class="switch switch-rounded switch-lg mr-1">
+<label class="switch switch-rounded switch-lg me-1">
     <input type="checkbox" class="switch-input">
     <span class="switch-control"></span>
     <span class="switch-description">Large</span>
 </label>
-<label class="switch switch-rounded switch-xl mr-1">
+<label class="switch switch-rounded switch-xl me-1">
     <input type="checkbox" class="switch-input">
     <span class="switch-control"></span>
     <span class="switch-description">Extra large</span>

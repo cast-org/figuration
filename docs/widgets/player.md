@@ -237,11 +237,11 @@ Improve accessibility for blind and visually impaired users by including an audi
     </div>
     <div class="player-wrapper">
         <div class="player" data-cfw-player="player">
-            <span class="player-control mr-0_5" data-cfw-player="control">
+            <span class="player-control me-0_5" data-cfw-player="control">
                 <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
                 <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
             </span>
-            <span class="player-time mr-0_5" data-cfw-player="time">
+            <span class="player-time me-0_5" data-cfw-player="time">
                 <span class="player-time-current" data-cfw-player="time-current"></span>
                 <span class="player-seek" data-cfw-player="seek">
                 	<label>Seek slider<input type="text" /></label>
@@ -274,22 +274,22 @@ Further improve accessibility for blind and visually impaired users by including
     </div>
     <div class="player-wrapper">
         <div class="player" data-cfw-player="player">
-            <span class="player-control mr-0_5" data-cfw-player="control">
+            <span class="player-control me-0_5" data-cfw-player="control">
                 <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
                 <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
             </span>
-            <span class="player-time mr-0_5" data-cfw-player="time">
+            <span class="player-time me-0_5" data-cfw-player="time">
                 <span class="player-time-current" data-cfw-player="time-current"></span>
                 <span class="player-seek" data-cfw-player="seek">
                 	<label>Seek slider<input type="text" /></label>
                 </span>
                 <span class="player-time-duration" data-cfw-player="time-duration"></span>
             </span>
-            <span class="player-describe mr-0_25" data-cfw-player="description">
+            <span class="player-describe me-0_25" data-cfw-player="description">
                 <button type="button" class="btn btn-default on active" title="Turn Off Audio Description" aria-label="Turn Off Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
                 <button type="button" class="btn btn-default off" title="Turn On Audio Description" aria-label="Turn On Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
             </span>
-            <button type="button" class="btn btn-default mr-0_25" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fa fa-fw fa-cc"></span></button>
+            <button type="button" class="btn btn-default me-0_25" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fa fa-fw fa-cc"></span></button>
             <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="fa fa-fw fa-file-text-o"></span></button>
         </div>
     </div>
@@ -312,19 +312,19 @@ Take control over how captions are displayed by adding a container with a `data-
         <div class="player-caption-display" data-cfw-player="caption-display"></div>
     </div>
     <div class="player-wrapper">
-        <div class="player mr-0_5" role="region" aria-label="video player" data-cfw-player="player">
+        <div class="player me-0_5" role="region" aria-label="video player" data-cfw-player="player">
             <span class="player-control " data-cfw-player="control">
                 <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
                 <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
             </span>
-            <span class="player-time mr-0_5" data-cfw-player="time">
+            <span class="player-time me-0_5" data-cfw-player="time">
                 <span class="player-time-current" data-cfw-player="time-current"></span>
                 <span class="player-seek" data-cfw-player="seek">
                 	<label>Seek slider<input type="text" /></label>
                 </span>
                 <span class="player-time-duration" data-cfw-player="time-duration"></span>
             </span>
-            <button type="button" class="btn  mr-0_25" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fa fa-fw fa-cc" aria-hidden="true"></span></button>
+            <button type="button" class="btn  me-0_25" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fa fa-fw fa-cc" aria-hidden="true"></span></button>
             <span class="player-fullscreen" data-cfw-player="fullscreen">
                 <button type="button" class="btn player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
                 <button type="button" class="btn player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>

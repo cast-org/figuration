@@ -14,7 +14,7 @@
                 .#{$abbrev}y#{$bprule}-#{$size} {
                     #{$prop}-top: $length !important;
                 }
-                .#{$abbrev}r#{$bprule}-#{$size},
+                .#{$abbrev}e#{$bprule}-#{$size},
                 .#{$abbrev}x#{$bprule}-#{$size} {
                     #{$prop}-right: $length !important;
                 }
@@ -22,7 +22,7 @@
                 .#{$abbrev}y#{$bprule}-#{$size} {
                     #{$prop}-bottom: $length !important;
                 }
-                .#{$abbrev}l#{$bprule}-#{$size},
+                .#{$abbrev}s#{$bprule}-#{$size},
                 .#{$abbrev}x#{$bprule}-#{$size} {
                     #{$prop}-left: $length !important;
                 }
@@ -37,7 +37,7 @@
         .my#{$bprule}-auto {
             margin-top: auto !important;
         }
-        .mr#{$bprule}-auto,
+        .me#{$bprule}-auto,
         .mx#{$bprule}-auto {
             margin-right: auto !important;
         }
@@ -45,7 +45,7 @@
         .my#{$bprule}-auto {
             margin-bottom: auto !important;
         }
-        .ml#{$bprule}-auto,
+        .ms#{$bprule}-auto,
         .mx#{$bprule}-auto {
             margin-left: auto !important;
         }

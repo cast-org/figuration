@@ -48,7 +48,7 @@ The most basic example of a `.navbar` is one that never expands, no matter the s
       <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarB0">
           <span aria-hidden="true">&#8801;</span>
       </button>
-      <a href="#" class="navbar-brand ml-0_5">Never Expand</a>
+      <a href="#" class="navbar-brand ms-0_5">Never Expand</a>
 
       <div class="navbar-collapse collapse" id="navbarB0">
           <ul class="navbar-nav">
@@ -91,7 +91,7 @@ The most basic example of a `.navbar` is one that never expands, no matter the s
     <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarB0">
         <span aria-hidden="true">&#8801;</span>
     </button>
-    <a href="#" class="navbar-brand ml-0_5">Never Expand</a>
+    <a href="#" class="navbar-brand ms-0_5">Never Expand</a>
 
     <div class="navbar-collapse collapse" id="navbarB0">
         <ul class="navbar-nav">
@@ -153,8 +153,8 @@ Be default, navbars start out collapsed, but when the target breakpoint is reach
         <a href="#" class="nav-link disabled">Disabled</a>
       </li>
     </ul>
-    <form class="form-inline ml-auto">
-      <input class="form-control mr-0_25" type="search" placeholder="Search" aria-label="Search">
+    <form class="form-inline ms-auto">
+      <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
   </div>
@@ -182,8 +182,8 @@ With the `.navbar-brand` in the collapsing area.
         <a href="#" class="nav-link disabled">Disabled</a>
       </li>
     </ul>
-    <form class="form-inline ml-auto">
-      <input class="form-control mr-0_25" type="search" placeholder="Search" aria-label="Search">
+    <form class="form-inline ms-auto">
+      <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
   </div>
@@ -222,8 +222,8 @@ Here's an example of some sub-components included in a default, light navbar:
         <a href="#" class="nav-link disabled">Disabled</a>
       </li>
     </ul>
-    <form class="form-inline ml-auto">
-      <input class="form-control mr-0_25" type="search" placeholder="Search" aria-label="Search">
+    <form class="form-inline ms-auto">
+      <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-primary" type="submit">Search</button>
     </form>
   </div>
@@ -370,7 +370,7 @@ Place various form controls and components within a navbar with `.form-inline`.
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
   <form class="form-inline">
-    <input class="form-control mr-0_25" type="search" placeholder="Search" aria-label="Search">
+    <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-primary" type="submit">Search</button>
   </form>
 </nav>
@@ -382,7 +382,7 @@ Align the contents of your inline forms with utilities as needed.
 <nav class="navbar navbar-light bg-faded flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
   <form class="form-inline">
-    <input class="form-control mr-0_25" type="search" placeholder="Search" aria-label="Search">
+    <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-primary" type="submit">Search</button>
   </form>
 </nav>
@@ -406,7 +406,7 @@ Various buttons are supported as part of these navbar forms, too. This is also a
 {% example html %}
 <nav class="navbar navbar-light bg-faded">
   <form class="form-inline">
-    <button type="button" class="btn btn-outline-success mr-0_25">Main button</button>
+    <button type="button" class="btn btn-outline-success me-0_25">Main button</button>
     <button type="button" class="btn btn-sm align-middle btn-outline-secondary">Smaller button</button>
   </form>
 </nav>
@@ -694,7 +694,7 @@ Here are some examples to show what we mean.
         </li>
       </ul>
       <form class="form-inline float-end">
-        <input class="form-control mr-0_25" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-secondary" type="submit">Search</button>
       </form>
     </div>
@@ -718,7 +718,7 @@ Here are some examples to show what we mean.
         </li>
       </ul>
       <form class="form-inline float-end">
-        <input class="form-control mr-0_25" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-secondary" type="submit">Search</button>
       </form>
     </div>
@@ -742,7 +742,7 @@ Here are some examples to show what we mean.
         </li>
       </ul>
       <form class="form-inline float-end">
-        <input class="form-control mr-0_25" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-primary" type="submit">Search</button>
       </form>
     </div>

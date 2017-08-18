@@ -30,13 +30,13 @@ Combine sets of button groups into button toolbars for more complex components. 
 
 {% example html %}
 <div class="btn-toolbar mb-1" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="btn-group mr-0_5" role="group" aria-label="First group">
+  <div class="btn-group me-0_5" role="group" aria-label="First group">
     <button type="button" class="btn">1</button>
     <button type="button" class="btn">2</button>
     <button type="button" class="btn">3</button>
     <button type="button" class="btn">4</button>
   </div>
-  <div class="btn-group mr-0_5" role="group" aria-label="Second group">
+  <div class="btn-group me-0_5" role="group" aria-label="Second group">
     <button type="button" class="btn btn-primary">5</button>
     <button type="button" class="btn btn-primary">6</button>
     <button type="button" class="btn btn-primary">7</button>
@@ -47,13 +47,13 @@ Combine sets of button groups into button toolbars for more complex components. 
 </div>
 
 <div class="btn-toolbar flex-between" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="btn-group mr-0_5" role="group" aria-label="First group">
+  <div class="btn-group me-0_5" role="group" aria-label="First group">
     <button type="button" class="btn">1</button>
     <button type="button" class="btn">2</button>
     <button type="button" class="btn">3</button>
     <button type="button" class="btn">4</button>
   </div>
-  <div class="btn-group mr-0_5" role="group" aria-label="Second group">
+  <div class="btn-group me-0_5" role="group" aria-label="Second group">
     <button type="button" class="btn btn-primary">5</button>
     <button type="button" class="btn btn-primary">6</button>
     <button type="button" class="btn btn-primary">7</button>
@@ -71,7 +71,7 @@ Mix input groups with button groups in your toolbars. Similar to the example abo
 
 {% example html %}
 <div class="btn-toolbar mb-1" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="btn-group mr-0_5" role="group" aria-label="First group">
+  <div class="btn-group me-0_5" role="group" aria-label="First group">
     <button type="button" class="btn">1</button>
     <button type="button" class="btn">2</button>
     <button type="button" class="btn">3</button>

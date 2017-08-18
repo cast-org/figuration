@@ -48,7 +48,9 @@ $font-family-sans-serif:
   // Android
   "Roboto",
   // Basic web fallback
-  "Helvetica Neue", Arial, sans-serif !default;
+  "Helvetica Neue", Arial, sans-serif,
+  // Emoji fonts
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 {% endhighlight %}
 
 This `font-family` is applied to the `<body>` and automatically inherited globally throughout Figuration. To switch the global `font-family`, update `$font-family-base` and recompile Figuration.
