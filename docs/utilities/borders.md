@@ -22,26 +22,36 @@ Where *sides* is one of:
 * blank - for `all` 4 corners of the element
 * `t` - for both corners on the `top` side
 * `b` - for both corners on the `bottom` side
-* `r` - for both corners on the `right` side
-* `l` - for both corners on the `left` side
-* `tr` - for the `top right` corner
-* `tl` - for the `top left` corner
-* `br` - for the `bottom right` corner
-* `bl` - for the `bottom left` corner
+* `e` - for both corners on the `end` side
+* `s` - for both corners on the `start` side
+* `te` - for the `top end` corner
+* `ts` - for the `top start` corner
+* `be` - for the `bottom end` corner
+* `bs` - for the `bottom start` corner
+
+The *start/end sides* are designated as follows depending on which version of the Figuration CSS you are using.  The default `figuration.*.css` uses the `ltr` mode, where `figuration-rtl.*.css` uses the `rtl` mode.
+
+- For `left-to-right` mode (`ltr` - default);
+  - `start` refers to the `left` side
+  - `end` refers to the `right` side
+- For `right-to-left` mode (`rtl`);
+  - `start` refers to the `right` side
+  - `end` refers to the `left` side
+
 
 <div class="cf-example">
     <div class="mb-1">
         <img data-src="holder.js/100x100/?text=All" class="radius" alt="A generic square placeholder image with rounded corners" />
         <img data-src="holder.js/100x100/?text=Top" class="radius-t" alt="A generic square placeholder image with rounded corners on the top edge" />
         <img data-src="holder.js/100x100/?text=Bottom" class="radius-b" alt="A generic square placeholder image with rounded corners on the bottom edge" />
-        <img data-src="holder.js/100x100/?text=Right" class="radius-r" alt="A generic square placeholder image with rounded corners on the right edge" />
-        <img data-src="holder.js/100x100/?text=Left" class="radius-l" alt="A generic square placeholder image with rounded corners on the left edge" />
+        <img data-src="holder.js/100x100/?text='End'" class="radius-e" alt="A generic square placeholder image with rounded corners on the 'start' edge" />
+        <img data-src="holder.js/100x100/?text='Start'" class="radius-s" alt="A generic square placeholder image with rounded corners on the 'end' edge" />
     </div>
     <div>
-        <img data-src="holder.js/100x100/?text=Top Right" class="radius-tr" alt="A generic square placeholder image a rounded corner on the top right" />
-        <img data-src="holder.js/100x100/?text=Top Left" class="radius-tl" alt="A generic square placeholder image a rounded corner on the top left edge" />
-        <img data-src="holder.js/100x100/?text=Bottom Right" class="radius-br" alt="A generic square placeholder image a rounded corner on the bottom right" />
-        <img data-src="holder.js/100x100/?text=Bottom Left" class="radius-bl" alt="A generic square placeholder image a rounded corner on the bottom left" />
+        <img data-src="holder.js/100x100/?text=Top 'End'" class="radius-te" alt="A generic square placeholder image a rounded corner on the top 'end'" />
+        <img data-src="holder.js/100x100/?text=Top 'Start'" class="radius-ts" alt="A generic square placeholder image a rounded corner on the top 'start'" />
+        <img data-src="holder.js/100x100/?text=Bottom 'End'" class="radius-be" alt="A generic square placeholder image a rounded corner on the bottom 'end'" />
+        <img data-src="holder.js/100x100/?text=Bottom 'Start'" class="radius-bs" alt="A generic square placeholder image a rounded corner on the bottom 'start'" />
     </div>
 </div>
 
@@ -50,14 +60,14 @@ Where *sides* is one of:
 <img src="..." class="radius" alt="...">
 <img src="..." class="radius-t" alt="...">
 <img src="..." class="radius-b" alt="...">
-<img src="..." class="radius-r" alt="...">
-<img src="..." class="radius-l" alt="...">
+<img src="..." class="radius-e" alt="...">
+<img src="..." class="radius-s" alt="...">
 
 <!-- Corners -->
-<img src="..." class="round-tr" alt="...">
-<img src="..." class="round-tl" alt="...">
-<img src="..." class="round-br" alt="...">
-<img src="..." class="round-bl" alt="...">
+<img src="..." class="round-te" alt="...">
+<img src="..." class="round-ts" alt="...">
+<img src="..." class="round-be" alt="...">
+<img src="..." class="round-bs" alt="...">
 {% endhighlight %}
 
 ### Using Component Sizes
@@ -83,7 +93,7 @@ By default the `xs` and `sm` sizes are the same radius.  Also the `lg` and `xl` 
 There is also the special case size of `0` (zero) to remove  a radius.
 
 {% example html %}
-<button type="button" class="btn radius-l-0">Button</button>
+<button type="button" class="btn radius-s-0">Button</button>
 {% endexample %}
 
 ### Circles
@@ -121,15 +131,24 @@ Where *sides* is one of:
 * blank - for `all` 4 sides of the element
 * `t` - for the `top` side
 * `b` - for the `bottom` side
-* `r` - for the `right` side
-* `l` - for the `left` side
+* `e` - for the `end` side
+* `s` - for the `start` side
+
+The *start/end sides* are designated as follows depending on which version of the Figuration CSS you are using.  The default `figuration.*.css` uses the `ltr` mode, where `figuration-rtl.*.css` uses the `rtl` mode.
+
+- For `left-to-right` mode (`ltr` - default);
+  - `start` refers to the `left` side
+  - `end` refers to the `right` side
+- For `right-to-left` mode (`rtl`);
+  - `start` refers to the `right` side
+  - `end` refers to the `left` side
 
 See the following example of removing various borders from some buttons.
 
 {% example html %}
 <button type="button" class="btn radius-0 border-0">all</button>
 <button type="button" class="btn radius-0 border-t-0">top</button>
-<button type="button" class="btn radius-0 border-r-0">right</button>
+<button type="button" class="btn radius-0 border-e-0">'end'</button>
 <button type="button" class="btn radius-0 border-b-0">bottom</button>
-<button type="button" class="btn radius-0 border-l-0">left</button>
+<button type="button" class="btn radius-0 border-s-0">'start'</button>
 {% endexample %}

@@ -13,7 +13,7 @@
     }
 }
 
-@mixin border-right-radius($radius) {
+@mixin border-end-radius($radius) {
     @if $enable-rounded {
         border-top-right-radius: $radius;
         border-bottom-right-radius: $radius;
@@ -27,7 +27,7 @@
     }
 }
 
-@mixin border-left-radius($radius) {
+@mixin border-start-radius($radius) {
     @if $enable-rounded {
         border-top-left-radius: $radius;
         border-bottom-left-radius: $radius;
@@ -35,25 +35,25 @@
 }
 
 // Corners
-@mixin border-top-right-radius($radius) {
+@mixin border-top-end-radius($radius) {
     @if $enable-rounded {
         border-top-right-radius: $radius;
     }
 }
 
-@mixin border-top-left-radius($radius) {
+@mixin border-top-start-radius($radius) {
     @if $enable-rounded {
         border-top-left-radius: $radius;
     }
 }
 
-@mixin border-bottom-right-radius($radius) {
+@mixin border-bottom-end-radius($radius) {
     @if $enable-rounded {
         border-bottom-right-radius: $radius;
     }
 }
 
-@mixin border-bottom-left-radius($radius) {
+@mixin border-bottom-start-radius($radius) {
     @if $enable-rounded {
         border-bottom-left-radius: $radius;
     }
@@ -71,14 +71,14 @@
     .radius-t#{$sizerule} {
         @include border-top-radius($radius);
     }
-    .radius-r#{$sizerule} {
-        @include border-right-radius($radius);
+    .radius-e#{$sizerule} {
+        @include border-end-radius($radius);
     }
     .radius-b#{$sizerule} {
         @include border-bottom-radius($radius);
     }
-    .radius-l#{$sizerule} {
-        @include border-left-radius($radius);
+    .radius-s#{$sizerule} {
+        @include border-start-radius($radius);
     }
 }
 
@@ -87,16 +87,16 @@
     // Add the dash for rule naming
     $sizerule: if($size, -#{$size}, "");
 
-    .radius-tr#{$sizerule} {
-        @include border-top-right-radius($radius);
+    .radius-te#{$sizerule} {
+        @include border-top-end-radius($radius);
     }
-    .radius-tl#{$sizerule} {
-        @include border-top-left-radius($radius);
+    .radius-ts#{$sizerule} {
+        @include border-top-start-radius($radius);
     }
-    .radius-br#{$sizerule} {
-        @include border-bottom-right-radius($radius);
+    .radius-be#{$sizerule} {
+        @include border-bottom-end-radius($radius);
     }
-    .radius-bl#{$sizerule} {
-        @include border-bottom-left-radius($radius);
+    .radius-bs#{$sizerule} {
+        @include border-bottom-start-radius($radius);
     }
 }
