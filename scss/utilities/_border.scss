@@ -23,6 +23,8 @@
 @include radius-sides(0, 0);
 @include radius-corners(0, 0);
 
+// Border addition
+.border { border: $border-width solid $border-color !important; }
 
 // Border removal
 .border-0 { border: 0 !important; }

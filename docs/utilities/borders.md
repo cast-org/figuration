@@ -102,6 +102,16 @@ When elements are of a square (1:1) aspect ratio, you can create a circle using 
 <img src="..." class="radius-circle" width="50" height="100" alt="...">
 {% endhighlight %}
 
+## Border Addition
+
+Quickly add the default component border to an element with the `.border` utility class.
+
+{% example html %}
+<div class="border p-0_5">
+  This div container has a border and some padding added.
+</div>
+{% endexample %}
+
 ## Border Removal
 
 Add a class to remove a border on a given side of an element, using the format `.border-0-{sides}`.
