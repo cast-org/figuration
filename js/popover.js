@@ -123,44 +123,32 @@
 
         var dragOpt = { handle: '[data-cfw-drag="' + this.type + '"]' };
 
-        // Remove mutation handler
+        // Remove mutation handler and replace resize location handler
         this.$element.on('afterShow.cfw.' + this.type, function() {
             $selfRef.$target
                 .off('mutate.cfw.mutate')
                 .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore();
+
+            $(window)
+                .off('resize.cfw.' + $selfRef.type + '.' + $selfRef.instance)
+                .on('resize.cfw.' + $selfRef.type + '.' + $selfRef.instance, function() {
+                    var offset = $selfRef.$target.offset();
+                    $selfRef.locateDragTip(offset.top, offset.left);
+                });
         });
 
         // Unset any previous drag events
         this.$target.off('.cfw.drag');
 
         this.$target.on('dragStart.cfw.drag', function() {
-            var $viewport = $selfRef.$viewport;
-
-            limit = $viewport.offset();
-            limit.bottom = limit.top + $viewport.outerHeight() - $(this).outerHeight();
-            limit.right = limit.left + $viewport.outerWidth() - $(this).outerWidth();
-
-            // Allow dragging around entire window if body is smaller than window
-            if ($viewport.is('body')) {
-                if (document.body.clientHeight < window.innerHeight) {
-                    limit.bottom = limit.top + window.innerHeight - $(this).outerHeight();
-                }
-                if (document.body.clientWidth < window.innerWidth) {
-                    limit.right = limit.left + window.innerWidth - $(this).outerWidth();
-                }
-            }
+            limit = $selfRef.viewportDragLimit();
 
             $selfRef._updateZ();
             $selfRef.$element.CFW_trigger('dragStart.cfw.' + $selfRef.type);
         })
         .on('drag.cfw.drag', function(e) {
-            var viewportPadding = $selfRef.settings.padding;
-
-            $(this).css({
-                top: Math.min((limit.bottom - viewportPadding), Math.max((limit.top + viewportPadding), e.offsetY)),
-                left: Math.min((limit.right - viewportPadding), Math.max((limit.left + viewportPadding), e.offsetX))
-            });
+            $selfRef.locateDragTip(e.offsetY, e.offsetX);
         })
         .on('dragEnd.cfw.drag', function() {
             $selfRef.$element.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
@@ -175,20 +163,15 @@
 
                 clearTimeout($selfRef.keyTimer);
 
-                var $viewport = $selfRef.$viewport;
-                var viewportPadding = $selfRef.settings.padding;
+                limit = $selfRef.viewportDragLimit();
 
-                var $node = $selfRef.$target;
-                var step = $selfRef.settings.dragstep;
-                limit = $viewport.offset();
-                limit.bottom = limit.top + $viewport.outerHeight() - $node.outerHeight();
-                limit.right = limit.left + $viewport.outerWidth() - $node.outerWidth();
-                var nodeOffset = $node.offset();
                 // Mitigate most of 'slippage' by rounding offsets
+                var nodeOffset = $selfRef.$target.offset();
                 var offsetY = Math.round(nodeOffset.top);
                 var offsetX = Math.round(nodeOffset.left);
 
                 // Revise offset
+                var step = $selfRef.settings.dragstep;
                 switch (e.which) {
                     /* Left  */ case 37: { offsetX = offsetX - step; break; }
                     /* Up    */ case 38: { offsetY = offsetY - step; break; }
@@ -197,10 +180,7 @@
                 }
 
                 // Move it
-                $node.css({
-                    top: Math.min((limit.bottom - viewportPadding), Math.max((limit.top + viewportPadding), offsetY)),
-                    left: Math.min((limit.right - viewportPadding), Math.max((limit.left + viewportPadding), offsetX))
-                });
+                $selfRef.locateDragTip(offsetY, offsetX);
 
                 $selfRef.keyTimer = setTimeout(function() {
                     $selfRef.$element.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
@@ -213,6 +193,38 @@
         });
 
         this.$target.CFW_Drag(dragOpt);
+    };
+
+
+    CFW_Widget_Popover.prototype.viewportDragLimit = function() {
+        var $tip = this.$target;
+        var $viewport = this.$viewport;
+
+        var limit = $viewport.offset();
+        limit.bottom = limit.top + $viewport.outerHeight() - $tip.outerHeight();
+        limit.right = limit.left + $viewport.outerWidth() - $tip.outerWidth();
+
+        // Allow dragging around entire window if body is smaller than window
+        if ($viewport.is('body')) {
+            if (document.body.clientHeight < window.innerHeight) {
+                limit.bottom = limit.top + window.innerHeight - $tip.outerHeight();
+            }
+            if (document.body.clientWidth < window.innerWidth) {
+                limit.right = limit.left + window.innerWidth - $tip.outerWidth();
+            }
+        }
+        return limit;
+    };
+
+    CFW_Widget_Popover.prototype.locateDragTip = function(offsetY, offsetX) {
+        var $tip = this.$target;
+        var limit = this.viewportDragLimit();
+        var viewportPadding = this.settings.padding;
+
+        $tip.css({
+            top: Math.min((limit.bottom - viewportPadding), Math.max((limit.top + viewportPadding), offsetY)),
+            left: Math.min((limit.right - viewportPadding), Math.max((limit.left + viewportPadding), offsetX))
+        });
     };
 
     CFW_Widget_Popover.prototype.hide = function(force) {
