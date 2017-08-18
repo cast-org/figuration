@@ -140,6 +140,16 @@
             limit.bottom = limit.top + $viewport.outerHeight() - $(this).outerHeight();
             limit.right = limit.left + $viewport.outerWidth() - $(this).outerWidth();
 
+            // Allow dragging around entire window if body is smaller than window
+            if ($viewport.is('body')) {
+                if (document.body.clientHeight < window.innerHeight) {
+                    limit.bottom = limit.top + window.innerHeight - $(this).outerHeight();
+                }
+                if (document.body.clientWidth < window.innerWidth) {
+                    limit.right = limit.left + window.innerWidth - $(this).outerWidth();
+                }
+            }
+
             $selfRef._updateZ();
             $selfRef.$element.CFW_trigger('dragStart.cfw.' + $selfRef.type);
         })
