@@ -434,6 +434,11 @@
                 }
             }
 
+            // Allow ESC to propagate if menu is closed
+            if (e.which == 27 && $(e.target).is(this.$element) && !getParent($(e.target)).hasClass('open')) {
+                return;
+            }
+
             e.stopPropagation();
             e.preventDefault();
 

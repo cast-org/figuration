@@ -482,4 +482,52 @@ $(function() {
             });
         $dropdown.trigger('click');
     });
+
+    QUnit.test('ESC should not propagate when menu is open', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">'
+            + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
+            + '<ul class="dropdown-menu">'
+            + '<li><a href="#" id="focusable">Menu link</a></li>'
+            + '</ul>'
+            + '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+        $dropdown
+            .trigger('focus')
+            .trigger('click');
+
+        $(document.body).on('keydown.dropEsc', function(e) {
+            $(document.body).off('keydown.dropEsc');
+            assert.notEqual(e.which, 27, 'ESC keypress was propagated');
+            done();
+        });
+
+        $dropdown.trigger($.Event('keydown', { which: 27 })); // Esc
+        $dropdown.trigger($.Event('keydown', { which: 97 })); // a
+    });
+
+    QUnit.test('ESC should propagate when menu is closed', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">'
+            + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
+            + '<ul class="dropdown-menu">'
+            + '<li><a href="#" id="focusable">Menu link</a></li>'
+            + '</ul>'
+            + '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+        $dropdown.trigger('focus');
+
+        $(document.body).on('keydown.dropEsc', function(e) {
+            $(document.body).off('keydown.dropEsc');
+            assert.equal(e.which, 27, 'ESC keypress was propagated');
+            done();
+        });
+
+        $dropdown.trigger($.Event('keydown', { which: 27 })); // Esc
+    });
+
 });
