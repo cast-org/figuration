@@ -58,6 +58,12 @@
             }
         }
     }
+
+    .card-header + .list-group {
+        .list-group-item:first-child {
+            border-top-width: 0;
+        }
+    }
 }
 
 // Optional textual caps
