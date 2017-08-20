@@ -12,16 +12,22 @@
 @mixin card-outline-variant($color) {
     background-color: transparent;
     border-color: $color;
-}
-
-// Inverse text within a card for use with dark backgrounds
-@mixin card-inverse {
-    color: rgba(255,255,255,.65);
 
     .card-header,
     .card-footer {
         background-color: transparent;
-        border-color: rgba(255,255,255,.2);
+        border-color: $color;
+    }
+}
+
+// Inverse text within a card for use with dark backgrounds
+@mixin card-inverse {
+    color: $card-inverse-color;
+
+    .card-header,
+    .card-footer {
+        background-color: transparent;
+        border-color: $card-inverse-cap-border-color;
     }
     .card-header,
     .card-footer,
@@ -34,8 +40,10 @@
         color: $white;
     }
     .card-link {
+        color: $card-inverse-link-color;
+
         @include hover-focus {
-            color: $card-link-hover-color;
+            color: $card-inverse-link-hover-color;
         }
     }
 }

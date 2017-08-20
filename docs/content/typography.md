@@ -102,7 +102,7 @@ Change text alignment, transform, style, weight, and color with our [text utilit
 
 ## Abbreviations
 
-Stylized implementation of HTML's `<abbr>` element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a `title` attribute have a light dotted bottom border and a help cursor on hover, providing additional context on hover and to users of assistive technologies.
+Stylized implementation of HTML's `<abbr>` element for abbreviations and acronyms to show the expanded version on hover. Abbreviations with a `title` attribute have a default underline and gain a help cursor to provide additional context on hover and to users of assistive technologies.
 
 Add `.initialism` to an abbreviation for a slightly smaller font-size.
 
@@ -132,12 +132,19 @@ Add a `<footer class="blockquote-footer">` for identifying the source. Wrap the 
 </blockquote>
 {% endexample %}
 
-### Reverse Layout
+### Alignment
 
-Add `.blockquote-reverse` for a blockquote with right-aligned content.
+Use [text alignment utilities]({{ site.baseurl }}/utilities/typography/#text-alignment) to alter the layout of the blockquote.
 
 {% example html %}
-<blockquote class="blockquote blockquote-reverse">
+<blockquote class="blockquote text-center">
+  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+</blockquote>
+{% endexample %}
+
+{% example html %}
+<blockquote class="blockquote text-end">
   <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
   <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>

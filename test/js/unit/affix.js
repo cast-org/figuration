@@ -37,7 +37,7 @@ $(function() {
         $(templateHTML).appendTo(document.body);
 
         $('#affixTarget').CFW_Affix({
-            offset: $('#affixTarget ul').position()
+            top: $('#affixTarget ul').position().top
         });
 
         $('#affixTarget')
@@ -72,7 +72,8 @@ $(function() {
 
         $('#affixTopTarget')
             .CFW_Affix({
-                offset: { top: 120, bottom: 0 }
+                top: 120,
+                bottom: 0
             })
             .on('affixed-top.cfw.affix', function() {
                 assert.ok($('#affixTopTarget').hasClass('affix-top'), 'affix-top class applied');

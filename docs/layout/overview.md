@@ -58,7 +58,9 @@ Since Figuration is developed to be mobile first, we use a handful of [media que
 For accessibility reasons, the Sass internally maps the pixel defined breakpoints into `em` values.  We assume a 16px default root font size, since this is the default for most browsers.
 
 {% callout info %}
-#### PX vs EM Controversy
+PX vs EM Controversy
+{:.h5}
+
 While this is a very opinionated topic, Figuration has chosen the `em` route for greater accessibility. We believe strongly that this is the correct direction moving forward.
 
 Some reference material - may be competing points of view:
@@ -73,7 +75,7 @@ Figuration primarily uses the following media query ranges---or breakpoints---in
 
 {% highlight scss %}
 // Extra small devices (portrait phones, less than 36em/576px)
-// No media query since this is the default in Bootstrap
+// No media query since this is the default in Figuration
 
 // Small devices (landscape phones, 36em/576px and up)
 @media (min-width: 36em) { ... }
@@ -133,7 +135,7 @@ Once again, these media queries are also available via Sass mixins:
 @include media-breakpoint-down(lg) { ... }
 {% endhighlight %}
 
-We also have media between the breakpoint's minimum and maximum widths for only the given screen size:
+There are also media queries and mixins for targeting a single segment of screen sizes using the minimum and maximum breakpoint widths.
 
 {% highlight scss %}
 // Extra small devices (portrait phones, less than 36em/576px)
@@ -162,18 +164,18 @@ These media queries are also available via Sass mixins:
 @include media-breakpoint-only(xl) { ... }
 {% endhighlight %}
 
-And finally media that spans multiple breakpoint widths:
+Similarly, media queries may span multiple breakpoint widths:
 
 {% highlight scss %}
 // Example
-// Medium devices (tablets, 48em/768px and up) and  Large devices (desktops, 62em/992px and up)
+// Medium devices (tablets, 48em/768px) up to Extra Large devices (desktops, 75em/1200px)
 @media (min-width: 48em) and (max-width: 74.9375em) { ... }
 {% endhighlight %}
 
-The Sass mixin for the above example look like that shown beneath:
+The Sass mixin for targeting the same screen size range would be:
 
 {% highlight scss %}
-@include media-breakpoint-between(md, lg) { ... }
+@include media-breakpoint-between(md, xl) { ... }
 {% endhighlight %}
 
 ## Breakpoint Nomenclature
@@ -189,27 +191,26 @@ The only special case is where there are `*-up` or `*-down` variants for certain
 A quick example using some of Figuration's [Typography utility classes]({{ site.baseurl }}/utilities/typography).
 
 {% example html %}
-<p class="text-right">Right aligned text on all viewport sizes. (<strong>No <code>xs</code> class designation!</strong>)</p>
-<p class="text-sm-right">Right aligned text on viewports sized SM (small) or wider.</p>
-<p class="text-md-right">Right aligned text on viewports sized MD (medium) or wider.</p>
-<p class="text-lg-right">Right aligned text on viewports sized LG (large) or wider.</p>
-<p class="text-xl-right">Right aligned text on viewports sized XL (extra-large) or wider.</p>
+<p class="text-end">Right aligned text on all viewport sizes. (<strong>No <code>xs</code> class designation!</strong>)</p>
+<p class="text-sm-end">Right aligned text on viewports sized SM (small) or wider.</p>
+<p class="text-md-end">Right aligned text on viewports sized MD (medium) or wider.</p>
+<p class="text-lg-end">Right aligned text on viewports sized LG (large) or wider.</p>
+<p class="text-xl-end">Right aligned text on viewports sized XL (extra-large) or wider.</p>
 {% endexample %}
 
 ## Z-index
 
 Several Figuration components utilize `z-index`, the CSS property that helps control layout by providing a third axis to arrange content. We utilize a default z-index scale in Figuration that's been designed to properly layer navigation, tooltips and popovers, modals, and more.
 
-Customizing these values is most likely not needed, and we don't recommened customizing the values.  However, if you change one, you will need to review and possibly update all of the other values.
+Customizing these values is most likely not needed, and we don't recommend customizing the values.  However, if you change one, you will need to review and possibly update all of the other values.
 
 {% highlight scss %}
 $zindex-dropdown-backdrop:  990 !default;
-$zindex-navbar:            1000 !default;
 $zindex-dropdown:          1000 !default;
+$zindex-fixed:      1020 !default;
+$zindex-sticky:     1020 !default;
 $zindex-popover:           1025 !default;
 $zindex-tooltip:           1030 !default;
-$zindex-navbar-fixed:      1020 !default;
-$zindex-navbar-sticky:     1020 !default;
 $zindex-modal-backdrop:    1040 !default;
 $zindex-modal:             1050 !default;
 {% endhighlight %}

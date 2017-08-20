@@ -14,12 +14,12 @@ group: get-started
 
 ## Quick Download
 
-<div data-cfw="equalize" data-cfw-equalize-target=".card-block">
+<div data-cfw="equalize" data-cfw-equalize-target=".card-body">
   <div class="row mt-2" data-cfw="equalize" data-cfw-equalize-target=".card-footer">
     <div class="col-sm-6">
       <div class="card card-download">
         <h3 class="h4 card-header card-inverse" style="background-color: #246;">Compiled</h3>
-        <div class="card-block">
+        <div class="card-body">
 {% markdown %}
 Download just the compiled and minified CSS and JavaScript. Doesn't include any documentation or original source files.
 {% endmarkdown %}
@@ -32,7 +32,7 @@ Download just the compiled and minified CSS and JavaScript. Doesn't include any 
     <div class="col-sm-6">
       <div class="card card-download">
         <h3 class="h4 card-header card-inverse" style="background-color: #246;">Source Files</h3>
-        <div class="card-block">
+        <div class="card-body">
 {% markdown %}
 Download everything: source Sass, JavaScript, and documentation files. **Requires a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes), and [some setup]({{ site.baseurl }}/get-started/build-tools/#tooling-setup).**
 {% endmarkdown %}
@@ -51,7 +51,7 @@ Pull in Figuration's **source files** into nearly any project with some of the m
 
 ### npm
 
-Install Figuration in your Node powered apps with [the npm package](https://www.npmjs.org/package/figuration):
+Install Figuration in your Node powered apps with [the npm package](https://www.npmjs.com/package/figuration):
 
 {% highlight bash %}
 npm install figuration@{{ site.current_version }}
@@ -65,6 +65,18 @@ yarn add figuration@{{ site.current_version }}
 
 Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
 
+{% highlight plaintext %}
+figuration/
++-- dist/
+|   +-- css/
+|   +-- js/
++-- grunt/
++-- js/
++-- scss/
+{% endhighlight %}
+
+Basically just the dist, along with the source `js` and `scss` files, and just enough to build the dist. If you need the docs and all the tests for local dev, then download the source version, or clone the [Figuration repository from GitHub]({{ site.repo }}).
+
 ## What's Included
 
 The [quick download versions](#quick-download) listed above, contain the following directories and files, logically grouping common resources and providing both compiled and minified variations.
@@ -75,14 +87,15 @@ Once downloaded, unzip the compressed folder to see the structure of (the compil
 
 {% highlight plaintext %}
 figuration/
-+-- css/
-|   +-- figuration.css
-|   +-- figuration.css.map
-|   +-- figuration.min.css
-|   +-- figuration.min.css.map
-+-- js/
-    +-- figuration.js
-    +-- figuration.min.js
++-- dist/
+    +-- css/
+    |   +-- figuration.css
+    |   +-- figuration.min.css
+    |   +-- figuration-rtl.css
+    |   +-- figuration-rtl.min.css
+    +-- js/
+        +-- figuration.js
+        +-- figuration.min.js
 {% endhighlight %}
 
 This is the most basic form of Figuration: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JavaScript (`figuration.*`), as well as compiled and minified CSS and JavaScript (`figuration.min.*`). CSS <a href="https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps">source maps</a> (`figuration.*.map`) are available for use with certain browsers' developer tools.
@@ -97,11 +110,10 @@ figuration/
 |   +-- css/
 |   +-- js/
 +-- docs/
++-- grunt/
 +-- js/
 +-- scss/
-{% comment %}
-    +-- examples/
-{% endcomment %}
++-- test/
 {% endhighlight %}
 
 The `scss/`, and `js/` folders are the source code for our CSS and JS (respectively). The `dist/` folder includes everything listed in the precompiled download section above. The `docs/` folder includes the source code for our documentation. Beyond that, any other included file provides support for packages, license information, and development.

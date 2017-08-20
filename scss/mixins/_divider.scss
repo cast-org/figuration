@@ -1,0 +1,15 @@
+// Horizontal divider (basically an hr)
+@mixin divider-h($color: $divider-border-color, $dim: $divider-border-width, $spacer: $divider-spacer) {
+    height: 0;
+    border-top: $dim solid $color;
+    margin: $spacer 0;
+    overflow: hidden;
+}
+
+// Vertical divider
+@mixin divider-v($color: $divider-border-color, $dim: $divider-border-width, $spacer: $divider-spacer) {
+    width: 0;
+    border-left: $dim solid $color;
+    margin: 0 $spacer;
+    overflow: hidden;
+}

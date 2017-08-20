@@ -25,9 +25,35 @@ Badges scale to match the size of the immediate parent element by using relative
 <h6>Example heading <span class="badge">New</span></h6>
 {% endexample %}
 
+Badges can be used as part of links or buttons to provide a counter.
+
+{% example html %}
+<button type="button" class="btn btn-primary">
+    Notifications <span class="badge">4</span>
+</button>
+{% endexample %}
+
+Note that depending on how they are used, badges may be confusing for users of screen readers and similar assistive technologies. While the styling of badges provides a visual cue as to their purpose, these users will simply be presented with the content of the badge. Depending on the specific situation, these badges may seem like random additional words or numbers at the end of a sentence, link, or button.
+
+Unless the context is clear (as with the "Notifications" example, where it is understood that the "4" is the number of notifications), consider including additional context with a visually hidden piece of additional text.
+
+{% example html %}
+<button class="btn btn-primary">
+    Profile <span class="badge badge-danger">9</span>
+    <span class="sr-only">unread messages</span>
+</button>
+{% endexample %}
+
 ## Contextual Variations
 
 Add any of the below mentioned modifier classes to change the appearance of a badge.
+
+{% callout warning %}
+Conveying Meaning to Assistive Technologies
+{:.h5}
+
+Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
+{% endcallout %}
 
 {% example html %}
 <strong>Basic Badges:</strong>
@@ -53,9 +79,6 @@ Add any of the below mentioned modifier classes to change the appearance of a ba
 </p>
 
 {% endexample %}
-
-{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
-{{ callout-include | markdownify }}
 
 ## Pill Badges
 

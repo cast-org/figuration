@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v2.0.0): accordion.js
+ * Figuration (v3.0.0): accordion.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -8,74 +8,51 @@
 (function($) {
     'use strict';
 
-    if ($.fn.CFW_Collapse === undefined) throw new Error('CFW_Accordion requires collapse.js');
+    if ($.fn.CFW_Collapse === undefined) throw new Error('CFW_Accordion requires CFW_Collapse');
 
-    var CFW_Widget_Accordion = function(element, options) {
+    var CFW_Widget_Accordion = function(element) {
         this.$element = $(element);
-
-        this.settings = $.extend({}, CFW_Widget_Accordion.DEFAULTS, this._parseDataAttr(), options);
-
         this._init();
-    };
-
-    CFW_Widget_Accordion.DEFAULTS = {
-        active      : false     // [TODO} ???
     };
 
     CFW_Widget_Accordion.prototype = {
         _init : function() {
             var $selfRef = this;
 
-            this.$element.attr('data-cfw', 'accordion');
-
-            this.$element.on('beforeShow.cfw.collapse', function(e) {
-                if (e.isDefaultPrevented()) { return; }
-                $selfRef.updateCollapse(e);
-            });
-
-            this._trigger('init.cfw.accordion');
+            this.$element
+                .attr('data-cfw', 'accordion')
+                .on('beforeShow.cfw.collapse', function(e) {
+                    if (e.isDefaultPrevented()) { return; }
+                    $selfRef._update(e);
+                })
+                .CFW_trigger('init.cfw.accordion');
         },
 
-        updateCollapse : function(e) {
-            var hasActive = false;
-            var $activeCollapse = $(e.target);
+        _update : function(e) {
+            var inTransition = false;
+            var $current = $(e.target);
             var $collapse = this.$element.find('[data-cfw="collapse"]');
 
             $collapse.each(function() {
                 if ($(this).data('cfw.collapse').inTransition === 1) {
-                    hasActive = true;
+                    inTransition = true;
                 }
             });
 
-            if (hasActive) {
+            if (inTransition) {
                 e.preventDefault();
                 return;
             }
 
-            $collapse.each(function() {
-                var $this = $(this);
-                if ($this.is($activeCollapse)) {
-                    return;
-                }
-                $this.CFW_Collapse('hide');
-            });
+            $collapse.not($current).CFW_Collapse('hide');
         },
 
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$element.data();
+        dispose : function() {
+            this.$element
+                .off('.cfw.collapse')
+                .removeData('cfw.accordion');
 
-            if (typeof data.cfwAccordionActive !== 'undefined') { parsedData.active = data.cfwAccordionActive; }
-            return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$element.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
+            this.$element = null;
         }
     };
 
@@ -83,11 +60,9 @@
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
-            var data = $this.data('cfw.Accordion');
-            var options = typeof option === 'object' && option;
-
+            var data = $this.data('cfw.accordion');
             if (!data) {
-                $this.data('cfw.Accordion', (data = new CFW_Widget_Accordion(this, options)));
+                $this.data('cfw.accordion', (data = new CFW_Widget_Accordion(this)));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);

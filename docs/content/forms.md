@@ -18,6 +18,13 @@ Figuration's form controls expand on [the Rebooted form styles]({{ site.baseurl 
 
 Remember, since Figuration utilizes the HTML5 doctype, **all inputs must have a `type` attribute**.
 
+{% callout warning %}
+Alternatives to Hidden Labels
+{:.h5}
+
+Assistive technologies such as screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the `.sr-only` class. There are further alternative methods of providing a label for assistive technologies, such as the `aria-label`, `aria-labelledby` or `title` attribute. If none of these are present, assistive technologies may resort to using the `placeholder` attribute, if present, but note that use of `placeholder` as a replacement for other labelling methods is not advised.
+{% endcallout %}
+
 {% example html %}
 <form>
   <div class="form-group">
@@ -84,9 +91,12 @@ Remember, since Figuration utilizes the HTML5 doctype, **all inputs must have a 
     </div>
   </fieldset>
   <div class="form-check">
-    <label class="form-check-label">
-      <input type="checkbox" class="form-check-input"> Check me out
-    </label>
+    <fieldset>
+      <legend>Checkbox</legend>
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input"> Check me out
+      </label>
+    </fieldset>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
@@ -269,11 +279,11 @@ The `.form-group` class is the easiest way to add some structure to forms. Its o
 {% example html %}
 <form>
   <div class="form-group">
-    <label for="formGroupExampleInput">Example label</label>
+    <label class="form-control-label" for="formGroupExampleInput">Example label</label>
     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
   </div>
   <div class="form-group">
-    <label for="formGroupExampleInput2">Another label</label>
+    <label class="form-control-label" for="formGroupExampleInput2">Another label</label>
     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
   </div>
 </form>
@@ -281,75 +291,88 @@ The `.form-group` class is the easiest way to add some structure to forms. Its o
 
 ### Inline Forms
 
-Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms behave differently:
+Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms vary slightly from their default states.
 
-- Controls are `display: inline-block` to provide alignment control via `vertical-align` and `margin`.
-- Controls receive `width: auto` to override the Figuration default `width: 100%`.
-- Controls **only appear inline in viewports that are at least 48em/768px wide** to account for narrow viewports on mobile devices.
+- Controls are `display: flex`, collapsing any HTML white space and allowing you to provide alignment control with [spacing]({{ site.baseurl }}/utilities/spacing/) and [flexbox]({{ site.baseurl }}/utilities/flexbox/) utilities.
+- Controls and input groups receive `width: auto` to override the Figuration default `width: 100%`.
+- Controls **only appear inline in viewports that are at least 36em/576px wide** to account for narrow viewports on mobile devices.
 
-Because of this, you may need to manually address the width and alignment of individual form controls. Lastly, as shown below, you should always include a `<label>` with each form control.
-
-#### Visible Labels
+You may need to manually address the width and alignment of individual form controls with [spacing utilities]({{ site.baseurl }}/utilities/spacing/) (as shown below). Lastly, as shown below, you should always include a `<label>` with each form control, even if you need to hide it from non-screenreader users with `.sr-only`.
 
 {% example html %}
 <form class="form-inline">
-  <div class="form-group">
-    <label for="exampleInputName2">Name</label>
-    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail2">Email</label>
-    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-  </div>
-  <button type="submit" class="btn btn-primary">Send invitation</button>
-</form>
-{% endexample %}
-
-#### Hidden Labels
-
-{% example html %}
-<form class="form-inline">
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputEmail3">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
-  </div>
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputPassword3">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
-  </div>
-  <div class="form-check">
-    <label class="form-check-label">
-      <input class="form-check-input" type="checkbox"> Remember me
-    </label>
-  </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
-</form>
-{% endexample %}
-
-{% example html %}
-<form class="form-inline">
-  <div class="form-group">
-    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-    <div class="input-group">
-      <div class="input-group-addon">$</div>
-      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
-      <div class="input-group-addon">.00</div>
+    <div class="form-group mb-0_5 me-sm-0_5 mb-sm-0">
+        <label for="inlineName0" class="form-control-label me-sm-0_5">Name</label>
+        <input type="text" class="form-control" id="inlineName0" placeholder="Jane Doe">
     </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Transfer cash</button>
+    <div class="form-group mb-0_5 me-sm-0_5 mb-sm-0">
+        <label for="inlineEmail0" class="form-control-label me-sm-0_5">Email</label>
+        <input type="email" class="form-control" id="inlineEmail0" placeholder="jane.doe@example.com">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 {% endexample %}
 
-{% callout warning %}
-#### Alternatives to Hidden Labels
-Assistive technologies such as screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the `.sr-only` class. There are further alternative methods of providing a label for assistive technologies, such as the `aria-label`, `aria-labelledby` or `title` attribute. If none of these are present, assistive technologies may resort to using the `placeholder` attribute, if present, but note that use of `placeholder` as a replacement for other labelling methods is not advised.
-{% endcallout %}
+{% example html %}
+<form class="form-inline form-inline-checkbox">
+    <div class="form-group mb-0_5 me-sm-0_5 mb-sm-0">
+        <label class="sr-only" for="inlineEmail1">Email address</label>
+        <input type="email" class="form-control" id="inlineEmail1" placeholder="Enter email">
+    </div>
+    <div class="form-group mb-0_5 me-sm-0_5 mb-sm-0">
+        <label class="sr-only" for="inlinePassword1">Password</label>
+        <input type="password" class="form-control" id="inlinePassword1" placeholder="Password">
+    </div>
+    <div class="form-check mb-0_5 me-sm-0_5 mb-sm-0">
+        <label class="form-check-label">
+            <input class="form-check-input" type="checkbox"> Remember me
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
+{% endexample %}
+
+Input groups are supported.
+
+{% example html %}
+<form class="form-inline">
+    <div class="form-group me-sm-0_5">
+        <label class="sr-only" for="inputAmount2">Amount (in dollars)</label>
+        <div class="input-group">
+            <div class="input-group-addon">$</div>
+            <input type="text" class="form-control" id="inputAmount2" placeholder="Amount">
+            <div class="input-group-addon">.00</div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Transfer cash</button>
+</form>
+{% endexample %}
+
+Custom form controls and selects are also supported.
+
+{% example html %}
+<form class="form-inline">
+    <label class="form-control-label me-sm-0_5" for="inlinePref4">Preference</label>
+    <select class="custom-select mb-0_5 me-sm-0_5 mb-sm-0" id="inlinePref4">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <label class="custom-control custom-checkbox mb-0_5 me-sm-0_5 mb-sm-0">
+        <input type="checkbox" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Remember my preference</span>
+    </label>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endexample %}
 
 ### Using the Grid
 
-For more structured form layouts that are also responsive, you can utilize Figuration's [predefined grid classes]({{ site.baseurl }}/layout/grid/#predefined-classes) or [mixins]({{ site.baseurl }}/layout/grid/#sass-mixins) to create horizontal forms. Add the `.row` class to form groups and use the `.col-*-*` classes to specify the width of your labels and controls.
+For more structured form layouts that are also responsive, you can utilize Figuration's [predefined grid classes]({{ site.baseurl }}/layout/grid/#predefined-classes) or [mixins]({{ site.baseurl }}/layout/grid/#sass-variables-and-mixins) to create horizontal forms. Add the `.row` class to form groups and use the `.col-*-*` classes to specify the width of your labels and controls.
 
-Be sure to add `.form-control-label` to your `<label>`s as well so they're vertically centered with their associated form controls. For `<legend>` elements, you can use `.col-form-legend` to make them appear similar to regular `<label>` elements.
+Be sure to add `.form-control-label` to your `<label>`s as well so they're vertically centered with their associated form controls. For `<legend>` elements, you can use `.form-control-legend` to make them appear similar to regular `<label>` elements.
 
 {% example html %}
 <div class="container">
@@ -366,38 +389,42 @@ Be sure to add `.form-control-label` to your `<label>`s as well so they're verti
         <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
       </div>
     </div>
-    <fieldset class="form-group row">
-      <legend class="col-sm-2 form-control-legend">Radios</legend>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-            Option one is this and that&mdash;be sure to include why it's great
-          </label>
-        </div>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-            Option two can be something else and selecting it will deselect option one
-          </label>
-        </div>
-        <div class="form-check disabled">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-            Option three is disabled
-          </label>
-        </div>
-      </div>
-    </fieldset>
     <div class="form-group row">
-      <legend class="col-sm-2 form-control-legend">Checkbox</legend>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="checkbox"> Check me out
-          </label>
+      <fieldset class="w-100 clearfix">
+        <legend class="col-sm-2 float-sm-start form-control-legend">Radios</legend>
+        <div class="col-sm-10 float-sm-start">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+              Option one is this and that&mdash;be sure to include why it's great
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+              Option two can be something else and selecting it will deselect option one
+            </label>
+          </div>
+          <div class="form-check disabled">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+              Option three is disabled
+            </label>
+          </div>
         </div>
-      </div>
+      </fieldset>
+    </div>
+    <div class="form-group row">
+      <fieldset class="w-100 clearfix">
+        <legend class="col-sm-2 float-sm-start form-control-legend">Checkbox</legend>
+        <div class="col-sm-10 float-sm-start">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox"> Check me out
+            </label>
+          </div>
+        </div>
+      </fieldset>
     </div>
     <div class="form-group row">
       <div class="offset-sm-2 col-sm-10">
@@ -518,31 +545,31 @@ Group checkboxes or radios on the same horizontal row by adding `.form-check-inl
 
 ### Without Labels
 
-Should you have no text within the `<label>`, the input is positioned as you'd expect. **Currently only works on non-inline checkboxes and radios.** Remember to still provide some form of label for assistive technologies (for instance, using `aria-label`).
+Add `.position-static` to inputs within `.form-check` that don't have any label text. Remember to still provide some form of label for assistive technologies (for instance, using `aria-label`).
 
 {% example html %}
 <div class="form-check">
   <label class="form-check-label">
-    <input class="form-check-input" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+    <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
   </label>
 </div>
 <div class="form-check">
   <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
+    <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
   </label>
 </div>
 {% endexample %}
 
 ## Static Controls
 
-When you need to place plain text next to a form label within a form, use the `.form-control-static` class on a `<p>`, or another element of your choice.
+When you want to have read-only fields in your form styled as plain text, use the `.form-control-static` class to remove the default form field styling and preserve the correct margin and padding.
 
 {% example html %}
 <form>
   <div class="form-group row">
-    <label class="col-sm-2 form-control-label">Email</label>
+    <label for="inputEmail" class="col-sm-2 form-control-label">Email</label>
     <div class="col-sm-10">
-      <p class="form-control-static">email@example.com</p>
+      <input type="text" readonly class="form-control-static" id="inputEmail" value="email@example.com">
     </div>
   </div>
   <div class="form-group row">
@@ -556,11 +583,11 @@ When you need to place plain text next to a form label within a form, use the `.
 
 {% example html %}
 <form class="form-inline">
-  <div class="form-group">
-    <label class="sr-only">Email</label>
-    <p class="form-control-static">email@example.com</p>
+  <div class="form-group me-0_5">
+    <label for="inputEmail2" class="sr-only">Email</label>
+    <input type="text" readonly class="form-control-static" id="inputEmail2" value="email@example.com">
   </div>
-  <div class="form-group">
+  <div class="form-group me-0_5">
     <label for="inputPassword2" class="sr-only">Password</label>
     <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
   </div>
@@ -572,9 +599,9 @@ When you need to place plain text next to a form label within a form, use the `.
 
 Add the `disabled` boolean attribute on an input to prevent user interactions. Disabled inputs appear lighter and add a `not-allowed` cursor.
 
-{% highlight html %}
-<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
-{% endhighlight %}
+{% example html %}
+<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled>
+{% endexample %}
 
 Add the `disabled` attribute to a `<fieldset>` to disable all the controls within.
 
@@ -602,13 +629,15 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
 {% endexample %}
 
 {% callout warning %}
-#### Caveat About Link Functionality of `<a>`
+Caveat About Link Functionality of `<a>`
+{:.h5}
 
-By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`. As noted in the section about [disabled state for buttons](../buttons/#disabled-state) (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in Opera 18 and below, or in Internet Explorer 11, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.
+By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`. As noted in the section about [disabled state for buttons](../buttons/#disabled-state) (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in all browsers, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.
 {% endcallout %}
 
 {% callout danger %}
-#### Cross-browser Compatibility
+Cross-browser Compatibility
+{:.h5}
 
 While Figuration will apply these styles in all browsers, Internet Explorer 11 and below don't fully support the `disabled` attribute on a `<fieldset>`. Use custom JavaScript to disable the fieldset in these browsers.
 {% endcallout %}
@@ -618,7 +647,7 @@ While Figuration will apply these styles in all browsers, Internet Explorer 11 a
 Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
 
 {% example html %}
-<input class="form-control" type="text" placeholder="Readonly input here&hellip;" readonly>
+<input class="form-control" type="text" placeholder="Readonly input" readonly>
 {% endexample %}
 
 ## Control Sizing
@@ -632,11 +661,6 @@ Set heights using classes like `.form-control-lg`, and set widths using grid col
 <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm">
 <input class="form-control form-control-xs" type="text" placeholder=".form-control-xs">
 {% endexample %}
-
-{% callout info %}
-#### `<select>` Heights in IE 9+
-The heights of select elements is a bit off in Internet Explorer, usually just slightly shorter.  Still looking into it.
-{% endcallout %}
 
 {% example html %}
 <select class="form-control form-control-xl">
@@ -679,7 +703,8 @@ Wrap inputs in grid columns, or any custom parent element, to easily enforce des
 Block-level help text in forms can be created using `.form-text`. Inline help text can be flexibly implemented using any inline HTML element and utility classes like `.text-muted`.
 
 {% callout warning %}
-#### Associating Help Text With Form Controls
+Associating Help Text With Form Controls
+{:.h5}
 
 Help text should be explicitly associated with the form control it relates to using the `aria-describedby` attribute. This will ensure that assistive technologies---such as screen readers---will announce this help text when the user focuses or enters the control.
 {% endcallout %}
@@ -703,8 +728,8 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
 {% example html %}
 <form class="form-inline">
   <div class="form-group">
-    <label for="inputPassword4">Password</label>
-    <input type="password" id="inputPassword4" class="form-control" aria-describedby="passwordHelpInline">
+    <label for="inputPassword4" class="me-0_5">Password</label>
+    <input type="password" id="inputPassword4" class="form-control me-0_5" aria-describedby="passwordHelpInline">
     <small id="passwordHelpInline" class="text-muted">
       Must be 8-20 characters long.
     </small>
@@ -720,6 +745,7 @@ Figuration includes validation styles for danger, warning, and success states on
 
 - To use, add `.has-warning`, `.has-danger`, or `.has-success` to the parent element. Any `.form-control-label`, `.form-control`, or custom form element will receive the validation styles.
 - Contextual validation text, in addition to your usual form field help text, can be added with the use of `.form-control-feedback`. This text will adapt to the parent `.has-*` class. By default it only includes a bit of `margin` for spacing and a modified `color` for each state.
+- Add a visual validation icon to an input field by adding the `.form-control-icon` class to a `.form-control` element.  These icons will also scale with the component size.
 - Validation icons are `url()`s configured via Sass variables that are applied to `background-image` declarations for each state.
 - You may use your own base64 PNGs or SVGs by updating the Sass variables and recompiling.
 - Icons can also be disabled entirely by setting the variables to `none` or commenting out the source Sass.
@@ -732,36 +758,33 @@ Generally speaking, you'll want to use a particular state for specific types of 
 - **Warning** works well for input values that are in progress, like password strength, or soft validation before a user attempts to submit a form.
 - And lastly, **success** is ideal for situations when you have per-field validation throughout a form and want to encourage a user through the rest of the fields.
 
-Here are some examples of the aforementioned classes in action.
-
-{% comment %}
 {% callout warning %}
-#### Conveying Validation State to Assistive Technologies and Colorblind Users
+Conveying Meaning to Assistive Technologies
+{:.h5}
 
-Using these validation styles to denote the state of a form control only provides a visual, color-based indication, which will not be conveyed to users of assistive technologies - such as screen readers - or to colorblind users.
-
-Ensure that an alternative indication of state is also provided. For instance, you can include a hint about state in the form control's `<label>` text itself (as is the case in the following code example), include a [Glyphicon](../components/#glyphicons) (with appropriate alternative text using the `.sr-only` class - see the [Glyphicon examples](../components/#glyphicons-examples)), or by providing an additional [help text](#forms-help-text) block. Specifically for assistive technologies, invalid form controls can also be assigned an `aria-invalid="true"` attribute.
+Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
 {% endcallout %}
-{% endcomment %}
+
+Here are some examples of the aforementioned classes in action.
 
 ### Examples
 
 {% example html %}
 <div class="form-group has-success">
   <label class="form-control-label" for="inputSuccess1">Input with success</label>
-  <input type="text" class="form-control form-control-success" id="inputSuccess1">
+  <input type="text" class="form-control form-control-icon" id="inputSuccess1">
   <div class="form-control-feedback">Success! You've done it.</div>
   <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 <div class="form-group has-warning">
   <label class="form-control-label" for="inputWarning1">Input with warning</label>
-  <input type="text" class="form-control form-control-warning" id="inputWarning1">
+  <input type="text" class="form-control form-control-icon" id="inputWarning1">
   <div class="form-control-feedback">Check the formatting of that and try again.</div>
   <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
 <div class="form-group has-danger">
   <label class="form-control-label" for="inputDanger1">Input with danger</label>
-  <input type="text" class="form-control form-control-danger" id="inputDanger1">
+  <input type="text" class="form-control form-control-icon" id="inputDanger1">
   <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
   <small class="form-text text-muted">Example help text that remains unchanged.</small>
 </div>
@@ -794,7 +817,7 @@ Also a slightly more horizontal layout.
 <div class="form-group row has-success">
   <label for="inputHorizontalSuccess" class="col-sm-2 form-control-label">Email</label>
   <div class="col-sm-10">
-    <input type="email" class="form-control form-control-success" id="inputHorizontalSuccess" placeholder="name@example.com">
+    <input type="email" class="form-control form-control-icon" id="inputHorizontalSuccess" placeholder="name@example.com">
     <div class="form-control-feedback">Success! You've done it.</div>
     <small class="form-text text-muted">Example help text that remains unchanged.</small>
   </div>
@@ -802,7 +825,7 @@ Also a slightly more horizontal layout.
 <div class="form-group row has-warning">
   <label for="inputHorizontalWarning" class="col-sm-2 form-control-label">Email</label>
   <div class="col-sm-10">
-    <input type="email" class="form-control form-control-warning" id="inputHorizontalWarning" placeholder="name@example.com">
+    <input type="email" class="form-control form-control-icon" id="inputHorizontalWarning" placeholder="name@example.com">
     <div class="form-control-feedback">Check the formatting of that and try again.</div>
     <small class="form-text text-muted">Example help text that remains unchanged.</small>
   </div>
@@ -810,8 +833,50 @@ Also a slightly more horizontal layout.
 <div class="form-group row has-danger">
   <label for="inputHorizontalDnger" class="col-sm-2 form-control-label">Email</label>
   <div class="col-sm-10">
-    <input type="email" class="form-control form-control-danger" id="inputHorizontalDnger" placeholder="name@example.com">
+    <input type="email" class="form-control form-control-icon" id="inputHorizontalDnger" placeholder="name@example.com">
     <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
+    <small class="form-text text-muted">Example help text that remains unchanged.</small>
+  </div>
+</div>
+{% endexample %}
+
+Validation icons can be added optionally.
+
+{% example html %}
+<div class="form-group row has-success">
+  <label for="inputOptSuccessY" class="col-sm-2 form-control-label">Email</label>
+  <div class="col-sm-10">
+    <input type="email" class="form-control form-control-icon" id="inputOptSuccessY" placeholder="name@example.com">
+    <div class="form-control-feedback">Success! You've done it.</div>
+    <small class="form-text text-muted">Example help text that remains unchanged.</small>
+  </div>
+</div>
+<div class="form-group row has-success">
+  <label for="inputOptSuccessN" class="col-sm-2 form-control-label">Email</label>
+  <div class="col-sm-10">
+    <input type="email" class="form-control" id="inputOptSuccessN" placeholder="name@example.com">
+    <div class="form-control-feedback">Success! You've done it.</div>
+    <small class="form-text text-muted">Example help text that remains unchanged.</small>
+  </div>
+</div>
+{% endexample %}
+
+Validation icons will also scale with the component size.
+
+{% example html %}
+<div class="form-group row has-success">
+  <label for="inputSizeSuccessSm" class="col-sm-2 form-control-label">Email</label>
+  <div class="col-sm-10">
+    <input type="email" class="form-control form-control-sm form-control-icon" id="inputSizeSuccessSm" placeholder="name@example.com">
+    <div class="form-control-feedback">Success! You've done it.</div>
+    <small class="form-text text-muted">Example help text that remains unchanged.</small>
+  </div>
+</div>
+<div class="form-group row has-success">
+  <label for="inputSizeSuccessLg" class="col-sm-2 form-control-label">Email</label>
+  <div class="col-sm-10">
+    <input type="email" class="form-control form-control-lg form-control-icon" id="inputSizeSuccessLg" placeholder="name@example.com">
+    <div class="form-control-feedback">Success! You've done it.</div>
     <small class="form-text text-muted">Example help text that remains unchanged.</small>
   </div>
 </div>
@@ -954,7 +1019,7 @@ Custom `<select>` menus need only a custom class, `.custom-select` to trigger th
 </select>
 {% endexample %}
 
-Custom selects degrade nicely in IE9, receiving only a handful of overrides to remove the custom `background-image`. **Multiple selects (e.g., `<select multiple>`) are not currently supported.**
+**Multiple selects (e.g., `<select multiple>`) are not currently supported.**
 
 Multiple size are also available.
 
@@ -979,13 +1044,14 @@ Multiple size are also available.
 
 ### Color Picker
 
+`<input type="color">` element need only a custom class, `.custom-color` to trigger the custom styles.
+
 {% callout danger %}
-#### Browser Compatibility
+Browser Compatibility
+{:.h5}
 
 While Figuration supports styling `<input type="color">` elements, some browsers don't. Use custom JavaScript to handle it in these browsers.  For support details, see [Can I Use](http://caniuse.com/#feat=input-color).
 {% endcallout %}
-
-`<input type="color">` element need only a custom class, `.custom-color` to trigger the custom styles.
 
 {% example html %}
 <input class="custom-color" type="color" value="#117dba" id="color">

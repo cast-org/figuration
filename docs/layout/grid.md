@@ -20,6 +20,7 @@ At a high level, here's how the grid system works:
 - Containers---`.container` for fixed width or `.container-fluid` for full width---center your site's contents and help align your grid content.
 - Rows are horizontal groups of columns that ensure your columns are lined up properly.
 - Content should be placed within columns, and only columns may be immediate children of rows.
+- Thanks to flexbox, grid columns without a set width will automatically layout with equal widths. For example, four instances of `.col-sm` will each automatically be 25% wide for small breakpoints.
 - Column classes indicate the number of columns you'd like to use out of the possible 12 per row. So if you want three equal-width columns, you'd use `.col-4`.
 - Column `width`s are set in percentages, so they're always fluid and sized relative to their parent element.
 - Columns have horizontal `padding` to create the gutters between individual columns.
@@ -28,29 +29,31 @@ At a high level, here's how the grid system works:
 - Grid tiers are based on minimum widths, meaning they apply to that one tier and all those above it (e.g., `.col-sm-4` applies to small, medium, large, and extra large devices).
 - You can use predefined grid classes or Sass mixins for more semantic markup.
 
+Be aware of the limitations and [bugs around flexbox](https://github.com/philipwalton/flexbugs), like the [inability to use some HTML elements as flex containers](https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers).
+
 Sounds good? Great, let's move on to seeing all that in an example.
 
 ## Quick Start Example
 
-If you're using Figuration's compiled CSS, this the example you'll want to start with.
+This example creates three equal-width columns on small, medium, large, and extra large devices using our [predefined grid classes](#predefined-classes). Those columns are centered in the page with the parent `.container`.
+
+Examples further down the page add some color, padding, and borders, to the rows and columns to give a better visual example of their relationship.  These do not appear in the base Figuration grid.
 
 {% example html %}
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
-      1 of 3
+      Fisrt column
     </div>
     <div class="col-sm-4">
-      1 of 3
+      Second column
     </div>
     <div class="col-sm-4">
-      1 of 3
+      Third column
     </div>
   </div>
 </div>
 {% endexample %}
-
-The above example creates three equal-width columns on small, medium, large, and extra large devices using our [predefined grid classes](#predefined-classes). Those columns are centered in the page with the parent `.container`.
 
 ## Grid Options
 
@@ -58,133 +61,255 @@ See how aspects of the Figuration grid system work across multiple devices with 
 
 The example pixel values are calculated based upon assumption where the average user has a 16px root font size.
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th></th>
-        <th class="text-center">
-          Extra small<br>
-          <small>&lt;576px</small><br>
-          <small>&lt;36em</small>
-        </th>
-        <th class="text-center">
-          Small<br>
-          <small>&ge;576px</small><br>
-          <small>&ge;36em</small>
-        </th>
-        <th class="text-center">
-          Medium<br>
-          <small>&ge;768px</small><br>
-          <small>&ge;48em</small>
-        </th>
-        <th class="text-center">
-          Large<br>
-          <small>&ge;992px</small><br>
-          <small>&ge;62em</small>
-        </th>
-        <th class="text-center">
-          Extra large<br>
-          <small>&ge;1200px</small><br>
-          <small>&ge;75em</small>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th class="text-nowrap" scope="row">Grid behavior</th>
-        <td>Horizontal at all times</td>
-        <td colspan="4">Collapsed to start, horizontal above breakpoints</td>
-      </tr>
-      <tr>
-        <th class="text-nowrap" scope="row">Max container width</th>
-        <td>None (auto)</td>
-        <td>544px (33.75rem)</td>
-        <td>720px (45rem)</td>
-        <td>960px (60rem)</td>
-        <td>1152px (72rem)</td>
-      </tr>
-      <tr>
-        <th class="text-nowrap" scope="row">Class prefix</th>
-        <td><code>.col-</code></td>
-        <td><code>.col-sm-</code></td>
-        <td><code>.col-md-</code></td>
-        <td><code>.col-lg-</code></td>
-        <td><code>.col-xl-</code></td>
-      </tr>
-      <tr>
-        <th class="text-nowrap" scope="row"># of columns</th>
-        <td colspan="5">12</td>
-      </tr>
-      <tr>
-        <th class="text-nowrap" scope="row">Gutter width</th>
-        <td colspan="5">2rem / 32px (16px on each side of a column)</td>
-      </tr>
-      <tr>
-        <th class="text-nowrap" scope="row">Nestable</th>
-        <td colspan="5">Yes</td>
-      </tr>
-      <tr>
-        <th class="text-nowrap" scope="row">Offsets</th>
-        <td colspan="5">Yes</td>
-      </tr>
-      <tr>
-        <th class="text-nowrap" scope="row">Column ordering</th>
-        <td colspan="5">Yes</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-scroll table-bordered table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th class="text-center">
+        Extra small<br>
+        <small>&lt;576px</small><br>
+        <small>&lt;36em</small>
+      </th>
+      <th class="text-center">
+        Small<br>
+        <small>&ge;576px</small><br>
+        <small>&ge;36em</small>
+      </th>
+      <th class="text-center">
+        Medium<br>
+        <small>&ge;768px</small><br>
+        <small>&ge;48em</small>
+      </th>
+      <th class="text-center">
+        Large<br>
+        <small>&ge;992px</small><br>
+        <small>&ge;62em</small>
+      </th>
+      <th class="text-center">
+        Extra large<br>
+        <small>&ge;1200px</small><br>
+        <small>&ge;75em</small>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="text-nowrap" scope="row">Max container width</th>
+      <td>None (auto)</td>
+      <td>544px (33.75rem)</td>
+      <td>720px (45rem)</td>
+      <td>960px (60rem)</td>
+      <td>1152px (72rem)</td>
+    </tr>
+    <tr>
+      <th class="text-nowrap" scope="row">Class prefix</th>
+      <td><code>.col-</code></td>
+      <td><code>.col-sm-</code></td>
+      <td><code>.col-md-</code></td>
+      <td><code>.col-lg-</code></td>
+      <td><code>.col-xl-</code></td>
+    </tr>
+    <tr>
+      <th class="text-nowrap" scope="row"># of columns</th>
+      <td colspan="5">12</td>
+    </tr>
+    <tr>
+      <th class="text-nowrap" scope="row">Gutter width</th>
+      <td colspan="5">2rem / 32px (16px on each side of a column)</td>
+    </tr>
+    <tr>
+      <th class="text-nowrap" scope="row">Nestable</th>
+      <td colspan="5">Yes</td>
+    </tr>
+    <tr>
+      <th class="text-nowrap" scope="row">Offsets</th>
+      <td colspan="5">Yes</td>
+    </tr>
+    <tr>
+      <th class="text-nowrap" scope="row">Column ordering</th>
+      <td colspan="5">Yes</td>
+    </tr>
+  </tbody>
+</table>
 
-## Predefined Classes
+## Auto-Layout Columns
 
-In addition to our semantic mixins, Figuration includes an extensive set of prebuilt classes for quickly creating grid columns. It includes options for device-based column sizing, reordering columns, and more.
+Utilize breakpoint-specific column classes for easy column sizing without an explicit numbered class like `.col-sm-6`.
 
-### Example: Stacked-to-horizontal
+### Equal Width
 
-Using a single set of `.col-md-*` grid classes, you can create a basic grid system that starts out stacked on mobile devices and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices. Place grid columns in any `.row`.
+Equal-width columns are easliy done by adding any number of `.col-{breakpoint}`s for each breakpoint you need and every column will be the same width.
+
+For example, here's are some grid layouts that apply to every device and viewport possible, from `xs` to `xl`.
 
 <div class="cf-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
-  <div class="col-md-1">.col-md-1</div>
+    <div class="col">
+        1 of 2
+    </div>
+    <div class="col">
+        1 of 2
+    </div>
 </div>
+
 <div class="row">
-  <div class="col-md-8">.col-md-8</div>
-  <div class="col-md-4">.col-md-4</div>
+    <div class="col">
+        1 of 3
+    </div>
+    <div class="col">
+        1 of 3
+    </div>
+    <div class="col">
+        1 of 3
+    </div>
 </div>
-<div class="row">
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4">.col-md-4</div>
-</div>
-<div class="row">
-  <div class="col-md-6">.col-md-6</div>
-  <div class="col-md-6">.col-md-6</div>
+
+<div class="row no-gutters">
+  <div class="col">Columns</div>
+  <div class="col">with no</div>
+  <div class="col">gutters</div>
 </div>
 {% endexample %}
 </div>
 
-### Example: Mobile and Desktop
+### Controlling One Column Width
 
-Don't want your columns to simply stack in smaller devices? Use the extra small and medium device grid classes by adding `.col-*` and `.col-md-*` to your columns. See the example below for a better idea of how it all works.
+Auto-layout for flexbox grid columns also means you can set the width of one column and have the sibling columns automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths.
+
+Note that the other columns will resize no matter the width of the center column.
+
+<div class="cf-example-row">
+{% example html %}
+<div class="row">
+    <div class="col">
+        1 of 3
+    </div>
+    <div class="col-6">
+        2 of 3 (wider)
+    </div>
+    <div class="col">
+        3 of 3
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        1 of 3
+    </div>
+    <div class="col-5">
+        2 of 3 (wider)
+    </div>
+    <div class="col">
+        3 of 3
+    </div>
+</div>
+{% endexample %}
+</div>
+
+### Variable Width Content
+
+Use `col-{breakpoint}-auto` classes to size columns based on the natural width of their content. Use these classes in conjunction with [horizontal alignment](#horizontal-alignment) classes for centering layouts with uneven column sizes as viewport width changes.
+
+<div class="cf-example-row">
+{% example html %}
+<div class="container">
+    <div class="row flex-md-center">
+        <div class="col-lg-2">
+            1 of 3
+        </div>
+        <div class="col-md-auto">
+            Variable width content
+        </div>
+        <div class="col-lg-2">
+            3 of 3
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            1 of 3
+        </div>
+        <div class="col-md-auto">
+            Variable width content
+        </div>
+        <div class="col-lg-2">
+            3 of 3
+        </div>
+    </div>
+</div>
+{% endexample %}
+ </div>
+
+### Equal Width with Multiple Rows
+
+Create equal-width columns that span multiple rows by inserting a `.w-100` where you want the columns to break to a new line. Make the breaks responsive by mixing the `.w-100` with some [responsive display utilities]({{ site.baseurl }}/utilities/display/#responsively-hiding-content).
+
+Please note there is a [Safari flexbox bug](https://github.com/philipwalton/flexbugs#11-min-and-max-size-declarations-are-ignored-when-wrapping-flex-items) that prevents this from working without an explicit `flex-basis` or `border`. Our example works thanks to the `border` being set; you can do the same with `.col { border: 1px solid transparent; }`. Alternatively, you can set the flex-basis to the width of the column (e.g., `.col { flex: 1 0 50%; }`).
+
+Both these fixes have been documented in a [reduced test case](https://output.jsbin.com/micohor).
+
+<div class="cf-example-row">
+{% example html %}
+<div class="row">
+  <div class="col">1 of 4</div>
+  <div class="col">2 of 4</div>
+  <div class="w-100"></div>
+  <div class="col">3 of 4</div>
+  <div class="col">4 of 4</div>
+</div>
+{% endexample %}
+</div>
+
+## Responsive Classes
+
+Figuration's grid includes five tiers of predefined classes for building complex responsive layouts. Customize the size of your columns on extra small, small, medium, large, or extra large devices however you see fit.
+
+### All Breakpoints
+
+For grids that are the same from the smallest of devices to the largest, use the `.col` and `.col-*` classes. Specify a numbered class when you need a particularly sized column; otherwise, feel free to stick to `.col`.
+
+<div class="cf-example-row">
+{% example html %}
+<div class="row">
+  <div class="col">col</div>
+  <div class="col">col</div>
+  <div class="col">col</div>
+  <div class="col">col</div>
+</div>
+<div class="row">
+  <div class="col-8">col-8</div>
+  <div class="col-4">col-4</div>
+</div>
+{% endexample %}
+</div>
+
+### Stacked to Horizontal
+
+Using a single set of `.col-sm-*` classes, you can create a basic grid system that starts out stacked on mobile and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices.
+
+<div class="cf-example-row">
+{% example html %}
+<div class="row">
+  <div class="col-sm-8">.col-sm-8</div>
+  <div class="col-sm-4">.col-sm-4</div>
+</div>
+<div class="row">
+  <div class="col-sm-4">.col-sm-4</div>
+  <div class="col-sm-4">.col-sm-4</div>
+  <div class="col-sm-4">.col-sm-4</div>
+</div>
+{% endexample %}
+</div>
+
+### Mix and Match
+
+Don't want your columns to simply stack in some grid tiers. Use a combination of different classes for each tier as needed. See the example below for a better idea of how it all works.
 
 <div class="cf-example-row">
 {% example html %}
 <!-- Stack the columns on mobile by making one full-width and the other half-width -->
 <div class="row">
-  <div class="col-12 col-md-8">.col-12 .col-md-8</div>
+  <div class="col col-md-8">.col .col-md-8</div>
   <div class="col-6 col-md-4">.col-6 .col-md-4</div>
 </div>
 
@@ -203,31 +328,126 @@ Don't want your columns to simply stack in smaller devices? Use the extra small 
 {% endexample %}
 </div>
 
-### Example: Mobile, Tablet, Desktop
+## Alignment
 
-Build on the previous example by creating even more dynamic and powerful layouts with tablet `.col-sm-*` classes.
+Use [Flexbox alignment utilities]({{ site.baseurl }}/utilities/flexbox/) to vertically and horizontally align columns.
 
-<div class="cf-example-row">
+### Vertical Alignment
+
+<div class="cf-example-row cf-example-row-grid cf-example-row-flex-v">
 {% example html %}
-<div class="row">
-  <div class="col-12 col-sm-6 col-md-8">.col-12 .col-sm-6 .col-md-8</div>
-  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
-</div>
-<div class="row">
-  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
-  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
-  <!-- Optional: clear the XS cols if their content doesn't match in height -->
-  <div class="clearfix hide-sm-up"></div>
-  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+<div class="container">
+  <div class="row flex-items-start">
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+  </div>
+  <div class="row flex-items-center">
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+  </div>
+  <div class="row flex-items-end">
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+  </div>
 </div>
 {% endexample %}
 </div>
 
-### Example: Remove Gutters
+<div class="cf-example-row cf-example-row-grid cf-example-row-flex-v">
+{% example html %}
+<div class="container">
+  <div class="row">
+    <div class="col flex-self-start">
+      One of three columns
+    </div>
+    <div class="col flex-self-center">
+      One of three columns
+    </div>
+    <div class="col flex-self-end">
+      One of three columns
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
+### Horizontal Alignment
+
+<div class="cf-example-row">
+{% example html %}
+<div class="container">
+  <div class="row flex-start">
+    <div class="col-4">
+      One of two columns
+    </div>
+    <div class="col-4">
+      One of two columns
+    </div>
+  </div>
+  <div class="row flex-center">
+    <div class="col-4">
+      One of two columns
+    </div>
+    <div class="col-4">
+      One of two columns
+    </div>
+  </div>
+  <div class="row flex-end">
+    <div class="col-4">
+      One of two columns
+    </div>
+    <div class="col-4">
+      One of two columns
+    </div>
+  </div>
+  <div class="row flex-around">
+    <div class="col-4">
+      One of two columns
+    </div>
+    <div class="col-4">
+      One of two columns
+    </div>
+  </div>
+  <div class="row flex-between">
+    <div class="col-4">
+      One of two columns
+    </div>
+    <div class="col-4">
+      One of two columns
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
+### No Gutters
 
 The gutters between columns in our default, predefined grid classes can be removed with `.no-gutters`. This removes the negative `margin`s from `.row` and the horizontal `padding` from all immediate children columns.
 
 Here's the source code for creating these styles. Note that column overrides are scoped to only the first children columns and are targeted via [attribute selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors). While this generates a more specific selector, column padding can still be further customized with [spacing utilities]({{ site.baseurl }}/utilities/spacing/).
+
+**Need an edge-to-edge design?** Drop the parent `.container` or `.container-fluid`.
 
 {% highlight sass %}
 .no-gutters {
@@ -253,7 +473,7 @@ In practice, here's how it looks. Note you can continue to use this with all oth
 {% endexample %}
 </div>
 
-### Example: Column Wrapping
+### Column Wrapping
 
 If more than 12 columns are placed within a single row, each group of extra columns will, as one unit, wrap onto a new line.
 
@@ -267,21 +487,18 @@ If more than 12 columns are placed within a single row, each group of extra colu
 {% endexample %}
 </div>
 
-### Example: Responsive Column Resets
+### Column Resets
 
-With the four tiers of grids available you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a `.clearfix` and our [responsive utility classes]({{ site.baseurl }}/layout/responsive-utilities/).
+With the five tiers of grids available you might run into issues where, at certain breakpoints, your columns don't wrap quite right. To counteract that, use a combination of a `.w-100` and our [display utilities]({{ site.baseurl }}/utilities/display/#responsively-hiding-content).
 
 <div class="cf-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
-  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
-
-  <!-- Add the extra clearfix for only the required viewport -->
-  <div class="clearfix hide-sm-up"></div>
-
-  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
-  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+  <div class="col-4 col-md-3">.col-4 .col-md-3</div>
+  <div class="col-4 col-md-3">.col-4 .col-md-3<br>taller</div>
+  <div class="w-100 d-md-none"></div>
+  <div class="col-4 col-md-3">.col-4 .col-md-3</div>
+  <div class="col-8 col-md-3">.col-8 .col-md-3</div>
 </div>
 {% endexample %}
 </div>
@@ -302,9 +519,53 @@ In addition to column clearing at responsive breakpoints, you may need to **rese
 {% endexample %}
 </div>
 
-### Example: Offsetting Columns
+## Reordering
 
-Move columns to the right using `.offset-md-*` classes. These classes increase the left margin of a column by `*` columns. For example, `.offset-md-4` moves `.col-md-4` over four columns.
+### Flex Order
+
+Use [flexbox order utilities]({{ site.baseurl }}/utilities/flexbox/#order) for controlling the **visual order** of your content.
+
+<div class="cf-example-row">
+{% example html %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      First, but unordered
+    </div>
+    <div class="col flex-last">
+      Second, but last
+    </div>
+    <div class="col flex-first">
+      Third, but first
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
+Order utilities are also available in column counts.
+
+<div class="cf-example-row">
+{% example html %}
+<div class="container">
+  <div class="row">
+    <div class="col flex-order-2">
+      First, but second
+    </div>
+    <div class="col flex-order-12">
+      Second, but last
+    </div>
+    <div class="col flex-order-1">
+      Third, but first
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
+### Offsetting Columns
+
+Move columns to the right using `.offset-*` classes. These classes increase the left margin of a column by `*` columns. For example, `.offset-md-4` moves a column over four columns on medium and larger devices.
 
 <div class="cf-example-row">
 {% example html %}
@@ -322,7 +583,20 @@ Move columns to the right using `.offset-md-*` classes. These classes increase t
 {% endexample %}
 </div>
 
-### Example: Nesting Columns
+### Push and Pull
+
+Easily change the order of our built-in grid columns with `.push-*` and `.pull-*` modifier classes.
+
+<div class="cf-example-row">
+{% example html %}
+<div class="row">
+  <div class="col-md-9 push-md-3">.col-md-9 .push-md-3</div>
+  <div class="col-md-3 pull-md-9">.col-md-3 .pull-md-9</div>
+</div>
+{% endexample %}
+</div>
+
+## Nesting
 
 To nest your content with the default grid, add a new `.row` and set of `.col-sm-*` columns within an existing `.col-sm-*` column. Nested rows should include a set of columns that add up to 12 or fewer (it is not required that you use all 12 available columns).
 
@@ -344,27 +618,33 @@ To nest your content with the default grid, add a new `.row` and set of `.col-sm
 {% endexample %}
 </div>
 
-### Example: Column Ordering
-
-Easily change the order of our built-in grid columns with `.push-md-*` and `.pull-md-*` modifier classes.
-
-<div class="cf-example-row">
-{% example html %}
-<div class="row">
-  <div class="col-md-9 push-md-3">.col-md-9 .push-md-3</div>
-  <div class="col-md-3 pull-md-9">.col-md-3 .pull-md-9</div>
-</div>
-{% endexample %}
-</div>
-
 ## Customizing the Grid
 
 Using our built-in grid Sass variables and maps, it's possible to completely customize the predefined grid classes. Change the number of tiers, the media query dimensions, the container widths, and the grid gutter widths---then recompile.
 
-For example, if you wanted just three grid tiers, you'd update the `$grid-breakpoints`, `$container-max-widths`, and `$grid-gutter-widths` to something like this:
+### Columns and Gutters
+
+The number of grid columns and their horizontal padding (aka, gutters) can be modified via Sass variables. `$grid-columns` is used to generate the widths (in percent) of each individual column while `$grid-gutter-widths` allows breakpoint-specific widths that are divided evenly across `padding-left` and `padding-right` for the column gutters.
+
+{% highlight scss %}
+$grid-columns: 12;
+$grid-gutter-width: 2rem;
+$grid-gutter-widths: (
+    xs: $grid-gutter-width,
+    sm: $grid-gutter-width,
+    md: $grid-gutter-width,
+    lg: $grid-gutter-width,
+    xl: $grid-gutter-width
+);
+{% endhighlight %}
+
+### Grid Tiers
+
+Moving beyond the columns themselves, you may also customize the number of grid tiers. If you wanted just four grid tiers, you would update the `$grid-breakpoints`, `$container-max-widths`, and `$grid-gutter-widths` to something like this:
 
 {% highlight scss %}
 $grid-breakpoints: (
+  xs: 0,
   sm: bp-to-em(480px),
   md: bp-to-em(768px),
   lg: bp-to-em(1024px)
@@ -377,6 +657,7 @@ $container-max-widths: (
 );
 
 $grid-gutter-widths: (
+    xs: 1.5rem,
     sm: 1.5rem,
     md: 2rem,
     lg: 2rem
@@ -434,200 +715,57 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 
 {% highlight scss %}
 // Creates a wrapper for a series of columns
-@mixin make-row($gutter: $grid-gutter-width) {
-    @include clearfix();
-    margin-left:  ($gutter / -2);
-    margin-right: ($gutter / -2);
-}
+@include make-row($gutters: $grid-gutter-widths);
 
-// Make the element grid-ready
-@mixin make-col($size, $columns: $grid-columns, $gutter: $grid-gutter-width) {
-    position: relative;
-    min-height: 1px;
-    padding-right: ($gutter / 2);
-    padding-left:  ($gutter / 2);
-    float: left;
-    width: percentage($size / $columns);
-}
+// Make the element grid-ready (applying everything but the width)
+@include make-col-ready($gutters: $grid-gutter-widths);
+@include make-col($size, $columns: $grid-columns);
 
 // Get fancy by offsetting, or changing the sort order
-@mixin make-col-offset($columns) {
-  margin-left: percentage(($columns / $grid-columns));
-}
-@mixin make-col-push($columns) {
-  left: percentage(($columns / $grid-columns));
-}
-@mixin make-col-pull($columns) {
-  right: percentage(($columns / $grid-columns));
-}
+@include make-col-offset($size, $columns: $grid-columns);
+@include make-col-push($size, $columns: $grid-columns);
+@include make-col-pull($size, $columns: $grid-columns);
 {% endhighlight %}
 
 ### Example Usage
 
 You can modify the variables to your own custom values, or just use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.
 
-See it in action in <a href="http://jsbin.com/ruxona/edit">this rendered example</a>.
-
 {% highlight scss %}
-.container {
-  max-width: 60em;
+.example-container {
+  width: 800px;
   @include make-container();
 }
-.row {
+.example-row {
   @include make-row();
 }
-.content-main {
-  @media (max-width: 32em) {
+.example-content-main {
+  @include make-col-ready();
+
+  @include media-breakpoint-up(sm) {
     @include make-col(6);
   }
-  @media (min-width: 32.1em) {
+  @include media-breakpoint-up(lg) {
     @include make-col(8);
   }
 }
-.content-secondary {
-  @media (max-width: 32em) {
+.example-content-secondary {
+  @include make-col-ready();
+
+  @include media-breakpoint-up(sm) {
     @include make-col(6);
   }
-  @media (min-width: 32.1em) {
+  @include media-breakpoint-up(lg) {
     @include make-col(4);
   }
 }
 {% endhighlight %}
 
-{% highlight html %}
-<div class="container">
-  <div class="row">
-    <div class="content-main">...</div>
-    <div class="content-secondary">...</div>
+{% example html %}
+<div class="example-container">
+  <div class="example-row">
+    <div class="example-content-main">Main</div>
+    <div class="example-content-secondary">Secondary</div>
   </div>
 </div>
-{% endhighlight %}
-
-
-## Flexbox
-
-Looking for a more modern grid system?  Use the opt-in flexbox mode, or [enable full flexbox support in Figuration]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode), to take full advantage of CSS's Flexible Box module for even more control over your site's layout, alignment, and distribution of content.
-
-### Opt-in vs Full Mode
-
-The **opt-in mode** for flexbox support is available by default, and is easily triggered by adding `.row-flex` to any `.row` containers.  Any nested containers using just the `.row` class resets to the standard `float` grid layout.
-
-**Full mode** needs to be enabled in the Sass and the CSS needs to be recompiled.  In this mode, you do not need to use the `.row-flex` class, and all grid items will use `display: flex;` for layout.
-
-### What is Available
-
-- Nesting, offsets, pushes, pulls, and `.no-gutters` are all supported in the flexbox grid system.
-- Flexbox grid columns without a set width will automatically layout with equal widths. For example, four columns will each automatically be 25% wide.
-- Flexbox grid columns have significantly more alignment options available, including vertical alignment.
-
-### Auto-Layout Columns
-
-When flexbox support is used/enabled, you can utilize breakpoint-specific column classes to control column widths.
-
-#### Equal Width Columns
-
-Equal-width columns are easliy done by adding any number of `.col-{breakpoint}`s for each breakpoint you need and every column will be the same width.
-
-For example, here's are some grid layouts that apply to every device and viewport possible.
-
-<div class="cf-example-row">
-{% example html %}
-<div class="row row-flex">
-    <div class="col">
-        1 of 2
-    </div>
-    <div class="col">
-        1 of 2
-    </div>
-</div>
-
-<div class="row row-flex">
-    <div class="col">
-        1 of 3
-    </div>
-    <div class="col">
-        1 of 3
-    </div>
-    <div class="col">
-        1 of 3
-    </div>
-</div>
-
-<div class="row row-flex no-gutters">
-  <div class="col">Columns</div>
-  <div class="col">with no</div>
-  <div class="col">gutters</div>
-</div>
 {% endexample %}
-</div>
-
-#### Controlled Width Column
-
-You can also set the width of one column and the others will automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths.
-
-In the examples below, note that the other columns will resize no matter the width of the center column.
-
-<div class="cf-example-row">
-{% example html %}
-<div class="row row-flex">
-    <div class="col">
-        1 of 3
-    </div>
-    <div class="col-6">
-        2 of 3 (col-6)
-    </div>
-    <div class="col">
-        3 of 3
-    </div>
-</div>
-
-<div class="row row-flex">
-    <div class="col">
-        1 of 3
-    </div>
-    <div class="col-5">
-        2 of 3 (col-5)
-    </div>
-    <div class="col">
-        3 of 3
-    </div>
-</div>
-{% endexample %}
-</div>
-
-#### Variable Width Column
-
-Using the `col-{breakpoint}-auto` classes, a column can size itself based on the natural width of its content. This can be handy when dealing with single line content like inputs, numbers, etc.  This, in conjunction with [horizontal alignment]({{ site.baseurl }}/utilities/flexbox/#horizontal-alignment) utility classes, is very useful for centering layouts with uneven column sizes as viewport width changes.
-
-<div class="cf-example-row">
-{% example html %}
-<div class="container">
-    <div class="row row-flex flex-md-center">
-        <div class="col col-lg-2">
-            1 of 3
-        </div>
-        <div class="col-12 col-md-auto">
-            Variable width content
-        </div>
-        <div class="col col-lg-2">
-            3 of 3
-        </div>
-    </div>
-    <div class="row row-flex">
-        <div class="col">
-            1 of 3
-        </div>
-        <div class="col-12 col-md-auto">
-            Variable width content
-        </div>
-        <div class="col col-lg-2">
-            3 of 3
-        </div>
-    </div>
-</div>
-{% endexample %}
- </div>
-
-### Alignment
-
-If you wish to have better control over your flexbox grid alignment, there are a handful of utility classes that might be helpful.  Information and examples can be found in the [Flexbox utilities page]({{ site.baseurl }}/utilities/flexbox/).

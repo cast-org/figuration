@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v2.0.0): tab.js
+ * Figuration (v3.0.0): tab.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -9,122 +9,106 @@
     'use strict';
 
     var CFW_Widget_Tab = function(element, options) {
-        this.$triggerElm = $(element);
+        this.$element = $(element);
+        this.$target = null;
         this.$navElm = null;
-        this.$targetElm = null;
 
-        this.settings = $.extend({}, CFW_Widget_Tab.DEFAULTS, this._parseDataAttr(), options);
+        var parsedData = this.$element.CFW_parseData('tab', CFW_Widget_Tab.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Tab.DEFAULTS, parsedData, options);
 
         this._init();
     };
 
     CFW_Widget_Tab.DEFAULTS = {
-        animate     : true,     // If tabs should be allowed fade in and out
-        speed       : 150,      // Speed of animation in milliseconds
-        hidden      : true      // Use aria-hidden on target containers by default
+        target  : null,
+        animate : true // If tabs should be allowed fade in and out
     };
 
     CFW_Widget_Tab.prototype = {
-
         _init : function() {
             var $selfRef = this;
 
             // Find nav and target elements
-            this.$navElm = this.$triggerElm.closest('ul:not(.dropdown-menu)');
+            this.$navElm = this.$element.closest('ul, ol, nav');
             this.$navElm.attr('role', 'tablist');
 
             var $selector = $(this.settings.target);
             if (!$selector.length) {
-                $selector = $(this.$triggerElm.attr('href'));
+                $selector = $(this.$element.attr('href'));
             }
-            this.$targetElm = $($selector);
+            this.$target = $($selector);
 
-            if (!this.$targetElm.length) {
+            if (!this.$target.length) {
                 return false;
             }
 
-            this.$triggerElm.attr('data-cfw', 'tab');
+            this.$element.attr('data-cfw', 'tab');
 
             // Check for presence of trigger id - set if not present
-            var triggerID = this._getID(this.$triggerElm, 'cfw-tab');
+            var triggerID = this.$element.CFW_getID('cfw-tab');
 
             // Target should have id already - set ARIA attributes
-            this.$targetElm.attr({
-                'tabindex': -1,
+            this.$target.attr({
                 'role': 'tabpanel',
                 'aria-labelledby': triggerID
             });
-            if (this.settings.hidden) {
-                this.$targetElm.attr('aria-hidden', true);
-            }
             if (this.settings.animate) {
-                this.fadeEnable();
+                this.animEnable();
             } else {
-                this.fadeDisable();
+                this.animDisable();
             }
 
             // Set ARIA attributes on trigger
-            this.$triggerElm.attr({
+            this.$element.attr({
                 'tabindex': -1,
                 'role': 'tab',
                 'aria-selected': 'false',
                 'aria-expanded': 'false',
-                'aria-controls': this.$targetElm.attr('id')
+                'aria-controls': this.$target.attr('id')
             });
 
             // Bind click handler
-            this.$triggerElm.on('click', function(e) {
+            this.$element.on('click.cfw.tab', function(e) {
+                e.preventDefault();
                 $selfRef.show(e);
             });
 
             // Bind key handler
-            this.$triggerElm.on('keydown', function(e) {
+            this.$element.on('keydown.cfw.tab', function(e) {
                 $selfRef._actionsKeydown(e, this);
             });
 
             // Display panel if trigger is marked active
-            if (this.$triggerElm.closest('li').hasClass('active')) {
-                this.$triggerElm.attr({
+            if (this.$element.hasClass('active')) {
+                this.$element.attr({
                     'tabindex': 0,
                     'aria-selected': 'true',
                     'aria-expanded': 'true'
                 });
-                this.$targetElm.attr('tabindex', 0)
-                    .addClass('active');
+                this.$target.addClass('active');
 
-                if (this.settings.hidden) {
-                    this.$targetElm.attr('aria-hidden', false);
-                }
                 if (this.settings.animate) {
-                    this.$targetElm.addClass('in');
+                    this.$target.addClass('in');
                 }
             }
 
             // Check to see if there is an active element defined - if not set current one as active
-            if (this.$navElm.find('li.active').length <= 0) {
-                this.$triggerElm.closest('li').addClass('active');
+            if (this.$navElm.find('.active').length <= 0) {
+                this.$element.addClass('active');
 
-                if (this.$triggerElm.parent('.dropdown-menu').length) {
-                    this.$triggerElm.closest('li.dropdown').addClass('active');
-                }
-
-                this.$triggerElm.attr({
+                this.$element.attr({
                     'tabindex': 0,
                     'aria-selected': 'true',
                     'aria-expanded': 'true'
                 });
-                this.$targetElm.attr('tabindex', 0)
-                    .addClass('active');
+                this.$target.addClass('active');
 
-                if (this.settings.hidden) {
-                    this.$targetElm.attr('aria-hidden', 'false');
-                }
                 if (this.settings.animate) {
-                    this.$targetElm.addClass('in');
+                    this.$target.addClass('in');
                 }
             }
 
-            this._trigger(this.$triggerElm, 'init.cfw.tab');
+            this.$element.CFW_trigger('init.cfw.tab');
         },
 
         show : function(e) {
@@ -132,65 +116,58 @@
                 e.preventDefault();
             }
 
-            if (this.$triggerElm.parent('li').hasClass('active')
-                || this.$triggerElm.hasClass('disabled')
-                || this.$triggerElm[0].hasAttribute('disabled')) {
+            var inTransition = this.$navElm.data('cfw.tab.inTransition');
+            if (inTransition) { return; }
+
+            if (this.$element.hasClass('active')
+                || this.$element.hasClass('disabled')
+                || this.$element[0].hasAttribute('disabled')) {
                 return;
             }
 
-            var $previous = this.$navElm.find('.active:last a[data-cfw="tab"]');
+            var $previous = this.$navElm.find('.active:last');
             if ($previous.length) {
-
-                if (!this._trigger($previous, 'beforeHide.cfw.tab', { relatedTarget: this.$triggerElm[0] })) {
+                if (!$previous.CFW_trigger('beforeHide.cfw.tab', { relatedTarget: this.$element[0] })) {
                     return;
                 }
             }
 
-            if (!this._trigger(this.$triggerElm, 'beforeShow.cfw.tab', { relatedTarget: $previous[0] })) {
+            if (!this.$element.CFW_trigger('beforeShow.cfw.tab', { relatedTarget: $previous[0] })) {
                 return;
             }
 
+            this.$navElm.data('cfw.tab.inTransition', true);
+
             if ($previous.length) {
                 $previous.attr({
-                    'tabindex': -1,
-                    'aria-selected': 'false',
-                    'aria-expanded': 'false'
-                });
-                this._trigger($previous, 'afterHide.cfw.tab', { relatedTarget: this.$triggerElm[0] });
-                // Following line for backwards compatibility (not sure if used anywhere)
-                this._trigger($previous, 'hide.cfw.tab');
+                        'tabindex': -1,
+                        'aria-selected': 'false',
+                        'aria-expanded': 'false'
+                    })
+                    .CFW_trigger('afterHide.cfw.tab', { relatedTarget: this.$element[0] });
             }
 
-            this.$triggerElm.attr({
+            this.$element.attr({
                 'tabindex': 0,
                 'aria-selected': 'true',
                 'aria-expanded': 'true'
             });
 
-            this._activateTab(this.$triggerElm.closest('li'), this.$navElm, false, $previous);
-            this._activateTab(this.$targetElm, this.$targetElm.parent(), true, $previous);
+            this._activateTab(this.$element, this.$navElm, false, $previous);
+            this._activateTab(this.$target, this.$target.parent(), true, $previous);
         },
 
-        fadeEnable : function() {
-            if (!$.support.transitionEnd) { return; }
-            this.$targetElm.addClass('fade');
-            if (this.$targetElm.hasClass('active')) {
-                this.$targetElm.addClass('in');
+        animEnable : function() {
+            this.$target.addClass('fade');
+            if (this.$target.hasClass('active')) {
+                this.$target.addClass('in');
             }
             this.settings.animate = true;
         },
 
-        fadeDisable : function() {
-            this.$targetElm.removeClass('fade in');
-            if (this.$targetElm.hasClass('active')) {
-                this.$targetElm.addClass('in');
-            }
+        animDisable : function() {
+            this.$target.removeClass('fade in');
             this.settings.animate = false;
-        },
-
-        hiddenDisable : function() {
-            this.$targetElm.removeAttr('aria-hidden');
-            this.settings.hidden = false;
         },
 
         _actionsKeydown : function(e, node) {
@@ -202,8 +179,8 @@
             e.preventDefault();
 
             var $node = $(node);
-            var $ul = $node.closest('ul[role="tablist"]');
-            var $items = $ul.find('[role="tab"]:visible');
+            var $list = $node.closest('[role="tablist"]');
+            var $items = $list.find('[role="tab"]:visible').not('.disabled');
             var index = $items.index($items.filter('[aria-selected="true"]'));
 
             if ((k == 38 || k == 37) && index > 0)                 { index--; }     // up & left
@@ -214,89 +191,48 @@
             nextTab.CFW_Tab('show').trigger('focus');
         },
 
-        _activateTab : function(node, container, isPanel, $previous) {
+        _activateTab : function($node, container, isPanel, $previous) {
             var $selfRef = this;
-            var $prevActive = container.find('> .active');
-            var doTransition = isPanel && $.support.transitionEnd && this.settings.animate;
-
-            function displayTab() {
-                $prevActive.removeClass('active')
-                    .find('> .dropdown-menu > .active')
-                    .removeClass('active');
-
-                node.addClass('active');
-
-                if (isPanel) {
-                    $prevActive.attr({
-                        'tabindex': -1,
-                        'aria-hidden': 'true'
-                    });
-                    node.attr({
-                        'tabindex': 0,
-                        'aria-hidden': 'false'
-                    });
-                }
-
-                if (doTransition) {
-                    node[0].offsetWidth; // Reflow for transition
-                    node.addClass('in');
-                } else {
-                    if (isPanel) {
-                        $selfRef.settings.animate = false;
-                    }
-                    node.removeClass('fade');
-                }
-
-                if (node.parent('.dropdown-menu').length) {
-                    node.closest('li.dropdown').addClass('active');
-                }
-
-                if (isPanel) {
-                    $selfRef._trigger($selfRef.$triggerElm, 'afterShow.cfw.tab', { relatedTarget: $previous[0] });
-                }
-            }
+            var $prevActive = container.find('.active');
+            var doTransition = isPanel && this.settings.animate;
 
             if (doTransition) {
-                node.one('cfwTransitionEnd', displayTab)
-                .CFW_emulateTransitionEnd(this.settings.speed);
+                $node[0].offsetWidth; // Reflow for transition
+                $node.addClass('in');
             } else {
-                displayTab();
+                if (isPanel) {
+                    $selfRef.settings.animate = false;
+                }
+                $node.removeClass('fade');
             }
+
+            function complete() {
+                $prevActive.removeClass('active');
+                $node.addClass('active');
+
+                if (isPanel) {
+                    $selfRef.$element.CFW_trigger('afterShow.cfw.tab', { relatedTarget: $previous[0] });
+                    $node.CFW_mutateTrigger();
+                    $prevActive.CFW_mutateTrigger();
+                    $selfRef.$navElm.removeData('cfw.tab.inTransition');
+                }
+            }
+
+            $node.CFW_transition(null, complete);
 
             $prevActive.removeClass('in');
         },
 
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
-        },
+        dispose : function() {
+            this.$element
+                .off('.cfw.tab')
+                .removeData('cfw.tab');
 
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$triggerElm.data();
+            this.$element = null;
+            this.$target = null;
+            this.$navElm = null;
+            this.settings = null;
 
-            if (typeof data.cfwTabTarget  !== 'undefined') { parsedData.target  = data.cfwTabTarget;  }
-            if (typeof data.cfwTabAnimate !== 'undefined') { parsedData.animate = data.cfwTabAnimate; }
-            if (typeof data.cfwTabSpeed   !== 'undefined') { parsedData.speed   = data.cfwTabSpeed;   }
-            if (typeof data.cfwTabHidden  !== 'undefined') { parsedData.hidden  = data.cfwTabHidden;  }
-            return parsedData;
-        },
-
-        _trigger : function($callingElm, eventName, extraData) {
-            var e = $.Event(eventName);
-            if ($.isPlainObject(extraData)) {
-                e = $.extend({}, e, extraData);
-            }
-            $callingElm.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 

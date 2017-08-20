@@ -11,6 +11,7 @@
 
 // Container that the modal scrolls within
 .modal {
+    direction: ltr #{"/*rtl:ignore*/"};
     position: fixed;
     top: 0;
     right: 0;
@@ -30,7 +31,7 @@
     // When fading in the modal, animate it to slide down
     &.fade .modal-dialog {
         @if $enable-transitions {
-            transition: transform .3s ease-out;
+            transition: $modal-transition;
             transform: translate(0, -25%);
         }
     }
@@ -43,14 +44,19 @@
 
 // Shell div to position the modal with bottom padding
 .modal-dialog {
+    direction: ltr;
     position: relative;
     width: auto;
     margin: $modal-dialog-margin;
+    // Allow clicks to pass through for custom click handling to close modal
+    pointer-events: none;
 }
 
 // Actual modal
 .modal-content {
     position: relative;
+    // Override the `pointer-events: none;` in the .modal-dialog
+    pointer-events: auto;
     background-color: $modal-content-bg;
     background-clip: padding-box;
     border: $modal-content-border-width solid $modal-content-border-color;
@@ -106,15 +112,6 @@
     text-align: right; // right align buttons
     border-top: $modal-footer-border-width solid $modal-footer-border-color;
     @include clearfix(); // clear it in case folks use .float-* classes on buttons
-}
-
-// Measure scrollbar width for padding body during modal show/hide
-.modal-scrollbar-measure {
-    position: absolute;
-    top: -9999px;
-    width: 50px;
-    height: 50px;
-    overflow: scroll;
 }
 
 // Scale up the modal

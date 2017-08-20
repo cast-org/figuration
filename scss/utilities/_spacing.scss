@@ -1,53 +1,53 @@
 // scss-lint:disable ImportantRule
-
-// Width
-.w-100 { width: 100% !important; }
-.mw-100 { max-width: 100% !important; }
-
-// Height
-.h-100 { height: 100% !important; }
-.mh-100 { max-height: 100% !important; }
-
 // Margin and Padding
-.mx-auto {
-    margin-right: auto !important;
-    margin-left:  auto !important;
-}
 
 @each $breakpoint in map-keys($grid-breakpoints) {
     $bprule: breakpoint-designator($breakpoint);
 
     @include media-breakpoint-up($breakpoint) {
         @each $prop, $abbrev in (margin: m, padding: p) {
-            @each $size, $lengths in $spacers {
-                $length-x:   map-get($lengths, x);
-                $length-y:   map-get($lengths, y);
-
-                .#{$abbrev}#{$bprule}-#{$size} { #{$prop}:         $length-y $length-x !important; } // All sides
-                .#{$abbrev}t#{$bprule}-#{$size} { #{$prop}-top:    $length-y !important; }
-                .#{$abbrev}r#{$bprule}-#{$size} { #{$prop}-right:  $length-x !important; }
-                .#{$abbrev}b#{$bprule}-#{$size} { #{$prop}-bottom: $length-y !important; }
-                .#{$abbrev}l#{$bprule}-#{$size} { #{$prop}-left:   $length-x !important; }
-
-                // Axes
-                .#{$abbrev}x#{$bprule}-#{$size} {
-                    #{$prop}-right:  $length-x !important;
-                    #{$prop}-left:   $length-x !important;
+            @each $size, $length in $spacers {
+                .#{$abbrev}#{$bprule}-#{$size} {
+                    #{$prop}: $length !important;
                 }
+                .#{$abbrev}t#{$bprule}-#{$size},
                 .#{$abbrev}y#{$bprule}-#{$size} {
-                    #{$prop}-top:    $length-y !important;
-                    #{$prop}-bottom: $length-y !important;
+                    #{$prop}-top: $length !important;
+                }
+                .#{$abbrev}e#{$bprule}-#{$size},
+                .#{$abbrev}x#{$bprule}-#{$size} {
+                    #{$prop}-right: $length !important;
+                }
+                .#{$abbrev}b#{$bprule}-#{$size},
+                .#{$abbrev}y#{$bprule}-#{$size} {
+                    #{$prop}-bottom: $length !important;
+                }
+                .#{$abbrev}s#{$bprule}-#{$size},
+                .#{$abbrev}x#{$bprule}-#{$size} {
+                    #{$prop}-left: $length !important;
                 }
             }
         }
-    }
-}
 
-// Positioning
-.pos-f-t {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: $zindex-navbar-fixed;
+        // Auto margin
+        .m#{$bprule}-auto {
+            margin: auto !important;
+        }
+        .mt#{$bprule}-auto,
+        .my#{$bprule}-auto {
+            margin-top: auto !important;
+        }
+        .me#{$bprule}-auto,
+        .mx#{$bprule}-auto {
+            margin-right: auto !important;
+        }
+        .mb#{$bprule}-auto,
+        .my#{$bprule}-auto {
+            margin-bottom: auto !important;
+        }
+        .ms#{$bprule}-auto,
+        .mx#{$bprule}-auto {
+            margin-left: auto !important;
+        }
+    }
 }

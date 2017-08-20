@@ -4,42 +4,25 @@
 .btn-group,
 .btn-group-vertical {
     position: relative;
+    display: inline-flex;
     vertical-align: middle; // match .btn alignment given font-size hack above
-
-    @if $enable-flex-full {
-        display: inline-flex;
-    } @else {
-        display: inline-block;
-    }
 
     > .btn {
         position: relative;
+        flex: 0 1 auto;
         margin-bottom: 0;
 
-        @if not $enable-flex-full {
-            float: left;
-        }
-
         // Bring the "active" button to the front
-        &:focus,
         &:active,
         &.active {
             z-index: 2;
         }
-
-        @include hover {
+        &:hover {
             z-index: 2;
         }
-    }
-}
-
-@if $enable-flex-opt {
-    .btn-group-flex,
-    .btn-group-vertical-flex {
-        display: inline-flex;
-
-        > .btn {
-            float: initial;
+        &:focus,
+        &.focus {
+            z-index: 3;
         }
     }
 }
@@ -50,24 +33,18 @@
     .btn + .btn-group,
     .btn-group + .btn,
     .btn-group + .btn-group {
-        margin-left: -$input-border-width;
+        margin-left: -$border-width;
     }
 }
 
 // Optional: Group multiple button groups together for a toolbar
 .btn-toolbar {
-    margin-left: -$btn-toolbar-margin; // Offset the first child's margin
-    @include clearfix();
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 
-    .btn-group,
     .input-group {
-        float: left;
-    }
-
-    > .btn,
-    > .btn-group,
-    > .input-group {
-        margin-left: $btn-toolbar-margin;
+        width: auto;
     }
 }
 
@@ -77,16 +54,14 @@
 
 // Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
 .btn-group > .btn:first-child {
-    margin-left: 0;
-
     &:not(:last-child):not(.dropdown-toggle) {
-        @include border-right-radius(0);
+        @include border-end-radius(0);
     }
 }
 // Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
 .btn-group > .btn:last-child:not(:first-child),
 .btn-group > .dropdown-toggle:not(:first-child) {
-    @include border-left-radius(0);
+    @include border-start-radius(0);
 }
 
 // Custom edits for including btn-groups within btn-groups (useful for including dropdown buttons within a btn-group)
@@ -99,19 +74,12 @@
 .btn-group > .btn-group:first-child:not(:last-child) {
     > .btn:last-child,
     > .dropdown-toggle {
-        @include border-right-radius(0);
+        @include border-end-radius(0);
     }
 }
 .btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
-    @include border-left-radius(0);
+    @include border-start-radius(0);
 }
-
-// On active and open, don't show outline
-.btn-group .dropdown-toggle:active,
-.btn-group.open .dropdown-toggle {
-    outline: 0;
-}
-
 
 // Sizing
 // Remix the button sizing classes into new ones for easier manipulation
@@ -148,58 +116,25 @@
     }
 }
 
-
-// Reposition the caret
-.btn .caret {
-    margin-left: 0;
-}
-
 // Vertical button groups
 .btn-group-vertical {
-    @if $enable-flex-full {
-        flex-direction: column;
-    }
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 
     > .btn,
     > .btn-group,
     > .btn-group > .btn {
         width: 100%;
         max-width: 100%;
-
-        @if not $enable-flex-full {
-            display: block;
-            float: none;
-        }
-    }
-
-    // Clear floats so dropdown menus can be properly placed
-    > .btn-group {
-        @include clearfix();
-
-        > .btn {
-            float: none;
-        }
     }
 
     > .btn + .btn,
     > .btn + .btn-group,
     > .btn-group + .btn,
     > .btn-group + .btn-group {
-        margin-top: -$input-border-width;
+        margin-top: -$border-width;
         margin-left: 0;
-    }
-}
-
-@if $enable-flex-opt {
-    .btn-group-vertical-flex {
-        flex-direction: column;
-
-        > .btn,
-        > .btn-group,
-        > .btn-group > .btn {
-            display: initial;
-            float: initial;
-        }
     }
 }
 

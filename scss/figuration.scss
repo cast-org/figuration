@@ -1,42 +1,38 @@
 /*!
- * Figuration (v2.0.0)
+ * Figuration (v3.0.0)
  * http://figuration.org
- * Copyright 2013-2016 CAST, Inc.
+ * Copyright 2013-2017 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  */
 
 // Functions
 @import "functions";
 
-// Variables and mixins
+// Settings variables
 @import "settings";
+
+// Mixins
 @import "mixins";
 
-// Custom overrides
-@import "custom";
-
-// Base reset
-@import "base/normalize";
-@import "base/print";
-
 // Core CSS items - extend on the base HTML
+@import "core/print";
 @import "core/reboot";
 @import "core/typography";
 @import "core/code";
 @import "core/images";
 @import "core/tables";
 @import "core/forms";
-@import "core/custom-forms"; // TODO: look into svg coloring
+@import "core/custom-forms";
 @import "core/buttons";
 
-// Components - extend with new or extended functionality and layout
+// Components - additional functionality and layout
 @import "component/grid";
 @import "component/animation";
 @import "component/caret";
 @import "component/close";
 @import "component/drag";
 @import "component/progress";
-@import "component/embed-responsive";
+@import "component/embed";
 @import "component/list-group";
 @import "component/button-group";
 @import "component/input-group";
@@ -50,6 +46,7 @@
 @import "component/media";
 @import "component/card";
 @import "component/alert";
+@import "component/switch";
 
 // Components w/ JavaScript
 @import "component/modal";

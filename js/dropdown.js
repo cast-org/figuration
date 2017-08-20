@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v2.0.0): dropdown.js
+ * Figuration (v3.0.0): dropdown.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -8,20 +8,18 @@
 (function($) {
     'use strict';
 
-    // Includes touch recognition fix for IE11
-    // Partially from: https://github.com/Modernizr/Modernizr/blob/master/feature-detects/touchevents.js
-    /* global DocumentTouch */
-    var $msTouch = window.navigator.msMaxTouchPoints === undefined ? false : window.navigator.msMaxTouchPoints;
-    var $isTouch = (('ontouchstart' in window) || $msTouch || window.DocumentTouch && document instanceof DocumentTouch) ? true : false;
-
     var CFW_Widget_Dropdown = function(element, options) {
-        this.$triggerElm = $(element);
-        this.$menuElm = null;
+        this.$element = $(element);
+        this.$target = null;
+        this.instance = null;
 
         this.timerHide = null;
 
-        this.settings = $.extend({}, CFW_Widget_Dropdown.DEFAULTS, this._parseDataAttr(), options);
-        this.settings.isTouch = $isTouch;   // Touch enabled-browser flag - override not allowed
+        var parsedData = this.$element.CFW_parseData('dropdown', CFW_Widget_Dropdown.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Dropdown.DEFAULTS, parsedData, options);
+
+        // Touch enabled-browser flag - override not allowed
+        this.settings.isTouch = $.CFW_isTouch;
 
         this.c = CFW_Widget_Dropdown.CLASSES;
 
@@ -30,38 +28,41 @@
 
     CFW_Widget_Dropdown.CLASSES = {
         // Class names
-        isMenu          : 'dropdown-menu',
-        hasSubMenu      : 'dropdown-submenu',
-        showSubMenu     : 'show-menu',
-        backdrop        : 'dropdown-backdrop',
-        backLink        : 'dropdown-back'
+        isMenu      : 'dropdown-menu',
+        hasSubMenu  : 'dropdown-submenu',
+        showSubMenu : 'show-menu',
+        backLink    : 'dropdown-back',
+        hover       : 'dropdown-hover'
     };
 
     CFW_Widget_Dropdown.DEFAULTS = {
-        // Default Settings
-        delay           : 350,          // Delay for hiding menu (milliseconds)
-        hover           : false,        // Enable hover style navigation
-        backlink        : false,        // Insert back links into submenus
-        backtop         : false,        // Should back links start at top level
-        backtext        : 'Back'        // Text for back links
+        target   : null,
+        delay    : 350,     // Delay for hiding menu (milliseconds)
+        hover    : false,   // Enable hover style navigation
+        backlink : false,   // Insert back links into submenus
+        backtop  : false,   // Should back links start at top level
+        backtext : 'Back'   // Text for back links
     };
 
     function getParent($node) {
         var $parent;
-        var selector = $node.attr('data-cfw-dropdown-target');
+        var selector = $node.CFW_getSelectorFromElement('dropdown');
         if (selector) {
-            $parent = $(selector);
+            $parent = $(selector).parent();
         }
-        if ($parent && $parent.length) {
-            return $parent;
-        } else {
-            return $node.parent();
-        }
+
+        return $parent || $node.parent();
     }
 
     function clearMenus(e) {
         // Ignore right-click
         if (e && e.which === 3) { return; }
+
+        // Ignore clicks into input areas
+        if (e && e.type === 'click' && /input|textarea/i.test(e.target.tagName)) {
+            return;
+        }
+
         // Find currently open menu root
         $('[data-cfw="dropdown"]').each(function() {
             var $parent = getParent($(this));
@@ -75,81 +76,65 @@
             var $selfRef = this;
 
             // Get target menu
-            var menuID = this.settings.toggle;
-            // if ((menuID === undefined) || (menuID.length <= 0)) { return false; }
+            var selector = this.$element.CFW_getSelectorFromChain('dropdown', this.settings.target);
+            var $target = $(selector);
 
-            // Find target by id/css selector
-            var $menuElm = $(this.settings.toggle);
-            if (menuID !== undefined && !$menuElm.length) {
-                $menuElm = $('[data-cfw-dropdown-target="' + menuID + '"]');
-            }
-            // Target by href selector
-            if (!$menuElm.length) {
-                var selector = this.$triggerElm.attr('href');
-                selector = selector && /#[]A-Za-z]/.test(selector);
-                if (selector) {
-                    $menuElm = $(selector);
-                }
-                // $menuElm = $(this.$triggerElm.attr('href'));
-            }
             // Target by sibling class
-            if (!$menuElm.length) {
-                $menuElm = $(this.$triggerElm.siblings('.dropdown-menu')[0]);
+            if (!$target.length) {
+                $target = $(this.$element.siblings('.dropdown-menu')[0]);
             }
-            if (!$menuElm.length) { return false; }
-            this.$menuElm = $menuElm;
+            if (!$target.length) { return false; }
+            this.$target = $target;
 
-            this.$triggerElm.attr('data-cfw', 'dropdown');
+            this.$element.attr('data-cfw', 'dropdown');
 
             // Check for presence of trigger id - set if not present
-            var triggerID = this._getID(this.$triggerElm, 'cfw-dropdown');
-
-            // Top Level: add ARIA/roles and define all sub-menu links as menuitem (unless 'disabled')
-            // Set tabIndex=-1 so that sub-menu links can't receive keyboard focus from tabbing
+            this.instance = this.$element.CFW_getID('cfw-dropdown');
 
             // Check for id on top level menu - set if not present
-            menuID = this._getID(this.$menuElm, 'cfw-dropdown');
-            this.$menuElm.attr({
-                // 'role': 'menu',
+            /* var menuID = */ this.$target.CFW_getID('cfw-dropdown');
+            this.$target.attr({
                 'aria-hidden': 'true',
-                'aria-labelledby': triggerID
+                'aria-labelledby': this.instance
             })
             .addClass(this.c.isMenu);
-            $('a', this.$menuElm).attr('tabIndex', -1).not('.disabled, :disabled');
-            //  .attr('role', 'menuitem');
+
+            // Set tabindex=-1 so that sub-menu links can't receive keyboard focus from tabbing
+            $('a', this.$target).attr('tabIndex', -1).not('.disabled, :disabled');
+
             // Set ARIA on trigger
-            this.$triggerElm.attr({
+            this.$element.attr({
                 'aria-haspopup': 'true',
                 'aria-expanded': 'false'
             });
 
             if (this.settings.backlink && this.settings.backtop) {
-                var $backTop = $('<li class="' + CFW_Widget_Dropdown.CLASSES.backLink + '"><a href="#">' + $selfRef.settings.backtext + '</a></li>')
-                    .prependTo(this.$menuElm);
-                if (this.$menuElm.hasClass('dropdown-menu-left')) {
-                    $backTop.addClass('dropdown-back-left');
+                var $backTop = $('<li class="' + this.c.backLink + '"><a href="#">' + this.settings.backtext + '</a></li>')
+                    .prependTo(this.$target);
+                if (this.$target.hasClass('dropdown-menu-reverse')) {
+                    $backTop.addClass('dropdown-back-reverse');
                 }
             }
 
             // Check for sub menu items and add indicator, id, and direction as needed
-            this.$menuElm.find('ul').each(function() {
+            this.$target.find('ul').each(function() {
                 var $subMenu = $(this);
                 var $subLink = $subMenu.closest('li').find('a').eq(0);
-                var subLinkID = $selfRef._getID($subLink, 'cfw-dropdown');
-                // var subMenuID = $selfRef._getID($subMenu, 'cfw-dropdown');
+                var subLinkID = $subLink.CFW_getID('cfw-dropdown');
+                // var subMenuID = $subMenu.CFW_getID('cfw-dropdown');
 
-                var $dirNode = $subMenu.closest('.dropdown-menu-left, .dropdown-menu-right');
-                if ($dirNode.hasClass('dropdown-menu-left')) {
-                    $subMenu.closest('li').addClass('dropdown-subalign-left');
+                var $dirNode = $subMenu.closest('.dropdown-menu-reverse, .dropdown-menu-forward');
+                if ($dirNode.hasClass('dropdown-menu-reverse')) {
+                    $subMenu.closest('li').addClass('dropdown-subalign-reverse');
                 } else {
-                    $subMenu.closest('li').addClass('dropdown-subalign-right');
+                    $subMenu.closest('li').addClass('dropdown-subalign-forward');
                 }
 
                 if ($selfRef.settings.backlink) {
-                    var $backElm = $('<li class="' + CFW_Widget_Dropdown.CLASSES.backLink + '"><a href="#">' + $selfRef.settings.backtext + '</a></li>')
+                    var $backElm = $('<li class="' + $selfRef.c.backLink + '"><a href="#">' + $selfRef.settings.backtext + '</a></li>')
                         .prependTo($subMenu);
-                    if ($dirNode.hasClass('dropdown-menu-left')) {
-                        $backElm.addClass('dropdown-back-left');
+                    if ($dirNode.hasClass('dropdown-menu-reverse')) {
+                        $backElm.addClass('dropdown-back-reverse');
                     }
                 }
 
@@ -158,8 +143,8 @@
                     'aria-hidden': 'true',
                     'aria-labelledby': subLinkID
                 })
-                .addClass(CFW_Widget_Dropdown.CLASSES.isMenu)
-                .closest('li').addClass(CFW_Widget_Dropdown.CLASSES.hasSubMenu);
+                .addClass($selfRef.c.isMenu)
+                .closest('li').addClass($selfRef.c.hasSubMenu);
 
                 $subLink.attr({
                     'aria-haspopup': 'true',
@@ -168,7 +153,7 @@
             });
 
             // Set role on dividers
-            $('.dropdown-divider', this.$menuElm).attr('role', 'separator');
+            $('.dropdown-divider', this.$target).attr('role', 'separator');
 
             // Touch OFF - Hover mode
             if (!this.settings.isTouch && this.settings.hover) {
@@ -182,40 +167,25 @@
             // Always on - Keyboard navigation
             this.navEnableKeyboard();
 
-            // Loss of focus
-            /*
-             ** Causing issues with nested dropdowns on touchscreen **
-             *
-            $(this.$triggerElm).add(this.$menuElm).on('focusout.cfw.dropdown', function(e) {
-                // Need slight delay or <body> will always be reported
-                setTimeout(function() {
-                    if (!$.contains($selfRef.$menuElm[0], document.activeElement)
-                        && $selfRef.$triggerElm[0] != document.activeElement) {
-                        $selfRef.hideRev();
-                    }
-                }, 150);
-            });
-            */
-
-            this._trigger(this.$triggerElm, 'init.cfw.dropdown');
+            this.$element.CFW_trigger('init.cfw.dropdown');
         },
 
         navEnableClick : function() {
             var $selfRef = this;
             // Trigger
-            this.$triggerElm.on('click.cfw.dropdown.modeClick', function(e) {
-                $selfRef.toggleMenu(e, $selfRef.$triggerElm, $selfRef.$menuElm);
+            this.$element.on('click.cfw.dropdown.modeClick', function(e) {
+                $selfRef.toggleMenu(e, $selfRef.$element, $selfRef.$target);
             });
             // Sub menu
-            var $subTriggerElm = this.$menuElm.find('ul').closest('li').find('a:eq(0)');
-            if ($subTriggerElm.length) {
-                $subTriggerElm.on('click.cfw.dropdown.modeClick', function(e) {
+            var $subelement = this.$target.find('ul').closest('li').find('a:eq(0)');
+            if ($subelement.length) {
+                $subelement.on('click.cfw.dropdown.modeClick', function(e) {
                     var $subMenuElm = $(this).parent().find('ul').eq(0);
                     $selfRef.toggleMenu(e, $(this), $subMenuElm);
                 });
             }
             // Back link
-            var $backLinkElm = this.$menuElm.find('.' + CFW_Widget_Dropdown.CLASSES.backLink);
+            var $backLinkElm = this.$target.find('.' + this.c.backLink);
             if ($backLinkElm.length) {
                 $backLinkElm.on('click.cfw.dropdown.modeClick', function(e) {
                     if (e) {
@@ -223,10 +193,10 @@
                         e.preventDefault();
                     }
 
-                    if ($selfRef.settings.backtop && ($(this).closest('ul')[0] == $selfRef.$menuElm[0])) {
+                    if ($selfRef.settings.backtop && ($(this).closest('ul')[0] == $selfRef.$target[0])) {
                         $selfRef.closeUp($(this).closest('li'));
                     } else {
-                        $selfRef.closeUp($(this).closest('.' + CFW_Widget_Dropdown.CLASSES.hasSubMenu));
+                        $selfRef.closeUp($(this).closest('.' + $selfRef.c.hasSubMenu));
                     }
                 });
             }
@@ -235,7 +205,7 @@
         navEnableHover : function() {
             var $selfRef = this;
             if (!this.settings.isTouch) {
-                $.each([this.$triggerElm, this.$menuElm, this.$menuElm.find('.' + CFW_Widget_Dropdown.CLASSES.hasSubMenu)], function() {
+                $.each([this.$element, this.$target, this.$target.find('.' + this.c.hasSubMenu)], function() {
                     $(this).on('mouseenter.cfw.dropdown.modeHover', function(e) {
                         $selfRef._actionsHoverEnter(e, this);
                     });
@@ -247,17 +217,17 @@
         },
 
         navDisableHover : function() {
-            this.$triggerElm.off('.cfw.dropdown.modeHover');
-            this.$menuElm.find('.' + CFW_Widget_Dropdown.CLASSES.hasSubMenu).off('.cfw.dropdown.modeHover');
+            this.$element.off('.cfw.dropdown.modeHover');
+            this.$target.find('.' + this.c.hasSubMenu).off('.cfw.dropdown.modeHover');
         },
 
         navEnableKeyboard : function() {
             var $selfRef = this;
 
             // Auto-closing of inactive sub menus
-            this.$menuElm.find('a').on('focus', function() {
+            this.$target.find('a').on('focus.cfw.dropdown', function() {
                 var $node = $(this);
-                $selfRef.$menuElm.find('.' + CFW_Widget_Dropdown.CLASSES.hasSubMenu + '.open').each(function() {
+                $selfRef.$target.find('.' + $selfRef.c.hasSubMenu + '.open').each(function() {
                     // Ignore parents of item being focused - needed for nesting
                     if (!$(this).find($node).length) {
                         var $snode = $(this).children('a');
@@ -268,110 +238,115 @@
             });
 
             // Key handling
-            $.each([this.$triggerElm, this.$menuElm, this.$menuElm.find('.' + CFW_Widget_Dropdown.CLASSES.hasSubMenu)], function() {
+            $.each([this.$element, this.$target, this.$target.find('.' + this.c.hasSubMenu)], function() {
                 $(this).on('keydown.cfw.dropdown', function(e) {
                     $selfRef._actionsKeydown(e, this);
                 });
             });
         },
 
-        toggleMenu : function(e, $nodeTrigger, $nodeMenu) {
-            if ($nodeTrigger.is('.disabled, :disabled')) { return; }
+        toggleMenu : function(e, $trigger, $menu) {
+            if ($trigger.add().parent().is('.disabled, :disabled')) { return; }
 
-            // var $node = $(node);
-            // var $subNode = $node.parent().find('ul').eq(0);
-
-            var $parent  = getParent($nodeTrigger);
+            var $parent  = getParent($trigger);
             var showing = $parent.hasClass('open');
 
-            // Check to see if link should be followed (subMenu open and link is not '#')
-            var nodeHref = $nodeTrigger.attr('href');
+            // Check to see if link should be followed (sub-menu open and link is not '#')
+            var nodeHref = $trigger.attr('href');
             if (nodeHref && !(/^#$/.test(nodeHref)) && showing) {
                 clearMenus();
                 return;
             }
 
-            if (e) {
-                e.stopPropagation();
-            }
-            if ($nodeTrigger.parent().is('.disabled, :disabled')) { return; }
+            if (e) e.stopPropagation();
 
             if (!showing) {
-                this.showMenu(e, $nodeTrigger, $nodeMenu);
+                this.showMenu(e, $trigger, $menu);
             } else {
-                this.hideMenu(e, $nodeTrigger, $nodeMenu);
+                this.hideMenu(e, $trigger, $menu);
             }
 
-            $nodeTrigger.trigger('focus');
+            $trigger.trigger('focus');
         },
 
-        showMenu : function(e, $nodeTrigger, $nodeMenu) {
+        showMenu : function(e, $trigger, $menu) {
             var $selfRef = this;
 
-            if (e) {
-                e.preventDefault();
-            }
-            var $parent  = getParent($nodeTrigger);
+            if (e) e.preventDefault();
+
+            var $parent  = getParent($trigger);
             var showing = $parent.hasClass('open');
             if (showing) { return; }
 
-            if (!this._trigger($nodeTrigger, 'beforeShow.cfw.dropdown')) {
+            if (!$trigger.CFW_trigger('beforeShow.cfw.dropdown')) {
                 return;
             }
 
-            if ($nodeTrigger.is(this.$triggerElm)) {
+            if ($trigger.is(this.$element)) {
                 if (this.settings.isTouch) {
-                    $('.' + this.c.backdrop).remove();
-                    $(document.createElement('div'))
-                        .addClass(this.c.backdrop)
-                        .insertAfter(this.$menuElm)
-                        .on('click', clearMenus);
+                    // Add empty function for mouseover listeners on immediate
+                    // children of `<body>` due to missing event delegation on iOS
+                    // Allows 'click' event to bubble up in Safari
+                    // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+                    $('body').children().on('mouseover', null, $.noop);
                 }
                 clearMenus();
-                if (!$parent.hasClass('hover')) {
-                    $nodeTrigger.trigger('focus');
+                if (!$parent.hasClass(this.c.hover)) {
+                    $trigger.trigger('focus');
                 }
+
+                // Handle loss of focus
+                $(document)
+                    .on('focusin.cfw.dropdown.' + this.instance, function(e) {
+                        if ($selfRef.$element[0] !== e.target && !$selfRef.$target.has(e.target).length) {
+                            $selfRef.hideRev();
+                        }
+                    });
             }
 
             // Find other open sub menus and close them
-            this.$menuElm.find('.' + CFW_Widget_Dropdown.CLASSES.hasSubMenu + '.open').each(function() {
+            this.$target.find('.' + this.c.hasSubMenu + '.open').each(function() {
                 // Ignore parents of item to be shown - needed for nesting
-                if (!$(this).find($nodeTrigger).length) {
+                if (!$(this).find($trigger).length) {
                     var $snode = $(this).children('a');
-                    var $ssubNode = $nodeTrigger.parent().find('ul').eq(0);
+                    var $ssubNode = $trigger.parent().find('ul').eq(0);
                     $selfRef.hideMenu(null, $snode, $ssubNode);
                 }
             });
 
             $parent.addClass('open');
-            $nodeTrigger.attr('aria-expanded', 'true');
-            $nodeMenu.removeAttr('aria-hidden')
-                .children('li').not('.disabled, :disabled');
+            $trigger.attr('aria-expanded', 'true');
+            $menu.removeAttr('aria-hidden');
+            //  .children('li').not('.disabled, :disabled');
             //  .children('a').attr('tabIndex', 0);
-            this.$menuElm.find('li').redraw();
+            this.$target.find('li').redraw();
 
-            this._trigger($nodeTrigger, 'afterShow.cfw.dropdown');
+            $trigger.CFW_trigger('afterShow.cfw.dropdown');
         },
 
-        hideMenu : function(e, $nodeTrigger, $nodeMenu) {
-            if (e) {
-                e.preventDefault();
-            }
+        hideMenu : function(e, $trigger, $menu, triggerFocus) {
+            if (e) e.preventDefault();
 
-            var $parent  = getParent($nodeTrigger);
+            if (triggerFocus === undefined) { triggerFocus = true; }
+
+            var $parent  = getParent($trigger);
             var showing = $parent.hasClass('open');
             if (!showing) { return; }
 
-            if (!this._trigger($nodeTrigger, 'beforeHide.cfw.dropdown')) {
+            if (!$trigger.CFW_trigger('beforeHide.cfw.dropdown')) {
                 return;
             }
 
-            if ($nodeTrigger.is(this.$triggerElm)) {
-                $('.' + this.c.backdrop).remove();
+            if ($trigger.is(this.$element)) {
+                $(document).off('focusin.cfw.dropdown.' + this.instance);
+                if (this.settings.isTouch) {
+                    // Remove empty mouseover listener for iOS work-around
+                    $('body').children().off('mouseover', null, $.noop);
+                }
             }
 
             // Find open sub menus
-            var openSubMenus = $nodeMenu.find('.' + CFW_Widget_Dropdown.CLASSES.hasSubMenu + '.open');
+            var openSubMenus = $menu.find('.' + this.c.hasSubMenu + '.open');
             if (openSubMenus.length) {
                 var openSubMenusRev = openSubMenus.toArray().reverse();
                 for (var i = 0; i < openSubMenusRev.length; i++) {
@@ -382,30 +357,35 @@
             }
 
             $parent.removeClass('open');
-            $nodeTrigger.attr('aria-expanded', 'false');
-            $nodeMenu.attr('aria-hidden', 'true')
+            $trigger.attr('aria-expanded', 'false');
+            $menu.attr('aria-hidden', 'true')
                 .find('a').attr('tabIndex', -1);
-            if (!$parent.hasClass('hover')) {
-                $nodeTrigger.trigger('focus');
+
+            if ($trigger.is(this.$element)) {
+                if (triggerFocus) {
+                    $trigger.trigger('focus');
+                }
+            } else if (!$parent.hasClass(this.c.hover)) {
+                $trigger.trigger('focus');
             }
-            $parent.removeClass('hover');
-            this._trigger($nodeTrigger, 'afterHide.cfw.dropdown');
+            $parent.removeClass(this.c.hover);
+            $trigger.CFW_trigger('afterHide.cfw.dropdown');
         },
 
         toggle : function() {
-            this.toggleMenu(null, this.$triggerElm, this.$menuElm);
+            this.toggleMenu(null, this.$element, this.$target);
         },
 
         show : function() {
-            this.showMenu(null, this.$triggerElm, this.$menuElm);
+            this.showMenu(null, this.$element, this.$target);
         },
 
         hide : function() {
-            this.hideMenu(null, this.$triggerElm, this.$menuElm);
+            this.hideMenu(null, this.$element, this.$target);
         },
 
         hideRev : function() {
-            this.hideMenu(null, this.$triggerElm, this.$menuElm);
+            this.hideMenu(null, this.$element, this.$target, false);
         },
 
         closeUp : function($node) {
@@ -420,22 +400,42 @@
             this.hideMenu(null, $node, $subNode);
 
             var $parent = getParent($node);
-            if (!$parent.hasClass('hover')) {
+            if (!$parent.hasClass(this.c.hover)) {
                 $node.trigger('focus');
             }
-            $parent.removeClass('hover');
+            $parent.removeClass(this.c.hover);
         },
 
         _actionsKeydown : function(e, node) {
+            var isInput = /input|textarea/i.test(e.target.tagName);
+            var isCheck = isInput && /checkbox|radio/i.test($(e.target).prop('type'));
+            var isRealButton = /button/i.test(e.target.tagName);
+            var isRoleButton = /button/i.test($(e.target).attr('role'));
+
             // 37-left, 38-up, 39-right, 40-down, 27-esc, 32-space, 9-tab
-            if (!/(37|38|39|40|27|32|9)/.test(e.which)) { return; }
+            if (!/^(37|38|39|40|27|32|9)$/.test(e.which)) { return; }
+            // Ignore space in inputs and buttons
+            if ((isInput || isRealButton) && e.which == 32) { return; }
+            // Ignore arrows in inputs, except for checkbox/radio
+            if (isInput && !isCheck && /^(37|38|39|40)$/.test(e.which)) { return; }
 
             var $node = $(node);
             var $items = null;
 
             // Close menu when tab pressed, move to next item
             if (e.which == 9) {
-                clearMenus();
+                // Emulate arrow up/down if input
+                if (isInput) {
+                    e.which = (e.shiftKey) ? 38 : 40;
+                } else {
+                    clearMenus();
+                    this.$element.trigger('focus');
+                    return;
+                }
+            }
+
+            // Allow ESC to propagate if menu is closed
+            if (e.which == 27 && $(e.target).is(this.$element) && !getParent($(e.target)).hasClass('open')) {
                 return;
             }
 
@@ -444,11 +444,11 @@
 
             // Close current focused menu with ESC
             if (e.which == 27) {
-                if ($node.is(this.$triggerElm) || $node.is(this.$menuElm)) {
-                    this.hideMenu(null, this.$triggerElm, this.$menuElm);
+                if ($node.is(this.$element) || $node.is(this.$target)) {
+                    this.hideMenu(null, this.$element, this.$target);
                     return;
                 }
-                if ($node.hasClass(CFW_Widget_Dropdown.CLASSES.hasSubMenu)) {
+                if ($node.hasClass(this.c.hasSubMenu)) {
                     this.closeUp($node);
                     return;
                 }
@@ -459,13 +459,19 @@
             var $parent = null;
 
             // Find parent menu
-            if ($node.is(this.$triggerElm) || $node.is(this.$menuElm)) {
-                $parent = this.$menuElm;
+            if ($node.is(this.$element) || $node.is(this.$target)) {
+                $parent = this.$target;
             } else {
                 $parent = $eTarget.closest('.dropdown-menu');
             }
 
-            $parent.removeClass('hover');
+            $parent.removeClass(this.c.hover);
+
+            // Emulate button behaviour
+            if (isRoleButton && e.which == 32) {
+                this.toggleMenu(null, $node, $parent);
+                return;
+            }
 
             // Up/Down
             if (e.which == 38 || e.which == 40) {
@@ -474,11 +480,15 @@
                     return;
                 }
 
-                $items = $parent.children('li:not(.disabled)').children('a:visible');
+                $items = $parent.children('li').find('a, .dropdown-item, input, textarea');
+                $items = $items.filter(':not(.disabled, :disabled):not(:has(input)):not(:has(textarea)):visible');
                 if (!$items.length) { return; }
 
                 // Find current focused menu item
                 var index = $items.index(e.target);
+                if (index < 0 && isCheck) {
+                    index = $items.index($(e.target).closest('.dropdown-item')[0]);
+                }
 
                 if (e.which == 38 && index > 0)                 { index--;   } // up
                 if (e.which == 40 && index < $items.length - 1) { index++;   } // down
@@ -490,7 +500,7 @@
             // Left/Right
             if (e.which == 37 || e.which == 39) {
                 // Only for children of menu
-                if (!$.contains(this.$menuElm[0], $eTarget[0])) { return; }
+                if (!$.contains(this.$target[0], $eTarget[0])) { return; }
                 // Only if has submenu class
                 if (!$eTarget.closest('li.dropdown-submenu')) { return; }
 
@@ -502,7 +512,8 @@
 
                 if (e.which == 39 && subHidden) {
                     this.showMenu(null, $eTarget, $subMenuElm);
-                    $items = $subMenuElm.children('li:not(.disabled)').children('a:visible');
+                    $items = $subMenuElm.children('li').find('a, .dropdown-item, input, textarea');
+                    $items = $items.filter(':not(.disabled, :disabled):not(:has(input)):not(:has(textarea)):visible');
                     $items.eq(0).trigger('focus');
                     return;
                 }
@@ -518,15 +529,15 @@
             var $node = $(node);
 
             clearTimeout(this.timerHide);
-            if ($node.is(this.$triggerElm)) {
-                getParent($node).addClass('hover');
-                this.showMenu(null, this.$triggerElm, this.$menuElm);
+            if ($node.is(this.$element)) {
+                getParent($node).addClass(this.c.hover);
+                this.showMenu(null, this.$element, this.$target);
                 return;
             }
-            if ($node.hasClass(CFW_Widget_Dropdown.CLASSES.hasSubMenu)) {
+            if ($node.hasClass(this.c.hasSubMenu)) {
                 $node = $node.find('a').eq(0);
                 var $subNode = $node.parent().find('ul').eq(0);
-                getParent($node).addClass('hover');
+                getParent($node).addClass(this.c.hover);
                 this.showMenu(null, $node, $subNode);
                 return;
             }
@@ -537,14 +548,14 @@
             var $node = $(node);
 
             clearTimeout(this.timerHide);
-            if ($node.is(this.$triggerElm) || $node.is(this.$menuElm)) {
+            if ($node.is(this.$element) || $node.is(this.$target)) {
                 this.timerHide = setTimeout(function() {
                     $selfRef.timerHide = null;
-                    $selfRef.hideMenu(null, $selfRef.$triggerElm, $selfRef.$menuElm);
+                    $selfRef.hideMenu(null, $selfRef.$element, $selfRef.$target);
                 }, this.settings.delay);
                 return;
             }
-            if ($node.hasClass(CFW_Widget_Dropdown.CLASSES.hasSubMenu)) {
+            if ($node.hasClass(this.c.hasSubMenu)) {
                 $node = $node.find('a').eq(0);
                 var $subNode = $node.find('ul').eq(0);
 
@@ -556,57 +567,27 @@
             }
         },
 
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
-        },
+        dispose : function() {
+            $(document).off('focusin.cfw.dropdown.' + this.instance);
+            this.$element.CFW_Dropdown('hideRev');
+            this.$target.find('.' + this.c.backLink).remove();
+            this.$target.find('.' + this.c.hasSubMenu).off('.cfw.dropdown');
+            this.$target.find('a').off('.cfw.dropdown');
+            this.$target.off('.cfw.dropdown');
+            this.$element
+                .off('.cfw.dropdown')
+                .removeData('cfw.dropdown');
 
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$triggerElm.data();
-
-            if (typeof data.cfwDropdownToggle   !== 'undefined') { parsedData.toggle   = data.cfwDropdownToggle;    }
-            if (typeof data.cfwDropdownDelay    !== 'undefined') { parsedData.delay    = data.cfwDropdownDelay;     }
-            if (typeof data.cfwDropdownHover    !== 'undefined') { parsedData.hover    = data.cfwDropdownHover;     }
-            if (typeof data.cfwDropdownBacklink !== 'undefined') { parsedData.backlink = data.cfwDropdownBacklink;  }
-            if (typeof data.cfwDropdownBacktop  !== 'undefined') { parsedData.backtop  = data.cfwDropdownBacktop;   }
-            if (typeof data.cfwDropdownBacktext !== 'undefined') { parsedData.backtext = data.cfwDropdownBacktext;  }
-            return parsedData;
-        },
-
-        _trigger : function($callingElm, eventName) {
-            var e = $.Event(eventName);
-            $callingElm.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
+            this.$element = null;
+            this.$target = null;
+            this.instance = null;
+            this.timerHide = null;
+            this.settings = null;
         }
     };
 
-    /*
-    $.fn.redraw = function(){
-        $(this).each(function(){
-            var redraw = this.offsetHeight;
-        });
-    };
-    */
-    // Force [lte IE 10] to redraw to correct layout
-    // Also force Edge reflow - using bad UA test and method
-    // TODO: Need to revisit this to find better options
-    // Note: Parent element must be visible in order to redraw
     $.fn.redraw = function() {
-        // if ((document.documentMode || 100) <= 10) {
-        if (document.documentMode !== undefined){
-            return this.hide(0, function() {$(this).show(); $(this).css('display', ''); });
-        } else if (/Edge\/\d+/.test(navigator.userAgent)) {
-            $(this).css('list-style', 'none').css('list-style', '');
-        }
+        return this.offsetHeight;
     };
 
     function Plugin(option) {

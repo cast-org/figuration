@@ -1,6 +1,6 @@
 /*!
  * Figuration
- * Copyright 2013-2016 CAST, Inc.
+ * Copyright 2013-2017 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  */
 
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
         // File definitions
         // ==========
         jsCore: [
-            'js/transition.js',
+            'js/util.js',
             'js/drag.js',
             'js/collapse.js',
             'js/dropdown.js',
@@ -81,7 +81,8 @@ module.exports = function(grunt) {
         // ==========
         clean: {
             dist: 'dist',
-            docs: 'docs/dist'
+            docs: 'docs/dist',
+            docscss: 'docs/assets/css'
         },
 
         jshint: {
@@ -155,7 +156,9 @@ module.exports = function(grunt) {
                     warnings: false
                 },
                 mangle: true,
-                preserveComments: /^!|@preserve|@license|@cc_on/i
+                output: {
+                    comments: /^!|@preserve|@license|@cc_on/i
+                }
             },
             core: {
                 src: '<%= concat.core.dest %>',
@@ -181,7 +184,7 @@ module.exports = function(grunt) {
                 configFile: '.scss-lint.yml'
             },
             core: {
-                src: ['scss/*.scss', 'scss/**/*.scss', '!scss/base/_normalize.scss']
+                src: ['scss/*.scss', 'scss/**/*.scss']
             },
             docs: {
                 src: ['docs/assets/scss/*.scss']
@@ -224,10 +227,32 @@ module.exports = function(grunt) {
             }
         },
 
+        rtlcss: {
+            core: {
+                opts: {
+                    clean: false
+                },
+                expand: true,
+                cwd: 'dist/css',
+                src: ['*.css', '!*.min.css', '!*-rtl.css'],
+                dest: 'dist/css',
+                ext: '-rtl.css'
+            },
+            docs: {
+                opts: {
+                    clean: false
+                },
+                expand: true,
+                cwd: 'docs/assets/css',
+                src: ['*.css', '!*.min.css', '!*-rtl.css'],
+                dest: 'docs/assets/css',
+                ext: '-rtl.css'
+            }
+        },
+
         cssmin: {
             options: {
-                compatibility: 'ie9',
-                keepSpecialComments: '*',
+                specialComments: '*',
                 sourceMap: true,
                 advanced: false
             },
@@ -275,6 +300,7 @@ module.exports = function(grunt) {
                 ignore: [
                     'Attribute "autocomplete" is only allowed when the input type is "color", "date", "datetime", "datetime-local", "email", "hidden", "month", "number", "password", "range", "search", "tel", "text", "time", "url", or "week".',
                     'Attribute "autocomplete" not allowed on element "button" at this point.',
+                    'Attribute "focusable" not allowed on element "svg" at this point.',
                     'Consider using the "h1" element as a top-level heading only (all "h1" elements are treated as top-level headings by many screen readers and other tools).',
                     'Element "div" not allowed as child of element "progress" in this context. (Suppressing further errors from this subtree.)',
                     'Element "img" is missing required attribute "src".',
@@ -284,7 +310,8 @@ module.exports = function(grunt) {
                     'The "datetime-local" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
                     'The "month" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
                     'The "time" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-                    'The "week" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.'
+                    'The "week" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
+                    'The "main" role is unnecessary for element "main".'
                 ]
             },
             docs: {
@@ -328,7 +355,7 @@ module.exports = function(grunt) {
                     throttled: 3,
                     maxRetries: 3,
                     maxPollRetries: 4,
-                    urls: ['http://127.0.0.1:3000/test/js/index.html?hidepassed'],
+                    urls: ['http://localhost:3000/test/js/index.html?hidepassed'],
                     browsers: grunt.file.readYAML('grunt/sauce_browsers.yml'),
                     sauceConfig: {
                         'video-upload-on-pass': false
@@ -345,7 +372,7 @@ module.exports = function(grunt) {
     require('time-grunt')(grunt);
 
     // Default
-    grunt.registerTask('default', ['clean:dist', 'test']);
+    grunt.registerTask('default', ['clean:dist', 'test', 'docs']);
 
     // Test
     grunt.registerTask('test', ['dist-css', 'dist-js', 'test-css', 'test-js']);
@@ -362,7 +389,7 @@ module.exports = function(grunt) {
     grunt.registerTask('test-js', jsTestTasks);
 
     // CSS distribution
-    grunt.registerTask('dist-css', ['sass:core', 'postcss:core', 'cssmin:core']);
+    grunt.registerTask('dist-css', ['sass:core', 'postcss:core', 'rtlcss:core', 'cssmin:core']);
 
     // JS distribution
     grunt.registerTask('dist-js', ['concat', 'uglify:core']);
@@ -373,10 +400,10 @@ module.exports = function(grunt) {
     // Docs tasks
     grunt.registerTask('docs-test-html', ['jekyll:docs', 'htmllint:docs']);
     grunt.registerTask('docs-test-css', ['scsslint:docs']);
-    grunt.registerTask('docs-dist-css', ['sass:docs', 'postcss:docs', 'cssmin:docs']);
+    grunt.registerTask('docs-dist-css', ['sass:docs', 'postcss:docs', 'rtlcss:docs', 'cssmin:docs']);
     grunt.registerTask('docs-test-js', ['jscs:docs']);
     grunt.registerTask('docs-dist-js', ['uglify:docs']);
-    grunt.registerTask('docs', ['docs-test-css', 'docs-dist-css', 'docs-test-js', 'docs-dist-js', 'clean:docs', 'copy:docs']);
+    grunt.registerTask('docs', ['docs-test-css', 'clean:docscss', 'docs-dist-css', 'docs-test-js', 'docs-dist-js', 'clean:docs', 'copy:docs']);
     grunt.registerTask('docs-github', ['jekyll:github']);
 
 };

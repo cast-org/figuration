@@ -35,7 +35,7 @@ To run the unit test suite via a real web browser, open `index.html` in the brow
 QUnit.test('should describe the unit being tested', function(assert) {
     assert.expect(1);
     var templateHTML = '<div class="alert alert-danger fade in">'
-        + '<a class="close" href="#" data-cfw-dismiss="alert">×</a>'
+        + '<a class="close" href="#" data-cfw-dismiss="alert">&times;</a>'
         + '<p><strong>Template necessary for the test.</p>'
         + '</div>';
     var $alert = $(templateHTML).appendTo('#qunit-fixture').CFW_Alert();

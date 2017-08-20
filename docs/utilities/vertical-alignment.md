@@ -43,12 +43,14 @@ Using table cells.
 {% example html %}
 <table class="table table-bordered" style="height: 100px;">
     <tbody>
+    <tr>
         <td class="valign-baseline">baseline</td>
         <td class="valign-top">top</td>
         <td class="valign-middle">middle</td>
         <td class="valign-bottom">bottom</td>
         <td class="valign-text-top">text-top</td>
         <td class="valign-text-bottom">text-bottom</td>
+    </tr>
     </tbody>
 </table>
 {% endexample %}
@@ -61,7 +63,7 @@ Slightly more complex uses, such as being able to align items in a row, become q
         <a href="#">View more in teacher's guide</a> |
         <a href="#">Common Core alignment</a>
     </div>
-    <div class="d-table-cell valign-bottom text-right">
+    <div class="d-table-cell valign-bottom text-end">
         <button type="button" class="btn btn-primary btn-lg">Continue</button>
     </div>
 </div>

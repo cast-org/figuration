@@ -14,7 +14,6 @@
     padding-left: $custom-control-gutter;
     margin-right: $custom-control-spacer-x;
     margin-bottom: 0;
-    cursor: pointer;
 }
 
 .custom-control-input {
@@ -70,6 +69,7 @@
     background-size: $custom-control-indicator-bg-size;
     border: $custom-control-indicator-border-width solid $custom-control-indicator-border-color;
     @include box-shadow($custom-control-indicator-box-shadow);
+    @include transition($input-transition);
 }
 
 // Checkboxes
@@ -122,26 +122,37 @@
 
 // Select
 // Replaces the browser default select with a custom one.
-// Includes IE9-specific hacks (noted by ` \9`).
 .custom-select {
     display: block;
     width: 100%;
     height: $select-height;
     padding: $input-padding-y (($input-padding-x / 2) + $custom-select-indicator-padding) $input-padding-y ($input-padding-x / 2);
-    padding-right: ($input-padding-x / 2) \9;
-    color: $custom-select-color;
+    color: $input-color;
     vertical-align: middle;
-    background: $custom-select-bg $custom-select-indicator no-repeat right ($input-padding-x / 2) center;
-    background-image: none \9;
-    background-size: $custom-select-bg-size;
-    border: $custom-select-border-width solid $custom-select-border-color;
-    @include border-radius($custom-select-border-radius);
+    background: $input-bg $custom-select-indicator no-repeat right ($input-padding-x / 2) center;
+    background-clip: padding-box;
+    background-size: $custom-select-indicator-size;
+    border: $input-border-width solid $input-border-color;
+    @if $enable-rounded {
+        border-radius: $input-border-radius;
+    } @else {
+        border-radius: 0;
+    }
+    @include box-shadow($input-box-shadow, 0 0 transparent);
+    @include transition($input-transition);
     appearance: none;
 
     &:focus {
-        border-color: $custom-select-focus-border-color;
+        color: $input-focus-color;
+        background-color: $input-focus-bg;
+        border-color: $input-focus-border-color;
         outline: none;
-        @include box-shadow($custom-select-focus-box-shadow);
+
+        @if ($enable-shadows) {
+            box-shadow: $input-focus-box-shadow-inner, $input-focus-box-shadow-outer;
+        } @else {
+            box-shadow: $input-focus-box-shadow-outer;
+        }
 
         &::-ms-value {
             // For visual consistency with other platforms/browsers,
@@ -149,15 +160,15 @@
             // the selected option text when the (still closed) <select> receives focus
             // in IE and (under certain conditions) Edge.
             // See https://github.com/twbs/bootstrap/issues/19398.
-            color: $input-color;
-            background-color: $input-bg;
+            color: $input-focus-color;
+            background-color: $input-focus-bg;
         }
     }
 
     &:disabled {
-        color: $custom-select-disabled-color;
+        color: $input-disabled-color;
         cursor: $cursor-disabled;
-        background-color: $custom-select-disabled-bg;
+        background-color: $input-disabled-bg;
     }
 
     // Hides the default caret in IE11
@@ -180,7 +191,6 @@
             height: $sz-select-height;
             padding: $sz-padding-y ($sz-padding-x / 2);
             padding-right: ($sz-padding-x + $custom-select-indicator-padding);
-            padding-right: ($sz-padding-x / 2) \9;
             font-size: $sz-font-size;
             background-position: right ($sz-padding-x / 2) center;
         }
@@ -195,18 +205,23 @@
     display: inline-block;
     max-width: 100%;
     height: $select-height;
-    cursor: pointer;
+    margin-bottom: 0;
 }
 
 .custom-file-input {
     min-width: $custom-file-width;
     max-width: 100%;
+    height: $select-height;
     margin: 0;
-    filter: alpha(opacity = 0);
     opacity: 0;
 
     &:focus ~ .custom-file-control {
-        @include box-shadow($custom-file-focus-box-shadow);
+        border-color: $input-focus-border-color;
+        @if ($enable-shadows) {
+            box-shadow: $input-focus-box-shadow-inner, $input-focus-box-shadow-outer;
+        } @else {
+            box-shadow: $input-focus-box-shadow-outer;
+        }
     }
 }
 
@@ -218,25 +233,28 @@
     z-index: 5;
     height: $select-height;
     padding: $input-padding-y ($input-padding-x / 2);
+    overflow: hidden;
     line-height: $input-line-height;
-    color: $custom-file-color;
+    color: $input-color;
+    pointer-events: none;
     user-select: none;
-    background-color: $custom-file-bg;
-    border: $custom-file-border-width solid $custom-file-border-color;
-    @include border-radius($custom-file-border-radius);
-    @include box-shadow($custom-file-box-shadow);
+    background-color: $input-bg;
+    background-clip: padding-box;
+    border: $input-border-width solid $input-border-color;
+    @include border-radius($input-border-radius);
+    @include box-shadow($input-box-shadow, 0 0 transparent);
+    @include transition($input-transition);
 
     @each $lang, $text in map-get($custom-file-text, placeholder) {
-        &:lang(#{$lang})::after {
+        &:lang(#{$lang}):empty::after {
             content: $text;
         }
     }
 
     &::before {
         position: absolute;
-        top: -$custom-file-border-width;
-        right: -$custom-file-border-width;
-        bottom: -$custom-file-border-width;
+        top: 0;
+        right: 0;
         z-index: 6;
         display: block;
         height: $select-height;
@@ -244,8 +262,7 @@
         line-height: $input-line-height;
         color: $custom-file-button-color;
         background-color: $custom-file-button-bg;
-        border: $custom-file-border-width solid $custom-file-border-color;
-        @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
+        border-left: $input-border-width solid $input-border-color;
     }
 
     @each $lang, $text in map-get($custom-file-text, button-label) {
@@ -265,12 +282,14 @@
     font-size: $font-size-base;
     line-height: $input-line-height;
     color: $input-color;
-    cursor: pointer;
     background-color: $input-bg;
     background-image: none;
     background-clip: padding-box;
     border: $input-border-width solid $input-border-color;
+
     @include border-radius($input-border-radius);
-    @include box-shadow($input-box-shadow);
-    @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
+    @include box-shadow($input-box-shadow, 0 0 transparent);
+    @include transition($input-transition);
+
+    @include form-control-focus();
 }

@@ -7,39 +7,33 @@ group: widgets
 
 The modal widget allows you to add dialog style windows to your site or application.
 
-{% callout warning %}
-#### Overlapping modals not supported
-
-Be sure not to open a modal while another is still visible. Showing more than one modal at a time requires custom code.
-{% endcallout %}
-
-{% callout warning %}
-#### Modal Markup Placement
-
-Always try to place a modal's HTML code in a top-level position in your document, such as a direct chld of the `<body>` element, to avoid other components affecting the modal's appearance and/or functionality. Placing it within a `position: fixed;` element may adversely affect placement.
-{% endcallout %}
-
-{% callout warning %}
-#### Mobile Device Caveats
-
-There are some caveats regarding using modals on mobile devices. See [our browser support docs]({{ site.baseurl }}/get-started/browsers-devices/#modals-and-dropdowns-on-mobile) for details.
-{% endcallout %}
-
-{% callout info %}
-#### Embedding YouTube Videos
-
-Embedding YouTube videos in modals requires additional JavaScript not in Figuration to automatically stop playback and more. [See this helpful Stack Overflow post](https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal) for more information.
-{% endcallout %}
-
 ## Contents
 {:.no_toc}
 
 * ToC goes here
 {:toc}
 
+## Important Notes
+
+- Modals get positioned over everything else in the document and remove scroll from the `<body>` so that modal content scrolls instead.
+- By default, clicking on the modal "backdrop" will automatically close the modal.
+- Figuration only supports one modal at a time.  Nested modals are not supported, as this can cause difficult usability and accessibility issues.
+- Modals use `position: fixed`. Always try to place modal HTML code in a top-level position in your document, such as a direct chld of the `<body>` element. Putting modal HTML within a fixed position element will adversely affect placement.
+- There are some caveats regarding using modals on mobile devices. See [our browser support docs]({{ site.baseurl }}/get-started/browsers-devices/#modals-and-dropdowns-on-mobile) for details.
+- Embedding YouTube videos in modals requires additional JavaScript not in Figuration to automatically stop playback and more. [See this helpful Stack Overflow post](https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal) for more information.
+- The [`autofocus`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-autofocus) HTML attribute has no effect in modals. To achieve the same effect you will need some custom JavaScript:
+{% highlight js %}
+$('#myModal').on('afterShow.cfw.modal', function() {
+  $('#myInput').focus();
+});
+{% endhighlight %}
+
+
 ## Examples
 
-### Static Example
+### Modal Components
+
+Below is a static modal example (meaning its `position` and `display` have been overridden). Included are the modal header, modal body (required for `padding`), and modal footer (optional). It is highly suggested to include modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.
 
 {% example html %}
 <div class="modal">
@@ -56,9 +50,9 @@ Embedding YouTube videos in modals requires additional JavaScript not in Figurat
                 <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+    </div>
+</div>
 {% endexample %}
 
 ### Live Demo
@@ -76,12 +70,12 @@ Toggle a modal via JavaScript by clicking the button below. It will slide down a
                 <h4>Text in a modal</h4>
                 <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
                 <h4>Popover in a modal</h4>
-                <p>This <button type="button" class="btn btn-secondary" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="right">button</button> should trigger a popover on click.</p>
+                <p>This <button type="button" class="btn btn-secondary" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="forward">button</button> should trigger a popover on click.</p>
                 <h4>Tooltips in a modal</h4>
                 <p><a href="#" data-cfw="tooltip" title="Tooltip">This link</a> and <a href="#" data-cfw="tooltip" title="Tooltip">that link</a> should have tooltips on hover.</p>
                 <h4>Collapse in a modal</h4>
-                <a href="#" role="button" class="btn btn-secondary" data-cfw="collapse" data-cfw-collapse-toggle="modal_collapse">Collapse<span class="caret"></span></a>
-                    <div data-cfw-collapse-target="modal_collapse">
+                <a href="#modal_collapse" role="button" class="btn btn-secondary" data-cfw="collapse">Collapse <span class="caret"></span></a>
+                    <div id="modal_collapse" class="collapse">
                         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
                     </div>
                 <hr />
@@ -100,19 +94,19 @@ Toggle a modal via JavaScript by clicking the button below. It will slide down a
                 <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+    </div>
+</div>
 
 <div class="cf-example">
-    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalLive">
+    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalLive">
         Launch demo modal
     </button>
 </div>
 
 {% highlight html %}
 <!-- Button trigger -->
-<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalLive">
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalLive">
     Launch demo modal
 </button>
 
@@ -136,7 +130,73 @@ Toggle a modal via JavaScript by clicking the button below. It will slide down a
 </div>
 {% endhighlight %}
 
-### Grid Usage in Modals
+### Scrolling Long Content
+
+When modals become too long for the user's viewport or device, they scroll independent of the page itself.  Try the demo below for an example.
+
+<div class="modal" id="modalScroll">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <h5>Overflowing text to show scroll behavior</h5>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-cfw-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cf-example">
+    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalScroll">
+        Scrolling modal
+    </button>
+</div>
+
+{% highlight html %}
+<!-- Button trigger -->
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalScroll">
+    Scrolling modal
+</button>
+
+<!-- Modal -->
+<div class="modal" id="modalScroll">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endhighlight %}
+
+### Grid Usage
 
 To take advantage of the grid system within a modal, just nest `.container-fluid` within the `.modal-body` and then use the normal grid system classes within this container.
 
@@ -179,24 +239,52 @@ To take advantage of the grid system within a modal, just nest `.container-fluid
                 <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+    </div>
+</div>
 
 <div class="cf-example">
-    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalGrid">
+    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalGrid">
         Grid in a Modal
     </button>
 </div>
 
 {% highlight html %}
-<!-- Button trigger -->
-<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalLive">
-    Launch demo modal
-</button>
+<div class="modal-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4 offset-md-4">.col-md-4 .offset-md-4</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+            <div class="col-md-2 offset-md-4">.col-md-2 .offset-md-4</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">.col-md-6 .offset-md-3</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-9">
+                Level 1: .col-sm-9
+                <div class="row">
+                    <div class="col-8 col-sm-6">
+                        Level 2: .col-8 .col-sm-6
+                    </div>
+                    <div class="col-4 col-sm-6">
+                        Level 2: .col-4 .col-sm-6
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endhighlight %}
 
-<!-- Modal -->
-<div class="modal" id="modalLive">
+### Tooltips and Popovers
+
+[Tooltips]({{ site.baseurl }}/widgets/tooltip/) and [popovers]({{ site.baseurl }}/widgets/popover/) can be placed within modal as needed.  When modals are closed, any tooltips or popovers within are also automatically dismissed.
+
+<div class="modal" id="modalTips">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -204,23 +292,32 @@ To take advantage of the grid system within a modal, just nest `.container-fluid
                 <h4 class="modal-title">Modal title</h4>
             </div>
             <div class="modal-body">
-                <div class="container-fluid
-                    <div class="row">
-                        <div class="col-md-4">.col-md-4</div>
-                        <div class="col-md-4">.col-md-4</div>
-                        <div class="col-md-4">.col-md-4</div>
-                    </div>
-                    ...
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <h5>Popover in a modal</h5>
+                <p>This <a href="#" role="button" class="btn" title="Popover title" data-cfw="popover" data-cfw-popover-content="Popover body content is set in this attribute." data-cfw-popover-placement="forward">button</a> triggers a popover on click.</p>
+                <hr>
+                <h5>Tooltips in a modal</h5>
+                <p><a href="#" title="Tooltip" data-cfw="tooltip">This link</a> and <a href="#" title="Tooltip" data-cfw="tooltip">that link</a> have tooltips on hover.</p>
             </div>
         </div>
     </div>
 </div>
+
+<div class="cf-example">
+    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalTips">
+        Launch demo modal
+    </button>
+</div>
+
+{% highlight html %}
+<div class="modal-body">
+    <h5>Popover in a modal</h5>
+    <p>This <a href="#" role="button" class="btn" title="Popover title" data-cfw="popover" data-cfw-popover-content="Popover body content is set in this attribute." data-cfw-popover-placement="forward">button</a> triggers a popover on click.</p>
+    <hr>
+    <h5>Tooltips in a modal</h5>
+    <p><a href="#" title="Tooltip" data-cfw="tooltip">This link</a> and <a href="#" title="Tooltip" data-cfw="tooltip">that link</a> have tooltips on hover.</p>
+</div>
 {% endhighlight %}
+
 
 ### Optional Sizes
 
@@ -236,9 +333,9 @@ Modals have two optional sizes, provided by Figuration's base CSS, available via
             <div class="modal-body">
                 ...
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+    </div>
+</div>
 
 <div class="modal" id="modalSm">
     <div class="modal-dialog modal-sm">
@@ -250,18 +347,18 @@ Modals have two optional sizes, provided by Figuration's base CSS, available via
             <div class="modal-body">
                 ...
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+        </div>
+    </div>
+</div>
 
 <div class="cf-example">
-    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalLg">Large modal</button>
-    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalSm">Small modal</button>
+    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalLg">Large modal</button>
+    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalSm">Small modal</button>
 </div>
 
 {% highlight html %}
 <!-- Large modal -->
-<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalLg">Large modal</button>
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalLg">Large modal</button>
 
 <div class="modal" id="modalLg">
     <div class="modal-dialog modal-lg">
@@ -272,7 +369,7 @@ Modals have two optional sizes, provided by Figuration's base CSS, available via
 </div>
 
 <!-- Small modal -->
-<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-toggle="#modalSm">Small modal</button>
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalSm">Small modal</button>
 
 <div class="modal" id="modalSm">
     <div class="modal-dialog modal-sm">
@@ -289,10 +386,10 @@ The modal widget toggles your hidden content on demand, via data attributes or J
 
 ### Via Data Attributes
 
-Activate a modal without writing JavaScript. Set `data-cfw="modal"` on a controller element, like a button, along with a `data-cfw-modal-toggle="#foo"` or `href="#foo"` to target a specific modal to toggle.
+Activate a modal without writing JavaScript. Set `data-cfw="modal"` on a controller element, like a button, along with a `data-cfw-modal-target="#foo"` or `href="#foo"` to target a specific modal to toggle.
 
 {% highlight html %}
-<button type="button" data-cfw="modal" data-cfw-modal-toggle="#foo">Launch modal</button>
+<button type="button" data-cfw="modal" data-cfw-modal-target="#foo">Launch modal</button>
 {% endhighlight %}
 
 ### Via JavaScript
@@ -307,79 +404,77 @@ $('#myModal').CFW_Modal();
 
 Any an element with a data attribute of `data-cfw-dismiss="modal"` within the modal element will act as a close trigger for the modal.  There can be multiple close triggers, such as a header/titlebar close and a cancel button in the footer.
 
+### Dynamic Heights
+
+If the height of a modal changes while it is open, you will need to call `$('#myModal').CFW_Modal('handleUpdate');` to readjust the modal's position and backdrop.
+
+### With Fixed Position Content
+
+Since the scrollbar is removed from the `<body>` when a modal is shown, there can be some shifting of content in fixed position elements.  To help with this issue, when a modal is shown, any elements using the [fixed positioning utility]({{ site.baseurl }}/utilities/position/) classes, (`.fixed-top` and `.fixed-bottom`), will have additional padding added to their right side.  This padding width should match the width of the scrollbar that becomes hidden.  When the modal is hidden, the `padding-right` CSS value will be reset.
+
+There is also an additional special classname that the modal widget will look for when adjusting padding values.  Simply add the `.is-fixed` class to your element, and it will automatically be handled.
+
 ### Options
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-modal-`, as in `data-cfw-modal-animate=false`.
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 100px;">Name</th>
-            <th style="width: 50px;">Type</th>
-            <th style="width: 50px;">Default</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>toggle</td>
-            <td>string</td>
-            <td>null</td>
-            <td>Either the selector (jQuery style), or the string related to the target tooltip having a `data-cfw-modal-target` attribute.</td>
-        </tr>
-        <tr>
-            <td>animate</td>
-            <td>boolean</td>
-            <td>true</td>
-            <td>If modal targets should fade and slide in.</td>
-        </tr>
-        <tr>
-            <td>speed</td>
-            <td>number| object</td>
-            <td>backdrop:150, modal:300</td>
-            <td>
-                <p>Speed of animations for fading backdrop and sliding the modal dialog (ms).</p>
-                <p>If a number is supplied, speed is applied to both fade/slide.  These numbers need to correspsond to the CSS animation settings.</p>
-                Object structure is: `speed: { backdrop: 150, modal: 300 }`
-            </td>
-        </tr>
-        <tr>
-            <td>unlink</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>If the `unlink` method should be called when the modal is hidden.  This leaves the modal behind in the DOM.</td>
-        </tr>
-        <tr>
-            <td>destroy</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>If the `destroy` method should be called when the modal is hidden. This will remove the modal from the DOM.</td>
-        </tr>
-        <tr>
-            <td>backdrop</td>
-            <td>boolean or the string `'static'`</td>
-            <td>true</td>
-            <td>
-                <p>Includes a modal-backdrop element. Alternatively, specify `static` for a backdrop which doesn't close the modal on click.</p>
-                <p>The backdrop is the semi-opaque overlay used to visually seperate the modal from the page content.</p>
-             </td>
-        </tr>
-        <tr>
-            <td>keyboard</td>
-            <td>boolean</td>
-            <td>true</td>
-            <td>Closes the modal when escape key is pressed</td>
-        </tr>
-        <tr>
-            <td>show</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>Shows the modal when initialized.</td>
-        </tr>
-    </tbody>
-    </table>
-</div> <!-- /.table-responsive -->
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>target</td>
+        <td>string</td>
+        <td>null</td>
+        <td>The selector (jQuery style) of the target modal.</td>
+    </tr>
+    <tr>
+        <td>animate</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>If modal targets should fade and slide in.</td>
+    </tr>
+    <tr>
+        <td>unlink</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>If the `unlink` method should be called when the modal is hidden.  This leaves the modal behind in the DOM.</td>
+    </tr>
+    <tr>
+        <td>dispose</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>If the `dispose` method should be called when the modal is hidden. This will remove the modal from the DOM.</td>
+    </tr>
+    <tr>
+        <td>backdrop</td>
+        <td>boolean or the string `'static'`</td>
+        <td>true</td>
+        <td>
+            <p>Includes a modal-backdrop element. Alternatively, specify `static` for a backdrop which doesn't close the modal on click.</p>
+            <p>The backdrop is the semi-opaque overlay used to visually seperate the modal from the page content.</p>
+         </td>
+    </tr>
+    <tr>
+        <td>keyboard</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>Closes the modal when escape key is pressed</td>
+    </tr>
+    <tr>
+        <td>show</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Shows the modal when initialized.</td>
+    </tr>
+</tbody>
+</table>
 
 ### Methods
 
@@ -413,7 +508,7 @@ Hides a modal dialog.
 
 Hides the modal, removes events and attributes from both trigger and modal.
 
-#### `.CFW_Modal('destroy')`
+#### `.CFW_Modal('dispose')`
 {:.no_toc}
 
 Calls the `unlink` method, and then removes the modal from the DOM.
@@ -422,58 +517,56 @@ Calls the `unlink` method, and then removes the modal from the DOM.
 
 Event callbacks happen on the target `<div class="modal">` element.
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 150px;">Event Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>init.cfw.modal</td>
-            <td>This event fires after the modal item is initialized.</td>
-        </tr>
-        <tr>
-            <td>beforeShow.cfw.modal</td>
-            <td>This event is fired immediately when the <code>show</code> method is called.</td>
-        </tr>
-        <tr>
-            <td>scrollbarSet.cfw.modal</td>
-            <td>This event is fired immediately when the <code>&lt;body&gt;</code> padding is adjusted for the scrollbar width.</td>
-        </tr>
-        <tr>
-            <td>afterShow.cfw.modal</td>
-            <td>This event is fired when a modal dialog has been made visible to the user (will wait for CSS transitions to complete).</td>
-        </tr>
-        <tr>
-            <td>scrollbarReset.cfw.modal</td>
-            <td>This event is fired immediately when the <code>&lt;body&gt;</code> padding adjustment for the scrollbar is removed.</td>
-        </tr>
-        <tr>
-            <td>beforeHide.cfw.modal</td>
-            <td>This event is fired immediately when the <code>hide</code> method is called.</td>
-        </tr>
-        <tr>
-            <td>afterHide.cfw.modal</td>
-            <td>This event is fired when a modal dialog has been hidden from the user (will wait for CSS transitions to complete).</td>
-        </tr>
-        <tr>
-            <td>beforeUnlink.cfw.modal</td>
-            <td>This event is fired immediately when the <code>unlink</code> method is called. This event can occur after the `beforeHide` event if set to automatically unlink, or before if called via method.</td>
-        </tr>
-        <tr>
-            <td>afterUnlink.cfw.modal</td>
-            <td>This event is fired when a modal item has been unlinked from its trigger item and the data-api removed. This event can occur after the `afterHide` event when invoked from the `unlink` method, or before if set to automatically unlink.</td>
-        </tr>
-        <tr>
-            <td>destroy.cfw.modal</td>
-            <td>This event is fired immediately before the modal item is removed from the DOM.</td>
-        </tr>
-    </tbody>
-    </table>
-</div> <!-- /.table-responsive -->
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 150px;">Event Type</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>init.cfw.modal</td>
+        <td>This event fires after the modal item is initialized.</td>
+    </tr>
+    <tr>
+        <td>beforeShow.cfw.modal</td>
+        <td>This event is fired immediately when the <code>show</code> method is called.</td>
+    </tr>
+    <tr>
+        <td>scrollbarSet.cfw.modal</td>
+        <td>This event is fired immediately when the <code>&lt;body&gt;</code> padding is adjusted for the scrollbar width.</td>
+    </tr>
+    <tr>
+        <td>afterShow.cfw.modal</td>
+        <td>This event is fired when a modal dialog has been made visible to the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+        <td>scrollbarReset.cfw.modal</td>
+        <td>This event is fired immediately when the <code>&lt;body&gt;</code> padding adjustment for the scrollbar is removed.</td>
+    </tr>
+    <tr>
+        <td>beforeHide.cfw.modal</td>
+        <td>This event is fired immediately when the <code>hide</code> method is called.</td>
+    </tr>
+    <tr>
+        <td>afterHide.cfw.modal</td>
+        <td>This event is fired when a modal dialog has been hidden from the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+        <td>beforeUnlink.cfw.modal</td>
+        <td>This event is fired immediately when the <code>unlink</code> method is called. This event can occur after the `beforeHide` event if set to automatically unlink, or before if called via method.</td>
+    </tr>
+    <tr>
+        <td>afterUnlink.cfw.modal</td>
+        <td>This event is fired when a modal item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</td>
+    </tr>
+    <tr>
+        <td>dispose.cfw.modal</td>
+        <td>This event is fired immediately before the modal item is removed from the DOM.</td>
+    </tr>
+</tbody>
+</table>
 
 {% highlight js %}
 $('#myModal').on('afterHide.cfw.modal', function () {
@@ -493,7 +586,7 @@ A quick example:<br />
         <ul>
             <li><code>$('#myModal').CFW_Modal('hide');</code></li>
             <li>or <code>$('#myModal').CFW_Modal('unlink');</code></li>
-            <li>or <code>$('#myModal').CFW_Modal('destroy');</code></li>
+            <li>or <code>$('#myModal').CFW_Modal('dispose');</code></li>
         </ul>
     </li>
     <li>Update/create the modal object and insert into DOM.</li>

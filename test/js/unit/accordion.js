@@ -88,42 +88,6 @@ $(function() {
         $trigger3.trigger('click');
     });
 
-    QUnit.test('should add aria-hidden="true" on inactive accordion target and remove aria-hidden for active target', function(assert) {
-        assert.expect(3);
-        var done = assert.async();
-
-        var $accordion = $('<div id="test" data-cfw="accordion">'
-            + '<div />'
-            + '<div />'
-            + '<div />'
-            + '</div>');
-
-        var $groups = $accordion.appendTo('#qunit-fixture').children('div');
-
-        var $trigger1 = $('<a href="#body1" class="open" role="button" data-cfw="collapse" />').appendTo($groups.eq(0));
-        var $target1 = $('<div id="body1" class="collapse in" />').appendTo($groups.eq(0));
-
-        var $trigger2 = $('<a href="#body2" role="button" data-cfw="collapse" />').appendTo($groups.eq(1));
-        var $target2 = $('<div id="body2" class="collapse" aria-hidden="true" />').appendTo($groups.eq(1));
-
-        var $trigger3 = $('<a href="#body3" role="button" data-cfw="collapse" />').appendTo($groups.eq(2));
-        var $target3 = $('<div id="body3" class="collapse" aria-hidden="true" />').appendTo($groups.eq(2));
-
-        $trigger3
-            .on('afterShow.cfw.collapse', function() {
-                assert.strictEqual($target1.attr('aria-hidden'), 'true', 'inactive target 1 does have  aria-hidden="true"');
-                assert.strictEqual($target2.attr('aria-hidden'), 'true', 'inactive target 2 does have  aria-hidden="true"');
-                assert.notOk($target3.is('[aria-hidden]'), 'active target 3 does not have aria-hidden');
-                done();
-            });
-
-        $trigger1.CFW_Collapse();
-        $trigger2.CFW_Collapse();
-        $trigger3.CFW_Collapse();
-        $accordion.CFW_Accordion();
-        $trigger3.trigger('click');
-    });
-
     QUnit.test('should change aria-expanded from active accordion trigger to "false" and set the newly active one to "true"', function(assert) {
         assert.expect(3);
         var done = assert.async();
@@ -176,7 +140,7 @@ $(function() {
         var $target1 = $('<div id="body1" class="collapse in" />').appendTo($groups.eq(0));
 
         var $trigger2 = $('<a href="#body2" role="button" data-cfw="collapse" />').appendTo($groups.eq(1));
-        /* var $target2 = */ $('<div id="body2" class="collapse" aria-hidden="true" />').appendTo($groups.eq(1));
+        /* var $target2 = */ $('<div id="body2" class="collapse" />').appendTo($groups.eq(1));
 
         $trigger1.CFW_Collapse();
         $trigger2.CFW_Collapse();

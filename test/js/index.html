@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- jQuery -->
-<script src="../vendor/jquery.min.js"></script>
+<script src="../../docs/assets/js/vendor/jquery.min.js"></script>
 <script>
     // Disable jQuery event aliases to ensure we don't accidentally use any of them
     (function() {
@@ -104,13 +104,13 @@
     }
 </script>
 
-<!-- Disable transitions for timing reasons, and so we don't have to watch all event callbacks -->
+<!-- Disable CFW API -->
 <script>
     var CFW_API = false;
-    $.support.transitionEnd = false;
 </script>
 
 <!-- Widget sources (in order of concat)-->
+<script src="../../js/util.js"></script>
 <script src="../../js/drag.js"></script>
 <script src="../../js/collapse.js"></script>
 <script src="../../js/dropdown.js"></script>

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v2.0.0): alert.js
+ * Figuration (v3.0.0): alert.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,14 +15,15 @@
         this.$parent = null;
         this.inTransition = null;
 
-        this.settings = $.extend({}, CFW_Widget_Alert.DEFAULTS, this._parseDataAttr(), options);
+        var parsedData = this.$element.CFW_parseData('alert', CFW_Widget_Alert.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Alert.DEFAULTS, parsedData, options);
 
         this._init();
     };
 
     CFW_Widget_Alert.DEFAULTS = {
-        animate     : true,     // If alert targets should fade out
-        speed       : 150       // Speed of animation (milliseconds)
+        target  : null,
+        animate : true  // If alert targets should fade out
     };
 
     CFW_Widget_Alert.prototype = {
@@ -32,18 +33,15 @@
 
             this.findParent();
 
-            if (this.settings.animate) {
-                this.$parent.addClass('fade in');
-            }
+            this.$element
+                .data('cfw.alert', this)
+                .on('click.cfw.alert', function(e) {
+                    e.preventDefault();
+                    $selfRef.close();
+                });
 
-            this.$parent.on('click.cfw.alert', dismiss, function() {
-                $selfRef.close();
-            });
-
-            this.$parent.data('cfw.alert', this);
-            this.$parent.find(dismiss).data('cfw.alert', this);
-
-            this._trigger('init.cfw.alert');
+            this.$parent
+                .CFW_trigger('init.cfw.alert');
         },
 
         close : function(e) {
@@ -53,65 +51,49 @@
 
             if (this.inTransition) { return; }
 
-            if (!this._trigger('beforeClose.cfw.alert')) {
+            if (!this.$parent.CFW_trigger('beforeClose.cfw.alert')) {
                 return;
+            }
+
+            if (this.settings.animate) {
+                this.$parent.addClass('fade in');
             }
 
             this.inTransition = 1;
 
             function removeElement() {
                 // Detach from parent, fire event then clean up data
-                $selfRef.$parent.detach();
-                $selfRef.inTransition = 0;
-                $selfRef._trigger('afterClose.cfw.alert');
+                $selfRef.$parent
+                    .detach()
+                    .CFW_trigger('afterClose.cfw.alert');
                 $selfRef.$parent.remove();
+                $selfRef.inTransition = 0;
             }
 
-            this.$parent.removeClass('in');
-
-            if ($.support.transitionEnd && this.$parent.hasClass('fade')) {
-                this.$parent
-                    .one('cfwTransitionEnd', $.proxy(removeElement, this))
-                    .CFW_emulateTransitionEnd(this.settings.speed);
-                return;
-            }
-
-            removeElement();
+            this.$parent
+                .removeClass('in')
+                .CFW_mutateTrigger()
+                .CFW_transition(null, removeElement);
         },
 
         findParent : function() {
-            var selector = this.settings.target;
-            var $parent = null;
-
-            if (!selector) {
-                selector = this.$element.attr('href');
+            var selector = this.$element.CFW_getSelectorFromChain('alert', this.settings.target);
+            if (selector) {
+                this.$parent = $(selector);
+            } else {
+                this.$parent = this.$element.closest('.alert');
             }
-
-            $parent = $(selector === '#' ? [] : selector);
-            if (!$parent.length) {
-                $parent = this.$element.closest('.alert');
-            }
-
-            this.$parent = $parent;
         },
 
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$element.data();
+        dispose : function() {
+            this.$element
+                .off('.cfw.alert')
+                .removeData('cfw.alert');
 
-            if (typeof data.cfwAlertTarget  !== 'undefined') { parsedData.animate = data.cfwAlertTarget;  }
-            if (typeof data.cfwAlertAnimate !== 'undefined') { parsedData.animate = data.cfwAlertAnimate; }
-            if (typeof data.cfwAlertSpeed   !== 'undefined') { parsedData.speed   = data.cfwAlertSpeed;   }
-            return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$parent.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
+            this.$element = null;
+            this.$parent = null;
+            this.inTransition = null;
+            this.settings = null;
         }
     };
 
@@ -136,8 +118,9 @@
 
     // API
     // ===
-    $(document).on('click.cfw.alert', dismiss, function() {
-        $(this).CFW_Alert('close');
-    });
-
+    if (typeof CFW_API === 'undefined' || CFW_API !== false) {
+        $(document).on('click.cfw.alert', dismiss, function() {
+            $(this).CFW_Alert('close');
+        });
+    }
 })(jQuery);

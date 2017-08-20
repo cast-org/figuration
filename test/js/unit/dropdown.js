@@ -88,7 +88,7 @@ $(function() {
         $(document.body).trigger('click');
     });
 
-    QUnit.test('should add class open to menu parent if clicked', function(assert) {
+    QUnit.test('should add "open" class to menu parent if clicked', function(assert) {
         assert.expect(1);
         var dropdownHTML = '<div class="dropdown">'
             + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
@@ -135,6 +135,135 @@ $(function() {
         assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class removed');
     });
 
+    QUnit.test('should remove "open" class if body is focused', function(assert) {
+        assert.expect(2);
+        var dropdownHTML = '<div class="dropdown">'
+            + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
+            + '<ul class="dropdown-menu">'
+            + '<li><a href="#">Menu link</a></li>'
+            + '</ul>'
+            + '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+        $dropdown.trigger('click');
+
+        assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click');
+        $(document.body).trigger('focusin');
+        assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class removed');
+    });
+
+    // Cannot reliably emulate spacebar press on true buttons since browsers can use a 'stack' of events
+    // Spacebar on a button event order could be: `keydown, kepress, keyup, click`
+    // this may not be the correct order for all browsers
+
+    QUnit.test('should toggle "open" class if spacebar used on role="button"', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">'
+            + '<a role="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</a>'
+            + '<ul class="dropdown-menu">'
+            + '<li><a href="#">Menu link</a></li>'
+            + '</ul>'
+            + '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        var eventSpace = $.Event('keydown', { which: 32 });
+        $dropdown.CFW_Dropdown();
+
+        $dropdown
+            .on('afterShow.cfw.dropdown', function() {
+                assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on spacebar');
+                var eventSpace = $.Event('keydown', { which: 32 }); // Need new event
+                $dropdown.trigger(eventSpace);
+            })
+            .on('afterHide.cfw.dropdown', function() {
+                assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class removed');
+                done();
+            })
+            .trigger(eventSpace);
+    });
+
+
+    QUnit.test('should remove "open" class if tabbing from trigger', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">'
+            + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
+            + '<ul class="dropdown-menu">'
+            + '<li><a href="#">Menu link</a></li>'
+            + '</ul>'
+            + '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+
+        $dropdown
+            .on('afterShow.cfw.dropdown', function() {
+                assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click');
+                var e = $.Event('keydown', { which: 9 }); // Tab
+                $dropdown.trigger(e);
+            })
+            .on('afterHide.cfw.dropdown', function() {
+                assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class removed');
+                done();
+            })
+            .trigger('click');
+    });
+
+    QUnit.test('should remove "open" class if tabbing from menu anchor', function(assert) {
+        assert.expect(3);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">'
+            + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
+            + '<ul class="dropdown-menu">'
+            + '<li><a href="#">Menu link</a></li>'
+            + '</ul>'
+            + '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+
+        $dropdown
+            .on('afterShow.cfw.dropdown', function() {
+                assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click');
+                var $menuItem = $dropdown.parent().find('a');
+                $menuItem.trigger('focus');
+                assert.ok($(document.activeElement).is($menuItem), 'menu item is focused');
+                var e = $.Event('keydown', { which: 9 }); // Tab
+                $menuItem.trigger(e);
+            })
+            .on('afterHide.cfw.dropdown', function() {
+                assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class removed');
+                done();
+            })
+            .trigger('click');
+    });
+
+    QUnit.test('should remove "open" class if tabbing from menu item', function(assert) {
+        assert.expect(3);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">'
+            + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
+            + '<ul class="dropdown-menu">'
+            + '<li><button class="dropdown-item" type="button">Action</button></li>'
+            + '</ul>'
+            + '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+
+        $dropdown
+            .on('afterShow.cfw.dropdown', function() {
+                assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click');
+                var $menuItem = $dropdown.parent().find('button');
+                $menuItem.trigger('focus');
+                assert.ok($(document.activeElement).is($menuItem), 'menu item is focused');
+                var e = $.Event('keydown', { which: 9 }); // Tab
+                $menuItem.trigger(e);
+            })
+            .on('afterHide.cfw.dropdown', function() {
+                assert.ok(!$dropdown.parent('.dropdown').hasClass('open'), '"open" class removed');
+                done();
+            })
+            .trigger('click');
+    });
+
     QUnit.test('should remove "open" class if body is clicked, with multiple dropdowns', function(assert) {
         assert.expect(7);
         var dropdownHTML = '<div class="dropdown">'
@@ -162,6 +291,36 @@ $(function() {
         assert.strictEqual($last.parent('.open').length, 1, '"open" class added on click');
         assert.strictEqual($('#qunit-fixture .open').length, 1, 'only one dropdown is open');
         $(document.body).trigger('click');
+        assert.strictEqual($('#qunit-fixture .open').length, 0, '"open" class removed');
+    });
+
+    QUnit.test('should remove "open" class if body is focused, with multiple dropdowns', function(assert) {
+        assert.expect(7);
+        var dropdownHTML = '<div class="dropdown">'
+            + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
+            + '<ul class="dropdown-menu">'
+            + '<li><a href="#">Menu link</a></li>'
+            + '</ul>'
+            + '</div>';
+        $(dropdownHTML).appendTo('#qunit-fixture');
+        $(dropdownHTML).appendTo('#qunit-fixture');
+
+        var $dropdowns = $('#qunit-fixture').find('[data-cfw="dropdown"]').CFW_Dropdown();
+        var $first = $dropdowns.first();
+        var $last = $dropdowns.last();
+
+        assert.strictEqual($dropdowns.length, 2, 'two dropdowns');
+
+        $first.trigger('click');
+        assert.strictEqual($first.parents('.open').length, 1, '"open" class added on click');
+        assert.strictEqual($('#qunit-fixture .open').length, 1, 'only one dropdown is open');
+        $(document.body).trigger('focusin');
+        assert.strictEqual($('#qunit-fixture .open').length, 0, '"open" class removed');
+
+        $last.trigger('click');
+        assert.strictEqual($last.parent('.open').length, 1, '"open" class added on click');
+        assert.strictEqual($('#qunit-fixture .open').length, 1, 'only one dropdown is open');
+        $(document.body).trigger('focusin');
         assert.strictEqual($('#qunit-fixture .open').length, 0, '"open" class removed');
     });
 
@@ -218,12 +377,12 @@ $(function() {
     });
 
     QUnit.test('should skip disabled element when using keyboard navigation', function(assert) {
-        assert.expect(1);
+        assert.expect(2);
         var dropdownHTML = '<div class="dropdown">'
             + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
             + '<ul class="dropdown-menu">'
-            + '<li class="disabled"><a href="#">Disabled link</a></li>'
-            + '<li><a href="#">Menu link</a></li>'
+            + '<li><a href="#" class="disabled">Disabled link</a></li>'
+            + '<li><a href="#" id="focusable">Menu link</a></li>'
             + '</ul>'
             + '</div>';
         var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
@@ -231,8 +390,144 @@ $(function() {
         $dropdown.trigger('click');
 
         $dropdown.trigger($.Event('keydown', { which: 40 }));
-        $dropdown.trigger($.Event('keydown', { which: 40 }));
 
-        assert.ok(!$(document.activeElement).parent().is('.disabled'), '.disabled is not focused');
+        assert.ok(!$(document.activeElement).is('.disabled'), '.disabled is not focused');
+        assert.ok($(document.activeElement).is('#focusable'), '#focusable is focused');
     });
+
+    QUnit.test('should not focus trigger when click occurs outside menu', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        var dropdownHTML = '<div class="dropdown">'
+            + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
+            + '<ul class="dropdown-menu">'
+            + '<li><a href="#">Menu link</a></li>'
+            + '</ul>'
+            + '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        var $target = $('<a href="#">Target link</a>').appendTo('#qunit-fixture');
+
+        $dropdown
+            .on('afterShow.cfw.dropdown', function() {
+                assert.strictEqual($dropdown[0], document.activeElement, 'trigger is focused');
+                // Simulate change of focus with click
+                $target.trigger('focus');
+                $target.trigger('click');
+            })
+            .on('afterHide.cfw.dropdown', function() {
+                assert.notStrictEqual($dropdown[0], document.activeElement, 'trigger is not focused');
+                done();
+            })
+            .CFW_Dropdown()
+            .trigger('click');
+    });
+
+    QUnit.test('should ignore keyboard events in <input> and <textarea>', function(assert) {
+        assert.expect(5);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">'
+            + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
+            + '<ul class="dropdown-menu">'
+            + '<li><input id="input" /></a></li>'
+            + '<li><textarea id="textarea"></textarea></a></li>'
+            + '</ul>'
+            + '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+
+        var $input = $('#input');
+        var $textarea = $('#textarea');
+
+        $dropdown
+            .on('afterShow.cfw.dropdown', function() {
+                assert.ok(true, 'menu opened');
+                $input.trigger('focus');
+                assert.ok($(document.activeElement).is($input), 'input focused');
+                $input.trigger($.Event('keydown', { which: 40 }));
+                assert.ok($(document.activeElement).is($input), 'input still focused');
+                $textarea.trigger('focus');
+                assert.ok($(document.activeElement).is($textarea), 'textarea focused');
+                $textarea.trigger($.Event('keydown', { which: 38 }));
+                assert.ok($(document.activeElement).is($textarea), 'textarea still focused');
+                done();
+            });
+        $dropdown.trigger('click');
+    });
+
+    QUnit.test('should not close menu if clicking on <input type="text"> or <textarea>', function(assert) {
+        assert.expect(3);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">'
+            + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
+            + '<ul class="dropdown-menu">'
+            + '<li><input id="input" /></a></li>'
+            + '<li><textarea id="textarea"></textarea></a></li>'
+            + '</ul>'
+            + '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+
+        var $input = $('#input');
+        var $textarea = $('#textarea');
+
+        $dropdown
+            .on('afterShow.cfw.dropdown', function() {
+                assert.ok(true, 'menu opened');
+                $input.trigger('click');
+                assert.ok($dropdown.parent('.dropdown').hasClass('open'), 'menu still open');
+                $textarea.trigger('click');
+                assert.ok($dropdown.parent('.dropdown').hasClass('open'), 'menu still open');
+                done();
+            });
+        $dropdown.trigger('click');
+    });
+
+    QUnit.test('ESC should not propagate when menu is open', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">'
+            + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
+            + '<ul class="dropdown-menu">'
+            + '<li><a href="#" id="focusable">Menu link</a></li>'
+            + '</ul>'
+            + '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+        $dropdown
+            .trigger('focus')
+            .trigger('click');
+
+        $(document.body).on('keydown.dropEsc', function(e) {
+            $(document.body).off('keydown.dropEsc');
+            assert.notEqual(e.which, 27, 'ESC keypress was propagated');
+            done();
+        });
+
+        $dropdown.trigger($.Event('keydown', { which: 27 })); // Esc
+        $dropdown.trigger($.Event('keydown', { which: 97 })); // a
+    });
+
+    QUnit.test('ESC should propagate when menu is closed', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">'
+            + '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>'
+            + '<ul class="dropdown-menu">'
+            + '<li><a href="#" id="focusable">Menu link</a></li>'
+            + '</ul>'
+            + '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+        $dropdown.trigger('focus');
+
+        $(document.body).on('keydown.dropEsc', function(e) {
+            $(document.body).off('keydown.dropEsc');
+            assert.equal(e.which, 27, 'ESC keypress was propagated');
+            done();
+        });
+
+        $dropdown.trigger($.Event('keydown', { which: 27 })); // Esc
+    });
+
 });

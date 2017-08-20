@@ -3,13 +3,22 @@
 // Some wacky hacky stuff to rework the search result look a bit
 
 .docsearch {
-    width: 11rem;
+    width: 100% !important;
     padding-left: 1.5rem;
 }
 .docsearch-wrapper {
     position: relative;
     width: 11rem;
+    margin-left: .5rem;
     clear: both;
+
+    @media (max-width: 66em) {
+        width: 10rem;
+    }
+
+    @include media-breakpoint-down(xs) {
+        width: 5.5rem;
+    }
 
     &::before {
         position: absolute;

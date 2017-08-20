@@ -1,0 +1,47 @@
+// Switch color variants
+@mixin switch-variant($indicator-bg, $active-control-bg, $active-indicator-bg) {
+    .switch-control {
+        &::before {
+            background-color: $indicator-bg;
+        }
+    }
+
+    .switch-input {
+        &:checked ~ .switch-control {
+            background-color: $active-control-bg;
+
+            &::before {
+                background-color: $active-indicator-bg;
+            }
+        }
+    }
+}
+
+// Switch sizes
+@mixin switch-size($font-size, $border-radius, $border-width, $outer-height, $inner-height) {
+    .switch-control {
+        width: ($font-size * $switch-width-multiplier);
+        height: $outer-height;
+        font-size: $font-size;
+        @include border-radius($border-radius);
+
+        &::before {
+            @include border-radius(calc(#{$border-radius} - #{$border-width}));
+        }
+    }
+
+    .switch-description {
+        font-size: $font-size;
+    }
+
+    &.switch-rounded {
+        .switch-control {
+            @include border-radius($outer-height);
+
+            &::before {
+                width: $inner-height;
+                @include border-radius($inner-height);
+            }
+        }
+    }
+}

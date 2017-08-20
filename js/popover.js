@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v2.0.0): popover.js
+ * Figuration (v3.0.0): popover.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -8,31 +8,26 @@
 (function($) {
     'use strict';
 
-    if ($.fn.CFW_Tooltip === undefined) throw new Error('CFW_Popover requires tooltip.js');
+    if ($.fn.CFW_Tooltip === undefined) throw new Error('CFW_Popover requires CFW_Tooltip');
 
     var CFW_Widget_Popover = function(element, options) {
         this.dragAdded = false;
         this.docAdded = false;
         this.keyTimer = null;
         this.keyDelay = 750;
-        this.flags = {
-            keyShift: false,
-            keyTab : false
-        };
 
         this._init('popover', element, options);
     };
 
     CFW_Widget_Popover.DEFAULTS = $.extend({}, $.fn.CFW_Tooltip.Constructor.DEFAULTS, {
-        placement   : 'top',        // Where to locate tooltip (top/bottom/left/right/auto)
-        trigger     : 'click',      // How tooltip is triggered (click/hover/focus/manual)
+        placement   : 'top',        // Where to locate popover (top/bottom/reverse(left)/forward(right)/auto)
+        trigger     : 'click',      // How popover is triggered (click/hover/focus/manual)
         content     : '',           // Content text/html to be inserted
-        closetext   : '<span aria-hidden="true">&times;</span>', // Text for close links
         drag        : false,        // If the popover should be draggable
         dragtext    : '<span aria-hidden="true">+</span>', // Text for drag handle
         dragsrtext  : 'Drag',       // Screen reader text for drag handle
         dragstep     : 10,          // 'Drag' increment for keyboard
-        template    : '<div class="popover"><h3 class="popover-title"></h3><div class="popover-content"></div><div class="popover-arrow"></div></div>'
+        template    : '<div class="popover"><h3 class="popover-header"></h3><div class="popover-body"></div><div class="popover-arrow"></div></div>'
     });
 
     CFW_Widget_Popover.prototype = $.extend({}, $.fn.CFW_Tooltip.Constructor.prototype);
@@ -49,11 +44,11 @@
     };
 
     CFW_Widget_Popover.prototype.setContent = function() {
-        var $tip = this.$targetElm;
-        var $title = $tip.find('.popover-title');
-        var $content = $tip.find('.popover-content');
+        var $tip = this.$target;
+        var $title = $tip.find('.popover-header');
+        var $content = $tip.find('.popover-body');
 
-        if (!this.dataToggle) {
+        if (this.dynamicTip) {
             var title = this.getTitle();
             var content = this.getContent();
 
@@ -70,22 +65,22 @@
             }
         }
 
-        // Use '.popover-title' for labelledby
+        // Use '.popover-header' for labelledby
         if ($title.length) {
-            var labelledby = this._getID($title.eq(0), 'cfw-popover');
-            this.$targetElm.attr('aria-labelledby', labelledby);
+            var labelledby = $title.eq(0).CFW_getID('cfw-popover');
+            this.$target.attr('aria-labelledby', labelledby);
         }
 
         if (this.settings.drag && !this.dragAdded) {
-            if (this.$targetElm.find('[data-cfw-drag="' + this.type + '"]').length <= 0) {
+            if (this.$target.find('[data-cfw-drag="' + this.type + '"]').length <= 0) {
                 var $drag = $('<span role="button" tabindex="0" class="drag" data-cfw-drag="' + this.type +  '" aria-label="' + this.settings.dragsrtext + '">' + this.settings.dragtext + '</span>');
-                $drag.insertAfter(this.$targetElm.find('.close').eq(0));
+                $drag.insertAfter(this.$target.find('.close').eq(0));
                 this.dragAdded = true;
             }
         }
 
-        if (this.$targetElm.find('[data-cfw-drag="' + this.type + '"]').length) {
-            this.$targetElm.addClass('draggable');
+        if (this.$target.find('[data-cfw-drag="' + this.type + '"]').length) {
+            this.$target.addClass('draggable');
             // Force settings
             this.settings.trigger = 'click';
             this.settings.container = 'body';
@@ -93,26 +88,28 @@
             this.enableDrag();
         }
 
-        $tip.removeClass('fade in top bottom left right');
+        $tip.removeClass('fade in top bottom reverse forward');
 
         if (!$title.html()) { $title.hide(); }
 
-        if ((this.$targetElm.attr('role') == 'dialog') && (!this.docAdded)) {
-            // Inject a role="document" container
-            var $children = this.$targetElm.children().not(this.$arrow);
-            var docDiv = document.createElement('div');
-            docDiv.setAttribute('role', 'document');
-            $children.wrapAll(docDiv);
-            // Make sure arrow is at end of popover for roles to work properly with screen readers
-            this._arrow();
-            this.$arrow.appendTo(this.$targetElm);
+        if (this.isDialog && !this.docAdded) {
+            if (!this.$target.find('[role="document"]').length) {
+                // Inject a role="document" container
+                var $children = this.$target.children().not(this.$arrow);
+                var docDiv = document.createElement('div');
+                docDiv.setAttribute('role', 'document');
+                $children.wrapAll(docDiv);
+                // Make sure arrow is at end of popover for roles to work properly with screen readers
+                this._arrow();
+                this.$arrow.appendTo(this.$target);
+            }
             this.docAdded = true;
         }
     };
 
     CFW_Widget_Popover.prototype.getContent = function() {
         var content;
-        var $e = this.$triggerElm;
+        var $e = this.$element;
         var s = this.settings;
 
         content = (typeof s.content == 'function' ? s.content.call($e[0]) :  s.content);
@@ -126,68 +123,55 @@
 
         var dragOpt = { handle: '[data-cfw-drag="' + this.type + '"]' };
 
+        // Remove mutation handler and replace resize location handler
+        this.$element.on('afterShow.cfw.' + this.type, function() {
+            $selfRef.$target
+                .off('mutate.cfw.mutate')
+                .removeAttr('data-cfw-mutate')
+                .CFW_mutationIgnore();
+
+            $(window)
+                .off('resize.cfw.' + $selfRef.type + '.' + $selfRef.instance)
+                .on('resize.cfw.' + $selfRef.type + '.' + $selfRef.instance, function() {
+                    var offset = $selfRef.$target.offset();
+                    $selfRef.locateDragTip(offset.top, offset.left);
+                });
+        });
+
         // Unset any previous drag events
-        this.$targetElm.off('.cfw.drag');
+        this.$target.off('.cfw.drag');
 
-        this.$targetElm.on('dragStart.cfw.drag', function() {
-            var $viewport;
-            if ($selfRef.$viewport) {
-                $viewport = $selfRef.$viewport;
-            } else {
-                $viewport = $(document.body);
-            }
-
-            limit = $viewport.offset();
-            limit.bottom = limit.top + $viewport.outerHeight() - $(this).outerHeight();
-            limit.right = limit.left + $viewport.outerWidth() - $(this).outerWidth();
+        this.$target.on('dragStart.cfw.drag', function() {
+            limit = $selfRef.viewportDragLimit();
 
             $selfRef._updateZ();
-            $selfRef._trigger('dragStart.cfw.' + $selfRef.type);
+            $selfRef.$element.CFW_trigger('dragStart.cfw.' + $selfRef.type);
         })
         .on('drag.cfw.drag', function(e) {
-            var viewportPadding = 0;
-            if ($selfRef.$viewport) {
-                viewportPadding = $selfRef.settings.viewport && $selfRef.settings.viewport.padding || 0;
-            }
-
-            $(this).css({
-                top: Math.min((limit.bottom - viewportPadding), Math.max((limit.top + viewportPadding), e.offsetY)),
-                left: Math.min((limit.right - viewportPadding), Math.max((limit.left + viewportPadding), e.offsetX))
-            });
+            $selfRef.locateDragTip(e.offsetY, e.offsetX);
         })
         .on('dragEnd.cfw.drag', function() {
-            $selfRef._trigger('dragEnd.cfw.' + $selfRef.type);
+            $selfRef.$element.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
         })
-        .on('keydown.cfw.' + this.type + '.drag', '[data-cfw-drag="' + this.type + '"]', function(e) {
+        .on('keydown.cfw.drag', '[data-cfw-drag="' + this.type + '"]', function(e) {
             if (/(37|38|39|40)/.test(e.which)) {
                 if (e) { e.stopPropagation(); }
 
                 if (!$selfRef.keyTimer) {
-                    $selfRef._trigger('dragStart.cfw.' + $selfRef.type);
+                    $selfRef.$element.CFW_trigger('dragStart.cfw.' + $selfRef.type);
                 }
 
                 clearTimeout($selfRef.keyTimer);
 
-                var $viewport;
-                var viewportPadding = 0;
-                if ($selfRef.$viewport) {
-                    $viewport = $selfRef.$viewport;
-                    viewportPadding = $selfRef.settings.viewport && $selfRef.settings.viewport.padding || 0;
-                } else {
-                    $viewport = $(document.body);
-                }
+                limit = $selfRef.viewportDragLimit();
 
-                var $node = $selfRef.$targetElm;
-                var step = $selfRef.settings.dragstep;
-                limit = $viewport.offset();
-                limit.bottom = limit.top + $viewport.outerHeight() - $node.outerHeight();
-                limit.right = limit.left + $viewport.outerWidth() - $node.outerWidth();
-                var nodeOffset = $node.offset();
                 // Mitigate most of 'slippage' by rounding offsets
+                var nodeOffset = $selfRef.$target.offset();
                 var offsetY = Math.round(nodeOffset.top);
                 var offsetX = Math.round(nodeOffset.left);
 
                 // Revise offset
+                var step = $selfRef.settings.dragstep;
                 switch (e.which) {
                     /* Left  */ case 37: { offsetX = offsetX - step; break; }
                     /* Up    */ case 38: { offsetY = offsetY - step; break; }
@@ -196,13 +180,10 @@
                 }
 
                 // Move it
-                $node.css({
-                    top: Math.min((limit.bottom - viewportPadding), Math.max((limit.top + viewportPadding), offsetY)),
-                    left: Math.min((limit.right - viewportPadding), Math.max((limit.left + viewportPadding), offsetX))
-                });
+                $selfRef.locateDragTip(offsetY, offsetX);
 
                 $selfRef.keyTimer = setTimeout(function() {
-                    $selfRef._trigger('dragEnd.cfw.' + $selfRef.type);
+                    $selfRef.$element.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
                     $selfRef.keyTimer = null;
                 }, $selfRef.keyDelay);
 
@@ -211,27 +192,56 @@
             }
         });
 
-        this.$targetElm.CFW_Drag(dragOpt);
+        this.$target.CFW_Drag(dragOpt);
     };
 
-    CFW_Widget_Popover.prototype.hide = function() {
+
+    CFW_Widget_Popover.prototype.viewportDragLimit = function() {
+        var $tip = this.$target;
+        var $viewport = this.$viewport;
+
+        var limit = $viewport.offset();
+        limit.bottom = limit.top + $viewport.outerHeight() - $tip.outerHeight();
+        limit.right = limit.left + $viewport.outerWidth() - $tip.outerWidth();
+
+        // Allow dragging around entire window if body is smaller than window
+        if ($viewport.is('body')) {
+            if (document.body.clientHeight < window.innerHeight) {
+                limit.bottom = limit.top + window.innerHeight - $tip.outerHeight();
+            }
+            if (document.body.clientWidth < window.innerWidth) {
+                limit.right = limit.left + window.innerWidth - $tip.outerWidth();
+            }
+        }
+        return limit;
+    };
+
+    CFW_Widget_Popover.prototype.locateDragTip = function(offsetY, offsetX) {
+        var $tip = this.$target;
+        var limit = this.viewportDragLimit();
+        var viewportPadding = this.settings.padding;
+
+        $tip.css({
+            top: Math.min((limit.bottom - viewportPadding), Math.max((limit.top + viewportPadding), offsetY)),
+            left: Math.min((limit.right - viewportPadding), Math.max((limit.left + viewportPadding), offsetX))
+        });
+    };
+
+    CFW_Widget_Popover.prototype.hide = function(force) {
         // Fire key drag end if needed
         if (this.keyTimer) {
-            this._trigger('dragEnd.cfw.' + this.type);
+            this.$element.CFW_trigger('dragEnd.cfw.' + this.type);
             clearTimeout(this.keyTimer);
         }
         // Call tooltip hide
-        $.fn.CFW_Tooltip.Constructor.prototype.hide.apply(this);
+        $.fn.CFW_Tooltip.Constructor.prototype.hide.call(this, force);
     };
 
-    CFW_Widget_Popover.prototype._removeDynamicTip = function() {
-        this.$targetElm.detach();
-        this.dynamicTip = false;
-        this.closeAdded = false;
+    CFW_Widget_Popover.prototype._removeDynamicTipExt = function() {
+        this.$target.detach();
+        this.$target = null;
         this.dragAdded = false;
         this.docAdded = false;
-        this.$arrow = false;
-        this.$targetElm = null;
     };
 
     CFW_Widget_Popover.prototype._updateZ = function() {
@@ -246,32 +256,23 @@
             }
         });
         // Only increase if highest is not current popover
-        if (this.$targetElm[0] !== $zObj[0]) {
-            this.$targetElm.css('z-index', ++zMax);
+        if (this.$target[0] !== $zObj[0]) {
+            this.$target.css('z-index', ++zMax);
         }
     };
 
     CFW_Widget_Popover.prototype._arrow = function() {
         if (!this.$arrow) {
-            this.$arrow = this.$targetElm.find('.arrow, .popover-arrow');
+            this.$arrow = this.$target.find('.arrow, .popover-arrow');
         }
         return this.$arrow;
     };
 
-    CFW_Widget_Popover.prototype._parseDataAttrExt = function() {
-        var parsedData = {};
-        var $e = this.$triggerElm;
-
-        var string = this.type;
-        var dataType = string.charAt(0).toUpperCase() + string.slice(1);
-
-        if (typeof $e.data('cfw' + dataType + 'Content')    !== 'undefined') { parsedData.content    = $e.data('cfw' + dataType + 'Content');    }
-        if (typeof $e.data('cfw' + dataType + 'Drag')       !== 'undefined') { parsedData.drag       = $e.data('cfw' + dataType + 'Drag');       }
-        if (typeof $e.data('cfw' + dataType + 'Dragtext')   !== 'undefined') { parsedData.dragtext   = $e.data('cfw' + dataType + 'Dragtext');   }
-        if (typeof $e.data('cfw' + dataType + 'Dragsrtext') !== 'undefined') { parsedData.dragsrtext = $e.data('cfw' + dataType + 'Dragsrtext'); }
-        if (typeof $e.data('cfw' + dataType + 'Dragstep')   !== 'undefined') { parsedData.dragstep   = $e.data('cfw' + dataType + 'Dragstep');   }
-
-        return parsedData;
+    CFW_Widget_Popover.prototype._unlinkCompleteExt = function() {
+        this.dragAdded = null;
+        this.docAdded = null;
+        this.keyTimer = null;
+        this.keyDelay = null;
     };
 
     function Plugin(option) {
@@ -281,7 +282,7 @@
             var data = $this.data('cfw.popover');
             var options = typeof option === 'object' && option;
 
-            if (!data && /unlink|destroy|hide/.test(option)) {
+            if (!data && /unlink|dispose|hide/.test(option)) {
                 return false;
             }
             if (!data) {

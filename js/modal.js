@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v2.0.0): modal.js
+ * Figuration (v3.0.0): modal.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -10,75 +10,59 @@
 
     var CFW_Widget_Modal = function(element, options) {
         this.$body = $(document.body);
-        this.$triggerElm = $(element);
-        this.$targetElm = null;
+        this.$element = $(element);
+        this.$target = null;
+        this.$dialog = null;
         this.$backdrop = null;
+        this.$focusLast = null;
         this.isShown = null;
         this.scrollbarWidth = 0;
-        this.unlinking = false;
-        this.originalBodyPad = null;
-        this.$dialog = null;
+        this.scrollbarSide = 'right';
+        this.fixedContent = '.fixed-top, .fixed-botton, .is-fixed';
         this.ignoreBackdropClick = false;
-        this.$focusLast = null;
 
-        this.settings = $.extend({}, CFW_Widget_Modal.DEFAULTS, this._parseDataAttr(), options);
-        if (this.settings.speed && typeof this.settings.speed == 'number') {
-            this.settings.speed = {
-                backdrop: this.settings.speed,
-                modal: this.settings.speed
-            };
-        }
+        var parsedData = this.$element.CFW_parseData('modal', CFW_Widget_Modal.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Modal.DEFAULTS, parsedData, options);
 
         this._init();
     };
 
     CFW_Widget_Modal.DEFAULTS = {
-        toggle       : false,       // Target selector
-        animate      : true,        // If modal windows should animate
-        speed : {
-            backdrop : 150,         // Speed of backdrop animation (milliseconds)
-            modal    : 300          // Speed of modal animation (milliseconds)
-        },
-        unlink       : false,       // If on hide to remove events and attributes from modal and trigger
-        destroy      : false,       // If on hide to unlink, then remove modal from DOM
-        backdrop     : true,        // Show backdrop, or 'static' for no close on click
-        keyboard     : true,        // Close modal on ESC press
-        show         : false,       // Show modal afer initialize
-        remote       : false        // Remote URL to load one time
+        target       : false,   // Target selector
+        animate      : true,    // If modal windows should animate
+        unlink       : false,   // If on hide to remove events and attributes from modal and trigger
+        dispose      : false,   // If on hide to unlink, then remove modal from DOM
+        backdrop     : true,    // Show backdrop, or 'static' for no close on click
+        keyboard     : true,    // Close modal on ESC press
+        show         : false    // Show modal afer initialize
     };
 
     CFW_Widget_Modal.prototype = {
 
         _init : function() {
-            // Find target by id/css selector - only pick first one found
-            var $findTarget = $(this.settings.toggle).eq(0);
-            if ($findTarget.length <= 0) {
-                // If not found by selector - find by 'toggle' data
-                var dataToggle = this.$triggerElm.attr('data-cfw-modal-toggle');
-                $findTarget = $('[data-cfw-modal-target="' + dataToggle + '"]');
-            }
-            if ($findTarget.length <= 0) { return false; }
-            this.$targetElm = $findTarget;
-            this.$dialog = this.$targetElm.find('.modal-dialog');
+            var selector = this.$element.CFW_getSelectorFromChain('modal', this.settings.target);
+            if (!selector) { return; }
+            this.$target = $(selector);
+            this.$dialog = this.$target.find('.modal-dialog');
 
-            this.$triggerElm.attr('data-cfw', 'modal');
+            this.$element.attr('data-cfw', 'modal');
 
             // Check for presence of ids - set if not present
-            // var triggerID = this._getID(this.$triggerElm, 'cfw-modal');
-            var targetID = this._getID(this.$targetElm, 'cfw-modal');
+            // var triggerID = this.$element.CFW_getID('cfw-modal');
+            var targetID = this.$target.CFW_getID('cfw-modal');
 
             // Set ARIA attributes on trigger
-            this.$triggerElm.attr('aria-controls', targetID);
+            this.$element.attr('aria-controls', targetID);
 
             // Use '.modal-title' for labelledby
-            var $title = this.$targetElm.find('.modal-title');
+            var $title = this.$target.find('.modal-title');
             if ($title.length) {
-                var labelledby = this._getID($title.eq(0), 'cfw-modal');
-                this.$targetElm.attr('aria-labelledby', labelledby);
+                var labelledby = $title.eq(0).CFW_getID('cfw-modal');
+                this.$target.attr('aria-labelledby', labelledby);
             }
 
             // Set ARIA attributes on target
-            this.$targetElm.attr({
+            this.$target.attr({
                 'role': 'dialog',
                 'aria-hidden': 'true',
                 'tabindex': -1
@@ -86,11 +70,11 @@
             this.$dialog.attr('role', 'document');
 
             // Bind click handler
-            this.$triggerElm.on('click.cfw.modal.toggle', $.proxy(this.toggle, this));
+            this.$element.on('click.cfw.modal', $.proxy(this.toggle, this));
 
-            this.$targetElm.data('cfw.modal', this);
+            this.$target.data('cfw.modal', this);
 
-            this._trigger('init.cfw.modal');
+            this.$target.CFW_trigger('init.cfw.modal');
 
             if (this.settings.show) {
                 this.show();
@@ -113,7 +97,7 @@
             if (this.isShown) { return; }
 
             // Start open transition
-            if (!this._trigger('beforeShow.cfw.modal')) {
+            if (!this.$target.CFW_trigger('beforeShow.cfw.modal')) {
                 return;
             }
 
@@ -126,15 +110,15 @@
             this.escape();
             this.resize();
 
-            this.$targetElm.on('click.dismiss.cfw.modal', '[data-cfw-dismiss="modal"]', function(e) {
+            this.$target.on('click.dismiss.cfw.modal', '[data-cfw-dismiss="modal"]', function(e) {
                     if (e) { e.preventDefault(); }
                     $selfRef.hide();
                 })
                 .data('cfw.modal', this);
 
             this.$dialog.on('mousedown.dismiss.cfw.modal', function() {
-                $selfRef.$targetElm.one('mouseup.dismiss.cfw.modal', function(e) {
-                    if ($(e.target).is($selfRef.$targetElm)) $selfRef.ignoreBackdropClick = true;
+                $selfRef.$target.one('mouseup.dismiss.cfw.modal', function(e) {
+                    if ($(e.target).is($selfRef.$target)) $selfRef.ignoreBackdropClick = true;
                 });
             });
 
@@ -144,20 +128,18 @@
         },
 
         hide : function() {
-            var $selfRef = this;
-
             // Bail if not showing
             if (!this.isShown) { return; }
 
             // Start close transition
-            if (!this._trigger('beforeHide.cfw.modal')) {
+            if (!this.$target.CFW_trigger('beforeHide.cfw.modal')) {
                 return;
             }
 
             this.isShown = false;
 
             $(document).off('focusin.cfw.modal');
-            this.$targetElm
+            this.$target
                 .removeClass('in')
                 .attr('aria-hidden', true)
                 .off('.dismiss.cfw.modal');
@@ -168,50 +150,47 @@
                 this.$focusLast.off('.cfw.' + this.type + '.focusLast');
             }
 
-            if (this.settings.animate && $.support.transitionEnd) {
-                this.$targetElm.one('cfwTransitionEnd', function() {
-                    $selfRef._hideComplete();
-                }).CFW_emulateTransitionEnd(this.settings.speed.modal);
-            } else {
-                this._hideComplete();
-            }
+            this.$target.CFW_transition(null, $.proxy(this._hideComplete, this));
         },
 
         _showComplete : function() {
             var $selfRef = this;
 
-            var transition = this.settings.animate && $.support.transitionEnd;
-            if (transition) {
-                this.$targetElm.addClass('fade');
+            if (this.settings.animate) {
+                this.$target.addClass('fade');
             }
 
-            if (!this.$targetElm.parent().length) {
-                this.$targetElm.appendTo(this.$body); // don't move modals dom position
+            if (!this.$target.parent().length) {
+                this.$target.appendTo(this.$body); // don't move modals dom position
             }
 
-            this.$targetElm.show().scrollTop(0);
+            this.$target.show().scrollTop(0);
 
             this.adjustDialog();
 
-            if (transition) {
-                this.$targetElm[0].offsetWidth; // Force Reflow
-            }
+            this.$target[0].offsetWidth; // Force Reflow
 
-            this.$targetElm.addClass('in').removeAttr('aria-hidden');
+            this.$target.addClass('in').removeAttr('aria-hidden');
+
+            // Mutation handler
+            this.$target
+                .attr('data-cfw-mutate', '')
+                .CFW_mutationListen()
+                .on('mutate.cfw.mutate', function() {
+                    $selfRef.handleUpdate();
+                });
 
             this.enforceFocus();
             this.enforceFocusLast();
 
-            if (transition) {
-                // wait for modal to slide in
-                this.$dialog.one('cfwTransitionEnd', function() {
-                    $selfRef.$targetElm.trigger('focus');
-                    $selfRef._trigger('afterShow.cfw.modal');
-                }).CFW_emulateTransitionEnd(this.settings.speed.modal);
-            } else {
-                this.$targetElm.trigger('focus');
-                this._trigger('afterShow.cfw.modal');
+            function complete() {
+                $selfRef.$target.trigger('focus');
+                $selfRef.$target
+                    .CFW_mutateTrigger()
+                    .CFW_trigger('afterShow.cfw.modal');
             }
+
+            this.$target.CFW_transition(null, complete);
         },
 
         _hideComplete : function() {
@@ -220,19 +199,20 @@
             this.escape();
             this.resize();
 
-            this.$targetElm.hide();
+            this.$target
+                .off('mutate.cfw.mutate')
+                .removeAttr('data-cfw-mutate')
+                .CFW_mutationIgnore()
+                .hide();
             this.backdrop(function() {
                 $selfRef.$body.removeClass('modal-open');
                 $selfRef.resetAdjustments();
                 $selfRef.resetScrollbar();
-                $selfRef._trigger('afterHide.cfw.modal');
+                $selfRef.$target
+                    .CFW_mutateTrigger()
+                    .CFW_trigger('afterHide.cfw.modal');
             });
-            this.$triggerElm.trigger('focus');
-
-            if (!this.unlinking) {
-                if (this.settings.unlink) { this.unlink(); }
-                if (this.settings.destroy) { this.destroy(); }
-            }
+            this.$element && this.$element.trigger('focus');
         },
 
         enforceFocus : function() {
@@ -240,8 +220,8 @@
             $(document)
                 .off('focusin.cfw.modal') // guard against infinite focus loop
                 .on('focusin.cfw.modal', function(e) {
-                    if (document !== e.target && $selfRef.$targetElm[0] !== e.target && !$selfRef.$targetElm.has(e.target).length) {
-                        $selfRef.$targetElm.trigger('focus');
+                    if (document !== e.target && $selfRef.$target[0] !== e.target && !$selfRef.$target.has(e.target).length) {
+                        $selfRef.$target.trigger('focus');
                     }
                 });
         },
@@ -254,13 +234,13 @@
                 this.$focusLast = $(document.createElement('span'))
                 .addClass('modal-focuslast')
                 .attr('tabindex', 0)
-                .appendTo(this.$targetElm);
+                .appendTo(this.$target);
             }
             if (this.$focusLast) {
                 this.$focusLast
                     .off('focusin.cfw.modal.focusLast')
                     .on('focusin.cfw.modal.focusLast', function() {
-                        $selfRef.$targetElm.trigger('focus');
+                        $selfRef.$target.trigger('focus');
                     });
             }
         },
@@ -268,11 +248,14 @@
         escape : function() {
             var $selfRef = this;
             if (this.isShown && this.settings.keyboard) {
-                this.$targetElm.on('keydown.dismiss.cfw.modal', function(e) {
-                    e.which == 27 && $selfRef.hide();
+                this.$target.on('keydown.dismiss.cfw.modal', function(e) {
+                    if (e.which == 27) {
+                        e.preventDefault();
+                        $selfRef.hide();
+                    }
                 });
             } else if (!this.isShown) {
-                this.$targetElm.off('keydown.dismiss.cfw.modal');
+                this.$target.off('keydown.dismiss.cfw.modal');
             }
         },
 
@@ -293,57 +276,77 @@
         adjustBackdrop : function() {
             this.$backdrop
                 .css('height', 0)
-                .css('height', this.$targetElm[0].scrollHeight);
+                .css('height', this.$target[0].scrollHeight);
         },
 
         adjustDialog : function() {
-            var modalIsOverflowing = this.$targetElm[0].scrollHeight > document.documentElement.clientHeight;
+            var modalIsOverflowing = this.$target[0].scrollHeight > document.documentElement.clientHeight;
 
-            this.$targetElm.css({
+            this.$target.css({
                 paddingLeft:  !this.bodyIsOverflowing && modalIsOverflowing ? this.scrollbarWidth : '',
                 paddingRight: this.bodyIsOverflowing && !modalIsOverflowing ? this.scrollbarWidth : ''
             });
         },
 
         resetAdjustments : function() {
-            this.$targetElm.css({
+            this.$target.css({
                 paddingLeft: '',
                 paddingRight: ''
             });
         },
 
         checkScrollbar : function() {
-            var fullWindowWidth = window.innerWidth;
-            if (!fullWindowWidth) { // workaround for missing window.innerWidth in IE8
-                var documentElementRect = document.documentElement.getBoundingClientRect();
-                fullWindowWidth = documentElementRect.right - Math.abs(documentElementRect.left);
-            }
-            this.bodyIsOverflowing = document.body.clientWidth < fullWindowWidth;
-            this.scrollbarWidth = this.measureScrollbar();
+            this.bodyIsOverflowing = document.body.clientWidth < window.innerWidth;
+            this.scrollbarWidth = $.CFW_measureScrollbar();
+            this.scrollbarSide =  $('html').CFW_getScrollbarSide();
         },
 
         setScrollbar : function() {
-            var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10);
-            this.originalBodyPad = document.body.style.paddingRight || '';
+            var $selfRef = this;
+
             if (this.bodyIsOverflowing) {
-                this.$body.css('padding-right', bodyPad + this.scrollbarWidth);
+                // Update fixed element padding
+                $(this.fixedContent).each(function() {
+                    var $this = $(this);
+                    if ($selfRef.scrollbarSide === 'left') {
+                        $this.data('cfw.padding-dim', this.style.paddingLeft || '');
+                    } else {
+                        $this.data('cfw.padding-dim', this.style.paddingRight || '');
+                    }
+                    var padding = parseFloat($this.css('padding-' + $selfRef.scrollbarSide) || 0);
+                    $this.css('padding-' + $selfRef.scrollbarSide, padding + $selfRef.scrollbarWidth);
+                });
+
+                // Update body padding
+                if (this.scrollbarSide === 'left') {
+                    this.$body.data('cfw.padding-dim', document.body.style.paddingLeft || '');
+                } else {
+                    this.$body.data('cfw.padding-dim', document.body.style.paddingRight || '');
+                }
+                var padding = parseFloat(this.$body.css('padding-' + this.scrollbarSide) || 0);
+                this.$body.css('padding-' + this.scrollbarSide, padding + this.scrollbarWidth);
             }
-            this._trigger('scrollbarSet.cfw.modal');
+            this.$target.CFW_trigger('scrollbarSet.cfw.modal');
         },
 
         resetScrollbar : function() {
-            this.$body.css('padding-right', this.originalBodyPad);
-            this._trigger('scrollbarReset.cfw.modal');
-        },
+            var $selfRef = this;
 
-        measureScrollbar : function() {
-            var $body = $(document.body);
-            var scrollDiv = document.createElement('div');
-            scrollDiv.className = 'modal-scrollbar-measure';
-            $body.append(scrollDiv);
-            var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
-            $body[0].removeChild(scrollDiv);
-            return scrollbarWidth;
+            // Restore fixed element padding
+            $(this.fixedContent).each(function() {
+                var $this = $(this);
+                var padding = $this.data('cfw.padding-dim');
+                $this.css('padding-' + $selfRef.scrollbarSide, padding);
+                $this.removeData('cfw.padding-dim');
+            });
+
+            // Restore body padding
+            var padding = this.$body.data('cfw.padding-dim');
+            if (typeof padding !== undefined) {
+                this.$body.css('padding-' + this.scrollbarSide, padding);
+                this.$body.removeData('cfw.padding-dim');
+            }
+            this.$target.CFW_trigger('scrollbarReset.cfw.modal');
         },
 
         backdrop : function(callback) {
@@ -352,34 +355,26 @@
             var animate = (this.settings.animate) ? 'fade' : '';
 
             if (this.isShown && this.settings.backdrop) {
-                var doAnimate = $.support.transitionEnd && animate;
-
                 this.$backdrop = $(document.createElement('div'))
                     .addClass('modal-backdrop ' + animate)
                     .appendTo(this.$body);
 
-                this.$targetElm.on('click.dismiss.cfw.modal', function(e) {
+                this.$target.on('click.dismiss.cfw.modal', function(e) {
                     if ($selfRef.ignoreBackdropClick) {
                         $selfRef.ignoreBackdropClick = false;
                         return;
                     }
                     if (e.target !== e.currentTarget) { return; }
                     $selfRef.settings.backdrop == 'static'
-                        ? $selfRef.$targetElm.trigger('focus')
+                        ? $selfRef.$target.trigger('focus')
                         : $selfRef.hide();
                 });
 
-                if (doAnimate) this.$backdrop[0].offsetWidth; // Force Reflow
+                this.$backdrop[0].offsetWidth; // Force Reflow
 
                 this.$backdrop.addClass('in');
 
-                if (!callback) { return; }
-
-                if (doAnimate) {
-                    this.$backdrop.one('cfwTransitionEnd', callback).CFW_emulateTransitionEnd(this.settings.speed.backdrop);
-                } else {
-                    callback();
-                }
+                this.$backdrop.CFW_transition(null, callback);
             } else if (!this.isShown && this.$backdrop) {
                 this.$backdrop.removeClass('in');
 
@@ -388,11 +383,7 @@
                     callback && callback();
                 };
 
-                if (this.settings.animate && $.support.transitionEnd) {
-                    this.$backdrop.one('cfwTransitionEnd', callbackRemove).CFW_emulateTransitionEnd(this.settings.speed.backdrop);
-                } else {
-                    callbackRemove();
-                }
+                this.$backdrop.CFW_transition(null, callbackRemove);
             } else if (callback) {
                 callback();
             }
@@ -406,74 +397,51 @@
         unlink : function() {
             var $selfRef = this;
 
-            this._trigger('beforeUnlink.cfw.modal');
-            this.unlinking = true;
+            this.$target.CFW_trigger('beforeUnlink.cfw.modal');
 
             if (this.isShown) {
-                this.$targetElm.one('afterHide.cfw.modal', function() {
-                    $selfRef.unlinkComplete();
+                this.$target.one('afterHide.cfw.modal', function() {
+                    $selfRef._unlinkComplete();
                 });
                 this.hide();
             } else {
-                this.unlinkComplete();
+                this._unlinkComplete();
             }
         },
 
-        unlinkComplete : function() {
-            this.$targetElm.off('.cfw.modal')
+        _unlinkComplete : function() {
+            var $target = this.$target;
+
+            this.$target.off('.cfw.modal')
                 .removeAttr('aria-labelledby')
                 .removeData('cfw.modal');
-            this.$triggerElm.off('.cfw.modal')
+            this.$element.off('.cfw.modal')
                 .removeAttr('data-cfw aria-controls')
                 .removeData('cfw.modal');
 
-            this.unlinking = false;
-            this._trigger('afterUnlink.cfw.modal');
+            this.$body = null;
+            this.$element = null;
+            this.$target = null;
+            this.$dialog = null;
+            this.$backdrop = null;
+            this.$focusLast = null;
+            this.isShown = null;
+            this.scrollbarWidth = null;
+            this.scrollbarSide = null;
+            this.fixedContent = null;
+            this.ignoreBackdropClick = null;
+            this.settings = null;
+
+            $target.CFW_trigger('afterUnlink.cfw.modal');
         },
 
-        destroy : function() {
-            var $selfRef = this;
-
-            $(document).one('afterUnlink.cfw.modal', this.$targetElm, function() {
-                $selfRef._trigger('destroy.cfw.modal');
-                $selfRef.$targetElm.remove();
+        dispose : function() {
+            $(document).one('afterUnlink.cfw.modal', this.$target, function(e) {
+                var $this = $(e.target);
+                $this.CFW_trigger('dispose.cfw.modal');
+                $this.remove();
             });
             this.unlink();
-        },
-
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
-        },
-
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$triggerElm.data();
-
-            if (typeof data.cfwModalToggle   !== 'undefined') { parsedData.toggle   = data.cfwModalToggle;  }
-            if (typeof data.cfwModalAnimate  !== 'undefined') { parsedData.animate  = data.cfwModalAnimate;  }
-            if (typeof data.cfwModalSpeed    !== 'undefined') { parsedData.speed    = data.cfwModalSpeed;    }
-            if (typeof data.cfwModalUnlink   !== 'undefined') { parsedData.unlink   = data.cfwModalUnlink;   }
-            if (typeof data.cfwModalDestroy  !== 'undefined') { parsedData.destroy  = data.cfwModalDestroy;  }
-            if (typeof data.cfwModalBackdrop !== 'undefined') { parsedData.backdrop = data.cfwModalBackdrop; }
-            if (typeof data.cfwModalKeyboard !== 'undefined') { parsedData.keyboard = data.cfwModalKeyboard; }
-            if (typeof data.cfwModalShow     !== 'undefined') { parsedData.show     = data.cfwModalShow;     }
-            if (typeof data.cfwModalRemote   !== 'undefined') { parsedData.remote   = data.cfwModalRemote;   }
-            return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$targetElm.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
         }
     };
 
@@ -484,7 +452,7 @@
             var data = $this.data('cfw.modal');
             var options = typeof option === 'object' && option;
 
-            if (!data && /unlink|destroy/.test(option)) {
+            if (!data && /unlink|dispose/.test(option)) {
                 return false;
             }
             if (!data) {

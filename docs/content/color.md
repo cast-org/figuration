@@ -11,6 +11,13 @@ Please note that the `warning/mustard` color is not compliant with a 4.5:1 contr
 
 These can used for text or background colors. If applied to links, the colors will darken on hover.  Foregound items use the class format `.text-blue-500` and background items use `.bg-blue-500`.
 
+{% callout warning %}
+Conveying Meaning to Assistive Technologies
+{:.h5}
+
+Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
+{% endcallout %}
+
 <div class="row">
     <div class="palette col-sm-4">
         <div class="palette-base bg-gray-500 text-light">
@@ -115,6 +122,3 @@ These can used for text or background colors. If applied to links, the colors wi
         <div class="palette-item bg-mustard-900 text-light">900</div>
     </div>
 </div>
-
-{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
-{{ callout-include | markdownify }}

@@ -4,7 +4,7 @@ title: Images
 group: content
 ---
 
-Opt your images into responsive behavior (so they never become larger than their parent elements) and add lightweight styles to them---all via classes.
+Allow images to become responsively resized, or add a bit of style to them.
 
 ## Contents
 {:.no_toc}
@@ -14,20 +14,21 @@ Opt your images into responsive behavior (so they never become larger than their
 
 ## Responsive Images
 
-Images in Figuration are made responsive with `.img-responsive`. `max-width: 100%;` and `height: auto;` are applied to the image so that it scales with the parent element.
+Images can be made to scale with their container width by using `.img-fluid`. This applies `max-width: 100%;` and `height: auto;` the image, allowing the aspect ratio to be maintained.
 
 <div class="cf-example">
-  <img data-src="holder.js/100px250" class="img-responsive" alt="Generic responsive image">
+  <img data-src="holder.js/100px250" class="img-fluid" alt="Generic responsive image">
 </div>
 
 {% highlight html %}
-<img src="..." class="img-responsive" alt="Responsive image">
+<img src="..." class="img-fluid" alt="Fluidly sized image">
 {% endhighlight %}
 
 {% callout warning %}
-#### SVG Images and IE 9-10
+SVG Images and IE 10
+{:.h5}
 
-In Internet Explorer 9-10, SVG images with `.img-responsive` are disproportionately sized. To fix this, add `width: 100% \9;` where necessary. This fix improperly sizes other image formats, so Figuration doesn't apply it automatically.
+In Internet Explorer 10, SVG images with `.img-fluid` are disproportionately sized. To fix this, add `width: 100% \9;` where necessary. This fix improperly sizes other image formats, so we do not apply it automatically.
 {% endcallout %}
 
 ## Image Thumbnail
@@ -46,16 +47,16 @@ You might also want to check the [border utilites]({{ site.baseurl }}/utilities/
 
 ## Aligning Images
 
-Align images with the [helper float classes]({{ site.baseurl }}/utilities/responsive-floats/) or [text alignment classes]({{ site.baseurl }}/utilities/typography/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/utilities/spacing/#horizontal-centering).
+Align images with the [helper float classes]({{ site.baseurl }}/utilities/floating/) or [text alignment classes]({{ site.baseurl }}/utilities/typography/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/utilities/spacing/#horizontal-centering).
 
 <div class="cf-example clearfix">
-  <img data-src="holder.js/200x200" class="radius float-left" alt="A generic square placeholder image with rounded corners">
-  <img data-src="holder.js/200x200" class="radius float-right" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="radius float-start" alt="A generic square placeholder image with rounded corners">
+  <img data-src="holder.js/200x200" class="radius float-end" alt="A generic square placeholder image with rounded corners">
 </div>
 
 {% highlight html %}
-<img src="..." class="radius float-left" alt="...">
-<img src="..." class="radius float-right" alt="...">
+<img src="..." class="radius float-start" alt="...">
+<img src="..." class="radius float-end" alt="...">
 {% endhighlight %}
 
 <div class="cf-example clearfix">

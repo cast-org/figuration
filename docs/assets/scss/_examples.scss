@@ -49,19 +49,51 @@
             padding-top: .75rem;
             padding-bottom: .75rem;
             background-color: rgba(34,68,102,.15);
-            border: $gridline-border-width solid rgba(34,68,102,.2);
+            border: $border-width solid rgba(34,68,102,.2);
         }
+    }
+}
+.cf-example-row-grid {
+    .row {
+        background-color: rgba(34,68,102,.05);
     }
 }
 .cf-example-row-flex {
     .row {
-        border: $gridline-border-width solid rgba(34,68,102,.5);
+        border: $border-width solid rgba(34,68,102,.5);
     }
 }
 .cf-example-row-flex-v {
     .row {
         height: 7rem;
-        border: $gridline-border-width solid rgba(34,68,102,.5);
+        border: $border-width solid rgba(34,68,102,.5);
+    }
+}
+
+// Grid mixins
+.example-container {
+    width: 800px;
+    @include make-container();
+}
+.example-row {
+    @include make-row();
+}
+.example-content-main {
+    @include make-col-ready();
+    @include media-breakpoint-up(sm) {
+        @include make-col(6);
+    }
+    @include media-breakpoint-up(lg) {
+        @include make-col(8);
+    }
+}
+.example-content-secondary {
+    @include make-col-ready();
+    @include media-breakpoint-up(sm) {
+        @include make-col(6);
+    }
+    @include media-breakpoint-up(lg) {
+        @include make-col(4);
     }
 }
 
@@ -77,9 +109,31 @@
     margin-top: .5rem;
 }
 
-// Cards
-.cf-example > .card {
-    max-width: 20rem;
+// Card deck
+.card-deck-col {
+    flex-flow: row wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin-right: -1rem;
+    margin-bottom: 0;
+    margin-left: -1rem;
+}
+.card-deck-col .card {
+    flex-basis: auto;
+    width: calc(100% - 2rem);
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+@media (min-width: 35em) {
+    .card-deck-col .card {
+        width: calc(50% - 2rem);
+    }
+}
+@media (min-width: 62em) {
+    .card-deck-col .card {
+        width: calc(25% - 2rem);
+    }
 }
 
 // List groups
@@ -88,7 +142,8 @@
 }
 
 // Navbar
-.cf-example .navbar-fixed-top {
+.cf-example .fixed-top,
+.cf-example .sticky-top {
     position: static;
     margin: -1rem -1rem 1rem;
 
@@ -96,7 +151,7 @@
         margin: -1.5rem -1.5rem 1rem;
     }
 }
-.cf-example .navbar-fixed-bottom {
+.cf-example .fixed-bottom {
     position: static;
     margin: 1rem -1rem -1rem;
 
@@ -105,8 +160,23 @@
     }
 }
 
+// Pagination
+.cf-example .pagination {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
+// Progress
+.cf-example > .progress {
+    +.progress,
+    + .btn {
+        margin-top: 1rem;
+    }
+}
+
 // Utilities
-.cf-example > [class*="bg-"]:not(.navbar) {
+.cf-example > [class*="bg-"]:not(.navbar):not(.progress),
+.cf-example .d-table-cell {
     padding: .5rem;
     margin-top: .5rem;
     margin-bottom: .5rem;
@@ -200,7 +270,7 @@
     min-width: 250px;
     max-width: 500px;
 }
-.container-viewport .tooltip .tooltip-inner {
+.container-viewport .tooltip .tooltip-body {
     min-width: 250px;
     max-width: 500px;
     min-height: 100px;
@@ -221,11 +291,16 @@
 // Scrollspy
 .cf-example-scrollspy {
     position: relative;
-    height: 200px;
-    margin-top: 10px;
+    height: 12rem;
+    margin-top: .5rem;
     overflow: auto;
 }
-
+.cf-example-scrollspy2 {
+    position: relative;
+    height: 20rem;
+    margin-top: .5rem;
+    overflow: auto;
+}
 
 // Slider
 .cf-example > [data-cfw="slider"] .slider {
@@ -261,5 +336,29 @@
     .cf-example-tabResponsive .tab-pane {
         display: block;
         visibility: visible;
+    }
+}
+
+
+// Flex utilities
+.cf-example-flex {
+    > div div {
+        background-color: rgba(34,68,102,.05);
+        border: $gridline-border-width solid rgba(34,68,102,.2);
+    }
+}
+
+
+// Image Replacement
+.cf-example {
+    > .heading {
+        width: 3rem;
+        height: 3rem;
+        font: 0/0 a;
+        color: transparent;
+        text-shadow: none;
+        background-color: transparent;
+        background-image: url("../brand/figuration-solid.svg");
+        border: 0;
     }
 }

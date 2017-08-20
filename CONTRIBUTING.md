@@ -27,10 +27,6 @@ restrictions:
   Use [GitHub's "reactions" feature](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments)
   instead. We reserve the right to delete comments which violate this rule.
 
-* Please **do not** open issues or pull requests regarding the code in
-  [`Normalize`](https://github.com/necolas/normalize.css) (open them in
-  its repository).
-
 ## Bug Reports
 
 A bug is a _demonstrable problem_ that is caused by the code in the repository.
@@ -84,7 +80,7 @@ provide as much detail and context as possible.
 
 ## Pull requests
 
-Good pull requests—patches, improvements, new features—are a fantastic
+Good pull requests---patches, improvements, new features---are a fantastic
 help. They should remain focused in scope and avoid containing unrelated
 commits.
 

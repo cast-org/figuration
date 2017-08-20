@@ -31,11 +31,7 @@ Add our JavaScript widgets and jQuery, either in the `<head>`, or near the end o
 {% endhighlight %}
 
 ## Basic Template
-Be sure to have your pages set up with the latest design and development standards. That means:
-
-* Use the HTML5 doctype
-* Force Internet Explorer to use its latest rendering mode ([read more](http://stackoverflow.com/q/6771258))
-* Utilize the viewport meta tag
+Be sure to have your pages set up with the latest design and development standards. That means using the HTML5 doctype, and including the viewport meta tag to allow responsive behaviors.
 
 Essentially something like this:
 
@@ -43,10 +39,9 @@ Essentially something like this:
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <!-- Required meta tags always come first -->
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Figuration CSS -->
     <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
@@ -62,6 +57,48 @@ Essentially something like this:
 {% endhighlight %}
 
 That should be all you need for overall page requirements. Visit the [Layout docs]({{ site.baseurl }}/layout/overview/) to begin building out your content and components.
+
+## Right-to-left Support
+
+Working with a language that reads from right to left? Use the `rtl` version of the Figuration CSS.  The markup and classes are the same between the `ltr` and `rtl` versions of Figuration.
+
+**Pro Tip!** We have included a way to preview layout, component, and widget behavior with the documentation.  Use the **settings** menu in the top navbar to change between text directions.
+
+The steps needed to switch from `ltr` to `rtl` mode are:
+- Add the `dir="rtl"` attribute to the `<html>` tag.
+- Update the `lang` attribute on the `<html>` tag to match the language being used.
+    - Refer to this [list of language codes](https://www.loc.gov/standards/iso639-2/php/code_list.php) provided by the US Library of Congress to find the one you require.
+    {% highlight html %}
+    <!-- This example is for a right-to-left Arabic layout -->
+    <html lang="ar" dir="rtl">
+    {% endhighlight %}
+- Load the `rtl` version of the Figuration CSS.  Load this **in place of** the default Figuration CSS.
+    {% highlight html %}
+    <!-- Figuration RTL CSS -->
+    <link rel="stylesheet" href="{{ site.cdn.css_rtl }}" integrity="{{ site.cdn.css_rtl_hash }}" crossorigin="anonymous">
+    {% endhighlight %}
+
+When complete, the basic template for a right-to-left markup should look like the following example.
+{% highlight html %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Figuration RTL CSS -->
+    <link rel="stylesheet" href="{{ site.cdn.css_rtl }}" integrity="{{ site.cdn.css_rtl_hash }}" crossorigin="anonymous">
+
+    <!-- jQuery and Figuration JS -->
+    <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
+    <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+  </body>
+</html>
+{% endhighlight %}
 
 ## Important Markup
 
@@ -106,9 +143,19 @@ With the above snippet, nested elements---including generated content via `:befo
 
 Learn more about [box model and sizing at CSS Tricks](https://css-tricks.com/box-sizing/).
 
-### Normalize.css
+### Reboot
 
-For improved cross-browser rendering, we use [Normalize.css](http://necolas.github.io/normalize.css/) to correct small inconsistencies across browsers and devices. We further build on this with our own, slightly more opinionated styles with [Reboot]({{ site.baseurl }}/content/reboot/).
+For improved cross-browser rendering, we use [Bootstrap's Reboot](http://v4-alpha.getbootstrap.com/content/reboot/) to correct inconsistencies across browsers and devices while providing slightly more opinionated resets to common HTML elements.
+
+### MutationObserver
+
+This is not shown in the Basic Template shown above, but if you require supporting Internet Explorer 10, you may need to add a [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) polyfill to use our [JavaScript Widgets]({{ site.baseurl }}/widgets/overview/) to their fullest potential.  We have done some brief testing with the [webcomponents.org MutationObserver polyfill](https://github.com/webcomponents/webcomponentsjs) have found it to be work reasonably.  You can load it conditionally for Internet Explorer 10 as shown in the following example.  This snippet needs to be placed **before** loading the Figuration JavaScript.
+
+{% highlight html %}
+<!--[if lt IE 10]>
+  <script src="{{ site.cdn.mutate }}" integrity="{{ site.cdn.mutate_hash }}" crossorigin="anonymous"></script>
+<![endif]-->
+{% endhighlight %}
 
 ## Community
 

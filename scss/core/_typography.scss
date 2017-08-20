@@ -31,8 +31,8 @@ h6, .h6 { font-size: $font-size-h6; }
 // Horizontal Rule
 
 hr {
-    margin-top: $spacer-y;
-    margin-bottom: $spacer-y;
+    margin-top: $hr-spacer-y;
+    margin-bottom: $hr-spacer-y;
     border: 0;
     border-top: $hr-border-width solid $hr-border-color;
 }
@@ -47,7 +47,8 @@ small,
 
 mark,
 .mark {
-    //padding: $mark-padding;
+    padding-right: $mark-padding-x;
+    padding-left: $mark-padding-x;
     background-color: $mark-bg;
 }
 
@@ -69,17 +70,6 @@ mark,
     }
 }
 
-// Horizonatal description list using grid markup
-// scss-lint:disable QualifyingElement
-@if not $enable-flex-full {
-    dl.row {
-        > dd + dt {
-            clear: left;
-        }
-    }
-}
-// scss-lint:enable QualifyingElement
-
 //  Abbr extension
 
 .initialism {
@@ -91,10 +81,9 @@ mark,
 // Blockquotes
 
 .blockquote {
-    padding: ($spacer / 2) $spacer;
     margin-bottom: $spacer;
     font-size: $blockquote-font-size;
-    border-left: $blockquote-border-width solid $blockquote-border-color;
+    color: $blockquote-color;
 }
 .blockquote-footer {
     display: block;
@@ -104,13 +93,4 @@ mark,
     &::before {
         content: "\2014 \00A0"; // em dash, nbsp
     }
-}
-
-// Opposite alignment of blockquote
-.blockquote-reverse {
-    padding-right: $spacer;
-    padding-left: 0;
-    text-align: right;
-    border-right: $blockquote-border-width solid $blockquote-border-color;
-    border-left: 0;
 }

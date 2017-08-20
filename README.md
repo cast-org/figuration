@@ -2,11 +2,12 @@
 
 [![npm version](https://img.shields.io/npm/v/figuration.svg)](https://www.npmjs.com/package/figuration)
 [![Build Status](https://img.shields.io/travis/cast-org/figuration/master.svg)](https://travis-ci.org/cast-org/figuration)
-[![devDependency Status](https://img.shields.io/david/dev/cast-org/figuration.svg)](https://david-dm.org/cast-org/figuration?type=dev)
+[![dependencies Status](https://img.shields.io/david/cast-org/figuration.svg)](https://david-dm.org/cast-org/figuration)
+[![devDependencies Status](https://img.shields.io/david/dev/cast-org/figuration.svg)](https://david-dm.org/cast-org/figuration?type=dev)
 
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/figuration.svg)](https://saucelabs.com/u/figuration)
 
-CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end framework based on Bootstrap.
+CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end framework inspired by Bootstrap.
 
 Get started at <http://figuration.org>!
 
@@ -25,7 +26,7 @@ Get started at <http://figuration.org>!
 
 Several quick start options are available:
 
-- [Download the latest release.](https://github.com/cast-org/figuration/archive/v2.0.0.zip)
+- [Download the latest release.](https://github.com/cast-org/figuration/archive/v3.0.0.zip)
 - Clone the repo: `git clone https://github.com/cast-org/figuration.git`
 - Install with [npm](https://www.npmjs.com): `npm install figuration`
 - Install with [yarn](https://yarnpkg.com/): `yarn add figuration`
@@ -39,17 +40,18 @@ Within the download you'll find the following directories and files, logically g
 
 ```
 figuration/
-+-- css/
-¦   +-- figuration.css
-¦   +-- figuration.css.map
-¦   +-- figuration.min.css
-¦   +-- figuration.min.css.map
-+-- js/
-    +-- figuration.js
-    +-- figuration.min.js
++-- dist/
+    +-- css/
+    ¦   +-- figuration.css
+    ¦   +-- figuration.min.css
+    ¦   +-- figuration-rtl.css
+    ¦   +-- figuration-rtl.min.css
+    +-- js/
+        +-- figuration.js
+        +-- figuration.min.js
 ```
 
-We provide compiled CSS and JS (`figuration.*`), as well as compiled and minified CSS and JS (`figuration.min.*`). CSS [source maps](https://developer.chrome.com/devtools/docs/css-preprocessors) (`figuration.*.map`) are available for use with certain browsers' developer tools.
+We provide compiled CSS and JS (`figuration.*`), as well as compiled and minified CSS and JS (`figuration.min.*`). CSS [source maps](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps) (`figuration.*.map`) are available for use with certain browsers' developer tools.
 
 
 ## Bugs and Feature Requests
@@ -65,9 +67,10 @@ Figurations's documentation, included in this repo in the root directory, is bui
 ### Running Documentation Locally
 
 1. Run through the [tooling setup](https://github.com/cast-org/figuration/blob/master/docs/get-started/build-tools.md#tooling-setup) to install Jekyll (the site builder) and other Ruby dependencies with `bundle install`.
-2. Run `grunt` (or a specific set of Grunt tasks) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
-3. From the root `/figuration` directory, run `bundle exec jekyll serve` in the command line.
-4. Open <http://localhost:9001> in your browser, and enjoy.
+2. Run `npm install` to install Node.js dependencies.
+4. Run `grunt` (or a specific set of Grunt tasks) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
+5. From the root `/figuration` directory, run `bundle exec jekyll serve` in the command line.
+6. Open <http://localhost:9001> in your browser, and enjoy.
 
 Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com/docs/home/).
 
@@ -98,4 +101,4 @@ See [the Releases section of our GitHub project](https://github.com/cast-org/fig
 
 ## Copyright and License
 
-Code and documentation copyright 2013-2016 [CAST, Inc.](http://www.cast.org) Code released under [the MIT license](https://github.com/cast-org/figuration/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/cast-org/figuration/blob/master/docs/LICENSE).
+Code and documentation copyright 2013-2017 [CAST, Inc.](http://www.cast.org) Code released under [the MIT license](https://github.com/cast-org/figuration/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/cast-org/figuration/blob/master/docs/LICENSE).

@@ -22,9 +22,9 @@
     $rem-values: ();
     $count: length($values);
 
-    // If no base is defined, defer to the global font size
+    // If no base is defined, assume 100% default
     @if $base == null {
-        $base: $font-size-root;
+        $base: 100%;
     }
 
     // If the base font size is a %, then multiply it by 16px

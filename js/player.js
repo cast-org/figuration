@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v2.0.0): player.js
+ * Figuration (v3.0.0): player.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -40,7 +40,6 @@
         var elem = document.createElement('video');
         var bool = false;
 
-        // IE9 Running on Windows Server SKU can cause an exception to be thrown, bug #224
         try {
             if (bool = !!elem.canPlayType) {
                 bool = new Boolean(bool);
@@ -71,6 +70,7 @@
         this.media = null;
         this.$player = null;
         this.$focus = null;
+        this.$sources = null;
         this.$sliderSeek = null;
         this.$volSeek = null;
         this.activity = null;
@@ -92,19 +92,27 @@
         };
         this.trackValid = [];
         this.trackCurrent = -1;
+        this.$captionWrapper = null;
 
         this.$scriptElm = null;
         this.scriptCurrent = -1;
         this.scriptCues = null;
+        this.seekPoint = '.player-transcript-seekpoint, .player-description-seekpoint';
 
-        this.settings = $.extend({}, CFW_Widget_Player.DEFAULTS, this._parseDataAttr(), options);
+        this.descCurrent = -1;
+        this.descCues = null;
+
+        var parsedData = this.$element.CFW_parseData('player', CFW_Widget_Player.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Player.DEFAULTS, parsedData, options);
 
         this._init();
     };
 
     CFW_Widget_Player.DEFAULTS = {
+        mediaDescribe: false,       // Show description source media
         transcript: -1,             // Default transcript off
         transcriptScroll : true,    // Scroll transcript
+        transcriptDescribe: true,   // Show descriptions in transcript
         transcriptOption : true     // Show transcript options
     };
 
@@ -122,9 +130,18 @@
             }
 
             if ((this.type == 'audio' && !html5.audio) || (this.type == 'video' && !html5.video)) {
-                this._trigger('noSupport.cfw.player');
+                this.$media.CFW_trigger('noSupport.cfw.player');
                 return false;
             }
+
+            // Save source items for later use
+            this.$sources = this.$media.find('source');
+            if (!this.$sources.length) { return; }
+
+            // Also set data attr for original source
+            this.$sources.each(function() {
+                $(this).attr('data-src-orig', $(this).attr('src'));
+            });
 
             this.$element.attr('data-cfw', 'player')
                 .addClass('player-unstarted');
@@ -133,6 +150,11 @@
             if (this.$player.length > 0) {
                 // Hide browsers default player
                 this.media.controls = false;
+            }
+
+            // Swap to description media
+            if (this.settings.mediaDescribe) {
+                this.description();
             }
 
             // Check if loaded
@@ -275,6 +297,11 @@
                 $selfRef.fullscreen();
                 $selfRef._focusControl(this);
             });
+            this.$player.on('click', '[data-cfw-player="description"]', function(e) {
+                e.preventDefault();
+                $selfRef.description();
+                $selfRef._focusControl(this);
+            });
 
             // Key handler
             this.$element.on('keydown', function(e) {
@@ -290,10 +317,17 @@
             this.volumeStatus();
             this.loopStatus();
 
-            this.trackList();
-            if (this.type == 'video') {
-                this.trackInit();
+
+            // Check for caption container {
+            var $captionWrapper =  this.$element.find('[data-cfw-player="caption-display"]');
+            if ($captionWrapper.length) {
+                this.$captionWrapper = $captionWrapper;
+                // Hide wrapper to start
+                this.captionDisplayUpdate(null);
             }
+
+            this.trackList();
+            this.trackInit();
             this.scriptInit();
 
             this.$player.addClass('ready');
@@ -305,7 +339,7 @@
             this.$focus = $(focusDiv);
             this.$element.prepend(this.$focus);
 
-            this._trigger('ready.cfw.player');
+            this.$media.CFW_trigger('ready.cfw.player');
 
             // Handle element attributes
             if (this.media.autoplay) {
@@ -314,7 +348,7 @@
         },
 
         error : function() {
-            this._trigger('error.cfw.player');
+            this.$media.CFW_trigger('error.cfw.player');
         },
 
         toggle : function() {
@@ -515,7 +549,7 @@
             var $muteElm = this.$player.find('[data-cfw-player="mute"]');
 
             if (!this.support.mute) {
-                $muteElm.addClass('disabled');
+                this._controlDisable($muteElm);
             } else if (this.media.muted) {
                 $muteElm.addClass('active');
             } else {
@@ -547,7 +581,7 @@
             if ($volElm.find('input').length <= 0) { return; }
 
             if (!this.support.mute) {
-                $volElm.addClass('disabled');
+                this._controlDisable($volElm);
                 return;
             }
 
@@ -644,11 +678,53 @@
             if (this.isFullScreen()) {
                 $fullElm.addClass('active');
                 this.$element.addClass('player-fulldisplay');
-                this._trigger('enterFullscreen.cfw.player');
+                this.$media.CFW_trigger('enterFullscreen.cfw.player');
             } else {
                 $fullElm.removeClass('active');
                 this.$element.removeClass('player-fulldisplay');
-                this._trigger('exitFullscreen.cfw.player');
+                this.$media.CFW_trigger('exitFullscreen.cfw.player');
+            }
+        },
+
+        _srcHasAlternate : function(name) {
+            return (this.$sources[0].hasAttribute('data-src-' + name));
+        },
+
+        _srcIsAlternate : function(name) {
+            return (this.$sources.first().attr('data-src-' + name) === this.$sources.first().attr('src'));
+        },
+
+        _srcLoadAlternate : function(name) {
+            var $selfRef = this;
+            var currTime = this.media.currentTime;
+            var isPaused = this.media.paused;
+
+            this.$sources.each(function() {
+                $(this).attr('src', $(this).attr('data-src-' + name));
+            });
+
+            // Reload the source, skip ahead, and resume playing
+            this.$media
+                .one('loadeddata', function() {
+                    $selfRef.seekTo(currTime);
+                    if (!isPaused) {  $selfRef.media.play(); }
+                });
+            this.media.load();
+        },
+
+        description : function() {
+            if (this._srcHasAlternate('describe')) {
+                var $descElm = this.$player.find('[data-cfw-player="description"]');
+
+                if (this._srcIsAlternate('describe')) {
+                    // Reset to original source
+                    this._srcLoadAlternate('orig');
+                    $descElm.removeClass('active');
+                } else {
+                    // Load description source
+                    this._srcLoadAlternate('describe');
+                    $descElm.addClass('active');
+                }
             }
         },
 
@@ -684,7 +760,7 @@
             }
 
             if (this.trackValid.length <= 0) {
-                $captionElm.addClass('disabled');
+                this._controlDisable($captionElm);
                 return;
             }
 
@@ -701,7 +777,7 @@
                 });
 
                 if (this.media.textTracks[0].mode == 'showing') {
-                    $selfRef.trackSet(0);
+                    this.trackSet(0);
                 }
 
             } else {
@@ -713,15 +789,22 @@
                 var $wrapper = $captionElm.parent(); /* Because $().wrap() clones element */
 
                 $wrapper.append($menu);
-                var menuID = this._getID($menu, 'cfw-player');
+                var menuID = $menu.CFW_getID('cfw-player');
 
-                var $menuItem = $('<li class="player-caption-off"><a href="#" data-cfw-player-track="-1">Off</a></li>');
+                var $menuItem = $('<li class="player-caption-off"><button type="button" class="dropdown-item" data-cfw-player-track="-1">Off</button></li>');
                 $menu.append($menuItem);
 
                 var tracks = this.media.textTracks;
+
+                for (var j = 0; j < tracks.length; j++) {
+                    if (tracks[j].mode == 'showing') {
+                        this.trackSet(j);
+                    }
+                }
+
                 for (var i = 0; i < this.trackValid.length; i++) {
                     var trackID = this.trackValid[i];
-                    $menuItem = $('<li><a href="#" data-cfw-player-track="' + trackID + '">' + tracks[trackID].label + '</a></li>');
+                    $menuItem = $('<li><button type="button" class="dropdown-item" data-cfw-player-track="' + trackID + '">' + tracks[trackID].label + '</button></li>');
                     $menu.append($menuItem);
                 }
 
@@ -732,18 +815,26 @@
                     $selfRef.trackSet(num);
                 });
 
-                $captionElm.CFW_Dropdown({ toggle: '#' + menuID });
+                $captionElm.CFW_Dropdown({ target: '#' + menuID });
             }
 
             this.trackStatus();
         },
 
         trackSet : function(trackID) {
+            var $selfRef = this;
+
             trackID = parseInt(trackID, 10);
 
             var tracks = this.media.textTracks;
             if (tracks.length <= 0) {
                 return;
+            }
+
+            // Disable any previouse cuechange handling
+            if (this.trackCurrent !== -1) {
+                $(this.media.textTracks[this.trackCurrent]).off('cuechange.cfw.player.captionDisplay');
+                this.$media.off('timeupdate.cfw.player.captionDisplay');
             }
 
             this.trackCurrent = trackID;
@@ -753,7 +844,36 @@
                     tracks[i].mode = 'hidden';
                 }
                 if (i === trackID) {
-                    tracks[i].mode = 'showing';
+                    // tracks[i].mode = 'showing';
+                    tracks[i].mode = (this.$captionWrapper !== null) ? 'hidden' : 'showing';
+                }
+            }
+
+            // Hook in cuechange handler if using custom captions
+            if (this.trackCurrent !== -1 && this.$captionWrapper !== null) {
+                if (this.media.textTracks[this.trackCurrent].oncuechange !== undefined) {
+                    $(this.media.textTracks[this.trackCurrent])
+                        .on('cuechange.cfw.player.captionDisplay', function() {
+                            $selfRef.captionDisplayUpdate(this.activeCues);
+                        });
+                } else {
+                    // Firefox does not currently support oncuechange event
+                    this.$media
+                        .on('timeupdate.cfw.player.captionDisplay', function() {
+                            var activeCues = $selfRef.media.textTracks[$selfRef.trackCurrent].activeCues;
+                            $selfRef.captionDisplayUpdate(activeCues);
+                        });
+                }
+
+                // Artificially trigger a cuechange - in case already in middle of a cue
+                var cueEvent;
+                if (this.media.textTracks[this.trackCurrent].oncuechange !== undefined) {
+                    cueEvent = $.Event('cuechange');
+                    $(this.media.textTracks[this.trackCurrent]).trigger(cueEvent);
+                } else {
+                    // Firefox
+                    cueEvent = $.Event('timeupdate');
+                    this.$media.trigger(cueEvent);
                 }
             }
 
@@ -785,14 +905,17 @@
                 var $captionPar = $captionElm.parent();
                 $captionElm.removeClass('active');
                 $captionPar.removeClass('active');
-                $captionPar.find('[data-cfw-player-track]').closest('li').removeClass('active');
+                $captionPar.find('[data-cfw-player-track]')
+                    .removeClass('active')
+                    .removeAttr('aria-pressed');
 
                 for (var i = 0; i < tracks.length; i++) {
-                    if (tracks[i].mode == 'showing') {
+                    if (i == this.trackCurrent) {
                         $captionElm.addClass('active');
                         $captionPar.addClass('active');
-                        $captionPar.find('[data-cfw-player-track="' + i + '"]').closest('li').addClass('active');
-                        this.trackCurrent = i;
+                        $captionPar.find('[data-cfw-player-track="' + i + '"]')
+                            .addClass('active')
+                            .attr('aria-pressed', 'true');
                     }
                 }
             }
@@ -806,7 +929,7 @@
             }
 
             if (this.trackValid.length <= 0) {
-                $tsElm.addClass('disabled');
+                this._controlDisable($tsElm);
                 return;
             }
 
@@ -832,24 +955,27 @@
                 var $wrapper = $tsElm.parent(); /* Because $().wrap() clones element */
 
                 $wrapper.append($menu);
-                var menuID = this._getID($menu, 'cfw-player');
+                var menuID = $menu.CFW_getID('cfw-player');
 
-                var $menuItem = $('<li class="player-script-off"><a href="#" data-cfw-player-script="-1">Off</a></li>');
+                var $menuItem = $('<li class="player-script-off"><button type="button" class="dropdown-item" data-cfw-player-script="-1">Off</button></li>');
                 $menu.append($menuItem);
 
                 var tracks = this.media.textTracks;
                 for (var i = 0; i < this.trackValid.length; i++) {
                     var trackID = this.trackValid[i];
-                    $menuItem = $('<li><a href="#" data-cfw-player-script="' + trackID + '">' + tracks[trackID].label + '</a></li>');
+                    $menuItem = $('<li><button type="button" class="dropdown-item" data-cfw-player-script="' + trackID + '">' + tracks[trackID].label + '</a></li>');
                     $menu.append($menuItem);
                 }
                 if (this.settings.transcriptOption) {
-                    // Add scroll toggle
                     $menuItem = $('<li class="dropdown-divider"></li>');
                     $menu.append($menuItem);
-                    var scrollVal = (this.settings.transcriptScroll) ? 'true' : 'false';
-                    var scrollClass = (this.settings.transcriptScroll) ? 'active' : '';
-                    $menuItem = $('<li><a href="#" class="player-script-scroll-check ' + scrollClass + '" data-cfw-player-script-scroll="' + scrollVal + '" aria-checked="' + scrollVal + '"><span class="player-script-scroll-check-icon"></span>Auto-scroll</a></li>');
+                    // Add scroll toggle
+                    var scrollCheck = (this.settings.transcriptScroll) ? 'checked' : '';
+                    $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-script-scroll class="form-check-input" ' + scrollCheck + '> Auto-scroll</label></li>');
+                    $menu.append($menuItem);
+                    // Add description toggle
+                    var descCheck = (this.settings.transcriptDescribe) ? 'checked' : '';
+                    $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-script-describe class="form-check-input" ' + descCheck + '> Show Description</label></li>');
                     $menu.append($menuItem);
                 }
 
@@ -861,16 +987,20 @@
                     $selfRef.scriptSet(num);
                 });
                 if (this.settings.transcriptOption) {
-                    this.$player.on('click', '[data-cfw-player-script-scroll]', function(e) {
-                        e.preventDefault();
-                        var $this = $(this);
+                    this.$player.on('click', '[data-cfw-player-script-scroll]', function() {
                         $selfRef.settings.transcriptScroll = !$selfRef.settings.transcriptScroll;
-                        $this.attr('aria-checked', $selfRef.settings.transcriptScroll);
-                        $this.toggleClass('active');
+                        $(this).prop('checked', $selfRef.settings.transcriptScroll);
+                    });
+                    this.$player.on('click', '[data-cfw-player-script-describe]', function(e) {
+                        if (!$selfRef._controlIsDisabled($(e.target))) {
+                            $selfRef.settings.transcriptDescribe = !$selfRef.settings.transcriptDescribe;
+                            $(this).prop('checked', $selfRef.settings.transcriptDescribe);
+                            $selfRef.scriptLoad();
+                        }
                     });
                 }
 
-                $tsElm.CFW_Dropdown({ toggle: '#' + menuID });
+                $tsElm.CFW_Dropdown({ target: '#' + menuID });
             }
 
             // Show transcript if set
@@ -895,11 +1025,11 @@
             }
 
             if (trackID == -1 && this.$scriptElm !== null) {
-                if (!this._trigger('beforeTranscriptHide.cfw.player')) {
+                if (!this.$media.CFW_trigger('beforeTranscriptHide.cfw.player')) {
                     return;
                 }
             } else {
-                if (!this._trigger('beforeTranscriptShow.cfw.player')) {
+                if (!this.$media.CFW_trigger('beforeTranscriptShow.cfw.player')) {
                     return;
                 }
             }
@@ -922,11 +1052,13 @@
                     var $tsPar = $tsElm.parent();
                     $tsElm.removeClass('active');
                     $tsPar.removeClass('active');
-                    $tsPar.find('[data-cfw-player-script]').closest('li').removeClass('active');
+                    $tsPar.find('[data-cfw-player-script]')
+                        .removeClass('active')
+                        .removeAttr('aria-pressed');
                 }
             }
 
-            // Disable cuechange handling
+            // Disable any previous cuechange handling
             if (this.scriptCurrent !== -1) {
                 $(this.media.textTracks[this.scriptCurrent]).off('cuechange.cfw.player.transcript');
                 this.$media.off('timeupdate.cfw.player.transcript');
@@ -936,11 +1068,11 @@
 
             if (trackID == -1) {
                 this.scriptCues = null;
-                this._trigger('afterTranscriptHide.cfw.player');
+                this.descCues = null;
+                this.$media.CFW_trigger('afterTranscriptHide.cfw.player');
             } else {
                 this.scriptLoad();
             }
-
         },
 
         scriptLoad : function(forced) {
@@ -953,8 +1085,11 @@
             this.$media.off('loadeddata.cfw.player.script');
 
             var tracks = this.media.textTracks;
-            if (tracks.length <= 0 || this.scriptCurrent == -1) {
+            var tracksLength = tracks.length;
+            if (tracksLength <= 0 || this.scriptCurrent == -1) {
                 this.scriptCues = null;
+                this.descCurrent = -1;
+                this.descCues = null;
                 return;
             }
 
@@ -962,7 +1097,7 @@
             if (cues == null || cues.length <= 0) {
                 var hold = (this.trackCurrent == -1) ? null : tracks[this.trackCurrent].mode;
                 // preload all tracks to stop future `load` event triggers on transcript change
-                for (var i = 0; i < tracks.length; i++) {
+                for (var i = 0; i < tracksLength; i++) {
                     tracks[i].mode = 'hidden';
                 }
                 // reset the caption track state
@@ -971,9 +1106,31 @@
                 }
             }
 
+            // Find description track
+            var descAvailable = false;
+            this.descCurrent = -1;
+            this.descCues = null;
+            var descLang = tracks[this.scriptCurrent].language;
+            for (var j = 0; j < tracksLength; j++) {
+                if (descLang == tracks[j].language && 'descriptions' == tracks[j].kind) {
+                    if ($selfRef.settings.transcriptDescribe) {
+                        $selfRef.descCurrent = j;
+                    }
+                    descAvailable = true;
+                }
+            }
+
+            var $descControl = this.$player.find('[data-cfw-player-script-describe]');
+            if (!descAvailable) {
+                this._controlDisable($descControl);
+            } else {
+                this._controlEnable($descControl);
+            }
+
             function scriptLoad2(forced) {
                 var tracks = $selfRef.media.textTracks; // Reload object to get update
                 var cues = tracks[$selfRef.scriptCurrent].cues;
+                var descCues = ($selfRef.descCurrent == -1) ? null : tracks[$selfRef.descCurrent].cues;
 
                 if (cues && cues.length <= 0 && !forced) {
                     // Force media to load
@@ -985,6 +1142,7 @@
                 }
 
                 $selfRef.scriptCues = cues;
+                $selfRef.descCues = descCues;
                 $selfRef.scriptProcess();
             }
 
@@ -997,54 +1155,37 @@
         scriptProcess : function() {
             var $selfRef = this;
 
-            if (this.scriptCues == null) {
+            if (this.scriptCues == null && this.descCues == null) {
                 return;
             }
 
-            /* Borrowed from:
-             * http://ableplayer.github.io/ableplayer/
-             * https://github.com/ableplayer/ableplayer/blob/master/scripts/transcript.js
-             *
-             * Modified/simplified to handle *basic text string* cues in DOM object format
-             */
-            var addCaption = function(div, cap) {
-                var $capSpan = $('<span class="player-scripttxt-seekpoint player-scripttxt-caption"></span>');
-
-                var flattenString = function(str) {
-                    var result = [];
-                    if (str === '') {
-                        return result;
-                    }
-                    var openBracket  = str.indexOf('[');
-                    var closeBracket = str.indexOf(']');
-                    var openParen    = str.indexOf('(');
-                    var closeParen   = str.indexOf(')');
-
-                    var hasBrackets = openBracket !== -1 && closeBracket !== -1;
-                    var hasParens = openParen !== -1 && closeParen !== -1;
-
-                    if ((hasParens && hasBrackets && openBracket < openParen) || hasBrackets) {
-                        result = result.concat(flattenString(str.substring(0, openBracket)));
-                        result.push($('<span class="player-scripttxt-unspoken">' + str.substring(openBracket, closeBracket + 1) + '</span>'));
-                        result = result.concat(flattenString(str.substring(closeBracket + 1)));
-                    } else if (hasParens) {
-                        result = result.concat(flattenString(str.substring(0, openParen)));
-                        result.push($('<span class="player-scripttxt-unspoken">' + str.substring(openParen, closeParen + 1) + '</span>'));
-                        result = result.concat(flattenString(str.substring(closeParen + 1)));
-                    } else {
-                        result.push(str);
-                    }
-
-                    return result;
-                };
-
-                $capSpan.append(flattenString(cap.text));
+            var addCaption = function($div, cap) {
+                var $capSpan = $('<span class="player-transcript-seekpoint player-transcript-caption"></span>');
+                var capHTML = cap.getCueAsHTML();
+                $capSpan.append(capHTML);
                 $capSpan.attr({
                     'data-start' : cap.startTime.toString(),
                     'data-end'   : cap.endTime.toString()
                 });
-                div.append($capSpan);
-                div.append('\n');
+                $div.append($capSpan);
+                $div.append('\n');
+            };
+
+            var addDescription = function($div, desc) {
+                var $descDiv = $('<div class="player-description"></div>');
+                $descDiv.append('<span class="sr-only">Description: </span>');
+
+                var $descSpan = $('<span class="player-description-seekpoint player-description-caption"></span>');
+                var descHTML = desc.getCueAsHTML();
+                $descSpan.append(descHTML);
+                $descSpan.attr({
+                    'data-start' : desc.startTime.toString(),
+                    'data-end'   : desc.endTime.toString()
+                });
+                $descDiv.append($descSpan);
+
+                $div.append($descDiv);
+                $div.append('\n');
             };
 
             var $tsElm = this.$player.find('[data-cfw-player="transcript"]');
@@ -1060,47 +1201,77 @@
                     var $tsPar = $tsElm.parent();
                     $tsElm.addClass('active');
                     $tsPar.addClass('active');
-                    $tsPar.find('[data-cfw-player-script="' + this.scriptCurrent + '"]').closest('li').addClass('active');
+                    $tsPar.find('[data-cfw-player-script="' + this.scriptCurrent + '"]')
+                        .addClass('active')
+                        .attr('aria-pressed', 'true');
                 }
             }
 
-            // Insert transcript container
-            var $newElm = $('<div class="player-scripttxt"></div>');
-            this.$element.append($newElm);
-            this.$scriptElm = this.$element.find('.player-scripttxt');
+            // Remove any existing transcript container
+            this.$element.find('.player-transcript').remove();
 
-            // Loop through all captions and add to transcript container
-            var cueIdx = 0;
-            while (cueIdx < this.scriptCues.length) {
-                addCaption(this.$scriptElm, this.scriptCues[cueIdx]);
-                cueIdx += 1;
+            // Insert transcript container
+            var $newElm = $('<div class="player-transcript"></div>');
+            this.$element.append($newElm);
+            this.$scriptElm = this.$element.find('.player-transcript');
+
+            // Loop through all captions/descriptions and add to transcript container
+            var captions = this.scriptCues || [];
+            var descriptions = this.descCues || [];
+            var capIdx = 0;
+            var descIdx = 0;
+            var timeStamp = null;
+
+            while ((capIdx < captions.length) || (descIdx < descriptions.length)) {
+                if ((descIdx < descriptions.length) && (capIdx < captions.length)) {
+                    // Both descriptions and captions have content
+                    timeStamp = Math.min(descriptions[descIdx].startTime, captions[capIdx].startTime);
+                } else {
+                    // Only one item has content
+                    timeStamp = null;
+                }
+
+                if (timeStamp !== null) {
+                    if (typeof descriptions[descIdx] !== 'undefined' && descriptions[descIdx].startTime === timeStamp) {
+                        addDescription(this.$scriptElm, descriptions[descIdx]);
+                        descIdx += 1;
+                    } else {
+                        addCaption(this.$scriptElm, captions[capIdx]);
+                        capIdx += 1;
+                    }
+                } else {
+                    if (descIdx < descriptions.length) {
+                        addDescription(this.$scriptElm, descriptions[descIdx]);
+                        descIdx += 1;
+                    } else if (capIdx < captions.length) {
+                        addCaption(this.$scriptElm, captions[capIdx]);
+                        capIdx += 1;
+                    }
+                }
             }
 
             // Hook in cuechange handler
             if (this.media.textTracks[this.scriptCurrent].oncuechange !== undefined) {
-                $(this.media.textTracks[this.scriptCurrent]).on('cuechange.cfw.player.transcript', function() {
-                    $selfRef.scriptHighlight(this.activeCues);
-                });
+                $(this.media.textTracks[this.scriptCurrent])
+                    .on('cuechange.cfw.player.transcript', function() {
+                        $selfRef.scriptHighlight(this.activeCues);
+                    });
             } else {
                 // Firefox does not currently support oncuechange event
-                this.$media.on('timeupdate.cfw.player.transcript', function() {
-                    $selfRef.scriptHighlight($selfRef.media.textTracks[$selfRef.scriptCurrent].activeCues);
-                });
+                this.$media
+                    .on('timeupdate.cfw.player.transcript', function() {
+                        var activeCues = $selfRef.media.textTracks[$selfRef.scriptCurrent].activeCues;
+                        $selfRef.scriptHighlight(activeCues);
+                    });
             }
 
             // Seekpoint event handlers
-            $('.player-scripttxt-seekpoint', this.$scriptElm).on('click.cfw.player.scriptseek', function() {
-                var spanStart = parseFloat($(this).attr('data-start'));
-                $selfRef.scriptSeek(spanStart);
-            });
-            $('.player-scripttxt-seekpoint', this.$scriptElm).on('keydown.cfw.player.scriptseek', function(e) {
-                // 13-enter
-                if (!/(13)/.test(e.which)) { return; }
-                e.stopPropagation();
-                e.preventDefault();
-                var spanStart = parseFloat($(this).attr('data-start'));
-                $selfRef.scriptSeek(spanStart);
-            });
+            $(this.seekPoint, this.$scriptElm)
+                .off('click.cfw.player.scriptseek')
+                .on('click.cfw.player.scriptseek', function() {
+                    var spanStart = parseFloat($(this).attr('data-start'));
+                    $selfRef.scriptSeek(spanStart);
+                });
 
             // Artificially trigger first cuechange - in case already in middle of a cue
             var cueEvent;
@@ -1113,20 +1284,20 @@
                 this.$media.trigger(cueEvent);
             }
 
-            this._trigger('afterTranscriptShow.cfw.player');
+            this.$media.CFW_trigger('afterTranscriptShow.cfw.player');
         },
 
         scriptHighlight : function(activeCues) {
             // Remove any active highlights
-            $('.player-scripttxt-active', this.$scriptElm).removeClass('player-scripttxt-active');
+            $('.player-transcript-active', this.$scriptElm).removeClass('player-transcript-active');
 
             if (activeCues.length <= 0) {
                 return;
             }
 
             var cueStart = activeCues[0].startTime;
-            var $matchCap = $('.player-scripttxt-caption[data-start="' + cueStart + '"]', this.$scriptElm);
-            $matchCap.addClass('player-scripttxt-active');
+            var $matchCap = $('.player-transcript-caption[data-start="' + cueStart + '"]', this.$scriptElm);
+            $matchCap.addClass('player-transcript-active');
 
             if (this.settings.transcriptScroll) {
                 var tsScroll = this.$scriptElm.scrollTop();
@@ -1193,6 +1364,28 @@
                     });
                     this.$element.addClass('player-inactive');
                 }
+            }
+        },
+
+        captionDisplayUpdate : function(activeCues) {
+            if (this.$captionWrapper == null) { return; }
+
+            if (this.trackCurrent === -1 || activeCues === null || activeCues.length <= 0) {
+                // Clear and hide caption area - nothing to show
+                this.$captionWrapper
+                    .attr('aria-hidden', 'true')
+                    .css('display', 'none')
+                    .empty();
+            } else {
+                // Show caption area and update caption
+                var $tmp = $(document.createElement('div'));
+                $tmp.append(activeCues[0].getCueAsHTML());
+
+                var cueHTML = $tmp.html().replace('\n', '<br>');
+                this.$captionWrapper
+                    .removeAttr('aria-hidden')
+                    .css('display', '')
+                    .append(cueHTML);
             }
         },
 
@@ -1308,35 +1501,80 @@
             }, 10);
         },
 
-        _getID : function($node, prefix) {
-            var nodeID = $node.attr('id');
-            if (nodeID === undefined) {
-                do nodeID = prefix + '-' + ~~(Math.random() * 1000000);
-                while (document.getElementById(nodeID));
-                $node.attr('id', nodeID);
-            }
-            return nodeID;
+        _controlEnable : function($control) {
+            $control
+                .removeClass('disabled')
+                .removeAttr('disabled')
+                .closest('label')
+                .removeClass('disabled');
         },
 
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$element.data();
-
-            if (typeof data.cfwPlayerSrc              !== 'undefined') { parsedData.src              = data.cfwPlayerSrc;              }
-            if (typeof data.cfwPlayerTranscript       !== 'undefined') { parsedData.transcript       = data.cfwPlayerTranscript;       }
-            if (typeof data.cfwPlayerTranscriptScroll !== 'undefined') { parsedData.transcriptScroll = data.cfwPlayerTranscriptScroll; }
-            if (typeof data.cfwPlayerTranscriptOption !== 'undefined') { parsedData.transcriptOption = data.cfwPlayerTranscriptOption; }
-
-            return parsedData;
+        _controlDisable : function($control) {
+            if ($control.is('button, input')) {
+                $control.prop('disabled', true);
+                $control
+                    .closest('label')
+                    .addClass('disabled');
+            } else {
+                $control.addClass('disabled');
+            }
         },
 
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$media.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
+        _controlIsDisabled : function($control) {
+            return $control.is('.disabled, :disabled');
+        },
+
+        dispose : function() {
+            clearTimeout(this.activityTimer);
+            if (this.$scriptElm) {
+                $(this.seekPoint, this.$scriptElm).off('.cfw.player.seekpoint');
+                this.$scriptElm.remove();
             }
-            return true;
+            if (this.$sliderSeek) {
+                this.$sliderSeek.CFW_Slider('dispose');
+            }
+            if (this.$volSeek) {
+                this.$volSeek.CFW_Slider('dispose');
+            }
+            if ($.hasData(this.$player.find('[data-cfw-player="caption"]'))) {
+                this.$player.find('[data-cfw-player="caption"]').CFW_Dropdown('dispose');
+            }
+            if ($.hasData(this.$player.find('[data-cfw-player="transcript"]'))) {
+                this.$player.find('[data-cfw-player="transcript"]').CFW_Dropdown('dispose');
+            }
+            this.$player.off();
+            this.$media.off();
+
+            this.$element
+                .off()
+                .removeData('cfw.player');
+
+            this.$element = null;
+            this.type = null;
+            this.$media = null;
+            this.media = null;
+            this.$player = null;
+            this.$sources = null;
+            this.$focus = null;
+            this.$sliderSeek = null;
+            this.$volSeek = null;
+            this.activity = null;
+            this.over = null;
+            this.userActive = null;
+            this.activityTimer = null;
+            this.mouseActivity = null;
+            this.scrubPlay = null;
+            this.played = null;
+            this.status = null;
+            this.support = null;
+            this.trackValid = null;
+            this.trackCurrent = null;
+            this.$captionWrapper = null;
+            this.$scriptElm = null;
+            this.scriptCurrent = null;
+            this.scriptCues = null;
+            this.descCues = null;
+            this.settings = null;
         }
     };
 
@@ -1359,15 +1597,4 @@
     $.fn.CFW_Player = Plugin;
     $.fn.CFW_Player.Constructor = CFW_Widget_Player;
 
-    /*
-    // API
-    // ===
-    $(window).ready(function() {
-        if (typeof CFW_API === 'undefined' || CFW_API !== false) {
-            $('[data-cfw="player"]').each(function() {
-                $(this).CFW_Player();
-            });
-        }
-    });
-    */
 })(jQuery);

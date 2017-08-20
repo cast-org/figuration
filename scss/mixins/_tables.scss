@@ -1,29 +1,42 @@
 // Tables
-@mixin table-row-variant($state, $background) {
+@mixin table-row-variant($state, $bg, $hover-bg) {
     // Exact selectors below required to override `.table-striped` and prevent
     // inheritance to nested tables.
     .table-#{$state} {
         &,
         > th,
         > td {
-            background-color: $background;
+            background-color: $bg;
         }
     }
 
     // Hover states for `.table-hover`
     // Note: this is not available for cells or rows within `thead` or `tfoot`.
     .table-hover {
-        $hover-background: darken($background, 5%);
-
         .table-#{$state} {
             @include hover {
-                background-color: $hover-background;
+                background-color: $hover-bg;
 
                 > td,
                 > th {
-                    background-color: $hover-background;
+                    background-color: $hover-bg;
                 }
             }
         }
+    }
+}
+
+// Scrolling table
+// Tables will scroll when they will no longer fit width-wise in their container.
+@mixin table-scroll() {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+    // Prevent double border on horizontal scroll due to `display: block;`
+    &.table-bordered {
+        border: 0;
     }
 }

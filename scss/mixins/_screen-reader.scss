@@ -5,15 +5,20 @@
 // 1. For long content, line feeds are not interpreted as spaces and small width
 //    causes content to wrap 1 word per line:
 //    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+// 2. `clip` is deprecated, use `clip-path` for future-proofing
+//    https://www.w3.org/TR/css-masking-1/#clip-property
+// See also:
+//    http://hugogiraudel.com/2016/10/13/css-hide-and-seek/
+
 
 @mixin sr-only {
     position: absolute;
     width: 1px;
     height: 1px;
     padding: 0;
-    margin: -1px;
     overflow: hidden;
     clip: rect(0,0,0,0);
+    clip-path: inset(50%); //2
     border: 0;
     white-space: nowrap; // 1
 }
@@ -30,9 +35,9 @@
         position: static;
         width: auto;
         height: auto;
-        margin: 0;
         overflow: visible;
         clip: auto;
+        clip-path: none;
         white-space: inherit;
     }
 }

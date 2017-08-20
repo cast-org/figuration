@@ -1,15 +1,14 @@
 ﻿<!DOCTYPE html>
 <html lang="en-us">
 <head>
-<title>Figuration - Flexbox Input Group</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>Figuration - Flexbox Input Group</title>
 
 <link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
 
-<script type="text/javascript" src="../vendor/jquery.min.js"></script>
+<script type="text/javascript" src="../../docs/assets/js/vendor/jquery.min.js"></script>
 <script type="text/javascript" src="../../dist/js/figuration.js"></script>
 
 <script type="text/javascript" src="../../docs/assets/js/vendor/holder.min.js"></script>
@@ -42,11 +41,11 @@ Holder.addTheme("gray", {
 <h3>Select Sizing Comparison:</h3>
 <div class="select-sizing">
     <form class="row">
-      <div class="col-md-2 text-right">
+      <div class="col-md-2 text-end">
         <button type="button" class="btn btn-primary btn-xs">Test</button>
       </div>
       <div class="col-md-1">
-        <label class="form-control-label-xs">Label</label>
+        <label class="form-control-label form-control-label-xs">Label</label>
       </div>
       <fieldset class="form-group col-md-3">
         <label for="size0-0" class="sr-only">Example label</label>
@@ -74,11 +73,11 @@ Holder.addTheme("gray", {
       </fieldset>
     </form>
     <form class="row">
-      <div class="col-md-2 text-right">
+      <div class="col-md-2 text-end">
         <button type="button" class="btn btn-primary btn-sm">Test</button>
       </div>
       <div class="col-md-1">
-        <label class="form-control-label-sm">Label</label>
+        <label class="form-control-label form-control-label-sm">Label</label>
       </div>
       <fieldset class="form-group col-md-3">
         <label for="size1-0" class="sr-only">Example label</label>
@@ -106,7 +105,7 @@ Holder.addTheme("gray", {
       </fieldset>
     </form>
     <form class="row">
-      <div class="col-md-2 text-right">
+      <div class="col-md-2 text-end">
         <button type="button" class="btn btn-primary">Test</button>
       </div>
       <div class="col-md-1">
@@ -138,11 +137,11 @@ Holder.addTheme("gray", {
       </fieldset>
     </form>
     <form class="row">
-      <div class="col-md-2 text-right">
+      <div class="col-md-2 text-end">
         <button type="button" class="btn btn-primary btn-lg">Test</button>
       </div>
       <div class="col-md-1">
-        <label class="form-control-label-lg">Label</label>
+        <label class="form-control-label form-control-label-lg">Label</label>
       </div>
       <fieldset class="form-group col-md-3">
         <label for="size3-0" class="sr-only">Example label</label>
@@ -170,11 +169,11 @@ Holder.addTheme("gray", {
       </fieldset>
     </form>
     <form class="row">
-      <div class="col-md-2 text-right">
+      <div class="col-md-2 text-end">
         <button type="button" class="btn btn-primary btn-xl">Test</button>
       </div>
       <div class="col-md-1">
-        <label class="form-control-label-xl">Label</label>
+        <label class="form-control-label form-control-label-xl">Label</label>
       </div>
       <fieldset class="form-group col-md-3">
         <label for="size4-0" class="sr-only">Example label</label>
@@ -243,6 +242,89 @@ Holder.addTheme("gray", {
     <select class="custom-select custom-select-xs">
         <option>Extra small select</option>
     </select>
+</div>
+
+<hr />
+
+<h3>Static and Label Sizing:</h3>
+<div class="form-group row">
+    <label class="col-sm-2 form-control-label form-control-label-xs">Email</label>
+    <div class="col-sm-10">
+        <p class="form-control-static form-control-static-xs">email@example.com</p>
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-2 form-control-label form-control-label-sm">Email</label>
+    <div class="col-sm-10">
+        <p class="form-control-static form-control-static-sm">email@example.com</p>
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-2 form-control-label">Email</label>
+    <div class="col-sm-10">
+        <p class="form-control-static">email@example.com</p>
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-2 form-control-label form-control-label-lg">Email</label>
+    <div class="col-sm-10">
+        <p class="form-control-static form-control-static-lg">email@example.com</p>
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-2 form-control-label form-control-label-xl">Email</label>
+    <div class="col-sm-10">
+        <p class="form-control-static form-control-static-xl">email@example.com</p>
+    </div>
+</div>
+
+<hr />
+
+<h3>On Backgrounds</h3>
+
+<div class="row mb-1">
+    <div class="col">
+        <div class="p-0_5"><input type="text" class="form-control" placeholder="something"></div>
+        <div class="p-0_5 bg-gray-100"><input type="text" class="form-control" placeholder="something"></div>
+        <div class="p-0_5 bg-gray-900"><input type="text" class="form-control" placeholder="something"></div>
+        <div class="p-0_5 bg-blue-400"><input type="text" class="form-control" placeholder="something"></div>
+        <div class="p-0_5 bg-red-400"><input type="text" class="form-control" placeholder="something"></div>
+        <div class="p-0_5 bg-green-400"><input type="text" class="form-control" placeholder="something"></div>
+        <div class="p-0_5 bg-cyan-400"><input type="text" class="form-control" placeholder="something"></div>
+        <div class="p-0_5 bg-mustard-400"><input type="text" class="form-control" placeholder="something"></div>
+    </div>
+    <div class="col">
+        <div class="p-0_5"><select type="text" class="custom-select"><option>Select</option></select></div>
+        <div class="p-0_5 bg-gray-100"><select type="text" class="custom-select"><option>Select</option></select></div>
+        <div class="p-0_5 bg-gray-900"><select type="text" class="custom-select"><option>Select</option></select></div>
+        <div class="p-0_5 bg-blue-400"><select type="text" class="custom-select"><option>Select</option></select></div>
+        <div class="p-0_5 bg-red-400"><select type="text" class="custom-select"><option>Select</option></select></div>
+        <div class="p-0_5 bg-green-400"><select type="text" class="custom-select"><option>Select</option></select></div>
+        <div class="p-0_5 bg-cyan-400"><select type="text" class="custom-select"><option>Select</option></select></div>
+        <div class="p-0_5 bg-mustard-400"><select type="text" class="custom-select"><option>Select</option></select></div>
+    </div>
+</div>
+<div class="row mb-1">
+    <div class="col">
+        <div class="p-0_5"><label class="custom-file"><input type="file" id="file" class="custom-file-input"><span class="custom-file-control"></span></label></div>
+        <div class="p-0_5 bg-gray-100"><label class="custom-file"><input type="file" id="file" class="custom-file-input"><span class="custom-file-control"></span></label></div>
+        <div class="p-0_5 bg-gray-900"><label class="custom-file"><input type="file" id="file" class="custom-file-input"><span class="custom-file-control"></span></label></div>
+        <div class="p-0_5 bg-blue-400"><label class="custom-file"><input type="file" id="file" class="custom-file-input"><span class="custom-file-control"></span></label></div>
+        <div class="p-0_5 bg-red-400"><label class="custom-file"><input type="file" id="file" class="custom-file-input"><span class="custom-file-control"></span></label></div>
+        <div class="p-0_5 bg-green-400"><label class="custom-file"><input type="file" id="file" class="custom-file-input"><span class="custom-file-control"></span></label></div>
+        <div class="p-0_5 bg-cyan-400"><label class="custom-file"><input type="file" id="file" class="custom-file-input"><span class="custom-file-control"></span></label></div>
+        <div class="p-0_5 bg-mustard-400"><label class="custom-file"><input type="file" id="file" class="custom-file-input"><span class="custom-file-control"></span></label></div>
+    </div>
+    <div class="col">
+        <div class="p-0_5"><div class="input-group"><span class="input-group-addon" id="color-addon0">@</span><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-btn"><button class="btn" type="button">Button</button></span></div></div>
+        <div class="p-0_5 bg-gray-100"><div class="input-group"><span class="input-group-addon" id="color-addon0">@</span><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-btn"><button class="btn" type="button">Button</button></span></div></div>
+        <div class="p-0_5 bg-gray-900"><div class="input-group"><span class="input-group-addon" id="color-addon0">@</span><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-btn"><button class="btn" type="button">Button</button></span></div></div>
+        <div class="p-0_5 bg-blue-400"><div class="input-group"><span class="input-group-addon" id="color-addon0">@</span><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-btn"><button class="btn" type="button">Button</button></span></div></div>
+        <div class="p-0_5 bg-red-400"><div class="input-group"><span class="input-group-addon" id="color-addon0">@</span><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-btn"><button class="btn" type="button">Button</button></span></div></div>
+        <div class="p-0_5 bg-green-400"><div class="input-group"><span class="input-group-addon" id="color-addon0">@</span><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-btn"><button class="btn" type="button">Button</button></span></div></div>
+        <div class="p-0_5 bg-cyan-400"><div class="input-group"><span class="input-group-addon" id="color-addon0">@</span><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-btn"><button class="btn" type="button">Button</button></span></div></div>
+        <div class="p-0_5 bg-mustard-400"><div class="input-group"><span class="input-group-addon" id="color-addon0">@</span><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-btn"><button class="btn" type="button">Button</button></span></div></div>
+    </div>
 </div>
 
 </div>

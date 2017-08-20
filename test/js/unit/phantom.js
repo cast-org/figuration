@@ -1,15 +1,21 @@
-/*jshint strict: false */
-/* global JSON */
+/* jshint strict: false */
+/* global JSON, require, define */
 
 /*
  * grunt-contrib-qunit
  * http://gruntjs.com/
  *
- * Copyright (c) 2014 "Cowboy" Ben Alman, contributors
+ * Copyright (c) 2016 "Cowboy" Ben Alman, contributors
  * Licensed under the MIT license.
  */
 
-(function() {
+(function(factory) {
+    if (typeof define === 'function' && define.amd) {
+        require(['qunit'], factory);
+    } else {
+        factory(QUnit);
+    }
+}(function(QUnit) {
     'use strict';
 
     // Don't re-order tests.
@@ -31,11 +37,17 @@
         // Parse some stuff before sending it.
         var actual;
         var expected;
+        var dump;
         if (!obj.result) {
+            // In order to maintain backwards compatibility with `QUnit <1.15.0`
+            // Older versions of QUnit (`<1.15.0`) use `QUnit.jsDump`, but this poperty was
+            // deprecated and moved to `QUnit.dump` and will be removed in `QUnit 2.0`.
+            dump = QUnit.dump || QUnit.jsDump;
+
             // Dumping large objects can be very slow, and the dump isn't used for
             // passing tests, so only dump if the test failed.
-            actual = QUnit.dump.parse(obj.actual);
-            expected = QUnit.dump.parse(obj.expected);
+            actual = dump.parse(obj.actual);
+            expected = dump.parse(obj.expected);
         }
         // Send it.
         sendMessage('qunit.log', obj.result, actual, expected, obj.message, obj.source);
@@ -71,32 +83,4 @@
     QUnit.done(function(obj) {
         sendMessage('qunit.done', obj.failed, obj.passed, obj.total, obj.runtime);
     });
-}());
-
-
-// bind polyfill
-// shoutout mdn: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind#Polyfill
-if (!Function.prototype.bind) {
-    Function.prototype.bind = function(oThis) {
-        if (typeof this !== 'function') {
-            // closest thing possible to the ECMAScript 5
-            // internal IsCallable function
-            throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
-        }
-
-        var aArgs   = Array.prototype.slice.call(arguments, 1);
-        var fToBind = this;
-        var FNOP    = function() {};
-        var fBound  = function() {
-            return fToBind.apply(this instanceof FNOP ? this : oThis, aArgs.concat(Array.prototype.slice.call(arguments)));
-        };
-
-        if (this.prototype) {
-            // native functions don't have a prototype
-            FNOP.prototype = this.prototype;
-        }
-        fBound.prototype = new FNOP();
-
-        return fBound;
-    };
-}
+}));

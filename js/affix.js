@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v2.0.0): affix.js
+ * Figuration (v3.0.0): affix.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -10,13 +10,13 @@
 
     var CFW_Widget_Affix = function(element, options) {
         this.$element = $(element);
-        this.$window = $(window);
         this.$target = null;
         this.affixed = null;
         this.unpin = null;
         this.pinnedOffset = null;
 
-        this.settings = $.extend({}, CFW_Widget_Affix.DEFAULTS, this._parseDataAttr(), options);
+        var parsedData = this.$element.CFW_parseData('affix', CFW_Widget_Affix.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Affix.DEFAULTS, parsedData, options);
 
         this._init();
     };
@@ -24,8 +24,9 @@
     CFW_Widget_Affix.RESET = 'affix affix-top affix-bottom';
 
     CFW_Widget_Affix.DEFAULTS = {
-        offset: 0,
-        target: window
+        target : window,
+        top    : 0,
+        bottom : 0
     };
 
     CFW_Widget_Affix.prototype = {
@@ -34,10 +35,10 @@
 
             // Bind events
             this.$target = $(this.settings.target)
-                .on('scroll.cfw.affix)',  $.proxy(this.checkPosition, this))
+                .on('scroll.cfw.affix',  $.proxy(this.checkPosition, this))
                 .on('click.cfw.affix',  $.proxy(this.checkPositionDelayed, this));
 
-            this._trigger('init.cfw.affix');
+            this.$element.CFW_trigger('init.cfw.affix');
 
             this.checkPosition();
         },
@@ -64,7 +65,6 @@
             return false;
         },
 
-
         getPinnedOffset : function() {
             if (this.pinnedOffset) { return this.pinnedOffset; }
             this.$element.removeClass(CFW_Widget_Affix.RESET).addClass('affix');
@@ -81,14 +81,12 @@
             if (!this.$element.is(':visible')) { return; }
 
             var height       = this.$element.height();
-            var offset       = this.settings.offset;
-            var offsetTop    = offset.top;
-            var offsetBottom = offset.bottom;
+            var offsetTop    = this.settings.top;
+            var offsetBottom = this.settings.bottom;
             var scrollHeight =  Math.max($(document).height(), $(document.body).height());
 
-            if (typeof offset != 'object')         { offsetBottom = offsetTop = offset; }
-            if (typeof offsetTop == 'function')    { offsetTop    = offset.top(this.$element); }
-            if (typeof offsetBottom == 'function') { offsetBottom = offset.bottom(this.$element); }
+            if (typeof offsetTop == 'function')    { offsetTop    = offsetTop(this.$element); }
+            if (typeof offsetBottom == 'function') { offsetBottom = offsetBottom(this.$element); }
 
             var affix = this.getState(scrollHeight, height, offsetTop, offsetBottom);
 
@@ -103,7 +101,7 @@
                 var affixType = 'affix' + (affix ? '-' + affix : '');
                 var eventName = affixType + '.cfw.affix';
 
-                if (!this._trigger(eventName)) {
+                if (!this.$element.CFW_trigger(eventName)) {
                     return;
                 }
 
@@ -112,8 +110,8 @@
 
                 this.$element
                     .removeClass(CFW_Widget_Affix.RESET)
-                    .addClass(affixType);
-                this._trigger(eventName.replace('affix', 'affixed'));
+                    .addClass(affixType)
+                    .CFW_trigger(eventName.replace('affix', 'affixed'));
             }
 
             if (affix == 'bottom') {
@@ -123,24 +121,19 @@
             }
         },
 
-        _parseDataAttr : function() {
-            var parsedData = {};
-            parsedData.offset = {};
-            var data = this.$element.data();
+        dispose : function() {
+            this.$target
+                .off('.cfw.affix');
+            this.$element
+                .removeClass(CFW_Widget_Affix.RESET)
+                .removeData('cfw.affix');
 
-            // data.cfwAffixOffset = data.cfwAffixOffset || {};
-            if (typeof data.cfwAffixOffsetBottom !== 'undefined') { parsedData.offset.bottom = data.cfwAffixOffsetBottom; }
-            if (typeof data.cfwAffixOffsetTop !== 'undefined')    { parsedData.offset.top    = data.cfwAffixOffsetTop;    }
-            return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$element.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
+            this.$element = null;
+            this.$target = null;
+            this.affixed = null;
+            this.unpin = null;
+            this.pinnedOffset = null;
+            this.settings = null;
         }
     };
 

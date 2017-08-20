@@ -1,31 +1,18 @@
 ﻿<!DOCTYPE html>
 <html lang="en-us">
 <head>
-<title>Figuration - Flexbox Navs</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>Figuration - Flexbox Navs</title>
 
 <link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
 
-<script type="text/javascript" src="../vendor/jquery.min.js"></script>
+<script type="text/javascript" src="../../docs/assets/js/vendor/jquery.min.js"></script>
 <script type="text/javascript" src="../../dist/js/figuration.js"></script>
-
-<script type="text/javascript" src="../../docs/assets/js/vendor/holder.min.js"></script>
-<script type="text/javascript">
-Holder.addTheme("gray", {
-    bg: "#999",
-    fg: "#111",
-    size: 12,
-    font: 'sans-serif',
-    fontweight: "normal"
-});
-</script>
 
 <style>
 .nav {
-    border: 1px solid;
     margin-bottom: 1rem;
 }
 </style>
@@ -36,37 +23,11 @@ Holder.addTheme("gray", {
 <div class="container">
     <h1>Navs</h1>
 
-    <p>
-        Here we are testing the two different styles for nav layouts using the opt-in flexbox classes.
-        They are designated as follows:
-    </p>
-    <ul>
-        <li><strong>normal:</strong> table model</li>
-        <li><strong>flex:</strong> opt-in flexbox model</li>
-    </ul>
-
     <h2>List</h2>
 
-    normal:
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Another link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-    </ul>
-
-    flex:
-    <ul class="nav nav-flex">
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link active" href="#">Active</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -81,7 +42,6 @@ Holder.addTheme("gray", {
 
     <h2>Anchor</h2>
 
-    normal:
     <nav class="nav">
         <a class="nav-link active" href="#">Active</a>
         <a class="nav-link" href="#">Link</a>
@@ -89,18 +49,9 @@ Holder.addTheme("gray", {
         <a class="nav-link disabled" href="#">Disabled</a>
     </nav>
 
-    flex:
-    <nav class="nav nav-flex">
-        <a class="nav-link active" href="#">Active</a>
-        <a class="nav-link" href="#">Link</a>
-        <a class="nav-link" href="#">Another link</a>
-        <a class="nav-link disabled" href="#">Disabled</a>
-    </nav>
+    <h2>Vertical List</h2>
 
-    <h2>Inline List</h2>
-
-    normal:
-    <ul class="nav nav-inline">
+    <ul class="nav nav-vertical">
         <li class="nav-item">
             <a class="nav-link active" href="#">Active</a>
         </li>
@@ -115,34 +66,9 @@ Holder.addTheme("gray", {
         </li>
     </ul>
 
-    flex:
-    <ul class="nav nav-flex nav-inline">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Another link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-    </ul>
+    <h2>Vertical Anchor</h2>
 
-    <h2>Inline Anchor</h2>
-
-    normal:
-    <nav class="nav nav-inline">
-        <a class="nav-link active" href="#">Active</a>
-        <a class="nav-link" href="#">Link</a>
-        <a class="nav-link" href="#">Another link</a>
-        <a class="nav-link disabled" href="#">Disabled</a>
-    </nav>
-
-    flex:
-    <nav class="nav nav-flex nav-inline">
+    <nav class="nav nav-vertical">
         <a class="nav-link active" href="#">Active</a>
         <a class="nav-link" href="#">Link</a>
         <a class="nav-link" href="#">Another link</a>
@@ -151,24 +77,7 @@ Holder.addTheme("gray", {
 
     <h2>Tabs</h2>
 
-    normal:
     <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Another link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-    </ul>
-
-    flex:
-    <ul class="nav nav-flex nav-tabs">
         <li class="nav-item">
             <a class="nav-link active" href="#">Active</a>
         </li>
@@ -185,24 +94,7 @@ Holder.addTheme("gray", {
 
     <h2>Pills</h2>
 
-    normal:
     <ul class="nav nav-pills">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Another link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-    </ul>
-
-    flex:
-    <ul class="nav nav-flex nav-pills">
         <li class="nav-item">
             <a class="nav-link active" href="#">Active</a>
         </li>
@@ -219,24 +111,7 @@ Holder.addTheme("gray", {
 
     <h2>Stacked Pills</h2>
 
-    normal:
-    <ul class="nav nav-pills nav-stacked">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-    </ul>
-
-    flex:
-    <ul class="nav nav-flex nav-pills nav-stacked">
+    <ul class="nav nav-pills nav-vertical">
         <li class="nav-item">
             <a class="nav-link active" href="#">Active</a>
         </li>
@@ -253,37 +128,13 @@ Holder.addTheme("gray", {
 
     <h2>Tabs w/ Dropdown</h2>
 
-    normal:
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link active" href="#">Active</a>
         </li>
         <li class="nav-item dropdown">
-            <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#dropNav1">Dropdown</a>
-            <ul class="dropdown-menu" id="dropNav1">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Another link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-    </ul>
-
-    flex:
-    <ul class="nav nav-flex nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#dropNav1">Dropdown</a>
-            <ul class="dropdown-menu" id="dropNav1">
+            <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown">Dropdown</a>
+            <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Action</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -301,14 +152,13 @@ Holder.addTheme("gray", {
 
     <h2>Pills w/ Dropdown</h2>
 
-    normal:
     <ul class="nav nav-pills">
         <li class="nav-item">
             <a class="nav-link active" href="#">Active</a>
         </li>
         <li class="nav-item dropdown">
-            <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#dropNav1">Dropdown</a>
-            <ul class="dropdown-menu" id="dropNav1">
+            <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown">Dropdown</a>
+            <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Action</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
                 <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -324,28 +174,7 @@ Holder.addTheme("gray", {
         </li>
     </ul>
 
-    flex:
-    <ul class="nav nav-flex nav-pills">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#dropNav1">Dropdown</a>
-            <ul class="dropdown-menu" id="dropNav1">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
-            </ul>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Another link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-    </ul>
+</div>
 
 </body>
 </html>

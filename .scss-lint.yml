@@ -3,9 +3,6 @@ scss_files:
     - "scss/**/*.scss"
     - "docs/assets/scss/**/*.scss"
 
-exclude:
-  - "scss/base/_normalize.scss"
-
 # Default severity of all linters.
 severity: warning
 
@@ -132,6 +129,7 @@ linters:
     min_properties: 2
     separate_groups: false
     order:
+      - direction
       - position
       - top
       - right
@@ -149,8 +147,11 @@ linters:
       - flex-wrap
       - flex-flow
       - flex-grow
-      - flex-order
       - flex-pack
+      - align-items
+      - align-self
+      - justify-content
+      - order
       - float
       - width
       - min-width
@@ -176,6 +177,7 @@ linters:
       - -ms-overflow-y
       - -ms-overflow-style
       - clip
+      - clip-path
       - clear
       - font
       - font-family

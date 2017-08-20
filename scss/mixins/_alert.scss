@@ -1,17 +1,17 @@
 // Alerts
-@mixin alert-variant($bg, $border, $color) {
+@mixin alert-variant($color, $bg, $border, $hover-color) {
+    color: $color;
     background-color: $bg;
     border-color: $border;
-    color: $color;
 
     hr {
-        border-top-color: darken($border, 5%);
+        border-top-color: $border;
     }
     .alert-link {
-        color: darken($color, 5%);
+        color: $color;
 
         @include hover-focus {
-            color: darken($color, 15%);
+            color: $hover-color;
         }
     }
 }

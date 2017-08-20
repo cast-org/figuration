@@ -16,6 +16,13 @@ Use Figuration's custom button styles for actions in forms, dialogs, and more. I
 
 Figuration includes a few predefined button styles, each serving its own semantic purpose.
 
+{% callout warning %}
+Conveying Meaning to Assistive Technologies
+{:.h5}
+
+Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
+{% endcallout %}
+
 {% example html %}
 <!-- Base button style -->
 <button type="button" class="btn">Default</button>
@@ -41,9 +48,6 @@ Figuration includes a few predefined button styles, each serving its own semanti
 <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
 <button type="button" class="btn btn-link">Link</button>
 {% endexample %}
-
-{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
-{{ callout-include | markdownify }}
 
 ## Button Tags
 
@@ -139,10 +143,6 @@ Buttons will appear pressed (with a darker background, darker border, and inset 
 
 Make buttons look inactive by adding the `disabled` boolean attribute to any `<button>` element.
 
-{% callout info %}
-**Heads up!** IE9 and below render disabled buttons with gray, shadowed text that we can't override.
-{% endcallout %}
-
 {% example html %}
 <strong>Standard Buttons:</strong>
 <p>
@@ -169,9 +169,12 @@ Make buttons look inactive by adding the `disabled` boolean attribute to any `<b
 
 Disabled buttons using the `<a>` element behave a bit different:
 
-- `<a>`s don't support the `disabled` attribute, so you must add the `.disabled` class to make it visually appear disabled.
-- Some future-friendly styles are included to disable all `pointer-events` on anchor buttons. In browsers which support that property, you won't see the disabled cursor at all.
-- Disabled buttons should include the `aria-disabled="true"` attribute to indicate the state of the element to assistive technologies.
+{% callout warning %}
+Disabling Anchors
+{:.h5}
+
+Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl }}/get-started/accessibility/#disabled-anchors).
+{% endcallout %}
 
 {% example html %}
 <strong>Anchor Standard Buttons:</strong>
@@ -196,9 +199,3 @@ Disabled buttons using the `<a>` element behave a bit different:
 <a href="#" role="button" class="btn btn-outline-danger disabled" aria-disabled="true">Danger</a>
 </p>
 {% endexample %}
-
-{% callout warning %}
-#### Link Functionality Caveat
-
-The `.disabled` class uses `pointer-events: none` to try to disable the link functionality of `<a>`s, but that CSS property is not yet standardized. In addition, even in browsers that do support `pointer-events: none`, keyboard navigation remains unaffected, meaning that sighted keyboard users and users of assistive technologies will still be able to activate these links. So to be safe, add a `tabindex="-1"` attribute on these links (to prevent them from receiving keyboard focus) and use custom JavaScript to disable their functionality.
-{% endcallout %}

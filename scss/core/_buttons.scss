@@ -9,43 +9,52 @@
     text-decoration: none;
     white-space: nowrap;
     vertical-align: middle;
-    cursor: pointer;
     user-select: none;
     border: $input-border-width solid transparent;
     @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
+    @include box-shadow($btn-box-shadow, 0 0 transparent);
+    @include transition($btn-transition);
 
-    &,
+    @include hover-focus {
+        text-decoration: none;
+    }
+
+    &:focus,
+    &.focus {
+        outline: 0;
+        @if $enable-shadows {
+            box-shadow: $btn-box-shadow, $btn-focus-box-shadow;
+        } @else {
+            box-shadow: $btn-focus-box-shadow;
+        }
+    }
+
+    // Disabled comes first so active can restyle
+    &.disabled,
+    &:disabled {
+        cursor: $cursor-disabled;
+        opacity: $btn-disabled-opacity;
+        @include box-shadow(none);
+    }
+
+    &:active,
+    &.active,
+    .open > &.dropdown-toggle {
+        // Remove the gradient for the pressed/active state
+        background-image: none;
+        @include box-shadow($btn-active-box-shadow);
+    }
+
     &:active,
     &.active {
         &:focus,
         &.focus {
-            @include keyboard-focus();
+            @if $enable-shadows {
+                box-shadow: $btn-active-box-shadow, $btn-focus-box-shadow;
+            } @else {
+                box-shadow: $btn-focus-box-shadow;
+            }
         }
-    }
-
-    &:focus,
-    &.focus,
-    &:hover {
-        text-decoration: none;
-    }
-
-    &:active,
-    &.active {
-        // Remove the gradient for the pressed/active state
-        background-image: none;
-        outline: 0;
-        @include box-shadow($btn-active-box-shadow);
-    }
-
-    .open > &.dropdown-toggle {
-        @include box-shadow($btn-active-box-shadow);
-    }
-
-    &.disabled,
-    &:disabled {
-        cursor: $cursor-disabled;
-        opacity: .6;
-        @include box-shadow(none);
     }
 }
 
@@ -58,23 +67,26 @@ fieldset[disabled] a.btn {
 
 // Base colors
 .btn {
-    @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
+    @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border);
 }
 @each $theme, $colors in $context-themes {
-    $color:     map-get($colors, "control-color");
-    $bg:        map-get($colors, "control-bg");
-    $border:    map-get($colors, "control-border");
+    $color:        map-get($colors, "control-color");
+    $bg:           map-get($colors, "control-bg");
+    $border:       map-get($colors, "control-border");
+    $hover-color:  map-get($colors, "control-hover-color");
+    $hover-bg:     map-get($colors, "control-hover-bg");
+    $hover-border: map-get($colors, "control-hover-border");
 
     .btn-#{$theme} {
-        @include button-variant($color, $bg, $border);
+        @include button-variant($color, $bg, $border, $hover-color, $hover-bg, $hover-border);
     }
 }
 
 
 // Outline variant - remove all backgrounds
 @each $theme, $colors in $context-themes {
-    $color:     map-get($colors, "control-bg");
-    $border:    map-get($colors, "control-border");
+    $color:        map-get($colors, "control-bg");
+    $border:       map-get($colors, "control-border");
 
     .btn-outline-#{$theme} {
         @include button-outline-variant($color, $border);
@@ -85,7 +97,8 @@ fieldset[disabled] a.btn {
 // Link buttons
 // Make a button look and behave like a link
 .btn-link {
-    @include button-variant($link-color, transparent, transparent);
+    text-decoration: $link-decoration;
+    @include button-variant($link-color, transparent, transparent, $link-hover-color, transparent, transparent);
     @include box-shadow(none);
 
     @include hover-focus {
@@ -93,26 +106,17 @@ fieldset[disabled] a.btn {
         text-decoration: $link-hover-decoration;
     }
 
+    &.disabled,
+    &:disabled {
+        color: $link-color;
+        text-decoration: none;
+    }
+
     &:active,
     &.active,
     .open > &.dropdown-toggle {
         color: $link-hover-color;
         @include box-shadow(none);
-
-        &:focus,
-        &.focus,
-        &:hover {
-            color: darken($link-hover-color, 25%);
-        }
-    }
-
-    &:disabled {
-        @include hover-focus {
-            color: $link-color;
-            text-decoration: none;
-            background-color: transparent;
-            border-color: transparent;
-        }
     }
 }
 

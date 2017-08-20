@@ -5,22 +5,25 @@ group: widgets
 redirect_from: "/widgets/"
 ---
 
-Widgets can be included individually (using Figuration's individual `*.js` files), or all at once (using `figuration.js` or the minified `figuration.min.js`).
+Add more functionality and interactivity to to Figuration with our optional jQuery powered widgets.  Each one is designed with accessibility already built-in.
 
 {% callout warning %}
-#### Using the compiled JavaScript
+Using the compiled JavaScript
+{:.h5}
 
-Both `figuration.js` and `figuration.min.js` contain all widgets in a single file. **Include only one.**
+Both `figuration.js` and `figuration.min.js` contain all widgets and helper utilities in a single file. **Include only one.**
 {% endcallout %}
 
 {% callout danger %}
-#### One Widget per Element
+One Widget per Element
+{:.h5}
 
-Don't use multiple widgets on the same element. For example, a button should not both have a tooltip and toggle a modal. Doing so would cause a conflict in functionality and with the ARIA attributes.
+Don't use multiple widgets on the same element. For example, a button should not both have a tooltip and toggle a modal. Doing so would cause a conflict in functionality and with the <abbr title="Accessible Rich Internet Applications">ARIA</abbr> attributes.
 {% endcallout %}
 
 {% callout info %}
-#### Widget Dependencies
+Widget Dependencies
+{:.h5}
 
 Some widgets and CSS components depend on other widgets. If you include widgets individually, make sure to check for these dependencies in the docs. Also note that all widgets depend on jQuery (this means jQuery must be included **before** the widget files). Figuration is currently only tested/supported on the latest version of jQuery.
 {% endcallout %}
@@ -31,6 +34,14 @@ Some widgets and CSS components depend on other widgets. If you include widgets 
 * ToC goes here
 {:toc}
 
+## Util
+
+All of Figuration's widgets depend on `util.js` and it has to be included alongside the other JS files. If you're using the compiled (or minified) `figuration.js`, there is no need to include this---it's already there.
+
+`util.js` includes utility functions and a basic helper for `transitionEnd` events as well as a CSS transition emulator. It's used by the other plugins to check for CSS transition support and to catch hanging transitions.
+
+Also, some of the widgets use [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) utilities to watch for and respond to DOM changes.
+
 ## No Conflict
 Figuration has opted to not go with a .noConflict mode.  Due to crosstalk between some of the widgets, we extended the namespaces by marking all functionalty with `CFW` or `cfw`, as in **C**AST **F**iguration **W**idget.
 
@@ -40,11 +51,22 @@ This is to hopefully reduce the chance of conflicting with other frameworks and 
 
 ## Scoped Initilization
 
-Initizliaing the widgets in AJAX inserted content can be accomplished easily by calling the `$().CFW_Init()` function.  This also happens automatically at page load using `document.body` as the initial scope.
+Initializing the widgets in AJAX inserted content can be accomplished easily by calling the `$().CFW_Init()` function.  Widgets set with data attributes on both the specified element, and it's descendants, will be initialized.
+
+This function that also called at page load using `document.body` as the initial scope.
 
 {% highlight js %}
 $("#myContainer").CFW_Init();
 // Where '#myContainer' is the region of new content to initialize the Figuration widgets.
+{% endhighlight %}
+
+## Scoped Dispose
+
+In those cases where you are need to call the `dispose` method on every Figuration widget for a given region, you can use the `$().CFW_Dispose()` function.  Any widget encountered on the specified element, and it's descendants, will have their `dispose` methods invoked.
+
+{% highlight js %}
+$("#myContainer").CFW_Dispose();
+// Where '#myContainer' is the region to `dispose` of Figuration widgets.
 {% endhighlight %}
 
 ## Data Attributes
@@ -111,8 +133,38 @@ $('#myModal').on('beforeShow.cfw.modal', function(e) {
 });
 {% endhighlight %}
 
+## Asynchronous Functions and Transitions
+
+All programmatic API methods are **asynchronous** and returns to the caller once the transition is started but **before it ends**.
+
+In order to execute an action once the transition is complete, you can listen to the corresponding event.
+
+{% highlight js %}
+$('#myCollapse').on('afterShow.cfw.collapse', function(e) {
+  // Action to execute once the collapsible area is expanded
+})
+{% endhighlight %}
+
+In addition a method call on a **transitioning component will be ignored**.
+
+{% highlight js %}
+$('#myCollapse').on('afterShow.cfw.carousel', function(e) {
+  $('#myCollapse').CFW_Collapse('hide'); // Will hide the collapsible area as soon as the transition for opening the area is finished
+})
+
+$('#myCollapse').CFW_Collapse('show'); // Will start opening the collapsible area and returns to the caller
+$('#myCollapse').CFW_Collapse('hide'); // ** Will be ignored, as the opening transition has not completed **
+{% endhighlight %}
+
 ## No Fallbacks
+
 Figuration's widgets don't fallback or degrade gracefully when JavaScript is disabled. If you care about the user experience in this case, use `<noscript>` to explain the situation (and how to re-enable JavaScript) to your users, and/or add your own custom fallbacks.
+
+## Dipose Methods
+
+Every widget has a `dispose` method that should remove any event listeners and data, as well as nullify any constructed JavaScript variables associated with a given widget.  Certain widgets will also remove their dynamically created content or controls from the DOM.
+
+While most likely not needed in everyday use, there may be specific circumstances when this might be useful.  For example, if you are doing large amounts of dynamic content, in order to help with memory garbage collection, it might be beneficial to call the `dispose` on a widget before you remove the content from the DOM.
 
 ## Accessibility
 
@@ -129,7 +181,8 @@ To provide screen readers with high levels of accessibility the widgets will aut
 This was done to alleviate the complexity of any generated source code&mdash;the data api adds enough on its own&mdash;and remove concerns over which attributes are needed for the developers and content authors.
 
 {% callout warning %}
-#### `role` Attributes on Container Items
+`role` Attributes on Container Items
+{:.h5}
 
 Container items at a higher level from a widget component might need to have a `role` specificied.  These are not handled by the widget code and will need to be used as needed.
 {% endcallout %}

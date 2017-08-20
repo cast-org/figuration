@@ -1,26 +1,27 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v2.0.0): equalize.js
+ * Figuration (v3.0.0): equalize.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-
-// Significant portions borrowed from Foundation v5.5.2
-// http://foundation.zurb.com/
 
 (function($) {
     'use strict';
 
     var CFW_Widget_Equalize = function(element, options) {
         this.$element = $(element);
+        this.$target = null;
         this.$window = $(window);
+        this.instance = '';
 
-        this.settings = $.extend({}, CFW_Widget_Equalize.DEFAULTS, this._parseDataAttr(), options);
+        var parsedData = this.$element.CFW_parseData('equalize', CFW_Widget_Equalize.DEFAULTS);
+        this.settings = $.extend({}, CFW_Widget_Equalize.DEFAULTS, parsedData, options);
 
         this._init();
     };
 
     CFW_Widget_Equalize.DEFAULTS = {
+        target   : '',
         throttle : 250,     // Throttle speed to limit event firing
         stack    : false,   // Equalize items when stacked
         row      : false,   // Equalize items by row
@@ -29,10 +30,32 @@
 
     CFW_Widget_Equalize.prototype = {
         _init : function() {
-            this.$window.on('resize.cfw.equalize', this._throttle($.proxy(this.update, this), this.settings.throttle));
+            // Get group ID
+            var groupID = this.settings.target;
+            if ((groupID === undefined) || (groupID.length <= 0)) { return false; }
 
-            this._trigger('init.cfw.equalize');
-            this.update();
+            // Find target by id/css selector
+            this.$target = $(groupID, this.$element);
+            if (!this.$target.length) {
+                // Get group items
+                this.$target = $('[data-cfw-equalize-group="' + groupID + '"]', this.$element);
+            }
+            if (!this.$target.length) { return; }
+
+            this.$target.CFW_mutationListen();
+            var isNested = (!this.$element.parent().closest('[data-cfw="equalize"]').length) ? false : true;
+            if (!isNested) {
+                this.$element
+                    .attr('data-cfw-mutate', '')
+                    .on('mutate.cfw.mutate', $.proxy(this.update, this));
+            }
+
+            this.instance = $('<div/>').CFW_getID('cfw-equalize');
+            this.$window.on('resize.cfw.equalize.' + this.instance, $.CFW_throttle($.proxy(this.update, this), this.settings.throttle));
+
+            this.$element.attr('data-cfw', 'equalize');
+            this.$element.CFW_trigger('init.cfw.equalize');
+            this.update(true);
         },
 
         equalize : function(nest) {
@@ -44,25 +67,20 @@
             if (nest === undefined) {
                 nest = false;
             }
-            if (!nest && this.$element.find('[data-cfw="equalize"]').length > 0) {
+            var $nested = this.$element.find('[data-cfw="equalize"]');
+            var isNested = false;
+            if (!nest) {
+                $nested.each(function() {
+                    var data = $(this).data('cfw.equalize');
+                    if (data) { isNested = true; }
+                });
+                if (isNested) { return; }
+            }
+            if (!this.$element.CFW_trigger('beforeEqual.cfw.equalize')) {
                 return;
             }
-            if (!this._trigger('beforeEqual.cfw.equalize')) {
-                return;
-            }
 
-            // Get group ID
-            var groupID = this.settings.target;
-            if ((groupID === undefined) || (groupID.length <= 0)) { return false; }
-
-            // Find target by id/css selector
-            var $targetElm = $(this.settings.target, this.$element);
-            if (!$targetElm.length) {
-                // Get group items
-                $targetElm = $('[data-cfw-equalize-group="' + groupID + '"]', this.$element);
-            }
-            $targetElm = $targetElm.filter(':visible');
-
+            var $targetElm = this.$target.filter(':visible');
             var total = $targetElm.length;
             if (total <= 0) { return false; }
 
@@ -103,18 +121,22 @@
                             return false;
                         }
                     });
-                    if (isStacked) {
-                        return;
-                    }
                 }
-
-                this._applyHeight($targetElm);
+                if (!isStacked) {
+                    this._applyHeight($targetElm);
+                }
             }
 
-            this._trigger('afterEqual.cfw.equalize');
+            this.$element.CFW_trigger('afterEqual.cfw.equalize');
 
             // Handle any nested equalize
-            this.$element.parent().closest('[data-cfw="equalize"]').CFW_Equalize('update', true);
+            this.$element.parent().closest('[data-cfw="equalize"]').each(function() {
+                var $this = $(this);
+                var data = $this.data('cfw.equalize');
+                if (typeof data === 'object') {
+                    $this.CFW_Equalize('update', true);
+                }
+            });
         },
 
         _applyHeight : function($nodes, callback) {
@@ -181,7 +203,7 @@
             }
 
             function addEvent() {
-                $image.one('load', hasLoaded);
+                $image.off('load').one('load', hasLoaded);
 
                 if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
                     var src = $image.attr('src');
@@ -205,49 +227,19 @@
             }
         },
 
-        _throttle : function(fn, threshhold, scope) {
-            /* From: http://remysharp.com/2010/07/21/throttling-function-calls/ */
-            threshhold || (threshhold = 250);
-            var last;
-            var deferTimer;
-            return function() {
-                var context = scope || this;
+        dispose : function() {
+            this.$window.off('.cfw.equalize.' +  this.instance);
+            this.$element
+                .off('mutate.cfw.mutate')
+                .removeAttr('data-cfw-mutate')
+                .removeData('cfw.equalize');
+            this.$target.CFW_mutationIgnore();
 
-                var now = +new Date();
-                var args = arguments;
-                if (last && now < last + threshhold) {
-                    // hold on to it
-                    clearTimeout(deferTimer);
-                    deferTimer = setTimeout(function() {
-                        last = now;
-                        fn.apply(context, args);
-                    }, threshhold);
-                } else {
-                    last = now;
-                    fn.apply(context, args);
-                }
-            };
-        },
-
-        _parseDataAttr : function() {
-            var parsedData = {};
-            var data = this.$element.data();
-
-            if (typeof data.cfwEqualizeTarget   !== 'undefined') { parsedData.target   = data.cfwEqualizeTarget;   }
-            if (typeof data.cfwEqualizeThrottle !== 'undefined') { parsedData.throttle = data.cfwEqualizeThrottle; }
-            if (typeof data.cfwEqualizeStack    !== 'undefined') { parsedData.stack    = data.cfwEqualizeStack;    }
-            if (typeof data.cfwEqualizeRow      !== 'undefined') { parsedData.row      = data.cfwEqualizeRow;      }
-            if (typeof data.cfwEqualizeMinimum  !== 'undefined') { parsedData.minimum  = data.cfwEqualizeMinimum;  }
-            return parsedData;
-        },
-
-        _trigger : function(eventName) {
-            var e = $.Event(eventName);
-            this.$element.trigger(e);
-            if (e.isDefaultPrevented()) {
-                return false;
-            }
-            return true;
+            this.$element = null;
+            this.$target = null;
+            this.$window = null;
+            this.instance = null;
+            this.settings = null;
         }
     };
 

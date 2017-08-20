@@ -1,15 +1,14 @@
 ﻿<!DOCTYPE html>
 <html lang="en-us">
 <head>
-<title>Figuration - Flexbox Input Group</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>Figuration - Flexbox Input Group</title>
 
 <link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
 
-<script type="text/javascript" src="../vendor/jquery.min.js"></script>
+<script type="text/javascript" src="../../docs/assets/js/vendor/jquery.min.js"></script>
 <script type="text/javascript" src="../../dist/js/figuration.js"></script>
 
 <script type="text/javascript" src="../../docs/assets/js/vendor/holder.min.js"></script>
@@ -36,84 +35,54 @@ Holder.addTheme("gray", {
 <div class="container"><div class="row"><div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
     <h1>Input Group</h1>
 
-    <p>
-        Here we are testing the two different styles for input group layouts using the opt-in flexbox classes.
-        They are designated as follows:
-    </p>
-    <ul>
-        <li><strong>normal:</strong> float model</li>
-        <li><strong>flex:</strong> opt-in flexbox model</li>
-    </ul>
-
-normal:
 <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
-</div>
-
-flex:
-<div class="input-group input-group-flex">
-  <span class="input-group-addon" id="basic-addon2">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon2">
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
 </div>
 
 <hr />
 
-normal:
 <div class="input-group">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon3">
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon3">
   <span class="input-group-addon" id="basic-addon3">@example.com</span>
 </div>
 
-flex:
-<div class="input-group input-group-flex">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon4">
-  <span class="input-group-addon" id="basic-addon4">@example.com</span>
-</div>
 
 <hr />
 
-normal:
 <label for="basic-url0">Your vanity URL</label>
 <div class="input-group">
   <span class="input-group-addon" id="basic-addon5">https://example.com/users/</span>
   <input type="text" class="form-control" id="basic-url0" aria-describedby="basic-addon5">
 </div>
 
-flex:
-<label for="basic-url1">Your vanity URL</label>
-<div class="input-group input-group-flex">
-  <span class="input-group-addon" id="basic-addon6">https://example.com/users/</span>
-  <input type="text" class="form-control" id="basic-url1" aria-describedby="basic-addon6">
+
+<hr />
+
+<div class="form-group">
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon7">@</span>
+    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon8">
+  </div>
+</div>
+<div class="form-group">
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon8">@</span>
+    <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon8">
+  </div>
 </div>
 
 <hr />
 
-normal:
 <div class="input-group">
   <span class="input-group-addon">$</span>
   <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
   <span class="input-group-addon">.00</span>
 </div>
 
-flex:
-<div class="input-group input-group-flex">
-  <span class="input-group-addon">$</span>
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-  <span class="input-group-addon">.00</span>
-</div>
-
 <hr />
 
-normal:
 <div class="input-group">
-  <span class="input-group-addon">$</span>
-  <span class="input-group-addon">0.00</span>
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-</div>
-
-flex:
-<div class="input-group input-group-flex">
   <span class="input-group-addon">$</span>
   <span class="input-group-addon">0.00</span>
   <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
@@ -121,16 +90,7 @@ flex:
 
 <hr />
 
-normal:
 <div class="input-group">
-  <span class="input-group-addon">
-    <input type="checkbox" aria-label="Checkbox for following text input">
-  </span>
-  <input type="text" class="form-control" aria-label="Text input with checkbox">
-</div>
-
-flex:
-<div class="input-group input-group-flex">
   <span class="input-group-addon">
     <input type="checkbox" aria-label="Checkbox for following text input">
   </span>
@@ -139,16 +99,7 @@ flex:
 
 <hr />
 
-normal:
 <div class="input-group">
-  <span class="input-group-addon">
-    <input type="radio" aria-label="Radio button for following text input">
-  </span>
-  <input type="text" class="form-control" aria-label="Text input with radio button">
-</div>
-
-flex:
-<div class="input-group input-group-flex">
   <span class="input-group-addon">
     <input type="radio" aria-label="Radio button for following text input">
   </span>
@@ -157,7 +108,6 @@ flex:
 
 <hr />
 
-normal:
 <div class="input-group">
   <span class="input-group-addon">
     <input type="checkbox" aria-label="Checkbox for following text input">
@@ -166,62 +116,27 @@ normal:
   <input type="text" class="form-control" aria-label="Text input with checkbox">
 </div>
 
-flex:
-<div class="input-group input-group-flex">
-  <span class="input-group-addon">
-    <input type="checkbox" aria-label="Checkbox for following text input">
-  </span>
-  <span class="input-group-addon">$</span>
-  <input type="text" class="form-control" aria-label="Text input with checkbox">
-</div>
-
 <hr />
 
-normal:
 <div class="input-group">
   <span class="input-group-addon">$</span>
   <span class="input-group-addon">0.00</span>
   <input type="text" class="form-control" aria-label="Text input with radio button">
 </div>
 
-flex:
-<div class="input-group input-group-flex">
-  <span class="input-group-addon">$</span>
-  <span class="input-group-addon">0.00</span>
-  <input type="text" class="form-control" aria-label="Text input with radio button">
-</div>
-
 <hr />
 
-normal:
 <div class="input-group">
   <span class="input-group-btn">
     <button class="btn" type="button">Go!</button>
   </span>
-  <input type="text" class="form-control" placeholder="Search for...">
-</div>
-
-flex:
-<div class="input-group input-group-flex">
-  <span class="input-group-btn">
-    <button class="btn" type="button">Go!</button>
-  </span>
-  <input type="text" class="form-control" placeholder="Search for...">
+  <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
 </div>
 
 <hr />
 
-normal:
 <div class="input-group">
-  <input type="text" class="form-control" placeholder="Search for...">
-  <span class="input-group-btn">
-    <button class="btn" type="button">Go!</button>
-  </span>
-</div>
-
-flex:
-<div class="input-group input-group-flex">
-  <input type="text" class="form-control" placeholder="Search for...">
+  <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
   <span class="input-group-btn">
     <button class="btn" type="button">Go!</button>
   </span>
@@ -229,23 +144,11 @@ flex:
 
 <hr />
 
-normal:
 <div class="input-group">
   <span class="input-group-btn">
     <button class="btn" type="button">Hate it</button>
   </span>
-  <input type="text" class="form-control" placeholder="Product name">
-  <span class="input-group-btn">
-    <button class="btn" type="button">Love it</button>
-  </span>
-</div>
-
-flex:
-<div class="input-group input-group-flex">
-  <span class="input-group-btn">
-    <button class="btn" type="button">Hate it</button>
-  </span>
-  <input type="text" class="form-control" placeholder="Product name">
+  <input type="text" class="form-control" placeholder="Product name" aria-label="Product name">
   <span class="input-group-btn">
     <button class="btn" type="button">Love it</button>
   </span>
@@ -253,23 +156,13 @@ flex:
 
 <hr />
 
-normal:
 <div class="input-group">
-    <div class="input-group-addon">%</div>
-    <textarea class="form-control" rows="5"></textarea>
-</div>
-
-flex:
-<div class="input-group input-group-flex">
     <div class="input-group-addon">%</div>
     <textarea class="form-control" rows="5"></textarea>
 </div>
 
 <hr />
 
-<strong>Not supported:</strong> - buttons w/ textareas<br />
-
-normal:
 <div class="input-group">
     <textarea class="form-control" rows="5"></textarea>
     <span class="input-group-btn">
@@ -277,13 +170,221 @@ normal:
     </span>
 </div>
 
-flex:
-<div class="input-group input-group-flex">
-    <textarea class="form-control" rows="5"></textarea>
-    <span class="input-group-btn">
-        <button class="btn" type="button">Go!</button>
-    </span>
+<div class="d-flex">
+  <div class="input-group">
+    <div class="input-group-btn">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Action
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div role="separator" class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Separated link</a>
+      </div>
+    </div>
+    <input type="text" class="form-control" aria-label="Text input with dropdown button">
+    <span class="input-group-addon">.00</span>
+  </div>
+  <div style="width:100px;height:100px;background-color:red;"></div>
 </div>
+</hr >
+
+<hr />
+
+<h3>Input group sizes</h3>
+
+<div class="input-group input-group-xl">
+  <span class="input-group-addon" id="sizing-addon-n1">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon-n1">
+  <span class="input-group-btn">
+      <button class="btn" type="button">Go!</button>
+  </span>
+</div>
+<div class="input-group input-group-lg">
+  <span class="input-group-addon" id="sizing-addon-n2">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon-n2">
+  <span class="input-group-btn">
+      <button class="btn" type="button">Go!</button>
+  </span>
+</div>
+<div class="input-group">
+  <span class="input-group-addon" id="sizing-addon-n3">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon-n3">
+  <span class="input-group-btn">
+      <button class="btn" type="button">Go!</button>
+  </span>
+</div>
+<div class="input-group input-group-sm">
+  <span class="input-group-addon" id="sizing-addon-n4">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon-n4">
+  <span class="input-group-btn">
+      <button class="btn" type="button">Go!</button>
+  </span>
+</div>
+<div class="input-group input-group-xs">
+  <span class="input-group-addon" id="sizing-addon-n5">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon-n5">
+  <span class="input-group-btn">
+      <button class="btn" type="button">Go!</button>
+  </span>
+</div>
+
+<h3>Feedback</h3>
+
+<div class="input-group form-group has-success">
+  <input type="text" class="form-control" placeholder="Username">
+  <span class="input-group-btn">
+    <button class="btn btn-success" type="button">Go!</button>
+  </span>
+</div>
+
+<div class="input-group form-group has-success">
+  <input type="text" class="form-control" placeholder="Username">
+  <span class="input-group-btn">
+    <button class="btn btn-outline-secondary" type="button">Go!</button>
+  </span>
+</div>
+
+<div class="input-group form-group has-success">
+  <input type="text" class="form-control" placeholder="Username">
+  <span class="input-group-btn">
+    <button class="btn" type="button">Go!</button>
+  </span>
+</div>
+
+<div class="input-group form-group has-success">
+  <span class="input-group-btn">
+    <button class="btn btn-outline-secondary" type="button">Go!</button>
+  </span>
+  <input type="text" class="form-control" placeholder="Username">
+</div>
+
+<div class="input-group form-group has-success">
+  <span class="input-group-btn">
+    <button class="btn" type="button">Go!</button>
+  </span>
+  <input type="text" class="form-control" placeholder="Username">
+</div>
+
+<div class="input-group form-group has-danger">
+  <input type="text" class="form-control" placeholder="Username">
+  <span class="input-group-btn">
+    <button class="btn btn-danger" type="button">Go!</button>
+  </span>
+</div>
+
+<div class="input-group form-group has-danger">
+  <input type="text" class="form-control" placeholder="Username">
+  <span class="input-group-btn">
+    <button class="btn btn-outline-secondary" type="button">Go!</button>
+  </span>
+</div>
+
+<div class="input-group form-group has-danger">
+  <input type="text" class="form-control" placeholder="Username">
+  <span class="input-group-btn">
+    <button class="btn" type="button">Go!</button>
+  </span>
+</div>
+
+<div class="input-group form-group has-danger">
+  <span class="input-group-btn">
+    <button class="btn btn-outline-secondary" type="button">Go!</button>
+  </span>
+  <input type="text" class="form-control" placeholder="Username">
+</div>
+
+<div class="input-group form-group has-danger">
+  <span class="input-group-btn">
+    <button class="btn" type="button">Go!</button>
+  </span>
+  <input type="text" class="form-control" placeholder="Username">
+</div>
+
+<h3>Margin Check</h3>
+
+<form class="form-inline mb-1">
+    <div class="input-group">
+        <span class="input-group-addon">Something:</span>
+        <span class="input-group-btn">
+            <button class="btn btn-outline-primary" type="button">All</button>
+        </span>
+        <span class="input-group-btn">
+            <button class="btn btn-outline-success" type="button">Yes</button>
+        </span>
+        <span class="input-group-btn">
+            <button class="btn btn-outline-danger" type="button">No</button>
+        </span>
+    </div>
+</form>
+
+<form class="form-inline mb-1">
+    <div class="input-group">
+        <span class="input-group-addon">Something:</span>
+        <span class="input-group-btn">
+            <button class="btn btn-outline-primary" type="button">All</button>
+        </span>
+		<span class="input-group-btn">
+            <button class="btn btn-outline-primary" type="button">All</button>
+        </span>
+		<input type="text" class="form-control">
+		<input type="text" class="form-control">
+        <span class="input-group-btn">
+            <button class="btn btn-outline-success" type="button">Yes</button>
+        </span>
+        <span class="input-group-btn">
+            <button class="btn btn-outline-danger" type="button">No</button>
+        </span>
+    </div>
+</form>
+
+<form class="form-inline mb-1">
+    <div class="input-group">
+        <span class="input-group-addon">Something:</span>
+        <input type="text" class="form-control">
+        <input type="text" class="form-control">
+        <span class="input-group-btn">
+            <button class="btn btn-outline-primary" type="button">Ok</button>
+        </span>
+        <span class="input-group-btn">
+            <button class="btn btn-outline-primary" type="button">Ok</button>
+        </span>
+
+    </div>
+</form>
+
+<form class="form-inline mb-1">
+    <div class="input-group">
+        <span class="input-group-addon">Something:</span>
+        <span class="input-group-btn">
+            <button class="btn btn-outline-primary" type="button">Ok</button>
+        </span>
+        <span class="input-group-btn">
+            <button class="btn btn-outline-primary" type="button">Ok</button>
+        </span>
+        <input type="text" class="form-control">
+        <input type="text" class="form-control">
+    </div>
+</form>
+
+<form class="form-inline mb-1">
+    <div class="input-group">
+        <span class="input-group-addon">Something:</span>
+        <span class="input-group-btn" data-cfw="buttons">
+            <label class="btn btn-outline-primary">
+                <input type="radio" checked>Ok
+            </label>
+            <label class="btn btn-outline-success">
+                <input type="radio">Yes
+            </label>
+            <label class="btn btn-outline-danger">
+                <input type="radio">No
+            </label>
+        </span>
+    </div>
+</form>
 
 </div></div></div>
 

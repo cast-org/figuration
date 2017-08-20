@@ -7,7 +7,7 @@ redirect_from: "/content/"
 
 Part of Figuration's job is to provide an elegant, consistent, and simple baseline to build upon. We use Reboot, a collection of element-specific CSS changes in a single file, to kickstart that.
 
-Borrowed from Bootstrap, Reboot builds upon Normalize, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some `<table>` styles for a simpler baseline and later provide `.table`, `.table-bordered`, and more.
+Borrowed from Bootstrap, Reboot heavily builds upon Normalize.css, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some `<table>` styles for a simpler baseline and later provide `.table`, `.table-bordered`, and more.
 
 ## Contents
 {:.no_toc}
@@ -29,8 +29,8 @@ Here are our guidelines and reasons for choosing what to override in Reboot:
 The `<html>` and `<body>` elements are updated to provide better page-wide defaults. More specifically:
 
 - The `box-sizing` is globally set on every element---including `*:before` and `*:after`, to `border-box`. This ensures that the declared width of element is never exceeded due to padding or border.
-- A base `font-size: 100%` (assuming a 16px browser default) is declared on the `<html>` and `font-size: 1rem` on the `<body>` for easy responsive type-scaling via media queries.
-- The `<body>` also sets a global `font-family` and `line-height`. This is inherited later by some form elements to prevent font inconsistencies.
+- A base `font-size: 100%` (assuming a 16px browser default) is declared on the `<html>` and `font-size: 1rem` on the `<body>` for easy responsive type-scaling via media queries while respecting user preferences allowing for a more accessible approach.
+- The `<body>` also sets a global `font-family`, `line-height`, and `text-align`. This is inherited later by some form elements to prevent font inconsistencies.
 - For safety, the `<body>` has a declared `background-color`, defaulting to `#fff`.
 
 ## Native Font Stack
@@ -41,16 +41,16 @@ The default web fonts (Helvetica Neue, Helvetica, and Arial) have been dropped i
 $font-family-sans-serif:
   // Safari for OS X and iOS (San Francisco)
   -apple-system,
-  // Chrome >= 56 for OS X (San Francisco), Windows, Linux and Android
-  system-ui,
-  // Chrome < 56 for OS X (San Francisco)
+  // Chrome for OS X (San Francisco)
   BlinkMacSystemFont,
   // Windows
   "Segoe UI",
   // Android
   "Roboto",
   // Basic web fallback
-  "Helvetica Neue", Arial, sans-serif !default;
+  "Helvetica Neue", Arial, sans-serif,
+  // Emoji fonts
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 {% endhighlight %}
 
 This `font-family` is applied to the `<body>` and automatically inherited globally throughout Figuration. To switch the global `font-family`, update `$font-family-base` and recompile Figuration.
@@ -311,19 +311,20 @@ The `<abbr>` element receives basic styling to make it stand out amongst paragra
 
 ## HTML5 `[hidden]` Attribute
 
-HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden), which is styled as `display: none` by default. Borrowing an idea from [PureCSS](http://purecss.io), we improve upon this default by making `[hidden] { display: none !important; }` to help prevent its `display` from getting accidentally overridden. While `[hidden]` isn't natively supported by IE9-10, the explicit declaration in our CSS gets around that problem.
+HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden), which is styled as `display: none` by default. Borrowing an idea from [PureCSS](https://purecss.io), we improve upon this default by making `[hidden] { display: none !important; }` to help prevent its `display` from getting accidentally overridden. While `[hidden]` isn't natively supported by IE10, the explicit declaration in our CSS gets around that problem.
 
 {% highlight html %}
 <input type="text" hidden>
 {% endhighlight %}
 
 {% callout warning %}
-#### jQuery Incompatibility
+jQuery Incompatibility
+{:.h5}
 
 `[hidden]` is not compatible with jQuery's `$(...).hide()` and `$(...).show()` methods. This could potentially change in jQuery 3, but we're not holding our breath. Therefore, we don't currently especially endorse `[hidden]` over other techniques for managing the `display` of elements.
 {% endcallout %}
 
-To merely toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document, use [the `.invisible` class]({{ site.baseurl }}/utilities/screen-readers-visibility/#invisible-content) instead.
+To merely toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document, use [the `.invisible` class]({{ site.baseurl }}/utilities/visibility/) instead.
 
 ## Click Delay Optimization for Touch
 

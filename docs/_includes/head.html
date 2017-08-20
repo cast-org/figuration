@@ -1,8 +1,7 @@
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta name="description" content="CAST Figuration - A feature rich, responsive, mobile first, accessible, front-end framework based on Bootstrap.">
+<meta name="description" content="CAST Figuration - A feature rich, responsive, mobile first, accessible, front-end framework.">
 
 <title>
   {% if page.layout == "home" %}
@@ -18,26 +17,33 @@
 
 <!-- Core CSS -->
 {% if site.github %}
-  <link href="{{ site.baseurl }}/dist/css/figuration.min.css" rel="stylesheet">
+  <link href="{{ site.baseurl }}/dist/css/figuration.min.css" rel="stylesheet" id="cssCore">
 {% else %}
-  <link href="{{ site.baseurl }}/dist/css/figuration.css" rel="stylesheet">
+  <link href="{{ site.baseurl }}/dist/css/figuration.css" rel="stylesheet" id="cssCore">
 {% endif %}
 
-{% if site.github %}
 <!-- Algolia DocSearch CSS -->
+{% if site.github %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 {% endif %}
 
 <!-- Docs CSS -->
 {% if site.github %}
-  <link href="{{ site.baseurl }}/assets/css/docs.min.css" rel="stylesheet">
+  <link href="{{ site.baseurl }}/assets/css/docs.min.css" rel="stylesheet" id="cssDocs">
 {% else %}
-  <link href="{{ site.baseurl }}/assets/css/docs.css" rel="stylesheet">
+  <link href="{{ site.baseurl }}/assets/css/docs.css" rel="stylesheet" id="cssDocs">
 {% endif %}
 
 <!-- jQuery -->
 <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="{{ site.baseurl }}/assets/js/vendor/jquery.min.js"><\/script>')</script>
+
+<!-- MutationObserver Polyfill -->
+{% if site.github %}
+  <script src="{{ site.cdn.mutate }}" integrity="{{ site.cdn.mutate_hash }}" crossorigin="anonymous"></script>
+{% else %}
+  <script src="{{ site.baseurl }}/assets/js/MutationObserver.min.js"></script>
+{% endif %}
 
 <!-- Core JS -->
 {% if site.github %}
@@ -56,8 +62,7 @@
   <script src="{{ site.baseurl }}/assets/js/src/docs.js"></script>
 {% endif %}
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="{{ site.baseurl }}/assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- IE emulation mode warning -->
 <script src="{{ site.baseurl }}/assets/js/ie-emulation-modes-warning.js"></script>
 
 <script>

@@ -1,20 +1,15 @@
 // Container widths
-//
 // Set the container width, and override it for fixed navbars in media queries.
-
 @if $enable-grid-classes {
     .container {
         @include make-container();
         @include make-container-max-widths();
-        max-width: 100%;
     }
 }
 
 // Fluid container
-//
-// Utilizes the mixin meant for fixed width containers, but without any defined
-// width for fluid, full width layouts.
-
+// Utilizes the mixin meant for fixed width containers, but with
+// 100% width for fluid, full width layouts.
 @if $enable-grid-classes {
     .container-fluid {
         @include make-container();
@@ -22,9 +17,7 @@
 }
 
 // Row
-//
 // Rows contain and clear the floats of your columns.
-
 @if $enable-grid-classes {
     .row {
         @include make-row();
@@ -36,112 +29,16 @@
         margin-right: 0;
         margin-left: 0;
 
-        > [class*="col-"],
-        > .col {
+        > .col,
+        > [class*="col-"] {
             padding-right: 0;
             padding-left: 0;
-        }
-    }
-
-    @if $enable-flex-opt {
-        .row-flex {
-            display: flex;
-            flex-wrap: wrap;
-
-            // Disable clearfix or strange things happen with flex alignments
-            @include clearfix-disable();
         }
     }
 }
 
 // Columns
-//
 // Common styles for grid columns
-
 @if $enable-grid-classes {
-    // Use a placeholder selector to extend upon
-    // Additional per breakpoint placeholders are created in the `make-grid-columns()` mixin
-    %col {
-        position: relative;
-        min-height: 1px; // Prevent collapsing
-    }
-
-    // In flexbox modes, prevent columns from becoming too narrow when at
-    // smaller grid tiers by always setting `width: 100%;`. This works
-    // because we use `flex-basis` values  (using shorthand property `flex`)
-    // later on to override this initial width.
-    %col-flex {
-        width: 100%;
-    }
-
-    @each $breakpoint in map-keys($grid-breakpoints) {
-        $bprule: breakpoint-designator($breakpoint);
-
-        .col#{$bprule} {
-            @extend %col;
-        }
-
-        @for $i from 1 through $grid-columns {
-            .col#{$bprule}-#{$i} {
-                @extend %col;
-
-                @if $enable-flex-full {
-                    @extend %col-flex;
-                }
-            }
-
-            @if $enable-flex-opt {
-                .row-flex .col#{$bprule}-#{$i} {
-                    @extend %col-flex;
-                }
-            }
-        }
-
-        // Default for basic `.col-{bp}` classes for equal-width flexbox columns
-        @if $enable-flex-full {
-            .col#{$bprule} {
-                @extend %col;
-                @extend %col-flex;
-            }
-        }
-
-        @if $enable-flex-opt {
-            .row-flex .col#{$bprule} {
-                @extend %col-flex;
-            }
-        }
-    }
-
-    // Create responsive grid gutters
-    @each $breakpoint in map-keys($grid-breakpoints) {
-        $bprule: breakpoint-designator($breakpoint);
-
-        @include check-gutter-change($breakpoint, $grid-gutter-widths) {
-            %col-gutter {
-                @include media-breakpoint-up($breakpoint) {
-                    $gutter: map-get($grid-gutter-widths, $breakpoint);
-                    padding-right: ($gutter / 2);
-                    padding-left:  ($gutter / 2);
-                }
-            }
-        }
-
-        .col#{$bprule} {
-            @extend %col-gutter;
-        }
-
-        @for $i from 1 through $grid-columns {
-            .col#{$bprule}-#{$i} {
-                @extend %col-gutter;
-            }
-        }
-
-        @if $enable-flex-full or $enable-flex-opt {
-            .col#{$bprule}-auto {
-                @extend %col-gutter;
-            }
-        }
-    }
-
     @include make-grid-columns();
 }

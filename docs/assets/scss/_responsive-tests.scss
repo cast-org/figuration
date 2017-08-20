@@ -2,8 +2,8 @@
 
 // Responsive tests
 
-// Responsive (scrollable) doc tables
-.table-responsive .highlight pre {
+// Doc tables
+.table .highlight pre {
     white-space: normal;
 }
 
@@ -67,27 +67,27 @@
 }
 
 @include media-breakpoint-only(xs) {
-    .hide-xs-only {
+    .d-xs-only {
         display: none !important;
     }
 }
 @include media-breakpoint-only(sm) {
-    .hide-sm-only {
+    .d-sm-only {
         display: none !important;
     }
 }
 @include media-breakpoint-only(md) {
-    .hide-md-only {
+    .d-md-only {
         display: none !important;
     }
 }
 @include media-breakpoint-only(lg) {
-    .hide-lg-only {
+    .d-lg-only {
         display: none !important;
     }
 }
 @include media-breakpoint-only(xl) {
-    .hide-xl-only {
+    .d-xl-only {
         display: none !important;
     }
 }

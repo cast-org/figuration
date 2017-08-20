@@ -1,34 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-us">
 <head>
-<title>Figuration - Flexbox Button Group</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>Figuration - Flexbox Button Group</title>
 
 <link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
 
-<script type="text/javascript" src="../vendor/jquery.min.js"></script>
+<script type="text/javascript" src="../../docs/assets/js/vendor/jquery.min.js"></script>
 <script type="text/javascript" src="../../dist/js/figuration.js"></script>
-
-<script type="text/javascript" src="../../docs/assets/js/vendor/holder.min.js"></script>
-<script type="text/javascript">
-Holder.addTheme("gray", {
-    bg: "#999",
-    fg: "#111",
-    size: 12,
-    font: 'sans-serif',
-    fontweight: "normal"
-});
-</script>
-
-<style>
-
-.input-group {
-    margin-bottom: 1rem;
-}
-</style>
 
 </head>
 <body>
@@ -36,44 +17,22 @@ Holder.addTheme("gray", {
 <div class="container">
     <h1>Button Group</h1>
 
-    <p>
-        Here we are testing the two different styles for input group layouts using the opt-in flexbox classes.
-        They are designated as follows:
-    </p>
-    <ul>
-        <li><strong>normal:</strong> float model</li>
-        <li><strong>flex:</strong> opt-in flexbox model</li>
-    </ul>
-
-    normal:
-    <br />
     <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button" class="btn">Left</button>
         <button type="button" class="btn">Middle</button>
         <button type="button" class="btn">Right</button>
     </div>
-    <br />
-
-    flex:
-    <br />
-    <div class="btn-group btn-group-flex" role="group" aria-label="Basic example">
-        <button type="button" class="btn">Left</button>
-        <button type="button" class="btn">Middle</button>
-        <button type="button" class="btn">Right</button>
-    </div>
-    <br />
 
     <hr />
 
-    normal:
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-        <div class="btn-group" role="group" aria-label="First group">
+        <div class="btn-group me-0_5" role="group" aria-label="First group">
             <button type="button" class="btn">1</button>
             <button type="button" class="btn">2</button>
             <button type="button" class="btn">3</button>
             <button type="button" class="btn">4</button>
         </div>
-        <div class="btn-group" role="group" aria-label="Second group">
+        <div class="btn-group me-0_5" role="group" aria-label="Second group">
             <button type="button" class="btn btn-primary">5</button>
             <button type="button" class="btn btn-primary">6</button>
             <button type="button" class="btn btn-primary">7</button>
@@ -82,38 +41,17 @@ Holder.addTheme("gray", {
             <button type="button" class="btn btn-danger">8</button>
         </div>
     </div>
-    <br />
-
-    flex:
-    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-        <div class="btn-group btn-group-flex" role="group" aria-label="First group">
-            <button type="button" class="btn">1</button>
-            <button type="button" class="btn">2</button>
-            <button type="button" class="btn">3</button>
-            <button type="button" class="btn">4</button>
-        </div>
-        <div class="btn-group btn-group-flex" role="group" aria-label="Second group">
-            <button type="button" class="btn btn-primary">5</button>
-            <button type="button" class="btn btn-primary">6</button>
-            <button type="button" class="btn btn-primary">7</button>
-        </div>
-        <div class="btn-group btn-group-flex" role="group" aria-label="Third group">
-            <button type="button" class="btn btn-danger">8</button>
-        </div>
-    </div>
-    <br />
 
     <hr />
 
-    normal:
     <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
         <button type="button" class="btn">Button</button>
         <button type="button" class="btn">Button</button>
             <div class="btn-group" role="group">
-                <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#btnGroupVerticalDrop0">
+                <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
                 Dropdown
             </button>
-            <ul class="dropdown-menu" id="btnGroupVerticalDrop0">
+            <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Dropdown link</a></li>
                 <li><a class="dropdown-item" href="#">Dropdown link</a></li>
             </ul>
@@ -121,72 +59,28 @@ Holder.addTheme("gray", {
         <button type="button" class="btn">Button</button>
         <button type="button" class="btn">Button</button>
         <div class="btn-group" role="group">
-            <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#btnGroupVerticalDrop1">
+            <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
                 Dropdown
             </button>
-            <ul class="dropdown-menu" id="btnGroupVerticalDrop1">
+            <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Dropdown link</a></li>
                 <li><a class="dropdown-item" href="#">Dropdown link</a></li>
             </ul>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#btnGroupVerticalDrop3">
+            <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
                 Dropdown
             </button>
-            <ul class="dropdown-menu" id="btnGroupVerticalDrop3">
+            <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Dropdown link</a></li>
                 <li><a class="dropdown-item" href="#">Dropdown link</a></li>
             </ul>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#btnGroupVerticalDrop4">
+            <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
                 Dropdown
             </button>
-            <ul class="dropdown-menu" id="btnGroupVerticalDrop4">
-                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-            </ul>
-        </div>
-    </div>
-
-    flex:
-    <div class="btn-group-vertical btn-group-vertical-flex" role="group" aria-label="Vertical button group">
-        <button type="button" class="btn">Button</button>
-        <button type="button" class="btn">Button</button>
-            <div class="btn-group" role="group">
-                <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#btnGroupVerticalDrop5">
-                Dropdown
-            </button>
-            <ul class="dropdown-menu" id="btnGroupVerticalDrop5">
-                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-            </ul>
-        </div>
-        <button type="button" class="btn">Button</button>
-        <button type="button" class="btn">Button</button>
-        <div class="btn-group" role="group">
-            <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#btnGroupVerticalDrop6">
-                Dropdown
-            </button>
-            <ul class="dropdown-menu" id="btnGroupVerticalDrop6">
-                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-            </ul>
-        </div>
-        <div class="btn-group" role="group">
-            <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#btnGroupVerticalDrop7">
-                Dropdown
-            </button>
-            <ul class="dropdown-menu" id="btnGroupVerticalDrop7">
-                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
-            </ul>
-        </div>
-        <div class="btn-group" role="group">
-            <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#btnGroupVerticalDrop8">
-                Dropdown
-            </button>
-            <ul class="dropdown-menu" id="btnGroupVerticalDrop8">
+            <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Dropdown link</a></li>
                 <li><a class="dropdown-item" href="#">Dropdown link</a></li>
             </ul>
@@ -195,7 +89,6 @@ Holder.addTheme("gray", {
 
     <hr />
 
-    normal:
     <div class="btn-group-vertical" data-cfw="buttons" role="group">
         <label class="btn btn-info">
             <input type="checkbox" /> One
@@ -208,20 +101,38 @@ Holder.addTheme("gray", {
         </label>
     </div>
 
-    flex:
-    <div class="btn-group-vertical btn-group-vertical-flex" data-cfw="buttons" role="group">
-        <label class="btn btn-info">
-            <input type="checkbox" /> One
-        </label>
-        <label class="btn btn-info">
-            <input type="checkbox" /> Two
-        </label>
-        <label class="btn btn-info">
-            <input type="checkbox" /> Three
-        </label>
+    <hr />
+
+    <div class="btn-toolbar mb-1" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group me-0_5" role="group" aria-label="First group">
+            <button type="button" class="btn">1</button>
+            <button type="button" class="btn">2</button>
+            <button type="button" class="btn">3</button>
+            <button type="button" class="btn">4</button>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon" id="btnGroupAddon">@</span>
+            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="btnGroupAddon">
+          </div>
     </div>
 
-</div>
+    <hr />
+
+    <div class="btn-group mb-1" role="group" aria-label="Button group with nested dropdown">
+        <button type="button" class="btn">1</button>
+        <button type="button" class="btn">2</button>
+
+        <div class="btn-group" role="group">
+            <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
+                Dropdown
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+                <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+            </ul>
+        </div>
+    </div>
+    <br />
 
 </div>
 

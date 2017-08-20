@@ -7,13 +7,18 @@ group: utilities
 Add a little, or a lot of, color to your site or application.
 
 {% callout info %}
-#### Dealing with Specificity
+Dealing with Specificity
+{:.h5}
 
 Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a `<div>` with the class.
 {% endcallout %}
 
-{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
-{{ callout-include | markdownify }}
+{% callout warning %}
+Conveying Meaning to Assistive Technologies
+{:.h5}
+
+Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
+{% endcallout %}
 
 ## Contents
 {:.no_toc}
@@ -21,7 +26,7 @@ Sometimes contextual classes cannot be applied due to the specificity of another
 * ToC goes here
 {:toc}
 
-## Contextual Colors and Backgrounds
+## Text
 
 Convey meaning through color with a handful of emphasis utility classes. These may also be applied to links and will darken on hover just like our default link styles.
 
@@ -64,7 +69,11 @@ There are also two special text color cases for use with either light and dark b
 </div>
 {% endexample %}
 
-Similar to the contextual text color classes, easily set the background of an element to any contextual class. Anchor components will darken on hover, just like the text classes.
+## Backgrounds
+
+Similar to the contextual text color classes, easily set the background color of an element to any contextual class. Anchor components will darken on hover, just like the text classes.
+
+There is also a `.bg-transparent` for removing the background color for an element.
 
 {% example html %}
 <div class="bg-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</div>
@@ -76,6 +85,21 @@ Similar to the contextual text color classes, easily set the background of an el
 <div class="bg-faded"> Vestibulum ante ipsum primis in faucibus orci luctus.</div>
 {% endexample %}
 
+## Borders
+
+Borders also be colored with their own set of contextual classes. Borders do not change color on hover state.
+
+There is also a `.border-transparent` that removes the border color for an element, but keeps the border width in place.
+
+{% example html %}
+<div class="border-primary mb-0_5 p-0_25" style="border: 2px solid;">Primary</div>
+<div class="border-secondary mb-0_5 p-0_25" style="border: 2px solid;">Secondary</div>
+<div class="border-success mb-0_5 p-0_25" style="border: 2px solid;">Success</div>
+<div class="border-info mb-0_5 p-0_25" style="border: 2px solid;">Info</div>
+<div class="border-warning mb-0_5 p-0_25" style="border: 2px solid;">Warning</div>
+<div class="border-danger mb-0_5 p-0_25" style="border: 2px solid;">Danger</div>
+{% endexample %}
+
 ## Palette Colors
 
 If the [color palette]({{ site.baseurl }}/content/color/) is enabled, any color theme that is added to the `$palette-themes` Sass map will become available for use.  For example a theme named `blue`, then becomes available as `.text-blue-[level]` or `.bg-blue-[level]`, where `level` is in the set defined by the `$palette-levels` variable.
@@ -84,4 +108,5 @@ If the [color palette]({{ site.baseurl }}/content/color/) is enabled, any color 
 <p class="text-blue-700">blue-700 text sample</p>
 <p><a href="#" class="text-blue-400">blue-400 link example</a></p>
 <div class="bg-blue-100 text-dark">Blue-100 background with dark text</div>
+<div class="border-cyan-300 mb-0_5 p-0_25" style="border: 2px solid;">Cyan-300 border color</div>
 {% endexample %}

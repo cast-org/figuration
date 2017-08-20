@@ -2,7 +2,8 @@
 .table {
     width: 100%;
     max-width: 100%;
-    margin-bottom: $spacer;
+    margin-bottom: $table-margin-bottom;
+    background-color: $table-bg; // Reset for nesting within parents with `background-color`.
 
     th,
     td {
@@ -20,8 +21,15 @@
         border-top: (2 * $table-border-width) solid $table-border-color;
     }
 
+    tfoot {
+        th,
+        td {
+            border-top: (2 * $table-border-width) solid $table-border-color;
+        }
+    }
+
     .table {
-        background-color: $body-bg;
+        background-color: $table-bg;
     }
 }
 
@@ -33,7 +41,6 @@
         padding: $table-condensed-cell-padding;
     }
 }
-
 
 // Bordered table
 .table-bordered {
@@ -50,8 +57,38 @@
             border-bottom-width: (2 * $table-border-width);
         }
     }
+
+    tfoot {
+        th,
+        td {
+            border-top-width: (2 * $table-border-width);
+        }
+    }
 }
 
+// Borderless table
+.table-borderless {
+    th,
+    td {
+        border: 0;
+    }
+}
+
+// Table with no borders
+.table-noborder {
+    th,
+    td {
+        border: 0;
+    }
+
+    thead,
+    tfoot {
+        th,
+        td {
+            border: 0;
+        }
+    }
+}
 
 // Striped table
 .table-striped {
@@ -83,47 +120,49 @@
 
 
 // Table backgrounds
-//
-// Exact selectors below required to override `.table-striped` and prevent
-// inheritance to nested tables.
-
 // Active variant
-@include table-row-variant(active, $table-bg-active);
+@include table-row-variant(active, $table-bg-active, $table-bg-active-hover);
 
 // Contextual variants
 @each $theme, $colors in $context-themes {
-    $bg: map-get($colors, "context-bg");
+    $bg:       map-get($colors, "context-bg");
+    $hover-bg: map-get($colors, "context-hover-bg");
 
-    @include table-row-variant('#{$theme}', $bg);
+    @include table-row-variant('#{$theme}', $bg, $hover-bg);
 }
 
 
-// Responsive tables
-//
-// Wrap tables in `.table-responsive` to enable horizontal scrolling.
-// Tables will scroll when they will no longer fit width-wise in
-// their container.
-.table-responsive {
-    display: block;
-    width: 100%;
-    min-height: .01%; // Workaround for IE9 bug (see https://github.com/twbs/bootstrap/issues/14837)
-    margin-bottom: $spacer;
-    overflow-x: auto;
+// Scrolling table
+// Add `.table-scroll` to table to enable horizontal scrolling.
+// Tables will scroll when they will no longer fit width-wise in their container.
+.table-scroll {
+    @include table-scroll();
+}
 
-    // Tighten up spacing
-    > .table {
-        margin-bottom: 0;
+// Responsive scrolling table
+@each $bp in map-keys($grid-breakpoints) {
+    $bprule: breakpoint-designator($bp);
+
+    // Skip largest breakpoint for down (equivalent to `.table-scroll`)
+    @if breakpoint-max($bp, $grid-breakpoints) != null {
+        .table-scroll-#{$bp}-down {
+            @include media-breakpoint-down($bp) {
+                @include table-scroll();
+            }
+        }
     }
 }
 
 // Table color variants
-.thead-inverse {
+.thead-inverse,
+.tfoot-inverse {
     th {
         color: $table-inverse-color;
         background-color: $table-inverse-bg;
     }
 }
-.thead-default {
+.thead-default,
+.tfoot-default {
     th {
         color: $table-head-color;
         background-color: $table-head-bg;
@@ -139,7 +178,8 @@
 
     th,
     td,
-    thead th {
+    thead th,
+    tfoot th {
         border-color: $table-inverse-border;
     }
 }

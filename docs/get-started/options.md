@@ -4,7 +4,7 @@ title: Customization Options
 group: get-started
 ---
 
-Customize Figuration with our built-in custom variables file and easily toggle global CSS preferences with new `$enable-*` Sass variables. Override a variable's value and recompile with the included Gruntfile as needed.
+Customize Figuration using Sass variables for global style preferences, easy theming, and component adjustments.
 
 ## Contents
 {:.no_toc}
@@ -14,18 +14,13 @@ Customize Figuration with our built-in custom variables file and easily toggle g
 
 ## Customizing Variables
 
-Figuration ships with a `/scss/_custom.scss` file for an easy method of overriding the default variables found in `/scss/_settings.scss`. Copy and paste relevant lines from `/scss/_settings.scss` into the `/scss/_custom.scss` file, modify the values, and recompile your Sass to change our default values. **Be sure to remove the `!default` flag from override values.**
+Every Sass variable in Figuration includes the !default flag, meaning you can override that default value in your own Sass even after that original variable's been defined. Copy and paste variables as needed, modify the values, remove the !default flag, and recompile with the included [build tools]({{ site.baseurl }}/get-started/build-tools/) as needed.
 
 For example, to change out the `background-color` and `color` for the `<body>`, you'd do the following:
 
 {% highlight scss %}
-// Custom settings
-//
-// Copy settings from `_settings.scss` to this file to override the defaults.
-// This allows for customization without changing core files.
-
-$body-bg:    $gray-darker;
-$body-color: $gray-lighter;
+$body-bg:    $gray-900;
+$body-color: $gray-100;
 {% endhighlight %}
 
 Do the same for any variable you need to override, including the global options listed below.
@@ -36,7 +31,7 @@ You can find and customize these variables for key global options in our `_setti
 
 | Variable                    | Values                             | Description                                                                                      |
 | --------------------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------|
-| `$spacer`                   | `1rem` (default), or any value > 0 | Specifies the default spacer value for our spacer utilities.                                     |
+| `$spacer`                   | `1rem` (default), or any value > 0 | Specifies the default spacer value used to programmatically generate the [Spacing utilities]({{ site.baseurl }}/utilities/spacing/). |
 | `$enable-rounded`           | `true` (default) or `false`        | Enables predefined `border-radius` styles on various components.                                 |
 | `$enable-shadows`           | `true` or `false` (default)        | Enables predefined `box-shadow` styles on various components.                                    |
 | `$enable-transitions`       | `true` (default) or `false`        | Enables predefined `transition`s on various components.                                          |
@@ -45,10 +40,6 @@ You can find and customize these variables for key global options in our `_setti
 | `$enable-palette`           | `true` (default) or `false`        | Enables the generation of CSS classes for the palette color themes (e.g. `.text-blue-500`, etc.). |
 | `$enable-sizing`            | `true` (default) or `false`        | Enables the generation of CSS classes for component sizes, and also for some utilites. (e.g. `.btn-sm`, `.radius-t-xs`, etc.). |
 | `$enable-bp-smallest`       | `true` or `false` (default)        | Enables the generation of CSS classes for breakpoint sizes that include the smallest breakpoint designator. (e.g. `.col-xs-12`).  Also refer to the [Breakpoint Nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) section. |
-| `$enable-flex-opt`          | `true` (default) or `false`        | Enables the opt-in flexbox model using classes, such as `.row-flex`.                             |
-| `$enable-flex-full`         | `true` or `false` (default)        | Enables the full flexbox model where all supported components will use `display: flex;`.         |
-
-If both `$enable-flex-opt` and `$enable-flex-full` are set to `true` the `$enable-flex-opt` option will be disabled.
 
 ## Component Sizes
 
@@ -57,7 +48,8 @@ The button, button group, pagination, form-control and input-group components al
 By using a map, we can be sure the components are all the same height when horizontally aligned.
 
 {% callout info %}
-#### `<select>` Sizing Caveat
+`<select>` Sizing Caveat
+{:.h5}
 
 Currently there is a minor issue with vertical sizing and `<select>` elements with Internet Explorer.  IE will render `<select>` elements slightly shorter in vertical height than other browsers.
 
@@ -103,18 +95,20 @@ $component-sizes: (
 Extend the default contextual color map with your own custom colors.
 
 Yes, it is a substantial and confusing piece of SCSS, but allows for reasonable flexibility.
-The line `$context-themes: ();` should only be defined once in the `_custom.scss` file even if merging multiple color maps.
 
 The `control-*` keys are used by mainly by control items---specifically---buttons, button groups, pagination, progress bars, badges, and background context.
 
 The `context-*` keys are used for contextual items---specifically---tables, list groups, form validation, and alerts.
 
-{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
-{{ callout-include | markdownify }}
+{% callout warning %}
+Conveying Meaning to Assistive Technologies
+{:.h5}
+
+Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
+{% endcallout %}
 
 {% highlight scss %}
 // Sample of adding more colors using a mixing function
-$context-themes: ();    // <-- only define ONCE - must be before merging maps
 $custom-context: (
     purple: #990099,
     aqua:   #00ffff
@@ -133,15 +127,17 @@ You can also add a single color map without all the additional color mixing func
 
 {% highlight scss %}
 // Adding a single color map
-$context-themes: ();    // <-- only define ONCE - must be before merging maps
 $single-color: (
     "purple": (
-        "control-color":  #fff,
-        "control-bg":     #990099,
-        "control-border": #800080,
-        "context-color":  #990099,
-        "context-bg":     #ffb3ff,
-        "context-border": #ff29ff
+        "control-color":        #fff,
+        "control-bg":           #990099,
+        "control-border":       #800080,
+        "control-hover-color":  #fff,
+        "control-hover-bg":     #770077,
+        "control-hover-border": #660066,
+        "context-color":        #990099,
+        "context-bg":           #ffb3ff,
+        "context-border":       #ff29ff
     );
 );
 $context-themes: map-merge($context-themes, $single-color);

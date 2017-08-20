@@ -6,8 +6,6 @@ group: components
 
 Easily extend form controls by adding text, buttons, or button groups on either side of textual `<input>`s.
 
-Input groups have support for both a `table` style layout, along with both the opt-in flexbox and [full flexbox]({{ site.baseurl }}/layout/flexbox#full-flexbox-mode) modes.  To use the opt-in method, simply add a `.input-group-flex` class to the `.input-group` element.
-
 ## Contents
 {:.no_toc}
 
@@ -16,16 +14,16 @@ Input groups have support for both a `table` style layout, along with both the o
 
 ## Basic Example
 
-Place one add-on or button on either side of an input. You may also place one on both sides of an input. **We do not support multiple form-controls in a single input group.**
+Place one add-on or button on either side of an input. You may also place one on both sides of an input. **We do not support multiple form-controls in a single input group** and `<label>`s must come outside the input group.
 
 {% example html %}
 <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
 </div>
 <br>
 <div class="input-group">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
   <span class="input-group-addon" id="basic-addon2">@example.com</span>
 </div>
 <br>
@@ -53,14 +51,29 @@ Place one add-on or button on either side of an input. You may also place one on
 Add the relative form sizing classes to the `.input-group` itself and contents within will automatically resize---no need for repeating the form control size classes on each element.
 
 {% example html %}
+<div class="input-group input-group-xl">
+  <span class="input-group-addon" id="sizing-addon0">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon0">
+</div>
+<br>
 <div class="input-group input-group-lg">
   <span class="input-group-addon" id="sizing-addon1">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon1">
+</div>
+<br>
+<div class="input-group input-group">
+  <span class="input-group-addon" id="sizing-addon2">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon2">
 </div>
 <br>
 <div class="input-group input-group-sm">
-  <span class="input-group-addon" id="sizing-addon2">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2">
+  <span class="input-group-addon" id="sizing-addon3">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon3">
+</div>
+<br>
+<div class="input-group input-group-xs">
+  <span class="input-group-addon" id="sizing-addon4">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon4">
 </div>
 {% endexample %}
 
@@ -161,10 +174,10 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
   <div class="col-lg-6">
     <div class="input-group">
       <div class="input-group-btn">
-        <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#inputGroupDropdown1">
+        <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
           Action
         </button>
-        <ul class="dropdown-menu" id="inputGroupDropdown1">
+        <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Action</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -178,11 +191,11 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
   <div class="col-lg-6">
     <div class="input-group">
       <input type="text" class="form-control" aria-label="Text input with dropdown button">
-      <div class="input-group-btn">
-        <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#inputGroupDropdown2">
+      <div class="input-group-btn dropdown-menu-reverse">
+        <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
           Action
         </button>
-        <ul class="dropdown-menu dropdown-menu-right" id="inputGroupDropdown2">
+        <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Action</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -203,10 +216,10 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
     <div class="input-group">
       <div class="input-group-btn">
         <button type="button" class="btn">Action</button>
-        <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-cfw="dropdown" data-cfw-dropdown-toggle="#inputGroupDropdown3">
+        <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-cfw="dropdown">
           <span class="sr-only">Toggle Dropdown</span>
         </button>
-        <ul class="dropdown-menu" id="inputGroupDropdown3">
+        <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Action</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -220,12 +233,12 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
   <div class="col-lg-6">
     <div class="input-group">
       <input type="text" class="form-control" aria-label="Text input with segmented button dropdown">
-      <div class="input-group-btn">
+      <div class="input-group-btn dropdown-menu-reverse">
         <button type="button" class="btn">Action</button>
-        <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-cfw="dropdown" data-cfw-dropdown-toggle="#inputGroupDropdown4">
+        <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-cfw="dropdown">
           <span class="sr-only">Toggle Dropdown</span>
         </button>
-        <ul class="dropdown-menu dropdown-menu-right" id="inputGroupDropdown4">
+        <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Action</a></li>
           <li><a class="dropdown-item" href="#">Another action</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -242,6 +255,6 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
 
 Screen readers will have trouble with your forms if you don't include a label for every input. For these input groups, ensure that any additional label or functionality is conveyed to assistive technologies.
 
-The exact technique to be used (`<label>` elements hidden using the `.sr-only` class, or use of the `aria-label`, `aria-labelledby`, `aria-describedby`, `title` or `placeholder` attribute) and what additional information will need to be conveyed will vary depending on the exact type of interface widget you're implementing. The examples in this section provide a few suggested, case-specific approaches.
+The exact technique to be used (`<label>` elements hidden using the `.sr-only` class, or use of the `aria-label` and `aria-labelledby` attributes, possibly in combination with `aria-describedby`) and what additional information will need to be conveyed will vary depending on the exact type of interface widget you're implementing. The examples in this section provide a few suggested, case-specific approaches.
 
 There is also an issue when placing buttons before inputs, as this can cause a confusing ordering issue for those using screen readers, where the general expectation is that the buttons are at the end of a form, or at least, after the inputs.  This fix is not as simple as controlling the focus order since screen readers read in order of the DOM elements.  There might be ways to mitigate this using a description of some kind, but it might be better to ensure proper ordering of the elements, and putting the buttons after any input elements.

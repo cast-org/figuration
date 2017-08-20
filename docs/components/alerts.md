@@ -17,6 +17,13 @@ Provide contextual feedback messages for typical user actions with the handful o
 
 Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use of the contextual classes (e.g., `.alert-success`) is **required**. For inline dismissal, use the [Alert jQuery widget]({{ site.baseurl }}/widgets/alert/).
 
+{% callout warning %}
+Conveying Meaning to Assistive Technologies
+{:.h5}
+
+Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
+{% endcallout %}
+
 {% example html %}
 <div class="alert alert-primary" role="alert">
   <strong>Primary!</strong> You read this important alert message.
@@ -37,9 +44,6 @@ Alerts are available for any length of text, as well as an optional dismiss butt
   <strong>Danger!</strong> There is definitaly some error now.
 </div>
 {% endexample %}
-
-{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
-{{ callout-include | markdownify }}
 
 ## Link Color
 
@@ -68,13 +72,14 @@ Use the `.alert-link` utility class to quickly provide matching colored links wi
 
 ## Additional Content
 
-Alerts can also contain additional HTML elements like headings and paragraphs.
+Alerts can also contain additional HTML elements like headings, paragraphs, and dividers.
 
 {% example html %}
 <div class="alert alert-success" role="alert">
   <h4 class="alert-heading">Well done!</h4>
   <p>You successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-  <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+  <hr />
+  <p class="mb-0">Whenever you need to, use the margin utilities to keep things nice and tidy.</p>
 </div>
 {% endexample %}
 

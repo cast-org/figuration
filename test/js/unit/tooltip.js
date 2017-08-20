@@ -116,7 +116,7 @@ $(function() {
         assert.expect(2);
         var $tooltip = $('<a href="#" title="Another tooltip"/>')
             .appendTo('#qunit-fixture')
-            .CFW_Tooltip({ template: '<div class="tooltip some-class"><div class="tooltip-arrow"/><div class="tooltip-inner"/></div>' });
+            .CFW_Tooltip({ template: '<div class="tooltip some-class"><div class="tooltip-arrow"/><div class="tooltip-body"/></div>' });
 
         $tooltip.CFW_Tooltip('show');
         assert.ok($('.tooltip').hasClass('some-class'), 'custom class is present');
@@ -232,7 +232,7 @@ $(function() {
             .CFW_Tooltip('show');
     });
 
-    QUnit.test('should destroy tooltip', function(assert) {
+    QUnit.test('should dispose tooltip', function(assert) {
         assert.expect(7);
         var $tooltip = $('<div/>')
             .appendTo('#qunit-fixture')
@@ -244,7 +244,7 @@ $(function() {
         assert.strictEqual($._data($tooltip[0], 'events').click[0].namespace, 'foo', 'tooltip has extra click.foo event');
 
         $tooltip.CFW_Tooltip('show');
-        $tooltip.CFW_Tooltip('destroy');
+        $tooltip.CFW_Tooltip('dispose');
 
         assert.ok(!$tooltip.hasClass('in'), 'tooltip is hidden');
         assert.ok(!$._data($tooltip[0], 'cfw.tooltip'), 'tooltip does not have data');
@@ -290,8 +290,8 @@ $(function() {
     QUnit.test('should add position class before positioning so that position-specific styles are taken into account', function(assert) {
         assert.expect(1);
         var styles = '<style>'
-            + '.tooltip.right { white-space: nowrap; }'
-            + '.tooltip.right .tooltip-inner { max-width: none; }'
+            + '.tooltip.forward { white-space: nowrap; }'
+            + '.tooltip.forward .tooltip-body { max-width: none; }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
 
@@ -299,14 +299,14 @@ $(function() {
         var $target = $('<a href="#" title="very very very very very very very very long tooltip in one line"/>')
             .appendTo($container)
             .CFW_Tooltip({
-                placement: 'right',
+                placement: 'forward',
                 viewport: null
             })
             .CFW_Tooltip('show');
         var $tooltip = $container.find('.tooltip');
 
         // handle sub pixels in firefox
-        var top = Math.round($target.offset().top + ($target[0].offsetHeight / 2) - ($tooltip[0].offsetHeight / 2));
+        var top = Math.round($target.offset().top + ($target[0].getBoundingClientRect().height / 2) - ($tooltip[0].getBoundingClientRect().height / 2));
         var top2 = Math.round($tooltip.offset().top);
         var topDiff = top - top2;
         assert.ok(topDiff <= 1 && topDiff >= -1);
@@ -323,7 +323,7 @@ $(function() {
             .CFW_Tooltip();
 
         $tooltip.CFW_Tooltip('show');
-        assert.strictEqual($('.tooltip').children('.tooltip-inner').text(), 'Simple tooltip', 'title from title attribute is set');
+        assert.strictEqual($('.tooltip').children('.tooltip-body').text(), 'Simple tooltip', 'title from title attribute is set');
 
         $tooltip.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -338,7 +338,7 @@ $(function() {
             });
 
         $tooltip.CFW_Tooltip('show');
-        assert.strictEqual($('.tooltip').children('.tooltip-inner').text(), 'tooltip title', 'title from title option is set');
+        assert.strictEqual($('.tooltip').children('.tooltip-body').text(), 'tooltip title', 'title from title option is set');
 
         $tooltip.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -353,7 +353,7 @@ $(function() {
             });
 
         $tooltip.CFW_Tooltip('show');
-        assert.strictEqual($('.tooltip').children('.tooltip-inner').text(), 'tooltip title', 'title is set from title option while preferred over title attribute');
+        assert.strictEqual($('.tooltip').children('.tooltip-body').text(), 'tooltip title', 'title is set from title option while preferred over title attribute');
 
         $tooltip.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -383,25 +383,25 @@ $(function() {
         $topTooltip.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'top positioned tooltip removed from dom');
 
-        var $rightTooltip = $('<div class="trigger" style="right: 0;" title="Right tooltip">Right Dynamic Tooltip</div>')
+        var $forwardTooltip = $('<div class="trigger" style="right: 0;" title="forward tooltip">forward Dynamic Tooltip</div>')
             .appendTo($container)
-            .CFW_Tooltip({ placement: 'right auto', viewport: '#qunit-fixture' });
+            .CFW_Tooltip({ placement: 'forward auto', viewport: '#qunit-fixture' });
 
-        $rightTooltip.CFW_Tooltip('show');
-        assert.ok($('.tooltip').is('.left'), 'right positioned tooltip is dynamically positioned left');
+        $forwardTooltip.CFW_Tooltip('show');
+        assert.ok($('.tooltip').is('.reverse'), 'forward positioned tooltip is dynamically positioned reverse');
 
-        $rightTooltip.CFW_Tooltip('hide');
-        assert.strictEqual($('.tooltip').length, 0, 'right positioned tooltip removed from dom');
+        $forwardTooltip.CFW_Tooltip('hide');
+        assert.strictEqual($('.tooltip').length, 0, 'forward positioned tooltip removed from dom');
 
-        var $leftTooltip = $('<div class="trigger" style="left: 0;" title="Left tooltip">Left Dynamic Tooltip</div>')
+        var $reverseTooltip = $('<div class="trigger" style="left: 0;" title="Reverse tooltip">Reverse Dynamic Tooltip</div>')
             .appendTo($container)
-            .CFW_Tooltip({ placement: 'auto left', viewport: '#qunit-fixture' });
+            .CFW_Tooltip({ placement: 'auto reverse', viewport: '#qunit-fixture' });
 
-        $leftTooltip.CFW_Tooltip('show');
-        assert.ok($('.tooltip').is('.right'), 'left positioned tooltip is dynamically positioned right');
+        $reverseTooltip.CFW_Tooltip('show');
+        assert.ok($('.tooltip').is('.forward'), 'reverse positioned tooltip is dynamically positioned forward');
 
-        $leftTooltip.CFW_Tooltip('hide');
-        assert.strictEqual($('.tooltip').length, 0, 'left positioned tooltip removed from dom');
+        $reverseTooltip.CFW_Tooltip('hide');
+        assert.strictEqual($('.tooltip').length, 0, 'reverse positioned tooltip removed from dom');
 
         $container.remove();
         $styles.remove();
@@ -599,7 +599,7 @@ $(function() {
     QUnit.test('should adjust the tip\'s top position when up against the top of the viewport', function(assert) {
         assert.expect(2);
         var styles = '<style>'
-            + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+            + '.tooltip .tooltip-body { width: 200px; height: 200px; max-width: none; }'
             + '.trigger { position: fixed; }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
@@ -608,11 +608,9 @@ $(function() {
         var $target = $('<a href="#" class="trigger" title="tip" style="top: 0px; left: 0px;"/>')
             .appendTo($container)
             .CFW_Tooltip({
-                placement: 'right',
-                viewport: {
-                    selector: 'body',
-                    padding: 12
-                }
+                placement: 'forward',
+                viewport: 'body',
+                padding: 12
             });
 
         $target.CFW_Tooltip('show');
@@ -627,7 +625,7 @@ $(function() {
     QUnit.test('should adjust the tip\'s top position when up against the bottom of the viewport', function(assert) {
         assert.expect(2);
         var styles = '<style>'
-            + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+            + '.tooltip .tooltip-body { width: 200px; height: 200px; max-width: none; }'
             + '.trigger { position: fixed; }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
@@ -636,16 +634,14 @@ $(function() {
         var $target = $('<a href="#" class="trigger" title="tip" style="bottom: 0px; left: 0px;"/>')
             .appendTo($container)
             .CFW_Tooltip({
-                placement: 'right',
-                viewport: {
-                    selector: 'body',
-                    padding: 12
-                }
+                placement: 'forward',
+                viewport: 'body',
+                padding: 12
             });
 
         $target.CFW_Tooltip('show');
         var $tooltip = $container.find('.tooltip');
-        assert.strictEqual(Math.round($tooltip.offset().top), Math.round($(window).height() - 12 - $tooltip[0].offsetHeight));
+        assert.strictEqual(Math.round($tooltip.offset().top), Math.round($(window).height() - 12 - $tooltip[0].getBoundingClientRect().height));
 
         $target.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -657,7 +653,7 @@ $(function() {
     QUnit.test('should adjust the tip\'s left position when up against the left of the viewport', function(assert) {
         assert.expect(2);
         var styles = '<style>'
-            + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+            + '.tooltip .tooltip-body { width: 200px; height: 200px; max-width: none; }'
             + '.trigger { position: fixed; }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
@@ -667,10 +663,8 @@ $(function() {
             .appendTo($container)
             .CFW_Tooltip({
                 placement: 'bottom',
-                viewport: {
-                    selector: 'body',
-                    padding: 12
-                }
+                viewport: 'body',
+                padding: 12
             });
 
         $target.CFW_Tooltip('show');
@@ -686,7 +680,7 @@ $(function() {
     QUnit.test('should adjust the tip\'s left position when up against the right of the viewport', function(assert) {
         assert.expect(2);
         var styles = '<style>'
-            + '.tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+            + '.tooltip .tooltip-body { width: 200px; height: 200px; max-width: none; }'
             + '.trigger { position: fixed; }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
@@ -696,15 +690,13 @@ $(function() {
             .appendTo($container)
             .CFW_Tooltip({
                 placement: 'bottom',
-                viewport: {
-                    selector: 'body',
-                    padding: 12
-                }
+                viewport: 'body',
+                padding: 12
             });
 
         $target.CFW_Tooltip('show');
         var $tooltip = $container.find('.tooltip');
-        assert.strictEqual(Math.round($tooltip.offset().left), Math.round($(window).width() - 12 - $tooltip[0].offsetWidth));
+        assert.strictEqual(Math.round($tooltip.offset().left), Math.round($(window).width() - 12 - $tooltip[0].getBoundingClientRect().width));
 
         $target.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -716,7 +708,7 @@ $(function() {
     QUnit.test('should adjust the tip when up against the right of an arbitrary viewport', function(assert) {
         assert.expect(2);
         var styles = '<style>'
-            + '.tooltip, .tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+            + '.tooltip, .tooltip .tooltip-body { width: 200px; height: 200px; max-width: none; }'
             + '.container-viewport { position: absolute; top: 50px; left: 60px; width: 300px; height: 300px; }'
             + '.trigger { position: fixed; }'
             + '</style>';
@@ -732,7 +724,7 @@ $(function() {
 
         $target.CFW_Tooltip('show');
         var $tooltip = $container.find('.tooltip');
-        assert.strictEqual(Math.round($tooltip.offset().left), Math.round(60 + $container.width() - $tooltip[0].offsetWidth));
+        assert.strictEqual(Math.round($tooltip.offset().left), Math.round(60 + $container.width() - $tooltip[0].getBoundingClientRect().width));
 
         $target.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -744,7 +736,7 @@ $(function() {
     QUnit.test('should get viewport element from function', function(assert) {
         assert.expect(3);
         var styles = '<style>'
-            + '.tooltip, .tooltip .tooltip-inner { width: 200px; height: 200px; max-width: none; }'
+            + '.tooltip, .tooltip .tooltip-body { width: 200px; height: 200px; max-width: none; }'
             + '.container-viewport { position: absolute; top: 50px; left: 60px; width: 300px; height: 300px; }'
             + '.trigger { position: fixed; }'
             + '</style>';
@@ -763,7 +755,7 @@ $(function() {
 
         $target.CFW_Tooltip('show');
         var $tooltip = $container.find('.tooltip');
-        assert.strictEqual(Math.round($tooltip.offset().left), Math.round(60 + $container.width() - $tooltip[0].offsetWidth));
+        assert.strictEqual(Math.round($tooltip.offset().left), Math.round(60 + $container.width() - $tooltip[0].getBoundingClientRect().width));
 
         $target.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -772,12 +764,12 @@ $(function() {
         $styles.remove();
     });
 
-    QUnit.test('should not misplace the tip when the right edge offset is greater or equal than the viewport width', function(assert) {
+    QUnit.test('should not misplace the tip when the right edge offset is greater than or equal to the viewport width', function(assert) {
         assert.expect(2);
         var styles = '<style>'
             + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
             + '.container-viewport, .container-viewport *, .container-viewport *:before, .container-viewport *:after { box-sizing: border-box; }'
-            + '.tooltip .tooltip-inner { width: 50px; height: 50px; max-width: none; background: red; }'
+            + '.tooltip .tooltip-body { width: 50px; height: 50px; max-width: none; background: red; }'
             + '.container-viewport { padding: 100px; margin-left: 100px; width: 100px; }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
@@ -786,12 +778,13 @@ $(function() {
         var $target = $('<a href="#" title="tip">foobar</a>')
             .appendTo($container)
             .CFW_Tooltip({
-                viewport: '.container-viewport'
+                viewport: '.container-viewport',
+                animate: false
             });
 
         $target.CFW_Tooltip('show');
         var $tooltip = $container.find('.tooltip');
-        assert.strictEqual(Math.round($tooltip.offset().left), Math.round($target.position().left + $target.width() / 2 - $tooltip[0].offsetWidth / 2));
+        assert.strictEqual(Math.round($tooltip.offset().left), Math.round($target.position().left + $target[0].getBoundingClientRect().width / 2 - $tooltip[0].getBoundingClientRect().width / 2));
 
         $target.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -1008,12 +1001,12 @@ $(function() {
             .CFW_Tooltip({ delay: { show: 0, hide: 150 }});
 
         setTimeout(function() {
-            assert.ok($tooltip.data('cfw.tooltip').$targetElm.is('.fade.in'), '1ms: tooltip faded in');
+            assert.ok($tooltip.data('cfw.tooltip').$target.is('.fade.in'), '1ms: tooltip faded in');
 
             $tooltip.trigger('mouseout');
 
             setTimeout(function() {
-                assert.ok($tooltip.data('cfw.tooltip').$targetElm.is('.fade.in'), '100ms: tooltip still faded in');
+                assert.ok($tooltip.data('cfw.tooltip').$target.is('.fade.in'), '100ms: tooltip still faded in');
             }, 100);
 
             setTimeout(function() {
@@ -1039,7 +1032,7 @@ $(function() {
         var styles = '<style>'
             + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
             + '.tooltip { position: absolute; }'
-            + '.tooltip .tooltip-inner { width: 24px; height: 24px; font-family: Helvetica; }'
+            + '.tooltip .tooltip-body { width: 24px; height: 24px; font-family: Helvetica; }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
 
@@ -1082,7 +1075,7 @@ $(function() {
         var styles = '<style>'
             + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
             + '.tooltip { position: absolute; display: block; font-size: 12px; line-height: 1.4; }'
-            + '.tooltip .tooltip-inner { max-width: 200px; padding: 3px 8px; font-family: Helvetica; text-align: center; }'
+            + '.tooltip .tooltip-body { max-width: 200px; padding: 3px 8px; font-family: Helvetica; text-align: center; }'
             + '#trigger-parent {'
             + '  position: fixed;'
             + '  top: 100px;'
@@ -1096,10 +1089,10 @@ $(function() {
 
         $trigger
             .on('afterShow.cfw.tooltip', function() {
-                var $tip = $('.tooltip-inner');
+                var $tip = $('.tooltip-body');
                 var tipXrightEdge = $tip.offset().left + $tip.width();
                 var triggerXleftEdge = $trigger.offset().left;
-                assert.ok(tipXrightEdge < triggerXleftEdge, 'tooltip with auto left placement, when near the right edge of the viewport, gets left placement');
+                assert.ok(tipXrightEdge < triggerXleftEdge, 'tooltip with auto reverse placement, when near the right edge of the viewport, gets left placement');
                 $trigger.CFW_Tooltip('hide');
             })
             .on('afterHide.cfw.tooltip', function() {
@@ -1110,7 +1103,7 @@ $(function() {
             })
             .CFW_Tooltip({
                 container: 'body',
-                placement: 'auto left',
+                placement: 'auto reverse',
                 trigger: 'manual'
             });
 
@@ -1175,14 +1168,14 @@ $(function() {
             + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
             + '.tooltip { position: absolute; }'
             + '.tooltip-arrow { position: absolute; width: 0; height: 0; }'
-            + '.tooltip .tooltip-inner { max-width: 200px; padding: 3px 8px; }'
+            + '.tooltip .tooltip-body { max-width: 200px; padding: 3px 8px; }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
 
         $('<a href="#" title="tooltip title" style="position: absolute; bottom: 0; right: 0;">Foobar</a>')
             .appendTo('body')
             .on('afterShow.cfw.tooltip', function() {
-                var arrowStyles = $(this).data('cfw.tooltip').$targetElm.find('.tooltip-arrow').attr('style');
+                var arrowStyles = $(this).data('cfw.tooltip').$target.find('.tooltip-arrow').attr('style');
                 assert.ok(/left/i.test(arrowStyles) && !/top/i.test(arrowStyles), 'arrow positioned correctly');
                 $(this).CFW_Tooltip('hide');
             })
@@ -1213,7 +1206,7 @@ $(function() {
             + '#qunit-fixture { top: 0; left: 0; }'
             + '.tooltip, .tooltip *, .tooltip *:before, .tooltip *:after { box-sizing: border-box; }'
             + '.tooltip { position: absolute; }'
-            + '.tooltip .tooltip-inner { width: 24px; height: 24px; font-family: Helvetica; }'
+            + '.tooltip .tooltip-body { width: 24px; height: 24px; font-family: Helvetica; }'
             + '#target { position: absolute; top: 100px; left: 50px; width: 100px; height: 200px; -webkit-transform: rotate(270deg); -ms-transform: rotate(270deg); transform: rotate(270deg); }'
             + '</style>';
         var $styles = $(styles).appendTo('head');
@@ -1261,34 +1254,180 @@ $(function() {
         }, new Error('tooltip `template` option must consist of exactly 1 top-level element!'));
     });
 
-    //    QUnit.test('should not remove tooltip if multiple triggers (hover focus) are set and one is still active', function(assert) {
-    //        assert.expect(21);
-    //        var $el = $('<button>Trigger</button>')
-    //            .appendTo('#qunit-fixture')
-    //            .CFW_Tooltip({ trigger: 'hover focus', animate: false });
-    //        var tooltip = $el.data('cfw.tooltip');
-    //        var $tooltip = tooltip.createTip();
-    //
-    //        function showingTooltip() {
-    //            return $tooltip.hasClass('in') || tooltip.hoverState == 'in';
-    //        }
-    //
-    //        var tests = [
-    //            ['mouseenter', 'mouseleave'], // <-- has error here on leave ??
-    //            ['focusin', 'focusout'],
-    //            ['mouseenter', 'focusin', 'focusout', 'mouseleave'],
-    //            ['mouseenter', 'focusin', 'mouseleave', 'focusout'],
-    //            ['focusin', 'mouseenter', 'mouseleave', 'focusout'],
-    //            ['focusin', 'mouseenter', 'focusout', 'mouseleave'],
-    //        ];
-    //
-    //        assert.ok(!showingTooltip());
-    //
-    //        $.each(tests, function (idx, triggers) {
-    //            for (var i = 0, len = triggers.length; i < len; i++) {
-    //                $el.trigger(triggers[i]);
-    //                assert.equal(i < (len - 1), showingTooltip());
-    //            }
-    //        });
-    //    });
+    QUnit.test('should hide tooltip when their ancestor modal is closed', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var template = '<div id="modal" class="modal">' +
+            '<div class="modal-dialog">' +
+            '<div class="modal-content">' +
+            '<div class="modal-body">' +
+            '<a href="#" id="tooltip" title="Some tooltip text!">Tooltip</a>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+
+        var $target = $(template).appendTo('#qunit-fixture');
+        $('#tooltip')
+            .CFW_Tooltip({
+                trigger: 'manual'
+            })
+            .on('afterShow.cfw.tooltip', function() {
+                $trigger.CFW_Modal('hide');
+            })
+            .on('afterHide.cfw.tooltip', function() {
+                assert.ok(true, 'tooltip hidden');
+                done();
+            });
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                $('#tooltip').CFW_Tooltip('show');
+            });
+
+        $trigger
+            .CFW_Modal()
+            .CFW_Modal('show');
+    });
+
+    QUnit.test('should not remove tooltip if multiple triggers (hover focus) are set and one is still active', function(assert) {
+        assert.expect(21);
+        var $el = $('<button>Trigger</button>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({ trigger: 'hover focus', animate: false, delay: 0 });
+
+        function showingTooltip() {
+            var tooltip = $el.data('cfw.tooltip');
+            var $tooltip = tooltip.$target;
+            var hasIn = ($tooltip !== null) ? $tooltip.hasClass('in') : false;
+            return hasIn || tooltip.hoverState === 'in';
+        }
+
+        var tests = [
+            ['mouseenter', 'mouseleave'],
+            ['focusin', 'focusout'],
+            ['mouseenter', 'focusin', 'focusout', 'mouseleave'],
+            ['mouseenter', 'focusin', 'mouseleave', 'focusout'],
+            ['focusin', 'mouseenter', 'mouseleave', 'focusout'],
+            ['focusin', 'mouseenter', 'focusout', 'mouseleave']
+        ];
+
+        assert.ok(!showingTooltip());
+
+        $.each(tests, function(idx, triggers) {
+            for (var i = 0, len = triggers.length; i < len; i++) {
+                $el.trigger(triggers[i]);
+                assert.equal(i < (len - 1), showingTooltip());
+            }
+        });
+    });
+
+    QUnit.test('should show on first trigger after hide', function(assert) {
+        assert.expect(3);
+        var $el = $('<a href="#" rel="tooltip" title="Test tooltip"/>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({ trigger: 'click hover focus', animate: false });
+
+        function showingTooltip() {
+            var tooltip = $el.data('cfw.tooltip');
+            var $tooltip = tooltip.$target;
+            var hasIn = ($tooltip !== null) ? $tooltip.hasClass('in') : false;
+            return hasIn || tooltip.hoverState === 'in';
+        }
+
+        $el.trigger('click');
+        assert.ok(showingTooltip(), 'tooltip is shown');
+
+        $el.CFW_Tooltip('hide');
+        assert.ok(!showingTooltip(), 'tooltip is hidden');
+
+        $el.trigger('click');
+        assert.ok(showingTooltip(), 'tooltip is shown again');
+    });
+
+    QUnit.test('should allow number in title', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        $('<a href="#" />')
+            .appendTo('#qunit-fixture')
+            .on('afterShow.cfw.tooltip', function() {
+                assert.strictEqual($('.tooltip .tooltip-body').text(), '4', 'title number has been converted to string');
+                done();
+            })
+            .CFW_Tooltip({
+                title: 4
+            })
+            .CFW_Tooltip('show');
+    });
+
+    QUnit.test('should not move focus if non-event toggle called when in dialog mode', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        var $trigger = $('<a href="#" title="Another tooltip"/>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({
+                trigger: 'click'
+            });
+
+        $trigger
+            .on('afterShow.cfw.tooltip', function() {
+                assert.notStrictEqual($('.tooltip')[0], document.activeElement, 'has a unique id');
+                $trigger.CFW_Tooltip('toggle');
+            })
+            .on('afterHide.cfw.tooltip', function() {
+                assert.notStrictEqual($trigger[0], document.activeElement, 'has a unique id');
+                done();
+            })
+            .CFW_Tooltip('toggle');
+    });
+
+    QUnit.test('should not move focus if show/hide called when in dialog mode', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        var $trigger = $('<a href="#" title="Another tooltip"/>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({
+                trigger: 'click'
+            });
+
+        $trigger
+            .on('afterShow.cfw.tooltip', function() {
+                assert.notStrictEqual($('.tooltip')[0], document.activeElement, 'has a unique id');
+                $trigger.CFW_Tooltip('hide');
+            })
+            .on('afterHide.cfw.tooltip', function() {
+                assert.notStrictEqual($trigger[0], document.activeElement, 'has a unique id');
+                done();
+            })
+            .CFW_Tooltip('show');
+    });
+
+    QUnit.test('should move focus if event-driven toggle called when in dialog mode', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        var $trigger = $('<a href="#" title="Another tooltip"/>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({
+                trigger: 'click'
+            });
+
+        $trigger
+            .on('afterShow.cfw.tooltip', function() {
+                assert.strictEqual($('.tooltip')[0], document.activeElement, 'has a unique id');
+                $trigger.trigger('click');
+            })
+            .on('afterHide.cfw.tooltip', function() {
+                assert.strictEqual($trigger[0], document.activeElement, 'has a unique id');
+                done();
+            })
+            .trigger('click');
+    });
+
+
 });

@@ -9,17 +9,21 @@
     {% include nav-main.html %}
 
     <div class="jumbotron jumbotron-full jumbotron-docs">
-        <div class="container">
+        <div class="container-fluid">
             {% include page-header.html %}
         </div>
     </div>
 
-    <main class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-3 cf-sidebar">
+            <div class="col-12 col-md-3 col-xl-2 cf-sidebar">
                 {% include nav-sidebar.html %}
             </div>
-            <div class="col-12 col-md-9 cf-content">
+
+            <div class="d-none d-xl-block col-xl-2 cf-toc">
+            </div>
+
+            <main class="col-12 col-md-9 col-xl-8 cf-content" role="main">
                 <h1 class="cf-title" id="content">
                     {{ page.title }}
                     {% if page.subtitle %}
@@ -28,14 +32,18 @@
                 </h1>
 
                 {{ content }}
-            </div>
+            </main>
         </div>
 
         <div class="topLink">
             <a href="#content">Top of Page <span class="caret"></span></a>
         </div>
-    </main>
+    </div>
 
     {% include footer.html %}
+
+    {% if site.github %}
+    {% include algolia-config.html %}
+    {% endif %}
 </body>
 </html>
