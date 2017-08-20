@@ -23,27 +23,27 @@ plugins:
   - jekyll-sitemap
 
 # Custom vars
-current_version:  3.0.0-beta.2
+current_version:  3.0.0
 repo:             https://github.com/cast-org/figuration
-changelog:        https://github.com/cast-org/figuration/releases/tag/v3.0.0-beta.2
+changelog:        https://github.com/cast-org/figuration/releases/tag/v3.0.0
 twitter:          https://twitter.com/figuration_org
 
 
 # Downloads
 download:
-  source:         https://github.com/cast-org/figuration/archive/v3.0.0-beta.2.zip
-  dist:           https://github.com/cast-org/figuration/releases/download/v3.0.0-beta.2/figuration-v3.0.0-beta.2-dist.zip
+  source:         https://github.com/cast-org/figuration/archive/v3.0.0.zip
+  dist:           https://github.com/cast-org/figuration/releases/download/v3.0.0/figuration-v3.0.0-dist.zip
 
 
 # CDN settings
 # See https://www.srihash.org for info on how to generate the hashes
 cdn:
-  css:          https://cdn.jsdelivr.net/npm/figuration@3.0.0-beta.2/dist/css/figuration.min.css
-  css_hash:     "sha384-cx+FVe87OGnGooL7jizNhedsF1TRpOmxITHS5SwWlxV7KhQ9LuSsZfR99aIpVsnI"
-  js:           https://cdn.jsdelivr.net/npm/figuration@3.0.0-beta.2/dist/js/figuration.min.js
-  js_hash:      "sha384-L+QstduLvsQt80VPsSXfEY/zDDr6jylrDM5Qxz+8Q1Szka3/1c2OR8N3a0/wE4nw"
-  css_rtl:      https://cdn.jsdelivr.net/npm/figuration@3.0.0-beta.2/dist/css/figuration-rtl.min.css
-  css_rtl_hash: "sha384-DzcFVgzmlRdp2yBk3/uZy0eGQ9v2gRUCDwsne2wJ8emCNEdTYTrkat06z6jPhSM9"
+  css:          https://cdn.jsdelivr.net/npm/figuration@3.0.0/dist/css/figuration.min.css
+  css_hash:     "sha384-yoY5C5FEg6sAsByJpKcQNdPt7wfoaYwNdzHFXXrsCZt1r6n4umO5P+ExG0FExTxE"
+  js:           https://cdn.jsdelivr.net/npm/figuration@3.0.0/dist/js/figuration.min.js
+  js_hash:      "sha384-r+OyfrWMarqil59KugxWA5Y99Dm5KsvB6luuH8XuC87ePpyrh36DnAll6SaDlNFt"
+  css_rtl:      https://cdn.jsdelivr.net/npm/figuration@3.0.0/dist/css/figuration-rtl.min.css
+  css_rtl_hash: "sha384-2TMSEagaOyPX9wQ6S/QNQ1nPoPFAOszZUGFUoaj9w6so+7rCl3YBX9ch/F53/vgn"
   jquery:       https://code.jquery.com/jquery-3.2.1.min.js
   jquery_hash:  "sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f"
   fontawe:      https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css
