@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta name="description" content="CAST Figuration - A feature rich, responsive, mobile first, accessible, front-end framework based on Bootstrap.">
+<meta name="description" content="CAST Figuration - A feature rich, responsive, mobile first, accessible, front-end framework.">
 
 <title>
   
@@ -19,22 +18,27 @@
 
 <!-- Core CSS -->
 
-  <link href="/dist/css/figuration.min.css" rel="stylesheet">
-
+  <link href="/dist/css/figuration.min.css" rel="stylesheet" id="cssCore">
 
 
 <!-- Algolia DocSearch CSS -->
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 
 <!-- Docs CSS -->
 
-  <link href="/assets/css/docs.min.css" rel="stylesheet">
+  <link href="/assets/css/docs.min.css" rel="stylesheet" id="cssDocs">
 
 
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
+
+<!-- MutationObserver Polyfill -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.24/MutationObserver.min.js" integrity="sha384-8HHYYRe45k4Xq40fi/cZaaby4FJgnOOVmnRzX3OWtwpfiUPfx7tnK2QkDPuIRGm0" crossorigin="anonymous"></script>
+
 
 <!-- Core JS -->
 
@@ -46,8 +50,7 @@
   <script src="/assets/js/docs.min.js"></script>
 
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- IE emulation mode warning -->
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
 <script>
@@ -63,57 +66,81 @@
 <body>
     <a class="skipnav" href="#content">Skip to main content</a>
 
-    <div class="bg-cyan-500 text-center font-weight-bold p-1">
-<a href="https://figuration-org.github.io/figuration-preview/" class="text-light">Figuration v3 Preview Available!</a>
-</div>
-<header class="navbar navbar-full navbar-dark cf-header">
-    <div class="container">
-        <nav>
-            <a class="navbar-brand" href="/">CAST Figuration</a>
-            <div class="hide-lg-up float-right">
-                <button class="navbar-toggler btn btn-toggler" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">
-                    <span class="icon-menu" aria-hidden="true">&#8801;</span>
-                </button>
-            </div>
-            
-            <div class="hide-xs-down float-right mt-0_25 mr-1 mr-lg-0">
-                <form class="form-inline docsearch-wrapper">
-                    <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
-                </form>
-            </div>
-            
-            <div class="collapse navbar-toggleable-md" id="cf-topnav">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item ">
-                        <a href="/get-started/quick-start/" class="nav-link">Get Started</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/layout/overview/" class="nav-link">Layout</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a href="/content/reboot/" class="nav-link">Content</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/components/alerts/" class="nav-link">Components</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/utilities/borders/" class="nav-link">Utilities</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/widgets/overview/" class="nav-link">Widgets</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/about/overview/" class="nav-link">About</a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </nav>
-    </div> <!-- /.container -->
+    <header class="navbar navbar-expand-lg navbar-dark print-hide cf-header">
+    <a class="navbar-brand" href="/" aria-label="CAST Figuration">
+        <img src="/assets/brand/figuration-outline.svg" class="navbar-brand-logo" alt="" />
+        <span class="sr-only-xs-down">CAST Figuration</span>
+    </a>
+    <button class="navbar-toggle flex-first me-0_5" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
+        <span class="cf-header-menu" aria-hidden="true">&#8801;</span>
+    </button>
+    <div class="navbar-collapse collapse flex-last flex-lg-unordered flex-lg-shrink text-nowrap" id="cf-topnav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/get-started/quick-start/" class="nav-link ">Get Started</a>
+            </li>
+            <li class="nav-item">
+                <a href="/layout/overview/" class="nav-link ">Layout</a>
+            </li>
+            <li class="nav-item">
+                <a href="/content/reboot/" class="nav-link active">Content <span class="sr-only">(current section)</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="/components/alerts/" class="nav-link ">Components</a>
+            </li>
+            <li class="nav-item">
+                <a href="/utilities/borders/" class="nav-link ">Utilities</a>
+            </li>
+            <li class="nav-item">
+                <a href="/widgets/overview/" class="nav-link ">Widgets</a>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="navbar-nav ms-auto cf-header-social">
+        <li class="nav-item">
+            <a href="https://twitter.com/figuration_org" class="nav-link" aria-label="Twitter" title="Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" focusable="false"  class="cf-header-icon"  >
+  <title>Twitter</title>
+  <path fill="currentColor" d="M512 97.2c-18.84 8.36-39.08 14-60.33 16.55 21.7-13 38.34-33.58 46.2-58.1-20.3 12.03-42.8 20.77-66.72 25.48C412 60.7 384.7 47.96 354.48 47.96c-58 0-105.04 47.03-105.04 105.03 0 8.23.93 16.25 2.72 23.93-87.3-4.38-164.7-46.2-216.5-109.75-9.05 15.5-14.24 33.56-14.24 52.8 0 36.45 18.55 68.6 46.73 87.44-17.2-.54-33.4-5.27-47.57-13.14v1.32c0 50.9 36.2 93.35 84.25 103-8.8 2.4-18.1 3.7-27.68 3.7-6.76 0-13.34-.67-19.76-1.9 13.36 41.73 52.15 72.1 98.12 72.95-35.95 28.18-81.25 44.97-130.46 44.97-8.48 0-16.84-.5-25.06-1.47 46.5 29.8 101.7 47.2 161.02 47.2 193.2 0 298.87-160.07 298.87-298.88 0-4.55-.1-9.08-.32-13.6 20.53-14.8 38.34-33.3 52.42-54.36z"/>
+</svg>
+
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="https://github.com/cast-org/figuration" class="nav-link" aria-label="Github" title="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false"  class="cf-header-icon"  >
+  <title>GitHub</title>
+  <path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.3 6.53 5.47 7.6.4.06.55-.18.55-.4v-1.48c-2.02.37-2.54-.5-2.7-.94-.1-.23-.48-.94-.82-1.13-.28-.15-.68-.52 0-.53.62 0 1.07.58 1.22.82.72 1.2 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.77-.2-3.63-.9-3.63-3.95 0-.87.3-1.6.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.2 2.2.83.64-.18 1.32-.27 2-.27.68 0 1.36.1 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.93.08 2.13.5.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.3.25.54.73.54 1.48v2.2c0 .22.15.47.55.4C13.7 14.52 16 11.52 16 8c0-4.42-3.58-8-8-8z"/>
+</svg>
+
+            </a>
+        </li>
+        <li class="nav-item dropdown dropdown-menu-reverse">
+            <a href="#" role="button" class="nav-link" aria-label="Settings" title="Settings" data-cfw="dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" focusable="false"  class="cf-header-icon"  >
+  <title>Settings</title>
+  <path fill="currentColor" d="M3.5 0l-.5 1.19c-.1.03-.19.08-.28.13l-1.19-.5-.72.72.5 1.19c-.05.1-.09.18-.13.28l-1.19.5v1l1.19.5c.04.1.08.18.13.28l-.5 1.19.72.72 1.19-.5c.09.04.18.09.28.13l.5 1.19h1l.5-1.19c.09-.04.19-.08.28-.13l1.19.5.72-.72-.5-1.19c.04-.09.09-.19.13-.28l1.19-.5v-1l-1.19-.5c-.03-.09-.08-.19-.13-.28l.5-1.19-.72-.72-1.19.5c-.09-.04-.19-.09-.28-.13l-.5-1.19h-1zm.5 2.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z"/>
+</svg>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">Direction</li>
+                <li><button type="button" class="dropdown-item" id="dir-ltr">Left-to-right</button></li>
+                <li><button type="button" class="dropdown-item" id="dir-rtl">Right-to-left</button></li>
+            </ul>
+        </li>
+        
+        <li class="nav-item">
+            <form class="form-inline docsearch-wrapper">
+                <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
+            </form>
+        </li>
+        
+    </ul>
 </header>
 
     <div class="jumbotron jumbotron-full jumbotron-docs">
-        <div class="container">
+        <div class="container-fluid">
             
     <div class="h1">Content</div>
     <p class="lead">
@@ -124,9 +151,9 @@
         </div>
     </div>
 
-    <main class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-3 cf-sidebar">
+            <div class="col-12 col-md-3 col-xl-2 cf-sidebar">
                 <nav class="cf-links">
 
 
@@ -144,94 +171,102 @@
   
 
   
-    <div class="h4">Content</div>
-    <ul class="nav">
+    <div class="h4 cf-sidebar-header">Content</div>
+    <ul class="nav flex-column">
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/content/reboot/" class="nav-link ">
-            Reboot
+            Reboot 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/content/color/" class="nav-link ">
-            Color
+            Color 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/content/typography/" class="nav-link ">
-            Typography
+            Typography 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/content/code/" class="nav-link ">
-            Code
+            Code 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/content/images/" class="nav-link ">
-            Images
+            Images 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/content/figures/" class="nav-link ">
-            Figures
+            Figures 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/content/tables/" class="nav-link active">
-            Tables
+            Tables <span class="sr-only">(current page)</span>
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/content/buttons/" class="nav-link ">
-            Buttons
+            Buttons 
           </a>
         </li>
       
@@ -239,10 +274,11 @@
 
         
         
+        
 
         <li class="nav-item">
           <a href="/content/forms/" class="nav-link ">
-            Forms
+            Forms 
           </a>
         </li>
       
@@ -272,7 +308,11 @@
 </nav>
 
             </div>
-            <div class="col-12 col-md-9 cf-content">
+
+            <div class="d-none d-xl-block col-xl-2 cf-toc">
+            </div>
+
+            <main class="col-12 col-md-9 col-xl-8 cf-content" role="main">
                 <h1 class="cf-title" id="content">
                     Tables
                     
@@ -285,12 +325,16 @@
 <ul id="markdown-toc">
   <li><a href="#examples" id="markdown-toc-examples">Examples</a></li>
   <li><a href="#table-head-options" id="markdown-toc-table-head-options">Table Head Options</a></li>
+  <li><a href="#table-footer-options" id="markdown-toc-table-footer-options">Table Footer Options</a></li>
   <li><a href="#striped-rows" id="markdown-toc-striped-rows">Striped Rows</a></li>
   <li><a href="#bordered-table" id="markdown-toc-bordered-table">Bordered Table</a></li>
+  <li><a href="#borderless-table" id="markdown-toc-borderless-table">Borderless Table</a></li>
+  <li><a href="#non-bordered-table" id="markdown-toc-non-bordered-table">Non-Bordered Table</a></li>
+  <li><a href="#mixed-border-table" id="markdown-toc-mixed-border-table">Mixed-Border Table</a></li>
   <li><a href="#hoverable-rows" id="markdown-toc-hoverable-rows">Hoverable Rows</a></li>
   <li><a href="#condensed-table" id="markdown-toc-condensed-table">Condensed Table</a></li>
   <li><a href="#contextual-classes" id="markdown-toc-contextual-classes">Contextual Classes</a></li>
-  <li><a href="#responsive-tables" id="markdown-toc-responsive-tables">Responsive Tables</a></li>
+  <li><a href="#scrolling-tables" id="markdown-toc-scrolling-tables">Scrolling Tables</a></li>
 </ul>
 
 <h2 id="examples">Examples</h2>
@@ -326,6 +370,14 @@
       <td>table cell</td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
 </table>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table"</span><span class="nt">&gt;</span>
@@ -356,6 +408,14 @@
       <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;tfoot&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tfoot&gt;</span>
 <span class="nt">&lt;/table&gt;</span></code></pre></div>
 
 <p>You can also invert the colors—with light text on dark backgrounds—with <code class="highlighter-rouge">.table-inverse</code>.</p>
@@ -389,6 +449,14 @@
       <td>table cell</td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
 </table>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-inverse"</span><span class="nt">&gt;</span>
@@ -419,6 +487,14 @@
       <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;tfoot&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tfoot&gt;</span>
 <span class="nt">&lt;/table&gt;</span></code></pre></div>
 
 <h2 id="table-head-options">Table Head Options</h2>
@@ -544,6 +620,163 @@
       <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
+
+<h2 id="table-footer-options">Table Footer Options</h2>
+
+<p>Just like the headers, use one of two modifier classes to make <code class="highlighter-rouge">&lt;tfoot&gt;</code>s appear light or dark gray.</p>
+
+<div class="cf-example" data-example-id="">
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td colspan="2">table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+  </tbody>
+  <tfoot class="tfoot-inverse">
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
+</table>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td colspan="2">table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+  </tbody>
+  <tfoot class="tfoot-default">
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
+</table>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;tfoot</span> <span class="na">class=</span><span class="s">"tfoot-inverse"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tfoot&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+
+<span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;tfoot</span> <span class="na">class=</span><span class="s">"tfoot-default"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tfoot&gt;</span>
 <span class="nt">&lt;/table&gt;</span></code></pre></div>
 
 <h2 id="striped-rows">Striped Rows</h2>
@@ -705,6 +938,14 @@
       <td>table cell</td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
 </table>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-bordered"</span><span class="nt">&gt;</span>
@@ -735,6 +976,14 @@
       <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;tfoot&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tfoot&gt;</span>
 <span class="nt">&lt;/table&gt;</span></code></pre></div>
 
 <div class="cf-example" data-example-id="">
@@ -766,6 +1015,14 @@
       <td>table cell</td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
 </table>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-bordered table-inverse"</span><span class="nt">&gt;</span>
@@ -796,6 +1053,488 @@
       <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;tfoot&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tfoot&gt;</span>
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
+
+<h2 id="borderless-table">Borderless Table</h2>
+
+<p>Add <code class="highlighter-rouge">.table-borderless</code> to remove borders from all sides of the cells, but leave a border between the table’s header or footer and the table body.</p>
+
+<div class="cf-example" data-example-id="">
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td colspan="2">table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
+</table>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-borderless"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;tfoot&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tfoot&gt;</span>
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
+
+<div class="cf-example" data-example-id="">
+<table class="table table-borderless table-inverse">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td colspan="2">table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
+</table>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-borderless table-inverse"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;tfoot&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tfoot&gt;</span>
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
+
+<h2 id="non-bordered-table">Non-Bordered Table</h2>
+
+<p>Add <code class="highlighter-rouge">.table-noborder</code> to remove borders from all sides of the cells, including the border between the table’s header or footer and the table body.</p>
+
+<div class="cf-example" data-example-id="">
+<table class="table table-noborder">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td colspan="2">table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
+</table>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-noborder"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;tfoot&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tfoot&gt;</span>
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
+
+<div class="cf-example" data-example-id="">
+<table class="table table-noborder table-inverse">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td colspan="2">table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
+</table>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-noborder table-inverse"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;tfoot&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tfoot&gt;</span>
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
+
+<h2 id="mixed-border-table">Mixed-Border Table</h2>
+
+<p>Mix <code class="highlighter-rouge">.table-bordered</code> along with <code class="highlighter-rouge">.table-borderless</code> or <code class="highlighter-rouge">.table-noborder</code> to vary the table’s borders.</p>
+
+<div class="cf-example" data-example-id="">
+<table class="table table-bordered table-borderless">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td colspan="2">table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
+</table>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-bordered table-borderless"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;tfoot&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tfoot&gt;</span>
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
+
+<div class="cf-example" data-example-id="">
+<table class="table table-bordered table-noborder">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td colspan="2">table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
+</table>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-bordered table-noborder"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span><span class="nt">&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;tfoot&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tfoot&gt;</span>
 <span class="nt">&lt;/table&gt;</span></code></pre></div>
 
 <h2 id="hoverable-rows">Hoverable Rows</h2>
@@ -957,6 +1696,14 @@
       <td>table cell</td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
 </table>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-condensed"</span><span class="nt">&gt;</span>
@@ -987,6 +1734,14 @@
       <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;tfoot&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tfoot&gt;</span>
 <span class="nt">&lt;/table&gt;</span></code></pre></div>
 
 <div class="cf-example" data-example-id="">
@@ -1018,6 +1773,14 @@
       <td>table cell</td>
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
 </table>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-condensed table-inverse"</span><span class="nt">&gt;</span>
@@ -1048,54 +1811,66 @@
       <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;tfoot&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tfoot&gt;</span>
 <span class="nt">&lt;/table&gt;</span></code></pre></div>
 
 <h2 id="contextual-classes">Contextual Classes</h2>
 
 <p>Use contextual classes to color table rows or individual cells.</p>
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>Class</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">
-          <code>.table-active</code>
-        </th>
-        <td>Applies the hover color to a particular row or cell</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.table-success</code>
-        </th>
-        <td>Indicates a successful or positive action</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.table-info</code>
-        </th>
-        <td>Indicates a neutral informative change or action</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.table-warning</code>
-        </th>
-        <td>Indicates a warning that might need attention</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <code>.table-danger</code>
-        </th>
-        <td>Indicates a dangerous or potentially negative action</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="cf-callout cf-callout-warning">
+<p class="h5">Conveying Meaning to Assistive Technologies</p>
+
+<p>Please refer to the <a href="/get-started/accessibility/#conveying-meaning-with-color">Accessiblity notes about conveying meaning with color</a>.</p>
 </div>
+
+<table class="table table-scroll table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">
+        <code>.table-active</code>
+      </th>
+      <td>Applies the hover color to a particular row or cell</td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <code>.table-success</code>
+      </th>
+      <td>Indicates a successful or positive action</td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <code>.table-info</code>
+      </th>
+      <td>Indicates a neutral informative change or action</td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <code>.table-warning</code>
+      </th>
+      <td>Indicates a warning that might need attention</td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <code>.table-danger</code>
+      </th>
+      <td>Indicates a dangerous or potentially negative action</td>
+    </tr>
+  </tbody>
+</table>
 
 <div class="cf-example">
   <table class="table">
@@ -1163,23 +1938,31 @@
         <td>Column content</td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Column footer</th>
+        <th>Column footer</th>
+        <th>Column footer</th>
+      </tr>
+    </tfoot>
   </table>
 </div>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- On rows --&gt;</span>
 <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"table-active"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/tr&gt;</span>
 <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"table-success"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"table-info"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/tr&gt;</span>
 <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"table-warning"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/tr&gt;</span>
 <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"table-danger"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/tr&gt;</span>
-<span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"table-info"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/tr&gt;</span>
 
 <span class="c">&lt;!-- On cells (`td` or `th`) --&gt;</span>
 <span class="nt">&lt;tr&gt;</span>
   <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"table-active"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
   <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"table-success"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"table-info"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
   <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"table-warning"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
   <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"table-danger"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
-  <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"table-info"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
 <span class="nt">&lt;/tr&gt;</span></code></pre></figure>
 
 <p>Regular table background variants are not available with the inverse table, however, you may use <a href="/utilities/color/#contextual-colors-and-backgrounds">text or background utilities</a> to achieve similar styles.</p>
@@ -1250,158 +2033,393 @@
         <td>Column content</td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Column footer</th>
+        <th>Column footer</th>
+        <th>Column footer</th>
+      </tr>
+    </tfoot>
   </table>
 </div>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- On rows --&gt;</span>
 <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"bg-primary"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/tr&gt;</span>
 <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"bg-success"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"bg-info"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/tr&gt;</span>
 <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"bg-warning"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/tr&gt;</span>
 <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"bg-danger"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/tr&gt;</span>
-<span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"bg-info"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/tr&gt;</span>
 
 <span class="c">&lt;!-- On cells (`td` or `th`) --&gt;</span>
 <span class="nt">&lt;tr&gt;</span>
   <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"bg-primary"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
   <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"bg-success"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
+  <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"bg-info"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
   <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"bg-warning"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
   <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"bg-danger"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
-  <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"bg-info"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/td&gt;</span>
 <span class="nt">&lt;/tr&gt;</span></code></pre></figure>
 
-<div class="cf-callout cf-callout-warning">
-<h4 id="conveying-meaning-to-assistive-technologies">Conveying Meaning to Assistive Technologies</h4>
+<p>You can also use <a href="/utilities/color/#contextual-colors-and-backgrounds">text or background utilities</a> to achieve multiple styles.</p>
 
-<p>Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies—such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the <code class="highlighter-rouge">.sr-only</code> class.</p>
+<div class="cf-example" data-example-id="">
+<table class="table">
+  <thead class="text-light bg-blue-500">
+    <tr>
+      <th>#</th>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="text-cyan-500">
+      <th scope="row">1</th>
+      <td>table cell</td>
+      <td>table cell</td>
+      <td>table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td colspan="2" class="text-success">table cell</td>
+      <td class="text-danger">table cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td class="text-light bg-success">table cell</td>
+      <td>table cell</td>
+      <td class="text-dark bg-red-100">table cell</td>
+    </tr>
+  </tbody>
+  <tfoot class="bg-blue-100">
+    <tr>
+      <th></th>
+      <th>Table Footer 1</th>
+      <th>Table Footer 2</th>
+      <th>Table Footer 3</th>
+    </tr>
+  </tfoot>
+</table>
 </div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;thead</span> <span class="na">class=</span><span class="s">"text-light bg-blue-500"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"text-cyan-500"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">colspan=</span><span class="s">"2"</span> <span class="na">class=</span><span class="s">"text-success"</span><span class="nt">&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"text-danger"</span><span class="nt">&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"text-light bg-success"</span><span class="nt">&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"text-dark bg-red-100"</span><span class="nt">&gt;</span>table cell<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;tfoot</span> <span class="na">class=</span><span class="s">"bg-blue-100"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Footer 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tfoot&gt;</span>
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
 
-<h2 id="responsive-tables">Responsive Tables</h2>
+<h2 id="scrolling-tables">Scrolling Tables</h2>
 
-<p>Create responsive tables by wrapping any <code class="highlighter-rouge">.table</code> in <code class="highlighter-rouge">.table-responsive</code> to make them scroll horizontally if they become too wide, otherwise, you will not see any difference in these tables.  You might need to reduce the size of your browser in order for the examples scroll.</p>
+<p>Having an issue with tables becoming too wide for their containers? Add <code class="highlighter-rouge">.table-scroll</code> to any <code class="highlighter-rouge">.table</code> to make them scroll horizontally if they become wider than their container.</p>
 
 <div class="cf-callout cf-callout-warning">
-<h4 id="firefox-and-fieldsets">Firefox and Fieldsets</h4>
+<p class="h5">Vertical Clipping</p>
 
-<p>Firefox has some awkward fieldset styling involving <code class="highlighter-rouge">width</code> that interferes with the responsive table. This cannot be overridden without a Firefox-specific hack that we <strong>don’t</strong> provide in Figuration:</p>
-
-<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="k">@-moz-document</span> <span class="n">url-prefix</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nt">fieldset</span> <span class="p">{</span> <span class="nl">display</span><span class="p">:</span> <span class="nb">table-cell</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>For more information, read <a href="https://stackoverflow.com/questions/17408815/fieldset-resizes-wrong-appears-to-have-unremovable-min-width-min-content/17863685#17863685">this Stack Overflow answer</a>.</p>
+<p>Scrolling tables make use of <code class="highlighter-rouge">overflow-y: hidden</code>, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off dropdown menus and other third-party widgets.</p>
 </div>
 
 <div class="cf-example">
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <table class="table table-scroll">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+      </tr>
+    </tfoot>
+  </table>
 
-  <div class="table-responsive">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-          <th>Table heading</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <table class="table table-scroll table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+      </tr>
+    </tfoot>
+  </table>
 </div>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"table-responsive"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table"</span><span class="nt">&gt;</span>
-    ...
-  <span class="nt">&lt;/table&gt;</span>
-<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-scroll"</span><span class="nt">&gt;</span>
+  ...
+<span class="nt">&lt;/table&gt;</span></code></pre></figure>
+
+<p>Table scrolling is also available in responsive variants of the form <code class="highlighter-rouge">.table-scroll-*-down</code>, where the table will horizontally scroll when the table is wider than it’s container and when the viewport is at the given breakpoint or smaller.</p>
+
+<p>Responsive variants are:</p>
+<ul>
+  <li><code class="highlighter-rouge">.table-scroll-xs-down</code></li>
+  <li><code class="highlighter-rouge">.table-scroll-sm-down</code></li>
+  <li><code class="highlighter-rouge">.table-scroll-md-down</code></li>
+  <li><code class="highlighter-rouge">.table-scroll-lg-down</code></li>
+</ul>
+
+<p><strong>Heads up!</strong> There is no <code class="highlighter-rouge">.table-scroll-*-down</code> class created for the largest breakpoint, <code class="highlighter-rouge">.table-scroll-xl-down</code>, since it is functionally equivalent to using <code class="highlighter-rouge">.table-scroll</code>.</p>
+
+<div class="cf-example" data-example-id="">
+<table class="table table-scroll-md-down">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+        <th>Table footer</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-scroll-md-down"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;thead&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Table heading<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Table heading<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Table heading<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Table heading<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Table heading<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Table heading<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;/thead&gt;</span>
+    <span class="nt">&lt;tbody&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Table cell<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Table cell<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Table cell<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Table cell<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Table cell<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Table cell<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Table cell<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Table cell<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Table cell<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Table cell<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Table cell<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Table cell<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Table cell<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Table cell<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Table cell<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Table cell<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;/tbody&gt;</span>
+    <span class="nt">&lt;tfoot&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Table footer<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Table footer<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Table footer<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Table footer<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Table footer<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Table footer<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;/tfoot&gt;</span>
+  <span class="nt">&lt;/table&gt;</span></code></pre></div>
 
 
-            </div>
+            </main>
         </div>
 
         <div class="topLink">
             <a href="#content">Top of Page <span class="caret"></span></a>
         </div>
-    </main>
+    </div>
 
     <footer class="cf-footer">
     <div class="container">
-        Current version: 2.0.0
-        <ul class="footer-links">
+        <p class="mb-0">
+            Current version: 3.0.0
+        </p>
+        <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
+            <li><a href="/about/overview/">About</a></li>
             <li><a href="https://github.com/cast-org/figuration">GitHub Project</a></li>
             <li><a href="https://github.com/cast-org/figuration/issues">Issues</a></li>
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
@@ -1409,7 +2427,7 @@
         <p>
             &copy; 2013-2017 <a href="http://www.cast.org">CAST, Inc.</a>
             <br />
-            Portions: &copy; 2011-2016 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
+            Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
             Code licensed <a rel="license" href="https://github.com/cast-org/figuration/blob/master/LICENSE">MIT</a>,
             docs <a rel="license" href="https://github.com/cast-org/figuration/blob/master/docs/LICENSE">CC BY 4.0</a>.
@@ -1417,9 +2435,9 @@
 
         <hr />
 
-        <strong>Funding generously provided by:</strong>
+        <p class="font-weight-bold mb-0_25">Funding generously provided by:</p>
         <div class="media footer-partners">
-            <div class="media-left">
+            <div class="d-flex me-0_5">
                 <img src="/assets/img/aem-logo.png" class="media-object" width="40" height="40" alt="AEM logo" />
             </div>
             <div class="media-body">
@@ -1432,15 +2450,23 @@
 </footer>
 
 
-<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
 <script>
 docsearch({
     apiKey: '3b9b6e000775400f4833a14c4daa6049',
     indexName: 'figuration',
-    inputSelector: '#docsearch'
+    inputSelector: '#docsearch',
+    transformData: function (hits) {
+      return hits.map(function (hit) {
+        hit.url = hit.url.replace('http://figuration.org', '');
+        return hit;
+      });
+    },
+    debug: true // Set debug to true if you want to inspect the dropdown
 });
 </script>
 
-
+    
 </body>
 </html>

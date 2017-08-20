@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta name="description" content="CAST Figuration - A feature rich, responsive, mobile first, accessible, front-end framework based on Bootstrap.">
+<meta name="description" content="CAST Figuration - A feature rich, responsive, mobile first, accessible, front-end framework.">
 
 <title>
   
@@ -19,22 +18,27 @@
 
 <!-- Core CSS -->
 
-  <link href="/dist/css/figuration.min.css" rel="stylesheet">
-
+  <link href="/dist/css/figuration.min.css" rel="stylesheet" id="cssCore">
 
 
 <!-- Algolia DocSearch CSS -->
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 
 <!-- Docs CSS -->
 
-  <link href="/assets/css/docs.min.css" rel="stylesheet">
+  <link href="/assets/css/docs.min.css" rel="stylesheet" id="cssDocs">
 
 
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
+
+<!-- MutationObserver Polyfill -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.24/MutationObserver.min.js" integrity="sha384-8HHYYRe45k4Xq40fi/cZaaby4FJgnOOVmnRzX3OWtwpfiUPfx7tnK2QkDPuIRGm0" crossorigin="anonymous"></script>
+
 
 <!-- Core JS -->
 
@@ -46,8 +50,7 @@
   <script src="/assets/js/docs.min.js"></script>
 
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- IE emulation mode warning -->
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
 <script>
@@ -63,57 +66,81 @@
 <body>
     <a class="skipnav" href="#content">Skip to main content</a>
 
-    <div class="bg-cyan-500 text-center font-weight-bold p-1">
-<a href="https://figuration-org.github.io/figuration-preview/" class="text-light">Figuration v3 Preview Available!</a>
-</div>
-<header class="navbar navbar-full navbar-dark cf-header">
-    <div class="container">
-        <nav>
-            <a class="navbar-brand" href="/">CAST Figuration</a>
-            <div class="hide-lg-up float-right">
-                <button class="navbar-toggler btn btn-toggler" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">
-                    <span class="icon-menu" aria-hidden="true">&#8801;</span>
-                </button>
-            </div>
-            
-            <div class="hide-xs-down float-right mt-0_25 mr-1 mr-lg-0">
-                <form class="form-inline docsearch-wrapper">
-                    <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
-                </form>
-            </div>
-            
-            <div class="collapse navbar-toggleable-md" id="cf-topnav">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item active">
-                        <a href="/get-started/quick-start/" class="nav-link">Get Started</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/layout/overview/" class="nav-link">Layout</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/content/reboot/" class="nav-link">Content</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/components/alerts/" class="nav-link">Components</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/utilities/borders/" class="nav-link">Utilities</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/widgets/overview/" class="nav-link">Widgets</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/about/overview/" class="nav-link">About</a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </nav>
-    </div> <!-- /.container -->
+    <header class="navbar navbar-expand-lg navbar-dark print-hide cf-header">
+    <a class="navbar-brand" href="/" aria-label="CAST Figuration">
+        <img src="/assets/brand/figuration-outline.svg" class="navbar-brand-logo" alt="" />
+        <span class="sr-only-xs-down">CAST Figuration</span>
+    </a>
+    <button class="navbar-toggle flex-first me-0_5" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
+        <span class="cf-header-menu" aria-hidden="true">&#8801;</span>
+    </button>
+    <div class="navbar-collapse collapse flex-last flex-lg-unordered flex-lg-shrink text-nowrap" id="cf-topnav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/get-started/quick-start/" class="nav-link active">Get Started <span class="sr-only">(current section)</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="/layout/overview/" class="nav-link ">Layout</a>
+            </li>
+            <li class="nav-item">
+                <a href="/content/reboot/" class="nav-link ">Content</a>
+            </li>
+            <li class="nav-item">
+                <a href="/components/alerts/" class="nav-link ">Components</a>
+            </li>
+            <li class="nav-item">
+                <a href="/utilities/borders/" class="nav-link ">Utilities</a>
+            </li>
+            <li class="nav-item">
+                <a href="/widgets/overview/" class="nav-link ">Widgets</a>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="navbar-nav ms-auto cf-header-social">
+        <li class="nav-item">
+            <a href="https://twitter.com/figuration_org" class="nav-link" aria-label="Twitter" title="Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" focusable="false"  class="cf-header-icon"  >
+  <title>Twitter</title>
+  <path fill="currentColor" d="M512 97.2c-18.84 8.36-39.08 14-60.33 16.55 21.7-13 38.34-33.58 46.2-58.1-20.3 12.03-42.8 20.77-66.72 25.48C412 60.7 384.7 47.96 354.48 47.96c-58 0-105.04 47.03-105.04 105.03 0 8.23.93 16.25 2.72 23.93-87.3-4.38-164.7-46.2-216.5-109.75-9.05 15.5-14.24 33.56-14.24 52.8 0 36.45 18.55 68.6 46.73 87.44-17.2-.54-33.4-5.27-47.57-13.14v1.32c0 50.9 36.2 93.35 84.25 103-8.8 2.4-18.1 3.7-27.68 3.7-6.76 0-13.34-.67-19.76-1.9 13.36 41.73 52.15 72.1 98.12 72.95-35.95 28.18-81.25 44.97-130.46 44.97-8.48 0-16.84-.5-25.06-1.47 46.5 29.8 101.7 47.2 161.02 47.2 193.2 0 298.87-160.07 298.87-298.88 0-4.55-.1-9.08-.32-13.6 20.53-14.8 38.34-33.3 52.42-54.36z"/>
+</svg>
+
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="https://github.com/cast-org/figuration" class="nav-link" aria-label="Github" title="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false"  class="cf-header-icon"  >
+  <title>GitHub</title>
+  <path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.3 6.53 5.47 7.6.4.06.55-.18.55-.4v-1.48c-2.02.37-2.54-.5-2.7-.94-.1-.23-.48-.94-.82-1.13-.28-.15-.68-.52 0-.53.62 0 1.07.58 1.22.82.72 1.2 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.77-.2-3.63-.9-3.63-3.95 0-.87.3-1.6.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.2 2.2.83.64-.18 1.32-.27 2-.27.68 0 1.36.1 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.93.08 2.13.5.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.3.25.54.73.54 1.48v2.2c0 .22.15.47.55.4C13.7 14.52 16 11.52 16 8c0-4.42-3.58-8-8-8z"/>
+</svg>
+
+            </a>
+        </li>
+        <li class="nav-item dropdown dropdown-menu-reverse">
+            <a href="#" role="button" class="nav-link" aria-label="Settings" title="Settings" data-cfw="dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" focusable="false"  class="cf-header-icon"  >
+  <title>Settings</title>
+  <path fill="currentColor" d="M3.5 0l-.5 1.19c-.1.03-.19.08-.28.13l-1.19-.5-.72.72.5 1.19c-.05.1-.09.18-.13.28l-1.19.5v1l1.19.5c.04.1.08.18.13.28l-.5 1.19.72.72 1.19-.5c.09.04.18.09.28.13l.5 1.19h1l.5-1.19c.09-.04.19-.08.28-.13l1.19.5.72-.72-.5-1.19c.04-.09.09-.19.13-.28l1.19-.5v-1l-1.19-.5c-.03-.09-.08-.19-.13-.28l.5-1.19-.72-.72-1.19.5c-.09-.04-.19-.09-.28-.13l-.5-1.19h-1zm.5 2.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z"/>
+</svg>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">Direction</li>
+                <li><button type="button" class="dropdown-item" id="dir-ltr">Left-to-right</button></li>
+                <li><button type="button" class="dropdown-item" id="dir-rtl">Right-to-left</button></li>
+            </ul>
+        </li>
+        
+        <li class="nav-item">
+            <form class="form-inline docsearch-wrapper">
+                <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
+            </form>
+        </li>
+        
+    </ul>
 </header>
 
     <div class="jumbotron jumbotron-full jumbotron-docs">
-        <div class="container">
+        <div class="container-fluid">
             
     <div class="h1">Get Started</div>
     <p class="lead">
@@ -124,9 +151,9 @@
         </div>
     </div>
 
-    <main class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-3 cf-sidebar">
+            <div class="col-12 col-md-3 col-xl-2 cf-sidebar">
                 <nav class="cf-links">
 
 
@@ -134,72 +161,78 @@
   
 
   
-    <div class="h4">Get Started</div>
-    <ul class="nav">
+    <div class="h4 cf-sidebar-header">Get Started</div>
+    <ul class="nav flex-column">
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/get-started/quick-start/" class="nav-link ">
-            Quick Start
+            Quick Start 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/get-started/download/" class="nav-link ">
-            Download
+            Download 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/get-started/browsers-devices/" class="nav-link active">
-            Browsers & Devices
+            Browsers & Devices <span class="sr-only">(current page)</span>
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/get-started/options/" class="nav-link ">
-            Options
+            Options 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/get-started/build-tools/" class="nav-link ">
-            Build Tools
+            Build Tools 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/get-started/accessibility/" class="nav-link ">
-            Accessibility
+            Accessibility 
           </a>
         </li>
       
@@ -207,10 +240,11 @@
 
         
         
+        
 
         <li class="nav-item">
           <a href="/get-started/examples/" class="nav-link ">
-            Examples
+            Examples 
           </a>
         </li>
       
@@ -250,7 +284,11 @@
 </nav>
 
             </div>
-            <div class="col-12 col-md-9 cf-content">
+
+            <div class="d-none d-xl-block col-xl-2 cf-toc">
+            </div>
+
+            <main class="col-12 col-md-9 col-xl-8 cf-content" role="main">
                 <h1 class="cf-title" id="content">
                     Browsers & Devices
                     
@@ -266,14 +304,13 @@
       <li><a href="#desktop-browsers" id="markdown-toc-desktop-browsers">Desktop Browsers</a></li>
     </ul>
   </li>
-  <li><a href="#internet-explorer-9--10" id="markdown-toc-internet-explorer-9--10">Internet Explorer 9 &amp; 10</a></li>
-  <li><a href="#supporting-internet-explorer-8" id="markdown-toc-supporting-internet-explorer-8">Supporting Internet Explorer 8</a></li>
-  <li><a href="#ie-compatibility-modes" id="markdown-toc-ie-compatibility-modes">IE Compatibility Modes</a></li>
-  <li><a href="#internet-explorer-10-in-windows-phone-8" id="markdown-toc-internet-explorer-10-in-windows-phone-8">Internet Explorer 10 in Windows Phone 8</a></li>
+  <li><a href="#internet-explorer" id="markdown-toc-internet-explorer">Internet Explorer</a>    <ul>
+      <li><a href="#mutationobserver" id="markdown-toc-mutationobserver">MutationObserver</a></li>
+    </ul>
+  </li>
   <li><a href="#modals-and-dropdowns-on-mobile" id="markdown-toc-modals-and-dropdowns-on-mobile">Modals and Dropdowns on Mobile</a>    <ul>
       <li><a href="#overflow-and-scrolling" id="markdown-toc-overflow-and-scrolling">Overflow and Scrolling</a></li>
       <li><a href="#ios-text-fields-and-scrolling" id="markdown-toc-ios-text-fields-and-scrolling">iOS Text Fields and Scrolling</a></li>
-      <li><a href="#navbar-dropdowns" id="markdown-toc-navbar-dropdowns">Navbar Dropdowns</a></li>
     </ul>
   </li>
   <li><a href="#browser-zooming" id="markdown-toc-browser-zooming">Browser Zooming</a></li>
@@ -288,7 +325,7 @@
 
 <h2 id="supported-browsers">Supported Browsers</h2>
 
-<p>Figuration supports the <strong>latest, stable releases</strong> of all major browsers and platforms. On Windows, <strong>we support Internet Explorer 9-11 / Microsoft Edge</strong>.</p>
+<p>Figuration supports the <strong>latest, stable releases</strong> of all major browsers and platforms. On Windows, <strong>we support Internet Explorer 10-11 / Microsoft Edge</strong>.</p>
 
 <p>Alternative browsers which use the latest version of WebKit, Blink, or Gecko, whether directly or via the platform’s web view API, are not explicitly supported. However, Figuration should (in most cases) display and function correctly in these browsers as well. More specific support information is provided below.</p>
 
@@ -296,174 +333,94 @@
 
 <p>Generally speaking, Figuration supports the latest versions of each major platform’s default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile’s Turbo mode, UC Browser Mini, Amazon Silk) are not supported.</p>
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <td></td>
-        <th>Chrome</th>
-        <th>Firefox</th>
-        <th>Safari</th>
-        <th>Android Browser &amp; WebView</th>
-        <th>Microsoft Edge</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Android</th>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-success">Android v5.0+ supported</td>
-        <td class="text-muted">N/A</td>
-      </tr>
-      <tr>
-        <th scope="row">iOS</th>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-muted">N/A</td>
-      </tr>
-      <tr>
-        <th scope="row">Windows 10 Mobile</th>
-        <td class="text-muted">N/A</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-success">Supported</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-scroll table-bordered table-striped">
+  <thead>
+    <tr>
+      <td></td>
+      <th>Chrome</th>
+      <th>Firefox</th>
+      <th>Safari</th>
+      <th>Android Browser &amp; WebView</th>
+      <th>Microsoft Edge</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Android</th>
+      <td class="text-success">Supported</td>
+      <td class="text-success">Supported</td>
+      <td class="text-muted">N/A</td>
+      <td class="text-success">Android v5.0+ supported</td>
+      <td class="text-muted">N/A</td>
+    </tr>
+    <tr>
+      <th scope="row">iOS</th>
+      <td class="text-success">Supported</td>
+      <td class="text-success">Supported</td>
+      <td class="text-success">Supported</td>
+      <td class="text-muted">N/A</td>
+      <td class="text-muted">N/A</td>
+    </tr>
+    <tr>
+      <th scope="row">Windows 10 Mobile</th>
+      <td class="text-muted">N/A</td>
+      <td class="text-muted">N/A</td>
+      <td class="text-muted">N/A</td>
+      <td class="text-muted">N/A</td>
+      <td class="text-success">Supported</td>
+    </tr>
+  </tbody>
+</table>
 
 <h3 id="desktop-browsers">Desktop Browsers</h3>
 
 <p>Similarly, the latest versions of most desktop browsers are supported.</p>
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <td></td>
-        <th>Chrome</th>
-        <th>Firefox</th>
-        <th>Internet Explorer</th>
-        <th>Microsoft Edge</th>
-        <th>Opera</th>
-        <th>Safari</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">Mac</th>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
-      </tr>
-      <tr>
-        <th scope="row">Windows</th>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
-        <td class="text-success">Supported</td>
-        <td class="text-danger">Not supported</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-scroll table-bordered table-striped">
+  <thead>
+    <tr>
+      <td></td>
+      <th>Chrome</th>
+      <th>Firefox</th>
+      <th>Internet Explorer</th>
+      <th>Microsoft Edge</th>
+      <th>Opera</th>
+      <th>Safari</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Mac</th>
+      <td class="text-success">Supported</td>
+      <td class="text-success">Supported</td>
+      <td class="text-muted">N/A</td>
+      <td class="text-muted">N/A</td>
+      <td class="text-success">Supported</td>
+      <td class="text-success">Supported</td>
+    </tr>
+    <tr>
+      <th scope="row">Windows</th>
+      <td class="text-success">Supported</td>
+      <td class="text-success">Supported</td>
+      <td class="text-success">Supported IE10+</td>
+      <td class="text-success">Supported</td>
+      <td class="text-success">Supported</td>
+      <td class="text-danger">Not supported</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>For Firefox, in addition to the latest normal stable release, we also support the latest <a href="https://www.mozilla.org/en-US/firefox/organizations/faq/">Extended Support Release (ESR)</a> version of Firefox.</p>
 
-<p>Unofficially, Figuration should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 8 and below, though they are not officially supported.</p>
+<p>Unofficially, Figuration should look and behave well enough in Chromium and Chrome for Linux, and Firefox for Linux, though they are not officially supported.</p>
 
-<p>For a list of some of the browser bugs that Bootstrap has to grapple with, see their <a href="http://getbootstrap.com/browser-bugs/">Wall of browser bugs</a>.</p>
+<h2 id="internet-explorer">Internet Explorer</h2>
 
-<h2 id="internet-explorer-9--10">Internet Explorer 9 &amp; 10</h2>
+<p>Internet Explorer 10+ are also supported, IE9 and down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit <a href="http://caniuse.com/">Can I use…</a> for details on browser support of CSS3 and HTML5 features.</p>
 
-<p>Internet Explorer 9 &amp; 10 are also supported, however, please be aware that some CSS3 properties and HTML5 elements are not fully supported.</p>
+<h3 id="mutationobserver">MutationObserver</h3>
 
-<div class="table-responsive">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Feature</th>
-        <th scope="col">Internet Explorer 9</th>
-        <th scope="col">Internet Explorer 10</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition"><code>transition</code></a></th>
-        <td class="text-danger">Not supported</td>
-        <td class="text-success">Supported</td>
-      </tr>
-      <tr>
-        <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#attr-placeholder"><code>placeholder</code></a></th>
-        <td class="text-danger">Not supported</td>
-        <td class="text-success">Supported</td>
-      </tr>
-      <tr>
-        <th scope="row"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes">Flexbox</a></th>
-        <td class="text-danger">Not supported</td>
-        <td class="text-warning">Partially supported, with <code>-ms</code> prefix<br /><a href="http://caniuse.com/#feat=flexbox">See <em>Can I use</em> for details</a></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<p>Visit <a href="http://caniuse.com/">Can I use…</a> for details on browser support of CSS3 and HTML5 features.</p>
-
-<h2 id="supporting-internet-explorer-8">Supporting Internet Explorer 8</h2>
-
-<p>Figuration does not officially support IE8.</p>
-
-<p>You may add some third party JavaScript to backfill support for IE8 to Figuration. You’ll need the following:</p>
-
-<ul>
-  <li><a href="https://github.com/aFarkas/html5shiv">HTML5 shiv</a></li>
-  <li><a href="https://github.com/scottjehl/Respond">Respond.js</a></li>
-  <li><a href="https://github.com/chuckcarpenter/REM-unit-polyfill">Rem unit polyfill</a></li>
-</ul>
-
-<p>No support will be provided for this.</p>
-
-<h2 id="ie-compatibility-modes">IE Compatibility Modes</h2>
-
-<p>Figuration is not supported in the old Internet Explorer compatibility modes. To be sure you’re using the latest rendering mode for IE, consider including the appropriate <code class="highlighter-rouge">&lt;meta&gt;</code> tag in your pages:</p>
-
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"x-ua-compatible"</span> <span class="na">content=</span><span class="s">"ie=edge"</span><span class="nt">&gt;</span></code></pre></figure>
-
-<p>Confirm the document mode by opening the debugging tools: press <kbd>F12</kbd> and check the “Document Mode”.</p>
-
-<p>This tag is included in all of Figuration’s documentation and examples to ensure the best rendering possible in each supported version of Internet Explorer.</p>
-
-<p>See <a href="https://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do">this StackOverflow question</a> for more information.</p>
-
-<h2 id="internet-explorer-10-in-windows-phone-8">Internet Explorer 10 in Windows Phone 8</h2>
-
-<p>Internet Explorer 10 in Windows Phone 8 versions older than <a href="http://blogs.windows.com/windows_phone/b/wpdev/archive/2013/10/14/introducing-windows-phone-preview-for-developers.aspx">Update 3 (a.k.a. GDR3)</a> doesn’t differentiate <strong>device width</strong> from <strong>viewport width</strong> in <code class="highlighter-rouge">@-ms-viewport</code> at-rules, and thus doesn’t properly apply the media queries in Figuration’s CSS. To address this, you’ll need to <strong>include the following JavaScript to work around the bug</strong>.</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// Copyright 2014-2015 The Bootstrap Authors</span>
-<span class="c1">// Copyright 2014-2015 Twitter, Inc.</span>
-<span class="c1">// Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)</span>
-<span class="k">if</span> <span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/IEMobile</span><span class="se">\/</span><span class="sr">10</span><span class="se">\.</span><span class="sr">0/</span><span class="p">))</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">msViewportStyle</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'style'</span><span class="p">)</span>
-  <span class="nx">msViewportStyle</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span>
-      <span class="s1">'@-ms-viewport{width:auto!important}'</span>
-    <span class="p">)</span>
-  <span class="p">)</span>
-  <span class="nb">document</span><span class="p">.</span><span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">msViewportStyle</span><span class="p">)</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>For more information and usage guidelines, read <a href="http://timkadlec.com/2013/01/windows-phone-8-and-device-width/">Windows Phone 8 and Device-Width</a>.</p>
-
-<p>As a heads up, we include this in all of Figuration’s documentation and examples as a demonstration.</p>
+<p>Some of Figuration’s <a href="/widgets/overview/">JavaScript Widgets</a> have some support for the use of <a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver</a> to watch for and respond to changes in the DOM.  Internet Explorer 10 does not support MutationObserver, but this can be mitigated with the use of a Polyfill.  Check out the <a href="/get-started/quick-start/#mutationobserver">Quick Start page</a> for more details.</p>
 
 <h2 id="modals-and-dropdowns-on-mobile">Modals and Dropdowns on Mobile</h2>
 
@@ -475,13 +432,9 @@
 
 <p>As of iOS 9.2, while a modal is open, if the initial touch of a scroll gesture is within the boundary of a textual <code class="highlighter-rouge">&lt;input&gt;</code> or a <code class="highlighter-rouge">&lt;textarea&gt;</code>, the <code class="highlighter-rouge">&lt;body&gt;</code> content underneath the modal will be scrolled instead of the modal itself. See <a href="https://bugs.webkit.org/show_bug.cgi?id=153856">WebKit bug #153856</a>.</p>
 
-<h3 id="navbar-dropdowns">Navbar Dropdowns</h3>
-
-<p>The <code class="highlighter-rouge">.dropdown-backdrop</code> element isn’t used on iOS in the nav because of the complexity of z-indexing. Thus, to close dropdowns in navbars, you must directly click the dropdown element (or <a href="https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile">any other element which will fire a click event in iOS</a>).</p>
-
 <h2 id="browser-zooming">Browser Zooming</h2>
 
-<p>Page zooming inevitably presents rendering artifacts in some components, both in Bootstrap and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.</p>
+<p>Page zooming inevitably presents rendering artifacts in some components, both in Figuration and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.</p>
 
 <h2 id="sticky-hoverfocus-on-mobile">Sticky <code class="highlighter-rouge">:hover</code>/<code class="highlighter-rouge">:focus</code> on Mobile</h2>
 <p>Even though real hovering isn’t possible on most touchscreens, most mobile browsers emulate hovering support and make <code class="highlighter-rouge">:hover</code> “sticky”. In other words, <code class="highlighter-rouge">:hover</code> styles start applying after tapping an element and only stop applying after the user taps some other element. On mobile-first sites, this behavior is normally undesirable.</p>
@@ -527,18 +480,21 @@
 <p>These validation warnings don’t matter in practice since the non-hacky portion of our CSS does fully validate and the hacky portions don’t interfere with the proper functioning of the non-hacky portion, hence why we deliberately ignore these particular warnings.</p>
 
 
-            </div>
+            </main>
         </div>
 
         <div class="topLink">
             <a href="#content">Top of Page <span class="caret"></span></a>
         </div>
-    </main>
+    </div>
 
     <footer class="cf-footer">
     <div class="container">
-        Current version: 2.0.0
-        <ul class="footer-links">
+        <p class="mb-0">
+            Current version: 3.0.0
+        </p>
+        <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
+            <li><a href="/about/overview/">About</a></li>
             <li><a href="https://github.com/cast-org/figuration">GitHub Project</a></li>
             <li><a href="https://github.com/cast-org/figuration/issues">Issues</a></li>
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
@@ -546,7 +502,7 @@
         <p>
             &copy; 2013-2017 <a href="http://www.cast.org">CAST, Inc.</a>
             <br />
-            Portions: &copy; 2011-2016 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
+            Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
             Code licensed <a rel="license" href="https://github.com/cast-org/figuration/blob/master/LICENSE">MIT</a>,
             docs <a rel="license" href="https://github.com/cast-org/figuration/blob/master/docs/LICENSE">CC BY 4.0</a>.
@@ -554,9 +510,9 @@
 
         <hr />
 
-        <strong>Funding generously provided by:</strong>
+        <p class="font-weight-bold mb-0_25">Funding generously provided by:</p>
         <div class="media footer-partners">
-            <div class="media-left">
+            <div class="d-flex me-0_5">
                 <img src="/assets/img/aem-logo.png" class="media-object" width="40" height="40" alt="AEM logo" />
             </div>
             <div class="media-body">
@@ -569,15 +525,23 @@
 </footer>
 
 
-<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
 <script>
 docsearch({
     apiKey: '3b9b6e000775400f4833a14c4daa6049',
     indexName: 'figuration',
-    inputSelector: '#docsearch'
+    inputSelector: '#docsearch',
+    transformData: function (hits) {
+      return hits.map(function (hit) {
+        hit.url = hit.url.replace('http://figuration.org', '');
+        return hit;
+      });
+    },
+    debug: true // Set debug to true if you want to inspect the dropdown
 });
 </script>
 
-
+    
 </body>
 </html>

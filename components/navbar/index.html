@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta name="description" content="CAST Figuration - A feature rich, responsive, mobile first, accessible, front-end framework based on Bootstrap.">
+<meta name="description" content="CAST Figuration - A feature rich, responsive, mobile first, accessible, front-end framework.">
 
 <title>
   
@@ -19,22 +18,27 @@
 
 <!-- Core CSS -->
 
-  <link href="/dist/css/figuration.min.css" rel="stylesheet">
-
+  <link href="/dist/css/figuration.min.css" rel="stylesheet" id="cssCore">
 
 
 <!-- Algolia DocSearch CSS -->
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 
 <!-- Docs CSS -->
 
-  <link href="/assets/css/docs.min.css" rel="stylesheet">
+  <link href="/assets/css/docs.min.css" rel="stylesheet" id="cssDocs">
 
 
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
+
+<!-- MutationObserver Polyfill -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.24/MutationObserver.min.js" integrity="sha384-8HHYYRe45k4Xq40fi/cZaaby4FJgnOOVmnRzX3OWtwpfiUPfx7tnK2QkDPuIRGm0" crossorigin="anonymous"></script>
+
 
 <!-- Core JS -->
 
@@ -46,8 +50,7 @@
   <script src="/assets/js/docs.min.js"></script>
 
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- IE emulation mode warning -->
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
 <script>
@@ -63,57 +66,81 @@
 <body>
     <a class="skipnav" href="#content">Skip to main content</a>
 
-    <div class="bg-cyan-500 text-center font-weight-bold p-1">
-<a href="https://figuration-org.github.io/figuration-preview/" class="text-light">Figuration v3 Preview Available!</a>
-</div>
-<header class="navbar navbar-full navbar-dark cf-header">
-    <div class="container">
-        <nav>
-            <a class="navbar-brand" href="/">CAST Figuration</a>
-            <div class="hide-lg-up float-right">
-                <button class="navbar-toggler btn btn-toggler" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">
-                    <span class="icon-menu" aria-hidden="true">&#8801;</span>
-                </button>
-            </div>
-            
-            <div class="hide-xs-down float-right mt-0_25 mr-1 mr-lg-0">
-                <form class="form-inline docsearch-wrapper">
-                    <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
-                </form>
-            </div>
-            
-            <div class="collapse navbar-toggleable-md" id="cf-topnav">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item ">
-                        <a href="/get-started/quick-start/" class="nav-link">Get Started</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/layout/overview/" class="nav-link">Layout</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/content/reboot/" class="nav-link">Content</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a href="/components/alerts/" class="nav-link">Components</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/utilities/borders/" class="nav-link">Utilities</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/widgets/overview/" class="nav-link">Widgets</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/about/overview/" class="nav-link">About</a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </nav>
-    </div> <!-- /.container -->
+    <header class="navbar navbar-expand-lg navbar-dark print-hide cf-header">
+    <a class="navbar-brand" href="/" aria-label="CAST Figuration">
+        <img src="/assets/brand/figuration-outline.svg" class="navbar-brand-logo" alt="" />
+        <span class="sr-only-xs-down">CAST Figuration</span>
+    </a>
+    <button class="navbar-toggle flex-first me-0_5" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
+        <span class="cf-header-menu" aria-hidden="true">&#8801;</span>
+    </button>
+    <div class="navbar-collapse collapse flex-last flex-lg-unordered flex-lg-shrink text-nowrap" id="cf-topnav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/get-started/quick-start/" class="nav-link ">Get Started</a>
+            </li>
+            <li class="nav-item">
+                <a href="/layout/overview/" class="nav-link ">Layout</a>
+            </li>
+            <li class="nav-item">
+                <a href="/content/reboot/" class="nav-link ">Content</a>
+            </li>
+            <li class="nav-item">
+                <a href="/components/alerts/" class="nav-link active">Components <span class="sr-only">(current section)</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="/utilities/borders/" class="nav-link ">Utilities</a>
+            </li>
+            <li class="nav-item">
+                <a href="/widgets/overview/" class="nav-link ">Widgets</a>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="navbar-nav ms-auto cf-header-social">
+        <li class="nav-item">
+            <a href="https://twitter.com/figuration_org" class="nav-link" aria-label="Twitter" title="Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" focusable="false"  class="cf-header-icon"  >
+  <title>Twitter</title>
+  <path fill="currentColor" d="M512 97.2c-18.84 8.36-39.08 14-60.33 16.55 21.7-13 38.34-33.58 46.2-58.1-20.3 12.03-42.8 20.77-66.72 25.48C412 60.7 384.7 47.96 354.48 47.96c-58 0-105.04 47.03-105.04 105.03 0 8.23.93 16.25 2.72 23.93-87.3-4.38-164.7-46.2-216.5-109.75-9.05 15.5-14.24 33.56-14.24 52.8 0 36.45 18.55 68.6 46.73 87.44-17.2-.54-33.4-5.27-47.57-13.14v1.32c0 50.9 36.2 93.35 84.25 103-8.8 2.4-18.1 3.7-27.68 3.7-6.76 0-13.34-.67-19.76-1.9 13.36 41.73 52.15 72.1 98.12 72.95-35.95 28.18-81.25 44.97-130.46 44.97-8.48 0-16.84-.5-25.06-1.47 46.5 29.8 101.7 47.2 161.02 47.2 193.2 0 298.87-160.07 298.87-298.88 0-4.55-.1-9.08-.32-13.6 20.53-14.8 38.34-33.3 52.42-54.36z"/>
+</svg>
+
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="https://github.com/cast-org/figuration" class="nav-link" aria-label="Github" title="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false"  class="cf-header-icon"  >
+  <title>GitHub</title>
+  <path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.3 6.53 5.47 7.6.4.06.55-.18.55-.4v-1.48c-2.02.37-2.54-.5-2.7-.94-.1-.23-.48-.94-.82-1.13-.28-.15-.68-.52 0-.53.62 0 1.07.58 1.22.82.72 1.2 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.77-.2-3.63-.9-3.63-3.95 0-.87.3-1.6.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.2 2.2.83.64-.18 1.32-.27 2-.27.68 0 1.36.1 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.93.08 2.13.5.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.3.25.54.73.54 1.48v2.2c0 .22.15.47.55.4C13.7 14.52 16 11.52 16 8c0-4.42-3.58-8-8-8z"/>
+</svg>
+
+            </a>
+        </li>
+        <li class="nav-item dropdown dropdown-menu-reverse">
+            <a href="#" role="button" class="nav-link" aria-label="Settings" title="Settings" data-cfw="dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" focusable="false"  class="cf-header-icon"  >
+  <title>Settings</title>
+  <path fill="currentColor" d="M3.5 0l-.5 1.19c-.1.03-.19.08-.28.13l-1.19-.5-.72.72.5 1.19c-.05.1-.09.18-.13.28l-1.19.5v1l1.19.5c.04.1.08.18.13.28l-.5 1.19.72.72 1.19-.5c.09.04.18.09.28.13l.5 1.19h1l.5-1.19c.09-.04.19-.08.28-.13l1.19.5.72-.72-.5-1.19c.04-.09.09-.19.13-.28l1.19-.5v-1l-1.19-.5c-.03-.09-.08-.19-.13-.28l.5-1.19-.72-.72-1.19.5c-.09-.04-.19-.09-.28-.13l-.5-1.19h-1zm.5 2.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z"/>
+</svg>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">Direction</li>
+                <li><button type="button" class="dropdown-item" id="dir-ltr">Left-to-right</button></li>
+                <li><button type="button" class="dropdown-item" id="dir-rtl">Right-to-left</button></li>
+            </ul>
+        </li>
+        
+        <li class="nav-item">
+            <form class="form-inline docsearch-wrapper">
+                <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
+            </form>
+        </li>
+        
+    </ul>
 </header>
 
     <div class="jumbotron jumbotron-full jumbotron-docs">
-        <div class="container">
+        <div class="container-fluid">
             
     <div class="h1">Components</div>
     <p class="lead">
@@ -124,9 +151,9 @@
         </div>
     </div>
 
-    <main class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-3 cf-sidebar">
+            <div class="col-12 col-md-3 col-xl-2 cf-sidebar">
                 <nav class="cf-links">
 
 
@@ -149,149 +176,162 @@
   
 
   
-    <div class="h4">Components</div>
-    <ul class="nav">
+    <div class="h4 cf-sidebar-header">Components</div>
+    <ul class="nav flex-column">
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/components/alerts/" class="nav-link ">
-            Alerts
+            Alerts 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/components/badges/" class="nav-link ">
-            Badges
+            Badges 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/components/breadcrumb/" class="nav-link ">
-            Breadcrumb
+            Breadcrumb 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/components/button-group/" class="nav-link ">
-            Button Group
+            Button Group 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/components/cards/" class="nav-link ">
-            Cards
+            Cards 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/components/grid-lines/" class="nav-link ">
-            Grid Lines
+            Grid Lines 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/components/input-group/" class="nav-link ">
-            Input Group
+            Input Group 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/components/jumbotron/" class="nav-link ">
-            Jumbotron
+            Jumbotron 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/components/list-group/" class="nav-link ">
-            List Group
+            List Group 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/components/media-object/" class="nav-link ">
-            Media Object
+            Media Object 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/components/navbar/" class="nav-link active">
-            Navbar
+            Navbar <span class="sr-only">(current page)</span>
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/components/navs/" class="nav-link ">
-            Navs
+            Navs 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/components/pagination/" class="nav-link ">
-            Pagination
+            Pagination 
           </a>
         </li>
       
@@ -299,10 +339,23 @@
 
         
         
+        
 
         <li class="nav-item">
           <a href="/components/progress/" class="nav-link ">
-            Progress
+            Progress 
+          </a>
+        </li>
+      
+        
+
+        
+        
+        
+
+        <li class="nav-item">
+          <a href="/components/switch/" class="nav-link ">
+            Switch 
           </a>
         </li>
       
@@ -327,7 +380,11 @@
 </nav>
 
             </div>
-            <div class="col-12 col-md-9 cf-content">
+
+            <div class="d-none d-xl-block col-xl-2 cf-toc">
+            </div>
+
+            <main class="col-12 col-md-9 col-xl-8 cf-content" role="main">
                 <h1 class="cf-title" id="content">
                     Navbar
                     
@@ -339,25 +396,25 @@
 
 <ul id="markdown-toc">
   <li><a href="#basics" id="markdown-toc-basics">Basics</a></li>
+  <li><a href="#responsive-behaviors" id="markdown-toc-responsive-behaviors">Responsive Behaviors</a>    <ul>
+      <li><a href="#never-expand" id="markdown-toc-never-expand">Never Expand</a></li>
+      <li><a href="#responsive-expand" id="markdown-toc-responsive-expand">Responsive Expand</a></li>
+    </ul>
+  </li>
   <li><a href="#supported-content" id="markdown-toc-supported-content">Supported Content</a>    <ul>
       <li><a href="#brand" id="markdown-toc-brand">Brand</a></li>
       <li><a href="#nav" id="markdown-toc-nav">Nav</a></li>
+      <li><a href="#dropdowns" id="markdown-toc-dropdowns">Dropdowns</a></li>
+      <li><a href="#forms-and-buttons" id="markdown-toc-forms-and-buttons">Forms and Buttons</a></li>
       <li><a href="#text" id="markdown-toc-text">Text</a></li>
-      <li><a href="#disabled-items" id="markdown-toc-disabled-items">Disabled Items</a></li>
+      <li><a href="#disabled-links" id="markdown-toc-disabled-links">Disabled Links</a></li>
       <li><a href="#divider" id="markdown-toc-divider">Divider</a></li>
+      <li><a href="#collapsible-content" id="markdown-toc-collapsible-content">Collapsible Content</a></li>
     </ul>
   </li>
   <li><a href="#color-schemes" id="markdown-toc-color-schemes">Color Schemes</a></li>
   <li><a href="#containers" id="markdown-toc-containers">Containers</a></li>
   <li><a href="#placement" id="markdown-toc-placement">Placement</a></li>
-  <li><a href="#collapsible-content" id="markdown-toc-collapsible-content">Collapsible Content</a>    <ul>
-      <li><a href="#responsive-variants" id="markdown-toc-responsive-variants">Responsive Variants</a></li>
-    </ul>
-  </li>
-  <li><a href="#navbar-group" id="markdown-toc-navbar-group">Navbar Group</a>    <ul>
-      <li><a href="#justified-navbar" id="markdown-toc-justified-navbar">Justified Navbar</a></li>
-    </ul>
-  </li>
 </ul>
 
 <h2 id="basics">Basics</h2>
@@ -365,152 +422,581 @@
 <p>Here’s what you need to know before getting started with the navbar:</p>
 
 <ul>
-  <li>Navbars require a wrapping <code class="highlighter-rouge">.navbar</code> and a <a href="#color-schemes">color scheme</a>.</li>
+  <li>Navbars require a wrapping <code class="highlighter-rouge">.navbar</code>, with <code class="highlighter-rouge">.navbar-expand{-sm|-md|-lg|-xl}</code> for responsive collapsing, and <a href="#color-schemes">color scheme</a> classes.</li>
   <li>Navbars and their contents are fluid by default. Use <a href="#containers">optional containers</a> to limit their horizontal width.</li>
-  <li>Use <code class="highlighter-rouge">.float-*-left</code> and <code class="highlighter-rouge">.float-*-right</code> to quickly align sub-components.</li>
+  <li>Navbars and their contents are built with flexbox, providing easy alignment options via <a href="/utilities/flexbox/">flexbox utility</a> and <a href="/utilities/spacing/">margin utility</a> classes.</li>
+  <li>Navbars are responsive by default, but you can easily modify them to change that. Responsive behavior depends on our <a href="/widgets/collapse/">Collapse widget</a>.</li>
   <li>Ensure accessibility by using a <code class="highlighter-rouge">&lt;nav&gt;</code> element or, if using a more generic element such as a <code class="highlighter-rouge">&lt;div&gt;</code>, add a <code class="highlighter-rouge">role="navigation"</code> to every navbar to explicitly identify it as a landmark region for users of assistive technologies.</li>
 </ul>
+
+<h2 id="responsive-behaviors">Responsive Behaviors</h2>
+
+<p>Navbars are built with responsive design in mind.  Using a <code class="highlighter-rouge">.navbar-expand{-sm|-md|-lg|-xl}</code> on the <code class="highlighter-rouge">.navbar</code> along with a <code class="highlighter-rouge">.navbar-collapse</code> container.</p>
+
+<p>The following list gives a quick run-down of how the breakpoints are utilized.</p>
+
+<ul>
+  <li>No modifier, just <code class="highlighter-rouge">.navbar</code>, is never expanded</li>
+  <li><code class="highlighter-rouge">.navbar-expand</code> is always expanded</li>
+  <li><code class="highlighter-rouge">.navbar-expand-sm</code> expands at <code class="highlighter-rouge">sm</code> and up</li>
+  <li><code class="highlighter-rouge">.navbar-expand-md</code> expands at <code class="highlighter-rouge">md</code> and up</li>
+  <li><code class="highlighter-rouge">.navbar-expand-lg</code> expands at <code class="highlighter-rouge">lg</code> and up</li>
+  <li><code class="highlighter-rouge">.navbar-expand-xl</code> expands at <code class="highlighter-rouge">xl</code> and up</li>
+</ul>
+
+<p>Please refer to how our <a href="/layout/overview/#breakpoint-nomenclature">breakpoint nomenclature</a> is used.</p>
+
+<p>For the examples throughout this page, you will need to resize your browser window below/above the <code class="highlighter-rouge">lg</code> breakpoint to see the navbars switch between modes.</p>
+
+<h3 id="never-expand">Never Expand</h3>
+
+<p>The most basic example of a <code class="highlighter-rouge">.navbar</code> is one that never expands, no matter the screen width.</p>
+
+<div class="cf-example">
+  <nav class="navbar navbar-light bg-faded mb-1">
+      <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarB0">
+          <span aria-hidden="true">&#8801;</span>
+      </button>
+      <a href="#" class="navbar-brand ms-0_5">Never Expand</a>
+
+      <div class="navbar-collapse collapse" id="navbarB0">
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">Link</a>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link disabled">Disabled</a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+
+  <nav class="navbar navbar-light bg-faded flex-between">
+      <a href="#" class="navbar-brand">Never Expand</a>
+      <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarB1">
+          <span aria-hidden="true">&#8801;</span>
+      </button>
+
+      <div class="navbar-collapse collapse" id="navbarB1">
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link">Link</a>
+              </li>
+              <li class="nav-item">
+                  <a href="#" class="nav-link disabled">Disabled</a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+</div>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"navbar-toggle collapsed"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-target=</span><span class="s">"#navbarB0"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;#8801;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand ms-0_5"</span><span class="nt">&gt;</span>Never Expand<span class="nt">&lt;/a&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-collapse collapse"</span> <span class="na">id=</span><span class="s">"navbarB0"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"navbar-nav"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link active"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/nav&gt;</span>
+
+<span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded flex-between"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Never Expand<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"navbar-toggle collapsed"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-target=</span><span class="s">"#navbarB1"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;#8801;</span><span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;/button&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-collapse collapse"</span> <span class="na">id=</span><span class="s">"navbarB1"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"navbar-nav"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link active"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/nav&gt;</span></code></pre></figure>
+
+<h3 id="responsive-expand">Responsive Expand</h3>
+
+<p>Be default, navbars start out collapsed, but when the target breakpoint is reached, the navbar will expand into a horizontal row of elements.</p>
+
+<div class="cf-example" data-example-id="">
+<nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between">
+  <a href="#" class="navbar-brand">Navbar</a>
+  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarR0">
+    <span aria-hidden="true">&#8801;</span>
+  </button>
+
+  <div class="navbar-collapse collapse" id="navbarR0">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Link</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link disabled">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline ms-auto">
+      <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search" />
+      <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-expand-lg navbar-light bg-faded flex-between"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"navbar-toggle collapsed"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-target=</span><span class="s">"#navbarR0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;#8801;</span><span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/button&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-collapse collapse"</span> <span class="na">id=</span><span class="s">"navbarR0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"navbar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link active"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form-inline ms-auto"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control me-0_25"</span> <span class="na">type=</span><span class="s">"search"</span> <span class="na">placeholder=</span><span class="s">"Search"</span> <span class="na">aria-label=</span><span class="s">"Search"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-outline-primary"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Search<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/nav&gt;</span></code></pre></div>
+
+<p>With the <code class="highlighter-rouge">.navbar-brand</code> in the collapsing area.</p>
+
+<div class="cf-example" data-example-id="">
+<nav class="navbar navbar-expand-lg navbar-light bg-faded">
+  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarR1">
+    <span aria-hidden="true">&#8801;</span>
+  </button>
+
+  <div class="navbar-collapse collapse" id="navbarR1">
+    <a href="#" class="navbar-brand">Navbar</a>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Link</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link disabled">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline ms-auto">
+      <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search" />
+      <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-expand-lg navbar-light bg-faded"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"navbar-toggle collapsed"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-target=</span><span class="s">"#navbarR1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;#8801;</span><span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/button&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-collapse collapse"</span> <span class="na">id=</span><span class="s">"navbarR1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"navbar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link active"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form-inline ms-auto"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control me-0_25"</span> <span class="na">type=</span><span class="s">"search"</span> <span class="na">placeholder=</span><span class="s">"Search"</span> <span class="na">aria-label=</span><span class="s">"Search"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-outline-primary"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Search<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/nav&gt;</span></code></pre></div>
 
 <h2 id="supported-content">Supported Content</h2>
 
 <p>Navbars come with built-in support for a handful of sub-components. Mix and match from the following as you need:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">.navbar-brand</code> for your company, product, or project name</li>
-  <li><code class="highlighter-rouge">.navbar-nav</code> for a full-height and lightweight navigation (including support for dropdowns)</li>
-  <li><code class="highlighter-rouge">.navbar-toggler</code> for use with our <a href="/widgets/collapse/">Collapse widget</a> and other <a href="#collapsing-content">navigation toggling</a> behaviors.</li>
+  <li><code class="highlighter-rouge">.navbar-brand</code> for your company, product, or project name.</li>
+  <li><code class="highlighter-rouge">.navbar-nav</code> for navigation links (including support for dropdowns).</li>
+  <li><code class="highlighter-rouge">.form-inline</code> for any form controls and actions.</li>
+  <li><code class="highlighter-rouge">.navbar-text</code> for adding vertically aligned text content with support for recoloring, using <a href="#color-schemes">color scheme</a>.</li>
+  <li><code class="highlighter-rouge">.navbar-toggle</code> for use with our <a href="/widgets/collapse/">Collapse widget</a> and other <a href="#collapsible-content">navigation toggling</a> behaviors.</li>
+  <li><code class="highlighter-rouge">.collapse.navbar-collapse</code> for grouping and hiding navbar contents by a parent breakpoint.</li>
 </ul>
 
-<p>Note that the <code class="highlighter-rouge">.navbar-nav</code> builds off the <code class="highlighter-rouge">.nav</code> component, but currently does not support flexbox layout, so it will get reset back to <code class="highlighter-rouge">display: block;</code> in <a href="/layout/flexbox#full-flexbox-mode">full flexbox</a> mode.</p>
-
-<p>Here’s an example of all the sub-components included in a default, light navbar:</p>
+<p>Here’s an example of some sub-components included in a default, light navbar:</p>
 
 <div class="cf-example" data-example-id="">
-<nav class="navbar navbar-light bg-faded">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <ul class="nav navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Features</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Pricing</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">About</a>
-    </li>
-  </ul>
-  <form class="form-inline float-right">
-    <input class="form-control" type="text" placeholder="Search" />
-    <button class="btn btn-outline-success" type="submit">Search</button>
-  </form>
+<nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between">
+  <a href="#" class="navbar-brand">Navbar</a>
+  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar0">
+    <span aria-hidden="true">&#8801;</span>
+  </button>
+
+  <div class="navbar-collapse collapse" id="navbar0">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Link</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link disabled">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline ms-auto">
+      <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search" />
+      <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+  </div>
 </nav>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav navbar-nav"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item active"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Features<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Pricing<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-  <span class="nt">&lt;/ul&gt;</span>
-  <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form-inline float-right"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholder=</span><span class="s">"Search"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-outline-success"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Search<span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;/form&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-expand-lg navbar-light bg-faded flex-between"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"navbar-toggle collapsed"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-target=</span><span class="s">"#navbar0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;#8801;</span><span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/button&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-collapse collapse"</span> <span class="na">id=</span><span class="s">"navbar0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"navbar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link active"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form-inline ms-auto"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control me-0_25"</span> <span class="na">type=</span><span class="s">"search"</span> <span class="na">placeholder=</span><span class="s">"Search"</span> <span class="na">aria-label=</span><span class="s">"Search"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-outline-primary"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Search<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></div>
 
 <h3 id="brand">Brand</h3>
 
 <p>The <code class="highlighter-rouge">.navbar-brand</code> can be applied to most elements, but an anchor works best as some elements might require utility classes or custom styles.</p>
 
-<div class="cf-example" data-example-id="">
-<nav class="navbar navbar-light bg-faded">
-  <a class="navbar-brand" href="#">Navbar</a>
-</nav>
+<div class="cf-example">
+  <nav class="navbar navbar-light bg-faded mb-1">
+    <a href="#" class="navbar-brand">Navbar</a>
+  </nav>
 
-<nav class="navbar navbar-light bg-faded">
-  <h1 class="navbar-brand mb-0">Navbar</h1>
-</nav>
+  <nav class="navbar navbar-light bg-faded">
+    <h1 class="navbar-brand mb-0">Navbar</h1>
+  </nav>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/nav&gt;</span>
 
 <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"navbar-brand mb-0"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/nav&gt;</span></code></pre></figure>
+
+<p>Adding images to the <code class="highlighter-rouge">.navbar-brand</code> will likely always require custom styles or utilities to properly size. Here are some examples to demonstrate.</p>
+
+<div class="cf-example" data-example-id="">
+<!-- Just an image -->
+<nav class="navbar navbar-light bg-faded">
+  <a class="navbar-brand" href="#">
+    <img src="/assets/img/home.svg" width="30" height="30" alt="" />
+  </a>
+</nav>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Just an image --&gt;</span>
+<span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/home.svg"</span> <span class="na">width=</span><span class="s">"30"</span> <span class="na">height=</span><span class="s">"30"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/nav&gt;</span></code></pre></div>
+
+<div class="cf-example" data-example-id="">
+<!-- Image and text -->
+<nav class="navbar navbar-light bg-faded">
+  <a class="navbar-brand" href="#">
+    <img src="/assets/img/home.svg" width="30" height="30" class="d-inline-block align-top" alt="" />
+    Navbar
+  </a>
+</nav>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Image and text --&gt;</span>
+<span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/home.svg"</span> <span class="na">width=</span><span class="s">"30"</span> <span class="na">height=</span><span class="s">"30"</span> <span class="na">class=</span><span class="s">"d-inline-block align-top"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;</span>
+    Navbar
+  <span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></div>
 
 <h3 id="nav">Nav</h3>
 
-<p>Navbar navigation is similar to our regular nav options—use the <code class="highlighter-rouge">.nav</code> base class with a modifier to achieve a particular look. In this case you’ll want <code class="highlighter-rouge">.nav.navbar-nav</code>.</p>
+<p>Navbar navigation builds on some of the <code class="highlighter-rouge">.nav</code> options with their own modifier class and require the use of toggler classes for proper responsive styling.</p>
 
-<p>Add <code class="highlighter-rouge">.active</code> directly to a <code class="highlighter-rouge">.nav-link</code>, or its parent <code class="highlighter-rouge">.nav-item</code>, to indicate a certain state, such as the current page.</p>
+<p>Add <code class="highlighter-rouge">.active</code> directly to a <code class="highlighter-rouge">.nav-link</code>, to indicate a certain state, such as the current page.</p>
 
 <div class="cf-example" data-example-id="">
-<nav class="navbar navbar-light bg-faded">
-  <ul class="nav navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Features</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Pricing</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">About</a>
-    </li>
-  </ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between">
+  <div class="navbar-brand">Navbar</div>
+  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar1">
+    <span aria-hidden="true">&#8801;</span>
+  </button>
+
+  <div class="navbar-collapse collapse" id="navbar1">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Features</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
+      </li>
+    </ul>
+  </div>
 </nav>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav navbar-nav"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item active"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Features<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Pricing<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/li&gt;</span>
-  <span class="nt">&lt;/ul&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-expand-lg navbar-light bg-faded flex-between"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"navbar-toggle collapsed"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-target=</span><span class="s">"#navbar1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;#8801;</span><span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/button&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-collapse collapse"</span> <span class="na">id=</span><span class="s">"navbar1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"navbar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link active"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link"</span><span class="nt">&gt;</span>Features<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link"</span><span class="nt">&gt;</span>Pricing<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">tabindex=</span><span class="s">"-1"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></div>
 
 <p>And because we use classes for our navs, you can avoid the list-based approach entirely if you like.</p>
 
 <div class="cf-example" data-example-id="">
-<nav class="navbar navbar-light bg-faded">
-  <div class="nav navbar-nav">
-    <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-    <a class="nav-item nav-link" href="#">Features</a>
-    <a class="nav-item nav-link" href="#">Pricing</a>
-    <a class="nav-item nav-link" href="#">About</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between">
+ <div class="navbar-brand">Navbar</div>
+  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar2">
+    <span aria-hidden="true">&#8801;</span>
+  </button>
+
+  <div class="navbar-collapse collapse" id="navbar2">
+    <div class="navbar-nav">
+      <a href="#" class="nav-item nav-link active">Home <span class="sr-only">(current)</span></a>
+      <a href="#" class="nav-item nav-link">Features</a>
+      <a href="#" class="nav-item nav-link">Pricing</a>
+      <a href="#" class="nav-item nav-link disabled" tabindex="-1">Disabled</a>
+    </div>
   </div>
 </nav>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"nav navbar-nav"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Features<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Pricing<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-expand-lg navbar-light bg-faded flex-between"</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"navbar-toggle collapsed"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-target=</span><span class="s">"#navbar2"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;#8801;</span><span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/button&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-collapse collapse"</span> <span class="na">id=</span><span class="s">"navbar2"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-item nav-link active"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span><span class="nt">&gt;</span>Features<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span><span class="nt">&gt;</span>Pricing<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-item nav-link disabled"</span> <span class="na">tabindex=</span><span class="s">"-1"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/nav&gt;</span></code></pre></div>
+
+<h3 id="dropdowns">Dropdowns</h3>
+
+<p>You may also utilize the <a href="/widgets/dropdown/">Dropdown widget</a> in your navbar nav. Dropdown menus require a wrapping element for positioning, so be sure to use separate and nested elements for <code class="highlighter-rouge">.nav-item</code> and <code class="highlighter-rouge">.nav-link</code> as shown below.</p>
+
+<p>If a dropdown is displayed in a non-expanded navbar, they will display ‘inline’ with the rest of the navbar menu.</p>
+
+<div class="cf-example" data-example-id="">
+<nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between">
+  <a href="#" class="navbar-brand">Navbar</a>
+  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar3">
+    <span aria-hidden="true">&#8801;</span>
+  </button>
+
+  <div class="navbar-collapse collapse" id="navbar3">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Link</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link disabled">Disabled</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" data-cfw="dropdown">Dropdown</a>
+        <div class="dropdown-menu">
+          <a href="#">Action</a>
+          <a href="#">Another action</a>
+          <a href="#">Something else here</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-expand-lg navbar-light bg-faded flex-between"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"navbar-toggle collapsed"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-target=</span><span class="s">"#navbar3"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;#8801;</span><span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/button&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-collapse collapse"</span> <span class="na">id=</span><span class="s">"navbar3"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"navbar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link active"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item dropdown"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link dropdown-toggle"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">data-cfw=</span><span class="s">"dropdown"</span><span class="nt">&gt;</span>Dropdown<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Action<span class="nt">&lt;/a&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Another action<span class="nt">&lt;/a&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/nav&gt;</span></code></pre></div>
+
+<h3 id="forms-and-buttons">Forms and Buttons</h3>
+
+<p>Place various form controls and components within a navbar with <code class="highlighter-rouge">.form-inline</code>.</p>
+
+<div class="cf-example" data-example-id="">
+<nav class="navbar navbar-light bg-faded">
+  <form class="form-inline">
+    <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search" />
+    <button class="btn btn-outline-primary" type="submit">Search</button>
+  </form>
+</nav>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form-inline"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control me-0_25"</span> <span class="na">type=</span><span class="s">"search"</span> <span class="na">placeholder=</span><span class="s">"Search"</span> <span class="na">aria-label=</span><span class="s">"Search"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-outline-primary"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Search<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/nav&gt;</span></code></pre></div>
+
+<p>Align the contents of your inline forms with utilities as needed.</p>
+
+<div class="cf-example" data-example-id="">
+<nav class="navbar navbar-light bg-faded flex-between">
+  <a href="#" class="navbar-brand">Navbar</a>
+  <form class="form-inline">
+    <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search" />
+    <button class="btn btn-outline-primary" type="submit">Search</button>
+  </form>
+</nav>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded flex-between"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form-inline"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control me-0_25"</span> <span class="na">type=</span><span class="s">"search"</span> <span class="na">placeholder=</span><span class="s">"Search"</span> <span class="na">aria-label=</span><span class="s">"Search"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-outline-primary"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Search<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/nav&gt;</span></code></pre></div>
+
+<p>Input groups work, too:</p>
+
+<div class="cf-example" data-example-id="">
+<nav class="navbar navbar-light bg-faded">
+  <form class="form-inline">
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">@</span>
+      <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+    </div>
+  </form>
+</nav>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form-inline"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"input-group"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"input-group-addon"</span> <span class="na">id=</span><span class="s">"basic-addon1"</span><span class="nt">&gt;</span>@<span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">placeholder=</span><span class="s">"Username"</span> <span class="na">aria-label=</span><span class="s">"Username"</span> <span class="na">aria-describedby=</span><span class="s">"basic-addon1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/nav&gt;</span></code></pre></div>
+
+<p>Various buttons are supported as part of these navbar forms, too. This is also a great reminder that vertical alignment utilities can be used to align different sized elements.</p>
+
+<div class="cf-example" data-example-id="">
+<nav class="navbar navbar-light bg-faded">
+  <form class="form-inline">
+    <button type="button" class="btn btn-outline-success me-0_25">Main button</button>
+    <button type="button" class="btn btn-sm align-middle btn-outline-secondary">Smaller button</button>
+  </form>
+</nav>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form-inline"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-outline-success me-0_25"</span><span class="nt">&gt;</span>Main button<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-sm align-middle btn-outline-secondary"</span><span class="nt">&gt;</span>Smaller button<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/form&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></div>
 
 <h3 id="text">Text</h3>
@@ -529,150 +1015,283 @@
 <p>Using the utility classes, you can change the alignment and appearance of your navbar text.</p>
 
 <div class="cf-example" data-example-id="">
-<nav class="navbar navbar-light bg-faded">
-    <span class="navbar-text float-right text-danger">
-        Navbar text floated right
+<nav class="navbar navbar-light bg-faded flex-end">
+    <span class="navbar-text text-danger">
+        Navbar text aligned right
     </span>
 </nav>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"navbar-text float-right text-danger"</span><span class="nt">&gt;</span>
-        Navbar text floated right
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded flex-end"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"navbar-text text-danger"</span><span class="nt">&gt;</span>
+        Navbar text aligned right
     <span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></div>
 
-<p>You can also use utility classes to align navbar text to other navbar elements like the brand and navigation (which are floated by default).</p>
+<p>You can also use utility classes to align navbar text to other navbar elements like the brand and navigation.</p>
 
 <div class="cf-example" data-example-id="">
-<nav class="navbar navbar-light bg-faded">
-    <a href="#" class="navbar-brand">Navbar</a>
-    <span class="navbar-text float-left">
-        Navbar text floated left
+<nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between">
+  <a href="#" class="navbar-brand">Navbar</a>
+  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar6">
+    <span aria-hidden="true">&#8801;</span>
+  </button>
+
+  <div class="navbar-collapse collapse flex-between" id="navbar6">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Link</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link disabled">Disabled</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+        Navbar text example
     </span>
+  </div>
 </nav>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"navbar-text float-left"</span><span class="nt">&gt;</span>
-        Navbar text floated left
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-expand-lg navbar-light bg-faded flex-between"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"navbar-toggle collapsed"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-target=</span><span class="s">"#navbar6"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;#8801;</span><span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/button&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-collapse collapse flex-between"</span> <span class="na">id=</span><span class="s">"navbar6"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"navbar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link active"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"navbar-text"</span><span class="nt">&gt;</span>
+        Navbar text example
     <span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></div>
 
-<h3 id="disabled-items">Disabled Items</h3>
+<h3 id="disabled-links">Disabled Links</h3>
 
 <p>Add <code class="highlighter-rouge">.disabled</code> to a <code class="highlighter-rouge">.nav-link</code> to indicate a disabled state.</p>
 
-<p>It should also be noted that:</p>
-<ul>
-  <li><code class="highlighter-rouge">&lt;a&gt;</code>s don’t support the <code class="highlighter-rouge">disabled</code> attribute, so you must add the <code class="highlighter-rouge">.disabled</code> class to make it visually appear disabled.</li>
-  <li>Some future-friendly styles are included to disable all <code class="highlighter-rouge">pointer-events</code> on anchor link. In browsers which support that property, you won’t see the disabled cursor at all.</li>
-  <li>Disabled links should include the <code class="highlighter-rouge">aria-disabled="true"</code> attribute to indicate the state of the element to assistive technologies.</li>
-</ul>
+<div class="cf-callout cf-callout-warning">
+<p class="h5">Disabling Anchors</p>
 
-<div class="cf-example" data-example-id="">
-<nav class="navbar navbar-light bg-faded">
-    <a href="#" class="navbar-brand">Navbar</a>
-    <ul class="nav navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#" aria-disabled="true">Disabled</a>
-        </li>
-        <li class="nav-item">
-            <span class="nav-link disabled">Disabled</span>
-        </li>
-    </ul>
-</nav>
-
-<nav class="navbar navbar-dark bg-inverse">
-    <a href="#" class="navbar-brand">Navbar</a>
-    <ul class="nav navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#" aria-disabled="true">Disabled</a>
-        </li>
-        <li class="nav-item">
-            <span class="nav-link disabled">Disabled</span>
-        </li>
-    </ul>
-</nav>
+<p>Please refer to the <a href="/get-started/accessibility/#disabled-anchors">Accessiblity notes about disabled anchors</a>.</p>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav navbar-nav"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">aria-disabled=</span><span class="s">"true"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/span&gt;</span>
-        <span class="nt">&lt;/li&gt;</span>
+
+<div class="cf-example">
+  <nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between mb-1">
+    <a href="#" class="navbar-brand">Navbar</a>
+    <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar7">
+      <span aria-hidden="true">&#8801;</span>
+    </button>
+
+    <div class="navbar-collapse collapse flex-between" id="navbar7">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link disabled" aria-disabled="true" tabindex="-1">Disabled</a>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link disabled">Disabled</span>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-inverse flex-between">
+    <a href="#" class="navbar-brand">Navbar</a>
+    <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar8">
+      <span aria-hidden="true">&#8801;</span>
+    </button>
+
+    <div class="navbar-collapse collapse flex-between" id="navbar8">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link disabled" aria-disabled="true" tabindex="-1">Disabled</a>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link disabled">Disabled</span>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-expand-lg navbar-light bg-faded flex-between"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"navbar-toggle collapsed"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-target=</span><span class="s">"#navbar7"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;#8801;</span><span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/button&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-collapse collapse flex-between"</span> <span class="na">id=</span><span class="s">"navbar7"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"navbar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">tabindex=</span><span class="s">"-1"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
     <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/nav&gt;</span>
 
-<span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-dark bg-inverse"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav navbar-nav"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">aria-disabled=</span><span class="s">"true"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/span&gt;</span>
-        <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-expand-lg navbar-dark bg-inverse flex-between"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"navbar-toggle collapsed"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-target=</span><span class="s">"#navbar8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;#8801;</span><span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/button&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-collapse collapse flex-between"</span> <span class="na">id=</span><span class="s">"navbar8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"navbar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">aria-disabled=</span><span class="s">"true"</span> <span class="na">tabindex=</span><span class="s">"-1"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;/li&gt;</span>
     <span class="nt">&lt;/ul&gt;</span>
-<span class="nt">&lt;/nav&gt;</span></code></pre></div>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/nav&gt;</span></code></pre></figure>
 
 <h3 id="divider">Divider</h3>
 
 <p>Place a visual separator between segments of the navbar.</p>
 
+<div class="cf-example">
+  <nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between mb-1">
+    <a href="#" class="navbar-brand">Navbar</a>
+    <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar9">
+      <span aria-hidden="true">&#8801;</span>
+    </button>
+
+    <div class="navbar-collapse collapse flex-between" id="navbar9">
+      <div class="navbar-nav">
+        <a href="#" class="nav-item nav-link active">Home <span class="sr-only">(current)</span></a>
+        <a href="#" class="nav-item nav-link">Features</a>
+        <span class="navbar-divider"></span>
+        <a href="#" class="nav-item nav-link">Pricing</a>
+        <a href="#" class="nav-item nav-link">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-inverse flex-between">
+    <a href="#" class="navbar-brand">Navbar</a>
+    <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar10">
+      <span aria-hidden="true">&#8801;</span>
+    </button>
+
+    <div class="navbar-collapse collapse flex-between" id="navbar10">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-item nav-link">Features</a>
+        </li>
+        <li class="navbar-divider"></li>
+        <li class="nav-item">
+          <a href="#" class="nav-item nav-link">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-item nav-link">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-expand-lg navbar-light bg-faded flex-between"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"navbar-toggle collapsed"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-target=</span><span class="s">"#navbar9"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;#8801;</span><span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/button&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-collapse collapse flex-between"</span> <span class="na">id=</span><span class="s">"navbar9"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-nav"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-item nav-link active"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span><span class="nt">&gt;</span>Features<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"navbar-divider"</span><span class="nt">&gt;&lt;/span&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span><span class="nt">&gt;</span>Pricing<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/nav&gt;</span>
+
+<span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-expand-lg navbar-dark bg-inverse flex-between"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"navbar-toggle collapsed"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-target=</span><span class="s">"#navbar10"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;#8801;</span><span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/button&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-collapse collapse flex-between"</span> <span class="na">id=</span><span class="s">"navbar10"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"navbar-nav"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link active"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span><span class="nt">&gt;</span>Features<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"navbar-divider"</span><span class="nt">&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span><span class="nt">&gt;</span>Pricing<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/nav&gt;</span></code></pre></figure>
+
+<h3 id="collapsible-content">Collapsible Content</h3>
+
+<p>Our <a href="/widgets/collapse/">Collapse widget</a> can also to toggle hidden content elsewhere on the page.</p>
+
 <div class="cf-example" data-example-id="">
 <nav class="navbar navbar-light bg-faded">
-    <div class="nav navbar-nav">
-        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="#">Features</a>
-        <span class="navbar-divider"></span>
-        <a class="nav-item nav-link" href="#">Pricing</a>
-        <a class="nav-item nav-link" href="#">About</a>
+  <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#exCollapsingNavbar" aria-label="Toggle navigation">
+    <span aria-hidden="true">&#8801;</span>
+  </button>
+  <div class="collapse w-100 mt-0_5" id="exCollapsingNavbar">
+    <div class="bg-inverse p-1">
+      <h4>Collapsed content</h4>
+      Toggleable via the navbar button.
     </div>
-</nav>
-
-<nav class="navbar navbar-dark bg-inverse">
-    <div class="nav navbar-nav">
-        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="#">Features</a>
-        <span class="navbar-divider"></span>
-        <a class="nav-item nav-link" href="#">Pricing</a>
-        <a class="nav-item nav-link" href="#">About</a>
-    </div>
+  </div>
 </nav>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"nav navbar-nav"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Features<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"navbar-divider"</span><span class="nt">&gt;&lt;/span&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Pricing<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"navbar-toggle"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-target=</span><span class="s">"#exCollapsingNavbar"</span> <span class="na">aria-label=</span><span class="s">"Toggle navigation"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;#8801;</span><span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"collapse w-100 mt-0_5"</span> <span class="na">id=</span><span class="s">"exCollapsingNavbar"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bg-inverse p-1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h4&gt;</span>Collapsed content<span class="nt">&lt;/h4&gt;</span>
+      Toggleable via the navbar button.
     <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/nav&gt;</span>
-
-<span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-dark bg-inverse"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"nav navbar-nav"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Features<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"navbar-divider"</span><span class="nt">&gt;&lt;/span&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Pricing<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></div>
 
 <h2 id="color-schemes">Color Schemes</h2>
@@ -682,68 +1301,77 @@
 <p>Here are some examples to show what we mean.</p>
 
 <div class="bd-example">
-  <nav class="navbar navbar-dark bg-inverse">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-    </ul>
-    <form class="form-inline float-right">
-      <input class="form-control" type="text" placeholder="Search" />
-      <button class="btn btn-secondary" type="submit">Search</button>
-    </form>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-inverse flex-between mb-1">
+    <a href="#" class="navbar-brand">Navbar</a>
+    <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar11">
+      <span aria-hidden="true">&#8801;</span>
+    </button>
+
+    <div class="navbar-collapse collapse flex-between" id="navbar11">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Link</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
+        </li>
+      </ul>
+      <form class="form-inline float-end">
+        <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search" />
+        <button class="btn btn-secondary" type="submit">Search</button>
+      </form>
+    </div>
   </nav>
-  <nav class="navbar navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-    </ul>
-    <form class="form-inline float-right">
-      <input class="form-control" type="text" placeholder="Search" />
-      <button class="btn btn-secondary" type="submit">Search</button>
-    </form>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary flex-between mb-1">
+    <a href="#" class="navbar-brand">Navbar</a>
+    <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar12">
+      <span aria-hidden="true">&#8801;</span>
+    </button>
+
+    <div class="navbar-collapse collapse flex-between" id="navbar12">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Link</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
+        </li>
+      </ul>
+      <form class="form-inline float-end">
+        <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search" />
+        <button class="btn btn-secondary" type="submit">Search</button>
+      </form>
+    </div>
   </nav>
-  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-    </ul>
-    <form class="form-inline float-right">
-      <input class="form-control" type="text" placeholder="Search" />
-      <button class="btn btn-outline-primary" type="submit">Search</button>
-    </form>
+  <nav class="navbar navbar-expand-lg navbar-light flex-between mb-1" style="background-color: #e3f2fd;">
+    <a href="#" class="navbar-brand">Navbar</a>
+    <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar13">
+      <span aria-hidden="true">&#8801;</span>
+    </button>
+
+    <div class="navbar-collapse collapse flex-between" id="navbar13">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Link</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
+        </li>
+      </ul>
+      <form class="form-inline float-end">
+        <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search" />
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
+    </div>
   </nav>
 </div>
 
@@ -766,353 +1394,87 @@
 <div class="cf-example" data-example-id="">
 <div class="container">
   <nav class="navbar navbar-light bg-faded">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a href="#" class="navbar-brand">Navbar</a>
   </nav>
 </div>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/nav&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 <div class="cf-example" data-example-id="">
 <nav class="navbar navbar-light bg-faded">
   <div class="container">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a href="#" class="navbar-brand">Navbar</a>
   </div>
 </nav>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></div>
 
 <h2 id="placement">Placement</h2>
 
-<p>Navbars can be statically placed (their default behavior), static without rounded corners, or fixed to the top or bottom of the viewport.</p>
+<p>Navbars are statically placed by default, or use the <a href="/utilities/position/">position utilities</a> to alter their location.</p>
 
-<div class="cf-example" data-example-id="">
-<nav class="navbar navbar-full navbar-light bg-faded">
-  <a class="navbar-brand" href="#">Full width</a>
-</nav>
-</div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-full navbar-light bg-faded"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Full width<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/nav&gt;</span></code></pre></div>
-
-<div class="cf-example" data-example-id="">
-<nav class="navbar navbar-fixed-top navbar-light bg-faded">
-  <a class="navbar-brand" href="#">Fixed top</a>
-</nav>
-</div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-fixed-top navbar-light bg-faded"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Fixed top<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/nav&gt;</span></code></pre></div>
-
-<div class="cf-example" data-example-id="">
-<nav class="navbar navbar-fixed-bottom navbar-light bg-faded">
-  <a class="navbar-brand" href="#">Fixed bottom</a>
-</nav>
-</div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-fixed-bottom navbar-light bg-faded"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Fixed bottom<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/nav&gt;</span></code></pre></div>
-
-<h2 id="collapsible-content">Collapsible Content</h2>
-
-<p>Our <a href="/widgets/collapse/">Collapse widget</a> allows you to use a <code class="highlighter-rouge">&lt;button&gt;</code> or <code class="highlighter-rouge">&lt;a&gt;</code> to toggle hidden content.</p>
+<p><strong>Note: <code class="highlighter-rouge">position: sticky</code>, used for <code class="highlighter-rouge">.sticky-top</code>, <a href="http://caniuse.com/#feat=css-sticky">isn’t fully supported in every browser</a>.</strong></p>
 
 <div class="cf-example" data-example-id="">
 <nav class="navbar navbar-light bg-faded">
-  <button class="navbar-toggler" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#exCollapsingNavbar" aria-label="Toggle navigation">
-    <span aria-hidden="true">&#8801;</span>
-  </button>
-  <div class="collapse" id="exCollapsingNavbar">
-    <div class="bg-inverse p-1">
-      <h4>Collapsed content</h4>
-      Toggleable via the navbar button.
-    </div>
-  </div>
+  <a href="#" class="navbar-brand">Static default</a>
 </nav>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"navbar-toggler"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-toggle=</span><span class="s">"#exCollapsingNavbar"</span> <span class="na">aria-label=</span><span class="s">"Toggle navigation"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;#8801;</span><span class="nt">&lt;/span&gt;</span>
-  <span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"collapse"</span> <span class="na">id=</span><span class="s">"exCollapsingNavbar"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bg-inverse p-1"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;h4&gt;</span>Collapsed content<span class="nt">&lt;/h4&gt;</span>
-      Toggleable via the navbar button.
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Static default<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></div>
-
-<h3 id="responsive-variants">Responsive Variants</h3>
-
-<p>For more complex navbar patterns, use the <code class="highlighter-rouge">.navbar-toggleable-*</code> classes in conjunction with the <code class="highlighter-rouge">.navbar-toggler</code>. These classes override our responsive utilities to show navigation only when content is meant to be shown.</p>
-
-<p>For the examples in this section, you will need to resize your browser window below/above the <code class="highlighter-rouge">lg</code> breakpoint to see the navbars switch between modes.</p>
-
-<p>Note the use of the <code class="highlighter-rouge">data-cfw-collapse-hidden="false"</code> option for the <a href="/widgets/collapse">Collapse widget</a> to allow the navigation items to be read by screen readers when not in a collapsed mode for larger screens.</p>
 
 <div class="cf-example" data-example-id="">
-<nav class="navbar navbar-light bg-faded">
-    <a class="navbar-brand" href="#">Responsive navbar</a>
-    <button class="navbar-toggler hide-lg-up float-right" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav0" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
-    <div class="collapse navbar-toggleable-md" id="respNav0">
-        <ul class="nav navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-        </ul>
-    </div>
+<nav class="navbar navbar-light bg-faded fixed-top">
+  <a href="#" class="navbar-brand">Fixed top</a>
 </nav>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Responsive navbar<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"navbar-toggler hide-lg-up float-right"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-toggle=</span><span class="s">"#respNav0"</span> <span class="na">data-cfw-collapse-hidden=</span><span class="s">"false"</span> <span class="na">aria-label=</span><span class="s">"Toggle navigation"</span><span class="nt">&gt;</span><span class="ni">&amp;#8801;</span><span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"collapse navbar-toggleable-md"</span> <span class="na">id=</span><span class="s">"respNav0"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav navbar-nav"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item active"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Features<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Pricing<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;/ul&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded fixed-top"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Fixed top<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></div>
-
-<p>With the <code class="highlighter-rouge">.navbar-brand</code> in the collapsing area.</p>
 
 <div class="cf-example" data-example-id="">
-<nav class="navbar navbar-light bg-faded">
-    <button class="navbar-toggler hide-lg-up float-left" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav1" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
-    <div class="collapse navbar-toggleable-md" id="respNav1">
-        <a class="navbar-brand" href="#">Responsive navbar</a>
-        <ul class="nav navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-        </ul>
-    </div>
+<nav class="navbar navbar-light bg-faded fixed-bottom">
+  <a href="#" class="navbar-brand">Fixed bottom</a>
 </nav>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"navbar-toggler hide-lg-up float-left"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-toggle=</span><span class="s">"#respNav1"</span> <span class="na">data-cfw-collapse-hidden=</span><span class="s">"false"</span> <span class="na">aria-label=</span><span class="s">"Toggle navigation"</span><span class="nt">&gt;</span><span class="ni">&amp;#8801;</span><span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"collapse navbar-toggleable-md"</span> <span class="na">id=</span><span class="s">"respNav1"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Responsive navbar<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav navbar-nav"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item active"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Features<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Pricing<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;/ul&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded fixed-bottom"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Fixed bottom<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></div>
-
-<p>When using dropdowns, they will display ‘inline’ with the rest of the navbar menu.</p>
 
 <div class="cf-example" data-example-id="">
-<nav class="navbar navbar-light bg-faded">
-    <button class="navbar-toggler hide-lg-up float-left" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#respNav2" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">&#8801;</button>
-    <div class="collapse navbar-toggleable-md" id="respNav2">
-        <a class="navbar-brand" href="#">Responsive navbar</a>
-        <ul class="nav navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item dropdown">
-                <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-toggle="#navDropdown1">Dropdown</a>
-                <ul class="dropdown-menu" id="navDropdown1">
-                    <li><a href="#" class="dropdown-item">Action</a></li>
-                    <li><a href="#" class="dropdown-item">Another action</a></li>
-                    <li><a href="#" class="dropdown-item">Something else here</a></li>
-                    <li class="dropdown-divider"></li>
-                    <li><a href="#" class="dropdown-item">Separated link</a></li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-        </ul>
-    </div>
+<nav class="navbar navbar-light bg-faded sticky-top">
+  <a href="#" class="navbar-brand">Sticky top</a>
 </nav>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"navbar-toggler hide-lg-up float-left"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-toggle=</span><span class="s">"#respNav2"</span> <span class="na">data-cfw-collapse-hidden=</span><span class="s">"false"</span> <span class="na">aria-label=</span><span class="s">"Toggle navigation"</span><span class="nt">&gt;</span><span class="ni">&amp;#8801;</span><span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"collapse navbar-toggleable-md"</span> <span class="na">id=</span><span class="s">"respNav2"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Responsive navbar<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav navbar-nav"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item active"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item dropdown"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">role=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"nav-link dropdown-toggle"</span> <span class="na">data-cfw=</span><span class="s">"dropdown"</span> <span class="na">data-cfw-dropdown-toggle=</span><span class="s">"#navDropdown1"</span><span class="nt">&gt;</span>Dropdown<span class="nt">&lt;/a&gt;</span>
-                <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span> <span class="na">id=</span><span class="s">"navDropdown1"</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"dropdown-item"</span><span class="nt">&gt;</span>Action<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-                    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"dropdown-item"</span><span class="nt">&gt;</span>Another action<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-                    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"dropdown-item"</span><span class="nt">&gt;</span>Something else here<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-                    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"dropdown-divider"</span><span class="nt">&gt;&lt;/li&gt;</span>
-                    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"dropdown-item"</span><span class="nt">&gt;</span>Separated link<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-                <span class="nt">&lt;/ul&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;/ul&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/nav&gt;</span></code></pre></div>
-
-<h2 id="navbar-group">Navbar Group</h2>
-
-<p>Further extending the wierdness that is the navbar, we have added the <code class="highlighter-rouge">.navbar-group</code> container to allow support for a <code class="highlighter-rouge">table</code> style layout.</p>
-
-<p>This also adds support for both the opt-in flexbox and <a href="/layout/flexbox#full-flexbox-mode">full flexbox</a> modes.  To use the opt-in method, simply add a <code class="highlighter-rouge">.navbar-group-flex</code> class to the <code class="highlighter-rouge">.navbar-group</code>.</p>
-
-<p>Each ‘segment’ of a navbar group will also need to be wrapped in, or classed with <code class="highlighter-rouge">.navbar-item</code>.</p>
-
-<div class="cf-example" data-example-id="">
-<nav class="navbar navbar-light bg-faded">
-    <div class="navbar-group">
-        <a class="navbar-item navbar-brand" href="#">Navbar</a>
-        <ul class="navbar-item nav navbar-item-max navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-        </ul>
-        <form class="navbar-item navbar-item-min form-inline text-right">
-            <input class="form-control" type="text" placeholder="Search" />
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-    </div>
-</nav>
-</div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-group"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-item navbar-brand"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"navbar-item nav navbar-item-max navbar-nav"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item active"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Features<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Pricing<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;/ul&gt;</span>
-        <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"navbar-item navbar-item-min form-inline text-right"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">placeholder=</span><span class="s">"Search"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-outline-success"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Search<span class="nt">&lt;/button&gt;</span>
-        <span class="nt">&lt;/form&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/nav&gt;</span></code></pre></div>
-
-<h3 id="justified-navbar">Justified Navbar</h3>
-
-<div class="cf-example" data-example-id="">
-<nav class="navbar navbar-light bg-faded">
-    <div class="navbar-group navbar-group-justified">
-        <a class="navbar-item navbar-brand" href="#">Navbar</a>
-        <ul class="navbar-item nav navbar-nav text-center">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-        </ul>
-        <span class="navbar-item navbar-text text-right text-success">Justified!</span>
-    </div>
-</nav>
-</div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-group navbar-group-justified"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-item navbar-brand"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/a&gt;</span>
-        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"navbar-item nav navbar-nav text-center"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item active"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Features<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Pricing<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-                <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span>
-            <span class="nt">&lt;/li&gt;</span>
-        <span class="nt">&lt;/ul&gt;</span>
-        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"navbar-item navbar-text text-right text-success"</span><span class="nt">&gt;</span>Justified!<span class="nt">&lt;/span&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-light bg-faded sticky-top"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"navbar-brand"</span><span class="nt">&gt;</span>Sticky top<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></div>
 
 
-            </div>
+            </main>
         </div>
 
         <div class="topLink">
             <a href="#content">Top of Page <span class="caret"></span></a>
         </div>
-    </main>
+    </div>
 
     <footer class="cf-footer">
     <div class="container">
-        Current version: 2.0.0
-        <ul class="footer-links">
+        <p class="mb-0">
+            Current version: 3.0.0
+        </p>
+        <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
+            <li><a href="/about/overview/">About</a></li>
             <li><a href="https://github.com/cast-org/figuration">GitHub Project</a></li>
             <li><a href="https://github.com/cast-org/figuration/issues">Issues</a></li>
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
@@ -1120,7 +1482,7 @@
         <p>
             &copy; 2013-2017 <a href="http://www.cast.org">CAST, Inc.</a>
             <br />
-            Portions: &copy; 2011-2016 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
+            Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
             Code licensed <a rel="license" href="https://github.com/cast-org/figuration/blob/master/LICENSE">MIT</a>,
             docs <a rel="license" href="https://github.com/cast-org/figuration/blob/master/docs/LICENSE">CC BY 4.0</a>.
@@ -1128,9 +1490,9 @@
 
         <hr />
 
-        <strong>Funding generously provided by:</strong>
+        <p class="font-weight-bold mb-0_25">Funding generously provided by:</p>
         <div class="media footer-partners">
-            <div class="media-left">
+            <div class="d-flex me-0_5">
                 <img src="/assets/img/aem-logo.png" class="media-object" width="40" height="40" alt="AEM logo" />
             </div>
             <div class="media-body">
@@ -1143,15 +1505,23 @@
 </footer>
 
 
-<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
 <script>
 docsearch({
     apiKey: '3b9b6e000775400f4833a14c4daa6049',
     indexName: 'figuration',
-    inputSelector: '#docsearch'
+    inputSelector: '#docsearch',
+    transformData: function (hits) {
+      return hits.map(function (hit) {
+        hit.url = hit.url.replace('http://figuration.org', '');
+        return hit;
+      });
+    },
+    debug: true // Set debug to true if you want to inspect the dropdown
 });
 </script>
 
-
+    
 </body>
 </html>

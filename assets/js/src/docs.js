@@ -1,7 +1,7 @@
 /*!
- * Figuration (v2.0.0)
+ * Figuration (v3.0.0)
  * http://figuration.org
- * Copyright 2013-2016 CAST, Inc.
+ * Copyright 2013-2017 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  */
 
@@ -29,11 +29,12 @@ function addAnchors() {
 function addClipboard() {
     // Insert copy to clipboard button before .highlight
     $('.highlight').each(function() {
-        var btnHtml = '<div class="cf-clipboard" aria-hidden="true"><span class="btn btn-sm btn-secondary btn-clipboard" title="Copy to clipboard">Copy</span></div>';
+        var btnHtml = '<div class="cf-clipboard" aria-hidden="true"><button type="button" class="btn btn-sm btn-secondary btn-clipboard" title="Copy to clipboard">Copy</button></div>';
         $(this).before(btnHtml);
-        $('.btn-clipboard').CFW_Tooltip({
-            'animate': false
-        });
+        $('.btn-clipboard')
+            .CFW_Tooltip({
+                'animate': false
+            });
     });
 
     var clipboard = new Clipboard('.btn-clipboard', {
@@ -72,15 +73,11 @@ function topLinkAffix() {
     var $topLink = $('.topLink');
 
     $topLink.CFW_Affix({
-        offset: {
-            top: function() {
-                // return $('header').outerHeight() + $('.jumbotron-docs').outerHeight();
-                $title = $('.cf-title');
-                return $title.offset().top + $title.outerHeight();
-            },
-            bottom: function() {
-                return $('footer').outerHeight();
-            }
+        top: function() {
+            return $('.cf-title').offset().top;
+        },
+        bottom: function() {
+            return $('footer').outerHeight();
         }
     });
     $(window).scroll();
@@ -94,7 +91,7 @@ function paletteHex() {
         $items.each(function() {
             $this = $(this);
             color = rgb2hex($this.css('background-color'));
-            $this.append('<span class="float-right">' + color + '</span>');
+            $this.append('<span class="float-end">' + color + '</span>');
         });
     }
 }
@@ -109,10 +106,100 @@ function rgb2hex(rgb) {
     return '#' + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
 }
 
+function sectionToc() {
+    var $toc = $('#markdown-toc');
+    if (!$toc.length) { return; }
+
+    var $clone = $toc.clone();
+    $clone.find('ul li').addClass('section-toc-h3');
+    $clone.find('ul ul li').addClass('section-toc-h4').removeClass('section-toc-h3');
+    $clone.find('ul ul ul li').addClass('section-toc-h5').removeClass('section-toc-h4');
+    $clone.find('a').removeAttr('id');
+
+    // Ouput new section toc
+    var $section = $('<ul class="section-toc"></ul>');
+    var $items = $clone.find('li');
+    $section.append($items);
+    $('.cf-toc').append($section);
+
+    // Add scrollspy here - using <body> data attributes comes too early
+    $('body').CFW_Scrollspy({
+        target: '.section-toc'
+    });
+}
+
+function docsDirection() {
+    function fileRename(id, filename) {
+        var $node = $('#' + id);
+        var path = $node.attr('href');
+        var isMin = (path.indexOf('.min.css') >= 0) ? true : false;
+        var re = /^(.*\/)?[^\/]+\.(css)$/i;
+        var rep_str = '$1' + filename;
+        path = path.replace(re, rep_str);
+        path += (isMin) ? '.min.css' : '.css';
+        $node.attr('href', path);
+    }
+
+    function setLTR(doReset) {
+        $('#dir-ltr').closest('ul').find('.active').removeClass('active').removeAttr('aria-current');
+        $('#dir-ltr').addClass('active').attr('aria-current', 'true');
+        $('html').removeAttr('dir');
+        if (doReset) {
+            fileRename('cssCore', 'figuration');
+            fileRename('cssDocs', 'docs');
+        }
+        document.cookie = 'docsDir=';
+    }
+
+    function setRTL() {
+        $('#dir-rtl').closest('ul').find('.active').removeClass('active').removeAttr('aria-current');
+        $('#dir-rtl').addClass('active').attr('aria-current', 'true');
+        $('html').attr('dir', 'rtl');
+        fileRename('cssCore', 'figuration-rtl');
+        fileRename('cssDocs', 'docs-rtl');
+        document.cookie = 'docsDir=rtl';
+    }
+
+    function getCookie(cname) {
+        var name = cname + '=';
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return '';
+    }
+
+
+    $('#dir-ltr').on('click', function(e) {
+        e.preventDefault();
+        setLTR(true);
+    });
+    $('#dir-rtl').on('click', function(e) {
+        e.preventDefault();
+        setRTL();
+    });
+
+    // Check on load
+    var settings = document.cookie;
+    if (getCookie('docsDir') === 'rtl') {
+        setRTL();
+    } else {
+        setLTR(false);
+    }
+
+}
+
 // Direction for player dropdown menus
 $(document, '[data-cfw="player"]').on('ready.cfw.player', function(e) {
-    $(e.target).closest('[data-cfw="player"]').find('.player-caption-wrapper').addClass('dropup dropdown-menu-left');
-    $(e.target).closest('[data-cfw="player"]').find('.player-script-wrapper').addClass('dropup dropdown-menu-left');
+    $(e.target).closest('[data-cfw="player"]').find('.player-caption-wrapper').addClass('dropup dropdown-menu-reverse');
+    $(e.target).closest('[data-cfw="player"]').find('.player-script-wrapper').addClass('dropup dropdown-menu-reverse');
 });
 
 $(window).ready(function() {
@@ -120,6 +207,8 @@ $(window).ready(function() {
     addClipboard();
     topLinkAffix();
     paletteHex();
+    sectionToc();
+    docsDirection();
 
     // Indeterminate checkbox example
     $('.cf-example-indeterminate [type="checkbox"]').prop('indeterminate', true);
@@ -127,5 +216,10 @@ $(window).ready(function() {
     // Disable empty links in docs examples
     $('.cf-content [href="#"]').click(function(e) {
         e.preventDefault();
+    });
+
+    // Toggle animated progress bar
+    $('.cf-toggle-animated-progress').on('click', function() {
+        $(this).siblings('.progress').find('.progress-bar-striped').toggleClass('progress-bar-animated');
     });
 });

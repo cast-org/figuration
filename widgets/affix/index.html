@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta name="description" content="CAST Figuration - A feature rich, responsive, mobile first, accessible, front-end framework based on Bootstrap.">
+<meta name="description" content="CAST Figuration - A feature rich, responsive, mobile first, accessible, front-end framework.">
 
 <title>
   
@@ -19,22 +18,27 @@
 
 <!-- Core CSS -->
 
-  <link href="/dist/css/figuration.min.css" rel="stylesheet">
-
+  <link href="/dist/css/figuration.min.css" rel="stylesheet" id="cssCore">
 
 
 <!-- Algolia DocSearch CSS -->
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 
 <!-- Docs CSS -->
 
-  <link href="/assets/css/docs.min.css" rel="stylesheet">
+  <link href="/assets/css/docs.min.css" rel="stylesheet" id="cssDocs">
 
 
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
+
+<!-- MutationObserver Polyfill -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.24/MutationObserver.min.js" integrity="sha384-8HHYYRe45k4Xq40fi/cZaaby4FJgnOOVmnRzX3OWtwpfiUPfx7tnK2QkDPuIRGm0" crossorigin="anonymous"></script>
+
 
 <!-- Core JS -->
 
@@ -46,8 +50,7 @@
   <script src="/assets/js/docs.min.js"></script>
 
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- IE emulation mode warning -->
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
 <script>
@@ -63,57 +66,81 @@
 <body>
     <a class="skipnav" href="#content">Skip to main content</a>
 
-    <div class="bg-cyan-500 text-center font-weight-bold p-1">
-<a href="https://figuration-org.github.io/figuration-preview/" class="text-light">Figuration v3 Preview Available!</a>
-</div>
-<header class="navbar navbar-full navbar-dark cf-header">
-    <div class="container">
-        <nav>
-            <a class="navbar-brand" href="/">CAST Figuration</a>
-            <div class="hide-lg-up float-right">
-                <button class="navbar-toggler btn btn-toggler" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">
-                    <span class="icon-menu" aria-hidden="true">&#8801;</span>
-                </button>
-            </div>
-            
-            <div class="hide-xs-down float-right mt-0_25 mr-1 mr-lg-0">
-                <form class="form-inline docsearch-wrapper">
-                    <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
-                </form>
-            </div>
-            
-            <div class="collapse navbar-toggleable-md" id="cf-topnav">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item ">
-                        <a href="/get-started/quick-start/" class="nav-link">Get Started</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/layout/overview/" class="nav-link">Layout</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/content/reboot/" class="nav-link">Content</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/components/alerts/" class="nav-link">Components</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/utilities/borders/" class="nav-link">Utilities</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a href="/widgets/overview/" class="nav-link">Widgets</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/about/overview/" class="nav-link">About</a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </nav>
-    </div> <!-- /.container -->
+    <header class="navbar navbar-expand-lg navbar-dark print-hide cf-header">
+    <a class="navbar-brand" href="/" aria-label="CAST Figuration">
+        <img src="/assets/brand/figuration-outline.svg" class="navbar-brand-logo" alt="" />
+        <span class="sr-only-xs-down">CAST Figuration</span>
+    </a>
+    <button class="navbar-toggle flex-first me-0_5" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
+        <span class="cf-header-menu" aria-hidden="true">&#8801;</span>
+    </button>
+    <div class="navbar-collapse collapse flex-last flex-lg-unordered flex-lg-shrink text-nowrap" id="cf-topnav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/get-started/quick-start/" class="nav-link ">Get Started</a>
+            </li>
+            <li class="nav-item">
+                <a href="/layout/overview/" class="nav-link ">Layout</a>
+            </li>
+            <li class="nav-item">
+                <a href="/content/reboot/" class="nav-link ">Content</a>
+            </li>
+            <li class="nav-item">
+                <a href="/components/alerts/" class="nav-link ">Components</a>
+            </li>
+            <li class="nav-item">
+                <a href="/utilities/borders/" class="nav-link ">Utilities</a>
+            </li>
+            <li class="nav-item">
+                <a href="/widgets/overview/" class="nav-link active">Widgets <span class="sr-only">(current section)</span></a>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="navbar-nav ms-auto cf-header-social">
+        <li class="nav-item">
+            <a href="https://twitter.com/figuration_org" class="nav-link" aria-label="Twitter" title="Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" focusable="false"  class="cf-header-icon"  >
+  <title>Twitter</title>
+  <path fill="currentColor" d="M512 97.2c-18.84 8.36-39.08 14-60.33 16.55 21.7-13 38.34-33.58 46.2-58.1-20.3 12.03-42.8 20.77-66.72 25.48C412 60.7 384.7 47.96 354.48 47.96c-58 0-105.04 47.03-105.04 105.03 0 8.23.93 16.25 2.72 23.93-87.3-4.38-164.7-46.2-216.5-109.75-9.05 15.5-14.24 33.56-14.24 52.8 0 36.45 18.55 68.6 46.73 87.44-17.2-.54-33.4-5.27-47.57-13.14v1.32c0 50.9 36.2 93.35 84.25 103-8.8 2.4-18.1 3.7-27.68 3.7-6.76 0-13.34-.67-19.76-1.9 13.36 41.73 52.15 72.1 98.12 72.95-35.95 28.18-81.25 44.97-130.46 44.97-8.48 0-16.84-.5-25.06-1.47 46.5 29.8 101.7 47.2 161.02 47.2 193.2 0 298.87-160.07 298.87-298.88 0-4.55-.1-9.08-.32-13.6 20.53-14.8 38.34-33.3 52.42-54.36z"/>
+</svg>
+
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="https://github.com/cast-org/figuration" class="nav-link" aria-label="Github" title="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false"  class="cf-header-icon"  >
+  <title>GitHub</title>
+  <path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.3 6.53 5.47 7.6.4.06.55-.18.55-.4v-1.48c-2.02.37-2.54-.5-2.7-.94-.1-.23-.48-.94-.82-1.13-.28-.15-.68-.52 0-.53.62 0 1.07.58 1.22.82.72 1.2 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.77-.2-3.63-.9-3.63-3.95 0-.87.3-1.6.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.2 2.2.83.64-.18 1.32-.27 2-.27.68 0 1.36.1 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.93.08 2.13.5.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.3.25.54.73.54 1.48v2.2c0 .22.15.47.55.4C13.7 14.52 16 11.52 16 8c0-4.42-3.58-8-8-8z"/>
+</svg>
+
+            </a>
+        </li>
+        <li class="nav-item dropdown dropdown-menu-reverse">
+            <a href="#" role="button" class="nav-link" aria-label="Settings" title="Settings" data-cfw="dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" focusable="false"  class="cf-header-icon"  >
+  <title>Settings</title>
+  <path fill="currentColor" d="M3.5 0l-.5 1.19c-.1.03-.19.08-.28.13l-1.19-.5-.72.72.5 1.19c-.05.1-.09.18-.13.28l-1.19.5v1l1.19.5c.04.1.08.18.13.28l-.5 1.19.72.72 1.19-.5c.09.04.18.09.28.13l.5 1.19h1l.5-1.19c.09-.04.19-.08.28-.13l1.19.5.72-.72-.5-1.19c.04-.09.09-.19.13-.28l1.19-.5v-1l-1.19-.5c-.03-.09-.08-.19-.13-.28l.5-1.19-.72-.72-1.19.5c-.09-.04-.19-.09-.28-.13l-.5-1.19h-1zm.5 2.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z"/>
+</svg>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">Direction</li>
+                <li><button type="button" class="dropdown-item" id="dir-ltr">Left-to-right</button></li>
+                <li><button type="button" class="dropdown-item" id="dir-rtl">Right-to-left</button></li>
+            </ul>
+        </li>
+        
+        <li class="nav-item">
+            <form class="form-inline docsearch-wrapper">
+                <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
+            </form>
+        </li>
+        
+    </ul>
 </header>
 
     <div class="jumbotron jumbotron-full jumbotron-docs">
-        <div class="container">
+        <div class="container-fluid">
             
     <div class="h1">Widgets</div>
     <p class="lead">
@@ -124,9 +151,9 @@
         </div>
     </div>
 
-    <main class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-3 cf-sidebar">
+            <div class="col-12 col-md-3 col-xl-2 cf-sidebar">
                 <nav class="cf-links">
 
 
@@ -159,204 +186,222 @@
   
 
   
-    <div class="h4">Widgets</div>
-    <ul class="nav">
+    <div class="h4 cf-sidebar-header">Widgets</div>
+    <ul class="nav flex-column">
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/overview/" class="nav-link ">
-            Overview
+            Overview 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/accordion/" class="nav-link ">
-            Accordion
+            Accordion 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/affix/" class="nav-link active">
-            Affix
+            Affix <span class="sr-only">(current page)</span>
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/alert/" class="nav-link ">
-            Alert
+            Alert 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/button/" class="nav-link ">
-            Button
+            Button 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/collapse/" class="nav-link ">
-            Collapse
+            Collapse 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/drag/" class="nav-link ">
-            Drag
+            Drag 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/dropdown/" class="nav-link ">
-            Dropdown
+            Dropdown 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/equalize/" class="nav-link ">
-            Equalize
+            Equalize 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/lazy/" class="nav-link ">
-            Lazy
+            Lazy 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/modal/" class="nav-link ">
-            Modal
+            Modal 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/player/" class="nav-link ">
-            Player
+            Player 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/popover/" class="nav-link ">
-            Popover
+            Popover 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/scrollspy/" class="nav-link ">
-            Scrollspy
+            Scrollspy 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/slider/" class="nav-link ">
-            Slider
+            Slider 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/slideshow/" class="nav-link ">
-            Slideshow
+            Slideshow 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/tab/" class="nav-link ">
-            Tab
+            Tab 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/tab-responsive/" class="nav-link ">
-            Tab-Responsive
+            Tab-Responsive 
           </a>
         </li>
       
@@ -364,10 +409,11 @@
 
         
         
+        
 
         <li class="nav-item">
           <a href="/widgets/tooltip/" class="nav-link ">
-            Tooltip
+            Tooltip 
           </a>
         </li>
       
@@ -382,7 +428,11 @@
 </nav>
 
             </div>
-            <div class="col-12 col-md-9 cf-content">
+
+            <div class="d-none d-xl-block col-xl-2 cf-toc">
+            </div>
+
+            <main class="col-12 col-md-9 col-xl-8 cf-content" role="main">
                 <h1 class="cf-title" id="content">
                     Affix
                     
@@ -422,8 +472,8 @@
 
 <ul>
   <li>To start, the widget adds <code class="highlighter-rouge">.affix-top</code> to indicate the element is in its top-most position. At this point no CSS positioning is required.</li>
-  <li>Scrolling past the element you want affixed should trigger the actual affixing. This is where <code class="highlighter-rouge">.affix</code> replaces <code class="highlighter-rouge">.affix-top</code> and sets <code class="highlighter-rouge">position: fixed;</code> (provided by Bootstrap’s CSS).</li>
-  <li>If a bottom offset is defined, scrolling past it should replace <code class="highlighter-rouge">.affix</code> with <code class="highlighter-rouge">.affix-bottom</code>. Since offsets are optional, setting one requires you to set the appropriate CSS. In this case, add <code class="highlighter-rouge">position: absolute;</code> when necessary. The widget uses the data attribute or JavaScript option to determine where to position the element from there.</li>
+  <li>Scrolling past the element you want affixed should trigger the actual affixing. This is where <code class="highlighter-rouge">.affix</code> replaces <code class="highlighter-rouge">.affix-top</code> and sets <code class="highlighter-rouge">position: fixed;</code> (provided by Figuration’s CSS).</li>
+  <li>If a <code class="highlighter-rouge">bottom</code> offset is defined, scrolling past it should replace <code class="highlighter-rouge">.affix</code> with <code class="highlighter-rouge">.affix-bottom</code>. Since offsets are optional, setting one requires you to set the appropriate CSS. In this case, add <code class="highlighter-rouge">position: absolute;</code> when necessary. The widget uses the data attribute or JavaScript option to determine where to position the element from there.</li>
 </ul>
 
 <p>Follow the above steps to set your CSS for either of the usage options below.</p>
@@ -432,7 +482,7 @@
 
 <p>To easily add affix behavior to any element, just add <code class="highlighter-rouge">data-cfw="affix"</code> to the element you want to spy on. Use offsets to define when to toggle the pinning of an element.</p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-cfw=</span><span class="s">"affix"</span> <span class="na">data-cfw-affix-offset-top=</span><span class="s">"60"</span> <span class="na">data-cfw-affix-offset-bottom=</span><span class="s">"200"</span><span class="nt">&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-cfw=</span><span class="s">"affix"</span> <span class="na">data-cfw-affix-top=</span><span class="s">"60"</span> <span class="na">data-cfw-affix-bottom=</span><span class="s">"200"</span><span class="nt">&gt;</span>
   ...
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
@@ -441,45 +491,46 @@
 <p>Call the affix widget via JavaScript:</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myAffix'</span><span class="p">).</span><span class="nx">CFW_Affix</span><span class="p">({</span>
-    <span class="na">offset</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">top</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-        <span class="na">bottom</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">bottom</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'.footer'</span><span class="p">).</span><span class="nx">outerHeight</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span>
-        <span class="p">}</span>
+    <span class="na">top</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="na">bottom</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'.footer'</span><span class="p">).</span><span class="nx">outerHeight</span><span class="p">(</span><span class="kc">true</span><span class="p">));</span>
     <span class="p">}</span>
 <span class="p">});</span></code></pre></figure>
 
 <h3 id="options">Options</h3>
 
-<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code class="highlighter-rouge">data-cfw-affix-</code>, as in <code class="highlighter-rouge">data-cfw-affix-offset-top="200"</code>.</p>
+<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code class="highlighter-rouge">data-cfw-affix-</code>, as in <code class="highlighter-rouge">data-cfw-affix-top="200"</code>.</p>
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 100px;">Name</th>
-            <th style="width: 100px;">type</th>
-            <th style="width: 50px;">default</th>
-            <th>description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>offset</td>
-            <td>number | function | object</td>
-            <td>0</td>
-            <td>Pixels to offset from screen when calculating position of scroll. If a single number is provided, the offset will be applied in both top and bottom directions. To provide a unique, bottom and top offset just provide an object <code>offset: { top: 10 }</code> or <code>offset: { top: 10, bottom: 5 }</code>. Use a function when you need to dynamically calculate an offset.</td>
-        </tr>
-        <tr>
-            <td>target</td>
-            <td>selector | node | jQuery element</td>
-            <td>the `window` object</td>
-            <td>Specifies the target element of the affix.</td>
-        </tr>
-    </tbody>
-    </table>
-</div>
-<p><!-- /.table-responsive --></p>
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 100px;">type</th>
+        <th style="width: 50px;">default</th>
+        <th>description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>top</td>
+        <td>number | function</td>
+        <td>0</td>
+        <td>Pixel offset from top of the `window` or `target` when calculating position of scroll. Use a function when you need to dynamically calculate an offset.</td>
+    </tr>
+    <tr>
+        <td>bottom</td>
+        <td>number | function</td>
+        <td>0</td>
+        <td>Pixel offset from bottom of `window` or `target` when calculating position of scroll. Use a function when you need to dynamically calculate an offset.</td>
+    </tr>
+    <tr>
+        <td>target</td>
+        <td>selector | node | jQuery element</td>
+        <td>the `window` object</td>
+        <td>Specifies the target element of the affix.</td>
+    </tr>
+</tbody>
+</table>
 
 <h3 id="methods">Methods</h3>
 
@@ -488,7 +539,7 @@
 <p>Activates an element to be affixed. Accepts an optional options object.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myAffix'</span><span class="p">).</span><span class="nx">CFW_Affix</span><span class="p">({</span>
-    <span class="na">offset</span><span class="p">:</span> <span class="p">{</span><span class="na">top</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+    <span class="na">top</span><span class="p">:</span> <span class="mi">10</span>
 <span class="p">});</span></code></pre></figure>
 
 <h4 class="no_toc" id="cfw_affixcheckposition"><code class="highlighter-rouge">.CFW_Affix('checkPosition')</code></h4>
@@ -497,68 +548,72 @@
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myAffix'</span><span class="p">).</span><span class="nx">CFW_Affix</span><span class="p">(</span><span class="s1">'checkPosition'</span><span class="p">);</span></code></pre></figure>
 
+<h4 class="no_toc" id="cfw_affixdispose"><code class="highlighter-rouge">.CFW_Affix('dispose')</code></h4>
+
+<p>Disables the affix functionality and removes any <code class="highlighter-rouge">.affix</code>, <code class="highlighter-rouge">.affix-top</code>, or <code class="highlighter-rouge">.affix-bottom</code> from the designated element.</p>
+
 <h3 id="events">Events</h3>
 
 <p>CFW’s affix widget exposes a few events for hooking into affix functionality.</p>
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 150px;">Event Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>init.cfw.affix</td>
-            <td>This event is fired after the affix element has been initialized.</td>
-        </tr>
-        <tr>
-            <td>affix.cfw.affix</td>
-            <td>This event is immediately before after the element is affixed.</td>
-        </tr>
-        <tr>
-            <td>affixed.cfw.affix</td>
-            <td>This event is after after the element has been affixed.</td>
-        </tr>
-        <tr>
-            <td>affix-top.cfw.affix</td>
-            <td>This event is fired immediately before the element is affixed-top.</td>
-        </tr>
-        <tr>
-            <td>affixed-top.cfw.affix</td>
-            <td>This event is fired after the element has been affixed-top.</td>
-        </tr>
-        <tr>
-            <td>affix-bottom.cfw.affix</td>
-            <td>This event is immediately before after the element is affixed-bottom.</td>
-        </tr>
-        <tr>
-            <td>affixed-bottom.cfw.affix</td>
-            <td>This event is fired after the element has been affixed-bottom.</td>
-        </tr>
-    </tbody>
-    </table>
-</div>
-<p><!-- /.table-responsive --></p>
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 150px;">Event Type</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>init.cfw.affix</td>
+        <td>This event is fired after the affix element has been initialized.</td>
+    </tr>
+    <tr>
+        <td>affix.cfw.affix</td>
+        <td>This event is immediately before after the element is affixed.</td>
+    </tr>
+    <tr>
+        <td>affixed.cfw.affix</td>
+        <td>This event is after after the element has been affixed.</td>
+    </tr>
+    <tr>
+        <td>affix-top.cfw.affix</td>
+        <td>This event is fired immediately before the element is affixed-top.</td>
+    </tr>
+    <tr>
+        <td>affixed-top.cfw.affix</td>
+        <td>This event is fired after the element has been affixed-top.</td>
+    </tr>
+    <tr>
+        <td>affix-bottom.cfw.affix</td>
+        <td>This event is immediately before after the element is affixed-bottom.</td>
+    </tr>
+    <tr>
+        <td>affixed-bottom.cfw.affix</td>
+        <td>This event is fired after the element has been affixed-bottom.</td>
+    </tr>
+</tbody>
+</table>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myAffix'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'affix.cfw.affix'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
   <span class="c1">// do something...</span>
 <span class="p">});</span></code></pre></figure>
 
-            </div>
+            </main>
         </div>
 
         <div class="topLink">
             <a href="#content">Top of Page <span class="caret"></span></a>
         </div>
-    </main>
+    </div>
 
     <footer class="cf-footer">
     <div class="container">
-        Current version: 2.0.0
-        <ul class="footer-links">
+        <p class="mb-0">
+            Current version: 3.0.0
+        </p>
+        <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
+            <li><a href="/about/overview/">About</a></li>
             <li><a href="https://github.com/cast-org/figuration">GitHub Project</a></li>
             <li><a href="https://github.com/cast-org/figuration/issues">Issues</a></li>
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
@@ -566,7 +621,7 @@
         <p>
             &copy; 2013-2017 <a href="http://www.cast.org">CAST, Inc.</a>
             <br />
-            Portions: &copy; 2011-2016 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
+            Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
             Code licensed <a rel="license" href="https://github.com/cast-org/figuration/blob/master/LICENSE">MIT</a>,
             docs <a rel="license" href="https://github.com/cast-org/figuration/blob/master/docs/LICENSE">CC BY 4.0</a>.
@@ -574,9 +629,9 @@
 
         <hr />
 
-        <strong>Funding generously provided by:</strong>
+        <p class="font-weight-bold mb-0_25">Funding generously provided by:</p>
         <div class="media footer-partners">
-            <div class="media-left">
+            <div class="d-flex me-0_5">
                 <img src="/assets/img/aem-logo.png" class="media-object" width="40" height="40" alt="AEM logo" />
             </div>
             <div class="media-body">
@@ -589,15 +644,23 @@
 </footer>
 
 
-<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
 <script>
 docsearch({
     apiKey: '3b9b6e000775400f4833a14c4daa6049',
     indexName: 'figuration',
-    inputSelector: '#docsearch'
+    inputSelector: '#docsearch',
+    transformData: function (hits) {
+      return hits.map(function (hit) {
+        hit.url = hit.url.replace('http://figuration.org', '');
+        return hit;
+      });
+    },
+    debug: true // Set debug to true if you want to inspect the dropdown
 });
 </script>
 
-
+    
 </body>
 </html>

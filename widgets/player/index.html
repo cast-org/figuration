@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta name="description" content="CAST Figuration - A feature rich, responsive, mobile first, accessible, front-end framework based on Bootstrap.">
+<meta name="description" content="CAST Figuration - A feature rich, responsive, mobile first, accessible, front-end framework.">
 
 <title>
   
@@ -19,22 +18,27 @@
 
 <!-- Core CSS -->
 
-  <link href="/dist/css/figuration.min.css" rel="stylesheet">
-
+  <link href="/dist/css/figuration.min.css" rel="stylesheet" id="cssCore">
 
 
 <!-- Algolia DocSearch CSS -->
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 
 <!-- Docs CSS -->
 
-  <link href="/assets/css/docs.min.css" rel="stylesheet">
+  <link href="/assets/css/docs.min.css" rel="stylesheet" id="cssDocs">
 
 
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
+
+<!-- MutationObserver Polyfill -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.24/MutationObserver.min.js" integrity="sha384-8HHYYRe45k4Xq40fi/cZaaby4FJgnOOVmnRzX3OWtwpfiUPfx7tnK2QkDPuIRGm0" crossorigin="anonymous"></script>
+
 
 <!-- Core JS -->
 
@@ -46,8 +50,7 @@
   <script src="/assets/js/docs.min.js"></script>
 
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- IE emulation mode warning -->
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
 <script>
@@ -63,57 +66,81 @@
 <body>
     <a class="skipnav" href="#content">Skip to main content</a>
 
-    <div class="bg-cyan-500 text-center font-weight-bold p-1">
-<a href="https://figuration-org.github.io/figuration-preview/" class="text-light">Figuration v3 Preview Available!</a>
-</div>
-<header class="navbar navbar-full navbar-dark cf-header">
-    <div class="container">
-        <nav>
-            <a class="navbar-brand" href="/">CAST Figuration</a>
-            <div class="hide-lg-up float-right">
-                <button class="navbar-toggler btn btn-toggler" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">
-                    <span class="icon-menu" aria-hidden="true">&#8801;</span>
-                </button>
-            </div>
-            
-            <div class="hide-xs-down float-right mt-0_25 mr-1 mr-lg-0">
-                <form class="form-inline docsearch-wrapper">
-                    <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
-                </form>
-            </div>
-            
-            <div class="collapse navbar-toggleable-md" id="cf-topnav">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item ">
-                        <a href="/get-started/quick-start/" class="nav-link">Get Started</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/layout/overview/" class="nav-link">Layout</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/content/reboot/" class="nav-link">Content</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/components/alerts/" class="nav-link">Components</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/utilities/borders/" class="nav-link">Utilities</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a href="/widgets/overview/" class="nav-link">Widgets</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/about/overview/" class="nav-link">About</a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </nav>
-    </div> <!-- /.container -->
+    <header class="navbar navbar-expand-lg navbar-dark print-hide cf-header">
+    <a class="navbar-brand" href="/" aria-label="CAST Figuration">
+        <img src="/assets/brand/figuration-outline.svg" class="navbar-brand-logo" alt="" />
+        <span class="sr-only-xs-down">CAST Figuration</span>
+    </a>
+    <button class="navbar-toggle flex-first me-0_5" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
+        <span class="cf-header-menu" aria-hidden="true">&#8801;</span>
+    </button>
+    <div class="navbar-collapse collapse flex-last flex-lg-unordered flex-lg-shrink text-nowrap" id="cf-topnav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/get-started/quick-start/" class="nav-link ">Get Started</a>
+            </li>
+            <li class="nav-item">
+                <a href="/layout/overview/" class="nav-link ">Layout</a>
+            </li>
+            <li class="nav-item">
+                <a href="/content/reboot/" class="nav-link ">Content</a>
+            </li>
+            <li class="nav-item">
+                <a href="/components/alerts/" class="nav-link ">Components</a>
+            </li>
+            <li class="nav-item">
+                <a href="/utilities/borders/" class="nav-link ">Utilities</a>
+            </li>
+            <li class="nav-item">
+                <a href="/widgets/overview/" class="nav-link active">Widgets <span class="sr-only">(current section)</span></a>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="navbar-nav ms-auto cf-header-social">
+        <li class="nav-item">
+            <a href="https://twitter.com/figuration_org" class="nav-link" aria-label="Twitter" title="Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" focusable="false"  class="cf-header-icon"  >
+  <title>Twitter</title>
+  <path fill="currentColor" d="M512 97.2c-18.84 8.36-39.08 14-60.33 16.55 21.7-13 38.34-33.58 46.2-58.1-20.3 12.03-42.8 20.77-66.72 25.48C412 60.7 384.7 47.96 354.48 47.96c-58 0-105.04 47.03-105.04 105.03 0 8.23.93 16.25 2.72 23.93-87.3-4.38-164.7-46.2-216.5-109.75-9.05 15.5-14.24 33.56-14.24 52.8 0 36.45 18.55 68.6 46.73 87.44-17.2-.54-33.4-5.27-47.57-13.14v1.32c0 50.9 36.2 93.35 84.25 103-8.8 2.4-18.1 3.7-27.68 3.7-6.76 0-13.34-.67-19.76-1.9 13.36 41.73 52.15 72.1 98.12 72.95-35.95 28.18-81.25 44.97-130.46 44.97-8.48 0-16.84-.5-25.06-1.47 46.5 29.8 101.7 47.2 161.02 47.2 193.2 0 298.87-160.07 298.87-298.88 0-4.55-.1-9.08-.32-13.6 20.53-14.8 38.34-33.3 52.42-54.36z"/>
+</svg>
+
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="https://github.com/cast-org/figuration" class="nav-link" aria-label="Github" title="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false"  class="cf-header-icon"  >
+  <title>GitHub</title>
+  <path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.3 6.53 5.47 7.6.4.06.55-.18.55-.4v-1.48c-2.02.37-2.54-.5-2.7-.94-.1-.23-.48-.94-.82-1.13-.28-.15-.68-.52 0-.53.62 0 1.07.58 1.22.82.72 1.2 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.77-.2-3.63-.9-3.63-3.95 0-.87.3-1.6.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.2 2.2.83.64-.18 1.32-.27 2-.27.68 0 1.36.1 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.93.08 2.13.5.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.3.25.54.73.54 1.48v2.2c0 .22.15.47.55.4C13.7 14.52 16 11.52 16 8c0-4.42-3.58-8-8-8z"/>
+</svg>
+
+            </a>
+        </li>
+        <li class="nav-item dropdown dropdown-menu-reverse">
+            <a href="#" role="button" class="nav-link" aria-label="Settings" title="Settings" data-cfw="dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" focusable="false"  class="cf-header-icon"  >
+  <title>Settings</title>
+  <path fill="currentColor" d="M3.5 0l-.5 1.19c-.1.03-.19.08-.28.13l-1.19-.5-.72.72.5 1.19c-.05.1-.09.18-.13.28l-1.19.5v1l1.19.5c.04.1.08.18.13.28l-.5 1.19.72.72 1.19-.5c.09.04.18.09.28.13l.5 1.19h1l.5-1.19c.09-.04.19-.08.28-.13l1.19.5.72-.72-.5-1.19c.04-.09.09-.19.13-.28l1.19-.5v-1l-1.19-.5c-.03-.09-.08-.19-.13-.28l.5-1.19-.72-.72-1.19.5c-.09-.04-.19-.09-.28-.13l-.5-1.19h-1zm.5 2.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z"/>
+</svg>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">Direction</li>
+                <li><button type="button" class="dropdown-item" id="dir-ltr">Left-to-right</button></li>
+                <li><button type="button" class="dropdown-item" id="dir-rtl">Right-to-left</button></li>
+            </ul>
+        </li>
+        
+        <li class="nav-item">
+            <form class="form-inline docsearch-wrapper">
+                <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
+            </form>
+        </li>
+        
+    </ul>
 </header>
 
     <div class="jumbotron jumbotron-full jumbotron-docs">
-        <div class="container">
+        <div class="container-fluid">
             
     <div class="h1">Widgets</div>
     <p class="lead">
@@ -124,9 +151,9 @@
         </div>
     </div>
 
-    <main class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-3 cf-sidebar">
+            <div class="col-12 col-md-3 col-xl-2 cf-sidebar">
                 <nav class="cf-links">
 
 
@@ -159,204 +186,222 @@
   
 
   
-    <div class="h4">Widgets</div>
-    <ul class="nav">
+    <div class="h4 cf-sidebar-header">Widgets</div>
+    <ul class="nav flex-column">
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/overview/" class="nav-link ">
-            Overview
+            Overview 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/accordion/" class="nav-link ">
-            Accordion
+            Accordion 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/affix/" class="nav-link ">
-            Affix
+            Affix 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/alert/" class="nav-link ">
-            Alert
+            Alert 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/button/" class="nav-link ">
-            Button
+            Button 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/collapse/" class="nav-link ">
-            Collapse
+            Collapse 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/drag/" class="nav-link ">
-            Drag
+            Drag 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/dropdown/" class="nav-link ">
-            Dropdown
+            Dropdown 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/equalize/" class="nav-link ">
-            Equalize
+            Equalize 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/lazy/" class="nav-link ">
-            Lazy
+            Lazy 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/modal/" class="nav-link ">
-            Modal
+            Modal 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/player/" class="nav-link active">
-            Player
+            Player <span class="sr-only">(current page)</span>
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/popover/" class="nav-link ">
-            Popover
+            Popover 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/scrollspy/" class="nav-link ">
-            Scrollspy
+            Scrollspy 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/slider/" class="nav-link ">
-            Slider
+            Slider 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/slideshow/" class="nav-link ">
-            Slideshow
+            Slideshow 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/tab/" class="nav-link ">
-            Tab
+            Tab 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/tab-responsive/" class="nav-link ">
-            Tab-Responsive
+            Tab-Responsive 
           </a>
         </li>
       
@@ -364,10 +409,11 @@
 
         
         
+        
 
         <li class="nav-item">
           <a href="/widgets/tooltip/" class="nav-link ">
-            Tooltip
+            Tooltip 
           </a>
         </li>
       
@@ -382,7 +428,11 @@
 </nav>
 
             </div>
-            <div class="col-12 col-md-9 cf-content">
+
+            <div class="d-none d-xl-block col-xl-2 cf-toc">
+            </div>
+
+            <main class="col-12 col-md-9 col-xl-8 cf-content" role="main">
                 <h1 class="cf-title" id="content">
                     Player
                     
@@ -399,7 +449,7 @@
 <p>Currently, there is no base CSS provided by Figuration in either the <code class="highlighter-rouge">figuration.css</code> or <code class="highlighter-rouge">figuration.min.css</code> files.  The examples below use CSS that is specific to our docs pages.</p>
 
 <div class="cf-callout cf-callout-info">
-<h4 id="html5-audiovideo-support">HTML5 Audio/Video Support</h4>
+<p class="h5">HTML5 Audio/Video Support</p>
 
 <p>Player builds on top of the browser’s built in HTML5 <code class="highlighter-rouge">&lt;audio&gt;</code>/<code class="highlighter-rouge">&lt;video&gt;</code> player. The limits and supported media types are determined by the browser itself.</p>
 
@@ -407,7 +457,7 @@
 </div>
 
 <div class="cf-callout cf-callout-info cf-callout-dep">
-<h4 id="widget-dependencies">Widget Dependencies</h4>
+<p class="h5">Widget Dependencies</p>
 
 <p>Player requires the following:</p>
 
@@ -418,7 +468,7 @@
 </div>
 
 <div class="cf-callout cf-callout-warning">
-<h4 id="no-media-service-support">No Media Service Support</h4>
+<p class="h5">No Media Service Support</p>
 
 <p>Player does not support media services such as YouTube, Vimeo, SoundCloud, and others.  There are currently no plans to support these types of services.</p>
 </div>
@@ -431,6 +481,9 @@
       <li><a href="#robust-audio-player" id="markdown-toc-robust-audio-player">Robust Audio Player</a></li>
       <li><a href="#video-example" id="markdown-toc-video-example">Video Example</a></li>
       <li><a href="#interactive-transcript" id="markdown-toc-interactive-transcript">Interactive Transcript</a></li>
+      <li><a href="#audio-description" id="markdown-toc-audio-description">Audio Description</a></li>
+      <li><a href="#transcript-description" id="markdown-toc-transcript-description">Transcript Description</a></li>
+      <li><a href="#custom-captions" id="markdown-toc-custom-captions">Custom Captions</a></li>
     </ul>
   </li>
   <li><a href="#usage" id="markdown-toc-usage">Usage</a>    <ul>
@@ -457,8 +510,8 @@
 <div data-cfw="player">
     <div class="player" role="region" aria-label="audio player" data-cfw-player="player">
         <span class="player-control" data-cfw-player="control">
-            <button type="button" class="btn player-play" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
-            <button type="button" class="btn player-pause" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
+            <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
+            <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
         </span>
         <span class="player-time" data-cfw-player="time">
             <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -471,7 +524,7 @@
             <button type="button" class="btn player-mute-on" title="Unmute" aria-label="Unmute"><span class="fa fa-fw fa-volume-off" aria-hidden="true"></span></button>
             <button type="button" class="btn player-mute-off" title="Mute" aria-label="Mute"><span class="fa fa-fw fa-volume-up" aria-hidden="true"></span></button>
         </span>
-        <button type="button" class="btn player-loop" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fa fa-fw fa-refresh" aria-hidden="true"></span></button>
+        <button type="button" class="btn" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fa fa-fw fa-refresh" aria-hidden="true"></span></button>
     </div>
     <audio controls="">
         <source src="/assets/audio/Drumroll-Heigh-hoo.mp3" type="audio/mpeg" />
@@ -484,8 +537,8 @@
 <span class="nt">&lt;div</span> <span class="na">data-cfw=</span><span class="s">"player"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"player"</span> <span class="na">role=</span><span class="s">"region"</span> <span class="na">aria-label=</span><span class="s">"audio player"</span> <span class="na">data-cfw-player=</span><span class="s">"player"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-control"</span> <span class="na">data-cfw-player=</span><span class="s">"control"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-play"</span> <span class="na">data-cfw-player=</span><span class="s">"play"</span> <span class="na">title=</span><span class="s">"Play"</span> <span class="na">aria-label=</span><span class="s">"Play"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-play"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
-            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-pause"</span> <span class="na">data-cfw-player=</span><span class="s">"pause"</span> <span class="na">title=</span><span class="s">"Pause"</span> <span class="na">aria-label=</span><span class="s">"Pause"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-pause"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw-player=</span><span class="s">"play"</span> <span class="na">title=</span><span class="s">"Play"</span> <span class="na">aria-label=</span><span class="s">"Play"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-play"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw-player=</span><span class="s">"pause"</span> <span class="na">title=</span><span class="s">"Pause"</span> <span class="na">aria-label=</span><span class="s">"Pause"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-pause"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
         <span class="nt">&lt;/span&gt;</span>
         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-time"</span> <span class="na">data-cfw-player=</span><span class="s">"time"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-time-current"</span> <span class="na">data-cfw-player=</span><span class="s">"time-current"</span><span class="nt">&gt;&lt;/span&gt;</span>
@@ -498,7 +551,7 @@
             <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-mute-on"</span> <span class="na">title=</span><span class="s">"Unmute"</span> <span class="na">aria-label=</span><span class="s">"Unmute"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-volume-off"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
             <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-mute-off"</span> <span class="na">title=</span><span class="s">"Mute"</span> <span class="na">aria-label=</span><span class="s">"Mute"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-volume-up"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
         <span class="nt">&lt;/span&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-loop"</span> <span class="na">title=</span><span class="s">"Repeat"</span> <span class="na">aria-label=</span><span class="s">"Repeat"</span> <span class="na">data-cfw-player=</span><span class="s">"loop"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-refresh"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">title=</span><span class="s">"Repeat"</span> <span class="na">aria-label=</span><span class="s">"Repeat"</span> <span class="na">data-cfw-player=</span><span class="s">"loop"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-refresh"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;audio</span> <span class="na">controls</span><span class="nt">&gt;</span>
         <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"/assets/audio/Drumroll-Heigh-hoo.mp3"</span> <span class="na">type=</span><span class="s">"audio/mpeg"</span> <span class="nt">/&gt;</span>
@@ -516,9 +569,9 @@
 <div data-cfw="player">
     <div class="player" role="region" aria-label="audio player" data-cfw-player="player">
         <span class="player-control" data-cfw-player="control">
-            <button type="button" class="btn player-play" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
-            <button type="button" class="btn player-pause" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
-            <button type="button" class="btn player-stop" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop" aria-hidden="true"></span></button>
+            <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
+            <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
+            <button type="button" class="btn" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop" aria-hidden="true"></span></button>
         </span>
         <span class="player-time" data-cfw-player="time">
             <span class="player-time-remainder" data-cfw-player="time-remainder"></span>
@@ -534,7 +587,7 @@
         <span class="player-volume" data-cfw-player="volume">
             <label>Volume slider<input type="text" /></label>
         </span>
-        <button type="button" class="btn player-loop" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fa fa-fw fa-refresh"></span></button>
+        <button type="button" class="btn" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fa fa-fw fa-refresh"></span></button>
     </div>
     <audio controls="">
         <source src="/assets/audio/Ambient_Acoustic-StrangerEight.mp3" type="audio/mpeg" />
@@ -547,9 +600,9 @@
 <span class="nt">&lt;div</span> <span class="na">data-cfw=</span><span class="s">"player"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"player"</span> <span class="na">role=</span><span class="s">"region"</span> <span class="na">aria-label=</span><span class="s">"audio player"</span> <span class="na">data-cfw-player=</span><span class="s">"player"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-control"</span> <span class="na">data-cfw-player=</span><span class="s">"control"</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-play"</span> <span class="na">data-cfw-player=</span><span class="s">"play"</span> <span class="na">title=</span><span class="s">"Play"</span> <span class="na">aria-label=</span><span class="s">"Play"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-play"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
-            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-pause"</span> <span class="na">data-cfw-player=</span><span class="s">"pause"</span> <span class="na">title=</span><span class="s">"Pause"</span> <span class="na">aria-label=</span><span class="s">"Pause"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-pause"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
-            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-stop"</span> <span class="na">data-cfw-player=</span><span class="s">"stop"</span> <span class="na">title=</span><span class="s">"Stop"</span> <span class="na">aria-label=</span><span class="s">"Stop"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-stop"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw-player=</span><span class="s">"play"</span> <span class="na">title=</span><span class="s">"Play"</span> <span class="na">aria-label=</span><span class="s">"Play"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-play"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw-player=</span><span class="s">"pause"</span> <span class="na">title=</span><span class="s">"Pause"</span> <span class="na">aria-label=</span><span class="s">"Pause"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-pause"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw-player=</span><span class="s">"stop"</span> <span class="na">title=</span><span class="s">"Stop"</span> <span class="na">aria-label=</span><span class="s">"Stop"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-stop"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
         <span class="nt">&lt;/span&gt;</span>
         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-time"</span> <span class="na">data-cfw-player=</span><span class="s">"time"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-time-remainder"</span> <span class="na">data-cfw-player=</span><span class="s">"time-remainder"</span><span class="nt">&gt;&lt;/span&gt;</span>
@@ -565,7 +618,7 @@
         <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-volume"</span> <span class="na">data-cfw-player=</span><span class="s">"volume"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;label&gt;</span>Volume slider<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="nt">/&gt;&lt;/label&gt;</span>
         <span class="nt">&lt;/span&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-loop"</span> <span class="na">title=</span><span class="s">"Repeat"</span> <span class="na">aria-label=</span><span class="s">"Repeat"</span> <span class="na">data-cfw-player=</span><span class="s">"loop"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-refresh"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">title=</span><span class="s">"Repeat"</span> <span class="na">aria-label=</span><span class="s">"Repeat"</span> <span class="na">data-cfw-player=</span><span class="s">"loop"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-refresh"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;audio</span> <span class="na">controls</span><span class="nt">&gt;</span>
         <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"/assets/audio/Ambient_Acoustic-StrangerEight.mp3"</span> <span class="na">type=</span><span class="s">"audio/mpeg"</span> <span class="nt">/&gt;</span>
@@ -579,7 +632,7 @@
 <p><small>Source: <a href="https://videos.pexels.com/videos/tourists-looking-at-niagara-falls-333">Tourists Looking at Niagara Falls</a></small></p>
 
 <div data-cfw="player" class="video-wrapper">
-    <div class="video-responsive">
+    <div class="embed-fluid">
         <video poster="/assets/video/niagara_falls.jpg" controls="">
             <source src="/assets/video/niagara_falls.mp4" type="video/mp4" />
             <track src="/assets/video/niagara_falls-en.vtt" label="English subtitles" kind="subtitles" srclang="en" default="" />
@@ -591,9 +644,9 @@
         <div class="player row" role="region" aria-label="video player" data-cfw-player="player">
             <div class="col-md-6">
                 <span class="player-control" data-cfw-player="control">
-                    <button type="button" class="btn player-play" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
-                    <button type="button" class="btn player-pause" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
-                    <button type="button" class="btn player-stop" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop" aria-hidden="true"></span></button>
+                    <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
+                    <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
+                    <button type="button" class="btn" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop" aria-hidden="true"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -611,8 +664,8 @@
                 <span class="player-volume" data-cfw-player="volume">
                     <label>Volume slider<input type="text" /></label>
                 </span>
-                <button type="button" class="btn player-loop" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fa fa-fw fa-refresh" aria-hidden="true"></span></button>
-                <button type="button" class="btn player-caption" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fa fa-fw fa-cc" aria-hidden="true"></span></button>
+                <button type="button" class="btn" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fa fa-fw fa-refresh" aria-hidden="true"></span></button>
+                <button type="button" class="btn" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fa fa-fw fa-cc" aria-hidden="true"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
                     <button type="button" class="btn player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
                     <button type="button" class="btn player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
@@ -625,7 +678,7 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;&lt;small&gt;</span>Source: <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://videos.pexels.com/videos/tourists-looking-at-niagara-falls-333"</span><span class="nt">&gt;</span>Tourists Looking at Niagara Falls<span class="nt">&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;</span>
 
 <span class="nt">&lt;div</span> <span class="na">data-cfw=</span><span class="s">"player"</span> <span class="na">class=</span><span class="s">"video-wrapper"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"video-responsive"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"embed-fluid"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;video</span> <span class="na">poster=</span><span class="s">"/assets/video/niagara_falls.jpg"</span> <span class="na">controls</span><span class="nt">&gt;</span>
             <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"/assets/video/niagara_falls.mp4"</span> <span class="na">type=</span><span class="s">"video/mp4"</span> <span class="nt">/&gt;</span>
             <span class="nt">&lt;track</span> <span class="na">src=</span><span class="s">"/assets/video/niagara_falls-en.vtt"</span> <span class="na">label=</span><span class="s">"English subtitles"</span> <span class="na">kind=</span><span class="s">"subtitles"</span> <span class="na">srclang=</span><span class="s">"en"</span> <span class="na">default</span> <span class="nt">/&gt;</span>
@@ -634,12 +687,12 @@
         <span class="nt">&lt;/video&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"player-wrapper"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"player row"</span>  <span class="na">role=</span><span class="s">"region"</span> <span class="na">aria-label=</span><span class="s">"video player"</span> <span class="na">data-cfw-player=</span><span class="s">"player"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"player row"</span> <span class="na">role=</span><span class="s">"region"</span> <span class="na">aria-label=</span><span class="s">"video player"</span> <span class="na">data-cfw-player=</span><span class="s">"player"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
                 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-control"</span> <span class="na">data-cfw-player=</span><span class="s">"control"</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-play"</span> <span class="na">data-cfw-player=</span><span class="s">"play"</span> <span class="na">title=</span><span class="s">"Play"</span> <span class="na">aria-label=</span><span class="s">"Play"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-play"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
-                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-pause"</span> <span class="na">data-cfw-player=</span><span class="s">"pause"</span> <span class="na">title=</span><span class="s">"Pause"</span> <span class="na">aria-label=</span><span class="s">"Pause"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-pause"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
-                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-stop"</span> <span class="na">data-cfw-player=</span><span class="s">"stop"</span> <span class="na">title=</span><span class="s">"Stop"</span> <span class="na">aria-label=</span><span class="s">"Stop"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-stop"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw-player=</span><span class="s">"play"</span> <span class="na">title=</span><span class="s">"Play"</span> <span class="na">aria-label=</span><span class="s">"Play"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-play"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw-player=</span><span class="s">"pause"</span> <span class="na">title=</span><span class="s">"Pause"</span> <span class="na">aria-label=</span><span class="s">"Pause"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-pause"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw-player=</span><span class="s">"stop"</span> <span class="na">title=</span><span class="s">"Stop"</span> <span class="na">aria-label=</span><span class="s">"Stop"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-stop"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
                 <span class="nt">&lt;/span&gt;</span>
                 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-time"</span> <span class="na">data-cfw-player=</span><span class="s">"time"</span><span class="nt">&gt;</span>
                     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-time-current"</span> <span class="na">data-cfw-player=</span><span class="s">"time-current"</span><span class="nt">&gt;&lt;/span&gt;</span>
@@ -657,8 +710,8 @@
                 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-volume"</span> <span class="na">data-cfw-player=</span><span class="s">"volume"</span><span class="nt">&gt;</span>
                     <span class="nt">&lt;label&gt;</span>Volume slider<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="nt">/&gt;&lt;/label&gt;</span>
                 <span class="nt">&lt;/span&gt;</span>
-                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-loop"</span> <span class="na">title=</span><span class="s">"Repeat"</span> <span class="na">aria-label=</span><span class="s">"Repeat"</span> <span class="na">data-cfw-player=</span><span class="s">"loop"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-refresh"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
-                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-caption"</span> <span class="na">data-cfw-player=</span><span class="s">"caption"</span> <span class="na">title=</span><span class="s">"Closed captions"</span> <span class="na">aria-label=</span><span class="s">"Closed captions"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-cc"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">title=</span><span class="s">"Repeat"</span> <span class="na">aria-label=</span><span class="s">"Repeat"</span> <span class="na">data-cfw-player=</span><span class="s">"loop"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-refresh"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw-player=</span><span class="s">"caption"</span> <span class="na">title=</span><span class="s">"Closed captions"</span> <span class="na">aria-label=</span><span class="s">"Closed captions"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-cc"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
                 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-fullscreen"</span> <span class="na">data-cfw-player=</span><span class="s">"fullscreen"</span><span class="nt">&gt;</span>
                     <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-fullscreen-on"</span> <span class="na">title=</span><span class="s">"Exit fullscreen"</span> <span class="na">aria-label=</span><span class="s">"Exit fullscreen"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-arrows-alt"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
                     <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-fullscreen-off"</span> <span class="na">title=</span><span class="s">"Fullscreen"</span> <span class="na">aria-label=</span><span class="s">"Fullscreen"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-arrows-alt"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
@@ -675,8 +728,8 @@
 <div class="cf-example" data-example-id="">
 <p><small>Source: <a href="https://videos.pexels.com/videos/tourists-looking-at-niagara-falls-333">Tourists Looking at Niagara Falls</a></small></p>
 
-<div data-cfw="player" data-cfw-player-transcript="0" class="video-wrapper">
-    <div class="video-responsive">
+<div data-cfw="player" data-cfw-player-transcript="0" class="video-wrapper" role="region" aria-label="video player">
+    <div class="embed-fluid">
         <video poster="/assets/video/niagara_falls.jpg" controls="">
             <source src="/assets/video/niagara_falls.mp4" type="video/mp4" />
             <track src="/assets/video/niagara_falls-en.vtt" label="English subtitles" kind="subtitles" srclang="en" />
@@ -688,9 +741,9 @@
         <div class="player row" role="region" aria-label="video player" data-cfw-player="player">
             <div class="col-md-6">
                 <span class="player-control" data-cfw-player="control">
-                    <button type="button" class="btn player-play" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
-                    <button type="button" class="btn player-pause" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
-                    <button type="button" class="btn player-stop" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop" aria-hidden="true"></span></button>
+                    <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
+                    <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
+                    <button type="button" class="btn" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop" aria-hidden="true"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -708,8 +761,8 @@
                 <span class="player-volume" data-cfw-player="volume">
                     <label>Volume slider<input type="text" /></label>
                 </span>
-                <button type="button" class="btn player-caption" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fa fa-fw fa-cc" aria-hidden="true"></span></button>
-                <button type="button" class="btn player-transcript" data-cfw-player="transcript" title="Transcript captions" aria-label="Closed captions"><span class="fa fa-fw fa-file-text-o" aria-hidden="true"></span></button>
+                <button type="button" class="btn" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fa fa-fw fa-cc" aria-hidden="true"></span></button>
+                <button type="button" class="btn" data-cfw-player="transcript" title="Transcript captions" aria-label="Closed captions"><span class="fa fa-fw fa-file-text-o" aria-hidden="true"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
                     <button type="button" class="btn player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
                     <button type="button" class="btn player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
@@ -721,8 +774,8 @@
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;&lt;small&gt;</span>Source: <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://videos.pexels.com/videos/tourists-looking-at-niagara-falls-333"</span><span class="nt">&gt;</span>Tourists Looking at Niagara Falls<span class="nt">&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;</span>
 
-<span class="nt">&lt;div</span> <span class="na">data-cfw=</span><span class="s">"player"</span> <span class="na">data-cfw-player-transcript=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">"video-wrapper"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"video-responsive"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">data-cfw=</span><span class="s">"player"</span> <span class="na">data-cfw-player-transcript=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">"video-wrapper"</span> <span class="na">role=</span><span class="s">"region"</span> <span class="na">aria-label=</span><span class="s">"video player"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"embed-fluid"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;video</span> <span class="na">poster=</span><span class="s">"/assets/video/niagara_falls.jpg"</span> <span class="na">controls</span><span class="nt">&gt;</span>
             <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"/assets/video/niagara_falls.mp4"</span> <span class="na">type=</span><span class="s">"video/mp4"</span> <span class="nt">/&gt;</span>
             <span class="nt">&lt;track</span> <span class="na">src=</span><span class="s">"/assets/video/niagara_falls-en.vtt"</span> <span class="na">label=</span><span class="s">"English subtitles"</span> <span class="na">kind=</span><span class="s">"subtitles"</span> <span class="na">srclang=</span><span class="s">"en"</span> <span class="nt">/&gt;</span>
@@ -731,12 +784,12 @@
         <span class="nt">&lt;/video&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"player-wrapper"</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"player row"</span>  <span class="na">role=</span><span class="s">"region"</span> <span class="na">aria-label=</span><span class="s">"video player"</span> <span class="na">data-cfw-player=</span><span class="s">"player"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"player row"</span> <span class="na">role=</span><span class="s">"region"</span> <span class="na">aria-label=</span><span class="s">"video player"</span> <span class="na">data-cfw-player=</span><span class="s">"player"</span><span class="nt">&gt;</span>
             <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>
                 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-control"</span> <span class="na">data-cfw-player=</span><span class="s">"control"</span><span class="nt">&gt;</span>
-                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-play"</span> <span class="na">data-cfw-player=</span><span class="s">"play"</span> <span class="na">title=</span><span class="s">"Play"</span> <span class="na">aria-label=</span><span class="s">"Play"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-play"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
-                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-pause"</span> <span class="na">data-cfw-player=</span><span class="s">"pause"</span> <span class="na">title=</span><span class="s">"Pause"</span> <span class="na">aria-label=</span><span class="s">"Pause"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-pause"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
-                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-stop"</span> <span class="na">data-cfw-player=</span><span class="s">"stop"</span> <span class="na">title=</span><span class="s">"Stop"</span> <span class="na">aria-label=</span><span class="s">"Stop"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-stop"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw-player=</span><span class="s">"play"</span> <span class="na">title=</span><span class="s">"Play"</span> <span class="na">aria-label=</span><span class="s">"Play"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-play"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw-player=</span><span class="s">"pause"</span> <span class="na">title=</span><span class="s">"Pause"</span> <span class="na">aria-label=</span><span class="s">"Pause"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-pause"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+                    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw-player=</span><span class="s">"stop"</span> <span class="na">title=</span><span class="s">"Stop"</span> <span class="na">aria-label=</span><span class="s">"Stop"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-stop"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
                 <span class="nt">&lt;/span&gt;</span>
                 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-time"</span> <span class="na">data-cfw-player=</span><span class="s">"time"</span><span class="nt">&gt;</span>
                     <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-time-current"</span> <span class="na">data-cfw-player=</span><span class="s">"time-current"</span><span class="nt">&gt;&lt;/span&gt;</span>
@@ -754,13 +807,212 @@
                 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-volume"</span> <span class="na">data-cfw-player=</span><span class="s">"volume"</span><span class="nt">&gt;</span>
                     <span class="nt">&lt;label&gt;</span>Volume slider<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="nt">/&gt;&lt;/label&gt;</span>
                 <span class="nt">&lt;/span&gt;</span>
-                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-caption"</span> <span class="na">data-cfw-player=</span><span class="s">"caption"</span> <span class="na">title=</span><span class="s">"Closed captions"</span> <span class="na">aria-label=</span><span class="s">"Closed captions"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-cc"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
-                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-transcript"</span> <span class="na">data-cfw-player=</span><span class="s">"transcript"</span> <span class="na">title=</span><span class="s">"Transcript captions"</span> <span class="na">aria-label=</span><span class="s">"Closed captions"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-file-text-o"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw-player=</span><span class="s">"caption"</span> <span class="na">title=</span><span class="s">"Closed captions"</span> <span class="na">aria-label=</span><span class="s">"Closed captions"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-cc"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw-player=</span><span class="s">"transcript"</span> <span class="na">title=</span><span class="s">"Transcript captions"</span> <span class="na">aria-label=</span><span class="s">"Closed captions"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-file-text-o"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
                 <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-fullscreen"</span> <span class="na">data-cfw-player=</span><span class="s">"fullscreen"</span><span class="nt">&gt;</span>
                     <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-fullscreen-on"</span> <span class="na">title=</span><span class="s">"Exit fullscreen"</span> <span class="na">aria-label=</span><span class="s">"Exit fullscreen"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-arrows-alt"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
                     <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-fullscreen-off"</span> <span class="na">title=</span><span class="s">"Fullscreen"</span> <span class="na">aria-label=</span><span class="s">"Fullscreen"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-arrows-alt"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
                 <span class="nt">&lt;/span&gt;</span>
             <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<h3 id="audio-description">Audio Description</h3>
+
+<p>Improve accessibility for blind and visually impaired users by including an audio description with your video. Extend the <code class="highlighter-rouge">&lt;source&gt;</code> elements with a <code class="highlighter-rouge">data-src-describe=""</code> attribute pointing to the video source that contains the additional narration  description. Also add a control with a <code class="highlighter-rouge">data-cfw-player="description"</code> attribute.  This will allow the user to toggle the audio description version of the video on and off.</p>
+
+<div class="cf-example" data-example-id="">
+<div data-cfw="player" data-cfw-player-media-describe="true" class="video-wrapper" role="region" aria-label="video player">
+    <div class="embed-fluid">
+        <video poster="/assets/video/niagara_falls.jpg" controls="">
+            <source src="/assets/video/niagara_falls.mp4" data-src-describe="/assets/video/niagara_falls-describe-en.mp4" />
+        </video>
+    </div>
+    <div class="player-wrapper">
+        <div class="player" data-cfw-player="player">
+            <span class="player-control me-0_5" data-cfw-player="control">
+                <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
+            </span>
+            <span class="player-time me-0_5" data-cfw-player="time">
+                <span class="player-time-current" data-cfw-player="time-current"></span>
+                <span class="player-seek" data-cfw-player="seek">
+                	<label>Seek slider<input type="text" /></label>
+                </span>
+                <span class="player-time-duration" data-cfw-player="time-duration"></span>
+            </span>
+            <span class="player-describe" data-cfw-player="description">
+                <button type="button" class="btn btn-default on active" title="Turn Off Audio Description" aria-label="Turn Off Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
+                <button type="button" class="btn btn-default off" title="Turn On Audio Description" aria-label="Turn On Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
+            </span>
+        </div>
+    </div>
+</div>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-cfw=</span><span class="s">"player"</span> <span class="na">data-cfw-player-media-describe=</span><span class="s">"true"</span> <span class="na">class=</span><span class="s">"video-wrapper"</span> <span class="na">role=</span><span class="s">"region"</span> <span class="na">aria-label=</span><span class="s">"video player"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"embed-fluid"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;video</span> <span class="na">poster=</span><span class="s">"/assets/video/niagara_falls.jpg"</span> <span class="na">controls</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"/assets/video/niagara_falls.mp4"</span> <span class="na">data-src-describe=</span><span class="s">"/assets/video/niagara_falls-describe-en.mp4"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/video&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"player-wrapper"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"player"</span> <span class="na">data-cfw-player=</span><span class="s">"player"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-control me-0_5"</span> <span class="na">data-cfw-player=</span><span class="s">"control"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="na">data-cfw-player=</span><span class="s">"play"</span> <span class="na">title=</span><span class="s">"Play"</span> <span class="na">aria-label=</span><span class="s">"Play"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-play"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="na">data-cfw-player=</span><span class="s">"pause"</span> <span class="na">title=</span><span class="s">"Pause"</span> <span class="na">aria-label=</span><span class="s">"Pause"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-pause"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-time me-0_5"</span> <span class="na">data-cfw-player=</span><span class="s">"time"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-time-current"</span> <span class="na">data-cfw-player=</span><span class="s">"time-current"</span><span class="nt">&gt;&lt;/span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-seek"</span> <span class="na">data-cfw-player=</span><span class="s">"seek"</span><span class="nt">&gt;</span>
+                	<span class="nt">&lt;label&gt;</span>Seek slider<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="nt">/&gt;&lt;/label&gt;</span>
+                <span class="nt">&lt;/span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-time-duration"</span> <span class="na">data-cfw-player=</span><span class="s">"time-duration"</span><span class="nt">&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-describe"</span> <span class="na">data-cfw-player=</span><span class="s">"description"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default on active"</span> <span class="na">title=</span><span class="s">"Turn Off Audio Description"</span> <span class="na">aria-label=</span><span class="s">"Turn Off Audio Description"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-audio-description"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default off"</span> <span class="na">title=</span><span class="s">"Turn On Audio Description"</span> <span class="na">aria-label=</span><span class="s">"Turn On Audio Description"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-audio-description"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<h3 id="transcript-description">Transcript Description</h3>
+
+<p>Further improve accessibility for blind and visually impaired users by including the audio description narration within the interactive transcript. Add a <code class="highlighter-rouge">&lt;track kind="descriptions"&gt;</code>with the content of the description narration.  Also add matching <code class="highlighter-rouge">srclang</code> attributes to both the caption (or subtitle) track, and to the descriptions track.  For example, to specify the English language, use <code class="highlighter-rouge">srclang="en"</code> on both elements.</p>
+
+<div class="cf-example" data-example-id="">
+<div data-cfw="player" data-cfw-player-transcript="0" data-cfw-player-media-describe="true" class="video-wrapper" role="region" aria-label="video player">
+    <div class="embed-fluid">
+        <video poster="/assets/video/niagara_falls.jpg" controls="">
+            <source src="/assets/video/niagara_falls.mp4" data-src-describe="/assets/video/niagara_falls-describe-en.mp4" />
+            <track src="/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" default="" />
+            <track src="/assets/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es" />
+            <track src="/assets/video/niagara_falls-describe-en.vtt" label="English Description" kind="descriptions" srclang="en" />
+            <track src="/assets/video/niagara_falls-describe-es.vtt" label="Descripción Espa&ntilde;ola" kind="descriptions" srclang="es" />
+        </video>
+    </div>
+    <div class="player-wrapper">
+        <div class="player" data-cfw-player="player">
+            <span class="player-control me-0_5" data-cfw-player="control">
+                <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
+            </span>
+            <span class="player-time me-0_5" data-cfw-player="time">
+                <span class="player-time-current" data-cfw-player="time-current"></span>
+                <span class="player-seek" data-cfw-player="seek">
+                	<label>Seek slider<input type="text" /></label>
+                </span>
+                <span class="player-time-duration" data-cfw-player="time-duration"></span>
+            </span>
+            <span class="player-describe me-0_25" data-cfw-player="description">
+                <button type="button" class="btn btn-default on active" title="Turn Off Audio Description" aria-label="Turn Off Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
+                <button type="button" class="btn btn-default off" title="Turn On Audio Description" aria-label="Turn On Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
+            </span>
+            <button type="button" class="btn btn-default me-0_25" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fa fa-fw fa-cc"></span></button>
+            <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="fa fa-fw fa-file-text-o"></span></button>
+        </div>
+    </div>
+</div>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-cfw=</span><span class="s">"player"</span> <span class="na">data-cfw-player-transcript=</span><span class="s">"0"</span> <span class="na">data-cfw-player-media-describe=</span><span class="s">"true"</span> <span class="na">class=</span><span class="s">"video-wrapper"</span> <span class="na">role=</span><span class="s">"region"</span> <span class="na">aria-label=</span><span class="s">"video player"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"embed-fluid"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;video</span> <span class="na">poster=</span><span class="s">"/assets/video/niagara_falls.jpg"</span> <span class="na">controls</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"/assets/video/niagara_falls.mp4"</span> <span class="na">data-src-describe=</span><span class="s">"/assets/video/niagara_falls-describe-en.mp4"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;track</span> <span class="na">src=</span><span class="s">"/assets/video/niagara_falls-en.vtt"</span> <span class="na">label=</span><span class="s">"English"</span> <span class="na">kind=</span><span class="s">"subtitles"</span> <span class="na">srclang=</span><span class="s">"en"</span> <span class="na">default</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;track</span> <span class="na">src=</span><span class="s">"/assets/video/niagara_falls-es.vtt"</span> <span class="na">label=</span><span class="s">"Espa&amp;ntilde;ol"</span> <span class="na">kind=</span><span class="s">"subtitles"</span> <span class="na">srclang=</span><span class="s">"es"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;track</span> <span class="na">src=</span><span class="s">"/assets/video/niagara_falls-describe-en.vtt"</span> <span class="na">label=</span><span class="s">"English Description"</span> <span class="na">kind=</span><span class="s">"descriptions"</span> <span class="na">srclang=</span><span class="s">"en"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;track</span> <span class="na">src=</span><span class="s">"/assets/video/niagara_falls-describe-es.vtt"</span> <span class="na">label=</span><span class="s">"Descripción Espa&amp;ntilde;ola"</span> <span class="na">kind=</span><span class="s">"descriptions"</span> <span class="na">srclang=</span><span class="s">"es"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/video&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"player-wrapper"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"player"</span> <span class="na">data-cfw-player=</span><span class="s">"player"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-control me-0_5"</span> <span class="na">data-cfw-player=</span><span class="s">"control"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="na">data-cfw-player=</span><span class="s">"play"</span> <span class="na">title=</span><span class="s">"Play"</span> <span class="na">aria-label=</span><span class="s">"Play"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-play"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="na">data-cfw-player=</span><span class="s">"pause"</span> <span class="na">title=</span><span class="s">"Pause"</span> <span class="na">aria-label=</span><span class="s">"Pause"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-pause"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-time me-0_5"</span> <span class="na">data-cfw-player=</span><span class="s">"time"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-time-current"</span> <span class="na">data-cfw-player=</span><span class="s">"time-current"</span><span class="nt">&gt;&lt;/span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-seek"</span> <span class="na">data-cfw-player=</span><span class="s">"seek"</span><span class="nt">&gt;</span>
+                	<span class="nt">&lt;label&gt;</span>Seek slider<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="nt">/&gt;&lt;/label&gt;</span>
+                <span class="nt">&lt;/span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-time-duration"</span> <span class="na">data-cfw-player=</span><span class="s">"time-duration"</span><span class="nt">&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-describe me-0_25"</span> <span class="na">data-cfw-player=</span><span class="s">"description"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default on active"</span> <span class="na">title=</span><span class="s">"Turn Off Audio Description"</span> <span class="na">aria-label=</span><span class="s">"Turn Off Audio Description"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-audio-description"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default off"</span> <span class="na">title=</span><span class="s">"Turn On Audio Description"</span> <span class="na">aria-label=</span><span class="s">"Turn On Audio Description"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-audio-description"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default me-0_25"</span> <span class="na">data-cfw-player=</span><span class="s">"caption"</span> <span class="na">title=</span><span class="s">"Closed Captions"</span> <span class="na">aria-label=</span><span class="s">"Closed Captions"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-cc"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="na">data-cfw-player=</span><span class="s">"transcript"</span> <span class="na">title=</span><span class="s">"Transcript"</span> <span class="na">aria-label=</span><span class="s">"Transcript"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-file-text-o"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<h3 id="custom-captions">Custom Captions</h3>
+
+<p>Take control over how captions are displayed by adding a container with a <code class="highlighter-rouge">data-cfw-player="caption-display"</code> attribute.  This will hide the default browser captions, and instead place the content in the designated container.</p>
+
+<div class="cf-example" data-example-id="">
+<div data-cfw="player" class="video-wrapper">
+    <div class="embed-fluid">
+        <video poster="/assets/video/niagara_falls.jpg" controls="">
+            <source src="/assets/video/niagara_falls.mp4" type="video/mp4" />
+            <track src="/assets/video/niagara_falls-en.vtt" label="English subtitles" kind="subtitles" srclang="en" default="" />
+            <track src="/assets/video/niagara_falls-es.vtt" label="Subt&iacute;tulos en espa&ntilde;ol" kind="subtitles" srclang="es" />
+            <p>HTML5 video not supported</p>
+        </video>
+        <div class="player-caption-display" data-cfw-player="caption-display"></div>
+    </div>
+    <div class="player-wrapper">
+        <div class="player me-0_5" role="region" aria-label="video player" data-cfw-player="player">
+            <span class="player-control " data-cfw-player="control">
+                <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
+                <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
+            </span>
+            <span class="player-time me-0_5" data-cfw-player="time">
+                <span class="player-time-current" data-cfw-player="time-current"></span>
+                <span class="player-seek" data-cfw-player="seek">
+                	<label>Seek slider<input type="text" /></label>
+                </span>
+                <span class="player-time-duration" data-cfw-player="time-duration"></span>
+            </span>
+            <button type="button" class="btn  me-0_25" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fa fa-fw fa-cc" aria-hidden="true"></span></button>
+            <span class="player-fullscreen" data-cfw-player="fullscreen">
+                <button type="button" class="btn player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
+                <button type="button" class="btn player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
+            </span>
+        </div>
+    </div>
+</div>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-cfw=</span><span class="s">"player"</span> <span class="na">class=</span><span class="s">"video-wrapper"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"embed-fluid"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;video</span> <span class="na">poster=</span><span class="s">"/assets/video/niagara_falls.jpg"</span> <span class="na">controls</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"/assets/video/niagara_falls.mp4"</span> <span class="na">type=</span><span class="s">"video/mp4"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;track</span> <span class="na">src=</span><span class="s">"/assets/video/niagara_falls-en.vtt"</span> <span class="na">label=</span><span class="s">"English subtitles"</span> <span class="na">kind=</span><span class="s">"subtitles"</span> <span class="na">srclang=</span><span class="s">"en"</span> <span class="na">default</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;track</span> <span class="na">src=</span><span class="s">"/assets/video/niagara_falls-es.vtt"</span> <span class="na">label=</span><span class="s">"Subt&amp;iacute;tulos en espa&amp;ntilde;ol"</span> <span class="na">kind=</span><span class="s">"subtitles"</span> <span class="na">srclang=</span><span class="s">"es"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;p&gt;</span>HTML5 video not supported<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;/video&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"player-caption-display"</span> <span class="na">data-cfw-player=</span><span class="s">"caption-display"</span><span class="nt">&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"player-wrapper"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"player me-0_5"</span> <span class="na">role=</span><span class="s">"region"</span> <span class="na">aria-label=</span><span class="s">"video player"</span> <span class="na">data-cfw-player=</span><span class="s">"player"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-control "</span> <span class="na">data-cfw-player=</span><span class="s">"control"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw-player=</span><span class="s">"play"</span> <span class="na">title=</span><span class="s">"Play"</span> <span class="na">aria-label=</span><span class="s">"Play"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-play"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw-player=</span><span class="s">"pause"</span> <span class="na">title=</span><span class="s">"Pause"</span> <span class="na">aria-label=</span><span class="s">"Pause"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-pause"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-time me-0_5"</span> <span class="na">data-cfw-player=</span><span class="s">"time"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-time-current"</span> <span class="na">data-cfw-player=</span><span class="s">"time-current"</span><span class="nt">&gt;&lt;/span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-seek"</span> <span class="na">data-cfw-player=</span><span class="s">"seek"</span><span class="nt">&gt;</span>
+                	<span class="nt">&lt;label&gt;</span>Seek slider<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="nt">/&gt;&lt;/label&gt;</span>
+                <span class="nt">&lt;/span&gt;</span>
+                <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-time-duration"</span> <span class="na">data-cfw-player=</span><span class="s">"time-duration"</span><span class="nt">&gt;&lt;/span&gt;</span>
+            <span class="nt">&lt;/span&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn  me-0_25"</span> <span class="na">data-cfw-player=</span><span class="s">"caption"</span> <span class="na">title=</span><span class="s">"Closed captions"</span> <span class="na">aria-label=</span><span class="s">"Closed captions"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-cc"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"player-fullscreen"</span> <span class="na">data-cfw-player=</span><span class="s">"fullscreen"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-fullscreen-on"</span> <span class="na">title=</span><span class="s">"Exit fullscreen"</span> <span class="na">aria-label=</span><span class="s">"Exit fullscreen"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-arrows-alt"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn player-fullscreen-off"</span> <span class="na">title=</span><span class="s">"Fullscreen"</span> <span class="na">aria-label=</span><span class="s">"Fullscreen"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"fa fa-fw fa-arrows-alt"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
+            <span class="nt">&lt;/span&gt;</span>
         <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
@@ -780,15 +1032,15 @@
         Play / pause
     </dd>
     <dt>
-        <kbd title="up arrow"><span class="fa fa-arrow-up"></span></kbd> /
-        <kbd title="down arrow"><span class="fa fa-arrow-down"></span></kbd>
+        <kbd title="up arrow" aria-label="up arrow"><span class="fa fa-arrow-up" aria-hidden="true"></span></kbd> /
+        <kbd title="down arrow" aria-label="down arrow"><span class="fa fa-arrow-down" aria-hidden="true"></span></kbd>
     </dt>
     <dd>
         Raise or lower the volume in 5% increments
     </dd>
     <dt>
-        <kbd title="left arrow"><span class="fa fa-arrow-left"></span></kbd> /
-        <kbd title="right arrow"><span class="fa fa-arrow-right"></span></kbd>
+        <kbd title="left arrow" aria-label="left arrow"><span class="fa fa-arrow-left" aria-hidden="true"></span></kbd> /
+        <kbd title="right arrow" aria-label="right arrow"><span class="fa fa-arrow-right" aria-hidden="true"></span></kbd>
     </dt>
     <dd>
         Skip backwards or forwards in the timeline by 5 seconds
@@ -831,111 +1083,124 @@
 
 <p>Regions and controls are specified by data attributes <code class="highlighter-rouge">data-cfw-player="name"</code> to seperate functionality from layout.  See the following table for the names:</p>
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 100px;">Name</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>player</td>
-            <td>The main player container element.</td>
-        </tr>
-        <tr>
-            <td>control</td>
-            <td>Wraps the play, pause, and stop control buttons.</td>
-        </tr>
-        <tr>
-            <td>play</td>
-            <td>Play control button.</td>
-        </tr>
-        <tr>
-            <td>pause</td>
-            <td>Pause control button.</td>
-        </tr>
-        <tr>
-            <td>stop</td>
-            <td>Stop control button.</td>
-        </tr>
-        <tr>
-            <td>time</td>
-            <td>Wraps the time displays and seek progress bar or slider.</td>
-        </tr>
-        <tr>
-            <td>current</td>
-            <td>Current time location.</td>
-        </tr>
-        <tr>
-            <td>remainder</td>
-            <td>Remaining playback time.</td>
-        </tr>
-        <tr>
-            <td>duration</td>
-            <td>Time playback duration.</td>
-        </tr>
-        <tr>
-            <td>seek</td>
-            <td>
-                <p>Container for the seek progress bar or slider.</p>
-                <p>If container has a class of <code>progress</code> a progress bar will be assumed. There must be a chlid <code>.progress-bar</code> element in order for the progress bar to display.  For example <code>&lt;span class="progress-bar" role="progressbar" data-cfw-player="seek-current"&gt;&lt;/span&gt;</code></p>
-                <p>If container has a child <code>input</code> element, then a slider will be used.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>seek-current</td>
-            <td>Used for seek progress bar to display current time location.</td>
-        </tr>
-        <tr>
-            <td>seek-buffer</td>
-            <td>Unused.</td>
-        </tr>
-        <tr>
-            <td>mute</td>
-            <td>Mute toggle button.</td>
-        </tr>
-        <tr>
-            <td>volume</td>
-            <td>
-                <p>Volume control.</p>
-                <p>If container has a child <code>input</code> element, then a slider will be inserted.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>loop</td>
-            <td>Loop toggle button.</td>
-        </tr>
-        <tr>
-            <td>caption</td>
-            <td>
-                <p>Caption menu toggle button. Currently only supported for <code>&lt;video&gt;</code> elements.</p>
-                <p>The menu is dynamically generated based on the <code>&lt;track&gt;</code> elements, and associated with the button automatically.</p>
-                <p>Only tracks with a <code>kind</code> property of <strong>captions</strong> or <strong>subtitles</strong> will be added to the menu.</p>
-                <p>If there is only one valid track, then the button will act as a toggle button and not display the menu when clicked.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>transcript</td>
-            <td>
-                <p>Transcript menu toggle button. Transcript text content is genereated from selected track item.</p>
-                <p>The menu is dynamically generated based on the <code>&lt;track&gt;</code> elements, and associated with the button automatically.</p>
-                <p>Only tracks with a <code>kind</code> property of <strong>captions</strong> or <strong>subtitles</strong> will be added to the menu.</p>
-                <p>If there is only one valid track, and the <code>transcriptOption</code> setting is false, then the button will act as a toggle button and not display the menu when clicked.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>fullscreen</td>
-            <td>Fullscreen toggle button. Currently only supported for <code>&lt;video&gt;</code> elements.</td>
-        </tr>
-    </tbody>
-    </table>
-    <p>
-        <small>Some mobile devices do not allow for mute or volume control, citing user should have preference through physical hardware controls.  Mostly this applies to iOS devices.</small>
-    </p>
-</div>
-<p><!-- /.table-responsive --></p>
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 100px;">Name</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>player</td>
+        <td>The main player container element.</td>
+    </tr>
+    <tr>
+        <td>control</td>
+        <td>Wraps the play, pause, and stop control buttons.</td>
+    </tr>
+    <tr>
+        <td>play</td>
+        <td>Play control button.</td>
+    </tr>
+    <tr>
+        <td>pause</td>
+        <td>Pause control button.</td>
+    </tr>
+    <tr>
+        <td>stop</td>
+        <td>Stop control button.</td>
+    </tr>
+    <tr>
+        <td>time</td>
+        <td>Wraps the time displays and seek progress bar or slider.</td>
+    </tr>
+    <tr>
+        <td>current</td>
+        <td>Current time location.</td>
+    </tr>
+    <tr>
+        <td>remainder</td>
+        <td>Remaining playback time.</td>
+    </tr>
+    <tr>
+        <td>duration</td>
+        <td>Time playback duration.</td>
+    </tr>
+    <tr>
+        <td>seek</td>
+        <td>
+            <p>Container for the seek progress bar or slider.</p>
+            <p>If container has a class of <code>progress</code> a progress bar will be assumed. There must be a chlid <code>.progress-bar</code> element in order for the progress bar to display.  For example <code>&lt;span class="progress-bar" role="progressbar" data-cfw-player="seek-current"&gt;&lt;/span&gt;</code></p>
+            <p>If container has a child <code>input</code> element, then a slider will be used.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>seek-current</td>
+        <td>Used for seek progress bar to display current time location.</td>
+    </tr>
+    <tr>
+        <td>seek-buffer</td>
+        <td>Unused.</td>
+    </tr>
+    <tr>
+        <td>mute</td>
+        <td>
+            <p>Mute toggle button.</p>
+            <p class="small mb-0">
+                Some mobile devices do not allow for mute or volume control, citing user should have preference through physical hardware controls.  Mostly this applies to iOS devices.
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>volume</td>
+        <td>
+            <p>Volume control.</p>
+            <p>If container has a child <code>input</code> element, then a slider will be inserted.</p>
+            <p class="small mb-0">
+                Some mobile devices do not allow for mute or volume control, citing user should have preference through physical hardware controls.  Mostly this applies to iOS devices.
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td>loop</td>
+        <td>Loop toggle button.</td>
+    </tr>
+    <tr>
+        <td>caption</td>
+        <td>
+            <p>Caption menu toggle button. Currently only supported for <code>&lt;video&gt;</code> elements.</p>
+            <p>The menu is dynamically generated based on the <code>&lt;track&gt;</code> elements, and associated with the button automatically.</p>
+            <p>Only tracks with a <code>kind</code> property of <strong>captions</strong> or <strong>subtitles</strong> will be added to the menu.</p>
+            <p>If there is only one valid track, then the button will act as a toggle button and not display the menu when clicked.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>caption-display</td>
+        <td>
+            <p>Container for custom styling of captions.</p>
+            <p>If this container is present, the default browser captions will be hidden. The currently active caption content will be displayed in this container, allowing for custom styling or placement of the captions.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>transcript</td>
+        <td>
+            <p>Transcript menu toggle button. Transcript text content is genereated from selected track item.</p>
+            <p>The menu is dynamically generated based on the <code>&lt;track&gt;</code> elements, and associated with the button automatically.</p>
+            <p>Only tracks with a <code>kind</code> property of <strong>captions</strong> or <strong>subtitles</strong> will be added to the menu.</p>
+            <p>If there is only one valid track, and the <code>transcriptOption</code> setting is false, then the button will act as a toggle button and not display the menu when clicked.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>description</td>
+        <td>Audio description toggle button.</td>
+    </tr>
+    <tr>
+        <td>fullscreen</td>
+        <td>Fullscreen toggle button. Currently only supported for <code>&lt;video&gt;</code> elements.</td>
+    </tr>
+</tbody>
+</table>
 
 <h3 id="via-data-attributes">Via Data Attributes</h3>
 
@@ -951,39 +1216,48 @@
 
 <p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code class="highlighter-rouge">data-cfw-player</code>, as in <code class="highlighter-rouge">data-cfw-player-transcript-scroll=true</code>.</p>
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 100px;">Name</th>
-            <th style="width: 50px;">Type</th>
-            <th style="width: 50px;">Default</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>transcript</td>
-            <td>integer</td>
-            <td>-1</td>
-            <td>Turn on the interactive transcript by default.  The integer value reflects the track count (starting from 0) for the desired <code>&lt;track&gt;</code> element to enable.  Default value is -1 which leaves the transcript turned off. Currently only tracks of type <strong>caption</strong> or <strong>subtitles</strong> are supported.</td>
-        </tr>
-        <tr>
-            <td>transcriptScroll</td>
-            <td>booelan</td>
-            <td>true</td>
-            <td>If the transcript should automatically scroll to keep the current caption in the visible area.</td>
-        </tr>
-        <tr>
-            <td>transcriptOption</td>
-            <td>booelan</td>
-            <td>true</td>
-            <td>If the transcript options should be shown in the transcript menu.</td>
-        </tr>
-    </tbody>
-    </table>
-</div>
-<p><!-- /.table-responsive --></p>
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>mediaDescribe</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Use the description media source.</td>
+    </tr>
+    <tr>
+        <td>transcript</td>
+        <td>integer</td>
+        <td>-1</td>
+        <td>Turn on the interactive transcript by default.  The integer value reflects the track count (starting from 0) for the desired <code>&lt;track&gt;</code> element to enable.  Default value is -1 which leaves the transcript turned off. Currently only tracks of type <strong>caption</strong> or <strong>subtitles</strong> are supported.</td>
+    </tr>
+    <tr>
+        <td>transcriptScroll</td>
+        <td>booelan</td>
+        <td>true</td>
+        <td>If the transcript should automatically scroll to keep the current caption in the visible area.</td>
+    </tr>
+    <tr>
+        <td>transcriptDescribe</td>
+        <td>booelan</td>
+        <td>true</td>
+        <td>If the transcript should show the matching <code>descriptions</code> track for the currently active transcript.</td>
+    </tr>
+    <tr>
+        <td>transcriptOption</td>
+        <td>booelan</td>
+        <td>true</td>
+        <td>If the transcript options should be shown in the transcript menu.</td>
+    </tr>
+</tbody>
+</table>
 
 <h3 id="methods">Methods</h3>
 
@@ -1035,77 +1309,89 @@
 
 <p>Change the transcript track.  <code class="highlighter-rouge">trackID</code> is the 0-indexed array of track items defined in the <code class="highlighter-rouge">&lt;video&gt;</code> element. Setting <code class="highlighter-rouge">trackID</code> to <code class="highlighter-rouge">-1</code> will turn off the transcript.</p>
 
+<h4 class="no_toc" id="cfw_playerfullscreen"><code class="highlighter-rouge">.CFW_Player('fullscreen')</code></h4>
+
+<p>Toggle the fullscreen mode of the player.</p>
+
+<h4 class="no_toc" id="cfw_playerdescription"><code class="highlighter-rouge">.CFW_Player('description')</code></h4>
+
+<p>Toggle the use of the audio description video source.</p>
+
+<h4 class="no_toc" id="cfw_playerdispose"><code class="highlighter-rouge">.CFW_Player('dispose')</code></h4>
+
+<p>Remove any associated transcript, sliders, dropdowns, data, and event listeners created by the player widget.</p>
+
 <h3 id="events">Events</h3>
 
 <p>Event callbacks happen on the <code class="highlighter-rouge">&lt;audio&gt;</code>/<code class="highlighter-rouge">&lt;video&gt;</code> element, but will bubble up through the DOM and can be captured on the <code class="highlighter-rouge">data-cfw="player"</code> wrapping container if needed.</p>
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 150px;">Event Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>noSupport.cfw.player</td>
-            <td>This event fires if it is determined the browser does not support HTML5 audio or the specified MIME type.</td>
-        </tr>
-        <tr>
-            <td>ready.cfw.player</td>
-            <td>This event fires after the player item is initialized.</td>
-        </tr>
-        <tr>
-            <td>error.cfw.player</td>
-            <td>This event fires when there is an error that cannot be handled.</td>
-        </tr>
-        <tr>
-            <td>beforeTranscriptShow.cfw.player</td>
-            <td>This event fires before the transcript is shown.</td>
-        </tr>
-        <tr>
-            <td>afterTranscriptShow.cfw.player</td>
-            <td>This event fires after the transcript is shown.</td>
-        </tr>
-        <tr>
-            <td>beforeTranscriptHide.cfw.player</td>
-            <td>This event fires before the transcript is hidden/disabled.</td>
-        </tr>
-        <tr>
-            <td>afterTranscriptHide.cfw.player</td>
-            <td>This event fires after the transcript is hidden/disabled.</td>
-        </tr>
-        <tr>
-            <td>enterFullscreen.cfw.player</td>
-            <td>This event fires after the player is put into fullscreen mode.</td>
-        </tr>
-        <tr>
-            <td>exitFullscreen.cfw.player</td>
-            <td>This event fires after the player exits fullscreen mode.</td>
-        </tr>
-    </tbody>
-    </table>
-</div>
-<p><!-- /.table-responsive --></p>
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 150px;">Event Type</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>noSupport.cfw.player</td>
+        <td>This event fires if it is determined the browser does not support HTML5 audio or the specified MIME type.</td>
+    </tr>
+    <tr>
+        <td>ready.cfw.player</td>
+        <td>This event fires after the player item is initialized.</td>
+    </tr>
+    <tr>
+        <td>error.cfw.player</td>
+        <td>This event fires when there is an error that cannot be handled.</td>
+    </tr>
+    <tr>
+        <td>beforeTranscriptShow.cfw.player</td>
+        <td>This event fires before the transcript is shown.</td>
+    </tr>
+    <tr>
+        <td>afterTranscriptShow.cfw.player</td>
+        <td>This event fires after the transcript is shown.</td>
+    </tr>
+    <tr>
+        <td>beforeTranscriptHide.cfw.player</td>
+        <td>This event fires before the transcript is hidden/disabled.</td>
+    </tr>
+    <tr>
+        <td>afterTranscriptHide.cfw.player</td>
+        <td>This event fires after the transcript is hidden/disabled.</td>
+    </tr>
+    <tr>
+        <td>enterFullscreen.cfw.player</td>
+        <td>This event fires after the player is put into fullscreen mode.</td>
+    </tr>
+    <tr>
+        <td>exitFullscreen.cfw.player</td>
+        <td>This event fires after the player exits fullscreen mode.</td>
+    </tr>
+</tbody>
+</table>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myPlayer'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'ready.cfw.player'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
   <span class="c1">// do something...</span>
 <span class="p">});</span></code></pre></figure>
 
 
-            </div>
+            </main>
         </div>
 
         <div class="topLink">
             <a href="#content">Top of Page <span class="caret"></span></a>
         </div>
-    </main>
+    </div>
 
     <footer class="cf-footer">
     <div class="container">
-        Current version: 2.0.0
-        <ul class="footer-links">
+        <p class="mb-0">
+            Current version: 3.0.0
+        </p>
+        <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
+            <li><a href="/about/overview/">About</a></li>
             <li><a href="https://github.com/cast-org/figuration">GitHub Project</a></li>
             <li><a href="https://github.com/cast-org/figuration/issues">Issues</a></li>
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
@@ -1113,7 +1399,7 @@
         <p>
             &copy; 2013-2017 <a href="http://www.cast.org">CAST, Inc.</a>
             <br />
-            Portions: &copy; 2011-2016 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
+            Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
             Code licensed <a rel="license" href="https://github.com/cast-org/figuration/blob/master/LICENSE">MIT</a>,
             docs <a rel="license" href="https://github.com/cast-org/figuration/blob/master/docs/LICENSE">CC BY 4.0</a>.
@@ -1121,9 +1407,9 @@
 
         <hr />
 
-        <strong>Funding generously provided by:</strong>
+        <p class="font-weight-bold mb-0_25">Funding generously provided by:</p>
         <div class="media footer-partners">
-            <div class="media-left">
+            <div class="d-flex me-0_5">
                 <img src="/assets/img/aem-logo.png" class="media-object" width="40" height="40" alt="AEM logo" />
             </div>
             <div class="media-body">
@@ -1136,15 +1422,23 @@
 </footer>
 
 
-<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
 <script>
 docsearch({
     apiKey: '3b9b6e000775400f4833a14c4daa6049',
     indexName: 'figuration',
-    inputSelector: '#docsearch'
+    inputSelector: '#docsearch',
+    transformData: function (hits) {
+      return hits.map(function (hit) {
+        hit.url = hit.url.replace('http://figuration.org', '');
+        return hit;
+      });
+    },
+    debug: true // Set debug to true if you want to inspect the dropdown
 });
 </script>
 
-
+    
 </body>
 </html>

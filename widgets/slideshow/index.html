@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta name="description" content="CAST Figuration - A feature rich, responsive, mobile first, accessible, front-end framework based on Bootstrap.">
+<meta name="description" content="CAST Figuration - A feature rich, responsive, mobile first, accessible, front-end framework.">
 
 <title>
   
@@ -19,22 +18,27 @@
 
 <!-- Core CSS -->
 
-  <link href="/dist/css/figuration.min.css" rel="stylesheet">
-
+  <link href="/dist/css/figuration.min.css" rel="stylesheet" id="cssCore">
 
 
 <!-- Algolia DocSearch CSS -->
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 
 <!-- Docs CSS -->
 
-  <link href="/assets/css/docs.min.css" rel="stylesheet">
+  <link href="/assets/css/docs.min.css" rel="stylesheet" id="cssDocs">
 
 
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
+
+<!-- MutationObserver Polyfill -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.24/MutationObserver.min.js" integrity="sha384-8HHYYRe45k4Xq40fi/cZaaby4FJgnOOVmnRzX3OWtwpfiUPfx7tnK2QkDPuIRGm0" crossorigin="anonymous"></script>
+
 
 <!-- Core JS -->
 
@@ -46,8 +50,7 @@
   <script src="/assets/js/docs.min.js"></script>
 
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- IE emulation mode warning -->
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
 <script>
@@ -63,57 +66,81 @@
 <body>
     <a class="skipnav" href="#content">Skip to main content</a>
 
-    <div class="bg-cyan-500 text-center font-weight-bold p-1">
-<a href="https://figuration-org.github.io/figuration-preview/" class="text-light">Figuration v3 Preview Available!</a>
-</div>
-<header class="navbar navbar-full navbar-dark cf-header">
-    <div class="container">
-        <nav>
-            <a class="navbar-brand" href="/">CAST Figuration</a>
-            <div class="hide-lg-up float-right">
-                <button class="navbar-toggler btn btn-toggler" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">
-                    <span class="icon-menu" aria-hidden="true">&#8801;</span>
-                </button>
-            </div>
-            
-            <div class="hide-xs-down float-right mt-0_25 mr-1 mr-lg-0">
-                <form class="form-inline docsearch-wrapper">
-                    <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
-                </form>
-            </div>
-            
-            <div class="collapse navbar-toggleable-md" id="cf-topnav">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item ">
-                        <a href="/get-started/quick-start/" class="nav-link">Get Started</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/layout/overview/" class="nav-link">Layout</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/content/reboot/" class="nav-link">Content</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/components/alerts/" class="nav-link">Components</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/utilities/borders/" class="nav-link">Utilities</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a href="/widgets/overview/" class="nav-link">Widgets</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/about/overview/" class="nav-link">About</a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </nav>
-    </div> <!-- /.container -->
+    <header class="navbar navbar-expand-lg navbar-dark print-hide cf-header">
+    <a class="navbar-brand" href="/" aria-label="CAST Figuration">
+        <img src="/assets/brand/figuration-outline.svg" class="navbar-brand-logo" alt="" />
+        <span class="sr-only-xs-down">CAST Figuration</span>
+    </a>
+    <button class="navbar-toggle flex-first me-0_5" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
+        <span class="cf-header-menu" aria-hidden="true">&#8801;</span>
+    </button>
+    <div class="navbar-collapse collapse flex-last flex-lg-unordered flex-lg-shrink text-nowrap" id="cf-topnav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/get-started/quick-start/" class="nav-link ">Get Started</a>
+            </li>
+            <li class="nav-item">
+                <a href="/layout/overview/" class="nav-link ">Layout</a>
+            </li>
+            <li class="nav-item">
+                <a href="/content/reboot/" class="nav-link ">Content</a>
+            </li>
+            <li class="nav-item">
+                <a href="/components/alerts/" class="nav-link ">Components</a>
+            </li>
+            <li class="nav-item">
+                <a href="/utilities/borders/" class="nav-link ">Utilities</a>
+            </li>
+            <li class="nav-item">
+                <a href="/widgets/overview/" class="nav-link active">Widgets <span class="sr-only">(current section)</span></a>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="navbar-nav ms-auto cf-header-social">
+        <li class="nav-item">
+            <a href="https://twitter.com/figuration_org" class="nav-link" aria-label="Twitter" title="Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" focusable="false"  class="cf-header-icon"  >
+  <title>Twitter</title>
+  <path fill="currentColor" d="M512 97.2c-18.84 8.36-39.08 14-60.33 16.55 21.7-13 38.34-33.58 46.2-58.1-20.3 12.03-42.8 20.77-66.72 25.48C412 60.7 384.7 47.96 354.48 47.96c-58 0-105.04 47.03-105.04 105.03 0 8.23.93 16.25 2.72 23.93-87.3-4.38-164.7-46.2-216.5-109.75-9.05 15.5-14.24 33.56-14.24 52.8 0 36.45 18.55 68.6 46.73 87.44-17.2-.54-33.4-5.27-47.57-13.14v1.32c0 50.9 36.2 93.35 84.25 103-8.8 2.4-18.1 3.7-27.68 3.7-6.76 0-13.34-.67-19.76-1.9 13.36 41.73 52.15 72.1 98.12 72.95-35.95 28.18-81.25 44.97-130.46 44.97-8.48 0-16.84-.5-25.06-1.47 46.5 29.8 101.7 47.2 161.02 47.2 193.2 0 298.87-160.07 298.87-298.88 0-4.55-.1-9.08-.32-13.6 20.53-14.8 38.34-33.3 52.42-54.36z"/>
+</svg>
+
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="https://github.com/cast-org/figuration" class="nav-link" aria-label="Github" title="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false"  class="cf-header-icon"  >
+  <title>GitHub</title>
+  <path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.3 6.53 5.47 7.6.4.06.55-.18.55-.4v-1.48c-2.02.37-2.54-.5-2.7-.94-.1-.23-.48-.94-.82-1.13-.28-.15-.68-.52 0-.53.62 0 1.07.58 1.22.82.72 1.2 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.77-.2-3.63-.9-3.63-3.95 0-.87.3-1.6.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.2 2.2.83.64-.18 1.32-.27 2-.27.68 0 1.36.1 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.93.08 2.13.5.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.3.25.54.73.54 1.48v2.2c0 .22.15.47.55.4C13.7 14.52 16 11.52 16 8c0-4.42-3.58-8-8-8z"/>
+</svg>
+
+            </a>
+        </li>
+        <li class="nav-item dropdown dropdown-menu-reverse">
+            <a href="#" role="button" class="nav-link" aria-label="Settings" title="Settings" data-cfw="dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" focusable="false"  class="cf-header-icon"  >
+  <title>Settings</title>
+  <path fill="currentColor" d="M3.5 0l-.5 1.19c-.1.03-.19.08-.28.13l-1.19-.5-.72.72.5 1.19c-.05.1-.09.18-.13.28l-1.19.5v1l1.19.5c.04.1.08.18.13.28l-.5 1.19.72.72 1.19-.5c.09.04.18.09.28.13l.5 1.19h1l.5-1.19c.09-.04.19-.08.28-.13l1.19.5.72-.72-.5-1.19c.04-.09.09-.19.13-.28l1.19-.5v-1l-1.19-.5c-.03-.09-.08-.19-.13-.28l.5-1.19-.72-.72-1.19.5c-.09-.04-.19-.09-.28-.13l-.5-1.19h-1zm.5 2.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z"/>
+</svg>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">Direction</li>
+                <li><button type="button" class="dropdown-item" id="dir-ltr">Left-to-right</button></li>
+                <li><button type="button" class="dropdown-item" id="dir-rtl">Right-to-left</button></li>
+            </ul>
+        </li>
+        
+        <li class="nav-item">
+            <form class="form-inline docsearch-wrapper">
+                <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
+            </form>
+        </li>
+        
+    </ul>
 </header>
 
     <div class="jumbotron jumbotron-full jumbotron-docs">
-        <div class="container">
+        <div class="container-fluid">
             
     <div class="h1">Widgets</div>
     <p class="lead">
@@ -124,9 +151,9 @@
         </div>
     </div>
 
-    <main class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-3 cf-sidebar">
+            <div class="col-12 col-md-3 col-xl-2 cf-sidebar">
                 <nav class="cf-links">
 
 
@@ -159,204 +186,222 @@
   
 
   
-    <div class="h4">Widgets</div>
-    <ul class="nav">
+    <div class="h4 cf-sidebar-header">Widgets</div>
+    <ul class="nav flex-column">
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/overview/" class="nav-link ">
-            Overview
+            Overview 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/accordion/" class="nav-link ">
-            Accordion
+            Accordion 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/affix/" class="nav-link ">
-            Affix
+            Affix 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/alert/" class="nav-link ">
-            Alert
+            Alert 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/button/" class="nav-link ">
-            Button
+            Button 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/collapse/" class="nav-link ">
-            Collapse
+            Collapse 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/drag/" class="nav-link ">
-            Drag
+            Drag 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/dropdown/" class="nav-link ">
-            Dropdown
+            Dropdown 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/equalize/" class="nav-link ">
-            Equalize
+            Equalize 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/lazy/" class="nav-link ">
-            Lazy
+            Lazy 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/modal/" class="nav-link ">
-            Modal
+            Modal 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/player/" class="nav-link ">
-            Player
+            Player 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/popover/" class="nav-link ">
-            Popover
+            Popover 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/scrollspy/" class="nav-link ">
-            Scrollspy
+            Scrollspy 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/slider/" class="nav-link ">
-            Slider
+            Slider 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/slideshow/" class="nav-link active">
-            Slideshow
+            Slideshow <span class="sr-only">(current page)</span>
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/tab/" class="nav-link ">
-            Tab
+            Tab 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/tab-responsive/" class="nav-link ">
-            Tab-Responsive
+            Tab-Responsive 
           </a>
         </li>
       
@@ -364,10 +409,11 @@
 
         
         
+        
 
         <li class="nav-item">
           <a href="/widgets/tooltip/" class="nav-link ">
-            Tooltip
+            Tooltip 
           </a>
         </li>
       
@@ -382,7 +428,11 @@
 </nav>
 
             </div>
-            <div class="col-12 col-md-9 cf-content">
+
+            <div class="d-none d-xl-block col-xl-2 cf-toc">
+            </div>
+
+            <main class="col-12 col-md-9 col-xl-8 cf-content" role="main">
                 <h1 class="cf-title" id="content">
                     Slideshow
                     
@@ -393,7 +443,7 @@
                 <p>A simple widget that extends on the <a href="/widgets/tab/">Tab widget</a> to add previous and next navigation items that update their disabled state based on the currently active tab/slide.</p>
 
 <div class="cf-callout cf-callout-info cf-callout-dep">
-<h4 id="widget-dependencies">Widget Dependencies</h4>
+<p class="h5">Widget Dependencies</p>
 
 <p>Sideshow requires the following:</p>
 
@@ -405,65 +455,283 @@
 <h2 class="no_toc" id="contents">Contents</h2>
 
 <ul id="markdown-toc">
-  <li><a href="#example" id="markdown-toc-example">Example</a></li>
+  <li><a href="#examples" id="markdown-toc-examples">Examples</a>    <ul>
+      <li><a href="#using-tabs" id="markdown-toc-using-tabs">Using Tabs</a></li>
+      <li><a href="#using-pills" id="markdown-toc-using-pills">Using Pills</a></li>
+      <li><a href="#using-pagination" id="markdown-toc-using-pagination">Using Pagination</a></li>
+      <li><a href="#disabled-tabs" id="markdown-toc-disabled-tabs">Disabled Tabs</a></li>
+      <li><a href="#looping" id="markdown-toc-looping">Looping</a></li>
+    </ul>
+  </li>
   <li><a href="#usage" id="markdown-toc-usage">Usage</a>    <ul>
       <li><a href="#via-data-attributes" id="markdown-toc-via-data-attributes">Via Data Attributes</a></li>
       <li><a href="#via-javascript" id="markdown-toc-via-javascript">Via JavaScript</a></li>
       <li><a href="#navigation-triggers" id="markdown-toc-navigation-triggers">Navigation Triggers</a></li>
       <li><a href="#methods" id="markdown-toc-methods">Methods</a></li>
+      <li><a href="#options" id="markdown-toc-options">Options</a></li>
       <li><a href="#events" id="markdown-toc-events">Events</a></li>
     </ul>
   </li>
 </ul>
 
-<h2 id="example">Example</h2>
+<h2 id="examples">Examples</h2>
 
-<p>This example uses the <a href="/components/pagination/">pagination componenent</a>, but it will also work with <a href="/components/navs/#tabs">tab</a> or <a href="/components/navs/#pills">pill</a> style navigation.</p>
+<h3 id="using-tabs">Using Tabs</h3>
+
+<p>The slideshow works well with <a href="/components/navs/#tabs">tab navigation</a>.</p>
+
+<div class="cf-example">
+    <ul class="nav nav-tabs" data-cfw="slideshow">
+        <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
+        <li class="nav-item"><a href="#tab-slide0" class="nav-link" data-cfw="tab">Slide 1</a></li>
+        <li class="nav-item"><a href="#tab-slide1" class="nav-link" data-cfw="tab">Slide 2</a></li>
+        <li class="nav-item"><a href="#tab-slide2" class="nav-link" data-cfw="tab">Slide 3</a></li>
+        <li class="nav-item"><a href="#tab-slide3" class="nav-link" data-cfw="tab">Slide 4</a></li>
+        <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" id="tab-slide0">
+            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+        <div class="tab-pane" id="tab-slide1">
+            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit.</p>
+        </div>
+        <div class="tab-pane" id="tab-slide2">
+            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+        </div>
+        <div class="tab-pane" id="tab-slide3">
+            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+        </div>
+    </div>
+</div>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span> <span class="na">data-cfw=</span><span class="s">"slideshow"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-cfw-slideshow-nav=</span><span class="s">"prev"</span> <span class="na">title=</span><span class="s">"Previous Slide"</span> <span class="na">aria-label=</span><span class="s">"Previous Slide"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;laquo;</span><span class="nt">&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#tab-slide0"</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#tab-slide1"</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#tab-slide2"</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 3<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#tab-slide3"</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 4<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-cfw-slideshow-nav=</span><span class="s">"next"</span> <span class="na">title=</span><span class="s">"Next Slide"</span> <span class="na">aria-label=</span><span class="s">"Next Slide"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;raquo;</span><span class="nt">&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"tab-slide0"</span><span class="nt">&gt;</span>
+        ...
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"tab-slide1"</span><span class="nt">&gt;</span>
+        ...
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"tab-slide2"</span><span class="nt">&gt;</span>
+        ...
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"tab-slide3"</span><span class="nt">&gt;</span>
+        ...
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<h3 id="using-pills">Using Pills</h3>
+
+<p>The slideshow also works with <a href="/components/navs/#pills">pill navigation</a>.</p>
+
+<div class="cf-example">
+    <nav class="nav nav-pills" data-cfw="slideshow">
+        <a href="#" class="nav-item nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a>
+        <a href="#pill-slide0" class="nav-item nav-link" data-cfw="tab">Slide 1</a>
+        <a href="#pill-slide1" class="nav-item nav-link" data-cfw="tab">Slide 2</a>
+        <a href="#pill-slide2" class="nav-item nav-link" data-cfw="tab">Slide 3</a>
+        <a href="#pill-slide3" class="nav-item nav-link" data-cfw="tab">Slide 4</a>
+        <a href="#" class="nav-item nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a>
+    </nav>
+    <div class="tab-content">
+        <div class="tab-pane" id="pill-slide0">
+            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+        <div class="tab-pane" id="pill-slide1">
+            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit.</p>
+        </div>
+        <div class="tab-pane" id="pill-slide2">
+            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+        </div>
+        <div class="tab-pane" id="pill-slide3">
+            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+        </div>
+    </div>
+</div>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"nav nav-pills"</span> <span class="na">data-cfw=</span><span class="s">"slideshow"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">data-cfw-slideshow-nav=</span><span class="s">"prev"</span> <span class="na">title=</span><span class="s">"Previous Slide"</span> <span class="na">aria-label=</span><span class="s">"Previous Slide"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;laquo;</span><span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#pill-slide0"</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 1<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#pill-slide1"</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 2<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#pill-slide2"</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 3<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#pill-slide3"</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 4<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">data-cfw-slideshow-nav=</span><span class="s">"next"</span> <span class="na">title=</span><span class="s">"Next Slide"</span> <span class="na">aria-label=</span><span class="s">"Next Slide"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;raquo;</span><span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+<span class="nt">&lt;/nav&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"pill-slide0"</span><span class="nt">&gt;</span>
+        ...
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"pill-slide1"</span><span class="nt">&gt;</span>
+        ...
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"pill-slide2"</span><span class="nt">&gt;</span>
+        ...
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"pill-slide3"</span><span class="nt">&gt;</span>
+        ...
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<h3 id="using-pagination">Using Pagination</h3>
+
+<p>You can even use the <a href="/components/pagination/">pagination componenent</a>.</p>
 
 <div class="cf-example">
     <ul class="pagination" data-cfw="slideshow">
         <li class="page-item"><a href="#" class="page-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
-        <li class="page-item"><a href="#slide0" class="page-link" data-cfw="tab">Slide 1</a></li>
-        <li class="page-item"><a href="#slide1" class="page-link" data-cfw="tab">Slide 2</a></li>
-        <li class="page-item"><a href="#slide2" class="page-link" data-cfw="tab">Slide 3</a></li>
-        <li class="page-item"><a href="#slide3" class="page-link" data-cfw="tab">Slide 4</a></li>
+        <li class="page-item"><a href="#page-slide0" class="page-link" data-cfw="tab">Slide 1</a></li>
+        <li class="page-item"><a href="#page-slide1" class="page-link" data-cfw="tab">Slide 2</a></li>
+        <li class="page-item"><a href="#page-slide2" class="page-link" data-cfw="tab">Slide 3</a></li>
+        <li class="page-item"><a href="#page-slide3" class="page-link" data-cfw="tab">Slide 4</a></li>
         <li class="page-item"><a href="#" class="page-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" id="slide0">
+        <div class="tab-pane" id="page-slide0">
             <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
         </div>
-        <div class="tab-pane" id="slide1">
-            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+        <div class="tab-pane" id="page-slide1">
+            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit.</p>
         </div>
-        <div class="tab-pane" id="slide2">
+        <div class="tab-pane" id="page-slide2">
             <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
         </div>
-        <div class="tab-pane" id="slide3">
+        <div class="tab-pane" id="page-slide3">
             <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
         </div>
     </div>
 </div>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"pagination"</span> <span class="na">data-cfw=</span><span class="s">"slideshow"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">data-cfw-slideshow-nav=</span><span class="s">"prev"</span> <span class="na">title=</span><span class="s">"Previous Slide"</span> <span class="na">aria-label=</span><span class="s">"Previous Slide"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;laquo;</span><span class="nt">&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#slide0"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#slide1"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#slide2"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 3<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#slide3"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 4<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">data-cfw-slideshow-nav=</span><span class="s">"next"</span> <span class="na">title=</span><span class="s">"Next Slide"</span> <span class="na">aria-label=</span><span class="s">"Next Slide"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;raquo;</span><span class="nt">&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"page-link"</span> <span class="na">data-cfw-slideshow-nav=</span><span class="s">"prev"</span> <span class="na">title=</span><span class="s">"Previous Slide"</span> <span class="na">aria-label=</span><span class="s">"Previous Slide"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;laquo;</span><span class="nt">&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#page-slide0"</span> <span class="na">class=</span><span class="s">"page-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#page-slide1"</span> <span class="na">class=</span><span class="s">"page-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#page-slide2"</span> <span class="na">class=</span><span class="s">"page-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 3<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#page-slide3"</span> <span class="na">class=</span><span class="s">"page-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 4<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"page-link"</span> <span class="na">data-cfw-slideshow-nav=</span><span class="s">"next"</span> <span class="na">title=</span><span class="s">"Next Slide"</span> <span class="na">aria-label=</span><span class="s">"Next Slide"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;raquo;</span><span class="nt">&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"slide0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"page-slide0"</span><span class="nt">&gt;</span>
         ...
     <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"slide1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"page-slide1"</span><span class="nt">&gt;</span>
         ...
     <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"slide2"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"page-slide2"</span><span class="nt">&gt;</span>
         ...
     <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"slide3"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"page-slide3"</span><span class="nt">&gt;</span>
+        ...
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<h3 id="disabled-tabs">Disabled Tabs</h3>
+
+<p>If there is a tab that is disabled, the previous and next navigation items will skip over the disabled item.</p>
+
+<div class="cf-example">
+    <ul class="nav nav-tabs" data-cfw="slideshow">
+        <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
+        <li class="nav-item"><a href="#ex-slide0" class="nav-link" data-cfw="tab">Slide 1</a></li>
+        <li class="nav-item"><a href="#ex-slide1" class="nav-link disabled" data-cfw="tab">Slide 2</a></li>
+        <li class="nav-item"><a href="#ex-slide2" class="nav-link" data-cfw="tab">Slide 3</a></li>
+        <li class="nav-item"><a href="#ex-slide3" class="nav-link" data-cfw="tab">Slide 4</a></li>
+        <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" id="ex-slide0">
+            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+        <div class="tab-pane" id="ex-slide1">
+            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit.</p>
+        </div>
+        <div class="tab-pane" id="ex-slide2">
+            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+        </div>
+        <div class="tab-pane" id="ex-slide3">
+            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+        </div>
+    </div>
+</div>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span> <span class="na">data-cfw=</span><span class="s">"slideshow"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-cfw-slideshow-nav=</span><span class="s">"prev"</span> <span class="na">title=</span><span class="s">"Previous Slide"</span> <span class="na">aria-label=</span><span class="s">"Previous Slide"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;laquo;</span><span class="nt">&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#ex-slide0"</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#ex-slide1"</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#ex-slide2"</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 3<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#ex-slide3"</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 4<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-cfw-slideshow-nav=</span><span class="s">"next"</span> <span class="na">title=</span><span class="s">"Next Slide"</span> <span class="na">aria-label=</span><span class="s">"Next Slide"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;raquo;</span><span class="nt">&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"ex-slide0"</span><span class="nt">&gt;</span>
+        ...
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"ex-slide1"</span><span class="nt">&gt;</span>
+        ...
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"ex-slide2"</span><span class="nt">&gt;</span>
+        ...
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"ex-slide3"</span><span class="nt">&gt;</span>
+        ...
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<h3 id="looping">Looping</h3>
+
+<p>By default the previous or next navigation controls become disabled when the first or last slide, respectively, is active.  Use the <code class="highlighter-rouge">loop</code> option to override this behaviour and allow users to loop around the ends of the slidehow.</p>
+
+<div class="cf-example">
+    <ul class="nav nav-tabs" data-cfw="slideshow" data-cfw-slideshow-loop="true">
+        <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a></li>
+        <li class="nav-item"><a href="#loop-slide0" class="nav-link" data-cfw="tab">Slide 1</a></li>
+        <li class="nav-item"><a href="#loop-slide1" class="nav-link" data-cfw="tab">Slide 2</a></li>
+        <li class="nav-item"><a href="#loop-slide2" class="nav-link" data-cfw="tab">Slide 3</a></li>
+        <li class="nav-item"><a href="#loop-slide3" class="nav-link" data-cfw="tab">Slide 4</a></li>
+        <li class="nav-item"><a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" id="loop-slide0">
+            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+        <div class="tab-pane" id="loop-slide1">
+            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit.</p>
+        </div>
+        <div class="tab-pane" id="loop-slide2">
+            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+        </div>
+        <div class="tab-pane" id="loop-slide3">
+            <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+        </div>
+    </div>
+</div>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span> <span class="na">data-cfw=</span><span class="s">"slideshow"</span> <span class="na">data-cfw-slideshow-loop=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-cfw-slideshow-nav=</span><span class="s">"prev"</span> <span class="na">title=</span><span class="s">"Previous Slide"</span> <span class="na">aria-label=</span><span class="s">"Previous Slide"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;laquo;</span><span class="nt">&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#loop-slide0"</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#loop-slide1"</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#loop-slide2"</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 3<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#loop-slide3"</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-cfw=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Slide 4<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-cfw-slideshow-nav=</span><span class="s">"next"</span> <span class="na">title=</span><span class="s">"Next Slide"</span> <span class="na">aria-label=</span><span class="s">"Next Slide"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;raquo;</span><span class="nt">&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"loop-slide0"</span><span class="nt">&gt;</span>
+        ...
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"loop-slide1"</span><span class="nt">&gt;</span>
+        ...
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"loop-slide2"</span><span class="nt">&gt;</span>
+        ...
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"loop-slide3"</span><span class="nt">&gt;</span>
         ...
     <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
@@ -511,50 +779,85 @@
 
 <p>Shows the next slide, unless the last slide is current.</p>
 
+<h4 class="no_toc" id="cfw_slideshowupdate"><code class="highlighter-rouge">.CFW_Slideshow('update')</code></h4>
+
+<p>Update the state of the navigation controls. Useful if there is a change to the tabs.</p>
+
+<h4 class="no_toc" id="cfw_slideshowdispose"><code class="highlighter-rouge">.CFW_Slideshow('dispose')</code></h4>
+
+<p>Disable the slideshow navigation controls and listeners.  This will leave the tab widget controls active.</p>
+
+<h3 id="options">Options</h3>
+
+<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code class="highlighter-rouge">data-cfw-slideshow</code>, as in <code class="highlighter-rouge">data-cfw-slideshow-loop="false"</code>.</p>
+
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>loop</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Enable looping from the last slide to the first slide, and vice versa.</td>
+    </tr>
+</tbody>
+</table>
+
 <h3 id="events">Events</h3>
 
 <p>Event callbacks happen on the slideshow element.</p>
 
 <p>You can also get the tab events as indicated in the <a href="/widgets/tab/">Tab widget</a> due to event bubbling.</p>
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 150px;">Event Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>init.cfw.slideshow</td>
-            <td>This event fires after the slideshow item is initialized.</td>
-        </tr>
-        <tr>
-            <td>prev.cfw.slideshow</td>
-            <td>This event fires before the call to activate the previous slide.</td>
-        </tr>
-        <tr>
-            <td>next.cfw.slideshow</td>
-            <td>This event fires before the call to activate the next slide.</td>
-        </tr>
-    </tbody>
-    </table>
-</div>
-<p><!-- /.table-responsive --></p>
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 150px;">Event Type</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>init.cfw.slideshow</td>
+        <td>This event fires after the slideshow item is initialized.</td>
+    </tr>
+    <tr>
+        <td>prev.cfw.slideshow</td>
+        <td>This event fires before the call to activate the previous slide.</td>
+    </tr>
+    <tr>
+        <td>next.cfw.slideshow</td>
+        <td>This event fires before the call to activate the next slide.</td>
+    </tr>
+    <tr>
+        <td>update.cfw.slideshow</td>
+        <td>This event fires after the state of the navigation controls is updated.</td>
+    </tr>
+</tbody>
+</table>
 
-            </div>
+            </main>
         </div>
 
         <div class="topLink">
             <a href="#content">Top of Page <span class="caret"></span></a>
         </div>
-    </main>
+    </div>
 
     <footer class="cf-footer">
     <div class="container">
-        Current version: 2.0.0
-        <ul class="footer-links">
+        <p class="mb-0">
+            Current version: 3.0.0
+        </p>
+        <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
+            <li><a href="/about/overview/">About</a></li>
             <li><a href="https://github.com/cast-org/figuration">GitHub Project</a></li>
             <li><a href="https://github.com/cast-org/figuration/issues">Issues</a></li>
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
@@ -562,7 +865,7 @@
         <p>
             &copy; 2013-2017 <a href="http://www.cast.org">CAST, Inc.</a>
             <br />
-            Portions: &copy; 2011-2016 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
+            Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
             Code licensed <a rel="license" href="https://github.com/cast-org/figuration/blob/master/LICENSE">MIT</a>,
             docs <a rel="license" href="https://github.com/cast-org/figuration/blob/master/docs/LICENSE">CC BY 4.0</a>.
@@ -570,9 +873,9 @@
 
         <hr />
 
-        <strong>Funding generously provided by:</strong>
+        <p class="font-weight-bold mb-0_25">Funding generously provided by:</p>
         <div class="media footer-partners">
-            <div class="media-left">
+            <div class="d-flex me-0_5">
                 <img src="/assets/img/aem-logo.png" class="media-object" width="40" height="40" alt="AEM logo" />
             </div>
             <div class="media-body">
@@ -585,15 +888,23 @@
 </footer>
 
 
-<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
 <script>
 docsearch({
     apiKey: '3b9b6e000775400f4833a14c4daa6049',
     indexName: 'figuration',
-    inputSelector: '#docsearch'
+    inputSelector: '#docsearch',
+    transformData: function (hits) {
+      return hits.map(function (hit) {
+        hit.url = hit.url.replace('http://figuration.org', '');
+        return hit;
+      });
+    },
+    debug: true // Set debug to true if you want to inspect the dropdown
 });
 </script>
 
-
+    
 </body>
 </html>

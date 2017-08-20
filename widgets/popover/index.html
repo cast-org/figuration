@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<meta name="description" content="CAST Figuration - A feature rich, responsive, mobile first, accessible, front-end framework based on Bootstrap.">
+<meta name="description" content="CAST Figuration - A feature rich, responsive, mobile first, accessible, front-end framework.">
 
 <title>
   
@@ -19,22 +18,27 @@
 
 <!-- Core CSS -->
 
-  <link href="/dist/css/figuration.min.css" rel="stylesheet">
-
+  <link href="/dist/css/figuration.min.css" rel="stylesheet" id="cssCore">
 
 
 <!-- Algolia DocSearch CSS -->
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
 
 
 <!-- Docs CSS -->
 
-  <link href="/assets/css/docs.min.css" rel="stylesheet">
+  <link href="/assets/css/docs.min.css" rel="stylesheet" id="cssDocs">
 
 
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery.min.js"><\/script>')</script>
+
+<!-- MutationObserver Polyfill -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.24/MutationObserver.min.js" integrity="sha384-8HHYYRe45k4Xq40fi/cZaaby4FJgnOOVmnRzX3OWtwpfiUPfx7tnK2QkDPuIRGm0" crossorigin="anonymous"></script>
+
 
 <!-- Core JS -->
 
@@ -46,8 +50,7 @@
   <script src="/assets/js/docs.min.js"></script>
 
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- IE emulation mode warning -->
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
 <script>
@@ -63,57 +66,81 @@
 <body>
     <a class="skipnav" href="#content">Skip to main content</a>
 
-    <div class="bg-cyan-500 text-center font-weight-bold p-1">
-<a href="https://figuration-org.github.io/figuration-preview/" class="text-light">Figuration v3 Preview Available!</a>
-</div>
-<header class="navbar navbar-full navbar-dark cf-header">
-    <div class="container">
-        <nav>
-            <a class="navbar-brand" href="/">CAST Figuration</a>
-            <div class="hide-lg-up float-right">
-                <button class="navbar-toggler btn btn-toggler" type="button" data-cfw="collapse" data-cfw-collapse-toggle="#cf-topnav" data-cfw-collapse-hidden="false" aria-label="Toggle navigation">
-                    <span class="icon-menu" aria-hidden="true">&#8801;</span>
-                </button>
-            </div>
-            
-            <div class="hide-xs-down float-right mt-0_25 mr-1 mr-lg-0">
-                <form class="form-inline docsearch-wrapper">
-                    <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
-                </form>
-            </div>
-            
-            <div class="collapse navbar-toggleable-md" id="cf-topnav">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item ">
-                        <a href="/get-started/quick-start/" class="nav-link">Get Started</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/layout/overview/" class="nav-link">Layout</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/content/reboot/" class="nav-link">Content</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/components/alerts/" class="nav-link">Components</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/utilities/borders/" class="nav-link">Utilities</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a href="/widgets/overview/" class="nav-link">Widgets</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="/about/overview/" class="nav-link">About</a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </nav>
-    </div> <!-- /.container -->
+    <header class="navbar navbar-expand-lg navbar-dark print-hide cf-header">
+    <a class="navbar-brand" href="/" aria-label="CAST Figuration">
+        <img src="/assets/brand/figuration-outline.svg" class="navbar-brand-logo" alt="" />
+        <span class="sr-only-xs-down">CAST Figuration</span>
+    </a>
+    <button class="navbar-toggle flex-first me-0_5" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
+        <span class="cf-header-menu" aria-hidden="true">&#8801;</span>
+    </button>
+    <div class="navbar-collapse collapse flex-last flex-lg-unordered flex-lg-shrink text-nowrap" id="cf-topnav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="/get-started/quick-start/" class="nav-link ">Get Started</a>
+            </li>
+            <li class="nav-item">
+                <a href="/layout/overview/" class="nav-link ">Layout</a>
+            </li>
+            <li class="nav-item">
+                <a href="/content/reboot/" class="nav-link ">Content</a>
+            </li>
+            <li class="nav-item">
+                <a href="/components/alerts/" class="nav-link ">Components</a>
+            </li>
+            <li class="nav-item">
+                <a href="/utilities/borders/" class="nav-link ">Utilities</a>
+            </li>
+            <li class="nav-item">
+                <a href="/widgets/overview/" class="nav-link active">Widgets <span class="sr-only">(current section)</span></a>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="navbar-nav ms-auto cf-header-social">
+        <li class="nav-item">
+            <a href="https://twitter.com/figuration_org" class="nav-link" aria-label="Twitter" title="Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" focusable="false"  class="cf-header-icon"  >
+  <title>Twitter</title>
+  <path fill="currentColor" d="M512 97.2c-18.84 8.36-39.08 14-60.33 16.55 21.7-13 38.34-33.58 46.2-58.1-20.3 12.03-42.8 20.77-66.72 25.48C412 60.7 384.7 47.96 354.48 47.96c-58 0-105.04 47.03-105.04 105.03 0 8.23.93 16.25 2.72 23.93-87.3-4.38-164.7-46.2-216.5-109.75-9.05 15.5-14.24 33.56-14.24 52.8 0 36.45 18.55 68.6 46.73 87.44-17.2-.54-33.4-5.27-47.57-13.14v1.32c0 50.9 36.2 93.35 84.25 103-8.8 2.4-18.1 3.7-27.68 3.7-6.76 0-13.34-.67-19.76-1.9 13.36 41.73 52.15 72.1 98.12 72.95-35.95 28.18-81.25 44.97-130.46 44.97-8.48 0-16.84-.5-25.06-1.47 46.5 29.8 101.7 47.2 161.02 47.2 193.2 0 298.87-160.07 298.87-298.88 0-4.55-.1-9.08-.32-13.6 20.53-14.8 38.34-33.3 52.42-54.36z"/>
+</svg>
+
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="https://github.com/cast-org/figuration" class="nav-link" aria-label="Github" title="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false"  class="cf-header-icon"  >
+  <title>GitHub</title>
+  <path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.3 6.53 5.47 7.6.4.06.55-.18.55-.4v-1.48c-2.02.37-2.54-.5-2.7-.94-.1-.23-.48-.94-.82-1.13-.28-.15-.68-.52 0-.53.62 0 1.07.58 1.22.82.72 1.2 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.77-.2-3.63-.9-3.63-3.95 0-.87.3-1.6.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.2 2.2.83.64-.18 1.32-.27 2-.27.68 0 1.36.1 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.93.08 2.13.5.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.3.25.54.73.54 1.48v2.2c0 .22.15.47.55.4C13.7 14.52 16 11.52 16 8c0-4.42-3.58-8-8-8z"/>
+</svg>
+
+            </a>
+        </li>
+        <li class="nav-item dropdown dropdown-menu-reverse">
+            <a href="#" role="button" class="nav-link" aria-label="Settings" title="Settings" data-cfw="dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" focusable="false"  class="cf-header-icon"  >
+  <title>Settings</title>
+  <path fill="currentColor" d="M3.5 0l-.5 1.19c-.1.03-.19.08-.28.13l-1.19-.5-.72.72.5 1.19c-.05.1-.09.18-.13.28l-1.19.5v1l1.19.5c.04.1.08.18.13.28l-.5 1.19.72.72 1.19-.5c.09.04.18.09.28.13l.5 1.19h1l.5-1.19c.09-.04.19-.08.28-.13l1.19.5.72-.72-.5-1.19c.04-.09.09-.19.13-.28l1.19-.5v-1l-1.19-.5c-.03-.09-.08-.19-.13-.28l.5-1.19-.72-.72-1.19.5c-.09-.04-.19-.09-.28-.13l-.5-1.19h-1zm.5 2.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z"/>
+</svg>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">Direction</li>
+                <li><button type="button" class="dropdown-item" id="dir-ltr">Left-to-right</button></li>
+                <li><button type="button" class="dropdown-item" id="dir-rtl">Right-to-left</button></li>
+            </ul>
+        </li>
+        
+        <li class="nav-item">
+            <form class="form-inline docsearch-wrapper">
+                <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
+            </form>
+        </li>
+        
+    </ul>
 </header>
 
     <div class="jumbotron jumbotron-full jumbotron-docs">
-        <div class="container">
+        <div class="container-fluid">
             
     <div class="h1">Widgets</div>
     <p class="lead">
@@ -124,9 +151,9 @@
         </div>
     </div>
 
-    <main class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-3 cf-sidebar">
+            <div class="col-12 col-md-3 col-xl-2 cf-sidebar">
                 <nav class="cf-links">
 
 
@@ -159,204 +186,222 @@
   
 
   
-    <div class="h4">Widgets</div>
-    <ul class="nav">
+    <div class="h4 cf-sidebar-header">Widgets</div>
+    <ul class="nav flex-column">
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/overview/" class="nav-link ">
-            Overview
+            Overview 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/accordion/" class="nav-link ">
-            Accordion
+            Accordion 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/affix/" class="nav-link ">
-            Affix
+            Affix 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/alert/" class="nav-link ">
-            Alert
+            Alert 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/button/" class="nav-link ">
-            Button
+            Button 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/collapse/" class="nav-link ">
-            Collapse
+            Collapse 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/drag/" class="nav-link ">
-            Drag
+            Drag 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/dropdown/" class="nav-link ">
-            Dropdown
+            Dropdown 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/equalize/" class="nav-link ">
-            Equalize
+            Equalize 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/lazy/" class="nav-link ">
-            Lazy
+            Lazy 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/modal/" class="nav-link ">
-            Modal
+            Modal 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/player/" class="nav-link ">
-            Player
+            Player 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/popover/" class="nav-link active">
-            Popover
+            Popover <span class="sr-only">(current page)</span>
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/scrollspy/" class="nav-link ">
-            Scrollspy
+            Scrollspy 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/slider/" class="nav-link ">
-            Slider
+            Slider 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/slideshow/" class="nav-link ">
-            Slideshow
+            Slideshow 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/tab/" class="nav-link ">
-            Tab
+            Tab 
           </a>
         </li>
       
         
 
+        
         
         
 
         <li class="nav-item">
           <a href="/widgets/tab-responsive/" class="nav-link ">
-            Tab-Responsive
+            Tab-Responsive 
           </a>
         </li>
       
@@ -364,10 +409,11 @@
 
         
         
+        
 
         <li class="nav-item">
           <a href="/widgets/tooltip/" class="nav-link ">
-            Tooltip
+            Tooltip 
           </a>
         </li>
       
@@ -382,7 +428,11 @@
 </nav>
 
             </div>
-            <div class="col-12 col-md-9 cf-content">
+
+            <div class="d-none d-xl-block col-xl-2 cf-toc">
+            </div>
+
+            <main class="col-12 col-md-9 col-xl-8 cf-content" role="main">
                 <h1 class="cf-title" id="content">
                     Popover
                     
@@ -393,7 +443,7 @@
                 <p>A more robust version of a tooltip, that allows for larger pieces of content or interactive functionality.</p>
 
 <div class="cf-callout cf-callout-info cf-callout-dep">
-<h4 id="widget-dependencies">Widget Dependencies</h4>
+<p class="h5">Widget Dependencies</p>
 
 <p>Popover requires the following:</p>
 
@@ -451,36 +501,38 @@
 
 <h3 id="static-popover">Static Popover</h3>
 
-<p>Four options are available: top, right, bottom, and left aligned.</p>
+<p>Four options are available: top, forward( right), bottom, and reverse (left) aligned.</p>
+
+<p><strong>Heads up!</strong> When using the right-to-left, <code class="highlighter-rouge">rtl</code>, variant of Figuration all horizontal directions will be reversed.  Meaning left becomes right, and vice-versa.</p>
 
 <div class="cf-example cf-example-bottom cf-example-popover">
     <div class="popover top">
-        <h3 class="popover-title">Popover top</h3>
-        <div class="popover-content">
+        <h3 class="popover-header">Popover top</h3>
+        <div class="popover-body">
             <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         </div>
         <div class="popover-arrow"></div>
     </div>
 
-    <div class="popover right">
-        <h3 class="popover-title">Popover right</h3>
-        <div class="popover-content">
+    <div class="popover forward">
+        <h3 class="popover-header">Forward popover</h3>
+        <div class="popover-body">
             <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         </div>
         <div class="popover-arrow"></div>
     </div>
 
     <div class="popover bottom">
-        <h3 class="popover-title">Popover bottom</h3>
-        <div class="popover-content">
+        <h3 class="popover-header">Popover bottom</h3>
+        <div class="popover-body">
             <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         </div>
         <div class="popover-arrow"></div>
     </div>
 
-    <div class="popover left">
-        <h3 class="popover-title">Popover left</h3>
-        <div class="popover-content">
+    <div class="popover reverse">
+        <h3 class="popover-header">Reverse popover</h3>
+        <div class="popover-body">
             <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         </div>
         <div class="popover-arrow"></div>
@@ -494,47 +546,47 @@
   Popover on top
 </button>
 
-<button type="button" class="btn" data-cfw="popover" data-cfw-popover-container="body" data-cfw-popover-placement="right" data-cfw-popover-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-  Popover on right
+<button type="button" class="btn" data-cfw="popover" data-cfw-popover-container="body" data-cfw-popover-placement="forward" data-cfw-popover-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Forward popover
 </button>
 
 <button type="button" class="btn" data-cfw="popover" data-cfw-popover-container="body" data-cfw-popover-placement="bottom" data-cfw-popover-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
   Popover on bottom
 </button>
 
-<button type="button" class="btn" data-cfw="popover" data-cfw-popover-container="body" data-cfw-popover-placement="left" data-cfw-popover-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-  Popover on left
+<button type="button" class="btn" data-cfw="popover" data-cfw-popover-container="body" data-cfw-popover-placement="reverse" data-cfw-popover-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Reverse popover
 </button>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">data-cfw-popover-container=</span><span class="s">"body"</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"top"</span> <span class="na">data-cfw-popover-content=</span><span class="s">"Vivamus sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</span>
   Popover on top
 <span class="nt">&lt;/button&gt;</span>
 
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">data-cfw-popover-container=</span><span class="s">"body"</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"right"</span> <span class="na">data-cfw-popover-content=</span><span class="s">"Vivamus sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</span>
-  Popover on right
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">data-cfw-popover-container=</span><span class="s">"body"</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"forward"</span> <span class="na">data-cfw-popover-content=</span><span class="s">"Vivamus sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</span>
+  Forward popover
 <span class="nt">&lt;/button&gt;</span>
 
 <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">data-cfw-popover-container=</span><span class="s">"body"</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"bottom"</span> <span class="na">data-cfw-popover-content=</span><span class="s">"Vivamus sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</span>
   Popover on bottom
 <span class="nt">&lt;/button&gt;</span>
 
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">data-cfw-popover-container=</span><span class="s">"body"</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"left"</span> <span class="na">data-cfw-popover-content=</span><span class="s">"Vivamus sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</span>
-  Popover on left
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">data-cfw-popover-container=</span><span class="s">"body"</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"reverse"</span> <span class="na">data-cfw-popover-content=</span><span class="s">"Vivamus sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</span>
+  Reverse popover
 <span class="nt">&lt;/button&gt;</span></code></pre></div>
 
 <h3 id="default-toggle-example">Default Toggle Example</h3>
 
 <div class="cf-example" data-example-id="">
-<button type="button" class="btn btn-info" data-cfw="popover" title="Click Popover Example" data-cfw-popover-content="Click the trigger or close button to close me." data-cfw-popover-placement="right">Click to toggle popover</button>
+<button type="button" class="btn btn-info" data-cfw="popover" title="Click Popover Example" data-cfw-popover-content="Click the trigger or close button to close me." data-cfw-popover-placement="forward">Click to toggle popover</button>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">title=</span><span class="s">"Click Popover Example"</span> <span class="na">data-cfw-popover-content=</span><span class="s">"Click the trigger or close button to close me."</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"right"</span><span class="nt">&gt;</span>Click to toggle popover<span class="nt">&lt;/button&gt;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">title=</span><span class="s">"Click Popover Example"</span> <span class="na">data-cfw-popover-content=</span><span class="s">"Click the trigger or close button to close me."</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"forward"</span><span class="nt">&gt;</span>Click to toggle popover<span class="nt">&lt;/button&gt;</span></code></pre></div>
 
 <h3 id="hover-example">Hover Example</h3>
 
 <div class="cf-example" data-example-id="">
-<button type="button" class="btn btn-info" id="cf-example-hover-popover" data-cfw="popover" title="Hover Popover Example" data-cfw-popover-content="Stop hovering over the trigger or the popover to auto-close." data-cfw-popover-placement="right" data-cfw-popover-trigger="hover focus">Hover/focus to show popover</button>
+<button type="button" class="btn btn-info" id="cf-example-hover-popover" data-cfw="popover" title="Hover Popover Example" data-cfw-popover-content="Stop hovering over the trigger or the popover to auto-close." data-cfw-popover-placement="forward" data-cfw-popover-trigger="hover focus">Hover/focus to show popover</button>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info"</span> <span class="na">id=</span><span class="s">"cf-example-hover-popover"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">title=</span><span class="s">"Hover Popover Example"</span> <span class="na">data-cfw-popover-content=</span><span class="s">"Stop hovering over the trigger or the popover to auto-close."</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"right"</span> <span class="na">data-cfw-popover-trigger=</span><span class="s">"hover focus"</span><span class="nt">&gt;</span>Hover/focus to show popover<span class="nt">&lt;/button&gt;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info"</span> <span class="na">id=</span><span class="s">"cf-example-hover-popover"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">title=</span><span class="s">"Hover Popover Example"</span> <span class="na">data-cfw-popover-content=</span><span class="s">"Stop hovering over the trigger or the popover to auto-close."</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"forward"</span> <span class="na">data-cfw-popover-trigger=</span><span class="s">"hover focus"</span><span class="nt">&gt;</span>Hover/focus to show popover<span class="nt">&lt;/button&gt;</span></code></pre></div>
 
 <script>
     $('#cf-example-hover-popover').on('click', function(){
@@ -547,16 +599,16 @@
 <p>Allow users to move popovers around the screen by enabling the <code class="highlighter-rouge">drag</code> option.  Drag support mouse, keyboard (with arrow keys), and touch movement.</p>
 
 <div class="cf-example" data-example-id="">
-<button type="button" class="btn btn-info" data-cfw="popover" title="Draggable Popover Example" data-cfw-popover-content="Click the trigger or close link to close me." data-cfw-popover-placement="right" data-cfw-popover-drag="true">Draggable popover</button>
+<button type="button" class="btn btn-info" data-cfw="popover" title="Draggable Popover Example" data-cfw-popover-content="Click the trigger or close link to close me." data-cfw-popover-placement="forward" data-cfw-popover-drag="true">Draggable popover</button>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">title=</span><span class="s">"Draggable Popover Example"</span> <span class="na">data-cfw-popover-content=</span><span class="s">"Click the trigger or close link to close me."</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"right"</span> <span class="na">data-cfw-popover-drag=</span><span class="s">"true"</span><span class="nt">&gt;</span>Draggable popover<span class="nt">&lt;/button&gt;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">title=</span><span class="s">"Draggable Popover Example"</span> <span class="na">data-cfw-popover-content=</span><span class="s">"Click the trigger or close link to close me."</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"forward"</span> <span class="na">data-cfw-popover-drag=</span><span class="s">"true"</span><span class="nt">&gt;</span>Draggable popover<span class="nt">&lt;/button&gt;</span></code></pre></div>
 
 <h3 id="popover-with-html">Popover with HTML</h3>
 
 <div class="cf-example" data-example-id="">
-<button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-html="true" data-cfw-popover-placement="right" data-cfw-popover-content="&lt;em&gt;Popover&lt;/em&gt; &lt;u&gt;with&lt;/u&gt; &lt;b&gt;HTML&lt;/b&gt;" title="&lt;em&gt;Popover&lt;/em&gt; &lt;u&gt;with&lt;/u&gt; &lt;b&gt;HTML&lt;/b&gt;">Popover with HTML</button>
+<button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-html="true" data-cfw-popover-placement="forward" data-cfw-popover-content="&lt;em&gt;Popover&lt;/em&gt; &lt;u&gt;with&lt;/u&gt; &lt;b&gt;HTML&lt;/b&gt;" title="&lt;em&gt;Popover&lt;/em&gt; &lt;u&gt;with&lt;/u&gt; &lt;b&gt;HTML&lt;/b&gt;">Popover with HTML</button>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">data-cfw-popover-html=</span><span class="s">"true"</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"right"</span> <span class="na">data-cfw-popover-content=</span><span class="s">"&lt;em&gt;Popover&lt;/em&gt; &lt;u&gt;with&lt;/u&gt; &lt;b&gt;HTML&lt;/b&gt;"</span> <span class="na">title=</span><span class="s">"&lt;em&gt;Popover&lt;/em&gt; &lt;u&gt;with&lt;/u&gt; &lt;b&gt;HTML&lt;/b&gt;"</span><span class="nt">&gt;</span>Popover with HTML<span class="nt">&lt;/button&gt;</span></code></pre></div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">data-cfw-popover-html=</span><span class="s">"true"</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"forward"</span> <span class="na">data-cfw-popover-content=</span><span class="s">"&lt;em&gt;Popover&lt;/em&gt; &lt;u&gt;with&lt;/u&gt; &lt;b&gt;HTML&lt;/b&gt;"</span> <span class="na">title=</span><span class="s">"&lt;em&gt;Popover&lt;/em&gt; &lt;u&gt;with&lt;/u&gt; &lt;b&gt;HTML&lt;/b&gt;"</span><span class="nt">&gt;</span>Popover with HTML<span class="nt">&lt;/button&gt;</span></code></pre></div>
 
 <p>If using more complex HTML, using a data attribute might not be optimal.  A better option would be to use the Javascript options, or with a pre-generated popover, as shown in the following example.</p>
 
@@ -583,31 +635,31 @@ $('#html-popover').CFW_Popover({
 
 <h3 id="pre-generated-popover">Pre-generated Popover</h3>
 
-<p>Have a complex content that you would like to show in a popover, or one that is updated dynamically?  Create the popover and then link to it with the <code class="highlighter-rouge">toggle</code> option.</p>
+<p>Have a complex content that you would like to show in a popover, or one that is updated dynamically?  Create the popover and then link to it with the <code class="highlighter-rouge">target</code> option.</p>
 
 <div class="cf-example" data-example-id="">
-<button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-toggle="#popoverExample0" data-cfw-popover-placement="right">Show Popover</button>
+<button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-target="#popoverExample0" data-cfw-popover-placement="forward">Show Popover</button>
 
 <div class="popover" id="popoverExample0">
-    <h3 class="popover-title">Popover title</h3>
-    <div class="popover-content">
+    <h3 class="popover-header">Popover title</h3>
+    <div class="popover-body">
         <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
         <figure class="figure">
-          <img src="/assets/img/test.gif" class="figure-img img-responsive" alt="Sample image" />
+          <img src="/assets/img/test.gif" class="figure-img img-fluid" alt="Sample image" />
           <figcaption class="figure-caption">Sample image caption.</figcaption>
         </figure>
     </div>
     <div class="popover-arrow"></div>
 </div>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">data-cfw-popover-toggle=</span><span class="s">"#popoverExample0"</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"right"</span><span class="nt">&gt;</span>Show Popover<span class="nt">&lt;/button&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">data-cfw-popover-target=</span><span class="s">"#popoverExample0"</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"forward"</span><span class="nt">&gt;</span>Show Popover<span class="nt">&lt;/button&gt;</span>
 
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"popover"</span> <span class="na">id=</span><span class="s">"popoverExample0"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"popover-title"</span><span class="nt">&gt;</span>Popover title<span class="nt">&lt;/h3&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"popover-content"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"popover-header"</span><span class="nt">&gt;</span>Popover title<span class="nt">&lt;/h3&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"popover-body"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.<span class="nt">&lt;/p&gt;</span>
         <span class="nt">&lt;figure</span> <span class="na">class=</span><span class="s">"figure"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/test.gif"</span> <span class="na">class=</span><span class="s">"figure-img img-responsive"</span> <span class="na">alt=</span><span class="s">"Sample image"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/img/test.gif"</span> <span class="na">class=</span><span class="s">"figure-img img-fluid"</span> <span class="na">alt=</span><span class="s">"Sample image"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;figcaption</span> <span class="na">class=</span><span class="s">"figure-caption"</span><span class="nt">&gt;</span>Sample image caption.<span class="nt">&lt;/figcaption&gt;</span>
         <span class="nt">&lt;/figure&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
@@ -659,7 +711,7 @@ $('#html-popover').CFW_Popover({
 
     <button class="btn btn-info popover-viewport-right" title="This should be shifted down">Shift Down</button>
 
-    <button class="btn btn-info float-right popover-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
+    <button class="btn btn-info float-end popover-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
 
     <button class="btn btn-info popover-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
 
@@ -667,16 +719,19 @@ $('#html-popover').CFW_Popover({
 </div>
 <script>
     $('.popover-viewport-right').CFW_Popover({
-        placement: 'right',
-        viewport: {selector: '#viewport-popover', padding: 2}
+        placement: 'forward',
+        viewport: '#viewport-popover',
+        padding: 2
     });
     $('.popover-viewport-bottom').CFW_Popover({
         placement: 'bottom',
-        viewport: {selector: '#viewport-popover', padding: 2}
+        viewport: '#viewport-popover',
+        padding: 2
     });
     $('.popover-viewport-drag').CFW_Popover({
         drag: true,
-        viewport: {selector: '#viewport-popover', padding: 2}
+        viewport: '#viewport-popover',
+        padding: 2
     });
 </script>
 </div>
@@ -687,7 +742,7 @@ $('#html-popover').CFW_Popover({
 
     <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-info popover-viewport-right"</span> <span class="na">title=</span><span class="s">"This should be shifted down"</span><span class="nt">&gt;</span>Shift Down<span class="nt">&lt;/button&gt;</span>
 
-    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-info float-right popover-viewport-bottom"</span> <span class="na">title=</span><span class="s">"This should be shifted to the left"</span><span class="nt">&gt;</span>Shift Left<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-info float-end popover-viewport-bottom"</span> <span class="na">title=</span><span class="s">"This should be shifted to the left"</span><span class="nt">&gt;</span>Shift Left<span class="nt">&lt;/button&gt;</span>
 
     <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-info popover-viewport-right btn-bottom"</span> <span class="na">title=</span><span class="s">"This should be shifted up"</span><span class="nt">&gt;</span>Shift Up<span class="nt">&lt;/button&gt;</span>
 
@@ -695,16 +750,19 @@ $('#html-popover').CFW_Popover({
 <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;script&gt;</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'.popover-viewport-right'</span><span class="p">).</span><span class="nx">CFW_Popover</span><span class="p">({</span>
-        <span class="na">placement</span><span class="p">:</span> <span class="s1">'right'</span><span class="p">,</span>
-        <span class="na">viewport</span><span class="p">:</span> <span class="p">{</span><span class="na">selector</span><span class="p">:</span> <span class="s1">'#viewport-popover'</span><span class="p">,</span> <span class="na">padding</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+        <span class="na">placement</span><span class="p">:</span> <span class="s1">'forward'</span><span class="p">,</span>
+        <span class="na">viewport</span><span class="p">:</span> <span class="s1">'#viewport-popover'</span><span class="p">,</span>
+        <span class="na">padding</span><span class="p">:</span> <span class="mi">2</span>
     <span class="p">});</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'.popover-viewport-bottom'</span><span class="p">).</span><span class="nx">CFW_Popover</span><span class="p">({</span>
         <span class="na">placement</span><span class="p">:</span> <span class="s1">'bottom'</span><span class="p">,</span>
-        <span class="na">viewport</span><span class="p">:</span> <span class="p">{</span><span class="na">selector</span><span class="p">:</span> <span class="s1">'#viewport-popover'</span><span class="p">,</span> <span class="na">padding</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+        <span class="na">viewport</span><span class="p">:</span> <span class="s1">'#viewport-popover'</span><span class="p">,</span>
+        <span class="na">padding</span><span class="p">:</span> <span class="mi">2</span>
     <span class="p">});</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'.popover-viewport-drag'</span><span class="p">).</span><span class="nx">CFW_Popover</span><span class="p">({</span>
         <span class="na">drag</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="na">viewport</span><span class="p">:</span> <span class="p">{</span><span class="na">selector</span><span class="p">:</span> <span class="s1">'#viewport-popover'</span><span class="p">,</span> <span class="na">padding</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+        <span class="na">viewport</span><span class="p">:</span> <span class="s1">'#viewport-popover'</span><span class="p">,</span>
+        <span class="na">padding</span><span class="p">:</span> <span class="mi">2</span>
     <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span></code></pre></div>
 
@@ -715,6 +773,8 @@ $('#html-popover').CFW_Popover({
 <h3 id="via-data-attributes">Via Data Attributes</h3>
 
 <p>The required markup for a popover is only a <code class="highlighter-rouge">data-cfw="popover"</code> attribute and <code class="highlighter-rouge">title</code> or a <code class="highlighter-rouge">data-cfw-popover-content=""</code> on the HTML element you wish to have a popover. The generated markup of a popover is rather simple, though it does require a position (by default, set to top by the widget).</p>
+
+<p>If the popover item is already created, you can link to it using <code>data-cfw-popover-target="#somePopover"</code>, or href=”#somePopover”. The proper <code class="highlighter-rouge">role</code> and <code class="highlighter-rouge">aria-</code> attributes will be automatically created to link the trigger and target elements.</p>
 
 <h3 id="via-javascript">Via JavaScript</h3>
 
@@ -740,65 +800,52 @@ $('#html-popover').CFW_Popover({
 
 <h3 id="options">Options</h3>
 
-<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code class="highlighter-rouge">data-cfw-popover</code>, as in <code class="highlighter-rouge">data-cfw-popover-placement="right"</code>.</p>
+<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code class="highlighter-rouge">data-cfw-popover</code>, as in <code class="highlighter-rouge">data-cfw-popover-placement="forward"</code>.</p>
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 100px;">Name</th>
-            <th style="width: 50px;">Type</th>
-            <th style="width: 50px;">Default</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>toggle</td>
-            <td>string</td>
-            <td>null</td>
-            <td>Either the selector (jQuery style), or the string related to the target popover having a <code>data-cfw-popover-target</code> attribute.</td>
-        </tr>
-        <tr>
-            <td>animate</td>
-            <td>boolean</td>
-            <td>true</td>
-            <td>If popover items should fade in and out.</td>
-        </tr>
-        <tr>
-            <td>speed</td>
-            <td>integer</td>
-            <td>150</td>
-            <td>Speed of animation (milliseconds) - corresponds the animation speed specified in CSS.</td>
-        </tr>
-        <tr>
-            <td>follow</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>If browser focus should move when a popover is activated - overridden to true when click trigger is used.</td>
-        </tr>
-        <tr>
-            <td>placement</td>
-            <td>string | object | function</td>
-            <td>'top'</td>
-            <td>
-                <p>
-                    <strong>string:</strong><br />
-                    How to position the popover - top | bottom | left | right | auto.
-                    <br />
-                    When "auto" is specified, it will dynamically reorient the popover. For example, if placement is "auto left", the popover will display to the left when possible, otherwise it will display right.
-                </p>
-                <p>
-                    <strong>object:</strong><br />
-                    This is a way to custom position a popover in a specific place not handled by the standard placement locations.
-                    A custom positioned popover is forced to using the <code>&lt;body&gt;</code> as the container to make positioning easier.
-                    Object structure is: <code>placement: { top: 5, left: 10 }</code>, the same as jQuery offset.
-                </p>
-                <p>
-                    <strong>function:</strong><br />
-                    A function call can return either a string or object placement type.
-                    The function allows access to the complete popover data-api, as well as passing the popover target and trigger as arguments.
-                </p>
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>target</td>
+        <td>string</td>
+        <td>null</td>
+        <td>The selector (jQuery style) of the target popover.</td>
+    </tr>
+    <tr>
+        <td>animate</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>If popover items should fade in and out.</td>
+    </tr>
+    <tr>
+        <td>placement</td>
+        <td>string | object | function</td>
+        <td>'top'</td>
+        <td>
+            <p>
+                <strong>string:</strong><br />
+                How to position the popover - top | bottom | reverse | forward | auto.
+                <br />
+                When "auto" is specified, it will dynamically reorient the popover. For example, if placement is "auto reverse", the popover will display to the left when possible, otherwise it will display right. (Opposite horizontal directions apply for <code>rtl</code> mode.)
+            </p>
+            <p>
+                <strong>object:</strong><br />
+                This is a way to custom position a popover in a specific place not handled by the standard placement locations.
+                A custom positioned popover is forced to using the <code>&lt;body&gt;</code> as the container to make positioning easier.
+                Object structure is: <code>placement: { top: 5, left: 10 }</code>, the same as jQuery offset.
+            </p>
+            <p>
+                <strong>function:</strong><br />
+                A function call can return either a string or object placement type.
+                The function allows access to the complete popover data-api, as well as passing the popover target and trigger as arguments.
+            </p>
 <pre>
 function myPopoverAlign(tip, trigger) {
     // this - popover data-api
@@ -806,125 +853,119 @@ function myPopoverAlign(tip, trigger) {
     // trigger -&gt; popover trigger
 }
 </pre>
-            </td>
-        </tr>
-        <tr>
-            <td>trigger</td>
-            <td>string</td>
-            <td>'hover focus'</td>
-            <td>How popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. <code>manual</code> cannot be combined with any other trigger.</td>
-        </tr>
-        <tr>
-            <td>delay</td>
-            <td>number| object</td>
-            <td>show:0, hide:250</td>
-            <td>
-                <p>Delay showing and hiding the popover (ms) - does not apply to manual trigger type.</p>
-                <p>If a number is supplied, delay is applied to both hide/show.</p>
-                Object structure is: <code>delay: { show: 500, hide: 100 }</code>
-            </td>
-        </tr>
-        <tr>
-            <td>container</td>
-            <td>string | false</td>
-            <td>false</td>
-            <td>Appends the popover to a specific element. Example: <code>container: 'body'</code></td>
-        </tr>
-        <tr>
-            <td>viewport</td>
-            <td>string | object</td>
-            <td>{ selector: 'body', padding: 0 }</td>
-            <td>
-                <p>Keeps the popover within the bounds of this element. Example: <code>viewport: '#viewport'</code> or <code>{ selector: '#viewport', padding: 0 }</code></p>
-                <p>If a function is given, it is called with the triggering element DOM node as its only argument. The <code>this</code> context is set to the popover instance.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>html</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>Insert HTML into the popover. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
-        </tr>
-        <tr>
-            <td>closetext</td>
-            <td>string</td>
-            <td>'&lt;span aria-hidden="true" &gt;&amp;times;&lt;/span&gt;'</td>
-            <td>Visible text for close links when using option <code>trigger: 'click'</code></td>
-        </tr>
-        <tr>
-            <td>closesrtext</td>
-            <td>string</td>
-            <td>'Close'</td>
-            <td>Screen reader only text alternative for close links when using option <code>trigger: 'click'</code></td>
-        </tr>
-        <tr>
-            <td>toggle</td>
-            <td>string</td>
-            <td>null</td>
-            <td>
-                <p>If the popover item is already created, you can link to it using <code>data-cfw-popover-toggle="somePopover"</code>.</p>
-                <p>The target popover item will then need the associated attribute <code>data-cfw-popover-target="somePopover"</code>.</p>
-                <p>The proper role and ARIA attributes will be automatically created to link the trigger and target elements.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>title</td>
-            <td>string | function</td>
-            <td>''</td>
-            <td>Default title value if <code>title</code> attribute isn't present.</td>
-        </tr>
-        <tr>
-            <td>content</td>
-            <td>string | function</td>
-            <td>''</td>
-            <td>Default title value if <code>data-cfw-popover-content</code> attribute isn't present.</td>
-        </tr>
-        <tr>
-            <td>unlink</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>If the <code>unlink</code> method should be called when the popover is hidden.  This leaves the popover behind in the DOM.</td>
-        </tr>
-        <tr>
-            <td>destroy</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>If the <code>destroy</code> method should be called when the popover is hidden. This will remove the popover from the DOM.</td>
-        </tr>
-        <tr>
-            <td>drag</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>If the popover should have a drag handle inserted.</td>
-        </tr>
-        <tr>
-            <td>dragtext</td>
-            <td>string</td>
-            <td>'&lt;span aria-hidden="true" &gt;+&lt;/span&gt;'</td>
-            <td>Visible text for the auto-inserted drag handle.</td>
-        </tr>
-        <tr>
-            <td>dragsrtext</td>
-            <td>string</td>
-            <td>'Drag'</td>
-            <td>Screen reader only text alternative for the auto-inserted drag handle.</td>
-        </tr>
-        <tr>
-            <td>dragstep</td>
-            <td>integer</td>
-            <td>10</td>
-            <td>Pixel increment to move the popover when using arrow keys on a drag handle.</td>
-        </tr>
-        <tr>
-            <td>activate</td>
-            <td>boolean</td>
-            <td>false</td>
-            <td>Show the popover automatically at the end of initialization. This will force the <code>trigger</code> option to a setting of <code>'click'</code>.</td>
-        </tr>
-    </tbody>
-    </table>
-</div>
-<p><!-- /.table-responsive --></p>
+        </td>
+    </tr>
+    <tr>
+        <td>trigger</td>
+        <td>string</td>
+        <td>'hover focus'</td>
+        <td>How popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. <code>manual</code> cannot be combined with any other trigger.</td>
+    </tr>
+    <tr>
+        <td>delay</td>
+        <td>number| object</td>
+        <td>show:0, hide:250</td>
+        <td>
+            <p>Delay showing and hiding the popover (ms) - does not apply to manual trigger type.</p>
+            <p>If a number is supplied, delay is applied to both hide/show.</p>
+            Object structure is: <code>delay: { show: 500, hide: 100 }</code>
+        </td>
+    </tr>
+    <tr>
+        <td>container</td>
+        <td>string | false</td>
+        <td>false</td>
+        <td>Appends the popover to a specific element. Example: <code>container: 'body'</code></td>
+    </tr>
+    <tr>
+        <td>viewport</td>
+        <td>string | function</td>
+        <td>'body'</td>
+        <td>
+            <p>Keeps the popover within the bounds of this element. Example: <code>viewport: '#viewport'</code>.</p>
+            <p>If a function is given, it is called with the triggering element DOM node as its only argument. The <code>this</code> context is set to the popover instance.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>padding</td>
+        <td>integer</td>
+        <td>0</td>
+        <td>Spacing, in pixels, to keep the popover away from the viewport edge.</td>
+    </tr>
+    <tr>
+        <td>html</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Insert HTML into the popover. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
+    </tr>
+    <tr>
+        <td>closetext</td>
+        <td>string</td>
+        <td>'&lt;span aria-hidden="true" &gt;&amp;times;&lt;/span&gt;'</td>
+        <td>Visible text for close links when using option <code>trigger: 'click'</code></td>
+    </tr>
+    <tr>
+        <td>closesrtext</td>
+        <td>string</td>
+        <td>'Close'</td>
+        <td>Screen reader only text alternative for close links when using option <code>trigger: 'click'</code></td>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>string | function</td>
+        <td>''</td>
+        <td>Default title value if <code>title</code> attribute isn't present.</td>
+    </tr>
+    <tr>
+        <td>content</td>
+        <td>string | function</td>
+        <td>''</td>
+        <td>Default title value if <code>data-cfw-popover-content</code> attribute isn't present.</td>
+    </tr>
+    <tr>
+        <td>unlink</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>If the <code>unlink</code> method should be called when the popover is hidden.  This leaves the popover behind in the DOM.</td>
+    </tr>
+    <tr>
+        <td>dispose</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>If the <code>dispose</code> method should be called when the popover is hidden. This will remove the popover from the DOM.</td>
+    </tr>
+    <tr>
+        <td>drag</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>If the popover should have a drag handle inserted.</td>
+    </tr>
+    <tr>
+        <td>dragtext</td>
+        <td>string</td>
+        <td>'&lt;span aria-hidden="true" &gt;+&lt;/span&gt;'</td>
+        <td>Visible text for the auto-inserted drag handle.</td>
+    </tr>
+    <tr>
+        <td>dragsrtext</td>
+        <td>string</td>
+        <td>'Drag'</td>
+        <td>Screen reader only text alternative for the auto-inserted drag handle.</td>
+    </tr>
+    <tr>
+        <td>dragstep</td>
+        <td>integer</td>
+        <td>10</td>
+        <td>Pixel increment to move the popover when using arrow keys on a drag handle.</td>
+    </tr>
+    <tr>
+        <td>show</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Show the popover automatically at the end of initialization. This will force the <code>trigger</code> option to a setting of <code>'click'</code>.</td>
+    </tr>
+</tbody>
+</table>
 
 <h3 id="methods">Methods</h3>
 
@@ -933,7 +974,7 @@ function myPopoverAlign(tip, trigger) {
 <p>Activates a popover on a given element. Accepts an optional options <code class="highlighter-rouge">object</code>.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myPopover'</span><span class="p">).</span><span class="nx">CFW_Popover</span><span class="p">({</span>
-    <span class="na">placement</span><span class="p">:</span> <span class="s1">'right'</span>
+    <span class="na">placement</span><span class="p">:</span> <span class="s1">'forward'</span>
 <span class="p">});</span></code></pre></figure>
 
 <h4 class="no_toc" id="cfw_popovertoggle"><code class="highlighter-rouge">.CFW_Popover('toggle')</code></h4>
@@ -952,7 +993,7 @@ function myPopoverAlign(tip, trigger) {
 
 <p>Hides the popover, removes events and attributes from both trigger and popover.</p>
 
-<h4 class="no_toc" id="cfw_popoverdestroy"><code class="highlighter-rouge">.CFW_Popover('destroy')</code></h4>
+<h4 class="no_toc" id="cfw_popoverdispose"><code class="highlighter-rouge">.CFW_Popover('dispose')</code></h4>
 
 <p>Calls the <code class="highlighter-rouge">unlink</code> method, and then removes the popover from the DOM.</p>
 
@@ -960,63 +1001,60 @@ function myPopoverAlign(tip, trigger) {
 
 <p>Event callbacks happen on the toggle/trigger element.</p>
 
-<div class="table-responsive">
-    <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th style="width: 150px;">Event Type</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>init.cfw.popover</td>
-            <td>This event fires after the popover item is initialized.</td>
-        </tr>
-        <tr>
-            <td>beforeShow.cfw.popover</td>
-            <td>This event is fired immediately when the <code>show</code> method is called.  If the popover container is not present, it is created just after this event is called.</td>
-        </tr>
-        <tr>
-            <td>afterShow.cfw.popover</td>
-            <td>This event is fired when a popover has been made visible to the user (will wait for CSS transitions to complete).</td>
-        </tr>
-        <tr>
-            <td>beforeHide.cfw.popover</td>
-            <td>This event is fired immediately when the <code>hide</code> method is called.</td>
-        </tr>
-        <tr>
-            <td>afterHide.cfw.popover</td>
-            <td>This event is fired when a popover has been hidden from the user (will wait for CSS transitions to complete).</td>
-        </tr>
-        <tr>
-            <td>inserted.cfw.popover</td>
-            <td>This event is fired after the <code>beforeShow.cfw.popover</code> event when the popover has been added to the DOM.</td>
-        </tr>
-        <tr>
-            <td>dragStart.cfw.popover</td>
-            <td>This event is fired at the start of the drag action.</td>
-        </tr>
-        <tr>
-            <td>dragEnd.cfw.popover</td>
-            <td>This event is fired at the end of the drag action.</td>
-        </tr>
-        <tr>
-            <td>beforeUnlink.cfw.popover</td>
-            <td>This event is fired immediately when the <code>unlink</code> method is called. This event can occur after the <code>beforeHide</code> event if set to automatically unlink, or before if called via method.</td>
-        </tr>
-        <tr>
-            <td>afterUnlink.cfw.popover</td>
-            <td>This event is fired when a popover item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</td>
-        </tr>
-        <tr>
-            <td>destroy.cfw.popover</td>
-            <td>This event is fired immediately before the popover item is removed from the DOM.</td>
-        </tr>
-    </tbody>
-    </table>
-</div>
-<p><!-- /.table-responsive --></p>
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 150px;">Event Type</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>init.cfw.popover</td>
+        <td>This event fires after the popover item is initialized.</td>
+    </tr>
+    <tr>
+        <td>beforeShow.cfw.popover</td>
+        <td>This event is fired immediately when the <code>show</code> method is called.  If the popover container is not present, it is created just after this event is called.</td>
+    </tr>
+    <tr>
+        <td>afterShow.cfw.popover</td>
+        <td>This event is fired when a popover has been made visible to the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+        <td>beforeHide.cfw.popover</td>
+        <td>This event is fired immediately when the <code>hide</code> method is called.</td>
+    </tr>
+    <tr>
+        <td>afterHide.cfw.popover</td>
+        <td>This event is fired when a popover has been hidden from the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+        <td>inserted.cfw.popover</td>
+        <td>This event is fired after the <code>beforeShow.cfw.popover</code> event when the popover has been added to the DOM.</td>
+    </tr>
+    <tr>
+        <td>dragStart.cfw.popover</td>
+        <td>This event is fired at the start of the drag action.</td>
+    </tr>
+    <tr>
+        <td>dragEnd.cfw.popover</td>
+        <td>This event is fired at the end of the drag action.</td>
+    </tr>
+    <tr>
+        <td>beforeUnlink.cfw.popover</td>
+        <td>This event is fired immediately when the <code>unlink</code> method is called. This event can occur after the <code>beforeHide</code> event if set to automatically unlink, or before if called via method.</td>
+    </tr>
+    <tr>
+        <td>afterUnlink.cfw.popover</td>
+        <td>This event is fired when a popover item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</td>
+    </tr>
+    <tr>
+        <td>dispose.cfw.popover</td>
+        <td>This event is fired immediately before the popover item is removed from the DOM.</td>
+    </tr>
+</tbody>
+</table>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myPopover'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'afterHide.cfw.popover'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
   <span class="c1">// do something...</span>
@@ -1034,7 +1072,7 @@ function myPopoverAlign(tip, trigger) {
         <ul>
             <li><code>$('#myPopover').CFW_Popover('hide');</code></li>
             <li>or <code>$('#myPopover').CFW_Popover('unlink');</code></li>
-            <li>or <code>$('#myPopover').CFW_Popover('destroy');</code></li>
+            <li>or <code>$('#myPopover').CFW_Popover('dispose');</code></li>
         </ul>
     </li>
     <li>Update/create the popover object and insert into DOM.</li>
@@ -1066,18 +1104,21 @@ function myPopoverAlign(tip, trigger) {
 
 <p>This will not necessarily work with some assistive technologies reading modes.</p>
 
-            </div>
+            </main>
         </div>
 
         <div class="topLink">
             <a href="#content">Top of Page <span class="caret"></span></a>
         </div>
-    </main>
+    </div>
 
     <footer class="cf-footer">
     <div class="container">
-        Current version: 2.0.0
-        <ul class="footer-links">
+        <p class="mb-0">
+            Current version: 3.0.0
+        </p>
+        <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
+            <li><a href="/about/overview/">About</a></li>
             <li><a href="https://github.com/cast-org/figuration">GitHub Project</a></li>
             <li><a href="https://github.com/cast-org/figuration/issues">Issues</a></li>
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
@@ -1085,7 +1126,7 @@ function myPopoverAlign(tip, trigger) {
         <p>
             &copy; 2013-2017 <a href="http://www.cast.org">CAST, Inc.</a>
             <br />
-            Portions: &copy; 2011-2016 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
+            Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
             Code licensed <a rel="license" href="https://github.com/cast-org/figuration/blob/master/LICENSE">MIT</a>,
             docs <a rel="license" href="https://github.com/cast-org/figuration/blob/master/docs/LICENSE">CC BY 4.0</a>.
@@ -1093,9 +1134,9 @@ function myPopoverAlign(tip, trigger) {
 
         <hr />
 
-        <strong>Funding generously provided by:</strong>
+        <p class="font-weight-bold mb-0_25">Funding generously provided by:</p>
         <div class="media footer-partners">
-            <div class="media-left">
+            <div class="d-flex me-0_5">
                 <img src="/assets/img/aem-logo.png" class="media-object" width="40" height="40" alt="AEM logo" />
             </div>
             <div class="media-body">
@@ -1108,15 +1149,23 @@ function myPopoverAlign(tip, trigger) {
 </footer>
 
 
-<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
 <script>
 docsearch({
     apiKey: '3b9b6e000775400f4833a14c4daa6049',
     indexName: 'figuration',
-    inputSelector: '#docsearch'
+    inputSelector: '#docsearch',
+    transformData: function (hits) {
+      return hits.map(function (hit) {
+        hit.url = hit.url.replace('http://figuration.org', '');
+        return hit;
+      });
+    },
+    debug: true // Set debug to true if you want to inspect the dropdown
 });
 </script>
 
-
+    
 </body>
 </html>
