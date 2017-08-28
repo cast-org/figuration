@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Figuration - Flexbox Inline Forms</title>
+
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
+
+<!--
+<script type="text/javascript" src="../../docs/assets/js/vendor/jquery.min.js"></script>
+<script type="text/javascript" src="../../dist/js/figuration.js"></script>
+-->
+
+<script type="text/javascript" src="../../docs/assets/js/vendor/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/util.js"></script>
+<script type="text/javascript" src="../../js/drag.js"></script>
+<script type="text/javascript" src="../../js/collapse.js"></script>
+<script type="text/javascript" src="../../js/dropdown.js"></script>
+<script type="text/javascript" src="../../js/tab.js"></script>
+<script type="text/javascript" src="../../js/affix.js"></script>
+<script type="text/javascript" src="../../js/tooltip.js"></script>
+<script type="text/javascript" src="../../js/popover.js"></script>
+<script type="text/javascript" src="../../js/modal.js"></script>
+<script type="text/javascript" src="../../js/tab-responsive.js"></script>
+<script type="text/javascript" src="../../js/accordion.js"></script>
+<script type="text/javascript" src="../../js/slideshow.js"></script>
+<script type="text/javascript" src="../../js/scrollspy.js"></script>
+<script type="text/javascript" src="../../js/alert.js"></script>
+<script type="text/javascript" src="../../js/button.js"></script>
+<script type="text/javascript" src="../../js/lazy.js"></script>
+<script type="text/javascript" src="../../js/slider.js"></script>
+<script type="text/javascript" src="../../js/equalize.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+
+</head>
+<body class="pb-2">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between sticky-top">
+  <a href="#" class="navbar-brand">Navbar</a>
+  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar0">
+    <span aria-hidden="true">&#8801;</span>
+  </button>
+
+  <div class="navbar-collapse collapse" id="navbar0">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Link</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link disabled">Disabled</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link">Other</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<button class="btn btn-primary mt-1" data-cfw="modal" data-cfw-modal-target="#modal0">Launch small modal</button>
+<div class="modal" id="modal0">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button class="btn btn-primary mt-1" data-cfw="modal" data-cfw-modal-target="#modal1">Launch scrolling modal</button>
+<div class="modal" id="modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse finibus convallis eros, eget porttitor neque tempor auctor. Aliquam elementum pretium tortor ut euismod. Aliquam vel dignissim augue. Cras auctor nec quam et iaculis. Praesent non augue vitae nulla varius cursus et eu diam. Nulla at blandit ante, at pellentesque ligula. Nunc sagittis arcu nec ornare sagittis. In a massa porta, hendrerit nulla a, tristique velit.</p>
+                <p>Vivamus sollicitudin porttitor nisl, sed tempor leo. Maecenas ut rhoncus nisi. Morbi ut bibendum est. Donec tincidunt nec tellus a egestas. Donec id tortor elementum, aliquet magna euismod, commodo felis. Sed a nulla viverra, malesuada nisi a, fringilla velit. Donec justo felis, cursus eu justo ac, vehicula consequat mauris. Duis a interdum lectus, eu dictum nibh. Cras ligula velit, vehicula et luctus a, cursus quis sapien. Aenean a molestie libero. Nam congue ultrices turpis, sed tempus arcu malesuada sit amet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam eu ligula eleifend, rutrum purus id, pharetra enim. Pellentesque a posuere ex, ac egestas quam. Etiam lobortis massa at elementum consectetur. Nullam tempor orci quis ligula eleifend auctor.</p>
+                <p>Integer eget fringilla ex. Quisque ex ante, eleifend non massa a, tempus condimentum lorem. Donec a est sed enim ullamcorper posuere eu sed libero. Etiam sit amet tellus mi. Mauris dui risus, finibus sed turpis vitae, pulvinar pretium felis. Duis id metus at eros laoreet tempus. Nunc mattis efficitur dolor, nec maximus tellus commodo nec. Etiam ac molestie dolor, at hendrerit ante. Donec vehicula ipsum et mauris finibus, eu pellentesque felis rhoncus. Pellentesque viverra arcu sapien, ut lobortis ante ultrices vel. Vivamus quis justo nec ipsum vestibulum tempor. Nullam lacinia dui sed libero tempor tempus.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse finibus convallis eros, eget porttitor neque tempor auctor. Aliquam elementum pretium tortor ut euismod. Aliquam vel dignissim augue. Cras auctor nec quam et iaculis. Praesent non augue vitae nulla varius cursus et eu diam. Nulla at blandit ante, at pellentesque ligula. Nunc sagittis arcu nec ornare sagittis. In a massa porta, hendrerit nulla a, tristique velit.</p>
+<p>Vivamus sollicitudin porttitor nisl, sed tempor leo. Maecenas ut rhoncus nisi. Morbi ut bibendum est. Donec tincidunt nec tellus a egestas. Donec id tortor elementum, aliquet magna euismod, commodo felis. Sed a nulla viverra, malesuada nisi a, fringilla velit. Donec justo felis, cursus eu justo ac, vehicula consequat mauris. Duis a interdum lectus, eu dictum nibh. Cras ligula velit, vehicula et luctus a, cursus quis sapien. Aenean a molestie libero. Nam congue ultrices turpis, sed tempus arcu malesuada sit amet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam eu ligula eleifend, rutrum purus id, pharetra enim. Pellentesque a posuere ex, ac egestas quam. Etiam lobortis massa at elementum consectetur. Nullam tempor orci quis ligula eleifend auctor.</p>
+<p>Integer eget fringilla ex. Quisque ex ante, eleifend non massa a, tempus condimentum lorem. Donec a est sed enim ullamcorper posuere eu sed libero. Etiam sit amet tellus mi. Mauris dui risus, finibus sed turpis vitae, pulvinar pretium felis. Duis id metus at eros laoreet tempus. Nunc mattis efficitur dolor, nec maximus tellus commodo nec. Etiam ac molestie dolor, at hendrerit ante. Donec vehicula ipsum et mauris finibus, eu pellentesque felis rhoncus. Pellentesque viverra arcu sapien, ut lobortis ante ultrices vel. Vivamus quis justo nec ipsum vestibulum tempor. Nullam lacinia dui sed libero tempor tempus.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse finibus convallis eros, eget porttitor neque tempor auctor. Aliquam elementum pretium tortor ut euismod. Aliquam vel dignissim augue. Cras auctor nec quam et iaculis. Praesent non augue vitae nulla varius cursus et eu diam. Nulla at blandit ante, at pellentesque ligula. Nunc sagittis arcu nec ornare sagittis. In a massa porta, hendrerit nulla a, tristique velit.</p>
+<p>Vivamus sollicitudin porttitor nisl, sed tempor leo. Maecenas ut rhoncus nisi. Morbi ut bibendum est. Donec tincidunt nec tellus a egestas. Donec id tortor elementum, aliquet magna euismod, commodo felis. Sed a nulla viverra, malesuada nisi a, fringilla velit. Donec justo felis, cursus eu justo ac, vehicula consequat mauris. Duis a interdum lectus, eu dictum nibh. Cras ligula velit, vehicula et luctus a, cursus quis sapien. Aenean a molestie libero. Nam congue ultrices turpis, sed tempus arcu malesuada sit amet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam eu ligula eleifend, rutrum purus id, pharetra enim. Pellentesque a posuere ex, ac egestas quam. Etiam lobortis massa at elementum consectetur. Nullam tempor orci quis ligula eleifend auctor.</p>
+<p>Integer eget fringilla ex. Quisque ex ante, eleifend non massa a, tempus condimentum lorem. Donec a est sed enim ullamcorper posuere eu sed libero. Etiam sit amet tellus mi. Mauris dui risus, finibus sed turpis vitae, pulvinar pretium felis. Duis id metus at eros laoreet tempus. Nunc mattis efficitur dolor, nec maximus tellus commodo nec. Etiam ac molestie dolor, at hendrerit ante. Donec vehicula ipsum et mauris finibus, eu pellentesque felis rhoncus. Pellentesque viverra arcu sapien, ut lobortis ante ultrices vel. Vivamus quis justo nec ipsum vestibulum tempor. Nullam lacinia dui sed libero tempor tempus.</p>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between fixed-bottom">
+  <a href="#" class="navbar-brand">Navbar</a>
+  <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar1">
+    <span aria-hidden="true">&#8801;</span>
+  </button>
+
+  <div class="navbar-collapse collapse" id="navbar1">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Link</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link disabled">Disabled</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a href="#" class="nav-link">Other</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+</body>
+</html>

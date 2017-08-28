@@ -18,7 +18,8 @@
         this.isShown = null;
         this.scrollbarWidth = 0;
         this.scrollbarSide = 'right';
-        this.fixedContent = '.fixed-top, .fixed-botton, .is-fixed';
+        this.fixedContent = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top';
+        this.stickyContent = '.sticky-top';
         this.ignoreBackdropClick = false;
 
         var parsedData = this.$element.CFW_parseData('modal', CFW_Widget_Modal.DEFAULTS);
@@ -303,26 +304,27 @@
 
         setScrollbar : function() {
             var $selfRef = this;
+            var sideName = this.scrollbarSide.capitalize();
 
             if (this.bodyIsOverflowing) {
                 // Update fixed element padding
                 $(this.fixedContent).each(function() {
                     var $this = $(this);
-                    if ($selfRef.scrollbarSide === 'left') {
-                        $this.data('cfw.padding-dim', this.style.paddingLeft || '');
-                    } else {
-                        $this.data('cfw.padding-dim', this.style.paddingRight || '');
-                    }
+                    $this.data('cfw.padding-dim', this.style['padding' + sideName] || '');
                     var padding = parseFloat($this.css('padding-' + $selfRef.scrollbarSide) || 0);
                     $this.css('padding-' + $selfRef.scrollbarSide, padding + $selfRef.scrollbarWidth);
                 });
 
+                // Update sticky element margin
+                $(this.stickyContent).each(function() {
+                    var $this = $(this);
+                    $this.data('cfw.margin-dim', this.style['margin' + sideName] || '');
+                    var margin = parseFloat($this.css('margin-' + $selfRef.scrollbarSide) || 0);
+                    $this.css('margin-' + $selfRef.scrollbarSide, -(margin + $selfRef.scrollbarWidth));
+                });
+
                 // Update body padding
-                if (this.scrollbarSide === 'left') {
-                    this.$body.data('cfw.padding-dim', document.body.style.paddingLeft || '');
-                } else {
-                    this.$body.data('cfw.padding-dim', document.body.style.paddingRight || '');
-                }
+                this.$body.data('cfw.padding-dim', document.body.style['padding' + sideName] || '');
                 var padding = parseFloat(this.$body.css('padding-' + this.scrollbarSide) || 0);
                 this.$body.css('padding-' + this.scrollbarSide, padding + this.scrollbarWidth);
             }
@@ -339,6 +341,15 @@
                 $this.css('padding-' + $selfRef.scrollbarSide, padding);
                 $this.removeData('cfw.padding-dim');
             });
+
+            // Restore sticky element margin
+            $(this.stickyContent).each(function() {
+                var $this = $(this);
+                var margin = $this.data('cfw.margin-dim');
+                $this.css('margin-' + $selfRef.scrollbarSide, margin);
+                $this.removeData('cfw.margin-dim');
+            });
+
 
             // Restore body padding
             var padding = this.$body.data('cfw.padding-dim');

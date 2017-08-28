@@ -380,7 +380,7 @@ $(function() {
                 $trigger.CFW_Modal('hide');
             })
             .on('afterHide.cfw.modal', function() {
-                assert.strictEqual($body.data('cfw.padding-dim'), undefined, 'stored original body padding in data attribute');
+                assert.strictEqual($body.data('cfw.padding-dim'), undefined, 'padding in data attribute has been cleared');
                 $body.removeAttr('style');
                 done();
             });
@@ -459,6 +459,86 @@ $(function() {
                 var currentPadding = $element.css('padding-right');
                 assert.strictEqual(currentPadding, originalPadding, 'fixed element padding should be reset after closing');
                 $element.remove();
+                done();
+            });
+
+        $trigger.CFW_Modal();
+        $trigger.CFW_Modal('show');
+    });
+
+
+    QUnit.test('should store inline padding of fixed elements in data-cfw.padding-dim before showing', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var originalPadding = '0px';
+        var $element = $('<div class="fixed-top"></div>').appendTo('#qunit-fixture');
+
+        $element.css('padding-right', originalPadding);
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                assert.strictEqual($element.data('cfw.padding-dim'), originalPadding, 'stored original fixed element padding in data attribute');
+                $trigger.CFW_Modal('hide');
+            })
+            .on('afterHide.cfw.modal', function() {
+                assert.strictEqual($element.data('cfw.padding-dim'), undefined, 'padding in data attribute has been cleared');
+                $element.removeAttr('style');
+                done();
+            });
+
+        $trigger.CFW_Modal();
+        $trigger.CFW_Modal('show');
+    });
+
+    QUnit.test('should adjust the inline margin of sticky elements when opening and restore when closing', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var $element = $('<div class="sticky-top"></div>').appendTo('#qunit-fixture');
+        var originalMargin = $element.css('margin-right');
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                var expectedMargin = parseFloat(originalMargin) - $.CFW_measureScrollbar() + 'px';
+                var currentMargin = $element.css('margin-right');
+                assert.strictEqual(currentMargin, expectedMargin, 'sticky element margin should be adjusted while opening');
+                $trigger.CFW_Modal('hide');
+            })
+            .on('afterHide.cfw.modal', function() {
+                var currentMargin = $element.css('margin-right');
+                assert.strictEqual(currentMargin, originalMargin, 'sticky element margin should be reset after closing');
+                $element.remove();
+                done();
+            });
+
+        $trigger.CFW_Modal();
+        $trigger.CFW_Modal('show');
+    });
+
+    QUnit.test('should store inline margin of sticky elements in data-cfw.margin-dim before showing', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var originalMargin = '0px';
+        var $element = $('<div class="sticky-top"></div>').appendTo('#qunit-fixture');
+
+        $element.css('margin-right', originalMargin);
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                assert.strictEqual($element.data('cfw.margin-dim'), originalMargin, 'stored original sticky element margin in data attribute');
+                $trigger.CFW_Modal('hide');
+            })
+            .on('afterHide.cfw.modal', function() {
+                assert.strictEqual($element.data('cfw.margin-dim'), undefined, 'margin in data attribute has been cleared');
+                $element.removeAttr('style');
                 done();
             });
 
