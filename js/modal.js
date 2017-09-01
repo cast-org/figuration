@@ -328,7 +328,10 @@
                 var padding = parseFloat(this.$body.css('padding-' + this.scrollbarSide) || 0);
                 this.$body.css('padding-' + this.scrollbarSide, padding + this.scrollbarWidth);
             }
-            this.$target.CFW_trigger('scrollbarSet.cfw.modal');
+
+            this.$target
+                .on('touchmove.cfw.modal', $.proxy(this._scrollBlock, this))
+                .CFW_trigger('scrollbarSet.cfw.modal');
         },
 
         resetScrollbar : function() {
@@ -357,7 +360,24 @@
                 this.$body.css('padding-' + this.scrollbarSide, padding);
                 this.$body.removeData('cfw.padding-dim');
             }
-            this.$target.CFW_trigger('scrollbarReset.cfw.modal');
+
+            this.$target
+                .off('touchmove.cfw.modal')
+                .CFW_trigger('scrollbarReset.cfw.modal');
+        },
+
+        _scrollBlock : function(e) {
+            var top = this.$target[0].scrollTop;
+            var totalScroll = this.$target[0].scrollHeight;
+            var currentScroll = top + this.$target[0].offsetHeight;
+
+            if (top === 0 && currentScroll === totalScroll) {
+                e.preventDefault();
+            } else if (top === 0) {
+                this.$target[0].scrollTop = 1;
+            } else if (currentScroll === totalScroll) {
+                this.$target[0].scrollTop = top - 1;
+            }
         },
 
         backdrop : function(callback) {
