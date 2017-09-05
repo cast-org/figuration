@@ -608,7 +608,7 @@ $(function() {
             .CFW_Modal()
             .trigger('click');
 
-        setTimeout(function () {
+        setTimeout(function() {
             assert.strictEqual($('#modal-test').length, 0, 'target has not been parsed and added to the document');
             done();
         }, 1);
