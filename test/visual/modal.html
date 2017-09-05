@@ -63,8 +63,7 @@
   </div>
 </nav>
 
-
-<button class="btn btn-primary mt-1" data-cfw="modal" data-cfw-modal-target="#modal0">Launch small modal</button>
+<button class="btn btn-primary mt-1" type="button" data-cfw="modal" data-cfw-modal-target="#modal0">Launch small modal</button>
 <div class="modal" id="modal0">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -83,7 +82,7 @@
     </div>
 </div>
 
-<button class="btn btn-primary mt-1" data-cfw="modal" data-cfw-modal-target="#modal1">Launch scrolling modal</button>
+<button class="btn btn-primary mt-1" type="button" data-cfw="modal" data-cfw-modal-target="#modal1">Launch scrolling modal</button>
 <div class="modal" id="modal1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -103,6 +102,10 @@
         </div>
     </div>
 </div>
+
+<button class="btn btn-danger mt-1" type="button" data-cfw="modal" data-cfw-modal-target="&#x3C;div class=&#x22;modal fade the-bad&#x22; tabindex=&#x22;-1&#x22; role=&#x22;dialog&#x22;&#x3E;&#x3C;div class=&#x22;modal-dialog&#x22; role=&#x22;document&#x22;&#x3E;&#x3C;div class=&#x22;modal-content&#x22;&#x3E;&#x3C;div class=&#x22;modal-header&#x22;&#x3E;&#x3C;button type=&#x22;button&#x22; class=&#x22;close&#x22; data-cfw-dismiss=&#x22;modal&#x22; aria-label=&#x22;Close&#x22;&#x3E;&#x3C;span aria-hidden=&#x22;true&#x22;&#x3E;&#x26;times;&#x3C;/span&#x3E;&#x3C;/button&#x3E;&#x3C;h4 class=&#x22;modal-title&#x22;&#x3E;The Bad Modal&#x3C;/h4&#x3E;&#x3C;/div&#x3E;&#x3C;div class=&#x22;modal-body&#x22;&#x3E;This modal&#x27;s HTTML source code is declared inline, inside the data-target attribute of it&#x27;s show-button&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x3C;/div&#x3E;">
+    Modal with an XSS inside the data-cfw-modal-target
+</button>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse finibus convallis eros, eget porttitor neque tempor auctor. Aliquam elementum pretium tortor ut euismod. Aliquam vel dignissim augue. Cras auctor nec quam et iaculis. Praesent non augue vitae nulla varius cursus et eu diam. Nulla at blandit ante, at pellentesque ligula. Nunc sagittis arcu nec ornare sagittis. In a massa porta, hendrerit nulla a, tristique velit.</p>
 <p>Vivamus sollicitudin porttitor nisl, sed tempor leo. Maecenas ut rhoncus nisi. Morbi ut bibendum est. Donec tincidunt nec tellus a egestas. Donec id tortor elementum, aliquet magna euismod, commodo felis. Sed a nulla viverra, malesuada nisi a, fringilla velit. Donec justo felis, cursus eu justo ac, vehicula consequat mauris. Duis a interdum lectus, eu dictum nibh. Cras ligula velit, vehicula et luctus a, cursus quis sapien. Aenean a molestie libero. Nam congue ultrices turpis, sed tempus arcu malesuada sit amet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam eu ligula eleifend, rutrum purus id, pharetra enim. Pellentesque a posuere ex, ac egestas quam. Etiam lobortis massa at elementum consectetur. Nullam tempor orci quis ligula eleifend auctor.</p>
