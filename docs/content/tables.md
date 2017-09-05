@@ -21,10 +21,10 @@ Using the most basic table markup, here's how `.table`-based tables look in Figu
 <table class="table">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -48,10 +48,10 @@ Using the most basic table markup, here's how `.table`-based tables look in Figu
   </tbody>
   <tfoot>
     <tr>
-      <th></th>
-      <th>Table Footer 1</th>
-      <th>Table Footer 2</th>
-      <th>Table Footer 3</th>
+      <th scope="col"></th>
+      <th scope="col">Table Footer 1</th>
+      <th scope="col">Table Footer 2</th>
+      <th scope="col">Table Footer 3</th>
     </tr>
   </tfoot>
 </table>
@@ -63,10 +63,10 @@ You can also invert the colors---with light text on dark backgrounds---with `.ta
 <table class="table table-inverse">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -107,10 +107,10 @@ Similar to default and inverse tables, use one of two modifier classes to make `
 <table class="table">
   <thead class="thead-inverse">
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -137,10 +137,10 @@ Similar to default and inverse tables, use one of two modifier classes to make `
 <table class="table">
   <thead class="thead-default">
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -173,10 +173,10 @@ Just like the headers, use one of two modifier classes to make `<tfoot>`s appear
 <table class="table">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -211,10 +211,10 @@ Just like the headers, use one of two modifier classes to make `<tfoot>`s appear
 <table class="table">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -255,10 +255,10 @@ Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -287,10 +287,10 @@ Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`
 <table class="table table-striped table-inverse">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -323,10 +323,10 @@ Add `.table-bordered` for borders on all sides of the table and cells.
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -363,10 +363,10 @@ Add `.table-bordered` for borders on all sides of the table and cells.
 <table class="table table-bordered table-inverse">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -407,10 +407,10 @@ Add `.table-borderless` to remove borders from all sides of the cells, but leave
 <table class="table table-borderless">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -447,10 +447,10 @@ Add `.table-borderless` to remove borders from all sides of the cells, but leave
 <table class="table table-borderless table-inverse">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -491,10 +491,10 @@ Add `.table-noborder` to remove borders from all sides of the cells, including t
 <table class="table table-noborder">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -531,10 +531,10 @@ Add `.table-noborder` to remove borders from all sides of the cells, including t
 <table class="table table-noborder table-inverse">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -575,10 +575,10 @@ Mix `.table-bordered` along with `.table-borderless` or `.table-noborder` to var
 <table class="table table-bordered table-borderless">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -615,10 +615,10 @@ Mix `.table-bordered` along with `.table-borderless` or `.table-noborder` to var
 <table class="table table-bordered table-noborder">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -659,10 +659,10 @@ Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -691,10 +691,10 @@ Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
 <table class="table table-hover table-inverse">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -727,10 +727,10 @@ Add `.table-condensed` to make tables more compact by reducing the cell padding.
 <table class="table table-condensed">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -767,10 +767,10 @@ Add `.table-condensed` to make tables more compact by reducing the cell padding.
 <table class="table table-condensed table-inverse">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -859,10 +859,10 @@ Please refer to the [Accessiblity notes about conveying meaning with color]({{ s
   <table class="table">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Column heading</th>
-        <th>Column heading</th>
-        <th>Column heading</th>
+        <th scope="col">#</th>
+        <th scope="col">Column heading</th>
+        <th scope="col">Column heading</th>
+        <th scope="col">Column heading</th>
       </tr>
     </thead>
     <tbody>
@@ -956,10 +956,10 @@ Regular table background variants are not available with the inverse table, howe
   <table class="table table-inverse">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Column heading</th>
-        <th>Column heading</th>
-        <th>Column heading</th>
+        <th scope="col">#</th>
+        <th scope="col">Column heading</th>
+        <th scope="col">Column heading</th>
+        <th scope="col">Column heading</th>
       </tr>
     </thead>
     <tbody>
@@ -1053,10 +1053,10 @@ You can also use [text or background utilities]({{ site.baseurl }}/utilities/col
 <table class="table">
   <thead class="text-light bg-blue-500">
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -1104,15 +1104,15 @@ Scrolling tables make use of `overflow-y: hidden`, which clips off any content t
   <table class="table table-scroll">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
+        <th scope="col">#</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
       </tr>
     </thead>
     <tbody>
@@ -1168,15 +1168,15 @@ Scrolling tables make use of `overflow-y: hidden`, which clips off any content t
   <table class="table table-scroll table-bordered">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
+        <th scope="col">#</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
       </tr>
     </thead>
     <tbody>
@@ -1250,13 +1250,13 @@ Responsive variants are:
   <table class="table table-scroll-md-down">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
+        <th scope="col">#</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
       </tr>
     </thead>
     <tbody>
@@ -1300,4 +1300,42 @@ Responsive variants are:
       </tr>
     </tfoot>
   </table>
+{% endexample %}
+
+## Captions
+
+A `<caption>` functions like a heading for a table. It helps users with screen readers to find a table and understand what it’s about and decide if they want to read it.
+
+{% example html %}
+<table class="table">
+  <caption>List of users</caption>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>John</td>
+      <td>Doe</td>
+      <td>jdoe</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jane</td>
+      <td>Smith</td>
+      <td>jsmith</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>James</td>
+      <td>White</td>
+      <td>jwhite</td>
+    </tr>
+  </tbody>
+</table>
 {% endexample %}
