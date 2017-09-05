@@ -1,7 +1,12 @@
 $(function() {
     'use strict';
 
-    QUnit.module('CFW_Modal');
+    QUnit.module('CFW_Modal', {
+        before: function() {
+            // Simulate scrollbars in PhantomJS
+            $('html').css('padding-right', '16px');
+        }
+    });
 
     QUnit.test('should be defined on jquery object', function(assert) {
         assert.expect(1);
@@ -430,7 +435,7 @@ $(function() {
                 $trigger.CFW_Modal('hide');
             })
             .on('afterHide.cfw.modal', function() {
-                assert.ok(!$body.attr('style'), 'body does not have inline padding set');
+                assert.strictEqual($body.attr('style').indexOf('padding-right'), -1, 'body does not have inline padding set');
                 $style.remove();
                 done();
             });
@@ -590,6 +595,35 @@ $(function() {
             .on('afterHide.cfw.modal', function() {
                 assert.strictEqual($body[0].style.paddingRight, '5%', 'body does not have inline padding set');
                 $body.removeAttr('style');
+                done();
+            });
+
+        $trigger.CFW_Modal();
+        $trigger.CFW_Modal('show');
+    });
+
+    QUnit.test('should not adjust the inline body padding when it does not overflow', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        var $body = $(document.body);
+        var originalPadding = $body.css('padding-right');
+
+        // Hide scrollbars to prevent the body overflowing
+        $body.css('overflow', 'hidden');        // real scrollbar (for in-browser testing)
+        $('html').css('padding-right', '0px');  // simulated scrollbar (for PhantomJS)
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                var currentPadding = $body.css('padding-right');
+                assert.strictEqual(currentPadding, originalPadding, 'body padding should not be adjusted');
+                $(this).CFW_Modal('hide');
+
+                // restore scrollbars
+                $body.css('overflow', 'auto');
+                $('html').css('padding-right', '16px');
                 done();
             });
 
