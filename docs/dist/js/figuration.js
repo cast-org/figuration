@@ -3485,7 +3485,7 @@ if (typeof jQuery === 'undefined') {
             var totalScroll = this.$target[0].scrollHeight;
             var currentScroll = top + this.$target[0].offsetHeight;
 
-            if (top === 0 && currentScroll === totalScroll) {
+            if (top <= 0 && currentScroll >= totalScroll) {
                 e.preventDefault();
             } else if (top === 0) {
                 this.$target[0].scrollTop = 1;
