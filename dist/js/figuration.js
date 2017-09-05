@@ -3411,7 +3411,8 @@ if (typeof jQuery === 'undefined') {
         },
 
         checkScrollbar : function() {
-            this.bodyIsOverflowing = document.body.clientWidth < window.innerWidth;
+            var rect = document.body.getBoundingClientRect();
+            this.bodyIsOverflowing = rect.left + rect.right < window.innerWidth;
             this.scrollbarWidth = $.CFW_measureScrollbar();
             this.scrollbarSide =  $('html').CFW_getScrollbarSide();
         },

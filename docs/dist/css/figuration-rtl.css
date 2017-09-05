@@ -3982,21 +3982,15 @@ button.list-group-item-danger.active {
 }
 
 .breadcrumb {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
   list-style: none;
   background-color: #f0f0f0;
   border-radius: 0.25rem;
-}
-
-.breadcrumb::after {
-  display: block;
-  clear: both;
-  content: "";
-}
-
-.breadcrumb-item {
-  float: right;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
