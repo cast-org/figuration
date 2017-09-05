@@ -266,7 +266,7 @@ if (typeof jQuery === 'undefined') {
         }
 
         try {
-            var $selector = $(selector);
+            var $selector = $(document).find(selector);
             return $selector.length > 0 ? selector : null;
         } catch (error) {
             return null;
@@ -280,7 +280,7 @@ if (typeof jQuery === 'undefined') {
         }
 
         try {
-            var $setting = $(setting);
+            var $setting = $(document).find(setting);
             return $setting.length > 0 ? setting : null;
         } catch (error) {
             return null;
