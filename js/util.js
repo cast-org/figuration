@@ -194,6 +194,39 @@
     };
 
     // =====
+    // Image Loaded Detection
+    // =====
+
+    // Execute a callback when an image has been loaded
+    $.CFW_imageLoaded = function($img, callback) {
+        var img = $img[0];
+        var proxyImg = new Image();
+        var $proxyImg = $(proxyImg);
+
+        function _doCallback() {
+            $img
+                .add($proxyImg)
+                .off('load.cfw.imageLoaded');
+            callback();
+        }
+
+        function _isImageComplete() {
+            return img.complete && img.naturalWidth !== undefined;
+        }
+
+        if (_isImageComplete() && img.naturalWidth !== 0) {
+            _doCallback();
+            return;
+        }
+
+        $img
+            .add($proxyImg)
+            .off('load.cfw.imageLoaded')
+            .one('load.cfw.imageLoaded', _doCallback);
+        proxyImg.src = img.src;
+    };
+
+    // =====
     // Public Utils
     // =====
 

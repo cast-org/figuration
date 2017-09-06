@@ -202,29 +202,12 @@
                 callback($image[0]);
             }
 
-            function addEvent() {
-                $image.off('load').one('load', hasLoaded);
-
-                if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
-                    var src = $image.attr('src');
-                    var param = src.match(/\?/) ? '&' : '?';
-                    param += 'cfwequalize=' + (new Date()).getTime();
-                    $image.attr('src', src + param);
-                }
-            }
-
             if (!$image.attr('src')) {
                 hasLoaded();
                 return;
             }
 
-            if ($image.is('[data-cfw="lazy"]')) {
-                $image.one('afterShow.cfw.lazy', hasLoaded);
-            } else if ($image[0].complete || $image[0].readyState === 4) {
-                hasLoaded();
-            } else {
-                addEvent();
-            }
+            $.CFW_imageLoaded($image, hasLoaded);
         },
 
         dispose : function() {

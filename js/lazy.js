@@ -125,10 +125,12 @@
             this.$element.attr('src', this.settings.src);
             this.$element[this.settings.effect](this.settings.speed);
 
-            setTimeout(function() {
-                $selfRef.$element.CFW_trigger('afterShow.cfw.lazy');
-                $selfRef.dispose();
-            }, this.settings.speed);
+            $.CFW_imageLoaded(this.$element, function() {
+                setTimeout(function() {
+                    $selfRef.$element.CFW_trigger('afterShow.cfw.lazy');
+                    $selfRef.dispose();
+                }, $selfRef.settings.speed);
+            });
         },
 
         show : function() {
@@ -143,7 +145,7 @@
 
             setTimeout(function() {
                 $selfRef.loadSrc();
-            }, this.settings.delay);
+            }, $selfRef.settings.delay);
         },
 
         _handleTrigger : function() {
