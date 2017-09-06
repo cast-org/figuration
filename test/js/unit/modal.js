@@ -435,7 +435,7 @@ $(function() {
                 $trigger.CFW_Modal('hide');
             })
             .on('afterHide.cfw.modal', function() {
-                assert.strictEqual($body.attr('style').indexOf('padding-right'), -1, 'body does not have inline padding set');
+                assert.strictEqual($body[0].style.paddingRight, '', 'body does not have inline padding set');
                 $style.remove();
                 done();
             });
