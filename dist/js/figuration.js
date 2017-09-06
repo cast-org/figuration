@@ -215,6 +215,39 @@ if (typeof jQuery === 'undefined') {
     };
 
     // =====
+    // Image Loaded Detection
+    // =====
+
+    // Execute a callback when an image has been loaded
+    $.CFW_imageLoaded = function($img, callback) {
+        var img = $img[0];
+        var proxyImg = new Image();
+        var $proxyImg = $(proxyImg);
+
+        function _doCallback() {
+            $img
+                .add($proxyImg)
+                .off('load.cfw.imageLoaded');
+            callback();
+        }
+
+        function _isImageComplete() {
+            return img.complete && img.naturalWidth !== undefined;
+        }
+
+        if (_isImageComplete() && img.naturalWidth !== 0) {
+            _doCallback();
+            return;
+        }
+
+        $img
+            .add($proxyImg)
+            .off('load.cfw.imageLoaded')
+            .one('load.cfw.imageLoaded', _doCallback);
+        proxyImg.src = img.src;
+    };
+
+    // =====
     // Public Utils
     // =====
 
@@ -4594,10 +4627,12 @@ if (typeof jQuery === 'undefined') {
             this.$element.attr('src', this.settings.src);
             this.$element[this.settings.effect](this.settings.speed);
 
-            setTimeout(function() {
-                $selfRef.$element.CFW_trigger('afterShow.cfw.lazy');
-                $selfRef.dispose();
-            }, this.settings.speed);
+            $.CFW_imageLoaded(this.$element, function() {
+                setTimeout(function() {
+                    $selfRef.$element.CFW_trigger('afterShow.cfw.lazy');
+                    $selfRef.dispose();
+                }, $selfRef.settings.speed);
+            });
         },
 
         show : function() {
@@ -4612,7 +4647,7 @@ if (typeof jQuery === 'undefined') {
 
             setTimeout(function() {
                 $selfRef.loadSrc();
-            }, this.settings.delay);
+            }, $selfRef.settings.delay);
         },
 
         _handleTrigger : function() {
@@ -5397,29 +5432,12 @@ if (typeof jQuery === 'undefined') {
                 callback($image[0]);
             }
 
-            function addEvent() {
-                $image.off('load').one('load', hasLoaded);
-
-                if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
-                    var src = $image.attr('src');
-                    var param = src.match(/\?/) ? '&' : '?';
-                    param += 'cfwequalize=' + (new Date()).getTime();
-                    $image.attr('src', src + param);
-                }
-            }
-
             if (!$image.attr('src')) {
                 hasLoaded();
                 return;
             }
 
-            if ($image.is('[data-cfw="lazy"]')) {
-                $image.one('afterShow.cfw.lazy', hasLoaded);
-            } else if ($image[0].complete || $image[0].readyState === 4) {
-                hasLoaded();
-            } else {
-                addEvent();
-            }
+            $.CFW_imageLoaded($image, hasLoaded);
         },
 
         dispose : function() {
