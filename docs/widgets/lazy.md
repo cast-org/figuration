@@ -142,7 +142,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
-#### `.CFW_Lazy(options)</dt>`
+#### `.CFW_Lazy(options)`
 {:.no_toc}
 
 Activates the image as a lazy loaded element. Accepts an optional options `object`.
