@@ -219,15 +219,21 @@ if (typeof jQuery === 'undefined') {
     // =====
 
     // Execute a callback when an image has been loaded
-    $.CFW_imageLoaded = function($img, callback) {
+    $.CFW_imageLoaded = function($img, instance, callback) {
         var img = $img[0];
         var proxyImg = new Image();
         var $proxyImg = $(proxyImg);
 
+        if (instance === undefined) {
+            instance = '';
+        } else {
+            instance = '.' + instance;
+        }
+
         function _doCallback() {
             $img
                 .add($proxyImg)
-                .off('load.cfw.imageLoaded');
+                .off('load.cfw.imageLoaded' + instance);
             callback();
         }
 
@@ -242,8 +248,8 @@ if (typeof jQuery === 'undefined') {
 
         $img
             .add($proxyImg)
-            .off('load.cfw.imageLoaded')
-            .one('load.cfw.imageLoaded', _doCallback);
+            .off('load.cfw.imageLoaded' + instance)
+            .one('load.cfw.imageLoaded' + instance, _doCallback);
         proxyImg.src = img.src;
     };
 
@@ -4627,7 +4633,7 @@ if (typeof jQuery === 'undefined') {
             this.$element.attr('src', this.settings.src);
             this.$element[this.settings.effect](this.settings.speed);
 
-            $.CFW_imageLoaded(this.$element, function() {
+            $.CFW_imageLoaded(this.$element, this.instance, function() {
                 setTimeout(function() {
                     $selfRef.$element.CFW_trigger('afterShow.cfw.lazy');
                     $selfRef.dispose();
@@ -4659,7 +4665,9 @@ if (typeof jQuery === 'undefined') {
 
         dispose : function() {
             $(this.settings.container).off('.cfw.lazy.' + this.instance);
-            this.$element.off('.cfw.lazy')
+            this.$element
+                .off('.cfw.lazy')
+                .off('load.cfw.imageLoaded.' + this.instance)
                 .off('.cfw.mutate')
                 .removeData('cfw.lazy')
                 .removeAttr('data-cfw')
@@ -5388,56 +5396,16 @@ if (typeof jQuery === 'undefined') {
 
         update : function(nest) {
             var $selfRef = this;
-            if (nest === undefined || typeof nest === 'object') {
-                nest = false;
-            }
             var $images = this.$element.find('img');
-            this.imageLoaded($images, function() {
-                $selfRef.equalize(nest);
-            });
-        },
-
-        imageLoaded : function($images, callback) {
-            var $selfRef = this;
-            var unloaded = $images.length;
-
-            function imgHasHeight($images) {
-                var imgCount = $images.length;
-
-                for (var i = imgCount - 1; i >= 0; i--) {
-                    if ($images.attr('height') === undefined) {
-                        return false;
-                    }
-                }
-
-                return true;
-            }
-
-            if (unloaded === 0 || imgHasHeight($images)) {
-                callback($images);
-            }
-
-            $images.each(function() {
-                $selfRef.imageWatch($(this), function() {
-                    unloaded -= 1;
-                    if (unloaded === 0) {
-                        callback($images);
-                    }
+            if (!$images.length) {
+                $images.each(function() {
+                    $.CFW_imageLoaded($(this), $selfRef.instance, function() {
+                        $selfRef.equalize(nest);
+                    });
                 });
-            });
-        },
-
-        imageWatch : function($image, callback) {
-            function hasLoaded() {
-                callback($image[0]);
             }
 
-            if (!$image.attr('src')) {
-                hasLoaded();
-                return;
-            }
-
-            $.CFW_imageLoaded($image, hasLoaded);
+            this.equalize(nest);
         },
 
         dispose : function() {
@@ -5445,7 +5413,10 @@ if (typeof jQuery === 'undefined') {
             this.$element
                 .off('mutate.cfw.mutate')
                 .removeAttr('data-cfw-mutate')
-                .removeData('cfw.equalize');
+                .removeData('cfw.equalize')
+                .find('img')
+                .off('load.cfw.imageLoaded.' + this.instance);
+
             this.$target.CFW_mutationIgnore();
 
             this.$element = null;
