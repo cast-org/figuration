@@ -158,56 +158,16 @@
 
         update : function(nest) {
             var $selfRef = this;
-            if (nest === undefined || typeof nest === 'object') {
-                nest = false;
-            }
             var $images = this.$element.find('img');
-            this.imageLoaded($images, function() {
-                $selfRef.equalize(nest);
-            });
-        },
-
-        imageLoaded : function($images, callback) {
-            var $selfRef = this;
-            var unloaded = $images.length;
-
-            function imgHasHeight($images) {
-                var imgCount = $images.length;
-
-                for (var i = imgCount - 1; i >= 0; i--) {
-                    if ($images.attr('height') === undefined) {
-                        return false;
-                    }
-                }
-
-                return true;
-            }
-
-            if (unloaded === 0 || imgHasHeight($images)) {
-                callback($images);
-            }
-
-            $images.each(function() {
-                $selfRef.imageWatch($(this), function() {
-                    unloaded -= 1;
-                    if (unloaded === 0) {
-                        callback($images);
-                    }
+            if (!$images.length) {
+                $images.each(function() {
+                    $.CFW_imageLoaded($(this), $selfRef.instance, function() {
+                        $selfRef.equalize(nest);
+                    });
                 });
-            });
-        },
-
-        imageWatch : function($image, callback) {
-            function hasLoaded() {
-                callback($image[0]);
             }
 
-            if (!$image.attr('src')) {
-                hasLoaded();
-                return;
-            }
-
-            $.CFW_imageLoaded($image, hasLoaded);
+            this.equalize(nest);
         },
 
         dispose : function() {
@@ -215,7 +175,10 @@
             this.$element
                 .off('mutate.cfw.mutate')
                 .removeAttr('data-cfw-mutate')
-                .removeData('cfw.equalize');
+                .removeData('cfw.equalize')
+                .find('img')
+                .off('load.cfw.imageLoaded.' + this.instance);
+
             this.$target.CFW_mutationIgnore();
 
             this.$element = null;

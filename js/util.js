@@ -198,15 +198,21 @@
     // =====
 
     // Execute a callback when an image has been loaded
-    $.CFW_imageLoaded = function($img, callback) {
+    $.CFW_imageLoaded = function($img, instance, callback) {
         var img = $img[0];
         var proxyImg = new Image();
         var $proxyImg = $(proxyImg);
 
+        if (instance === undefined) {
+            instance = '';
+        } else {
+            instance = '.' + instance;
+        }
+
         function _doCallback() {
             $img
                 .add($proxyImg)
-                .off('load.cfw.imageLoaded');
+                .off('load.cfw.imageLoaded' + instance);
             callback();
         }
 
@@ -221,8 +227,8 @@
 
         $img
             .add($proxyImg)
-            .off('load.cfw.imageLoaded')
-            .one('load.cfw.imageLoaded', _doCallback);
+            .off('load.cfw.imageLoaded' + instance)
+            .one('load.cfw.imageLoaded' + instance, _doCallback);
         proxyImg.src = img.src;
     };
 

@@ -125,7 +125,7 @@
             this.$element.attr('src', this.settings.src);
             this.$element[this.settings.effect](this.settings.speed);
 
-            $.CFW_imageLoaded(this.$element, function() {
+            $.CFW_imageLoaded(this.$element, this.instance, function() {
                 setTimeout(function() {
                     $selfRef.$element.CFW_trigger('afterShow.cfw.lazy');
                     $selfRef.dispose();
@@ -157,7 +157,9 @@
 
         dispose : function() {
             $(this.settings.container).off('.cfw.lazy.' + this.instance);
-            this.$element.off('.cfw.lazy')
+            this.$element
+                .off('.cfw.lazy')
+                .off('load.cfw.imageLoaded.' + this.instance)
                 .off('.cfw.mutate')
                 .removeData('cfw.lazy')
                 .removeAttr('data-cfw')
