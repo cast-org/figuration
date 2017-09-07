@@ -73,6 +73,8 @@
                 $nested.each(function() {
                     var data = $(this).data('cfw.equalize');
                     if (data) { isNested = true; }
+
+                    $(this).CFW_Equalize('update', false);
                 });
                 if (isNested) { return; }
             }
