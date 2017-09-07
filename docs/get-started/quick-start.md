@@ -39,6 +39,8 @@ Essentially something like this:
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
+    <title>Hello, world!</title>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -83,6 +85,8 @@ When complete, the basic template for a right-to-left markup should look like th
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
+    <title>Hello, world!</title>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
