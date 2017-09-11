@@ -151,7 +151,9 @@
                 this.$focusLast.off('.cfw.' + this.type + '.focusLast');
             }
 
-            this.$target.CFW_transition(null, $.proxy(this._hideComplete, this));
+            // Use modal dialog, not modal container, since
+            // that is where the animation happens
+            this.$dialog.CFW_transition(null, $.proxy(this._hideComplete, this));
         },
 
         _showComplete : function() {
@@ -192,7 +194,9 @@
                     .CFW_trigger('afterShow.cfw.modal');
             }
 
-            this.$target.CFW_transition(null, complete);
+            // Use modal dialog, not modal container, since
+            // that is where the animation happens
+            this.$dialog.CFW_transition(null, complete);
         },
 
         _hideComplete : function() {
