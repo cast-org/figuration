@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Figuration - Equalize</title>
+
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
+
+<!--
+<script type="text/javascript" src="../../docs/assets/js/vendor/jquery.min.js"></script>
+<script type="text/javascript" src="../../dist/js/figuration.js"></script>
+-->
+
+<script type="text/javascript" src="../../docs/assets/js/vendor/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/util.js"></script>
+<script type="text/javascript" src="../../js/drag.js"></script>
+<script type="text/javascript" src="../../js/collapse.js"></script>
+<script type="text/javascript" src="../../js/dropdown.js"></script>
+<script type="text/javascript" src="../../js/tab.js"></script>
+<script type="text/javascript" src="../../js/affix.js"></script>
+<script type="text/javascript" src="../../js/tooltip.js"></script>
+<script type="text/javascript" src="../../js/popover.js"></script>
+<script type="text/javascript" src="../../js/modal.js"></script>
+<script type="text/javascript" src="../../js/tab-responsive.js"></script>
+<script type="text/javascript" src="../../js/accordion.js"></script>
+<script type="text/javascript" src="../../js/slideshow.js"></script>
+<script type="text/javascript" src="../../js/scrollspy.js"></script>
+<script type="text/javascript" src="../../js/alert.js"></script>
+<script type="text/javascript" src="../../js/button.js"></script>
+<script type="text/javascript" src="../../js/lazy.js"></script>
+<script type="text/javascript" src="../../js/slider.js"></script>
+<script type="text/javascript" src="../../js/equalize.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+    <h1 class="mb-1">Figuration - Equalize Visual Tests</h1>
+
+    <h2>Responsive Row - default mode</h2>
+    <div class="row" id="eq0" data-cfw="equalize" data-cfw-equalize-target=".card">
+        <div class="col-lg-4">
+            <div class="card card-block">
+                One<br />
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card card-block">
+                Two<br />
+                Two<br />
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card card-block">
+                Three<br />
+                Three<br />
+                Three<br />
+            </div>
+        </div>
+    </div>
+
+    <h2>Responsive Row - stacked mode</h2>
+    <div class="row" id="eq1" data-cfw="equalize" data-cfw-equalize-target=".card"  data-cfw-equalize-row="false" data-cfw-equalize-stack="true">
+        <div class="col-lg-4">
+            <div class="card card-block">
+                One<br />
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card card-block">
+                Two<br />
+                Two<br />
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card card-block">
+                Three<br />
+                Three<br />
+                Three<br />
+            </div>
+        </div>
+    </div>
+
+    <h2>Single Column - default mode</h2>
+    <p>Should not equalize</p>
+    <div class="row" id="eq2" data-cfw="equalize" data-cfw-equalize-target=".card">
+        <div class="col">
+            <div class="card card-block">
+                One<br />
+            </div>
+            <div class="card card-block">
+                Two<br />
+                Two<br />
+            </div>
+            <div class="card card-block">
+                Three<br />
+                Three<br />
+                Three<br />
+            </div>
+        </div>
+    </div>
+
+    <h2>Single Column - stacked mode</h2>
+    <p>Should not equalize</p>
+    <div class="row" id="eq3" data-cfw="equalize" data-cfw-equalize-target=".card" data-cfw-equalize-stack="true">
+        <div class="col">
+            <div class="card card-block">
+                One<br />
+            </div>
+            <div class="card card-block">
+                Two<br />
+                Two<br />
+            </div>
+            <div class="card card-block">
+                Three<br />
+                Three<br />
+                Three<br />
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<hr />
+
+<div class="container">
+    <div id="eqXRow0" data-cfw="equalize" data-cfw-equalize-target=".row2">
+    <div id="eqXRow1" data-cfw="equalize" data-cfw-equalize-target=".row1">
+    <div id="eqXRow2" data-cfw="equalize" data-cfw-equalize-target=".row0">
+        <div class="row">
+            <div class="col">
+                <div class="row0 card card-block">
+                    One<br />
+                </div>
+                <div class="row1 card card-block">
+                    One<br />
+                </div>
+                <div class="row2 card card-block">
+                    One<br />
+                </div>
+            </div>
+            <div class="col">
+                <div class="row0 card card-block">
+                    Two<br />
+                    Two<br />
+                </div>
+                <div class="row1 card card-block">
+                    Two<br />
+                    Two<br />
+                </div>
+                <div class="row2 card card-block">
+                    Two<br />
+                    Two<br />
+                </div>
+            </div>
+            <div class="col">
+                <div class="row0 card card-block">
+                    Three<br />
+                    Three<br />
+                    Three<br />
+                </div>
+                <div class="row1 card card-block">
+                    Three<br />
+                    Three<br />
+                    Three<br />
+                </div>
+                <div class="row2 card card-block">
+                    Three<br />
+                    Three<br />
+                    Three<br />
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <hr />
+
+    <p>
+        <button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal0">Modal - Nested Equalize</button>
+    </p>
+    <div class="modal" id="modal0">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Nested Equzlize</h4>
+                </div>
+                <div class="modal-body">
+                    <img data-cfw-lazy-src="../../docs/assets/img/test.gif" alt="test pattern" class="img-fluid" data-cfw="lazy" data-cfw-lazy-speed=1000 />
+    <div data-cfw="equalize" id="modalRow2" data-cfw-equalize-target=".row2">
+    <div data-cfw="equalize" id="modalRow1" data-cfw-equalize-target=".row1">
+    <div data-cfw="equalize" id="modalRow0" data-cfw-equalize-target=".row0">
+        <div class="row">
+            <div class="col">
+                <div class="row0 card card-block">
+                    One<br />
+                    <img data-cfw-lazy-src="../../docs/assets/img/test.gif" alt="test pattern" class="img-fluid" data-cfw="lazy" data-cfw-lazy-speed=1000 />
+                </div>
+                <div class="row1 card card-block">
+                    One<br />
+                </div>
+                <div class="row2 card card-block">
+                    One<br />
+                </div>
+            </div>
+            <div class="col">
+                <div class="row0 card card-block">
+                    Two<br />
+                    Two<br />
+                </div>
+                <div class="row1 card card-block">
+                    Two<br />
+                    Two<br />
+                </div>
+                <div class="row2 card card-block">
+                    Two<br />
+                    Two<br />
+                </div>
+            </div>
+            <div class="col">
+                <div class="row0 card card-block">
+                    Three<br />
+                    Three<br />
+                    Three<br />
+                </div>
+                <div class="row1 card card-block">
+                    Three<br />
+                    Three<br />
+                    Three<br />
+                </div>
+                <div class="row2 card card-block">
+                    Three<br />
+                    Three<br />
+                    Three<br />
+                    <img data-cfw-lazy-src="../../docs/assets/img/test.gif" alt="test pattern" class="img-fluid" data-cfw="lazy" data-cfw-lazy-speed=1000 />
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

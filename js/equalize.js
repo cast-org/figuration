@@ -30,6 +30,8 @@
 
     CFW_Widget_Equalize.prototype = {
         _init : function() {
+            var $selfRef = this;
+
             // Get group ID
             var groupID = this.settings.target;
             if ((groupID === undefined) || (groupID.length <= 0)) { return false; }
@@ -42,101 +44,100 @@
             }
             if (!this.$target.length) { return; }
 
-            this.$target.CFW_mutationListen();
-            var isNested = (!this.$element.parent().closest('[data-cfw="equalize"]').length) ? false : true;
-            if (!isNested) {
+            this.instance = $('<div/>').CFW_getID('cfw-equalize');
+
+            if (this._hasNested()) {
+                this.$element.on('afterEqual.cfw.equalize', function(e) {
+                    if (e.target !== $selfRef.$element[0]) {
+                        $selfRef._equalize();
+                    }
+                });
+            } else {
+                this.$target.CFW_mutationListen();
                 this.$element
                     .attr('data-cfw-mutate', '')
-                    .on('mutate.cfw.mutate', $.proxy(this.update, this));
+                    .on('mutate.cfw.mutate', $.proxy(this._equalize, this));
             }
 
-            this.instance = $('<div/>').CFW_getID('cfw-equalize');
-            this.$window.on('resize.cfw.equalize.' + this.instance, $.CFW_throttle($.proxy(this.update, this), this.settings.throttle));
+            this.$window.on('resize.cfw.equalize.' + this.instance, $.CFW_throttle($.proxy(this._equalize, this), this.settings.throttle));
 
             this.$element.attr('data-cfw', 'equalize');
             this.$element.CFW_trigger('init.cfw.equalize');
-            this.update(true);
+            this.update();
         },
 
-        equalize : function(nest) {
-            var $selfRef = this;
-            var isStacked = false;
-            var topOffset;
+        _hasNested : function() {
+            return (this.$element.find('[data-cfw="equalize"]').length > 0);
+        },
 
-            // Drop out if nested, wait until descendants are done
-            if (nest === undefined) {
-                nest = false;
-            }
-            var $nested = this.$element.find('[data-cfw="equalize"]');
-            var isNested = false;
-            if (!nest) {
-                $nested.each(function() {
-                    var data = $(this).data('cfw.equalize');
-                    if (data) { isNested = true; }
+        _isNested : function() {
+            return (this.$element.parentsUntil(document.body, '[data-cfw="equalize"]').length > 0);
+        },
 
-                    $(this).CFW_Equalize('update', false);
-                });
-                if (isNested) { return; }
+        _isStacked : function($targetElm) {
+            if (!$targetElm[0] || !$targetElm[1]) {
+                return false;
             }
+            return $targetElm[0].getBoundingClientRect().top !== $targetElm[1].getBoundingClientRect().top;
+        },
+
+        _equalize : function() {
+            var $targetElm = this.$target.filter(':visible');
+            if (!$targetElm.length) { return; }
+
             if (!this.$element.CFW_trigger('beforeEqual.cfw.equalize')) {
                 return;
             }
 
-            var $targetElm = this.$target.filter(':visible');
-            var total = $targetElm.length;
-            if (total <= 0) { return false; }
-
-            $targetElm.height('');
-
-            if (this.settings.row && !this.settings.stack) {
-                var rowOffset = 0;
-                var $rowElm = $();
-
-                $targetElm.each(function(count) {
-                    var $node = $(this);
-
-                    rowOffset = parseInt($node.offset().top, 10);
-                    if (rowOffset !== topOffset) {
-                        // Update current row
-                        if ($rowElm.length > 1) {
-                            $selfRef._applyHeight($rowElm);
-                        }
-                        // Start new row and get revised offset
-                        $rowElm = $();
-                        topOffset = parseInt($node.offset().top, 10);
-                    }
-
-                    // Continue on row
-                    $rowElm = $rowElm.add($node);
-
-                    // If last element - update remaining heights
-                    if (count === total - 1) {
-                        $selfRef._applyHeight($rowElm);
-                    }
-                });
-            } else {
-                if (!this.settings.stack) {
-                    topOffset = $targetElm.first().offset().top;
-                    $targetElm.each(function() {
-                        if ($(this).offset().top !== topOffset) {
-                            isStacked = true;
-                            return false;
-                        }
-                    });
-                }
-                if (!isStacked) {
-                    this._applyHeight($targetElm);
-                }
-            }
+            this._equalizeGroup($targetElm);
 
             this.$element.CFW_trigger('afterEqual.cfw.equalize');
+        },
 
-            // Handle any nested equalize
-            this.$element.parent().closest('[data-cfw="equalize"]').each(function() {
-                var $this = $(this);
-                var data = $this.data('cfw.equalize');
-                if (typeof data === 'object') {
-                    $this.CFW_Equalize('update', true);
+        _equalizeGroup : function($targetElm) {
+            $targetElm.height('');
+
+            if (!this.settings.row && !this.settings.stack) {
+                this._applyHeight($targetElm);
+                return;
+            }
+            if (!this.settings.stack && this._isStacked($targetElm)) {
+                return;
+            }
+            if (this.settings.row) {
+                this._equalizeByRow($targetElm);
+            } else {
+                this._applyHeight($targetElm);
+            }
+        },
+
+        _equalizeByRow : function($targetElm) {
+            var $selfRef = this;
+            var total = $targetElm.length;
+            var topOffset = $targetElm.first().offset().top;
+            var rowOffset = 0;
+            var $rowElm = $();
+
+            $targetElm.each(function(count) {
+                var $node = $(this);
+
+                rowOffset = $node.offset().top;
+                if (rowOffset !== topOffset) {
+                    // Update current row
+                    if ($rowElm.length > 1) {
+                        $selfRef._applyHeight($rowElm);
+                    }
+                    // Start new row and get revised offset
+                    $rowElm = $();
+                    topOffset = $node.offset().top;
+                }
+
+                // Continue on row
+                $rowElm = $rowElm.add($node);
+
+                // If last element - update remaining heights
+                if (count === total - 1) {
+                    $selfRef._applyHeight($rowElm);
                 }
             });
         },
@@ -158,18 +159,18 @@
             callback();
         },
 
-        update : function(nest) {
+        update : function() {
             var $selfRef = this;
             var $images = this.$element.find('img');
             if (!$images.length) {
                 $images.each(function() {
                     $.CFW_imageLoaded($(this), $selfRef.instance, function() {
-                        $selfRef.equalize(nest);
+                        $selfRef._equalize();
                     });
                 });
             }
 
-            this.equalize(nest);
+            this._equalize();
         },
 
         dispose : function() {
