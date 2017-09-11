@@ -2,7 +2,7 @@
 
 // Perfect circle
 .radius-circle {
-    border-radius: 50%;
+    border-radius: 50% !important;
 }
 
 // Radius - Default
@@ -20,8 +20,8 @@
 }
 
 // Radius removal
-@include radius-sides(0, 0);
-@include radius-corners(0, 0);
+@include radius-sides(0 !important, 0);
+@include radius-corners(0 !important, 0);
 
 // Border addition
 .border { border: $border-width solid $border-color !important; }
