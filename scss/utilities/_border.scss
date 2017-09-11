@@ -25,13 +25,33 @@
 
 // Border addition
 .border { border: $border-width solid $border-color !important; }
+.border-y {
+    border-top: $border-width solid $border-color !important;
+    border-bottom: $border-width solid $border-color !important;
+}
+.border-x {
+    border-right: $border-width solid $border-color !important;
+    border-left: $border-width solid $border-color !important;
+}
 
 // Border removal
 .border-0 { border: 0 !important; }
-.border-t-0 { border-top: 0 !important; }
-.border-e-0 { border-right: 0 !important; }
-.border-b-0 { border-bottom: 0 !important; }
-.border-s-0 { border-left: 0 !important; }
+.border-t-0,
+.border-y-0 {
+    border-top: 0 !important;
+}
+.border-e-0,
+.border-x-0 {
+    border-right: 0 !important;
+}
+.border-b-0,
+.border-y-0 {
+    border-bottom: 0 !important;
+}
+.border-s-0,
+.border-x-0 {
+    border-left: 0 !important;
+}
 
 
 // Border colors

@@ -114,12 +114,26 @@ When elements are of a square (1:1) aspect ratio, you can create a circle using 
 
 ## Border Addition
 
-Quickly add the default component border to an element with the `.border` utility class.
+Quickly add the default component border to an element with the `.border` utility class.  You can also add a border on the horizontal or vertical sides.
+
+Available border addition utilities are:
+* `.border` - for both all sides
+* `.border-x` - for both `left` and `right` sides
+* `.border-y` - for both `top` and `bottom` sides
 
 {% example html %}
-<div class="border p-0_5">
-  This div container has a border and some padding added.
+<div class="border p-0_5 mb-1">
+  This div container has a border on all sides, and some padding added.
 </div>
+
+<div class="border-x p-0_5 mb-1">
+  This div container has a border on the left and right sides, and some padding added.
+</div>
+
+<div class="border-y p-0_5">
+  This div container has a border on the top and bottom sides, and some padding added.
+</div>
+
 {% endexample %}
 
 ## Border Removal
@@ -133,6 +147,8 @@ Where *sides* is one of:
 * `b` - for the `bottom` side
 * `e` - for the `end` side
 * `s` - for the `start` side
+* `x` - for both `left` and `right` sides
+* `y` - for both `top` and `bottom` sides
 
 The *start/end sides* are designated as follows depending on which version of the Figuration CSS you are using.  The default `figuration.*.css` uses the `ltr` mode, where `figuration-rtl.*.css` uses the `rtl` mode.
 
@@ -151,4 +167,7 @@ See the following example of removing various borders from some buttons.
 <button type="button" class="btn radius-0 border-e-0">'end'</button>
 <button type="button" class="btn radius-0 border-b-0">bottom</button>
 <button type="button" class="btn radius-0 border-s-0">'start'</button>
+<br />
+<button type="button" class="btn radius-0 border-x-0">left and right</button>
+<button type="button" class="btn radius-0 border-y-0">top and bottom</button>
 {% endexample %}
