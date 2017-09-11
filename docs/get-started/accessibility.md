@@ -77,7 +77,7 @@ Some solutions include:
 - Add a `tabindex="-1"` attribute on disabled links to prevent them from receiving keyboard focus.
 - Use custom JavaScript to disable their functionality. For example:
 {% highlight js %}
-$('.disabled').click(function(e) {
+$('.disabled').on('click', function(e) {
     e.preventDefault();
 });
 {% endhighlight %}

@@ -24,7 +24,7 @@ The modal widget allows you to add dialog style windows to your site or applicat
 - The [`autofocus`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-autofocus) HTML attribute has no effect in modals. To achieve the same effect you will need some custom JavaScript:
 {% highlight js %}
 $('#myModal').on('afterShow.cfw.modal', function() {
-  $('#myInput').focus();
+  $('#myInput').trigger('focus');
 });
 {% endhighlight %}
 

@@ -214,7 +214,7 @@ $(window).ready(function() {
     $('.cf-example-indeterminate [type="checkbox"]').prop('indeterminate', true);
 
     // Disable empty links in docs examples
-    $('.cf-content [href="#"]').click(function(e) {
+    $('.cf-content [href="#"]').on('click', function(e) {
         e.preventDefault();
     });
 
