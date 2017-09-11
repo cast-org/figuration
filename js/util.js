@@ -143,7 +143,9 @@
     }
 
     $.fn.CFW_mutateTrigger = function() {
-        this.find('[data-cfw-mutate]').triggerHandler('mutate.cfw.mutate');
+        this.find('[data-cfw-mutate]').each(function() {
+            $(this).triggerHandler('mutate.cfw.mutate');
+        });
         return this;
     };
 
