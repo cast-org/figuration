@@ -9026,23 +9026,37 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   border: 1px solid #a3a3a3 !important;
 }
 
+.border-y {
+  border-top: 1px solid #a3a3a3 !important;
+  border-bottom: 1px solid #a3a3a3 !important;
+}
+
+.border-x {
+  border-left: 1px solid #a3a3a3 !important;
+  border-right: 1px solid #a3a3a3 !important;
+}
+
 .border-0 {
   border: 0 !important;
 }
 
-.border-t-0 {
+.border-t-0,
+.border-y-0 {
   border-top: 0 !important;
 }
 
-.border-e-0 {
+.border-e-0,
+.border-x-0 {
   border-left: 0 !important;
 }
 
-.border-b-0 {
+.border-b-0,
+.border-y-0 {
   border-bottom: 0 !important;
 }
 
-.border-s-0 {
+.border-s-0,
+.border-x-0 {
   border-right: 0 !important;
 }
 
