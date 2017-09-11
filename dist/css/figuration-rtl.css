@@ -8779,7 +8779,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
 }
 
 .radius-circle {
-  border-radius: 50%;
+  border-radius: 50% !important;
 }
 
 .radius {
@@ -8983,43 +8983,43 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
 }
 
 .radius-0 {
-  border-radius: 0;
+  border-radius: 0 !important;
 }
 
 .radius-t-0 {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 
 .radius-e-0 {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
 }
 
 .radius-b-0 {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 
 .radius-s-0 {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 
 .radius-te-0 {
-  border-top-left-radius: 0;
+  border-top-left-radius: 0 !important;
 }
 
 .radius-ts-0 {
-  border-top-right-radius: 0;
+  border-top-right-radius: 0 !important;
 }
 
 .radius-be-0 {
-  border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0 !important;
 }
 
 .radius-bs-0 {
-  border-bottom-right-radius: 0;
+  border-bottom-right-radius: 0 !important;
 }
 
 .border {
