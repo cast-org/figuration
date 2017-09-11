@@ -176,7 +176,8 @@
             // Mutation handler
             this.$target
                 .attr('data-cfw-mutate', '')
-                .CFW_mutationListen()
+                // If enabled will cause infinite loop of updates
+                // .CFW_mutationListen()
                 .on('mutate.cfw.mutate', function() {
                     $selfRef.handleUpdate();
                 });
