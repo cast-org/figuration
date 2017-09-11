@@ -63,7 +63,6 @@
                 'tabindex': -1,
                 'role': 'tab',
                 'aria-selected': 'false',
-                'aria-expanded': 'false',
                 'aria-controls': this.$target.attr('id')
             });
 
@@ -82,8 +81,7 @@
             if (this.$element.hasClass('active')) {
                 this.$element.attr({
                     'tabindex': 0,
-                    'aria-selected': 'true',
-                    'aria-expanded': 'true'
+                    'aria-selected': 'true'
                 });
                 this.$target.addClass('active');
 
@@ -98,8 +96,7 @@
 
                 this.$element.attr({
                     'tabindex': 0,
-                    'aria-selected': 'true',
-                    'aria-expanded': 'true'
+                    'aria-selected': 'true'
                 });
                 this.$target.addClass('active');
 
@@ -141,16 +138,14 @@
             if ($previous.length) {
                 $previous.attr({
                         'tabindex': -1,
-                        'aria-selected': 'false',
-                        'aria-expanded': 'false'
+                        'aria-selected': 'false'
                     })
                     .CFW_trigger('afterHide.cfw.tab', { relatedTarget: this.$element[0] });
             }
 
             this.$element.attr({
                 'tabindex': 0,
-                'aria-selected': 'true',
-                'aria-expanded': 'true'
+                'aria-selected': 'true'
             });
 
             this._activateTab(this.$element, this.$navElm, false, $previous);

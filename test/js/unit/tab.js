@@ -175,37 +175,6 @@ $(function() {
         $last.CFW_Tab('show');
     });
 
-    QUnit.test('selected tab should have aria-expanded', function(assert) {
-        assert.expect(8);
-        var tabsHTML = '<ul class="tabs">'
-            + '<li><a href="#home" data-cfw="tab">Home</a></li>'
-            + '<li><a href="#profile" data-cfw="tab">Profile</a></li>'
-            + '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
-        $(tabsHTML).appendTo('#qunit-fixture');
-        var $tabsObj = $('.tabs');
-
-        var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
-        var $first = $tabs.first();
-        var $last = $tabs.last();
-
-        $first.CFW_Tab('show');
-        assert.strictEqual($tabsObj.find('a.active').attr('aria-expanded'), 'true', 'shown tab has aria-expanded = true');
-        assert.strictEqual($tabsObj.find('a:not(.active)').attr('aria-expanded'), 'false', 'hidden tab has aria-expanded = false');
-
-        $last.trigger('click');
-        assert.strictEqual($tabsObj.find('a.active').attr('aria-expanded'), 'true', 'after click, shown tab has aria-expanded = true');
-        assert.strictEqual($tabsObj.find('a:not(.active)').attr('aria-expanded'), 'false', 'after click, hidden tab has aria-expanded = false');
-
-        $first.CFW_Tab('show');
-        assert.strictEqual($tabsObj.find('a.active').attr('aria-expanded'), 'true', 'shown tab has aria-expanded = true');
-        assert.strictEqual($tabsObj.find('a:not(.active)').attr('aria-expanded'), 'false', 'hidden tab has aria-expanded = false');
-
-        $first.trigger('click');
-        assert.strictEqual($tabsObj.find('a.active').attr('aria-expanded'), 'true', 'after second show event, shown tab still has aria-expanded = true');
-        assert.strictEqual($tabsObj.find('a:not(.active)').attr('aria-expanded'), 'false', 'after second show event, hidden tab has aria-expanded = false');
-    });
-
     QUnit.test('selected tab should have aria-selected', function(assert) {
         assert.expect(8);
         var tabsHTML = '<ul class="tabs">'
