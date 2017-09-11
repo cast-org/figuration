@@ -28,7 +28,7 @@ Here are our guidelines and reasons for choosing what to override in Reboot:
 
 The `<html>` and `<body>` elements are updated to provide better page-wide defaults. More specifically:
 
-- The `box-sizing` is globally set on every element---including `*:before` and `*:after`, to `border-box`. This ensures that the declared width of element is never exceeded due to padding or border.
+- The `box-sizing` is globally set on every element---including `*::before` and `*::after`, to `border-box`. This ensures that the declared width of element is never exceeded due to padding or border.
 - A base `font-size: 100%` (assuming a 16px browser default) is declared on the `<html>` and `font-size: 1rem` on the `<body>` for easy responsive type-scaling via media queries while respecting user preferences allowing for a more accessible approach.
 - The `<body>` also sets a global `font-family`, `line-height`, and `text-align`. This is inherited later by some form elements to prevent font inconsistencies.
 - For safety, the `<body>` has a declared `background-color`, defaulting to `#fff`.
