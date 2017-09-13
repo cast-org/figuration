@@ -95,7 +95,7 @@
 // the default flexbox row orienation. Requires the use of `flex-wrap: wrap`
 // on the `.navbar` parent.
 .navbar-collapse {
-    flex-grow: 1;
+    flex: 1 1 100%;
     // Align content vertically in all instances.  Use flexbox utils to override.
     align-items: center;
 }
