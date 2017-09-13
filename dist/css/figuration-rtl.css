@@ -1,5 +1,5 @@
 /*!
- * Figuration (v3.0.0)
+ * Figuration (v3.0.1)
  * http://figuration.org
  * Copyright 2013-2017 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
@@ -255,7 +255,7 @@ a,
 area,
 button,
 [role="button"],
-input,
+input:not([type="range"]),
 label,
 select,
 summary,
@@ -3982,21 +3982,15 @@ button.list-group-item-danger.active {
 }
 
 .breadcrumb {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
   list-style: none;
   background-color: #f0f0f0;
   border-radius: 0.25rem;
-}
-
-.breadcrumb::after {
-  display: block;
-  clear: both;
-  content: "";
-}
-
-.breadcrumb-item {
-  float: right;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
@@ -4600,8 +4594,8 @@ li .dropdown-header {
 }
 
 .navbar-collapse {
-  -ms-flex-preferred-size: 100%;
-      flex-basis: 100%;
+  -ms-flex: 1 1 100%;
+      flex: 1 1 100%;
   -ms-flex-align: center;
       align-items: center;
 }
@@ -8785,7 +8779,7 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
 }
 
 .radius-circle {
-  border-radius: 50%;
+  border-radius: 50% !important;
 }
 
 .radius {
@@ -8989,66 +8983,80 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
 }
 
 .radius-0 {
-  border-radius: 0;
+  border-radius: 0 !important;
 }
 
 .radius-t-0 {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
 }
 
 .radius-e-0 {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
 }
 
 .radius-b-0 {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 
 .radius-s-0 {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 
 .radius-te-0 {
-  border-top-left-radius: 0;
+  border-top-left-radius: 0 !important;
 }
 
 .radius-ts-0 {
-  border-top-right-radius: 0;
+  border-top-right-radius: 0 !important;
 }
 
 .radius-be-0 {
-  border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0 !important;
 }
 
 .radius-bs-0 {
-  border-bottom-right-radius: 0;
+  border-bottom-right-radius: 0 !important;
 }
 
 .border {
   border: 1px solid #a3a3a3 !important;
 }
 
+.border-y {
+  border-top: 1px solid #a3a3a3 !important;
+  border-bottom: 1px solid #a3a3a3 !important;
+}
+
+.border-x {
+  border-left: 1px solid #a3a3a3 !important;
+  border-right: 1px solid #a3a3a3 !important;
+}
+
 .border-0 {
   border: 0 !important;
 }
 
-.border-t-0 {
+.border-t-0,
+.border-y-0 {
   border-top: 0 !important;
 }
 
-.border-e-0 {
+.border-e-0,
+.border-x-0 {
   border-left: 0 !important;
 }
 
-.border-b-0 {
+.border-b-0,
+.border-y-0 {
   border-bottom: 0 !important;
 }
 
-.border-s-0 {
+.border-s-0,
+.border-x-0 {
   border-right: 0 !important;
 }
 

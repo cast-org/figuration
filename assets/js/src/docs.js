@@ -1,5 +1,5 @@
 /*!
- * Figuration (v3.0.0)
+ * Figuration (v3.0.1)
  * http://figuration.org
  * Copyright 2013-2017 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
@@ -214,7 +214,7 @@ $(window).ready(function() {
     $('.cf-example-indeterminate [type="checkbox"]').prop('indeterminate', true);
 
     // Disable empty links in docs examples
-    $('.cf-content [href="#"]').click(function(e) {
+    $('.cf-content [href="#"]').on('click', function(e) {
         e.preventDefault();
     });
 

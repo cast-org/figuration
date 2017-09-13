@@ -74,7 +74,7 @@
     <button class="navbar-toggle flex-first me-0_5" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
         <span class="cf-header-menu" aria-hidden="true">&#8801;</span>
     </button>
-    <div class="navbar-collapse collapse flex-last flex-lg-unordered flex-lg-shrink text-nowrap" id="cf-topnav">
+    <div class="navbar-collapse collapse flex-last flex-lg-unordered text-nowrap" id="cf-topnav">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a href="/get-started/quick-start/" class="nav-link ">Get Started</a>
@@ -335,6 +335,7 @@
   <li><a href="#condensed-table" id="markdown-toc-condensed-table">Condensed Table</a></li>
   <li><a href="#contextual-classes" id="markdown-toc-contextual-classes">Contextual Classes</a></li>
   <li><a href="#scrolling-tables" id="markdown-toc-scrolling-tables">Scrolling Tables</a></li>
+  <li><a href="#captions" id="markdown-toc-captions">Captions</a></li>
 </ul>
 
 <h2 id="examples">Examples</h2>
@@ -345,10 +346,10 @@
 <table class="table">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -372,10 +373,10 @@
   </tbody>
   <tfoot>
     <tr>
-      <th></th>
-      <th>Table Footer 1</th>
-      <th>Table Footer 2</th>
-      <th>Table Footer 3</th>
+      <th scope="col"></th>
+      <th scope="col">Table Footer 1</th>
+      <th scope="col">Table Footer 2</th>
+      <th scope="col">Table Footer 3</th>
     </tr>
   </tfoot>
 </table>
@@ -383,10 +384,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -410,10 +411,10 @@
   <span class="nt">&lt;/tbody&gt;</span>
   <span class="nt">&lt;tfoot&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Footer 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Footer 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Footer 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Footer 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Footer 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Footer 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/tfoot&gt;</span>
 <span class="nt">&lt;/table&gt;</span></code></pre></div>
@@ -424,10 +425,10 @@
 <table class="table table-inverse">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -462,10 +463,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-inverse"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -505,10 +506,10 @@
 <table class="table">
   <thead class="thead-inverse">
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -535,10 +536,10 @@
 <table class="table">
   <thead class="thead-default">
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -565,10 +566,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead</span> <span class="na">class=</span><span class="s">"thead-inverse"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -595,10 +596,10 @@
 <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead</span> <span class="na">class=</span><span class="s">"thead-default"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -630,10 +631,10 @@
 <table class="table">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -668,10 +669,10 @@
 <table class="table">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -706,10 +707,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -744,10 +745,10 @@
 <span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -787,10 +788,10 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -817,10 +818,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-striped"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -848,10 +849,10 @@
 <table class="table table-striped table-inverse">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -878,10 +879,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-striped table-inverse"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -913,10 +914,10 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -951,10 +952,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-bordered"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -990,10 +991,10 @@
 <table class="table table-bordered table-inverse">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -1028,10 +1029,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-bordered table-inverse"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -1071,10 +1072,10 @@
 <table class="table table-borderless">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -1109,10 +1110,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-borderless"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -1148,10 +1149,10 @@
 <table class="table table-borderless table-inverse">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -1186,10 +1187,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-borderless table-inverse"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -1229,10 +1230,10 @@
 <table class="table table-noborder">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -1267,10 +1268,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-noborder"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -1306,10 +1307,10 @@
 <table class="table table-noborder table-inverse">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -1344,10 +1345,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-noborder table-inverse"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -1387,10 +1388,10 @@
 <table class="table table-bordered table-borderless">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -1425,10 +1426,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-bordered table-borderless"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -1464,10 +1465,10 @@
 <table class="table table-bordered table-noborder">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -1502,10 +1503,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-bordered table-noborder"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -1545,10 +1546,10 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -1575,10 +1576,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-hover"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -1606,10 +1607,10 @@
 <table class="table table-hover table-inverse">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -1636,10 +1637,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-hover table-inverse"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -1671,10 +1672,10 @@
 <table class="table table-condensed">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -1709,10 +1710,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-condensed"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -1748,10 +1749,10 @@
 <table class="table table-condensed table-inverse">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -1786,10 +1787,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-condensed table-inverse"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -1876,10 +1877,10 @@
   <table class="table">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Column heading</th>
-        <th>Column heading</th>
-        <th>Column heading</th>
+        <th scope="col">#</th>
+        <th scope="col">Column heading</th>
+        <th scope="col">Column heading</th>
+        <th scope="col">Column heading</th>
       </tr>
     </thead>
     <tbody>
@@ -1971,10 +1972,10 @@
   <table class="table table-inverse">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Column heading</th>
-        <th>Column heading</th>
-        <th>Column heading</th>
+        <th scope="col">#</th>
+        <th scope="col">Column heading</th>
+        <th scope="col">Column heading</th>
+        <th scope="col">Column heading</th>
       </tr>
     </thead>
     <tbody>
@@ -2066,10 +2067,10 @@
 <table class="table">
   <thead class="text-light bg-blue-500">
     <tr>
-      <th>#</th>
-      <th>Table Header 1</th>
-      <th>Table Header 2</th>
-      <th>Table Header 3</th>
+      <th scope="col">#</th>
+      <th scope="col">Table Header 1</th>
+      <th scope="col">Table Header 2</th>
+      <th scope="col">Table Header 3</th>
     </tr>
   </thead>
   <tbody>
@@ -2104,10 +2105,10 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;thead</span> <span class="na">class=</span><span class="s">"text-light bg-blue-500"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;tr&gt;</span>
-      <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
-      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
     <span class="nt">&lt;/tr&gt;</span>
   <span class="nt">&lt;/thead&gt;</span>
   <span class="nt">&lt;tbody&gt;</span>
@@ -2153,15 +2154,15 @@
   <table class="table table-scroll">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
+        <th scope="col">#</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
       </tr>
     </thead>
     <tbody>
@@ -2217,15 +2218,15 @@
   <table class="table table-scroll table-bordered">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
+        <th scope="col">#</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
       </tr>
     </thead>
     <tbody>
@@ -2299,13 +2300,13 @@
 <table class="table table-scroll-md-down">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
+        <th scope="col">#</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
       </tr>
     </thead>
     <tbody>
@@ -2353,13 +2354,13 @@
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-scroll-md-down"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;thead&gt;</span>
       <span class="nt">&lt;tr&gt;</span>
-        <span class="nt">&lt;th&gt;</span>#<span class="nt">&lt;/th&gt;</span>
-        <span class="nt">&lt;th&gt;</span>Table heading<span class="nt">&lt;/th&gt;</span>
-        <span class="nt">&lt;th&gt;</span>Table heading<span class="nt">&lt;/th&gt;</span>
-        <span class="nt">&lt;th&gt;</span>Table heading<span class="nt">&lt;/th&gt;</span>
-        <span class="nt">&lt;th&gt;</span>Table heading<span class="nt">&lt;/th&gt;</span>
-        <span class="nt">&lt;th&gt;</span>Table heading<span class="nt">&lt;/th&gt;</span>
-        <span class="nt">&lt;th&gt;</span>Table heading<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table heading<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table heading<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table heading<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table heading<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table heading<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Table heading<span class="nt">&lt;/th&gt;</span>
       <span class="nt">&lt;/tr&gt;</span>
     <span class="nt">&lt;/thead&gt;</span>
     <span class="nt">&lt;tbody&gt;</span>
@@ -2404,6 +2405,74 @@
     <span class="nt">&lt;/tfoot&gt;</span>
   <span class="nt">&lt;/table&gt;</span></code></pre></div>
 
+<h2 id="captions">Captions</h2>
+
+<p>A <code class="highlighter-rouge">&lt;caption&gt;</code> functions like a heading for a table. It helps users with screen readers to find a table and understand what it’s about and decide if they want to read it.</p>
+
+<div class="cf-example" data-example-id="">
+<table class="table">
+  <caption>List of users</caption>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>John</td>
+      <td>Doe</td>
+      <td>jdoe</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jane</td>
+      <td>Smith</td>
+      <td>jsmith</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>James</td>
+      <td>White</td>
+      <td>jwhite</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;caption&gt;</span>List of users<span class="nt">&lt;/caption&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>#<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>First Name<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Last Name<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>Username<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>John<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>Doe<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>jdoe<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>Jane<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>Smith<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>jsmith<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"row"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;td&gt;</span>James<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>White<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>jwhite<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
 
             </main>
         </div>
@@ -2416,7 +2485,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.0
+            Current version: 3.0.1
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>

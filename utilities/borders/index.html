@@ -74,7 +74,7 @@
     <button class="navbar-toggle flex-first me-0_5" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
         <span class="cf-header-menu" aria-hidden="true">&#8801;</span>
     </button>
-    <div class="navbar-collapse collapse flex-last flex-lg-unordered flex-lg-shrink text-nowrap" id="cf-topnav">
+    <div class="navbar-collapse collapse flex-last flex-lg-unordered text-nowrap" id="cf-topnav">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a href="/get-started/quick-start/" class="nav-link ">Get Started</a>
@@ -522,15 +522,38 @@
 
 <h2 id="border-addition">Border Addition</h2>
 
-<p>Quickly add the default component border to an element with the <code class="highlighter-rouge">.border</code> utility class.</p>
+<p>Quickly add the default component border to an element with the <code class="highlighter-rouge">.border</code> utility class.  You can also add a border on the horizontal or vertical sides.</p>
+
+<p>Available border addition utilities are:</p>
+<ul>
+  <li><code class="highlighter-rouge">.border</code> - for both all sides</li>
+  <li><code class="highlighter-rouge">.border-x</code> - for both <code class="highlighter-rouge">left</code> and <code class="highlighter-rouge">right</code> sides</li>
+  <li><code class="highlighter-rouge">.border-y</code> - for both <code class="highlighter-rouge">top</code> and <code class="highlighter-rouge">bottom</code> sides</li>
+</ul>
 
 <div class="cf-example" data-example-id="">
-<div class="border p-0_5">
-  This div container has a border and some padding added.
+<div class="border p-0_5 mb-1">
+  This div container has a border on all sides, and some padding added.
+</div>
+
+<div class="border-x p-0_5 mb-1">
+  This div container has a border on the left and right sides, and some padding added.
+</div>
+
+<div class="border-y p-0_5">
+  This div container has a border on the top and bottom sides, and some padding added.
 </div>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"border p-0_5"</span><span class="nt">&gt;</span>
-  This div container has a border and some padding added.
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"border p-0_5 mb-1"</span><span class="nt">&gt;</span>
+  This div container has a border on all sides, and some padding added.
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"border-x p-0_5 mb-1"</span><span class="nt">&gt;</span>
+  This div container has a border on the left and right sides, and some padding added.
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"border-y p-0_5"</span><span class="nt">&gt;</span>
+  This div container has a border on the top and bottom sides, and some padding added.
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 <h2 id="border-removal">Border Removal</h2>
@@ -545,6 +568,8 @@
   <li><code class="highlighter-rouge">b</code> - for the <code class="highlighter-rouge">bottom</code> side</li>
   <li><code class="highlighter-rouge">e</code> - for the <code class="highlighter-rouge">end</code> side</li>
   <li><code class="highlighter-rouge">s</code> - for the <code class="highlighter-rouge">start</code> side</li>
+  <li><code class="highlighter-rouge">x</code> - for both <code class="highlighter-rouge">left</code> and <code class="highlighter-rouge">right</code> sides</li>
+  <li><code class="highlighter-rouge">y</code> - for both <code class="highlighter-rouge">top</code> and <code class="highlighter-rouge">bottom</code> sides</li>
 </ul>
 
 <p>The <em>start/end sides</em> are designated as follows depending on which version of the Figuration CSS you are using.  The default <code class="highlighter-rouge">figuration.*.css</code> uses the <code class="highlighter-rouge">ltr</code> mode, where <code class="highlighter-rouge">figuration-rtl.*.css</code> uses the <code class="highlighter-rouge">rtl</code> mode.</p>
@@ -572,12 +597,18 @@
 <button type="button" class="btn radius-0 border-e-0">'end'</button>
 <button type="button" class="btn radius-0 border-b-0">bottom</button>
 <button type="button" class="btn radius-0 border-s-0">'start'</button>
+<br />
+<button type="button" class="btn radius-0 border-x-0">left and right</button>
+<button type="button" class="btn radius-0 border-y-0">top and bottom</button>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn radius-0 border-0"</span><span class="nt">&gt;</span>all<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn radius-0 border-t-0"</span><span class="nt">&gt;</span>top<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn radius-0 border-e-0"</span><span class="nt">&gt;</span>'end'<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn radius-0 border-b-0"</span><span class="nt">&gt;</span>bottom<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn radius-0 border-s-0"</span><span class="nt">&gt;</span>'start'<span class="nt">&lt;/button&gt;</span></code></pre></div>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn radius-0 border-s-0"</span><span class="nt">&gt;</span>'start'<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn radius-0 border-x-0"</span><span class="nt">&gt;</span>left and right<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn radius-0 border-y-0"</span><span class="nt">&gt;</span>top and bottom<span class="nt">&lt;/button&gt;</span></code></pre></div>
 
 
             </main>
@@ -591,7 +622,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.0
+            Current version: 3.0.1
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>
