@@ -1,7 +1,7 @@
 {
   "name": "figuration",
   "description": "A feature rich, responsive, mobile first, accessible, front-end framework inspired by Bootstrap.",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "keywords": [
     "css",
     "sass",
