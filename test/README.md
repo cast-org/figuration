@@ -40,7 +40,7 @@ QUnit.test('should describe the unit being tested', function(assert) {
         + '</div>';
     var $alert = $(templateHTML).appendTo('#qunit-fixture').CFW_Alert();
 
-    $alert.find('.close').click();
+    $alert.find('.close').trigger('click');
 
     // Make assertion
     assert.strictEqual($alert.hasClass('in'), false, 'remove .in class on .close click');
