@@ -228,7 +228,7 @@
 
                 // Handle rounded corners
                 @if $enable-rounded {
-                    &:first-child {
+                    &:first-child:not(:only-child) {
                         @include border-end-radius(0);
 
                         .card-img-top {
@@ -238,7 +238,7 @@
                             border-bottom-right-radius: 0;
                         }
                     }
-                    &:last-child {
+                    &:last-child:not(:only-child) {
                         @include border-start-radius(0);
 
                         .card-img-top {
@@ -248,7 +248,7 @@
                             border-bottom-left-radius: 0;
                         }
                     }
-                    &:not(:first-child):not(:last-child) {
+                    &:not(:first-child):not(:last-child):not(:only-child) {
                         border-radius: 0;
 
                         .card-img-top,
