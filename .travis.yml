@@ -9,19 +9,17 @@ git:
 # http://stackoverflow.com/questions/31882306/
 # Most contributions should come through pull requests
 # Should help limit overloading on Sauce tests
-branches:
-    only:
-        - master
-        - v3-dev
+# Disable for now as we are limit concurrent jobs through Travis settings
+#branches:
+#    only:
+#        - master
 
 node_js:
     - "4"
-    - "7"
+    - "8"
 
 before_install:
-    - rvm install 2.2
-    - rvm use 2.2 --fuzzy
-    - if [[ `npm -v` != 4* ]]; then npm install -g npm@4; fi
+    - if [[ `npm -v` != 5* ]]; then npm install -g npm@5; fi
 
 install:
     - bundle install --jobs=3
@@ -41,8 +39,8 @@ env:
 matrix:
     fast_finish: true
     exclude:
-        - node_js: "7"
+        - node_js: "8"
           env: TEST_SAUCE="false"
     include:
-        - node_js: "7"
+        - node_js: "8"
           env: TEST_SAUCE="true"
