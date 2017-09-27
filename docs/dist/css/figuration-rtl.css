@@ -236,6 +236,7 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   overflow: auto;
+  -ms-overflow-style: scrollbar;
 }
 
 figure {
@@ -283,6 +284,10 @@ th {
 label {
   display: inline-block;
   margin-bottom: .5rem;
+}
+
+button {
+  border-radius: 0;
 }
 
 button:focus {
@@ -5242,10 +5247,6 @@ a.badge:focus, a.badge:hover {
   border-bottom-right-radius: 0.25rem;
 }
 
-.card .card-header + .list-group .list-group-item:first-child {
-  border-top-width: 0;
-}
-
 .card-header {
   padding: 0.75rem 1rem;
   margin-bottom: 0;
@@ -5256,6 +5257,10 @@ a.badge:focus, a.badge:hover {
 
 .card-header:first-child {
   border-radius: 0.25rem 0.25rem 0 0;
+}
+
+.card-header + .list-group .list-group-item:first-child {
+  border-top-width: 0;
 }
 
 .card-footer {
