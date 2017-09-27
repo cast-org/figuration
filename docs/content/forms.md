@@ -215,7 +215,7 @@ Here are examples of `.form-control` applied to each textual HTML5 `<input>` `ty
 <div class="form-group row">
   <label for="example-url-input" class="col-2 form-control-label">URL</label>
   <div class="col-10">
-    <input class="form-control" type="url" value="http://cast.org" id="example-url-input">
+    <input class="form-control" type="url" value="http://cast.org/" id="example-url-input">
   </div>
 </div>
 <div class="form-group row">
@@ -370,7 +370,7 @@ Custom form controls and selects are also supported.
 
 ### Using the Grid
 
-For more structured form layouts that are also responsive, you can utilize Figuration's [predefined grid classes]({{ site.baseurl }}/layout/grid/#predefined-classes) or [mixins]({{ site.baseurl }}/layout/grid/#sass-variables-and-mixins) to create horizontal forms. Add the `.row` class to form groups and use the `.col-*-*` classes to specify the width of your labels and controls.
+For more structured form layouts that are also responsive, you can utilize Figuration's [predefined grid classes]({{ site.baseurl }}/layout/grid/) or [mixins]({{ site.baseurl }}/layout/grid/#sass-variables-and-mixins) to create horizontal forms. Add the `.row` class to form groups and use the `.col-*-*` classes to specify the width of your labels and controls.
 
 Be sure to add `.form-control-label` to your `<label>`s as well so they're vertically centered with their associated form controls. For `<legend>` elements, you can use `.form-control-legend` to make them appear similar to regular `<label>` elements.
 
@@ -1050,7 +1050,7 @@ Multiple size are also available.
 Browser Compatibility
 {:.h5}
 
-While Figuration supports styling `<input type="color">` elements, some browsers don't. Use custom JavaScript to handle it in these browsers.  For support details, see [Can I Use](http://caniuse.com/#feat=input-color).
+While Figuration supports styling `<input type="color">` elements, some browsers don't. Use custom JavaScript to handle it in these browsers.  For support details, see [Can I Use](https://caniuse.com/#feat=input-color).
 {% endcallout %}
 
 {% example html %}

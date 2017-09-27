@@ -14,7 +14,7 @@ The goal is to make Figuration a consistent, robust, but easy to use front-end f
 
 ## About
 
-Figuration was started as an in-house project at [CAST, Inc](http://www.cast.org) based off Bootstrap v.3.
+Figuration was started as an in-house project at [CAST, Inc](http://www.cast.org/) based off Bootstrap v.3.
 
 At the time Bootstrap did not have the level of accessibility that it does now.  They have made amazing strides in accessibility and usability since then.
 

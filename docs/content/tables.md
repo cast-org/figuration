@@ -950,7 +950,7 @@ Please refer to the [Accessiblity notes about conveying meaning with color]({{ s
 </tr>
 {% endhighlight %}
 
-Regular table background variants are not available with the inverse table, however, you may use [text or background utilities]({{ site.baseurl }}/utilities/color/#contextual-colors-and-backgrounds) to achieve similar styles.
+Regular table background variants are not available with the inverse table, however, you may use [text or background utilities]({{ site.baseurl }}/utilities/color/) to achieve similar styles.
 
 <div class="cf-example">
   <table class="table table-inverse">
@@ -1047,7 +1047,7 @@ Regular table background variants are not available with the inverse table, howe
 </tr>
 {% endhighlight %}
 
-You can also use [text or background utilities]({{ site.baseurl }}/utilities/color/#contextual-colors-and-backgrounds) to achieve multiple styles.
+You can also use [text or background utilities]({{ site.baseurl }}/utilities/color/) to achieve multiple styles.
 
 {% example html %}
 <table class="table">

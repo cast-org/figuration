@@ -787,7 +787,7 @@ Although it's not required, you can wrap a navbar in a `.container` to center it
 
 Navbars are statically placed by default, or use the [position utilities]({{ site.baseurl }}/utilities/position/) to alter their location.
 
-**Note: `position: sticky`, used for `.sticky-top`, [isn't fully supported in every browser](http://caniuse.com/#feat=css-sticky).**
+**Note: `position: sticky`, used for `.sticky-top`, [isn't fully supported in every browser](https://caniuse.com/#feat=css-sticky).**
 
 {% example html %}
 <nav class="navbar navbar-light bg-faded">

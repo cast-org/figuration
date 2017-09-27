@@ -8,7 +8,7 @@
 // 2. `clip` is deprecated, use `clip-path` for future-proofing
 //    https://www.w3.org/TR/css-masking-1/#clip-property
 // See also:
-//    http://hugogiraudel.com/2016/10/13/css-hide-and-seek/
+//    https://hugogiraudel.com/2016/10/13/css-hide-and-seek/
 
 
 @mixin sr-only {
@@ -25,7 +25,7 @@
 
 // Use in conjunction with .sr-only to only display content when it's focused.
 //
-// Useful for "Skip to main content" links; see http://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
+// Useful for "Skip to main content" links; see https://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
 //
 // Credit: HTML5 Boilerplate
 

@@ -35,7 +35,7 @@ Sounds good? Great, let's move on to seeing all that in an example.
 
 ## Quick Start Example
 
-This example creates three equal-width columns on small, medium, large, and extra large devices using our [predefined grid classes](#predefined-classes). Those columns are centered in the page with the parent `.container`.
+This example creates three equal-width columns on small, medium, large, and extra large devices using our predefined grid classes. Those columns are centered in the page with the parent `.container`.
 
 Examples further down the page add some color, padding, and borders, to the rows and columns to give a better visual example of their relationship.  These do not appear in the base Figuration grid.
 
@@ -668,7 +668,7 @@ Save your changes and recompile to have a brand new set of predefined grid class
 
 ## Sass Variables and Mixins
 
-When using Figuration's source Sass files, you have the option of using Sass variables and mixins to create custom, semantic, and responsive page layouts. Our [predefined grid classes](#predefined-classes) use these same variables and mixins to provide a whole suite of ready-to-use classes for fast responsive layouts.
+When using Figuration's source Sass files, you have the option of using Sass variables and mixins to create custom, semantic, and responsive page layouts. Our predefined grid classes use these same variables and mixins to provide a whole suite of ready-to-use classes for fast responsive layouts.
 
 ### Variables
 

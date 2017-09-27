@@ -34,7 +34,7 @@ Good bug reports are extremely helpful, so thanks!
 
 Guidelines for bug reports:
 
-0. **Validate your code** &mdash; [validate your HTML](http://html5.validator.nu)
+0. **Validate your code** &mdash; [validate your HTML](https://html5.validator.nu/)
    to ensure your problem isn't caused by a simple error in your own code.
 
 1. **Use the GitHub issue search** &mdash; check if the issue has already been
@@ -171,7 +171,7 @@ includes code changes) and under the terms of the
 
 ### CSS
 
-- When feasible, default color palettes should comply with [WCAG color contrast guidelines](http://www.w3.org/TR/WCAG20/#visual-audio-contrast).
+- When feasible, default color palettes should comply with [WCAG color contrast guidelines](https://www.w3.org/TR/WCAG20/#visual-audio-contrast).
 - Except in rare cases, don't remove default `:focus` styles (via e.g. `outline: none;`) without providing alternative styles. See [this A11Y Project post](http://a11yproject.com/posts/never-remove-css-outlines) for more details.
 
 ### JS

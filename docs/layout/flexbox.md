@@ -16,7 +16,8 @@ Flexbox is now a full-time part of Figuration. Many components, but not all, are
 
 Flexbox support is available for a number of Figuration's components:
 
-- [Grid Layout]({{ site.baseurl }}/layout/grid/#flexbox)
+- [Grid Layout]({{ site.baseurl }}/layout/grid/)
+- [Breadcrumb]({{ site.baseurl }}/components/breadcrumb/)
 - [Button Group]({{ site.baseurl }}/components/button-group/)
 - [Button Toolbar]({{ site.baseurl }}/components/button-group/#button-toolbar)
 - [Card Deck]({{ site.baseurl }}/components/cards/#card-decks)
@@ -48,7 +49,7 @@ All these things are possible outside flexbox, but typically require extra hacks
 
 Using flexbox means **reduced browser and device support**, but mostly for older technology.
 
-Visit [Can I use...](http://caniuse.com/#feat=flexbox) for details on browser support of flexbox.
+Visit [Can I use...](https://caniuse.com/#feat=flexbox) for details on browser support of flexbox.
 
 There are also a number of browser bugs and cross-browser issues with flexbox.  Some of which do not have possible workarounds, while there are other that do.  Check out the [Flexbugs](https://github.com/philipwalton/flexbugs) repository for additional information.
 

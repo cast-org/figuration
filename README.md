@@ -1,18 +1,13 @@
-# [Figuration](http://figuration.org)
-
-[![npm version](https://img.shields.io/npm/v/figuration.svg)](https://www.npmjs.com/package/figuration)
-[![Build Status](https://img.shields.io/travis/cast-org/figuration/master.svg)](https://travis-ci.org/cast-org/figuration)
-[![dependencies Status](https://img.shields.io/david/cast-org/figuration.svg)](https://david-dm.org/cast-org/figuration)
-[![devDependencies Status](https://img.shields.io/david/dev/cast-org/figuration.svg)](https://david-dm.org/cast-org/figuration?type=dev)
-
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/figuration.svg)](https://saucelabs.com/u/figuration)
+# [Figuration](http://figuration.org/)
 
 CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end framework inspired by Bootstrap.
 
-Get started at <http://figuration.org>!
+**Get started at <http://figuration.org/>!**
+
 
 ## Table of Contents
 
+- [Status](#status)
 - [Quick Start](#quick-start)
 - [Bugs and Feature Requests](#bugs-and-feature-requests)
 - [Documentation](#documentation)
@@ -22,13 +17,24 @@ Get started at <http://figuration.org>!
 - [Changelog](#changelog)
 - [Copyright and License](#copyright-and-license)
 
+
+## Status
+
+[![npm version](https://img.shields.io/npm/v/figuration.svg)](https://www.npmjs.com/package/figuration)
+[![Build Status](https://img.shields.io/travis/cast-org/figuration/master.svg)](https://travis-ci.org/cast-org/figuration)
+[![dependencies Status](https://img.shields.io/david/cast-org/figuration.svg)](https://david-dm.org/cast-org/figuration)
+[![devDependencies Status](https://img.shields.io/david/dev/cast-org/figuration.svg)](https://david-dm.org/cast-org/figuration?type=dev)
+
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/figuration.svg)](https://saucelabs.com/u/figuration)
+
+
 ## Quick Start
 
 Several quick start options are available:
 
 - [Download the latest release.](https://github.com/cast-org/figuration/archive/v3.0.1.zip)
 - Clone the repo: `git clone https://github.com/cast-org/figuration.git`
-- Install with [npm](https://www.npmjs.com): `npm install figuration`
+- Install with [npm](https://www.npmjs.com/): `npm install figuration`
 - Install with [yarn](https://yarnpkg.com/): `yarn add figuration`
 
 Read the [Get Started page](http://figuration.org/get-started/quick-start/) for information on the framework, templates, and examples.
@@ -61,7 +67,7 @@ Have a bug or a feature request? Please first read the [issue guidelines](https:
 
 ## Documentation
 
-Figurations's documentation, included in this repo in the root directory, is built with [Jekyll](http://jekyllrb.com) and publicly hosted on GitHub Pages at <http://figuration.org>. The docs may also be run locally.
+Figurations's documentation, included in this repo in the root directory, is built with [Jekyll](https://jekyllrb.com/) and publicly hosted on GitHub Pages at <http://figuration.org>. The docs may also be run locally.
 
 
 ### Running Documentation Locally
@@ -83,11 +89,13 @@ Moreover, if your pull request contains JavaScript patches or features, you must
 
 Editor preferences are available in the [editor config](https://github.com/cast-org/figuration/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
 
+
 ## Community
 
 Keep up with Figuration's development and announcements.
 
 - Follow [@figuration_org on Twitter](https://twitter.com/figuration_org)
+
 
 ## Versioning
 
@@ -101,4 +109,4 @@ See [the Releases section of our GitHub project](https://github.com/cast-org/fig
 
 ## Copyright and License
 
-Code and documentation copyright 2013-2017 [CAST, Inc.](http://www.cast.org) Code released under [the MIT license](https://github.com/cast-org/figuration/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/cast-org/figuration/blob/master/docs/LICENSE).
+Code and documentation copyright 2013-2017 [CAST, Inc.](http://www.cast.org/) Code released under [the MIT license](https://github.com/cast-org/figuration/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/cast-org/figuration/blob/master/docs/LICENSE).

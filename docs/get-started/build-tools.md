@@ -14,7 +14,7 @@ group: get-started
 [qunit]: http://qunitjs.com/
 [jshint]: http://jshint.com/
 
-Figuration uses [Grunt](http://gruntjs.com) for its CSS and JavaScript build system and Jekyll for the written documentation. Our Gruntfile includes convenient methods for working with the framework, including compiling code, running tests, and more.
+Figuration uses [Grunt](https://gruntjs.com/) for its CSS and JavaScript build system and Jekyll for the written documentation. Our Gruntfile includes convenient methods for working with the framework, including compiling code, running tests, and more.
 
 ## Contents
 {:.no_toc}
@@ -30,7 +30,7 @@ To use our Gruntfile and run our documentation locally, you'll need a copy of Fi
 2. Install the Grunt command line tools, `grunt-cli`, with `npm install -g grunt-cli`.
 3. Navigate to the root `/figuration` directory and run `npm install` to install our local dependencies listed in [package.json](https://github.com/cast-org/figuration/blob/master/package.json).
 4. [Install Ruby][install-ruby], install [Bundler][gembundler] with `gem install bundler`, and finally run `bundle install`. This will install all Ruby dependencies, such as Jekyll and plugins.
-  - **Windows users:** Read [this unofficial guide](http://jekyll-windows.juthilo.com/) to get Jekyll up and running without problems.
+  - **Windows users:** Read [this guide](https://jekyllrb.com/docs/windows/) to get Jekyll up and running without problems.
 
 When completed, you'll be able to run the various Grunt commands provided from the command line.
 
