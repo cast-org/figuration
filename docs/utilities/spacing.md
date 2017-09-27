@@ -42,6 +42,7 @@ Where *size* is one of:
 * `1` - for classes that set the property to `$spacer`
 * `1_5` - for classes that set the property to `$spacer * 1.5`
 * `2` - for classes that set the property to `$spacer * 2`
+* `auto` - for classes that set the `margin` to auto
 
 (You can add more sizes by adding entries to the `$spacers` Sass map variable.)
 
