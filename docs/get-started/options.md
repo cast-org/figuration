@@ -19,9 +19,14 @@ Every Sass variable in Figuration includes the `!default` flag, meaning you can 
 For example, to change out the `background-color` and `color` for the `<body>`, you'd do the following:
 
 {% highlight scss %}
-$body-bg:    $gray-900;
-$body-color: $gray-100;
+// Your variable overwrite first or a Sass file containing the modifications
+$body-bg: #000;
+$body-color: #fff;
+
+// Then import Figuration
+@import "node_modules/figuration/scss/figuration";
 {% endhighlight %}
+
 
 Do the same for any variable you need to override, including the global options listed below.
 
