@@ -58,12 +58,6 @@
             }
         }
     }
-
-    .card-header + .list-group {
-        .list-group-item:first-child {
-            border-top-width: 0;
-        }
-    }
 }
 
 // Optional textual caps
@@ -76,6 +70,12 @@
 
     &:first-child {
         @include border-radius($card-border-radius $card-border-radius 0 0);
+    }
+
+    + .list-group {
+        .list-group-item:first-child {
+            border-top-width: 0;
+        }
     }
 }
 
