@@ -14,7 +14,7 @@ Customize Figuration using Sass variables for global style preferences, easy the
 
 ## Customizing Variables
 
-Every Sass variable in Figuration includes the !default flag, meaning you can override that default value in your own Sass even after that original variable's been defined. Copy and paste variables as needed, modify the values, remove the !default flag, and recompile with the included [build tools]({{ site.baseurl }}/get-started/build-tools/) as needed.
+Every Sass variable in Figuration includes the `!default` flag, meaning you can override that default value in your own Sass. Copy and paste variables as needed, modify the values, remove the `!default` flag, and recompile with the included [build tools]({{ site.baseurl }}/get-started/build-tools/) as needed. If a variable has already been assigned, then it won't be re-assigned by the default values. This means that your modified Sass variables should be called before you import Figuration Sass files.
 
 For example, to change out the `background-color` and `color` for the `<body>`, you'd do the following:
 
