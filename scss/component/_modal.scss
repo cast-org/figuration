@@ -87,10 +87,12 @@
     padding: $modal-header-padding-y $modal-header-padding-x;
     border-bottom: $modal-header-border-width solid $modal-header-border-color;
     @include clearfix;
-}
-// Close icon
-.modal-header .close {
-    margin-top: -.125rem;
+
+    // Close icon
+    .close {
+        padding: $modal-close-padding-y $modal-close-padding-x;
+        margin: (-$modal-header-padding-y) (-$modal-header-padding-x);
+    }
 }
 
 // Title text within header
