@@ -17,19 +17,23 @@ Figuration includes a powerful mobile-first grid system for building layouts of 
 At a high level, here's how the grid system works:
 
 - There are three major components---containers, rows, and columns.
-- Containers---`.container` for fixed width or `.container-fluid` for full width---center your site's contents and help align your grid content.
-- Rows are horizontal groups of columns that ensure your columns are lined up properly.
-- Content should be placed within columns, and only columns may be immediate children of rows.
-- Thanks to flexbox, grid columns without a set width will automatically layout with equal widths. For example, four instances of `.col-sm` will each automatically be 25% wide for small breakpoints.
-- Column classes indicate the number of columns you'd like to use out of the possible 12 per row. So if you want three equal-width columns, you'd use `.col-4`.
+- The grid is built with [flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes) and is fully responsive.
+- Containers provide a means to center and horizontally pad your site's contents. Use `.container` for a responsive fixed width or `.container-fluid` for `width: 100%` across all viewport and device sizes.
+- Rows are wrappers for columns. Each column has horizontal `padding` (called a gutter) for controlling the space between them. This `padding` is then counteracted on the rows with negative margins. This way, all the content in your columns is visually aligned down the left side (right side in `rtl` mode).
+- In a grid layout, content must be placed within columns and only columns may be immediate children of rows.
+- Thanks to flexbox, grid columns without a specified `width` will automatically layout as equal width columns. For example, four instances of `.col-sm` will each automatically be 25% wide from the small breakpoint and up. See the [auto-layout columns](#auto-layout-columns) section for more examples.
+- Column classes indicate the number of columns you'd like to use out of the possible 12 per row. So, if you want three equal-width columns across, you would use `.col-4`.
 - Column `width`s are set in percentages, so they're always fluid and sized relative to their parent element.
 - Columns have horizontal `padding` to create the gutters between individual columns.
 - You can remove the `margin` from rows and `padding` from columns with `.no-gutters` on the `.row`.
-- There are five grid tiers, one for each [responsive breakpoint]({{ site.baseurl }}/layout/overview/#responsive-breakpoints): extra small, small, medium, large, and extra large.
-- Grid tiers are based on minimum widths, meaning they apply to that one tier and all those above it (e.g., `.col-sm-4` applies to small, medium, large, and extra large devices).
-- You can use predefined grid classes or Sass mixins for more semantic markup.
+- To make the grid responsive, there are five grid breakpoints, one for each [responsive breakpoint]({{ site.baseurl }}/layout/overview/#responsive-breakpoints): all breakpoints (extra small), small, medium, large, and extra large.
+- Grid breakpoints are based on minimum width media queries, meaning **they apply to that one breakpoint and all those above it** (e.g., `.col-sm-4` applies to small, medium, large, and extra large devices, but not the first `xs` breakpoint).
+- You can use predefined grid classes (like `.col-4`) or [Sass mixins](#mixins) for more semantic markup.
 
-Be aware of the limitations and [bugs around flexbox](https://github.com/philipwalton/flexbugs), like the [inability to use some HTML elements as flex containers](https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers).
+
+If you need a reference for working with flexbox, there is an excellent resource over at CSS Tricks with [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/).
+
+Also, be aware of the limitations and [bugs around flexbox](https://github.com/philipwalton/flexbugs), like the [inability to use some HTML elements as flex containers](https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers).
 
 Sounds good? Great, let's move on to seeing all that in an example.
 
