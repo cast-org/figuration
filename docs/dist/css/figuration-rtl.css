@@ -5868,18 +5868,19 @@ a.badge:focus, a.badge:hover {
 }
 
 .alert {
+  position: relative;
   padding: 1rem 1rem;
-  padding-left: 2rem;
+  padding-left: 2.5rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
 
 .alert .close {
-  position: relative;
-  top: -1rem;
-  left: -2rem;
-  padding: 1rem 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.75rem 0.75rem;
   color: inherit;
 }
 
@@ -6350,7 +6351,8 @@ a.badge:focus, a.badge:hover {
 }
 
 .modal-header .close {
-  margin-top: -.125rem;
+  padding: 0.75rem 0.75rem;
+  margin: -0.75rem -1rem;
 }
 
 .modal-title {
