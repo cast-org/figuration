@@ -16,8 +16,8 @@ Enable dismiss functionality for alert messages.
 
 {% example html%}
 <div class="alert alert-warning" role="alert">
-    <button type="button" class="close" data-cfw-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <strong>Warning!</strong> Objects in the mirror are closer than they appear.
+    <button type="button" class="close" data-cfw-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 </div>
 
 <div class="alert alert-danger" role="alert">
