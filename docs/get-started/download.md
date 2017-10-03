@@ -51,7 +51,7 @@ Pull in Figuration's **source files** into nearly any project with some of the m
 
 ### npm
 
-Install Figuration in your Node powered apps with [the npm package](https://www.npmjs.com/package/figuration):
+Install Figuration in your Node.js powered apps with [the npm package](https://www.npmjs.com/package/figuration):
 
 {% highlight bash %}
 npm install figuration@{{ site.current_version }}
