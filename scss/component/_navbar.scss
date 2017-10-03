@@ -232,6 +232,16 @@
 
     .navbar-text {
         color: $navbar-light-color;
+
+        a {
+            color: $navbar-light-hover-color;
+            text-decoration: none;
+
+            @include hover-focus {
+                color: $navbar-light-active-color;
+                text-decoration: none;
+            }
+        }
     }
 
     .navbar-divider {
@@ -283,6 +293,16 @@
 
     .navbar-text {
         color: $navbar-dark-color;
+
+        a {
+            color: $navbar-dark-hover-color;
+            text-decoration: none;
+
+            @include hover-focus {
+                color: $navbar-dark-active-color;
+                text-decoration: none;
+            }
+        }
     }
 
     .navbar-divider {
