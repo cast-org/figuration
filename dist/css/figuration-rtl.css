@@ -977,6 +977,7 @@ textarea.form-control {
 }
 
 .form-control-xs, .input-group-xs > .form-control,
+.input-group-xs > .custom-select,
 .input-group-xs > .input-group-addon,
 .input-group-xs > .input-group-btn > .btn {
   height: calc(1.3125rem + 2px);
@@ -997,6 +998,7 @@ textarea.form-control {
 }
 
 .form-control-sm, .input-group-sm > .form-control,
+.input-group-sm > .custom-select,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
   height: calc(1.59375rem + 2px);
@@ -1017,6 +1019,7 @@ textarea.form-control {
 }
 
 .form-control-lg, .input-group-lg > .form-control,
+.input-group-lg > .custom-select,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
   height: calc(2.40625rem + 2px);
@@ -1037,6 +1040,7 @@ textarea.form-control {
 }
 
 .form-control-xl, .input-group-xl > .form-control,
+.input-group-xl > .custom-select,
 .input-group-xl > .input-group-addon,
 .input-group-xl > .input-group-btn > .btn {
   height: calc(2.8125rem + 2px);
@@ -3823,31 +3827,50 @@ button.list-group-item-danger.active {
   position: relative;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
-      align-items: center;
+  -ms-flex-align: stretch;
+      align-items: stretch;
   width: 100%;
 }
 
-.input-group .form-control {
+.input-group .form-control,
+.input-group .custom-select {
   position: relative;
   z-index: 2;
   -ms-flex: 1 1 auto;
       flex: 1 1 auto;
   width: 1%;
+  height: auto;
   margin-bottom: 0;
 }
 
-.input-group .form-control + .form-control {
+.input-group .form-control + .form-control,
+.input-group .form-control + .custom-select,
+.input-group .custom-select + .form-control,
+.input-group .custom-select + .custom-select {
   margin-right: -1px;
 }
 
-.input-group .form-control:focus, .input-group .form-control:active, .input-group .form-control:hover {
+.input-group .form-control:focus, .input-group .form-control:active, .input-group .form-control:hover,
+.input-group .custom-select:focus,
+.input-group .custom-select:active,
+.input-group .custom-select:hover {
   z-index: 3;
+}
+
+.input-group-addon,
+.input-group-btn,
+.input-group .form-control,
+.input-group .custom-select {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .input-group-addon:not(:first-child):not(:last-child),
 .input-group-btn:not(:first-child):not(:last-child),
-.input-group .form-control:not(:first-child):not(:last-child) {
+.input-group .form-control:not(:first-child):not(:last-child),
+.input-group .custom-select:not(:first-child):not(:last-child) {
   border-radius: 0;
 }
 
@@ -3886,6 +3909,8 @@ button.list-group-item-danger.active {
 
 .input-group-btn {
   position: relative;
+  -ms-flex-align: stretch;
+      align-items: stretch;
   font-size: 0;
   white-space: nowrap;
 }
@@ -3957,6 +3982,7 @@ button.list-group-item-danger.active {
 }
 
 .input-group .form-control:not(:last-child),
+.input-group .custom-select:not(:last-child),
 .input-group-addon:not(:last-child),
 .input-group-btn:not(:last-child) > .btn,
 .input-group-btn:not(:last-child) > .btn-group > .btn,
@@ -3972,6 +3998,7 @@ button.list-group-item-danger.active {
 }
 
 .input-group .form-control:not(:first-child),
+.input-group .custom-select:not(:first-child),
 .input-group-addon:not(:first-child),
 .input-group-btn:not(:first-child) > .btn,
 .input-group-btn:not(:first-child) > .btn-group > .btn,
@@ -3982,7 +4009,8 @@ button.list-group-item-danger.active {
   border-bottom-right-radius: 0;
 }
 
-.form-control + .input-group-addon:not(:first-child) {
+.form-control + .input-group-addon:not(:first-child),
+.custom-select + .input-group-addon:not(:first-child) {
   border-right: 0;
 }
 
@@ -4912,6 +4940,16 @@ li .dropdown-header {
   color: rgba(0, 0, 0, 0.6);
 }
 
+.navbar-light .navbar-text a {
+  color: rgba(0, 0, 0, 0.85);
+  text-decoration: none;
+}
+
+.navbar-light .navbar-text a:focus, .navbar-light .navbar-text a:hover {
+  color: rgba(0, 0, 0, 0.95);
+  text-decoration: none;
+}
+
 .navbar-light .navbar-divider {
   border-color: rgba(0, 0, 0, 0.65);
 }
@@ -4956,6 +4994,16 @@ li .dropdown-header {
 
 .navbar-dark .navbar-text {
   color: rgba(255, 255, 255, 0.65);
+}
+
+.navbar-dark .navbar-text a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+}
+
+.navbar-dark .navbar-text a:focus, .navbar-dark .navbar-text a:hover {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
 }
 
 .navbar-dark .navbar-divider {
@@ -5245,6 +5293,11 @@ a.badge:focus, a.badge:hover {
   border-bottom-width: 0;
   border-bottom-left-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
+}
+
+.card > hr {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .card-header {
