@@ -14,21 +14,22 @@ Customize Figuration using Sass variables for global style preferences, easy the
 
 ## Customizing Variables
 
-Every Sass variable in Figuration includes the `!default` flag, meaning you can override that default value in your own Sass. Copy and paste variables as needed, modify the values, remove the `!default` flag, and recompile with the included [build tools]({{ site.baseurl }}/get-started/build-tools/) as needed. If a variable has already been assigned, then it won't be re-assigned by the default values. This means that your modified Sass variables should be called before you import Figuration Sass files.
+Every Sass variable in Figuration includes the `!default` flag allowing you to override the variable's default value in your own Sass without modifying Figuration's source code. Copy and paste variables as needed, modify their values, and remove the `!default` flag. If a variable has already been assigned, then it won't be re-assigned by the default values.
 
-For example, to change out the `background-color` and `color` for the `<body>`, you'd do the following:
+Variable overrides within the same Sass file can come before or after the default variables. However, when overriding across Sass files, your overrides must come before you import Figuration's Sass files.
+
+Here's an example that changes the `background-color` and `color` for the `<body>` when importing and compiling Figuration via grunt:
 
 {% highlight scss %}
-// Your variable overwrite first or a Sass file containing the modifications
+// Your variable overrides
 $body-bg: #000;
 $body-color: #fff;
 
-// Then import Figuration
+// Import Figuration and its default variables
 @import "node_modules/figuration/scss/figuration";
 {% endhighlight %}
 
-
-Do the same for any variable you need to override, including the global options listed below.
+Repeat as necessary for any variable in Figuration, including the global options below.
 
 ## Global Options
 
