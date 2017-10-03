@@ -32,7 +32,7 @@ Holder.addTheme("gray", {
 </head>
 <body>
 
-<div class="container"><div class="row"><div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4">
+<div class="container"><div class="row"><div class="col-12 col-sm-10 col-md-8 col-lg-6">
     <h1>Input Group</h1>
 
 <div class="input-group">
@@ -136,7 +136,63 @@ Holder.addTheme("gray", {
 <hr />
 
 <div class="input-group">
+  <span class="input-group-btn">
+    <button class="btn" type="button">Go!</button>
+  </span>
+  <select class="form-control" aria-label="Select one">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+</div>
+
+<hr />
+
+<div class="input-group">
+  <span class="input-group-btn">
+    <button class="btn" type="button">Go!</button>
+  </span>
+  <select class="custom-select" aria-label="Select one">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+</div>
+
+<hr />
+
+<div class="input-group">
   <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+  <span class="input-group-btn">
+    <button class="btn" type="button">Go!</button>
+  </span>
+</div>
+
+<hr />
+
+<div class="input-group">
+  <select class="form-control" aria-label="Select one">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+  <span class="input-group-btn">
+    <button class="btn" type="button">Go!</button>
+  </span>
+</div>
+
+<hr />
+
+<div class="input-group">
+  <select class="custom-select" aria-label="Select one">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
   <span class="input-group-btn">
     <button class="btn" type="button">Go!</button>
   </span>
@@ -189,7 +245,40 @@ Holder.addTheme("gray", {
   </div>
   <div style="width:100px;height:100px;background-color:red;"></div>
 </div>
-</hr >
+
+<hr />
+
+<div class="d-flex">
+  <div class="input-group">
+    <select class="form-control" aria-label="Select one">
+      <option selected>Choose...</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <span class="input-group-btn">
+      <button class="btn" type="button">Go!</button>
+    </span>
+  </div>
+  <div style="width:100px;height:100px;background-color:red;"></div>
+</div>
+
+<hr />
+
+<div class="d-flex">
+  <div class="input-group">
+    <select class="custom-select" aria-label="Select one">
+      <option selected>Choose...</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <span class="input-group-btn">
+      <button class="btn" type="button">Go!</button>
+    </span>
+  </div>
+  <div style="width:100px;height:100px;background-color:red;"></div>
+</div>
 
 <hr />
 
@@ -331,6 +420,66 @@ Holder.addTheme("gray", {
         </span>
 		<input type="text" class="form-control">
 		<input type="text" class="form-control">
+        <span class="input-group-btn">
+            <button class="btn btn-outline-success" type="button">Yes</button>
+        </span>
+        <span class="input-group-btn">
+            <button class="btn btn-outline-danger" type="button">No</button>
+        </span>
+    </div>
+</form>
+
+<form class="form-inline mb-1">
+    <div class="input-group">
+        <span class="input-group-addon">Something:</span>
+        <span class="input-group-btn">
+            <button class="btn btn-outline-primary" type="button">All</button>
+        </span>
+		<span class="input-group-btn">
+            <button class="btn btn-outline-primary" type="button">All</button>
+        </span>
+		<select class="custom-select" aria-label="Select one">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+		<select class="form-control" aria-label="Select one">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        <span class="input-group-btn">
+            <button class="btn btn-outline-success" type="button">Yes</button>
+        </span>
+        <span class="input-group-btn">
+            <button class="btn btn-outline-danger" type="button">No</button>
+        </span>
+    </div>
+</form>
+
+<form class="form-inline mb-1">
+    <div class="input-group">
+        <span class="input-group-addon">Something:</span>
+        <span class="input-group-btn">
+            <button class="btn btn-outline-primary" type="button">All</button>
+        </span>
+		<span class="input-group-btn">
+            <button class="btn btn-outline-primary" type="button">All</button>
+        </span>
+		<select class="form-control" aria-label="Select one">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+		<select class="custom-select" aria-label="Select one">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
         <span class="input-group-btn">
             <button class="btn btn-outline-success" type="button">Yes</button>
         </span>
