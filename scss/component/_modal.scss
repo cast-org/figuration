@@ -86,6 +86,7 @@
 .modal-header {
     padding: $modal-header-padding-y $modal-header-padding-x;
     border-bottom: $modal-header-border-width solid $modal-header-border-color;
+    @include border-top-radius($modal-inner-border-radius);
     @include clearfix;
 
     // Close icon
@@ -113,6 +114,7 @@
     padding: $modal-footer-padding-y $modal-footer-padding-x;
     text-align: right; // right align buttons
     border-top: $modal-footer-border-width solid $modal-footer-border-color;
+    @include border-bottom-radius($modal-inner-border-radius);
     @include clearfix(); // clear it in case folks use .float-* classes on buttons
 }
 

@@ -936,6 +936,7 @@ $modal-footer-border-color:     $modal-header-border-color !default;
 $modal-header-border-width:     $modal-content-border-width !default;
 $modal-footer-border-width:     $modal-header-border-width !default;
 $modal-border-radius:           .3rem !default;
+$modal-inner-border-radius:     calc(#{$modal-border-radius} - #{$modal-content-border-width}) !default;
 
 $modal-sm:                      rem-calc(304px) !default; // 304px=>19rem
 $modal-md:                      rem-calc(528px) !default; // 528px=>33rem
