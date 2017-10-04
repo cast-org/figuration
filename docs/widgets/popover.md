@@ -188,15 +188,15 @@ Keep popovers in their place with the `viewport` option.
 <div class="container-viewport" id="viewport-popover">
     <p class="viewport-text">Viewport constraints for popovers.</p>
 
-    <button class="btn btn-info popover-viewport-bottom" title="This should be shifted to the right">Shift Right</button>
+    <button type="button" class="btn btn-info popover-viewport-bottom" title="This should be shifted to the right">Shift Right</button>
 
-    <button class="btn btn-info popover-viewport-right" title="This should be shifted down">Shift Down</button>
+    <button type="button" class="btn btn-info popover-viewport-right" title="This should be shifted down">Shift Down</button>
 
-    <button class="btn btn-info float-end popover-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
+    <button type="button" class="btn btn-info float-end popover-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
 
-    <button class="btn btn-info popover-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
+    <button type="button" class="btn btn-info popover-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
 
-    <button class="btn btn-info popover-viewport-drag btn-drag" title="This should be confined to the viewport box">Drag Test (click)</button>
+    <button type="button" class="btn btn-info popover-viewport-drag btn-drag" title="This should be confined to the viewport box">Drag Test (click)</button>
 </div>
 <script>
     $('.popover-viewport-right').CFW_Popover({
