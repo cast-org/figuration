@@ -6395,6 +6395,8 @@ a.badge:focus, a.badge:hover {
 .modal-header {
   padding: 0.75rem 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-top-left-radius: calc(0.3rem - 1px);
+  border-top-right-radius: calc(0.3rem - 1px);
 }
 
 .modal-header::after {
@@ -6422,6 +6424,8 @@ a.badge:focus, a.badge:hover {
   padding: 0.75rem 1rem;
   text-align: left;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: calc(0.3rem - 1px);
+  border-bottom-right-radius: calc(0.3rem - 1px);
 }
 
 .modal-footer::after {
@@ -7409,6 +7413,10 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   display: table !important;
 }
 
+.d-table-row {
+  display: table-row !important;
+}
+
 .d-table-cell {
   display: table-cell !important;
 }
@@ -7442,6 +7450,9 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   }
   .d-sm-table {
     display: table !important;
+  }
+  .d-sm-table-row {
+    display: table-row !important;
   }
   .d-sm-table-cell {
     display: table-cell !important;
@@ -7478,6 +7489,9 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   .d-md-table {
     display: table !important;
   }
+  .d-md-table-row {
+    display: table-row !important;
+  }
   .d-md-table-cell {
     display: table-cell !important;
   }
@@ -7513,6 +7527,9 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   .d-lg-table {
     display: table !important;
   }
+  .d-lg-table-row {
+    display: table-row !important;
+  }
   .d-lg-table-cell {
     display: table-cell !important;
   }
@@ -7547,6 +7564,9 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   }
   .d-xl-table {
     display: table !important;
+  }
+  .d-xl-table-row {
+    display: table-row !important;
   }
   .d-xl-table-cell {
     display: table-cell !important;
