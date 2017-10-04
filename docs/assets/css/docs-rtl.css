@@ -1003,6 +1003,25 @@ h4 > code {
   }
 }
 
+.btn .example-caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  content: "";
+  border-top: 0.5rem solid transparent;
+  border-left: 0.5rem solid  #000;
+  border-bottom: 0.5rem solid transparent;
+  border-right: 0;
+}
+
+.btn:focus .example-caret, .btn:hover .example-caret {
+  border-top: 0.5rem solid transparent;
+  border-left: 0;
+  border-bottom: 0.5rem solid transparent;
+  border-right: 0.5rem solid  #000;
+}
+
 .cf-example > .form-control + .form-control,
 .cf-example > .custom-select + .custom-select {
   margin-top: .5rem;

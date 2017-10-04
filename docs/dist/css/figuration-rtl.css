@@ -3265,14 +3265,18 @@ tbody.collapse.in, tbody.collapse.in-flex {
   width: 0;
   height: 0;
   vertical-align: middle;
+  content: "";
   border-top: 0.3125rem solid;
   border-left: 0.3125rem solid transparent;
+  border-bottom: 0;
   border-right: 0.3125rem solid transparent;
 }
 
 .open .caret {
   border-top: 0;
+  border-left: 0.3125rem solid transparent;
   border-bottom: 0.3125rem solid;
+  border-right: 0.3125rem solid transparent;
 }
 
 .close {
@@ -4169,14 +4173,15 @@ button.list-group-item-danger.active {
 }
 
 .dropdown-toggle::after {
+  margin-right: 0.25rem;
   display: inline-block;
   width: 0;
   height: 0;
-  margin-right: 0.25rem;
   vertical-align: middle;
   content: "";
   border-top: 0.3125rem solid;
   border-left: 0.3125rem solid transparent;
+  border-bottom: 0;
   border-right: 0.3125rem solid transparent;
 }
 
@@ -4186,12 +4191,16 @@ button.list-group-item-danger.active {
 
 .dropup .dropdown-toggle::after {
   border-top: 0;
+  border-left: 0.3125rem solid transparent;
   border-bottom: 0.3125rem solid;
+  border-right: 0.3125rem solid transparent;
 }
 
 .dropup.open .dropdown-toggle::after {
   border-top: 0.3125rem solid;
+  border-left: 0.3125rem solid transparent;
   border-bottom: 0;
+  border-right: 0.3125rem solid transparent;
 }
 
 .dropdown-menu {
@@ -4272,19 +4281,24 @@ button.list-group-item-danger.active {
   position: absolute;
   top: 50%;
   left: 0.375rem;
-  display: block;
+  margin-top: -0.4375rem;
+  display: inline-block;
   width: 0;
   height: 0;
-  margin-top: -0.4375rem;
-  content: " ";
+  vertical-align: middle;
+  content: "";
   border-top: 0.4375rem solid transparent;
+  border-left: 0;
   border-bottom: 0.4375rem solid transparent;
-  border-right: 0.4375rem solid #858585;
+  border-right: 0.4375rem solid  #858585;
 }
 
 .dropdown-submenu > a.active:not(:hover):not(:focus)::after,
 .dropdown-submenu > .dropdown-item.active:not(:hover):not(:focus)::after {
-  border-right-color: #fff;
+  border-top: 0.4375rem solid transparent;
+  border-left: 0;
+  border-bottom: 0.4375rem solid transparent;
+  border-right: 0.4375rem solid  #fff;
 }
 
 .open > .dropdown-menu {
@@ -4293,12 +4307,16 @@ button.list-group-item-danger.active {
 
 .open .dropdown-toggle::after {
   border-top: 0;
+  border-left: 0.3125rem solid transparent;
   border-bottom: 0.3125rem solid;
+  border-right: 0.3125rem solid transparent;
 }
 
 .open .dropup .dropdown-toggle::after {
   border-top: 0.3125rem solid;
+  border-left: 0.3125rem solid transparent;
   border-bottom: 0;
+  border-right: 0.3125rem solid transparent;
 }
 
 .dropdown-header {
@@ -4329,14 +4347,17 @@ li .dropdown-header {
 }
 
 .dropup .caret {
-  content: "";
   border-top: 0;
+  border-left: 0.3125rem solid transparent;
   border-bottom: 0.3125rem solid;
+  border-right: 0.3125rem solid transparent;
 }
 
 .dropup.open .caret {
   border-top: 0.3125rem solid;
+  border-left: 0.3125rem solid transparent;
   border-bottom: 0;
+  border-right: 0.3125rem solid transparent;
 }
 
 .dropup .dropdown-menu {
@@ -4363,21 +4384,25 @@ li .dropdown-header {
   position: absolute;
   top: 50%;
   right: 0.375rem;
-  display: block;
+  margin-top: -0.4375rem;
+  display: inline-block;
   width: 0;
   height: 0;
-  margin-top: -0.4375rem;
-  content: " ";
+  vertical-align: middle;
+  content: "";
   border-top: 0.4375rem solid transparent;
-  border-left: 0.4375rem solid #858585;
+  border-left: 0.4375rem solid  #858585;
   border-bottom: 0.4375rem solid transparent;
+  border-right: 0;
 }
 
 .dropdown-back-reverse > a::before {
   left: 0.375rem;
   right: auto;
+  border-top: 0.4375rem solid transparent;
   border-left: 0;
-  border-right: 0.4375rem solid #858585;
+  border-bottom: 0.4375rem solid transparent;
+  border-right: 0.4375rem solid  #858585;
 }
 
 .dropdown-menu-reverse .dropdown-menu {
@@ -4406,13 +4431,18 @@ li .dropdown-header {
 .dropdown-subalign-reverse > .dropdown-item::after {
   left: auto;
   right: 0.375rem;
-  border-left: 0.4375rem solid #858585;
+  border-top: 0.4375rem solid transparent;
+  border-left: 0.4375rem solid  #858585;
+  border-bottom: 0.4375rem solid transparent;
   border-right: 0;
 }
 
 .dropdown-subalign-reverse > a.active:not(:hover):not(:focus)::after,
 .dropdown-subalign-reverse > .dropdown-item.active:not(:hover):not(:focus)::after {
-  border-left-color: #fff;
+  border-top: 0.4375rem solid transparent;
+  border-left: 0;
+  border-bottom: 0.4375rem solid transparent;
+  border-right: 0.4375rem solid  #858585;
 }
 
 .dropup.dropdown-menu-reverse .dropdown-menu {
