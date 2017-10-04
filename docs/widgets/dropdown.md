@@ -68,8 +68,41 @@ Wrap the dropdown's trigger and the dropdown menu within `.dropdown`, or another
 
 {% example html %}
 <div class="dropdown">
+  <a href="#" role="button" data-cfw="dropdown">
+    Toggle Dropdown
+  </a>
+  <ul class="dropdown-menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+  </ul>
+</div>
+{% endexample %}
+
+### Toggle Indicator
+
+Add an indicator to the dropdown toggle by adding `.dropdown-toggle` to the control.
+
+{% example html %}
+<div class="dropdown">
   <a href="#" role="button" class="dropdown-toggle" data-cfw="dropdown">
-    Dropdown
+    Toggle Dropdown
+  </a>
+  <ul class="dropdown-menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+  </ul>
+</div>
+{% endexample %}
+
+Another option would be to use the `.caret` utility icon and add it to an element within the control element.
+
+{% example html %}
+<div class="dropdown">
+  <a href="#" role="button" data-cfw="dropdown">
+    Toggle Dropdown
+    <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu">
     <li><a href="#">Action</a></li>
@@ -81,7 +114,7 @@ Wrap the dropdown's trigger and the dropdown menu within `.dropdown`, or another
 
 ### Single Button Dropdown
 
-You can optionally use `<button>` elements in your dropdowns instead of `<a>`s.  You can also use swap out the `.dropdown` class on the parent container with `.btn-group` if desired.
+You can also use `<button>` elements in your dropdowns instead of `<a>`s.  You can also use swap out the `.dropdown` class on the parent container with `.btn-group` if desired.
 
 {% example html %}
 <div class="btn-group">
