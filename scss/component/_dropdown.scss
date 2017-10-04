@@ -8,15 +8,8 @@
 .dropdown-toggle {
     // Generate the caret automatically
     &::after {
-        display: inline-block;
-        width: 0;
-        height: 0;
         margin-left: $dropdown-toggle-margin-x;
-        vertical-align: middle;
-        content: "";
-        border-top: $caret-width solid;
-        border-right: $caret-width solid transparent;
-        border-left: $caret-width solid transparent;
+        @include caret();
     }
 
     &:empty::after {
@@ -27,15 +20,13 @@
 .dropup {
     .dropdown-toggle {
         &::after {
-            border-top: 0;
-            border-bottom: $caret-width solid;
+            @include caret-up();
         }
     }
     &.open {
         .dropdown-toggle {
             &::after {
-                border-top: $caret-width solid;
-                border-bottom: 0;
+                @include caret-down();
             }
         }
     }
@@ -129,18 +120,12 @@
             position: absolute;
             top: 50%;
             right: $dropdown-caret-spacer-x;
-            display: block;
-            width: 0;
-            height: 0;
             margin-top: -$dropdown-caret-width;
-            content: " ";
-            border-top: $dropdown-caret-width solid transparent;
-            border-bottom: $dropdown-caret-width solid transparent;
-            border-left: $dropdown-caret-width solid $dropdown-caret-color;
+            @include caret(end, $dropdown-caret-width, $dropdown-caret-color);
         }
 
         &.active:not(:hover):not(:focus)::after {
-            border-left-color: $dropdown-caret-active-color;
+            @include caret-end($dropdown-caret-width, $dropdown-caret-active-color);
         }
     }
 }
@@ -154,16 +139,14 @@
     // Reverse toggle caret
     .dropdown-toggle {
         &::after {
-            border-top: 0;
-            border-bottom: $caret-width solid;
+            @include caret-up();
         }
     }
     // Reverse dropup toggle caret
     .dropup {
         .dropdown-toggle {
             &::after {
-                border-top: $caret-width solid;
-                border-bottom: 0;
+                @include caret-down();
             }
         }
     }
@@ -201,14 +184,11 @@
 .dropup {
     // Reverse the caret
     .caret {
-        content: "";
-        border-top: 0;
-        border-bottom: $caret-width solid;
+        @include caret-up();
     }
     &.open {
         .caret {
-            border-top: $caret-width solid;
-            border-bottom: 0;
+            @include caret-down();
         }
     }
 
@@ -240,14 +220,8 @@
         position: absolute;
         top: 50%;
         left: $dropdown-back-spacer-x;
-        display: block;
-        width: 0;
-        height: 0;
         margin-top: -$dropdown-caret-width;
-        content: " ";
-        border-top: $dropdown-back-width solid transparent;
-        border-right: $dropdown-back-width solid $dropdown-back-color;
-        border-bottom: $dropdown-back-width solid transparent;
+        @include caret(start, $dropdown-back-width, $dropdown-back-color);
     }
 }
 
@@ -258,8 +232,7 @@
     > a::before {
         right: $dropdown-back-spacer-x;
         left: auto;
-        border-right: 0;
-        border-left: $dropdown-back-width solid $dropdown-back-color;
+        @include caret-end($dropdown-back-width, $dropdown-back-color);
     }
 }
 
@@ -298,12 +271,11 @@
         &::after {
             right: auto;
             left: $dropdown-caret-spacer-x;
-            border-right: $dropdown-caret-width solid $dropdown-caret-color;
-            border-left: 0;
+            @include caret-start($dropdown-caret-width, $dropdown-caret-color);
         }
 
         &.active:not(:hover):not(:focus)::after {
-            border-right-color: $dropdown-caret-active-color;
+            @include caret-end($dropdown-caret-width, $dropdown-caret-color);
         }
     }
 }

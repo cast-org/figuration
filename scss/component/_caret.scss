@@ -1,14 +1,6 @@
-// Caret `border` will inherit the text color
 .caret {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    vertical-align: middle;
-    border-top: $caret-width solid;
-    border-right: $caret-width solid transparent;
-    border-left: $caret-width solid transparent;
+    @include caret(down, $caret-width);
 }
 .open .caret {
-    border-top: 0;
-    border-bottom: $caret-width solid;
+    @include caret-up($caret-width);
 }

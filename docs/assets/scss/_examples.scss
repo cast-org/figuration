@@ -97,6 +97,19 @@
     }
 }
 
+// Caret mixins
+.btn {
+    .example-caret {
+        @include caret(start, .5rem, #000);
+    }
+
+    @include hover-focus() {
+        .example-caret {
+            @include caret-end(.5rem, #000);
+        }
+    }
+}
+
 // Form
 .cf-example > .form-control + .form-control,
 .cf-example > .custom-select + .custom-select {

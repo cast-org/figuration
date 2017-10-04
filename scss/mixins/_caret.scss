@@ -1,0 +1,60 @@
+// Caret `border` will inherit the text color by default with `currentColor`
+// Default color value is `currentColor` when not defined
+
+@mixin caret-down($width: $caret-width, $color: null) {
+    @if $color != null {
+        $color:  #{" " + $color};
+    }
+    border-top: $width solid$color;
+    border-right: $width solid transparent;
+    border-bottom: 0;
+    border-left: $width solid transparent;
+}
+
+@mixin caret-up($width: $caret-width, $color: null) {
+    @if ($color != null) {
+        $color:  #{" " + $color};
+    }
+    border-top: 0;
+    border-right: $width solid transparent;
+    border-bottom: $width solid$color;
+    border-left: $width solid transparent;
+}
+
+@mixin caret-start($width: $caret-width, $color: null) {
+    @if ($color != null) {
+        $color:  #{" " + $color};
+    }
+    border-top: $width solid transparent;
+    border-right: $width solid$color;
+    border-bottom: $width solid transparent;
+    border-left: 0;
+}
+
+@mixin caret-end($width: $caret-width, $color: null) {
+    @if ($color != null) {
+        $color:  #{" " + $color};
+    }
+    border-top: $width solid transparent;
+    border-right: 0;
+    border-bottom: $width solid transparent;
+    border-left: $width solid$color;
+}
+
+@mixin caret($direction: down, $width: $caret-width, $color: null) {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    content: "";
+
+    @if ($direction == down) {
+        @include caret-down($width, $color);
+    } @else if ($direction == up) {
+        @include caret-up($width, $color);
+    } @else if ($direction == start) {
+        @include caret-start($width, $color);
+    } @else if ($direction == end) {
+        @include caret-end($width, $color);
+    }
+}

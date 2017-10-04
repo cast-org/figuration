@@ -32,6 +32,57 @@ If inside of an element marked as `.open` the caret will reverse direction accor
 </span>
 {% endexample %}
 
+### Mixins
+
+Create custom uses of the caret with the Sass mixins.
+
+Four directions are available, with the following names: down, up, start, and end.
+
+The *start/end directions* are designated as follows depending on which version of the Figuration CSS you are using.  The default `figuration.*.css` uses the `ltr` mode, where `figuration-rtl.*.css` uses the `rtl` mode.
+
+- For `left-to-right` mode (`ltr` - default);
+  - `start` refers to the `left` side
+  - `end` refers to the `right` side
+- For `right-to-left` mode (`rtl`);
+  - `start` refers to the `right` side
+  - `end` refers to the `left` side
+
+{% highlight scss %}
+// Create the base caret
+@include caret($direction, $border-width, $border-color);
+
+// Modify the caret direction
+@include caret-down($border-width, $border-color);
+@include caret-up($border-width, $border-color);
+@include caret-start($border-width, $border-color);
+@include caret-end($border-width, $border-color);
+{% endhighlight %}
+
+### Example
+
+{% highlight scss %}
+.btn {
+    .example-caret {
+        @include caret(start, .5rem, #000);
+    }
+
+    @include hover-focus() {
+        .example-caret {
+            @include caret-end(.5rem, #000);
+        }
+    }
+}
+{% endhighlight %}
+
+{% example html %}
+Hover over, or focus on the following button to change caret direction:<br />
+<button type="button" class="btn">
+    Caret example
+    <span class="example-caret" aria-hidden="true"></span>
+</button>
+{% endexample %}
+
+
 ## Close Icon
 
 Use a generic close icon for dismissing content like modals and alerts. **Be sure to include text for screen readers**, as we've done with `aria-label`.
