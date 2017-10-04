@@ -21,12 +21,11 @@ Figuration sets basic global display, typography, and link styles. Specifically,
 - Set the global link color via `$link-color` and apply link underlines only on `:hover`.
 - Use `$body-bg` to set a `background-color` on the `<body>` (`#fff` by default).
 
-These styles can be found within `_reboot.scss`, and the global variables are defined in `_settings.scss`.
+These styles can be found within `_reboot.scss`, and the global variables are defined in `_settings.scss`. Make sure to set `$font-size-base` using `rem` units.
 
 ## Headings
 
 All HTML headings, `<h1>` through `<h6>`, are available.
-
 
 {% example html %}
 <h1>h1. Example heading</h1>
