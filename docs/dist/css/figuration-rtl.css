@@ -1451,6 +1451,11 @@ fieldset[disabled] .form-check-label {
   background-color: #fff;
 }
 
+.custom-select[multiple] {
+  height: auto;
+  background-image: none;
+}
+
 .custom-select:disabled {
   color: #757575;
   cursor: not-allowed;
