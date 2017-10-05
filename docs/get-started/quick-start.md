@@ -15,7 +15,9 @@ Looking to quickly add Figuration to your project? Use the CDN links. Using a pa
 
 ## Using the CDN
 
-CDN services are provided for free by the awesome folks over at [jsDelivr](https://www.jsdelivr.com/).
+Quickly add Figuration to your project by using the CDN services provided for free by the awesome folks over at [jsDelivr](https://www.jsdelivr.com/).  If you are using a package manager, or need to download the source files, more information can be found on the [download page.]({{ site.baseurl }}/get-started/download/)
+
+### CSS
 
 Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets to load our CSS.
 
@@ -23,7 +25,11 @@ Copy-paste the stylesheet `<link>` into your `<head>` before all other styleshee
 <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
 {% endhighlight %}
 
-Add our JavaScript widgets and jQuery, either in the `<head>`, or near the end of your pages, right before the closing `</body>` tag. Be sure to place jQuery first, as our code depends on it.
+### JavaScript
+
+[Figuration's widgets]({{ site.baseurl}}/widgets/overview/), our interactive components, require [jQuery](https://jquery.com/), along with our own JavaScript library to function. Add our JavaScript widgets and jQuery, either in the `<head>`, or near the end of your pages, right before the closing `</body>` tag. Be sure to place jQuery first, as our code depends on it.
+
+Our widgets work with either the full version of jQuery, or the [jQuery's slim build](https://blog.jquery.com/2016/06/09/jquery-3-0-final-released/).
 
 {% highlight html %}
 <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
@@ -31,6 +37,7 @@ Add our JavaScript widgets and jQuery, either in the `<head>`, or near the end o
 {% endhighlight %}
 
 ## Basic Template
+
 Be sure to have your pages set up with the latest design and development standards. That means using the HTML5 doctype, and including the viewport meta tag to allow responsive behaviors.
 
 Essentially something like this:
