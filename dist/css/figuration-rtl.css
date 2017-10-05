@@ -2611,7 +2611,7 @@ input[type="button"].btn-block {
     right: 100%;
   }
   .offset-sm-0 {
-    margin-right: 0%;
+    margin-right: 0;
   }
   .offset-sm-1 {
     margin-right: 8.333333%;
@@ -2801,7 +2801,7 @@ input[type="button"].btn-block {
     right: 100%;
   }
   .offset-md-0 {
-    margin-right: 0%;
+    margin-right: 0;
   }
   .offset-md-1 {
     margin-right: 8.333333%;
@@ -2991,7 +2991,7 @@ input[type="button"].btn-block {
     right: 100%;
   }
   .offset-lg-0 {
-    margin-right: 0%;
+    margin-right: 0;
   }
   .offset-lg-1 {
     margin-right: 8.333333%;
@@ -3181,7 +3181,7 @@ input[type="button"].btn-block {
     right: 100%;
   }
   .offset-xl-0 {
-    margin-right: 0%;
+    margin-right: 0;
   }
   .offset-xl-1 {
     margin-right: 8.333333%;
@@ -4711,6 +4711,8 @@ li .dropdown-header {
 .navbar-expand .navbar-collapse {
   display: -ms-flexbox !important;
   display: flex !important;
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
 }
 
 .navbar-expand .navbar-toggle {
@@ -4764,6 +4766,8 @@ li .dropdown-header {
   .navbar-expand-sm .navbar-collapse {
     display: -ms-flexbox !important;
     display: flex !important;
+    -ms-flex-preferred-size: auto;
+        flex-basis: auto;
   }
   .navbar-expand-sm .navbar-toggle {
     display: none;
@@ -4817,6 +4821,8 @@ li .dropdown-header {
   .navbar-expand-md .navbar-collapse {
     display: -ms-flexbox !important;
     display: flex !important;
+    -ms-flex-preferred-size: auto;
+        flex-basis: auto;
   }
   .navbar-expand-md .navbar-toggle {
     display: none;
@@ -4870,6 +4876,8 @@ li .dropdown-header {
   .navbar-expand-lg .navbar-collapse {
     display: -ms-flexbox !important;
     display: flex !important;
+    -ms-flex-preferred-size: auto;
+        flex-basis: auto;
   }
   .navbar-expand-lg .navbar-toggle {
     display: none;
@@ -4923,6 +4931,8 @@ li .dropdown-header {
   .navbar-expand-xl .navbar-collapse {
     display: -ms-flexbox !important;
     display: flex !important;
+    -ms-flex-preferred-size: auto;
+        flex-basis: auto;
   }
   .navbar-expand-xl .navbar-toggle {
     display: none;
