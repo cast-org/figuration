@@ -43,10 +43,6 @@
   h3 {
     page-break-after: avoid;
   }
-  .btn > .caret,
-  .dropup > .btn > .caret {
-    border-top-color: #000 !important;
-  }
   .badge {
     border: 1px solid #000;
   }
