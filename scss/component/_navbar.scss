@@ -176,6 +176,7 @@
                 // scss-lint:disable ImportantRule
                 .navbar-collapse {
                     display: flex !important;
+                    flex-basis: auto;
                 }
                 // scss-lint:enable ImportantRule
 
