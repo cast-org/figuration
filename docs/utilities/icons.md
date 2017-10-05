@@ -41,11 +41,11 @@ Four directions are available, with the following names: down, up, start, and en
 The *start/end directions* are designated as follows depending on which version of the Figuration CSS you are using.  The default `figuration.*.css` uses the `ltr` mode, where `figuration-rtl.*.css` uses the `rtl` mode.
 
 - For `left-to-right` mode (`ltr` - default);
-  - `start` refers to the `left` side
-  - `end` refers to the `right` side
+  - `start` caret points to the `left` side
+  - `end` caret points to the `right` side
 - For `right-to-left` mode (`rtl`);
-  - `start` refers to the `right` side
-  - `end` refers to the `left` side
+  - `start` caret points to the `right` side
+  - `end` caret points to the `left` side
 
 {% highlight scss %}
 // Create the base caret
