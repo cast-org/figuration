@@ -493,16 +493,36 @@ If more than 12 columns are placed within a single row, each group of extra colu
 
 ### Column Resets
 
-With the five tiers of grids available you might run into issues where, at certain breakpoints, your columns don't wrap quite right. To counteract that, use a combination of a `.w-100` and our [display utilities]({{ site.baseurl }}/utilities/display/#responsively-hiding-content).
+Resetting, or breaking, columns to a new line in flexbox requires a small hack: add an element with `width: 100%` wherever you want to wrap your columns to a new line. This can also be accomplished with multiple `.row`s.  You may need to try both implementation methods to see which works best for your layout.
 
 <div class="cf-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-4 col-md-3">.col-4 .col-md-3</div>
-  <div class="col-4 col-md-3">.col-4 .col-md-3<br>taller</div>
-  <div class="w-100 d-md-none"></div>
-  <div class="col-4 col-md-3">.col-4 .col-md-3</div>
-  <div class="col-8 col-md-3">.col-8 .col-md-3</div>
+  <div class="col-6 col-md-3">.col-6 .col-md-3</div>
+  <div class="col-6 col-md-3">.col-6 .col-md-3<br>taller</div>
+
+  <!-- Force next columns to break to a new line -->
+  <div class="w-100"></div>
+
+  <div class="col-6 col-md-3">.col-6 .col-md-3</div>
+  <div class="col-6 col-md-3">.col-6 .col-md-3</div>
+</div>
+{% endexample %}
+</div>
+
+You can also apply a break at specific breakpoints with our [responsive display utilities]({{ site.baseurl }}/utilities/display/).
+
+<div class="cf-example-row">
+{% example html %}
+<div class="row">
+  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+  <div class="col-6 col-md-4">.col-6 .col-md-4<br>taller</div>
+
+  <!-- Force next columns to break to a new line at md breakpoint and up-->
+  <div class="w-100 d-none d-md-block"></div>
+
+  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
 </div>
 {% endexample %}
 </div>
