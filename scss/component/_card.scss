@@ -172,6 +172,7 @@
             margin-bottom: $card-spacer-y; // 1
 
             .card {
+                // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
                 flex: 1 0 0%;
                 margin-bottom: 0; // 1
             }
@@ -223,6 +224,7 @@
             margin-bottom: $card-spacer-y; // 1
 
             .card {
+                // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
                 flex: 1 0 0%;
                 margin-bottom: 0; // 1
 
