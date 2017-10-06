@@ -250,6 +250,10 @@
     @include box-shadow($input-box-shadow, 0 0 transparent);
     @include transition($input-transition);
 
+    &:empty::after {
+        content: map-get(map-get($custom-file-text, placeholder), en);
+    }
+
     @each $lang, $text in map-get($custom-file-text, placeholder) {
         &:lang(#{$lang}):empty::after {
             content: $text;
@@ -266,6 +270,7 @@
         padding: $input-padding-y $input-padding-x;
         line-height: $input-line-height;
         color: $custom-file-button-color;
+        content: map-get(map-get($custom-file-text, button-label), en);
         background-color: $custom-file-button-bg;
         border-left: $input-border-width solid $input-border-color;
     }

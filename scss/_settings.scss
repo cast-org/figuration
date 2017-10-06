@@ -552,7 +552,9 @@ $custom-select-indicator:           url("data:image/svg+xml;charset=utf8,%3Csvg 
 $custom-file-width:                 14rem !default;
 $custom-file-button-color:          $uibase-600 !default;
 $custom-file-button-bg:             $uibase-50 !default;
-$custom-file-text: (
+
+$custom-file-text: () !default;
+$custom-file-text-default: (
     placeholder: (
         en: "Choose file..."
     ),
@@ -560,7 +562,7 @@ $custom-file-text: (
         en: "Browse"
     )
 ) !default;
-
+$custom-file-text: map-merge($custom-file-text-default, $custom-file-text);
 
 // Switch
 // =====

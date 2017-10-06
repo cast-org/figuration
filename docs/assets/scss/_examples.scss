@@ -116,6 +116,30 @@
     margin-top: .5rem;
 }
 
+// Custom file language example
+$custom-file-text: (
+    placeholder: (
+        en: "Choose file...",
+        es: "Seleccionar archivo..."
+    ),
+    button-label: (
+        en: "Browse",
+        es: "Navegar"
+    )
+);
+.custom-file-control {
+    @each $lang, $text in map-get($custom-file-text, placeholder) {
+        &:lang(#{$lang}):empty::after {
+            content: $text;
+        }
+    }
+    @each $lang, $text in map-get($custom-file-text, placeholder) {
+        &:lang(#{$lang}):empty::after {
+            content: $text;
+        }
+    }
+}
+
 // Button groups
 .cf-example > .btn-group + .btn-group,
 .cf-example > .btn-group + br + .btn-group {
