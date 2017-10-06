@@ -606,6 +606,15 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>Back</td>
         <td>Text to be used for back links.</td>
     </tr>
+    <tr>
+        <td>container</td>
+        <td>string | false</td>
+        <td>false</td>
+        <td>
+            <p>Appends the dropdown menu to a specific element. Example: <code>container: 'body'</code></p>
+            <p>This does not apply when the dropdown is inside of a `.navbar-collapse`.</p>
+        </td>
+    </tr>
 </tbody>
 </table>
 

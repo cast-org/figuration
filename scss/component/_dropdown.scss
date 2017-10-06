@@ -5,6 +5,11 @@
     position: relative;
 }
 
+.dropdown-container {
+    position: absolute;
+    pointer-events: none;
+}
+
 .dropdown-toggle {
     // Generate the caret automatically
     &::after {
@@ -47,6 +52,7 @@
     color: $body-color;
     text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
     list-style: none;
+    pointer-events: auto;
     background-color: $dropdown-bg;
     background-clip: padding-box;
     border: $dropdown-border-width solid $dropdown-border-color;
