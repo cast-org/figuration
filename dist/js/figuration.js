@@ -852,6 +852,9 @@ if (typeof jQuery === 'undefined') {
         // Touch enabled-browser flag - override not allowed
         this.settings.isTouch = $.CFW_isTouch;
 
+        this.$tmpContainer = null;
+        this.noContainer = this._containerOverride();
+
         this.c = CFW_Widget_Dropdown.CLASSES;
 
         this._init();
@@ -867,12 +870,14 @@ if (typeof jQuery === 'undefined') {
     };
 
     CFW_Widget_Dropdown.DEFAULTS = {
-        target   : null,
-        delay    : 350,     // Delay for hiding menu (milliseconds)
-        hover    : false,   // Enable hover style navigation
-        backlink : false,   // Insert back links into submenus
-        backtop  : false,   // Should back links start at top level
-        backtext : 'Back'   // Text for back links
+        target    : null,
+        delay     : 350,    // Delay for hiding menu (milliseconds)
+        hover     : false,  // Enable hover style navigation
+        backlink  : false,  // Insert back links into submenus
+        backtop   : false,  // Should back links start at top level
+        backtext  : 'Back', // Text for back links
+        container : false,   // Where to place dropdown in DOM
+        variants  : 'dropdown-menu-reverse dropup'
     };
 
     function getParent($node) {
@@ -1145,6 +1150,28 @@ if (typeof jQuery === 'undefined') {
                 }
             });
 
+            if ($trigger.is(this.$element)) {
+                // Move target if container is to be used
+                if (this.settings.container && !this.noContainer) {
+                    this.$tmpContainer = $(document.createElement('div'));
+                    this.$tmpContainer
+                        .appendTo(this.settings.container)
+                        .append(this.$target)
+                        .addClass('dropdown-container open');
+
+                    var variantTypes = this.settings.variants.split(' ');
+                    for (var i = variantTypes.length; i--;) {
+                        var varName = variantTypes[i];
+                        if ($parent.hasClass(varName)) {
+                            this.$tmpContainer.addClass(varName);
+                        }
+                    }
+
+                    $(window).on('resize.cfw.dropdown.' + this.instance, $.proxy(this._containerPlacement, this));
+                    this._containerPlacement();
+                }
+            }
+
             $parent.addClass('open');
             $trigger.attr('aria-expanded', 'true');
             $menu.removeAttr('aria-hidden');
@@ -1189,6 +1216,17 @@ if (typeof jQuery === 'undefined') {
 
             $parent.removeClass('open');
             $trigger.attr('aria-expanded', 'false');
+
+            if ($trigger.is(this.$element)) {
+                if (this.settings.container && !this.noContainer) {
+                    $(window).off('resize.cfw.dropdown.' + this.instance);
+                    this.$target
+                        .appendTo($parent);
+                    this.$tmpContainer && this.$tmpContainer.remove();
+                    this.$tmpContainer = null;
+                }
+            }
+
             $menu.attr('aria-hidden', 'true')
                 .find('a').attr('tabIndex', -1);
 
@@ -1398,8 +1436,24 @@ if (typeof jQuery === 'undefined') {
             }
         },
 
+        _containerOverride : function() {
+            return this.$element.closest('.navbar-collapse').length > 0;
+        },
+
+        _containerPlacement : function() {
+            var elRect = this.$element[0].getBoundingClientRect();
+            elRect =  $.extend({}, elRect, this.$element.offset());
+            this.$tmpContainer.css({
+                top: elRect.top,
+                left: elRect.left,
+                width: elRect.width,
+                height: elRect.height
+            });
+        },
+
         dispose : function() {
-            $(document).off('focusin.cfw.dropdown.' + this.instance);
+            $(document).off('.cfw.dropdown.' + this.instance);
+            $(window).off('.cfw.dropdown.' + this.instance);
             this.$element.CFW_Dropdown('hideRev');
             this.$target.find('.' + this.c.backLink).remove();
             this.$target.find('.' + this.c.hasSubMenu).off('.cfw.dropdown');
@@ -1413,6 +1467,8 @@ if (typeof jQuery === 'undefined') {
             this.$target = null;
             this.instance = null;
             this.timerHide = null;
+            this.$tmpContainer = null;
+            this.noContainer = null;
             this.settings = null;
         }
     };

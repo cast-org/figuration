@@ -4178,6 +4178,11 @@ button.list-group-item-danger.active {
   position: relative;
 }
 
+.dropdown-container {
+  position: absolute;
+  pointer-events: none;
+}
+
 .dropdown-toggle::after {
   margin-right: 0.25rem;
   display: inline-block;
@@ -4223,6 +4228,7 @@ button.list-group-item-danger.active {
   color: #292929;
   text-align: right;
   list-style: none;
+  pointer-events: auto;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #a3a3a3;
