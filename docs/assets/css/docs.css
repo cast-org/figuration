@@ -1027,6 +1027,22 @@ h4 > code {
   margin-top: .5rem;
 }
 
+.custom-file-control:lang(en):empty::after {
+  content: "Choose file...";
+}
+
+.custom-file-control:lang(es):empty::after {
+  content: "Seleccionar archivo...";
+}
+
+.custom-file-control:lang(en):empty::after {
+  content: "Choose file...";
+}
+
+.custom-file-control:lang(es):empty::after {
+  content: "Seleccionar archivo...";
+}
+
 .cf-example > .btn-group + .btn-group,
 .cf-example > .btn-group + br + .btn-group {
   margin-top: .5rem;
