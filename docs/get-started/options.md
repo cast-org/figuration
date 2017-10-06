@@ -12,21 +12,71 @@ Customize Figuration using Sass variables for global style preferences, easy the
 * ToC goes here
 {:toc}
 
-## Customizing Variables
+## Customizing Options
 
-Every Sass variable in Figuration includes the `!default` flag allowing you to override the variable's default value in your own Sass without modifying Figuration's source code. Copy and paste variables as needed, modify their values, and remove the `!default` flag. If a variable has already been assigned, then it won't be re-assigned by the default values.
+Whenever possible, avoid modifying Figurations's core files. For Sass, that means creating your own stylesheet that imports Figuration so you can modify and extend it. Assuming you've downloaded our source files or are using package manager, you'll have a file structure that looks like this:
+
+{% highlight plaintext %}
+your-project/
++-- scss
+|   +-- custom.scss
++-- node_modules/
+    +-- figuration
+        +-- js
+        +-- scss
+{% endhighlight %}
+
+In your `custom.scss`, you will import Figuration's source Sass files. Our recommended structure is to pick the parts you need, but you can include everything if desired. Be aware there are some requirements and dependencies across our components, so you may need to include slightly more than you need. Some of our components will also need have our our JavaScript included in order to become interactive.
+
+{% highlight scss %}
+// custom.scss
+// Recommended structure for importing Figuration into your
+// project allowing for use of Figuration's Sass functions
+// in your custom setting overrides
+
+// Required - functions
+@import "node_modules/figuration/scss/functions";
+
+// Custom - your setting overrides
+// go in this location
+
+// Required - settings and mixins
+@import "node_modules/figuration/scss/settings";
+@import "node_modules/figuration/scss/mixins";
+
+// Core and Components
+@import "node_modules/figuration/scss/reboot";
+@import "node_modules/figuration/scss/typography";
+@import "node_modules/figuration/scss/images";
+@import "node_modules/figuration/scss/buttons";
+@import "node_modules/figuration/scss/grid";
+...
+{% endhighlight %}
+
+With that setup in place, you can begin to modify any of the Sass variables and maps in your `custom.scss`. You can also start to add parts of Figuration under the `// Optional` section as needed.
+
+## Variable Defaults
+
+Every Sass variable, or setting, in Figuration includes the `!default` flag allowing you to override the variable's default value in your own Sass without modifying Figuration's source code. Copy and paste variables as needed, modify their values, and remove the `!default` flag. If a variable has already been assigned, then it won't be re-assigned by the default values.
 
 Variable overrides within the same Sass file can come before or after the default variables. However, when overriding across Sass files, your overrides must come before you import Figuration's Sass files.
 
 Here's an example that changes the `background-color` and `color` for the `<body>` when importing and compiling Figuration via grunt:
 
 {% highlight scss %}
-// Your variable overrides
+// Required - functions
+@import "node_modules/figuration/scss/functions";
+
+// Custom - your setting overrides
 $body-bg: #000;
 $body-color: #fff;
 
-// Import Figuration and its default variables
-@import "node_modules/figuration/scss/figuration";
+// Required - settings and mixins
+@import "node_modules/figuration/scss/settings";
+@import "node_modules/figuration/scss/mixins";
+
+// Core and Components
+...
 {% endhighlight %}
 
 Repeat as necessary for any variable in Figuration, including the global options below.
