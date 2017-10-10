@@ -15,8 +15,7 @@
     .table-hover {
         .table-#{$state} {
             @include hover {
-                background-color: $hover-bg;
-
+                &,
                 > td,
                 > th {
                     background-color: $hover-bg;
