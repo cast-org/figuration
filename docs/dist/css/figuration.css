@@ -2087,8 +2087,8 @@ fieldset[disabled] a.btn {
   text-decoration: none;
 }
 
-.btn-link:active, .btn-link.active,
-.open > .btn-link.dropdown-toggle {
+.btn-link:not([disabled]):not(.disabled):active, .btn-link:not([disabled]):not(.disabled).active,
+.open > .btn-link {
   color: #091f58;
 }
 
