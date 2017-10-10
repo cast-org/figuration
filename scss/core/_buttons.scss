@@ -37,16 +37,13 @@
         @include box-shadow(none);
     }
 
-    &:active,
-    &.active,
-    .open > &.dropdown-toggle {
+    &:not([disabled]):not(.disabled):active,
+    &:not([disabled]):not(.disabled).active,
+    .open > & {
         // Remove the gradient for the pressed/active state
         background-image: none;
         @include box-shadow($btn-active-box-shadow);
-    }
 
-    &:active,
-    &.active {
         &:focus,
         &.focus {
             @if $enable-shadows {
