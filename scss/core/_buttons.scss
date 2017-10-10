@@ -109,9 +109,9 @@ fieldset[disabled] a.btn {
         text-decoration: none;
     }
 
-    &:active,
-    &.active,
-    .open > &.dropdown-toggle {
+    &:not([disabled]):not(.disabled):active,
+    &:not([disabled]):not(.disabled).active,
+    .open > & {
         color: $link-hover-color;
         @include box-shadow(none);
     }
