@@ -205,14 +205,13 @@ Several Figuration components utilize `z-index`, the CSS property that helps con
 Customizing these values is most likely not needed, and we don't recommend customizing the values.  However, if you change one, you will need to review and possibly update all of the other values.
 
 {% highlight scss %}
-$zindex-dropdown-backdrop:  990 !default;
 $zindex-dropdown:          1000 !default;
-$zindex-fixed:      1020 !default;
-$zindex-sticky:     1020 !default;
-$zindex-popover:           1025 !default;
-$zindex-tooltip:           1030 !default;
-$zindex-modal-backdrop:    1040 !default;
-$zindex-modal:             1050 !default;
+$zindex-sticky:            1010 !default;
+$zindex-fixed:             1020 !default;
+$zindex-popover:           1030 !default;
+$zindex-tooltip:           1040 !default;
+$zindex-modal-backdrop:    1050 !default;
+$zindex-modal:             1060 !default;
 {% endhighlight %}
 
 Background elements&mdash;like the backdrops that allow click-dismissing&mdash;tend to reside on a lower `z-index`s, while navigation and popovers utilize higher `z-index`s to ensure they overlay surrounding content.  Modals get a higher z-index so they are placed above popover/tooltip items, in the case that one or more of those items is held open.
