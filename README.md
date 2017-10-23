@@ -20,12 +20,20 @@ CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end
 
 ## Status
 
+**Latest Release**
 [![npm version](https://img.shields.io/npm/v/figuration.svg)](https://www.npmjs.com/package/figuration)
-[![Build Status](https://img.shields.io/travis/cast-org/figuration/master.svg)](https://travis-ci.org/cast-org/figuration)
+[![CSS size](http://img.badgesize.io/cast-org/figuration/v3.0.1/dist/css/figuration.min.css?label=CSS+size)](https://github.com/cast-org/figuration/tree/v3.0.1/dist/css/figuration.min.css)
+[![CSS gzip size](http://img.badgesize.io/cast-org/figuration/v3.0.1/dist/css/figuration.min.css?compression=gzip&label=CSS+gzip+size)](https://github.com/cast-org/figuration/tree/v3.0.1/dist/css/figuration.min.css)
+[![JS size](http://img.badgesize.io/cast-org/figuration/v3.0.1/dist/js/figuration.min.js?label=JS+size)](https://github.com/cast-org/figuration/tree/v3.0.1/dist/js/figuration.min.js)
+[![JS gzip size](http://img.badgesize.io/cast-org/figuration/v3.0.1/dist/js/figuration.min.js?compression=gzip&label=JS+gzip+size)](https://github.com/cast-org/figuration/tree/v3.0.1/dist/js/figuration.min.js)
+
+**Dependencies**
 [![dependencies Status](https://img.shields.io/david/cast-org/figuration.svg)](https://david-dm.org/cast-org/figuration)
 [![devDependencies Status](https://img.shields.io/david/dev/cast-org/figuration.svg)](https://david-dm.org/cast-org/figuration?type=dev)
 
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/figuration.svg)](https://saucelabs.com/u/figuration)
+**Build Status**
+[![Build Status](https://img.shields.io/travis/cast-org/figuration/master.svg)](https://travis-ci.org/cast-org/figuration)
+[![Sauce Labs Test Status](https://saucelabs.com/browser-matrix/figuration.svg)](https://saucelabs.com/u/figuration)
 
 
 ## Quick Start
