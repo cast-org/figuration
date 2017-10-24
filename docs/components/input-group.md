@@ -251,6 +251,98 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
 </div>
 {% endexample %}
 
+## Custom Forms
+
+Input groups include support for custom selects and custom file inputs. Browser default versions of these are not supported.
+
+### Custom Select
+
+{% example html %}
+<div class="input-group mb-1">
+  <span class="input-group-addon" id="">Options</span>
+  <select class="custom-select" id="">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+</div>
+
+<div class="input-group mb-1">
+  <select class="custom-select" id="">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+  <span class="input-group-addon" id="">Options</span>
+</div>
+
+<div class="input-group mb-1">
+  <span class="input-group-btn">
+    <button class="btn btn-primary" type="button">Button</button>
+  </span>
+  <select class="custom-select" id="">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+</div>
+
+<div class="input-group">
+  <select class="custom-select" id="">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+  <span class="input-group-btn">
+    <button class="btn btn-primary" type="button">Button</button>
+  </span>
+</div>
+{% endexample %}
+
+### Custom File Input
+
+{% example html %}
+<div class="input-group mb-1">
+  <span class="input-group-addon" id="">Upload</span>
+  <label class="custom-file">
+    <input type="file" id="file" class="custom-file-input" required>
+    <span class="custom-file-control"></span>
+  </label>
+</div>
+
+<div class="input-group mb-1">
+  <label class="custom-file">
+    <input type="file" id="file" class="custom-file-input" required>
+    <span class="custom-file-control"></span>
+  </label>
+  <span class="input-group-addon" id="">Upload</span>
+</div>
+
+<div class="input-group mb-1">
+  <span class="input-group-btn">
+    <button class="btn btn-primary" type="button">Button</button>
+  </span>
+  <label class="custom-file">
+    <input type="file" id="file" class="custom-file-input" required>
+    <span class="custom-file-control"></span>
+  </label>
+</div>
+
+<div class="input-group">
+  <label class="custom-file">
+    <input type="file" id="file" class="custom-file-input" required>
+    <span class="custom-file-control"></span>
+  </label>
+  <span class="input-group-btn">
+    <button class="btn btn-primary" type="button">Button</button>
+  </span>
+</div>
+{% endexample %}
+
 ## Accessibility
 
 Screen readers will have trouble with your forms if you don't include a label for every input. For these input groups, ensure that any additional label or functionality is conveyed to assistive technologies.

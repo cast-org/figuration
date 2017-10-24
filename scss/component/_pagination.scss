@@ -31,7 +31,7 @@
     border: $pagination-border-width solid $pagination-border-color;
 
     &:hover {
-        z-index: 2;
+        z-index: 1;
         color: $pagination-hover-color;
         text-decoration: none;
         background-color: $pagination-hover-bg;
@@ -39,13 +39,13 @@
     }
 
     &.active {
-        z-index: 2;
+        z-index: 1;
         color: $pagination-active-color;
         background-color: $pagination-active-bg;
     }
 
     &:focus {
-        z-index: 3;
+        z-index: 2;
     }
 
     &.disabled {

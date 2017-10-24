@@ -235,7 +235,7 @@
     top: 0;
     right: 0;
     left: 0;
-    z-index: 5;
+    z-index: 1;
     height: $select-height;
     padding: $input-padding-y ($input-padding-x / 2);
     overflow: hidden;
@@ -264,7 +264,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        z-index: 6;
+        z-index: 2;
         display: block;
         height: $select-height;
         padding: $input-padding-y $input-padding-x;

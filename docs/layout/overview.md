@@ -215,3 +215,5 @@ $zindex-modal:             1060 !default;
 {% endhighlight %}
 
 Background elements&mdash;like the backdrops that allow click-dismissing&mdash;tend to reside on a lower `z-index`s, while navigation and popovers utilize higher `z-index`s to ensure they overlay surrounding content.  Modals get a higher z-index so they are placed above popover/tooltip items, in the case that one or more of those items is held open.
+
+Additionally, the `button-group`, `input-group`, `list-group`, and `pagination` components make use of setting `z-index` to `1` or `2` in order to ensure that the borders of the _active_ or _focused_ element correctly appear "above" their sibling elements.
