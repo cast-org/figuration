@@ -176,6 +176,18 @@ Create lists of content in a card with a flush list group.
 </div>
 {% endexample %}
 
+{% example html %}
+<div class="card">
+  <h3 class="card-header">Sample Header</h3>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  <div class="card-footer">Sample Footer</div>
+</div>
+{% endexample %}
+
 ### All Together
 
 The multiple content types can be easily combined to create the card you need.
