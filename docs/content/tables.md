@@ -1089,6 +1089,44 @@ You can also use [text or background utilities]({{ site.baseurl }}/utilities/col
 </table>
 {% endexample %}
 
+## Captions
+
+A `<caption>` functions like a heading for a table. It helps users with screen readers to find a table and understand what it’s about and decide if they want to read it.
+
+{% example html %}
+<table class="table">
+  <caption>List of users</caption>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>John</td>
+      <td>Doe</td>
+      <td>jdoe</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jane</td>
+      <td>Smith</td>
+      <td>jsmith</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>James</td>
+      <td>White</td>
+      <td>jwhite</td>
+    </tr>
+  </tbody>
+</table>
+{% endexample %}
+
 ## Scrolling Tables
 
 Having an issue with tables becoming too wide for their containers? Add `.table-scroll` to any `.table` to make them scroll horizontally if they become wider than their container.
@@ -1099,6 +1137,8 @@ Vertical Clipping
 
 Scrolling tables make use of `overflow-y: hidden`, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off dropdown menus and other third-party widgets.
 {% endcallout %}
+
+### Always Scrolling
 
 <div class="cf-example">
   <table class="table table-scroll">
@@ -1236,6 +1276,8 @@ Scrolling tables make use of `overflow-y: hidden`, which clips off any content t
 </table>
 {% endhighlight %}
 
+### Responsive Scrolling
+
 Table scrolling is also available in responsive variants of the form `.table-scroll-*-down`, where the table will horizontally scroll when the table is wider than it's container and when the viewport is at the given breakpoint or smaller.
 
 Responsive variants are:
@@ -1300,42 +1342,4 @@ Responsive variants are:
       </tr>
     </tfoot>
   </table>
-{% endexample %}
-
-## Captions
-
-A `<caption>` functions like a heading for a table. It helps users with screen readers to find a table and understand what it’s about and decide if they want to read it.
-
-{% example html %}
-<table class="table">
-  <caption>List of users</caption>
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>John</td>
-      <td>Doe</td>
-      <td>jdoe</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jane</td>
-      <td>Smith</td>
-      <td>jsmith</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>James</td>
-      <td>White</td>
-      <td>jwhite</td>
-    </tr>
-  </tbody>
-</table>
 {% endexample %}
