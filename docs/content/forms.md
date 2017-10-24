@@ -375,85 +375,81 @@ For more structured form layouts that are also responsive, you can utilize Figur
 Be sure to add `.form-control-label` to your `<label>`s as well so they're vertically centered with their associated form controls. For `<legend>` elements, you can use `.form-control-legend` to make them appear similar to regular `<label>` elements.
 
 {% example html %}
-<div class="container">
-  <form>
-    <div class="form-group row">
-      <label for="inputEmail3" class="col-sm-2 form-control-label">Email</label>
-      <div class="col-sm-10">
-        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-      </div>
+<form>
+  <div class="form-group row">
+    <label for="inputEmail3" class="col-sm-2 form-control-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
     </div>
-    <div class="form-group row">
-      <label for="inputPassword3" class="col-sm-2 form-control-label">Password</label>
-      <div class="col-sm-10">
-        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-      </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword3" class="col-sm-2 form-control-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
     </div>
-    <div class="form-group row">
-      <fieldset class="w-100 clearfix">
-        <legend class="col-sm-2 float-sm-start form-control-legend">Radios</legend>
-        <div class="col-sm-10 float-sm-start">
-          <div class="form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-              Option one is this and that&mdash;be sure to include why it's great
-            </label>
-          </div>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-              Option two can be something else and selecting it will deselect option one
-            </label>
-          </div>
-          <div class="form-check disabled">
-            <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-              Option three is disabled
-            </label>
-          </div>
+  </div>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-sm-2 float-sm-start form-control-legend">Radios</legend>
+      <div class="col-sm-10 float-sm-start">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+            Option one is this and that&mdash;be sure to include why it's great
+          </label>
         </div>
-      </fieldset>
-    </div>
-    <div class="form-group row">
-      <fieldset class="w-100 clearfix">
-        <legend class="col-sm-2 float-sm-start form-control-legend">Checkbox</legend>
-        <div class="col-sm-10 float-sm-start">
-          <div class="form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="checkbox"> Check me out
-            </label>
-          </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+            Option two can be something else and selecting it will deselect option one
+          </label>
         </div>
-      </fieldset>
-    </div>
-    <div class="form-group row">
-      <div class="offset-sm-2 col-sm-10">
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <div class="form-check disabled">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+            Option three is disabled
+          </label>
+        </div>
       </div>
     </div>
-  </form>
-</div>
+  </fieldset>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-sm-2 float-sm-start form-control-legend">Checkbox</legend>
+      <div class="col-sm-10 float-sm-start">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox"> Check me out
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+  <div class="form-group row">
+    <div class="offset-sm-2 col-sm-10">
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </div>
+  </div>
+</form>
 {% endexample %}
 
 Grid-based form layouts also support [control sizing]({{ site.baseurl }}/content/forms/#control-sizing).
 
 {% example html %}
-<div class="container">
-  <form>
-    <div class="form-group row">
-      <label for="lgFormGroupInput" class="col-sm-2 form-control-label form-control-label-lg">Email</label>
-      <div class="col-sm-10">
-        <input type="email" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="you@example.com">
-      </div>
+<form>
+  <div class="form-group row">
+    <label for="lgFormGroupInput" class="col-sm-2 form-control-label form-control-label-lg">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="you@example.com">
     </div>
-    <div class="form-group row">
-      <label for="smFormGroupInput" class="col-sm-2 form-control-label form-control-label-sm">Email</label>
-      <div class="col-sm-10">
-        <input type="email" class="form-control form-control-sm" id="smFormGroupInput" placeholder="you@example.com">
-      </div>
+  </div>
+  <div class="form-group row">
+    <label for="smFormGroupInput" class="col-sm-2 form-control-label form-control-label-sm">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control form-control-sm" id="smFormGroupInput" placeholder="you@example.com">
     </div>
-  </form>
-</div>
+  </div>
+</form>
 {% endexample %}
 
 
@@ -678,6 +674,43 @@ Set heights using classes like `.form-control-lg`, and set widths using grid col
 <select class="form-control form-control-xs">
   <option>Extra small select</option>
 </select>
+{% endexample %}
+
+## Label and Static Sizing
+
+Just like sizing the form inputs, you can size labels by adding `.form-control-label{-size}`, and static items with `.form-control-static{-size}` classes.
+
+{% example html %}
+<div class="form-group row">
+    <label class="col-sm-2 form-control-label form-control-label-xs">Email</label>
+    <div class="col-sm-10">
+        <p class="form-control-static form-control-static-xs">email@example.com</p>
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-2 form-control-label form-control-label-sm">Email</label>
+    <div class="col-sm-10">
+        <p class="form-control-static form-control-static-sm">email@example.com</p>
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-2 form-control-label">Email</label>
+    <div class="col-sm-10">
+        <p class="form-control-static">email@example.com</p>
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-2 form-control-label form-control-label-lg">Email</label>
+    <div class="col-sm-10">
+        <p class="form-control-static form-control-static-lg">email@example.com</p>
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-sm-2 form-control-label form-control-label-xl">Email</label>
+    <div class="col-sm-10">
+        <p class="form-control-static form-control-static-xl">email@example.com</p>
+    </div>
+</div>
 {% endexample %}
 
 ## Column Sizing
