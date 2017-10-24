@@ -14,7 +14,7 @@ Customize Figuration using Sass variables for global style preferences, easy the
 
 ## Customizing Options
 
-Whenever possible, avoid modifying Figurations's core files. For Sass, that means creating your own stylesheet that imports Figuration so you can modify and extend it. Assuming you've downloaded our source files or are using package manager, you'll have a file structure that looks like this:
+Whenever possible, avoid modifying Figurations's core files. For Sass, that means creating your own stylesheet that imports Figuration so you can modify and extend it. Assuming you've downloaded our source files or are using a package manager, you'll have a file structure that looks like this:
 
 {% highlight plaintext %}
 your-project/
