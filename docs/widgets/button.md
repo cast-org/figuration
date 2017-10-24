@@ -88,6 +88,58 @@ The button widget will not toggle items that have either a `disabled` class or a
 </div>
 {% endexample %}
 
+### Vertical Group
+
+You can also use the button widget with a `.btn-group-vertical`.
+
+{% example html %}
+<div class="btn-group-vertical" data-cfw="buttons">
+    <label class="btn btn-info">
+        <input type="checkbox" checked>Checkbox 1 (pre-checked)
+    </label>
+    <label class="btn btn-info">
+        <input type="checkbox">Checkbox 2
+    </label>
+    <label class="btn btn-info">
+        <input type="checkbox">Checkbox 3
+    </label>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="btn-group-vertical" data-cfw="buttons">
+    <label class="btn btn-info">
+        <input type="radio" name="options" checked> Radio 1 (pre-selected)
+    </label>
+    <label class="btn btn-info">
+        <input type="radio" name="options"> Radio 2
+    </label>
+    <label class="btn btn-info">
+        <input type="radio" name="options"> Radio 3
+    </label>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="btn-group-vertical" data-cfw="buttons">
+    <button class="btn" type="button">One</button>
+    <button class="btn active" type="button">Two</button>
+    <button class="btn" type="button">Three</button>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="btn-group-vertical" data-cfw="buttons">
+    <button class="btn btn-info disabled" type="button">Disabled Button</button>
+    <label class="btn btn-info disabled">
+        <input type="checkbox" disabled>Disabled Checkbox
+    </label>
+    <label class="btn btn-info disabled">
+        <input type="radio" name="optionsD" disabled>Disabled Radio
+    </label>
+</div>
+{% endexample %}
+
 ## Usage
 
 ### Via Data Attributes
