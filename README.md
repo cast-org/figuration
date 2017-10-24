@@ -84,7 +84,7 @@ Figurations's documentation, included in this repo in the root directory, is bui
 2. Run `npm install` to install Node.js dependencies.
 4. Run `grunt` (or a specific set of Grunt tasks) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
 5. From the root `/figuration` directory, run `bundle exec jekyll serve` in the command line.
-6. Open <http://localhost:9001> in your browser, and enjoy.
+6. Open `http://localhost:9001` in your browser, and enjoy.
 
 Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com/docs/home/).
 

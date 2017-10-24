@@ -92,6 +92,6 @@ Using color to add meaning only provides a visual indication, which will not be 
 - [The A11Y Project](http://a11yproject.com/)
 - [MDN accessibility documentation](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
 - [Colour Contrast Check](https://snook.ca/technical/colour_contrast/colour.html)
-- [Colour Contrast Analyser (CCA)](https://www.paciellogroup.com/resources/contrastanalyser/)
+- [Colour Contrast Analyser (CCA)](https://developer.paciellogroup.com/resources/contrastanalyser/)
 - [WAVE Web Accessibility Tool](http://wave.webaim.org/)
 - ["HTML Codesniffer" bookmarklet for identifying accessibility issues](https://github.com/squizlabs/HTML_CodeSniffer)

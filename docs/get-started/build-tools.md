@@ -69,7 +69,7 @@ Running our documentation locally requires the use of Jekyll, a decently flexibl
 
 1. Run through the [tooling setup](#tooling-setup) above to install Jekyll (the site builder) and other Ruby dependencies with `bundle install`.
 2. From the root `/figuration` directory, run `bundle exec jekyll serve` in the command line.
-3. Open <http://localhost:9001> in your browser, and enjoy.
+3. Open `http://localhost:9001` in your browser, and enjoy.
 
 Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com/docs/home/).
 
