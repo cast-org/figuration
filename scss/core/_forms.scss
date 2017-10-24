@@ -111,6 +111,8 @@ textarea.form-control {
 // horizontal form layout.
 .form-control-static {
     // Size it appropriately next to real form controls
+    display: block;
+    width: 100%;
     padding-top: $input-padding-y;
     padding-bottom: $input-padding-y;
     margin-bottom: 0;
