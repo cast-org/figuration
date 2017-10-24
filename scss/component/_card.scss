@@ -238,20 +238,24 @@
                     &:first-child:not(:only-child) {
                         @include border-end-radius(0);
 
-                        .card-img-top {
+                        .card-img-top,
+                        .card-header {
                             border-top-right-radius: 0;
                         }
-                        .card-img-bottom {
+                        .card-img-bottom,
+                        .card-footer {
                             border-bottom-right-radius: 0;
                         }
                     }
                     &:last-child:not(:only-child) {
                         @include border-start-radius(0);
 
-                        .card-img-top {
+                        .card-img-top,
+                        .card-header {
                             border-top-left-radius: 0;
                         }
-                        .card-img-bottom {
+                        .card-img-bottom,
+                        .card-footer {
                             border-bottom-left-radius: 0;
                         }
                     }
@@ -259,7 +263,9 @@
                         border-radius: 0;
 
                         .card-img-top,
-                        .card-img-bottom {
+                        .card-img-bottom,
+                        .card-header,
+                        .card-footer {
                             border-radius: 0;
                         }
                     }
