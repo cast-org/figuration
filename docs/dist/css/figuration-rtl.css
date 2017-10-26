@@ -945,6 +945,8 @@ textarea.form-control {
 }
 
 .form-control-static {
+  display: block;
+  width: 100%;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   margin-bottom: 0;
@@ -1586,7 +1588,7 @@ fieldset[disabled] .form-check-label {
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   border-radius: 0.25rem;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, color 0.15s ease-in-out;
 }
 
 .btn:focus, .btn:hover {
