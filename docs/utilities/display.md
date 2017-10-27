@@ -21,6 +21,7 @@ Available utilities:
 - `.d-block` sets `display: block;`
 - `.d-inline` sets `display: inline;`
 - `.d-table` sets `display: table;`
+- `.d-table-row` sets `display: table-row;`
 - `.d-table-cell` sets `display: table-cell;`
 - `.d-flex` sets `display: flex;`
 - `.d-inline-flex` sets `display: inline-flex;`
@@ -44,7 +45,7 @@ These classes are also available in responsive variants, in the form of `.d{-bre
 {% example html %}
 <div class="d-table bg-info">
     d-table
-    <div class="d-table">
+    <div class="d-table-row">
         <div class="d-table-cell bg-danger">d-table-cell</div>
         <div class="d-table-cell bg-danger">d-table-cell</div>
     </div>
