@@ -240,11 +240,11 @@
 
                         .card-img-top,
                         .card-header {
-                            border-top-right-radius: 0;
+                            @include border-top-end-radius(0);
                         }
                         .card-img-bottom,
                         .card-footer {
-                            border-bottom-right-radius: 0;
+                            @include border-bottom-end-radius(0);
                         }
                     }
                     &:last-child:not(:only-child) {
@@ -252,21 +252,21 @@
 
                         .card-img-top,
                         .card-header {
-                            border-top-left-radius: 0;
+                            @include border-top-start-radius(0);
                         }
                         .card-img-bottom,
                         .card-footer {
-                            border-bottom-left-radius: 0;
+                            @include border-bottom-start-radius(0);
                         }
                     }
                     &:not(:first-child):not(:last-child):not(:only-child) {
-                        border-radius: 0;
+                        @include border-radius(0);
 
                         .card-img-top,
                         .card-img-bottom,
                         .card-header,
                         .card-footer {
-                            border-radius: 0;
+                            @include border-radius(0);
                         }
                     }
                 }
