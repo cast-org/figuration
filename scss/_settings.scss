@@ -338,7 +338,7 @@ $transition-collapse-y: height .3s ease !default;
 $transition-collapse-x: width .3s ease !default;
 
 // Component transitions
-$btn-transition:            background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, color .15s ease-in-out !default;
+$btn-transition:            color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 $input-transition:          border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 $modal-transition:          transform .3s ease-out !default;
 $progress-bar-transition:   width .3s ease !default;
