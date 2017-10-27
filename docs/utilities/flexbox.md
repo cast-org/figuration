@@ -205,19 +205,26 @@ Responsive self alignment utilities:
 
 Flexbox can do some pretty awesome things when you mix flex alignments with auto margins.
 
-### With justify-content
+Shown below are three examples of controlling flex items via auto margins: default (no auto margin), pushing two items to the end (`.me-auto`), and pushing two items to the start (`.ms-auto`).
 
-Easily move all flex items to one side, but keep another on the opposite end by mixing `justify-content` with `margin-right: auto` or `margin-left: auto`.
+**Unfortunately, IE10 and IE11 do not properly support auto margins on flex items whose parent has a non-default `justify-content` value.** [See this StackOverflow answer](https://stackoverflow.com/a/37535548) for more details.
 
 <div class="cf-example-flex">
 {% example html %}
-<div class="d-flex flex-end mb-1">
+
+<div class="d-flex mb-1">
+  <div class="p-0_5">Flex item</div>
+  <div class="p-0_5">Flex item</div>
+  <div class="p-0_5">Flex item</div>
+</div>
+
+<div class="d-flex mb-1">
   <div class="me-auto p-0_5">Flex item</div>
   <div class="p-0_5">Flex item</div>
   <div class="p-0_5">Flex item</div>
 </div>
 
-<div class="d-flex flex-start">
+<div class="d-flex">
   <div class="p-0_5">Flex item</div>
   <div class="p-0_5">Flex item</div>
   <div class="ms-auto p-0_5">Flex item</div>
@@ -227,7 +234,7 @@ Easily move all flex items to one side, but keep another on the opposite end by 
 
 ### With align-items
 
-Similarly, move one flex item to the top or bottom of a container by mixing `align-items`, `flex-direction: column`, and `margin-top: auto` or `margin-bottom: auto`.
+Vertically, move one flex item to the top or bottom of a container by mixing `align-items`, `flex-direction: column`, and `margin-top: auto` or `margin-bottom: auto`.
 
 <div class="cf-example-flex">
 {% example html %}
