@@ -1096,7 +1096,7 @@ The file input is the most gnarly of the bunch and will require additional JavaS
 
 {% example html %}
 <label class="custom-file">
-  <input type="file" id="file" class="custom-file-input">
+  <input type="file" id="custom-file-1" class="custom-file-input">
   <span class="custom-file-control"></span>
 </label>
 {% endexample %}
@@ -1132,7 +1132,7 @@ You'll need to set the language of your document (or subtree thereof) correctly 
 
 {% example html %}
 <label class="custom-file" lang="es">
-  <input type="file" id="file" class="custom-file-input">
+  <input type="file" id="custom-file-2" class="custom-file-input">
   <span class="custom-file-control"></span>
 </label>
 {% endexample %}
