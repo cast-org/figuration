@@ -29,13 +29,16 @@
 
     &:focus ~ .custom-control-indicator {
         // the mixin is not used here to make sure there is feedback
-        box-shadow: $custom-control-focus-indicator-box-shadow;
+        @if ($enable-shadows) {
+            box-shadow: $input-focus-box-shadow-inner, $input-focus-box-shadow-outer;
+        } @else {
+            box-shadow: $input-focus-box-shadow-outer;
+        }
     }
 
     &:active ~ .custom-control-indicator {
         color: $custom-control-active-indicator-color;
         background-color: $custom-control-active-indicator-bg;
-        @include box-shadow($custom-control-active-indicator-box-shadow);
     }
 
     &:disabled {
