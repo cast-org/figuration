@@ -3727,7 +3727,7 @@ button.list-group-item-danger.active {
   border-bottom-right-radius: 0;
 }
 
-.btn + .dropdown-toggle-split {
+.dropdown-toggle-split {
   padding-left: 0.5625rem;
   padding-right: 0.5625rem;
 }
@@ -6444,8 +6444,19 @@ a.badge:focus, a.badge:hover {
   pointer-events: none;
 }
 
+.modal-dialog-centered {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  height: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .modal-content {
   position: relative;
+  width: 100%;
   pointer-events: auto;
   background-color: #fff;
   background-clip: padding-box;
@@ -6518,6 +6529,10 @@ a.badge:focus, a.badge:hover {
   .modal-dialog {
     max-width: 33rem;
     margin: 1.875rem auto;
+  }
+  .modal-dialog-centered {
+    margin-top: 0;
+    margin-bottom: 0;
   }
   .modal-sm {
     max-width: 19rem;
