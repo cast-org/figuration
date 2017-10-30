@@ -196,6 +196,60 @@ When modals become too long for the user's viewport or device, they scroll indep
 </div>
 {% endhighlight %}
 
+### Vertically Centered
+
+Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal. **Do not use this with long modals**—it will overflow the viewport and potentially hide parts of your modal.
+
+<div class="modal" id="modalCenter">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cf-example">
+  <button type="button" class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalCenter">
+    Centered modal
+  </button>
+</div>
+
+{% highlight html %}
+<!-- Button trigger -->
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalCenter">
+    Centered modal
+</button>
+
+<!-- Modal -->
+<div class="modal" id="modalCenter">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endhighlight %}
+
 ### Grid Usage
 
 To take advantage of the grid system within a modal, just nest `.container-fluid` within the `.modal-body` and then use the normal grid system classes within this container.
