@@ -1328,7 +1328,7 @@ fieldset[disabled] .form-check-label {
 }
 
 .custom-control-input:focus ~ .custom-control-indicator {
-  box-shadow: 0 0 0 0.0625rem #fff, 0 0 0 0.1875rem #70b0d6;
+  box-shadow: 0 0 2px 3px rgba(112, 176, 214, 0.75);
 }
 
 .custom-control-input:active ~ .custom-control-indicator {
