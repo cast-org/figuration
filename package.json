@@ -69,10 +69,9 @@
   "files": [
     ".jscsrc",
     ".jshintrc",
-    ".scss-lint",
+    ".stylelint",
     "Gemfile",
     "Gruntfile.js",
-    "LICENSE",
     "dist",
     "grunt",
     "js",
