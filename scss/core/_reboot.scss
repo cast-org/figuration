@@ -1,4 +1,4 @@
-// scss-lint:disable ImportantRule, QualifyingElement, DuplicateProperty, VendorPrefix
+// stylelint-disable declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix
 
 // Reboot
 //
@@ -33,9 +33,13 @@ html {
 }
 
 // IE10+ doesn't honor `<meta name="viewport">` in some cases.
+// stylelint-disable at-rule-no-vendor-prefix
 @at-root {
-    @-ms-viewport { width: device-width; }
+    @-ms-viewport {
+        width: device-width;
+    }
 }
+// stylelint-enable at-rule-no-vendor-prefix
 
 // Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers)
 article,
@@ -99,10 +103,12 @@ hr {
 //
 // By default, `<h1>`-`<h6>` all receive top and bottom margins. We nuke the top
 // margin for easier control within type scales as it avoids margin collapsing.
+// stylelint-disable selector-list-comma-newline-after
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: $headings-margin-bottom;
 }
+// stylelint-enable selector-list-comma-newline-after
 
 // Reset margins on paragraphs
 //
@@ -120,6 +126,7 @@ p {
 // 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
 // 3. Add explicit cursor to indicate changed behavior.
 // 4. Duplicate behavior to the data-* attribute for our tooltip and popover widgets.
+// stylelint-disable declaration-block-no-duplicate-properties
 abbr[title],
 abbr[data-cfw-tooltip-original-title],  //4
 abbr[data-cfw-popover-original-title] { //4
@@ -128,6 +135,7 @@ abbr[data-cfw-popover-original-title] { //4
     cursor: help; // 3
     border-bottom: 0; // 1
 }
+// stylelint-enable declaration-block-no-duplicate-properties
 
 address {
     margin-bottom: 1rem;
@@ -168,7 +176,9 @@ dfn {
 
 b,
 strong {
+    // stylelint-disable font-weight-notation
     font-weight: bolder; // Add the correct font weight in Chrome, Edge, and Safari
+    // stylelint-enable font-weight-notation
 }
 
 small {
@@ -237,7 +247,9 @@ pre,
 code,
 kbd,
 samp {
+    // stylelint-disable font-family-no-duplicate-names
     font-family: monospace, monospace; // Correct the inheritance and scaling of font size in all browsers.
+    // stylelint-enable font-family-no-duplicate-names
     font-size: 1em; // Correct the odd `em` font sizing in all browsers.
 }
 
@@ -334,10 +346,12 @@ button {
 // results in a loss of the default `button` focus styles.
 //
 // Credit: https://github.com/suitcss/base/
+// stylelint-disable declaration-block-no-duplicate-properties
 button:focus {
     outline: 1px dotted;
     outline: 5px auto -webkit-focus-ring-color;
 }
+// stylelint-enable declaration-block-no-duplicate-properties
 
 input,
 button,
@@ -401,7 +415,7 @@ input[type="month"] {
     // See https://bugs.webkit.org/show_bug.cgi?id=139848
     // and https://github.com/twbs/bootstrap/issues/11266
     -webkit-appearance: listbox;
-    }
+}
 
 textarea {
     overflow: auto; // Remove the default vertical scrollbar in IE.

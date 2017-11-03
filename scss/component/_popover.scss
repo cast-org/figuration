@@ -113,6 +113,13 @@
 // Arrows
 // .popover-arrow is outer, .popover-arrow::after is inner
 .popover-arrow {
+    border-width: $popover-arrow-outer-width;
+
+    &::after {
+        content: "";
+        border-width: $popover-arrow-width;
+    }
+
     &,
     &::after {
         position: absolute;
@@ -121,14 +128,6 @@
         height: 0;
         border-color: transparent;
         border-style: solid;
-    }
-}
-.popover-arrow {
-    border-width: $popover-arrow-outer-width;
-
-    &::after {
-        content: "";
-        border-width: $popover-arrow-width;
     }
 }
 

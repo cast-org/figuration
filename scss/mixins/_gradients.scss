@@ -15,8 +15,8 @@
 }
 
 @mixin gradient-directional($start-color: #555, $end-color: #333, $deg: 45deg) {
-    background-repeat: repeat-x;
     background-image: linear-gradient($deg, $start-color, $end-color);
+    background-repeat: repeat-x;
 }
 
 // Striped diagonal gradient

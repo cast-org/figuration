@@ -1,4 +1,4 @@
-// scss-lint:disable ImportantRule, SpaceBeforeBrace
+// stylelint-disable declaration-no-important
 
 // Common positioning
 @each $breakpoint in map-keys($grid-breakpoints) {

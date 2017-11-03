@@ -1,4 +1,4 @@
-// scss-lint:disable IdSelector, ImportantRule, QualifyingElement
+// stylelint-disable selector-max-id, declaration-no-important, selector-no-qualifying-type, selector-max-type
 
 // Core reusable parts
 @import "../../../scss/functions";
@@ -16,7 +16,7 @@ $docs-color: #246;
     width: 12em;
     max-width: 100%;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: $font-weight-bold;
     color: $black;
     text-align: center;
     background: $uibase-50;
@@ -105,7 +105,7 @@ $docs-color: #246;
     display: inline-block;
     margin-top: -.25rem;
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: $font-weight-bold;
     line-height: .75;
 }
 
@@ -138,14 +138,14 @@ $docs-color: #246;
     margin-bottom: .25rem;
     font-weight: 600;
     color: #fff;
-    background-color: rgba(255,255,255,.15);
-    border-color: rgba(255,255,255,.8);
+    background-color: rgba(255, 255, 255, .15);
+    border-color: rgba(255, 255, 255, .8);
     border-width: 2px;
-    box-shadow: 2px 2px .2rem rgba(0,0,0,.35);
+    box-shadow: 2px 2px .2rem rgba(0, 0, 0, .35);
 
     @include hover-focus() {
         color: #222;
-        background-color: rgba(255,255,255,.9);
+        background-color: rgba(255, 255, 255, .9);
     }
 }
 
@@ -153,7 +153,7 @@ $docs-color: #246;
 .jumbotron-home {
     padding: 2rem 1.5rem;
     margin-bottom: 2rem;
-    color: rgba(255,255,255,.9);
+    color: rgba(255, 255, 255, .9);
     // text-align: center;
     // background-color: $docs-color;
     background-image: linear-gradient(135deg, #0c5782 0%, #117cba 100%);
@@ -162,11 +162,12 @@ $docs-color: #246;
         display: block;
         width: 100%;
         margin: 0 auto;
-        filter: drop-shadow(0 0 7px rgba(255,255,255,.15));
+        filter: drop-shadow(0 0 7px rgba(255, 255, 255, .15));
     }
 
-    h1, h2 {
-        font-weight: bold;
+    h1,
+    h2 {
+        font-weight: $font-weight-bold;
         color: $white;
     }
 
@@ -177,7 +178,7 @@ $docs-color: #246;
     }
 
     .splash-home {
-        border-bottom: 1px solid rgba(255,255,255,.5);
+        border-bottom: 1px solid rgba(255, 255, 255, .5);
     }
 
     @include media-breakpoint-down(md) {
@@ -188,13 +189,13 @@ $docs-color: #246;
 }
 
 .container-divider {
-    border-top: 1px solid rgba(0,0,0,.5);
+    border-top: 1px solid rgba(0, 0, 0, .5);
 
     @include media-breakpoint-up(md) {
         &.col,
         &[class*="col-"] {
             border-top: 0;
-            border-left: 1px solid rgba(0,0,0,.5);
+            border-left: 1px solid rgba(0, 0, 0, .5);
         }
     }
 }
@@ -202,7 +203,7 @@ $docs-color: #246;
 .jumbotron-docs {
     padding: .5rem .375rem;
     margin-bottom: 0;
-    color: rgba(255,255,255,.9);
+    color: rgba(255, 255, 255, .9);
     // background-color: $docs-color;
     background-image: linear-gradient(135deg, #0c5782 0%, #117cba 100%);
 
@@ -247,15 +248,6 @@ $docs-color: #246;
     right: 0 #{"/*rtl:ignore*/"};
 }
 
-// TOC
-#markdown-toc {
-    ul {
-        padding-left: 2rem;
-        margin-top: .25rem;
-        margin-bottom: .25rem;
-    }
-}
-
 // Sidenav
 .cf-sidebar {
     padding-top: 1rem;
@@ -295,6 +287,12 @@ $docs-color: #246;
 // TOC
 #markdown-toc {
     font-size: .9375rem;
+
+    ul {
+        padding-left: 2rem;
+        margin-top: .25rem;
+        margin-bottom: .25rem;
+    }
 }
 
 @include media-breakpoint-up(xl) {
@@ -315,8 +313,8 @@ $docs-color: #246;
             position: sticky;
             top: 4.375rem;
             max-height: calc(100vh - 4.375rem);
-            overflow-y: auto;
             overflow-x: visible;
+            overflow-y: auto;
         }
 
         padding-top: .5rem;
@@ -493,7 +491,10 @@ h4 {
     border-left-width: .5rem;
     border-radius: $border-radius;
 
-    .h3, .h4, .h5, .h6 {
+    .h3,
+    .h4,
+    .h5,
+    .h6 {
         margin-top: 0;
         margin-bottom: .5rem;
         font-size: 1.25rem;
@@ -514,7 +515,10 @@ h4 {
     background-color: $bg;
     border-color: $border;
 
-    .h3, .h4, .h5, .h6 {
+    .h3,
+    .h4,
+    .h5,
+    .h6 {
         color: $color;
     }
 

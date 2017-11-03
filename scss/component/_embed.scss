@@ -1,4 +1,3 @@
-//scss-lint:disable VendorPrefix
 .embed-fluid {
     position: relative;
     display: block;
@@ -55,6 +54,7 @@
 :fullscreen .embed-fluid {
     position: initial;
 }
+// stylelint-disable selector-no-vendor-prefix
 :-ms-fullscreen .embed-fluid {
     .embed-fluid-item,
     iframe,
@@ -64,3 +64,4 @@
         position: -ms-device-fixed;
     }
 }
+// stylelint-enable selector-no-vendor-prefix

@@ -1,11 +1,13 @@
 @mixin hover {
-    &:hover { @content }
+    &:hover {
+        @content;
+    }
 }
 
 @mixin hover-focus {
     &:focus,
     &:hover {
-        @content
+        @content;
     }
 }
 
@@ -13,7 +15,7 @@
     &,
     &:focus,
     &:hover {
-        @content
+        @content;
     }
 }
 
@@ -21,6 +23,6 @@
     &:focus,
     &:active,
     &:hover {
-        @content
+        @content;
     }
 }

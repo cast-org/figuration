@@ -11,6 +11,7 @@
 
 // Retina image
 // Short retina mixin for setting background-image and -size.
+// stylelint-disable at-rule-name-space-after, indentation, media-query-list-comma-newline-after
 @mixin img-retina($file-1x, $file-2x, $width-1x, $height-1x) {
     background-image: url($file-1x);
 

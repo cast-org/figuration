@@ -7,30 +7,7 @@
     background-color: $card-bg;
     border: $card-border-width solid $card-border-color;
     @include border-radius($card-border-radius);
-}
 
-.card-body {
-    padding: $card-padding-y $card-padding-x;
-}
-
-.card-title {
-    margin-bottom: $card-spacer-y;
-}
-
-.card-subtitle {
-    margin-top: -($card-spacer-y / 2);
-    margin-bottom: 0;
-}
-
-.card-text:last-child {
-    margin-bottom: 0;
-}
-
-.card-link + .card-link {
-    margin-left: $card-spacer-x;
-}
-
-.card {
     // Remove some margin spacing
     .list-group {
         margin-bottom: 0;
@@ -63,6 +40,27 @@
         margin-right: 0;
         margin-left: 0;
     }
+}
+
+.card-body {
+    padding: $card-padding-y $card-padding-x;
+}
+
+.card-title {
+    margin-bottom: $card-spacer-y;
+}
+
+.card-subtitle {
+    margin-top: -($card-spacer-y / 2);
+    margin-bottom: 0;
+}
+
+.card-text:last-child {
+    margin-bottom: 0;
+}
+
+.card-link + .card-link {
+    margin-left: $card-spacer-x;
 }
 
 // Optional textual caps

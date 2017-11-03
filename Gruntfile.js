@@ -179,12 +179,12 @@ module.exports = function(grunt) {
             }
         },
 
-        scsslint: {
+        stylelint: {
             options: {
-                configFile: '.scss-lint.yml'
+                configFile: '.stylelintrc'
             },
             core: {
-                src: ['scss/*.scss', 'scss/**/*.scss']
+                src: ['scss/**/*.scss']
             },
             docs: {
                 src: ['docs/assets/scss/*.scss']
@@ -376,7 +376,7 @@ module.exports = function(grunt) {
 
     // Test
     grunt.registerTask('test', ['dist-css', 'dist-js', 'test-css', 'test-js']);
-    grunt.registerTask('test-css', ['scsslint:core']);
+    grunt.registerTask('test-css', ['stylelint:core']);
 
     // Test - JS subtasks
     var jsTestTasks = ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt'];
@@ -399,7 +399,7 @@ module.exports = function(grunt) {
 
     // Docs tasks
     grunt.registerTask('docs-test-html', ['jekyll:docs', 'htmllint:docs']);
-    grunt.registerTask('docs-test-css', ['scsslint:docs']);
+    grunt.registerTask('docs-test-css', ['stylelint:docs']);
     grunt.registerTask('docs-dist-css', ['sass:docs', 'postcss:docs', 'rtlcss:docs', 'cssmin:docs']);
     grunt.registerTask('docs-test-js', ['jscs:docs']);
     grunt.registerTask('docs-dist-js', ['uglify:docs']);

@@ -45,28 +45,28 @@
 
     .row {
         > [class^="col-"],
-          .col {
+        .col {
             padding-top: .75rem;
             padding-bottom: .75rem;
-            background-color: rgba(34,68,102,.15);
-            border: $border-width solid rgba(34,68,102,.2);
+            background-color: rgba(34, 68, 102, .15);
+            border: $border-width solid rgba(34, 68, 102, .2);
         }
     }
 }
 .cf-example-row-grid {
     .row {
-        background-color: rgba(34,68,102,.05);
+        background-color: rgba(34, 68, 102, .05);
     }
 }
 .cf-example-row-flex {
     .row {
-        border: $border-width solid rgba(34,68,102,.5);
+        border: $border-width solid rgba(34, 68, 102, .5);
     }
 }
 .cf-example-row-flex-v {
     .row {
         height: 7rem;
-        border: $border-width solid rgba(34,68,102,.5);
+        border: $border-width solid rgba(34, 68, 102, .5);
     }
 }
 
@@ -205,7 +205,7 @@ $custom-file-text: (
 
 // Progress
 .cf-example > .progress {
-    +.progress,
+    + .progress,
     + .btn {
         margin-top: 1rem;
     }
@@ -300,7 +300,7 @@ $custom-file-text: (
     position: absolute;
     top: 65px;
     left: 50px;
-    font-weight: bold;
+    font-weight: $font-weight-bold;
 }
 .container-viewport .tooltip,
 .container-viewport .popover {
@@ -350,10 +350,10 @@ $custom-file-text: (
 }
 .cf-example > [data-cfw="slider"] input {
     width: 3em;
-    font-weight: normal;
+    font-weight: $font-weight-normal;
 }
 .cf-example > [data-cfw="slider"] select {
-    font-weight: normal;
+    font-weight: $font-weight-normal;
 }
 
 // Tab-Responsive
@@ -380,8 +380,8 @@ $custom-file-text: (
 // Flex utilities
 .cf-example-flex {
     > div div {
-        background-color: rgba(34,68,102,.05);
-        border: $gridline-border-width solid rgba(34,68,102,.2);
+        background-color: rgba(34, 68, 102, .05);
+        border: $gridline-border-width solid rgba(34, 68, 102, .2);
     }
 }
 

@@ -1,4 +1,4 @@
-// scss-lint:disable ImportantRule
+// stylelint-disable declaration-no-important
 
 @each $breakpoint in map-keys($grid-breakpoints) {
     $bprule: breakpoint-designator($breakpoint);

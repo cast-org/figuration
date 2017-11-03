@@ -17,10 +17,10 @@
     height: 1px;
     padding: 0;
     overflow: hidden;
-    clip: rect(0,0,0,0);
+    clip: rect(0, 0, 0, 0);
     clip-path: inset(50%); //2
-    border: 0;
     white-space: nowrap; // 1
+    border: 0;
 }
 
 // Use in conjunction with .sr-only to only display content when it's focused.

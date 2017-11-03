@@ -1,4 +1,4 @@
-// scss-lint:disable ImportantRule
+// stylelint-disable declaration-no-important, selector-max-class, selector-max-compound-selectors
 
 // Some wacky hacky stuff to rework the search result look a bit
 
@@ -61,7 +61,7 @@
     .algolia-docsearch-suggestion--category-header {
         padding: 2px 6px;
         margin-top: 0;
-        font-weight: bold;
+        font-weight: $font-weight-bold;
         color: #292929;
         background-color: #a0cbe3;
         border-top: 1px solid #858585;
@@ -93,7 +93,7 @@
         }
     }
     .algolia-docsearch-suggestion--highlight {
-        background-color: rgba(143,187,237,.2);
+        background-color: rgba(143, 187, 237, .2);
     }
     .algolia-docsearch-suggestion--title {
         margin-bottom: 0;

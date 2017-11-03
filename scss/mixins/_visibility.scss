@@ -1,7 +1,6 @@
-// scss-lint:disable ImportantRule
+// stylelint-disable declaration-no-important
 
 // Visibility
-
 @mixin invisible {
     visibility: hidden !important;
 }

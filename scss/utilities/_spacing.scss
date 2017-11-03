@@ -1,6 +1,6 @@
-// scss-lint:disable ImportantRule
-// Margin and Padding
+// stylelint-disable declaration-no-important
 
+// Margin and Padding
 @each $breakpoint in map-keys($grid-breakpoints) {
     $bprule: breakpoint-designator($breakpoint);
 

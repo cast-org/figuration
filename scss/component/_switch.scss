@@ -32,7 +32,7 @@
         background-color: $switch-indicator-bg;
         @include border-radius(calc(#{$input-border-radius} - #{$input-border-width}));
         @include box-shadow($switch-indicator-box-shadow);
-        @include transition($switch-indicator-transition)
+        @include transition($switch-indicator-transition);
     }
 }
 

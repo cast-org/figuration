@@ -18,6 +18,7 @@
     }
 }
 
+// stylelint-disable selector-no-qualifying-type
 tr {
     &.collapse.in,
     &.collapse.in-flex {
@@ -30,6 +31,7 @@ tbody {
         display: table-row-group;
     }
 }
+// stylelint-enable selector-no-qualifying-type
 
 .collapsing {
     position: relative;

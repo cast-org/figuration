@@ -1,5 +1,3 @@
-// scss-lint:disable QualifyingElement
-
 // Make the div behave like a button
 .btn-group,
 .btn-group-vertical {
@@ -10,7 +8,7 @@
     > .btn {
         position: relative;
         flex: 0 1 auto;
-        margin-bottom: 0;
+        margin-bottom: 0; // Override default `<label>` value
 
         // Bring the "active" button to the front
         &:active,
@@ -25,17 +23,7 @@
     }
 }
 
-// Prevent double borders when buttons are next to each other
-.btn-group {
-    .btn + .btn,
-    .btn + .btn-group,
-    .btn-group + .btn,
-    .btn-group + .btn-group {
-        margin-left: -$border-width;
-    }
-}
-
-// Optional: Group multiple button groups together for a toolbar
+// Group multiple button groups together for a toolbar
 .btn-toolbar {
     display: flex;
     flex-wrap: wrap;
@@ -46,7 +34,15 @@
     }
 }
 
+// Prevent double borders when buttons are next to each other
 .btn-group {
+    .btn + .btn,
+    .btn + .btn-group,
+    .btn-group + .btn,
+    .btn-group + .btn-group {
+        margin-left: -$border-width;
+    }
+
     > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
         border-radius: 0;
     }
@@ -124,32 +120,34 @@
     > .btn-group + .btn,
     > .btn-group + .btn-group {
         margin-top: -$border-width;
-        margin-left: 0;
     }
-}
 
-.btn-group-vertical > .btn {
-    &:not(:first-child):not(:last-child) {
+    > .btn {
+        &:not(:first-child):not(:last-child) {
+            border-radius: 0;
+        }
+        &:first-child:not(:last-child) {
+            @include border-bottom-radius(0);
+        }
+        &:last-child:not(:first-child) {
+            @include border-top-radius(0);
+        }
+    }
+
+    > .btn-group:not(:first-child):not(:last-child) > .btn {
         border-radius: 0;
     }
-    &:first-child:not(:last-child) {
-        @include border-bottom-radius(0);
+
+    > .btn-group:first-child:not(:last-child) {
+        > .btn:last-child,
+        > .dropdown-toggle {
+            @include border-bottom-radius(0);
+        }
     }
-    &:last-child:not(:first-child) {
+
+    > .btn-group:last-child:not(:first-child) > .btn:first-child {
         @include border-top-radius(0);
     }
-}
-.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
-    border-radius: 0;
-}
-.btn-group-vertical > .btn-group:first-child:not(:last-child) {
-    > .btn:last-child,
-    > .dropdown-toggle {
-        @include border-bottom-radius(0);
-    }
-}
-.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
-    @include border-top-radius(0);
 }
 
 
@@ -167,11 +165,13 @@
 [data-cfw="buttons"] {
     > .btn,
     > .btn-group > .btn {
+        // stylelint-disable selector-no-qualifying-type
         input[type="radio"],
         input[type="checkbox"] {
             position: absolute;
-            clip: rect(0,0,0,0);
+            clip: rect(0, 0, 0, 0);
             pointer-events: none;
         }
+        // stylelint-enable selector-no-qualifying-type
     }
 }

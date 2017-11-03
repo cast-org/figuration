@@ -24,12 +24,14 @@
     //
     // To trick IE into suppressing the underline, we give the pseudo-element an
     // underline and then immediately remove it.
+    // stylelint-disable no-duplicate-selectors
     + .breadcrumb-item:hover::before {
         text-decoration: underline;
     }
     + .breadcrumb-item:hover::before {
         text-decoration: none;
     }
+    // stylelint-enable no-duplicate-selectors
 
     &.active {
         color: $breadcrumb-active-color;

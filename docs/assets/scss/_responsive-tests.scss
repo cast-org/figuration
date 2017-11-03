@@ -1,4 +1,4 @@
-// scss-lint:disable ImportantRule
+// stylelint-disable declaration-no-important
 
 // Responsive tests
 
@@ -11,11 +11,11 @@
 .cfw-table th small,
 .responsive-utilities th small {
     display: block;
-    font-weight: normal;
+    font-weight: $font-weight-normal;
     color: #999;
 }
 .responsive-utilities tbody th {
-    font-weight: normal;
+    font-weight: $font-weight-normal;
 }
 .responsive-utilities td {
     text-align: center;
@@ -41,7 +41,7 @@
     display: block;
     padding: 1rem .5rem;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: $font-weight-bold;
     line-height: 1.1;
     text-align: center;
     border-radius: .25rem;
@@ -53,11 +53,7 @@
             color: $uibase-500;
             border: 1px solid $uibase-300;
         }
-    }
-}
-.visible-on,
-.hidden-on {
-    .col-6 {
+
         .visible {
             color: map-deep-get($context-themes, "success", "context-color");
             background-color: map-deep-get($context-themes, "success", "context-bg");

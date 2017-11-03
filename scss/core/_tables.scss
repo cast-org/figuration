@@ -128,7 +128,7 @@
     $bg:       map-get($colors, "context-bg");
     $hover-bg: map-get($colors, "context-hover-bg");
 
-    @include table-row-variant('#{$theme}', $bg, $hover-bg);
+    @include table-row-variant("#{$theme}", $bg, $hover-bg);
 }
 
 

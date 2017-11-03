@@ -16,6 +16,9 @@
     &:empty {
         display: none;
     }
+
+    // Default color (linked badges get darker on :hover)
+    @include badge-variant($badge-color, $badge-bg, $badge-link-hover-color, $badge-hover-bg);
 }
 
 // Quick fix for badges in buttons
@@ -24,8 +27,8 @@
     top: -1px;
 }
 
-// scss-lint:disable QualifyingElement
 // Add hover effects, but only for links
+// stylelint-disable selector-no-qualifying-type
 a.badge {
     text-decoration: none;
 
@@ -34,7 +37,7 @@ a.badge {
         text-decoration: none;
     }
 }
-// scss-lint:enable QualifyingElement
+// stylelint-enable selector-no-qualifying-type
 
 // Pill
 .badge-pill {
@@ -44,9 +47,6 @@ a.badge {
 }
 
 // Colors (linked badges get darker on :hover)
-.badge {
-    @include badge-variant($badge-color, $badge-bg, $badge-link-hover-color, $badge-hover-bg);
-}
 @each $theme, $colors in $context-themes {
     $color:       map-get($colors, "control-color");
     $bg:          map-get($colors, "control-bg");

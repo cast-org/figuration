@@ -1,4 +1,4 @@
-// scss-lint:disable ImportantRule, SpaceBeforeBrace
+// stylelint-disable declaration-no-important
 
 // Alignment
 .text-justify { text-align: justify; }
@@ -9,16 +9,16 @@
     $bprule: breakpoint-designator($breakpoint);
 
     @include media-breakpoint-up($breakpoint) {
-        .text#{$bprule}-start    { text-align: left !important; }
-        .text#{$bprule}-end   { text-align: right !important; }
-        .text#{$bprule}-center  { text-align: center !important; }
+        .text#{$bprule}-start  { text-align: left !important; }
+        .text#{$bprule}-end    { text-align: right !important; }
+        .text#{$bprule}-center { text-align: center !important; }
     }
 }
 
 // Transformation
-.text-lowercase      { text-transform: lowercase !important; }
-.text-uppercase      { text-transform: uppercase !important; }
-.text-capitalize     { text-transform: capitalize !important; }
+.text-lowercase  { text-transform: lowercase !important; }
+.text-uppercase  { text-transform: uppercase !important; }
+.text-capitalize { text-transform: capitalize !important; }
 
 // Hidden text
 @each $breakpoint in map-keys($grid-breakpoints) {
@@ -54,10 +54,10 @@
 }
 
 // Muted text
-@include text-emphasis-variant('.text-muted', $text-muted, $level-color-hover-delta);
+@include text-emphasis-variant(".text-muted", $text-muted, $level-color-hover-delta);
 
 // Special case colors
-// scss-lint:disable QualifyingElement
+// stylelint-disable selector-no-qualifying-type
 .text-body {
     color: $body-color !important;
 }
@@ -77,7 +77,7 @@ a.text-dark {
         color: $text-dark-hover !important;
     }
 }
-// scss-lint:enable QualifyingElement
+// stylelint-enable selector-no-qualifying-type
 
 // Truncated text
 .text-truncate {
