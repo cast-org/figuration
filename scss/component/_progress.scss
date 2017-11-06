@@ -15,9 +15,10 @@
 
 .progress-bar {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
     color: $progress-bar-color;
+    text-align: center;
     background-color: $progress-bar-bg;
     @include box-shadow($progress-bar-box-shadow);
     @include transition($progress-bar-transition);
