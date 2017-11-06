@@ -27,7 +27,7 @@ Put that all together, and you have the following examples.
 
 {% example html %}
 <div class="progress">
-    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <div class="progress">
     <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -61,7 +61,10 @@ To ensure that the label text remains legible even for low percentages, consider
 
 {% example html %}
 <div class="progress">
-    <div class="progress-bar" role="progressbar" style="min-width: 2rem;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+    <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+</div>
+<div class="progress">
+    <div class="progress-bar" role="progressbar" style="width: 0%; min-width: 2rem;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
 </div>
 <div class="progress">
     <div class="progress-bar" role="progressbar" style="width: 2%; min-width: 2rem;" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100">2%</div>

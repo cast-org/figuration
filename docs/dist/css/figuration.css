@@ -3349,11 +3349,12 @@ button.drag {
 .progress-bar {
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
-      align-items: center;
+  -ms-flex-direction: column;
+      flex-direction: column;
   -ms-flex-pack: center;
       justify-content: center;
   color: #fff;
+  text-align: center;
   background-color: #1242ba;
   transition: width 0.3s ease;
 }
@@ -6549,54 +6550,54 @@ a.badge:focus, a.badge:hover {
 }
 
 .tooltip.top {
-  padding: 4px 0;
+  padding: 0.25rem 0;
   margin-top: -0.2rem;
 }
 
 .tooltip.forward {
-  padding: 0 4px;
+  padding: 0 0.25rem;
   margin-left: 0.2rem /*rtl:-0.2rem*/;
 }
 
 .tooltip.bottom {
-  padding: 4px 0;
+  padding: 0.25rem 0;
   margin-top: 0.2rem;
 }
 
 .tooltip.reverse {
-  padding: 0 4px;
+  padding: 0 0.25rem;
   margin-left: -0.2rem /*rtl:0.2rem*/;
 }
 
 .tooltip.top .tooltip-arrow {
   bottom: 0;
   left: 50% /*rtl:ignore*/;
-  margin-left: -4px;
-  border-width: 4px 4px 0;
+  margin-left: -0.25rem;
+  border-width: 0.25rem 0.25rem 0;
   border-top-color: #000;
 }
 
 .tooltip.forward .tooltip-arrow {
   top: 50%;
   left: 0;
-  margin-top: -4px;
-  border-width: 4px 4px 4px 0;
+  margin-top: -0.25rem;
+  border-width: 0.25rem 0.25rem 0.25rem 0;
   border-right-color: #000;
 }
 
 .tooltip.reverse .tooltip-arrow {
   top: 50%;
   right: 0;
-  margin-top: -4px;
-  border-width: 4px 0 4px 4px;
+  margin-top: -0.25rem;
+  border-width: 0.25rem 0 0.25rem 0.25rem;
   border-left-color: #000;
 }
 
 .tooltip.bottom .tooltip-arrow {
   top: 0;
   left: 50% /*rtl:ignore*/;
-  margin-left: -4px;
-  border-width: 0 4px 4px;
+  margin-left: -0.25rem;
+  border-width: 0 0.25rem 0.25rem;
   border-bottom-color: #000;
 }
 
@@ -6659,39 +6660,39 @@ a.badge:focus, a.badge:hover {
 }
 
 .popover.top {
-  margin-top: -10px;
+  margin-top: -0.625rem;
 }
 
 .popover.top .popover-arrow {
-  bottom: -11px;
+  bottom: calc((0.625rem + 1px) * -1);
   left: 50%;
-  margin-left: -11px;
+  margin-left: -0.625rem;
   border-top-color: #c2c2c2;
   border-bottom-width: 0;
 }
 
 .popover.top .popover-arrow::after {
   bottom: 1px;
-  margin-left: -10px;
+  margin-left: -0.625rem;
   content: "";
   border-top-color: #fff;
   border-bottom-width: 0;
 }
 
 .popover.forward {
-  margin-left: 10px /*rtl:-10px*/;
+  margin-left: 0.625rem /*rtl:-0.625rem*/;
 }
 
 .popover.forward .popover-arrow {
   top: 50%;
-  left: -11px;
-  margin-top: -11px;
+  left: calc((0.625rem + 1px) * -1);
+  margin-top: -0.625rem;
   border-right-color: #c2c2c2;
   border-left-width: 0;
 }
 
 .popover.forward .popover-arrow::after {
-  bottom: -10px;
+  bottom: -0.625rem;
   left: 1px;
   content: "";
   border-right-color: #fff;
@@ -6699,40 +6700,40 @@ a.badge:focus, a.badge:hover {
 }
 
 .popover.bottom {
-  margin-top: 10px;
+  margin-top: 0.625rem;
 }
 
 .popover.bottom .popover-arrow {
-  top: -11px;
+  top: calc((0.625rem + 1px) * -1);
   left: 50% /*rtl:ignore*/;
-  margin-left: -11px;
+  margin-left: -0.625rem;
   border-top-width: 0;
   border-bottom-color: #c2c2c2;
 }
 
 .popover.bottom .popover-arrow::after {
   top: 1px;
-  margin-left: -10px;
+  margin-left: -0.625rem;
   content: "";
   border-top-width: 0;
   border-bottom-color: #fff;
 }
 
 .popover.reverse {
-  margin-left: -10px /*rtl:10px*/;
+  margin-left: -0.625rem /*rtl:0.625rem*/;
 }
 
 .popover.reverse .popover-arrow {
   top: 50%;
-  right: -11px;
-  margin-top: -11px;
+  right: calc((0.625rem + 1px) * -1);
+  margin-top: -0.625rem;
   border-right-width: 0;
   border-left-color: #c2c2c2;
 }
 
 .popover.reverse .popover-arrow::after {
   right: 1px;
-  bottom: -10px;
+  bottom: -0.625rem;
   content: "";
   border-right-width: 0;
   border-left-color: #fff;
@@ -6759,12 +6760,12 @@ a.badge:focus, a.badge:hover {
 }
 
 .popover-arrow {
-  border-width: 11px;
+  border-width: 0.625rem;
 }
 
 .popover-arrow::after {
   content: "";
-  border-width: 10px;
+  border-width: 0.625rem;
 }
 
 .popover-arrow, .popover-arrow::after {
