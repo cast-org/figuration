@@ -23,7 +23,7 @@
 
 <!-- Algolia DocSearch CSS -->
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 
 
 <!-- Docs CSS -->
@@ -53,6 +53,7 @@
 <!-- IE emulation mode warning -->
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -61,6 +62,7 @@
   ga('create', 'UA-9130143-15', 'auto');
   ga('send', 'pageview');
 </script>
+
 
 </head>
 <body>
@@ -476,7 +478,7 @@
 
 <h3 id="single-slider">Single Slider</h3>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <span data-cfw="slider" data-cfw-slider-min="0" data-cfw-slider-max="100">
     <label>Value <input type="text" value="50" /></label>
 </span>
@@ -489,7 +491,7 @@
 
 <p>When using a ranged slider, the thumbs/handles are constrained by the value of the other thumb/handle per the <a href="http://www.w3.org/TR/wai-aria-practices/#slidertwothumb">WAI-ARIA 1.0 specifications for multi-thumb sliders</a>.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <span data-cfw="slider" data-cfw-slider-min="-50" data-cfw-slider-max="50" data-cfw-slider-step="5">
     <label>Min <input type="text" value="-25" /></label>
     <label><input type="text" value="25" /> Max</label>
@@ -504,7 +506,7 @@
 
 <p>This vertical slider has also been reversed so that larger values are at the top.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <span data-cfw="slider" data-cfw-slider-min="0" data-cfw-slider-max="5" data-cfw-slider-vertical="true" data-cfw-slider-reversed="true">
     <label for="slider1">Rating</label>
     <select id="slider1">
@@ -531,7 +533,7 @@
 
 <h3 id="double-select-slider">Double Select Slider</h3>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <span id="slider2">
     <label for="slider2_0">Start</label>
     <select id="slider2_0">
@@ -816,7 +818,7 @@ $('#slider2').CFW_Slider({
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.1
+            Current version: 3.0.2
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>
@@ -825,7 +827,7 @@ $('#slider2').CFW_Slider({
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
         </ul>
         <p>
-            &copy; 2013-2017 <a href="http://www.cast.org">CAST, Inc.</a>
+            &copy; 2013-2017 <a href="http://www.cast.org/">CAST, Inc.</a>
             <br />
             Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
@@ -841,7 +843,7 @@ $('#slider2').CFW_Slider({
                 <img src="/assets/img/aem-logo.png" class="media-object" width="40" height="40" alt="AEM logo" />
             </div>
             <div class="media-body">
-                <span class="h6 partner-title"><a href="http://aem.cast.org">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
+                <span class="h6 partner-title"><a href="http://aem.cast.org/">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
                 <small>Disclaimer: This does not necessarily represent endorsement by or the policies of the National Center on Accessible Educational Materials, the US Department of Education, and the US Federal Government.</small>
             </div>
         </div>
@@ -851,7 +853,7 @@ $('#slider2').CFW_Slider({
 
 
     
-    <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script>
 docsearch({
     apiKey: '3b9b6e000775400f4833a14c4daa6049',

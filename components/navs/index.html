@@ -23,7 +23,7 @@
 
 <!-- Algolia DocSearch CSS -->
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 
 
 <!-- Docs CSS -->
@@ -53,6 +53,7 @@
 <!-- IE emulation mode warning -->
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -61,6 +62,7 @@
   ga('create', 'UA-9130143-15', 'auto');
   ga('send', 'pageview');
 </script>
+
 
 </head>
 <body>
@@ -430,7 +432,7 @@
 
 <p>The base .nav component is built with flexbox and provides a strong foundation for building all types of navigation components. It includes some style overrides (for working with lists), some link padding for larger hit areas, and basic disabled styling. No active states are included in the base nav.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <ul class="nav">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -463,7 +465,7 @@
 
 <p>Classes are used throughout, so your markup can be super flexible. Use <code class="highlighter-rouge">&lt;ul&gt;</code>s like above, or roll your own with say a <code class="highlighter-rouge">&lt;nav&gt;</code> element. Because the <code class="highlighter-rouge">.nav</code> uses <code class="highlighter-rouge">display: flex</code>, the nav links behave the same as nav items would, but without the extra markup.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <nav class="nav">
   <a href="#" class="nav-link active">Active</a>
   <a href="#" class="nav-link">Link</a>
@@ -488,7 +490,7 @@
 
 <p>Centered with <code class="highlighter-rouge">.flex-center</code>:</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <ul class="nav flex-center">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -521,7 +523,7 @@
 
 <p>Right-aligned with <code class="highlighter-rouge">.flex-end</code>:</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <ul class="nav flex-end">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -556,7 +558,7 @@
 
 <p>Stack your navigation by changing the flex item direction with the <code class="highlighter-rouge">.flex-column</code> utility. Need to stack them on some viewports but not others? Use the responsive versions (e.g., <code class="highlighter-rouge">.flex-sm-column</code>).</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <ul class="nav flex-column">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -589,7 +591,7 @@
 
 <p>As always, vertical navigation is possible without &lt;ul&gt;s, too.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <nav class="nav flex-column">
   <a href="#" class="nav-link active">Active</a>
   <a href="#" class="nav-link">Link</a>
@@ -608,7 +610,7 @@
 
 <p>Takes the basic nav from above and adds the <code class="highlighter-rouge">.nav-tabs</code> class to generate a tabbed interface. Use them to create tabbable regions with our <a href="/widgets/tab/">Tab JavaScript widget</a>.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -643,7 +645,7 @@
 
 <p>Take that same HTML, but use <code class="highlighter-rouge">.nav-pills</code> instead:</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <ul class="nav nav-pills">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -678,7 +680,7 @@
 
 <p>Add <code class="highlighter-rouge">.flex-column</code> to the <code class="highlighter-rouge">.nav.nav-pills</code> to stack them vertically. Each <code class="highlighter-rouge">.nav-link</code> becomes block-level, allowing for larger hit areas.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <ul class="nav nav-pills flex-column">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -711,7 +713,7 @@
 
 <p>As always, vertical pills are possible without <code class="highlighter-rouge">&lt;ul&gt;</code>s.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <nav class="nav nav-pills flex-column">
   <a href="#" class="nav-link active">Active</a>
   <a href="#" class="nav-link">Link</a>
@@ -730,7 +732,7 @@
 
 <p>Force your <code class="highlighter-rouge">.nav</code>’s contents to extend the full available width one of two modifier classes. To proportionately fill all available space with your <code class="highlighter-rouge">.nav-items</code>, use <code class="highlighter-rouge">.nav-fill</code>. Notice that all horizontal space is occupied, but not every nav item has the same width.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <ul class="nav nav-pills nav-fill">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -763,7 +765,7 @@
 
 <p>For equal-width elements, use <code class="highlighter-rouge">.nav-justify</code>. All horizontal space will be occupied by nav links, but unlike the <code class="highlighter-rouge">.nav-fill</code> above, every nav item will be the same width.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <ul class="nav nav-pills nav-justify">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -797,7 +799,7 @@
 <h2 id="working-with-flex-utilities">Working with Flex Utilities</h2>
 <p>If you need responsive nav variations, consider using a series of <a href="/utilities/flexbox/">flexbox utilities</a>. While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, the nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <nav class="nav nav-pills flex-column flex-sm-row">
   <a class="flex-sm-fill text-sm-center nav-link active" href="#">Active</a>
   <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
@@ -824,7 +826,7 @@
 
 <h3 id="tabs-with-dropdowns">Tabs with Dropdowns</h3>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -871,7 +873,7 @@
 
 <h3 id="pills-with-dropdowns">Pills with Dropdowns</h3>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <ul class="nav nav-pills">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -928,7 +930,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.1
+            Current version: 3.0.2
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>
@@ -937,7 +939,7 @@
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
         </ul>
         <p>
-            &copy; 2013-2017 <a href="http://www.cast.org">CAST, Inc.</a>
+            &copy; 2013-2017 <a href="http://www.cast.org/">CAST, Inc.</a>
             <br />
             Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
@@ -953,7 +955,7 @@
                 <img src="/assets/img/aem-logo.png" class="media-object" width="40" height="40" alt="AEM logo" />
             </div>
             <div class="media-body">
-                <span class="h6 partner-title"><a href="http://aem.cast.org">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
+                <span class="h6 partner-title"><a href="http://aem.cast.org/">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
                 <small>Disclaimer: This does not necessarily represent endorsement by or the policies of the National Center on Accessible Educational Materials, the US Department of Education, and the US Federal Government.</small>
             </div>
         </div>
@@ -963,7 +965,7 @@
 
 
     
-    <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script>
 docsearch({
     apiKey: '3b9b6e000775400f4833a14c4daa6049',

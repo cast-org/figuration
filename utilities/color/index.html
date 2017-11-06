@@ -23,7 +23,7 @@
 
 <!-- Algolia DocSearch CSS -->
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 
 
 <!-- Docs CSS -->
@@ -53,6 +53,7 @@
 <!-- IE emulation mode warning -->
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -61,6 +62,7 @@
   ga('create', 'UA-9130143-15', 'auto');
   ga('send', 'pageview');
 </script>
+
 
 </head>
 <body>
@@ -429,7 +431,7 @@
 
 <p>Convey meaning through color with a handful of emphasis utility classes. These may also be applied to links and will darken on hover just like our default link styles.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
 <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
@@ -446,7 +448,7 @@
 
 <p>Contextual text classes also work well on anchors with the provided hover and focus states.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <a href="#" class="text-muted">Muted link</a>
 <a href="#" class="text-primary">Primary link</a>
 <a href="#" class="text-success">Success link</a>
@@ -463,7 +465,7 @@
 
 <p>There are also two special text color cases for use with either light and dark backgrounds. They can handle anchors too.  Use <code class="highlighter-rouge">.text-dark</code> on lighter backgrounds, and <code class="highlighter-rouge">.text-light</code> on darker backgrounds.  These will not provide accessible ratios of contrast for all items.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="cf-textalt row">
     <div class="col-sm-6">
         <div class="text-dark bg-info">Light text <a href="#" class="text-dark">anchor link</a></div>
@@ -500,7 +502,7 @@
 
 <p>There is also a <code class="highlighter-rouge">.bg-transparent</code> for removing the background color for an element.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="bg-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</div>
 <div class="bg-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</div>
 <div class="bg-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</div>
@@ -523,7 +525,7 @@
 
 <p>There is also a <code class="highlighter-rouge">.border-transparent</code> that removes the border color for an element, but keeps the border width in place.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="border-primary mb-0_5 p-0_25" style="border: 2px solid;">Primary</div>
 <div class="border-secondary mb-0_5 p-0_25" style="border: 2px solid;">Secondary</div>
 <div class="border-success mb-0_5 p-0_25" style="border: 2px solid;">Success</div>
@@ -542,7 +544,7 @@
 
 <p>If the <a href="/content/color/">color palette</a> is enabled, any color theme that is added to the <code class="highlighter-rouge">$palette-themes</code> Sass map will become available for use.  For example a theme named <code class="highlighter-rouge">blue</code>, then becomes available as <code class="highlighter-rouge">.text-blue-[level]</code> or <code class="highlighter-rouge">.bg-blue-[level]</code>, where <code class="highlighter-rouge">level</code> is in the set defined by the <code class="highlighter-rouge">$palette-levels</code> variable.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <p class="text-blue-700">blue-700 text sample</p>
 <p><a href="#" class="text-blue-400">blue-400 link example</a></p>
 <div class="bg-blue-100 text-dark">Blue-100 background with dark text</div>
@@ -565,7 +567,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.1
+            Current version: 3.0.2
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>
@@ -574,7 +576,7 @@
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
         </ul>
         <p>
-            &copy; 2013-2017 <a href="http://www.cast.org">CAST, Inc.</a>
+            &copy; 2013-2017 <a href="http://www.cast.org/">CAST, Inc.</a>
             <br />
             Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
@@ -590,7 +592,7 @@
                 <img src="/assets/img/aem-logo.png" class="media-object" width="40" height="40" alt="AEM logo" />
             </div>
             <div class="media-body">
-                <span class="h6 partner-title"><a href="http://aem.cast.org">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
+                <span class="h6 partner-title"><a href="http://aem.cast.org/">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
                 <small>Disclaimer: This does not necessarily represent endorsement by or the policies of the National Center on Accessible Educational Materials, the US Department of Education, and the US Federal Government.</small>
             </div>
         </div>
@@ -600,7 +602,7 @@
 
 
     
-    <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script>
 docsearch({
     apiKey: '3b9b6e000775400f4833a14c4daa6049',

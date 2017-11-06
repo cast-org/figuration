@@ -23,7 +23,7 @@
 
 <!-- Algolia DocSearch CSS -->
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 
 
 <!-- Docs CSS -->
@@ -53,6 +53,7 @@
 <!-- IE emulation mode warning -->
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -61,6 +62,7 @@
   ga('create', 'UA-9130143-15', 'auto');
   ga('send', 'pageview');
 </script>
+
 
 </head>
 <body>
@@ -443,7 +445,7 @@
 
 <p>Below is an example of a basic card with mixed content and a fixed width. Cards have no fixed width to start, so they’ll naturally fill the full width of its parent element. This is easily customized with our various <a href="#sizing">sizing options</a>.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card" style="width: 20rem;">
   <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap" />
   <div class="card-body">
@@ -470,7 +472,7 @@
 
 <p>A basic building block of a card is the <code class="highlighter-rouge">.card-body</code>. Use it whenever you need a padded section within a card.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card">
   <div class="card-body">
     This is some text within a card body.
@@ -487,7 +489,7 @@
 
 <p>Card titles and subtitles are used by adding <code class="highlighter-rouge">.card-title</code> or <code class="highlighter-rouge">.card-subtitle</code> to a <code class="highlighter-rouge">&lt;h*&gt;</code> tag. If the <code class="highlighter-rouge">.card-title</code> and the <code class="highlighter-rouge">.card-subtitle</code> items are placed in a <code class="highlighter-rouge">.card-body</code> item, the card title and subtitle are aligned nicely.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card">
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
@@ -508,7 +510,7 @@
 
 <p><code class="highlighter-rouge">.card-text</code> will also remove the bottom margin from the <strong>last child</strong> in a section.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card">
   <div class="card-body">
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -527,7 +529,7 @@
 
 <p>Links can placed next to each other with some spacing by adding <code class="highlighter-rouge">.card-link</code> to the <code class="highlighter-rouge">&lt;a&gt;</code> tags.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card">
   <div class="card-body">
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -552,7 +554,7 @@
 
 <p>Images can help add some visual interest to your cards.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card" style="width: 20rem;">
   <h4 class="card-header">Sample Card</h4>
   <img class="img-fluid" src="/assets/img/test.gif" alt="Card image" />
@@ -571,7 +573,7 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card" style="width: 20rem;">
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
@@ -596,7 +598,7 @@
 
 <p>Use <code class="highlighter-rouge">.card-img-top</code> to round over the top corners when placing an image at the top of a card.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card" style="width: 20rem;">
   <img class="card-img-top img-fluid" src="/assets/img/test.gif" alt="Card image cap" />
   <div class="card-body">
@@ -617,7 +619,7 @@
 
 <p>Use <code class="highlighter-rouge">.card-img-bottom</code> to round over the bottom corners when placing an image at the bottom of a card.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card" style="width: 20rem;">
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
@@ -640,7 +642,7 @@
 
 <p>Turn an image into a card background and overlay your card’s text. The use of <code class="highlighter-rouge">.card-img</code> will round over all corners of the image, and <code class="highlighter-rouge">.card-img-overlay</code> will allow content to overlay the image. Depending on the image, you may or may not need <code class="highlighter-rouge">.card-inverse</code> (see below).</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card card-inverse" style="width: 20rem;">
   <img class="card-img img-fluid" data-src="holder.js/100px225/?text=Image background" alt="Card image" />
   <div class="card-img-overlay">
@@ -663,7 +665,7 @@
 
 <p>Create lists of content in a card with a flush list group.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card">
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Cras justo odio</li>
@@ -680,11 +682,32 @@
   <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
+<div class="cf-example">
+<div class="card">
+  <h3 class="card-header">Sample Header</h3>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  <div class="card-footer">Sample Footer</div>
+</div>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"card-header"</span><span class="nt">&gt;</span>Sample Header<span class="nt">&lt;/h3&gt;</span>
+  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-group list-group-flush"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Cras justo odio<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Dapibus ac facilisis in<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Vestibulum at eros<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-footer"</span><span class="nt">&gt;</span>Sample Footer<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
 <h3 id="all-together">All Together</h3>
 
 <p>The multiple content types can be easily combined to create the card you need.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card" style="width: 20rem;">
   <img class="card-img-top img-fluid" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap" />
   <div class="card-body">
@@ -723,7 +746,7 @@
 
 <p>Add an optional header and/or footer within a card.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card">
   <div class="card-header">
     Featured
@@ -748,7 +771,7 @@
 
 <p>Card headers can be styled by adding <code class="highlighter-rouge">.card-header</code> to <code class="highlighter-rouge">&lt;h*&gt;</code> elements.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card">
   <h3 class="card-header">Featured</h3>
   <div class="card-body">
@@ -767,7 +790,7 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card">
   <div class="card-header">
     Quote
@@ -792,7 +815,7 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card text-center">
   <div class="card-header">
     Featured
@@ -831,7 +854,7 @@
 
 <p>Using the grid, wrap cards in columns and rows as needed.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="row">
   <div class="col-sm-6">
     <div class="card">
@@ -878,7 +901,7 @@
 
 <p>Use custom CSS in your stylesheets or as inline styles to set a width.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card" style="width: 20rem;">
   <div class="card-body">
     <h3 class="card-title">Special title treatment</h3>
@@ -899,7 +922,7 @@
 
 <p>You can quickly change the text alignment of any card—in its entirety or specific parts—with our <a href="/utilities/typography/#text-alignment">text align classes</a>.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card" style="width: 20rem;">
   <div class="card-body">
     <h4 class="card-title">Special title treatment</h4>
@@ -952,7 +975,7 @@
 
 <p>Add navigation items within a card’s header (or block) with Figuration’s <a href="//components/navs/">navigation components</a>.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card text-center">
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
@@ -995,7 +1018,7 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card text-center">
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
@@ -1048,7 +1071,7 @@
 
 <p>You can also use <code class="highlighter-rouge">.card-inverse</code> with the <a href="#background-variants">contextual backgrounds variants</a>.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card card-inverse" style="background-color: #333; border-color: #333;">
   <div class="card-body">
     <h3 class="card-title">Special title treatment</h3>
@@ -1105,7 +1128,7 @@
 <p>Please refer to the <a href="/get-started/accessibility/#conveying-meaning-with-color">Accessiblity notes about conveying meaning with color</a>.</p>
 </div>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card card-inverse card-primary text-center">
   <div class="card-body">
     <p>This is some text within a card body.</p>
@@ -1202,7 +1225,7 @@
 
 <p>In need of a colored card, but not the hefty background colors they bring? Replace the default modifier classes with the <code class="highlighter-rouge">.card-outline-*</code> ones to style just the <code class="highlighter-rouge">border-color</code> of a card.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card card-outline-primary text-center">
   <div class="card-body">
     <blockquote class="blockquote">
@@ -1305,7 +1328,7 @@
 
 <p>Recolor the header and footer sections of your cards by using the background context colors. <strong>Darker colors require the use of <code class="highlighter-rouge">.card-inverse</code>.</strong></p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card">
   <h3 class="card-header card-inverse bg-primary">Featured</h3>
   <div class="card-body">
@@ -1338,7 +1361,7 @@
 
 <p>Use card groups to render cards as a single, attached element with equal width and height columns. Card groups use <code class="highlighter-rouge">display: flex;</code> to achieve their uniform sizing.  Card groups are available with the class syntax of <code class="highlighter-rouge">.card-group{-breakpoint}</code>, such as <code class="highlighter-rouge">.card-group-md</code> to enable the group layout for <code class="highlighter-rouge">md</code> screens and above.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card-group-sm">
   <div class="card">
     <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap" />
@@ -1395,7 +1418,7 @@
 
 <p>When using card groups with footers, they will not automatically line up.  However, you can use the <a href="/widgets/equalize">Equalize widget</a> to achieve this layout.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card-group-sm" data-cfw="equalize" data-cfw-equalize-target=".card-body">
   <div class="card">
     <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap" />
@@ -1468,7 +1491,7 @@
 
 <p>Need a set of equal width and height cards that aren’t attached to one another? Use card decks, with the class syntax of <code class="highlighter-rouge">.card-deck{-breakpoint}</code>, such as <code class="highlighter-rouge">.card-deck-sm</code> to enable the deck layout for <code class="highlighter-rouge">sm</code> screens and above.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card-deck-sm">
   <div class="card">
     <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap" />
@@ -1525,7 +1548,7 @@
 
 <p>Just like with card groups, card footers in decks will not automatically line up. Again, the <a href="/widgets/equalize">Equalize widget</a> can achieve this layout.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card-deck-sm" data-cfw="equalize" data-cfw-equalize-target=".card-body">
   <div class="card">
     <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap" />
@@ -1628,7 +1651,7 @@
 <span class="p">}</span>
 <span class="o">&lt;/</span><span class="nt">style</span><span class="o">&gt;</span></code></pre></figure>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card-deck-sm card-deck-col">
     <div class="card">
         <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap" />
@@ -1693,13 +1716,13 @@
 
 <h3 id="card-columns">Card Columns</h3>
 
-<p>Cards can be organized into <a href="http://masonry.desandro.com">Masonry</a>-like columns with just CSS by wrapping them in <code class="highlighter-rouge">.card-columns</code>. Cards are ordered from top to bottom and left to right when wrapped in <code class="highlighter-rouge">.card-columns</code>. Card columns use the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Using_multi-column_layouts"><code class="highlighter-rouge">column-*</code> CSS properties</a>.</p>
+<p>Cards can be organized into <a href="https://masonry.desandro.com/">Masonry</a>-like columns with just CSS by wrapping them in <code class="highlighter-rouge">.card-columns</code>. Cards are ordered from top to bottom and left to right when wrapped in <code class="highlighter-rouge">.card-columns</code>. Card columns use the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Using_multi-column_layouts"><code class="highlighter-rouge">column-*</code> CSS properties</a>.</p>
 
 <p>Responsive variants are available with the class syntax of <code class="highlighter-rouge">.card-columns{-breakpoint}</code>, such as <code class="highlighter-rouge">.card-columns-sm</code> to enable the columns layout for <code class="highlighter-rouge">sm</code> screens and above.</p>
 
 <p><strong>Heads up!</strong> Your mileage with card columns may vary. To prevent cards breaking across columns, we set them to <code class="highlighter-rouge">display: inline-table</code>, as <code class="highlighter-rouge">column-break-inside: avoid</code> isn’t a fully supported option yet.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="card-columns-sm">
   <div class="card">
     <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap" />
@@ -1879,7 +1902,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.1
+            Current version: 3.0.2
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>
@@ -1888,7 +1911,7 @@
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
         </ul>
         <p>
-            &copy; 2013-2017 <a href="http://www.cast.org">CAST, Inc.</a>
+            &copy; 2013-2017 <a href="http://www.cast.org/">CAST, Inc.</a>
             <br />
             Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
@@ -1904,7 +1927,7 @@
                 <img src="/assets/img/aem-logo.png" class="media-object" width="40" height="40" alt="AEM logo" />
             </div>
             <div class="media-body">
-                <span class="h6 partner-title"><a href="http://aem.cast.org">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
+                <span class="h6 partner-title"><a href="http://aem.cast.org/">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
                 <small>Disclaimer: This does not necessarily represent endorsement by or the policies of the National Center on Accessible Educational Materials, the US Department of Education, and the US Federal Government.</small>
             </div>
         </div>
@@ -1914,7 +1937,7 @@
 
 
     
-    <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script>
 docsearch({
     apiKey: '3b9b6e000775400f4833a14c4daa6049',

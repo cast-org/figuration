@@ -23,7 +23,7 @@
 
 <!-- Algolia DocSearch CSS -->
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 
 
 <!-- Docs CSS -->
@@ -53,6 +53,7 @@
 <!-- IE emulation mode warning -->
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -61,6 +62,7 @@
   ga('create', 'UA-9130143-15', 'auto');
   ga('send', 'pageview');
 </script>
+
 
 </head>
 <body>
@@ -299,7 +301,11 @@
 <h2 class="no_toc" id="contents">Contents</h2>
 
 <ul id="markdown-toc">
-  <li><a href="#using-the-cdn" id="markdown-toc-using-the-cdn">Using the CDN</a></li>
+  <li><a href="#using-the-cdn" id="markdown-toc-using-the-cdn">Using the CDN</a>    <ul>
+      <li><a href="#css" id="markdown-toc-css">CSS</a></li>
+      <li><a href="#javascript" id="markdown-toc-javascript">JavaScript</a></li>
+    </ul>
+  </li>
   <li><a href="#basic-template" id="markdown-toc-basic-template">Basic Template</a></li>
   <li><a href="#right-to-left-support" id="markdown-toc-right-to-left-support">Right-to-left Support</a></li>
   <li><a href="#important-markup" id="markdown-toc-important-markup">Important Markup</a>    <ul>
@@ -315,18 +321,25 @@
 
 <h2 id="using-the-cdn">Using the CDN</h2>
 
-<p>CDN services are provided for free by the awesome folks over at <a href="https://www.jsdelivr.com/">jsDelivr</a>.</p>
+<p>Quickly add Figuration to your project by using the CDN services provided for free by the awesome folks over at <a href="https://www.jsdelivr.com/">jsDelivr</a>.  If you are using a package manager, or need to download the source files, more information can be found on the <a href="/get-started/download/">download page.</a></p>
+
+<h3 id="css">CSS</h3>
 
 <p>Copy-paste the stylesheet <code class="highlighter-rouge">&lt;link&gt;</code> into your <code class="highlighter-rouge">&lt;head&gt;</code> before all other stylesheets to load our CSS.</p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/figuration@3.0.1/dist/css/figuration.min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-O+8TZaySfhfHZqfh43yj8nF2KnhW0pY7rqT0kqAkF9WZw0pXePdx/aPBXIdG5+td"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/figuration@3.0.2/dist/css/figuration.min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-uuz8/5oOqrlEslRgVhwq0n/C0eFjPssUek6y3bcU5D1thC0DPwIEx5Lr1tPUCnfn"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span></code></pre></figure>
 
-<p>Add our JavaScript widgets and jQuery, either in the <code class="highlighter-rouge">&lt;head&gt;</code>, or near the end of your pages, right before the closing <code class="highlighter-rouge">&lt;/body&gt;</code> tag. Be sure to place jQuery first, as our code depends on it.</p>
+<h3 id="javascript">JavaScript</h3>
+
+<p><a href="/widgets/overview/">Figuration’s widgets</a>, our interactive components, require <a href="https://jquery.com/">jQuery</a>, along with our own JavaScript library to function. Add our JavaScript widgets and jQuery, either in the <code class="highlighter-rouge">&lt;head&gt;</code>, or near the end of your pages, right before the closing <code class="highlighter-rouge">&lt;/body&gt;</code> tag. Be sure to place jQuery first, as our code depends on it.</p>
+
+<p>Our widgets work with either the full version of jQuery, or the <a href="https://blog.jquery.com/2016/06/09/jquery-3-0-final-released/">jQuery’s slim build</a>.</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://code.jquery.com/jquery-3.2.1.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/figuration@3.0.1/dist/js/figuration.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-USMUeczjpl99hCA2arbHEVaqIqc8mT8+D3gcIfEupKJaVslUPUcIEhhsjqMiwXe0"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></figure>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/figuration@3.0.2/dist/js/figuration.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-bXQJnSrAuWmG6USyJHAtIjI4no8Ff5bUIpOR6R/SvrNGukxG+SKLmeSU5FZxXXbu"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></figure>
 
 <h2 id="basic-template">Basic Template</h2>
+
 <p>Be sure to have your pages set up with the latest design and development standards. That means using the HTML5 doctype, and including the viewport meta tag to allow responsive behaviors.</p>
 
 <p>Essentially something like this:</p>
@@ -341,11 +354,11 @@
     <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1, shrink-to-fit=no"</span><span class="nt">&gt;</span>
 
     <span class="c">&lt;!-- Figuration CSS --&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/figuration@3.0.1/dist/css/figuration.min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-O+8TZaySfhfHZqfh43yj8nF2KnhW0pY7rqT0kqAkF9WZw0pXePdx/aPBXIdG5+td"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/figuration@3.0.2/dist/css/figuration.min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-uuz8/5oOqrlEslRgVhwq0n/C0eFjPssUek6y3bcU5D1thC0DPwIEx5Lr1tPUCnfn"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
 
     <span class="c">&lt;!-- jQuery and Figuration JS --&gt;</span>
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://code.jquery.com/jquery-3.2.1.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/figuration@3.0.1/dist/js/figuration.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-USMUeczjpl99hCA2arbHEVaqIqc8mT8+D3gcIfEupKJaVslUPUcIEhhsjqMiwXe0"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/figuration@3.0.2/dist/js/figuration.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-bXQJnSrAuWmG6USyJHAtIjI4no8Ff5bUIpOR6R/SvrNGukxG+SKLmeSU5FZxXXbu"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;h1&gt;</span>Hello, world!<span class="nt">&lt;/h1&gt;</span>
@@ -379,7 +392,7 @@
 </ul>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html">    <span class="c">&lt;!-- Figuration RTL CSS --&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/figuration@3.0.1/dist/css/figuration-rtl.min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-nNoBek9wk54lokMmqWq23gefHcEADdWMVDAwYvUfkcFEY6n0UfCMmuSHZnNdd6H4"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/figuration@3.0.2/dist/css/figuration-rtl.min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-rlKsiFOwLSTHA/2H8/QNqZuKjLGwbveksYztn5+fXjZitTdzHbhPofqt2vgHkk7G"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
     </code></pre></figure>
 
 <p>When complete, the basic template for a right-to-left markup should look like the following example.</p>
@@ -394,11 +407,11 @@
     <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1, shrink-to-fit=no"</span><span class="nt">&gt;</span>
 
     <span class="c">&lt;!-- Figuration RTL CSS --&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/figuration@3.0.1/dist/css/figuration-rtl.min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-nNoBek9wk54lokMmqWq23gefHcEADdWMVDAwYvUfkcFEY6n0UfCMmuSHZnNdd6H4"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/figuration@3.0.2/dist/css/figuration-rtl.min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-rlKsiFOwLSTHA/2H8/QNqZuKjLGwbveksYztn5+fXjZitTdzHbhPofqt2vgHkk7G"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
 
     <span class="c">&lt;!-- jQuery and Figuration JS --&gt;</span>
     <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://code.jquery.com/jquery-3.2.1.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/figuration@3.0.1/dist/js/figuration.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-USMUeczjpl99hCA2arbHEVaqIqc8mT8+D3gcIfEupKJaVslUPUcIEhhsjqMiwXe0"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/figuration@3.0.2/dist/js/figuration.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-bXQJnSrAuWmG6USyJHAtIjI4no8Ff5bUIpOR6R/SvrNGukxG+SKLmeSU5FZxXXbu"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;h1&gt;</span>Hello, world!<span class="nt">&lt;/h1&gt;</span>
@@ -473,7 +486,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.1
+            Current version: 3.0.2
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>
@@ -482,7 +495,7 @@
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
         </ul>
         <p>
-            &copy; 2013-2017 <a href="http://www.cast.org">CAST, Inc.</a>
+            &copy; 2013-2017 <a href="http://www.cast.org/">CAST, Inc.</a>
             <br />
             Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
@@ -498,7 +511,7 @@
                 <img src="/assets/img/aem-logo.png" class="media-object" width="40" height="40" alt="AEM logo" />
             </div>
             <div class="media-body">
-                <span class="h6 partner-title"><a href="http://aem.cast.org">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
+                <span class="h6 partner-title"><a href="http://aem.cast.org/">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
                 <small>Disclaimer: This does not necessarily represent endorsement by or the policies of the National Center on Accessible Educational Materials, the US Department of Education, and the US Federal Government.</small>
             </div>
         </div>
@@ -508,7 +521,7 @@
 
 
     
-    <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script>
 docsearch({
     apiKey: '3b9b6e000775400f4833a14c4daa6049',

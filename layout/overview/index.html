@@ -23,7 +23,7 @@
 
 <!-- Algolia DocSearch CSS -->
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 
 
 <!-- Docs CSS -->
@@ -53,6 +53,7 @@
 <!-- IE emulation mode warning -->
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -61,6 +62,7 @@
   ga('create', 'UA-9130143-15', 'auto');
   ga('send', 'pageview');
 </script>
+
 
 </head>
 <body>
@@ -427,7 +429,7 @@
 
 <p>A quick example using some of Figuration’s <a href="/utilities/typography">Typography utility classes</a>.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <p class="text-end">Right aligned text on all viewport sizes. (<strong>No <code>xs</code> class designation!</strong>)</p>
 <p class="text-sm-end">Right aligned text on viewports sized SM (small) or wider.</p>
 <p class="text-md-end">Right aligned text on viewports sized MD (medium) or wider.</p>
@@ -446,16 +448,17 @@
 
 <p>Customizing these values is most likely not needed, and we don’t recommend customizing the values.  However, if you change one, you will need to review and possibly update all of the other values.</p>
 
-<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nv">$zindex-dropdown-backdrop</span><span class="p">:</span>  <span class="m">990</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
-<span class="nv">$zindex-dropdown</span><span class="p">:</span>          <span class="m">1000</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
-<span class="nv">$zindex-fixed</span><span class="p">:</span>      <span class="m">1020</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
-<span class="nv">$zindex-sticky</span><span class="p">:</span>     <span class="m">1020</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
-<span class="nv">$zindex-popover</span><span class="p">:</span>           <span class="m">1025</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
-<span class="nv">$zindex-tooltip</span><span class="p">:</span>           <span class="m">1030</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
-<span class="nv">$zindex-modal-backdrop</span><span class="p">:</span>    <span class="m">1040</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
-<span class="nv">$zindex-modal</span><span class="p">:</span>             <span class="m">1050</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nv">$zindex-dropdown</span><span class="p">:</span>          <span class="m">1000</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$zindex-sticky</span><span class="p">:</span>            <span class="m">1010</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$zindex-fixed</span><span class="p">:</span>             <span class="m">1020</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$zindex-popover</span><span class="p">:</span>           <span class="m">1030</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$zindex-tooltip</span><span class="p">:</span>           <span class="m">1040</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$zindex-modal-backdrop</span><span class="p">:</span>    <span class="m">1050</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
+<span class="nv">$zindex-modal</span><span class="p">:</span>             <span class="m">1060</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span></code></pre></figure>
 
 <p>Background elements—like the backdrops that allow click-dismissing—tend to reside on a lower <code class="highlighter-rouge">z-index</code>s, while navigation and popovers utilize higher <code class="highlighter-rouge">z-index</code>s to ensure they overlay surrounding content.  Modals get a higher z-index so they are placed above popover/tooltip items, in the case that one or more of those items is held open.</p>
+
+<p>Additionally, the <code class="highlighter-rouge">button-group</code>, <code class="highlighter-rouge">input-group</code>, <code class="highlighter-rouge">list-group</code>, and <code class="highlighter-rouge">pagination</code> components make use of setting <code class="highlighter-rouge">z-index</code> to <code class="highlighter-rouge">1</code> or <code class="highlighter-rouge">2</code> in order to ensure that the borders of the <em>active</em> or <em>focused</em> element correctly appear “above” their sibling elements.</p>
 
             </main>
         </div>
@@ -468,7 +471,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.1
+            Current version: 3.0.2
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>
@@ -477,7 +480,7 @@
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
         </ul>
         <p>
-            &copy; 2013-2017 <a href="http://www.cast.org">CAST, Inc.</a>
+            &copy; 2013-2017 <a href="http://www.cast.org/">CAST, Inc.</a>
             <br />
             Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
@@ -493,7 +496,7 @@
                 <img src="/assets/img/aem-logo.png" class="media-object" width="40" height="40" alt="AEM logo" />
             </div>
             <div class="media-body">
-                <span class="h6 partner-title"><a href="http://aem.cast.org">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
+                <span class="h6 partner-title"><a href="http://aem.cast.org/">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
                 <small>Disclaimer: This does not necessarily represent endorsement by or the policies of the National Center on Accessible Educational Materials, the US Department of Education, and the US Federal Government.</small>
             </div>
         </div>
@@ -503,7 +506,7 @@
 
 
     
-    <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script>
 docsearch({
     apiKey: '3b9b6e000775400f4833a14c4daa6049',

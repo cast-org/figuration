@@ -23,7 +23,7 @@
 
 <!-- Algolia DocSearch CSS -->
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 
 
 <!-- Docs CSS -->
@@ -53,6 +53,7 @@
 <!-- IE emulation mode warning -->
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -61,6 +62,7 @@
   ga('create', 'UA-9130143-15', 'auto');
   ga('send', 'pageview');
 </script>
+
 
 </head>
 <body>
@@ -406,7 +408,7 @@
 
 <p>Pagination is designed to be a large block of connected links that is hard to miss, easily scalable, and provide large click areas. It is built with list HTML elements so screen readers can announce the number of available links. Use a wrapping <code class="highlighter-rouge">&lt;nav&gt;</code> element to identify it as a navigation section to screen readers and other assistive technologies.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <nav aria-label="Page navigation">
   <ul class="pagination">
     <li class="page-item"><a href="#" class="page-link">Previous</a></li>
@@ -431,7 +433,7 @@
 
 <p>Want to use an icon or symbol in place of text for some pagination links? Be sure to provide proper screen reader support with <code class="highlighter-rouge">aria-</code> attributes and the <code class="highlighter-rouge">.sr-only</code> utility.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <nav aria-label="Page navigation">
   <ul class="pagination">
     <li class="page-item">
@@ -482,7 +484,7 @@
 <p>Please refer to the <a href="/get-started/accessibility/#disabled-anchors">Accessiblity notes about disabled anchors</a>.</p>
 </div>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <nav aria-label="...">
   <ul class="pagination">
     <li class="page-item">
@@ -519,7 +521,7 @@
 
 <p>You can optionally swap out active or disabled anchors for <code class="highlighter-rouge">&lt;span&gt;</code>, or omit the anchor in the case of the prev/next arrows, to remove click functionality and prevent keyboard focus while retaining intended styles.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <nav aria-label="...">
   <ul class="pagination">
     <li class="page-item">
@@ -669,7 +671,7 @@
 
 <p>Change the alignment of pagination components using the <a href="/utilities/flexbox/">flexbox utilities</a>.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <nav aria-label="...">
   <ul class="pagination flex-center">
     <li class="page-item"><span class="page-link disabled">Previous</span></li>
@@ -690,7 +692,7 @@
   <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></div>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <nav aria-label="...">
   <ul class="pagination flex-end">
     <li class="page-item"><span class="page-link disabled">Previous</span></li>
@@ -723,7 +725,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.1
+            Current version: 3.0.2
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>
@@ -732,7 +734,7 @@
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
         </ul>
         <p>
-            &copy; 2013-2017 <a href="http://www.cast.org">CAST, Inc.</a>
+            &copy; 2013-2017 <a href="http://www.cast.org/">CAST, Inc.</a>
             <br />
             Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
@@ -748,7 +750,7 @@
                 <img src="/assets/img/aem-logo.png" class="media-object" width="40" height="40" alt="AEM logo" />
             </div>
             <div class="media-body">
-                <span class="h6 partner-title"><a href="http://aem.cast.org">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
+                <span class="h6 partner-title"><a href="http://aem.cast.org/">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
                 <small>Disclaimer: This does not necessarily represent endorsement by or the policies of the National Center on Accessible Educational Materials, the US Department of Education, and the US Federal Government.</small>
             </div>
         </div>
@@ -758,7 +760,7 @@
 
 
     
-    <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script>
 docsearch({
     apiKey: '3b9b6e000775400f4833a14c4daa6049',

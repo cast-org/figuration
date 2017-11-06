@@ -23,7 +23,7 @@
 
 <!-- Algolia DocSearch CSS -->
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 
 
 <!-- Docs CSS -->
@@ -53,6 +53,7 @@
 <!-- IE emulation mode warning -->
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -61,6 +62,7 @@
   ga('create', 'UA-9130143-15', 'auto');
   ga('send', 'pageview');
 </script>
+
 
 </head>
 <body>
@@ -494,7 +496,7 @@
   <li>Specify <code class="highlighter-rouge">container: 'body'</code> to avoid rendering problems in more complex components (like our input groups, button groups, etc).</li>
   <li>Triggering popovers on hidden elements will not work.</li>
   <li>Popovers for <code class="highlighter-rouge">.disabled</code> or <code class="highlighter-rouge">disabled</code> elements must be triggered on a wrapper element.</li>
-  <li>When triggered from hyperlinks that span multiple lines, popovers will be centered. Use <code class="highlighter-rouge">white-space: nowrap;</code> on your <code class="highlighter-rouge">&lt;a&gt;</code>s to avoid this behavior.</li>
+  <li>When triggered from anchors that wrap across multiple lines, popovers will be centered between the anchors’ overall width. Use <code class="highlighter-rouge">white-space: nowrap;</code> on your <code class="highlighter-rouge">&lt;a&gt;</code>s to avoid this behavior.</li>
 </ul>
 
 <h2 id="examples">Examples</h2>
@@ -541,7 +543,7 @@
 
 <h3 id="four-directions">Four Directions</h3>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <button type="button" class="btn" data-cfw="popover" data-cfw-popover-container="body" data-cfw-popover-placement="top" data-cfw-popover-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
   Popover on top
 </button>
@@ -576,14 +578,14 @@
 
 <h3 id="default-toggle-example">Default Toggle Example</h3>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <button type="button" class="btn btn-info" data-cfw="popover" title="Click Popover Example" data-cfw-popover-content="Click the trigger or close button to close me." data-cfw-popover-placement="forward">Click to toggle popover</button>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">title=</span><span class="s">"Click Popover Example"</span> <span class="na">data-cfw-popover-content=</span><span class="s">"Click the trigger or close button to close me."</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"forward"</span><span class="nt">&gt;</span>Click to toggle popover<span class="nt">&lt;/button&gt;</span></code></pre></div>
 
 <h3 id="hover-example">Hover Example</h3>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <button type="button" class="btn btn-info" id="cf-example-hover-popover" data-cfw="popover" title="Hover Popover Example" data-cfw-popover-content="Stop hovering over the trigger or the popover to auto-close." data-cfw-popover-placement="forward" data-cfw-popover-trigger="hover focus">Hover/focus to show popover</button>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info"</span> <span class="na">id=</span><span class="s">"cf-example-hover-popover"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">title=</span><span class="s">"Hover Popover Example"</span> <span class="na">data-cfw-popover-content=</span><span class="s">"Stop hovering over the trigger or the popover to auto-close."</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"forward"</span> <span class="na">data-cfw-popover-trigger=</span><span class="s">"hover focus"</span><span class="nt">&gt;</span>Hover/focus to show popover<span class="nt">&lt;/button&gt;</span></code></pre></div>
@@ -598,21 +600,21 @@
 
 <p>Allow users to move popovers around the screen by enabling the <code class="highlighter-rouge">drag</code> option.  Drag support mouse, keyboard (with arrow keys), and touch movement.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <button type="button" class="btn btn-info" data-cfw="popover" title="Draggable Popover Example" data-cfw-popover-content="Click the trigger or close link to close me." data-cfw-popover-placement="forward" data-cfw-popover-drag="true">Draggable popover</button>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">title=</span><span class="s">"Draggable Popover Example"</span> <span class="na">data-cfw-popover-content=</span><span class="s">"Click the trigger or close link to close me."</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"forward"</span> <span class="na">data-cfw-popover-drag=</span><span class="s">"true"</span><span class="nt">&gt;</span>Draggable popover<span class="nt">&lt;/button&gt;</span></code></pre></div>
 
 <h3 id="popover-with-html">Popover with HTML</h3>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-html="true" data-cfw-popover-placement="forward" data-cfw-popover-content="&lt;em&gt;Popover&lt;/em&gt; &lt;u&gt;with&lt;/u&gt; &lt;b&gt;HTML&lt;/b&gt;" title="&lt;em&gt;Popover&lt;/em&gt; &lt;u&gt;with&lt;/u&gt; &lt;b&gt;HTML&lt;/b&gt;">Popover with HTML</button>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info"</span> <span class="na">data-cfw=</span><span class="s">"popover"</span> <span class="na">data-cfw-popover-html=</span><span class="s">"true"</span> <span class="na">data-cfw-popover-placement=</span><span class="s">"forward"</span> <span class="na">data-cfw-popover-content=</span><span class="s">"&lt;em&gt;Popover&lt;/em&gt; &lt;u&gt;with&lt;/u&gt; &lt;b&gt;HTML&lt;/b&gt;"</span> <span class="na">title=</span><span class="s">"&lt;em&gt;Popover&lt;/em&gt; &lt;u&gt;with&lt;/u&gt; &lt;b&gt;HTML&lt;/b&gt;"</span><span class="nt">&gt;</span>Popover with HTML<span class="nt">&lt;/button&gt;</span></code></pre></div>
 
 <p>If using more complex HTML, using a data attribute might not be optimal.  A better option would be to use the Javascript options, or with a pre-generated popover, as shown in the following example.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <button type="button" class="btn btn-info" id="html-popover">Popover with HTML</button>
 
 <script>
@@ -637,7 +639,7 @@ $('#html-popover').CFW_Popover({
 
 <p>Have a complex content that you would like to show in a popover, or one that is updated dynamically?  Create the popover and then link to it with the <code class="highlighter-rouge">target</code> option.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-target="#popoverExample0" data-cfw-popover-placement="forward">Show Popover</button>
 
 <div class="popover" id="popoverExample0">
@@ -670,7 +672,7 @@ $('#html-popover').CFW_Popover({
 
 <p>Locate a popover anywhere you need with the <code class="highlighter-rouge">placement</code> option.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <button type="button" class="btn btn-info" id="cf-example-placed-popover" title="Custom placed popover" data-cfw-popover-content="Look, I am way over here!">Custom Placement Popover</button>
 <script>
     $('#cf-example-placed-popover').CFW_Popover({
@@ -703,19 +705,19 @@ $('#html-popover').CFW_Popover({
 
 <p>Keep popovers in their place with the <code class="highlighter-rouge">viewport</code> option.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div class="container-viewport" id="viewport-popover">
     <p class="viewport-text">Viewport constraints for popovers.</p>
 
-    <button class="btn btn-info popover-viewport-bottom" title="This should be shifted to the right">Shift Right</button>
+    <button type="button" class="btn btn-info popover-viewport-bottom" title="This should be shifted to the right">Shift Right</button>
 
-    <button class="btn btn-info popover-viewport-right" title="This should be shifted down">Shift Down</button>
+    <button type="button" class="btn btn-info popover-viewport-right" title="This should be shifted down">Shift Down</button>
 
-    <button class="btn btn-info float-end popover-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
+    <button type="button" class="btn btn-info float-end popover-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
 
-    <button class="btn btn-info popover-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
+    <button type="button" class="btn btn-info popover-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
 
-    <button class="btn btn-info popover-viewport-drag btn-drag" title="This should be confined to the viewport box">Drag Test (click)</button>
+    <button type="button" class="btn btn-info popover-viewport-drag btn-drag" title="This should be confined to the viewport box">Drag Test (click)</button>
 </div>
 <script>
     $('.popover-viewport-right').CFW_Popover({
@@ -738,15 +740,15 @@ $('#html-popover').CFW_Popover({
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container-viewport"</span> <span class="na">id=</span><span class="s">"viewport-popover"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"viewport-text"</span><span class="nt">&gt;</span>Viewport constraints for popovers.<span class="nt">&lt;/p&gt;</span>
 
-    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-info popover-viewport-bottom"</span> <span class="na">title=</span><span class="s">"This should be shifted to the right"</span><span class="nt">&gt;</span>Shift Right<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info popover-viewport-bottom"</span> <span class="na">title=</span><span class="s">"This should be shifted to the right"</span><span class="nt">&gt;</span>Shift Right<span class="nt">&lt;/button&gt;</span>
 
-    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-info popover-viewport-right"</span> <span class="na">title=</span><span class="s">"This should be shifted down"</span><span class="nt">&gt;</span>Shift Down<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info popover-viewport-right"</span> <span class="na">title=</span><span class="s">"This should be shifted down"</span><span class="nt">&gt;</span>Shift Down<span class="nt">&lt;/button&gt;</span>
 
-    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-info float-end popover-viewport-bottom"</span> <span class="na">title=</span><span class="s">"This should be shifted to the left"</span><span class="nt">&gt;</span>Shift Left<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info float-end popover-viewport-bottom"</span> <span class="na">title=</span><span class="s">"This should be shifted to the left"</span><span class="nt">&gt;</span>Shift Left<span class="nt">&lt;/button&gt;</span>
 
-    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-info popover-viewport-right btn-bottom"</span> <span class="na">title=</span><span class="s">"This should be shifted up"</span><span class="nt">&gt;</span>Shift Up<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info popover-viewport-right btn-bottom"</span> <span class="na">title=</span><span class="s">"This should be shifted up"</span><span class="nt">&gt;</span>Shift Up<span class="nt">&lt;/button&gt;</span>
 
-    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-info popover-viewport-drag btn-drag"</span> <span class="na">title=</span><span class="s">"This should be confined to the viewport box"</span><span class="nt">&gt;</span>Drag Test (click)<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-info popover-viewport-drag btn-drag"</span> <span class="na">title=</span><span class="s">"This should be confined to the viewport box"</span><span class="nt">&gt;</span>Drag Test (click)<span class="nt">&lt;/button&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;script&gt;</span>
     <span class="nx">$</span><span class="p">(</span><span class="s1">'.popover-viewport-right'</span><span class="p">).</span><span class="nx">CFW_Popover</span><span class="p">({</span>
@@ -774,7 +776,7 @@ $('#html-popover').CFW_Popover({
 
 <p>The required markup for a popover is only a <code class="highlighter-rouge">data-cfw="popover"</code> attribute and <code class="highlighter-rouge">title</code> or a <code class="highlighter-rouge">data-cfw-popover-content=""</code> on the HTML element you wish to have a popover. The generated markup of a popover is rather simple, though it does require a position (by default, set to top by the widget).</p>
 
-<p>If the popover item is already created, you can link to it using <code>data-cfw-popover-target="#somePopover"</code>, or href=”#somePopover”. The proper <code class="highlighter-rouge">role</code> and <code class="highlighter-rouge">aria-</code> attributes will be automatically created to link the trigger and target elements.</p>
+<p>If the popover item is already created, you can link to it using <code>data-cfw-popover-target="#somePopover"</code>, or <code>href="#somePopover"</code>. The proper <code class="highlighter-rouge">role</code> and <code class="highlighter-rouge">aria-</code> attributes will be automatically created to link the trigger and target elements.</p>
 
 <h3 id="via-javascript">Via JavaScript</h3>
 
@@ -1115,7 +1117,7 @@ function myPopoverAlign(tip, trigger) {
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.1
+            Current version: 3.0.2
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>
@@ -1124,7 +1126,7 @@ function myPopoverAlign(tip, trigger) {
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
         </ul>
         <p>
-            &copy; 2013-2017 <a href="http://www.cast.org">CAST, Inc.</a>
+            &copy; 2013-2017 <a href="http://www.cast.org/">CAST, Inc.</a>
             <br />
             Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
@@ -1140,7 +1142,7 @@ function myPopoverAlign(tip, trigger) {
                 <img src="/assets/img/aem-logo.png" class="media-object" width="40" height="40" alt="AEM logo" />
             </div>
             <div class="media-body">
-                <span class="h6 partner-title"><a href="http://aem.cast.org">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
+                <span class="h6 partner-title"><a href="http://aem.cast.org/">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
                 <small>Disclaimer: This does not necessarily represent endorsement by or the policies of the National Center on Accessible Educational Materials, the US Department of Education, and the US Federal Government.</small>
             </div>
         </div>
@@ -1150,7 +1152,7 @@ function myPopoverAlign(tip, trigger) {
 
 
     
-    <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script>
 docsearch({
     apiKey: '3b9b6e000775400f4833a14c4daa6049',

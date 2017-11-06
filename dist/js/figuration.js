@@ -1,5 +1,5 @@
 /*!
- * Figuration (v3.0.1)
+ * Figuration (v3.0.2)
  * http://figuration.org
  * Copyright 2013-2017 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
@@ -21,7 +21,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): util.js
+ * Figuration (v3.0.2): util.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -397,7 +397,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): drag.js
+ * Figuration (v3.0.2): drag.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -582,7 +582,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): collapse.js
+ * Figuration (v3.0.2): collapse.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -831,7 +831,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): dropdown.js
+ * Figuration (v3.0.2): dropdown.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -852,6 +852,9 @@ if (typeof jQuery === 'undefined') {
         // Touch enabled-browser flag - override not allowed
         this.settings.isTouch = $.CFW_isTouch;
 
+        this.$tmpContainer = null;
+        this.noContainer = this._containerOverride();
+
         this.c = CFW_Widget_Dropdown.CLASSES;
 
         this._init();
@@ -867,12 +870,14 @@ if (typeof jQuery === 'undefined') {
     };
 
     CFW_Widget_Dropdown.DEFAULTS = {
-        target   : null,
-        delay    : 350,     // Delay for hiding menu (milliseconds)
-        hover    : false,   // Enable hover style navigation
-        backlink : false,   // Insert back links into submenus
-        backtop  : false,   // Should back links start at top level
-        backtext : 'Back'   // Text for back links
+        target    : null,
+        delay     : 350,    // Delay for hiding menu (milliseconds)
+        hover     : false,  // Enable hover style navigation
+        backlink  : false,  // Insert back links into submenus
+        backtop   : false,  // Should back links start at top level
+        backtext  : 'Back', // Text for back links
+        container : false,   // Where to place dropdown in DOM
+        variants  : 'dropdown-menu-reverse dropup'
     };
 
     function getParent($node) {
@@ -1145,6 +1150,28 @@ if (typeof jQuery === 'undefined') {
                 }
             });
 
+            if ($trigger.is(this.$element)) {
+                // Move target if container is to be used
+                if (this.settings.container && !this.noContainer) {
+                    this.$tmpContainer = $(document.createElement('div'));
+                    this.$tmpContainer
+                        .appendTo(this.settings.container)
+                        .append(this.$target)
+                        .addClass('dropdown-container open');
+
+                    var variantTypes = this.settings.variants.split(' ');
+                    for (var i = variantTypes.length; i--;) {
+                        var varName = variantTypes[i];
+                        if ($parent.hasClass(varName)) {
+                            this.$tmpContainer.addClass(varName);
+                        }
+                    }
+
+                    $(window).on('resize.cfw.dropdown.' + this.instance, $.proxy(this._containerPlacement, this));
+                    this._containerPlacement();
+                }
+            }
+
             $parent.addClass('open');
             $trigger.attr('aria-expanded', 'true');
             $menu.removeAttr('aria-hidden');
@@ -1189,6 +1216,17 @@ if (typeof jQuery === 'undefined') {
 
             $parent.removeClass('open');
             $trigger.attr('aria-expanded', 'false');
+
+            if ($trigger.is(this.$element)) {
+                if (this.settings.container && !this.noContainer) {
+                    $(window).off('resize.cfw.dropdown.' + this.instance);
+                    this.$target
+                        .appendTo($parent);
+                    this.$tmpContainer && this.$tmpContainer.remove();
+                    this.$tmpContainer = null;
+                }
+            }
+
             $menu.attr('aria-hidden', 'true')
                 .find('a').attr('tabIndex', -1);
 
@@ -1398,8 +1436,24 @@ if (typeof jQuery === 'undefined') {
             }
         },
 
+        _containerOverride : function() {
+            return this.$element.closest('.navbar-collapse').length > 0;
+        },
+
+        _containerPlacement : function() {
+            var elRect = this.$element[0].getBoundingClientRect();
+            elRect =  $.extend({}, elRect, this.$element.offset());
+            this.$tmpContainer.css({
+                top: elRect.top,
+                left: elRect.left,
+                width: elRect.width,
+                height: elRect.height
+            });
+        },
+
         dispose : function() {
-            $(document).off('focusin.cfw.dropdown.' + this.instance);
+            $(document).off('.cfw.dropdown.' + this.instance);
+            $(window).off('.cfw.dropdown.' + this.instance);
             this.$element.CFW_Dropdown('hideRev');
             this.$target.find('.' + this.c.backLink).remove();
             this.$target.find('.' + this.c.hasSubMenu).off('.cfw.dropdown');
@@ -1413,6 +1467,8 @@ if (typeof jQuery === 'undefined') {
             this.$target = null;
             this.instance = null;
             this.timerHide = null;
+            this.$tmpContainer = null;
+            this.noContainer = null;
             this.settings = null;
         }
     };
@@ -1449,7 +1505,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): tab.js
+ * Figuration (v3.0.2): tab.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1703,7 +1759,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): affix.js
+ * Figuration (v3.0.2): affix.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1863,7 +1919,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): tooltip.js
+ * Figuration (v3.0.2): tooltip.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -2849,7 +2905,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): popover.js
+ * Figuration (v3.0.2): popover.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3150,7 +3206,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): modal.js
+ * Figuration (v3.0.2): modal.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3658,7 +3714,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): accordion.js
+ * Figuration (v3.0.2): accordion.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3735,7 +3791,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): tab-responsive.js
+ * Figuration (v3.0.2): tab-responsive.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3870,7 +3926,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): slideshow.js
+ * Figuration (v3.0.2): slideshow.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4062,7 +4118,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): scrollspy.js
+ * Figuration (v3.0.2): scrollspy.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4240,7 +4296,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): alert.js
+ * Figuration (v3.0.2): alert.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4367,7 +4423,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): button.js
+ * Figuration (v3.0.2): button.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4510,7 +4566,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): lazy.js
+ * Figuration (v3.0.2): lazy.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4707,7 +4763,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): slider.js
+ * Figuration (v3.0.2): slider.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5240,7 +5296,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): equalize.js
+ * Figuration (v3.0.2): equalize.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5455,7 +5511,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): player.js
+ * Figuration (v3.0.2): player.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -7056,7 +7112,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.1): common.js
+ * Figuration (v3.0.2): common.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */

@@ -23,7 +23,7 @@
 
 <!-- Algolia DocSearch CSS -->
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css">
 
 
 <!-- Docs CSS -->
@@ -53,6 +53,7 @@
 <!-- IE emulation mode warning -->
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -61,6 +62,7 @@
   ga('create', 'UA-9130143-15', 'auto');
   ga('send', 'pageview');
 </script>
+
 
 </head>
 <body>
@@ -504,7 +506,7 @@
 
 <h3 id="simple-audio-player">Simple Audio Player</h3>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <p><small>Source: <a href="http://freesound.org/people/Heigh-hoo/sounds/19433/">Drumroll by Heigh-hoo</a></small></p>
 
 <div data-cfw="player">
@@ -563,7 +565,7 @@
 
 <p>Available seek and volume sliders.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <p><small>Source: <a href="http://freesound.org/people/StrangerEight/sounds/148695/">Ambient Acoustic by StrangerEight</a></small></p>
 
 <div data-cfw="player">
@@ -628,7 +630,7 @@
 
 <h3 id="video-example">Video Example</h3>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <p><small>Source: <a href="https://videos.pexels.com/videos/tourists-looking-at-niagara-falls-333">Tourists Looking at Niagara Falls</a></small></p>
 
 <div data-cfw="player" class="video-wrapper">
@@ -725,7 +727,7 @@
 
 <p>Add an interactive transcript to your video using the <code class="highlighter-rouge">transcript</code> control.  The content will be taken from the selected item and placed in another container.  This content will highlight the current caption, and also allow seeking within the media item if one of the passages is clicked.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <p><small>Source: <a href="https://videos.pexels.com/videos/tourists-looking-at-niagara-falls-333">Tourists Looking at Niagara Falls</a></small></p>
 
 <div data-cfw="player" data-cfw-player-transcript="0" class="video-wrapper" role="region" aria-label="video player">
@@ -822,7 +824,7 @@
 
 <p>Improve accessibility for blind and visually impaired users by including an audio description with your video. Extend the <code class="highlighter-rouge">&lt;source&gt;</code> elements with a <code class="highlighter-rouge">data-src-describe=""</code> attribute pointing to the video source that contains the additional narration  description. Also add a control with a <code class="highlighter-rouge">data-cfw-player="description"</code> attribute.  This will allow the user to toggle the audio description version of the video on and off.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div data-cfw="player" data-cfw-player-media-describe="true" class="video-wrapper" role="region" aria-label="video player">
     <div class="embed-fluid">
         <video poster="/assets/video/niagara_falls.jpg" controls="">
@@ -881,7 +883,7 @@
 
 <p>Further improve accessibility for blind and visually impaired users by including the audio description narration within the interactive transcript. Add a <code class="highlighter-rouge">&lt;track kind="descriptions"&gt;</code>with the content of the description narration.  Also add matching <code class="highlighter-rouge">srclang</code> attributes to both the caption (or subtitle) track, and to the descriptions track.  For example, to specify the English language, use <code class="highlighter-rouge">srclang="en"</code> on both elements.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div data-cfw="player" data-cfw-player-transcript="0" data-cfw-player-media-describe="true" class="video-wrapper" role="region" aria-label="video player">
     <div class="embed-fluid">
         <video poster="/assets/video/niagara_falls.jpg" controls="">
@@ -952,7 +954,7 @@
 
 <p>Take control over how captions are displayed by adding a container with a <code class="highlighter-rouge">data-cfw-player="caption-display"</code> attribute.  This will hide the default browser captions, and instead place the content in the designated container.</p>
 
-<div class="cf-example" data-example-id="">
+<div class="cf-example">
 <div data-cfw="player" class="video-wrapper">
     <div class="embed-fluid">
         <video poster="/assets/video/niagara_falls.jpg" controls="">
@@ -1388,7 +1390,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.1
+            Current version: 3.0.2
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>
@@ -1397,7 +1399,7 @@
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
         </ul>
         <p>
-            &copy; 2013-2017 <a href="http://www.cast.org">CAST, Inc.</a>
+            &copy; 2013-2017 <a href="http://www.cast.org/">CAST, Inc.</a>
             <br />
             Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
@@ -1413,7 +1415,7 @@
                 <img src="/assets/img/aem-logo.png" class="media-object" width="40" height="40" alt="AEM logo" />
             </div>
             <div class="media-body">
-                <span class="h6 partner-title"><a href="http://aem.cast.org">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
+                <span class="h6 partner-title"><a href="http://aem.cast.org/">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
                 <small>Disclaimer: This does not necessarily represent endorsement by or the policies of the National Center on Accessible Educational Materials, the US Department of Education, and the US Federal Government.</small>
             </div>
         </div>
@@ -1423,7 +1425,7 @@
 
 
     
-    <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script>
 docsearch({
     apiKey: '3b9b6e000775400f4833a14c4daa6049',
