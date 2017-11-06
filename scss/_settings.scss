@@ -899,11 +899,8 @@ $popover-body-padding-x:       .75rem !default;
 $popover-body-padding-y:       .5rem !default;
 $popover-body-color:           $body-color !default;
 
-// Arrow dimension in pixels to get proper visual layout
-$popover-arrow-width:           10px !default;
+$popover-arrow-width:           .625rem !default;
 $popover-arrow-color:           $popover-bg !default;
-$popover-arrow-border-width:    $border-width !default;
-$popover-arrow-outer-width:     ($popover-arrow-width + $popover-arrow-border-width) !default;
 $popover-arrow-outer-color:     $popover-border-color !default;
 
 
