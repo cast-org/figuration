@@ -22,10 +22,10 @@ CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end
 
 **Latest Release**
 [![npm version](https://img.shields.io/npm/v/figuration.svg)](https://www.npmjs.com/package/figuration)
-[![CSS size](http://img.badgesize.io/cast-org/figuration/v3.0.2/dist/css/figuration.min.css?label=CSS+size)](https://github.com/cast-org/figuration/tree/v3.0.2/dist/css/figuration.min.css)
-[![CSS gzip size](http://img.badgesize.io/cast-org/figuration/v3.0.2/dist/css/figuration.min.css?compression=gzip&label=CSS+gzip+size)](https://github.com/cast-org/figuration/tree/v3.0.2/dist/css/figuration.min.css)
-[![JS size](http://img.badgesize.io/cast-org/figuration/v3.0.2/dist/js/figuration.min.js?label=JS+size)](https://github.com/cast-org/figuration/tree/v3.0.2/dist/js/figuration.min.js)
-[![JS gzip size](http://img.badgesize.io/cast-org/figuration/v3.0.2/dist/js/figuration.min.js?compression=gzip&label=JS+gzip+size)](https://github.com/cast-org/figuration/tree/v3.0.2/dist/js/figuration.min.js)
+[![CSS size](http://img.badgesize.io/cast-org/figuration/v3.0.3/dist/css/figuration.min.css?label=CSS+size)](https://github.com/cast-org/figuration/tree/v3.0.3/dist/css/figuration.min.css)
+[![CSS gzip size](http://img.badgesize.io/cast-org/figuration/v3.0.3/dist/css/figuration.min.css?compression=gzip&label=CSS+gzip+size)](https://github.com/cast-org/figuration/tree/v3.0.3/dist/css/figuration.min.css)
+[![JS size](http://img.badgesize.io/cast-org/figuration/v3.0.3/dist/js/figuration.min.js?label=JS+size)](https://github.com/cast-org/figuration/tree/v3.0.3/dist/js/figuration.min.js)
+[![JS gzip size](http://img.badgesize.io/cast-org/figuration/v3.0.3/dist/js/figuration.min.js?compression=gzip&label=JS+gzip+size)](https://github.com/cast-org/figuration/tree/v3.0.3/dist/js/figuration.min.js)
 
 **Dependencies**
 [![dependencies Status](https://img.shields.io/david/cast-org/figuration.svg)](https://david-dm.org/cast-org/figuration)
@@ -40,7 +40,7 @@ CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end
 
 Several quick start options are available:
 
-- [Download the latest release.](https://github.com/cast-org/figuration/archive/v3.0.2.zip)
+- [Download the latest release.](https://github.com/cast-org/figuration/archive/v3.0.3.zip)
 - Clone the repo: `git clone https://github.com/cast-org/figuration.git`
 - Install with [npm](https://www.npmjs.com/): `npm install figuration`
 - Install with [yarn](https://yarnpkg.com/): `yarn add figuration`
