@@ -107,7 +107,7 @@
     padding: $navbar-toggle-padding-y $navbar-toggle-padding-x;
     font-size: $navbar-toggle-font-size;
     line-height: 1;
-    background: transparent; // Remove default button style
+    background-color: transparent; // Remove default button style
     border: $border-width solid transparent; // Remove default button style
     @include border-radius($navbar-toggle-border-radius);
 
