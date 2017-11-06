@@ -515,7 +515,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 code {
@@ -871,7 +871,7 @@ pre code {
   color: #474747;
   background-color: #fff;
   border-color: #70b0d6;
-  outline: none;
+  outline: 0;
   box-shadow: 0 0 2px 3px rgba(112, 176, 214, 0.75);
 }
 
@@ -1421,7 +1421,7 @@ fieldset[disabled] .form-check-label {
   color: #474747;
   background-color: #fff;
   border-color: #70b0d6;
-  outline: none;
+  outline: 0;
   box-shadow: 0 0 2px 3px rgba(112, 176, 214, 0.75);
 }
 
@@ -1568,7 +1568,7 @@ fieldset[disabled] .form-check-label {
   color: #474747;
   background-color: #fff;
   border-color: #70b0d6;
-  outline: none;
+  outline: 0;
   box-shadow: 0 0 2px 3px rgba(112, 176, 214, 0.75);
 }
 
@@ -3286,7 +3286,7 @@ tbody.collapse.in, tbody.collapse.in-flex {
 
 button.close {
   padding: 0;
-  background: transparent;
+  background-color: transparent;
   border: 0;
   -webkit-appearance: none;
 }
@@ -3313,7 +3313,7 @@ button.close {
 
 button.drag {
   padding: 0;
-  background: transparent;
+  background-color: transparent;
   border: 0;
   -webkit-appearance: none;
 }
@@ -4666,7 +4666,7 @@ li .dropdown-header {
   padding: 0.375rem 0.75rem;
   font-size: 1.25rem;
   line-height: 1;
-  background: transparent;
+  background-color: transparent;
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
