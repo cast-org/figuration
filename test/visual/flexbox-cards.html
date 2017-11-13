@@ -63,6 +63,14 @@ Holder.addTheme("gray", {
             <div class="card-body">
                 <h4 class="card-title">Card title</h4>
                 <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                <div class="card">
+                    <div class="card-header">Header</div>
+                    <div class="card-body">Nested Card</div>
+                    <div class="card-footer">Footer</div>
+                </div>
+                <div class="card">
+                    <div class="card-body">Nested Card</div>
+                </div>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
         </div>
@@ -126,6 +134,14 @@ Holder.addTheme("gray", {
         <div class="card-body">
           <h4 class="card-title">Card title</h4>
           <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          <div class="card">
+            <div class="card-header">Header</div>
+            <div class="card-body">Nested Card</div>
+            <div class="card-footer">Footer</div>
+          </div>
+          <div class="card">
+            <div class="card-body">Nested Card</div>
+          </div>
           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
         </div>
       </div>
@@ -268,7 +284,7 @@ Holder.addTheme("gray", {
         align-items: stretch;
         margin-bottom: 0;
     }
-    .card-deck-col .card {
+    .card-deck-col > .card {
         flex-basis: auto;
         width: calc(100% - 2rem);
         margin-right: 1rem;
@@ -276,12 +292,12 @@ Holder.addTheme("gray", {
         margin-left: 1rem;
     }
     @media (min-width: 35em) {
-        .card-deck-col .card {
+        .card-deck-col > .card {
             width: calc(50% - 2rem);
         }
     }
     @media (min-width: 62em) {
-        .card-deck-col .card {
+        .card-deck-col > .card {
            width: calc(25% - 2rem);
         }
     }
@@ -299,7 +315,14 @@ Holder.addTheme("gray", {
             <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
             <div class="card-body">
                 <h4 class="card-title">Card title</h4>
-                <p class="card-text">This is a card with some amount of text. This is a card with some amount of text.</p>
+                <div class="card">
+                    <div class="card-header">Header</div>
+                    <div class="card-body">Nested Card</div>
+                    <div class="card-footer">Footer</div>
+                </div>
+                <div class="card">
+                    <div class="card-body">Nested Card</div>
+                </div>
             </div>
         </div>
         <div class="card">

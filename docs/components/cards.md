@@ -727,7 +727,7 @@ Controlling the number of cards in a row, based on the screen width is also poss
     margin-bottom: 0;
     margin-left: -1rem;
 }
-.card-deck-col .card {
+.card-deck-col > .card {
     flex-basis: auto;
     width: calc(100% - 2rem);
     margin-right: 1rem;
@@ -735,12 +735,12 @@ Controlling the number of cards in a row, based on the screen width is also poss
     margin-left: 1rem;
 }
 @media (min-width: 35em) {
-    .card-deck-col .card {
+    .card-deck-col > .card {
         width: calc(50% - 2rem);
     }
 }
 @media (min-width: 62em) {
-    .card-deck-col .card {
+    .card-deck-col > .card {
        width: calc(25% - 2rem);
     }
 }

@@ -155,7 +155,7 @@ $custom-file-text: (
     margin-bottom: 0;
     margin-left: -1rem;
 }
-.card-deck-col .card {
+.card-deck-col > .card {
     flex-basis: auto;
     width: calc(100% - 2rem);
     margin-right: 1rem;
@@ -163,12 +163,12 @@ $custom-file-text: (
     margin-left: 1rem;
 }
 @media (min-width: 35em) {
-    .card-deck-col .card {
+    .card-deck-col > .card {
         width: calc(50% - 2rem);
     }
 }
 @media (min-width: 62em) {
-    .card-deck-col .card {
+    .card-deck-col > .card {
         width: calc(25% - 2rem);
     }
 }

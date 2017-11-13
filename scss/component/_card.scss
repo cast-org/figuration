@@ -169,7 +169,7 @@
             flex-flow: row wrap;
             margin-bottom: $card-spacer-y; // 1
 
-            .card {
+            > .card {
                 // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
                 flex: 1 0 0%;
                 margin-bottom: 0; // 1
@@ -186,7 +186,7 @@
                 margin-right: -($gutter / 2);
                 margin-left: -($gutter / 2);
 
-                .card {
+                > .card {
                     margin-right: ($gutter / 2);
                     margin-left: ($gutter / 2);
                 }
@@ -221,7 +221,7 @@
             flex-flow: row wrap;
             margin-bottom: $card-spacer-y; // 1
 
-            .card {
+            > .card {
                 // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
                 flex: 1 0 0%;
                 margin-bottom: 0; // 1
@@ -285,7 +285,7 @@
             column-count: $card-columns-count;
             column-gap: $card-columns-column-gap;
 
-            .card {
+            > .card {
                 display: inline-table;
                 width: 100%; // Don't let them exceed the column width
                 break-inside: avoid;
