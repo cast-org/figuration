@@ -471,7 +471,7 @@
                 this.$sliderSeek.CFW_Slider({
                     min: 0,
                     max: this.media.duration,
-                    step: 0.5
+                    step: 1 // 1-second step
                 });
                 this.$sliderSeek.on('slid.cfw.slider', function() {
                     var newTime = $(this).data('cfw.slider').val0;
@@ -590,7 +590,7 @@
                 this.$volSeek.CFW_Slider({
                     min: 0,
                     max: 1,
-                    step: 0.01
+                    step: 0.05  // 5% increment
                 });
                 this.$volSeek.on('slid.cfw.slider', function() {
                     var newVol = parseFloat($(this).data('cfw.slider').val0);
