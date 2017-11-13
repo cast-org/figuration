@@ -1082,7 +1082,7 @@ h4 > code {
   margin-right: -1rem;
 }
 
-.card-deck-col .card {
+.card-deck-col > .card {
   -ms-flex-preferred-size: auto;
       flex-basis: auto;
   width: calc(100% - 2rem);
@@ -1092,13 +1092,13 @@ h4 > code {
 }
 
 @media (min-width: 35em) {
-  .card-deck-col .card {
+  .card-deck-col > .card {
     width: calc(50% - 2rem);
   }
 }
 
 @media (min-width: 62em) {
-  .card-deck-col .card {
+  .card-deck-col > .card {
     width: calc(25% - 2rem);
   }
 }
