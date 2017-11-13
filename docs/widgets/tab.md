@@ -203,7 +203,7 @@ You can activate individual tabs in several ways:
 $('#myTab a[href="#profile"]').CFW_Tab('show'); // Select tab by name
 $('#myTab a:first').CFW_Tab('show');            // Select first tab
 $('#myTab a:last').CFW_Tab('show');             // Select last tab
-$('#myTab li:eq(2) a').CFW_Tab('show');         // Select third tab (0-indexed)
+$('#myTab a:nth-child(3)').CFW_Tab('show')      // Select third tab
 {% endhighlight %}
 
 ### Options
