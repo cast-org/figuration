@@ -20,10 +20,7 @@
         this.$thumbMax = null;
 
         this.$inputMin = null;
-        this.labelMinTxt = '';
-
         this.$inputMax = null;
-        this.labelMaxTxt = '';
 
         this.ordinal = false;
         this.range = false;
@@ -104,7 +101,9 @@
             var slider = document.createElement('div');
             this.$slider = $(slider).addClass('slider');
             if (this.settings.vertical) {
-                $(slider).addClass('slider-vertical');
+                $(slider)
+                    .attr('aria-orientation', 'vertical')
+                    .addClass('slider-vertical');
             } else {
                 $(slider).addClass('slider-horizontal');
             }
@@ -118,28 +117,26 @@
 
             /* Thumb/handle elements */
             var $labelMin = this._getLabel(this.$inputMin);
-            var labelMinID = $labelMin.CFW_getID('cfw-slider');
-            this.labelMinTxt = $labelMin.text();
+            var labelMinTxt = $labelMin.text();
 
             var thumbMin = document.createElement('div');
             this.$thumbMin = $(thumbMin).addClass('slider-thumb slider-thumb-min')
                 .attr({
                     'role': 'slider',
                     'tabindex': -1,
-                    'aria-labelledby': labelMinID
+                    'aria-label': labelMinTxt
                 });
 
             if (this.range) {
                 var $labelMax = this._getLabel(this.$inputMax);
-                var labelMaxID = $labelMax.CFW_getID('cfw-slider');
-                this.labelMaxTxt = $labelMax.text();
+                var labelMaxTxt = $labelMax.text();
 
                 var thumbMax = document.createElement('div');
                 this.$thumbMax = $(thumbMax).addClass('slider-thumb slider-thumb-max')
                     .attr({
                         'role': 'slider',
                         'tabindex': -1,
-                        'aria-labelledby': labelMaxID
+                        'aria-label': labelMaxTxt
                     });
 
                 this.$thumbMin.attr('aria-controls', this.$thumbMax.CFW_getID('cfw-slider'));
@@ -239,9 +236,9 @@
         },
 
         updateLabels : function() {
-            this.$thumbMin.attr('aria-valuetext', this.labelMinTxt + ' ' + this.$inputMin.val());
+            this.$thumbMin.attr('aria-valuetext', this.$inputMin.val());
             if (this.range) {
-                this.$thumbMax.attr('aria-valuetext', this.labelMaxTxt + ' ' + this.$inputMax.val());
+                this.$thumbMax.attr('aria-valuetext', this.$inputMax.val());
             }
         },
 
@@ -495,9 +492,7 @@
             this.$thumbMin = null;
             this.$thumbMax = null;
             this.$inputMin = null;
-            this.labelMinTxt = null;
             this.$inputMax = null;
-            this.labelMaxTxt = null;
             this.ordinal = null;
             this.range = null;
             this.val0 = null;
