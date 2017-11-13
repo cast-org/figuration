@@ -56,7 +56,7 @@ A horizontal variant of a collapse can be invoked by placing a class of `width` 
 
 {% example html %}
 <button type="button" class="btn btn-outline-primary" data-cfw="collapse" data-cfw-collapse-target="#collapseEx2" data-cfw-collapse-horizontal="true">Collapse <span class="caret"></span></button>
-<div id="collapseEx2" class="collapse width" >
+<div id="collapseEx2" class="collapse width">
     <div style="width: 20em">
         <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem.</p>
     </div>
