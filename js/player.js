@@ -610,6 +610,10 @@
             } else {
                 this.$volSeek.CFW_Slider('changeValue', 0, $inputElm, true);
             }
+
+            // Alter volume slider label to percentage
+            var level = parseInt($selfRef.media.volume * 100, 10);
+            $selfRef.$volSeek.find('.slider-thumb').attr('aria-valuetext', level + '%');
         },
 
         volumeIncrement : function(delta) {
