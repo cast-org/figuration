@@ -203,3 +203,7 @@ $('#myCollapse').on('afterHide.cfw.collapse', function () {
   // do something...
 });
 {% endhighlight %}
+
+## Accessibility
+
+If the control element's HTML element is not a button (e.g., an `<a>` or `<div>`), the attribute `role="button"` should be added to the element.
