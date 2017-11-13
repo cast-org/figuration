@@ -4783,10 +4783,7 @@ if (typeof jQuery === 'undefined') {
         this.$thumbMax = null;
 
         this.$inputMin = null;
-        this.labelMinTxt = '';
-
         this.$inputMax = null;
-        this.labelMaxTxt = '';
 
         this.ordinal = false;
         this.range = false;
@@ -4867,7 +4864,9 @@ if (typeof jQuery === 'undefined') {
             var slider = document.createElement('div');
             this.$slider = $(slider).addClass('slider');
             if (this.settings.vertical) {
-                $(slider).addClass('slider-vertical');
+                $(slider)
+                    .attr('aria-orientation', 'vertical')
+                    .addClass('slider-vertical');
             } else {
                 $(slider).addClass('slider-horizontal');
             }
@@ -4881,28 +4880,26 @@ if (typeof jQuery === 'undefined') {
 
             /* Thumb/handle elements */
             var $labelMin = this._getLabel(this.$inputMin);
-            var labelMinID = $labelMin.CFW_getID('cfw-slider');
-            this.labelMinTxt = $labelMin.text();
+            var labelMinTxt = $labelMin.text();
 
             var thumbMin = document.createElement('div');
             this.$thumbMin = $(thumbMin).addClass('slider-thumb slider-thumb-min')
                 .attr({
                     'role': 'slider',
                     'tabindex': -1,
-                    'aria-labelledby': labelMinID
+                    'aria-label': labelMinTxt
                 });
 
             if (this.range) {
                 var $labelMax = this._getLabel(this.$inputMax);
-                var labelMaxID = $labelMax.CFW_getID('cfw-slider');
-                this.labelMaxTxt = $labelMax.text();
+                var labelMaxTxt = $labelMax.text();
 
                 var thumbMax = document.createElement('div');
                 this.$thumbMax = $(thumbMax).addClass('slider-thumb slider-thumb-max')
                     .attr({
                         'role': 'slider',
                         'tabindex': -1,
-                        'aria-labelledby': labelMaxID
+                        'aria-label': labelMaxTxt
                     });
 
                 this.$thumbMin.attr('aria-controls', this.$thumbMax.CFW_getID('cfw-slider'));
@@ -5002,9 +4999,9 @@ if (typeof jQuery === 'undefined') {
         },
 
         updateLabels : function() {
-            this.$thumbMin.attr('aria-valuetext', this.labelMinTxt + ' ' + this.$inputMin.val());
+            this.$thumbMin.attr('aria-valuetext', this.$inputMin.val());
             if (this.range) {
-                this.$thumbMax.attr('aria-valuetext', this.labelMaxTxt + ' ' + this.$inputMax.val());
+                this.$thumbMax.attr('aria-valuetext', this.$inputMax.val());
             }
         },
 
@@ -5258,9 +5255,7 @@ if (typeof jQuery === 'undefined') {
             this.$thumbMin = null;
             this.$thumbMax = null;
             this.$inputMin = null;
-            this.labelMinTxt = null;
             this.$inputMax = null;
-            this.labelMaxTxt = null;
             this.ordinal = null;
             this.range = null;
             this.val0 = null;
@@ -5982,7 +5977,7 @@ if (typeof jQuery === 'undefined') {
                 this.$sliderSeek.CFW_Slider({
                     min: 0,
                     max: this.media.duration,
-                    step: 0.5
+                    step: 1 // 1-second step
                 });
                 this.$sliderSeek.on('slid.cfw.slider', function() {
                     var newTime = $(this).data('cfw.slider').val0;
@@ -6101,7 +6096,7 @@ if (typeof jQuery === 'undefined') {
                 this.$volSeek.CFW_Slider({
                     min: 0,
                     max: 1,
-                    step: 0.01
+                    step: 0.05  // 5% increment
                 });
                 this.$volSeek.on('slid.cfw.slider', function() {
                     var newVol = parseFloat($(this).data('cfw.slider').val0);
@@ -6121,6 +6116,10 @@ if (typeof jQuery === 'undefined') {
             } else {
                 this.$volSeek.CFW_Slider('changeValue', 0, $inputElm, true);
             }
+
+            // Alter volume slider label to percentage
+            var level = parseInt($selfRef.media.volume * 100, 10);
+            $selfRef.$volSeek.find('.slider-thumb').attr('aria-valuetext', level + '%');
         },
 
         volumeIncrement : function(delta) {
