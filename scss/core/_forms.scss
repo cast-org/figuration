@@ -62,7 +62,7 @@
 }
 
 select.form-control {
-    &[size],
+    &[size]:not([size="1"]),
     &[multiple] {
         height: auto;
     }

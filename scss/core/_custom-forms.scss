@@ -166,6 +166,7 @@
         }
     }
 
+    &[size]:not([size="1"]),
     &[multiple] {
         height: auto;
         background-image: none;
