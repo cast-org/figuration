@@ -31,11 +31,12 @@ function addClipboard() {
     $('.highlight').each(function() {
         var btnHtml = '<div class="cf-clipboard"><button type="button" class="btn btn-sm btn-secondary btn-clipboard" title="Copy to clipboard">Copy</button></div>';
         $(this).before(btnHtml);
-        $('.btn-clipboard')
-            .CFW_Tooltip({
-                'animate': false
-            });
     });
+
+    $('.btn-clipboard')
+        .CFW_Tooltip({
+            'animate': false
+        });
 
     var clipboard = new Clipboard('.btn-clipboard', {
         target: function(trigger) {
