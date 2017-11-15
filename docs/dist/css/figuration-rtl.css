@@ -914,7 +914,7 @@ pre code {
   cursor: not-allowed;
 }
 
-select.form-control[size], select.form-control[multiple] {
+select.form-control[size]:not([size="1"]), select.form-control[multiple] {
   height: auto;
 }
 
@@ -1430,7 +1430,7 @@ fieldset[disabled] .form-check-label {
   background-color: #fff;
 }
 
-.custom-select[multiple] {
+.custom-select[size]:not([size="1"]), .custom-select[multiple] {
   height: auto;
   background-image: none;
 }
@@ -4059,27 +4059,33 @@ button.list-group-item-danger.active {
   border-radius: 0.25rem;
 }
 
+.page-item:first-child .page-text,
 .page-item:first-child .page-link {
   margin-right: 0;
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
 }
 
+.page-item:last-child .page-text,
 .page-item:last-child .page-link {
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
 }
 
+.page-text,
 .page-link {
-  position: relative;
   display: block;
   padding: 0.375rem 0.75rem;
   margin-right: -1px;
   line-height: 1.25;
-  color: #1242ba;
-  text-decoration: none;
   background-color: #fff;
   border: 1px solid #a3a3a3;
+}
+
+.page-link {
+  position: relative;
+  color: #1242ba;
+  text-decoration: none;
 }
 
 .page-link:hover {
@@ -4107,61 +4113,73 @@ button.list-group-item-danger.active {
   background-color: transparent;
 }
 
+.pagination-xs .page-text,
 .pagination-xs .page-link {
   padding: 0.1875rem 0.375rem;
   font-size: 0.75rem;
 }
 
+.pagination-xs .page-item:first-child .page-text,
 .pagination-xs .page-item:first-child .page-link {
   border-top-right-radius: 0.1875rem;
   border-bottom-right-radius: 0.1875rem;
 }
 
+.pagination-xs .page-item:last-child .page-text,
 .pagination-xs .page-item:last-child .page-link {
   border-top-left-radius: 0.1875rem;
   border-bottom-left-radius: 0.1875rem;
 }
 
+.pagination-sm .page-text,
 .pagination-sm .page-link {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
 }
 
+.pagination-sm .page-item:first-child .page-text,
 .pagination-sm .page-item:first-child .page-link {
   border-top-right-radius: 0.1875rem;
   border-bottom-right-radius: 0.1875rem;
 }
 
+.pagination-sm .page-item:last-child .page-text,
 .pagination-sm .page-item:last-child .page-link {
   border-top-left-radius: 0.1875rem;
   border-bottom-left-radius: 0.1875rem;
 }
 
+.pagination-lg .page-text,
 .pagination-lg .page-link {
   padding: 0.5rem 1.125rem;
   font-size: 1.125rem;
 }
 
+.pagination-lg .page-item:first-child .page-text,
 .pagination-lg .page-item:first-child .page-link {
   border-top-right-radius: 0.3125rem;
   border-bottom-right-radius: 0.3125rem;
 }
 
+.pagination-lg .page-item:last-child .page-text,
 .pagination-lg .page-item:last-child .page-link {
   border-top-left-radius: 0.3125rem;
   border-bottom-left-radius: 0.3125rem;
 }
 
+.pagination-xl .page-text,
 .pagination-xl .page-link {
   padding: 0.625rem 1.25rem;
   font-size: 1.25rem;
 }
 
+.pagination-xl .page-item:first-child .page-text,
 .pagination-xl .page-item:first-child .page-link {
   border-top-right-radius: 0.3125rem;
   border-bottom-right-radius: 0.3125rem;
 }
 
+.pagination-xl .page-item:last-child .page-text,
 .pagination-xl .page-item:last-child .page-link {
   border-top-left-radius: 0.3125rem;
   border-bottom-left-radius: 0.3125rem;
