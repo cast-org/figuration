@@ -2578,13 +2578,10 @@ if (typeof jQuery === 'undefined') {
 
             this.inTransition = false;
 
-            // Delay to keep NVDA (and other screen readers?) from reading dialog header twice
-            setTimeout(function() {
-                // Handle case of immediate dispose after show
-                if ($selfRef.$element) {
-                    $selfRef.$element.attr('aria-describedby', $selfRef.targetID);
-                }
-            }, 25);
+            // Handle case of immediate dispose after show
+            if ($selfRef.$element) {
+                $selfRef.$element.attr('aria-describedby', $selfRef.targetID);
+            }
 
             if (!this.activate) {
                 this.$element.CFW_trigger('afterShow.cfw.' + this.type);
