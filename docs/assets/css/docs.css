@@ -1050,11 +1050,11 @@ h4 > code {
 }
 
 .custom-file-control:lang(en):empty::after {
-  content: "Choose file...";
+  content: "Browse";
 }
 
 .custom-file-control:lang(es):empty::after {
-  content: "Seleccionar archivo...";
+  content: "Navegar";
 }
 
 .custom-file-control:lang(en):empty::after {
