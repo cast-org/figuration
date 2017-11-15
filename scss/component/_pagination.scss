@@ -7,28 +7,34 @@
 
 .page-item {
     &:first-child {
+        .page-text,
         .page-link {
             margin-left: 0;
             @include border-start-radius($pagination-border-radius);
         }
     }
     &:last-child {
+        .page-text,
         .page-link {
             @include border-end-radius($pagination-border-radius);
         }
     }
 }
 
+.page-text,
 .page-link {
-    position: relative;
     display: block;
     padding: $pagination-padding-y $pagination-padding-x;
     margin-left: -$pagination-border-width;
     line-height: $pagination-line-height;
-    color: $pagination-color;
-    text-decoration: none;
     background-color: $pagination-bg;
     border: $pagination-border-width solid $pagination-border-color;
+}
+
+.page-link {
+    position: relative;
+    color: $pagination-color;
+    text-decoration: none;
 
     &:hover {
         z-index: 1;

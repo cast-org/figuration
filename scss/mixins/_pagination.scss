@@ -1,5 +1,6 @@
 // Pagination
 @mixin pagination-size($padding-y, $padding-x, $font-size, $border-radius) {
+    .page-text,
     .page-link {
         padding: $padding-y $padding-x;
         font-size: $font-size;
@@ -7,11 +8,13 @@
 
     .page-item {
         &:first-child {
+            .page-text,
             .page-link {
                 @include border-start-radius($border-radius);
             }
         }
         &:last-child {
+            .page-text,
             .page-link {
                 @include border-end-radius($border-radius);
             }
