@@ -58,6 +58,10 @@
     min-height: 100%;
     margin-top: 0;
     margin-bottom: 0;
+
+    .modal-content {
+        margin: $modal-dialog-margin;
+    }
 }
 
 // Actual modal
