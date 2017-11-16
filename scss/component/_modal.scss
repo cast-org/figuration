@@ -55,7 +55,7 @@
 .modal-dialog-centered {
     display: flex;
     align-items: center;
-    height: 100%;
+    min-height: 100%;
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -138,6 +138,11 @@
     .modal-dialog-centered {
         margin-top: 0;
         margin-bottom: 0;
+
+        .modal-content {
+            margin-top: $modal-dialog-sm-up-margin-y;
+            margin-bottom: $modal-dialog-sm-up-margin-y;
+        }
     }
 
     .modal-content {
