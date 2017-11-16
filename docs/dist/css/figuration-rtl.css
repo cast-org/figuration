@@ -6449,6 +6449,10 @@ a.badge:focus, a.badge:hover {
   margin-bottom: 0;
 }
 
+.modal-dialog-centered .modal-content {
+  margin: 0.625rem;
+}
+
 .modal-content {
   position: relative;
   width: 100%;
