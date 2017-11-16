@@ -6444,7 +6444,7 @@ a.badge:focus, a.badge:hover {
   display: flex;
   -ms-flex-align: center;
       align-items: center;
-  height: 100%;
+  min-height: 100%;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -6528,6 +6528,10 @@ a.badge:focus, a.badge:hover {
   .modal-dialog-centered {
     margin-top: 0;
     margin-bottom: 0;
+  }
+  .modal-dialog-centered .modal-content {
+    margin-top: 1.875rem;
+    margin-bottom: 1.875rem;
   }
   .modal-sm {
     max-width: 19rem;
