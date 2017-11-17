@@ -5,6 +5,15 @@ $(function() {
         before: function() {
             // Simulate scrollbars in PhantomJS
             $('html').css('padding-right', '16px');
+        },
+        afterEach: function() {
+            $('#modal, .modal-backdrop').remove();
+            $(document.body)
+                .removeAttr('style')
+                .removeClass('modal-open');
+        },
+        after: function() {
+            $('html').removeAttr('style');
         }
     });
 
@@ -622,7 +631,9 @@ $(function() {
                 $(this).CFW_Modal('hide');
 
                 // restore scrollbars
-                $body.css('overflow', 'auto');
+                $body
+                    .css('overflow', '')
+                    .removeAttr('style');
                 $('html').css('padding-right', '16px');
                 done();
             });
@@ -635,7 +646,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var $toggleBtn = $('<button data-cfw="modal" data-cfw-modal-target="&lt;div id=&quot;modal-test&quot;&gt;&lt;div class=&quot;contents&quot;&lt;div&lt;div id=&quot;close&quot; data-cfw-dismiss=&quot;modal&quot;/&gt;&lt;/div&gt;&lt;/div&gt;"/>')
+        var $toggleBtn = $('<button data-cfw="modal" data-cfw-modal-target="&lt;div id=&quot;modal&quot;&gt;&lt;div class=&quot;contents&quot;&lt;div&lt;div id=&quot;close&quot; data-cfw-dismiss=&quot;modal&quot;/&gt;&lt;/div&gt;&lt;/div&gt;"/>')
             .appendTo('#qunit-fixture');
 
         $toggleBtn
@@ -643,7 +654,7 @@ $(function() {
             .trigger('click');
 
         setTimeout(function() {
-            assert.strictEqual($('#modal-test').length, 0, 'target has not been parsed and added to the document');
+            assert.strictEqual($('#modal').length, 0, 'target has not been parsed and added to the document');
             done();
         }, 1);
     });
