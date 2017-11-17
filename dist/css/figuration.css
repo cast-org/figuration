@@ -6450,7 +6450,8 @@ a.badge:focus, a.badge:hover {
 }
 
 .modal-dialog-centered .modal-content {
-  margin: 0.625rem;
+  margin-top: 0.625rem;
+  margin-bottom: 0.625rem;
 }
 
 .modal-content {
