@@ -60,7 +60,8 @@
     margin-bottom: 0;
 
     .modal-content {
-        margin: $modal-dialog-margin;
+        margin-top: $modal-dialog-margin;
+        margin-bottom: $modal-dialog-margin;
     }
 }
 
