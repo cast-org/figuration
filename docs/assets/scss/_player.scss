@@ -159,6 +159,7 @@
 }
 .player-script-scroll-check .player-script-scroll-check-icon::before {
     display: block;
+    // stylelint-disable-next-line font-family-no-missing-generic-family-keyword
     font-family: FontAwesome;
     color: #d9534f;
     content: "\f00d";
@@ -186,11 +187,7 @@
 .player-notime .player-seek,
 .player-live .player-time-duration,
 .player-live .player-seek {
-    font: 0/0 a;
-    color: transparent;
-    text-shadow: none;
-    background-color: transparent;
-    border: 0;
+    @include text-hide();
 }
 
 .player-transcript {
@@ -231,6 +228,7 @@
     padding: 2px 7px 3px;
     margin-top: -35px;
     margin-left: -35px;
+    // stylelint-disable-next-line font-family-no-missing-generic-family-keyword
     font-family: FontAwesome;
     font-size: 66px;
     line-height: 1;

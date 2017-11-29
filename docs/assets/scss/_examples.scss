@@ -391,6 +391,7 @@ $custom-file-text: (
     > .heading {
         width: 3rem;
         height: 3rem;
+        // stylelint-disable-next-line font-family-no-missing-generic-family-keyword
         font: 0/0 a;
         color: transparent;
         text-shadow: none;
