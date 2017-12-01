@@ -319,7 +319,7 @@ $(function() {
                     return $('#popover').text();
                 }
             })
-            .on('afterShow.cfw.popover', function () {
+            .on('afterShow.cfw.popover', function() {
                 assert.strictEqual(count, 1);
                 done();
             });

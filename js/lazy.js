@@ -73,7 +73,7 @@
         isVisible : function() {
             // Normalize on using the newer jQuery 3 visibility method
             var elem = this.$element[0];
-            return !!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length );
+            return !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
         },
 
         inViewport : function() {
