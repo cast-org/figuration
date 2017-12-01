@@ -20,6 +20,16 @@
         if (callback) { callback(); }
     }
 
+    function escapeId(selector) {
+        // Escape IDs in case of special selectors (selector = '#myId:something')
+        // $.escapeSelector does not exist in jQuery < 3
+        selector = typeof $.escapeSelector === 'function' ?
+            $.escapeSelector(selector).substr(1) :
+            selector.replace(/(:|\.|\[|\]|,|=|@)/g, '\\$1');
+
+        return selector;
+    }
+
     // =====
     // TransitionEnd support/emulation
     // =====
@@ -285,6 +295,11 @@
             selector = $node.attr('href') || '';
         }
 
+        // If selector is an ID
+        if (selector.charAt(0) === '#') {
+            selector = escapeId(selector);
+        }
+
         try {
             var $selector = $(document).find(selector);
             return $selector.length > 0 ? selector : null;
@@ -297,6 +312,11 @@
         var $node = $(this);
         if (!setting || setting === '#') {
             return $node.CFW_getSelectorFromElement();
+        }
+
+        // If selector is an ID
+        if (setting.charAt(0) === '#') {
+            setting = escapeId(setting);
         }
 
         try {
