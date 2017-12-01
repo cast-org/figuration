@@ -70,8 +70,14 @@
             if (checkInitViewport && this.inViewport()) { this.show(); }
         },
 
+        isVisible : function() {
+            // Normalize on using the newer jQuery 3 visibility method
+            var elem = this.$element[0];
+            return !!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length );
+        },
+
         inViewport : function() {
-            if (!this.settings.invisible && !this.$element.is(':visible')) {
+            if (!this.settings.invisible && !this.isVisible) {
                 return false;
             }
             return (!this.belowFold() && !this.afterRight() && !this.aboveTop() && !this.beforeLeft());
