@@ -302,4 +302,28 @@ $(function() {
             })
             .CFW_Popover('show');
     });
+
+    QUnit.test('popover should call content function only once', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        var count = 0;
+
+        $('<div id="popover" style="display:none">content</div>')
+            .appendTo('#qunit-fixture');
+
+        var $popover = $('<a href="#" title="popover title">Popover</a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Popover({
+                content: function() {
+                    count++;
+                    return $('#popover').text();
+                }
+            })
+            .on('afterShow.cfw.popover', function () {
+                assert.strictEqual(count, 1);
+                done();
+            });
+
+        $popover.trigger($.Event('click'));
+    });
 });
