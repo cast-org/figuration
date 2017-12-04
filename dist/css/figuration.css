@@ -3695,10 +3695,6 @@ button.list-group-item-danger.active {
   margin-left: 0;
 }
 
-.btn-group > .btn-group {
-  float: left;
-}
-
 .btn-group > .btn:not(:last-child):not(.dropdown-toggle),
 .btn-group > .btn-group:not(:last-child) > .btn {
   border-top-right-radius: 0;

@@ -41,6 +41,16 @@ if (typeof jQuery === 'undefined') {
         if (callback) { callback(); }
     }
 
+    function escapeId(selector) {
+        // Escape IDs in case of special selectors (selector = '#myId:something')
+        // $.escapeSelector does not exist in jQuery < 3
+        selector = typeof $.escapeSelector === 'function' ?
+            $.escapeSelector(selector).substr(1) :
+            selector.replace(/(:|\.|\[|\]|,|=|@)/g, '\\$1');
+
+        return selector;
+    }
+
     // =====
     // TransitionEnd support/emulation
     // =====
@@ -306,6 +316,11 @@ if (typeof jQuery === 'undefined') {
             selector = $node.attr('href') || '';
         }
 
+        // If selector is an ID
+        if (selector.charAt(0) === '#') {
+            selector = escapeId(selector);
+        }
+
         try {
             var $selector = $(document).find(selector);
             return $selector.length > 0 ? selector : null;
@@ -318,6 +333,11 @@ if (typeof jQuery === 'undefined') {
         var $node = $(this);
         if (!setting || setting === '#') {
             return $node.CFW_getSelectorFromElement();
+        }
+
+        // If selector is an ID
+        if (setting.charAt(0) === '#') {
+            setting = escapeId(setting);
         }
 
         try {
@@ -4633,8 +4653,14 @@ if (typeof jQuery === 'undefined') {
             if (checkInitViewport && this.inViewport()) { this.show(); }
         },
 
+        isVisible : function() {
+            // Normalize on using the newer jQuery 3 visibility method
+            var elem = this.$element[0];
+            return !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
+        },
+
         inViewport : function() {
-            if (!this.settings.invisible && !this.$element.is(':visible')) {
+            if (!this.settings.invisible && !this.isVisible) {
                 return false;
             }
             return (!this.belowFold() && !this.afterRight() && !this.aboveTop() && !this.beforeLeft());
