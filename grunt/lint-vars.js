@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+/*jshint esversion: 6 */
+
 /*!
  * Script to find unused Sass variables.
  *
@@ -8,76 +10,76 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-'use strict'
+'use strict';
 
-const fs = require('fs')
-const path = require('path')
-const glob = require('glob')
+const fs = require('fs');
+const path = require('path');
+const glob = require('glob');
 
 // Blame TC39... https://github.com/benjamingr/RegExp.escape/issues/37
 function regExpQuote(str) {
-  return str.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
+    return str.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&');
 }
 
-let globalSuccess = true
+let globalSuccess = true;
 
 function findUnusedVars(dir) {
-  if (!(fs.existsSync(dir) && fs.statSync(dir).isDirectory())) {
-    console.log(`"${dir}": Not a valid directory!`)
-    process.exit(1)
-  }
-
-  console.log(`Finding unused variables in "${dir}"...`)
-
-  // A variable to handle success/failure message in this function
-  let unusedVarsFound = false
-
-  // Array of all Sass files' content
-  const sassFiles = glob.sync(path.join(dir, '**/*.scss'))
-  // String of all Sass files' content
-  let sassFilesString = ''
-
-  sassFiles.forEach((file) => {
-    sassFilesString += fs.readFileSync(file, 'utf8')
-  })
-
-  // Array of all Sass variables
-  const variables = sassFilesString.match(/(^\$[a-zA-Z0-9_-]+[^:])/gm)
-
-  console.log(`There's a total of ${variables.length} variables.`)
-
-  // Loop through each variable
-  variables.forEach((variable) => {
-    const re = new RegExp(regExpQuote(variable), 'g')
-    const count = (sassFilesString.match(re) || []).length
-
-    if (count === 1) {
-      console.log(`Variable "${variable}" is only used once!`)
-      unusedVarsFound = true
-      globalSuccess = false
+    if (!(fs.existsSync(dir) && fs.statSync(dir).isDirectory())) {
+        console.log(`"${dir}": Not a valid directory!`);
+        process.exit(1);
     }
-  })
 
-  if (unusedVarsFound === false) {
-    console.log(`No unused variables found in "${dir}".`)
-  }
+    console.log(`Finding unused variables in "${dir}"...`);
+
+    // A variable to handle success/failure message in this function
+    let unusedVarsFound = false;
+
+    // Array of all Sass files' content
+    const sassFiles = glob.sync(path.join(dir, '**/*.scss'));
+    // String of all Sass files' content
+    let sassFilesString = '';
+
+    sassFiles.forEach((file) => {
+        sassFilesString += fs.readFileSync(file, 'utf8');
+    });
+
+    // Array of all Sass variables
+    const variables = sassFilesString.match(/(^\$[a-zA-Z0-9_-]+[^:])/gm);
+
+    console.log(`There's a total of ${variables.length} variables.`);
+
+    // Loop through each variable
+    variables.forEach((variable) => {
+        const re = new RegExp(regExpQuote(variable), 'g');
+        const count = (sassFilesString.match(re) || []).length;
+
+        if (count === 1) {
+            console.log(`Variable "${variable}" is only used once!`);
+            unusedVarsFound = true;
+            globalSuccess = false;
+        }
+    });
+
+    if (unusedVarsFound === false) {
+        console.log(`No unused variables found in "${dir}".`);
+    }
 }
 
 function main(args) {
-  if (args.length < 1) {
-    console.log('Wrong arguments!')
-    console.log('Usage: lint-vars.js folder [, folder2...]')
-    process.exit(1)
-  }
+    if (args.length < 1) {
+        console.log('Wrong arguments!');
+        console.log('Usage: lint-vars.js folder [, folder2...]');
+        process.exit(1);
+    }
 
-  args.forEach((arg) => {
-    findUnusedVars(arg)
-  })
+    args.forEach((arg) => {
+        findUnusedVars(arg);
+    });
 
-  if (globalSuccess === false) {
-    process.exit(1)
-  }
+    if (globalSuccess === false) {
+        process.exit(1);
+    }
 }
 
 // The first and second args are: path/to/node script.js
-main(process.argv.slice(2))
+main(process.argv.slice(2));
