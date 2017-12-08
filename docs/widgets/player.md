@@ -9,7 +9,7 @@ group: widgets
 {% if site.github %}
   <link href="{{ site.cdn.fontawe }}" integrity="{{ site.cdn.fontawe_hash }}" crossorigin="anonymous" rel="stylesheet" property="stylesheet">
 {% else %}
-  <link href="{{ site.baseurl }}/assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" property="stylesheet">
+  <link href="{{ site.baseurl }}/assets/fonts/fontawesome/css/fontawesome-all.css" rel="stylesheet" property="stylesheet">
 {% endif %}
 
 Player is a way to enable customized controls while using the browser's built in HTML5 audio/video player.
@@ -51,7 +51,7 @@ Player does not support media services such as YouTube, Vimeo, SoundCloud, and o
 
 ## Examples
 
-The icons shown in the examples are from [Font Awesome](http://fontawesome.io/), and not included with Figuration.
+The icons shown in the examples are from [Font Awesome](http://fontawesome.com/), and not included with Figuration.
 
 ### Simple Audio Player
 
@@ -61,8 +61,8 @@ The icons shown in the examples are from [Font Awesome](http://fontawesome.io/),
 <div data-cfw="player">
     <div class="player" role="region" aria-label="audio player" data-cfw-player="player">
         <span class="player-control" data-cfw-player="control">
-            <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
-            <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
+            <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play" aria-hidden="true"></span></button>
+            <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause" aria-hidden="true"></span></button>
         </span>
         <span class="player-time" data-cfw-player="time">
             <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -72,10 +72,10 @@ The icons shown in the examples are from [Font Awesome](http://fontawesome.io/),
             <span class="player-time-duration" data-cfw-player="time-duration"></span>
         </span>
         <span class="player-mute" data-cfw-player="mute">
-            <button type="button" class="btn player-mute-on" title="Unmute" aria-label="Unmute"><span class="fa fa-fw fa-volume-off" aria-hidden="true"></span></button>
-            <button type="button" class="btn player-mute-off" title="Mute" aria-label="Mute"><span class="fa fa-fw fa-volume-up" aria-hidden="true"></span></button>
+            <button type="button" class="btn player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off" aria-hidden="true"></span></button>
+            <button type="button" class="btn player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up" aria-hidden="true"></span></button>
         </span>
-        <button type="button" class="btn" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fa fa-fw fa-refresh" aria-hidden="true"></span></button>
+        <button type="button" class="btn" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fas fa-fw fa-redo" aria-hidden="true"></span></button>
     </div>
     <audio controls>
         <source src="{{ site.baseurl }}/assets/audio/Drumroll-Heigh-hoo.mp3" type="audio/mpeg" />
@@ -94,9 +94,9 @@ Available seek and volume sliders.
 <div data-cfw="player">
     <div class="player" role="region" aria-label="audio player" data-cfw-player="player">
         <span class="player-control" data-cfw-player="control">
-            <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
-            <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
-            <button type="button" class="btn" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop" aria-hidden="true"></span></button>
+            <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play" aria-hidden="true"></span></button>
+            <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause" aria-hidden="true"></span></button>
+            <button type="button" class="btn" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop" aria-hidden="true"></span></button>
         </span>
         <span class="player-time" data-cfw-player="time">
             <span class="player-time-remainder" data-cfw-player="time-remainder"></span>
@@ -106,13 +106,13 @@ Available seek and volume sliders.
             <span class="player-time-duration" data-cfw-player="time-duration"></span>
         </span>
         <span class="player-mute" data-cfw-player="mute">
-            <button type="button" class="btn player-mute-on" title="Unmute" aria-label="Unmute"><span class="fa fa-fw fa-volume-off" aria-hidden="true"></span></button>
-            <button type="button" class="btn player-mute-off" title="Mute" aria-label="Mute"><span class="fa fa-fw fa-volume-up" aria-hidden="true"></span></button>
+            <button type="button" class="btn player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off" aria-hidden="true"></span></button>
+            <button type="button" class="btn player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up" aria-hidden="true"></span></button>
         </span>
         <span class="player-volume" data-cfw-player="volume">
             <label>Volume slider<input type="text" /></label>
         </span>
-        <button type="button" class="btn" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fa fa-fw fa-refresh"></span></button>
+        <button type="button" class="btn" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fas fa-fw fa-redo"></span></button>
     </div>
     <audio controls>
         <source src="{{ site.baseurl }}/assets/audio/Ambient_Acoustic-StrangerEight.mp3" type="audio/mpeg" />
@@ -140,9 +140,9 @@ Available seek and volume sliders.
         <div class="player row" role="region" aria-label="video player" data-cfw-player="player">
             <div class="col-md-6">
                 <span class="player-control" data-cfw-player="control">
-                    <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
-                    <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
-                    <button type="button" class="btn" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop" aria-hidden="true"></span></button>
+                    <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play" aria-hidden="true"></span></button>
+                    <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause" aria-hidden="true"></span></button>
+                    <button type="button" class="btn" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop" aria-hidden="true"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -154,17 +154,17 @@ Available seek and volume sliders.
             </div>
             <div class="col-md-6">
                 <span class="player-mute" data-cfw-player="mute">
-                    <button type="button" class="btn player-mute-on" title="Unmute" aria-label="Unmute"><span class="fa fa-fw fa-volume-off" aria-hidden="true"></span></button>
-                    <button type="button" class="btn player-mute-off" title="Mute" aria-label="Mute"><span class="fa fa-fw fa-volume-up" aria-hidden="true"></span></button>
+                    <button type="button" class="btn player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off" aria-hidden="true"></span></button>
+                    <button type="button" class="btn player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up" aria-hidden="true"></span></button>
                 </span>
                 <span class="player-volume" data-cfw-player="volume">
                     <label>Volume slider<input type="text" /></label>
                 </span>
-                <button type="button" class="btn" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fa fa-fw fa-refresh" aria-hidden="true"></span></button>
-                <button type="button" class="btn" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fa fa-fw fa-cc" aria-hidden="true"></span></button>
+                <button type="button" class="btn" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fas fa-fw fa-redo" aria-hidden="true"></span></button>
+                <button type="button" class="btn" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fas fa-fw fa-closed-captioning" aria-hidden="true"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
-                    <button type="button" class="btn player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
-                    <button type="button" class="btn player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
+                    <button type="button" class="btn player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
+                    <button type="button" class="btn player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
                 </span>
             </div>
         </div>
@@ -192,9 +192,9 @@ Add an interactive transcript to your video using the `transcript` control.  The
         <div class="player row" role="region" aria-label="video player" data-cfw-player="player">
             <div class="col-md-6">
                 <span class="player-control" data-cfw-player="control">
-                    <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
-                    <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
-                    <button type="button" class="btn" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop" aria-hidden="true"></span></button>
+                    <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play" aria-hidden="true"></span></button>
+                    <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause" aria-hidden="true"></span></button>
+                    <button type="button" class="btn" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop" aria-hidden="true"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -206,17 +206,17 @@ Add an interactive transcript to your video using the `transcript` control.  The
             </div>
             <div class="col-md-6">
                 <span class="player-mute" data-cfw-player="mute">
-                    <button type="button" class="btn player-mute-on" title="Unmute" aria-label="Unmute"><span class="fa fa-fw fa-volume-off" aria-hidden="true"></span></button>
-                    <button type="button" class="btn player-mute-off" title="Mute" aria-label="Mute"><span class="fa fa-fw fa-volume-up" aria-hidden="true"></span></button>
+                    <button type="button" class="btn player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off" aria-hidden="true"></span></button>
+                    <button type="button" class="btn player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up" aria-hidden="true"></span></button>
                 </span>
                 <span class="player-volume" data-cfw-player="volume">
                     <label>Volume slider<input type="text" /></label>
                 </span>
-                <button type="button" class="btn" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fa fa-fw fa-cc" aria-hidden="true"></span></button>
-                <button type="button" class="btn" data-cfw-player="transcript" title="Transcript captions" aria-label="Closed captions"><span class="fa fa-fw fa-file-text-o" aria-hidden="true"></span></button>
+                <button type="button" class="btn" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fas fa-fw fa-closed-captioning" aria-hidden="true"></span></button>
+                <button type="button" class="btn" data-cfw-player="transcript" title="Transcript captions" aria-label="Closed captions"><span class="far fa-fw fa-file-alt" aria-hidden="true"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
-                    <button type="button" class="btn player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
-                    <button type="button" class="btn player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
+                    <button type="button" class="btn player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
+                    <button type="button" class="btn player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
                 </span>
             </div>
         </div>
@@ -238,8 +238,8 @@ Improve accessibility for blind and visually impaired users by including an audi
     <div class="player-wrapper">
         <div class="player" data-cfw-player="player">
             <span class="player-control me-0_5" data-cfw-player="control">
-                <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
             </span>
             <span class="player-time me-0_5" data-cfw-player="time">
                 <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -249,8 +249,8 @@ Improve accessibility for blind and visually impaired users by including an audi
                 <span class="player-time-duration" data-cfw-player="time-duration"></span>
             </span>
             <span class="player-describe" data-cfw-player="description">
-                <button type="button" class="btn btn-default on active" title="Turn Off Audio Description" aria-label="Turn Off Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
-                <button type="button" class="btn btn-default off" title="Turn On Audio Description" aria-label="Turn On Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
+                <button type="button" class="btn btn-default on active" title="Turn Off Audio Description" aria-label="Turn Off Audio Description"><span class="fas fa-fw fa-audio-description"></span></button>
+                <button type="button" class="btn btn-default off" title="Turn On Audio Description" aria-label="Turn On Audio Description"><span class="fas fa-fw fa-audio-description"></span></button>
             </span>
         </div>
     </div>
@@ -275,8 +275,8 @@ Further improve accessibility for blind and visually impaired users by including
     <div class="player-wrapper">
         <div class="player" data-cfw-player="player">
             <span class="player-control me-0_5" data-cfw-player="control">
-                <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
             </span>
             <span class="player-time me-0_5" data-cfw-player="time">
                 <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -286,11 +286,11 @@ Further improve accessibility for blind and visually impaired users by including
                 <span class="player-time-duration" data-cfw-player="time-duration"></span>
             </span>
             <span class="player-describe me-0_25" data-cfw-player="description">
-                <button type="button" class="btn btn-default on active" title="Turn Off Audio Description" aria-label="Turn Off Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
-                <button type="button" class="btn btn-default off" title="Turn On Audio Description" aria-label="Turn On Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
+                <button type="button" class="btn btn-default on active" title="Turn Off Audio Description" aria-label="Turn Off Audio Description"><span class="fas fa-fw fa-audio-description"></span></button>
+                <button type="button" class="btn btn-default off" title="Turn On Audio Description" aria-label="Turn On Audio Description"><span class="fas fa-fw fa-audio-description"></span></button>
             </span>
-            <button type="button" class="btn btn-default me-0_25" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fa fa-fw fa-cc"></span></button>
-            <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="fa fa-fw fa-file-text-o"></span></button>
+            <button type="button" class="btn btn-default me-0_25" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
+            <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
         </div>
     </div>
 </div>
@@ -314,8 +314,8 @@ Take control over how captions are displayed by adding a container with a `data-
     <div class="player-wrapper">
         <div class="player me-0_5" role="region" aria-label="video player" data-cfw-player="player">
             <span class="player-control " data-cfw-player="control">
-                <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play" aria-hidden="true"></span></button>
-                <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause" aria-hidden="true"></span></button>
+                <button type="button" class="btn" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play" aria-hidden="true"></span></button>
+                <button type="button" class="btn" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause" aria-hidden="true"></span></button>
             </span>
             <span class="player-time me-0_5" data-cfw-player="time">
                 <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -324,10 +324,10 @@ Take control over how captions are displayed by adding a container with a `data-
                 </span>
                 <span class="player-time-duration" data-cfw-player="time-duration"></span>
             </span>
-            <button type="button" class="btn  me-0_25" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fa fa-fw fa-cc" aria-hidden="true"></span></button>
+            <button type="button" class="btn  me-0_25" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fas fa-fw fa-closed-captioning" aria-hidden="true"></span></button>
             <span class="player-fullscreen" data-cfw-player="fullscreen">
-                <button type="button" class="btn player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
-                <button type="button" class="btn player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fa fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
+                <button type="button" class="btn player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
+                <button type="button" class="btn player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt" aria-hidden="true"></span></button>
             </span>
         </div>
     </div>
@@ -349,15 +349,15 @@ The player will use the settings of the `<audio>`/`<video>` element to determine
         Play / pause
     </dd>
     <dt>
-        <kbd title="up arrow" aria-label="up arrow"><span class="fa fa-arrow-up" aria-hidden="true"></span></kbd> /
-        <kbd title="down arrow" aria-label="down arrow"><span class="fa fa-arrow-down" aria-hidden="true"></span></kbd>
+        <kbd title="up arrow" aria-label="up arrow"><span class="fas fa-arrow-up" aria-hidden="true"></span></kbd> /
+        <kbd title="down arrow" aria-label="down arrow"><span class="fas fa-arrow-down" aria-hidden="true"></span></kbd>
     </dt>
     <dd>
         Raise or lower the volume in 5% increments
     </dd>
     <dt>
-        <kbd title="left arrow" aria-label="left arrow"><span class="fa fa-arrow-left" aria-hidden="true"></span></kbd> /
-        <kbd title="right arrow" aria-label="right arrow"><span class="fa fa-arrow-right" aria-hidden="true"></span></kbd>
+        <kbd title="left arrow" aria-label="left arrow"><span class="fas fa-arrow-left" aria-hidden="true"></span></kbd> /
+        <kbd title="right arrow" aria-label="right arrow"><span class="fas fa-arrow-right" aria-hidden="true"></span></kbd>
     </dt>
     <dd>
         Skip backwards or forwards in the timeline by 5 seconds

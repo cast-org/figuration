@@ -7,7 +7,7 @@
 <title>Figuration Widget: Player</title>
 
 <link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
-<link rel="stylesheet" href="../../docs/assets/fonts/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../docs/assets/fonts/fontawesome/css/fontawesome-all.min.css">
 
 <script type="text/javascript" src="../../docs/assets/js/vendor/jquery.min.js"></script>
 <script type="text/javascript" src="../../js/util.js"></script>
@@ -223,26 +223,7 @@ body {
 .player-script-wrapper.active .player-script-off {
     display: block;
 }
-.player-script-scroll-check {
-    position: relative;
-}
-.player-script-scroll-check .player-script-scroll-check-icon  {
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    margin-top: -0.7em;
-    color: #5cb85c;
-}
-.player-script-scroll-check .player-script-scroll-check-icon:before {
-    display: block;
-    font-family: 'FontAwesome';
-    color: #d9534f;
-    content: "\f00d";
-}
-.player-script-scroll-check.active .player-script-scroll-check-icon:before  {
-    color: #5cb85c;
-    content: "\f00c";
-}
+
 .player-fulldisplay.player-inactive {
     cursor: none;
 }
@@ -332,25 +313,24 @@ body {
     cursor: pointer;
 }
 .player-unstarted .embed-fluid:after {
-    display: inline-block;
     position: absolute;
     top: 50%;
     left: 50%;
+    display: inline-block;
     width: 70px;
     height: 70px;
-    margin-top: -35px;
-    margin-left: -35px;
-    padding: 2px 7px 3px;
-    font-family: 'FontAwesome';
-    font-size: 66px;
+    padding: 5px;
+    font-family: "Font Awesome 5 Free";
+    font-size: 60px;
+    font-weight: 900;
     line-height: 1;
     color: #fff;
+    pointer-events: none;
     content: "\f144";
     background-color: #000;
-    border-radius: 50% 50%;
-    filter: alpha(opacity=75);
-    opacity: 0.75;
-    pointer-events: none;
+    border-radius: 50%;
+    opacity: .75;
+    transform: translate3d(-50%, -50%, 0);
 }
 .player-unstarted .embed-fluid:hover:after {
     filter: alpha(opacity=100);
@@ -388,9 +368,9 @@ body {
 <div data-cfw="player" role="region" aria-label="audio player">
     <div class="player" data-cfw-player="player">
         <span class="player-control" data-cfw-player="control">
-            <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
-            <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
-            <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop"></span></button>
+            <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+            <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+            <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
         </span>
         <span class="player-time" data-cfw-player="time">
             <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -402,8 +382,8 @@ body {
             <span class="player-time-duration" data-cfw-player="time-duration"></span>
         </span>
         <span class="player-mute" data-cfw-player="mute">
-            <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fa fa-fw fa-volume-off"></span></button>
-            <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fa fa-fw fa-volume-up"></span></button>
+            <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+            <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
         </span>
         <span class="" data-cfw-player="volume">
             <!--
@@ -413,7 +393,7 @@ body {
             value: 1
             -->
         </span>
-        <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fa fa-fw fa-refresh"></span></button>
+        <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
     </div>
 
     <audio controls>
@@ -428,9 +408,9 @@ body {
 <div data-cfw="player" role="region" aria-label="audio player">
     <div class="player" data-cfw-player="player">
         <span class="player-control" data-cfw-player="control">
-            <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
-            <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
-            <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop"></span></button>
+            <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+            <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+            <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
         </span>
         <span class="player-time" data-cfw-player="time">
             <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -442,12 +422,12 @@ body {
             <span class="progress-bar" role="progressbar" data-cfw-player="seek-buffer"></span>
         </span>
         <span class="player-mute" data-cfw-player="mute">
-            <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fa fa-fw fa-volume-off"></span></button>
-            <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fa fa-fw fa-volume-up"></span></button>
+            <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+            <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
         </span>
         <span class="" data-cfw-player="volume">
         </span>
-        <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fa fa-fw fa-refresh"></span></button>
+        <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
     </div>
 
     <audio controls>
@@ -462,9 +442,9 @@ body {
 <div data-cfw="player" role="region" aria-label="audio player">
     <div class="player" data-cfw-player="player">
         <span class="player-control" data-cfw-player="control">
-            <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
-            <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
-            <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop"></span></button>
+            <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+            <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+            <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
         </span>
         <span class="player-time" data-cfw-player="time">
             <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -474,13 +454,13 @@ body {
             <span class="player-time-duration" data-cfw-player="time-duration"></span>
         </span>
         <span class="player-mute" data-cfw-player="mute">
-            <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fa fa-fw fa-volume-off"></span></button>
-            <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fa fa-fw fa-volume-up"></span></button>
+            <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+            <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
         </span>
         <span class="player-volume" data-cfw-player="volume">
             <label>Volume slider<input type="text" /></label>
         </span>
-        <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fa fa-fw fa-refresh"></span></button>
+        <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
     </div>
 
     <audio controls preload="none">
@@ -503,9 +483,9 @@ body {
     <div class="player-wrapper">
         <div class="player" data-cfw-player="player">
             <span class="player-control" data-cfw-player="control">
-                <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
             </span>
             <span class="player-time" data-cfw-player="time">
                 <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -515,14 +495,14 @@ body {
                 <span class="player-time-duration" data-cfw-player="time-duration"></span>
             </span>
             <span class="player-mute" data-cfw-player="mute">
-                <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fa fa-fw fa-volume-off"></span></button>
-                <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fa fa-fw fa-volume-up"></span></button>
+                <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+                <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
             </span>
             <span class="player-volume" data-cfw-player="volume">
                 <label>Volume slider<input type="text" /></label>
             </span>
             <div class="dropup dropleft" style="display: inline-block; position: relative;">
-                <button type="button" class="btn btn-default player-speed" data-cfw="dropdown" data-cfw-dropdown-target="#speed0" title="Playback speed" aria-label="Playback speed"><span class="fa fa-fw fa-sort"></span></button>
+                <button type="button" class="btn btn-default player-speed" data-cfw="dropdown" data-cfw-dropdown-target="#speed0" title="Playback speed" aria-label="Playback speed"><span class="fas fa-fw fa-sort"></span></button>
                 <ul class="dropdown" id="speed0" style="min-width: 75px; width: 75px; text-align: center;">
                     <li><a href="#" onclick="javascript:$(this).closest('[data-cfw]').CFW_Player('speed', 0.25); return false;">0.25&times;</a></li>
                     <li><a href="#" onclick="javascript:$(this).closest('[data-cfw]').CFW_Player('speed', 0.5); return false;">0.5&times;</a></li>
@@ -532,11 +512,11 @@ body {
                     <li><a href="#" onclick="javascript:$(this).closest('[data-cfw]').CFW_Player('speed', 2); return false;">2&times;</a></li>
                 </ul>
             </div>
-            <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fa fa-fw fa-refresh"></span></button>
-            <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fa fa-fw fa-cc"></span></button>
+            <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+            <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
             <span class="player-fullscreen" data-cfw-player="fullscreen">
-                <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt"></span></button>
-                <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fa fa-fw fa-arrows-alt"></span></button>
+                <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
             </span>
         </div>
     </div>
@@ -555,9 +535,9 @@ body {
     <div class="player-wrapper">
         <div class="player" data-cfw-player="player">
             <span class="player-control" data-cfw-player="control">
-                <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
             </span>
             <span class="player-time" data-cfw-player="time">
                 <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -568,18 +548,18 @@ body {
             </span>
 
             <span class="player-mute" data-cfw-player="mute">
-                <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fa fa-fw fa-volume-off"></span></button>
-                <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fa fa-fw fa-volume-up"></span></button>
+                <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+                <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
             </span>
             <span class="player-volume" data-cfw-player="volume">
                 <label>Volume slider<input type="text" /></label>
             </span>
-            <!-- <button type="button" class="btn btn-default player-speed" data-cfw-player="speed" title="Playback speed" aria-label="Playback speed"><span class="fa fa-fw fa-sort"></span></button> -->
-            <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fa fa-fw fa-refresh"></span></button>
-            <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fa fa-fw fa-cc"></span></button>
+            <!-- <button type="button" class="btn btn-default player-speed" data-cfw-player="speed" title="Playback speed" aria-label="Playback speed"><span class="fas fa-fw fa-sort"></span></button> -->
+            <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+            <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
             <span class="player-fullscreen" data-cfw-player="fullscreen">
-                <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt"></span></button>
-                <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fa fa-fw fa-arrows-alt"></span></button>
+                <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
             </span>
         </div>
     </div>
@@ -600,9 +580,9 @@ body {
         <div class="player-wrapper">
             <div class="player" data-cfw-player="player">
                 <span class="player-control" data-cfw-player="control">
-                    <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop"></span></button>
+                    <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                    <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                    <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -613,18 +593,18 @@ body {
                 </span>
 
                 <span class="player-mute" data-cfw-player="mute">
-                    <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fa fa-fw fa-volume-off"></span></button>
-                    <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fa fa-fw fa-volume-up"></span></button>
+                    <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+                    <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
                 </span>
                 <span class="player-volume" data-cfw-player="volume">
                     <label>Volume slider<input type="text" /></label>
                 </span>
-                <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fa fa-fw fa-refresh"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fa fa-fw fa-cc"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="fa fa-fw fa-file-text-o"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
-                    <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt"></span></button>
-                    <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fa fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
                 </span>
             </div>
         </div>
@@ -644,9 +624,9 @@ body {
         <div class="player-wrapper">
             <div class="player" data-cfw-player="player">
                 <span class="player-control" data-cfw-player="control">
-                    <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop"></span></button>
+                    <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                    <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                    <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -656,18 +636,18 @@ body {
                     <span class="player-time-duration" data-cfw-player="time-duration"></span>
                 </span>
                 <span class="player-mute" data-cfw-player="mute">
-                    <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fa fa-fw fa-volume-off"></span></button>
-                    <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fa fa-fw fa-volume-up"></span></button>
+                    <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+                    <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
                 </span>
                 <span class="player-volume" data-cfw-player="volume">
                     <label>Volume slider<input type="text" /></label>
                 </span>
-                <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fa fa-fw fa-refresh"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fa fa-fw fa-cc"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="fa fa-fw fa-file-text-o"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
-                    <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt"></span></button>
-                    <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fa fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
                 </span>
             </div>
         </div>
@@ -689,9 +669,9 @@ body {
         <div class="player-wrapper">
             <div class="player" data-cfw-player="player">
                 <span class="player-control" data-cfw-player="control">
-                    <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop"></span></button>
+                    <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                    <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                    <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -702,18 +682,18 @@ body {
                 </span>
 
                 <span class="player-mute" data-cfw-player="mute">
-                    <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fa fa-fw fa-volume-off"></span></button>
-                    <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fa fa-fw fa-volume-up"></span></button>
+                    <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+                    <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
                 </span>
                 <span class="player-volume" data-cfw-player="volume">
                     <label>Volume slider<input type="text" /></label>
                 </span>
-                <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fa fa-fw fa-refresh"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fa fa-fw fa-cc"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="fa fa-fw fa-file-text-o"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
-                    <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt"></span></button>
-                    <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fa fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
                 </span>
             </div>
         </div>
@@ -735,9 +715,9 @@ body {
         <div class="player-wrapper">
             <div class="player" data-cfw-player="player">
                 <span class="player-control" data-cfw-player="control">
-                    <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop"></span></button>
+                    <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                    <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                    <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -748,18 +728,18 @@ body {
                 </span>
 
                 <span class="player-mute" data-cfw-player="mute">
-                    <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fa fa-fw fa-volume-off"></span></button>
-                    <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fa fa-fw fa-volume-up"></span></button>
+                    <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+                    <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
                 </span>
                 <span class="player-volume" data-cfw-player="volume">
                     <label>Volume slider<input type="text" /></label>
                 </span>
-                <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fa fa-fw fa-refresh"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fa fa-fw fa-cc"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="fa fa-fw fa-file-text-o"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
-                    <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt"></span></button>
-                    <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fa fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
                 </span>
             </div>
         </div>
@@ -786,12 +766,12 @@ body {
         <div class="player-wrapper">
             <div class="player" data-cfw-player="player">
                 <span class="player-control" data-cfw-player="control">
-                    <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
+                    <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                    <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
                 </span>
                 <span class="player-describe" data-cfw-player="description">
-                    <button type="button" class="btn btn-default on active" title="Turn Off Audio Description" aria-label="Turn Off Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
-                    <button type="button" class="btn btn-default off" title="Turn On Audio Description" aria-label="Turn On Audio Description"><span class="fa fa-fw fa-audio-description"></span></button>
+                    <button type="button" class="btn btn-default on active" title="Turn Off Audio Description" aria-label="Turn Off Audio Description"><span class="fas fa-fw fa-audio-description"></span></button>
+                    <button type="button" class="btn btn-default off" title="Turn On Audio Description" aria-label="Turn On Audio Description"><span class="fas fa-fw fa-audio-description"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -801,18 +781,18 @@ body {
                     <span class="player-time-duration" data-cfw-player="time-duration"></span>
                 </span>
                 <span class="player-mute" data-cfw-player="mute">
-                    <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fa fa-fw fa-volume-off"></span></button>
-                    <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fa fa-fw fa-volume-up"></span></button>
+                    <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+                    <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
                 </span>
                 <span class="player-volume" data-cfw-player="volume">
                     <label>Volume slider<input type="text" /></label>
                 </span>
-                <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fa fa-fw fa-refresh"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fa fa-fw fa-cc"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="fa fa-fw fa-file-text-o"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
-                    <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt"></span></button>
-                    <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fa fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
                 </span>
             </div>
         </div>
@@ -834,9 +814,9 @@ body {
         <div class="player-wrapper">
             <div class="player" data-cfw-player="player">
                 <span class="player-control" data-cfw-player="control">
-                    <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fa fa-fw fa-play"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fa fa-fw fa-pause"></span></button>
-                    <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fa fa-fw fa-stop"></span></button>
+                    <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                    <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                    <button type="button" class="btn btn-default" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
                 </span>
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
@@ -847,18 +827,18 @@ body {
                 </span>
 
                 <span class="player-mute" data-cfw-player="mute">
-                    <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fa fa-fw fa-volume-off"></span></button>
-                    <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fa fa-fw fa-volume-up"></span></button>
+                    <button type="button" class="btn btn-default player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+                    <button type="button" class="btn btn-default player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
                 </span>
                 <span class="player-volume" data-cfw-player="volume">
                     <label>Volume slider<input type="text" /></label>
                 </span>
-                <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fa fa-fw fa-refresh"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fa fa-fw fa-cc"></span></button>
-                <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="fa fa-fw fa-file-text-o"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
-                    <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fa fa-fw fa-arrows-alt"></span></button>
-                    <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fa fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                    <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
                 </span>
             </div>
         </div>

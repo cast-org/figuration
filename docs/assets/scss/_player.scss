@@ -147,27 +147,7 @@
 .player-script-wrapper.active .player-script-off {
     display: block;
 }
-.player-script-scroll-check {
-    position: relative;
-}
-.player-script-scroll-check .player-script-scroll-check-icon  {
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    margin-top: -.7em;
-    color: #5cb85c;
-}
-.player-script-scroll-check .player-script-scroll-check-icon::before {
-    display: block;
-    // stylelint-disable-next-line font-family-no-missing-generic-family-keyword
-    font-family: FontAwesome;
-    color: #d9534f;
-    content: "\f00d";
-}
-.player-script-scroll-check.active .player-script-scroll-check-icon::before  {
-    color: #5cb85c;
-    content: "\f00c";
-}
+
 .player-fulldisplay.player-inactive {
     cursor: none;
 }
@@ -225,12 +205,11 @@
     display: inline-block;
     width: 70px;
     height: 70px;
-    padding: 2px 7px 3px;
-    margin-top: -35px;
-    margin-left: -35px;
+    padding: 5px;
     // stylelint-disable-next-line font-family-no-missing-generic-family-keyword
-    font-family: FontAwesome;
-    font-size: 66px;
+    font-family: "Font Awesome 5 Free";
+    font-size: 60px;
+    font-weight: 900;
     line-height: 1;
     color: #fff;
     pointer-events: none;
@@ -238,6 +217,7 @@
     background-color: #000;
     border-radius: 50%;
     opacity: .75;
+    transform: translate3d(-50%, -50%, 0);
 }
 .player-unstarted .embed-fluid:hover::after {
     opacity: 1;

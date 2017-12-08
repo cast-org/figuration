@@ -118,12 +118,26 @@ $docs-color: #246;
 
 
 // Home page
-.home-icons .fa {
-    font-size: 3.5rem;
-    vertical-align: middle;
-}
-.home-icons .fa + .fa {
-    margin-left: .5rem;
+.home-icons {
+    .far,
+    .fas {
+        font-size: 3.5rem;
+        vertical-align: middle;
+    }
+
+    .fa-mobile-alt {
+        font-size: 2.5rem;
+    }
+    .fa-tablet-alt {
+        font-size: 3rem;
+    }
+
+    .far + .far,
+    .fas + .fas,
+    .far + .fas,
+    .fas + .far {
+        margin-left: .5rem;
+    }
 }
 .home-feature {
     > .small {

@@ -9,7 +9,7 @@ group: widgets
 {% if site.github %}
   <link href="{{ site.cdn.fontawe }}" integrity="{{ site.cdn.fontawe_hash }}" crossorigin="anonymous" rel="stylesheet" property="stylesheet">
 {% else %}
-  <link href="{{ site.baseurl }}/assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" property="stylesheet">
+  <link href="{{ site.baseurl }}/assets/fonts/fontawesome/css/fontawesome-all.css" rel="stylesheet" property="stylesheet">
 {% endif %}
 
 Add quick, dynamic tab functionality to transition through panes of content.
@@ -313,15 +313,15 @@ $('a[data-cfw="tab"]').on('afterShow.cfw.tab', function(e) {
         When the tab list has the focus, moves the focus to the next focusable item on the page.
     </dd>
     <dt>
-        <kbd title="right arrow" aria-label="right arrow"><span class="fa fa-arrow-right" aria-hidden="true"></span></kbd> /
-        <kbd title="down arrow" aria-label="down arrow"><span class="fa fa-arrow-down" aria-hidden="true"></span></kbd>
+        <kbd title="right arrow" aria-label="right arrow"><span class="fas fa-arrow-right" aria-hidden="true"></span></kbd> /
+        <kbd title="down arrow" aria-label="down arrow"><span class="fas fa-arrow-down" aria-hidden="true"></span></kbd>
     </dt>
     <dd>
         Moves focus to the next tab and activates it, displaying the related tabpanel content.
     </dd>
     <dt>
-        <kbd title="left arrow" aria-label="left arrow"><span class="fa fa-arrow-left" aria-hidden="true"></span></kbd> /
-        <kbd title="up arrow" aria-label="up arrow"><span class="fa fa-arrow-up" aria-hidden="true"></span></kbd>
+        <kbd title="left arrow" aria-label="left arrow"><span class="fas fa-arrow-left" aria-hidden="true"></span></kbd> /
+        <kbd title="up arrow" aria-label="up arrow"><span class="fas fa-arrow-up" aria-hidden="true"></span></kbd>
     </dt>
     <dd>
         Moves focus to the previous tab and activates it, displaying the related tabpanel content.

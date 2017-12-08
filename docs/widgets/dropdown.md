@@ -9,7 +9,7 @@ group: widgets
 {% if site.github %}
   <link href="{{ site.cdn.fontawe }}" integrity="{{ site.cdn.fontawe_hash }}" crossorigin="anonymous" rel="stylesheet" property="stylesheet">
 {% else %}
-  <link href="{{ site.baseurl }}/assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" property="stylesheet">
+  <link href="{{ site.baseurl }}/assets/fonts/fontawesome/css/fontawesome-all.css" rel="stylesheet" property="stylesheet">
 {% endif %}
 
 Add a context menu or list of links to a control item.  Support for nested lists is included automatically.  There is also an expand on hover option, even though we recommend that you use the default click to toggle mode for consitent usability across devices.
@@ -723,8 +723,8 @@ The dropdown widget provided by Figuration is intended be generic and apply to a
         Closes the currently focused menu, and moved focus to the main trigger.
     </dd>
     <dt>
-        <kbd title="up arrow" aria-label="up arrow"><span class="fa fa-arrow-up" aria-hidden="true"></span></kbd> /
-        <kbd title="down arrow" aria-label="down arrow"><span class="fa fa-arrow-down" aria-hidden="true"></span></kbd>
+        <kbd title="up arrow" aria-label="up arrow"><span class="fas fa-arrow-up" aria-hidden="true"></span></kbd> /
+        <kbd title="down arrow" aria-label="down arrow"><span class="fas fa-arrow-down" aria-hidden="true"></span></kbd>
     </dt>
     <dd>
         Moves focus to the previous or next item in the menu list.
@@ -732,14 +732,14 @@ The dropdown widget provided by Figuration is intended be generic and apply to a
         If current focus is on a checkbox or radio input, moves focus to the previous or next item in the menu list.
     </dd>
     <dt>
-        <kbd title="right arrow" aria-label="right arrow"><span class="fa fa-arrow-right" aria-hidden="true"></span></kbd>
+        <kbd title="right arrow" aria-label="right arrow"><span class="fas fa-arrow-right" aria-hidden="true"></span></kbd>
     </dt>
     <dd>
         Opens the submenu if one exists.
         If current focus is in a text input or textarea, the text caret will move accordingly.
     </dd>
     <dt>
-        <kbd title="left arrow" aria-label="left arrow"><span class="fa fa-arrow-left" aria-hidden="true"></span></kbd>
+        <kbd title="left arrow" aria-label="left arrow"><span class="fas fa-arrow-left" aria-hidden="true"></span></kbd>
     </dt>
     <dd>
         Closes the currently focused submenu, and returns focus back to the triggering element.  If there are no submenus open, focus will be returned to the main trigger.
