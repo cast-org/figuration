@@ -100,12 +100,24 @@
   vertical-align: middle;
 }
 
-.home-icons .fa {
+.home-icons .far,
+.home-icons .fas {
   font-size: 3.5rem;
   vertical-align: middle;
 }
 
-.home-icons .fa + .fa {
+.home-icons .fa-mobile-alt {
+  font-size: 2.5rem;
+}
+
+.home-icons .fa-tablet-alt {
+  font-size: 3rem;
+}
+
+.home-icons .far + .far,
+.home-icons .fas + .fas,
+.home-icons .far + .fas,
+.home-icons .fas + .far {
   margin-left: .5rem;
 }
 
@@ -1865,30 +1877,6 @@ h4 > code {
   display: block;
 }
 
-.player-script-scroll-check {
-  position: relative;
-}
-
-.player-script-scroll-check .player-script-scroll-check-icon {
-  position: absolute;
-  top: 50%;
-  left: 5px;
-  margin-top: -.7em;
-  color: #5cb85c;
-}
-
-.player-script-scroll-check .player-script-scroll-check-icon::before {
-  display: block;
-  font-family: FontAwesome;
-  color: #d9534f;
-  content: "\f00d";
-}
-
-.player-script-scroll-check.active .player-script-scroll-check-icon::before {
-  color: #5cb85c;
-  content: "\f00c";
-}
-
 .player-fulldisplay.player-inactive {
   cursor: none;
 }
@@ -1972,11 +1960,10 @@ h4 > code {
   display: inline-block;
   width: 70px;
   height: 70px;
-  padding: 2px 7px 3px;
-  margin-top: -35px;
-  margin-left: -35px;
-  font-family: FontAwesome;
-  font-size: 66px;
+  padding: 5px;
+  font-family: "Font Awesome 5 Free";
+  font-size: 60px;
+  font-weight: 900;
   line-height: 1;
   color: #fff;
   pointer-events: none;
@@ -1984,6 +1971,8 @@ h4 > code {
   background-color: #000;
   border-radius: 50%;
   opacity: .75;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
 }
 
 .player-unstarted .embed-fluid:hover::after {
