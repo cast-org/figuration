@@ -30,6 +30,7 @@ function myLog(item) {
 $(document, '[data-cfw="player"]').on('ready.cfw.player', function(e) {
     $(e.target).closest('[data-cfw="player"]').find('.player-caption-wrapper').addClass('dropup dropdown-menu-reverse');
     $(e.target).closest('[data-cfw="player"]').find('.player-script-wrapper').addClass('dropup dropdown-menu-reverse');
+    $(e.target).closest('[data-cfw="player"]').find('.player-text-describe-wrapper').addClass('dropup dropdown-menu-reverse');
 });
 </script>
 
@@ -222,6 +223,21 @@ body {
 }
 .player-script-wrapper.active .player-script-off {
     display: block;
+}
+
+.player-text-describe-wrapper {
+    display: inline-block;
+}
+.player-text-describe-wrapper .player-text-describe-off {
+    display: none;
+}
+.player-text-describe-wrapper.active .player-text-describe-off {
+    display: block;
+}
+.player-textdesc {
+    padding: 1rem;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
 }
 
 .player-fulldisplay.player-inactive {
@@ -737,6 +753,7 @@ body {
                 <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
                 <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
                 <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="textdescription" title="Text Description" aria-label="Text Description"><span class="fas fa-fw fa-eye"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
                     <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
                     <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
@@ -790,6 +807,7 @@ body {
                 <button type="button" class="btn btn-default" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
                 <button type="button" class="btn btn-default" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
                 <button type="button" class="btn btn-default" data-cfw-player="transcript" title="Transcript" aria-label="Transcript"><span class="far fa-fw fa-file-alt"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="textdescription" title="Text Description" aria-label="Text Description"><span class="fas fa-fw fa-eye"></span></button>
                 <span class="player-fullscreen" data-cfw-player="fullscreen">
                     <button type="button" class="btn btn-default player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
                     <button type="button" class="btn btn-default player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>

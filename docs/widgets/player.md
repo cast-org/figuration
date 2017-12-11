@@ -296,6 +296,40 @@ Further improve accessibility for blind and visually impaired users by including
 </div>
 {% endexample %}
 
+### Text-based Description
+
+By using the same `<track kind="descriptions">` as the above example, we can provide text-based descriptions outside of the transcript, and optionally make them optionally announced by screen readers. In this case the `srclang` attribute will be used to set the `lang` attribute for screen readers.
+
+{% example html %}
+<div data-cfw="player" data-cfw-player-text-describe="2" class="video-wrapper" role="region" aria-label="video player">
+    <div class="embed-fluid">
+        <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
+            <source src="{{ site.baseurl }}/assets/video/niagara_falls.mp4">
+            <track src="{{ site.baseurl }}/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" default />
+            <track src="{{ site.baseurl }}/assets/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es" />
+            <track src="{{ site.baseurl }}/assets/video/niagara_falls-describe-en.vtt" label="English Description" kind="descriptions" srclang="en" />
+            <track src="{{ site.baseurl }}/assets/video/niagara_falls-describe-es.vtt" label="Descripción Espa&ntilde;ola" kind="descriptions" srclang="es" />
+        </video>
+    </div>
+    <div class="player-wrapper">
+        <div class="player" data-cfw-player="player">
+            <span class="player-control me-0_5" data-cfw-player="control">
+                <button type="button" class="btn btn-default" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                <button type="button" class="btn btn-default" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+            </span>
+            <span class="player-time me-0_5" data-cfw-player="time">
+                <span class="player-time-current" data-cfw-player="time-current"></span>
+                <span class="player-seek" data-cfw-player="seek">
+                	<label>Seek slider<input type="text" /></label>
+                </span>
+                <span class="player-time-duration" data-cfw-player="time-duration"></span>
+            </span>
+            <button type="button" class="btn btn-default me-0_25" data-cfw-player="textdescription" title="Text Description" aria-label="Text Description"><span class="fas fa-fw fa-font"></span></button>
+        </div>
+    </div>
+</div>
+{% endexample %}
+
 ### Custom Captions
 
 Take control over how captions are displayed by adding a container with a `data-cfw-player="caption-display"` attribute.  This will hide the default browser captions, and instead place the content in the designated container.
@@ -510,7 +544,11 @@ Regions and controls are specified by data attributes `data-cfw-player="name"` t
     </tr>
     <tr>
         <td>description</td>
-        <td>Audio description toggle button.</td>
+        <td>Audio description, using an alternate video source, toggle button.</td>
+    </tr>
+    <tr>
+        <td>textdescription</td>
+        <td>Audio description, using text-based description content, toggle button.</td>
     </tr>
     <tr>
         <td>fullscreen</td>
@@ -550,6 +588,24 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>boolean</td>
         <td>false</td>
         <td>Use the description media source.</td>
+    </tr>
+    <tr>
+        <td>textDescribe</td>
+        <td>integer</td>
+        <td>-1</td>
+        <td>Turn on the text-based description. The integer value reflects the track count (starting from 0) for the desired <code>&lt;track&gt;</code> element to enable.  Default value is -1 which leaves the description turned off. Currently only tracks of <strong>kind="descriptions"</strong> is supported.</td>
+    </tr>
+    <tr>
+        <td>textDescribeAnnounce</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>When a text-based description is selected, allow the description text to be announced by a screen reader.</td>
+    </tr>
+    <tr>
+        <td>textDescribeVisible</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>When a text-based description is selected, display the description text.</td>
     </tr>
     <tr>
         <td>transcript</td>

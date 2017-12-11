@@ -94,13 +94,21 @@
         this.trackCurrent = -1;
         this.$captionWrapper = null;
 
+        // Transcript
         this.$scriptElm = null;
         this.scriptCurrent = -1;
         this.scriptCues = null;
         this.seekPoint = '.player-transcript-seekpoint, .player-description-seekpoint';
 
+        // Description for transcript
         this.descCurrent = -1;
         this.descCues = null;
+
+        // Text-based description for screen reader
+        this.trackDescription = [];
+        this.$textDescribeElm = null;
+        this.textDescribeCurrent = -1;
+        this.textDescribeCues = null;
 
         var parsedData = this.$element.CFW_parseData('player', CFW_Widget_Player.DEFAULTS);
         this.settings = $.extend({}, CFW_Widget_Player.DEFAULTS, parsedData, options);
@@ -110,6 +118,9 @@
 
     CFW_Widget_Player.DEFAULTS = {
         mediaDescribe: false,       // Show description source media
+        textDescribe: -1,           // Text-based description off
+        textDescribeAnnounce: false,// If text-based description should announced by screen readers
+        textDescribeVisible: true,  // If text-based description should be visible
         transcript: -1,             // Default transcript off
         transcriptScroll : true,    // Scroll transcript
         transcriptDescribe: true,   // Show descriptions in transcript
@@ -329,6 +340,7 @@
             this.trackList();
             this.trackInit();
             this.scriptInit();
+            this.textDescriptionInit();
 
             this.$player.addClass('ready');
 
@@ -741,12 +753,17 @@
             }
 
             var validTracks = [];
+            var descTracks = [];
             for (var i = 0; i < tracks.length; i++) {
                 if (tracks[i].kind == 'captions' || tracks[i].kind == 'subtitles') {
                     validTracks.push(i);
                 }
+                if (tracks[i].kind == 'descriptions') {
+                    descTracks.push(i);
+                }
             }
             this.trackValid = validTracks;
+            this.trackDescription = descTracks;
 
             /* not fully supported by any browser?
                  - only fires once for some reason from browser default controls
@@ -826,8 +843,6 @@
         },
 
         trackSet : function(trackID) {
-            var $selfRef = this;
-
             trackID = parseInt(trackID, 10);
 
             var tracks = this.media.textTracks;
@@ -1065,40 +1080,38 @@
 
             var tracks = this.media.textTracks;
             var tracksLength = tracks.length;
-            if (tracksLength <= 0 || this.scriptCurrent == -1) {
+            if (tracksLength <= 0) {
                 this.scriptCues = null;
                 this.descCurrent = -1;
                 this.descCues = null;
-                return;
             }
 
-            var cues = tracks[this.scriptCurrent].cues;
-            if (cues == null || cues.length <= 0) {
-                var hold = (this.trackCurrent == -1) ? null : tracks[this.trackCurrent].mode;
-                // preload all tracks to stop future `load` event triggers on transcript change
-                for (var i = 0; i < tracksLength; i++) {
-                    tracks[i].mode = 'hidden';
-                }
-                // reset the caption track state
-                if (hold !== null) {
-                    tracks[this.trackCurrent].mode = hold;
-                }
+            // Preload all tracks to stop future `load` event triggers on transcript change
+            var hold = (this.trackCurrent == -1) ? null : tracks[this.trackCurrent].mode;
+
+            for (var i = 0; i < tracksLength; i++) {
+                tracks[i].mode = 'hidden';
+            }
+            // reset the caption track state
+            if (hold !== null) {
+                tracks[this.trackCurrent].mode = hold;
             }
 
             // Find description track
             var descAvailable = false;
             this.descCurrent = -1;
             this.descCues = null;
-            var descLang = tracks[this.scriptCurrent].language;
-            for (var j = 0; j < tracksLength; j++) {
-                if (descLang == tracks[j].language && 'descriptions' == tracks[j].kind) {
-                    if ($selfRef.settings.transcriptDescribe) {
-                        $selfRef.descCurrent = j;
+            if (this.scriptCurrent !== -1) {
+                var descLang = tracks[this.scriptCurrent].language;
+                for (var j = 0; j < tracksLength; j++) {
+                    if (descLang == tracks[j].language && 'descriptions' == tracks[j].kind) {
+                        if ($selfRef.settings.transcriptDescribe) {
+                            $selfRef.descCurrent = j;
+                        }
+                        descAvailable = true;
                     }
-                    descAvailable = true;
                 }
             }
-
             var $descControl = this.$player.find('[data-cfw-player-script-describe]');
             if (!descAvailable) {
                 this._controlDisable($descControl);
@@ -1106,10 +1119,25 @@
                 this._controlEnable($descControl);
             }
 
+            // Test again for text-based description
+            var textDescAvailable = false;
+            for (var k = 0; k < tracksLength; k++) {
+                if ('descriptions' == tracks[k].kind) {
+                    textDescAvailable = true;
+                }
+            }
+            var $textDescControl = this.$player.find('[data-cfw-player="textdescription"]');
+            if (!textDescAvailable) {
+                this._controlDisable($textDescControl);
+            } else {
+                this._controlEnable($textDescControl);
+            }
+
             function scriptLoad2(forced) {
                 var tracks = $selfRef.media.textTracks; // Reload object to get update
-                var cues = tracks[$selfRef.scriptCurrent].cues;
+                var cues = ($selfRef.scriptCurrent == -1) ? null : tracks[$selfRef.scriptCurrent].cues;
                 var descCues = ($selfRef.descCurrent == -1) ? null : tracks[$selfRef.descCurrent].cues;
+                var textDescCues = ($selfRef.textDescribeCurrent == -1) ? null : tracks[$selfRef.textDescribeCurrent].cues;
 
                 if (cues && cues.length <= 0 && !forced) {
                     // Force media to load
@@ -1122,6 +1150,7 @@
 
                 $selfRef.scriptCues = cues;
                 $selfRef.descCues = descCues;
+                $selfRef.textDescribeCues = textDescCues;
                 $selfRef.scriptProcess();
             }
 
@@ -1280,6 +1309,180 @@
                 this.$media.trigger('load');
             } else {
                 this.seekTo(timestamp);
+            }
+        },
+
+        textDescriptionInit : function() {
+            var $selfRef = this;
+            var $tdElm = this.$player.find('[data-cfw-player="textdescription"]');
+            if ($tdElm.length <= 0) {
+                return;
+            }
+
+            if (this.trackDescription.length <= 0) {
+                this._controlDisable($tdElm);
+                return;
+            }
+
+            // Build menu
+            var wrapper = '<span class="player-text-describe-wrapper"></span>';
+            var $menu = $('<ul class="player-text-describe-menu dropdown-menu"></ul>');
+            $tdElm.wrap(wrapper);
+
+            var $wrapper = $tdElm.parent(); /* Because $().wrap() clones element */
+
+            $wrapper.append($menu);
+            var menuID = $menu.CFW_getID('cfw-player');
+
+            var $menuItem = $('<li class="player-text-describe-off"><button type="button" class="dropdown-item" data-cfw-player-text-describe="-1">Off</button></li>');
+            $menu.append($menuItem);
+
+            var tracks = this.media.textTracks;
+            for (var i = 0; i < this.trackDescription.length; i++) {
+                var trackID = this.trackDescription[i];
+                $menuItem = $('<li><button type="button" class="dropdown-item" data-cfw-player-text-describe="' + trackID + '">' + tracks[trackID].label + '</a></li>');
+                $menu.append($menuItem);
+            }
+            if (this.settings.transcriptOption) {
+                $menuItem = $('<li class="dropdown-divider"></li>');
+                $menu.append($menuItem);
+                // Add announce toggle
+                var announceCheck = (this.settings.textDescribeAnnounce) ? 'checked' : '';
+                $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-text-describe-announce class="form-check-input" ' + announceCheck + '> Announce with Screen Reader</label></li>');
+                $menu.append($menuItem);
+                // Add visibility toggle
+                var visibleCheck = (this.settings.textDescribeVisible) ? 'checked' : '';
+                $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-text-describe-visible class="form-check-input" ' + visibleCheck + '> Visible Description</label></li>');
+                $menu.append($menuItem);
+            }
+
+            // Event handlers
+            this.$player.on('click', '[data-cfw-player-text-describe]', function(e) {
+                e.preventDefault();
+                var $this = $(this);
+                var num = $this.attr('data-cfw-player-text-describe');
+                $selfRef.textDescriptionSet(num);
+            });
+            if (this.settings.transcriptOption) {
+                this.$player.on('click', '[data-cfw-player-text-describe-announce]', function() {
+                    $selfRef.settings.textDescribeAnnounce = !$selfRef.settings.textDescribeAnnounce;
+                    $(this).prop('checked', $selfRef.settings.textDescribeAnnounce);
+                    $selfRef.textDescriptionSet($selfRef.textDescribeCurrent);
+                });
+                this.$player.on('click', '[data-cfw-player-text-describe-visible]', function(e) {
+                    if (!$selfRef._controlIsDisabled($(e.target))) {
+                        $selfRef.settings.textDescribeVisible = !$selfRef.settings.textDescribeVisible;
+                        $(this).prop('checked', $selfRef.settings.textDescribeVisible);
+                        $selfRef.textDescriptionSet($selfRef.textDescribeCurrent);
+                    }
+                });
+            }
+
+            $tdElm.CFW_Dropdown({ target: '#' + menuID });
+
+            this.textDescriptionSet(this.settings.textDescribe);
+        },
+
+        textDescriptionSet : function(trackID) {
+            trackID = parseInt(trackID, 10);
+
+            if (this.trackDescription.length <= 0) {
+                return;
+            }
+            if (this.trackDescription.indexOf(trackID) == -1 && trackID != -1) {
+                return;
+            }
+
+            if (trackID == -1 && this.$textDescribeElm !== null) {
+                if (!this.$media.CFW_trigger('beforeTextDescriptionHide.cfw.player')) {
+                    return;
+                }
+            } else {
+                if (!this.$media.CFW_trigger('beforeTextDescriptionShow.cfw.player')) {
+                    return;
+                }
+            }
+
+            if (this.$textDescribeElm !== null) {
+                this.$textDescribeElm.remove();
+                this.$textDescribeElm = null;
+            }
+            this.$element.removeClass('player-textdescshow');
+
+            // Remove any existing text description containers
+            this.$element.find('.player-textdesc-announce').remove();
+            this.$element.find('.player-textdesc-visible').remove();
+
+            var $tdElm = this.$player.find('[data-cfw-player="textdescription"]');
+            if ($tdElm.length) {
+                // Update menu
+                var $tdPar = $tdElm.parent();
+                $tdElm.removeClass('active');
+                $tdPar.removeClass('active');
+                $tdPar.find('[data-cfw-player-text-describe]')
+                    .removeClass('active')
+                    .removeAttr('aria-pressed');
+
+                if (trackID !== -1) {
+                    $tdElm.addClass('active');
+                    $tdPar.addClass('active');
+                    $tdPar.find('[data-cfw-player-text-describe="' + trackID + '"]')
+                        .addClass('active')
+                        .attr('aria-pressed', 'true');
+                }
+            }
+
+            // Disable any previous cuechange handling
+            if (this.textDescribeCurrent !== -1) {
+                this._cuechangeDisable(this.textDescribeCurrent, 'textdescribe');
+            }
+
+            this.textDescribeCurrent = trackID;
+
+            if (trackID == -1) {
+                this.textDescribeCues = null;
+                this.$media.CFW_trigger('afterTextDescriptionHide.cfw.player');
+            } else {
+                this.scriptLoad();
+            }
+
+            if (trackID !== -1) {
+                // Insert new text description container
+                var $newElm = $('<div class="player-textdesc"></div>');
+
+                var trackLang = this.media.textTracks[trackID].language;
+                if (trackLang.length) {
+                    $newElm.attr('lang', trackLang);
+                }
+                if (this.settings.textDescribeAnnounce) {
+                    $newElm.attr({
+                        'aria-live': 'assertive',
+                        'aria-atomic' : 'true'
+                    });
+                }
+                if (!this.settings.textDescribeVisible) {
+                    $newElm.addClass('sr-only');
+                }
+                this.$element.append($newElm);
+                this.$textDescribeElm = this.$element.find('.player-textdesc');
+
+                // Hook in cuechange handler
+                this._cuechangeEnable(this.textDescribeCurrent, 'textdescribe', this.textDescribeUpdate);
+
+                this.$media.CFW_trigger('afterTextDescriptionShow.cfw.player');
+            }
+        },
+
+        textDescribeUpdate : function(activeCues) {
+            if (activeCues === null || activeCues.length <= 0) {
+                this.$textDescribeElm.empty();
+            } else {
+                // Show caption area and update caption
+                var $tmp = $(document.createElement('div'));
+                $tmp.append(activeCues[0].getCueAsHTML());
+
+                var cueHTML = $tmp.html().replace('\n', '<br>');
+                this.$textDescribeElm.append(cueHTML);
             }
         },
 
@@ -1563,6 +1766,10 @@
             this.scriptCurrent = null;
             this.scriptCues = null;
             this.descCues = null;
+            this.trackDescription = null;
+            this.$textDescribeElm = null;
+            this.textDescribeCurrent = null;
+            this.textDescribeCues = null;
             this.settings = null;
         }
     };

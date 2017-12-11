@@ -201,6 +201,7 @@ function docsDirection() {
 $(document, '[data-cfw="player"]').on('ready.cfw.player', function(e) {
     $(e.target).closest('[data-cfw="player"]').find('.player-caption-wrapper').addClass('dropup dropdown-menu-reverse');
     $(e.target).closest('[data-cfw="player"]').find('.player-script-wrapper').addClass('dropup dropdown-menu-reverse');
+    $(e.target).closest('[data-cfw="player"]').find('.player-text-describe-wrapper').addClass('dropup dropdown-menu-reverse');
 });
 
 $(window).ready(function() {
