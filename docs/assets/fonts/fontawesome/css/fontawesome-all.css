@@ -1,5 +1,5 @@
 /*!
- * Font Awesome Free 5.0.0 by @fontawesome - http://fontawesome.com
+ * Font Awesome Free 5.0.1 by @fontawesome - http://fontawesome.com
  * License - http://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 .fa,
@@ -844,9 +844,6 @@ readers do not read off random characters that represent icons */
 .fa-dropbox:before {
   content: "\f16b"; }
 
-.fa-dropbox-alt:before {
-  content: "\f398"; }
-
 .fa-drupal:before {
   content: "\f1a9"; }
 
@@ -1047,6 +1044,9 @@ readers do not read off random characters that represent icons */
 
 .fa-font-awesome-alt:before {
   content: "\f35c"; }
+
+.fa-font-awesome-flag:before {
+  content: "\f425"; }
 
 .fa-fonticons:before {
   content: "\f280"; }
@@ -1453,6 +1453,9 @@ readers do not read off random characters that represent icons */
 .fa-lock:before {
   content: "\f023"; }
 
+.fa-lock-open:before {
+  content: "\f3c1"; }
+
 .fa-long-arrow-alt-down:before {
   content: "\f309"; }
 
@@ -1837,6 +1840,9 @@ readers do not read off random characters that represent icons */
 .fa-redo:before {
   content: "\f01e"; }
 
+.fa-redo-alt:before {
+  content: "\f2f9"; }
+
 .fa-registered:before {
   content: "\f25d"; }
 
@@ -2116,6 +2122,9 @@ readers do not read off random characters that represent icons */
 .fa-stripe:before {
   content: "\f429"; }
 
+.fa-stripe-s:before {
+  content: "\f42a"; }
+
 .fa-studiovinari:before {
   content: "\f3f8"; }
 
@@ -2148,6 +2157,9 @@ readers do not read off random characters that represent icons */
 
 .fa-sync:before {
   content: "\f021"; }
+
+.fa-sync-alt:before {
+  content: "\f2f1"; }
 
 .fa-table:before {
   content: "\f0ce"; }
@@ -2299,6 +2311,9 @@ readers do not read off random characters that represent icons */
 .fa-twitter-square:before {
   content: "\f081"; }
 
+.fa-typo3:before {
+  content: "\f42b"; }
+
 .fa-uber:before {
   content: "\f402"; }
 
@@ -2313,6 +2328,9 @@ readers do not read off random characters that represent icons */
 
 .fa-undo:before {
   content: "\f0e2"; }
+
+.fa-undo-alt:before {
+  content: "\f2ea"; }
 
 .fa-uniregistry:before {
   content: "\f404"; }
