@@ -1877,6 +1877,25 @@ h4 > code {
   display: block;
 }
 
+.player-text-describe-wrapper {
+  display: inline-block;
+}
+
+.player-text-describe-wrapper .player-text-describe-off {
+  display: none;
+}
+
+.player-text-describe-wrapper.active .player-text-describe-off {
+  display: block;
+}
+
+.player-textdesc {
+  min-height: 2.625rem;
+  padding: .5rem;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+}
+
 .player-fulldisplay.player-inactive {
   cursor: none;
 }
