@@ -835,10 +835,9 @@
                 return;
             }
 
-            // Disable any previouse cuechange handling
+            // Disable any previous cuechange handling
             if (this.trackCurrent !== -1) {
-                $(this.media.textTracks[this.trackCurrent]).off('cuechange.cfw.player.captionDisplay');
-                this.$media.off('timeupdate.cfw.player.captionDisplay');
+                this._cuechangeDisable(this.trackCurrent, 'captionDisplay');
             }
 
             this.trackCurrent = trackID;
@@ -855,30 +854,7 @@
 
             // Hook in cuechange handler if using custom captions
             if (this.trackCurrent !== -1 && this.$captionWrapper !== null) {
-                if (this.media.textTracks[this.trackCurrent].oncuechange !== undefined) {
-                    $(this.media.textTracks[this.trackCurrent])
-                        .on('cuechange.cfw.player.captionDisplay', function() {
-                            $selfRef.captionDisplayUpdate(this.activeCues);
-                        });
-                } else {
-                    // Firefox does not currently support oncuechange event
-                    this.$media
-                        .on('timeupdate.cfw.player.captionDisplay', function() {
-                            var activeCues = $selfRef.media.textTracks[$selfRef.trackCurrent].activeCues;
-                            $selfRef.captionDisplayUpdate(activeCues);
-                        });
-                }
-
-                // Artificially trigger a cuechange - in case already in middle of a cue
-                var cueEvent;
-                if (this.media.textTracks[this.trackCurrent].oncuechange !== undefined) {
-                    cueEvent = $.Event('cuechange');
-                    $(this.media.textTracks[this.trackCurrent]).trigger(cueEvent);
-                } else {
-                    // Firefox
-                    cueEvent = $.Event('timeupdate');
-                    this.$media.trigger(cueEvent);
-                }
+                this._cuechangeEnable(this.trackCurrent, 'captionDisplay', this.captionDisplayUpdate);
             }
 
             this.trackStatus();
@@ -1064,8 +1040,7 @@
 
             // Disable any previous cuechange handling
             if (this.scriptCurrent !== -1) {
-                $(this.media.textTracks[this.scriptCurrent]).off('cuechange.cfw.player.transcript');
-                this.$media.off('timeupdate.cfw.player.transcript');
+                this._cuechangeDisable(this.scriptCurrent, 'transcript');
             }
 
             this.scriptCurrent = trackID;
@@ -1255,19 +1230,7 @@
             }
 
             // Hook in cuechange handler
-            if (this.media.textTracks[this.scriptCurrent].oncuechange !== undefined) {
-                $(this.media.textTracks[this.scriptCurrent])
-                    .on('cuechange.cfw.player.transcript', function() {
-                        $selfRef.scriptHighlight(this.activeCues);
-                    });
-            } else {
-                // Firefox does not currently support oncuechange event
-                this.$media
-                    .on('timeupdate.cfw.player.transcript', function() {
-                        var activeCues = $selfRef.media.textTracks[$selfRef.scriptCurrent].activeCues;
-                        $selfRef.scriptHighlight(activeCues);
-                    });
-            }
+            this._cuechangeEnable(this.scriptCurrent, 'transcript', this.scriptHighlight);
 
             // Seekpoint event handlers
             $(this.seekPoint, this.$scriptElm)
@@ -1276,17 +1239,6 @@
                     var spanStart = parseFloat($(this).attr('data-start'));
                     $selfRef.scriptSeek(spanStart);
                 });
-
-            // Artificially trigger first cuechange - in case already in middle of a cue
-            var cueEvent;
-            if (this.media.textTracks[this.scriptCurrent].oncuechange !== undefined) {
-                cueEvent = $.Event('cuechange');
-                $(this.media.textTracks[this.scriptCurrent]).trigger(cueEvent);
-            } else {
-                // Firefox
-                cueEvent = $.Event('timeupdate');
-                this.$media.trigger(cueEvent);
-            }
 
             this.$media.CFW_trigger('afterTranscriptShow.cfw.player');
         },
@@ -1526,6 +1478,39 @@
 
         _controlIsDisabled : function($control) {
             return $control.is('.disabled, :disabled');
+        },
+
+        _cuechangeEnable : function(trackID, namespace, callback) {
+            var $selfRef = this;
+            if (this.media.textTracks[trackID].oncuechange !== undefined) {
+                $(this.media.textTracks[trackID])
+                    .on('cuechange.cfw.player.' + namespace, function() {
+                        callback.call($selfRef, this.activeCues);
+                    });
+            } else {
+                // Firefox does not currently support oncuechange event
+                this.$media
+                    .on('timeupdate.cfw.player.' + namespace, function() {
+                        var activeCues = $selfRef.media.textTracks[trackID].activeCues;
+                        callback.call($selfRef, activeCues);
+                    });
+            }
+
+            // Artificially trigger a cuechange - in case already in middle of a cue
+            var cueEvent;
+            if (this.media.textTracks[trackID].oncuechange !== undefined) {
+                cueEvent = $.Event('cuechange');
+                $(this.media.textTracks[trackID]).trigger(cueEvent);
+            } else {
+                // Firefox
+                cueEvent = $.Event('timeupdate');
+                this.$media.trigger(cueEvent);
+            }
+        },
+
+        _cuechangeDisable : function(trackID, namespace) {
+            $(this.media.textTracks[trackID]).off('cuechange.cfw.player.' + namespace);
+            this.$media.off('timeupdate.cfw.player.' + namespace);
         },
 
         dispose : function() {
