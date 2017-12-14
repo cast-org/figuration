@@ -2757,18 +2757,31 @@ if (typeof jQuery === 'undefined') {
             var $viewport = this.$viewport;
             var elRect = $viewport[0].getBoundingClientRect();
 
+
+            if ($viewport.is('body') && (/fixed|absolute/).test(this.$element.css('position'))) {
+                // fixed and absolute elements should be tested against the window
+                return $.extend({}, elRect, this.getScreenSpaceBounds($viewport));
+            }
+
+            var viewportBoundary = $.extend({}, $viewport.offset(), { width: $viewport.outerWidth(), height: $viewport.outerHeight() });
+
+            // Double check elements inside fixed and aboslute elements against the viewport
             if ($viewport.is('body')) {
                 var $node = this.$element;
                 while ($node.length && !($node.is('body') || $node.is('html'))) {
                     if ((/fixed|absolute/).test($node.css('position'))) {
-                        // fixed and absolute elements should be tested against the window
-                        return $.extend({}, elRect, this.getScreenSpaceBounds($viewport));
+                        var screenBounds = this.getScreenSpaceBounds($viewport);
+                        viewportBoundary = $.extend({}, viewportBoundary, {
+                            width : Math.max(viewportBoundary.width, screenBounds.width),
+                            height: Math.max(viewportBoundary.height, screenBounds.height)
+                        });
+                        break;
                     }
                     $node = $node.offsetParent();
                 }
             }
 
-            return $.extend({}, elRect, $viewport.offset(), { width: $viewport.outerWidth(), height: $viewport.outerHeight() });
+            return $.extend({}, elRect, viewportBoundary);
         },
 
         getScreenSpaceBounds : function($viewport) {
