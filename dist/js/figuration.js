@@ -1979,6 +1979,7 @@ if (typeof jQuery === 'undefined') {
             this.$element = $(element);
             this.$target = null;
             this.$arrow = null;
+            this.$focusFirst = null;
             this.$focusLast = null;
             this.instance = null;
             this.isDialog = false;
@@ -2172,10 +2173,10 @@ if (typeof jQuery === 'undefined') {
                 this.inState.click = !this.inState.click;
                 this.follow = true;
 
-                if (!this._isInState()) {
-                    this.leave();
-                } else {
+                if (this._isInState()) {
                     this.enter();
+                } else {
+                    this.leave();
                 }
             } else {
                 // Disable delay when toggle programatically invoked
@@ -2269,53 +2270,52 @@ if (typeof jQuery === 'undefined') {
 
             // Additional tab/focus handlers for non-inline items
             if (this.settings.container) {
-                this.$element
-                    .off('focusin.cfw.' + this.type + '.focusStart')
-                    .on('focusin.cfw.' + this.type + '.focusStart', function(e) {
-                        if ($selfRef.$target.hasClass('in')) {
-                            // Check related target and move to start or end of popover
-                            var selectables = $selfRef._tabItems();
-                            var prevIndex = selectables.length - 1;
-                            var $prevNode = $(e.relatedTarget);
-                            // Edge case: if coming from another tooltip/popover - just place at start of target
-                            // Otherwise very complex to determine where coming from and focus should be going to
-                            if (($prevNode.closest('.tooltip').length > 0) || ($prevNode.closest('.popover').length > 0)) {
-                                $prevNode = null;
-                            }
-                            if ($prevNode && $prevNode.length === 1) {
-                                var currIndex = selectables.index($selfRef.$element);
-                                prevIndex = selectables.index($prevNode);
-                                if (currIndex < prevIndex) {
-                                    var tipSels = $selfRef._tabItems($selfRef.$target);
-
-                                    var selsIndex = tipSels.length - 2;
-                                    tipSels.eq(selsIndex).trigger('focus');
-                                } else {
-                                    $selfRef.$target.trigger('focus');
-                                }
-                            } else {
-                                $selfRef.$target.trigger('focus');
-                            }
-                        }
-                    });
                 this.$target
                     .off('.cfw.' + this.type + '.keyflag')
                     .on('keydown.cfw.' + this.type + '.keyflag', function(e) {
-                        if (e.which == 9) {
-                            $selfRef.flags.keyTab = true;
-                            if (e.shiftKey) { $selfRef.flags.keyShift = true; }
-                        }
+                        $selfRef._tabSet(e);
                     })
                     .on('keyup.cfw.' + this.type + '.keyflag', function(e) {
                         if (e.which == 9) {
-                            $selfRef.flags.keyTab = false;
-                            $selfRef.flags.keyShift = false;
+                            $selfRef._tabReset();
                         }
                     });
 
-                // Also inject an item to fake loss of focus in case the tooltip
-                // is last tabbable item in document - otherwise focus drops off page
-                if (!this.$focusLast && (this.eventTypes.indexOf('click') >= 0)) {
+                // Inject focus helper item at start to fake loss of focus going out the top
+                if (!this.$focusFirst) {
+                    this.$focusFirst = $(document.createElement('span'))
+                    .addClass(this.type + '-focusfirst')
+                    .attr('tabindex', 0);
+
+                    var $dialog =  this.isDialog ? this.$target.find('[role="document"]').first() : {};
+                    if ($dialog.length) {
+                        this.$focusFirst.prependTo($dialog);
+                    } else {
+                        this.$focusFirst.prependTo(this.$target);
+                    }
+                }
+                if (this.$focusFirst) {
+                    this.$focusFirst
+                        .off('focusin.cfw.' + this.type + '.focusFirst')
+                        .on('focusin.cfw.' + this.type + '.focusFirst', function(e) {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            if ($selfRef.flags.keyTab) {
+                                if ($selfRef.flags.keyShift) {
+                                    // Go back to trigger element
+                                    $selfRef.$element.trigger('focus');
+                                } else {
+                                    // Go to next tabbable item
+                                    $selfRef._tabNext($selfRef.$focusFirst[0], $selfRef.$target);
+                                }
+                            }
+                            $selfRef._tabReset();
+                        });
+                }
+
+                // Inject focus helper item at end to fake loss of focus going out the bottom
+                // Also helps if tip has last tabbable item in document - otherwise focus drops off page
+                if (!this.$focusLast) {
                     this.$focusLast = $(document.createElement('span'))
                     .addClass(this.type + '-focuslast')
                     .attr('tabindex', 0)
@@ -2325,35 +2325,51 @@ if (typeof jQuery === 'undefined') {
                     this.$focusLast
                         .off('focusin.cfw.' + this.type + '.focusLast')
                         .on('focusin.cfw.' + this.type + '.focusLast', function(e) {
-                            // Bypass this item if coming from outside of tip
-                            if ($selfRef.$target[0] !== e.relatedTarget && !$selfRef.$target.has(e.relatedTarget).length) {
-                                e.preventDefault();
+                            e.stopPropagation();
+                            e.preventDefault();
+                            if (!$selfRef.$target.is(e.relatedTarget) && !$selfRef.$target.has(e.relatedTarget).length) {
                                 return;
                             }
                             $selfRef._tabNext($selfRef.$element[0]);
                         });
                 }
-                this.$target
-                    .off('focusout.cfw.' + this.type)
-                    .on('focusout.cfw.' + this.type, function() {
-                        $(document)
-                            .off('focusin.cfw.' + this.type + '.' + this.instance)
-                            .one('focusin.cfw.' + this.type + '.' + this.instance, function(e) {
-                                if (document !== e.target && $selfRef.$target[0] !== e.target && !$selfRef.$target.has(e.target).length) {
-                                    if ($selfRef.flags.keyTab) {
-                                        if ($selfRef.flags.keyShift) {
-                                            $selfRef._tabPrev($selfRef.$element[0]);
-                                        } else {
-                                            $selfRef._tabNext($selfRef.$element[0]);
-                                        }
-                                    }
-                                    // Reset flags
-                                    $selfRef.flags = {
-                                        keyShift: false,
-                                        keyTab: false
-                                    };
+
+                this.$element
+                    .off('focusin.cfw.' + this.type + '.focusStart')
+                    .on('focusin.cfw.' + this.type + '.focusStart', function(e) {
+                        if ($selfRef.$target.hasClass('in')) {
+                            if (!$selfRef.$target.is(e.relatedTarget) && !$selfRef.$target.has(e.relatedTarget).length) {
+                                var selectables = $selfRef._tabItems();
+                                var $prevNode = $(e.relatedTarget);
+
+                                // Edge case: if coming from another tooltip/popover
+                                if ($prevNode.closest('.tooltip, .popover').length) {
+                                    $prevNode = null;
                                 }
-                            });
+
+                                if ($prevNode && $prevNode.length) {
+                                    var currIndex = selectables.index($selfRef.$element);
+                                    var prevIndex = selectables.index($prevNode);
+                                    if (currIndex < prevIndex) {
+                                        $selfRef._tabPrev($selfRef.$focusLast[0], $selfRef.$target);
+                                    }
+                                }
+                            }
+                        }
+                    })
+                    .off('keydown.cfw.' + this.type + '.focusStart')
+                    .on('keydown.cfw.' + this.type + '.focusStart', function(e) {
+                        if ($selfRef.$target.hasClass('in')) {
+                            $selfRef._tabSet(e);
+                            if ($selfRef.flags.keyTab) {
+                                if (!$selfRef.flags.keyShift) {
+                                    e.stopPropagation();
+                                    e.preventDefault();
+                                    $selfRef._tabNext($selfRef.$focusFirst[0], $selfRef.$target);
+                                }
+                            }
+                            $selfRef._tabReset();
+                        }
                     });
             }
 
@@ -2440,6 +2456,7 @@ if (typeof jQuery === 'undefined') {
             this.$target = null;
             this.$viewport = null;
             this.$arrow = null;
+            this.$focusFirst = null;
             this.$focusLast = null;
             this.instance = null;
             this.settings = null;
@@ -2626,6 +2643,9 @@ if (typeof jQuery === 'undefined') {
                 .attr('aria-hidden', true)
                 .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore();
+            if (this.$focusFirst) {
+                this.$focusFirst.off('.cfw.' + this.type + '.focusFirst');
+            }
             if (this.$focusLast) {
                 this.$focusLast.off('.cfw.' + this.type + '.focusLast');
             }
@@ -2658,6 +2678,8 @@ if (typeof jQuery === 'undefined') {
             this.inserted = false;
             this.closeAdded = false;
             this.$arrow = null;
+            this.$focusFirst = null;
+            this.$focusLast = null;
         },
 
         _removeDynamicTipExt : function() {
@@ -2843,11 +2865,27 @@ if (typeof jQuery === 'undefined') {
             return false;
         },
 
-        // Move focus to next tabbabale item before given element
-        _tabPrev : function(current) {
-            var $selfRef = this;
+        // Set flags for `tab` key interactions
+        _tabSet : function(e) {
+            this._tabReset();
+            if (e.which == 9) {
+                this.flags.keyTab = true;
+                if (e.shiftKey) { this.flags.keyShift = true; }
+            }
+        },
 
-            var selectables = $selfRef._tabItems();
+        // Reset flags for `tab` key interactions
+        _tabReset : function() {
+            this.flags = {
+                keyShift: false,
+                keyTab: false
+            };
+        },
+
+        // Move focus to next tabbabale item before given element
+        _tabPrev : function(current, $scope) {
+            var $selfRef = this;
+            var selectables = $selfRef._tabItems($scope);
             var prevIndex = selectables.length - 1;
             if ($(current).length === 1) {
                 var currentIndex = selectables.index(current);
@@ -2859,10 +2897,10 @@ if (typeof jQuery === 'undefined') {
         },
 
         // Move focus to next tabbabale item after given element
-        _tabNext : function(current) {
+        _tabNext : function(current, $scope) {
             var $selfRef = this;
 
-            var selectables = $selfRef._tabItems();
+            var selectables = $selfRef._tabItems($scope);
             var nextIndex = 0;
             if ($(current).length === 1){
                 var currentIndex = selectables.index(current);
@@ -2871,6 +2909,21 @@ if (typeof jQuery === 'undefined') {
                 }
             }
             selectables.eq(nextIndex).trigger('focus');
+        },
+
+        // Find the next tabbabale item after given element
+        _tabFindNext : function(current, $scope) {
+            var $selfRef = this;
+
+            var selectables = $selfRef._tabItems($scope);
+            var nextIndex = 0;
+            if ($(current).length === 1){
+                var currentIndex = selectables.index(current);
+                if (currentIndex + 1 < selectables.length) {
+                    nextIndex = currentIndex + 1;
+                }
+            }
+            return selectables.eq(nextIndex);
         },
 
         _focusable : function(element, isTabIndexNotNaN) {
