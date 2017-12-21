@@ -461,6 +461,7 @@
       <li><a href="#events" id="markdown-toc-events">Events</a></li>
     </ul>
   </li>
+  <li><a href="#accessibility" id="markdown-toc-accessibility">Accessibility</a></li>
 </ul>
 
 <h2 id="examples">Examples</h2>
@@ -525,7 +526,7 @@
 </div>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-outline-primary"</span> <span class="na">data-cfw=</span><span class="s">"collapse"</span> <span class="na">data-cfw-collapse-target=</span><span class="s">"#collapseEx2"</span> <span class="na">data-cfw-collapse-horizontal=</span><span class="s">"true"</span><span class="nt">&gt;</span>Collapse <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"caret"</span><span class="nt">&gt;&lt;/span&gt;&lt;/button&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"collapseEx2"</span> <span class="na">class=</span><span class="s">"collapse width"</span> <span class="nt">&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"collapseEx2"</span> <span class="na">class=</span><span class="s">"collapse width"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"width: 20em"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;p&gt;</span>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem.<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
@@ -662,6 +663,10 @@ If you’d like it to default open, add the additional class <code class="highli
   <span class="c1">// do something...</span>
 <span class="p">});</span></code></pre></figure>
 
+<h2 id="accessibility">Accessibility</h2>
+
+<p>If the control element’s HTML element is not a button (e.g., an <code class="highlighter-rouge">&lt;a&gt;</code> or <code class="highlighter-rouge">&lt;div&gt;</code>), the attribute <code class="highlighter-rouge">role="button"</code> should be added to the element.</p>
+
             </main>
         </div>
 
@@ -673,7 +678,7 @@ If you’d like it to default open, add the additional class <code class="highli
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.3
+            Current version: 3.0.4
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>

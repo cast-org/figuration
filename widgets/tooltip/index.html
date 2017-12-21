@@ -951,13 +951,13 @@ function myTipAlign(tip, trigger) {
 
 <p>Tooltips have additional focus handling when using keyboard navigation.</p>
 
-<p>If navigating from <strong>above</strong> the tooltip’s trigger (typically with the <code class="highlighter-rouge">tab</code> key), when the trigger becomes focused, focus will be moved from the trigger to the <strong>top of the tooltip</strong>.</p>
+<p>If navigating from <strong>above</strong> the tooltip’s trigger (typically with the <code class="highlighter-rouge">tab</code> key), the trigger becomes focused, the next <strong>forward</strong> focus will move from the trigger to the <strong>first focusable item</strong> inside the tooltip.</p>
 
 <p>If navigating from <strong>below</strong> the tooltip’s trigger (typically with the <code class="highlighter-rouge">shift</code>-<code class="highlighter-rouge">tab</code> key combination), when the trigger is focused, focus will be moved from the trigger to the <strong>last focusable item</strong> inside the tooltip.</p>
 
 <p>When navigating <strong>forward</strong>, out the <em>bottom</em> of the tooltip, the focus will be moved to the next focusable item in the document relative to the trigger.  This is done so that if the <code class="highlighter-rouge">container</code> option is used, the focus will move to next logical item.  Otherwise, when using <code class="highlighter-rouge">container: body</code>, the focus will potentially drop off the end of the HTML document, leaving a keyboard user in an akward situation.</p>
 
-<p>When navigating <strong>backward</strong>, out the <em>top</em> of the tooltip, the focus will be moved to the preceding focusable item in the document relative to the trigger.</p>
+<p>When navigating <strong>backward</strong>, out the <em>top</em> of the tooltip, the focus will be moved to the trigger.</p>
 
 <p>This will not necessarily work with some assistive technologies reading modes.</p>
 
@@ -972,7 +972,7 @@ function myTipAlign(tip, trigger) {
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.3
+            Current version: 3.0.4
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>

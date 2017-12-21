@@ -444,7 +444,7 @@
 
                 <!-- Font CSS -->
 
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" rel="stylesheet" property="stylesheet" />
+<link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" integrity="sha384-VVoO3UHXsmXwXvf1kJx2jV3b1LbOfTqKL46DdeLG8z4pImkQ4GAP9GMy+MxHMDYG" crossorigin="anonymous" rel="stylesheet" property="stylesheet" />
 
 <p>Add quick, dynamic tab functionality to transition through panes of content.</p>
 
@@ -645,7 +645,7 @@
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myTab a[href="#profile"]'</span><span class="p">).</span><span class="nx">CFW_Tab</span><span class="p">(</span><span class="s1">'show'</span><span class="p">);</span> <span class="c1">// Select tab by name</span>
 <span class="nx">$</span><span class="p">(</span><span class="s1">'#myTab a:first'</span><span class="p">).</span><span class="nx">CFW_Tab</span><span class="p">(</span><span class="s1">'show'</span><span class="p">);</span>            <span class="c1">// Select first tab</span>
 <span class="nx">$</span><span class="p">(</span><span class="s1">'#myTab a:last'</span><span class="p">).</span><span class="nx">CFW_Tab</span><span class="p">(</span><span class="s1">'show'</span><span class="p">);</span>             <span class="c1">// Select last tab</span>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'#myTab li:eq(2) a'</span><span class="p">).</span><span class="nx">CFW_Tab</span><span class="p">(</span><span class="s1">'show'</span><span class="p">);</span>         <span class="c1">// Select third tab (0-indexed)</span></code></pre></figure>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'#myTab a:nth-child(3)'</span><span class="p">).</span><span class="nx">CFW_Tab</span><span class="p">(</span><span class="s1">'show'</span><span class="p">)</span>      <span class="c1">// Select third tab</span></code></pre></figure>
 
 <h3 id="options">Options</h3>
 
@@ -749,15 +749,15 @@
         When the tab list has the focus, moves the focus to the next focusable item on the page.
     </dd>
     <dt>
-        <kbd title="right arrow" aria-label="right arrow"><span class="fa fa-arrow-right" aria-hidden="true"></span></kbd> /
-        <kbd title="down arrow" aria-label="down arrow"><span class="fa fa-arrow-down" aria-hidden="true"></span></kbd>
+        <kbd title="right arrow" aria-label="right arrow"><span class="fas fa-arrow-right" aria-hidden="true"></span></kbd> /
+        <kbd title="down arrow" aria-label="down arrow"><span class="fas fa-arrow-down" aria-hidden="true"></span></kbd>
     </dt>
     <dd>
         Moves focus to the next tab and activates it, displaying the related tabpanel content.
     </dd>
     <dt>
-        <kbd title="left arrow" aria-label="left arrow"><span class="fa fa-arrow-left" aria-hidden="true"></span></kbd> /
-        <kbd title="up arrow" aria-label="up arrow"><span class="fa fa-arrow-up" aria-hidden="true"></span></kbd>
+        <kbd title="left arrow" aria-label="left arrow"><span class="fas fa-arrow-left" aria-hidden="true"></span></kbd> /
+        <kbd title="up arrow" aria-label="up arrow"><span class="fas fa-arrow-up" aria-hidden="true"></span></kbd>
     </dt>
     <dd>
         Moves focus to the previous tab and activates it, displaying the related tabpanel content.
@@ -781,7 +781,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.3
+            Current version: 3.0.4
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>

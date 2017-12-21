@@ -1,5 +1,5 @@
 /*!
- * Figuration (v3.0.3)
+ * Figuration (v3.0.4)
  * http://figuration.org
  * Copyright 2013-2017 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
@@ -21,7 +21,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): util.js
+ * Figuration (v3.0.4): util.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -39,6 +39,16 @@ if (typeof jQuery === 'undefined') {
 
     function doCallback(callback) {
         if (callback) { callback(); }
+    }
+
+    function escapeId(selector) {
+        // Escape IDs in case of special selectors (selector = '#myId:something')
+        // $.escapeSelector does not exist in jQuery < 3
+        selector = typeof $.escapeSelector === 'function' ?
+            $.escapeSelector(selector).substr(1) :
+            selector.replace(/(:|\.|\[|\]|,|=|@)/g, '\\$1');
+
+        return selector;
     }
 
     // =====
@@ -306,6 +316,11 @@ if (typeof jQuery === 'undefined') {
             selector = $node.attr('href') || '';
         }
 
+        // If selector is an ID
+        if (selector.charAt(0) === '#') {
+            selector = escapeId(selector);
+        }
+
         try {
             var $selector = $(document).find(selector);
             return $selector.length > 0 ? selector : null;
@@ -318,6 +333,11 @@ if (typeof jQuery === 'undefined') {
         var $node = $(this);
         if (!setting || setting === '#') {
             return $node.CFW_getSelectorFromElement();
+        }
+
+        // If selector is an ID
+        if (setting.charAt(0) === '#') {
+            setting = escapeId(setting);
         }
 
         try {
@@ -397,7 +417,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): drag.js
+ * Figuration (v3.0.4): drag.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -582,7 +602,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): collapse.js
+ * Figuration (v3.0.4): collapse.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -831,7 +851,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): dropdown.js
+ * Figuration (v3.0.4): dropdown.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1505,7 +1525,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): tab.js
+ * Figuration (v3.0.4): tab.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1759,7 +1779,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): affix.js
+ * Figuration (v3.0.4): affix.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1919,7 +1939,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): tooltip.js
+ * Figuration (v3.0.4): tooltip.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1959,6 +1979,7 @@ if (typeof jQuery === 'undefined') {
             this.$element = $(element);
             this.$target = null;
             this.$arrow = null;
+            this.$focusFirst = null;
             this.$focusLast = null;
             this.instance = null;
             this.isDialog = false;
@@ -2152,10 +2173,10 @@ if (typeof jQuery === 'undefined') {
                 this.inState.click = !this.inState.click;
                 this.follow = true;
 
-                if (!this._isInState()) {
-                    this.leave();
-                } else {
+                if (this._isInState()) {
                     this.enter();
+                } else {
+                    this.leave();
                 }
             } else {
                 // Disable delay when toggle programatically invoked
@@ -2249,53 +2270,52 @@ if (typeof jQuery === 'undefined') {
 
             // Additional tab/focus handlers for non-inline items
             if (this.settings.container) {
-                this.$element
-                    .off('focusin.cfw.' + this.type + '.focusStart')
-                    .on('focusin.cfw.' + this.type + '.focusStart', function(e) {
-                        if ($selfRef.$target.hasClass('in')) {
-                            // Check related target and move to start or end of popover
-                            var selectables = $selfRef._tabItems();
-                            var prevIndex = selectables.length - 1;
-                            var $prevNode = $(e.relatedTarget);
-                            // Edge case: if coming from another tooltip/popover - just place at start of target
-                            // Otherwise very complex to determine where coming from and focus should be going to
-                            if (($prevNode.closest('.tooltip').length > 0) || ($prevNode.closest('.popover').length > 0)) {
-                                $prevNode = null;
-                            }
-                            if ($prevNode && $prevNode.length === 1) {
-                                var currIndex = selectables.index($selfRef.$element);
-                                prevIndex = selectables.index($prevNode);
-                                if (currIndex < prevIndex) {
-                                    var tipSels = $selfRef._tabItems($selfRef.$target);
-
-                                    var selsIndex = tipSels.length - 2;
-                                    tipSels.eq(selsIndex).trigger('focus');
-                                } else {
-                                    $selfRef.$target.trigger('focus');
-                                }
-                            } else {
-                                $selfRef.$target.trigger('focus');
-                            }
-                        }
-                    });
                 this.$target
                     .off('.cfw.' + this.type + '.keyflag')
                     .on('keydown.cfw.' + this.type + '.keyflag', function(e) {
-                        if (e.which == 9) {
-                            $selfRef.flags.keyTab = true;
-                            if (e.shiftKey) { $selfRef.flags.keyShift = true; }
-                        }
+                        $selfRef._tabSet(e);
                     })
                     .on('keyup.cfw.' + this.type + '.keyflag', function(e) {
                         if (e.which == 9) {
-                            $selfRef.flags.keyTab = false;
-                            $selfRef.flags.keyShift = false;
+                            $selfRef._tabReset();
                         }
                     });
 
-                // Also inject an item to fake loss of focus in case the tooltip
-                // is last tabbable item in document - otherwise focus drops off page
-                if (!this.$focusLast && (this.eventTypes.indexOf('click') >= 0)) {
+                // Inject focus helper item at start to fake loss of focus going out the top
+                if (!this.$focusFirst) {
+                    this.$focusFirst = $(document.createElement('span'))
+                    .addClass(this.type + '-focusfirst')
+                    .attr('tabindex', 0);
+
+                    var $dialog =  this.isDialog ? this.$target.find('[role="document"]').first() : {};
+                    if ($dialog.length) {
+                        this.$focusFirst.prependTo($dialog);
+                    } else {
+                        this.$focusFirst.prependTo(this.$target);
+                    }
+                }
+                if (this.$focusFirst) {
+                    this.$focusFirst
+                        .off('focusin.cfw.' + this.type + '.focusFirst')
+                        .on('focusin.cfw.' + this.type + '.focusFirst', function(e) {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            if ($selfRef.flags.keyTab) {
+                                if ($selfRef.flags.keyShift) {
+                                    // Go back to trigger element
+                                    $selfRef.$element.trigger('focus');
+                                } else {
+                                    // Go to next tabbable item
+                                    $selfRef._tabNext($selfRef.$focusFirst[0], $selfRef.$target);
+                                }
+                            }
+                            $selfRef._tabReset();
+                        });
+                }
+
+                // Inject focus helper item at end to fake loss of focus going out the bottom
+                // Also helps if tip has last tabbable item in document - otherwise focus drops off page
+                if (!this.$focusLast) {
                     this.$focusLast = $(document.createElement('span'))
                     .addClass(this.type + '-focuslast')
                     .attr('tabindex', 0)
@@ -2305,35 +2325,51 @@ if (typeof jQuery === 'undefined') {
                     this.$focusLast
                         .off('focusin.cfw.' + this.type + '.focusLast')
                         .on('focusin.cfw.' + this.type + '.focusLast', function(e) {
-                            // Bypass this item if coming from outside of tip
-                            if ($selfRef.$target[0] !== e.relatedTarget && !$selfRef.$target.has(e.relatedTarget).length) {
-                                e.preventDefault();
+                            e.stopPropagation();
+                            e.preventDefault();
+                            if (!$selfRef.$target.is(e.relatedTarget) && !$selfRef.$target.has(e.relatedTarget).length) {
                                 return;
                             }
                             $selfRef._tabNext($selfRef.$element[0]);
                         });
                 }
-                this.$target
-                    .off('focusout.cfw.' + this.type)
-                    .on('focusout.cfw.' + this.type, function() {
-                        $(document)
-                            .off('focusin.cfw.' + this.type + '.' + this.instance)
-                            .one('focusin.cfw.' + this.type + '.' + this.instance, function(e) {
-                                if (document !== e.target && $selfRef.$target[0] !== e.target && !$selfRef.$target.has(e.target).length) {
-                                    if ($selfRef.flags.keyTab) {
-                                        if ($selfRef.flags.keyShift) {
-                                            $selfRef._tabPrev($selfRef.$element[0]);
-                                        } else {
-                                            $selfRef._tabNext($selfRef.$element[0]);
-                                        }
-                                    }
-                                    // Reset flags
-                                    $selfRef.flags = {
-                                        keyShift: false,
-                                        keyTab: false
-                                    };
+
+                this.$element
+                    .off('focusin.cfw.' + this.type + '.focusStart')
+                    .on('focusin.cfw.' + this.type + '.focusStart', function(e) {
+                        if ($selfRef.$target.hasClass('in')) {
+                            if (!$selfRef.$target.is(e.relatedTarget) && !$selfRef.$target.has(e.relatedTarget).length) {
+                                var selectables = $selfRef._tabItems();
+                                var $prevNode = $(e.relatedTarget);
+
+                                // Edge case: if coming from another tooltip/popover
+                                if ($prevNode.closest('.tooltip, .popover').length) {
+                                    $prevNode = null;
                                 }
-                            });
+
+                                if ($prevNode && $prevNode.length) {
+                                    var currIndex = selectables.index($selfRef.$element);
+                                    var prevIndex = selectables.index($prevNode);
+                                    if (currIndex < prevIndex) {
+                                        $selfRef._tabPrev($selfRef.$focusLast[0], $selfRef.$target);
+                                    }
+                                }
+                            }
+                        }
+                    })
+                    .off('keydown.cfw.' + this.type + '.focusStart')
+                    .on('keydown.cfw.' + this.type + '.focusStart', function(e) {
+                        if ($selfRef.$target.hasClass('in')) {
+                            $selfRef._tabSet(e);
+                            if ($selfRef.flags.keyTab) {
+                                if (!$selfRef.flags.keyShift) {
+                                    e.stopPropagation();
+                                    e.preventDefault();
+                                    $selfRef._tabNext($selfRef.$focusFirst[0], $selfRef.$target);
+                                }
+                            }
+                            $selfRef._tabReset();
+                        }
                     });
             }
 
@@ -2420,6 +2456,7 @@ if (typeof jQuery === 'undefined') {
             this.$target = null;
             this.$viewport = null;
             this.$arrow = null;
+            this.$focusFirst = null;
             this.$focusLast = null;
             this.instance = null;
             this.settings = null;
@@ -2578,13 +2615,10 @@ if (typeof jQuery === 'undefined') {
 
             this.inTransition = false;
 
-            // Delay to keep NVDA (and other screen readers?) from reading dialog header twice
-            setTimeout(function() {
-                // Handle case of immediate dispose after show
-                if ($selfRef.$element) {
-                    $selfRef.$element.attr('aria-describedby', $selfRef.targetID);
-                }
-            }, 25);
+            // Handle case of immediate dispose after show
+            if ($selfRef.$element) {
+                $selfRef.$element.attr('aria-describedby', $selfRef.targetID);
+            }
 
             if (!this.activate) {
                 this.$element.CFW_trigger('afterShow.cfw.' + this.type);
@@ -2609,6 +2643,9 @@ if (typeof jQuery === 'undefined') {
                 .attr('aria-hidden', true)
                 .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore();
+            if (this.$focusFirst) {
+                this.$focusFirst.off('.cfw.' + this.type + '.focusFirst');
+            }
             if (this.$focusLast) {
                 this.$focusLast.off('.cfw.' + this.type + '.focusLast');
             }
@@ -2641,6 +2678,8 @@ if (typeof jQuery === 'undefined') {
             this.inserted = false;
             this.closeAdded = false;
             this.$arrow = null;
+            this.$focusFirst = null;
+            this.$focusLast = null;
         },
 
         _removeDynamicTipExt : function() {
@@ -2740,18 +2779,31 @@ if (typeof jQuery === 'undefined') {
             var $viewport = this.$viewport;
             var elRect = $viewport[0].getBoundingClientRect();
 
+
+            if ($viewport.is('body') && (/fixed|absolute/).test(this.$element.css('position'))) {
+                // fixed and absolute elements should be tested against the window
+                return $.extend({}, elRect, this.getScreenSpaceBounds($viewport));
+            }
+
+            var viewportBoundary = $.extend({}, $viewport.offset(), { width: $viewport.outerWidth(), height: $viewport.outerHeight() });
+
+            // Double check elements inside fixed and aboslute elements against the viewport
             if ($viewport.is('body')) {
                 var $node = this.$element;
                 while ($node.length && !($node.is('body') || $node.is('html'))) {
                     if ((/fixed|absolute/).test($node.css('position'))) {
-                        // fixed and absolute elements should be tested against the window
-                        return $.extend({}, elRect, this.getScreenSpaceBounds($viewport));
+                        var screenBounds = this.getScreenSpaceBounds($viewport);
+                        viewportBoundary = $.extend({}, viewportBoundary, {
+                            width : Math.max(viewportBoundary.width, screenBounds.width),
+                            height: Math.max(viewportBoundary.height, screenBounds.height)
+                        });
+                        break;
                     }
                     $node = $node.offsetParent();
                 }
             }
 
-            return $.extend({}, elRect, $viewport.offset(), { width: $viewport.outerWidth(), height: $viewport.outerHeight() });
+            return $.extend({}, elRect, viewportBoundary);
         },
 
         getScreenSpaceBounds : function($viewport) {
@@ -2813,11 +2865,27 @@ if (typeof jQuery === 'undefined') {
             return false;
         },
 
-        // Move focus to next tabbabale item before given element
-        _tabPrev : function(current) {
-            var $selfRef = this;
+        // Set flags for `tab` key interactions
+        _tabSet : function(e) {
+            this._tabReset();
+            if (e.which == 9) {
+                this.flags.keyTab = true;
+                if (e.shiftKey) { this.flags.keyShift = true; }
+            }
+        },
 
-            var selectables = $selfRef._tabItems();
+        // Reset flags for `tab` key interactions
+        _tabReset : function() {
+            this.flags = {
+                keyShift: false,
+                keyTab: false
+            };
+        },
+
+        // Move focus to next tabbabale item before given element
+        _tabPrev : function(current, $scope) {
+            var $selfRef = this;
+            var selectables = $selfRef._tabItems($scope);
             var prevIndex = selectables.length - 1;
             if ($(current).length === 1) {
                 var currentIndex = selectables.index(current);
@@ -2829,10 +2897,10 @@ if (typeof jQuery === 'undefined') {
         },
 
         // Move focus to next tabbabale item after given element
-        _tabNext : function(current) {
+        _tabNext : function(current, $scope) {
             var $selfRef = this;
 
-            var selectables = $selfRef._tabItems();
+            var selectables = $selfRef._tabItems($scope);
             var nextIndex = 0;
             if ($(current).length === 1){
                 var currentIndex = selectables.index(current);
@@ -2841,6 +2909,21 @@ if (typeof jQuery === 'undefined') {
                 }
             }
             selectables.eq(nextIndex).trigger('focus');
+        },
+
+        // Find the next tabbabale item after given element
+        _tabFindNext : function(current, $scope) {
+            var $selfRef = this;
+
+            var selectables = $selfRef._tabItems($scope);
+            var nextIndex = 0;
+            if ($(current).length === 1){
+                var currentIndex = selectables.index(current);
+                if (currentIndex + 1 < selectables.length) {
+                    nextIndex = currentIndex + 1;
+                }
+            }
+            return selectables.eq(nextIndex);
         },
 
         _focusable : function(element, isTabIndexNotNaN) {
@@ -2905,7 +2988,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): popover.js
+ * Figuration (v3.0.4): popover.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3206,7 +3289,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): modal.js
+ * Figuration (v3.0.4): modal.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3714,7 +3797,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): accordion.js
+ * Figuration (v3.0.4): accordion.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3791,7 +3874,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): tab-responsive.js
+ * Figuration (v3.0.4): tab-responsive.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3926,7 +4009,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): slideshow.js
+ * Figuration (v3.0.4): slideshow.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4118,7 +4201,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): scrollspy.js
+ * Figuration (v3.0.4): scrollspy.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4296,7 +4379,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): alert.js
+ * Figuration (v3.0.4): alert.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4423,7 +4506,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): button.js
+ * Figuration (v3.0.4): button.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4566,7 +4649,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): lazy.js
+ * Figuration (v3.0.4): lazy.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4636,8 +4719,14 @@ if (typeof jQuery === 'undefined') {
             if (checkInitViewport && this.inViewport()) { this.show(); }
         },
 
+        isVisible : function() {
+            // Normalize on using the newer jQuery 3 visibility method
+            var elem = this.$element[0];
+            return !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
+        },
+
         inViewport : function() {
-            if (!this.settings.invisible && !this.$element.is(':visible')) {
+            if (!this.settings.invisible && !this.isVisible) {
                 return false;
             }
             return (!this.belowFold() && !this.afterRight() && !this.aboveTop() && !this.beforeLeft());
@@ -4763,7 +4852,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): slider.js
+ * Figuration (v3.0.4): slider.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4783,10 +4872,7 @@ if (typeof jQuery === 'undefined') {
         this.$thumbMax = null;
 
         this.$inputMin = null;
-        this.labelMinTxt = '';
-
         this.$inputMax = null;
-        this.labelMaxTxt = '';
 
         this.ordinal = false;
         this.range = false;
@@ -4867,7 +4953,9 @@ if (typeof jQuery === 'undefined') {
             var slider = document.createElement('div');
             this.$slider = $(slider).addClass('slider');
             if (this.settings.vertical) {
-                $(slider).addClass('slider-vertical');
+                $(slider)
+                    .attr('aria-orientation', 'vertical')
+                    .addClass('slider-vertical');
             } else {
                 $(slider).addClass('slider-horizontal');
             }
@@ -4881,28 +4969,26 @@ if (typeof jQuery === 'undefined') {
 
             /* Thumb/handle elements */
             var $labelMin = this._getLabel(this.$inputMin);
-            var labelMinID = $labelMin.CFW_getID('cfw-slider');
-            this.labelMinTxt = $labelMin.text();
+            var labelMinTxt = $labelMin.text();
 
             var thumbMin = document.createElement('div');
             this.$thumbMin = $(thumbMin).addClass('slider-thumb slider-thumb-min')
                 .attr({
                     'role': 'slider',
                     'tabindex': -1,
-                    'aria-labelledby': labelMinID
+                    'aria-label': labelMinTxt
                 });
 
             if (this.range) {
                 var $labelMax = this._getLabel(this.$inputMax);
-                var labelMaxID = $labelMax.CFW_getID('cfw-slider');
-                this.labelMaxTxt = $labelMax.text();
+                var labelMaxTxt = $labelMax.text();
 
                 var thumbMax = document.createElement('div');
                 this.$thumbMax = $(thumbMax).addClass('slider-thumb slider-thumb-max')
                     .attr({
                         'role': 'slider',
                         'tabindex': -1,
-                        'aria-labelledby': labelMaxID
+                        'aria-label': labelMaxTxt
                     });
 
                 this.$thumbMin.attr('aria-controls', this.$thumbMax.CFW_getID('cfw-slider'));
@@ -5002,9 +5088,9 @@ if (typeof jQuery === 'undefined') {
         },
 
         updateLabels : function() {
-            this.$thumbMin.attr('aria-valuetext', this.labelMinTxt + ' ' + this.$inputMin.val());
+            this.$thumbMin.attr('aria-valuetext', this.$inputMin.val());
             if (this.range) {
-                this.$thumbMax.attr('aria-valuetext', this.labelMaxTxt + ' ' + this.$inputMax.val());
+                this.$thumbMax.attr('aria-valuetext', this.$inputMax.val());
             }
         },
 
@@ -5258,9 +5344,7 @@ if (typeof jQuery === 'undefined') {
             this.$thumbMin = null;
             this.$thumbMax = null;
             this.$inputMin = null;
-            this.labelMinTxt = null;
             this.$inputMax = null;
-            this.labelMaxTxt = null;
             this.ordinal = null;
             this.range = null;
             this.val0 = null;
@@ -5296,7 +5380,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): equalize.js
+ * Figuration (v3.0.4): equalize.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5511,7 +5595,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): player.js
+ * Figuration (v3.0.4): player.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5605,13 +5689,21 @@ if (typeof jQuery === 'undefined') {
         this.trackCurrent = -1;
         this.$captionWrapper = null;
 
+        // Transcript
         this.$scriptElm = null;
         this.scriptCurrent = -1;
         this.scriptCues = null;
         this.seekPoint = '.player-transcript-seekpoint, .player-description-seekpoint';
 
+        // Description for transcript
         this.descCurrent = -1;
         this.descCues = null;
+
+        // Text-based description for screen reader
+        this.trackDescription = [];
+        this.$textDescribeElm = null;
+        this.textDescribeCurrent = -1;
+        this.textDescribeCues = null;
 
         var parsedData = this.$element.CFW_parseData('player', CFW_Widget_Player.DEFAULTS);
         this.settings = $.extend({}, CFW_Widget_Player.DEFAULTS, parsedData, options);
@@ -5621,6 +5713,9 @@ if (typeof jQuery === 'undefined') {
 
     CFW_Widget_Player.DEFAULTS = {
         mediaDescribe: false,       // Show description source media
+        textDescribe: -1,           // Text-based description off
+        textDescribeAnnounce: false,// If text-based description should announced by screen readers
+        textDescribeVisible: true,  // If text-based description should be visible
         transcript: -1,             // Default transcript off
         transcriptScroll : true,    // Scroll transcript
         transcriptDescribe: true,   // Show descriptions in transcript
@@ -5840,6 +5935,7 @@ if (typeof jQuery === 'undefined') {
             this.trackList();
             this.trackInit();
             this.scriptInit();
+            this.textDescriptionInit();
 
             this.$player.addClass('ready');
 
@@ -5982,7 +6078,7 @@ if (typeof jQuery === 'undefined') {
                 this.$sliderSeek.CFW_Slider({
                     min: 0,
                     max: this.media.duration,
-                    step: 0.5
+                    step: 1 // 1-second step
                 });
                 this.$sliderSeek.on('slid.cfw.slider', function() {
                     var newTime = $(this).data('cfw.slider').val0;
@@ -6101,7 +6197,7 @@ if (typeof jQuery === 'undefined') {
                 this.$volSeek.CFW_Slider({
                     min: 0,
                     max: 1,
-                    step: 0.01
+                    step: 0.05  // 5% increment
                 });
                 this.$volSeek.on('slid.cfw.slider', function() {
                     var newVol = parseFloat($(this).data('cfw.slider').val0);
@@ -6121,6 +6217,10 @@ if (typeof jQuery === 'undefined') {
             } else {
                 this.$volSeek.CFW_Slider('changeValue', 0, $inputElm, true);
             }
+
+            // Alter volume slider label to percentage
+            var level = parseInt($selfRef.media.volume * 100, 10);
+            $selfRef.$volSeek.find('.slider-thumb').attr('aria-valuetext', level + '%');
         },
 
         volumeIncrement : function(delta) {
@@ -6248,12 +6348,17 @@ if (typeof jQuery === 'undefined') {
             }
 
             var validTracks = [];
+            var descTracks = [];
             for (var i = 0; i < tracks.length; i++) {
                 if (tracks[i].kind == 'captions' || tracks[i].kind == 'subtitles') {
                     validTracks.push(i);
                 }
+                if (tracks[i].kind == 'descriptions') {
+                    descTracks.push(i);
+                }
             }
             this.trackValid = validTracks;
+            this.trackDescription = descTracks;
 
             /* not fully supported by any browser?
                  - only fires once for some reason from browser default controls
@@ -6333,8 +6438,6 @@ if (typeof jQuery === 'undefined') {
         },
 
         trackSet : function(trackID) {
-            var $selfRef = this;
-
             trackID = parseInt(trackID, 10);
 
             var tracks = this.media.textTracks;
@@ -6342,10 +6445,9 @@ if (typeof jQuery === 'undefined') {
                 return;
             }
 
-            // Disable any previouse cuechange handling
+            // Disable any previous cuechange handling
             if (this.trackCurrent !== -1) {
-                $(this.media.textTracks[this.trackCurrent]).off('cuechange.cfw.player.captionDisplay');
-                this.$media.off('timeupdate.cfw.player.captionDisplay');
+                this._cuechangeDisable(this.trackCurrent, 'captionDisplay');
             }
 
             this.trackCurrent = trackID;
@@ -6362,30 +6464,7 @@ if (typeof jQuery === 'undefined') {
 
             // Hook in cuechange handler if using custom captions
             if (this.trackCurrent !== -1 && this.$captionWrapper !== null) {
-                if (this.media.textTracks[this.trackCurrent].oncuechange !== undefined) {
-                    $(this.media.textTracks[this.trackCurrent])
-                        .on('cuechange.cfw.player.captionDisplay', function() {
-                            $selfRef.captionDisplayUpdate(this.activeCues);
-                        });
-                } else {
-                    // Firefox does not currently support oncuechange event
-                    this.$media
-                        .on('timeupdate.cfw.player.captionDisplay', function() {
-                            var activeCues = $selfRef.media.textTracks[$selfRef.trackCurrent].activeCues;
-                            $selfRef.captionDisplayUpdate(activeCues);
-                        });
-                }
-
-                // Artificially trigger a cuechange - in case already in middle of a cue
-                var cueEvent;
-                if (this.media.textTracks[this.trackCurrent].oncuechange !== undefined) {
-                    cueEvent = $.Event('cuechange');
-                    $(this.media.textTracks[this.trackCurrent]).trigger(cueEvent);
-                } else {
-                    // Firefox
-                    cueEvent = $.Event('timeupdate');
-                    this.$media.trigger(cueEvent);
-                }
+                this._cuechangeEnable(this.trackCurrent, 'captionDisplay', this.captionDisplayUpdate);
             }
 
             this.trackStatus();
@@ -6571,8 +6650,7 @@ if (typeof jQuery === 'undefined') {
 
             // Disable any previous cuechange handling
             if (this.scriptCurrent !== -1) {
-                $(this.media.textTracks[this.scriptCurrent]).off('cuechange.cfw.player.transcript');
-                this.$media.off('timeupdate.cfw.player.transcript');
+                this._cuechangeDisable(this.scriptCurrent, 'transcript');
             }
 
             this.scriptCurrent = trackID;
@@ -6597,40 +6675,38 @@ if (typeof jQuery === 'undefined') {
 
             var tracks = this.media.textTracks;
             var tracksLength = tracks.length;
-            if (tracksLength <= 0 || this.scriptCurrent == -1) {
+            if (tracksLength <= 0) {
                 this.scriptCues = null;
                 this.descCurrent = -1;
                 this.descCues = null;
-                return;
             }
 
-            var cues = tracks[this.scriptCurrent].cues;
-            if (cues == null || cues.length <= 0) {
-                var hold = (this.trackCurrent == -1) ? null : tracks[this.trackCurrent].mode;
-                // preload all tracks to stop future `load` event triggers on transcript change
-                for (var i = 0; i < tracksLength; i++) {
-                    tracks[i].mode = 'hidden';
-                }
-                // reset the caption track state
-                if (hold !== null) {
-                    tracks[this.trackCurrent].mode = hold;
-                }
+            // Preload all tracks to stop future `load` event triggers on transcript change
+            var hold = (this.trackCurrent == -1) ? null : tracks[this.trackCurrent].mode;
+
+            for (var i = 0; i < tracksLength; i++) {
+                tracks[i].mode = 'hidden';
+            }
+            // reset the caption track state
+            if (hold !== null) {
+                tracks[this.trackCurrent].mode = hold;
             }
 
             // Find description track
             var descAvailable = false;
             this.descCurrent = -1;
             this.descCues = null;
-            var descLang = tracks[this.scriptCurrent].language;
-            for (var j = 0; j < tracksLength; j++) {
-                if (descLang == tracks[j].language && 'descriptions' == tracks[j].kind) {
-                    if ($selfRef.settings.transcriptDescribe) {
-                        $selfRef.descCurrent = j;
+            if (this.scriptCurrent !== -1) {
+                var descLang = tracks[this.scriptCurrent].language;
+                for (var j = 0; j < tracksLength; j++) {
+                    if (descLang == tracks[j].language && 'descriptions' == tracks[j].kind) {
+                        if ($selfRef.settings.transcriptDescribe) {
+                            $selfRef.descCurrent = j;
+                        }
+                        descAvailable = true;
                     }
-                    descAvailable = true;
                 }
             }
-
             var $descControl = this.$player.find('[data-cfw-player-script-describe]');
             if (!descAvailable) {
                 this._controlDisable($descControl);
@@ -6638,10 +6714,25 @@ if (typeof jQuery === 'undefined') {
                 this._controlEnable($descControl);
             }
 
+            // Test again for text-based description
+            var textDescAvailable = false;
+            for (var k = 0; k < tracksLength; k++) {
+                if ('descriptions' == tracks[k].kind) {
+                    textDescAvailable = true;
+                }
+            }
+            var $textDescControl = this.$player.find('[data-cfw-player="textdescription"]');
+            if (!textDescAvailable) {
+                this._controlDisable($textDescControl);
+            } else {
+                this._controlEnable($textDescControl);
+            }
+
             function scriptLoad2(forced) {
                 var tracks = $selfRef.media.textTracks; // Reload object to get update
-                var cues = tracks[$selfRef.scriptCurrent].cues;
+                var cues = ($selfRef.scriptCurrent == -1) ? null : tracks[$selfRef.scriptCurrent].cues;
                 var descCues = ($selfRef.descCurrent == -1) ? null : tracks[$selfRef.descCurrent].cues;
+                var textDescCues = ($selfRef.textDescribeCurrent == -1) ? null : tracks[$selfRef.textDescribeCurrent].cues;
 
                 if (cues && cues.length <= 0 && !forced) {
                     // Force media to load
@@ -6654,6 +6745,7 @@ if (typeof jQuery === 'undefined') {
 
                 $selfRef.scriptCues = cues;
                 $selfRef.descCues = descCues;
+                $selfRef.textDescribeCues = textDescCues;
                 $selfRef.scriptProcess();
             }
 
@@ -6762,19 +6854,7 @@ if (typeof jQuery === 'undefined') {
             }
 
             // Hook in cuechange handler
-            if (this.media.textTracks[this.scriptCurrent].oncuechange !== undefined) {
-                $(this.media.textTracks[this.scriptCurrent])
-                    .on('cuechange.cfw.player.transcript', function() {
-                        $selfRef.scriptHighlight(this.activeCues);
-                    });
-            } else {
-                // Firefox does not currently support oncuechange event
-                this.$media
-                    .on('timeupdate.cfw.player.transcript', function() {
-                        var activeCues = $selfRef.media.textTracks[$selfRef.scriptCurrent].activeCues;
-                        $selfRef.scriptHighlight(activeCues);
-                    });
-            }
+            this._cuechangeEnable(this.scriptCurrent, 'transcript', this.scriptHighlight);
 
             // Seekpoint event handlers
             $(this.seekPoint, this.$scriptElm)
@@ -6783,17 +6863,6 @@ if (typeof jQuery === 'undefined') {
                     var spanStart = parseFloat($(this).attr('data-start'));
                     $selfRef.scriptSeek(spanStart);
                 });
-
-            // Artificially trigger first cuechange - in case already in middle of a cue
-            var cueEvent;
-            if (this.media.textTracks[this.scriptCurrent].oncuechange !== undefined) {
-                cueEvent = $.Event('cuechange');
-                $(this.media.textTracks[this.scriptCurrent]).trigger(cueEvent);
-            } else {
-                // Firefox
-                cueEvent = $.Event('timeupdate');
-                this.$media.trigger(cueEvent);
-            }
 
             this.$media.CFW_trigger('afterTranscriptShow.cfw.player');
         },
@@ -6835,6 +6904,180 @@ if (typeof jQuery === 'undefined') {
                 this.$media.trigger('load');
             } else {
                 this.seekTo(timestamp);
+            }
+        },
+
+        textDescriptionInit : function() {
+            var $selfRef = this;
+            var $tdElm = this.$player.find('[data-cfw-player="textdescription"]');
+            if ($tdElm.length <= 0) {
+                return;
+            }
+
+            if (this.trackDescription.length <= 0) {
+                this._controlDisable($tdElm);
+                return;
+            }
+
+            // Build menu
+            var wrapper = '<span class="player-text-describe-wrapper"></span>';
+            var $menu = $('<ul class="player-text-describe-menu dropdown-menu"></ul>');
+            $tdElm.wrap(wrapper);
+
+            var $wrapper = $tdElm.parent(); /* Because $().wrap() clones element */
+
+            $wrapper.append($menu);
+            var menuID = $menu.CFW_getID('cfw-player');
+
+            var $menuItem = $('<li class="player-text-describe-off"><button type="button" class="dropdown-item" data-cfw-player-text-describe="-1">Off</button></li>');
+            $menu.append($menuItem);
+
+            var tracks = this.media.textTracks;
+            for (var i = 0; i < this.trackDescription.length; i++) {
+                var trackID = this.trackDescription[i];
+                $menuItem = $('<li><button type="button" class="dropdown-item" data-cfw-player-text-describe="' + trackID + '">' + tracks[trackID].label + '</a></li>');
+                $menu.append($menuItem);
+            }
+            if (this.settings.transcriptOption) {
+                $menuItem = $('<li class="dropdown-divider"></li>');
+                $menu.append($menuItem);
+                // Add announce toggle
+                var announceCheck = (this.settings.textDescribeAnnounce) ? 'checked' : '';
+                $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-text-describe-announce class="form-check-input" ' + announceCheck + '> Announce with Screen Reader</label></li>');
+                $menu.append($menuItem);
+                // Add visibility toggle
+                var visibleCheck = (this.settings.textDescribeVisible) ? 'checked' : '';
+                $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-text-describe-visible class="form-check-input" ' + visibleCheck + '> Visible Description</label></li>');
+                $menu.append($menuItem);
+            }
+
+            // Event handlers
+            this.$player.on('click', '[data-cfw-player-text-describe]', function(e) {
+                e.preventDefault();
+                var $this = $(this);
+                var num = $this.attr('data-cfw-player-text-describe');
+                $selfRef.textDescriptionSet(num);
+            });
+            if (this.settings.transcriptOption) {
+                this.$player.on('click', '[data-cfw-player-text-describe-announce]', function() {
+                    $selfRef.settings.textDescribeAnnounce = !$selfRef.settings.textDescribeAnnounce;
+                    $(this).prop('checked', $selfRef.settings.textDescribeAnnounce);
+                    $selfRef.textDescriptionSet($selfRef.textDescribeCurrent);
+                });
+                this.$player.on('click', '[data-cfw-player-text-describe-visible]', function(e) {
+                    if (!$selfRef._controlIsDisabled($(e.target))) {
+                        $selfRef.settings.textDescribeVisible = !$selfRef.settings.textDescribeVisible;
+                        $(this).prop('checked', $selfRef.settings.textDescribeVisible);
+                        $selfRef.textDescriptionSet($selfRef.textDescribeCurrent);
+                    }
+                });
+            }
+
+            $tdElm.CFW_Dropdown({ target: '#' + menuID });
+
+            this.textDescriptionSet(this.settings.textDescribe);
+        },
+
+        textDescriptionSet : function(trackID) {
+            trackID = parseInt(trackID, 10);
+
+            if (this.trackDescription.length <= 0) {
+                return;
+            }
+            if (this.trackDescription.indexOf(trackID) == -1 && trackID != -1) {
+                return;
+            }
+
+            if (trackID == -1 && this.$textDescribeElm !== null) {
+                if (!this.$media.CFW_trigger('beforeTextDescriptionHide.cfw.player')) {
+                    return;
+                }
+            } else {
+                if (!this.$media.CFW_trigger('beforeTextDescriptionShow.cfw.player')) {
+                    return;
+                }
+            }
+
+            if (this.$textDescribeElm !== null) {
+                this.$textDescribeElm.remove();
+                this.$textDescribeElm = null;
+            }
+            this.$element.removeClass('player-textdescshow');
+
+            // Remove any existing text description containers
+            this.$element.find('.player-textdesc-announce').remove();
+            this.$element.find('.player-textdesc-visible').remove();
+
+            var $tdElm = this.$player.find('[data-cfw-player="textdescription"]');
+            if ($tdElm.length) {
+                // Update menu
+                var $tdPar = $tdElm.parent();
+                $tdElm.removeClass('active');
+                $tdPar.removeClass('active');
+                $tdPar.find('[data-cfw-player-text-describe]')
+                    .removeClass('active')
+                    .removeAttr('aria-pressed');
+
+                if (trackID !== -1) {
+                    $tdElm.addClass('active');
+                    $tdPar.addClass('active');
+                    $tdPar.find('[data-cfw-player-text-describe="' + trackID + '"]')
+                        .addClass('active')
+                        .attr('aria-pressed', 'true');
+                }
+            }
+
+            // Disable any previous cuechange handling
+            if (this.textDescribeCurrent !== -1) {
+                this._cuechangeDisable(this.textDescribeCurrent, 'textdescribe');
+            }
+
+            this.textDescribeCurrent = trackID;
+
+            if (trackID == -1) {
+                this.textDescribeCues = null;
+                this.$media.CFW_trigger('afterTextDescriptionHide.cfw.player');
+            } else {
+                this.scriptLoad();
+            }
+
+            if (trackID !== -1) {
+                // Insert new text description container
+                var $newElm = $('<div class="player-textdesc"></div>');
+
+                var trackLang = this.media.textTracks[trackID].language;
+                if (trackLang.length) {
+                    $newElm.attr('lang', trackLang);
+                }
+                if (this.settings.textDescribeAnnounce) {
+                    $newElm.attr({
+                        'aria-live': 'assertive',
+                        'aria-atomic' : 'true'
+                    });
+                }
+                if (!this.settings.textDescribeVisible) {
+                    $newElm.addClass('sr-only');
+                }
+                this.$element.append($newElm);
+                this.$textDescribeElm = this.$element.find('.player-textdesc');
+
+                // Hook in cuechange handler
+                this._cuechangeEnable(this.textDescribeCurrent, 'textdescribe', this.textDescribeUpdate);
+
+                this.$media.CFW_trigger('afterTextDescriptionShow.cfw.player');
+            }
+        },
+
+        textDescribeUpdate : function(activeCues) {
+            if (activeCues === null || activeCues.length <= 0) {
+                this.$textDescribeElm.empty();
+            } else {
+                // Show caption area and update caption
+                var $tmp = $(document.createElement('div'));
+                $tmp.append(activeCues[0].getCueAsHTML());
+
+                var cueHTML = $tmp.html().replace('\n', '<br>');
+                this.$textDescribeElm.append(cueHTML);
             }
         },
 
@@ -7035,6 +7278,39 @@ if (typeof jQuery === 'undefined') {
             return $control.is('.disabled, :disabled');
         },
 
+        _cuechangeEnable : function(trackID, namespace, callback) {
+            var $selfRef = this;
+            if (this.media.textTracks[trackID].oncuechange !== undefined) {
+                $(this.media.textTracks[trackID])
+                    .on('cuechange.cfw.player.' + namespace, function() {
+                        callback.call($selfRef, this.activeCues);
+                    });
+            } else {
+                // Firefox does not currently support oncuechange event
+                this.$media
+                    .on('timeupdate.cfw.player.' + namespace, function() {
+                        var activeCues = $selfRef.media.textTracks[trackID].activeCues;
+                        callback.call($selfRef, activeCues);
+                    });
+            }
+
+            // Artificially trigger a cuechange - in case already in middle of a cue
+            var cueEvent;
+            if (this.media.textTracks[trackID].oncuechange !== undefined) {
+                cueEvent = $.Event('cuechange');
+                $(this.media.textTracks[trackID]).trigger(cueEvent);
+            } else {
+                // Firefox
+                cueEvent = $.Event('timeupdate');
+                this.$media.trigger(cueEvent);
+            }
+        },
+
+        _cuechangeDisable : function(trackID, namespace) {
+            $(this.media.textTracks[trackID]).off('cuechange.cfw.player.' + namespace);
+            this.$media.off('timeupdate.cfw.player.' + namespace);
+        },
+
         dispose : function() {
             clearTimeout(this.activityTimer);
             if (this.$scriptElm) {
@@ -7085,6 +7361,10 @@ if (typeof jQuery === 'undefined') {
             this.scriptCurrent = null;
             this.scriptCues = null;
             this.descCues = null;
+            this.trackDescription = null;
+            this.$textDescribeElm = null;
+            this.textDescribeCurrent = null;
+            this.textDescribeCues = null;
             this.settings = null;
         }
     };
@@ -7112,7 +7392,7 @@ if (typeof jQuery === 'undefined') {
 
 /**
  * --------------------------------------------------------------------------
- * Figuration (v3.0.3): common.js
+ * Figuration (v3.0.4): common.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */

@@ -400,6 +400,7 @@
   <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
   <li><a href="#using-icons" id="markdown-toc-using-icons">Using Icons</a></li>
   <li><a href="#disabled-and-active-states" id="markdown-toc-disabled-and-active-states">Disabled and Active States</a></li>
+  <li><a href="#with-text" id="markdown-toc-with-text">With Text</a></li>
   <li><a href="#sizes" id="markdown-toc-sizes">Sizes</a></li>
   <li><a href="#alignment" id="markdown-toc-alignment">Alignment</a></li>
 </ul>
@@ -556,6 +557,35 @@
   <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></div>
 
+<h2 id="with-text">With Text</h2>
+
+<p>Add normal text to your pagination navigation by using <code class="highlighter-rouge">.page-text</code>.  This class will adjust the alignment, spacing, and size the text to match the controls.</p>
+
+<div class="cf-example">
+<nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item"><span class="page-link disabled">Previous</span></li>
+    <li class="page-item"><a href="#" class="page-link">1</a></li>
+    <li class="page-item"><a href="#" class="page-link">2</a></li>
+    <li class="page-item"><span class="page-text">&hellip;</span></li>
+    <li class="page-item"><a href="#" class="page-link">98</a></li>
+    <li class="page-item"><a href="#" class="page-link">99</a></li>
+    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+  </ul>
+</nav>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">aria-label=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"pagination"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"page-link disabled"</span><span class="nt">&gt;</span>Previous<span class="nt">&lt;/span&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"page-link"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"page-link"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">"page-text"</span><span class="nt">&gt;</span><span class="ni">&amp;hellip;</span><span class="nt">&lt;/span&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"page-link"</span><span class="nt">&gt;</span>98<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"page-link"</span><span class="nt">&gt;</span>99<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"page-item"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"page-link"</span><span class="nt">&gt;</span>Next<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/nav&gt;</span></code></pre></div>
+
 <h2 id="sizes">Sizes</h2>
 
 <p>Fancy larger or smaller pagination? Add <code class="highlighter-rouge">.pagination-xs</code>, <code class="highlighter-rouge">.pagination-sm</code>, <code class="highlighter-rouge">.pagination-lg</code>,  or <code class="highlighter-rouge">.pagination-xl</code> for additional sizes.</p>
@@ -563,81 +593,61 @@
 <div class="cf-example">
   <nav aria-label="...">
     <ul class="pagination pagination-xl">
-      <li class="page-item">
-        <a href="#" class="page-link" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-          <span class="sr-only">Previous</span>
-        </a>
-      </li>
+      <li class="page-item"><span class="page-link disabled">Previous</span></li>
       <li class="page-item"><a href="#" class="page-link">1</a></li>
       <li class="page-item"><a href="#" class="page-link">2</a></li>
-      <li class="page-item"><a href="#" class="page-link">3</a></li>
-      <li class="page-item">
-        <a href="#" class="page-link" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-          <span class="sr-only">Next</span>
-        </a>
-      </li>
+      <li class="page-item"><span class="page-text">&hellip;</span></li>
+      <li class="page-item"><a href="#" class="page-link">98</a></li>
+      <li class="page-item"><a href="#" class="page-link">99</a></li>
+      <li class="page-item"><a href="#" class="page-link">Next</a></li>
     </ul>
   </nav>
 
   <nav aria-label="...">
     <ul class="pagination pagination-lg">
-      <li class="page-item">
-        <a href="#" class="page-link" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-          <span class="sr-only">Previous</span>
-        </a>
-      </li>
+      <li class="page-item"><span class="page-link disabled">Previous</span></li>
       <li class="page-item"><a href="#" class="page-link">1</a></li>
       <li class="page-item"><a href="#" class="page-link">2</a></li>
-      <li class="page-item"><a href="#" class="page-link">3</a></li>
-      <li class="page-item">
-        <a href="#" class="page-link" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-          <span class="sr-only">Next</span>
-        </a>
-      </li>
+      <li class="page-item"><span class="page-text">&hellip;</span></li>
+      <li class="page-item"><a href="#" class="page-link">98</a></li>
+      <li class="page-item"><a href="#" class="page-link">99</a></li>
+      <li class="page-item"><a href="#" class="page-link">Next</a></li>
+    </ul>
+  </nav>
+
+    <nav aria-label="...">
+    <ul class="pagination">
+      <li class="page-item"><span class="page-link disabled">Previous</span></li>
+      <li class="page-item"><a href="#" class="page-link">1</a></li>
+      <li class="page-item"><a href="#" class="page-link">2</a></li>
+    <li class="page-item"><span class="page-text">&hellip;</span></li>
+      <li class="page-item"><a href="#" class="page-link">98</a></li>
+      <li class="page-item"><a href="#" class="page-link">99</a></li>
+      <li class="page-item"><a href="#" class="page-link">Next</a></li>
     </ul>
   </nav>
 
   <nav aria-label="...">
     <ul class="pagination pagination-sm">
-      <li class="page-item">
-        <a href="#" class="page-link" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-          <span class="sr-only">Previous</span>
-        </a>
-      </li>
+      <li class="page-item"><span class="page-link disabled">Previous</span></li>
       <li class="page-item"><a href="#" class="page-link">1</a></li>
       <li class="page-item"><a href="#" class="page-link">2</a></li>
-      <li class="page-item"><a href="#" class="page-link">3</a></li>
-      <li class="page-item">
-        <a href="#" class="page-link" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-          <span class="sr-only">Next</span>
-        </a>
-      </li>
+      <li class="page-item"><span class="page-text">&hellip;</span></li>
+      <li class="page-item"><a href="#" class="page-link">98</a></li>
+      <li class="page-item"><a href="#" class="page-link">99</a></li>
+      <li class="page-item"><a href="#" class="page-link">Next</a></li>
     </ul>
   </nav>
 
   <nav aria-label="...">
     <ul class="pagination pagination-xs">
-      <li class="page-item">
-        <a href="#" class="page-link" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-          <span class="sr-only">Previous</span>
-        </a>
-      </li>
+      <li class="page-item"><span class="page-link disabled">Previous</span></li>
       <li class="page-item"><a href="#" class="page-link">1</a></li>
       <li class="page-item"><a href="#" class="page-link">2</a></li>
-      <li class="page-item"><a href="#" class="page-link">3</a></li>
-      <li class="page-item">
-        <a href="#" class="page-link" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-          <span class="sr-only">Next</span>
-        </a>
-      </li>
+      <li class="page-item"><span class="page-text">&hellip;</span></li>
+      <li class="page-item"><a href="#" class="page-link">98</a></li>
+      <li class="page-item"><a href="#" class="page-link">99</a></li>
+      <li class="page-item"><a href="#" class="page-link">Next</a></li>
     </ul>
   </nav>
 </div>
@@ -648,18 +658,28 @@
     ...
   <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;/nav&gt;</span>
+
 <span class="c">&lt;!-- Large pagination --&gt;</span>
 <span class="nt">&lt;nav</span> <span class="na">aria-label=</span><span class="s">"..."</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"pagination pagination-lg"</span><span class="nt">&gt;</span>
     ...
   <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;/nav&gt;</span>
+
+<span class="c">&lt;!-- Default pagination --&gt;</span>
+<span class="nt">&lt;nav</span> <span class="na">aria-label=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"pagination"</span><span class="nt">&gt;</span>
+    ...
+  <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/nav&gt;</span>
+
 <span class="c">&lt;!-- Small pagination --&gt;</span>
 <span class="nt">&lt;nav</span> <span class="na">aria-label=</span><span class="s">"..."</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"pagination pagination-sm"</span><span class="nt">&gt;</span>
     ...
   <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;/nav&gt;</span>
+
 <span class="c">&lt;!-- Extra Small pagination --&gt;</span>
 <span class="nt">&lt;nav</span> <span class="na">aria-label=</span><span class="s">"..."</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"pagination pagination-xs"</span><span class="nt">&gt;</span>
@@ -725,7 +745,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.3
+            Current version: 3.0.4
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>
