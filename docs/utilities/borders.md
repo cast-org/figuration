@@ -114,41 +114,58 @@ When elements are of a square (1:1) aspect ratio, you can create a circle using 
 
 ## Border Addition
 
-Quickly add the default component border to an element with the `.border` utility class.  You can also add a border on the horizontal or vertical sides.
+Quickly add the default component border to an element with the `.border{-side}` utility classes.
 
 Available border addition utilities are:
-* `.border` - for both all sides
-* `.border-x` - for both `left` and `right` sides
+* `.border` - for all sides
+* `.border-t` - for the `top` side
+* `.border-b` - for the `bottom` side
+* `.border-e` - for the `end` side
+* `.border-s` - for the `start` side
+* `.border-x` - for both `start` and `end` sides
 * `.border-y` - for both `top` and `bottom` sides
 
+The *start/end sides* are designated as follows depending on which version of the Figuration CSS you are using.  The default `figuration.*.css` uses the `ltr` mode, where `figuration-rtl.*.css` uses the `rtl` mode.
+
+- For `left-to-right` mode (`ltr` - default);
+  - `start` refers to the `left` side
+  - `end` refers to the `right` side
+- For `right-to-left` mode (`rtl`);
+  - `start` refers to the `right` side
+  - `end` refers to the `left` side
+
 {% example html %}
-<div class="border p-0_5 mb-1">
+<div class="border bg-gray-50 p-0_5 mb-1">
   This div container has a border on all sides, and some padding added.
 </div>
 
-<div class="border-x p-0_5 mb-1">
+<div class="border-x bg-gray-50 p-0_5 mb-1">
   This div container has a border on the left and right sides, and some padding added.
 </div>
 
-<div class="border-y p-0_5">
+<div class="border-y bg-gray-50 p-0_5 mb-1">
   This div container has a border on the top and bottom sides, and some padding added.
 </div>
+
+<span class="border-t bg-gray-50 p-0_5" style="width: 3rem;">'top'</span>
+<span class="border-e bg-gray-50 p-0_5" style="width: 3rem;">'end'</span>
+<span class="border-b bg-gray-50 p-0_5" style="width: 3rem;">'bottom'</span>
+<span class="border-s bg-gray-50 p-0_5" style="width: 3rem;">'start'</span>
 
 {% endexample %}
 
 ## Border Removal
 
-Add a class to remove a border on a given side of an element, using the format `.border-0-{sides}`.
+Remove the border on a given side of an element with the `.border-0{-side}` utility classes.
 
-Where *sides* is one of:
-
-* blank - for `all` 4 sides of the element
-* `t` - for the `top` side
-* `b` - for the `bottom` side
-* `e` - for the `end` side
-* `s` - for the `start` side
-* `x` - for both `left` and `right` sides
-* `y` - for both `top` and `bottom` sides
+Available border removal utilities are:
+* `.border-0` - for `all` 4 sides of the element
+* `.border-0-t` - for the `top` side
+* `.border-0-b` - for the `bottom` side
+* `.border-0-e` - for the `end` side
+* `.border-0-s` - for the `start` side
+* `.border-0-x` - for both `start` and `end` sides
+* `.border-0-y` - for both `top` and `bottom` sides
 
 The *start/end sides* are designated as follows depending on which version of the Figuration CSS you are using.  The default `figuration.*.css` uses the `ltr` mode, where `figuration-rtl.*.css` uses the `rtl` mode.
 
