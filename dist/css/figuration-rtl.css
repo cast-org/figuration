@@ -9137,13 +9137,23 @@ a.bg-gray-900:focus, a.bg-gray-900:hover {
   border: 1px solid #a3a3a3 !important;
 }
 
+.border-t,
 .border-y {
   border-top: 1px solid #a3a3a3 !important;
+}
+
+.border-e,
+.border-x {
+  border-left: 1px solid #a3a3a3 !important;
+}
+
+.border-b,
+.border-y {
   border-bottom: 1px solid #a3a3a3 !important;
 }
 
+.border-s,
 .border-x {
-  border-left: 1px solid #a3a3a3 !important;
   border-right: 1px solid #a3a3a3 !important;
 }
 
