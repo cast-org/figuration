@@ -12,7 +12,7 @@
         .flex#{$bprule}-last { order: 1; }
         .flex#{$bprule}-unordered { order: 0; }
 
-        @for $col from 1 through $grid-columns {
+        @for $col from 0 through $grid-columns {
             .flex#{$bprule}-order-#{$col} {
                 order: $col;
             }
