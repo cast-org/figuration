@@ -147,6 +147,16 @@ Keep tooltips in their place with the `viewport` option.
 </script>
 {% endexample %}
 
+### Disabled Elements
+
+Elements with the `disabled` attribute aren't interactive, meaning users cannot hover or click them to trigger a tooltip (or popover). As a workaround, you'll want to trigger the tooltip from a wrapper `<div>` or `<span>` and override the `pointer-events` on the disabled element.
+
+{% example html %}
+<span class="d-inline-block" data-cfw="tooltip" title="Tooltip for disabled item">
+    <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button>
+</span>
+{% endexample %}
+
 ## Usage
 
 The tooltip widget, by default, generates content and markup on demand, and by default places tooltips after their trigger element.
