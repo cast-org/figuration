@@ -379,6 +379,9 @@ $custom-file-text: (
 
 // Flex utilities
 .cf-example-flex {
+    .cf-example {
+        overflow: auto;
+    }
     > div div {
         background-color: rgba(34, 68, 102, .05);
         border: $gridline-border-width solid rgba(34, 68, 102, .2);

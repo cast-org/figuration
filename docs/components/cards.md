@@ -19,7 +19,7 @@ Cards are built with as little markup and styles as possible, but still manage t
 Below is an example of a basic card with mixed content and a fixed width. Cards have no fixed width to start, so they’ll naturally fill the full width of its parent element. This is easily customized with our various [sizing options](#sizing).
 
 {% example html %}
-<div class="card" style="width: 20rem;">
+<div class="card" style="width: 18rem;">
   <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
@@ -96,7 +96,7 @@ Cards include a few options for working with images. Choose from embedding an im
 Images can help add some visual interest to your cards.
 
 {% example html %}
-<div class="card" style="width: 20rem;">
+<div class="card" style="width: 18rem;">
   <h4 class="card-header">Sample Card</h4>
   <img class="img-fluid" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image">
   <div class="card-body">
@@ -107,7 +107,7 @@ Images can help add some visual interest to your cards.
 {% endexample %}
 
 {% example html %}
-<div class="card" style="width: 20rem;">
+<div class="card" style="width: 18rem;">
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">This is a card with text and a nested image.</p>
@@ -124,7 +124,7 @@ Similar to headers and footers, cards can include top and bottom image caps.
 Use `.card-img-top` to round over the top corners when placing an image at the top of a card.
 
 {% example html %}
-<div class="card" style="width: 20rem;">
+<div class="card" style="width: 18rem;">
   <img class="card-img-top img-fluid" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image cap">
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
@@ -137,7 +137,7 @@ Use `.card-img-top` to round over the top corners when placing an image at the t
 Use `.card-img-bottom` to round over the bottom corners when placing an image at the bottom of a card.
 
 {% example html %}
-<div class="card" style="width: 20rem;">
+<div class="card" style="width: 18rem;">
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -152,7 +152,7 @@ Use `.card-img-bottom` to round over the bottom corners when placing an image at
 Turn an image into a card background and overlay your card's text. The use of `.card-img` will round over all corners of the image, and `.card-img-overlay` will allow content to overlay the image. Depending on the image, you may or may not need `.card-inverse` (see below).
 
 {% example html %}
-<div class="card card-inverse" style="width: 20rem;">
+<div class="card card-inverse" style="width: 18rem;">
   <img class="card-img img-fluid" data-src="holder.js/100px225/?text=Image background" alt="Card image">
   <div class="card-img-overlay">
     <h4 class="card-title">Card title</h4>
@@ -193,7 +193,7 @@ Create lists of content in a card with a flush list group.
 The multiple content types can be easily combined to create the card you need.
 
 {% example html %}
-<div class="card" style="width: 20rem;">
+<div class="card" style="width: 18rem;">
   <img class="card-img-top img-fluid" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
@@ -309,7 +309,7 @@ Using the grid, wrap cards in columns and rows as needed.
 Use custom CSS in your stylesheets or as inline styles to set a width.
 
 {% example html %}
-<div class="card" style="width: 20rem;">
+<div class="card" style="width: 18rem;">
   <div class="card-body">
     <h3 class="card-title">Special title treatment</h3>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -323,7 +323,7 @@ Use custom CSS in your stylesheets or as inline styles to set a width.
 You can quickly change the text alignment of any card---in its entirety or specific parts---with our [text align classes]({{ site.baseurl }}/utilities/typography/#text-alignment).
 
 {% example html %}
-<div class="card" style="width: 20rem;">
+<div class="card" style="width: 18rem;">
   <div class="card-body">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -331,7 +331,7 @@ You can quickly change the text alignment of any card---in its entirety or speci
   </div>
 </div>
 
-<div class="card text-center" style="width: 20rem;">
+<div class="card text-center" style="width: 18rem;">
   <div class="card-body">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -339,7 +339,7 @@ You can quickly change the text alignment of any card---in its entirety or speci
   </div>
 </div>
 
-<div class="card text-end" style="width: 20rem;">
+<div class="card text-end" style="width: 18rem;">
   <div class="card-body">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>

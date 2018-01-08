@@ -40,13 +40,8 @@ Instead of using `left/right` designators, the text alignment utilities use `sta
 Prevent text from wrapping with a `.text-nowrap` class.
 
 {% example html %}
-<div class="row">
-  <div class="col-2 text-nowrap">
-    Curabitur blandit tempus ardua ridiculus sed magna.
-  </div>
-  <div class="col-10">
-    <img data-src="holder.js/50x50" alt="An image to show the text doesn't wrap">
-  </div>
+<div class="card card-body text-nowrap" style="width: 8rem;">
+    This text should overflow the parent.
 </div>
 {% endexample %}
 
