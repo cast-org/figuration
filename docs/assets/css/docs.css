@@ -396,7 +396,6 @@ h4 > code {
 
 .cf-example {
   padding: 1rem;
-  overflow: auto;
   background-color: #fff;
   border: 1px solid #e1e1e8;
   border-radius: .25rem .25rem 0 0;
@@ -1324,6 +1323,10 @@ h4 > code {
     display: block;
     visibility: visible;
   }
+}
+
+.cf-example-flex .cf-example {
+  overflow: auto;
 }
 
 .cf-example-flex > div div {
