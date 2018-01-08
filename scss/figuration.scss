@@ -15,7 +15,6 @@
 @import "mixins";
 
 // Core CSS items - extend on the base HTML
-@import "core/print";
 @import "core/reboot";
 @import "core/typography";
 @import "core/code";
@@ -57,3 +56,6 @@
 
 // Utility classes
 @import "utilities";
+
+// Print overrides
+@import "core/print";
