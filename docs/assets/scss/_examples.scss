@@ -129,7 +129,7 @@ $custom-file-text: (
 );
 .custom-file-control {
     @each $lang, $text in map-get($custom-file-text, button-label) {
-        &:lang(#{$lang}):empty::after {
+        &:lang(#{$lang}):empty::before {
             content: $text;
         }
     }
