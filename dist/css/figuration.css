@@ -4,61 +4,6 @@
  * Copyright 2013-2018 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  */
-@media print {
-  *,
-  *::before,
-  *::after {
-    text-shadow: none !important;
-    box-shadow: none !important;
-  }
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-  abbr[title]::after {
-    content: " (" attr(title) ")";
-  }
-  pre {
-    white-space: pre-wrap !important;
-  }
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-  thead {
-    display: table-header-group;
-  }
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
-  .badge {
-    border: 1px solid #000;
-  }
-  .table {
-    border-collapse: collapse !important;
-  }
-  .table td,
-  .table th {
-    background-color: #fff !important;
-  }
-  .table-bordered th,
-  .table-bordered td {
-    border: 1px solid #ddd !important;
-  }
-}
-
 *,
 *::before,
 *::after {
@@ -1480,7 +1425,7 @@ fieldset[disabled] .form-check-label {
 .custom-file {
   position: relative;
   display: inline-block;
-  max-width: 100%;
+  width: 100%;
   height: calc(2rem + 2px);
   margin-bottom: 0;
 }
@@ -3807,7 +3752,8 @@ button.list-group-item-danger.active {
 }
 
 .input-group .form-control,
-.input-group .custom-select {
+.input-group .custom-select,
+.input-group .custom-file {
   position: relative;
   z-index: 1;
   -ms-flex: 1 1 auto;
@@ -3820,14 +3766,19 @@ button.list-group-item-danger.active {
 .input-group .form-control + .form-control,
 .input-group .form-control + .custom-select,
 .input-group .custom-select + .form-control,
-.input-group .custom-select + .custom-select {
+.input-group .custom-select + .custom-select,
+.input-group .custom-file + .form-control,
+.input-group .custom-file + .custom-select {
   margin-left: -1px;
 }
 
 .input-group .form-control:focus, .input-group .form-control:active, .input-group .form-control:hover,
 .input-group .custom-select:focus,
 .input-group .custom-select:active,
-.input-group .custom-select:hover {
+.input-group .custom-select:hover,
+.input-group .custom-file:focus,
+.input-group .custom-file:active,
+.input-group .custom-file:hover {
   z-index: 2;
 }
 
@@ -3860,11 +3811,6 @@ button.list-group-item-danger.active {
   display: flex;
   -ms-flex-align: center;
       align-items: center;
-}
-
-.input-group .custom-select,
-.input-group .custom-file {
-  width: 100%;
 }
 
 .input-group-addon {
@@ -11925,5 +11871,60 @@ a.text-dark:focus, a.text-dark:hover {
 
 .visible {
   visibility: visible !important;
+}
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+  pre {
+    white-space: pre-wrap !important;
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+  .badge {
+    border: 1px solid #000;
+  }
+  .table {
+    border-collapse: collapse !important;
+  }
+  .table td,
+  .table th {
+    background-color: #fff !important;
+  }
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #ddd !important;
+  }
 }
 /*# sourceMappingURL=figuration.css.map */

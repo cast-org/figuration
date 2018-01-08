@@ -1062,11 +1062,11 @@ h4 > code {
   margin-top: .5rem;
 }
 
-.custom-file-control:lang(en):empty::after {
+.custom-file-control:lang(en):empty::before {
   content: "Browse";
 }
 
-.custom-file-control:lang(es):empty::after {
+.custom-file-control:lang(es):empty::before {
   content: "Navegar";
 }
 
