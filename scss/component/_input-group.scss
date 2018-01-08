@@ -6,7 +6,8 @@
     width: 100%;
 
     .form-control,
-    .custom-select {
+    .custom-select,
+    .custom-file {
         // Ensure that the input is always above the *appended* addon button for
         // proper border colors.
         position: relative;
@@ -50,11 +51,6 @@
 .input-group .custom-file {
     display: flex;
     align-items: center;
-}
-
-.input-group .custom-select,
-.input-group .custom-file {
-    width: 100%;
 }
 
 // Text input groups
