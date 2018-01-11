@@ -5,7 +5,7 @@
 }
 
 @mixin hover-focus {
-    &:hover
+    &:hover,
     &:focus {
         @content;
     }
@@ -20,7 +20,7 @@
 }
 
 @mixin hover-focus-active {
-    &:hover
+    &:hover,
     &:focus,
     &:active {
         @content;
