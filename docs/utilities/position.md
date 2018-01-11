@@ -18,7 +18,7 @@ Be sure you understand the ramifications of fixed and absolute position in your 
 
 The sticky utilities uses CSS's `position: sticky`, which isn't fully supported in all browsers.  Additional support information can be found over at [Can I Use](https://caniuse.com/#feat=css-sticky).
 
-**Microsoft Edge and IE11 will render `position: sticky` as `position: relative`.** As such, we wrap the styles in a `@supports` query, limiting the stickiness to only browsers that properly can render it.
+**IE11 and IE10 will render `position: sticky` as `position: relative`.** As such, we wrap the styles in a `@supports` query, limiting the stickiness to only browsers that can render it properly.
 
 ## Common Positioning
 
