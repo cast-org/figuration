@@ -23,27 +23,27 @@ plugins:
   - jekyll-sitemap
 
 # Custom vars
-current_version:  3.0.4
+current_version:  3.0.5
 repo:             https://github.com/cast-org/figuration
-changelog:        https://github.com/cast-org/figuration/releases/tag/v3.0.4
+changelog:        https://github.com/cast-org/figuration/releases/tag/v3.0.5
 twitter:          https://twitter.com/figuration_org
 
 
 # Downloads
 download:
-  source:         https://github.com/cast-org/figuration/archive/v3.0.4.zip
-  dist:           https://github.com/cast-org/figuration/releases/download/v3.0.4/figuration-v3.0.4-dist.zip
+  source:         https://github.com/cast-org/figuration/archive/v3.0.5.zip
+  dist:           https://github.com/cast-org/figuration/releases/download/v3.0.5/figuration-v3.0.5-dist.zip
 
 
 # CDN settings
 # See https://www.srihash.org for info on how to generate the hashes
 cdn:
-  css:          https://cdn.jsdelivr.net/npm/figuration@3.0.4/dist/css/figuration.min.css
-  css_hash:     "sha384-6qzKb2zKQ+FBiiRnnwGlNMnxwcQlcLXERH9gHDRZiThT8+A4tfAKSKqALCkbwH4p"
-  js:           https://cdn.jsdelivr.net/npm/figuration@3.0.4/dist/js/figuration.min.js
-  js_hash:      "sha384-Du6FqlIqpqhBUy96ich68w7vfXEcbJLIciQWtgT/BsbpNDMdpy1gSkN/UotrjcI0"
-  css_rtl:      https://cdn.jsdelivr.net/npm/figuration@3.0.4/dist/css/figuration-rtl.min.css
-  css_rtl_hash: "sha384-tkEq3Zg25/5rpAsMTwA7yMi+AaYC5H4HRaS23p9+HEiz3nKlziVnclsGNXLRdzXY"
+  css:          https://cdn.jsdelivr.net/npm/figuration@3.0.5/dist/css/figuration.min.css
+  css_hash:     "sha384-sbMy/2TCMTSy8n0Bhf+mWR+qF5SwEri4qcB9oVo/QOVbMvv1GpVGPvJK0wOeAISY"
+  js:           https://cdn.jsdelivr.net/npm/figuration@3.0.5/dist/js/figuration.min.js
+  js_hash:      "sha384-OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb"
+  css_rtl:      https://cdn.jsdelivr.net/npm/figuration@3.0.5/dist/css/figuration-rtl.min.css
+  css_rtl_hash: "sha384-1byAtnG9FnOj0w2Vg1AmnuZ2rajVRyAr4j4BUAVZNdaCgCpfKAcpBc3G7rcw0Y01"
   jquery:       https://code.jquery.com/jquery-3.2.1.min.js
   jquery_hash:  "sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f"
   fontawe:      https://use.fontawesome.com/releases/v5.0.1/css/all.css

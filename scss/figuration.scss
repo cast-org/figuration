@@ -1,5 +1,5 @@
 /*!
- * Figuration (v3.0.4)
+ * Figuration (v3.0.5)
  * http://figuration.org
  * Copyright 2013-2018 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
