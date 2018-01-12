@@ -41,7 +41,7 @@ cdn:
   css:          https://cdn.jsdelivr.net/npm/figuration@3.0.5/dist/css/figuration.min.css
   css_hash:     "sha384-sbMy/2TCMTSy8n0Bhf+mWR+qF5SwEri4qcB9oVo/QOVbMvv1GpVGPvJK0wOeAISY"
   js:           https://cdn.jsdelivr.net/npm/figuration@3.0.5/dist/js/figuration.min.js
-  js_hash:      "sha384-OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb"
+  js_hash:      "sha384-seOgUqc1HwlrtouWwDFAcMDvL0SwHbMCgK2s91pPLHXSv33mmFFfV6rq1HRyWs90"
   css_rtl:      https://cdn.jsdelivr.net/npm/figuration@3.0.5/dist/css/figuration-rtl.min.css
   css_rtl_hash: "sha384-1byAtnG9FnOj0w2Vg1AmnuZ2rajVRyAr4j4BUAVZNdaCgCpfKAcpBc3G7rcw0Y01"
   jquery:       https://code.jquery.com/jquery-3.2.1.min.js
