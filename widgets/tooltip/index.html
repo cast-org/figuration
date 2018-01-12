@@ -453,6 +453,7 @@
       <li><a href="#toggle-example" id="markdown-toc-toggle-example">Toggle Example</a></li>
       <li><a href="#tooltip-with-html" id="markdown-toc-tooltip-with-html">Tooltip with HTML</a></li>
       <li><a href="#viewport-constrainment" id="markdown-toc-viewport-constrainment">Viewport Constrainment</a></li>
+      <li><a href="#disabled-elements" id="markdown-toc-disabled-elements">Disabled Elements</a></li>
     </ul>
   </li>
   <li><a href="#usage" id="markdown-toc-usage">Usage</a>    <ul>
@@ -659,6 +660,19 @@ $('#html-tooltip').CFW_Tooltip({
         <span class="na">padding</span><span class="p">:</span> <span class="mi">2</span>
     <span class="p">});</span>
 <span class="nt">&lt;/script&gt;</span></code></pre></div>
+
+<h3 id="disabled-elements">Disabled Elements</h3>
+
+<p>Elements with the <code class="highlighter-rouge">disabled</code> attribute aren’t interactive, meaning users cannot hover or click them to trigger a tooltip (or popover). As a workaround, you’ll want to trigger the tooltip from a wrapper <code class="highlighter-rouge">&lt;div&gt;</code> or <code class="highlighter-rouge">&lt;span&gt;</code> and override the <code class="highlighter-rouge">pointer-events</code> on the disabled element.</p>
+
+<div class="cf-example">
+<span class="d-inline-block" data-cfw="tooltip" title="Tooltip for disabled item">
+    <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled="">Disabled button</button>
+</span>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"d-inline-block"</span> <span class="na">data-cfw=</span><span class="s">"tooltip"</span> <span class="na">title=</span><span class="s">"Tooltip for disabled item"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">style=</span><span class="s">"pointer-events: none;"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">disabled</span><span class="nt">&gt;</span>Disabled button<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/span&gt;</span></code></pre></div>
 
 <h2 id="usage">Usage</h2>
 
@@ -972,7 +986,7 @@ function myTipAlign(tip, trigger) {
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.4
+            Current version: 3.0.5
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>
@@ -981,9 +995,9 @@ function myTipAlign(tip, trigger) {
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
         </ul>
         <p>
-            &copy; 2013-2017 <a href="http://www.cast.org/">CAST, Inc.</a>
+            &copy; 2013-2018 <a href="http://www.cast.org/">CAST, Inc.</a>
             <br />
-            Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
+            Portions: &copy; 2011-2018 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
             Code licensed <a rel="license" href="https://github.com/cast-org/figuration/blob/master/LICENSE">MIT</a>,
             docs <a rel="license" href="https://github.com/cast-org/figuration/blob/master/docs/LICENSE">CC BY 4.0</a>.

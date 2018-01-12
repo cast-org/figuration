@@ -316,7 +316,7 @@
     </ul>
   </li>
   <li><a href="#browser-zooming" id="markdown-toc-browser-zooming">Browser Zooming</a></li>
-  <li><a href="#sticky-hoverfocus-on-mobile" id="markdown-toc-sticky-hoverfocus-on-mobile">Sticky <code class="highlighter-rouge">:hover</code>/<code class="highlighter-rouge">:focus</code> on Mobile</a></li>
+  <li><a href="#sticky-hoverfocus-on-ios" id="markdown-toc-sticky-hoverfocus-on-ios">Sticky <code class="highlighter-rouge">:hover</code>/<code class="highlighter-rouge">:focus</code> on iOS</a></li>
   <li><a href="#printing" id="markdown-toc-printing">Printing</a></li>
   <li><a href="#android-stock-browser" id="markdown-toc-android-stock-browser">Android Stock Browser</a>    <ul>
       <li><a href="#select-menu" id="markdown-toc-select-menu">Select Menu</a></li>
@@ -438,10 +438,9 @@
 
 <p>Page zooming inevitably presents rendering artifacts in some components, both in Figuration and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.</p>
 
-<h2 id="sticky-hoverfocus-on-mobile">Sticky <code class="highlighter-rouge">:hover</code>/<code class="highlighter-rouge">:focus</code> on Mobile</h2>
-<p>Even though real hovering isn’t possible on most touchscreens, most mobile browsers emulate hovering support and make <code class="highlighter-rouge">:hover</code> “sticky”. In other words, <code class="highlighter-rouge">:hover</code> styles start applying after tapping an element and only stop applying after the user taps some other element. On mobile-first sites, this behavior is normally undesirable.</p>
+<h2 id="sticky-hoverfocus-on-ios">Sticky <code class="highlighter-rouge">:hover</code>/<code class="highlighter-rouge">:focus</code> on iOS</h2>
 
-<p>Bootstrap has a workaround for this. Use their <a href="https://github.com/twbs/mq4-hover-shim">mq4-hover-shim</a> to disable <code class="highlighter-rouge">:hover</code> styles in browsers that emulate hovering, thus preventing sticky <code class="highlighter-rouge">:hover</code> styles. There are some caveats to this workaround; see the shim’s documentation for details.</p>
+<p>While <code class="highlighter-rouge">:hover</code> isn’t possible on most touch devices, iOS emulates this behavior, resulting in “sticky” hover styles that persist after tapping one element. These hover styles are only removed when users tap another element. This behavior is considered largely undesirable and appears to not be an issue on Android or Windows devices.</p>
 
 <h2 id="printing">Printing</h2>
 
@@ -493,7 +492,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.4
+            Current version: 3.0.5
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>
@@ -502,9 +501,9 @@
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
         </ul>
         <p>
-            &copy; 2013-2017 <a href="http://www.cast.org/">CAST, Inc.</a>
+            &copy; 2013-2018 <a href="http://www.cast.org/">CAST, Inc.</a>
             <br />
-            Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
+            Portions: &copy; 2011-2018 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
             Code licensed <a rel="license" href="https://github.com/cast-org/figuration/blob/master/LICENSE">MIT</a>,
             docs <a rel="license" href="https://github.com/cast-org/figuration/blob/master/docs/LICENSE">CC BY 4.0</a>.

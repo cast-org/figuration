@@ -342,7 +342,6 @@
     </ul>
   </li>
   <li><a href="#html5-hidden-attribute" id="markdown-toc-html5-hidden-attribute">HTML5 <code class="highlighter-rouge">[hidden]</code> Attribute</a></li>
-  <li><a href="#click-delay-optimization-for-touch" id="markdown-toc-click-delay-optimization-for-touch">Click Delay Optimization for Touch</a></li>
 </ul>
 
 <h2 id="approach">Approach</h2>
@@ -372,18 +371,18 @@
 <p>The default web fonts (Helvetica Neue, Helvetica, and Arial) have been dropped in Figuration and replaced with a “native font stack” for optimum text rendering on every device and OS. Read more about <a href="https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/">native font stacks in this <em>Smashing Magazine</em> article</a>.</p>
 
 <figure class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="nv">$font-family-sans-serif</span><span class="p">:</span>
-  <span class="c1">// Safari for OS X and iOS (San Francisco)
-</span>  <span class="nt">-apple-system</span><span class="o">,</span>
-  <span class="c1">// Chrome for OS X (San Francisco)
-</span>  <span class="nt">BlinkMacSystemFont</span><span class="o">,</span>
-  <span class="c1">// Windows
-</span>  <span class="s2">"Segoe UI"</span><span class="o">,</span>
-  <span class="c1">// Android
-</span>  <span class="s2">"Roboto"</span><span class="o">,</span>
-  <span class="c1">// Basic web fallback
-</span>  <span class="s2">"Helvetica Neue"</span><span class="o">,</span> <span class="nt">Arial</span><span class="o">,</span> <span class="nt">sans-serif</span><span class="o">,</span>
-  <span class="c1">// Emoji fonts
-</span>  <span class="s2">"Apple Color Emoji"</span><span class="o">,</span> <span class="s2">"Segoe UI Emoji"</span><span class="o">,</span> <span class="s2">"Segoe UI Symbol"</span> <span class="o">!</span><span class="nt">default</span><span class="o">;</span></code></pre></figure>
+  <span class="c1">// Safari for OS X and iOS (San Francisco)</span>
+  <span class="nt">-apple-system</span><span class="o">,</span>
+  <span class="c1">// Chrome for OS X (San Francisco)</span>
+  <span class="nt">BlinkMacSystemFont</span><span class="o">,</span>
+  <span class="c1">// Windows</span>
+  <span class="s2">"Segoe UI"</span><span class="o">,</span>
+  <span class="c1">// Android</span>
+  <span class="s2">"Roboto"</span><span class="o">,</span>
+  <span class="c1">// Basic web fallback</span>
+  <span class="s2">"Helvetica Neue"</span><span class="o">,</span> <span class="nt">Arial</span><span class="o">,</span> <span class="nt">sans-serif</span><span class="o">,</span>
+  <span class="c1">// Emoji fonts</span>
+  <span class="s2">"Apple Color Emoji"</span><span class="o">,</span> <span class="s2">"Segoe UI Emoji"</span><span class="o">,</span> <span class="s2">"Segoe UI Symbol"</span> <span class="o">!</span><span class="nt">default</span><span class="o">;</span></code></pre></figure>
 
 <p>This <code class="highlighter-rouge">font-family</code> is applied to the <code class="highlighter-rouge">&lt;body&gt;</code> and automatically inherited globally throughout Figuration. To switch the global <code class="highlighter-rouge">font-family</code>, update <code class="highlighter-rouge">$font-family-base</code> and recompile Figuration.</p>
 
@@ -664,20 +663,6 @@
 
 <p>To merely toggle the visibility of an element, meaning its <code class="highlighter-rouge">display</code> is not modified and the element can still affect the flow of the document, use <a href="/utilities/visibility/">the <code class="highlighter-rouge">.invisible</code> class</a> instead.</p>
 
-<h2 id="click-delay-optimization-for-touch">Click Delay Optimization for Touch</h2>
-
-<p>Traditionally, browsers on touchscreen devices have a delay of approximately 300ms between the end of a “tap”—the moment when a finger/stylus is lifted from screen—and the <a href="https://developer.mozilla.org/en-US/docs/Web/Events/click"><code class="highlighter-rouge">click</code> event</a> being fired. This delay is necessary for these browsers to correctly handle “double-tap to zoom” gestures without prematurely triggering actions or links after the first “tap”, but it can make your site feel slightly sluggish and unresponsive.</p>
-
-<p>Most mobile browsers automatically optimize away this 300ms delay for sites that use the <code class="highlighter-rouge">width=device-width</code> property as part of their <a href="/get-started/quick-start/#responsive-meta-tag">responsive meta tag</a> (as well as for sites that disable zooming, for instance with <code class="highlighter-rouge">user-scalable=no</code>, though this practice is strongly discouraged for accessibility and usability reasons). The biggest exceptions here are IE11 on Windows Phone 8.1, and iOS Safari (and any other iOS WebView-based browser) <a href="https://webkit.org/blog/5610/more-responsive-tapping-on-ios/">prior to iOS 9.3</a>.</p>
-
-<p>On touch-enabled laptop/desktop devices, IE11 and Microsoft Edge are currently the only browsers with “double-tap to zoom” functionality. As the <a href="/get-started/quick-start/#responsive-meta-tag">responsive meta tag</a> is ignored by all desktop browsers, using <code class="highlighter-rouge">width=device-width</code> will have no effect on the 300ms delay here.</p>
-
-<p>To address this problem in IE11 and Microsoft Edge on desktop, as well as IE11 on Windows Phone 8.1, Figuration explicitly uses the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action"><code class="highlighter-rouge">touch-action:manipulation</code> CSS property</a> on all interactive elements (such as buttons and links). This property essentially disables double-tap functionality on those elements, eliminating the 300ms delay.</p>
-
-<p>In the case of old iOS versions (prior to 9.3), the suggested approach is to use additional scripts such as <a href="https://github.com/ftlabs/fastclick">FastClick</a> to explicitly work around the delay.</p>
-
-<p>For further details, see the compatibility table for <a href="http://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay">suppressing 300ms delay for touchscreen interactions</a>.</p>
-
             </main>
         </div>
 
@@ -689,7 +674,7 @@
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.4
+            Current version: 3.0.5
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>
@@ -698,9 +683,9 @@
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
         </ul>
         <p>
-            &copy; 2013-2017 <a href="http://www.cast.org/">CAST, Inc.</a>
+            &copy; 2013-2018 <a href="http://www.cast.org/">CAST, Inc.</a>
             <br />
-            Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
+            Portions: &copy; 2011-2018 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
             Code licensed <a rel="license" href="https://github.com/cast-org/figuration/blob/master/LICENSE">MIT</a>,
             docs <a rel="license" href="https://github.com/cast-org/figuration/blob/master/docs/LICENSE">CC BY 4.0</a>.

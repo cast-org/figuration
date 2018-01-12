@@ -326,23 +326,23 @@
 
 <p>In your <code class="highlighter-rouge">custom.scss</code>, you will import Figuration’s source Sass files. Our recommended structure is to pick the parts you need, but you can include everything if desired. Be aware there are some requirements and dependencies across our components, so you may need to include slightly more than you need. Some of our components will also need have our our JavaScript included in order to become interactive.</p>
 
-<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// custom.scss
-// Recommended structure for importing Figuration into your
-// project allowing for use of Figuration's Sass functions
-// in your custom setting overrides
-</span>
-<span class="c1">// Required - functions
-</span><span class="k">@import</span> <span class="s2">"node_modules/figuration/scss/functions"</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// custom.scss</span>
+<span class="c1">// Recommended structure for importing Figuration into your</span>
+<span class="c1">// project allowing for use of Figuration's Sass functions</span>
+<span class="c1">// in your custom setting overrides</span>
 
-<span class="c1">// Custom - your setting overrides
-// go in this location
-</span>
-<span class="c1">// Required - settings and mixins
-</span><span class="k">@import</span> <span class="s2">"node_modules/figuration/scss/settings"</span><span class="p">;</span>
+<span class="c1">// Required - functions</span>
+<span class="k">@import</span> <span class="s2">"node_modules/figuration/scss/functions"</span><span class="p">;</span>
+
+<span class="c1">// Custom - your setting overrides</span>
+<span class="c1">// go in this location</span>
+
+<span class="c1">// Required - settings and mixins</span>
+<span class="k">@import</span> <span class="s2">"node_modules/figuration/scss/settings"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"node_modules/figuration/scss/mixins"</span><span class="p">;</span>
 
-<span class="c1">// Core and Components
-</span><span class="k">@import</span> <span class="s2">"node_modules/figuration/scss/reboot"</span><span class="p">;</span>
+<span class="c1">// Core and Components</span>
+<span class="k">@import</span> <span class="s2">"node_modules/figuration/scss/reboot"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"node_modules/figuration/scss/typography"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"node_modules/figuration/scss/images"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"node_modules/figuration/scss/buttons"</span><span class="p">;</span>
@@ -359,19 +359,19 @@
 
 <p>Here’s an example that changes the <code class="highlighter-rouge">background-color</code> and <code class="highlighter-rouge">color</code> for the <code class="highlighter-rouge">&lt;body&gt;</code> when importing and compiling Figuration via grunt:</p>
 
-<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Required - functions
-</span><span class="k">@import</span> <span class="s2">"node_modules/figuration/scss/functions"</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Required - functions</span>
+<span class="k">@import</span> <span class="s2">"node_modules/figuration/scss/functions"</span><span class="p">;</span>
 
-<span class="c1">// Custom - your setting overrides
-</span><span class="nv">$body-bg</span><span class="p">:</span> <span class="mh">#000</span><span class="p">;</span>
+<span class="c1">// Custom - your setting overrides</span>
+<span class="nv">$body-bg</span><span class="p">:</span> <span class="mh">#000</span><span class="p">;</span>
 <span class="nv">$body-color</span><span class="p">:</span> <span class="mh">#fff</span><span class="p">;</span>
 
-<span class="c1">// Required - settings and mixins
-</span><span class="k">@import</span> <span class="s2">"node_modules/figuration/scss/settings"</span><span class="p">;</span>
+<span class="c1">// Required - settings and mixins</span>
+<span class="k">@import</span> <span class="s2">"node_modules/figuration/scss/settings"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"node_modules/figuration/scss/mixins"</span><span class="p">;</span>
 
-<span class="c1">// Core and Components
-</span><span class="nc">...</span></code></pre></figure>
+<span class="c1">// Core and Components</span>
+<span class="nc">...</span></code></pre></figure>
 
 <p>Repeat as necessary for any variable in Figuration, including the global options below.</p>
 
@@ -454,8 +454,8 @@
 <p>You can modify, remove, or add additional sizes, beyond the default sizing, by redefining the <code class="highlighter-rouge">$component-sizes</code> variable and
 Below is the default additional settings for reference.  Try not to confuse the size designations (<code class="highlighter-rouge">sm</code>, <code class="highlighter-rouge">lg</code>, etc.) with the grid breakpoints designations.</p>
 
-<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Used for button, button groups, pagination, form-control, and input-group
-</span><span class="nv">$component-sizes</span><span class="p">:</span> <span class="p">(</span>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Used for button, button groups, pagination, form-control, and input-group</span>
+<span class="nv">$component-sizes</span><span class="p">:</span> <span class="p">(</span>
     <span class="n">xs</span><span class="o">:</span> <span class="p">(</span>
         <span class="n">font-size</span><span class="o">:</span>      <span class="mi">.75rem</span><span class="o">,</span>
         <span class="n">padding-y</span><span class="o">:</span>      <span class="mi">.1875rem</span><span class="o">,</span>
@@ -498,23 +498,23 @@ Below is the default additional settings for reference.  Try not to confuse the 
 <p>Please refer to the <a href="/get-started/accessibility/#conveying-meaning-with-color">Accessiblity notes about conveying meaning with color</a>.</p>
 </div>
 
-<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Sample of adding more colors using a mixing function
-</span><span class="nv">$custom-context</span><span class="p">:</span> <span class="p">(</span>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Sample of adding more colors using a mixing function</span>
+<span class="nv">$custom-context</span><span class="p">:</span> <span class="p">(</span>
     <span class="no">purple</span><span class="o">:</span> <span class="mh">#990099</span><span class="o">,</span>
     <span class="no">aqua</span><span class="o">:</span>   <span class="mh">#00ffff</span>
 <span class="p">);</span>
 
-<span class="c1">// Process custom colors into context color variants
-</span><span class="nv">$custom-themes</span><span class="p">:</span> <span class="nf">_mix-context-colors</span><span class="p">(</span><span class="nv">$custom-context</span><span class="p">);</span>
-<span class="c1">// Merge into master context themes map
-</span><span class="nv">$context-themes</span><span class="p">:</span> <span class="nf">map-merge</span><span class="p">(</span><span class="nv">$context-themes</span><span class="o">,</span> <span class="nv">$custom-themes</span><span class="p">);</span></code></pre></figure>
+<span class="c1">// Process custom colors into context color variants</span>
+<span class="nv">$custom-themes</span><span class="p">:</span> <span class="nf">_mix-context-colors</span><span class="p">(</span><span class="nv">$custom-context</span><span class="p">);</span>
+<span class="c1">// Merge into master context themes map</span>
+<span class="nv">$context-themes</span><span class="p">:</span> <span class="nf">map-merge</span><span class="p">(</span><span class="nv">$context-themes</span><span class="o">,</span> <span class="nv">$custom-themes</span><span class="p">);</span></code></pre></figure>
 
 <h3 id="single-color-addition">Single Color Addition</h3>
 
 <p>You can also add a single color map without all the additional color mixing functions with something a bit simpler.</p>
 
-<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Adding a single color map
-</span><span class="nv">$single-color</span><span class="p">:</span> <span class="p">(</span>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Adding a single color map</span>
+<span class="nv">$single-color</span><span class="p">:</span> <span class="p">(</span>
     <span class="s2">"purple"</span><span class="o">:</span> <span class="p">(</span>
         <span class="s2">"control-color"</span><span class="o">:</span>        <span class="mh">#fff</span><span class="o">,</span>
         <span class="s2">"control-bg"</span><span class="o">:</span>           <span class="mh">#990099</span><span class="o">,</span>
@@ -533,16 +533,16 @@ $</span><span class="na">context-themes</span><span class="p">:</span> <span cla
 
 <p>When enabled, any theme in the <code class="highlighter-rouge">$palette-themes</code> map get CSS generated for each defined level for both text and background variants.</p>
 
-<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Palette Colors
-</span><span class="nv">$red</span><span class="p">:</span>       <span class="mh">#c81d0e</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Palette Colors</span>
+<span class="nv">$red</span><span class="p">:</span>       <span class="mh">#c81d0e</span><span class="p">;</span>
 <span class="nv">$green</span><span class="p">:</span>     <span class="mh">#108918</span><span class="p">;</span>
 <span class="nv">$blue</span><span class="p">:</span>      <span class="mh">#1242ba</span><span class="p">;</span>
 <span class="nv">$cyan</span><span class="p">:</span>      <span class="mh">#117dba</span><span class="p">;</span>
 <span class="nv">$mustard</span><span class="p">:</span>   <span class="mh">#c98800</span><span class="p">;</span>
 <span class="nv">$gray</span><span class="p">:</span>      <span class="mh">#666</span><span class="p">;</span>
 
-<span class="c1">// Palette Map
-</span><span class="nv">$palette-themes</span><span class="p">:</span> <span class="p">(</span>
+<span class="c1">// Palette Map</span>
+<span class="nv">$palette-themes</span><span class="p">:</span> <span class="p">(</span>
     <span class="s2">"red"</span><span class="o">:</span>      <span class="nv">$red</span><span class="o">,</span>
     <span class="s2">"green"</span><span class="o">:</span>    <span class="nv">$green</span><span class="o">,</span>
     <span class="s2">"blue"</span><span class="o">:</span>     <span class="nv">$blue</span><span class="o">,</span>
@@ -567,7 +567,7 @@ $</span><span class="na">context-themes</span><span class="p">:</span> <span cla
     <footer class="cf-footer">
     <div class="container">
         <p class="mb-0">
-            Current version: 3.0.4
+            Current version: 3.0.5
         </p>
         <ul class="footer-links d-inline-block d-sm-block mx-auto mx-sm-0">
             <li><a href="/about/overview/">About</a></li>
@@ -576,9 +576,9 @@ $</span><span class="na">context-themes</span><span class="p">:</span> <span cla
             <li><a href="https://twitter.com/figuration_org">Twitter</a></li>
         </ul>
         <p>
-            &copy; 2013-2017 <a href="http://www.cast.org/">CAST, Inc.</a>
+            &copy; 2013-2018 <a href="http://www.cast.org/">CAST, Inc.</a>
             <br />
-            Portions: &copy; 2011-2017 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
+            Portions: &copy; 2011-2018 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://github.com/twbs/bootstrap/blob/master/docs/LICENSE">CC BY 3.0</a>.
         <p>
             Code licensed <a rel="license" href="https://github.com/cast-org/figuration/blob/master/LICENSE">MIT</a>,
             docs <a rel="license" href="https://github.com/cast-org/figuration/blob/master/docs/LICENSE">CC BY 4.0</a>.
