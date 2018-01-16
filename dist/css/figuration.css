@@ -996,7 +996,7 @@ textarea.form-control {
 }
 
 .form-check.disabled .form-check-label,
-fieldset[disabled] .form-check-label {
+fieldset:disabled .form-check-label {
   color: #757575;
   cursor: not-allowed;
 }
@@ -1540,12 +1540,12 @@ fieldset[disabled] .form-check-label {
   opacity: 0.6;
 }
 
-.btn:not([disabled]):not(.disabled):active, .btn:not([disabled]):not(.disabled).active,
+.btn:not(:disabled):not(.disabled):active, .btn:not(:disabled):not(.disabled).active,
 .open > .btn {
   background-image: none;
 }
 
-.btn:not([disabled]):not(.disabled):active:focus, .btn:not([disabled]):not(.disabled):active.focus, .btn:not([disabled]):not(.disabled).active:focus, .btn:not([disabled]):not(.disabled).active.focus,
+.btn:not(:disabled):not(.disabled):active:focus, .btn:not(:disabled):not(.disabled):active.focus, .btn:not(:disabled):not(.disabled).active:focus, .btn:not(:disabled):not(.disabled).active.focus,
 .open > .btn:focus,
 .open > .btn.focus {
   box-shadow: 0 0 2px 3px rgba(112, 176, 214, 0.75);
@@ -1578,7 +1578,7 @@ fieldset[disabled] .form-check-label {
 }
 
 a.btn.disabled,
-fieldset[disabled] a.btn {
+fieldset:disabled a.btn {
   pointer-events: none;
 }
 
@@ -2015,7 +2015,7 @@ fieldset[disabled] a.btn {
   text-decoration: none;
 }
 
-.btn-link:not([disabled]):not(.disabled):active, .btn-link:not([disabled]):not(.disabled).active,
+.btn-link:not(:disabled):not(.disabled):active, .btn-link:not(:disabled):not(.disabled).active,
 .open > .btn-link {
   color: #091f58;
 }
