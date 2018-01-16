@@ -10,6 +10,10 @@ $enable-palette:        true !default;      // true
 $enable-sizing:         true !default;      // true
 $enable-bp-smallest:    false !default;     // false
 
+// Color
+// =====
+// Minimum contrast ratio - WCAG 2.1 level AA spec
+$color-min-contrast-ratio:  4.5 !default;
 
 // Grayscale
 // =====
