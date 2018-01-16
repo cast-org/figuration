@@ -191,7 +191,7 @@ textarea.form-control {
     margin-bottom: 0; // Override default `<label>` bottom margin
 
     .form-check.disabled &,
-    fieldset[disabled] & {
+    fieldset:disabled & {
         color: $form-check-disabled-color;
         cursor: $cursor-disabled;
     }

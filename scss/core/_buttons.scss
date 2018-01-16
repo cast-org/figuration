@@ -37,8 +37,8 @@
         @include box-shadow(none);
     }
 
-    &:not([disabled]):not(.disabled):active,
-    &:not([disabled]):not(.disabled).active,
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active,
     .open > & {
         // Remove the gradient for the pressed/active state
         background-image: none;
@@ -60,7 +60,7 @@
 
 // Future-proof disabling of clicks on `<a>` elements
 a.btn.disabled,
-fieldset[disabled] a.btn {
+fieldset:disabled a.btn {
     pointer-events: none;
 }
 
@@ -106,8 +106,8 @@ fieldset[disabled] a.btn {
         text-decoration: none;
     }
 
-    &:not([disabled]):not(.disabled):active,
-    &:not([disabled]):not(.disabled).active,
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active,
     .open > & {
         color: $link-hover-color;
         @include box-shadow(none);
