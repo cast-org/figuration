@@ -134,14 +134,17 @@ $inverse-color: (
 // =====
 // Control the default spacing of most elements by modifying these variables.
 $spacer:   1rem !default;
-$spacers: (
+$spacers: () !default;
+// stylelint-disable function-comma-newline-after, function-parentheses-newline-inside
+$spacers: map-merge((
     "0":    0,
     "0_25": ($spacer * .25),
     "0_5":  ($spacer * .5),
     "1":    $spacer,
     "1_5":  ($spacer * 1.5),
-    "2":    ($spacer * 2),
-) !default;
+    "2":    ($spacer * 2)
+), $spacers);
+// stylelint-enable function-comma-newline-after, function-parentheses-newline-inside
 
 
 // Grid breakpoints
