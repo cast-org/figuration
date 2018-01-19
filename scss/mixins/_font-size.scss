@@ -1,13 +1,3 @@
-// For later reference:
-
-// px vs em vs rem
-//https://stackoverflow.com/questions/11799236/should-i-use-px-or-rem-value-units-in-my-css
-//https://stackoverflow.com/a/43131958
-//https://stackoverflow.com/questions/11799236/should-i-use-px-or-rem-value-units-in-my-css/43131958#43131958
-
-// Media queries
-//https://engageinteractive.co.uk/blog/em-vs-rem-vs-px
-
 // Calculate minimum font size as unitless rem eqivalent.
 $fs-minimum: rem($font-size-ratio-minimum-size);
 $fs-minimum: strip-unit($fs-minimum);
@@ -82,8 +72,6 @@ $fs-breakpoint: null;
         $fs-min: $fs-minimum + ($fs - $fs-minimum) / $font-size-ratio-factor;
         // Calculate difference between given font-size and minimum font-size for given font-size.
         $fs-diff: $fs - $fs-min;
-
-
 
         // Minimum font-size formatting.
         // No need to check if the unit is valid, because we did that before.
