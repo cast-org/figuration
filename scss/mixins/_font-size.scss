@@ -103,7 +103,7 @@ $fs-breakpoint: null;
             // prevents the media query from overriding the font size.
             &,
             .font-size-static &,
-            &font-size-static {
+            &.font-size-static {
                 font-size: $fs-static;
             }
         } @else {
