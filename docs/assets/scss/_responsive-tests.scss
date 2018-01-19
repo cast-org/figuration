@@ -40,7 +40,7 @@
 .responsive-utilities-test span {
     display: block;
     padding: 1rem .5rem;
-    font-size: 1rem;
+    @include font-size(1rem);
     font-weight: $font-weight-bold;
     line-height: 1.1;
     text-align: center;

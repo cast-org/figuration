@@ -10,7 +10,7 @@
     width: ($font-size-base * $switch-width-multiplier);
     height: $select-height;
     overflow: hidden;
-    font-size: $font-size-base;
+    @include font-size($font-size-base);
     line-height: $input-line-height;
     vertical-align: middle;
     background-color: $switch-control-bg;

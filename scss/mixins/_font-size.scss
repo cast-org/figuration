@@ -1,0 +1,141 @@
+// For later reference:
+
+// px vs em vs rem
+//https://stackoverflow.com/questions/11799236/should-i-use-px-or-rem-value-units-in-my-css
+//https://stackoverflow.com/a/43131958
+//https://stackoverflow.com/questions/11799236/should-i-use-px-or-rem-value-units-in-my-css/43131958#43131958
+
+// Media queries
+//https://engageinteractive.co.uk/blog/em-vs-rem-vs-px
+
+// Calculate minimum font size as unitless rem eqivalent.
+$fs-minimum: rem($font-size-ratio-minimum-size);
+$fs-minimum: strip-unit($fs-minimum);
+
+// Check for only one responsive typography method in use.
+@if $font-size-ratio and $font-size-scale {
+    @error "More than one Responsive Typography (font-size) method has been selected. Please update your settings to only use one of the available Repsonsive Typography methods.";
+}
+
+$fs-breakpoint: null;
+
+@if $font-size-ratio {
+    // Check breakpoint unit.
+    $fs-breakpoint-unit: unit($font-size-ratio-breakpoint);
+    @if $fs-breakpoint-unit != em {
+        @error "`#{$fs-breakpoint-unit}` is not a valid unit for $font-size-ratio-breakpoint. Please use `em`.";
+    }
+
+    // Calculate breakpoint as unitless rem eqivalent.
+    $fs-breakpoint: rem($font-size-ratio-breakpoint);
+    $fs-breakpoint: strip-unit($fs-breakpoint);
+
+    // Check scaling factor.
+    @if type-of($font-size-ratio-factor) != "number" or $font-size-ratio-factor < 1 {
+        @error "`#{$font-size-ratio-factor}` is not a valid  $font-size-ratio-factor, it must be greater or equal to 1.";
+    }
+}
+
+@mixin font-size($fs, $important: false) {
+    $fs-append: "";
+
+    // Add !important rule to the append if set
+    @if $important {
+        $fs-append: " !important";
+    }
+
+    // If $fs isn't a number (like inherit) or $fs has a unit (not px or rem, like 1.5em) or $fs is 0, just print the value.
+    @if type-of($fs) != "number" or (not unitless($fs) and unit($fs) != "px" and unit($fs) != "rem") or $fs == 0 {
+        font-size: #{$fs}#{$fs-append};
+    } @else if ($font-size-ratio) {
+        // Use ratio variant
+        @include font-size-ratio($fs, $fs-append);
+    } @else if ($font-size-scale) {
+        // Use scaled variant
+        @include font-size-scale($fs, $fs-append);
+    } @else {
+        // No variant selected, just print the font-size.
+        font-size: #{$fs}#{$fs-append};
+    }
+}
+
+// Responsive typography sizing using viewport ratio
+@mixin font-size-ratio($fs, $fs-append) {
+    // Variable holders
+    $fs-static: null;
+    $fs-fluid: null;
+
+    // Calculate font size as unitless rem eqivalent.
+    $fs: rem($fs);
+    $fs: strip-unit($fs);
+
+    // Set default font-size output.
+    $fs-static: #{$fs}rem#{$fs-append};
+
+    // Only add media query if font-size is bigger than the minimum font-size.
+    // If $font-size-ratio-factor == 1, no rescaling will take place.
+    @if $fs > $fs-minimum and $font-size-ratio-factor != 1 {
+        $min-width: $font-size-ratio-breakpoint;
+        $variable-unit: null;
+
+        // Calculate minimum font-size for given font-size.
+        $fs-min: $fs-minimum + ($fs - $fs-minimum) / $font-size-ratio-factor;
+        // Calculate difference between given font-size and minimum font-size for given font-size.
+        $fs-diff: $fs - $fs-min;
+
+
+
+        // Minimum font-size formatting.
+        // No need to check if the unit is valid, because we did that before.
+        $min-width: #{$fs-min}rem;
+
+        // If two-dimensional, use smallest of screen width and height.
+        @if $font-size-ratio-two-dimensional {
+            $variable-unit: vmin;
+        } @else {
+            $variable-unit: vw;
+        }
+
+        // Calculate the variable width between 0 and $fs-breakpoint.
+        $variable-width: #{$fs-diff * 100 / $fs-breakpoint}#{$variable-unit};
+
+        // Set the calculated font-size.
+        $fs-fluid: calc(#{$min-width} + #{$variable-width}) #{$fs-append};
+    }
+
+    // Rendering.
+    @if $fs-fluid == null {
+        // Only render static font-size if no fluid font-size is available.
+        font-size: $fs-static;
+    } @else {
+        $mq-value: $font-size-ratio-breakpoint;
+
+        @if $font-size-ratio-generate-static {
+            // Adding an extra class increases specificity, which
+            // prevents the media query from overriding the font size.
+            &,
+            .font-size-static &,
+            &font-size-static {
+                font-size: $fs-static;
+            }
+        } @else {
+            font-size: $fs-static;
+        }
+
+        @if $font-size-ratio-two-dimensional {
+            @media (max-width: #{$mq-value}), (max-height: #{$mq-value}) {
+                font-size: $fs-fluid;
+            }
+        } @else {
+            @media (max-width: #{$mq-value}) {
+                font-size: $fs-fluid;
+            }
+        }
+    }
+}
+
+// Responsive typography sizing using breakpoint scaling
+@mixin font-size-scale($fs, $fs-append) {
+    // [TODO] - return basic font-size for now
+    font-size: #{$fs}#{$fs-append};
+}

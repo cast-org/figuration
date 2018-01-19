@@ -1,6 +1,6 @@
 .drag {
     float: right;
-    font-size: $drag-font-size;
+    @include font-size($drag-font-size);
     font-weight: $drag-font-weight;
     line-height: 1;
     color: $drag-color;

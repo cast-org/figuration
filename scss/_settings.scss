@@ -166,10 +166,10 @@ $grid-breakpoints: (
 // =====
 // Define the maximum width of `.container` for different screen sizes.
 $container-max-widths: (
-    sm: rem-calc(544px),
-    md: rem-calc(720px),
-    lg: rem-calc(960px),
-    xl: rem-calc(1152px)
+    sm: rem(544px),
+    md: rem(720px),
+    lg: rem(960px),
+    xl: rem(1152px)
 ) !default;
 @include _assert-ascending($container-max-widths, "container", "$container-max-widths");
 
@@ -235,6 +235,23 @@ $font-family-base:          $font-family-sans-serif !default;
 
 $font-size-base:    1rem !default;
 $line-height-base:  1.5 !default;
+
+// Responsive Typography - ratio
+// Fluidly scales font size ratio by viewport dimension
+// Cannot be combined with another Responsive Typography method!
+$font-size-ratio:                   true !default;
+$font-size-ratio-minimum-size:      1rem !default;
+$font-size-ratio-breakpoint:        bp-to-em(1200px) !default;
+$font-size-ratio-factor:            5 !default;
+$font-size-ratio-two-dimensional:   false !default;
+$font-size-ratio-generate-static:   true !default;
+
+// Responsive Typography - scale
+// Steps font size by breakpoint
+// Cannot be combined with another Responsive Typography method!
+// [TODO]
+$font-size-scale:               false !default;
+
 
 $font-weight-light:     300 !default;
 $font-weight-normal:    normal !default;
@@ -867,7 +884,7 @@ $card-columns-column-gap:   1.25rem !default;
 
 // Tooltips
 // =====
-$tooltip-max-width:     rem-calc(208px) !default;  // 208px=>13rem
+$tooltip-max-width:     rem(208px) !default;  // 208px=>13rem
 $tooltip-padding-y:     .25rem !default;
 $tooltip-padding-x:     .5rem !default;
 $tooltip-margin:        .2rem !default;
@@ -887,7 +904,7 @@ $tooltip-arrow-color:   $tooltip-bg !default;
 // =====
 $popover-font-size:             $font-size-base;
 $popover-bg:                    $white !default;
-$popover-max-width:             rem-calc(288px) !default;  // 288px=>18rem
+$popover-max-width:             rem(288px) !default;  // 288px=>18rem
 $popover-border-width:          $border-width !default;
 $popover-border-color:          $uibase-200 !default;
 $popover-border-radius:         .3125rem !default;
@@ -945,9 +962,9 @@ $modal-footer-border-width:     $modal-header-border-width !default;
 $modal-border-radius:           .3rem !default;
 $modal-inner-border-radius:     calc(#{$modal-border-radius} - #{$modal-content-border-width}) !default;
 
-$modal-sm:                      rem-calc(304px) !default; // 304px=>19rem
-$modal-md:                      rem-calc(528px) !default; // 528px=>33rem
-$modal-lg:                      rem-calc(896px) !default; // 896px=>56rem
+$modal-sm:                      rem(304px) !default; // 304px=>19rem
+$modal-md:                      rem(528px) !default; // 528px=>33rem
+$modal-lg:                      rem(896px) !default; // 896px=>56rem
 
 $modal-breakpoint:              sm !default; // When to start scaling up modal width
 $modal-lg-breakpoint:           lg !default; // The minimum breakpoint to allow `.modal-lg`

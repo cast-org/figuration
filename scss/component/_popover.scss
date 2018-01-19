@@ -6,7 +6,7 @@
     // Our parent element can be arbitrary since popovers are by default inserted as a sibling of their target element.
     // So reset our font and text properties to avoid inheriting weird values.
     @include reset-text;
-    font-size: $popover-font-size;
+    @include font-size($popover-font-size);
     // Allow breaking very long words so they don't overflow the popover's bounds
     word-wrap: break-word;
     background-color: $popover-bg;
@@ -94,7 +94,7 @@
     padding: $popover-header-padding-y $popover-header-padding-x;
     padding-right: ($popover-header-padding-x * 2);
     margin: 0; // reset heading margin
-    font-size: $popover-header-font-size;
+    @include font-size($popover-header-font-size);
     color: $popover-header-color;
     background-color: $popover-header-bg;
     border-bottom: $popover-header-border-width solid $popover-header-border-color;

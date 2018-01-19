@@ -15,7 +15,7 @@ $docs-color: #246;
     display: block;
     width: 12em;
     max-width: 100%;
-    font-size: 1rem;
+    @include font-size(1rem);
     font-weight: $font-weight-bold;
     color: $black;
     text-align: center;
@@ -104,7 +104,7 @@ $docs-color: #246;
 .cf-header-menu {
     display: inline-block;
     margin-top: -.25rem;
-    font-size: 1.5rem;
+    @include font-size(1.5rem);
     font-weight: $font-weight-bold;
     line-height: .75;
 }
@@ -121,15 +121,15 @@ $docs-color: #246;
 .home-icons {
     .far,
     .fas {
-        font-size: 3.5rem;
+        @include font-size(3.5rem);
         vertical-align: middle;
     }
 
     .fa-mobile-alt {
-        font-size: 2.5rem;
+        @include font-size(2.5rem);
     }
     .fa-tablet-alt {
-        font-size: 3rem;
+        @include font-size(3rem);
     }
 
     .far + .far,
@@ -188,7 +188,7 @@ $docs-color: #246;
     .lead {
         margin-top: 1rem;
         margin-bottom: 1.5rem;
-        font-size: 1.5rem;
+        @include font-size(1.5rem);
     }
 
     .splash-home {
@@ -300,7 +300,7 @@ $docs-color: #246;
 
 // TOC
 #markdown-toc {
-    font-size: .9375rem;
+    @include font-size(.9375rem);
 
     ul {
         padding-left: 2rem;
@@ -320,7 +320,7 @@ $docs-color: #246;
     order: 2;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    font-size: .875rem;
+    @include font-size(.875rem);
 
     .section-toc {
         @supports (position: sticky) {
@@ -355,7 +355,7 @@ $docs-color: #246;
             left: -1rem;
             display: block;
             width: .1875rem;
-            font-size: 5rem;
+            @include font-size(5rem);
             line-height: .5rem;
             content: " ";
             background-color: #246;
@@ -375,10 +375,10 @@ $docs-color: #246;
 
 // Title item
 .cf-title {
-    font-size: 3rem;
+    @include font-size(3rem);
 
     + p {
-        font-size: 1.15rem;
+        @include font-size(1.15rem);
         font-weight: 600;
     }
 }
@@ -454,7 +454,7 @@ h4 {
     }
 
     pre code {
-        font-size: inherit;
+        @include font-size(inherit);
         color: #3f3f3f;
     }
 }
@@ -511,7 +511,7 @@ h4 {
     .h6 {
         margin-top: 0;
         margin-bottom: .5rem;
-        font-size: 1.25rem;
+        @include font-size(1.25rem);
     }
 
     p:last-child,
@@ -564,7 +564,7 @@ h4 {
 .palette-base,
 .palette-item {
     padding: .5rem 1rem;
-    font-size: .875rem;
+    @include font-size(.875rem);
 }
 .palette-base {
     margin-bottom: .25rem;
@@ -574,7 +574,7 @@ h4 {
 .topLink a {
     display: inline-block;
     padding: .15rem .5rem;
-    font-size: .875rem;
+    @include font-size(.875rem);
     color: #c3c3c3;
     text-decoration: none;
     white-space: nowrap;
@@ -621,7 +621,7 @@ h4 {
 // Footer
 .cf-footer {
     padding: .75rem 0;
-    font-size: 85%;
+    @include font-size(85%);
     text-align: center;
     background-color: $uibase-50;
     border-top: 2px solid $uibase-700;

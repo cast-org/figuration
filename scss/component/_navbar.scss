@@ -36,7 +36,7 @@
     padding-top: $navbar-brand-padding-y;
     padding-bottom: $navbar-brand-padding-y;
     margin-right: $navbar-brand-margin-x;
-    font-size: $navbar-brand-font-size;
+    @include font-size($navbar-brand-font-size);
     font-weight: $navbar-brand-font-weight;
     line-height: inherit;
     text-decoration: none;
@@ -105,7 +105,7 @@
 // Custom button for toggling the `.navbar-collapse`, powered by the collapse plugin.
 .navbar-toggle {
     padding: $navbar-toggle-padding-y $navbar-toggle-padding-x;
-    font-size: $navbar-toggle-font-size;
+    @include font-size($navbar-toggle-font-size);
     line-height: 1;
     background-color: transparent; // Remove default button style
     border: $border-width solid transparent; // Remove default button style
