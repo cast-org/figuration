@@ -1,29 +1,6 @@
-// Calculate minimum font size as unitless rem eqivalent.
-$fs-minimum: rem($font-size-ratio-minimum-size);
-$fs-minimum: strip-unit($fs-minimum);
-
 // Check for only one responsive typography method in use.
 @if $font-size-ratio and $font-size-scale {
     @error "More than one Responsive Typography (font-size) method has been selected. Please update your settings to only use one of the available Repsonsive Typography methods.";
-}
-
-$fs-breakpoint: null;
-
-@if $font-size-ratio {
-    // Check breakpoint unit.
-    $fs-breakpoint-unit: unit($font-size-ratio-breakpoint);
-    @if $fs-breakpoint-unit != em {
-        @error "`#{$fs-breakpoint-unit}` is not a valid unit for $font-size-ratio-breakpoint. Please use `em`.";
-    }
-
-    // Calculate breakpoint as unitless rem eqivalent.
-    $fs-breakpoint: rem($font-size-ratio-breakpoint);
-    $fs-breakpoint: strip-unit($fs-breakpoint);
-
-    // Check scaling factor.
-    @if type-of($font-size-ratio-factor) != "number" or $font-size-ratio-factor < 1 {
-        @error "`#{$font-size-ratio-factor}` is not a valid  $font-size-ratio-factor, it must be greater or equal to 1.";
-    }
 }
 
 @mixin font-size($fs, $important: false) {
@@ -51,11 +28,26 @@ $fs-breakpoint: null;
 
 // Responsive typography sizing using viewport ratio
 @mixin font-size-ratio($fs, $fs-append) {
-    // Variable holders
-    $fs-static: null;
-    $fs-fluid: null;
+    // Check breakpoint unit.
+    $fs-breakpoint-unit: unit($font-size-ratio-breakpoint);
+    @if $fs-breakpoint-unit != em {
+        @error "`#{$fs-breakpoint-unit}` is not a valid unit for $font-size-ratio-breakpoint. Please use `em`.";
+    }
 
-    // Calculate font size as unitless rem eqivalent.
+    // Check scaling factor.
+    @if type-of($font-size-ratio-factor) != "number" or $font-size-ratio-factor < 1 {
+        @error "`#{$font-size-ratio-factor}` is not a valid  $font-size-ratio-factor, it must be greater or equal to 1.";
+    }
+
+    // Calculate minimum font size as unitless rem equivalent.
+    $fs-minimum: rem($font-size-ratio-minimum-size);
+    $fs-minimum: strip-unit($fs-minimum);
+
+    // Calculate breakpoint as unitless rem equivalent.
+    $fs-breakpoint: rem($font-size-ratio-breakpoint);
+    $fs-breakpoint: strip-unit($fs-breakpoint);
+
+    // Calculate font size as unitless rem equivalent.
     $fs: rem($fs);
     $fs: strip-unit($fs);
 
@@ -64,6 +56,7 @@ $fs-breakpoint: null;
 
     // Only add media query if font-size is bigger than the minimum font-size.
     // If $font-size-ratio-factor == 1, no rescaling will take place.
+    $fs-fluid: null;
     @if $fs > $fs-minimum and $font-size-ratio-factor != 1 {
         $min-width: $font-size-ratio-breakpoint;
         $variable-unit: null;
@@ -74,7 +67,6 @@ $fs-breakpoint: null;
         $fs-diff: $fs - $fs-min;
 
         // Minimum font-size formatting.
-        // No need to check if the unit is valid, because we did that before.
         $min-width: #{$fs-min}rem;
 
         // If two-dimensional, use smallest of screen width and height.
