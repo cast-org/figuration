@@ -239,7 +239,7 @@ $line-height-base:  1.5 !default;
 // Responsive Typography - ratio
 // Fluidly scales font size ratio by viewport dimension
 // Cannot be combined with another Responsive Typography method!
-$font-size-ratio:                   true !default;
+$font-size-ratio:                   false !default;
 $font-size-ratio-minimum-size:      1rem !default;
 $font-size-ratio-breakpoint:        bp-to-em(1200px) !default;
 $font-size-ratio-factor:            5 !default;
@@ -250,8 +250,16 @@ $font-size-ratio-generate-static:   true !default;
 // Steps font size by breakpoint
 // Cannot be combined with another Responsive Typography method!
 // [TODO]
-$font-size-scale:               false !default;
-
+$font-size-scale:                   true !default;
+$font-size-scale-minimum-size:      1rem !default;
+$font-size-scale-generate-static:   true !default;
+$font-size-scale-factor: (
+    xs: .65,
+    sm: .7375,
+    md: .825,
+    lg: .9125,
+    xl: 1
+) !default;
 
 $font-weight-light:     300 !default;
 $font-weight-normal:    normal !default;

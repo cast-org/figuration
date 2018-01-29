@@ -116,6 +116,57 @@
 
 // Responsive typography sizing using breakpoint scaling
 @mixin font-size-scale($fs, $fs-append) {
-    // [TODO] - return basic font-size for now
-    font-size: #{$fs}#{$fs-append};
+    // Calculate font size as unitless rem equivalent.
+    $fs: rem($fs);
+    $fs: strip-unit($fs);
+
+    // Calculate minimum font size as unitless rem equivalent.
+    $fs-minimum: rem($font-size-scale-minimum-size);
+    $fs-minimum: strip-unit($fs-minimum);
+
+    // Set default font-size output.
+    $fs-static: #{$fs}rem#{$fs-append};
+    $fs-prev: null;
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        $factor: map-get($font-size-scale-factor, $breakpoint);
+
+        // Only add media query if font-size is bigger than the minimum font-size.
+        // If $font-size-ratio-factor == 1, no rescaling will take place.
+        $fs-scaled: null;
+        $fs-output: null;
+        @if $fs > $fs-minimum and $factor != 1 {
+            $fs-scaled: $fs * $factor;
+            $fs-output: #{$fs-scaled}rem#{$fs-append};
+        }
+
+        // Rendering.
+        @if $fs-scaled == null {
+            @if $fs-prev != $fs {
+                // Only render static font-size if no scaled font-size is available.
+                @if $font-size-scale-generate-static and $fs > $fs-minimum {
+                    @include media-breakpoint-up($breakpoint) {
+                        font-size: $fs-static;
+                    }
+                    // Adding an extra class increases specificity, which
+                    // prevents the media query from overriding the font size.
+                    .font-size-static &,
+                    &.font-size-static {
+                        font-size: $fs-static;
+                    }
+                } @else {
+                    @include media-breakpoint-up($breakpoint) {
+                        font-size: $fs-static;
+                    }
+                }
+            }
+            $fs-prev: $fs;
+        } @else {
+            @if $fs-prev != $fs-scaled {
+                @include media-breakpoint-up($breakpoint) {
+                    font-size: $fs-output;
+                }
+            }
+            $fs-prev: $fs-scaled;
+        }
+    }
 }
