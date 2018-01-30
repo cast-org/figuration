@@ -10,7 +10,7 @@ $enable-palette:        true !default;      // true
 $enable-sizing:         true !default;      // true
 $enable-bp-smallest:    false !default;     // false
 $enable-rfs-fluid:      false !default;     // false
-$enable-rfs-scale:      true !default;     // false
+$enable-rfs-scale:      false !default;     // false
 
 
 // Color
@@ -244,12 +244,12 @@ $font-weight-normal:    normal !default;
 $font-weight-bold:      bold !default;
 $font-weight-base:      $font-weight-normal !default;
 
-$font-size-h1:  2.5rem !default;
-$font-size-h2:  2rem !default;
-$font-size-h3:  1.75rem !default;
-$font-size-h4:  1.5rem !default;
-$font-size-h5:  1.25rem !default;
-$font-size-h6:  1rem !default;
+$font-size-h1:  ($font-size-base * 2.5) !default;
+$font-size-h2:  ($font-size-base * 2) !default;
+$font-size-h3:  ($font-size-base * 1.75) !default;
+$font-size-h4:  ($font-size-base * 1.5) !default;
+$font-size-h5:  ($font-size-base * 1.25) !default;
+$font-size-h6:  ($font-size-base * 1) !default;
 
 $headings-margin-bottom:    ($spacer / 2) !default;
 $headings-font-family:      inherit !default;
@@ -257,7 +257,7 @@ $headings-font-weight:      600 !default;
 $headings-line-height:      1.25 !default;
 $headings-color:            inherit !default;
 
-$lead-font-size:    1.25rem !default;
+$lead-font-size:    ($font-size-base * 1.25) !default;
 $lead-font-weight:  600 !default;
 $lead-line-height:  $line-height-base !default;
 
@@ -276,7 +276,7 @@ $hr-spacer-y:       1rem !default;
 $hr-border-color:   rgba(0, 0, 0, .1) !default;
 $hr-border-width:   $border-width !default;
 
-$blockquote-font-size:          1.1875rem !default;
+$blockquote-font-size:          ($font-size-base * 1.1875) !default;
 $blockquote-color:              $body-color !default;
 $blockquote-footer-font-size:   $font-size-base !default;
 $blockquote-footer-color:       $uibase-400 !default;
@@ -342,25 +342,25 @@ $drag-text-shadow:      0 .0625rem 0 #fff !default;
 // 'md' is considered to be the default size, so no classes for this size designator are generated, as in *no* `.btn-md`.
 $component-sizes: (
     xs: (
-        font-size:      .75rem,
+        font-size:      ($font-size-base * .75),
         padding-y:      .1875rem,
         padding-x:      .375rem,
         border-radius:  .1875rem
     ),
     sm: (
-        font-size:      .875rem,
+        font-size:      ($font-size-base * .875),
         padding-y:      .25rem,
         padding-x:      .5rem,
         border-radius:  .1875rem
     ),
     lg: (
-        font-size:      1.125rem,
+        font-size:      ($font-size-base * 1.125),
         padding-y:      .5rem,
         padding-x:      1.125rem,
         border-radius:  .3125rem
     ),
     xl: (
-        font-size:      1.25rem,
+        font-size:      ($font-size-base * 1.25),
         padding-y:      .625rem,
         padding-x:      1.25rem,
         border-radius:  .3125rem
@@ -625,7 +625,7 @@ $switch-active-indicator-box-shadow:    $btn-active-box-shadow !default;
 // Progress bars
 // =====
 $progress-height:               1rem !default;
-$progress-font-size:            .75rem !default;
+$progress-font-size:            ($font-size-base * .75) !default;
 $progress-bg:                   $uibase-50 !default;
 $progress-border-radius:        $border-radius !default;
 $progress-box-shadow:           inset 0 .125rem .125rem rgba(0, 0, 0, .1) !default;
@@ -731,7 +731,7 @@ $dropdown-link-disabled-bg:     $disabled-bg !default;
 $dropdown-item-padding-x:       1.25rem !default;
 $dropdown-item-padding-y:       .1875rem !default;
 
-$dropdown-header-font-size:     .875rem !default;
+$dropdown-header-font-size:     ($font-size-base * .875) !default;
 $dropdown-header-font-weight:   $font-weight-normal !default;
 $dropdown-header-color:         $uibase-400 !default;
 
@@ -781,7 +781,7 @@ $navbar-item-padding-y:             .3125rem !default;
 
 $navbar-brand-padding-y:            .125rem !default;
 $navbar-brand-margin-x:             1rem !default;
-$navbar-brand-font-size:            1.25rem !default;
+$navbar-brand-font-size:            ($font-size-base * 1.25) !default;
 $navbar-brand-font-weight:          $font-weight-bold !default;
 
 $navbar-divider-width:              $border-width !default;
@@ -789,7 +789,7 @@ $navbar-divider-color:              rgba(0, 0, 0, .65) !default;
 $navbar-divider-margin-x:           $navbar-item-padding-x !default;
 $navbar-divider-margin-y:           $navbar-item-padding-y !default;
 
-$navbar-toggle-font-size:           1.25rem !default;
+$navbar-toggle-font-size:           ($font-size-base * 1.25) !default;
 $navbar-toggle-padding-y:           $btn-padding-y !default;
 $navbar-toggle-padding-x:           $btn-padding-x !default;
 $navbar-toggle-border-radius:       $btn-border-radius !default;
@@ -901,7 +901,7 @@ $tooltip-padding-y:     .25rem !default;
 $tooltip-padding-x:     .5rem !default;
 $tooltip-margin:        .2rem !default;
 
-$tooltip-font-size:     .875rem !default;
+$tooltip-font-size:     ($font-size-base * .875) !default;
 $tooltip-color:         $white !default;
 $tooltip-bg:            $black !default;
 $tooltip-opacity:       .9 !default;
