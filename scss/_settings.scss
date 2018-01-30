@@ -9,6 +9,9 @@ $enable-print-styles:   true !default;      // true
 $enable-palette:        true !default;      // true
 $enable-sizing:         true !default;      // true
 $enable-bp-smallest:    false !default;     // false
+$enable-rfs-fluid:      false !default;     // false
+$enable-rfs-scale:      true !default;     // false
+
 
 // Color
 // =====
@@ -236,31 +239,6 @@ $font-family-base:          $font-family-sans-serif !default;
 $font-size-base:    1rem !default;
 $line-height-base:  1.5 !default;
 
-// Responsive Typography - ratio
-// Fluidly scales font size ratio by viewport dimension
-// Cannot be combined with another Responsive Typography method!
-$font-size-ratio:                   false !default;
-$font-size-ratio-minimum-size:      1rem !default;
-$font-size-ratio-breakpoint:        bp-to-em(1200px) !default;
-$font-size-ratio-factor:            5 !default;
-$font-size-ratio-two-dimensional:   false !default;
-$font-size-ratio-generate-static:   true !default;
-
-// Responsive Typography - scale
-// Steps font size by breakpoint
-// Cannot be combined with another Responsive Typography method!
-// [TODO]
-$font-size-scale:                   true !default;
-$font-size-scale-minimum-size:      1rem !default;
-$font-size-scale-generate-static:   true !default;
-$font-size-scale-factor: (
-    xs: .65,
-    sm: .7375,
-    md: .825,
-    lg: .9125,
-    xl: 1
-) !default;
-
 $font-weight-light:     300 !default;
 $font-weight-normal:    normal !default;
 $font-weight-bold:      bold !default;
@@ -306,6 +284,32 @@ $blockquote-footer-color:       $uibase-400 !default;
 $list-inline-padding: .3em !default;
 
 $dt-font-weight:    $font-weight-bold !default;
+
+// Responsive Typography
+// =====
+// **Only one responsive typography method can be enabled.**
+// By default, these are off, resulting in a static font size across all viewport sizes.
+
+// Common settings
+// Only used when one of Responsive Typography methods is enabled.
+$responsive-font-size-minimum-size:     1rem !default;
+$responsive-font-size-generate-static:  true !default;
+
+// Ratioed Responsive Typography
+// Fluidly scales font size ratio by viewport dimension.
+$responsive-font-size-fluid-breakpoint:        bp-to-em(1200px) !default;
+$responsive-font-size-fluid-factor:            5 !default;
+$responsive-font-size-fluid-two-dimensional:   false !default;
+
+// Scaled Responsive Typography
+// Steps font size by breakpoint.
+$responsive-font-size-scale-factor: (
+    xs: .65,
+    sm: .7375,
+    md: .825,
+    lg: .9125,
+    xl: 1
+) !default;
 
 // Component pieces
 // =====
