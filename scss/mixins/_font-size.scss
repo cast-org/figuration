@@ -131,7 +131,7 @@ $fs-minimum: strip-unit($fs-minimum);
         $fs-scaled: null;
         $fs-output: null;
         @if $fs > $fs-minimum and $factor != 1 {
-            $fs-scaled: $fs * $factor;
+            $fs-scaled: $fs-minimum + ($fs - $fs-minimum) * $factor;
             $fs-output: #{$fs-scaled}rem#{$fs-append};
         }
 
