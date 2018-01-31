@@ -18,6 +18,8 @@ Figuration sets basic global display, typography, and link styles. Specifically,
 
 - Use a [native font stack]({{ site.baseurl }}/content/reboot/#native-font-stack) that selects the best `font-family` for each OS and device.
 - Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base applied to the `<body>`.
+- Use `$font-size-base` to scale the font size of text across all components.
+- Convert all `font-size` CSS rules to `rem` units, assuming the typical browser default of `1rem`=`16px` through the use of our `font-size()` Sass mixin.  While *highly opinionated*, Figuration believes, this offers better accessibility than using `px` to define font sizes.
 - Set the global link color via `$link-color` and apply link underlines only on `:hover`.
 - Use `$body-bg` to set a `background-color` on the `<body>` (`#fff` by default).
 
@@ -220,30 +222,189 @@ Align terms and descriptions horizontally by using our grid system's predefined 
 
 ## Responsive Typography
 
-*Responsive typography* refers to scaling text and components by simply adjusting the root element's `font-size` within a series of media queries. Figuration doesn't do this for you, but it's fairly easy to add if you need it.
+*Responsive typography* refers to scaling an element's `font-size` within a series of media queries.
 
-Here's an example of it in practice. Choose whatever `font-size`s and media queries you wish.
+Figuration, by default, does not have responsive typography enabled. However, we have included two different methods to enable this functionality.
+- *Fluid* sizing based on the dimensions of the viewport.  Based on the [Responsive font-size mixin](https://github.com/MartijnCuppens/rfs) by [Martijn Cuppens](https://github.com/MartijnCuppens).
+- *Scaled* sizing is scaling based on current [responsive breakpoint]({{ site.baseurl }}/layout/overview/#responsive-breakpoints).
+
+See the [Global Options]({{ site.baseurl }}/get-started/options/#global-options) on how the enable either method.  **Note that only one of these methods can be enabled at a time.**
+
+Benefits of using Figuration's responsive typography options include:
+- Font sizes will adjust with the size of the device, which can help reduce the chance of overflow for long words.
+- Font sizes of text elements will always remain in relation to one another.
+- The minimum font size (configuration setting) will prevent the font size from becoming too small so readability can be assured.
+- Does not use the `font-size` of the `<html>` element, allowing for a greater level of accessibility for user's who change the default font size of their browser.
+
+Possible drawbacks include:
+- Can generate a large amount of CSS.  Disabling the `$responsive-font-size-generate-static` setting will also help with reducing the overall size of the CSS.  Also using compressing the CSS, with gzip or other methods, will reduce the CSS file size impact due to the large amount of repeating strings.
+
+### Common Settings
+
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><code>$responsive-font-size-minimum-size</code></td>
+        <td>font size in <code>px</code> or <code>rem</code></td>
+        <td>1em</td>
+        <td>
+            <p>Calculated font sizes will never be smaller than this size. However, you can still pass a smaller font size, but then it won't be responsively sized.</p>
+            <p>For example: <code>font-size(1.5rem)</code> will trigger responsive sizing, with <code>font-size(.875rem)</code> will remain staticly sized at <code>.875rem</code>.</p>
+        </td>
+    </tr>
+    <tr>
+        <td><code>$responsive-font-size-generate-static</code></td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>
+            <p>Generates the <code>.font-size-static</code> utility classes to disable the responsive font sizes for an element and it's descendant elements. This does not apply to font sizes which are inherited from parent elements.</p>
+            <p>If you are not using these utilities, it would be worthwhile to disable this setting to stop the generation of a potentially large amount of unused CSS.</p>
+        </td>
+    </tr>
+</tbody>
+</table>
+
+### Fluid Responsive Typography
+
+A smooth responsive sizing of text based on the viewport dimensions, by default this is the viewport width `vw` dimension.  As the viewport size is reduced, font sizes are
+
+Using Figuration's default settings, a Sass input:
+{% highlight scss %}
+.element {
+  @include font-size(2.5rem);
+}
+{% endhighlight %}
+
+Will generate the CSS output:
+{% highlight css %}
+.element,
+.font-size-static .element, .element.font-size-static {
+  font-size: 2.5rem;
+}
+
+@media (max-width: 75em) {
+  .element {
+    font-size: calc(1.3rem + 1.6vw) ;
+  }
+}
+{% endhighlight %}
+
+#### Settings
+
+<table class="table table-scroll table-bordered table-striped">
+<thead>
+    <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><code>$responsive-font-size-fluid-breakpoint</code></td>
+        <td><code>em</code> unit breakpoint dimension</td>
+        <td>75em</td>
+        <td>Above this breakpoint, the font size will be equal to the font size you passed to the mixin; below the breakpoint, the font size will dynamically scale.</td>
+    </tr>
+    <tr>
+        <td><code>$responsive-font-size-fluid-factor</code></td>
+        <td>integer</td>
+        <td>5</td>
+        <td>This value determines the strength of font size resizing. The higher $rfs-factor, the less difference there is between font sizes on small screens. The lower the factor, the less influence the responsive scaling has, which results in bigger font sizes for small screens. <code>$responsive-font-size-fluid-factor</code> must be greater than 1, and setting it to 1 will disable responsive scaling.</td>
+    </tr>
+    <tr>
+        <td><code>$responsive-font-size-fluid-two-dimensional</code></td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Enabling the two dimensional media queries will determine the font size based on the smallest side of the screen with <code>vmin</code>. This prevents the font size from changing if the device toggles between portrait and landscape mode.</td>
+    </tr>
+</tbody>
+</table>
+
+
+#### Safari Issue
+There is a known issue with Safari where it does not always recalculate the value of vw in a calc()-function for font-sizes in iframes.
+[More information and a workaround can be found over at Martijn Cuppen's Responsive font-size mixin](https://github.com/MartijnCuppens/rfs#known-issues).
+
+### Scaled Responsive Typography
+
+This variant of the responsive typography uses a stepped scale, making the font scale and sizing consistent across all widths of a breakpoint.
+
+By default the font size is scaled downwards at each decreasing breakpoint level from largest to smallest.
+
+Using Figuration's default settings, a Sass input:
+{% highlight scss %}
+.element {
+  @include font-size(2.5rem);
+}
+{% endhighlight %}
+
+Will generate the CSS output:
+{% highlight css %}
+.element {
+  font-size: 1.9375rem;
+}
+
+@media (min-width: 36em) {
+  .element {
+    font-size: 2.078125rem;
+  }
+}
+
+@media (min-width: 48em) {
+  .element {
+    font-size: 2.21875rem;
+  }
+}
+
+@media (min-width: 62em) {
+  .element {
+    font-size: 2.359375rem;
+  }
+}
+
+@media (min-width: 75em) {
+  .element {
+    font-size: 2.5rem;
+  }
+}
+
+.font-size-static .element, .element.font-size-static {
+  font-size: 2.5rem;
+}
+{% endhighlight %}
+
+#### Settings
+
+Scaled responsive typography only has one setting, `$responsive-font-size-scale-factor`, a Sass map that aligns with Figuration's [grid breakpoints]({{ site.baseurl }}/layout/grid/#grid-options).  Each breakpoint level gets an associated scaling value.  The following example shows the default settings for the scaling values.
 
 {% highlight scss %}
-html {
-  font-size: .875rem;
-}
+$responsive-font-size-scale-factor: (
+    xs: .625,
+    sm: .71875,
+    md: .8125,
+    lg: .90625,
+    xl: 1
+) !default;
+{% endhighlight %}
 
-@include media-breakpoint-up(sm) {
-  html {
-    font-size: 1rem;
-  }
-}
+It is also possible to change the settings so font size grows as the breakpoint size increases, as shown in the following example.
 
-@include media-breakpoint-up(md) {
-  html {
-    font-size: 1.25rem;
-  }
-}
-
-@include media-breakpoint-up(lg) {
-  html {
-    font-size: 1.75rem;
-  }
-}
+{% highlight scss %}
+$responsive-font-size-scale-factor: (
+    xs: 1,
+    sm: 1.09375,
+    md: 1.1875,
+    lg: 1.28125,
+    xl: 1.375
+);
 {% endhighlight %}
