@@ -5,7 +5,7 @@
     // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
     // So reset our font and text properties to avoid inheriting weird values.
     @include reset-text;
-    font-size: $tooltip-font-size;
+    @include font-size($tooltip-font-size);
     // Allow breaking very long words so they don't overflow the tooltip's bounds
     word-wrap: break-word;
     opacity: 0;
@@ -68,7 +68,7 @@
         position: static;
         padding: $tooltip-padding-y $tooltip-padding-x;
         margin-top: -$tooltip-padding-y;
-        font-size: 1.25rem;
+        @include font-size(1.25rem);
         color: $white;
         text-shadow: none;
         opacity: 1;

@@ -35,7 +35,7 @@
     min-width: $dropdown-min-width;
     padding: $dropdown-padding-y 0;
     margin: $dropdown-spacer 0 0; // override default ul
-    font-size: $font-size-base;
+    @include font-size($font-size-base);
     color: $body-color;
     text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
     list-style: none;
@@ -185,7 +185,7 @@
 .dropdown-header {
     display: block;
     padding: $dropdown-item-padding-y $dropdown-item-padding-x;
-    font-size: $dropdown-header-font-size;
+    @include font-size($dropdown-header-font-size);
     font-weight: $dropdown-header-font-weight;
     line-height: inherit;
     color: $dropdown-header-color;

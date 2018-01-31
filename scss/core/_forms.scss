@@ -7,7 +7,7 @@
     // Make inputs the height of their button counterpart (line-height + padding + border)
     height: $select-height;
     padding: $input-padding-y ($input-padding-x / 2);
-    font-size: $font-size-base;
+    @include font-size($font-size-base);
     line-height: $input-line-height;
     color: $input-color;
     background-color: $input-bg;
@@ -103,7 +103,7 @@ textarea.form-control {
 // When you need the legend text to be the same size as regular labels.
 .form-control-legend {
     margin-bottom: 0; // Override the `<legend>` default
-    font-size: $font-size-base;
+    @include font-size($font-size-base);
 }
 
 // Static form control text
@@ -136,7 +136,7 @@ textarea.form-control {
         %form-control-#{$size} {
             height: $sz-select-height;
             padding: $sz-padding-y ($sz-padding-x / 2);
-            font-size: $sz-font-size;
+            @include font-size($sz-font-size);
             @include border-radius($sz-border-radius);
         }
 
@@ -148,12 +148,12 @@ textarea.form-control {
         .form-control-static-#{$size} {
             padding-top: calc(#{$sz-padding-y} + #{$input-border-width});
             padding-bottom: calc(#{$sz-padding-y} + #{$input-border-width});
-            font-size: $sz-font-size;
+            @include font-size($sz-font-size);
             //line-height: ($sz-font-size * $input-line-height);
         }
 
         .form-control-legend-#{$size} {
-            font-size: $sz-font-size;
+            @include font-size($sz-font-size);
         }
     }
 }

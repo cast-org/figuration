@@ -277,7 +277,7 @@
     display: block;
     max-width: 100%;
     padding: .25rem;
-    font-size: .9375rem;
+    @include font-size(.9375rem);
     color: #fff;
     text-align: center;
     background-color: rgba(0, 0, 0, .65);
@@ -287,5 +287,5 @@
 .player-fulldisplay .player-caption-display {
     bottom: 5rem;
     padding: .5rem 1rem;
-    font-size: 1.25rem;
+    @include font-size(1.25rem);
 }

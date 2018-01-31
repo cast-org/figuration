@@ -198,7 +198,7 @@
             height: $sz-select-height;
             padding: $sz-padding-y ($sz-padding-x / 2);
             padding-right: ($sz-padding-x + $custom-select-indicator-padding);
-            font-size: $sz-font-size;
+            @include font-size($sz-font-size);
             background-position: right ($sz-padding-x / 2) center;
         }
         // stylelint-enable declaration-block-no-duplicate-properties
@@ -291,7 +291,7 @@
     width: auto;
     min-width: $input-height;
     height: $input-height;
-    font-size: $font-size-base;
+    @include font-size($font-size-base);
     line-height: $input-line-height;
     color: $input-color;
     background-color: $input-bg;
