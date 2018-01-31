@@ -5202,8 +5202,8 @@ a.badge:hover, a.badge:focus {
 }
 
 .media-body {
-  -ms-flex: 1 1;
-      flex: 1 1;
+  -ms-flex: 1 1 0%;
+      flex: 1 1 0%;
 }
 
 .card {
@@ -5493,8 +5493,8 @@ a.badge:hover, a.badge:focus {
 }
 
 .card-deck > .card {
-  -ms-flex: 1 0;
-      flex: 1 0;
+  -ms-flex: 1 0 0%;
+      flex: 1 0 0%;
   margin-bottom: 0;
 }
 
@@ -5505,8 +5505,8 @@ a.badge:hover, a.badge:focus {
     margin-bottom: 1rem;
   }
   .card-deck-sm > .card {
-    -ms-flex: 1 0;
-        flex: 1 0;
+    -ms-flex: 1 0 0%;
+        flex: 1 0 0%;
     margin-bottom: 0;
   }
 }
@@ -5518,8 +5518,8 @@ a.badge:hover, a.badge:focus {
     margin-bottom: 1rem;
   }
   .card-deck-md > .card {
-    -ms-flex: 1 0;
-        flex: 1 0;
+    -ms-flex: 1 0 0%;
+        flex: 1 0 0%;
     margin-bottom: 0;
   }
 }
@@ -5531,8 +5531,8 @@ a.badge:hover, a.badge:focus {
     margin-bottom: 1rem;
   }
   .card-deck-lg > .card {
-    -ms-flex: 1 0;
-        flex: 1 0;
+    -ms-flex: 1 0 0%;
+        flex: 1 0 0%;
     margin-bottom: 0;
   }
 }
@@ -5544,8 +5544,8 @@ a.badge:hover, a.badge:focus {
     margin-bottom: 1rem;
   }
   .card-deck-xl > .card {
-    -ms-flex: 1 0;
-        flex: 1 0;
+    -ms-flex: 1 0 0%;
+        flex: 1 0 0%;
     margin-bottom: 0;
   }
 }
@@ -5574,8 +5574,8 @@ a.badge:hover, a.badge:focus {
 }
 
 .card-group > .card {
-  -ms-flex: 1 0;
-      flex: 1 0;
+  -ms-flex: 1 0 0%;
+      flex: 1 0 0%;
   margin-bottom: 0;
 }
 
@@ -5632,8 +5632,8 @@ a.badge:hover, a.badge:focus {
     margin-bottom: 1rem;
   }
   .card-group-sm > .card {
-    -ms-flex: 1 0;
-        flex: 1 0;
+    -ms-flex: 1 0 0%;
+        flex: 1 0 0%;
     margin-bottom: 0;
   }
   .card-group-sm > .card + .card {
@@ -5682,8 +5682,8 @@ a.badge:hover, a.badge:focus {
     margin-bottom: 1rem;
   }
   .card-group-md > .card {
-    -ms-flex: 1 0;
-        flex: 1 0;
+    -ms-flex: 1 0 0%;
+        flex: 1 0 0%;
     margin-bottom: 0;
   }
   .card-group-md > .card + .card {
@@ -5732,8 +5732,8 @@ a.badge:hover, a.badge:focus {
     margin-bottom: 1rem;
   }
   .card-group-lg > .card {
-    -ms-flex: 1 0;
-        flex: 1 0;
+    -ms-flex: 1 0 0%;
+        flex: 1 0 0%;
     margin-bottom: 0;
   }
   .card-group-lg > .card + .card {
@@ -5782,8 +5782,8 @@ a.badge:hover, a.badge:focus {
     margin-bottom: 1rem;
   }
   .card-group-xl > .card {
-    -ms-flex: 1 0;
-        flex: 1 0;
+    -ms-flex: 1 0 0%;
+        flex: 1 0 0%;
     margin-bottom: 0;
   }
   .card-group-xl > .card + .card {
@@ -7876,8 +7876,8 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
 }
 
 .flex-shrink {
-  -ms-flex: 0 1 !important;
-      flex: 0 1 !important;
+  -ms-flex: 0 1 0% !important;
+      flex: 0 1 0% !important;
 }
 
 .flex-none {
@@ -8071,8 +8071,8 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
         flex: 1 0 auto !important;
   }
   .flex-sm-shrink {
-    -ms-flex: 0 1 !important;
-        flex: 0 1 !important;
+    -ms-flex: 0 1 0% !important;
+        flex: 0 1 0% !important;
   }
   .flex-sm-none {
     -ms-flex: none !important;
@@ -8266,8 +8266,8 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
         flex: 1 0 auto !important;
   }
   .flex-md-shrink {
-    -ms-flex: 0 1 !important;
-        flex: 0 1 !important;
+    -ms-flex: 0 1 0% !important;
+        flex: 0 1 0% !important;
   }
   .flex-md-none {
     -ms-flex: none !important;
@@ -8461,8 +8461,8 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
         flex: 1 0 auto !important;
   }
   .flex-lg-shrink {
-    -ms-flex: 0 1 !important;
-        flex: 0 1 !important;
+    -ms-flex: 0 1 0% !important;
+        flex: 0 1 0% !important;
   }
   .flex-lg-none {
     -ms-flex: none !important;
@@ -8656,8 +8656,8 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
         flex: 1 0 auto !important;
   }
   .flex-xl-shrink {
-    -ms-flex: 0 1 !important;
-        flex: 0 1 !important;
+    -ms-flex: 0 1 0% !important;
+        flex: 0 1 0% !important;
   }
   .flex-xl-none {
     -ms-flex: none !important;
