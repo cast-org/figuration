@@ -289,7 +289,7 @@ For grids that are the same from the smallest of devices to the largest, use the
 
 ### Stacked to Horizontal
 
-Using a single set of `.col-sm-*` classes, you can create a basic grid system that starts out stacked on mobile and tablet devices (the extra small to small range) before becoming horizontal on desktop (medium) devices.
+Using a single set of `.col-sm-*` classes, you can create a basic grid system that starts out stacked and becomes horizontal at the small breakpoint (`sm`).
 
 <div class="cf-example-row">
 {% example html %}
@@ -298,9 +298,9 @@ Using a single set of `.col-sm-*` classes, you can create a basic grid system th
   <div class="col-sm-4">.col-sm-4</div>
 </div>
 <div class="row">
-  <div class="col-sm-4">.col-sm-4</div>
-  <div class="col-sm-4">.col-sm-4</div>
-  <div class="col-sm-4">.col-sm-4</div>
+  <div class="col-sm">.col-sm</div>
+  <div class="col-sm">.col-sm</div>
+  <div class="col-sm">.col-sm</div>
 </div>
 {% endexample %}
 </div>
@@ -313,7 +313,7 @@ Don't want your columns to simply stack in some grid tiers. Use a combination of
 {% example html %}
 <!-- Stack the columns on mobile by making one full-width and the other half-width -->
 <div class="row">
-  <div class="col col-md-8">.col .col-md-8</div>
+  <div class="col-12 col-md-8">.col-12 .col-md-8</div>
   <div class="col-6 col-md-4">.col-6 .col-md-4</div>
 </div>
 
