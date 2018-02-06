@@ -1,32 +1,14 @@
 // Badges
-@mixin badge-variant($color, $bg, $hover-color, $hover-bg) {
-    @if ($color != $badge-color) {
-        color: $color;
-    }
-    background-color: $bg;
-    border-color: $bg;
-
-    &[href] {
-        @include hover-focus {
-            @if ($hover-color != $badge-link-hover-color) {
-                color: $hover-color;
-            }
-            background-color: $hover-bg;
-            border-color: $hover-bg;
-        }
-    }
-}
-
-@mixin badge-outline-variant($color) {
+@mixin badge-color($color, $bg, $border, $hover-color, $hover-bg, $hover-border) {
     color: $color;
-    background-color: $badge-outline-bg;
-    border-color: $color;
+    background-color: $bg;
+    border-color: $border;
 
     &[href] {
         @include hover-focus {
-            color: $badge-outline-link-hover-color;
-            background-color: $color;
-            border-color: $color;
+            color: $hover-color;
+            background-color: $hover-bg;
+            border-color: $hover-border;
         }
     }
 }

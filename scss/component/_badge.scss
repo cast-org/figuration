@@ -4,8 +4,7 @@
     padding: $badge-padding-y $badge-padding-x;
     @include font-size($badge-font-size);
     font-weight: $badge-font-weight;
-    line-height: 1;
-    color: $badge-color;
+    line-height: $badge-line-height;
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
@@ -18,7 +17,8 @@
     }
 
     // Default color (linked badges get darker on :hover)
-    @include badge-variant($badge-color, $badge-bg, $badge-link-hover-color, $badge-hover-bg);
+    $color: color-if-contrast($badge-default-color, $badge-default-bg);
+    @include badge-color($badge-default-color, $badge-default-bg, $badge-default-bg, $badge-default-hover-color, $badge-default-hover-bg, $badge-default-hover-bg);
 }
 
 // Quick fix for badges in buttons
@@ -33,7 +33,6 @@ a.badge {
     text-decoration: none;
 
     @include hover-focus {
-        color: $badge-link-hover-color;
         text-decoration: none;
     }
 }
@@ -48,24 +47,35 @@ a.badge {
 
 // Colors (linked badges get darker on :hover)
 @each $theme, $colors in $context-themes {
-    $color:       map-get($colors, "control-color");
     $bg:          map-get($colors, "control-bg");
-    $hover-color: map-get($colors, "control-hover-color");
     $hover-bg:    map-get($colors, "control-hover-bg");
 
+    $color: color-if-contrast($badge-default-color, $bg);
+    $hover-color: color-if-contrast($color, $hover-bg);
+
     .badge-#{$theme} {
-        @include badge-variant($color, $bg, $hover-color, $hover-bg);
+        @include badge-color($color, $bg, $bg, $hover-color, $hover-bg, $hover-bg);
     }
 }
 
 // Outline (linked badges get color fill on :hover)
 .badge-outline {
-    @include badge-outline-variant($badge-bg);
+    $bg:          $badge-outline-bg;
+    $hover-bg:    $badge-default-bg;
+
+    $color: $badge-default-outline-color;
+    $hover-color: color-if-contrast($color, $hover-bg);
+
+    @include badge-color($color, $badge-outline-bg, $hover-bg, $hover-color, $hover-bg, $hover-bg);
 }
 @each $theme, $colors in $context-themes {
-    $color: map-get($colors, "control-bg");
+    $bg:          $badge-outline-bg;
+    $hover-bg:    map-get($colors, "control-bg");
+
+    $color:       map-get($colors, "control-bg");
+    $hover-color: color-if-contrast($white, $hover-bg);
 
     .badge-outline-#{$theme} {
-        @include badge-outline-variant($color);
+        @include badge-color($color, $bg, $hover-bg, $hover-color, $hover-bg, $hover-bg);
     }
 }

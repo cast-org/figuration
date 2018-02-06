@@ -6,8 +6,8 @@
 @mixin form-control-validation($color-name) {
     $color:        palette-context($color-name);
     $bg:           palette-context($color-name, $level-context-bg);
-    $border:       palette-context($color-name, $level-context-border);
-    $border-hover: palette-context($color-name, $level-context-hover-border);
+    $border:       palette-context($color-name, $level-context-border-color);
+    $border-hover: palette-context($color-name, $level-context-hover-border-color);
 
     // Color the label and help text
     .form-control-feedback,

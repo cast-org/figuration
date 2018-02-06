@@ -11,52 +11,57 @@ $enable-sizing:         true !default;      // true
 $enable-bp-smallest:    false !default;     // false
 $enable-rfs-fluid:      false !default;     // false
 $enable-rfs-scale:      false !default;     // false
+$enable-color-warnings: false !default;     //false
 
+// Palette
+// =====
+// List of levels to build CSS out for each of the palette themes
+// Valid levels 0-1000
+$palette-levels: 50 100 200 300 400 500 600 700 800 900 !default;
+
+// Percentage value per level to mix against white or black
+// Darker levels (>500) get narrower step interval than lighter
+$palette-interval-light:    .2% !default;
+$palette-interval-dark:     .15% !default;
 
 // Color
 // =====
 // Minimum contrast ratio - WCAG 2.1 level AA spec
-$color-min-contrast-ratio:  4.5 !default;
+$color-contrast-min-ratio:  4.5 !default;
 
-// Grayscale
+
+// Base Colors
 // =====
+$uibase:    #5a6570 !default;
 $white:     #fff !default;
+$gray:      #666 !default;
 $black:     #000 !default;
-$uibase:    #666 !default;
+$red:       #df2314 !default;
+$green:     #10ac21 !default;
+$blue:      #0d4ddc !default;
+$cyan:      #0080a7 !default;
+$yellow:    #fcc725 !default;
 
-$uibase-25:  palette($uibase, 25);
+// Base UI Scale
+// =====
 $uibase-50:  palette($uibase, 50);
-$uibase-75:  palette($uibase, 75);
 $uibase-100:  palette($uibase, 100);
 $uibase-200:  palette($uibase, 200);
 $uibase-300:  palette($uibase, 300);
 $uibase-400:  palette($uibase, 400);
-$uibase-450:  palette($uibase, 450);
 $uibase-500:  palette($uibase, 500);
 $uibase-600:  palette($uibase, 600);
 $uibase-700:  palette($uibase, 700);
 $uibase-800:  palette($uibase, 800);
 $uibase-900:  palette($uibase, 900);
 
-
-// Base Palette Colors
-// =====
-$red:       #c81d0e !default;
-$green:     #108918 !default;
-$blue:      #1242ba !default;
-$cyan:      #117cba !default;
-$mustard:   #c98800 !default;
-$gray:      #666 !default;
-
-// List of levels to build CSS out for each of the palette themes
-$palette-levels: 50 100 200 300 400 500 600 700 800 900 !default;
-
 $palette-themes: (
+    "uibase":   $uibase,
     "red":      $red,
     "green":    $green,
     "blue":     $blue,
     "cyan":     $cyan,
-    "mustard":  $mustard,
+    "yellow":   $yellow,
     "gray":     $gray
 ) !default;
 
@@ -66,24 +71,27 @@ $palette-themes: (
 $context-themes: () !default;
 $context-colors: (
     "primary":   $blue,
-    "secondary": palette($gray, 450), // bring down a bit
+    "secondary": $gray,
     "info":      $cyan,
     "success":   $green,
-    "warning":   $mustard,
+    "warning":   $yellow,
     "danger":    $red
 ) !default;
 
-// Palette levels for use in _mix-context-colors() to determine standardized
-// contextual color mapping
-$level-control-border:       600 !default;
-$level-control-hover-bg:     650 !default;
-$level-control-hover-border: 700 !default;
-$level-context-color:        600 !default;
-$level-context-bg:           75 !default;
-$level-context-border:       300 !default;
-$level-context-hover-color:  700 !default;
-$level-context-hover-bg:     125 !default;
-$level-context-hover-border: 550 !default;
+// Palette levels for use in _mix-context-colors() to determine
+// standardized contextual color mapping.
+$level-control-bg:                  500 !default;
+$level-control-border-color:        600 !default;
+$level-control-hover-bg:            600 !default;
+$level-control-hover-border-color:  700 !default;
+$level-control-active-hover-bg:     700 !default;
+
+$level-context-bg:                  50 !default;
+$level-context-color:               800 !default;
+$level-context-border-color:        100 !default;
+$level-context-hover-bg:            200 !default;
+$level-context-hover-color:         900 !default;
+$level-context-hover-border-color:  200 !default; //deprecate
 
 // Increase (or decrease with negative number) to alter color for the hover state of
 //`.text-{color}-(palette-level} and `.bg-{color}-(palette-level} utilities
@@ -108,10 +116,8 @@ $context-themes: map-merge($context-themes, $brand-themes);
 // Adding a single color map
 // $single-color: (
 //     "purple": (
-//         "control-color":        #fff,
 //         "control-bg":           #990099,
 //         "control-border":       #800080,
-//         "control-hover-color":  #fff,
 //         "control-hover-bg":     #770077,
 //         "control-hover-border": #660066,
 //         "context-color":        #990099,
@@ -320,7 +326,7 @@ $active-bg:         map-deep-get($context-themes, "primary", "control-bg") !defa
 $active-border:     map-deep-get($context-themes, "primary", "control-border") !default;
 $active-hover-bg:   map-deep-get($context-themes, "primary", "control-hover-bg") !default;
 
-$disabled-color:    $uibase-450 !default;
+$disabled-color:    $uibase-400 !default;
 $disabled-bg:       transparent !default;
 
 $caret-width:           .3125rem !default;
@@ -409,8 +415,8 @@ $embed-ratio: percentage(9 / 16) !default;
 $code-font-size:            87.5% !default;
 $code-padding-x:            .4375rem !default;
 $code-padding-y:            .125rem !default;
-$code-color:                map-get($context-colors, "danger") !default;
-$code-bg:                   $uibase-75 !default;
+$code-color:                palette($red, 550) !default;
+$code-bg:                   $uibase-50 !default;
 
 $kbd-color:                 $uibase-50 !default;
 $kbd-bg:                    $uibase-900 !default;
@@ -436,9 +442,9 @@ $table-condensed-cell-padding:  .3125rem .5rem !default;
 
 $table-bg:                  transparent !default;
 $table-bg-accent:           $uibase-50 !default;
-$table-bg-hover:            $uibase-75 !default;
+$table-bg-hover:            $uibase-100 !default;
 $table-bg-active:           $table-bg-hover !default;
-$table-bg-active-hover:     $uibase-100 !default;
+$table-bg-active-hover:     $uibase-200 !default;
 
 $table-head-color:          $uibase-900 !default;
 $table-head-bg:             $uibase-300 !default;
@@ -457,29 +463,24 @@ $table-border-color:        $uibase-300 !default;
 // =====
 $btn-padding-y:             .375rem !default;
 $btn-padding-x:             .75rem !default;
-$btn-line-height:           1.25 !default;
 $btn-font-weight:           $font-weight-normal !default;
+$btn-line-height:           1.25 !default;
+$btn-border-radius:         $border-radius !default;
 $btn-box-shadow:            inset 0 .125rem .25rem rgba(255, 255, 255, .25);
 $btn-focus-box-shadow:      0 0 2px 3px rgba(palette-context("info", 300), .75) !default; // px because simulating outline
 $btn-active-box-shadow:     inset 0 .125rem .25rem rgba(0, 0, 0, .25) !default;
 
-$btn-default-color:         $uibase-500 !default;
-$btn-default-bg:            $white !default;
-$btn-default-border:        rgba(0, 0, 0, .25) !default;
-$btn-default-hover-color:   $uibase-600 !default;
-$btn-default-hover-bg:      $uibase-75 !default;
-$btn-default-hover-border:  rgba(0, 0, 0, .5) !default;
-
-// Background color darken/lighten for ':active:hover' button state
-// Negative value will lighten, positive value will darken
-$btn-active-hover-adjust:   6% !default;
+$btn-default-bg:                $white !default;
+$btn-default-color:             $uibase-500 !default;
+$btn-default-border:            $uibase-300 !default;
+$btn-default-hover-bg:          $uibase-50 !default;
+$btn-default-hover-color:       $uibase-600 !default;
+$btn-default-hover-border:      $uibase-400 !default;
+$btn-default-active-hover-bg:   $uibase-100 !default;
 
 $btn-disabled-opacity:      .6 !default;
 
 $btn-block-spacing-y:       .3rem !default;
-
-// Allows for customizing button radius independently from global border radius
-$btn-border-radius:         $border-radius !default;
 
 
 // Forms
@@ -607,8 +608,8 @@ $switch-width-multiplier:               4 !default;
 $switch-control-bg:                     $input-bg !default;
 $switch-indicator-bg:                   $uibase-200 !default;
 
-$switch-active-control-bg:              $uibase-25 !default;
-$switch-active-indicator-bg:            $uibase-300 !default;
+$switch-active-control-bg:              $uibase-50 !default;
+$switch-active-indicator-bg:            $uibase-400 !default;
 
 $switch-focus-control-border-color:     $input-focus-border-color !default;
 $switch-focus-control-box-shadow-outer: $input-focus-box-shadow-outer !default;
@@ -822,14 +823,12 @@ $jumbotron-breakpoint:      sm !default;
 
 // Badges
 // =====
-$badge-color:               $white !default;
-$badge-bg:                  $uibase-400 !default;
-$badge-hover-bg:            $uibase-500 !default;
-$badge-link-hover-color:    $white !default;
 $badge-font-size:           75% !default;
 $badge-font-weight:         $font-weight-bold !default;
 $badge-padding-x:           .375em !default;
-$badge-padding-y:           .25em !default;
+//$badge-padding-y:           .25em !default;
+$badge-padding-y:           0 !default;
+$badge-line-height:         $line-height-base !default;
 $badge-border-radius:       .25em !default;
 $badge-border-width:        $border-width !default;
 
@@ -838,8 +837,14 @@ $badge-pill-padding-x:      .5em !default;
 // customizing padding or font-size on badges.
 $badge-pill-border-radius:  10rem !default;
 
+
 $badge-outline-bg:          transparent !default;
-$badge-outline-link-hover-color: $white !default;
+
+$badge-default-bg:          palette($uibase, $level-context-bg) !default;
+$badge-default-color:       $uibase-500 !default;
+$badge-default-hover-bg:    palette($uibase, $level-control-border-color) !default;
+$badge-default-hover-color: color-if-contrast($uibase-600, $badge-default-hover-bg) !default;
+$badge-default-outline-color: $uibase;
 
 
 // Alerts
