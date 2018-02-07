@@ -77,5 +77,5 @@
     $hover-bg:    map-get($colors, "context-hover-bg");
     $hover-color: $white;
 
-    @include list-group-item-variant(#{$theme}, $bg, $color, $hover-bg, $hover-color);
+    @include list-group-item-color(#{$theme}, $bg, $color, $hover-bg, $hover-color);
 }

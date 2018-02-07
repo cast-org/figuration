@@ -1,5 +1,5 @@
 // Alerts
-@mixin alert-variant($color, $bg, $border, $hover-color) {
+@mixin alert-color($color, $bg, $border, $hover-color) {
     color: $color;
     background-color: $bg;
     border-color: $border;
@@ -7,6 +7,7 @@
     hr {
         border-top-color: $border;
     }
+
     .alert-link {
         color: $color;
 
