@@ -36,6 +36,6 @@
     $hover-color: map-get($colors, "context-hover-color");
 
     .alert-#{$theme} {
-        @include alert-color($color, $bg, $border, $hover-color);
+        @include alert-variant($color, $bg, $border, $hover-color);
     }
 }

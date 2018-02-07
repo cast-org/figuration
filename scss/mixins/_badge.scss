@@ -1,5 +1,5 @@
 // Badges
-@mixin badge-color($color, $bg, $border, $hover-color, $hover-bg, $hover-border) {
+@mixin badge-variant($color, $bg, $border, $hover-color, $hover-bg, $hover-border) {
     color: $color;
     background-color: $bg;
     border-color: $border;

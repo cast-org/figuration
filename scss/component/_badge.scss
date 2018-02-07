@@ -18,7 +18,7 @@
 
     // Default color (linked badges get darker on :hover)
     $color: color-if-contrast($badge-default-color, $badge-default-bg);
-    @include badge-color($badge-default-color, $badge-default-bg, $badge-default-bg, $badge-default-hover-color, $badge-default-hover-bg, $badge-default-hover-bg);
+    @include badge-variant($badge-default-color, $badge-default-bg, $badge-default-bg, $badge-default-hover-color, $badge-default-hover-bg, $badge-default-hover-bg);
 }
 
 // Quick fix for badges in buttons
@@ -54,7 +54,7 @@ a.badge {
     $hover-color: color-if-contrast($color, $hover-bg);
 
     .badge-#{$theme} {
-        @include badge-color($color, $bg, $bg, $hover-color, $hover-bg, $hover-bg);
+        @include badge-variant($color, $bg, $bg, $hover-color, $hover-bg, $hover-bg);
     }
 }
 
@@ -66,7 +66,7 @@ a.badge {
     $color: $badge-default-outline-color;
     $hover-color: color-if-contrast($color, $hover-bg);
 
-    @include badge-color($color, $badge-outline-bg, $hover-bg, $hover-color, $hover-bg, $hover-bg);
+    @include badge-variant($color, $badge-outline-bg, $hover-bg, $hover-color, $hover-bg, $hover-bg);
 }
 @each $theme, $colors in $context-themes {
     $bg:          $badge-outline-bg;
@@ -76,6 +76,6 @@ a.badge {
     $hover-color: color-if-contrast($white, $hover-bg);
 
     .badge-outline-#{$theme} {
-        @include badge-color($color, $bg, $hover-bg, $hover-color, $hover-bg, $hover-bg);
+        @include badge-variant($color, $bg, $hover-bg, $hover-color, $hover-bg, $hover-bg);
     }
 }
