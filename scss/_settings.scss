@@ -470,6 +470,13 @@ $btn-box-shadow:            inset 0 .125rem .25rem rgba(255, 255, 255, .25);
 $btn-focus-box-shadow:      0 0 2px 3px rgba(palette-context("info", 300), .75) !default; // px because simulating outline
 $btn-active-box-shadow:     inset 0 .125rem .25rem rgba(0, 0, 0, .25) !default;
 
+$btn-outline-bg:            transparent !default;
+$btn-outline-hover-color:   $white !default;
+
+$btn-disabled-opacity:      .6 !default;
+
+$btn-block-spacing-y:       .25rem !default;
+
 $btn-default-bg:                $white !default;
 $btn-default-color:             $uibase-500 !default;
 $btn-default-border:            $uibase-300 !default;
@@ -478,9 +485,6 @@ $btn-default-hover-color:       $uibase-600 !default;
 $btn-default-hover-border:      $uibase-400 !default;
 $btn-default-active-hover-bg:   $uibase-100 !default;
 
-$btn-disabled-opacity:      .6 !default;
-
-$btn-block-spacing-y:       .3rem !default;
 
 
 // Forms
@@ -826,7 +830,6 @@ $jumbotron-breakpoint:      sm !default;
 $badge-font-size:           75% !default;
 $badge-font-weight:         $font-weight-bold !default;
 $badge-padding-x:           .375em !default;
-//$badge-padding-y:           .25em !default;
 $badge-padding-y:           0 !default;
 $badge-line-height:         $line-height-base !default;
 $badge-border-radius:       .25em !default;
@@ -837,14 +840,13 @@ $badge-pill-padding-x:      .5em !default;
 // customizing padding or font-size on badges.
 $badge-pill-border-radius:  10rem !default;
 
-
 $badge-outline-bg:          transparent !default;
 
 $badge-default-bg:          palette($uibase, $level-context-bg) !default;
 $badge-default-color:       $uibase-500 !default;
 $badge-default-hover-bg:    palette($uibase, $level-control-border-color) !default;
 $badge-default-hover-color: color-if-contrast($uibase-600, $badge-default-hover-bg) !default;
-$badge-default-outline-color: $uibase;
+$badge-default-outline-color: $uibase-500;
 
 
 // Alerts

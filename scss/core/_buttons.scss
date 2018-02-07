@@ -67,9 +67,9 @@ fieldset:disabled a.btn {
 // Contextual color variants
 @each $theme, $colors in $context-themes {
     $bg:                map-get($colors, "control-bg");
-    $border:            map-get($colors, "control-border");
+    $border:            map-get($colors, "control-border-color");
     $hover-bg:          map-get($colors, "control-hover-bg");
-    $hover-border:      map-get($colors, "control-hover-border");
+    $hover-border:      map-get($colors, "control-hover-border-color");
     $active-hover-bg:   map-get($colors, "control-active-hover-bg");
 
     $color:        color-if-contrast($btn-default-color, $bg);
@@ -82,16 +82,14 @@ fieldset:disabled a.btn {
 
 // Outline variant - remove all backgrounds
 @each $theme, $colors in $context-themes {
-    $color:        map-get($colors, "control-bg");
-    $bg:           transparent;
-    $border:       map-get($colors, "control-border");
-    $hover-color:  color-if-contrast($white, $bg);
-    $hover-bg:     $color;
-    $hover-border: map-get($colors, "control-hover-border");
-    $active-hover-bg:   map-get($colors, "control-active-hover-bg");
+    $bg:              $btn-outline-bg;
+    $border:          map-get($colors, "control-border-color");
+    $hover-bg:        map-get($colors, "control-bg");
+    $hover-border:    map-get($colors, "control-hover-border-color");
+    $active-hover-bg: map-get($colors, "control-active-hover-bg");
 
-    //$color:        color-if-contrast($color, $white);
-    $hover-color:  color-if-contrast($hover-color, $hover-bg);
+    $color:       map-get($colors, "control-bg");
+    $hover-color: color-if-contrast($btn-outline-hover-color, $hover-bg);
 
     .btn-outline-#{$theme} {
         @include button-color($color, $bg, $border, $hover-color, $hover-bg, $hover-border, $active-hover-bg);
