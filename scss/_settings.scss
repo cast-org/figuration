@@ -13,6 +13,7 @@ $enable-rfs-fluid:      false !default;     // false
 $enable-rfs-scale:      false !default;     // false
 $enable-color-warnings: false !default;     //false
 
+
 // Palette
 // =====
 // List of levels to build CSS out for each of the palette themes
@@ -24,24 +25,40 @@ $palette-levels: 50 100 200 300 400 500 600 700 800 900 !default;
 $palette-interval-light:    .2% !default;
 $palette-interval-dark:     .15% !default;
 
-// Color
-// =====
-// Minimum contrast ratio - WCAG 2.1 level AA spec
-$color-contrast-min-ratio:  4.5 !default;
+// Palette levels for use in _mix-context-colors() to determine
+// standardized contextual color mapping.
+$level-control-bg:                  500 !default;
+$level-control-border-color:        500 !default;
+$level-control-hover-bg:            600 !default;
+$level-control-hover-border-color:  600 !default;
+$level-control-active-hover-bg:     700 !default;
+
+$level-context-bg:                  100 !default;
+$level-context-color:               800 !default;
+$level-context-border-color:        100 !default;
+$level-context-hover-bg:            200 !default;
+$level-context-hover-color:         900 !default;
+$level-context-hover-border-color:  200 !default; //deprecate
+
+// Increase (or decrease with negative number) to alter color for the hover state of
+//`.text-{color}-(palette-level} and `.bg-{color}-(palette-level} utilities
+$level-delta-hover-color:           200 !default;
+$level-delta-hover-bg:              200 !default;
+
 
 // Base Colors
 // =====
-$uibase:    #5a6570 !default;
+$uibase:    #546778 !default;
 $white:     #fff !default;
 $gray:      #666 !default;
 $black:     #000 !default;
 $red:       #df2314 !default;
 $green:     #10ac21 !default;
-$blue:      #0d4ddc !default;
-$cyan:      #0080a7 !default;
+$blue:      #005ff1 !default;
+$cyan:      #137db4 !default;
 $yellow:    #fcc725 !default;
-$light:     palette($uibase, 50);
-$dark:      palette($uibase, 700);
+$light:     palette($uibase, 50) !default;
+$dark:      palette($uibase, 700) !default;
 
 // Base UI Scale
 // =====
@@ -56,7 +73,7 @@ $uibase-700:  palette($uibase, 700);
 $uibase-800:  palette($uibase, 800);
 $uibase-900:  palette($uibase, 900);
 
-// Contextual Colors
+// Palette Colors
 // =====
 $palette-themes: (
     "uibase":    $uibase,
@@ -83,54 +100,17 @@ $context-colors: (
     "dark":      $dark
 ) !default;
 
-// Palette levels for use in _mix-context-colors() to determine
-// standardized contextual color mapping.
-$level-control-bg:                  500 !default;
-$level-control-border-color:        500 !default;
-$level-control-hover-bg:            600 !default;
-$level-control-hover-border-color:  600 !default;
-$level-control-active-hover-bg:     700 !default;
-
-$level-context-bg:                  50 !default;
-$level-context-color:               800 !default;
-$level-context-border-color:        100 !default;
-$level-context-hover-bg:            200 !default;
-$level-context-hover-color:         900 !default;
-$level-context-hover-border-color:  200 !default; //deprecate
-
-// Increase (or decrease with negative number) to alter color for the hover state of
-//`.text-{color}-(palette-level} and `.bg-{color}-(palette-level} utilities
-$level-color-hover-delta:    250 !default;
-$level-bg-hover-delta:       200 !default;
-
 // Process brand colors
 $brand-themes: _mix-context-colors($context-colors);
 // Merge into master themes map
 $context-themes: map-merge($context-themes, $brand-themes);
 
-// Sample of adding more colors using a mixing function
-// $custom-context: (
-//     "purple": #990099,
-//     "aqua":   #00ffff
-// );
-// Process custom colors into context color variants
-// $custom-themes: _mix-context-colors($custom-context);
-// Merge into master context themes map
-// $context-themes: map-merge($context-themes, $custom-themes);
-
-// Adding a single color map
-// $single-color: (
-//     "purple": (
-//         "control-bg":           #990099,
-//         "control-border":       #800080,
-//         "control-hover-bg":     #770077,
-//         "control-hover-border": #660066,
-//         "context-color":        #990099,
-//         "context-bg":           #ffb3ff,
-//         "context-border":       #ff29ff
-//     )
-// );
-// $context-themes: map-merge($context-themes, $single-color);
+// Color Contrast Settings
+// =====
+// Minimum contrast ratio - WCAG 2.1 level AA spec
+$color-contrast-min-ratio:  4.5 !default;
+$color-contrast-base-light: $white !default;
+$color-contrast-base-dark:  $uibase-900 !default;
 
 
 // Inverse Color
@@ -214,9 +194,6 @@ $grid-gutter-widths: (
 $body-bg:       $white !default;
 $body-color:    $uibase-900 !default;
 
-$faded-bg:       $uibase-50 !default;
-$faded-hover-bg: $uibase-100 !default;
-
 // Border dimension in pixels to get proper visual layout
 $border-width: 1px !default;
 $border-color: $uibase-300 !default;
@@ -226,7 +203,7 @@ $border-color: $uibase-300 !default;
 // Style anchor elements
 $link-color:            palette-context("primary", 500) !default;
 $link-decoration:       underline !default;
-$link-hover-color:      palette-context("primary", 850) !default;
+$link-hover-color:      palette-context("primary", 700) !default;
 $link-hover-decoration: underline !default;
 
 // Paragraph
@@ -273,12 +250,6 @@ $lead-font-weight:  600 !default;
 $lead-line-height:  $line-height-base !default;
 
 $small-font-size:   80% !default;
-
-$text-muted:        $uibase-500 !default;
-$text-light-color:  rgba(255, 255, 255, .875) !default;
-$text-light-hover:  rgba(255, 255, 255, 1) !default;
-$text-dark-color:   rgba(0, 0, 0, .875) !default;
-$text-dark-hover:   rgba(0, 0, 0, 1) !default;
 
 $mark-padding-x:    .25rem !default;
 $mark-bg:           #ff0 !default;
@@ -444,6 +415,7 @@ $figure-caption-color:      $uibase-500 !default;
 $table-margin-bottom:           $spacer !default;
 $table-cell-padding:            .75rem !default;
 $table-condensed-cell-padding:  .3125rem .5rem !default;
+$table-caption-color:           $uibase-500 !default;
 
 $table-bg:                  transparent !default;
 $table-bg-accent:           $uibase-50 !default;

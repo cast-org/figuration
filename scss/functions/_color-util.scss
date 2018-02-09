@@ -75,10 +75,13 @@
 // Get color with hopefully minimum contrast ratio against a given one
 // based on the minimum contrast ratio setting.
 @function color-contrast($color) {
-    @if (color-get-contrast-ratio(#fff, $color) <= $color-contrast-min-ratio) {
-        @return #000;
+    $color-light: $color-contrast-base-light;
+    $color-dark: $color-contrast-base-dark;
+
+    @if (color-get-contrast-ratio($color-light, $color) <= $color-contrast-min-ratio) {
+        @return $color-dark;
     }
-    @return #fff;
+    @return $color-light;
 }
 
 // Get color with maximum contrast against the given one.
@@ -102,7 +105,7 @@
     @if $enable-color-warnings {
         @warn "Auto-selected color (#{$colorauto}) does not meet the defined minimum contrast ratio (#{$color-contrast-min-ratio}:1) against the color (#{$color})! Now using a color with maximum contrast.";
     }
-    @return color-max-contrast($colorback);
+    @return color-max-contrast($color);
 }
 
 // Check to see if a color meets minimum contrast ratio and use it,

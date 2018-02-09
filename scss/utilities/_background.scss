@@ -1,9 +1,5 @@
 // stylelint-disable declaration-no-important
 
-// Special backgrounds
-@include bg-variant(".bg-inverse", map-get($inverse-color, "bg"), map-get($inverse-color, "hover-bg"));
-@include bg-variant(".bg-faded", $faded-bg, $faded-hover-bg);
-
 // Contextual backgrounds
 @each $theme, $colors in $context-themes {
     $bg:       map-get($colors, "control-bg");
@@ -16,7 +12,7 @@
 @if $enable-palette {
     @each $theme, $color in $palette-themes {
         @each $level in $palette-levels {
-            @include bg-palette-variant(".bg-#{$theme}-#{$level}", $color, $level, $level-bg-hover-delta);
+            @include bg-palette-variant(".bg-#{$theme}-#{$level}", $color, $level, $level-delta-hover-bg);
         }
     }
 }
