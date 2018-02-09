@@ -46,8 +46,9 @@ $level-delta-hover-color:           200 !default;
 $level-delta-hover-bg:              200 !default;
 
 
-// Base Colors
+// Colors
 // =====
+// Base Colors
 $uibase:    #546778 !default;
 $white:     #fff !default;
 $gray:      #666 !default;
@@ -61,7 +62,6 @@ $light:     palette($uibase, 50) !default;
 $dark:      palette($uibase, 700) !default;
 
 // Base UI Scale
-// =====
 $uibase-50:  palette($uibase, 50);
 $uibase-100:  palette($uibase, 100);
 $uibase-200:  palette($uibase, 200);
@@ -73,8 +73,7 @@ $uibase-700:  palette($uibase, 700);
 $uibase-800:  palette($uibase, 800);
 $uibase-900:  palette($uibase, 900);
 
-// Palette Colors
-// =====
+// Palette color
 $palette-themes: (
     "uibase":    $uibase,
     "primary":   $blue,
@@ -86,8 +85,7 @@ $palette-themes: (
     "gray":      $gray
 ) !default;
 
-// Contextual Colors
-// =====
+// Contextual colors
 $context-themes: () !default;
 $context-colors: (
     "primary":   $blue,
@@ -104,6 +102,7 @@ $context-colors: (
 $brand-themes: _mix-context-colors($context-colors);
 // Merge into master themes map
 $context-themes: map-merge($context-themes, $brand-themes);
+
 
 // Color Contrast Settings
 // =====
