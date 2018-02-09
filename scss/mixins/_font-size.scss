@@ -4,8 +4,10 @@
 }
 
 // Calculate minimum font size as unitless rem equivalent.
+// stylelint-disable scss/dollar-variable-default
 $fs-minimum: rem($responsive-font-size-minimum-size);
 $fs-minimum: strip-unit($fs-minimum);
+// stylelint-enable scss/dollar-variable-default
 
 @mixin font-size($fs, $important: false) {
     $fs-append: "";
