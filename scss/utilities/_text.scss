@@ -37,51 +37,28 @@
 .font-weight-bold   { font-weight: $font-weight-bold !important; }
 .font-italic        { font-style: italic !important; }
 
+// Truncated text
+.text-truncate {
+    @include text-truncate();
+}
+
 // Contextual colors
 @each $theme, $colors in $context-themes {
-    $color: map-get($colors, "control-bg");
+    $color: map-get($context-colors, $theme);
 
-    @include text-emphasis-variant(".text-#{$theme}", $color, $level-color-hover-delta);
+    @include text-emphasis-variant(".text-#{$theme}", $color, $level-delta-hover-color);
 }
 
 // Palette colors
 @if $enable-palette {
     @each $theme, $color in $palette-themes {
         @each $level in $palette-levels {
-            @include text-emphasis-palette-variant(".text-#{$theme}-#{$level}", $color, $level, $level-color-hover-delta);
+            @include text-emphasis-palette-variant(".text-#{$theme}-#{$level}", $color, $level, $level-delta-hover-color);
         }
     }
 }
 
-// Muted text
-@include text-emphasis-variant(".text-muted", $text-muted, $level-color-hover-delta);
-
-// Special case colors
-// stylelint-disable selector-no-qualifying-type
+// Special text colors
 .text-body {
     color: $body-color !important;
-}
-.text-light {
-    color: $text-light-color !important;
-}
-a.text-light {
-    @include hover-focus {
-        color: $text-light-hover !important;
-    }
-}
-.text-dark {
-    color: $text-dark-color !important;
-}
-a.text-dark {
-    @include hover-focus {
-        color: $text-dark-hover !important;
-    }
-}
-// stylelint-enable selector-no-qualifying-type
-
-// Truncated text
-.text-truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }

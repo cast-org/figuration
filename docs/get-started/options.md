@@ -211,7 +211,7 @@ $red:       #c81d0e;
 $green:     #108918;
 $blue:      #1242ba;
 $cyan:      #117dba;
-$mustard:   #c98800;
+$yellow:    #c98800;
 $gray:      #666;
 
 // Palette Map
@@ -220,7 +220,7 @@ $palette-themes: (
     "green":    $green,
     "blue":     $blue,
     "cyan":     $cyan,
-    "mustard":  $mustard,
+    "yellow":   $yellow,
     "gray":     $gray
 );
 {% endhighlight %}

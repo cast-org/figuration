@@ -11,115 +11,105 @@ $enable-sizing:         true !default;      // true
 $enable-bp-smallest:    false !default;     // false
 $enable-rfs-fluid:      false !default;     // false
 $enable-rfs-scale:      false !default;     // false
+$enable-color-warnings: false !default;     //false
 
 
-// Color
+// Palette
 // =====
-// Minimum contrast ratio - WCAG 2.1 level AA spec
-$color-min-contrast-ratio:  4.5 !default;
+// List of levels to build CSS out for each of the palette themes
+// Valid levels 0-1000
+$palette-levels: 50 100 200 300 400 500 600 700 800 900 !default;
 
-// Grayscale
+// Percentage value per level to mix against white or black
+// Darker levels (>500) get narrower step interval than lighter
+$palette-interval-light:    .2% !default;
+$palette-interval-dark:     .15% !default;
+
+// Palette levels for use in _mix-context-colors() to determine
+// standardized contextual color mapping.
+$level-control-bg:                  500 !default;
+$level-control-border-color:        500 !default;
+$level-control-hover-bg:            600 !default;
+$level-control-hover-border-color:  600 !default;
+$level-control-active-hover-bg:     700 !default;
+
+$level-context-bg:                  100 !default;
+$level-context-color:               800 !default;
+$level-context-border-color:        100 !default;
+$level-context-hover-bg:            200 !default;
+$level-context-hover-color:         900 !default;
+$level-context-hover-border-color:  200 !default; //deprecate
+
+// Increase (or decrease with negative number) to alter color for the hover state of
+//`.text-{color}-(palette-level} and `.bg-{color}-(palette-level} utilities
+$level-delta-hover-color:           200 !default;
+$level-delta-hover-bg:              200 !default;
+
+
+// Colors
 // =====
+// Base Colors
+$uibase:    #546778 !default;
 $white:     #fff !default;
+$gray:      #666 !default;
 $black:     #000 !default;
-$uibase:    #666 !default;
+$red:       #df2314 !default;
+$green:     #10ac21 !default;
+$blue:      #005ff1 !default;
+$cyan:      #137db4 !default;
+$yellow:    #fcc725 !default;
+$light:     palette($uibase, 50) !default;
+$dark:      palette($uibase, 700) !default;
 
-$uibase-25:  palette($uibase, 25);
+// Base UI Scale
 $uibase-50:  palette($uibase, 50);
-$uibase-75:  palette($uibase, 75);
 $uibase-100:  palette($uibase, 100);
 $uibase-200:  palette($uibase, 200);
 $uibase-300:  palette($uibase, 300);
 $uibase-400:  palette($uibase, 400);
-$uibase-450:  palette($uibase, 450);
 $uibase-500:  palette($uibase, 500);
 $uibase-600:  palette($uibase, 600);
 $uibase-700:  palette($uibase, 700);
 $uibase-800:  palette($uibase, 800);
 $uibase-900:  palette($uibase, 900);
 
-
-// Base Palette Colors
-// =====
-$red:       #c81d0e !default;
-$green:     #108918 !default;
-$blue:      #1242ba !default;
-$cyan:      #117cba !default;
-$mustard:   #c98800 !default;
-$gray:      #666 !default;
-
-// List of levels to build CSS out for each of the palette themes
-$palette-levels: 50 100 200 300 400 500 600 700 800 900 !default;
-
+// Palette color
 $palette-themes: (
-    "red":      $red,
-    "green":    $green,
-    "blue":     $blue,
-    "cyan":     $cyan,
-    "mustard":  $mustard,
-    "gray":     $gray
+    "uibase":    $uibase,
+    "primary":   $blue,
+    "secondary": $uibase,
+    "info":      $cyan,
+    "success":   $green,
+    "warning":   $yellow,
+    "danger":    $red,
+    "gray":      $gray
 ) !default;
 
-
-// Contextual Colors
-// =====
+// Contextual colors
 $context-themes: () !default;
 $context-colors: (
     "primary":   $blue,
-    "secondary": palette($gray, 450), // bring down a bit
+    "secondary": $uibase,
     "info":      $cyan,
     "success":   $green,
-    "warning":   $mustard,
-    "danger":    $red
+    "warning":   $yellow,
+    "danger":    $red,
+    "light":     $light,
+    "dark":      $dark
 ) !default;
-
-// Palette levels for use in _mix-context-colors() to determine standardized
-// contextual color mapping
-$level-control-border:       600 !default;
-$level-control-hover-bg:     650 !default;
-$level-control-hover-border: 700 !default;
-$level-context-color:        600 !default;
-$level-context-bg:           75 !default;
-$level-context-border:       300 !default;
-$level-context-hover-color:  700 !default;
-$level-context-hover-bg:     125 !default;
-$level-context-hover-border: 550 !default;
-
-// Increase (or decrease with negative number) to alter color for the hover state of
-//`.text-{color}-(palette-level} and `.bg-{color}-(palette-level} utilities
-$level-color-hover-delta:    250 !default;
-$level-bg-hover-delta:       200 !default;
 
 // Process brand colors
 $brand-themes: _mix-context-colors($context-colors);
 // Merge into master themes map
 $context-themes: map-merge($context-themes, $brand-themes);
 
-// Sample of adding more colors using a mixing function
-// $custom-context: (
-//     "purple": #990099,
-//     "aqua":   #00ffff
-// );
-// Process custom colors into context color variants
-// $custom-themes: _mix-context-colors($custom-context);
-// Merge into master context themes map
-// $context-themes: map-merge($context-themes, $custom-themes);
 
-// Adding a single color map
-// $single-color: (
-//     "purple": (
-//         "control-color":        #fff,
-//         "control-bg":           #990099,
-//         "control-border":       #800080,
-//         "control-hover-color":  #fff,
-//         "control-hover-bg":     #770077,
-//         "control-hover-border": #660066,
-//         "context-color":        #990099,
-//         "context-bg":           #ffb3ff,
-//         "context-border":       #ff29ff
-//     )
-// );
-// $context-themes: map-merge($context-themes, $single-color);
+// Color Contrast Settings
+// =====
+// Minimum contrast ratio - WCAG 2.1 level AA spec
+$color-contrast-min-ratio:  4.5 !default;
+$color-contrast-base-light: $white !default;
+$color-contrast-base-dark:  $uibase-900 !default;
 
 
 // Inverse Color
@@ -203,9 +193,6 @@ $grid-gutter-widths: (
 $body-bg:       $white !default;
 $body-color:    $uibase-900 !default;
 
-$faded-bg:       $uibase-50 !default;
-$faded-hover-bg: $uibase-100 !default;
-
 // Border dimension in pixels to get proper visual layout
 $border-width: 1px !default;
 $border-color: $uibase-300 !default;
@@ -215,7 +202,7 @@ $border-color: $uibase-300 !default;
 // Style anchor elements
 $link-color:            palette-context("primary", 500) !default;
 $link-decoration:       underline !default;
-$link-hover-color:      palette-context("primary", 850) !default;
+$link-hover-color:      palette-context("primary", 700) !default;
 $link-hover-decoration: underline !default;
 
 // Paragraph
@@ -262,12 +249,6 @@ $lead-font-weight:  600 !default;
 $lead-line-height:  $line-height-base !default;
 
 $small-font-size:   80% !default;
-
-$text-muted:        $uibase-500 !default;
-$text-light-color:  rgba(255, 255, 255, .875) !default;
-$text-light-hover:  rgba(255, 255, 255, 1) !default;
-$text-dark-color:   rgba(0, 0, 0, .875) !default;
-$text-dark-hover:   rgba(0, 0, 0, 1) !default;
 
 $mark-padding-x:    .25rem !default;
 $mark-bg:           #ff0 !default;
@@ -320,7 +301,7 @@ $active-bg:         map-deep-get($context-themes, "primary", "control-bg") !defa
 $active-border:     map-deep-get($context-themes, "primary", "control-border") !default;
 $active-hover-bg:   map-deep-get($context-themes, "primary", "control-hover-bg") !default;
 
-$disabled-color:    $uibase-450 !default;
+$disabled-color:    $uibase-400 !default;
 $disabled-bg:       transparent !default;
 
 $caret-width:           .3125rem !default;
@@ -409,8 +390,8 @@ $embed-ratio: percentage(9 / 16) !default;
 $code-font-size:            87.5% !default;
 $code-padding-x:            .4375rem !default;
 $code-padding-y:            .125rem !default;
-$code-color:                map-get($context-colors, "danger") !default;
-$code-bg:                   $uibase-75 !default;
+$code-color:                palette($red, 550) !default;
+$code-bg:                   $uibase-50 !default;
 
 $kbd-color:                 $uibase-50 !default;
 $kbd-bg:                    $uibase-900 !default;
@@ -433,12 +414,13 @@ $figure-caption-color:      $uibase-500 !default;
 $table-margin-bottom:           $spacer !default;
 $table-cell-padding:            .75rem !default;
 $table-condensed-cell-padding:  .3125rem .5rem !default;
+$table-caption-color:           $uibase-500 !default;
 
 $table-bg:                  transparent !default;
 $table-bg-accent:           $uibase-50 !default;
-$table-bg-hover:            $uibase-75 !default;
+$table-bg-hover:            $uibase-100 !default;
 $table-bg-active:           $table-bg-hover !default;
-$table-bg-active-hover:     $uibase-100 !default;
+$table-bg-active-hover:     $uibase-200 !default;
 
 $table-head-color:          $uibase-900 !default;
 $table-head-bg:             $uibase-300 !default;
@@ -457,29 +439,27 @@ $table-border-color:        $uibase-300 !default;
 // =====
 $btn-padding-y:             .375rem !default;
 $btn-padding-x:             .75rem !default;
-$btn-line-height:           1.25 !default;
 $btn-font-weight:           $font-weight-normal !default;
+$btn-line-height:           1.25 !default;
+$btn-border-radius:         $border-radius !default;
 $btn-box-shadow:            inset 0 .125rem .25rem rgba(255, 255, 255, .25);
 $btn-focus-box-shadow:      0 0 2px 3px rgba(palette-context("info", 300), .75) !default; // px because simulating outline
 $btn-active-box-shadow:     inset 0 .125rem .25rem rgba(0, 0, 0, .25) !default;
 
-$btn-default-color:         $uibase-500 !default;
-$btn-default-bg:            $white !default;
-$btn-default-border:        rgba(0, 0, 0, .25) !default;
-$btn-default-hover-color:   $uibase-600 !default;
-$btn-default-hover-bg:      $uibase-75 !default;
-$btn-default-hover-border:  rgba(0, 0, 0, .5) !default;
-
-// Background color darken/lighten for ':active:hover' button state
-// Negative value will lighten, positive value will darken
-$btn-active-hover-adjust:   6% !default;
+$btn-outline-bg:            transparent !default;
+$btn-outline-hover-color:   $white !default;
 
 $btn-disabled-opacity:      .6 !default;
 
-$btn-block-spacing-y:       .3rem !default;
+$btn-block-spacing-y:       .25rem !default;
 
-// Allows for customizing button radius independently from global border radius
-$btn-border-radius:         $border-radius !default;
+$btn-default-bg:                $white !default;
+$btn-default-color:             color-if-contrast($uibase-500, $btn-default-bg) !default;
+$btn-default-border:            $uibase-300 !default;
+$btn-default-hover-bg:          $uibase-50 !default;
+$btn-default-hover-color:       color-if-contrast($uibase-600, $btn-default-hover-bg) !default;
+$btn-default-hover-border:      $uibase-400 !default;
+$btn-default-active-hover-bg:   $uibase-100 !default;
 
 
 // Forms
@@ -607,8 +587,8 @@ $switch-width-multiplier:               4 !default;
 $switch-control-bg:                     $input-bg !default;
 $switch-indicator-bg:                   $uibase-200 !default;
 
-$switch-active-control-bg:              $uibase-25 !default;
-$switch-active-indicator-bg:            $uibase-300 !default;
+$switch-active-control-bg:              $uibase-50 !default;
+$switch-active-indicator-bg:            $uibase-400 !default;
 
 $switch-focus-control-border-color:     $input-focus-border-color !default;
 $switch-focus-control-box-shadow-outer: $input-focus-box-shadow-outer !default;
@@ -822,14 +802,11 @@ $jumbotron-breakpoint:      sm !default;
 
 // Badges
 // =====
-$badge-color:               $white !default;
-$badge-bg:                  $uibase-400 !default;
-$badge-hover-bg:            $uibase-500 !default;
-$badge-link-hover-color:    $white !default;
 $badge-font-size:           75% !default;
 $badge-font-weight:         $font-weight-bold !default;
 $badge-padding-x:           .375em !default;
-$badge-padding-y:           .25em !default;
+$badge-padding-y:           0 !default;
+$badge-line-height:         $line-height-base !default;
 $badge-border-radius:       .25em !default;
 $badge-border-width:        $border-width !default;
 
@@ -839,7 +816,13 @@ $badge-pill-padding-x:      .5em !default;
 $badge-pill-border-radius:  10rem !default;
 
 $badge-outline-bg:          transparent !default;
-$badge-outline-link-hover-color: $white !default;
+
+$badge-default-bg:              $white !default;
+$badge-default-color:           color-if-contrast($uibase-500, $badge-default-bg) !default;
+$badge-default-border:          $uibase-300 !default;
+$badge-default-hover-bg:        $uibase-50 !default;
+$badge-default-hover-color:     color-if-contrast($uibase-600, $badge-default-hover-bg) !default;
+$badge-default-hover-border:    $uibase-400 !default;
 
 
 // Alerts

@@ -1,9 +1,8 @@
 // stylelint-disable declaration-no-important
 
 // Contextual backgrounds
-@mixin bg-variant($parent, $color, $bg, $hover-bg) {
+@mixin bg-variant($parent, $bg, $hover-bg) {
     #{$parent} {
-        color: $color !important;
         background-color: $bg !important;
     }
     a#{$parent} {

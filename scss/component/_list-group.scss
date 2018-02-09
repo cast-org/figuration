@@ -75,7 +75,10 @@
     $color:       map-get($colors, "context-color");
     $bg:          map-get($colors, "context-bg");
     $hover-bg:    map-get($colors, "context-hover-bg");
-    $hover-color: $white;
+    $hover-color: map-get($colors, "context-hover-color");
+
+    $color:       color-if-contrast($color, $bg);
+    $hover-color: color-if-contrast($hover-color, $hover-bg);
 
     @include list-group-item-variant(#{$theme}, $bg, $color, $hover-bg, $hover-color);
 }

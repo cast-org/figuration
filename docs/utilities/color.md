@@ -73,16 +73,18 @@ There are also two special text color cases for use with either light and dark b
 
 Similar to the contextual text color classes, easily set the background color of an element to any contextual class. Anchor components will darken on hover, just like the text classes.
 
+Background utilities **do not set** `color`, so in some cases you will want to use `.text-*` utilities.
+
 There is also a `.bg-transparent` for removing the background color for an element.
 
 {% example html %}
-<div class="bg-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</div>
-<div class="bg-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</div>
-<div class="bg-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</div>
-<div class="bg-warning">Etiam porta sem malesuada magna mollis euismod.</div>
-<div class="bg-danger">Donec ullamcorper nulla non metus auctor fringilla.</div>
-<div class="bg-inverse">Cras mattis consectetur purus sit amet fermentum.</div>
-<div class="bg-faded"> Vestibulum ante ipsum primis in faucibus orci luctus.</div>
+<div class="bg-primary text-light">Nullam id dolor id nibh ultricies vehicula ut id elit.</div>
+<div class="bg-success text-dark">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</div>
+<div class="bg-info text-light">Maecenas sed diam eget risus varius blandit sit amet non magna.</div>
+<div class="bg-warning text-dark">Etiam porta sem malesuada magna mollis euismod.</div>
+<div class="bg-danger text-light">Donec ullamcorper nulla non metus auctor fringilla.</div>
+<div class="bg-inverse text-light">Cras mattis consectetur purus sit amet fermentum.</div>
+<div class="bg-faded text-dark"> Vestibulum ante ipsum primis in faucibus orci luctus.</div>
 {% endexample %}
 
 ## Borders

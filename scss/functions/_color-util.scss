@@ -1,10 +1,9 @@
 // Generate palette colors
 // Valid levels 0-1000
-// Darker levels (>500) get narrower step interval than light
-@function palette($color: $uibase, $level: 500) {
+@function palette($color, $level) {
     $base: 500;
-    $light-interval: .2%;
-    $dark-interval: .15%;
+    $light-interval: $palette-interval-light;
+    $dark-interval: $palette-interval-dark;
 
     $level-delta: $level - $base;
 
@@ -20,11 +19,13 @@
     }
 }
 
+//deprecate
 @function palette-context($key: "primary", $level: 500) {
     $color: map-get($context-colors, $key);
     @return palette($color, $level);
 }
 
+//deprecate
 @function palette-context-nohash($key: "primary", $level: 500) {
     $color: map-get($context-colors, $key);
     $hash: unquote(palette($color, $level) + "");
@@ -38,30 +39,27 @@
 
     @each $theme, $color in $map {
         // Color adjustments
-        $control-color:         $white;
-        $control-bg:            $color;
-        $control-border:        palette($color, $level-control-border);
-        $control-hover-color:   $white;
-        $control-hover-bg:      palette($color, $level-control-hover-bg);
-        $control-hover-border:  palette($color, $level-control-hover-border);
-        $context-color:         palette($color, $level-context-color);
-        $context-bg:            palette($color, $level-context-bg);
-        $context-border:        palette($color, $level-context-border);
-        $context-hover-color:   palette($color, $level-context-hover-color);
-        $context-hover-bg:      palette($color, $level-context-hover-bg);
-
+        $control-bg:                 palette($color, $level-control-bg);
+        $control-border-color:       palette($color, $level-control-border-color);
+        $control-hover-bg:           palette($color, $level-control-hover-bg);
+        $control-hover-border-color: palette($color, $level-control-hover-border-color);
+        $control-active-hover-bg:    palette($color, $level-control-active-hover-bg);
+        $context-bg:                 palette($color, $level-context-bg);
+        $context-color:              palette($color, $level-context-color);
+        $context-border-color:       palette($color, $level-context-border-color);
+        $context-hover-color:        palette($color, $level-context-hover-color);
+        $context-hover-bg:           palette($color, $level-context-hover-bg);
 
         // Build new map
         $new-map: (
-            "control-color": $control-color,
             "control-bg": $control-bg,
-            "control-border": $control-border,
-            "control-hover-color": $control-hover-color,
+            "control-border-color": $control-border-color,
             "control-hover-bg": $control-hover-bg,
-            "control-hover-border": $control-hover-border,
+            "control-hover-border-color": $control-hover-border-color,
+            "control-active-hover-bg": $control-active-hover-bg,
             "context-color": $context-color,
             "context-bg": $context-bg,
-            "context-border": $context-border,
+            "context-border-color": $context-border-color,
             "context-hover-color": $context-hover-color,
             "context-hover-bg": $context-hover-bg
         );
@@ -77,10 +75,13 @@
 // Get color with hopefully minimum contrast ratio against a given one
 // based on the minimum contrast ratio setting.
 @function color-contrast($color) {
-    @if (color-get-contrast-ratio(#fff, $color) <= $color-min-contrast-ratio) {
-        @return #000;
+    $color-light: $color-contrast-base-light;
+    $color-dark: $color-contrast-base-dark;
+
+    @if (color-get-contrast-ratio($color-light, $color) <= $color-contrast-min-ratio) {
+        @return $color-dark;
     }
-    @return #fff;
+    @return $color-light;
 }
 
 // Get color with maximum contrast against the given one.
@@ -97,21 +98,25 @@
 // ratio, otherwise get the max contrast.
 @function color-auto-contrast($color) {
     $colorauto: color-contrast($color);
-    @if (color-get-contrast-ratio($colorauto, $color) >= $color-min-contrast-ratio) {
+    @if (color-get-contrast-ratio($colorauto, $color) >= $color-contrast-min-ratio) {
         @return $colorauto;
     }
 
-    @warn "Auto-selected color (#{$colorauto}) does not meet the defined minimum contrast ratio (#{$color-min-contrast-ratio}:1) against the color (#{$color})! Now using a color with maximum contrast.";
-    @return color-max-contrast($colorback);
+    @if $enable-color-warnings {
+        @warn "Auto-selected color (#{$colorauto}) does not meet the defined minimum contrast ratio (#{$color-contrast-min-ratio}:1) against the color (#{$color})! Now using a color with maximum contrast.";
+    }
+    @return color-max-contrast($color);
 }
 
 // Check to see if a color meets minimum contrast ratio and use it,
 // otherwise get the best color contrast possible.
 @function color-if-contrast($colorfore, $colorback) {
-    @if (color-get-contrast-ratio($colorfore, $colorback) >= $color-min-contrast-ratio) {
+    @if (color-get-contrast-ratio($colorfore, $colorback) >= $color-contrast-min-ratio) {
         @return $colorfore;
     }
-    @warn "Foreground color (#{$colorfore}) does not meet the defined minimum contrast ratio (#{$color-min-contrast-ratio}:1) against the background color (#{$colorback})! Now auto-selecting a color with minimum contrast.";
+    @if $enable-color-warnings {
+        @warn "Foreground color (#{$colorfore}) does not meet the defined minimum contrast ratio (#{$color-contrast-min-ratio}:1) against the background color (#{$colorback})! Now auto-selecting a color with minimum contrast.";
+    }
     @return color-auto-contrast($colorback);
 }
 
