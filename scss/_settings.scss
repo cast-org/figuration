@@ -478,10 +478,10 @@ $btn-disabled-opacity:      .6 !default;
 $btn-block-spacing-y:       .25rem !default;
 
 $btn-default-bg:                $white !default;
-$btn-default-color:             $uibase-500 !default;
+$btn-default-color:             color-if-contrast($uibase-500, $btn-default-bg) !default;
 $btn-default-border:            $uibase-300 !default;
 $btn-default-hover-bg:          $uibase-50 !default;
-$btn-default-hover-color:       $uibase-600 !default;
+$btn-default-hover-color:       color-if-contrast($uibase-600, $btn-default-hover-bg) !default;
 $btn-default-hover-border:      $uibase-400 !default;
 $btn-default-active-hover-bg:   $uibase-100 !default;
 

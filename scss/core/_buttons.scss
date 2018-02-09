@@ -81,6 +81,9 @@ fieldset:disabled a.btn {
 }
 
 // Outline variant - remove all backgrounds
+.btn-outline {
+    @include button-variant($btn-default-color, $btn-outline-bg, $btn-default-border, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border, $btn-default-active-hover-bg);
+}
 @each $theme, $colors in $context-themes {
     $bg:              $btn-outline-bg;
     $border:          map-get($colors, "control-border-color");
