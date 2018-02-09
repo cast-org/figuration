@@ -40,6 +40,8 @@ $green:     #10ac21 !default;
 $blue:      #0d4ddc !default;
 $cyan:      #0080a7 !default;
 $yellow:    #fcc725 !default;
+$light:     palette($uibase, 50);
+$dark:      palette($uibase, 700);
 
 // Base UI Scale
 // =====
@@ -54,35 +56,39 @@ $uibase-700:  palette($uibase, 700);
 $uibase-800:  palette($uibase, 800);
 $uibase-900:  palette($uibase, 900);
 
+// Contextual Colors
+// =====
 $palette-themes: (
-    "uibase":   $uibase,
-    "red":      $red,
-    "green":    $green,
-    "blue":     $blue,
-    "cyan":     $cyan,
-    "yellow":   $yellow,
-    "gray":     $gray
+    "uibase":    $uibase,
+    "primary":   $blue,
+    "secondary": $uibase,
+    "info":      $cyan,
+    "success":   $green,
+    "warning":   $yellow,
+    "danger":    $red,
+    "gray":      $gray
 ) !default;
-
 
 // Contextual Colors
 // =====
 $context-themes: () !default;
 $context-colors: (
     "primary":   $blue,
-    "secondary": $gray,
+    "secondary": $uibase,
     "info":      $cyan,
     "success":   $green,
     "warning":   $yellow,
-    "danger":    $red
+    "danger":    $red,
+    "light":     $light,
+    "dark":      $dark
 ) !default;
 
 // Palette levels for use in _mix-context-colors() to determine
 // standardized contextual color mapping.
 $level-control-bg:                  500 !default;
-$level-control-border-color:        600 !default;
+$level-control-border-color:        500 !default;
 $level-control-hover-bg:            600 !default;
-$level-control-hover-border-color:  700 !default;
+$level-control-hover-border-color:  600 !default;
 $level-control-active-hover-bg:     700 !default;
 
 $level-context-bg:                  50 !default;
