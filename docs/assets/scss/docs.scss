@@ -266,7 +266,7 @@ $docs-color: #246;
 .cf-sidebar {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background-color: $uibase-25;
+    background-color: palette($uibase, 25);
     border-bottom: 1px solid $uibase-200;
 
     @include media-breakpoint-up(md) {
