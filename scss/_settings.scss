@@ -29,7 +29,6 @@ $palette-interval-dark:     .15% !default;
 // Minimum contrast ratio - WCAG 2.1 level AA spec
 $color-contrast-min-ratio:  4.5 !default;
 
-
 // Base Colors
 // =====
 $uibase:    #5a6570 !default;
@@ -841,11 +840,12 @@ $badge-pill-border-radius:  10rem !default;
 
 $badge-outline-bg:          transparent !default;
 
-$badge-default-bg:          palette($uibase, $level-context-bg) !default;
-$badge-default-color:       $uibase-500 !default;
-$badge-default-hover-bg:    palette($uibase, $level-control-border-color) !default;
-$badge-default-hover-color: color-if-contrast($uibase-600, $badge-default-hover-bg) !default;
-$badge-default-outline-color: $uibase-500;
+$badge-default-bg:              $white !default;
+$badge-default-color:           color-if-contrast($uibase-500, $badge-default-bg) !default;
+$badge-default-border:          $uibase-300 !default;
+$badge-default-hover-bg:        $uibase-50 !default;
+$badge-default-hover-color:     color-if-contrast($uibase-600, $badge-default-hover-bg) !default;
+$badge-default-hover-border:    $uibase-400 !default;
 
 
 // Alerts
