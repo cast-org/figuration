@@ -22,6 +22,7 @@ $palette-levels: 50 100 200 300 400 500 600 700 800 900 !default;
 
 // Percentage value per level to mix against white or black
 // Darker levels (>500) get narrower step interval than lighter
+// Values must be <= .2%
 $palette-interval-light:    .2% !default;
 $palette-interval-dark:     .15% !default;
 
@@ -43,7 +44,7 @@ $level-context-hover-border-color:  200 !default; //deprecate
 // Increase (or decrease with negative number) to alter color for the hover state of
 //`.text-{color}-(palette-level} and `.bg-{color}-(palette-level} utilities
 $level-delta-hover-color:           200 !default;
-$level-delta-hover-bg:              200 !default;
+$level-delta-hover-bg:              100 !default;
 
 
 // Colors
@@ -98,19 +99,18 @@ $context-colors: (
     "dark":      $dark
 ) !default;
 
+// Color contrast
+// Minimum contrast ratio - WCAG 2.1 level AA spec
+$color-contrast-min-ratio:  4.5 !default;
+$color-contrast-base-light: $white !default;
+$color-contrast-base-dark:  $uibase-900 !default;
+
 // stylelint-disable
 // Process brand colors
 $brand-themes: _mix-context-colors($context-colors);
 // Merge into master themes map
 $context-themes: map-merge($context-themes, $brand-themes);
 // stylelint-enable
-
-// Color Contrast Settings
-// =====
-// Minimum contrast ratio - WCAG 2.1 level AA spec
-$color-contrast-min-ratio:  4.5 !default;
-$color-contrast-base-light: $white !default;
-$color-contrast-base-dark:  $uibase-900 !default;
 
 
 // Inverse Color
@@ -173,6 +173,7 @@ $container-max-widths: (
 // Set the number of columns.
 $grid-columns:      12 !default;
 
+
 // Grid gutters
 // =====
 // Specify the width of the gutters for each breakpoint.
@@ -189,14 +190,18 @@ $grid-gutter-widths: (
 ) !default;
 
 
+// Borders
+// =====
+// Border dimension in pixels to get proper visual layout
+$border-width:  1px !default;
+$border-color:  $uibase-300 !default;
+$border-radius: .25rem !default;
+
+
 // Body
 // =====
 $body-bg:       $white !default;
 $body-color:    $uibase-900 !default;
-
-// Border dimension in pixels to get proper visual layout
-$border-width: 1px !default;
-$border-color: $uibase-300 !default;
 
 // Links
 // =====
@@ -212,6 +217,7 @@ $paragraph-spacer-y:    1rem !default;
 
 // Cursors
 // =====
+
 $cursor-disabled:                not-allowed !default;
 
 // Typography
@@ -250,6 +256,8 @@ $lead-font-weight:  600 !default;
 $lead-line-height:  $line-height-base !default;
 
 $small-font-size:   80% !default;
+
+$text-muted:        $uibase-500 !default;
 
 $mark-padding-x:    .25rem !default;
 $mark-bg:           #ff0 !default;
@@ -293,9 +301,6 @@ $responsive-font-size-scale-factor: (
     xl: 1
 ) !default;
 
-// Component pieces
-// =====
-$border-radius:          .25rem !default;
 
 $active-color:      $white !default;
 $active-bg:         map-deep-get($context-themes, "primary", "control-bg") !default;
@@ -304,19 +309,6 @@ $active-hover-bg:   map-deep-get($context-themes, "primary", "control-hover-bg")
 
 $disabled-color:    $uibase-400 !default;
 $disabled-bg:       transparent !default;
-
-$caret-width:           .3125rem !default;
-
-$close-font-size:       ($font-size-base * 1.5) !default;
-$close-font-weight:     $font-weight-bold !default;
-$close-color:           #000 !default;
-$close-text-shadow:     0 .0625rem 0 #fff !default;
-
-$drag-font-size:        ($font-size-base * 1.5) !default;
-$drag-font-weight:      $font-weight-bold !default;
-$drag-color:            #000 !default;
-$drag-text-shadow:      0 .0625rem 0 #fff !default;
-
 
 // Component sizes
 // =====
@@ -348,6 +340,21 @@ $component-sizes: (
         border-radius:  .3125rem
     )
 ) !default;
+
+
+// Component pieces
+// =====
+$caret-width:           .3125rem !default;
+
+$close-font-size:       ($font-size-base * 1.5) !default;
+$close-font-weight:     $font-weight-bold !default;
+$close-color:           #000 !default;
+$close-text-shadow:     0 .0625rem 0 #fff !default;
+
+$drag-font-size:        ($font-size-base * 1.5) !default;
+$drag-font-weight:      $font-weight-bold !default;
+$drag-color:            #000 !default;
+$drag-text-shadow:      0 .0625rem 0 #fff !default;
 
 
 // Transitions

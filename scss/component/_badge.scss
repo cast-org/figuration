@@ -46,11 +46,10 @@ a.badge {
 
 // Colors (linked badges get darker on :hover)
 @each $theme, $colors in $context-themes {
-    $bg:          map-get($colors, "control-bg");
-    $hover-bg:    map-get($colors, "control-hover-bg");
-
-    $color: color-if-contrast($badge-default-color, $bg);
-    $hover-color: color-if-contrast($color, $hover-bg);
+    $bg:            map-get($colors, "control-bg");
+    $color:         map-get($colors, "control-color");
+    $hover-bg:      map-get($colors, "control-hover-bg");
+    $hover-color:   map-get($colors, "control-hover-color");
 
     .badge-#{$theme} {
         @include badge-variant($color, $bg, $bg, $hover-color, $hover-bg, $hover-bg);
@@ -62,11 +61,10 @@ a.badge {
     @include badge-variant($badge-default-color, $badge-outline-bg, $badge-default-border, $badge-default-hover-color, $badge-default-hover-bg, $badge-default-hover-border);
 }
 @each $theme, $colors in $context-themes {
-    $bg:          $badge-outline-bg;
-    $hover-bg:    map-get($colors, "control-bg");
-
-    $color:       map-get($colors, "control-bg");
-    $hover-color: color-if-contrast($white, $hover-bg);
+    $bg:            $badge-outline-bg;
+    $color:         map-get($context-colors, $theme);
+    $hover-bg:      map-get($colors, "control-bg");
+    $hover-color:   map-get($colors, "control-hover-color");
 
     .badge-outline-#{$theme} {
         @include badge-variant($color, $bg, $hover-bg, $hover-color, $hover-bg, $hover-bg);

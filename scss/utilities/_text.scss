@@ -59,6 +59,7 @@
 }
 
 // Special text colors
-.text-body {
-    color: $body-color !important;
-}
+.text-body { color: $body-color !important; }
+.text-muted { color: $text-muted !important; }
+.text-white { color: $white !important; }
+.text-black { color: $black !important; }
