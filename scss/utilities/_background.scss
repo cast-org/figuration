@@ -2,10 +2,9 @@
 
 // Contextual backgrounds
 @each $theme, $colors in $context-themes {
-    $bg:       map-get($colors, "control-bg");
-    $hover-bg: map-get($colors, "control-hover-bg");
+    $bg: map-get($context-colors, $theme);
 
-    @include bg-variant(".bg-#{$theme}", $bg, $hover-bg);
+    @include bg-variant(".bg-#{$theme}", $bg, $level-delta-hover-bg);
 }
 
 // Palette colors

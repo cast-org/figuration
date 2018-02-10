@@ -1,13 +1,13 @@
 // stylelint-disable declaration-no-important
 
 // Contextual backgrounds
-@mixin bg-variant($parent, $bg, $hover-bg) {
+@mixin bg-variant($parent, $bg, $level-delta) {
     #{$parent} {
         background-color: $bg !important;
     }
     a#{$parent} {
         @include hover-focus {
-            background-color: $hover-bg !important;
+            background-color: palette($bg, 500 + $level-delta) !important;
         }
     }
 }
@@ -23,3 +23,8 @@
         }
     }
 }
+
+// Special background colors
+.bg-body { background-color: $body-bg !important; }
+.bg-white { background-color: $white !important; }
+.bg-black { background-color: $black !important; }

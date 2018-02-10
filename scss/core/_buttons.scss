@@ -67,13 +67,12 @@ fieldset:disabled a.btn {
 // Contextual color variants
 @each $theme, $colors in $context-themes {
     $bg:                map-get($colors, "control-bg");
+    $color:             map-get($colors, "control-color");
     $border:            map-get($colors, "control-border-color");
     $hover-bg:          map-get($colors, "control-hover-bg");
+    $hover-color:       map-get($colors, "control-hover-color");
     $hover-border:      map-get($colors, "control-hover-border-color");
     $active-hover-bg:   map-get($colors, "control-active-hover-bg");
-
-    $color:        color-if-contrast($btn-default-color, $bg);
-    $hover-color:  color-if-contrast($color, $hover-bg);
 
     .btn-#{$theme} {
         @include button-variant($color, $bg, $border, $hover-color, $hover-bg, $hover-border, $active-hover-bg);
@@ -85,14 +84,13 @@ fieldset:disabled a.btn {
     @include button-variant($btn-default-color, $btn-outline-bg, $btn-default-border, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border, $btn-default-active-hover-bg);
 }
 @each $theme, $colors in $context-themes {
-    $bg:              $btn-outline-bg;
-    $border:          map-get($colors, "control-border-color");
-    $hover-bg:        map-get($colors, "control-bg");
-    $hover-border:    map-get($colors, "control-hover-border-color");
-    $active-hover-bg: map-get($colors, "control-active-hover-bg");
-
-    $color:       map-get($colors, "control-bg");
-    $hover-color: color-if-contrast($btn-outline-hover-color, $hover-bg);
+    $bg:                $btn-outline-bg;
+    $color:             map-get($context-colors, $theme);
+    $border:            map-get($colors, "control-border-color");
+    $hover-bg:          map-get($colors, "control-bg");
+    $hover-color:       map-get($colors, "control-hover-color");
+    $hover-border:      map-get($colors, "control-hover-border-color");
+    $active-hover-bg:   map-get($colors, "control-hover-bg");
 
     .btn-outline-#{$theme} {
         @include button-variant($color, $bg, $border, $hover-color, $hover-bg, $hover-border, $active-hover-bg);
