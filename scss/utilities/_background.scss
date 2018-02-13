@@ -16,5 +16,8 @@
     }
 }
 
-// Transparent background
+// Special background colors
+.bg-body { background-color: $body-bg !important; }
+.bg-white { background-color: $white !important; }
+.bg-black { background-color: $black !important; }
 .bg-transparent { background-color: transparent !important; }

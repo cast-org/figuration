@@ -55,7 +55,7 @@
     }
 
     // Default color
-    @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border, $btn-default-active-hover-bg);
+    @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border-color, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border-color, $btn-default-active-hover-bg);
 }
 
 // Future-proof disabling of clicks on `<a>` elements
@@ -81,7 +81,7 @@ fieldset:disabled a.btn {
 
 // Outline variant - remove all backgrounds
 .btn-outline {
-    @include button-variant($btn-default-color, $btn-outline-bg, $btn-default-border, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border, $btn-default-active-hover-bg);
+    @include button-variant($btn-default-color, $btn-outline-bg, $btn-default-border-color, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border-color, $btn-default-active-hover-bg);
 }
 @each $theme, $colors in $context-themes {
     $bg:                $btn-outline-bg;

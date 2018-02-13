@@ -67,9 +67,8 @@
 .card-header {
     padding: $card-cap-padding-y $card-cap-padding-x;
     margin-bottom: 0; // Removes the default margin-bottom of <hN>
-    color: $card-cap-color;
     background-color: $card-cap-bg;
-    border-bottom: $card-border-width solid $card-border-color;
+    border-bottom: $card-border-width solid $card-cap-border-color;
 
     &:first-child {
         @include border-radius($card-border-radius $card-border-radius 0 0);
@@ -77,16 +76,16 @@
 
     + .list-group {
         .list-group-item:first-child {
-            border-top-width: 0;
+            //border-top-width: 0;
+            margin-top: -$card-border-width;
         }
     }
 }
 
 .card-footer {
     padding: $card-cap-padding-y $card-cap-padding-x;
-    color: $card-cap-color;
     background-color: $card-cap-bg;
-    border-top: $card-border-width solid $card-border-color;
+    border-top: $card-border-width solid $card-cap-border-color;
 
     &:last-child {
         @include border-radius(0 0 $card-border-radius $card-border-radius);
@@ -103,30 +102,6 @@
 .card-header-pills {
     margin-right: -($card-cap-padding-x / 2);
     margin-left: -($card-cap-padding-x / 2);
-}
-
-// Background variations
-@each $theme, $colors in $context-themes {
-    $bg:        map-get($colors, "control-bg");
-    $border:    map-get($colors, "control-border");
-
-    .card-#{$theme} {
-        @include card-variant($bg, $border);
-    }
-}
-
-// Remove all backgrounds
-@each $theme, $colors in $context-themes {
-    $border: map-get($colors, "context-border");
-
-    .card-outline-#{$theme} {
-        @include card-outline-variant($border);
-    }
-}
-
-// Inverse text within a card for use with dark backgrounds
-.card-inverse {
-    @include card-inverse;
 }
 
 // Card image overlay

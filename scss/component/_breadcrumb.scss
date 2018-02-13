@@ -1,19 +1,16 @@
 .breadcrumb {
     display: flex;
     flex-wrap: wrap;
-    padding: $breadcrumb-padding-y $breadcrumb-padding-x;
-    margin-bottom: $breadcrumb-spacer-y;
-    list-style: none;
-    background-color: $breadcrumb-bg;
-    @include border-radius($breadcrumb-border-radius);
+    margin-bottom: $breadcrumb-margin-bottom;
+    @include list-unstyled();
 }
 
 .breadcrumb-item {
     // The separator between breadcrumbs (by default, a forward-slash: "/")
     + .breadcrumb-item::before {
         display: inline-block; // Suppress underlining of the separator in modern browsers
-        padding-right: $breadcrumb-item-padding;
-        padding-left: $breadcrumb-item-padding;
+        padding-right: $breadcrumb-divider-padding-x;
+        padding-left: $breadcrumb-divider-padding-x;
         color: $breadcrumb-divider-color;
         content: "#{$breadcrumb-divider}";
     }
