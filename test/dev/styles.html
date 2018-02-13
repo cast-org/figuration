@@ -106,97 +106,6 @@ Holder.addTheme("gray", {
 .select-sizing .btn {
     vertical-align: top;
 }
-.breadcrumb-arrow {
-  height: 36px;
-  padding: 0;
-  line-height: 36px;
-  list-style: none;
-  background-color: #e6e9ed;
-}
-.breadcrumb-arrow li:first-child a {
-          border-radius: 4px 0 0 4px;
-
-  -webkit-border-radius: 4px 0 0 4px;
-     -moz-border-radius: 4px 0 0 4px;
-}
-.breadcrumb-arrow li, .breadcrumb-arrow li a, .breadcrumb-arrow li span {
-  display: inline-block;
-  vertical-align: top;
-}
-.breadcrumb-arrow li:not(:first-child) {
-  margin-left: -5px;
-}
-.breadcrumb-arrow li + li:before {
-  padding: 0;
-  content: "";
-}
-.breadcrumb-arrow li span {
-  padding: 0 10px;
-}
-.breadcrumb-arrow li a,
-.breadcrumb-arrow li:not(:first-child) span {
-  height: 36px;
-  padding: 0 10px 0 25px;
-  line-height: 36px;
-}
-.breadcrumb-arrow li:first-child a {
-  padding: 0 10px;
-}
-.breadcrumb-arrow li a {
-  position: relative;
-  color: white;
-  text-decoration: none;
-  background-color: #3bafda;
-  border: 1px solid #3bafda;
-}
-.breadcrumb-arrow li:first-child a {
-  padding-left: 10px;
-}
-.breadcrumb-arrow li a:before,
-.breadcrumb-arrow li a:after {
-  position: absolute;
-  top: -1px;
-  width: 0;
-  height: 0;
-  content: '';
-  border-top: 18px solid transparent;
-  border-bottom: 18px solid transparent;
-}
-.breadcrumb-arrow li a:before {
-  right: -10px;
-  z-index: 3;
-  border-left-color: #3bafda;
-  border-left-style: solid;
-  border-left-width: 11px;
-}
-.breadcrumb-arrow li a:after {
-  right: -11px;
-  z-index: 2;
-  border-left: 11px solid #2494be;
-}
-.breadcrumb-arrow li a:hover,
-.breadcrumb-arrow li a:focus {
-  background-color: #4fc1e9;
-  border: 1px solid #4fc1e9;
-}
-.breadcrumb-arrow li a:hover:before,
-.breadcrumb-arrow li a:focus:before {
-  border-left-color: #4fc1e9;
-}
-.breadcrumb-arrow li a:active {
-  background-color: #2494be;
-  border: 1px solid #2494be;
-}
-.breadcrumb-arrow li a:active:before,
-.breadcrumb-arrow li a:active:after {
-  border-left-color: #2494be;
-}
-.breadcrumb-arrow li span {
-  color: #434a54;
-}
-.breadcrumb-arrow .breadcrumb-item + .breadcrumb-item::before {
-    content: "";
-}
 
 .palette {
     margin-bottom: 1rem;
@@ -1695,7 +1604,10 @@ Anchor variants:<br />
 
 <h3>Progress bars</h3>
 <div class="progress mb-1">
-    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress mb-1">
+    <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <div class="progress mb-1">
     <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -1798,15 +1710,9 @@ Anchor variants:<br />
 
 <h3>Disabled items in list group</h3>
 <div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action disabled">
-    Cras justo odio
-  </a>
-  <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-  <a href="#" class="list-group-item list-group-item-action disabled">
-    Morbi leo risus
-  </a>
-  <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-  <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
+  <div class="list-group-item">Standard list group item</div>
+  <a href="#" class="list-group-item list-group-item-action">Actionable list group item</a>
+  <a href="#" class="list-group-item list-group-item-action disabled">Disabled list group item</a>
 </div>
 
 <h3>List group context</h3>
@@ -2144,11 +2050,6 @@ Anchor variants:<br />
   <span class="breadcrumb-item"><a href="#">Library</a></span>
   <span class="breadcrumb-item active">Data</span>
 </div>
-<ul class="breadcrumb breadcrumb-arrow">
-  <li class="breadcrumb-item"><a href="#">Home</a></li>
-  <li class="breadcrumb-item"><a href="#">Library</a></li>
-  <li class="breadcrumb-item active"><span>Data</span></li>
-</ul>
 
 <h3>Pagination</h3>
 <nav aria-label="Page navigation">
@@ -3282,6 +3183,9 @@ Anchor variants:<br />
 
 
 <h3>Alerts</h3>
+<div class="alert" role="alert">
+  Default alert message with <a href="#" class="alert-link">an example link</a> included.
+</div>
 <div class="alert alert-primary" role="alert">
   Primary alert message with <a href="#" class="alert-link">an example link</a> included.
 </div>
@@ -4051,9 +3955,9 @@ Anchor variants:<br />
     </div>
     <div class="tooltip-arrow"></div>
   </div>
-  <div class="tooltip right" role="tooltip">
+  <div class="tooltip forward" role="tooltip">
     <div class="tooltip-body">
-      Tooltip on the right
+      Tooltip on forward side
     </div>
     <div class="tooltip-arrow"></div>
   </div>
@@ -4063,9 +3967,9 @@ Anchor variants:<br />
     </div>
     <div class="tooltip-arrow"></div>
   </div>
-  <div class="tooltip left" role="tooltip">
+  <div class="tooltip reverse" role="tooltip">
     <div class="tooltip-body">
-      Tooltip on the left
+      Tooltip on reverse side
     </div>
     <div class="tooltip-arrow"></div>
   </div>

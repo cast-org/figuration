@@ -19,6 +19,7 @@
     justify-content: center;
     color: $progress-bar-color;
     text-align: center;
+    white-space: nowrap;
     background-color: $progress-bar-bg;
     @include box-shadow($progress-bar-box-shadow);
     @include transition($progress-bar-transition);

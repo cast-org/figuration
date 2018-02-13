@@ -13,14 +13,14 @@
 // list items. Includes an extra `.active` modifier class for selected items.
 .list-group-item-action {
     width: 100%; // For `<button>`s (anchors become 100% by default though)
-    color: $list-group-link-color;
+    color: $list-group-action-color;
     text-align: inherit; // For `<button>`s (anchors inherit)
     text-decoration: none;
 
     // Hover state
     @include hover-focus {
         z-index: 1;
-        color: $list-group-link-hover-color;
+        color: $list-group-action-hover-color;
         text-decoration: none;
         background-color: $list-group-hover-bg;
     }
@@ -72,8 +72,8 @@
 // Add modifier classes to change text and background color on individual items.
 // Organizationally, this must come after the `:hover` states.
 @each $theme, $colors in $context-themes {
-    $color:       map-get($colors, "context-color");
     $bg:          map-get($colors, "context-bg");
+    $color:       map-get($colors, "context-color");
     $hover-bg:    map-get($colors, "context-hover-bg");
     $hover-color: map-get($colors, "context-hover-color");
 
