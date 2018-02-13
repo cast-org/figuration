@@ -452,14 +452,14 @@ h4 > code {
   width: 100%;
   max-width: 100%;
   margin-bottom: 1rem;
-  border: 1px solid #98a4ae;
+  border: 1px solid #bbc2c9;
 }
 
 .cf-content > table:not(.table) th,
 .cf-content > table:not(.table) td {
   padding: 0.75rem;
   vertical-align: top;
-  border: 1px solid #98a4ae;
+  border: 1px solid #bbc2c9;
 }
 
 .cf-content > table:not(.table) thead th,
@@ -469,7 +469,7 @@ h4 > code {
 }
 
 .cf-content > table:not(.table) tbody + tbody {
-  border-top: 2px solid #98a4ae;
+  border-top: 2px solid #bbc2c9;
 }
 
 .cf-content > table:not(.table) .table {
@@ -552,14 +552,14 @@ h4 > code {
 }
 
 .cf-callout-warning {
-  background-color: #fef4d3;
+  background-color: #fef3d3;
 }
 
 .cf-callout-warning .h3,
 .cf-callout-warning .h4,
 .cf-callout-warning .h5,
 .cf-callout-warning .h6 {
-  color: #8b6d14;
+  color: #886b13;
 }
 
 .cf-callout-danger {
@@ -885,7 +885,7 @@ h4 > code {
   float: right;
   width: 4rem;
   height: 8rem;
-  background-color: #fee7a3;
+  background-color: #fce49f;
   border-radius: .25rem;
 }
 
