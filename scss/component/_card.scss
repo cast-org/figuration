@@ -1,8 +1,9 @@
 .card {
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction: column;
     min-width: 0;
-    margin-bottom: $card-spacer-y;
+    margin-bottom: $card-margin-bottom;
     word-wrap: break-word;
     background-color: $card-bg;
     border: $card-border-width solid $card-border-color;
@@ -43,15 +44,18 @@
 }
 
 .card-body {
+    // Enable `flex-grow: 1` for decks and groups so that card blocks take up
+    // as much space as possible, ensuring footers are aligned to the bottom.
+    flex: 1 1 auto;
     padding: $card-padding-y $card-padding-x;
 }
 
 .card-title {
-    margin-bottom: $card-spacer-y;
+    margin-bottom: $card-title-margin-bottom;
 }
 
 .card-subtitle {
-    margin-top: -($card-spacer-y / 2);
+    margin-top: $card-subtitle-margin-top;
     margin-bottom: 0;
 }
 
@@ -60,7 +64,7 @@
 }
 
 .card-link + .card-link {
-    margin-left: $card-spacer-x;
+    margin-left: $card-link-margin-left;
 }
 
 // Optional textual caps
@@ -116,6 +120,7 @@
 
 // Card images
 .card-img {
+    width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
     @include border-radius($card-inner-border-radius);
 }
 .card-img-top {
@@ -142,7 +147,7 @@
 
         @include media-breakpoint-up(#{$breakpoint}) {
             flex-flow: row wrap;
-            margin-bottom: $card-spacer-y; // 1
+            margin-bottom: $card-margin-bottom; // 1
 
             > .card {
                 // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
@@ -194,7 +199,7 @@
 
         @include media-breakpoint-up(#{$breakpoint}) {
             flex-flow: row wrap;
-            margin-bottom: $card-spacer-y; // 1
+            margin-bottom: $card-margin-bottom; // 1
 
             > .card {
                 // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
@@ -250,20 +255,24 @@
 
 
 // Card columns
-// If using `display: block;` on child cards - encounter problem with bottom margin being applied in the next column sometimes
-// https://bugs.chromium.org/p/chromium/issues/detail?id=440362
 @each $breakpoint in map-keys($grid-breakpoints) {
     $bprule: breakpoint-designator($breakpoint);
 
     @include media-breakpoint-up(#{$breakpoint}) {
         .card-columns#{$bprule} {
+            margin-bottom: $card-margin-bottom;
             column-count: $card-columns-count;
             column-gap: $card-columns-column-gap;
 
             > .card {
-                display: inline-table;
-                width: 100%; // Don't let them exceed the column width
+                margin-top: $card-margin-bottom;
+                margin-bottom: 0;
                 break-inside: avoid;
+                backface-visibility: hidden;
+
+                &:first-child {
+                    margin-top: 0;
+                }
             }
         }
     }
