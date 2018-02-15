@@ -82,8 +82,7 @@
 
     + .list-group {
         .list-group-item:first-child {
-            //border-top-width: 0;
-            margin-top: -$card-border-width;
+            border-top-width: 0;
         }
     }
 }
