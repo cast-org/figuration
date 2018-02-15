@@ -47,6 +47,8 @@
     // Enable `flex-grow: 1` for decks and groups so that card blocks take up
     // as much space as possible, ensuring footers are aligned to the bottom.
     flex: 1 1 auto;
+    // Set a min-height to keep IE in check with image stretching
+    min-height: 1px;
     padding: $card-padding-y $card-padding-x;
 }
 
@@ -120,14 +122,13 @@
 
 // Card images
 .card-img {
-    width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
-    @include border-radius($card-inner-border-radius);
+    min-height: 1px;  // Stop stretch/white-space due to flexbox
 }
 .card-img-top {
-    @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
+    @include border-top-radius($card-inner-border-radius);
 }
 .card-img-bottom {
-    @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
+    @include border-bottom-radius($card-inner-border-radius);
 }
 
 
