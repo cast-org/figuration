@@ -22,11 +22,11 @@ These classes are exceptionally useful helping to follow [accessibility best pra
 
 **Heads up!** There is no `.sr-only-*` class created for the smallest breakpoint and no `.sr-only-*-down` class created for the largest breakpoint, `.sr-only-xs` and `.sr-only-xl-down` respectively, since they are functionally equivalent to using `.sr-only`.
 
-{% highlight html %}
+{% example html %}
 <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
 <span class="sr-only-sm-down">...</span>
-{% endhighlight %}
+{% endexample %}
 
 {% highlight scss %}
 // Usage as a mixin
