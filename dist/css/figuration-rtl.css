@@ -6547,7 +6547,6 @@ a.badge:hover, a.badge:focus {
 }
 
 .modal {
-  direction: ltr ;
   position: fixed;
   top: 0;
   left: 0;
@@ -6556,6 +6555,7 @@ a.badge:hover, a.badge:focus {
   z-index: 1060;
   display: none;
   overflow: hidden;
+  direction: ltr ;
   outline: 0;
 }
 
@@ -6578,10 +6578,10 @@ a.badge:hover, a.badge:focus {
 }
 
 .modal-dialog {
-  direction: rtl;
   position: relative;
   width: auto;
   margin: 0.625rem;
+  direction: rtl;
   pointer-events: none;
 }
 
@@ -9903,8 +9903,6 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
   padding: 0;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
-  -webkit-clip-path: inset(50%);
-          clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
 }
@@ -9915,8 +9913,6 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
   height: auto;
   overflow: visible;
   clip: auto;
-  -webkit-clip-path: none;
-          clip-path: none;
   white-space: inherit;
 }
 
@@ -9928,8 +9924,6 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
     padding: 0;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    -webkit-clip-path: inset(50%);
-            clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
   }
@@ -9943,8 +9937,6 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
     padding: 0;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    -webkit-clip-path: inset(50%);
-            clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
   }
@@ -9958,8 +9950,6 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
     padding: 0;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    -webkit-clip-path: inset(50%);
-            clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
   }
@@ -9973,8 +9963,6 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
     padding: 0;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    -webkit-clip-path: inset(50%);
-            clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
   }
@@ -9988,8 +9976,6 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
     padding: 0;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    -webkit-clip-path: inset(50%);
-            clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
   }
@@ -10003,8 +9989,6 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
     padding: 0;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    -webkit-clip-path: inset(50%);
-            clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
   }
@@ -10018,8 +10002,6 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
     padding: 0;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    -webkit-clip-path: inset(50%);
-            clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
   }
@@ -10033,8 +10015,6 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
     padding: 0;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    -webkit-clip-path: inset(50%);
-            clip-path: inset(50%);
     white-space: nowrap;
     border: 0;
   }
