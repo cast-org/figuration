@@ -86,10 +86,10 @@ fieldset:disabled a.btn {
 @each $theme, $colors in $context-themes {
     $bg:                $btn-outline-bg;
     $color:             map-get($context-colors, $theme);
-    $border:            map-get($colors, "control-border-color");
+    $border:            map-get($colors, "control-bg");
     $hover-bg:          map-get($colors, "control-bg");
     $hover-color:       map-get($colors, "control-hover-color");
-    $hover-border:      map-get($colors, "control-hover-border-color");
+    $hover-border:      map-get($colors, "control-border-color");
     $active-hover-bg:   map-get($colors, "control-hover-bg");
 
     .btn-outline-#{$theme} {

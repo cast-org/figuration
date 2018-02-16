@@ -29,17 +29,17 @@ $palette-interval-dark:     .15% !default;
 // Palette levels for use in _mix-context-colors() to determine
 // standardized contextual color mapping.
 $level-control-bg:                  500 !default;
-$level-control-border-color:        500 !default;
+$level-control-border-color:        600 !default;
 $level-control-hover-bg:            600 !default;
-$level-control-hover-border-color:  600 !default;
+$level-control-hover-border-color:  700 !default;
 $level-control-active-hover-bg:     700 !default;
 
 $level-context-bg:                  100 !default;
 $level-context-color:               800 !default;
-$level-context-border-color:        100 !default;
+$level-context-border-color:        200 !default;
 $level-context-hover-bg:            200 !default;
 $level-context-hover-color:         900 !default;
-$level-context-hover-border-color:  200 !default; //deprecate
+$level-context-hover-border-color:  300 !default; //deprecate
 
 // Increase (or decrease with negative number) to alter color for the hover state of
 //`.text-{color}-(palette-level} and `.bg-{color}-(palette-level} utilities
@@ -50,7 +50,7 @@ $level-delta-hover-bg:              100 !default;
 // Colors
 // =====
 // Base Colors
-$uibase:    #546778 !default;
+$uibase:    #5e7182 !default;
 $white:     #fff !default;
 $gray:      #666 !default;
 $black:     #000 !default;
@@ -60,7 +60,7 @@ $blue:      #005ff1 !default;
 $cyan:      #137db4 !default;
 $yellow:    #f8c223 !default;
 $light:     palette($uibase, 50) !default;
-$dark:      palette($uibase, 700) !default;
+$dark:      palette($uibase, 800) !default;
 
 // Base UI Scale
 $uibase-50:  palette($uibase, 50) !default;
@@ -311,7 +311,7 @@ $responsive-font-size-scale-factor: (
 $component-bg:                  $white !default;
 $component-border-color:        $border-color !default;
 
-$component-hover-bg:            $uibase-100 !default;
+$component-hover-bg:            $uibase-50 !default;
 
 $component-action-color:        $uibase-700 !default;
 $component-action-hover-color:  $uibase-800 !default;
@@ -325,7 +325,7 @@ $component-disabled-color:      $uibase-400 !default;
 $component-disabled-bg:         transparent !default;
 
 $component-overlay-border-color:    rgba($uibase-900, .3) !default;
-$component-section-bg:              rgba($uibase-900, .0825) !default;
+$component-section-bg:              rgba($uibase-900, .0875) !default;
 $component-section-border-color:    rgba($uibase-900, .2) !default;
 
 
