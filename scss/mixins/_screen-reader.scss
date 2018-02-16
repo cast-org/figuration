@@ -18,7 +18,7 @@
     padding: 0;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    clip-path: inset(50%); //2
+    //clip-path: inset(50%); //2
     white-space: nowrap; // 1
     border: 0;
 }
@@ -37,7 +37,7 @@
         height: auto;
         overflow: visible;
         clip: auto;
-        clip-path: none;
+        //clip-path: none;
         white-space: inherit;
     }
 }
