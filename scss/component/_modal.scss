@@ -11,7 +11,6 @@
 
 // Container that the modal scrolls within
 .modal {
-    direction: ltr #{"/*rtl:ignore*/"};
     position: fixed;
     top: 0;
     right: 0;
@@ -20,6 +19,7 @@
     z-index: $zindex-modal;
     display: none;
     overflow: hidden;
+    direction: ltr #{"/*rtl:ignore*/"};
     // Prevent Chrome on Windows from adding a focus outline. For details, see
     // https://github.com/twbs/bootstrap/pull/10951.
     outline: 0;
@@ -44,10 +44,10 @@
 
 // Shell div to position the modal with bottom padding
 .modal-dialog {
-    direction: ltr;
     position: relative;
     width: auto;
     margin: $modal-dialog-margin;
+    direction: ltr;
     // Allow clicks to pass through for custom click handling to close modal
     pointer-events: none;
 }
