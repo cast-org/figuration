@@ -19,11 +19,13 @@ Cards are built with as little markup and styles as possible, but still manage t
 Below is an example of a basic card with mixed content and a fixed width. Cards have no fixed width to start, so they’ll naturally fill the full width of its parent element. This is easily customized with our various [sizing options](#sizing).
 
 {% example html %}
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+<div class="card" style="max-width: 18rem;">
+  <div class="card-img card-img-top">
+    <img class="img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+  </div>
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
@@ -67,8 +69,8 @@ With `.card-text`, text can be added to the card. Text within `.card-text` can a
 {% example html %}
 <div class="card">
   <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <p class="card-text">Another portion of example text that will have the bottom margin removed.</p>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
+    <p class="card-text">Another portion of sample text that will have the bottom margin removed.</p>
   </div>
 </div>
 {% endexample %}
@@ -80,7 +82,7 @@ Links can placed next to each other with some spacing by adding `.card-link` to 
 {% example html %}
 <div class="card">
   <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
     <a href="#" class="card-link">Card link</a>
     <a href="#" class="card-link">Another link</a>
   </div>
@@ -91,27 +93,33 @@ Links can placed next to each other with some spacing by adding `.card-link` to 
 
 Cards include a few options for working with images. Choose from embedding an image in a card, appending "image caps" at either end of a card, or overlaying images with card content.
 
+Images need to be wrapped with `.card-img` to prevent additional whitespace from appearing in some browsers, such as IE.
+
 #### Standard Images
 
 Images can help add some visual interest to your cards.
 
 {% example html %}
-<div class="card" style="width: 18rem;">
+<div class="card" style="max-width: 18rem;">
   <h4 class="card-header">Sample Card</h4>
-  <img class="img-fluid" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image">
+  <div class="card-img">
+    <img class="img-fluid" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image">
+  </div>
   <div class="card-body">
-    <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
 </div>
 {% endexample %}
 
 {% example html %}
-<div class="card" style="width: 18rem;">
+<div class="card" style="max-width: 18rem;">
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">This is a card with text and a nested image.</p>
-    <img class="img-fluid mb-0_5" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image">
+    <div class="card-img mb-0_5">
+      <img class="img-fluid" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image">
+    </div>
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
 </div>
@@ -124,11 +132,13 @@ Similar to headers and footers, cards can include top and bottom image caps.
 Use `.card-img-top` to round over the top corners when placing an image at the top of a card.
 
 {% example html %}
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top img-fluid" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image cap">
+<div class="card" style="max-width: 18rem;">
+  <div class="card-img card-img-top">
+    <img class="img-fluid" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image cap">
+  </div>
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
-    <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
 </div>
@@ -137,26 +147,30 @@ Use `.card-img-top` to round over the top corners when placing an image at the t
 Use `.card-img-bottom` to round over the bottom corners when placing an image at the bottom of a card.
 
 {% example html %}
-<div class="card" style="width: 18rem;">
+<div class="card" style="max-width: 18rem;">
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
-    <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
-  <img class="card-img-bottom img-fluid" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image cap">
+  <div class="card-img card-img-bottom">
+    <img class="img-fluid" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image cap">
+  </div>
 </div>
 {% endexample %}
 
 #### Image Overlay
 
-Turn an image into a card background and overlay your card's text. The use of `.card-img` will round over all corners of the image, and `.card-img-overlay` will allow content to overlay the image. Depending on the image, you may or may not need `.card-inverse` (see below).
+Turn an image into a card background and overlay your card's text. The use of `.card-img` will round over all corners of the image, and `.card-img-overlay` will allow content to overlay the image. Depending on the image, you may or may not need additional styles or utility classes.
 
 {% example html %}
-<div class="card card-inverse" style="width: 18rem;">
-  <img class="card-img img-fluid" data-src="holder.js/100px225/?text=Image background" alt="Card image">
+<div class="card text-white" style="max-width: 18rem;">
+  <div class="card-img card-img-top card-img-bottom">
+    <img class="img-fluid" data-src="holder.js/100px225/?text=Image background" alt="Card image">
+  </div>
   <div class="card-img-overlay">
     <h4 class="card-title">Card title</h4>
-    <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
     <p class="card-text"><small>Last updated 3 mins ago</small></p>
   </div>
 </div>
@@ -193,11 +207,13 @@ Create lists of content in a card with a flush list group.
 The multiple content types can be easily combined to create the card you need.
 
 {% example html %}
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top img-fluid" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
+<div class="card" style="max-width: 18rem;">
+  <div class="card-img card-img-top">
+    <img class="img-fluid" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
+  </div>
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Cras justo odio</li>
@@ -222,7 +238,7 @@ Add an optional header and/or footer within a card.
   </div>
   <div class="card-body">
     <h4 class="card-title">Special title treatment</h4>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
@@ -235,7 +251,7 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
   <h3 class="card-header">Featured</h3>
   <div class="card-body">
     <h4 class="card-title">Special title treatment</h4>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
@@ -247,7 +263,7 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
     Quote
   </div>
   <div class="card-body">
-    <blockquote class="blockquote">
+    <blockquote class="blockquote mb-0">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
       <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
     </blockquote>
@@ -262,7 +278,7 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
   </div>
   <div class="card-body">
     <h4 class="card-title">Special title treatment</h4>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
   <div class="card-footer text-muted">
@@ -287,7 +303,7 @@ Using the grid, wrap cards in columns and rows as needed.
     <div class="card">
       <div class="card-body">
         <h3 class="card-title">Special title treatment</h3>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
@@ -296,7 +312,7 @@ Using the grid, wrap cards in columns and rows as needed.
     <div class="card">
       <div class="card-body">
         <h3 class="card-title">Special title treatment</h3>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
@@ -309,10 +325,10 @@ Using the grid, wrap cards in columns and rows as needed.
 Use custom CSS in your stylesheets or as inline styles to set a width.
 
 {% example html %}
-<div class="card" style="width: 18rem;">
+<div class="card" style="max-width: 18rem;">
   <div class="card-body">
     <h3 class="card-title">Special title treatment</h3>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
@@ -323,26 +339,26 @@ Use custom CSS in your stylesheets or as inline styles to set a width.
 You can quickly change the text alignment of any card---in its entirety or specific parts---with our [text align classes]({{ site.baseurl }}/utilities/typography/#text-alignment).
 
 {% example html %}
-<div class="card" style="width: 18rem;">
+<div class="card" style="max-width: 18rem;">
   <div class="card-body">
     <h4 class="card-title">Special title treatment</h4>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
 
-<div class="card text-center" style="width: 18rem;">
+<div class="card text-center" style="max-width: 18rem;">
   <div class="card-body">
     <h4 class="card-title">Special title treatment</h4>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
 
-<div class="card text-end" style="width: 18rem;">
+<div class="card text-end" style="max-width: 18rem;">
   <div class="card-body">
     <h4 class="card-title">Special title treatment</h4>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
@@ -369,7 +385,7 @@ Add navigation items within a card's header (or block) with Figuration's [naviga
   </div>
   <div class="card-body">
     <h4 class="card-title">Special title treatment</h4>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
@@ -392,7 +408,7 @@ Add navigation items within a card's header (or block) with Figuration's [naviga
   </div>
   <div class="card-body">
     <h4 class="card-title">Special title treatment</h4>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
@@ -400,42 +416,7 @@ Add navigation items within a card's header (or block) with Figuration's [naviga
 
 ## Styling Cards
 
-Cards include various options for customizing their backgrounds, borders, and color.
-
-### Inverted Text
-
-By default, cards use dark text and assume a light background. You can reverse that by toggling the `color` of text within, as well as that of the card's subcomponents, with `.card-inverse`. Then, specify a dark `background-color` and `border-color` to go with it.
-
-You can also use `.card-inverse` with the [contextual backgrounds variants](#background-variants).
-
-{% example html %}
-<div class="card card-inverse" style="background-color: #333; border-color: #333;">
-  <div class="card-body">
-    <h3 class="card-title">Special title treatment</h3>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-
-<div class="card card-inverse text-center" style="background-color: #333; border-color: #333;">
-  <div class="card-header">
-    Inverse card
-  </div>
-  <div class="card-body">
-    <h3 class="card-title">Special title treatment</h3>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <p class="card-text"><a href="#" class="card-link">Go somewhere</a></p>
-    <p class="card-text"><button type="button" class="btn btn-primary">Do something</button></p>
-  </div>
-  <div class="card-footer">
-    Card footer
-  </div>
-</div>
-{% endexample %}
-
-### Background Variants
-
-Cards include their own variant classes for quickly changing the `background-color` and `border-color` of a card. **Darker colors require the use of `.card-inverse` or `.text-light`**.
+Cards include various options for customizing their backgrounds, borders, and text color.
 
 {% callout warning %}
 Conveying Meaning to Assistive Technologies
@@ -444,105 +425,158 @@ Conveying Meaning to Assistive Technologies
 Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
 {% endcallout %}
 
+### Background and Text
+
+Use the [text and background color utilities]({{ site.baseurl }}/utilities/color/) to change the look of a card.
+
 {% example html %}
-<div class="card card-inverse card-primary text-center">
+<div class="card bg-primary text-light" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
   <div class="card-body">
-    <p>This is some text within a card body.</p>
-    <blockquote class="blockquote text-light">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer class="blockquote-footer card-inverse">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
+    <h5 class="card-title">Primary card</h5>
+    <h6 class="card-subtitle">Subtitle text</h6>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
   </div>
 </div>
-<div class="card card-inverse card-success text-center">
+
+<div class="card bg-secondary text-light" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
   <div class="card-body">
-    <p>This is some text within a card body.</p>
-    <blockquote class="blockquote text-light">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer class="blockquote-footer card-inverse">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
+    <h5 class="card-title">Secondary card</h5>
+    <h6 class="card-subtitle">Subtitle text</h6>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
   </div>
 </div>
-<div class="card card-inverse card-info text-center">
+
+<div class="card bg-success text-black" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
   <div class="card-body">
-    <p>This is some text within a card body.</p>
-    <blockquote class="blockquote text-light">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer class="blockquote-footer card-inverse">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
+    <h5 class="card-title">Success card</h5>
+    <h6 class="card-subtitle">Subtitle text</h6>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
   </div>
 </div>
-<div class="card card-inverse card-warning text-center">
+
+<div class="card bg-info text-light" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
   <div class="card-body">
-    <p>This is some text within a card body.</p>
-    <blockquote class="blockquote text-light">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer class="blockquote-footer card-inverse">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
+    <h5 class="card-title">Info card</h5>
+    <h6 class="card-subtitle">Subtitle text</h6>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
   </div>
 </div>
-<div class="card card-inverse card-danger text-center">
+
+<div class="card bg-warning text-body" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
   <div class="card-body">
-    <p>This is some text within a card body.</p>
-    <blockquote class="blockquote text-light">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer class="blockquote-footer card-inverse">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
+    <h5 class="card-title">Warning card</h5>
+    <h6 class="card-subtitle">Subtitle text</h6>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </div>
+</div>
+
+<div class="card bg-danger text-light" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <h5 class="card-title">Danger card</h5>
+    <h6 class="card-subtitle">Subtitle text</h6>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </div>
+</div>
+
+<div class="card bg-light text-dark" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <h5 class="card-title">Light card</h5>
+    <h6 class="card-subtitle">Subtitle text</h6>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </div>
+</div>
+
+<div class="card bg-dark text-light" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <h5 class="card-title">Dark card</h5>
+    <h6 class="card-subtitle">Subtitle text</h6>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
   </div>
 </div>
 {% endexample %}
 
-### Outline Variants
+### Border and Content
 
-In need of a colored card, but not the hefty background colors they bring? Replace the default modifier classes with the `.card-outline-*` ones to style just the `border-color` of a card.
+Use the [border color utilities]({{ site.baseurl }}/utilities/color/#border) to change just the `border-color` of a card. Note that you can put `.text-{color}` classes on the parent `.card` or a subset of the card's contents as shown below.
 
 {% example html %}
-<div class="card card-outline-primary text-center">
-  <div class="card-body">
-    <blockquote class="blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
+<div class="card border-primary" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">Primary outline card</h5>
+    <h6 class="card-subtitle">Subtitle text</h6>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
   </div>
 </div>
-<div class="card card-outline-secondary text-center">
-  <div class="card-body">
-    <blockquote class="blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
+
+<div class="card border-secondary" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body text-secondary">
+    <h5 class="card-title">Secondary outline card</h5>
+    <h6 class="card-subtitle">Subtitle text</h6>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
   </div>
 </div>
-<div class="card card-outline-success text-center">
-  <div class="card-body">
-    <blockquote class="blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
+
+<div class="card border-success" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body text-success-700">
+    <h5 class="card-title">Success outline card</h5>
+    <h6 class="card-subtitle">Subtitle text</h6>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
   </div>
 </div>
-<div class="card card-outline-info text-center">
-  <div class="card-body">
-    <blockquote class="blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
+
+<div class="card border-info" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body text-info">
+    <h5 class="card-title">Info outline card</h5>
+    <h6 class="card-subtitle">Subtitle text</h6>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
   </div>
 </div>
-<div class="card card-outline-warning text-center">
-  <div class="card-body">
-    <blockquote class="blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
+
+<div class="card border-warning" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body text-warning-800">
+    <h5 class="card-title">Warning outline card</h5>
+    <h6 class="card-subtitle">Subtitle text</h6>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
   </div>
 </div>
-<div class="card card-outline-danger text-center">
+
+<div class="card border-danger" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body text-danger">
+    <h5 class="card-title">Danger outline card</h5>
+    <h6 class="card-subtitle">Subtitle text</h6>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </div>
+</div>
+
+<div class="card border-light" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
   <div class="card-body">
-    <blockquote class="blockquote">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-    </blockquote>
+    <h5 class="card-title">Light outline card</h5>
+    <h6 class="card-subtitle">Subtitle text</h6>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </div>
+</div>
+
+<div class="card border-dark" style="max-width: 18rem;">
+  <div class="card-header">Header</div>
+  <div class="card-body text-dark">
+    <h5 class="card-title">Dark outline card</h5>
+    <h6 class="card-subtitle">Subtitle text</h6>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
   </div>
 </div>
 {% endexample %}
@@ -556,7 +590,7 @@ Recolor the header and footer sections of your cards by using the background con
   <h3 class="card-header card-inverse bg-primary">Featured</h3>
   <div class="card-body">
     <h4 class="card-title">Special title treatment</h4>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
   <div class="card-footer card-inverse bg-primary">
@@ -576,62 +610,76 @@ Use card groups to render cards as a single, attached element with equal width a
 {% example html %}
 <div class="card-group-sm">
   <div class="card">
-    <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    <div class="card-img card-img-top">
+      <img class="img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    </div>
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
   <div class="card">
-    <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    <div class="card-img card-img-top">
+      <img class="img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    </div>
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text">Some sample text to build out the size of the card.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
   <div class="card">
-    <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    <div class="card-img card-img-top">
+      <img class="img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    </div>
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text">Some sample text to build out the size of the card. This card has even longer content than the first to show that equal height action.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
 </div>
 {% endexample %}
 
-When using card groups with footers, they will not automatically line up.  However, you can use the [Equalize widget]({{ site.baseurl }}/widgets/equalize) to achieve this layout.
+When using card groups with footers, they will automatically line up along the bottom edge of the card.
 
 {% example html %}
-<div class="card-group-sm" data-cfw="equalize" data-cfw-equalize-target=".card-body">
+<div class="card-group-sm">
   <div class="card">
-    <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    <div class="card-img card-img-top">
+      <img class="img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    </div>
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This is a card with text and an image.</p>
-      <img class="img-fluid mb-0_5" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image">
+      <div class="card-img">
+        <img class="img-fluid" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image">
+      </div>
     </div>
     <div class="card-footer">
       <small class="text-muted">Last updated 3 mins ago</small>
     </div>
   </div>
   <div class="card">
-    <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    <div class="card-img card-img-top">
+      <img class="img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    </div>
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
     <div class="card-footer">
       <small class="text-muted">Last updated 3 mins ago</small>
     </div>
   </div>
   <div class="card">
-    <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    <div class="card-img card-img-top">
+      <img class="img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    </div>
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text">Some sample text to build out the size of the card. This card has even longer content than the first to show that equal height action.</p>
     </div>
     <div class="card-footer">
       <small class="text-muted">Last updated 3 mins ago</small>
@@ -647,62 +695,76 @@ Need a set of equal width and height cards that aren't attached to one another? 
 {% example html %}
 <div class="card-deck-sm">
   <div class="card">
-    <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    <div class="card-img card-img-top">
+      <img class="img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    </div>
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
   <div class="card">
-    <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    <div class="card-img card-img-top">
+      <img class="img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    </div>
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text">Some sample text to build out the size of the card.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
   <div class="card">
-    <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    <div class="card-img card-img-top">
+      <img class="img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    </div>
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit. This card has even longer content than the first to show that equal height action.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
 </div>
 {% endexample %}
 
-Just like with card groups, card footers in decks will not automatically line up. Again, the [Equalize widget]({{ site.baseurl }}/widgets/equalize) can achieve this layout.
+Just like with card groups, card footers in decks will automatically line up.
 
 {% example html %}
-<div class="card-deck-sm" data-cfw="equalize" data-cfw-equalize-target=".card-body">
+<div class="card-deck-sm">
   <div class="card">
-    <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    <div class="card-img card-img-top">
+      <img class="img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    </div>
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This is a card with text and an image.</p>
-      <img class="img-fluid mb-0_5" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image">
+      <div class="card-img mb-0_5">
+        <img class="img-fluid" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image">
+      </div>
     </div>
     <div class="card-footer">
       <small class="text-muted">Last updated 3 mins ago</small>
     </div>
   </div>
   <div class="card">
-    <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    <div class="card-img card-img-top">
+      <img class="img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    </div>
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
     <div class="card-footer">
       <small class="text-muted">Last updated 3 mins ago</small>
     </div>
   </div>
   <div class="card">
-    <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    <div class="card-img card-img-top">
+      <img class="img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    </div>
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text">Some sample text to build out the size of the card. This card has even longer content than the first to show that equal height action.</p>
     </div>
     <div class="card-footer">
       <small class="text-muted">Last updated 3 mins ago</small>
@@ -749,31 +811,39 @@ Controlling the number of cards in a row, based on the screen width is also poss
 {% example html %}
 <div class="card-deck-sm card-deck-col">
     <div class="card">
-        <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+        <div class="card-img card-img-top">
+            <img class="img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+        </div>
         <div class="card-body">
             <h4 class="card-title">Card title</h4>
-            <p class="card-text">This is a card with some amount of text. This is a card with some amount of text.</p>
+            <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
     </div>
     <div class="card">
-        <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+        <div class="card-img card-img-top">
+            <img class="img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+        </div>
         <div class="card-body">
             <h4 class="card-title">Card title</h4>
-            <p class="card-text">This is a card with some amount of text. This is a card with some amount of text.</p>
+            <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
     </div>
     <div class="card">
-        <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+        <div class="card-img card-img-top">
+            <img class="img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+        </div>
         <div class="card-body">
             <h4 class="card-title">Card title</h4>
-            <p class="card-text">This is a card with some amount of text. This is a card with some amount of text.</p>
+            <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
     </div>
     <div class="card">
-        <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+        <div class="card-img card-img-top">
+            <img class="img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+        </div>
         <div class="card-body">
             <h4 class="card-title">Card title</h4>
-            <p class="card-text">This is a card with some amount of text. This is a card with some amount of text.</p>
+            <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
     </div>
 </div>
@@ -790,10 +860,12 @@ Responsive variants are available with the class syntax of `.card-columns{-break
 {% example html %}
 <div class="card-columns-sm">
   <div class="card">
-    <img class="card-img-top img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    <div class="card-img card-img-top">
+      <img class="img-fluid" data-src="holder.js/100px150/" alt="Card image cap">
+    </div>
     <div class="card-body">
       <h4 class="card-title">Card title that wraps to a new line</h4>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
   <div class="card">
@@ -809,10 +881,12 @@ Responsive variants are available with the class syntax of `.card-columns{-break
     </div>
   </div>
   <div class="card">
-    <img class="card-img-top img-fluid" data-src="holder.js/100px160/" alt="Card image cap">
+    <div class="card-img card-img-top">
+      <img class="img-fluid" data-src="holder.js/100px160/" alt="Card image cap">
+    </div>
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
@@ -831,12 +905,14 @@ Responsive variants are available with the class syntax of `.card-columns{-break
   <div class="card text-center">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
   <div class="card">
-    <img class="card-img img-fluid" data-src="holder.js/100px260/" alt="Card image">
+    <div class="card-img">
+      <img class="img-fluid" data-src="holder.js/100px260/" alt="Card image">
+    </div>
   </div>
   <div class="card text-end">
     <div class="card-body">
@@ -853,7 +929,7 @@ Responsive variants are available with the class syntax of `.card-columns{-break
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>

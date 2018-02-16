@@ -525,10 +525,9 @@ h4 {
     }
 }
 // Callout Contextual modifiers
-@mixin callout-variant($bg, $border, $color) {
-    // color: $color;
+@mixin callout-variant($bg, $color, $border-color) {
     background-color: $bg;
-    border-color: $border;
+    border-color: $border-color;
 
     .h3,
     .h4,
@@ -536,22 +535,14 @@ h4 {
     .h6 {
         color: $color;
     }
-
-    //a {
-    //    color: darken($color, 5%);
-    //
-    //    @include hover-focus {
-    //        color: darken($color, 15%);
-    //    }
-    //}
 }
 @each $theme, $colors in $context-themes {
-    $color:     map-get($colors, "context-color");
-    $bg:        map-get($colors, "context-bg");
-    $border:    map-get($colors, "context-border");
+    $bg:           map-get($colors, "context-bg");
+    $color:        map-get($colors, "context-color");
+    $border-color: map-get($colors, "control-border-color");
 
     .cf-callout-#{$theme} {
-        @include callout-variant($bg, $border, $color);
+        @include callout-variant($bg, $color, $border-color);
     }
 }
 .cf-callout-dep > p + ul {
@@ -687,13 +678,6 @@ h4 {
     height: 1.25rem;
     margin-top: .25rem;
     border: 0;
-}
-
-.cf-textalt {
-    text-align: center;
-}
-.cf-textalt div div {
-    padding: .5rem 1rem;
 }
 
 @import "search";
