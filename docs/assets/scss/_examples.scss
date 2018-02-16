@@ -213,12 +213,6 @@ $custom-file-text: (
 }
 
 // Utilities
-.cf-example > [class*="bg-"]:not(.navbar):not(.progress),
-.cf-example .d-table-cell {
-    padding: .5rem;
-    margin-top: .5rem;
-    margin-bottom: .5rem;
-}
 .cf-example > .close {
     float: none;
 }
@@ -377,6 +371,16 @@ $custom-file-text: (
     }
 }
 
+// Border utilities
+.cf-example-border {
+    [class^="border"] {
+        display: inline-block;
+        width: 4rem;
+        height: 4rem;
+        margin: .25rem;
+        background-color: $uibase-50;
+    }
+}
 
 // Flex utilities
 .cf-example-flex {
