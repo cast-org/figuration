@@ -18,7 +18,7 @@
     background-clip: padding-box;
     border: $input-border-width solid $input-border-color;
     @include border-radius($input-border-radius);
-    @include box-shadow($input-box-shadow, 0 0 transparent);
+    @include box-shadow($input-box-shadow);
     @include transition($input-transition, $switch-control-transition);
 
     &::before {
@@ -55,17 +55,13 @@
             // calc() use in transform
             //transform: translateX(calc(-100% + #{$input-border-width}));
             transform: translateX(-100%) translateX(#{$input-border-width});
-            @include box-shadow($switch-active-indicator-box-shadow, 0 0 transparent);
+            @include box-shadow($switch-active-indicator-box-shadow);
         }
     }
 
     &:focus ~ .switch-control {
         border-color: $switch-focus-control-border-color;
-        @if ($enable-shadows) {
-            box-shadow: $switch-focus-control-box-shadow-inner, $switch-focus-control-box-shadow-outer;
-        } @else {
-            box-shadow: $switch-focus-control-box-shadow-outer;
-        }
+        @include box-shadow($switch-focus-control-box-shadow);
     }
 
     &:disabled {

@@ -48,6 +48,7 @@
         $control-hover-color:        color-if-contrast($control-color, $control-hover-bg);
         $control-hover-border-color: palette($color, $level-control-hover-border-color);
         $control-active-hover-bg:    palette($color, $level-control-active-hover-bg);
+        $control-active-hover-color: color-if-contrast($control-hover-color, $control-active-hover-bg);
         $context-bg:                 palette($color, $level-context-bg);
         $context-color:              palette($color, $level-context-color);
         $context-border-color:       palette($color, $level-context-border-color);
@@ -63,6 +64,7 @@
             "control-hover-color": $control-hover-color,
             "control-hover-border-color": $control-hover-border-color,
             "control-active-hover-bg": $control-active-hover-bg,
+            "control-active-hover-color": $control-active-hover-color,
             "context-bg": $context-bg,
             "context-color": $context-color,
             "context-border-color": $context-border-color,
