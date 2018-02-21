@@ -36,8 +36,9 @@
     color: $pagination-color;
     text-decoration: none;
 
-    &:hover {
-        z-index: 1;
+    &:hover,
+    &:focus {
+        z-index: 2;
         color: $pagination-hover-color;
         text-decoration: none;
         background-color: $pagination-hover-bg;
@@ -48,10 +49,6 @@
         z-index: 1;
         color: $pagination-active-color;
         background-color: $pagination-active-bg;
-    }
-
-    &:focus {
-        z-index: 2;
     }
 
     &.disabled {

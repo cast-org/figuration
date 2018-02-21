@@ -12,21 +12,14 @@
     user-select: none;
     border: $input-border-width solid transparent;
     @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
-    @include box-shadow($btn-box-shadow, 0 0 transparent);
+    @include box-shadow($btn-box-shadow);
     @include transition($btn-transition);
 
-    @include hover-focus {
-        text-decoration: none;
-    }
-
+    &:hover,
     &:focus,
     &.focus {
-        outline: 0;
-        @if $enable-shadows {
-            box-shadow: $btn-box-shadow, $btn-focus-box-shadow;
-        } @else {
-            box-shadow: $btn-focus-box-shadow;
-        }
+        text-decoration: none;
+        @include box-shadow($btn-box-shadow);
     }
 
     // Disabled comes first so active can restyle
@@ -44,18 +37,15 @@
         background-image: none;
         @include box-shadow($btn-active-box-shadow);
 
+        &:hover,
         &:focus,
         &.focus {
-            @if $enable-shadows {
-                box-shadow: $btn-active-box-shadow, $btn-focus-box-shadow;
-            } @else {
-                box-shadow: $btn-focus-box-shadow;
-            }
+            @include box-shadow($btn-active-box-shadow);
         }
     }
 
     // Default color
-    @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border-color, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border-color, $btn-default-active-hover-bg);
+    @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border-color, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border-color, $btn-default-active-hover-color, $btn-default-active-hover-bg);
 }
 
 // Future-proof disabling of clicks on `<a>` elements
@@ -66,34 +56,18 @@ fieldset:disabled a.btn {
 
 // Contextual color variants
 @each $theme, $colors in $context-themes {
-    $bg:                map-get($colors, "control-bg");
-    $color:             map-get($colors, "control-color");
-    $border:            map-get($colors, "control-border-color");
-    $hover-bg:          map-get($colors, "control-hover-bg");
-    $hover-color:       map-get($colors, "control-hover-color");
-    $hover-border:      map-get($colors, "control-hover-border-color");
-    $active-hover-bg:   map-get($colors, "control-active-hover-bg");
-
     .btn-#{$theme} {
-        @include button-variant($color, $bg, $border, $hover-color, $hover-bg, $hover-border, $active-hover-bg);
+        @include button-variant-control($theme, $colors);
     }
 }
 
 // Outline variant - remove all backgrounds
 .btn-outline {
-    @include button-variant($btn-default-color, $btn-outline-bg, $btn-default-border-color, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border-color, $btn-default-active-hover-bg);
+    @include button-variant($btn-default-color, $btn-outline-bg, $btn-default-border-color, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border-color, $btn-default-active-hover-color, $btn-default-active-hover-bg);
 }
 @each $theme, $colors in $context-themes {
-    $bg:                $btn-outline-bg;
-    $color:             map-get($context-colors, $theme);
-    $border:            map-get($colors, "control-bg");
-    $hover-bg:          map-get($colors, "control-bg");
-    $hover-color:       map-get($colors, "control-hover-color");
-    $hover-border:      map-get($colors, "control-border-color");
-    $active-hover-bg:   map-get($colors, "control-hover-bg");
-
     .btn-outline-#{$theme} {
-        @include button-variant($color, $bg, $border, $hover-color, $hover-bg, $hover-border, $active-hover-bg);
+        @include button-variant-control-outline($theme, $colors, $btn-outline-bg);
     }
 }
 
@@ -101,17 +75,17 @@ fieldset:disabled a.btn {
 // Make a button look and behave like a link
 .btn-link {
     text-decoration: $link-decoration;
-    @include button-variant($link-color, transparent, transparent, $link-hover-color, transparent, transparent, transparent);
+    @include button-variant($link-color, transparent, transparent, $link-hover-color, transparent, transparent, $link-hover-color, transparent);
     @include box-shadow(none);
 
     @include hover-focus {
         color: $link-hover-color;
         text-decoration: $link-hover-decoration;
+        @include box-shadow(none);
     }
 
     &.disabled,
     &:disabled {
-        color: $link-color;
         text-decoration: none;
     }
 
