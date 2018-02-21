@@ -10,17 +10,25 @@
     white-space: nowrap;
     vertical-align: middle;
     user-select: none;
-    border: $input-border-width solid transparent;
+    border: $btn-border-width solid transparent;
     @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
     @include box-shadow($btn-box-shadow);
     @include transition($btn-transition);
 
     &:hover,
     &:focus,
-    &.focus {
+    .btn-check-input:focus ~ & {
         text-decoration: none;
         @include box-shadow($btn-box-shadow);
     }
+
+    // Force outline on for inputs
+    // stylelint-disable declaration-block-no-duplicate-properties
+    .btn-check-input:focus ~ & {
+        outline: 1px dotted;
+        outline: 5px auto -webkit-focus-ring-color;
+    }
+    // stylelint-enable declaration-block-no-duplicate-properties
 
     // Disabled comes first so active can restyle
     &.disabled,
@@ -32,16 +40,22 @@
 
     &:not(:disabled):not(.disabled):active,
     &:not(:disabled):not(.disabled).active,
+    .btn-check-input:checked ~ &,
     .open > & {
         // Remove the gradient for the pressed/active state
         background-image: none;
         @include box-shadow($btn-active-box-shadow);
+    }
 
-        &:hover,
-        &:focus,
-        &.focus {
-            @include box-shadow($btn-active-box-shadow);
-        }
+    &:active:hover,
+    &.active:hover,
+    &:active:focus,
+    &.active:focus,
+    .btn-check-input:checked:hover ~ &,
+    .btn-check-input:checked:focus ~ &,
+    .open:hover > &,
+    .open:focus > & {
+        @include box-shadow($btn-active-box-shadow);
     }
 
     // Default color
@@ -129,4 +143,26 @@ input[type="button"] {
     &.btn-block {
         width: 100%;
     }
+}
+
+// Checkbox and radio options
+// In order to support the browser's form validation feedback, powered by the
+// `required` attribute, we have to "hide" the inputs via `clip`. We cannot use
+// `display: none;` or `visibility: hidden;` as that also hides the popover.
+// Simply visually hiding the inputs via `opacity` would leave them clickable in
+// certain cases which is prevented by using `clip` and `pointer-events`.
+// This way, we ensure a DOM element is visible to position the popover from.
+.btn-check {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle; // match .btn alignment given font-size hack above
+
+    // stylelint-disable selector-no-qualifying-type
+    & > input[type="radio"],
+    & > input[type="checkbox"] {
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+        pointer-events: none;
+    }
+    // stylelint-enable selector-no-qualifying-type
 }

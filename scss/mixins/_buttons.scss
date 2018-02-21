@@ -8,7 +8,10 @@
     background-color: $bg;
     border-color: $border;
 
-    @include hover-focus() {
+    &:hover,
+    &:focus,
+    .btn-check-input:hover ~ &,
+    .btn-check-input:focus ~ & {
         color: $hover-color;
         background-color: $hover-bg;
         border-color: $hover-border;
@@ -23,15 +26,23 @@
 
     &:active,
     &.active,
+    .btn-check-input:checked ~ &,
     .open > & {
         color: $hover-color;
         background-color: $hover-bg;
         border-color: $hover-border;
+    }
 
-        @include hover-focus() {
-            color: $active-hover-color;
-            background-color: $active-hover-bg;
-        }
+    &:active:hover,
+    &.active:hover,
+    &:active:focus,
+    &.active:focus,
+    .btn-check-input:checked:hover ~ &,
+    .btn-check-input:checked:focus ~ &,
+    .open:hover > &,
+    .open:focus > & {
+        color: $active-hover-color;
+        background-color: $active-hover-bg;
     }
 }
 

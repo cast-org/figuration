@@ -12,10 +12,10 @@
 
         // Bring the "active" button to the front
         &:active,
-        &.active,
-        &:hover {
+        &.active {
             z-index: 1;
         }
+        &:hover,
         &:focus,
         &.focus {
             z-index: 2;
@@ -36,26 +36,22 @@
 
 .btn-group {
     // Prevent double borders when buttons are next to each other
-    .btn + .btn,
-    .btn + .btn-group,
-    .btn-group + .btn,
-    .btn-group + .btn-group {
-        margin-left: -$border-width;
+    > .btn:not(:first-child),
+    > .btn-group:not(:first-child),
+    > .btn-check:not(:first-child) {
+        margin-left: -$btn-border-width;
     }
 
-    > .btn:first-child {
-        margin-left: 0;
-    }
-
-    // Reset rounded corners individual because sometimes a single button can be
-    // in a .btn-group and we need :first-child and :last-child to both match.
+    // Reset rounded corners
     > .btn:not(:last-child):not(.dropdown-toggle),
-    > .btn-group:not(:last-child) > .btn {
+    > .btn-group:not(:last-child) > .btn,
+    > .btn-check:not(:last-child) > .btn {
         @include border-end-radius(0);
     }
 
     > .btn:not(:first-child),
-    > .btn-group:not(:first-child) > .btn {
+    > .btn-group:not(:first-child) > .btn,
+    > .btn-check:not(:first-child) > .btn {
         @include border-start-radius(0);
     }
 }
@@ -92,72 +88,29 @@
 
     > .btn,
     > .btn-group,
-    > .btn-group > .btn {
+    > .btn-group > .btn,
+    > .btn-check,
+    > .btn-check > .btn {
         width: 100%;
         max-width: 100%;
     }
 
-    > .btn + .btn,
-    > .btn + .btn-group,
-    > .btn-group + .btn,
-    > .btn-group + .btn-group {
-        margin-top: -$border-width;
+    > .btn:not(:first-child),
+    > .btn-group:not(:first-child),
+    > .btn-check:not(:first-child) {
+        margin-top: -$btn-border-width;
     }
 
-    > .btn:first-child {
-        margin-top: 0;
+    // Reset rounded corners
+    > .btn:not(:last-child):not(.dropdown-toggle),
+    > .btn-group:not(:last-child) > .btn,
+    > .btn-check:not(:last-child) > .btn {
+        @include border-bottom-radius(0);
     }
 
-    > .btn {
-        &:not(:first-child):not(:last-child) {
-            border-radius: 0;
-        }
-        &:first-child:not(:last-child) {
-            @include border-bottom-radius(0);
-        }
-        &:last-child:not(:first-child) {
-            @include border-top-radius(0);
-        }
-    }
-
-    > .btn-group:not(:first-child):not(:last-child) > .btn {
-        border-radius: 0;
-    }
-
-    > .btn-group:first-child:not(:last-child) {
-        > .btn:last-child,
-        > .dropdown-toggle {
-            @include border-bottom-radius(0);
-        }
-    }
-
-    > .btn-group:last-child:not(:first-child) > .btn:first-child {
+    > .btn:not(:first-child),
+    > .btn-group:not(:first-child) > .btn,
+    > .btn-check:not(:first-child) > .btn {
         @include border-top-radius(0);
-    }
-}
-
-
-// Checkbox and radio options
-// In order to support the browser's form validation feedback, powered by the
-// `required` attribute, we have to "hide" the inputs via `clip`. We cannot use
-// `display: none;` or `visibility: hidden;` as that also hides the popover.
-// Simply visually hiding the inputs via `opacity` would leave them clickable in
-// certain cases which is prevented by using `clip` and `pointer-events`.
-// This way, we ensure a DOM element is visible to position the popover from.
-//
-// See https://github.com/twbs/bootstrap/pull/12794 and
-// https://github.com/twbs/bootstrap/pull/14559 for more information.
-
-[data-cfw="buttons"] {
-    > .btn,
-    > .btn-group > .btn {
-        // stylelint-disable selector-no-qualifying-type
-        input[type="radio"],
-        input[type="checkbox"] {
-            position: absolute;
-            clip: rect(0, 0, 0, 0);
-            pointer-events: none;
-        }
-        // stylelint-enable selector-no-qualifying-type
     }
 }

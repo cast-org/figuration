@@ -468,6 +468,7 @@ $btn-padding-y:             .375rem !default;
 $btn-padding-x:             .75rem !default;
 $btn-font-weight:           $font-weight-normal !default;
 $btn-line-height:           1.25 !default;
+$btn-border-width:          $border-width !default;
 $btn-border-radius:         $border-radius !default;
 $btn-box-shadow:            inset 0 .125em .25em rgba($white, .25), 0 1px 1px rgba($black, .075) !default;
 $btn-active-box-shadow:     inset 0 .125em .25em rgba($black, .25), $btn-box-shadow !default;
