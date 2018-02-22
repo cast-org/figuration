@@ -22,17 +22,10 @@
         @include box-shadow($btn-box-shadow);
     }
 
-    // Force outline on for inputs
-    // stylelint-disable declaration-block-no-duplicate-properties
-    .btn-check-input:focus ~ & {
-        outline: 1px dotted;
-        outline: 5px auto -webkit-focus-ring-color;
-    }
-    // stylelint-enable declaration-block-no-duplicate-properties
-
     // Disabled comes first so active can restyle
     &.disabled,
-    &:disabled {
+    &:disabled,
+    .btn-check-input:disabled ~ & {
         cursor: $cursor-disabled;
         opacity: $btn-disabled-opacity;
         @include box-shadow(none);
@@ -40,21 +33,21 @@
 
     &:not(:disabled):not(.disabled):active,
     &:not(:disabled):not(.disabled).active,
-    .btn-check-input:checked ~ &,
+    .btn-check-input:not(:disabled):checked ~ &,
     .open > & {
         // Remove the gradient for the pressed/active state
         background-image: none;
         @include box-shadow($btn-active-box-shadow);
     }
 
-    &:active:hover,
-    &.active:hover,
-    &:active:focus,
-    &.active:focus,
-    .btn-check-input:checked:hover ~ &,
-    .btn-check-input:checked:focus ~ &,
-    .open:hover > &,
-    .open:focus > & {
+    &:not(:disabled):not(.disabled):active:hover,
+    &:not(:disabled):not(.disabled).active:hover,
+    &:not(:disabled):not(.disabled):active:focus,
+    &:not(:disabled):not(.disabled).active:focus,
+    .btn-check-input:not(:disabled):checked:focus ~ &,
+    .btn-check-input:not(:disabled):checked ~ &:hover,
+    .open > &:hover,
+    .open > &:focus {
         @include box-shadow($btn-active-box-shadow);
     }
 
@@ -64,7 +57,8 @@
 
 // Future-proof disabling of clicks on `<a>` elements
 a.btn.disabled,
-fieldset:disabled a.btn {
+fieldset:disabled a.btn,
+.btn-check-input:disabled ~ .btn {
     pointer-events: none;
 }
 
@@ -157,12 +151,22 @@ input[type="button"] {
     display: inline-block;
     vertical-align: middle; // match .btn alignment given font-size hack above
 
-    // stylelint-disable selector-no-qualifying-type
     & > input[type="radio"],
     & > input[type="checkbox"] {
         position: absolute;
         clip: rect(0, 0, 0, 0);
         pointer-events: none;
     }
-    // stylelint-enable selector-no-qualifying-type
+
+    > label {
+        margin-bottom: 0;
+    }
 }
+
+// Force outline on for inputs
+// stylelint-disable declaration-block-no-duplicate-properties
+.btn-check-input:focus ~ .btn {
+    outline: 1px dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+}
+// stylelint-enable declaration-block-no-duplicate-properties

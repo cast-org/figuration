@@ -10,7 +10,6 @@
 
     &:hover,
     &:focus,
-    .btn-check-input:hover ~ &,
     .btn-check-input:focus ~ & {
         color: $hover-color;
         background-color: $hover-bg;
@@ -18,29 +17,30 @@
     }
 
     &.disabled,
-    &:disabled {
+    &:disabled,
+    .btn-check-input:disabled ~ & {
         color: $color;
         background-color: $bg;
         border-color: $border;
     }
 
-    &:active,
-    &.active,
-    .btn-check-input:checked ~ &,
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active,
+    .btn-check-input:not(:disabled):checked ~ &,
     .open > & {
         color: $hover-color;
         background-color: $hover-bg;
         border-color: $hover-border;
     }
 
-    &:active:hover,
-    &.active:hover,
-    &:active:focus,
-    &.active:focus,
-    .btn-check-input:checked:hover ~ &,
-    .btn-check-input:checked:focus ~ &,
-    .open:hover > &,
-    .open:focus > & {
+    &:not(:disabled):not(.disabled):active:hover,
+    &:not(:disabled):not(.disabled).active:hover,
+    &:not(:disabled):not(.disabled):active:focus,
+    &:not(:disabled):not(.disabled).active:focus,
+    .btn-check-input:not(:disabled):checked:focus ~ &,
+    .btn-check-input:not(:disabled):checked ~ &:hover,
+    .open > &:hover,
+    .open > &:focus {
         color: $active-hover-color;
         background-color: $active-hover-bg;
     }
