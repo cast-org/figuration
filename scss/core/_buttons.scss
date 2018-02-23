@@ -139,34 +139,29 @@ input[type="button"] {
     }
 }
 
-// Checkbox and radio options
-// In order to support the browser's form validation feedback, powered by the
-// `required` attribute, we have to "hide" the inputs via `clip`. We cannot use
-// `display: none;` or `visibility: hidden;` as that also hides the popover.
-// Simply visually hiding the inputs via `opacity` would leave them clickable in
-// certain cases which is prevented by using `clip` and `pointer-events`.
-// This way, we ensure a DOM element is visible to position the popover from.
+// Checkbox and radio button
 .btn-check {
     position: relative;
     display: inline-block;
-    vertical-align: middle; // match .btn alignment given font-size hack above
+    vertical-align: middle;
+}
 
-    & > input[type="radio"],
-    & > input[type="checkbox"] {
-        position: absolute;
-        clip: rect(0, 0, 0, 0);
-        pointer-events: none;
-    }
+// Place input behind the label
+.btn-check-input {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    pointer-events: none;
 
-    > label {
+    // Override label margin
+    ~ .btn {
         margin-bottom: 0;
     }
-}
 
-// Force outline on for inputs
-// stylelint-disable declaration-block-no-duplicate-properties
-.btn-check-input:focus ~ .btn {
-    outline: 1px dotted;
-    outline: 5px auto -webkit-focus-ring-color;
+    // Force outline on for inputs
+    // stylelint-disable declaration-block-no-duplicate-properties
+    &:focus ~ .btn {
+        outline: 1px dotted;
+        outline: 5px auto -webkit-focus-ring-color;
+    }
+    // stylelint-enable declaration-block-no-duplicate-properties
 }
-// stylelint-enable declaration-block-no-duplicate-properties
