@@ -5,7 +5,8 @@
     display: inline-flex;
     vertical-align: middle; // match .btn alignment given font-size hack above
 
-    > .btn {
+    > .btn,
+    > .btn-check > .btn {
         position: relative;
         flex: 0 1 auto;
         margin-bottom: 0; // Override default `<label>` value
@@ -20,6 +21,10 @@
         &.focus {
             z-index: 2;
         }
+    }
+
+    > .btn-check > .btn-check-input:focus ~ .btn {
+        z-index: 2;
     }
 }
 
