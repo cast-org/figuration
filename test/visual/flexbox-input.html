@@ -520,18 +520,19 @@ Holder.addTheme("gray", {
 
 <form class="form-inline mb-1">
     <div class="input-group">
-        <span class="input-group-addon">Something:</span>
-        <span class="input-group-btn" data-cfw="buttons">
-            <label class="btn btn-outline-primary">
-                <input type="radio" checked>Ok
-            </label>
-            <label class="btn btn-outline-success">
-                <input type="radio">Yes
-            </label>
-            <label class="btn btn-outline-danger">
-                <input type="radio">No
-            </label>
-        </span>
+    <div class="input-group-addon">Something:</div>
+        <div class="input-group-btn btn-check">
+            <input id="radio0-0" type="radio" name="radio0" class="btn-check-input" checked>
+            <label for="radio0-0" class="btn btn-outline-primary">Ok</label>
+        </div>
+        <div class="input-group-btn btn-check">
+            <input id="radio0-1" type="radio" name="radio0" class="btn-check-input">
+            <label for="radio0-1" class="btn btn-outline-success">Yes</label>
+        </div>
+        <div class="input-group-btn btn-check">
+            <input id="radio0-2" type="radio" name="radio0" class="btn-check-input">
+            <label for="radio0-2" class="btn btn-outline-danger">No</label>
+        </div>
     </div>
 </form>
 

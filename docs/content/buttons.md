@@ -199,3 +199,73 @@ Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl 
 <a href="#" role="button" class="btn btn-outline-danger disabled" aria-disabled="true">Danger</a>
 </p>
 {% endexample %}
+
+## Checkbox and Radio Input Buttons
+
+Figuration's `.btn` styles can be applied to checkbox and radio inputs as well. By using a wrapping `.btn-check` class, visually hiding the `<input>` with `.btn-check-input`, and the sibling selector (`~`) to control `.btn` styling based on the `<input>`'s state.
+**A single class is used to consolidate layout and behavior of their HTML elements.**
+
+The `<input>`s and `<label>`s are sibling elements as opposed to an `<input>` within a `<label>`. You will need to use `id` and `for` attributes to associate the `<input>` and `<label>` elements.
+
+### Checkbox Input Button
+
+{% example html %}
+<div class="btn-check">
+    <input id="checkbox0" type="checkbox" class="btn-check-input">
+    <label for="checkbox0" class="btn">Checkbox Button</label>
+</div>
+{% endexample %}
+
+### Radio Input Buttons
+
+{% example html %}
+<div class="btn-check">
+    <input id="radio0-0" type="radio" name="radio0" class="btn-check-input" checked>
+    <label for="radio0-0" class="btn">Radio 1</label>
+</div>
+<div class="btn-check">
+    <input id="radio0-1" type="radio" name="radio0" class="btn-check-input">
+    <label for="radio0-1" class="btn">Radio 2</label>
+</div>
+<div class="btn-check">
+    <input id="radio0-2" type="radio" name="radio0" class="btn-check-input">
+    <label for="radio0-2" class="btn">Radio 3</label>
+</div>
+{% endexample %}
+
+### Disabled Input Buttons
+
+Disabled checkboxes and radios are supported, you will need to add the `disabled` attribute to the `.btn-check-input`. This will also apply the disabled `.btn` styling to indicate the input's state.
+
+{% example html %}
+<div class="btn-check">
+    <input id="checkbox1" type="checkbox" class="btn-check-input" disabled>
+    <label for="checkbox1" class="btn">Disabled Checkbox</label>
+</div>
+
+<div class="btn-check">
+    <input id="radio1-0" type="radio" name="radio1" class="btn-check-input" disabled>
+    <label for="radio1-0" class="btn">Disabled Radio</label>
+</div>
+{% endexample %}
+
+### Grouped Input Buttons
+
+You can also use `.btn-check`s inside a `.btn-group` for grouping controls together.
+
+{% example html %}
+<div class="btn-group">
+    <div class="btn-check">
+        <input id="radio2-0" type="radio" name="radio2" class="btn-check-input" checked>
+        <label for="radio2-0" class="btn btn-outline-info">Radio 1</label>
+    </div>
+    <div class="btn-check">
+        <input id="radio2-1" type="radio" name="radio2" class="btn-check-input">
+        <label for="radio2-1" class="btn btn-outline-info">Radio 2</label>
+    </div>
+    <div class="btn-check">
+        <input id="radio2-2" type="radio" name="radio2" class="btn-check-input">
+        <label for="radio2-2" class="btn btn-outline-info">Radio 3</label>
+    </div>
+</div>
+{% endexample %}
