@@ -61,7 +61,6 @@ module.exports = function(grunt) {
             'js/slideshow.js',
             'js/scrollspy.js',
             'js/alert.js',
-            'js/button.js',
             'js/lazy.js',
             'js/slider.js',
             'js/img-compare.js',
