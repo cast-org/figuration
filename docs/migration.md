@@ -34,7 +34,15 @@ Some changes will most likely have been missed, so please refer to the documenta
 ### Breadbcrumb
 - Removed `padding`, `background-color` and `border-radius` from parent `.breadcrumb` element.
 
+### Buttons
+- Added support for CSS checkbox and radio buttons, using `.btn-check` and `.btn-check-input` classes.
+
 ### Cards
 - Contextually colored cards have been removed. Now you will need to use the with text, background, and border color utilities.
+- Cards have been converted to flexbox layout.
+- Images now need to be wrapped with `.card-img` to keep aspect ratio and scaling in check due to flexbox.
 
 ## Widgets
+
+### Button
+- Dropped button widget in favor of CSS input buttons.  Single state toggles can be replaced with checkbox `.btn-check` variant.
