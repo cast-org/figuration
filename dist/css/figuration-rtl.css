@@ -265,11 +265,6 @@ input[type="checkbox"] {
   padding: 0;
 }
 
-input[type="radio"]:disabled,
-input[type="checkbox"]:disabled {
-  cursor: not-allowed;
-}
-
 input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
@@ -331,6 +326,7 @@ output {
 
 summary {
   display: list-item;
+  cursor: pointer;
 }
 
 template {
@@ -862,7 +858,6 @@ pre code {
 
 .form-control:disabled {
   color: #7e8d9b;
-  cursor: not-allowed;
 }
 
 select.form-control[size]:not([size="1"]), select.form-control[multiple] {
@@ -1017,7 +1012,6 @@ textarea.form-control {
 .form-check.disabled .form-check-label,
 fieldset:disabled .form-check-label {
   color: #7e8d9b;
-  cursor: not-allowed;
 }
 
 .form-check-input {
@@ -1281,14 +1275,12 @@ fieldset:disabled .form-check-label {
 }
 
 .custom-control-input:disabled ~ .custom-control-indicator {
-  cursor: not-allowed;
   background-color: #bfc6cd;
   border: 0;
 }
 
 .custom-control-input:disabled ~ .custom-control-description {
   color: #7e8d9b;
-  cursor: not-allowed;
 }
 
 .custom-control-indicator {
@@ -1380,7 +1372,6 @@ fieldset:disabled .form-check-label {
 
 .custom-select:disabled {
   color: #7e8d9b;
-  cursor: not-allowed;
   background-color: #eff1f3;
 }
 
@@ -1542,8 +1533,11 @@ fieldset:disabled .form-check-label {
 
 .btn.disabled, .btn:disabled,
 .btn-check-input:disabled ~ .btn {
-  cursor: not-allowed;
   opacity: 0.6;
+}
+
+.btn:not(:disabled):not(.disabled) {
+  cursor: pointer;
 }
 
 .btn:not(:disabled):not(.disabled):active, .btn:not(:disabled):not(.disabled).active,
@@ -3487,6 +3481,10 @@ tbody.collapse.in, tbody.collapse.in-flex {
   opacity: .75;
 }
 
+.close .close:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+
 button.close {
   padding: 0;
   background-color: transparent;
@@ -3510,8 +3508,11 @@ button.close {
 .drag:hover, .drag:focus {
   color: #000;
   text-decoration: none;
-  cursor: move;
   opacity: .75;
+}
+
+.drag .close:not(:disabled):not(.disabled) {
+  cursor: move;
 }
 
 button.drag {
@@ -3687,7 +3688,6 @@ button.drag {
 .list-group-item.disabled, .list-group-item:disabled {
   color: #7e8d9b;
   text-decoration: none;
-  cursor: not-allowed;
   background-color: #fff;
 }
 
@@ -4310,6 +4310,7 @@ button.list-group-item-dark.active {
   position: relative;
   color: #5e7182;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .page-link:hover, .page-link:focus {
@@ -4329,7 +4330,7 @@ button.list-group-item-dark.active {
 .page-link.disabled {
   color: #7e8d9b;
   pointer-events: none;
-  cursor: not-allowed;
+  cursor: auto;
   background-color: transparent;
 }
 
@@ -4574,7 +4575,6 @@ button.list-group-item-dark.active {
 .dropdown-item:disabled {
   color: #7e8d9b;
   text-decoration: none;
-  cursor: not-allowed;
   background-color: transparent;
   background-image: none;
 }
@@ -4712,7 +4712,6 @@ li .dropdown-header {
 
 .nav-link.disabled {
   color: #7e8d9b;
-  cursor: not-allowed;
   opacity: 0.6;
 }
 
@@ -4912,6 +4911,10 @@ li .dropdown-header {
 
 .navbar-toggle:hover, .navbar-toggle:focus {
   text-decoration: none;
+}
+
+.navbar-toggle:not(:disabled):not(.disabled) {
+  cursor: pointer;
 }
 
 .navbar-expand {
@@ -6341,6 +6344,7 @@ a.badge:hover, a.badge:focus {
   font-size: 1rem;
   line-height: 1.5;
   vertical-align: middle;
+  cursor: pointer;
   background-color: #fff;
   background-image: none;
   background-clip: padding-box;
@@ -6390,7 +6394,7 @@ a.badge:hover, a.badge:focus {
 }
 
 .switch-input:disabled ~ .switch-control {
-  cursor: not-allowed;
+  cursor: auto;
   opacity: 0.6;
 }
 
@@ -6400,7 +6404,6 @@ a.badge:hover, a.badge:focus {
 
 .switch-input:disabled ~ .switch-description {
   color: #7e8d9b;
-  cursor: not-allowed;
   opacity: 0.6;
 }
 
@@ -7047,6 +7050,7 @@ a.badge:hover, a.badge:focus {
 
 .slider-track {
   position: absolute;
+  cursor: pointer;
   background-color: #eff1f3;
   border-radius: 0.25rem;
 }
