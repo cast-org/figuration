@@ -114,6 +114,10 @@
     @include hover-focus {
         text-decoration: none;
     }
+
+    &:not(:disabled):not(.disabled) {
+        cursor: pointer;
+    }
 }
 
 // Generate series of `.navbar-expand-*` responsive classes for configuring

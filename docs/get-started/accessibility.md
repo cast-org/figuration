@@ -69,7 +69,7 @@ It should also be noted that:
 - `<a>`s don't support the `disabled` attribute.
 - The `.disabled` class uses a future-friendly `pointer-events: none` property to try to disable the `pointer-events` and link functionality of `<a>`s, but that CSS property is not yet standardized.
 - In browsers which support `pointer-events: none`, keyboard navigation remains unaffected, meaning that sighted keyboard users and users of assistive technologies will still be able to activate these links.
-- When using both the `pointer-events:none` and `cursor: not-allowed` styles, the disabled cursor is not shown when hovering over the item.
+- When using both the `pointer-events: none` and `cursor: not-allowed` styles, the disabled cursor is not shown when hovering over the item.
 
 Some solutions include:
 - In some cases, an acceptable solution would be to replace the `<a>` element with a `<span>` to allow for a similar layout.  This is due to `<span>`s also having a default `display: inline` and are not clickable or focusable through keyboard interaction.

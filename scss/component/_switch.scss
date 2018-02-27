@@ -13,6 +13,7 @@
     @include font-size($font-size-base);
     line-height: $input-line-height;
     vertical-align: middle;
+    cursor: pointer;
     background-color: $switch-control-bg;
     background-image: none;
     background-clip: padding-box;
@@ -66,7 +67,7 @@
 
     &:disabled {
         ~ .switch-control {
-            cursor: $switch-disabled-cursor;
+            cursor: auto;
             opacity: $switch-disabled-opacity;
 
             &::before {
@@ -76,7 +77,6 @@
 
         ~ .switch-description {
             color: $switch-disabled-description-color;
-            cursor: $switch-disabled-cursor;
             opacity: $switch-disabled-opacity;
         }
     }
