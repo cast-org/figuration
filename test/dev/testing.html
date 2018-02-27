@@ -333,9 +333,15 @@ $(window).ready(function() {
 
             <strong>Toggle State:</strong>
             <p>
-            <button type="button" data-cfw="button" class="btn btn-info">Single toggle</button>
-            &nbsp;
-            <button type="button" data-cfw="button" class="btn btn-info active">Single toggle</button>
+                <div class="btn-check">
+                    <input id="checkbox0" type="checkbox" class="btn-check-input">
+                    <label for="checkbox0" class="btn btn-info">Single toggle</label>
+                </div>
+                &nbsp;
+                <div class="btn-check">
+                    <input id="checkbox1" type="checkbox" class="btn-check-input" checked>
+                    <label for="checkbox1" class="btn btn-info">Single toggle</label>
+                </div>
             </p>
 
             <div class="row mb-1">
@@ -343,33 +349,35 @@ $(window).ready(function() {
                     <strong>Checkbox:</strong>
                 </div>
                 <div class="col-sm-6">
-                    <div class="btn-group" data-cfw="buttons">
-                        <label class="btn btn-info" id="btnTog1">
-                            <input type="checkbox" checked /> Check 1
-                        </label>
-                        <label class="btn btn-info" id="btnTog2">
-                            <input type="checkbox" /> Check 2
-                        </label>
-                        <label class="btn btn-info" id="btnTog3">
-                            <input type="checkbox" /> Check 3
-                        </label>
+                    <div class="btn-group">
+                        <div class="btn-check">
+                            <input id="checkbox2" type="checkbox" class="btn-check-input" checked>
+                            <label for="checkbox2" class="btn btn-info">Check 1</label>
+                        </div>
+                        <div class="btn-check">
+                            <input id="checkbox3" type="checkbox" class="btn-check-input">
+                            <label for="checkbox3" class="btn btn-info">Check 2</label>
+                        </div>
+                        <div class="btn-check">
+                            <input id="checkbox4" type="checkbox" class="btn-check-input">
+                            <label for="checkbox4" class="btn btn-info">Check 3</label>
+                        </div>
                     </div>
-                    <br />
-                    <a href="#" onclick="$('#btnTog1').CFW_Button('toggle'); return false;">Toggle 1</a>
-                    <a href="#" onclick="$('#btnTog2').CFW_Button('toggle'); return false;">Toggle 2</a>
-                    <a href="#" onclick="$('#btnTog3').CFW_Button('toggle'); return false;">Toggle 3</a>
                 </div>
                 <div class="col-sm-6">
-                    <div class="btn-group" data-cfw="buttons">
-                        <label class="btn btn-outline-info" id="btnTogO1">
-                            <input type="checkbox" checked /> Check 1
-                        </label>
-                        <label class="btn btn-outline-info" id="btnTogO2">
-                            <input type="checkbox" /> Check 2
-                        </label>
-                        <label class="btn btn-outline-info" id="btnTogO3">
-                            <input type="checkbox" /> Check 3
-                        </label>
+                    <div class="btn-group">
+                        <div class="btn-check">
+                            <input id="checkbox5" type="checkbox" class="btn-check-input" checked>
+                            <label for="checkbox5" class="btn btn-outline-info">Check 1</label>
+                        </div>
+                        <div class="btn-check">
+                            <input id="checkbox6" type="checkbox" class="btn-check-input">
+                            <label for="checkbox6" class="btn btn-outline-info">Check 2</label>
+                        </div>
+                        <div class="btn-check">
+                            <input id="checkbox7" type="checkbox" class="btn-check-input">
+                            <label for="checkbox7" class="btn btn-outline-info">Check 3</label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -378,76 +386,77 @@ $(window).ready(function() {
                     <strong>Radio:</strong>
                 </div>
                 <div class="col-sm-6">
-                    <div class="btn-group" data-cfw="buttons">
-                        <label class="btn btn-info">
-                            <input type="radio" name="options0" checked /> Radio 1
-                        </label>
-                        <label class="btn btn-info">
-                            <input type="radio" name="options0" /> Radio 2
-                        </label>
-                        <label class="btn btn-info">
-                            <input type="radio" name="options0" /> Radio 3
-                        </label>
+                    <div class="btn-group">
+                        <div class="btn-check">
+                            <input id="radio0-0" type="radio" name="radio0" class="btn-check-input" checked>
+                            <label for="radio0-0" class="btn btn-info">Radio 1</label>
+                        </div>
+                        <div class="btn-check">
+                            <input id="radio0-1" type="radio" name="radio0" class="btn-check-input">
+                            <label for="radio0-1" class="btn btn-info">Radio 2</label>
+                        </div>
+                        <div class="btn-check">
+                            <input id="radio0-2" type="radio" name="radio0" class="btn-check-input">
+                            <label for="radio0-2" class="btn btn-info">Radio 3</label>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="btn-group" data-cfw="buttons">
-                        <label class="btn btn-outline-info">
-                            <input type="radio" name="options1" checked /> Radio 1
-                        </label>
-                        <label class="btn btn-outline-info">
-                            <input type="radio" name="options1" /> Radio 2
-                        </label>
-                        <label class="btn btn-outline-info">
-                            <input type="radio" name="options1" /> Radio 3
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-1">
-                <div class="col-12">
-                    <strong>Buttons:</strong>
-                    <br />
-                    <div class="btn-group" data-cfw="buttons">
-                        <button class="btn" type="button">One</button>
-                        <button class="btn active" type="button">Two</button>
-                        <button class="btn" type="button">Three</button>
+                    <div class="btn-group">
+                        <div class="btn-check">
+                            <input id="radio1-0" type="radio" name="radio1" class="btn-check-input" checked>
+                            <label for="radio1-0" class="btn btn-outline-info">Radio 1</label>
+                        </div>
+                        <div class="btn-check">
+                            <input id="radio1-1" type="radio" name="radio1" class="btn-check-input">
+                            <label for="radio1-1" class="btn btn-outline-info">Radio 2</label>
+                        </div>
+                        <div class="btn-check">
+                            <input id="radio1-2" type="radio" name="radio1" class="btn-check-input">
+                            <label for="radio1-2" class="btn btn-outline-info">Radio 3</label>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <strong>Toggle State (Disabled):</strong>
             <p>
-            <button type="button" data-cfw="button" class="btn btn-info disabled">Single toggle</button>
-            &nbsp;
-            <button type="button" data-cfw="button" class="btn btn-info" disabled>Single toggle</button>
-            <p>
+                <div class="btn-check">
+                    <input id="checkbox8" type="checkbox" class="btn-check-input" disabled>
+                    <label for="checkbox8" class="btn btn-info">Single toggle</label>
+                </div>
+            </p>
             <div class="row mb-1">
                 <div class="col-sm-6">
-                    <div class="btn-group" data-cfw="buttons">
-                        <label class="btn btn-outline-info" id="btnTogO1">
-                            <input type="checkbox" checked /> Check 1
-                        </label>
-                        <label class="btn btn-outline-info" id="btnTogO2">
-                            <input type="checkbox" disabled /> Check 2
-                        </label>
-                        <label class="btn btn-outline-info disabled" id="btnTogO3">
-                            <input type="checkbox" /> Check 3
-                        </label>
+                    <div class="btn-group">
+                        <div class="btn-check">
+                            <input id="checkbox9" type="checkbox" class="btn-check-input" checked>
+                            <label for="checkbox9" class="btn btn-outline-info">Check 1</label>
+                        </div>
+                        <div class="btn-check">
+                            <input id="checkbox10" type="checkbox" class="btn-check-input">
+                            <label for="checkbox10" class="btn btn-outline-info">Check 2</label>
+                        </div>
+                        <div class="btn-check">
+                            <input id="checkbox11" type="checkbox" class="btn-check-input" disabled>
+                            <label for="checkbox11" class="btn btn-outline-info">Check 3</label>
+                        </div>
                     </div>
-
                 </div>
                 <div class="col-sm-6">
-                    <div class="btn-group" data-cfw="buttons">
-                        <label class="btn btn-info">
-                            <input type="radio" name="optionsD" /> Radio 1
-                        </label>
-                        <label class="btn btn-info">
-                            <input type="radio" name="optionsD" disabled /> Radio 2
-                        </label>
-                        <label class="btn btn-info disabled">
-                            <input type="radio" name="optionsD" /> Radio 3
-                        </label>
+                    <div class="btn-group">
+                        <div class="btn-check">
+                            <input id="radio2-0" type="radio" name="radio2" class="btn-check-input" checked>
+                            <label for="radio2-0" class="btn btn-info">Radio 1</label>
+                        </div>
+                        <div class="btn-check">
+                            <input id="radio2-1" type="radio" name="radio2" class="btn-check-input">
+                            <label for="radio2-1" class="btn btn-info">Radio 2</label>
+                        </div>
+                        <div class="btn-check">
+                            <input id="radio2-2" type="radio" name="radio2" class="btn-check-input" disabled>
+                            <label for="radio2-2" class="btn btn-info">Radio 3</label>
+                        </div>
                     </div>
                 </div>
             </div>
