@@ -12,8 +12,11 @@
     @include hover-focus {
         color: $drag-color;
         text-decoration: none;
-        cursor: move;
         opacity: .75;
+    }
+
+    .close:not(:disabled):not(.disabled) {
+        cursor: move;
     }
 }
 

@@ -457,7 +457,7 @@ Grid-based form layouts also support [control sizing]({{ site.baseurl }}/content
 
 Default checkboxes and radios are improved upon with the help of `.form-check`, **a single class for both input types that improves the layout and behavior of their HTML elements**. Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.
 
-Disabled checkboxes and radios are supported, but to provide a `not-allowed` cursor on hover of the parent `<label>`, you'll need to add the `.disabled` class to the parent `.form-check`. The disabled class will also lighten the text color to help indicate the input's state.
+Disabled checkboxes and radios are supported, but you will need to add the `.disabled` class to the parent `.form-check` to also lighten the text color to help indicate the input's state.
 
 ### Default (stacked)
 
@@ -593,7 +593,7 @@ When you want to have read-only fields in your form styled as plain text, use th
 
 ## Disabled States
 
-Add the `disabled` boolean attribute on an input to prevent user interactions. Disabled inputs appear lighter and add a `not-allowed` cursor.
+Add the `disabled` boolean attribute on an input to prevent user interactions. Disabled inputs appear lighter in color.
 
 {% example html %}
 <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled>

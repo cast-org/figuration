@@ -36,14 +36,12 @@
 
     &:disabled {
         ~ .custom-control-indicator {
-            cursor: $custom-control-disabled-cursor;
             background-color: $custom-control-disabled-indicator-bg;
             border: 0;
         }
 
         ~ .custom-control-description {
             color: $custom-control-disabled-description-color;
-            cursor: $custom-control-disabled-cursor;
         }
     }
 }
@@ -165,7 +163,6 @@
 
     &:disabled {
         color: $input-disabled-color;
-        cursor: $cursor-disabled;
         background-color: $input-disabled-bg;
     }
 

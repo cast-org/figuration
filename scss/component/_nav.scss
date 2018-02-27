@@ -18,7 +18,6 @@
     // By default it also influences `.nav-tab` and `.nav-pills`
     &.disabled {
         color: $nav-link-disabled-color;
-        cursor: $cursor-disabled;
         opacity: $nav-link-disabled-opacity;
     }
 }

@@ -167,7 +167,6 @@
     &:disabled {
         color: $dropdown-link-disabled-color;
         text-decoration: none;
-        cursor: $cursor-disabled;
         background-color: $dropdown-link-disabled-bg;
         background-image: none; // Remove CSS gradient
     }

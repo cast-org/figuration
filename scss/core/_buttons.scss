@@ -26,9 +26,12 @@
     &.disabled,
     &:disabled,
     .btn-check-input:disabled ~ & {
-        cursor: $cursor-disabled;
         opacity: $btn-disabled-opacity;
         @include box-shadow(none);
+    }
+
+    &:not(:disabled):not(.disabled) {
+        cursor: pointer;
     }
 
     &:not(:disabled):not(.disabled):active,

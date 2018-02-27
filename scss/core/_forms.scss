@@ -53,7 +53,6 @@
 
     &:disabled {
         color: $input-disabled-color;
-        cursor: $cursor-disabled;
     }
 }
 
@@ -189,7 +188,6 @@ textarea.form-control {
     .form-check.disabled &,
     fieldset:disabled & {
         color: $form-check-disabled-color;
-        cursor: $cursor-disabled;
     }
 }
 

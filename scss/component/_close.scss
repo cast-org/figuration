@@ -13,6 +13,10 @@
         text-decoration: none;
         opacity: .75;
     }
+
+    .close:not(:disabled):not(.disabled) {
+        cursor: pointer;
+    }
 }
 
 // Additional properties for button version
