@@ -29,6 +29,9 @@ Some changes will most likely have been missed, so please refer to the documenta
 ## Sizing
 {% endcomment %}
 
+## Grid
+- Dropped the `.push` and `.pull` modifiers in favor of `.offset-*` and flex utilities.
+
 ## Components
 
 ### Breadbcrumb
@@ -41,6 +44,11 @@ Some changes will most likely have been missed, so please refer to the documenta
 - Contextually colored cards have been removed. Now you will need to use the with text, background, and border color utilities.
 - Cards have been converted to flexbox layout.
 - Images now need to be wrapped with `.card-img` to keep aspect ratio and scaling in check due to flexbox.
+
+## Utilities
+
+### Flexbox
+- Renamed `.flex-order` to `.order` to both shorten and also match standard rule name.
 
 ## Widgets
 
