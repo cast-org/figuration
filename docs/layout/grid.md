@@ -556,10 +556,10 @@ Use [flexbox order utilities]({{ site.baseurl }}/utilities/flexbox/#order) for c
     <div class="col">
       First, but unordered
     </div>
-    <div class="col flex-last">
+    <div class="col order-last">
       Second, but last
     </div>
-    <div class="col flex-first">
+    <div class="col order-first">
       Third, but first
     </div>
   </div>
@@ -573,13 +573,13 @@ Order utilities are also available in column counts.
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col flex-order-2">
+    <div class="col order-2">
       First, but second
     </div>
-    <div class="col flex-order-12">
+    <div class="col order-12">
       Second, but last
     </div>
-    <div class="col flex-order-1">
+    <div class="col order-1">
       Third, but first
     </div>
   </div>

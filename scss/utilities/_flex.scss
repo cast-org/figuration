@@ -8,12 +8,12 @@
 
     @include media-breakpoint-up($breakpoint) {
         // Order
-        .flex#{$bprule}-first { order: -1; }
-        .flex#{$bprule}-last { order: 1; }
-        .flex#{$bprule}-unordered { order: 0; }
+        .order#{$bprule}-first { order: -1; }
+        .order#{$bprule}-last { order: 1; }
+        .order#{$bprule}-unordered { order: 0; }
 
         @for $col from 0 through $grid-columns {
-            .flex#{$bprule}-order-#{$col} {
+            .order#{$bprule}-#{$col} {
                 order: $col;
             }
         }
