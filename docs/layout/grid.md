@@ -527,7 +527,7 @@ You can also apply a break at specific breakpoints with our [responsive display 
 {% endexample %}
 </div>
 
-In addition to column clearing at responsive breakpoints, you may need to **reset offsets, pushes, or pulls**. See this in action in [the grid example]({{ site.baseurl }}/examples/grid/).
+In addition to column clearing at responsive breakpoints, you may need to **reset offsets**. See this in action in [the grid example]({{ site.baseurl }}/examples/grid/).
 
 <div class="cf-example-row">
 {% example html %}
@@ -607,19 +607,6 @@ Move columns to the right using `.offset-*` classes. These classes increase the 
 {% endexample %}
 </div>
 
-### Push and Pull
-
-Easily change the order of our built-in grid columns with `.push-*` and `.pull-*` modifier classes.
-
-<div class="cf-example-row">
-{% example html %}
-<div class="row">
-  <div class="col-md-9 push-md-3">.col-md-9 .push-md-3</div>
-  <div class="col-md-3 pull-md-9">.col-md-3 .pull-md-9</div>
-</div>
-{% endexample %}
-</div>
-
 ## Nesting
 
 To nest your content with the default grid, add a new `.row` and set of `.col-sm-*` columns within an existing `.col-sm-*` column. Nested rows should include a set of columns that add up to 12 or fewer (it is not required that you use all 12 available columns).
@@ -688,7 +675,7 @@ $grid-gutter-widths: (
 );
 {% endhighlight %}
 
-Save your changes and recompile to have a brand new set of predefined grid classes for column widths, offsets, pushes, and pulls. Responsive visibility utilities will also be updated to use the custom breakpoints.
+Save your changes and recompile to have a brand new set of predefined grid classes for column widths and offsets. Responsive visibility utilities will also be updated to use the custom breakpoints.
 
 ## Sass Variables and Mixins
 
@@ -745,10 +732,8 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 @include make-col-ready($gutters: $grid-gutter-widths);
 @include make-col($size, $columns: $grid-columns);
 
-// Get fancy by offsetting, or changing the sort order
+// Get fancy by offsetting
 @include make-col-offset($size, $columns: $grid-columns);
-@include make-col-push($size, $columns: $grid-columns);
-@include make-col-pull($size, $columns: $grid-columns);
 {% endhighlight %}
 
 ### Example Usage
