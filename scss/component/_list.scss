@@ -60,10 +60,10 @@
 
     > .list-item {
         margin-top: -$list-border-width;
-        border-top-width: $list-border-width;
         border-top-color: inherit;
-        border-bottom-width: $list-border-width;
+        border-top-width: $list-border-width;
         border-bottom-color: inherit;
+        border-bottom-width: $list-border-width;
 
         &:first-child {
             margin-top: 0;
@@ -144,11 +144,11 @@
             padding-left: $list-horizontal-padding;
             margin: 0 0 0 -#{$list-border-width};
             border-top: 0;
-            border-right-width: $list-border-width;
             border-right-color: inherit;
+            border-right-width: $list-border-width;
             border-bottom: 0;
-            border-left-width: $list-border-width;
             border-left-color: inherit;
+            border-left-width: $list-border-width;
 
             &:first-child {
                 margin-left: 0;
