@@ -9,30 +9,25 @@
     border: $card-border-width solid $card-border-color;
     @include border-radius($card-border-radius);
 
-    // Remove some margin spacing
-    .list-group {
-        margin-bottom: 0;
-    }
+    > .list:first-child {
+        @include border-top-radius($card-inner-border-radius);
 
-    .list-group-flush .list-group-item {
-        border-right-width: 0;
-        border-left-width: 0;
-    }
-
-    > .list-group:first-child {
-        .list-group-item:first-child {
-            border-top-width: 0;
+        > li:first-child,
+        > .list-item:first-child {
             @if $enable-rounded {
-                @include border-top-radius($card-border-radius);
+                @include border-top-radius($card-inner-border-radius);
             }
         }
     }
 
-    > .list-group:last-child {
-        .list-group-item:last-child {
-            border-bottom-width: 0;
+    > .list:last-child {
+        margin-bottom: 0;
+        @include border-bottom-radius($card-inner-border-radius);
+
+        > li:last-child,
+        > .list-item:last-child {
             @if $enable-rounded {
-                @include border-bottom-radius($card-border-radius);
+                @include border-bottom-radius($card-inner-border-radius);
             }
         }
     }
@@ -78,12 +73,6 @@
 
     &:first-child {
         @include border-radius($card-border-radius $card-border-radius 0 0);
-    }
-
-    + .list-group {
-        .list-group-item:first-child {
-            border-top-width: 0;
-        }
     }
 }
 

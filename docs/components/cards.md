@@ -33,7 +33,7 @@ Below is an example of a basic card with mixed content and a fixed width. Cards 
 
 ## Content Types
 
-Cards support a wide variety of content, including images, text, list groups, links, and more. Below are examples of what's supported.
+Cards support a wide variety of content, including images, text, list, links, and more. Below are examples of what's supported.
 
 ### Body
 
@@ -176,16 +176,16 @@ Turn an image into a card background and overlay your card's text. The use of `.
 </div>
 {% endexample %}
 
-### List Group
+### Lists
 
-Create lists of content in a card with a flush list group.
+Create lists of content in a card with [`.list` component]({{ site.baseurl }}/components/lists/) and it's modifiers.
 
 {% example html %}
 <div class="card">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+  <ul class="list list-spaced list-divided">
+    <li class="list-item">List item</li>
+    <li class="list-item">List item</li>
+    <li class="list-item">List item</li>
   </ul>
 </div>
 {% endexample %}
@@ -193,10 +193,10 @@ Create lists of content in a card with a flush list group.
 {% example html %}
 <div class="card">
   <h3 class="card-header">Sample Header</h3>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+  <ul class="list list-spaced list-divided mb-0">
+    <li class="list-item">List item</li>
+    <li class="list-item">List item</li>
+    <li class="list-item">List item</li>
   </ul>
   <div class="card-footer">Sample Footer</div>
 </div>
@@ -215,10 +215,10 @@ The multiple content types can be easily combined to create the card you need.
     <h4 class="card-title">Card title</h4>
     <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+  <ul class="list list-spaced list-ruled mb-0">
+    <li class="list-item">List item</li>
+    <li class="list-item">List item</li>
+    <li class="list-item">List item</li>
   </ul>
   <div class="card-body">
     <a href="#" class="card-link">Card link</a>

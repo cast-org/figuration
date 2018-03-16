@@ -7,7 +7,11 @@
 
     $level-delta: $level - $base;
 
-    @if $level < $base {
+    @if $level < 0 {
+        @return #fff;
+    } @else if $level > 1000 {
+        @return #000;
+    } @else if $level < $base {
         // lighten - flip negative value
         $light-pct: if($level-delta * $light-interval > 100, 100, $level-delta * $light-interval);
         @return mix(#fff, $color, $light-pct * -1);
@@ -42,18 +46,22 @@
     @each $theme, $color in $map {
         // Color adjustments
         $control-bg:                 palette($color, $level-control-bg);
-        $control-color:              color-auto-contrast($control-bg);
+        $control-color:              palette($color, $level-control-color);
+        $control-color:              color-if-contrast($control-color, $control-bg);
+        //$control-color:              color-auto-contrast($control-bg);
         $control-border-color:       palette($color, $level-control-border-color);
         $control-hover-bg:           palette($color, $level-control-hover-bg);
         $control-hover-color:        color-if-contrast($control-color, $control-hover-bg);
         $control-hover-border-color: palette($color, $level-control-hover-border-color);
         $control-active-hover-bg:    palette($color, $level-control-active-hover-bg);
         $control-active-hover-color: color-if-contrast($control-hover-color, $control-active-hover-bg);
+
         $context-bg:                 palette($color, $level-context-bg);
         $context-color:              palette($color, $level-context-color);
         $context-border-color:       palette($color, $level-context-border-color);
         $context-hover-bg:           palette($color, $level-context-hover-bg);
         $context-hover-color:        palette($color, $level-context-hover-color);
+        $context-hover-border-color: palette($color, $level-context-hover-border-color);
 
         // Build new map
         $new-map: (
@@ -69,7 +77,8 @@
             "context-color": $context-color,
             "context-border-color": $context-border-color,
             "context-hover-bg": $context-hover-bg,
-            "context-hover-color": $context-hover-color
+            "context-hover-color": $context-hover-color,
+            "context-hover-border-color": $context-hover-border-color,
         );
         // Merge into theme map
         $result: map-merge($result, ($theme: $new-map));

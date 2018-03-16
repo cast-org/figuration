@@ -6,9 +6,9 @@ group: about
 
 Figuration is maintained by a small team. Hopefully soon we can generate support and involvement from the community.
 
-<div class="list-group cf-team">
+<div class="list list-spaced list-ruled cf-team">
   {% for member in site.data.core-team %}
-    <div class="list-group-item">
+    <div class="list-item">
       <iframe class="github-btn" src="https://ghbtns.com/github-btn.html?user={{ member.user }}&amp;type=follow"></iframe>
       <a class="team-member" href="https://github.com/{{ member.user }}">
         <img src="https://secure.gravatar.com/avatar/{{ member.gravatar }}" alt="@{{ member.user }}" width="32" height="32">

@@ -113,32 +113,32 @@ The tab widget also works with [pill]({{ site.baseurl }}/components/navs/#pills)
 </div>
 {% endhighlight %}
 
-### List Group
+### List
 
-The tab widget even work with a [list group]({{ site.baseurl }}/components/list-group/).
+The tab widget even work with the [`.list` component]({{ site.baseurl }}/components/lists/).
 
 <div class="cf-example cf-example-tabs">
     <div class="row">
         <div class="col-md-4">
-            <nav class="list-group">
-                <a href="#lgroup1" data-cfw="tab" class="list-group-item list-group-item-action">List Item 1</a>
-                <a href="#lgroup2" data-cfw="tab" class="list-group-item list-group-item-action active">List Item 2</a>
-                <a href="#lgroup3" data-cfw="tab" class="list-group-item list-group-item-action">List Item 3</a>
-                <a href="#lgroup4" data-cfw="tab" class="list-group-item list-group-item-action disabled">List Item 4</a>
+            <nav class="list list-spaced list-ruled">
+                <a href="#list1" data-cfw="tab" class="list-item list-item-action">List Item 1</a>
+                <a href="#list2" data-cfw="tab" class="list-item list-item-action active">List Item 2</a>
+                <a href="#list3" data-cfw="tab" class="list-item list-item-action">List Item 3</a>
+                <a href="#list4" data-cfw="tab" class="list-item list-item-action disabled">List Item 4</a>
             </nav>
         </div>
         <div class="col-md-8">
             <div class="tab-content">
-                <div class="tab-pane" id="lgroup1">
+                <div class="tab-pane" id="list1">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pulvinar ligula ac sapien auctor viverra. Aliquam elit tortor, consequat at ultrices sit amet, vehicula eu leo. In fermentum lacus purus, ac dictum orci placerat ut. Integer magna lacus, adipiscing sed justo ut, sollicitudin rhoncus libero. Pellentesque accumsan pretium sem eu euismod? Nunc id facilisis sem? Quisque quis laoreet mi.</p>
                 </div>
-                <div class="tab-pane" id="lgroup2">
+                <div class="tab-pane" id="list2">
                     <p>Phasellus at nisl et arcu tincidunt sagittis et nec nunc. Fusce ultrices venenatis felis, in faucibus mauris egestas nec. Etiam malesuada dictum nisi, at pulvinar orci. Aenean venenatis metus in pharetra aliquam. Mauris ac odio tortor! Maecenas eget orci in ipsum ullamcorper malesuada. Nunc interdum lobortis velit sed accumsan.</p>
                 </div>
-                <div class="tab-pane" id="lgroup3">
+                <div class="tab-pane" id="list3">
                     <p> Praesent laoreet augue sed mauris vulputate, ut commodo justo malesuada. Pellentesque adipiscing; lorem vel convallis dignissim, leo est condimentum sapien, nec viverra dui risus at metus! Phasellus tellus magna, hendrerit eget tempor quis, fringilla id sem.</p>
                 </div>
-                <div class="tab-pane" id="lgroup4">
+                <div class="tab-pane" id="list4">
                     <p>Duis pharetra suscipit felis, id congue purus tempus sed. Nunc porttitor nec arcu at interdum. Nulla placerat odio luctus malesuada dapibus. Suspendisse et auctor metus. Suspendisse fringilla commodo cursus. Suspendisse sodales vitae enim ut commodo. Nunc ut nibh quis tellus varius fermentum at et nibh. Nulla nisl leo, hendrerit ut rutrum faucibus, ullamcorper ut lectus. Donec tristique justo justo, nec imperdiet leo porttitor non. Donec vehicula purus dapibus hendrerit ornare.</p>
                 </div>
             </div>
@@ -149,19 +149,19 @@ The tab widget even work with a [list group]({{ site.baseurl }}/components/list-
 {% highlight html %}
 <div class="row">
     <div class="col-md-4">
-        <nav class="list-group">
-            <a href="#lgroup1" class="list-group-item list-group-item-action">List Item 1</a>
-            <a href="#lgroup2" class="list-group-item list-group-item-action active">List Item 2</a>
-            <a href="#lgroup3" class="list-group-item list-group-item-action">List Item 3</a>
-            <a href="#lgroup4" class="list-group-item list-group-item-action disabled">List Item 4</a>
+        <nav class="list list-spaced list-ruled">
+            <a href="#list1" class="list-item list-item-action">List Item 1</a>
+            <a href="#list2" class="list-item list-item-action active">List Item 2</a>
+            <a href="#list3" class="list-item list-item-action">List Item 3</a>
+            <a href="#list4" class="list-item list-item-action disabled">List Item 4</a>
         </nav>
     </div>
     <div class="col-md-8">
         <div class="tab-content">
-            <div class="tab-pane" id="lgroup1">...</div>
-            <div class="tab-pane" id="lgroup2">...</div>
-            <div class="tab-pane" id="lgroup3">...</div>
-            <div class="tab-pane" id="lgroup4">...</div>
+            <div class="tab-pane" id="list1">...</div>
+            <div class="tab-pane" id="list2">...</div>
+            <div class="tab-pane" id="list3">...</div>
+            <div class="tab-pane" id="list4">...</div>
         </div>
     </div>
 </div>

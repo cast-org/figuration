@@ -28,7 +28,11 @@ $palette-interval-dark:     .15% !default;
 
 // Palette levels for use in _mix-context-colors() to determine
 // standardized contextual color mapping.
+// Special values:
+//  level < 0 = #fff
+//  level > 1000 = #000
 $level-control-bg:                  500 !default;
+$level-control-color:               -1 !default;
 $level-control-border-color:        600 !default;
 $level-control-hover-bg:            600 !default;
 $level-control-hover-border-color:  700 !default;
@@ -39,7 +43,7 @@ $level-context-color:               800 !default;
 $level-context-border-color:        200 !default;
 $level-context-hover-bg:            200 !default;
 $level-context-hover-color:         900 !default;
-$level-context-hover-border-color:  300 !default; //deprecate
+$level-context-hover-border-color:  300 !default;
 
 // Increase (or decrease with negative number) to alter color for the hover state of
 //`.text-{color}-(palette-level} and `.bg-{color}-(palette-level} utilities
@@ -269,8 +273,6 @@ $blockquote-color:              $body-color !default;
 $blockquote-footer-font-size:   $font-size-base !default;
 $blockquote-footer-color:       $uibase-500 !default;
 
-$list-inline-padding: .325em !default;
-
 $dt-font-weight:    $font-weight-bold !default;
 
 
@@ -429,6 +431,31 @@ $pre-color:                 $uibase-700 !default;
 $figure-spacer-y:           .5rem !default;
 $figure-caption-font-size:  87.5% !default;
 $figure-caption-color:      $uibase-500 !default;
+
+
+// Lists
+// =====
+$list-margin-left:              1.25rem !default;
+$list-margin-bottom:            1rem !default;
+
+$list-item-bg:                  transparent !default;
+$list-item-disabled-bg:         $list-item-bg !default;
+$list-item-disabled-color:      $component-disabled-color !default;
+$list-item-active-bg:           $component-active-bg !default;
+$list-item-active-color:        $component-active-color !default;
+$list-item-active-border:       $component-active-border-color !default;
+$list-item-action-color:        $uibase-700 !default;
+$list-item-action-hover-color:  $list-item-action-color !default;
+$list-item-action-hover-bg:     $component-hover-bg !default;
+
+$list-border-width:             $border-width !default;
+$list-border-color:             $component-border-color !default;
+
+$list-bulleted-content:         "\25cf\a0" !default; // Geomentric shape - black circle and a space
+$list-ordered-delimeter:        "\a0" !default; // Space
+$list-horizontal-padding:       .5em !default;
+$list-spaced-item-padding-y:    .75rem !default;
+$list-spaced-item-padding-x:    1rem !default;
 
 
 // Tables
@@ -633,29 +660,6 @@ $progress-bar-color:            $white !default;
 $progress-bar-bg:               $uibase-300 !default;
 $progress-bar-animation-timing: 1s linear infinite !default;
 $progress-bar-box-shadow:       inset 0 -.125rem 0 rgba($black, .1) !default;
-
-
-// List group
-// =====
-$list-group-bg:                     $component-bg !default;
-$list-group-border-color:           $component-overlay-border-color !default;
-$list-group-border-width:           $border-width !default;
-$list-group-border-radius:          $border-radius !default;
-
-$list-group-hover-bg:               $component-hover-bg !default;
-
-$list-group-active-bg:              $component-active-bg !default;
-$list-group-active-color:           $component-active-color !default;
-$list-group-active-border:          $component-active-border-color !default;
-
-$list-group-disabled-bg:            $list-group-bg !default;
-$list-group-disabled-color:         $component-disabled-color !default;
-
-$list-group-action-color:           $uibase-700 !default;
-$list-group-action-hover-color:     $list-group-action-color !default;
-
-$list-group-item-padding-y:         .75rem !default;
-$list-group-item-padding-x:         1rem !default;
 
 
 // Breadcrumbs

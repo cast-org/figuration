@@ -25,7 +25,6 @@ Flexbox support is available for a number of Figuration's components:
 - [Grid Lines]({{ site.baseurl }}/components/grid-lines/)
 - [Inline Forms]({{ site.baseurl }}/content/forms/#inline-forms)
 - [Input Group]({{ site.baseurl }}/components/input-group/)
-- [List Group]({{ site.baseurl }}/components/list-group/)
 - [Media Object]({{ site.baseurl }}/components/media-object/)
 - [Navs]({{ site.baseurl }}/components/navs/)
 - [Navbar]({{ site.baseurl }}/components/navbar/)

@@ -7,25 +7,24 @@
 }
 
 // List Groups
-@mixin list-group-item-variant($state, $bg, $color, $hover-bg, $hover-color) {
-    .list-group-item-#{$state} {
-        color: $color;
-        background-color: $bg;
+@mixin list-item-variant($state, $bg, $color, $border, $hover-bg, $hover-color, $hover-border) {
+    .list-item-action.list-item-#{$state} {
+        @include hover-focus {
+            color: $hover-color;
+            background-color: $hover-bg;
+            border-color: $hover-border;
+        }
     }
 
-    a.list-group-item-#{$state},
-    button.list-group-item-#{$state} {
+    .list-item-#{$state} {
         color: $color;
-
-        @include hover-focus {
-            color: $color;
-            background-color: $hover-bg;
-        }
+        background-color: $bg;
+        border-color: $border;
 
         &.active {
             color: $hover-color;
-            background-color: $color;
-            border-color: $color;
+            background-color: $hover-bg;
+            border-color: $hover-border;
         }
     }
 }

@@ -1,0 +1,265 @@
+// List and list items
+// Use on <ul>, <ol>, or <div>.
+// Basic layout becomes an unstyled list.
+.list {
+    margin-bottom: $list-margin-bottom;
+    @include list-unstyled;
+
+    .list {
+        padding: 0;
+        margin-bottom: 0;
+        margin-left: $list-margin-left;
+    }
+}
+
+// Space out nested bullet and ordered lists
+.list:not(.list-bulleted):not(.list-ordered) {
+    > .list-item {
+        > .list-bulleted,
+        > .list-ordered {
+            margin-left: $list-margin-left * 2;
+        }
+    }
+}
+
+// Bulleted list
+.list-bulleted {
+    margin-left: $list-margin-left;
+
+    > .list-item {
+        list-style: none;
+
+        &::before {
+            position: absolute;
+            margin-left: -$list-margin-left;
+            content: $list-bulleted-content;
+        }
+    }
+}
+
+// Ordered list
+.list-ordered {
+    margin-left: $list-margin-left;
+    counter-reset: ordered;
+
+    > .list-item {
+        &::before {
+            position: absolute;
+            margin-left: -$list-margin-left;
+            //content: counters(ordered, ".") " ";
+            content: counter(ordered) "#{$list-ordered-delimeter}";
+            counter-increment: ordered;
+        }
+    }
+}
+
+// Lists with rules between items
+.list-divided,
+.list-ruled {
+    border-color: $list-border-color;
+
+    > .list-item {
+        margin-top: -$list-border-width;
+        border-top-width: $list-border-width;
+        border-top-color: inherit;
+        border-bottom-width: $list-border-width;
+        border-bottom-color: inherit;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}
+
+// Remove top and bottom rules
+.list-divided {
+    > .list-item {
+        &:first-child {
+            border-top: 0;
+        }
+
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+}
+
+// Add some padding to lists.
+.list-spaced {
+    > .list-item {
+        padding: $list-spaced-item-padding-y $list-spaced-item-padding-x;
+    }
+}
+
+.list-spaced-y {
+    > .list-item {
+        padding-top: $list-spaced-item-padding-y;
+        padding-bottom: $list-spaced-item-padding-y;
+    }
+}
+
+.list-spaced-x {
+    > .list-item {
+        padding-right: $list-spaced-item-padding-x;
+        padding-left: $list-spaced-item-padding-x;
+    }
+}
+
+// Horizontal layout variants.
+.list-horizontal {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0;
+
+    > .list-item {
+        &:not(:last-child) {
+            margin-right: $list-horizontal-padding;
+        }
+    }
+
+    &.list-bulleted,
+    &.list-ordered {
+        margin-left: 0;
+
+        > .list-item {
+            &::before {
+                position: static;
+                margin-left: 0;
+            }
+        }
+    }
+
+    &.list-bulleted {
+        > .list-item {
+            &:first-child::before {
+                content: none;
+            }
+        }
+    }
+
+    &.list-divided,
+    &.list-ruled {
+        > .list-item {
+            padding-right: $list-horizontal-padding;
+            padding-left: $list-horizontal-padding;
+            margin: 0 0 0 -#{$list-border-width};
+            border-top: 0;
+            border-right-width: $list-border-width;
+            border-right-color: inherit;
+            border-bottom: 0;
+            border-left-width: $list-border-width;
+            border-left-color: inherit;
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+
+    &.list-divided {
+        > .list-item {
+            &:first-child {
+                padding-left: 0;
+                border-left: 0;
+            }
+
+            &:last-child {
+                padding-right: 0;
+                border-right: 0;
+
+            }
+        }
+    }
+
+    // Spacing again due to specificity.
+    &.list-spaced {
+        > .list-item {
+            padding: $list-spaced-item-padding-y $list-spaced-item-padding-x;
+        }
+    }
+
+    &.list-spaced-y {
+        > .list-item {
+            padding-top: $list-spaced-item-padding-y;
+            padding-bottom: $list-spaced-item-padding-y;
+        }
+    }
+
+    &.list-spaced-x {
+        > .list-item {
+            padding-right: $list-spaced-item-padding-x;
+            padding-left: $list-spaced-item-padding-x;
+        }
+    }
+}
+
+// Interactive list items
+// Use anchor or button elements instead of `<li>`s or `<div>`s to create
+// interactive list items.
+.list-item-action {
+    width: 100%; // For `<button>`s (anchors become 100% by default though)
+    padding: 0; // Reset `<button>` padding
+    color: $list-item-action-color;
+    text-align: inherit; // For `<button>`s (anchors inherit)
+    text-decoration: none;
+    cursor: pointer;
+
+    // Hover state
+    @include hover-focus {
+        z-index: 2;
+        color: $list-item-action-hover-color;
+        text-decoration: none;
+        background-color: $list-item-action-hover-bg;
+    }
+
+    &.disabled,
+    &:disabled {
+        cursor: auto;
+    }
+}
+
+// Individual list items
+// Use on `<li>`s or `<div>`s within the `.list` parent.
+.list-item {
+    position: relative;
+    display: block;
+    // Override `<button>` background and border.
+    background-color: $list-item-bg;
+    border: 0 solid;
+    //border-color: inherit;
+
+    &::before {
+        content: none;
+    }
+
+    &.disabled,
+    &:disabled {
+        color: $list-item-disabled-color;
+        text-decoration: none;
+        background-color: $list-item-disabled-bg;
+    }
+
+    &.active {
+        z-index: 1;
+        color: $list-item-active-color;
+        background-color: $list-item-active-bg;
+        border-color: $list-item-active-border;
+    }
+}
+
+// Contextual variants
+// Add modifier classes to change text and background color on individual items.
+// Organizationally, this must come after the `:hover` states.
+@each $theme, $colors in $context-themes {
+    $bg:           map-get($colors, "context-bg");
+    $color:        map-get($colors, "context-color");
+    $border:       map-get($colors, "context-border-color");
+    $hover-bg:     map-get($colors, "context-hover-bg");
+    $hover-color:  map-get($colors, "context-hover-color");
+    $hover-border: map-get($colors, "context-hover-border-color");
+
+    $color:       color-if-contrast($color, $bg);
+    $hover-color: color-if-contrast($hover-color, $hover-bg);
+
+    @include list-item-variant(#{$theme}, $bg, $color, $border, $hover-bg, $hover-color, $hover-border);
+}
