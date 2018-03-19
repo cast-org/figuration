@@ -25,8 +25,7 @@
         throttle  : 250,        // Throttle speed to limit event firing
         trigger   : 'scroll resize mutate',   // Events to trigger loading source
         delay     : 0,          // Delay before loading source
-        effect    : 'show',     // jQuery effect to use for showing source (http://api.jquery.com/category/effects/)
-        speed     : 0,          // Speed of effect (milliseconds)
+        animate   : false,      // Should the image fade in
         threshold : 0,          // Amount of pixels below viewport to triger show
         container : window,     // Where to watch for events
         invisible : false,      // Load sources that are not :visible
@@ -126,16 +125,22 @@
         loadSrc : function() {
             var $selfRef = this;
 
-            // Hide, set src, show w/effect
-            this.$element.hide();
             this.$element.attr('src', this.settings.src);
-            this.$element[this.settings.effect](this.settings.speed);
 
             $.CFW_imageLoaded(this.$element, this.instance, function() {
-                setTimeout(function() {
+                function complete() {
+                    $selfRef.$element.removeClass('lazy in');
                     $selfRef.$element.CFW_trigger('afterShow.cfw.lazy');
                     $selfRef.dispose();
-                }, $selfRef.settings.speed);
+                }
+
+                // Use slight delay when setting `.in` so animation occurs
+                if ($selfRef.settings.animate) { $selfRef.$element.addClass('lazy'); }
+                setTimeout(function() {
+                    $selfRef.$element
+                        .addClass('in')
+                        .CFW_transition(null, complete);
+                }, 15);
             });
         },
 
