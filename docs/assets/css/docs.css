@@ -1131,10 +1131,6 @@ h4 > code {
   }
 }
 
-.cf-example > .list-group {
-  max-width: 25rem;
-}
-
 .cf-example .fixed-top,
 .cf-example .sticky-top {
   position: static;
