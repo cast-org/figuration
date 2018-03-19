@@ -2,6 +2,9 @@
 // Use on <ul>, <ol>, or <div>.
 // Basic layout becomes an unstyled list.
 .list {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
     margin-bottom: $list-margin-bottom;
     @include list-unstyled;
 
@@ -107,7 +110,6 @@
 
 // Horizontal layout variants.
 .list-horizontal {
-    display: flex;
     flex-direction: row;
     padding-left: 0;
 
