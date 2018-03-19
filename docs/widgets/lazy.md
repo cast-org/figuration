@@ -18,11 +18,11 @@ Lazy delays loading of images outside of the viewport (visible part of the page)
 A lazy loaded image with delay and a fade in animation.
 
 <div class="cf-example">
-    <img data-cfw="lazy" data-cfw-lazy-delay="1000" data-cfw-lazy-effect="fadeIn" data-cfw-lazy-speed="1000" data-cfw-lazy-src="{{ site.basurl}}/assets/img/test.gif" width="360" height="202" alt="Test pattern" />
+    <img data-cfw="lazy" data-cfw-lazy-delay="1000" data-cfw-lazy-animate="true" data-cfw-lazy-src="{{ site.basurl}}/assets/img/test.gif" width="360" height="202" alt="Test pattern" />
 </div>
 
 {% highlight html %}
-<img src="" data-cfw="lazy" data-cfw-lazy-delay="1000" data-cfw-lazy-effect="fadeIn" data-cfw-lazy-speed="1000" data-cfw-lazy-src="test.gif" width="360" height="202" alt="Test pattern" />
+<img src="" data-cfw="lazy" data-cfw-lazy-delay="1000" data-cfw-lazy-animate="true" data-cfw-lazy-src="test.gif" width="360" height="202" alt="Test pattern" />
 {% endhighlight %}
 
 ## Usage
@@ -96,19 +96,13 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>delay</td>
         <td>integer</td>
         <td>0</td>
-        <td>Delay time (milliseconds) to wait before invoking the show animation specified by the <code>effect</code> option.</td>
+        <td>Delay time (milliseconds) to wait before loading image once the `show` method has been called.</td>
     </tr>
     <tr>
-        <td>effect</td>
-        <td>string</td>
-        <td>'show'</td>
-        <td>The function name to be called when the <code>show</code> method has been triggered.  By default the jQuery function <a href="http://api.jquery.com/show/">.show()</a> is used, but in theory any jQuery based effect can be used including ones from jQuery UI.</td>
-    </tr>
-    <tr>
-        <td>speed</td>
-        <td>integer</td>
-        <td>0</td>
-        <td>Speed of animation (milliseconds) - corresponds the desired animation speed of the animation specified by the <code>effect</code> option.</td>
+        <td>animate</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>If the image should appear with a fade-in animation when loaded.</td>
     </tr>
     <tr>
         <td>threshold</td>

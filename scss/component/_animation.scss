@@ -1,3 +1,14 @@
+.lazy {
+    opacity: 0;
+
+    // Add transition here so that the image can be quickly hidden
+    // before fading back in
+    &.in {
+        opacity: 1;
+        @include transition($transition-lazy-fade);
+    }
+}
+
 .fade {
     opacity: 0;
     @include transition($transition-fade);
@@ -8,30 +19,10 @@
 }
 
 .collapse {
-    display: none;
-
-    &.in {
-        display: block;
-    }
-    &.in-flex {
-        display: flex;
+    &:not(.in) {
+        display: none;
     }
 }
-
-// stylelint-disable selector-no-qualifying-type
-tr {
-    &.collapse.in,
-    &.collapse.in-flex {
-        display: table-row;
-    }
-}
-tbody {
-    &.collapse.in,
-    &.collapse.in-flex {
-        display: table-row-group;
-    }
-}
-// stylelint-enable selector-no-qualifying-type
 
 .collapsing {
     position: relative;

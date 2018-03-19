@@ -30,7 +30,6 @@
     CFW_Widget_Collapse.prototype = {
 
         _init : function() {
-            var $selfRef = this;
             var selector = this.$element.CFW_getSelectorFromChain('collapse', this.settings.target);
             if (!selector) { return; }
             this.$target = $(selector);
@@ -61,10 +60,7 @@
             var dimension = this.dimension();
             if (this.$triggers.hasClass('open')) {
                 this.$triggers.attr('aria-expanded', 'true');
-                this.$target.each(function() {
-                    var flexClass = $selfRef._isFlex(this) ? 'in-flex' : 'in';
-                    $(this).addClass('collapse ' + flexClass)[dimension]('');
-                });
+                this.$target.addClass('collapse in')[dimension]('');
             } else {
                 this.$triggers.attr('aria-expanded', 'false');
                 this.$target.addClass('collapse');
@@ -84,7 +80,7 @@
             if (e && !/input|textarea/i.test(e.target.tagName)) {
                 e.preventDefault();
             }
-            if (this.$element.hasClass('open') || this.$target.hasClass('in') || this.$target.hasClass('in-flex')) {
+            if (this.$element.hasClass('open') || this.$target.hasClass('in')) {
                 this.hide();
             } else {
                 this.show();
@@ -104,7 +100,7 @@
             if (follow === null) { follow = this.settings.follow; }
 
             // Bail if transition in progress
-            if (this.inTransition || this.$target.hasClass('in') || this.$target.hasClass('in-flex')) { return; }
+            if (this.inTransition || this.$target.hasClass('in')) { return; }
 
             // Start open transition
             if (!this.$element.CFW_trigger('beforeShow.cfw.collapse')) {
@@ -134,10 +130,7 @@
                 $selfRef.$triggers.attr('aria-expanded', 'true');
                 $selfRef.$target
                     .removeClass('collapsing')[dimension]('');
-                $selfRef.$target.each(function() {
-                    var flexClass = $selfRef._isFlex(this) ? 'in-flex' : 'in';
-                    $(this).addClass('collapse ' + flexClass);
-                });
+                $selfRef.$target.addClass('collapse in');
                 $selfRef.$target.CFW_mutateTrigger();
                 $selfRef.inTransition = false;
                 if (follow) {
@@ -156,7 +149,7 @@
             if (follow === null) { follow = this.settings.follow; }
 
             // Bail if transition in progress
-            if (this.inTransition || (!this.$target.hasClass('in') && !this.$target.hasClass('in-flex'))) { return; }
+            if (this.inTransition || !this.$target.hasClass('in')) { return; }
 
             // Start close transition
             if (!this.$element.CFW_trigger('beforeHide.cfw.collapse')) {
@@ -173,7 +166,7 @@
                 var $this = $(this);
                 $this[dimension]($this[dimension]())[0].offsetHeight;
             });
-            this.$target.removeClass('collapse in in-flex');
+            this.$target.removeClass('collapse in');
             if (this.settings.animate) {
                 this.$target.addClass('collapsing');
             }
@@ -186,7 +179,7 @@
             function complete() {
                 $selfRef.$triggers.attr('aria-expanded', 'false');
                 $selfRef.$target
-                    .removeClass('collapsing in in-flex')
+                    .removeClass('collapsing in')
                     .addClass('collapse')
                     .CFW_mutateTrigger();
                 $selfRef.inTransition = false;
@@ -206,11 +199,6 @@
 
         animEnable: function() {
             this.settings.animate = true;
-        },
-
-        _isFlex: function(node) {
-            var displayVal = window.getComputedStyle(node, null).getPropertyValue('display');
-            return (displayVal.indexOf('flex') !== -1);
         },
 
         dispose : function() {

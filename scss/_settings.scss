@@ -377,6 +377,7 @@ $drag-text-shadow:      0 .0625rem 0 #fff !default;
 // =====
 // Widget animations
 $transition-fade:       opacity .15s linear !default;
+$transition-lazy-fade:  opacity .3s linear !default;
 $transition-collapse-y: height .3s ease !default;
 $transition-collapse-x: width .3s ease !default;
 
