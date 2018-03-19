@@ -12,7 +12,8 @@ Lists are a flexible component for displaying a series of content with various s
 * ToC goes here
 {:toc}
 
-## Unstyled List
+## Basic List
+
 In the basic form, a `.list` removes the default `list-style` and left margin on list items, but nested lists will be indented.
 
 The **use of the `.list-item` class required** for each `<li>` or simulated list item, for proper styling.
@@ -40,6 +41,7 @@ You can also use `<div>` containers to create a list.
 Add some visual style to lists with a handful of modifier classes.
 
 ### Bulleted List
+
 Add the `.list-bulleted` modifier to add a stylized bullet to each list item.
 
 {% example html %}
@@ -59,6 +61,7 @@ Add the `.list-bulleted` modifier to add a stylized bullet to each list item.
 {% endexample %}
 
 ### Ordered List
+
 Add the `.list-ordered` modifier to create a numerically ordered list.
 
 {% example html %}
@@ -78,6 +81,7 @@ Add the `.list-ordered` modifier to create a numerically ordered list.
 {% endexample %}
 
 ### Nested Lists
+
 When nesting lists, you will need to add the `.list` class and any modifiers to each nested list to restyle as needed.
 
 {% example html %}
@@ -179,6 +183,7 @@ When nesting lists, you will need to add the `.list` class and any modifiers to 
 {% endexample %}
 
 ### Divided List
+
 Place a rule between list items with the `.list-divided` modifier.
 
 {% example html %}
@@ -200,6 +205,7 @@ Divided lists also work with `<div>` containers.
 {% endexample %}
 
 ### Ruled List
+
 Place a rule at the top and bottom of a list, and between list items with the `.list-ruled` modifier.
 
 {% example html %}
@@ -220,7 +226,8 @@ Similar to divided lists, ruled lists also work with `<div>` containers.
 </div>
 {% endexample %}
 
-## Spacing
+### Spaced
+
 Easily add some spacing to lists. Adding `.list-spaced` will provide padding on all sides of each list item.
 
 {% example html %}
@@ -251,7 +258,7 @@ Need only horizontal padding, then use `.list-spaced-x`.
 </div>
 {% endexample %}
 
-## Horizontal Lists
+### Horizontal Lists
 Place the items in the list in a horizontal, or inline, layout with `.list-horizontal`.
 
 {% example html %}
@@ -286,7 +293,9 @@ Place the items in the list in a horizontal, or inline, layout with `.list-horiz
 </ul>
 {% endexample %}
 
-## Active Items
+## Content
+
+### Active Items
 
 Add `.active` to a `.list-item` to indicate the current active selection.
 
@@ -306,7 +315,7 @@ Add `.active` to a `.list-item` to indicate the current active selection.
 </div>
 {% endexample %}
 
-## Disabled Items
+### Disabled Items
 
 Add `.disabled` to a `<li>` or `.list-item` to make it out to _appear_ disabled. Note that some elements with `.disabled` will also require custom JavaScript to fully disable their click events (e.g., links).
 
@@ -333,7 +342,7 @@ Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl 
 </div>
 {% endexample %}
 
-## Links and Buttons
+### Links and Buttons
 
 Use `<a>`s or `<button>`s to create _actionable_ list items with hover, disabled, and active states by adding `.list-item-action`. We separate these pseudo-classes to ensure lists made of non-interactive elements (like `<li>`s or `<div>`s) don't provide a click or tap affordance.
 
@@ -356,8 +365,6 @@ With `<button>`s, you can also make use of the `disabled` attribute instead of t
     <button type="button" class="list-item list-item-action" disabled>Disabled list item</button>
 </div>
 {% endexample %}
-
-## Custom Content
 
 ### Inside Cards
 
@@ -396,7 +403,7 @@ Add badges to any list item to show unread counts, activity, and more with the h
 </div>
 {% endexample %}
 
-### Complex Content
+### Custom Content
 
 Add nearly any HTML within, even for linked lists like the one below, using [flexbox utilities]({{ sitebaseurl }}/utilities/flexbox/) for layout.
 
@@ -444,7 +451,7 @@ Please refer to the [Accessiblity notes about conveying meaning with color]({{ s
 
 ### Rule Color
 
-List items are defined with `border-color: inherit;`,  allowing for easy recoloring of the borders for divided and ruled lists by setting the `border-color` on the `.list` itself.  Setting a `border-color` on a `.list-item` will only update the border color for that specific list item.
+Divided and Ruled list items are defined with `border-{side}-color: inherit;`, allowing for easy recoloring of the borders by setting the `border-color` on the `.list` itself.  Setting a `border-color` on a `.list-item` will only update the border color for that specific list item.
 
 {% example html %}
 <ul class="list list-spaced list-ruled border-primary">
@@ -455,6 +462,8 @@ List items are defined with `border-color: inherit;`,  allowing for easy recolor
 {% endexample %}
 
 ### Inverse List
+
+Set a background color on a list. In some cases you may want to use additional [color utility classes]({{ site.baseurl }}/utilities/color/) to adjust text or border color.
 
 {% example html %}
 <ul class="list list-spaced list-divided bg-dark text-light border-secondary">
