@@ -57,3 +57,6 @@ Some changes will most likely have been missed, so please refer to the documenta
 
 ### Button
 - Dropped button widget in favor of CSS input buttons.  Single state toggles can be replaced with checkbox `.btn-check` variant.
+
+### Lazy
+- Dropped support for jQuery animations as the slim build does not support them.  Added an optional fade-in CSSS animation.
