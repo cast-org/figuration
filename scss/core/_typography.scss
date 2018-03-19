@@ -55,18 +55,6 @@ mark,
     @include list-unstyled;
 }
 
-// Inline turns list items into inline-block
-.list-inline {
-    @include list-unstyled;
-}
-.list-inline-item {
-    display: inline-block;
-
-    &:not(:last-child) {
-        margin-right: $list-inline-padding;
-    }
-}
-
 //  Abbr extension
 .initialism {
     font-size: 90%;

@@ -169,29 +169,29 @@ The Scrollspy widget also works with nested `.nav`s. If a sub-`.nav` is `.active
 </div>
 {% endhighlight %}
 
-### List Group
+### List
 
-The Scrollspy widget can also work with a `.list-group`. Scroll the area next to the list group and watch the active class change.
+The Scrollspy widget can also work with a `.list`. Scroll the area next to the list group and watch the active class change.
 
 <div class="cf-example">
     <div class="row">
         <div class="col-4">
-            <nav id="lgroup-example" class="list-group">
-                <a class="list-group-item list-group-item-action" href="#lgroup-1">Item 1</a>
-                <a class="list-group-item list-group-item-action" href="#lgroup-2">Item2</a>
-                <a class="list-group-item list-group-item-action" href="#lgroup-3">Item 3</a>
-                <a class="list-group-item list-group-item-action" href="#lgroup-4">Item 4</a>
+            <nav id="list-example" class="list list-spaced list-ruled">
+                <a class="list-item list-item-action" href="#list-1">Item 1</a>
+                <a class="list-item list-item-action" href="#list-2">Item2</a>
+                <a class="list-item list-item-action" href="#list-3">Item 3</a>
+                <a class="list-item list-item-action" href="#list-4">Item 4</a>
             </nav>
         </div>
         <div class="col-8">
-            <div data-cfw="scrollspy" data-cfw-scrollspy-target="#lgroup-example" data-cfw-scrollspy-offset="0" class="cf-example-scrollspy">
-            <h4 id="lgroup-1">Item 1</h4>
+            <div data-cfw="scrollspy" data-cfw-scrollspy-target="#list-example" data-cfw-scrollspy-offset="0" class="cf-example-scrollspy">
+            <h4 id="list-1">Item 1</h4>
             <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
-            <h4 id="lgroup-2">Item 2</h4>
+            <h4 id="list-2">Item 2</h4>
             <p>Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney's vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney's quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.</p>
-            <h4 id="lgroup-3">Item 3</h4>
+            <h4 id="list-3">Item 3</h4>
             <p>Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.</p>
-            <h4 id="lgroup-4">Item 4</h4>
+            <h4 id="list-4">Item 4</h4>
             <p>In incididunt echo park, officia deserunt mcsweeney's proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven't heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.</p>
             <p>Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.</p>
             </div>
@@ -202,22 +202,22 @@ The Scrollspy widget can also work with a `.list-group`. Scroll the area next to
 {% highlight html %}
 <div class="row">
     <div class="col-4">
-        <nav id="lgroup-example" class="list-group">
-            <a class="list-group-item list-group-item-action" href="#lgroup-1">Item 1</a>
-            <a class="list-group-item list-group-item-action" href="#lgroup-2">Item2</a>
-            <a class="list-group-item list-group-item-action" href="#lgroup-3">Item 3</a>
-            <a class="list-group-item list-group-item-action" href="#lgroup-4">Item 4</a>
+        <nav id="list-example" class="list list-spaced list-ruled">
+            <a class="list-item list-item-action" href="#list-1">Item 1</a>
+            <a class="list-item list-item-action" href="#list-2">Item2</a>
+            <a class="list-item list-item-action" href="#list-3">Item 3</a>
+            <a class="list-item list-item-action" href="#list-4">Item 4</a>
         </nav>
     </div>
     <div class="col-8">
-        <div data-cfw="scrollspy" data-cfw-scrollspy-target="#lgroup-example" data-cfw-scrollspy-offset="0">
-            <h4 id="lgroup-1">Item 1</h4>
+        <div data-cfw="scrollspy" data-cfw-scrollspy-target="#list-example" data-cfw-scrollspy-offset="0">
+            <h4 id="list-1">Item 1</h4>
             <p>...</p>
-            <h4 id="lgroup-2">Item 2</h4>
+            <h4 id="list-2">Item 2</h4>
             <p>...</p>
-            <h4 id="lgroup-3">Item 3</h4>
+            <h4 id="list-3">Item 3</h4>
             <p>...</p>
-            <h4 id="lgroup-4">Item 4</h4>
+            <h4 id="list-4">Item 4</h4>
             <p>...</p>
         </div>
     </div>

@@ -161,35 +161,20 @@ Remove the default `list-style` and left margin on list items (immediate childre
 
 {% example html %}
 <ul class="list-unstyled">
-  <li>Lorem ipsum dolor sit amet</li>
-  <li>Consectetur adipiscing elit</li>
-  <li>Integer molestie lorem at massa</li>
-  <li>Facilisis in pretium nisl aliquet</li>
-  <li>Nulla volutpat aliquam velit
-    <ul>
-      <li>Phasellus iaculis neque</li>
-      <li>Purus sodales ultricies</li>
-      <li>Vestibulum laoreet porttitor sem</li>
-      <li>Ac tristique libero volutpat at</li>
-    </ul>
-  </li>
-  <li>Faucibus porta lacus fringilla vel</li>
-  <li>Aenean sit amet erat nunc</li>
-  <li>Eget porttitor lorem</li>
+  <li>Unstyled List Item</li>
+  <li>Unstyled List Item
+        <ul>
+            <li>Nested List Item</li>
+            <li>Nested List Item</li>
+        </ul>
+    </li>
+    <li>Unstyled List Item</li>
 </ul>
 {% endexample %}
 
-### Inline
+### Styled
 
-Remove a list's bullets and apply some light `margin` with a combination of two classes, `.list-inline` and `.list-inline-item`.
-
-{% example html %}
-<ul class="list-inline">
-  <li class="list-inline-item">Lorem ipsum</li>
-  <li class="list-inline-item">Phasellus iaculis</li>
-  <li class="list-inline-item">Nulla volutpat</li>
-</ul>
-{% endexample %}
+Even more layout and style options are available for lists with Figuration's [list component]({{ site.baseurl }}/components/lists/).  This component includes indented unstyled lists, stylized bulleted and ordered lists, horizontal lists, and lists with dividers between items.
 
 ### Description List Alignment
 

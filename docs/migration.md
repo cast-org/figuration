@@ -45,6 +45,9 @@ Some changes will most likely have been missed, so please refer to the documenta
 - Cards have been converted to flexbox layout.
 - Images now need to be wrapped with `.card-img` to keep aspect ratio and scaling in check due to flexbox.
 
+### List Group
+- The List Group has been dropped and replaced with a new [List component]({{ site.baseurl }}/components/lists/) with a large amount of overlap in layout with the included modifier classes.
+
 ## Utilities
 
 ### Flexbox
