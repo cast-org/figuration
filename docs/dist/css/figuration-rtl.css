@@ -2974,6 +2974,15 @@ input[type="button"].btn-block {
   }
 }
 
+.lazy {
+  opacity: 0;
+}
+
+.lazy.in {
+  opacity: 1;
+  transition: opacity 0.3s linear;
+}
+
 .fade {
   opacity: 0;
   transition: opacity 0.15s linear;
@@ -2983,25 +2992,8 @@ input[type="button"].btn-block {
   opacity: 1;
 }
 
-.collapse {
+.collapse:not(.in) {
   display: none;
-}
-
-.collapse.in {
-  display: block;
-}
-
-.collapse.in-flex {
-  display: -ms-flexbox;
-  display: flex;
-}
-
-tr.collapse.in, tr.collapse.in-flex {
-  display: table-row;
-}
-
-tbody.collapse.in, tbody.collapse.in-flex {
-  display: table-row-group;
 }
 
 .collapsing {
