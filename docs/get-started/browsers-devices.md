@@ -18,6 +18,25 @@ Figuration supports the **latest, stable releases** of all major browsers and pl
 
 Alternative browsers which use the latest version of WebKit, Blink, or Gecko, whether directly or via the platform's web view API, are not explicitly supported. However, Figuration should (in most cases) display and function correctly in these browsers as well. More specific support information is provided below.
 
+We use [Autoprefixer](https://github.com/postcss/autoprefixer) to handle intended browser support via CSS prefixes, which uses [Browserslist](https://github.com/browserslist/browserslist) to manage these browser versions.
+
+You can find our supported range of browsers and their versions [in our Autoprefixer settings]({{ site.repo }}/blob/v4-dev/grunt/autoprefixer-settings.js):
+
+```json
+browsers: [
+    'last 1 major version',
+    '>= 1%',
+    'Chrome >= 49',
+    'Firefox >= 45',
+    'Edge >= 12',
+    'Explorer >= 10',
+    'iOS >= 9',
+    'Safari >= 9',
+    'Android >= 4.4',
+    'Opera >= 30'
+]
+```
+
 ### Mobile Devices
 
 Generally speaking, Figuration supports the latest versions of each major platform's default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile's Turbo mode, UC Browser Mini, Amazon Silk) are not supported.
@@ -40,7 +59,7 @@ Generally speaking, Figuration supports the latest versions of each major platfo
       <td class="text-success">Supported</td>
       <td class="text-muted">N/A</td>
       <td class="text-success">Android v5.0+ supported</td>
-      <td class="text-muted">N/A</td>
+      <td class="text-success">Supported</td>
     </tr>
     <tr>
       <th scope="row">iOS</th>
@@ -48,7 +67,7 @@ Generally speaking, Figuration supports the latest versions of each major platfo
       <td class="text-success">Supported</td>
       <td class="text-success">Supported</td>
       <td class="text-muted">N/A</td>
-      <td class="text-muted">N/A</td>
+      <td class="text-success">Supported</td>
     </tr>
     <tr>
       <th scope="row">Windows 10 Mobile</th>
@@ -91,7 +110,7 @@ Similarly, the latest versions of most desktop browsers are supported.
       <th scope="row">Windows</th>
       <td class="text-success">Supported</td>
       <td class="text-success">Supported</td>
-      <td class="text-success">Supported IE10+</td>
+      <td class="text-success">Supported, IE11+</td>
       <td class="text-success">Supported</td>
       <td class="text-success">Supported</td>
       <td class="text-danger">Not supported</td>
@@ -105,7 +124,7 @@ Unofficially, Figuration should look and behave well enough in Chromium and Chro
 
 ## Internet Explorer
 
-Internet Explorer 10+ are also supported, IE9 and down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit [Can I use…](https://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
+Internet Explorer 10+ is also supported, IE9 and down are not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit [Can I use…](https://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
 
 ### MutationObserver
 
