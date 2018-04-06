@@ -56,9 +56,10 @@
     }
 }
 
-// Lists with rules between items
+// Lists with borders
 .list-divided,
-.list-ruled {
+.list-ruled,
+.list-group {
     border-color: $list-border-color;
 
     > .list-item {
@@ -74,7 +75,7 @@
     }
 }
 
-// Remove top and bottom rules
+// Remove top and bottom borders
 .list-divided {
     > .list-item {
         &:first-child {
@@ -83,6 +84,24 @@
 
         &:last-child {
             border-bottom: 0;
+        }
+    }
+}
+
+// Group a list with borders all around, and a radius on the
+// first and last children.
+.list-group {
+    > .list-item {
+        border-right-color: inherit;
+        border-right-width: $list-border-width;
+        border-left-color: inherit;
+        border-left-width: $list-border-width;
+
+        &:first-child {
+            @include border-top-radius($list-group-border-radius);
+        }
+        &:last-child {
+            @include border-bottom-radius($list-group-border-radius);
         }
     }
 }
@@ -168,7 +187,25 @@
             &:last-child {
                 padding-right: 0;
                 border-right: 0;
+            }
+        }
+    }
 
+    &.list-group {
+        > .list-item {
+            padding-right: $list-horizontal-padding;
+            padding-left: $list-horizontal-padding;
+            margin: 0 0 0 -#{$list-border-width};
+
+            &:first-child {
+                margin-left: 0;
+                @include border-top-end-radius(0);
+                @include border-start-radius($list-group-border-radius);
+            }
+
+            &:last-child {
+                @include border-bottom-start-radius(0);
+                @include border-end-radius($list-group-border-radius);
             }
         }
     }

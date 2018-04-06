@@ -24,6 +24,7 @@ Some changes will most likely have been missed, so please refer to the documenta
 - Added two methods of Responsive Typography support.
   - Ratio scaling - variable sizing based on viewport dimension
   - Stepped scaling - one defined size per breakpoint
+- Inline lists, `.list-inline`, has been dropped and replaced with the `.list-horizontal` modifier in the new [List component]({{ site.baseurl }}/components/lists/).
 
 {% comment %}
 ## Sizing
@@ -46,7 +47,10 @@ Some changes will most likely have been missed, so please refer to the documenta
 - Images now need to be wrapped with `.card-img` to keep aspect ratio and scaling in check due to flexbox.
 
 ### List Group
-- The List Group has been dropped and replaced with a new [List component]({{ site.baseurl }}/components/lists/) with a large amount of overlap in layout with the included modifier classes.
+- The List Group is no longer a stand-alone component, and is now modifier within the new [List component]({{ site.baseurl }}/components/lists/).
+
+### Lists
+- A new component that allows for greater styling options for lists, or pseudo-lists using `<div>`s.
 
 ## Utilities
 
