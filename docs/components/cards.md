@@ -180,6 +180,8 @@ Turn an image into a card background and overlay your card's text. The use of `.
 
 Create lists of content in a card with [`.list` component]({{ site.baseurl }}/components/lists/) and it's modifiers.
 
+Horizontal lists are not currently supported in cards.
+
 {% example html %}
 <div class="card">
   <ul class="list list-spaced list-divided">

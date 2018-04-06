@@ -226,6 +226,28 @@ Similar to divided lists, ruled lists also work with `<div>` containers.
 </div>
 {% endexample %}
 
+### List Group
+
+Visually group list content by adding a border all around with the `.list-group` modifier.
+
+{% example html %}
+<ul class="list list-group">
+    <li class="list-item">List item</li>
+    <li class="list-item">List item</li>
+    <li class="list-item">List item</li>
+</ul>
+{% endexample %}
+
+Similar to the above examples, this will also work with `<div>` containers.
+
+{% example html %}
+<div class="list list-group">
+    <div class="list-item">List item</div>
+    <div class="list-item">List item</div>
+    <div class="list-item">List item</div>
+</div>
+{% endexample %}
+
 ### Spaced
 
 Easily add some spacing to lists. Adding `.list-spaced` will provide padding on all sides of each list item.
@@ -287,6 +309,12 @@ Place the items in the list in a horizontal, or inline, layout with `.list-horiz
 </ul>
 
 <ul class="list list-horizontal list-ruled">
+    <li class="list-item">List item</li>
+    <li class="list-item">List item</li>
+    <li class="list-item">List item</li>
+</ul>
+
+<ul class="list list-horizontal list-group">
     <li class="list-item">List item</li>
     <li class="list-item">List item</li>
     <li class="list-item">List item</li>
@@ -366,41 +394,25 @@ With `<button>`s, you can also make use of the `disabled` attribute instead of t
 </div>
 {% endexample %}
 
-### Inside Cards
-
-Create visually grouped content by wrapping the `.list` with a `.card`.
-
-{% example html %}
-<div class="card" style="max-width: 25rem;">
-    <div class="list list-spaced list-divided">
-        <div class="list-item">List item</div>
-        <div class="list-item">List item</div>
-        <div class="list-item">List item</div>
-    </div>
-</div>
-{% endexample %}
-
 ### Adding Badges
 
 Add badges to any list item to show unread counts, activity, and more with the help of some [flexbox utility classes]({{ site.baseurl }}/utilities/flexbox/).
 
 {% example html %}
-<div class="card" style="max-width: 25rem;">
-    <ul class="list list-spaced list-divided">
-        <li class="list-item d-flex flex-between flex-items-center">
-            Cras justo odio
-            <span class="badge badge-info">7</span>
-        </li>
-        <li class="list-item d-flex flex-between flex-items-center">
-            Dapibus ac facilisis in
-            <span class="badge badge-info">12</span>
-        </li>
-        <li class="list-item d-flex flex-between flex-items-center">
-            Morbi leo risus
-            <span class="badge badge-info">3</span>
-        </li>
-    </ul>
-</div>
+<ul class="list list-spaced list-group" style="max-width: 25rem;">
+    <li class="list-item d-flex flex-between flex-items-center">
+        Cras justo odio
+        <span class="badge badge-info">7</span>
+    </li>
+    <li class="list-item d-flex flex-between flex-items-center">
+        Dapibus ac facilisis in
+        <span class="badge badge-info">12</span>
+    </li>
+    <li class="list-item d-flex flex-between flex-items-center">
+        Morbi leo risus
+        <span class="badge badge-info">3</span>
+    </li>
+</ul>
 {% endexample %}
 
 ### Custom Content
@@ -408,33 +420,31 @@ Add badges to any list item to show unread counts, activity, and more with the h
 Add nearly any HTML within, even for linked lists like the one below, using [flexbox utilities]({{ sitebaseurl }}/utilities/flexbox/) for layout.
 
 {% example html %}
-<div class="card" style="max-width: 25rem;">
-    <div class="list list-spaced list-divided">
-        <a href="#" class="list-item list-item-action flex-column flex-start active">
-            <div class="d-flex w-100 flex-between flex-items-center mb-0_5">
-                <h5 class="mb-0">List item heading</h5>
-                <small>3 days ago</small>
-            </div>
-            <p class="mb-0_25">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small>Donec id elit non mi porta.</small>
-        </a>
-        <a href="#" class="list-item list-item-action flex-column flex-start">
-            <div class="d-flex w-100 flex-between flex-items-center mb-0_5">
-                <h5 class="mb-0">List item heading</h5>
-                <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-0_25">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
-        </a>
-        <a href="#" class="list-item list-item-action flex-column flex-start">
-            <div class="d-flex w-100 flex-between flex-items-center mb-0_5">
-                <h5 class="mb-0">List item heading</h5>
-                <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-0_25">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-            <small class="text-muted">Donec id elit non mi porta.</small>
-        </a>
-    </div>
+<div class="list list-spaced list-group" style="max-width: 25rem;">
+    <a href="#" class="list-item list-item-action flex-column flex-start active">
+        <div class="d-flex w-100 flex-between flex-items-center mb-0_5">
+            <h5 class="mb-0">List item heading</h5>
+            <small>3 days ago</small>
+        </div>
+        <p class="mb-0_25">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+        <small>Donec id elit non mi porta.</small>
+    </a>
+    <a href="#" class="list-item list-item-action flex-column flex-start">
+        <div class="d-flex w-100 flex-between flex-items-center mb-0_5">
+            <h5 class="mb-0">List item heading</h5>
+            <small class="text-muted">3 days ago</small>
+        </div>
+        <p class="mb-0_25">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+        <small class="text-muted">Donec id elit non mi porta.</small>
+    </a>
+    <a href="#" class="list-item list-item-action flex-column flex-start">
+        <div class="d-flex w-100 flex-between flex-items-center mb-0_5">
+            <h5 class="mb-0">List item heading</h5>
+            <small class="text-muted">3 days ago</small>
+        </div>
+        <p class="mb-0_25">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+        <small class="text-muted">Donec id elit non mi porta.</small>
+    </a>
 </div>
 {% endexample %}
 
