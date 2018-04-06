@@ -6,7 +6,7 @@
     list-style: none;
 }
 
-// List Groups
+// List context color
 @mixin list-item-variant($state, $bg, $color, $border, $hover-bg, $hover-color, $hover-border) {
     .list-item-action.list-item-#{$state} {
         @include hover-focus {
