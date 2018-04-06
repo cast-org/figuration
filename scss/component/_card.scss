@@ -252,6 +252,9 @@
             margin-bottom: $card-margin-bottom;
             column-count: $card-columns-count;
             column-gap: $card-columns-column-gap;
+            orphans: 1;
+            widows: 1;
+
 
             > .card {
                 margin-top: $card-margin-bottom;
