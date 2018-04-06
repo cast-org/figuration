@@ -6,6 +6,8 @@ group: utilities
 
 These utility classes float an element to the enable or disable floating, based on the current viewport size using the [CSS `float` property](https://developer.mozilla.org/en-US/docs/Web/CSS/float).
 
+Note that the float utilities do not have any affect on items inside flex container.  Please refer to the [flexbox specification](https://www.w3.org/TR/css-flexbox-1/#flex-containers) for details.
+
 Instead of using `left/right` designators, the float utilities use `start/end` designators to match up with the [flexbox utilities]({{ site.baseurl }}/utilities/flexbox/).
 
 {% example html %}
