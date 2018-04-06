@@ -3255,12 +3255,14 @@ button.drag {
 }
 
 .list-divided,
-.list-ruled {
+.list-ruled,
+.list-group {
   border-color: #bfc6cd;
 }
 
 .list-divided > .list-item,
-.list-ruled > .list-item {
+.list-ruled > .list-item,
+.list-group > .list-item {
   margin-top: -1px;
   border-top-color: inherit;
   border-top-width: 1px;
@@ -3269,7 +3271,8 @@ button.drag {
 }
 
 .list-divided > .list-item:first-child,
-.list-ruled > .list-item:first-child {
+.list-ruled > .list-item:first-child,
+.list-group > .list-item:first-child {
   margin-top: 0;
 }
 
@@ -3279,6 +3282,23 @@ button.drag {
 
 .list-divided > .list-item:last-child {
   border-bottom: 0;
+}
+
+.list-group > .list-item {
+  border-left-color: inherit;
+  border-left-width: 1px;
+  border-right-color: inherit;
+  border-right-width: 1px;
+}
+
+.list-group > .list-item:first-child {
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+}
+
+.list-group > .list-item:last-child {
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 
 .list-spaced > .list-item {
@@ -3342,6 +3362,25 @@ button.drag {
 .list-horizontal.list-divided > .list-item:last-child {
   padding-left: 0;
   border-left: 0;
+}
+
+.list-horizontal.list-group > .list-item {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin: 0 -1px 0 0;
+}
+
+.list-horizontal.list-group > .list-item:first-child {
+  margin-right: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.list-horizontal.list-group > .list-item:last-child {
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
 }
 
 .list-horizontal.list-spaced > .list-item {
@@ -5241,7 +5280,6 @@ a.badge:hover, a.badge:focus {
   border-top-left-radius: calc(0.25rem - 1px);
 }
 
-.card > .list:first-child > li:first-child,
 .card > .list:first-child > .list-item:first-child {
   border-top-right-radius: calc(0.25rem - 1px);
   border-top-left-radius: calc(0.25rem - 1px);
@@ -5253,7 +5291,6 @@ a.badge:hover, a.badge:focus {
   border-bottom-right-radius: calc(0.25rem - 1px);
 }
 
-.card > .list:last-child > li:last-child,
 .card > .list:last-child > .list-item:last-child {
   border-bottom-left-radius: calc(0.25rem - 1px);
   border-bottom-right-radius: calc(0.25rem - 1px);
@@ -5698,6 +5735,8 @@ a.badge:hover, a.badge:focus {
   -webkit-column-gap: 1.25rem;
      -moz-column-gap: 1.25rem;
           column-gap: 1.25rem;
+  orphans: 1;
+  widows: 1;
 }
 
 .card-columns > .card {
@@ -5723,6 +5762,8 @@ a.badge:hover, a.badge:focus {
     -webkit-column-gap: 1.25rem;
        -moz-column-gap: 1.25rem;
             column-gap: 1.25rem;
+    orphans: 1;
+    widows: 1;
   }
   .card-columns-sm > .card {
     margin-top: 1rem;
@@ -5747,6 +5788,8 @@ a.badge:hover, a.badge:focus {
     -webkit-column-gap: 1.25rem;
        -moz-column-gap: 1.25rem;
             column-gap: 1.25rem;
+    orphans: 1;
+    widows: 1;
   }
   .card-columns-md > .card {
     margin-top: 1rem;
@@ -5771,6 +5814,8 @@ a.badge:hover, a.badge:focus {
     -webkit-column-gap: 1.25rem;
        -moz-column-gap: 1.25rem;
             column-gap: 1.25rem;
+    orphans: 1;
+    widows: 1;
   }
   .card-columns-lg > .card {
     margin-top: 1rem;
@@ -5795,6 +5840,8 @@ a.badge:hover, a.badge:focus {
     -webkit-column-gap: 1.25rem;
        -moz-column-gap: 1.25rem;
             column-gap: 1.25rem;
+    orphans: 1;
+    widows: 1;
   }
   .card-columns-xl > .card {
     margin-top: 1rem;
