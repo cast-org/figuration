@@ -98,7 +98,7 @@ fieldset:disabled a.btn,
     &.disabled,
     &:disabled {
         text-decoration: none;
-        pointer-events: none
+        pointer-events: none;
     }
 
     &:not(:disabled):not(.disabled):active,
