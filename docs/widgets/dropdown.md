@@ -560,63 +560,65 @@ $('#myDropdown').CFW_Dropdown();
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-dropdown`, as in `data-cfw-dropdown-backlink="true"`.
 
-<table class="table table-scroll table-bordered table-striped">
-<thead>
-    <tr>
-        <th style="width: 100px;">Name</th>
-        <th style="width: 50px;">Type</th>
-        <th style="width: 50px;">Default</th>
-        <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>target</td>
-        <td>string</td>
-        <td>null</td>
-        <td>Either the selector (jQuery style), or the string related to the target dropdown having a <code>data-cfw-dropdown-target</code> attribute.</td>
-    </tr>
-    <tr>
-        <td>delay</td>
-        <td>integer</td>
-        <td>350</td>
-        <td>Delay for hiding menu on loss of focus or hover when not in click only mode (milliseconds).</td>
-    </tr>
-    <tr>
-        <td>hover</td>
-        <td>boolean</td>
-        <td>false</td>
-        <td>If hover style navigation should be enabled in addition to click/key navigation.  If a touch capable device is found, this setting is overruled.</td>
-    </tr>
-    <tr>
-        <td>backlink</td>
-        <td>boolean</td>
-        <td>false</td>
-        <td>Insert back links into submenus.</td>
-    </tr>
-    <tr>
-        <td>backtop</td>
-        <td>boolean</td>
-        <td>false</td>
-        <td>If back links should be applied at the top level menu as opposed to only submenus.</td>
-    </tr>
-    <tr>
-        <td>backtext</td>
-        <td>string</td>
-        <td>Back</td>
-        <td>Text to be used for back links.</td>
-    </tr>
-    <tr>
-        <td>container</td>
-        <td>string | false</td>
-        <td>false</td>
-        <td>
-            <p>Appends the dropdown menu to a specific element. Example: <code>container: 'body'</code></p>
-            <p>This does not apply when the dropdown is inside of a `.navbar-collapse`.</p>
-        </td>
-    </tr>
-</tbody>
-</table>
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>target</td>
+                <td>string</td>
+                <td>null</td>
+                <td>Either the selector (jQuery style), or the string related to the target dropdown having a <code>data-cfw-dropdown-target</code> attribute.</td>
+            </tr>
+            <tr>
+                <td>delay</td>
+                <td>integer</td>
+                <td>350</td>
+                <td>Delay for hiding menu on loss of focus or hover when not in click only mode (milliseconds).</td>
+            </tr>
+            <tr>
+                <td>hover</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>If hover style navigation should be enabled in addition to click/key navigation.  If a touch capable device is found, this setting is overruled.</td>
+            </tr>
+            <tr>
+                <td>backlink</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Insert back links into submenus.</td>
+            </tr>
+            <tr>
+                <td>backtop</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>If back links should be applied at the top level menu as opposed to only submenus.</td>
+            </tr>
+            <tr>
+                <td>backtext</td>
+                <td>string</td>
+                <td>Back</td>
+                <td>Text to be used for back links.</td>
+            </tr>
+            <tr>
+                <td>container</td>
+                <td>string | false</td>
+                <td>false</td>
+                <td>
+                    <p>Appends the dropdown menu to a specific element. Example: <code>container: 'body'</code></p>
+                    <p>This does not apply when the dropdown is inside of a `.navbar-collapse`.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 ### Methods
 
@@ -655,36 +657,38 @@ Hides the root menu element and disconnect all the event listeners and data from
 
 Event callbacks for the root menu happen on the toggle element. Callbacks for the submenus occur on the submenu's sibling anchor (toggle).
 
-<table class="table table-scroll table-bordered table-striped">
-<thead>
-    <tr>
-        <th style="width: 150px;">Event Type</th>
-        <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>init.cfw.dropdown</td>
-        <td>This event fires after the menu item is initialized.</td>
-    </tr>
-    <tr>
-        <td>beforeShow.cfw.dropdown</td>
-        <td>This event is fired immediately when the internal <code>showMenu</code> method is called.</td>
-    </tr>
-    <tr>
-        <td>afterShow.cfw.dropdown</td>
-        <td>This event is fired when a menu element has been made visible to the user.</td>
-    </tr>
-    <tr>
-        <td>beforeHide.cfw.dropdown</td>
-        <td>This event is fired immediately when the internal <code>hideMenu</code> method is called.</td>
-    </tr>
-    <tr>
-        <td>afterHide.cfw.dropdown</td>
-        <td>This event is fired when a menu element has been hidden from the user.</td>
-    </tr>
-</tbody>
-</table>
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 150px;">Event Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>init.cfw.dropdown</td>
+                <td>This event fires after the menu item is initialized.</td>
+            </tr>
+            <tr>
+                <td>beforeShow.cfw.dropdown</td>
+                <td>This event is fired immediately when the internal <code>showMenu</code> method is called.</td>
+            </tr>
+            <tr>
+                <td>afterShow.cfw.dropdown</td>
+                <td>This event is fired when a menu element has been made visible to the user.</td>
+            </tr>
+            <tr>
+                <td>beforeHide.cfw.dropdown</td>
+                <td>This event is fired immediately when the internal <code>hideMenu</code> method is called.</td>
+            </tr>
+            <tr>
+                <td>afterHide.cfw.dropdown</td>
+                <td>This event is fired when a menu element has been hidden from the user.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 {% highlight js %}
 $('#mDropdown').on('afterHide.cfw.dropdown', function () {

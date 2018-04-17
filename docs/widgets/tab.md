@@ -210,24 +210,26 @@ $('#myTab a:nth-child(3)').CFW_Tab('show')      // Select third tab
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-tab`, as in `data-cfw-tab-animate="false"`.
 
-<table class="table table-scroll table-bordered table-striped">
-<thead>
-    <tr>
-        <th style="width: 100px;">Name</th>
-        <th style="width: 50px;">Type</th>
-        <th style="width: 50px;">Default</th>
-        <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>animate</td>
-        <td>boolean</td>
-        <td>true</td>
-        <td>If the tab pane target should fade in and out.</td>
-    </tr>
-</tbody>
-</table>
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>animate</td>
+                <td>boolean</td>
+                <td>true</td>
+                <td>If the tab pane target should fade in and out.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 ### Methods
 
@@ -262,36 +264,38 @@ When showing a new tab, the events fire in the following order:
 - `afterHidden.cfw.tab` (on the previous active tab, the same one as for the `beforeHide.cfw.tab` event)
 - `afterShow.cfw.tab` (on the newly-active just-shown tab, the same one as for the `beforeShow.cfw.tab` event)
 
-<table class="table table-scroll table-bordered table-striped">
-<thead>
-    <tr>
-        <th style="width: 150px;">Event Type</th>
-        <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>init.cfw.tab</td>
-        <td>This event fires after the tab item is initialized.</td>
-    </tr>
-    <tr>
-        <td>beforeShow.cfw.tab</td>
-        <td>This event fires on tab show, but before the new tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
-    </tr>
-    <tr>
-        <td>afterShow.cfw.tab</td>
-        <td>This event fires on tab show after a tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
-    </tr>
-    <tr>
-        <td>beforeHide.cfw.tab</td>
-        <td>This event fires when a new tab is to be shown (and thus the previous active tab is to be hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the current active tab and the new soon-to-be-active tab, respectively.</td>
-    </tr>
-    <tr>
-        <td>afterHide.cfw.tab</td>
-        <td>This event fires after a new tab is shown (and thus the previous active tab is hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the previous active tab and the new active tab, respectively.</td>
-    </tr>
-</tbody>
-</table>
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 150px;">Event Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>init.cfw.tab</td>
+                <td>This event fires after the tab item is initialized.</td>
+            </tr>
+            <tr>
+                <td>beforeShow.cfw.tab</td>
+                <td>This event fires on tab show, but before the new tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
+            </tr>
+            <tr>
+                <td>afterShow.cfw.tab</td>
+                <td>This event fires on tab show after a tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
+            </tr>
+            <tr>
+                <td>beforeHide.cfw.tab</td>
+                <td>This event fires when a new tab is to be shown (and thus the previous active tab is to be hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the current active tab and the new soon-to-be-active tab, respectively.</td>
+            </tr>
+            <tr>
+                <td>afterHide.cfw.tab</td>
+                <td>This event fires after a new tab is shown (and thus the previous active tab is hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the previous active tab and the new active tab, respectively.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 {% highlight js %}
 $('a[data-cfw="tab"]').on('afterShow.cfw.tab', function(e) {

@@ -96,42 +96,44 @@ $('#myCollapse').CFW_Collapse();
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-collapse`, as in `data-cfw-collapse-animate="false"`.
 
-<table class="table table-scroll table-bordered table-striped">
-<thead>
-    <tr>
-        <th style="width: 100px;">Name</th>
-        <th style="width: 50px;">Type</th>
-        <th style="width: 50px;">Default</th>
-        <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>target</td>
-        <td>string</td>
-        <td>null</td>
-        <td>The selector (jQuery style) of the target collapse item.</td>
-    </tr>
-    <tr>
-        <td>animate</td>
-        <td>boolean</td>
-        <td>true</td>
-        <td>If collapse targets should expand and contract.</td>
-    </tr>
-    <tr>
-        <td>follow</td>
-        <td>boolean</td>
-        <td>false</td>
-        <td>If browser focus should move when a collapse trigger is activated.</td>
-    </tr>
-    <tr>
-        <td>horizontal</td>
-        <td>boolean</td>
-        <td>false</td>
-        <td>Use a horizontal transition instead of the default vertical transition.</td>
-    </tr>
-</tbody>
-</table>
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>target</td>
+                <td>string</td>
+                <td>null</td>
+                <td>The selector (jQuery style) of the target collapse item.</td>
+            </tr>
+            <tr>
+                <td>animate</td>
+                <td>boolean</td>
+                <td>true</td>
+                <td>If collapse targets should expand and contract.</td>
+            </tr>
+            <tr>
+                <td>follow</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>If browser focus should move when a collapse trigger is activated.</td>
+            </tr>
+            <tr>
+                <td>horizontal</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Use a horizontal transition instead of the default vertical transition.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 ### Methods
 
@@ -171,36 +173,38 @@ Disables the collapse control functionality for a given element, leaving the col
 
 Event callbacks happen on the toggle/trigger element.
 
-<table class="table table-scroll table-bordered table-striped">
-<thead>
-    <tr>
-        <th style="width: 150px;">Event Type</th>
-        <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>init.cfw.collapse</td>
-        <td>This event fires after the collapse item is initialized.</td>
-    </tr>
-    <tr>
-        <td>beforeShow.cfw.collapse</td>
-        <td>This event is fired immediately when the <code>show</code> method is called.</td>
-    </tr>
-    <tr>
-        <td>afterShow.cfw.collapse</td>
-        <td>This event is fired when a collapse element has been made visible to the user (will wait for CSS transitions to complete).</td>
-    </tr>
-    <tr>
-        <td>beforeHide.cfw.collapse</td>
-        <td>This event is fired immediately when the <code>hide</code> method is called.</td>
-    </tr>
-    <tr>
-        <td>afterHide.cfw.collapse</td>
-        <td>This event is fired when a collapse element has been hidden from the user (will wait for CSS transitions to complete).</td>
-    </tr>
-</tbody>
-</table>
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 150px;">Event Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>init.cfw.collapse</td>
+                <td>This event fires after the collapse item is initialized.</td>
+            </tr>
+            <tr>
+                <td>beforeShow.cfw.collapse</td>
+                <td>This event is fired immediately when the <code>show</code> method is called.</td>
+            </tr>
+            <tr>
+                <td>afterShow.cfw.collapse</td>
+                <td>This event is fired when a collapse element has been made visible to the user (will wait for CSS transitions to complete).</td>
+            </tr>
+            <tr>
+                <td>beforeHide.cfw.collapse</td>
+                <td>This event is fired immediately when the <code>hide</code> method is called.</td>
+            </tr>
+            <tr>
+                <td>afterHide.cfw.collapse</td>
+                <td>This event is fired when a collapse element has been hidden from the user (will wait for CSS transitions to complete).</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 {% highlight js %}
 $('#myCollapse').on('afterHide.cfw.collapse', function () {
