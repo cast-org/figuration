@@ -322,9 +322,9 @@ $component-active-hover-bg:     map-deep-get($context-themes, "primary", "contro
 $component-disabled-color:      $uibase-400 !default;
 $component-disabled-bg:         transparent !default;
 
-$component-overlay-border-color:    rgba($uibase-900, .3) !default;
+$component-overlay-border-color:    rgba($uibase-900, .4) !default;
 $component-section-bg:              rgba($uibase-900, .0875) !default;
-$component-section-border-color:    rgba($uibase-900, .2) !default;
+$component-section-border-color:    rgba($uibase-900, .3) !default;
 
 
 // Component sizes
@@ -468,24 +468,24 @@ $table-cell-padding:            .75rem !default;
 $table-condensed-cell-padding:  .3125rem .5rem !default;
 $table-caption-color:           $uibase-500 !default;
 
-$table-bg:                  transparent !default;
+$table-bg:                  $component-bg !default;
 $table-bg-accent:           $component-section-bg !default;
 $table-bg-hover:            $component-hover-bg !default;
 $table-bg-active:           $table-bg-hover !default;
 $table-bg-active-hover:     $uibase-200 !default;
 
-$table-head-color:          $uibase-900 !default;
-$table-head-bg:             $component-section-bg !default;
-
-$table-inverse-color:       map-get($inverse-color, "color") !default;
-$table-inverse-bg:          map-get($inverse-color, "bg") !default;
-$table-inverse-border:      map-get($inverse-color, "border") !default;
-$table-inverse-bg-accent:   map-get($inverse-color, "active") !default;
-$table-inverse-bg-hover:    map-get($inverse-color, "hover-bg") !default;
-
 $table-border-width:        $border-width !default;
 $table-border-color:        $component-border-color !default;
+$table-head-border-width:   2 * $table-border-width !default;
+$table-body-border-width:   2 * $table-border-width !default;
+$table-foot-border-width:   2 * $table-border-width !default;
 
+$table-striped-selector:    odd !default;
+$table-striped-bgi-light:   linear-gradient(0deg, rgba($white, .125) 0%, rgba($white, .125) 100%) !default;
+$table-striped-bgi-dark:    linear-gradient(0deg, rgba($uibase-900, .075) 0%, rgba($uibase-900, .075) 100%) !default;
+
+$table-hover-bgi-light:     linear-gradient(0deg, rgba($white, .2) 0%, rgba($white, .2) 100%) !default;
+$table-hover-bgi-dark:      linear-gradient(0deg, rgba($uibase-900, .125) 0%, rgba($uibase-900, .125) 100%) !default;
 
 // Buttons
 // =====
