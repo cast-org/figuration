@@ -135,24 +135,26 @@ None.
 {% comment %}
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-tabResponsive`, as in `data-cfw-tabResponsive-active=true`.
 
-<table class="table table-scroll table-bordered table-striped">
-<thead>
-    <tr>
-        <th style="width: 100px;">Name</th>
-        <th style="width: 50px;">Type</th>
-        <th style="width: 50px;">Default</th>
-        <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>active</td>
-        <td>boolean</td>
-        <td>false</td>
-        <td>If the collapse item in the default tab should be opened on initialization. Mostly useful for mobile devices depending on CSS.</td>
-    </tr>
-</tbody>
-</table>
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>active</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>If the collapse item in the default tab should be opened on initialization. Mostly useful for mobile devices depending on CSS.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 {% endcomment %}
 
 ### Methods
@@ -172,17 +174,19 @@ Event callbacks happen on the responsive tab element.
 
 You can also get the collapse and tab events as indicated in the [Collapse]({{ site.baseurl }}/widgets/collapse/) and [Tab]({{ site.baseurl }}/widgets/tab/) widgets due to event bubbling.
 
-<table class="table table-scroll table-bordered table-striped">
-<thead>
-    <tr>
-        <th style="width: 150px;">Event Type</th>
-        <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>init.cfw.tabResponsive</td>
-        <td>This event fires after the responsive tab item is initialized.</td>
-    </tr>
-</tbody>
-</table>
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 150px;">Event Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>init.cfw.tabResponsive</td>
+                <td>This event fires after the responsive tab item is initialized.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

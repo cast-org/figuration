@@ -165,63 +165,65 @@ $('#mySlider').CFW_Slider({
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-slider`, as in `data-cfw-slider-step=5`.
 
-<table class="table table-scroll table-bordered table-striped">
-<thead>
-    <tr>
-        <th style="width: 100px;">Name</th>
-        <th style="width: 50px;">Type</th>
-        <th style="width: 50px;">Default</th>
-        <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>min</td>
-        <td>integer | float</td>
-        <td>null</td>
-        <td>Numerical value for the minimum values in the range</td>
-    </tr>
-    <tr>
-        <td>max</td>
-        <td>integer | float</td>
-        <td>null</td>
-        <td>Numerical value for the maximum values in the range.</td>
-    </tr>
-    <tr>
-        <td>step</td>
-        <td>integer | float</td>
-        <td>1</td>
-        <td>The minimum movement size.  This value must be a positive, non-zero value.</td>
-    </tr>
-    <tr>
-        <td>chunk</td>
-        <td>integer | float</td>
-        <td>null</td>
-        <td>
-            <p>The 'large step' size used for PgUp/PgDown keyboard navigation.</p>
-            <p>If not defined, the chunk will be auto determined based on the size of the step and the range.</p>
-        </td>
-    </tr>
-    <tr>
-        <td>vertical</td>
-        <td>boolean</td>
-        <td>false</td>
-        <td>The orientation of the slider in a horizontal (default), or vertical layout.</td>
-    </tr>
-    <tr>
-        <td>reversed</td>
-        <td>boolean</td>
-        <td>false</td>
-        <td>If the selection, thumbs, and movement should all be revsersed.</td>
-    </tr>
-    <tr>
-        <td>enabled</td>
-        <td>boolean</td>
-        <td>true</td>
-        <td>If the slider is enabled or disabled at creation.</td>
-    </tr>
-</tbody>
-</table>
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>min</td>
+                <td>integer | float</td>
+                <td>null</td>
+                <td>Numerical value for the minimum values in the range</td>
+            </tr>
+            <tr>
+                <td>max</td>
+                <td>integer | float</td>
+                <td>null</td>
+                <td>Numerical value for the maximum values in the range.</td>
+            </tr>
+            <tr>
+                <td>step</td>
+                <td>integer | float</td>
+                <td>1</td>
+                <td>The minimum movement size.  This value must be a positive, non-zero value.</td>
+            </tr>
+            <tr>
+                <td>chunk</td>
+                <td>integer | float</td>
+                <td>null</td>
+                <td>
+                    <p>The 'large step' size used for PgUp/PgDown keyboard navigation.</p>
+                    <p>If not defined, the chunk will be auto determined based on the size of the step and the range.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>vertical</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>The orientation of the slider in a horizontal (default), or vertical layout.</td>
+            </tr>
+            <tr>
+                <td>reversed</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>If the selection, thumbs, and movement should all be revsersed.</td>
+            </tr>
+            <tr>
+                <td>enabled</td>
+                <td>boolean</td>
+                <td>true</td>
+                <td>If the slider is enabled or disabled at creation.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 ### Methods
 
@@ -256,28 +258,30 @@ Detach the listen events and data for the slider, and remove the slider controls
 
 Event callbacks happen on the created slider element.
 
-<table class="table table-scroll table-bordered table-striped">
-<thead>
-    <tr>
-        <th style="width: 150px;">Event Type</th>
-        <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>init.cfw.slider</td>
-        <td>This event fires after the slider item is initialized.</td>
-    </tr>
-    <tr>
-        <td>slid.cfw.slider</td>
-        <td>This event is fired when a thumb item is manually moved.</td>
-    </tr>
-    <tr>
-        <td>changed.cfw.slider</td>
-        <td>This event is fired when one of the associated input values has been changed.</td>
-    </tr>
-</tbody>
-</table>
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 150px;">Event Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>init.cfw.slider</td>
+                <td>This event fires after the slider item is initialized.</td>
+            </tr>
+            <tr>
+                <td>slid.cfw.slider</td>
+                <td>This event is fired when a thumb item is manually moved.</td>
+            </tr>
+            <tr>
+                <td>changed.cfw.slider</td>
+                <td>This event is fired when one of the associated input values has been changed.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 {% highlight js %}
 $('#mySlider').on('slid.cfw.slider', function () {

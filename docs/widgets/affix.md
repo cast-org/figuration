@@ -58,36 +58,38 @@ $('#myAffix').CFW_Affix({
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-affix-`, as in `data-cfw-affix-top="200"`.
 
-<table class="table table-scroll table-bordered table-striped">
-<thead>
-    <tr>
-        <th style="width: 100px;">Name</th>
-        <th style="width: 100px;">type</th>
-        <th style="width: 50px;">default</th>
-        <th>description</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>top</td>
-        <td>number | function</td>
-        <td>0</td>
-        <td>Pixel offset from top of the `window` or `target` when calculating position of scroll. Use a function when you need to dynamically calculate an offset.</td>
-    </tr>
-    <tr>
-        <td>bottom</td>
-        <td>number | function</td>
-        <td>0</td>
-        <td>Pixel offset from bottom of `window` or `target` when calculating position of scroll. Use a function when you need to dynamically calculate an offset.</td>
-    </tr>
-    <tr>
-        <td>target</td>
-        <td>selector | node | jQuery element</td>
-        <td>the `window` object</td>
-        <td>Specifies the target element of the affix.</td>
-    </tr>
-</tbody>
-</table>
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 100px;">type</th>
+                <th style="width: 50px;">default</th>
+                <th>description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>top</td>
+                <td>number | function</td>
+                <td>0</td>
+                <td>Pixel offset from top of the `window` or `target` when calculating position of scroll. Use a function when you need to dynamically calculate an offset.</td>
+            </tr>
+            <tr>
+                <td>bottom</td>
+                <td>number | function</td>
+                <td>0</td>
+                <td>Pixel offset from bottom of `window` or `target` when calculating position of scroll. Use a function when you need to dynamically calculate an offset.</td>
+            </tr>
+            <tr>
+                <td>target</td>
+                <td>selector | node | jQuery element</td>
+                <td>the `window` object</td>
+                <td>Specifies the target element of the affix.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 ### Methods
 
@@ -120,44 +122,46 @@ Disables the affix functionality and removes any `.affix`, `.affix-top`, or `.af
 
 CFW's affix widget exposes a few events for hooking into affix functionality.
 
-<table class="table table-scroll table-bordered table-striped">
-<thead>
-    <tr>
-        <th style="width: 150px;">Event Type</th>
-        <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td>init.cfw.affix</td>
-        <td>This event is fired after the affix element has been initialized.</td>
-    </tr>
-    <tr>
-        <td>affix.cfw.affix</td>
-        <td>This event is immediately before after the element is affixed.</td>
-    </tr>
-    <tr>
-        <td>affixed.cfw.affix</td>
-        <td>This event is after after the element has been affixed.</td>
-    </tr>
-    <tr>
-        <td>affix-top.cfw.affix</td>
-        <td>This event is fired immediately before the element is affixed-top.</td>
-    </tr>
-    <tr>
-        <td>affixed-top.cfw.affix</td>
-        <td>This event is fired after the element has been affixed-top.</td>
-    </tr>
-    <tr>
-        <td>affix-bottom.cfw.affix</td>
-        <td>This event is immediately before after the element is affixed-bottom.</td>
-    </tr>
-    <tr>
-        <td>affixed-bottom.cfw.affix</td>
-        <td>This event is fired after the element has been affixed-bottom.</td>
-    </tr>
-</tbody>
-</table>
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 150px;">Event Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>init.cfw.affix</td>
+                <td>This event is fired after the affix element has been initialized.</td>
+            </tr>
+            <tr>
+                <td>affix.cfw.affix</td>
+                <td>This event is immediately before after the element is affixed.</td>
+            </tr>
+            <tr>
+                <td>affixed.cfw.affix</td>
+                <td>This event is after after the element has been affixed.</td>
+            </tr>
+            <tr>
+                <td>affix-top.cfw.affix</td>
+                <td>This event is fired immediately before the element is affixed-top.</td>
+            </tr>
+            <tr>
+                <td>affixed-top.cfw.affix</td>
+                <td>This event is fired after the element has been affixed-top.</td>
+            </tr>
+            <tr>
+                <td>affix-bottom.cfw.affix</td>
+                <td>This event is immediately before after the element is affixed-bottom.</td>
+            </tr>
+            <tr>
+                <td>affixed-bottom.cfw.affix</td>
+                <td>This event is fired after the element has been affixed-bottom.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 {% highlight js %}
 $('#myAffix').on('affix.cfw.affix', function () {

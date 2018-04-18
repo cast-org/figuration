@@ -226,36 +226,38 @@ Possible drawbacks include:
 
 ### Common Settings
 
-<table class="table table-scroll table-bordered table-striped">
-<thead>
-    <tr>
-        <th style="width: 100px;">Name</th>
-        <th style="width: 50px;">Type</th>
-        <th style="width: 50px;">Default</th>
-        <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td><code>$responsive-font-size-minimum-size</code></td>
-        <td>font size in <code>px</code> or <code>rem</code></td>
-        <td>1em</td>
-        <td>
-            <p>Calculated font sizes will never be smaller than this size. However, you can still pass a smaller font size, but then it won't be responsively sized.</p>
-            <p>For example: <code>font-size(1.5rem)</code> will trigger responsive sizing, with <code>font-size(.875rem)</code> will remain staticly sized at <code>.875rem</code>.</p>
-        </td>
-    </tr>
-    <tr>
-        <td><code>$responsive-font-size-generate-static</code></td>
-        <td>boolean</td>
-        <td>true</td>
-        <td>
-            <p>Generates the <code>.font-size-static</code> utility classes to disable the responsive font sizes for an element and it's descendant elements. This does not apply to font sizes which are inherited from parent elements.</p>
-            <p>If you are not using these utilities, it would be worthwhile to disable this setting to stop the generation of a potentially large amount of unused CSS.</p>
-        </td>
-    </tr>
-</tbody>
-</table>
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$responsive-font-size-minimum-size</code></td>
+                <td>font size in <code>px</code> or <code>rem</code></td>
+                <td>1em</td>
+                <td>
+                    <p>Calculated font sizes will never be smaller than this size. However, you can still pass a smaller font size, but then it won't be responsively sized.</p>
+                    <p>For example: <code>font-size(1.5rem)</code> will trigger responsive sizing, with <code>font-size(.875rem)</code> will remain staticly sized at <code>.875rem</code>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td><code>$responsive-font-size-generate-static</code></td>
+                <td>boolean</td>
+                <td>true</td>
+                <td>
+                    <p>Generates the <code>.font-size-static</code> utility classes to disable the responsive font sizes for an element and it's descendant elements. This does not apply to font sizes which are inherited from parent elements.</p>
+                    <p>If you are not using these utilities, it would be worthwhile to disable this setting to stop the generation of a potentially large amount of unused CSS.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 ### Fluid Responsive Typography
 
@@ -284,37 +286,38 @@ Will generate the CSS output:
 
 #### Settings
 
-<table class="table table-scroll table-bordered table-striped">
-<thead>
-    <tr>
-        <th style="width: 100px;">Name</th>
-        <th style="width: 50px;">Type</th>
-        <th style="width: 50px;">Default</th>
-        <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td><code>$responsive-font-size-fluid-breakpoint</code></td>
-        <td><code>em</code> unit breakpoint dimension</td>
-        <td>75em</td>
-        <td>Above this breakpoint, the font size will be equal to the font size you passed to the mixin; below the breakpoint, the font size will dynamically scale.</td>
-    </tr>
-    <tr>
-        <td><code>$responsive-font-size-fluid-factor</code></td>
-        <td>integer</td>
-        <td>5</td>
-        <td>This value determines the strength of font size resizing. The higher $rfs-factor, the less difference there is between font sizes on small screens. The lower the factor, the less influence the responsive scaling has, which results in bigger font sizes for small screens. <code>$responsive-font-size-fluid-factor</code> must be greater than 1, and setting it to 1 will disable responsive scaling.</td>
-    </tr>
-    <tr>
-        <td><code>$responsive-font-size-fluid-two-dimensional</code></td>
-        <td>boolean</td>
-        <td>false</td>
-        <td>Enabling the two dimensional media queries will determine the font size based on the smallest side of the screen with <code>vmin</code>. This prevents the font size from changing if the device toggles between portrait and landscape mode.</td>
-    </tr>
-</tbody>
-</table>
-
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$responsive-font-size-fluid-breakpoint</code></td>
+                <td><code>em</code> unit breakpoint dimension</td>
+                <td>75em</td>
+                <td>Above this breakpoint, the font size will be equal to the font size you passed to the mixin; below the breakpoint, the font size will dynamically scale.</td>
+            </tr>
+            <tr>
+                <td><code>$responsive-font-size-fluid-factor</code></td>
+                <td>integer</td>
+                <td>5</td>
+                <td>This value determines the strength of font size resizing. The higher $rfs-factor, the less difference there is between font sizes on small screens. The lower the factor, the less influence the responsive scaling has, which results in bigger font sizes for small screens. <code>$responsive-font-size-fluid-factor</code> must be greater than 1, and setting it to 1 will disable responsive scaling.</td>
+            </tr>
+            <tr>
+                <td><code>$responsive-font-size-fluid-two-dimensional</code></td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>Enabling the two dimensional media queries will determine the font size based on the smallest side of the screen with <code>vmin</code>. This prevents the font size from changing if the device toggles between portrait and landscape mode.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 #### Safari Issue
 There is a known issue with Safari where it does not always recalculate the value of vw in a calc()-function for font-sizes in iframes.

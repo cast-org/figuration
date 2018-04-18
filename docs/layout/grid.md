@@ -65,76 +65,78 @@ See how aspects of the Figuration grid system work across multiple devices with 
 
 The example pixel values are calculated based upon assumption where the average user has a 16px root font size.
 
-<table class="table table-scroll table-bordered table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th class="text-center">
-        Extra small<br>
-        <small>&lt;576px</small><br>
-        <small>&lt;36em</small>
-      </th>
-      <th class="text-center">
-        Small<br>
-        <small>&ge;576px</small><br>
-        <small>&ge;36em</small>
-      </th>
-      <th class="text-center">
-        Medium<br>
-        <small>&ge;768px</small><br>
-        <small>&ge;48em</small>
-      </th>
-      <th class="text-center">
-        Large<br>
-        <small>&ge;992px</small><br>
-        <small>&ge;62em</small>
-      </th>
-      <th class="text-center">
-        Extra large<br>
-        <small>&ge;1200px</small><br>
-        <small>&ge;75em</small>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th class="text-nowrap" scope="row">Max container width</th>
-      <td>None (auto)</td>
-      <td>544px (33.75rem)</td>
-      <td>720px (45rem)</td>
-      <td>960px (60rem)</td>
-      <td>1152px (72rem)</td>
-    </tr>
-    <tr>
-      <th class="text-nowrap" scope="row">Class prefix</th>
-      <td><code>.col-</code></td>
-      <td><code>.col-sm-</code></td>
-      <td><code>.col-md-</code></td>
-      <td><code>.col-lg-</code></td>
-      <td><code>.col-xl-</code></td>
-    </tr>
-    <tr>
-      <th class="text-nowrap" scope="row"># of columns</th>
-      <td colspan="5">12</td>
-    </tr>
-    <tr>
-      <th class="text-nowrap" scope="row">Gutter width</th>
-      <td colspan="5">2rem / 32px (16px on each side of a column)</td>
-    </tr>
-    <tr>
-      <th class="text-nowrap" scope="row">Nestable</th>
-      <td colspan="5">Yes</td>
-    </tr>
-    <tr>
-      <th class="text-nowrap" scope="row">Offsets</th>
-      <td colspan="5">Yes</td>
-    </tr>
-    <tr>
-      <th class="text-nowrap" scope="row">Column ordering</th>
-      <td colspan="5">Yes</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th class="text-center">
+                    Extra small<br>
+                    <small>&lt;576px</small><br>
+                    <small>&lt;36em</small>
+                </th>
+                <th class="text-center">
+                    Small<br>
+                    <small>&ge;576px</small><br>
+                    <small>&ge;36em</small>
+                </th>
+                <th class="text-center">
+                    Medium<br>
+                    <small>&ge;768px</small><br>
+                    <small>&ge;48em</small>
+                </th>
+                <th class="text-center">
+                    Large<br>
+                    <small>&ge;992px</small><br>
+                    <small>&ge;62em</small>
+                </th>
+                <th class="text-center">
+                    Extra large<br>
+                    <small>&ge;1200px</small><br>
+                    <small>&ge;75em</small>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th class="text-nowrap" scope="row">Max container width</th>
+                <td>None (auto)</td>
+                <td>544px (33.75rem)</td>
+                <td>720px (45rem)</td>
+                <td>960px (60rem)</td>
+                <td>1152px (72rem)</td>
+            </tr>
+            <tr>
+                <th class="text-nowrap" scope="row">Class prefix</th>
+                <td><code>.col-</code></td>
+                <td><code>.col-sm-</code></td>
+                <td><code>.col-md-</code></td>
+                <td><code>.col-lg-</code></td>
+                <td><code>.col-xl-</code></td>
+            </tr>
+            <tr>
+                <th class="text-nowrap" scope="row"># of columns</th>
+                <td colspan="5">12</td>
+            </tr>
+            <tr>
+                <th class="text-nowrap" scope="row">Gutter width</th>
+                <td colspan="5">2rem / 32px (16px on each side of a column)</td>
+            </tr>
+            <tr>
+                <th class="text-nowrap" scope="row">Nestable</th>
+                <td colspan="5">Yes</td>
+            </tr>
+            <tr>
+                <th class="text-nowrap" scope="row">Offsets</th>
+                <td colspan="5">Yes</td>
+            </tr>
+            <tr>
+                <th class="text-nowrap" scope="row">Column ordering</th>
+                <td colspan="5">Yes</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 ## Auto-Layout Columns
 

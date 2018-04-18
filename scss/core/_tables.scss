@@ -4,32 +4,167 @@
     max-width: 100%;
     margin-bottom: $table-margin-bottom;
     background-color: $table-bg; // Reset for nesting within parents with `background-color`.
+    border: 0 solid;
+    border-color: $table-border-color;
+
+    // Allow border color to inherit all the way down.
+    // Only use `border-*-width` later to turn border on/off.
+    thead,
+    tbody,
+    tfoot,
+    tr,
+    th,
+    td {
+        border: 0 solid;
+        border-color: inherit;
+    }
 
     th,
     td {
         padding: $table-cell-padding;
         vertical-align: top;
-        border-top: $table-border-width solid $table-border-color;
     }
 
-    thead th {
-        vertical-align: bottom;
-        border-bottom: (2 * $table-border-width) solid $table-border-color;
+    thead {
+        th {
+            vertical-align: bottom;
+        }
+    }
+
+    .table {
+        background-color: inherit;
+        border-color: inherit;
+    }
+}
+
+// Horizontal borders
+.table-bordered,
+.table-celled,
+.table-divided,
+.table-ruled {
+    th,
+    td {
+        border-bottom-width: $table-border-width;
+    }
+
+    thead {
+        th,
+        td {
+            border-bottom-width: $table-head-border-width;
+        }
     }
 
     tbody + tbody {
-        border-top: (2 * $table-border-width) solid $table-border-color;
+        border-top-width: $table-body-border-width;
     }
 
     tfoot {
         th,
         td {
-            border-top: (2 * $table-border-width) solid $table-border-color;
+            border-top-width: $table-foot-border-width;
+            border-bottom-width: 0;
         }
     }
+}
 
-    .table {
-        background-color: $table-bg;
+// stylelint-disable selector-max-type
+.table-celled,
+.table-divided {
+    tbody {
+        tr:last-child  {
+            > th,
+            > td {
+                border-bottom-width: 0;
+            }
+        }
+    }
+}
+// stylelint-enable selector-max-type
+
+.table-bordered,
+.table-ruled {
+    tfoot {
+        th,
+        td {
+            border-bottom-width: $table-border-width;
+        }
+    }
+}
+
+.table-bordered,
+.table-wrapped,
+.table-ruled {
+    &,
+    & .table {
+        border-top-width: $table-border-width;
+        border-bottom-width: $table-border-width;
+    }
+}
+
+// Vertical borders
+.table-bordered,
+.table-celled,
+.table-pillared,
+.table-walled {
+    th,
+    td {
+        border-left-width: $table-border-width;
+
+        &:last-child {
+            border-right-width: $table-border-width;
+        }
+    }
+}
+
+.table-pillared,
+.table-celled {
+    th,
+    td {
+        &:first-child  {
+            border-left-width: 0;
+        }
+        &:last-child {
+            border-right-width: 0;
+        }
+    }
+}
+
+.table-bordered,
+.table-wrapped,
+.table-walled {
+    &,
+    & .table {
+        border-right-width: $table-border-width;
+        border-left-width: $table-border-width;
+    }
+}
+
+// Striped table
+.table-striped-light {
+    tbody tr:nth-of-type(#{$table-striped-selector}) {
+        background-image: $table-striped-bgi-light;
+    }
+}
+.table-striped-dark {
+    tbody tr:nth-of-type(#{$table-striped-selector}) {
+        background-image: $table-striped-bgi-dark;
+    }
+}
+
+// Hover effect
+// Needs to be after striped table in order to overrule background.
+.table-hover-light {
+    tbody tr {
+        @include hover {
+            background-image: $table-hover-bgi-light;
+        }
+    }
+}
+.table-hover-dark {
+    tbody tr {
+        @include hover {
+            background-image: $table-hover-bgi-dark;
+        }
     }
 }
 
@@ -41,83 +176,6 @@
         padding: $table-condensed-cell-padding;
     }
 }
-
-// Bordered table
-.table-bordered {
-    border: $table-border-width solid $table-border-color;
-
-    th,
-    td {
-        border: $table-border-width solid $table-border-color;
-    }
-
-    thead {
-        th,
-        td {
-            border-bottom-width: (2 * $table-border-width);
-        }
-    }
-
-    tfoot {
-        th,
-        td {
-            border-top-width: (2 * $table-border-width);
-        }
-    }
-}
-
-// Borderless table
-.table-borderless {
-    th,
-    td {
-        border: 0;
-    }
-}
-
-// Table with no borders
-.table-noborder {
-    th,
-    td {
-        border: 0;
-    }
-
-    thead,
-    tfoot {
-        th,
-        td {
-            border: 0;
-        }
-    }
-}
-
-// Striped table
-.table-striped {
-    tbody tr:nth-of-type(odd) {
-        background-color: $table-bg-accent;
-    }
-
-    &.table-inverse tbody tr:nth-of-type(odd) {
-        background-color: $table-inverse-bg-accent;
-    }
-}
-
-
-// Hover effect
-// Needs to be after striped table in order to overrule background
-.table-hover {
-    tbody tr {
-        @include hover {
-            background-color: $table-bg-hover;
-        }
-    }
-
-    &.table-inverse tbody tr {
-        @include hover {
-            background-color: $table-inverse-bg-hover;
-        }
-    }
-}
-
 
 // Table backgrounds
 // Active variant
@@ -140,46 +198,16 @@
 }
 
 // Responsive scrolling table
+// Tables will no longet scroll when breakpoint is larger than the one designated.
 @each $bp in map-keys($grid-breakpoints) {
     $bprule: breakpoint-designator($bp);
 
     // Skip largest breakpoint for down (equivalent to `.table-scroll`)
     @if breakpoint-max($bp, $grid-breakpoints) != null {
-        .table-scroll-#{$bp}-down {
+        .table-scroll-#{$bp} {
             @include media-breakpoint-down($bp) {
                 @include table-scroll();
             }
         }
-    }
-}
-
-// Table color variants
-.thead-inverse,
-.tfoot-inverse {
-    th {
-        color: $table-inverse-color;
-        background-color: $table-inverse-bg;
-    }
-}
-.thead-default,
-.tfoot-default {
-    th {
-        color: $table-head-color;
-        background-color: $table-head-bg;
-    }
-}
-.table-inverse {
-    color: $table-inverse-color;
-    background-color: $table-inverse-bg;
-
-    &.table-bordered {
-        border: 0;
-    }
-
-    th,
-    td,
-    thead th,
-    tfoot th {
-        border-color: $table-inverse-border;
     }
 }

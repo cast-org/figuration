@@ -13,799 +13,664 @@ Due to the widespread use of tables across third-party widgets like calendars an
 {:toc}
 
 
-## Examples
+All table styles are inherited, meaning any nested tables will be styled in the same manner as the parent.
 
-Using the most basic table markup, here's how `.table`-based tables look in Figuration. All table styles are inherited, meaning any nested tables will be styled in the same manner as the parent.
+## Basic Table
+
+Using the most basic table markup, a `.table` will result in a mostly unstyled table, and will use all available width.
 
 {% example html %}
 <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
+      <th scope="col">Header 1</th>
+      <th scope="col">Header 2</th>
+      <th scope="col">Header 3</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
+      <td>Cell</td>
+      <td>Cell</td>
+      <td>Cell</td>
     </tr>
     <tr>
       <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
+      <td colspan="2">Spanned Cell</td>
+      <td>Cell</td>
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
+      <td>Cell</td>
+      <td>Cell</td>
+      <td>Cell</td>
     </tr>
   </tbody>
   <tfoot>
     <tr>
       <th scope="col"></th>
-      <th scope="col">Table Footer 1</th>
-      <th scope="col">Table Footer 2</th>
-      <th scope="col">Table Footer 3</th>
+      <th scope="col">Footer 1</th>
+      <th scope="col">Footer 2</th>
+      <th scope="col">Footer 3</th>
     </tr>
   </tfoot>
 </table>
 {% endexample %}
 
-You can also invert the colors---with light text on dark backgrounds---with `.table-inverse`.
+## Styled Tables
 
-{% example html %}
-<table class="table table-inverse">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <th></th>
-      <th>Table Footer 1</th>
-      <th>Table Footer 2</th>
-      <th>Table Footer 3</th>
-    </tr>
-  </tfoot>
+### Striped Rows
+
+Use `.table-striped-{light/dark}` to add zebra-striping to any table row within the `<tbody>`.  This works by using `background-image` to overlay a solid gradient on top of the `background-color`.
+
+Variants include:
+- `.table-striped-light` - lighten the striped row's background-color
+- `.table-striped-dark` - darken the striped row's background-color
+
+<div class="cf-example">
+  <table class="table table-striped-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td colspan="2">Spanned Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% highlight html %}
+<table class="table table-striped-dark">
+  ...
 </table>
-{% endexample %}
+{% endhighlight %}
 
-## Table Head Options
-
-Similar to default and inverse tables, use one of two modifier classes to make `<thead>`s appear light or dark gray.
-
-{% example html %}
-<table class="table">
-  <thead class="thead-inverse">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
+<div class="cf-example">
+  <table class="table table-striped-light bg-dark text-white">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td colspan="2">Spanned Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% highlight html %}
+<table class="table table-striped-light bg-dark text-white">
+  ...
 </table>
+{% endhighlight %}
 
-<table class="table">
-  <thead class="thead-default">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
+### Hoverable Rows
+
+Add `.table-hover-{light/dark}` to enable a hover state on table rows within a `<tbody>`. This works by using `background-image` to overlay a solid gradient on top of the `background-color`.
+
+Variants include:
+- `.table-hover-light` - lighten the hovered row's background-color
+- `.table-hover-dark` - darken the hovered row's background-color
+
+<div class="cf-example">
+  <table class="table table-hover-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td colspan="2">Spanned Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% highlight html %}
+<table class="table table-hover-dark">
+  ...
 </table>
-{% endexample %}
+{% endhighlight %}
 
-## Table Footer Options
-
-Just like the headers, use one of two modifier classes to make `<tfoot>`s appear light or dark gray.
-
-{% example html %}
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
-  <tfoot class="tfoot-inverse">
-    <tr>
-      <th></th>
-      <th>Table Footer 1</th>
-      <th>Table Footer 2</th>
-      <th>Table Footer 3</th>
-    </tr>
-  </tfoot>
+<div class="cf-example">
+  <table class="table table-hover-light bg-dark text-white">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td colspan="2">Spanned Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% highlight html %}
+<table class="table table-hover-light bg-dark text-white">
+  ...
 </table>
+{% endhighlight %}
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
-  <tfoot class="tfoot-default">
-    <tr>
-      <th></th>
-      <th>Table Footer 1</th>
-      <th>Table Footer 2</th>
-      <th>Table Footer 3</th>
-    </tr>
-  </tfoot>
-</table>
-{% endexample %}
-
-## Striped Rows
-
-Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`.
-
-{% example html %}
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
-</table>
-{% endexample %}
-
-{% example html %}
-<table class="table table-striped table-inverse">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
-</table>
-{% endexample %}
-
-## Bordered Table
-
-Add `.table-bordered` for borders on all sides of the table and cells.
-
-{% example html %}
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <th></th>
-      <th>Table Footer 1</th>
-      <th>Table Footer 2</th>
-      <th>Table Footer 3</th>
-    </tr>
-  </tfoot>
-</table>
-{% endexample %}
-
-{% example html %}
-<table class="table table-bordered table-inverse">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <th></th>
-      <th>Table Footer 1</th>
-      <th>Table Footer 2</th>
-      <th>Table Footer 3</th>
-    </tr>
-  </tfoot>
-</table>
-{% endexample %}
-
-## Borderless Table
-
-Add `.table-borderless` to remove borders from all sides of the cells, but leave a border between the table's header or footer and the table body.
-
-{% example html %}
-<table class="table table-borderless">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <th></th>
-      <th>Table Footer 1</th>
-      <th>Table Footer 2</th>
-      <th>Table Footer 3</th>
-    </tr>
-  </tfoot>
-</table>
-{% endexample %}
-
-{% example html %}
-<table class="table table-borderless table-inverse">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <th></th>
-      <th>Table Footer 1</th>
-      <th>Table Footer 2</th>
-      <th>Table Footer 3</th>
-    </tr>
-  </tfoot>
-</table>
-{% endexample %}
-
-## Non-Bordered Table
-
-Add `.table-noborder` to remove borders from all sides of the cells, including the border between the table's header or footer and the table body.
-
-{% example html %}
-<table class="table table-noborder">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <th></th>
-      <th>Table Footer 1</th>
-      <th>Table Footer 2</th>
-      <th>Table Footer 3</th>
-    </tr>
-  </tfoot>
-</table>
-{% endexample %}
-
-{% example html %}
-<table class="table table-noborder table-inverse">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <th></th>
-      <th>Table Footer 1</th>
-      <th>Table Footer 2</th>
-      <th>Table Footer 3</th>
-    </tr>
-  </tfoot>
-</table>
-{% endexample %}
-
-## Mixed-Border Table
-
-Mix `.table-bordered` along with `.table-borderless` or `.table-noborder` to vary the table's borders.
-
-{% example html %}
-<table class="table table-bordered table-borderless">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <th></th>
-      <th>Table Footer 1</th>
-      <th>Table Footer 2</th>
-      <th>Table Footer 3</th>
-    </tr>
-  </tfoot>
-</table>
-{% endexample %}
-
-{% example html %}
-<table class="table table-bordered table-noborder">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <th></th>
-      <th>Table Footer 1</th>
-      <th>Table Footer 2</th>
-      <th>Table Footer 3</th>
-    </tr>
-  </tfoot>
-</table>
-{% endexample %}
-
-## Hoverable Rows
-
-Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
-
-{% example html %}
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
-</table>
-{% endexample %}
-
-{% example html %}
-<table class="table table-hover table-inverse">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
-</table>
-{% endexample %}
-
-## Condensed Table
+### Condensed Table
 
 Add `.table-condensed` to make tables more compact by reducing the cell padding.
 
-{% example html %}
+<div class="cf-example">
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td colspan="2">Spanned Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Footer 1</th>
+        <th>Footer 2</th>
+        <th>Footer 3</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% highlight html %}
 <table class="table table-condensed">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <th></th>
-      <th>Table Footer 1</th>
-      <th>Table Footer 2</th>
-      <th>Table Footer 3</th>
-    </tr>
-  </tfoot>
+  ...
 </table>
-{% endexample %}
+{% endhighlight %}
 
-{% example html %}
-<table class="table table-condensed table-inverse">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td colspan="2">table cell</td>
-      <td>table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <th></th>
-      <th>Table Footer 1</th>
-      <th>Table Footer 2</th>
-      <th>Table Footer 3</th>
-    </tr>
-  </tfoot>
+### Narrow Table
+
+Use our [sizing utilities]({{ site.baseurl }}/utilities/sizing/), such as `w-auto`, to control a table's width.
+
+<div class="cf-example">
+  <table class="table w-auto">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td colspan="2">Spanned Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Footer 1</th>
+        <th>Footer 2</th>
+        <th>Footer 3</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% highlight html %}
+<table class="table w-auto">
+  ...
 </table>
-{% endexample %}
+{% endhighlight %}
 
-## Contextual Classes
+## Table Borders
 
-Use contextual classes to color table rows or individual cells.
+### Divided Table
+
+Add a horizontal border between rows using `.table-divided`.
+
+<div class="cf-example">
+  <table class="table table-divided">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td colspan="2">Spanned Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Footer 1</th>
+        <th>Footer 2</th>
+        <th>Footer 3</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% highlight html %}
+<table class="table table-divided">
+  ...
+</table>
+{% endhighlight %}
+
+### Ruled Table
+
+Put a border on the top and bottom of a table, and between rows using `.table-ruled`.
+
+<div class="cf-example">
+  <table class="table table-ruled">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td colspan="2">Spanned Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Footer 1</th>
+        <th>Footer 2</th>
+        <th>Footer 3</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% highlight html %}
+<table class="table table-ruled">
+  ...
+</table>
+{% endhighlight %}
+
+### Pillared Table
+
+Put a vertical border and between columns using `.table-pillared`.
+
+<div class="cf-example">
+  <table class="table table-pillared">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td colspan="2">Spanned Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Footer 1</th>
+        <th>Footer 2</th>
+        <th>Footer 3</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% highlight html %}
+<table class="table table-pillared">
+  ...
+</table>
+{% endhighlight %}
+
+### Walled Table
+
+Put a border on the sides of a table, and between columns using `.table-walled`.
+
+<div class="cf-example">
+  <table class="table table-walled">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td colspan="2">Spanned Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Footer 1</th>
+        <th>Footer 2</th>
+        <th>Footer 3</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% highlight html %}
+<table class="table table-walled">
+  ...
+</table>
+{% endhighlight %}
+
+### Celled Table
+
+Put horizontal and vertical borders between rows and columns using `.table-celled`.
+
+<div class="cf-example">
+  <table class="table table-celled">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td colspan="2">Spanned Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Footer 1</th>
+        <th>Footer 2</th>
+        <th>Footer 3</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% highlight html %}
+<table class="table table-celled">
+  ...
+</table>
+{% endhighlight %}
+
+### Wrapped Table
+
+Put a border all around the outisde of a table with `.table-wrapped`.
+
+<div class="cf-example">
+  <table class="table table-wrapped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td colspan="2">Spanned Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Footer 1</th>
+        <th>Footer 2</th>
+        <th>Footer 3</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% highlight html %}
+<table class="table table-wrapped">
+  ...
+</table>
+{% endhighlight %}
+
+### Bordered Table
+
+Put a border around the table and every cell with `.table-bordered`.
+
+<div class="cf-example">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td colspan="2">Spanned Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Footer 1</th>
+        <th>Footer 2</th>
+        <th>Footer 3</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% highlight html %}
+<table class="table table-bordered">
+  ...
+</table>
+{% endhighlight %}
+
+## Color Variants
+
+Use [color utility classes]({{ site.baseurl }}/utilities/color/) to style tables with color.
 
 {% callout warning %}
 Conveying Meaning to Assistive Technologies
@@ -814,46 +679,263 @@ Conveying Meaning to Assistive Technologies
 Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
 {% endcallout %}
 
-<table class="table table-scroll table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Class</th>
-      <th>Description</th>
-    </tr>
+### Inverse Table
+
+Easily create an inverted table with light text on a dark background.
+
+<div class="cf-example">
+  <table class="table table-bordered bg-dark border-secondary text-white">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td colspan="2">Spanned Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Footer 1</th>
+        <th>Footer 2</th>
+        <th>Footer 3</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% highlight html %}
+<table class="table table-bordered bg-dark border-secondary text-white">
+  ...
+</table>
+{% endhighlight %}
+
+### Header/Footer Color
+
+Use [text or background utilities]({{ site.baseurl }}/utilities/color/) to alter the look of the header and/or footer.
+
+<div class="cf-example">
+  <table class="table">
+    <thead class="bg-dark text-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td colspan="2">Spanned Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+    <tfoot class="bg-light text-dark">
+      <tr>
+        <th></th>
+        <th>Footer 1</th>
+        <th>Footer 2</th>
+        <th>Footer 3</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% highlight html %}
+<table class="table table-bordered bg-dark border-secondary text-white">
+  <thead class "bg-dark text-light">
+    ...
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">
-        <code>.table-active</code>
-      </th>
-      <td>Applies the hover color to a particular row or cell</td>
-    </tr>
-    <tr>
-      <th scope="row">
-        <code>.table-success</code>
-      </th>
-      <td>Indicates a successful or positive action</td>
-    </tr>
-    <tr>
-      <th scope="row">
-        <code>.table-info</code>
-      </th>
-      <td>Indicates a neutral informative change or action</td>
-    </tr>
-    <tr>
-      <th scope="row">
-        <code>.table-warning</code>
-      </th>
-      <td>Indicates a warning that might need attention</td>
-    </tr>
-    <tr>
-      <th scope="row">
-        <code>.table-danger</code>
-      </th>
-      <td>Indicates a dangerous or potentially negative action</td>
-    </tr>
+    ...
   </tbody>
+  <tfoot class="bg-light text-dark">
+    ...
+  </tfoot>
 </table>
+{% endhighlight %}
+
+### Border Color
+
+`.table`s are defined with `border-{side}-color: inherit;`, allowing for easy recoloring of the borders by setting the `border-color` on the `.table` itself.  Setting a `border-color` on a table row or cell will affect the border color for that specific element and it's descendants.
+
+Cells in `<thead>` and `<tbody>` elements use `border-bottom` for their horizontal borders,  while cells in `<tfoot>` use `border-top`, and hide their bottom border.
+All cells use `border-left` for their vertical ones, unless they are the last ones in a row, then they potentially add a `border-right` depending on the modifier used.
+
+<div class="cf-example"
+  <table class="table table-bordered border-primary">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td colspan="2">Spanned Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Footer 1</th>
+        <th>Footer 2</th>
+        <th>Footer 3</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% highlight html %}
+<table class="table table-bordered border-primary">
+  ...
+</table>
+{% endhighlight %}
+
+<div class="cf-example">
+  <table class="table table-divided">
+    <thead class="border-primary">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td colspan="2">Spanned Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+    <tfoot class="border-danger">
+      <tr>
+        <th></th>
+        <th>Footer 1</th>
+        <th>Footer 2</th>
+        <th>Footer 3</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% highlight html %}
+<table class="table table-divided">
+  <thead class="border-primary">
+    ...
+  </thead>
+  <tbody>
+    ...
+  </tbody>
+  <tfoot class="border-danger">
+    ...
+  </tfoot>
+</table>
+{% endhighlight %}
+
+### Contextual Classes
+
+Use contextual classes to color table rows or individual cells.
+
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Class</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">
+          <code>.table-active</code>
+        </th>
+        <td>Applies the hover color to a particular row or cell</td>
+      </tr>
+      <tr>
+        <th scope="row">
+          <code>.table-success</code>
+        </th>
+        <td>Indicates a successful or positive action</td>
+      </tr>
+      <tr>
+        <th scope="row">
+          <code>.table-info</code>
+        </th>
+        <td>Indicates a neutral informative change or action</td>
+      </tr>
+      <tr>
+        <th scope="row">
+          <code>.table-warning</code>
+        </th>
+        <td>Indicates a warning that might need attention</td>
+      </tr>
+      <tr>
+        <th scope="row">
+          <code>.table-danger</code>
+        </th>
+        <td>Indicates a dangerous or potentially negative action</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <div class="cf-example">
   <table class="table">
@@ -950,7 +1032,7 @@ Please refer to the [Accessiblity notes about conveying meaning with color]({{ s
 </tr>
 {% endhighlight %}
 
-Regular table background variants are not available with the inverse table, however, you may use [text or background utilities]({{ site.baseurl }}/utilities/color/) to achieve similar styles.
+You may also use [text or background utilities]({{ site.baseurl }}/utilities/color/).
 
 <div class="cf-example">
   <table class="table table-inverse">
@@ -1051,20 +1133,20 @@ You can also use [text or background utilities]({{ site.baseurl }}/utilities/col
 
 {% example html %}
 <table class="table">
-  <thead class="text-light bg-blue-500">
+  <thead class="text-light bg-primary">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Table Header 1</th>
-      <th scope="col">Table Header 2</th>
-      <th scope="col">Table Header 3</th>
+      <th scope="col">Header 1</th>
+      <th scope="col">Header 2</th>
+      <th scope="col">Header 3</th>
     </tr>
   </thead>
   <tbody>
-    <tr class="text-cyan-500">
+    <tr class="text-info">
       <th scope="row">1</th>
-      <td>table cell</td>
-      <td>table cell</td>
-      <td>table cell</td>
+      <td>Cell</td>
+      <td>Cell</td>
+      <td>Cell</td>
     </tr>
     <tr>
       <th scope="row">2</th>
@@ -1074,16 +1156,16 @@ You can also use [text or background utilities]({{ site.baseurl }}/utilities/col
     <tr>
       <th scope="row">3</th>
       <td class="text-light bg-success">table cell</td>
-      <td>table cell</td>
-      <td class="text-dark bg-red-100">table cell</td>
+      <td>Cell</td>
+      <td class="text-light bg-danger">table cell</td>
     </tr>
   </tbody>
-  <tfoot class="bg-blue-100">
+  <tfoot class="bg-info text-light">
     <tr>
       <th></th>
-      <th>Table Footer 1</th>
-      <th>Table Footer 2</th>
-      <th>Table Footer 3</th>
+      <th>Footer 1</th>
+      <th>Footer 2</th>
+      <th>Footer 3</th>
     </tr>
   </tfoot>
 </table>
@@ -1129,7 +1211,7 @@ A `<caption>` functions like a heading for a table. It helps users with screen r
 
 ## Scrolling Tables
 
-Having an issue with tables becoming too wide for their containers? Add `.table-scroll` to any `.table` to make them scroll horizontally if they become wider than their container.
+Having an issue with tables becoming too wide for their containers? Add a `.table-scroll` wrapper to any `.table` to make them scroll horizontally if they become wider than their container.
 
 {% callout warning %}
 Vertical Clipping
@@ -1141,205 +1223,347 @@ Scrolling tables make use of `overflow-y: hidden`, which clips off any content t
 ### Always Scrolling
 
 <div class="cf-example">
-  <table class="table table-scroll">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <th></th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-      </tr>
-    </tfoot>
-  </table>
-
-  <table class="table table-scroll table-bordered">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <th></th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-      </tr>
-    </tfoot>
-  </table>
+  <div class="table-scroll">
+    <table class="table table-bordered text-nowrap">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Header 1</th>
+          <th scope="col">Header 2</th>
+          <th scope="col">Header 3</th>
+          <th scope="col">Header 4</th>
+          <th scope="col">Header 5</th>
+          <th scope="col">Header 6</th>
+          <th scope="col">Header 7</th>
+          <th scope="col">Header 8</th>
+          <th scope="col">Header 9</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th></th>
+          <th>Footer 1</th>
+          <th>Footer 2</th>
+          <th>Footer 3</th>
+          <th>Footer 4</th>
+          <th>Footer 5</th>
+          <th>Footer 6</th>
+          <th>Footer 7</th>
+          <th>Footer 8</th>
+          <th>Footer 9</th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
 </div>
 
 {% highlight html %}
-<table class="table table-scroll">
-  ...
-</table>
+<div class="table-scroll">
+    <table class="table table-bordered">
+        ...
+    </table>
+</div>
 {% endhighlight %}
 
 ### Responsive Scrolling
 
-Table scrolling is also available in responsive variants of the form `.table-scroll-*-down`, where the table will horizontally scroll when the table is wider than it's container and when the viewport is at the given breakpoint or smaller.
+Table scrolling is also available in responsive variants of the form `.table-scroll-*`, where the table will horizontally scroll when the table is wider than it's container and when the viewport is at the given breakpoint or smaller.
 
 Responsive variants are:
-- `.table-scroll-xs-down`
-- `.table-scroll-sm-down`
-- `.table-scroll-md-down`
-- `.table-scroll-lg-down`
+- `.table-scroll-xs`
+- `.table-scroll-sm`
+- `.table-scroll-md`
+- `.table-scroll-lg`
 
-**Heads up!** There is no `.table-scroll-*-down` class created for the largest breakpoint, `.table-scroll-xl-down`, since it is functionally equivalent to using `.table-scroll`.
+**Heads up!** There is no `.table-scroll-*` class created for the largest breakpoint, `.table-scroll-xl`, since it is functionally equivalent to using `.table-scroll`.
 
-{% example html %}
-  <table class="table table-scroll-md-down">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <th></th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-        <th>Table footer</th>
-      </tr>
-    </tfoot>
-  </table>
-{% endexample %}
+<div class="cf-example">
+  <div class="table-scroll-xs">
+    <table class="table table-bordered text-nowrap">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Header 1</th>
+          <th scope="col">Header 2</th>
+          <th scope="col">Header 3</th>
+          <th scope="col">Header 4</th>
+          <th scope="col">Header 5</th>
+          <th scope="col">Header 6</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th></th>
+          <th>Footer 1</th>
+          <th>Footer 2</th>
+          <th>Footer 3</th>
+          <th>Footer 4</th>
+          <th>Footer 5</th>
+          <th>Footer 6</th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="table-scroll-sm">
+    <table class="table table-bordered text-nowrap">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Header 1</th>
+          <th scope="col">Header 2</th>
+          <th scope="col">Header 3</th>
+          <th scope="col">Header 4</th>
+          <th scope="col">Header 5</th>
+          <th scope="col">Header 6</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th></th>
+          <th>Footer 1</th>
+          <th>Footer 2</th>
+          <th>Footer 3</th>
+          <th>Footer 4</th>
+          <th>Footer 5</th>
+          <th>Footer 6</th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="table-scroll-md">
+    <table class="table table-bordered text-nowrap">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Header 1</th>
+          <th scope="col">Header 2</th>
+          <th scope="col">Header 3</th>
+          <th scope="col">Header 4</th>
+          <th scope="col">Header 5</th>
+          <th scope="col">Header 6</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th></th>
+          <th>Footer 1</th>
+          <th>Footer 2</th>
+          <th>Footer 3</th>
+          <th>Footer 4</th>
+          <th>Footer 5</th>
+          <th>Footer 6</th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="table-scroll-lg">
+    <table class="table table-bordered text-nowrap">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Header 1</th>
+          <th scope="col">Header 2</th>
+          <th scope="col">Header 3</th>
+          <th scope="col">Header 4</th>
+          <th scope="col">Header 5</th>
+          <th scope="col">Header 6</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th></th>
+          <th>Footer 1</th>
+          <th>Footer 2</th>
+          <th>Footer 3</th>
+          <th>Footer 4</th>
+          <th>Footer 5</th>
+          <th>Footer 6</th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+
+{% highlight html %}
+<div class="table-scroll-xs">
+    <table class="table table-bordered">
+        ...
+    </table>
+</div>
+
+<div class="table-scroll-sm">
+    <table class="table table-bordered">
+        ...
+    </table>
+</div>
+
+<div class="table-scroll-md">
+    <table class="table table-bordered">
+        ...
+    </table>
+</div>
+
+<div class="table-scroll-lg">
+    <table class="table table-bordered">
+        ...
+    </table>
+</div>
+{% endhighlight %}
+

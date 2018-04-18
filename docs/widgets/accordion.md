@@ -125,17 +125,19 @@ Event callbacks happen on the accordion element.
 
 You can also get the collapse events as indicated in the [Collapse widget]({{ site.baseurl}}/widgets/collapse/) due to event bubbling.
 
-<table class="table table-scroll table-bordered table-striped">
-<thead>
-    <tr>
-        <th style="width: 150px;">Event Type</th>
-        <th>Description</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td><code>init.cfw.accordion</code></td>
-        <td>This event fires after the accordion item is initialized.</td>
-    </tr>
-</tbody>
-</table>
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 150px;">Event Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>init.cfw.accordion</code></td>
+                <td>This event fires after the accordion item is initialized.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
