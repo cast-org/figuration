@@ -60,7 +60,7 @@
 
             this.settings = this.getSettings(options);
 
-            this.$viewport = this.settings.viewport && $($.isFunction(this.settings.viewport) ? this.settings.viewport.call(this, this.$element) : (this.settings.viewport.selector || this.settings.viewport));
+            this.$viewport = this.settings.viewport && $((typeof(this.settings.viewport) === 'function') ? this.settings.viewport.call(this, this.$element) : (this.settings.viewport.selector || this.settings.viewport));
 
             this.inState = { click: false, hover: false, focus: false };
 
@@ -174,7 +174,7 @@
                     // Click events
                     this.$element
                         .off('click.cfw.' + this.type)
-                        .on('click.cfw.' + this.type, $.proxy(this.toggle, this));
+                        .on('click.cfw.' + this.type, this.toggle.bind(this));
 
                     // Inject close button
                     if (this.$target != null && !this.closeAdded) {
@@ -191,12 +191,12 @@
                     var eventOut = (eventType == 'hover') ? 'mouseleave' : 'focusout';
 
                     if (modeInit) {
-                        this.$element.on(eventIn  + '.cfw.' + this.type, $.proxy(this.enter, this));
-                        this.$element.on(eventOut + '.cfw.' + this.type, $.proxy(this.leave, this));
+                        this.$element.on(eventIn  + '.cfw.' + this.type, this.enter.bind(this));
+                        this.$element.on(eventOut + '.cfw.' + this.type, this.leave.bind(this));
                     } else {
                         this.$target.off('.cfw.' + this.type);
-                        this.$target.on(eventIn  + '.cfw.' + this.type, $.proxy(this.enter, this));
-                        this.$target.on(eventOut + '.cfw.' + this.type, $.proxy(this.leave, this));
+                        this.$target.on(eventIn  + '.cfw.' + this.type, this.enter.bind(this));
+                        this.$target.on(eventOut + '.cfw.' + this.type, this.leave.bind(this));
                     }
                 }
             }
@@ -443,9 +443,9 @@
             }
 
             // Basic resize handler
-            $(window).on('resize.cfw.' + this.type + '.' + this.instance, $.proxy(this.locateTip, this));
+            $(window).on('resize.cfw.' + this.type + '.' + this.instance, this.locateTip.bind(this));
 
-            this.$target.CFW_transition(null, $.proxy(this._showComplete, this));
+            this.$target.CFW_transition(null, this._showComplete.bind(this));
         },
 
         hide : function(force) {
@@ -480,7 +480,7 @@
                 $('body').children().off('mouseover', null, $.noop);
             }
 
-            this.$target.CFW_transition(null, $.proxy(this._hideComplete, this));
+            this.$target.CFW_transition(null, this._hideComplete.bind(this));
 
             this.hoverState = null;
         },

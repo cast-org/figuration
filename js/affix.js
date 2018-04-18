@@ -35,8 +35,8 @@
 
             // Bind events
             this.$target = $(this.settings.target)
-                .on('scroll.cfw.affix',  $.proxy(this.checkPosition, this))
-                .on('click.cfw.affix',  $.proxy(this.checkPositionDelayed, this));
+                .on('scroll.cfw.affix',  this.checkPosition.bind(this))
+                .on('click.cfw.affix',  this.checkPositionDelayed.bind(this));
 
             this.$element.CFW_trigger('init.cfw.affix');
 
@@ -74,7 +74,7 @@
         },
 
         checkPositionDelayed : function() {
-            setTimeout($.proxy(this.checkPosition, this), 1);
+            setTimeout(this.checkPosition.bind(this), 1);
         },
 
         checkPosition : function() {

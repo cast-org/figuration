@@ -72,7 +72,7 @@
 
             // Bind click handler
             this.$element
-                .on('click.cfw.collapse', $.proxy(this.toggle, this))
+                .on('click.cfw.collapse', this.toggle.bind(this))
                 .CFW_trigger('init.cfw.collapse');
         },
 
@@ -117,7 +117,8 @@
                 this.$target.addClass('collapsing');
             }
 
-            var scrollSize = $.camelCase(['scroll', dimension].join('-'));
+            var capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
+            var scrollSize = 'scroll' + capitalizedDimension;
 
             // Determine/set dimension size for each target (triggers the transition)
             function start() {

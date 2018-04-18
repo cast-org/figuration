@@ -53,14 +53,14 @@
             for (var i = eventTypes.length; i--;) {
                 var eventType = eventTypes[i];
                 if (eventType == 'scroll' || eventType == 'resize') {
-                    $(this.settings.container).on(eventType + '.cfw.lazy.' + this.instance, $.CFW_throttle($.proxy(this._handleTrigger, this), this.settings.throttle));
+                    $(this.settings.container).on(eventType + '.cfw.lazy.' + this.instance, $.CFW_throttle(this._handleTrigger.bind(this), this.settings.throttle));
                     checkInitViewport = true;
                 } else if (eventType == 'mutate') {
                     this.$element
                         .attr('data-cfw-mutate', '')
-                        .on('mutate.cfw.mutate', $.proxy(this._handleTrigger, this));
+                        .on('mutate.cfw.mutate', this._handleTrigger.bind(this));
                 } else {
-                    this.$element.on(eventType + '.cfw.lazy', $.proxy(this.show, this));
+                    this.$element.on(eventType + '.cfw.lazy', this.show.bind(this));
                 }
             }
 

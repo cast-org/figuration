@@ -71,7 +71,7 @@
             this.$dialog.attr('role', 'document');
 
             // Bind click handler
-            this.$element.on('click.cfw.modal', $.proxy(this.toggle, this));
+            this.$element.on('click.cfw.modal', this.toggle.bind(this));
 
             this.$target.data('cfw.modal', this);
 
@@ -153,7 +153,7 @@
 
             // Use modal dialog, not modal container, since
             // that is where the animation happens
-            this.$dialog.CFW_transition(null, $.proxy(this._hideComplete, this));
+            this.$dialog.CFW_transition(null, this._hideComplete.bind(this));
         },
 
         _showComplete : function() {
@@ -267,7 +267,7 @@
 
         resize : function() {
             if (this.isShown) {
-                $(window).on('resize.cfw.modal', $.proxy(this.handleUpdate, this));
+                $(window).on('resize.cfw.modal', this.handleUpdate.bind(this));
             } else {
                 $(window).off('resize.cfw.modal');
             }
@@ -336,7 +336,7 @@
             }
 
             this.$target
-                .on('touchmove.cfw.modal', $.proxy(this._scrollBlock, this))
+                .on('touchmove.cfw.modal', this._scrollBlock.bind(this))
                 .CFW_trigger('scrollbarSet.cfw.modal');
         },
 

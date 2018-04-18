@@ -56,10 +56,10 @@
                 this.$target.CFW_mutationListen();
                 this.$element
                     .attr('data-cfw-mutate', '')
-                    .on('mutate.cfw.mutate', $.proxy(this._equalize, this));
+                    .on('mutate.cfw.mutate', this._equalize.bind(this));
             }
 
-            this.$window.on('resize.cfw.equalize.' + this.instance, $.CFW_throttle($.proxy(this._equalize, this), this.settings.throttle));
+            this.$window.on('resize.cfw.equalize.' + this.instance, $.CFW_throttle(this._equalize.bind(this), this.settings.throttle));
 
             this.$element.attr('data-cfw', 'equalize');
             this.$element.CFW_trigger('init.cfw.equalize');
