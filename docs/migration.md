@@ -17,7 +17,7 @@ Some changes will most likely have been missed, so please refer to the documenta
 
 ## Color
 - Reworked the colors, internal palette system, and consolidated the re-used component colors.
-- Added functions to check, and/or determine the best color, these can be found in '/scss/functions/_color-util.scss`.
+- Added functions to check, and/or determine the best color, these can be found in '/scss/functions/_color-util.scss'.
 - Extended the contextual colors with light and dark contextual variants.  **These variants are not available** as palettes by default.
 
 ## Typography
@@ -25,6 +25,11 @@ Some changes will most likely have been missed, so please refer to the documenta
   - Ratio scaling - variable sizing based on viewport dimension
   - Stepped scaling - one defined size per breakpoint
 - Inline lists, `.list-inline`, has been dropped and replaced with the `.list-horizontal` modifier in the new [List component]({{ site.baseurl }}/components/lists/).
+
+## Table
+- `.table` now creates a visually simple table, borders are controlled through a selection of modifier classes.
+- `.table-hover` and `.table-striped` now use a solid gradient color overlayed using `background-image` to create their visual state.
+- `.table-scroll-*` has dropped the `down` portion of the class name, and is now meant to used as a wrapper to prevent conflict with screen-readers due to the use of `display: block`.
 
 {% comment %}
 ## Sizing
@@ -38,10 +43,10 @@ Some changes will most likely have been missed, so please refer to the documenta
 ### Breadbcrumb
 - Removed `padding`, `background-color` and `border-radius` from parent `.breadcrumb` element.
 
-### Buttons
+### Button
 - Added support for CSS checkbox and radio buttons, using `.btn-check` and `.btn-check-input` classes.
 
-### Cards
+### Card
 - Contextually colored cards have been removed. Now you will need to use the with text, background, and border color utilities.
 - Cards have been converted to flexbox layout.
 - Images now need to be wrapped with `.card-img` to keep aspect ratio and scaling in check due to flexbox.
@@ -49,7 +54,7 @@ Some changes will most likely have been missed, so please refer to the documenta
 ### List Group
 - The List Group is no longer a stand-alone component, and is now modifier within the new [List component]({{ site.baseurl }}/components/lists/).
 
-### Lists
+### List
 - A new component that allows for greater styling options for lists, or pseudo-lists using `<div>`s.
 
 ## Utilities
