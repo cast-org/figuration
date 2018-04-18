@@ -15,7 +15,7 @@
         opacity: .75;
     }
 
-    .close:not(:disabled):not(.disabled) {
+    &:not(:disabled):not(.disabled) {
         cursor: move;
     }
 }
