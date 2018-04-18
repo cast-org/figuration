@@ -336,7 +336,7 @@
                         }
                     }
 
-                    $(window).on('resize.cfw.dropdown.' + this.instance, $.proxy(this._containerPlacement, this));
+                    $(window).on('resize.cfw.dropdown.' + this.instance, this._containerPlacement.bind(this));
                     this._containerPlacement();
                 }
             }

@@ -72,7 +72,7 @@
 
             // Bind click handler
             this.$element
-                .on('click.cfw.collapse', $.proxy(this.toggle, this))
+                .on('click.cfw.collapse', this.toggle.bind(this))
                 .CFW_trigger('init.cfw.collapse');
         },
 

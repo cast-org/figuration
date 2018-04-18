@@ -47,7 +47,7 @@
         },
 
         _dragStartOn : function() {
-            this.$element.on('mousedown.cfw.dragstart touchstart.cfw.dragstart MSPointerDown.cfw.dragstart', $.proxy(this._dragStart, this));
+            this.$element.on('mousedown.cfw.dragstart touchstart.cfw.dragstart MSPointerDown.cfw.dragstart', this._dragStart.bind(this));
             // prevent image dragging in IE...
             if (this.$element[0].attachEvent) {
                 this.$element[0].attachEvent('ondragstart', this._dontStart);
