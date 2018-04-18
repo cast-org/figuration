@@ -59,6 +59,14 @@
     margin-top: 0;
     margin-bottom: 0;
 
+    // Extend `modal-dialog-centered` to full viewport height
+    // to allow centered modal in IE
+    &::before {
+        display: block;
+        height: 100vh;
+        content: "";
+    }
+
     .modal-content {
         margin-top: $modal-dialog-margin;
         margin-bottom: $modal-dialog-margin;
