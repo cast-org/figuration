@@ -60,7 +60,7 @@
 
             this.settings = this.getSettings(options);
 
-            this.$viewport = this.settings.viewport && $($.isFunction(this.settings.viewport) ? this.settings.viewport.call(this, this.$element) : (this.settings.viewport.selector || this.settings.viewport));
+            this.$viewport = this.settings.viewport && $((typeof(this.settings.viewport) === "function") ? this.settings.viewport.call(this, this.$element) : (this.settings.viewport.selector || this.settings.viewport));
 
             this.inState = { click: false, hover: false, focus: false };
 

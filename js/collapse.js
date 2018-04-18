@@ -117,7 +117,8 @@
                 this.$target.addClass('collapsing');
             }
 
-            var scrollSize = $.camelCase(['scroll', dimension].join('-'));
+            var capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
+            var scrollSize = 'scroll' + capitalizedDimension;
 
             // Determine/set dimension size for each target (triggers the transition)
             function start() {

@@ -50,7 +50,7 @@
             var offsetMethod = 'offset';
             var offsetBase = 0;
 
-            if (!$.isWindow(this.$scrollElement[0])) {
+            if (this.$scrollElement[0] != null && this.$scrollElement[0] !== this.$scrollElement[0].window) {
                 offsetMethod = 'position';
                 offsetBase   = this.$scrollElement.scrollTop();
             }
