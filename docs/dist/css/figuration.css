@@ -3095,7 +3095,7 @@ input[type="button"].btn-block {
   opacity: .75;
 }
 
-.close .close:not(:disabled):not(.disabled) {
+.close:not(:disabled):not(.disabled) {
   cursor: pointer;
 }
 
@@ -3125,7 +3125,7 @@ button.close {
   opacity: .75;
 }
 
-.drag .close:not(:disabled):not(.disabled) {
+.drag:not(:disabled):not(.disabled) {
   cursor: move;
 }
 
