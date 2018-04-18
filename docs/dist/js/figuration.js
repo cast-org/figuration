@@ -464,7 +464,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         _dragStartOn : function() {
-            this.$element.on('mousedown.cfw.dragstart touchstart.cfw.dragstart MSPointerDown.cfw.dragstart', $.proxy(this._dragStart, this));
+            this.$element.on('mousedown.cfw.dragstart touchstart.cfw.dragstart MSPointerDown.cfw.dragstart', this._dragStart.bind(this));
             // prevent image dragging in IE...
             if (this.$element[0].attachEvent) {
                 this.$element[0].attachEvent('ondragstart', this._dontStart);
@@ -674,7 +674,7 @@ if (typeof jQuery === 'undefined') {
 
             // Bind click handler
             this.$element
-                .on('click.cfw.collapse', $.proxy(this.toggle, this))
+                .on('click.cfw.collapse', this.toggle.bind(this))
                 .CFW_trigger('init.cfw.collapse');
         },
 
@@ -719,7 +719,8 @@ if (typeof jQuery === 'undefined') {
                 this.$target.addClass('collapsing');
             }
 
-            var scrollSize = $.camelCase(['scroll', dimension].join('-'));
+            var capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
+            var scrollSize = 'scroll' + capitalizedDimension;
 
             // Determine/set dimension size for each target (triggers the transition)
             function start() {
@@ -1175,7 +1176,7 @@ if (typeof jQuery === 'undefined') {
                         }
                     }
 
-                    $(window).on('resize.cfw.dropdown.' + this.instance, $.proxy(this._containerPlacement, this));
+                    $(window).on('resize.cfw.dropdown.' + this.instance, this._containerPlacement.bind(this));
                     this._containerPlacement();
                 }
             }
@@ -1802,8 +1803,8 @@ if (typeof jQuery === 'undefined') {
 
             // Bind events
             this.$target = $(this.settings.target)
-                .on('scroll.cfw.affix',  $.proxy(this.checkPosition, this))
-                .on('click.cfw.affix',  $.proxy(this.checkPositionDelayed, this));
+                .on('scroll.cfw.affix',  this.checkPosition.bind(this))
+                .on('click.cfw.affix',  this.checkPositionDelayed.bind(this));
 
             this.$element.CFW_trigger('init.cfw.affix');
 
@@ -1841,7 +1842,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         checkPositionDelayed : function() {
-            setTimeout($.proxy(this.checkPosition, this), 1);
+            setTimeout(this.checkPosition.bind(this), 1);
         },
 
         checkPosition : function() {
@@ -1987,7 +1988,7 @@ if (typeof jQuery === 'undefined') {
 
             this.settings = this.getSettings(options);
 
-            this.$viewport = this.settings.viewport && $($.isFunction(this.settings.viewport) ? this.settings.viewport.call(this, this.$element) : (this.settings.viewport.selector || this.settings.viewport));
+            this.$viewport = this.settings.viewport && $((typeof(this.settings.viewport) === 'function') ? this.settings.viewport.call(this, this.$element) : (this.settings.viewport.selector || this.settings.viewport));
 
             this.inState = { click: false, hover: false, focus: false };
 
@@ -2101,7 +2102,7 @@ if (typeof jQuery === 'undefined') {
                     // Click events
                     this.$element
                         .off('click.cfw.' + this.type)
-                        .on('click.cfw.' + this.type, $.proxy(this.toggle, this));
+                        .on('click.cfw.' + this.type, this.toggle.bind(this));
 
                     // Inject close button
                     if (this.$target != null && !this.closeAdded) {
@@ -2118,12 +2119,12 @@ if (typeof jQuery === 'undefined') {
                     var eventOut = (eventType == 'hover') ? 'mouseleave' : 'focusout';
 
                     if (modeInit) {
-                        this.$element.on(eventIn  + '.cfw.' + this.type, $.proxy(this.enter, this));
-                        this.$element.on(eventOut + '.cfw.' + this.type, $.proxy(this.leave, this));
+                        this.$element.on(eventIn  + '.cfw.' + this.type, this.enter.bind(this));
+                        this.$element.on(eventOut + '.cfw.' + this.type, this.leave.bind(this));
                     } else {
                         this.$target.off('.cfw.' + this.type);
-                        this.$target.on(eventIn  + '.cfw.' + this.type, $.proxy(this.enter, this));
-                        this.$target.on(eventOut + '.cfw.' + this.type, $.proxy(this.leave, this));
+                        this.$target.on(eventIn  + '.cfw.' + this.type, this.enter.bind(this));
+                        this.$target.on(eventOut + '.cfw.' + this.type, this.leave.bind(this));
                     }
                 }
             }
@@ -2370,9 +2371,9 @@ if (typeof jQuery === 'undefined') {
             }
 
             // Basic resize handler
-            $(window).on('resize.cfw.' + this.type + '.' + this.instance, $.proxy(this.locateTip, this));
+            $(window).on('resize.cfw.' + this.type + '.' + this.instance, this.locateTip.bind(this));
 
-            this.$target.CFW_transition(null, $.proxy(this._showComplete, this));
+            this.$target.CFW_transition(null, this._showComplete.bind(this));
         },
 
         hide : function(force) {
@@ -2407,7 +2408,7 @@ if (typeof jQuery === 'undefined') {
                 $('body').children().off('mouseover', null, $.noop);
             }
 
-            this.$target.CFW_transition(null, $.proxy(this._hideComplete, this));
+            this.$target.CFW_transition(null, this._hideComplete.bind(this));
 
             this.hoverState = null;
         },
@@ -3348,7 +3349,7 @@ if (typeof jQuery === 'undefined') {
             this.$dialog.attr('role', 'document');
 
             // Bind click handler
-            this.$element.on('click.cfw.modal', $.proxy(this.toggle, this));
+            this.$element.on('click.cfw.modal', this.toggle.bind(this));
 
             this.$target.data('cfw.modal', this);
 
@@ -3430,7 +3431,7 @@ if (typeof jQuery === 'undefined') {
 
             // Use modal dialog, not modal container, since
             // that is where the animation happens
-            this.$dialog.CFW_transition(null, $.proxy(this._hideComplete, this));
+            this.$dialog.CFW_transition(null, this._hideComplete.bind(this));
         },
 
         _showComplete : function() {
@@ -3544,7 +3545,7 @@ if (typeof jQuery === 'undefined') {
 
         resize : function() {
             if (this.isShown) {
-                $(window).on('resize.cfw.modal', $.proxy(this.handleUpdate, this));
+                $(window).on('resize.cfw.modal', this.handleUpdate.bind(this));
             } else {
                 $(window).off('resize.cfw.modal');
             }
@@ -3613,7 +3614,7 @@ if (typeof jQuery === 'undefined') {
             }
 
             this.$target
-                .on('touchmove.cfw.modal', $.proxy(this._scrollBlock, this))
+                .on('touchmove.cfw.modal', this._scrollBlock.bind(this))
                 .CFW_trigger('scrollbarSet.cfw.modal');
         },
 
@@ -4221,7 +4222,7 @@ if (typeof jQuery === 'undefined') {
 
     CFW_Widget_Scrollspy.prototype = {
         _init : function() {
-            this.$scrollElement.on('scroll.cfw.scrollspy', $.CFW_throttle($.proxy(this.process, this), this.settings.throttle));
+            this.$scrollElement.on('scroll.cfw.scrollspy', $.CFW_throttle(this.process.bind(this), this.settings.throttle));
             this.selector = (this.settings.target || '') + ' a, ' +
                             (this.settings.target || '') + ' [data-cfw-scrollspy-target]';
             this.$scrollElement.CFW_trigger('init.cfw.scrollspy');
@@ -4239,7 +4240,7 @@ if (typeof jQuery === 'undefined') {
             var offsetMethod = 'offset';
             var offsetBase = 0;
 
-            if (!$.isWindow(this.$scrollElement[0])) {
+            if (this.$scrollElement[0] != null && this.$scrollElement[0] !== this.$scrollElement[0].window) {
                 offsetMethod = 'position';
                 offsetBase   = this.$scrollElement.scrollTop();
             }
@@ -4547,14 +4548,14 @@ if (typeof jQuery === 'undefined') {
             for (var i = eventTypes.length; i--;) {
                 var eventType = eventTypes[i];
                 if (eventType == 'scroll' || eventType == 'resize') {
-                    $(this.settings.container).on(eventType + '.cfw.lazy.' + this.instance, $.CFW_throttle($.proxy(this._handleTrigger, this), this.settings.throttle));
+                    $(this.settings.container).on(eventType + '.cfw.lazy.' + this.instance, $.CFW_throttle(this._handleTrigger.bind(this), this.settings.throttle));
                     checkInitViewport = true;
                 } else if (eventType == 'mutate') {
                     this.$element
                         .attr('data-cfw-mutate', '')
-                        .on('mutate.cfw.mutate', $.proxy(this._handleTrigger, this));
+                        .on('mutate.cfw.mutate', this._handleTrigger.bind(this));
                 } else {
-                    this.$element.on(eventType + '.cfw.lazy', $.proxy(this.show, this));
+                    this.$element.on(eventType + '.cfw.lazy', this.show.bind(this));
                 }
             }
 
@@ -5286,10 +5287,10 @@ if (typeof jQuery === 'undefined') {
                 this.$target.CFW_mutationListen();
                 this.$element
                     .attr('data-cfw-mutate', '')
-                    .on('mutate.cfw.mutate', $.proxy(this._equalize, this));
+                    .on('mutate.cfw.mutate', this._equalize.bind(this));
             }
 
-            this.$window.on('resize.cfw.equalize.' + this.instance, $.CFW_throttle($.proxy(this._equalize, this), this.settings.throttle));
+            this.$window.on('resize.cfw.equalize.' + this.instance, $.CFW_throttle(this._equalize.bind(this), this.settings.throttle));
 
             this.$element.attr('data-cfw', 'equalize');
             this.$element.CFW_trigger('init.cfw.equalize');
