@@ -10,9 +10,9 @@
         }
     }
 
-    // Hover states for `.table-hover`
+    // Hover states for `.table-hover` and `.table-hover-alt`
     // Note: this is not available for cells or rows within `thead` or `tfoot`.
-    .table-hover {
+    [class*="table-hover"] {
         .table-#{$state} {
             @include hover {
                 &,

@@ -481,11 +481,11 @@ $table-body-border-width:   2 * $table-border-width !default;
 $table-foot-border-width:   2 * $table-border-width !default;
 
 $table-striped-selector:    odd !default;
-$table-striped-bgi-light:   linear-gradient(0deg, rgba($white, .125) 0%, rgba($white, .125) 100%) !default;
-$table-striped-bgi-dark:    linear-gradient(0deg, rgba($uibase-900, .075) 0%, rgba($uibase-900, .075) 100%) !default;
+$table-striped-bgi:         linear-gradient(0deg, rgba($uibase-900, .075) 0%, rgba($uibase-900, .075) 100%) !default;
+$table-striped-alt-bgi:     linear-gradient(0deg, rgba($white, .125) 0%, rgba($white, .125) 100%) !default;
 
-$table-hover-bgi-light:     linear-gradient(0deg, rgba($white, .2) 0%, rgba($white, .2) 100%) !default;
-$table-hover-bgi-dark:      linear-gradient(0deg, rgba($uibase-900, .125) 0%, rgba($uibase-900, .125) 100%) !default;
+$table-hover-bgi:           linear-gradient(0deg, rgba($uibase-900, .125) 0%, rgba($uibase-900, .125) 100%) !default;
+$table-hover-alt-bgi:       linear-gradient(0deg, rgba($white, .2) 0%, rgba($white, .2) 100%) !default;
 
 // Buttons
 // =====

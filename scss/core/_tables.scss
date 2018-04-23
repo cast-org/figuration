@@ -30,11 +30,6 @@
             vertical-align: bottom;
         }
     }
-
-    .table {
-        background-color: inherit;
-        border-color: inherit;
-    }
 }
 
 // Horizontal borders
@@ -44,12 +39,11 @@
 .table-ruled {
     th,
     td {
-        border-bottom-width: $table-border-width;
+        border-top-width: $table-border-width;
     }
 
     thead {
-        th,
-        td {
+        th {
             border-bottom-width: $table-head-border-width;
         }
     }
@@ -70,11 +64,11 @@
 // stylelint-disable selector-max-type
 .table-celled,
 .table-divided {
-    tbody {
-        tr:last-child  {
-            > th,
-            > td {
-                border-bottom-width: 0;
+    thead {
+        tr:first-child  {
+            th,
+            td {
+                border-top-width: 0;
             }
         }
     }
@@ -140,34 +134,33 @@
 }
 
 // Striped table
-.table-striped-light {
+.table-striped {
     tbody tr:nth-of-type(#{$table-striped-selector}) {
-        background-image: $table-striped-bgi-light;
+        background-image: $table-striped-bgi;
     }
 }
-.table-striped-dark {
+.table-striped-alt {
     tbody tr:nth-of-type(#{$table-striped-selector}) {
-        background-image: $table-striped-bgi-dark;
+        background-image: $table-striped-alt-bgi;
     }
 }
 
 // Hover effect
 // Needs to be after striped table in order to overrule background.
-.table-hover-light {
+.table-hover {
     tbody tr {
         @include hover {
-            background-image: $table-hover-bgi-light;
+            background-image: $table-hover-bgi;
         }
     }
 }
-.table-hover-dark {
+.table-hover-alt {
     tbody tr {
         @include hover {
-            background-image: $table-hover-bgi-dark;
+            background-image: $table-hover-alt-bgi;
         }
     }
 }
-
 
 // Condensed table
 .table-condensed {
