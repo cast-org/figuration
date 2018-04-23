@@ -235,13 +235,17 @@
 // Interactive list items
 // Use anchor or button elements instead of `<li>`s or `<div>`s to create
 // interactive list items.
+// stylelint-disable selector-no-qualifying-type
+button.list-item-action {
+    cursor: pointer;
+}
+// stylelint-enable selector-no-qualifying-type
 .list-item-action {
     width: 100%; // For `<button>`s (anchors become 100% by default though)
     padding: 0; // Reset `<button>` padding
     color: $list-item-action-color;
     text-align: inherit; // For `<button>`s (anchors inherit)
     text-decoration: none;
-    cursor: pointer;
 
     // Hover state
     @include hover-focus {
@@ -253,7 +257,7 @@
 
     &.disabled,
     &:disabled {
-        cursor: auto;
+        cursor: default;
     }
 }
 
