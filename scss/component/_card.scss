@@ -32,6 +32,12 @@
         }
     }
 
+    > .table {
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
     > hr {
         margin-right: 0;
         margin-left: 0;

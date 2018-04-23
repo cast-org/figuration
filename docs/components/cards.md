@@ -204,6 +204,38 @@ Horizontal lists are not currently supported in cards.
 </div>
 {% endexample %}
 
+### Tables
+
+{% example html %}
+<div class="card">
+    <table class="table table-divided">
+        <thead>
+            <tr>
+                <th scope="col">Header</th>
+                <th scope="col">Header</th>
+                <th scope="col">Header</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <td colspan="2">Spanned Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endexample %}
+
 ### All Together
 
 The multiple content types can be easily combined to create the card you need.
