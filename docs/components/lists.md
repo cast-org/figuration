@@ -491,6 +491,7 @@ Use contextual classes to style list items with a stateful background and color.
 <ul class="list list-spaced list-ruled">
     <li class="list-item">Default list item</li>
     <li class="list-item list-item-primary">Primary list item</li>
+    <li class="list-item list-item-secondary">Secondary list item</li>
     <li class="list-item list-item-success">Success list item</li>
     <li class="list-item list-item-info">Inof list item</li>
     <li class="list-item list-item-warning">Warning list item</li>
@@ -506,6 +507,7 @@ Contextual classes also work with `.list-item-action`. Note the addition of the 
 <div class="list list-spaced list-ruled">
     <a href="#" class="list-item list-item-action">Default list item</a>
     <a href="#" class="list-item list-item-action list-item-primary">Primary list item</a>
+    <a href="#" class="list-item list-item-action list-item-secondary">Secondary list item</a>
     <a href="#" class="list-item list-item-action list-item-success">Success list item</a>
     <a href="#" class="list-item list-item-action list-item-info">Info list item</a>
     <a href="#" class="list-item list-item-action list-item-warning">Warning list item</a>
