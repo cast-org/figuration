@@ -527,11 +527,6 @@ pre code {
   vertical-align: bottom;
 }
 
-.table .table {
-  background-color: inherit;
-  border-color: inherit;
-}
-
 .table-bordered th,
 .table-bordered td,
 .table-celled th,
@@ -540,17 +535,13 @@ pre code {
 .table-divided td,
 .table-ruled th,
 .table-ruled td {
-  border-bottom-width: 1px;
+  border-top-width: 1px;
 }
 
 .table-bordered thead th,
-.table-bordered thead td,
 .table-celled thead th,
-.table-celled thead td,
 .table-divided thead th,
-.table-divided thead td,
-.table-ruled thead th,
-.table-ruled thead td {
+.table-ruled thead th {
   border-bottom-width: 2px;
 }
 
@@ -573,11 +564,11 @@ pre code {
   border-bottom-width: 0;
 }
 
-.table-celled tbody tr:last-child > th,
-.table-celled tbody tr:last-child > td,
-.table-divided tbody tr:last-child > th,
-.table-divided tbody tr:last-child > td {
-  border-bottom-width: 0;
+.table-celled thead tr:first-child th,
+.table-celled thead tr:first-child td,
+.table-divided thead tr:first-child th,
+.table-divided thead tr:first-child td {
+  border-top-width: 0;
 }
 
 .table-bordered tfoot th,
@@ -643,20 +634,20 @@ pre code {
   border-right-width: 1px;
 }
 
-.table-striped-light tbody tr:nth-of-type(odd) {
-  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.125) 0%, rgba(255, 255, 255, 0.125) 100%);
-}
-
-.table-striped-dark tbody tr:nth-of-type(odd) {
+.table-striped tbody tr:nth-of-type(odd) {
   background-image: linear-gradient(0deg, rgba(38, 45, 52, 0.075) 0%, rgba(38, 45, 52, 0.075) 100%);
 }
 
-.table-hover-light tbody tr:hover {
-  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.2) 100%);
+.table-striped-alt tbody tr:nth-of-type(odd) {
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.125) 0%, rgba(255, 255, 255, 0.125) 100%);
 }
 
-.table-hover-dark tbody tr:hover {
+.table-hover tbody tr:hover {
   background-image: linear-gradient(0deg, rgba(38, 45, 52, 0.125) 0%, rgba(38, 45, 52, 0.125) 100%);
+}
+
+.table-hover-alt tbody tr:hover {
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.2) 100%);
 }
 
 .table-condensed th,
@@ -670,9 +661,9 @@ pre code {
   background-color: #eff1f3;
 }
 
-.table-hover .table-active:hover,
-.table-hover .table-active:hover > td,
-.table-hover .table-active:hover > th {
+[class*="table-hover"] .table-active:hover,
+[class*="table-hover"] .table-active:hover > td,
+[class*="table-hover"] .table-active:hover > th {
   background-color: #bfc6cd;
 }
 
@@ -682,9 +673,9 @@ pre code {
   background-color: #ccdffc;
 }
 
-.table-hover .table-primary:hover,
-.table-hover .table-primary:hover > td,
-.table-hover .table-primary:hover > th {
+[class*="table-hover"] .table-primary:hover,
+[class*="table-hover"] .table-primary:hover > td,
+[class*="table-hover"] .table-primary:hover > th {
   background-color: #99bff9;
 }
 
@@ -694,9 +685,9 @@ pre code {
   background-color: #dfe3e6;
 }
 
-.table-hover .table-secondary:hover,
-.table-hover .table-secondary:hover > td,
-.table-hover .table-secondary:hover > th {
+[class*="table-hover"] .table-secondary:hover,
+[class*="table-hover"] .table-secondary:hover > td,
+[class*="table-hover"] .table-secondary:hover > th {
   background-color: #bfc6cd;
 }
 
@@ -706,9 +697,9 @@ pre code {
   background-color: #d0e5f0;
 }
 
-.table-hover .table-info:hover,
-.table-hover .table-info:hover > td,
-.table-hover .table-info:hover > th {
+[class*="table-hover"] .table-info:hover,
+[class*="table-hover"] .table-info:hover > td,
+[class*="table-hover"] .table-info:hover > th {
   background-color: #a1cbe1;
 }
 
@@ -718,9 +709,9 @@ pre code {
   background-color: #cfeed3;
 }
 
-.table-hover .table-success:hover,
-.table-hover .table-success:hover > td,
-.table-hover .table-success:hover > th {
+[class*="table-hover"] .table-success:hover,
+[class*="table-hover"] .table-success:hover > td,
+[class*="table-hover"] .table-success:hover > th {
   background-color: #9fdea6;
 }
 
@@ -730,9 +721,9 @@ pre code {
   background-color: #fef3d3;
 }
 
-.table-hover .table-warning:hover,
-.table-hover .table-warning:hover > td,
-.table-hover .table-warning:hover > th {
+[class*="table-hover"] .table-warning:hover,
+[class*="table-hover"] .table-warning:hover > td,
+[class*="table-hover"] .table-warning:hover > th {
   background-color: #fce7a7;
 }
 
@@ -742,9 +733,9 @@ pre code {
   background-color: #f9d3d0;
 }
 
-.table-hover .table-danger:hover,
-.table-hover .table-danger:hover > td,
-.table-hover .table-danger:hover > th {
+[class*="table-hover"] .table-danger:hover,
+[class*="table-hover"] .table-danger:hover > td,
+[class*="table-hover"] .table-danger:hover > th {
   background-color: #f2a7a1;
 }
 
@@ -754,9 +745,9 @@ pre code {
   background-color: #fcfcfd;
 }
 
-.table-hover .table-light:hover,
-.table-hover .table-light:hover > td,
-.table-hover .table-light:hover > th {
+[class*="table-hover"] .table-light:hover,
+[class*="table-hover"] .table-light:hover > td,
+[class*="table-hover"] .table-light:hover > th {
   background-color: #f9f9fa;
 }
 
@@ -766,9 +757,9 @@ pre code {
   background-color: #d6d8da;
 }
 
-.table-hover .table-dark:hover,
-.table-hover .table-dark:hover > td,
-.table-hover .table-dark:hover > th {
+[class*="table-hover"] .table-dark:hover,
+[class*="table-hover"] .table-dark:hover > td,
+[class*="table-hover"] .table-dark:hover > th {
   background-color: #aeb2b6;
 }
 
@@ -3447,13 +3438,16 @@ button.drag {
   padding-right: 1rem;
 }
 
+button.list-item-action {
+  cursor: pointer;
+}
+
 .list-item-action {
   width: 100%;
   padding: 0;
   color: #424f5b;
   text-align: inherit;
   text-decoration: none;
-  cursor: pointer;
 }
 
 .list-item-action:hover, .list-item-action:focus {
@@ -3464,7 +3458,7 @@ button.drag {
 }
 
 .list-item-action.disabled, .list-item-action:disabled {
-  cursor: auto;
+  cursor: default;
 }
 
 .list-item {
@@ -5344,6 +5338,10 @@ a.badge:hover, a.badge:focus {
 .card > .list:last-child > .list-item:last-child {
   border-bottom-left-radius: calc(0.25rem - 1px);
   border-bottom-right-radius: calc(0.25rem - 1px);
+}
+
+.card > .table:last-child {
+  margin-bottom: 0;
 }
 
 .card > hr {
