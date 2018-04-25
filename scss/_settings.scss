@@ -319,7 +319,7 @@ $component-active-color:        map-deep-get($context-themes, "primary", "contro
 $component-active-border-color: map-deep-get($context-themes, "primary", "control-border-color") !default;
 $component-active-hover-bg:     map-deep-get($context-themes, "primary", "control-hover-bg") !default;
 
-$component-disabled-color:      $uibase-400 !default;
+$component-disabled-color:      $uibase-300 !default;
 $component-disabled-bg:         transparent !default;
 
 $component-overlay-border-color:    rgba($uibase-900, .4) !default;
