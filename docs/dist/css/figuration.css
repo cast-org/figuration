@@ -885,7 +885,7 @@ pre code {
 }
 
 .form-control:disabled {
-  color: #7e8d9b;
+  color: #9eaab4;
 }
 
 select.form-control[size]:not([size="1"]), select.form-control[multiple] {
@@ -1039,7 +1039,7 @@ textarea.form-control {
 
 .form-check.disabled .form-check-label,
 fieldset:disabled .form-check-label {
-  color: #7e8d9b;
+  color: #9eaab4;
 }
 
 .form-check-input {
@@ -1399,7 +1399,7 @@ fieldset:disabled .form-check-label {
 }
 
 .custom-select:disabled {
-  color: #7e8d9b;
+  color: #9eaab4;
   background-color: #eff1f3;
 }
 
@@ -3473,7 +3473,7 @@ button.list-item-action {
 }
 
 .list-item.disabled, .list-item:disabled {
-  color: #7e8d9b;
+  color: #9eaab4;
   text-decoration: none;
   background-color: transparent;
 }
@@ -4063,7 +4063,7 @@ button.list-item-action {
 }
 
 .page-link.disabled {
-  color: #7e8d9b;
+  color: #9eaab4;
   pointer-events: none;
   cursor: auto;
   background-color: transparent;
@@ -4308,7 +4308,7 @@ button.list-item-action {
 .dropdown-menu a.disabled, .dropdown-menu a:disabled,
 .dropdown-item.disabled,
 .dropdown-item:disabled {
-  color: #7e8d9b;
+  color: #9eaab4;
   text-decoration: none;
   background-color: transparent;
   background-image: none;
@@ -4446,7 +4446,7 @@ li .dropdown-header {
 }
 
 .nav-link.disabled {
-  color: #7e8d9b;
+  color: #9eaab4;
   opacity: 0.6;
 }
 
@@ -4473,7 +4473,7 @@ li .dropdown-header {
 }
 
 .nav-tabs .nav-link.disabled {
-  color: #7e8d9b;
+  color: #9eaab4;
   background-color: transparent;
   border-color: transparent;
 }
@@ -4508,7 +4508,7 @@ li .dropdown-header {
 }
 
 .nav-pills .nav-link.disabled {
-  color: #7e8d9b;
+  color: #9eaab4;
   background-color: transparent;
   border-color: transparent;
 }
@@ -12210,15 +12210,20 @@ a.text-gray-900:hover, a.text-gray-900:focus {
     border: 1px solid #000;
   }
   .table {
+    color: inherit !important;
     border-collapse: collapse !important;
+    border-color: #bfc6cd !important;
   }
+  .table thead,
+  .table tbody,
+  .table tfoot {
+    color: inherit !important;
+  }
+  .table tr,
   .table td,
   .table th {
+    color: inherit !important;
     background-color: #fff !important;
-  }
-  .table-bordered th,
-  .table-bordered td {
-    border: 1px solid #ddd !important;
   }
 }
 /*# sourceMappingURL=figuration.css.map */
