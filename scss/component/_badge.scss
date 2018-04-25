@@ -44,6 +44,23 @@ a.badge {
     @include border-radius($badge-pill-border-radius);
 }
 
+// Badge group
+.badge-group {
+    display: inline-flex;
+    vertical-align: baseline;
+
+    > .badge {
+        &:not(:first-child) {
+            margin-left: -$badge-border-width;
+            @include border-start-radius(0);
+        }
+
+        &:not(:last-child) {
+            @include border-end-radius(0);
+        }
+    }
+}
+
 // Colors (linked badges get darker on :hover)
 @each $theme, $colors in $context-themes {
     $bg:            map-get($colors, "control-bg");
