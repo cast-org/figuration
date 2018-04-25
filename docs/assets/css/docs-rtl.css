@@ -508,15 +508,15 @@ h4 > code {
 }
 
 .cf-callout-primary {
-  background-color: #ccdffc;
-  border-color: #0051cd;
+  background-color: #ccddfb;
+  border-color: #0048c6;
 }
 
 .cf-callout-primary .h3,
 .cf-callout-primary .h4,
 .cf-callout-primary .h5,
 .cf-callout-primary .h6 {
-  color: #003485;
+  color: #002f80;
 }
 
 .cf-callout-secondary {
@@ -532,27 +532,27 @@ h4 > code {
 }
 
 .cf-callout-info {
-  background-color: #d0e5f0;
-  border-color: #106a99;
+  background-color: #d0e6ed;
+  border-color: #136d8b;
 }
 
 .cf-callout-info .h3,
 .cf-callout-info .h4,
 .cf-callout-info .h5,
 .cf-callout-info .h6 {
-  color: #0a4563;
+  color: #0c465a;
 }
 
 .cf-callout-success {
-  background-color: #cfeed3;
-  border-color: #0e921c;
+  background-color: #cfe8d0;
+  border-color: #0c7513;
 }
 
 .cf-callout-success .h3,
 .cf-callout-success .h4,
 .cf-callout-success .h5,
 .cf-callout-success .h6 {
-  color: #095f12;
+  color: #084c0c;
 }
 
 .cf-callout-warning {
@@ -568,15 +568,15 @@ h4 > code {
 }
 
 .cf-callout-danger {
-  background-color: #f9d3d0;
-  border-color: #be1e11;
+  background-color: #f6d3d0;
+  border-color: #b41e11;
 }
 
 .cf-callout-danger .h3,
 .cf-callout-danger .h4,
 .cf-callout-danger .h5,
 .cf-callout-danger .h6 {
-  color: #7b130b;
+  color: #75130b;
 }
 
 .cf-callout-light {
@@ -877,7 +877,7 @@ h4 > code {
 .cf-example-container-header {
   height: 3rem;
   margin-bottom: .5rem;
-  background-color: #f1f7ff;
+  background-color: #e9f1ff;
   border-radius: .25rem;
 }
 
@@ -893,7 +893,7 @@ h4 > code {
   float: left;
   width: 8rem;
   height: 8rem;
-  background-color: #f4887f;
+  background-color: #f27f75;
   border-radius: .25rem;
 }
 
@@ -1641,8 +1641,8 @@ h4 > code {
 }
 
 .responsive-utilities .is-visible {
-  color: #095f12;
-  background-color: #cfeed3 !important;
+  color: #084c0c;
+  background-color: #cfe8d0 !important;
 }
 
 .responsive-utilities .is-hidden {
@@ -1677,8 +1677,8 @@ h4 > code {
 
 .visible-on .col-6 .visible,
 .hidden-on .col-6 .visible {
-  color: #095f12;
-  background-color: #cfeed3;
+  color: #084c0c;
+  background-color: #cfe8d0;
   border: 1px solid;
 }
 
