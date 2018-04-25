@@ -2,7 +2,7 @@
     display: flex;
     padding-left: 0;
     list-style: none;
-    @include border-radius();
+    @include border-radius($pagination-border-radius);
 }
 
 .page-item {
