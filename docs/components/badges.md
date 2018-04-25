@@ -121,3 +121,30 @@ Just like our buttons, you can get badges that are not quite as bold by using th
 <a href="#" class="badge badge-outline-danger">Danger</a>
 </p>
 {% endexample %}
+
+
+## Badge Group
+
+Group badges together using `.badge-group`.
+
+{% example html%}
+<div class="badge-group me-1">
+    <span class="badge badge-dark">version</span>
+    <span class="badge badge-success">v4.0.0</span>
+</div>
+
+<div class="badge-group me-1">
+    <span class="badge badge-dark">build</span>
+    <span class="badge badge-danger">error</span>
+</div>
+
+<div class="badge-group me-1">
+    <span class="badge badge-dark">response</span>
+    <span class="badge badge-light">none</span>
+</div>
+
+<div class="badge-group">
+    <span class="badge badge-primary">comments</span>
+    <span class="badge badge-outline-primary">9</span>
+</div>
+{% endexample %}
