@@ -44,7 +44,7 @@ For the examples throughout this page, you will need to resize your browser wind
 The most basic example of a `.navbar` is one that never expands, no matter the screen width.
 
 <div class="cf-example">
-  <nav class="navbar navbar-light bg-faded mb-1">
+  <nav class="navbar navbar-light bg-light mb-1">
       <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarB0">
           <span aria-hidden="true">&#8801;</span>
       </button>
@@ -65,7 +65,7 @@ The most basic example of a `.navbar` is one that never expands, no matter the s
       </div>
   </nav>
 
-  <nav class="navbar navbar-light bg-faded flex-between">
+  <nav class="navbar navbar-light bg-light flex-between">
       <a href="#" class="navbar-brand">Never Expand</a>
       <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarB1">
           <span aria-hidden="true">&#8801;</span>
@@ -87,7 +87,7 @@ The most basic example of a `.navbar` is one that never expands, no matter the s
   </nav>
 </div>
 {% highlight html %}
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-light bg-light">
     <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarB0">
         <span aria-hidden="true">&#8801;</span>
     </button>
@@ -108,7 +108,7 @@ The most basic example of a `.navbar` is one that never expands, no matter the s
     </div>
 </nav>
 
-<nav class="navbar navbar-light bg-faded flex-between">
+<nav class="navbar navbar-light bg-light flex-between">
     <a href="#" class="navbar-brand">Never Expand</a>
     <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarB1">
         <span aria-hidden="true">&#8801;</span>
@@ -135,7 +135,7 @@ The most basic example of a `.navbar` is one that never expands, no matter the s
 Be default, navbars start out collapsed, but when the target breakpoint is reached, the navbar will expand into a horizontal row of elements.
 
 {% example html %}
-<nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between">
+<nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
   <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarR0">
     <span aria-hidden="true">&#8801;</span>
@@ -164,7 +164,7 @@ Be default, navbars start out collapsed, but when the target breakpoint is reach
 With the `.navbar-brand` in the collapsing area.
 
 {% example html %}
-<nav class="navbar navbar-expand-lg navbar-light bg-faded">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarR1">
     <span aria-hidden="true">&#8801;</span>
   </button>
@@ -204,7 +204,7 @@ Navbars come with built-in support for a handful of sub-components. Mix and matc
 Here's an example of some sub-components included in a default, light navbar:
 
 {% example html %}
-<nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between">
+<nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
   <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar0">
     <span aria-hidden="true">&#8801;</span>
@@ -235,20 +235,20 @@ Here's an example of some sub-components included in a default, light navbar:
 The `.navbar-brand` can be applied to most elements, but an anchor works best as some elements might require utility classes or custom styles.
 
 <div class="cf-example">
-  <nav class="navbar navbar-light bg-faded mb-1">
+  <nav class="navbar navbar-light bg-light mb-1">
     <a href="#" class="navbar-brand">Navbar</a>
   </nav>
 
-  <nav class="navbar navbar-light bg-faded">
+  <nav class="navbar navbar-light bg-light">
     <h1 class="navbar-brand mb-0">Navbar</h1>
   </nav>
 </div>
 {% highlight html %}
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-light bg-light">
   <a href="#" class="navbar-brand">Navbar</a>
 </nav>
 
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-light bg-light">
   <h1 class="navbar-brand mb-0">Navbar</h1>
 </nav>
 {% endhighlight %}
@@ -257,7 +257,7 @@ Adding images to the `.navbar-brand` will likely always require custom styles or
 
 {% example html %}
 <!-- Just an image -->
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
     <img src="{{ site.baseurl }}/assets/img/home.svg" width="30" height="30" alt="">
   </a>
@@ -266,7 +266,7 @@ Adding images to the `.navbar-brand` will likely always require custom styles or
 
 {% example html %}
 <!-- Image and text -->
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
     <img src="{{ site.baseurl }}/assets/img/home.svg" width="30" height="30" class="d-inline-block align-top" alt="">
     Navbar
@@ -281,7 +281,7 @@ Navbar navigation builds on some of the `.nav` options with their own modifier c
 Add `.active` directly to a `.nav-link`, to indicate a certain state, such as the current page.
 
 {% example html %}
-<nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between">
+<nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <div class="navbar-brand">Navbar</div>
   <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar1">
     <span aria-hidden="true">&#8801;</span>
@@ -309,7 +309,7 @@ Add `.active` directly to a `.nav-link`, to indicate a certain state, such as th
 And because we use classes for our navs, you can avoid the list-based approach entirely if you like.
 
 {% example html %}
-<nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between">
+<nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
  <div class="navbar-brand">Navbar</div>
   <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar2">
     <span aria-hidden="true">&#8801;</span>
@@ -333,7 +333,7 @@ You may also utilize the [Dropdown widget]({{ site.baseurl}}/widgets/dropdown/) 
 If a dropdown is displayed in a non-expanded navbar, they will display 'inline' with the rest of the navbar menu.
 
 {% example html %}
-<nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between">
+<nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
   <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar3">
     <span aria-hidden="true">&#8801;</span>
@@ -368,7 +368,7 @@ If a dropdown is displayed in a non-expanded navbar, they will display 'inline' 
 Place various form controls and components within a navbar with `.form-inline`.
 
 {% example html %}
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-light bg-light">
   <form class="form-inline">
     <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-primary" type="submit">Search</button>
@@ -379,7 +379,7 @@ Place various form controls and components within a navbar with `.form-inline`.
 Align the contents of your inline forms with utilities as needed.
 
 {% example html %}
-<nav class="navbar navbar-light bg-faded flex-between">
+<nav class="navbar navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
   <form class="form-inline">
     <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
@@ -391,7 +391,7 @@ Align the contents of your inline forms with utilities as needed.
 Input groups work, too:
 
 {% example html %}
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-light bg-light">
   <form class="form-inline">
     <div class="input-group">
       <span class="input-group-addon" id="basic-addon1">@</span>
@@ -404,7 +404,7 @@ Input groups work, too:
 Various buttons are supported as part of these navbar forms, too. This is also a great reminder that vertical alignment utilities can be used to align different sized elements.
 
 {% example html %}
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-light bg-light">
   <form class="form-inline">
     <button type="button" class="btn btn-outline-success me-0_25">Main button</button>
     <button type="button" class="btn btn-sm align-middle btn-outline-secondary">Smaller button</button>
@@ -417,7 +417,7 @@ Various buttons are supported as part of these navbar forms, too. This is also a
 Add normal text to your navbars with the help of `.navbar-text`.  This class adjusts vertical alignment for strings of text.
 
 {% example html %}
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-light bg-light">
     <span class="navbar-text">Navbar text example</span>
 </nav>
 {% endexample %}
@@ -425,7 +425,7 @@ Add normal text to your navbars with the help of `.navbar-text`.  This class adj
 Using the utility classes, you can change the alignment and appearance of your navbar text.
 
 {% example html %}
-<nav class="navbar navbar-light bg-faded flex-end">
+<nav class="navbar navbar-light bg-light flex-end">
     <span class="navbar-text text-danger">
         Navbar text aligned right
     </span>
@@ -435,7 +435,7 @@ Using the utility classes, you can change the alignment and appearance of your n
 You can also use utility classes to align navbar text to other navbar elements like the brand and navigation.
 
 {% example html %}
-<nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between">
+<nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
   <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar6">
     <span aria-hidden="true">&#8801;</span>
@@ -472,7 +472,7 @@ Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl 
 {% endcallout %}
 
 <div class="cf-example">
-  <nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between mb-1">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between mb-1">
     <a href="#" class="navbar-brand">Navbar</a>
     <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar7">
       <span aria-hidden="true">&#8801;</span>
@@ -493,7 +493,7 @@ Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl 
     </div>
   </nav>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-inverse flex-between">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark flex-between">
     <a href="#" class="navbar-brand">Navbar</a>
     <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar8">
       <span aria-hidden="true">&#8801;</span>
@@ -515,7 +515,7 @@ Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl 
   </nav>
 </div>
 {% highlight html %}
-<nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between">
+<nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
   <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar7">
     <span aria-hidden="true">&#8801;</span>
@@ -536,7 +536,7 @@ Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl 
   </div>
 </nav>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-inverse flex-between">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
   <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar8">
     <span aria-hidden="true">&#8801;</span>
@@ -563,7 +563,7 @@ Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl 
 Place a visual separator between segments of the navbar.
 
 <div class="cf-example">
-  <nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between mb-1">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between mb-1">
     <a href="#" class="navbar-brand">Navbar</a>
     <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar9">
       <span aria-hidden="true">&#8801;</span>
@@ -580,7 +580,7 @@ Place a visual separator between segments of the navbar.
     </div>
   </nav>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-inverse flex-between">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark flex-between">
     <a href="#" class="navbar-brand">Navbar</a>
     <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar10">
       <span aria-hidden="true">&#8801;</span>
@@ -606,7 +606,7 @@ Place a visual separator between segments of the navbar.
   </nav>
 </div>
 {% highlight html %}
-<nav class="navbar navbar-expand-lg navbar-light bg-faded flex-between">
+<nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
   <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar9">
     <span aria-hidden="true">&#8801;</span>
@@ -623,7 +623,7 @@ Place a visual separator between segments of the navbar.
   </div>
 </nav>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-inverse flex-between">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
   <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar10">
     <span aria-hidden="true">&#8801;</span>
@@ -655,12 +655,12 @@ Place a visual separator between segments of the navbar.
 Our [Collapse widget]({{ site.baseurl }}/widgets/collapse/) can also to toggle hidden content elsewhere on the page.
 
 {% example html %}
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-light bg-light">
   <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#exCollapsingNavbar" aria-label="Toggle navigation">
     <span aria-hidden="true">&#8801;</span>
   </button>
   <div class="collapse w-100 mt-0_5" id="exCollapsingNavbar">
-    <div class="bg-inverse p-1">
+    <div class="bg-dark p-1">
       <h4>Collapsed content</h4>
       Toggleable via the navbar button.
     </div>
@@ -675,7 +675,7 @@ Theming the navbar has never been easier thanks to the combination of a simple l
 Here are some examples to show what we mean.
 
 <div class="bd-example">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-inverse flex-between mb-1">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark flex-between mb-1">
     <a href="#" class="navbar-brand">Navbar</a>
     <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar11">
       <span aria-hidden="true">&#8801;</span>
@@ -750,7 +750,7 @@ Here are some examples to show what we mean.
 </div>
 
 {% highlight html %}
-<nav class="navbar navbar-dark bg-inverse">
+<nav class="navbar navbar-dark bg-dark">
   <!-- Navbar content -->
 </nav>
 
@@ -769,14 +769,14 @@ Although it's not required, you can wrap a navbar in a `.container` to center it
 
 {% example html %}
 <div class="container">
-  <nav class="navbar navbar-light bg-faded">
+  <nav class="navbar navbar-light bg-light">
     <a href="#" class="navbar-brand">Navbar</a>
   </nav>
 </div>
 {% endexample %}
 
 {% example html %}
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-light bg-light">
   <div class="container">
     <a href="#" class="navbar-brand">Navbar</a>
   </div>
@@ -790,25 +790,25 @@ Use our [position utilities]({{ site.baseurl }}/utilities/position/) to place na
 **Note: `position: sticky`, used for `.sticky-top`, [isn't fully supported in every browser](https://caniuse.com/#feat=css-sticky).**
 
 {% example html %}
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-light bg-light">
   <a href="#" class="navbar-brand">Static default</a>
 </nav>
 {% endexample %}
 
 {% example html %}
-<nav class="navbar navbar-light bg-faded fixed-top">
+<nav class="navbar navbar-light bg-light fixed-top">
   <a href="#" class="navbar-brand">Fixed top</a>
 </nav>
 {% endexample %}
 
 {% example html %}
-<nav class="navbar navbar-light bg-faded fixed-bottom">
+<nav class="navbar navbar-light bg-light fixed-bottom">
   <a href="#" class="navbar-brand">Fixed bottom</a>
 </nav>
 {% endexample %}
 
 {% example html %}
-<nav class="navbar navbar-light bg-faded sticky-top">
+<nav class="navbar navbar-light bg-light sticky-top">
   <a href="#" class="navbar-brand">Sticky top</a>
 </nav>
 {% endexample %}

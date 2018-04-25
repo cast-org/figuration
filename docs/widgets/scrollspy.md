@@ -20,7 +20,7 @@ The Scrollspy widget is for automatically updating nav targets based on scroll p
 Scroll the area below the navbar and watch the active class change. The dropdown sub items will be highlighted as well.
 
 <div class="cf-example">
-    <nav id="navbar-example" class="navbar navbar-light bg-faded">
+    <nav id="navbar-example" class="navbar navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="#alpha" class="nav-link">Alpha</a></li>
@@ -52,7 +52,7 @@ Scroll the area below the navbar and watch the active class change. The dropdown
 </div> <!-- /.cf-example -->
 
 {% highlight html %}
-<nav id="navbar-example" class="navbar navbar-light bg-faded">
+<nav id="navbar-example" class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="#">Navbar</a>
     <ul class="nav nav-pills">
         <li class="nav-item"><a href="#alpha" class="nav-link">Alpha</a></li>
@@ -90,7 +90,7 @@ The Scrollspy widget also works with nested `.nav`s. If a sub-`.nav` is `.active
 <div class="cf-example">
     <div class="row">
         <div class="col-4">
-            <nav id="subnav-example" class="navbar navbar-light bg-faded">
+            <nav id="subnav-example" class="navbar navbar-light bg-light">
                 <a class="navbar-brand" href="#">Navbar</a>
                 <nav class="nav nav-pills flex-column">
                     <a class="nav-link" href="#item-1">Item 1</a>
@@ -131,7 +131,7 @@ The Scrollspy widget also works with nested `.nav`s. If a sub-`.nav` is `.active
 {% highlight html %}
 <div class="row">
     <div class="col-4">
-        <nav id="subnav-example" class="navbar navbar-light bg-faded">
+        <nav id="subnav-example" class="navbar navbar-light bg-light">
             <a class="navbar-brand" href="#">Navbar</a>
             <nav class="nav nav-pills flex-column">
                 <a class="nav-link" href="#item-1">Item 1</a>

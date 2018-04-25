@@ -108,7 +108,7 @@ Please refer to the [Accessiblity notes about conveying meaning with color]({{ s
 <div class="progress">
     <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
-<div class="progress bg-inverse">
+<div class="progress bg-dark">
     <div class="progress-bar bg-cyan-300 text-dark" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
 </div>
 {% endexample %}
