@@ -196,6 +196,8 @@
 }
 
 .jumbotron-docs {
+  position: relative;
+  z-index: 1;
   padding: .5rem .375rem;
   margin-bottom: 0;
   color: rgba(255, 255, 255, 0.9);
