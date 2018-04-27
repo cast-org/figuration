@@ -2444,6 +2444,7 @@ input[type="button"].btn-block {
   max-width: 100%;
 }
 
+
 .col-auto {
   -ms-flex: 0 0 auto;
       flex: 0 0 auto;
@@ -2575,6 +2576,7 @@ input[type="button"].btn-block {
         flex-grow: 1;
     max-width: 100%;
   }
+  
   .col-sm-auto {
     -ms-flex: 0 0 auto;
         flex: 0 0 auto;
@@ -2687,6 +2689,7 @@ input[type="button"].btn-block {
         flex-grow: 1;
     max-width: 100%;
   }
+  
   .col-md-auto {
     -ms-flex: 0 0 auto;
         flex: 0 0 auto;
@@ -2799,6 +2802,7 @@ input[type="button"].btn-block {
         flex-grow: 1;
     max-width: 100%;
   }
+  
   .col-lg-auto {
     -ms-flex: 0 0 auto;
         flex: 0 0 auto;
@@ -2911,6 +2915,7 @@ input[type="button"].btn-block {
         flex-grow: 1;
     max-width: 100%;
   }
+  
   .col-xl-auto {
     -ms-flex: 0 0 auto;
         flex: 0 0 auto;
