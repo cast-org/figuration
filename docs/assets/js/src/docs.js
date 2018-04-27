@@ -23,7 +23,9 @@ Holder.addTheme('gray', {
 
 function addAnchors() {
     // anchors.options.placement = 'left';
-    anchors.add('.cf-content > h1, .cf-content > h2, .cf-content > h3, .cf-content > h4, .cf-content > h5');
+    var selector = '.cf-content > h2, .cf-content > h3, .cf-content > h4, .cf-content > h5';
+    anchors.add(selector);
+    $(selector).wrapInner('<div></div>');
 }
 
 function addClipboard() {
