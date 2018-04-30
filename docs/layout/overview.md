@@ -75,7 +75,7 @@ Figuration primarily uses the following media query ranges---or breakpoints---in
 
 {% highlight scss %}
 // Extra small devices (portrait phones, less than 36em/576px)
-// No media query since this is the default in Figuration
+// No media query for `xs` since this is the default in Figuration
 
 // Small devices (landscape phones, 36em/576px and up)
 @media (min-width: 36em) { ... }
@@ -93,17 +93,21 @@ Figuration primarily uses the following media query ranges---or breakpoints---in
 Since we write our source CSS in Sass, all our media queries are available via Sass mixins.
 
 {% highlight scss %}
-@include media-breakpoint-up(xs) { ... }
+// No media query needed since the `xs` breakpoint is effectively `@media (min-width: 0) { ... }`
 @include media-breakpoint-up(sm) { ... }
 @include media-breakpoint-up(md) { ... }
 @include media-breakpoint-up(lg) { ... }
 @include media-breakpoint-up(xl) { ... }
 
-// Example usage:
+// Example: Hide starting at `min-width: 0`, and then show at the `sm` breakpoint
+.custom-class {
+    display: none;
+}
+
 @include media-breakpoint-up(sm) {
-  .some-class {
-    display: block;
-  }
+    .custom-class {
+        display: block;
+    }
 }
 {% endhighlight %}
 
@@ -123,7 +127,7 @@ We occasionally use media queries that go in the other direction (the given scre
 @media (max-width: 74.9375em) { ... }
 
 // Extra large devices (large desktops)
-// No media query since the extra-large breakpoint has no upper bound on its width
+// No media query since the `xl` breakpoint has no upper bound on its width
 {% endhighlight %}
 
 Once again, these media queries are also available via Sass mixins:
@@ -133,6 +137,14 @@ Once again, these media queries are also available via Sass mixins:
 @include media-breakpoint-down(sm) { ... }
 @include media-breakpoint-down(md) { ... }
 @include media-breakpoint-down(lg) { ... }
+// No media query since the `xl` breakpoint has no upper bound on its width
+
+// Example: Style from medium breakpoint and down
+@include media-breakpoint-down(md) {
+    .custom-class {
+        display: block;
+    }
+}
 {% endhighlight %}
 
 There are also media queries and mixins for targeting a single segment of screen sizes using the minimum and maximum breakpoint widths.
