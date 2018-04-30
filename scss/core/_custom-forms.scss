@@ -124,7 +124,6 @@
     color: $input-color;
     vertical-align: middle;
     background: $input-bg $custom-select-indicator no-repeat right ($input-padding-x / 2) center;
-    background-clip: padding-box;
     background-size: $custom-select-indicator-size;
     border: $input-border-width solid $input-border-color;
     @if $enable-rounded {
@@ -234,7 +233,6 @@
     pointer-events: none;
     user-select: none;
     background-color: $input-bg;
-    background-clip: padding-box;
     border: $input-border-width solid $input-border-color;
     @include border-radius($input-border-radius);
     @include box-shadow($input-box-shadow);
@@ -285,7 +283,6 @@
     color: $input-color;
     background-color: $input-bg;
     background-image: none;
-    background-clip: padding-box;
     border: $input-border-width solid $input-border-color;
 
     @include border-radius($input-border-radius);
