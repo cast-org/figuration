@@ -527,7 +527,7 @@ $input-padding-x:               $btn-padding-x !default;
 
 $input-color:                   $uibase-700 !default;
 $input-bg:                      $white !default;
-$input-border-color:            rgba($black, .25) !default;
+$input-border-color:            $uibase-200 !default;
 $input-border-width:            $border-width !default;
 $input-border-radius:           $border-radius !default;
 $input-box-shadow:              inset 0 .125em .125em rgba($black, .1) !default;
