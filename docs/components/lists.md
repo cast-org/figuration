@@ -281,7 +281,7 @@ Need only horizontal padding, then use `.list-spaced-x`.
 {% endexample %}
 
 ### Horizontal Lists
-Place the items in the list in a horizontal, or inline, layout with `.list-horizontal`.
+Place the items in the list in a horizontal layout with `.list-horizontal`.
 
 {% example html %}
 <ul class="list list-horizontal">
@@ -318,6 +318,25 @@ Place the items in the list in a horizontal, or inline, layout with `.list-horiz
     <li class="list-item">List item</li>
     <li class="list-item">List item</li>
     <li class="list-item">List item</li>
+</ul>
+{% endexample %}
+
+## Inline List
+
+Add the `.flex-wrap` utility class onto a horizontal list to wrap to the next row as needed.
+
+{% example html %}
+<ul class="list list-horizontal flex-wrap">
+    <li class="list-item">Inline list item</li>
+    <li class="list-item">Inline list item</li>
+    <li class="list-item">Inline list item</li>
+    <li class="list-item">Inline list item</li>
+    <li class="list-item">Inline list item</li>
+    <li class="list-item">Inline list item</li>
+    <li class="list-item">Inline list item</li>
+    <li class="list-item">Inline list item</li>
+    <li class="list-item">Inline list item</li>
+    <li class="list-item">Inline list item</li>
 </ul>
 {% endexample %}
 
