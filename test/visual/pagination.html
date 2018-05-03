@@ -17,6 +17,8 @@
 <div class="container">
     <h1>Pagination</h1>
 
+    <h2>Basic</h2>
+
     <nav aria-label="Page navigation">
         <ul class="pagination">
             <li class="page-item"><a href="#" class="page-link">Previous</a></li>
@@ -27,26 +29,21 @@
         </ul>
     </nav>
 
-    <hr />
+    <h2>Active/Disabled</h2>
 
     <nav aria-label="...">
         <ul class="pagination">
             <li class="page-item">
-                <a href="#" class="page-link disabled" tabindex="-1">Previous</a>
+                <a href="#" class="page-link disabled" tabindex="-1" aria-disabled="true">Previous</a>
             </li>
             <li class="page-item">
-                <a href="#" class="page-link active">
-                    1
-                    <span class="sr-only">(current)</span>
-                </a>
+                <a href="#" class="page-link active" aria-current="page">1</a>
             </li>
             <li class="page-item"><a href="#" class="page-link">2</a></li>
             <li class="page-item"><a href="#" class="page-link">3</a></li>
             <li class="page-item"><a href="#" class="page-link">Next</a></li>
         </ul>
     </nav>
-
-    <hr />
 
     <nav aria-label="...">
         <ul class="pagination">
@@ -56,11 +53,146 @@
             <li class="page-item">
                 <span class="page-link active">
                     1
-                    <span class="sr-only">(current)</span>
+                    <span class="sr-only">(current page)</span>
                 </span>
             </li>
             <li class="page-item"><a href="#" class="page-link">2</a></li>
             <li class="page-item"><a href="#" class="page-link">3</a></li>
+            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+    </nav>
+
+    <h2>Text Item</h2>
+
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="page-item">
+                <span class="page-link disabled">Previous</span>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link active" aria-current="page">1</a>
+            </li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item"><span class="page-text">&hellip;</span></li>
+            <li class="page-item"><a href="#" class="page-link">98</a></li>
+            <li class="page-item"><a href="#" class="page-link">99</a></li>
+            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+    </nav>
+
+    <h2>Spaced</h2>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination pagination-spaced">
+            <li class="page-item">
+                <span class="page-link disabled">Previous</span>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link active" aria-current="page">1</a>
+            </li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item"><span class="page-text">&hellip;</span></li>
+            <li class="page-item"><a href="#" class="page-link">98</a></li>
+            <li class="page-item"><a href="#" class="page-link">99</a></li>
+            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+    </nav>
+
+    <h2>Group</h2>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination pagination-group">
+            <li class="page-item">
+                <span class="page-link disabled">Previous</span>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link active" aria-current="page">1</a>
+            </li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item"><span class="page-text">&hellip;</span></li>
+            <li class="page-item"><a href="#" class="page-link">98</a></li>
+            <li class="page-item"><a href="#" class="page-link">99</a></li>
+            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+    </nav>
+
+    <h2>Sizes</h2>
+    <nav aria-label="Page navigation">
+        <ul class="pagination pagination-group pagination-xs">
+            <li class="page-item">
+                <span class="page-link disabled">Previous</span>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link active" aria-current="page">1</a>
+            </li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item"><span class="page-text">&hellip;</span></li>
+            <li class="page-item"><a href="#" class="page-link">98</a></li>
+            <li class="page-item"><a href="#" class="page-link">99</a></li>
+            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+    </nav>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination pagination-group pagination-sm">
+            <li class="page-item">
+                <span class="page-link disabled">Previous</span>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link active" aria-current="page">1</a>
+            </li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item"><span class="page-text">&hellip;</span></li>
+            <li class="page-item"><a href="#" class="page-link">98</a></li>
+            <li class="page-item"><a href="#" class="page-link">99</a></li>
+            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+    </nav>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination pagination-group">
+            <li class="page-item">
+                <span class="page-link disabled">Previous</span>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link active" aria-current="page">1</a>
+            </li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item"><span class="page-text">&hellip;</span></li>
+            <li class="page-item"><a href="#" class="page-link">98</a></li>
+            <li class="page-item"><a href="#" class="page-link">99</a></li>
+            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+    </nav>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination pagination-group pagination-lg">
+            <li class="page-item">
+                <span class="page-link disabled">Previous</span>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link active" aria-current="page">1</a>
+            </li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item"><span class="page-text">&hellip;</span></li>
+            <li class="page-item"><a href="#" class="page-link">98</a></li>
+            <li class="page-item"><a href="#" class="page-link">99</a></li>
+            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+    </nav>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination pagination-group pagination-xl">
+            <li class="page-item">
+                <span class="page-link disabled">Previous</span>
+            </li>
+            <li class="page-item">
+                <a href="#" class="page-link active" aria-current="page">1</a>
+            </li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item"><span class="page-text">&hellip;</span></li>
+            <li class="page-item"><a href="#" class="page-link">98</a></li>
+            <li class="page-item"><a href="#" class="page-link">99</a></li>
             <li class="page-item"><a href="#" class="page-link">Next</a></li>
         </ul>
     </nav>

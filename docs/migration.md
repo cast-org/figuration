@@ -18,7 +18,7 @@ Some changes will most likely have been missed, so please refer to the documenta
 ## Color
 - Reworked the colors, internal palette system, and consolidated the re-used component colors.
 - Added functions to check, and/or determine the best color, these can be found in '/scss/functions/_color-util.scss'.
-- Extended the contextual colors with light and dark contextual variants.  **These variants are not available** as palettes by default.
+- Extended the contextual colors with light and dark contextual variants.  **These variants are not available as palettes** by default.
 
 ## Typography
 - Added two methods of Responsive Typography support.
@@ -56,6 +56,10 @@ Some changes will most likely have been missed, so please refer to the documenta
 
 ### List
 - A new component that allows for greater styling options for lists, or pseudo-lists using `<div>`s.
+
+### Pagination
+- Pagination has been modified with a couple of style modifier classes for greater flexibility.  The use of the `.pagination-group` modifier class on the `.pagination` element is needed to keep the same look as the older pagination component.
+
 
 ## Utilities
 

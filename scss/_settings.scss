@@ -679,14 +679,16 @@ $breadcrumb-divider:            "/" !default;
 // Pagination
 // =====
 $pagination-line-height:        $btn-line-height !default;
-$pagination-padding-x:          $btn-padding-x !default;
+$pagination-padding-x:          .5em !default;
 $pagination-padding-y:          $btn-padding-y !default;
+$pagination-margin-bottom:      1rem !default;
 
-$pagination-bg:                 $btn-default-bg !default;
-$pagination-color:              $btn-default-color !default;
 $pagination-border-width:       $border-width !default;
 $pagination-border-color:       $btn-default-border-color !default;
 $pagination-border-radius:      $border-radius !default;
+
+$pagination-bg:                 $btn-default-bg !default;
+$pagination-color:              $btn-default-color !default;
 
 $pagination-hover-bg:           $btn-default-hover-bg !default;
 $pagination-hover-color:        $btn-default-hover-color !default;
@@ -698,6 +700,7 @@ $pagination-active-bg:          $component-active-bg !default;
 $pagination-disabled-color:     $component-disabled-color !default;
 $pagination-disabled-bg:        $component-disabled-bg !default;
 
+$pagination-spaced-margin-end:  .25em !default;
 
 // Divider
 // =====

@@ -1,34 +1,20 @@
 .pagination {
     display: flex;
     padding-left: 0;
+    margin-bottom: $pagination-margin-bottom;
     list-style: none;
-    @include border-radius($pagination-border-radius);
-}
-
-.page-item {
-    &:first-child {
-        .page-text,
-        .page-link {
-            margin-left: 0;
-            @include border-start-radius($pagination-border-radius);
-        }
-    }
-    &:last-child {
-        .page-text,
-        .page-link {
-            @include border-end-radius($pagination-border-radius);
-        }
-    }
 }
 
 .page-text,
 .page-link {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.25em;
     padding: $pagination-padding-y $pagination-padding-x;
-    margin-left: -$pagination-border-width;
     line-height: $pagination-line-height;
-    background-color: $pagination-bg;
-    border: $pagination-border-width solid $pagination-border-color;
+    border: 0 solid $pagination-border-color;
+    @include border-radius($pagination-border-radius);
 }
 
 .page-link {
@@ -36,6 +22,7 @@
     color: $pagination-color;
     text-decoration: none;
     cursor: pointer;
+    background-color: $pagination-bg;
 
     &:hover,
     &:focus {
@@ -65,11 +52,47 @@
     @each $size, $dims in $component-sizes {
         $sz-font-size:     map-get($dims, "font-size");
         $sz-padding-y:     map-get($dims, "padding-y");
-        $sz-padding-x:     map-get($dims, "padding-x");
+        //$sz-padding-x:     map-get($dims, "padding-x");
+        $sz-padding-x:    $pagination-padding-x;
         $sz-border-radius: map-get($dims, "border-radius");
 
         .pagination-#{$size} {
             @include pagination-size($sz-padding-y, $sz-padding-x, $sz-font-size, $sz-border-radius);
+        }
+    }
+}
+
+.pagination-spaced {
+    .page-link {
+        border-width: $pagination-border-width;
+    }
+
+    .page-item {
+        &:not(:last-child) {
+            margin-right: $pagination-spaced-margin-end;
+        }
+    }
+}
+
+.pagination-group {
+    .page-text,
+    .page-link {
+        border-width: $pagination-border-width;
+    }
+
+    .page-item {
+        &:not(:first-child) {
+            .page-text,
+            .page-link {
+                margin-left: -$pagination-border-width;
+                @include border-start-radius(0);
+            }
+        }
+        &:not(:last-child) {
+            .page-text,
+            .page-link {
+                @include border-end-radius(0);
+            }
         }
     }
 }
