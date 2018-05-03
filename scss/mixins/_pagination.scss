@@ -4,20 +4,6 @@
     .page-link {
         padding: $padding-y $padding-x;
         @include font-size($font-size);
-    }
-
-    .page-item {
-        &:first-child {
-            .page-text,
-            .page-link {
-                @include border-start-radius($border-radius);
-            }
-        }
-        &:last-child {
-            .page-text,
-            .page-link {
-                @include border-end-radius($border-radius);
-            }
-        }
+        @include border-radius($border-radius);
     }
 }
