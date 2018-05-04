@@ -63,6 +63,13 @@ $green:     #0e8a16 !default;
 $blue:      #0055e9 !default;
 $cyan:      #1680a4 !default;
 $yellow:    #f8c223 !default;
+
+$primary:   $blue !default;
+$secondary: $uibase !default;
+$info:      $cyan !default;
+$success:   $green !default;
+$warning:   $yellow !default;
+$danger:    $red !default;
 $light:     palette($uibase, 50) !default;
 $dark:      palette($uibase, 800) !default;
 
@@ -81,24 +88,24 @@ $uibase-900:  palette($uibase, 900) !default;
 // Palette color
 $palette-themes: (
     "uibase":    $uibase,
-    "primary":   $blue,
-    "secondary": $uibase,
-    "info":      $cyan,
-    "success":   $green,
-    "warning":   $yellow,
-    "danger":    $red,
+    "primary":   $primary,
+    "secondary": $secondary,
+    "info":      $info,
+    "success":   $success,
+    "warning":   $warning,
+    "danger":    $danger,
     "gray":      $gray
 ) !default;
 
 // Contextual colors
 $context-themes: () !default;
 $context-colors: (
-    "primary":   $blue,
-    "secondary": $uibase,
-    "info":      $cyan,
-    "success":   $green,
-    "warning":   $yellow,
-    "danger":    $red,
+    "primary":   $primary,
+    "secondary": $secondary,
+    "info":      $info,
+    "success":   $success,
+    "warning":   $warning,
+    "danger":    $danger,
     "light":     $light,
     "dark":      $dark
 ) !default;
@@ -211,9 +218,9 @@ $body-color:            $uibase-900 !default;
 // Links
 // =====
 // Style anchor elements
-$link-color:            palette-context("primary", 500) !default;
+$link-color:            palette($primary, 500) !default;
 $link-decoration:       underline !default;
-$link-hover-color:      palette-context("primary", 700) !default;
+$link-hover-color:      palette($primary, 700) !default;
 $link-hover-decoration: underline !default;
 
 
@@ -534,7 +541,7 @@ $input-box-shadow:              inset 0 .125em .125em rgba($black, .1) !default;
 
 $input-focus-color:             $input-color !default;
 $input-focus-bg:                $input-bg !default;
-$input-focus-border-color:      palette-context("primary", 300) !default;
+$input-focus-border-color:      palette($primary, 300) !default;
 $input-focus-box-shadow:        inset 0 .125em .125em rgba($black, .15) !default;
 
 $input-disabled-color:          $component-disabled-color !default;
@@ -570,9 +577,9 @@ $select-height:     calc(#{$input-height} + #{($border-width * 2)}) !default;
 // =====
 // From OpenIconic: https://useiconic.com/open
 // Use some functions to recolor icons to match context colors
-$icon-success: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{palette-context-nohash('success', 500)}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E") !default;
-$icon-warning: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{palette-context-nohash('warning', 500)}' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E") !default;
-$icon-danger: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{palette-context-nohash('danger', 500)}' viewBox='-2 -2 7 7'%3E%3Cpath stroke='#{palette-context-nohash('danger', 500)}' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E") !default;
+$icon-success: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{palette($success, 500)}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E"), "#", "%23") !default;
+$icon-warning: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{palette($warning, 500)}' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E"), "#", "%23") !default;
+$icon-danger: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{palette($danger, 500)}' viewBox='-2 -2 7 7'%3E%3Cpath stroke='#{palette-context-nohash('danger', 500)}' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E"), "#", "%23") !default;
 
 
 // Custom form controls
@@ -599,7 +606,7 @@ $custom-control-checked-indicator-box-shadow: none !default;
 $custom-control-focus-indicator-box-shadow:  0 0 0 .0625rem #fff, 0 0 0 .1875rem $input-focus-border-color !default;
 
 $custom-control-active-indicator-color:      $white !default;
-$custom-control-active-indicator-bg:         palette-context("primary", 300) !default;
+$custom-control-active-indicator-bg:         palette($primary, 300) !default;
 
 $custom-checkbox-radius:                    $border-radius !default;
 $custom-checkbox-checked-icon:              url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E") !default;

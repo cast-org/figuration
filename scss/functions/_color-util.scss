@@ -25,20 +25,6 @@
     @return $color;
 }
 
-//deprecate
-@function palette-context($key: "primary", $level: 500) {
-    $color: map-get($context-colors, $key);
-    @return palette($color, $level);
-}
-
-//deprecate
-@function palette-context-nohash($key: "primary", $level: 500) {
-    $color: map-get($context-colors, $key);
-    $hash: unquote(palette($color, $level) + "");
-    $nohash: str-replace($hash, unquote("#"), "%23");
-    @return $nohash;
-}
-
 // Generate contextual color theme
 @function _mix-context-colors($map) {
     $result:            ();
