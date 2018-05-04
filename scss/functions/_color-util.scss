@@ -58,9 +58,11 @@
 
         $context-bg:                 palette($color, $level-context-bg);
         $context-color:              palette($color, $level-context-color);
+        $context-color:              color-if-contrast($context-color, $context-bg);
         $context-border-color:       palette($color, $level-context-border-color);
         $context-hover-bg:           palette($color, $level-context-hover-bg);
         $context-hover-color:        palette($color, $level-context-hover-color);
+        $context-hover-color:        color-if-contrast($context-hover-color, $context-hover-bg);
         $context-hover-border-color: palette($color, $level-context-hover-border-color);
 
         // Build new map
