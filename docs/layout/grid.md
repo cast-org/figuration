@@ -664,9 +664,9 @@ $grid-breakpoints: (
 );
 
 $container-max-widths: (
-  sm: rem-calc(420px),
-  md: rem-calc(720px),
-  lg: rem-calc(940px)
+  sm: rem(420px),
+  md: rem(720px),
+  lg: rem(940px)
 );
 
 $grid-gutter-widths: (
@@ -687,7 +687,7 @@ When using Figuration's source Sass files, you have the option of using Sass var
 
 Variables and maps determine the number of columns, the gutter width, and the media query point at which to begin floating columns. We use these to generate the predefined grid classes documented above, as well as for the custom mixins listed below.
 
-Some Sass functions are in use here.  Simply put `bp-to-em()` converts a pixel value to em assuming 16px root font size, while `rem-calc()` converts a pixel value to rem, but checks the defined `$font-size-root` variable in the Sass and uses that for conversion.
+Some Sass functions are in use here.  Simply put `bp-to-em()` converts a pixel value to em assuming 16px root font size, while `rem()` converts a pixel value to rem, but checks the defined `$font-size-root` variable in the Sass and uses that for conversion.
 
 {% highlight scss %}
 $grid-columns:      12;
@@ -706,10 +706,10 @@ $grid-breakpoints: (
 );
 
 $container-max-widths: (
-  sm: rem-calc(544px),
-  md: rem-calc(720px),
-  lg: rem-calc(940px),
-  xl: rem-calc(1140px)
+  sm: rem(544px),
+  md: rem(720px),
+  lg: rem(940px),
+  xl: rem(1140px)
 );
 
 $grid-gutter-width: 2rem;
