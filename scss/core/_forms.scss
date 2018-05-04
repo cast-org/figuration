@@ -224,7 +224,7 @@ textarea.form-control {
 // Form validation states
 @if map-has-key($context-themes, "success") {
     .has-success {
-        @include form-control-validation("success");
+        @include form-control-validation($success);
 
         .form-control-icon {
             background-image: $icon-success;
@@ -233,7 +233,7 @@ textarea.form-control {
 }
 @if map-has-key($context-themes, "warning") {
     .has-warning {
-        @include form-control-validation("warning");
+        @include form-control-validation($warning);
 
         .form-control-icon {
             background-image: $icon-warning;
@@ -242,7 +242,7 @@ textarea.form-control {
 }
 @if map-has-key($context-themes, "danger") {
     .has-danger {
-        @include form-control-validation("danger");
+        @include form-control-validation($danger);
 
         .form-control-icon {
             background-image: $icon-danger;
