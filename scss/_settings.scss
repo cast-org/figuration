@@ -124,17 +124,6 @@ $context-themes: map-merge($context-themes, $brand-themes);
 // stylelint-enable
 
 
-// Inverse Color
-// =====
-$inverse-color: (
-    color:    $uibase-50,
-    bg:       $uibase-700,
-    border:   $uibase-500,
-    active:   $uibase-600,
-    hover-bg: $uibase-500
-) !default;
-
-
 // Spacing
 // =====
 // Control the default spacing of most elements by modifying these variables.
@@ -476,7 +465,6 @@ $table-condensed-cell-padding:  .3125rem .5rem !default;
 $table-caption-color:           $uibase-500 !default;
 
 $table-bg:                  $component-bg !default;
-$table-bg-accent:           $component-section-bg !default;
 $table-bg-hover:            $component-hover-bg !default;
 $table-bg-active:           $table-bg-hover !default;
 $table-bg-active-hover:     $uibase-200 !default;
