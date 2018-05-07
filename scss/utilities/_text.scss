@@ -43,9 +43,7 @@
 }
 
 // Contextual colors
-@each $theme, $colors in $context-themes {
-    $color: map-get($context-colors, $theme);
-
+@each $theme, $color in $context-colors {
     @include text-emphasis-variant(".text-#{$theme}", $color, $level-delta-hover-color);
 }
 

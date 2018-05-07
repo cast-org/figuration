@@ -487,7 +487,7 @@ $(window).ready(function() {
             <h3>Loop enabled</h3>
             <div data-cfw="slideshow" data-cfw-slideshow-loop="true">
                 <nav aria-label="Page navigation">
-                    <ul id="slidetest" class="pagination">
+                    <ul id="slidetest" class="pagination pagination-group">
                         <li class="page-item"><a href="#" class="page-link" data-cfw-slideshow-nav="prev" aria-label="Previous">&laquo;</a></li>
                         <li class="page-item"><a href="#slideL0" class="page-link" data-cfw="tab">Slide 1</a></li>
                         <li class="page-item"><a href="#slideL1" class="page-link" data-cfw="tab">Slide 2</a></li>
@@ -512,7 +512,7 @@ $(window).ready(function() {
             <p>Demo using pagination componenent, should also work for tab/pill navigation.</p>
             <div data-cfw="slideshow">
                 <nav aria-label="Page navigation">
-                    <ul id="slidetest" class="pagination">
+                    <ul id="slidetest" class="pagination pagination-group">
                         <li class="page-item"><a href="#" class="page-link" data-cfw-slideshow-nav="prev" aria-label="Previous">&laquo;</a></li>
                         <li class="page-item"><a href="#slide0" class="page-link" data-cfw="tab">Slide 1</a></li>
                         <li class="page-item"><a href="#slide1" class="page-link" data-cfw="tab">Slide 2</a></li>
@@ -758,9 +758,28 @@ $(window).ready(function() {
 
             <script>
             $('#modal4').on('beforeShow.cfw.modal', function(e) {
-                $(this).find('.modal-body')
-                    .load('https://baconipsum.com/api/?paras=10&type=all-meat');
-                });
+                //$(this).find('.modal-body')
+                //    .load('https://baconipsum.com/api/?paras=10&type=all-meat');
+                //});
+
+                function updateModal(responseText) {
+                    $('#modal4').find('.modal-body').text(responseText);
+                }
+                function callAjax(url, callback) {
+                    var xmlhttp;
+                    // compatible with IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function() {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                            callback(xmlhttp.responseText);
+                        }
+                    }
+                    xmlhttp.open("GET", url, true);
+                    xmlhttp.send();
+                }
+
+                callAjax('https://baconipsum.com/api/?paras=10&type=all-meat', updateModal);
+            });
             </script>
 
             <hr />

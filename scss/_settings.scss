@@ -31,19 +31,30 @@ $palette-interval-dark:     .15% !default;
 // Special values:
 //  level < 0 = #fff
 //  level > 1000 = #000
-$level-control-bg:                  500 !default;
-$level-control-color:               -1 !default;
-$level-control-border-color:        600 !default;
-$level-control-hover-bg:            600 !default;
-$level-control-hover-border-color:  700 !default;
-$level-control-active-hover-bg:     700 !default;
+$level-control: (
+    "bg":                           500,
+    "color":                        -1,
+    "border-color":                 600,
+    "hover-bg":                     600,
+    "hover-color":                  -1,
+    "hover-border-color":           700,
+    "active-hover-bg":              700,
+    "active-hover-color":           -1,
+    "active-hover-border-color":    700
+) !default;
 
-$level-context-bg:                  100 !default;
-$level-context-color:               800 !default;
-$level-context-border-color:        200 !default;
-$level-context-hover-bg:            200 !default;
-$level-context-hover-color:         900 !default;
-$level-context-hover-border-color:  300 !default;
+$level-context: (
+    "bg":                           100,
+    "color":                        800,
+    "border-color":                 200,
+    "hover-bg":                     200,
+    "hover-color":                  900,
+    "hover-border-color":           300,
+    "active-hover-bg":              200,
+    "active-hover-color":           900,
+    "active-hover-border-color":    300
+) !default;
+
 
 // Increase (or decrease with negative number) to alter color for the hover state of
 //`.text-{color}-(palette-level} and `.bg-{color}-(palette-level} utilities
@@ -85,7 +96,7 @@ $uibase-700:  palette($uibase, 700) !default;
 $uibase-800:  palette($uibase, 800) !default;
 $uibase-900:  palette($uibase, 900) !default;
 
-// Palette color
+// Palette colors
 $palette-themes: (
     "uibase":    $uibase,
     "primary":   $primary,
@@ -97,8 +108,19 @@ $palette-themes: (
     "gray":      $gray
 ) !default;
 
+// Control colors
+$control-colors: (
+    "primary":   $primary,
+    "secondary": $secondary,
+    "info":      $info,
+    "success":   $success,
+    "warning":   $warning,
+    "danger":    $danger,
+    "light":     $light,
+    "dark":      $dark
+) !default;
+
 // Contextual colors
-$context-themes: () !default;
 $context-colors: (
     "primary":   $primary,
     "secondary": $secondary,
@@ -116,11 +138,15 @@ $color-contrast-min-ratio:  4.5 !default;
 $color-contrast-base-light: $white !default;
 $color-contrast-base-dark:  $uibase-900 !default;
 
+// Process brand colors and merge into master theme maps
 // stylelint-disable
-// Process brand colors
-$brand-themes: _mix-context-colors($context-colors);
-// Merge into master themes map
-$context-themes: map-merge($context-themes, $brand-themes);
+$control-themes: () !default;
+$mixed-control-themes: _mix-context-colors($control-colors, $level-control);
+$control-themes: map-merge($mixed-control-themes, $control-themes);
+
+$context-themes: () !default;
+$mixed-context-themes: _mix-context-colors($context-colors, $level-context);
+$context-themes: map-merge($mixed-context-themes, $context-themes);
 // stylelint-enable
 
 
@@ -310,10 +336,10 @@ $component-hover-bg:            $uibase-50 !default;
 $component-action-color:        $uibase-700 !default;
 $component-action-hover-color:  $uibase-800 !default;
 
-$component-active-bg:           map-deep-get($context-themes, "primary", "control-bg") !default;
-$component-active-color:        map-deep-get($context-themes, "primary", "control-color") !default;
-$component-active-border-color: map-deep-get($context-themes, "primary", "control-border-color") !default;
-$component-active-hover-bg:     map-deep-get($context-themes, "primary", "control-hover-bg") !default;
+$component-active-bg:           map-deep-get($control-themes, "primary", "bg") !default;
+$component-active-color:        map-deep-get($control-themes, "primary", "color") !default;
+$component-active-border-color: map-deep-get($control-themes, "primary", "border-color") !default;
+$component-active-hover-bg:     map-deep-get($control-themes, "primary", "hover-bg") !default;
 
 $component-disabled-color:      $uibase-300 !default;
 $component-disabled-bg:         transparent !default;
@@ -433,6 +459,8 @@ $figure-caption-color:      $uibase-500 !default;
 
 // Lists
 // =====
+$list-themes:                   $context-themes !default;
+
 $list-margin-left:              1.25rem !default;
 $list-margin-bottom:            1rem !default;
 
@@ -459,6 +487,8 @@ $list-spaced-item-padding-x:    1rem !default;
 
 // Tables
 // =====
+$table-themes:              $context-themes !default;
+
 $table-margin-bottom:           $spacer !default;
 $table-cell-padding:            .75rem !default;
 $table-condensed-cell-padding:  .3125rem .5rem !default;
@@ -484,6 +514,8 @@ $table-hover-alt-bgi:       linear-gradient(0deg, rgba($white, .2) 0%, rgba($whi
 
 // Buttons
 // =====
+$btn-themes:                $control-themes !default;
+
 $btn-padding-y:             .375rem !default;
 $btn-padding-x:             .75rem !default;
 $btn-font-weight:           $font-weight-normal !default;
@@ -630,11 +662,13 @@ $custom-file-text: map-merge($custom-file-text-default, $custom-file-text);
 
 // Switch
 // =====
+$switch-themes:                         $control-themes !default;
+
 $switch-width-multiplier:               4 !default;
 $switch-control-bg:                     $input-bg !default;
 $switch-indicator-bg:                   $uibase-200 !default;
 
-$switch-active-control-bg:              $uibase-50 !default;
+$switch-active-control-bg:              $input-bg !default;
 $switch-active-indicator-bg:            $uibase-400 !default;
 
 $switch-focus-control-border-color:     $input-focus-border-color !default;
@@ -825,6 +859,8 @@ $jumbotron-breakpoint:      sm !default;
 
 // Badges
 // =====
+$badge-themes:              $control-themes !default;
+
 $badge-font-size:           75% !default;
 $badge-font-weight:         $font-weight-bold !default;
 $badge-padding-x:           .375em !default;
@@ -850,6 +886,8 @@ $badge-default-hover-border:    $uibase-400 !default;
 
 // Alerts
 // =====
+$alert-themes:              $context-themes !default;
+
 $alert-padding-x:           1rem !default;
 $alert-padding-y:           1rem !default;
 $alert-margin-bottom:       $spacer !default;
@@ -1009,8 +1047,8 @@ $slider-thumb-border-radius:        50% !default;
 
 $slider-thumb-min-bg:               $component-active-bg !default;
 $slider-thumb-min-hover-bg:         $component-active-hover-bg !default;
-$slider-thumb-max-bg:               map-deep-get($context-themes, "danger", "control-bg") !default;
-$slider-thumb-max-hover-bg:         map-deep-get($context-themes, "danger", "control-hover-bg") !default;
+$slider-thumb-max-bg:               map-deep-get($control-themes, "danger", "bg") !default;
+$slider-thumb-max-hover-bg:         map-deep-get($control-themes, "danger", "hover-bg") !default;
 
 $slider-track-bg:                   $uibase-50 !default;
 $slider-track-border-radius:        $border-radius !default;

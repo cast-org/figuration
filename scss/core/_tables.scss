@@ -175,9 +175,9 @@
 @include table-row-variant(active, $table-bg-active, $table-bg-active-hover);
 
 // Contextual variants
-@each $theme, $colors in $context-themes {
-    $bg:       map-get($colors, "context-bg");
-    $hover-bg: map-get($colors, "context-hover-bg");
+@each $theme, $colors in $table-themes {
+    $bg:       map-get($colors, "bg");
+    $hover-bg: map-get($colors, "hover-bg");
 
     @include table-row-variant("#{$theme}", $bg, $hover-bg);
 }

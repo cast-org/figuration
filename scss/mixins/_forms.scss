@@ -4,6 +4,10 @@
 // and successes.
 
 @mixin form-control-validation($color) {
+    $level-context-bg: map-get($level-context, "bg");
+    $level-context-border-color: map-get($level-context, "border-color");
+    $level-context-hover-border-color: map-get($level-context, "hover-border-color");
+
     $bg:           palette($color, $level-context-bg);
     $border:       palette($color, $level-context-border-color);
     $border-hover: palette($color, $level-context-hover-border-color);

@@ -66,7 +66,7 @@ fieldset:disabled a.btn,
 }
 
 // Contextual color variants
-@each $theme, $colors in $context-themes {
+@each $theme, $colors in $btn-themes {
     .btn-#{$theme} {
         @include button-variant-control($theme, $colors);
     }
@@ -76,7 +76,7 @@ fieldset:disabled a.btn,
 .btn-outline {
     @include button-variant($btn-default-color, $btn-outline-bg, $btn-default-border-color, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border-color, $btn-default-active-hover-color, $btn-default-active-hover-bg);
 }
-@each $theme, $colors in $context-themes {
+@each $theme, $colors in $btn-themes {
     .btn-outline-#{$theme} {
         @include button-variant-control-outline($theme, $colors, $btn-outline-bg);
     }

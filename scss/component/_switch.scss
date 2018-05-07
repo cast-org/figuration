@@ -116,18 +116,11 @@
 }
 
 // Color variants
-@each $theme, $colors in $context-themes {
-    // Lighter variation for consideration
-    //$var-indicator-bg:        map-get($colors, "context-border-color");
-    //$var-active-control-bg:   map-get($colors, "context-bg");
-    //$var-active-indicator-bg: map-get($colors, "control-bg");
-
-    $var-indicator-bg:        map-get($colors, "control-bg");
-    $var-active-control-bg:   map-get($colors, "context-bg");
-    $var-active-indicator-bg: map-get($colors, "control-hover-bg");
+@each $theme, $colors in $switch-themes {
+    $var-active-indicator-bg:   map-get($colors, "bg");
 
     .switch-#{$theme} {
-        @include switch-variant($var-indicator-bg, $var-active-control-bg, $var-active-indicator-bg);
+        @include switch-variant($var-active-indicator-bg);
     }
 }
 
