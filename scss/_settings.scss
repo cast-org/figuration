@@ -11,7 +11,7 @@ $enable-sizing:         true !default;      // true
 $enable-bp-smallest:    false !default;     // false
 $enable-rfs-fluid:      false !default;     // false
 $enable-rfs-scale:      false !default;     // false
-$enable-color-warnings: false !default;     //false
+$enable-color-warnings: false !default;     // false
 
 
 // Palette
@@ -490,8 +490,8 @@ $btn-font-weight:           $font-weight-normal !default;
 $btn-line-height:           1.25 !default;
 $btn-border-width:          $border-width !default;
 $btn-border-radius:         $border-radius !default;
-$btn-box-shadow:            inset 0 .125em .25em rgba($white, .25), 0 1px 1px rgba($black, .075) !default;
-$btn-active-box-shadow:     inset 0 .125em .25em rgba($black, .25), $btn-box-shadow !default;
+$btn-box-shadow:            inset 0 .125em .25em rgba($white, .25), 0 .125em .125em rgba($black, .075) !default;
+$btn-active-box-shadow:     inset 0 .125em .25em rgba($black, .125), $btn-box-shadow !default;
 
 $btn-outline-bg:            transparent !default;
 
@@ -657,7 +657,7 @@ $progress-box-shadow:           inset 0 .125rem .125rem rgba($black, .1) !defaul
 $progress-bar-color:            $white !default;
 $progress-bar-bg:               $uibase-300 !default;
 $progress-bar-animation-timing: 1s linear infinite !default;
-$progress-bar-box-shadow:       inset 0 -.125rem 0 rgba($black, .1) !default;
+$progress-bar-box-shadow:       inset 0 .125rem .25rem rgba($white, .25) !default;
 
 
 // Breadcrumbs
