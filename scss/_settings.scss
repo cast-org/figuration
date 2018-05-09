@@ -109,6 +109,8 @@ $palette-themes: (
 ) !default;
 
 // Control colors
+$control-colors: () !default;
+// stylelint-disable
 $control-colors: (
     "primary":   $primary,
     "secondary": $secondary,
@@ -118,10 +120,13 @@ $control-colors: (
     "danger":    $danger,
     "light":     $light,
     "dark":      $dark
-) !default;
+), $control-colors);
+// stylelint-enable
 
 // Contextual colors
-$context-colors: (
+$context-colors: () !default;
+// stylelint-disable
+$context-colors: map-merge(
     "primary":   $primary,
     "secondary": $secondary,
     "info":      $info,
@@ -130,7 +135,8 @@ $context-colors: (
     "danger":    $danger,
     "light":     $light,
     "dark":      $dark
-) !default;
+), $context-colors);
+// stylelint-enable
 
 // Color contrast
 // Minimum contrast ratio - WCAG 2.1 level AA spec
