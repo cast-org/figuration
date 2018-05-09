@@ -515,6 +515,7 @@ $table-hover-alt-bgi:       linear-gradient(0deg, rgba($white, .2) 0%, rgba($whi
 // Buttons
 // =====
 $btn-themes:                $control-themes !default;
+$btn-outline-themes:        $control-themes !default;
 
 $btn-padding-y:             .375rem !default;
 $btn-padding-x:             .75rem !default;
@@ -860,6 +861,7 @@ $jumbotron-breakpoint:      sm !default;
 // Badges
 // =====
 $badge-themes:              $control-themes !default;
+$badge-outline-themes:      $control-themes !default;
 
 $badge-font-size:           75% !default;
 $badge-font-weight:         $font-weight-bold !default;
