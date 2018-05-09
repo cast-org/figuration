@@ -293,16 +293,18 @@ button.list-item-action {
 // Contextual variants
 // Add modifier classes to change text and background color on individual items.
 // Organizationally, this must come after the `:hover` states.
-@each $theme, $colors in $list-themes {
-    $bg:           map-get($colors, "bg");
-    $color:        map-get($colors, "color");
-    $border:       map-get($colors, "border-color");
-    $hover-bg:     map-get($colors, "hover-bg");
-    $hover-color:  map-get($colors, "hover-color");
-    $hover-border: map-get($colors, "hover-border-color");
+@if (type-of($list-themes) == "map" and length($list-themes) != 0) {
+    @each $theme, $colors in $list-themes {
+        $bg:           map-get($colors, "bg");
+        $color:        map-get($colors, "color");
+        $border:       map-get($colors, "border-color");
+        $hover-bg:     map-get($colors, "hover-bg");
+        $hover-color:  map-get($colors, "hover-color");
+        $hover-border: map-get($colors, "hover-border-color");
 
-    $color:       color-if-contrast($color, $bg);
-    $hover-color: color-if-contrast($hover-color, $hover-bg);
+        $color:       color-if-contrast($color, $bg);
+        $hover-color: color-if-contrast($hover-color, $hover-bg);
 
-    @include list-item-variant(#{$theme}, $bg, $color, $border, $hover-bg, $hover-color, $hover-border);
+        @include list-item-variant(#{$theme}, $bg, $color, $border, $hover-bg, $hover-color, $hover-border);
+    }
 }

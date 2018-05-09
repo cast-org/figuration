@@ -175,13 +175,14 @@
 @include table-row-variant(active, $table-bg-active, $table-bg-active-hover);
 
 // Contextual variants
-@each $theme, $colors in $table-themes {
-    $bg:       map-get($colors, "bg");
-    $hover-bg: map-get($colors, "hover-bg");
+@if (type-of($table-themes) == "map" and length($table-themes) != 0) {
+    @each $theme, $colors in $table-themes {
+        $bg:       map-get($colors, "bg");
+        $hover-bg: map-get($colors, "hover-bg");
 
-    @include table-row-variant("#{$theme}", $bg, $hover-bg);
+        @include table-row-variant("#{$theme}", $bg, $hover-bg);
+    }
 }
-
 
 // Scrolling table
 // Add `.table-scroll` to table to enable horizontal scrolling.

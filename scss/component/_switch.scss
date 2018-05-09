@@ -116,11 +116,13 @@
 }
 
 // Color variants
-@each $theme, $colors in $switch-themes {
-    $var-active-indicator-bg:   map-get($colors, "bg");
+@if (type-of($switch-themes) == "map" and length($switch-themes) != 0) {
+    @each $theme, $colors in $switch-themes {
+        $var-active-indicator-bg:   map-get($colors, "bg");
 
-    .switch-#{$theme} {
-        @include switch-variant($var-active-indicator-bg);
+        .switch-#{$theme} {
+            @include switch-variant($var-active-indicator-bg);
+        }
     }
 }
 
