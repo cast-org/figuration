@@ -111,7 +111,7 @@ $palette-themes: (
 // Control colors
 $control-colors: () !default;
 // stylelint-disable
-$control-colors: (
+$control-colors: map-merge((
     "primary":   $primary,
     "secondary": $secondary,
     "info":      $info,
@@ -126,7 +126,7 @@ $control-colors: (
 // Contextual colors
 $context-colors: () !default;
 // stylelint-disable
-$context-colors: map-merge(
+$context-colors: map-merge((
     "primary":   $primary,
     "secondary": $secondary,
     "info":      $info,
