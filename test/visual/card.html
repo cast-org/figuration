@@ -8,11 +8,11 @@
 
 <link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
 
-<script type="text/javascript" src="../../docs/assets/js/vendor/jquery.slim.min.js"></script>
-<script type="text/javascript" src="../../dist/js/figuration.js"></script>
+<script src="../../docs/assets/js/vendor/jquery.slim.min.js"></script>
+<script src="../../dist/js/figuration.js"></script>
 
-<script type="text/javascript" src="../../docs/assets/js/vendor/holder.min.js"></script>
-<script type="text/javascript">
+<script src="../../docs/assets/js/vendor/holder.min.js"></script>
+<script>
 Holder.addTheme("gray", {
     bg: "#999",
     fg: "#111",
@@ -20,6 +20,30 @@ Holder.addTheme("gray", {
     font: 'sans-serif',
     fontweight: "normal"
 });
+
+.card-deck-col {
+    justify-content: flex-start;
+    flex-flow: row wrap;
+    align-items: stretch;
+    margin-bottom: 0;
+}
+.card-deck-col > .card {
+    flex-basis: auto;
+    width: calc(100% - 2rem);
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+@media (min-width: 35em) {
+    .card-deck-col > .card {
+        width: calc(50% - 2rem);
+    }
+}
+@media (min-width: 62em) {
+    .card-deck-col > .card {
+       width: calc(25% - 2rem);
+    }
+}
 </script>
 
 <style>
@@ -302,32 +326,6 @@ Holder.addTheme("gray", {
     <hr />
 
     <h2>Altering Deck Column Count</h2>
-
-    <style>
-    .card-deck-col {
-        justify-content: flex-start;
-        flex-flow: row wrap;
-        align-items: stretch;
-        margin-bottom: 0;
-    }
-    .card-deck-col > .card {
-        flex-basis: auto;
-        width: calc(100% - 2rem);
-        margin-right: 1rem;
-        margin-bottom: 1rem;
-        margin-left: 1rem;
-    }
-    @media (min-width: 35em) {
-        .card-deck-col > .card {
-            width: calc(50% - 2rem);
-        }
-    }
-    @media (min-width: 62em) {
-        .card-deck-col > .card {
-           width: calc(25% - 2rem);
-        }
-    }
-    </style>
 
     <div class="card-deck card-deck-col">
         <div class="card">
