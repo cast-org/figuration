@@ -547,8 +547,15 @@ h4 {
         color: $color;
     }
 }
-// stylelint-disable-next-line scss/dollar-variable-default
-$callout-themes: map-remove($alert-themes, "primary", "secondary", "success", "light", "dark");
+
+// stylelint-disable scss/dollar-variable-default
+$callout-colors: (
+    "info" : $info,
+    "warning" : $warning,
+    "danger" : $danger
+);
+$callout-themes: _mix-context-colors($callout-colors, $level-context);
+// stylelint-enable scss/dollar-variable-default
 @each $theme, $colors in $callout-themes {
     $base:         map-get($colors, "base");
     $bg:           map-get($colors, "bg");
