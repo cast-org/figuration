@@ -478,6 +478,11 @@ h4 > code {
   background-color: #fff;
 }
 
+.cf-content table td:first-child > code,
+.cf-content table th:first-child > code {
+  white-space: nowrap;
+}
+
 .table-grunt tr th:first-child,
 .table-grunt tr td:first-child {
   white-space: nowrap;
@@ -507,102 +512,6 @@ h4 > code {
 
 .cf-callout + .cf-callout {
   margin-top: -.25rem;
-}
-
-.cf-callout-primary {
-  background-color: #ccddfb;
-  border-color: #0048c6;
-}
-
-.cf-callout-primary .h3,
-.cf-callout-primary .h4,
-.cf-callout-primary .h5,
-.cf-callout-primary .h6 {
-  color: #002f80;
-}
-
-.cf-callout-secondary {
-  background-color: #dfe3e6;
-  border-color: #50606f;
-}
-
-.cf-callout-secondary .h3,
-.cf-callout-secondary .h4,
-.cf-callout-secondary .h5,
-.cf-callout-secondary .h6 {
-  color: #343e48;
-}
-
-.cf-callout-info {
-  background-color: #d0e6ed;
-  border-color: #136d8b;
-}
-
-.cf-callout-info .h3,
-.cf-callout-info .h4,
-.cf-callout-info .h5,
-.cf-callout-info .h6 {
-  color: #0c465a;
-}
-
-.cf-callout-success {
-  background-color: #cfe8d0;
-  border-color: #0c7513;
-}
-
-.cf-callout-success .h3,
-.cf-callout-success .h4,
-.cf-callout-success .h5,
-.cf-callout-success .h6 {
-  color: #084c0c;
-}
-
-.cf-callout-warning {
-  background-color: #fef3d3;
-  border-color: #d3a51e;
-}
-
-.cf-callout-warning .h3,
-.cf-callout-warning .h4,
-.cf-callout-warning .h5,
-.cf-callout-warning .h6 {
-  color: #886b13;
-}
-
-.cf-callout-danger {
-  background-color: #f6d3d0;
-  border-color: #b41e11;
-}
-
-.cf-callout-danger .h3,
-.cf-callout-danger .h4,
-.cf-callout-danger .h5,
-.cf-callout-danger .h6 {
-  color: #75130b;
-}
-
-.cf-callout-light {
-  background-color: #fcfcfd;
-  border-color: #cbcdcf;
-}
-
-.cf-callout-light .h3,
-.cf-callout-light .h4,
-.cf-callout-light .h5,
-.cf-callout-light .h6 {
-  color: #838586;
-}
-
-.cf-callout-dark {
-  background-color: #d6d8da;
-  border-color: #2c353d;
-}
-
-.cf-callout-dark .h3,
-.cf-callout-dark .h4,
-.cf-callout-dark .h5,
-.cf-callout-dark .h6 {
-  color: #1d2228;
 }
 
 .cf-callout-dep > p + ul {
@@ -1681,7 +1590,7 @@ h4 > code {
 .hidden-on .col-6 .visible {
   color: #084c0c;
   background-color: #cfe8d0;
-  border: 1px solid;
+  border: 1px solid #9fd0a2;
 }
 
 @media (max-width: 35.9375em) {

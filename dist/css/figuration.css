@@ -6118,7 +6118,7 @@ a.badge:hover, a.badge:focus {
 }
 
 .switch-input:checked ~ .switch-control {
-  background-color: #eff1f3;
+  background-color: #fff;
 }
 
 .switch-input:checked ~ .switch-control::before {
@@ -6167,100 +6167,36 @@ a.badge:hover, a.badge:focus {
   border-radius: 2rem;
 }
 
-.switch-primary .switch-control::before {
+.switch-primary .switch-input:checked ~ .switch-control::before {
   background-color: #0055e9;
 }
 
-.switch-primary .switch-input:checked ~ .switch-control {
-  background-color: #ccddfb;
-}
-
-.switch-primary .switch-input:checked ~ .switch-control::before {
-  background-color: #0048c6;
-}
-
-.switch-secondary .switch-control::before {
+.switch-secondary .switch-input:checked ~ .switch-control::before {
   background-color: #5e7182;
 }
 
-.switch-secondary .switch-input:checked ~ .switch-control {
-  background-color: #dfe3e6;
-}
-
-.switch-secondary .switch-input:checked ~ .switch-control::before {
-  background-color: #50606f;
-}
-
-.switch-info .switch-control::before {
+.switch-info .switch-input:checked ~ .switch-control::before {
   background-color: #1680a4;
 }
 
-.switch-info .switch-input:checked ~ .switch-control {
-  background-color: #d0e6ed;
-}
-
-.switch-info .switch-input:checked ~ .switch-control::before {
-  background-color: #136d8b;
-}
-
-.switch-success .switch-control::before {
+.switch-success .switch-input:checked ~ .switch-control::before {
   background-color: #0e8a16;
 }
 
-.switch-success .switch-input:checked ~ .switch-control {
-  background-color: #cfe8d0;
-}
-
-.switch-success .switch-input:checked ~ .switch-control::before {
-  background-color: #0c7513;
-}
-
-.switch-warning .switch-control::before {
+.switch-warning .switch-input:checked ~ .switch-control::before {
   background-color: #f8c223;
 }
 
-.switch-warning .switch-input:checked ~ .switch-control {
-  background-color: #fef3d3;
-}
-
-.switch-warning .switch-input:checked ~ .switch-control::before {
-  background-color: #d3a51e;
-}
-
-.switch-danger .switch-control::before {
+.switch-danger .switch-input:checked ~ .switch-control::before {
   background-color: #d42314;
 }
 
-.switch-danger .switch-input:checked ~ .switch-control {
-  background-color: #f6d3d0;
-}
-
-.switch-danger .switch-input:checked ~ .switch-control::before {
-  background-color: #b41e11;
-}
-
-.switch-light .switch-control::before {
+.switch-light .switch-input:checked ~ .switch-control::before {
   background-color: #eff1f3;
 }
 
-.switch-light .switch-input:checked ~ .switch-control {
-  background-color: #fcfcfd;
-}
-
-.switch-light .switch-input:checked ~ .switch-control::before {
-  background-color: #cbcdcf;
-}
-
-.switch-dark .switch-control::before {
-  background-color: #343e48;
-}
-
-.switch-dark .switch-input:checked ~ .switch-control {
-  background-color: #d6d8da;
-}
-
 .switch-dark .switch-input:checked ~ .switch-control::before {
-  background-color: #2c353d;
+  background-color: #343e48;
 }
 
 .switch-xs .switch-control {
