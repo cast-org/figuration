@@ -4,7 +4,7 @@ title: Customization Options
 group: get-started
 ---
 
-Customize Figuration using Sass variables for global style preferences, easy theming, and component adjustments.
+Customize Figuration using Sass variables for global style preferences, color themes, and component adjustments.
 
 ## Contents
 {:.no_toc}
@@ -26,7 +26,20 @@ your-project/
         +-- scss
 {% endhighlight %}
 
-In your `custom.scss`, you will import Figuration's source Sass files. Our recommended structure is to pick the parts you need, but you can include everything if desired. Be aware there are some requirements and dependencies across our components, so you may need to include slightly more than you need. Some of our components will also need have our our JavaScript included in order to become interactive.
+If you are using a download version of our source files, you may need to manually setup something similar to that structure, keeping Figuration's source files separate from your own.
+
+{% highlight plaintext %}
+your-project/
++-- scss
+|   +-- custom.scss
++-- figuration
+    +-- js
+    +-- scss
+{% endhighlight %}
+
+## Importing
+
+In your `custom.scss`, you will import Figuration's source Sass files. Our recommended structure is to pick the parts you need, but you can include everything if desired. Be aware there are some requirements and dependencies across our components, so you may need to include slightly more than you need. Some of our components will also need have our JavaScript included in order to become interactive.
 
 {% highlight scss %}
 // custom.scss
@@ -38,7 +51,7 @@ In your `custom.scss`, you will import Figuration's source Sass files. Our recom
 @import "node_modules/figuration/scss/functions";
 
 // Custom - your setting overrides
-// go in this location
+// typically go in this location
 
 // Required - settings and mixins
 @import "node_modules/figuration/scss/settings";
@@ -76,10 +89,69 @@ $body-color: #fff;
 @import "node_modules/figuration/scss/mixins";
 
 // Core and Components
+@import "node_modules/figuration/scss/reboot";
+@import "node_modules/figuration/scss/typography";
 ...
 {% endhighlight %}
 
 Repeat as necessary for any variable in Figuration, including the global options below.
+
+Sometimes you may need to pull in other variables that you did not plan on.  This is due of the order in which the Sass fils are proceesed, and also the use of various functions, that may require their configuration settings to be copied over to your `custom.scss`.
+
+## Sass Maps
+
+Figuration uses a bunch of Sass maps, key-value pairs, to generate certain portions of related CSS. Sass maps are used for grid breakpoints, colors, component sizing, and more.
+
+Just like Sass variables, all Sass maps include the `!default` flag and can be overridden and extended.
+
+Some of our Sass maps are merged into empty ones by default. This is done to allow easy expansion of a given Sass map, but makes _removing_ items from a map slightly more difficult.
+
+### Changing Map Defaults
+
+Change a pre-defined color in the `$base-colors` map, by adding the following to your custom Sass file:
+
+{% highlight scss %}
+$base-colors: (
+    "primary": #004dd1,
+    "danger": #bb1f11
+);
+{% endhighlight %}
+
+### Adding to a Map
+
+To add another color option to `$base-colors`, add a new key-value pair.
+
+{% highlight scss %}
+$control-colors: (
+    "new-color": #990099
+);
+{% endhighlight %}
+
+### Removing from a Map
+
+To remove colors from `$base-colors`, use `map-remove()`. The same method can be used with other Sass maps.
+
+However, you will need to insert this setting after the *Required* sections and before the *Core and Components* section.
+
+Also note, that each component will inherit the `$base-colors` map, unless previously overridden, before the removal occurs.  This means is you may need to remove the colors again for each component where desired.
+
+{% highlight scss %}
+// Required - functions
+@import "node_modules/figuration/scss/functions";
+
+// Required - settings and mixins
+@import "node_modules/figuration/scss/settings";
+@import "node_modules/figuration/scss/mixins";
+
+// Custom map removals go in this location
+$base-colors: map-remove($base-colors, "warning", "light", "dark");
+$btn-colors: map-remove($btn-colors, "warning", "light", "dark");
+
+// Core and Components
+@import "node_modules/figuration/scss/reboot";
+@import "node_modules/figuration/scss/typography";
+...
+{% endhighlight %}
 
 ## Global Options
 
@@ -148,57 +220,77 @@ $component-sizes: (
 );
 {% endhighlight %}
 
-## Contextual Colors
+## Color Themes
+
+Colors that are defined in the `$control-color` and
+
+### Adding a Theme
 
 Extend the default contextual color map with your own custom colors.
 
 Yes, it is a substantial and confusing piece of SCSS, but allows for reasonable flexibility.
 
-The `control-*` keys are used by mainly by control items---specifically---buttons, button groups, pagination, progress bars, badges, and background context.
+The `$control-themes` map is used by mainly by control items---specifically---buttons, badges, and switches.
 
-The `context-*` keys are used for contextual items---specifically---tables, list groups, form validation, and alerts.
-
-{% callout warning %}
-Conveying Meaning to Assistive Technologies
-{:.h5}
-
-Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
-{% endcallout %}
-
-{% highlight scss %}
-// Sample of adding more colors using a mixing function
-$custom-context: (
-    purple: #990099,
-    aqua:   #00ffff
-);
-
-// Process custom colors into context color variants
-$custom-themes: _mix-context-colors($custom-context);
-// Merge into master context themes map
-$context-themes: map-merge($context-themes, $custom-themes);
-
-{% endhighlight %}
-
-### Single Color Addition
+The `$context-themes` map is used for contextual items---specifically---alerts, lists, and tables.
 
 You can also add a single color map without all the additional color mixing functions with something a bit simpler.
 
 {% highlight scss %}
-// Adding a single color map
+// Adding a color theme
 $single-color: (
     "purple": (
-        "control-color":        #fff,
-        "control-bg":           #990099,
-        "control-border":       #800080,
-        "control-hover-color":  #fff,
-        "control-hover-bg":     #770077,
-        "control-hover-border": #660066,
-        "context-color":        #990099,
-        "context-bg":           #ffb3ff,
-        "context-border":       #ff29ff
+        "bg":                        #990099,
+        "color":                     #fff,
+        "border-color":              #800080,
+        "hover-bg":                  #770077,
+        "hover-color":               #fff,
+        "hover-border-color":        #660066,
+        "active-hover-bg":           #ffb3ff,
+        "active-hover-color":        #990099,
+        "active-hover-border-color": #ff29ff
     );
 );
-$context-themes: map-merge($context-themes, $single-color);
+{% endhighlight %}
+
+{% highlight scss %}
+// Required - functions
+@import "node_modules/figuration/scss/functions";
+
+// Required - settings and mixins
+@import "node_modules/figuration/scss/settings";
+@import "node_modules/figuration/scss/mixins";
+
+// Custom theme addition/removal go in this location
+$btn-themes: map-merge($btn-themes, $single-color);
+
+// Core and Components
+@import "node_modules/figuration/scss/reboot";
+@import "node_modules/figuration/scss/typography";
+...
+{% endhighlight %}
+
+### Removing a Theme
+
+Just like removing from the color maps, use `map-remove()` to remove themes from `$btn-themes`.
+
+As before, insert this setting after the *Required* sections and before the *Core and Components* section.
+
+{% highlight scss %}
+// Required - functions
+@import "node_modules/figuration/scss/functions";
+
+// Required - settings and mixins
+@import "node_modules/figuration/scss/settings";
+@import "node_modules/figuration/scss/mixins";
+
+// Custom theme addition/removal go in this location
+$btn-themes: map-remove('warning', 'light', 'dark');
+
+// Core and Components
+@import "node_modules/figuration/scss/reboot";
+@import "node_modules/figuration/scss/typography";
+...
 {% endhighlight %}
 
 ## Palette Variables
