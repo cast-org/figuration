@@ -53,7 +53,7 @@
     "grunt-saucelabs": "^9.0.0",
     "grunt-scss-lint": "^0.5.0",
     "grunt-stylelint": "^0.10.0",
-    "load-grunt-tasks": "^3.4.0",
+    "load-grunt-tasks": "^4.0.0",
     "postcss-flexbugs-fixes": "^3.3.1",
     "qunit": "^2.6.0",
     "shelljs": "^0.8.1",
