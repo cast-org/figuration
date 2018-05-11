@@ -61,15 +61,28 @@ a.badge {
     }
 }
 
-// Colors (linked badges get darker on :hover)
-@each $theme, $colors in $context-themes {
-    $bg:            map-get($colors, "control-bg");
-    $color:         map-get($colors, "control-color");
-    $hover-bg:      map-get($colors, "control-hover-bg");
-    $hover-color:   map-get($colors, "control-hover-color");
+// Theme generation
+@if (type-of($badge-colors) == "map" and length($badge-colors) != 0) {
+    $mixed-badge-themes: _mix-context-colors($badge-colors, $badge-levels);
+    $badge-themes: map-merge($mixed-badge-themes, $badge-themes);
+}
 
-    .badge-#{$theme} {
-        @include badge-variant($color, $bg, $bg, $hover-color, $hover-bg, $hover-bg);
+@if (type-of($badge-outline-colors) == "map" and length($badge-outline-colors) != 0) {
+    $mixed-badge-outline-themes: _mix-context-colors($badge-outline-colors, $badge-outline-levels);
+    $badge-outline-themes: map-merge($mixed-badge-outline-themes, $badge-outline-themes);
+}
+
+// Colors (linked badges get darker on :hover)
+@if (type-of($badge-themes) == "map" and length($badge-themes) != 0) {
+    @each $theme, $colors in $badge-themes {
+        $bg:            map-get($colors, "bg");
+        $color:         map-get($colors, "color");
+        $hover-bg:      map-get($colors, "hover-bg");
+        $hover-color:   map-get($colors, "hover-color");
+
+        .badge-#{$theme} {
+            @include badge-variant($color, $bg, $bg, $hover-color, $hover-bg, $hover-bg);
+        }
     }
 }
 
@@ -77,13 +90,15 @@ a.badge {
 .badge-outline {
     @include badge-variant($badge-default-color, $badge-outline-bg, $badge-default-border, $badge-default-hover-color, $badge-default-hover-bg, $badge-default-hover-border);
 }
-@each $theme, $colors in $context-themes {
-    $bg:            $badge-outline-bg;
-    $color:         map-get($context-colors, $theme);
-    $hover-bg:      map-get($colors, "control-bg");
-    $hover-color:   map-get($colors, "control-hover-color");
+@if (type-of($badge-outline-themes) == "map" and length($badge-outline-themes) != 0) {
+    @each $theme, $colors in $badge-outline-themes {
+        $bg:            $badge-outline-bg;
+        $color:         map-get($colors, "base");
+        $hover-bg:      map-get($colors, "bg");
+        $hover-color:   map-get($colors, "hover-color");
 
-    .badge-outline-#{$theme} {
-        @include badge-variant($color, $bg, $hover-bg, $hover-color, $hover-bg, $hover-bg);
+        .badge-outline-#{$theme} {
+            @include badge-variant($color, $bg, $hover-bg, $hover-color, $hover-bg, $hover-bg);
+        }
     }
 }

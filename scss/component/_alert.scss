@@ -28,17 +28,25 @@
     font-weight: $alert-link-font-weight;
 }
 
+// Theme generation
+@if (type-of($alert-colors) == "map" and length($alert-colors) != 0) {
+    $mixed-alert-themes: _mix-context-colors($alert-colors, $alert-levels);
+    $alert-themes: map-merge($mixed-alert-themes, $alert-themes);
+}
+
 // Contextual modifiers
-@each $theme, $colors in $context-themes {
-    $bg:          map-get($colors, "context-bg");
-    $color:       map-get($colors, "context-color");
-    $border:      map-get($colors, "context-border-color");
-    $hover-color: map-get($colors, "context-hover-color");
+@if (type-of($alert-themes) == "map" and length($alert-themes) != 0) {
+    @each $theme, $colors in $alert-themes {
+        $bg:          map-get($colors, "bg");
+        $color:       map-get($colors, "color");
+        $border:      map-get($colors, "border-color");
+        $hover-color: map-get($colors, "hover-color");
 
-    $color:       color-if-contrast($color, $bg);
-    $hover-color: color-if-contrast($hover-color, $bg);
+        $color:       color-if-contrast($color, $bg);
+        $hover-color: color-if-contrast($hover-color, $bg);
 
-    .alert-#{$theme} {
-        @include alert-variant($color, $bg, $border, $hover-color);
+        .alert-#{$theme} {
+            @include alert-variant($color, $bg, $border, $hover-color);
+        }
     }
 }

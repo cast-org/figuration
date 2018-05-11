@@ -47,26 +47,26 @@
 }
 
 @mixin button-variant-control($theme, $colors) {
-    $bg:                 map-get($colors, "control-bg");
-    $color:              map-get($colors, "control-color");
-    $border:             map-get($colors, "control-border-color");
-    $hover-bg:           map-get($colors, "control-hover-bg");
-    $hover-color:        map-get($colors, "control-hover-color");
-    $hover-border:       map-get($colors, "control-hover-border-color");
-    $active-hover-bg:    map-get($colors, "control-active-hover-bg");
-    $active-hover-color: map-get($colors, "control-active-hover-color");
+    $bg:                 map-get($colors, "bg");
+    $color:              map-get($colors, "color");
+    $border:             map-get($colors, "border-color");
+    $hover-bg:           map-get($colors, "hover-bg");
+    $hover-color:        map-get($colors, "hover-color");
+    $hover-border:       map-get($colors, "hover-border-color");
+    $active-hover-bg:    map-get($colors, "active-hover-bg");
+    $active-hover-color: map-get($colors, "active-hover-color");
 
     @include button-variant($color, $bg, $border, $hover-color, $hover-bg, $hover-border, $active-hover-color, $active-hover-bg);
 }
 
 @mixin button-variant-control-outline($theme, $colors, $bg: $btn-outline-bg) {
-    $color:              map-get($context-colors, $theme);
-    $border:             map-get($colors, "control-bg");
-    $hover-bg:           map-get($colors, "control-bg");
-    $hover-color:        map-get($colors, "control-hover-color");
-    $hover-border:       map-get($colors, "control-border-color");
-    $active-hover-bg:    map-get($colors, "control-hover-bg");
-    $active-hover-color: map-get($colors, "control-hover-color");
+    $color:              map-get($colors, "base");
+    $border:             map-get($colors, "bg");
+    $hover-bg:           map-get($colors, "bg");
+    $hover-color:        map-get($colors, "hover-color");
+    $hover-border:       map-get($colors, "border-color");
+    $active-hover-bg:    map-get($colors, "hover-bg");
+    $active-hover-color: map-get($colors, "hover-color");
 
     @include button-variant($color, $bg, $border, $hover-color, $hover-bg, $hover-border, $active-hover-color, $active-hover-bg);
 }

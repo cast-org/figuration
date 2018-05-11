@@ -25,60 +25,49 @@
     @return $color;
 }
 
-//deprecate
-@function palette-context($key: "primary", $level: 500) {
-    $color: map-get($context-colors, $key);
-    @return palette($color, $level);
-}
-
-//deprecate
-@function palette-context-nohash($key: "primary", $level: 500) {
-    $color: map-get($context-colors, $key);
-    $hash: unquote(palette($color, $level) + "");
-    $nohash: str-replace($hash, unquote("#"), "%23");
-    @return $nohash;
-}
-
 // Generate contextual color theme
-@function _mix-context-colors($map) {
+@function _mix-context-colors($colors, $levels) {
     $result:            ();
 
-    @each $theme, $color in $map {
-        // Color adjustments
-        $control-bg:                 palette($color, $level-control-bg);
-        $control-color:              palette($color, $level-control-color);
-        $control-color:              color-if-contrast($control-color, $control-bg);
-        //$control-color:              color-auto-contrast($control-bg);
-        $control-border-color:       palette($color, $level-control-border-color);
-        $control-hover-bg:           palette($color, $level-control-hover-bg);
-        $control-hover-color:        color-if-contrast($control-color, $control-hover-bg);
-        $control-hover-border-color: palette($color, $level-control-hover-border-color);
-        $control-active-hover-bg:    palette($color, $level-control-active-hover-bg);
-        $control-active-hover-color: color-if-contrast($control-hover-color, $control-active-hover-bg);
+    $level-bg:                  map-get($levels, "bg");
+    $level-color:               map-get($levels, "color");
+    $level-border:              map-get($levels, "border-color");
+    $level-hover-bg:            map-get($levels, "hover-bg");
+    $level-hover-color:         map-get($levels, "hover-color");
+    $level-hover-border:        map-get($levels, "hover-border-color");
+    $level-active-hover-bg:     map-get($levels, "active-hover-bg");
+    $level-active-hover-color:  map-get($levels, "active-hover-color");
+    $level-active-hover-border: map-get($levels, "active-hover-border-color");
 
-        $context-bg:                 palette($color, $level-context-bg);
-        $context-color:              palette($color, $level-context-color);
-        $context-border-color:       palette($color, $level-context-border-color);
-        $context-hover-bg:           palette($color, $level-context-hover-bg);
-        $context-hover-color:        palette($color, $level-context-hover-color);
-        $context-hover-border-color: palette($color, $level-context-hover-border-color);
+    @each $theme, $base in $colors {
+        // Color adjustments
+        $bg:                    palette($base, $level-bg);
+        $color:                 palette($base, $level-color);
+        $color:                 color-if-contrast($color, $bg);
+        $border:                palette($base, $level-border);
+
+        $hover-bg:              palette($base, $level-hover-bg);
+        $hover-color:           palette($base, $level-hover-color);
+        $hover-color:           color-if-contrast($hover-color, $hover-bg);
+        $hover-border:          palette($base, $level-hover-border);
+
+        $active-hover-bg:       palette($base, $level-active-hover-bg);
+        $active-hover-color:    palette($hover-color, $level-active-hover-color);
+        $active-hover-color:    color-if-contrast($hover-color, $active-hover-bg);
+        $active-hover-border:   palette($base, $level-active-hover-border);
 
         // Build new map
         $new-map: (
-            "control-bg": $control-bg,
-            "control-color": $control-color,
-            "control-border-color": $control-border-color,
-            "control-hover-bg": $control-hover-bg,
-            "control-hover-color": $control-hover-color,
-            "control-hover-border-color": $control-hover-border-color,
-            "control-active-hover-bg": $control-active-hover-bg,
-            "control-active-hover-color": $control-active-hover-color,
-            "context-bg": $context-bg,
-            "context-color": $context-color,
-            "context-border-color": $context-border-color,
-            "context-hover-bg": $context-hover-bg,
-            "context-hover-color": $context-hover-color,
-            "context-hover-border-color": $context-hover-border-color,
+            "base": $base,
+            "bg": $bg,
+            "color": $color,
+            "border-color": $border,
+            "hover-bg": $hover-bg,
+            "hover-color": $hover-color,
+            "hover-border-color": $hover-border,
+            "active-hover-bg": $active-hover-bg,
+            "active-hover-color": $active-hover-color,
+            "active-hover-border-color": $active-hover-border
         );
         // Merge into theme map
         $result: map-merge($result, ($theme: $new-map));

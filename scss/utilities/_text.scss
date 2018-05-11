@@ -43,15 +43,13 @@
 }
 
 // Contextual colors
-@each $theme, $colors in $context-themes {
-    $color: map-get($context-colors, $theme);
-
+@each $theme, $color in $base-colors {
     @include text-emphasis-variant(".text-#{$theme}", $color, $level-delta-hover-color);
 }
 
 // Palette colors
 @if $enable-palette {
-    @each $theme, $color in $palette-themes {
+    @each $theme, $color in $palette-colors {
         @each $level in $palette-levels {
             @include text-emphasis-palette-variant(".text-#{$theme}-#{$level}", $color, $level, $level-delta-hover-color);
         }

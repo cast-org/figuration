@@ -315,11 +315,10 @@ module.exports = function(grunt) {
             },
             docs: {
                 src: ['_gh_pages/**/*.html']
+            },
+            test: {
+                src: ['test/visual/*.html']
             }
-            // TODO:
-            // test: {
-            //    src: ['js/tests/visual/*.html']
-            // }
         },
         /* jshint +W100 */
 
@@ -376,6 +375,7 @@ module.exports = function(grunt) {
     // Test
     grunt.registerTask('test', ['dist-css', 'dist-js', 'test-css', 'test-js']);
     grunt.registerTask('test-css', ['stylelint:core']);
+    grunt.registerTask('test-html', ['htmllint:test']);
 
     // Test - JS subtasks
     var jsTestTasks = ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt'];

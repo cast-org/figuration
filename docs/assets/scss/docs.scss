@@ -493,6 +493,15 @@ h4 {
     }
 }
 
+.cf-content table {
+    td,
+    th {
+        &:first-child > code {
+            white-space: nowrap;
+        }
+    }
+}
+
 .table-grunt {
     tr th:first-child,
     tr td:first-child {
@@ -538,10 +547,13 @@ h4 {
         color: $color;
     }
 }
-@each $theme, $colors in $context-themes {
-    $bg:           map-get($colors, "context-bg");
-    $color:        map-get($colors, "context-color");
-    $border-color: map-get($colors, "control-border-color");
+// stylelint-disable-next-line scss/dollar-variable-default
+$callout-themes: map-remove($alert-themes, "primary", "secondary", "success", "light", "dark");
+@each $theme, $colors in $callout-themes {
+    $base:         map-get($colors, "base");
+    $bg:           map-get($colors, "bg");
+    $color:        map-get($colors, "color");
+    $border-color: palette($base, 600);
 
     .cf-callout-#{$theme} {
         @include callout-variant($bg, $color, $border-color);

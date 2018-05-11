@@ -11,7 +11,7 @@ $enable-sizing:         true !default;      // true
 $enable-bp-smallest:    false !default;     // false
 $enable-rfs-fluid:      false !default;     // false
 $enable-rfs-scale:      false !default;     // false
-$enable-color-warnings: false !default;     //false
+$enable-color-warnings: false !default;     // false
 
 
 // Palette
@@ -31,19 +31,30 @@ $palette-interval-dark:     .15% !default;
 // Special values:
 //  level < 0 = #fff
 //  level > 1000 = #000
-$level-control-bg:                  500 !default;
-$level-control-color:               -1 !default;
-$level-control-border-color:        600 !default;
-$level-control-hover-bg:            600 !default;
-$level-control-hover-border-color:  700 !default;
-$level-control-active-hover-bg:     700 !default;
+$level-control: (
+    "bg":                           500,
+    "color":                        -1,
+    "border-color":                 600,
+    "hover-bg":                     600,
+    "hover-color":                  -1,
+    "hover-border-color":           700,
+    "active-hover-bg":              700,
+    "active-hover-color":           -1,
+    "active-hover-border-color":    700
+) !default;
 
-$level-context-bg:                  100 !default;
-$level-context-color:               800 !default;
-$level-context-border-color:        200 !default;
-$level-context-hover-bg:            200 !default;
-$level-context-hover-color:         900 !default;
-$level-context-hover-border-color:  300 !default;
+$level-context: (
+    "bg":                           100,
+    "color":                        800,
+    "border-color":                 200,
+    "hover-bg":                     200,
+    "hover-color":                  900,
+    "hover-border-color":           300,
+    "active-hover-bg":              200,
+    "active-hover-color":           900,
+    "active-hover-border-color":    300
+) !default;
+
 
 // Increase (or decrease with negative number) to alter color for the hover state of
 //`.text-{color}-(palette-level} and `.bg-{color}-(palette-level} utilities
@@ -63,11 +74,9 @@ $green:     #0e8a16 !default;
 $blue:      #0055e9 !default;
 $cyan:      #1680a4 !default;
 $yellow:    #f8c223 !default;
-$light:     palette($uibase, 50) !default;
-$dark:      palette($uibase, 800) !default;
 
 // Base UI Scale
-$uibase-50:  palette($uibase, 50) !default;
+$uibase-50:   palette($uibase, 50) !default;
 $uibase-100:  palette($uibase, 100) !default;
 $uibase-200:  palette($uibase, 200) !default;
 $uibase-300:  palette($uibase, 300) !default;
@@ -78,54 +87,88 @@ $uibase-700:  palette($uibase, 700) !default;
 $uibase-800:  palette($uibase, 800) !default;
 $uibase-900:  palette($uibase, 900) !default;
 
-// Palette color
-$palette-themes: (
-    "uibase":    $uibase,
-    "primary":   $blue,
-    "secondary": $uibase,
-    "info":      $cyan,
-    "success":   $green,
-    "warning":   $yellow,
-    "danger":    $red,
-    "gray":      $gray
-) !default;
+// Color Variables
+$primary:   $blue !default;
+$secondary: $uibase !default;
+$info:      $cyan !default;
+$success:   $green !default;
+$warning:   $yellow !default;
+$danger:    $red !default;
+$light:     palette($uibase, 50) !default;
+$dark:      palette($uibase, 800) !default;
 
-// Contextual colors
-$context-themes: () !default;
-$context-colors: (
-    "primary":   $blue,
-    "secondary": $uibase,
-    "info":      $cyan,
-    "success":   $green,
-    "warning":   $yellow,
-    "danger":    $red,
+// Base Color Map - used for generating contextual variants
+// stylelint-disable
+$base-colors: () !default;
+$base-colors: map-merge((
+    "primary":   $primary,
+    "secondary": $secondary,
+    "info":      $info,
+    "success":   $success,
+    "warning":   $warning,
+    "danger":    $danger,
     "light":     $light,
     "dark":      $dark
-) !default;
+), $base-colors);
+// stylelint-enable
 
-// Color contrast
+// Palette Colors
+$palette-colors: () !default;
+// stylelint-disable
+$palette-colors: map-merge((
+    "uibase":    $uibase,
+    "primary":   $primary,
+    "secondary": $secondary,
+    "info":      $info,
+    "success":   $success,
+    "warning":   $warning,
+    "danger":    $danger,
+    "gray":      $gray
+), $palette-colors);
+// stylelint-enable
+
+// Color Contrast
+// =====
 // Minimum contrast ratio - WCAG 2.1 level AA spec
 $color-contrast-min-ratio:  4.5 !default;
 $color-contrast-base-light: $white !default;
 $color-contrast-base-dark:  $uibase-900 !default;
 
-// stylelint-disable
-// Process brand colors
-$brand-themes: _mix-context-colors($context-colors);
-// Merge into master themes map
-$context-themes: map-merge($context-themes, $brand-themes);
-// stylelint-enable
 
-
-// Inverse Color
+// Component Color Variants and Levels
 // =====
-$inverse-color: (
-    color:    $uibase-50,
-    bg:       $uibase-700,
-    border:   $uibase-500,
-    active:   $uibase-600,
-    hover-bg: $uibase-500
-) !default;
+$alert-colors:          $base-colors !default;
+$badge-colors:          $base-colors !default;
+$badge-outline-colors:  $base-colors !default;
+$btn-colors:            $base-colors !default;
+$btn-outline-colors:    $base-colors !default;
+$list-colors:           $base-colors !default;
+$switch-colors:         $base-colors !default;
+$table-colors:          $base-colors !default;
+
+$alert-levels:          $level-context !default;
+$badge-levels:          $level-control !default;
+$badge-outline-levels:  $level-control !default;
+$btn-levels:            $level-control !default;
+$btn-outline-levels:    $level-control !default;
+$list-levels:           $level-context !default;
+$switch-levels:         $level-control !default;
+$table-levels:          $level-context !default;
+
+
+// Component Theme Initialization
+// =====
+// Themes are mixed, using `$*-colors` and `$*-levels`, and merged
+// inside each of their component sources.  They are included here
+// for including additional color themes.
+$alert-themes:          () !default;
+$badge-themes:          () !default;
+$badge-outline-themes:  () !default;
+$btn-themes:            () !default;
+$btn-outline-themes:    () !default;
+$list-themes:           () !default;
+$switch-themes:         () !default;
+$table-themes:          () !default;
 
 
 // Spacing
@@ -211,9 +254,9 @@ $body-color:            $uibase-900 !default;
 // Links
 // =====
 // Style anchor elements
-$link-color:            palette-context("primary", 500) !default;
+$link-color:            palette($primary, 500) !default;
 $link-decoration:       underline !default;
-$link-hover-color:      palette-context("primary", 700) !default;
+$link-hover-color:      palette($primary, 700) !default;
 $link-hover-decoration: underline !default;
 
 
@@ -314,10 +357,10 @@ $component-hover-bg:            $uibase-50 !default;
 $component-action-color:        $uibase-700 !default;
 $component-action-hover-color:  $uibase-800 !default;
 
-$component-active-bg:           map-deep-get($context-themes, "primary", "control-bg") !default;
-$component-active-color:        map-deep-get($context-themes, "primary", "control-color") !default;
-$component-active-border-color: map-deep-get($context-themes, "primary", "control-border-color") !default;
-$component-active-hover-bg:     map-deep-get($context-themes, "primary", "control-hover-bg") !default;
+$component-active-bg:           $primary !default;
+$component-active-color:        color-if-contrast($white, $primary) !default;
+$component-active-border-color: palette($primary, 600) !default;
+$component-active-hover-bg:     palette($primary, 600) !default;
 
 $component-disabled-color:      $uibase-300 !default;
 $component-disabled-bg:         transparent !default;
@@ -469,7 +512,6 @@ $table-condensed-cell-padding:  .3125rem .5rem !default;
 $table-caption-color:           $uibase-500 !default;
 
 $table-bg:                  $component-bg !default;
-$table-bg-accent:           $component-section-bg !default;
 $table-bg-hover:            $component-hover-bg !default;
 $table-bg-active:           $table-bg-hover !default;
 $table-bg-active-hover:     $uibase-200 !default;
@@ -495,8 +537,8 @@ $btn-font-weight:           $font-weight-normal !default;
 $btn-line-height:           1.25 !default;
 $btn-border-width:          $border-width !default;
 $btn-border-radius:         $border-radius !default;
-$btn-box-shadow:            inset 0 .125em .25em rgba($white, .25), 0 1px 1px rgba($black, .075) !default;
-$btn-active-box-shadow:     inset 0 .125em .25em rgba($black, .25), $btn-box-shadow !default;
+$btn-box-shadow:            inset 0 .125em .25em rgba($white, .25), 0 .125em .125em rgba($black, .075) !default;
+$btn-active-box-shadow:     inset 0 .125em .25em rgba($black, .125), $btn-box-shadow !default;
 
 $btn-outline-bg:            transparent !default;
 
@@ -534,7 +576,7 @@ $input-box-shadow:              inset 0 .125em .125em rgba($black, .1) !default;
 
 $input-focus-color:             $input-color !default;
 $input-focus-bg:                $input-bg !default;
-$input-focus-border-color:      palette-context("primary", 300) !default;
+$input-focus-border-color:      palette($primary, 300) !default;
 $input-focus-box-shadow:        inset 0 .125em .125em rgba($black, .15) !default;
 
 $input-disabled-color:          $component-disabled-color !default;
@@ -570,9 +612,9 @@ $select-height:     calc(#{$input-height} + #{($border-width * 2)}) !default;
 // =====
 // From OpenIconic: https://useiconic.com/open
 // Use some functions to recolor icons to match context colors
-$icon-success: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{palette-context-nohash('success', 500)}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E") !default;
-$icon-warning: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{palette-context-nohash('warning', 500)}' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E") !default;
-$icon-danger: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{palette-context-nohash('danger', 500)}' viewBox='-2 -2 7 7'%3E%3Cpath stroke='#{palette-context-nohash('danger', 500)}' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E") !default;
+$icon-success: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$success}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E"), "#", "%23") !default;
+$icon-warning: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$warning}' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E"), "#", "%23") !default;
+$icon-danger: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{palette($danger, 500)}' viewBox='-2 -2 7 7'%3E%3Cpath stroke='#{$danger}' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E"), "#", "%23") !default;
 
 
 // Custom form controls
@@ -592,18 +634,18 @@ $custom-control-indicator-border-color: $input-border-color !default;
 $custom-control-disabled-indicator-bg:       $uibase-200 !default;
 $custom-control-disabled-description-color:  $uibase-400 !default;
 
-$custom-control-checked-indicator-color:      $white !default;
-$custom-control-checked-indicator-bg:         map-get($context-colors, "primary") !default;
+$custom-control-checked-indicator-bg:         $primary !default;
+$custom-control-checked-indicator-color:      color-if-contrast($white, $custom-control-checked-indicator-bg) !default;
 $custom-control-checked-indicator-box-shadow: none !default;
 
 $custom-control-focus-indicator-box-shadow:  0 0 0 .0625rem #fff, 0 0 0 .1875rem $input-focus-border-color !default;
 
+$custom-control-active-indicator-bg:         palette($primary, 300) !default;
 $custom-control-active-indicator-color:      $white !default;
-$custom-control-active-indicator-bg:         palette-context("primary", 300) !default;
 
 $custom-checkbox-radius:                    $border-radius !default;
 $custom-checkbox-checked-icon:              url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E") !default;
-$custom-checkbox-indeterminate-bg:          map-get($context-colors, "primary") !default;
+$custom-checkbox-indeterminate-bg:          $primary !default;
 $custom-checkbox-indeterminate-icon:        url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='%23fff' d='M0 2h4'/%3E%3C/svg%3E") !default;
 $custom-checkbox-indeterminate-box-shadow:  none !default;
 
@@ -639,7 +681,7 @@ $switch-width-multiplier:               4 !default;
 $switch-control-bg:                     $input-bg !default;
 $switch-indicator-bg:                   $uibase-200 !default;
 
-$switch-active-control-bg:              $uibase-50 !default;
+$switch-active-control-bg:              $input-bg !default;
 $switch-active-indicator-bg:            $uibase-400 !default;
 
 $switch-focus-control-border-color:     $input-focus-border-color !default;
@@ -662,7 +704,7 @@ $progress-box-shadow:           inset 0 .125rem .125rem rgba($black, .1) !defaul
 $progress-bar-color:            $white !default;
 $progress-bar-bg:               $uibase-300 !default;
 $progress-bar-animation-timing: 1s linear infinite !default;
-$progress-bar-box-shadow:       inset 0 -.125rem 0 rgba($black, .1) !default;
+$progress-bar-box-shadow:       inset 0 .125rem .25rem rgba($white, .25) !default;
 
 
 // Breadcrumbs
@@ -1014,8 +1056,8 @@ $slider-thumb-border-radius:        50% !default;
 
 $slider-thumb-min-bg:               $component-active-bg !default;
 $slider-thumb-min-hover-bg:         $component-active-hover-bg !default;
-$slider-thumb-max-bg:               map-deep-get($context-themes, "danger", "control-bg") !default;
-$slider-thumb-max-hover-bg:         map-deep-get($context-themes, "danger", "control-hover-bg") !default;
+$slider-thumb-max-bg:               $danger !default;
+$slider-thumb-max-hover-bg:         palette($danger, 600) !default;
 
 $slider-track-bg:                   $uibase-50 !default;
 $slider-track-border-radius:        $border-radius !default;

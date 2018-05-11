@@ -174,14 +174,21 @@
 // Active variant
 @include table-row-variant(active, $table-bg-active, $table-bg-active-hover);
 
-// Contextual variants
-@each $theme, $colors in $context-themes {
-    $bg:       map-get($colors, "context-bg");
-    $hover-bg: map-get($colors, "context-hover-bg");
-
-    @include table-row-variant("#{$theme}", $bg, $hover-bg);
+// Theme generation
+@if (type-of($table-colors) == "map" and length($table-colors) != 0) {
+    $mixed-table-themes: _mix-context-colors($table-colors, $table-levels);
+    $table-themes: map-merge($mixed-table-themes, $table-themes);
 }
 
+// Contextual variants
+@if (type-of($table-themes) == "map" and length($table-themes) != 0) {
+    @each $theme, $colors in $table-themes {
+        $bg:       map-get($colors, "bg");
+        $hover-bg: map-get($colors, "hover-bg");
+
+        @include table-row-variant("#{$theme}", $bg, $hover-bg);
+    }
+}
 
 // Scrolling table
 // Add `.table-scroll` to table to enable horizontal scrolling.
