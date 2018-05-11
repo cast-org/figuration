@@ -21,8 +21,8 @@
     text-align: center;
 }
 .responsive-utilities .is-visible {
-    color: map-deep-get($context-themes, "success", "color");
-    background-color: map-deep-get($context-themes, "success", "bg") !important;
+    color: palette($success, 800);
+    background-color: palette($success, 100) !important;
 }
 .responsive-utilities .is-hidden {
     color: $uibase-500;
@@ -55,9 +55,9 @@
         }
 
         .visible {
-            color: map-deep-get($context-themes, "success", "color");
-            background-color: map-deep-get($context-themes, "success", "bg");
-            border: 1px solid map-deep-get($context-themes, "success", "border-color");
+            color: palette($success, 800);
+            background-color: palette($success, 100);
+            border: 1px solid palette($success, 200);
         }
     }
 }

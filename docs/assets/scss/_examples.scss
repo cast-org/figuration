@@ -11,21 +11,21 @@
 .cf-example-container-header {
     height: 3rem;
     margin-bottom: .5rem;
-    background-color: lighten(map-get($context-colors, "primary"), 50%);
+    background-color: lighten(map-get($base-colors, "primary"), 50%);
     border-radius: .25rem;
 }
 .cf-example-container-sidebarL {
     float: left;
     width: 4rem;
     height: 8rem;
-    background-color: lighten(map-get($context-colors, "warning"), 25%);
+    background-color: lighten(map-get($base-colors, "warning"), 25%);
     border-radius: .25rem;
 }
 .cf-example-container-sidebarR {
     float: right;
     width: 8rem;
     height: 8rem;
-    background-color: lighten(map-get($context-colors, "danger"), 25%);
+    background-color: lighten(map-get($base-colors, "danger"), 25%);
     border-radius: .25rem;
 }
 .cf-example-container-body {
