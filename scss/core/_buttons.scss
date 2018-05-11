@@ -65,6 +65,17 @@ fieldset:disabled a.btn,
     pointer-events: none;
 }
 
+// Theme generation
+@if (type-of($btn-colors) == "map" and length($btn-colors) != 0) {
+    $mixed-btn-themes: _mix-context-colors($btn-colors, $btn-levels);
+    $btn-themes: map-merge($mixed-btn-themes, $btn-themes);
+}
+
+@if (type-of($btn-outline-colors) == "map" and length($btn-outline-colors) != 0) {
+    $mixed-btn-outline-themes: _mix-context-colors($btn-outline-colors, $btn-outline-levels);
+    $btn-outline-themes: map-merge($mixed-btn-outline-themes, $btn-outline-themes);
+}
+
 // Contextual color variants
 @if (type-of($btn-themes) == "map" and length($btn-themes) != 0) {
     @each $theme, $colors in $btn-themes {

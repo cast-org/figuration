@@ -75,17 +75,8 @@ $blue:      #0055e9 !default;
 $cyan:      #1680a4 !default;
 $yellow:    #f8c223 !default;
 
-$primary:   $blue !default;
-$secondary: $uibase !default;
-$info:      $cyan !default;
-$success:   $green !default;
-$warning:   $yellow !default;
-$danger:    $red !default;
-$light:     palette($uibase, 50) !default;
-$dark:      palette($uibase, 800) !default;
-
 // Base UI Scale
-$uibase-50:  palette($uibase, 50) !default;
+$uibase-50:   palette($uibase, 50) !default;
 $uibase-100:  palette($uibase, 100) !default;
 $uibase-200:  palette($uibase, 200) !default;
 $uibase-300:  palette($uibase, 300) !default;
@@ -96,8 +87,35 @@ $uibase-700:  palette($uibase, 700) !default;
 $uibase-800:  palette($uibase, 800) !default;
 $uibase-900:  palette($uibase, 900) !default;
 
-// Palette colors
-$palette-themes: (
+// Color Variables
+$primary:   $blue !default;
+$secondary: $uibase !default;
+$info:      $cyan !default;
+$success:   $green !default;
+$warning:   $yellow !default;
+$danger:    $red !default;
+$light:     palette($uibase, 50) !default;
+$dark:      palette($uibase, 800) !default;
+
+// Base Color Map - used for generating contextual variants
+// stylelint-disable
+$base-colors: () !default;
+$base-colors: map-merge((
+    "primary":   $primary,
+    "secondary": $secondary,
+    "info":      $info,
+    "success":   $success,
+    "warning":   $warning,
+    "danger":    $danger,
+    "light":     $light,
+    "dark":      $dark
+), $base-colors);
+// stylelint-enable
+
+// Palette Colors
+$palette-colors: () !default;
+// stylelint-disable
+$palette-colors: map-merge((
     "uibase":    $uibase,
     "primary":   $primary,
     "secondary": $secondary,
@@ -106,54 +124,51 @@ $palette-themes: (
     "warning":   $warning,
     "danger":    $danger,
     "gray":      $gray
-) !default;
-
-// Control colors
-$control-colors: () !default;
-// stylelint-disable
-$control-colors: map-merge((
-    "primary":   $primary,
-    "secondary": $secondary,
-    "info":      $info,
-    "success":   $success,
-    "warning":   $warning,
-    "danger":    $danger,
-    "light":     $light,
-    "dark":      $dark
-), $control-colors);
+), $palette-colors);
 // stylelint-enable
 
-// Contextual colors
-$context-colors: () !default;
-// stylelint-disable
-$context-colors: map-merge((
-    "primary":   $primary,
-    "secondary": $secondary,
-    "info":      $info,
-    "success":   $success,
-    "warning":   $warning,
-    "danger":    $danger,
-    "light":     $light,
-    "dark":      $dark
-), $context-colors);
-// stylelint-enable
-
-// Color contrast
+// Color Contrast
+// =====
 // Minimum contrast ratio - WCAG 2.1 level AA spec
 $color-contrast-min-ratio:  4.5 !default;
 $color-contrast-base-light: $white !default;
 $color-contrast-base-dark:  $uibase-900 !default;
 
-// Process brand colors and merge into master theme maps
-// stylelint-disable
-$control-themes: () !default;
-$mixed-control-themes: _mix-context-colors($control-colors, $level-control);
-$control-themes: map-merge($mixed-control-themes, $control-themes);
 
-$context-themes: () !default;
-$mixed-context-themes: _mix-context-colors($context-colors, $level-context);
-$context-themes: map-merge($mixed-context-themes, $context-themes);
-// stylelint-enable
+// Component Color Variants and Levels
+// =====
+$alert-colors:          $base-colors !default;
+$badge-colors:          $base-colors !default;
+$badge-outline-colors:  $base-colors !default;
+$btn-colors:            $base-colors !default;
+$btn-outline-colors:    $base-colors !default;
+$list-colors:           $base-colors !default;
+$switch-colors:         $base-colors !default;
+$table-colors:          $base-colors !default;
+
+$alert-levels:          $level-context !default;
+$badge-levels:          $level-control !default;
+$badge-outline-levels:  $level-control !default;
+$btn-levels:            $level-control !default;
+$btn-outline-levels:    $level-control !default;
+$list-levels:           $level-context !default;
+$switch-levels:         $level-control !default;
+$table-levels:          $level-context !default;
+
+
+// Component Theme Initialization
+// =====
+// Themes are mixed, using `$*-colors` and `$*-levels`, and merged
+// inside each of their component sources.  They are included here
+// for including additional color themes.
+$alert-themes:          () !default;
+$badge-themes:          () !default;
+$badge-outline-themes:  () !default;
+$btn-themes:            () !default;
+$btn-outline-themes:    () !default;
+$list-themes:           () !default;
+$switch-themes:         () !default;
+$table-themes:          () !default;
 
 
 // Spacing
@@ -342,10 +357,10 @@ $component-hover-bg:            $uibase-50 !default;
 $component-action-color:        $uibase-700 !default;
 $component-action-hover-color:  $uibase-800 !default;
 
-$component-active-bg:           map-deep-get($control-themes, "primary", "bg") !default;
-$component-active-color:        map-deep-get($control-themes, "primary", "color") !default;
-$component-active-border-color: map-deep-get($control-themes, "primary", "border-color") !default;
-$component-active-hover-bg:     map-deep-get($control-themes, "primary", "hover-bg") !default;
+$component-active-bg:           $primary !default;
+$component-active-color:        color-if-contrast($white, $primary) !default;
+$component-active-border-color: palette($primary, 600) !default;
+$component-active-hover-bg:     palette($primary, 600) !default;
 
 $component-disabled-color:      $uibase-300 !default;
 $component-disabled-bg:         transparent !default;
@@ -465,8 +480,6 @@ $figure-caption-color:      $uibase-500 !default;
 
 // Lists
 // =====
-$list-themes:                   $context-themes !default;
-
 $list-margin-left:              1.25rem !default;
 $list-margin-bottom:            1rem !default;
 
@@ -493,8 +506,6 @@ $list-spaced-item-padding-x:    1rem !default;
 
 // Tables
 // =====
-$table-themes:              $context-themes !default;
-
 $table-margin-bottom:           $spacer !default;
 $table-cell-padding:            .75rem !default;
 $table-condensed-cell-padding:  .3125rem .5rem !default;
@@ -520,9 +531,6 @@ $table-hover-alt-bgi:       linear-gradient(0deg, rgba($white, .2) 0%, rgba($whi
 
 // Buttons
 // =====
-$btn-themes:                $control-themes !default;
-$btn-outline-themes:        $control-themes !default;
-
 $btn-padding-y:             .375rem !default;
 $btn-padding-x:             .75rem !default;
 $btn-font-weight:           $font-weight-normal !default;
@@ -626,18 +634,18 @@ $custom-control-indicator-border-color: $input-border-color !default;
 $custom-control-disabled-indicator-bg:       $uibase-200 !default;
 $custom-control-disabled-description-color:  $uibase-400 !default;
 
-$custom-control-checked-indicator-color:      $white !default;
-$custom-control-checked-indicator-bg:         map-get($context-colors, "primary") !default;
+$custom-control-checked-indicator-bg:         $primary !default;
+$custom-control-checked-indicator-color:      color-if-contrast($white, $custom-control-checked-indicator-bg) !default;
 $custom-control-checked-indicator-box-shadow: none !default;
 
 $custom-control-focus-indicator-box-shadow:  0 0 0 .0625rem #fff, 0 0 0 .1875rem $input-focus-border-color !default;
 
-$custom-control-active-indicator-color:      $white !default;
 $custom-control-active-indicator-bg:         palette($primary, 300) !default;
+$custom-control-active-indicator-color:      $white !default;
 
 $custom-checkbox-radius:                    $border-radius !default;
 $custom-checkbox-checked-icon:              url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E") !default;
-$custom-checkbox-indeterminate-bg:          map-get($context-colors, "primary") !default;
+$custom-checkbox-indeterminate-bg:          $primary !default;
 $custom-checkbox-indeterminate-icon:        url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='%23fff' d='M0 2h4'/%3E%3C/svg%3E") !default;
 $custom-checkbox-indeterminate-box-shadow:  none !default;
 
@@ -669,8 +677,6 @@ $custom-file-text: map-merge($custom-file-text-default, $custom-file-text);
 
 // Switch
 // =====
-$switch-themes:                         $control-themes !default;
-
 $switch-width-multiplier:               4 !default;
 $switch-control-bg:                     $input-bg !default;
 $switch-indicator-bg:                   $uibase-200 !default;
@@ -866,9 +872,6 @@ $jumbotron-breakpoint:      sm !default;
 
 // Badges
 // =====
-$badge-themes:              $control-themes !default;
-$badge-outline-themes:      $control-themes !default;
-
 $badge-font-size:           75% !default;
 $badge-font-weight:         $font-weight-bold !default;
 $badge-padding-x:           .375em !default;
@@ -894,8 +897,6 @@ $badge-default-hover-border:    $uibase-400 !default;
 
 // Alerts
 // =====
-$alert-themes:              $context-themes !default;
-
 $alert-padding-x:           1rem !default;
 $alert-padding-y:           1rem !default;
 $alert-margin-bottom:       $spacer !default;
@@ -1055,8 +1056,8 @@ $slider-thumb-border-radius:        50% !default;
 
 $slider-thumb-min-bg:               $component-active-bg !default;
 $slider-thumb-min-hover-bg:         $component-active-hover-bg !default;
-$slider-thumb-max-bg:               map-deep-get($control-themes, "danger", "bg") !default;
-$slider-thumb-max-hover-bg:         map-deep-get($control-themes, "danger", "hover-bg") !default;
+$slider-thumb-max-bg:               $danger !default;
+$slider-thumb-max-hover-bg:         palette($danger, 600) !default;
 
 $slider-track-bg:                   $uibase-50 !default;
 $slider-track-border-radius:        $border-radius !default;

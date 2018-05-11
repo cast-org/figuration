@@ -115,6 +115,12 @@
     }
 }
 
+// Theme generation
+@if (type-of($switch-colors) == "map" and length($switch-colors) != 0) {
+    $mixed-switch-themes: _mix-context-colors($switch-colors, $switch-levels);
+    $switch-themes: map-merge($mixed-switch-themes, $switch-themes);
+}
+
 // Color variants
 @if (type-of($switch-themes) == "map" and length($switch-themes) != 0) {
     @each $theme, $colors in $switch-themes {

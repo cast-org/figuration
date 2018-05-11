@@ -61,6 +61,17 @@ a.badge {
     }
 }
 
+// Theme generation
+@if (type-of($badge-colors) == "map" and length($badge-colors) != 0) {
+    $mixed-badge-themes: _mix-context-colors($badge-colors, $badge-levels);
+    $badge-themes: map-merge($mixed-badge-themes, $badge-themes);
+}
+
+@if (type-of($badge-outline-colors) == "map" and length($badge-outline-colors) != 0) {
+    $mixed-badge-outline-themes: _mix-context-colors($badge-outline-colors, $badge-outline-levels);
+    $badge-outline-themes: map-merge($mixed-badge-outline-themes, $badge-outline-themes);
+}
+
 // Colors (linked badges get darker on :hover)
 @if (type-of($badge-themes) == "map" and length($badge-themes) != 0) {
     @each $theme, $colors in $badge-themes {

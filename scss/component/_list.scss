@@ -290,6 +290,12 @@ button.list-item-action {
     }
 }
 
+// Theme generation
+@if (type-of($list-colors) == "map" and length($list-colors) != 0) {
+    $mixed-list-themes: _mix-context-colors($list-colors, $list-levels);
+    $list-themes: map-merge($mixed-list-themes, $list-themes);
+}
+
 // Contextual variants
 // Add modifier classes to change text and background color on individual items.
 // Organizationally, this must come after the `:hover` states.

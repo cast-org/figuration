@@ -28,6 +28,12 @@
     font-weight: $alert-link-font-weight;
 }
 
+// Theme generation
+@if (type-of($alert-colors) == "map" and length($alert-colors) != 0) {
+    $mixed-alert-themes: _mix-context-colors($alert-colors, $alert-levels);
+    $alert-themes: map-merge($mixed-alert-themes, $alert-themes);
+}
+
 // Contextual modifiers
 @if (type-of($alert-themes) == "map" and length($alert-themes) != 0) {
     @each $theme, $colors in $alert-themes {

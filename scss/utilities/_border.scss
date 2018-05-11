@@ -64,7 +64,7 @@
 
 // Border colors
 // Contextual borders
-@each $theme, $color in $context-colors {
+@each $theme, $color in $base-colors {
     .border-#{$theme} {
         border-color: $color !important;
     }
@@ -72,7 +72,7 @@
 
 // Palette colors
 @if $enable-palette {
-    @each $theme, $color in $palette-themes {
+    @each $theme, $color in $palette-colors {
         @each $level in $palette-levels {
             .border-#{$theme}-#{$level} {
                 border-color: palette($color, $level) !important;
