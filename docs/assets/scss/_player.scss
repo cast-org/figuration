@@ -183,7 +183,7 @@
 .player-notime .player-seek,
 .player-live .player-time-duration,
 .player-live .player-seek {
-    @include text-hide();
+    visibility: hidden;
 }
 
 .player-transcript {
