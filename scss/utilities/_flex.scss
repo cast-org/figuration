@@ -61,7 +61,11 @@
         // Sizing
         .flex#{$bprule}-fill { flex: 1 1 auto !important; }
         .flex#{$bprule}-grow { flex: 1 0 auto !important; }
+        .flex#{$bprule}-grow-0 { flex-grow: 0 !important; }
+        .flex#{$bprule}-grow-1 { flex-grow: 1 !important; }
         .flex#{$bprule}-shrink { flex: 0 1 0% !important; }
+        .flex#{$bprule}-shrink-0 { flex-shrink: 0 !important; }
+        .flex#{$bprule}-shrink-1 { flex-shrink: 1 !important; }
         .flex#{$bprule}-none { flex: none !important; }
     }
 }

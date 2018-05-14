@@ -534,7 +534,11 @@ Change the sizing of individual flexbox items to with sizing utilities.
 
 Responsive sizing utilities:
 - `.flex-{breakpoint}-fill`
+- `.flex-{breakpoint}-grow-0`
+- `.flex-{breakpoint}-grow-1`
 - `.flex-{breakpoint}-grow`
+- `.flex-{breakpoint}-shrink-0`
+- `.flex-{breakpoint}-shrink-1`
 - `.flex-{breakpoint}-shrink`
 - `.flex-{breakpoint}-none`
 
@@ -550,6 +554,18 @@ To make an element grow or shrink as needed, use the `.flex-fill` utility.
 {% endexample %}
 </div>
 
+Use `.flex-grow-0/1` utilities to toggle a flex item's ability to grow to fill available space. In the example below, the `.flex-grow-1` elements uses all available space it can, while allowing the remaining two flex items their necessary space.
+
+<div class="cf-example-flex">
+{% example html %}
+<div class="d-flex">
+  <div class="p-0_5">Flex item</div>
+  <div class="p-0_5 flex-grow-1">Growing flex item - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum ipsum ut efficitur imperdiet.</div>
+  <div class="p-0_5">Flex item</div>
+</div>
+{% endexample %}
+</div>
+
 To make an element grow, but not shrink, use the `.flex-grow` utility.
 
 <div class="cf-example-flex">
@@ -558,6 +574,17 @@ To make an element grow, but not shrink, use the `.flex-grow` utility.
   <div class="p-0_5">Flex item</div>
   <div class="flex-grow p-0_5">Growing flex item - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum ipsum ut efficitur imperdiet.</div>
   <div class="p-0_5">Flex item</div>
+</div>
+{% endexample %}
+</div>
+
+Use `.flex-shrink-0/1` utilities to toggle a flex item's ability to shrink if necessary. In the example below, the second flex item with `.flex-shrink-1` is forced to wrap it's contents to a new line, "shrinking" to allow more space for the previous flex item with `.w-100`.
+
+<div class="cf-example-flex">
+{% example html %}
+<div class="d-flex">
+  <div class="p-0_5 w-100">Flex item</div>
+  <div class="p-0_5 flex-shrink-1">Flex item</div>
 </div>
 {% endexample %}
 </div>
