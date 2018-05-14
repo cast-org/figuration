@@ -15,7 +15,7 @@ Easily manipulate borders on your images or other elements.
 
 ## Border Radius
 
-Add a class to your element to round the corners.  You can target various sides of an element using the format `.radius-{sides}`.
+Add a class to your element to round the corners.  You can target various sides of an element using the format `.radius{-side}`.
 
 Where *sides* is one of:
 
@@ -72,7 +72,7 @@ The *start/end sides* are designated as follows depending on which version of th
 
 ### Using Component Sizes
 
-A few sizes are available using the [component sizing options]({{ site.baseurl }}/get-started/options/#component-sizes).  Classes are built in the form `.radius-{sides}-{size}`.
+A few sizes are available using the [component sizing options]({{ site.baseurl }}/get-started/options/#component-sizes).  Classes are built in the form `.radius{-side}-{size}`.
 
 By default the `xs` and `sm` sizes are the same radius.  Also the `lg` and `xl` sizes are the same radius.
 
@@ -156,16 +156,16 @@ The *start/end sides* are designated as follows depending on which version of th
 
 ## Border Removal
 
-Remove the border on a given side of an element with the `.border-0{-side}` utility classes.
+Remove the border on a given side of an element with the `.border{-side}-0` utility classes.
 
 Available border removal utilities are:
 * `.border-0` - for `all` 4 sides of the element
-* `.border-0-t` - for the `top` side
-* `.border-0-b` - for the `bottom` side
-* `.border-0-e` - for the `end` side
-* `.border-0-s` - for the `start` side
-* `.border-0-x` - for both `start` and `end` sides
-* `.border-0-y` - for both `top` and `bottom` sides
+* `.border-t-0` - for the `top` side
+* `.border-b-0` - for the `bottom` side
+* `.border-e-0` - for the `end` side
+* `.border-s-0` - for the `start` side
+* `.border-x-0` - for both `start` and `end` sides
+* `.border-y-0` - for both `top` and `bottom` sides
 
 The *start/end sides* are designated as follows depending on which version of the Figuration CSS you are using.  The default `figuration.*.css` uses the `ltr` mode, where `figuration-rtl.*.css` uses the `rtl` mode.
 
