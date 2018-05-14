@@ -66,6 +66,10 @@ Some changes will most likely have been missed, so please refer to the documenta
 ### Flexbox
 - Renamed `.flex-order` to `.order` to both shorten and also match standard rule name.
 
+
+### Image Replacement
+- Dropped the `.text-hide` util and `.text-hide()` mixin---in favor of using `.sr-only` as the replacement.
+
 ## Widgets
 
 ### Button
