@@ -37,6 +37,11 @@
 .font-weight-bold   { font-weight: $font-weight-bold !important; }
 .font-italic        { font-style: italic !important; }
 
+// Font families
+.font-family-sans-serif { font-family: $font-family-sans-serif !important; }
+.font-family-serif      { font-family: $font-family-serif !important; }
+.font-family-monospace  { font-family: $font-family-monospace !important; }
+
 // Truncated text
 .text-truncate {
     @include text-truncate();
