@@ -27,46 +27,15 @@
 }
 
 // Print display utilities
-.print-show-block {
-    @media print {
-        display: block !important;
-    }
-}
-.print-show-inline {
-    @media print {
-        display: inline !important;
-    }
-}
-.print-show-inline-block {
-    @media print {
-        display: inline-block !important;
-    }
+@media print {
+    .print-none         { display: none !important; }
+    .print-block        { display: block !important; }
+    .print-flex         { display: flex !important; }
+    .print-inline-block { display: inline-block !important; }
+    .print-inline       { display: inline !important; }
+    .print-inline-flex  { display: inline-flex !important; }
+    .print-table        { display: table !important; }
+    .print-table-row    { display: table-row !important; }
+    .print-table-cell   { display: table-cell !important; }
 }
 
-.print-only-block {
-    display: none !important;
-
-    @media print {
-        display: block !important;
-    }
-}
-.print-only-inline {
-    display: none !important;
-
-    @media print {
-        display: inline !important;
-    }
-}
-.print-only-inline-block {
-    display: none !important;
-
-    @media print {
-        display: inline-block !important;
-    }
-}
-
-.print-hide {
-    @media print {
-        display: none !important;
-    }
-}
