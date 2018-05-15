@@ -469,10 +469,15 @@ $thumbnail-border-radius:       $border-radius !default;
 $thumbnail-box-shadow:          0 .0625rem .125rem rgba($black, .075) !default;
 
 
-// Responsive embed
+// Fluid embed
 // =====
-$embed-ratio: percentage(9 / 16) !default;
-
+$embed-fluid-default-ratio: percentage(9 / 16) !default;
+$embed-fluid-aspect-ratios: (
+    (21, 9),
+    (16, 9),
+    (4, 3),
+    (1, 1)
+) !default;
 
 // Code
 // =====
