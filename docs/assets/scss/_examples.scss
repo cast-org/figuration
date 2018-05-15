@@ -387,19 +387,3 @@ $custom-file-text: (
         border: $border-width solid rgba(34, 68, 102, .2);
     }
 }
-
-
-// Image Replacement
-.cf-example {
-    > .heading {
-        width: 3rem;
-        height: 3rem;
-        // stylelint-disable-next-line font-family-no-missing-generic-family-keyword
-        font: 0/0 a;
-        color: transparent;
-        text-shadow: none;
-        background-color: transparent;
-        background-image: url("../brand/figuration-solid.svg");
-        border: 0;
-    }
-}
