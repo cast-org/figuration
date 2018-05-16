@@ -841,6 +841,12 @@ pre code {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+  .form-control {
+    transition: none;
+  }
+}
+
 .form-control::-ms-expand {
   background-color: transparent;
   border: 0;
@@ -1047,6 +1053,12 @@ fieldset:disabled .form-check-label {
   margin-left: -1.25rem;
   vertical-align: baseline;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .form-check-input {
+    transition: none;
+  }
 }
 
 .form-check-inline {
@@ -1330,6 +1342,12 @@ fieldset:disabled .form-check-label {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+  .custom-control-indicator {
+    transition: none;
+  }
+}
+
 .custom-checkbox .custom-control-indicator {
   border-radius: 0.25rem;
 }
@@ -1377,6 +1395,12 @@ fieldset:disabled .form-check-label {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .custom-select {
+    transition: none;
+  }
 }
 
 .custom-select:focus {
@@ -1479,6 +1503,12 @@ fieldset:disabled .form-check-label {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+  .custom-file-control {
+    transition: none;
+  }
+}
+
 .custom-file-control:empty::after {
   content: "Choose file...";
 }
@@ -1521,6 +1551,12 @@ fieldset:disabled .form-check-label {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+  .custom-color {
+    transition: none;
+  }
+}
+
 .custom-color:focus {
   color: #424f5b;
   background-color: #fff;
@@ -1548,6 +1584,12 @@ fieldset:disabled .form-check-label {
   color: #5e7182;
   background-color: #fff;
   border-color: #9eaab4;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
 }
 
 .btn:hover, .btn:focus,
@@ -3025,9 +3067,21 @@ input[type="button"].btn-block {
   transition: opacity 0.3s linear;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+  .lazy.in {
+    transition: none;
+  }
+}
+
 .fade {
   opacity: 0;
   transition: opacity 0.15s linear;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .fade {
+    transition: none;
+  }
 }
 
 .fade.in {
@@ -3045,10 +3099,22 @@ input[type="button"].btn-block {
   transition: height 0.3s ease;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+  .collapsing {
+    transition: none;
+  }
+}
+
 .collapsing.width {
   width: 0;
   height: auto;
   transition: width 0.3s ease;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .collapsing.width {
+    transition: none;
+  }
 }
 
 .caret {
@@ -3168,6 +3234,12 @@ button.drag {
   white-space: nowrap;
   background-color: #9eaab4;
   transition: width 0.3s ease;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .progress-bar {
+    transition: none;
+  }
 }
 
 .progress-bar-striped {
@@ -6024,6 +6096,12 @@ a.badge:hover, a.badge:focus {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, background-color 0.3s ease;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+  .switch-control {
+    transition: none;
+  }
+}
+
 .switch-control::before {
   position: absolute;
   top: 0;
@@ -6037,6 +6115,12 @@ a.badge:hover, a.badge:focus {
   transition: left 0.3s ease, background-color 0.3s ease, -webkit-transform 0.3s ease;
   transition: left 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
   transition: left 0.3s ease, transform 0.3s ease, background-color 0.3s ease, -webkit-transform 0.3s ease;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .switch-control::before {
+    transition: none;
+  }
 }
 
 .switch-description {
@@ -6244,19 +6328,6 @@ a.badge:hover, a.badge:focus {
   outline: 0;
 }
 
-.modal.fade .modal-dialog {
-  transition: -webkit-transform 0.3s ease-out;
-  transition: transform 0.3s ease-out;
-  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
-  -webkit-transform: translate(0, -25%);
-          transform: translate(0, -25%);
-}
-
-.modal.in .modal-dialog {
-  -webkit-transform: translate(0, 0);
-          transform: translate(0, 0);
-}
-
 .modal-open .modal {
   overflow-x: hidden;
   overflow-y: auto;
@@ -6268,6 +6339,25 @@ a.badge:hover, a.badge:focus {
   margin: 0.625rem;
   direction: ltr;
   pointer-events: none;
+}
+
+.modal.fade .modal-dialog {
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+  -webkit-transform: translate(0, -25%);
+          transform: translate(0, -25%);
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .modal.fade .modal-dialog {
+    transition: none;
+  }
+}
+
+.modal.in .modal-dialog {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
 }
 
 .modal-dialog-centered {
