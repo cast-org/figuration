@@ -83,3 +83,13 @@ Quickly change the weight (boldness) of text or italicize text.
 <p class="font-weight-bold">Bold text.</p>
 <p class="font-italic">Italic text.</p>
 {% endexample %}
+
+## Font Family
+
+Alter the font family for a section of text with
+
+{% example html %}
+<p class="font-family-sans-serif">This is an example of the sans serif font.</p>
+<p class="font-family-serif">This is an example of the serif font.</p>
+<p class="font-family-monospace">This is an example of the monospace font.</p>
+{% endexample %}

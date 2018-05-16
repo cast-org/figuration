@@ -401,6 +401,26 @@ $component-sizes: (
     )
 ) !default;
 
+// Shadows
+// =====
+// Control the `box-shadow` depth.
+$shadows: () !default;
+// stylelint-disable
+$shadows: map-merge((
+    "0":  none,
+    "d1": 0 .125rem .25rem rgba($black, .15),
+    "d2": 0 .125rem .5rem rgba($black, .15),
+    "d3": 0 .125rem .75rem rgba($black, .15),
+    "d4": 0 .125rem 1rem rgba($black, .15),
+    "d5": 0 .125rem 1.25rem rgba($black, .15),
+    "i1": inset 0 .125rem .25em rgba($black, .15),
+    "i2": inset 0 .125rem .5rem rgba($black, .15),
+    "i3": inset 0 .125rem .75rem rgba($black, .15),
+    "i4": inset 0 .125rem 1rem rgba($black, .15),
+    "i5": inset 0 .125rem 1.25rem rgba($black, .15)
+), $shadows);
+// stylelint-enable
+
 
 // Component pieces
 // =====
@@ -449,10 +469,15 @@ $thumbnail-border-radius:       $border-radius !default;
 $thumbnail-box-shadow:          0 .0625rem .125rem rgba($black, .075) !default;
 
 
-// Responsive embed
+// Fluid embed
 // =====
-$embed-ratio: percentage(9 / 16) !default;
-
+$embed-fluid-default-ratio: percentage(9 / 16) !default;
+$embed-fluid-aspect-ratios: (
+    (21, 9),
+    (16, 9),
+    (4, 3),
+    (1, 1)
+) !default;
 
 // Code
 // =====

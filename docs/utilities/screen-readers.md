@@ -36,6 +36,16 @@ These classes are exceptionally useful helping to follow [accessibility best pra
 }
 {% endhighlight %}
 
+## Image Replacement
+
+Visually hide the text and show an image replacement by using a `background-image`.
+
+{% example html %}
+<h1 style="background-image: url('{{ site.baseurl}}/assets/brand/figuration-solid.svg'); width: 3rem; height: 3rem;">
+    <span class="sr-only">CAST Figuration</span>
+</h1>
+{% endexample %}
+
 ## Hiding Content
 
 Force an element to be hidden (including for screen readers) with the use of `.d{-breakpoint}-none` and `.d{-breakpoint}-down-none` classes.

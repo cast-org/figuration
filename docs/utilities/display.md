@@ -243,53 +243,16 @@ Green checkmarks indicate the element **is visible** in your current viewport.
 
 ## Print Utilities
 
-These utilities only affect the `display` property.  You will need to take into account any other CSS properties, such as `visibility`, that might cause issues for the print layout.
+These utilities only affect the `display` property. Includes support for the same `display` values as our responsive `.d-*` utilities.
 
-<div class="table-scroll">
-    <table class="table table-bordered responsive-utilities">
-        <thead>
-            <tr>
-                <th>Class</th>
-                <th>Screen</th>
-                <th>Print</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th><code>.print-only-block</code></th>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-visible">Visible<br>(as <code>display: block</code>)</td>
-            </tr>
-            <tr>
-                <th><code>.print-only-inline</code></th>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-visible">Visible<br>(as <code>display: inline</code>)</td>
-            </tr>
-            <tr>
-                <th><code>.print-only-inline-block</code></th>
-                <td class="is-hidden">Hidden</td>
-                <td class="is-visible">Visible<br>(as <code>display: inline-block</code>)</td>
-            </tr>
-            <tr>
-                <th><code>.print-hide</code></th>
-                <td class="is-visible">Visible</td>
-                <td class="is-hidden">Hidden</td>
-            </tr>
-            <tr>
-                <th><code>.print-show-block</code></th>
-                <td>Any</td>
-                <td class="is-visible">Visible<br>(as <code>display: block</code>)</td>
-            </tr>
-            <tr>
-                <th><code>.print-show-inline</code></th>
-                <td>Any</td>
-                <td class="is-visible">Visible<br>(as <code>display: inline</code>)</td>
-            </tr>
-            <tr>
-                <th><code>.print-show-inline-block</code></th>
-                <td>Any</td>
-                <td class="is-visible">Visible<br>(as <code>display: inline-block</code>)</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+You will need to take into account any other CSS properties, such as `visibility`, that might cause issues for the print layout.
+
+- `.print-none`
+- `.print-block`
+- `.print-flex`
+- `.print-inline-block`
+- `.print-inline`
+- `.print-inline-flex`
+- `.print-table`
+- `.print-table-row`
+- `.print-table-cell`

@@ -39,7 +39,7 @@ Rules are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<object>` e
 
 ## Aspect Ratios
 
-By default the aspect ratio is set to 16:9, this can be customized by overriding the `$embed-ratio` settings variable.  Also, the aspect ratios can be customized with the included modifier classes.
+By default the aspect ratio is set to 16:9, this can be customized by overriding the `$embed-ratio` settings variable.  Also, the aspect ratios can be customized with the included modifier classes. By default the following aspect ratio classes are provided:
 
 {% highlight html %}
 <!-- 21:9 aspect ratio -->
@@ -61,4 +61,21 @@ By default the aspect ratio is set to 16:9, this can be customized by overriding
 <div class="embed-fluid embed-fluid-1x1">
   <iframe class="embed-fluid-item" src="..."></iframe>
 </div>
+{% endhighlight %}
+
+It is possible to alter the available aspect ratios. These are the default aspect ratio setting and Sass map in `_settings.scss`:
+
+{% highlight scss %}
+$embed-fluid-default-ratio: percentage(9 / 16) !default;
+$embed-fluid-aspect-ratios: (
+    (21, 9),
+    (16, 9),
+    (4, 3),
+    (1, 1)
+) !default;
+{% endhighlight %}
+
+Additional aspect ratio classes can also be disabled in your custom settings using:
+{% highlight scss %}
+$embed-fluid-aspect-ratios: false;
 {% endhighlight %}
