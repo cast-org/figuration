@@ -27,15 +27,6 @@
     // iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
     // See also https://github.com/twbs/bootstrap/issues/17695
     //-webkit-overflow-scrolling: touch;
-
-    // When fading in the modal, animate it to slide down
-    &.fade .modal-dialog {
-        @if $enable-transitions {
-            transition: $modal-transition;
-            transform: translate(0, -25%);
-        }
-    }
-    &.in .modal-dialog { transform: translate(0, 0); }
 }
 .modal-open .modal {
     overflow-x: hidden;
@@ -50,6 +41,15 @@
     direction: ltr;
     // Allow clicks to pass through for custom click handling to close modal
     pointer-events: none;
+
+    // When fading in the modal, animate it to slide down
+    .modal.fade & {
+        @include transition($modal-transition);
+        transform: translate(0, -25%);
+    }
+    .modal.in & {
+        transform: translate(0, 0);
+    }
 }
 
 .modal-dialog-centered {
