@@ -112,7 +112,11 @@ When elements are of a square (1:1) aspect ratio, you can create a circle using 
 <img src="..." class="radius-circle" width="50" height="100" alt="...">
 {% endhighlight %}
 
-## Border Addition
+## Borders
+
+Add or remove borders on all or just one side with border utilities
+
+### Adding Borders
 
 Quickly add the default component border to an element with the `.border{-side}` utility classes.
 
@@ -154,7 +158,7 @@ The *start/end sides* are designated as follows depending on which version of th
 
 {% endexample %}
 
-## Border Removal
+### Removing Borders
 
 Remove the border on a given side of an element with the `.border{-side}-0` utility classes.
 
@@ -187,4 +191,16 @@ See the following example of removing various borders from some buttons.
 <br />
 <button type="button" class="btn radius-0 border-x-0">left and right</button>
 <button type="button" class="btn radius-0 border-y-0">top and bottom</button>
+{% endexample %}
+
+### Responsive Borders
+
+Add or remove borders with responsive border utility classes in the form of `.border{-breakpoint}{-side}{-0}`.
+
+For example to have a border on the sides of an element up to and including the `md` breakpoint, and then at the `lg` breakpoint switch to only having top and bottom borders, you would do the following:
+
+{% example html %}
+<div class="border-x border-lg-x-0 border-lg-y bg-light p-0_5" style="max-width: 18rem;">
+    Sample container
+</div>
 {% endexample %}

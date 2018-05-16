@@ -23,44 +23,51 @@
 @include radius-sides(0 !important, 0);
 @include radius-corners(0 !important, 0);
 
-// Border addition
-.border { border: $border-width solid $border-color !important; }
-.border-t,
-.border-y {
-    border-top: $border-width solid $border-color !important;
-}
-.border-e,
-.border-x {
-    border-right: $border-width solid $border-color !important;
-}
-.border-b,
-.border-y {
-    border-bottom: $border-width solid $border-color !important;
-}
-.border-s,
-.border-x {
-    border-left: $border-width solid $border-color !important;
-}
 
-// Border removal
-.border-0 { border: 0 !important; }
-.border-t-0,
-.border-y-0 {
-    border-top: 0 !important;
-}
-.border-e-0,
-.border-x-0 {
-    border-right: 0 !important;
-}
-.border-b-0,
-.border-y-0 {
-    border-bottom: 0 !important;
-}
-.border-s-0,
-.border-x-0 {
-    border-left: 0 !important;
-}
+// Repsonsive border addition and removal
+@each $breakpoint in map-keys($grid-breakpoints) {
+    $bprule: breakpoint-designator($breakpoint);
 
+    @include media-breakpoint-up($breakpoint) {
+        // Border addition
+        .border#{$bprule} { border: $border-width solid $border-color !important; }
+        .border#{$bprule}-t,
+        .border#{$bprule}-y {
+            border-top: $border-width solid $border-color !important;
+        }
+        .border#{$bprule}-e,
+        .border#{$bprule}-x {
+            border-right: $border-width solid $border-color !important;
+        }
+        .border#{$bprule}-b,
+        .border#{$bprule}-y {
+            border-bottom: $border-width solid $border-color !important;
+        }
+        .border#{$bprule}-s,
+        .border#{$bprule}-x {
+            border-left: $border-width solid $border-color !important;
+        }
+
+        // Border removal
+        .border#{$bprule}-0 { border: 0 !important; }
+        .border#{$bprule}-t-0,
+        .border#{$bprule}-y-0 {
+            border-top: 0 !important;
+        }
+        .border#{$bprule}-e-0,
+        .border#{$bprule}-x-0 {
+            border-right: 0 !important;
+        }
+        .border#{$bprule}-b-0,
+        .border#{$bprule}-y-0 {
+            border-bottom: 0 !important;
+        }
+        .border#{$bprule}-s-0,
+        .border#{$bprule}-x-0 {
+            border-left: 0 !important;
+        }
+    }
+}
 
 // Border colors
 // Contextual borders
