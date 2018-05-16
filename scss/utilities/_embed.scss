@@ -25,7 +25,6 @@
         border: 0;
     }
 }
-@warn type-of($embed-fluid-aspect-ratios);
 @if (type-of($embed-fluid-aspect-ratios) == "list" and length($embed-fluid-aspect-ratios) != 0) {
     @each $embed-fluid-aspect-ratio in $embed-fluid-aspect-ratios {
         $embed-fluid-x: nth($embed-fluid-aspect-ratio, 1);

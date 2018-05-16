@@ -86,6 +86,10 @@ $('.disabled').on('click', function(e) {
 
 Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies---such as screen readers---or users that might be colorbind. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the `.sr-only` class.
 
+## Reduced Motion
+
+Figuration includes support for the [`prefers-reduced-motion` media feature](https://drafts.csswg.org/mediaqueries-5/#prefers-reduced-motion). In browsers/environments that allow the user to specify their preference for reduced motion, most CSS transition effects in Figuration (for instance, when a modal dialog is opened or closed) will be disabled. Currently, support is limited to Safari on macOS and iOS.
+
 ## Additional Resources
 
 - [Web Content Accessibility Guidelines (WCAG) 2.0](https://www.w3.org/TR/WCAG20/)
