@@ -50,12 +50,12 @@ $(function() {
             });
 
         setTimeout(function() {
-            window.scrollTo(0, document.body.scrollHeight);
+            window.scroll(0, document.body.scrollHeight);
 
             setTimeout(function() {
                 window.scroll(0, 0);
-            }, 50); // for testing in a browser
-        }, 50);
+            }, 250); // for testing in a browser
+        }, 250);
     });
 
     QUnit.test('should affix-top when scrolling up to offset when parent has padding', function(assert) {
@@ -82,7 +82,7 @@ $(function() {
             });
 
         setTimeout(function() {
-            window.scrollTo(0, document.body.scrollHeight);
+            window.scroll(0, document.body.scrollHeight);
 
             setTimeout(function() {
                 window.scroll(0, 119);
