@@ -514,6 +514,42 @@ h4 > code {
   margin-top: -.25rem;
 }
 
+.cf-callout-info {
+  background-color: #d0e6ed;
+  border-color: #136d8b;
+}
+
+.cf-callout-info .h3,
+.cf-callout-info .h4,
+.cf-callout-info .h5,
+.cf-callout-info .h6 {
+  color: #0c465a;
+}
+
+.cf-callout-warning {
+  background-color: #fef3d3;
+  border-color: #d3a51e;
+}
+
+.cf-callout-warning .h3,
+.cf-callout-warning .h4,
+.cf-callout-warning .h5,
+.cf-callout-warning .h6 {
+  color: #886b13;
+}
+
+.cf-callout-danger {
+  background-color: #f6d3d0;
+  border-color: #b41e11;
+}
+
+.cf-callout-danger .h3,
+.cf-callout-danger .h4,
+.cf-callout-danger .h5,
+.cf-callout-danger .h6 {
+  color: #75130b;
+}
+
 .cf-callout-dep > p + ul {
   margin-top: -1rem;
 }
@@ -1258,17 +1294,6 @@ h4 > code {
   border: 1px solid rgba(34, 68, 102, 0.2);
 }
 
-.cf-example > .heading {
-  width: 3rem;
-  height: 3rem;
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  background-image: url("../brand/figuration-solid.svg");
-  border: 0;
-}
-
 .hll {
   background-color: #ffc;
 }
@@ -1844,11 +1869,7 @@ h4 > code {
 .player-notime .player-seek,
 .player-live .player-time-duration,
 .player-live .player-seek {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
+  visibility: hidden;
 }
 
 .player-transcript {
