@@ -214,7 +214,9 @@ A quick example using some of Figuration's [Typography utility classes]({{ site.
 
 Several Figuration components utilize `z-index`, the CSS property that helps control layout by providing a third axis to arrange content. We utilize a default z-index scale in Figuration that's been designed to properly layer navigation, tooltips and popovers, modals, and more.
 
-Customizing these values is most likely not needed, and we don't recommend customizing the values.  However, if you change one, you will need to review and possibly update all of the other values.
+We use a defined set because of the layered components---tooltips, popovers, navbars, dropdowns, modals---so they remain consistent in terms of behavior.
+
+Customizing these values is most likely not needed, and we don't recommend adjusting the values.  However, if you change one, you will need to review and possibly update all of the other values.
 
 {% highlight scss %}
 $zindex-dropdown:          1000 !default;
@@ -228,4 +230,4 @@ $zindex-modal:             1060 !default;
 
 Background elements&mdash;like the backdrops that allow click-dismissing&mdash;tend to reside on a lower `z-index`s, while navigation and popovers utilize higher `z-index`s to ensure they overlay surrounding content.  Modals get a higher z-index so they are placed above popover/tooltip items, in the case that one or more of those items is held open.
 
-Additionally, the `button-group`, `input-group`, `list`, and `pagination` components make use of setting `z-index` to `1` or `2` in order to ensure that the borders of the _active_ or _focused_ element correctly appear "above" their sibling elements.
+To handle overlapping borders within components (e.g., buttons and inputs in input groups), we use low single digit `z-index` values of `1`, `2`, and `3` for default, hover, and active states. On hover/focus/active, we bring a particular element to the forefront with a higher `z-index` value to show their border over the sibling elements.
