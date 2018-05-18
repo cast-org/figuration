@@ -199,7 +199,8 @@
 
 // Responsive scrolling table
 // Tables will no longet scroll when breakpoint is larger than the one designated.
-@each $bp in map-keys($grid-breakpoints) {
+// Subset of of `$grid-breakpoints`
+@each $bp in $table-scroll-breakpoints {
     $bprule: breakpoint-designator($bp);
 
     // Skip largest breakpoint for down (equivalent to `.table-scroll`)

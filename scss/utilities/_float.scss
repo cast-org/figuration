@@ -1,4 +1,5 @@
-@each $breakpoint in map-keys($grid-breakpoints) {
+// Subset of of `$grid-breakpoints`
+@each $breakpoint in $utility-float-breakpoints {
     $bprule: breakpoint-designator($breakpoint);
 
     @include media-breakpoint-up($breakpoint) {

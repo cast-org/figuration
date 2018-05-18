@@ -205,6 +205,26 @@ $grid-breakpoints: (
 @include _assert-ascending($grid-breakpoints, "breakpoint", "$grid-breakpoints");
 @include _assert-starts-at-zero($grid-breakpoints);
 
+// Component and utility breakpoints
+// =====
+// Each component and utility that uses breakpoints gets its own list
+// of breakpoint keys based upon the master `$grid-breakpoints` map.
+// This way each the CSS for each of the items can be controlled and reduced as needed.
+// The items in the following lists *must* be in the keys for the `$grid-breakpoints` map.
+$card-deck-breakpoints:             map-keys($grid-breakpoints) !default;
+$card-group-breakpoints:            map-keys($grid-breakpoints) !default;
+$card-columns-breakpoints:          map-keys($grid-breakpoints) !default;
+$navbar-expand-breakpoints:         map-keys($grid-breakpoints) !default;
+$table-scroll-breakpoints:          map-keys($grid-breakpoints) !default;
+$utility-border-breakpoints:        map-keys($grid-breakpoints) !default;
+$utility-display-breakpoints:       map-keys($grid-breakpoints) !default;
+$utility-flex-breakpoints:          map-keys($grid-breakpoints) !default;
+$utility-float-breakpoints:         map-keys($grid-breakpoints) !default;
+$utility-position-breakpoints:      map-keys($grid-breakpoints) !default;
+$utility-screen-reader-breakpoints: map-keys($grid-breakpoints) !default;
+$utility-spacing-breakpoints:       map-keys($grid-breakpoints) !default;
+$utility-text-align-breakpoints:    map-keys($grid-breakpoints) !default;
+$utility-valign-breakpoints:        map-keys($grid-breakpoints) !default;
 
 // Grid containers
 // =====

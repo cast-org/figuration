@@ -134,7 +134,8 @@
     flex-direction: column;
 }
 
-@each $breakpoint in map-keys($grid-breakpoints) {
+// Subset of of `$grid-breakpoints`
+@each $breakpoint in $card-deck-breakpoints {
     $bprule: breakpoint-designator($breakpoint);
 
     .card-deck#{$bprule} {
@@ -186,7 +187,8 @@
     flex-direction: column;
 }
 
-@each $breakpoint in map-keys($grid-breakpoints) {
+// Subset of of `$grid-breakpoints`
+@each $breakpoint in $card-group-breakpoints {
     $bprule: breakpoint-designator($breakpoint);
 
     .card-group#{$bprule} {
@@ -250,7 +252,8 @@
 
 
 // Card columns
-@each $breakpoint in map-keys($grid-breakpoints) {
+// Subset of of `$grid-breakpoints`
+@each $breakpoint in $card-columns-breakpoints {
     $bprule: breakpoint-designator($breakpoint);
 
     @include media-breakpoint-up(#{$breakpoint}) {
