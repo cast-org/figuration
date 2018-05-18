@@ -313,26 +313,36 @@
             var sideName = this.scrollbarSide.capitalize();
 
             if (this.bodyIsOverflowing) {
+                // Notes about below padding/margin calculations:
+                // node.style.paddingRight returns: actual value or '' if not set
+                // $(node).css('padding-right') returns: calculated value or 0 if not set
+
                 // Update fixed element padding
                 $(this.fixedContent).each(function() {
                     var $this = $(this);
-                    $this.data('cfw.padding-dim', this.style['padding' + sideName] || '');
-                    var padding = parseFloat($this.css('padding-' + $selfRef.scrollbarSide) || 0);
-                    $this.css('padding-' + $selfRef.scrollbarSide, padding + $selfRef.scrollbarWidth);
+                    var actualPadding = this.style['padding' + sideName];
+                    var calculatedPadding = parseFloat($this.css('padding-' + $selfRef.scrollbarSide));
+                    $this
+                        .data('cfw.padding-dim', actualPadding)
+                        .css('padding-' + $selfRef.scrollbarSide, calculatedPadding + $selfRef.scrollbarWidth + 'px');
                 });
 
                 // Update sticky element margin
                 $(this.stickyContent).each(function() {
                     var $this = $(this);
-                    $this.data('cfw.margin-dim', this.style['margin' + sideName] || '');
-                    var margin = parseFloat($this.css('margin-' + $selfRef.scrollbarSide) || 0);
-                    $this.css('margin-' + $selfRef.scrollbarSide, -(margin + $selfRef.scrollbarWidth));
+                    var actualMargin = this.style['margin' + sideName];
+                    var calculatedMargin = parseFloat($this.css('margin-' + $selfRef.scrollbarSide));
+                    $this
+                        .data('cfw.margin-dim', actualMargin)
+                        .css('margin-' + $selfRef.scrollbarSide, calculatedMargin - $selfRef.scrollbarWidth + 'px');
                 });
 
                 // Update body padding
-                this.$body.data('cfw.padding-dim', document.body.style['padding' + sideName] || '');
-                var padding = parseFloat(this.$body.css('padding-' + this.scrollbarSide) || 0);
-                this.$body.css('padding-' + this.scrollbarSide, padding + this.scrollbarWidth);
+                var actualPadding = document.body.style['padding' + sideName];
+                var calculatedPadding = parseFloat(this.$body.css('padding-' + $selfRef.scrollbarSide));
+                this.$body
+                    .data('cfw.padding-dim', actualPadding)
+                    .css('padding-' + $selfRef.scrollbarSide, calculatedPadding + $selfRef.scrollbarWidth + 'px');
             }
 
             this.$target
