@@ -37,8 +37,10 @@
 }
 
 // Contextual colors
-@each $theme, $color in $base-colors {
-    @include text-emphasis-variant(".text-#{$theme}", $color, $level-delta-hover-color);
+@if (type-of($utility-text-colors) == "map" and length($utility-text-colors) != 0) {
+    @each $theme, $color in $utility-text-colors {
+        @include text-emphasis-variant(".text-#{$theme}", $color, $level-delta-hover-color);
+    }
 }
 
 // Palette colors

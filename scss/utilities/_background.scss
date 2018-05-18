@@ -1,8 +1,10 @@
 // stylelint-disable declaration-no-important
 
 // Contextual backgrounds
-@each $theme, $color in $base-colors {
-    @include bg-variant(".bg-#{$theme}", $color, $level-delta-hover-bg);
+@if (type-of($utility-bg-colors) == "map" and length($utility-bg-colors) != 0) {
+    @each $theme, $color in $utility-bg-colors {
+        @include bg-variant(".bg-#{$theme}", $color, $level-delta-hover-bg);
+    }
 }
 
 // Palette colors

@@ -71,9 +71,11 @@
 
 // Border colors
 // Contextual borders
-@each $theme, $color in $base-colors {
-    .border-#{$theme} {
-        border-color: $color !important;
+@if (type-of($utility-border-colors) == "map" and length($utility-border-colors) != 0) {
+    @each $theme, $color in $utility-border-colors {
+        .border-#{$theme} {
+            border-color: $color !important;
+        }
     }
 }
 
