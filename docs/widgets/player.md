@@ -298,7 +298,7 @@ Further improve accessibility for blind and visually impaired users by including
 
 ### Text-based Description
 
-By using the same `<track kind="descriptions">` as the above example, we can provide text-based descriptions outside of the transcript, and optionally make them optionally announced by screen readers. In this case the `srclang` attribute will be used to set the `lang` attribute for screen readers.
+By using the same `<track kind="descriptions">` as the above example, we can provide text-based descriptions outside of the transcript, and optionally make them announced by screen readers. In this case the `srclang` attribute will be used to set the `lang` attribute for screen readers.
 
 {% example html %}
 <div data-cfw="player" data-cfw-player-text-describe="2" class="video-wrapper" role="region" aria-label="video player">
