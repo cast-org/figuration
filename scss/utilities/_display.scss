@@ -1,7 +1,8 @@
 // stylelint-disable declaration-no-important
 
 // Display utilities
-@each $bp in map-keys($grid-breakpoints) {
+// Subset of of `$grid-breakpoints`
+@each $bp in $utility-display-breakpoints {
     $bprule: breakpoint-designator($bp);
 
     @include media-breakpoint-up($bp) {
