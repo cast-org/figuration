@@ -64,9 +64,12 @@
             var $selfRef = this;
 
             // check for handle selector
-            if (this.settings.handle && !$(e.target).closest(this.settings.handle, e.currentTarget).length) {
+            if (this.settings.handle && !$(e.target).closest(this.settings.handle, e.currentTarget).not('.disabled, :disabled').length) {
                 return;
             }
+
+            // check for disabled element
+            if (this.$element.is('.disabled, :disabled')) { return; }
 
             this._dragStartOff(e);
             this.dragging = true;
