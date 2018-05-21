@@ -17,6 +17,10 @@ A simple widget that allows for both mouse and touch drag handling for use by ot
 
 Working examples can be found on the [Slider widget]({{ site.baseurl}}/widgets/slider/) page, and at the draggable example on the [Popover widget]({{ site.baseurl}}/widgets/popover/#draggable-example) page.
 
+## Disabled
+
+If the element on which the drag widget is attached to is disabled either by `.disabled` or `:disabled` then the `dragStart` action will not occur.  The same is true if a handle is defined, and the handle is marked as disabled.
+
 ## Usage
 
 ### Via JavaScript
