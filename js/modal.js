@@ -111,7 +111,8 @@
             this.escape();
             this.resize();
 
-            this.$target.on('click.dismiss.cfw.modal', '[data-cfw-dismiss="modal"]', function(e) {
+            this.$target
+                .on('click.dismiss.cfw.modal', '[data-cfw-dismiss="modal"]', function(e) {
                     if (e) { e.preventDefault(); }
                     $selfRef.hide();
                 })
@@ -119,7 +120,7 @@
 
             this.$dialog.on('mousedown.dismiss.cfw.modal', function() {
                 $selfRef.$target.one('mouseup.dismiss.cfw.modal', function(e) {
-                    if ($(e.target).is($selfRef.$target)) $selfRef.ignoreBackdropClick = true;
+                    if ($(e.target).is($selfRef.$target)) { $selfRef.ignoreBackdropClick = true; }
                 });
             });
 
@@ -171,7 +172,7 @@
 
             this.adjustDialog();
 
-            this.$target[0].offsetWidth; // Force Reflow
+            $.CFW_reflow(this.$target[0]); // Force Reflow
 
             this.$target.addClass('in').removeAttr('aria-hidden');
 
@@ -187,12 +188,12 @@
             this.enforceFocus();
             this.enforceFocusLast();
 
-            function complete() {
+            var complete = function() {
                 $selfRef.$target.trigger('focus');
                 $selfRef.$target
                     .CFW_mutateTrigger()
                     .CFW_trigger('afterShow.cfw.modal');
-            }
+            };
 
             // Use modal dialog, not modal container, since
             // that is where the animation happens
@@ -218,7 +219,7 @@
                     .CFW_mutateTrigger()
                     .CFW_trigger('afterHide.cfw.modal');
             });
-            this.$element && this.$element.trigger('focus');
+            this.$element.trigger('focus');
         },
 
         enforceFocus : function() {
@@ -238,9 +239,9 @@
             // is last tabbable item in document - otherwise focus drops off page
             if (!this.$focusLast) {
                 this.$focusLast = $(document.createElement('span'))
-                .addClass('modal-focuslast')
-                .attr('tabindex', 0)
-                .appendTo(this.$target);
+                    .addClass('modal-focuslast')
+                    .attr('tabindex', 0)
+                    .appendTo(this.$target);
             }
             if (this.$focusLast) {
                 this.$focusLast
@@ -253,9 +254,10 @@
 
         escape : function() {
             var $selfRef = this;
+            var KEYCODE_ESC = 27;
             if (this.isShown && this.settings.keyboard) {
                 this.$target.on('keydown.dismiss.cfw.modal', function(e) {
-                    if (e.which == 27) {
+                    if (e.which === KEYCODE_ESC) {
                         e.preventDefault();
                         $selfRef.hide();
                     }
@@ -275,7 +277,7 @@
 
         // these following methods are used to handle overflowing modals
         handleUpdate : function() {
-            if (this.settings.backdrop) this.adjustBackdrop();
+            if (this.settings.backdrop) { this.adjustBackdrop(); }
             this.adjustDialog();
         },
 
@@ -372,7 +374,7 @@
 
             // Restore body padding
             var padding = this.$body.data('cfw.padding-dim');
-            if (typeof padding !== undefined) {
+            if (typeof padding !== 'undefined') {
                 this.$body.css('padding-' + this.scrollbarSide, padding);
                 this.$body.removeData('cfw.padding-dim');
             }
@@ -399,7 +401,7 @@
         backdrop : function(callback) {
             var $selfRef = this;
 
-            var animate = (this.settings.animate) ? 'fade' : '';
+            var animate = this.settings.animate ? 'fade' : '';
 
             if (this.isShown && this.settings.backdrop) {
                 this.$backdrop = $(document.createElement('div'))
@@ -412,12 +414,14 @@
                         return;
                     }
                     if (e.target !== e.currentTarget) { return; }
-                    $selfRef.settings.backdrop == 'static'
-                        ? $selfRef.$target.trigger('focus')
-                        : $selfRef.hide();
+                    if ($selfRef.settings.backdrop === 'static') {
+                        $selfRef.$target.trigger('focus');
+                    } else {
+                        $selfRef.hide();
+                    }
                 });
 
-                this.$backdrop[0].offsetWidth; // Force Reflow
+                $.CFW_reflow(this.$backdrop[0]); // Force Reflow
 
                 this.$backdrop.addClass('in');
 
@@ -427,7 +431,7 @@
 
                 var callbackRemove = function() {
                     $selfRef.removeBackdrop();
-                    callback && callback();
+                    if (callback) { callback(); }
                 };
 
                 this.$backdrop.CFW_transition(null, callbackRemove);
@@ -437,8 +441,10 @@
         },
 
         removeBackdrop : function() {
-            this.$backdrop && this.$backdrop.remove();
-            this.$backdrop = null;
+            if (this.$backdrop) {
+                this.$backdrop.remove();
+                this.$backdrop = null;
+            }
         },
 
         unlink : function() {
@@ -492,7 +498,7 @@
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -500,18 +506,17 @@
             var options = typeof option === 'object' && option;
 
             if (!data && /unlink|dispose/.test(option)) {
-                return false;
+                return;
             }
             if (!data) {
-                $this.data('cfw.modal', (data = new CFW_Widget_Modal(this, options)));
+                $this.data('cfw.modal', data = new CFW_Widget_Modal(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Modal = Plugin;
     $.fn.CFW_Modal.Constructor = CFW_Widget_Modal;
-
-})(jQuery);
+}(jQuery));

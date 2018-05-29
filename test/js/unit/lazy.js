@@ -29,9 +29,9 @@ $(function() {
     QUnit.test('should change src to match data-src when visible within the viewport at init', function(assert) {
         assert.expect(2);
         var done = assert.async();
-        var styles = '<style>'
-            + '.container-viewport { position: absolute; top: 50px; left: 60px; width: 300px; height: 300px; }'
-            + '</style>';
+        var styles = '<style>' +
+            '.container-viewport { position: absolute; top: 50px; left: 60px; width: 300px; height: 300px; }' +
+            '</style>';
         var $styles = $(styles).appendTo('head');
         var $container = $('<div class="container-viewport"/>').appendTo(document.body);
 

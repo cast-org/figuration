@@ -40,7 +40,7 @@
             this.$element.attr('data-cfw', 'lazy');
 
             // Add placholder if src is not defined
-            if (this.$element.attr('src') === '' || this.$element.attr('src') === undefined || this.$element.attr('src') === false) {
+            if (this.$element.attr('src') === '' || typeof this.$element.attr('src') === 'undefined' || this.$element.attr('src') === false) {
                 if (this.$element.is('img')) {
                     this.$element.attr('src', this.settings.placeholder);
                 }
@@ -52,10 +52,10 @@
             var eventTypes = this.settings.trigger.split(' ');
             for (var i = eventTypes.length; i--;) {
                 var eventType = eventTypes[i];
-                if (eventType == 'scroll' || eventType == 'resize') {
+                if (eventType === 'scroll' || eventType === 'resize') {
                     $(this.settings.container).on(eventType + '.cfw.lazy.' + this.instance, $.CFW_throttle(this._handleTrigger.bind(this), this.settings.throttle));
                     checkInitViewport = true;
-                } else if (eventType == 'mutate') {
+                } else if (eventType === 'mutate') {
                     this.$element
                         .attr('data-cfw-mutate', '')
                         .on('mutate.cfw.mutate', this._handleTrigger.bind(this));
@@ -72,14 +72,14 @@
         isVisible : function() {
             // Normalize on using the newer jQuery 3 visibility method
             var elem = this.$element[0];
-            return !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
+            return Boolean(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
         },
 
         inViewport : function() {
             if (!this.settings.invisible && !this.isVisible) {
                 return false;
             }
-            return (!this.belowFold() && !this.afterRight() && !this.aboveTop() && !this.beforeLeft());
+            return !this.belowFold() && !this.afterRight() && !this.aboveTop() && !this.beforeLeft();
         },
 
         belowFold : function() {
@@ -109,7 +109,7 @@
             } else {
                 fold = $(this.settings.container).offset().top;
             }
-            return fold >= this.$element.offset().top + this.settings.threshold  + this.$element.height();
+            return fold >= this.$element.offset().top + this.settings.threshold + this.$element.height();
         },
 
         beforeLeft: function() {
@@ -128,19 +128,20 @@
             this.$element.attr('src', this.settings.src);
 
             $.CFW_imageLoaded(this.$element, this.instance, function() {
-                function complete() {
+                var complete = function() {
                     $selfRef.$element.removeClass('lazy in');
                     $selfRef.$element.CFW_trigger('afterShow.cfw.lazy');
                     $selfRef.dispose();
-                }
+                };
 
                 // Use slight delay when setting `.in` so animation occurs
+                var DELAY_ANIMATION = 15;
                 if ($selfRef.settings.animate) { $selfRef.$element.addClass('lazy'); }
                 setTimeout(function() {
                     $selfRef.$element
                         .addClass('in')
                         .CFW_transition(null, complete);
-                }, 15);
+                }, DELAY_ANIMATION);
             });
         },
 
@@ -181,11 +182,10 @@
             this.instance = null;
             this.inTransition = null;
             this.settings = null;
-
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -193,15 +193,14 @@
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.lazy', (data = new CFW_Widget_Lazy(this, options)));
+                $this.data('cfw.lazy', data = new CFW_Widget_Lazy(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Lazy = Plugin;
     $.fn.CFW_Lazy.Constructor = CFW_Widget_Lazy;
-
-})(jQuery);
+}(jQuery));

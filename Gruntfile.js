@@ -1,3 +1,8 @@
+/* eslint-env es6 */
+/* eslint-disable global-require, no-process-env */
+/* eslint quote-props: ["error", "as-needed"] */
+/* global module, process, require */
+
 /*!
  * Figuration
  * Copyright 2013-2018 CAST, Inc.
@@ -19,8 +24,7 @@ module.exports = function(grunt) {
         saucekey = process.env.SAUCE_ACCESS_KEY;
     }
 
-    var autoprefixerSettings = require('./grunt/autoprefixer-settings.js');
-    var autoprefixer = require('autoprefixer')(autoprefixerSettings);
+    var autoprefixer = require('autoprefixer');
     var flexbugs = require('postcss-flexbugs-fixes');
 
     grunt.initConfig({
@@ -84,13 +88,13 @@ module.exports = function(grunt) {
             docscss: 'docs/assets/css'
         },
 
-        jshint: {
+        eslint: {
             options: {
-                jshintrc: '.jshintrc'
+                config: '.eslintrc.json'
             },
             grunt: {
                 options: {
-                    jshintrc: 'grunt/.jshintrc'
+                    config: 'grunt/.eslintrc.json'
                 },
                 src: ['Gruntfile.js', 'grunt/*.js']
             },
@@ -99,34 +103,11 @@ module.exports = function(grunt) {
             },
             test: {
                 options: {
-                    jshintrc: 'test/js/unit/.jshintrc'
+                    config: 'test/js/unit/.eslintrc.json'
                 },
                 src: 'test/js/unit/*.js'
-            }
-            /*,
-            docs: {
-                src: ['docs/assets/js/src/*.js', 'docs/assets/js/*.js', '!docs/assets/js/*.min.js']
-            }
-            */
-        },
-
-        jscs: {
-            options: {
-                config: '.jscsrc'
             },
-            grunt: {
-                src: '<%= jshint.grunt.src %>'
-            },
-            core: {
-                src: '<%= jshint.core.src %>'
-            },
-            test: {
-                src: '<%= jshint.test.src %>'
-            },
-            docs: {
-                options: {
-                    requireCamelCaseOrUpperCaseIdentifiers: null
-                },
+            docs : {
                 src: ['docs/assets/js/src/*.js', 'docs/assets/js/*.js', '!docs/assets/js/*.min.js']
             }
         },
@@ -293,7 +274,6 @@ module.exports = function(grunt) {
             }
         },
 
-        /* jshint -W100 */
         htmllint: {
             options: {
                 ignore: [
@@ -320,12 +300,11 @@ module.exports = function(grunt) {
                 src: ['test/visual/*.html']
             }
         },
-        /* jshint +W100 */
 
         watch: {
             src: {
-                files: '<%= jshint.core.src %>',
-                tasks: ['jshint:core', 'qunit', 'concat']
+                files: '<%= eslint.core.src %>',
+                tasks: ['eslint:core', 'qunit', 'concat']
             },
             sass: {
                 files: 'scss/**/*.scss',
@@ -366,7 +345,9 @@ module.exports = function(grunt) {
     // Tasks
     // ==========
     // Load required plugins for tasks
-    require('load-grunt-tasks')(grunt, { scope: 'devDependencies' });
+    require('load-grunt-tasks')(grunt, {
+        scope: 'devDependencies'
+    });
     require('time-grunt')(grunt);
 
     // Default
@@ -378,7 +359,7 @@ module.exports = function(grunt) {
     grunt.registerTask('test-html', ['htmllint:test']);
 
     // Test - JS subtasks
-    var jsTestTasks = ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt'];
+    var jsTestTasks = ['eslint:core', 'eslint:test', 'eslint:grunt'];
     if (saucekey !== null && process.env.TEST_SAUCE === 'true') {
         jsTestTasks.push('connect');
         jsTestTasks.push('saucelabs-qunit');
@@ -400,9 +381,8 @@ module.exports = function(grunt) {
     grunt.registerTask('docs-test-html', ['jekyll:docs', 'htmllint:docs']);
     grunt.registerTask('docs-test-css', ['stylelint:docs']);
     grunt.registerTask('docs-dist-css', ['sass:docs', 'postcss:docs', 'rtlcss:docs', 'cssmin:docs']);
-    grunt.registerTask('docs-test-js', ['jscs:docs']);
+    grunt.registerTask('docs-test-js', ['eslint:docs']);
     grunt.registerTask('docs-dist-js', ['uglify:docs']);
     grunt.registerTask('docs', ['docs-test-css', 'clean:docscss', 'docs-dist-css', 'docs-test-js', 'docs-dist-js', 'clean:docs', 'copy:docs']);
     grunt.registerTask('docs-github', ['jekyll:github']);
-
 };

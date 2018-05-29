@@ -20,11 +20,11 @@ $(function() {
         assert.expect(3);
         var done = assert.async();
 
-        var $accordion = $('<div id="test" data-cfw="accordion">'
-            + '<div />'
-            + '<div />'
-            + '<div />'
-            + '</div>');
+        var $accordion = $('<div id="test" data-cfw="accordion">' +
+            '<div />' +
+            '<div />' +
+            '<div />' +
+            '</div>');
 
         var $groups = $accordion.appendTo('#qunit-fixture').children('div');
 
@@ -56,11 +56,11 @@ $(function() {
         assert.expect(3);
         var done = assert.async();
 
-        var $accordion = $('<div id="test" data-cfw="accordion">'
-            + '<div />'
-            + '<div />'
-            + '<div />'
-            + '</div>');
+        var $accordion = $('<div id="test" data-cfw="accordion">' +
+            '<div />' +
+            '<div />' +
+            '<div />' +
+            '</div>');
 
         var $groups = $accordion.appendTo('#qunit-fixture').children('div');
 
@@ -92,11 +92,11 @@ $(function() {
         assert.expect(3);
         var done = assert.async();
 
-        var $accordion = $('<div id="test" data-cfw="accordion">'
-            + '<div />'
-            + '<div />'
-            + '<div />'
-            + '</div>');
+        var $accordion = $('<div id="test" data-cfw="accordion">' +
+            '<div />' +
+            '<div />' +
+            '<div />' +
+            '</div>');
 
         var $groups = $accordion.appendTo('#qunit-fixture').children('div');
 
@@ -129,10 +129,10 @@ $(function() {
         var done = assert.async();
         var showFired = false;
 
-        var $accordion = $('<div id="test" data-cfw="accordion">'
-            + '<div />'
-            + '<div />'
-            + '</div>');
+        var $accordion = $('<div id="test" data-cfw="accordion">' +
+            '<div />' +
+            '<div />' +
+            '</div>');
 
         var $groups = $accordion.appendTo('#qunit-fixture').children('div');
 

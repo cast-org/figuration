@@ -8,7 +8,7 @@
 (function($) {
     'use strict';
 
-    if ($.fn.CFW_Tooltip === undefined) throw new Error('CFW_Popover requires CFW_Tooltip');
+    if (typeof $.fn.CFW_Tooltip === 'undefined') { throw new Error('CFW_Popover requires CFW_Tooltip'); }
 
     var CFW_Widget_Popover = function(element, options) {
         this.dragAdded = false;
@@ -54,7 +54,7 @@
 
             if (this.settings.html) {
                 $title.html(title);
-                if (typeof content == 'string') {
+                if (typeof content === 'string') {
                     $content.html(content);
                 } else {
                     $content.empty().append(content); // Use append for objects to keep js events
@@ -73,7 +73,7 @@
 
         if (this.settings.drag && !this.dragAdded) {
             if (this.$target.find('[data-cfw-drag="' + this.type + '"]').length <= 0) {
-                var $drag = $('<span role="button" tabindex="0" class="drag" data-cfw-drag="' + this.type +  '" aria-label="' + this.settings.dragsrtext + '">' + this.settings.dragtext + '</span>');
+                var $drag = $('<span role="button" tabindex="0" class="drag" data-cfw-drag="' + this.type + '" aria-label="' + this.settings.dragsrtext + '">' + this.settings.dragtext + '</span>');
                 $drag.insertAfter(this.$target.find('.close').eq(0));
                 this.dragAdded = true;
             }
@@ -112,16 +112,16 @@
         var $e = this.$element;
         var s = this.settings;
 
-        content = (typeof s.content == 'function' ? s.content.call($e[0]) :  s.content);
+        content = typeof s.content === 'function' ? s.content.call($e[0]) : s.content;
 
         return content;
     };
 
     CFW_Widget_Popover.prototype.enableDrag = function() {
         var $selfRef = this;
-        var limit = {};
-
-        var dragOpt = { handle: '[data-cfw-drag="' + this.type + '"]' };
+        var dragOpt = {
+            handle: '[data-cfw-drag="' + this.type + '"]'
+        };
 
         // Remove mutation handler and replace resize location handler
         this.$element.on('afterShow.cfw.' + this.type, function() {
@@ -141,29 +141,36 @@
         // Unset any previous drag events
         this.$target.off('.cfw.drag');
 
-        this.$target.on('dragStart.cfw.drag', function() {
-            limit = $selfRef.viewportDragLimit();
+        this.$target
+            .on('dragStart.cfw.drag', function() {
+                $selfRef._updateZ();
+                $selfRef.$element.CFW_trigger('dragStart.cfw.' + $selfRef.type);
+            })
+            .on('drag.cfw.drag', function(e) {
+                $selfRef.locateDragTip(e.offsetY, e.offsetX);
+            })
+            .on('dragEnd.cfw.drag', function() {
+                $selfRef.$element.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
+            })
+            .on('keydown.cfw.drag', '[data-cfw-drag="' + this.type + '"]', function(e) {
+                var KEYCODE_UP = 38;    // Arrow up
+                var KEYCODE_RIGHT = 39; // Arrow right
+                var KEYCODE_DOWN = 40;  // Arrow down
+                var KEYCODE_LEFT = 37;  // Arrow left
+                var REGEX_KEYS = new RegExp('^(' + KEYCODE_UP + '|' + KEYCODE_RIGHT + '|' + KEYCODE_DOWN + '|' + KEYCODE_LEFT + ')$');
 
-            $selfRef._updateZ();
-            $selfRef.$element.CFW_trigger('dragStart.cfw.' + $selfRef.type);
-        })
-        .on('drag.cfw.drag', function(e) {
-            $selfRef.locateDragTip(e.offsetY, e.offsetX);
-        })
-        .on('dragEnd.cfw.drag', function() {
-            $selfRef.$element.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
-        })
-        .on('keydown.cfw.drag', '[data-cfw-drag="' + this.type + '"]', function(e) {
-            if (/(37|38|39|40)/.test(e.which)) {
-                if (e) { e.stopPropagation(); }
+                if (!REGEX_KEYS.test(e.which)) { return; }
+
+                if (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                }
 
                 if (!$selfRef.keyTimer) {
                     $selfRef.$element.CFW_trigger('dragStart.cfw.' + $selfRef.type);
                 }
 
                 clearTimeout($selfRef.keyTimer);
-
-                limit = $selfRef.viewportDragLimit();
 
                 // Mitigate most of 'slippage' by rounding offsets
                 var nodeOffset = $selfRef.$target.offset();
@@ -173,10 +180,11 @@
                 // Revise offset
                 var step = $selfRef.settings.dragstep;
                 switch (e.which) {
-                    /* Left  */ case 37: { offsetX = offsetX - step; break; }
-                    /* Up    */ case 38: { offsetY = offsetY - step; break; }
-                    /* Right */ case 39: { offsetX = offsetX + step; break; }
-                    /* Down  */ case 40: { offsetY = offsetY + step; break; }
+                    case KEYCODE_LEFT: { offsetX -= step; break; }
+                    case KEYCODE_UP: { offsetY -= step; break; }
+                    case KEYCODE_RIGHT: { offsetX += step; break; }
+                    case KEYCODE_DOWN: { offsetY += step; break; }
+                    default:
                 }
 
                 // Move it
@@ -186,11 +194,7 @@
                     $selfRef.$element.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
                     $selfRef.keyTimer = null;
                 }, $selfRef.keyDelay);
-
-                // Stop browser from scrolling
-                return false;
-            }
-        });
+            });
 
         this.$target.CFW_Drag(dragOpt);
     };
@@ -222,8 +226,8 @@
         var viewportPadding = this.settings.padding;
 
         $tip.css({
-            top: Math.min((limit.bottom - viewportPadding), Math.max((limit.top + viewportPadding), offsetY)),
-            left: Math.min((limit.right - viewportPadding), Math.max((limit.left + viewportPadding), offsetX))
+            top: Math.min(limit.bottom - viewportPadding, Math.max(limit.top + viewportPadding, offsetY)),
+            left: Math.min(limit.right - viewportPadding, Math.max(limit.left + viewportPadding, offsetX))
         });
     };
 
@@ -275,7 +279,7 @@
         this.keyDelay = null;
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -283,18 +287,17 @@
             var options = typeof option === 'object' && option;
 
             if (!data && /unlink|dispose|hide/.test(option)) {
-                return false;
+                return;
             }
             if (!data) {
-                $this.data('cfw.popover', (data = new CFW_Widget_Popover(this, options)));
+                $this.data('cfw.popover', data = new CFW_Widget_Popover(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Popover = Plugin;
     $.fn.CFW_Popover.Constructor = CFW_Widget_Popover;
-
-})(jQuery);
+}(jQuery));

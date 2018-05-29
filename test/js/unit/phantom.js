@@ -1,6 +1,3 @@
-/* jshint strict: false */
-/* global JSON, require, define */
-
 /*
  * grunt-contrib-qunit
  * http://gruntjs.com/

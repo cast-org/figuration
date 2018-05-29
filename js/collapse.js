@@ -51,7 +51,7 @@
 
             this.$target.each(function() {
                 var tempID = $(this).CFW_getID('cfw-collapse');
-                targetList += (tempID + ' ');
+                targetList += tempID + ' ';
             });
             // Set ARIA on trigger
             this.$triggers.attr('aria-controls', $.trim(targetList));
@@ -121,13 +121,13 @@
             var scrollSize = 'scroll' + capitalizedDimension;
 
             // Determine/set dimension size for each target (triggers the transition)
-            function start() {
+            var start = function() {
                 $selfRef.$target.each(function() {
                     $(this)[dimension]($(this)[0][scrollSize]);
                 });
-            }
+            };
 
-            function complete() {
+            var complete = function() {
                 $selfRef.$triggers.attr('aria-expanded', 'true');
                 $selfRef.$target
                     .removeClass('collapsing')[dimension]('');
@@ -138,7 +138,7 @@
                     $selfRef.$target.attr('tabindex', '-1').get(0).trigger('focus');
                 }
                 $selfRef.$element.CFW_trigger('afterShow.cfw.collapse');
-            }
+            };
 
             // Bind transition callback to first target
             this.$target.eq(0).CFW_transition(start, complete);
@@ -165,7 +165,7 @@
             // Set dimension size and reflow before class changes for Chrome/Webkit or no animation occurs
             this.$target.each(function() {
                 var $this = $(this);
-                $this[dimension]($this[dimension]())[0].offsetHeight;
+                return $this[dimension]($this[dimension]())[0].offsetHeight;
             });
             this.$target.removeClass('collapse in');
             if (this.settings.animate) {
@@ -173,11 +173,11 @@
             }
 
             // Determine/unset dimension size for each target (triggers the transition)
-            function start() {
+            var start = function() {
                 $selfRef.$target[dimension]('');
-            }
+            };
 
-            function complete() {
+            var complete = function() {
                 $selfRef.$triggers.attr('aria-expanded', 'false');
                 $selfRef.$target
                     .removeClass('collapsing in')
@@ -188,7 +188,7 @@
                     $selfRef.$element.trigger('focus');
                 }
                 $selfRef.$element.CFW_trigger('afterHide.cfw.collapse');
-            }
+            };
 
             // Bind transition callback to first target
             this.$target.eq(0).CFW_transition(start, complete);
@@ -215,7 +215,7 @@
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -223,15 +223,14 @@
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.collapse', (data = new CFW_Widget_Collapse(this, options)));
+                $this.data('cfw.collapse', data = new CFW_Widget_Collapse(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Collapse = Plugin;
     $.fn.CFW_Collapse.Constructor = CFW_Widget_Collapse;
-
-})(jQuery);
+}(jQuery));

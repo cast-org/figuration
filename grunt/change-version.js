@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-'use strict';
-
 /*!
  * Script to update version number references in the project.
  * Copyright 2018 The Bootstrap Authors
@@ -10,6 +8,8 @@
  */
 
 /* global Set */
+
+'use strict';
 
 var fs = require('fs');
 var path = require('path');
@@ -43,9 +43,7 @@ function walkAsync(directory, excludedDirectories, fileCallback, errback) {
                     process.nextTick(errback, err);
                     return;
                 }
-                if (stats.isSymbolicLink()) {
-                    return;
-                } else if (stats.isDirectory()) {
+                if (stats.isDirectory()) {
                     process.nextTick(walkAsync, filepath, excludedDirectories, fileCallback, errback);
                 } else if (stats.isFile()) {
                     process.nextTick(fileCallback, filepath);

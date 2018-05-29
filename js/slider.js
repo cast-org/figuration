@@ -8,7 +8,7 @@
 (function($) {
     'use strict';
 
-    if (!$.fn.CFW_Drag) throw new Error('CFW_Slider requires CFW_Drag');
+    if (typeof $.fn.CFW_Drag === 'undefined') { throw new Error('CFW_Slider requires CFW_Drag'); }
 
     var CFW_Widget_Slider = function(element, options) {
         this.$element = $(element);
@@ -33,7 +33,7 @@
 
         this.inDrag = null;
         this.startPos = null;
-        this.offsetPos = (this.settings.vertical) ? 'top' : 'left';
+        this.offsetPos = this.settings.vertical ? 'top' : 'left';
         this.stepsTotal = null;
 
         this._init();
@@ -82,18 +82,22 @@
 
             this.$inputMin = $inputs.eq(0);
 
-            if (this.$inputMin[0].nodeName == 'SELECT') { this.ordinal = true; }
+            if (this.$inputMin[0].nodeName === 'SELECT') { this.ordinal = true; }
             if ($inputs.length > 1) {
                 this.$inputMax = $inputs.eq($inputs.length - 1);
                 this.range = true;
             }
+
+            return true;
         },
 
         _initChunk : function() {
+            /* eslint-disable no-magic-numbers */
             this.stepsTotal = Math.floor((this.settings.max - this.settings.min) / this.settings.step);
             if (!this.settings.chunk) {
-                this.settings.chunk = this.stepsTotal > 4 ?  Math.round(this.stepsTotal / 4) : this.settings.step * 2;
+                this.settings.chunk = this.stepsTotal > 4 ? Math.round(this.stepsTotal / 4) : this.settings.step * 2;
             }
+            /* eslint-enable no-magic-numbers */
         },
 
         createSlider : function() {
@@ -154,7 +158,7 @@
         },
 
         updateValues : function() {
-            this.val0 = (this.ordinal) ? this.$inputMin[0].selectedIndex : parseFloat(this.$inputMin.val());
+            this.val0 = this.ordinal ? this.$inputMin[0].selectedIndex : parseFloat(this.$inputMin.val());
             if (!this.range) {
                 this.$thumbMin.attr({
                     'aria-valuemin': this.settings.min,
@@ -162,7 +166,7 @@
                     'aria-valuenow': this.val0
                 });
             } else {
-                this.val1 = (this.ordinal) ? this.$inputMax[0].selectedIndex : parseFloat(this.$inputMax.val());
+                this.val1 = this.ordinal ? this.$inputMax[0].selectedIndex : parseFloat(this.$inputMax.val());
                 this.$thumbMin.attr({
                     'aria-valuemin': this.settings.min,
                     'aria-valuemax': this.val1,
@@ -186,19 +190,19 @@
 
             // Reset visuals
             this.$selection.css({
-                'top': '',
-                'left': '',
-                'width': '',
-                'height': ''
+                top: '',
+                left: '',
+                width: '',
+                height: ''
             });
             this.$thumbMin.css({
-                'top': '',
-                'left': ''
+                top: '',
+                left: ''
             });
             if (this.range) {
                 this.$thumbMax.css({
-                    'top': '',
-                    'left': ''
+                    top: '',
+                    left: ''
                 });
             }
 
@@ -210,6 +214,7 @@
                 valEnd = this.val1;
             }
 
+            /* eslint-disable no-magic-numbers */
             pctStart = ((valStart - this.settings.min) / (this.settings.max - this.settings.min)) * 100;
             selStart = pctStart;
             pctEnd  = ((valEnd - this.settings.min) / (this.settings.max - this.settings.min)) * 100;
@@ -223,8 +228,10 @@
                 pctEnd = 100 - pctEnd;
                 selStart = pctEnd;
             }
-            var pos = (this.settings.vertical) ? 'top' : 'left';
-            var dim = (this.settings.vertical) ? 'height' : 'width';
+            /* eslint-enable no-magic-numbers */
+
+            var pos = this.settings.vertical ? 'top' : 'left';
+            var dim = this.settings.vertical ? 'height' : 'width';
 
             this.$selection.css(pos, selStart + '%').css(dim, pctSize + '%');
             if (!this.range) {
@@ -243,7 +250,7 @@
         },
 
         enable : function(init) {
-            if (init === undefined) { init = false; }
+            if (typeof init === 'undefined') { init = false; }
             if (!init && this.settings.enabled) { return; }
             this.settings.enabled = true;
             this.$slider.removeClass('disabled');
@@ -268,7 +275,8 @@
                 $inputs = $inputs.add(this.$inputMax);
             }
 
-            $thumbs.attr('tabindex', 0).on('keydown.cfw.slider', function(e) {
+            $thumbs
+                .attr('tabindex', 0).on('keydown.cfw.slider', function(e) {
                     $selfRef._actionsKeydown(e, this);
                 })
                 .on('focusin.cfw.slider', function() {
@@ -292,7 +300,7 @@
 
             $inputs.on('change.cfw.slider', function() {
                 var $node = $(this);
-                var newVal = ($selfRef.ordinal) ? $node[0].selectedIndex : parseFloat($node.val());
+                var newVal = $selfRef.ordinal ? $node[0].selectedIndex : parseFloat($node.val());
                 $selfRef.changeValue(newVal, $node, true);
             });
         },
@@ -310,42 +318,40 @@
         },
 
         decrement : function(byChunk, $input) {
-            var currVal = (this.ordinal) ? $input[0].selectedIndex : parseFloat($input.val());
+            var currVal = this.ordinal ? $input[0].selectedIndex : parseFloat($input.val());
             this.changeValue(currVal - (byChunk ? this.settings.chunk * this.settings.step : this.settings.step), $input);
         },
 
         increment : function(byChunk, $input) {
-            var currVal = (this.ordinal) ? $input[0].selectedIndex : parseFloat($input.val());
+            var currVal = this.ordinal ? $input[0].selectedIndex : parseFloat($input.val());
             this.changeValue(currVal + (byChunk ? this.settings.chunk * this.settings.step : this.settings.step), $input);
         },
 
         changeValue : function(newVal, $input, inputUpdate) {
-            if (inputUpdate === undefined) { inputUpdate = false; }
+            if (typeof inputUpdate === 'undefined') { inputUpdate = false; }
 
-            var oldVal = (this.ordinal) ? $input[0].selectedIndex : parseFloat($input.val());
+            var oldVal = this.ordinal ? $input[0].selectedIndex : parseFloat($input.val());
 
             var limitLow;
             var limitHigh;
             if (!this.range) {
                 limitLow = this.settings.min;
                 limitHigh = this.settings.max;
+            } else if ($input.is(this.$inputMax)) {
+                limitLow = this.val0;
+                limitHigh = this.settings.max;
             } else {
-                if ($input.is(this.$inputMax)) {
-                    limitLow = this.val0;
-                    limitHigh = this.settings.max;
-                } else {
-                    limitLow = this.settings.min;
-                    limitHigh = this.val1;
-                }
+                limitLow = this.settings.min;
+                limitHigh = this.val1;
             }
 
             var updVal;
-            if (newVal !== undefined) {
+            if (typeof newVal !== 'undefined') {
                 updVal = Math.min(Math.max(newVal, limitLow), limitHigh);
                 // make the value snap to the chosen increment
                 updVal = Math.round(updVal / this.settings.step) * this.settings.step;
             }
-            if (updVal === undefined) { return; }
+            if (typeof updVal === 'undefined') { return; }
 
             if (this.ordinal) {
                 $input[0].selectedIndex = updVal;
@@ -359,7 +365,7 @@
             if (!inputUpdate) {
                 this.$slider.CFW_trigger('slid.cfw.slider');
             }
-            if (inputUpdate || (updVal != oldVal)) {
+            if (inputUpdate || (updVal !== oldVal)) {
                 this.$slider.CFW_trigger('changed.cfw.slider');
             }
         },
@@ -368,9 +374,8 @@
             var $node = $(node);
             if ($node.is(this.$thumbMax)) {
                 return this.$inputMax;
-            } else {
-                return this.$inputMin;
             }
+            return this.$inputMin;
         },
 
         _getLabel : function($input) {
@@ -383,9 +388,18 @@
 
         _actionsKeydown : function(e, node) {
             var $selfRef = this;
+            var KEYCODE_UP = 38;    // Arrow up
+            var KEYCODE_RIGHT = 39; // Arrow right
+            var KEYCODE_DOWN = 40;  // Arrow down
+            var KEYCODE_LEFT = 37;  // Arrow left
+            var KEYCODE_PAGE_UP = 33;  // Page up
+            var KEYCODE_PAGE_DOWN = 34;  // page down
+            var KEYCODE_END = 35;  // End
+            var KEYCODE_HOME = 36;  // Home
+            var REGEX_KEYS = new RegExp('^(' + KEYCODE_UP + '|' + KEYCODE_RIGHT + '|' + KEYCODE_DOWN + '|' + KEYCODE_LEFT + '|' + KEYCODE_PAGE_UP + '|' + KEYCODE_PAGE_DOWN + '|' + KEYCODE_END + '|' + KEYCODE_HOME + ')$');
 
             // 37-left, 38-up, 39-right, 40-down, 33-pgup, 34-pgdn, 35-end, 36-home
-            if (!/(37|38|39|40|33|34|35|36)/.test(e.which)) { return; }
+            if (!REGEX_KEYS.test(e.which)) { return; }
 
             e.stopPropagation();
             e.preventDefault();
@@ -393,26 +407,27 @@
             var $input = this._getInput(node);
 
             switch (e.which) {
-                case 37: // left
-                case 40: // down
+                case KEYCODE_LEFT:
+                case KEYCODE_DOWN:
                     $selfRef.decrement(false, $input);
                     break;
-                case 38: // up
-                case 39: // right
+                case KEYCODE_UP:
+                case KEYCODE_RIGHT:
                     $selfRef.increment(false, $input);
                     break;
-                case 33: // pgup
+                case KEYCODE_PAGE_UP:
                     $selfRef.increment(true, $input);
                     break;
-                case 34: // pgdn
+                case KEYCODE_PAGE_DOWN:
                     $selfRef.decrement(true, $input);
                     break;
-                case 35: // end
+                case KEYCODE_END:
                     $selfRef.changeValue(this.settings.max, $input);
                     break;
-                case 36: // home
+                case KEYCODE_HOME:
                     $selfRef.changeValue(this.settings.min, $input);
                     break;
+                default:
             }
         },
 
@@ -438,7 +453,7 @@
         },
 
         _drag : function(e) {
-            if (this.inDrag == null) { return; }
+            if (this.inDrag === null) { return; }
             var delta = this.settings.vertical ? e.deltaY : e.deltaX;
             var newPos = this.startPos + delta;
             var $input = this._getInput(this.inDrag);
@@ -462,7 +477,7 @@
 
             var ratio = trackDim / this.stepsTotal;
 
-            pos = (this.settings.reversed) ? trackDim - pos : pos;
+            pos = this.settings.reversed ? trackDim - pos : pos;
             return (Math.round(pos / ratio) * this.settings.step) + this.settings.min;
         },
 
@@ -473,7 +488,7 @@
                 var trackOff = this.$track.offset();
                 var diff1 = Math.abs(pos - trackOff[this.offsetPos] - this.$thumbMin.position()[this.offsetPos]);
                 var diff2 = Math.abs(pos - trackOff[this.offsetPos] - this.$thumbMax.position()[this.offsetPos]);
-                $node = (diff1 < diff2) ? this.$thumbMin : this.$thumbMax;
+                $node = diff1 < diff2 ? this.$thumbMin : this.$thumbMax;
             } else {
                 $node = this.$thumbMin;
             }
@@ -505,7 +520,7 @@
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -513,15 +528,14 @@
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.slider', (data = new CFW_Widget_Slider(this, options)));
+                $this.data('cfw.slider', data = new CFW_Widget_Slider(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Slider = Plugin;
     $.fn.CFW_Slider.Constructor = CFW_Widget_Slider;
-
-})(jQuery);
+}(jQuery));

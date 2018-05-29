@@ -25,5 +25,4 @@ $(function() {
         assert.strictEqual($el3.CFW_getSelectorFromElement('test'), '#collapse\\:Example');
         $.escapeSelector = tmpEscapeSelector;
     });
-
 });

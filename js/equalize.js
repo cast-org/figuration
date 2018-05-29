@@ -34,7 +34,7 @@
 
             // Get group ID
             var groupID = this.settings.target;
-            if ((groupID === undefined) || (groupID.length <= 0)) { return false; }
+            if (typeof groupID === 'undefined' || (groupID.length <= 0)) { return; }
 
             // Find target by id/css selector
             this.$target = $(groupID, this.$element);
@@ -67,11 +67,11 @@
         },
 
         _hasNested : function() {
-            return (this.$element.find('[data-cfw="equalize"]').length > 0);
+            return this.$element.find('[data-cfw="equalize"]').length > 0;
         },
 
         _isNested : function() {
-            return (this.$element.parentsUntil(document.body, '[data-cfw="equalize"]').length > 0);
+            return this.$element.parentsUntil(document.body, '[data-cfw="equalize"]').length > 0;
         },
 
         _isStacked : function($targetElm) {
@@ -143,9 +143,11 @@
         },
 
         _applyHeight : function($nodes, callback) {
-            var heights = $nodes.map(function() {
+            var heights = $nodes
+                .map(function() {
                     return $(this).outerHeight(false);
-                }).get();
+                })
+                .get();
 
             if (this.settings.minimum) {
                 var min = Math.min.apply(null, heights);
@@ -174,7 +176,7 @@
         },
 
         dispose : function() {
-            this.$window.off('.cfw.equalize.' +  this.instance);
+            this.$window.off('.cfw.equalize.' + this.instance);
             this.$element
                 .off('mutate.cfw.mutate')
                 .removeAttr('data-cfw-mutate')
@@ -192,7 +194,7 @@
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -200,15 +202,14 @@
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.equalize', (data = new CFW_Widget_Equalize(this, options)));
+                $this.data('cfw.equalize', data = new CFW_Widget_Equalize(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Equalize = Plugin;
     $.fn.CFW_Equalize.Constructor = CFW_Widget_Equalize;
-
-})(jQuery);
+}(jQuery));

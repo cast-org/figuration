@@ -214,12 +214,12 @@ $(function() {
 
         var $popover = $('<a href="#" data-cfw=popover" title="popover title" data-cfw-popover-content="popover content">Popover</a>')
             .appendTo('#qunit-fixture')
-                .on('afterHide.cfw.popover afterShow.cfw.popover', function() {
-                    assert.ok(false, 'should not fire any popover events');
-                })
+            .on('afterHide.cfw.popover afterShow.cfw.popover', function() {
+                assert.ok(false, 'should not fire any popover events');
+            })
             .CFW_Popover('hide');
 
-        assert.strictEqual($popover.data('cfw.popover'), undefined, 'should not initialize the popover');
+        assert.strictEqual(typeof $popover.data('cfw.popover'), 'undefined', 'should not initialize the popover');
     });
 
     QUnit.test('should throw an error when template contains multiple top-level elements', function(assert) {
@@ -227,7 +227,9 @@ $(function() {
         assert.throws(function() {
             $('<a href="#" data-cfw=popover" title="popover title" data-cfw-popover-content="popover content">Popover</a>')
                 .appendTo('#qunit-fixture')
-                .CFW_Popover({ template: '<div>Foo</div><div>Bar</div>' })
+                .CFW_Popover({
+                    template: '<div>Foo</div><div>Bar</div>'
+                })
                 .CFW_Popover('show');
         }, new Error('popover `template` option must consist of exactly 1 top-level element!'));
     });

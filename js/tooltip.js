@@ -60,9 +60,13 @@
 
             this.settings = this.getSettings(options);
 
-            this.$viewport = this.settings.viewport && $((typeof(this.settings.viewport) === 'function') ? this.settings.viewport.call(this, this.$element) : (this.settings.viewport.selector || this.settings.viewport));
+            this.$viewport = this.settings.viewport && $(typeof this.settings.viewport === 'function' ? this.settings.viewport.call(this, this.$element) : this.settings.viewport.selector || this.settings.viewport);
 
-            this.inState = { click: false, hover: false, focus: false };
+            this.inState = {
+                click: false,
+                hover: false,
+                focus: false
+            };
 
             this.$element.attr('data-cfw', this.type);
 
@@ -101,7 +105,7 @@
         getSettings : function(options) {
             var parsedData = this.$element.CFW_parseData(this.type, this.getDefaults());
             var settings = $.extend({}, this.getDefaults(), parsedData, options);
-            if (settings.delay && typeof settings.delay == 'number') {
+            if (settings.delay && typeof settings.delay === 'number') {
                 settings.delay = {
                     show: settings.delay,
                     hide: settings.delay
@@ -117,8 +121,8 @@
 
         fixTitle : function() {
             var $e = this.$element;
-            if ($e.attr('title') || typeof($e.attr('data-cfw-' + this.type +  '-original-title')) != 'string') {
-                $e.attr('data-cfw-' + this.type +  '-original-title', $e.attr('title') || '').attr('title', '');
+            if ($e.attr('title') || typeof $e.attr('data-cfw-' + this.type + '-original-title') !== 'string') {
+                $e.attr('data-cfw-' + this.type + '-original-title', $e.attr('title') || '').attr('title', '');
             }
         },
 
@@ -127,7 +131,7 @@
             var $e = this.$element;
             var s = this.settings;
 
-            title = (typeof s.title == 'function' ? s.title.call($e[0]) :  s.title) || $e.attr('data-cfw-' + this.type +  '-original-title');
+            title = typeof s.title === 'function' ? s.title.call($e[0]) : s.title || $e.attr('data-cfw-' + this.type + '-original-title');
 
             return title;
         },
@@ -154,9 +158,14 @@
             this.instance = this.$element.CFW_getID('cfw-' + this.type);
             this.targetID = this.$target.CFW_getID('cfw-' + this.type);
 
+            var attrRole = 'tooltip';
+            if (this.type !== 'tooltip' && this.isDialog) {
+                attrRole = 'dialog';
+            }
+
             // Set ARIA attributes on target
             this.$target.attr({
-                'role': (this.type == 'tooltip' ? 'tooltip' : (this.isDialog ? 'dialog' : 'tooltip')),
+                'role': attrRole,
                 'aria-hidden': 'true',
                 'tabindex': -1
             });
@@ -167,35 +176,35 @@
 
             for (var i = this.eventTypes.length; i--;) {
                 var eventType = this.eventTypes[i];
-                if (eventType == 'click' || eventType == 'manual') {
+                if (eventType === 'click' || eventType === 'manual') {
                     this.isDialog = true;
                 }
-                if (eventType == 'click') {
+                if (eventType === 'click') {
                     // Click events
                     this.$element
                         .off('click.cfw.' + this.type)
                         .on('click.cfw.' + this.type, this.toggle.bind(this));
 
                     // Inject close button
-                    if (this.$target != null && !this.closeAdded) {
+                    if (this.$target !== null && !this.closeAdded) {
                         // Check for pre-existing close buttons
-                        if (!this.$target.find('[data-cfw-dismiss="' + this.type +  '"]').length) {
-                            var $close = $('<button type="button" class="close" data-cfw-dismiss="' + this.type +  '" aria-label="' + this.settings.closesrtext + '">' + this.settings.closetext + '</button>');
+                        if (!this.$target.find('[data-cfw-dismiss="' + this.type + '"]').length) {
+                            var $close = $('<button type="button" class="close" data-cfw-dismiss="' + this.type + '" aria-label="' + this.settings.closesrtext + '">' + this.settings.closetext + '</button>');
                             $close.prependTo(this.$target);
                             this.closeAdded = true;
                         }
                     }
-                } else if (eventType != 'manual') {
+                } else if (eventType !== 'manual') {
                     // Hover/focus events
-                    var eventIn  = (eventType == 'hover') ? 'mouseenter' : 'focusin';
-                    var eventOut = (eventType == 'hover') ? 'mouseleave' : 'focusout';
+                    var eventIn  = eventType === 'hover' ? 'mouseenter' : 'focusin';
+                    var eventOut = eventType === 'hover' ? 'mouseleave' : 'focusout';
 
                     if (modeInit) {
-                        this.$element.on(eventIn  + '.cfw.' + this.type, this.enter.bind(this));
+                        this.$element.on(eventIn + '.cfw.' + this.type, this.enter.bind(this));
                         this.$element.on(eventOut + '.cfw.' + this.type, this.leave.bind(this));
                     } else {
                         this.$target.off('.cfw.' + this.type);
-                        this.$target.on(eventIn  + '.cfw.' + this.type, this.enter.bind(this));
+                        this.$target.on(eventIn + '.cfw.' + this.type, this.enter.bind(this));
                         this.$target.on(eventOut + '.cfw.' + this.type, this.leave.bind(this));
                     }
                 }
@@ -205,8 +214,8 @@
                 // Key handling for closing
                 this.$target.off('keydown.cfw.' + this.type + '.close')
                     .on('keydown.cfw.' + this.type + '.close', function(e) {
-                        var code = e.charCode || e.which;
-                        if (code && code == 27) {// if ESC is pressed
+                        var KEYCODE_ESC = 27;
+                        if (e.which === KEYCODE_ESC) { // if ESC is pressed
                             e.stopPropagation();
                             e.preventDefault();
                             // Click the close button if it exists otherwise force tooltip closed
@@ -255,10 +264,10 @@
 
         enter : function(e) {
             if (e) {
-                this.inState[e.type == 'focusin' ? 'focus' : 'hover'] = true;
+                this.inState[e.type === 'focusin' ? 'focus' : 'hover'] = true;
             }
 
-            if ((this.$target && this.$target.hasClass('in')) || this.hoverState == 'in') {
+            if ((this.$target && this.$target.hasClass('in')) || this.hoverState === 'in') {
                 this.hoverState = 'in';
                 return;
             }
@@ -267,17 +276,20 @@
 
             this.hoverState = 'in';
 
-            if (!this.settings.delay.show) { return this.show(); }
+            if (!this.settings.delay.show) {
+                this.show();
+                return;
+            }
 
             var $selfRef = this;
             this.delayTimer = setTimeout(function() {
-                if ($selfRef.hoverState == 'in') { $selfRef.show(); }
+                if ($selfRef.hoverState === 'in') { $selfRef.show(); }
             }, this.settings.delay.show);
         },
 
         leave : function(e) {
             if (e) {
-                this.inState[e.type == 'focusout' ? 'focus' : 'hover'] = false;
+                this.inState[e.type === 'focusout' ? 'focus' : 'hover'] = false;
             }
 
             if (this._isInState()) { return; }
@@ -285,11 +297,14 @@
             clearTimeout(this.delayTimer);
 
             this.hoverState = 'out';
-            if (!this.settings.delay.hide) { return this.hide(); }
+            if (!this.settings.delay.hide) {
+                this.hide();
+                return;
+            }
 
             var $selfRef = this;
             this.delayTimer = setTimeout(function() {
-                if ($selfRef.hoverState == 'out') { $selfRef.hide(); }
+                if ($selfRef.hoverState === 'out') { $selfRef.hide(); }
             }, this.settings.delay.hide);
         },
 
@@ -313,11 +328,11 @@
             // Create/link the tooltip container
             if (!this.$target) {
                 var target = this.createTip();
-                if (target.length <= 0) { return false; }
+                if (target.length <= 0) { return; }
                 this.dynamicTip = true;
                 this.$target = target;
             }
-            if (this.$target.length != 1) {
+            if (this.$target.length !== 1) {
                 throw new Error(this.type + ' `template` option must consist of exactly 1 top-level element!');
             }
             this.$target.data('cfw.' + this.type, this);
@@ -337,7 +352,8 @@
                         $selfRef._tabSet(e);
                     })
                     .on('keyup.cfw.' + this.type + '.keyflag', function(e) {
-                        if (e.which == 9) {
+                        var KEYCODE_TAB = 9;
+                        if (e.which === KEYCODE_TAB) {
                             $selfRef._tabReset();
                         }
                     });
@@ -345,8 +361,8 @@
                 // Inject focus helper item at start to fake loss of focus going out the top
                 if (!this.$focusFirst) {
                     this.$focusFirst = $(document.createElement('span'))
-                    .addClass(this.type + '-focusfirst')
-                    .attr('tabindex', 0);
+                        .addClass(this.type + '-focusfirst')
+                        .attr('tabindex', 0);
 
                     var $dialog =  this.isDialog ? this.$target.find('[role="document"]').first() : {};
                     if ($dialog.length) {
@@ -378,9 +394,9 @@
                 // Also helps if tip has last tabbable item in document - otherwise focus drops off page
                 if (!this.$focusLast) {
                     this.$focusLast = $(document.createElement('span'))
-                    .addClass(this.type + '-focuslast')
-                    .attr('tabindex', 0)
-                    .appendTo(this.$target);
+                        .addClass(this.type + '-focuslast')
+                        .attr('tabindex', 0)
+                        .appendTo(this.$target);
                 }
                 if (this.$focusLast) {
                     this.$focusLast
@@ -454,7 +470,7 @@
             // Handle delayed show and target not created
             if (!this.$target) { return; }
 
-            if (force === undefined) { force = false; }
+            if (typeof force === 'undefined') { force = false; }
             if (force) {
                 this._hideComplete();
                 return;
@@ -487,7 +503,7 @@
 
         unlink : function(force) {
             var $selfRef = this;
-            if (force === undefined) { force = false; }
+            if (typeof force === 'undefined') { force = false; }
             clearTimeout(this.delayTimer);
 
             this.$element.CFW_trigger('beforeUnlink.cfw.' + this.type);
@@ -541,8 +557,7 @@
         },
 
         _unlinkCompleteExt : function() {
-            // unlink complete extend
-            return;
+            // intentionally empty - unlink complete extend
         },
 
         dispose : function() {
@@ -564,7 +579,8 @@
             var $tip = this.$target;
             $tip.detach();
 
-            if (typeof placement == 'object') {
+            /* eslint-disable no-lonely-if */
+            if (typeof placement === 'object') {
                 // Custom placement
                 this.settings.container = 'body';
                 $tip.appendTo(this.settings.container);
@@ -578,25 +594,32 @@
                     $tip.insertAfter(this.$element);
                 }
             }
+            /* eslint-enable no-lonely-if */
 
             this.inserted = true;
             this.$element.CFW_trigger('inserted.cfw.' + this.type);
         },
 
+        /* eslint-disable complexity */
         locateTip : function() {
             var $tip = this.$target;
 
-            $tip.removeClass('top reverse bottom forward')
-                .css({ top: 0, left: 0, display: 'block' });
+            $tip
+                .removeClass('top reverse bottom forward')
+                .css({
+                    top: 0,
+                    left: 0,
+                    display: 'block'
+                });
 
-            var placement = typeof this.settings.placement == 'function' ?
-                this.settings.placement.call(this, this.$target[0], this.$element[0]) :
-                this.settings.placement;
+            var placement = typeof this.settings.placement === 'function'
+                ? this.settings.placement.call(this, this.$target[0], this.$element[0])
+                : this.settings.placement;
             var directionVal = window.getComputedStyle($('html')[0], null).getPropertyValue('direction').toLowerCase();
 
             this._insertTip(placement);
 
-            if (typeof placement == 'object') {
+            if (typeof placement === 'object') {
                 // Custom placement
                 return;
             }
@@ -619,20 +642,21 @@
 
                 var viewportDim = this.getViewportBounds();
 
+                /* eslint-disable indent, no-multi-spaces, no-nested-ternary, operator-linebreak */
                 if (directionVal === 'rtl') {
-                    placement = placement == 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
-                                placement == 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
-                                placement == 'reverse' && pos.left   - actualWidth  > viewportDim.left   ? 'forward' :
-                                placement == 'forward' && pos.right  + actualWidth  < viewportDim.width  ? 'reverse' :
+                    placement = placement === 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
+                                placement === 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
+                                placement === 'reverse' && pos.left   - actualWidth  > viewportDim.left   ? 'forward' :
+                                placement === 'forward' && pos.right  + actualWidth  < viewportDim.width  ? 'reverse' :
                                 placement;
-
                 } else {
-                    placement = placement == 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
-                                placement == 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
-                                placement == 'forward' && pos.right  + actualWidth  > viewportDim.width  ? 'reverse' :
-                                placement == 'reverse' && pos.left   - actualWidth  < viewportDim.left   ? 'forward' :
+                    placement = placement === 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
+                                placement === 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
+                                placement === 'forward' && pos.right  + actualWidth  > viewportDim.width  ? 'reverse' :
+                                placement === 'reverse' && pos.left   - actualWidth  < viewportDim.left   ? 'forward' :
                                 placement;
                 }
+                /* eslint-enable indent, no-multi-spaces, no-nested-ternary, operator-linebreak */
 
                 $tip.removeClass(orgPlacement)
                     .addClass(placement);
@@ -642,6 +666,7 @@
 
             this._applyPlacement(calculatedOffset, placement);
         },
+        /* eslint-enable complexity */
 
         _showComplete : function() {
             var $selfRef = this;
@@ -686,7 +711,7 @@
             }
             this.activate = false;
 
-            if (prevHoverState == 'out') { this.leave(); }
+            if (prevHoverState === 'out') { this.leave(); }
         },
 
         _hideComplete : function() {
@@ -713,7 +738,11 @@
             $(document).off('.cfw.' + this.type + '.' + this.instance);
             $(window).off('.cfw.' + this.type + '.' + this.instance);
 
-            this.inState = { click: false, hover: false, focus: false };
+            this.inState = {
+                click: false,
+                hover: false,
+                focus: false
+            };
 
             this.inTransition = false;
             if (this.isDialog) {
@@ -726,7 +755,7 @@
             this.follow = false;
 
             // Only remove dynamically created tips
-            if (this.hoverState != 'in' && this.dynamicTip) {
+            if (this.hoverState !== 'in' && this.dynamicTip) {
                 this._removeDynamicTip();
             }
 
@@ -752,7 +781,7 @@
         _getPosition : function() {
             var $element = this.$element;
             var el = $element[0];
-            var isBody = el.tagName == 'BODY';
+            var isBody = el.tagName === 'BODY';
 
             var elRect = el.getBoundingClientRect();
             elRect = $.extend({}, elRect, {
@@ -760,30 +789,45 @@
                 left: elRect.left + window.pageXOffset
             });
 
-            var elOffset  = isBody ? { top: 0, left: 0 } : $element.offset();
+            var elOffset = isBody
+                ? {
+                    top: 0,
+                    left: 0
+                }
+                : $element.offset();
             // SVG/Chrome issue: https://github.com/jquery/jquery/issues/2895
             if ($element[0].className instanceof SVGAnimatedString) {
                 elOffset = {};
             }
 
-            var scroll    = { scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop() };
-            var outerDims = isBody ? { width: $(window).width(), height: $(window).height() } : null;
+            var scroll = {
+                scroll: isBody
+                    ? document.documentElement.scrollTop || document.body.scrollTop
+                    : $element.scrollTop()
+            };
+            var outerDims = isBody
+                ? {
+                    width: $(window).width(),
+                    height: $(window).height()
+                }
+                : null;
             return $.extend({}, elRect, scroll, outerDims, elOffset);
         },
 
         _getCalculatedOffset : function(placement, pos, actualWidth, actualHeight, directionVal) {
+            /* eslint-disable indent, no-multi-spaces, no-nested-ternary, operator-linebreak, object-curly-newline, object-property-newline, no-magic-numbers, no-else-return */
             if (directionVal === 'rtl') {
-                return placement == 'bottom'   ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement == 'top'      ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement == 'forward'  ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-                    /* placement == 'reverse' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
+                return placement === 'bottom'   ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 }  :
+                       placement === 'top'      ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }  :
+                       placement === 'forward'  ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
+                    /* placement === 'reverse' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
             } else {
-                return placement == 'bottom'    ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement == 'top'       ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement == 'reverse'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-                    /* placement == 'forward' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
+                return placement === 'bottom'   ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 }  :
+                       placement === 'top'      ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }  :
+                       placement === 'reverse'  ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
+                    /* placement === 'forward' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
             }
-
+            /* eslint-enable indent, no-multi-spaces, no-nested-ternary, operator-linebreak, object-curly-newline, object-property-newline, no-magic-numbers, no-else-return */
         },
 
         _applyPlacement : function(offset, placement) {
@@ -796,8 +840,8 @@
             var marginTop = parseInt($tip.css('margin-top'), 10) || 0;
             var marginLeft = parseInt($tip.css('margin-left'), 10) || 0;
 
-            offset.top  = offset.top  + marginTop;
-            offset.left = offset.left + marginLeft;
+            offset.top += marginTop;
+            offset.left += marginLeft;
 
             // $.fn.offset doesn't round pixel values
             // so we use setOffset directly with our own function B-0
@@ -816,7 +860,7 @@
             var actualWidth  = $tip[0].getBoundingClientRect().width;
             var actualHeight = $tip[0].getBoundingClientRect().height;
 
-            if (placement == 'top' && actualHeight != height) {
+            if (placement === 'top' && actualHeight !== height) {
                 offset.top = offset.top + height - actualHeight;
             }
 
@@ -829,6 +873,7 @@
             }
 
             var isVertical          = /top|bottom/.test(placement);
+            /* eslint-disable-next-line no-magic-numbers */
             var arrowDelta          = isVertical ? delta.left * 2 - width + actualWidth : delta.top * 2 - height + actualHeight;
             var arrowOffsetPosition = isVertical ? 'offsetWidth' : 'offsetHeight';
 
@@ -846,7 +891,10 @@
                 return $.extend({}, elRect, this.getScreenSpaceBounds($viewport));
             }
 
-            var viewportBoundary = $.extend({}, $viewport.offset(), { width: $viewport.outerWidth(), height: $viewport.outerHeight() });
+            var viewportBoundary = $.extend({}, $viewport.offset(), {
+                width: $viewport.outerWidth(),
+                height: $viewport.outerHeight()
+            });
 
             // Double check elements inside fixed and aboslute elements against the viewport
             if ($viewport.is('body')) {
@@ -877,8 +925,11 @@
         },
 
         _getViewportAdjustedDelta : function(placement, pos, actualWidth, actualHeight) {
-            var delta = { top: 0, left: 0 };
-            if (!this.$viewport) return delta;
+            var delta = {
+                top: 0,
+                left: 0
+            };
+            if (!this.$viewport) { return delta; }
 
             var viewportPadding = this.settings.padding;
             var viewportDimensions = this.getViewportBounds();
@@ -893,7 +944,6 @@
                     delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset;
                 }
             } else {
-
                 var leftEdgeOffset  = pos.left - viewportPadding;
                 var rightEdgeOffset = pos.left + viewportPadding + actualWidth;
                 if (leftEdgeOffset < viewportDimensions.left) { // left overflow
@@ -907,8 +957,9 @@
         },
 
         _replaceArrow : function(delta, dimension, isVertical) {
+            var PCT_MIDPOINT = 50;
             this._arrow()
-                .css(isVertical ? 'left' : 'top', 50 * (1 - delta / dimension) + '%')
+                .css(isVertical ? 'left' : 'top', PCT_MIDPOINT * (1 - delta / dimension) + '%')
                 .css(isVertical ? 'top' : 'left', '');
         },
 
@@ -921,15 +972,16 @@
 
         _isInState : function() {
             for (var key in this.inState) {
-                if (this.inState[key]) return true;
+                if (this.inState[key]) { return true; }
             }
             return false;
         },
 
         // Set flags for `tab` key interactions
         _tabSet : function(e) {
+            var KEYCODE_TAB = 9;
             this._tabReset();
-            if (e.which == 9) {
+            if (e.which === KEYCODE_TAB) {
                 this.flags.keyTab = true;
                 if (e.shiftKey) { this.flags.keyShift = true; }
             }
@@ -963,7 +1015,7 @@
 
             var selectables = $selfRef._tabItems($scope);
             var nextIndex = 0;
-            if ($(current).length === 1){
+            if ($(current).length === 1) {
                 var currentIndex = selectables.index(current);
                 if (currentIndex + 1 < selectables.length) {
                     nextIndex = currentIndex + 1;
@@ -978,7 +1030,7 @@
 
             var selectables = $selfRef._tabItems($scope);
             var nextIndex = 0;
-            if ($(current).length === 1){
+            if ($(current).length === 1) {
                 var currentIndex = selectables.index(current);
                 if (currentIndex + 1 < selectables.length) {
                     nextIndex = currentIndex + 1;
@@ -987,13 +1039,23 @@
             return selectables.eq(nextIndex);
         },
 
+        /*
+         * jQuery UI Focusable 1.12.1
+         * http://jqueryui.com
+         *
+         * Copyright jQuery Foundation and other contributors
+         * Released under the MIT license.
+         * http://jquery.org/license
+         */
         _focusable : function(element, isTabIndexNotNaN) {
             var map;
             var mapName;
             var $img;
+            var focusableIfVisible;
+            var fieldset;
             var nodeName = element.nodeName.toLowerCase();
 
-            if ('area' === nodeName) {
+            if (nodeName === 'area') {
                 map = element.parentNode;
                 mapName = map.name;
                 if (!element.href || !mapName || map.nodeName.toLowerCase() !== 'map') {
@@ -1003,17 +1065,31 @@
                 return $img.length > 0 && $img.is(':visible');
             }
 
-            return (/^(input|select|textarea|button|object)$/.test(nodeName) ?
-                !element.disabled :
-                'a' === nodeName ?
-                    element.href || isTabIndexNotNaN :
-                    isTabIndexNotNaN) &&
-                $(element).is(':visible');
+            if (/^(input|select|textarea|button|object)$/.test(nodeName)) {
+                focusableIfVisible = !element.disabled;
+
+                if (focusableIfVisible) {
+                    // Form controls within a disabled fieldset are disabled.
+                    // However, controls within the fieldset's legend do not get disabled.
+                    // Since controls generally aren't placed inside legends, we skip
+                    // this portion of the check.
+                    fieldset = $(element).closest('fieldset')[0];
+                    if (fieldset) {
+                        focusableIfVisible = !fieldset.disabled;
+                    }
+                }
+            } else if (nodeName === 'a') {
+                focusableIfVisible = element.href || isTabIndexNotNaN;
+            } else {
+                focusableIfVisible = isTabIndexNotNaN;
+            }
+
+            return focusableIfVisible && $(element).is(':visible');
         },
 
         _tabItems : function($node) {
             var $selfRef = this;
-            if ($node === undefined) { $node = $(document); }
+            if (typeof $node === 'undefined') { $node = $(document); }
             var items = $node.find('*').filter(function() {
                 var tabIndex = $(this).attr('tabindex');
                 var isTabIndexNaN = isNaN(tabIndex);
@@ -1023,7 +1099,7 @@
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -1031,18 +1107,17 @@
             var options = typeof option === 'object' && option;
 
             if (!data && /unlink|dispose|hide/.test(option)) {
-                return false;
+                return;
             }
             if (!data) {
-                $this.data('cfw.tooltip', (data = new CFW_Widget_Tooltip(this, options)));
+                $this.data('cfw.tooltip', data = new CFW_Widget_Tooltip(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Tooltip = Plugin;
     $.fn.CFW_Tooltip.Constructor = CFW_Widget_Tooltip;
-
-})(jQuery);
+}(jQuery));
