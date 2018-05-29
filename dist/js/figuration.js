@@ -33,23 +33,24 @@ if (typeof jQuery === 'undefined') {
     // Private util helpers
     // =====
 
+    /* eslint-disable-next-line no-extend-native */
     String.prototype.capitalize = function() {
         return this.charAt(0).toUpperCase() + this.slice(1);
     };
 
-    function doCallback(callback) {
+    var doCallback = function(callback) {
         if (callback) { callback(); }
-    }
+    };
 
-    function escapeId(selector) {
+    var escapeId = function(selector) {
         // Escape IDs in case of special selectors (selector = '#myId:something')
         // $.escapeSelector does not exist in jQuery < 3
-        selector = typeof $.escapeSelector === 'function' ?
-            $.escapeSelector(selector).substr(1) :
-            selector.replace(/(:|\.|\[|\]|,|=|@)/g, '\\$1');
+        selector = typeof $.escapeSelector === 'function'
+            ? $.escapeSelector(selector).substr(1)
+            : selector.replace(/(:|\.|\[|\]|,|=|@)/g, '\\$1');
 
         return selector;
-    }
+    };
 
     // =====
     // TransitionEnd support/emulation
@@ -58,7 +59,7 @@ if (typeof jQuery === 'undefined') {
     var transition = false;
     var TRANSITION_END = 'cfwTransitionEnd';
 
-    function CFW_transitionEndTest() {
+    var CFW_transitionEndTest = function() {
         var div = document.createElement('div');
 
         var transitionEndEvents = {
@@ -70,18 +71,24 @@ if (typeof jQuery === 'undefined') {
 
         // Test for browser specific event name to bind
         for (var eventName in transitionEndEvents) {
-            if (div.style[eventName] !== undefined) {
-                return { end: transitionEndEvents[eventName] };
+            if (typeof div.style[eventName] !== 'undefined') {
+                return {
+                    end: transitionEndEvents[eventName]
+                };
             }
         }
 
         // No browser transitionEnd support - use custom event name
-        return { end: TRANSITION_END };
-    }
+        return {
+            end: TRANSITION_END
+        };
+    };
 
     // Get longest CSS transition duration
-    function CFW_transitionCssDuration($node) {
+    var CFW_transitionCssDuration = function($node) {
         var durationArray = [0]; // Set a min value -- otherwise get `Infinity`
+        var MILLISECONDS_MULTIPLIER = 1000;
+
         $node.each(function() {
             var durations = $node.css('transition-duration') || $node.css('-webkit-transition-duration') || $node.css('-moz-transition-duration') || $node.css('-ms-transition-duration') || $node.css('-o-transition-duration');
             if (durations) {
@@ -93,12 +100,10 @@ if (typeof jQuery === 'undefined') {
         });
 
         var duration = Math.max.apply(Math, durationArray); // http://stackoverflow.com/a/1379560
-        duration = duration * 1000; // convert to milliseconds
+        return duration * MILLISECONDS_MULTIPLIER; // convert to milliseconds
+    };
 
-        return duration;
-    }
-
-    function CFW_transitionEndEmulate(start, complete) {
+    var CFW_transitionEndEmulate = function(start, complete) {
         var duration = CFW_transitionCssDuration(this);
 
         if (duration) {
@@ -125,9 +130,9 @@ if (typeof jQuery === 'undefined') {
             doCallback(complete);
         }
         return this;
-    }
+    };
 
-    function CFW_transitionEndSpecial() {
+    var CFW_transitionEndSpecial = function() {
         return {
             bindType: transition.end,
             delegateType: transition.end,
@@ -135,10 +140,10 @@ if (typeof jQuery === 'undefined') {
                 if ($(e.target).is(this)) {
                     return e.handleObj.handler.apply(this, arguments);
                 }
-                return undefined;
+                return undefined; /* eslint-disable-line no-undefined */
             }
         };
-    }
+    };
 
     transition = CFW_transitionEndTest();
     $.fn.CFW_transition = CFW_transitionEndEmulate;
@@ -151,8 +156,11 @@ if (typeof jQuery === 'undefined') {
     // Includes touch recognition fix for IE11
     // Partially from: https://github.com/Modernizr/Modernizr/blob/master/feature-detects/touchevents.js
     /* global DocumentTouch */
-    var msTouch = window.navigator.msMaxTouchPoints === undefined ? false : window.navigator.msMaxTouchPoints;
-    var isTouch = (('ontouchstart' in window) || msTouch || window.DocumentTouch && document instanceof DocumentTouch) ? true : false;
+    var msTouch = typeof window.navigator.msMaxTouchPoints === 'undefined' ? false : window.navigator.msMaxTouchPoints;
+    var isTouch = false;
+    if (('ontouchstart' in window) || msTouch || window.DocumentTouch && document instanceof DocumentTouch) {
+        isTouch = true;
+    }
     $.CFW_isTouch = isTouch;
 
     // =====
@@ -160,18 +168,18 @@ if (typeof jQuery === 'undefined') {
     // =====
 
     // Not available in IE 10-, need polyfill (see docs for recommendation)
-    var CFW_MutationObserverTest = function() {
-        return ('MutationObserver' in window) ? window.MutationObserver : false;
-    }();
+    var CFW_MutationObserverTest = (function() {
+        return 'MutationObserver' in window ? window.MutationObserver : false;
+    }());
     var CFW_mutationObserver = CFW_MutationObserverTest;
 
-    function CFW_mutationObserved(records, $node) {
+    var CFW_mutationObserved = function(records, $node) {
         if (!MutationObserver) { return; }
         var $target = $(records[0].target);
         if ($target.is($node)) { return; } // Ignore elements own mutation
         var $parent = $target.parents('[data-cfw-mutate]').first();
         $parent.triggerHandler('mutate.cfw.mutate');
-    }
+    };
 
     $.fn.CFW_mutateTrigger = function() {
         this.find('[data-cfw-mutate]').each(function() {
@@ -184,7 +192,9 @@ if (typeof jQuery === 'undefined') {
         if (!CFW_mutationObserver) { return this; }
         this.each(function() {
             var elmObserver = $(this).data('cfw-mutationobserver');
-            elmObserver && elmObserver.disconnect();
+            if (typeof elmObserver !== 'undefined') {
+                elmObserver.disconnect();
+            }
             $(this).removeData('cfw-mutationobserver')
                 .off('mutated.cfw.mutate');
         });
@@ -236,22 +246,22 @@ if (typeof jQuery === 'undefined') {
         var proxyImg = new Image();
         var $proxyImg = $(proxyImg);
 
-        if (instance === undefined) {
+        if (typeof instance === 'undefined') {
             instance = '';
         } else {
             instance = '.' + instance;
         }
 
-        function _doCallback() {
+        var _doCallback = function() {
             $img
                 .add($proxyImg)
                 .off('load.cfw.imageLoaded' + instance);
             callback();
-        }
+        };
 
-        function _isImageComplete() {
-            return img.complete && img.naturalWidth !== undefined;
-        }
+        var _isImageComplete = function() {
+            return img.complete && typeof img.naturalWidth !== 'undefined';
+        };
 
         if (_isImageComplete() && img.naturalWidth !== 0) {
             _doCallback();
@@ -272,9 +282,12 @@ if (typeof jQuery === 'undefined') {
     $.fn.CFW_getID = function(prefix) {
         var $node = $(this);
         var nodeID = $node.attr('id');
-        if (nodeID === undefined) {
-            do nodeID = prefix + '-' + ~~(Math.random() * 1000000); // "~~" acts like a faster Math.floor() here
-            while (document.getElementById(nodeID));
+        var MAX_ID = 1000000;
+        if (typeof nodeID === 'undefined') {
+            do {
+                /* eslint-disable-next-line no-bitwise */
+                nodeID = prefix + '-' + ~~(Math.random() * MAX_ID); // "~~" acts like a faster Math.floor() here
+            } while (document.getElementById(nodeID));
             $node.attr('id', nodeID);
         }
         return nodeID;
@@ -299,7 +312,7 @@ if (typeof jQuery === 'undefined') {
         name = name.capitalize();
 
         for (var prop in object) {
-            if (object.hasOwnProperty(prop)) {
+            if (Object.prototype.hasOwnProperty.call(object, prop)) {
                 var propName = prop.capitalize();
                 if (typeof data['cfw' + name + propName] !== 'undefined') {
                     parsedData[prop] = data['cfw' + name + propName];
@@ -366,28 +379,31 @@ if (typeof jQuery === 'undefined') {
                 return 'left';
             }
             return 'right';
-        } else {
-            var scrollDiv = document.createElement('div');
-            scrollDiv.setAttribute('style', 'overflow-y: scroll;');
-            var scrollP = document.createElement('p');
-            $(scrollDiv).append(scrollP);
-            $node.append(scrollDiv);
-            var scrollWidth = $.CFW_measureScrollbar();
-            var posLeft = scrollP.getBoundingClientRect().left;
-            $node[0].removeChild(scrollDiv);
-            return (posLeft < scrollWidth) ? 'right' : 'left';
         }
+
+        var scrollDiv = document.createElement('div');
+        scrollDiv.setAttribute('style', 'overflow-y: scroll;');
+        var scrollP = document.createElement('p');
+        $(scrollDiv).append(scrollP);
+        $node.append(scrollDiv);
+        var scrollWidth = $.CFW_measureScrollbar();
+        var posLeft = scrollP.getBoundingClientRect().left;
+        $node[0].removeChild(scrollDiv);
+        return posLeft < scrollWidth ? 'right' : 'left';
     };
 
     $.CFW_throttle = function(fn, threshhold, scope) {
         /* From: http://remysharp.com/2010/07/21/throttling-function-calls/ */
-        if (threshhold === undefined) { threshhold = 250; }
+        var THRESHHOLD_DEFAULT = 250;
+        if (typeof threshhold === 'undefined') {
+            threshhold = THRESHHOLD_DEFAULT;
+        }
         var last;
         var deferTimer;
         return function() {
             var context = scope || this;
 
-            var now = +new Date();
+            var now = Number(new Date());
             var args = arguments;
             if (last && now < last + threshhold) {
                 // hold on to it
@@ -413,7 +429,10 @@ if (typeof jQuery === 'undefined') {
         return scrollbarWidth;
     };
 
-})(jQuery);
+    $.CFW_reflow = function(element) {
+        return element.offsetHeight;
+    };
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
@@ -472,7 +491,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         _dragStartOff : function(e) {
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
             $(document).off('.cfw.dragin.' + this.instance);
             this.$element.off('.cfw.dragstart');
         },
@@ -481,9 +500,12 @@ if (typeof jQuery === 'undefined') {
             var $selfRef = this;
 
             // check for handle selector
-            if (this.settings.handle && !$(e.target).closest(this.settings.handle, e.currentTarget).length) {
+            if (this.settings.handle && !$(e.target).closest(this.settings.handle, e.currentTarget).not('.disabled, :disabled').length) {
                 return;
             }
+
+            // check for disabled element
+            if (this.$element.is('.disabled, :disabled')) { return; }
 
             this._dragStartOff(e);
             this.dragging = true;
@@ -576,7 +598,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -584,21 +606,20 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data && /dispose/.test(option)) {
-                return false;
+                return;
             }
             if (!data) {
-                $this.data('cfw.drag', (data = new CFW_Widget_Drag(this, options)));
+                $this.data('cfw.drag', data = new CFW_Widget_Drag(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Drag = Plugin;
     $.fn.CFW_Drag.Constructor = CFW_Widget_Drag;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
@@ -653,7 +674,7 @@ if (typeof jQuery === 'undefined') {
 
             this.$target.each(function() {
                 var tempID = $(this).CFW_getID('cfw-collapse');
-                targetList += (tempID + ' ');
+                targetList += tempID + ' ';
             });
             // Set ARIA on trigger
             this.$triggers.attr('aria-controls', $.trim(targetList));
@@ -723,13 +744,13 @@ if (typeof jQuery === 'undefined') {
             var scrollSize = 'scroll' + capitalizedDimension;
 
             // Determine/set dimension size for each target (triggers the transition)
-            function start() {
+            var start = function() {
                 $selfRef.$target.each(function() {
                     $(this)[dimension]($(this)[0][scrollSize]);
                 });
-            }
+            };
 
-            function complete() {
+            var complete = function() {
                 $selfRef.$triggers.attr('aria-expanded', 'true');
                 $selfRef.$target
                     .removeClass('collapsing')[dimension]('');
@@ -740,7 +761,7 @@ if (typeof jQuery === 'undefined') {
                     $selfRef.$target.attr('tabindex', '-1').get(0).trigger('focus');
                 }
                 $selfRef.$element.CFW_trigger('afterShow.cfw.collapse');
-            }
+            };
 
             // Bind transition callback to first target
             this.$target.eq(0).CFW_transition(start, complete);
@@ -767,7 +788,7 @@ if (typeof jQuery === 'undefined') {
             // Set dimension size and reflow before class changes for Chrome/Webkit or no animation occurs
             this.$target.each(function() {
                 var $this = $(this);
-                $this[dimension]($this[dimension]())[0].offsetHeight;
+                return $this[dimension]($this[dimension]())[0].offsetHeight;
             });
             this.$target.removeClass('collapse in');
             if (this.settings.animate) {
@@ -775,11 +796,11 @@ if (typeof jQuery === 'undefined') {
             }
 
             // Determine/unset dimension size for each target (triggers the transition)
-            function start() {
+            var start = function() {
                 $selfRef.$target[dimension]('');
-            }
+            };
 
-            function complete() {
+            var complete = function() {
                 $selfRef.$triggers.attr('aria-expanded', 'false');
                 $selfRef.$target
                     .removeClass('collapsing in')
@@ -790,7 +811,7 @@ if (typeof jQuery === 'undefined') {
                     $selfRef.$element.trigger('focus');
                 }
                 $selfRef.$element.CFW_trigger('afterHide.cfw.collapse');
-            }
+            };
 
             // Bind transition callback to first target
             this.$target.eq(0).CFW_transition(start, complete);
@@ -817,7 +838,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -825,18 +846,17 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.collapse', (data = new CFW_Widget_Collapse(this, options)));
+                $this.data('cfw.collapse', data = new CFW_Widget_Collapse(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Collapse = Plugin;
     $.fn.CFW_Collapse.Constructor = CFW_Widget_Collapse;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
@@ -889,7 +909,7 @@ if (typeof jQuery === 'undefined') {
         variants  : 'dropdown-menu-reverse dropup'
     };
 
-    function getParent($node) {
+    var getParent = function($node) {
         var $parent;
         var selector = $node.CFW_getSelectorFromElement('dropdown');
         if (selector) {
@@ -897,11 +917,12 @@ if (typeof jQuery === 'undefined') {
         }
 
         return $parent || $node.parent();
-    }
+    };
 
-    function clearMenus(e) {
+    var clearMenus = function(e) {
         // Ignore right-click
-        if (e && e.which === 3) { return; }
+        var RIGHT_MOUSE_BUTTON_WHICH = 3; // MouseEvent.which value for the right button (assuming a right-handed mouse)
+        if (e && e.which === RIGHT_MOUSE_BUTTON_WHICH) { return; }
 
         // Ignore clicks into input areas
         if (e && e.type === 'click' && /input|textarea/i.test(e.target.tagName)) {
@@ -914,7 +935,7 @@ if (typeof jQuery === 'undefined') {
             if (!$parent.hasClass('open')) { return; }
             $(this).CFW_Dropdown('hideRev');
         });
-    }
+    };
 
     CFW_Widget_Dropdown.prototype = {
         _init : function() {
@@ -928,7 +949,7 @@ if (typeof jQuery === 'undefined') {
             if (!$target.length) {
                 $target = $(this.$element.siblings('.dropdown-menu')[0]);
             }
-            if (!$target.length) { return false; }
+            if (!$target.length) { return; }
             this.$target = $target;
 
             this.$element.attr('data-cfw', 'dropdown');
@@ -938,11 +959,12 @@ if (typeof jQuery === 'undefined') {
 
             // Check for id on top level menu - set if not present
             /* var menuID = */ this.$target.CFW_getID('cfw-dropdown');
-            this.$target.attr({
-                'aria-hidden': 'true',
-                'aria-labelledby': this.instance
-            })
-            .addClass(this.c.isMenu);
+            this.$target
+                .attr({
+                    'aria-hidden': 'true',
+                    'aria-labelledby': this.instance
+                })
+                .addClass(this.c.isMenu);
 
             // Set tabindex=-1 so that sub-menu links can't receive keyboard focus from tabbing
             $('a', this.$target).attr('tabIndex', -1).not('.disabled, :disabled');
@@ -983,13 +1005,14 @@ if (typeof jQuery === 'undefined') {
                     }
                 }
 
-                $subMenu.attr({
-                    // 'role': 'menu',
-                    'aria-hidden': 'true',
-                    'aria-labelledby': subLinkID
-                })
-                .addClass($selfRef.c.isMenu)
-                .closest('li').addClass($selfRef.c.hasSubMenu);
+                $subMenu
+                    .attr({
+                        // 'role': 'menu',
+                        'aria-hidden': 'true',
+                        'aria-labelledby': subLinkID
+                    })
+                    .addClass($selfRef.c.isMenu)
+                    .closest('li').addClass($selfRef.c.hasSubMenu);
 
                 $subLink.attr({
                     'aria-haspopup': 'true',
@@ -1038,7 +1061,7 @@ if (typeof jQuery === 'undefined') {
                         e.preventDefault();
                     }
 
-                    if ($selfRef.settings.backtop && ($(this).closest('ul')[0] == $selfRef.$target[0])) {
+                    if ($selfRef.settings.backtop && ($(this).closest('ul')[0] === $selfRef.$target[0])) {
                         $selfRef.closeUp($(this).closest('li'));
                     } else {
                         $selfRef.closeUp($(this).closest('.' + $selfRef.c.hasSubMenu));
@@ -1098,12 +1121,12 @@ if (typeof jQuery === 'undefined') {
 
             // Check to see if link should be followed (sub-menu open and link is not '#')
             var nodeHref = $trigger.attr('href');
-            if (nodeHref && !(/^#$/.test(nodeHref)) && showing) {
+            if (nodeHref && !/^#$/.test(nodeHref) && showing) {
                 clearMenus();
                 return;
             }
 
-            if (e) e.stopPropagation();
+            if (e) { e.stopPropagation(); }
 
             if (!showing) {
                 this.showMenu(e, $trigger, $menu);
@@ -1117,7 +1140,7 @@ if (typeof jQuery === 'undefined') {
         showMenu : function(e, $trigger, $menu) {
             var $selfRef = this;
 
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
 
             var $parent  = getParent($trigger);
             var showing = $parent.hasClass('open');
@@ -1192,9 +1215,9 @@ if (typeof jQuery === 'undefined') {
         },
 
         hideMenu : function(e, $trigger, $menu, triggerFocus) {
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
 
-            if (triggerFocus === undefined) { triggerFocus = true; }
+            if (typeof triggerFocus === 'undefined') { triggerFocus = true; }
 
             var $parent  = getParent($trigger);
             var showing = $parent.hasClass('open');
@@ -1231,7 +1254,9 @@ if (typeof jQuery === 'undefined') {
                     $(window).off('resize.cfw.dropdown.' + this.instance);
                     this.$target
                         .appendTo($parent);
-                    this.$tmpContainer && this.$tmpContainer.remove();
+                    if (this.$tmpContainer !== null) {
+                        this.$tmpContainer.remove();
+                    }
                     this.$tmpContainer = null;
                 }
             }
@@ -1284,27 +1309,37 @@ if (typeof jQuery === 'undefined') {
             $parent.removeClass(this.c.hover);
         },
 
+        /* eslint-disable complexity */
         _actionsKeydown : function(e, node) {
+            var KEYCODE_UP = 38;    // Arrow up
+            var KEYCODE_RIGHT = 39; // Arrow right
+            var KEYCODE_DOWN = 40;  // Arrow down
+            var KEYCODE_LEFT = 37;  // Arrow left
+            var KEYCODE_ESC = 27;  // Escape
+            var KEYCODE_SPACE = 32;  // Space
+            var KEYCODE_TAB = 9;  // Tab
+            var REGEX_KEYS = new RegExp('^(' + KEYCODE_UP + '|' + KEYCODE_RIGHT + '|' + KEYCODE_DOWN + '|' + KEYCODE_LEFT + '|' + KEYCODE_ESC + '|' + KEYCODE_SPACE + '|' + KEYCODE_TAB + ')$');
+            var REGEX_ARROWS = new RegExp('^(' + KEYCODE_UP + '|' + KEYCODE_RIGHT + '|' + KEYCODE_DOWN + '|' + KEYCODE_LEFT + ')$');
+
             var isInput = /input|textarea/i.test(e.target.tagName);
             var isCheck = isInput && /checkbox|radio/i.test($(e.target).prop('type'));
             var isRealButton = /button/i.test(e.target.tagName);
             var isRoleButton = /button/i.test($(e.target).attr('role'));
 
-            // 37-left, 38-up, 39-right, 40-down, 27-esc, 32-space, 9-tab
-            if (!/^(37|38|39|40|27|32|9)$/.test(e.which)) { return; }
+            if (!REGEX_KEYS.test(e.which)) { return; }
             // Ignore space in inputs and buttons
-            if ((isInput || isRealButton) && e.which == 32) { return; }
+            if ((isInput || isRealButton) && e.which === KEYCODE_SPACE) { return; }
             // Ignore arrows in inputs, except for checkbox/radio
-            if (isInput && !isCheck && /^(37|38|39|40)$/.test(e.which)) { return; }
+            if (isInput && !isCheck && REGEX_ARROWS.test(e.which)) { return; }
 
             var $node = $(node);
             var $items = null;
 
             // Close menu when tab pressed, move to next item
-            if (e.which == 9) {
+            if (e.which === KEYCODE_TAB) {
                 // Emulate arrow up/down if input
                 if (isInput) {
-                    e.which = (e.shiftKey) ? 38 : 40;
+                    e.which = e.shiftKey ? KEYCODE_UP : KEYCODE_DOWN;
                 } else {
                     clearMenus();
                     this.$element.trigger('focus');
@@ -1313,7 +1348,7 @@ if (typeof jQuery === 'undefined') {
             }
 
             // Allow ESC to propagate if menu is closed
-            if (e.which == 27 && $(e.target).is(this.$element) && !getParent($(e.target)).hasClass('open')) {
+            if (e.which === KEYCODE_ESC && $(e.target).is(this.$element) && !getParent($(e.target)).hasClass('open')) {
                 return;
             }
 
@@ -1321,7 +1356,7 @@ if (typeof jQuery === 'undefined') {
             e.preventDefault();
 
             // Close current focused menu with ESC
-            if (e.which == 27) {
+            if (e.which === KEYCODE_ESC) {
                 if ($node.is(this.$element) || $node.is(this.$target)) {
                     this.hideMenu(null, this.$element, this.$target);
                     return;
@@ -1346,13 +1381,13 @@ if (typeof jQuery === 'undefined') {
             $parent.removeClass(this.c.hover);
 
             // Emulate button behaviour
-            if (isRoleButton && e.which == 32) {
+            if (isRoleButton && e.which === KEYCODE_SPACE) {
                 this.toggleMenu(null, $node, $parent);
                 return;
             }
 
             // Up/Down
-            if (e.which == 38 || e.which == 40) {
+            if (e.which === KEYCODE_UP || e.which === KEYCODE_DOWN) {
                 if ($parent.is(':hidden')) {
                     this.showMenu(null, $node, $parent);
                     return;
@@ -1368,15 +1403,16 @@ if (typeof jQuery === 'undefined') {
                     index = $items.index($(e.target).closest('.dropdown-item')[0]);
                 }
 
-                if (e.which == 38 && index > 0)                 { index--;   } // up
-                if (e.which == 40 && index < $items.length - 1) { index++;   } // down
-                if (!~index)                                    { index = 0; } // force first item
+                if (e.which === KEYCODE_UP && index > 0) { index--; } // up
+                if (e.which === KEYCODE_DOWN && index < $items.length - 1) { index++; } // down
+                /* eslint-disable-next-line no-bitwise */
+                if (!~index) { index = 0; } // force first item
 
                 $items.eq(index).trigger('focus');
             } // END - Up/Down
 
             // Left/Right
-            if (e.which == 37 || e.which == 39) {
+            if (e.which === KEYCODE_LEFT || e.which === KEYCODE_RIGHT) {
                 // Only for children of menu
                 if (!$.contains(this.$target[0], $eTarget[0])) { return; }
                 // Only if has submenu class
@@ -1388,7 +1424,7 @@ if (typeof jQuery === 'undefined') {
                 var subHidden = $subMenuElm.is(':hidden');
                 var parHidden = $parMenuElm.is(':hidden');
 
-                if (e.which == 39 && subHidden) {
+                if (e.which === KEYCODE_RIGHT && subHidden) {
                     this.showMenu(null, $eTarget, $subMenuElm);
                     $items = $subMenuElm.children('li').find('a, .dropdown-item, input, textarea');
                     $items = $items.filter(':not(.disabled, :disabled):not(:has(input)):not(:has(textarea)):visible');
@@ -1396,12 +1432,12 @@ if (typeof jQuery === 'undefined') {
                     return;
                 }
 
-                if (e.which == 37 && !parHidden) {
+                if (e.which === KEYCODE_LEFT && !parHidden) {
                     this.closeUp($node);
-                    return;
                 }
             } // END - Left/Right
         },
+        /* eslint-enable complexity */
 
         _actionsHoverEnter : function(e, node) {
             var $node = $(node);
@@ -1417,7 +1453,6 @@ if (typeof jQuery === 'undefined') {
                 var $subNode = $node.parent().find('ul').eq(0);
                 getParent($node).addClass(this.c.hover);
                 this.showMenu(null, $node, $subNode);
-                return;
             }
         },
 
@@ -1441,7 +1476,6 @@ if (typeof jQuery === 'undefined') {
                     $selfRef.timerHide = null;
                     $selfRef.hideMenu(null, $node, $subNode);
                 }, $selfRef.settings.delay);
-                return;
             }
         },
 
@@ -1486,7 +1520,7 @@ if (typeof jQuery === 'undefined') {
         return this.offsetHeight;
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -1494,13 +1528,13 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.dropdown', (data = new CFW_Widget_Dropdown(this, options)));
+                $this.data('cfw.dropdown', data = new CFW_Widget_Dropdown(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Dropdown = Plugin;
     $.fn.CFW_Dropdown.Constructor = CFW_Widget_Dropdown;
@@ -1509,8 +1543,7 @@ if (typeof jQuery === 'undefined') {
     $(window).ready(function() {
         $(document).on('click', clearMenus);
     });
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
@@ -1552,9 +1585,7 @@ if (typeof jQuery === 'undefined') {
             }
             this.$target = $($selector);
 
-            if (!this.$target.length) {
-                return false;
-            }
+            if (!this.$target.length) { return; }
 
             this.$element.attr('data-cfw', 'tab');
 
@@ -1630,31 +1661,41 @@ if (typeof jQuery === 'undefined') {
             var inTransition = this.$navElm.data('cfw.tab.inTransition');
             if (inTransition) { return; }
 
-            if (this.$element.hasClass('active')
-                || this.$element.hasClass('disabled')
-                || this.$element[0].hasAttribute('disabled')) {
+            if (this.$element.hasClass('active') ||
+                this.$element.hasClass('disabled') ||
+                this.$element[0].hasAttribute('disabled')) {
                 return;
             }
 
             var $previous = this.$navElm.find('.active:last');
+            var eventHideResult;
+            var eventShowResult;
+
             if ($previous.length) {
-                if (!$previous.CFW_trigger('beforeHide.cfw.tab', { relatedTarget: this.$element[0] })) {
-                    return;
-                }
+                eventHideResult = $previous.CFW_trigger('beforeHide.cfw.tab', {
+                    relatedTarget: this.$element[0]
+                });
             }
 
-            if (!this.$element.CFW_trigger('beforeShow.cfw.tab', { relatedTarget: $previous[0] })) {
+            eventShowResult = this.$element.CFW_trigger('beforeShow.cfw.tab', {
+                relatedTarget: $previous[0]
+            });
+
+            if (!eventHideResult || !eventShowResult) {
                 return;
             }
 
             this.$navElm.data('cfw.tab.inTransition', true);
 
             if ($previous.length) {
-                $previous.attr({
+                $previous
+                    .attr({
                         'tabindex': -1,
                         'aria-selected': 'false'
                     })
-                    .CFW_trigger('afterHide.cfw.tab', { relatedTarget: this.$element[0] });
+                    .CFW_trigger('afterHide.cfw.tab', {
+                        relatedTarget: this.$element[0]
+                    });
             }
 
             this.$element.attr({
@@ -1680,9 +1721,13 @@ if (typeof jQuery === 'undefined') {
         },
 
         _actionsKeydown : function(e, node) {
-            // 37-left, 38-up, 39-right, 40-down
-            var k = e.which;
-            if (!/(37|38|39|40)/.test(k)) { return; }
+            var KEYCODE_UP = 38;    // Arrow up
+            var KEYCODE_RIGHT = 39; // Arrow right
+            var KEYCODE_DOWN = 40;  // Arrow down
+            var KEYCODE_LEFT = 37;  // Arrow left
+            var REGEX_KEYS = new RegExp('^(' + KEYCODE_UP + '|' + KEYCODE_RIGHT + '|' + KEYCODE_DOWN + '|' + KEYCODE_LEFT + ')$');
+
+            if (!REGEX_KEYS.test(e.which)) { return; }
 
             e.stopPropagation();
             e.preventDefault();
@@ -1692,9 +1737,10 @@ if (typeof jQuery === 'undefined') {
             var $items = $list.find('[role="tab"]:visible').not('.disabled');
             var index = $items.index($items.filter('[aria-selected="true"]'));
 
-            if ((k == 38 || k == 37) && index > 0)                 { index--; }     // up & left
-            if ((k == 39 || k == 40) && index < $items.length - 1) { index++; }     // down & right
-            if (!~index)                                           { index = 0; }   // force first item
+            if ((e.which === KEYCODE_UP || e.which === KEYCODE_LEFT) && index > 0) { index--; } // up & left
+            if ((e.which === KEYCODE_RIGHT || e.which === KEYCODE_DOWN) && index < $items.length - 1) { index++; } // down & right
+            /* eslint-disable-next-line no-bitwise */
+            if (!~index) { index = 0; }   // force first item
 
             var nextTab = $items.eq(index);
             nextTab.CFW_Tab('show').trigger('focus');
@@ -1703,10 +1749,13 @@ if (typeof jQuery === 'undefined') {
         _activateTab : function($node, container, isPanel, $previous) {
             var $selfRef = this;
             var $prevActive = container.find('.active');
-            var doTransition = isPanel && this.settings.animate;
+            var doTransition = false;
+            if (isPanel && this.settings.animate) {
+                doTransition = true;
+            }
 
             if (doTransition) {
-                $node[0].offsetWidth; // Reflow for transition
+                $.CFW_reflow($node[0]); // Reflow for transition
                 $node.addClass('in');
             } else {
                 if (isPanel) {
@@ -1715,17 +1764,19 @@ if (typeof jQuery === 'undefined') {
                 $node.removeClass('fade');
             }
 
-            function complete() {
+            var complete = function() {
                 $prevActive.removeClass('active');
                 $node.addClass('active');
 
                 if (isPanel) {
-                    $selfRef.$element.CFW_trigger('afterShow.cfw.tab', { relatedTarget: $previous[0] });
+                    $selfRef.$element.CFW_trigger('afterShow.cfw.tab', {
+                        relatedTarget: $previous[0]
+                    });
                     $node.CFW_mutateTrigger();
                     $prevActive.CFW_mutateTrigger();
                     $selfRef.$navElm.removeData('cfw.tab.inTransition');
                 }
-            }
+            };
 
             $node.CFW_transition(null, complete);
 
@@ -1741,11 +1792,10 @@ if (typeof jQuery === 'undefined') {
             this.$target = null;
             this.$navElm = null;
             this.settings = null;
-
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -1753,18 +1803,17 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.tab', (data = new CFW_Widget_Tab(this, options)));
+                $this.data('cfw.tab', data = new CFW_Widget_Tab(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Tab = Plugin;
     $.fn.CFW_Tab.Constructor = CFW_Widget_Tab;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
@@ -1816,19 +1865,28 @@ if (typeof jQuery === 'undefined') {
             var position     = this.$element.offset();
             var targetHeight = this.$target.height();
 
-            if (offsetTop != null && this.affixed == 'top') return scrollTop < offsetTop ? 'top' : false;
-
-            if (this.affixed == 'bottom') {
-                if (offsetTop != null) return (scrollTop + this.unpin <= position.top) ? false : 'bottom';
-                return (scrollTop + targetHeight <= scrollHeight - offsetBottom) ? false : 'bottom';
+            if (offsetTop !== null && this.affixed === 'top') {
+                return scrollTop < offsetTop ? 'top' : false;
             }
 
-            var initializing   = this.affixed == null;
-            var colliderTop    = initializing ? scrollTop : position.top;
+            if (this.affixed === 'bottom') {
+                if (offsetTop !== null) {
+                    return scrollTop + this.unpin <= position.top ? false : 'bottom';
+                }
+
+                return scrollTop + targetHeight <= scrollHeight - offsetBottom ? false : 'bottom';
+            }
+
+            var initializing = this.affixed === null;
+            var colliderTop = initializing ? scrollTop : position.top;
             var colliderHeight = initializing ? targetHeight : height;
 
-            if (offsetTop != null && scrollTop <= offsetTop) return 'top';
-            if (offsetBottom != null && (colliderTop + colliderHeight >= scrollHeight - offsetBottom)) return 'bottom';
+            if (offsetTop !== null && scrollTop <= offsetTop) {
+                return 'top';
+            }
+            if (offsetBottom !== null && colliderTop + colliderHeight >= scrollHeight - offsetBottom) {
+                return 'bottom';
+            }
 
             return false;
         },
@@ -1838,7 +1896,8 @@ if (typeof jQuery === 'undefined') {
             this.$element.removeClass(CFW_Widget_Affix.RESET).addClass('affix');
             var scrollTop = this.$target.scrollTop();
             var position  = this.$element.offset();
-            return (this.pinnedOffset = position.top - scrollTop);
+            this.pinnedOffset = position.top - scrollTop;
+            return this.pinnedOffset;
         },
 
         checkPositionDelayed : function() {
@@ -1853,16 +1912,20 @@ if (typeof jQuery === 'undefined') {
             var offsetBottom = this.settings.bottom;
             var scrollHeight =  Math.max($(document).height(), $(document.body).height());
 
-            if (typeof offsetTop == 'function')    { offsetTop    = offsetTop(this.$element); }
-            if (typeof offsetBottom == 'function') { offsetBottom = offsetBottom(this.$element); }
+            if (typeof offsetTop === 'function') {
+                offsetTop    = offsetTop(this.$element);
+            }
+            if (typeof offsetBottom === 'function') {
+                offsetBottom = offsetBottom(this.$element);
+            }
 
             var affix = this.getState(scrollHeight, height, offsetTop, offsetBottom);
 
-            if (this.affixed != affix) {
-                if (this.unpin != null) {
+            if (this.affixed !== affix) {
+                if (this.unpin !== null) {
                     this.$element.css({
-                        'top': '',
-                        'position': ''
+                        top: '',
+                        position: ''
                     });
                 }
 
@@ -1874,7 +1937,7 @@ if (typeof jQuery === 'undefined') {
                 }
 
                 this.affixed = affix;
-                this.unpin = (affix == 'bottom') ? this.getPinnedOffset() : null;
+                this.unpin = affix === 'bottom' ? this.getPinnedOffset() : null;
 
                 this.$element
                     .removeClass(CFW_Widget_Affix.RESET)
@@ -1882,7 +1945,7 @@ if (typeof jQuery === 'undefined') {
                     .CFW_trigger(eventName.replace('affix', 'affixed'));
             }
 
-            if (affix == 'bottom') {
+            if (affix === 'bottom') {
                 this.$element.offset({
                     top: scrollHeight - height - offsetBottom
                 });
@@ -1905,7 +1968,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -1913,18 +1976,17 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.affix', (data = new CFW_Widget_Affix(this, options)));
+                $this.data('cfw.affix', data = new CFW_Widget_Affix(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Affix = Plugin;
     $.fn.CFW_Affix.Constructor = CFW_Widget_Affix;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
@@ -1988,9 +2050,13 @@ if (typeof jQuery === 'undefined') {
 
             this.settings = this.getSettings(options);
 
-            this.$viewport = this.settings.viewport && $((typeof(this.settings.viewport) === 'function') ? this.settings.viewport.call(this, this.$element) : (this.settings.viewport.selector || this.settings.viewport));
+            this.$viewport = this.settings.viewport && $(typeof this.settings.viewport === 'function' ? this.settings.viewport.call(this, this.$element) : this.settings.viewport.selector || this.settings.viewport);
 
-            this.inState = { click: false, hover: false, focus: false };
+            this.inState = {
+                click: false,
+                hover: false,
+                focus: false
+            };
 
             this.$element.attr('data-cfw', this.type);
 
@@ -2029,7 +2095,7 @@ if (typeof jQuery === 'undefined') {
         getSettings : function(options) {
             var parsedData = this.$element.CFW_parseData(this.type, this.getDefaults());
             var settings = $.extend({}, this.getDefaults(), parsedData, options);
-            if (settings.delay && typeof settings.delay == 'number') {
+            if (settings.delay && typeof settings.delay === 'number') {
                 settings.delay = {
                     show: settings.delay,
                     hide: settings.delay
@@ -2045,8 +2111,8 @@ if (typeof jQuery === 'undefined') {
 
         fixTitle : function() {
             var $e = this.$element;
-            if ($e.attr('title') || typeof($e.attr('data-cfw-' + this.type +  '-original-title')) != 'string') {
-                $e.attr('data-cfw-' + this.type +  '-original-title', $e.attr('title') || '').attr('title', '');
+            if ($e.attr('title') || typeof $e.attr('data-cfw-' + this.type + '-original-title') !== 'string') {
+                $e.attr('data-cfw-' + this.type + '-original-title', $e.attr('title') || '').attr('title', '');
             }
         },
 
@@ -2055,7 +2121,7 @@ if (typeof jQuery === 'undefined') {
             var $e = this.$element;
             var s = this.settings;
 
-            title = (typeof s.title == 'function' ? s.title.call($e[0]) :  s.title) || $e.attr('data-cfw-' + this.type +  '-original-title');
+            title = typeof s.title === 'function' ? s.title.call($e[0]) : s.title || $e.attr('data-cfw-' + this.type + '-original-title');
 
             return title;
         },
@@ -2082,9 +2148,14 @@ if (typeof jQuery === 'undefined') {
             this.instance = this.$element.CFW_getID('cfw-' + this.type);
             this.targetID = this.$target.CFW_getID('cfw-' + this.type);
 
+            var attrRole = 'tooltip';
+            if (this.type !== 'tooltip' && this.isDialog) {
+                attrRole = 'dialog';
+            }
+
             // Set ARIA attributes on target
             this.$target.attr({
-                'role': (this.type == 'tooltip' ? 'tooltip' : (this.isDialog ? 'dialog' : 'tooltip')),
+                'role': attrRole,
                 'aria-hidden': 'true',
                 'tabindex': -1
             });
@@ -2095,35 +2166,35 @@ if (typeof jQuery === 'undefined') {
 
             for (var i = this.eventTypes.length; i--;) {
                 var eventType = this.eventTypes[i];
-                if (eventType == 'click' || eventType == 'manual') {
+                if (eventType === 'click' || eventType === 'manual') {
                     this.isDialog = true;
                 }
-                if (eventType == 'click') {
+                if (eventType === 'click') {
                     // Click events
                     this.$element
                         .off('click.cfw.' + this.type)
                         .on('click.cfw.' + this.type, this.toggle.bind(this));
 
                     // Inject close button
-                    if (this.$target != null && !this.closeAdded) {
+                    if (this.$target !== null && !this.closeAdded) {
                         // Check for pre-existing close buttons
-                        if (!this.$target.find('[data-cfw-dismiss="' + this.type +  '"]').length) {
-                            var $close = $('<button type="button" class="close" data-cfw-dismiss="' + this.type +  '" aria-label="' + this.settings.closesrtext + '">' + this.settings.closetext + '</button>');
+                        if (!this.$target.find('[data-cfw-dismiss="' + this.type + '"]').length) {
+                            var $close = $('<button type="button" class="close" data-cfw-dismiss="' + this.type + '" aria-label="' + this.settings.closesrtext + '">' + this.settings.closetext + '</button>');
                             $close.prependTo(this.$target);
                             this.closeAdded = true;
                         }
                     }
-                } else if (eventType != 'manual') {
+                } else if (eventType !== 'manual') {
                     // Hover/focus events
-                    var eventIn  = (eventType == 'hover') ? 'mouseenter' : 'focusin';
-                    var eventOut = (eventType == 'hover') ? 'mouseleave' : 'focusout';
+                    var eventIn  = eventType === 'hover' ? 'mouseenter' : 'focusin';
+                    var eventOut = eventType === 'hover' ? 'mouseleave' : 'focusout';
 
                     if (modeInit) {
-                        this.$element.on(eventIn  + '.cfw.' + this.type, this.enter.bind(this));
+                        this.$element.on(eventIn + '.cfw.' + this.type, this.enter.bind(this));
                         this.$element.on(eventOut + '.cfw.' + this.type, this.leave.bind(this));
                     } else {
                         this.$target.off('.cfw.' + this.type);
-                        this.$target.on(eventIn  + '.cfw.' + this.type, this.enter.bind(this));
+                        this.$target.on(eventIn + '.cfw.' + this.type, this.enter.bind(this));
                         this.$target.on(eventOut + '.cfw.' + this.type, this.leave.bind(this));
                     }
                 }
@@ -2133,8 +2204,8 @@ if (typeof jQuery === 'undefined') {
                 // Key handling for closing
                 this.$target.off('keydown.cfw.' + this.type + '.close')
                     .on('keydown.cfw.' + this.type + '.close', function(e) {
-                        var code = e.charCode || e.which;
-                        if (code && code == 27) {// if ESC is pressed
+                        var KEYCODE_ESC = 27;
+                        if (e.which === KEYCODE_ESC) { // if ESC is pressed
                             e.stopPropagation();
                             e.preventDefault();
                             // Click the close button if it exists otherwise force tooltip closed
@@ -2183,10 +2254,10 @@ if (typeof jQuery === 'undefined') {
 
         enter : function(e) {
             if (e) {
-                this.inState[e.type == 'focusin' ? 'focus' : 'hover'] = true;
+                this.inState[e.type === 'focusin' ? 'focus' : 'hover'] = true;
             }
 
-            if ((this.$target && this.$target.hasClass('in')) || this.hoverState == 'in') {
+            if ((this.$target && this.$target.hasClass('in')) || this.hoverState === 'in') {
                 this.hoverState = 'in';
                 return;
             }
@@ -2195,17 +2266,20 @@ if (typeof jQuery === 'undefined') {
 
             this.hoverState = 'in';
 
-            if (!this.settings.delay.show) { return this.show(); }
+            if (!this.settings.delay.show) {
+                this.show();
+                return;
+            }
 
             var $selfRef = this;
             this.delayTimer = setTimeout(function() {
-                if ($selfRef.hoverState == 'in') { $selfRef.show(); }
+                if ($selfRef.hoverState === 'in') { $selfRef.show(); }
             }, this.settings.delay.show);
         },
 
         leave : function(e) {
             if (e) {
-                this.inState[e.type == 'focusout' ? 'focus' : 'hover'] = false;
+                this.inState[e.type === 'focusout' ? 'focus' : 'hover'] = false;
             }
 
             if (this._isInState()) { return; }
@@ -2213,11 +2287,14 @@ if (typeof jQuery === 'undefined') {
             clearTimeout(this.delayTimer);
 
             this.hoverState = 'out';
-            if (!this.settings.delay.hide) { return this.hide(); }
+            if (!this.settings.delay.hide) {
+                this.hide();
+                return;
+            }
 
             var $selfRef = this;
             this.delayTimer = setTimeout(function() {
-                if ($selfRef.hoverState == 'out') { $selfRef.hide(); }
+                if ($selfRef.hoverState === 'out') { $selfRef.hide(); }
             }, this.settings.delay.hide);
         },
 
@@ -2241,11 +2318,11 @@ if (typeof jQuery === 'undefined') {
             // Create/link the tooltip container
             if (!this.$target) {
                 var target = this.createTip();
-                if (target.length <= 0) { return false; }
+                if (target.length <= 0) { return; }
                 this.dynamicTip = true;
                 this.$target = target;
             }
-            if (this.$target.length != 1) {
+            if (this.$target.length !== 1) {
                 throw new Error(this.type + ' `template` option must consist of exactly 1 top-level element!');
             }
             this.$target.data('cfw.' + this.type, this);
@@ -2265,7 +2342,8 @@ if (typeof jQuery === 'undefined') {
                         $selfRef._tabSet(e);
                     })
                     .on('keyup.cfw.' + this.type + '.keyflag', function(e) {
-                        if (e.which == 9) {
+                        var KEYCODE_TAB = 9;
+                        if (e.which === KEYCODE_TAB) {
                             $selfRef._tabReset();
                         }
                     });
@@ -2273,8 +2351,8 @@ if (typeof jQuery === 'undefined') {
                 // Inject focus helper item at start to fake loss of focus going out the top
                 if (!this.$focusFirst) {
                     this.$focusFirst = $(document.createElement('span'))
-                    .addClass(this.type + '-focusfirst')
-                    .attr('tabindex', 0);
+                        .addClass(this.type + '-focusfirst')
+                        .attr('tabindex', 0);
 
                     var $dialog =  this.isDialog ? this.$target.find('[role="document"]').first() : {};
                     if ($dialog.length) {
@@ -2306,9 +2384,9 @@ if (typeof jQuery === 'undefined') {
                 // Also helps if tip has last tabbable item in document - otherwise focus drops off page
                 if (!this.$focusLast) {
                     this.$focusLast = $(document.createElement('span'))
-                    .addClass(this.type + '-focuslast')
-                    .attr('tabindex', 0)
-                    .appendTo(this.$target);
+                        .addClass(this.type + '-focuslast')
+                        .attr('tabindex', 0)
+                        .appendTo(this.$target);
                 }
                 if (this.$focusLast) {
                     this.$focusLast
@@ -2382,7 +2460,7 @@ if (typeof jQuery === 'undefined') {
             // Handle delayed show and target not created
             if (!this.$target) { return; }
 
-            if (force === undefined) { force = false; }
+            if (typeof force === 'undefined') { force = false; }
             if (force) {
                 this._hideComplete();
                 return;
@@ -2415,7 +2493,7 @@ if (typeof jQuery === 'undefined') {
 
         unlink : function(force) {
             var $selfRef = this;
-            if (force === undefined) { force = false; }
+            if (typeof force === 'undefined') { force = false; }
             clearTimeout(this.delayTimer);
 
             this.$element.CFW_trigger('beforeUnlink.cfw.' + this.type);
@@ -2469,8 +2547,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         _unlinkCompleteExt : function() {
-            // unlink complete extend
-            return;
+            // intentionally empty - unlink complete extend
         },
 
         dispose : function() {
@@ -2492,7 +2569,8 @@ if (typeof jQuery === 'undefined') {
             var $tip = this.$target;
             $tip.detach();
 
-            if (typeof placement == 'object') {
+            /* eslint-disable no-lonely-if */
+            if (typeof placement === 'object') {
                 // Custom placement
                 this.settings.container = 'body';
                 $tip.appendTo(this.settings.container);
@@ -2506,25 +2584,32 @@ if (typeof jQuery === 'undefined') {
                     $tip.insertAfter(this.$element);
                 }
             }
+            /* eslint-enable no-lonely-if */
 
             this.inserted = true;
             this.$element.CFW_trigger('inserted.cfw.' + this.type);
         },
 
+        /* eslint-disable complexity */
         locateTip : function() {
             var $tip = this.$target;
 
-            $tip.removeClass('top reverse bottom forward')
-                .css({ top: 0, left: 0, display: 'block' });
+            $tip
+                .removeClass('top reverse bottom forward')
+                .css({
+                    top: 0,
+                    left: 0,
+                    display: 'block'
+                });
 
-            var placement = typeof this.settings.placement == 'function' ?
-                this.settings.placement.call(this, this.$target[0], this.$element[0]) :
-                this.settings.placement;
+            var placement = typeof this.settings.placement === 'function'
+                ? this.settings.placement.call(this, this.$target[0], this.$element[0])
+                : this.settings.placement;
             var directionVal = window.getComputedStyle($('html')[0], null).getPropertyValue('direction').toLowerCase();
 
             this._insertTip(placement);
 
-            if (typeof placement == 'object') {
+            if (typeof placement === 'object') {
                 // Custom placement
                 return;
             }
@@ -2547,20 +2632,21 @@ if (typeof jQuery === 'undefined') {
 
                 var viewportDim = this.getViewportBounds();
 
+                /* eslint-disable indent, no-multi-spaces, no-nested-ternary, operator-linebreak */
                 if (directionVal === 'rtl') {
-                    placement = placement == 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
-                                placement == 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
-                                placement == 'reverse' && pos.left   - actualWidth  > viewportDim.left   ? 'forward' :
-                                placement == 'forward' && pos.right  + actualWidth  < viewportDim.width  ? 'reverse' :
+                    placement = placement === 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
+                                placement === 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
+                                placement === 'reverse' && pos.left   - actualWidth  > viewportDim.left   ? 'forward' :
+                                placement === 'forward' && pos.right  + actualWidth  < viewportDim.width  ? 'reverse' :
                                 placement;
-
                 } else {
-                    placement = placement == 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
-                                placement == 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
-                                placement == 'forward' && pos.right  + actualWidth  > viewportDim.width  ? 'reverse' :
-                                placement == 'reverse' && pos.left   - actualWidth  < viewportDim.left   ? 'forward' :
+                    placement = placement === 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
+                                placement === 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
+                                placement === 'forward' && pos.right  + actualWidth  > viewportDim.width  ? 'reverse' :
+                                placement === 'reverse' && pos.left   - actualWidth  < viewportDim.left   ? 'forward' :
                                 placement;
                 }
+                /* eslint-enable indent, no-multi-spaces, no-nested-ternary, operator-linebreak */
 
                 $tip.removeClass(orgPlacement)
                     .addClass(placement);
@@ -2570,6 +2656,7 @@ if (typeof jQuery === 'undefined') {
 
             this._applyPlacement(calculatedOffset, placement);
         },
+        /* eslint-enable complexity */
 
         _showComplete : function() {
             var $selfRef = this;
@@ -2614,7 +2701,7 @@ if (typeof jQuery === 'undefined') {
             }
             this.activate = false;
 
-            if (prevHoverState == 'out') { this.leave(); }
+            if (prevHoverState === 'out') { this.leave(); }
         },
 
         _hideComplete : function() {
@@ -2641,7 +2728,11 @@ if (typeof jQuery === 'undefined') {
             $(document).off('.cfw.' + this.type + '.' + this.instance);
             $(window).off('.cfw.' + this.type + '.' + this.instance);
 
-            this.inState = { click: false, hover: false, focus: false };
+            this.inState = {
+                click: false,
+                hover: false,
+                focus: false
+            };
 
             this.inTransition = false;
             if (this.isDialog) {
@@ -2654,7 +2745,7 @@ if (typeof jQuery === 'undefined') {
             this.follow = false;
 
             // Only remove dynamically created tips
-            if (this.hoverState != 'in' && this.dynamicTip) {
+            if (this.hoverState !== 'in' && this.dynamicTip) {
                 this._removeDynamicTip();
             }
 
@@ -2680,7 +2771,7 @@ if (typeof jQuery === 'undefined') {
         _getPosition : function() {
             var $element = this.$element;
             var el = $element[0];
-            var isBody = el.tagName == 'BODY';
+            var isBody = el.tagName === 'BODY';
 
             var elRect = el.getBoundingClientRect();
             elRect = $.extend({}, elRect, {
@@ -2688,30 +2779,45 @@ if (typeof jQuery === 'undefined') {
                 left: elRect.left + window.pageXOffset
             });
 
-            var elOffset  = isBody ? { top: 0, left: 0 } : $element.offset();
+            var elOffset = isBody
+                ? {
+                    top: 0,
+                    left: 0
+                }
+                : $element.offset();
             // SVG/Chrome issue: https://github.com/jquery/jquery/issues/2895
             if ($element[0].className instanceof SVGAnimatedString) {
                 elOffset = {};
             }
 
-            var scroll    = { scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop() };
-            var outerDims = isBody ? { width: $(window).width(), height: $(window).height() } : null;
+            var scroll = {
+                scroll: isBody
+                    ? document.documentElement.scrollTop || document.body.scrollTop
+                    : $element.scrollTop()
+            };
+            var outerDims = isBody
+                ? {
+                    width: $(window).width(),
+                    height: $(window).height()
+                }
+                : null;
             return $.extend({}, elRect, scroll, outerDims, elOffset);
         },
 
         _getCalculatedOffset : function(placement, pos, actualWidth, actualHeight, directionVal) {
+            /* eslint-disable indent, no-multi-spaces, no-nested-ternary, operator-linebreak, object-curly-newline, object-property-newline, no-magic-numbers, no-else-return */
             if (directionVal === 'rtl') {
-                return placement == 'bottom'   ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement == 'top'      ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement == 'forward'  ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-                    /* placement == 'reverse' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
+                return placement === 'bottom'   ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 }  :
+                       placement === 'top'      ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }  :
+                       placement === 'forward'  ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
+                    /* placement === 'reverse' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
             } else {
-                return placement == 'bottom'    ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement == 'top'       ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement == 'reverse'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-                    /* placement == 'forward' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
+                return placement === 'bottom'   ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 }  :
+                       placement === 'top'      ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }  :
+                       placement === 'reverse'  ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
+                    /* placement === 'forward' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
             }
-
+            /* eslint-enable indent, no-multi-spaces, no-nested-ternary, operator-linebreak, object-curly-newline, object-property-newline, no-magic-numbers, no-else-return */
         },
 
         _applyPlacement : function(offset, placement) {
@@ -2724,8 +2830,8 @@ if (typeof jQuery === 'undefined') {
             var marginTop = parseInt($tip.css('margin-top'), 10) || 0;
             var marginLeft = parseInt($tip.css('margin-left'), 10) || 0;
 
-            offset.top  = offset.top  + marginTop;
-            offset.left = offset.left + marginLeft;
+            offset.top += marginTop;
+            offset.left += marginLeft;
 
             // $.fn.offset doesn't round pixel values
             // so we use setOffset directly with our own function B-0
@@ -2744,7 +2850,7 @@ if (typeof jQuery === 'undefined') {
             var actualWidth  = $tip[0].getBoundingClientRect().width;
             var actualHeight = $tip[0].getBoundingClientRect().height;
 
-            if (placement == 'top' && actualHeight != height) {
+            if (placement === 'top' && actualHeight !== height) {
                 offset.top = offset.top + height - actualHeight;
             }
 
@@ -2757,6 +2863,7 @@ if (typeof jQuery === 'undefined') {
             }
 
             var isVertical          = /top|bottom/.test(placement);
+            /* eslint-disable-next-line no-magic-numbers */
             var arrowDelta          = isVertical ? delta.left * 2 - width + actualWidth : delta.top * 2 - height + actualHeight;
             var arrowOffsetPosition = isVertical ? 'offsetWidth' : 'offsetHeight';
 
@@ -2774,7 +2881,10 @@ if (typeof jQuery === 'undefined') {
                 return $.extend({}, elRect, this.getScreenSpaceBounds($viewport));
             }
 
-            var viewportBoundary = $.extend({}, $viewport.offset(), { width: $viewport.outerWidth(), height: $viewport.outerHeight() });
+            var viewportBoundary = $.extend({}, $viewport.offset(), {
+                width: $viewport.outerWidth(),
+                height: $viewport.outerHeight()
+            });
 
             // Double check elements inside fixed and aboslute elements against the viewport
             if ($viewport.is('body')) {
@@ -2805,8 +2915,11 @@ if (typeof jQuery === 'undefined') {
         },
 
         _getViewportAdjustedDelta : function(placement, pos, actualWidth, actualHeight) {
-            var delta = { top: 0, left: 0 };
-            if (!this.$viewport) return delta;
+            var delta = {
+                top: 0,
+                left: 0
+            };
+            if (!this.$viewport) { return delta; }
 
             var viewportPadding = this.settings.padding;
             var viewportDimensions = this.getViewportBounds();
@@ -2821,7 +2934,6 @@ if (typeof jQuery === 'undefined') {
                     delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset;
                 }
             } else {
-
                 var leftEdgeOffset  = pos.left - viewportPadding;
                 var rightEdgeOffset = pos.left + viewportPadding + actualWidth;
                 if (leftEdgeOffset < viewportDimensions.left) { // left overflow
@@ -2835,8 +2947,9 @@ if (typeof jQuery === 'undefined') {
         },
 
         _replaceArrow : function(delta, dimension, isVertical) {
+            var PCT_MIDPOINT = 50;
             this._arrow()
-                .css(isVertical ? 'left' : 'top', 50 * (1 - delta / dimension) + '%')
+                .css(isVertical ? 'left' : 'top', PCT_MIDPOINT * (1 - delta / dimension) + '%')
                 .css(isVertical ? 'top' : 'left', '');
         },
 
@@ -2849,15 +2962,16 @@ if (typeof jQuery === 'undefined') {
 
         _isInState : function() {
             for (var key in this.inState) {
-                if (this.inState[key]) return true;
+                if (this.inState[key]) { return true; }
             }
             return false;
         },
 
         // Set flags for `tab` key interactions
         _tabSet : function(e) {
+            var KEYCODE_TAB = 9;
             this._tabReset();
-            if (e.which == 9) {
+            if (e.which === KEYCODE_TAB) {
                 this.flags.keyTab = true;
                 if (e.shiftKey) { this.flags.keyShift = true; }
             }
@@ -2891,7 +3005,7 @@ if (typeof jQuery === 'undefined') {
 
             var selectables = $selfRef._tabItems($scope);
             var nextIndex = 0;
-            if ($(current).length === 1){
+            if ($(current).length === 1) {
                 var currentIndex = selectables.index(current);
                 if (currentIndex + 1 < selectables.length) {
                     nextIndex = currentIndex + 1;
@@ -2906,7 +3020,7 @@ if (typeof jQuery === 'undefined') {
 
             var selectables = $selfRef._tabItems($scope);
             var nextIndex = 0;
-            if ($(current).length === 1){
+            if ($(current).length === 1) {
                 var currentIndex = selectables.index(current);
                 if (currentIndex + 1 < selectables.length) {
                     nextIndex = currentIndex + 1;
@@ -2915,13 +3029,23 @@ if (typeof jQuery === 'undefined') {
             return selectables.eq(nextIndex);
         },
 
+        /*
+         * jQuery UI Focusable 1.12.1
+         * http://jqueryui.com
+         *
+         * Copyright jQuery Foundation and other contributors
+         * Released under the MIT license.
+         * http://jquery.org/license
+         */
         _focusable : function(element, isTabIndexNotNaN) {
             var map;
             var mapName;
             var $img;
+            var focusableIfVisible;
+            var fieldset;
             var nodeName = element.nodeName.toLowerCase();
 
-            if ('area' === nodeName) {
+            if (nodeName === 'area') {
                 map = element.parentNode;
                 mapName = map.name;
                 if (!element.href || !mapName || map.nodeName.toLowerCase() !== 'map') {
@@ -2931,17 +3055,31 @@ if (typeof jQuery === 'undefined') {
                 return $img.length > 0 && $img.is(':visible');
             }
 
-            return (/^(input|select|textarea|button|object)$/.test(nodeName) ?
-                !element.disabled :
-                'a' === nodeName ?
-                    element.href || isTabIndexNotNaN :
-                    isTabIndexNotNaN) &&
-                $(element).is(':visible');
+            if (/^(input|select|textarea|button|object)$/.test(nodeName)) {
+                focusableIfVisible = !element.disabled;
+
+                if (focusableIfVisible) {
+                    // Form controls within a disabled fieldset are disabled.
+                    // However, controls within the fieldset's legend do not get disabled.
+                    // Since controls generally aren't placed inside legends, we skip
+                    // this portion of the check.
+                    fieldset = $(element).closest('fieldset')[0];
+                    if (fieldset) {
+                        focusableIfVisible = !fieldset.disabled;
+                    }
+                }
+            } else if (nodeName === 'a') {
+                focusableIfVisible = element.href || isTabIndexNotNaN;
+            } else {
+                focusableIfVisible = isTabIndexNotNaN;
+            }
+
+            return focusableIfVisible && $(element).is(':visible');
         },
 
         _tabItems : function($node) {
             var $selfRef = this;
-            if ($node === undefined) { $node = $(document); }
+            if (typeof $node === 'undefined') { $node = $(document); }
             var items = $node.find('*').filter(function() {
                 var tabIndex = $(this).attr('tabindex');
                 var isTabIndexNaN = isNaN(tabIndex);
@@ -2951,7 +3089,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -2959,21 +3097,20 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data && /unlink|dispose|hide/.test(option)) {
-                return false;
+                return;
             }
             if (!data) {
-                $this.data('cfw.tooltip', (data = new CFW_Widget_Tooltip(this, options)));
+                $this.data('cfw.tooltip', data = new CFW_Widget_Tooltip(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Tooltip = Plugin;
     $.fn.CFW_Tooltip.Constructor = CFW_Widget_Tooltip;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
@@ -2985,7 +3122,7 @@ if (typeof jQuery === 'undefined') {
 (function($) {
     'use strict';
 
-    if ($.fn.CFW_Tooltip === undefined) throw new Error('CFW_Popover requires CFW_Tooltip');
+    if (typeof $.fn.CFW_Tooltip === 'undefined') { throw new Error('CFW_Popover requires CFW_Tooltip'); }
 
     var CFW_Widget_Popover = function(element, options) {
         this.dragAdded = false;
@@ -3031,7 +3168,7 @@ if (typeof jQuery === 'undefined') {
 
             if (this.settings.html) {
                 $title.html(title);
-                if (typeof content == 'string') {
+                if (typeof content === 'string') {
                     $content.html(content);
                 } else {
                     $content.empty().append(content); // Use append for objects to keep js events
@@ -3050,7 +3187,7 @@ if (typeof jQuery === 'undefined') {
 
         if (this.settings.drag && !this.dragAdded) {
             if (this.$target.find('[data-cfw-drag="' + this.type + '"]').length <= 0) {
-                var $drag = $('<span role="button" tabindex="0" class="drag" data-cfw-drag="' + this.type +  '" aria-label="' + this.settings.dragsrtext + '">' + this.settings.dragtext + '</span>');
+                var $drag = $('<span role="button" tabindex="0" class="drag" data-cfw-drag="' + this.type + '" aria-label="' + this.settings.dragsrtext + '">' + this.settings.dragtext + '</span>');
                 $drag.insertAfter(this.$target.find('.close').eq(0));
                 this.dragAdded = true;
             }
@@ -3089,16 +3226,16 @@ if (typeof jQuery === 'undefined') {
         var $e = this.$element;
         var s = this.settings;
 
-        content = (typeof s.content == 'function' ? s.content.call($e[0]) :  s.content);
+        content = typeof s.content === 'function' ? s.content.call($e[0]) : s.content;
 
         return content;
     };
 
     CFW_Widget_Popover.prototype.enableDrag = function() {
         var $selfRef = this;
-        var limit = {};
-
-        var dragOpt = { handle: '[data-cfw-drag="' + this.type + '"]' };
+        var dragOpt = {
+            handle: '[data-cfw-drag="' + this.type + '"]'
+        };
 
         // Remove mutation handler and replace resize location handler
         this.$element.on('afterShow.cfw.' + this.type, function() {
@@ -3118,29 +3255,36 @@ if (typeof jQuery === 'undefined') {
         // Unset any previous drag events
         this.$target.off('.cfw.drag');
 
-        this.$target.on('dragStart.cfw.drag', function() {
-            limit = $selfRef.viewportDragLimit();
+        this.$target
+            .on('dragStart.cfw.drag', function() {
+                $selfRef._updateZ();
+                $selfRef.$element.CFW_trigger('dragStart.cfw.' + $selfRef.type);
+            })
+            .on('drag.cfw.drag', function(e) {
+                $selfRef.locateDragTip(e.offsetY, e.offsetX);
+            })
+            .on('dragEnd.cfw.drag', function() {
+                $selfRef.$element.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
+            })
+            .on('keydown.cfw.drag', '[data-cfw-drag="' + this.type + '"]', function(e) {
+                var KEYCODE_UP = 38;    // Arrow up
+                var KEYCODE_RIGHT = 39; // Arrow right
+                var KEYCODE_DOWN = 40;  // Arrow down
+                var KEYCODE_LEFT = 37;  // Arrow left
+                var REGEX_KEYS = new RegExp('^(' + KEYCODE_UP + '|' + KEYCODE_RIGHT + '|' + KEYCODE_DOWN + '|' + KEYCODE_LEFT + ')$');
 
-            $selfRef._updateZ();
-            $selfRef.$element.CFW_trigger('dragStart.cfw.' + $selfRef.type);
-        })
-        .on('drag.cfw.drag', function(e) {
-            $selfRef.locateDragTip(e.offsetY, e.offsetX);
-        })
-        .on('dragEnd.cfw.drag', function() {
-            $selfRef.$element.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
-        })
-        .on('keydown.cfw.drag', '[data-cfw-drag="' + this.type + '"]', function(e) {
-            if (/(37|38|39|40)/.test(e.which)) {
-                if (e) { e.stopPropagation(); }
+                if (!REGEX_KEYS.test(e.which)) { return; }
+
+                if (e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                }
 
                 if (!$selfRef.keyTimer) {
                     $selfRef.$element.CFW_trigger('dragStart.cfw.' + $selfRef.type);
                 }
 
                 clearTimeout($selfRef.keyTimer);
-
-                limit = $selfRef.viewportDragLimit();
 
                 // Mitigate most of 'slippage' by rounding offsets
                 var nodeOffset = $selfRef.$target.offset();
@@ -3150,10 +3294,11 @@ if (typeof jQuery === 'undefined') {
                 // Revise offset
                 var step = $selfRef.settings.dragstep;
                 switch (e.which) {
-                    /* Left  */ case 37: { offsetX = offsetX - step; break; }
-                    /* Up    */ case 38: { offsetY = offsetY - step; break; }
-                    /* Right */ case 39: { offsetX = offsetX + step; break; }
-                    /* Down  */ case 40: { offsetY = offsetY + step; break; }
+                    case KEYCODE_LEFT: { offsetX -= step; break; }
+                    case KEYCODE_UP: { offsetY -= step; break; }
+                    case KEYCODE_RIGHT: { offsetX += step; break; }
+                    case KEYCODE_DOWN: { offsetY += step; break; }
+                    default:
                 }
 
                 // Move it
@@ -3163,11 +3308,7 @@ if (typeof jQuery === 'undefined') {
                     $selfRef.$element.CFW_trigger('dragEnd.cfw.' + $selfRef.type);
                     $selfRef.keyTimer = null;
                 }, $selfRef.keyDelay);
-
-                // Stop browser from scrolling
-                return false;
-            }
-        });
+            });
 
         this.$target.CFW_Drag(dragOpt);
     };
@@ -3199,8 +3340,8 @@ if (typeof jQuery === 'undefined') {
         var viewportPadding = this.settings.padding;
 
         $tip.css({
-            top: Math.min((limit.bottom - viewportPadding), Math.max((limit.top + viewportPadding), offsetY)),
-            left: Math.min((limit.right - viewportPadding), Math.max((limit.left + viewportPadding), offsetX))
+            top: Math.min(limit.bottom - viewportPadding, Math.max(limit.top + viewportPadding, offsetY)),
+            left: Math.min(limit.right - viewportPadding, Math.max(limit.left + viewportPadding, offsetX))
         });
     };
 
@@ -3252,7 +3393,7 @@ if (typeof jQuery === 'undefined') {
         this.keyDelay = null;
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -3260,21 +3401,20 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data && /unlink|dispose|hide/.test(option)) {
-                return false;
+                return;
             }
             if (!data) {
-                $this.data('cfw.popover', (data = new CFW_Widget_Popover(this, options)));
+                $this.data('cfw.popover', data = new CFW_Widget_Popover(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Popover = Plugin;
     $.fn.CFW_Popover.Constructor = CFW_Widget_Popover;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
@@ -3389,7 +3529,8 @@ if (typeof jQuery === 'undefined') {
             this.escape();
             this.resize();
 
-            this.$target.on('click.dismiss.cfw.modal', '[data-cfw-dismiss="modal"]', function(e) {
+            this.$target
+                .on('click.dismiss.cfw.modal', '[data-cfw-dismiss="modal"]', function(e) {
                     if (e) { e.preventDefault(); }
                     $selfRef.hide();
                 })
@@ -3397,7 +3538,7 @@ if (typeof jQuery === 'undefined') {
 
             this.$dialog.on('mousedown.dismiss.cfw.modal', function() {
                 $selfRef.$target.one('mouseup.dismiss.cfw.modal', function(e) {
-                    if ($(e.target).is($selfRef.$target)) $selfRef.ignoreBackdropClick = true;
+                    if ($(e.target).is($selfRef.$target)) { $selfRef.ignoreBackdropClick = true; }
                 });
             });
 
@@ -3449,7 +3590,7 @@ if (typeof jQuery === 'undefined') {
 
             this.adjustDialog();
 
-            this.$target[0].offsetWidth; // Force Reflow
+            $.CFW_reflow(this.$target[0]); // Force Reflow
 
             this.$target.addClass('in').removeAttr('aria-hidden');
 
@@ -3465,12 +3606,12 @@ if (typeof jQuery === 'undefined') {
             this.enforceFocus();
             this.enforceFocusLast();
 
-            function complete() {
+            var complete = function() {
                 $selfRef.$target.trigger('focus');
                 $selfRef.$target
                     .CFW_mutateTrigger()
                     .CFW_trigger('afterShow.cfw.modal');
-            }
+            };
 
             // Use modal dialog, not modal container, since
             // that is where the animation happens
@@ -3496,7 +3637,7 @@ if (typeof jQuery === 'undefined') {
                     .CFW_mutateTrigger()
                     .CFW_trigger('afterHide.cfw.modal');
             });
-            this.$element && this.$element.trigger('focus');
+            this.$element.trigger('focus');
         },
 
         enforceFocus : function() {
@@ -3516,9 +3657,9 @@ if (typeof jQuery === 'undefined') {
             // is last tabbable item in document - otherwise focus drops off page
             if (!this.$focusLast) {
                 this.$focusLast = $(document.createElement('span'))
-                .addClass('modal-focuslast')
-                .attr('tabindex', 0)
-                .appendTo(this.$target);
+                    .addClass('modal-focuslast')
+                    .attr('tabindex', 0)
+                    .appendTo(this.$target);
             }
             if (this.$focusLast) {
                 this.$focusLast
@@ -3531,9 +3672,10 @@ if (typeof jQuery === 'undefined') {
 
         escape : function() {
             var $selfRef = this;
+            var KEYCODE_ESC = 27;
             if (this.isShown && this.settings.keyboard) {
                 this.$target.on('keydown.dismiss.cfw.modal', function(e) {
-                    if (e.which == 27) {
+                    if (e.which === KEYCODE_ESC) {
                         e.preventDefault();
                         $selfRef.hide();
                     }
@@ -3553,7 +3695,7 @@ if (typeof jQuery === 'undefined') {
 
         // these following methods are used to handle overflowing modals
         handleUpdate : function() {
-            if (this.settings.backdrop) this.adjustBackdrop();
+            if (this.settings.backdrop) { this.adjustBackdrop(); }
             this.adjustDialog();
         },
 
@@ -3650,7 +3792,7 @@ if (typeof jQuery === 'undefined') {
 
             // Restore body padding
             var padding = this.$body.data('cfw.padding-dim');
-            if (typeof padding !== undefined) {
+            if (typeof padding !== 'undefined') {
                 this.$body.css('padding-' + this.scrollbarSide, padding);
                 this.$body.removeData('cfw.padding-dim');
             }
@@ -3677,7 +3819,7 @@ if (typeof jQuery === 'undefined') {
         backdrop : function(callback) {
             var $selfRef = this;
 
-            var animate = (this.settings.animate) ? 'fade' : '';
+            var animate = this.settings.animate ? 'fade' : '';
 
             if (this.isShown && this.settings.backdrop) {
                 this.$backdrop = $(document.createElement('div'))
@@ -3690,12 +3832,14 @@ if (typeof jQuery === 'undefined') {
                         return;
                     }
                     if (e.target !== e.currentTarget) { return; }
-                    $selfRef.settings.backdrop == 'static'
-                        ? $selfRef.$target.trigger('focus')
-                        : $selfRef.hide();
+                    if ($selfRef.settings.backdrop === 'static') {
+                        $selfRef.$target.trigger('focus');
+                    } else {
+                        $selfRef.hide();
+                    }
                 });
 
-                this.$backdrop[0].offsetWidth; // Force Reflow
+                $.CFW_reflow(this.$backdrop[0]); // Force Reflow
 
                 this.$backdrop.addClass('in');
 
@@ -3705,7 +3849,7 @@ if (typeof jQuery === 'undefined') {
 
                 var callbackRemove = function() {
                     $selfRef.removeBackdrop();
-                    callback && callback();
+                    if (callback) { callback(); }
                 };
 
                 this.$backdrop.CFW_transition(null, callbackRemove);
@@ -3715,8 +3859,10 @@ if (typeof jQuery === 'undefined') {
         },
 
         removeBackdrop : function() {
-            this.$backdrop && this.$backdrop.remove();
-            this.$backdrop = null;
+            if (this.$backdrop) {
+                this.$backdrop.remove();
+                this.$backdrop = null;
+            }
         },
 
         unlink : function() {
@@ -3770,7 +3916,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -3778,21 +3924,20 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data && /unlink|dispose/.test(option)) {
-                return false;
+                return;
             }
             if (!data) {
-                $this.data('cfw.modal', (data = new CFW_Widget_Modal(this, options)));
+                $this.data('cfw.modal', data = new CFW_Widget_Modal(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Modal = Plugin;
     $.fn.CFW_Modal.Constructor = CFW_Widget_Modal;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
@@ -3804,7 +3949,7 @@ if (typeof jQuery === 'undefined') {
 (function($) {
     'use strict';
 
-    if ($.fn.CFW_Collapse === undefined) throw new Error('CFW_Accordion requires CFW_Collapse');
+    if (typeof $.fn.CFW_Collapse === 'undefined') { throw new Error('CFW_Accordion requires CFW_Collapse'); }
 
     var CFW_Widget_Accordion = function(element) {
         this.$element = $(element);
@@ -3852,24 +3997,23 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
             var data = $this.data('cfw.accordion');
             if (!data) {
-                $this.data('cfw.accordion', (data = new CFW_Widget_Accordion(this)));
+                $this.data('cfw.accordion', data = new CFW_Widget_Accordion(this));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Accordion = Plugin;
     $.fn.CFW_Accordion.Constructor = CFW_Widget_Accordion;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
@@ -3881,8 +4025,8 @@ if (typeof jQuery === 'undefined') {
 (function($) {
     'use strict';
 
-    if ($.fn.CFW_Tab === undefined) throw new Error('CFW_TabResponsive requires CFW_Tab');
-    if ($.fn.CFW_Collapse === undefined) throw new Error('CFW_TabResponsive requires CFW_Collapse');
+    if (typeof $.fn.CFW_Tab === 'undefined') { throw new Error('CFW_TabResponsive requires CFW_Tab'); }
+    if (typeof $.fn.CFW_Collapse === 'undefined') { throw new Error('CFW_TabResponsive requires CFW_Collapse'); }
 
     var CFW_Widget_TabResponsive = function(element) {
         this.$element = $(element);
@@ -3927,7 +4071,8 @@ if (typeof jQuery === 'undefined') {
                 var $activePane = data.$target;
                 var $paneContainer = $activePane.closest('.tab-content');
                 $paneContainer.find('[data-cfw="collapse"]').each(function() {
-                    $(this).one('afterHide.cfw.collapse', function(e) {
+                    $(this)
+                        .one('afterHide.cfw.collapse', function(e) {
                             e.stopPropagation();
                             e.preventDefault();
                         })
@@ -3935,7 +4080,8 @@ if (typeof jQuery === 'undefined') {
                 });
 
                 var $collapseItem = $activePane.find('[data-cfw="collapse"]');
-                $collapseItem.one('afterShow.cfw.collapse', function(e) {
+                $collapseItem
+                    .one('afterShow.cfw.collapse', function(e) {
                         e.stopPropagation();
                         e.preventDefault();
                     })
@@ -3967,8 +4113,9 @@ if (typeof jQuery === 'undefined') {
                     selector = $this.attr('href');
                 }
                 selector = selector.replace(/^#/, '');
-                if (selector == $paneID) {
-                    $this.one('beforeShow.cfw.tab', function(e) {
+                if (selector === $paneID) {
+                    $this
+                        .one('beforeShow.cfw.tab', function(e) {
                             e.stopPropagation();
                         })
                         .CFW_Tab('show');
@@ -3986,25 +4133,24 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
             var data = $this.data('cfw.tabResponsive');
 
             if (!data) {
-                $this.data('cfw.tabResponsive', (data = new CFW_Widget_TabResponsive(this)));
+                $this.data('cfw.tabResponsive', data = new CFW_Widget_TabResponsive(this));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_TabResponsive = Plugin;
     $.fn.CFW_TabResponsive.Constructor = CFW_Widget_TabResponsive;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
@@ -4016,7 +4162,7 @@ if (typeof jQuery === 'undefined') {
 (function($) {
     'use strict';
 
-    if (!$.fn.CFW_Tab) throw new Error('CFW_Slideshow requires CFW_Tab');
+    if (typeof $.fn.CFW_Tab === 'undefined') { throw new Error('CFW_Slideshow requires CFW_Tab'); }
 
     var CFW_Widget_Slideshow = function(element, options) {
         this.$element = $(element);
@@ -4098,7 +4244,7 @@ if (typeof jQuery === 'undefined') {
                 this.$element.CFW_trigger('next.cfw.slideshow');
                 $tabs.eq(currIndex + 1).CFW_Tab('show');
             }
-            if (this.settings.loop && currIndex == ($tabs.length - 1)) {
+            if (this.settings.loop && currIndex === ($tabs.length - 1)) {
                 this.$element.CFW_trigger('prev.cfw.slideshow');
                 $tabs.eq(0).CFW_Tab('show');
             }
@@ -4129,9 +4275,13 @@ if (typeof jQuery === 'undefined') {
         },
 
         _actionsKeydown : function(e) {
-            // 37-left, 38-up, 39-right, 40-down
-            var k = e.which;
-            if (!/(37|38|39|40)/.test(k)) { return; }
+            var KEYCODE_UP = 38;    // Arrow up
+            var KEYCODE_RIGHT = 39; // Arrow right
+            var KEYCODE_DOWN = 40;  // Arrow down
+            var KEYCODE_LEFT = 37;  // Arrow left
+            var REGEX_KEYS = new RegExp(KEYCODE_UP + '|' + KEYCODE_RIGHT + '|' + KEYCODE_DOWN + '|' + KEYCODE_LEFT);
+
+            if (!REGEX_KEYS.test(e.which)) { return; }
 
             e.stopPropagation();
             e.preventDefault();
@@ -4139,20 +4289,21 @@ if (typeof jQuery === 'undefined') {
             var $tabs = this._getTabs();
             var index = this._currIndex($tabs);
 
-            if ((k == 38 || k == 37)) { // up & left
+            if (e.which === KEYCODE_UP || e.which === KEYCODE_LEFT) {
                 if (index > 0) {
                     index--;
                 } else if (index === 0) {
                     index = $tabs.length - 1;
                 }
             }
-            if ((k == 39 || k == 40)) { // down & right
+            if (e.which === KEYCODE_DOWN || e.which === KEYCODE_RIGHT) {
                 if (index < $tabs.length - 1) {
                     index++;
-                } else if (index == $tabs.length - 1) {
+                } else if (index === $tabs.length - 1) {
                     index = 0;
                 }
             }
+            /* eslint-disable-next-line no-bitwise */
             if (!~index) { index = 0; }  // force first item
 
             var nextTab = $tabs.eq(index);
@@ -4177,7 +4328,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -4185,18 +4336,17 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.Slideshow', (data = new CFW_Widget_Slideshow(this, options)));
+                $this.data('cfw.Slideshow', data = new CFW_Widget_Slideshow(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Slideshow = Plugin;
     $.fn.CFW_Slideshow.Constructor = CFW_Widget_Slideshow;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
@@ -4250,7 +4400,7 @@ if (typeof jQuery === 'undefined') {
             var offsetMethod = 'offset';
             var offsetBase = 0;
 
-            if (this.$scrollElement[0] != null && this.$scrollElement[0] !== this.$scrollElement[0].window) {
+            if (this.$scrollElement[0] !== null && this.$scrollElement[0] !== this.$scrollElement[0].window) {
                 offsetMethod = 'position';
                 offsetBase   = this.$scrollElement.scrollTop();
             }
@@ -4266,11 +4416,11 @@ if (typeof jQuery === 'undefined') {
                     var href  = $el.attr('data-cfw-scrollspy-target') || $el.attr('href');
                     var $href = /^#./.test(href) && $(href);
 
-                    return ($href
-                        && $href.length
-                        && $href.is(':visible')
-                        // && $el.is(':visible')
-                        && [[$href[offsetMethod]().top + offsetBase, href]]) || null;
+                    return ($href &&
+                        $href.length &&
+                        $href.is(':visible') &&
+                        // && $el.is(':visible') &&
+                        [[$href[offsetMethod]().top + offsetBase, href]]) || null;
                 })
                 .sort(function(a, b) { return a[0] - b[0]; })
                 .each(function() {
@@ -4288,24 +4438,34 @@ if (typeof jQuery === 'undefined') {
             var activeTarget = this.activeTarget;
             var i;
 
-            if (this.scrollHeight != scrollHeight) {
+            if (this.scrollHeight !== scrollHeight) {
                 this.refresh();
             }
 
             if (scrollTop >= maxScroll) {
-                return activeTarget != (i = targets[targets.length - 1]) && this.activate(i);
+                var target = targets[targets.length - 1];
+
+                if (activeTarget !== target) {
+                    this.activate(target);
+                }
+                return;
             }
 
             if (activeTarget && scrollTop < offsets[0] && offsets[0] > 0) {
                 this.activeTarget = null;
-                return this.clear();
+                this.clear();
+                return;
             }
 
             for (i = offsets.length; i--;) {
-                activeTarget != targets[i]
-                    && scrollTop >= offsets[i]
-                    && (offsets[i + 1] === undefined || scrollTop < offsets[i + 1])
-                    && this.activate(targets[i]);
+                var isActiveTarget = activeTarget !== targets[i] &&
+                    scrollTop >= offsets[i] &&
+                    (typeof offsets[i + 1] === 'undefined' ||
+                    scrollTop < offsets[i + 1]);
+
+                if (isActiveTarget) {
+                    this.activate(targets[i]);
+                }
             }
         },
 
@@ -4355,7 +4515,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -4363,18 +4523,17 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.scrollspy', (data = new CFW_Widget_Scrollspy(this, options)));
+                $this.data('cfw.scrollspy', data = new CFW_Widget_Scrollspy(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Scrollspy = Plugin;
     $.fn.CFW_Scrollspy.Constructor = CFW_Widget_Scrollspy;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
@@ -4425,7 +4584,7 @@ if (typeof jQuery === 'undefined') {
         close : function(e) {
             var $selfRef = this;
 
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
 
             if (this.inTransition) { return; }
 
@@ -4439,14 +4598,14 @@ if (typeof jQuery === 'undefined') {
 
             this.inTransition = 1;
 
-            function removeElement() {
+            var removeElement = function() {
                 // Detach from parent, fire event then clean up data
                 $selfRef.$parent
                     .detach()
                     .CFW_trigger('afterClose.cfw.alert');
                 $selfRef.$parent.remove();
                 $selfRef.inTransition = 0;
-            }
+            };
 
             this.$parent
                 .removeClass('in')
@@ -4475,7 +4634,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -4483,13 +4642,13 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.alert', (data = new CFW_Widget_Alert(this, options)));
+                $this.data('cfw.alert', data = new CFW_Widget_Alert(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Alert = Plugin;
     $.fn.CFW_Alert.Constructor = CFW_Widget_Alert;
@@ -4501,7 +4660,7 @@ if (typeof jQuery === 'undefined') {
             $(this).CFW_Alert('close');
         });
     }
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
@@ -4545,7 +4704,7 @@ if (typeof jQuery === 'undefined') {
             this.$element.attr('data-cfw', 'lazy');
 
             // Add placholder if src is not defined
-            if (this.$element.attr('src') === '' || this.$element.attr('src') === undefined || this.$element.attr('src') === false) {
+            if (this.$element.attr('src') === '' || typeof this.$element.attr('src') === 'undefined' || this.$element.attr('src') === false) {
                 if (this.$element.is('img')) {
                     this.$element.attr('src', this.settings.placeholder);
                 }
@@ -4557,10 +4716,10 @@ if (typeof jQuery === 'undefined') {
             var eventTypes = this.settings.trigger.split(' ');
             for (var i = eventTypes.length; i--;) {
                 var eventType = eventTypes[i];
-                if (eventType == 'scroll' || eventType == 'resize') {
+                if (eventType === 'scroll' || eventType === 'resize') {
                     $(this.settings.container).on(eventType + '.cfw.lazy.' + this.instance, $.CFW_throttle(this._handleTrigger.bind(this), this.settings.throttle));
                     checkInitViewport = true;
-                } else if (eventType == 'mutate') {
+                } else if (eventType === 'mutate') {
                     this.$element
                         .attr('data-cfw-mutate', '')
                         .on('mutate.cfw.mutate', this._handleTrigger.bind(this));
@@ -4577,14 +4736,14 @@ if (typeof jQuery === 'undefined') {
         isVisible : function() {
             // Normalize on using the newer jQuery 3 visibility method
             var elem = this.$element[0];
-            return !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
+            return Boolean(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
         },
 
         inViewport : function() {
             if (!this.settings.invisible && !this.isVisible) {
                 return false;
             }
-            return (!this.belowFold() && !this.afterRight() && !this.aboveTop() && !this.beforeLeft());
+            return !this.belowFold() && !this.afterRight() && !this.aboveTop() && !this.beforeLeft();
         },
 
         belowFold : function() {
@@ -4614,7 +4773,7 @@ if (typeof jQuery === 'undefined') {
             } else {
                 fold = $(this.settings.container).offset().top;
             }
-            return fold >= this.$element.offset().top + this.settings.threshold  + this.$element.height();
+            return fold >= this.$element.offset().top + this.settings.threshold + this.$element.height();
         },
 
         beforeLeft: function() {
@@ -4633,19 +4792,20 @@ if (typeof jQuery === 'undefined') {
             this.$element.attr('src', this.settings.src);
 
             $.CFW_imageLoaded(this.$element, this.instance, function() {
-                function complete() {
+                var complete = function() {
                     $selfRef.$element.removeClass('lazy in');
                     $selfRef.$element.CFW_trigger('afterShow.cfw.lazy');
                     $selfRef.dispose();
-                }
+                };
 
                 // Use slight delay when setting `.in` so animation occurs
+                var DELAY_ANIMATION = 15;
                 if ($selfRef.settings.animate) { $selfRef.$element.addClass('lazy'); }
                 setTimeout(function() {
                     $selfRef.$element
                         .addClass('in')
                         .CFW_transition(null, complete);
-                }, 15);
+                }, DELAY_ANIMATION);
             });
         },
 
@@ -4686,11 +4846,10 @@ if (typeof jQuery === 'undefined') {
             this.instance = null;
             this.inTransition = null;
             this.settings = null;
-
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -4698,18 +4857,17 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.lazy', (data = new CFW_Widget_Lazy(this, options)));
+                $this.data('cfw.lazy', data = new CFW_Widget_Lazy(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Lazy = Plugin;
     $.fn.CFW_Lazy.Constructor = CFW_Widget_Lazy;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
@@ -4721,7 +4879,7 @@ if (typeof jQuery === 'undefined') {
 (function($) {
     'use strict';
 
-    if (!$.fn.CFW_Drag) throw new Error('CFW_Slider requires CFW_Drag');
+    if (typeof $.fn.CFW_Drag === 'undefined') { throw new Error('CFW_Slider requires CFW_Drag'); }
 
     var CFW_Widget_Slider = function(element, options) {
         this.$element = $(element);
@@ -4746,7 +4904,7 @@ if (typeof jQuery === 'undefined') {
 
         this.inDrag = null;
         this.startPos = null;
-        this.offsetPos = (this.settings.vertical) ? 'top' : 'left';
+        this.offsetPos = this.settings.vertical ? 'top' : 'left';
         this.stepsTotal = null;
 
         this._init();
@@ -4795,18 +4953,22 @@ if (typeof jQuery === 'undefined') {
 
             this.$inputMin = $inputs.eq(0);
 
-            if (this.$inputMin[0].nodeName == 'SELECT') { this.ordinal = true; }
+            if (this.$inputMin[0].nodeName === 'SELECT') { this.ordinal = true; }
             if ($inputs.length > 1) {
                 this.$inputMax = $inputs.eq($inputs.length - 1);
                 this.range = true;
             }
+
+            return true;
         },
 
         _initChunk : function() {
+            /* eslint-disable no-magic-numbers */
             this.stepsTotal = Math.floor((this.settings.max - this.settings.min) / this.settings.step);
             if (!this.settings.chunk) {
-                this.settings.chunk = this.stepsTotal > 4 ?  Math.round(this.stepsTotal / 4) : this.settings.step * 2;
+                this.settings.chunk = this.stepsTotal > 4 ? Math.round(this.stepsTotal / 4) : this.settings.step * 2;
             }
+            /* eslint-enable no-magic-numbers */
         },
 
         createSlider : function() {
@@ -4867,7 +5029,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         updateValues : function() {
-            this.val0 = (this.ordinal) ? this.$inputMin[0].selectedIndex : parseFloat(this.$inputMin.val());
+            this.val0 = this.ordinal ? this.$inputMin[0].selectedIndex : parseFloat(this.$inputMin.val());
             if (!this.range) {
                 this.$thumbMin.attr({
                     'aria-valuemin': this.settings.min,
@@ -4875,7 +5037,7 @@ if (typeof jQuery === 'undefined') {
                     'aria-valuenow': this.val0
                 });
             } else {
-                this.val1 = (this.ordinal) ? this.$inputMax[0].selectedIndex : parseFloat(this.$inputMax.val());
+                this.val1 = this.ordinal ? this.$inputMax[0].selectedIndex : parseFloat(this.$inputMax.val());
                 this.$thumbMin.attr({
                     'aria-valuemin': this.settings.min,
                     'aria-valuemax': this.val1,
@@ -4899,19 +5061,19 @@ if (typeof jQuery === 'undefined') {
 
             // Reset visuals
             this.$selection.css({
-                'top': '',
-                'left': '',
-                'width': '',
-                'height': ''
+                top: '',
+                left: '',
+                width: '',
+                height: ''
             });
             this.$thumbMin.css({
-                'top': '',
-                'left': ''
+                top: '',
+                left: ''
             });
             if (this.range) {
                 this.$thumbMax.css({
-                    'top': '',
-                    'left': ''
+                    top: '',
+                    left: ''
                 });
             }
 
@@ -4923,6 +5085,7 @@ if (typeof jQuery === 'undefined') {
                 valEnd = this.val1;
             }
 
+            /* eslint-disable no-magic-numbers */
             pctStart = ((valStart - this.settings.min) / (this.settings.max - this.settings.min)) * 100;
             selStart = pctStart;
             pctEnd  = ((valEnd - this.settings.min) / (this.settings.max - this.settings.min)) * 100;
@@ -4936,8 +5099,10 @@ if (typeof jQuery === 'undefined') {
                 pctEnd = 100 - pctEnd;
                 selStart = pctEnd;
             }
-            var pos = (this.settings.vertical) ? 'top' : 'left';
-            var dim = (this.settings.vertical) ? 'height' : 'width';
+            /* eslint-enable no-magic-numbers */
+
+            var pos = this.settings.vertical ? 'top' : 'left';
+            var dim = this.settings.vertical ? 'height' : 'width';
 
             this.$selection.css(pos, selStart + '%').css(dim, pctSize + '%');
             if (!this.range) {
@@ -4956,7 +5121,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         enable : function(init) {
-            if (init === undefined) { init = false; }
+            if (typeof init === 'undefined') { init = false; }
             if (!init && this.settings.enabled) { return; }
             this.settings.enabled = true;
             this.$slider.removeClass('disabled');
@@ -4981,7 +5146,8 @@ if (typeof jQuery === 'undefined') {
                 $inputs = $inputs.add(this.$inputMax);
             }
 
-            $thumbs.attr('tabindex', 0).on('keydown.cfw.slider', function(e) {
+            $thumbs
+                .attr('tabindex', 0).on('keydown.cfw.slider', function(e) {
                     $selfRef._actionsKeydown(e, this);
                 })
                 .on('focusin.cfw.slider', function() {
@@ -5005,7 +5171,7 @@ if (typeof jQuery === 'undefined') {
 
             $inputs.on('change.cfw.slider', function() {
                 var $node = $(this);
-                var newVal = ($selfRef.ordinal) ? $node[0].selectedIndex : parseFloat($node.val());
+                var newVal = $selfRef.ordinal ? $node[0].selectedIndex : parseFloat($node.val());
                 $selfRef.changeValue(newVal, $node, true);
             });
         },
@@ -5023,42 +5189,40 @@ if (typeof jQuery === 'undefined') {
         },
 
         decrement : function(byChunk, $input) {
-            var currVal = (this.ordinal) ? $input[0].selectedIndex : parseFloat($input.val());
+            var currVal = this.ordinal ? $input[0].selectedIndex : parseFloat($input.val());
             this.changeValue(currVal - (byChunk ? this.settings.chunk * this.settings.step : this.settings.step), $input);
         },
 
         increment : function(byChunk, $input) {
-            var currVal = (this.ordinal) ? $input[0].selectedIndex : parseFloat($input.val());
+            var currVal = this.ordinal ? $input[0].selectedIndex : parseFloat($input.val());
             this.changeValue(currVal + (byChunk ? this.settings.chunk * this.settings.step : this.settings.step), $input);
         },
 
         changeValue : function(newVal, $input, inputUpdate) {
-            if (inputUpdate === undefined) { inputUpdate = false; }
+            if (typeof inputUpdate === 'undefined') { inputUpdate = false; }
 
-            var oldVal = (this.ordinal) ? $input[0].selectedIndex : parseFloat($input.val());
+            var oldVal = this.ordinal ? $input[0].selectedIndex : parseFloat($input.val());
 
             var limitLow;
             var limitHigh;
             if (!this.range) {
                 limitLow = this.settings.min;
                 limitHigh = this.settings.max;
+            } else if ($input.is(this.$inputMax)) {
+                limitLow = this.val0;
+                limitHigh = this.settings.max;
             } else {
-                if ($input.is(this.$inputMax)) {
-                    limitLow = this.val0;
-                    limitHigh = this.settings.max;
-                } else {
-                    limitLow = this.settings.min;
-                    limitHigh = this.val1;
-                }
+                limitLow = this.settings.min;
+                limitHigh = this.val1;
             }
 
             var updVal;
-            if (newVal !== undefined) {
+            if (typeof newVal !== 'undefined') {
                 updVal = Math.min(Math.max(newVal, limitLow), limitHigh);
                 // make the value snap to the chosen increment
                 updVal = Math.round(updVal / this.settings.step) * this.settings.step;
             }
-            if (updVal === undefined) { return; }
+            if (typeof updVal === 'undefined') { return; }
 
             if (this.ordinal) {
                 $input[0].selectedIndex = updVal;
@@ -5072,7 +5236,7 @@ if (typeof jQuery === 'undefined') {
             if (!inputUpdate) {
                 this.$slider.CFW_trigger('slid.cfw.slider');
             }
-            if (inputUpdate || (updVal != oldVal)) {
+            if (inputUpdate || (updVal !== oldVal)) {
                 this.$slider.CFW_trigger('changed.cfw.slider');
             }
         },
@@ -5081,9 +5245,8 @@ if (typeof jQuery === 'undefined') {
             var $node = $(node);
             if ($node.is(this.$thumbMax)) {
                 return this.$inputMax;
-            } else {
-                return this.$inputMin;
             }
+            return this.$inputMin;
         },
 
         _getLabel : function($input) {
@@ -5096,9 +5259,18 @@ if (typeof jQuery === 'undefined') {
 
         _actionsKeydown : function(e, node) {
             var $selfRef = this;
+            var KEYCODE_UP = 38;    // Arrow up
+            var KEYCODE_RIGHT = 39; // Arrow right
+            var KEYCODE_DOWN = 40;  // Arrow down
+            var KEYCODE_LEFT = 37;  // Arrow left
+            var KEYCODE_PAGE_UP = 33;  // Page up
+            var KEYCODE_PAGE_DOWN = 34;  // page down
+            var KEYCODE_END = 35;  // End
+            var KEYCODE_HOME = 36;  // Home
+            var REGEX_KEYS = new RegExp('^(' + KEYCODE_UP + '|' + KEYCODE_RIGHT + '|' + KEYCODE_DOWN + '|' + KEYCODE_LEFT + '|' + KEYCODE_PAGE_UP + '|' + KEYCODE_PAGE_DOWN + '|' + KEYCODE_END + '|' + KEYCODE_HOME + ')$');
 
             // 37-left, 38-up, 39-right, 40-down, 33-pgup, 34-pgdn, 35-end, 36-home
-            if (!/(37|38|39|40|33|34|35|36)/.test(e.which)) { return; }
+            if (!REGEX_KEYS.test(e.which)) { return; }
 
             e.stopPropagation();
             e.preventDefault();
@@ -5106,26 +5278,27 @@ if (typeof jQuery === 'undefined') {
             var $input = this._getInput(node);
 
             switch (e.which) {
-                case 37: // left
-                case 40: // down
+                case KEYCODE_LEFT:
+                case KEYCODE_DOWN:
                     $selfRef.decrement(false, $input);
                     break;
-                case 38: // up
-                case 39: // right
+                case KEYCODE_UP:
+                case KEYCODE_RIGHT:
                     $selfRef.increment(false, $input);
                     break;
-                case 33: // pgup
+                case KEYCODE_PAGE_UP:
                     $selfRef.increment(true, $input);
                     break;
-                case 34: // pgdn
+                case KEYCODE_PAGE_DOWN:
                     $selfRef.decrement(true, $input);
                     break;
-                case 35: // end
+                case KEYCODE_END:
                     $selfRef.changeValue(this.settings.max, $input);
                     break;
-                case 36: // home
+                case KEYCODE_HOME:
                     $selfRef.changeValue(this.settings.min, $input);
                     break;
+                default:
             }
         },
 
@@ -5151,7 +5324,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         _drag : function(e) {
-            if (this.inDrag == null) { return; }
+            if (this.inDrag === null) { return; }
             var delta = this.settings.vertical ? e.deltaY : e.deltaX;
             var newPos = this.startPos + delta;
             var $input = this._getInput(this.inDrag);
@@ -5175,7 +5348,7 @@ if (typeof jQuery === 'undefined') {
 
             var ratio = trackDim / this.stepsTotal;
 
-            pos = (this.settings.reversed) ? trackDim - pos : pos;
+            pos = this.settings.reversed ? trackDim - pos : pos;
             return (Math.round(pos / ratio) * this.settings.step) + this.settings.min;
         },
 
@@ -5186,7 +5359,7 @@ if (typeof jQuery === 'undefined') {
                 var trackOff = this.$track.offset();
                 var diff1 = Math.abs(pos - trackOff[this.offsetPos] - this.$thumbMin.position()[this.offsetPos]);
                 var diff2 = Math.abs(pos - trackOff[this.offsetPos] - this.$thumbMax.position()[this.offsetPos]);
-                $node = (diff1 < diff2) ? this.$thumbMin : this.$thumbMax;
+                $node = diff1 < diff2 ? this.$thumbMin : this.$thumbMax;
             } else {
                 $node = this.$thumbMin;
             }
@@ -5218,7 +5391,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -5226,18 +5399,17 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.slider', (data = new CFW_Widget_Slider(this, options)));
+                $this.data('cfw.slider', data = new CFW_Widget_Slider(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Slider = Plugin;
     $.fn.CFW_Slider.Constructor = CFW_Widget_Slider;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
@@ -5275,7 +5447,7 @@ if (typeof jQuery === 'undefined') {
 
             // Get group ID
             var groupID = this.settings.target;
-            if ((groupID === undefined) || (groupID.length <= 0)) { return false; }
+            if (typeof groupID === 'undefined' || (groupID.length <= 0)) { return; }
 
             // Find target by id/css selector
             this.$target = $(groupID, this.$element);
@@ -5308,11 +5480,11 @@ if (typeof jQuery === 'undefined') {
         },
 
         _hasNested : function() {
-            return (this.$element.find('[data-cfw="equalize"]').length > 0);
+            return this.$element.find('[data-cfw="equalize"]').length > 0;
         },
 
         _isNested : function() {
-            return (this.$element.parentsUntil(document.body, '[data-cfw="equalize"]').length > 0);
+            return this.$element.parentsUntil(document.body, '[data-cfw="equalize"]').length > 0;
         },
 
         _isStacked : function($targetElm) {
@@ -5384,9 +5556,11 @@ if (typeof jQuery === 'undefined') {
         },
 
         _applyHeight : function($nodes, callback) {
-            var heights = $nodes.map(function() {
+            var heights = $nodes
+                .map(function() {
                     return $(this).outerHeight(false);
-                }).get();
+                })
+                .get();
 
             if (this.settings.minimum) {
                 var min = Math.min.apply(null, heights);
@@ -5415,7 +5589,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         dispose : function() {
-            this.$window.off('.cfw.equalize.' +  this.instance);
+            this.$window.off('.cfw.equalize.' + this.instance);
             this.$element
                 .off('mutate.cfw.mutate')
                 .removeAttr('data-cfw-mutate')
@@ -5433,7 +5607,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -5441,19 +5615,19 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.equalize', (data = new CFW_Widget_Equalize(this, options)));
+                $this.data('cfw.equalize', data = new CFW_Widget_Equalize(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Equalize = Plugin;
     $.fn.CFW_Equalize.Constructor = CFW_Widget_Equalize;
+}(jQuery));
 
-})(jQuery);
-
+/* eslint-disable no-magic-numbers */
 /**
  * --------------------------------------------------------------------------
  * Figuration (v4.0.0-alpha.0): player.js
@@ -5465,18 +5639,17 @@ if (typeof jQuery === 'undefined') {
     'use strict';
 
     // Borrowed on 12/05/2014 from: https://github.com/Modernizr/Modernizr/blob/master/feature-detects/audio.js
-    function audioTest() {
-        /* jshint -W053 */
-        /* jshint -W084 */
+    var audioTest = function() {
         var elem = document.createElement('audio');
         var bool = false;
 
+        /* eslint-disable no-cond-assign, no-implicit-coercion, no-new-wrappers */
         try {
             if (bool = !!elem.canPlayType) {
                 bool      = new Boolean(bool);
                 bool.ogg  = elem.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, '');
                 bool.mp3  = elem.canPlayType('audio/mpeg;').replace(/^no$/, '');
-                bool.opus = elem.canPlayType('audio/ogg; codecs="opus"') .replace(/^no$/, '');
+                bool.opus = elem.canPlayType('audio/ogg; codecs="opus"') || elem.canPlayType('audio/webm; codecs="opus"').replace(/^no$/, '');
 
                 // Mimetypes accepted:
                 // http://developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements
@@ -5484,18 +5657,18 @@ if (typeof jQuery === 'undefined') {
                 bool.wav  = elem.canPlayType('audio/wav; codecs="1"').replace(/^no$/, '');
                 bool.m4a  = (elem.canPlayType('audio/x-m4a;') || elem.canPlayType('audio/aac;')).replace(/^no$/, '');
             }
-        } catch (e) { }
+        } catch (e) {}
+        /* eslint-enable no-cond-assign, no-implicit-coercion, no-new-wrappers */
 
         return bool;
-    }
+    };
 
     // Borrowed on 12/05/2014 from: https://github.com/Modernizr/Modernizr/blob/master/feature-detects/video.js
-    function videoTest() {
-        /* jshint -W053 */
-        /* jshint -W084 */
+    var videoTest = function() {
         var elem = document.createElement('video');
         var bool = false;
 
+        /* eslint-disable no-cond-assign, no-implicit-coercion, no-new-wrappers */
         try {
             if (bool = !!elem.canPlayType) {
                 bool = new Boolean(bool);
@@ -5507,10 +5680,11 @@ if (typeof jQuery === 'undefined') {
                 bool.vp9 = elem.canPlayType('video/webm; codecs="vp9"').replace(/^no$/, '');
                 bool.hls = elem.canPlayType('application/x-mpegURL; codecs="avc1.42E01E"').replace(/^no$/, '');
             }
-        } catch (e){}
+        } catch (e) {}
+        /* eslint-enable no-cond-assign, no-implicit-coercion, no-new-wrappers */
 
         return bool;
-    }
+    };
 
     var html5 = {
         audio: null,
@@ -5573,14 +5747,14 @@ if (typeof jQuery === 'undefined') {
     };
 
     CFW_Widget_Player.DEFAULTS = {
-        mediaDescribe: false,       // Show description source media
-        textDescribe: -1,           // Text-based description off
-        textDescribeAnnounce: false,// If text-based description should announced by screen readers
-        textDescribeVisible: true,  // If text-based description should be visible
-        transcript: -1,             // Default transcript off
-        transcriptScroll : true,    // Scroll transcript
-        transcriptDescribe: true,   // Show descriptions in transcript
-        transcriptOption : true     // Show transcript options
+        mediaDescribe: false,        // Show description source media
+        textDescribe: -1,            // Text-based description off
+        textDescribeAnnounce: false, // If text-based description should announced by screen readers
+        textDescribeVisible: true,   // If text-based description should be visible
+        transcript: -1,              // Default transcript off
+        transcriptScroll : true,     // Scroll transcript
+        transcriptDescribe: true,    // Show descriptions in transcript
+        transcriptOption : true      // Show transcript options
     };
 
     CFW_Widget_Player.prototype = {
@@ -5588,17 +5762,17 @@ if (typeof jQuery === 'undefined') {
             this.$media = this.$element.find('audio, video');
             this.media = this.$media[0];
 
-            if (this.media == null) {
-                return false;
+            if (typeof this.media === 'undefined') {
+                return;
             }
 
-            if (this.media.nodeName == 'VIDEO') {
+            if (this.media.nodeName.toLowerCase() === 'video') {
                 this.type = 'video';
             }
 
-            if ((this.type == 'audio' && !html5.audio) || (this.type == 'video' && !html5.video)) {
+            if ((this.type === 'audio' && !html5.audio) || (this.type === 'video' && !html5.video)) {
                 this.$media.CFW_trigger('noSupport.cfw.player');
-                return false;
+                return;
             }
 
             // Save source items for later use
@@ -5653,12 +5827,14 @@ if (typeof jQuery === 'undefined') {
             }
 
             var isLoaded = setInterval(function() {
+                var NETWORK_NO_SOURCE = 3;
+                var TIMEOUT_MAX_COUNT = 75;
                 if ($selfRef.media.readyState > 0) {
                     clearInterval(isLoaded);
                     $selfRef.loadComplete();
                     return;
                 }
-                if ($selfRef.media.networkState === 3 || timeout === 75) {
+                if ($selfRef.media.networkState === NETWORK_NO_SOURCE || timeout === TIMEOUT_MAX_COUNT) {
                     clearInterval(isLoaded);
                     $selfRef.error();
                     return;
@@ -5690,13 +5866,14 @@ if (typeof jQuery === 'undefined') {
                 $selfRef.muteStatus();
                 $selfRef.volumeStatus();
             });
-            if (this.type == 'video') {
+            if (this.type === 'video') {
                 // http://stackoverflow.com/questions/9621499/fullscreen-api-which-events-are-fired
                 $(document).on('webkitfullscreenchange mozfullscreenchange MSFullscreenChange fullscreenchange', function() {
                     $selfRef.fullscreenStatus();
                 });
                 this.$player.on('mouseenter mouseleave', function(e) {
                     $selfRef.activity = true;
+                    /* eslint-disable default-case */
                     switch (e.type) {
                         case 'mouseenter': {
                             $selfRef.over = true;
@@ -5707,9 +5884,11 @@ if (typeof jQuery === 'undefined') {
                             break;
                         }
                     }
+                    /* eslint-enable default-case */
                 });
                 this.$element.on('mousemove mousedown mouseup keydown keyup touchmove touchstart touchend', function(e) {
                     $selfRef.activity = true;
+                    /* eslint-disable default-case */
                     switch (e.type) {
                         case 'mousedown':
                         case 'touchstart': {
@@ -5725,6 +5904,7 @@ if (typeof jQuery === 'undefined') {
                             break;
                         }
                     }
+                    /* eslint-enable default-case */
                 });
                 this.$media.on('click', function() {
                     $selfRef.toggle();
@@ -5864,7 +6044,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         playedStatus : function(force) {
-            if (force === undefined) { force = false; }
+            if (typeof force === 'undefined') { force = false; }
             if (!this.played) {
                 if (force || this.media.played.length > 0) {
                     this.played = true;
@@ -5877,7 +6057,7 @@ if (typeof jQuery === 'undefined') {
             this.status.duration    = this.media.duration;
             this.status.currentTime = this.media.currentTime;
             this.status.remaining   = this.status.duration - this.status.currentTime;
-            if (this.status.remaining < 0) this.status.remaining = 0;
+            if (this.status.remaining < 0) { this.status.remaining = 0; }
 
             var $durElm = this.$player.find('[data-cfw-player="time-duration"]');
             var $curElm = this.$player.find('[data-cfw-player="time-current"]');
@@ -5934,7 +6114,7 @@ if (typeof jQuery === 'undefined') {
 
             if (isNaN(this.media.duration) || this.media.duration === Infinity) { return; }
 
-            if (this.$sliderSeek == null) {
+            if (this.$sliderSeek === null) {
                 this.$sliderSeek = this.$player.find('[data-cfw-player="seek"]');
                 this.$sliderSeek.CFW_Slider({
                     min: 0,
@@ -5948,15 +6128,15 @@ if (typeof jQuery === 'undefined') {
                 // Pause while scrubbing
                 var $sliderControls = this.$sliderSeek.add(this.$sliderSeek.find('.slider-thumb'));
                 $sliderControls.on('keydown.cfw.slider dragStart.cfw.slider', function(e) {
-                    if (e.type == 'keydown' && (!/(37|38|39|40|33|34|35|36)/.test(e.which))) { return; }
-                    if (e.type == 'keydown') { e.stopPropagation; }
+                    if (e.type === 'keydown' && !/(37|38|39|40|33|34|35|36)/.test(e.which)) { return; }
+                    if (e.type === 'keydown') { e.stopPropagation(); }
                     $sliderControls.off('keyup.cfw.slider dragEnd.cfw.slider');
-                    if ($selfRef.scrubPlay == null) {
+                    if ($selfRef.scrubPlay === null) {
                         $selfRef.scrubPlay = !$selfRef.media.paused;
                     }
                     $selfRef.media.pause();
                     $(e.currentTarget).one('keyup.cfw.slider dragEnd.cfw.slider', function(e) {
-                        if (e.type == 'keyup') { e.stopPropagation; }
+                        if (e.type === 'keyup') { e.stopPropagation(); }
                         if ($selfRef.scrubPlay === true) {
                             $selfRef.media.play();
                         }
@@ -5978,7 +6158,8 @@ if (typeof jQuery === 'undefined') {
             var cp = (this.media.currentTime / this.media.duration) * 100;
             if (cp > 100) { cp = 100; }
 
-            $curElm.attr({
+            $curElm
+                .attr({
                     'aria-valuemin' : 0,
                     'aria-valuemax' : 100,
                     'aria-valuenow' : cp
@@ -5996,8 +6177,9 @@ if (typeof jQuery === 'undefined') {
 
         seekIncrement : function(delta) {
             var time = this.media.currentTime + delta;
-            var newTime = (time < 0) ? 0 : ((time > this.media.duration) ? this.media.duration : time);
-            this.seekTo(newTime);
+            if (time < 0) { time = 0; }
+            if (time > this.media.duration) { time = this.media.duration; }
+            this.seekTo(time);
         },
 
         seekTo : function(timestamp) {
@@ -6053,7 +6235,7 @@ if (typeof jQuery === 'undefined') {
                 return;
             }
 
-            if (this.$volSeek == null) {
+            if (this.$volSeek === null) {
                 this.$volSeek = $volElm;
                 this.$volSeek.CFW_Slider({
                     min: 0,
@@ -6086,12 +6268,13 @@ if (typeof jQuery === 'undefined') {
 
         volumeIncrement : function(delta) {
             var vol = (this.media.volume * 100) + delta;
-            var newVol = (vol < 0) ? 0 : ((vol > 100) ? 100 : parseInt(vol, 10));
-            this.media.volume = newVol / 100;
+            if (vol < 0) { vol = 0; }
+            if (vol > 100) { vol = 100; }
+            this.media.volume = parseInt(vol, 10) / 100;
         },
 
         loop : function(setting) {
-            if (setting !== undefined) {
+            if (typeof setting !== 'undefined') {
                 // set on/off
                 this.media.loop = setting;
             } else {
@@ -6102,7 +6285,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         speed : function(setting) {
-            if (setting !== undefined) {
+            if (typeof setting !== 'undefined') {
                 this.media.playbackRate = setting;
             }
         },
@@ -6123,25 +6306,35 @@ if (typeof jQuery === 'undefined') {
         isFullScreen : function() {
             // Checks if the player instance is currently in fullscreen mode
             var $fsNode = $(document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement);
-            return ($fsNode.is(this.$element));
+            return $fsNode.is(this.$element);
         },
 
         fullscreen : function() {
-            if (this.type == 'audio') { return; }
+            if (this.type === 'audio') { return; }
             if (this.isFullScreen()) {
                 // Exit fullscreen
-                if (document.exitFullscreen) document.exitFullscreen();
-                else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
-                else if (document.webkitCancelFullScreen) document.webkitCancelFullScreen();
-                else if (document.msExitFullscreen) document.msExitFullscreen();
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitCancelFullScreen) {
+                    document.webkitCancelFullScreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
             } else {
                 // Go fullscreen
                 // (Note: can be called on document, but here the specific element is used as it will also ensure that the element's children, e.g. the custom controls, go fullscreen also)
                 var videoContainer = this.$element[0];
-                if (videoContainer.requestFullscreen) videoContainer.requestFullscreen();
-                else if (videoContainer.mozRequestFullScreen) videoContainer.mozRequestFullScreen();
-                else if (videoContainer.webkitRequestFullScreen) videoContainer.webkitRequestFullScreen();
-                else if (videoContainer.msRequestFullscreen) videoContainer.msRequestFullscreen();
+                if (videoContainer.requestFullscreen) {
+                    videoContainer.requestFullscreen();
+                } else if (videoContainer.mozRequestFullScreen) {
+                    videoContainer.mozRequestFullScreen();
+                } else if (videoContainer.webkitRequestFullScreen) {
+                    videoContainer.webkitRequestFullScreen();
+                } else if (videoContainer.msRequestFullscreen) {
+                    videoContainer.msRequestFullscreen();
+                }
             }
         },
 
@@ -6159,11 +6352,11 @@ if (typeof jQuery === 'undefined') {
         },
 
         _srcHasAlternate : function(name) {
-            return (this.$sources[0].hasAttribute('data-src-' + name));
+            return this.$sources[0].hasAttribute('data-src-' + name);
         },
 
         _srcIsAlternate : function(name) {
-            return (this.$sources.first().attr('data-src-' + name) === this.$sources.first().attr('src'));
+            return this.$sources.first().attr('data-src-' + name) === this.$sources.first().attr('src');
         },
 
         _srcLoadAlternate : function(name) {
@@ -6179,7 +6372,7 @@ if (typeof jQuery === 'undefined') {
             this.$media
                 .one('loadeddata', function() {
                     $selfRef.seekTo(currTime);
-                    if (!isPaused) {  $selfRef.media.play(); }
+                    if (!isPaused) { $selfRef.media.play(); }
                 });
             this.media.load();
         },
@@ -6205,16 +6398,16 @@ if (typeof jQuery === 'undefined') {
 
             var tracks = this.media.textTracks;
             if (tracks.length <= 0) {
-                return null;
+                return;
             }
 
             var validTracks = [];
             var descTracks = [];
             for (var i = 0; i < tracks.length; i++) {
-                if (tracks[i].kind == 'captions' || tracks[i].kind == 'subtitles') {
+                if (tracks[i].kind === 'captions' || tracks[i].kind === 'subtitles') {
                     validTracks.push(i);
                 }
-                if (tracks[i].kind == 'descriptions') {
+                if (tracks[i].kind === 'descriptions') {
                     descTracks.push(i);
                 }
             }
@@ -6241,7 +6434,7 @@ if (typeof jQuery === 'undefined') {
                 return;
             }
 
-            if (this.trackValid.length == 1) {
+            if (this.trackValid.length === 1) {
                 // Use toggle style
                 this.$player.on('click', '[data-cfw-player="caption"]', function(e) {
                     e.preventDefault();
@@ -6253,10 +6446,9 @@ if (typeof jQuery === 'undefined') {
                     $selfRef._focusControl(this);
                 });
 
-                if (this.media.textTracks[0].mode == 'showing') {
+                if (this.media.textTracks[0].mode === 'showing') {
                     this.trackSet(0);
                 }
-
             } else {
                 // Build menu
                 var wrapper = '<span class="player-caption-wrapper"></span>';
@@ -6274,7 +6466,7 @@ if (typeof jQuery === 'undefined') {
                 var tracks = this.media.textTracks;
 
                 for (var j = 0; j < tracks.length; j++) {
-                    if (tracks[j].mode == 'showing') {
+                    if (tracks[j].mode === 'showing') {
                         this.trackSet(j);
                     }
                 }
@@ -6292,7 +6484,9 @@ if (typeof jQuery === 'undefined') {
                     $selfRef.trackSet(num);
                 });
 
-                $captionElm.CFW_Dropdown({ target: '#' + menuID });
+                $captionElm.CFW_Dropdown({
+                    target: '#' + menuID
+                });
             }
 
             this.trackStatus();
@@ -6314,12 +6508,12 @@ if (typeof jQuery === 'undefined') {
             this.trackCurrent = trackID;
 
             for (var i = 0; i < tracks.length; i++) {
-                if (tracks[i].mode == 'showing') {
+                if (tracks[i].mode === 'showing') {
                     tracks[i].mode = 'hidden';
                 }
                 if (i === trackID) {
                     // tracks[i].mode = 'showing';
-                    tracks[i].mode = (this.$captionWrapper !== null) ? 'hidden' : 'showing';
+                    tracks[i].mode = this.$captionWrapper !== null ? 'hidden' : 'showing';
                 }
             }
 
@@ -6342,9 +6536,9 @@ if (typeof jQuery === 'undefined') {
                 return;
             }
 
-            if (this.trackValid.length == 1) {
+            if (this.trackValid.length === 1) {
                 // Toggle style
-                if (this.trackCurrent == -1) {
+                if (this.trackCurrent === -1) {
                     $captionElm.removeClass('active');
                     this._pressedState($captionElm, false);
                 } else {
@@ -6361,7 +6555,7 @@ if (typeof jQuery === 'undefined') {
                     .removeAttr('aria-pressed');
 
                 for (var i = 0; i < tracks.length; i++) {
-                    if (i == this.trackCurrent) {
+                    if (i === this.trackCurrent) {
                         $captionElm.addClass('active');
                         $captionPar.addClass('active');
                         $captionPar.find('[data-cfw-player-track="' + i + '"]')
@@ -6384,7 +6578,7 @@ if (typeof jQuery === 'undefined') {
                 return;
             }
 
-            if (this.trackValid.length == 1 && !this.settings.transcriptOption) {
+            if (this.trackValid.length === 1 && !this.settings.transcriptOption) {
                 // Use toggle style
                 $tsElm.removeClass('active');
                 this._pressedState($tsElm, false);
@@ -6421,11 +6615,11 @@ if (typeof jQuery === 'undefined') {
                     $menuItem = $('<li class="dropdown-divider"></li>');
                     $menu.append($menuItem);
                     // Add scroll toggle
-                    var scrollCheck = (this.settings.transcriptScroll) ? 'checked' : '';
+                    var scrollCheck = this.settings.transcriptScroll ? 'checked' : '';
                     $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-script-scroll class="form-check-input" ' + scrollCheck + '> Auto-scroll</label></li>');
                     $menu.append($menuItem);
                     // Add description toggle
-                    var descCheck = (this.settings.transcriptDescribe) ? 'checked' : '';
+                    var descCheck = this.settings.transcriptDescribe ? 'checked' : '';
                     $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-script-describe class="form-check-input" ' + descCheck + '> Show Description</label></li>');
                     $menu.append($menuItem);
                 }
@@ -6451,7 +6645,9 @@ if (typeof jQuery === 'undefined') {
                     });
                 }
 
-                $tsElm.CFW_Dropdown({ target: '#' + menuID });
+                $tsElm.CFW_Dropdown({
+                    target: '#' + menuID
+                });
             }
 
             // Show transcript if set
@@ -6466,23 +6662,23 @@ if (typeof jQuery === 'undefined') {
             if (this.trackValid.length <= 0) {
                 return;
             }
-            if (this.trackValid.indexOf(trackID) == -1 && trackID != -1) {
+            if (this.trackValid.indexOf(trackID) === -1 && trackID !== -1) {
                 return;
             }
 
             // No update if same track is selected
-            if (trackID == this.scriptCurrent) {
+            if (trackID === this.scriptCurrent) {
                 return;
             }
 
-            if (trackID == -1 && this.$scriptElm !== null) {
+            if (trackID === -1 && this.$scriptElm !== null) {
                 if (!this.$media.CFW_trigger('beforeTranscriptHide.cfw.player')) {
                     return;
                 }
-            } else {
-                if (!this.$media.CFW_trigger('beforeTranscriptShow.cfw.player')) {
-                    return;
-                }
+            }
+
+            if (!this.$media.CFW_trigger('beforeTranscriptShow.cfw.player')) {
+                return;
             }
 
             var $tsElm = this.$player.find('[data-cfw-player="transcript"]');
@@ -6494,7 +6690,7 @@ if (typeof jQuery === 'undefined') {
             this.$element.removeClass('player-scriptshow');
 
             if ($tsElm.length) {
-                if (this.trackValid.length == 1 && !this.settings.transcriptOption) {
+                if (this.trackValid.length === 1 && !this.settings.transcriptOption) {
                     // Update toggle
                     $tsElm.removeClass('active');
                     this._pressedState($tsElm, false);
@@ -6516,7 +6712,7 @@ if (typeof jQuery === 'undefined') {
 
             this.scriptCurrent = trackID;
 
-            if (trackID == -1) {
+            if (trackID === -1) {
                 this.scriptCues = null;
                 this.descCues = null;
                 this.$media.CFW_trigger('afterTranscriptHide.cfw.player');
@@ -6528,9 +6724,7 @@ if (typeof jQuery === 'undefined') {
         scriptLoad : function(forced) {
             var $selfRef = this;
 
-            if (forced === undefined) {
-                forced = false;
-            }
+            if (typeof forced === 'undefined') { forced = false; }
 
             this.$media.off('loadeddata.cfw.player.script');
 
@@ -6543,7 +6737,7 @@ if (typeof jQuery === 'undefined') {
             }
 
             // Preload all tracks to stop future `load` event triggers on transcript change
-            var hold = (this.trackCurrent == -1) ? null : tracks[this.trackCurrent].mode;
+            var hold = this.trackCurrent === -1 ? null : tracks[this.trackCurrent].mode;
 
             for (var i = 0; i < tracksLength; i++) {
                 tracks[i].mode = 'hidden';
@@ -6560,7 +6754,7 @@ if (typeof jQuery === 'undefined') {
             if (this.scriptCurrent !== -1) {
                 var descLang = tracks[this.scriptCurrent].language;
                 for (var j = 0; j < tracksLength; j++) {
-                    if (descLang == tracks[j].language && 'descriptions' == tracks[j].kind) {
+                    if (descLang === tracks[j].language && tracks[j].kind === 'descriptions') {
                         if ($selfRef.settings.transcriptDescribe) {
                             $selfRef.descCurrent = j;
                         }
@@ -6578,7 +6772,7 @@ if (typeof jQuery === 'undefined') {
             // Test again for text-based description
             var textDescAvailable = false;
             for (var k = 0; k < tracksLength; k++) {
-                if ('descriptions' == tracks[k].kind) {
+                if (tracks[k].kind === 'descriptions') {
                     textDescAvailable = true;
                 }
             }
@@ -6589,11 +6783,11 @@ if (typeof jQuery === 'undefined') {
                 this._controlEnable($textDescControl);
             }
 
-            function scriptLoad2(forced) {
+            var scriptLoad2 = function(forced) {
                 var tracks = $selfRef.media.textTracks; // Reload object to get update
-                var cues = ($selfRef.scriptCurrent == -1) ? null : tracks[$selfRef.scriptCurrent].cues;
-                var descCues = ($selfRef.descCurrent == -1) ? null : tracks[$selfRef.descCurrent].cues;
-                var textDescCues = ($selfRef.textDescribeCurrent == -1) ? null : tracks[$selfRef.textDescribeCurrent].cues;
+                var cues = $selfRef.scriptCurrent === -1 ? null : tracks[$selfRef.scriptCurrent].cues;
+                var descCues = $selfRef.descCurrent === -1 ? null : tracks[$selfRef.descCurrent].cues;
+                var textDescCues = $selfRef.textDescribeCurrent === -1 ? null : tracks[$selfRef.textDescribeCurrent].cues;
 
                 if (cues && cues.length <= 0 && !forced) {
                     // Force media to load
@@ -6608,7 +6802,7 @@ if (typeof jQuery === 'undefined') {
                 $selfRef.descCues = descCues;
                 $selfRef.textDescribeCues = textDescCues;
                 $selfRef.scriptProcess();
-            }
+            };
 
             // Short delay to next part
             setTimeout(function() {
@@ -6619,7 +6813,7 @@ if (typeof jQuery === 'undefined') {
         scriptProcess : function() {
             var $selfRef = this;
 
-            if (this.scriptCues == null && this.descCues == null) {
+            if (this.scriptCues === null && this.descCues === null) {
                 return;
             }
 
@@ -6655,20 +6849,18 @@ if (typeof jQuery === 'undefined') {
             var $tsElm = this.$player.find('[data-cfw-player="transcript"]');
             this.$element.addClass('player-scriptshow');
 
-            if (this.trackValid.length == 1 && !this.settings.transcriptOption) {
+            if (this.trackValid.length === 1 && !this.settings.transcriptOption) {
                 // Update toggle state
                 $tsElm.addClass('active');
                 this._pressedState($tsElm, true);
-            } else {
+            } else if ($tsElm.length) {
                 // Update transcript menu
-                if ($tsElm.length) {
-                    var $tsPar = $tsElm.parent();
-                    $tsElm.addClass('active');
-                    $tsPar.addClass('active');
-                    $tsPar.find('[data-cfw-player-script="' + this.scriptCurrent + '"]')
-                        .addClass('active')
-                        .attr('aria-pressed', 'true');
-                }
+                var $tsPar = $tsElm.parent();
+                $tsElm.addClass('active');
+                $tsPar.addClass('active');
+                $tsPar.find('[data-cfw-player-script="' + this.scriptCurrent + '"]')
+                    .addClass('active')
+                    .attr('aria-pressed', 'true');
             }
 
             // Remove any existing transcript container
@@ -6703,14 +6895,12 @@ if (typeof jQuery === 'undefined') {
                         addCaption(this.$scriptElm, captions[capIdx]);
                         capIdx += 1;
                     }
-                } else {
-                    if (descIdx < descriptions.length) {
-                        addDescription(this.$scriptElm, descriptions[descIdx]);
-                        descIdx += 1;
-                    } else if (capIdx < captions.length) {
-                        addCaption(this.$scriptElm, captions[capIdx]);
-                        capIdx += 1;
-                    }
+                } else if (descIdx < descriptions.length) {
+                    addDescription(this.$scriptElm, descriptions[descIdx]);
+                    descIdx += 1;
+                } else if (capIdx < captions.length) {
+                    addCaption(this.$scriptElm, captions[capIdx]);
+                    capIdx += 1;
                 }
             }
 
@@ -6803,11 +6993,11 @@ if (typeof jQuery === 'undefined') {
                 $menuItem = $('<li class="dropdown-divider"></li>');
                 $menu.append($menuItem);
                 // Add announce toggle
-                var announceCheck = (this.settings.textDescribeAnnounce) ? 'checked' : '';
+                var announceCheck = this.settings.textDescribeAnnounce ? 'checked' : '';
                 $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-text-describe-announce class="form-check-input" ' + announceCheck + '> Announce with Screen Reader</label></li>');
                 $menu.append($menuItem);
                 // Add visibility toggle
-                var visibleCheck = (this.settings.textDescribeVisible) ? 'checked' : '';
+                var visibleCheck = this.settings.textDescribeVisible ? 'checked' : '';
                 $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-text-describe-visible class="form-check-input" ' + visibleCheck + '> Visible Description</label></li>');
                 $menu.append($menuItem);
             }
@@ -6834,7 +7024,9 @@ if (typeof jQuery === 'undefined') {
                 });
             }
 
-            $tdElm.CFW_Dropdown({ target: '#' + menuID });
+            $tdElm.CFW_Dropdown({
+                target: '#' + menuID
+            });
 
             this.textDescriptionSet(this.settings.textDescribe);
         },
@@ -6845,18 +7037,16 @@ if (typeof jQuery === 'undefined') {
             if (this.trackDescription.length <= 0) {
                 return;
             }
-            if (this.trackDescription.indexOf(trackID) == -1 && trackID != -1) {
+            if (this.trackDescription.indexOf(trackID) === -1 && trackID !== -1) {
                 return;
             }
 
-            if (trackID == -1 && this.$textDescribeElm !== null) {
+            if (trackID === -1 && this.$textDescribeElm !== null) {
                 if (!this.$media.CFW_trigger('beforeTextDescriptionHide.cfw.player')) {
                     return;
                 }
-            } else {
-                if (!this.$media.CFW_trigger('beforeTextDescriptionShow.cfw.player')) {
-                    return;
-                }
+            } else if (!this.$media.CFW_trigger('beforeTextDescriptionShow.cfw.player')) {
+                return;
             }
 
             if (this.$textDescribeElm !== null) {
@@ -6895,7 +7085,7 @@ if (typeof jQuery === 'undefined') {
 
             this.textDescribeCurrent = trackID;
 
-            if (trackID == -1) {
+            if (trackID === -1) {
                 this.textDescribeCues = null;
                 this.$media.CFW_trigger('afterTextDescriptionHide.cfw.player');
             } else {
@@ -6963,8 +7153,6 @@ if (typeof jQuery === 'undefined') {
         },
 
         activityStatus : function(bool) {
-            /* jshint -W053 */
-            bool = !!bool;
             if (bool !== this.userActive) {
                 this.userActive = bool;
                 if (bool) {
@@ -6983,7 +7171,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         captionDisplayUpdate : function(activeCues) {
-            if (this.$captionWrapper == null) { return; }
+            if (this.$captionWrapper === null) { return; }
 
             if (this.trackCurrent === -1 || activeCues === null || activeCues.length <= 0) {
                 // Clear and hide caption area - nothing to show
@@ -7009,7 +7197,7 @@ if (typeof jQuery === 'undefined') {
             if (!/(32|33|34|35|36|37|38|39|40|70|77)/.test(e.which)) { return; }
 
             // Ignore space use on button/role="button" items
-            if (e.which == 32 || 'button' === e.target.tagName || 'button' === $(e.target).role('attr')) { return; }
+            if (e.which === 32 || e.target.tagName === 'button' || $(e.target).attr('role') === 'button') { return; }
 
             e.stopPropagation();
             e.preventDefault();
@@ -7066,30 +7254,20 @@ if (typeof jQuery === 'undefined') {
                     this.mute();
                     break;
                 }
+                default:
             }
         },
 
         _pressedState : function($node, state) {
-            var update = false;
-
             if ($node.length <= 0) { return; }
 
             // True button
             var nodeName = $node.get(0).nodeName.toLowerCase();
-            if ('button' === nodeName) {
-                update = true;
-            }
-
             // role="button"
             var nodeRole = $node.attr('role');
-            if ('button' === nodeRole) {
-                update = true;
-            }
-
-            if (update) {
+            if (nodeName === 'button' || nodeRole === 'button') {
                 $node.attr('aria-pressed', state);
             }
-            return;
         },
 
         _focusControl : function(control) {
@@ -7141,7 +7319,7 @@ if (typeof jQuery === 'undefined') {
 
         _cuechangeEnable : function(trackID, namespace, callback) {
             var $selfRef = this;
-            if (this.media.textTracks[trackID].oncuechange !== undefined) {
+            if (typeof this.media.textTracks[trackID].oncuechange !== 'undefined') {
                 $(this.media.textTracks[trackID])
                     .on('cuechange.cfw.player.' + namespace, function() {
                         callback.call($selfRef, this.activeCues);
@@ -7157,7 +7335,7 @@ if (typeof jQuery === 'undefined') {
 
             // Artificially trigger a cuechange - in case already in middle of a cue
             var cueEvent;
-            if (this.media.textTracks[trackID].oncuechange !== undefined) {
+            if (typeof this.media.textTracks[trackID].oncuechange !== 'undefined') {
                 cueEvent = $.Event('cuechange');
                 $(this.media.textTracks[trackID]).trigger(cueEvent);
             } else {
@@ -7230,7 +7408,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -7238,18 +7416,17 @@ if (typeof jQuery === 'undefined') {
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.player', (data = new CFW_Widget_Player(this, options)));
+                $this.data('cfw.player', data = new CFW_Widget_Player(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Player = Plugin;
     $.fn.CFW_Player.Constructor = CFW_Widget_Player;
-
-})(jQuery);
+}(jQuery));
 
 /**
  * --------------------------------------------------------------------------
@@ -7281,27 +7458,31 @@ if (typeof jQuery === 'undefined') {
     };
 
     $.fn.CFW_Init = function() {
-        /* jshint -W083 */
         var $scope = $(this);
         if (!$scope.length) { $scope = $(document.body); }
 
         for (var key in cfwList) {
-            $scope.find(key).add($scope.filter(key)).each(function() {
-                $(this)[cfwList[key]]();
-            });
+            if (typeof $.fn[cfwList[key]] === 'function') {
+                /* eslint-disable-next-line no-loop-func */
+                $scope.find(key).add($scope.filter(key)).each(function() {
+                    $(this)[cfwList[key]]();
+                });
+            }
         }
         return this;
     };
 
     $.fn.CFW_Dispose = function() {
-        /* jshint -W083 */
         var $scope = $(this);
         if (!$scope.length) { $scope = $(document.body); }
 
         for (var key in cfwList) {
-            $scope.find(key).add($scope.filter(key)).each(function() {
-                $(this)[cfwList[key]]('dispose');
-            });
+            if (typeof $.fn[cfwList[key]] === 'function') {
+                /* eslint-disable-next-line no-loop-func */
+                $scope.find(key).add($scope.filter(key)).each(function() {
+                    $(this)[cfwList[key]]('dispose');
+                });
+            }
         }
         return this;
     };
@@ -7311,4 +7492,4 @@ if (typeof jQuery === 'undefined') {
             $(document.body).CFW_Init();
         }
     });
-})(jQuery);
+}(jQuery));
