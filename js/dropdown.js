@@ -49,7 +49,7 @@
         variants  : 'dropdown-menu-reverse dropup'
     };
 
-    function getParent($node) {
+    var getParent = function($node) {
         var $parent;
         var selector = $node.CFW_getSelectorFromElement('dropdown');
         if (selector) {
@@ -57,11 +57,12 @@
         }
 
         return $parent || $node.parent();
-    }
+    };
 
-    function clearMenus(e) {
+    var clearMenus = function(e) {
         // Ignore right-click
-        if (e && e.which === 3) { return; }
+        var RIGHT_MOUSE_BUTTON_WHICH = 3; // MouseEvent.which value for the right button (assuming a right-handed mouse)
+        if (e && e.which === RIGHT_MOUSE_BUTTON_WHICH) { return; }
 
         // Ignore clicks into input areas
         if (e && e.type === 'click' && /input|textarea/i.test(e.target.tagName)) {
@@ -74,7 +75,7 @@
             if (!$parent.hasClass('open')) { return; }
             $(this).CFW_Dropdown('hideRev');
         });
-    }
+    };
 
     CFW_Widget_Dropdown.prototype = {
         _init : function() {
@@ -88,7 +89,7 @@
             if (!$target.length) {
                 $target = $(this.$element.siblings('.dropdown-menu')[0]);
             }
-            if (!$target.length) { return false; }
+            if (!$target.length) { return; }
             this.$target = $target;
 
             this.$element.attr('data-cfw', 'dropdown');
@@ -98,11 +99,12 @@
 
             // Check for id on top level menu - set if not present
             /* var menuID = */ this.$target.CFW_getID('cfw-dropdown');
-            this.$target.attr({
-                'aria-hidden': 'true',
-                'aria-labelledby': this.instance
-            })
-            .addClass(this.c.isMenu);
+            this.$target
+                .attr({
+                    'aria-hidden': 'true',
+                    'aria-labelledby': this.instance
+                })
+                .addClass(this.c.isMenu);
 
             // Set tabindex=-1 so that sub-menu links can't receive keyboard focus from tabbing
             $('a', this.$target).attr('tabIndex', -1).not('.disabled, :disabled');
@@ -143,13 +145,14 @@
                     }
                 }
 
-                $subMenu.attr({
-                    // 'role': 'menu',
-                    'aria-hidden': 'true',
-                    'aria-labelledby': subLinkID
-                })
-                .addClass($selfRef.c.isMenu)
-                .closest('li').addClass($selfRef.c.hasSubMenu);
+                $subMenu
+                    .attr({
+                        // 'role': 'menu',
+                        'aria-hidden': 'true',
+                        'aria-labelledby': subLinkID
+                    })
+                    .addClass($selfRef.c.isMenu)
+                    .closest('li').addClass($selfRef.c.hasSubMenu);
 
                 $subLink.attr({
                     'aria-haspopup': 'true',
@@ -198,7 +201,7 @@
                         e.preventDefault();
                     }
 
-                    if ($selfRef.settings.backtop && ($(this).closest('ul')[0] == $selfRef.$target[0])) {
+                    if ($selfRef.settings.backtop && ($(this).closest('ul')[0] === $selfRef.$target[0])) {
                         $selfRef.closeUp($(this).closest('li'));
                     } else {
                         $selfRef.closeUp($(this).closest('.' + $selfRef.c.hasSubMenu));
@@ -258,12 +261,12 @@
 
             // Check to see if link should be followed (sub-menu open and link is not '#')
             var nodeHref = $trigger.attr('href');
-            if (nodeHref && !(/^#$/.test(nodeHref)) && showing) {
+            if (nodeHref && !/^#$/.test(nodeHref) && showing) {
                 clearMenus();
                 return;
             }
 
-            if (e) e.stopPropagation();
+            if (e) { e.stopPropagation(); }
 
             if (!showing) {
                 this.showMenu(e, $trigger, $menu);
@@ -277,7 +280,7 @@
         showMenu : function(e, $trigger, $menu) {
             var $selfRef = this;
 
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
 
             var $parent  = getParent($trigger);
             var showing = $parent.hasClass('open');
@@ -352,9 +355,9 @@
         },
 
         hideMenu : function(e, $trigger, $menu, triggerFocus) {
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
 
-            if (triggerFocus === undefined) { triggerFocus = true; }
+            if (typeof triggerFocus === 'undefined') { triggerFocus = true; }
 
             var $parent  = getParent($trigger);
             var showing = $parent.hasClass('open');
@@ -391,7 +394,9 @@
                     $(window).off('resize.cfw.dropdown.' + this.instance);
                     this.$target
                         .appendTo($parent);
-                    this.$tmpContainer && this.$tmpContainer.remove();
+                    if (this.$tmpContainer !== null) {
+                        this.$tmpContainer.remove();
+                    }
                     this.$tmpContainer = null;
                 }
             }
@@ -444,27 +449,37 @@
             $parent.removeClass(this.c.hover);
         },
 
+        /* eslint-disable complexity */
         _actionsKeydown : function(e, node) {
+            var KEYCODE_UP = 38;    // Arrow up
+            var KEYCODE_RIGHT = 39; // Arrow right
+            var KEYCODE_DOWN = 40;  // Arrow down
+            var KEYCODE_LEFT = 37;  // Arrow left
+            var KEYCODE_ESC = 27;  // Escape
+            var KEYCODE_SPACE = 32;  // Space
+            var KEYCODE_TAB = 9;  // Tab
+            var REGEX_KEYS = new RegExp('^(' + KEYCODE_UP + '|' + KEYCODE_RIGHT + '|' + KEYCODE_DOWN + '|' + KEYCODE_LEFT + '|' + KEYCODE_ESC + '|' + KEYCODE_SPACE + '|' + KEYCODE_TAB + ')$');
+            var REGEX_ARROWS = new RegExp('^(' + KEYCODE_UP + '|' + KEYCODE_RIGHT + '|' + KEYCODE_DOWN + '|' + KEYCODE_LEFT + ')$');
+
             var isInput = /input|textarea/i.test(e.target.tagName);
             var isCheck = isInput && /checkbox|radio/i.test($(e.target).prop('type'));
             var isRealButton = /button/i.test(e.target.tagName);
             var isRoleButton = /button/i.test($(e.target).attr('role'));
 
-            // 37-left, 38-up, 39-right, 40-down, 27-esc, 32-space, 9-tab
-            if (!/^(37|38|39|40|27|32|9)$/.test(e.which)) { return; }
+            if (!REGEX_KEYS.test(e.which)) { return; }
             // Ignore space in inputs and buttons
-            if ((isInput || isRealButton) && e.which == 32) { return; }
+            if ((isInput || isRealButton) && e.which === KEYCODE_SPACE) { return; }
             // Ignore arrows in inputs, except for checkbox/radio
-            if (isInput && !isCheck && /^(37|38|39|40)$/.test(e.which)) { return; }
+            if (isInput && !isCheck && REGEX_ARROWS.test(e.which)) { return; }
 
             var $node = $(node);
             var $items = null;
 
             // Close menu when tab pressed, move to next item
-            if (e.which == 9) {
+            if (e.which === KEYCODE_TAB) {
                 // Emulate arrow up/down if input
                 if (isInput) {
-                    e.which = (e.shiftKey) ? 38 : 40;
+                    e.which = e.shiftKey ? KEYCODE_UP : KEYCODE_DOWN;
                 } else {
                     clearMenus();
                     this.$element.trigger('focus');
@@ -473,7 +488,7 @@
             }
 
             // Allow ESC to propagate if menu is closed
-            if (e.which == 27 && $(e.target).is(this.$element) && !getParent($(e.target)).hasClass('open')) {
+            if (e.which === KEYCODE_ESC && $(e.target).is(this.$element) && !getParent($(e.target)).hasClass('open')) {
                 return;
             }
 
@@ -481,7 +496,7 @@
             e.preventDefault();
 
             // Close current focused menu with ESC
-            if (e.which == 27) {
+            if (e.which === KEYCODE_ESC) {
                 if ($node.is(this.$element) || $node.is(this.$target)) {
                     this.hideMenu(null, this.$element, this.$target);
                     return;
@@ -506,13 +521,13 @@
             $parent.removeClass(this.c.hover);
 
             // Emulate button behaviour
-            if (isRoleButton && e.which == 32) {
+            if (isRoleButton && e.which === KEYCODE_SPACE) {
                 this.toggleMenu(null, $node, $parent);
                 return;
             }
 
             // Up/Down
-            if (e.which == 38 || e.which == 40) {
+            if (e.which === KEYCODE_UP || e.which === KEYCODE_DOWN) {
                 if ($parent.is(':hidden')) {
                     this.showMenu(null, $node, $parent);
                     return;
@@ -528,15 +543,16 @@
                     index = $items.index($(e.target).closest('.dropdown-item')[0]);
                 }
 
-                if (e.which == 38 && index > 0)                 { index--;   } // up
-                if (e.which == 40 && index < $items.length - 1) { index++;   } // down
-                if (!~index)                                    { index = 0; } // force first item
+                if (e.which === KEYCODE_UP && index > 0) { index--; } // up
+                if (e.which === KEYCODE_DOWN && index < $items.length - 1) { index++; } // down
+                /* eslint-disable-next-line no-bitwise */
+                if (!~index) { index = 0; } // force first item
 
                 $items.eq(index).trigger('focus');
             } // END - Up/Down
 
             // Left/Right
-            if (e.which == 37 || e.which == 39) {
+            if (e.which === KEYCODE_LEFT || e.which === KEYCODE_RIGHT) {
                 // Only for children of menu
                 if (!$.contains(this.$target[0], $eTarget[0])) { return; }
                 // Only if has submenu class
@@ -548,7 +564,7 @@
                 var subHidden = $subMenuElm.is(':hidden');
                 var parHidden = $parMenuElm.is(':hidden');
 
-                if (e.which == 39 && subHidden) {
+                if (e.which === KEYCODE_RIGHT && subHidden) {
                     this.showMenu(null, $eTarget, $subMenuElm);
                     $items = $subMenuElm.children('li').find('a, .dropdown-item, input, textarea');
                     $items = $items.filter(':not(.disabled, :disabled):not(:has(input)):not(:has(textarea)):visible');
@@ -556,12 +572,12 @@
                     return;
                 }
 
-                if (e.which == 37 && !parHidden) {
+                if (e.which === KEYCODE_LEFT && !parHidden) {
                     this.closeUp($node);
-                    return;
                 }
             } // END - Left/Right
         },
+        /* eslint-enable complexity */
 
         _actionsHoverEnter : function(e, node) {
             var $node = $(node);
@@ -577,7 +593,6 @@
                 var $subNode = $node.parent().find('ul').eq(0);
                 getParent($node).addClass(this.c.hover);
                 this.showMenu(null, $node, $subNode);
-                return;
             }
         },
 
@@ -601,7 +616,6 @@
                     $selfRef.timerHide = null;
                     $selfRef.hideMenu(null, $node, $subNode);
                 }, $selfRef.settings.delay);
-                return;
             }
         },
 
@@ -646,7 +660,7 @@
         return this.offsetHeight;
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -654,13 +668,13 @@
             var options = typeof option === 'object' && option;
 
             if (!data) {
-                $this.data('cfw.dropdown', (data = new CFW_Widget_Dropdown(this, options)));
+                $this.data('cfw.dropdown', data = new CFW_Widget_Dropdown(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Dropdown = Plugin;
     $.fn.CFW_Dropdown.Constructor = CFW_Widget_Dropdown;
@@ -669,5 +683,4 @@
     $(window).ready(function() {
         $(document).on('click', clearMenus);
     });
-
-})(jQuery);
+}(jQuery));

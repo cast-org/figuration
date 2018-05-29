@@ -8,8 +8,8 @@
 (function($) {
     'use strict';
 
-    if ($.fn.CFW_Tab === undefined) throw new Error('CFW_TabResponsive requires CFW_Tab');
-    if ($.fn.CFW_Collapse === undefined) throw new Error('CFW_TabResponsive requires CFW_Collapse');
+    if (typeof $.fn.CFW_Tab === 'undefined') { throw new Error('CFW_TabResponsive requires CFW_Tab'); }
+    if (typeof $.fn.CFW_Collapse === 'undefined') { throw new Error('CFW_TabResponsive requires CFW_Collapse'); }
 
     var CFW_Widget_TabResponsive = function(element) {
         this.$element = $(element);
@@ -54,7 +54,8 @@
                 var $activePane = data.$target;
                 var $paneContainer = $activePane.closest('.tab-content');
                 $paneContainer.find('[data-cfw="collapse"]').each(function() {
-                    $(this).one('afterHide.cfw.collapse', function(e) {
+                    $(this)
+                        .one('afterHide.cfw.collapse', function(e) {
                             e.stopPropagation();
                             e.preventDefault();
                         })
@@ -62,7 +63,8 @@
                 });
 
                 var $collapseItem = $activePane.find('[data-cfw="collapse"]');
-                $collapseItem.one('afterShow.cfw.collapse', function(e) {
+                $collapseItem
+                    .one('afterShow.cfw.collapse', function(e) {
                         e.stopPropagation();
                         e.preventDefault();
                     })
@@ -94,8 +96,9 @@
                     selector = $this.attr('href');
                 }
                 selector = selector.replace(/^#/, '');
-                if (selector == $paneID) {
-                    $this.one('beforeShow.cfw.tab', function(e) {
+                if (selector === $paneID) {
+                    $this
+                        .one('beforeShow.cfw.tab', function(e) {
                             e.stopPropagation();
                         })
                         .CFW_Tab('show');
@@ -113,22 +116,21 @@
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
             var data = $this.data('cfw.tabResponsive');
 
             if (!data) {
-                $this.data('cfw.tabResponsive', (data = new CFW_Widget_TabResponsive(this)));
+                $this.data('cfw.tabResponsive', data = new CFW_Widget_TabResponsive(this));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_TabResponsive = Plugin;
     $.fn.CFW_TabResponsive.Constructor = CFW_Widget_TabResponsive;
-
-})(jQuery);
+}(jQuery));

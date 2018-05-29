@@ -18,10 +18,10 @@ $(function() {
 
     QUnit.test('should activate element by tab id', function(assert) {
         assert.expect(2);
-        var tabsHTML = '<ul class="tabs">'
-            + '<li><a href="#home">Home</a></li>'
-            + '<li><a href="#profile">Profile</a></li>'
-            + '</ul>';
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home">Home</a></li>' +
+            '<li><a href="#profile">Profile</a></li>' +
+            '</ul>';
         $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
 
         $(tabsHTML).find('li:last a').CFW_Tab('show');
@@ -33,10 +33,10 @@ $(function() {
 
     QUnit.test('should activate element by pill id', function(assert) {
         assert.expect(2);
-        var pillsHTML = '<ul class="pills">'
-            + '<li><a href="#home">Home</a></li>'
-            + '<li><a href="#profile">Profile</a></li>'
-            + '</ul>';
+        var pillsHTML = '<ul class="pills">' +
+            '<li><a href="#home">Home</a></li>' +
+            '<li><a href="#profile">Profile</a></li>' +
+            '</ul>';
         $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
 
         $(pillsHTML).find('li:last a').CFW_Tab('show');
@@ -66,10 +66,10 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var tabsHTML = '<ul class="tabs">'
-            + '<li><a href="#home" data-cfw="tab">Home</a></li>'
-            + '<li><a href="#profile" data-cfw="tab">Profile</a></li>'
-            + '</ul>';
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
+            '</ul>';
         $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 
@@ -94,10 +94,10 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var tabsHTML = '<ul class="tabs">'
-            + '<li><a href="#home" data-cfw="tab">Home</a></li>'
-            + '<li><a href="#profile" data-cfw="tab">Profile</a></li>'
-            + '</ul>';
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
+            '</ul>';
         $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 
@@ -122,10 +122,10 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var tabsHTML = '<ul class="tabs">'
-            + '<li><a href="#home" data-cfw="tab">Home</a></li>'
-            + '<li><a href="#profile" data-cfw="tab">Profile</a></li>'
-            + '</ul>';
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
+            '</ul>';
         $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 
@@ -151,10 +151,10 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var tabsHTML = '<ul class="tabs">'
-            + '<li><a href="#home" data-cfw="tab">Home</a></li>'
-            + '<li><a href="#profile" data-cfw="tab">Profile</a></li>'
-            + '</ul>';
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
+            '</ul>';
         $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 
@@ -177,10 +177,10 @@ $(function() {
 
     QUnit.test('selected tab should have aria-selected', function(assert) {
         assert.expect(8);
-        var tabsHTML = '<ul class="tabs">'
-            + '<li><a href="#home" data-cfw="tab">Home</a></li>'
-            + '<li><a href="#profile" data-cfw="tab">Profile</a></li>'
-            + '</ul>';
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
+            '</ul>';
         $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
         var $tabsObj = $('.tabs');
@@ -209,10 +209,10 @@ $(function() {
     QUnit.test('should not show if trigger disabled by class', function(assert) {
         assert.expect(0);
 
-        var tabsHTML = '<ul class="tabs">'
-            + '<li><a href="#home" data-cfw="tab">Home</a></li>'
-            + '<li><a href="#profile" data-cfw="tab" class="disabled">Profile</a></li>'
-            + '</ul>';
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab" class="disabled">Profile</a></li>' +
+            '</ul>';
         $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 
@@ -230,10 +230,10 @@ $(function() {
     QUnit.test('should not show if trigger disabled by attribute', function(assert) {
         assert.expect(0);
 
-        var tabsHTML = '<ul class="tabs">'
-            + '<li><a href="#home" data-cfw="tab">Home</a></li>'
-            + '<li><a href="#profile" data-cfw="tab" disabled>Profile</a></li>'
-            + '</ul>';
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab" disabled>Profile</a></li>' +
+            '</ul>';
         $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 

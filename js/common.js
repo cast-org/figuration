@@ -28,27 +28,31 @@
     };
 
     $.fn.CFW_Init = function() {
-        /* jshint -W083 */
         var $scope = $(this);
         if (!$scope.length) { $scope = $(document.body); }
 
         for (var key in cfwList) {
-            $scope.find(key).add($scope.filter(key)).each(function() {
-                $(this)[cfwList[key]]();
-            });
+            if (typeof $.fn[cfwList[key]] === 'function') {
+                /* eslint-disable-next-line no-loop-func */
+                $scope.find(key).add($scope.filter(key)).each(function() {
+                    $(this)[cfwList[key]]();
+                });
+            }
         }
         return this;
     };
 
     $.fn.CFW_Dispose = function() {
-        /* jshint -W083 */
         var $scope = $(this);
         if (!$scope.length) { $scope = $(document.body); }
 
         for (var key in cfwList) {
-            $scope.find(key).add($scope.filter(key)).each(function() {
-                $(this)[cfwList[key]]('dispose');
-            });
+            if (typeof $.fn[cfwList[key]] === 'function') {
+                /* eslint-disable-next-line no-loop-func */
+                $scope.find(key).add($scope.filter(key)).each(function() {
+                    $(this)[cfwList[key]]('dispose');
+                });
+            }
         }
         return this;
     };
@@ -58,4 +62,4 @@
             $(document.body).CFW_Init();
         }
     });
-})(jQuery);
+}(jQuery));

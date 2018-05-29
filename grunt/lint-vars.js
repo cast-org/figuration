@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 
-/*jshint esversion: 6 */
+/* eslint-env es6 */
 
 /*!
  * Script to find unused Sass variables.
- *
  * Copyright 2018 The Bootstrap Authors
  * Copyright 2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)

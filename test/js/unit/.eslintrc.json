@@ -1,0 +1,25 @@
+{
+  "env": {
+    "es6": false,
+    "jquery": true,
+    "qunit": true
+  },
+  "globals": {},
+  "parserOptions": {
+    "ecmaVersion": 5,
+    "sourceType": "script"
+  },
+  "extends": "../../../.eslintrc.json",
+  "rules": {
+    "no-console": "off",
+
+    // Best Practices
+    "consistent-return": "off",
+    "no-magic-numbers": "off",
+    "vars-on-top": "off",
+
+    // Stylistic Issues
+    "func-style": "off",
+    "spaced-comment": "off"
+  }
+}

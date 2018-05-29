@@ -38,9 +38,9 @@ $(function() {
         var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
 
         $target.on('beforeShow.cfw.modal', function() {
-                assert.ok(true, 'show event fired');
-                done();
-            });
+            assert.ok(true, 'show event fired');
+            done();
+        });
         $trigger.CFW_Modal();
         $trigger.CFW_Modal('show');
     });
@@ -210,7 +210,9 @@ $(function() {
         $target
             .on('afterShow.cfw.modal', function() {
                 assert.ok($target.is(':visible'), 'modal visible');
-                $target.trigger($.Event('keydown', { which: 27 }));
+                $target.trigger($.Event('keydown', {
+                    which: 27 // Esc
+                }));
 
                 setTimeout(function() {
                     assert.ok(!$target.is(':visible'), 'modal hidden');
@@ -232,7 +234,9 @@ $(function() {
         $target
             .on('afterShow.cfw.modal', function() {
                 assert.ok($target.is(':visible'), 'modal visible');
-                $target.trigger($.Event('keyup', { which: 27 }));
+                $target.trigger($.Event('keyup', {
+                    which: 27 // Esc
+                }));
 
                 setTimeout(function() {
                     assert.ok($target.is(':visible'), 'modal still visible');
@@ -394,7 +398,7 @@ $(function() {
                 $trigger.CFW_Modal('hide');
             })
             .on('afterHide.cfw.modal', function() {
-                assert.strictEqual($body.data('cfw.padding-dim'), undefined, 'padding in data attribute has been cleared');
+                assert.strictEqual(typeof $body.data('cfw.padding-dim'), 'undefined', 'padding in data attribute has been cleared');
                 $body.removeAttr('style');
                 done();
             });
@@ -498,7 +502,7 @@ $(function() {
                 $trigger.CFW_Modal('hide');
             })
             .on('afterHide.cfw.modal', function() {
-                assert.strictEqual($element.data('cfw.padding-dim'), undefined, 'padding in data attribute has been cleared');
+                assert.strictEqual(typeof $element.data('cfw.padding-dim'), 'undefined', 'padding in data attribute has been cleared');
                 $element.removeAttr('style');
                 done();
             });
@@ -551,7 +555,7 @@ $(function() {
                 $trigger.CFW_Modal('hide');
             })
             .on('afterHide.cfw.modal', function() {
-                assert.strictEqual($element.data('cfw.margin-dim'), undefined, 'margin in data attribute has been cleared');
+                assert.strictEqual(typeof $element.data('cfw.margin-dim'), 'undefined', 'margin in data attribute has been cleared');
                 $element.removeAttr('style');
                 done();
             });
@@ -684,5 +688,4 @@ $(function() {
 
         setTimeout(done, 500);
     });
-
 });

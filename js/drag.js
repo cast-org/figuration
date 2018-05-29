@@ -55,7 +55,7 @@
         },
 
         _dragStartOff : function(e) {
-            if (e) e.preventDefault();
+            if (e) { e.preventDefault(); }
             $(document).off('.cfw.dragin.' + this.instance);
             this.$element.off('.cfw.dragstart');
         },
@@ -162,7 +162,7 @@
         }
     };
 
-    function Plugin(option) {
+    var Plugin = function(option) {
         var args = [].splice.call(arguments, 1);
         return this.each(function() {
             var $this = $(this);
@@ -170,18 +170,17 @@
             var options = typeof option === 'object' && option;
 
             if (!data && /dispose/.test(option)) {
-                return false;
+                return;
             }
             if (!data) {
-                $this.data('cfw.drag', (data = new CFW_Widget_Drag(this, options)));
+                $this.data('cfw.drag', data = new CFW_Widget_Drag(this, options));
             }
             if (typeof option === 'string') {
                 data[option].apply(data, args);
             }
         });
-    }
+    };
 
     $.fn.CFW_Drag = Plugin;
     $.fn.CFW_Drag.Constructor = CFW_Widget_Drag;
-
-})(jQuery);
+}(jQuery));
