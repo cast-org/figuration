@@ -56,7 +56,7 @@ Figuration is compiled with [libsass][libsass] via [grunt-sass][grunt-sass]. The
 
 Figuration uses [Autoprefixer][autoprefixer] (included in our Gruntfile and build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins.
 
-We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [`/grunt/autoprefixer-settings.json`](https://github.com/cast-org/figuration/blob/master/grunt/autoprefixer-settings.js) for details.
+We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [`/package.json`](https://github.com/cast-org/figuration/blob/v4-dev/package.json) for details.
 
 ## postcss-flexbugs-fixes
 
