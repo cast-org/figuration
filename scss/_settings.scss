@@ -398,29 +398,33 @@ $component-section-border-color:    rgba($uibase-900, .3) !default;
 // Used for button, button groups, pagination, form-control, and input-group
 // 'md' is considered to be the default size, so no classes for this size designator are generated, as in *no* `.btn-md`.
 $component-sizes: (
-    xs: (
-        font-size:      ($font-size-base * .75),
-        padding-y:      .1875rem,
-        padding-x:      .375rem,
-        border-radius:  .1875rem
+    "xsmall": (
+        "padding-y":     .125rem,
+        "padding-x":     .375rem,
+        "font-size":     ($font-size-base * .75),
+        "line-height":   1.5,
+        "border-radius": .1875rem
     ),
-    sm: (
-        font-size:      ($font-size-base * .875),
-        padding-y:      .25rem,
-        padding-x:      .5rem,
-        border-radius:  .1875rem
+    "small": (
+        "padding-y":     .1875rem,
+        "padding-x":     .5rem,
+        "font-size":     ($font-size-base * .875),
+        "line-height":   1.5,
+        "border-radius": .1875rem
     ),
-    lg: (
-        font-size:      ($font-size-base * 1.125),
-        padding-y:      .5rem,
-        padding-x:      1.125rem,
-        border-radius:  .3125rem
+    "large": (
+        "padding-y":     .3125rem,
+        "padding-x":     1.125rem,
+        "font-size":     ($font-size-base * 1.125),
+        "line-height":    1.5,
+        "border-radius": .3125rem
     ),
-    xl: (
-        font-size:      ($font-size-base * 1.25),
-        padding-y:      .625rem,
-        padding-x:      1.25rem,
-        border-radius:  .3125rem
+    "xlarge": (
+        "padding-y":     .375rem,
+        "padding-x":     1.25rem,
+        "font-size":     ($font-size-base * 1.25),
+        "line-height":    1.5,
+        "border-radius": .3125rem
     )
 ) !default;
 
