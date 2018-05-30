@@ -102,13 +102,13 @@ Mix input groups with button groups in your toolbars. Similar to the example abo
 Instead of applying button sizing classes to every button in a group, just add `.btn-group-*` to each `.btn-group`, including each one when nesting multiple groups.
 
 <div class="cf-example">
-  <div class="btn-group btn-group-xl" role="group" aria-label="Extra Large button group">
+  <div class="btn-group btn-group-xlarge" role="group" aria-label="Extra Large button group">
     <button type="button" class="btn">Left</button>
     <button type="button" class="btn">Middle</button>
     <button type="button" class="btn">Right</button>
   </div>
   <br>
-  <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
+  <div class="btn-group btn-group-large" role="group" aria-label="Large button group">
     <button type="button" class="btn">Left</button>
     <button type="button" class="btn">Middle</button>
     <button type="button" class="btn">Right</button>
@@ -120,13 +120,13 @@ Instead of applying button sizing classes to every button in a group, just add `
     <button type="button" class="btn">Right</button>
   </div>
   <br>
-  <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+  <div class="btn-group btn-group-small" role="group" aria-label="Small button group">
     <button type="button" class="btn">Left</button>
     <button type="button" class="btn">Middle</button>
     <button type="button" class="btn">Right</button>
   </div>
   <br>
-  <div class="btn-group btn-group-xs" role="group" aria-label="Extra Small button group">
+  <div class="btn-group btn-group-xsmall" role="group" aria-label="Extra Small button group">
     <button type="button" class="btn">Left</button>
     <button type="button" class="btn">Middle</button>
     <button type="button" class="btn">Right</button>
@@ -134,11 +134,11 @@ Instead of applying button sizing classes to every button in a group, just add `
 </div>
 
 {% highlight html %}
-<div class="btn-group btn-group-xl" role="group" aria-label="...">...</div>
-<div class="btn-group btn-group-lg" role="group" aria-label="...">...</div>
+<div class="btn-group btn-group-xlarge" role="group" aria-label="...">...</div>
+<div class="btn-group btn-group-large" role="group" aria-label="...">...</div>
 <div class="btn-group" role="group" aria-label="...">...</div>
-<div class="btn-group btn-group-sm" role="group" aria-label="...">...</div>
-<div class="btn-group btn-group-xs" role="group" aria-label="...">...</div>
+<div class="btn-group btn-group-small" role="group" aria-label="...">...</div>
+<div class="btn-group btn-group-xsmall" role="group" aria-label="...">...</div>
 {% endhighlight %}
 
 ## Nesting

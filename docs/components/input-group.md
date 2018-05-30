@@ -51,12 +51,12 @@ Place one add-on or button on either side of an input. You may also place one on
 Add the relative form sizing classes to the `.input-group` itself and contents within will automatically resize---no need for repeating the form control size classes on each element.
 
 {% example html %}
-<div class="input-group input-group-xl">
+<div class="input-group input-group-xlarge">
   <span class="input-group-addon" id="sizing-addon0">@</span>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon0">
 </div>
 <br>
-<div class="input-group input-group-lg">
+<div class="input-group input-group-large">
   <span class="input-group-addon" id="sizing-addon1">@</span>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon1">
 </div>
@@ -66,12 +66,12 @@ Add the relative form sizing classes to the `.input-group` itself and contents w
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon2">
 </div>
 <br>
-<div class="input-group input-group-sm">
+<div class="input-group input-group-small">
   <span class="input-group-addon" id="sizing-addon3">@</span>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon3">
 </div>
 <br>
-<div class="input-group input-group-xs">
+<div class="input-group input-group-xsmall">
   <span class="input-group-addon" id="sizing-addon4">@</span>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon4">
 </div>

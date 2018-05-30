@@ -95,15 +95,15 @@ Switches can also be disabled. Add the `disabled` boolean attribute to the `<inp
 
 ## Sizing
 
-Want a smaller or larger switch?  Add `.switch-xs`, `.switch-sm`, `.switch-lg`, or `.switch-xl` for additional sizes.
+Want a smaller or larger switch?  Add `.switch-xsmall`, `.switch-small`, `.switch-large`, or `.switch-xlarge` for additional sizes.
 
 {% example html %}
-<label class="switch switch-xs me-1">
+<label class="switch switch-xsmall me-1">
     <input type="checkbox" class="switch-input">
     <span class="switch-control"></span>
     <span class="switch-description">Extra small</span>
 </label>
-<label class="switch switch-sm me-1">
+<label class="switch switch-small me-1">
     <input type="checkbox" class="switch-input">
     <span class="switch-control"></span>
     <span class="switch-description">Small</span>
@@ -113,12 +113,12 @@ Want a smaller or larger switch?  Add `.switch-xs`, `.switch-sm`, `.switch-lg`, 
     <span class="switch-control"></span>
     <span class="switch-description">Default</span>
 </label>
-<label class="switch switch-lg me-1">
+<label class="switch switch-large me-1">
     <input type="checkbox" class="switch-input">
     <span class="switch-control"></span>
     <span class="switch-description">Large</span>
 </label>
-<label class="switch switch-xl me-1">
+<label class="switch switch-xlarge me-1">
     <input type="checkbox" class="switch-input">
     <span class="switch-control"></span>
     <span class="switch-description">Extra large</span>
@@ -128,12 +128,12 @@ Want a smaller or larger switch?  Add `.switch-xs`, `.switch-sm`, `.switch-lg`, 
 Sizing also works for rounded switches.
 
 {% example html %}
-<label class="switch switch-rounded switch-xs me-1">
+<label class="switch switch-rounded switch-xsmall me-1">
     <input type="checkbox" class="switch-input">
     <span class="switch-control"></span>
     <span class="switch-description">Extra small</span>
 </label>
-<label class="switch switch-rounded switch-sm me-1">
+<label class="switch switch-rounded switch-small me-1">
     <input type="checkbox" class="switch-input">
     <span class="switch-control"></span>
     <span class="switch-description">Small</span>
@@ -143,12 +143,12 @@ Sizing also works for rounded switches.
     <span class="switch-control"></span>
     <span class="switch-description">Default</span>
 </label>
-<label class="switch switch-rounded switch-lg me-1">
+<label class="switch switch-rounded switch-large me-1">
     <input type="checkbox" class="switch-input">
     <span class="switch-control"></span>
     <span class="switch-description">Large</span>
 </label>
-<label class="switch switch-rounded switch-xl me-1">
+<label class="switch switch-rounded switch-xlarge me-1">
     <input type="checkbox" class="switch-input">
     <span class="switch-control"></span>
     <span class="switch-description">Extra large</span>

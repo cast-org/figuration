@@ -156,11 +156,11 @@ Add normal text to your pagination navigation by using `.page-text`.  This class
 
 ## Sizes
 
-Fancy larger or smaller pagination? Add `.pagination-xs`, `.pagination-sm`, `.pagination-lg`,  or `.pagination-xl` for additional sizes.
+Fancy larger or smaller pagination? Add `.pagination-xsmall`, `.pagination-small`, `.pagination-large`,  or `.pagination-xlarge` for additional sizes.
 
 <div class="cf-example">
     <nav aria-label="...">
-        <ul class="pagination pagination-group pagination-xl">
+        <ul class="pagination pagination-group pagination-xlarge">
             <li class="page-item"><span class="page-link disabled">Previous</span></li>
             <li class="page-item"><a href="#" class="page-link">1</a></li>
             <li class="page-item"><a href="#" class="page-link">2</a></li>
@@ -172,7 +172,7 @@ Fancy larger or smaller pagination? Add `.pagination-xs`, `.pagination-sm`, `.pa
     </nav>
 
     <nav aria-label="...">
-        <ul class="pagination pagination-group pagination-lg">
+        <ul class="pagination pagination-group pagination-large">
             <li class="page-item"><span class="page-link disabled">Previous</span></li>
             <li class="page-item"><a href="#" class="page-link">1</a></li>
             <li class="page-item"><a href="#" class="page-link">2</a></li>
@@ -196,7 +196,7 @@ Fancy larger or smaller pagination? Add `.pagination-xs`, `.pagination-sm`, `.pa
     </nav>
 
     <nav aria-label="...">
-        <ul class="pagination pagination-group pagination-sm">
+        <ul class="pagination pagination-group pagination-small">
             <li class="page-item"><span class="page-link disabled">Previous</span></li>
             <li class="page-item"><a href="#" class="page-link">1</a></li>
             <li class="page-item"><a href="#" class="page-link">2</a></li>
@@ -208,7 +208,7 @@ Fancy larger or smaller pagination? Add `.pagination-xs`, `.pagination-sm`, `.pa
     </nav>
 
     <nav aria-label="...">
-        <ul class="pagination pagination-group pagination-xs">
+        <ul class="pagination pagination-group pagination-xsmall">
             <li class="page-item"><span class="page-link disabled">Previous</span></li>
             <li class="page-item"><a href="#" class="page-link">1</a></li>
             <li class="page-item"><a href="#" class="page-link">2</a></li>
@@ -223,14 +223,14 @@ Fancy larger or smaller pagination? Add `.pagination-xs`, `.pagination-sm`, `.pa
 {% highlight html %}
 <!-- Extra Large pagination -->
 <nav aria-label="...">
-    <ul class="pagination pagination-group pagination-xl">
+    <ul class="pagination pagination-group pagination-xlarge">
         ...
     </ul>
 </nav>
 
 <!-- Large pagination -->
 <nav aria-label="...">
-    <ul class="pagination pagination-group pagination-lg">
+    <ul class="pagination pagination-group pagination-large">
         ...
     </ul>
 </nav>
@@ -244,14 +244,14 @@ Fancy larger or smaller pagination? Add `.pagination-xs`, `.pagination-sm`, `.pa
 
 <!-- Small pagination -->
 <nav aria-label="...">
-    <ul class="pagination pagination-group pagination-sm">
+    <ul class="pagination pagination-group pagination-small">
         ...
     </ul>
 </nav>
 
 <!-- Extra Small pagination -->
 <nav aria-label="...">
-    <ul class="pagination pagination-group pagination-xs">
+    <ul class="pagination pagination-group pagination-xsmall">
         ...
     </ul>
 </nav>
