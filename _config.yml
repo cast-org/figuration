@@ -32,7 +32,7 @@ twitter:          https://twitter.com/figuration_org
 # Downloads
 download:
   source:         https://github.com/cast-org/figuration/archive/v4.0.0-alpha.0.zip
-  dist:           https://github.com/cast-org/figuration/releases/download/v4.0.0-alpha.0/figuration-v4.0.0-alpha.0-dist.zip
+  dist:           https://github.com/cast-org/figuration/releases/download/v4.0.0-alpha.0/figuration-4.0.0-alpha.0-dist.zip
 
 
 # CDN settings
