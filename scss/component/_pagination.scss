@@ -49,15 +49,16 @@
 
 // Sizing
 @if $enable-sizing {
-    @each $size, $dims in $component-sizes {
+    @each $size, $dims in $pagination-sizes {
         $sz-font-size:     map-get($dims, "font-size");
+        $sz-line-height:   map-get($dims, "line-height");
         $sz-padding-y:     map-get($dims, "padding-y");
         //$sz-padding-x:     map-get($dims, "padding-x");
         $sz-padding-x:    $pagination-padding-x;
         $sz-border-radius: map-get($dims, "border-radius");
 
         .pagination-#{$size} {
-            @include pagination-size($sz-padding-y, $sz-padding-x, $sz-font-size, $sz-border-radius);
+            @include pagination-size($sz-padding-y, $sz-padding-x, $sz-font-size, $sz-line-height, $sz-border-radius);
         }
     }
 }

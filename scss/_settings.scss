@@ -428,9 +428,11 @@ $component-sizes: (
     )
 ) !default;
 
-// Per component sizing
-$btn-sizes: $component-sizes !default;
-
+// Per component/utility sizing
+$btn-sizes:             $component-sizes !default;
+$input-sizes:           $component-sizes !default;
+$pagination-sizes:      $component-sizes !default;
+$utility-radius-sizes:  $component-sizes !default;
 
 
 // Shadows
@@ -616,12 +618,9 @@ $btn-default-active-hover-color:    color-if-contrast($btn-default-hover-color, 
 // Forms
 // =====
 // Padding and line-height should add up to buttons for inputs and selects
-// An included line-height-delta routine is included to make this easier
 // Implemented horizontal padding will be 1/2 of stated `padding-x`
-$input-line-height:             1.5 !default;
-$input-line-height-delta:      ($input-line-height - $btn-line-height) !default;
-
-$input-padding-y:               $btn-padding-y - ($input-line-height-delta * $font-size-base / 2) !default;
+$input-line-height:             $btn-line-height !default;
+$input-padding-y:               $btn-padding-y !default;
 $input-padding-x:               $btn-padding-x !default;
 
 $input-color:                   $uibase-700 !default;
@@ -662,8 +661,8 @@ $form-inline-breakpoint:         sm !default;
 
 // Base input/select height calculation
 // Additional ones for each size are done during size processing generation
-$input-height:      (($font-size-base * $input-line-height) + ($input-padding-y * 2)) !default;
-$select-height:     calc(#{$input-height} + #{($border-width * 2)}) !default;
+$input-height-inner:    ($font-size-base * $input-line-height) + ($input-padding-y * 2) !default;
+$input-height-outer:    calc(#{$input-height-inner} + #{($border-width * 2)}) !default;
 
 // Form icons
 // =====

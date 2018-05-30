@@ -8,7 +8,7 @@
     position: relative;
     display: inline-block;
     width: ($font-size-base * $switch-width-multiplier);
-    height: $select-height;
+    height: $input-height-outer;
     overflow: hidden;
     @include font-size($font-size-base);
     line-height: $input-line-height;
@@ -106,11 +106,11 @@
 // Rounded variant
 .switch-rounded {
     .switch-control {
-        @include border-radius($select-height);
+        @include border-radius($input-height-outer);
 
         &::before {
-            width: $input-height;
-            @include border-radius($input-height);
+            width: $input-height-inner;
+            @include border-radius($input-height-inner);
         }
     }
 }
@@ -134,15 +134,16 @@
 
 // Switch sizes
 @if $enable-sizing {
-    @each $size, $dims in $component-sizes {
+    @each $size, $dims in $input-sizes {
         $sz-font-size:     map-get($dims, "font-size");
-        $sz-padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $sz-font-size / 2);
+        $sz-line-height:   map-get($dims, "line-height");
+        $sz-padding-y:     map-get($dims, "padding-y");
         $sz-border-radius: map-get($dims, "border-radius");
-        $sz-inner-height:  (($sz-font-size * $input-line-height) + ($sz-padding-y * 2));
+        $sz-inner-height:  (($sz-font-size * $sz-line-height) + ($sz-padding-y * 2));
         $sz-outer-height: calc(#{$sz-inner-height} + #{($input-border-width * 2)});
 
         .switch-#{$size} {
-            @include switch-size($sz-font-size, $sz-border-radius, $input-border-width, $sz-outer-height, $sz-inner-height);
+            @include switch-size($sz-font-size, $sz-line-height, $sz-border-radius, $input-border-width, $sz-outer-height, $sz-inner-height);
         }
     }
 }
