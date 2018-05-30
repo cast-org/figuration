@@ -934,88 +934,80 @@ textarea.form-control {
   border-width: 1px 0;
 }
 
-.form-control-xs, .input-group-xs > .form-control,
-.input-group-xs > .custom-select,
-.input-group-xs > .input-group-addon,
-.input-group-xs > .input-group-btn > .btn {
-  height: calc(1.3125rem + 2px);
-  padding: 0.09375rem 0.1875rem;
+.form-control-xsmall, .input-group-xsmall > .form-control,
+.input-group-xsmall > .custom-select,
+.input-group-xsmall > .input-group-addon,
+.input-group-xsmall > .input-group-btn > .btn {
+  height: calc(1.375rem + 2px);
+  padding: 0.125rem 0.1875rem;
   font-size: 0.75rem;
+  line-height: 1.5;
   border-radius: 0.1875rem;
 }
 
-.form-control-label-xs,
-.form-control-static-xs {
-  padding-top: calc(0.09375rem + 1px);
-  padding-bottom: calc(0.09375rem + 1px);
+.form-control-label-xsmall,
+.form-control-static-xsmall {
+  padding-top: calc(0.125rem + 1px);
+  padding-bottom: calc(0.125rem + 1px);
   font-size: 0.75rem;
+  line-height: 1.5;
 }
 
-.form-control-legend-xs {
-  font-size: 0.75rem;
-}
-
-.form-control-sm, .input-group-sm > .form-control,
-.input-group-sm > .custom-select,
-.input-group-sm > .input-group-addon,
-.input-group-sm > .input-group-btn > .btn {
-  height: calc(1.59375rem + 2px);
-  padding: 0.140625rem 0.25rem;
+.form-control-small, .input-group-small > .form-control,
+.input-group-small > .custom-select,
+.input-group-small > .input-group-addon,
+.input-group-small > .input-group-btn > .btn {
+  height: calc(1.6875rem + 2px);
+  padding: 0.1875rem 0.25rem;
   font-size: 0.875rem;
+  line-height: 1.5;
   border-radius: 0.1875rem;
 }
 
-.form-control-label-sm,
-.form-control-static-sm {
-  padding-top: calc(0.140625rem + 1px);
-  padding-bottom: calc(0.140625rem + 1px);
+.form-control-label-small,
+.form-control-static-small {
+  padding-top: calc(0.1875rem + 1px);
+  padding-bottom: calc(0.1875rem + 1px);
   font-size: 0.875rem;
+  line-height: 1.5;
 }
 
-.form-control-legend-sm {
-  font-size: 0.875rem;
-}
-
-.form-control-lg, .input-group-lg > .form-control,
-.input-group-lg > .custom-select,
-.input-group-lg > .input-group-addon,
-.input-group-lg > .input-group-btn > .btn {
-  height: calc(2.40625rem + 2px);
-  padding: 0.359375rem 0.5625rem;
+.form-control-large, .input-group-large > .form-control,
+.input-group-large > .custom-select,
+.input-group-large > .input-group-addon,
+.input-group-large > .input-group-btn > .btn {
+  height: calc(2.3125rem + 2px);
+  padding: 0.3125rem 0.5625rem;
   font-size: 1.125rem;
+  line-height: 1.5;
   border-radius: 0.3125rem;
 }
 
-.form-control-label-lg,
-.form-control-static-lg {
-  padding-top: calc(0.359375rem + 1px);
-  padding-bottom: calc(0.359375rem + 1px);
+.form-control-label-large,
+.form-control-static-large {
+  padding-top: calc(0.3125rem + 1px);
+  padding-bottom: calc(0.3125rem + 1px);
   font-size: 1.125rem;
+  line-height: 1.5;
 }
 
-.form-control-legend-lg {
-  font-size: 1.125rem;
-}
-
-.form-control-xl, .input-group-xl > .form-control,
-.input-group-xl > .custom-select,
-.input-group-xl > .input-group-addon,
-.input-group-xl > .input-group-btn > .btn {
-  height: calc(2.8125rem + 2px);
-  padding: 0.46875rem 0.625rem;
+.form-control-xlarge, .input-group-xlarge > .form-control,
+.input-group-xlarge > .custom-select,
+.input-group-xlarge > .input-group-addon,
+.input-group-xlarge > .input-group-btn > .btn {
+  height: calc(2.625rem + 2px);
+  padding: 0.375rem 0.625rem;
   font-size: 1.25rem;
+  line-height: 1.5;
   border-radius: 0.3125rem;
 }
 
-.form-control-label-xl,
-.form-control-static-xl {
-  padding-top: calc(0.46875rem + 1px);
-  padding-bottom: calc(0.46875rem + 1px);
+.form-control-label-xlarge,
+.form-control-static-xlarge {
+  padding-top: calc(0.375rem + 1px);
+  padding-bottom: calc(0.375rem + 1px);
   font-size: 1.25rem;
-}
-
-.form-control-legend-xl {
-  font-size: 1.25rem;
+  line-height: 1.5;
 }
 
 .form-group {
@@ -1168,32 +1160,32 @@ fieldset:disabled .form-check-label {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d42314' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d42314' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E");
 }
 
-.form-control-xs.form-control-icon,
-.input-group-xs > .form-control.form-control-icon {
+.form-control-xsmall.form-control-icon,
+.input-group-xsmall > .form-control.form-control-icon {
   padding-right: 1.125rem;
-  background-position: center right 0.328125rem;
-  background-size: 0.65625rem 0.65625rem;
+  background-position: center right 0.34375rem;
+  background-size: 0.6875rem 0.6875rem;
 }
 
-.form-control-sm.form-control-icon,
-.input-group-sm > .form-control.form-control-icon {
+.form-control-small.form-control-icon,
+.input-group-small > .form-control.form-control-icon {
   padding-right: 1.5rem;
-  background-position: center right 0.398438rem;
-  background-size: 0.796875rem 0.796875rem;
+  background-position: center right 0.421875rem;
+  background-size: 0.84375rem 0.84375rem;
 }
 
-.form-control-lg.form-control-icon,
-.input-group-lg > .form-control.form-control-icon {
+.form-control-large.form-control-icon,
+.input-group-large > .form-control.form-control-icon {
   padding-right: 3.375rem;
-  background-position: center right 0.601563rem;
-  background-size: 1.203125rem 1.203125rem;
+  background-position: center right 0.578125rem;
+  background-size: 1.15625rem 1.15625rem;
 }
 
-.form-control-xl.form-control-icon,
-.input-group-xl > .form-control.form-control-icon {
+.form-control-xlarge.form-control-icon,
+.input-group-xlarge > .form-control.form-control-icon {
   padding-right: 3.75rem;
-  background-position: center right 0.703125rem;
-  background-size: 1.40625rem 1.40625rem;
+  background-position: center right 0.65625rem;
+  background-size: 1.3125rem 1.3125rem;
 }
 
 .form-inline {
@@ -1429,36 +1421,44 @@ fieldset:disabled .form-check-label {
   opacity: 0;
 }
 
-.custom-select-xs {
-  height: calc(1.3125rem + 2px);
-  padding: 0.09375rem 0.1875rem;
+.custom-select-xsmall {
+  height: calc(1.375rem + 2px);
+  padding: 0.125rem 0.1875rem;
   padding-right: 1.125rem;
   font-size: 0.75rem;
+  line-height: 1.5;
   background-position: right 0.1875rem center;
+  border-radius: 0.1875rem;
 }
 
-.custom-select-sm {
-  height: calc(1.59375rem + 2px);
-  padding: 0.140625rem 0.25rem;
+.custom-select-small {
+  height: calc(1.6875rem + 2px);
+  padding: 0.1875rem 0.25rem;
   padding-right: 1.25rem;
   font-size: 0.875rem;
+  line-height: 1.5;
   background-position: right 0.25rem center;
+  border-radius: 0.1875rem;
 }
 
-.custom-select-lg {
-  height: calc(2.40625rem + 2px);
-  padding: 0.359375rem 0.5625rem;
+.custom-select-large {
+  height: calc(2.3125rem + 2px);
+  padding: 0.3125rem 0.5625rem;
   padding-right: 1.875rem;
   font-size: 1.125rem;
+  line-height: 1.5;
   background-position: right 0.5625rem center;
+  border-radius: 0.3125rem;
 }
 
-.custom-select-xl {
-  height: calc(2.8125rem + 2px);
-  padding: 0.46875rem 0.625rem;
+.custom-select-xlarge {
+  height: calc(2.625rem + 2px);
+  padding: 0.375rem 0.625rem;
   padding-right: 2rem;
   font-size: 1.25rem;
+  line-height: 1.5;
   background-position: right 0.625rem center;
+  border-radius: 0.3125rem;
 }
 
 .custom-file {
@@ -1567,7 +1567,7 @@ fieldset:disabled .form-check-label {
 .btn {
   display: inline-block;
   font-weight: normal;
-  line-height: 1.25;
+  line-height: 1.5;
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
@@ -1577,8 +1577,9 @@ fieldset:disabled .form-check-label {
       -ms-user-select: none;
           user-select: none;
   border: 1px solid transparent;
-  padding: 0.375rem 0.75rem;
+  padding: 0.25rem 0.75rem;
   font-size: 1rem;
+  line-height: 1.5;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   color: #5e7182;
@@ -2331,27 +2332,31 @@ fieldset:disabled a.btn,
   color: #003ca3;
 }
 
-.btn-xs, .btn-group-xs > .btn {
-  padding: 0.1875rem 0.375rem;
+.btn-xsmall, .btn-group-xsmall > .btn {
+  padding: 0.125rem 0.375rem;
   font-size: 0.75rem;
+  line-height: 1.5;
   border-radius: 0.1875rem;
 }
 
-.btn-sm, .btn-group-sm > .btn {
-  padding: 0.25rem 0.5rem;
+.btn-small, .btn-group-small > .btn {
+  padding: 0.1875rem 0.5rem;
   font-size: 0.875rem;
+  line-height: 1.5;
   border-radius: 0.1875rem;
 }
 
-.btn-lg, .btn-group-lg > .btn {
-  padding: 0.5rem 1.125rem;
+.btn-large, .btn-group-large > .btn {
+  padding: 0.3125rem 1.125rem;
   font-size: 1.125rem;
+  line-height: 1.5;
   border-radius: 0.3125rem;
 }
 
-.btn-xl, .btn-group-xl > .btn {
-  padding: 0.625rem 1.25rem;
+.btn-xlarge, .btn-group-xlarge > .btn {
+  padding: 0.375rem 1.25rem;
   font-size: 1.25rem;
+  line-height: 1.5;
   border-radius: 0.3125rem;
 }
 
@@ -3718,22 +3723,22 @@ button.list-item-action {
   padding-left: 0.5625rem;
 }
 
-.btn-xs > .dropdown-toggle-split, .btn-group-xs > .btn > .dropdown-toggle-split {
+.btn-xsmall > .dropdown-toggle-split, .btn-group-xsmall > .btn > .dropdown-toggle-split {
   padding-right: 0.28125rem;
   padding-left: 0.28125rem;
 }
 
-.btn-sm > .dropdown-toggle-split, .btn-group-sm > .btn > .dropdown-toggle-split {
+.btn-small > .dropdown-toggle-split, .btn-group-small > .btn > .dropdown-toggle-split {
   padding-right: 0.375rem;
   padding-left: 0.375rem;
 }
 
-.btn-lg > .dropdown-toggle-split, .btn-group-lg > .btn > .dropdown-toggle-split {
+.btn-large > .dropdown-toggle-split, .btn-group-large > .btn > .dropdown-toggle-split {
   padding-right: 0.84375rem;
   padding-left: 0.84375rem;
 }
 
-.btn-xl > .dropdown-toggle-split, .btn-group-xl > .btn > .dropdown-toggle-split {
+.btn-xlarge > .dropdown-toggle-split, .btn-group-xlarge > .btn > .dropdown-toggle-split {
   padding-right: 0.9375rem;
   padding-left: 0.9375rem;
 }
@@ -3931,26 +3936,26 @@ button.list-item-action {
   margin-left: 0;
 }
 
-.input-group-xs > .input-group-addon,
-.input-group-xs > .input-group-btn > .btn {
+.input-group-xsmall > .input-group-addon,
+.input-group-xsmall > .input-group-btn > .btn {
   padding-right: 0.375rem;
   padding-left: 0.375rem;
 }
 
-.input-group-sm > .input-group-addon,
-.input-group-sm > .input-group-btn > .btn {
+.input-group-small > .input-group-addon,
+.input-group-small > .input-group-btn > .btn {
   padding-right: 0.5rem;
   padding-left: 0.5rem;
 }
 
-.input-group-lg > .input-group-addon,
-.input-group-lg > .input-group-btn > .btn {
+.input-group-large > .input-group-addon,
+.input-group-large > .input-group-btn > .btn {
   padding-right: 1.125rem;
   padding-left: 1.125rem;
 }
 
-.input-group-xl > .input-group-addon,
-.input-group-xl > .input-group-btn > .btn {
+.input-group-xlarge > .input-group-addon,
+.input-group-xlarge > .input-group-btn > .btn {
   padding-right: 1.25rem;
   padding-left: 1.25rem;
 }
@@ -4038,8 +4043,8 @@ button.list-item-action {
   -ms-flex-pack: center;
       justify-content: center;
   min-width: 2.25em;
-  padding: 0.375rem 0.5em;
-  line-height: 1.25;
+  padding: 0.25rem 0.5em;
+  line-height: 1.5;
   border: 0 solid #9eaab4;
   border-radius: 0.25rem;
 }
@@ -4073,31 +4078,35 @@ button.list-item-action {
   background-color: transparent;
 }
 
-.pagination-xs .page-text,
-.pagination-xs .page-link {
-  padding: 0.1875rem 0.5em;
+.pagination-xsmall .page-text,
+.pagination-xsmall .page-link {
+  padding: 0.125rem 0.5em;
   font-size: 0.75rem;
+  line-height: 1.5;
   border-radius: 0.1875rem;
 }
 
-.pagination-sm .page-text,
-.pagination-sm .page-link {
-  padding: 0.25rem 0.5em;
+.pagination-small .page-text,
+.pagination-small .page-link {
+  padding: 0.1875rem 0.5em;
   font-size: 0.875rem;
+  line-height: 1.5;
   border-radius: 0.1875rem;
 }
 
-.pagination-lg .page-text,
-.pagination-lg .page-link {
-  padding: 0.5rem 0.5em;
+.pagination-large .page-text,
+.pagination-large .page-link {
+  padding: 0.3125rem 0.5em;
   font-size: 1.125rem;
+  line-height: 1.5;
   border-radius: 0.3125rem;
 }
 
-.pagination-xl .page-text,
-.pagination-xl .page-link {
-  padding: 0.625rem 0.5em;
+.pagination-xlarge .page-text,
+.pagination-xlarge .page-link {
+  padding: 0.375rem 0.5em;
   font-size: 1.25rem;
+  line-height: 1.5;
   border-radius: 0.3125rem;
 }
 
@@ -4622,7 +4631,7 @@ li .dropdown-header {
 }
 
 .navbar-toggle {
-  padding: 0.375rem 0.75rem;
+  padding: 0.25rem 0.75rem;
   font-size: 1.25rem;
   line-height: 1;
   background-color: transparent;
@@ -6215,100 +6224,104 @@ a.badge:hover, a.badge:focus {
   background-color: #343e48;
 }
 
-.switch-xs .switch-control {
+.switch-xsmall .switch-control {
   width: 3rem;
-  height: calc(1.3125rem + 2px);
+  height: calc(1.375rem + 2px);
   font-size: 0.75rem;
+  line-height: 1.5;
   border-radius: 0.1875rem;
 }
 
-.switch-xs .switch-control::before {
+.switch-xsmall .switch-control::before {
   border-radius: calc(0.1875rem - 1px);
 }
 
-.switch-xs .switch-description {
+.switch-xsmall .switch-description {
   font-size: 0.75rem;
 }
 
-.switch-xs.switch-rounded .switch-control {
-  border-radius: calc(1.3125rem + 2px);
+.switch-xsmall.switch-rounded .switch-control {
+  border-radius: calc(1.375rem + 2px);
 }
 
-.switch-xs.switch-rounded .switch-control::before {
-  width: 1.3125rem;
-  border-radius: 1.3125rem;
+.switch-xsmall.switch-rounded .switch-control::before {
+  width: 1.375rem;
+  border-radius: 1.375rem;
 }
 
-.switch-sm .switch-control {
+.switch-small .switch-control {
   width: 3.5rem;
-  height: calc(1.59375rem + 2px);
+  height: calc(1.6875rem + 2px);
   font-size: 0.875rem;
+  line-height: 1.5;
   border-radius: 0.1875rem;
 }
 
-.switch-sm .switch-control::before {
+.switch-small .switch-control::before {
   border-radius: calc(0.1875rem - 1px);
 }
 
-.switch-sm .switch-description {
+.switch-small .switch-description {
   font-size: 0.875rem;
 }
 
-.switch-sm.switch-rounded .switch-control {
-  border-radius: calc(1.59375rem + 2px);
+.switch-small.switch-rounded .switch-control {
+  border-radius: calc(1.6875rem + 2px);
 }
 
-.switch-sm.switch-rounded .switch-control::before {
-  width: 1.59375rem;
-  border-radius: 1.59375rem;
+.switch-small.switch-rounded .switch-control::before {
+  width: 1.6875rem;
+  border-radius: 1.6875rem;
 }
 
-.switch-lg .switch-control {
+.switch-large .switch-control {
   width: 4.5rem;
-  height: calc(2.40625rem + 2px);
+  height: calc(2.3125rem + 2px);
   font-size: 1.125rem;
+  line-height: 1.5;
   border-radius: 0.3125rem;
 }
 
-.switch-lg .switch-control::before {
+.switch-large .switch-control::before {
   border-radius: calc(0.3125rem - 1px);
 }
 
-.switch-lg .switch-description {
+.switch-large .switch-description {
   font-size: 1.125rem;
 }
 
-.switch-lg.switch-rounded .switch-control {
-  border-radius: calc(2.40625rem + 2px);
+.switch-large.switch-rounded .switch-control {
+  border-radius: calc(2.3125rem + 2px);
 }
 
-.switch-lg.switch-rounded .switch-control::before {
-  width: 2.40625rem;
-  border-radius: 2.40625rem;
+.switch-large.switch-rounded .switch-control::before {
+  width: 2.3125rem;
+  border-radius: 2.3125rem;
 }
 
-.switch-xl .switch-control {
+.switch-xlarge .switch-control {
   width: 5rem;
-  height: calc(2.8125rem + 2px);
+  height: calc(2.625rem + 2px);
   font-size: 1.25rem;
+  line-height: 1.5;
   border-radius: 0.3125rem;
 }
 
-.switch-xl .switch-control::before {
+.switch-xlarge .switch-control::before {
   border-radius: calc(0.3125rem - 1px);
 }
 
-.switch-xl .switch-description {
+.switch-xlarge .switch-description {
   font-size: 1.25rem;
 }
 
-.switch-xl.switch-rounded .switch-control {
-  border-radius: calc(2.8125rem + 2px);
+.switch-xlarge.switch-rounded .switch-control {
+  border-radius: calc(2.625rem + 2px);
 }
 
-.switch-xl.switch-rounded .switch-control::before {
-  width: 2.8125rem;
-  border-radius: 2.8125rem;
+.switch-xlarge.switch-rounded .switch-control::before {
+  width: 2.625rem;
+  border-radius: 2.625rem;
 }
 
 .modal-open {
@@ -9072,163 +9085,163 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
   border-bottom-left-radius: 0.25rem;
 }
 
-.radius-xs {
+.radius-xsmall {
   border-radius: 0.1875rem;
 }
 
-.radius-t-xs {
+.radius-t-xsmall {
   border-top-left-radius: 0.1875rem;
   border-top-right-radius: 0.1875rem;
 }
 
-.radius-e-xs {
+.radius-e-xsmall {
   border-top-right-radius: 0.1875rem;
   border-bottom-right-radius: 0.1875rem;
 }
 
-.radius-b-xs {
+.radius-b-xsmall {
   border-bottom-right-radius: 0.1875rem;
   border-bottom-left-radius: 0.1875rem;
 }
 
-.radius-s-xs {
+.radius-s-xsmall {
   border-top-left-radius: 0.1875rem;
   border-bottom-left-radius: 0.1875rem;
 }
 
-.radius-te-xs {
+.radius-te-xsmall {
   border-top-right-radius: 0.1875rem;
 }
 
-.radius-ts-xs {
+.radius-ts-xsmall {
   border-top-left-radius: 0.1875rem;
 }
 
-.radius-be-xs {
+.radius-be-xsmall {
   border-bottom-right-radius: 0.1875rem;
 }
 
-.radius-bs-xs {
+.radius-bs-xsmall {
   border-bottom-left-radius: 0.1875rem;
 }
 
-.radius-sm {
+.radius-small {
   border-radius: 0.1875rem;
 }
 
-.radius-t-sm {
+.radius-t-small {
   border-top-left-radius: 0.1875rem;
   border-top-right-radius: 0.1875rem;
 }
 
-.radius-e-sm {
+.radius-e-small {
   border-top-right-radius: 0.1875rem;
   border-bottom-right-radius: 0.1875rem;
 }
 
-.radius-b-sm {
+.radius-b-small {
   border-bottom-right-radius: 0.1875rem;
   border-bottom-left-radius: 0.1875rem;
 }
 
-.radius-s-sm {
+.radius-s-small {
   border-top-left-radius: 0.1875rem;
   border-bottom-left-radius: 0.1875rem;
 }
 
-.radius-te-sm {
+.radius-te-small {
   border-top-right-radius: 0.1875rem;
 }
 
-.radius-ts-sm {
+.radius-ts-small {
   border-top-left-radius: 0.1875rem;
 }
 
-.radius-be-sm {
+.radius-be-small {
   border-bottom-right-radius: 0.1875rem;
 }
 
-.radius-bs-sm {
+.radius-bs-small {
   border-bottom-left-radius: 0.1875rem;
 }
 
-.radius-lg {
+.radius-large {
   border-radius: 0.3125rem;
 }
 
-.radius-t-lg {
+.radius-t-large {
   border-top-left-radius: 0.3125rem;
   border-top-right-radius: 0.3125rem;
 }
 
-.radius-e-lg {
+.radius-e-large {
   border-top-right-radius: 0.3125rem;
   border-bottom-right-radius: 0.3125rem;
 }
 
-.radius-b-lg {
+.radius-b-large {
   border-bottom-right-radius: 0.3125rem;
   border-bottom-left-radius: 0.3125rem;
 }
 
-.radius-s-lg {
+.radius-s-large {
   border-top-left-radius: 0.3125rem;
   border-bottom-left-radius: 0.3125rem;
 }
 
-.radius-te-lg {
+.radius-te-large {
   border-top-right-radius: 0.3125rem;
 }
 
-.radius-ts-lg {
+.radius-ts-large {
   border-top-left-radius: 0.3125rem;
 }
 
-.radius-be-lg {
+.radius-be-large {
   border-bottom-right-radius: 0.3125rem;
 }
 
-.radius-bs-lg {
+.radius-bs-large {
   border-bottom-left-radius: 0.3125rem;
 }
 
-.radius-xl {
+.radius-xlarge {
   border-radius: 0.3125rem;
 }
 
-.radius-t-xl {
+.radius-t-xlarge {
   border-top-left-radius: 0.3125rem;
   border-top-right-radius: 0.3125rem;
 }
 
-.radius-e-xl {
+.radius-e-xlarge {
   border-top-right-radius: 0.3125rem;
   border-bottom-right-radius: 0.3125rem;
 }
 
-.radius-b-xl {
+.radius-b-xlarge {
   border-bottom-right-radius: 0.3125rem;
   border-bottom-left-radius: 0.3125rem;
 }
 
-.radius-s-xl {
+.radius-s-xlarge {
   border-top-left-radius: 0.3125rem;
   border-bottom-left-radius: 0.3125rem;
 }
 
-.radius-te-xl {
+.radius-te-xlarge {
   border-top-right-radius: 0.3125rem;
 }
 
-.radius-ts-xl {
+.radius-ts-xlarge {
   border-top-left-radius: 0.3125rem;
 }
 
-.radius-be-xl {
+.radius-be-xlarge {
   border-bottom-right-radius: 0.3125rem;
 }
 
-.radius-bs-xl {
+.radius-bs-xlarge {
   border-bottom-left-radius: 0.3125rem;
 }
 
