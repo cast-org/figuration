@@ -64,7 +64,7 @@
 // Sizing
 // Remix the button sizing classes into new ones for easier manipulation
 @if $enable-sizing {
-    @each $size, $dims in $component-sizes {
+    @each $size, $dims in $btn-sizes {
         .btn-group-#{$size} > .btn { @extend .btn-#{$size}; }
     }
 }
@@ -75,7 +75,7 @@
     padding-left: $btn-padding-x * .75;
 }
 @if $enable-sizing {
-    @each $size, $dims in $component-sizes {
+    @each $size, $dims in $btn-sizes {
         $sz-padding-x: map-get($dims, "padding-x");
 
         .btn-#{$size} > .dropdown-toggle-split {
