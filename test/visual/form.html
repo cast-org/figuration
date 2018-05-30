@@ -29,22 +29,101 @@
 
 <h1>Form</h1>
 
+<h2>Standard Inputs</h2>
+
+<form>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="exampleSelect1">Example select</label>
+        <select class="form-control" id="exampleSelect1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleSelect2">Example multiple select</label>
+        <select multiple class="form-control" id="exampleSelect2">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleTextarea">Example textarea</label>
+        <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputFile">File input</label>
+        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+        <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputColor">Color input</label>
+        <input type="color" class="form-control-color" value="#117dba" id="exampleInputColor">
+    </div>
+    <fieldset class="form-group">
+        <legend>Radio buttons</legend>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                Option one is this and that&mdash;be sure to include why it's great
+            </label>
+        </div>
+        <div class="form-check">
+        <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+            Option two can be something else and selecting it will deselect option one
+        </label>
+        </div>
+        <div class="form-check disabled">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+                Option three is disabled
+            </label>
+        </div>
+    </fieldset>
+    <div class="form-check">
+        <fieldset>
+            <legend>Checkbox</legend>
+            <label class="form-check-label">
+                <input type="checkbox" class="form-check-input"> Check me out
+            </label>
+        </fieldset>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
 <h2>Select Sizing Comparison:</h2>
 <div class="select-sizing">
     <form class="row">
       <div class="col-md-2 text-end">
-        <button type="button" class="btn btn-primary btn-xs">Test</button>
+        <button type="button" class="btn btn-primary btn-xsmall">Test</button>
       </div>
       <div class="col-md-1">
-        <label class="form-control-label form-control-label-xs">Label</label>
+        <label class="form-control-label form-control-label-xsmall">Label</label>
       </div>
       <fieldset class="form-group col-md-3">
         <label for="size0-0" class="sr-only">Example label</label>
-        <input type="text" class="form-control form-control-xs" id="size0-0" placeholder="Example input">
+        <input type="text" class="form-control form-control-xsmall" id="size0-0" placeholder="Example input">
       </fieldset>
       <fieldset class="form-group col-md-3">
         <label for="size0-1" class="sr-only">Example select</label>
-        <select class="form-control form-control-xs" id="size0-1">
+        <select class="form-control form-control-xsmall" id="size0-1">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -54,7 +133,7 @@
       </fieldset>
       <fieldset class="form-group col-md-3">
         <label for="size0-2" class="sr-only">Example select</label>
-        <select class="custom-select custom-select-xs" id="size0-2">
+        <select class="custom-select custom-select-xsmall" id="size0-2">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -65,18 +144,18 @@
     </form>
     <form class="row">
       <div class="col-md-2 text-end">
-        <button type="button" class="btn btn-primary btn-sm">Test</button>
+        <button type="button" class="btn btn-primary btn-small">Test</button>
       </div>
       <div class="col-md-1">
-        <label class="form-control-label form-control-label-sm">Label</label>
+        <label class="form-control-label form-control-label-small">Label</label>
       </div>
       <fieldset class="form-group col-md-3">
         <label for="size1-0" class="sr-only">Example label</label>
-        <input type="text" class="form-control form-control-sm" id="size1-0" placeholder="Example input">
+        <input type="text" class="form-control form-control-small" id="size1-0" placeholder="Example input">
       </fieldset>
       <fieldset class="form-group col-md-3">
         <label for="size1-1" class="sr-only">Example select</label>
-        <select class="form-control form-control-sm" id="size1-1">
+        <select class="form-control form-control-small" id="size1-1">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -86,7 +165,7 @@
       </fieldset>
       <fieldset class="form-group col-md-3">
         <label for="size1-2" class="sr-only">Example select</label>
-        <select class="custom-select custom-select-sm" id="size1-2">
+        <select class="custom-select custom-select-small" id="size1-2">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -129,18 +208,18 @@
     </form>
     <form class="row">
       <div class="col-md-2 text-end">
-        <button type="button" class="btn btn-primary btn-lg">Test</button>
+        <button type="button" class="btn btn-primary btn-large">Test</button>
       </div>
       <div class="col-md-1">
-        <label class="form-control-label form-control-label-lg">Label</label>
+        <label class="form-control-label form-control-label-large">Label</label>
       </div>
       <fieldset class="form-group col-md-3">
         <label for="size3-0" class="sr-only">Example label</label>
-        <input type="text" class="form-control form-control-lg" id="size3-0" placeholder="Example input">
+        <input type="text" class="form-control form-control-large" id="size3-0" placeholder="Example input">
       </fieldset>
       <fieldset class="form-group col-md-3">
         <label for="size3-1" class="sr-only">Example select</label>
-        <select class="form-control form-control-lg" id="size3-1">
+        <select class="form-control form-control-large" id="size3-1">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -150,7 +229,7 @@
       </fieldset>
       <fieldset class="form-group col-md-3">
         <label for="size3-2" class="sr-only">Example select</label>
-        <select class="custom-select custom-select-lg" id="size3-2">
+        <select class="custom-select custom-select-large" id="size3-2">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -161,18 +240,18 @@
     </form>
     <form class="row">
       <div class="col-md-2 text-end">
-        <button type="button" class="btn btn-primary btn-xl">Test</button>
+        <button type="button" class="btn btn-primary btn-xlarge">Test</button>
       </div>
       <div class="col-md-1">
-        <label class="form-control-label form-control-label-xl">Label</label>
+        <label class="form-control-label form-control-label-xlarge">Label</label>
       </div>
       <fieldset class="form-group col-md-3">
         <label for="size4-0" class="sr-only">Example label</label>
-        <input type="text" class="form-control form-control-xl" id="size4-0" placeholder="Example input">
+        <input type="text" class="form-control form-control-xlarge" id="size4-0" placeholder="Example input">
       </fieldset>
       <fieldset class="form-group col-md-3">
         <label for="size4-1" class="sr-only">Example select</label>
-        <select class="form-control form-control-xl" id="size4-1">
+        <select class="form-control form-control-xlarge" id="size4-1">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -182,7 +261,7 @@
       </fieldset>
       <fieldset class="form-group col-md-3">
         <label for="size4-2" class="sr-only">Example select</label>
-        <select class="custom-select custom-select-xl" id="size4-2">
+        <select class="custom-select custom-select-xlarge" id="size4-2">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -197,19 +276,19 @@
 
 <h2>Select Sizing:</h2>
 <div class="mb-1">
-    <select class="form-control form-control-xl">
+    <select class="form-control form-control-xlarge">
         <option>Extra large select</option>
     </select>
-    <select class="form-control form-control-lg">
+    <select class="form-control form-control-large">
         <option>Large select</option>
     </select>
     <select class="form-control">
         <option>Default select</option>
     </select>
-    <select class="form-control form-control-sm">
+    <select class="form-control form-control-small">
         <option>Small select</option>
     </select>
-    <select class="form-control form-control-xs">
+    <select class="form-control form-control-xsmall">
         <option>Extra small select</option>
     </select>
 </div>
@@ -218,19 +297,19 @@
 
 <h2>Custom Select Sizing:</h2>
 <div class="mb-1">
-    <select class="custom-select custom-select-xl">
+    <select class="custom-select custom-select-xlarge">
         <option>Extra large select</option>
     </select>
-    <select class="custom-select custom-select-lg">
+    <select class="custom-select custom-select-large">
         <option>Large select</option>
     </select>
     <select class="custom-select">
         <option>Default select</option>
     </select>
-    <select class="custom-select custom-select-sm">
+    <select class="custom-select custom-select-small">
         <option>Small select</option>
     </select>
-    <select class="custom-select custom-select-xs">
+    <select class="custom-select custom-select-xsmall">
         <option>Extra small select</option>
     </select>
 </div>
@@ -239,15 +318,15 @@
 
 <h2>Static and Label Sizing:</h2>
 <div class="form-group row">
-    <label class="col-sm-2 form-control-label form-control-label-xs">Email</label>
+    <label class="col-sm-2 form-control-label form-control-label-xsmall">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-static-xs">email@example.com</p>
+        <p class="form-control-static form-control-static-xsmall">email@example.com</p>
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-sm-2 form-control-label form-control-label-sm">Email</label>
+    <label class="col-sm-2 form-control-label form-control-label-small">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-static-sm">email@example.com</p>
+        <p class="form-control-static form-control-static-small">email@example.com</p>
     </div>
 </div>
 <div class="form-group row">
@@ -257,15 +336,15 @@
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-sm-2 form-control-label form-control-label-lg">Email</label>
+    <label class="col-sm-2 form-control-label form-control-label-large">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-static-lg">email@example.com</p>
+        <p class="form-control-static form-control-static-large">email@example.com</p>
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-sm-2 form-control-label form-control-label-xl">Email</label>
+    <label class="col-sm-2 form-control-label form-control-label-xlarge">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-static-xl">email@example.com</p>
+        <p class="form-control-static form-control-static-xlarge">email@example.com</p>
     </div>
 </div>
 
