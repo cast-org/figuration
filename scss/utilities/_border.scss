@@ -11,7 +11,7 @@
 
 // Radius - Component sizes
 @if $enable-sizing {
-    @each $size, $dims in $component-sizes {
+    @each $size, $dims in $utility-radius-sizes {
         $sz-border-radius: map-get($dims, "border-radius");
 
         @include radius-sides($sz-border-radius, $size);

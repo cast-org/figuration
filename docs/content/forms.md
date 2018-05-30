@@ -648,30 +648,30 @@ Add the `readonly` boolean attribute on an input to prevent modification of the 
 
 ## Control Sizing
 
-Set heights using classes like `.form-control-lg`, and set widths using grid column classes like `.col-lg-*`.
+Set heights using classes like `.form-control-large`, and set widths using grid column classes like `.col-lg-*`.
 
 {% example html %}
-<input class="form-control form-control-xl" type="text" placeholder=".form-control-xl">
-<input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
+<input class="form-control form-control-xlarge" type="text" placeholder=".form-control-xlarge">
+<input class="form-control form-control-large" type="text" placeholder=".form-control-large">
 <input class="form-control" type="text" placeholder="Default input">
-<input class="form-control form-control-sm" type="text" placeholder=".form-control-sm">
-<input class="form-control form-control-xs" type="text" placeholder=".form-control-xs">
+<input class="form-control form-control-small" type="text" placeholder=".form-control-small">
+<input class="form-control form-control-xsmall" type="text" placeholder=".form-control-xsmall">
 {% endexample %}
 
 {% example html %}
-<select class="form-control form-control-xl">
+<select class="form-control form-control-xlarge">
   <option>Extra large select</option>
 </select>
-<select class="form-control form-control-lg">
+<select class="form-control form-control-large">
   <option>Large select</option>
 </select>
 <select class="form-control">
   <option>Default select</option>
 </select>
-<select class="form-control form-control-sm">
+<select class="form-control form-control-small">
   <option>Small select</option>
 </select>
-<select class="form-control form-control-xs">
+<select class="form-control form-control-xsmall">
   <option>Extra small select</option>
 </select>
 {% endexample %}
@@ -682,15 +682,15 @@ Just like sizing the form inputs, you can size labels by adding `.form-control-l
 
 {% example html %}
 <div class="form-group row">
-    <label class="col-sm-2 form-control-label form-control-label-xs">Email</label>
+    <label class="col-sm-2 form-control-label form-control-label-xsmall">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-static-xs">email@example.com</p>
+        <p class="form-control-static form-control-static-xsmall">email@example.com</p>
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-sm-2 form-control-label form-control-label-sm">Email</label>
+    <label class="col-sm-2 form-control-label form-control-label-small">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-static-sm">email@example.com</p>
+        <p class="form-control-static form-control-static-small">email@example.com</p>
     </div>
 </div>
 <div class="form-group row">
@@ -700,15 +700,15 @@ Just like sizing the form inputs, you can size labels by adding `.form-control-l
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-sm-2 form-control-label form-control-label-lg">Email</label>
+    <label class="col-sm-2 form-control-label form-control-label-large">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-static-lg">email@example.com</p>
+        <p class="form-control-static form-control-static-large">email@example.com</p>
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-sm-2 form-control-label form-control-label-xl">Email</label>
+    <label class="col-sm-2 form-control-label form-control-label-xlarge">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-static-xl">email@example.com</p>
+        <p class="form-control-static form-control-static-xlarge">email@example.com</p>
     </div>
 </div>
 {% endexample %}
@@ -1057,19 +1057,19 @@ Custom `<select>` menus need only a custom class, `.custom-select` to trigger th
 Multiple size are also available.
 
 {% example html %}
-<select class="custom-select custom-select-xl">
+<select class="custom-select custom-select-xlarge">
   <option>Extra large select</option>
 </select>
-<select class="custom-select custom-select-lg">
+<select class="custom-select custom-select-large">
   <option>Large select</option>
 </select>
 <select class="custom-select">
   <option>Default select</option>
 </select>
-<select class="custom-select custom-select-sm">
+<select class="custom-select custom-select-small">
   <option>Small select</option>
 </select>
-<select class="custom-select custom-select-xs">
+<select class="custom-select custom-select-xsmall">
   <option>Extra small select</option>
 </select>
 {% endexample %}

@@ -11,7 +11,7 @@
     vertical-align: middle;
     user-select: none;
     border: $btn-border-width solid transparent;
-    @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
+    @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
     @include box-shadow($btn-box-shadow);
     @include transition($btn-transition);
 
@@ -127,14 +127,15 @@ fieldset:disabled a.btn,
 
 // Button sizes
 @if $enable-sizing {
-    @each $size, $dims in $component-sizes {
+    @each $size, $dims in $btn-sizes {
         $sz-font-size:     map-get($dims, "font-size");
+        $sz-line-height:   map-get($dims, "line-height");
         $sz-padding-y:     map-get($dims, "padding-y");
         $sz-padding-x:     map-get($dims, "padding-x");
         $sz-border-radius: map-get($dims, "border-radius");
 
         .btn-#{$size} {
-            @include button-size($sz-padding-y, $sz-padding-x, $sz-font-size, $sz-border-radius);
+            @include button-size($sz-padding-y, $sz-padding-x, $sz-font-size,  $sz-line-height, $sz-border-radius);
         }
     }
 }

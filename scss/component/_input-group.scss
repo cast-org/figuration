@@ -159,7 +159,7 @@
 // Sizing options
 // Remix the default form control sizing classes into new ones for easier manipulation.
 @if $enable-sizing {
-    @each $size, $dims in $component-sizes {
+    @each $size, $dims in $input-sizes {
         $sz-padding-x:     map-get($dims, "padding-x");
 
         .input-group-#{$size} > .form-control,

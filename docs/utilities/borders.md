@@ -74,18 +74,18 @@ The *start/end sides* are designated as follows depending on which version of th
 
 A few sizes are available using the [component sizing options]({{ site.baseurl }}/get-started/options/#component-sizes).  Classes are built in the form `.radius{-side}-{size}`.
 
-By default the `xs` and `sm` sizes are the same radius.  Also the `lg` and `xl` sizes are the same radius.
+By default the `xsmall` and `small` sizes are the same radius.  Also the `large` and `xlarge` sizes are the same radius.
 
 <div class="cf-example">
-    <img data-src="holder.js/100x100?text=Small" class="radius-sm" alt="A generic square placeholder image with lightly rounded corners" />
+    <img data-src="holder.js/100x100?text=Small" class="radius-small" alt="A generic square placeholder image with lightly rounded corners" />
     <img data-src="holder.js/100x100?text=Default" class="radius" alt="A generic square placeholder image with rounded corners" />
-    <img data-src="holder.js/100x100?text=Large" class="radius-lg" alt="A generic square placeholder image with more rounded corners" />
+    <img data-src="holder.js/100x100?text=Large" class="radius-large" alt="A generic square placeholder image with more rounded corners" />
 </div>
 
 {% highlight html %}
-<img src="..." class="radius-sm" alt="...">
+<img src="..." class="radius-small" alt="...">
 <img src="..." class="radius" alt="...">
-<img src="..." class="radius-lg" alt="...">
+<img src="..." class="radius-large" alt="...">
 {% endhighlight %}
 
 ### Removing

@@ -79,36 +79,36 @@ In need of a button, but not the hefty background colors they bring? Replace the
 
 ## Sizes
 
-Fancy larger or smaller buttons? Add `.btn-xs`, `.btn-sm`, `.btn-lg`, or `.btn-xl` for additional sizes.
+Fancy larger or smaller buttons? Add `.btn-xsmall`, `.btn-small`, `.btn-large`, or `.btn-xlarge` for additional sizes.
 
 {% example html %}
 <p>
-  <button type="button" class="btn btn-primary btn-xl">Extra Large button</button>
-  <button type="button" class="btn btn-xl">Extra Large button</button>
+  <button type="button" class="btn btn-primary btn-xlarge">Extra Large button</button>
+  <button type="button" class="btn btn-xlarge">Extra Large button</button>
 </p>
 <p>
-  <button type="button" class="btn btn-primary btn-lg">Large button</button>
-  <button type="button" class="btn btn-lg">Large button</button>
+  <button type="button" class="btn btn-primary btn-large">Large button</button>
+  <button type="button" class="btn btn-large">Large button</button>
 </p>
 <p>
   <button type="button" class="btn btn-primary">Default button</button>
   <button type="button" class="btn">Default button</button>
 </p>
 <p>
-  <button type="button" class="btn btn-primary btn-sm">Small button</button>
-  <button type="button" class="btn btn-sm">Small button</button>
+  <button type="button" class="btn btn-primary btn-small">Small button</button>
+  <button type="button" class="btn btn-small">Small button</button>
 </p>
 <p>
-  <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
-  <button type="button" class="btn btn-xs">Extra small button</button>
+  <button type="button" class="btn btn-primary btn-xsmall">Extra small button</button>
+  <button type="button" class="btn btn-xsmall">Extra small button</button>
 </p>
 {% endexample %}
 
 Create block level buttons---those that span the full width of a parent---by adding `.btn-block`.
 
 {% example html %}
-<button type="button" class="btn btn-primary btn-lg btn-block">Large Block level button</button>
-<button type="button" class="btn btn-success btn-sm btn-block">Small Block level button</button>
+<button type="button" class="btn btn-primary btn-large btn-block">Large Block level button</button>
+<button type="button" class="btn btn-success btn-small btn-block">Small Block level button</button>
 {% endexample %}
 
 ## Active State

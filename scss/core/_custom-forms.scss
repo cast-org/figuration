@@ -119,7 +119,7 @@
 .custom-select {
     display: block;
     width: 100%;
-    height: $select-height;
+    height: $input-height-outer;
     padding: $input-padding-y (($input-padding-x / 2) + $custom-select-indicator-padding) $input-padding-y ($input-padding-x / 2);
     color: $input-color;
     vertical-align: middle;
@@ -173,20 +173,24 @@
 
 // Select sizes
 @if $enable-sizing {
-    @each $size, $dims in $component-sizes {
+    @each $size, $dims in $input-sizes {
         $sz-font-size:     map-get($dims, "font-size");
-        $sz-padding-y:     map-get($dims, "padding-y") - ($input-line-height-delta * $sz-font-size / 2);
+        $sz-line-height:   map-get($dims, "line-height");
+        $sz-padding-y:     map-get($dims, "padding-y");
         $sz-padding-x:     map-get($dims, "padding-x");
-        $sz-input-height:  (($sz-font-size * $input-line-height) + ($sz-padding-y * 2));
-        $sz-select-height: calc(#{$sz-input-height} + #{($border-width * 2)});
+        $sz-border-radius: map-get($dims, "border-radius");
+        $sz-inner-height:  (($sz-font-size * $sz-line-height) + ($sz-padding-y * 2));
+        $sz-outer-height:  calc(#{$sz-inner-height} + #{($border-width * 2)});
 
         // stylelint-disable declaration-block-no-duplicate-properties
         .custom-select-#{$size} {
-            height: $sz-select-height;
+            height: $sz-outer-height;
             padding: $sz-padding-y ($sz-padding-x / 2);
             padding-right: ($sz-padding-x + $custom-select-indicator-padding);
             @include font-size($sz-font-size);
+            line-height: $sz-line-height;
             background-position: right ($sz-padding-x / 2) center;
+            @include border-radius($sz-border-radius);
         }
         // stylelint-enable declaration-block-no-duplicate-properties
     }
@@ -198,14 +202,14 @@
     position: relative;
     display: inline-block;
     width: 100%;
-    height: $select-height;
+    height: $input-height-outer;
     margin-bottom: 0;
 }
 
 .custom-file-input {
     min-width: $custom-file-width;
     max-width: 100%;
-    height: $select-height;
+    height: $input-height-outer;
     margin: 0;
     opacity: 0;
 
@@ -225,7 +229,7 @@
     right: 0;
     left: 0;
     z-index: 1;
-    height: $select-height;
+    height: $input-height-outer;
     padding: $input-padding-y ($input-padding-x / 2);
     overflow: hidden;
     line-height: $input-line-height;
@@ -254,7 +258,7 @@
         right: 0;
         z-index: 2;
         display: block;
-        height: $select-height;
+        height: $input-height-outer;
         padding: $input-padding-y $input-padding-x;
         line-height: $input-line-height;
         color: $custom-file-button-color;
@@ -276,8 +280,8 @@
 .custom-color {
     display: block;
     width: auto;
-    min-width: $input-height;
-    height: $input-height;
+    min-width: $input-height-inner;
+    height: $input-height-inner;
     @include font-size($font-size-base);
     line-height: $input-line-height;
     color: $input-color;
