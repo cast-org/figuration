@@ -633,7 +633,8 @@ $input-box-shadow:              inset 0 .125em .125em rgba($black, .1) !default;
 $input-focus-color:             $input-color !default;
 $input-focus-bg:                $input-bg !default;
 $input-focus-border-color:      palette($primary, 300) !default;
-$input-focus-box-shadow:        inset 0 .125em .125em rgba($black, .15) !default;
+$input-focus-box-shadow-width:  .1875rem !default;
+$input-focus-box-shadow:        0 0 0 $input-focus-box-shadow-width rgba($component-active-bg, .25) !default;
 
 $input-disabled-color:          $component-disabled-color !default;
 $input-disabled-bg:             $uibase-50 !default;
@@ -641,7 +642,6 @@ $input-disabled-bg:             $uibase-50 !default;
 $input-placeholder-color:       #999 !default;
 
 $form-text-margin-top:          .25rem !default;
-$form-feedback-margin-top:      $form-text-margin-top !default;
 
 $form-check-margin-bottom:      1rem !default;
 $form-check-sibling-margin-top: -.5rem !default;
@@ -650,6 +650,7 @@ $form-check-input-margin-y:     .3125rem !default;
 $form-check-input-margin-x:     .25rem !default;
 $form-check-inline-margin-x:    .75rem !default;
 $form-check-disabled-color:     $component-disabled-color !default;
+$form-check-inline-input-margin-x: .3125rem !default;
 
 $form-group-margin-bottom:      1rem !default;
 
@@ -663,14 +664,6 @@ $form-inline-breakpoint:         sm !default;
 // Additional ones for each size are done during size processing generation
 $input-height-inner:    ($font-size-base * $input-line-height) + ($input-padding-y * 2) !default;
 $input-height-outer:    calc(#{$input-height-inner} + #{($border-width * 2)}) !default;
-
-// Form icons
-// =====
-// From OpenIconic: https://useiconic.com/open
-// Use some functions to recolor icons to match context colors
-$icon-success: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$success}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E"), "#", "%23") !default;
-$icon-warning: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$warning}' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E"), "#", "%23") !default;
-$icon-danger: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{palette($danger, 500)}' viewBox='-2 -2 7 7'%3E%3Cpath stroke='#{$danger}' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E"), "#", "%23") !default;
 
 
 // Custom form controls
@@ -717,19 +710,17 @@ $custom-select-indicator:           url("data:image/svg+xml;charset=utf8,%3Csvg 
 $custom-file-width:                 14rem !default;
 $custom-file-button-color:          $uibase-600 !default;
 $custom-file-button-bg:             $uibase-50 !default;
-
-$custom-file-text: () !default;
-// stylelint-disable
-$custom-file-text-default: (
-    placeholder: (
-        en: "Choose file..."
-    ),
-    button-label: (
-        en: "Browse"
-    )
+$custom-file-text: (
+    en: "Browse"
 ) !default;
-$custom-file-text: map-merge($custom-file-text-default, $custom-file-text);
-// stylelint-enable
+
+// Form validation
+// =====
+$form-feedback-margin-top:      $form-text-margin-top !default;
+$form-feedback-font-size:       $small-font-size !default;
+$form-feedback-valid-color:     map-get($base-colors, "success") !default;
+$form-feedback-invalid-color:   map-get($base-colors, "danger") !default;
+
 
 // Switch
 // =====

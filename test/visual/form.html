@@ -83,10 +83,10 @@
             </label>
         </div>
         <div class="form-check">
-        <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-            Option two can be something else and selecting it will deselect option one
-        </label>
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                Option two can be something else and selecting it will deselect option one
+            </label>
         </div>
         <div class="form-check disabled">
             <label class="form-check-label">
@@ -95,18 +95,130 @@
             </label>
         </div>
     </fieldset>
-    <div class="form-check">
-        <fieldset>
-            <legend>Checkbox</legend>
-            <label class="form-check-label">
-                <input type="checkbox" class="form-check-input"> Check me out
-            </label>
-        </fieldset>
+    <div class="form-group">
+        <div class="form-check">
+            <fieldset>
+                <legend>Checkbox</legend>
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input"> Check me out
+                </label>
+            </fieldset>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="formControlRange">Example Range input</label>
+        <input type="range" class="form-control-range" id="formControlRange">
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </form>
+
+<h2>Readonly</h2>
+<form>
+    <div class="form-group">
+        <label for="inputReadonly">Example Readonly input</label>
+        <input class="form-control" type="text" placeholder="Readonly input" id="inputReadonly" readonly>
+    </div>
+</form>
+
+<h2>Readonly Static Controls</h2>
+<form>
+    <div class="form-group row">
+        <label for="inputEmail" class="col-sm-2 form-control-label">Email</label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-static" id="inputEmail" value="email@example.com">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 form-control-label">Password</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+        </div>
+    </div>
+</form>
+
+<form class="form-inline">
+    <div class="form-group me-0_5">
+        <label for="inputEmail2" class="sr-only">Email</label>
+        <input type="text" readonly class="form-control-static" id="inputEmail2" value="email@example.com">
+    </div>
+    <div class="form-group me-0_5">
+        <label for="inputPassword2" class="sr-only">Password</label>
+        <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Confirm identity</button>
+</form>
+
+<h2>Checkbox</h2>
+<div class="mb-1">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+            Default checkbox
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
+        <label class="form-check-label" for="defaultCheck2">
+            Disabled checkbox
+        </label>
+    </div>
+</div>
+
+<h2>Radio</h2>
+<div class="mb-1">
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+        <label class="form-check-label" for="exampleRadios1">
+            Default radio
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+            Second default radio
+        </label>
+    </div>
+    <div class="form-check disabled">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
+        <label class="form-check-label" for="exampleRadios3">
+            Disabled radio
+        </label>
+    </div>
+</div>
+
+<h2>Checkbox (inline)</h2>
+<div class="mb-1">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+        <label class="form-check-label">1</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+        <label class="form-check-label">2</label>
+    </div>
+    <div class="form-check form-check-inline disabled">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
+        <label class="form-check-label">3</label>
+    </div>
+</div>
+
+<h2>Radio (inline)</h2>
+<div class="mb-1">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+        <label class="form-check-label">1</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <label class="form-check-label">2</label>
+    </div>
+    <div class="form-check form-check-inline disabled">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
+        <label class="form-check-label">3</label>
+    </div>
+</div>
 
 <h2>Select Sizing Comparison:</h2>
 <div class="select-sizing">
