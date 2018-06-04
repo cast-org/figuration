@@ -920,9 +920,13 @@ Showing a <kbd>kdb sample</kbd>
   <div class="form-group">
     <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
     <div class="input-group">
-      <div class="input-group-addon">$</div>
+      <div class="input-group-addon">
+        <span class="input-group-text">$</span>
+      </div>
       <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
-      <div class="input-group-addon">.00</div>
+      <div class="input-group-addon">
+        <span class="input-group-text">.00</span>
+      </div>
     </div>
   </div>
   <button type="submit" class="btn btn-primary">Transfer cash</button>
@@ -1491,50 +1495,70 @@ Showing a <kbd>kdb sample</kbd>
 
 <h3>Input groups</h3>
 <div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">@</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="basic-addon1">@</div>
+  </div>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
 </div>
 <br>
 <div class="input-group">
   <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-  <span class="input-group-addon" id="basic-addon2">@example.com</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="basic-addon2">@example.com</div>
+  </div>
 </div>
 <br>
 <label for="basic-url">Your vanity URL</label>
 <div class="input-group">
-  <span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="basic-addon3">https://example.com/users/</div>
+  </div>
   <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
 </div>
 <br>
 <div class="input-group">
-  <span class="input-group-addon">$</span>
+  <div class="input-group-addon">
+    <div class="input-group-text">$</div>
+  </div>
   <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-  <span class="input-group-addon">.00</span>
+  <div class="input-group-addon">
+    <div class="input-group-text">.00</div>
+  </div>
 </div>
 
 <h3>Input group sizes</h3>
 <div class="input-group input-group-xlarge">
-  <span class="input-group-addon" id="sizing-addon1">@</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="sizing-addon1">@</div>
+  </div>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon1">
 </div>
 <br />
 <div class="input-group input-group-large">
-  <span class="input-group-addon" id="sizing-addon2">@</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="sizing-addon2">@</div>
+  </div>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon2">
 </div>
 <br />
 <div class="input-group">
-  <span class="input-group-addon" id="sizing-addon3">@</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="sizing-addon3">@</div>
+  </div>
   <input type="text" class="form-control" placeholder="Username"aria-label="Username" aria-describedby="sizing-addon3">
 </div>
 <br />
 <div class="input-group input-group-small">
-  <span class="input-group-addon" id="sizing-addon4">@</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="sizing-addon4">@</div>
+  </div>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon4">
 </div>
 <br />
 <div class="input-group input-group-xsmall">
-  <span class="input-group-addon" id="sizing-addon5">@</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="sizing-addon5">@</div>
+  </div>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon5">
 </div>
 <br />
@@ -1543,17 +1567,21 @@ Showing a <kbd>kdb sample</kbd>
 <div class="row">
   <div class="col-lg-6">
     <div class="input-group">
-      <span class="input-group-addon">
-        <input type="checkbox" aria-label="Checkbox for following text input">
-      </span>
+      <div class="input-group-addon">
+        <div class="input-group-text">
+            <input type="checkbox" aria-label="Checkbox for following text input">
+        </div>
+      </div>
       <input type="text" class="form-control" aria-label="Text input with checkbox">
     </div>
   </div>
   <div class="col-lg-6">
     <div class="input-group">
-      <span class="input-group-addon">
-        <input type="radio" aria-label="Radio button for following text input">
-      </span>
+      <div class="input-group-addon">
+        <div class="input-group-text">
+            <input type="radio" aria-label="Radio button for following text input">
+        </div>
+      </div>
       <input type="text" class="form-control" aria-label="Text input with radio button">
     </div>
   </div>
@@ -1563,7 +1591,7 @@ Showing a <kbd>kdb sample</kbd>
 <div class="row">
   <div class="col-lg-6">
     <div class="input-group">
-      <span class="input-group-btn">
+      <span class="input-group-addon">
         <button class="btn" type="button">Go!</button>
       </span>
       <input type="text" class="form-control" placeholder="Search for...">
@@ -1572,7 +1600,7 @@ Showing a <kbd>kdb sample</kbd>
   <div class="col-lg-6">
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Search for...">
-      <span class="input-group-btn">
+      <span class="input-group-addon">
         <button class="btn btn-outline-primary" type="button">Go!</button>
       </span>
     </div>
@@ -1582,11 +1610,11 @@ Showing a <kbd>kdb sample</kbd>
 <div class="row">
   <div class="col-lg-offset-3 col-lg-6">
     <div class="input-group">
-      <span class="input-group-btn">
+      <span class="input-group-addon">
         <button class="btn btn-secondary" type="button">Hate it</button>
       </span>
       <input type="text" class="form-control" placeholder="Product name">
-      <span class="input-group-btn">
+      <span class="input-group-addon">
         <button class="btn btn-secondary" type="button">Love it</button>
       </span>
     </div>
@@ -1597,7 +1625,7 @@ Showing a <kbd>kdb sample</kbd>
 <div class="row">
   <div class="col-lg-6">
     <div class="input-group">
-      <div class="input-group-btn">
+      <div class="input-group-addon">
         <button type="button" class="btn btn-secondary dropdown-toggle" data-cfw="dropdown">
           Action
         </button>
@@ -1615,7 +1643,7 @@ Showing a <kbd>kdb sample</kbd>
   <div class="col-lg-6">
     <div class="input-group">
       <input type="text" class="form-control" aria-label="Text input with dropdown button">
-      <div class="input-group-btn dropdown-menu-reverse">
+      <div class="input-group-addon dropdown-menu-reverse">
         <button type="button" class="btn btn-secondary dropdown-toggle" data-cfw="dropdown">
           Action
         </button>
@@ -1635,7 +1663,7 @@ Showing a <kbd>kdb sample</kbd>
 <div class="row">
   <div class="col-lg-6">
     <div class="input-group">
-      <div class="input-group-btn">
+      <div class="input-group-addon">
         <button type="button" class="btn btn-secondary">Action</button>
         <button type="button" class="btn btn-secondary dropdown-toggle" data-cfw="dropdown">
           <span class="sr-only">Toggle Dropdown</span>
@@ -1654,7 +1682,7 @@ Showing a <kbd>kdb sample</kbd>
   <div class="col-lg-6">
     <div class="input-group">
       <input type="text" class="form-control" aria-label="Text input with segmented button dropdown">
-      <div class="input-group-btn dropdown-menu-reverse">
+      <div class="input-group-addon dropdown-menu-reverse">
         <button type="button" class="btn btn-secondary">Action</button>
         <button type="button" class="btn btn-secondary dropdown-toggle" data-cfw="dropdown">
           <span class="sr-only">Toggle Dropdown</span>

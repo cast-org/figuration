@@ -21,15 +21,15 @@
 <h2>Browser Default</h2>
 <form>
     <div class="row">
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-1">
             <label for="validationDefault01">First name</label>
             <input type="text" class="form-control" id="validationDefault01" placeholder="First name" value="Mark" required>
         </div>
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-1">
             <label for="validationDefault02">Last name</label>
             <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="Otto" required>
         </div>
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-1">
             <label for="validationDefaultUsername">Username</label>
             <div class="input-group">
                 <div class="input-group-addon">
@@ -40,15 +40,15 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-6 mb-1">
             <label for="validationDefault03">City</label>
             <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
         </div>
-        <div class="col-md-3 mb-3">
+        <div class="col-md-3 mb-1">
             <label for="validationDefault04">State</label>
             <input type="text" class="form-control" id="validationDefault04" placeholder="State" required>
         </div>
-        <div class="col-md-3 mb-3">
+        <div class="col-md-3 mb-1">
             <label for="validationDefault05">Zip</label>
             <input type="text" class="form-control" id="validationDefault05" placeholder="Zip" required>
         </div>
@@ -122,7 +122,7 @@
 (function() {
   'use strict';
   window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    // Fetch all the forms we want to apply custom validation styles to
     var forms = document.getElementsByClassName('needs-validation');
     // Loop over them and prevent submission
     var validation = Array.prototype.filter.call(forms, function(form) {
@@ -138,6 +138,60 @@
 })();
 </script>
 
+<h2>Server Side</h2>
+<form>
+    <div class="row">
+        <div class="col-md-4 mb-1">
+            <label for="validationServer01">First name</label>
+            <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" value="Mark" required>
+            <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="col-md-4 mb-1">
+            <label for="validationServer02">Last name</label>
+            <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name" value="Otto" required>
+            <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="col-md-4 mb-1">
+            <label for="validationServerUsername">Username</label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="input-group-text" id="inputGroupAddon3">@</span>
+                </div>
+                <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Username" aria-describedby="inputGroupAddon3" required>
+                <div class="invalid-feedback">Please choose a username.</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-1">
+            <label for="validationServer03">City</label>
+            <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="City" required>
+            <div class="invalid-feedback">Please provide a valid city.</div>
+        </div>
+        <div class="col-md-3 mb-1">
+            <label for="validationServer04">State</label>
+            <input type="text" class="form-control is-invalid" id="validationServer04" placeholder="State" required>
+            <div class="invalid-feedback">Please provide a valid state.</div>
+        </div>
+        <div class="col-md-3 mb-1">
+            <label for="validationServer05">Zip</label>
+            <input type="text" class="form-control is-invalid" id="validationServer05" placeholder="Zip" required>
+            <div class="invalid-feedback">Please provide a valid zip.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-check">
+            <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+            <label class="form-check-label" for="invalidCheck3">Agree to terms and conditions</label>
+            <div class="invalid-feedback">You must agree before submitting.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+</form>
+
+<h2>Custom Inputs</h2>
 <form class="was-validated">
     <div class="custom-control custom-checkbox mb-1">
         <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
@@ -166,6 +220,52 @@
         <input type="file" class="custom-file-input" id="validatedCustomFile" required>
         <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
         <div class="invalid-feedback">Example invalid custom file feedback</div>
+    </div>
+</form>
+
+<h2>Tooltips</h2>
+<form class="needs-validation" novalidate>
+    <div class="row">
+        <div class="col-md-4 mb-1">
+            <label for="validationTooltip01">First name</label>
+            <input type="text" class="form-control" id="validationTooltip01" placeholder="First name" value="Mark" required>
+            <div class="valid-tooltip">Looks good!</div>
+        </div>
+        <div class="col-md-4 mb-1">
+            <label for="validationTooltip02">Last name</label>
+            <input type="text" class="form-control" id="validationTooltip02" placeholder="Last name" value="Otto" required>
+            <div class="valid-tooltip">Looks good!</div>
+        </div>
+        <div class="col-md-4 mb-1">
+            <label for="validationTooltipUsername">Username</label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="input-group-text" id="validationTooltipUsernameAddon">@</span>
+                </div>
+                <input type="text" class="form-control" id="validationTooltipUsername" placeholder="Username" aria-describedby="validationTooltipUsernameAddon" required>
+                <div class="invalid-tooltip">Please choose a unique and valid username.</div>
+            </div>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-6 mb-1">
+            <label for="validationTooltip03">City</label>
+            <input type="text" class="form-control" id="validationTooltip03" placeholder="City" required>
+            <div class="invalid-tooltip">Please provide a valid city.</div>
+        </div>
+        <div class="col-md-3 mb-1">
+            <label for="validationTooltip04">State</label>
+            <input type="text" class="form-control" id="validationTooltip04" placeholder="State" required>
+            <div class="invalid-tooltip">Please provide a valid state.</div>
+        </div>
+        <div class="col-md-3 mb-1">
+            <label for="validationTooltip05">Zip</label>
+            <input type="text" class="form-control" id="validationTooltip05" placeholder="Zip" required>
+            <div class="invalid-tooltip">Please provide a valid zip.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Submit form</button>
     </div>
 </form>
 
