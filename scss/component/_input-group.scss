@@ -15,6 +15,11 @@
         flex: 1 1 auto;
         width: 1%;
         margin-bottom: 0;
+        margin-left: -$input-border-width;
+
+        &:first-child {
+            margin-left: 0;
+        }
 
         + .form-control,
         + .custom-select,
@@ -57,12 +62,21 @@
     display: flex;
     margin-left: -$input-border-width;
 
+    &:first-child {
+        margin-left: 0;
+    }
+
     // Ensure buttons are always above inputs for more visually pleasing borders.
     // This isn't needed for `.input-group-text` since it shares the same border-color
     // as our inputs.
     .btn {
         position: relative;
         z-index: 2;
+
+        &:hover,
+        &:focus {
+            z-index: 3;
+        }
     }
 
     .btn + .btn,
@@ -106,12 +120,12 @@
 
         .input-group-#{$size} > .form-control,
         .input-group-#{$size} > .custom-select,
-        .input-group-#{$size} > .input-group-addon,
-        .input-group-#{$size} > .input-group-btn > .btn {
+        .input-group-#{$size} > .input-group-addon > .input-group-text,
+        .input-group-#{$size} > .input-group-addon > .btn {
             @extend %form-control-#{$size};
         }
-        .input-group-#{$size} > .input-group-addon,
-        .input-group-#{$size} > .input-group-btn > .btn {
+        .input-group-#{$size} > .input-group-addon > .input-group-text,
+        .input-group-#{$size} > .input-group-addon > .btn {
             padding-right: $sz-padding-x;
             padding-left: $sz-padding-x;
         }
@@ -120,38 +134,25 @@
 
 
 // Reset rounded corners
-.input-group > .form-control:not(:last-child),
-.input-group > .custom-select:not(:last-child),
-.input-group > .custom-file:not(:last-child) .custom-file-control,
-.input-group-addon:not(:last-child),
-.input-group-btn:not(:last-child) > .btn,
-.input-group-btn:not(:last-child) > .btn-group > .btn,
-.input-group-btn:not(:last-child) > .dropdown-toggle,
-.input-group-btn:not(:first-child) > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
+// These rulesets must come after the sizing ones to properly override sizing
+// border-radius values when extending. They're more specific than we'd like
+// with the `.input-group >` part, but without it, we cannot override the sizing.
+
+.input-group > .input-group-addon:not(:last-child) > .btn,
+.input-group > .input-group-addon:not(:last-child) > .input-group-text,
+.input-group > .input-group-addon:not(:last-child) > .btn-group > .btn,
+.input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+//.input-group > .input-group-addon:last-child > .btn:not(:last-of-type),
+.input-group > .input-group-addon:last-child > .input-group-text:not(:last-child),
+.input-group > .input-group-addon:last-child > .btn-group > .btn {
     @include border-end-radius(0);
 }
 
-.input-group-addon:not(:last-child) {
-    border-right: 0;
-}
-
-.input-group > .form-control:not(:first-child),
-.input-group > .custom-select:not(:first-child),
-.input-group > .custom-file:not(:first-child) .custom-file-control,
-.input-group-addon:not(:first-child),
-.input-group-btn:not(:first-child) > .btn,
-.input-group-btn:not(:first-child) > .btn-group > .btn,
-.input-group-btn:not(:first-child) > .dropdown-toggle,
-.input-group-btn:not(:last-child) > .btn:not(:first-child),
-.input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
+.input-group > .input-group-addon:not(:first-child) > .btn,
+.input-group > .input-group-addon:not(:first-child) > .input-group-text,
+.input-group > .input-group-addon:not(:first-child) > .btn-group > .btn,
+.input-group > .input-group-addon:first-child > .btn:not(:first-child),
+.input-group > .input-group-addon:first-child > .input-group-text:not(:first-child),
+.input-group > .input-group-addon:first-child > .btn-group > .btn {
     @include border-start-radius(0);
-}
-
-.form-control,
-.custom-select,
-.custom-file {
-    + .input-group-addon:not(:first-child) {
-        border-left: 0;
-    }
 }
