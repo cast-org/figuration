@@ -1,13 +1,11 @@
 // Form validation states
-//
-// Used in _forms.scss to generate the form validation CSS for
-// valid and invalid states.
+// Generate the form validation CSS for valid and invalid states.
 @mixin form-validation-state($state, $color) {
     .#{$state}-feedback {
         display: none;
         width: 100%;
         margin-top: $form-feedback-margin-top;
-        font-size: $form-feedback-font-size;
+        @include font-size($form-feedback-font-size);
         color: $color;
     }
 
@@ -17,13 +15,12 @@
         z-index: 5;
         display: none;
         max-width: 100%; // Contain to parent when possible
-        padding: .5rem;
-        margin-top: .1rem;
-        font-size: .875rem;
-        line-height: 1;
-        color: $white;
-        background-color: rgba($color, .8);
-        border-radius: .2rem;
+        padding: $tooltip-padding-y $tooltip-padding-x;
+        margin-top: .125rem;
+        @include font-size($tooltip-font-size);
+        color: color-auto-contrast($color);
+        background-color: rgba($color, $tooltip-opacity);
+        border-radius: $border-radius;
     }
 
     .form-control,
@@ -34,7 +31,7 @@
 
             &:focus {
                 border-color: $color;
-                box-shadow: 0 0 0 $input-focus-box-shadow-width rgba($color, .25);
+                box-shadow: 0 0 0 $input-focus-box-shadow-width rgba($color, $input-focus-box-shadow-alpha);
             }
 
             ~ .#{$state}-feedback,
@@ -87,14 +84,13 @@
 
             &:checked {
                 ~ .custom-control-label::before {
-                    //@include gradient-bg(lighten($color, 10%));
                     background-color: lighten($color, 25%);
                 }
             }
 
             &:focus {
                 ~ .custom-control-label::before {
-                    box-shadow: 0 0 0 1px $body-bg, 0 0 0 $input-focus-box-shadow-width rgba($color, .25);
+                    box-shadow: 0 0 0 $input-focus-box-shadow-width rgba($color, $input-focus-box-shadow-alpha);
                 }
             }
         }
@@ -117,7 +113,7 @@
 
             &:focus {
                 ~ .custom-file-label {
-                    box-shadow: 0 0 0 $input-focus-box-shadow-width rgba($color, .25);
+                    box-shadow: 0 0 0 $input-focus-box-shadow-width rgba($color, $input-focus-box-shadow-alpha);
                 }
             }
         }

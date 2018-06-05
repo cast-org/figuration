@@ -32,7 +32,7 @@
     }
 
     &:focus ~ .custom-control-label::before {
-        @include box-shadow($input-focus-box-shadow);
+        box-shadow: $custom-control-focus-indicator-box-shadow;
     }
 
     &:active ~ .custom-control-label::before {
@@ -45,8 +45,7 @@
             color: $custom-control-disabled-description-color;
 
             &::before {
-                background-color: $custom-control-disabled-indicator-bg;
-                border: 0;
+                opacity: $custom-control-disabled-indicator-opacity;
             }
         }
     }
@@ -127,22 +126,6 @@
     }
 }
 
-
-// Layout options
-// By default radios and checkboxes are `inline-block` with no additional spacing
-// set. Use these optional classes to tweak the layout.
-.custom-controls-stacked {
-    .custom-control {
-        display: block;
-        margin-bottom: $custom-control-spacer-y;
-
-        + .custom-control {
-            margin-left: 0;
-        }
-    }
-}
-
-
 // Select
 // Replaces the browser default select with a custom one.
 .custom-select {
@@ -162,8 +145,6 @@
     }
     @include box-shadow($input-box-shadow);
     appearance: none;
-
-    @include form-control-focus();
 
     &:focus {
         &::-ms-value {
@@ -258,6 +239,10 @@
     &:disabled ~ .custom-file-label {
         color: $input-disabled-color;
         background-color: $input-disabled-bg;
+
+        &::after {
+            opacity: $custom-file-button-disabled-opacity;
+        }
     }
 
     @each $lang, $text in $custom-file-text {
@@ -316,11 +301,16 @@
 
     @include border-radius($input-border-radius);
     @include box-shadow($input-box-shadow);
+}
 
+// Consolidate some items for filesize savings
+// Focus
+.custom-select,
+.custom-color {
     @include form-control-focus();
 }
 
-// Consolidate transition for filesize savings
+// Transition
 .custom-control-label::before,
 .custom-select,
 .custom-file-label,

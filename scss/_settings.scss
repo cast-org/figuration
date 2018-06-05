@@ -634,7 +634,8 @@ $input-focus-color:             $input-color !default;
 $input-focus-bg:                $input-bg !default;
 $input-focus-border-color:      palette($primary, 300) !default;
 $input-focus-box-shadow-width:  .1875rem !default;
-$input-focus-box-shadow:        0 0 0 $input-focus-box-shadow-width rgba($component-active-bg, .25) !default;
+$input-focus-box-shadow-alpha:  .25 !default;
+$input-focus-box-shadow:        0 0 0 $input-focus-box-shadow-width rgba($component-active-bg, $input-focus-box-shadow-alpha) !default;
 
 $input-disabled-color:          $component-disabled-color !default;
 $input-disabled-bg:             $uibase-50 !default;
@@ -643,8 +644,6 @@ $input-placeholder-color:       #999 !default;
 
 $form-text-margin-top:          .25rem !default;
 
-$form-check-margin-bottom:      1rem !default;
-$form-check-sibling-margin-top: -.5rem !default;
 $form-check-input-gutter:       1.25rem !default;
 $form-check-input-margin-y:     .3125rem !default;
 $form-check-input-margin-x:     .25rem !default;
@@ -671,7 +670,6 @@ $input-height-outer:    calc(#{$input-height-inner} + #{($border-width * 2)}) !d
 // Custom checkbox/radio
 $custom-control-gutter:                 1.5rem !default;
 $custom-control-spacer-x:               1rem !default;
-$custom-control-spacer-y:               .5rem !default;
 
 $custom-control-indicator-size:         1rem !default;
 $custom-control-indicator-bg:           $uibase-50 !default;
@@ -680,17 +678,17 @@ $custom-control-indicator-box-shadow:   inset 0 .25rem .25rem rgba($black, .1) !
 $custom-control-indicator-border-width: $border-width !default;
 $custom-control-indicator-border-color: $input-border-color !default;
 
-$custom-control-disabled-indicator-bg:       $uibase-200 !default;
+$custom-control-disabled-indicator-opacity:  .6 !default;
 $custom-control-disabled-description-color:  $uibase-400 !default;
 
 $custom-control-checked-indicator-bg:         $primary !default;
 $custom-control-checked-indicator-color:      color-if-contrast($white, $custom-control-checked-indicator-bg) !default;
 $custom-control-checked-indicator-box-shadow: none !default;
 
-$custom-control-focus-indicator-box-shadow:  0 0 0 .0625rem #fff, 0 0 0 .1875rem $input-focus-border-color !default;
+$custom-control-focus-indicator-box-shadow:  $input-focus-box-shadow !default;
 
-$custom-control-active-indicator-bg:         palette($primary, 300) !default;
-$custom-control-active-indicator-color:      $white !default;
+$custom-control-active-indicator-bg:         $custom-control-checked-indicator-bg !default;
+$custom-control-active-indicator-color:      $custom-control-checked-indicator-color !default;
 
 $custom-checkbox-radius:                    $border-radius !default;
 $custom-checkbox-checked-icon:              url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E") !default;
@@ -707,9 +705,9 @@ $custom-select-indicator-size:      8px 10px !default; // In pixels because imag
 $custom-select-indicator:           url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") !default;
 
 // Custom file
-$custom-file-width:                 14rem !default;
 $custom-file-button-color:          $uibase-600 !default;
 $custom-file-button-bg:             $uibase-50 !default;
+$custom-file-button-disabled-opacity: .6 !default;
 $custom-file-text: (
     en: "Browse"
 ) !default;
