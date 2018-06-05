@@ -173,11 +173,6 @@ textarea.form-control {
 
 .form-check-label {
     margin-bottom: 0; // Override default `<label>` bottom margin
-
-    .form-check.disabled &,
-    fieldset:disabled & {
-        color: $form-check-disabled-color;
-    }
 }
 
 .form-check-input {
@@ -185,6 +180,10 @@ textarea.form-control {
     margin-top: $form-check-input-margin-y;
     margin-left: -$form-check-input-gutter;
     @include transition($input-transition);
+
+    &:disabled ~ .form-check-label {
+        color: $form-check-disabled-color;
+    }
 }
 
 // Radios and checkboxes on same line
