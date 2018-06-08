@@ -119,23 +119,12 @@
 // Custom file language example
 // stylelint-disable-next-line scss/dollar-variable-default
 $custom-file-text: (
-    placeholder: (
-        en: "Choose file...",
-        es: "Seleccionar archivo..."
-    ),
-    button-label: (
-        en: "Browse",
-        es: "Navegar"
-    )
+    en: "Browse",
+    es: "Elegir"
 );
-.custom-file-control {
-    @each $lang, $text in map-get($custom-file-text, button-label) {
-        &:lang(#{$lang}):empty::before {
-            content: $text;
-        }
-    }
-    @each $lang, $text in map-get($custom-file-text, placeholder) {
-        &:lang(#{$lang}):empty::after {
+.custom-file-input {
+    @each $lang, $text in $custom-file-text {
+        &:lang(#{$lang}) ~ .custom-file-label::after {
             content: $text;
         }
     }

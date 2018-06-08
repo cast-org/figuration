@@ -35,7 +35,7 @@
         box-shadow: $custom-control-focus-indicator-box-shadow;
     }
 
-    &:active ~ .custom-control-label::before {
+    &:active:not(:disabled) ~ .custom-control-label::before {
         color: $custom-control-active-indicator-color;
         background-color: $custom-control-active-indicator-bg;
     }

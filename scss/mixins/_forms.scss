@@ -72,7 +72,6 @@
                 color: $color;
 
                 &::before {
-                    background-color: lighten($color, 25%);
                     border-color: $color;
                 }
             }
@@ -84,7 +83,7 @@
 
             &:checked {
                 ~ .custom-control-label::before {
-                    background-color: lighten($color, 25%);
+                    background-color: $color;
                 }
             }
 

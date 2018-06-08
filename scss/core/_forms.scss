@@ -138,8 +138,7 @@ textarea.form-control {
             @extend %form-control-#{$size};
         }
 
-        .form-control-label-#{$size},
-        .form-control-static-#{$size} {
+        .form-control-label-#{$size} {
             padding-top: calc(#{$sz-padding-y} + #{$input-border-width});
             padding-bottom: calc(#{$sz-padding-y} + #{$input-border-width});
             @include font-size($sz-font-size);
@@ -161,6 +160,22 @@ textarea.form-control {
     margin-top: $form-text-margin-top;
 }
 
+
+// Form grid
+//
+// Special replacement for our grid system's `.row` for tighter form layouts.
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -$form-row-gutter;
+    margin-left: -$form-row-gutter;
+
+    > .col,
+    > [class*="col-"] {
+        padding-right: $form-row-gutter;
+        padding-left: $form-row-gutter;
+    }
+}
 
 // Checkboxes and radios
 //
@@ -283,11 +298,6 @@ textarea.form-control {
             align-items: center;
             justify-content: center;
             width: auto;
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-
-        .form-check-label {
             padding-left: 0;
         }
 
@@ -300,22 +310,11 @@ textarea.form-control {
 
         // Custom form controls
         .custom-control {
-            display: flex;
             align-items: center;
             justify-content: center;
-            padding-left: 0;
         }
-
-        .custom-control-indicator {
-            position: static;
-            display: inline-block;
-            margin-right: $form-check-input-margin-x; // Flexbox alignment means we lose our HTML space here, so we compensate.
-            vertical-align: text-bottom;
-        }
-
-        // Re-override the feedback icon.
-        .has-feedback .form-control-feedback {
-            top: 0;
+        .custom-control-label {
+            margin-bottom: 0;
         }
     }
 }
