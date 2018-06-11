@@ -7,10 +7,11 @@ $(function() {
             $('html').css('padding-right', '16px');
         },
         afterEach: function() {
-            $('#modal, .modal-backdrop').remove();
+            $('.modal, .modal-backdrop').remove();
             $(document.body)
                 .removeAttr('style')
                 .removeClass('modal-open');
+            $('#qunit-fixture').empty();
         },
         after: function() {
             $('html').removeAttr('style');
@@ -687,5 +688,28 @@ $(function() {
             .trigger('click');
 
         setTimeout(done, 500);
+    });
+
+    QUnit.test('should not try to open a modal which is already visible', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        var count = 0;
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal" />').appendTo('#qunit-fixture');
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                count++;
+            }).on('afterHide.cfw.modal', function() {
+                assert.strictEqual(count, 1, 'show() runs only once');
+                done();
+            });
+
+        $trigger
+            .CFW_Modal()
+            .CFW_Modal('show')
+            .CFW_Modal('show')
+            .CFW_Modal('hide');
     });
 });
