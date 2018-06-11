@@ -3,17 +3,25 @@
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 
-@mixin button-variant($color, $bg, $border, $hover-color, $hover-bg, $hover-border, $active-hover-color, $active-hover-bg) {
+@mixin button-variant($color, $bg, $border, $focus-shadow, $hover-color, $hover-bg, $hover-border, $active-color, $active-bg, $active-border) {
     color: $color;
     background-color: $bg;
     border-color: $border;
 
-    &:hover,
-    &:focus,
-    .btn-check-input:focus ~ & {
+    &:hover {
         color: $hover-color;
         background-color: $hover-bg;
         border-color: $hover-border;
+    }
+
+    &:focus,
+    .btn-check-input:focus ~ & {
+        // No mixin use, so feedback is always present
+        @if $enable-shadows {
+            box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-box-shadow-width rgba($focus-shadow, $btn-focus-box-shadow-alpha);
+        } @else {
+            box-shadow: 0 0 0 $btn-focus-box-shadow-width rgba($focus-shadow, $btn-focus-box-shadow-alpha);
+        }
     }
 
     &.disabled,
@@ -28,47 +36,46 @@
     &:not(:disabled):not(.disabled).active,
     .btn-check-input:not(:disabled):checked ~ &,
     .open > & {
-        color: $hover-color;
-        background-color: $hover-bg;
-        border-color: $hover-border;
+        color: $active-color;
+        background-color: $active-bg;
+        border-color: $active-border;
     }
 
-    &:not(:disabled):not(.disabled):active:hover,
-    &:not(:disabled):not(.disabled).active:hover,
     &:not(:disabled):not(.disabled):active:focus,
     &:not(:disabled):not(.disabled).active:focus,
     .btn-check-input:not(:disabled):checked:focus ~ &,
-    .btn-check-input:not(:disabled):checked ~ &:hover,
-    .open > &:hover,
     .open > &:focus {
-        color: $active-hover-color;
-        background-color: $active-hover-bg;
+        @include box-shadow($btn-active-box-shadow, 0 0 0 $btn-focus-box-shadow-width rgba($focus-shadow, $btn-focus-box-shadow-alpha));
     }
 }
 
 @mixin button-variant-control($theme, $colors) {
-    $bg:                 map-get($colors, "bg");
-    $color:              map-get($colors, "color");
-    $border:             map-get($colors, "border-color");
-    $hover-bg:           map-get($colors, "hover-bg");
-    $hover-color:        map-get($colors, "hover-color");
-    $hover-border:       map-get($colors, "hover-border-color");
-    $active-hover-bg:    map-get($colors, "active-hover-bg");
-    $active-hover-color: map-get($colors, "active-hover-color");
+    $bg:            map-get($colors, "bg");
+    $color:         map-get($colors, "color");
+    $border:        map-get($colors, "border-color");
+    $focus-shadow:  map-get($colors, "base");
+    $hover-bg:      map-get($colors, "hover-bg");
+    $hover-color:   map-get($colors, "hover-color");
+    $hover-border:  map-get($colors, "hover-border-color");
+    $active-bg:     map-get($colors, "active-bg");
+    $active-color:  map-get($colors, "active-color");
+    $active-border: map-get($colors, "active-border-color");
 
-    @include button-variant($color, $bg, $border, $hover-color, $hover-bg, $hover-border, $active-hover-color, $active-hover-bg);
+    @include button-variant($color, $bg, $border, $focus-shadow, $hover-color, $hover-bg, $hover-border, $active-color, $active-bg, $active-border);
 }
 
 @mixin button-variant-control-outline($theme, $colors, $bg: $btn-outline-bg) {
-    $color:              map-get($colors, "base");
-    $border:             map-get($colors, "bg");
-    $hover-bg:           map-get($colors, "bg");
-    $hover-color:        map-get($colors, "hover-color");
-    $hover-border:       map-get($colors, "border-color");
-    $active-hover-bg:    map-get($colors, "hover-bg");
-    $active-hover-color: map-get($colors, "hover-color");
+    $color:         map-get($colors, "base");
+    $border:        map-get($colors, "bg");
+    $focus-shadow:  map-get($colors, "base");
+    $hover-bg:      map-get($colors, "bg");
+    $hover-color:   map-get($colors, "hover-color");
+    $hover-border:  map-get($colors, "border-color");
+    $active-bg:     map-get($colors, "hover-bg");
+    $active-color:  map-get($colors, "hover-color");
+    $active-border: map-get($colors, "active-border-color");
 
-    @include button-variant($color, $bg, $border, $hover-color, $hover-bg, $hover-border, $active-hover-color, $active-hover-bg);
+    @include button-variant($color, $bg, $border, $focus-shadow, $hover-color, $hover-bg, $hover-border, $active-color, $active-bg, $active-border);
 }
 
 // Button sizes
