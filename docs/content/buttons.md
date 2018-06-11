@@ -24,28 +24,15 @@ Please refer to the [Accessiblity notes about conveying meaning with color]({{ s
 {% endcallout %}
 
 {% example html %}
-<!-- Base button style -->
 <button type="button" class="btn">Default</button>
-
-<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
 <button type="button" class="btn btn-primary">Primary</button>
-
-<!-- Secondary button context-->
 <button type="button" class="btn btn-secondary">Secondary</button>
-
-<!-- Indicates a successful or positive action -->
 <button type="button" class="btn btn-success">Success</button>
-
-<!-- Contextual button for informational alert messages -->
 <button type="button" class="btn btn-info">Info</button>
-
-<!-- Indicates caution should be taken with this action -->
 <button type="button" class="btn btn-warning">Warning</button>
-
-<!-- Indicates a dangerous or potentially negative action -->
 <button type="button" class="btn btn-danger">Danger</button>
-
-<!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
 <button type="button" class="btn btn-link">Link</button>
 {% endexample %}
 
@@ -68,12 +55,15 @@ When using button classes on `<a>` elements that are used to trigger in-page fun
 In need of a button, but not the hefty background colors they bring? Replace the default modifier classes with the `.btn-outline-*` ones to remove all background images and colors on any button.
 
 {% example html %}
+<button type="button" class="btn btn-outline">Default</button>
 <button type="button" class="btn btn-outline-primary">Primary</button>
 <button type="button" class="btn btn-outline-secondary">Secondary</button>
 <button type="button" class="btn btn-outline-success">Success</button>
 <button type="button" class="btn btn-outline-info">Info</button>
 <button type="button" class="btn btn-outline-warning">Warning</button>
 <button type="button" class="btn btn-outline-danger">Danger</button>
+<button type="button" class="btn btn-outline-light">Light</button>
+<button type="button" class="btn btn-outline-dark">Dark</button>
 {% endexample %}
 
 
@@ -107,13 +97,16 @@ Fancy larger or smaller buttons? Add `.btn-xsmall`, `.btn-small`, `.btn-large`, 
 Create block level buttons---those that span the full width of a parent---by adding `.btn-block`.
 
 {% example html %}
-<button type="button" class="btn btn-primary btn-large btn-block">Large Block level button</button>
-<button type="button" class="btn btn-success btn-small btn-block">Small Block level button</button>
+<button type="button" class="btn btn-primary btn-xlarge btn-block">Extra Large Block level button</button>
+<button type="button" class="btn btn-secondary btn-large btn-block">Large Block level button</button>
+<button type="button" class="btn btn-success btn-block">Default block level button</button>
+<button type="button" class="btn btn-warning btn-small btn-block">Small Block level button</button>
+<button type="button" class="btn btn-danger btn-xsmall btn-block">Extra Small Block level button</button>
 {% endexample %}
 
 ## Active State
 
-Buttons will appear pressed (with a darker background, darker border, and inset shadow) when active. **There's no need to add a class to `<button>`s as they use a pseudo-class**. However, you can still force the same active appearance with `.active` (and include the <code>aria-pressed="true"</code> attribute) should you need to replicate the state programmatically.
+Buttons will appear pressed (with a darker background and border) when active. **There's no need to add a class to `<button>`s as they use the `:active` pseudo-class**. However, you can still force the same active appearance with `.active` (and include the <code>aria-pressed="true"</code> attribute) should you need to replicate the state programmatically.
 
 {% example html %}
 <strong>Standard Buttons:</strong>
@@ -125,17 +118,22 @@ Buttons will appear pressed (with a darker background, darker border, and inset 
 <button type="button" class="btn btn-info active">Info</button>
 <button type="button" class="btn btn-warning active">Warning</button>
 <button type="button" class="btn btn-danger active">Danger</button>
+<button type="button" class="btn btn-light active">Light</button>
+<button type="button" class="btn btn-dark active">Dark</button>
 <button type="button" class="btn btn-link active">Link</button>
 </p>
 
 <strong>Outline Buttons:</strong>
 <p>
+<button type="button" class="btn btn-outline active">Default</button>
 <button type="button" class="btn btn-outline-primary active">Primary</button>
 <button type="button" class="btn btn-outline-secondary active">Secondary</button>
 <button type="button" class="btn btn-outline-success active">Success</button>
 <button type="button" class="btn btn-outline-info active">Info</button>
 <button type="button" class="btn btn-outline-warning active">Warning</button>
 <button type="button" class="btn btn-outline-danger active">Danger</button>
+<button type="button" class="btn btn-outline-light active">Light</button>
+<button type="button" class="btn btn-outline-dark active">Dark</button>
 </p>
 {% endexample %}
 
@@ -153,17 +151,22 @@ Make buttons look inactive by adding the `disabled` boolean attribute to any `<b
 <button type="button" class="btn btn-info" disabled>Info</button>
 <button type="button" class="btn btn-warning" disabled>Warning</button>
 <button type="button" class="btn btn-danger" disabled>Danger</button>
+<button type="button" class="btn btn-light" disabled>Light</button>
+<button type="button" class="btn btn-dark" disabled>Dark</button>
 <button type="button" class="btn btn-link" disabled>Link</button>
 </p>
 
 <strong>Outline Buttons:</strong>
 <p>
+<button type="button" class="btn btn-outline" disabled>Default</button>
 <button type="button" class="btn btn-outline-primary" disabled>Primary</button>
 <button type="button" class="btn btn-outline-secondary" disabled>Secondary</button>
 <button type="button" class="btn btn-outline-success" disabled>Success</button>
 <button type="button" class="btn btn-outline-info" disabled>Info</button>
 <button type="button" class="btn btn-outline-warning" disabled>Warning</button>
 <button type="button" class="btn btn-outline-danger" disabled>Danger</button>
+<button type="button" class="btn btn-outline-light" disabled>Light</button>
+<button type="button" class="btn btn-outline-dark" disabled>Dark</button>
 </p>
 {% endexample %}
 
@@ -186,17 +189,23 @@ Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl 
 <a href="#" role="button" class="btn btn-info disabled" aria-disabled="true">Info</a>
 <a href="#" role="button" class="btn btn-warning disabled" aria-disabled="true">Warning</a>
 <a href="#" role="button" class="btn btn-danger disabled" aria-disabled="true">Danger</a>
+<a href="#" role="button" class="btn btn-light disabled" aria-disabled="true">Light</a>
+<a href="#" role="button" class="btn btn-dark disabled" aria-disabled="true">Dark</a>
 <a href="#" role="button" class="btn btn-link disabled" aria-disabled="true">Link</a>
+
 </p>
 
 <strong>Anchor Outline Buttons:</strong>
 <p>
+<a href="#" role="button" class="btn btn-outline disabled" aria-disabled="true">Default</a>
 <a href="#" role="button" class="btn btn-outline-primary disabled" aria-disabled="true">Primary</a>
 <a href="#" role="button" class="btn btn-outline-secondary disabled" aria-disabled="true">Secondary</a>
 <a href="#" role="button" class="btn btn-outline-success disabled" aria-disabled="true">Success</a>
 <a href="#" role="button" class="btn btn-outline-info disabled" aria-disabled="true">Info</a>
 <a href="#" role="button" class="btn btn-outline-warning disabled" aria-disabled="true">Warning</a>
 <a href="#" role="button" class="btn btn-outline-danger disabled" aria-disabled="true">Danger</a>
+<a href="#" role="button" class="btn btn-outline-light disabled" aria-disabled="true">Light</a>
+<a href="#" role="button" class="btn btn-outline-dark disabled" aria-disabled="true">Dark</a>
 </p>
 {% endexample %}
 
