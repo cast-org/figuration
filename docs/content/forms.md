@@ -1036,10 +1036,10 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
     <div class="col-md-4 mb-1">
       <label for="validate-custom-3">Username</label>
       <div class="input-group">
-        <div class="input-group-prepend">
+        <div class="input-group-addon">
           <span class="input-group-text" id="validate-custom-4">@</span>
         </div>
-        <input type="text" class="form-control" id="validate-custom-3" placeholder="Username" aria-describedby="validate-custom-4" required>
+        <input type="text" class="form-control input-group-end" id="validate-custom-3" placeholder="Username" aria-describedby="validate-custom-4" required>
         <div class="invalid-feedback">Please choose a username.</div>
       </div>
     </div>
@@ -1116,7 +1116,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
         <div class="input-group-addon">
           <span class="input-group-text" id="validate-browser-4">@</span>
         </div>
-        <input type="text" class="form-control" id="validate-browser-3" placeholder="Username" aria-describedby="validate-browser-4" required>
+        <input type="text" class="form-control input-group-end" id="validate-browser-3" placeholder="Username" aria-describedby="validate-browser-4" required>
       </div>
     </div>
   </div>
@@ -1167,7 +1167,7 @@ We recommend using client side validation, but in case you require server side, 
         <div class="input-group-addon">
           <span class="input-group-text" id="validate-server-4">@</span>
         </div>
-        <input type="text" class="form-control is-invalid" id="validate-server-3" placeholder="Username" aria-describedby="validate-server-4" required>
+        <input type="text" class="form-control input-group-end is-invalid" id="validate-server-3" placeholder="Username" aria-describedby="validate-server-4" required>
         <div class="invalid-feedback">Please choose a username.</div>
       </div>
     </div>
@@ -1248,53 +1248,41 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
 <form class="needs-validation" novalidate>
   <div class="form-row">
     <div class="col-md-4 mb-1">
-      <label for="validationTooltip01">First name</label>
-      <input type="text" class="form-control" id="validationTooltip01" placeholder="First name" value="John" required>
-      <div class="valid-tooltip">
-        Looks good!
-      </div>
+      <label for="validate-tooltip-1">First name</label>
+      <input type="text" class="form-control" id="validate-tooltip-1" placeholder="First name" value="John" required>
+      <div class="valid-tooltip">Looks good!</div>
     </div>
     <div class="col-md-4 mb-1">
-      <label for="validationTooltip02">Last name</label>
-      <input type="text" class="form-control" id="validationTooltip02" placeholder="Last name" value="Smith" required>
-      <div class="valid-tooltip">
-        Looks good!
-      </div>
+      <label for="validate-tooltip-2">Last name</label>
+      <input type="text" class="form-control" id="validate-tooltip-2" placeholder="Last name" value="Smith" required>
+      <div class="valid-tooltip">Looks good!</div>
     </div>
     <div class="col-md-4 mb-1">
       <label for="validationTooltipUsername">Username</label>
       <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+        <div class="input-group-addon">
+          <span class="input-group-text" id="validate-tooltip-3">@</span>
         </div>
-        <input type="text" class="form-control" id="validationTooltipUsername" placeholder="Username" aria-describedby="validationTooltipUsernamePrepend" required>
-        <div class="invalid-tooltip">
-          Please choose a unique and valid username.
-        </div>
+        <input type="text" class="form-control input-group-end" id="validate-tooltip-4" placeholder="Username" aria-describedby="validate-tooltip-3" required>
+        <div class="invalid-tooltip">Please choose a unique and valid username.</div>
       </div>
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-6 mb-1">
-      <label for="validationTooltip03">City</label>
-      <input type="text" class="form-control" id="validationTooltip03" placeholder="City" required>
-      <div class="invalid-tooltip">
-        Please provide a valid city.
-      </div>
+      <label for="validate-tooltip-5">City</label>
+      <input type="text" class="form-control" id="validate-tooltip-5" placeholder="City" required>
+      <div class="invalid-tooltip">Please provide a valid city.</div>
     </div>
     <div class="col-md-3 mb-1">
-      <label for="validationTooltip04">State</label>
-      <input type="text" class="form-control" id="validationTooltip04" placeholder="State" required>
-      <div class="invalid-tooltip">
-        Please provide a valid state.
-      </div>
+      <label for="validate-tooltip-6">State</label>
+      <input type="text" class="form-control" id="validate-tooltip-6" placeholder="State" required>
+      <div class="invalid-tooltip">Please provide a valid state.</div>
     </div>
     <div class="col-md-3 mb-1">
-      <label for="validationTooltip05">Zip</label>
-      <input type="text" class="form-control" id="validationTooltip05" placeholder="Zip" required>
-      <div class="invalid-tooltip">
-        Please provide a valid zip.
-      </div>
+      <label for="validate-tooltip-7">Zip</label>
+      <input type="text" class="form-control" id="validate-tooltip-7" placeholder="Zip" required>
+      <div class="invalid-tooltip">Please provide a valid zip.</div>
     </div>
   </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
