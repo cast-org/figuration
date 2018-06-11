@@ -83,10 +83,10 @@
             </label>
         </div>
         <div class="form-check">
-        <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-            Option two can be something else and selecting it will deselect option one
-        </label>
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+                Option two can be something else and selecting it will deselect option one
+            </label>
         </div>
         <div class="form-check disabled">
             <label class="form-check-label">
@@ -95,18 +95,130 @@
             </label>
         </div>
     </fieldset>
-    <div class="form-check">
-        <fieldset>
-            <legend>Checkbox</legend>
-            <label class="form-check-label">
-                <input type="checkbox" class="form-check-input"> Check me out
-            </label>
-        </fieldset>
+    <div class="form-group">
+        <div class="form-check">
+            <fieldset>
+                <legend>Checkbox</legend>
+                <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input"> Check me out
+                </label>
+            </fieldset>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="formControlRange">Example Range input</label>
+        <input type="range" class="form-control-range" id="formControlRange">
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </form>
+
+<h2>Readonly</h2>
+<form>
+    <div class="form-group">
+        <label for="inputReadonly">Example Readonly input</label>
+        <input class="form-control" type="text" placeholder="Readonly input" id="inputReadonly" readonly>
+    </div>
+</form>
+
+<h2>Readonly Static Controls</h2>
+<form>
+    <div class="form-group row">
+        <label for="inputEmail" class="col-sm-2 form-control-label">Email</label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-static" id="inputEmail" value="email@example.com">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 form-control-label">Password</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+        </div>
+    </div>
+</form>
+
+<form class="form-inline">
+    <div class="form-group me-0_5">
+        <label for="inputEmail2" class="sr-only">Email</label>
+        <input type="text" readonly class="form-control-static" id="inputEmail2" value="email@example.com">
+    </div>
+    <div class="form-group me-0_5">
+        <label for="inputPassword2" class="sr-only">Password</label>
+        <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Confirm identity</button>
+</form>
+
+<h2>Checkbox</h2>
+<div class="mb-1">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+        <label class="form-check-label" for="defaultCheck1">
+            Default checkbox
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
+        <label class="form-check-label" for="defaultCheck2">
+            Disabled checkbox
+        </label>
+    </div>
+</div>
+
+<h2>Radio</h2>
+<div class="mb-1">
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+        <label class="form-check-label" for="exampleRadios1">
+            Default radio
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+            Second default radio
+        </label>
+    </div>
+    <div class="form-check disabled">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
+        <label class="form-check-label" for="exampleRadios3">
+            Disabled radio
+        </label>
+    </div>
+</div>
+
+<h2>Checkbox (inline)</h2>
+<div class="mb-1">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+        <label class="form-check-label">1</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+        <label class="form-check-label">2</label>
+    </div>
+    <div class="form-check form-check-inline disabled">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
+        <label class="form-check-label">3</label>
+    </div>
+</div>
+
+<h2>Radio (inline)</h2>
+<div class="mb-1">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+        <label class="form-check-label">1</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <label class="form-check-label">2</label>
+    </div>
+    <div class="form-check form-check-inline disabled">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
+        <label class="form-check-label">3</label>
+    </div>
+</div>
 
 <h2>Select Sizing Comparison:</h2>
 <div class="select-sizing">
@@ -378,26 +490,26 @@
 </div>
 <div class="row mb-1">
     <div class="col">
-        <div class="p-0_5"><label class="custom-file"><input type="file" id="file0" class="custom-file-input"><span class="custom-file-control"></span></label></div>
-        <div class="p-0_5 bg-primary"><label class="custom-file"><input type="file" id="file1" class="custom-file-input"><span class="custom-file-control"></span></label></div>
-        <div class="p-0_5 bg-secondary"><label class="custom-file"><input type="file" id="file2" class="custom-file-input"><span class="custom-file-control"></span></label></div>
-        <div class="p-0_5 bg-success"><label class="custom-file"><input type="file" id="file3" class="custom-file-input"><span class="custom-file-control"></span></label></div>
-        <div class="p-0_5 bg-info"><label class="custom-file"><input type="file" id="file4" class="custom-file-input"><span class="custom-file-control"></span></label></div>
-        <div class="p-0_5 bg-warning"><label class="custom-file"><input type="file" id="file5" class="custom-file-input"><span class="custom-file-control"></span></label></div>
-        <div class="p-0_5 bg-danger"><label class="custom-file"><input type="file" id="file6" class="custom-file-input"><span class="custom-file-control"></span></label></div>
-        <div class="p-0_5 bg-light"><label class="custom-file"><input type="file" id="file7" class="custom-file-input"><span class="custom-file-control"></span></label></div>
-        <div class="p-0_5 bg-dark"><label class="custom-file"><input type="file" id="file8" class="custom-file-input"><span class="custom-file-control"></span></label></div>
+        <div class="p-0_5"><div class="custom-file"><input type="file" class="custom-file-input" id="customFile0"><label class="custom-file-label" for="customFile0">Choose file...</label></div></div>
+        <div class="p-0_5 bg-primary"><div class="custom-file"><input type="file" class="custom-file-input" id="customFile1"><label class="custom-file-label" for="customFile1">Choose file...</label></div></div>
+        <div class="p-0_5 bg-secondary"><div class="custom-file"><input type="file" class="custom-file-input" id="customFile2"><label class="custom-file-label" for="customFile2">Choose file...</label></div></div>
+        <div class="p-0_5 bg-success"><div class="custom-file"><input type="file" class="custom-file-input" id="customFile3"><label class="custom-file-label" for="customFile3">Choose file...</label></div></div>
+        <div class="p-0_5 bg-info"><div class="custom-file"><input type="file" class="custom-file-input" id="customFile4"><label class="custom-file-label" for="customFile4">Choose file...</label></div></div>
+        <div class="p-0_5 bg-warning"><div class="custom-file"><input type="file" class="custom-file-input" id="customFile5"><label class="custom-file-label" for="customFile5">Choose file...</label></div></div>
+        <div class="p-0_5 bg-danger"><div class="custom-file"><input type="file" class="custom-file-input" id="customFile6"><label class="custom-file-label" for="customFile6">Choose file...</label></div></div>
+        <div class="p-0_5 bg-light"><div class="custom-file"><input type="file" class="custom-file-input" id="customFile7"><label class="custom-file-label" for="customFile7">Choose file...</label></div></div>
+        <div class="p-0_5 bg-dark"><div class="custom-file"><input type="file" class="custom-file-input" id="customFile8"><label class="custom-file-label" for="customFile8">Choose file...</label></div></div>
     </div>
     <div class="col">
-        <div class="p-0_5"><div class="input-group"><span class="input-group-addon" id="color-addon0">@</span><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-btn"><button class="btn" type="button">Button</button></span></div></div>
-        <div class="p-0_5 bg-primary"><div class="input-group"><span class="input-group-addon" id="color-addon1">@</span><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-btn"><button class="btn" type="button">Button</button></span></div></div>
-        <div class="p-0_5 bg-secondary"><div class="input-group"><span class="input-group-addon" id="color-addon2">@</span><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-btn"><button class="btn" type="button">Button</button></span></div></div>
-        <div class="p-0_5 bg-success"><div class="input-group"><span class="input-group-addon" id="color-addon3">@</span><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-btn"><button class="btn" type="button">Button</button></span></div></div>
-        <div class="p-0_5 bg-info"><div class="input-group"><span class="input-group-addon" id="color-addon4">@</span><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-btn"><button class="btn" type="button">Button</button></span></div></div>
-        <div class="p-0_5 bg-warning"><div class="input-group"><span class="input-group-addon" id="color-addon5">@</span><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-btn"><button class="btn" type="button">Button</button></span></div></div>
-        <div class="p-0_5 bg-danger"><div class="input-group"><span class="input-group-addon" id="color-addon6">@</span><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-btn"><button class="btn" type="button">Button</button></span></div></div>
-        <div class="p-0_5 bg-light"><div class="input-group"><span class="input-group-addon" id="color-addon7">@</span><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-btn"><button class="btn" type="button">Button</button></span></div></div>
-        <div class="p-0_5 bg-dark"><div class="input-group"><span class="input-group-addon" id="color-addon8">@</span><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-btn"><button class="btn" type="button">Button</button></span></div></div>
+        <div class="p-0_5"><div class="input-group"><div class="input-group-addon"><div class="input-group-text" id="color-addon0">@</div></div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-addon"><button class="btn" type="button">Button</button></span></div></div>
+        <div class="p-0_5 bg-primary"><div class="input-group"><div class="input-group-addon"><div class="input-group-text" id="color-addon1">@</div></div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-addon"><button class="btn" type="button">Button</button></span></div></div>
+        <div class="p-0_5 bg-secondary"><div class="input-group"><div class="input-group-addon"><div class="input-group-text" id="color-addon2">@</div></div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-addon"><button class="btn" type="button">Button</button></span></div></div>
+        <div class="p-0_5 bg-success"><div class="input-group"><div class="input-group-addon"><div class="input-group-text" id="color-addon3">@</div></div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-addon"><button class="btn" type="button">Button</button></span></div></div>
+        <div class="p-0_5 bg-info"><div class="input-group"><div class="input-group-addon"><div class="input-group-text" id="color-addon4">@</div></div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-addon"><button class="btn" type="button">Button</button></span></div></div>
+        <div class="p-0_5 bg-warning"><div class="input-group"><div class="input-group-addon"><div class="input-group-text" id="color-addon5">@</div></div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-addon"><button class="btn" type="button">Button</button></span></div></div>
+        <div class="p-0_5 bg-danger"><div class="input-group"><div class="input-group-addon"><div class="input-group-text" id="color-addon6">@</div></div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-addon"><button class="btn" type="button">Button</button></span></div></div>
+        <div class="p-0_5 bg-light"><div class="input-group"><div class="input-group-addon"><div class="input-group-text" id="color-addon7">@</div></div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-addon"><button class="btn" type="button">Button</button></span></div></div>
+        <div class="p-0_5 bg-dark"><div class="input-group"><div class="input-group-addon"><div class="input-group-text" id="color-addon8">@</div></div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-addon"><button class="btn" type="button">Button</button></span></div></div>
     </div>
 </div>
 

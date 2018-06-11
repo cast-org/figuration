@@ -1,48 +1,128 @@
 // Form validation states
-//
-// Used in _forms.scss to generate the form validation CSS for warnings, errors,
-// and successes.
-
-@mixin form-control-validation($color) {
-    $level-context-bg: map-get($level-context, "bg");
-    $level-context-border-color: map-get($level-context, "border-color");
-    $level-context-hover-border-color: map-get($level-context, "hover-border-color");
-
-    $bg:           palette($color, $level-context-bg);
-    $border:       palette($color, $level-context-border-color);
-    $border-hover: palette($color, $level-context-hover-border-color);
-
-    // Color the label and help text
-    .form-control-feedback,
-    .form-control-label,
-    .form-check-label,
-    .custom-control {
+// Generate the form validation CSS for valid and invalid states.
+@mixin form-validation-state($state, $color) {
+    .#{$state}-feedback {
+        display: none;
+        width: 100%;
+        margin-top: $form-feedback-margin-top;
+        @include font-size($form-feedback-font-size);
         color: $color;
     }
-    // Set the border and box shadow on specific inputs to match
-    .form-control,
-    .custom-select,
-    .custom-file-control {
-        border-color: $border;
 
-        &:focus {
-            border-color: $border-hover;
-            @include box-shadow($input-focus-box-shadow);
+    .#{$state}-tooltip {
+        position: absolute;
+        top: 100%;
+        z-index: 5;
+        display: none;
+        max-width: 100%; // Contain to parent when possible
+        padding: $tooltip-padding-y $tooltip-padding-x;
+        margin-top: .125rem;
+        @include font-size($tooltip-font-size);
+        color: color-auto-contrast($color);
+        background-color: rgba($color, $tooltip-opacity);
+        border-radius: $border-radius;
+    }
+
+    .form-control,
+    .custom-select {
+        .was-validated &:#{$state},
+        &.is-#{$state} {
+            border-color: $color;
+
+            &:focus {
+                border-color: $color;
+                box-shadow: 0 0 0 $input-focus-box-shadow-width rgba($color, $input-focus-box-shadow-alpha);
+            }
+
+            ~ .#{$state}-feedback,
+            ~ .#{$state}-tooltip {
+                display: block;
+            }
         }
     }
 
-    // Set validation states also for addons
-    .input-group-addon {
-        color: $color;
-        background-color: $bg;
-        border-color: $color;
+    .form-control-file {
+        .was-validated &:#{$state},
+        &.is-#{$state} {
+            ~ .#{$state}-feedback,
+            ~ .#{$state}-tooltip {
+                display: block;
+            }
+        }
+    }
+
+    .form-check-input {
+        .was-validated &:#{$state},
+        &.is-#{$state} {
+            ~ .form-check-label {
+                color: $color;
+            }
+
+            ~ .#{$state}-feedback,
+            ~ .#{$state}-tooltip {
+                display: block;
+            }
+        }
+    }
+
+    .custom-control-input {
+        .was-validated &:#{$state},
+        &.is-#{$state} {
+            ~ .custom-control-label {
+                color: $color;
+
+                &::before {
+                    border-color: $color;
+                }
+            }
+
+            ~ .#{$state}-feedback,
+            ~ .#{$state}-tooltip {
+                display: block;
+            }
+
+            &:checked {
+                ~ .custom-control-label::before {
+                    background-color: $color;
+                }
+            }
+
+            &:focus {
+                ~ .custom-control-label::before {
+                    box-shadow: 0 0 0 $input-focus-box-shadow-width rgba($color, $input-focus-box-shadow-alpha);
+                }
+            }
+        }
+    }
+
+    // custom file
+    .custom-file-input {
+        .was-validated &:#{$state},
+        &.is-#{$state} {
+            ~ .custom-file-label {
+                border-color: $color;
+
+                &::before { border-color: inherit; }
+            }
+
+            ~ .#{$state}-feedback,
+            ~ .#{$state}-tooltip {
+                display: block;
+            }
+
+            &:focus {
+                ~ .custom-file-label {
+                    box-shadow: 0 0 0 $input-focus-box-shadow-width rgba($color, $input-focus-box-shadow-alpha);
+                }
+            }
+        }
     }
 }
 
 // Form control focus state
 //
 // Generate a customized focus state and for any input with the specified color,
-// which defaults to the `@input-border-focus` variable.
+// which defaults to the `@input-focus-border-color` variable.
 //
 // We highly encourage you to not customize the default value, but instead use
 // this to tweak colors on an as-needed basis. This aesthetic change is based on
@@ -57,6 +137,12 @@
         background-color: $input-focus-bg;
         border-color: $input-focus-border-color;
         outline: 0;
-        @include box-shadow($input-focus-box-shadow);
+        // Avoid using mixin so we can pass custom focus shadow properly
+        @if $enable-shadows {
+            box-shadow: $input-box-shadow, $input-focus-box-shadow;
+        } @else {
+            box-shadow: $input-focus-box-shadow;
+        }
     }
 }
+

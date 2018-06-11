@@ -847,27 +847,20 @@ Showing a <kbd>kdb sample</kbd>
     <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
   </fieldset>
   <div class="form-check">
-    <label class="form-check-label">
-      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="" />
-      Option one is this and that&mdash;be sure to include why it's great
-    </label>
+    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked />
+    <label for="optionsRadios1" class="form-check-label">Option one is this and that&mdash;be sure to include why it's great</label>
   </div>
   <div class="form-check">
-    <label class="form-check-label">
-      <input type="radio" class="form-check-input"  name="optionsRadios" id="optionsRadios2" value="option2" />
-      Option two can be something else and selecting it will deselect option one
-    </label>
+    <input type="radio" class="form-check-input"  name="optionsRadios" id="optionsRadios2" value="option2" />
+    <label for="optionsRadios2" class="form-check-label">Option two can be something else and selecting it will deselect option one</label>
   </div>
   <div class="form-check disabled">
-    <label class="form-check-label">
-      <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled="" />
-      Option three is disabled
-    </label>
+    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled />
+    <label for="optionsRadios3" class="form-check-label">Option three is disabled</label>
   </div>
   <div class="form-check">
-    <label class="form-check-label">
-      <input type="checkbox" class="form-check-input"/> Check me out
-    </label>
+    <input type="checkbox" class="form-check-input" id="optionCheck1" />
+    <label for="optionCheck1" class="form-check-label"> Check me out</label>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
@@ -920,9 +913,13 @@ Showing a <kbd>kdb sample</kbd>
   <div class="form-group">
     <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
     <div class="input-group">
-      <div class="input-group-addon">$</div>
+      <div class="input-group-addon">
+        <span class="input-group-text">$</span>
+      </div>
       <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
-      <div class="input-group-addon">.00</div>
+      <div class="input-group-addon">
+        <span class="input-group-text">.00</span>
+      </div>
     </div>
   </div>
   <button type="submit" class="btn btn-primary">Transfer cash</button>
@@ -1372,94 +1369,74 @@ Showing a <kbd>kdb sample</kbd>
 
 <h3>Custom Forms: Checkbox</h3>
 <div class="mb-1">
-  <label class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input">
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Check this custom checkbox</span>
-  </label>
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="customControl0">
+    <label class="custom-control-label" for="customControl0">Check this custom checkbox</label>
+  </div>
 </div>
 
 <div class="mb-1">
-  <label class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input">
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Curabitur vel pulvinar arcu? Donec commodo iaculis varius. In malesuada volutpat magna nec blandit. Quisque sit amet nisl scelerisque, tristique odio at, dignissim quam. Aenean molestie imperdiet nisi. Vestibulum mattis posuere dui a luctus. Cras suscipit urna et pulvinar dapibus. Cras efficitur aliquet mi ut cursus.</span>
-  </label>
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="customControl1">
+    <label class="custom-control-label" for="customControl1">Curabitur vel pulvinar arcu? Donec commodo iaculis varius. In malesuada volutpat magna nec blandit. Quisque sit amet nisl scelerisque, tristique odio at, dignissim quam. Aenean molestie imperdiet nisi. Vestibulum mattis posuere dui a luctus. Cras suscipit urna et pulvinar dapibus. Cras efficitur aliquet mi ut cursus.</label>
+  </div>
 </div>
 
 <h3>Custom Forms: Radio</h3>
 <div class="mb-1">
-  <label class="custom-control custom-radio">
-    <input id="radio1" name="radio" type="radio" class="custom-control-input">
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Toggle this custom radio</span>
-  </label>
-  <label class="custom-control custom-radio">
-    <input id="radio2" name="radio" type="radio" class="custom-control-input">
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Or toggle this other custom radio</span>
-  </label>
+  <div class="custom-control custom-radio">
+    <input name="radio" type="radio" class="custom-control-input" id="customControl2">
+    <label class="custom-control-label" for="customControl2">Toggle this custom radio</label>
+  </div>
+  <div class="custom-control custom-radio">
+    <input name="radio" type="radio" class="custom-control-input" id="customControl3">
+    <label class="custom-control-label" for="customControl3">Or toggle this other custom radio</label>
+  </div>
 </div>
 
 <h3>Custom Forms: Disabled</h3>
 <div class="mb-1">
-  <label class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input" disabled>
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Check this custom checkbox</span>
-  </label>
-  <label class="custom-control custom-radio">
-    <input id="radioDisabled0" name="radioDisabled" type="radio" class="custom-control-input" disabled>
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Toggle this custom radio</span>
-  </label>
-  <label class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input" disabled>
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Check this custom checkbox</span>
-  </label>
-  <label class="custom-control custom-radio">
-    <input id="radioDisabled1" name="radioDisabled" type="radio" class="custom-control-input" disabled>
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Toggle this custom radio</span>
-  </label>
-  <label class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input" disabled>
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Check this custom checkbox</span>
-  </label>
-  <label class="custom-control custom-radio">
-    <input id="radioDisabled2" name="radioDisabled" type="radio" class="custom-control-input" disabled>
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Toggle this custom radio</span>
-  </label>
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="customControl4" disabled>
+    <label class="custom-control-label" for="customControl4">Check this custom checkbox</label>
+  </div>
+  <div class="custom-control custom-radio">
+    <input name="radioDisabled0" type="radio" class="custom-control-input" id="customControl5" disabled>
+    <label class="custom-control-label" for="customControl5">Toggle this custom radio</label>
+  </div>
+</div>
+<div class="mb-1">
+  <div class="custom-control custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="customControl6" checked disabled>
+    <label class="custom-control-label" for="customControl6">Check this custom checkbox</label>
+  </div>
+  <div class="custom-control custom-radio">
+    <input name="radioDisabled1" type="radio" class="custom-control-input" id="customControl7" checked disabled>
+    <label class="custom-control-label" for="customControl7">Toggle this custom radio</label>
+  </div>
 </div>
 
 <h3>Custom Forms: Stacked</h3>
 <div class="custom-controls-stacked mb-1">
-  <label class="custom-control custom-radio">
+  <div class="custom-control custom-radio">
     <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input">
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Toggle this custom radio</span>
-  </label>
-  <label class="custom-control custom-radio">
+    <label class="custom-control-label">Toggle this custom radio</label>
+  </div>
+  <div class="custom-control custom-radio">
     <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input">
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Or toggle this other custom radio</span>
-  </label>
+    <label class="custom-control-label">Or toggle this other custom radio</label>
+  </div>
 </div>
 
 <div class="custom-controls-stacked mb-1">
-  <label class="custom-control custom-radio">
+  <div class="custom-control custom-radio">
     <input id="checkStacked1" type="checkbox" class="custom-control-input">
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Curabitur vel pulvinar arcu? Donec commodo iaculis varius. In malesuada volutpat magna nec blandit. Quisque sit amet nisl scelerisque, tristique odio at, dignissim quam. Aenean molestie imperdiet nisi. Vestibulum mattis posuere dui a luctus. Cras suscipit urna et pulvinar dapibus. Cras efficitur aliquet mi ut cursus.</span>
-  </label>
-  <label class="custom-control custom-radio">
+    <label class="custom-control-label">Curabitur vel pulvinar arcu? Donec commodo iaculis varius. In malesuada volutpat magna nec blandit. Quisque sit amet nisl scelerisque, tristique odio at, dignissim quam. Aenean molestie imperdiet nisi. Vestibulum mattis posuere dui a luctus. Cras suscipit urna et pulvinar dapibus. Cras efficitur aliquet mi ut cursus.</label>
+  </div>
+  <div class="custom-control custom-radio">
     <input id="checkStacked2" type="checkbox" class="custom-control-input">
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Curabitur vel pulvinar arcu? Donec commodo iaculis varius. In malesuada volutpat magna nec blandit. Quisque sit amet nisl scelerisque, tristique odio at, dignissim quam. Aenean molestie imperdiet nisi. Vestibulum mattis posuere dui a luctus. Cras suscipit urna et pulvinar dapibus. Cras efficitur aliquet mi ut cursus.</span>
-  </label>
+    <label class="custom-control-label">Curabitur vel pulvinar arcu? Donec commodo iaculis varius. In malesuada volutpat magna nec blandit. Quisque sit amet nisl scelerisque, tristique odio at, dignissim quam. Aenean molestie imperdiet nisi. Vestibulum mattis posuere dui a luctus. Cras suscipit urna et pulvinar dapibus. Cras efficitur aliquet mi ut cursus.</label>
+  </div>
 </div>
 
 
@@ -1480,10 +1457,10 @@ Showing a <kbd>kdb sample</kbd>
 
 <h3>Custom Forms: File Browser</h3>
 <div class="mb-1">
-  <label class="custom-file">
-    <input type="file" id="file" class="custom-file-input">
-    <span class="custom-file-control"></span>
-  </label>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="customFile">
+    <label class="custom-file-label" for="customFile">Choose file...</label>
+  </div>
 </div>
 
 <h3>Embed responsive</h3>
@@ -1511,50 +1488,70 @@ Showing a <kbd>kdb sample</kbd>
 
 <h3>Input groups</h3>
 <div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">@</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="basic-addon1">@</div>
+  </div>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
 </div>
 <br>
 <div class="input-group">
   <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-  <span class="input-group-addon" id="basic-addon2">@example.com</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="basic-addon2">@example.com</div>
+  </div>
 </div>
 <br>
 <label for="basic-url">Your vanity URL</label>
 <div class="input-group">
-  <span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="basic-addon3">https://example.com/users/</div>
+  </div>
   <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
 </div>
 <br>
 <div class="input-group">
-  <span class="input-group-addon">$</span>
+  <div class="input-group-addon">
+    <div class="input-group-text">$</div>
+  </div>
   <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-  <span class="input-group-addon">.00</span>
+  <div class="input-group-addon">
+    <div class="input-group-text">.00</div>
+  </div>
 </div>
 
 <h3>Input group sizes</h3>
 <div class="input-group input-group-xlarge">
-  <span class="input-group-addon" id="sizing-addon1">@</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="sizing-addon1">@</div>
+  </div>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon1">
 </div>
 <br />
 <div class="input-group input-group-large">
-  <span class="input-group-addon" id="sizing-addon2">@</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="sizing-addon2">@</div>
+  </div>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon2">
 </div>
 <br />
 <div class="input-group">
-  <span class="input-group-addon" id="sizing-addon3">@</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="sizing-addon3">@</div>
+  </div>
   <input type="text" class="form-control" placeholder="Username"aria-label="Username" aria-describedby="sizing-addon3">
 </div>
 <br />
 <div class="input-group input-group-small">
-  <span class="input-group-addon" id="sizing-addon4">@</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="sizing-addon4">@</div>
+  </div>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon4">
 </div>
 <br />
 <div class="input-group input-group-xsmall">
-  <span class="input-group-addon" id="sizing-addon5">@</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="sizing-addon5">@</div>
+  </div>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon5">
 </div>
 <br />
@@ -1563,17 +1560,21 @@ Showing a <kbd>kdb sample</kbd>
 <div class="row">
   <div class="col-lg-6">
     <div class="input-group">
-      <span class="input-group-addon">
-        <input type="checkbox" aria-label="Checkbox for following text input">
-      </span>
+      <div class="input-group-addon">
+        <div class="input-group-text">
+            <input type="checkbox" aria-label="Checkbox for following text input">
+        </div>
+      </div>
       <input type="text" class="form-control" aria-label="Text input with checkbox">
     </div>
   </div>
   <div class="col-lg-6">
     <div class="input-group">
-      <span class="input-group-addon">
-        <input type="radio" aria-label="Radio button for following text input">
-      </span>
+      <div class="input-group-addon">
+        <div class="input-group-text">
+            <input type="radio" aria-label="Radio button for following text input">
+        </div>
+      </div>
       <input type="text" class="form-control" aria-label="Text input with radio button">
     </div>
   </div>
@@ -1583,7 +1584,7 @@ Showing a <kbd>kdb sample</kbd>
 <div class="row">
   <div class="col-lg-6">
     <div class="input-group">
-      <span class="input-group-btn">
+      <span class="input-group-addon">
         <button class="btn" type="button">Go!</button>
       </span>
       <input type="text" class="form-control" placeholder="Search for...">
@@ -1592,7 +1593,7 @@ Showing a <kbd>kdb sample</kbd>
   <div class="col-lg-6">
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Search for...">
-      <span class="input-group-btn">
+      <span class="input-group-addon">
         <button class="btn btn-outline-primary" type="button">Go!</button>
       </span>
     </div>
@@ -1602,11 +1603,11 @@ Showing a <kbd>kdb sample</kbd>
 <div class="row">
   <div class="col-lg-offset-3 col-lg-6">
     <div class="input-group">
-      <span class="input-group-btn">
+      <span class="input-group-addon">
         <button class="btn btn-secondary" type="button">Hate it</button>
       </span>
       <input type="text" class="form-control" placeholder="Product name">
-      <span class="input-group-btn">
+      <span class="input-group-addon">
         <button class="btn btn-secondary" type="button">Love it</button>
       </span>
     </div>
@@ -1617,7 +1618,7 @@ Showing a <kbd>kdb sample</kbd>
 <div class="row">
   <div class="col-lg-6">
     <div class="input-group">
-      <div class="input-group-btn">
+      <div class="input-group-addon">
         <button type="button" class="btn btn-secondary dropdown-toggle" data-cfw="dropdown">
           Action
         </button>
@@ -1635,7 +1636,7 @@ Showing a <kbd>kdb sample</kbd>
   <div class="col-lg-6">
     <div class="input-group">
       <input type="text" class="form-control" aria-label="Text input with dropdown button">
-      <div class="input-group-btn dropdown-menu-reverse">
+      <div class="input-group-addon dropdown-menu-reverse">
         <button type="button" class="btn btn-secondary dropdown-toggle" data-cfw="dropdown">
           Action
         </button>
@@ -1655,7 +1656,7 @@ Showing a <kbd>kdb sample</kbd>
 <div class="row">
   <div class="col-lg-6">
     <div class="input-group">
-      <div class="input-group-btn">
+      <div class="input-group-addon">
         <button type="button" class="btn btn-secondary">Action</button>
         <button type="button" class="btn btn-secondary dropdown-toggle" data-cfw="dropdown">
           <span class="sr-only">Toggle Dropdown</span>
@@ -1674,7 +1675,7 @@ Showing a <kbd>kdb sample</kbd>
   <div class="col-lg-6">
     <div class="input-group">
       <input type="text" class="form-control" aria-label="Text input with segmented button dropdown">
-      <div class="input-group-btn dropdown-menu-reverse">
+      <div class="input-group-addon dropdown-menu-reverse">
         <button type="button" class="btn btn-secondary">Action</button>
         <button type="button" class="btn btn-secondary dropdown-toggle" data-cfw="dropdown">
           <span class="sr-only">Toggle Dropdown</span>

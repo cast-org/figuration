@@ -21,10 +21,12 @@
 <body>
 
 <div class="container"><div class="row"><div class="col-12 col-sm-10 col-md-8 col-lg-6">
-    <h1>Input Group</h1>
+<h1>Input Group</h1>
 
 <div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">@</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="basic-addon1">@</div>
+  </div>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
 </div>
 
@@ -32,7 +34,9 @@
 
 <div class="input-group">
   <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon3">
-  <span class="input-group-addon" id="basic-addon3">@example.com</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="basic-addon3">@example.com</div>
+  </div>
 </div>
 
 
@@ -40,7 +44,9 @@
 
 <label for="basic-url0">Your vanity URL</label>
 <div class="input-group">
-  <span class="input-group-addon" id="basic-addon5">https://example.com/users/</span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="basic-addon5">https://example.com/users/</div>
+  </div>
   <input type="text" class="form-control" id="basic-url0" aria-describedby="basic-addon5">
 </div>
 
@@ -49,13 +55,17 @@
 
 <div class="form-group">
   <div class="input-group">
-    <span class="input-group-addon" id="basic-addon7">@</span>
+    <div class="input-group-addon">
+        <div class="input-group-text" id="basic-addon7">@</div>
+    </div>
     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon8">
   </div>
 </div>
 <div class="form-group">
   <div class="input-group">
-    <span class="input-group-addon" id="basic-addon8">@</span>
+    <div class="input-group-addon">
+        <div class="input-group-text" id="basic-addon8">@</div>
+    </div>
     <input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon8">
   </div>
 </div>
@@ -63,34 +73,72 @@
 <hr />
 
 <div class="input-group">
-  <span class="input-group-addon">$</span>
+  <div class="input-group-addon">
+    <div class="input-group-text">$</div>
+  </div>
   <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-  <span class="input-group-addon">.00</span>
+  <div class="input-group-addon">
+    <div class="input-group-text">.00</div>
+  </div>
 </div>
 
 <hr />
 
 <div class="input-group">
-  <span class="input-group-addon">$</span>
-  <span class="input-group-addon">0.00</span>
+  <div class="input-group-addon">
+    <div class="input-group-text">$</div>
+  </div>
+  <div class="input-group-addon">
+    <div class="input-group-text">.00</div>
+  </div>
   <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
 </div>
 
 <hr />
 
 <div class="input-group">
-  <span class="input-group-addon">
-    <input type="checkbox" aria-label="Checkbox for following text input">
-  </span>
+  <div class="input-group-addon">
+    <div class="input-group-text">
+      <input type="checkbox" aria-label="Checkbox for following text input">
+    </div>
+  </div>
   <input type="text" class="form-control" aria-label="Text input with checkbox">
 </div>
 
 <hr />
 
 <div class="input-group">
-  <span class="input-group-addon">
-    <input type="radio" aria-label="Radio button for following text input">
-  </span>
+  <div class="input-group-addon">
+    <div class="input-group-text">
+      <input type="radio" aria-label="Radio button for following text input">
+    </div>
+  </div>
+  <input type="text" class="form-control" aria-label="Text input with radio button">
+</div>
+
+<hr />
+
+<div class="input-group">
+  <div class="input-group-addon">
+    <div class="input-group-text">
+      <input type="checkbox" aria-label="Checkbox for following text input">
+    </div>
+  </div>
+  <div class="input-group-addon">
+    <div class="input-group-text">$</div>
+  </div>
+  <input type="text" class="form-control" aria-label="Text input with checkbox">
+</div>
+
+<hr />
+
+<div class="input-group">
+  <div class="input-group-addon">
+    <div class="input-group-text">$</div>
+  </div>
+  <div class="input-group-addon">
+    <div class="input-group-text">.00</div>
+  </div>
   <input type="text" class="form-control" aria-label="Text input with radio button">
 </div>
 
@@ -98,24 +146,6 @@
 
 <div class="input-group">
   <span class="input-group-addon">
-    <input type="checkbox" aria-label="Checkbox for following text input">
-  </span>
-  <span class="input-group-addon">$</span>
-  <input type="text" class="form-control" aria-label="Text input with checkbox">
-</div>
-
-<hr />
-
-<div class="input-group">
-  <span class="input-group-addon">$</span>
-  <span class="input-group-addon">0.00</span>
-  <input type="text" class="form-control" aria-label="Text input with radio button">
-</div>
-
-<hr />
-
-<div class="input-group">
-  <span class="input-group-btn">
     <button class="btn" type="button">Go!</button>
   </span>
   <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
@@ -124,7 +154,7 @@
 <hr />
 
 <div class="input-group">
-  <span class="input-group-btn">
+  <span class="input-group-addon">
     <button class="btn" type="button">Go!</button>
   </span>
   <select class="form-control" aria-label="Select one">
@@ -138,7 +168,7 @@
 <hr />
 
 <div class="input-group">
-  <span class="input-group-btn">
+  <span class="input-group-addon">
     <button class="btn" type="button">Go!</button>
   </span>
   <select class="custom-select" aria-label="Select one">
@@ -153,7 +183,7 @@
 
 <div class="input-group">
   <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
-  <span class="input-group-btn">
+  <span class="input-group-addon">
     <button class="btn" type="button">Go!</button>
   </span>
 </div>
@@ -167,7 +197,7 @@
     <option value="2">Two</option>
     <option value="3">Three</option>
   </select>
-  <span class="input-group-btn">
+  <span class="input-group-addon">
     <button class="btn" type="button">Go!</button>
   </span>
 </div>
@@ -181,7 +211,7 @@
     <option value="2">Two</option>
     <option value="3">Three</option>
   </select>
-  <span class="input-group-btn">
+  <span class="input-group-addon">
     <button class="btn" type="button">Go!</button>
   </span>
 </div>
@@ -189,11 +219,11 @@
 <hr />
 
 <div class="input-group">
-  <span class="input-group-btn">
+  <span class="input-group-addon">
     <button class="btn" type="button">Hate it</button>
   </span>
   <input type="text" class="form-control" placeholder="Product name" aria-label="Product name">
-  <span class="input-group-btn">
+  <span class="input-group-addon">
     <button class="btn" type="button">Love it</button>
   </span>
 </div>
@@ -201,7 +231,9 @@
 <hr />
 
 <div class="input-group">
-    <div class="input-group-addon">%</div>
+    <div class="input-group-addon">
+        <div class="input-group-text">%</div>
+    </div>
     <textarea class="form-control" rows="5"></textarea>
 </div>
 
@@ -209,14 +241,14 @@
 
 <div class="input-group">
     <textarea class="form-control" rows="5"></textarea>
-    <span class="input-group-btn">
+    <span class="input-group-addon">
         <button class="btn" type="button">Go!</button>
     </span>
 </div>
 
 <div class="d-flex">
   <div class="input-group">
-    <div class="input-group-btn">
+    <div class="input-group-addon">
       <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Action
       </button>
@@ -229,7 +261,9 @@
       </div>
     </div>
     <input type="text" class="form-control" aria-label="Text input with dropdown button">
-    <span class="input-group-addon">.00</span>
+    <div class="input-group-addon">
+      <div class="input-group-text">.00</div>
+    </div>
   </div>
   <div style="width:100px;height:100px;background-color:red;"></div>
 </div>
@@ -244,7 +278,7 @@
       <option value="2">Two</option>
       <option value="3">Three</option>
     </select>
-    <span class="input-group-btn">
+    <span class="input-group-addon">
       <button class="btn" type="button">Go!</button>
     </span>
   </div>
@@ -261,7 +295,7 @@
       <option value="2">Two</option>
       <option value="3">Three</option>
     </select>
-    <span class="input-group-btn">
+    <span class="input-group-addon">
       <button class="btn" type="button">Go!</button>
     </span>
   </div>
@@ -273,39 +307,34 @@
 <h2>Input group sizes</h2>
 
 <div class="input-group input-group-xlarge">
-  <span class="input-group-addon" id="sizing-addon-n1">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon-n1">
-  <span class="input-group-btn">
-      <button class="btn" type="button">Go!</button>
-  </span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="sizing-addon1">@</div>
+  </div>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon1">
 </div>
 <div class="input-group input-group-large">
-  <span class="input-group-addon" id="sizing-addon-n2">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon-n2">
-  <span class="input-group-btn">
-      <button class="btn" type="button">Go!</button>
-  </span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="sizing-addon2">@</div>
+  </div>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon2">
 </div>
 <div class="input-group">
-  <span class="input-group-addon" id="sizing-addon-n3">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon-n3">
-  <span class="input-group-btn">
-      <button class="btn" type="button">Go!</button>
-  </span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="sizing-addon3">@</div>
+  </div>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon3">
 </div>
 <div class="input-group input-group-small">
-  <span class="input-group-addon" id="sizing-addon-n4">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon-n4">
-  <span class="input-group-btn">
-      <button class="btn" type="button">Go!</button>
-  </span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="sizing-addon4">@</div>
+  </div>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon4">
 </div>
 <div class="input-group input-group-xsmall">
-  <span class="input-group-addon" id="sizing-addon-n5">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon-n5">
-  <span class="input-group-btn">
-      <button class="btn" type="button">Go!</button>
-  </span>
+  <div class="input-group-addon">
+    <div class="input-group-text" id="sizing-addon5">@</div>
+  </div>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon5">
 </div>
 
 <h2>Input group size w/ select</h2>
@@ -317,7 +346,7 @@
         <option value="2">Two</option>
         <option value="3">Three</option>
     </select>
-    <span class="input-group-btn">
+    <span class="input-group-addon">
         <button class="btn" type="button">Go!</button>
     </span>
 </div>
@@ -328,7 +357,7 @@
         <option value="2">Two</option>
         <option value="3">Three</option>
     </select>
-    <span class="input-group-btn">
+    <span class="input-group-addon">
         <button class="btn" type="button">Go!</button>
     </span>
 </div>
@@ -339,7 +368,7 @@
         <option value="2">Two</option>
         <option value="3">Three</option>
     </select>
-    <span class="input-group-btn">
+    <span class="input-group-addon">
         <button class="btn" type="button">Go!</button>
     </span>
 </div>
@@ -350,7 +379,7 @@
         <option value="2">Two</option>
         <option value="3">Three</option>
     </select>
-    <span class="input-group-btn">
+    <span class="input-group-addon">
         <button class="btn" type="button">Go!</button>
     </span>
 </div>
@@ -361,7 +390,7 @@
         <option value="2">Two</option>
         <option value="3">Three</option>
     </select>
-    <span class="input-group-btn">
+    <span class="input-group-addon">
         <button class="btn" type="button">Go!</button>
     </span>
 </div>
@@ -375,7 +404,7 @@
         <option value="2">Two</option>
         <option value="3">Three</option>
     </select>
-    <span class="input-group-btn">
+    <span class="input-group-addon">
         <button class="btn" type="button">Go!</button>
     </span>
 </div>
@@ -386,7 +415,7 @@
         <option value="2">Two</option>
         <option value="3">Three</option>
     </select>
-    <span class="input-group-btn">
+    <span class="input-group-addon">
         <button class="btn" type="button">Go!</button>
     </span>
 </div>
@@ -397,7 +426,7 @@
         <option value="2">Two</option>
         <option value="3">Three</option>
     </select>
-    <span class="input-group-btn">
+    <span class="input-group-addon">
         <button class="btn" type="button">Go!</button>
     </span>
 </div>
@@ -408,7 +437,7 @@
         <option value="2">Two</option>
         <option value="3">Three</option>
     </select>
-    <span class="input-group-btn">
+    <span class="input-group-addon">
         <button class="btn" type="button">Go!</button>
     </span>
 </div>
@@ -419,7 +448,7 @@
         <option value="2">Two</option>
         <option value="3">Three</option>
     </select>
-    <span class="input-group-btn">
+    <span class="input-group-addon">
         <button class="btn" type="button">Go!</button>
     </span>
 </div>
@@ -428,34 +457,34 @@
 
 <div class="input-group form-group has-success">
   <input type="text" class="form-control" placeholder="Username">
-  <span class="input-group-btn">
+  <span class="input-group-addon">
     <button class="btn btn-success" type="button">Go!</button>
   </span>
 </div>
 
 <div class="input-group form-group has-success">
   <input type="text" class="form-control" placeholder="Username">
-  <span class="input-group-btn">
+  <span class="input-group-addon">
     <button class="btn btn-outline-secondary" type="button">Go!</button>
   </span>
 </div>
 
 <div class="input-group form-group has-success">
   <input type="text" class="form-control" placeholder="Username">
-  <span class="input-group-btn">
+  <span class="input-group-addon">
     <button class="btn" type="button">Go!</button>
   </span>
 </div>
 
 <div class="input-group form-group has-success">
-  <span class="input-group-btn">
+  <span class="input-group-addon">
     <button class="btn btn-outline-secondary" type="button">Go!</button>
   </span>
   <input type="text" class="form-control" placeholder="Username">
 </div>
 
 <div class="input-group form-group has-success">
-  <span class="input-group-btn">
+  <span class="input-group-addon">
     <button class="btn" type="button">Go!</button>
   </span>
   <input type="text" class="form-control" placeholder="Username">
@@ -463,34 +492,34 @@
 
 <div class="input-group form-group has-danger">
   <input type="text" class="form-control" placeholder="Username">
-  <span class="input-group-btn">
+  <span class="input-group-addon">
     <button class="btn btn-danger" type="button">Go!</button>
   </span>
 </div>
 
 <div class="input-group form-group has-danger">
   <input type="text" class="form-control" placeholder="Username">
-  <span class="input-group-btn">
+  <span class="input-group-addon">
     <button class="btn btn-outline-secondary" type="button">Go!</button>
   </span>
 </div>
 
 <div class="input-group form-group has-danger">
   <input type="text" class="form-control" placeholder="Username">
-  <span class="input-group-btn">
+  <span class="input-group-addon">
     <button class="btn" type="button">Go!</button>
   </span>
 </div>
 
 <div class="input-group form-group has-danger">
-  <span class="input-group-btn">
+  <span class="input-group-addon">
     <button class="btn btn-outline-secondary" type="button">Go!</button>
   </span>
   <input type="text" class="form-control" placeholder="Username">
 </div>
 
 <div class="input-group form-group has-danger">
-  <span class="input-group-btn">
+  <span class="input-group-addon">
     <button class="btn" type="button">Go!</button>
   </span>
   <input type="text" class="form-control" placeholder="Username">
@@ -498,50 +527,56 @@
 
 <h2>Margin Check</h2>
 
-<form class="form-inline mb-1">
+<form class="mb-1">
     <div class="input-group">
-        <span class="input-group-addon">Something:</span>
-        <span class="input-group-btn">
+        <div class="input-group-addon">
+            <div class="input-group-text">Something:</div>
+        </div>
+        <div class="input-group-addon">
             <button class="btn btn-outline-primary" type="button">All</button>
-        </span>
-        <span class="input-group-btn">
+        </div>
+        <div class="input-group-addon">
             <button class="btn btn-outline-success" type="button">Yes</button>
-        </span>
-        <span class="input-group-btn">
+        </div>
+        <div class="input-group-addon">
             <button class="btn btn-outline-danger" type="button">No</button>
-        </span>
+        </div>
     </div>
 </form>
 
-<form class="form-inline mb-1">
+<form class="mb-1">
     <div class="input-group">
-        <span class="input-group-addon">Something:</span>
-        <span class="input-group-btn">
+        <div class="input-group-addon">
+            <div class="input-group-text">Something:</div>
+        </div>
+        <div class="input-group-addon">
             <button class="btn btn-outline-primary" type="button">All</button>
-        </span>
-		<span class="input-group-btn">
+        </div>
+		<div class="input-group-addon">
             <button class="btn btn-outline-primary" type="button">All</button>
-        </span>
+        </div>
 		<input type="text" class="form-control">
 		<input type="text" class="form-control">
-        <span class="input-group-btn">
+        <div class="input-group-addon">
             <button class="btn btn-outline-success" type="button">Yes</button>
-        </span>
-        <span class="input-group-btn">
+        </div>
+        <div class="input-group-addon">
             <button class="btn btn-outline-danger" type="button">No</button>
-        </span>
+        </div>
     </div>
 </form>
 
-<form class="form-inline mb-1">
+<form class="mb-1">
     <div class="input-group">
-        <span class="input-group-addon">Something:</span>
-        <span class="input-group-btn">
+        <div class="input-group-addon">
+            <div class="input-group-text">Something:</div>
+        </div>
+        <div class="input-group-addon">
             <button class="btn btn-outline-primary" type="button">All</button>
-        </span>
-		<span class="input-group-btn">
+        </div>
+		<div class="input-group-addon">
             <button class="btn btn-outline-primary" type="button">All</button>
-        </span>
+        </div>
 		<select class="custom-select" aria-label="Select one">
             <option selected>Choose...</option>
             <option value="1">One</option>
@@ -554,22 +589,24 @@
             <option value="2">Two</option>
             <option value="3">Three</option>
         </select>
-        <span class="input-group-btn">
+        <div class="input-group-addon">
             <button class="btn btn-outline-success" type="button">Yes</button>
-        </span>
-        <span class="input-group-btn">
+        </div>
+        <div class="input-group-addon">
             <button class="btn btn-outline-danger" type="button">No</button>
-        </span>
+        </div>
     </div>
 </form>
 
-<form class="form-inline mb-1">
+<form class="mb-1">
     <div class="input-group">
-        <span class="input-group-addon">Something:</span>
-        <span class="input-group-btn">
+        <div class="input-group-addon">
+            <div class="input-group-text">Something:</div>
+        </div>
+        <span class="input-group-addon">
             <button class="btn btn-outline-primary" type="button">All</button>
         </span>
-		<span class="input-group-btn">
+		<span class="input-group-addon">
             <button class="btn btn-outline-primary" type="button">All</button>
         </span>
 		<select class="form-control" aria-label="Select one">
@@ -584,37 +621,41 @@
             <option value="2">Two</option>
             <option value="3">Three</option>
         </select>
-        <span class="input-group-btn">
+        <span class="input-group-addon">
             <button class="btn btn-outline-success" type="button">Yes</button>
         </span>
-        <span class="input-group-btn">
+        <span class="input-group-addon">
             <button class="btn btn-outline-danger" type="button">No</button>
         </span>
     </div>
 </form>
 
-<form class="form-inline mb-1">
+<form class="mb-1">
     <div class="input-group">
-        <span class="input-group-addon">Something:</span>
+        <div class="input-group-addon">
+            <div class="input-group-text">Something:</div>
+        </div>
         <input type="text" class="form-control">
         <input type="text" class="form-control">
-        <span class="input-group-btn">
+        <span class="input-group-addon">
             <button class="btn btn-outline-primary" type="button">Ok</button>
         </span>
-        <span class="input-group-btn">
+        <span class="input-group-addon">
             <button class="btn btn-outline-primary" type="button">Ok</button>
         </span>
 
     </div>
 </form>
 
-<form class="form-inline mb-1">
+<form class="mb-1">
     <div class="input-group">
-        <span class="input-group-addon">Something:</span>
-        <span class="input-group-btn">
+        <div class="input-group-addon">
+            <div class="input-group-text">Something:</div>
+        </div>
+        <span class="input-group-addon">
             <button class="btn btn-outline-primary" type="button">Ok</button>
         </span>
-        <span class="input-group-btn">
+        <span class="input-group-addon">
             <button class="btn btn-outline-primary" type="button">Ok</button>
         </span>
         <input type="text" class="form-control">
@@ -622,18 +663,20 @@
     </div>
 </form>
 
-<form class="form-inline mb-1">
+<form class="mb-1">
     <div class="input-group">
-    <div class="input-group-addon">Something:</div>
-        <div class="input-group-btn btn-check">
+        <div class="input-group-addon">
+            <div class="input-group-text">Something:</div>
+        </div>
+        <div class="input-group-addon btn-check">
             <input id="radio0-0" type="radio" name="radio0" class="btn-check-input" checked>
             <label for="radio0-0" class="btn btn-outline-primary">Ok</label>
         </div>
-        <div class="input-group-btn btn-check">
+        <div class="input-group-addon btn-check">
             <input id="radio0-1" type="radio" name="radio0" class="btn-check-input">
             <label for="radio0-1" class="btn btn-outline-success">Yes</label>
         </div>
-        <div class="input-group-btn btn-check">
+        <div class="input-group-addon btn-check">
             <input id="radio0-2" type="radio" name="radio0" class="btn-check-input">
             <label for="radio0-2" class="btn btn-outline-danger">No</label>
         </div>
@@ -644,7 +687,7 @@
 <div class="row">
   <div class="col-lg-6">
     <div class="input-group">
-      <div class="input-group-btn">
+      <div class="input-group-addon">
         <button type="button" class="btn btn-secondary dropdown-toggle" data-cfw="dropdown">
           Action
         </button>
@@ -662,8 +705,8 @@
   <div class="col-lg-6">
     <div class="input-group">
       <input type="text" class="form-control" aria-label="Text input with dropdown button">
-      <div class="input-group-btn dropdown-menu-reverse">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-cfw="dropdown">
+      <div class="input-group-addon dropdown-menu-reverse">
+        <button type="button" class="btn btn-secondary dropdown-toggle input-group-end" data-cfw="dropdown">
           Action
         </button>
         <ul class="dropdown-menu">
@@ -680,11 +723,11 @@
 
 <h2>Segmented Buttons</h2>
 
-<div class="input-group mb-3">
-    <div class="input-group-btn">
+<div class="input-group mb-1">
+    <div class="input-group-addon">
         <button type="button" class="btn btn-outline-secondary">Action</button>
     </div>
-    <div class="input-group-btn">
+    <div class="input-group-addon">
         <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-cfw="dropdown" aria-label="Toggle Dropdown"></button>
         <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
@@ -699,11 +742,11 @@
 
 <div class="input-group">
     <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
-    <div class="input-group-btn">
+    <div class="input-group-addon">
         <button type="button" class="btn btn-outline-secondary">Action</button>
     </div>
-    <div class="input-group-btn dropdown-menu-reverse">
-        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-cfw="dropdown" aria-label="Toggle Dropdown"></button>
+    <div class="input-group-addon dropdown-menu-reverse">
+        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split input-group-end" data-cfw="dropdown" aria-label="Toggle Dropdown"></button>
         <ul class="dropdown-menu ">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -718,42 +761,71 @@
 
 <div class="input-group">
   <div class="input-group-addon">
-    <span class="input-group-text">Upload</span>
+    <div class="input-group-text">Upload</div>
   </div>
-  <label class="custom-file">
-    <input type="file" id="custom-file-1" class="custom-file-input">
-    <span class="custom-file-control"></span>
-  </label>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="custom-file-1">
+    <label class="custom-file-label" for="custom-file-1">Choose file...</label>
+  </div>
 </div>
 
 <div class="input-group">
-  <label class="custom-file">
-    <input type="file" id="custom-file-2" class="custom-file-input">
-    <span class="custom-file-control"></span>
-  </label>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="custom-file-2">
+    <label class="custom-file-label" for="custom-file-2">Choose file...</label>
+  </div>
   <div class="input-group-addon">
-    <span class="input-group-text">Upload</span>
+    <div class="input-group-text">Upload</div>
   </div>
 </div>
 
 <div class="input-group">
-  <div class="input-group-btn">
+  <div class="input-group-addon">
     <button class="btn btn-outline-secondary" type="button">Button</button>
   </div>
-  <label class="custom-file">
-    <input type="file" id="custom-file-3" class="custom-file-input">
-    <span class="custom-file-control"></span>
-  </label>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="custom-file-3">
+    <label class="custom-file-label" for="custom-file-3">Choose file...</label>
+  </div>
 </div>
 
 <div class="input-group">
-  <label class="custom-file">
-    <input type="file" id="custom-file-4" class="custom-file-input">
-    <span class="custom-file-control"></span>
-  </label>
-  <div class="input-group-btn">
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="custom-file-4">
+    <label class="custom-file-label" for="custom-file-4">Choose file...</label>
+  </div>
+  <div class="input-group-addon">
     <button class="btn btn-outline-secondary" type="button">Button</button>
   </div>
+</div>
+
+<h2>Button Group</h2>
+<form class="mb-1">
+    <div class="input-group">
+        <div class="input-group-addon">
+            <div class="input-group-text">Something:</div>
+        </div>
+        <div class="input-group-addon">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button class="btn btn-outline-primary" type="button">All</button>
+                <button class="btn btn-outline-success" type="button">Yes</button>
+            </div>
+        </div>
+        <div class="input-group-addon">
+            <button class="btn btn-outline-danger" type="button">No</button>
+        </div>
+    </div>
+</form>
+
+<h2>Button Check</h2>
+<form class="mb-1">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Some input..." aria-label="Username">
+        <div class="input-group-addon btn-check">
+            <input id="checkbox0" type="checkbox" class="btn-check-input">
+            <label for="checkbox0" class="btn btn-info">Single toggle</label>
+        </div>
+    </div>
 </div>
 
 </div></div></div>

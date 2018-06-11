@@ -339,9 +339,24 @@ Checkbox and radio inputs are allowed, but only **one per menu item**.
     Dropdown
   </button>
   <ul class="dropdown-menu">
-    <li><label class="dropdown-item form-check-label"><input type="checkbox" class="form-check-input"> Checkbox 1</label></li>
-    <li><label class="dropdown-item form-check-label"><input type="checkbox" class="form-check-input"> Checkbox 2</label></li>
-    <li><label class="dropdown-item form-check-label"><input type="checkbox" class="form-check-input"> Checkbox 3</label></li>
+    <li class="dropdown-item">
+      <div class="form-check">
+        <input type="checkbox" id="checkbox1" class="form-check-input">
+        <label for="checkbox1" class="form-check-label">Checkbox 1</label>
+      </div>
+    </li>
+    <li class="dropdown-item">
+      <div class="form-check">
+        <input type="checkbox" id="checkbox2" class="form-check-input">
+        <label for="checkbox2" class="form-check-label">Checkbox 2</label>
+      </div>
+    </li>
+    <li class="dropdown-item">
+      <div class="form-check">
+        <input type="checkbox" id="checkbox3" class="form-check-input">
+        <label for="checkbox3" class="form-check-label">Checkbox 3</label>
+      </div>
+    </li>
   </ul>
 </div>
 {% endexample %}
@@ -352,9 +367,24 @@ Checkbox and radio inputs are allowed, but only **one per menu item**.
     Dropdown
   </button>
   <ul class="dropdown-menu">
-    <li><label class="dropdown-item form-check-label"><input type="radio" name="dropradio" class="form-check-input"> Radio 1</label></li>
-    <li><label class="dropdown-item form-check-label"><input type="radio" name="dropradio" class="form-check-input"> Radio 2</label></li>
-    <li><label class="dropdown-item form-check-label"><input type="radio" name="dropradio" class="form-check-input"> Radio 3</label></li>
+    <li class="dropdown-item">
+      <div class="form-check">
+        <input type="radio" id="radio1" name="dropradio" class="form-check-input">
+        <label for="radio1" class="form-check-label">Radio 1</label>
+      </div>
+    </li>
+    <li class="dropdown-item">
+      <div class="form-check">
+        <input type="radio" id="radio2" name="dropradio" class="form-check-input">
+        <label for="radio2" class="form-check-label">Radio 2</label>
+      </div>
+    </li>
+    <li class="dropdown-item">
+      <div class="form-check">
+        <input type="radio" id="radio3" name="dropradio" class="form-check-input">
+        <label for="radio3" class="form-check-label">Radio 3</label>
+      </div>
+    </li>
   </ul>
 </div>
 {% endexample %}
@@ -373,17 +403,17 @@ Since keyboard navigation needs to change once you enter one of these elements, 
   <ul class="dropdown-menu">
     <li><a href="#">Action</a></li>
     <li>
-      <label class="dropdown-item">
-        <span class="sr-only">Example input</span>
-        <input type="text" class="form-control" placeholder="text input"/>
-      </label>
+      <div class="dropdown-item">
+        <label for="input1" class="sr-only">Example input</label>
+        <input type="text" id="input1" class="form-control" placeholder="text input"/>
+      </div>
     </li>
     <li><a href="#">Action</a></li>
     <li>
-      <label class="dropdown-item">
-        <span class="sr-only">Example textarea</span>
-        <textarea class="form-control" placeholder="textarea"></textarea>
-      </label>
+      <div class="dropdown-item">
+        <label for="textarea1" class="sr-only">Example textarea</label>
+        <textarea id="textarea1" class="form-control" placeholder="textarea"></textarea>
+      </div>
     </li>
     <li><a href="#">Action</a></li>
   </ul>

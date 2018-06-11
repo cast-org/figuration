@@ -154,9 +154,8 @@ You can include many other components, such as forms, buttons, and more.
       </div>
       <div class="flex-between flex-items-center">
         <div class="form-check mb-0_5">
-          <label class="form-check-label">
-            <input class="form-check-input" type="checkbox"> Some item to check
-          </label>
+          <input id="checkbox1" class="form-check-input" type="checkbox">
+          <label for="checkbox1" class="form-check-label">Some item to check</label>
         </div>
         <button type="submit" class="btn btn-outline-secondary">Post Comment</button>
       </div>
