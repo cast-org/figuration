@@ -15,11 +15,20 @@
     @include box-shadow($btn-box-shadow);
     @include transition($btn-transition);
 
-    &:hover,
+    &:hover {
+        text-decoration: none;
+    }
+
     &:focus,
     .btn-check-input:focus ~ & {
         text-decoration: none;
-        @include box-shadow($btn-box-shadow);
+        outline: 0;
+        // No mixin use, so feedback is always present
+        @if $enable-shadows {
+            box-shadow: $btn-box-shadow, $btn-focus-box-shadow;
+        } @else {
+            box-shadow: $btn-focus-box-shadow;
+        }
     }
 
     // Disabled comes first so active can restyle
@@ -43,19 +52,15 @@
         @include box-shadow($btn-active-box-shadow);
     }
 
-    &:not(:disabled):not(.disabled):active:hover,
-    &:not(:disabled):not(.disabled).active:hover,
     &:not(:disabled):not(.disabled):active:focus,
     &:not(:disabled):not(.disabled).active:focus,
     .btn-check-input:not(:disabled):checked:focus ~ &,
-    .btn-check-input:not(:disabled):checked ~ &:hover,
-    .open > &:hover,
     .open > &:focus {
-        @include box-shadow($btn-active-box-shadow);
+        @include box-shadow($btn-active-box-shadow, $btn-focus-box-shadow);
     }
 
     // Default color
-    @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border-color, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border-color, $btn-default-active-hover-color, $btn-default-active-hover-bg);
+    @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border-color, $btn-default-focus-box-shadow-color, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border-color, $btn-default-active-color, $btn-default-active-bg, $btn-default-active-border-color);
 }
 
 // Future-proof disabling of clicks on `<a>` elements
@@ -87,7 +92,7 @@ fieldset:disabled a.btn,
 
 // Outline variant - remove all backgrounds
 .btn-outline {
-    @include button-variant($btn-default-color, $btn-outline-bg, $btn-default-border-color, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border-color, $btn-default-active-hover-color, $btn-default-active-hover-bg);
+    @include button-variant($btn-default-color, $btn-outline-bg, $btn-default-border-color, $btn-default-focus-box-shadow-color, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border-color, $btn-default-active-color, $btn-default-active-bg, $btn-default-active-border-color);
 }
 
 @if (type-of($btn-outline-themes) == "map" and length($btn-outline-themes) != 0) {
@@ -101,27 +106,46 @@ fieldset:disabled a.btn,
 // Link buttons
 // Make a button look and behave like a link
 .btn-link {
+    color: $link-color;
     text-decoration: $link-decoration;
-    @include button-variant($link-color, transparent, transparent, $link-hover-color, transparent, transparent, $link-hover-color, transparent);
-    @include box-shadow(none);
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
 
     @include hover-focus {
-        color: $link-hover-color;
         text-decoration: $link-hover-decoration;
-        @include box-shadow(none);
+        background-color: transparent;
+        border-color: transparent;
+        box-shadow: none;
     }
+
+    &:hover {
+        color: $link-hover-color;
+    }
+
+    // stylelint-disable declaration-block-no-duplicate-properties
+    &:focus {
+        outline: 1px dotted;
+        outline: 5px auto -webkit-focus-ring-color;
+    }
+    // stylelint-enable declaration-block-no-duplicate-properties
 
     &.disabled,
     &:disabled {
+        color: $link-color;
         text-decoration: none;
         pointer-events: none;
+        background-color: transparent;
+        border-color: transparent;
     }
 
     &:not(:disabled):not(.disabled):active,
     &:not(:disabled):not(.disabled).active,
     .open > & {
         color: $link-hover-color;
-        @include box-shadow(none);
+        background-color: transparent;
+        border-color: transparent;
+        box-shadow: none;
     }
 }
 

@@ -29,32 +29,32 @@
 @function _mix-context-colors($colors, $levels) {
     $result:            ();
 
-    $level-bg:                  map-get($levels, "bg");
-    $level-color:               map-get($levels, "color");
-    $level-border:              map-get($levels, "border-color");
-    $level-hover-bg:            map-get($levels, "hover-bg");
-    $level-hover-color:         map-get($levels, "hover-color");
-    $level-hover-border:        map-get($levels, "hover-border-color");
-    $level-active-hover-bg:     map-get($levels, "active-hover-bg");
-    $level-active-hover-color:  map-get($levels, "active-hover-color");
-    $level-active-hover-border: map-get($levels, "active-hover-border-color");
+    $level-bg:            map-get($levels, "bg");
+    $level-color:         map-get($levels, "color");
+    $level-border:        map-get($levels, "border-color");
+    $level-hover-bg:      map-get($levels, "hover-bg");
+    $level-hover-color:   map-get($levels, "hover-color");
+    $level-hover-border:  map-get($levels, "hover-border-color");
+    $level-active-bg:     map-get($levels, "active-bg");
+    $level-active-color:  map-get($levels, "active-color");
+    $level-active-border: map-get($levels, "active-border-color");
 
     @each $theme, $base in $colors {
         // Color adjustments
-        $bg:                    palette($base, $level-bg);
-        $color:                 palette($base, $level-color);
-        $color:                 color-if-contrast($color, $bg);
-        $border:                palette($base, $level-border);
+        $bg:            palette($base, $level-bg);
+        $color:         palette($base, $level-color);
+        $color:         color-if-contrast($color, $bg);
+        $border:        palette($base, $level-border);
 
-        $hover-bg:              palette($base, $level-hover-bg);
-        $hover-color:           palette($base, $level-hover-color);
-        $hover-color:           color-if-contrast($hover-color, $hover-bg);
-        $hover-border:          palette($base, $level-hover-border);
+        $hover-bg:      palette($base, $level-hover-bg);
+        $hover-color:   palette($base, $level-hover-color);
+        $hover-color:   color-if-contrast($hover-color, $hover-bg);
+        $hover-border:  palette($base, $level-hover-border);
 
-        $active-hover-bg:       palette($base, $level-active-hover-bg);
-        $active-hover-color:    palette($hover-color, $level-active-hover-color);
-        $active-hover-color:    color-if-contrast($hover-color, $active-hover-bg);
-        $active-hover-border:   palette($base, $level-active-hover-border);
+        $active-bg:     palette($base, $level-active-bg);
+        $active-color:  palette($hover-color, $level-active-color);
+        $active-color:  color-if-contrast($active-color, $active-bg);
+        $active-border: palette($base, $level-active-border);
 
         // Build new map
         $new-map: (
@@ -65,9 +65,9 @@
             "hover-bg": $hover-bg,
             "hover-color": $hover-color,
             "hover-border-color": $hover-border,
-            "active-hover-bg": $active-hover-bg,
-            "active-hover-color": $active-hover-color,
-            "active-hover-border-color": $active-hover-border
+            "active-bg": $active-bg,
+            "active-color": $active-color,
+            "active-border-color": $active-border
         );
         // Merge into theme map
         $result: map-merge($result, ($theme: $new-map));
