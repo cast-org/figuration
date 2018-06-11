@@ -1258,12 +1258,12 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
       <div class="valid-tooltip">Looks good!</div>
     </div>
     <div class="col-md-4 mb-1">
-      <label for="validationTooltipUsername">Username</label>
+      <label for="validate-tooltip-3">Username</label>
       <div class="input-group">
         <div class="input-group-addon">
-          <span class="input-group-text" id="validate-tooltip-3">@</span>
+          <span class="input-group-text" id="validate-tooltip-4">@</span>
         </div>
-        <input type="text" class="form-control input-group-end" id="validate-tooltip-4" placeholder="Username" aria-describedby="validate-tooltip-3" required>
+        <input type="text" class="form-control input-group-end" id="validate-tooltip-3" placeholder="Username" aria-describedby="validate-tooltip-4" required>
         <div class="invalid-tooltip">Please choose a unique and valid username.</div>
       </div>
     </div>
