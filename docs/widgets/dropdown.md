@@ -39,9 +39,10 @@ Because of the support for nested dropdown menus, it is currently **required to 
 Here is a static example showing the dropdown layout and content pieces.
 
 <div class="cf-example cf-example-bottom cf-example-dropdown">
-    <div class="dropdown open clearfix">
-        <button type="button" class="btn btn-info dropdown-toggle">
+    <div class="dropdown open">
+        <button type="button" class="btn btn-info">
             Dropdown
+            <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
             <li class="dropdown-header">Sample Header</li>
@@ -81,28 +82,14 @@ Wrap the dropdown's trigger and the dropdown menu within `.dropdown`, or another
 
 ### Toggle Indicator
 
-Add an indicator to the dropdown toggle by adding `.dropdown-toggle` to the control.
+Optionally use the `.caret` utility icon and add it as an element within the control element. Use [spacing utilities]({{ site.baseurl }}/utilities/spacing/) as needed.
 
-{% example html %}
-<div class="dropdown">
-  <a href="#" role="button" class="dropdown-toggle" data-cfw="dropdown">
-    Toggle Dropdown
-  </a>
-  <ul class="dropdown-menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-  </ul>
-</div>
-{% endexample %}
-
-Another option would be to use the `.caret` utility icon and add it to an element within the control element.
+We use this method instead of using a class placed on the control so that you can use your own icons as needed, and not have interference from hard-coded functionality.
 
 {% example html %}
 <div class="dropdown">
   <a href="#" role="button" data-cfw="dropdown">
-    Toggle Dropdown
-    <span class="caret" aria-hidden="true"></span>
+    Toggle Dropdown<span class="caret ms-0_25" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu">
     <li><a href="#">Action</a></li>
@@ -118,8 +105,8 @@ You can also use `<button>` elements in your dropdowns instead of `<a>`s.  You c
 
 {% example html %}
 <div class="btn-group">
-  <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
-    Dropdown
+  <button type="button" class="btn btn-group-end" data-cfw="dropdown">
+    Dropdown <span class="caret" aria-hidden="true"></span>
   </button>
   <ul class="dropdown-menu">
     <li><a href="#">Action</a></li>
@@ -131,14 +118,16 @@ You can also use `<button>` elements in your dropdowns instead of `<a>`s.  You c
 
 ### Split Button Dropdown
 
-Similarly, create split button dropdowns with virtually the same markup as single button dropdowns, but with the addition of `.dropdown-toggle-split` for proper spacing around the dropdown caret.
+Similarly, create split button dropdowns with virtually the same markup as single button dropdowns, but with the addition of `.btn-icon` for proper spacing around the caret. We use this extra class to reduce the horizontal `padding` on either side of the caret and provide a more appropriately sized hit area next to the main button.
 
-We use this extra class to reduce the horizontal `padding` on either side of the caret by 25% and remove the `margin-left` that's added for regular button dropdowns. Those extra changes keep the caret centered in the split button and provide a more appropriately sized hit area next to the main button.
+The use of the `.btn-group-end` class allows us to place the dropdown within the `.btn-group` itself and not reset the `border-radius` on the end side of the button.
 
 {% example html %}
 <div class="btn-group">
   <button type="button" class="btn">Default</button>
-  <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-cfw="dropdown" aria-label="Toggle Dropdown"></button>
+  <button type="button" class="btn btn-icon btn-group-end" data-cfw="dropdown" aria-label="Toggle Dropdown">
+    <span class="caret" aria-hidden="true"></span>
+  </button>
   <ul class="dropdown-menu">
     <li><a href="#">Action</a></li>
     <li><a href="#">Another action</a></li>
@@ -156,7 +145,7 @@ Dropdowns also work in a navbar, but require the use of a wrapping element for p
     <a href="#" class="navbar-brand">Navbar</a>
     <ul class="navbar-nav">
         <li class="nav-item dropdown">
-            <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown">Dropdown</a>
+            <a href="#" role="button" class="nav-link" data-cfw="dropdown">Dropdown<span class="caret ms-0_25" aria-hidden="true"></span></a>
             <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
@@ -252,8 +241,8 @@ You can nest submenus by adding a nested list along side it's toggle.
 
 {% example html %}
 <div class="dropdown">
-        <button type="button" class="btn btn-info dropdown-toggle" data-cfw="dropdown">
-            Dropdown
+        <button type="button" class="btn btn-info" data-cfw="dropdown">
+            Dropdown <span class="caret" aria-hidden="true"></span>
         </button>
         <ul class="dropdown-menu">
             <li class="dropdown-header">Sample Header</li>
@@ -277,8 +266,8 @@ Using the [`backlink` option](#options), you can have 'back' menu items automati
 
 {% example html %}
 <div class="dropdown">
-    <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
-        Dropdown
+    <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+        Dropdown <span class="caret" aria-hidden="true"></span>
     </button>
     <ul class="dropdown-menu">
         <li><a href="#">Action</a></li>
@@ -315,8 +304,8 @@ You can optionally use `<button>` elements in your dropdowns instead of just `<a
 
 {% example html %}
 <div class="dropdown">
-  <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
-    Dropdown
+  <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+    Dropdown <span class="caret" aria-hidden="true"></span>
   </button>
   <ul class="dropdown-menu">
     <li><button type="button" class="dropdown-item">Regular button</button></li>
@@ -335,8 +324,8 @@ Checkbox and radio inputs are allowed, but only **one per menu item**.
 
 {% example html %}
 <div class="dropdown">
-  <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
-    Dropdown
+  <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+    Dropdown <span class="caret" aria-hidden="true"></span>
   </button>
   <ul class="dropdown-menu">
     <li class="dropdown-item">
@@ -363,8 +352,8 @@ Checkbox and radio inputs are allowed, but only **one per menu item**.
 
 {% example html %}
 <div class="dropdown">
-  <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
-    Dropdown
+  <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+    Dropdown <span class="caret" aria-hidden="true"></span>
   </button>
   <ul class="dropdown-menu">
     <li class="dropdown-item">
@@ -397,8 +386,8 @@ Since keyboard navigation needs to change once you enter one of these elements, 
 
 {% example html %}
 <div class="dropdown">
-  <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
-    Dropdown
+  <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+    Dropdown <span class="caret" aria-hidden="true"></span>
   </button>
   <ul class="dropdown-menu">
     <li><a href="#">Action</a></li>
@@ -420,19 +409,16 @@ Since keyboard navigation needs to change once you enter one of these elements, 
 </div>
 {% endexample %}
 
-
-
-
 ## Variants
 
 ### Dropup
 
-Trigger dropdown menus above elements by adding `.dropup` to the parent element.  The visual `.caret` or `.dropdown-toggle` for the toggle control will reverse direction automatically.
+Trigger dropdown menus above elements by adding `.dropup` to the parent element.  The visual `.caret` for the toggle control will reverse direction automatically.
 
 {% example html %}
 <div class="dropdown dropup">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
-        Dropup
+    <button type="button" class="btn btn-primary" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+        Dropup <span class="caret" aria-hidden="true"></span>
     </button>
     <ul class="dropdown-menu">
         <li class="dropdown-header">Dropdown header</li>
@@ -470,8 +456,8 @@ Add `.dropdown-menu-reverse` to a `.dropdown-menu` to align the dropdown menu to
 
 {% example html %}
 <div class="dropdown dropdown-menu-reverse float-end">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
-        Reverse Dropdown
+    <button type="button" class="btn btn-primary" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+        Reverse Dropdown <span class="caret" aria-hidden="true"></span>
     </button>
     <ul class="dropdown-menu">
         <li class="dropdown-header">Dropdown header</li>
@@ -505,8 +491,8 @@ The menu alignment class of `.dropdown-menu-reverse` will also work with submenu
 
 {% example html %}
 <div class="dropdown">
-    <button type="button" class="btn dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
-        Dropdown
+    <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+        Dropdown <span class="caret" aria-hidden="true"></span>
     </button>
     <ul class="dropdown-menu">
         <li class="dropdown-header">Dropdown header</li>

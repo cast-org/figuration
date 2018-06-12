@@ -12,18 +12,6 @@
     pointer-events: none;
 }
 
-.dropdown-toggle {
-    // Generate the caret automatically
-    &::after {
-        margin-left: $dropdown-toggle-margin-x;
-        @include caret();
-    }
-
-    &:empty::after {
-        margin-left: 0;
-    }
-}
-
 // The dropdown menu
 .dropdown-menu {
     position: absolute;
@@ -72,17 +60,11 @@
     }
 }
 
-// Open state for the dropdown and dropdown-toggle
+// Open state for the dropdown
 .open {
     // Show the menu
     > .dropdown-menu {
         display: block;
-    }
-    // Reverse toggle caret
-    .dropdown-toggle {
-        &::after {
-            @include caret-up();
-        }
     }
 }
 
@@ -212,18 +194,12 @@
 .dropup {
     // Reverse the caret
     .caret {
-        @include caret-up();
-    }
-    .dropdown-toggle {
         &::after {
             @include caret-up();
         }
     }
     &.open {
         .caret {
-            @include caret-down();
-        }
-        .dropdown-toggle {
             &::after {
                 @include caret-down();
             }

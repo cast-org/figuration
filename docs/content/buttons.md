@@ -4,6 +4,13 @@ title: Buttons
 group: content
 ---
 
+<!-- Font CSS -->
+{% if site.github %}
+  <link href="{{ site.cdn.fontawe }}" integrity="{{ site.cdn.fontawe_hash }}" crossorigin="anonymous" rel="stylesheet" property="stylesheet">
+{% else %}
+  <link href="{{ site.baseurl }}/assets/fonts/fontawesome/css/fontawesome-all.css" rel="stylesheet" property="stylesheet">
+{% endif %}
+
 Use Figuration's custom button styles for actions in forms, dialogs, and more. Includes support for a handful of contextual variations, sizes, states, and more.
 
 ## Contents
@@ -66,8 +73,9 @@ In need of a button, but not the hefty background colors they bring? Replace the
 <button type="button" class="btn btn-outline-dark">Dark</button>
 {% endexample %}
 
-
 ## Sizes
+
+### Available Sizes
 
 Fancy larger or smaller buttons? Add `.btn-xsmall`, `.btn-small`, `.btn-large`, or `.btn-xlarge` for additional sizes.
 
@@ -94,6 +102,32 @@ Fancy larger or smaller buttons? Add `.btn-xsmall`, `.btn-small`, `.btn-large`, 
 </p>
 {% endexample %}
 
+## Icon Button
+
+If a button only contains an icon, you can use `.btn-icon` to reduce the horizontal `padding` of the button.  This will create more of a square button rather than a rectangular one using the default padding.
+
+The icons shown in the examples are from [Font Awesome](http://fontawesome.com/), and not included with Figuration.
+
+{% example html %}
+<p>
+  <button type="button" class="btn btn-icon btn-xlarge" aria-label="Extra large icon button"><span class="fas fa-fw fa-info-circle" aria-hidden="true"></span></button>
+</p>
+<p>
+  <button type="button" class="btn btn-icon btn-large" aria-label="Large icon button"><span class="fas fa-fw fa-info-circle" aria-hidden="true"></span></button>
+</p>
+<p>
+  <button type="button" class="btn btn-icon" aria-label="Default size icon button"><span class="fas fa-fw fa-info-circle" aria-hidden="true"></span></button>
+</p>
+<p>
+  <button type="button" class="btn btn-icon btn-small" aria-label="Small icon button"><span class="fas fa-fw fa-info-circle" aria-hidden="true"></span></button>
+</p>
+<p>
+  <button type="button" class="btn btn-icon btn-xsmall" aria-label="Extra small icon button"><span class="fas fa-fw fa-info-circle" aria-hidden="true"></span></button>
+</p>
+{% endexample %}
+
+### Block Buttons
+
 Create block level buttons---those that span the full width of a parent---by adding `.btn-block`.
 
 {% example html %}
@@ -103,6 +137,7 @@ Create block level buttons---those that span the full width of a parent---by add
 <button type="button" class="btn btn-warning btn-small btn-block">Small Block level button</button>
 <button type="button" class="btn btn-danger btn-xsmall btn-block">Extra Small Block level button</button>
 {% endexample %}
+
 
 ## Active State
 

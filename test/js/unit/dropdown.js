@@ -20,7 +20,7 @@ $(function() {
         assert.expect(1);
 
         var dropdownHTML = '<div class="dropdown open">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown" disabled>Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown" disabled>Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#">Menu link</a></li>' +
             '</ul>' +
@@ -36,7 +36,7 @@ $(function() {
         assert.expect(1);
 
         var dropdownHTML = '<div class="dropdown open">' +
-            '<a href="#" role="button" class="btn dropdown-toggle disabled" data-cfw="dropdown">Dropdown</a>' +
+            '<a href="#" role="button" class="btn disabled" data-cfw="dropdown">Dropdown</a>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#">Menu link</a></li>' +
             '</ul>' +
@@ -52,7 +52,7 @@ $(function() {
         assert.expect(1);
 
         var dropdownHTML = '<div class="dropdown">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#">Menu link</a></li>' +
             '</ul>' +
@@ -68,7 +68,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
         var dropdownHTML = '<div class="dropdown">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#">Menu link</a></li>' +
             '</ul>' +
@@ -91,7 +91,7 @@ $(function() {
     QUnit.test('should add "open" class to menu parent if clicked', function(assert) {
         assert.expect(1);
         var dropdownHTML = '<div class="dropdown">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#">Menu link</a></li>' +
             '</ul>' +
@@ -106,7 +106,7 @@ $(function() {
     QUnit.test('should test if element has a # before assuming it\'s a selector', function(assert) {
         assert.expect(1);
         var dropdownHTML = '<div class="dropdown">' +
-            '<a href="/foo/" role="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</a>' +
+            '<a href="/foo/" role="button" class="btn" data-cfw="dropdown">Dropdown</a>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#">Menu link</a></li>' +
             '</ul>' +
@@ -121,7 +121,7 @@ $(function() {
     QUnit.test('should remove "open" class if body is clicked', function(assert) {
         assert.expect(2);
         var dropdownHTML = '<div class="dropdown">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#">Menu link</a></li>' +
             '</ul>' +
@@ -138,7 +138,7 @@ $(function() {
     QUnit.test('should remove "open" class if body is focused', function(assert) {
         assert.expect(2);
         var dropdownHTML = '<div class="dropdown">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#">Menu link</a></li>' +
             '</ul>' +
@@ -160,7 +160,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
         var dropdownHTML = '<div class="dropdown">' +
-            '<a role="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</a>' +
+            '<a role="button" class="btn" data-cfw="dropdown">Dropdown</a>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#">Menu link</a></li>' +
             '</ul>' +
@@ -192,7 +192,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
         var dropdownHTML = '<div class="dropdown">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#">Menu link</a></li>' +
             '</ul>' +
@@ -219,7 +219,7 @@ $(function() {
         assert.expect(3);
         var done = assert.async();
         var dropdownHTML = '<div class="dropdown">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#">Menu link</a></li>' +
             '</ul>' +
@@ -249,7 +249,7 @@ $(function() {
         assert.expect(3);
         var done = assert.async();
         var dropdownHTML = '<div class="dropdown">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><button class="dropdown-item" type="button">Action</button></li>' +
             '</ul>' +
@@ -278,7 +278,7 @@ $(function() {
     QUnit.test('should remove "open" class if body is clicked, with multiple dropdowns', function(assert) {
         assert.expect(7);
         var dropdownHTML = '<div class="dropdown">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#">Menu link</a></li>' +
             '</ul>' +
@@ -308,7 +308,7 @@ $(function() {
     QUnit.test('should remove "open" class if body is focused, with multiple dropdowns', function(assert) {
         assert.expect(7);
         var dropdownHTML = '<div class="dropdown">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#">Menu link</a></li>' +
             '</ul>' +
@@ -339,7 +339,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
         var dropdownHTML = '<div class="dropdown">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#">Menu link</a></li>' +
             '</ul>' +
@@ -365,7 +365,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
         var dropdownHTML = '<div class="dropdown">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#">Menu link</a></li>' +
             '</ul>' +
@@ -390,7 +390,7 @@ $(function() {
     QUnit.test('should skip disabled element when using keyboard navigation', function(assert) {
         assert.expect(2);
         var dropdownHTML = '<div class="dropdown">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#" class="disabled">Disabled link</a></li>' +
             '<li><a href="#" id="focusable">Menu link</a></li>' +
@@ -413,7 +413,7 @@ $(function() {
         var done = assert.async();
 
         var dropdownHTML = '<div class="dropdown">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#">Menu link</a></li>' +
             '</ul>' +
@@ -440,7 +440,7 @@ $(function() {
         assert.expect(5);
         var done = assert.async();
         var dropdownHTML = '<div class="dropdown">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><input id="input" /></a></li>' +
             '<li><textarea id="textarea"></textarea></a></li>' +
@@ -476,7 +476,7 @@ $(function() {
         assert.expect(3);
         var done = assert.async();
         var dropdownHTML = '<div class="dropdown">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><input id="input" /></a></li>' +
             '<li><textarea id="textarea"></textarea></a></li>' +
@@ -504,7 +504,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
         var dropdownHTML = '<div class="dropdown">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#" id="focusable">Menu link</a></li>' +
             '</ul>' +
@@ -533,7 +533,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
         var dropdownHTML = '<div class="dropdown">' +
-            '<button type="button" class="btn dropdown-toggle" data-cfw="dropdown">Dropdown</button>' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
             '<li><a href="#" id="focusable">Menu link</a></li>' +
             '</ul>' +

@@ -213,14 +213,7 @@ $custom-file-text: (
     height: 19em;
 
     > .dropdown {
-        @include clearfix();
-
-        > .dropdown-toggle {
-            float: left;
-        }
-
         > .dropdown-menu {
-            position: static;
             display: block;
             margin-bottom: .25rem;
             clear: left;

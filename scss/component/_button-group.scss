@@ -48,7 +48,7 @@
     }
 
     // Reset rounded corners
-    > .btn:not(:last-child):not(.dropdown-toggle),
+    > .btn:not(:last-child):not(.btn-group-end),
     > .btn-group:not(:last-child) > .btn,
     > .btn-check:not(:last-child) > .btn {
         @include border-end-radius(0);
@@ -65,22 +65,9 @@
 // Remix the button sizing classes into new ones for easier manipulation
 @if $enable-sizing {
     @each $size, $dims in $btn-sizes {
-        .btn-group-#{$size} > .btn { @extend .btn-#{$size}; }
-    }
-}
-
-// Split button dropdowns
-.dropdown-toggle-split {
-    padding-right: $btn-padding-x * .75;
-    padding-left: $btn-padding-x * .75;
-}
-@if $enable-sizing {
-    @each $size, $dims in $btn-sizes {
-        $sz-padding-x: map-get($dims, "padding-x");
-
-        .btn-#{$size} > .dropdown-toggle-split {
-            padding-right: $sz-padding-x * .75;
-            padding-left: $sz-padding-x * .75;
+        .btn-group-#{$size} > .btn,
+        .btn-group-#{$size} > .btn-check > .btn {
+            @extend .btn-#{$size};
         }
     }
 }
@@ -107,7 +94,7 @@
     }
 
     // Reset rounded corners
-    > .btn:not(:last-child):not(.dropdown-toggle),
+    > .btn:not(:last-child):not(.btn-group-end),
     > .btn-group:not(:last-child) > .btn,
     > .btn-check:not(:last-child) > .btn {
         @include border-bottom-radius(0);

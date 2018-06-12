@@ -1,6 +1,13 @@
 .caret {
-    @include caret(down, $caret-width);
+    display: inline-block;
+    width: $caret-width;
+    text-align: center;
+    &::after {
+        @include caret(down, $caret-border-width);
+    }
 }
 .open .caret {
-    @include caret-up($caret-width);
+    &::after {
+        @include caret-up($caret-border-width);
+    }
 }

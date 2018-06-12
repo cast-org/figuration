@@ -149,6 +149,12 @@ fieldset:disabled a.btn,
     }
 }
 
+// Icon button uses smaller horizontal padding
+.btn-icon {
+    padding-right: $btn-padding-x * $btn-icon-multiplier;
+    padding-left: $btn-padding-x * $btn-icon-multiplier;
+}
+
 // Button sizes
 @if $enable-sizing {
     @each $size, $dims in $btn-sizes {
@@ -160,6 +166,11 @@ fieldset:disabled a.btn,
 
         .btn-#{$size} {
             @include button-size($sz-padding-y, $sz-padding-x, $sz-font-size,  $sz-line-height, $sz-border-radius);
+
+            &.btn-icon {
+                padding-right: $sz-padding-x * $btn-icon-multiplier;
+                padding-left: $sz-padding-x * $btn-icon-multiplier;
+            }
         }
     }
 }

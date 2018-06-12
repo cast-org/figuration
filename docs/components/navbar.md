@@ -351,7 +351,7 @@ If a dropdown is displayed in a non-expanded navbar, they will display 'inline' 
         <a href="#" class="nav-link disabled">Disabled</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-cfw="dropdown">Dropdown</a>
+        <a class="nav-link" href="#" data-cfw="dropdown">Dropdown<span class="caret" aria-hidden="true"></span></a>
         <div class="dropdown-menu">
           <a href="#">Action</a>
           <a href="#">Another action</a>
