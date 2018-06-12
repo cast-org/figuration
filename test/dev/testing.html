@@ -648,19 +648,19 @@ $(window).ready(function() {
                             <h4>Text in a modal</h4>
                             <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
                             <h4>Popover in a modal</h4>
-                            <p>This <button type="button"  class="btn btn-default" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="forward">button</button> should trigger a popover on click.</p>
+                            <p>This <button type="button"  class="btn" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="forward">button</button> should trigger a popover on click.</p>
                             <h4>Tooltips in a modal</h4>
                             <p><a href="#" data-cfw="tooltip" title="Tooltip">This link</a> and <a href="#" data-cfw="tooltip" title="Tooltip">that link</a> should have tooltips on hover.</p>
                             <h4>Collapse in a modal</h4>
-                            <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target="#modal_collapse">Collapse<span class="caret"></span></button>
+                            <button type="button" class="btn" data-cfw="collapse" data-cfw-collapse-target="#modal_collapse">Collapse<span class="caret"></span></button>
                                 <div id="modal_collapse">
                                     <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
                                 </div>
                             <hr />
                             <h4>Dropdown in a modal</h4>
                             <div class="dropdown">
-                              <a href="#" role="button" class="dropdown-toggle" data-cfw="dropdown">
-                                Dropdown
+                              <a href="#" role="button" data-cfw="dropdown">
+                                Dropdown<span class="caret ms-0_25"></span>
                               </a>
                               <ul class="dropdown-menu">
                                 <li><a href="#">Action</a></li>
@@ -680,7 +680,7 @@ $(window).ready(function() {
                             <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-cfw-dismiss="modal">Close</button>
+                            <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary">Save</button>
                         </div>
                     </div>
@@ -711,7 +711,7 @@ $(window).ready(function() {
                         </div>
                         <div class="modal-footer">
                             <a href="#" onclick="$('#modal0').CFW_Modal('hide');return false">Close modal by calling directly</a>
-                            <button type="button" class="btn btn-default" data-cfw-dismiss="modal">Close</button>
+                            <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary">Save</button>
                         </div>
                     </div>
@@ -749,7 +749,7 @@ $(window).ready(function() {
                             ...
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-cfw-dismiss="modal">Close</button>
+                            <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary">OK</button>
                         </div>
                     </div><!-- /.modal-content -->
@@ -830,14 +830,14 @@ $(window).ready(function() {
 
             <div class="container-viewport" id="viewport-popover">
                 <p class="viewport-text">Test viewport constraints for popovers.</p>
-                <button class="btn btn-default popover-viewport-bottom" title="This should be shifted to the right">Shift Right</button>
-                <button class="btn btn-default popover-viewport-right" title="This should be shifted down">Shift Down</button>
+                <button class="btn popover-viewport-bottom" title="This should be shifted to the right">Shift Right</button>
+                <button class="btn popover-viewport-right" title="This should be shifted down">Shift Down</button>
 
-                <button class="btn btn-default float-end popover-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
+                <button class="btn float-end popover-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
 
-                <button class="btn btn-default popover-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
+                <button class="btn popover-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
 
-                <button class="btn btn-default popover-viewport-drag btn-drag" title="This should be confined to the viewport box">Drag Test (click)</button>
+                <button class="btn popover-viewport-drag btn-drag" title="This should be confined to the viewport box">Drag Test (click)</button>
             </div>
             <script type="text/javascript">
                 $('.popover-viewport-right').CFW_Popover({
@@ -1052,12 +1052,12 @@ $(window).ready(function() {
 
             <div class="container-viewport" id="viewport-tooltip">
                 <p class="viewport-text">Test viewport constraints for tooltips.</p>
-                <button class="btn btn-default tooltip-viewport-bottom" title="This should be shifted to the right">Shift Right</button>
-                <button class="btn btn-default tooltip-viewport-right" title="This should be shifted down">Shift Down</button>
+                <button class="btn tooltip-viewport-bottom" title="This should be shifted to the right">Shift Right</button>
+                <button class="btn tooltip-viewport-right" title="This should be shifted down">Shift Down</button>
 
-                <button class="btn btn-default float-end tooltip-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
+                <button class="btn float-end tooltip-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
 
-                <button class="btn btn-default tooltip-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
+                <button class="btn tooltip-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
             </div>
             <script type="text/javascript">
                 $('.tooltip-viewport-right').CFW_Tooltip({
@@ -1156,7 +1156,7 @@ $(window).ready(function() {
                 <div class="tab-content">
                     <div class="tab-pane" id="tabpanel1">
                         <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-                        <p>This <button type="button"  class="btn btn-default" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="forward">button</button> should trigger a popover on click.</p>
+                        <p>This <button type="button"  class="btn" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="forward">button</button> should trigger a popover on click.</p>
                     </div>
                     <div class="tab-pane" id="tabpanel2">
                         <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
@@ -1201,8 +1201,8 @@ $(window).ready(function() {
 
             <div class="mb-1">
                 <div class="dropdown">
-                  <a href="#" role="button" class="dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-container="body">
-                    Dropdown w/ container
+                  <a href="#" role="button" data-cfw="dropdown" data-cfw-dropdown-container="body">
+                    Dropdown w/ container<span class="caret ms-0_25"></span>
                   </a>
                   <ul class="dropdown-menu">
                     <li class="dropdown-text">Non-interactive text</li>
@@ -1214,8 +1214,8 @@ $(window).ready(function() {
             </div>
             <div class="mb-1">
                 <div class="dropdown dropup dropdown-menu-reverse">
-                  <a href="#" role="button" class="dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-container="body">
-                    Reverse dropup w/ container
+                  <a href="#" role="button" data-cfw="dropdown" data-cfw-dropdown-container="body">
+                    Reverse dropup w/ container<span class="caret ms-0_25"></span>
                   </a>
                   <ul class="dropdown-menu">
                     <li class="dropdown-text">Non-interactive text</li>
@@ -1237,8 +1237,8 @@ $(window).ready(function() {
 
             <div class="mb-1">
                 <div class="dropdown">
-                  <a href="#" role="button" class="dropdown-toggle" data-cfw="dropdown">
-                    Dropdown
+                  <a href="#" role="button"data-cfw="dropdown">
+                    Dropdown<span class="caret ms-0_25"></span>
                   </a>
                   <ul class="dropdown-menu">
                     <li class="dropdown-text">Non-interactive text</li>
@@ -1250,8 +1250,8 @@ $(window).ready(function() {
             </div>
 
             <div class="btn-group me-1 mb-1">
-                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown">
-                    Has Inputs
+                <button type="button" class="btn btn-group-end" data-cfw="dropdown">
+                    Has Inputs <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
                     <li><a href="#">Action</a></li>
@@ -1279,8 +1279,8 @@ $(window).ready(function() {
 
             <!-- Single button -->
             <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown">
-                    Action
+                <button type="button" class="btn btn-group-end" data-cfw="dropdown">
+                    Action <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
                     <li class="dropdown-header">Dropdown header</li>
@@ -1341,8 +1341,9 @@ $(window).ready(function() {
             <!-- Split button -->
             <div class="btn-group">
                 <button type="button" class="btn btn-danger">Action</button>
-                <button type="button" class="btn btn-danger dropdown-toggle" data-cfw="dropdown">
+                <button type="button" class="btn btn-icon btn-danger btn-group-end" data-cfw="dropdown">
                     <span class="sr-only">Toggle Dropdown</span>
+                    <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
                     <li><a href="#">Action</a></li>
@@ -1356,8 +1357,9 @@ $(window).ready(function() {
             <!-- Split button -->
             <div class="btn-group">
                 <button type="button" class="btn btn-danger">Action</button>
-                <a href="/foo/" role="button" class="btn btn-danger dropdown-toggle" data-cfw="dropdown">
+                <a href="/foo/" role="button" class="btn btn-icon btn-danger btn-group-end" data-cfw="dropdown">
                     <span class="sr-only">Toggle Dropdown</span>
+                    <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="#">Action</a></li>
@@ -1370,8 +1372,8 @@ $(window).ready(function() {
 
             <!-- Single button - init through JS -->
             <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" id="js_dropdown_2">
-                    JS init w/ back
+                <button type="button" class="btn btn-group-end" id="js_dropdown_2">
+                    JS init w/ back <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" class="slide1">
                     <li><a href="#2-1">Action</a></li>
@@ -1437,8 +1439,8 @@ $(window).ready(function() {
 
             <!-- Single button -->
             <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-target="#dropdownTest_3" data-cfw-dropdown-hover="true">
-                    Hover Activated
+                <button type="button" class="btn btn-group-end" data-cfw="dropdown" data-cfw-dropdown-target="#dropdownTest_3" data-cfw-dropdown-hover="true">
+                    Hover Activated <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" id="dropdownTest_3">
                     <li class="dropdown-header">Dropdown header</li>
@@ -1497,8 +1499,8 @@ $(window).ready(function() {
 
             <!-- Single button -->
             <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-hover="true">
-                    Hover Activated
+                <button type="button" class="btn btn-group-end" data-cfw="dropdown" data-cfw-dropdown-hover="true">
+                    Hover Activated <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">
                     <li class="dropdown-header">Dropdown header</li>
@@ -1512,8 +1514,8 @@ $(window).ready(function() {
 
             <!-- Via Selector -->
             <div class="btn-group">
-                <button type="button" class="btn btn-warning dropdown-toggle" data-cfw="dropdown" id="dropdownTest_sb"> <!-- data-cfw-dropdown-target="#dropdownTest_s">-->
-                    via selector
+                <button type="button" class="btn btn-warning btn-group-end" data-cfw="dropdown" id="dropdownTest_sb"> <!-- data-cfw-dropdown-target="#dropdownTest_s">-->
+                    via selector <span class="caret"></span>
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul id="dropdownTest_s">
@@ -1542,8 +1544,8 @@ $(window).ready(function() {
 
             <!-- Single button -->
             <div class="btn-group dropup">
-                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-target="#dropdownTest_4">
-                    Drop Up
+                <button type="button" class="btn btn-group-end" data-cfw="dropdown" data-cfw-dropdown-target="#dropdownTest_4">
+                    Drop Up <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" id="dropdownTest_4">
                     <li class="dropdown-header">Dropdown header</li>
@@ -1603,8 +1605,8 @@ $(window).ready(function() {
 
             <!-- Single button -->
             <div class="btn-group dropdown-menu-reverse" style="float: right;">
-                <button type="button" class="btn btn-default dropdown-toggle" data-cfw="dropdown" data-cfw-dropdown-target="#dropdownTest_5" data-cfw-dropdown-backlink=true>
-                    Reverse Dropdown
+                <button type="button" class="btn btn-group-end" data-cfw="dropdown" data-cfw-dropdown-target="#dropdownTest_5" data-cfw-dropdown-backlink=true>
+                    Reverse Dropdown <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" id="dropdownTest_5">
                     <li class="dropdown-header">Dropdown header</li>
@@ -1672,7 +1674,7 @@ $(window).ready(function() {
                     <li class="nav-item"><a href="#alpha" class="nav-link">Alpha</a></li>
                     <li class="nav-item"><a href="#beta" class="nav-link">Beta</a></li>
                     <li class="nav-item dropdown">
-                        <a href="#dropdownS" class="nav-link dropdown-toggle" data-cfw="dropdown">Dropdown</a>
+                        <a href="#dropdownS" class="nav-link" data-cfw="dropdown">Dropdown<span class="caret ms-0_25"></span></a>
                         <ul id="dropdownS" class="dropdown-menu">
                             <li><a href="#one" tabindex="-1">one</a></li>
                             <li><a href="#two" tabindex="-1">two</a></li>
@@ -1755,15 +1757,15 @@ $(window).ready(function() {
             </div>
             <div class="well">
                 <h3>Multiple Triggers - One Target</h3>
-                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target="#multi-collapse">Trigger 1 <span class="caret"></span></button>
-                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target="#multi-collapse">Trigger 2 <span class="caret"></span></button>
+                <button type="button" class="btn" data-cfw="collapse" data-cfw-collapse-target="#multi-collapse">Trigger 1 <span class="caret"></span></button>
+                <button type="button" class="btn" data-cfw="collapse" data-cfw-collapse-target="#multi-collapse">Trigger 2 <span class="caret"></span></button>
                 <div id="multi-collapse">
                     <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
                 </div>
             </div>
             <div class="well">
                 <h3>Horizontal Collapse Test</h3>
-                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target="#collapseH" data-cfw-collapse-horizontal=true>Collapse <span class="caret"></span></button>
+                <button type="button" class="btn" data-cfw="collapse" data-cfw-collapse-target="#collapseH" data-cfw-collapse-horizontal=true>Collapse <span class="caret"></span></button>
                 <br />
                 <div id="collapseH" class="collapse">
                     <div style="width: 500px;">
@@ -1773,7 +1775,7 @@ $(window).ready(function() {
             </div>
             <div class="well">
                 <h3>Collapse Test</h3>
-                <button type="button" id="coll_1" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target=".collapseTest">Collapse <span class="caret"></span></button>
+                <button type="button" id="coll_1" class="btn" data-cfw="collapse" data-cfw-collapse-target=".collapseTest">Collapse <span class="caret"></span></button>
                 <!-- <button type="button" class="open" data-cfw="collapse" data-cfw-collapse-target=".collapseTest">Collapse</button> -->
                 <a href="#" onclick="$('#coll_1').CFW_Collapse('show', false); return false;">Show</a>
                 <a href="#" onclick="$('#coll_1').CFW_Collapse('toggle'); return false;">Toggle</a>
@@ -1787,23 +1789,23 @@ $(window).ready(function() {
             </div>
             <div class="well">
                 <h3>Collapse Test</h3>
-                <button type="button" id="coll_2" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target="#collapseTest_1">Collapse <span class="caret"></span></button>
+                <button type="button" id="coll_2" class="btn" data-cfw="collapse" data-cfw-collapse-target="#collapseTest_1">Collapse <span class="caret"></span></button>
                 <!-- <button type="button" class="open" data-cfw="collapse" data-cfw-collapse-target="#collapseTest_1">Collapse</button> -->
                 <br />
                 <div id="collapseTest_1">
                     <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
                 </div>
-                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target="#collapseTest_3" data-cfw-collapse-animate=false>Collapse (No Animation) <span class="caret"></span></button>
+                <button type="button" class="btn" data-cfw="collapse" data-cfw-collapse-target="#collapseTest_3" data-cfw-collapse-animate=false>Collapse (No Animation) <span class="caret"></span></button>
                 <div id="collapseTest_3">
                     <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
                 </div>
                 <br />
-                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target="#collapseTest_4">Collapse (via selector) <span class="caret"></span></button>
+                <button type="button" class="btn" data-cfw="collapse" data-cfw-collapse-target="#collapseTest_4">Collapse (via selector) <span class="caret"></span></button>
                 <div id="collapseTest_4">
                     <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
                 </div>
                 <br />
-                <button type="button" id="collapseTest_5_trigger" class="btn btn-default">Collapse (via programmatic selector) <span class="caret"></span></button>
+                <button type="button" id="collapseTest_5_trigger" class="btn">Collapse (via programmatic selector) <span class="caret"></span></button>
                 <div id="collapseTest_5">
                     <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
                 </div>
@@ -1998,11 +2000,11 @@ $(window).ready(function() {
                 <h4>Text in a modal</h4>
                 <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
                 <h4>Popover in a modal</h4>
-                <p>This <button type="button"  class="btn btn-default" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="forward">button</button> should trigger a popover on click.</p>
+                <p>This <button type="button"  class="btn" data-cfw="popover" title="A Title" data-cfw-popover-content="And here's some amazing content. It's very engaging. right?" data-cfw-popover-placement="forward">button</button> should trigger a popover on click.</p>
                 <h4>Tooltips in a modal</h4>
                 <p><a href="#" data-cfw="tooltip" title="Tooltip">This link</a> and <a href="#" data-cfw="tooltip" title="Tooltip">that link</a> should have tooltips on hover.</p>
                 <h4>Collapse in a modal</h4>
-                <button type="button" class="btn btn-default" data-cfw="collapse" data-cfw-collapse-target="#modal_collapse2">Collapse<span class="caret"></span></button>
+                <button type="button" class="btn" data-cfw="collapse" data-cfw-collapse-target="#modal_collapse2">Collapse<span class="caret"></span></button>
                     <div id="modal_collapse2">
                         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
                     </div>
@@ -2019,7 +2021,7 @@ $(window).ready(function() {
                 <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-cfw-dismiss="modal">Close</button>
+                <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save</button>
             </div>
         </div>

@@ -1,7 +1,8 @@
 // Caret `border` will inherit the text color by default with `currentColor`
 // Default color value is `currentColor` when not defined
 
-@mixin caret-down($width: $caret-width, $color: null) {
+@mixin caret-down($width: $caret-border-width, $color: null) {
+    margin-top: $width / -2;
     @if $color != null {
         $color:  #{" " + $color};
     }
@@ -11,7 +12,8 @@
     border-left: $width solid transparent;
 }
 
-@mixin caret-up($width: $caret-width, $color: null) {
+@mixin caret-up($width: $caret-border-width, $color: null) {
+    margin-top: $width / -2;
     @if ($color != null) {
         $color:  #{" " + $color};
     }
@@ -21,7 +23,7 @@
     border-left: $width solid transparent;
 }
 
-@mixin caret-start($width: $caret-width, $color: null) {
+@mixin caret-start($width: $caret-border-width, $color: null) {
     @if ($color != null) {
         $color:  #{" " + $color};
     }
@@ -31,7 +33,7 @@
     border-left: 0;
 }
 
-@mixin caret-end($width: $caret-width, $color: null) {
+@mixin caret-end($width: $caret-border-width, $color: null) {
     @if ($color != null) {
         $color:  #{" " + $color};
     }
@@ -41,7 +43,7 @@
     border-left: $width solid$color;
 }
 
-@mixin caret($direction: down, $width: $caret-width, $color: null) {
+@mixin caret($direction: down, $width: $caret-border-width, $color: null) {
     display: inline-block;
     width: 0;
     height: 0;

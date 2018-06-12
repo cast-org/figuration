@@ -280,7 +280,7 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}
     <a href="#" class="nav-link active">Active</a>
   </li>
   <li class="nav-item dropdown">
-    <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown">Dropdown</a>
+    <a href="#" role="button" class="nav-link" data-cfw="dropdown">Dropdown<span class="caret" aria-hidden="true"></span></a>
     <ul class="dropdown-menu">
       <li><a href="#" class="dropdown-item">Action</a></li>
       <li><a href="#" class="dropdown-item">Another action</a></li>
@@ -306,7 +306,7 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}
     <a href="#" class="nav-link active">Active</a>
   </li>
   <li class="nav-item dropdown">
-    <a href="#" role="button" class="nav-link dropdown-toggle" data-cfw="dropdown">Dropdown</a>
+    <a href="#" role="button" class="nav-link" data-cfw="dropdown">Dropdown<span class="caret" aria-hidden="true"></span></a>
     <ul class="dropdown-menu">
       <li><a href="#" class="dropdown-item">Action</a></li>
       <li><a href="#" class="dropdown-item">Another action</a></li>

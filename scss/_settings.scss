@@ -457,7 +457,8 @@ $shadows: map-merge((
 
 // Component pieces
 // =====
-$caret-width:           .3125rem !default;
+$caret-width:           1rem !default;
+$caret-border-width:    .3125rem !default;
 
 $close-font-size:       ($font-size-base * 1.5) !default;
 $close-font-weight:     $font-weight-bold !default;
@@ -607,6 +608,7 @@ $btn-outline-bg:            transparent !default;
 $btn-disabled-opacity:      .6 !default;
 
 $btn-block-spacing-y:       .25rem !default;
+$btn-icon-multiplier:       .625 !default;
 
 $btn-default-bg:                    $white !default;
 $btn-default-color:                 color-if-contrast($uibase-500, $btn-default-bg) !default;
@@ -845,8 +847,6 @@ $dropdown-caret-spacer-x:       .375rem !default;
 $dropdown-back-width:           .4375rem !default;
 $dropdown-back-color:           $uibase-400 !default;
 $dropdown-back-spacer-x:        .375rem !default;
-
-$dropdown-toggle-margin-x:      .25rem !default;
 
 $dropdown-form-check-input-margin-x: .25rem !default;
 

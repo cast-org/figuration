@@ -157,7 +157,7 @@ When modals become too long for the user's viewport or device, they scroll indep
                 <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-cfw-dismiss="modal">Close</button>
+                <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save</button>
             </div>
         </div>

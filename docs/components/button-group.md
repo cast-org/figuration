@@ -147,7 +147,7 @@ Instead of applying button sizing classes to every button in a group, just add `
 
 ## Nesting
 
-Place a `.btn-group` within another `.btn-group` when you want dropdown menus mixed with a series of buttons.
+Place a `.btn-group` within another `.btn-group` when you want dropdown menus mixed with a series of buttons. You can add `.btn-group-end` to the toggle button to keep its `border-radius` from being reset.
 
 {% example html %}
 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
@@ -155,8 +155,9 @@ Place a `.btn-group` within another `.btn-group` when you want dropdown menus mi
   <button type="button" class="btn">2</button>
 
   <div class="btn-group" role="group">
-    <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
+    <button type="button" class="btn btn-group-end" data-cfw="dropdown">
       Dropdown
+      <span class="caret" aria-hidden="true"></span>
     </button>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="#">Dropdown link</a></li>
@@ -175,8 +176,9 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
     <button type="button" class="btn">Button</button>
     <button type="button" class="btn">Button</button>
     <div class="btn-group" role="group">
-      <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
+      <button type="button" class="btn" data-cfw="dropdown">
         Dropdown
+        <span class="caret" aria-hidden="true"></span>
       </button>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#">Dropdown link</a></li>
@@ -186,8 +188,9 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
     <button type="button" class="btn">Button</button>
     <button type="button" class="btn">Button</button>
     <div class="btn-group" role="group">
-      <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
+      <button type="button" class="btn" data-cfw="dropdown">
         Dropdown
+        <span class="caret" aria-hidden="true"></span>
       </button>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#">Dropdown link</a></li>
@@ -195,8 +198,9 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
       </ul>
     </div>
     <div class="btn-group" role="group">
-      <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
+      <button type="button" class="btn" data-cfw="dropdown">
         Dropdown
+        <span class="caret" aria-hidden="true"></span>
       </button>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#">Dropdown link</a></li>
@@ -204,8 +208,9 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
       </ul>
     </div>
     <div class="btn-group" role="group">
-      <button type="button" class="btn dropdown-toggle" data-cfw="dropdown">
+      <button type="button" class="btn btn-group-end" data-cfw="dropdown">
         Dropdown
+        <span class="caret" aria-hidden="true"></span>
       </button>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#">Dropdown link</a></li>
@@ -223,7 +228,29 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
 
 ## Tooltips and Popovers
 
-Due to the specific implementation (and some other components), a bit of special casing is required for tooltips and popovers within button groups. **You'll have to specify the option `container: 'body'`** to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).
+Due to their specific implementation (and some other components), a bit of special casing is required for tooltips and popovers within button groups. **You'll have to specify the option `container: 'body'`** to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).
+
+{% example html %}
+<div class="btn-toolbar" aria-label="Toolbar with tooltip buttons">
+  <div class="btn-group me-1">
+    <button type="button" class="btn" data-cfw="tooltip" data-cfw-tooltip-title="I have a long sentence to be crushed inside a tooltip.">Tooltip</button>
+  </div>
+  <div class="btn-group">
+    <button type="button" class="btn" data-cfw="tooltip" data-cfw-tooltip-title="I have a long sentence that is not crushed because this tooltip uses the container option." data-cfw-tooltip-container="body">Tooltip container</button>
+  </div>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="btn-toolbar" aria-label="Toolbar with popover buttons">
+  <div class="btn-group me-1">
+    <button type="button" class="btn" data-cfw="popover" data-cfw-popover-title="Popover title" data-cfw-popover-content="I have a long sentence to be crushed inside a popover.">Popover</button>
+  </div>
+  <div class="btn-group">
+    <button type="button" class="btn" data-cfw="popover" data-cfw-popover-title="Popover title" data-cfw-popover-content="I have a long sentence that is not crushed because this popover uses the container option." data-cfw-popover-container="body">Popover container</button>
+  </div>
+</div>
+{% endexample %}
 
 ## Accessibility
 

@@ -599,8 +599,10 @@ $callout-themes: _mix-context-colors($callout-colors, $level-context);
     color: #fff;
 }
 .topLink .caret {
-    border-top: 0;
-    border-bottom: $caret-width solid;
+    &::after {
+        border-top: 0;
+        border-bottom: $caret-border-width solid;
+    }
 }
 .topLink.affix-top,
 .topLink.affix {
