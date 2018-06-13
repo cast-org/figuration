@@ -533,7 +533,7 @@
                     return;
                 }
 
-                $items = $parent.children('li').find('a, .dropdown-item, input, textarea');
+                $items = $parent.children('li').find('a, .dropdown-item, button, input, textarea');
                 $items = $items.filter(':not(.disabled, :disabled):not(:has(input)):not(:has(textarea)):visible');
                 if (!$items.length) { return; }
 
