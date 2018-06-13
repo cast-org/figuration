@@ -4261,10 +4261,6 @@ button.list-item-action {
   background-image: none;
 }
 
-.dropdown-item.form-check-label .form-check-input {
-  margin-left: -1rem;
-}
-
 .dropdown-header {
   display: block;
   padding: 0.1875rem 1.25rem;

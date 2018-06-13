@@ -1393,7 +1393,7 @@ if (typeof jQuery === 'undefined') {
                     return;
                 }
 
-                $items = $parent.children('li').find('a, .dropdown-item, input, textarea');
+                $items = $parent.children('li').find('a, .dropdown-item, button, input, textarea');
                 $items = $items.filter(':not(.disabled, :disabled):not(:has(input)):not(:has(textarea)):visible');
                 if (!$items.length) { return; }
 
@@ -6616,11 +6616,13 @@ if (typeof jQuery === 'undefined') {
                     $menu.append($menuItem);
                     // Add scroll toggle
                     var scrollCheck = this.settings.transcriptScroll ? 'checked' : '';
-                    $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-script-scroll class="form-check-input" ' + scrollCheck + '> Auto-scroll</label></li>');
+                    var scrollID = 'transcriptScroll-' + menuID;
+                    $menuItem = $('<li class="dropdown-text"><div class="form-check"><input type="checkbox" data-cfw-player-script-scroll class="form-check-input" ' + scrollCheck + ' id="' + scrollID + '"> <label class="form-check-label" for="' + scrollID + '">Auto-scroll</label></div></li>');
                     $menu.append($menuItem);
                     // Add description toggle
                     var descCheck = this.settings.transcriptDescribe ? 'checked' : '';
-                    $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-script-describe class="form-check-input" ' + descCheck + '> Show Description</label></li>');
+                    var descID = 'transcriptDescribe-' + menuID;
+                    $menuItem = $('<li class="dropdown-text"><div class="form-check"><input type="checkbox" data-cfw-player-script-describe class="form-check-input" ' + descCheck + ' id="' + descID + '"> <label class="form-check-label" for="' + descID + '">Show Description</label></div></li>');
                     $menu.append($menuItem);
                 }
 
@@ -6994,11 +6996,13 @@ if (typeof jQuery === 'undefined') {
                 $menu.append($menuItem);
                 // Add announce toggle
                 var announceCheck = this.settings.textDescribeAnnounce ? 'checked' : '';
-                $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-text-describe-announce class="form-check-input" ' + announceCheck + '> Announce with Screen Reader</label></li>');
+                var announceID = 'textDescribeAnnounce-' + menuID;
+                $menuItem = $('<li class="dropdown-text"><div class="form-check"><input type="checkbox" data-cfw-player-text-describe-announce class="form-check-input" ' + announceCheck + ' id="' + announceID + '"> <label class="form-check-label" for="' + announceID + '">Announce with Screen Reader</label></div></li>');
                 $menu.append($menuItem);
                 // Add visibility toggle
                 var visibleCheck = this.settings.textDescribeVisible ? 'checked' : '';
-                $menuItem = $('<li><label class="dropdown-item form-check-label"><input type="checkbox" data-cfw-player-text-describe-visible class="form-check-input" ' + visibleCheck + '> Visible Description</label></li>');
+                var visibleID = 'textDescribeVisible-' + menuID;
+                $menuItem = $('<li class="dropdown-text"><div class="form-check"><input type="checkbox" data-cfw-player-text-describe-visible class="form-check-input" ' + visibleCheck + ' id="' + visibleID + '"> <label class="form-check-label" for="' + visibleID + '">Visible Description</label></div></li>');
                 $menu.append($menuItem);
             }
 

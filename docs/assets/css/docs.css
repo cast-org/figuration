@@ -1777,12 +1777,18 @@ h4 > code {
 }
 
 .player-fulldisplay .player {
-  display: inline-block;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   padding: 5px;
   margin: 0;
   color: #222;
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: .25rem;
+}
+
+.player-fulldisplay .player .col-md-6 {
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .player-caption-wrapper {
