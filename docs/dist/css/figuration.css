@@ -1170,7 +1170,7 @@ textarea.form-control {
   display: block;
 }
 
-.was-validated .custom-file-input:valid:focus ~ .custom-file-label, .custom-file-input.is-valid:focus ~ .custom-file-label {
+.was-validated .custom-file-input:valid:focus-within ~ .custom-file-label, .was-validated .custom-file-input:valid:focus ~ .custom-file-label, .custom-file-input.is-valid:focus-within ~ .custom-file-label, .custom-file-input.is-valid:focus ~ .custom-file-label {
   box-shadow: 0 0 0 0.1875rem rgba(14, 138, 22, 0.35);
 }
 
@@ -1272,7 +1272,7 @@ textarea.form-control {
   display: block;
 }
 
-.was-validated .custom-file-input:invalid:focus ~ .custom-file-label, .custom-file-input.is-invalid:focus ~ .custom-file-label {
+.was-validated .custom-file-input:invalid:focus-within ~ .custom-file-label, .was-validated .custom-file-input:invalid:focus ~ .custom-file-label, .custom-file-input.is-invalid:focus-within ~ .custom-file-label, .custom-file-input.is-invalid:focus ~ .custom-file-label {
   box-shadow: 0 0 0 0.1875rem rgba(212, 35, 20, 0.35);
 }
 
@@ -1549,6 +1549,7 @@ textarea.form-control {
   opacity: 0;
 }
 
+.custom-file-input:focus-within ~ .custom-file-label,
 .custom-file-input:focus ~ .custom-file-label {
   color: #424f5b;
   background-color: #fff;
@@ -1557,6 +1558,7 @@ textarea.form-control {
   box-shadow: 0 0 0 0.1875rem rgba(0, 85, 233, 0.35);
 }
 
+.custom-file-input:focus-within ~ .custom-file-label::after,
 .custom-file-input:focus ~ .custom-file-label::after {
   border-color: #6699f2;
   border-left-color: #bfc6cd;
