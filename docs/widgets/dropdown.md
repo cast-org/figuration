@@ -296,7 +296,7 @@ Using the [`backlink` option](#options), you can have 'back' menu items automati
 
 The Dropdown widget in Figuration is primarily designed for menus and navigation, not a container for forms or editable content, such as a login or registration.  You might want to consider using the [Popover widget]({{ site.baseurl }}/widgets/popover/) instead, or reworking the workflow or interface design.
 
-However, there is some support for handling `<input>` and `<textarea>` items within the parent `.dropdown` container, and within the menu itself.  Each of these special items require the use of the `.dropdown-item` helper class, when inside the menu, to adjust their layout and become available to the dropdown menu keyboard navigation.
+However, there is some support for handling `<button>`, `<input>`, and `<textarea>` elements within a menu.  Each of these special items require the use of either the `.dropdown-item` or `.dropdown-text` class when inside the menu to adjust their layout .
 
 #### Buttons
 
@@ -328,19 +328,19 @@ Checkbox and radio inputs are allowed, but only **one per menu item**.
     Dropdown <span class="caret" aria-hidden="true"></span>
   </button>
   <ul class="dropdown-menu">
-    <li class="dropdown-item">
+    <li class="dropdown-text">
       <div class="form-check">
         <input type="checkbox" id="checkbox1" class="form-check-input">
         <label for="checkbox1" class="form-check-label">Checkbox 1</label>
       </div>
     </li>
-    <li class="dropdown-item">
+    <li class="dropdown-text">
       <div class="form-check">
         <input type="checkbox" id="checkbox2" class="form-check-input">
         <label for="checkbox2" class="form-check-label">Checkbox 2</label>
       </div>
     </li>
-    <li class="dropdown-item">
+    <li class="dropdown-text">
       <div class="form-check">
         <input type="checkbox" id="checkbox3" class="form-check-input">
         <label for="checkbox3" class="form-check-label">Checkbox 3</label>
@@ -356,19 +356,19 @@ Checkbox and radio inputs are allowed, but only **one per menu item**.
     Dropdown <span class="caret" aria-hidden="true"></span>
   </button>
   <ul class="dropdown-menu">
-    <li class="dropdown-item">
+    <li class="dropdown-text">
       <div class="form-check">
         <input type="radio" id="radio1" name="dropradio" class="form-check-input">
         <label for="radio1" class="form-check-label">Radio 1</label>
       </div>
     </li>
-    <li class="dropdown-item">
+    <li class="dropdown-text">
       <div class="form-check">
         <input type="radio" id="radio2" name="dropradio" class="form-check-input">
         <label for="radio2" class="form-check-label">Radio 2</label>
       </div>
     </li>
-    <li class="dropdown-item">
+    <li class="dropdown-text">
       <div class="form-check">
         <input type="radio" id="radio3" name="dropradio" class="form-check-input">
         <label for="radio3" class="form-check-label">Radio 3</label>
@@ -391,15 +391,15 @@ Since keyboard navigation needs to change once you enter one of these elements, 
   </button>
   <ul class="dropdown-menu">
     <li><a href="#">Action</a></li>
+    <li><a href="#">Action</a></li>
     <li>
-      <div class="dropdown-item">
+      <div class="dropdown-text">
         <label for="input1" class="sr-only">Example input</label>
         <input type="text" id="input1" class="form-control" placeholder="text input"/>
       </div>
     </li>
-    <li><a href="#">Action</a></li>
     <li>
-      <div class="dropdown-item">
+      <div class="dropdown-text">
         <label for="textarea1" class="sr-only">Example textarea</label>
         <textarea id="textarea1" class="form-control" placeholder="textarea"></textarea>
       </div>

@@ -120,12 +120,17 @@
     text-align: center;
 }
 .player-fulldisplay .player {
-    display: inline-block;
+    display: inline-flex;
     padding: 5px;
     margin: 0;
     color: #222;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: .25rem;
+
+    .col-md-6 {
+        padding-right: 0;
+        padding-left: 0;
+    }
 }
 
 .player-caption-wrapper {

@@ -154,14 +154,6 @@
     }
 }
 
-.dropdown-item {
-    &.form-check-label {
-        .form-check-input {
-            margin-left: $dropdown-form-check-input-margin-x - $form-check-input-gutter;
-        }
-    }
-}
-
 // Dropdown section headers
 .dropdown-header {
     display: block;
