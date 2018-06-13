@@ -218,6 +218,7 @@
     margin: 0;
     opacity: 0;
 
+    &:focus-within ~ .custom-file-label, // Firefox workaround
     &:focus ~ .custom-file-label {
         color: $input-focus-color;
         background-color: $input-focus-bg;

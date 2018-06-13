@@ -110,6 +110,7 @@
                 display: block;
             }
 
+            &:focus-within, // Firefox workaround
             &:focus {
                 ~ .custom-file-label {
                     box-shadow: 0 0 0 $input-focus-box-shadow-width rgba($color, $input-focus-box-shadow-alpha);
