@@ -993,7 +993,7 @@
                     // Add description toggle
                     var descCheck = this.settings.transcriptDescribe ? 'checked' : '';
                     var descID = 'transcriptDescribe-' + menuID;
-                    $menuItem = $('<li class="dropdown-text"><div class="form-check"><input type="checkbox" data-cfw-player-script-describe class="form-check-input" ' + descID + ' id="' + descID + '"> <label class="form-check-label" for="' + descID + '">Show Description</label></div></li>');
+                    $menuItem = $('<li class="dropdown-text"><div class="form-check"><input type="checkbox" data-cfw-player-script-describe class="form-check-input" ' + descCheck + ' id="' + descID + '"> <label class="form-check-label" for="' + descID + '">Show Description</label></div></li>');
                     $menu.append($menuItem);
                 }
 
