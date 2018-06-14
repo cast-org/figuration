@@ -25,7 +25,6 @@
 
 
 // Repsonsive border addition and removal
-// Subset of of `$grid-breakpoints`
 @each $breakpoint in $utility-border-breakpoints {
     $bprule: breakpoint-designator($breakpoint);
 

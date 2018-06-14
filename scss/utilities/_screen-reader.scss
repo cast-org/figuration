@@ -8,7 +8,7 @@
 }
 
 // Responsive visibility utilities
-@each $bp in map-keys($grid-breakpoints) {
+@each $bp in $utility-screen-reader-breakpoints {
     // Skip smallest breakpoint for up (equivalent to `.sr-only`)
     @if breakpoint-min($bp, $grid-breakpoints) != null {
         .sr-only-#{$bp} {

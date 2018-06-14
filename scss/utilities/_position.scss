@@ -1,7 +1,6 @@
 // stylelint-disable declaration-no-important
 
 // Common positioning
-// Subset of of `$grid-breakpoints`
 @each $breakpoint in $utility-position-breakpoints {
     $bprule: breakpoint-designator($breakpoint);
 

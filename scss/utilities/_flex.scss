@@ -2,8 +2,6 @@
 
 // Flexbox utilities
 // Custom styles for additional flexbox alignment
-
-// Subset of of `$grid-breakpoints`
 @each $breakpoint in $utility-flex-breakpoints {
     $bprule: breakpoint-designator($breakpoint);
 

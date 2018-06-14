@@ -123,7 +123,6 @@
 // Generate series of `.navbar-expand-*` responsive classes for configuring
 // where your navbar collapses.
 .navbar-expand {
-    // Subset of of `$grid-breakpoints`
     @each $bp in $navbar-expand-breakpoints {
         $bprule: breakpoint-designator($bp);
         $prev: breakpoint-prev($bp, $grid-breakpoints);

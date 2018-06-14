@@ -1,7 +1,6 @@
 // stylelint-disable declaration-no-important
 
 // Display utilities
-// Subset of of `$grid-breakpoints`
 @each $bp in $utility-display-breakpoints {
     $bprule: breakpoint-designator($bp);
 

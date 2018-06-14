@@ -134,7 +134,6 @@
     flex-direction: column;
 }
 
-// Subset of of `$grid-breakpoints`
 @each $breakpoint in $card-deck-breakpoints {
     $bprule: breakpoint-designator($breakpoint);
 
@@ -187,7 +186,6 @@
     flex-direction: column;
 }
 
-// Subset of of `$grid-breakpoints`
 @each $breakpoint in $card-group-breakpoints {
     $bprule: breakpoint-designator($breakpoint);
 
@@ -252,7 +250,6 @@
 
 
 // Card columns
-// Subset of of `$grid-breakpoints`
 @each $breakpoint in $card-columns-breakpoints {
     $bprule: breakpoint-designator($breakpoint);
 
