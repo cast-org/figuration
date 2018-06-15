@@ -193,7 +193,6 @@
             padding-right: ($sz-padding-x + $custom-select-indicator-padding);
             @include font-size($sz-font-size);
             line-height: $sz-line-height;
-            //background-position: right $sz-padding-x center;
             @include border-radius($sz-border-radius);
         }
         // stylelint-enable declaration-block-no-duplicate-properties
