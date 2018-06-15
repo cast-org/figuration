@@ -218,6 +218,26 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
 </div>
 {% endexample %}
 
+### Checkbox or Radio Buttons
+
+{% example html %}
+<div class="input-group">
+    <div class="input-group-addon">
+        <div class="btn-check">
+            <input id="btn-check-0" type="checkbox" class="btn-check-input">
+            <label for="btn-check-0" class="btn">Checkbox Button</label>
+        </div>
+    </div>
+    <input type="text" aria-label="Text input with checkbox buttons" class="form-control">
+    <div class="input-group-addon">
+        <div class="btn-check">
+            <input id="btn-check-1" type="checkbox" class="btn-check-input">
+            <label for="btn-check-1" class="btn">Checkbox Button</label>
+        </div>
+    </div>
+</div>
+{% endexample %}
+
 ### Buttons with Dropdowns
 
 Since the dropdown toggle button is not the last item within the addon container. You can add `.input-group-end` to the toggle button to keep its `border-radius` from being reset.
