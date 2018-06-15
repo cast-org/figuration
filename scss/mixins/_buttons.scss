@@ -18,9 +18,9 @@
     .btn-check-input:focus ~ & {
         // No mixin use, so feedback is always present
         @if $enable-shadows {
-            box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-box-shadow-width rgba($focus-shadow, $btn-focus-box-shadow-alpha);
+            box-shadow: $btn-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha);
         } @else {
-            box-shadow: 0 0 0 $btn-focus-box-shadow-width rgba($focus-shadow, $btn-focus-box-shadow-alpha);
+            box-shadow: $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha);
         }
     }
 
@@ -45,7 +45,7 @@
     &:not(:disabled):not(.disabled).active:focus,
     .btn-check-input:not(:disabled):checked:focus ~ &,
     .open > &:focus {
-        @include box-shadow($btn-active-box-shadow, 0 0 0 $btn-focus-box-shadow-width rgba($focus-shadow, $btn-focus-box-shadow-alpha));
+        @include box-shadow($btn-active-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha));
     }
 }
 

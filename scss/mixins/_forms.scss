@@ -31,7 +31,7 @@
 
             &:focus {
                 border-color: $color;
-                box-shadow: 0 0 0 $input-focus-box-shadow-width rgba($color, $input-focus-box-shadow-alpha);
+                box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
             }
 
             ~ .#{$state}-feedback,
@@ -89,7 +89,7 @@
 
             &:focus {
                 ~ .custom-control-label::before {
-                    box-shadow: 0 0 0 $input-focus-box-shadow-width rgba($color, $input-focus-box-shadow-alpha);
+                    box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
                 }
             }
         }
@@ -113,7 +113,7 @@
             &:focus-within, // Firefox workaround
             &:focus {
                 ~ .custom-file-label {
-                    box-shadow: 0 0 0 $input-focus-box-shadow-width rgba($color, $input-focus-box-shadow-alpha);
+                    box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
                 }
             }
         }
