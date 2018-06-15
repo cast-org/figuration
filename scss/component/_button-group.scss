@@ -67,7 +67,10 @@
     @each $size, $dims in $btn-sizes {
         .btn-group-#{$size} > .btn,
         .btn-group-#{$size} > .btn-check > .btn {
-            @extend .btn-#{$size};
+            @extend %btn-#{$size};
+        }
+        .btn-group-#{$size} > .btn-icon {
+            @extend %btn-icon-#{$size};
         }
     }
 }

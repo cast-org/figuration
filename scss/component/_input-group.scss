@@ -120,15 +120,17 @@
 
         .input-group-#{$size} > .form-control,
         .input-group-#{$size} > .custom-select,
-        .input-group-#{$size} > .input-group-addon > .input-group-text,
-        .input-group-#{$size} > .input-group-addon > .btn,
-        .input-group-#{$size} > .input-group-addon > .btn-check > .btn {
+        .input-group-#{$size} > .input-group-addon > .input-group-text {
             @extend %form-control-#{$size};
         }
 
+        .input-group-#{$size} > .input-group-addon > .btn,
+        .input-group-#{$size} > .input-group-addon > .btn-check > .btn {
+            @extend %btn-#{$size};
+        }
+
         .input-group-#{$size} > .input-group-addon > .btn-icon {
-            padding-right: $sz-padding-x * $btn-icon-multiplier;
-            padding-left: $sz-padding-x * $btn-icon-multiplier;
+            @extend %btn-icon-#{$size};
         }
     }
 }

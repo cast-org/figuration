@@ -164,12 +164,20 @@ fieldset:disabled a.btn,
         $sz-padding-x:     map-get($dims, "padding-x");
         $sz-border-radius: map-get($dims, "border-radius");
 
-        .btn-#{$size} {
+        %btn-#{$size} {
             @include button-size($sz-padding-y, $sz-padding-x, $sz-font-size,  $sz-line-height, $sz-border-radius);
+        }
+        %btn-icon-#{$size} {
+            padding-right: $sz-padding-x * $btn-icon-multiplier;
+            padding-left: $sz-padding-x * $btn-icon-multiplier;
+        }
+
+
+        .btn-#{$size} {
+            @extend %btn-#{$size};
 
             &.btn-icon {
-                padding-right: $sz-padding-x * $btn-icon-multiplier;
-                padding-left: $sz-padding-x * $btn-icon-multiplier;
+                @extend %btn-icon-#{$size};
             }
         }
     }
