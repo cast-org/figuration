@@ -132,10 +132,10 @@
     display: block;
     width: 100%;
     height: $input-height-outer;
-    padding: $input-padding-y (($input-padding-x / 2) + $custom-select-indicator-padding) $input-padding-y ($input-padding-x / 2);
+    padding: $input-padding-y ($input-padding-x + $custom-select-indicator-padding) $input-padding-y $input-padding-x;
     color: $input-color;
     vertical-align: middle;
-    background: $input-bg $custom-select-indicator no-repeat right ($input-padding-x / 2) center;
+    background: $input-bg $custom-select-indicator no-repeat right $input-padding-x center;
     background-size: $custom-select-indicator-size;
     border: $input-border-width solid $input-border-color;
     @if $enable-rounded {
@@ -189,11 +189,11 @@
         // stylelint-disable declaration-block-no-duplicate-properties
         .custom-select-#{$size} {
             height: $sz-outer-height;
-            padding: $sz-padding-y ($sz-padding-x / 2);
+            padding: $sz-padding-y $sz-padding-x;
             padding-right: ($sz-padding-x + $custom-select-indicator-padding);
             @include font-size($sz-font-size);
             line-height: $sz-line-height;
-            background-position: right ($sz-padding-x / 2) center;
+            //background-position: right $sz-padding-x center;
             @include border-radius($sz-border-radius);
         }
         // stylelint-enable declaration-block-no-duplicate-properties
@@ -260,7 +260,7 @@
     left: 0;
     z-index: 2;
     height: $input-height-outer;
-    padding: $input-padding-y ($input-padding-x / 2);
+    padding: $input-padding-y $input-padding-x;
     overflow: hidden;
     line-height: $input-line-height;
     color: $input-color;

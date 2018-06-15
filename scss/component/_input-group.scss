@@ -121,13 +121,9 @@
         .input-group-#{$size} > .form-control,
         .input-group-#{$size} > .custom-select,
         .input-group-#{$size} > .input-group-addon > .input-group-text,
-        .input-group-#{$size} > .input-group-addon > .btn {
+        .input-group-#{$size} > .input-group-addon > .btn,
+        .input-group-#{$size} > .input-group-addon > .btn-check > .btn {
             @extend %form-control-#{$size};
-        }
-        .input-group-#{$size} > .input-group-addon > .input-group-text,
-        .input-group-#{$size} > .input-group-addon > .btn {
-            padding-right: $sz-padding-x;
-            padding-left: $sz-padding-x;
         }
 
         .input-group-#{$size} > .input-group-addon > .btn-icon {

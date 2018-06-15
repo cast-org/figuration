@@ -6,7 +6,7 @@
     width: 100%;
     // Make inputs the height of their button counterpart (line-height + padding + border)
     height: $input-height-outer;
-    padding: $input-padding-y ($input-padding-x / 2);
+    padding: $input-padding-y $input-padding-x;
     @include font-size($font-size-base);
     line-height: $input-line-height;
     color: $input-color;
@@ -128,7 +128,7 @@ textarea.form-control {
 
         %form-control-#{$size} {
             height: $sz-outer-height;
-            padding: $sz-padding-y ($sz-padding-x / 2);
+            padding: $sz-padding-y $sz-padding-x;
             @include font-size($sz-font-size);
             line-height: $sz-line-height;
             @include border-radius($sz-border-radius);
