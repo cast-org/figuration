@@ -20,6 +20,13 @@
   color: #000;
 }
 
+.v4-warning {
+  padding: .25rem 1rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: #fbda7b;
+}
+
 .cf-header {
   color: #fff;
   background-color: #246;
@@ -46,11 +53,18 @@
 
 @media (min-width: 48em) {
   @supports ((position: -webkit-sticky) or (position: sticky)) {
+    .v4-warning,
     .cf-header {
       position: -webkit-sticky;
       position: sticky;
       top: 0;
       z-index: 1045;
+    }
+    .v4-warning {
+      height: 2rem;
+    }
+    .cf-header {
+      top: 2rem;
     }
     .cf-content > h1[id]::before,
     .cf-content > h2[id]::before,
@@ -60,8 +74,8 @@
       position: relative;
       z-index: -1;
       display: block;
-      height: 4.5rem;
-      margin-top: -4.5rem;
+      height: 5.5rem;
+      margin-top: -5.5rem;
       visibility: hidden;
       content: "";
     }
