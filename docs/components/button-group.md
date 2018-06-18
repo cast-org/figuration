@@ -4,7 +4,7 @@ title: Button Group
 group: components
 ---
 
-Group a series of buttons together on a single line with the button group. Add on optional JavaScript radio and checkbox style behavior with [our Buttons widget]({{ site.baseurl }}/widgets/button).
+Group a series of buttons together on a single line with the button group.
 
 ## Contents
 {:.no_toc}
