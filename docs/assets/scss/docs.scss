@@ -31,6 +31,13 @@ $docs-color: #246;
     }
 }
 
+.v4-warning {
+    padding: .25rem 1rem;
+    font-weight: $font-weight-bold;
+    text-align: center;
+    background-color: palette($warning, 300);
+}
+
 .cf-header {
     color: $white;
     // background-color: $uibase-900;
@@ -61,10 +68,17 @@ $docs-color: #246;
 // Do a sticky navigation thing
 @include media-breakpoint-up(md) {
     @supports (position: sticky) {
+        .v4-warning,
         .cf-header {
             position: sticky;
             top: 0;
             z-index: 1045;
+        }
+        .v4-warning {
+            height: 2rem;
+        }
+        .cf-header {
+            top: 2rem;
         }
 
         .cf-content {
@@ -77,8 +91,10 @@ $docs-color: #246;
                     position: relative;
                     z-index: -1;
                     display: block;
-                    height: 4.5rem;
-                    margin-top: -4.5rem;
+                    //height: 4.5rem;
+                    //margin-top: -4.5rem;
+                    height: 5.5rem;
+                    margin-top: -5.5rem;
                     visibility: hidden;
                     content: "";
                 }
