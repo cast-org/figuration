@@ -271,7 +271,8 @@ textarea.form-control {
 
         // Allow folks to *not* use `.form-group`
         .form-control,
-        .custom-select {
+        .custom-select,
+        .custom-range {
             display: inline-block;
             width: auto; // Prevent labels from stacking above inputs in `.form-group`
             vertical-align: middle;

@@ -147,3 +147,30 @@
     }
 }
 
+// Custom Range
+@mixin custom-range-track() {
+    box-sizing: border-box;
+    width: 100%;
+    height: $custom-range-track-height;
+    margin: 0 $custom-range-thumb-focus-box-shadow-width;
+    color: transparent;
+    border: $custom-range-track-border;
+    @include border-radius($custom-range-track-border-radius);
+    @include box-shadow($custom-range-track-box-shadow);
+}
+
+@mixin custom-range-thumb() {
+    box-sizing: border-box;
+    width: $custom-range-thumb-width;
+    height: $custom-range-thumb-height;
+    background-color: $custom-range-thumb-bg;
+    border: $custom-range-thumb-border;
+    @include border-radius($custom-range-thumb-border-radius);
+    @include box-shadow($custom-range-thumb-box-shadow);
+    @include transition($input-transition);
+    appearance: none;
+
+    &:active {
+        background-color: $custom-range-thumb-active-bg;
+    }
+}

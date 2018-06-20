@@ -317,3 +317,100 @@
 .custom-color {
     @include transition($input-transition);
 }
+
+// Range
+// Each browser's pseudo-elements need to be seperate and cannot be
+// combined to provide for shared state support. Duplication is handled
+// with mixins.  Also some additional rules per browser.
+.custom-range {
+    width: 100%;
+    height: $custom-range-height;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    appearance: none;
+
+    &:focus {
+        outline: none;
+        &::-webkit-slider-thumb {
+            box-shadow: $custom-range-thumb-focus-box-shadow;
+        }
+        &::-moz-range-thumb {
+            box-shadow: $custom-range-thumb-focus-box-shadow;
+        }
+        &::-ms-thumb {
+            box-shadow: $custom-range-thumb-focus-box-shadow;
+        }
+    }
+
+    &::-moz-focus-outer {
+        border: 0;
+    }
+
+    &::-ms-tooltip {
+        display: none;
+    }
+
+    // Track
+    &::-webkit-slider-runnable-track {
+        @include custom-range-track();
+        background-color: $custom-range-track-bg;
+    }
+    &::-moz-range-track {
+        @include custom-range-track();
+        background-color: $custom-range-track-bg;
+    }
+    &::-ms-track {
+        @include custom-range-track();
+        background-color: transparent;
+    }
+    &::-ms-fill-lower {
+        background-color: $custom-range-track-bg;
+        @include border-radius($custom-range-track-border-radius);
+    }
+    &::-ms-fill-upper {
+        margin-right: $custom-range-thumb-width / 2;
+        background-color: $custom-range-track-bg;
+        @include border-radius($custom-range-track-border-radius);
+    }
+
+    &:not(:disabled) {
+        &::-webkit-slider-runnable-track {
+            cursor: $custom-range-track-cursor;
+        }
+        &::-moz-range-track {
+            cursor: $custom-range-track-cursor;
+        }
+        // Cursor does seem to have affect in IE/Edge so no rules set.
+    }
+
+    // Thumb
+    &::-webkit-slider-thumb {
+        @include custom-range-thumb();
+        // Vertically align thumb
+        margin-top: (($custom-range-track-height - $custom-range-thumb-height) / 2);
+    }
+    &::-moz-range-thumb {
+        @include custom-range-thumb();
+    }
+    &::-ms-thumb {
+        @include custom-range-thumb();
+        // Vertically align thumb
+        margin-top: 0;
+        // Stop clipping focus box-shadow
+        margin-right: $custom-range-thumb-focus-box-shadow-width;
+        margin-left: $custom-range-thumb-focus-box-shadow-width;
+    }
+
+    &:disabled {
+        &::-webkit-slider-thumb {
+            background-color: $custom-range-thumb-disabled-bg;
+        }
+        &::-moz-range-thumb {
+            background-color: $custom-range-thumb-disabled-bg;
+        }
+        &::-ms-thumb {
+            background-color: $custom-range-thumb-disabled-bg;
+        }
+    }
+}

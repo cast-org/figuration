@@ -473,11 +473,51 @@
         seekStatus : function() {
             var $seekElm = this.$player.find('[data-cfw-player="seek"]');
 
-            if ($seekElm.find('input').length) {
+            if ($seekElm.find('input[type="range"]').length) {
+                this.seekRange();
+            } else if ($seekElm.find('input').length) {
                 this.seekSlider();
             } else if ($seekElm.hasClass('progress')) {
                 this.seekProgress();
             }
+        },
+
+        seekRange : function() {
+            var $selfRef = this;
+
+            if (isNaN(this.media.duration) || this.media.duration === Infinity) { return; }
+            var $seekElm = this.$player.find('[data-cfw-player="seek"]');
+            var $inputElm = $seekElm.find('input[type="range"]').eq(0);
+
+            if (parseFloat($inputElm.prop('max')) !== this.media.duration) {
+                $inputElm.prop({
+                    min: 0,
+                    max: this.media.duration,
+                    step: 1 // 1-second step
+                });
+                // Update on both `onchange` and `oninput` events. Seems to
+                // help with jumping back to previous timestamp.
+                $inputElm.on('change input', function() {
+                    var newTime = parseFloat($inputElm.val());
+                    // Pause/resume when changing
+                    var isPaused = $selfRef.media.paused;
+                    $selfRef.media.pause();
+                    $selfRef.seekTo(newTime);
+                    if (!isPaused) {
+                        $selfRef.media.play();
+                    }
+                });
+                // Allow keyboard to do the proper thing here
+                $inputElm.on('keydown', function(e) {
+                    if (e.type === 'keydown') { e.stopPropagation(); }
+                    $(this).off('keyup.cfw.playerSeek');
+                    $(this).one('keyup.cfw.playerSeek', function(e) {
+                        if (e.type === 'keyup') { e.stopPropagation(); }
+                    });
+                });
+            }
+
+            $inputElm.val(this.media.currentTime);
         },
 
         seekSlider : function() {
@@ -596,10 +636,62 @@
         },
 
         volumeStatus : function() {
+            var $volElm = this.$player.find('[data-cfw-player="volume"]');
+
+            if ($volElm.find('input[type="range"]').length) {
+                this.volumeRange();
+            } else if ($volElm.find('input').length) {
+                this.volumeSlider();
+            }
+        },
+
+        volumeRange : function() {
             var $selfRef = this;
             var $volElm = this.$player.find('[data-cfw-player="volume"]');
 
-            if ($volElm.find('input').length <= 0) { return; }
+            if (!this.support.mute) {
+                this._controlDisable($volElm);
+                return;
+            }
+            var $inputElm = $volElm.find('input[type="range"]').eq(0);
+
+            if (parseFloat($inputElm.val()) !== this.media.volume) {
+                $inputElm.prop({
+                    min: 0,
+                    max: 1,
+                    step: 0.05  // 5% increment
+                });
+                // Update on both `onchange` and `oninput` events.
+                $inputElm.on('change input', function() {
+                    var newVol = parseFloat($inputElm.val());
+
+                    if (newVol === 0) {
+                        $selfRef.media.muted = true;
+                    } else {
+                        $selfRef.media.muted = false;
+                        $selfRef.media.volume = newVol;
+                    }
+                });
+                // Allow keyboard to do the proper thing here
+                $inputElm.on('keydown', function(e) {
+                    if (e.type === 'keydown') { e.stopPropagation(); }
+                    $(this).off('keyup.cfw.playerSeek');
+                    $(this).one('keyup.cfw.playerSeek', function(e) {
+                        if (e.type === 'keyup') { e.stopPropagation(); }
+                    });
+                });
+            }
+
+            if (!this.media.muted) {
+                $inputElm.val(this.media.volume);
+            } else {
+                $inputElm.val(0);
+            }
+        },
+
+        volumeSlider : function() {
+            var $selfRef = this;
+            var $volElm = this.$player.find('[data-cfw-player="volume"]');
 
             if (!this.support.mute) {
                 this._controlDisable($volElm);
@@ -633,8 +725,8 @@
             }
 
             // Alter volume slider label to percentage
-            var level = parseInt($selfRef.media.volume * 100, 10);
-            $selfRef.$volSeek.find('.slider-thumb').attr('aria-valuetext', level + '%');
+            var level = parseInt(this.media.volume * 100, 10);
+            this.$volSeek.find('.slider-thumb').attr('aria-valuetext', level + '%');
         },
 
         volumeIncrement : function(delta) {

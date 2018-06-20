@@ -100,7 +100,8 @@ body {
 .player-seek label {
     display: none;
 }
-.player-seek .slider.slider-horizontal {
+.player-seek .slider.slider-horizontal,
+.player-seek input[type="range"] {
     width: 100px;
 }
 .player-mute {
@@ -130,7 +131,8 @@ body {
 .player-volume label {
     display: none;
 }
-.player-volume .slider.slider-horizontal {
+.player-volume .slider.slider-horizontal,
+.player-volume input[type="range"] {
     width: 80px;
 }
 .player-fullscreen {
@@ -854,6 +856,49 @@ body {
                     <button type="button" class="btn btn-icon player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
                 </span>
             </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="h4">Using Range Inputs</h2>
+<div data-cfw="player" class="video-wrapper" role="region" aria-label="video player">
+    <div class="embed-fluid">
+        <video poster="../../docs/assets/video/niagara_falls.jpg" controls>
+            <source src="../../docs/assets/video/niagara_falls.mp4">
+            <track src="../../docs/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" />
+            <track src="../../docs/assets/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es" />
+        </video>
+    </div>
+    <div class="player-wrapper">
+        <div class="player" data-cfw-player="player">
+            <span class="player-control" data-cfw-player="control">
+                <button type="button" class="btn btn-icon" data-cfw-player="play" title="Play" aria-label="Play"><span class="fas fa-fw fa-play"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="pause" title="Pause" aria-label="Pause"><span class="fas fa-fw fa-pause"></span></button>
+                <button type="button" class="btn btn-icon" data-cfw-player="stop" title="Stop" aria-label="Stop"><span class="fas fa-fw fa-stop"></span></button>
+            </span>
+            <span class="player-time me-0_25" data-cfw-player="time">
+                <span class="player-time-current" data-cfw-player="time-current"></span>
+                <span class="player-seek form-inline" data-cfw-player="seek">
+                	<label for="rangeSeek0">Seek slider</label>
+                	<input type="range" id="rangeSeek0" class="custom-range">
+                </span>
+                <span class="player-time-duration" data-cfw-player="time-duration"></span>
+            </span>
+
+            <span class="player-mute me-0_25" data-cfw-player="mute">
+                <button type="button" class="btn btn-icon player-mute-on" title="Unmute" aria-label="Unmute"><span class="fas fa-fw fa-volume-off"></span></button>
+                <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up"></span></button>
+            </span>
+            <span class="player-volume form-inline me-0_25" data-cfw-player="volume">
+                <label for="rangeVol0">Seek slider</label>
+                <input type="range" id="rangeVol0" class="custom-range">
+            </span>
+            <button type="button" class="btn btn-icon me-0_25" data-cfw-player="loop" title="Repeat" aria-label="Repeat"><span class="fas fa-fw fa-redo"></span></button>
+            <button type="button" class="btn btn-icon me-0_25" data-cfw-player="caption" title="Closed Captions" aria-label="Closed Captions"><span class="fas fa-fw fa-closed-captioning"></span></button>
+            <span class="player-fullscreen" data-cfw-player="fullscreen">
+                <button type="button" class="btn btn-icon player-fullscreen-on" title="Exit fullscreen" aria-label="Exit fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+                <button type="button" class="btn btn-icon player-fullscreen-off" title="Fullscreen" aria-label="Fullscreen"><span class="fas fa-fw fa-arrows-alt"></span></button>
+            </span>
         </div>
     </div>
 </div>
