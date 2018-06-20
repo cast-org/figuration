@@ -481,7 +481,7 @@ $transition-collapse-x: width .3s ease !default;
 
 // Component transitions
 $btn-transition:            color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
-$input-transition:          border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+$input-transition:          background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 $modal-transition:          transform .3s ease-out !default;
 $progress-bar-transition:   width .3s ease !default;
 $switch-control-transition: background-color .3s ease !default;
@@ -717,6 +717,27 @@ $custom-file-button-disabled-opacity: .6 !default;
 $custom-file-text: (
     en: "Browse"
 ) !default;
+
+// Custom range
+$custom-range-track-height:         .5rem !default;
+$custom-range-track-cursor:         pointer !default;
+$custom-range-track-bg:             $uibase-100 !default;
+$custom-range-track-border:         0 !default;
+$custom-range-track-border-radius:  $custom-range-track-height !default;
+$custom-range-track-box-shadow:     map-get($shadows, "i1") !default;
+
+$custom-range-thumb-width:                  1.125rem !default;
+$custom-range-thumb-height:                 $custom-range-thumb-width !default;
+$custom-range-thumb-bg:                     $component-active-bg !default;
+$custom-range-thumb-border:                 0 !default;
+$custom-range-thumb-border-radius:          50% !default;
+$custom-range-thumb-box-shadow:             map-get($shadows, "d1") !default;
+$custom-range-thumb-focus-box-shadow:       $input-focus-box-shadow !default;
+$custom-range-thumb-focus-box-shadow-width: .1875rem !default;
+$custom-range-thumb-active-bg:              palette($component-active-bg, 600) !default;
+$custom-range-thumb-disabled-bg:            $uibase-300 !default;
+
+$custom-range-height:               $custom-range-thumb-height + ($custom-range-thumb-focus-box-shadow-width * 2) !default;
 
 // Form validation
 // =====
@@ -1103,9 +1124,11 @@ $slider-thumb-height:               1.25rem !default;
 $slider-thumb-border-radius:        50% !default;
 
 $slider-thumb-min-bg:               $primary !default;
-$slider-thumb-min-hover-bg:         palette($primary, 600) !default;
+$slider-thumb-min-focus-box-shadow: $input-focus-box-shadow-size rgba($slider-thumb-min-bg, $input-focus-box-shadow-alpha) !default;
+$slider-thumb-min-active-bg:        palette($primary, 600) !default;
 $slider-thumb-max-bg:               $danger !default;
-$slider-thumb-max-hover-bg:         palette($danger, 600) !default;
+$slider-thumb-max-focus-box-shadow: $input-focus-box-shadow-size rgba($slider-thumb-max-bg, $input-focus-box-shadow-alpha) !default;
+$slider-thumb-max-active-bg:        palette($danger, 600) !default;
 
 $slider-track-bg:                   $uibase-50 !default;
 $slider-track-border-radius:        $border-radius !default;
