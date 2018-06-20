@@ -38,16 +38,28 @@
         box-shadow: $slider-thumb-shadow;
     }
 
-    @include hover-focus {
-        background-color: $slider-thumb-min-hover-bg;
+    &:focus {
+        outline: 0;
+        box-shadow: $slider-thumb-min-focus-box-shadow;
     }
+
+    &:active {
+        background-color: $slider-thumb-min-active-bg;
+    }
+
+
 }
 
 .slider-thumb-max {
     background-color: $slider-thumb-max-bg;
 
-    @include hover-focus {
-        background-color: $slider-thumb-max-hover-bg;
+    &:focus {
+        outline: 0;
+        box-shadow: $slider-thumb-max-focus-box-shadow;
+    }
+
+    &:active {
+        background-color: $slider-thumb-max-active-bg;
     }
 }
 
