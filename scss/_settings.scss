@@ -770,7 +770,7 @@ $switch-active-indicator-box-shadow:    $btn-active-box-shadow !default;
 // =====
 $progress-height:               1rem !default;
 $progress-font-size:            ($font-size-base * .75) !default;
-$progress-bg:                   $uibase-50 !default;
+$progress-bg:                   $uibase-100 !default;
 $progress-border-radius:        $border-radius !default;
 $progress-box-shadow:           inset 0 .125rem .125rem rgba($black, .1) !default;
 $progress-bar-color:            $white !default;
@@ -1110,13 +1110,13 @@ $modal-lg-breakpoint:           lg !default; // The minimum breakpoint to allow 
 // =====
 $slider-horizontal-height:          1.25rem !default;
 $slider-horizontal-margin:          .75rem !default;
-$slider-horizontal-track-height:    ($slider-horizontal-height / 2) !default;
+$slider-horizontal-track-height:    .5rem !default;
 $slider-horizontal-track-margin:    (($slider-horizontal-height - $slider-horizontal-track-height) / 2) !default;
 
 $slider-vertical-width:             1.25rem !default;
 $slider-vertical-height:            200px !default;
 $slider-vertical-margin:            .75rem !default;
-$slider-vertical-track-width:       ($slider-vertical-width / 2) !default;
+$slider-vertical-track-width:       .5rem !default;
 $slider-vertical-track-margin:      (($slider-vertical-width - $slider-vertical-track-width) / 2) !default;
 
 $slider-thumb-width:                1.25rem !default;
@@ -1130,7 +1130,7 @@ $slider-thumb-max-bg:               $danger !default;
 $slider-thumb-max-focus-box-shadow: $input-focus-box-shadow-size rgba($slider-thumb-max-bg, $input-focus-box-shadow-alpha) !default;
 $slider-thumb-max-active-bg:        palette($danger, 600) !default;
 
-$slider-track-bg:                   $uibase-50 !default;
+$slider-track-bg:                   $uibase-100 !default;
 $slider-track-border-radius:        $border-radius !default;
 
 $slider-selection-bg:               $uibase-300 !default;
