@@ -133,7 +133,7 @@ $('#slider2').CFW_Slider({
 
 ## Usage
 
-The slider will determine the number of thumbs based on the nunber on inputs found within the specified container, up to a maximum of two thumbs.
+The slider will determine the number of thumbs based on the number on inputs found within the specified container, up to a maximum of two thumbs.
 
 If more than two inputs are found, the slider will use the first input found for the first thumb, and the last input found for the second thumb.
 
