@@ -396,7 +396,9 @@ $component-section-border-color:    rgba($uibase-900, .3) !default;
 // =====
 // Used for button, button groups, pagination, form-control, and input-group
 // 'md' is considered to be the default size, so no classes for this size designator are generated, as in *no* `.btn-md`.
-$component-sizes: (
+$component-sizes: () !default;
+// stylelint-disable
+$component-sizes: map-merge((
     "xsmall": (
         "padding-y":     .125rem,
         "padding-x":     .375rem,
@@ -425,7 +427,8 @@ $component-sizes: (
         "line-height":    1.5,
         "border-radius": .3125rem
     )
-) !default;
+), $component-sizes);
+// stylelint-enable
 
 // Per component/utility sizing
 $btn-sizes:             $component-sizes !default;
