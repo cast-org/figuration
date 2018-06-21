@@ -135,7 +135,7 @@
     padding: $input-padding-y ($input-padding-x + $custom-select-indicator-padding) $input-padding-y $input-padding-x;
     color: $input-color;
     vertical-align: middle;
-    background: $input-bg $custom-select-indicator no-repeat right $input-padding-x center;
+    background: $input-bg $custom-select-indicator no-repeat right $custom-select-indicator-offset center;
     background-size: $custom-select-indicator-size;
     border: $input-border-width solid $input-border-color;
     @if $enable-rounded {
