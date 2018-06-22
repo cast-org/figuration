@@ -1167,6 +1167,7 @@ textarea.form-control {
 }
 
 .was-validated .custom-file-input:valid:focus-within ~ .custom-file-label, .was-validated .custom-file-input:valid:focus ~ .custom-file-label, .custom-file-input.is-valid:focus-within ~ .custom-file-label, .custom-file-input.is-valid:focus ~ .custom-file-label {
+  border-color: #0e8a16;
   box-shadow: 0 0 0 0.1875rem rgba(14, 138, 22, 0.35);
 }
 
@@ -1269,6 +1270,7 @@ textarea.form-control {
 }
 
 .was-validated .custom-file-input:invalid:focus-within ~ .custom-file-label, .was-validated .custom-file-input:invalid:focus ~ .custom-file-label, .custom-file-input.is-invalid:focus-within ~ .custom-file-label, .custom-file-input.is-invalid:focus ~ .custom-file-label {
+  border-color: #d42314;
   box-shadow: 0 0 0 0.1875rem rgba(212, 35, 20, 0.35);
 }
 
@@ -1461,7 +1463,7 @@ textarea.form-control {
   padding: 0.25rem 0.75rem 0.25rem 1.5rem;
   color: #424f5b;
   vertical-align: middle;
-  background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat left 0.75rem center;
+  background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat left 0.5rem center;
   background-size: 8px 10px;
   border: 1px solid #bfc6cd;
   border-radius: 0.25rem;
@@ -4069,9 +4071,9 @@ button.list-item-action {
   margin-top: 0;
 }
 
-.input-group > .input-group-addon:not(:last-child) > .btn,
-.input-group > .input-group-addon:not(:last-child) > .input-group-text,
-.input-group > .input-group-addon:not(:last-child) > .btn-check > .btn,
+.input-group > .input-group-addon:not(:last-child) > .btn:not(.input-group-end),
+.input-group > .input-group-addon:not(:last-child) > .input-group-text:not(.input-group-end),
+.input-group > .input-group-addon:not(:last-child) > .btn-check:not(.input-group-end) > .btn,
 .input-group > .input-group-addon:last-child > .btn:not(:last-child):not(.input-group-end),
 .input-group > .input-group-addon:last-child > .input-group-text:not(:last-child) {
   border-top-left-radius: 0;
