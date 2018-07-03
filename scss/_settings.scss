@@ -487,6 +487,7 @@ $btn-transition:            color .15s ease-in-out, background-color .15s ease-i
 $input-transition:          background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 $modal-transition:          transform .3s ease-out !default;
 $progress-bar-transition:   width .3s ease !default;
+$switch-transition:         all .15s ease !default;
 $switch-control-transition: background-color .3s ease !default;
 $switch-indicator-transition: left .3s ease, transform .3s ease, background-color .3s ease !default;
 
@@ -678,7 +679,7 @@ $input-height-outer:    calc(#{$input-height-inner} + #{($border-width * 2)}) !d
 // =====
 // Custom checkbox/radio
 $custom-control-gutter:                 1.5rem !default;
-$custom-control-spacer-x:               1rem !default;
+$custom-control-inline-margin-x:        .75rem !default;
 
 $custom-control-indicator-size:         1rem !default;
 $custom-control-indicator-bg:           $uibase-50 !default;
@@ -693,6 +694,7 @@ $custom-control-disabled-description-color:  $uibase-400 !default;
 $custom-control-checked-indicator-bg:         $primary !default;
 $custom-control-checked-indicator-color:      color-if-contrast($white, $custom-control-checked-indicator-bg) !default;
 $custom-control-checked-indicator-box-shadow: none !default;
+$custom-control-checked-indicator-border-color: $primary !default;
 
 $custom-control-focus-indicator-box-shadow:  $input-focus-box-shadow !default;
 
@@ -707,6 +709,33 @@ $custom-checkbox-indeterminate-box-shadow:  none !default;
 
 $custom-radio-radius:               50% !default;
 $custom-radio-checked-icon:         url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%23fff'/%3E%3C/svg%3E") !default;
+
+$custom-switch-gutter:              2.5rem !default;
+$custom-switch-width:               2rem !default;
+$custom-switch-track-height-ratio:  1 !default;
+$custom-switch-track-bg:            $uibase-50 !default;
+$custom-switch-track-radius:        1rem !default;
+$custom-switch-track-border-width:  $border-width !default;
+$custom-switch-track-border-color:  $input-border-color !default;
+$custom-switch-track-box-shadow:    map-get($shadows, "i1") !default;
+
+$custom-switch-thumb-width:         1rem !default;
+$custom-switch-thumb-height:        1rem !default;
+$custom-switch-thumb-bg:            $uibase-300 !default;
+$custom-switch-thumb-radius:        10rem !default;
+$custom-switch-thumb-border-width:  $border-width !default;
+$custom-switch-thumb-border-color:  $custom-switch-thumb-bg !default;
+$custom-switch-thumb-box-shadow:    map-get($shadows, "d1") !default;
+
+$custom-switch-checked-track-bg:            $uibase-50 !default;
+$custom-switch-checked-track-border-color:  $uibase-300 !default;
+$custom-switch-active-track-bg:             $uibase-50 !default;
+
+$custom-switch-checked-thumb-bg:            $primary !default;
+$custom-switch-checked-thumb-border-color:  $primary !default;
+$custom-switch-active-thumb-bg:             palette($primary, 400) !default;
+$custom-switch-disabled-thumb-bg:           $uibase-200 !default;
+$custom-switch-disabled-checked-thumb-bg:   palette($primary, 200) !default;
 
 // Custom select
 $custom-select-indicator-offset:    .5rem !default;
@@ -749,25 +778,6 @@ $form-feedback-margin-top:      $form-text-margin-top !default;
 $form-feedback-font-size:       $small-font-size !default;
 $form-feedback-valid-color:     map-get($base-colors, "success") !default;
 $form-feedback-invalid-color:   map-get($base-colors, "danger") !default;
-
-
-// Switch
-// =====
-$switch-width-multiplier:               4 !default;
-$switch-control-bg:                     $input-bg !default;
-$switch-indicator-bg:                   $uibase-200 !default;
-
-$switch-active-control-bg:              $input-bg !default;
-$switch-active-indicator-bg:            $uibase-400 !default;
-
-$switch-focus-control-border-color:     $input-focus-border-color !default;
-$switch-focus-control-box-shadow:       $input-focus-box-shadow !default;
-
-$switch-disabled-description-color:     $uibase-400 !default;
-$switch-disabled-opacity:               .6 !default;
-
-$switch-indicator-box-shadow:           $btn-box-shadow !default;
-$switch-active-indicator-box-shadow:    $btn-active-box-shadow !default;
 
 
 // Progress bars

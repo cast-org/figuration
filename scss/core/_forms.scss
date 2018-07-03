@@ -138,11 +138,15 @@ textarea.form-control {
             @extend %form-control-#{$size};
         }
 
-        .form-control-label-#{$size} {
+        %form-control-label-#{$size} {
             padding-top: calc(#{$sz-padding-y} + #{$input-border-width});
             padding-bottom: calc(#{$sz-padding-y} + #{$input-border-width});
             @include font-size($sz-font-size);
             line-height: $sz-line-height;
+        }
+
+        .form-control-label-#{$size} {
+            @extend %form-control-label-#{$size};
         }
     }
 }
