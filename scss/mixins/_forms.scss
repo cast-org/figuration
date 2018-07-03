@@ -70,7 +70,9 @@
         &.is-#{$state} {
             ~ .custom-control-label {
                 color: $color;
+            }
 
+            ~ .custom-control-indicator {
                 &::before {
                     border-color: $color;
                 }
@@ -82,13 +84,14 @@
             }
 
             &:checked {
-                ~ .custom-control-label::before {
+                ~ .custom-control-indicator::before {
                     background-color: $color;
+                    border-color: $color;
                 }
             }
 
             &:focus {
-                ~ .custom-control-label::before {
+                ~ .custom-control-indicator::before {
                     box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
                 }
             }

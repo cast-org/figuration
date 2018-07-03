@@ -23,9 +23,9 @@
         }
     }
 
-    .switch-description {
-        @include font-size($font-size);
-    }
+    //.switch-description {
+    //    @include font-size($font-size);
+    //}
 
     &.switch-rounded {
         .switch-control {

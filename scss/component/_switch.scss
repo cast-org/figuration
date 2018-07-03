@@ -145,5 +145,9 @@
         .switch-#{$size} {
             @include switch-size($sz-font-size, $sz-line-height, $sz-border-radius, $input-border-width, $sz-outer-height, $sz-inner-height);
         }
+        .switch-description {
+            //@include font-size($font-size);
+            @extend %form-control-label-#{$size};
+        }
     }
 }

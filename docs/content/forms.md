@@ -761,8 +761,9 @@ You can also use [custom form controls](#custom-forms) as needed.
     </div>
     <div class="col-auto">
       <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="customsize-check">
-        <label class="custom-control-label" for="customsize-check">Remember my preference</label>
+        <input type="checkbox" class="custom-control-input" id="customize-check">
+        <label class="custom-control-indicator" for="customize-check"></label>
+        <label class="custom-control-label" for="customize-check">Remember my preference</label>
       </div>
     </div>
     <div class="col-auto">
@@ -818,6 +819,7 @@ Custom form controls and selects are also supported.
 
   <div class="custom-control custom-checkbox mb-0_5 me-sm-0_5">
     <input type="checkbox" class="custom-control-input" id="customControlInline">
+    <label class="custom-control-indicator" for="customControlInline"></label>
     <label class="custom-control-label" for="customControlInline">Remember my preference</label>
   </div>
 
@@ -829,11 +831,11 @@ Custom form controls and selects are also supported.
 
 For even more customization and cross browser consistency, use our completely custom form elements to replace the browser defaults. They're built on top of semantic and accessible markup, so they're solid replacements for any default form control.
 
-### Checkboxes and radios
+### Checkboxes and Radios
 
-Each checkbox and radio is wrapped in a block-level container with consolidated styling provided by `.custom-control`, and then an additional modifier class of `.custom-checkbox` or `.custom-radio` to control the specific indicator visuals. Structurally, this is similar to the approach of our default `.form-check`.
+Each checkbox and radio is wrapped in a block-level container with consolidated styling provided by `.custom-control`, and then an additional modifier class of `.custom-checkbox`, `.custom-radio`, or `.custom-switch` to control the specific indicator visuals. Structurally, this is a slightly different approach than our default `.form-check`. uses an additional `<label>` element to provide
 
-We hide the default `<input>` with `opacity` and use the `.custom-control-label` to build a new custom form indicator in its place with `::before` and `::after`. Unfortunately we can't build a custom one from just the `<input>` because CSS's `content` doesn't work on that element.
+We hide the default `<input>` with `opacity` and use an additional `<label>` element with `.custom-control-indicator`, and a second `<label>` with `.custom-control-label`, to build a new custom form indicator in its place with `::before` and `::after`. Unfortunately we can't build a custom one from just the `<input>` because CSS's `content` doesn't work on that element.  We use this additional label element to provide some gains in layout possibility, and the ability to *visually hide* the input's textual label, and not break the layout.
 
 We also use the sibling selector (`~`) for all our `<input>` states—like `:checked`—to properly style our custom form indicator. When combined with the `.custom-control-label` class, we can also style the text for each item based on the `<input>`'s state.
 
@@ -846,6 +848,7 @@ Checkboxes use the `.custom-checkbox` modifier class.
 {% example html %}
 <div class="custom-control custom-checkbox">
   <input type="checkbox" class="custom-control-input" id="custom-control-checkbox">
+  <label class="custom-control-indicator" for="custom-control-checkbox"></label>
   <label class="custom-control-label" for="custom-control-checkbox">Check this custom checkbox</label>
 </div>
 {% endexample %}
@@ -855,6 +858,7 @@ Custom checkboxes can also utilize the `:indeterminate` pseudo class when manual
 <div class="cf-example cf-example-bottom cf-example-indeterminate">
   <div class="custom-control custom-checkbox">
     <input type="checkbox" class="custom-control-input" id="custom-control-indeterminate">
+    <label class="custom-control-indicator" for="custom-control-indeterminate"></label>
     <label class="custom-control-label" for="custom-control-indeterminate">Check this custom checkbox</label>
   </div>
 </div>
@@ -872,11 +876,36 @@ Radios use the `.custom-radio` modifier class.
 {% example html %}
 <div class="custom-control custom-radio">
   <input type="radio" class="custom-control-input" name="custom-control-radio" id="custom-control-radio-1">
+  <label class="custom-control-indicator" for="custom-control-radio-1"></label>
   <label class="custom-control-label" for="custom-control-radio-1">Toggle this custom radio</label>
 </div>
 <div class="custom-control custom-radio">
   <input type="radio" class="custom-control-input" name="custom-control-radio" id="custom-control-radio-2">
+  <label class="custom-control-indicator" for="custom-control-radio-2"></label>
   <label class="custom-control-label" for="custom-control-radio-2">Or toggle this other custom radio</label>
+</div>
+{% endexample %}
+
+#### Switches
+
+Make custom checkboxes or custom radios look like toggle switches with the `.custom-switch` modifier class.
+
+{% example html %}
+<div class="custom-control custom-switch mb-1">
+  <input type="checkbox" class="custom-control-input" id="custom-control-switch-0">
+  <label class="custom-control-indicator" for="custom-control-switch-0"></label>
+  <label class="custom-control-label" for="custom-control-switch-0">Check this custom checkbox</label>
+</div>
+
+<div class="custom-control custom-switch">
+  <input type="radio" class="custom-control-input" name="custom-control-radio" id="custom-control-switch-1">
+  <label class="custom-control-indicator" for="custom-control-switch-1"></label>
+  <label class="custom-control-label" for="custom-control-switch-1">Toggle this custom radio</label>
+</div>
+<div class="custom-control custom-switch">
+  <input type="radio" class="custom-control-input" name="custom-control-radio" id="custom-control-switch-2">
+  <label class="custom-control-indicator" for="custom-control-switch-2"></label>
+  <label class="custom-control-label" for="custom-control-switch-2">Or toggle this other custom radio</label>
 </div>
 {% endexample %}
 
@@ -887,10 +916,12 @@ Group custom controls on a horizontal row by using the `.custom-control-inline` 
 {% example html %}
 <div class="custom-control custom-control-inline custom-radio">
   <input type="radio" class="custom-control-input" name="custom-control-inline" id="custom-control-radio-3">
+  <label class="custom-control-indicator" for="custom-control-radio-3"></label>
   <label class="custom-control-label" for="custom-control-radio-3">Toggle this custom radio</label>
 </div>
 <div class="custom-control custom-control-inline custom-radio">
   <input type="radio" class="custom-control-input" name="custom-control-inline" id="custom-control-radio-4">
+  <label class="custom-control-indicator" for="custom-control-radio-4"></label>
   <label class="custom-control-label" for="custom-control-radio-4">Or toggle this other custom radio</label>
 </div>
 {% endexample %}
@@ -902,13 +933,21 @@ Custom checkboxes and radios can also be disabled. Add the `disabled` boolean at
 
 {% example html %}
 <div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="custom-checkbox-disabled"  disabled>
+  <input type="checkbox" class="custom-control-input" id="custom-checkbox-disabled" disabled>
+  <label class="custom-control-indicator" for="custom-checkbox-disabled"></label>
   <label class="custom-control-label" for="custom-checkbox-disabled">Check this custom checkbox</label>
 </div>
 
 <div class="custom-control custom-radio">
   <input type="radio" class="custom-control-input" name="custom-radio-disabled" id="custom-radio-disabled" disabled>
+  <label class="custom-control-indicator" for="custom-radio-disabled"></label>
   <label class="custom-control-label" for="custom-radio-disabled">Toggle this custom radio</label>
+</div>
+
+<div class="custom-control custom-switch">
+  <input type="checkbox" class="custom-control-input" id="custom-switch-disabled" disabled>
+  <label class="custom-control-indicator" for="custom-switch-disabled"></label>
+  <label class="custom-control-label" for="custom-switch-disabled">Toggle this custom switch</label>
 </div>
 {% endexample %}
 
@@ -1231,18 +1270,28 @@ Our example forms show native textual `<input>`s above, but form validation styl
 <form class="was-validated">
   <div class="custom-control custom-checkbox mb-1">
     <input type="checkbox" class="custom-control-input" id="validate-support-1" required>
+    <label class="custom-control-indicator" for="validate-support-1"></label>
     <label class="custom-control-label" for="validate-support-1">Check this custom checkbox</label>
     <div class="invalid-feedback">Example invalid feedback text</div>
   </div>
 
   <div class="custom-control custom-radio">
     <input type="radio" class="custom-control-input" id="validate-support-2" name="radio-stacked" required>
+    <label class="custom-control-indicator" for="validate-support-2"></label>
     <label class="custom-control-label" for="validate-support-2">Toggle this custom radio</label>
   </div>
   <div class="custom-control custom-radio mb-1">
     <input type="radio" class="custom-control-input" id="validate-support-3" name="radio-stacked" required>
+    <label class="custom-control-indicator" for="validate-support-3"></label>
     <label class="custom-control-label" for="validate-support-3">Or toggle this other custom radio</label>
     <div class="invalid-feedback">More example invalid feedback text</div>
+  </div>
+
+  <div class="custom-control custom-switch mb-1">
+    <input type="checkbox" class="custom-control-input" id="validate-support-4" required>
+    <label class="custom-control-indicator" for="validate-support-4"></label>
+    <label class="custom-control-label" for="validate-support-4">Check this custom checkbox</label>
+    <div class="invalid-feedback">Example invalid feedback text</div>
   </div>
 
   <div class="form-group">
@@ -1256,8 +1305,8 @@ Our example forms show native textual `<input>`s above, but form validation styl
   </div>
 
   <div class="custom-file">
-    <input type="file" class="custom-file-input" id="validate-support-4" required>
-    <label class="custom-file-label" for="validate-support-4">Choose file...</label>
+    <input type="file" class="custom-file-input" id="validate-support-5" required>
+    <label class="custom-file-label" for="validate-support-5">Choose file...</label>
     <div class="invalid-feedback">Example invalid custom file feedback</div>
   </div>
 </form>

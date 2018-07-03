@@ -14,7 +14,7 @@
 
 .custom-control-inline {
     display: inline-flex;
-    margin-right: $custom-control-spacer-x;
+    margin-right: $custom-control-inline-margin-x;
 }
 
 .custom-control-input {
@@ -24,18 +24,18 @@
     pointer-events: none;
     opacity: 0;
 
-    &:checked ~ .custom-control-label::before {
+    &:checked ~ .custom-control-indicator::before {
         color: $custom-control-checked-indicator-color;
         background-color: $custom-control-checked-indicator-bg;
-        border: 0;
+        border-color: $custom-control-checked-indicator-border-color;
         @include box-shadow($custom-control-checked-indicator-box-shadow);
     }
 
-    &:focus ~ .custom-control-label::before {
+    &:focus ~ .custom-control-indicator::before {
         box-shadow: $custom-control-focus-indicator-box-shadow;
     }
 
-    &:active:not(:disabled) ~ .custom-control-label::before {
+    &:active:not(:disabled) ~ .custom-control-indicator::before {
         color: $custom-control-active-indicator-color;
         background-color: $custom-control-active-indicator-bg;
     }
@@ -43,7 +43,9 @@
     &:disabled {
         ~ .custom-control-label {
             color: $custom-control-disabled-description-color;
+        }
 
+        ~ .custom-control-indicator {
             &::before {
                 opacity: $custom-control-disabled-indicator-opacity;
             }
@@ -51,11 +53,18 @@
     }
 }
 
+.custom-control-label {
+    margin-bottom: 0; // Undo label margin
+}
+
 // Custom control indicators
 // Generate custom controls from pseudo-elements.
-.custom-control-label {
-    position: relative;
-    margin-bottom: 0;
+.custom-control-indicator {
+    position: absolute;
+    width: $custom-control-indicator-size;
+    height: $custom-control-indicator-size;
+    //min-height: (1rem * $line-height-base);
+    margin-bottom: 0; // Undo label margin
 
     // Background (color and border)
     &::before {
@@ -91,17 +100,17 @@
 // Checkboxes
 // Tweak just a few things for checkboxes.
 .custom-checkbox {
-    .custom-control-label::before {
+    .custom-control-indicator::before {
         @include border-radius($custom-checkbox-radius);
     }
 
-    .custom-control-input:checked ~ .custom-control-label {
+    .custom-control-input:checked ~ .custom-control-indicator {
         &::after {
             background-image: $custom-checkbox-checked-icon;
         }
     }
 
-    .custom-control-input:indeterminate ~ .custom-control-label {
+    .custom-control-input:indeterminate ~ .custom-control-indicator {
         &::before {
             background-color: $custom-checkbox-indeterminate-bg;
             @include box-shadow($custom-checkbox-indeterminate-box-shadow);
@@ -115,13 +124,96 @@
 // Radios
 // Tweak just a few things for radios.
 .custom-radio {
-    .custom-control-label::before {
+    .custom-control-indicator::before {
         border-radius: $custom-radio-radius;
     }
 
-    .custom-control-input:checked ~ .custom-control-label {
+    .custom-control-input:checked ~ .custom-control-indicator {
         &::after {
             background-image: $custom-radio-checked-icon;
+        }
+    }
+}
+
+// Switch
+.custom-switch {
+    //min-height: max($custom-switch-track-height-ratio * $custom-switch-thumb-height, $custom-switch-thumb-height, (1rem * $line-height-base));
+    padding-left: $custom-switch-gutter;
+
+    .custom-control-indicator {
+        width: $custom-switch-width;
+        height: $custom-switch-track-height-ratio * $custom-switch-thumb-height;
+        //min-height: max($custom-switch-track-height-ratio * $custom-switch-thumb-height, $custom-switch-thumb-height, (1rem * $line-height-base));
+
+        &::before,
+        &::after {
+            //top: 50%;
+            left: -$custom-switch-gutter;
+            pointer-events: auto;
+            transition: $switch-transition;
+            //transform: translateY(-50%);
+        }
+
+        // Thumb
+        &::before {
+            top: (($line-height-base - $custom-switch-thumb-height) / 2);
+            z-index: 1; // Move above the track
+            width: $custom-switch-thumb-width;
+            height: $custom-switch-thumb-height;
+            background-color: $custom-switch-thumb-bg;
+            border: $custom-switch-thumb-border-width solid $custom-switch-thumb-border-color;
+            @include border-radius($custom-switch-thumb-radius);
+            @include box-shadow($custom-switch-thumb-box-shadow);
+        }
+
+        // Track
+        &::after {
+            top: (($line-height-base - ($custom-switch-track-height-ratio * $custom-switch-thumb-height)) / 2);
+            width: $custom-switch-width;
+            height: $custom-switch-track-height-ratio * $custom-switch-thumb-height;
+            background-color: $custom-switch-track-bg;
+            border: $custom-switch-track-border-width solid $custom-switch-track-border-color;
+            @include border-radius($custom-switch-track-radius);
+            @include box-shadow($custom-switch-track-box-shadow);
+        }
+    }
+
+    .custom-control-input:checked ~ .custom-control-indicator {
+        &::before {
+            left: calc(#{$custom-switch-width} - #{$custom-switch-thumb-width} - #{$custom-switch-gutter});
+            background-color: $custom-switch-checked-thumb-bg;
+            border-color: $custom-switch-checked-thumb-border-color;
+        }
+        &::after {
+            background-color: $custom-switch-checked-track-bg;
+            border-color: $custom-switch-checked-track-border-color;
+        }
+    }
+
+    .custom-control-input:active ~ .custom-control-indicator {
+        &::before {
+            background-color: $custom-switch-active-thumb-bg;
+        }
+        &::after {
+            background-color: $custom-switch-active-track-bg;
+        }
+    }
+
+    .custom-control-input:disabled ~ .custom-control-indicator {
+        &::before {
+            background-color: $custom-switch-disabled-thumb-bg;
+            border-color: $custom-switch-disabled-thumb-bg;
+            opacity: 1;
+        }
+        &::after {
+            opacity: $custom-control-disabled-indicator-opacity;
+        }
+    }
+
+    .custom-control-input:disabled:checked ~ .custom-control-indicator {
+        &::before {
+            background-color: $custom-switch-disabled-checked-thumb-bg;
+            border-color: $custom-switch-disabled-checked-thumb-bg;
         }
     }
 }
@@ -311,7 +403,7 @@
 }
 
 // Transition
-.custom-control-label::before,
+.custom-control-indicator::before,
 .custom-select,
 .custom-file-label,
 .custom-color {
