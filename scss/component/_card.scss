@@ -78,7 +78,7 @@
     border-bottom: $card-border-width solid $card-cap-border-color;
 
     &:first-child {
-        @include border-radius($card-border-radius $card-border-radius 0 0);
+        @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
     }
 }
 
@@ -88,7 +88,7 @@
     border-top: $card-border-width solid $card-cap-border-color;
 
     &:last-child {
-        @include border-radius(0 0 $card-border-radius $card-border-radius);
+        @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
     }
 }
 
