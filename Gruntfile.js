@@ -26,6 +26,7 @@ module.exports = function(grunt) {
 
     var autoprefixer = require('autoprefixer');
     var flexbugs = require('postcss-flexbugs-fixes');
+    var sass = require('node-sass');
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -173,6 +174,7 @@ module.exports = function(grunt) {
 
         sass: {
             options: {
+                implementation: sass,
                 includePaths: ['scss'],
                 precision: 6,
                 sourceComments: false,
