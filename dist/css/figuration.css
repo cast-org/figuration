@@ -2649,11 +2649,6 @@ input[type="button"].btn-block {
   margin-bottom: 0;
 }
 
-.btn-check-input:focus ~ .btn {
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-}
-
 .container {
   width: 100%;
   max-width: 100%;
