@@ -399,12 +399,11 @@
     };
 
     $.CFW_measureScrollbar = function() {
-        var $body = $(document.body);
         var scrollDiv = document.createElement('div');
         scrollDiv.setAttribute('style', ' position: absolute; top: -9999px; width: 50px; height: 50px; overflow: scroll;');
-        $body.append(scrollDiv);
+        document.body.appendChild(scrollDiv);
         var scrollbarWidth = scrollDiv.getBoundingClientRect().width - scrollDiv.clientWidth;
-        $body[0].removeChild(scrollDiv);
+        document.body.removeChild(scrollDiv);
         return scrollbarWidth;
     };
 
