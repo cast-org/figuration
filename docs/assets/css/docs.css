@@ -1289,6 +1289,18 @@ h4 > code {
   border: 1px solid rgba(34, 68, 102, 0.2);
 }
 
+.breadcrumb-chevron .breadcrumb-item + .breadcrumb-item::before {
+  content: ">";
+}
+
+.breadcrumb-icon .breadcrumb-item + .breadcrumb-item::before {
+  content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik0xLjUgMGwtMS41IDEuNSAyLjUgMi41LTIuNSAyLjUgMS41IDEuNSA0LTQtNC00eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMSkiIC8+Cjwvc3ZnPg==");
+}
+
+.breadcrumb-none .breadcrumb-item + .breadcrumb-item::before {
+  content: none;
+}
+
 .hll {
   background-color: #ffc;
 }

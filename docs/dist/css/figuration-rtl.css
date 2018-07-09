@@ -4191,10 +4191,13 @@ button.list-item-action {
   list-style: none;
 }
 
+.breadcrumb-item + .breadcrumb-item {
+  padding-right: 0.5rem;
+}
+
 .breadcrumb-item + .breadcrumb-item::before {
   display: inline-block;
   padding-left: 0.5rem;
-  padding-right: 0.5rem;
   color: #9eaab4;
   content: "/";
 }
