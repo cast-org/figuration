@@ -800,9 +800,9 @@ $breadcrumb-margin-bottom:      1rem !default;
 
 $breadcrumb-active-color:       $uibase-700 !default;
 
-$breadcrumb-divider-padding-x:  .5rem !default;
+$breadcrumb-item-padding-x:     .5rem !default;
 $breadcrumb-divider-color:      $uibase-300 !default;
-$breadcrumb-divider:            "/" !default;
+$breadcrumb-divider:            quote("/") !default;
 
 
 // Pagination
