@@ -322,3 +322,70 @@ The default setting for the color levels to be generated is defined as the follo
 {% highlight scss %}
 $palette-levels: 50 100 200 300 400 500 600 700 800 900;
 {% endhighlight %}
+
+
+## CSS Variables
+
+Figuration includes some [CSS custom properties (variables)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) in its compiled CSS. These provide easy access to commonly used values like the theme colors, breakpoints, and primary font stacks when working in your browser's Inspector, a code sandbox, or general prototyping.
+
+### Available Variables
+
+Here are the variables we include (note that the `:root` is required). They're located in our `_root.scss` file.
+
+{% highlight css %}
+:root {
+  --color-primary: #0055e9;
+  --color-secondary: #5e7182;
+  --color-info: #1680a4;
+  --color-success: #0e8a16;
+  --color-warning: #f8c223;
+  --color-danger: #d42314;
+  --color-light: #eff1f3;
+  --color-dark: #343e48;
+  --color-uibase: #5e7182;
+  --color-gray: #666;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 36em;
+  --breakpoint-md: 48em;
+  --breakpoint-lg: 62em;
+  --breakpoint-xl: 75em;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-serif: Georgia, "Times New Roman", Times, serif;
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+{% endhighlight %}
+
+### Examples
+
+CSS variables offer similar flexibility to Sass's variables, but without the need for compilation before being served to the browser. For example, here we are resetting the font and link styles with CSS variables.
+
+{% highlight css %}
+body {
+  font: 1rem/1.5 var(--font-family-sans-serif);
+}
+a {
+  color: var(--color-primary);
+}
+{% endhighlight %}
+
+### Breakpoint Variables
+
+While breakpoints are included in the CSS variables (e.g., `--breakpoint-md`), **these are not supported in media queries**, but they can still be used _within_ rulesets in media queries. [Learn more in the spec.](https://www.w3.org/TR/css-variables-1/#using-variables) The intention of including the breakpoints as CSS variables is for use in JavaScript. See some information about [working with custom properties in JavaScript](https://developers.google.com/web/updates/2016/02/css-variables-why-should-you-care#working_with_custom_properties_in_javascript).
+
+Here's an example of **what's not supported:**
+
+{% highlight css %}
+@media (min-width: var(--breakpoint-sm)) {
+  ...
+}
+{% endhighlight %}
+
+And here's an example of **what is supported:**
+
+{% highlight css %}
+@media (min-width: 48em) {
+  .custom-element {
+    color: var(--color-primary);
+  }
+}
+{% endhighlight %}
