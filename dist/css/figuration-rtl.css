@@ -5,6 +5,27 @@
  * Copyright 2013-2018 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  */
+:root {
+  --color-primary: #0055e9;
+  --color-secondary: #5e7182;
+  --color-info: #1680a4;
+  --color-success: #0e8a16;
+  --color-warning: #f8c223;
+  --color-danger: #d42314;
+  --color-light: #eff1f3;
+  --color-dark: #343e48;
+  --color-uibase: #5e7182;
+  --color-gray: #666;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 36em;
+  --breakpoint-md: 48em;
+  --breakpoint-lg: 62em;
+  --breakpoint-xl: 75em;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-serif: Georgia, "Times New Roman", Times, serif;
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
 *,
 *::before,
 *::after {
