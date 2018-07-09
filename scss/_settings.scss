@@ -137,6 +137,7 @@ $color-contrast-base-dark:  $uibase-900 !default;
 
 // Component Color Variants and Levels
 // =====
+$root-colors:           map-merge($base-colors, $palette-colors) !default;
 $alert-colors:          $base-colors !default;
 $badge-colors:          $base-colors !default;
 $badge-outline-colors:  $base-colors !default;

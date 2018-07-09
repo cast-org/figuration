@@ -15,6 +15,7 @@
 @import "mixins";
 
 // Core CSS items - extend on the base HTML
+@import "core/root";
 @import "core/reboot";
 @import "core/typography";
 @import "core/code";
