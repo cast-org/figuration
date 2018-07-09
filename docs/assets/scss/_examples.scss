@@ -369,3 +369,14 @@ $custom-file-text: (
         border: $border-width solid rgba(34, 68, 102, .2);
     }
 }
+
+// Breadcrumb
+.breadcrumb-chevron .breadcrumb-item + .breadcrumb-item::before {
+    content: quote(">");
+}
+.breadcrumb-icon .breadcrumb-item + .breadcrumb-item::before {
+    content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik0xLjUgMGwtMS41IDEuNSAyLjUgMi41LTIuNSAyLjUgMS41IDEuNSA0LTQtNC00eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMSkiIC8+Cjwvc3ZnPg==");
+}
+.breadcrumb-none .breadcrumb-item + .breadcrumb-item::before {
+    content: none;
+}
