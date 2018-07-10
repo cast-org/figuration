@@ -9,14 +9,14 @@
     touch-action: none;
     opacity: .5;
 
-    @include hover-focus {
-        color: $drag-color;
-        text-decoration: none;
-        opacity: .75;
-    }
-
     &:not(:disabled):not(.disabled) {
         cursor: move;
+
+        @include hover-focus {
+            color: $drag-color;
+            text-decoration: none;
+            opacity: .75;
+        }
     }
 }
 

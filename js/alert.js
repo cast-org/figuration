@@ -36,12 +36,18 @@
             this.$element
                 .data('cfw.alert', this)
                 .on('click.cfw.alert', function(e) {
-                    e.preventDefault();
-                    $selfRef.close();
+                    $selfRef.handleClose(e);
                 });
 
             this.$parent
                 .CFW_trigger('init.cfw.alert');
+        },
+
+        handleClose : function(e) {
+            e.preventDefault();
+            if ($(e.currentTarget).closest(dismiss, this.$element).not('.disabled, :disabled').length) {
+                this.close();
+            }
         },
 
         close : function(e) {
@@ -119,8 +125,8 @@
     // API
     // ===
     if (typeof CFW_API === 'undefined' || CFW_API !== false) {
-        $(document).on('click.cfw.alert', dismiss, function() {
-            $(this).CFW_Alert('close');
+        $(document).on('click.cfw.alert', dismiss, function(e) {
+            $(this).CFW_Alert('handleClose', e);
         });
     }
 }(jQuery));
