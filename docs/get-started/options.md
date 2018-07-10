@@ -48,21 +48,27 @@ In your `custom.scss`, you will import Figuration's source Sass files. Our recom
 // in your custom setting overrides
 
 // Required - functions
-@import "node_modules/figuration/scss/functions";
+@import "../node_modules/figuration/scss/functions";
 
 // Custom - your setting overrides
 // typically go in this location
 
-// Required - settings and mixins
-@import "node_modules/figuration/scss/settings";
-@import "node_modules/figuration/scss/mixins";
+// Required - settings
+@import "../node_modules/figuration/scss/settings";
+
+// Custom - your setting removals
+// typically go in this location
+
+// Required - mixins
+@import "../node_modules/figuration/scss/mixins";
 
 // Core and Components
-@import "node_modules/figuration/scss/reboot";
-@import "node_modules/figuration/scss/typography";
-@import "node_modules/figuration/scss/images";
-@import "node_modules/figuration/scss/buttons";
-@import "node_modules/figuration/scss/grid";
+@import "../node_modules/figuration/scss/root";
+@import "../node_modules/figuration/scss/reboot";
+@import "../node_modules/figuration/scss/typography";
+@import "../node_modules/figuration/scss/images";
+@import "../node_modules/figuration/scss/buttons";
+@import "../node_modules/figuration/scss/grid";
 ...
 {% endhighlight %}
 
@@ -78,19 +84,19 @@ Here's an example that changes the `background-color` and `color` for the `<body
 
 {% highlight scss %}
 // Required - functions
-@import "node_modules/figuration/scss/functions";
+@import "../node_modules/figuration/scss/functions";
 
 // Custom - your setting overrides
 $body-bg: #000;
 $body-color: #fff;
 
 // Required - settings and mixins
-@import "node_modules/figuration/scss/settings";
-@import "node_modules/figuration/scss/mixins";
+@import "../node_modules/figuration/scss/settings";
+@import "../node_modules/figuration/scss/mixins";
 
 // Core and Components
-@import "node_modules/figuration/scss/reboot";
-@import "node_modules/figuration/scss/typography";
+@import "../node_modules/figuration/scss/reboot";
+@import "../node_modules/figuration/scss/typography";
 ...
 {% endhighlight %}
 
@@ -137,19 +143,19 @@ Also note, that each component will inherit the `$base-colors` map, unless previ
 
 {% highlight scss %}
 // Required - functions
-@import "node_modules/figuration/scss/functions";
+@import "../node_modules/figuration/scss/functions";
 
 // Required - settings and mixins
-@import "node_modules/figuration/scss/settings";
-@import "node_modules/figuration/scss/mixins";
+@import "../node_modules/figuration/scss/settings";
+@import "../node_modules/figuration/scss/mixins";
 
 // Custom map removals go in this location
 $base-colors: map-remove($base-colors, "warning", "light", "dark");
 $btn-colors: map-remove($btn-colors, "warning", "light", "dark");
 
 // Core and Components
-@import "node_modules/figuration/scss/reboot";
-@import "node_modules/figuration/scss/typography";
+@import "../node_modules/figuration/scss/reboot";
+@import "../node_modules/figuration/scss/typography";
 ...
 {% endhighlight %}
 
@@ -255,18 +261,18 @@ $single-color: (
 
 {% highlight scss %}
 // Required - functions
-@import "node_modules/figuration/scss/functions";
+@import "../node_modules/figuration/scss/functions";
 
 // Required - settings and mixins
-@import "node_modules/figuration/scss/settings";
-@import "node_modules/figuration/scss/mixins";
+@import "../node_modules/figuration/scss/settings";
+@import "../node_modules/figuration/scss/mixins";
 
 // Custom theme addition/removal go in this location
 $btn-themes: map-merge($btn-themes, $single-color);
 
 // Core and Components
-@import "node_modules/figuration/scss/reboot";
-@import "node_modules/figuration/scss/typography";
+@import "../node_modules/figuration/scss/reboot";
+@import "../node_modules/figuration/scss/typography";
 ...
 {% endhighlight %}
 
@@ -278,18 +284,18 @@ As before, insert this setting after the *Required* sections and before the *Cor
 
 {% highlight scss %}
 // Required - functions
-@import "node_modules/figuration/scss/functions";
+@import "../node_modules/figuration/scss/functions";
 
 // Required - settings and mixins
-@import "node_modules/figuration/scss/settings";
-@import "node_modules/figuration/scss/mixins";
+@import "../node_modules/figuration/scss/settings";
+@import "../node_modules/figuration/scss/mixins";
 
 // Custom theme addition/removal go in this location
 $btn-themes: map-remove('warning', 'light', 'dark');
 
 // Core and Components
-@import "node_modules/figuration/scss/reboot";
-@import "node_modules/figuration/scss/typography";
+@import "../node_modules/figuration/scss/reboot";
+@import "../node_modules/figuration/scss/typography";
 ...
 {% endhighlight %}
 
