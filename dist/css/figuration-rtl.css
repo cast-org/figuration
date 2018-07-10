@@ -213,6 +213,7 @@ img {
 
 svg:not(:root) {
   overflow: hidden;
+  vertical-align: middle;
 }
 
 table {
@@ -3434,14 +3435,14 @@ input[type="button"].btn-block {
   opacity: .5;
 }
 
-.close:hover, .close:focus {
+.close:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+
+.close:not(:disabled):not(.disabled):hover, .close:not(:disabled):not(.disabled):focus {
   color: #000;
   text-decoration: none;
   opacity: .75;
-}
-
-.close:not(:disabled):not(.disabled) {
-  cursor: pointer;
 }
 
 button.close {
@@ -3464,14 +3465,14 @@ button.close {
   opacity: .5;
 }
 
-.drag:hover, .drag:focus {
+.drag:not(:disabled):not(.disabled) {
+  cursor: move;
+}
+
+.drag:not(:disabled):not(.disabled):hover, .drag:not(:disabled):not(.disabled):focus {
   color: #000;
   text-decoration: none;
   opacity: .75;
-}
-
-.drag:not(:disabled):not(.disabled) {
-  cursor: move;
 }
 
 button.drag {
