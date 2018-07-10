@@ -4,7 +4,7 @@ title: Visibility
 group: utilities
 ---
 
-Toggle only the `visibility` of an element, meaning its `display` is not modified and the element can hide content from most users, and still affect the flow of the document.
+Set the `visibility` of an element, meaning its `display` is not modified and will not affect layout. `.invisible` elements still take up space in the page. Content will be hidden both visually and for assistive technology/screen reader users.
 
 Use `.invisible` and `.visible` as needed.
 
