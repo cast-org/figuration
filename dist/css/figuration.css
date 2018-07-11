@@ -925,7 +925,7 @@ select.form-control:focus::-ms-value {
   background-color: #fff;
 }
 
-textarea.form-control {
+textarea.form-control[rows]:not([rows="1"]) {
   height: auto;
 }
 
