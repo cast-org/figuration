@@ -76,7 +76,9 @@ select.form-control {
 }
 
 textarea.form-control {
-    height: auto;
+    &[rows]:not([rows="1"]) {
+        height: auto;
+    }
 }
 
 // Make color, file, range inputs better match text inputs by forcing them to new lines.
