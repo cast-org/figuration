@@ -27,7 +27,7 @@ Figuration uses [Grunt](https://gruntjs.com/) for its CSS and JavaScript build s
 
 To use our Gruntfile and run our documentation locally, you'll need a copy of Figuration's source files, Node.js, and Grunt. Follow these steps and you should be ready to rock:
 
-1. [Download and install Node.js](https://nodejs.org/download), which we use to manage our dependencies.
+1. [Download and install Node.js](https://nodejs.org/en/download/), which we use to manage our dependencies.
 2. Install the Grunt command line tools, `grunt-cli`, with `npm install -g grunt-cli`.
 3. Navigate to the root `/figuration` directory and run `npm install` to install our local dependencies listed in [package.json](https://github.com/cast-org/figuration/blob/master/package.json).
 4. [Install Ruby][install-ruby], install [Bundler][gembundler] with `gem install bundler`, and finally run `bundle install`. This will install all Ruby dependencies, such as Jekyll and plugins.

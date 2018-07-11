@@ -99,7 +99,7 @@ Please read through our [contributing guidelines](https://github.com/cast-org/fi
 
 Moreover, if your pull request contains JavaScript patches or features, you must include [relevant unit tests](https://github.com/cast-org/figuration/tree/master/js/tests). All HTML and CSS should conform to the coding standards.
 
-Editor preferences are available in the [editor config](https://github.com/cast-org/figuration/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
+Editor preferences are available in the [editor config](https://github.com/cast-org/figuration/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <https://editorconfig.org>.
 
 
 ## Community

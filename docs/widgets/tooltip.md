@@ -17,7 +17,7 @@ Important notes about using the tooltip widget:
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
 - Triggering tooltips on hidden elements will not work.
 - Tooltips for `.disabled` or `disabled` elements must be triggered on a wrapper element.
-- When triggered from hyperlinks that span multiple lines, tooltips will be centered. Use `white-space: nowrap;` on your `<a>`s to avoid this behavior.
+- When triggered from hyperlinks that span multiple lines, tooltips will be centered. Use `.text-nowrap` on your `<a>`s to avoid this behavior.
 
 ## Examples
 
