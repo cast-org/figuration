@@ -104,3 +104,6 @@ Some changes will most likely have been missed, so please refer to the documenta
 
 ### Lazy
 - Dropped support for jQuery animations as the slim build does not support them.  Added an optional fade-in CSSS animation.
+
+## Build Tools
+- Figuration now requires Node.js v8 or newer if using our build tools.  This is due to the minimum Node.js requirement for `grunt-sass`.
