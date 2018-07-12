@@ -3,19 +3,21 @@
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 
-@mixin button-variant($color, $bg, $border, $focus-shadow, $hover-color, $hover-bg, $hover-border, $active-color, $active-bg, $active-border) {
-    color: $color;
-    background-color: $bg;
-    border-color: $border;
+@mixin button-variant($parent, $color, $bg, $border, $focus-shadow, $hover-color, $hover-bg, $hover-border, $active-color, $active-bg, $active-border) {
+    #{$parent} {
+        color: $color;
+        background-color: $bg;
+        border-color: $border;
+    }
 
-    &:hover {
+    #{$parent}:hover {
         color: $hover-color;
         background-color: $hover-bg;
         border-color: $hover-border;
     }
 
-    &:focus,
-    .btn-check-input:focus ~ & {
+    #{$parent}:focus,
+    .btn-check-input:focus ~ #{$parent} {
         // No mixin use, so feedback is always present
         @if $enable-shadows {
             box-shadow: $btn-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha);
@@ -24,32 +26,32 @@
         }
     }
 
-    &.disabled,
-    &:disabled,
-    .btn-check-input:disabled ~ & {
+    #{$parent}.disabled,
+    #{$parent}:disabled,
+    .btn-check-input:disabled ~ #{$parent} {
         color: $color;
         background-color: $bg;
         border-color: $border;
     }
 
-    &:not(:disabled):not(.disabled):active,
-    &:not(:disabled):not(.disabled).active,
-    .btn-check-input:not(:disabled):checked ~ &,
-    .open > & {
+    #{$parent}:not(:disabled):not(.disabled):active,
+    #{$parent}:not(:disabled):not(.disabled).active,
+    .btn-check-input:not(:disabled):checked ~ #{$parent},
+    .open > #{$parent} {
         color: $active-color;
         background-color: $active-bg;
         border-color: $active-border;
     }
 
-    &:not(:disabled):not(.disabled):active:focus,
-    &:not(:disabled):not(.disabled).active:focus,
-    .btn-check-input:not(:disabled):checked:focus ~ &,
-    .open > &:focus {
+    #{$parent}:not(:disabled):not(.disabled):active:focus,
+    #{$parent}:not(:disabled):not(.disabled).active:focus,
+    .btn-check-input:not(:disabled):checked:focus ~ #{$parent},
+    .open > #{$parent}:focus {
         @include box-shadow($btn-active-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha));
     }
 }
 
-@mixin button-variant-control($theme, $colors) {
+@mixin button-variant-control($parent, $colors) {
     $bg:            map-get($colors, "bg");
     $color:         map-get($colors, "color");
     $border:        map-get($colors, "border-color");
@@ -61,10 +63,10 @@
     $active-color:  map-get($colors, "active-color");
     $active-border: map-get($colors, "active-border-color");
 
-    @include button-variant($color, $bg, $border, $focus-shadow, $hover-color, $hover-bg, $hover-border, $active-color, $active-bg, $active-border);
+    @include button-variant($parent, $color, $bg, $border, $focus-shadow, $hover-color, $hover-bg, $hover-border, $active-color, $active-bg, $active-border);
 }
 
-@mixin button-variant-control-outline($theme, $colors, $bg: $btn-outline-bg) {
+@mixin button-variant-control-outline($parent, $colors, $bg: $btn-outline-bg) {
     $color:         map-get($colors, "base");
     $border:        map-get($colors, "bg");
     $focus-shadow:  map-get($colors, "base");
@@ -75,7 +77,7 @@
     $active-color:  map-get($colors, "hover-color");
     $active-border: map-get($colors, "active-border-color");
 
-    @include button-variant($color, $bg, $border, $focus-shadow, $hover-color, $hover-bg, $hover-border, $active-color, $active-bg, $active-border);
+    @include button-variant($parent, $color, $bg, $border, $focus-shadow, $hover-color, $hover-bg, $hover-border, $active-color, $active-bg, $active-border);
 }
 
 // Button sizes
