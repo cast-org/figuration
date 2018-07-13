@@ -5223,6 +5223,7 @@ button.list-item-action {
   font-weight: bold;
   line-height: 1.5;
   text-align: center;
+  text-decoration: none;
   white-space: nowrap;
   vertical-align: baseline;
   border: 1px solid transparent;
@@ -5237,6 +5238,28 @@ button.list-item-action {
 }
 
 .badge[href]:hover, .badge[href]:focus {
+  text-decoration: none;
+}
+
+.badge[href]:hover .close, .badge[href]:focus .close {
+  color: inherit;
+}
+
+.badge .close {
+  float: none;
+  padding-right: 0.375rem;
+  padding-left: 0.375rem;
+  margin-right: -0.375rem;
+  font-size: 1.25em;
+  color: inherit;
+  text-shadow: none;
+}
+
+.badge .close:not(:disabled):not(.disabled):hover, .badge .close:not(:disabled):not(.disabled):focus {
+  color: inherit;
+}
+
+.badge[href]:hover, .badge[href]:focus {
   color: #50606f;
   background-color: #eff1f3;
   border-color: #7e8d9b;
@@ -5245,14 +5268,6 @@ button.list-item-action {
 .btn .badge {
   position: relative;
   top: -1px;
-}
-
-a.badge {
-  text-decoration: none;
-}
-
-a.badge:hover, a.badge:focus {
-  text-decoration: none;
 }
 
 .badge-pill {
