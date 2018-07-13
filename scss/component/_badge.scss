@@ -6,6 +6,7 @@
     font-weight: $badge-font-weight;
     line-height: $badge-line-height;
     text-align: center;
+    text-decoration: none;
     white-space: nowrap;
     vertical-align: baseline;
     border: $badge-border-width solid transparent;
@@ -14,6 +15,33 @@
     // Empty badges collapse automatically
     &:empty {
         display: none;
+    }
+
+    // Add hover effects, but only for links
+    &[href] {
+        @include hover-focus {
+            text-decoration: none;
+
+            .close {
+                color: inherit;
+            }
+        }
+    }
+
+    .close {
+        float: none;
+        padding-right: $badge-close-padding-x;
+        padding-left: $badge-close-padding-x;
+        margin-right: -$badge-close-padding-x;
+        font-size: $badge-close-font-size;
+        color: inherit;
+        text-shadow: none;
+
+        &:not(:disabled):not(.disabled) {
+            @include hover-focus {
+                color: inherit;
+            }
+        }
     }
 
     // Default color (linked badges get darker on :hover)
@@ -25,17 +53,6 @@
     position: relative;
     top: -1px;
 }
-
-// Add hover effects, but only for links
-// stylelint-disable selector-no-qualifying-type
-a.badge {
-    text-decoration: none;
-
-    @include hover-focus {
-        text-decoration: none;
-    }
-}
-// stylelint-enable selector-no-qualifying-type
 
 // Pill
 .badge-pill {

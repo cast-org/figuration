@@ -122,6 +122,55 @@ Just like our buttons, you can get badges that are not quite as bold by using th
 </p>
 {% endexample %}
 
+## Close Icon
+
+Create "dismissable" badges by adding the `.close` icon within a badge. Note that `<button>` and `<a>` elements are not supported _within_ another `<a>`.
+
+{% example html %}
+<p>
+    <span class="badge badge-primary">
+        Dismissable badge
+        <button type="button" class="close" aria-label="Dismiss">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </span>
+    <a href="#" class="badge badge-secondary">
+        Dismissable anchor badge
+        <span role="button" class="close" aria-label="Dismiss">
+            <span aria-hidden="true">&times;</span>
+        </span>
+    </a>
+</p>
+<p>
+    <span class="badge badge-pill badge-warning">
+        Dismissable badge
+        <button type="button" class="close" aria-label="Dismiss">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </span>
+    <a href="#" class="badge badge-pill badge-success">
+        Dismissable anchor badge
+        <span role="button" class="close" aria-label="Dismiss">
+            <span aria-hidden="true">&times;</span>
+        </span>
+    </a>
+</p>
+{% endexample %}
+
+### JavaScript Integration
+
+Currently, no specific JavaScript is included with Figuration to do the dismissing for you, so it may be more beneficial to write your own to implement any desired behaviors.
+
+However, you can use the [Alert widget]({{ site.baseurl }}/widgets/alert/) with a `target` option as a quick implementation.
+
+{% example html %}
+<span class="badge badge-info" id="alert-badge">
+    Dismissable badge
+    <button type="button" class="close" aria-label="Dismiss" data-cfw-dismiss="alert" data-cfw-alert-target="#alert-badge">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</span>
+{% endexample %}
 
 ## Badge Group
 

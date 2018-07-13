@@ -9,7 +9,27 @@
 <link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
 
 <script src="../../docs/assets/js/vendor/jquery.slim.min.js"></script>
-<script src="../../dist/js/figuration.js"></script>
+<!--<script src="../../dist/js/figuration.js"></script>-->
+
+<script type="text/javascript" src="../../docs/assets/js/vendor/jquery.slim.min.js"></script>
+<script type="text/javascript" src="../../js/util.js"></script>
+<script type="text/javascript" src="../../js/drag.js"></script>
+<script type="text/javascript" src="../../js/collapse.js"></script>
+<script type="text/javascript" src="../../js/dropdown.js"></script>
+<script type="text/javascript" src="../../js/tab.js"></script>
+<script type="text/javascript" src="../../js/affix.js"></script>
+<script type="text/javascript" src="../../js/tooltip.js"></script>
+<script type="text/javascript" src="../../js/popover.js"></script>
+<script type="text/javascript" src="../../js/modal.js"></script>
+<script type="text/javascript" src="../../js/tab-responsive.js"></script>
+<script type="text/javascript" src="../../js/accordion.js"></script>
+<script type="text/javascript" src="../../js/slideshow.js"></script>
+<script type="text/javascript" src="../../js/scrollspy.js"></script>
+<script type="text/javascript" src="../../js/alert.js"></script>
+<script type="text/javascript" src="../../js/lazy.js"></script>
+<script type="text/javascript" src="../../js/slider.js"></script>
+<script type="text/javascript" src="../../js/equalize.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
 
 </head>
 <body>
@@ -43,7 +63,6 @@
 </p>
 
 <h2>Outline</h2>
-
 <p>
     <span class="badge badge-outline">Default</span>
     <span class="badge badge-outline-primary">Primary</span>
@@ -57,7 +76,6 @@
 </p>
 
 <h2>Anchor</h2>
-
 <p>
     <a href="#" class="badge">Default</a>
     <a href="#" class="badge badge-primary">Primary</a>
@@ -71,7 +89,6 @@
 </p>
 
 <h2>Outline Anchor</h2>
-
 <p>
     <a href="#" class="badge badge-outline">Default</a>
     <a href="#" class="badge badge-outline-primary">Primary</a>
@@ -95,6 +112,44 @@
     <span class="badge badge-pill badge-danger">Danger</span>
     <span class="badge badge-pill badge-light">Light</span>
     <span class="badge badge-pill badge-dark">Dark</span>
+</p>
+
+<h2>Dismissable</h2>
+<p>
+    <span class="badge badge-primary">
+        Dismissable badge
+        <button type="button" class="close" aria-label="Dismiss">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </span>
+    <a href="#" class="badge badge-secondary">
+        Dismissable anchor badge
+        <span role="button" class="close" aria-label="Dismiss">
+            <span aria-hidden="true">&times;</span>
+        </span>
+    </a>
+</p>
+<p>
+    <span class="badge badge-pill badge-warning">
+        Dismissable badge
+        <button type="button" class="close" aria-label="Dismiss">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </span>
+    <a href="#" class="badge badge-pill badge-success">
+        Dismissable anchor badge
+        <span role="button" class="close" aria-label="Dismiss">
+            <span aria-hidden="true">&times;</span>
+        </span>
+    </a>
+</p>
+<p>
+    <span class="badge badge-info" id="alert-badge">
+        Dismissable badge
+        <button type="button" class="close" aria-label="Dismiss" data-cfw-dismiss="alert" data-cfw-alert-target="#alert-badge">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </span>
 </p>
 
 <h2>Badge Group</h2>
