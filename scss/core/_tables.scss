@@ -133,15 +133,22 @@
     }
 }
 
+// stylelint-disable selector-max-type
 // Striped table
 .table-striped {
     tbody tr:nth-of-type(#{$table-striped-selector}) {
-        background-image: $table-striped-bgi;
+        > th,
+        > td {
+            box-shadow: $table-striped-box-shadow;
+        }
     }
 }
 .table-striped-alt {
     tbody tr:nth-of-type(#{$table-striped-selector}) {
-        background-image: $table-striped-alt-bgi;
+        > th,
+        > td {
+            box-shadow: $table-striped-alt-box-shadow;
+        }
     }
 }
 
@@ -150,17 +157,24 @@
 .table-hover {
     tbody tr {
         @include hover {
-            background-image: $table-hover-bgi;
+            > th,
+            > td {
+                box-shadow: $table-hover-box-shadow;
+            }
         }
     }
 }
 .table-hover-alt {
     tbody tr {
         @include hover {
-            background-image: $table-hover-alt-bgi;
+            > th,
+            > td {
+                box-shadow: $table-hover-alt-box-shadow;
+            }
         }
     }
 }
+// stylelint-enable selector-max-type
 
 // Condensed table
 .table-condensed {

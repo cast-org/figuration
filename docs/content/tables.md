@@ -63,7 +63,7 @@ Check out [MDN's HTML table advanced features and accessibility document](https:
 
 ### Striped Rows
 
-Use `.table-striped{-alt}` to add zebra-striping to any table row within the `<tbody>`.  This is done by using `background-image` to overlay a solid gradient on top of the `background-color`, so it will only work for background colors defined on the `<table>` or `<tbody>` elements.
+Use `.table-striped{-alt}` to add zebra-striping to any table row within the `<tbody>`.  This is done by using a semi-opaque, inset `box-shadow` within each cell to adjust the perceived background color.
 
 Variants include:
 - `.table-striped` - darken the striped row's background-color
@@ -161,7 +161,7 @@ Variants include:
 
 ### Hoverable Rows
 
-Add `.table-hover{-alt}` to enable a hover state on table rows within a `<tbody>`. This is done by using `background-image` to overlay a solid gradient on top of the `background-color`, so it will only work for background colors defined on the `<table>` or `<tbody>` elements.
+Add `.table-hover{-alt}` to enable a hover state on table rows within a `<tbody>`. This is done by using a semi-opaque, inset `box-shadow` within each cell to adjust the perceived background color.
 
 Variants include:
 - `.table-hover` - darken the hovered row's background-color

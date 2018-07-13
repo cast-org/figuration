@@ -587,11 +587,11 @@ $table-body-border-width:   2 * $table-border-width !default;
 $table-foot-border-width:   2 * $table-border-width !default;
 
 $table-striped-selector:    odd !default;
-$table-striped-bgi:         linear-gradient(0deg, rgba($uibase-900, .075) 0%, rgba($uibase-900, .075) 100%) !default;
-$table-striped-alt-bgi:     linear-gradient(0deg, rgba($white, .125) 0%, rgba($white, .125) 100%) !default;
+$table-striped-box-shadow:      inset 0 0 0 999rem rgba($uibase-900, .075) !default;
+$table-striped-alt-box-shadow:  inset 0 0 0 999rem rgba($white, .125) !default;
 
-$table-hover-bgi:           linear-gradient(0deg, rgba($uibase-900, .125) 0%, rgba($uibase-900, .125) 100%) !default;
-$table-hover-alt-bgi:       linear-gradient(0deg, rgba($white, .2) 0%, rgba($white, .2) 100%) !default;
+$table-hover-box-shadow:        inset 0 0 0 999rem rgba($uibase-900, .125) !default;
+$table-hover-alt-box-shadow:    inset 0 0 0 999rem rgba($white, .2) !default;
 
 // Buttons
 // =====
