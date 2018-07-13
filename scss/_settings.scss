@@ -964,6 +964,9 @@ $badge-line-height:         $line-height-base !default;
 $badge-border-radius:       .25em !default;
 $badge-border-width:        $border-width !default;
 
+$badge-close-padding-x:     .375rem !default;
+$badge-close-font-size:     1.25em !default;
+
 $badge-pill-padding-x:      .5em !default;
 // Use a higher than normal value to ensure completely rounded edges when
 // customizing padding or font-size on badges.
