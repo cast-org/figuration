@@ -656,20 +656,24 @@ pre code {
   border-left-width: 1px;
 }
 
-.table-striped tbody tr:nth-of-type(odd) {
-  background-image: linear-gradient(0deg, rgba(38, 45, 52, 0.075) 0%, rgba(38, 45, 52, 0.075) 100%);
+.table-striped tbody tr:nth-of-type(odd) > th,
+.table-striped tbody tr:nth-of-type(odd) > td {
+  box-shadow: inset 0 0 0 999rem rgba(38, 45, 52, 0.075);
 }
 
-.table-striped-alt tbody tr:nth-of-type(odd) {
-  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.125) 0%, rgba(255, 255, 255, 0.125) 100%);
+.table-striped-alt tbody tr:nth-of-type(odd) > th,
+.table-striped-alt tbody tr:nth-of-type(odd) > td {
+  box-shadow: inset 0 0 0 999rem rgba(255, 255, 255, 0.125);
 }
 
-.table-hover tbody tr:hover {
-  background-image: linear-gradient(0deg, rgba(38, 45, 52, 0.125) 0%, rgba(38, 45, 52, 0.125) 100%);
+.table-hover tbody tr:hover > th,
+.table-hover tbody tr:hover > td {
+  box-shadow: inset 0 0 0 999rem rgba(38, 45, 52, 0.125);
 }
 
-.table-hover-alt tbody tr:hover {
-  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.2) 100%);
+.table-hover-alt tbody tr:hover > th,
+.table-hover-alt tbody tr:hover > td {
+  box-shadow: inset 0 0 0 999rem rgba(255, 255, 255, 0.2);
 }
 
 .table-condensed th,
