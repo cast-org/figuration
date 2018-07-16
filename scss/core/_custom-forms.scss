@@ -323,8 +323,7 @@
         }
 
         &::after {
-            border-color: $input-focus-border-color;
-            border-left-color: $input-border-color;
+            border-color: inherit;
         }
     }
 
