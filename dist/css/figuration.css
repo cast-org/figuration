@@ -522,7 +522,6 @@ pre code {
 
 .table {
   width: 100%;
-  max-width: 100%;
   margin-bottom: 1rem;
   background-color: #fff;
   border: 0 solid;
@@ -929,7 +928,7 @@ select.form-control:focus::-ms-value {
   background-color: #fff;
 }
 
-textarea.form-control[rows]:not([rows="1"]) {
+textarea.form-control:not([rows="1"]) {
   height: auto;
 }
 
@@ -1140,6 +1139,32 @@ textarea.form-control[rows]:not([rows="1"]) {
   display: block;
 }
 
+.was-validated .form-control.has-validation-icon:valid, .form-control.has-validation-icon.is-valid, .was-validated
+.custom-select.has-validation-icon:valid,
+.custom-select.has-validation-icon.is-valid {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%230e8a16' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.375rem center;
+  background-size: 16px 16px;
+}
+
+.was-validated .form-control:not(textarea).has-validation-icon:valid, .form-control:not(textarea).has-validation-icon.is-valid {
+  padding-right: calc(0.75rem + 16px + 0.375rem);
+}
+
+.was-validated textarea.form-control.has-validation-icon:valid, textarea.form-control.has-validation-icon.is-valid {
+  padding-left: calc(0.75rem + 16px + 0.375rem);
+  background-position: left 0.375rem center;
+}
+
+.was-validated .custom-select.has-validation-icon:valid, .custom-select.has-validation-icon.is-valid {
+  padding-right: calc(0.75rem + 16px + 0.375rem + 10px + 0.375rem);
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23333' d='M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z'/%3E%3C/svg%3E"), url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%230e8a16' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat, no-repeat;
+  background-position: right 0.375rem center, right calc(0.375rem + 10px + 0.375rem) center;
+  background-size: 10px 10px, 16px 16px;
+}
+
 .was-validated .form-control-file:valid ~ .valid-feedback,
 .was-validated .form-control-file:valid ~ .valid-tooltip, .form-control-file.is-valid ~ .valid-feedback,
 .form-control-file.is-valid ~ .valid-tooltip {
@@ -1183,7 +1208,7 @@ textarea.form-control[rows]:not([rows="1"]) {
   border-color: #0e8a16;
 }
 
-.was-validated .custom-file-input:valid ~ .custom-file-label::before, .custom-file-input.is-valid ~ .custom-file-label::before {
+.was-validated .custom-file-input:valid ~ .custom-file-label::after, .custom-file-input.is-valid ~ .custom-file-label::after {
   border-color: inherit;
 }
 
@@ -1196,6 +1221,78 @@ textarea.form-control[rows]:not([rows="1"]) {
 .was-validated .custom-file-input:valid:focus-within ~ .custom-file-label, .was-validated .custom-file-input:valid:focus ~ .custom-file-label, .custom-file-input.is-valid:focus-within ~ .custom-file-label, .custom-file-input.is-valid:focus ~ .custom-file-label {
   border-color: #0e8a16;
   box-shadow: 0 0 0 0.1875rem rgba(14, 138, 22, 0.35);
+}
+
+.was-validated .form-control-xsmall:not(textarea).has-validation-icon:valid, .form-control-xsmall:not(textarea).has-validation-icon.is-valid, .was-validated
+.input-group-xsmall > .form-control:not(textarea).has-validation-icon:valid,
+.input-group-xsmall > .form-control:not(textarea).has-validation-icon.is-valid {
+  padding-right: calc(0.375rem + 16px + 0.375rem);
+}
+
+.was-validated textarea.form-control-xsmall.has-validation-icon:valid, textarea.form-control-xsmall.has-validation-icon.is-valid, .was-validated
+.input-group-xsmall > textarea.form-control.has-validation-icon:valid,
+.input-group-xsmall > textarea.form-control.has-validation-icon.is-valid {
+  padding-left: calc(0.375rem + 16px + 0.375rem);
+}
+
+.was-validated .custom-select-xsmall.has-validation-icon:valid, .custom-select-xsmall.has-validation-icon.is-valid, .was-validated
+.input-group-xsmall > .custom-select.has-validation-icon:valid,
+.input-group-xsmall > .custom-select.has-validation-icon.is-valid {
+  padding-right: calc(0.375rem + 16px + 0.375rem + 10px + 0.375rem);
+}
+
+.was-validated .form-control-small:not(textarea).has-validation-icon:valid, .form-control-small:not(textarea).has-validation-icon.is-valid, .was-validated
+.input-group-small > .form-control:not(textarea).has-validation-icon:valid,
+.input-group-small > .form-control:not(textarea).has-validation-icon.is-valid {
+  padding-right: calc(0.5rem + 16px + 0.375rem);
+}
+
+.was-validated textarea.form-control-small.has-validation-icon:valid, textarea.form-control-small.has-validation-icon.is-valid, .was-validated
+.input-group-small > textarea.form-control.has-validation-icon:valid,
+.input-group-small > textarea.form-control.has-validation-icon.is-valid {
+  padding-left: calc(0.5rem + 16px + 0.375rem);
+}
+
+.was-validated .custom-select-small.has-validation-icon:valid, .custom-select-small.has-validation-icon.is-valid, .was-validated
+.input-group-small > .custom-select.has-validation-icon:valid,
+.input-group-small > .custom-select.has-validation-icon.is-valid {
+  padding-right: calc(0.5rem + 16px + 0.375rem + 10px + 0.375rem);
+}
+
+.was-validated .form-control-large:not(textarea).has-validation-icon:valid, .form-control-large:not(textarea).has-validation-icon.is-valid, .was-validated
+.input-group-large > .form-control:not(textarea).has-validation-icon:valid,
+.input-group-large > .form-control:not(textarea).has-validation-icon.is-valid {
+  padding-right: calc(1.125rem + 16px + 0.375rem);
+}
+
+.was-validated textarea.form-control-large.has-validation-icon:valid, textarea.form-control-large.has-validation-icon.is-valid, .was-validated
+.input-group-large > textarea.form-control.has-validation-icon:valid,
+.input-group-large > textarea.form-control.has-validation-icon.is-valid {
+  padding-left: calc(1.125rem + 16px + 0.375rem);
+}
+
+.was-validated .custom-select-large.has-validation-icon:valid, .custom-select-large.has-validation-icon.is-valid, .was-validated
+.input-group-large > .custom-select.has-validation-icon:valid,
+.input-group-large > .custom-select.has-validation-icon.is-valid {
+  padding-right: calc(1.125rem + 16px + 0.375rem + 10px + 0.375rem);
+}
+
+.was-validated .form-control-xlarge:not(textarea).has-validation-icon:valid, .form-control-xlarge:not(textarea).has-validation-icon.is-valid, .was-validated
+.input-group-xlarge > .form-control:not(textarea).has-validation-icon:valid,
+.input-group-xlarge > .form-control:not(textarea).has-validation-icon.is-valid {
+  padding-right: calc(1.25rem + 16px + 0.375rem);
+}
+
+.was-validated textarea.form-control-xlarge.has-validation-icon:valid, textarea.form-control-xlarge.has-validation-icon.is-valid, .was-validated
+.input-group-xlarge > textarea.form-control.has-validation-icon:valid,
+.input-group-xlarge > textarea.form-control.has-validation-icon.is-valid {
+  padding-left: calc(1.25rem + 16px + 0.375rem);
+}
+
+.was-validated .custom-select-xlarge.has-validation-icon:valid, .custom-select-xlarge.has-validation-icon.is-valid, .was-validated
+.input-group-xlarge > .custom-select.has-validation-icon:valid,
+.input-group-xlarge > .custom-select.has-validation-icon.is-valid {
+  padding-right: calc(1.25rem + 16px + 0.375rem + 10px + 0.375rem);
 }
 
 .invalid-feedback {
@@ -1244,6 +1341,32 @@ textarea.form-control[rows]:not([rows="1"]) {
   display: block;
 }
 
+.was-validated .form-control.has-validation-icon:invalid, .form-control.has-validation-icon.is-invalid, .was-validated
+.custom-select.has-validation-icon:invalid,
+.custom-select.has-validation-icon.is-invalid {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d42314' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d42314' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.375rem center;
+  background-size: 16px 16px;
+}
+
+.was-validated .form-control:not(textarea).has-validation-icon:invalid, .form-control:not(textarea).has-validation-icon.is-invalid {
+  padding-right: calc(0.75rem + 16px + 0.375rem);
+}
+
+.was-validated textarea.form-control.has-validation-icon:invalid, textarea.form-control.has-validation-icon.is-invalid {
+  padding-left: calc(0.75rem + 16px + 0.375rem);
+  background-position: left 0.375rem center;
+}
+
+.was-validated .custom-select.has-validation-icon:invalid, .custom-select.has-validation-icon.is-invalid {
+  padding-right: calc(0.75rem + 16px + 0.375rem + 10px + 0.375rem);
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23333' d='M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z'/%3E%3C/svg%3E"), url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23d42314' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d42314' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat, no-repeat;
+  background-position: right 0.375rem center, right calc(0.375rem + 10px + 0.375rem) center;
+  background-size: 10px 10px, 16px 16px;
+}
+
 .was-validated .form-control-file:invalid ~ .invalid-feedback,
 .was-validated .form-control-file:invalid ~ .invalid-tooltip, .form-control-file.is-invalid ~ .invalid-feedback,
 .form-control-file.is-invalid ~ .invalid-tooltip {
@@ -1287,7 +1410,7 @@ textarea.form-control[rows]:not([rows="1"]) {
   border-color: #d42314;
 }
 
-.was-validated .custom-file-input:invalid ~ .custom-file-label::before, .custom-file-input.is-invalid ~ .custom-file-label::before {
+.was-validated .custom-file-input:invalid ~ .custom-file-label::after, .custom-file-input.is-invalid ~ .custom-file-label::after {
   border-color: inherit;
 }
 
@@ -1300,6 +1423,78 @@ textarea.form-control[rows]:not([rows="1"]) {
 .was-validated .custom-file-input:invalid:focus-within ~ .custom-file-label, .was-validated .custom-file-input:invalid:focus ~ .custom-file-label, .custom-file-input.is-invalid:focus-within ~ .custom-file-label, .custom-file-input.is-invalid:focus ~ .custom-file-label {
   border-color: #d42314;
   box-shadow: 0 0 0 0.1875rem rgba(212, 35, 20, 0.35);
+}
+
+.was-validated .form-control-xsmall:not(textarea).has-validation-icon:invalid, .form-control-xsmall:not(textarea).has-validation-icon.is-invalid, .was-validated
+.input-group-xsmall > .form-control:not(textarea).has-validation-icon:invalid,
+.input-group-xsmall > .form-control:not(textarea).has-validation-icon.is-invalid {
+  padding-right: calc(0.375rem + 16px + 0.375rem);
+}
+
+.was-validated textarea.form-control-xsmall.has-validation-icon:invalid, textarea.form-control-xsmall.has-validation-icon.is-invalid, .was-validated
+.input-group-xsmall > textarea.form-control.has-validation-icon:invalid,
+.input-group-xsmall > textarea.form-control.has-validation-icon.is-invalid {
+  padding-left: calc(0.375rem + 16px + 0.375rem);
+}
+
+.was-validated .custom-select-xsmall.has-validation-icon:invalid, .custom-select-xsmall.has-validation-icon.is-invalid, .was-validated
+.input-group-xsmall > .custom-select.has-validation-icon:invalid,
+.input-group-xsmall > .custom-select.has-validation-icon.is-invalid {
+  padding-right: calc(0.375rem + 16px + 0.375rem + 10px + 0.375rem);
+}
+
+.was-validated .form-control-small:not(textarea).has-validation-icon:invalid, .form-control-small:not(textarea).has-validation-icon.is-invalid, .was-validated
+.input-group-small > .form-control:not(textarea).has-validation-icon:invalid,
+.input-group-small > .form-control:not(textarea).has-validation-icon.is-invalid {
+  padding-right: calc(0.5rem + 16px + 0.375rem);
+}
+
+.was-validated textarea.form-control-small.has-validation-icon:invalid, textarea.form-control-small.has-validation-icon.is-invalid, .was-validated
+.input-group-small > textarea.form-control.has-validation-icon:invalid,
+.input-group-small > textarea.form-control.has-validation-icon.is-invalid {
+  padding-left: calc(0.5rem + 16px + 0.375rem);
+}
+
+.was-validated .custom-select-small.has-validation-icon:invalid, .custom-select-small.has-validation-icon.is-invalid, .was-validated
+.input-group-small > .custom-select.has-validation-icon:invalid,
+.input-group-small > .custom-select.has-validation-icon.is-invalid {
+  padding-right: calc(0.5rem + 16px + 0.375rem + 10px + 0.375rem);
+}
+
+.was-validated .form-control-large:not(textarea).has-validation-icon:invalid, .form-control-large:not(textarea).has-validation-icon.is-invalid, .was-validated
+.input-group-large > .form-control:not(textarea).has-validation-icon:invalid,
+.input-group-large > .form-control:not(textarea).has-validation-icon.is-invalid {
+  padding-right: calc(1.125rem + 16px + 0.375rem);
+}
+
+.was-validated textarea.form-control-large.has-validation-icon:invalid, textarea.form-control-large.has-validation-icon.is-invalid, .was-validated
+.input-group-large > textarea.form-control.has-validation-icon:invalid,
+.input-group-large > textarea.form-control.has-validation-icon.is-invalid {
+  padding-left: calc(1.125rem + 16px + 0.375rem);
+}
+
+.was-validated .custom-select-large.has-validation-icon:invalid, .custom-select-large.has-validation-icon.is-invalid, .was-validated
+.input-group-large > .custom-select.has-validation-icon:invalid,
+.input-group-large > .custom-select.has-validation-icon.is-invalid {
+  padding-right: calc(1.125rem + 16px + 0.375rem + 10px + 0.375rem);
+}
+
+.was-validated .form-control-xlarge:not(textarea).has-validation-icon:invalid, .form-control-xlarge:not(textarea).has-validation-icon.is-invalid, .was-validated
+.input-group-xlarge > .form-control:not(textarea).has-validation-icon:invalid,
+.input-group-xlarge > .form-control:not(textarea).has-validation-icon.is-invalid {
+  padding-right: calc(1.25rem + 16px + 0.375rem);
+}
+
+.was-validated textarea.form-control-xlarge.has-validation-icon:invalid, textarea.form-control-xlarge.has-validation-icon.is-invalid, .was-validated
+.input-group-xlarge > textarea.form-control.has-validation-icon:invalid,
+.input-group-xlarge > textarea.form-control.has-validation-icon.is-invalid {
+  padding-left: calc(1.25rem + 16px + 0.375rem);
+}
+
+.was-validated .custom-select-xlarge.has-validation-icon:invalid, .custom-select-xlarge.has-validation-icon.is-invalid, .was-validated
+.input-group-xlarge > .custom-select.has-validation-icon:invalid,
+.input-group-xlarge > .custom-select.has-validation-icon.is-invalid {
+  padding-right: calc(1.25rem + 16px + 0.375rem + 10px + 0.375rem);
 }
 
 .form-inline {
@@ -1562,11 +1757,11 @@ textarea.form-control[rows]:not([rows="1"]) {
   display: block;
   width: 100%;
   height: calc(2rem + 2px);
-  padding: 0.25rem 1.5rem 0.25rem 0.75rem;
+  padding: 0.25rem calc(0.75rem + 10px + 0.375rem) 0.25rem 0.75rem;
   color: #424f5b;
   vertical-align: middle;
-  background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.5rem center;
-  background-size: 8px 10px;
+  background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23333' d='M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z'/%3E%3C/svg%3E") no-repeat right 0.375rem center;
+  background-size: 10px 10px;
   border: 1px solid #bfc6cd;
   border-radius: 0.25rem;
   -webkit-appearance: none;
@@ -1596,7 +1791,7 @@ textarea.form-control[rows]:not([rows="1"]) {
 .custom-select-xsmall {
   height: calc(1.375rem + 2px);
   padding: 0.125rem 0.375rem;
-  padding-right: 1.125rem;
+  padding-right: calc(0.375rem + 10px + 0.375rem);
   font-size: 0.75rem;
   line-height: 1.5;
   border-radius: 0.1875rem;
@@ -1605,7 +1800,7 @@ textarea.form-control[rows]:not([rows="1"]) {
 .custom-select-small {
   height: calc(1.6875rem + 2px);
   padding: 0.1875rem 0.5rem;
-  padding-right: 1.25rem;
+  padding-right: calc(0.5rem + 10px + 0.375rem);
   font-size: 0.875rem;
   line-height: 1.5;
   border-radius: 0.1875rem;
@@ -1614,7 +1809,7 @@ textarea.form-control[rows]:not([rows="1"]) {
 .custom-select-large {
   height: calc(2.3125rem + 2px);
   padding: 0.3125rem 1.125rem;
-  padding-right: 1.875rem;
+  padding-right: calc(1.125rem + 10px + 0.375rem);
   font-size: 1.125rem;
   line-height: 1.5;
   border-radius: 0.3125rem;
@@ -1623,7 +1818,7 @@ textarea.form-control[rows]:not([rows="1"]) {
 .custom-select-xlarge {
   height: calc(2.625rem + 2px);
   padding: 0.375rem 1.25rem;
-  padding-right: 2rem;
+  padding-right: calc(1.25rem + 10px + 0.375rem);
   font-size: 1.25rem;
   line-height: 1.5;
   border-radius: 0.3125rem;
@@ -1657,8 +1852,7 @@ textarea.form-control[rows]:not([rows="1"]) {
 
 .custom-file-input:focus-within ~ .custom-file-label::after,
 .custom-file-input:focus ~ .custom-file-label::after {
-  border-color: #6699f2;
-  border-left-color: #bfc6cd;
+  border-color: inherit;
 }
 
 .custom-file-input:disabled ~ .custom-file-label {
