@@ -1,18 +1,18 @@
 // Options
 // =====
 // Quickly modify global styling by enabling or disabling optional features.
-$enable-rounded:        true !default;      // true
-$enable-shadows:        false !default;     // false
-$enable-transitions:    true !default;      // true
-$enable-grid-classes:   true !default;      // true
-$enable-print-styles:   true !default;      // true
-$enable-palette:        true !default;      // true
-$enable-sizing:         true !default;      // true
-$enable-bp-smallest:    false !default;     // false
-$enable-rfs-fluid:      false !default;     // false
-$enable-rfs-scale:      false !default;     // false
-$enable-color-warnings: false !default;     // false
-
+$enable-rounded:            true !default;      // true
+$enable-shadows:            false !default;     // false
+$enable-transitions:        true !default;      // true
+$enable-grid-classes:       true !default;      // true
+$enable-print-styles:       true !default;      // true
+$enable-palette:            true !default;      // true
+$enable-sizing:             true !default;      // true
+$enable-bp-smallest:        false !default;     // false
+$enable-rfs-fluid:          false !default;     // false
+$enable-rfs-scale:          false !default;     // false
+$enable-color-warnings:     false !default;     // false
+$enable-validation-icons:   true !default;      // true
 
 // Palette
 // =====
@@ -739,10 +739,11 @@ $custom-switch-disabled-thumb-bg:           $uibase-200 !default;
 $custom-switch-disabled-checked-thumb-bg:   palette($primary, 200) !default;
 
 // Custom select
-$custom-select-indicator-offset:    .5rem !default;
-$custom-select-indicator-padding:   .75rem !default; // Extra padding to account for the presence of the background-image based indicator
-$custom-select-indicator-size:      8px 10px !default; // In pixels because image dimensions
-$custom-select-indicator:           url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") !default;
+$custom-select-indicator-offset:    .375rem !default;
+$custom-select-indicator-width:     10px !default; // In pixels because image dimensions
+$custom-select-indicator-height:    10px !default; // In pixels because image dimensions
+$custom-select-indicator-image:     url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23333' d='M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z'/%3E%3C/svg%3E") !default;
+$custom-select-indicator:           $custom-select-indicator-image no-repeat right $custom-select-indicator-offset center / $custom-select-indicator-width $custom-select-indicator-height !default; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
 
 // Custom file
 $custom-file-button-color:          $uibase-600 !default;
@@ -773,12 +774,23 @@ $custom-range-thumb-disabled-bg:            $uibase-300 !default;
 
 $custom-range-height:               $custom-range-thumb-height + ($custom-range-thumb-focus-box-shadow-width * 2) !default;
 
+
 // Form validation
 // =====
+// Icons from OpenIconic: https://useiconic.com/open
 $form-feedback-margin-top:      $form-text-margin-top !default;
 $form-feedback-font-size:       $small-font-size !default;
 $form-feedback-valid-color:     map-get($base-colors, "success") !default;
 $form-feedback-invalid-color:   map-get($base-colors, "danger") !default;
+
+$form-feedback-icon-offset:         .375rem !default;
+$form-feedback-icon-width:          16px !default; // In pixels because image dimensions
+$form-feedback-icon-height:         16px !default; // In pixels because image dimensions
+
+$form-feedback-icon-valid-color:    $form-feedback-valid-color !default;
+$form-feedback-icon-valid-image:    str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$form-feedback-icon-valid-color}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E"), "#", "%23") !default;
+$form-feedback-icon-invalid-color:  $form-feedback-invalid-color !default;
+$form-feedback-icon-invalid-image:  str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{palette($danger, 500)}' viewBox='-2 -2 7 7'%3E%3Cpath stroke='#{$form-feedback-icon-invalid-color}' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E"), "#", "%23") !default;
 
 
 // Progress bars

@@ -1080,7 +1080,9 @@ With that in mind, consider the following demos for our custom form validation s
 
 For custom form validation messages, you'll need to add the `novalidate` boolean attribute to your `<form>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you.
 
-When attempting to submit, you'll see the `:invalid` and `:valid` styles applied to your form controls.
+When attempting to submit, you'll see the `:invalid` and `:valid` styles applied to the form controls.
+
+Custom feedback styles apply custom colors, borders, focus styles, feedback messages, and optional background icons to better communicate feedback. Background icons for `<select>`s are only available with `.custom-select`, and not `.form-control`.
 
 {% example html %}
 <form class="needs-validation" novalidate>
@@ -1264,10 +1266,16 @@ We recommend using client side validation, but in case you require server side, 
 
 ### Supported Elements
 
-Our example forms show native textual `<input>`s above, but form validation styles are available for our custom form controls, too.
+Our example forms show native textual `<input>`s above, but form validation styles are also available for `<textarea>`s and custom form controls.
 
 {% example html %}
 <form class="was-validated">
+  <div class="mb-1">
+    <label for="validate-textarea">Textarea</label>
+    <textarea class="form-control is-invalid" id="validate-textarea" rows="3" placeholder="Required example textarea" required></textarea>
+    <div class="invalid-feedback">Please enter a message in the textarea.</div>
+  </div>
+
   <div class="custom-control custom-checkbox mb-1">
     <input type="checkbox" class="custom-control-input" id="validate-support-1" required>
     <label class="custom-control-indicator" for="validate-support-1"></label>
@@ -1357,6 +1365,74 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
       <div class="invalid-tooltip">Please provide a valid zip.</div>
     </div>
   </div>
+  <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
+{% endexample %}
+
+### Icons
+
+Optional visual icon representations of the validation state can be added to _textual_ `<input class="form-control">`, `<textarea class="form-control">`, and `<select class="custom-select">` elements by adding a `.has-validation-icon` class.
+
+- Validation icons are `url()`s configured via Sass variables that are applied to `background-image` rules for each state.
+- You may use your own base64 PNGs or SVGs by updating the Sass variables and recompiling.
+- Icons can also be disabled entirely by setting the `$enable-validation-icons` variable to `false` in the [Sass global options]({{ site.baseurl }}/get-started/options/#global-options).
+
+{% example html %}
+<form class="needs-validation" novalidate>
+  <div class="form-row">
+    <div class="col-md-4 mb-1">
+      <label for="validate-icon-1">First name</label>
+      <input type="text" class="form-control has-validation-icon" id="validate-icon-1" placeholder="First name" value="John" required>
+      <div class="valid-feedback">Looks good!</div>
+    </div>
+    <div class="col-md-4 mb-1">
+      <label for="validate-icon-2">Last name</label>
+      <input type="text" class="form-control has-validation-icon" id="validate-icon-2" placeholder="Last name" value="Smith" required>
+      <div class="valid-feedback">Looks good!</div>
+    </div>
+    <div class="col-md-4 mb-1">
+      <label for="validate-icon-3">Username</label>
+      <div class="input-group">
+        <div class="input-group-addon">
+          <span class="input-group-text" id="validate-icon-4">@</span>
+        </div>
+        <input type="text" class="form-control has-validation-icon input-group-end" id="validate-icon-3" placeholder="Username" aria-describedby="validate-icon-4" required>
+        <div class="invalid-feedback">Please choose a unique and valid username.</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-1">
+      <label for="validate-icon-5">City</label>
+      <input type="text" class="form-control has-validation-icon" id="validate-icon-5" placeholder="City" required>
+      <div class="invalid-feedback">Please provide a valid city.</div>
+    </div>
+    <div class="col-md-3 mb-1">
+      <label for="validate-icon-6">State</label>
+      <input type="text" class="form-control has-validation-icon" id="validate-icon-6" placeholder="State" required>
+      <div class="invalid-feedback">Please provide a valid state.</div>
+    </div>
+    <div class="col-md-3 mb-1">
+      <label for="validate-icon-7">Zip</label>
+      <input type="text" class="form-control has-validation-icon" id="validate-icon-7" placeholder="Zip" required>
+      <div class="invalid-feedback">Please provide a valid zip.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="validate-icon-8">Options</label>
+    <select class="custom-select has-validation-icon" id="validate-icon-8" required>
+      <option value="">Choose one...</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <div class="invalid-feedback">Example invalid custom select feedback</div>
+  </div>
+  <div class="form-group">
+    <label for="validate-icon-9">Textarea</label>
+    <textarea class="form-control has-validation-icon" id="validate-icon-9" rows="3" placeholder="Required example textarea" required></textarea>
+    <div class="invalid-feedback">Please enter a message in the textarea.</div>
+    </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
 {% endexample %}

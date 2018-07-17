@@ -1,6 +1,6 @@
 // Form validation states
 // Generate the form validation CSS for valid and invalid states.
-@mixin form-validation-state($state, $color) {
+@mixin form-validation-state($state, $color, $icon) {
     .#{$state}-feedback {
         display: none;
         width: 100%;
@@ -37,6 +37,49 @@
             ~ .#{$state}-feedback,
             ~ .#{$state}-tooltip {
                 display: block;
+            }
+        }
+
+        @if $enable-validation-icons {
+            .was-validated &.has-validation-icon:#{$state},
+            &.has-validation-icon.is-#{$state} {
+                //background: $icon no-repeat right $form-feedback-icon-offset center / $form-feedback-icon-width $form-feedback-icon-height;
+                background-image: $icon;
+                background-repeat: no-repeat;
+                background-position: right $form-feedback-icon-offset center;
+                background-size: $form-feedback-icon-width $form-feedback-icon-height;
+            }
+        }
+    }
+
+    @if $enable-validation-icons {
+        .form-control:not(textarea) {
+            .was-validated &.has-validation-icon:#{$state},
+            &.has-validation-icon.is-#{$state} {
+                padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+            }
+        }
+
+        // Icon is placed on left, what should hopefully be the opposite side of the scrollbar,
+        // otherwise icon can become obscured by the scrollbar.
+        // stylelint-disable-next-line selector-no-qualifying-type
+        textarea.form-control {
+            .was-validated &.has-validation-icon:#{$state},
+            &.has-validation-icon.is-#{$state} {
+                padding-left: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+                background-position: left $form-feedback-icon-offset center;
+            }
+        }
+
+        // Apply both the select indicator and validaton icons.
+        .custom-select {
+            .was-validated &.has-validation-icon:#{$state},
+            &.has-validation-icon.is-#{$state} {
+                padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset});
+                background-image: $custom-select-indicator-image, $icon;
+                background-repeat: no-repeat, no-repeat;
+                background-position: right $custom-select-indicator-offset center, right calc(#{$form-feedback-icon-offset} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset}) center;
+                background-size: $custom-select-indicator-width $custom-select-indicator-height, $form-feedback-icon-width $form-feedback-icon-height;
             }
         }
     }
@@ -118,6 +161,39 @@
                 ~ .custom-file-label {
                     border-color: $color;
                     box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                }
+            }
+        }
+    }
+
+    @if $enable-sizing {
+        @each $size, $dims in $input-sizes {
+            $sz-padding-x:     map-get($dims, "padding-x");
+
+            @if $enable-validation-icons {
+                .form-control-#{$size}:not(textarea),
+                .input-group-#{$size} > .form-control:not(textarea) {
+                    .was-validated &.has-validation-icon:#{$state},
+                    &.has-validation-icon.is-#{$state} {
+                        padding-right: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+                    }
+                }
+
+                // stylelint-disable-next-line selector-no-qualifying-type
+                textarea.form-control-#{$size},
+                .input-group-#{$size} > textarea.form-control {
+                    .was-validated &.has-validation-icon:#{$state},
+                    &.has-validation-icon.is-#{$state} {
+                        padding-left: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+                    }
+                }
+
+                .custom-select-#{$size},
+                .input-group-#{$size} > .custom-select {
+                    .was-validated &.has-validation-icon:#{$state},
+                    &.has-validation-icon.is-#{$state} {
+                        padding-right: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset});
+                    }
                 }
             }
         }

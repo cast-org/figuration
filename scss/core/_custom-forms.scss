@@ -224,11 +224,11 @@
     display: block;
     width: 100%;
     height: $input-height-outer;
-    padding: $input-padding-y ($input-padding-x + $custom-select-indicator-padding) $input-padding-y $input-padding-x;
+    padding: $input-padding-y calc(#{$input-padding-x} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset}) $input-padding-y $input-padding-x;
     color: $input-color;
     vertical-align: middle;
-    background: $input-bg $custom-select-indicator no-repeat right $custom-select-indicator-offset center;
-    background-size: $custom-select-indicator-size;
+    background: $input-bg $custom-select-indicator-image no-repeat right $custom-select-indicator-offset center;
+    background-size: $custom-select-indicator-width $custom-select-indicator-height;
     border: $input-border-width solid $input-border-color;
     @if $enable-rounded {
         border-radius: $input-border-radius;
@@ -282,7 +282,7 @@
         .custom-select-#{$size} {
             height: $sz-outer-height;
             padding: $sz-padding-y $sz-padding-x;
-            padding-right: ($sz-padding-x + $custom-select-indicator-padding);
+            padding-right: calc(#{$sz-padding-x} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset});
             @include font-size($sz-font-size);
             line-height: $sz-line-height;
             @include border-radius($sz-border-radius);

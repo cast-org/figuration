@@ -207,6 +207,11 @@
 
 <h2>Custom Inputs</h2>
 <form class="was-validated">
+    <div class="mb-1">
+        <label for="validate-textarea">Textarea</label>
+        <textarea class="form-control is-invalid" id="validate-textarea" rows="3" placeholder="Required example textarea" required></textarea>
+        <div class="invalid-feedback">Please enter a message in the textarea.</div>
+    </div>
     <div class="custom-control custom-switch mb-1">
         <input type="checkbox" class="custom-control-input" id="customControlValidation0" required>
         <label class="custom-control-indicator" for="customControlValidation0"></label>
@@ -292,6 +297,78 @@
     </div>
 </form>
 
+<h2>Icons</h2>
+<form class="needs-validation" novalidate>
+    <div class="row">
+        <div class="col-md-4 mb-1">
+            <label for="validationIcon01">First name</label>
+            <input type="text" class="form-control has-validation-icon" id="validationIcon01" placeholder="First name" value="John" required>
+            <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="col-md-4 mb-1">
+            <label for="validationIcon02">Last name</label>
+            <input type="text" class="form-control has-validation-icon" id="validationIcon02" placeholder="Last name" value="Smith" required>
+            <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="col-md-4 mb-1">
+            <label for="validationIconUsername">Username</label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <span class="input-group-text" id="validationIconUsernameAddon">@</span>
+                </div>
+                <input type="text" class="form-control has-validation-icon input-group-end" id="validationIconUsername" placeholder="Username" aria-describedby="validationIconUsernameAddon" required>
+                <div class="invalid-feedback">Please choose a unique and valid username.</div>
+            </div>
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-md-6 mb-1">
+            <label for="validationIcon03">City</label>
+            <input type="text" class="form-control has-validation-icon" id="validationIcon03" placeholder="City" required>
+            <div class="invalid-feedback">Please provide a valid city.</div>
+        </div>
+        <div class="col-md-3 mb-1">
+            <label for="validationIcon04">State</label>
+            <input type="text" class="form-control has-validation-icon" id="validationIcon04" placeholder="State" required>
+            <div class="invalid-feedback">Please provide a valid state.</div>
+        </div>
+        <div class="col-md-3 mb-1">
+            <label for="validationIcon05">Zip</label>
+            <input type="text" class="form-control has-validation-icon" id="validationIcon05" placeholder="Zip" required>
+            <div class="invalid-feedback">Please provide a valid zip.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <select class="custom-select has-validation-icon" required>
+            <option value="">Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        <div class="invalid-feedback">Example invalid custom select feedback</div>
+    </div>
+    <div class="input-group input-group-large mb-1">
+        <div class="input-group-addon">
+            <span class="input-group-text" for="custom-select-1">Options</span>
+        </div>
+        <select class="custom-select has-validation-icon input-group-end" required>
+            <option value="">Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        <div class="invalid-feedback">Example invalid custom select feedback</div>
+    </div>
+    <div class="form-group">
+        <label for="validationIcon06">Textarea</label>
+        <textarea class="form-control has-validation-icon" id="validationIcon06" rows="3" placeholder="Required example textarea" required></textarea>
+        <div class="invalid-feedback">Please enter a message in the textarea.</div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+</form>
 </div>
 </body>
 </html>

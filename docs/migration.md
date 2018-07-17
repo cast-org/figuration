@@ -46,6 +46,8 @@ Some changes will most likely have been missed, so please refer to the documenta
 
 - Added custom styling for `input type="range"`.  At a later point the Slider widget will be removed from Figuration and moved into it's own repository.
 
+- Validation icons have been re-implemented.  The `.form-control-icon` has been replaced with `.has-validation-icon`. The icons are still optional and can now be used with textual `<input class="form-control">`, `<textarea class="form-control">`, and `<select class="custom-select">` elements.  Icons can be used within `.input-groups` but they no longer scale with the input sizing.
+
 {% comment %}
 ## Sizing
 {% endcomment %}
