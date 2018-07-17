@@ -76,7 +76,7 @@ select.form-control {
 }
 
 textarea.form-control {
-    &[rows]:not([rows="1"]) {
+    &:not([rows="1"]) {
         height: auto;
     }
 }
@@ -230,8 +230,8 @@ textarea.form-control {
 // pseudo-classes but also includes `.is-invalid` and `.is-valid` classes for
 // server side validation.
 
-@include form-validation-state("valid", $form-feedback-valid-color);
-@include form-validation-state("invalid", $form-feedback-invalid-color);
+@include form-validation-state("valid", $form-feedback-valid-color, $form-feedback-icon-valid-image);
+@include form-validation-state("invalid", $form-feedback-invalid-color, $form-feedback-icon-invalid-image);
 
 
 // Inline forms
