@@ -234,6 +234,7 @@ module.exports = function(grunt) {
 
         cssmin: {
             options: {
+                report: 'gzip',
                 specialComments: '*',
                 sourceMap: true,
                 advanced: false
