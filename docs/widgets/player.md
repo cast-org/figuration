@@ -22,7 +22,7 @@ HTML5 Audio/Video Support
 
 Player builds on top of the browser's built in HTML5 `<audio>`/`<video>` player. The limits and supported media types are determined by the browser itself.
 
-W3School's HTML [`<audio>`](http://www.w3schools.com/tags/tag_audio.asp) and [`<video>`](http://www.w3schools.com/tags/tag_video.asp) pages have additional information. The [audio/video DOM reference](http://www.w3schools.com/tags/ref_av_dom.asp) page might also be useful.
+W3School's HTML [`<audio>`](https://www.w3schools.com/tags/tag_audio.asp) and [`<video>`](https://www.w3schools.com/tags/tag_video.asp) pages have additional information. The [audio/video DOM reference](https://www.w3schools.com/tags/ref_av_dom.asp) page might also be useful.
 {% endcallout %}
 
 {% callout info %}
@@ -51,12 +51,12 @@ Player does not support media services such as YouTube, Vimeo, SoundCloud, and o
 
 ## Examples
 
-The icons shown in the examples are from [Font Awesome](http://fontawesome.com/), and not included with Figuration.
+The icons shown in the examples are from [Font Awesome](https://fontawesome.com/), and not included with Figuration.
 
 ### Simple Audio Player
 
 {% example html %}
-<p><small>Source: <a href="http://freesound.org/people/Heigh-hoo/sounds/19433/">Drumroll by Heigh-hoo</a></small></p>
+<p><small>Source: <a href="https://freesound.org/people/Heigh-hoo/sounds/19433/">Drumroll by Heigh-hoo</a></small></p>
 
 <div data-cfw="player">
     <div class="player" role="region" aria-label="audio player" data-cfw-player="player">
@@ -89,7 +89,7 @@ The icons shown in the examples are from [Font Awesome](http://fontawesome.com/)
 Available seek and volume sliders.
 
 {% example html %}
-<p><small>Source: <a href="http://freesound.org/people/StrangerEight/sounds/148695/">Ambient Acoustic by StrangerEight</a></small></p>
+<p><small>Source: <a href="https://freesound.org/people/StrangerEight/sounds/148695/">Ambient Acoustic by StrangerEight</a></small></p>
 
 <div data-cfw="player">
     <div class="player" role="region" aria-label="audio player" data-cfw-player="player">
@@ -640,7 +640,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
-Note: The methods and properties as defined at [HTML Audio/Video DOM Reference](http://www.w3schools.com/tags/ref_av_dom.asp) can be called directly on the `<audio>`/`<video>` element and will update the custom player controls accordingly.
+Note: The methods and properties as defined at [HTML Audio/Video DOM Reference](https://www.w3schools.com/tags/ref_av_dom.asp) can be called directly on the `<audio>`/`<video>` element and will update the custom player controls accordingly.
 
 #### `.CFW_Player()`
 {:.no_toc}

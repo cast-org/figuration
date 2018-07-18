@@ -35,7 +35,7 @@ Slider requires the following:
 
 ### Ranged Slider
 
-When using a ranged slider, the thumbs/handles are constrained by the value of the other thumb/handle per the [WAI-ARIA 1.0 specifications for multi-thumb sliders](http://www.w3.org/TR/wai-aria-practices/#slidertwothumb).
+When using a ranged slider, the thumbs/handles are constrained by the value of the other thumb/handle per the [WAI-ARIA 1.0 specifications for multi-thumb sliders](https://www.w3.org/TR/wai-aria-practices/#slidertwothumb).
 
 {% example html %}
 <span data-cfw="slider" data-cfw-slider-min="-50" data-cfw-slider-max="50" data-cfw-slider-step="5">

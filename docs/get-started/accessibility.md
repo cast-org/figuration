@@ -20,7 +20,7 @@ It is possible to create projects that meet the [<abbr title="Web Content Access
 
 ## Skip Navigation
 
-If your navigation contains many links and comes before the main content in the DOM, add a `Skip to main content` link before the navigation (for a simple explanation, see this [A11Y Project article on skip navigation links](http://a11yproject.com/posts/skip-nav-links/)). Using the `.sr-only` class will visually hide the skip link, and the <code>.sr-only-focusable</code> class will ensure that the link becomes visible once focused (for sighted keyboard users).
+If your navigation contains many links and comes before the main content in the DOM, add a `Skip to main content` link before the navigation (for a simple explanation, see this [A11Y Project article on skip navigation links](https://a11yproject.com/posts/skip-nav-links/)). Using the `.sr-only` class will visually hide the skip link, and the <code>.sr-only-focusable</code> class will ensure that the link becomes visible once focused (for sighted keyboard users).
 
 {% callout danger %}
 Due to long-standing shortcomings/bugs in Internet Explorer (see this article on [in-page links and focus order](http://accessibleculture.org/articles/2010/05/in-page-links/)), you will need to make sure that the target of your skip link is at least programmatically focusable by adding `tabindex="-1"`.
@@ -59,7 +59,7 @@ Using [screen reader only content]({{ site.baseurl }}/utilities/screen-readers/#
 Some helpful references:
 
 - [Text for Screen Readers Only](http://www.coolfields.co.uk/2016/05/text-for-screen-readers-only-updated/)
-- [Invisible Content Just for Screen Reader Users](http://webaim.org/techniques/css/invisiblecontent/)
+- [Invisible Content Just for Screen Reader Users](https://webaim.org/techniques/css/invisiblecontent/)
 
 ## Disabled Anchors
 
@@ -93,7 +93,7 @@ Figuration includes support for the [`prefers-reduced-motion` media feature](htt
 ## Additional Resources
 
 - [Web Content Accessibility Guidelines (WCAG) 2.0](https://www.w3.org/TR/WCAG20/)
-- [The A11Y Project](http://a11yproject.com/)
+- [The A11Y Project](https://a11yproject.com/)
 - [MDN accessibility documentation](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
 - [Colour Contrast Check](https://snook.ca/technical/colour_contrast/colour.html)
 - [Colour Contrast Analyser (CCA)](https://developer.paciellogroup.com/resources/contrastanalyser/)

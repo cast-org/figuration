@@ -156,7 +156,7 @@ Learn more about [box model and sizing at CSS Tricks](https://css-tricks.com/box
 
 ### Reboot
 
-For improved cross-browser rendering, we use [Bootstrap's Reboot](http://v4-alpha.getbootstrap.com/content/reboot/) to correct inconsistencies across browsers and devices while providing slightly more opinionated resets to common HTML elements.
+For improved cross-browser rendering, we use [Bootstrap's Reboot](https://getbootstrap.com/docs/4.1/content/reboot/) to correct inconsistencies across browsers and devices while providing slightly more opinionated resets to common HTML elements.
 
 ### MutationObserver
 

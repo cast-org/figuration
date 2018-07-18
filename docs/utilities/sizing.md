@@ -20,7 +20,7 @@ Easily make an element as wide as its parent using the `.w-100` utility class, w
 <img class="w-100" data-src="holder.js/200px100?text=Width%20%3D%20100%25" alt="Width = 100%">
 {% endexample %}
 
-There is also a `.h-100` utility class, which sets `height: 100%`.  However, it probabaly won't always work the way you think it should.  Some good information can be found in this article &mdash; [How Do You Set the Height of an HTML Element to 100%?](http://webdesign.about.com/od/csstutorials/f/set-css-height-100-percent.htm)
+There is also a `.h-100` utility class, which sets `height: 100%`.  However, it probabaly won't always work the way you think it should.  Some good information can be found in this article &mdash; [How to USE CSS to Set the Height of an HTML Element to 100%](https://www.lifewire.com/set-height-html-element-100-percent-3467075)
 
 {% example html %}
 <div class="cf-example-height">

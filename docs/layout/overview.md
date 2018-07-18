@@ -65,7 +65,7 @@ While this is a very opinionated topic, Figuration has chosen the `em` route for
 
 Some reference material - may be competing points of view:
 
-- [http://zellwk.com/blog/media-query-units](http://zellwk.com/blog/media-query-units)
+- [https://zellwk.com/blog/media-query-units/](https://zellwk.com/blog/media-query-units/)
 - [https://github.com/twbs/bootstrap/pull/17403](https://github.com/twbs/bootstrap/pull/17403)
 - [https://nicolas-hoizey.com/2016/03/people-don-t-change-the-default-16px-font-size-in-their-browser.html](https://nicolas-hoizey.com/2016/03/people-don-t-change-the-default-16px-font-size-in-their-browser.html)
 

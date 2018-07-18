@@ -106,7 +106,7 @@ Fancy larger or smaller buttons? Add `.btn-xsmall`, `.btn-small`, `.btn-large`, 
 
 If a button only contains an icon, you can use `.btn-icon` to reduce the horizontal `padding` of the button.  This will create more of a square button rather than a rectangular one using the default padding.
 
-The icons shown in the examples are from [Font Awesome](http://fontawesome.com/), and not included with Figuration.
+The icons shown in the examples are from [Font Awesome](https://fontawesome.com/), and not included with Figuration.
 
 {% example html %}
 <p>
