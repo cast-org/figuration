@@ -94,12 +94,12 @@ project (indentation, accurate comments, etc.) and any other requirements
 
 **Do not edit `figuration.css`, or `figuration.js`
 directly!** Those files are automatically generated. You should edit the
-source files in [`/figuration/scss/`](../scss)
-and/or [`/figuration/js/`](../js) instead.
+source files in [`/figuration/scss/`](scss)
+and/or [`/figuration/js/`](js) instead.
 
 Similarly, when contributing to Figuration's documentation, you should edit the
 documentation source files in
-[the `/figuration/docs/` directory of the `v4-dev` branch](../docs).
+[the `/figuration/docs/` directory of the `v4-dev` branch](docs).
 **Do not edit the `gh-pages` branch.** That branch is generated from the
 documentation source files and is managed separately by the Figuration Core Team.
 
