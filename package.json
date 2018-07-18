@@ -70,13 +70,7 @@
     "node": ">=8"
   },
   "files": [
-    ".eslintignore",
-    ".eslintrc.json",
-    ".stylelint",
-    "Gemfile",
-    "Gruntfile.js",
     "dist",
-    "grunt",
     "js",
     "scss"
   ]
