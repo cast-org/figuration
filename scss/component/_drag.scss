@@ -7,15 +7,15 @@
     text-decoration: none;
     text-shadow: $drag-text-shadow;
     touch-action: none;
-    opacity: .5;
+    opacity: $drag-opacity;
 
     &:not(:disabled):not(.disabled) {
         cursor: move;
 
         @include hover-focus {
-            color: $drag-color;
+            color: $drag-hover-color;
             text-decoration: none;
-            opacity: .75;
+            opacity: $drag-hover-opacity;
         }
     }
 }
