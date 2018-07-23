@@ -20,7 +20,7 @@
         @include font-size($tooltip-font-size);
         color: color-auto-contrast($color);
         background-color: rgba($color, $tooltip-opacity);
-        border-radius: $border-radius;
+        border-radius: $tooltip-border-radius;
     }
 
     .form-control,
