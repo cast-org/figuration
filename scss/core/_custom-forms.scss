@@ -183,11 +183,18 @@
             left: calc(#{$custom-switch-width} - #{$custom-switch-thumb-width} - #{$custom-switch-gutter});
             background-color: $custom-switch-checked-thumb-bg;
             border-color: $custom-switch-checked-thumb-border-color;
+            @include box-shadow($custom-switch-thumb-box-shadow);
         }
         &::after {
             background-color: $custom-switch-checked-track-bg;
             border-color: $custom-switch-checked-track-border-color;
+            @include box-shadow($custom-switch-track-box-shadow);
         }
+    }
+
+    // Need to reset focus box-shadow because of overrule in `:checked` state
+    .custom-control-input:focus ~ .custom-control-indicator::before {
+        box-shadow: $custom-control-focus-indicator-box-shadow;
     }
 
     .custom-control-input:active ~ .custom-control-indicator {

@@ -450,7 +450,7 @@ $shadows: map-merge((
     "d3": 0 .125rem .75rem rgba($black, .15),
     "d4": 0 .125rem 1rem rgba($black, .15),
     "d5": 0 .125rem 1.25rem rgba($black, .15),
-    "i1": inset 0 .125rem .25em rgba($black, .15),
+    "i1": inset 0 .125rem .25rem rgba($black, .15),
     "i2": inset 0 .125rem .5rem rgba($black, .15),
     "i3": inset 0 .125rem .75rem rgba($black, .15),
     "i4": inset 0 .125rem 1rem rgba($black, .15),
@@ -530,7 +530,7 @@ $kbd-color:                 $uibase-50 !default;
 $kbd-bg:                    $uibase-900 !default;
 $kbd-box-shadow:            inset 0 -.1rem 0 rgba($black, .25) !default;
 $kbd-nested-font-weight:    $font-weight-bold !default;
-$kbd-border-radius:         .2rem !default;
+$kbd-border-radius:         .1875rem !default;
 
 $pre-color:                 $uibase-700 !default;
 
@@ -638,7 +638,7 @@ $input-bg:                      $white !default;
 $input-border-color:            $uibase-200 !default;
 $input-border-width:            $border-width !default;
 $input-border-radius:           $border-radius !default;
-$input-box-shadow:              inset 0 .125em .125em rgba($black, .1) !default;
+$input-box-shadow:              map-get($shadows, "i1") !default;
 
 $input-focus-color:             $input-color !default;
 $input-focus-bg:                $input-bg !default;
@@ -685,7 +685,7 @@ $custom-control-inline-margin-x:        .75rem !default;
 $custom-control-indicator-size:         1rem !default;
 $custom-control-indicator-bg:           $uibase-50 !default;
 $custom-control-indicator-bg-size:      50% 50% !default;
-$custom-control-indicator-box-shadow:   inset 0 .25rem .25rem rgba($black, .1) !default;
+$custom-control-indicator-box-shadow:   map-get($shadows, "i1") !default;
 $custom-control-indicator-border-width: $border-width !default;
 $custom-control-indicator-border-color: $input-border-color !default;
 
@@ -726,7 +726,7 @@ $custom-switch-thumb-bg:            $uibase-300 !default;
 $custom-switch-thumb-radius:        10rem !default;
 $custom-switch-thumb-border-width:  $border-width !default;
 $custom-switch-thumb-border-color:  $custom-switch-thumb-bg !default;
-$custom-switch-thumb-box-shadow:    map-get($shadows, "d1") !default;
+$custom-switch-thumb-box-shadow:    none !default;
 
 $custom-switch-checked-track-bg:            $uibase-50 !default;
 $custom-switch-checked-track-border-color:  $uibase-300 !default;
@@ -799,7 +799,7 @@ $progress-height:               1rem !default;
 $progress-font-size:            ($font-size-base * .75) !default;
 $progress-bg:                   $uibase-100 !default;
 $progress-border-radius:        $border-radius !default;
-$progress-box-shadow:           inset 0 .125rem .125rem rgba($black, .1) !default;
+$progress-box-shadow:           map-get($shadows, "i1") !default;
 $progress-bar-color:            $white !default;
 $progress-bar-bg:               $uibase-300 !default;
 $progress-bar-animation-timing: 1s linear infinite !default;
@@ -862,7 +862,7 @@ $dropdown-border-radius:        $border-radius !default;
 $dropdown-divider-width:        $border-width !default;
 $dropdown-divider-color:        $component-section-border-color !default;
 $dropdown-divider-spacer:       ($spacer / 2) !default;
-$dropdown-box-shadow:           0 .2rem .3rem rgba($black, .175) !default;
+$dropdown-box-shadow:           map-get($shadows, "d2") !default;
 
 // Border radius where menu/submenu aligns or 'attaches' to control item.
 $dropdown-attach-border-radius: 0 !default;
@@ -1073,7 +1073,7 @@ $popover-border-width:          $border-width !default;
 $popover-border-color:          $component-overlay-border-color !default;
 $popover-border-radius:         .3125rem !default;
 $popover-inner-border-radius:   calc(#{$popover-border-radius} - #{$popover-border-width}) !default;
-$popover-box-shadow:            0 .2rem .3rem rgba($black, .175) !default;
+$popover-box-shadow:            map-get($shadows, "d2") !default;
 
 $popover-header-padding-y:      .75rem !default;
 $popover-header-padding-x:      1rem !default;
@@ -1113,15 +1113,15 @@ $modal-inner-padding-x:         1rem !default;
 $modal-content-bg:               $component-bg !default;
 $modal-content-border-color:     $component-overlay-border-color !default;
 $modal-content-border-width:     $border-width !default;
-$modal-content-xs-box-shadow:    0 .2rem .6rem rgba($black, .5) !default;
-$modal-content-sm-up-box-shadow: 0 .3rem 1rem rgba($black, .5) !default;
+$modal-content-xs-box-shadow:    0 .25rem .5rem rgba($black, .5) !default;
+$modal-content-sm-up-box-shadow: 0 .25rem 1rem rgba($black, .5) !default;
 
 $modal-footer-padding-y:        .75rem !default;
 $modal-footer-padding-x:        1rem !default;
 
 $modal-backdrop-bg:             $dark !default;
 $modal-backdrop-opacity:        .5 !default;
-$modal-header-border-color:     rgba($black, .1) !default;
+$modal-header-border-color:     rgba($uibase-900, .2) !default;
 $modal-footer-border-color:     $modal-header-border-color !default;
 $modal-header-border-width:     $modal-content-border-width !default;
 $modal-footer-border-width:     $modal-header-border-width !default;
