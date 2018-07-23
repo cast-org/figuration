@@ -43,8 +43,6 @@
 .btn:not(:disabled):not(.disabled).active,
 .btn-check-input:not(:disabled):checked ~ .btn,
 .open > .btn {
-    // Remove the gradient for the pressed/active state
-    background-image: none;
     @include box-shadow($btn-active-box-shadow);
 }
 
