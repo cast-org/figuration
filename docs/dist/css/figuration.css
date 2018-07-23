@@ -21,7 +21,7 @@
   --breakpoint-md: 48em;
   --breakpoint-lg: 62em;
   --breakpoint-xl: 75em;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-serif: Georgia, "Times New Roman", Times, serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
@@ -60,7 +60,7 @@ section {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
@@ -211,7 +211,7 @@ img {
   border-style: none;
 }
 
-svg:not(:root) {
+svg {
   overflow: hidden;
   vertical-align: middle;
 }
@@ -469,7 +469,7 @@ kbd {
   font-size: 87.5%;
   color: #eff1f3;
   background-color: #262d34;
-  border-radius: 0.2rem;
+  border-radius: 0.1875rem;
 }
 
 kbd kbd {
@@ -1730,6 +1730,10 @@ textarea.form-control:not([rows="1"]) {
   border-color: #9eaab4;
 }
 
+.custom-switch .custom-control-input:focus ~ .custom-control-indicator::before {
+  box-shadow: 0 0 0 0.1875rem rgba(0, 85, 233, 0.35);
+}
+
 .custom-switch .custom-control-input:active ~ .custom-control-indicator::before {
   background-color: #3377ed;
 }
@@ -2150,13 +2154,6 @@ textarea.form-control:not([rows="1"]) {
 
 .btn:not(:disabled):not(.disabled) {
   cursor: pointer;
-}
-
-.btn:not(:disabled):not(.disabled):active,
-.btn:not(:disabled):not(.disabled).active,
-.btn-check-input:not(:disabled):checked ~ .btn,
-.open > .btn {
-  background-image: none;
 }
 
 .btn {
@@ -3670,7 +3667,7 @@ input[type="button"].btn-block {
   color: #000;
   text-decoration: none;
   text-shadow: 0 0.0625rem 0 #fff;
-  opacity: .5;
+  opacity: 0.6;
 }
 
 .close:not(:disabled):not(.disabled) {
@@ -3680,7 +3677,7 @@ input[type="button"].btn-block {
 .close:not(:disabled):not(.disabled):hover, .close:not(:disabled):not(.disabled):focus {
   color: #000;
   text-decoration: none;
-  opacity: .75;
+  opacity: 0.75;
 }
 
 button.close {
@@ -3700,7 +3697,7 @@ button.close {
   text-shadow: 0 0.0625rem 0 #fff;
   -ms-touch-action: none;
       touch-action: none;
-  opacity: .5;
+  opacity: 0.6;
 }
 
 .drag:not(:disabled):not(.disabled) {
@@ -3710,7 +3707,7 @@ button.close {
 .drag:not(:disabled):not(.disabled):hover, .drag:not(:disabled):not(.disabled):focus {
   color: #000;
   text-decoration: none;
-  opacity: .75;
+  opacity: 0.75;
 }
 
 button.drag {
@@ -6581,7 +6578,7 @@ button.list-item-action {
 
 .modal-header {
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(38, 45, 52, 0.2);
   border-top-left-radius: calc(0.375rem - 1px);
   border-top-right-radius: calc(0.375rem - 1px);
 }
@@ -6610,7 +6607,7 @@ button.list-item-action {
 .modal-footer {
   padding: 0.75rem 1rem;
   text-align: right;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(38, 45, 52, 0.2);
   border-bottom-right-radius: calc(0.375rem - 1px);
   border-bottom-left-radius: calc(0.375rem - 1px);
 }
@@ -6649,7 +6646,7 @@ button.list-item-action {
   position: absolute;
   z-index: 1040;
   display: block;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: normal;
   line-height: 1.5;
@@ -6728,14 +6725,15 @@ button.list-item-action {
   position: static;
   padding: 0.25rem 0.5rem;
   margin-top: -0.25rem;
-  font-size: 1.25rem;
   color: #fff;
+  font-size: 1.25rem;
   text-shadow: none;
-  opacity: 1;
+  opacity: 0.6;
 }
 
-.tooltip .close:hover, .tooltip .close:focus {
-  opacity: .75;
+.tooltip .close:not(:disabled):not(.disabled):hover, .tooltip .close:not(:disabled):not(.disabled):focus {
+  color: #fff;
+  opacity: 0.75;
 }
 
 .tooltip-body {
@@ -6760,7 +6758,7 @@ button.list-item-action {
   z-index: 1030;
   display: none;
   max-width: 18rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: normal;
   line-height: 1.5;
@@ -10300,7 +10298,7 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
 }
 
 .shadow-i1 {
-  box-shadow: inset 0 0.125rem 0.25em rgba(0, 0, 0, 0.15) !important;
+  box-shadow: inset 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15) !important;
 }
 
 .shadow-i2 {
@@ -10631,6 +10629,126 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
   padding-left: 2rem !important;
 }
 
+.m-n0_25 {
+  margin: -0.25rem !important;
+}
+
+.mt-n0_25,
+.my-n0_25 {
+  margin-top: -0.25rem !important;
+}
+
+.me-n0_25,
+.mx-n0_25 {
+  margin-right: -0.25rem !important;
+}
+
+.mb-n0_25,
+.my-n0_25 {
+  margin-bottom: -0.25rem !important;
+}
+
+.ms-n0_25,
+.mx-n0_25 {
+  margin-left: -0.25rem !important;
+}
+
+.m-n0_5 {
+  margin: -0.5rem !important;
+}
+
+.mt-n0_5,
+.my-n0_5 {
+  margin-top: -0.5rem !important;
+}
+
+.me-n0_5,
+.mx-n0_5 {
+  margin-right: -0.5rem !important;
+}
+
+.mb-n0_5,
+.my-n0_5 {
+  margin-bottom: -0.5rem !important;
+}
+
+.ms-n0_5,
+.mx-n0_5 {
+  margin-left: -0.5rem !important;
+}
+
+.m-n1 {
+  margin: -1rem !important;
+}
+
+.mt-n1,
+.my-n1 {
+  margin-top: -1rem !important;
+}
+
+.me-n1,
+.mx-n1 {
+  margin-right: -1rem !important;
+}
+
+.mb-n1,
+.my-n1 {
+  margin-bottom: -1rem !important;
+}
+
+.ms-n1,
+.mx-n1 {
+  margin-left: -1rem !important;
+}
+
+.m-n1_5 {
+  margin: -1.5rem !important;
+}
+
+.mt-n1_5,
+.my-n1_5 {
+  margin-top: -1.5rem !important;
+}
+
+.me-n1_5,
+.mx-n1_5 {
+  margin-right: -1.5rem !important;
+}
+
+.mb-n1_5,
+.my-n1_5 {
+  margin-bottom: -1.5rem !important;
+}
+
+.ms-n1_5,
+.mx-n1_5 {
+  margin-left: -1.5rem !important;
+}
+
+.m-n2 {
+  margin: -2rem !important;
+}
+
+.mt-n2,
+.my-n2 {
+  margin-top: -2rem !important;
+}
+
+.me-n2,
+.mx-n2 {
+  margin-right: -2rem !important;
+}
+
+.mb-n2,
+.my-n2 {
+  margin-bottom: -2rem !important;
+}
+
+.ms-n2,
+.mx-n2 {
+  margin-left: -2rem !important;
+}
+
 .m-auto {
   margin: auto !important;
 }
@@ -10884,6 +11002,101 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
   .px-sm-2 {
     padding-left: 2rem !important;
   }
+  .m-sm-n0_25 {
+    margin: -0.25rem !important;
+  }
+  .mt-sm-n0_25,
+  .my-sm-n0_25 {
+    margin-top: -0.25rem !important;
+  }
+  .me-sm-n0_25,
+  .mx-sm-n0_25 {
+    margin-right: -0.25rem !important;
+  }
+  .mb-sm-n0_25,
+  .my-sm-n0_25 {
+    margin-bottom: -0.25rem !important;
+  }
+  .ms-sm-n0_25,
+  .mx-sm-n0_25 {
+    margin-left: -0.25rem !important;
+  }
+  .m-sm-n0_5 {
+    margin: -0.5rem !important;
+  }
+  .mt-sm-n0_5,
+  .my-sm-n0_5 {
+    margin-top: -0.5rem !important;
+  }
+  .me-sm-n0_5,
+  .mx-sm-n0_5 {
+    margin-right: -0.5rem !important;
+  }
+  .mb-sm-n0_5,
+  .my-sm-n0_5 {
+    margin-bottom: -0.5rem !important;
+  }
+  .ms-sm-n0_5,
+  .mx-sm-n0_5 {
+    margin-left: -0.5rem !important;
+  }
+  .m-sm-n1 {
+    margin: -1rem !important;
+  }
+  .mt-sm-n1,
+  .my-sm-n1 {
+    margin-top: -1rem !important;
+  }
+  .me-sm-n1,
+  .mx-sm-n1 {
+    margin-right: -1rem !important;
+  }
+  .mb-sm-n1,
+  .my-sm-n1 {
+    margin-bottom: -1rem !important;
+  }
+  .ms-sm-n1,
+  .mx-sm-n1 {
+    margin-left: -1rem !important;
+  }
+  .m-sm-n1_5 {
+    margin: -1.5rem !important;
+  }
+  .mt-sm-n1_5,
+  .my-sm-n1_5 {
+    margin-top: -1.5rem !important;
+  }
+  .me-sm-n1_5,
+  .mx-sm-n1_5 {
+    margin-right: -1.5rem !important;
+  }
+  .mb-sm-n1_5,
+  .my-sm-n1_5 {
+    margin-bottom: -1.5rem !important;
+  }
+  .ms-sm-n1_5,
+  .mx-sm-n1_5 {
+    margin-left: -1.5rem !important;
+  }
+  .m-sm-n2 {
+    margin: -2rem !important;
+  }
+  .mt-sm-n2,
+  .my-sm-n2 {
+    margin-top: -2rem !important;
+  }
+  .me-sm-n2,
+  .mx-sm-n2 {
+    margin-right: -2rem !important;
+  }
+  .mb-sm-n2,
+  .my-sm-n2 {
+    margin-bottom: -2rem !important;
+  }
+  .ms-sm-n2,
+  .mx-sm-n2 {
+    margin-left: -2rem !important;
+  }
   .m-sm-auto {
     margin: auto !important;
   }
@@ -11133,6 +11346,101 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
   .ps-md-2,
   .px-md-2 {
     padding-left: 2rem !important;
+  }
+  .m-md-n0_25 {
+    margin: -0.25rem !important;
+  }
+  .mt-md-n0_25,
+  .my-md-n0_25 {
+    margin-top: -0.25rem !important;
+  }
+  .me-md-n0_25,
+  .mx-md-n0_25 {
+    margin-right: -0.25rem !important;
+  }
+  .mb-md-n0_25,
+  .my-md-n0_25 {
+    margin-bottom: -0.25rem !important;
+  }
+  .ms-md-n0_25,
+  .mx-md-n0_25 {
+    margin-left: -0.25rem !important;
+  }
+  .m-md-n0_5 {
+    margin: -0.5rem !important;
+  }
+  .mt-md-n0_5,
+  .my-md-n0_5 {
+    margin-top: -0.5rem !important;
+  }
+  .me-md-n0_5,
+  .mx-md-n0_5 {
+    margin-right: -0.5rem !important;
+  }
+  .mb-md-n0_5,
+  .my-md-n0_5 {
+    margin-bottom: -0.5rem !important;
+  }
+  .ms-md-n0_5,
+  .mx-md-n0_5 {
+    margin-left: -0.5rem !important;
+  }
+  .m-md-n1 {
+    margin: -1rem !important;
+  }
+  .mt-md-n1,
+  .my-md-n1 {
+    margin-top: -1rem !important;
+  }
+  .me-md-n1,
+  .mx-md-n1 {
+    margin-right: -1rem !important;
+  }
+  .mb-md-n1,
+  .my-md-n1 {
+    margin-bottom: -1rem !important;
+  }
+  .ms-md-n1,
+  .mx-md-n1 {
+    margin-left: -1rem !important;
+  }
+  .m-md-n1_5 {
+    margin: -1.5rem !important;
+  }
+  .mt-md-n1_5,
+  .my-md-n1_5 {
+    margin-top: -1.5rem !important;
+  }
+  .me-md-n1_5,
+  .mx-md-n1_5 {
+    margin-right: -1.5rem !important;
+  }
+  .mb-md-n1_5,
+  .my-md-n1_5 {
+    margin-bottom: -1.5rem !important;
+  }
+  .ms-md-n1_5,
+  .mx-md-n1_5 {
+    margin-left: -1.5rem !important;
+  }
+  .m-md-n2 {
+    margin: -2rem !important;
+  }
+  .mt-md-n2,
+  .my-md-n2 {
+    margin-top: -2rem !important;
+  }
+  .me-md-n2,
+  .mx-md-n2 {
+    margin-right: -2rem !important;
+  }
+  .mb-md-n2,
+  .my-md-n2 {
+    margin-bottom: -2rem !important;
+  }
+  .ms-md-n2,
+  .mx-md-n2 {
+    margin-left: -2rem !important;
   }
   .m-md-auto {
     margin: auto !important;
@@ -11384,6 +11692,101 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
   .px-lg-2 {
     padding-left: 2rem !important;
   }
+  .m-lg-n0_25 {
+    margin: -0.25rem !important;
+  }
+  .mt-lg-n0_25,
+  .my-lg-n0_25 {
+    margin-top: -0.25rem !important;
+  }
+  .me-lg-n0_25,
+  .mx-lg-n0_25 {
+    margin-right: -0.25rem !important;
+  }
+  .mb-lg-n0_25,
+  .my-lg-n0_25 {
+    margin-bottom: -0.25rem !important;
+  }
+  .ms-lg-n0_25,
+  .mx-lg-n0_25 {
+    margin-left: -0.25rem !important;
+  }
+  .m-lg-n0_5 {
+    margin: -0.5rem !important;
+  }
+  .mt-lg-n0_5,
+  .my-lg-n0_5 {
+    margin-top: -0.5rem !important;
+  }
+  .me-lg-n0_5,
+  .mx-lg-n0_5 {
+    margin-right: -0.5rem !important;
+  }
+  .mb-lg-n0_5,
+  .my-lg-n0_5 {
+    margin-bottom: -0.5rem !important;
+  }
+  .ms-lg-n0_5,
+  .mx-lg-n0_5 {
+    margin-left: -0.5rem !important;
+  }
+  .m-lg-n1 {
+    margin: -1rem !important;
+  }
+  .mt-lg-n1,
+  .my-lg-n1 {
+    margin-top: -1rem !important;
+  }
+  .me-lg-n1,
+  .mx-lg-n1 {
+    margin-right: -1rem !important;
+  }
+  .mb-lg-n1,
+  .my-lg-n1 {
+    margin-bottom: -1rem !important;
+  }
+  .ms-lg-n1,
+  .mx-lg-n1 {
+    margin-left: -1rem !important;
+  }
+  .m-lg-n1_5 {
+    margin: -1.5rem !important;
+  }
+  .mt-lg-n1_5,
+  .my-lg-n1_5 {
+    margin-top: -1.5rem !important;
+  }
+  .me-lg-n1_5,
+  .mx-lg-n1_5 {
+    margin-right: -1.5rem !important;
+  }
+  .mb-lg-n1_5,
+  .my-lg-n1_5 {
+    margin-bottom: -1.5rem !important;
+  }
+  .ms-lg-n1_5,
+  .mx-lg-n1_5 {
+    margin-left: -1.5rem !important;
+  }
+  .m-lg-n2 {
+    margin: -2rem !important;
+  }
+  .mt-lg-n2,
+  .my-lg-n2 {
+    margin-top: -2rem !important;
+  }
+  .me-lg-n2,
+  .mx-lg-n2 {
+    margin-right: -2rem !important;
+  }
+  .mb-lg-n2,
+  .my-lg-n2 {
+    margin-bottom: -2rem !important;
+  }
+  .ms-lg-n2,
+  .mx-lg-n2 {
+    margin-left: -2rem !important;
+  }
   .m-lg-auto {
     margin: auto !important;
   }
@@ -11634,6 +12037,101 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
   .px-xl-2 {
     padding-left: 2rem !important;
   }
+  .m-xl-n0_25 {
+    margin: -0.25rem !important;
+  }
+  .mt-xl-n0_25,
+  .my-xl-n0_25 {
+    margin-top: -0.25rem !important;
+  }
+  .me-xl-n0_25,
+  .mx-xl-n0_25 {
+    margin-right: -0.25rem !important;
+  }
+  .mb-xl-n0_25,
+  .my-xl-n0_25 {
+    margin-bottom: -0.25rem !important;
+  }
+  .ms-xl-n0_25,
+  .mx-xl-n0_25 {
+    margin-left: -0.25rem !important;
+  }
+  .m-xl-n0_5 {
+    margin: -0.5rem !important;
+  }
+  .mt-xl-n0_5,
+  .my-xl-n0_5 {
+    margin-top: -0.5rem !important;
+  }
+  .me-xl-n0_5,
+  .mx-xl-n0_5 {
+    margin-right: -0.5rem !important;
+  }
+  .mb-xl-n0_5,
+  .my-xl-n0_5 {
+    margin-bottom: -0.5rem !important;
+  }
+  .ms-xl-n0_5,
+  .mx-xl-n0_5 {
+    margin-left: -0.5rem !important;
+  }
+  .m-xl-n1 {
+    margin: -1rem !important;
+  }
+  .mt-xl-n1,
+  .my-xl-n1 {
+    margin-top: -1rem !important;
+  }
+  .me-xl-n1,
+  .mx-xl-n1 {
+    margin-right: -1rem !important;
+  }
+  .mb-xl-n1,
+  .my-xl-n1 {
+    margin-bottom: -1rem !important;
+  }
+  .ms-xl-n1,
+  .mx-xl-n1 {
+    margin-left: -1rem !important;
+  }
+  .m-xl-n1_5 {
+    margin: -1.5rem !important;
+  }
+  .mt-xl-n1_5,
+  .my-xl-n1_5 {
+    margin-top: -1.5rem !important;
+  }
+  .me-xl-n1_5,
+  .mx-xl-n1_5 {
+    margin-right: -1.5rem !important;
+  }
+  .mb-xl-n1_5,
+  .my-xl-n1_5 {
+    margin-bottom: -1.5rem !important;
+  }
+  .ms-xl-n1_5,
+  .mx-xl-n1_5 {
+    margin-left: -1.5rem !important;
+  }
+  .m-xl-n2 {
+    margin: -2rem !important;
+  }
+  .mt-xl-n2,
+  .my-xl-n2 {
+    margin-top: -2rem !important;
+  }
+  .me-xl-n2,
+  .mx-xl-n2 {
+    margin-right: -2rem !important;
+  }
+  .mb-xl-n2,
+  .my-xl-n2 {
+    margin-bottom: -2rem !important;
+  }
+  .ms-xl-n2,
+  .mx-xl-n2 {
+    margin-left: -2rem !important;
+  }
   .m-xl-auto {
     margin: auto !important;
   }
@@ -11752,7 +12250,7 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
 }
 
 .font-family-sans-serif {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
 }
 
 .font-family-serif {
