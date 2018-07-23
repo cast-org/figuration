@@ -191,6 +191,8 @@ $spacers: map-merge((
 ), $spacers);
 // stylelint-enable
 
+$spacer-negative-prepend: n !default;
+
 
 // Grid breakpoints
 // =====

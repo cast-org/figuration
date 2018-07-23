@@ -29,6 +29,33 @@
             }
         }
 
+        // Negative (or inverse) margins - negative padding does not exist
+        // These variants get a 'n' prepended to the size so
+        // `.mb-n1` is the negative variant of `.mb-1`
+        @each $size, $length in $spacers {
+            @if not($length == 0) {
+                .m#{$bprule}-#{$spacer-negative-prepend}#{$size} {
+                    margin: ($length * -1) !important;
+                }
+                .mt#{$bprule}-#{$spacer-negative-prepend}#{$size},
+                .my#{$bprule}-#{$spacer-negative-prepend}#{$size} {
+                    margin-top: ($length * -1) !important;
+                }
+                .me#{$bprule}-#{$spacer-negative-prepend}#{$size},
+                .mx#{$bprule}-#{$spacer-negative-prepend}#{$size} {
+                    margin-right: ($length * -1) !important;
+                }
+                .mb#{$bprule}-#{$spacer-negative-prepend}#{$size},
+                .my#{$bprule}-#{$spacer-negative-prepend}#{$size} {
+                    margin-bottom: ($length * -1) !important;
+                }
+                .ms#{$bprule}-#{$spacer-negative-prepend}#{$size},
+                .mx#{$bprule}-#{$spacer-negative-prepend}#{$size} {
+                    margin-left: ($length * -1) !important;
+                }
+            }
+        }
+
         // Auto margin
         .m#{$bprule}-auto {
             margin: auto !important;

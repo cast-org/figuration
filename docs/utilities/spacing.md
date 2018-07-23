@@ -4,7 +4,19 @@ title: Spacing
 group: utilities
 ---
 
+Shorthand responsive margin and padding utility classes to modify an element’s appearance.
+
+## Contents
+{:.no_toc}
+
+* ToC goes here
+{:toc}
+
+## How It Works
+
 Assign `margin` or `padding` to an element or a subset of its sides with shorthand classes. Includes support for individual properties, all properties, and vertical and horizontal properties. Classes are generated from a Sass map with values ranging from `0.25rem` to `2rem`.
+
+## Notation
 
 The classes are named using the format: `{property}{sides}{-breakpoint}-{size}`.
 
@@ -46,6 +58,8 @@ Where *size* is one of:
 
 (You can add more sizes by adding entries to the `$spacers` Sass map variable.)
 
+## Examples
+
 Here are some representative examples of these classes:
 
 {% highlight scss %}
@@ -71,7 +85,8 @@ Here are some representative examples of these classes:
 }
 {% endhighlight %}
 
-## Horizontal Centering
+### Horizontal Centering
+
 Additionally, we also include an `.mx-auto` class for horizontally centering fixed-width block level content&mdash; an element with `display: block;` and a defined `width`&mdash;by setting the horizontal margins to `auto`.
 
 <div class="cf-example">
@@ -85,3 +100,44 @@ Additionally, we also include an `.mx-auto` class for horizontally centering fix
   Centered element
 </div>
 {% endhighlight %}
+
+### Negative Margins
+
+In CSS, the `margin` properties can utilize negative values (`padding` cannot). Negative margin utilities are for every non-zero size listed above (e.g., `0_25`, `0_5`, `1`, `1_5`, `2`). These utilities can also be used for customizing the grid column gutters across breakpoints.
+
+The syntax is nearly the same as the default, positive margin utilities, but with the addition of `n` before the requested size. Here's an example class that's the opposite of `.mt-0_25`:
+
+{% highlight scss %}
+.mt-n0_25 {
+    margin-top: -0.25rem !important;
+}
+{% endhighlight %}
+
+Here is a comparison and example of customizing the grid at the medium (`md`) breakpoint and above. The the `.col` horizontal padding is increased with `.px-md-2` and then counteracted that with negative horizontal margin `.mx-md-n2` on the parent `.row`.
+
+<div class="cf-example-row">
+{% example html %}
+<div class="row mb-1">
+    <div class="col py-1">Standard horizontal column padding</div>
+    <div class="col py-1">Standard horizontal column padding</div>
+</div>
+
+<div class="row mx-md-n2">
+    <div class="col py-1 px-md-2">Custom horizontal column padding</div>
+    <div class="col py-1 px-md-2">Custom horizontal column padding</div>
+</div>
+{% endexample %}
+</div>
+
+In some cases, you may also have to adjust the padding on the parent container of the `.row` element to prevent horizontal scrollbars from occuring.  For example, using the custom negative margin example above, you may find the need to use `.px-md-2` on the parent `.container-fluid`.
+
+<div class="cf-example-row">
+{% example html %}
+<div class="container-fluid px-md-2">
+    <div class="row mx-md-n2">
+        <div class="col py-1 px-md-2">Custom horizontal column padding</div>
+        <div class="col py-1 px-md-2">Custom horizontal column padding</div>
+    </div>
+</div>
+{% endexample %}
+</div>
