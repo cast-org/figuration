@@ -68,13 +68,16 @@
         position: static;
         padding: $tooltip-padding-y $tooltip-padding-x;
         margin-top: -$tooltip-padding-y;
+        color: $tooltip-close-color;
         @include font-size(1.25rem);
-        color: $white;
         text-shadow: none;
-        opacity: 1;
+        opacity: $tooltip-close-opacity;
 
-        @include hover-focus() {
-            opacity: .75;
+        &:not(:disabled):not(.disabled) {
+            @include hover-focus {
+                color: $tooltip-close-hover-color;
+                opacity: $tooltip-close-hover-opacity;
+            }
         }
     }
 }
