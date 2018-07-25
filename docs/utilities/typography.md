@@ -73,14 +73,25 @@ Transform text in components with text capitalization classes.
 
 Note how `text-capitalize` only changes the first letter of each word, leaving the case of any other letters unaffected.
 
-## Font Weight and Italics
+## Font Weight
 
-Quickly change the weight (boldness) of text or italicize text.
+Quickly change the weight (boldness) of text.
+
+The `.font-weight-lighter` and `.font-weight-bolder` classes are relative by default, with `lighter` and `bolder` values respectively, but can be configured with numeric weights by overriding their values in the `_settings.scss`.
 
 {% example html %}
 <p class="font-weight-light">Light weight text.</p>
 <p class="font-weight-normal">Normal weight text.</p>
 <p class="font-weight-bold">Bold text.</p>
+<p class="font-weight-light">Light weight with <span class="font-weight-bolder">bolder weight</span> text.</p>
+<p class="font-weight-bold">Bold weight with <span class="font-weight-lighter">lighter weight</span> text.</p>
+{% endexample %}
+
+## Italics
+
+Italicize text with `.font-italic`.
+
+{% example html %}
 <p class="font-italic">Italic text.</p>
 {% endexample %}
 
