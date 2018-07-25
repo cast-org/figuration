@@ -62,7 +62,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.5;
   color: #262d34;
   text-align: right;
@@ -120,7 +120,7 @@ ul ol {
 }
 
 dt {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 dd {
@@ -413,7 +413,7 @@ hr {
 small,
 .small {
   font-size: 80%;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 mark,
@@ -475,7 +475,7 @@ kbd {
 kbd kbd {
   padding: 0;
   font-size: 100%;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 pre {
@@ -2112,7 +2112,7 @@ textarea.form-control:not([rows="1"]) {
 
 .btn {
   display: inline-block;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.5;
   text-align: center;
   text-decoration: none;
@@ -3662,7 +3662,7 @@ input[type="button"].btn-block {
 .close {
   float: left;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 1;
   color: #000;
   text-decoration: none;
@@ -3690,7 +3690,7 @@ button.close {
 .drag {
   float: left;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 1;
   color: #000;
   text-decoration: none;
@@ -4384,7 +4384,7 @@ button.list-item-action {
   padding: 0.25rem 0.75rem;
   margin-bottom: 0;
   font-size: 1rem;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.5;
   color: #424f5b;
   text-align: center;
@@ -4675,7 +4675,7 @@ button.list-item-action {
   padding: 0.1875rem 1.25rem;
   margin: 0;
   clear: both;
-  font-weight: normal;
+  font-weight: 400;
   color: #424f5b;
   text-align: inherit;
   text-decoration: none;
@@ -4714,7 +4714,7 @@ button.list-item-action {
   padding: 0.1875rem 1.25rem;
   margin-bottom: 0;
   font-size: 0.875rem;
-  font-weight: bold;
+  font-weight: 700;
   line-height: inherit;
   color: #5e7182;
   white-space: nowrap;
@@ -4956,7 +4956,7 @@ button.list-item-action {
   padding-bottom: 0.125rem;
   margin-left: 1rem;
   font-size: 1.25rem;
-  font-weight: bold;
+  font-weight: 700;
   line-height: inherit;
   text-decoration: none;
   white-space: nowrap;
@@ -5415,7 +5415,7 @@ button.list-item-action {
   display: inline-block;
   padding: 0 0.375em;
   font-size: 75%;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 1.5;
   text-align: center;
   text-decoration: none;
@@ -6330,7 +6330,7 @@ button.list-item-action {
 }
 
 .alert-link {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .alert-primary {
@@ -6648,7 +6648,7 @@ button.list-item-action {
   display: block;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.5;
   line-break: auto;
   text-align: right;
@@ -6760,7 +6760,7 @@ button.list-item-action {
   max-width: 18rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1.5;
   line-break: auto;
   text-align: right;
@@ -12233,16 +12233,24 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
   text-transform: capitalize !important;
 }
 
+.font-weight-lighter {
+  font-weight: lighter !important;
+}
+
 .font-weight-light {
   font-weight: 300 !important;
 }
 
 .font-weight-normal {
-  font-weight: normal !important;
+  font-weight: 400 !important;
 }
 
 .font-weight-bold {
-  font-weight: bold !important;
+  font-weight: 700 !important;
+}
+
+.font-weight-bolder {
+  font-weight: bolder !important;
 }
 
 .font-italic {
