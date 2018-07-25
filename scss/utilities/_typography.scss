@@ -21,10 +21,12 @@
 .text-capitalize { text-transform: capitalize !important; }
 
 // Weight and italics
-.font-weight-light  { font-weight: $font-weight-light !important; }
-.font-weight-normal { font-weight: $font-weight-normal !important; }
-.font-weight-bold   { font-weight: $font-weight-bold !important; }
-.font-italic        { font-style: italic !important; }
+.font-weight-lighter { font-weight: $font-weight-lighter !important; }
+.font-weight-light   { font-weight: $font-weight-light !important; }
+.font-weight-normal  { font-weight: $font-weight-normal !important; }
+.font-weight-bold    { font-weight: $font-weight-bold !important; }
+.font-weight-bolder  { font-weight: $font-weight-bolder !important; }
+.font-italic         { font-style: italic !important; }
 
 // Font families
 .font-family-sans-serif { font-family: $font-family-sans-serif !important; }
