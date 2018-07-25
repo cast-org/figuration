@@ -479,6 +479,34 @@ In practice, here's how it looks. Note you can continue to use this with all oth
 {% endexample %}
 </div>
 
+### Custom Gutters
+
+Gutters can be responsively adjusted by breakpoint-specific padding and negative margin utility classes. To change the gutters in a given row, pair a [negative margin utility]({{ site.baseurl }}/utilities/spacing/#negative-margins) on the `.row` and matching [padding utilities]({{ site.baseurl }}/utilities/spacing/) on the `.col`s.
+
+Here is an example of customizing the grid at the large (`lg`) breakpoint and above. The the `.col` horizontal padding is increased with `.px-lg-2` and then counteracted that with negative horizontal margin `.mx-lg-n2` on the parent `.row`.
+
+<div class="cf-example-row">
+{% example html %}
+<div class="row mx-lg-n2">
+  <div class="col py-1 px-lg-2">Custom column padding</div>
+  <div class="col py-1 px-lg-2">Custom column padding</div>
+</div>
+{% endexample %}
+</div>
+
+In some cases, you may also have to adjust the padding on the parent container of the `.row` element to prevent horizontal scrollbars from occuring.  For example, using the custom negative margin example above, you may find the need to use `.px-lg-2` on the parent `.container-fluid`.
+
+<div class="cf-example-row">
+{% example html %}
+<div class="container-fluid px-lg-2">
+    <div class="row mx-lg-n2">
+        <div class="col py-1 px-lg-2">Custom horizontal column padding</div>
+        <div class="col py-1 px-lg-2">Custom horizontal column padding</div>
+    </div>
+</div>
+{% endexample %}
+</div>
+
 ### Column Wrapping
 
 If more than 12 columns are placed within a single row, each group of extra columns will, as one unit, wrap onto a new line.
