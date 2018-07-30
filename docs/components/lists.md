@@ -340,7 +340,7 @@ Add the `.flex-wrap` utility class onto a horizontal list to wrap to the next ro
 </ul>
 {% endexample %}
 
-## Content
+## List Content
 
 ### Active Items
 
@@ -539,7 +539,7 @@ Contextual classes also work with `.list-item-action`. Note the addition of the 
  Also supported is the `.active` state; apply it to indicate an active selection on a contextual list item.  This is available with or without the use of `.list-item-action`.
 
 {% example html %}
-<div class="list list-spaced list-ruled">
+<ul class="list list-spaced list-ruled">
     <li class="list-item active">Default list item</li>
     <li class="list-item list-item-primary active">Primary list item</li>
     <li class="list-item list-item-success active">Success list item</li>
@@ -548,5 +548,5 @@ Contextual classes also work with `.list-item-action`. Note the addition of the 
     <li class="list-item list-item-danger active">Danger list item</li>
     <li class="list-item list-item-light active">Light list item</li>
     <li class="list-item list-item-dark active">Dark list item</li>
-</div>
+</ul>
 {% endexample %}

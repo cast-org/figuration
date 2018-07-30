@@ -321,9 +321,9 @@ Input groups include support for custom selects and custom file inputs. Browser 
 {% example html %}
 <div class="input-group mb-1">
   <div class="input-group-addon">
-    <span class="input-group-text" for="custom-select-1">Options</span>
+    <span class="input-group-text" id="custom-select-1-addon">Options</span>
   </div>
-  <select class="custom-select" id="custom-select-1">
+  <select class="custom-select" id="custom-select-1" aria-describedby="custom-select-1-addon">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -332,14 +332,14 @@ Input groups include support for custom selects and custom file inputs. Browser 
 </div>
 
 <div class="input-group mb-1">
-  <select class="custom-select" id="custom-select-2">
+  <select class="custom-select" id="custom-select-2" aria-describedby="custom-select-2-addon">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
   </select>
   <div class="input-group-addon">
-    <span class="input-group-text" for="custom-select-2">Options</span>
+    <span class="input-group-text" id="custom-select-2-addon">Options</span>
   </div>
 </div>
 

@@ -134,9 +134,9 @@ Create "dismissable" badges by adding the `.close` icon within a badge. Note tha
             <span aria-hidden="true">&times;</span>
         </button>
     </span>
-    <a href="#" class="badge badge-secondary">
+    <a href="#" role="button" class="badge badge-secondary">
         Dismissable anchor badge
-        <span role="button" class="close" aria-label="Dismiss">
+        <span class="close" aria-label="Dismiss">
             <span aria-hidden="true">&times;</span>
         </span>
     </a>
@@ -148,9 +148,9 @@ Create "dismissable" badges by adding the `.close` icon within a badge. Note tha
             <span aria-hidden="true">&times;</span>
         </button>
     </span>
-    <a href="#" class="badge badge-pill badge-success">
+    <a href="#" role="button" class="badge badge-pill badge-success">
         Dismissable anchor badge
-        <span role="button" class="close" aria-label="Dismiss">
+        <span class="close" aria-label="Dismiss">
             <span aria-hidden="true">&times;</span>
         </span>
     </a>

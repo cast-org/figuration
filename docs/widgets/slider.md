@@ -123,7 +123,7 @@ This vertical slider has also been reversed so that larger values are at the top
     </select>
     <label id="slider2_1_Label" for="slider2_1">End</label>
 </span>
-<script type="text/javascript">
+<script>
 $('#slider2').CFW_Slider({
     min : 0,
     max : 24
