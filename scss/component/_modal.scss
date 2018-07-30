@@ -76,6 +76,8 @@
 // Actual modal
 .modal-content {
     position: relative;
+    display: flex;
+    flex-direction: column;
     width: 100%; // Ensure `.modal-content` extends the full width of the parent `.modal-dialog`
     // Override the `pointer-events: none;` in the .modal-dialog
     pointer-events: auto;
@@ -106,6 +108,9 @@
 // Modal header
 // Top section of the modal w/ title and dismiss
 .modal-header {
+    display: flex;
+    align-items: flex-start; // Keep items aligned to the top
+    justify-content: space-between; // Seperate title and close items to each side
     padding: $modal-header-padding-y $modal-header-padding-x;
     border-bottom: $modal-header-border-width solid $modal-header-border-color;
     @include border-top-radius($modal-inner-border-radius);
@@ -113,8 +118,11 @@
 
     // Close icon
     .close {
+        // Make sure close appears 'after' the title
+        order: 1;
         padding: $modal-close-padding-y $modal-close-padding-x;
-        margin: (-$modal-header-padding-y) (-$modal-header-padding-x);
+        // Left auto margin keeps close pushed to the right side even when no title
+        margin: (-$modal-header-padding-y) (-$modal-header-padding-x) (-$modal-header-padding-y) auto;
     }
 }
 
@@ -125,19 +133,26 @@
 }
 
 // Modal body
-// Where all modal content resides (sibling of .modal-header and .modal-footer)
+// Where all modal content resides (sibling of `.modal-header` and `.modal-footer`)
 .modal-body {
     position: relative;
+    // Make body as tall as possible if there is a height defined on `.modal-content`
+    flex: 1 1 auto;
     padding: $modal-inner-padding-y $modal-inner-padding-x;
 }
 
 // Footer (for actions)
 .modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; // right align buttons
     padding: $modal-footer-padding-y $modal-footer-padding-x;
-    text-align: right; // right align buttons
     border-top: $modal-footer-border-width solid $modal-footer-border-color;
     @include border-bottom-radius($modal-inner-border-radius);
-    @include clearfix(); // clear it in case folks use .float-* classes on buttons
+
+    // Simulate spaces between footer elements with margins
+    > :not(:first-child) { margin-left: .25rem; }
+    > :not(:last-child) { margin-right: .25rem; }
 }
 
 // Scale up the modal

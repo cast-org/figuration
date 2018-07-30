@@ -1081,7 +1081,7 @@ $tooltip-arrow-color:           $tooltip-bg !default;
 
 // Popovers
 // =====
-$popover-font-size:             $font-size-base !default;
+$popover-font-size:             .9375rem !default;
 $popover-bg:                    $component-bg !default;
 $popover-max-width:             rem(288px) !default;  // 288px=>18rem
 $popover-border-width:          $border-width !default;
@@ -1090,8 +1090,8 @@ $popover-border-radius:         .3125rem !default;
 $popover-inner-border-radius:   calc(#{$popover-border-radius} - #{$popover-border-width}) !default;
 $popover-box-shadow:            map-get($shadows, "d2") !default;
 
-$popover-header-padding-y:      .75rem !default;
-$popover-header-padding-x:      1rem !default;
+$popover-header-padding-y:      .5rem !default;
+$popover-header-padding-x:      .75rem !default;
 
 $popover-header-font-size:      $font-size-base !default;
 $popover-header-color:          $headings-color !default;
@@ -1099,8 +1099,11 @@ $popover-header-bg:             $component-section-bg !default;
 $popover-header-border-width:   $border-width !default;
 $popover-header-border-color:   $component-section-border-color !default;
 
-$popover-body-padding-y:        .75rem !default;
-$popover-body-padding-x:        1rem !default;
+$popover-control-padding-y:     .125rem !default;
+$popover-control-padding-x:     .3125rem !default;
+
+$popover-body-padding-y:        .5rem !default;
+$popover-body-padding-x:        .75rem !default;
 
 $popover-body-color:            $body-color !default;
 

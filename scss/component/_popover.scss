@@ -134,8 +134,8 @@
 // Control buttons
 .popover .close,
 .popover .drag {
-    padding: ($popover-header-padding-y / 2) ($popover-header-padding-x / 2);
-    margin-top: -($popover-header-padding-y / 2);
+    float: right;
+    padding: $popover-control-padding-y $popover-control-padding-x;
 }
 
 // Draggable variant
