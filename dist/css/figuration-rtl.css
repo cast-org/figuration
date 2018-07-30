@@ -3660,7 +3660,6 @@ input[type="button"].btn-block {
 }
 
 .close {
-  float: left;
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1;
@@ -3688,7 +3687,6 @@ button.close {
 }
 
 .drag {
-  float: left;
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1;
@@ -5441,7 +5439,6 @@ button.list-item-action {
 }
 
 .badge .close {
-  float: none;
   padding-left: 0.375rem;
   padding-right: 0.375rem;
   margin-left: -0.375rem;
@@ -6549,6 +6546,10 @@ button.list-item-action {
 
 .modal-content {
   position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
   width: 100%;
   pointer-events: auto;
   background-color: #fff;
@@ -6577,6 +6578,12 @@ button.list-item-action {
 }
 
 .modal-header {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+      align-items: flex-start;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
   padding: 0.75rem 1rem;
   border-bottom: 1px solid rgba(38, 45, 52, 0.2);
   border-top-right-radius: calc(0.375rem - 1px);
@@ -6590,8 +6597,10 @@ button.list-item-action {
 }
 
 .modal-header .close {
+  -ms-flex-order: 1;
+      order: 1;
   padding: 0.75rem 0.75rem;
-  margin: -0.75rem -1rem;
+  margin: -0.75rem auto -0.75rem -1rem;
 }
 
 .modal-title {
@@ -6601,21 +6610,30 @@ button.list-item-action {
 
 .modal-body {
   position: relative;
+  -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
   padding: 0.75rem 1rem;
 }
 
 .modal-footer {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: end;
+      justify-content: flex-end;
   padding: 0.75rem 1rem;
-  text-align: left;
   border-top: 1px solid rgba(38, 45, 52, 0.2);
   border-bottom-left-radius: calc(0.375rem - 1px);
   border-bottom-right-radius: calc(0.375rem - 1px);
 }
 
-.modal-footer::after {
-  display: block;
-  clear: both;
-  content: "";
+.modal-footer > :not(:first-child) {
+  margin-right: .25rem;
+}
+
+.modal-footer > :not(:last-child) {
+  margin-left: .25rem;
 }
 
 @media (min-width: 36em) {
@@ -6772,7 +6790,7 @@ button.list-item-action {
   word-break: normal;
   word-spacing: normal;
   white-space: normal;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: padding-box;
@@ -6861,8 +6879,8 @@ button.list-item-action {
 }
 
 .popover-header {
-  padding: 0.75rem 1rem;
-  padding-left: 2rem;
+  padding: 0.5rem 0.75rem;
+  padding-left: 1.5rem;
   margin: 0;
   font-size: 1rem;
   color: inherit;
@@ -6876,7 +6894,7 @@ button.list-item-action {
 }
 
 .popover-body {
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.75rem;
   color: #262d34;
 }
 
@@ -6900,8 +6918,8 @@ button.list-item-action {
 
 .popover .close,
 .popover .drag {
-  padding: 0.375rem 0.5rem;
-  margin-top: -0.375rem;
+  float: left;
+  padding: 0.125rem 0.3125rem;
 }
 
 .popover.draggable {
