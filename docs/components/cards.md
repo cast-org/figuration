@@ -400,7 +400,7 @@ You can quickly change the text alignment of any card---in its entirety or speci
 
 ## Navigation
 
-Add navigation items within a card's header (or block) with Figuration's [navigation components]({{ site.baseurl}}//components/navs/).
+Add navigation items within a card's header (or block) with Figuration's [navigation components]({{ site.baseurl }}/components/navs/).
 
 {% example html %}
 <div class="card text-center">

@@ -22,7 +22,6 @@ Flexbox support is available for a number of Figuration's components:
 - [Button Toolbar]({{ site.baseurl }}/components/button-group/#button-toolbar)
 - [Card Deck]({{ site.baseurl }}/components/cards/#card-decks)
 - [Card Group]({{ site.baseurl }}/components/cards/#card-groups)
-- [Grid Lines]({{ site.baseurl }}/components/grid-lines/)
 - [Inline Forms]({{ site.baseurl }}/content/forms/#inline-forms)
 - [Input Group]({{ site.baseurl }}/components/input-group/)
 - [Media Object]({{ site.baseurl }}/components/media-object/)

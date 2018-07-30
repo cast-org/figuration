@@ -716,7 +716,7 @@ $('#mDropdown').on('afterHide.cfw.dropdown', function () {
 
 ### General Purpose
 
-While there is an official [<abbr title="Web Accessibility Initiative">WAI</abbr>-<abbr title="Accessible Rich Internet Applications">ARIA</abbr>](https://www.w3.org/TR/wai-aria/) specification for a [`role="menu"` widget](https://www.w3.org/TR/wai-aria/roles#menu), it is mainly intended for application-style menus that invoke functionality or actions.
+While there is an official [<abbr title="Web Accessibility Initiative">WAI</abbr>-<abbr title="Accessible Rich Internet Applications">ARIA</abbr>](https://www.w3.org/TR/wai-aria/) specification for a [`role="menu"` widget](https://www.w3.org/TR/wai-aria/#menu), it is mainly intended for application-style menus that invoke functionality or actions.
 
 The dropdown widget provided by Figuration is intended be generic and apply to a wider number of use-cases. If you require full <abbr title="Accessible Rich Internet Applications">ARIA</abbr> compliant menus, then you will need to add the appropriate `role` and `aria-` attributes as needed.
 
