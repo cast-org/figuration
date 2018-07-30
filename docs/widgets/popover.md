@@ -44,7 +44,7 @@ Four options are available: top, forward( right), bottom, and reverse (left) ali
     <div class="popover top">
         <h3 class="popover-header">Popover top</h3>
         <div class="popover-body">
-            <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+            Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
         </div>
         <div class="popover-arrow"></div>
     </div>
@@ -52,7 +52,7 @@ Four options are available: top, forward( right), bottom, and reverse (left) ali
     <div class="popover forward">
         <h3 class="popover-header">Forward popover</h3>
         <div class="popover-body">
-            <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+            Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
         </div>
         <div class="popover-arrow"></div>
     </div>
@@ -60,7 +60,7 @@ Four options are available: top, forward( right), bottom, and reverse (left) ali
     <div class="popover bottom">
         <h3 class="popover-header">Popover bottom</h3>
         <div class="popover-body">
-            <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+            Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
         </div>
         <div class="popover-arrow"></div>
     </div>
@@ -68,7 +68,7 @@ Four options are available: top, forward( right), bottom, and reverse (left) ali
     <div class="popover reverse">
         <h3 class="popover-header">Reverse popover</h3>
         <div class="popover-body">
-            <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+            Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
         </div>
         <div class="popover-arrow"></div>
     </div>
