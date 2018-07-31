@@ -66,8 +66,8 @@
     // Close
     .close {
         position: static;
-        padding: $tooltip-padding-y $tooltip-padding-x;
-        margin-top: -$tooltip-padding-y;
+        float: right;
+        padding: $tooltip-close-padding-y $tooltip-close-padding-x;
         color: $tooltip-close-color;
         @include font-size(1.25rem);
         text-shadow: none;

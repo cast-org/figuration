@@ -21,10 +21,6 @@
     &[href] {
         @include hover-focus {
             text-decoration: none;
-
-            .close {
-                color: inherit;
-            }
         }
     }
 
@@ -33,14 +29,6 @@
         padding-left: $badge-close-padding-x;
         margin-right: -$badge-close-padding-x;
         font-size: $badge-close-font-size;
-        color: inherit;
-        text-shadow: none;
-
-        &:not(:disabled):not(.disabled) {
-            @include hover-focus {
-                color: inherit;
-            }
-        }
     }
 
     // Default color (linked badges get darker on :hover)

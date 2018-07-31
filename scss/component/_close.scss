@@ -2,16 +2,15 @@
     @include font-size($close-font-size);
     font-weight: $close-font-weight;
     line-height: 1;
-    color: $close-color;
+    color: inherit;
     text-decoration: none;
-    text-shadow: $close-text-shadow;
     opacity: $close-opacity;
 
     &:not(:disabled):not(.disabled) {
         cursor: pointer;
 
         @include hover-focus {
-            color: $close-hover-color;
+            color: inherit;
             text-decoration: none;
             opacity: $close-hover-opacity;
         }
