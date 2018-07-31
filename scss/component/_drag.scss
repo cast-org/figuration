@@ -2,9 +2,8 @@
     @include font-size($drag-font-size);
     font-weight: $drag-font-weight;
     line-height: 1;
-    color: $drag-color;
+    color: inherit;
     text-decoration: none;
-    text-shadow: $drag-text-shadow;
     touch-action: none;
     opacity: $drag-opacity;
 
@@ -12,7 +11,7 @@
         cursor: move;
 
         @include hover-focus {
-            color: $drag-hover-color;
+            color: inherit;
             text-decoration: none;
             opacity: $drag-hover-opacity;
         }

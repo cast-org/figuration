@@ -470,19 +470,13 @@ $caret-border-width:    .3125rem !default;
 
 $close-font-size:       ($font-size-base * 1.5) !default;
 $close-font-weight:     $font-weight-bold !default;
-$close-color:           #000 !default;
-$close-text-shadow:     0 .0625rem 0 #fff !default;
-$close-opacity:         .6 !default;
-$close-hover-color:     #000 !default;
-$close-hover-opacity:   .75 !default;
+$close-opacity:         .65 !default;
+$close-hover-opacity:   .85 !default;
 
 $drag-font-size:        ($font-size-base * 1.5) !default;
 $drag-font-weight:      $font-weight-bold !default;
-$drag-color:            #000 !default;
-$drag-text-shadow:      0 .0625rem 0 #fff !default;
-$drag-opacity:          .6 !default;
-$drag-hover-color:      #000 !default;
-$drag-hover-opacity:    .75 !default;
+$drag-opacity:          .65 !default;
+$drag-hover-opacity:    .85 !default;
 
 
 // Transitions
@@ -1061,7 +1055,7 @@ $card-columns-column-gap:   1.25rem !default;
 $tooltip-max-width:             rem(208px) !default;  // 208px=>13rem
 $tooltip-padding-y:             .25rem !default;
 $tooltip-padding-x:             .5rem !default;
-$tooltip-margin:                .2rem !default;
+$tooltip-margin:                .125rem !default;
 
 $tooltip-font-size:             ($font-size-base * .875) !default;
 $tooltip-bg:                    $uibase-900 !default;
@@ -1069,6 +1063,8 @@ $tooltip-color:                 color-auto-contrast($uibase-900) !default;
 $tooltip-opacity:               .9 !default;
 $tooltip-border-radius:         $border-radius !default;
 
+$tooltip-close-padding-y:       .125rem !default;
+$tooltip-close-padding-x:       .3125rem !default;
 $tooltip-close-color:           $tooltip-color !default;
 $tooltip-close-opacity:         $close-opacity !default;
 $tooltip-close-hover-color:     $tooltip-color !default;
