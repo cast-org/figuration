@@ -422,6 +422,8 @@
 // with mixins.  Also some additional rules per browser.
 .custom-range {
     width: 100%;
+    // Min width needed for inline use in IE to keep from crushing to unusable width
+    min-width: $custom-range-min-width;
     height: $custom-range-height;
     padding: 0;
     margin: 0;

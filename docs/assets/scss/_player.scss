@@ -51,6 +51,7 @@
 }
 .player-seek .slider.slider-horizontal {
     width: 100px;
+    min-width: 100px;
 }
 .player-mute {
     display: inline-block;
@@ -81,6 +82,7 @@
 }
 .player-volume .slider.slider-horizontal {
     width: 80px;
+    min-width: 80px;
 }
 .player-fullscreen {
     display: inline-block;
