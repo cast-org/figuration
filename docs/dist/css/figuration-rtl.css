@@ -1944,6 +1944,7 @@ textarea.form-control:not([rows="1"]) {
 
 .custom-range {
   width: 100%;
+  min-width: 8rem;
   height: 1.5rem;
   padding: 0;
   margin: 0;

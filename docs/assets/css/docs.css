@@ -1715,6 +1715,7 @@ h4 > code {
 
 .player-seek .slider.slider-horizontal {
   width: 100px;
+  min-width: 100px;
 }
 
 .player-mute {
@@ -1755,6 +1756,7 @@ h4 > code {
 
 .player-volume .slider.slider-horizontal {
   width: 80px;
+  min-width: 80px;
 }
 
 .player-fullscreen {
