@@ -617,17 +617,17 @@ Use the [border color utilities]({{ site.baseurl }}/utilities/color/#border) to 
 
 ### Header and Footer Variants
 
-Recolor the header and footer sections of your cards by using the background context colors. **Darker colors require the use of `.card-inverse`.**
+Recolor the header and footer sections of your cards by using the background context colors. Additional use of [text color utilities]({{ site.baseurl }}/utilities/color/#text) might be needed.
 
 {% example html %}
 <div class="card">
-  <h3 class="card-header card-inverse bg-primary">Featured</h3>
+  <h3 class="card-header bg-primary text-light">Featured</h3>
   <div class="card-body">
     <h4 class="card-title">Special title treatment</h4>
     <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
-  <div class="card-footer card-inverse bg-primary">
+  <div class="card-footer bg-primary text-light">
     Footer
   </div>
 </div>
@@ -924,11 +924,11 @@ Responsive variants are available with the class syntax of `.card-columns{-break
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
-  <div class="card card-inverse card-primary text-center">
+  <div class="card bg-primary text-light text-center">
     <div class="card-body">
       <blockquote class="blockquote text-light">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-        <footer class="blockquote-footer card-inverse">
+        <footer class="blockquote-footer text-light">
           <small>
             Someone famous in <cite title="Source Title">Source Title</cite>
           </small>
