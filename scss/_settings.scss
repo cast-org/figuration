@@ -777,7 +777,7 @@ $custom-range-thumb-active-bg:              palette($component-active-bg, 600) !
 $custom-range-thumb-disabled-bg:            $uibase-300 !default;
 
 $custom-range-height:               $custom-range-thumb-height + ($custom-range-thumb-focus-box-shadow-width * 2) !default;
-
+$custom-range-min-width:            8rem !default;  // Browser default seems to be 129px/~8rem for IE/Chrome/Safari
 
 // Form validation
 // =====
