@@ -1232,25 +1232,6 @@ h4 > code {
   overflow: auto;
 }
 
-.cf-example > [data-cfw="slider"] .slider {
-  width: 12rem;
-}
-
-.cf-example > [data-cfw="slider"] .slider-vertical {
-  width: auto;
-  height: 12rem;
-  margin-right: 1rem;
-}
-
-.cf-example > [data-cfw="slider"] input {
-  width: 3em;
-  font-weight: 400;
-}
-
-.cf-example > [data-cfw="slider"] select {
-  font-weight: 400;
-}
-
 @media (min-width: 62em) {
   .cf-example-tabResponsive h4 {
     display: none;
@@ -1713,7 +1694,7 @@ h4 > code {
   display: none;
 }
 
-.player-seek .slider.slider-horizontal {
+.player-seek input[type="range"] {
   width: 100px;
   min-width: 100px;
 }
@@ -1754,7 +1735,7 @@ h4 > code {
   display: none;
 }
 
-.player-volume .slider.slider-horizontal {
+.player-volume input[type="range"] {
   width: 80px;
   min-width: 80px;
 }

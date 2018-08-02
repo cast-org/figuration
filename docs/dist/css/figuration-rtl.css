@@ -1948,6 +1948,7 @@ textarea.form-control:not([rows="1"]) {
   height: 1.5rem;
   padding: 0;
   margin: 0;
+  vertical-align: middle;
   background-color: transparent;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -6916,119 +6917,6 @@ button.list-item-action {
 
 .popover.draggable .popover-arrow {
   display: none;
-}
-
-.slider {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.slider-track {
-  position: absolute;
-  cursor: pointer;
-  background-color: #dfe3e6;
-  border-radius: 0.25rem;
-}
-
-.slider-selection {
-  position: absolute;
-  background-color: #9eaab4;
-  border-radius: 0.25rem;
-}
-
-.slider-thumb {
-  position: absolute;
-  z-index: 1;
-  width: 1.25rem;
-  height: 1.25rem;
-  -ms-touch-action: none;
-      touch-action: none;
-  background-color: #0055e9;
-  border-radius: 50%;
-}
-
-.slider-thumb:focus {
-  outline: 0;
-  box-shadow: 0 0 0 0.1875rem rgba(0, 85, 233, 0.35);
-}
-
-.slider-thumb:active {
-  background-color: #0048c6;
-}
-
-.slider-thumb-max {
-  background-color: #d42314;
-}
-
-.slider-thumb-max:focus {
-  outline: 0;
-  box-shadow: 0 0 0 0.1875rem rgba(212, 35, 20, 0.35);
-}
-
-.slider-thumb-max:active {
-  background-color: #b41e11;
-}
-
-.disabled .slider-track {
-  opacity: 0.75;
-}
-
-.disabled .slider-thumb {
-  opacity: 0.9;
-}
-
-.slider-horizontal {
-  width: 100%;
-  height: 1.25rem;
-}
-
-.slider-horizontal .slider-track {
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 0.5rem;
-  margin-top: -0.375rem;
-  margin-left: 0.75rem;
-  margin-right: 0.75rem;
-}
-
-.slider-horizontal .slider-selection {
-  top: 0;
-  bottom: 0;
-  height: 100%;
-}
-
-.slider-horizontal .slider-thumb {
-  margin-top: -0.375rem;
-  margin-right: -0.625rem;
-}
-
-.slider-vertical {
-  width: 1.25rem;
-  min-height: 200px;
-}
-
-.slider-vertical .slider-track {
-  top: 0;
-  bottom: 0;
-  right: 50%;
-  width: 0.5rem;
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
-  margin-right: -0.375rem;
-}
-
-.slider-vertical .slider-selection {
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-}
-
-.slider-vertical .slider-thumb {
-  margin-top: -0.625rem;
-  margin-right: -0.375rem;
 }
 
 .bg-primary {
