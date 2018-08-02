@@ -49,7 +49,8 @@
 .player-seek label {
     display: none;
 }
-.player-seek .slider.slider-horizontal {
+// stylelint-disable-next-line selector-no-qualifying-type
+.player-seek input[type="range"] {
     width: 100px;
     min-width: 100px;
 }
@@ -80,7 +81,8 @@
 .player-volume label {
     display: none;
 }
-.player-volume .slider.slider-horizontal {
+// stylelint-disable-next-line selector-no-qualifying-type
+.player-volume input[type="range"] {
     width: 80px;
     min-width: 80px;
 }

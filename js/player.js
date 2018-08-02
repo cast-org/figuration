@@ -475,8 +475,6 @@
 
             if ($seekElm.find('input[type="range"]').length) {
                 this.seekRange();
-            } else if ($seekElm.find('input').length) {
-                this.seekSlider();
             } else if ($seekElm.hasClass('progress')) {
                 this.seekProgress();
             }
@@ -489,12 +487,15 @@
             var $seekElm = this.$player.find('[data-cfw-player="seek"]');
             var $inputElm = $seekElm.find('input[type="range"]').eq(0);
 
-            if (parseFloat($inputElm.prop('max')) !== this.media.duration) {
+            if (this.$sliderSeek === null) {
+                this.$sliderSeek = $inputElm;
+
                 $inputElm.prop({
                     min: 0,
                     max: this.media.duration,
                     step: 1 // 1-second step
                 });
+
                 // Update on both `onchange` and `oninput` events. Seems to
                 // help with jumping back to previous timestamp.
                 $inputElm.on('change input', function() {
@@ -507,6 +508,7 @@
                         $selfRef.media.play();
                     }
                 });
+
                 // Allow keyboard to do the proper thing here
                 $inputElm.on('keydown', function(e) {
                     if (e.type === 'keydown') { e.stopPropagation(); }
@@ -518,46 +520,10 @@
             }
 
             $inputElm.val(this.media.currentTime);
-        },
 
-        seekSlider : function() {
-            var $selfRef = this;
-
-            if (isNaN(this.media.duration) || this.media.duration === Infinity) { return; }
-
-            if (this.$sliderSeek === null) {
-                this.$sliderSeek = this.$player.find('[data-cfw-player="seek"]');
-                this.$sliderSeek.CFW_Slider({
-                    min: 0,
-                    max: this.media.duration,
-                    step: 1 // 1-second step
-                });
-                this.$sliderSeek.on('slid.cfw.slider', function() {
-                    var newTime = $(this).data('cfw.slider').val0;
-                    $selfRef.seekTo(newTime);
-                });
-                // Pause while scrubbing
-                var $sliderControls = this.$sliderSeek.add(this.$sliderSeek.find('.slider-thumb'));
-                $sliderControls.on('keydown.cfw.slider dragStart.cfw.slider', function(e) {
-                    if (e.type === 'keydown' && !/(37|38|39|40|33|34|35|36)/.test(e.which)) { return; }
-                    if (e.type === 'keydown') { e.stopPropagation(); }
-                    $sliderControls.off('keyup.cfw.slider dragEnd.cfw.slider');
-                    if ($selfRef.scrubPlay === null) {
-                        $selfRef.scrubPlay = !$selfRef.media.paused;
-                    }
-                    $selfRef.media.pause();
-                    $(e.currentTarget).one('keyup.cfw.slider dragEnd.cfw.slider', function(e) {
-                        if (e.type === 'keyup') { e.stopPropagation(); }
-                        if ($selfRef.scrubPlay === true) {
-                            $selfRef.media.play();
-                        }
-                        $selfRef.scrubPlay = null;
-                    });
-                });
-            }
-
-            var $inputElm = this.$sliderSeek.find('input').eq(0);
-            this.$sliderSeek.CFW_Slider('changeValue', this.media.currentTime, $inputElm, true);
+            // Output a more meaningful description text
+            var timeText = this.timeSplit(this.media.currentTime) + ' / ' + this.timeSplit(this.media.duration);
+            $inputElm.attr('aria-valuetext', timeText);
         },
 
         seekProgress : function() {
@@ -640,8 +606,6 @@
 
             if ($volElm.find('input[type="range"]').length) {
                 this.volumeRange();
-            } else if ($volElm.find('input').length) {
-                this.volumeSlider();
             }
         },
 
@@ -655,12 +619,14 @@
             }
             var $inputElm = $volElm.find('input[type="range"]').eq(0);
 
-            if (parseFloat($inputElm.val()) !== this.media.volume) {
+            if (this.$volSeek === null) {
+                this.$volSeek = $inputElm;
                 $inputElm.prop({
                     min: 0,
                     max: 1,
                     step: 0.05  // 5% increment
                 });
+
                 // Update on both `onchange` and `oninput` events.
                 $inputElm.on('change input', function() {
                     var newVol = parseFloat($inputElm.val());
@@ -672,6 +638,7 @@
                         $selfRef.media.volume = newVol;
                     }
                 });
+
                 // Allow keyboard to do the proper thing here
                 $inputElm.on('keydown', function(e) {
                     if (e.type === 'keydown') { e.stopPropagation(); }
@@ -682,51 +649,15 @@
                 });
             }
 
+            // Update range value and output text to percentage
             if (!this.media.muted) {
                 $inputElm.val(this.media.volume);
+                var level = parseInt(this.media.volume * 100, 10);
+                $inputElm.attr('aria-valuetext', level + '%');
             } else {
                 $inputElm.val(0);
+                $inputElm.attr('aria-valuetext', '0%');
             }
-        },
-
-        volumeSlider : function() {
-            var $selfRef = this;
-            var $volElm = this.$player.find('[data-cfw-player="volume"]');
-
-            if (!this.support.mute) {
-                this._controlDisable($volElm);
-                return;
-            }
-
-            if (this.$volSeek === null) {
-                this.$volSeek = $volElm;
-                this.$volSeek.CFW_Slider({
-                    min: 0,
-                    max: 1,
-                    step: 0.05  // 5% increment
-                });
-                this.$volSeek.on('slid.cfw.slider', function() {
-                    var newVol = parseFloat($(this).data('cfw.slider').val0);
-
-                    if (newVol === 0) {
-                        $selfRef.media.muted = true;
-                    } else {
-                        $selfRef.media.muted = false;
-                        $selfRef.media.volume = newVol;
-                    }
-                });
-            }
-
-            var $inputElm = this.$volSeek.find('input').eq(0);
-            if (!this.media.muted) {
-                this.$volSeek.CFW_Slider('changeValue', this.media.volume, $inputElm, true);
-            } else {
-                this.$volSeek.CFW_Slider('changeValue', 0, $inputElm, true);
-            }
-
-            // Alter volume slider label to percentage
-            var level = parseInt(this.media.volume * 100, 10);
-            this.$volSeek.find('.slider-thumb').attr('aria-valuetext', level + '%');
         },
 
         volumeIncrement : function(delta) {
@@ -1824,10 +1755,10 @@
                 this.$scriptElm.remove();
             }
             if (this.$sliderSeek) {
-                this.$sliderSeek.CFW_Slider('dispose');
+                this.$sliderSeek.off();
             }
             if (this.$volSeek) {
-                this.$volSeek.CFW_Slider('dispose');
+                this.$volSeek.off();
             }
             if ($.hasData(this.$player.find('[data-cfw-player="caption"]'))) {
                 this.$player.find('[data-cfw-player="caption"]').CFW_Dropdown('dispose');

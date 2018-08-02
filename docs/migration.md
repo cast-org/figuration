@@ -17,7 +17,7 @@ Some changes will most likely have been missed, so please refer to the documenta
 
 ## Color
 - Reworked the colors, internal palette system, and consolidated the re-used component colors.
-- Added functions to check, and/or determine the best color, these can be found in '/scss/functions/_color-util.scss'.
+- Added functions to check, and/or determine the best color, these can be found in `/scss/functions/_color-util.scss`.
 - Extended the contextual colors with light and dark contextual variants.  **These variants are not available as palettes** by default.
 
 ## Typography
@@ -44,7 +44,7 @@ Some changes will most likely have been missed, so please refer to the documenta
 
 - Custom file inputs received a change to their `$custom-file-text` Sass variable. It is no longer a nested Sass map and now only powers one string---the `Browse` button as that is now the only pseudo-element generated from our Sass. The `Choose file` text now comes from the `.custom-file-label`.
 
-- Added custom styling for `input type="range"`.  At a later point the Slider widget will be removed from Figuration and moved into it's own repository.
+- Added custom styling for `input type="range"`.  The Slider widget has been removed from Figuration and moved into it's own repository: [Figuration Slider](https://github.com/cast-org/figuration-slider).
 
 - Validation icons have been re-implemented.  The `.form-control-icon` has been replaced with `.has-validation-icon`. The icons are still optional and can now be used with textual `<input class="form-control">`, `<textarea class="form-control">`, and `<select class="custom-select">` elements.  Icons can be used within `.input-groups` but they no longer scale with the input sizing.
 
@@ -106,6 +106,13 @@ Some changes will most likely have been missed, so please refer to the documenta
 
 ### Lazy
 - Dropped support for jQuery animations as the slim build does not support them.  Added an optional fade-in CSSS animation.
+
+### Slider
+- Dropped the slider widget as a bundled plugin.  This has been replaced with the `.custom-range` styled `<input type="range">` element.
+
+### Player
+- Dropped support for sliders using the Slider widget, and added support for `<input type="range">` elements.  A few improvements on the accesibility of the sliders were also added.
+
 
 ## Build Tools
 - Figuration now requires Node.js v8 or newer if using our build tools.  This is due to the minimum Node.js requirement for `grunt-sass`.

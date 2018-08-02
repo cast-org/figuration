@@ -15,7 +15,7 @@ A simple widget that allows for both mouse and touch drag handling for use by ot
 
 ## Examples
 
-Working examples can be found on the [Slider widget]({{ site.baseurl}}/widgets/slider/) page, and at the draggable example on the [Popover widget]({{ site.baseurl}}/widgets/popover/#draggable-example) page.
+An example can be found with the draggable popover on the [Popover widget]({{ site.baseurl}}/widgets/popover/#draggable-example) page.
 
 ## Disabled
 
