@@ -311,23 +311,6 @@ $custom-file-text: (
     overflow: auto;
 }
 
-// Slider
-.cf-example > [data-cfw="slider"] .slider {
-    width: 12rem;
-}
-.cf-example > [data-cfw="slider"] .slider-vertical {
-    width: auto;
-    height: 12rem;
-    margin-left: 1rem;
-}
-.cf-example > [data-cfw="slider"] input {
-    width: 3em;
-    font-weight: $font-weight-normal;
-}
-.cf-example > [data-cfw="slider"] select {
-    font-weight: $font-weight-normal;
-}
-
 // Tab-Responsive
 @media (min-width: 62em) {
     .cf-example-tabResponsive h4 {

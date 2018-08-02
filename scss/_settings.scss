@@ -1150,42 +1150,6 @@ $modal-breakpoint:              sm !default; // When to start scaling up modal w
 $modal-lg-breakpoint:           lg !default; // The minimum breakpoint to allow `.modal-lg`
 
 
-// Slider
-// =====
-$slider-horizontal-height:          1.25rem !default;
-$slider-horizontal-margin:          .75rem !default;
-$slider-horizontal-track-height:    .5rem !default;
-$slider-horizontal-track-margin:    (($slider-horizontal-height - $slider-horizontal-track-height) / 2) !default;
-
-$slider-vertical-width:             1.25rem !default;
-$slider-vertical-height:            200px !default;
-$slider-vertical-margin:            .75rem !default;
-$slider-vertical-track-width:       .5rem !default;
-$slider-vertical-track-margin:      (($slider-vertical-width - $slider-vertical-track-width) / 2) !default;
-
-$slider-thumb-width:                1.25rem !default;
-$slider-thumb-height:               1.25rem !default;
-$slider-thumb-border-radius:        50% !default;
-
-$slider-thumb-min-bg:               $primary !default;
-$slider-thumb-min-focus-box-shadow: $input-focus-box-shadow-size rgba($slider-thumb-min-bg, $input-focus-box-shadow-alpha) !default;
-$slider-thumb-min-active-bg:        palette($primary, 600) !default;
-$slider-thumb-max-bg:               $danger !default;
-$slider-thumb-max-focus-box-shadow: $input-focus-box-shadow-size rgba($slider-thumb-max-bg, $input-focus-box-shadow-alpha) !default;
-$slider-thumb-max-active-bg:        palette($danger, 600) !default;
-
-$slider-track-bg:                   $uibase-100 !default;
-$slider-track-border-radius:        $border-radius !default;
-
-$slider-selection-bg:               $uibase-300 !default;
-
-$slider-thumb-shadow:               inset .125rem .125rem .125rem rgba($white, .4), inset -.125rem -.125rem .125rem rgba($black, .15) !default;
-$slider-track-shadow:               inset 0 .0625rem .125rem rgba($black, .1) !default;
-
-$slider-disabled-track-opacity:     .75 !default;
-$slider-disabled-thumb-opacity:     .9 !default;
-
-
 // Player
 // =====
 //$player-placeholder:    none !default;

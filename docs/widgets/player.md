@@ -31,7 +31,6 @@ Widget Dependencies
 
 Player requires the following:
 
-- [Slider widget]({{ site.baseurl}}/widgets/slider/) for seek and volume sliders.
 - [Dropdown widget]({{ site.baseurl}}/widgets/dropdown/) for caption and transcript selection menu.
 {% endcallout %}
 {:.cf-callout-dep}
@@ -101,7 +100,7 @@ Available seek and volume sliders.
         <span class="player-time me-0_25" data-cfw-player="time">
             <span class="player-time-remainder" data-cfw-player="time-remainder"></span>
             <span class="player-seek" data-cfw-player="seek">
-            	<label>Seek slider<input type="text" /></label>
+            	<input type="range" class="custom-range" aria-label="Seek">
             </span>
             <span class="player-time-duration" data-cfw-player="time-duration"></span>
         </span>
@@ -110,7 +109,7 @@ Available seek and volume sliders.
             <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up" aria-hidden="true"></span></button>
         </span>
         <span class="player-volume me-0_25" data-cfw-player="volume">
-            <label>Volume slider<input type="text" /></label>
+            <input type="range" class="custom-range" aria-label="Volume">
         </span>
         <button type="button" class="btn btn-icon" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fas fa-fw fa-redo"></span></button>
     </div>
@@ -147,7 +146,7 @@ Available seek and volume sliders.
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
                     <span class="player-seek" data-cfw-player="seek">
-                    	<label>Seek slider<input type="text" /></label>
+                    	<input type="range" class="custom-range" aria-label="Seek">
                     </span>
                     <span class="player-time-duration" data-cfw-player="time-duration"></span>
                 </span>
@@ -158,7 +157,7 @@ Available seek and volume sliders.
                     <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up" aria-hidden="true"></span></button>
                 </span>
                 <span class="player-volume" data-cfw-player="volume">
-                    <label>Volume slider<input type="text" /></label>
+                    <input type="range" class="custom-range" aria-label="Volume">
                 </span>
                 <button type="button" class="btn btn-icon" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fas fa-fw fa-redo" aria-hidden="true"></span></button>
                 <button type="button" class="btn btn-icon" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fas fa-fw fa-closed-captioning" aria-hidden="true"></span></button>
@@ -199,7 +198,7 @@ Add an interactive transcript to your video using the `transcript` control.  The
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
                     <span class="player-seek" data-cfw-player="seek">
-                    	<label>Seek slider<input type="text" /></label>
+                    	<input type="range" class="custom-range" aria-label="Seek">
                     </span>
                     <span class="player-time-duration" data-cfw-player="time-duration"></span>
                 </span>
@@ -210,7 +209,7 @@ Add an interactive transcript to your video using the `transcript` control.  The
                     <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up" aria-hidden="true"></span></button>
                 </span>
                 <span class="player-volume" data-cfw-player="volume">
-                    <label>Volume slider<input type="text" /></label>
+                    <input type="range" class="custom-range" aria-label="Volume">
                 </span>
                 <button type="button" class="btn btn-icon" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fas fa-fw fa-closed-captioning" aria-hidden="true"></span></button>
                 <button type="button" class="btn btn-icon" data-cfw-player="transcript" title="Transcript captions" aria-label="Closed captions"><span class="far fa-fw fa-file-alt" aria-hidden="true"></span></button>
@@ -244,7 +243,7 @@ Improve accessibility for blind and visually impaired users by including an audi
             <span class="player-time me-0_5" data-cfw-player="time">
                 <span class="player-time-current" data-cfw-player="time-current"></span>
                 <span class="player-seek" data-cfw-player="seek">
-                	<label>Seek slider<input type="text" /></label>
+                	<input type="range" class="custom-range" aria-label="Seek">
                 </span>
                 <span class="player-time-duration" data-cfw-player="time-duration"></span>
             </span>
@@ -281,7 +280,7 @@ Further improve accessibility for blind and visually impaired users by including
             <span class="player-time me-0_5" data-cfw-player="time">
                 <span class="player-time-current" data-cfw-player="time-current"></span>
                 <span class="player-seek" data-cfw-player="seek">
-                	<label>Seek slider<input type="text" /></label>
+                	<input type="range" class="custom-range" aria-label="Seek">
                 </span>
                 <span class="player-time-duration" data-cfw-player="time-duration"></span>
             </span>
@@ -320,7 +319,7 @@ By using the same `<track kind="descriptions">` as the above example, we can pro
             <span class="player-time me-0_5" data-cfw-player="time">
                 <span class="player-time-current" data-cfw-player="time-current"></span>
                 <span class="player-seek" data-cfw-player="seek">
-                	<label>Seek slider<input type="text" /></label>
+                	<input type="range" class="custom-range" aria-label="Seek">
                 </span>
                 <span class="player-time-duration" data-cfw-player="time-duration"></span>
             </span>
@@ -354,7 +353,7 @@ Take control over how captions are displayed by adding a container with a `data-
             <span class="player-time me-0_5" data-cfw-player="time">
                 <span class="player-time-current" data-cfw-player="time-current"></span>
                 <span class="player-seek" data-cfw-player="seek">
-                	<label>Seek slider<input type="text" /></label>
+                	<input type="range" class="custom-range" aria-label="Seek">
                 </span>
                 <span class="player-time-duration" data-cfw-player="time-duration"></span>
             </span>
@@ -428,7 +427,7 @@ The player will use the settings of the `<audio>`/`<video>` element to determine
     </dd>
 </dl>
 
-Note: If the player uses sliders, the slider keyboard commands will take precendence if the slider handle is the currently focused element.
+Note: If the player uses `input type="range" sliders, the range keyboard commands will take precendence if the input is the currently focused element.
 
 ### Regions and Controls
 
@@ -484,7 +483,7 @@ Regions and controls are specified by data attributes `data-cfw-player="name"` t
                 <td>
                     <p>Container for the seek progress bar or slider.</p>
                     <p>If container has a class of <code>progress</code> a progress bar will be assumed. There must be a chlid <code>.progress-bar</code> element in order for the progress bar to display.  For example <code>&lt;span class="progress-bar" role="progressbar" data-cfw-player="seek-current"&gt;&lt;/span&gt;</code></p>
-                    <p>If container has a child <code>input</code> element, then a slider will be used.</p>
+                    <p>Otherwise, use a child <code>&lt;input type="range"&gt;</code> element for a slider style control.</p>
                 </td>
             </tr>
             <tr>
@@ -508,7 +507,7 @@ Regions and controls are specified by data attributes `data-cfw-player="name"` t
                 <td>volume</td>
                 <td>
                     <p>Volume control.</p>
-                    <p>If container has a child <code>input</code> element, then a slider will be inserted.</p>
+                    <p>Use a child <code><input type="range"></code> element for a slider style control.</p>
                     <p class="small mb-0">
                         Some mobile devices do not allow for mute or volume control, citing user should have preference through physical hardware controls.  Mostly this applies to iOS devices.
                     </p>
@@ -710,7 +709,7 @@ Toggle the use of the audio description video source.
 #### `.CFW_Player('dispose')`
 {:.no_toc}
 
-Remove any associated transcript, sliders, dropdowns, data, and event listeners created by the player widget.
+Remove any associated transcript, dropdowns, data, and event listeners created by the player widget.
 
 ### Events
 
