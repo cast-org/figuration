@@ -6942,7 +6942,6 @@ if (typeof jQuery === 'undefined') {
         '[data-cfw="slideshow"]': 'CFW_Slideshow',
         '[data-cfw="scrollspy"]': 'CFW_Scrollspy',
         '[data-cfw="lazy"]': 'CFW_Lazy',
-        '[data-cfw="slider"]': 'CFW_Slider',
         '[data-cfw="equalize"]': 'CFW_Equalize',
         '[data-cfw="player"]': 'CFW_Player'
     };

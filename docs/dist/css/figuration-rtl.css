@@ -1700,6 +1700,12 @@ textarea.form-control:not([rows="1"]) {
   transition: all 0.15s ease;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+  .custom-switch .custom-control-indicator::before, .custom-switch .custom-control-indicator::after {
+    transition: none;
+  }
+}
+
 .custom-switch .custom-control-indicator::before {
   top: 0.25rem;
   z-index: 1;
