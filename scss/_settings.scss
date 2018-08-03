@@ -144,7 +144,6 @@ $badge-outline-colors:  $base-colors !default;
 $btn-colors:            $base-colors !default;
 $btn-outline-colors:    $base-colors !default;
 $list-colors:           $base-colors !default;
-$switch-colors:         $base-colors !default;
 $table-colors:          $base-colors !default;
 $utility-bg-colors:     $base-colors !default;
 $utility-border-colors: $base-colors !default;
@@ -156,7 +155,6 @@ $badge-outline-levels:  $level-control !default;
 $btn-levels:            $level-control !default;
 $btn-outline-levels:    $level-control !default;
 $list-levels:           $level-context !default;
-$switch-levels:         $level-control !default;
 $table-levels:          $level-context !default;
 
 
@@ -171,7 +169,6 @@ $badge-outline-themes:  () !default;
 $btn-themes:            () !default;
 $btn-outline-themes:    () !default;
 $list-themes:           () !default;
-$switch-themes:         () !default;
 $table-themes:          () !default;
 
 
@@ -493,8 +490,6 @@ $input-transition:          background-color .15s ease-in-out, border-color .15s
 $modal-transition:          transform .3s ease-out !default;
 $progress-bar-transition:   width .3s ease !default;
 $switch-transition:         all .15s ease !default;
-$switch-control-transition: background-color .3s ease !default;
-$switch-indicator-transition: left .3s ease, transform .3s ease, background-color .3s ease !default;
 
 
 // Radius utility
