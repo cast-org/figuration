@@ -75,8 +75,8 @@
     "node": ">=8"
   },
   "files": [
-    "dist",
-    "js",
-    "scss"
+    "dist/{css,js}/*.{css,js,map}",
+    "js/*.js",
+    "scss/**/*.scss"
   ]
 }
