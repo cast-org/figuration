@@ -116,6 +116,7 @@ module.exports = function(grunt) {
         qunit: {
             all: {
                 options: {
+                    inject: 'test/js/unit/bridge.js',
                     puppeteer: {
                         args: ['--no-sandbox']
                     },
