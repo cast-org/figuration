@@ -116,7 +116,9 @@ module.exports = function(grunt) {
         qunit: {
             all: {
                 options: {
-                    puppeteer: ['--no-sandbox'],
+                    puppeteer: {
+                        args: ['--no-sandbox']
+                    },
                     urls: ['http://localhost:3000/test/js/index.html']
                 }
             }
