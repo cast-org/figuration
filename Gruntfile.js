@@ -114,10 +114,12 @@ module.exports = function(grunt) {
         },
 
         qunit: {
-            options: {
-                inject: 'test/js/unit/phantom.js'
-            },
-            files: 'test/js/index.html'
+            all: {
+                options: {
+                    puppeteer: ['--no-sandbox'],
+                    urls: ['http://localhost:3000/test/js/index.html']
+                }
+            }
         },
 
         concat: {
@@ -363,9 +365,8 @@ module.exports = function(grunt) {
     grunt.registerTask('test-html', ['htmllint:test']);
 
     // Test - JS subtasks
-    var jsTestTasks = ['eslint:core', 'eslint:test', 'eslint:grunt'];
+    var jsTestTasks = ['eslint:core', 'eslint:test', 'eslint:grunt', 'connect'];
     if (saucekey !== null && process.env.TEST_SAUCE === 'true') {
-        jsTestTasks.push('connect');
         jsTestTasks.push('saucelabs-qunit');
     } else {
         jsTestTasks.push('qunit');

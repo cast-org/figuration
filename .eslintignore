@@ -1,5 +1,4 @@
 **/*.min.js
-**/phantom.js
 **/vendor/
 /dist/
 /_gh_pages/
