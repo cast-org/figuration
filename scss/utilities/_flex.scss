@@ -7,64 +7,80 @@
 
     @include media-breakpoint-up($breakpoint) {
         // Order
-        .order#{$bprule}-first { order: -1; }
-        .order#{$bprule}-last { order: 1; }
-        .order#{$bprule}-unordered { order: 0; }
+        @if $enable-utility-flex-order {
+            .order#{$bprule}-first { order: -1; }
+            .order#{$bprule}-last { order: 1; }
+            .order#{$bprule}-unordered { order: 0; }
 
-        @for $col from 0 through $grid-columns {
-            .order#{$bprule}-#{$col} {
-                order: $col;
+            @for $col from 0 through $grid-columns {
+                .order#{$bprule}-#{$col} {
+                    order: $col;
+                }
             }
         }
 
         // Rows and Columns
-        .flex#{$bprule}-row { flex-direction: row !important; }
-        .flex#{$bprule}-column { flex-direction: column !important; }
-        .flex#{$bprule}-row-reverse { flex-direction: row-reverse !important; }
-        .flex#{$bprule}-column-reverse { flex-direction: column-reverse !important; }
+        @if $enable-utility-flex-direction {
+            .flex#{$bprule}-row { flex-direction: row !important; }
+            .flex#{$bprule}-column { flex-direction: column !important; }
+            .flex#{$bprule}-row-reverse { flex-direction: row-reverse !important; }
+            .flex#{$bprule}-column-reverse { flex-direction: column-reverse !important; }
+        }
 
         // Wrap
-        .flex#{$bprule}-wrap { flex-wrap: wrap !important; }
-        .flex#{$bprule}-nowrap { flex-wrap: nowrap !important; }
-        .flex#{$bprule}-wrap-reverse { flex-wrap: wrap-reverse !important; }
+        @if $enable-utility-flex-wrap {
+            .flex#{$bprule}-wrap { flex-wrap: wrap !important; }
+            .flex#{$bprule}-nowrap { flex-wrap: nowrap !important; }
+            .flex#{$bprule}-wrap-reverse { flex-wrap: wrap-reverse !important; }
+        }
 
         // Justify content of child items
-        .flex#{$bprule}-start { justify-content: flex-start !important; }
-        .flex#{$bprule}-center { justify-content: center !important; }
-        .flex#{$bprule}-end { justify-content: flex-end !important; }
-        .flex#{$bprule}-around { justify-content: space-around !important; }
-        .flex#{$bprule}-between { justify-content: space-between !important; }
+        @if $enable-utility-flex-justify {
+            .flex#{$bprule}-start { justify-content: flex-start !important; }
+            .flex#{$bprule}-center { justify-content: center !important; }
+            .flex#{$bprule}-end { justify-content: flex-end !important; }
+            .flex#{$bprule}-around { justify-content: space-around !important; }
+            .flex#{$bprule}-between { justify-content: space-between !important; }
+        }
 
         // Alignment of child items
-        .flex#{$bprule}-items-start { align-items: flex-start !important; }
-        .flex#{$bprule}-items-center { align-items: center !important; }
-        .flex#{$bprule}-items-end { align-items: flex-end !important; }
-        .flex#{$bprule}-items-baseline { align-items: baseline !important; }
-        .flex#{$bprule}-items-stretch { align-items: stretch !important; }
+        @if $enable-utility-flex-items {
+            .flex#{$bprule}-items-start { align-items: flex-start !important; }
+            .flex#{$bprule}-items-center { align-items: center !important; }
+            .flex#{$bprule}-items-end { align-items: flex-end !important; }
+            .flex#{$bprule}-items-baseline { align-items: baseline !important; }
+            .flex#{$bprule}-items-stretch { align-items: stretch !important; }
+        }
 
         // Align content
-        .flex#{$bprule}-content-start { align-content: flex-start !important; }
-        .flex#{$bprule}-content-end { align-content: flex-end !important; }
-        .flex#{$bprule}-content-center { align-content: center !important; }
-        .flex#{$bprule}-content-between { align-content: space-between !important; }
-        .flex#{$bprule}-content-around { align-content: space-around !important; }
-        .flex#{$bprule}-content-stretch { align-content: stretch !important; }
+        @if $enable-utility-flex-content {
+            .flex#{$bprule}-content-start { align-content: flex-start !important; }
+            .flex#{$bprule}-content-end { align-content: flex-end !important; }
+            .flex#{$bprule}-content-center { align-content: center !important; }
+            .flex#{$bprule}-content-between { align-content: space-between !important; }
+            .flex#{$bprule}-content-around { align-content: space-around !important; }
+            .flex#{$bprule}-content-stretch { align-content: stretch !important; }
+        }
 
         // Alignment per item
-        .flex#{$bprule}-self-start { align-self: flex-start !important; }
-        .flex#{$bprule}-self-center { align-self: center !important; }
-        .flex#{$bprule}-self-end { align-self: flex-end !important; }
-        .flex#{$bprule}-self-baseline { align-self: baseline !important; }
-        .flex#{$bprule}-self-stretch { align-self: stretch !important; }
+        @if $enable-utility-flex-self {
+            .flex#{$bprule}-self-start { align-self: flex-start !important; }
+            .flex#{$bprule}-self-center { align-self: center !important; }
+            .flex#{$bprule}-self-end { align-self: flex-end !important; }
+            .flex#{$bprule}-self-baseline { align-self: baseline !important; }
+            .flex#{$bprule}-self-stretch { align-self: stretch !important; }
+        }
 
         // Sizing
-        .flex#{$bprule}-fill { flex: 1 1 auto !important; }
-        .flex#{$bprule}-grow { flex: 1 0 auto !important; }
-        .flex#{$bprule}-grow-0 { flex-grow: 0 !important; }
-        .flex#{$bprule}-grow-1 { flex-grow: 1 !important; }
-        .flex#{$bprule}-shrink { flex: 0 1 0% !important; }
-        .flex#{$bprule}-shrink-0 { flex-shrink: 0 !important; }
-        .flex#{$bprule}-shrink-1 { flex-shrink: 1 !important; }
-        .flex#{$bprule}-none { flex: none !important; }
+        @if $enable-utility-flex-sizing {
+            .flex#{$bprule}-fill { flex: 1 1 auto !important; }
+            .flex#{$bprule}-grow { flex: 1 0 auto !important; }
+            .flex#{$bprule}-grow-0 { flex-grow: 0 !important; }
+            .flex#{$bprule}-grow-1 { flex-grow: 1 !important; }
+            .flex#{$bprule}-shrink { flex: 0 1 0% !important; }
+            .flex#{$bprule}-shrink-0 { flex-shrink: 0 !important; }
+            .flex#{$bprule}-shrink-1 { flex-shrink: 1 !important; }
+            .flex#{$bprule}-none { flex: none !important; }
+        }
     }
 }

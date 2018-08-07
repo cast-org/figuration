@@ -46,16 +46,22 @@
 }
 
 // Palette colors
-@if $enable-palette {
-    @each $theme, $color in $palette-colors {
-        @each $level in $palette-levels {
+@if $enable-palette and $enable-utility-text-palette {
+    $palette-colors-text: $palette-colors !default;
+    $palette-levels-text: $palette-levels !default;
+
+    @each $theme, $color in $palette-colors-text {
+        @each $level in $palette-levels-text {
             @include text-emphasis-palette-variant(".text-#{$theme}-#{$level}", $color, $level, $level-delta-hover-color);
         }
     }
 }
 
 // Special text colors
-.text-body { color: $body-color !important; }
-.text-muted { color: $text-muted !important; }
-.text-white { color: $white !important; }
-.text-black { color: $black !important; }
+@if $enable-utility-text-special {
+    .text-body { color: $body-color !important; }
+    .text-muted { color: $text-muted !important; }
+    .text-white { color: $white !important; }
+    .text-black { color: $black !important; }
+}
+

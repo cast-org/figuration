@@ -5,37 +5,48 @@
     $bprule: breakpoint-designator($breakpoint);
 
     @include media-breakpoint-up($breakpoint) {
-        .position#{$bprule}-static   { position: static !important; }
-        .position#{$bprule}-relative { position: relative !important; }
-        .position#{$bprule}-absolute { position: absolute !important; }
-        .position#{$bprule}-fixed    { position: fixed !important; }
-        @supports (position: sticky) {
-            .position#{$bprule}-sticky   { position: sticky !important; }
+        @if $enable-utility-position-common {
+            .position#{$bprule}-static   { position: static !important; }
+            .position#{$bprule}-relative { position: relative !important; }
+            .position#{$bprule}-absolute { position: absolute !important; }
+        }
+        @if $enable-utility-position-fixed {
+            .position#{$bprule}-fixed    { position: fixed !important; }
+        }
+        @if $enable-utility-position-sticky {
+            @supports (position: sticky) {
+                .position#{$bprule}-sticky   { position: sticky !important; }
+            }
         }
     }
 }
 
 // Quick use
-.fixed-top {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: $zindex-fixed;
-}
-
-.fixed-bottom {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: $zindex-fixed;
-}
-
-@supports (position: sticky) {
-    .sticky-top {
-        position: sticky;
+@if $enable-utility-position-fixed and $enable-utility-position-fixed-top {
+    .fixed-top {
+        position: fixed;
         top: 0;
-        z-index: $zindex-sticky;
+        right: 0;
+        left: 0;
+        z-index: $zindex-fixed;
+    }
+}
+@if $enable-utility-position-fixed and $enable-utility-position-fixed-bottom {
+    .fixed-bottom {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: $zindex-fixed;
+    }
+}
+
+@if $enable-utility-position-sticky and $enable-utility-position-sticky-top {
+    @supports (position: sticky) {
+        .sticky-top {
+            position: sticky;
+            top: 0;
+            z-index: $zindex-sticky;
+        }
     }
 }

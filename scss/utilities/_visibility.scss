@@ -1,7 +1,9 @@
 // Visibility utilities
-.invisible {
-    @include invisible();
-}
-.visible {
-    @include visible();
+@if $enable-utility-utility-visibility {
+    .invisible {
+        @include invisible();
+    }
+    .visible {
+        @include visible();
+    }
 }
