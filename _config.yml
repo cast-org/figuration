@@ -23,27 +23,27 @@ plugins:
   - jekyll-sitemap
 
 # Custom vars
-current_version:  4.0.0-alpha.1
+current_version:  4.0.0-alpha.2
 repo:             https://github.com/cast-org/figuration
-changelog:        https://github.com/cast-org/figuration/releases/tag/v4.0.0-alpha.1
+changelog:        https://github.com/cast-org/figuration/releases/tag/v4.0.0-alpha.2
 twitter:          https://twitter.com/figuration_org
 
 
 # Downloads
 download:
-  source:         https://github.com/cast-org/figuration/archive/v4.0.0-alpha.1.zip
-  dist:           https://github.com/cast-org/figuration/releases/download/v4.0.0-alpha.1/figuration-4.0.0-alpha.1-dist.zip
+  source:         https://github.com/cast-org/figuration/archive/v4.0.0-alpha.2.zip
+  dist:           https://github.com/cast-org/figuration/releases/download/v4.0.0-alpha.2/figuration-4.0.0-alpha.2-dist.zip
 
 
 # CDN settings
 # See https://www.srihash.org for info on how to generate the hashes
 cdn:
-  css:          https://cdn.jsdelivr.net/npm/figuration@4.0.0-alpha.1/dist/css/figuration.min.css
-  css_hash:     "sha384-qC3Vd8Ump89qtZ5Ll6PSveWCBLJIedyOHcy3hgoMiCT22250U1rT7UPIvdTLVRjL"
-  js:           https://cdn.jsdelivr.net/npm/figuration@4.0.0-alpha.1/dist/js/figuration.min.js
-  js_hash:      "sha384-4YJ+nmEMuJ6m2VHwZA/FFcSvSMSRO9zhuH2oDi3eo926fVlZo6zNJ24id9nCpaJ7"
-  css_rtl:      https://cdn.jsdelivr.net/npm/figuration@4.0.0-alpha.1/dist/css/figuration-rtl.min.css
-  css_rtl_hash: "sha384-lLbRsyEEBLI+RvcBAQMGTEiMZIqryEbZdZN0Nk3bYLNckaYjDdXBLbmAAepljYjX"
+  css:          https://cdn.jsdelivr.net/npm/figuration@4.0.0-alpha.2/dist/css/figuration.min.css
+  css_hash:     "sha384-n6Lf6YdLHivmdPL8CpZY1xnALMoGaI77/PMotrFAkclEoQMIqP54IdxhYpBsDZWF"
+  js:           https://cdn.jsdelivr.net/npm/figuration@4.0.0-alpha.2/dist/js/figuration.min.js
+  js_hash:      "sha384-HBk97ct4fmhd8TJkadj4nVq9nXyNIOrSUpW24EXogqoSCwW1frWUhlrKIOzhzKzR"
+  css_rtl:      https://cdn.jsdelivr.net/npm/figuration@4.0.0-alpha.2/dist/css/figuration-rtl.min.css
+  css_rtl_hash: "sha384-+xaXUF2fdEUnov4vggj/feiAs6skFaogUAWQpm0xzSUOvJMDbPhdm52XEANNmWh4"
   jquery:       https://code.jquery.com/jquery-3.3.1.slim.min.js
   jquery_hash:  "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
   fontawe:      https://use.fontawesome.com/releases/v5.0.1/css/all.css
