@@ -6,6 +6,7 @@ CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end
 
 **This is the v4 development branch, currently in very-early alpha.  Not ready for production yet! Check out v3 at the link above!**
 
+**Documentation preview and examples for v4 at <https://figuration-org.github.io/figuration-preview/>.**
 
 ## Table of Contents
 
