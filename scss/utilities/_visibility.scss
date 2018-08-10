@@ -1,5 +1,5 @@
 // Visibility utilities
-@if $enable-utility-utility-visibility {
+@if $enable-utility-visibility {
     .invisible {
         @include invisible();
     }

@@ -1,48 +1,50 @@
 // stylelint-disable declaration-no-important
 
 // Display utilities
-@each $bp in $utility-display-breakpoints {
-    $bprule: breakpoint-designator($bp);
+@if $enable-utility-display {
+    @each $bp in $utility-display-breakpoints {
+        $bprule: breakpoint-designator($bp);
 
-    @include media-breakpoint-up($bp) {
-        @if $enable-utility-display-common {
-            .d#{$bprule}-none { display: none !important; }
-            .d#{$bprule}-block { display: block !important; }
-            .d#{$bprule}-flex { display: flex !important; }
-            .d#{$bprule}-inline { display: inline !important; }
-            .d#{$bprule}-inline-block { display: inline-block !important; }
-            .d#{$bprule}-inline-flex { display: inline-flex !important; }
+        @include media-breakpoint-up($bp) {
+            @if $enable-utility-display-common {
+                .d#{$bprule}-none { display: none !important; }
+                .d#{$bprule}-block { display: block !important; }
+                .d#{$bprule}-flex { display: flex !important; }
+                .d#{$bprule}-inline { display: inline !important; }
+                .d#{$bprule}-inline-block { display: inline-block !important; }
+                .d#{$bprule}-inline-flex { display: inline-flex !important; }
+            }
+            @if $enable-utility-display-table {
+                .d#{$bprule}-table { display: table !important; }
+                .d#{$bprule}-table-row { display: table-row !important; }
+                .d#{$bprule}-table-cell { display: table-cell !important; }
+            }
         }
-        @if $enable-utility-display-table {
-            .d#{$bprule}-table { display: table !important; }
-            .d#{$bprule}-table-row { display: table-row !important; }
-            .d#{$bprule}-table-cell { display: table-cell !important; }
-        }
-    }
 
-    // Skip largest breakpoint for down (equivalent to `.d-none`)
-    @if $enable-utility-display-down {
-        @if breakpoint-max($bp, $grid-breakpoints) != null {
-            .d-#{$bp}-down-none {
-                @include media-breakpoint-down($bp) {
-                    display: none !important;
+        // Skip largest breakpoint for down (equivalent to `.d-none`)
+        @if $enable-utility-display-down {
+            @if breakpoint-max($bp, $grid-breakpoints) != null {
+                .d-#{$bp}-down-none {
+                    @include media-breakpoint-down($bp) {
+                        display: none !important;
+                    }
                 }
             }
         }
     }
-}
 
-// Print display utilities
-@if $enable-utility-display-print {
-    @media print {
-        .print-none         { display: none !important; }
-        .print-block        { display: block !important; }
-        .print-flex         { display: flex !important; }
-        .print-inline-block { display: inline-block !important; }
-        .print-inline       { display: inline !important; }
-        .print-inline-flex  { display: inline-flex !important; }
-        .print-table        { display: table !important; }
-        .print-table-row    { display: table-row !important; }
-        .print-table-cell   { display: table-cell !important; }
+    // Print display utilities
+    @if $enable-utility-display-print {
+        @media print {
+            .print-none         { display: none !important; }
+            .print-block        { display: block !important; }
+            .print-flex         { display: flex !important; }
+            .print-inline-block { display: inline-block !important; }
+            .print-inline       { display: inline !important; }
+            .print-inline-flex  { display: inline-flex !important; }
+            .print-table        { display: table !important; }
+            .print-table-row    { display: table-row !important; }
+            .print-table-cell   { display: table-cell !important; }
+        }
     }
 }

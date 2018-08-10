@@ -1,112 +1,115 @@
 // stylelint-disable declaration-no-important
 
-// Perfect circle
-@if $enable-utility-radius-circle {
-    .radius-circle {
-        border-radius: 50% !important;
-    }
-}
-
-// Radius addition - Default size
-@if $enable-utility-radius-addition {
-    @include radius-sides($radius-border-radius);
-    @include radius-corners($radius-border-radius);
-}
-
-// Radius addition - Component sizes
-@if $enable-sizing {
-    @each $size, $dims in $utility-radius-sizes {
-        $sz-border-radius: map-get($dims, "border-radius");
-
-        @if $enable-utility-radius-addition {
-            @include radius-sides($sz-border-radius, $size);
-            @include radius-corners($sz-border-radius, $size);
+@if $enable-utility-radius {
+    // Perfect circle
+    @if $enable-utility-radius-circle {
+        .radius-circle {
+            border-radius: 50% !important;
         }
     }
-}
 
-// Radius removal
-@if $enable-utility-radius-removal {
-    @include radius-sides(0 !important, 0);
-    @include radius-corners(0 !important, 0);
-}
+    // Radius addition - Default size
+    @if $enable-utility-radius-addition {
+        @include radius-sides($radius-border-radius);
+        @include radius-corners($radius-border-radius);
+    }
 
+    // Radius addition - Component sizes
+    @if $enable-sizing {
+        @each $size, $dims in $utility-radius-sizes {
+            $sz-border-radius: map-get($dims, "border-radius");
 
-// Repsonsive border addition and removal
-@each $breakpoint in $utility-border-breakpoints {
-    $bprule: breakpoint-designator($breakpoint);
-
-    @include media-breakpoint-up($breakpoint) {
-        // Border addition
-        @if $enable-utility-border-addition {
-            .border#{$bprule} { border: $border-width solid $border-color !important; }
-            .border#{$bprule}-t,
-            .border#{$bprule}-y {
-                border-top: $border-width solid $border-color !important;
-            }
-            .border#{$bprule}-e,
-            .border#{$bprule}-x {
-                border-right: $border-width solid $border-color !important;
-            }
-            .border#{$bprule}-b,
-            .border#{$bprule}-y {
-                border-bottom: $border-width solid $border-color !important;
-            }
-            .border#{$bprule}-s,
-            .border#{$bprule}-x {
-                border-left: $border-width solid $border-color !important;
-            }
-        }
-
-        // Border removal
-        @if $enable-utility-border-removal {
-            .border#{$bprule}-0 { border: 0 !important; }
-            .border#{$bprule}-t-0,
-            .border#{$bprule}-y-0 {
-                border-top: 0 !important;
-            }
-            .border#{$bprule}-e-0,
-            .border#{$bprule}-x-0 {
-                border-right: 0 !important;
-            }
-            .border#{$bprule}-b-0,
-            .border#{$bprule}-y-0 {
-                border-bottom: 0 !important;
-            }
-            .border#{$bprule}-s-0,
-            .border#{$bprule}-x-0 {
-                border-left: 0 !important;
+            @if $enable-utility-radius-addition {
+                @include radius-sides($sz-border-radius, $size);
+                @include radius-corners($sz-border-radius, $size);
             }
         }
     }
-}
 
-// Contextual borders
-@if $enable-utility-border-colors {
-    @if (type-of($utility-border-colors) == "map" and length($utility-border-colors) != 0) {
-        @each $theme, $color in $utility-border-colors {
-            .border-#{$theme} {
-                border-color: $color !important;
-            }
-        }
+    // Radius removal
+    @if $enable-utility-radius-removal {
+        @include radius-sides(0 !important, 0);
+        @include radius-corners(0 !important, 0);
     }
 }
 
-// Palette colors
-@if $enable-palette and $enable-utility-border-palette {
-    $palette-colors-borders: $palette-colors !default;
-    $palette-levels-borders: $palette-levels !default;
+@if $enable-utility-border {
+    // Repsonsive border addition and removal
+    @each $breakpoint in $utility-border-breakpoints {
+        $bprule: breakpoint-designator($breakpoint);
 
-    @each $theme, $color in $palette-colors-borders {
-        @each $level in $palette-levels-borders {
-            .border-#{$theme}-#{$level} {
-                border-color: palette($color, $level) !important;
+        @include media-breakpoint-up($breakpoint) {
+            // Border addition
+            @if $enable-utility-border-addition {
+                .border#{$bprule} { border: $border-width solid $border-color !important; }
+                .border#{$bprule}-t,
+                .border#{$bprule}-y {
+                    border-top: $border-width solid $border-color !important;
+                }
+                .border#{$bprule}-e,
+                .border#{$bprule}-x {
+                    border-right: $border-width solid $border-color !important;
+                }
+                .border#{$bprule}-b,
+                .border#{$bprule}-y {
+                    border-bottom: $border-width solid $border-color !important;
+                }
+                .border#{$bprule}-s,
+                .border#{$bprule}-x {
+                    border-left: $border-width solid $border-color !important;
+                }
+            }
+
+            // Border removal
+            @if $enable-utility-border-removal {
+                .border#{$bprule}-0 { border: 0 !important; }
+                .border#{$bprule}-t-0,
+                .border#{$bprule}-y-0 {
+                    border-top: 0 !important;
+                }
+                .border#{$bprule}-e-0,
+                .border#{$bprule}-x-0 {
+                    border-right: 0 !important;
+                }
+                .border#{$bprule}-b-0,
+                .border#{$bprule}-y-0 {
+                    border-bottom: 0 !important;
+                }
+                .border#{$bprule}-s-0,
+                .border#{$bprule}-x-0 {
+                    border-left: 0 !important;
+                }
             }
         }
     }
-}
 
-// Special border colors
-@if $enable-utility-border-special {
-    .border-transparent { border-color: transparent !important; }
+    // Contextual borders
+    @if $enable-utility-border-colors {
+        @if (type-of($utility-border-colors) == "map" and length($utility-border-colors) != 0) {
+            @each $theme, $color in $utility-border-colors {
+                .border-#{$theme} {
+                    border-color: $color !important;
+                }
+            }
+        }
+    }
+
+    // Palette colors
+    @if $enable-palette and $enable-utility-border-palette {
+        $palette-colors-borders: $palette-colors !default;
+        $palette-levels-borders: $palette-levels !default;
+
+        @each $theme, $color in $palette-colors-borders {
+            @each $level in $palette-levels-borders {
+                .border-#{$theme}-#{$level} {
+                    border-color: palette($color, $level) !important;
+                }
+            }
+        }
+    }
+
+    // Special border colors
+    @if $enable-utility-border-special {
+        .border-transparent { border-color: transparent !important; }
+    }
 }

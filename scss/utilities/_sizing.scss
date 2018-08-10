@@ -1,15 +1,17 @@
 // stylelint-disable declaration-no-important
 
-// Width
-@if $enable-utility-sizing-width {
-    .w-auto { width: auto !important; }
-    .w-100 { width: 100% !important; }
-    .mw-100 { max-width: 100% !important; }
-}
+@if $enable-utility-sizing {
+    // Width
+    @if $enable-utility-sizing-width {
+        .w-auto { width: auto !important; }
+        .w-100 { width: 100% !important; }
+        .mw-100 { max-width: 100% !important; }
+    }
 
-// Height
-@if $enable-utility-sizing-height {
-    .h-auto { height: auto !important; }
-    .h-100 { height: 100% !important; }
-    .mh-100 { max-height: 100% !important; }
+    // Height
+    @if $enable-utility-sizing-height {
+        .h-auto { height: auto !important; }
+        .h-100 { height: 100% !important; }
+        .mh-100 { max-height: 100% !important; }
+    }
 }

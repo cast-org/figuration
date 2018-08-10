@@ -1,67 +1,85 @@
 // stylelint-disable declaration-no-important
 
-// Alignment
-.text-justify { text-align: justify; }
-.text-nowrap  { white-space: nowrap; }
-
-// Responsive alignment
-@each $breakpoint in $utility-text-align-breakpoints {
-    $bprule: breakpoint-designator($breakpoint);
-
-    @include media-breakpoint-up($breakpoint) {
-        .text#{$bprule}-start  { text-align: left !important; }
-        .text#{$bprule}-end    { text-align: right !important; }
-        .text#{$bprule}-center { text-align: center !important; }
+@if $enable-utility-text {
+    @if $enable-utility-text-justify {
+        .text-justify { text-align: justify; }
     }
-}
-
-// Transformation
-.text-lowercase  { text-transform: lowercase !important; }
-.text-uppercase  { text-transform: uppercase !important; }
-.text-capitalize { text-transform: capitalize !important; }
-
-// Weight and italics
-.font-weight-lighter { font-weight: $font-weight-lighter !important; }
-.font-weight-light   { font-weight: $font-weight-light !important; }
-.font-weight-normal  { font-weight: $font-weight-normal !important; }
-.font-weight-bold    { font-weight: $font-weight-bold !important; }
-.font-weight-bolder  { font-weight: $font-weight-bolder !important; }
-.font-italic         { font-style: italic !important; }
-
-// Font families
-.font-family-sans-serif { font-family: $font-family-sans-serif !important; }
-.font-family-serif      { font-family: $font-family-serif !important; }
-.font-family-monospace  { font-family: $font-family-monospace !important; }
-
-// Truncated text
-.text-truncate {
-    @include text-truncate();
-}
-
-// Contextual colors
-@if (type-of($utility-text-colors) == "map" and length($utility-text-colors) != 0) {
-    @each $theme, $color in $utility-text-colors {
-        @include text-emphasis-variant(".text-#{$theme}", $color, $level-delta-hover-color);
+    @if $enable-utility-text-nowrap {
+        .text-nowrap  { white-space: nowrap; }
     }
-}
 
-// Palette colors
-@if $enable-palette and $enable-utility-text-palette {
-    $palette-colors-text: $palette-colors !default;
-    $palette-levels-text: $palette-levels !default;
+    // Responsive alignment
+    @if $enable-utility-text-align {
+        @each $breakpoint in $utility-text-align-breakpoints {
+            $bprule: breakpoint-designator($breakpoint);
 
-    @each $theme, $color in $palette-colors-text {
-        @each $level in $palette-levels-text {
-            @include text-emphasis-palette-variant(".text-#{$theme}-#{$level}", $color, $level, $level-delta-hover-color);
+            @include media-breakpoint-up($breakpoint) {
+                .text#{$bprule}-start  { text-align: left !important; }
+                .text#{$bprule}-end    { text-align: right !important; }
+                .text#{$bprule}-center { text-align: center !important; }
+            }
         }
     }
-}
 
-// Special text colors
-@if $enable-utility-text-special {
-    .text-body { color: $body-color !important; }
-    .text-muted { color: $text-muted !important; }
-    .text-white { color: $white !important; }
-    .text-black { color: $black !important; }
-}
+    // Transformation
+    @if $enable-utility-text-transform {
+        .text-lowercase  { text-transform: lowercase !important; }
+        .text-uppercase  { text-transform: uppercase !important; }
+        .text-capitalize { text-transform: capitalize !important; }
+    }
 
+    // Weight and italics
+    @if $enable-utility-text-weight {
+        .font-weight-lighter { font-weight: $font-weight-lighter !important; }
+        .font-weight-light   { font-weight: $font-weight-light !important; }
+        .font-weight-normal  { font-weight: $font-weight-normal !important; }
+        .font-weight-bold    { font-weight: $font-weight-bold !important; }
+        .font-weight-bolder  { font-weight: $font-weight-bolder !important; }
+    }
+    @if $enable-utility-text-style {
+        .font-italic         { font-style: italic !important; }
+    }
+
+    // Font families
+    @if $enable-utility-text-family {
+        .font-family-sans-serif { font-family: $font-family-sans-serif !important; }
+        .font-family-serif      { font-family: $font-family-serif !important; }
+        .font-family-monospace  { font-family: $font-family-monospace !important; }
+    }
+
+    // Truncated text
+    @if $enable-utility-text-truncate {
+        .text-truncate {
+            @include text-truncate();
+        }
+    }
+
+    // Contextual colors
+    @if $enable-utility-text-colors {
+        @if (type-of($utility-text-colors) == "map" and length($utility-text-colors) != 0) {
+            @each $theme, $color in $utility-text-colors {
+                @include text-emphasis-variant(".text-#{$theme}", $color, $level-delta-hover-color);
+            }
+        }
+    }
+
+    // Palette colors
+    @if $enable-palette and $enable-utility-text-palette {
+        $palette-colors-text: $palette-colors !default;
+        $palette-levels-text: $palette-levels !default;
+
+        @each $theme, $color in $palette-colors-text {
+            @each $level in $palette-levels-text {
+                @include text-emphasis-palette-variant(".text-#{$theme}-#{$level}", $color, $level, $level-delta-hover-color);
+            }
+        }
+    }
+
+    // Special text colors
+    @if $enable-utility-text-special {
+        .text-body { color: $body-color !important; }
+        .text-muted { color: $text-muted !important; }
+        .text-white { color: $white !important; }
+        .text-black { color: $black !important; }
+    }
+}

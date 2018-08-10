@@ -1,6 +1,6 @@
 // stylelint-disable declaration-no-important
 
-@if $enable-utility-utility-valign {
+@if $enable-utility-valign {
     @each $breakpoint in $utility-valign-breakpoints {
         $bprule: breakpoint-designator($breakpoint);
 
