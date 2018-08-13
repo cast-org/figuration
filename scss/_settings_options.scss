@@ -4,17 +4,16 @@ $enable-utility-bg-colors:                  true !default;  // true
 $enable-utility-bg-palette:                 true !default;  // true
 $enable-utility-bg-special:                 true !default;  // true
 
-$enable-utility-radius:                     true !default;  // true
-$enable-utility-radius-circle:              true !default;  // true
-$enable-utility-radius-addition:            true !default;  // true
-$enable-utility-radius-removal:             true !default;  // true
-
 $enable-utility-border:                     true !default;  // true
 $enable-utility-border-addition:            true !default;  // true
 $enable-utility-border-removal:             true !default;  // true
 $enable-utility-border-colors:              true !default;  // true
 $enable-utility-border-palette:             true !default;  // true
 $enable-utility-border-special:             true !default;  // true
+$enable-utility-border-radius-circle:       true !default;  // true
+$enable-utility-border-radius-addition:     true !default;  // true
+$enable-utility-border-radius-component:    true !default;  // true
+$enable-utility-border-radius-removal:      true !default;  // true
 
 $enable-utility-clearfix:                   true !default;  // true
 

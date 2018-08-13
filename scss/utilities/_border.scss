@@ -1,15 +1,15 @@
 // stylelint-disable declaration-no-important
 
-@if $enable-utility-radius {
+@if $enable-utility-border {
     // Perfect circle
-    @if $enable-utility-radius-circle {
+    @if $enable-utility-border-radius-circle {
         .radius-circle {
             border-radius: 50% !important;
         }
     }
 
     // Radius addition - Default size
-    @if $enable-utility-radius-addition {
+    @if $enable-utility-border-radius-addition {
         @include radius-sides($radius-border-radius);
         @include radius-corners($radius-border-radius);
     }
@@ -19,7 +19,7 @@
         @each $size, $dims in $utility-radius-sizes {
             $sz-border-radius: map-get($dims, "border-radius");
 
-            @if $enable-utility-radius-addition {
+            @if $enable-utility-border-radius-component {
                 @include radius-sides($sz-border-radius, $size);
                 @include radius-corners($sz-border-radius, $size);
             }
@@ -27,13 +27,12 @@
     }
 
     // Radius removal
-    @if $enable-utility-radius-removal {
+    @if $enable-utility-border-radius-removal {
         @include radius-sides(0 !important, 0);
         @include radius-corners(0 !important, 0);
     }
-}
 
-@if $enable-utility-border {
+
     // Repsonsive border addition and removal
     @each $breakpoint in $utility-border-breakpoints {
         $bprule: breakpoint-designator($breakpoint);
