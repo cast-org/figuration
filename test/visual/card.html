@@ -20,7 +20,9 @@ Holder.addTheme("gray", {
     font: 'sans-serif',
     fontweight: "normal"
 });
+</script>
 
+<style>
 .card-deck-col {
     justify-content: flex-start;
     flex-flow: row wrap;
@@ -44,18 +46,17 @@ Holder.addTheme("gray", {
        width: calc(25% - 2rem);
     }
 }
-</script>
 
-<style>
-.container {
-    border: 1px solid red;
-}
-
-[class^="col-"] {
+.row-segements [class^="col-"] {
     padding-top: .75rem;
     padding-bottom: .75rem;
     background-color: rgba(34,68,102,.15);
     border: 1px solid rgba(34,68,102,.2);
+}
+
+.card-header,
+.card-footer {
+    background-color: red;
 }
 </style>
 
@@ -65,9 +66,68 @@ Holder.addTheme("gray", {
 <div class="container">
     <h1>Card</h1>
 
+    <h2>Horizontal Card</h2>
+    <div class="card">
+        <div class="card-row">
+            <div class="col-12 col-md-5 card-img">
+                <img src="../../docs/assets/img/test.gif" class="img-fluid card-img-radius" alt="Placeholder image">
+            </div>
+            <!-- using `.col-md` due to pixel rounding -->
+            <div class="col-md card-col">
+                <div class="card-header">Header</div>
+                <div class="card-body">Card Body</div>
+                <div class="card-footer">Footer</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-row-reverse">
+            <div class="col-12 col-md-5 card-img">
+                <img src="../../docs/assets/img/test.gif" class="img-fluid card-img-radius" alt="Placeholder image">
+            </div>
+            <!-- using `.col-md` due to pixel rounding -->
+            <div class="col-md card-col">
+                <div class="card-header">Header</div>
+                <div class="card-body">Card Body</div>
+                <div class="card-footer">Footer</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-row">
+            <!-- using `.col-md` due to pixel rounding  -->
+            <div class="col-md card-col">
+                <div class="card-header">Header</div>
+                <div class="card-body">Card Body</div>
+                <div class="card-footer">Footer</div>
+            </div>
+            <div class="col-12 col-md-5 card-img">
+                <img src="../../docs/assets/img/test.gif" class="img-fluid card-img-radius" alt="Placeholder image">
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-row-reverse">
+            <!-- using `.col-md` due to pixel rounding  -->
+            <div class="col-md card-col">
+                <div class="card-header">Header</div>
+                <div class="card-body">Card Body</div>
+                <div class="card-footer">Footer</div>
+            </div>
+            <div class="col-12 col-md-5 card-img">
+                <img src="../../docs/assets/img/test.gif" class="img-fluid card-img-radius" alt="Placeholder image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-1 border border-danger">
     <h2>Deck</h2>
 
-    <div class="row">
+    <div class="row row-segements">
         <div class="col-4">.col-4</div>
         <div class="col-4">.col-4</div>
         <div class="col-4">.col-4</div>
@@ -116,7 +176,7 @@ Holder.addTheme("gray", {
 
     <hr />
 
-    <div class="row">
+    <div class="row row-segements">
         <div class="col-3">.col-3</div>
         <div class="col-3">.col-3</div>
         <div class="col-3">.col-3</div>

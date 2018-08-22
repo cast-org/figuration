@@ -44,6 +44,12 @@
     }
 }
 
+.card-col {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
 .card-body {
     // Enable `flex-grow: 1` for decks and groups so that card blocks take up
     // as much space as possible, ensuring footers are aligned to the bottom.
@@ -76,21 +82,134 @@
     margin-bottom: 0; // Removes the default margin-bottom of <hN>
     background-color: $card-cap-bg;
     border-bottom: $card-border-width solid $card-cap-border-color;
+    @include border-radius($card-inner-border-radius);
 
-    &:first-child {
-        @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
-    }
+    // &:not(:first-child) {
+    //     @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
+    // }
 }
 
 .card-footer {
     padding: $card-cap-padding-y $card-cap-padding-x;
     background-color: $card-cap-bg;
     border-top: $card-border-width solid $card-cap-border-color;
+    @include border-radius($card-inner-border-radius);
 
-    &:last-child {
-        @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
+    // &:last-child {
+    //     @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
+    // }
+}
+
+// Inner border radius resets for header and footer
+// stylelint-disable no-duplicate-selectors
+.card-header,
+.card-footer {
+    &:not(:first-child) {
+        @include border-top-radius(0);
+    }
+    &:not(:last-child) {
+        @include border-bottom-radius(0);
     }
 }
+// stylelint-enable no-duplicate-selectors
+
+// Responsive Horizontal Cards
+// Special replacement for our grid system's `.row` for horizontal card layouts.
+// Also removed horizontal padding from all immediate children columns (to prevent runaway style inheritance).
+.card-row,
+.card-row-reverse {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 1px; // Tweak for IE keeping image aspect ratios
+    margin-right: 0;
+    margin-left: 0;
+
+    > .col,
+    > [class*="col-"] {
+        padding-right: 0;
+        padding-left: 0;
+
+    }
+}
+// stylelint-disable no-duplicate-selectors
+.card-row,
+.card-row-reverse {
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        $bprule: breakpoint-designator($breakpoint);
+
+        @include media-breakpoint-down($breakpoint) {
+            > .col#{$bprule}:not(:first-child),
+            > [class*="col#{$bprule}-"]:not(:first-child) {
+                > .card-header,
+                > .card-footer {
+                    @include border-top-radius(0);
+                }
+            }
+            > .col#{$bprule}:not(:last-child),
+            > [class*="col#{$bprule}-"]:not(:last-child) {
+                > .card-header,
+                > .card-footer {
+                    @include border-bottom-radius(0);
+                }
+            }
+        }
+    }
+}
+
+.card-row {
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        $bprule: breakpoint-designator($breakpoint);
+
+        // Skip smallest breakpoint
+        @if breakpoint-min($breakpoint, $grid-breakpoints) != null {
+            @include media-breakpoint-up($breakpoint) {
+                > .col#{$bprule}:not(:first-child),
+                > [class*="col#{$bprule}-"]:not(:first-child) {
+                    > .card-header,
+                    > .card-footer {
+                        @include border-start-radius(0);
+                    }
+                }
+                > .col#{$bprule}:not(:last-child),
+                > [class*="col#{$bprule}-"]:not(:last-child) {
+                    > .card-header,
+                    > .card-footer {
+                        @include border-end-radius(0);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.card-row-reverse {
+    flex-direction: row-reverse;
+
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        $bprule: breakpoint-designator($breakpoint);
+
+        // Skip smallest breakpoint
+        @if breakpoint-min($breakpoint, $grid-breakpoints) != null {
+            @include media-breakpoint-up($breakpoint) {
+                > .col#{$bprule}:not(:first-child),
+                > [class*="col#{$bprule}-"]:not(:first-child) {
+                    > .card-header,
+                    > .card-footer {
+                        @include border-end-radius(0);
+                    }
+                }
+                > .col#{$bprule}:not(:last-child),
+                > [class*="col#{$bprule}-"]:not(:last-child) {
+                    > .card-header,
+                    > .card-footer {
+                        @include border-start-radius(0);
+                    }
+                }
+            }
+        }
+    }
+}
+// stylelint-enable no-duplicate-selectors
 
 // Header navs
 .card-header-tabs {
@@ -124,140 +243,7 @@
 .card-img-bottom {
     @include border-bottom-radius($card-inner-border-radius);
 }
-.card-img-radius {
-    @include border-radius($card-inner-border-radius);
-}
 
-
-// Responsive Horizontal Cards
-// Special replacement for our grid system's `.row` for horizontal card layouts.
-// Also removed horizontal padding from all immediate children columns (to prevent runaway style inheritance).
-.card-row,
-.card-row-reverse {
-    display: flex;
-    flex-wrap: wrap;
-    min-height: 1px; // Tweak for IE keeping image aspect ratios
-    margin-right: 0;
-    margin-left: 0;
-
-    > .col,
-    > [class*="col-"] {
-        padding-right: 0;
-        padding-left: 0;
-
-    }
-}
-
-// stylelint-disable-next-line no-duplicate-selectors
-.card-row-reverse {
-    flex-direction: row-reverse;
-}
-
-.card-col {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-}
-
-// stylelint-disable no-duplicate-selectors
-@if $enable-rounded {
-    .card-row,
-    .card-row-reverse {
-        @each $breakpoint in map-keys($grid-breakpoints) {
-            $bprule: breakpoint-designator($breakpoint);
-
-            @include media-breakpoint-down($breakpoint) {
-                > .col#{$bprule}:not(:first-child),
-                > [class*="col#{$bprule}-"]:not(:first-child) {
-                    > .card-header {
-                        @include border-radius(0);
-                    }
-                    > .card-img-radius {
-                        @include border-top-radius(0);
-                    }
-                }
-                > .col#{$bprule}:not(:last-child),
-                > [class*="col#{$bprule}-"]:not(:last-child) {
-                    > .card-footer {
-                        @include border-radius(0);
-                    }
-                    > .card-img-radius {
-                        @include border-bottom-radius(0);
-                    }
-                }
-            }
-        }
-    }
-
-    .card-row {
-        @each $breakpoint in map-keys($grid-breakpoints) {
-            $bprule: breakpoint-designator($breakpoint);
-
-            // Skip smallest breakpoint
-            @if breakpoint-min($breakpoint, $grid-breakpoints) != null {
-                @include media-breakpoint-up($breakpoint) {
-                    > .col#{$bprule}:not(:first-child),
-                    > [class*="col#{$bprule}-"]:not(:first-child) {
-                        > .card-header,
-                        > .card-img-radius {
-                            @include border-top-start-radius(0);
-                        }
-                        > .card-footer,
-                        > .card-img-radius {
-                            @include border-bottom-start-radius(0);
-                        }
-                    }
-                    > .col#{$bprule}:not(:last-child),
-                    > [class*="col#{$bprule}-"]:not(:last-child) {
-                        > .card-header,
-                        > .card-img-radius {
-                            @include border-top-end-radius(0);
-                        }
-                        > .card-footer,
-                        > .card-img-radius {
-                            @include border-bottom-end-radius(0);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    .card-row-reverse {
-        @each $breakpoint in map-keys($grid-breakpoints) {
-            $bprule: breakpoint-designator($breakpoint);
-
-            // Skip smallest breakpoint
-            @if breakpoint-min($breakpoint, $grid-breakpoints) != null {
-                @include media-breakpoint-up($breakpoint) {
-                    > .col#{$bprule}:not(:first-child),
-                    > [class*="col#{$bprule}-"]:not(:first-child) {
-                        > .card-header,
-                        > .card-img-radius {
-                            @include border-top-end-radius(0);
-                        }
-                        > .card-footer,
-                        > .card-img-radius {
-                            @include border-bottom-end-radius(0);
-                        }
-                    }
-                    > .col#{$bprule}:not(:last-child),
-                    > [class*="col#{$bprule}-"]:not(:last-child) {
-                        > .card-header,
-                        > .card-img-radius {
-                            @include border-top-start-radius(0);
-                        }
-                        > .card-footer,
-                        > .card-img-radius {
-                            @include border-bottom-start-radius(0);
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-// stylelint-enable no-duplicate-selectors
 
 // Card deck
 // 1. Individual cards have margin-bottom by default.

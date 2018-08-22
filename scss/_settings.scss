@@ -1041,9 +1041,8 @@ $card-deck-gutter-widths: (
     xl: map-get($grid-gutter-widths, xl)
 ) !default;
 
-$card-columns-count:        3 !default;
-$card-columns-column-gap:   1.25rem !default;
-
+$card-columns-count:            3 !default;
+$card-columns-column-gap:       1.25rem !default;
 
 // Tooltips
 // =====
