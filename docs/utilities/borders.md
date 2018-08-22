@@ -365,7 +365,7 @@ Here are the mixins related to this grouping of utility classes that we use to h
 Apply a border radius to an element.
 
 {% highlight sass %}
-@include border-radius($radius)
+@include border-radius($radius);
 {% endhighlight %}
 
 <div class="table-scroll">
@@ -397,7 +397,7 @@ Apply a border radius to an element.
 Apply a border radius the corners on the top side of an element.
 
 {% highlight sass %}
-@include border-top-radius($radius)
+@include border-top-radius($radius);
 {% endhighlight %}
 
 <div class="table-scroll">
@@ -429,7 +429,7 @@ Apply a border radius the corners on the top side of an element.
 Apply a border radius the corners on the end side of an element.
 
 {% highlight sass %}
-@include border-end-radius($radius)
+@include border-end-radius($radius);
 {% endhighlight %}
 
 <div class="table-scroll">
@@ -461,7 +461,7 @@ Apply a border radius the corners on the end side of an element.
 Apply a border radius the corners on the bottom side of an element.
 
 {% highlight sass %}
-@include border-bottom-radius($radius)
+@include border-bottom-radius($radius);
 {% endhighlight %}
 
 <div class="table-scroll">
@@ -493,7 +493,7 @@ Apply a border radius the corners on the bottom side of an element.
 Apply a border radius the corners on the start side of an element.
 
 {% highlight sass %}
-@include border-start-radius($radius)
+@include border-start-radius($radius);
 {% endhighlight %}
 
 <div class="table-scroll">
@@ -525,7 +525,7 @@ Apply a border radius the corners on the start side of an element.
 Apply a border radius on the top start corner of an element.
 
 {% highlight sass %}
-@include border-top-start-radius($radius)
+@include border-top-start-radius($radius);
 {% endhighlight %}
 
 <div class="table-scroll">
@@ -557,7 +557,7 @@ Apply a border radius on the top start corner of an element.
 Apply a border radius on the top end corner of an element.
 
 {% highlight sass %}
-@include border-top-end-radius($radius)
+@include border-top-end-radius($radius);
 {% endhighlight %}
 
 <div class="table-scroll">
@@ -589,7 +589,7 @@ Apply a border radius on the top end corner of an element.
 Apply a border radius on the bottom start corner of an element.
 
 {% highlight sass %}
-@include border-bottom-start-radius($radius)
+@include border-bottom-start-radius($radius);
 {% endhighlight %}
 
 <div class="table-scroll">
@@ -621,7 +621,7 @@ Apply a border radius on the bottom start corner of an element.
 Apply a border radius on the bottom end corner of an element.
 
 {% highlight sass %}
-@include border-bottom-end-radius($radius)
+@include border-bottom-end-radius($radius);
 {% endhighlight %}
 
 <div class="table-scroll">
@@ -653,7 +653,7 @@ Apply a border radius on the bottom end corner of an element.
 Generate component size border radius utility classes for use with an elements sides.
 
 {% highlight sass %}
-@include radius-sides($radius, $size)
+@include radius-sides($radius, $size);
 {% endhighlight %}
 
 <div class="table-scroll">
@@ -693,7 +693,7 @@ Generate component size border radius utility classes for use with an elements s
 Generate component size border radius utility classes for use with an elements individual corners.
 
 {% highlight sass %}
-@include radius-corners($radius, $size)
+@include radius-corners($radius, $size);
 {% endhighlight %}
 
 <div class="table-scroll">
