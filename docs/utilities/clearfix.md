@@ -106,7 +106,7 @@ Here are the mixins related to this grouping of utility classes that we use to h
 Apply a clearfix to an element.
 
 {% highlight sass %}
-@include clerafix();
+@include clearfix();
 {% endhighlight %}
 
 #### clearfix-disable

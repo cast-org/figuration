@@ -612,3 +612,101 @@ To prevent an element from growing or shrinking, use the `.flex-none` utility.
 </div>
 {% endexample %}
 </div>
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-utility-flex</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the flex utility classes.
+                    Smaller segements of the flex utilities can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-flex-order</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the flex order utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-flex-direction</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the flex direction utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-flex-wrap</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the flex wrap utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-flex-justify</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the flex <code>justify-content</code> utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-flex-items</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the flex <code>align-items</code> utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-flex-content</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the flex <code>align-content</code> utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-flex-self</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the flex <code>align-self</code> utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-flex-sizing</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the flex sizing utility classes.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.

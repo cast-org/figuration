@@ -252,7 +252,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
-                    Enable the generation of the theme color border utility classes.
+                    Enable the generation of the theme border color utility classes.
                 </td>
             </tr>
             <tr>
@@ -260,7 +260,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
-                    Enable the generation of the palette color border utility classes.
+                    Enable the generation of the palette border color utility classes.
                 </td>
             </tr>
             <tr>
@@ -268,7 +268,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
-                    Enable the generation of the transparent color border utility classes.
+                    Enable the generation of the transparent border color utility class.
                 </td>
             </tr>
             <tr>
@@ -348,7 +348,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td>list</td>
                 <td><code>$palette-levels</code></td>
                 <td>
-                    List of palette levels to use with palette colors.
+                    List of palette levels to use with palette border colors.
                 </td>
             </tr>
         </tbody>

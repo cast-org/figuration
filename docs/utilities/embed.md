@@ -79,3 +79,75 @@ Additional aspect ratio classes can also be disabled in your custom settings usi
 {% highlight scss %}
 $embed-fluid-aspect-ratios: false;
 {% endhighlight %}
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-utility-embed</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the embed utility classes.
+                    Smaller segements of the embed utilities can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-embed-fluid</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the fluid embed utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-embed-fullscreen</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the fullscreen overrides for embed utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$embed-fluid-default-ratio</code></td>
+                <td>string</td>
+                <td><code>percentage(9 / 16)</code></td>
+                <td>
+                    The default embed aspect ratio.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$embed-fluid-aspect-ratios</code></td>
+                <td>list</td>
+                <td><pre><code>(
+    (21, 9),
+    (16, 9),
+    (4, 3),
+    (1, 1)
+)</code></pre>
+                </td>
+                <td>
+                    Additional embed aspect ratios.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.
