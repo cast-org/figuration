@@ -54,3 +54,52 @@ You can also use the `.mw-100` and `.mh-100`, to set `max-width: 100%;` or `max-
 ## Auto Width/Height
 
 In those cases when you need to reset the dimension of an element to `auto`, you can use `.w-auto` or `.h-auto`.
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-utility-sizing</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the sizing utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-sizing-width</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the width sizing utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-sizing-height</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the height sizing utility classes.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.

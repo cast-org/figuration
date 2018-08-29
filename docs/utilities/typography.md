@@ -104,3 +104,261 @@ Alter the font family for a section of text with
 <p class="font-family-serif">This is an example of the serif font.</p>
 <p class="font-family-monospace">This is an example of the monospace font.</p>
 {% endexample %}
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-utility-text</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the typography utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-text-justify</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the text justify utility class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-text-nowrap</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the text nowrap utility class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-text-align</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the text alignment utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-text-transform</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the text transform utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-text-truncate</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the text truncate utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-text-weight</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the font weight utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-text-style</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the font style utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-text-family</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the font family utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-text-colors</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the theme text color utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-text-palette</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the palette text color utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-text-special</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the body, black, white, and muted background color utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$utility-text-colors</code></td>
+                <td>map</td>
+                <td><code>$base-colors</code></td>
+                <td>
+                    Themed text colors.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$palette-colors-text</code></td>
+                <td>map</td>
+                <td><code>$palette-colors</code></td>
+                <td>
+                    Palette-based text colors.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$palette-levels-text</code></td>
+                <td>list</td>
+                <td><code>$palette-levels</code></td>
+                <td>
+                    List of palette levels to use with palette text colors.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+Here are the mixins related to this grouping of utility classes that we use to help generate our CSS.  You can also uses these mixins to generate your own custom components or utilities.
+
+#### text-truncate
+{:.no_toc}
+
+Visually truncate a line of text.
+
+{% highlight sass %}
+@include text-truncate();
+{% endhighlight %}
+
+#### text-emphasis-variant
+{:.no_toc}
+
+Generate a text color rule with a hover/focus state when used as an anchor using the palette system.
+
+{% highlight sass %}
+@include text-emphasis-variant($parent, $color, $level-delta);
+{% endhighlight %}
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Argument</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$parent</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
+                <td>
+                    Designated CSS rule.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$color</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
+                <td>
+                    Base color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$level-delta</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
+                <td>
+                    Alter palette <code>$level</code> to mix base color to for hover/focus states when used as an anchor, Uses <code>500</code> as the base palette level.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+#### text-emphasis-palette-variant
+{:.no_toc}
+
+Generate a text color rule with a hover/focus state when used as an anchor using the palette system.
+
+{% highlight sass %}
+@include text-emphasis-palette-variant($parent, $color, $level, $level-delta);
+{% endhighlight %}
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Argument</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$parent</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
+                <td>
+                    Designated CSS rule.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$color</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
+                <td>
+                    Base color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$level</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
+                <td>
+                    Palette level to mix base color to.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$level-delta</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
+                <td>
+                    Alter palette <code>$level</code> to mix base color to for hover/focus states when used as an anchor.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

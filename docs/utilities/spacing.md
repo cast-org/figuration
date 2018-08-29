@@ -141,3 +141,106 @@ In some cases, you may also have to adjust the padding on the parent container o
 </div>
 {% endexample %}
 </div>
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-utility-spacing</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the spacing utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-spacing-padding</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the padding utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-spacing-margin</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the margin utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-spacing-margin-auto</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the auto maring utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-spacing-margin-negative</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the negative margin utility classes.
+                </td>
+            </tr>
+             <tr>
+                <td><code>$spacer</code></td>
+                <td>map</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Base spacer dimension.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$spacers</code></td>
+                <td>map</td>
+                <td><pre><code>"0":    0,
+"0_25": ($spacer * .25),
+"0_5":  ($spacer * .5),
+"1":    $spacer,
+"1_5":  ($spacer * 1.5),
+"2":    ($spacer * 2)</code></pre>
+                </td>
+                <td>
+                    Map of sizing append names and rules to be generated.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$spacers-negative</code></td>
+                <td>map</td>
+                <td><code>$spacers</code></td>
+                <td>
+                    Map of negative margin sizing append names and rules to be generated.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$spacers-negative-prepend</code></td>
+                <td>string</td>
+                <td><code>n</code></td>
+                <td>
+                    The string prepended to the name to designate negative margin classes.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.
