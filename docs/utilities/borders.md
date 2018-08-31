@@ -650,7 +650,7 @@ Apply a border radius on the bottom end corner of an element.
 #### radius-sides
 {:.no_toc}
 
-Generate component size border radius utility classes for use with an elements sides.
+Generate component size border radius utility classes for use with an element's sides.
 
 {% highlight sass %}
 @include radius-sides($radius, $size);
@@ -690,7 +690,7 @@ Generate component size border radius utility classes for use with an elements s
 #### radius-corners
 {:.no_toc}
 
-Generate component size border radius utility classes for use with an elements individual corners.
+Generate component size border radius utility classes for use with an element's individual corners.
 
 {% highlight sass %}
 @include radius-corners($radius, $size);
