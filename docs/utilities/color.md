@@ -135,3 +135,173 @@ If the [color palette]({{ site.baseurl }}/content/color/) is enabled, any color 
 <span class="border border-primary-200"></span>
 {% endexample %}
 </div>
+
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-utility-bg-colors</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the theme background color utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-bg-palette</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the palette background color utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-bg-special</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the body, black, white, and transparent background color utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-border-colors</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the theme border color utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-border-palette</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the palette border color utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-border-special</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the transparent border color utility class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-text-colors</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the theme text color utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-text-palette</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the palette text color utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-text-special</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the body, black, white, and muted background color utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$utility-bg-colors</code></td>
+                <td>map</td>
+                <td><code>$base-colors</code></td>
+                <td>
+                    Themed background colors.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$palette-colors-bg</code></td>
+                <td>map</td>
+                <td><code>$palette-colors</code></td>
+                <td>
+                    Palette-based background colors.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$palette-levels-bg</code></td>
+                <td>list</td>
+                <td><code>$palette-levels</code></td>
+                <td>
+                    List of palette levels to use with palette background colors.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$utility-border-colors</code></td>
+                <td>map</td>
+                <td><code>$base-colors</code></td>
+                <td>
+                    Themed border colors.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$palette-colors-borders</code></td>
+                <td>map</td>
+                <td><code>$palette-colors</code></td>
+                <td>
+                    Palette-based border colors.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$palette-levels-borders</code></td>
+                <td>list</td>
+                <td><code>$palette-levels</code></td>
+                <td>
+                    List of palette levels to use with palette colors.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$utility-text-colors</code></td>
+                <td>map</td>
+                <td><code>$base-colors</code></td>
+                <td>
+                    Themed text colors.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$palette-colors-text</code></td>
+                <td>map</td>
+                <td><code>$palette-colors</code></td>
+                <td>
+                    Palette-based text colors.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$palette-levels-text</code></td>
+                <td>list</td>
+                <td><code>$palette-levels</code></td>
+                <td>
+                    List of palette levels to use with palette text colors.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.

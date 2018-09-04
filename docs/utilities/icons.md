@@ -96,3 +96,221 @@ Use a generic close icon for dismissing content like modals and alerts. **Be sur
     <span aria-hidden="true">&times;</span>
 </a>
 {% endexample %}
+
+## SASS Reference
+
+### Variables
+
+No cariables available.
+
+### Mixins
+
+Here are the mixins related to this grouping of utility classes that we use to help generate our CSS.  You can also uses these mixins to generate your own custom components or utilities.
+
+#### caret
+{:.no_toc}
+
+Build the base caret icon.
+
+{% highlight sass %}
+@include caret($direction, $width, $color);
+{% endhighlight %}
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Argument</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$direction</code></td>
+                <td>string</td>
+                <td><code>down</code></td>
+                <td>
+                    Direction the caret should point.  Options are <code>up</code>, <code>down</code>,<code>start</code>, or <code>end</code>.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$width</code></td>
+                <td>string</td>
+                <td><code>$caret-border-width</code></td>
+                <td>
+                    Width of the borders used to size the caret.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$color</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
+                <td>
+                    The color of the caret.  A <code>null</code> value will inhterit the font color.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+#### caret-up
+{:.no_toc}
+
+Alter the base caret to point in the up direction. Uuseful for a `hover` or `active` state.
+
+{% highlight sass %}
+@include caret-up($width, $color);
+{% endhighlight %}
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Argument</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$width</code></td>
+                <td>string</td>
+                <td><code>$caret-border-width</code></td>
+                <td>
+                    Width of the borders used to size the caret.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$color</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
+                <td>
+                    The color of the caret.  A <code>null</code> value will inhterit the font color.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+#### caret-down
+{:.no_toc}
+
+Alter the base caret to point in the down direction. Uuseful for a `hover` or `active` state.
+
+{% highlight sass %}
+@include caret-down($width, $color);
+{% endhighlight %}
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Argument</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$width</code></td>
+                <td>string</td>
+                <td><code>$caret-border-width</code></td>
+                <td>
+                    Width of the borders used to size the caret.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$color</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
+                <td>
+                    The color of the caret.  A <code>null</code> value will inhterit the font color.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+#### caret-start
+{:.no_toc}
+
+Alter the base caret to point in the start direction. Uuseful for a `hover` or `active` state.
+
+{% highlight sass %}
+@include caret-start($width, $color);
+{% endhighlight %}
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Argument</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$width</code></td>
+                <td>string</td>
+                <td><code>$caret-border-width</code></td>
+                <td>
+                    Width of the borders used to size the caret.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$color</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
+                <td>
+                    The color of the caret.  A <code>null</code> value will inhterit the font color.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+#### caret-end
+{:.no_toc}
+
+Alter the base caret to point in the end direction. Uuseful for a `hover` or `active` state.
+
+{% highlight sass %}
+@include caret-end($width, $color);
+{% endhighlight %}
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Argument</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$width</code></td>
+                <td>string</td>
+                <td><code>$caret-border-width</code></td>
+                <td>
+                    Width of the borders used to size the caret.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$color</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
+                <td>
+                    The color of the caret.  A <code>null</code> value will inhterit the font color.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

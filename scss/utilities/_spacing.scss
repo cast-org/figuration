@@ -1,80 +1,88 @@
 // stylelint-disable declaration-no-important
 
-// Margin and Padding
-@each $breakpoint in $utility-spacing-breakpoints {
-    $bprule: breakpoint-designator($breakpoint);
+@if $enable-utility-spacing {
+    // Margin and Padding
+    @each $breakpoint in $utility-spacing-breakpoints {
+        $bprule: breakpoint-designator($breakpoint);
 
-    @include media-breakpoint-up($breakpoint) {
-        @each $prop, $abbrev in (margin: m, padding: p) {
-            @each $size, $length in $spacers {
-                .#{$abbrev}#{$bprule}-#{$size} {
-                    #{$prop}: $length !important;
-                }
-                .#{$abbrev}t#{$bprule}-#{$size},
-                .#{$abbrev}y#{$bprule}-#{$size} {
-                    #{$prop}-top: $length !important;
-                }
-                .#{$abbrev}e#{$bprule}-#{$size},
-                .#{$abbrev}x#{$bprule}-#{$size} {
-                    #{$prop}-right: $length !important;
-                }
-                .#{$abbrev}b#{$bprule}-#{$size},
-                .#{$abbrev}y#{$bprule}-#{$size} {
-                    #{$prop}-bottom: $length !important;
-                }
-                .#{$abbrev}s#{$bprule}-#{$size},
-                .#{$abbrev}x#{$bprule}-#{$size} {
-                    #{$prop}-left: $length !important;
+        @include media-breakpoint-up($breakpoint) {
+            @each $prop, $abbrev in (margin: m, padding: p) {
+                @if ($abbrev == m and $enable-utility-spacing-margin) or ($abbrev == p and $enable-utility-spacing-padding) {
+                    @each $size, $length in $spacers {
+                        .#{$abbrev}#{$bprule}-#{$size} {
+                            #{$prop}: $length !important;
+                        }
+                        .#{$abbrev}t#{$bprule}-#{$size},
+                        .#{$abbrev}y#{$bprule}-#{$size} {
+                            #{$prop}-top: $length !important;
+                        }
+                        .#{$abbrev}e#{$bprule}-#{$size},
+                        .#{$abbrev}x#{$bprule}-#{$size} {
+                            #{$prop}-right: $length !important;
+                        }
+                        .#{$abbrev}b#{$bprule}-#{$size},
+                        .#{$abbrev}y#{$bprule}-#{$size} {
+                            #{$prop}-bottom: $length !important;
+                        }
+                        .#{$abbrev}s#{$bprule}-#{$size},
+                        .#{$abbrev}x#{$bprule}-#{$size} {
+                            #{$prop}-left: $length !important;
+                        }
+                    }
                 }
             }
-        }
 
-        // Negative (or inverse) margins - negative padding does not exist
-        // These variants get a 'n' prepended to the size so
-        // `.mb-n1` is the negative variant of `.mb-1`
-        @each $size, $length in $spacers {
-            @if not($length == 0) {
-                .m#{$bprule}-#{$spacer-negative-prepend}#{$size} {
-                    margin: ($length * -1) !important;
-                }
-                .mt#{$bprule}-#{$spacer-negative-prepend}#{$size},
-                .my#{$bprule}-#{$spacer-negative-prepend}#{$size} {
-                    margin-top: ($length * -1) !important;
-                }
-                .me#{$bprule}-#{$spacer-negative-prepend}#{$size},
-                .mx#{$bprule}-#{$spacer-negative-prepend}#{$size} {
-                    margin-right: ($length * -1) !important;
-                }
-                .mb#{$bprule}-#{$spacer-negative-prepend}#{$size},
-                .my#{$bprule}-#{$spacer-negative-prepend}#{$size} {
-                    margin-bottom: ($length * -1) !important;
-                }
-                .ms#{$bprule}-#{$spacer-negative-prepend}#{$size},
-                .mx#{$bprule}-#{$spacer-negative-prepend}#{$size} {
-                    margin-left: ($length * -1) !important;
+            // Negative (or inverse) margins - negative padding does not exist
+            // These variants get a 'n' prepended to the size so
+            // `.mb-n1` is the negative variant of `.mb-1`
+            @if $enable-utility-spacing-margin-negative {
+                @each $size, $length in $spacers-negative {
+                    @if not($length == 0) {
+                        .m#{$bprule}-#{$spacers-negative-prepend}#{$size} {
+                            margin: ($length * -1) !important;
+                        }
+                        .mt#{$bprule}-#{$spacers-negative-prepend}#{$size},
+                        .my#{$bprule}-#{$spacers-negative-prepend}#{$size} {
+                            margin-top: ($length * -1) !important;
+                        }
+                        .me#{$bprule}-#{$spacers-negative-prepend}#{$size},
+                        .mx#{$bprule}-#{$spacers-negative-prepend}#{$size} {
+                            margin-right: ($length * -1) !important;
+                        }
+                        .mb#{$bprule}-#{$spacers-negative-prepend}#{$size},
+                        .my#{$bprule}-#{$spacers-negative-prepend}#{$size} {
+                            margin-bottom: ($length * -1) !important;
+                        }
+                        .ms#{$bprule}-#{$spacers-negative-prepend}#{$size},
+                        .mx#{$bprule}-#{$spacers-negative-prepend}#{$size} {
+                            margin-left: ($length * -1) !important;
+                        }
+                    }
                 }
             }
-        }
 
-        // Auto margin
-        .m#{$bprule}-auto {
-            margin: auto !important;
-        }
-        .mt#{$bprule}-auto,
-        .my#{$bprule}-auto {
-            margin-top: auto !important;
-        }
-        .me#{$bprule}-auto,
-        .mx#{$bprule}-auto {
-            margin-right: auto !important;
-        }
-        .mb#{$bprule}-auto,
-        .my#{$bprule}-auto {
-            margin-bottom: auto !important;
-        }
-        .ms#{$bprule}-auto,
-        .mx#{$bprule}-auto {
-            margin-left: auto !important;
+            // Auto margin
+            @if $enable-utility-spacing-margin-auto {
+                .m#{$bprule}-auto {
+                    margin: auto !important;
+                }
+                .mt#{$bprule}-auto,
+                .my#{$bprule}-auto {
+                    margin-top: auto !important;
+                }
+                .me#{$bprule}-auto,
+                .mx#{$bprule}-auto {
+                    margin-right: auto !important;
+                }
+                .mb#{$bprule}-auto,
+                .my#{$bprule}-auto {
+                    margin-bottom: auto !important;
+                }
+                .ms#{$bprule}-auto,
+                .mx#{$bprule}-auto {
+                    margin-left: auto !important;
+                }
+            }
         }
     }
 }

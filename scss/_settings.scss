@@ -14,6 +14,7 @@ $enable-rfs-scale:          false !default;     // false
 $enable-color-warnings:     false !default;     // false
 $enable-validation-icons:   true !default;      // true
 
+
 // Palette
 // =====
 // List of levels to build CSS out for each of the palette themes
@@ -112,7 +113,9 @@ $base-colors: map-merge((
 ), $base-colors);
 // stylelint-enable
 
+
 // Palette Colors
+// =====
 $palette-colors: () !default;
 // stylelint-disable
 $palette-colors: map-merge((
@@ -126,6 +129,7 @@ $palette-colors: map-merge((
     "gray":      $gray
 ), $palette-colors);
 // stylelint-enable
+
 
 // Color Contrast
 // =====
@@ -188,7 +192,8 @@ $spacers: map-merge((
 ), $spacers);
 // stylelint-enable
 
-$spacer-negative-prepend: n !default;
+$spacers-negative:          $spacers !default;
+$spacers-negative-prepend:   n !default;
 
 
 // Grid breakpoints

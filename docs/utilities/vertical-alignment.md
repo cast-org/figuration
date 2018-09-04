@@ -6,6 +6,14 @@ group: utilities
 
 Give some vertical alignment to elements by manipulating their [`vertical-align` property](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align).
 
+## Contents
+{:.no_toc}
+
+* ToC goes here
+{:toc}
+
+## Examples
+
 Note that only items with the following display properties can be vertically aligned:
 - inline
 - inline-block
@@ -68,3 +76,36 @@ Slightly more complex uses, such as being able to align items in a row, become q
     </div>
 </div>
 {% endexample %}
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-utility-valign</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the vertical alignment utility classes.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.
