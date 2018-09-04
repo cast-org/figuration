@@ -71,7 +71,7 @@ Transform text in components with text capitalization classes.
 <p class="text-capitalize">CapiTaliZed text.</p>
 {% endexample %}
 
-Note how `text-capitalize` only changes the first letter of each word, leaving the case of any other letters unaffected.
+Note how `.text-capitalize` only changes the first letter of each word, leaving the case of any other letters unaffected.
 
 ## Font Weight
 
