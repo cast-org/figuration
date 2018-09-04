@@ -345,7 +345,7 @@ $blockquote-font-size:          ($font-size-base * 1.1875) !default;
 $blockquote-color:              $body-color !default;
 $blockquote-footer-font-size:   $font-size-base !default;
 $blockquote-footer-color:       $uibase-500 !default;
-$blockquote-footer-content:     "\2014\A0" !default; // em dash, nbsp
+$blockquote-footer-content:     "\2014\00a0" !default; // em dash, nbsp
 
 $dt-font-weight:    $font-weight-bold !default;
 
@@ -565,8 +565,8 @@ $list-border-width:             $border-width !default;
 $list-border-color:             $component-border-color !default;
 $list-group-border-radius:      $border-radius !default;
 
-$list-bulleted-content:         "\25cf\a0" !default; // Geomentric shape - black circle and a space
-$list-ordered-delimeter:        "\a0" !default; // Space
+$list-bulleted-content:         "\25cf\00a0" !default; // Geometric shape - black circle and a space
+$list-ordered-delimeter:        "\00a0" !default; // Space
 $list-horizontal-padding:       .5em !default;
 $list-spaced-item-padding-y:    .75rem !default;
 $list-spaced-item-padding-x:    1rem !default;
