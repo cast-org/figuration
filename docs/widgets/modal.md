@@ -522,6 +522,12 @@ $('#myModal').CFW_Modal();
 
 Any an element with a data attribute of `data-cfw-dismiss="modal"` within the modal element will act as a close trigger for the modal.  There can be multiple close triggers, such as a header/titlebar close and a cancel button in the footer.
 
+### Alter Animation
+
+In Sass settings, The `$modal-transform-fade` setting determines the transform state of `.modal-dialog` before the modal fade-in animation, the `$modal-transform-in` setting determines the transform of `.modal-dialog` at the end of the modal fade-in animation.
+
+If you want for example a zoom-in animation, you can set `$modal-transform-fade: scale(.75)`.
+
 ### Dynamic Heights
 
 If the height of a modal changes while it is open, you will need to call `$('#myModal').CFW_Modal('handleUpdate');` to readjust the modal's position and backdrop.

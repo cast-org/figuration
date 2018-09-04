@@ -32,13 +32,12 @@
     // See also https://github.com/twbs/bootstrap/issues/17695
     //-webkit-overflow-scrolling: touch;
 
-    // When fading in the modal, animate it to slide down
     &.fade .modal-dialog {
         @include transition($modal-transition);
-        transform: translate(0, -25%);
+        transform: $modal-transform-fade;
     }
     &.in .modal-dialog {
-        transform: translate(0, 0);
+        transform: $modal-transform-in;
     }
 }
 
