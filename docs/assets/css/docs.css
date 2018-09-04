@@ -912,7 +912,6 @@ h4 > code {
 .example-content-main {
   position: relative;
   width: 100%;
-  min-height: 1px;
   padding-right: 1rem;
   padding-left: 1rem;
 }
@@ -964,7 +963,6 @@ h4 > code {
 .example-content-secondary {
   position: relative;
   width: 100%;
-  min-height: 1px;
   padding-right: 1rem;
   padding-left: 1rem;
 }
