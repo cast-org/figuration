@@ -61,3 +61,87 @@ The [visibility utilities page]({{ site.baseurl }}/utilities/visibility/) gives 
 ## Useful Resources
 
 Still have questions?  There are some links to external resources avaiable in the [screen reader section on the Accessibility page]({{ site.baseurl }}/get-started/accessibility/#screen-reader-only-content)
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-utility-sronly</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the position utility classes.
+                    Smaller segements of the position utilities can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-sronly-common</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the base `.sr-only` utility class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-sronly-focusable</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the base `.sr-only-focusable` utility class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-sronly-responsive</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the responsive screen reader only utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-sronly-responsive-down</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the down responsive down variants of screen reader only utility classes.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+Here are the mixins related to this grouping of utility classes that we use to help generate our CSS.  You can also uses these mixins to generate your own custom components or utilities.
+
+#### sr-only
+{:.no_toc}
+
+Only display content to screen readers.
+
+{% highlight sass %}
+@include sr-only();
+{% endhighlight %}
+
+#### sr-only-focusable
+{:.no_toc}
+
+Use in conjunction with `.sr-only` to only display content when it becomes focused.
+
+{% highlight sass %}
+@include sr-only-focusable();
+{% endhighlight %}

@@ -178,6 +178,8 @@ You can find and customize these variables for key global options in our `_setti
 | `$enable-rfs-scale`        | `true` or `false` (default)        | Enables the *scaled* Responsive typography option, which scales element's `font-size` on a per breakpoint basis.  See the [Responsive Typography]({{ site.baseurl}}/content/typography/#responsive-typography) section for more details. |
 | `$enable-validation-icons` | `true` (default) or `false`        | Enables the generation of CSS classes for the optional `background-image` icons within textual inputs and some custom forms for validation states. |
 
+There are additional options in our `_settings_options.scss` that can be used to optionally disable the CSS generation for certain sets, or subsets, of components and utilities.  More information about these setting options can be found on the respective pages for each component and utility.
+
 ## Component Sizes
 
 The button, button group, pagination, form-control and input-group components all use the same base sizing settings for consitency.

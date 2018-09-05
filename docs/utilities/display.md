@@ -20,11 +20,11 @@ Available utilities:
 - `.d-none` sets `display: none;`
 - `.d-block` sets `display: block;`
 - `.d-inline` sets `display: inline;`
+- `.d-flex` sets `display: flex;`
+- `.d-inline-flex` sets `display: inline-flex;`
 - `.d-table` sets `display: table;`
 - `.d-table-row` sets `display: table-row;`
 - `.d-table-cell` sets `display: table-cell;`
-- `.d-flex` sets `display: flex;`
-- `.d-inline-flex` sets `display: inline-flex;`
 
 These classes are also available in responsive variants, in the form of `.d{-breakpoint}-{value}`, such as `.d-lg-block`. Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) is used.
 
@@ -256,3 +256,71 @@ You will need to take into account any other CSS properties, such as `visibility
 - `.print-table`
 - `.print-table-row`
 - `.print-table-cell`
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-utility-display</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the display utility classes.
+                    Smaller segements of the display utilities can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-display-common</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    <p>Enable the generation of the more common display rules as utility classes.</p>
+                    <p>This encompases the rules of <code>display: {none, block, flex, inline, inline-block, inline-flex}</code>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-display-table</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the table display rules as utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-display-down</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the `down` variant of the responsive hiding display rules as utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-display-print</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the print display utility classes.
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.

@@ -2124,7 +2124,6 @@ textarea.form-control:not([rows="1"]) {
   line-height: 1.5;
   text-align: center;
   text-decoration: none;
-  white-space: nowrap;
   vertical-align: middle;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -2984,7 +2983,6 @@ input[type="button"].btn-block {
 .col-xl-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12 {
   position: relative;
   width: 100%;
-  min-height: 1px;
 }
 
 .col,
@@ -6495,8 +6493,8 @@ button.list-item-action {
   transition: -webkit-transform 0.3s ease-out;
   transition: transform 0.3s ease-out;
   transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
-  -webkit-transform: translate(0, -25%);
-          transform: translate(0, -25%);
+  -webkit-transform: translate(0, -3rem);
+          transform: translate(0, -3rem);
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
@@ -6506,8 +6504,8 @@ button.list-item-action {
 }
 
 .modal.in .modal-dialog {
-  -webkit-transform: translate(0, 0);
-          transform: translate(0, 0);
+  -webkit-transform: none;
+          transform: none;
 }
 
 .modal-dialog {

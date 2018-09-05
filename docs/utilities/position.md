@@ -59,3 +59,85 @@ Position an element at the top of the viewport, from edge to edge, but only afte
 {% highlight html %}
 <div class="sticky-top">...</div>
 {% endhighlight %}
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-utility-position</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the position utility classes.
+                    Smaller segements of the position utilities can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-position-common</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the common position utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-position-fixed</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the fixed position utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-position-fixed-top</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the fixed top position utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-position-fixed-bottom</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the fixed bottom position utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-position-sticky</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the sticky position utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-position-sticky-top</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the sticky top position utility classes.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.

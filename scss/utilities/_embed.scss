@@ -1,55 +1,62 @@
-.embed-fluid {
-    position: relative;
-    display: block;
-    width: 100%;
-    padding: 0;
-    overflow: hidden;
+@if $enable-utility-embed {
 
-    &::before {
-        display: block;
-        padding-top: $embed-fluid-default-ratio;
-        content: "";
-    }
+    @if $enable-utility-embed-fluid {
+        .embed-fluid {
+            position: relative;
+            display: block;
+            width: 100%;
+            padding: 0;
+            overflow: hidden;
 
-    > .embed-fluid-item,
-    > iframe,
-    > embed,
-    > object,
-    > video {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: 0;
-    }
-}
-@if (type-of($embed-fluid-aspect-ratios) == "list" and length($embed-fluid-aspect-ratios) != 0) {
-    @each $embed-fluid-aspect-ratio in $embed-fluid-aspect-ratios {
-        $embed-fluid-x: nth($embed-fluid-aspect-ratio, 1);
-        $embed-fluid-y: nth($embed-fluid-aspect-ratio, 2);
-
-        .embed-fluid-#{$embed-fluid-x}x#{$embed-fluid-y} {
             &::before {
-                padding-top: percentage($embed-fluid-y / $embed-fluid-x);
+                display: block;
+                padding-top: $embed-fluid-default-ratio;
+                content: "";
+            }
+
+            > .embed-fluid-item,
+            > iframe,
+            > embed,
+            > object,
+            > video {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+        }
+        @if (type-of($embed-fluid-aspect-ratios) == "list" and length($embed-fluid-aspect-ratios) != 0) {
+            @each $embed-fluid-aspect-ratio in $embed-fluid-aspect-ratios {
+                $embed-fluid-x: nth($embed-fluid-aspect-ratio, 1);
+                $embed-fluid-y: nth($embed-fluid-aspect-ratio, 2);
+
+                .embed-fluid-#{$embed-fluid-x}x#{$embed-fluid-y} {
+                    &::before {
+                        padding-top: percentage($embed-fluid-y / $embed-fluid-x);
+                    }
+                }
             }
         }
     }
-}
 
-// Fullscreen video
-:fullscreen .embed-fluid {
-    position: initial;
-}
-// stylelint-disable selector-no-vendor-prefix
-:-ms-fullscreen .embed-fluid {
-    > .embed-fluid-item,
-    > iframe,
-    > embed,
-    > object,
-    > video {
-        position: -ms-device-fixed;
+    // Fullscreen video
+    @if $enable-utility-embed-fullscreen {
+        :fullscreen .embed-fluid {
+            position: initial;
+        }
+        // stylelint-disable selector-no-vendor-prefix
+        :-ms-fullscreen .embed-fluid {
+            > .embed-fluid-item,
+            > iframe,
+            > embed,
+            > object,
+            > video {
+                position: -ms-device-fixed;
+            }
+        }
+        // stylelint-enable selector-no-vendor-prefix
     }
 }
-// stylelint-enable selector-no-vendor-prefix

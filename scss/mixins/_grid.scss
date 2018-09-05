@@ -50,7 +50,6 @@
 @mixin make-col-ready($gutters: $grid-gutter-widths) {
     position: relative;
     width: 100%; // Prevent too narrow
-    min-height: 1px; // Prevent collapsing
 
     @each $breakpoint in map-keys($gutters) {
         @include media-breakpoint-up($breakpoint) {
@@ -126,7 +125,6 @@
     %col {
         position: relative;
         width: 100%; // Prevent too narrow
-        min-height: 1px; // Prevent collapsing
     }
 
     @include make-grid-gutters();
