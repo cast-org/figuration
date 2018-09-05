@@ -21,16 +21,6 @@
         if (callback) { callback(); }
     };
 
-    var escapeId = function(selector) {
-        // Escape IDs in case of special selectors (selector = '#myId:something')
-        // $.escapeSelector does not exist in jQuery < 3
-        selector = typeof $.escapeSelector === 'function'
-            ? $.escapeSelector(selector).substr(1)
-            : selector.replace(/(:|\.|\[|\]|,|=|@)/g, '\\$1');
-
-        return selector;
-    };
-
     // =====
     // TransitionEnd support/emulation
     // =====
@@ -69,7 +59,8 @@
         var MILLISECONDS_MULTIPLIER = 1000;
 
         $node.each(function() {
-            var durations = $node.css('transition-duration') || $node.css('-webkit-transition-duration') || $node.css('-moz-transition-duration') || $node.css('-ms-transition-duration') || $node.css('-o-transition-duration');
+            var $this = $(this);
+            var durations = $this.css('transition-duration') || $this.css('-webkit-transition-duration') || $this.css('-moz-transition-duration') || $this.css('-ms-transition-duration') || $this.css('-o-transition-duration');
             if (durations) {
                 var times = durations.split(',');
                 for (var i = times.length; i--;) { // Reverse loop should be faster
@@ -125,6 +116,7 @@
     };
 
     transition = CFW_transitionEndTest();
+    $.fn.CFW_transitionDuration = CFW_transitionCssDuration;
     $.fn.CFW_transition = CFW_transitionEndEmulate;
     $.event.special[TRANSITION_END] = CFW_transitionEndSpecial();
 
@@ -302,20 +294,14 @@
     };
 
     $.fn.CFW_getSelectorFromElement = function(name) {
-        var $node = $(this);
-        var selector = $node.attr('data-cfw-' + name + '-target');
-        if (!selector || selector === '#') {
-            selector = $node.attr('href') || '';
-        }
+        var selector = this[0].getAttribute('data-cfw-' + name + '-target');
 
-        // If selector is an ID
-        if (selector.charAt(0) === '#') {
-            selector = escapeId(selector);
+        if (!selector || selector === '#') {
+            selector = this[0].getAttribute('href') || '';
         }
 
         try {
-            var $selector = $(document).find(selector);
-            return $selector.length > 0 ? selector : null;
+            return document.querySelector(selector) ? selector : null;
         } catch (error) {
             return null;
         }
@@ -323,18 +309,13 @@
 
     $.fn.CFW_getSelectorFromChain = function(name, setting) {
         var $node = $(this);
+
         if (!setting || setting === '#') {
             return $node.CFW_getSelectorFromElement();
         }
 
-        // If selector is an ID
-        if (setting.charAt(0) === '#') {
-            setting = escapeId(setting);
-        }
-
         try {
-            var $setting = $(document).find(setting);
-            return $setting.length > 0 ? setting : null;
+            return document.querySelector(setting) ? setting : null;
         } catch (error) {
             return null;
         }
