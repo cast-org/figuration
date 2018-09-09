@@ -179,12 +179,13 @@ Turn an image into a card background and overlay your card's text. The use of `.
 ### Lists
 
 Create lists of content in a card with [`.list` component]({{ site.baseurl }}/components/lists/) and it's modifiers.
+Adding `.card-list` to a `.list` will automatically add a border radius and will also remove the bottom margin from the **last child** in a section.
 
-Horizontal lists are not currently supported in cards.
+Cards do not currently have support for proper border radius handling for horizontal lists, or for lists within horizontal cards.
 
 {% example html %}
 <div class="card">
-  <ul class="list list-spaced list-divided">
+  <ul class="list list-spaced list-divided card-list">
     <li class="list-item">List item</li>
     <li class="list-item">List item</li>
     <li class="list-item">List item</li>
@@ -195,7 +196,7 @@ Horizontal lists are not currently supported in cards.
 {% example html %}
 <div class="card">
   <h3 class="card-header">Sample Header</h3>
-  <ul class="list list-spaced list-divided mb-0">
+  <ul class="list list-spaced list-divided card-list mb-0">
     <li class="list-item">List item</li>
     <li class="list-item">List item</li>
     <li class="list-item">List item</li>
@@ -206,9 +207,11 @@ Horizontal lists are not currently supported in cards.
 
 ### Tables
 
+`.card-table` will remove the bottom margin from the **last child** in a section.
+
 {% example html %}
 <div class="card">
-    <table class="table table-divided">
+    <table class="table table-divided card-table">
         <thead>
             <tr>
                 <th scope="col">Header</th>
@@ -636,6 +639,104 @@ Recolor the header and footer sections of your cards by using the background con
 ## Layout Options
 
 In addition to styling the content within cards, Figuration includes a few options for laying out series of cards.
+
+### Horizontal Cards
+
+Create horizontal card using `.card-horizontal{breakpoint}` and adding child `.card-col` containters, to control when content switches from column to row layout. Sizing of columns can be controlled via grid classes.
+
+For basic use cases, `border-radius` updates are handled for switching from column to row layout for the header, footer, and image card sub-components.  In some cases, custom CSS may be needed. List and table sub-components are not currently handled.  Card decks and card groups also do not have explicit support for horizontal cards.
+
+{% example html %}
+<div class="card card-horizontal">
+    <div class="card-col col-5">
+        <div class="card-img">
+            <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
+        </div>
+    </div>
+    <!-- using `.col-sm` due to pixel rounding -->
+    <div class="card-col col">
+        <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">This card layout will always display the image cap on the <strong>start</strong> side of the card.</p>
+        </div>
+    </div>
+</div>
+
+<div class="card card-horizontal-md">
+    <!-- using `.col-md` due to pixel rounding -->
+    <div class="card-col col-md">
+        <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">This card layout will display the image cap <strong>below</strong> the body content at smaller viewports.</p>
+        </div>
+    </div>
+    <div class="card-col col-md-5">
+        <div class="card-img">
+            <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
+        </div>
+    </div>
+</div>
+
+<div class="card card-horizontal-md">
+    <div class="card-col col-md-5">
+        <div class="card-img">
+            <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px225/?text=Image cap" alt="Card image cap">
+        </div>
+    </div>
+    <!-- using `.col-md` due to pixel rounding -->
+    <div class="card-col col-md">
+        <h4 class="card-header">Featured</h4>
+        <div class="card-body">
+            <p class="card-text">This card layout will display the image cap <strong>above</strong> the body content at smaller viewports.</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+</div>
+
+{% endexample %}
+
+#### Reverse Horizontal Card
+
+Quickly swap the *visual* column order using one of the responsive reverse horizontal card classes, `.card-horizontal{breakpoint}-reverse`.
+
+In the examples below, the card will display the image cap **above** the body content, then at larger viewports, will display the image cap on the **end** side of the card.
+
+{% example html %}
+<div class="card card-horizontal-sm-reverse">
+    <div class="card-col col-sm-5">
+        <div class="card-img">
+            <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
+        </div>
+    </div>
+    <!-- using `.col-sm` due to pixel rounding -->
+    <div class="card-col col-sm">
+        <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+    </div>
+</div>
+
+<div class="card card-horizontal-md-reverse">
+    <div class="card-col col-md-5">
+        <div class="card-img">
+            <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px225/?text=Image cap" alt="Card image cap">
+        </div>
+    </div>
+    <!-- using `.col-md` due to pixel rounding -->
+    <div class="card-col col-md">
+        <h4 class="card-header">Featured</h4>
+        <div class="card-body">
+            <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+</div>
+{% endexample %}
 
 ### Card Groups
 

@@ -9,35 +9,6 @@
     border: $card-border-width solid $card-border-color;
     @include border-radius($card-border-radius);
 
-    > .list {
-        &:first-child {
-            @include border-top-radius($card-inner-border-radius);
-
-            > .list-item:first-child {
-                @if $enable-rounded {
-                    @include border-top-radius($card-inner-border-radius);
-                }
-            }
-        }
-
-        &:last-child {
-            margin-bottom: 0;
-            @include border-bottom-radius($card-inner-border-radius);
-
-            > .list-item:last-child {
-                @if $enable-rounded {
-                    @include border-bottom-radius($card-inner-border-radius);
-                }
-            }
-        }
-    }
-
-    > .table {
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-
     > hr {
         margin-right: 0;
         margin-left: 0;
@@ -70,12 +41,41 @@
     margin-left: $card-link-margin-left;
 }
 
-// Optional textual caps
+.card-list {
+    &:first-child {
+        @include border-top-radius($card-inner-border-radius);
+
+        > .list-item:first-child {
+            @if $enable-rounded {
+                @include border-top-radius($card-inner-border-radius);
+            }
+        }
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+        @include border-bottom-radius($card-inner-border-radius);
+
+        > .list-item:last-child {
+            @if $enable-rounded {
+                @include border-bottom-radius($card-inner-border-radius);
+            }
+        }
+    }
+}
+
+.card-table {
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+// Optional caps
 .card-header {
     padding: $card-cap-padding-y $card-cap-padding-x;
     margin-bottom: 0; // Removes the default margin-bottom of <hN>
     background-color: $card-cap-bg;
-    border-bottom: $card-border-width solid $card-cap-border-color;
+    border-bottom: $card-cap-border-width solid $card-cap-border-color;
 
     &:first-child {
         @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
@@ -85,7 +85,7 @@
 .card-footer {
     padding: $card-cap-padding-y $card-cap-padding-x;
     background-color: $card-cap-bg;
-    border-top: $card-border-width solid $card-cap-border-color;
+    border-top: $card-cap-border-width solid $card-cap-border-color;
 
     &:last-child {
         @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
@@ -124,140 +124,110 @@
 .card-img-bottom {
     @include border-bottom-radius($card-inner-border-radius);
 }
-.card-img-radius {
-    @include border-radius($card-inner-border-radius);
-}
 
+// Horizontal Cards
+@each $breakpoint in $card-horizontal-breakpoints {
+    $bprule: breakpoint-designator($breakpoint);
 
-// Responsive Horizontal Cards
-// Special replacement for our grid system's `.row` for horizontal card layouts.
-// Also removed horizontal padding from all immediate children columns (to prevent runaway style inheritance).
-.card-row,
-.card-row-reverse {
-    display: flex;
-    flex-wrap: wrap;
-    min-height: 1px; // Tweak for IE keeping image aspect ratios
-    margin-right: 0;
-    margin-left: 0;
+    @include media-breakpoint-up($breakpoint) {
+        .card-horizontal#{$bprule},
+        .card-horizontal#{$bprule}-reverse {
+            flex-flow: row wrap;
 
-    > .col,
-    > [class*="col-"] {
-        padding-right: 0;
-        padding-left: 0;
+            > .card-col {
+                display: flex;
+                flex-direction: column;
+            }
+        }
 
+        .card-horizontal#{$bprule}-reverse {
+            flex-direction: row-reverse;
+        }
     }
 }
 
-// stylelint-disable-next-line no-duplicate-selectors
-.card-row-reverse {
-    flex-direction: row-reverse;
-}
 
 .card-col {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
+    min-height: 1px; // Stop stretch/white-space due to flexbox w/ images in IE
+    padding-right: 0;
+    padding-left: 0;
 }
 
-// stylelint-disable no-duplicate-selectors
 @if $enable-rounded {
-    .card-row,
-    .card-row-reverse {
-        @each $breakpoint in map-keys($grid-breakpoints) {
-            $bprule: breakpoint-designator($breakpoint);
+    @each $breakpoint in $card-horizontal-breakpoints {
+        $bprule: breakpoint-designator($breakpoint);
+        $prev: breakpoint-prev($breakpoint, $grid-breakpoints);
 
-            @include media-breakpoint-down($breakpoint) {
-                > .col#{$bprule}:not(:first-child),
-                > [class*="col#{$bprule}-"]:not(:first-child) {
-                    > .card-header {
-                        @include border-radius(0);
-                    }
-                    > .card-img-radius {
-                        @include border-top-radius(0);
-                    }
-                }
-                > .col#{$bprule}:not(:last-child),
-                > [class*="col#{$bprule}-"]:not(:last-child) {
-                    > .card-footer {
-                        @include border-radius(0);
-                    }
-                    > .card-img-radius {
-                        @include border-bottom-radius(0);
-                    }
-                }
-            }
-        }
-    }
-
-    .card-row {
-        @each $breakpoint in map-keys($grid-breakpoints) {
-            $bprule: breakpoint-designator($breakpoint);
-
-            // Skip smallest breakpoint
-            @if breakpoint-min($breakpoint, $grid-breakpoints) != null {
-                @include media-breakpoint-up($breakpoint) {
-                    > .col#{$bprule}:not(:first-child),
-                    > [class*="col#{$bprule}-"]:not(:first-child) {
+        // Skip smallest breakpoint
+        @if breakpoint-min($breakpoint, $grid-breakpoints) != null {
+            @include media-breakpoint-down($prev) {
+                .card-horizontal#{$bprule},
+                .card-horizontal#{$bprule}-reverse {
+                    > .card-col:not(:first-child) {
                         > .card-header,
-                        > .card-img-radius {
-                            @include border-top-start-radius(0);
-                        }
-                        > .card-footer,
-                        > .card-img-radius {
-                            @include border-bottom-start-radius(0);
+                        > .card-img > .card-img-top {
+                            @include border-top-radius(0);
                         }
                     }
-                    > .col#{$bprule}:not(:last-child),
-                    > [class*="col#{$bprule}-"]:not(:last-child) {
-                        > .card-header,
-                        > .card-img-radius {
-                            @include border-top-end-radius(0);
-                        }
+                    > .card-col:not(:last-child) {
                         > .card-footer,
-                        > .card-img-radius {
-                            @include border-bottom-end-radius(0);
+                        > .card-img > .card-img-bottom {
+                            @include border-bottom-radius(0);
                         }
                     }
                 }
             }
         }
-    }
 
-    .card-row-reverse {
-        @each $breakpoint in map-keys($grid-breakpoints) {
-            $bprule: breakpoint-designator($breakpoint);
-
-            // Skip smallest breakpoint
-            @if breakpoint-min($breakpoint, $grid-breakpoints) != null {
-                @include media-breakpoint-up($breakpoint) {
-                    > .col#{$bprule}:not(:first-child),
-                    > [class*="col#{$bprule}-"]:not(:first-child) {
-                        > .card-header,
-                        > .card-img-radius {
-                            @include border-top-end-radius(0);
-                        }
-                        > .card-footer,
-                        > .card-img-radius {
-                            @include border-bottom-end-radius(0);
-                        }
+        @include media-breakpoint-up($breakpoint) {
+            .card-horizontal#{$bprule} {
+                > .card-col:not(:first-child) {
+                    > .card-header,
+                    > .card-img > .card-img-top {
+                        @include border-top-start-radius(0);
                     }
-                    > .col#{$bprule}:not(:last-child),
-                    > [class*="col#{$bprule}-"]:not(:last-child) {
-                        > .card-header,
-                        > .card-img-radius {
-                            @include border-top-start-radius(0);
-                        }
-                        > .card-footer,
-                        > .card-img-radius {
-                            @include border-bottom-start-radius(0);
-                        }
+                    > .card-footer,
+                    > .card-img > .card-img-bottom {
+                        @include border-bottom-start-radius(0);
+                    }
+                }
+                > .card-col:not(:last-child) {
+                    > .card-header,
+                    > .card-img > .card-img-top {
+                        @include border-top-end-radius(0);
+                    }
+                    > .card-footer,
+                    > .card-img > .card-img-bottom {
+                        @include border-bottom-end-radius(0);
+                    }
+                }
+            }
+
+            .card-horizontal#{$bprule}-reverse {
+                > .card-col:not(:first-child) {
+                    > .card-header,
+                    > .card-img > .card-img-top {
+                        @include border-top-end-radius(0);
+                    }
+                    > .card-footer,
+                    > .card-img > .card-img-bottom {
+                        @include border-bottom-end-radius(0);
+                    }
+                }
+                > .card-col:not(:last-child) {
+                    > .card-header,
+                    > .card-img > .card-img-top {
+                        @include border-top-start-radius(0);
+                    }
+                    > .card-footer,
+                    > .card-img > .card-img-bottom {
+                        @include border-bottom-start-radius(0);
                     }
                 }
             }
         }
     }
 }
-// stylelint-enable no-duplicate-selectors
 
 // Card deck
 // 1. Individual cards have margin-bottom by default.

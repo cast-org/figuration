@@ -216,6 +216,7 @@ $grid-breakpoints: (
 // of breakpoint keys based upon the master `$grid-breakpoints` map.
 // This way each the CSS for each of the items can be controlled and reduced as needed.
 // The items in the following lists *must* be in the keys for the `$grid-breakpoints` map.
+$card-horizontal-breakpoints:       map-keys($grid-breakpoints) !default;
 $card-deck-breakpoints:             map-keys($grid-breakpoints) !default;
 $card-group-breakpoints:            map-keys($grid-breakpoints) !default;
 $card-columns-breakpoints:          map-keys($grid-breakpoints) !default;
@@ -1027,14 +1028,14 @@ $card-inner-border-radius:  calc(#{$card-border-radius} - #{$card-border-width})
 
 $card-link-margin-left:     1.25rem !default;
 
-$card-cap-padding-y:        .75rem !default;
-$card-cap-padding-x:        1rem !default;
-
 $card-title-margin-bottom:  1rem !default;
 $card-subtitle-margin-top:  -.5rem !default;
 
+$card-cap-padding-y:        .75rem !default;
+$card-cap-padding-x:        1rem !default;
 $card-cap-bg:               $component-section-bg !default;
 $card-cap-border-color:     $component-section-border-color !default;
+$card-cap-border-width:     $card-border-width !default;
 
 $card-img-overlay-padding:  $card-padding-y $card-padding-x !default;
 
