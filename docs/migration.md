@@ -68,13 +68,12 @@ Some changes will most likely have been missed, so please refer to the documenta
 - Contextually colored cards have been removed. Now you will need to use the with text, background, and border color utilities.
 - Cards have been converted to flexbox layout.
 - Images now need to be wrapped with `.card-img` to keep aspect ratio and scaling in check due to flexbox.
+- List and table sub-components now use a `.card-list` or `.card-table` respectively.
+- Repsonsive horizontal card layouts have been added with `.card-horizontal{breakpoint}`, `.card-horizontal{breakpoint}-reverse`, and child `.card-col` elements.
 
 ### Input Group
-
 - Input group addons have been revised, simplifying much of the related CSS. Within an addon, place your buttons as they would exist anywhere else, but wrap text in `.input-group-text`.
-
 - Validation styles are now supported, as are multiple inputs (though you can only validate one input per group).
-
 - Sizing classes must be on the parent `.input-group` and not the individual form elements.
 
 ### List Group
