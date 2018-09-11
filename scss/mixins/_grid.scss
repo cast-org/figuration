@@ -154,7 +154,7 @@
             %col-flex-auto-#{$breakpoint} {
                 flex: 0 0 auto;
                 width: auto;
-                max-width: none;    // Reset earlier grid tiers
+                max-width: 100%;
             }
 
             .col#{$bprule} {
