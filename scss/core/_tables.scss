@@ -1,225 +1,245 @@
-// Basic table
-.table {
-    width: 100%;
-    margin-bottom: $table-margin-bottom;
-    background-color: $table-bg; // Reset for nesting within parents with `background-color`.
-    border: 0 solid;
-    border-color: $table-border-color;
+@if $enable-table {
+    // Basic table
+    @if $enable-table-common {
+        .table {
+            width: 100%;
+            margin-bottom: $table-margin-bottom;
+            background-color: $table-bg; // Reset for nesting within parents with `background-color`.
+            border: 0 solid;
+            border-color: $table-border-color;
 
-    // Allow border color to inherit all the way down.
-    // Only use `border-*-width` later to turn border on/off.
-    thead,
-    tbody,
-    tfoot,
-    tr,
-    th,
-    td {
-        border: 0 solid;
-        border-color: inherit;
-    }
-
-    th,
-    td {
-        padding: $table-cell-padding;
-        vertical-align: top;
-    }
-
-    thead {
-        th {
-            vertical-align: bottom;
-        }
-    }
-}
-
-// Horizontal borders
-.table-bordered,
-.table-celled,
-.table-divided,
-.table-ruled {
-    th,
-    td {
-        border-top-width: $table-border-width;
-    }
-
-    thead {
-        th {
-            border-bottom-width: $table-head-border-width;
-        }
-    }
-
-    tbody + tbody {
-        border-top-width: $table-body-border-width;
-    }
-
-    tfoot {
-        th,
-        td {
-            border-top-width: $table-foot-border-width;
-            border-bottom-width: 0;
-        }
-    }
-}
-
-// stylelint-disable selector-max-type
-.table-celled,
-.table-divided {
-    thead {
-        tr:first-child  {
+            // Allow border color to inherit all the way down.
+            // Only use `border-*-width` later to turn border on/off.
+            thead,
+            tbody,
+            tfoot,
+            tr,
             th,
             td {
-                border-top-width: 0;
+                border: 0 solid;
+                border-color: inherit;
+            }
+
+            th,
+            td {
+                padding: $table-cell-padding;
+                vertical-align: top;
+            }
+
+            thead {
+                th {
+                    vertical-align: bottom;
+                }
             }
         }
     }
-}
-// stylelint-enable selector-max-type
 
-.table-bordered,
-.table-ruled {
-    tfoot {
-        th,
-        td {
-            border-bottom-width: $table-border-width;
+    // Horizontal borders
+    @if $enable-table-borders {
+        .table-bordered,
+        .table-celled,
+        .table-divided,
+        .table-ruled {
+            th,
+            td {
+                border-top-width: $table-border-width;
+            }
+
+            thead {
+                th {
+                    border-bottom-width: $table-head-border-width;
+                }
+            }
+
+            tbody + tbody {
+                border-top-width: $table-body-border-width;
+            }
+
+            tfoot {
+                th,
+                td {
+                    border-top-width: $table-foot-border-width;
+                    border-bottom-width: 0;
+                }
+            }
         }
-    }
-}
 
-.table-bordered,
-.table-wrapped,
-.table-ruled {
-    &,
-    & .table {
-        border-top-width: $table-border-width;
-        border-bottom-width: $table-border-width;
-    }
-}
-
-// Vertical borders
-.table-bordered,
-.table-celled,
-.table-pillared,
-.table-walled {
-    th,
-    td {
-        border-left-width: $table-border-width;
-
-        &:last-child {
-            border-right-width: $table-border-width;
+        // stylelint-disable selector-max-type
+        .table-celled,
+        .table-divided {
+            thead {
+                tr:first-child  {
+                    th,
+                    td {
+                        border-top-width: 0;
+                    }
+                }
+            }
         }
-    }
-}
+        // stylelint-enable selector-max-type
 
-.table-pillared,
-.table-celled {
-    th,
-    td {
-        &:first-child  {
-            border-left-width: 0;
+        .table-bordered,
+        .table-ruled {
+            tfoot {
+                th,
+                td {
+                    border-bottom-width: $table-border-width;
+                }
+            }
         }
-        &:last-child {
-            border-right-width: 0;
-        }
-    }
-}
 
-.table-bordered,
-.table-wrapped,
-.table-walled {
-    &,
-    & .table {
-        border-right-width: $table-border-width;
-        border-left-width: $table-border-width;
-    }
-}
-
-// stylelint-disable selector-max-type
-// Striped table
-.table-striped {
-    tbody tr:nth-of-type(#{$table-striped-selector}) {
-        > th,
-        > td {
-            box-shadow: $table-striped-box-shadow;
+        .table-bordered,
+        .table-wrapped,
+        .table-ruled {
+            &,
+            & .table {
+                border-top-width: $table-border-width;
+                border-bottom-width: $table-border-width;
+            }
         }
-    }
-}
-.table-striped-alt {
-    tbody tr:nth-of-type(#{$table-striped-selector}) {
-        > th,
-        > td {
-            box-shadow: $table-striped-alt-box-shadow;
-        }
-    }
-}
 
-// Hover effect
-// Needs to be after striped table in order to overrule background.
-.table-hover {
-    tbody tr {
-        @include hover {
-            > th,
-            > td {
-                box-shadow: $table-hover-box-shadow;
+        // Vertical borders
+        .table-bordered,
+        .table-celled,
+        .table-pillared,
+        .table-walled {
+            th,
+            td {
+                border-left-width: $table-border-width;
+
+                &:last-child {
+                    border-right-width: $table-border-width;
+                }
+            }
+        }
+
+        .table-pillared,
+        .table-celled {
+            th,
+            td {
+                &:first-child  {
+                    border-left-width: 0;
+                }
+                &:last-child {
+                    border-right-width: 0;
+                }
+            }
+        }
+
+        .table-bordered,
+        .table-wrapped,
+        .table-walled {
+            &,
+            & .table {
+                border-right-width: $table-border-width;
+                border-left-width: $table-border-width;
             }
         }
     }
-}
-.table-hover-alt {
-    tbody tr {
-        @include hover {
-            > th,
-            > td {
-                box-shadow: $table-hover-alt-box-shadow;
+
+    // stylelint-disable selector-max-type
+    // Striped table
+    @if $enable-table-striped {
+        .table-striped {
+            tbody tr:nth-of-type(#{$table-striped-selector}) {
+                > th,
+                > td {
+                    box-shadow: $table-striped-box-shadow;
+                }
+            }
+        }
+        .table-striped-alt {
+            tbody tr:nth-of-type(#{$table-striped-selector}) {
+                > th,
+                > td {
+                    box-shadow: $table-striped-alt-box-shadow;
+                }
             }
         }
     }
-}
-// stylelint-enable selector-max-type
 
-// Condensed table
-.table-condensed {
-    th,
-    td {
-        padding: $table-condensed-cell-padding;
+    // Hover effect
+    // Needs to be after striped table in order to overrule background.
+    @if $enable-table-hover {
+        .table-hover {
+            tbody tr {
+                @include hover {
+                    > th,
+                    > td {
+                        box-shadow: $table-hover-box-shadow;
+                    }
+                }
+            }
+        }
+        .table-hover-alt {
+            tbody tr {
+                @include hover {
+                    > th,
+                    > td {
+                        box-shadow: $table-hover-alt-box-shadow;
+                    }
+                }
+            }
+        }
     }
-}
+    // stylelint-enable selector-max-type
 
-// Table backgrounds
-// Active variant
-@include table-row-variant(active, $table-bg-active, $table-bg-active-hover);
-
-// Theme generation
-@if (type-of($table-colors) == "map" and length($table-colors) != 0) {
-    $mixed-table-themes: _mix-context-colors($table-colors, $table-levels);
-    $table-themes: map-merge($mixed-table-themes, $table-themes);
-}
-
-// Contextual variants
-@if (type-of($table-themes) == "map" and length($table-themes) != 0) {
-    @each $theme, $colors in $table-themes {
-        $bg:       map-get($colors, "bg");
-        $hover-bg: map-get($colors, "hover-bg");
-
-        @include table-row-variant("#{$theme}", $bg, $hover-bg);
+    // Condensed table
+    @if $enable-table-condensed {
+        .table-condensed {
+            th,
+            td {
+                padding: $table-condensed-cell-padding;
+            }
+        }
     }
-}
 
-// Scrolling table
-// Add `.table-scroll` to table to enable horizontal scrolling.
-// Tables will scroll when they will no longer fit width-wise in their container.
-.table-scroll {
-    @include table-scroll();
-}
+    // Table backgrounds
+    // Active variant
+    @if $enable-table-active {
+        @include table-row-variant(active, $table-bg-active, $table-bg-active-hover);
+    }
 
-// Responsive scrolling table
-// Tables will no longet scroll when breakpoint is larger than the one designated.
-@each $bp in $table-scroll-breakpoints {
-    $bprule: breakpoint-designator($bp);
+    // Theme generation
+    @if $enable-table-colors {
+        @if (type-of($table-colors) == "map" and length($table-colors) != 0) {
+            $mixed-table-themes: _mix-context-colors($table-colors, $table-levels);
+            $table-themes: map-merge($mixed-table-themes, $table-themes);
+        }
 
-    // Skip largest breakpoint for down (equivalent to `.table-scroll`)
-    @if breakpoint-max($bp, $grid-breakpoints) != null {
-        .table-scroll-#{$bp} {
-            @include media-breakpoint-down($bp) {
-                @include table-scroll();
+        // Contextual variants
+        @if (type-of($table-themes) == "map" and length($table-themes) != 0) {
+            @each $theme, $colors in $table-themes {
+                $bg:       map-get($colors, "bg");
+                $hover-bg: map-get($colors, "hover-bg");
+
+                @include table-row-variant("#{$theme}", $bg, $hover-bg);
+            }
+        }
+    }
+
+    // Scrolling table
+    // Add `.table-scroll` to table to enable horizontal scrolling.
+    // Tables will scroll when they will no longer fit width-wise in their container.
+    @if $enable-table-scroll {
+        .table-scroll {
+            @include table-scroll();
+        }
+
+        // Responsive scrolling table
+        // Tables will no longet scroll when breakpoint is larger than the one designated.
+        @if $enable-table-scroll-responsive {
+            @each $bp in $table-scroll-breakpoints {
+                $bprule: breakpoint-designator($bp);
+
+                // Skip largest breakpoint for down (equivalent to `.table-scroll`)
+                @if breakpoint-max($bp, $grid-breakpoints) != null {
+                    .table-scroll-#{$bp} {
+                        @include media-breakpoint-down($bp) {
+                            @include table-scroll();
+                        }
+                    }
+                }
             }
         }
     }

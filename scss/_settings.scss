@@ -283,7 +283,7 @@ $body-color:            $uibase-900 !default;
 // Links
 // =====
 // Style anchor elements
-$link-color:            palette($primary, 500) !default;
+$link-color:            $primary !default;
 $link-decoration:       underline !default;
 $link-hover-color:      palette($primary, 700) !default;
 $link-hover-decoration: underline !default;

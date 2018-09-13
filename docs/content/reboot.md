@@ -325,3 +325,146 @@ jQuery Incompatibility
 {% endcallout %}
 
 To merely toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document, use [the `.invisible` class]({{ site.baseurl }}/utilities/visibility/) instead.
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the reboot CSS styles.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$font-family-base</code></td>
+                <td>string</td>
+                <td><code>$font-family-sans-serif</code></td>
+                <td>
+                    Base font family stack.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$font-size-base</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Base font size.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$font-weight-base</code></td>
+                <td>string</td>
+                <td><code>$font-weight-normal</code></td>
+                <td>
+                    Base font weight.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$line-height-base</code></td>
+                <td>float</td>
+                <td><code>1.5</code></td>
+                <td>
+                    Base line height.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$body-bg</code></td>
+                <td>string</td>
+                <td><code>$white</code></td>
+                <td>
+                    Base background color for body.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$body-color</code></td>
+                <td>string</td>
+                <td><code>$uibase-900</code></td>
+                <td>
+                    Base text color for body.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$link-color</code></td>
+                <td>string</td>
+                <td><code>$primary</code></td>
+                <td>
+                    Text color for links.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$link-decoration</code></td>
+                <td>string</td>
+                <td><code>underline</code></td>
+                <td>
+                    Text decoration for links.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$link-hover-color</code></td>
+                <td>string</td>
+                <td><code>palette($primary, 700)</code></td>
+                <td>
+                    Color for hovered or focused links.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$link-hover-decoration</code></td>
+                <td>string</td>
+                <td><code>underline</code></td>
+                <td>
+                    Text decoration for hovered or focused links.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$headings-margin-bottom</code></td>
+                <td>string</td>
+                <td><code>($spacer / 2)</code></td>
+                <td>
+                    Bottom margin for <code><hN><code> headings and heading classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$paragraph-spacer-y</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Bottom padding for paragraphs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dt-font-weight</code></td>
+                <td>string</td>
+                <td><code>$font-weight-bold</code></td>
+                <td>
+                    Font weight for definition terms.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$table-cell-padding</code></td>
+                <td>string</td>
+                <td><code>.75rem</code></td>
+                <td>
+                    Padding for table cells.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$table-caption-color</code></td>
+                <td>string</td>
+                <td><code>$uibase-500</code></td>
+                <td>
+                    Text color for table captions.
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</div>

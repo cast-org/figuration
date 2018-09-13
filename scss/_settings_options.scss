@@ -1,3 +1,44 @@
+// Root CSS variables
+$enable-root:                               true !default; // true
+$enable-root-colors:                        true !default; // true
+$enable-root-breakpoints:                   true !default; // true
+$enable-root-fonts:                         true !default; // true
+
+// Base Typography
+$enable-typography:                         true !default; // true
+$enable-typography-headings:                true !default; // true
+$enable-typography-lead:                    true !default; // true
+$enable-typography-hr:                      true !default; // true
+$enable-typography-small:                   true !default; // true
+$enable-typography-mark:                    true !default; // true
+$enable-typography-list-unstyled:           true !default; // true
+$enable-typography-initialism:              true !default; // true
+$enable-typography-blockquote:              true !default; // true
+
+// Code snippets
+$enable-code:                               true !default; // true
+$enable-code-code:                          true !default; // true
+$enable-code-kbd:                           true !default; // true
+$enable-code-pre:                           true !default; // true
+
+// Images
+$enable-img:                                true !default; // true
+$enable-img-fluid:                          true !default; // true
+$enable-img-thumbnail:                      true !default; // true
+$enable-img-figure:                         true !default; // true
+
+// Table
+$enable-table:                              true !default; // true
+$enable-table-common:                       true !default; // true
+$enable-table-borders:                      true !default; // true
+$enable-table-striped:                      true !default; // true
+$enable-table-hover:                        true !default; // true
+$enable-table-condensed:                    true !default; // true
+$enable-table-active:                       true !default; // true
+$enable-table-colors:                       true !default; // true
+$enable-table-scroll:                       true !default; // true
+$enable-table-scroll-responsive:            true !default; // true
+
 // Utility options
 $enable-utility-bg:                         true !default;  // true
 $enable-utility-bg-colors:                  true !default;  // true

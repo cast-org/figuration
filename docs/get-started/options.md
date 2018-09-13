@@ -398,3 +398,61 @@ And here's an example of **what is supported:**
   }
 }
 {% endhighlight %}
+
+### SASS Reference
+
+#### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for generating the root CSS variables.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-root</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of root CSS variables.
+                    Smaller segements of the root CSS variables can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-root-colors</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the color CSS variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-root-breakpoints</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the breakpoint CSS variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-root-fonts</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the font CSS variables.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+#### Mixins
+
+No mixins available.

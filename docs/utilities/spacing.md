@@ -201,7 +201,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
             </tr>
              <tr>
                 <td><code>$spacer</code></td>
-                <td>map</td>
+                <td>string</td>
                 <td><code>1rem</code></td>
                 <td>
                     Base spacer dimension.

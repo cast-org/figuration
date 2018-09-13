@@ -362,3 +362,97 @@ Generate a text color rule with a hover/focus state when used as an anchor using
         </tbody>
     </table>
 </div>
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the typography.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-typography</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the typography CSS ruless.
+                    Smaller segements of the border utilities can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-typography-headings</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the headings typography classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-typography-lead</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the lead typography class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-typography-hr</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the horizontal rule typography class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-typography-small</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the small typography class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-typography-mark</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the mark typography class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-typography-list-unstyled</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the unstyled list typography class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-typography-initialism</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the initialism typography class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-typography-blockquote</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the blockquote typography classes.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
