@@ -428,7 +428,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td>string</td>
                 <td><code>($spacer / 2)</code></td>
                 <td>
-                    Bottom margin for <code><hN><code> headings and heading classes.
+                    Bottom margin for <code>&lt;hN&gt;</code> headings and heading classes.
                 </td>
             </tr>
             <tr>
@@ -463,8 +463,10 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                     Text color for table captions.
                 </td>
             </tr>
-
-
         </tbody>
     </table>
 </div>
+
+### Mixins
+
+No mixins available.

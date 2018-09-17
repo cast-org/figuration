@@ -396,3 +396,101 @@ $responsive-font-size-scale-factor: (
     xl: 1.375
 );
 {% endhighlight %}
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the typography CSS styles.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-typography</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the typography classes.
+                    Smaller segements of the typography classes can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-typography-headings</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the <code>&lt;hN&gt;</code> headings and heading classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-typography-lead</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the lead in typography class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-typography-hr</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the reset for horizontal rules.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-typography-small</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of CSS for the small element and associated class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-typography-mark</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of CSS for the mark element and associated class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-typography-list-unstyled</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the unstyled list class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-typography-initialism</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the initialism class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-typography-blockquote</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the blockquote classes.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.
