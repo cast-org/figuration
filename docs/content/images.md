@@ -89,3 +89,101 @@ If you are using the `<picture>` element to specify multiple `<source>` elements
   <img src="..."  class="img-fluid img-thumbnail" alt="...">
 </picture>
 {% endhighlight %}
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the image CSS styles.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-img</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the image CSS classes.
+                    Smaller segements of the image CSS classes can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-img-fluid</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the fluid image CSS class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-img-thumbnail</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the thumbnail CSS class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$thumbnail-padding</code></td>
+                <td>string</td>
+                <td><code>.25rem</code></td>
+                <td>
+                    Thumbnail padding.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$thumbnail-bg</code></td>
+                <td>string</td>
+                <td><code>$body-bg</code></td>
+                <td>
+                    Thumbnail background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$thumbnail-border-width</code></td>
+                <td>string</td>
+                <td><code>$border-width</code></td>
+                <td>
+                    Thumbnail border width.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$thumbnail-border-color</code></td>
+                <td>string</td>
+                <td><code>$uibase-300</code></td>
+                <td>
+                    Thumbnail border color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$thumbnail-border-radius</code></td>
+                <td>string</td>
+                <td><code>$border-radius</code></td>
+                <td>
+                    Thumbnail border radius.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$thumbnail-box-shadow</code></td>
+                <td>string</td>
+                <td><code>0 .0625rem .125rem rgba($black, .075)</code></td>
+                <td>
+                    Optional thumbnail box shadow.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.

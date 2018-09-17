@@ -348,7 +348,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td>string</td>
                 <td><code>$font-family-sans-serif</code></td>
                 <td>
-                    Base font family stack.
+                    Base font family stack, used for the body and many component resets.
                 </td>
             </tr>
             <tr>

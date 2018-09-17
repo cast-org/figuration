@@ -382,7 +382,7 @@ $responsive-font-size-scale-factor: (
     md: .8125,
     lg: .90625,
     xl: 1
-) !default;
+)
 {% endhighlight %}
 
 It is also possible to change the settings so font size grows as the breakpoint size increases, as shown in the following example.
@@ -485,6 +485,271 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td><code>true</code></td>
                 <td>
                     Enable the generation of the blockquote classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$font-family-sans-serif</code></td>
+                <td>string</td>
+                <td><code>-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"</code></td>
+                <td>
+                    Sans-serif font stack.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$font-family-serif</code></td>
+                <td>string</td>
+                <td><code>Georgia, "Times New Roman", Times, serif</code></td>
+                <td>
+                    Serif font stack.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$font-family-monospace</code></td>
+                <td>string</td>
+                <td><code>Georgia, "Times New Roman", Times, serif</code></td>
+                <td>
+                    Monospace font stack.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$font-weight-lighter</code></td>
+                <td>string/integer</td>
+                <td><code>lighter</code></td>
+                <td>
+                    Lighter font weight
+                </td>
+            </tr>
+            <tr>
+                <td><code>$font-weight-light</code></td>
+                <td>string/integer</td>
+                <td><code>300</code></td>
+                <td>
+                    Light font weight
+                </td>
+            </tr>
+            <tr>
+                <td><code>$font-weight-normal</code></td>
+                <td>string/integer</td>
+                <td><code>400</code></td>
+                <td>
+                    Standard font weight
+                </td>
+            </tr>
+            <tr>
+                <td><code>$font-weight-bold</code></td>
+                <td>string/integer</td>
+                <td><code>700</code></td>
+                <td>
+                    Bold font weight
+                </td>
+            </tr>
+            <tr>
+                <td><code>$font-weight-bolder</code></td>
+                <td>string/integer</td>
+                <td><code>bolder</code></td>
+                <td>
+                    Bolder font weight
+                </td>
+            </tr>
+            <tr>
+                <td><code>$font-size-h1</code></td>
+                <td>string</td>
+                <td><code>($font-size-base * 2.5)</code></td>
+                <td>
+                    <code>&lt;h1&gt;</code> font size.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$font-size-h2</code></td>
+                <td>string</td>
+                <td><code>($font-size-base * 2)</code></td>
+                <td>
+                    <code>&lt;h2&gt;</code> font size.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$font-size-h3</code></td>
+                <td>string</td>
+                <td><code>($font-size-base * 1.75)</code></td>
+                <td>
+                    <code>&lt;h3&gt;</code> font size.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$font-size-h4</code></td>
+                <td>string</td>
+                <td><code>($font-size-base * 1.5)</code></td>
+                <td>
+                    <code>&lt;h4&gt;</code> font size.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$font-size-h5</code></td>
+                <td>string</td>
+                <td><code>($font-size-base * 1.25)</code></td>
+                <td>
+                    <code>&lt;h5&gt;</code> font size.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$font-size-h6</code></td>
+                <td>string</td>
+                <td><code>($font-size-base * 1)</code></td>
+                <td>
+                    <code>&lt;h6&gt;</code> font size.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$headings-font-family</code></td>
+                <td>string</td>
+                <td><code>inherit</code></td>
+                <td>
+                    Headings font family.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$headings-font-weight</code></td>
+                <td>string/integer</td>
+                <td><code>600</code></td>
+                <td>
+                    Headings font weight.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$headings-line-height</code></td>
+                <td>float</td>
+                <td><code>1.25</code></td>
+                <td>
+                    Headings line height.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$headings-color</code></td>
+                <td>string</td>
+                <td><code>inherit</code></td>
+                <td>
+                    Headings text color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$lead-font-size</code></td>
+                <td>string</td>
+                <td><code>($font-size-base * 1.25)</code></td>
+                <td>
+                    Lead in font size.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$lead-font-weight</code></td>
+                <td>string</td>
+                <td><code>inherit</code></td>
+                <td>
+                    Lead in font weight.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$lead-line-height</code></td>
+                <td>string</td>
+                <td><code>$line-height-base</code></td>
+                <td>
+                    Lead in line height.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$small-font-size</code></td>
+                <td>percent</td>
+                <td><code>80%</code></td>
+                <td>
+                    Small font size.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$text-muted</code></td>
+                <td>string</td>
+                <td><code>$uibase-500</code></td>
+                <td>
+                    Muted text color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$mark-padding-x</code></td>
+                <td>string</td>
+                <td><code>.25rem</code></td>
+                <td>
+                    Mark element padding.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$mark-bg</code></td>
+                <td>string</td>
+                <td><code>#ff0</code></td>
+                <td>
+                    Mark element background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$hr-spacer-y</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Horizontal rule vertical spacing.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$hr-border-color</code></td>
+                <td>string</td>
+                <td><code>rgba($black, .1)</code></td>
+                <td>
+                    Horizontal rule border color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$hr-border-width</code></td>
+                <td>string</td>
+                <td><code>$border-width</code></td>
+                <td>
+                    Horizontal rule border width.
+                </td>
+            </tr>
+
+            <tr>
+                <td><code>$blockquote-font-size</code></td>
+                <td>string</td>
+                <td><code>($font-size-base * 1.1875)</code></td>
+                <td>
+                    Blockquote font size.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$blockquote-color</code></td>
+                <td>string</td>
+                <td><code>$body-color</code></td>
+                <td>
+                    Blockquote font color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$blockquote-footer-font-size</code></td>
+                <td>string</td>
+                <td><code>$font-size-base</code></td>
+                <td>
+                    Blockquote footer font size.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$blockquote-footer-color</code></td>
+                <td>string</td>
+                <td><code>$uibase-500</code></td>
+                <td>
+                    Blockquote footer text color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$blockquote-footer-content</code></td>
+                <td>string</td>
+                <td><code>"\2014\00a0"</code> (em dash and non-breaking space)</td>
+                <td>
+                    Prefix for blockquote footer.
                 </td>
             </tr>
         </tbody>

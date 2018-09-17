@@ -25,7 +25,9 @@ $enable-code-pre:                           true !default; // true
 $enable-img:                                true !default; // true
 $enable-img-fluid:                          true !default; // true
 $enable-img-thumbnail:                      true !default; // true
-$enable-img-figure:                         true !default; // true
+
+// Figure
+$enable-figure:                             true !default; // true
 
 // Table
 $enable-table:                              true !default; // true

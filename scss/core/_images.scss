@@ -20,20 +20,20 @@
             @include img-fluid;
         }
     }
+}
 
-    // Figures
-    @if $enable-img-figure {
-        .figure {
-            // Ensures the caption's text aligns with the image.
-            display: inline-block;
-        }
-        .figure-img {
-            margin-bottom: $figure-spacer-y;
-            line-height: 1;
-        }
-        .figure-caption {
-            @include font-size($figure-caption-font-size);
-            color: $figure-caption-color;
-        }
+// Figures
+@if $enable-figure {
+    .figure {
+        // Ensures the caption's text aligns with the image.
+        display: inline-block;
+    }
+    .figure-img {
+        margin-bottom: $figure-spacer-y;
+        line-height: 1;
+    }
+    .figure-caption {
+        @include font-size($figure-caption-font-size);
+        color: $figure-caption-color;
     }
 }
