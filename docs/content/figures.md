@@ -58,7 +58,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                     Enable the generation of the figure CSS classes.
                 </td>
             </tr>
-
             <tr>
                 <td><code>$figure-spacer-y</code></td>
                 <td>percent</td>
