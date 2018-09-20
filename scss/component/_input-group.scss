@@ -131,8 +131,10 @@
             @extend %btn-#{$size};
         }
 
-        .input-group-#{$size} > .input-group-addon > .btn-icon {
-            @extend %btn-icon-#{$size};
+        @if $enable-btn-icon {
+            .input-group-#{$size} > .input-group-addon > .btn-icon {
+                @extend %btn-icon-#{$size};
+            }
         }
     }
 }

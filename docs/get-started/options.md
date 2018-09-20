@@ -449,6 +449,14 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                     Enable the generation of the font CSS variables.
                 </td>
             </tr>
+            <tr>
+                <td><code>$root-colors</code></td>
+                <td>map</td>
+                <td><code> map-merge($base-colors, $palette-colors)</code></td>
+                <td>
+                    Colors to output as CSS variables.
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

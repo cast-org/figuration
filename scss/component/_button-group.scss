@@ -69,8 +69,10 @@
         .btn-group-#{$size} > .btn-check > .btn {
             @extend %btn-#{$size};
         }
-        .btn-group-#{$size} > .btn-icon {
-            @extend %btn-icon-#{$size};
+        @if $enable-btn-icon {
+            .btn-group-#{$size} > .btn-icon {
+                @extend %btn-icon-#{$size};
+            }
         }
     }
 }

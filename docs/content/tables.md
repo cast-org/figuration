@@ -1835,7 +1835,7 @@ Build a color variant to be applied to a table row, `<tr>`, element.
                 <td>string</td>
                 <td><code>''</code></td>
                 <td>
-                    The value appended to form the class <code>.table-#{$state}</code>.
+                    The value appended to generate the class <code>.table-#{$state}</code>.
                 </td>
             </tr>
             <tr>

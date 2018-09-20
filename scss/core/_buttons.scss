@@ -1,210 +1,235 @@
 // stylelint-disable selector-no-qualifying-type
-
-// Base button
-.btn {
-    display: inline-block;
-    font-weight: $btn-font-weight;
-    line-height: $btn-line-height;
-    text-align: center;
-    text-decoration: none;
-    vertical-align: middle;
-    user-select: none;
-    border: $btn-border-width solid transparent;
-    @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
-    @include box-shadow($btn-box-shadow);
-    @include transition($btn-transition);
-}
-
-.btn:hover {
-    text-decoration: none;
-}
-
-.btn:focus,
-.btn-check-input:focus ~ .btn {
-    text-decoration: none;
-    // Turn off outline due to focus box-shadow set by button-variant()
-    outline: 0;
-}
-
-// Disabled comes first so active can restyle
-.btn.disabled,
-.btn:disabled,
-.btn-check-input:disabled ~ .btn {
-    opacity: $btn-disabled-opacity;
-    @include box-shadow(none);
-}
-
-.btn:not(:disabled):not(.disabled) {
-    cursor: pointer;
-}
-
-.btn:not(:disabled):not(.disabled):active,
-.btn:not(:disabled):not(.disabled).active,
-.btn-check-input:not(:disabled):checked ~ .btn,
-.open > .btn {
-    @include box-shadow($btn-active-box-shadow);
-}
-
-.btn:not(:disabled):not(.disabled):active:focus,
-.btn:not(:disabled):not(.disabled).active:focus,
-.btn-check-input:not(:disabled):checked:focus ~ .btn,
-.open > .btn:focus {
-    @include box-shadow($btn-active-box-shadow, $btn-focus-box-shadow);
-}
-
-// Default color
-@include button-variant(".btn", $btn-default-color, $btn-default-bg, $btn-default-border-color, $btn-default-focus-box-shadow-color, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border-color, $btn-default-active-color, $btn-default-active-bg, $btn-default-active-border-color);
-
-
-// Future-proof disabling of clicks on `<a>` elements
-a.btn.disabled,
-fieldset:disabled a.btn,
-.btn-check-input:disabled ~ .btn {
-    pointer-events: none;
-}
-
-// Theme generation
-@if (type-of($btn-colors) == "map" and length($btn-colors) != 0) {
-    $mixed-btn-themes: _mix-context-colors($btn-colors, $btn-levels);
-    $btn-themes: map-merge($mixed-btn-themes, $btn-themes);
-}
-
-@if (type-of($btn-outline-colors) == "map" and length($btn-outline-colors) != 0) {
-    $mixed-btn-outline-themes: _mix-context-colors($btn-outline-colors, $btn-outline-levels);
-    $btn-outline-themes: map-merge($mixed-btn-outline-themes, $btn-outline-themes);
-}
-
-// Contextual color variants
-@if (type-of($btn-themes) == "map" and length($btn-themes) != 0) {
-    @each $theme, $colors in $btn-themes {
-        @include button-variant-control(".btn-#{$theme}", $colors);
-    }
-}
-
-// Outline variant - remove all backgrounds
-@include button-variant(".btn-outline", $btn-default-color, $btn-outline-bg, $btn-default-border-color, $btn-default-focus-box-shadow-color, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border-color, $btn-default-active-color, $btn-default-active-bg, $btn-default-active-border-color);
-
-@if (type-of($btn-outline-themes) == "map" and length($btn-outline-themes) != 0) {
-    @each $theme, $colors in $btn-outline-themes {
-        @include button-variant-control-outline(".btn-outline-#{$theme}", $colors, $btn-outline-bg);
-    }
-}
-
-// Link buttons
-// Make a button look and behave like a link
-.btn-link {
-    color: $link-color;
-    text-decoration: $link-decoration;
-    background-color: transparent;
-    border-color: transparent;
-    box-shadow: none;
-
-    @include hover-focus {
-        text-decoration: $link-hover-decoration;
-        background-color: transparent;
-        border-color: transparent;
-        box-shadow: none;
-    }
-
-    &:hover {
-        color: $link-hover-color;
-    }
-
-    // stylelint-disable declaration-block-no-duplicate-properties
-    &:focus {
-        outline: 1px dotted;
-        outline: 5px auto -webkit-focus-ring-color;
-    }
-    // stylelint-enable declaration-block-no-duplicate-properties
-
-    &.disabled,
-    &:disabled {
-        color: $link-color;
-        text-decoration: none;
-        pointer-events: none;
-        background-color: transparent;
-        border-color: transparent;
-    }
-
-    &:not(:disabled):not(.disabled):active,
-    &:not(:disabled):not(.disabled).active,
-    .open > & {
-        color: $link-hover-color;
-        background-color: transparent;
-        border-color: transparent;
-        box-shadow: none;
-    }
-}
-
-// Icon button uses smaller horizontal padding
-.btn-icon {
-    padding-right: $btn-padding-x * $btn-icon-multiplier;
-    padding-left: $btn-padding-x * $btn-icon-multiplier;
-}
-
-// Button sizes
-@if $enable-sizing {
-    @each $size, $dims in $btn-sizes {
-        $sz-font-size:     map-get($dims, "font-size");
-        $sz-line-height:   map-get($dims, "line-height");
-        $sz-padding-y:     map-get($dims, "padding-y");
-        $sz-padding-x:     map-get($dims, "padding-x");
-        $sz-border-radius: map-get($dims, "border-radius");
-
-        %btn-#{$size} {
-            @include button-size($sz-padding-y, $sz-padding-x, $sz-font-size,  $sz-line-height, $sz-border-radius);
+@if $enable-btn {
+    // Base button
+    @if $enable-btn-common {
+        .btn {
+            display: inline-block;
+            font-weight: $btn-font-weight;
+            line-height: $btn-line-height;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: middle;
+            user-select: none;
+            border: $btn-border-width solid transparent;
+            @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
+            @include box-shadow($btn-box-shadow);
+            @include transition($btn-transition);
         }
-        %btn-icon-#{$size} {
-            padding-right: $sz-padding-x * $btn-icon-multiplier;
-            padding-left: $sz-padding-x * $btn-icon-multiplier;
+
+        .btn:hover {
+            text-decoration: none;
+        }
+
+        .btn:focus,
+        .btn-check-input:focus ~ .btn {
+            text-decoration: none;
+            // Turn off outline due to focus box-shadow set by button-variant()
+            outline: 0;
+        }
+
+        // Disabled comes first so active can restyle
+        .btn.disabled,
+        .btn:disabled,
+        .btn-check-input:disabled ~ .btn {
+            opacity: $btn-disabled-opacity;
+            @include box-shadow(none);
+        }
+
+        .btn:not(:disabled):not(.disabled) {
+            cursor: pointer;
+        }
+
+        .btn:not(:disabled):not(.disabled):active,
+        .btn:not(:disabled):not(.disabled).active,
+        .btn-check-input:not(:disabled):checked ~ .btn,
+        .open > .btn {
+            @include box-shadow($btn-active-box-shadow);
+        }
+
+        .btn:not(:disabled):not(.disabled):active:focus,
+        .btn:not(:disabled):not(.disabled).active:focus,
+        .btn-check-input:not(:disabled):checked:focus ~ .btn,
+        .open > .btn:focus {
+            @include box-shadow($btn-active-box-shadow, $btn-focus-box-shadow);
         }
 
 
-        .btn-#{$size} {
-            @extend %btn-#{$size};
+        // Future-proof disabling of clicks on `<a>` elements
+        a.btn.disabled,
+        fieldset:disabled a.btn,
+        .btn-check-input:disabled ~ .btn {
+            pointer-events: none;
+        }
+    }
 
-            &.btn-icon {
-                @extend %btn-icon-#{$size};
+    // Default color
+    @if $enable-btn-default {
+        @include button-variant(".btn", $btn-default-color, $btn-default-bg, $btn-default-border-color, $btn-default-focus-box-shadow-color, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border-color, $btn-default-active-color, $btn-default-active-bg, $btn-default-active-border-color);
+    }
+
+    // Theme generation
+    @if $enable-btn-colors {
+        @if (type-of($btn-colors) == "map" and length($btn-colors) != 0) {
+            $mixed-btn-themes: _mix-context-colors($btn-colors, $btn-levels);
+            $btn-themes: map-merge($mixed-btn-themes, $btn-themes);
+        }
+
+        // Contextual color variants
+        @if (type-of($btn-themes) == "map" and length($btn-themes) != 0) {
+            @each $theme, $colors in $btn-themes {
+                @include button-variant-control(".btn-#{$theme}", $colors);
             }
         }
     }
-}
 
-// Block button
-.btn-block {
-    display: block;
-    width: 100%;
-
-    // Vertically space out multiple block buttons
-    + .btn-block {
-        margin-top: $btn-block-spacing-y;
+    // Outline variant - remove all backgrounds
+    @if $enable-btn-outline {
+        @include button-variant(".btn-outline", $btn-default-color, $btn-outline-bg, $btn-default-border-color, $btn-default-focus-box-shadow-color, $btn-default-hover-color, $btn-default-hover-bg, $btn-default-hover-border-color, $btn-default-active-color, $btn-default-active-bg, $btn-default-active-border-color);
     }
-}
 
-// Specificity overrides
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
-    &.btn-block {
-        width: 100%;
+    // Outline theme generation
+    @if $enable-btn-outline-colors {
+        @if (type-of($btn-outline-colors) == "map" and length($btn-outline-colors) != 0) {
+            $mixed-btn-outline-themes: _mix-context-colors($btn-outline-colors, $btn-outline-levels);
+            $btn-outline-themes: map-merge($mixed-btn-outline-themes, $btn-outline-themes);
+        }
+
+        // Outline contextual color variants
+        @if (type-of($btn-outline-themes) == "map" and length($btn-outline-themes) != 0) {
+            @each $theme, $colors in $btn-outline-themes {
+                @include button-variant-control-outline(".btn-outline-#{$theme}", $colors, $btn-outline-bg);
+            }
+        }
     }
-}
 
-// Checkbox and radio button
-.btn-check {
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-}
+    // Link buttons
+    // Make a button look and behave like a link
+    @if $enable-btn-link {
+        .btn-link {
+            color: $link-color;
+            text-decoration: $link-decoration;
+            background-color: transparent;
+            border-color: transparent;
+            box-shadow: none;
 
-// Place input behind the label
-.btn-check-input {
-    position: absolute;
-    clip: rect(0, 0, 0, 0);
-    pointer-events: none;
+            @include hover-focus {
+                text-decoration: $link-hover-decoration;
+                background-color: transparent;
+                border-color: transparent;
+                box-shadow: none;
+            }
 
-    // Override label margin
-    ~ .btn {
-        margin-bottom: 0;
+            &:hover {
+                color: $link-hover-color;
+            }
+
+            // stylelint-disable declaration-block-no-duplicate-properties
+            &:focus {
+                outline: 1px dotted;
+                outline: 5px auto -webkit-focus-ring-color;
+            }
+            // stylelint-enable declaration-block-no-duplicate-properties
+
+            &.disabled,
+            &:disabled {
+                color: $link-color;
+                text-decoration: none;
+                pointer-events: none;
+                background-color: transparent;
+                border-color: transparent;
+            }
+
+            &:not(:disabled):not(.disabled):active,
+            &:not(:disabled):not(.disabled).active,
+            .open > & {
+                color: $link-hover-color;
+                background-color: transparent;
+                border-color: transparent;
+                box-shadow: none;
+            }
+        }
+    }
+
+    // Icon button uses smaller horizontal padding
+    @if $enable-btn-icon {
+        .btn-icon {
+            padding-right: $btn-padding-x * $btn-icon-multiplier;
+            padding-left: $btn-padding-x * $btn-icon-multiplier;
+        }
+    }
+
+    // Button sizes
+    @if $enable-sizing {
+        @each $size, $dims in $btn-sizes {
+            $sz-font-size:     map-get($dims, "font-size");
+            $sz-line-height:   map-get($dims, "line-height");
+            $sz-padding-y:     map-get($dims, "padding-y");
+            $sz-padding-x:     map-get($dims, "padding-x");
+            $sz-border-radius: map-get($dims, "border-radius");
+
+            %btn-#{$size} {
+                @include button-size($sz-padding-y, $sz-padding-x, $sz-font-size,  $sz-line-height, $sz-border-radius);
+            }
+
+            %btn-icon-#{$size} {
+                padding-right: $sz-padding-x * $btn-icon-multiplier;
+                padding-left: $sz-padding-x * $btn-icon-multiplier;
+            }
+
+            .btn-#{$size} {
+                @if $enable-btn-sizes {
+                    @extend %btn-#{$size};
+                }
+
+                &.btn-icon {
+                    @if $enable-btn-icon and $enable-btn-icon-sizes {
+                        @extend %btn-icon-#{$size};
+                    }
+                }
+            }
+        }
+    }
+
+    // Block button
+    @if $enable-btn-block {
+        .btn-block {
+            display: block;
+            width: 100%;
+
+            // Vertically space out multiple block buttons
+            + .btn-block {
+                margin-top: $btn-block-spacing-y;
+            }
+        }
+
+        // Specificity overrides
+        input[type="submit"],
+        input[type="reset"],
+        input[type="button"] {
+            &.btn-block {
+                width: 100%;
+            }
+        }
+    }
+
+    // Checkbox and radio button
+    @if $enable-btn-check {
+        .btn-check {
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        // Place input behind the label
+        .btn-check-input {
+            position: absolute;
+            clip: rect(0, 0, 0, 0);
+            pointer-events: none;
+
+            // Override label margin
+            ~ .btn {
+                margin-bottom: 0;
+            }
+        }
     }
 }
