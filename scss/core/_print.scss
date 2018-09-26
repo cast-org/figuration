@@ -75,22 +75,24 @@
             border: $border-width solid #000;
         }
 
-        .table {
-            color: inherit !important;
-            border-collapse: collapse !important;
-            border-color: $table-border-color !important;
-
-            thead,
-            tbody,
-            tfoot {
+        @if $enable-table {
+            .table {
                 color: inherit !important;
-            }
+                border-collapse: collapse !important;
+                border-color: $table-border-color !important;
 
-            tr,
-            td,
-            th {
-                color: inherit !important;
-                background-color: #fff !important;
+                thead,
+                tbody,
+                tfoot {
+                    color: inherit !important;
+                }
+
+                tr,
+                td,
+                th {
+                    color: inherit !important;
+                    background-color: #fff !important;
+                }
             }
         }
 
