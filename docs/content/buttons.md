@@ -503,7 +503,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
             <tr>
                 <td><code>$btn-focus-box-shadow-alpha</code></td>
                 <td>string</td>
-                <td><code>0 0 0 .1875rem</code></td>
+                <td><code>.35</code></td>
                 <td>
                     Button box shadow alpha, opacity, value for focus state.
                 </td>
@@ -682,6 +682,14 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td><code>$level-control</code></td>
                 <td>
                     Levels to mix outline button colors with.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-transition</code></td>
+                <td>map</td>
+                <td><code>color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out</code></td>
+                <td>
+                    Transition effect for buttons.
                 </td>
             </tr>
         </tbody>

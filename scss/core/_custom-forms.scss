@@ -2,516 +2,525 @@
 // Released under MIT and copyright 2014 Waybury.
 // https://github.com/iconic/open-iconic
 
-
-// Checkboxes and Radios
-// Base class takes care of all the key behavioral aspects.
-.custom-control {
-    position: relative;
-    display: block;
-    min-height: ($font-size-base * $line-height-base);
-    padding-left: $custom-control-gutter;
-}
-
-.custom-control-inline {
-    display: inline-flex;
-    margin-right: $custom-control-inline-margin-x;
-}
-
-.custom-control-input {
-    position: absolute;
-    // Place input behind the label
-    clip: rect(0, 0, 0, 0);
-    pointer-events: none;
-    opacity: 0;
-
-    &:checked ~ .custom-control-indicator::before {
-        color: $custom-control-checked-indicator-color;
-        background-color: $custom-control-checked-indicator-bg;
-        border-color: $custom-control-checked-indicator-border-color;
-        @include box-shadow($custom-control-checked-indicator-box-shadow);
-    }
-
-    &:focus ~ .custom-control-indicator::before {
-        box-shadow: $custom-control-focus-indicator-box-shadow;
-    }
-
-    &:active:not(:disabled) ~ .custom-control-indicator::before {
-        color: $custom-control-active-indicator-color;
-        background-color: $custom-control-active-indicator-bg;
-    }
-
-    &:disabled {
-        ~ .custom-control-label {
-            color: $custom-control-disabled-description-color;
+@if $enable-form {
+    // Checkboxes and Radios
+    // Base class takes care of all the key behavioral aspects.
+    @if $enable-custom-control {
+        .custom-control {
+            position: relative;
+            display: block;
+            min-height: ($font-size-base * $line-height-base);
+            padding-left: $custom-control-gutter;
         }
 
-        ~ .custom-control-indicator {
+        .custom-control-inline {
+            display: inline-flex;
+            margin-right: $custom-control-inline-margin-x;
+        }
+
+        .custom-control-input {
+            position: absolute;
+            // Place input behind the label
+            clip: rect(0, 0, 0, 0);
+            pointer-events: none;
+            opacity: 0;
+
+            &:checked ~ .custom-control-indicator::before {
+                color: $custom-control-checked-indicator-color;
+                background-color: $custom-control-checked-indicator-bg;
+                border-color: $custom-control-checked-indicator-border-color;
+                @include box-shadow($custom-control-checked-indicator-box-shadow);
+            }
+
+            &:focus ~ .custom-control-indicator::before {
+                box-shadow: $custom-control-focus-indicator-box-shadow;
+            }
+
+            &:active:not(:disabled) ~ .custom-control-indicator::before {
+                color: $custom-control-active-indicator-color;
+                background-color: $custom-control-active-indicator-bg;
+            }
+
+            &:disabled {
+                ~ .custom-control-label {
+                    color: $custom-control-disabled-description-color;
+                }
+
+                ~ .custom-control-indicator {
+                    &::before {
+                        opacity: $custom-control-disabled-indicator-opacity;
+                    }
+                }
+            }
+        }
+
+        .custom-control-label {
+            margin-bottom: 0; // Undo label margin
+        }
+
+        // Custom control indicators
+        // Generate custom controls from pseudo-elements.
+        .custom-control-indicator {
+            position: absolute;
+            width: $custom-control-indicator-size;
+            height: $custom-control-indicator-size;
+            //min-height: (1rem * $line-height-base);
+            margin-bottom: 0; // Undo label margin
+
+            // Background (color and border)
             &::before {
-                opacity: $custom-control-disabled-indicator-opacity;
+                position: absolute;
+                top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
+                left: -$custom-control-gutter;
+                display: block;
+                width: $custom-control-indicator-size;
+                height: $custom-control-indicator-size;
+                pointer-events: none;
+                content: "";
+                user-select: none;
+                background-color: $custom-control-indicator-bg;
+                border: $custom-control-indicator-border-width solid $custom-control-indicator-border-color;
+                @include box-shadow($custom-control-indicator-box-shadow);
+                @include transition($input-transition);
+            }
+
+            // Foreground (icon)
+            &::after {
+                position: absolute;
+                top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
+                left: -$custom-control-gutter;
+                display: block;
+                width: $custom-control-indicator-size;
+                height: $custom-control-indicator-size;
+                content: "";
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: $custom-control-indicator-bg-size;
+            }
+        }
+
+
+        // Checkboxes
+        // Tweak just a few things for checkboxes.
+        @if $enable-custom-checkbox {
+            .custom-checkbox {
+                .custom-control-indicator::before {
+                    @include border-radius($custom-checkbox-radius);
+                }
+
+                .custom-control-input:checked ~ .custom-control-indicator {
+                    &::after {
+                        background-image: $custom-checkbox-checked-icon;
+                    }
+                }
+
+                .custom-control-input:indeterminate ~ .custom-control-indicator {
+                    &::before {
+                        background-color: $custom-checkbox-indeterminate-bg;
+                        @include box-shadow($custom-checkbox-indeterminate-box-shadow);
+                    }
+                    &::after {
+                        background-image: $custom-checkbox-indeterminate-icon;
+                    }
+                }
+            }
+        }
+
+        // Radios
+        // Tweak just a few things for radios.
+        @if $enable-custom-radio {
+            .custom-radio {
+                .custom-control-indicator::before {
+                    border-radius: $custom-radio-radius;
+                }
+
+                .custom-control-input:checked ~ .custom-control-indicator {
+                    &::after {
+                        background-image: $custom-radio-checked-icon;
+                    }
+                }
+            }
+        }
+
+        // Switch
+        @if $enable-custom-switch {
+            .custom-switch {
+                padding-left: $custom-switch-gutter;
+
+                .custom-control-indicator {
+                    width: $custom-switch-width;
+                    height: $custom-switch-track-height;
+
+                    &::before,
+                    &::after {
+                        //top: 50%;
+                        left: -$custom-switch-gutter;
+                        pointer-events: auto;
+                        @include transition($switch-transition);
+                        //transform: translateY(-50%);
+                    }
+
+                    // Thumb
+                    &::before {
+                        top: (($font-size-base * $line-height-base - $custom-switch-thumb-height) / 2);
+                        z-index: 1; // Move above the track
+                        width: $custom-switch-thumb-width;
+                        height: $custom-switch-thumb-height;
+                        background-color: $custom-switch-thumb-bg;
+                        border: $custom-switch-thumb-border-width solid $custom-switch-thumb-border-color;
+                        @include border-radius($custom-switch-thumb-radius);
+                        @include box-shadow($custom-switch-thumb-box-shadow);
+                    }
+
+                    // Track
+                    &::after {
+                        top: (($font-size-base * $line-height-base - $custom-switch-track-height) / 2);
+                        width: $custom-switch-width;
+                        height: $custom-switch-track-height;
+                        background-color: $custom-switch-track-bg;
+                        border: $custom-switch-track-border-width solid $custom-switch-track-border-color;
+                        @include border-radius($custom-switch-track-radius);
+                        @include box-shadow($custom-switch-track-box-shadow);
+                    }
+                }
+
+                .custom-control-input:checked ~ .custom-control-indicator {
+                    &::before {
+                        left: calc(#{$custom-switch-width} - #{$custom-switch-thumb-width} - #{$custom-switch-gutter});
+                        background-color: $custom-switch-checked-thumb-bg;
+                        border-color: $custom-switch-checked-thumb-border-color;
+                        @include box-shadow($custom-switch-thumb-box-shadow);
+                    }
+                    &::after {
+                        background-color: $custom-switch-checked-track-bg;
+                        border-color: $custom-switch-checked-track-border-color;
+                        @include box-shadow($custom-switch-track-box-shadow);
+                    }
+                }
+
+                // Need to reset focus box-shadow because of overrule in `:checked` state
+                .custom-control-input:focus ~ .custom-control-indicator::before {
+                    box-shadow: $custom-control-focus-indicator-box-shadow;
+                }
+
+                .custom-control-input:active ~ .custom-control-indicator {
+                    &::before {
+                        background-color: $custom-switch-active-thumb-bg;
+                    }
+                    &::after {
+                        background-color: $custom-switch-active-track-bg;
+                    }
+                }
+
+                .custom-control-input:disabled ~ .custom-control-indicator {
+                    &::before {
+                        background-color: $custom-switch-disabled-thumb-bg;
+                        border-color: $custom-switch-disabled-thumb-bg;
+                        opacity: 1;
+                    }
+                    &::after {
+                        opacity: $custom-control-disabled-indicator-opacity;
+                    }
+                }
+
+                .custom-control-input:disabled:checked ~ .custom-control-indicator {
+                    &::before {
+                        background-color: $custom-switch-disabled-checked-thumb-bg;
+                        border-color: $custom-switch-disabled-checked-thumb-bg;
+                    }
+                }
             }
         }
     }
-}
 
-.custom-control-label {
-    margin-bottom: 0; // Undo label margin
-}
+    // Select
+    // Replaces the browser default select with a custom one.
+    @if $enable-custom-select {
+        .custom-select {
+            display: block;
+            width: 100%;
+            height: $input-height-outer;
+            padding: $input-padding-y calc(#{$input-padding-x} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset}) $input-padding-y $input-padding-x;
+            color: $input-color;
+            vertical-align: middle;
+            background: $input-bg $custom-select-indicator-image no-repeat right $custom-select-indicator-offset center;
+            background-size: $custom-select-indicator-width $custom-select-indicator-height;
+            border: $input-border-width solid $input-border-color;
+            @if $enable-rounded {
+                border-radius: $input-border-radius;
+            } @else {
+                border-radius: 0;
+            }
+            @include box-shadow($input-box-shadow);
+            appearance: none;
+            @include transition($input-transition);
+            @include form-control-focus();
 
-// Custom control indicators
-// Generate custom controls from pseudo-elements.
-.custom-control-indicator {
-    position: absolute;
-    width: $custom-control-indicator-size;
-    height: $custom-control-indicator-size;
-    //min-height: (1rem * $line-height-base);
-    margin-bottom: 0; // Undo label margin
+            &:focus {
+                &::-ms-value {
+                    // For visual consistency with other platforms/browsers,
+                    // suppress the default white text on blue background highlight given to
+                    // the selected option text when the (still closed) <select> receives focus
+                    // in IE and (under certain conditions) Edge.
+                    // See https://github.com/twbs/bootstrap/issues/19398.
+                    color: $input-focus-color;
+                    background-color: $input-focus-bg;
+                }
+            }
 
-    // Background (color and border)
-    &::before {
-        position: absolute;
-        top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
-        left: -$custom-control-gutter;
-        display: block;
-        width: $custom-control-indicator-size;
-        height: $custom-control-indicator-size;
-        pointer-events: none;
-        content: "";
-        user-select: none;
-        background-color: $custom-control-indicator-bg;
-        border: $custom-control-indicator-border-width solid $custom-control-indicator-border-color;
-        @include box-shadow($custom-control-indicator-box-shadow);
-    }
+            &[size]:not([size="1"]),
+            &[multiple] {
+                height: auto;
+                background-image: none;
+            }
 
-    // Foreground (icon)
-    &::after {
-        position: absolute;
-        top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
-        left: -$custom-control-gutter;
-        display: block;
-        width: $custom-control-indicator-size;
-        height: $custom-control-indicator-size;
-        content: "";
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: $custom-control-indicator-bg-size;
-    }
-}
+            &:disabled {
+                color: $input-disabled-color;
+                background-color: $input-disabled-bg;
+            }
 
-// Checkboxes
-// Tweak just a few things for checkboxes.
-.custom-checkbox {
-    .custom-control-indicator::before {
-        @include border-radius($custom-checkbox-radius);
-    }
-
-    .custom-control-input:checked ~ .custom-control-indicator {
-        &::after {
-            background-image: $custom-checkbox-checked-icon;
+            // Hides the default caret in IE11
+            &::-ms-expand {
+                opacity: 0;
+            }
         }
     }
 
-    .custom-control-input:indeterminate ~ .custom-control-indicator {
-        &::before {
-            background-color: $custom-checkbox-indeterminate-bg;
-            @include box-shadow($custom-checkbox-indeterminate-box-shadow);
-        }
-        &::after {
-            background-image: $custom-checkbox-indeterminate-icon;
-        }
-    }
-}
+    // Select sizes
+    @if $enable-sizing {
+        @each $size, $dims in $input-sizes {
+            $sz-font-size:     map-get($dims, "font-size");
+            $sz-line-height:   map-get($dims, "line-height");
+            $sz-padding-y:     map-get($dims, "padding-y");
+            $sz-padding-x:     map-get($dims, "padding-x");
+            $sz-border-radius: map-get($dims, "border-radius");
+            $sz-inner-height:  (($sz-font-size * $sz-line-height) + ($sz-padding-y * 2));
+            $sz-outer-height:  calc(#{$sz-inner-height} + #{($border-width * 2)});
 
-// Radios
-// Tweak just a few things for radios.
-.custom-radio {
-    .custom-control-indicator::before {
-        border-radius: $custom-radio-radius;
-    }
-
-    .custom-control-input:checked ~ .custom-control-indicator {
-        &::after {
-            background-image: $custom-radio-checked-icon;
-        }
-    }
-}
-
-// Switch
-.custom-switch {
-    //min-height: max($custom-switch-track-height-ratio * $custom-switch-thumb-height, $custom-switch-thumb-height, (1rem * $line-height-base));
-    padding-left: $custom-switch-gutter;
-
-    .custom-control-indicator {
-        width: $custom-switch-width;
-        height: $custom-switch-track-height-ratio * $custom-switch-thumb-height;
-        //min-height: max($custom-switch-track-height-ratio * $custom-switch-thumb-height, $custom-switch-thumb-height, (1rem * $line-height-base));
-
-        &::before,
-        &::after {
-            //top: 50%;
-            left: -$custom-switch-gutter;
-            pointer-events: auto;
-            @include transition($switch-transition);
-            //transform: translateY(-50%);
-        }
-
-        // Thumb
-        &::before {
-            top: (($font-size-base * $line-height-base - $custom-switch-thumb-height) / 2);
-            z-index: 1; // Move above the track
-            width: $custom-switch-thumb-width;
-            height: $custom-switch-thumb-height;
-            background-color: $custom-switch-thumb-bg;
-            border: $custom-switch-thumb-border-width solid $custom-switch-thumb-border-color;
-            @include border-radius($custom-switch-thumb-radius);
-            @include box-shadow($custom-switch-thumb-box-shadow);
-        }
-
-        // Track
-        &::after {
-            top: (($font-size-base * $line-height-base - ($custom-switch-track-height-ratio * $custom-switch-thumb-height)) / 2);
-            width: $custom-switch-width;
-            height: $custom-switch-track-height-ratio * $custom-switch-thumb-height;
-            background-color: $custom-switch-track-bg;
-            border: $custom-switch-track-border-width solid $custom-switch-track-border-color;
-            @include border-radius($custom-switch-track-radius);
-            @include box-shadow($custom-switch-track-box-shadow);
+            @if $enable-custom-select and $enable-custom-select-sizes {
+                // stylelint-disable declaration-block-no-duplicate-properties
+                .custom-select-#{$size} {
+                    height: $sz-outer-height;
+                    padding: $sz-padding-y $sz-padding-x;
+                    padding-right: calc(#{$sz-padding-x} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset});
+                    @include font-size($sz-font-size);
+                    line-height: $sz-line-height;
+                    @include border-radius($sz-border-radius);
+                }
+                // stylelint-enable declaration-block-no-duplicate-properties
+            }
         }
     }
 
-    .custom-control-input:checked ~ .custom-control-indicator {
-        &::before {
-            left: calc(#{$custom-switch-width} - #{$custom-switch-thumb-width} - #{$custom-switch-gutter});
-            background-color: $custom-switch-checked-thumb-bg;
-            border-color: $custom-switch-checked-thumb-border-color;
-            @include box-shadow($custom-switch-thumb-box-shadow);
-        }
-        &::after {
-            background-color: $custom-switch-checked-track-bg;
-            border-color: $custom-switch-checked-track-border-color;
-            @include box-shadow($custom-switch-track-box-shadow);
-        }
-    }
-
-    // Need to reset focus box-shadow because of overrule in `:checked` state
-    .custom-control-input:focus ~ .custom-control-indicator::before {
-        box-shadow: $custom-control-focus-indicator-box-shadow;
-    }
-
-    .custom-control-input:active ~ .custom-control-indicator {
-        &::before {
-            background-color: $custom-switch-active-thumb-bg;
-        }
-        &::after {
-            background-color: $custom-switch-active-track-bg;
-        }
-    }
-
-    .custom-control-input:disabled ~ .custom-control-indicator {
-        &::before {
-            background-color: $custom-switch-disabled-thumb-bg;
-            border-color: $custom-switch-disabled-thumb-bg;
-            opacity: 1;
-        }
-        &::after {
-            opacity: $custom-control-disabled-indicator-opacity;
-        }
-    }
-
-    .custom-control-input:disabled:checked ~ .custom-control-indicator {
-        &::before {
-            background-color: $custom-switch-disabled-checked-thumb-bg;
-            border-color: $custom-switch-disabled-checked-thumb-bg;
-        }
-    }
-}
-
-// Select
-// Replaces the browser default select with a custom one.
-.custom-select {
-    display: block;
-    width: 100%;
-    height: $input-height-outer;
-    padding: $input-padding-y calc(#{$input-padding-x} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset}) $input-padding-y $input-padding-x;
-    color: $input-color;
-    vertical-align: middle;
-    background: $input-bg $custom-select-indicator-image no-repeat right $custom-select-indicator-offset center;
-    background-size: $custom-select-indicator-width $custom-select-indicator-height;
-    border: $input-border-width solid $input-border-color;
-    @if $enable-rounded {
-        border-radius: $input-border-radius;
-    } @else {
-        border-radius: 0;
-    }
-    @include box-shadow($input-box-shadow);
-    appearance: none;
-
-    &:focus {
-        &::-ms-value {
-            // For visual consistency with other platforms/browsers,
-            // suppress the default white text on blue background highlight given to
-            // the selected option text when the (still closed) <select> receives focus
-            // in IE and (under certain conditions) Edge.
-            // See https://github.com/twbs/bootstrap/issues/19398.
-            color: $input-focus-color;
-            background-color: $input-focus-bg;
-        }
-    }
-
-    &[size]:not([size="1"]),
-    &[multiple] {
-        height: auto;
-        background-image: none;
-    }
-
-    &:disabled {
-        color: $input-disabled-color;
-        background-color: $input-disabled-bg;
-    }
-
-    // Hides the default caret in IE11
-    &::-ms-expand {
-        opacity: 0;
-    }
-}
-
-// Select sizes
-@if $enable-sizing {
-    @each $size, $dims in $input-sizes {
-        $sz-font-size:     map-get($dims, "font-size");
-        $sz-line-height:   map-get($dims, "line-height");
-        $sz-padding-y:     map-get($dims, "padding-y");
-        $sz-padding-x:     map-get($dims, "padding-x");
-        $sz-border-radius: map-get($dims, "border-radius");
-        $sz-inner-height:  (($sz-font-size * $sz-line-height) + ($sz-padding-y * 2));
-        $sz-outer-height:  calc(#{$sz-inner-height} + #{($border-width * 2)});
-
-        // stylelint-disable declaration-block-no-duplicate-properties
-        .custom-select-#{$size} {
-            height: $sz-outer-height;
-            padding: $sz-padding-y $sz-padding-x;
-            padding-right: calc(#{$sz-padding-x} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset});
-            @include font-size($sz-font-size);
-            line-height: $sz-line-height;
-            @include border-radius($sz-border-radius);
-        }
-        // stylelint-enable declaration-block-no-duplicate-properties
-    }
-}
-
-// File
-// Custom file input.
-.custom-file {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    height: $input-height-outer;
-    margin-bottom: 0;
-}
-
-.custom-file-input {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    height: $input-height-outer;
-    margin: 0;
-    opacity: 0;
-
-    &:focus-within ~ .custom-file-label, // Firefox workaround
-    &:focus ~ .custom-file-label {
-        color: $input-focus-color;
-        background-color: $input-focus-bg;
-        border-color: $input-focus-border-color;
-        outline: 0;
-        // Avoid using mixin so we can pass custom focus shadow properly
-        @if $enable-shadows {
-            box-shadow: $input-box-shadow, $input-focus-box-shadow;
-        } @else {
-            box-shadow: $input-focus-box-shadow;
+    // File
+    // Custom file input.
+    @if $enable-custom-file {
+        .custom-file {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            height: $input-height-outer;
+            margin-bottom: 0;
         }
 
-        &::after {
-            border-color: inherit;
+        .custom-file-input {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: $input-height-outer;
+            margin: 0;
+            opacity: 0;
+
+            &:focus-within ~ .custom-file-label, // Firefox workaround
+            &:focus ~ .custom-file-label {
+                color: $input-focus-color;
+                background-color: $input-focus-bg;
+                border-color: $input-focus-border-color;
+                outline: 0;
+                // Avoid using mixin so we can pass custom focus shadow properly
+                @if $enable-shadows {
+                    box-shadow: $input-box-shadow, $input-focus-box-shadow;
+                } @else {
+                    box-shadow: $input-focus-box-shadow;
+                }
+
+                &::after {
+                    border-color: inherit;
+                }
+            }
+
+            &:disabled ~ .custom-file-label {
+                color: $input-disabled-color;
+                background-color: $input-disabled-bg;
+
+                &::after {
+                    opacity: $custom-file-button-disabled-opacity;
+                }
+            }
+
+            @each $lang, $text in $custom-file-text {
+                &:lang(#{$lang}) ~ .custom-file-label::after {
+                    content: $text;
+                }
+            }
+        }
+
+        .custom-file-label {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 2;
+            height: $input-height-outer;
+            padding: $input-padding-y $input-padding-x;
+            overflow: hidden;
+            line-height: $input-line-height;
+            color: $input-color;
+            background-color: $input-bg;
+            border: $input-border-width solid $input-border-color;
+            @include border-radius($input-border-radius);
+            @include box-shadow($input-box-shadow);
+            @include transition($input-transition);
+
+            &::after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                z-index: 2;
+                display: block;
+                height: $input-height-outer;
+                padding: $input-padding-y $input-padding-x;
+                line-height: $input-line-height;
+                color: $custom-file-button-color;
+                content: "Browse";
+                background-color: $custom-file-button-bg;
+                border-left: $input-border-width solid $input-border-color;
+                @include box-shadow($btn-box-shadow);
+            }
         }
     }
 
-    &:disabled ~ .custom-file-label {
-        color: $input-disabled-color;
-        background-color: $input-disabled-bg;
+    //Color
+    // Custom color input
+    @if $enable-custom-color {
+        .custom-color {
+            display: block;
+            width: auto;
+            min-width: $input-height-inner;
+            height: $input-height-inner;
+            @include font-size($font-size-base);
+            line-height: $input-line-height;
+            color: $input-color;
+            background-color: $input-bg;
+            background-image: none;
+            border: $input-border-width solid $input-border-color;
 
-        &::after {
-            opacity: $custom-file-button-disabled-opacity;
+            @include border-radius($input-border-radius);
+            @include box-shadow($input-box-shadow);
+            @include transition($input-transition);
+            @include form-control-focus();
         }
     }
 
-    @each $lang, $text in $custom-file-text {
-        &:lang(#{$lang}) ~ .custom-file-label::after {
-            content: $text;
-        }
-    }
-}
+    // Range
+    // Each browser's pseudo-elements need to be seperate and cannot be
+    // combined to provide for shared state support. Duplication is handled
+    // with mixins.  Also some additional rules per browser.
+    @if $enable-custom-range {
+        .custom-range {
+            width: 100%;
+            // Min width needed for inline use in IE to keep from crushing to unusable width
+            min-width: $custom-range-min-width;
+            height: $custom-range-height;
+            padding: 0;
+            margin: 0;
+            vertical-align: middle;
+            background-color: transparent;
+            appearance: none;
 
-.custom-file-label {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 2;
-    height: $input-height-outer;
-    padding: $input-padding-y $input-padding-x;
-    overflow: hidden;
-    line-height: $input-line-height;
-    color: $input-color;
-    background-color: $input-bg;
-    border: $input-border-width solid $input-border-color;
-    @include border-radius($input-border-radius);
-    @include box-shadow($input-box-shadow);
+            &:focus {
+                outline: none;
+                &::-webkit-slider-thumb {
+                    box-shadow: $custom-range-thumb-focus-box-shadow;
+                }
+                &::-moz-range-thumb {
+                    box-shadow: $custom-range-thumb-focus-box-shadow;
+                }
+                &::-ms-thumb {
+                    box-shadow: $custom-range-thumb-focus-box-shadow;
+                }
+            }
 
-    &::after {
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 2;
-        display: block;
-        height: $input-height-outer;
-        padding: $input-padding-y $input-padding-x;
-        line-height: $input-line-height;
-        color: $custom-file-button-color;
-        content: "Browse";
-        background-color: $custom-file-button-bg;
-        border-left: $input-border-width solid $input-border-color;
-        @include box-shadow($btn-box-shadow);
-    }
-}
+            &::-moz-focus-outer {
+                border: 0;
+            }
 
-//Color
-// Custom color input
-.custom-color {
-    display: block;
-    width: auto;
-    min-width: $input-height-inner;
-    height: $input-height-inner;
-    @include font-size($font-size-base);
-    line-height: $input-line-height;
-    color: $input-color;
-    background-color: $input-bg;
-    background-image: none;
-    border: $input-border-width solid $input-border-color;
+            &::-ms-tooltip {
+                display: none;
+            }
 
-    @include border-radius($input-border-radius);
-    @include box-shadow($input-box-shadow);
-}
+            // Track
+            &::-webkit-slider-runnable-track {
+                @include custom-range-track();
+                background-color: $custom-range-track-bg;
+            }
+            &::-moz-range-track {
+                @include custom-range-track();
+                background-color: $custom-range-track-bg;
+            }
+            &::-ms-track {
+                @include custom-range-track();
+                background-color: transparent;
+            }
+            &::-ms-fill-lower {
+                background-color: $custom-range-track-bg;
+                @include border-radius($custom-range-track-border-radius);
+            }
+            &::-ms-fill-upper {
+                margin-right: $custom-range-thumb-width / 2;
+                background-color: $custom-range-track-bg;
+                @include border-radius($custom-range-track-border-radius);
+            }
 
-// Consolidate some items for filesize savings
-// Focus
-.custom-select,
-.custom-color {
-    @include form-control-focus();
-}
+            &:not(:disabled) {
+                &::-webkit-slider-runnable-track {
+                    cursor: $custom-range-track-cursor;
+                }
+                &::-moz-range-track {
+                    cursor: $custom-range-track-cursor;
+                }
+                // Cursor does seem to have affect in IE/Edge so no rules set.
+            }
 
-// Transition
-.custom-control-indicator::before,
-.custom-select,
-.custom-file-label,
-.custom-color {
-    @include transition($input-transition);
-}
+            // Thumb
+            &::-webkit-slider-thumb {
+                @include custom-range-thumb();
+                // Vertically align thumb
+                margin-top: (($custom-range-track-height - $custom-range-thumb-height) / 2);
+            }
+            &::-moz-range-thumb {
+                @include custom-range-thumb();
+            }
+            &::-ms-thumb {
+                @include custom-range-thumb();
+                // Vertically align thumb
+                margin-top: 0;
+                // Stop clipping focus box-shadow
+                margin-right: $custom-range-thumb-focus-box-shadow-width;
+                margin-left: $custom-range-thumb-focus-box-shadow-width;
+            }
 
-// Range
-// Each browser's pseudo-elements need to be seperate and cannot be
-// combined to provide for shared state support. Duplication is handled
-// with mixins.  Also some additional rules per browser.
-.custom-range {
-    width: 100%;
-    // Min width needed for inline use in IE to keep from crushing to unusable width
-    min-width: $custom-range-min-width;
-    height: $custom-range-height;
-    padding: 0;
-    margin: 0;
-    vertical-align: middle;
-    background-color: transparent;
-    appearance: none;
-
-    &:focus {
-        outline: none;
-        &::-webkit-slider-thumb {
-            box-shadow: $custom-range-thumb-focus-box-shadow;
-        }
-        &::-moz-range-thumb {
-            box-shadow: $custom-range-thumb-focus-box-shadow;
-        }
-        &::-ms-thumb {
-            box-shadow: $custom-range-thumb-focus-box-shadow;
-        }
-    }
-
-    &::-moz-focus-outer {
-        border: 0;
-    }
-
-    &::-ms-tooltip {
-        display: none;
-    }
-
-    // Track
-    &::-webkit-slider-runnable-track {
-        @include custom-range-track();
-        background-color: $custom-range-track-bg;
-    }
-    &::-moz-range-track {
-        @include custom-range-track();
-        background-color: $custom-range-track-bg;
-    }
-    &::-ms-track {
-        @include custom-range-track();
-        background-color: transparent;
-    }
-    &::-ms-fill-lower {
-        background-color: $custom-range-track-bg;
-        @include border-radius($custom-range-track-border-radius);
-    }
-    &::-ms-fill-upper {
-        margin-right: $custom-range-thumb-width / 2;
-        background-color: $custom-range-track-bg;
-        @include border-radius($custom-range-track-border-radius);
-    }
-
-    &:not(:disabled) {
-        &::-webkit-slider-runnable-track {
-            cursor: $custom-range-track-cursor;
-        }
-        &::-moz-range-track {
-            cursor: $custom-range-track-cursor;
-        }
-        // Cursor does seem to have affect in IE/Edge so no rules set.
-    }
-
-    // Thumb
-    &::-webkit-slider-thumb {
-        @include custom-range-thumb();
-        // Vertically align thumb
-        margin-top: (($custom-range-track-height - $custom-range-thumb-height) / 2);
-    }
-    &::-moz-range-thumb {
-        @include custom-range-thumb();
-    }
-    &::-ms-thumb {
-        @include custom-range-thumb();
-        // Vertically align thumb
-        margin-top: 0;
-        // Stop clipping focus box-shadow
-        margin-right: $custom-range-thumb-focus-box-shadow-width;
-        margin-left: $custom-range-thumb-focus-box-shadow-width;
-    }
-
-    &:disabled {
-        &::-webkit-slider-thumb {
-            background-color: $custom-range-thumb-disabled-bg;
-        }
-        &::-moz-range-thumb {
-            background-color: $custom-range-thumb-disabled-bg;
-        }
-        &::-ms-thumb {
-            background-color: $custom-range-thumb-disabled-bg;
+            &:disabled {
+                &::-webkit-slider-thumb {
+                    background-color: $custom-range-thumb-disabled-bg;
+                }
+                &::-moz-range-thumb {
+                    background-color: $custom-range-thumb-disabled-bg;
+                }
+                &::-ms-thumb {
+                    background-color: $custom-range-thumb-disabled-bg;
+                }
+            }
         }
     }
 }

@@ -55,7 +55,39 @@ $enable-btn-icon-sizes:                     true !default; // true
 $enable-btn-block:                          true !default; // true
 $enable-btn-check:                          true !default; // true
 
-// Utility options
+// Form
+$enable-form:                               true !default; // true
+$enable-form-control:                       true !default; // true
+$enable-form-control-special:               true !default; // true
+$enable-form-control-sizes:                 true !default; // true
+$enable-form-control-label:                 true !default; // true
+$enable-form-control-label-sizes:           true !default; // true
+$enable-form-control-static:                true !default; // true
+$enable-form-group:                         true !default; // true
+$enable-form-text:                          true !default; // true
+$enable-form-row:                           true !default; // true
+$enable-form-check:                         true !default; // true
+$enable-form-check-inline:                  true !default; // true
+$enable-form-validation:                    true !default; // true
+$enable-form-validation-feedback:           true !default; // true
+$enable-form-validation-tooltip:            true !default; // true
+$enable-form-inline:                        true !default; // true
+
+// Custom Form
+$enable-custom-control:                     true !default; // true
+$enable-custom-checkbox:                    true !default; // true
+$enable-custom-radio:                       true !default; // true
+$enable-custom-switch:                      true !default; // true
+$enable-custom-select:                      true !default; // true
+$enable-custom-select-sizes:                true !default; // true
+$enable-custom-file:                        true !default; // true
+$enable-custom-color:                       true !default; // true
+$enable-custom-range:                       true !default; // true
+
+// Input Group
+$enable-input-group:                        true !default; // true
+
+// Utility Options
 $enable-utility-bg:                         true !default;  // true
 $enable-utility-bg-colors:                  true !default;  // true
 $enable-utility-bg-palette:                 true !default;  // true
