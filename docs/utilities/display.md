@@ -316,7 +316,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                     Enable the generation of the print display utility classes.
                 </td>
             </tr>
-
         </tbody>
     </table>
 </div>

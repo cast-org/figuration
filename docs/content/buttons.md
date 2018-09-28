@@ -313,3 +313,653 @@ You can also use `.btn-check`s inside a `.btn-group` for grouping controls toget
     </div>
 </div>
 {% endexample %}
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for tables.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-btn</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the button classes.
+                    Smaller segements of the button classes can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-btn-common</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the common button, <code>.btn</code> rules.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-btn-default</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the default button color variant.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-btn-colors</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the button contextual color variants.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-btn-outline</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the default outline button color variant.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-btn-outline-colors</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the outline button contextual color variants.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-btn-link</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the link button variant.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-btn-sizes</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the button size classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-btn-icon</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the icon button classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-btn-icon-sizes</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the icon button size classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-btn-bock</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the block button variant.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-btn-check</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the checkbox and radio button variant.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-padding-y</code></td>
+                <td>string</td>
+                <td><code>.25rem</code></td>
+                <td>
+                    Base button vertical padding.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-padding-x</code></td>
+                <td>string</td>
+                <td><code>.75rem</code></td>
+                <td>
+                    Base button horizontal padding.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-font-weight</code></td>
+                <td>string</td>
+                <td><code>$font-weight-normal</code></td>
+                <td>
+                    Base button font weight.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-line-height</code></td>
+                <td>string</td>
+                <td><code>1.5</code></td>
+                <td>
+                    Base button line height.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-border-width</code></td>
+                <td>string</td>
+                <td><code>$border-width</code></td>
+                <td>
+                    Button border width.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-border-radius</code></td>
+                <td>string</td>
+                <td><code>$border-radius</code></td>
+                <td>
+                    Base button border-radius.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-box-shadow</code></td>
+                <td>string</td>
+                <td><code>inset 0 .125em .25em rgba($white, .25), 0 .125em .125em rgba($black, .075)</code></td>
+                <td>
+                    Button inner box shadow for inactive state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-active-box-shadow</code></td>
+                <td>string</td>
+                <td><code>inset 0 .25em .3125em rgba($black, .125)</code></td>
+                <td>
+                    Button inner box shadow for active state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-focus-box-shadow-size</code></td>
+                <td>string</td>
+                <td><code>0 0 0 .1875rem</code></td>
+                <td>
+                    Button box shadow dimensions for focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-focus-box-shadow-alpha</code></td>
+                <td>string</td>
+                <td><code>.35</code></td>
+                <td>
+                    Button box shadow alpha, opacity, value for focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-focus-box-shadow</code></td>
+                <td>string</td>
+                <td><code>$btn-focus-box-shadow-size rgba($component-active-bg, $btn-focus-box-shadow-alpha)</code></td>
+                <td>
+                    Button box shadow for focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-outline-bg</code></td>
+                <td>string</td>
+                <td><code>transparent</code></td>
+                <td>
+                    Outline button background color override.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-disabled-opacity</code></td>
+                <td>string</td>
+                <td><code>.6</code></td>
+                <td>
+                    Opacity value for button disabled state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-sizes</code></td>
+                <td>map</td>
+                <td><code>$component-sizes</code></td>
+                <td>
+                    Button size variants.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-block-spacing-y</code></td>
+                <td>string</td>
+                <td><code>.25rem</code></td>
+                <td>
+                    Vertical spacing between consecutive sibling block variant buttons.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-icon-multiplier</code></td>
+                <td>string</td>
+                <td><code>.625</code></td>
+                <td>
+                    Multiplier for horizontal padding of icon button variants.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-default-bg</code></td>
+                <td>string</td>
+                <td><code>$white</code></td>
+                <td>
+                    Default button background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-default-color</code></td>
+                <td>string</td>
+                <td><code>color-if-contrast($uibase-500, $btn-default-bg)</code></td>
+                <td>
+                    Default button text color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-default-border-color</code></td>
+                <td>string</td>
+                <td><code>$uibase-300</code></td>
+                <td>
+                    Default button border color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-default-focus-box-shadow-color</code></td>
+                <td>string</td>
+                <td><code>$component-active-bg</code></td>
+                <td>
+                    Default button box shadow color for focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-default-hover-bg</code></td>
+                <td>string</td>
+                <td><code>$uibase-100</code></td>
+                <td>
+                    Default button background color for hover state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-default-hover-color</code></td>
+                <td>string</td>
+                <td><code>color-if-contrast($uibase-600, $btn-default-hover-bg)</code></td>
+                <td>
+                    Default button text color for hover state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-default-hover-border-color</code></td>
+                <td>string</td>
+                <td><code>$uibase-400</code></td>
+                <td>
+                    Default button border color for hover state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-default-active-bg</code></td>
+                <td>string</td>
+                <td><code>$uibase-200</code></td>
+                <td>
+                    Default button background color for active state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-default-active-color</code></td>
+                <td>string</td>
+                <td><code>color-if-contrast($btn-default-hover-color, $btn-default-active-bg)</code></td>
+                <td>
+                    Default button text color for active state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-default-active-border-color</code></td>
+                <td>string</td>
+                <td><code>$uibase-400</code></td>
+                <td>
+                    Default button border color for active state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-themes</code></td>
+                <td>map</td>
+                <td><code>()</code></td>
+                <td>
+                    Map of color schemes for buttons.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-colors</code></td>
+                <td>list</td>
+                <td><code>$base-colors</code></td>
+                <td>
+                    Colors to mix and merge into <code>$btn-themes</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-levels</code></td>
+                <td>map</td>
+                <td><code>$level-control</code></td>
+                <td>
+                    Levels to mix button colors with.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-outline-themes</code></td>
+                <td>map</td>
+                <td><code>()</code></td>
+                <td>
+                    Map of color schemes for outline buttons.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-outline-colors</code></td>
+                <td>list</td>
+                <td><code>$base-colors</code></td>
+                <td>
+                    Colors to mix and merge into <code>$btn-outline-themes</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-outline-levels</code></td>
+                <td>map</td>
+                <td><code>$level-control</code></td>
+                <td>
+                    Levels to mix outline button colors with.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-transition</code></td>
+                <td>map</td>
+                <td><code>color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out</code></td>
+                <td>
+                    Transition effect for buttons.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+Here are the mixins related to buttons that we use to help generate our CSS.  You can also uses these mixins to generate your own custom components or utilities.
+
+#### button-variant
+{:.no_toc}
+
+Build a color variant to be applied to a button.
+
+{% highlight sass %}
+@include button-variant($parent, $color, $bg, $border, $focus-shadow, $hover-color, $hover-bg, $hover-border, $active-color, $active-bg, $active-border);
+{% endhighlight %}
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Argument</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$parent</code></td>
+                <td>string</td>
+                <td><code>''</code></td>
+                <td>
+                    The value appended to generate the class <code>.btn-#{$parent}</code>.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$color</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Text color for the inactive button state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$bg</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Background color for the inactive button state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$border</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Border color for the inactive button state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$focus-shadow</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Box shadow, or focus-ring, effect the focused button state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$hover-color</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Text color for the hovered button state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$hover-bg</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Background color for the hovered button state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$hover-border</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Border color for the hovered button state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$active-color</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Text color for the active button state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$active-bg</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Background color for the active button state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$active-border</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Border color for the active button state.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+#### button-variant-control
+{:.no_toc}
+
+Build a button color variant, using a pre-mixed color map.
+
+{% highlight sass %}
+@include button-variant-control($parent, $colors)
+{% endhighlight %}
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Argument</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$parent</code></td>
+                <td>string</td>
+                <td><code>''</code></td>
+                <td>
+                    The value appended to generate the class <code>.btn-#{$parent}</code>.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$color</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    The pre-mixed color map.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+#### button-variant-control-outline
+{:.no_toc}
+
+Build a outline button color variant, using a pre-mixed color map, with a special override for the inactive background color.
+
+{% highlight sass %}
+@include button-variant-control-outline($parent, $colors, $bg)
+{% endhighlight %}
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Argument</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$parent</code></td>
+                <td>string</td>
+                <td><code>''</code></td>
+                <td>
+                    The value appended to generate the class <code>.btn-#{$parent}</code>.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$color</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    The pre-mixed color map.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$bg</code></td>
+                <td>string</td>
+                <td><code>$btn-outline-bg</code></td>
+                <td>
+                    Background color override for the inactive button state.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+#### button-size
+{:.no_toc}
+
+Build a button size variant.
+
+{% highlight sass %}
+@include button-size($padding-y, $padding-x, $font-size, $line-height, $border-radius)
+{% endhighlight %}
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Argument</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$padding-y</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Vertical padding.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$padding-x</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Horizontal padding.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$font-size</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Font size.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$line-height</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Line height.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$border-radius</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Border radius.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

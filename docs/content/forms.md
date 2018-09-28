@@ -1436,3 +1436,1259 @@ Optional visual icon representations of the validation state can be added to _te
   <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
 {% endexample %}
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for forms.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-form</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the form classes.
+                    Smaller segements of the form classes can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-form-control</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the textual form control rules.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-form-control-special</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the form control classes for color, file, and range inputs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-form-control-sizes</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the sizing classes for form controls.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-form-control-label</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the form control label class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-form-control-label-sizes</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the sizing classes for form control labels.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-form-control-static</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the static form control class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-form-control-static</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the static form controls.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-form-group</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the form group classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-form-text</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the form text class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-form-row</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the form row classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-form-check</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the checkbox and radio input classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-form-check</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the inline variant for checkbox and radio inputs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-form-validation</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the form validation classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-form-validation-feeback</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the form validation text feedback classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-form-validation-tooltip</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the form validation tooltip classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-form-inline</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the inline form classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-custom-control</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the common classes for custom checkbox and radio controls.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-custom-checkbox</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the classes for custom checkbox controls.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-custom-radio</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the classes for custom radio controls.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-custom-switch</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the classes for custom switch controls.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-custom-select</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the classes for custom select inputs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-custom-select-sizes</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the classes for custom select sizing.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-custom-file</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the classes for custom file inputs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-custom-color</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the classes for custom color inputs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-custom-range</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the classes for custom range inputs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-line-height</code></td>
+                <td>string</td>
+                <td><code>$btn-line-height</code></td>
+                <td>
+                    Base input line height.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-padding-y</code></td>
+                <td>string</td>
+                <td><code>$btn-padding-y</code></td>
+                <td>
+                    Base input vertical padding.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-padding-x</code></td>
+                <td>string</td>
+                <td><code>$btn-padding-x</code></td>
+                <td>
+                    Base input horizontal padding.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-border-width</code></td>
+                <td>string</td>
+                <td><code>$border-width</code></td>
+                <td>
+                    Base input border-width.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-border-radius</code></td>
+                <td>string</td>
+                <td><code>$border-radius</code></td>
+                <td>
+                    Base input border-radius.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-sizes</code></td>
+                <td>string</td>
+                <td><code>$component-sizes</code></td>
+                <td>
+                    Input size variants.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-bg</code></td>
+                <td>string</td>
+                <td><code>$white</code></td>
+                <td>
+                    Input background color for inactive state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-color</code></td>
+                <td>string</td>
+                <td><code>$uibase-700</code></td>
+                <td>
+                    Input text color for inactive state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-border-color</code></td>
+                <td>string</td>
+                <td><code>$uibase-200</code></td>
+                <td>
+                    Input border color for inactive state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-box-shadow</code></td>
+                <td>string</td>
+                <td><code>map-get($shadows, "i1")</code></td>
+                <td>
+                    Input inner box shadow for inactive state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-focus-bg</code></td>
+                <td>string</td>
+                <td><code>$input-bg</code></td>
+                <td>
+                    Input background color for focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-focus-color</code></td>
+                <td>string</td>
+                <td><code>$input-color</code></td>
+                <td>
+                    Input text color for focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-focus-border-color</code></td>
+                <td>string</td>
+                <td><code>palette($primary, 300)</code></td>
+                <td>
+                    Input border color for focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-focus-box-shadow-size</code></td>
+                <td>string</td>
+                <td><code>0 0 0 .1875rem</code></td>
+                <td>
+                    Input box shadow dimensions for focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-focus-box-shadow-alpha</code></td>
+                <td>float</td>
+                <td><code>.35</code></td>
+                <td>
+                    Input box shadow alpha, opacity, value for focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-focus-box-shadow</code></td>
+                <td>string</td>
+                <td><code>$input-focus-box-shadow-size rgba($component-active-bg, $input-focus-box-shadow-alpha)</code></td>
+                <td>
+                    Input box shadow for focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-disabled-bg</code></td>
+                <td>string</td>
+                <td><code>$component-disabled-bg</code></td>
+                <td>
+                    Input background color for disabled state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-disabled-color</code></td>
+                <td>string</td>
+                <td><code>$component-disabled-color</code></td>
+                <td>
+                    Input text color for disabled state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-placeholder-color</code></td>
+                <td>string</td>
+                <td><code>#999</code></td>
+                <td>
+                    Input placheholder text color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-text-margin-top</code></td>
+                <td>string</td>
+                <td><code>.25rem</code></td>
+                <td>
+                    Vertical spacing between input and support text.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-check-input-gutter</code></td>
+                <td>string</td>
+                <td><code>1.25rem</code></td>
+                <td>
+                    Reserved width for inputs within <code>.form-check</code>.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-check-input-margin-y</code></td>
+                <td>string</td>
+                <td><code>.3125rem</code></td>
+                <td>
+                    Vertical adjustment for inputs within <code>.form-check</code>.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-check-input-margin-x</code></td>
+                <td>string</td>
+                <td><code>.25rem</code></td>
+                <td>
+                    Horizontal spacing between input and label within <code>.form-check</code>.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-check-inline-margin-x</code></td>
+                <td>string</td>
+                <td><code>.75rem</code></td>
+                <td>
+                    Horizontal spacing between consecutive <code>.form-check</code> items.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-check-disabled-color</code></td>
+                <td>string</td>
+                <td><code>$component-disabled-color</code></td>
+                <td>
+                    Text color for <code>.form-check</code> disabled state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-check-inline-input-margin-x</code></td>
+                <td>string</td>
+                <td><code>.3125rem</code></td>
+                <td>
+                    Horizontal spacing between input and label within <code>.form-check</code> when inline.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-group-margin-bottom</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Vertical spacing for form group.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-row-gutter</code></td>
+                <td>string</td>
+                <td><code>.3125rem</code></td>
+                <td>
+                    Gutter spacing for form row.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-inline-breakpoint</code></td>
+                <td>breakpoint</td>
+                <td><code>sm</code></td>
+                <td>
+                    Breakpoint where inline froms switch from vertical to horizontal layout.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-inline-breakpoint</code></td>
+                <td>breakpoint</td>
+                <td><code>sm</code></td>
+                <td>
+                    Breakpoint where inline froms switch from vertical to horizontal layout.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-inline-breakpoint</code></td>
+                <td>breakpoint</td>
+                <td><code>sm</code></td>
+                <td>
+                    Breakpoint where inline froms switch from vertical to horizontal layout.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-control-gutter</code></td>
+                <td>string</td>
+                <td><code>1.5rem</code></td>
+                <td>
+                    Reserved width for inputs within <code>.custom-control</code>.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-control-inline-margin-x</code></td>
+                <td>string</td>
+                <td><code>.75rem</code></td>
+                <td>
+                    Horizontal spacing between consecutive <code>.custom-control</code> items.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-control-indicator-size</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Width of indicator for custom checkbox and radio inputs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-control-indicator-bg</code></td>
+                <td>string</td>
+                <td><code>$uibase-50</code></td>
+                <td>
+                    Background color of indicator for custom checkbox and radio inputs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-control-indicator-bg-size</code></td>
+                <td>string</td>
+                <td><code>50% 50%</code></td>
+                <td>
+                    Size of background image of indicator for custom checkbox and radio inputs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-control-indicator-box-shadow</code></td>
+                <td>string</td>
+                <td><code>50% 50%</code></td>
+                <td>
+                    Box shadow of indicator for custom checkbox and radio inputs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-control-indicator-border-width</code></td>
+                <td>string</td>
+                <td><code>$border-width</code></td>
+                <td>
+                    Border width of indicator for custom checkbox and radio inputs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-control-indicator-border-color</code></td>
+                <td>string</td>
+                <td><code>$input-border-color</code></td>
+                <td>
+                    Border color of indicator for custom checkbox and radio inputs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-control-disabled-indicator-opacity</code></td>
+                <td>float</td>
+                <td><code>.6</code></td>
+                <td>
+                    Opacity of indicator for custom controls inputs in disabled state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-control-disabled-description-color</code></td>
+                <td>string</td>
+                <td><code>$uibase-400</code></td>
+                <td>
+                    Text color of descriptor for custom controls in disabled state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-control-checked-indicator-bg</code></td>
+                <td>string</td>
+                <td><code>$primary</code></td>
+                <td>
+                    Background color for custom checkbox and radio inputs in checked state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-control-checked-indicator-bg</code></td>
+                <td>string</td>
+                <td><code>color-if-contrast($white, $custom-control-checked-indicator-bg)</code></td>
+                <td>
+                    Icon color for custom checkbox and radio inputs in checked state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-control-checked-indicator-box-shadow</code></td>
+                <td>string</td>
+                <td><code>none</code></td>
+                <td>
+                    Box shadow for custom checkbox and radio inputs in checked state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-control-checked-indicator-border-color</code></td>
+                <td>string</td>
+                <td><code>$primary</code></td>
+                <td>
+                    Border color for custom checkbox and radio inputs in checked state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-control-focus-indicator-box-shadow</code></td>
+                <td>string</td>
+                <td><code>$input-focus-box-shadow</code></td>
+                <td>
+                    Box shadow for custom checkbox and radio inputs in focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-control-active-indicator-bg</code></td>
+                <td>string</td>
+                <td><code>$custom-control-checked-indicator-bg</code></td>
+                <td>
+                    Background color for custom checkbox and radio inputs in active state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-control-active-indicator-color</code></td>
+                <td>string</td>
+                <td><code>$custom-control-checked-indicator-color</code></td>
+                <td>
+                    Icon color for custom checkbox and radio inputs in active state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-checkbox-radius</code></td>
+                <td>string</td>
+                <td><code>$border-radius</code></td>
+                <td>
+                    Border radius for custom checkbox inputs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-checkbox-checked-icon</code></td>
+                <td>string</td>
+                <td><code>url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E")</code></td>
+                <td>
+                    Icon for custom checkbox inputs in checked state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-checkbox-indeterminate-bg</code></td>
+                <td>string</td>
+                <td><code>$primary</code></td>
+                <td>
+                    background color for custom checkbox inputs in indeterminate state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-checkbox-indeterminate-icon</code></td>
+                <td>string</td>
+                <td><code>url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='%23fff' d='M0 2h4'/%3E%3C/svg%3E")</code></td>
+                <td>
+                    Icon for custom checkbox inputs in indeterminate state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-checkbox-indeterminate-box-shadow</code></td>
+                <td>string</td>
+                <td><code>none</code></td>
+                <td>
+                    Box shadow for custom checkbox inputs in indeterminate state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-radio-radius</code></td>
+                <td>string</td>
+                <td><code>50%</code></td>
+                <td>
+                    Border radius for custom radio inputs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-radio-checked-icon</code></td>
+                <td>string</td>
+                <td><code>url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%23fff'/%3E%3C/svg%3E")</code></td>
+                <td>
+                    Icon for custom radio inputs in checked state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-gutter</code></td>
+                <td>string</td>
+                <td><code>2.5rem</code></td>
+                <td>
+                    Reserved space for switch input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-width</code></td>
+                <td>string</td>
+                <td><code>2.5rem</code></td>
+                <td>
+                    Width of switch input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-track-height</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Height of track for switch input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-track-bg</code></td>
+                <td>string</td>
+                <td><code>$uibase-50</code></td>
+                <td>
+                    Background color of track for switch input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-track-radius</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Border radius of track for switch input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-track-border-width</code></td>
+                <td>string</td>
+                <td><code>$border-width</code></td>
+                <td>
+                    Border width of track for switch input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-track-border-color</code></td>
+                <td>string</td>
+                <td><code>$input-border-color</code></td>
+                <td>
+                    Border color of track for switch input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-track-box-shadow</code></td>
+                <td>string</td>
+                <td><code>map-get($shadows, "i1")</code></td>
+                <td>
+                    Box shadow of track for switch input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-thumb-width</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Width of thumb for switch input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-thumb-height</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Height of thumb for switch input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-thumb-bg</code></td>
+                <td>string</td>
+                <td><code>$uibase-300</code></td>
+                <td>
+                    Background color of thumb for switch input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-thumb-radius</code></td>
+                <td>string</td>
+                <td><code>10rem</code></td>
+                <td>
+                    Border radius color of thumb for switch input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-thumb-border-width</code></td>
+                <td>string</td>
+                <td><code>$border-width</code></td>
+                <td>
+                    Border width of thumb for switch input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-thumb-border-color</code></td>
+                <td>string</td>
+                <td><code>$custom-switch-thumb-bg</code></td>
+                <td>
+                    Border color of thumb for switch input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-thumb-box-shadow</code></td>
+                <td>string</td>
+                <td><code>none</code></td>
+                <td>
+                    Box shadow of thumb for switch input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-checked-track-bg</code></td>
+                <td>string</td>
+                <td><code>$uibase-50</code></td>
+                <td>
+                    Background color of track for switch input in checked state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-checked-track-border-color</code></td>
+                <td>string</td>
+                <td><code>$uibase-300</code></td>
+                <td>
+                    Border color of track for switch input in checked state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-active-track-bg</code></td>
+                <td>string</td>
+                <td><code>$uibase-50</code></td>
+                <td>
+                    Background color of track for switch input in active state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-checked-thumb-bg</code></td>
+                <td>string</td>
+                <td><code>$primary</code></td>
+                <td>
+                    Background color of thumb for switch input in checked state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-checked-thumb-border-color</code></td>
+                <td>string</td>
+                <td><code>$primary</code></td>
+                <td>
+                    Border color of thumb for switch input in checked state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-active-thumb-bg</code></td>
+                <td>string</td>
+                <td><code>palette($primary, 400)</code></td>
+                <td>
+                    Background color of thumb for switch input in active state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-disabled-thumb-bg</code></td>
+                <td>string</td>
+                <td><code>$uibase-200</code></td>
+                <td>
+                    Background color of thumb for switch input in disabled state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-switch-disabled-checked-thumb-bg</code></td>
+                <td>string</td>
+                <td><code>palette($primary, 200)</code></td>
+                <td>
+                    Background color of thumb for switch input in disabled, checked state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-select-indicator-offset</code></td>
+                <td>string</td>
+                <td><code>.375rem</code></td>
+                <td>
+                    Additional horizontal spacing of visual indicator for custom select input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-select-indicator-width</code></td>
+                <td>string</td>
+                <td><code>10px</code></td>
+                <td>
+                    Width of visual indicator for custom select input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-select-indicator-height</code></td>
+                <td>string</td>
+                <td><code>10px</code></td>
+                <td>
+                    Height of visual indicator for custom select input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-select-indicator-image</code></td>
+                <td>string</td>
+                <td><code>url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23333' d='M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z'/%3E%3C/svg%3E")</code></td>
+                <td>
+                    Icon for visual indicator of custom select input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-select-indicator-image</code></td>
+                <td>string</td>
+                <td><code>$custom-select-indicator-image no-repeat right $custom-select-indicator-offset center / $custom-select-indicator-width $custom-select-indicator-height</code></td>
+                <td>
+                    Used so we can have multiple background elements (e.g., arrow and feedback icon).
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-file-button-color</code></td>
+                <td>string</td>
+                <td><code>$uibase-600</code></td>
+                <td>
+                    Button text color for custom file input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-file-button-bg</code></td>
+                <td>string</td>
+                <td><code>$uibase-50</code></td>
+                <td>
+                    Button background color for custom file input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-file-button-disabled-opacity</code></td>
+                <td>string</td>
+                <td><code>.6</code></td>
+                <td>
+                    Button opacity for custom file input when in disabled state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-file-button-disabled-opacity</code></td>
+                <td>string</td>
+                <td><pre><code>$custom-file-text: (
+    en: "Browse"
+)</code></pre></td>
+                <td>
+                    Visual text label for custom file input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-range-track-height</code></td>
+                <td>string</td>
+                <td><code>.5rem</code></td>
+                <td>
+                    Height of track for custom range input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-range-track-cursor</code></td>
+                <td>string</td>
+                <td><code>pointer</code></td>
+                <td>
+                    Pointer style of track for custom range input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-range-track-bg</code></td>
+                <td>string</td>
+                <td><code>$uibase-100</code></td>
+                <td>
+                    Background color of track for custom range input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-range-border</code></td>
+                <td>string</td>
+                <td><code>0</code></td>
+                <td>
+                    Border style of track for custom range input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-range-track-border-radius</code></td>
+                <td>string</td>
+                <td><code>$custom-range-track-height</code></td>
+                <td>
+                    Border radius of track for custom range input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-range-track-box-shadow</code></td>
+                <td>string</td>
+                <td><code>map-get($shadows, "i1")</code></td>
+                <td>
+                    Box shadow of track for custom range input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-range-thumb-width</code></td>
+                <td>string</td>
+                <td><code>1.125rem</code></td>
+                <td>
+                    Width of thumb for custom range input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-range-thumb-height</code></td>
+                <td>string</td>
+                <td><code>$custom-range-thumb-width</code></td>
+                <td>
+                    Height of thumb for custom range input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-range-thumb-bg</code></td>
+                <td>string</td>
+                <td><code>$component-active-bg</code></td>
+                <td>
+                    Background color of thumb for custom range input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-range-thumb-border</code></td>
+                <td>string</td>
+                <td><code>0</code></td>
+                <td>
+                    Border style of thumb for custom range input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-range-thumb-border-radius</code></td>
+                <td>string</td>
+                <td><code>50%</code></td>
+                <td>
+                    Border radius of thumb for custom range input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-range-thumb-box-shadow</code></td>
+                <td>string</td>
+                <td><code>map-get($shadows, "d1")</code></td>
+                <td>
+                    Box shadow of thumb for custom range input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-range-thumb-focus-box-shadow</code></td>
+                <td>string</td>
+                <td><code>$input-focus-box-shadow</code></td>
+                <td>
+                    Box shadow of thumb for custom range input in focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-range-thumb-focus-box-shadow-width</code></td>
+                <td>string</td>
+                <td><code>.1875rem</code></td>
+                <td>
+                    Width of box shadow of thumb for custom range input in focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-range-thumb-active-bg</code></td>
+                <td>string</td>
+                <td><code>palette($component-active-bg, 600)</code></td>
+                <td>
+                    Background color of thumb for custom range input in active state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-range-thumb-disabled-bg</code></td>
+                <td>string</td>
+                <td><code>$uibase-300</code></td>
+                <td>
+                    Background color of thumb for custom range input in disabled state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-range-height</code></td>
+                <td>string</td>
+                <td><code>$custom-range-thumb-height + ($custom-range-thumb-focus-box-shadow-width * 2)</code></td>
+                <td>
+                    Height of custom range input.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$custom-range-min-width</code></td>
+                <td>string</td>
+                <td><code>8rem</code></td>
+                <td>
+                    <p>Minimum width of custom range input.</p>
+                    <p class="small">Note: Browser default seems to be 129px/~8rem for IE/Chrome/Safari</p>
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-feedback-margin-top</code></td>
+                <td>string</td>
+                <td><code>$form-text-margin-top</code></td>
+                <td>
+                    Vertical spacing between input and feeback text.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-feedback-font-size</code></td>
+                <td>string</td>
+                <td><code>$small-font-size</code></td>
+                <td>
+                    Font size for feedback text.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-feedback-valid-color</code></td>
+                <td>string</td>
+                <td><code>map-get($base-colors, "success")</code></td>
+                <td>
+                    Base color for <em>valid</em> feedback state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-feedback-invalid-color</code></td>
+                <td>string</td>
+                <td><code>map-get($base-colors, "danger")</code></td>
+                <td>
+                    Base color for <em>invalid</em> feedback state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-feedback-icon-offset</code></td>
+                <td>string</td>
+                <td><code>.375rem</code></td>
+                <td>
+                    Additional horizontal spacing of visual feedback indicator icon.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-feedback-icon-width</code></td>
+                <td>string</td>
+                <td><code>16px</code></td>
+                <td>
+                    Width of visual feedback indicator icon.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-feedback-icon-height</code></td>
+                <td>string</td>
+                <td><code>16px</code></td>
+                <td>
+                    Height of visual feedback indicator icon.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-feedback-icon-valid-color</code></td>
+                <td>string</td>
+                <td><code>$form-feedback-valid-color</code></td>
+                <td>
+                    Icon color for <em>valid</em> feedback state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-feedback-icon-valid-image</code></td>
+                <td>string</td>
+                <td><code>str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$form-feedback-icon-valid-color}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E"), "#", "%23")</code></td>
+                <td>
+                    Icon for <em>valid</em> feedback state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-feedback-icon-invalid-color</code></td>
+                <td>string</td>
+                <td><code>$form-feedback-invalid-color</code></td>
+                <td>
+                    Icon color for <em>invalid</em> feedback state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-feedback-icon-invalid-image</code></td>
+                <td>string</td>
+                <td><code>str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{palette($danger, 500)}' viewBox='-2 -2 7 7'%3E%3Cpath stroke='#{$form-feedback-icon-invalid-color}' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E"), "#", "%23")</code></td>
+                <td>
+                    Icon for <em>invalid</em> feedback state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-transition</code></td>
+                <td>map</td>
+                <td><code>background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out</code></td>
+                <td>
+                    Transition effect for inputs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$switch-transition</code></td>
+                <td>map</td>
+                <td><code>all .15s ease</code></td>
+                <td>
+                    Transition effect for custom switch inputs.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+Here are the mixins related to forms that we use to help generate our CSS.  You can also uses these mixins to generate your own custom components or utilities.
+
+#### form-validation-state
+{:.no_toc}
+
+Build form validation rules.
+
+{% highlight sass %}
+@include form-validation-state($state, $color, $icon);
+{% endhighlight %}
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Argument</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$state</code></td>
+                <td>string</td>
+                <td><code>''</code></td>
+                <td>
+                    The value appended to generate the classes for the given validation state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$color</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    The color to mix and use throughout the validation state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$icon</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    The icon to use throughout the validation state.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+#### form-control-focus
+{:.no_toc}
+
+Add the focus state to a form control or input.
+
+{% highlight sass %}
+@include form-control-focus()
+{% endhighlight %}
+
+#### custom-range-track()
+{:.no_toc}
+
+Add the common, cross-browser rules for track of a range input.
+
+{% highlight sass %}
+@include custom-range-track()
+{% endhighlight %}
+
+#### custom-range-thumb
+{:.no_toc}
+
+Add the common, cross-browser rules for thumb of a range input.
+
+{% highlight sass %}
+@include custom-range-thumb()
+{% endhighlight %}

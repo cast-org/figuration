@@ -1,0 +1,172 @@
+// Root CSS variables
+$enable-root:                               true !default; // true
+$enable-root-colors:                        true !default; // true
+$enable-root-breakpoints:                   true !default; // true
+$enable-root-fonts:                         true !default; // true
+
+// Base Typography
+$enable-typography:                         true !default; // true
+$enable-typography-headings:                true !default; // true
+$enable-typography-lead:                    true !default; // true
+$enable-typography-hr:                      true !default; // true
+$enable-typography-small:                   true !default; // true
+$enable-typography-mark:                    true !default; // true
+$enable-typography-list-unstyled:           true !default; // true
+$enable-typography-initialism:              true !default; // true
+$enable-typography-blockquote:              true !default; // true
+
+// Code snippets
+$enable-code:                               true !default; // true
+$enable-code-code:                          true !default; // true
+$enable-code-kbd:                           true !default; // true
+$enable-code-pre:                           true !default; // true
+
+// Images
+$enable-img:                                true !default; // true
+$enable-img-fluid:                          true !default; // true
+$enable-img-thumbnail:                      true !default; // true
+
+// Figure
+$enable-figure:                             true !default; // true
+
+// Table
+$enable-table:                              true !default; // true
+$enable-table-common:                       true !default; // true
+$enable-table-borders:                      true !default; // true
+$enable-table-striped:                      true !default; // true
+$enable-table-hover:                        true !default; // true
+$enable-table-condensed:                    true !default; // true
+$enable-table-active:                       true !default; // true
+$enable-table-colors:                       true !default; // true
+$enable-table-scroll:                       true !default; // true
+$enable-table-scroll-responsive:            true !default; // true
+
+// Button
+$enable-btn:                                true !default; // true
+$enable-btn-common:                         true !default; // true
+$enable-btn-default:                        true !default; // true
+$enable-btn-colors:                         true !default; // true
+$enable-btn-outline:                        true !default; // true
+$enable-btn-outline-colors:                 true !default; // true
+$enable-btn-link:                           true !default; // true
+$enable-btn-sizes:                          true !default; // true
+$enable-btn-icon:                           true !default; // true
+$enable-btn-icon-sizes:                     true !default; // true
+$enable-btn-block:                          true !default; // true
+$enable-btn-check:                          true !default; // true
+
+// Form
+$enable-form:                               true !default; // true
+$enable-form-control:                       true !default; // true
+$enable-form-control-special:               true !default; // true
+$enable-form-control-sizes:                 true !default; // true
+$enable-form-control-label:                 true !default; // true
+$enable-form-control-label-sizes:           true !default; // true
+$enable-form-control-static:                true !default; // true
+$enable-form-group:                         true !default; // true
+$enable-form-text:                          true !default; // true
+$enable-form-row:                           true !default; // true
+$enable-form-check:                         true !default; // true
+$enable-form-check-inline:                  true !default; // true
+$enable-form-validation:                    true !default; // true
+$enable-form-validation-feedback:           true !default; // true
+$enable-form-validation-tooltip:            true !default; // true
+$enable-form-inline:                        true !default; // true
+
+// Custom Form
+$enable-custom-control:                     true !default; // true
+$enable-custom-checkbox:                    true !default; // true
+$enable-custom-radio:                       true !default; // true
+$enable-custom-switch:                      true !default; // true
+$enable-custom-select:                      true !default; // true
+$enable-custom-select-sizes:                true !default; // true
+$enable-custom-file:                        true !default; // true
+$enable-custom-color:                       true !default; // true
+$enable-custom-range:                       true !default; // true
+
+// Input Group
+$enable-input-group:                        true !default; // true
+
+// Utility Options
+$enable-utility-bg:                         true !default;  // true
+$enable-utility-bg-colors:                  true !default;  // true
+$enable-utility-bg-palette:                 true !default;  // true
+$enable-utility-bg-special:                 true !default;  // true
+
+$enable-utility-border:                     true !default;  // true
+$enable-utility-border-addition:            true !default;  // true
+$enable-utility-border-removal:             true !default;  // true
+$enable-utility-border-colors:              true !default;  // true
+$enable-utility-border-palette:             true !default;  // true
+$enable-utility-border-special:             true !default;  // true
+$enable-utility-border-radius-circle:       true !default;  // true
+$enable-utility-border-radius-addition:     true !default;  // true
+$enable-utility-border-radius-component:    true !default;  // true
+$enable-utility-border-radius-removal:      true !default;  // true
+
+$enable-utility-clearfix:                   true !default;  // true
+
+$enable-utility-display:                    true !default;  // true
+$enable-utility-display-common:             true !default;  // true
+$enable-utility-display-table:              true !default;  // true
+$enable-utility-display-down:               true !default;  // true
+$enable-utility-display-print:              true !default;  // true
+
+$enable-utility-embed:                      true !default;  // true
+$enable-utility-embed-fluid:                true !default;  // true
+$enable-utility-embed-fullscreen:           true !default;  // true
+
+$enable-utility-flex:                       true !default;  // true
+$enable-utility-flex-order:                 true !default;  // true
+$enable-utility-flex-direction:             true !default;  // true
+$enable-utility-flex-wrap:                  true !default;  // true
+$enable-utility-flex-justify:               true !default;  // true
+$enable-utility-flex-items:                 true !default;  // true
+$enable-utility-flex-content:               true !default;  // true
+$enable-utility-flex-self:                  true !default;  // true
+$enable-utility-flex-sizing:                true !default;  // true
+
+$enable-utility-float:                      true !default;  // true
+
+$enable-utility-position:                   true !default;  // true
+$enable-utility-position-common:            true !default;  // true
+$enable-utility-position-fixed:             true !default;  // true
+$enable-utility-position-fixed-top:         true !default;  // true
+$enable-utility-position-fixed-bottom:      true !default;  // true
+$enable-utility-position-sticky:            true !default;  // true
+$enable-utility-position-sticky-top:        true !default;  // true
+
+$enable-utility-sronly:                     true !default;  // true
+$enable-utility-sronly-common:              true !default;  // true
+$enable-utility-sronly-focusable:           true !default;  // true
+$enable-utility-sronly-responsive:          true !default;  // true
+$enable-utility-sronly-responsive-down:     true !default;  // true
+
+$enable-utility-shadow:                     true !default;  // true
+
+$enable-utility-sizing:                     true !default;  // true
+$enable-utility-sizing-width:               true !default;  // true
+$enable-utility-sizing-height:              true !default;  // true
+
+$enable-utility-spacing:                    true !default;  // true
+$enable-utility-spacing-padding:            true !default;  // true
+$enable-utility-spacing-margin:             true !default;  // true
+$enable-utility-spacing-margin-auto:        true !default;  // true
+$enable-utility-spacing-margin-negative:    true !default;  // true
+
+$enable-utility-text:                       true !default;  // true
+$enable-utility-text-justify:               true !default;  // true
+$enable-utility-text-nowrap:                true !default;  // true
+$enable-utility-text-align:                 true !default;  // true
+$enable-utility-text-transform:             true !default;  // true
+$enable-utility-text-weight:                true !default;  // true
+$enable-utility-text-style:                 true !default;  // true
+$enable-utility-text-family:                true !default;  // true
+$enable-utility-text-truncate:              true !default;  // true
+$enable-utility-text-colors:                true !default;  // true
+$enable-utility-text-palette:               true !default;  // true
+$enable-utility-text-special:               true !default;  // true
+
+$enable-utility-valign:                     true !default;  // true
+
+$enable-utility-visibility:                 true !default;  // true

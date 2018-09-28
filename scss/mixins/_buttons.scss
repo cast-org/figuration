@@ -16,8 +16,8 @@
         border-color: $hover-border;
     }
 
-    #{$parent}:focus,
-    .btn-check-input:focus ~ #{$parent} {
+    // Focus state
+    %btn-variant-#{$parent}-focus {
         // No mixin use, so feedback is always present
         @if $enable-shadows {
             box-shadow: $btn-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha);
@@ -25,29 +25,65 @@
             box-shadow: $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha);
         }
     }
+    #{$parent}:focus {
+        @extend %btn-variant-#{$parent}-focus;
+    }
+    @if $enable-btn-check {
+        .btn-check-input:focus ~ #{$parent} {
+            @extend %btn-variant-#{$parent}-focus;
+        }
+    }
 
-    #{$parent}.disabled,
-    #{$parent}:disabled,
-    .btn-check-input:disabled ~ #{$parent} {
+    // Disabled state
+    %btn-variant-#{$parent}-disable {
         color: $color;
         background-color: $bg;
         border-color: $border;
     }
+    #{$parent}.disabled,
+    #{$parent}:disabled {
+        @extend %btn-variant-#{$parent}-disable;
+    }
+    @if $enable-btn-check {
+        .btn-check-input:disabled ~ #{$parent} {
+            @extend %btn-variant-#{$parent}-disable;
+        }
+    }
 
-    #{$parent}:not(:disabled):not(.disabled):active,
-    #{$parent}:not(:disabled):not(.disabled).active,
-    .btn-check-input:not(:disabled):checked ~ #{$parent},
-    .open > #{$parent} {
+    // Active state
+    %btn-variant-#{$parent}-active {
         color: $active-color;
         background-color: $active-bg;
         border-color: $active-border;
     }
+    #{$parent}:not(:disabled):not(.disabled):active,
+    #{$parent}:not(:disabled):not(.disabled).active,
+    .open > #{$parent} {
+        @extend %btn-variant-#{$parent}-active;
+    }
+    @if $enable-btn-check {
+        .btn-check-input:not(:disabled):checked ~ #{$parent} {
+            @extend %btn-variant-#{$parent}-active;
+        }
+    }
 
+    // Active focus state
+    %btn-variant-#{$parent}-active-focus {
+        @include box-shadow($btn-active-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha));
+    }
     #{$parent}:not(:disabled):not(.disabled):active:focus,
     #{$parent}:not(:disabled):not(.disabled).active:focus,
-    .btn-check-input:not(:disabled):checked:focus ~ #{$parent},
     .open > #{$parent}:focus {
-        @include box-shadow($btn-active-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha));
+        @if $enable-shadows { // Dirty check for placeholder
+            @extend %btn-variant-#{$parent}-active-focus;
+        }
+    }
+    @if $enable-btn-check {
+        .btn-check-input:not(:disabled):checked:focus ~ #{$parent} {
+            @if $enable-shadows { // Dirty check for placeholder
+                @extend %btn-variant-#{$parent}-active-focus;
+            }
+        }
     }
 }
 

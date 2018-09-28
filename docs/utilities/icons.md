@@ -101,7 +101,102 @@ Use a generic close icon for dismissing content like modals and alerts. **Be sur
 
 ### Variables
 
-No cariables available.
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$caret-width</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Caret element width.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$caret-border-width</code></td>
+                <td>string</td>
+                <td><code>.3125rem</code></td>
+                <td>
+                    Caret border width.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$close-font-size</code></td>
+                <td>string</td>
+                <td><code>($font-size-base * 1.5)</code></td>
+                <td>
+                    Close icon font size.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$close-font-weight</code></td>
+                <td>string</td>
+                <td><code>$font-weight-bold</code></td>
+                <td>
+                    Close icon font weight.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$close-opacity</code></td>
+                <td>float</td>
+                <td><code>.65</code></td>
+                <td>
+                    Close icon opacity.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$close-hover-opacity</code></td>
+                <td>float</td>
+                <td><code>.85</code></td>
+                <td>
+                    Close icon opacity when hovered/focused.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$drag-font-size</code></td>
+                <td>string</td>
+                <td><code>($font-size-base * 1.5)</code></td>
+                <td>
+                    Drag icon font size.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$drag-font-weight</code></td>
+                <td>string</td>
+                <td><code>$font-weight-bold</code></td>
+                <td>
+                    Drag icon font weight.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$drag-opacity</code></td>
+                <td>float</td>
+                <td><code>.65</code></td>
+                <td>
+                    Drag icon opacity.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$drag-hover-opacity</code></td>
+                <td>float</td>
+                <td><code>.85</code></td>
+                <td>
+                    Drag icon opacity when hovered/focused.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 ### Mixins
 
