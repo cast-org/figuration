@@ -4,15 +4,19 @@
     background-color: $bg;
     border-color: $border;
 
-    hr {
-        border-top-color: $border;
+    @if $enable-alert-hr {
+        hr {
+            border-top-color: $border;
+        }
     }
 
-    .alert-link {
-        color: $color;
+    @if $enable-alert-link {
+        .alert-link {
+            color: $color;
 
-        @include hover-focus {
-            color: $hover-color;
+            @include hover-focus {
+                color: $hover-color;
+            }
         }
     }
 }

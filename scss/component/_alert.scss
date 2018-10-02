@@ -1,51 +1,64 @@
-// Base styles
-.alert {
-    position: relative;
-    padding: $alert-padding-y $alert-padding-x;
-    padding-right: ($alert-padding-x + ($alert-close-padding-x * 2));
-    margin-bottom: $alert-margin-bottom;
-    border: $alert-border-width solid transparent;
-    @include border-radius($alert-border-radius);
+@if $enable-alert {
 
-    // Adjust close link position and color
-    .close {
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: $alert-close-padding-y $alert-close-padding-x;
+    // Base styles
+    @if $enable-alert-common {
+        .alert {
+            position: relative;
+            padding: $alert-padding-y $alert-padding-x;
+            padding-right: ($alert-padding-x + ($alert-close-padding-x * 2));
+            margin-bottom: $alert-margin-bottom;
+            border: $alert-border-width solid transparent;
+            @include border-radius($alert-border-radius);
+
+            // Adjust close link position and color
+            @if $enable-alert-close {
+                .close {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    padding: $alert-close-padding-y $alert-close-padding-x;
+                }
+            }
+        }
     }
-}
 
-// Headings for larger alerts
-.alert-heading {
-    // Specified to prevent conflicts of changing $headings-color
-    color: inherit;
-}
+    // Headings for larger alerts
+    @if $enable-alert-heading {
+        .alert-heading {
+            // Specified to prevent conflicts of changing $headings-color
+            color: inherit;
+        }
+    }
 
-// Provide class for links that match alerts
-.alert-link {
-    font-weight: $alert-link-font-weight;
-}
+    // Provide class for links that match alerts
+    @if $enable-alert-link {
+        .alert-link {
+            font-weight: $alert-link-font-weight;
+        }
+    }
 
-// Theme generation
-@if (type-of($alert-colors) == "map" and length($alert-colors) != 0) {
-    $mixed-alert-themes: _mix-context-colors($alert-colors, $alert-levels);
-    $alert-themes: map-merge($mixed-alert-themes, $alert-themes);
-}
+    // Theme generation
+    @if $enable-alert-colors {
+        @if (type-of($alert-colors) == "map" and length($alert-colors) != 0) {
+            $mixed-alert-themes: _mix-context-colors($alert-colors, $alert-levels);
+            $alert-themes: map-merge($mixed-alert-themes, $alert-themes);
+        }
 
-// Contextual modifiers
-@if (type-of($alert-themes) == "map" and length($alert-themes) != 0) {
-    @each $theme, $colors in $alert-themes {
-        $bg:          map-get($colors, "bg");
-        $color:       map-get($colors, "color");
-        $border:      map-get($colors, "border-color");
-        $hover-color: map-get($colors, "hover-color");
+        // Contextual modifiers
+        @if (type-of($alert-themes) == "map" and length($alert-themes) != 0) {
+            @each $theme, $colors in $alert-themes {
+                $bg:          map-get($colors, "bg");
+                $color:       map-get($colors, "color");
+                $border:      map-get($colors, "border-color");
+                $hover-color: map-get($colors, "hover-color");
 
-        $color:       color-if-contrast($color, $bg);
-        $hover-color: color-if-contrast($hover-color, $bg);
+                $color:       color-if-contrast($color, $bg);
+                $hover-color: color-if-contrast($hover-color, $bg);
 
-        .alert-#{$theme} {
-            @include alert-variant($color, $bg, $border, $hover-color);
+                .alert-#{$theme} {
+                    @include alert-variant($color, $bg, $border, $hover-color);
+                }
+            }
         }
     }
 }
