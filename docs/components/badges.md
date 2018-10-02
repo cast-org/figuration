@@ -197,3 +197,366 @@ Group badges together using `.badge-group`.
     <span class="badge badge-outline-primary">9</span>
 </div>
 {% endexample %}
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for badges.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-badge</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the badge classes.
+                    Smaller segements of the badge classes can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-badge-common</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                Enable the generation of common badge, <code>.badge</code>, rules.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-badge-close</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the badge close button rule.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-badge-pill</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the badge pill variant.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-badge-group</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the badge group variant.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-badge-default</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the default badge color variant.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-badge-colors</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the badge contextual color variants.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-badge-outline</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the default outline badge color variant.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-badge-outline-colors</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the outline badge contextual color variants.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-font-size</code></td>
+                <td>string</td>
+                <td><code>75%</code></td>
+                <td>
+                    Badge font size.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-font-weight</code></td>
+                <td>string</td>
+                <td><code>$font-weight-bold</code></td>
+                <td>
+                    Badge font weight.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-line-height</code></td>
+                <td>string</td>
+                <td><code>$line-height-base</code></td>
+                <td>
+                    Badge line height.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-padding-y</code></td>
+                <td>string</td>
+                <td><code>0</code></td>
+                <td>
+                    Badge vertical padding.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-padding-x</code></td>
+                <td>string</td>
+                <td><code>.375em</code></td>
+                <td>
+                    Badge horizontal padding.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-border-width</code></td>
+                <td>string</td>
+                <td><code>$border-width</code></td>
+                <td>
+                    Badge border width.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-border-radius</code></td>
+                <td>string</td>
+                <td><code>.25em</code></td>
+                <td>
+                    Badge border radius.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-close-padding-x</code></td>
+                <td>string</td>
+                <td><code>.375rem</code></td>
+                <td>
+                    Badge close button horizontal padding.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-close-font-size</code></td>
+                <td>string</td>
+                <td><code>1.25em</code></td>
+                <td>
+                    Badge close button font size.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-pill-padding-x</code></td>
+                <td>string</td>
+                <td><code>.5em</code></td>
+                <td>
+                    Badge pill variant horizontal padding.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-pill-border-radius</code></td>
+                <td>string</td>
+                <td><code>10rem</code></td>
+                <td>
+                    Badge pill variant border radius.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-outline-bg</code></td>
+                <td>string</td>
+                <td><code>transparent</code></td>
+                <td>
+                    Background color for outline badge variant.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-default-bg</code></td>
+                <td>string</td>
+                <td><code>$white</code></td>
+                <td>
+                    Default badge background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-default-color</code></td>
+                <td>string</td>
+                <td><code>color-if-contrast($uibase-500, $badge-default-bg)</code></td>
+                <td>
+                    Default badge text color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-default-border</code></td>
+                <td>string</td>
+                <td><code>$uibase-300</code></td>
+                <td>
+                    Default badge border color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-default-hover-bg</code></td>
+                <td>string</td>
+                <td><code>$uibase-50</code></td>
+                <td>
+                    Default badge background color for hover and focus states.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-default-hover-color</code></td>
+                <td>string</td>
+                <td><code>color-if-contrast($uibase-600, $badge-default-hover-bg)</code></td>
+                <td>
+                    Default badge text color for hover and focus states.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-default-hover-border</code></td>
+                <td>string</td>
+                <td><code>$uibase-400</code></td>
+                <td>
+                    Default badge border color for hover and focus states.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-themes</code></td>
+                <td>map</td>
+                <td><code>()</code></td>
+                <td>
+                    Map of color schemes for badges.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-colors</code></td>
+                <td>list</td>
+                <td><code>$base-colors</code></td>
+                <td>
+                    Colors to mix and merge into <code>$badge-themes</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-levels</code></td>
+                <td>map</td>
+                <td><code>$level-context</code></td>
+                <td>
+                    Levels to mix badge colors with.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-outline-themes</code></td>
+                <td>map</td>
+                <td><code>()</code></td>
+                <td>
+                    Map of color schemes for outline badges.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-outline-colors</code></td>
+                <td>list</td>
+                <td><code>$base-colors</code></td>
+                <td>
+                    Colors to mix and merge into <code>$badge-outline-themes</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>$badge-outline-levels</code></td>
+                <td>map</td>
+                <td><code>$level-control</code></td>
+                <td>
+                    Levels to mix outline badge colors with.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+### Mixins
+
+Here are the mixins related to badges that we use to help generate our CSS. You can also uses these mixins to generate your own custom components or utilities.
+
+#### badge-variant
+{:.no_toc}
+
+Generate a badge color variant.
+
+{% highlight sass %}
+@include badge-variant($color, $bg, $border, $hover-color, $hover-bg, $hover-border);
+{% endhighlight %}
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Argument</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$color</code></td>
+                <td>number</td>
+                <td>none</td>
+                <td>
+                    Text color for a badge.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$bg</code></td>
+                <td>number</td>
+                <td>none</td>
+                <td>
+                    Background color for a badge.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$border</code></td>
+                <td>number</td>
+                <td>none</td>
+                <td>
+                    Border color for a badge.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$hover-color</code></td>
+                <td>number</td>
+                <td>none</td>
+                <td>
+                    Text color for a badge in hover or focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$hover-bg</code></td>
+                <td>number</td>
+                <td>none</td>
+                <td>
+                    Background color for a badge in hover or focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$hover-border</code></td>
+                <td>number</td>
+                <td>none</td>
+                <td>
+                    Border color for a badge in hover or focus state.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
