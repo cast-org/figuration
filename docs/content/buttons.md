@@ -345,7 +345,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
-                    Enable the generation of the common button, <code>.btn</code> rules.
+                    Enable the generation of the common button, <code>.btn</code>, rules.
                 </td>
             </tr>
             <tr>
