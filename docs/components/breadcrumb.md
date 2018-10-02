@@ -86,3 +86,76 @@ $breadcrumb-divider: none;
 Since breadcrumbs provide a navigation, it is a good idea to add a meaningful label such as `aria-label="breadcrumb"` to describe the type of navigation provided in the `<nav>` element, as well as applying an `aria-current="page"` to the last item of the set to indicate that it represents the current page.
 
 For more information, see the [WAI-ARIA Authoring Practices for the breadcrumb pattern](https://www.w3.org/TR/wai-aria-practices/#breadcrumb).
+
+# SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for breadcrumbs.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-breadcrumb</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the breadcrumb classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$breadcrumb-margin-bottom</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Vertical spacing for breadcrumb.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$breadcrumb-item-padding-x</code></td>
+                <td>string</td>
+                <td><code>.5rem</code></td>
+                <td>
+                    Horizontal spacing for breadcrumb items.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$breadcrumb-active-color</code></td>
+                <td>string</td>
+                <td><code>$uibase-700</code></td>
+                <td>
+                    Text color for active breadcrumb items.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$breadcrumb-divider</code></td>
+                <td>string</td>
+                <td><code>quote("/")</code></td>
+                <td>
+                    Breadcrumb divider content.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$breadcrumb-divider-color</code></td>
+                <td>string</td>
+                <td><code>$uibase-300</code></td>
+                <td>
+                    Text color of breadcrumb divider.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.

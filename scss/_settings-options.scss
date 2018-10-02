@@ -84,6 +84,26 @@ $enable-custom-file:                        true !default; // true
 $enable-custom-color:                       true !default; // true
 $enable-custom-range:                       true !default; // true
 
+// Alert
+$enable-alert:                              true !default; // true
+$enable-alert-common:                       true !default; // true
+$enable-alert-close:                        true !default; // true
+$enable-alert-heading:                      true !default; // true
+$enable-alert-link:                         true !default; // true
+$enable-alert-hr:                           true !default; // true
+$enable-alert-colors:                       true !default; // true
+
+// Badge
+$enable-badge:                              true !default; // true
+$enable-badge-common:                       true !default; // true
+$enable-badge-close:                        true !default; // true
+$enable-badge-pill:                         true !default; // true
+$enable-badge-group:                        true !default; // true
+$enable-badge-default:                      true !default; // true
+$enable-badge-colors:                       true !default; // true
+$enable-badge-outline:                      true !default; // true
+$enable-badge-outline-colors:               true !default; // true
+
 // Input Group
 $enable-input-group:                        true !default; // true
 
