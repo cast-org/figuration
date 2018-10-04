@@ -20,45 +20,87 @@
             text-decoration: none;
         }
 
-        .btn:focus,
-        .btn-check-input:focus ~ .btn {
+        %btn-common-focus {
             text-decoration: none;
             // Turn off outline due to focus box-shadow set by button-variant()
             outline: 0;
         }
+        .btn:focus {
+            @extend %btn-common-focus;
+        }
+        @if $enable-btn-check {
+            .btn-check-input:focus ~ .btn {
+                @extend %btn-common-focus;
+            }
+        }
 
         // Disabled comes first so active can restyle
-        .btn.disabled,
-        .btn:disabled,
-        .btn-check-input:disabled ~ .btn {
+        %btn-common-disabled {
             opacity: $btn-disabled-opacity;
             @include box-shadow(none);
+        }
+        .btn.disabled,
+        .btn:disabled {
+            @extend %btn-common-disabled;
+        }
+        @if $enable-btn-check {
+            .btn-check-input:disabled ~ .btn {
+                @extend %btn-common-disabled;
+            }
         }
 
         .btn:not(:disabled):not(.disabled) {
             cursor: pointer;
         }
 
-        .btn:not(:disabled):not(.disabled):active,
-        .btn:not(:disabled):not(.disabled).active,
-        .btn-check-input:not(:disabled):checked ~ .btn,
-        .open > .btn {
+        %btn-common-active {
             @include box-shadow($btn-active-box-shadow);
         }
-
-        .btn:not(:disabled):not(.disabled):active:focus,
-        .btn:not(:disabled):not(.disabled).active:focus,
-        .btn-check-input:not(:disabled):checked:focus ~ .btn,
-        .open > .btn:focus {
-            @include box-shadow($btn-active-box-shadow, $btn-focus-box-shadow);
+        .btn:not(:disabled):not(.disabled):active,
+        .btn:not(:disabled):not(.disabled).active,
+        .open > .btn {
+            @if $enable-shadows {
+                @extend %btn-common-active;
+            }
+        }
+        @if $enable-btn-check {
+            .btn-check-input:not(:disabled):checked ~ .btn {
+                @if $enable-shadows {
+                    @extend %btn-common-active;
+                }
+            }
         }
 
+        %btn-common-active-focus {
+            @include box-shadow($btn-active-box-shadow, $btn-focus-box-shadow);
+        }
+        .btn:not(:disabled):not(.disabled):active:focus,
+        .btn:not(:disabled):not(.disabled).active:focus,
+        .open > .btn:focus {
+            @if $enable-shadows {
+                @extend %btn-common-active-focus;
+            }
+        }
+        @if $enable-btn-check {
+            .btn-check-input:not(:disabled):checked:focus ~ .btn {
+                @if $enable-shadows {
+                    @extend %btn-common-active-focus;
+                }
+            }
+        }
 
         // Future-proof disabling of clicks on `<a>` elements
-        a.btn.disabled,
-        fieldset:disabled a.btn,
-        .btn-check-input:disabled ~ .btn {
+        %btn-common-disabled-pointer {
             pointer-events: none;
+        }
+        a.btn.disabled,
+        fieldset:disabled a.btn {
+            @extend %btn-common-disabled-pointer;
+        }
+        @if $enable-btn-check {
+            .btn-check-input:disabled ~ .btn {
+                @extend %btn-common-disabled-pointer;
+            }
         }
     }
 
@@ -177,12 +219,12 @@
             }
 
             .btn-#{$size} {
-                @if $enable-btn-sizes {
+                @if $enable-btn-sizing {
                     @extend %btn-#{$size};
                 }
 
                 &.btn-icon {
-                    @if $enable-btn-icon and $enable-btn-icon-sizes {
+                    @if $enable-btn-icon and $enable-btn-icon-sizing {
                         @extend %btn-icon-#{$size};
                     }
                 }
@@ -216,7 +258,7 @@
     @if $enable-btn-check {
         .btn-check {
             position: relative;
-            display: inline-block;
+            display: inline-flex;
             vertical-align: middle;
         }
 

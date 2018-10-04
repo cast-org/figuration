@@ -49,9 +49,9 @@ $enable-btn-colors:                         true !default; // true
 $enable-btn-outline:                        true !default; // true
 $enable-btn-outline-colors:                 true !default; // true
 $enable-btn-link:                           true !default; // true
-$enable-btn-sizes:                          true !default; // true
+$enable-btn-sizing:                         true !default; // true
 $enable-btn-icon:                           true !default; // true
-$enable-btn-icon-sizes:                     true !default; // true
+$enable-btn-icon-sizing:                    true !default; // true
 $enable-btn-block:                          true !default; // true
 $enable-btn-check:                          true !default; // true
 
@@ -59,9 +59,9 @@ $enable-btn-check:                          true !default; // true
 $enable-form:                               true !default; // true
 $enable-form-control:                       true !default; // true
 $enable-form-control-special:               true !default; // true
-$enable-form-control-sizes:                 true !default; // true
+$enable-form-control-sizing:                true !default; // true
 $enable-form-control-label:                 true !default; // true
-$enable-form-control-label-sizes:           true !default; // true
+$enable-form-control-label-sizing:          true !default; // true
 $enable-form-control-static:                true !default; // true
 $enable-form-group:                         true !default; // true
 $enable-form-text:                          true !default; // true
@@ -79,7 +79,7 @@ $enable-custom-checkbox:                    true !default; // true
 $enable-custom-radio:                       true !default; // true
 $enable-custom-switch:                      true !default; // true
 $enable-custom-select:                      true !default; // true
-$enable-custom-select-sizes:                true !default; // true
+$enable-custom-select-sizing:               true !default; // true
 $enable-custom-file:                        true !default; // true
 $enable-custom-color:                       true !default; // true
 $enable-custom-range:                       true !default; // true

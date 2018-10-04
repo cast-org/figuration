@@ -150,7 +150,7 @@ $input-height-outer:    calc(#{$input-height-inner} + #{($input-border-width * 2
                 @include border-radius($sz-border-radius);
             }
 
-            @if $enable-form-control and $enable-form-control-sizes {
+            @if $enable-form-control and $enable-form-control-sizing {
                 .form-control-#{$size} {
                     @extend %form-control-#{$size};
                 }
@@ -163,7 +163,7 @@ $input-height-outer:    calc(#{$input-height-inner} + #{($input-border-width * 2
                 line-height: $sz-line-height;
             }
 
-            @if $enable-form-control-label and $enable-form-control-label-sizes {
+            @if $enable-form-control-label and $enable-form-control-label-sizing {
                 .form-control-label-#{$size} {
                     @extend %form-control-label-#{$size};
                 }
