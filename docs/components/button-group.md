@@ -283,6 +283,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td><code>true</code></td>
                 <td>
                     Enable the generation of the button group classes.
+                    Smaller segements of the button group classes can be disabled with the following <code>$enable-*</code> variables.
                 </td>
             </tr>
             <tr>
