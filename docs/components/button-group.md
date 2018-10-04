@@ -259,3 +259,68 @@ Due to their specific implementation (and some other components), a bit of speci
 In order for assistive technologies (such as screen readers) to convey that a series of buttons is grouped, an appropriate `role` attribute needs to be provided. For button groups, this would be `role="group"`, while toolbars should have a `role="toolbar"`.
 
 In addition, groups and toolbars should be given an explicit label, as most assistive technologies will otherwise not announce them, despite the presence of the correct role attribute. In the examples provided here, we use `aria-label`, but alternatives such as `aria-labelledby` can also be used.
+
+# SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for button groups and toolbars.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-btn-group</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the button group classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-btn-group-horizontal</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the horizontal button group classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-btn-group-vertical</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the vertical button group classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-btn-group-sizing</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the button group sizing classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-btn-toolbar</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the button toolbar classes.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.
