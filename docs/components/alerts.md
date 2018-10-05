@@ -87,7 +87,7 @@ Alerts can also contain additional HTML elements like headings, paragraphs, and 
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for alerts.
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the alert component.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">
@@ -105,8 +105,8 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
-                    Enable the generation of the alert classes.
-                    Smaller segements of the alert classes can be disabled with the following <code>$enable-*</code> variables.
+                    Enable the generation of the alert component classes.
+                    Smaller segements of the alert component classes can be disabled with the following <code>$enable-*</code> variables.
                 </td>
             </tr>
             <tr>

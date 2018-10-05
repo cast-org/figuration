@@ -260,11 +260,11 @@ In order for assistive technologies (such as screen readers) to convey that a se
 
 In addition, groups and toolbars should be given an explicit label, as most assistive technologies will otherwise not announce them, despite the presence of the correct role attribute. In the examples provided here, we use `aria-label`, but alternatives such as `aria-labelledby` can also be used.
 
-# SASS Reference
+## SASS Reference
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for button groups and toolbars.
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the button group component.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">
@@ -282,8 +282,8 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
-                    Enable the generation of the button group classes.
-                    Smaller segements of the button group classes can be disabled with the following <code>$enable-*</code> variables.
+                    Enable the generation of the button group component classes.
+                    Smaller segements of the button group component classes can be disabled with the following <code>$enable-*</code> variables.
                 </td>
             </tr>
             <tr>

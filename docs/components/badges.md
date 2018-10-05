@@ -202,7 +202,7 @@ Group badges together using `.badge-group`.
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for badges.
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the badge component.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">
@@ -220,8 +220,8 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
-                    Enable the generation of the badge classes.
-                    Smaller segements of the badge classes can be disabled with the following <code>$enable-*</code> variables.
+                    Enable the generation of the badge component classes.
+                    Smaller segements of the badge component classes can be disabled with the following <code>$enable-*</code> variables.
                 </td>
             </tr>
             <tr>
