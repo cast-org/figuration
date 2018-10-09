@@ -1,23 +1,21 @@
 @if $enable-alert {
 
     // Base styles
-    @if $enable-alert-common {
-        .alert {
-            position: relative;
-            padding: $alert-padding-y $alert-padding-x;
-            padding-right: ($alert-padding-x + ($alert-close-padding-x * 2));
-            margin-bottom: $alert-margin-bottom;
-            border: $alert-border-width solid transparent;
-            @include border-radius($alert-border-radius);
+    .alert {
+        position: relative;
+        padding: $alert-padding-y $alert-padding-x;
+        padding-right: ($alert-padding-x + ($alert-close-padding-x * 2));
+        margin-bottom: $alert-margin-bottom;
+        border: $alert-border-width solid transparent;
+        @include border-radius($alert-border-radius);
 
-            // Adjust close link position and color
-            @if $enable-alert-close {
-                .close {
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    padding: $alert-close-padding-y $alert-close-padding-x;
-                }
+        // Adjust close link position and color
+        @if $enable-alert-close {
+            .close {
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: $alert-close-padding-y $alert-close-padding-x;
             }
         }
     }

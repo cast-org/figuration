@@ -1,35 +1,33 @@
 @if $enable-table {
     // Basic table
-    @if $enable-table-common {
-        .table {
-            width: 100%;
-            margin-bottom: $table-margin-bottom;
-            background-color: $table-bg; // Reset for nesting within parents with `background-color`.
+    .table {
+        width: 100%;
+        margin-bottom: $table-margin-bottom;
+        background-color: $table-bg; // Reset for nesting within parents with `background-color`.
+        border: 0 solid;
+        border-color: $table-border-color;
+
+        // Allow border color to inherit all the way down.
+        // Only use `border-*-width` later to turn border on/off.
+        thead,
+        tbody,
+        tfoot,
+        tr,
+        th,
+        td {
             border: 0 solid;
-            border-color: $table-border-color;
+            border-color: inherit;
+        }
 
-            // Allow border color to inherit all the way down.
-            // Only use `border-*-width` later to turn border on/off.
-            thead,
-            tbody,
-            tfoot,
-            tr,
-            th,
-            td {
-                border: 0 solid;
-                border-color: inherit;
-            }
+        th,
+        td {
+            padding: $table-cell-padding;
+            vertical-align: top;
+        }
 
-            th,
-            td {
-                padding: $table-cell-padding;
-                vertical-align: top;
-            }
-
-            thead {
-                th {
-                    vertical-align: bottom;
-                }
+        thead {
+            th {
+                vertical-align: bottom;
             }
         }
     }

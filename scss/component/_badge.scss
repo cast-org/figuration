@@ -1,47 +1,47 @@
 @if $enable-badge {
     // Base class
-    @if $enable-badge-common {
-        .badge {
-            display: inline-block;
-            padding: $badge-padding-y $badge-padding-x;
-            @include font-size($badge-font-size);
-            font-weight: $badge-font-weight;
-            line-height: $badge-line-height;
-            text-align: center;
-            text-decoration: none;
-            white-space: nowrap;
-            vertical-align: baseline;
-            border: $badge-border-width solid transparent;
-            @include border-radius($badge-border-radius);
+    .badge {
+        display: inline-block;
+        padding: $badge-padding-y $badge-padding-x;
+        @include font-size($badge-font-size);
+        font-weight: $badge-font-weight;
+        line-height: $badge-line-height;
+        text-align: center;
+        text-decoration: none;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border: $badge-border-width solid transparent;
+        @include border-radius($badge-border-radius);
 
-            // Empty badges collapse automatically
-            &:empty {
-                display: none;
-            }
+        // Empty badges collapse automatically
+        &:empty {
+            display: none;
+        }
 
-            // Add hover effects, but only for links
-            &[href] {
-                @include hover-focus {
-                    text-decoration: none;
-                }
-            }
-
-            @if $enable-badge-close {
-                .close {
-                    padding-right: $badge-close-padding-x;
-                    padding-left: $badge-close-padding-x;
-                    margin-right: -$badge-close-padding-x;
-                    font-size: $badge-close-font-size;
-                }
-            }
-
-            // Default color (linked badges get darker on :hover)
-            @if $enable-badge-default {
-                @include badge-variant($badge-default-color, $badge-default-bg, $badge-default-border, $badge-default-hover-color, $badge-default-hover-bg, $badge-default-hover-border);
+        // Add hover effects, but only for links
+        &[href] {
+            @include hover-focus {
+                text-decoration: none;
             }
         }
 
-        // Quick fix for badges in buttons
+        @if $enable-badge-close {
+            .close {
+                padding-right: $badge-close-padding-x;
+                padding-left: $badge-close-padding-x;
+                margin-right: -$badge-close-padding-x;
+                font-size: $badge-close-font-size;
+            }
+        }
+
+        // Default color (linked badges get darker on :hover)
+        @if $enable-badge-default {
+            @include badge-variant($badge-default-color, $badge-default-bg, $badge-default-border, $badge-default-hover-color, $badge-default-hover-bg, $badge-default-hover-border);
+        }
+    }
+
+    // Quick fix for badges in buttons
+    @if $enable-btn {
         .btn .badge {
             position: relative;
             top: -1px;

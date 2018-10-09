@@ -16,7 +16,7 @@
         > .btn {
             @extend %btn-group-btn-base;
 
-            // Bring checked and focus buttons up to overlay
+            // Bring active, hovered, and focused buttons up to overlay
             // Focus comes up higher for box-shadow focus ring
             &:hover,
             &:active,
@@ -34,7 +34,7 @@
                     @extend %btn-group-btn-base;
                 }
 
-                // Bring checked and focus buttons up to overlay
+                // Bring checked, hovered, and focused input buttons up to overlay
                 // Focus comes up higher for box-shadow focus ring
                 > .btn:hover,
                 > .btn-check-input:checked ~ .btn {

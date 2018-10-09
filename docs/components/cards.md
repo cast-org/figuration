@@ -1126,14 +1126,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-card-common</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the base card class.
-                </td>
-            </tr>
-            <tr>
                 <td><code>$enable-card-body</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>
@@ -1254,14 +1246,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-card-deck-common</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the non-repsonsive card deck rules.
-                </td>
-            </tr>
-            <tr>
                 <td><code>$enable-card-deck-responsive</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>
@@ -1278,14 +1262,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-card-group-common</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the non-repsonsive card group rules.
-                </td>
-            </tr>
-            <tr>
                 <td><code>$enable-card-group-responsive</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>
@@ -1299,14 +1275,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td><code>true</code></td>
                 <td>
                     Enable the generation of the card columns rules.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-card-columns-common</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the non-repsonsive card columns rules.
                 </td>
             </tr>
             <tr>

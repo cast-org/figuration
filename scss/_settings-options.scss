@@ -31,7 +31,6 @@ $enable-figure:                             true !default;
 
 // Table
 $enable-table:                              true !default;
-$enable-table-common:                       true !default;
 $enable-table-borders:                      true !default;
 $enable-table-striped:                      true !default;
 $enable-table-hover:                        true !default;
@@ -43,7 +42,6 @@ $enable-table-scroll-responsive:            true !default;
 
 // Button
 $enable-btn:                                true !default;
-$enable-btn-common:                         true !default;
 $enable-btn-default:                        true !default;
 $enable-btn-colors:                         true !default;
 $enable-btn-outline:                        true !default;
@@ -86,7 +84,6 @@ $enable-custom-range:                       true !default;
 
 // Alert
 $enable-alert:                              true !default;
-$enable-alert-common:                       true !default;
 $enable-alert-close:                        true !default;
 $enable-alert-heading:                      true !default;
 $enable-alert-link:                         true !default;
@@ -95,7 +92,6 @@ $enable-alert-colors:                       true !default;
 
 // Badge
 $enable-badge:                              true !default;
-$enable-badge-common:                       true !default;
 $enable-badge-close:                        true !default;
 $enable-badge-pill:                         true !default;
 $enable-badge-group:                        true !default;
@@ -116,7 +112,6 @@ $enable-btn-toolbar:                        true !default;
 
 // Cards
 $enable-card:                               true !default;
-$enable-card-common:                        true !default;
 $enable-card-body:                          true !default;
 $enable-card-title:                         true !default;
 $enable-card-subtitle:                      true !default;
@@ -132,17 +127,21 @@ $enable-card-img:                           true !default;
 $enable-card-img-overlay:                   true !default;
 $enable-card-horizontal:                    true !default;
 $enable-card-deck:                          true !default;
-$enable-card-deck-common:                   true !default;
 $enable-card-deck-responsive:               true !default;
 $enable-card-group:                         true !default;
-$enable-card-group-common:                  true !default;
 $enable-card-group-responsive:              true !default;
 $enable-card-columns:                       true !default;
-$enable-card-columns-common:                true !default;
 $enable-card-columns-responsive:            true !default;
 
 // Input Group
 $enable-input-group:                        true !default;
+$enable-input-group-addon:                  true !default;
+$enable-input-group-text:                   true !default;
+$enable-input-group-sizing:                 true !default;
+
+// Jumbotron
+$enable-jumbotron:                          true !default;
+$enable-jumbotron-fluid:                    true !default;
 
 // Utility Options
 $enable-utility-bg:                         true !default;

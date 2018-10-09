@@ -1563,14 +1563,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-table-common</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of common <code>.table</code> CSS rules.
-                </td>
-            </tr>
-            <tr>
                 <td><code>$enable-table-borders</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>

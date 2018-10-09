@@ -110,14 +110,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-alert-common</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                Enable the generation of common alert, <code>.alert</code>, rules.
-                </td>
-            </tr>
-            <tr>
                 <td><code>$enable-alert-close</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>

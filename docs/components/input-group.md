@@ -419,3 +419,85 @@ Screen readers will have trouble with your forms if you don't include a label fo
 The exact technique to be used (`<label>` elements hidden using the `.sr-only` class, or use of the `aria-label` and `aria-labelledby` attributes, possibly in combination with `aria-describedby`) and what additional information will need to be conveyed will vary depending on the exact type of interface widget you're implementing. The examples in this section provide a few suggested, case-specific approaches.
 
 There is also an issue when placing buttons before inputs, as this can cause a confusing ordering issue for those using screen readers, where the general expectation is that the buttons are at the end of a form, or at least, after the inputs.  This fix is not as simple as controlling the focus order since screen readers read in order of the DOM elements.  There might be ways to mitigate this using a description of some kind, but it might be better to ensure proper ordering of the elements, and putting the buttons after any input elements.
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for input groups.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-input-group</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the input group classes.
+                    Smaller segements of the input group classes can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-input-group-addon</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of input group addon classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-input-group-text</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of input group text classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-input-group-sizing</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of input group sizing classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-group-addon-color</code></td>
+                <td>string</td>
+                <td><code>$input-color</code></td>
+                <td>
+                    Input group addon text color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-group-addon-bg</code></td>
+                <td>string</td>
+                <td><code>$uibase-50</code></td>
+                <td>
+                    Input group addon background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-group-addon-border-color</code></td>
+                <td>string</td>
+                <td><code>$input-border-color</code></td>
+                <td>
+                    Input group addon border color.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.

@@ -341,14 +341,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-btn-common</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the common button, <code>.btn</code>, rules.
-                </td>
-            </tr>
-            <tr>
                 <td><code>$enable-btn-default</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>
