@@ -12,7 +12,7 @@
 
         // Because flex properties aren't inherited, we need to redeclare these first
         // few properities so that content nested within behave properly.
-        if $enable-grid-classes {
+        @if $enable-grid-classes {
             > .container,
             > .container-fluid {
                 display: flex;
@@ -196,9 +196,10 @@
 
                     // For nesting containers, have to redeclare for alignment purposes
                     @if $enable-grid-classes {
-                    > .container,
-                    > .container-fluid {
-                        flex-wrap: nowrap;
+                        > .container,
+                        > .container-fluid {
+                            flex-wrap: nowrap;
+                        }
                     }
 
                     @if $enable-navbar-collapse {
