@@ -143,6 +143,34 @@ $enable-input-group-sizing:                 true !default;
 $enable-jumbotron:                          true !default;
 $enable-jumbotron-fluid:                    true !default;
 
+// List
+$enable-list:                               true !default;
+$enable-list-bulleted:                      true !default;
+$enable-list-ordered:                       true !default;
+$enable-list-divided:                       true !default;
+$enable-list-ruled:                         true !default;
+$enable-list-group:                         true !default;
+$enable-list-spaced:                        true !default;
+$enable-list-spaced-y:                      true !default;
+$enable-list-spaced-x:                      true !default;
+$enable-list-horizontal:                    true !default;
+$enable-list-item-action:                   true !default;
+$enable-list-item-colors:                   true !default;
+
+// Media Object
+$enable-media:                              true !default;
+
+// Navbar
+$enable-navbar:                             true !default;
+$enable-navbar-brand:                       true !default;
+$enable-navbar-nav:                         true !default;
+$enable-navbar-text:                        true !default;
+$enable-navbar-divider:                     true !default;
+$enable-navbar-collapse:                    true !default;
+$enable-navbar-toggle:                      true !default;
+$enable-navbar-light:                       true !default;
+$enable-navbar-dark:                        true !default;
+
 // Utility Options
 $enable-utility-bg:                         true !default;
 $enable-utility-bg-colors:                  true !default;

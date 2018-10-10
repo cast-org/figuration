@@ -550,3 +550,390 @@ Contextual classes also work with `.list-item-action`. Note the addition of the 
     <li class="list-item list-item-dark active">Dark list item</li>
 </ul>
 {% endexample %}
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for list component.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-list</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the list component classes.
+                    Smaller segements of the list component classes can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-list-bulleted</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of styled bulleted lists.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-list-ordered</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of styled ordered lists.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-list-divided</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of styled divided lists.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-list-ruled</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of styled ruled lists.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-list-group</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of list groups.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-list-spaced</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of spaced lists.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-list-spaced-y</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of vertically spaced lists.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-list-spaced-x</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of horizontally spaced lists.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-list-horizontal</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of styled horizontal lists.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-list-item-action</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of list item actions.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-list-item-colors</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of list item color variants.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-margin-left</code></td>
+                <td>string</td>
+                <td><code>1.25rem</code></td>
+                <td>
+                    Width of margin to indent lists.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-margin-bottom</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Spacing below lists.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-item-bg</code></td>
+                <td>string</td>
+                <td><code>transparent</code></td>
+                <td>
+                    Background color for list items.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-item-disabled-bg</code></td>
+                <td>string</td>
+                <td><code>$list-item-bg</code></td>
+                <td>
+                    Background color for disabled list items.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-item-disabled-color</code></td>
+                <td>string</td>
+                <td><code>$component-disabled-color</code></td>
+                <td>
+                    Text color for disabled list items.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-item-active-bg</code></td>
+                <td>string</td>
+                <td><code>$component-active-bg</code></td>
+                <td>
+                    Background color for active list items.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-item-active-color</code></td>
+                <td>string</td>
+                <td><code>$component-active-color</code></td>
+                <td>
+                    Text color for active list items.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-item-active-border</code></td>
+                <td>string</td>
+                <td><code>$component-active-border-color</code></td>
+                <td>
+                    Border color for active list items.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-item-action-color</code></td>
+                <td>string</td>
+                <td><code>$component-action-color</code></td>
+                <td>
+                    Text color for list item actions.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-item-hover-color</code></td>
+                <td>string</td>
+                <td><code>$list-item-hover-color</code></td>
+                <td>
+                    Text color for list item actions when hovered or focused.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-item-hover-bg</code></td>
+                <td>string</td>
+                <td><code>$component-hover-bg</code></td>
+                <td>
+                    Background color for list item actions when hovered or focused.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-border-width</code></td>
+                <td>string</td>
+                <td><code>$border-width</code></td>
+                <td>
+                    Border width for list items with borders.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-border-color</code></td>
+                <td>string</td>
+                <td><code>$component-border-color</code></td>
+                <td>
+                    Border color for list items with borders.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-group-border-radius</code></td>
+                <td>string</td>
+                <td><code>$border-radius</code></td>
+                <td>
+                    Border radisu for list groups.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-bulleted-content</code></td>
+                <td>string</td>
+                <td><code>"\25cf\00a0"</code></td>
+                <td>
+                    Visual content to use for bullets.  Default content is a black circle and a space.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-ordered-delimeter</code></td>
+                <td>string</td>
+                <td><code>"\25cf\00a0"</code></td>
+                <td>
+                    Visual content to use as a delimeter after the order value.  Default content is a space.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-horizontal-padding</code></td>
+                <td>string</td>
+                <td><code>.5em</code></td>
+                <td>
+                    Horizontal padding to use between list items in a horizontal list.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-spaced-item-padding-y</code></td>
+                <td>string</td>
+                <td><code>.75em</code></td>
+                <td>
+                    Vertical padding for list items in a spaced list.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-spaced-item-padding-x</code></td>
+                <td>string</td>
+                <td><code>1em</code></td>
+                <td>
+                    Horizontal padding for list items in a spaced list.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-themes</code></td>
+                <td>map</td>
+                <td><code>()</code></td>
+                <td>
+                    Map of color schemes for lists.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-colors</code></td>
+                <td>list</td>
+                <td><code>$base-colors</code></td>
+                <td>
+                    Colors to mix and merge into <code>$list-themes</code>
+                </td>
+            </tr>
+            <tr>
+                <td><code>$list-levels</code></td>
+                <td>map</td>
+                <td><code>$level-context</code></td>
+                <td>
+                    Levels to mix list colors with.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+Here are the mixins related to lists that we use to help generate our CSS.  You can also uses these mixins to generate your own custom components or utilities.
+
+#### list-unstyled
+{:.no_toc}
+
+List with no left padding or list item markers.
+
+{% highlight sass %}
+@include list-unstyled();
+{% endhighlight %}
+
+#### list-item-variant
+{:.no_toc}
+
+Create a contextual color variant for a list item.
+
+{% highlight sass %}
+@include list-item-variant($state, $bg, $color, $border, $hover-bg, $hover-color, $hover-border);
+{% endhighlight %}
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Argument</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$state</code></td>
+                <td>string</td>
+                <td><code>''</code></td>
+                <td>
+                    The value appended to generate the class <code>.list-item-#{$state}</code>.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$bg</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Background color for a list item.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$color</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Text color for a list item.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$border</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Border color for a list item.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$hover-bg</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Background color for a list item in active, hover, and focus states.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$hover-color</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Text color for a list item in active, hover, and focus states..
+                </td>
+            </tr>
+            <tr>
+                <td><code>$hover-border</code></td>
+                <td>string</td>
+                <td>none</td>
+                <td>
+                    Border color for a list item in active, hover, and focus states..
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

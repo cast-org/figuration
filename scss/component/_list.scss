@@ -1,316 +1,391 @@
 // List and list items
 // Use on <ul>, <ol>, or <div>.
 // Basic layout becomes an unstyled list.
-.list {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    margin-bottom: $list-margin-bottom;
-    @include list-unstyled;
-
+@if $enable-list {
     .list {
-        padding: 0;
-        margin-bottom: 0;
-        margin-left: $list-margin-left;
-    }
-}
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        margin-bottom: $list-margin-bottom;
+        @include list-unstyled;
 
-// Space out nested bullet and ordered lists
-.list:not(.list-bulleted):not(.list-ordered) {
-    > .list-item {
-        > .list-bulleted,
-        > .list-ordered {
-            margin-left: $list-margin-left * 2;
+        .list {
+            padding: 0;
+            margin-bottom: 0;
+            margin-left: $list-margin-left;
         }
     }
-}
 
-// Bulleted list
-.list-bulleted {
-    margin-left: $list-margin-left;
+    // Space out nested bullet and ordered lists
+    .list:not(.list-bulleted):not(.list-ordered) {
+        > .list-item {
+            %list-indent {
+                margin-left: $list-margin-left * 2;
+            }
+            @if $enable-list-bulleted {
+                > .list-bulleted {
+                    @extend %list-indent;
+                }
+            }
+            @if $enable-list-ordered {
+                > .list-ordered {
+                    @extend %list-indent;
+                }
+            }
+        }
+    }
 
-    > .list-item {
-        list-style: none;
+    // Bulleted list
+    @if $enable-list-bulleted {
+        .list-bulleted {
+            margin-left: $list-margin-left;
+
+            > .list-item {
+                list-style: none;
+
+                &::before {
+                    position: absolute;
+                    margin-left: -$list-margin-left;
+                    content: $list-bulleted-content;
+                }
+            }
+        }
+    }
+
+    // Ordered list
+    @if $enable-list-ordered {
+        .list-ordered {
+            margin-left: $list-margin-left;
+            counter-reset: ordered;
+
+            > .list-item {
+                &::before {
+                    position: absolute;
+                    margin-left: -$list-margin-left;
+                    //content: counters(ordered, ".") " ";
+                    content: counter(ordered) "#{$list-ordered-delimeter}";
+                    counter-increment: ordered;
+                }
+            }
+        }
+    }
+
+    // Lists with borders
+    %list-bordered {
+        border-color: $list-border-color;
+
+        > .list-item {
+            margin-top: -$list-border-width;
+            border-top-color: inherit;
+            border-top-width: $list-border-width;
+            border-bottom-color: inherit;
+            border-bottom-width: $list-border-width;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+    @if $enable-list-divided {
+        .list-divided {
+            @extend %list-bordered;
+        }
+    }
+    @if $enable-list-ruled {
+        .list-ruled {
+            @extend %list-bordered;
+        }
+    }
+    @if $enable-list-group {
+        .list-group {
+            @extend %list-bordered;
+        }
+    }
+
+    // Remove top and bottom borders for divided
+    @if $enable-list-divided {
+        .list-divided {
+            > .list-item {
+                &:first-child {
+                    border-top: 0;
+                }
+
+                &:last-child {
+                    border-bottom: 0;
+                }
+            }
+        }
+    }
+
+    // Group a list with borders all around, and a radius on the
+    // first and last children.
+    @if $enable-list-group {
+        .list-group {
+            > .list-item {
+                border-right-color: inherit;
+                border-right-width: $list-border-width;
+                border-left-color: inherit;
+                border-left-width: $list-border-width;
+
+                &:first-child {
+                    @include border-top-radius($list-group-border-radius);
+                }
+                &:last-child {
+                    @include border-bottom-radius($list-group-border-radius);
+                }
+            }
+        }
+    }
+
+    // Add some padding to lists.
+    @if $enable-list-spaced {
+        .list-spaced {
+            > .list-item {
+                padding: $list-spaced-item-padding-y $list-spaced-item-padding-x;
+            }
+        }
+    }
+
+    @if $enable-list-spaced-y {
+        .list-spaced-y {
+            > .list-item {
+                padding-top: $list-spaced-item-padding-y;
+                padding-bottom: $list-spaced-item-padding-y;
+            }
+        }
+    }
+
+    @if $enable-list-spaced-x {
+        .list-spaced-x {
+            > .list-item {
+                padding-right: $list-spaced-item-padding-x;
+                padding-left: $list-spaced-item-padding-x;
+            }
+        }
+    }
+
+    // Horizontal layout variants.
+    @if $enable-list-horizontal {
+        .list-horizontal {
+            flex-direction: row;
+            padding-left: 0;
+
+            > .list-item {
+                &:not(:last-child) {
+                    margin-right: $list-horizontal-padding;
+                }
+            }
+
+            &%list-hz-bull-and-ord {
+                margin-left: 0;
+
+                > .list-item {
+                    &::before {
+                        position: static;
+                        margin-left: 0;
+                    }
+                }
+            }
+
+            @if $enable-list-bulleted {
+                &.list-bulleted {
+                    @extend %list-hz-bull-and-ord;
+                }
+            }
+            @if $enable-list-ordered {
+                &.list-ordered {
+                    @extend %list-hz-bull-and-ord;
+                }
+            }
+
+            @if $enable-list-bulleted {
+                &.list-bulleted {
+                    > .list-item {
+                        &:first-child::before {
+                            content: none;
+                        }
+                    }
+                }
+            }
+
+            &%list-hz-div-and-rul {
+                > .list-item {
+                    padding-right: $list-horizontal-padding;
+                    padding-left: $list-horizontal-padding;
+                    margin: 0 0 0 -#{$list-border-width};
+                    border-top: 0;
+                    border-right-color: inherit;
+                    border-right-width: $list-border-width;
+                    border-bottom: 0;
+                    border-left-color: inherit;
+                    border-left-width: $list-border-width;
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+            }
+            @if $enable-list-divided {
+                &.list-divided {
+                    @extend %list-hz-div-and-rul;
+                }
+            }
+            @if $enable-list-ruled {
+                &.list-ruled {
+                    @extend %list-hz-div-and-rul;
+                }
+            }
+
+            @if $enable-list-divided {
+                &.list-divided {
+                    > .list-item {
+                        &:first-child {
+                            padding-left: 0;
+                            border-left: 0;
+                        }
+
+                        &:last-child {
+                            padding-right: 0;
+                            border-right: 0;
+                        }
+                    }
+                }
+            }
+
+            @if $enable-list-group {
+                &.list-group {
+                    > .list-item {
+                        padding-right: $list-horizontal-padding;
+                        padding-left: $list-horizontal-padding;
+                        margin: 0 0 0 -#{$list-border-width};
+
+                        &:first-child {
+                            margin-left: 0;
+                            @include border-top-end-radius(0);
+                            @include border-start-radius($list-group-border-radius);
+                        }
+
+                        &:last-child {
+                            @include border-bottom-start-radius(0);
+                            @include border-end-radius($list-group-border-radius);
+                        }
+                    }
+                }
+            }
+
+            // Spacing again due to specificity.
+            @if $enable-list-spaced {
+                &.list-spaced {
+                    > .list-item {
+                        padding: $list-spaced-item-padding-y $list-spaced-item-padding-x;
+                    }
+                }
+            }
+
+            @if $enable-list-spaced-y {
+                &.list-spaced-y {
+                    > .list-item {
+                        padding-top: $list-spaced-item-padding-y;
+                        padding-bottom: $list-spaced-item-padding-y;
+                    }
+                }
+            }
+
+            @if $enable-list-spaced-x {
+                &.list-spaced-x {
+                    > .list-item {
+                        padding-right: $list-spaced-item-padding-x;
+                        padding-left: $list-spaced-item-padding-x;
+                    }
+                }
+            }
+        }
+    }
+
+    // Interactive list items
+    // Use anchor or button elements instead of `<li>`s or `<div>`s to create
+    // interactive list items.
+    // stylelint-disable selector-no-qualifying-type
+    @if $enable-list-item-action {
+        button.list-item-action {
+            cursor: pointer;
+        }
+        // stylelint-enable selector-no-qualifying-type
+        .list-item-action {
+            width: 100%; // For `<button>`s (anchors become 100% by default though)
+            padding: 0; // Reset `<button>` padding
+            color: $list-item-action-color;
+            text-align: inherit; // For `<button>`s (anchors inherit)
+            text-decoration: none;
+
+            // Hover state
+            @include hover-focus {
+                z-index: 2;
+                color: $list-item-action-hover-color;
+                text-decoration: none;
+                background-color: $list-item-action-hover-bg;
+            }
+
+            &.disabled,
+            &:disabled {
+                cursor: default;
+            }
+        }
+    }
+
+    // Individual list items
+    // Use on `<li>`s or `<div>`s within the `.list` parent.
+    .list-item {
+        position: relative;
+        display: block;
+        // Override `<button>` background and border.
+        background-color: $list-item-bg;
+        border: 0 solid;
+        //border-color: inherit;
 
         &::before {
-            position: absolute;
-            margin-left: -$list-margin-left;
-            content: $list-bulleted-content;
-        }
-    }
-}
-
-// Ordered list
-.list-ordered {
-    margin-left: $list-margin-left;
-    counter-reset: ordered;
-
-    > .list-item {
-        &::before {
-            position: absolute;
-            margin-left: -$list-margin-left;
-            //content: counters(ordered, ".") " ";
-            content: counter(ordered) "#{$list-ordered-delimeter}";
-            counter-increment: ordered;
-        }
-    }
-}
-
-// Lists with borders
-.list-divided,
-.list-ruled,
-.list-group {
-    border-color: $list-border-color;
-
-    > .list-item {
-        margin-top: -$list-border-width;
-        border-top-color: inherit;
-        border-top-width: $list-border-width;
-        border-bottom-color: inherit;
-        border-bottom-width: $list-border-width;
-
-        &:first-child {
-            margin-top: 0;
-        }
-    }
-}
-
-// Remove top and bottom borders
-.list-divided {
-    > .list-item {
-        &:first-child {
-            border-top: 0;
+            content: none;
         }
 
-        &:last-child {
-            border-bottom: 0;
+        &.disabled,
+        &:disabled {
+            color: $list-item-disabled-color;
+            text-decoration: none;
+            background-color: $list-item-disabled-bg;
         }
-    }
-}
 
-// Group a list with borders all around, and a radius on the
-// first and last children.
-.list-group {
-    > .list-item {
-        border-right-color: inherit;
-        border-right-width: $list-border-width;
-        border-left-color: inherit;
-        border-left-width: $list-border-width;
-
-        &:first-child {
-            @include border-top-radius($list-group-border-radius);
-        }
-        &:last-child {
-            @include border-bottom-radius($list-group-border-radius);
-        }
-    }
-}
-
-// Add some padding to lists.
-.list-spaced {
-    > .list-item {
-        padding: $list-spaced-item-padding-y $list-spaced-item-padding-x;
-    }
-}
-
-.list-spaced-y {
-    > .list-item {
-        padding-top: $list-spaced-item-padding-y;
-        padding-bottom: $list-spaced-item-padding-y;
-    }
-}
-
-.list-spaced-x {
-    > .list-item {
-        padding-right: $list-spaced-item-padding-x;
-        padding-left: $list-spaced-item-padding-x;
-    }
-}
-
-// Horizontal layout variants.
-.list-horizontal {
-    flex-direction: row;
-    padding-left: 0;
-
-    > .list-item {
-        &:not(:last-child) {
-            margin-right: $list-horizontal-padding;
+        &.active {
+            z-index: 1;
+            color: $list-item-active-color;
+            background-color: $list-item-active-bg;
+            border-color: $list-item-active-border;
         }
     }
 
-    &.list-bulleted,
-    &.list-ordered {
-        margin-left: 0;
+    // Theme generation
+    @if $enable-list-item-colors {
+        @if (type-of($list-colors) == "map" and length($list-colors) != 0) {
+            $mixed-list-themes: _mix-context-colors($list-colors, $list-levels);
+            $list-themes: map-merge($mixed-list-themes, $list-themes);
+        }
 
-        > .list-item {
-            &::before {
-                position: static;
-                margin-left: 0;
+        // Contextual variants
+        // Add modifier classes to change text and background color on individual items.
+        // Organizationally, this must come after the `:hover` states.
+        @if (type-of($list-themes) == "map" and length($list-themes) != 0) {
+            @each $theme, $colors in $list-themes {
+                $bg:           map-get($colors, "bg");
+                $color:        map-get($colors, "color");
+                $border:       map-get($colors, "border-color");
+                $hover-bg:     map-get($colors, "hover-bg");
+                $hover-color:  map-get($colors, "hover-color");
+                $hover-border: map-get($colors, "hover-border-color");
+
+                $color:       color-if-contrast($color, $bg);
+                $hover-color: color-if-contrast($hover-color, $hover-bg);
+
+                @include list-item-variant(#{$theme}, $bg, $color, $border, $hover-bg, $hover-color, $hover-border);
             }
         }
-    }
-
-    &.list-bulleted {
-        > .list-item {
-            &:first-child::before {
-                content: none;
-            }
-        }
-    }
-
-    &.list-divided,
-    &.list-ruled {
-        > .list-item {
-            padding-right: $list-horizontal-padding;
-            padding-left: $list-horizontal-padding;
-            margin: 0 0 0 -#{$list-border-width};
-            border-top: 0;
-            border-right-color: inherit;
-            border-right-width: $list-border-width;
-            border-bottom: 0;
-            border-left-color: inherit;
-            border-left-width: $list-border-width;
-
-            &:first-child {
-                margin-left: 0;
-            }
-        }
-    }
-
-    &.list-divided {
-        > .list-item {
-            &:first-child {
-                padding-left: 0;
-                border-left: 0;
-            }
-
-            &:last-child {
-                padding-right: 0;
-                border-right: 0;
-            }
-        }
-    }
-
-    &.list-group {
-        > .list-item {
-            padding-right: $list-horizontal-padding;
-            padding-left: $list-horizontal-padding;
-            margin: 0 0 0 -#{$list-border-width};
-
-            &:first-child {
-                margin-left: 0;
-                @include border-top-end-radius(0);
-                @include border-start-radius($list-group-border-radius);
-            }
-
-            &:last-child {
-                @include border-bottom-start-radius(0);
-                @include border-end-radius($list-group-border-radius);
-            }
-        }
-    }
-
-    // Spacing again due to specificity.
-    &.list-spaced {
-        > .list-item {
-            padding: $list-spaced-item-padding-y $list-spaced-item-padding-x;
-        }
-    }
-
-    &.list-spaced-y {
-        > .list-item {
-            padding-top: $list-spaced-item-padding-y;
-            padding-bottom: $list-spaced-item-padding-y;
-        }
-    }
-
-    &.list-spaced-x {
-        > .list-item {
-            padding-right: $list-spaced-item-padding-x;
-            padding-left: $list-spaced-item-padding-x;
-        }
-    }
-}
-
-// Interactive list items
-// Use anchor or button elements instead of `<li>`s or `<div>`s to create
-// interactive list items.
-// stylelint-disable selector-no-qualifying-type
-button.list-item-action {
-    cursor: pointer;
-}
-// stylelint-enable selector-no-qualifying-type
-.list-item-action {
-    width: 100%; // For `<button>`s (anchors become 100% by default though)
-    padding: 0; // Reset `<button>` padding
-    color: $list-item-action-color;
-    text-align: inherit; // For `<button>`s (anchors inherit)
-    text-decoration: none;
-
-    // Hover state
-    @include hover-focus {
-        z-index: 2;
-        color: $list-item-action-hover-color;
-        text-decoration: none;
-        background-color: $list-item-action-hover-bg;
-    }
-
-    &.disabled,
-    &:disabled {
-        cursor: default;
-    }
-}
-
-// Individual list items
-// Use on `<li>`s or `<div>`s within the `.list` parent.
-.list-item {
-    position: relative;
-    display: block;
-    // Override `<button>` background and border.
-    background-color: $list-item-bg;
-    border: 0 solid;
-    //border-color: inherit;
-
-    &::before {
-        content: none;
-    }
-
-    &.disabled,
-    &:disabled {
-        color: $list-item-disabled-color;
-        text-decoration: none;
-        background-color: $list-item-disabled-bg;
-    }
-
-    &.active {
-        z-index: 1;
-        color: $list-item-active-color;
-        background-color: $list-item-active-bg;
-        border-color: $list-item-active-border;
-    }
-}
-
-// Theme generation
-@if (type-of($list-colors) == "map" and length($list-colors) != 0) {
-    $mixed-list-themes: _mix-context-colors($list-colors, $list-levels);
-    $list-themes: map-merge($mixed-list-themes, $list-themes);
-}
-
-// Contextual variants
-// Add modifier classes to change text and background color on individual items.
-// Organizationally, this must come after the `:hover` states.
-@if (type-of($list-themes) == "map" and length($list-themes) != 0) {
-    @each $theme, $colors in $list-themes {
-        $bg:           map-get($colors, "bg");
-        $color:        map-get($colors, "color");
-        $border:       map-get($colors, "border-color");
-        $hover-bg:     map-get($colors, "hover-bg");
-        $hover-color:  map-get($colors, "hover-color");
-        $hover-border: map-get($colors, "hover-border-color");
-
-        $color:       color-if-contrast($color, $bg);
-        $hover-color: color-if-contrast($hover-color, $hover-bg);
-
-        @include list-item-variant(#{$theme}, $bg, $color, $border, $hover-bg, $hover-color, $hover-border);
     }
 }

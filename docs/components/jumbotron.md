@@ -53,8 +53,8 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
-                    Enable the generation of the input group classes.
-                    Smaller segements of the input group classes can be disabled with the following <code>$enable-*</code> variables.
+                    Enable the generation of the jumbotron classes.
+                    Smaller segements of the jumbotron classes can be disabled with the following <code>$enable-*</code> variables.
                 </td>
             </tr>
             <tr>

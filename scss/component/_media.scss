@@ -1,18 +1,20 @@
-.media {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: $media-margin-y;
-
-    // Nested media
+@if $enable-media {
     .media {
-        margin-top: $media-margin-y;
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: $media-margin-y;
 
-        &:last-child {
-            margin-bottom: 0;
+        // Nested media
+        .media {
+            margin-top: $media-margin-y;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
         }
     }
-}
 
-.media-body {
-    flex: 1;
+    .media-body {
+        flex: 1;
+    }
 }
