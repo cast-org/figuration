@@ -145,16 +145,16 @@
             @if $enable-btn {
                 .input-group-#{$size} > .input-group-addon > .btn {
                     @extend %btn-#{$size};
+                }
 
-                    @if $enable-btn-check {
-                        .input-group-#{$size} > .input-group-addon > .btn-check > .btn {
-                            @extend %btn-#{$size};
-                        }
+                @if $enable-btn-check {
+                    .input-group-#{$size} > .input-group-addon > .btn-check > .btn {
+                        @extend %btn-#{$size};
                     }
-                    @if $enable-btn-icon {
-                        .input-group-#{$size} > .input-group-addon > .btn-icon {
-                            @extend %btn-icon-#{$size};
-                        }
+                }
+                @if $enable-btn-icon {
+                    .input-group-#{$size} > .input-group-addon > .btn-icon {
+                        @extend %btn-icon-#{$size};
                     }
                 }
             }
