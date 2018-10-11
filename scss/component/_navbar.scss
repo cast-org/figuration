@@ -22,7 +22,7 @@
             }
         }
 
-        @if $enable-navbar-nav {
+        @if $enable-navbar-nav and $enable-dropdown {
             &:not([class*="navbar-expand"]) {
                 .navbar-nav {
                     .dropdown-menu {
@@ -147,7 +147,7 @@
                 // Skip smallest breakpoint
                 @if breakpoint-min($bp, $grid-breakpoints) != null {
                     @include media-breakpoint-down($prev) {
-                        @if $enable-navbar-nav {
+                        @if $enable-navbar-nav and $enable-dropdown {
                             .navbar-nav {
                                 .dropdown-menu {
                                     position: static;
@@ -183,8 +183,10 @@
                             flex-direction: row;
                             align-items: center;
 
-                            .dropdown-menu {
-                                position: absolute;
+                            @if $enable-dropdown {
+                                .dropdown-menu {
+                                    position: absolute;
+                                }
                             }
 
                             .nav-link {

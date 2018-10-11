@@ -19,7 +19,7 @@
         }
 
         // Add hover effects, but only for links
-        &[href] {
+        @at-root a#{&} {
             @include hover-focus {
                 text-decoration: none;
             }

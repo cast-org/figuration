@@ -836,7 +836,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td><code>true</code></td>
                 <td>
                     Enable the generation of the navbar classes.
-                    Smaller segements of the input group classes can be disabled with the following <code>$enable-*</code> variables.
+                    Smaller segements of the navbar classes can be disabled with the following <code>$enable-*</code> variables.
                 </td>
             </tr>
             <tr>
