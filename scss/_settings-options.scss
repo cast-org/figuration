@@ -1,172 +1,279 @@
 // Root CSS variables
-$enable-root:                               true !default; // true
-$enable-root-colors:                        true !default; // true
-$enable-root-breakpoints:                   true !default; // true
-$enable-root-fonts:                         true !default; // true
+$enable-root:                               true !default;
+$enable-root-colors:                        true !default;
+$enable-root-breakpoints:                   true !default;
+$enable-root-fonts:                         true !default;
 
 // Base Typography
-$enable-typography:                         true !default; // true
-$enable-typography-headings:                true !default; // true
-$enable-typography-lead:                    true !default; // true
-$enable-typography-hr:                      true !default; // true
-$enable-typography-small:                   true !default; // true
-$enable-typography-mark:                    true !default; // true
-$enable-typography-list-unstyled:           true !default; // true
-$enable-typography-initialism:              true !default; // true
-$enable-typography-blockquote:              true !default; // true
+$enable-typography:                         true !default;
+$enable-typography-headings:                true !default;
+$enable-typography-lead:                    true !default;
+$enable-typography-hr:                      true !default;
+$enable-typography-small:                   true !default;
+$enable-typography-mark:                    true !default;
+$enable-typography-list-unstyled:           true !default;
+$enable-typography-initialism:              true !default;
+$enable-typography-blockquote:              true !default;
 
 // Code snippets
-$enable-code:                               true !default; // true
-$enable-code-code:                          true !default; // true
-$enable-code-kbd:                           true !default; // true
-$enable-code-pre:                           true !default; // true
+$enable-code:                               true !default;
+$enable-code-code:                          true !default;
+$enable-code-kbd:                           true !default;
+$enable-code-pre:                           true !default;
 
 // Images
-$enable-img:                                true !default; // true
-$enable-img-fluid:                          true !default; // true
-$enable-img-thumbnail:                      true !default; // true
+$enable-img:                                true !default;
+$enable-img-fluid:                          true !default;
+$enable-img-thumbnail:                      true !default;
 
 // Figure
-$enable-figure:                             true !default; // true
+$enable-figure:                             true !default;
 
 // Table
-$enable-table:                              true !default; // true
-$enable-table-common:                       true !default; // true
-$enable-table-borders:                      true !default; // true
-$enable-table-striped:                      true !default; // true
-$enable-table-hover:                        true !default; // true
-$enable-table-condensed:                    true !default; // true
-$enable-table-active:                       true !default; // true
-$enable-table-colors:                       true !default; // true
-$enable-table-scroll:                       true !default; // true
-$enable-table-scroll-responsive:            true !default; // true
+$enable-table:                              true !default;
+$enable-table-borders:                      true !default;
+$enable-table-striped:                      true !default;
+$enable-table-hover:                        true !default;
+$enable-table-condensed:                    true !default;
+$enable-table-active:                       true !default;
+$enable-table-colors:                       true !default;
+$enable-table-scroll:                       true !default;
+$enable-table-scroll-responsive:            true !default;
 
 // Button
-$enable-btn:                                true !default; // true
-$enable-btn-common:                         true !default; // true
-$enable-btn-default:                        true !default; // true
-$enable-btn-colors:                         true !default; // true
-$enable-btn-outline:                        true !default; // true
-$enable-btn-outline-colors:                 true !default; // true
-$enable-btn-link:                           true !default; // true
-$enable-btn-sizes:                          true !default; // true
-$enable-btn-icon:                           true !default; // true
-$enable-btn-icon-sizes:                     true !default; // true
-$enable-btn-block:                          true !default; // true
-$enable-btn-check:                          true !default; // true
+$enable-btn:                                true !default;
+$enable-btn-default:                        true !default;
+$enable-btn-colors:                         true !default;
+$enable-btn-outline:                        true !default;
+$enable-btn-outline-colors:                 true !default;
+$enable-btn-link:                           true !default;
+$enable-btn-sizing:                         true !default;
+$enable-btn-icon:                           true !default;
+$enable-btn-icon-sizing:                    true !default;
+$enable-btn-block:                          true !default;
+$enable-btn-check:                          true !default;
 
 // Form
-$enable-form:                               true !default; // true
-$enable-form-control:                       true !default; // true
-$enable-form-control-special:               true !default; // true
-$enable-form-control-sizes:                 true !default; // true
-$enable-form-control-label:                 true !default; // true
-$enable-form-control-label-sizes:           true !default; // true
-$enable-form-control-static:                true !default; // true
-$enable-form-group:                         true !default; // true
-$enable-form-text:                          true !default; // true
-$enable-form-row:                           true !default; // true
-$enable-form-check:                         true !default; // true
-$enable-form-check-inline:                  true !default; // true
-$enable-form-validation:                    true !default; // true
-$enable-form-validation-feedback:           true !default; // true
-$enable-form-validation-tooltip:            true !default; // true
-$enable-form-inline:                        true !default; // true
+$enable-form:                               true !default;
+$enable-form-control:                       true !default;
+$enable-form-control-special:               true !default;
+$enable-form-control-sizing:                true !default;
+$enable-form-control-label:                 true !default;
+$enable-form-control-label-sizing:          true !default;
+$enable-form-control-static:                true !default;
+$enable-form-group:                         true !default;
+$enable-form-text:                          true !default;
+$enable-form-row:                           true !default;
+$enable-form-check:                         true !default;
+$enable-form-check-inline:                  true !default;
+$enable-form-validation:                    true !default;
+$enable-form-validation-feedback:           true !default;
+$enable-form-validation-tooltip:            true !default;
+$enable-form-inline:                        true !default;
 
 // Custom Form
-$enable-custom-control:                     true !default; // true
-$enable-custom-checkbox:                    true !default; // true
-$enable-custom-radio:                       true !default; // true
-$enable-custom-switch:                      true !default; // true
-$enable-custom-select:                      true !default; // true
-$enable-custom-select-sizes:                true !default; // true
-$enable-custom-file:                        true !default; // true
-$enable-custom-color:                       true !default; // true
-$enable-custom-range:                       true !default; // true
+$enable-custom-control:                     true !default;
+$enable-custom-checkbox:                    true !default;
+$enable-custom-radio:                       true !default;
+$enable-custom-switch:                      true !default;
+$enable-custom-select:                      true !default;
+$enable-custom-select-sizing:               true !default;
+$enable-custom-file:                        true !default;
+$enable-custom-color:                       true !default;
+$enable-custom-range:                       true !default;
+
+// Alert
+$enable-alert:                              true !default;
+$enable-alert-close:                        true !default;
+$enable-alert-heading:                      true !default;
+$enable-alert-link:                         true !default;
+$enable-alert-hr:                           true !default;
+$enable-alert-colors:                       true !default;
+
+// Badge
+$enable-badge:                              true !default;
+$enable-badge-close:                        true !default;
+$enable-badge-pill:                         true !default;
+$enable-badge-group:                        true !default;
+$enable-badge-default:                      true !default;
+$enable-badge-colors:                       true !default;
+$enable-badge-outline:                      true !default;
+$enable-badge-outline-colors:               true !default;
+
+// Breadcrumb
+$enable-breadcrumb:                         true !default;
+
+// Button Group
+$enable-btn-group:                          true !default;
+$enable-btn-group-horizontal:               true !default;
+$enable-btn-group-vertical:                 true !default;
+$enable-btn-group-sizing:                   true !default;
+$enable-btn-toolbar:                        true !default;
+
+// Cards
+$enable-card:                               true !default;
+$enable-card-body:                          true !default;
+$enable-card-title:                         true !default;
+$enable-card-subtitle:                      true !default;
+$enable-card-text:                          true !default;
+$enable-card-link:                          true !default;
+$enable-card-list:                          true !default;
+$enable-card-table:                         true !default;
+$enable-card-header:                        true !default;
+$enable-card-footer:                        true !default;
+$enable-card-header-tabs:                   true !default;
+$enable-card-header-pills:                  true !default;
+$enable-card-img:                           true !default;
+$enable-card-img-overlay:                   true !default;
+$enable-card-horizontal:                    true !default;
+$enable-card-deck:                          true !default;
+$enable-card-deck-responsive:               true !default;
+$enable-card-group:                         true !default;
+$enable-card-group-responsive:              true !default;
+$enable-card-columns:                       true !default;
+$enable-card-columns-responsive:            true !default;
 
 // Input Group
-$enable-input-group:                        true !default; // true
+$enable-input-group:                        true !default;
+$enable-input-group-addon:                  true !default;
+$enable-input-group-text:                   true !default;
+$enable-input-group-sizing:                 true !default;
+
+// Jumbotron
+$enable-jumbotron:                          true !default;
+$enable-jumbotron-fluid:                    true !default;
+
+// List
+$enable-list:                               true !default;
+$enable-list-bulleted:                      true !default;
+$enable-list-ordered:                       true !default;
+$enable-list-divided:                       true !default;
+$enable-list-ruled:                         true !default;
+$enable-list-group:                         true !default;
+$enable-list-spaced:                        true !default;
+$enable-list-spaced-y:                      true !default;
+$enable-list-spaced-x:                      true !default;
+$enable-list-horizontal:                    true !default;
+$enable-list-item-action:                   true !default;
+$enable-list-item-colors:                   true !default;
+
+// Media Object
+$enable-media:                              true !default;
+
+// Navbar
+$enable-navbar:                             true !default;
+$enable-navbar-brand:                       true !default;
+$enable-navbar-nav:                         true !default;
+$enable-navbar-text:                        true !default;
+$enable-navbar-divider:                     true !default;
+$enable-navbar-collapse:                    true !default;
+$enable-navbar-toggle:                      true !default;
+$enable-navbar-light:                       true !default;
+$enable-navbar-dark:                        true !default;
+
+// Nav
+$enable-nav:                                true !default;
+$enable-nav-tabs:                           true !default;
+$enable-nav-pills:                          true !default;
+$enable-nav-vertical:                       true !default;
+$enable-nav-fill:                           true !default;
+$enable-nav-justify:                        true !default;
+$enable-tab-content:                        true !default;
+
+// Pagination
+$enable-pagination:                         true !default;
+$enable-pagination-spaced:                  true !default;
+$enable-pagination-group:                   true !default;
+$enable-pagination-sizing:                  true !default;
+
+// Progress
+$enable-progress:                           true !default;
+$enable-progress-striped:                   true !default;
+$enable-progress-animated:                  true !default;
+
+//Dropdown
+$enable-dropdown:                           true !default;
 
 // Utility Options
-$enable-utility-bg:                         true !default;  // true
-$enable-utility-bg-colors:                  true !default;  // true
-$enable-utility-bg-palette:                 true !default;  // true
-$enable-utility-bg-special:                 true !default;  // true
+$enable-utility-bg:                         true !default;
+$enable-utility-bg-colors:                  true !default;
+$enable-utility-bg-palette:                 true !default;
+$enable-utility-bg-special:                 true !default;
 
-$enable-utility-border:                     true !default;  // true
-$enable-utility-border-addition:            true !default;  // true
-$enable-utility-border-removal:             true !default;  // true
-$enable-utility-border-colors:              true !default;  // true
-$enable-utility-border-palette:             true !default;  // true
-$enable-utility-border-special:             true !default;  // true
-$enable-utility-border-radius-circle:       true !default;  // true
-$enable-utility-border-radius-addition:     true !default;  // true
-$enable-utility-border-radius-component:    true !default;  // true
-$enable-utility-border-radius-removal:      true !default;  // true
+$enable-utility-border:                     true !default;
+$enable-utility-border-addition:            true !default;
+$enable-utility-border-removal:             true !default;
+$enable-utility-border-colors:              true !default;
+$enable-utility-border-palette:             true !default;
+$enable-utility-border-special:             true !default;
+$enable-utility-border-radius-circle:       true !default;
+$enable-utility-border-radius-addition:     true !default;
+$enable-utility-border-radius-component:    true !default;
+$enable-utility-border-radius-removal:      true !default;
 
-$enable-utility-clearfix:                   true !default;  // true
+$enable-utility-clearfix:                   true !default;
 
-$enable-utility-display:                    true !default;  // true
-$enable-utility-display-common:             true !default;  // true
-$enable-utility-display-table:              true !default;  // true
-$enable-utility-display-down:               true !default;  // true
-$enable-utility-display-print:              true !default;  // true
+$enable-utility-display:                    true !default;
+$enable-utility-display-common:             true !default;
+$enable-utility-display-table:              true !default;
+$enable-utility-display-down:               true !default;
+$enable-utility-display-print:              true !default;
 
-$enable-utility-embed:                      true !default;  // true
-$enable-utility-embed-fluid:                true !default;  // true
-$enable-utility-embed-fullscreen:           true !default;  // true
+$enable-utility-embed:                      true !default;
+$enable-utility-embed-fluid:                true !default;
+$enable-utility-embed-fullscreen:           true !default;
 
-$enable-utility-flex:                       true !default;  // true
-$enable-utility-flex-order:                 true !default;  // true
-$enable-utility-flex-direction:             true !default;  // true
-$enable-utility-flex-wrap:                  true !default;  // true
-$enable-utility-flex-justify:               true !default;  // true
-$enable-utility-flex-items:                 true !default;  // true
-$enable-utility-flex-content:               true !default;  // true
-$enable-utility-flex-self:                  true !default;  // true
-$enable-utility-flex-sizing:                true !default;  // true
+$enable-utility-flex:                       true !default;
+$enable-utility-flex-order:                 true !default;
+$enable-utility-flex-direction:             true !default;
+$enable-utility-flex-wrap:                  true !default;
+$enable-utility-flex-justify:               true !default;
+$enable-utility-flex-items:                 true !default;
+$enable-utility-flex-content:               true !default;
+$enable-utility-flex-self:                  true !default;
+$enable-utility-flex-sizing:                true !default;
 
-$enable-utility-float:                      true !default;  // true
+$enable-utility-float:                      true !default;
 
-$enable-utility-position:                   true !default;  // true
-$enable-utility-position-common:            true !default;  // true
-$enable-utility-position-fixed:             true !default;  // true
-$enable-utility-position-fixed-top:         true !default;  // true
-$enable-utility-position-fixed-bottom:      true !default;  // true
-$enable-utility-position-sticky:            true !default;  // true
-$enable-utility-position-sticky-top:        true !default;  // true
+$enable-utility-position:                   true !default;
+$enable-utility-position-common:            true !default;
+$enable-utility-position-fixed:             true !default;
+$enable-utility-position-fixed-top:         true !default;
+$enable-utility-position-fixed-bottom:      true !default;
+$enable-utility-position-sticky:            true !default;
+$enable-utility-position-sticky-top:        true !default;
 
-$enable-utility-sronly:                     true !default;  // true
-$enable-utility-sronly-common:              true !default;  // true
-$enable-utility-sronly-focusable:           true !default;  // true
-$enable-utility-sronly-responsive:          true !default;  // true
-$enable-utility-sronly-responsive-down:     true !default;  // true
+$enable-utility-sronly:                     true !default;
+$enable-utility-sronly-common:              true !default;
+$enable-utility-sronly-focusable:           true !default;
+$enable-utility-sronly-responsive:          true !default;
+$enable-utility-sronly-responsive-down:     true !default;
 
-$enable-utility-shadow:                     true !default;  // true
+$enable-utility-shadow:                     true !default;
 
-$enable-utility-sizing:                     true !default;  // true
-$enable-utility-sizing-width:               true !default;  // true
-$enable-utility-sizing-height:              true !default;  // true
+$enable-utility-sizing:                     true !default;
+$enable-utility-sizing-width:               true !default;
+$enable-utility-sizing-height:              true !default;
 
-$enable-utility-spacing:                    true !default;  // true
-$enable-utility-spacing-padding:            true !default;  // true
-$enable-utility-spacing-margin:             true !default;  // true
-$enable-utility-spacing-margin-auto:        true !default;  // true
-$enable-utility-spacing-margin-negative:    true !default;  // true
+$enable-utility-spacing:                    true !default;
+$enable-utility-spacing-padding:            true !default;
+$enable-utility-spacing-margin:             true !default;
+$enable-utility-spacing-margin-auto:        true !default;
+$enable-utility-spacing-margin-negative:    true !default;
 
-$enable-utility-text:                       true !default;  // true
-$enable-utility-text-justify:               true !default;  // true
-$enable-utility-text-nowrap:                true !default;  // true
-$enable-utility-text-align:                 true !default;  // true
-$enable-utility-text-transform:             true !default;  // true
-$enable-utility-text-weight:                true !default;  // true
-$enable-utility-text-style:                 true !default;  // true
-$enable-utility-text-family:                true !default;  // true
-$enable-utility-text-truncate:              true !default;  // true
-$enable-utility-text-colors:                true !default;  // true
-$enable-utility-text-palette:               true !default;  // true
-$enable-utility-text-special:               true !default;  // true
+$enable-utility-text:                       true !default;
+$enable-utility-text-justify:               true !default;
+$enable-utility-text-nowrap:                true !default;
+$enable-utility-text-align:                 true !default;
+$enable-utility-text-transform:             true !default;
+$enable-utility-text-weight:                true !default;
+$enable-utility-text-style:                 true !default;
+$enable-utility-text-family:                true !default;
+$enable-utility-text-truncate:              true !default;
+$enable-utility-text-colors:                true !default;
+$enable-utility-text-palette:               true !default;
+$enable-utility-text-special:               true !default;
 
-$enable-utility-valign:                     true !default;  // true
+$enable-utility-valign:                     true !default;
 
-$enable-utility-visibility:                 true !default;  // true
+$enable-utility-visibility:                 true !default;

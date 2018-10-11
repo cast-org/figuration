@@ -323,3 +323,205 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}
   </li>
 </ul>
 {% endexample %}
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for nav components.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-nav</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the nav classes.
+                    Smaller segements of the nav classes can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-nav-tabs</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of tab nav styles.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-nav-pills</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of pill nav styles.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-nav-vertical</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of vertical nav style.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-nav-fill</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of fill alignment nav style.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-nav-justify</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of justify alignment nav style.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-tab-content</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of tab content pane visibility styles.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$nav-link-padding-y</code></td>
+                <td>string</td>
+                <td><code>.3125rem</code></td>
+                <td>
+                    Vertical padding for nav links.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$nav-link-padding-x</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Horizontal padding for nav links.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$nav-link-disabled-opacity</code></td>
+                <td>string</td>
+                <td><code>.6</code></td>
+                <td>
+                    Opacity for disabled nav links.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$nav-link-disabled-color</code></td>
+                <td>string</td>
+                <td><code>.6</code></td>
+                <td>
+                    Text color for disabled nav links.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$nav-tabs-border-color</code></td>
+                <td>string</td>
+                <td><code>$component-border-color</code></td>
+                <td>
+                    Border color for tab navs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$nav-tabs-border-width</code></td>
+                <td>string</td>
+                <td><code>$border-width</code></td>
+                <td>
+                    Border width for tab navs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$nav-tabs-hover-border-color</code></td>
+                <td>string</td>
+                <td><code>$component-hover-bg</code></td>
+                <td>
+                    Border color for tab navs in hover or focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$nav-tabs-hover-bg</code></td>
+                <td>string</td>
+                <td><code>$component-hover-bg</code></td>
+                <td>
+                    Background color for tab navs in hover or focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$nav-tabs-active-color</code></td>
+                <td>string</td>
+                <td><code>$component-action-color</code></td>
+                <td>
+                    Text color for tab navs in active state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$nav-tabs-active-bg</code></td>
+                <td>string</td>
+                <td><code>$body-bg</code></td>
+                <td>
+                    Background color for tab navs in active state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$nav-tabs-active-border-color</code></td>
+                <td>string</td>
+                <td><code>$component-border-color</code></td>
+                <td>
+                    Border color for tab navs in active state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$nav-pills-border-radius</code></td>
+                <td>string</td>
+                <td><code>$border-radius</code></td>
+                <td>
+                    Border radius for pill navs.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$nav-pills-hover-bg</code></td>
+                <td>string</td>
+                <td><code>$component-hover-bg</code></td>
+                <td>
+                    Background color for pill navs in hover or focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$component-active-color</code></td>
+                <td>string</td>
+                <td><code>$component-active-color</code></td>
+                <td>
+                    Text color for pill navs in active state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$component-active-bg</code></td>
+                <td>string</td>
+                <td><code>$component-active-bg</code></td>
+                <td>
+                    Background color for pill navs in active state.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.

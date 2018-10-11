@@ -1,113 +1,201 @@
-// Make the div behave like a button
-.btn-group,
-.btn-group-vertical {
-    position: relative;
-    display: inline-flex;
-    vertical-align: middle; // match .btn alignment given font-size hack above
-
-    > .btn,
-    > .btn-check > .btn {
+@if $enable-btn-group {
+    // Placeholder for buttons inside a button group
+    %btn-group-btn-base {
         position: relative;
         flex: 0 1 auto;
         margin-bottom: 0; // Override default `<label>` value
+    }
 
-        // Bring the "active" button to the front
-        &:active,
-        &.active {
-            z-index: 1;
+    // Placeholder for base button group
+    // Make the div behave like a button
+    %btn-group-base {
+        position: relative;
+        display: inline-flex;
+        vertical-align: middle; // match .btn alignment
+
+        > .btn {
+            @extend %btn-group-btn-base;
+
+            // Bring active, hovered, and focused buttons up to overlay
+            // Focus comes up higher for box-shadow focus ring
+            &:hover,
+            &:active,
+            &.active {
+                z-index: 1;
+            }
+            &:focus {
+                z-index: 2;
+            }
         }
-        &:hover,
-        &:focus,
-        &.focus {
-            z-index: 2;
+
+        @if $enable-btn-check {
+            > .btn-check {
+                > .btn {
+                    @extend %btn-group-btn-base;
+                }
+
+                // Bring checked, hovered, and focused input buttons up to overlay
+                // Focus comes up higher for box-shadow focus ring
+                > .btn:hover,
+                > .btn-check-input:checked ~ .btn {
+                    z-index: 1;
+                }
+                > .btn-check-input:focus ~ .btn {
+                    z-index: 2;
+                }
+            }
         }
     }
 
-    > .btn-check > .btn-check-input:focus ~ .btn {
-        z-index: 2;
-    }
-}
+    @if $enable-btn-group-horizontal {
+        .btn-group {
+            @extend %btn-group-base;
 
-// Group multiple button groups together for a toolbar
-.btn-toolbar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+            // Prevent double borders when buttons are next to each other
+            %btn-group-btn-not-first-align {
+                margin-left: -$btn-border-width;
+            }
+            > .btn:not(:first-child),
+            > .btn-group:not(:first-child) {
+                @extend %btn-group-btn-not-first-align;
+            }
+            @if $enable-btn-check {
+                > .btn-check:not(:first-child) {
+                    @extend %btn-group-btn-not-first-align;
+                }
+            }
 
-    .input-group {
-        width: auto;
-    }
-}
+            // Reset rounded corners
+            %btn-group-btn-not-last-radius {
+                @include border-end-radius(0);
+            }
+            > .btn:not(:last-child):not(.btn-group-end),
+            > .btn-group:not(:last-child) > .btn {
+                @extend %btn-group-btn-not-last-radius;
+            }
+            @if $enable-btn-check {
+                > .btn-check:not(:last-child) > .btn {
+                    @extend %btn-group-btn-not-last-radius;
+                }
+            }
 
-.btn-group {
-    // Prevent double borders when buttons are next to each other
-    > .btn:not(:first-child),
-    > .btn-group:not(:first-child),
-    > .btn-check:not(:first-child) {
-        margin-left: -$btn-border-width;
-    }
-
-    // Reset rounded corners
-    > .btn:not(:last-child):not(.btn-group-end),
-    > .btn-group:not(:last-child) > .btn,
-    > .btn-check:not(:last-child) > .btn {
-        @include border-end-radius(0);
-    }
-
-    > .btn:not(:first-child),
-    > .btn-group:not(:first-child) > .btn,
-    > .btn-check:not(:first-child) > .btn {
-        @include border-start-radius(0);
-    }
-}
-
-// Sizing
-// Remix the button sizing classes into new ones for easier manipulation
-@if $enable-sizing {
-    @each $size, $dims in $btn-sizes {
-        .btn-group-#{$size} > .btn,
-        .btn-group-#{$size} > .btn-check > .btn {
-            @extend %btn-#{$size};
+            %btn-group-btn-not-first-radius {
+                @include border-start-radius(0);
+            }
+            > .btn:not(:first-child),
+            > .btn-group:not(:first-child) > .btn {
+                @extend %btn-group-btn-not-first-radius;
+            }
+            @if $enable-btn-check {
+                > .btn-check:not(:first-child) > .btn {
+                    @extend %btn-group-btn-not-first-radius;
+                }
+            }
         }
-        @if $enable-btn-icon {
-            .btn-group-#{$size} > .btn-icon {
-                @extend %btn-icon-#{$size};
+    }
+
+    // Sizing
+    // Remix the button sizing classes into new ones for easier manipulation
+    @if $enable-sizing {
+        @each $size, $dims in $btn-sizes {
+            @if $enable-btn-group-sizing {
+                .btn-group-#{$size} > .btn {
+                    @extend %btn-#{$size};
+                }
+                @if $enable-btn-check {
+                    .btn-group-#{$size} > .btn-check > .btn {
+                        @extend %btn-#{$size};
+                    }
+                }
+                @if $enable-btn-icon {
+                    .btn-group-#{$size} > .btn-icon {
+                        @extend %btn-icon-#{$size};
+                    }
+                }
+            }
+        }
+    }
+
+    @if $enable-btn-group-vertical {
+        // Vertical button groups
+        .btn-group-vertical {
+            @extend %btn-group-base;
+
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+
+            %btn-group-vertical-btn-base {
+                width: 100%;
+                max-width: 100%;
+            }
+            > .btn,
+            > .btn-group,
+            > .btn-group > .btn {
+                @extend %btn-group-vertical-btn-base;
+            }
+            @if $enable-btn-check {
+                > .btn-check,
+                > .btn-check > .btn {
+                    @extend %btn-group-vertical-btn-base;
+                }
+            }
+
+            %btn-group-vertical-btn-not-first-align {
+                margin-top: -$btn-border-width;
+            }
+            > .btn:not(:first-child),
+            > .btn-group:not(:first-child) {
+                @extend %btn-group-vertical-btn-not-first-align;
+            }
+            @if $enable-btn-check {
+                > .btn-check:not(:first-child) {
+                    @extend %btn-group-vertical-btn-not-first-align;
+                }
+            }
+
+            // Reset rounded corners
+            %btn-group-vertical-btn-not-last-radius {
+                @include border-bottom-radius(0);
+            }
+            > .btn:not(:last-child):not(.btn-group-end),
+            > .btn-group:not(:last-child) > .btn {
+                @extend %btn-group-vertical-btn-not-last-radius;
+            }
+            @if $enable-btn-check {
+                > .btn-check:not(:last-child) > .btn {
+                    @extend %btn-group-vertical-btn-not-last-radius;
+                }
+            }
+
+            %btn-group-vertical-btn-not-first-radius {
+                @include border-top-radius(0);
+            }
+            > .btn:not(:first-child),
+            > .btn-group:not(:first-child) > .btn {
+                @extend %btn-group-vertical-btn-not-first-radius;
+            }
+            @if $enable-btn-check {
+                > .btn-check:not(:first-child) > .btn {
+                    @extend %btn-group-vertical-btn-not-first-radius;
+                }
+            }
+        }
+    }
+
+    // Group multiple button groups together for a toolbar
+    @if $enable-btn-toolbar {
+        .btn-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+
+            @if $enable-input-group {
+                .input-group {
+                    width: auto;
+                }
             }
         }
     }
 }
 
-// Vertical button groups
-.btn-group-vertical {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-
-    > .btn,
-    > .btn-group,
-    > .btn-group > .btn,
-    > .btn-check,
-    > .btn-check > .btn {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    > .btn:not(:first-child),
-    > .btn-group:not(:first-child),
-    > .btn-check:not(:first-child) {
-        margin-top: -$btn-border-width;
-    }
-
-    // Reset rounded corners
-    > .btn:not(:last-child):not(.btn-group-end),
-    > .btn-group:not(:last-child) > .btn,
-    > .btn-check:not(:last-child) > .btn {
-        @include border-bottom-radius(0);
-    }
-
-    > .btn:not(:first-child),
-    > .btn-group:not(:first-child) > .btn,
-    > .btn-check:not(:first-child) > .btn {
-        @include border-top-radius(0);
-    }
-}

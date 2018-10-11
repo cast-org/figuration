@@ -1,162 +1,186 @@
 // stylelint-disable selector-no-qualifying-type
-
-// Base styles
-.input-group {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap; // For form validation feedback
-    align-items: stretch;
-    width: 100%;
-
-    > .form-control,
-    > .custom-select,
-    > .custom-file {
-        position: relative;  // Needed for z-index on focus/active state
-        flex: 1 1 auto;
-        // Add width 1% and flex-basis auto to ensure that button will not wrap out
-        // the column. Applies to IE Edge+ and Firefox. Chrome does not require this.
-        width: 1%;
-        margin-bottom: 0;
-        margin-left: -$input-border-width;
-
-        &:first-child {
-            margin-left: 0;
-        }
-
-        + .form-control,
-        + .custom-select,
-        + .custom-file {
-            margin-left: -$input-border-width;
-        }
-    }
-
-    // Bring the "active" form control to the top of surrounding elements
-    > .form-control:focus,
-    > .custom-select:focus,
-    > .custom-file .custom-file-input:focus ~ .custom-file-label {
-        z-index: 3;
-    }
-
-    > .form-control,
-    > .custom-select {
-        &:not(:first-child) { @include border-start-radius(0); }
-        &:not(:last-child):not(.input-group-end) { @include border-end-radius(0); }
-    }
-
-    // Custom file inputs have more complex markup,
-    // needing special overrides.
-    > .custom-file {
-        display: flex;
-        align-items: center;
-
-        &:not(:last-child) .custom-file-label,
-        &:not(:last-child) .custom-file-label::after { @include border-end-radius(0); }
-        &:not(:first-child) .custom-file-label { @include border-start-radius(0); }
-    }
-}
-
-// Addon
-// While it requires one extra layer of HTML for each, dedicated addon element allows for:
-// 1) be less clever
-// 2) simplify our selectors
-// 3) support HTML5 form validation
-.input-group-addon {
-    display: flex;
-    margin-left: -$input-border-width;
-
-    &:first-child {
-        margin-left: 0;
-    }
-
-    // Ensure buttons are always above inputs for more visually pleasing borders.
-    // This isn't needed for `.input-group-text` since it shares the same border-color
-    // as our inputs.
-    .btn {
+@if $enable-input-group {
+    // Base styles
+    .input-group {
         position: relative;
-        z-index: 2;
+        display: flex;
+        flex-wrap: wrap; // For form validation feedback
+        align-items: stretch;
+        width: 100%;
 
-        &:hover,
-        &:focus {
+        > .form-control,
+        > .custom-select,
+        > .custom-file {
+            position: relative;  // Needed for z-index on focus/active state
+            flex: 1 1 auto;
+            // Add width 1% and flex-basis auto to ensure that button will not wrap out
+            // the column. Applies to IE Edge+ and Firefox. Chrome does not require this.
+            width: 1%;
+            margin-bottom: 0;
+            margin-left: -$input-border-width;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            + .form-control,
+            + .custom-select,
+            + .custom-file {
+                margin-left: -$input-border-width;
+            }
+        }
+
+        // Bring the "active" form control to the top of surrounding elements
+        > .form-control:focus,
+        > .custom-select:focus,
+        > .custom-file .custom-file-input:focus ~ .custom-file-label {
             z-index: 3;
         }
-    }
 
-    .btn + .btn,
-    .btn + .input-group-text,
-    .input-group-text + .input-group-text,
-    .input-group-text + .btn {
-        margin-left: -$input-border-width;
-    }
-}
-
-// Textual addon item
-// Catch-all element for any text or radio/checkbox input you wish
-// to addon to an input.
-.input-group-text {
-    display: flex;
-    align-items: center;
-    padding: $input-padding-y $input-padding-x;
-    margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
-    @include font-size($font-size-base); // Match inputs
-    font-weight: $font-weight-normal;
-    line-height: $input-line-height;
-    color: $input-group-addon-color;
-    text-align: center;
-    white-space: nowrap;
-    background-color: $input-group-addon-bg;
-    border: $input-border-width solid $input-group-addon-border-color;
-    @include border-radius($input-border-radius);
-
-    // Nuke default margins from checkboxes and radios to vertically center within.
-    input[type="radio"],
-    input[type="checkbox"] {
-        margin-top: 0;
-    }
-}
-
-// Sizing options
-// Remix the default form control sizing classes into new ones for easier manipulation.
-@if $enable-sizing {
-    @each $size, $dims in $input-sizes {
-        $sz-padding-x:     map-get($dims, "padding-x");
-
-        .input-group-#{$size} > .form-control,
-        .input-group-#{$size} > .custom-select,
-        .input-group-#{$size} > .input-group-addon > .input-group-text {
-            @extend %form-control-#{$size};
+        > .form-control,
+        > .custom-select {
+            &:not(:first-child) { @include border-start-radius(0); }
+            &:not(:last-child):not(.input-group-end) { @include border-end-radius(0); }
         }
 
-        .input-group-#{$size} > .input-group-addon > .btn,
-        .input-group-#{$size} > .input-group-addon > .btn-check > .btn {
-            @extend %btn-#{$size};
-        }
+        // Custom file inputs have more complex markup,
+        // needing special overrides.
+        @if $enable-custom-file {
+            > .custom-file {
+                display: flex;
+                align-items: center;
 
-        @if $enable-btn-icon {
-            .input-group-#{$size} > .input-group-addon > .btn-icon {
-                @extend %btn-icon-#{$size};
+                &:not(:last-child) .custom-file-label,
+                &:not(:last-child) .custom-file-label::after { @include border-end-radius(0); }
+                &:not(:first-child) .custom-file-label { @include border-start-radius(0); }
             }
         }
     }
-}
+
+    // Addon
+    // While it requires one extra layer of HTML for each, dedicated addon element allows for:
+    // 1) be less clever
+    // 2) simplify our selectors
+    // 3) support HTML5 form validation
+    @if $enable-input-group-addon {
+        .input-group-addon {
+            display: flex;
+            margin-left: -$input-border-width;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            // Ensure buttons are always above inputs for more visually pleasing borders.
+            // This isn't needed for `.input-group-text` since it shares the same border-color
+            // as our inputs.
+            @if $enable-btn {
+                .btn {
+                    position: relative;
+                    z-index: 2;
+
+                    &:hover,
+                    &:focus {
+                        z-index: 3;
+                    }
+                }
+                @if $enable-btn-check {
+                    .btn-check-input:focus ~ .btn {
+                        z-index: 3;
+                    }
+                }
+
+                .btn + .btn,
+                .btn + .input-group-text,
+                .input-group-text + .btn {
+                    margin-left: -$input-border-width;
+                }
+            }
+        }
+    }
+
+    // Textual addon item
+    // Catch-all element for any text or radio/checkbox input you wish
+    // to addon to an input.
+    @if $enable-input-group-text {
+        .input-group-text {
+            display: flex;
+            align-items: center;
+            padding: $input-padding-y $input-padding-x;
+            margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
+            @include font-size($font-size-base); // Match inputs
+            font-weight: $font-weight-normal;
+            line-height: $input-line-height;
+            color: $input-group-addon-color;
+            text-align: center;
+            white-space: nowrap;
+            background-color: $input-group-addon-bg;
+            border: $input-border-width solid $input-group-addon-border-color;
+            @include border-radius($input-border-radius);
+
+            & + .input-group-text {
+                margin-left: -$input-border-width;
+            }
+
+            // Nuke default margins from checkboxes and radios to vertically center within.
+            input[type="radio"],
+            input[type="checkbox"] {
+                margin-top: 0;
+            }
+        }
+    }
+
+    // Sizing options
+    // Remix the default form control sizing classes into new ones for easier manipulation.
+    @if $enable-sizing  and $enable-input-group-sizing {
+        @each $size, $dims in $input-sizes {
+            $sz-padding-x:     map-get($dims, "padding-x");
+
+            .input-group-#{$size} > .form-control,
+            .input-group-#{$size} > .custom-select,
+            .input-group-#{$size} > .input-group-addon > .input-group-text {
+                @extend %form-control-#{$size};
+            }
+
+            @if $enable-btn {
+                .input-group-#{$size} > .input-group-addon > .btn {
+                    @extend %btn-#{$size};
+                }
+
+                @if $enable-btn-check {
+                    .input-group-#{$size} > .input-group-addon > .btn-check > .btn {
+                        @extend %btn-#{$size};
+                    }
+                }
+                @if $enable-btn-icon {
+                    .input-group-#{$size} > .input-group-addon > .btn-icon {
+                        @extend %btn-icon-#{$size};
+                    }
+                }
+            }
+        }
+    }
 
 
-// Reset rounded corners
-// These rulesets must come after the sizing ones to properly override sizing
-// border-radius values when extending. They're more specific than we'd like
-// with the `.input-group >` part, but without it, we cannot override the sizing.
+    // Reset rounded corners
+    // These rulesets must come after the sizing ones to properly override sizing
+    // border-radius values when extending. They're more specific than we'd like
+    // with the `.input-group >` part, but without it, we cannot override the sizing.
+    @if $enable-input-group-addon {
+        .input-group > .input-group-addon:not(:last-child) > .btn:not(.input-group-end),
+        .input-group > .input-group-addon:not(:last-child) > .input-group-text:not(.input-group-end),
+        .input-group > .input-group-addon:not(:last-child) > .btn-check:not(.input-group-end) > .btn,
+        .input-group > .input-group-addon:last-child > .btn:not(:last-child):not(.input-group-end),
+        .input-group > .input-group-addon:last-child > .input-group-text:not(:last-child) {
+            @include border-end-radius(0);
+        }
 
-.input-group > .input-group-addon:not(:last-child) > .btn:not(.input-group-end),
-.input-group > .input-group-addon:not(:last-child) > .input-group-text:not(.input-group-end),
-.input-group > .input-group-addon:not(:last-child) > .btn-check:not(.input-group-end) > .btn,
-.input-group > .input-group-addon:last-child > .btn:not(:last-child):not(.input-group-end),
-.input-group > .input-group-addon:last-child > .input-group-text:not(:last-child) {
-    @include border-end-radius(0);
-}
-
-.input-group > .input-group-addon:not(:first-child) > .btn,
-.input-group > .input-group-addon:not(:first-child) > .input-group-text,
-.input-group > .input-group-addon:not(:first-child) > .btn-check > .btn,
-.input-group > .input-group-addon:first-child > .btn:not(:first-child),
-.input-group > .input-group-addon:first-child > .input-group-text:not(:first-child) {
-    @include border-start-radius(0);
+        .input-group > .input-group-addon:not(:first-child) > .btn,
+        .input-group > .input-group-addon:not(:first-child) > .input-group-text,
+        .input-group > .input-group-addon:not(:first-child) > .btn-check > .btn,
+        .input-group > .input-group-addon:first-child > .btn:not(:first-child),
+        .input-group > .input-group-addon:first-child > .input-group-text:not(:first-child) {
+            @include border-start-radius(0);
+        }
+    }
 }

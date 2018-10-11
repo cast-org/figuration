@@ -812,3 +812,333 @@ Use our [position utilities]({{ site.baseurl }}/utilities/position/) to place na
   <a href="#" class="navbar-brand">Sticky top</a>
 </nav>
 {% endexample %}
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for navbar components.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-navbar</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the navbar classes.
+                    Smaller segements of the navbar classes can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-navbar-brand</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of navbar brand classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-navbar-nav</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of navbar nav classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-navbar-text</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of navbar text classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-navbar-divider</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of navbar divider classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-navbar-collapse</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of navbar collapse classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-navbar-toggle</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of navbar toggle classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-navbar-light</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of color overrides for use on a navbar with a light background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-navbar-dark</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of color overrides for use on a navbar with a dark background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-padding-y</code></td>
+                <td>string</td>
+                <td><code>($spacer / 2)</code></td>
+                <td>
+                    Vertical padding for navbar.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-padding-x</code></td>
+                <td>string</td>
+                <td><code>$spacer</code></td>
+                <td>
+                    Horizontal padding for navbar.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-item-padding-y</code></td>
+                <td>string</td>
+                <td><code>.3125rem</code></td>
+                <td>
+                    Vertical padding for <code>.nav-link</code> items within navbar.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-item-padding-x</code></td>
+                <td>string</td>
+                <td><code>.5rem</code></td>
+                <td>
+                    Horizontal padding for <code>.nav-link</code> items within navbar.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-brand-padding-y</code></td>
+                <td>string</td>
+                <td><code>.125rem</code></td>
+                <td>
+                    Vertical padding for navbar brand.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-brand-padding-x</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Horizontal padding for navbar brand.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-brand-font-size</code></td>
+                <td>string</td>
+                <td><code>($font-size-base * 1.25)</code></td>
+                <td>
+                    Font size for navbar brand.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-brand-font-weight</code></td>
+                <td>string</td>
+                <td><code>$font-weight-bold</code></td>
+                <td>
+                    Font weight for navbar brand.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-divider-width</code></td>
+                <td>string</td>
+                <td><code>$border-width</code></td>
+                <td>
+                    Border width for navbar divider.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-divider-color</code></td>
+                <td>string</td>
+                <td><code>rgba($black, .65)</code></td>
+                <td>
+                    Border color for navbar divider.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-divider-margin-y</code></td>
+                <td>string</td>
+                <td><code>$navbar-item-padding-y</code></td>
+                <td>
+                    Vertical spacing for navbar divider.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-divider-margin-x</code></td>
+                <td>string</td>
+                <td><code>$navbar-item-padding-x</code></td>
+                <td>
+                    Horizontal spacing for navbar divider.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-toggle-font-size</code></td>
+                <td>string</td>
+                <td><code>($font-size-base * 1.25)</code></td>
+                <td>
+                    Font size for navbar toggle.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-toggle-padding-y</code></td>
+                <td>string</td>
+                <td><code>$btn-padding-y</code></td>
+                <td>
+                    Vertical spacing for navbar toggle.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-toggle-padding-x</code></td>
+                <td>string</td>
+                <td><code>$btn-padding-x</code></td>
+                <td>
+                    Horizontal spacing for navbar toggle.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-toggle-border-radius</code></td>
+                <td>string</td>
+                <td><code>$btn-border-radius</code></td>
+                <td>
+                    Border radius for navbar toggle.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-expand-breakpoints</code></td>
+                <td>list</td>
+                <td><code>map-keys($grid-breakpoints)</code></td>
+                <td>
+                    Breakpoints to generate the rules for expanding navbars.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-light-color</code></td>
+                <td>string</td>
+                <td><code>rgba($black, .6)</code></td>
+                <td>
+                    Text color override for use on a navbar with a light background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-light-hover-color</code></td>
+                <td>string</td>
+                <td><code>rgba($black, .85)</code></td>
+                <td>
+                    Text color override in hover or focus state for use on a navbar with a light background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-light-active-color</code></td>
+                <td>string</td>
+                <td><code>rgba($black, .95)</code></td>
+                <td>
+                    Text color override in active state for use on a navbar with a light background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-light-disabled-color</code></td>
+                <td>string</td>
+                <td><code>rgba($black, .5)</code></td>
+                <td>
+                    Text color override in disabled state for use on a navbar with a light background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-light-divider-color</code></td>
+                <td>string</td>
+                <td><code>rgba($black, .65)</code></td>
+                <td>
+                    Divider border color override for use on a navbar with a light background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-light-toggle-border</code></td>
+                <td>string</td>
+                <td><code>rgba($black, .35)</code></td>
+                <td>
+                    Toggle border color override for use on a navbar with a light background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-dark-color</code></td>
+                <td>string</td>
+                <td><code>rgba($white, .65)</code></td>
+                <td>
+                    Text color override for use on a navbar with a dark background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-dark-hover-color</code></td>
+                <td>string</td>
+                <td><code>rgba($white, .9)</code></td>
+                <td>
+                    Text color override in hover or focus state for use on a navbar with a dark background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-dark-active-color</code></td>
+                <td>string</td>
+                <td><code>rgba($white, .95)</code></td>
+                <td>
+                    Text color override in active state for use on a navbar with a dark background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-dark-disabled-color</code></td>
+                <td>string</td>
+                <td><code>rgba($white, .5)</code></td>
+                <td>
+                    Text color override in disabled state for use on a navbar with a dark background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-dark-divider-color</code></td>
+                <td>string</td>
+                <td><code>rgba($white, .7)</code></td>
+                <td>
+                    Divider border color override for use on a navbar with a dark background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-dark-toggle-border</code></td>
+                <td>string</td>
+                <td><code>rgba($white, .35)</code></td>
+                <td>
+                    Toggle border color override for use on a navbar with a dark background color.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.

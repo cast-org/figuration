@@ -1,378 +1,564 @@
-.card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    margin-bottom: $card-margin-bottom;
-    word-wrap: break-word;
-    background-color: $card-bg;
-    border: $card-border-width solid $card-border-color;
-    @include border-radius($card-border-radius);
+@if $enable-card {
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        margin-bottom: $card-margin-bottom;
+        word-wrap: break-word;
+        background-color: $card-bg;
+        border: $card-border-width solid $card-border-color;
+        @include border-radius($card-border-radius);
 
-    > hr {
-        margin-right: 0;
-        margin-left: 0;
+        > hr {
+            margin-right: 0;
+            margin-left: 0;
+        }
     }
-}
 
-.card-body {
-    // Enable `flex-grow: 1` for decks and groups so that card blocks take up
-    // as much space as possible, ensuring footers are aligned to the bottom.
-    flex: 1 1 auto;
-    // Set a min-height to keep IE in check with image stretching
-    min-height: 1px;
-    padding: $card-padding-y $card-padding-x;
-}
+    @if $enable-card-body {
+        .card-body {
+            // Enable `flex-grow: 1` for decks and groups so that card blocks take up
+            // as much space as possible, ensuring footers are aligned to the bottom.
+            flex: 1 1 auto;
+            // Set a min-height to keep IE in check with image stretching
+            min-height: 1px;
+            padding: $card-padding-y $card-padding-x;
+        }
+    }
 
-.card-title {
-    margin-bottom: $card-title-margin-bottom;
-}
+    @if $enable-card-title {
+        .card-title {
+            margin-bottom: $card-title-margin-bottom;
+        }
+    }
 
-.card-subtitle {
-    margin-top: $card-subtitle-margin-top;
-    margin-bottom: 0;
-}
+    @if $enable-card-subtitle {
+        .card-subtitle {
+            margin-top: $card-subtitle-margin-top;
+            margin-bottom: 0;
+        }
+    }
 
-.card-text:last-child {
-    margin-bottom: 0;
-}
+    @if $enable-card-text {
+        .card-text:last-child {
+            margin-bottom: 0;
+        }
+    }
 
-.card-link + .card-link {
-    margin-left: $card-link-margin-left;
-}
+    @if $enable-card-link {
+        .card-link + .card-link {
+            margin-left: $card-link-margin-left;
+        }
+    }
 
-.card-list {
-    &:first-child {
-        @include border-top-radius($card-inner-border-radius);
-
-        > .list-item:first-child {
-            @if $enable-rounded {
+    @if $enable-card-list {
+        .card-list {
+            &:first-child {
                 @include border-top-radius($card-inner-border-radius);
+
+                > .list-item:first-child {
+                    @if $enable-rounded {
+                        @include border-top-radius($card-inner-border-radius);
+                    }
+                }
             }
-        }
-    }
 
-    &:last-child {
-        margin-bottom: 0;
-        @include border-bottom-radius($card-inner-border-radius);
-
-        > .list-item:last-child {
-            @if $enable-rounded {
+            &:last-child {
+                margin-bottom: 0;
                 @include border-bottom-radius($card-inner-border-radius);
+
+                > .list-item:last-child {
+                    @if $enable-rounded {
+                        @include border-bottom-radius($card-inner-border-radius);
+                    }
+                }
             }
         }
     }
-}
 
-.card-table {
-    &:last-child {
-        margin-bottom: 0;
-    }
-}
-
-// Optional caps
-.card-header {
-    padding: $card-cap-padding-y $card-cap-padding-x;
-    margin-bottom: 0; // Removes the default margin-bottom of <hN>
-    background-color: $card-cap-bg;
-    border-bottom: $card-cap-border-width solid $card-cap-border-color;
-
-    &:first-child {
-        @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
-    }
-}
-
-.card-footer {
-    padding: $card-cap-padding-y $card-cap-padding-x;
-    background-color: $card-cap-bg;
-    border-top: $card-cap-border-width solid $card-cap-border-color;
-
-    &:last-child {
-        @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
-    }
-}
-
-// Header navs
-.card-header-tabs {
-    margin-right: -($card-cap-padding-x / 2);
-    margin-bottom: -$card-cap-padding-y;
-    margin-left: -($card-cap-padding-x / 2);
-    border-bottom: 0;
-}
-.card-header-pills {
-    margin-right: -($card-cap-padding-x / 2);
-    margin-left: -($card-cap-padding-x / 2);
-}
-
-// Card image overlay
-.card-img-overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: $card-img-overlay-padding;
-}
-
-// Card images
-.card-img {
-    min-height: 1px;  // Stop stretch/white-space due to flexbox
-}
-.card-img-top {
-    @include border-top-radius($card-inner-border-radius);
-}
-.card-img-bottom {
-    @include border-bottom-radius($card-inner-border-radius);
-}
-
-// Horizontal Cards
-@each $breakpoint in $card-horizontal-breakpoints {
-    $bprule: breakpoint-designator($breakpoint);
-
-    @include media-breakpoint-up($breakpoint) {
-        .card-horizontal#{$bprule},
-        .card-horizontal#{$bprule}-reverse {
-            flex-flow: row wrap;
-
-            > .card-col {
-                display: flex;
-                flex-direction: column;
+    @if $enable-card-table {
+        .card-table {
+            &:last-child {
+                margin-bottom: 0;
             }
         }
+    }
 
-        .card-horizontal#{$bprule}-reverse {
-            flex-direction: row-reverse;
+    // Optional caps
+    @if $enable-card-header {
+        .card-header {
+            padding: $card-cap-padding-y $card-cap-padding-x;
+            margin-bottom: 0; // Removes the default margin-bottom of <hN>
+            background-color: $card-cap-bg;
+            border-bottom: $card-cap-border-width solid $card-cap-border-color;
+
+            &:first-child {
+                @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
+            }
         }
     }
-}
 
+    @if $enable-card-footer {
+        .card-footer {
+            padding: $card-cap-padding-y $card-cap-padding-x;
+            background-color: $card-cap-bg;
+            border-top: $card-cap-border-width solid $card-cap-border-color;
 
-.card-col {
-    min-height: 1px; // Stop stretch/white-space due to flexbox w/ images in IE
-    padding-right: 0;
-    padding-left: 0;
-}
+            &:last-child {
+                @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
+            }
+        }
+    }
 
-@if $enable-rounded {
-    @each $breakpoint in $card-horizontal-breakpoints {
-        $bprule: breakpoint-designator($breakpoint);
-        $prev: breakpoint-prev($breakpoint, $grid-breakpoints);
+    // Header navs
+    @if $enable-card-header-tabs {
+        .card-header-tabs {
+            margin-right: -($card-cap-padding-x / 2);
+            margin-bottom: -$card-cap-padding-y;
+            margin-left: -($card-cap-padding-x / 2);
+            border-bottom: 0;
+        }
+    }
+    @if $enable-card-header-pills {
+        .card-header-pills {
+            margin-right: -($card-cap-padding-x / 2);
+            margin-left: -($card-cap-padding-x / 2);
+        }
+    }
 
-        // Skip smallest breakpoint
-        @if breakpoint-min($breakpoint, $grid-breakpoints) != null {
-            @include media-breakpoint-down($prev) {
+    // Card image overlay
+    @if $enable-card-img-overlay {
+        .card-img-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: $card-img-overlay-padding;
+        }
+    }
+
+    // Card images
+    @if $enable-card-img {
+        .card-img {
+            min-height: 1px;  // Stop stretch/white-space due to flexbox
+        }
+        .card-img-top {
+            @include border-top-radius($card-inner-border-radius);
+        }
+        .card-img-bottom {
+            @include border-bottom-radius($card-inner-border-radius);
+        }
+    }
+
+    // Horizontal Cards
+    @if $enable-card-horizontal {
+        @each $breakpoint in $card-horizontal-breakpoints {
+            $bprule: breakpoint-designator($breakpoint);
+
+            @include media-breakpoint-up($breakpoint) {
                 .card-horizontal#{$bprule},
                 .card-horizontal#{$bprule}-reverse {
-                    > .card-col:not(:first-child) {
-                        > .card-header,
-                        > .card-img > .card-img-top {
-                            @include border-top-radius(0);
-                        }
+                    flex-flow: row wrap;
+
+                    > .card-col {
+                        display: flex;
+                        flex-direction: column;
                     }
-                    > .card-col:not(:last-child) {
-                        > .card-footer,
-                        > .card-img > .card-img-bottom {
-                            @include border-bottom-radius(0);
-                        }
-                    }
+                }
+
+                .card-horizontal#{$bprule}-reverse {
+                    flex-direction: row-reverse;
                 }
             }
         }
 
-        @include media-breakpoint-up($breakpoint) {
-            .card-horizontal#{$bprule} {
-                > .card-col:not(:first-child) {
-                    > .card-header,
-                    > .card-img > .card-img-top {
-                        @include border-top-start-radius(0);
-                    }
-                    > .card-footer,
-                    > .card-img > .card-img-bottom {
-                        @include border-bottom-start-radius(0);
-                    }
-                }
-                > .card-col:not(:last-child) {
-                    > .card-header,
-                    > .card-img > .card-img-top {
-                        @include border-top-end-radius(0);
-                    }
-                    > .card-footer,
-                    > .card-img > .card-img-bottom {
-                        @include border-bottom-end-radius(0);
-                    }
-                }
-            }
+        .card-col {
+            min-height: 1px; // Stop stretch/white-space due to flexbox w/ images in IE
+            padding-right: 0;
+            padding-left: 0;
+        }
 
-            .card-horizontal#{$bprule}-reverse {
-                > .card-col:not(:first-child) {
-                    > .card-header,
-                    > .card-img > .card-img-top {
-                        @include border-top-end-radius(0);
-                    }
-                    > .card-footer,
-                    > .card-img > .card-img-bottom {
-                        @include border-bottom-end-radius(0);
+        @if $enable-rounded {
+            @each $breakpoint in $card-horizontal-breakpoints {
+                $bprule: breakpoint-designator($breakpoint);
+                $prev: breakpoint-prev($breakpoint, $grid-breakpoints);
+
+                // Skip smallest breakpoint
+                @if breakpoint-min($breakpoint, $grid-breakpoints) != null {
+                    @include media-breakpoint-down($prev) {
+                        .card-horizontal#{$bprule},
+                        .card-horizontal#{$bprule}-reverse {
+                            > .card-col:not(:first-child) {
+                                %card-hz-col-not-first-down#{$bprule} {
+                                    @include border-top-radius(0);
+                                }
+                                @if $enable-card-header {
+                                    > .card-header {
+                                        @extend %card-hz-col-not-first-down#{$bprule};
+                                    }
+                                }
+                                @if $enable-card-img {
+                                    > .card-img > .card-img-top {
+                                        @extend %card-hz-col-not-first-down#{$bprule};
+                                    }
+                                }
+                            }
+                            > .card-col:not(:last-child) {
+                                %card-hz-col-not-last-down#{$bprule} {
+                                    @include border-bottom-radius(0);
+                                }
+                                @if $enable-card-footer {
+                                    > .card-footer {
+                                        @extend %card-hz-col-not-last-down#{$bprule};
+                                    }
+                                }
+                                @if $enable-card-img {
+                                    > .card-img > .card-img-bottom {
+                                        @extend %card-hz-col-not-last-down#{$bprule};
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
-                > .card-col:not(:last-child) {
-                    > .card-header,
-                    > .card-img > .card-img-top {
-                        @include border-top-start-radius(0);
+
+                @include media-breakpoint-up($breakpoint) {
+                    .card-horizontal#{$bprule} {
+                        > .card-col:not(:first-child) {
+                            %card-hz-col-not-first-top-start-up#{$bprule} {
+                                @include border-top-start-radius(0);
+                            }
+                            @if $enable-card-header {
+                                > .card-header {
+                                    @extend %card-hz-col-not-first-top-start-up#{$bprule};
+                                }
+                            }
+                            @if $enable-card-img {
+                                > .card-img > .card-img-top {
+                                    @extend %card-hz-col-not-first-top-start-up#{$bprule};
+                                }
+                            }
+
+                            %card-hz-col-not-first-bottom-start-up#{$bprule} {
+                                @include border-bottom-start-radius(0);
+                            }
+                            @if $enable-card-footer {
+                                > .card-footer {
+                                    @extend %card-hz-col-not-first-bottom-start-up#{$bprule};
+                                }
+                            }
+                            @if $enable-card-img {
+                                > .card-img > .card-img-bottom {
+                                    @extend %card-hz-col-not-first-bottom-start-up#{$bprule};
+                                }
+                            }
+                        }
+                        > .card-col:not(:last-child) {
+                            %card-hz-col-not-last-top-end-up#{$bprule} {
+                                @include border-top-end-radius(0);
+                            }
+                            @if $enable-card-header {
+                                > .card-header {
+                                    @extend %card-hz-col-not-last-top-end-up#{$bprule};
+                                }
+                            }
+                            @if $enable-card-img {
+                                > .card-img > .card-img-top {
+                                    @extend %card-hz-col-not-last-top-end-up#{$bprule};
+                                }
+                            }
+
+                            %card-hz-col-not-last-bottom-end-up#{$bprule} {
+                                @include border-bottom-end-radius(0);
+                            }
+                            @if $enable-card-footer {
+                                > .card-footer {
+                                    @extend %card-hz-col-not-last-bottom-end-up#{$bprule};
+                                }
+                            }
+                            @if $enable-card-img {
+                                > .card-img > .card-img-bottom {
+                                    @extend %card-hz-col-not-last-bottom-end-up#{$bprule};
+                                }
+                            }
+                        }
                     }
-                    > .card-footer,
-                    > .card-img > .card-img-bottom {
-                        @include border-bottom-start-radius(0);
+
+                    .card-horizontal#{$bprule}-reverse {
+                        > .card-col:not(:first-child) {
+                            %card-hzrev-col-not-first-top-end-up#{$bprule} {
+                                @include border-top-end-radius(0);
+                            }
+                            @if $enable-card-header {
+                                > .card-header{
+                                    @extend %card-hzrev-col-not-first-top-end-up#{$bprule};
+                                }
+                            }
+                            @if $enable-card-img {
+                                > .card-img > .card-img-top {
+                                    @extend %card-hzrev-col-not-first-top-end-up#{$bprule};
+                                }
+                            }
+
+                            %card-hzrev-col-not-first-bottom-end-up#{$bprule} {
+                                @include border-bottom-end-radius(0);
+                            }
+                            @if $enable-card-footer {
+                                > .card-footer {
+                                    @extend %card-hzrev-col-not-first-bottom-end-up#{$bprule};
+                                }
+                            }
+                            @if $enable-card-img {
+                                > .card-img > .card-img-bottom {
+                                    @extend %card-hzrev-col-not-first-bottom-end-up#{$bprule};
+                                }
+                            }
+                        }
+                        > .card-col:not(:last-child) {
+                            %card-hzrev-col-not-last-top-start-up#{$bprule} {
+                                @include border-top-start-radius(0);
+                            }
+                            @if $enable-card-header {
+                                > .card-header {
+                                    @extend %card-hzrev-col-not-last-top-start-up#{$bprule};
+                                }
+                            }
+                            @if $enable-card-img {
+                                > .card-img > .card-img-top {
+                                    @extend %card-hzrev-col-not-last-top-start-up#{$bprule};
+                                }
+                            }
+
+                            %card-hzrev-col-not-last-bottom-start-up#{$bprule} {
+                                @include border-bottom-start-radius(0);
+                            }
+                            @if $enable-card-footer {
+                                > .card-footer {
+                                    @extend %card-hzrev-col-not-last-bottom-start-up#{$bprule};
+                                }
+                            }
+                            @if $enable-card-img {
+                                > .card-img > .card-img-bottom {
+                                    @extend %card-hzrev-col-not-last-bottom-start-up#{$bprule};
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
     }
-}
 
-// Card deck
-// 1. Individual cards have margin-bottom by default.
-//    Replace with single margin on the deck.
-%card-deck-base {
-    display: flex;
-    flex-direction: column;
-}
-
-@each $breakpoint in $card-deck-breakpoints {
-    $bprule: breakpoint-designator($breakpoint);
-
-    .card-deck#{$bprule} {
-        @extend %card-deck-base;
-
-        @include media-breakpoint-up(#{$breakpoint}) {
-            flex-flow: row wrap;
-            margin-bottom: $card-margin-bottom; // 1
-
-            > .card {
-                // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
-                flex: 1 0 0%;
-                margin-bottom: 0; // 1
-            }
+    // Card deck
+    // 1. Individual cards have margin-bottom by default.
+    //    Replace with single margin on the deck.
+    @if $enable-card-deck {
+        %card-deck-base {
+            display: flex;
+            flex-direction: column;
         }
-    }
-}
 
-// Card deck gutters
-@each $breakpoint, $gutter in $card-deck-gutter-widths {
-    @include check-gutter-change($breakpoint, $card-deck-gutter-widths) {
-        @include media-breakpoint-up($breakpoint) {
-            %card-deck-gutter {
-                margin-right: -($gutter / 2);
-                margin-left: -($gutter / 2);
+        @each $breakpoint in $card-deck-breakpoints {
+            $bprule: breakpoint-designator($breakpoint);
 
-                > .card {
-                    margin-right: ($gutter / 2);
-                    margin-left: ($gutter / 2);
+            @if $bprule == "" or ($enable-card-deck-responsive and $bprule != "") {
+                .card-deck#{$bprule} {
+                    @extend %card-deck-base;
+
+                    @include media-breakpoint-up(#{$breakpoint}) {
+                        flex-flow: row wrap;
+                        margin-bottom: $card-margin-bottom; // 1
+
+                        > .card {
+                            // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
+                            flex: 1 0 0%;
+                            margin-bottom: 0; // 1
+                        }
+                    }
                 }
             }
         }
 
-        @each $bp-inner in map-keys($grid-breakpoints) {
-            $bprule-inner: breakpoint-designator($bp-inner);
-            .card-deck#{$bprule-inner} {
-                @extend %card-deck-gutter;
-            }
-        }
-    }
-}
+        // Card deck gutters
+        @each $breakpoint, $gutter in $card-deck-gutter-widths {
+            @include check-gutter-change($breakpoint, $card-deck-gutter-widths) {
+                @include media-breakpoint-up($breakpoint) {
+                    %card-deck-gutter {
+                        margin-right: -($gutter / 2);
+                        margin-left: -($gutter / 2);
 
-
-// Card group
-// 1. Individual cards have margin-bottom by default,
-//    Replace with single margin on the group.
-%card-group-base {
-    display: flex;
-    flex-direction: column;
-}
-
-@each $breakpoint in $card-group-breakpoints {
-    $bprule: breakpoint-designator($breakpoint);
-
-    .card-group#{$bprule} {
-        @extend %card-group-base;
-
-        @include media-breakpoint-up(#{$breakpoint}) {
-            flex-flow: row wrap;
-            margin-bottom: $card-margin-bottom; // 1
-
-            > .card {
-                // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
-                flex: 1 0 0%;
-                margin-bottom: 0; // 1
-
-                + .card {
-                    margin-left: 0;
-                    border-left: 0;
+                        > .card {
+                            margin-right: ($gutter / 2);
+                            margin-left: ($gutter / 2);
+                        }
+                    }
                 }
 
-                // Handle rounded corners
-                @if $enable-rounded {
-                    &:first-child:not(:only-child) {
-                        @include border-end-radius(0);
-
-                        .card-img-top,
-                        .card-header {
-                            @include border-top-end-radius(0);
-                        }
-                        .card-img-bottom,
-                        .card-footer {
-                            @include border-bottom-end-radius(0);
-                        }
-                    }
-                    &:last-child:not(:only-child) {
-                        @include border-start-radius(0);
-
-                        .card-img-top,
-                        .card-header {
-                            @include border-top-start-radius(0);
-                        }
-                        .card-img-bottom,
-                        .card-footer {
-                            @include border-bottom-start-radius(0);
-                        }
-                    }
-                    &:not(:first-child):not(:last-child):not(:only-child) {
-                        @include border-radius(0);
-
-                        .card-img-top,
-                        .card-img-bottom,
-                        .card-header,
-                        .card-footer {
-                            @include border-radius(0);
+                @each $bp-inner in map-keys($grid-breakpoints) {
+                    $bprule-inner: breakpoint-designator($bp-inner);
+                    @if $bprule-inner == "" or ($enable-card-deck-responsive and $bprule-inner != "") {
+                        .card-deck#{$bprule-inner} {
+                            @extend %card-deck-gutter;
                         }
                     }
                 }
             }
         }
     }
-}
 
 
-// Card columns
-@each $breakpoint in $card-columns-breakpoints {
-    $bprule: breakpoint-designator($breakpoint);
+    // Card group
+    // 1. Individual cards have margin-bottom by default,
+    //    Replace with single margin on the group.
+    @if $enable-card-group {
+        %card-group-base {
+            display: flex;
+            flex-direction: column;
+        }
 
-    @include media-breakpoint-up(#{$breakpoint}) {
-        .card-columns#{$bprule} {
-            margin-bottom: $card-margin-bottom;
-            column-count: $card-columns-count;
-            column-gap: $card-columns-column-gap;
-            orphans: 1;
-            widows: 1;
+        @each $breakpoint in $card-group-breakpoints {
+            $bprule: breakpoint-designator($breakpoint);
 
+            @if $bprule == "" or ($enable-card-group-responsive and $bprule != "") {
+                .card-group#{$bprule} {
+                    @extend %card-group-base;
 
-            > .card {
-                margin-top: $card-margin-bottom;
-                margin-bottom: 0;
-                break-inside: avoid;
-                backface-visibility: hidden;
+                    @include media-breakpoint-up(#{$breakpoint}) {
+                        flex-flow: row wrap;
+                        margin-bottom: $card-margin-bottom; // 1
 
-                &:first-child {
-                    margin-top: 0;
+                        > .card {
+                            // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
+                            flex: 1 0 0%;
+                            margin-bottom: 0; // 1
+
+                            + .card {
+                                margin-left: 0;
+                                border-left: 0;
+                            }
+
+                            // Handle rounded corners
+                            @if $enable-rounded {
+                                &:first-child:not(:only-child) {
+                                    @include border-end-radius(0);
+
+                                    %card-group-first-top-end#{$bprule} {
+                                        @include border-top-end-radius(0);
+                                    }
+                                    @if $enable-card-header {
+                                        .card-header {
+                                            @extend %card-group-first-top-end#{$bprule};
+                                        }
+                                    }
+                                    @if $enable-card-img {
+                                        .card-img-top {
+                                            @extend %card-group-first-top-end#{$bprule};
+                                        }
+                                    }
+
+                                    %card-group-first-bottom-end#{$bprule} {
+                                        @include border-bottom-end-radius(0);
+                                    }
+                                    @if $enable-card-footer {
+                                        .card-footer {
+                                            @extend %card-group-first-bottom-end#{$bprule};
+                                        }
+                                    }
+                                    @if $enable-card-img {
+                                        .card-img-bottom {
+                                            @extend %card-group-first-bottom-end#{$bprule};
+                                        }
+                                    }
+                                }
+                                &:last-child:not(:only-child) {
+                                    @include border-start-radius(0);
+
+                                    %card-group-last-top-start#{$bprule} {
+                                        @include border-top-start-radius(0);
+                                    }
+                                    @if $enable-card-header {
+                                        .card-header {
+                                            @extend %card-group-last-top-start#{$bprule};
+                                        }
+                                    }
+                                    @if $enable-card-img {
+                                        .card-img-top {
+                                            @extend %card-group-last-top-start#{$bprule};
+                                        }
+                                    }
+
+                                    %card-group-last-bottom-start#{$bprule} {
+                                        @include border-bottom-start-radius(0);
+                                    }
+                                    @if $enable-card-footer {
+                                        .card-footer {
+                                            @extend %card-group-last-bottom-start#{$bprule};
+                                        }
+                                    }
+                                    @if $enable-card-img {
+                                        .card-img-bottom {
+                                            @extend %card-group-last-bottom-start#{$bprule};
+                                        }
+                                    }
+                                }
+                                &:not(:first-child):not(:last-child):not(:only-child) {
+                                    @include border-radius(0);
+
+                                    %card-group-middle#{$bprule} {
+                                        @include border-radius(0);
+                                    }
+                                    @if $enable-card-header {
+                                        .card-header {
+                                            @extend %card-group-middle#{$bprule};
+                                        }
+                                    }
+                                    @if $enable-card-footer {
+                                        .card-footer {
+                                            @extend %card-group-middle#{$bprule};
+                                        }
+                                    }
+                                    @if $enable-card-img {
+                                        .card-img-top,
+                                        .card-img-bottom {
+                                            @extend %card-group-middle#{$bprule};
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Card columns
+    @if $enable-card-columns {
+        @each $breakpoint in $card-columns-breakpoints {
+            $bprule: breakpoint-designator($breakpoint);
+
+            @if $bprule == "" or ($enable-card-columns-responsive and $bprule != "") {
+                @include media-breakpoint-up(#{$breakpoint}) {
+                    .card-columns#{$bprule} {
+                        margin-bottom: $card-margin-bottom;
+                        column-count: $card-columns-count;
+                        column-gap: $card-columns-column-gap;
+                        orphans: 1;
+                        widows: 1;
+
+                        > .card {
+                            margin-top: $card-margin-bottom;
+                            margin-bottom: 0;
+                            break-inside: avoid;
+                            backface-visibility: hidden;
+
+                            &:first-child {
+                                margin-top: 0;
+                            }
+                        }
+                    }
                 }
             }
         }

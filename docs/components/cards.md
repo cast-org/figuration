@@ -990,8 +990,6 @@ Cards can be organized into [Masonry](https://masonry.desandro.com/)-like column
 
 Responsive variants are available with the class syntax of `.card-columns{-breakpoint}`, such as `.card-columns-sm` to enable the columns layout for `sm` screens and above.
 
-**Heads up!** Your mileage with card columns may vary. To prevent cards breaking across columns, we set them to `display: inline-table`, as `column-break-inside: avoid` isn't a fully supported option yet.
-
 {% example html %}
 <div class="card-columns-sm">
   <div class="card">
@@ -1100,3 +1098,389 @@ If you are using responsive variants of the card columns, you may need to includ
   }
 }
 {% endhighlight %}
+
+# SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the card component.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-card</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the card component classes.
+                    Smaller segements of the card component classes can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-body</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the card body class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-title</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the card title class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-subtitle</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the card subtitle class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-text</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the card text rules.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-link</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the card link rules.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-list</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the card list rules.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-table</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the card table rules.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-header</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the card header rules.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-footer</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the card footer rules.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-header-tabs</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the card header tabs class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-header pills</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the card header pills class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-img</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the card image rules.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-img-overlay</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the card image overlay class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-horizontal</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the horizontal card rules.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-deck</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the card deck rules.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-deck-responsive</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the responsive card deck rules.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-group</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the card group rules.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-group-responsive</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the responsive card group rules.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-columns</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the card columns rules.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-card-columns-responsive</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the responsive card columns rules.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-padding-y</code></td>
+                <td>string</td>
+                <td><code>.75rem</code></td>
+                <td>
+                    Card body vertical padding.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-padding-x</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Card body horizontal padding.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-margin-bottom</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Card vertical spacing.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-bg</code></td>
+                <td>string</td>
+                <td><code>$component-bg</code></td>
+                <td>
+                    Card background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-border-color</code></td>
+                <td>string</td>
+                <td><code>$component-overlay-border-color</code></td>
+                <td>
+                    Card border color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-border-width</code></td>
+                <td>string</td>
+                <td><code>$border-width</code></td>
+                <td>
+                    Card border width.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-border-radius</code></td>
+                <td>string</td>
+                <td><code>$border-radius</code></td>
+                <td>
+                    Card border radius.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-border-radius</code></td>
+                <td>string</td>
+                <td><code>calc(#{$card-border-radius} - #{$card-border-width})</code></td>
+                <td>
+                    Card border radius for internal pieces.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-link-margin-left</code></td>
+                <td>string</td>
+                <td><code>1.25rem</code></td>
+                <td>
+                    Horizontal spacing between card link items.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-title-margin-bottom</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Horizontal spacing for a card title.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-subtitle-margin-top</code></td>
+                <td>string</td>
+                <td><code>-.5rem</code></td>
+                <td>
+                    Horizontal spacing for a card subtitle.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-card-padding-y</code></td>
+                <td>string</td>
+                <td><code>.75rem</code></td>
+                <td>
+                    Vertical padding for card header and footer.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-card-padding-x</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Horizontal padding for card header and footer.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-cap-bg</code></td>
+                <td>string</td>
+                <td><code>$component-section-bg</code></td>
+                <td>
+                    Background color for card header and footer.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-cap-border-color</code></td>
+                <td>string</td>
+                <td><code>$component-section-border-color</code></td>
+                <td>
+                    Border color for card header and footer.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-cap-border-width</code></td>
+                <td>string</td>
+                <td><code>$card-border-width</code></td>
+                <td>
+                    Border width for card header and footer.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-img-overlay-padding</code></td>
+                <td>string</td>
+                <td><code>$card-padding-y $card-padding-x</code></td>
+                <td>
+                    Vertical and horizontal padding for image overlay content.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-deck-gutter-widths</code></td>
+                <td>string</td>
+                <td><code>$grid-gutter-widths</code></td>
+                <td>
+                    Horizontal spacing between cards in a card deck.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-columns-count</code></td>
+                <td>integer</td>
+                <td><code>3</code></td>
+                <td>
+                    Number of columns for card columns.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-columns-column-gap</code></td>
+                <td>string</td>
+                <td><code>1.25rem</code></td>
+                <td>
+                    Horizontal spacing between cards for card columns.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-horizontal-breakpoints</code></td>
+                <td>list</td>
+                <td><code>map-keys($grid-breakpoints)</code></td>
+                <td>
+                    Breakpoint list for responsive horizontal cards.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-deck-breakpoints</code></td>
+                <td>list</td>
+                <td><code>map-keys($grid-breakpoints)</code></td>
+                <td>
+                    Breakpoint list for responsive card decks.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-group-breakpoints</code></td>
+                <td>list</td>
+                <td><code>map-keys($grid-breakpoints)</code></td>
+                <td>
+                    Breakpoint list for responsive card groups.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-columns-breakpoints</code></td>
+                <td>list</td>
+                <td><code>map-keys($grid-breakpoints)</code></td>
+                <td>
+                    Breakpoint list for responsive card columns.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.

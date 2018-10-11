@@ -318,7 +318,7 @@ You can also use `.btn-check`s inside a `.btn-group` for grouping controls toget
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for tables.
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the button component.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">
@@ -336,16 +336,8 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
-                    Enable the generation of the button classes.
-                    Smaller segements of the button classes can be disabled with the following <code>$enable-*</code> variables.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-btn-common</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the common button, <code>.btn</code> rules.
+                    Enable the generation of the button component classes.
+                    Smaller segements of the button component classes can be disabled with the following <code>$enable-*</code> variables.
                 </td>
             </tr>
             <tr>

@@ -963,7 +963,7 @@ $jumbotron-padding-x:       1.5rem !default;
 $jumbotron-padding-xs-y:    1.5rem !default;
 $jumbotron-padding-xs-x:    .75rem !default;
 $jumbotron-bg:              $uibase-50 !default;
-$jumbotron-border-radius:   .3rem !default;
+$jumbotron-border-radius:   .3125rem !default;
 $jumbotron-breakpoint:      sm !default;
 
 
@@ -1035,13 +1035,7 @@ $card-cap-border-width:     $card-border-width !default;
 
 $card-img-overlay-padding:  $card-padding-y $card-padding-x !default;
 
-$card-deck-gutter-widths: (
-    xs: map-get($grid-gutter-widths, xs),
-    sm: map-get($grid-gutter-widths, sm),
-    md: map-get($grid-gutter-widths, md),
-    lg: map-get($grid-gutter-widths, lg),
-    xl: map-get($grid-gutter-widths, xl)
-) !default;
+$card-deck-gutter-widths:   $grid-gutter-widths !default;
 
 $card-columns-count:            3 !default;
 $card-columns-column-gap:       1.25rem !default;
