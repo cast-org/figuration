@@ -48,7 +48,7 @@
             text-decoration: none;
             white-space: nowrap;
 
-            @include hover-focus {
+            @include hover-focus() {
                 text-decoration: none;
             }
 
@@ -126,7 +126,7 @@
             border: $border-width solid transparent; // Remove default button style
             @include border-radius($navbar-toggle-border-radius);
 
-            @include hover-focus {
+            @include hover-focus() {
                 text-decoration: none;
             }
 
@@ -228,7 +228,7 @@
             .navbar-brand {
                 color: $navbar-light-active-color;
 
-                @include hover-focus {
+                @include hover-focus() {
                     color: $navbar-light-active-color;
                 }
             }
@@ -238,7 +238,7 @@
                     .nav-link {
                         color: $navbar-light-color;
 
-                        @include hover-focus {
+                        @include hover-focus() {
                             color: $navbar-light-hover-color;
                         }
 
@@ -263,7 +263,7 @@
                     color: $navbar-light-color;
                     border-color: $navbar-light-toggle-border;
 
-                    @include hover-focus {
+                    @include hover-focus() {
                         color: $navbar-light-active-color;
                     }
                 }
@@ -277,7 +277,7 @@
                         color: $navbar-light-hover-color;
                         text-decoration: none;
 
-                        @include hover-focus {
+                        @include hover-focus() {
                             color: $navbar-light-active-color;
                             text-decoration: none;
                         }
@@ -299,7 +299,7 @@
             .navbar-brand {
                 color: $navbar-dark-active-color;
 
-                @include hover-focus {
+                @include hover-focus() {
                     color: $navbar-dark-hover-color;
                 }
             }
@@ -309,7 +309,7 @@
                     .nav-link {
                         color: $navbar-dark-color;
 
-                        @include hover-focus {
+                        @include hover-focus() {
                             color: $navbar-dark-hover-color;
                         }
 
@@ -334,7 +334,7 @@
                     color: $navbar-dark-color;
                     border-color: $navbar-dark-toggle-border;
 
-                    @include hover-focus {
+                    @include hover-focus() {
                         color: $navbar-dark-active-color;
                     }
                 }
@@ -348,7 +348,7 @@
                         color: $navbar-dark-hover-color;
                         text-decoration: none;
 
-                        @include hover-focus {
+                        @include hover-focus() {
                             color: $navbar-dark-active-color;
                             text-decoration: none;
                         }

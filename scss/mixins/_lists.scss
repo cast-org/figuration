@@ -10,7 +10,7 @@
 @mixin list-item-variant($state, $bg, $color, $border, $hover-bg, $hover-color, $hover-border) {
     @if $enable-list-item-action {
         .list-item-action.list-item-#{$state} {
-            @include hover-focus {
+            @include hover-focus() {
                 color: $hover-color;
                 background-color: $hover-bg;
                 border-color: $hover-border;

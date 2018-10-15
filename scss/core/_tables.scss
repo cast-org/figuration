@@ -161,7 +161,7 @@
     @if $enable-table-hover {
         .table-hover {
             tbody tr {
-                @include hover {
+                @include hover() {
                     > th,
                     > td {
                         box-shadow: $table-hover-box-shadow;
@@ -171,7 +171,7 @@
         }
         .table-hover-alt {
             tbody tr {
-                @include hover {
+                @include hover() {
                     > th,
                     > td {
                         box-shadow: $table-hover-alt-box-shadow;

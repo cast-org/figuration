@@ -6,7 +6,7 @@
         color: $color !important;
     }
     a#{$parent} {
-        @include hover-focus {
+        @include hover-focus() {
             color: palette($color, 500 + $level-delta) !important;
         }
     }
@@ -18,7 +18,7 @@
         color: palette($color, $level) !important;
     }
     a#{$parent} {
-        @include hover-focus {
+        @include hover-focus() {
             color: palette($color, $level + $level-delta) !important;
         }
     }

@@ -6,7 +6,7 @@
         background-color: $bg !important;
     }
     a#{$parent} {
-        @include hover-focus {
+        @include hover-focus() {
             background-color: palette($bg, 500 + $level-delta) !important;
         }
     }
@@ -18,7 +18,7 @@
         background-color: palette($color, $level) !important;
     }
     a#{$parent} {
-        @include hover-focus {
+        @include hover-focus() {
             background-color: palette($color, $level + $level-delta) !important;
         }
     }

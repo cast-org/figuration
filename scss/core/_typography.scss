@@ -64,7 +64,7 @@
     // Lists
     @if $enable-typography-list-unstyled {
         .list-unstyled {
-            @include list-unstyled;
+            @include list-unstyled();
         }
     }
 

@@ -4,13 +4,13 @@
 
         @include media-breakpoint-up($breakpoint) {
             .float#{$bprule}-start {
-                @include float-start;
+                @include float-start();
             }
             .float#{$bprule}-end {
-                @include float-end;
+                @include float-end();
             }
             .float#{$bprule}-none {
-                @include float-none;
+                @include float-none();
             }
         }
     }

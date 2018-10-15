@@ -14,7 +14,7 @@
     // Note: this is not available for cells or rows within `thead` or `tfoot`.
     [class*="table-hover"] {
         .table-#{$state} {
-            @include hover {
+            @include hover() {
                 &,
                 > td,
                 > th {
