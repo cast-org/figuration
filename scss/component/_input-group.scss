@@ -37,6 +37,12 @@
             z-index: 3;
         }
 
+        // Bring input back above label for drag and drop to work if
+        // the custom file input is focused.
+        > .custom-file .custom-file-input:focus {
+            z-index: 4;
+        }
+
         > .form-control,
         > .custom-select {
             &:not(:first-child) { @include border-start-radius(0); }
