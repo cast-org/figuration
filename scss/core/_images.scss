@@ -3,7 +3,7 @@
     // Keep images from scaling beyond the width of their parents.
     @if $enable-img-fluid {
         .img-fluid {
-            @include img-fluid;
+            @include img-fluid();
         }
     }
 
@@ -17,7 +17,7 @@
             @include box-shadow($thumbnail-box-shadow);
 
             // Keep them at most 100% wide
-            @include img-fluid;
+            @include img-fluid();
         }
     }
 }

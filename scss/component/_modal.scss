@@ -113,7 +113,7 @@
     padding: $modal-header-padding-y $modal-header-padding-x;
     border-bottom: $modal-header-border-width solid $modal-header-border-color;
     @include border-top-radius($modal-inner-border-radius);
-    @include clearfix;
+    @include clearfix();
 
     // Close icon
     .close {

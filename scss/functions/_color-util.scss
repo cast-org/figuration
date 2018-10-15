@@ -158,7 +158,7 @@
 //     var v =  (c < 0.03928) ? (c / 12.92) : Math.pow((c + 0.055) / 1.055, 2.4);
 //     console.log(v);
 // }
-// stylelint-disable-next-line scss/dollar-variable-default
+// stylelint-disable-next-line scss/dollar-variable-default, scss/dollar-variable-colon-space-after
 $color-channel-lookup:
     0
     .0003035269835488375
