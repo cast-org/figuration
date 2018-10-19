@@ -163,6 +163,10 @@ Use `.card-img-bottom` on the image, or embedded element, to round over the bott
 
 Turn an image into a card background and overlay your card's text. The use of `.card-img-top` and `.card-img-bottom` will round over all corners of the image, and `.card-img-overlay` will allow content to overlay the image. Depending on the image, you may or may not need additional styles or utility classes.
 
+{% callout info %}
+Note that content should not be larger than the height of the image.  If content is larger than the image the content will be displayed outside the image.
+{% endcallout %}
+
 {% example html %}
 <div class="card text-white" style="max-width: 18rem;">
   <div class="card-img">
