@@ -601,6 +601,7 @@ $table-hover-alt-box-shadow:    inset 0 0 0 999rem rgba($white, .2) !default;
 // =====
 $btn-padding-y:             .25rem !default;
 $btn-padding-x:             .75rem !default;
+$btn-font-size:             $font-size-base !default;
 $btn-font-weight:           $font-weight-normal !default;
 $btn-line-height:           1.5 !default;
 $btn-border-width:          $border-width !default;
@@ -633,6 +634,7 @@ $btn-default-active-border-color:   $uibase-400 !default;
 // Forms
 // =====
 // Padding and line-height should add up to buttons for inputs and selects
+$input-font-size:               $btn-font-size !default;
 $input-line-height:             $btn-line-height !default;
 $input-padding-y:               $btn-padding-y !default;
 $input-padding-x:               $btn-padding-x !default;
