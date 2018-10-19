@@ -343,8 +343,10 @@ $docs-color: #246;
     .section-toc {
         @supports (position: sticky) {
             position: sticky;
-            top: 4.375rem;
-            max-height: calc(100vh - 4.375rem);
+            //top: 4.375rem;
+            //max-height: calc(100vh - 4.375rem);
+            top: 6.375rem;
+            max-height: calc(100vh - 6.375rem);
             overflow-x: visible;
             overflow-y: auto;
         }
