@@ -305,8 +305,8 @@
     // Interactive list items
     // Use anchor or button elements instead of `<li>`s or `<div>`s to create
     // interactive list items.
-    // stylelint-disable selector-no-qualifying-type
     @if $enable-list-item-action {
+        // stylelint-disable selector-no-qualifying-type
         button.list-item-action {
             cursor: pointer;
         }
@@ -328,6 +328,7 @@
 
             &.disabled,
             &:disabled {
+                pointer-events: none;
                 cursor: default;
             }
         }
