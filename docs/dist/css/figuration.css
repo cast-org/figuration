@@ -1895,7 +1895,7 @@ textarea.form-control:not([rows="1"]) {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 2;
+  z-index: 1;
   height: calc(2rem + 2px);
   padding: 0.25rem 0.75rem;
   overflow: hidden;
@@ -3926,6 +3926,7 @@ button.list-item-action {
 }
 
 .list-item-action.disabled, .list-item-action:disabled {
+  pointer-events: none;
   cursor: default;
 }
 
@@ -4237,6 +4238,10 @@ button.list-item-action {
 .input-group > .custom-select:focus,
 .input-group > .custom-file .custom-file-input:focus ~ .custom-file-label {
   z-index: 3;
+}
+
+.input-group > .custom-file .custom-file-input:focus {
+  z-index: 4;
 }
 
 .input-group > .form-control:not(:first-child),
@@ -4634,6 +4639,7 @@ a.page-link {
 .dropdown-item:disabled {
   color: #9eaab4;
   text-decoration: none;
+  pointer-events: none;
   background-color: transparent;
   background-image: none;
 }
