@@ -114,7 +114,7 @@
             align-items: center;
             padding: $input-padding-y $input-padding-x;
             margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
-            @include font-size($font-size-base); // Match inputs
+            @include font-size($input-font-size); // Match inputs
             font-weight: $font-weight-normal;
             line-height: $input-line-height;
             color: $input-group-addon-color;

@@ -241,6 +241,8 @@
             width: 100%;
             height: $input-height-outer;
             padding: $input-padding-y calc(#{$input-padding-x} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset}) $input-padding-y $input-padding-x;
+            @include font-size($input-font-size);
+            line-height: $input-line-height;
             color: $input-color;
             vertical-align: middle;
             background: $input-bg $custom-select-indicator-image no-repeat right $custom-select-indicator-offset center;
@@ -374,6 +376,7 @@
             height: $input-height-outer;
             padding: $input-padding-y $input-padding-x;
             overflow: hidden;
+            @include font-size($input-font-size);
             line-height: $input-line-height;
             color: $input-color;
             background-color: $input-bg;
@@ -408,7 +411,7 @@
             width: auto;
             min-width: $input-height-inner;
             height: $input-height-inner;
-            @include font-size($font-size-base);
+            @include font-size($input-font-size);
             line-height: $input-line-height;
             color: $input-color;
             background-color: $input-bg;

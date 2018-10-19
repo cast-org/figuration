@@ -437,6 +437,14 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
+                <td><code>$btn-font-size</code></td>
+                <td>string</td>
+                <td><code>$font-size-base</code></td>
+                <td>
+                    Base button font size.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$btn-font-weight</code></td>
                 <td>string</td>
                 <td><code>$font-weight-normal</code></td>

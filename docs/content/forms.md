@@ -1664,6 +1664,14 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
+                <td><code>$input-font-size</code></td>
+                <td>string</td>
+                <td><code>$btn-font-size</code></td>
+                <td>
+                    Base input font size.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$input-line-height</code></td>
                 <td>string</td>
                 <td><code>$btn-line-height</code></td>

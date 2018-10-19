@@ -2,7 +2,7 @@
 
 // Base input/select height calculation
 // Additional ones for each size are done during size processing generation
-$input-height-inner:    ($font-size-base * $input-line-height) + ($input-padding-y * 2) !default;
+$input-height-inner:    ($input-font-size * $input-line-height) + ($input-padding-y * 2) !default;
 $input-height-outer:    calc(#{$input-height-inner} + #{($input-border-width * 2)}) !default;
 
 @if $enable-form {
@@ -14,7 +14,7 @@ $input-height-outer:    calc(#{$input-height-inner} + #{($input-border-width * 2
             // Make inputs the height of their button counterpart (line-height + padding + border)
             height: $input-height-outer;
             padding: $input-padding-y $input-padding-x;
-            @include font-size($font-size-base);
+            @include font-size($input-font-size);
             line-height: $input-line-height;
             color: $input-color;
             background-color: $input-bg;
