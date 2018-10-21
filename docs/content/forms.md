@@ -833,9 +833,9 @@ For even more customization and cross browser consistency, use our completely cu
 
 ### Checkboxes and Radios
 
-Each checkbox and radio is wrapped in a block-level container with consolidated styling provided by `.custom-control`, and then an additional modifier class of `.custom-checkbox`, `.custom-radio`, or `.custom-switch` to control the specific indicator visuals. Structurally, this is a slightly different approach than our default `.form-check`. uses an additional `<label>` element to provide
+Each checkbox and radio is wrapped in a block-level container with consolidated styling provided by `.custom-control`, and then an additional modifier class of `.custom-checkbox`, `.custom-radio`, or `.custom-switch` to control the specific indicator visuals. Structurally, this is a slightly different approach than our default `.form-check`.
 
-We hide the default `<input>` with `opacity` and use an additional `<label>` element with `.custom-control-indicator`, and a second `<label>` with `.custom-control-label`, to build a new custom form indicator in its place with `::before` and `::after`. Unfortunately we can't build a custom one from just the `<input>` because CSS's `content` doesn't work on that element.  We use this additional label element to provide some gains in layout possibility, and the ability to *visually hide* the input's textual label, and not break the layout.
+We hide the default `<input>` with `opacity` and use a `<label>` element with `.custom-control-indicator` to build a new custom form indicator in its place with `::before` and `::after`. Unfortunately we can't build a custom one from just the `<input>` because CSS's `content` doesn't work on that element.  Additionally, we use a second `<label>` with `.custom-control-label` to provde for a textual label for the input. We use this additional label element to provide some gains in layout possibilities, and the ability to *visually hide* the input's textual label, and not break the layout.
 
 We also use the sibling selector (`~`) for all our `<input>` states—like `:checked`—to properly style our custom form indicator. When combined with the `.custom-control-label` class, we can also style the text for each item based on the `<input>`'s state.
 

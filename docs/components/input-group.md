@@ -71,6 +71,19 @@ While multiple `<input>`s are supported visually, validation styles are only ava
 </div>
 {% endexample %}
 
+## Wrapping
+
+Input groups wrap by default in order to accommodate the use of custom form field validation within them.  Since this is done with `flex-wrap: wrap;`, you can easily disable this behaviour by using our `.flex-nowrap` utility.
+
+{% example html %}
+<div class="input-group flex-nowrap">
+  <div class="input-group-addon">
+    <span class="input-group-text" id="wrap-addon">@</span>
+  </div>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="wrap-addon">
+</div>
+{% endexample %}
+
 ## Sizing
 
 Add the relative form sizing classes to the `.input-group` itself and contents within will automatically resize---no need for repeating the form control size classes on each element.

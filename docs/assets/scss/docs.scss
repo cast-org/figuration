@@ -709,17 +709,6 @@ $callout-themes: _mix-context-colors($callout-colors, $level-context);
     @include clearfix();
 }
 
-.cf-team a {
-    text-decoration: none;
-}
-.cf-team .github-btn {
-    float: right;
-    width: 180px;
-    height: 1.25rem;
-    margin-top: .25rem;
-    border: 0;
-}
-
 @import "search";
 @import "examples";
 @import "syntax";
