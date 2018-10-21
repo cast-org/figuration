@@ -703,18 +703,6 @@ h4 > code {
   content: "";
 }
 
-.cf-team a {
-  text-decoration: none;
-}
-
-.cf-team .github-btn {
-  float: left;
-  width: 180px;
-  height: 1.25rem;
-  margin-top: .25rem;
-  border: 0;
-}
-
 .docsearch {
   width: 100% !important;
   padding-right: 1.5rem;
