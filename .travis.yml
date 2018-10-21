@@ -1,32 +1,14 @@
-﻿#sudo: false
-dist: trusty
-
-addons:
-  chrome: stable
-
-language: node_js
+﻿language: node_js
 
 git:
     depth: 3
-
-# For now, only build 'push' items on master or development branches
-# http://stackoverflow.com/questions/31882306/
-# Most contributions should come through pull requests
-# Should help limit overloading on Sauce tests
-# Disable for now as we are limit concurrent jobs through Travis settings
-#branches:
-#    only:
-#        - master
 
 node_js:
     - "8"
     - "10"
 
-before_install:
-    - if [[ `npm -v` != 5* ]]; then npm install -g npm@5; fi
-
 install:
-    - bundle install --jobs=3
+    - bundle install --deployment --jobs=3 --retry=3 --clean
     - npm install
 
 cache:
