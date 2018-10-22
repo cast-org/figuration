@@ -635,6 +635,7 @@ $btn-default-active-border-color:   $uibase-400 !default;
 // =====
 // Padding and line-height should add up to buttons for inputs and selects
 $input-font-size:               $btn-font-size !default;
+$input-font-weight:             $font-weight-normal !default;
 $input-line-height:             $btn-line-height !default;
 $input-padding-y:               $btn-padding-y !default;
 $input-padding-x:               $btn-padding-x !default;
@@ -657,6 +658,8 @@ $input-disabled-color:          $component-disabled-color !default;
 $input-disabled-bg:             $uibase-50 !default;
 
 $input-placeholder-color:       #999 !default;
+
+$input-label-font-weight:       $font-weight-normal !default;
 
 $form-text-margin-top:          .25rem !default;
 

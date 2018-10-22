@@ -1672,6 +1672,14 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
+                <td><code>$input-font-weight</code></td>
+                <td>string</td>
+                <td><code>$font-weight-normal</code></td>
+                <td>
+                    Base input font weight.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$input-line-height</code></td>
                 <td>string</td>
                 <td><code>$btn-line-height</code></td>
@@ -1821,6 +1829,14 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td><code>#999</code></td>
                 <td>
                     Input placheholder text color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$input-label-font-weight</code></td>
+                <td>string</td>
+                <td><code>$font-weight-normal</code></td>
+                <td>
+                    Font weight for <code>.form-control-label</code>.
                 </td>
             </tr>
             <tr>
