@@ -1378,43 +1378,99 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$card-card-padding-y</code></td>
+                <td><code>$card-header-padding-y</code></td>
                 <td>string</td>
                 <td><code>.75rem</code></td>
                 <td>
-                    Vertical padding for card header and footer.
+                    Vertical padding for card header.
                 </td>
             </tr>
             <tr>
-                <td><code>$card-card-padding-x</code></td>
+                <td><code>$card-header-padding-x</code></td>
                 <td>string</td>
                 <td><code>1rem</code></td>
                 <td>
-                    Horizontal padding for card header and footer.
+                    Horizontal padding for card header.
                 </td>
             </tr>
             <tr>
-                <td><code>$card-cap-bg</code></td>
+                <td><code>$card-header-bg</code></td>
                 <td>string</td>
                 <td><code>$component-section-bg</code></td>
                 <td>
-                    Background color for card header and footer.
+                    Background color for card header.
                 </td>
             </tr>
             <tr>
-                <td><code>$card-cap-border-color</code></td>
+                <td><code>$card-header-color</code></td>
+                <td>string</td>
+                <td><code>$body-color</code></td>
+                <td>
+                    Text color for card header.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-header-border-color</code></td>
                 <td>string</td>
                 <td><code>$component-section-border-color</code></td>
                 <td>
-                    Border color for card header and footer.
+                    Border color for card header.
                 </td>
             </tr>
             <tr>
-                <td><code>$card-cap-border-width</code></td>
+                <td><code>$card-header-border-width</code></td>
                 <td>string</td>
                 <td><code>$card-border-width</code></td>
                 <td>
-                    Border width for card header and footer.
+                    Border width for card header.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-footer-padding-y</code></td>
+                <td>string</td>
+                <td><code>.75rem</code></td>
+                <td>
+                    Vertical padding for card footer.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-footer-padding-x</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Horizontal padding for card footer.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-footer-bg</code></td>
+                <td>string</td>
+                <td><code>$component-section-bg</code></td>
+                <td>
+                    Background color for card footer.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-footer-color</code></td>
+                <td>string</td>
+                <td><code>$body-color</code></td>
+                <td>
+                    Text color for card footer.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-footer-border-color</code></td>
+                <td>string</td>
+                <td><code>$component-section-border-color</code></td>
+                <td>
+                    Border color for card footer.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$card-footer-border-width</code></td>
+                <td>string</td>
+                <td><code>$card-border-width</code></td>
+                <td>
+                    Border width for card footer.
                 </td>
             </tr>
             <tr>

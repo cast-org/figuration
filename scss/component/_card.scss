@@ -88,10 +88,11 @@
     // Optional caps
     @if $enable-card-header {
         .card-header {
-            padding: $card-cap-padding-y $card-cap-padding-x;
+            padding: $card-header-padding-y $card-header-padding-x;
             margin-bottom: 0; // Removes the default margin-bottom of <hN>
-            background-color: $card-cap-bg;
-            border-bottom: $card-cap-border-width solid $card-cap-border-color;
+            color: $card-header-color;
+            background-color: $card-header-bg;
+            border-bottom: $card-header-border-width solid $card-header-border-color;
 
             &:first-child {
                 @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
@@ -101,9 +102,10 @@
 
     @if $enable-card-footer {
         .card-footer {
-            padding: $card-cap-padding-y $card-cap-padding-x;
-            background-color: $card-cap-bg;
-            border-top: $card-cap-border-width solid $card-cap-border-color;
+            padding: $card-footer-padding-y $card-footer-padding-x;
+            color: $card-footer-color;
+            background-color: $card-footer-bg;
+            border-top: $card-footer-border-width solid $card-footer-border-color;
 
             &:last-child {
                 @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
@@ -114,16 +116,16 @@
     // Header navs
     @if $enable-card-header-tabs {
         .card-header-tabs {
-            margin-right: -($card-cap-padding-x / 2);
-            margin-bottom: -$card-cap-padding-y;
-            margin-left: -($card-cap-padding-x / 2);
+            margin-right: -($card-header-padding-x / 2);
+            margin-bottom: -$card-header-padding-y;
+            margin-left: -($card-header-padding-x / 2);
             border-bottom: 0;
         }
     }
     @if $enable-card-header-pills {
         .card-header-pills {
-            margin-right: -($card-cap-padding-x / 2);
-            margin-left: -($card-cap-padding-x / 2);
+            margin-right: -($card-header-padding-x / 2);
+            margin-left: -($card-header-padding-x / 2);
         }
     }
 
