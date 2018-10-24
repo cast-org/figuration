@@ -1,13 +1,15 @@
-.caret {
-    display: inline-block;
-    width: $caret-width;
-    text-align: center;
-    &::after {
-        @include caret(down, $caret-border-width);
+@if $enable-utility-caret {
+    .caret {
+        display: inline-block;
+        width: $caret-width;
+        text-align: center;
+        &::after {
+            @include caret(down, $caret-border-width);
+        }
     }
-}
-.open .caret {
-    &::after {
-        @include caret-up($caret-border-width);
+    .open .caret {
+        &::after {
+            @include caret-up($caret-border-width);
+        }
     }
 }

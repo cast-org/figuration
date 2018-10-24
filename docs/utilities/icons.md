@@ -21,14 +21,14 @@ If inside of an element marked as `.open` the caret will reverse direction accor
 {% example html %}
 <span class="caret" aria-hidden="true"></span>
 <span class="open">
-  <span class="caret" aria-hidden="true"></span>
+    <span class="caret" aria-hidden="true"></span>
 </span>
 &mdash;
 <span class="dropup">
-  <span class="caret" aria-hidden="true"></span>
+    <span class="caret" aria-hidden="true"></span>
 </span>
 <span class="dropup open">
-  <span class="caret" aria-hidden="true"></span>
+    <span class="caret" aria-hidden="true"></span>
 </span>
 {% endexample %}
 
@@ -85,16 +85,23 @@ Hover over, or focus on the following button to change caret direction:<br />
 
 ## Close Icon
 
-Use a generic close icon for dismissing content like modals and alerts. **Be sure to include text for screen readers**, as we've done with `aria-label`.
+Use a generic close icon for dismissing content like alerts, modals, tooltips, and popovers. **Be sure to include text for screen readers**, as we've done with `aria-label`.
 
 {% example html %}
 <button type="button" class="close" aria-label="Close">
-  <span aria-hidden="true">&times;</span>
-</button>
-
-<a href="#" role="button" class="close" aria-label="Close">
     <span aria-hidden="true">&times;</span>
-</a>
+</button>
+{% endexample %}
+
+
+## Drag Icon
+
+Figuration also uses a drag icon with draggable popovers. **Be sure to include text for screen readers**, as we've done with `aria-label`.
+
+{% example html %}
+<button type="button" class="drag" aria-label="Drag">
+    <span aria-hidden="true">+</span>
+</button>
 {% endexample %}
 
 ## SASS Reference
@@ -114,6 +121,32 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td><code>$enable-utility-caret</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable generation of the caret icon utility class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-close</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    <p>Enable generation of the close icon utility class.</p>
+                    <small><strong>Disabling this may adversely affect the layout of any close icons used within a component.</strong></small>
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-drag</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    <p>Enable generation of the drag icon utility class.</p>
+                    <small><strong>Disabling this may adversely affect the layout of the drag icons used within a component.</strong></small>
+                </td>
+            </tr>
             <tr>
                 <td><code>$caret-width</code></td>
                 <td>string</td>
