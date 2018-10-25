@@ -766,3 +766,333 @@ $.fn.CFW_Modal.Constructor.prototype.enforceFocus = function() {
     }
 };
 {% endhighlight %}
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the modal component.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-modal</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the modal component classes.
+                    Smaller segements of the modal component classes can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-modal-centered</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the vertically centered modal header variant.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-modal-header</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the modal header class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-modal-title</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the modal title class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-modal-body</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the modal body class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-modal-footer</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the modal footer class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-dialog-margin</code></td>
+                <td>string</td>
+                <td><code>.625rem</code></td>
+                <td>
+                    Spacing around modal dialog.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-dialog-sm-up-margin-y</code></td>
+                <td>string</td>
+                <td><code>.625rem</code></td>
+                <td>
+                    Vertical spacing for modal dialog starting at the breakpoint defined by <code>$modal-breakpoint</code>.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-content-bg</code></td>
+                <td>string</td>
+                <td><code>$component-bg</code></td>
+                <td>
+                    Background color for modal content container.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-content-border-color</code></td>
+                <td>string</td>
+                <td><code>$component-overlay-border-color</code></td>
+                <td>
+                    Border color for modal content container.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-content-border-width</code></td>
+                <td>string</td>
+                <td><code>$border-width</code></td>
+                <td>
+                    Border width for modal content container.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-content-box-shadow</code></td>
+                <td>string</td>
+                <td><code>0 .25rem .5rem rgba($black, .5)</code></td>
+                <td>
+                    Box shadow for modal content container.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-content-sm-up-box-shadow</code></td>
+                <td>string</td>
+                <td><code>0 .25rem 1rem rgba($black, .5)</code></td>
+                <td>
+                    Box shadow for modal content container at the breakpoint defined by <code>$modal-breakpoint</code>.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-border-radius</code></td>
+                <td>string</td>
+                <td><code>.375rem</code></td>
+                <td>
+                    Border radius for modal content container.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-inner-border-radius</code></td>
+                <td>string</td>
+                <td><code>calc(#{$modal-border-radius} - #{$modal-content-border-width})</code></td>
+                <td>
+                    Border radius for modal header and footer.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-backdrop-bg</code></td>
+                <td>string</td>
+                <td><code>$dark</code></td>
+                <td>
+                    Background color for modal backdrop.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-backdrop-opacity</code></td>
+                <td>string</td>
+                <td><code>.5</code></td>
+                <td>
+                    Opacity for modal backdrop.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-header-padding-y</code></td>
+                <td>string</td>
+                <td><code>.75rem</code></td>
+                <td>
+                    Vertical padding for modal header.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-header-padding-x</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Horizontal padding for modal header.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-header-border-color</code></td>
+                <td>string</td>
+                <td><code>rgba($uibase-900, .2)</code></td>
+                <td>
+                    Border color for modal header.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-header-border-width</code></td>
+                <td>string</td>
+                <td><code>$modal-content-border-width</code></td>
+                <td>
+                    Border width for modal header.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-title-line-height</code></td>
+                <td>string</td>
+                <td><code>$line-height-base</code></td>
+                <td>
+                    Line height for modal header.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-close-padding-y</code></td>
+                <td>string</td>
+                <td><code>.75rem</code></td>
+                <td>
+                    Vertical padding for close button in modal header.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-close-padding-x</code></td>
+                <td>string</td>
+                <td><code>.75rem</code></td>
+                <td>
+                    Horizontal padding for close button in modal header.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-body-padding-y</code></td>
+                <td>string</td>
+                <td><code>.75rem</code></td>
+                <td>
+                    Vertical padding for modal body.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-body-padding-x</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Horizontal padding for modal body.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-footer-padding-y</code></td>
+                <td>string</td>
+                <td><code>.75rem</code></td>
+                <td>
+                    Vertical padding for modal footer.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-footer-padding-x</code></td>
+                <td>string</td>
+                <td><code>1rem</code></td>
+                <td>
+                    Horizontal padding for modal footer.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-footer-border-color</code></td>
+                <td>string</td>
+                <td><code>$modal-header-border-color</code></td>
+                <td>
+                    Border color for modal footer.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-footer-border-width</code></td>
+                <td>string</td>
+                <td><code>$modal-header-border-width</code></td>
+                <td>
+                    Border width for modal footer.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-sm</code></td>
+                <td>string</td>
+                <td><code>rem(304px)</code> (19rem)</td>
+                <td>
+                    Max width for small modal dialog variant.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-md</code></td>
+                <td>string</td>
+                <td><code>rem(528px)</code> (33rem)</td>
+                <td>
+                    Max width for modal dialog starting at the breakpoint defined by <code>$modal-breakpoint</code>.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-lg</code></td>
+                <td>string</td>
+                <td><code>rem(896px)</code> (56rem)</td>
+                <td>
+                    Max width for large modal dialog variant.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-breakpoint</code></td>
+                <td>string</td>
+                <td><code>sm</code></td>
+                <td>
+                    When to start scaling up modal width and margins.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-lg-breakpoint</code></td>
+                <td>string</td>
+                <td><code>lg</code></td>
+                <td>
+                    The minimum breakpoint to allow <code>.modal-lg</code>.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-transform-fade</code></td>
+                <td>string</td>
+                <td><code>translate(0, -3rem)</code></td>
+                <td>
+                    Transform state of `.modal-dialog` before the modal fade-in animation
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-transform-in</code></td>
+                <td>string</td>
+                <td><code>none</code></td>
+                <td>
+                    Transform state of <code>.modal-dialog</code> at the end of the modal fade-in animation.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-transition</code></td>
+                <td>string</td>
+                <td><code>transform .3s ease-out</code></td>
+                <td>
+                    Transition settings for the <code>.modal-dialog</code> fade-in animation.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.

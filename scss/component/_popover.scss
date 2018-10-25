@@ -1,148 +1,170 @@
-.popover {
-    position: absolute;
-    z-index: $zindex-popover;
-    display: none;
-    max-width: $popover-max-width;
-    // Our parent element can be arbitrary since popovers are by default inserted as a sibling of their target element.
-    // So reset our font and text properties to avoid inheriting weird values.
-    @include reset-text();
-    @include font-size($popover-font-size);
-    // Allow breaking very long words so they don't overflow the popover's bounds
-    word-wrap: break-word;
-    background-color: $popover-bg;
-    background-clip: padding-box;
-    border: $popover-border-width solid $popover-border-color;
-    @include border-radius($popover-border-radius);
-    @include box-shadow($popover-box-shadow);
-
-    // Offset the popover to account for the popover arrow
-    &.top {
-        margin-top: -$popover-arrow-width;
-
-        .popover-arrow {
-            bottom: calc((#{$popover-arrow-width} + #{$popover-border-width}) * -1);
-            left: 50%;
-            margin-left: -$popover-arrow-width;
-            border-top-color: $popover-arrow-outer-color;
-            border-bottom-width: 0;
-            &::after {
-                bottom: $popover-border-width;
-                margin-left: -$popover-arrow-width;
-                content: "";
-                border-top-color: $popover-arrow-color;
-                border-bottom-width: 0;
-            }
-        }
-    }
-    &.forward {
-        margin-left: $popover-arrow-width #{"/*rtl:"}-$popover-arrow-width#{"*/"};
-
-        .popover-arrow {
-            top: 50%;
-            left: calc((#{$popover-arrow-width} + #{$popover-border-width}) * -1);
-            margin-top: -$popover-arrow-width;
-            border-right-color: $popover-arrow-outer-color;
-            border-left-width: 0;
-            &::after {
-                bottom: -$popover-arrow-width;
-                left: $popover-border-width;
-                content: "";
-                border-right-color: $popover-arrow-color;
-                border-left-width: 0;
-            }
-        }
-    }
-    &.bottom {
-        margin-top: $popover-arrow-width;
-
-        .popover-arrow {
-            top: calc((#{$popover-arrow-width} + #{$popover-border-width}) * -1);
-            left: 50% #{"/*rtl:ignore*/"};
-            margin-left: -$popover-arrow-width;
-            border-top-width: 0;
-            border-bottom-color: $popover-arrow-outer-color;
-            &::after {
-                top: $popover-border-width;
-                margin-left: -$popover-arrow-width;
-                content: "";
-                border-top-width: 0;
-                border-bottom-color: $popover-arrow-color;
-            }
-        }
-    }
-    &.reverse {
-        margin-left: -$popover-arrow-width #{"/*rtl:"}$popover-arrow-width#{"*/"};
-
-        .popover-arrow {
-            top: 50%;
-            right: calc((#{$popover-arrow-width} + #{$popover-border-width}) * -1);
-            margin-top: -$popover-arrow-width;
-            border-right-width: 0;
-            border-left-color: $popover-arrow-outer-color;
-            &::after {
-                right: $popover-border-width;
-                bottom: -$popover-arrow-width;
-                content: "";
-                border-right-width: 0;
-                border-left-color: $popover-arrow-color;
-            }
-        }
-    }
-}
-
-.popover-header {
-    padding: $popover-header-padding-y $popover-header-padding-x;
-    padding-right: ($popover-header-padding-x * 2);
-    margin: 0; // reset heading margin
-    @include font-size($popover-header-font-size);
-    color: $popover-header-color;
-    background-color: $popover-header-bg;
-    border-bottom: $popover-header-border-width solid $popover-header-border-color;
-    @include border-radius($popover-inner-border-radius $popover-inner-border-radius 0 0);
-
-    &:empty {
-        display: none;
-    }
-}
-
-.popover-body {
-    padding: $popover-body-padding-y $popover-body-padding-x;
-    color: $popover-body-color;
-}
-
-// Arrows
-// .popover-arrow is outer, .popover-arrow::after is inner
-.popover-arrow {
-    border-width: $popover-arrow-width;
-
-    &::after {
-        content: "";
-        border-width: $popover-arrow-width;
-    }
-
-    &,
-    &::after {
+@if $enable-popover {
+    .popover {
         position: absolute;
-        display: block;
-        width: 0;
-        height: 0;
-        border-color: transparent;
-        border-style: solid;
-    }
-}
-
-// Control buttons
-.popover .close,
-.popover .drag {
-    float: right;
-    padding: $popover-control-padding-y $popover-control-padding-x;
-}
-
-// Draggable variant
-.popover.draggable {
-    margin: 0;
-
-    .popover-arrow {
+        z-index: $zindex-popover;
         display: none;
+        max-width: $popover-max-width;
+        // Our parent element can be arbitrary since popovers are by default inserted as a sibling of their target element.
+        // So reset our font and text properties to avoid inheriting weird values.
+        @include reset-text();
+        @include font-size($popover-font-size);
+        // Allow breaking very long words so they don't overflow the popover's bounds
+        word-wrap: break-word;
+        background-color: $popover-bg;
+        background-clip: padding-box;
+        border: $popover-border-width solid $popover-border-color;
+        @include border-radius($popover-border-radius);
+        @include box-shadow($popover-box-shadow);
+
+        // Offset the popover to account for the popover arrow
+        @if $enable-popover-arrow {
+            &.top {
+                margin-top: -$popover-arrow-width;
+
+                .popover-arrow {
+                    bottom: calc((#{$popover-arrow-width} + #{$popover-border-width}) * -1);
+                    left: 50%;
+                    margin-left: -$popover-arrow-width;
+                    border-top-color: $popover-arrow-outer-color;
+                    border-bottom-width: 0;
+                    &::after {
+                        bottom: $popover-border-width;
+                        margin-left: -$popover-arrow-width;
+                        content: "";
+                        border-top-color: $popover-arrow-color;
+                        border-bottom-width: 0;
+                    }
+                }
+            }
+            &.forward {
+                margin-left: $popover-arrow-width #{"/*rtl:"}-$popover-arrow-width#{"*/"};
+
+                .popover-arrow {
+                    top: 50%;
+                    left: calc((#{$popover-arrow-width} + #{$popover-border-width}) * -1);
+                    margin-top: -$popover-arrow-width;
+                    border-right-color: $popover-arrow-outer-color;
+                    border-left-width: 0;
+                    &::after {
+                        bottom: -$popover-arrow-width;
+                        left: $popover-border-width;
+                        content: "";
+                        border-right-color: $popover-arrow-color;
+                        border-left-width: 0;
+                    }
+                }
+            }
+            &.bottom {
+                margin-top: $popover-arrow-width;
+
+                .popover-arrow {
+                    top: calc((#{$popover-arrow-width} + #{$popover-border-width}) * -1);
+                    left: 50% #{"/*rtl:ignore*/"};
+                    margin-left: -$popover-arrow-width;
+                    border-top-width: 0;
+                    border-bottom-color: $popover-arrow-outer-color;
+                    &::after {
+                        top: $popover-border-width;
+                        margin-left: -$popover-arrow-width;
+                        content: "";
+                        border-top-width: 0;
+                        border-bottom-color: $popover-arrow-color;
+                    }
+                }
+            }
+
+            &.reverse {
+                margin-left: -$popover-arrow-width #{"/*rtl:"}$popover-arrow-width#{"*/"};
+
+                .popover-arrow {
+                    top: 50%;
+                    right: calc((#{$popover-arrow-width} + #{$popover-border-width}) * -1);
+                    margin-top: -$popover-arrow-width;
+                    border-right-width: 0;
+                    border-left-color: $popover-arrow-outer-color;
+                    &::after {
+                        right: $popover-border-width;
+                        bottom: -$popover-arrow-width;
+                        content: "";
+                        border-right-width: 0;
+                        border-left-color: $popover-arrow-color;
+                    }
+                }
+            }
+        }
+    }
+
+    @if $enable-popover-header {
+        .popover-header {
+            padding: $popover-header-padding-y $popover-header-padding-x;
+            padding-right: ($popover-header-padding-x * 2);
+            margin: 0; // reset heading margin
+            @include font-size($popover-header-font-size);
+            color: $popover-header-color;
+            background-color: $popover-header-bg;
+            border-bottom: $popover-header-border-width solid $popover-header-border-color;
+            @include border-radius($popover-inner-border-radius $popover-inner-border-radius 0 0);
+
+            &:empty {
+                display: none;
+            }
+        }
+    }
+
+    @if $enable-popover-body {
+        .popover-body {
+            padding: $popover-body-padding-y $popover-body-padding-x;
+            color: $popover-body-color;
+        }
+    }
+
+    // Arrows
+    // .popover-arrow is outer, .popover-arrow::after is inner
+    @if $enable-popover-arrow {
+        .popover-arrow {
+            border-width: $popover-arrow-width;
+
+            &::after {
+                content: "";
+                border-width: $popover-arrow-width;
+            }
+
+            &,
+            &::after {
+                position: absolute;
+                display: block;
+                width: 0;
+                height: 0;
+                border-color: transparent;
+                border-style: solid;
+            }
+        }
+    }
+
+    // Control buttons
+    %popover-control {
+        float: right;
+        padding: $popover-control-padding-y $popover-control-padding-x;
+    }
+    @if $enable-popover-close {
+        .popover .close {
+            @extend %popover-control;
+        }
+    }
+    @if $enable-popover-drag {
+        .popover .drag {
+            @extend %popover-control;
+        }
+    }
+
+    // Draggable variant
+    @if $enable-popover-draggable {
+        .popover.draggable {
+            margin: 0;
+
+            .popover-arrow {
+                display: none;
+            }
+        }
     }
 }

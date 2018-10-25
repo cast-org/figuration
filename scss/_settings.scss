@@ -867,7 +867,7 @@ $dropdown-border-width:         $border-width !default;
 $dropdown-border-radius:        $border-radius !default;
 $dropdown-divider-width:        $border-width !default;
 $dropdown-divider-color:        $component-section-border-color !default;
-$dropdown-divider-spacer:       ($spacer / 2) !default;
+$dropdown-divider-spacer:       .5rem !default;
 $dropdown-box-shadow:           map-get($shadows, "d2") !default;
 
 // Border radius where menu/submenu aligns or 'attaches' to control item.
@@ -1117,33 +1117,35 @@ $popover-arrow-outer-color:     $popover-border-color !default;
 $modal-dialog-margin:           .625rem !default;
 $modal-dialog-sm-up-margin-y:   1.875rem !default;
 
-$modal-header-padding-y:        .75rem !default;
-$modal-header-padding-x:        1rem !default;
-$modal-title-line-height:       $line-height-base !default;
-
-$modal-close-padding-y:        .75rem !default;
-$modal-close-padding-x:        .75rem !default;
-
-$modal-inner-padding-y:         .75rem !default;
-$modal-inner-padding-x:         1rem !default;
-
 $modal-content-bg:               $component-bg !default;
 $modal-content-border-color:     $component-overlay-border-color !default;
 $modal-content-border-width:     $border-width !default;
-$modal-content-xs-box-shadow:    0 .25rem .5rem rgba($black, .5) !default;
+$modal-content-box-shadow:       0 .25rem .5rem rgba($black, .5) !default;
 $modal-content-sm-up-box-shadow: 0 .25rem 1rem rgba($black, .5) !default;
 
-$modal-footer-padding-y:        .75rem !default;
-$modal-footer-padding-x:        1rem !default;
+$modal-border-radius:           .375rem !default;
+$modal-inner-border-radius:     calc(#{$modal-border-radius} - #{$modal-content-border-width}) !default;
 
 $modal-backdrop-bg:             $dark !default;
 $modal-backdrop-opacity:        .5 !default;
+
+$modal-header-padding-y:        .75rem !default;
+$modal-header-padding-x:        1rem !default;
 $modal-header-border-color:     rgba($uibase-900, .2) !default;
-$modal-footer-border-color:     $modal-header-border-color !default;
 $modal-header-border-width:     $modal-content-border-width !default;
+
+$modal-title-line-height:       $line-height-base !default;
+
+$modal-close-padding-y:         .75rem !default;
+$modal-close-padding-x:         .75rem !default;
+
+$modal-body-padding-y:          .75rem !default;
+$modal-body-padding-x:          1rem !default;
+
+$modal-footer-padding-y:        .75rem !default;
+$modal-footer-padding-x:        1rem !default;
+$modal-footer-border-color:     $modal-header-border-color !default;
 $modal-footer-border-width:     $modal-header-border-width !default;
-$modal-border-radius:           .375rem !default;
-$modal-inner-border-radius:     calc(#{$modal-border-radius} - #{$modal-content-border-width}) !default;
 
 $modal-sm:                      rem(304px) !default; // 304px=>19rem
 $modal-md:                      rem(528px) !default; // 528px=>33rem
