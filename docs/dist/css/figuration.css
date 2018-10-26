@@ -3636,6 +3636,8 @@ button.close {
   background-color: transparent;
   border: 0;
   -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 .drag {
@@ -3664,6 +3666,8 @@ button.drag {
   background-color: transparent;
   border: 0;
   -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 @-webkit-keyframes progress-bar-stripes {
@@ -7133,8 +7137,7 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
   border-style: solid;
 }
 
-.popover .close,
-.popover .drag {
+.popover .close, .popover .drag {
   float: right;
   padding: 0.125rem 0.3125rem;
 }
