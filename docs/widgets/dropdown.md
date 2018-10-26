@@ -766,3 +766,341 @@ The dropdown widget provided by Figuration is intended be generic and apply to a
         If current focus is in a text input or textarea, the text caret will move accordingly.
     </dd>
 </dl>
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the dropdown component.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-dropdown</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the dropdown component classes.
+                    Smaller segements of the dropdown component classes can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-dropdown-header</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the dropdown header class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-dropdown-text</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the dropdown text class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-dropdown-divider</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the dropdown divider class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-dropdown-dropup</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the dropdown dropup classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-dropdown-back</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the dropdown 'back' caret indicator class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-min-width</code></td>
+                <td>string</td>
+                <td><code>10rem</code></td>
+                <td>
+                    Minimum width for dropdown menus.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-padding-y</code></td>
+                <td>string</td>
+                <td><code>10rem</code></td>
+                <td>
+                    Vertical padding for dropdown menus.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-spacer</code></td>
+                <td>string</td>
+                <td><code>.3125rem</code></td>
+                <td>
+                    Top vertical spacing for dropdown menus.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-spacer</code></td>
+                <td>string</td>
+                <td><code>.125rem</code></td>
+                <td>
+                    Top vertical spacing for dropdown menus.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-bg</code></td>
+                <td>string</td>
+                <td><code>$component-bg</code></td>
+                <td>
+                    Background color for dropdown menus.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-border-color</code></td>
+                <td>string</td>
+                <td><code>$component-border-color</code></td>
+                <td>
+                    Border color for dropdown menus.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-border-width</code></td>
+                <td>string</td>
+                <td><code>$border-width</code></td>
+                <td>
+                    Border width for dropdown menus.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-border-radius</code></td>
+                <td>string</td>
+                <td><code>$border-radius</code></td>
+                <td>
+                    Border radius for dropdown menus.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-divider-width</code></td>
+                <td>string</td>
+                <td><code>$border-width</code></td>
+                <td>
+                    Border width for dropdown menu dividers.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-divider-color</code></td>
+                <td>string</td>
+                <td><code>$component-section-border-color</code></td>
+                <td>
+                    Border color for dropdown menu dividers.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-divider-spacer</code></td>
+                <td>string</td>
+                <td><code>.5rem</code></td>
+                <td>
+                    Vertical spacing for dropdown menu dividers.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-box-shadow</code></td>
+                <td>string</td>
+                <td><code>map-get($shadows, "d2")</code></td>
+                <td>
+                    Box shadow for dropdown menus.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-attach-border-radius</code></td>
+                <td>string</td>
+                <td><code>0</code></td>
+                <td>
+                    Border radius where menu/submenu aligns or 'attaches' to control item.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-link-color</code></td>
+                <td>string</td>
+                <td><code>$component-action-color</code></td>
+                <td>
+                    Text color for dropdown menu links.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-link-hover-color</code></td>
+                <td>string</td>
+                <td><code>$component-action-hover-color</code></td>
+                <td>
+                    Text color for dropdown menu links in hover and focus states.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-link-hover-bg</code></td>
+                <td>string</td>
+                <td><code>$component-hover-bg</code></td>
+                <td>
+                    Background color for dropdown menu links in hover and focus states.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-link-active-color</code></td>
+                <td>string</td>
+                <td><code>$component-active-color</code></td>
+                <td>
+                    Text color for dropdown menu links in active state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-link-active-bg</code></td>
+                <td>string</td>
+                <td><code>$component-active-bg</code></td>
+                <td>
+                    Background color for dropdown menu links in active state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-link-disabled-color</code></td>
+                <td>string</td>
+                <td><code>$component-active-color</code></td>
+                <td>
+                    Text color for dropdown menu links in disabled state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-link-disabled-bg</code></td>
+                <td>string</td>
+                <td><code>$component-active-bg</code></td>
+                <td>
+                    Background color for dropdown menu links in disabled state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-item-padding-y</code></td>
+                <td>string</td>
+                <td><code>.1875rem</code></td>
+                <td>
+                    Vertical padding for dropdown menu links.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-item-padding-x</code></td>
+                <td>string</td>
+                <td><code>1.25rem</code></td>
+                <td>
+                    Horizontal padding for dropdown menu links.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-header-font-size</code></td>
+                <td>string</td>
+                <td><code>($font-size-base * .875)</code></td>
+                <td>
+                    Font size for dropdown menu headers.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-header-font-weight</code></td>
+                <td>string</td>
+                <td><code>$font-weight-bold</code></td>
+                <td>
+                    Font weight for dropdown menu headers.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-header-color</code></td>
+                <td>string</td>
+                <td><code>$uibase-500</code></td>
+                <td>
+                    Text color for dropdown menu headers.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-text-color</code></td>
+                <td>string</td>
+                <td><code>$body-color</code></td>
+                <td>
+                    Text color for dropdown menu text.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-caret-width</code></td>
+                <td>string</td>
+                <td><code>.4375rem</code></td>
+                <td>
+                    Border width for dropdown submenu indicator.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-caret-color</code></td>
+                <td>string</td>
+                <td><code>$uibase-400</code></td>
+                <td>
+                    Border color for dropdown submenu indicator.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-caret-active-color</code></td>
+                <td>string</td>
+                <td><code>$component-active-color</code></td>
+                <td>
+                    Border color for dropdown submenu indicator in active state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-caret-spacer-x</code></td>
+                <td>string</td>
+                <td><code>.375rem</code></td>
+                <td>
+                    Horizontal spacing for dropdown submenu indicator.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-back-width</code></td>
+                <td>string</td>
+                <td><code>.4375rem</code></td>
+                <td>
+                    Border width for dropdown menu 'back' indicator.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$back-caret-color</code></td>
+                <td>string</td>
+                <td><code>$uibase-400</code></td>
+                <td>
+                    Border color for dropdown menu 'back' indicator.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-back-spacer-x</code></td>
+                <td>string</td>
+                <td><code>.375rem</code></td>
+                <td>
+                    Horizontal spacing for dropdown menu 'back' indicator.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.

@@ -198,7 +198,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
                 <td>target</td>
                 <td>string</td>
                 <td>null</td>
-                <td>The selector (jQuery style) of the target popover.</td>
+                <td>The selector (jQuery style) of the target tooltip.</td>
             </tr>
             <tr>
                 <td>animate</td>
@@ -471,3 +471,206 @@ When navigating **forward**, out the *bottom* of the tooltip, the focus will be 
 When navigating **backward**, out the *top* of the tooltip, the focus will be moved to the trigger.
 
 This will not necessarily work with some assistive technologies reading modes.
+
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the tooltip component.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-tooltip</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the tooltip component classes.
+                    Smaller segements of the tooltip component classes can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-tooltip-arrow</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation tooltip arrows classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-tooltip-body</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation tooltip body class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-tooltip-close</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation tooltip close button class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-max-width</code></td>
+                <td>string</td>
+                <td><code>rem(208px)</code> (13rem)</td>
+                <td>
+                    Max width for tooltip container.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-padding-y</code></td>
+                <td>string</td>
+                <td><code>.25rem</code></td>
+                <td>
+                    Vertical padding for tooltip body.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-padding-x</code></td>
+                <td>string</td>
+                <td><code>.5rem</code></td>
+                <td>
+                    Horizontal padding for tooltip body.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-padding-x</code></td>
+                <td>string</td>
+                <td><code>.5rem</code></td>
+                <td>
+                    Horizontal padding for tooltip body.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-margin</code></td>
+                <td>string</td>
+                <td><code>.5rem</code></td>
+                <td>
+                    Spacing offset for tooltip container.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-font-size</code></td>
+                <td>string</td>
+                <td><code>($font-size-base * .875)</code></td>
+                <td>
+                    Font size for tooltip container.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-bg</code></td>
+                <td>string</td>
+                <td><code>$uibase-900</code></td>
+                <td>
+                    Background color for tooltip body.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-color</code></td>
+                <td>string</td>
+                <td><code>color-auto-contrast($uibase-900)</code></td>
+                <td>
+                    Text color for tooltip body.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-opactity</code></td>
+                <td>string</td>
+                <td><code>.9</code></td>
+                <td>
+                    Opacity for tooltip container.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-border-radius</code></td>
+                <td>string</td>
+                <td><code>$border-radius</code></td>
+                <td>
+                    Border radius for tooltip body.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-close-padding-y</code></td>
+                <td>string</td>
+                <td><code>.125rem</code></td>
+                <td>
+                    Vertical padding for tooltip close button.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-close-padding-x</code></td>
+                <td>string</td>
+                <td><code>.3125rem</code></td>
+                <td>
+                    Horizontal padding for tooltip close button.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-close-color</code></td>
+                <td>string</td>
+                <td><code>$tooltip-color</code></td>
+                <td>
+                    Text color for tooltip close button.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-close-opacity</code></td>
+                <td>string</td>
+                <td><code>$close-opacity</code></td>
+                <td>
+                    Opacity for tooltip close button.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-close-hover-color</code></td>
+                <td>string</td>
+                <td><code>$tooltip-color</code></td>
+                <td>
+                    Text color for tooltip close button in hover and focus states.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-close-hover-opacity</code></td>
+                <td>string</td>
+                <td><code>$close-hover-opacity</code></td>
+                <td>
+                    Opacity for tooltip close button in hover and focus states.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-arrow-width</code></td>
+                <td>string</td>
+                <td><code>.375rem</code></td>
+                <td>
+                    Width for tooltip arrow.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-arrow-color</code></td>
+                <td>string</td>
+                <td><code>$tooltip-bg</code></td>
+                <td>
+                    Background color for tooltip arrow.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.

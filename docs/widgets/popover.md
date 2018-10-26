@@ -578,3 +578,269 @@ When navigating **forward**, out the *bottom* of the popover, the focus will be 
 When navigating **backward**, out the *top* of the popover, the focus will be moved to the trigger.
 
 This will not necessarily work with some assistive technologies reading modes.
+
+## SASS Reference
+
+### Variables
+
+The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the popover component.
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Name</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$enable-popover</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the popover component classes.
+                    Smaller segements of the popover component classes can be disabled with the following <code>$enable-*</code> variables.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-popover-arrow</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation popover arrows classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-popover-header</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation popover header class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-popover-body</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation popover body class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-popover-close</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation popover close button class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-popover-drag</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation popover drag button class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-popover-draggable</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation draggable popover class.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-font-size</code></td>
+                <td>string</td>
+                <td><code>.9375rem</code></td>
+                <td>
+                    Font size for popover container.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-bg</code></td>
+                <td>string</td>
+                <td><code>$component-bg</code></td>
+                <td>
+                    Background color for popover container.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-max-width</code></td>
+                <td>string</td>
+                <td><code>rem(288px)</code> (18rem)</td>
+                <td>
+                    Max width for popover container.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-border-width</code></td>
+                <td>string</td>
+                <td><code>$border-width</code></td>
+                <td>
+                    Border width for popover container.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-border-color</code></td>
+                <td>string</td>
+                <td><code>$component-overlay-border-color</code></td>
+                <td>
+                    Border color for popover container.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-border-radius</code></td>
+                <td>string</td>
+                <td><code>.3125rem</code></td>
+                <td>
+                    Border radius for popover container.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-inner-border-radius</code></td>
+                <td>string</td>
+                <td><code>calc(#{$popover-border-radius} - #{$popover-border-width})</code></td>
+                <td>
+                    Border radius for popover header and body.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-box-shadow</code></td>
+                <td>string</td>
+                <td><code>map-get($shadows, "d2")</code></td>
+                <td>
+                    Border radius for popover container.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-header-padding-y</code></td>
+                <td>string</td>
+                <td><code>.5rem</code></td>
+                <td>
+                    Vertical padding for popover header.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-header-padding-x</code></td>
+                <td>string</td>
+                <td><code>.75rem</code></td>
+                <td>
+                    Horizontal padding for popover header.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-header-font-size</code></td>
+                <td>string</td>
+                <td><code>$font-size-base</code></td>
+                <td>
+                    Font size for popover header.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-header-color</code></td>
+                <td>string</td>
+                <td><code>$headings-color</code></td>
+                <td>
+                    Text color for popover header.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-header-bg</code></td>
+                <td>string</td>
+                <td><code>$component-section-bg</code></td>
+                <td>
+                    Background color for popover header.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-header-border-width</code></td>
+                <td>string</td>
+                <td><code>$border-width</code></td>
+                <td>
+                    Border width for popover header.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-header-border-color</code></td>
+                <td>string</td>
+                <td><code>$component-section-border-color</code></td>
+                <td>
+                    Border color for popover header.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-control-padding-y</code></td>
+                <td>string</td>
+                <td><code>.125rem</code></td>
+                <td>
+                    Vertical padding for close and drag buttons in popover header.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-control-padding-x</code></td>
+                <td>string</td>
+                <td><code>.3125rem</code></td>
+                <td>
+                    Horizontal padding for close and drag buttons in popover header.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-body-padding-y</code></td>
+                <td>string</td>
+                <td><code>.5rem</code></td>
+                <td>
+                    Vertical padding for popover body.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-body-padding-x</code></td>
+                <td>string</td>
+                <td><code>.75rem</code></td>
+                <td>
+                    Horizontal padding for popover body.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-body-color</code></td>
+                <td>string</td>
+                <td><code>$body-color</code></td>
+                <td>
+                    Text color for popover body.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-arrow-width</code></td>
+                <td>string</td>
+                <td><code>.625rem</code></td>
+                <td>
+                    Width for popover arrow.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-arrow-color</code></td>
+                <td>string</td>
+                <td><code>$popover-bg</code></td>
+                <td>
+                    Inner color for popover arrow.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-arrow-outer0color</code></td>
+                <td>string</td>
+                <td><code>$popover-border-color</code></td>
+                <td>
+                    Border color for popover arrow.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+### Mixins
+
+No mixins available.

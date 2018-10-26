@@ -193,6 +193,34 @@ $enable-progress-animated:                  true !default;
 
 //Dropdown
 $enable-dropdown:                           true !default;
+$enable-dropdown-header:                    true !default;
+$enable-dropdown-text:                      true !default;
+$enable-dropdown-divider:                   true !default;
+$enable-dropdown-dropup:                    true !default;
+$enable-dropdown-back:                      true !default;
+
+// Modal
+$enable-modal:                              true !default;
+$enable-modal-centered:                     true !default;
+$enable-modal-header:                       true !default;
+$enable-modal-title:                        true !default;
+$enable-modal-body:                         true !default;
+$enable-modal-footer:                       true !default;
+
+// Popover
+$enable-popover:                            true !default;
+$enable-popover-arrow:                      true !default;
+$enable-popover-header:                     true !default;
+$enable-popover-body:                       true !default;
+$enable-popover-close:                      true !default;
+$enable-popover-drag:                       true !default;
+$enable-popover-draggable:                  true !default;
+
+// Tooltip
+$enable-tooltip:                            true !default;
+$enable-tooltip-arrow:                      true !default;
+$enable-tooltip-body:                       true !default;
+$enable-tooltip-close:                      true !default;
 
 // Utility Options
 $enable-utility-bg:                         true !default;
