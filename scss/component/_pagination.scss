@@ -37,6 +37,7 @@
             z-index: 1;
             color: $pagination-active-color;
             background-color: $pagination-active-bg;
+            border-color: $pagination-active-border-color;
         }
 
         &.disabled {

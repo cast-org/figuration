@@ -14,21 +14,32 @@
             margin-bottom: 0;
             margin-left: $list-margin-left;
         }
+
+        // Reset for nested list items
+        .list,
+        .list-item {
+            .list-item {
+                padding: 0;
+                margin: 0;
+                border: 0 solid;
+                border-color: inherit;
+            }
+        }
     }
 
     // Space out nested bullet and ordered lists
     .list:not(.list-bulleted):not(.list-ordered) {
-        > .list-item {
+        .list-item {
             %list-indent {
                 margin-left: $list-margin-left * 2;
             }
             @if $enable-list-bulleted {
-                > .list-bulleted {
+                .list-bulleted {
                     @extend %list-indent;
                 }
             }
             @if $enable-list-ordered {
-                > .list-ordered {
+                .list-ordered {
                     @extend %list-indent;
                 }
             }
@@ -74,7 +85,7 @@
     %list-bordered {
         border-color: $list-border-color;
 
-        > .list-item {
+        .list-item {
             margin-top: -$list-border-width;
             border-top-color: inherit;
             border-top-width: $list-border-width;
@@ -105,7 +116,7 @@
     // Remove top and bottom borders for divided
     @if $enable-list-divided {
         .list-divided {
-            > .list-item {
+            .list-item {
                 &:first-child {
                     border-top: 0;
                 }
@@ -121,7 +132,7 @@
     // first and last children.
     @if $enable-list-group {
         .list-group {
-            > .list-item {
+            .list-item {
                 border-right-color: inherit;
                 border-right-width: $list-border-width;
                 border-left-color: inherit;
@@ -140,7 +151,7 @@
     // Add some padding to lists.
     @if $enable-list-spaced {
         .list-spaced {
-            > .list-item {
+            .list-item {
                 padding: $list-spaced-item-padding-y $list-spaced-item-padding-x;
             }
         }
@@ -148,7 +159,7 @@
 
     @if $enable-list-spaced-y {
         .list-spaced-y {
-            > .list-item {
+            .list-item {
                 padding-top: $list-spaced-item-padding-y;
                 padding-bottom: $list-spaced-item-padding-y;
             }
@@ -157,7 +168,7 @@
 
     @if $enable-list-spaced-x {
         .list-spaced-x {
-            > .list-item {
+            .list-item {
                 padding-right: $list-spaced-item-padding-x;
                 padding-left: $list-spaced-item-padding-x;
             }
@@ -170,7 +181,7 @@
             flex-direction: row;
             padding-left: 0;
 
-            > .list-item {
+            .list-item {
                 &:not(:last-child) {
                     margin-right: $list-horizontal-padding;
                 }
@@ -179,7 +190,7 @@
             &%list-hz-bull-and-ord {
                 margin-left: 0;
 
-                > .list-item {
+                .list-item {
                     &::before {
                         position: static;
                         margin-left: 0;
@@ -200,7 +211,7 @@
 
             @if $enable-list-bulleted {
                 &.list-bulleted {
-                    > .list-item {
+                    .list-item {
                         &:first-child::before {
                             content: none;
                         }
@@ -209,7 +220,7 @@
             }
 
             &%list-hz-div-and-rul {
-                > .list-item {
+                .list-item {
                     padding-right: $list-horizontal-padding;
                     padding-left: $list-horizontal-padding;
                     margin: 0 0 0 -#{$list-border-width};
@@ -238,7 +249,7 @@
 
             @if $enable-list-divided {
                 &.list-divided {
-                    > .list-item {
+                    .list-item {
                         &:first-child {
                             padding-left: 0;
                             border-left: 0;
@@ -254,7 +265,7 @@
 
             @if $enable-list-group {
                 &.list-group {
-                    > .list-item {
+                    .list-item {
                         padding-right: $list-horizontal-padding;
                         padding-left: $list-horizontal-padding;
                         margin: 0 0 0 -#{$list-border-width};
@@ -276,7 +287,7 @@
             // Spacing again due to specificity.
             @if $enable-list-spaced {
                 &.list-spaced {
-                    > .list-item {
+                    .list-item {
                         padding: $list-spaced-item-padding-y $list-spaced-item-padding-x;
                     }
                 }
@@ -284,7 +295,7 @@
 
             @if $enable-list-spaced-y {
                 &.list-spaced-y {
-                    > .list-item {
+                    .list-item {
                         padding-top: $list-spaced-item-padding-y;
                         padding-bottom: $list-spaced-item-padding-y;
                     }
@@ -293,7 +304,7 @@
 
             @if $enable-list-spaced-x {
                 &.list-spaced-x {
-                    > .list-item {
+                    .list-item {
                         padding-right: $list-spaced-item-padding-x;
                         padding-left: $list-spaced-item-padding-x;
                     }
@@ -325,12 +336,6 @@
                 text-decoration: none;
                 background-color: $list-item-action-hover-bg;
             }
-
-            &.disabled,
-            &:disabled {
-                pointer-events: none;
-                cursor: default;
-            }
         }
     }
 
@@ -352,6 +357,8 @@
         &:disabled {
             color: $list-item-disabled-color;
             text-decoration: none;
+            pointer-events: none;
+            cursor: default;
             background-color: $list-item-disabled-bg;
         }
 
