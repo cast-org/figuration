@@ -30,4 +30,10 @@ Examples showing the navbar and how it is responsive, can be positioned, or exte
 - [Fixed Top Navbar]({{ site.baseurl }}/examples/navbar-fixed-top/index.html) - A basic template of a fixed top navbar and some additional content.
 - [Fixed Bottom Navbar]({{ site.baseurl }}/examples/navbar-fixed-bottom/index.html) - A basic template of a fixed bottom navbar and some additional content.
 
+## Project Concepts
+
+Examples of components and layouts to demonstrate what Figuration can help you create.
+
+- [Blog Example]({{ site.baseurl }}/examples/blog/index.html) - News style blog layout with header, navigation, footer, content cards, and a sample article.
+
 **More to come!**
