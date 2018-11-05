@@ -29,7 +29,7 @@
 //    md
 @function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
     $n: index($breakpoint-names, $name);
-    @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+    @return if($n != null and $n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
 }
 
 // Minimum breakpoint width. Null for the smallest (first) breakpoint.
@@ -45,11 +45,10 @@
 // The maximum value is calculated as the minimum of the next one less 1.
 //
 //    >> breakpoint-max(sm, (xs: 0, sm: 36em, md: 48em, lg: 62em, xl: 75em))
-//    47.9375em
+//    47.98em
 @function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
     $next: breakpoint-next($name, $breakpoints);
-    //@return if($next, breakpoint-min($next, $breakpoints) - 1px, null);
-    @return if($next, breakpoint-min($next, $breakpoints) - bp-to-em(1px), null);
+    @return if($next, breakpoint-min($next, $breakpoints) - .02, null);
 }
 
 // String value for breakpoint class name designation.

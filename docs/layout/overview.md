@@ -115,16 +115,16 @@ We occasionally use media queries that go in the other direction (the given scre
 
 {% highlight scss %}
 // Extra small devices (portrait phones, less than 36em/576px)
-@media (max-width: 35.9375em) { ... }
+@media (max-width: 35.98em) { ... }
 
 // Small devices (landscape phones, less than 48em/768px)
-@media (max-width: 47.9375em) { ... }
+@media (max-width: 47.98em) { ... }
 
 // Medium devices (tablets, less than 62em/992px)
-@media (max-width: 61.9375em) { ... }
+@media (max-width: 61.98em) { ... }
 
 // Large devices (desktops, less than 75em/1200px)
-@media (max-width: 74.9375em) { ... }
+@media (max-width: 74.98em) { ... }
 
 // Extra large devices (large desktops)
 // No media query since the `xl` breakpoint has no upper bound on its width
@@ -151,16 +151,16 @@ There are also media queries and mixins for targeting a single segment of screen
 
 {% highlight scss %}
 // Extra small devices (portrait phones, less than 36em/576px)
-@media (max-width: 35.9375em) { ... }
+@media (max-width: 35.98em) { ... }
 
 // Small devices (landscape phones, 36em/576px and up)
-@media (min-width: 36em) and (max-width: 47.9375em) { ... }
+@media (min-width: 36em) and (max-width: 47.98em) { ... }
 
 // Medium devices (tablets, 48em/768px and up)
-@media (min-width: 48em) and (max-width: 61.9375em) { ... }
+@media (min-width: 48em) and (max-width: 61.98em) { ... }
 
 // Large devices (desktops, 62em/992px and up)
-@media (min-width: 62em) and (max-width: 74.9375em) { ... }
+@media (min-width: 62em) and (max-width: 74.98em) { ... }
 
 // Extra large devices (large desktops, 75em/1200px and up)
 @media (min-width: 75em) { ... }
@@ -181,7 +181,7 @@ Similarly, media queries may span multiple breakpoint widths:
 {% highlight scss %}
 // Example
 // Medium devices (tablets, 48em/768px) up to Extra Large devices (desktops, 75em/1200px)
-@media (min-width: 48em) and (max-width: 74.9375em) { ... }
+@media (min-width: 48em) and (max-width: 74.98em) { ... }
 {% endhighlight %}
 
 The Sass mixin for targeting the same screen size range would be:

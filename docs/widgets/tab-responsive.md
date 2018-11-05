@@ -99,7 +99,7 @@ This example uses a breakpoint of 62em/992px.  Larger widths will see the tab st
         visibility: visible;
     }
 }
-@media (max-width: 61.9375em) {
+@media (max-width: 61.98em) {
     .cf-example-tabResponsive .nav-tabs {
         display: none;
     }
