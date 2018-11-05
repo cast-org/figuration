@@ -1,9 +1,12 @@
+// stylelint-disable property-blacklist
 @mixin transition($transition...) {
     @if $enable-transitions {
         transition: $transition;
 
-        @media screen and (prefers-reduced-motion: reduce) {
-            transition: none;
+        @if $enable-transitions-reduced {
+            @media screen and (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
         }
     }
 }

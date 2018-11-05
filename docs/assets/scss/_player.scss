@@ -179,12 +179,12 @@
 .player-fulldisplay.player-inactive .player {
     visibility: hidden;
     opacity: 0;
-    transition: visibility 1s, opacity 1s;
+    @include transition(visibility 1s, opacity 1s);
 }
 .player-fulldisplay.player-inactive.player-paused .player {
     visibility: visible;
     opacity: 1;
-    transition: all .15s;
+    @include transition(all .15s);
 }
 
 .player-notime .player-time-current,

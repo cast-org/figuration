@@ -88,7 +88,7 @@ Using color to add meaning only provides a visual indication, which will not be 
 
 ## Reduced Motion
 
-Figuration includes support for the [`prefers-reduced-motion` media feature](https://drafts.csswg.org/mediaqueries-5/#prefers-reduced-motion). In browsers/environments that allow the user to specify their preference for reduced motion, most CSS transition effects in Figuration (for instance, when a modal dialog is opened or closed) will be disabled. Currently, support is limited to Safari on macOS and iOS.
+Figuration includes support for the [`prefers-reduced-motion` media feature](https://drafts.csswg.org/mediaqueries-5/#prefers-reduced-motion). In browsers/environments that allow the user to specify their preference for reduced motion, most CSS transition effects in Figuration (for instance, when a modal dialog is opened or closed) will be disabled. Additional information about browser support can be found over at [Can I Use](https://caniuse.com/#search=prefers-reduced-motion).
 
 ## Additional Resources
 
