@@ -250,7 +250,7 @@ $docs-color: #246;
 
 // AnchorJS
 .anchorjs-link {
-    transition: opacity .2s ease-in-out .1s;
+    @include transition(opacity .2s ease-in-out .1s);
 
     @include hover-focus() {
         color: inherit;
