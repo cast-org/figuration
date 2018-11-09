@@ -56,4 +56,13 @@ $(function() {
 
         assert.strictEqual($().CFW_transitionDuration($div), 0);
     });
+
+    QUnit.test('CFW_transitionCssDuration should get additive value transition duration and transition delay', function(assert) {
+        assert.expect(2);
+        var $div0 = $('<div style="transition: transform .1s 200ms ease-out, opacity .2s"></div>').appendTo($('#qunit-fixture'));
+        var $div1 = $('<div style="transition: transform .15s 300ms ease-out, opacity .3s;"></div>').appendTo($('#qunit-fixture'));
+
+        assert.strictEqual($().CFW_transitionDuration($div0), 300);
+        assert.strictEqual($().CFW_transitionDuration($div1), 450);
+    });
 });
