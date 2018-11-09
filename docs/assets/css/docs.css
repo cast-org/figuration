@@ -42,7 +42,7 @@
   height: 2rem;
 }
 
-@media (max-width: 61.9375em) {
+@media (max-width: 61.98em) {
   .cf-header .navbar-collapse .navbar-nav {
     padding-top: .5rem;
   }
@@ -191,7 +191,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-@media (max-width: 61.9375em) {
+@media (max-width: 61.98em) {
   .jumbotron-home .container {
     width: 100%;
   }
@@ -228,7 +228,13 @@
 }
 
 .anchorjs-link {
-  transition: opacity .2s ease-in-out .1s;
+  transition: opacity 0.2s ease-in-out 0.1s;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .anchorjs-link {
+    transition: none;
+  }
 }
 
 .anchorjs-link:hover, .anchorjs-link:focus {
@@ -287,7 +293,7 @@
   background-color: #0c5782;
 }
 
-@media (max-width: 61.9375em) {
+@media (max-width: 61.98em) {
   .cf-sidebar .nav-link {
     display: inline-block;
   }
@@ -721,7 +727,7 @@ h4 > code {
   }
 }
 
-@media (max-width: 35.9375em) {
+@media (max-width: 35.98em) {
   .docsearch-wrapper {
     width: 5.5rem;
   }
@@ -1228,7 +1234,7 @@ h4 > code {
   }
 }
 
-@media (max-width: 61.9375em) {
+@media (max-width: 61.98em) {
   .cf-example-tabResponsive .nav-tabs {
     display: none;
   }
@@ -1591,25 +1597,25 @@ h4 > code {
   border: 1px solid #9fd0a2;
 }
 
-@media (max-width: 35.9375em) {
+@media (max-width: 35.98em) {
   .d-xs-only {
     display: none !important;
   }
 }
 
-@media (min-width: 36em) and (max-width: 47.9375em) {
+@media (min-width: 36em) and (max-width: 47.98em) {
   .d-sm-only {
     display: none !important;
   }
 }
 
-@media (min-width: 48em) and (max-width: 61.9375em) {
+@media (min-width: 48em) and (max-width: 61.98em) {
   .d-md-only {
     display: none !important;
   }
 }
 
-@media (min-width: 62em) and (max-width: 74.9375em) {
+@media (min-width: 62em) and (max-width: 74.98em) {
   .d-lg-only {
     display: none !important;
   }
@@ -1839,10 +1845,22 @@ h4 > code {
   transition: visibility 1s, opacity 1s;
 }
 
+@media screen and (prefers-reduced-motion: reduce) {
+  .player-fulldisplay.player-inactive .player {
+    transition: none;
+  }
+}
+
 .player-fulldisplay.player-inactive.player-paused .player {
   visibility: visible;
   opacity: 1;
-  transition: all .15s;
+  transition: all 0.15s;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .player-fulldisplay.player-inactive.player-paused .player {
+    transition: none;
+  }
 }
 
 .player-notime .player-time-current,
