@@ -55,22 +55,26 @@
 
     // Get longest CSS transition duration
     var CFW_transitionCssDuration = function($node) {
-        var durationArray = [0]; // Set a min value -- otherwise get `Infinity`
+        var timeArray = [0]; // Set a min value -- otherwise get `Infinity`
         var MILLISECONDS_MULTIPLIER = 1000;
+        var DURATION_PRECISION = 2;
 
         $node.each(function() {
             var $this = $(this);
-            var durations = $this.css('transition-duration') || $this.css('-webkit-transition-duration') || $this.css('-moz-transition-duration') || $this.css('-ms-transition-duration') || $this.css('-o-transition-duration');
-            if (durations) {
-                var times = durations.split(',');
-                for (var i = times.length; i--;) { // Reverse loop should be faster
-                    durationArray = durationArray.concat(parseFloat(times[i]));
+            var transitionDuration = $this.css('transition-duration');
+            var transitionDelay = $this.css('transition-delay');
+
+            if (transitionDuration && transitionDelay) {
+                var durations = transitionDuration.split(',');
+                var delays = transitionDelay.split(',');
+                for (var i = durations.length; i--;) {
+                    timeArray = timeArray.concat(parseFloat(durations[i]) + parseFloat(delays[i]));
                 }
             }
         });
 
-        var duration = Math.max.apply(Math, durationArray); // http://stackoverflow.com/a/1379560
-        return duration * MILLISECONDS_MULTIPLIER; // convert to milliseconds
+        var duration = Math.max.apply(Math, timeArray); // http://stackoverflow.com/a/1379560
+        return duration.toPrecision(DURATION_PRECISION) * MILLISECONDS_MULTIPLIER; // convert to milliseconds
     };
 
     var CFW_transitionEndEmulate = function(start, complete) {
