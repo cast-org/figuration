@@ -47,6 +47,8 @@ $font-family-sans-serif:
   "Segoe UI",
   // Android
   "Roboto",
+  // Linux
+  "Noto Sans",
   // Basic web fallback
   "Helvetica Neue", Arial, sans-serif,
   // Emoji fonts
