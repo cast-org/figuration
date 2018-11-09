@@ -67,9 +67,6 @@ Holder.addTheme("gray", {
     font-weight: bold;
     line-height: .75;
 }
-.close-sample .close {
-    float: none;
-}
 .card-sample .card {
     max-width: 20rem;
 }
@@ -2284,9 +2281,14 @@ Showing a <kbd>kdb sample</kbd>
 </p>
 
 <h3>Close</h3>
-<p class="close-sample">
+<p>
    Anchor: <a href="#" role="button" class="close" data-cfw-alert-animate=false aria-label="Close"><span aria-hidden="true">&times;</span></a>
    Button: <button type="button" class="close" data-cfw-alert-animate=false aria-label="Close"><span aria-hidden="true">&times;</span></button>
+</p>
+<h4>Close: Disabled</h4>
+<p>
+   Anchor: <a href="#" role="button" class="close disabled" tabindex="-1" data-cfw-alert-animate=false aria-label="Close"><span aria-hidden="true">&times;</span></a>
+   Button: <button type="button" class="close" disabled data-cfw-alert-animate=false aria-label="Close"><span aria-hidden="true">&times;</span></button>
 </p>
 
 <h3>Base Navigation</h3>

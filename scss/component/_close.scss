@@ -7,12 +7,16 @@
         text-decoration: none;
         opacity: $close-opacity;
 
+        // Override anchor styling
+        @include hover() {
+            color: inherit;
+            text-decoration: none;
+        }
+
         &:not(:disabled):not(.disabled) {
             cursor: pointer;
 
             @include hover-focus() {
-                color: inherit;
-                text-decoration: none;
                 opacity: $close-hover-opacity;
             }
         }
@@ -22,12 +26,17 @@
     // iOS requires the button element instead of an anchor tag.
     // If you want the anchor version, it requires `href="#"`.
     // See https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
-
     // stylelint-disable-next-line selector-no-qualifying-type
     button.close {
         padding: 0;
         background-color: transparent;
         border: 0;
         appearance: none;
+    }
+
+    // Future-proof disabling of clicks on `<a>` elements
+    // stylelint-disable-next-line selector-no-qualifying-type
+    a.close.disabled {
+        pointer-events: none;
     }
 }
