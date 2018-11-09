@@ -490,7 +490,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
             <tr>
                 <td><code>$font-family-sans-serif</code></td>
                 <td>string</td>
-                <td><code>-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"</code></td>
+                <td><code>-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"</code></td>
                 <td>
                     Sans-serif font stack.
                 </td>
