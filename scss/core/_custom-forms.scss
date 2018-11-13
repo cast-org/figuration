@@ -365,6 +365,10 @@
                     content: $text;
                 }
             }
+
+            ~ .custom-file-label[data-browse]::after {
+                content: attr(data-browse) !important;  // stylelint-disable-line declaration-no-important
+            }
         }
 
         .custom-file-label {

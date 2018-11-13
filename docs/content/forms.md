@@ -1031,7 +1031,7 @@ The file input is the most gnarly of the bunch and requires additional JavaScrip
 
 We hide the default file `<input>` via `opacity` and instead style the `<label>`. The button is generated and positioned with `::after`. Lastly, we declare a `width` and `height` on the `<input>` for proper spacing for surrounding content.
 
-#### Translating or Customizing the Strings
+#### Translating or Customizing the Strings with SCSS
 
 The [`:lang()` pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:lang) is used to allow for translation of the "Browse" text into other languages. Override or add entries to the `$custom-file-text` Sass variable with the relevant [language tag](https://en.wikipedia.org/wiki/IETF_language_tag) and localized strings. The English strings can be customized the same way. For example, here's how one might add a Spanish translation (Spanish's language code is `es`):
 
@@ -1052,6 +1052,19 @@ This example shows `lang="es"` in action on the custom file input for a Spanish 
 {% endexample %}
 
 You'll need to set the language of your document (or subtree thereof) correctly in order for the correct text to be shown. This can be done using [the `lang` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) on the `<html>` element or the [`Content-Language` HTTP header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.12), among other methods.
+
+#### Translating or Customizing the Strings with HTML
+
+We also provide a way to translate the "Browse" text in HTML with the `data-browse` attribute which can be added to the custom input label (example in Dutch):
+
+This method uses the `!important` CSS rule to override any SCSS designated translation, otherwise the browser's, or a page's, language setting would override the data attribute value.
+
+{% example html %}
+<div class="custom-file">
+  <input type="file" class="custom-file-input" id="custom-file-lang-html">
+  <label class="custom-file-label" for="custom-file-lang-html" data-browse="Bestand kiezen">Voeg je document toe</label>
+</div>
+{% endexample %}
 
 ## Validation
 
