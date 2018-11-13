@@ -100,37 +100,39 @@ $light:     palette($uibase, 50) !default;
 $dark:      palette($uibase, 800) !default;
 
 // Base Color Map - used for generating contextual variants
-// stylelint-disable
 $base-colors: () !default;
-$base-colors: map-merge((
-    "primary":   $primary,
-    "secondary": $secondary,
-    "info":      $info,
-    "success":   $success,
-    "warning":   $warning,
-    "danger":    $danger,
-    "light":     $light,
-    "dark":      $dark
-), $base-colors);
-// stylelint-enable
-
+// stylelint-disable-next-line scss/dollar-variable-default
+$base-colors: map-merge(
+    (
+        "primary":   $primary,
+        "secondary": $secondary,
+        "info":      $info,
+        "success":   $success,
+        "warning":   $warning,
+        "danger":    $danger,
+        "light":     $light,
+        "dark":      $dark
+    ),
+    $base-colors
+);
 
 // Palette Colors
 // =====
 $palette-colors: () !default;
-// stylelint-disable
-$palette-colors: map-merge((
-    "uibase":    $uibase,
-    "primary":   $primary,
-    "secondary": $secondary,
-    "info":      $info,
-    "success":   $success,
-    "warning":   $warning,
-    "danger":    $danger,
-    "gray":      $gray
-), $palette-colors);
-// stylelint-enable
-
+// stylelint-disable-next-line scss/dollar-variable-default
+$palette-colors: map-merge(
+    (
+        "uibase":    $uibase,
+        "primary":   $primary,
+        "secondary": $secondary,
+        "info":      $info,
+        "success":   $success,
+        "warning":   $warning,
+        "danger":    $danger,
+        "gray":      $gray
+    ),
+    $palette-colors
+);
 
 // Color Contrast
 // =====
@@ -182,16 +184,18 @@ $table-themes:          () !default;
 // Control the default spacing of most elements by modifying these variables.
 $spacer:   1rem !default;
 $spacers: () !default;
-// stylelint-disable
-$spacers: map-merge((
-    "0":    0,
-    "0_25": ($spacer * .25),
-    "0_5":  ($spacer * .5),
-    "1":    $spacer,
-    "1_5":  ($spacer * 1.5),
-    "2":    ($spacer * 2)
-), $spacers);
-// stylelint-enable
+// stylelint-disable-next-line scss/dollar-variable-default
+$spacers: map-merge(
+    (
+        "0":    0,
+        "0_25": ($spacer * .25),
+        "0_5":  ($spacer * .5),
+        "1":    $spacer,
+        "1_5":  ($spacer * 1.5),
+        "2":    ($spacer * 2)
+    ),
+    $spacers
+);
 
 $spacers-negative:          $spacers !default;
 $spacers-negative-prepend:   n !default;
@@ -201,13 +205,18 @@ $spacers-negative-prepend:   n !default;
 // =====
 // Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
-$grid-breakpoints: (
-    xs: 0,
-    sm: bp-to-em(576px),
-    md: bp-to-em(768px),
-    lg: bp-to-em(992px),
-    xl: bp-to-em(1200px)
-) !default;
+$grid-breakpoints: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$grid-breakpoints: map-merge(
+    (
+        xs: 0,
+        sm: bp-to-em(576px),
+        md: bp-to-em(768px),
+        lg: bp-to-em(992px),
+        xl: bp-to-em(1200px)
+    ),
+    $grid-breakpoints
+);
 @include _assert-ascending($grid-breakpoints, "breakpoint", "$grid-breakpoints");
 @include _assert-starts-at-zero($grid-breakpoints);
 
@@ -236,12 +245,17 @@ $utility-valign-breakpoints:        map-keys($grid-breakpoints) !default;
 // Grid containers
 // =====
 // Define the maximum width of `.container` for different screen sizes.
-$container-max-widths: (
-    sm: rem(544px),
-    md: rem(720px),
-    lg: rem(960px),
-    xl: rem(1152px)
-) !default;
+$container-max-widths: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$container-max-widths: map-merge(
+    (
+        sm: rem(544px),
+        md: rem(720px),
+        lg: rem(960px),
+        xl: rem(1152px)
+    ),
+    $container-max-widths
+);
 @include _assert-ascending($container-max-widths, "container", "$container-max-widths");
 
 
@@ -258,13 +272,18 @@ $grid-columns:      12 !default;
 // If modifying, you will also have to adjust the `$container-max-widths`
 // values also to prevent horizontal scrolling.
 $grid-gutter-width: 2rem !default;
-$grid-gutter-widths: (
-    xs: $grid-gutter-width,
-    sm: $grid-gutter-width,
-    md: $grid-gutter-width,
-    lg: $grid-gutter-width,
-    xl: $grid-gutter-width
-) !default;
+$grid-gutter-widths: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$grid-gutter-widths: map-merge(
+    (
+        xs: $grid-gutter-width,
+        sm: $grid-gutter-width,
+        md: $grid-gutter-width,
+        lg: $grid-gutter-width,
+        xl: $grid-gutter-width
+    ),
+    $grid-gutter-widths
+);
 
 
 // Borders
@@ -406,38 +425,40 @@ $component-section-border-color:    rgba($uibase-900, .3) !default;
 // Used for button, button groups, pagination, form-control, and input-group
 // 'md' is considered to be the default size, so no classes for this size designator are generated, as in *no* `.btn-md`.
 $component-sizes: () !default;
-// stylelint-disable
-$component-sizes: map-merge((
-    "xsmall": (
-        "padding-y":     .125rem,
-        "padding-x":     .375rem,
-        "font-size":     ($font-size-base * .75),
-        "line-height":   1.5,
-        "border-radius": .1875rem
+// stylelint-disable-next-line scss/dollar-variable-default
+$component-sizes: map-merge(
+    (
+        "xsmall": (
+            "padding-y":     .125rem,
+            "padding-x":     .375rem,
+            "font-size":     ($font-size-base * .75),
+            "line-height":   1.5,
+            "border-radius": .1875rem
+        ),
+        "small": (
+            "padding-y":     .1875rem,
+            "padding-x":     .5rem,
+            "font-size":     ($font-size-base * .875),
+            "line-height":   1.5,
+            "border-radius": .1875rem
+        ),
+        "large": (
+            "padding-y":     .3125rem,
+            "padding-x":     1.125rem,
+            "font-size":     ($font-size-base * 1.125),
+            "line-height":    1.5,
+            "border-radius": .3125rem
+        ),
+        "xlarge": (
+            "padding-y":     .375rem,
+            "padding-x":     1.25rem,
+            "font-size":     ($font-size-base * 1.25),
+            "line-height":    1.5,
+            "border-radius": .3125rem
+        )
     ),
-    "small": (
-        "padding-y":     .1875rem,
-        "padding-x":     .5rem,
-        "font-size":     ($font-size-base * .875),
-        "line-height":   1.5,
-        "border-radius": .1875rem
-    ),
-    "large": (
-        "padding-y":     .3125rem,
-        "padding-x":     1.125rem,
-        "font-size":     ($font-size-base * 1.125),
-        "line-height":    1.5,
-        "border-radius": .3125rem
-    ),
-    "xlarge": (
-        "padding-y":     .375rem,
-        "padding-x":     1.25rem,
-        "font-size":     ($font-size-base * 1.25),
-        "line-height":    1.5,
-        "border-radius": .3125rem
-    )
-), $component-sizes);
-// stylelint-enable
+    $component-sizes
+);
 
 // Per component/utility sizing
 $btn-sizes:             $component-sizes !default;
@@ -450,21 +471,23 @@ $utility-radius-sizes:  $component-sizes !default;
 // =====
 // Control the `box-shadow` depth.
 $shadows: () !default;
-// stylelint-disable
-$shadows: map-merge((
-    "0":  none,
-    "d1": 0 .125rem .25rem rgba($black, .15),
-    "d2": 0 .125rem .5rem rgba($black, .15),
-    "d3": 0 .125rem .75rem rgba($black, .15),
-    "d4": 0 .125rem 1rem rgba($black, .15),
-    "d5": 0 .125rem 1.25rem rgba($black, .15),
-    "i1": inset 0 .125rem .25rem rgba($black, .15),
-    "i2": inset 0 .125rem .5rem rgba($black, .15),
-    "i3": inset 0 .125rem .75rem rgba($black, .15),
-    "i4": inset 0 .125rem 1rem rgba($black, .15),
-    "i5": inset 0 .125rem 1.25rem rgba($black, .15)
-), $shadows);
-// stylelint-enable
+// stylelint-disable-next-line scss/dollar-variable-default
+$shadows: map-merge(
+    (
+        "0":  none,
+        "d1": 0 .125rem .25rem rgba($black, .15),
+        "d2": 0 .125rem .5rem rgba($black, .15),
+        "d3": 0 .125rem .75rem rgba($black, .15),
+        "d4": 0 .125rem 1rem rgba($black, .15),
+        "d5": 0 .125rem 1.25rem rgba($black, .15),
+        "i1": inset 0 .125rem .25rem rgba($black, .15),
+        "i2": inset 0 .125rem .5rem rgba($black, .15),
+        "i3": inset 0 .125rem .75rem rgba($black, .15),
+        "i4": inset 0 .125rem 1rem rgba($black, .15),
+        "i5": inset 0 .125rem 1.25rem rgba($black, .15)
+    ),
+    $shadows
+);
 
 
 // Component pieces
