@@ -1642,9 +1642,6 @@ if (typeof jQuery === 'undefined') {
                 e.preventDefault();
             }
 
-            var inTransition = this.$navElm.data('cfw.tab.inTransition');
-            if (inTransition) { return; }
-
             if (this.$element.hasClass('active') ||
                 this.$element.hasClass('disabled') ||
                 this.$element[0].hasAttribute('disabled')) {
@@ -1668,8 +1665,6 @@ if (typeof jQuery === 'undefined') {
             if (!eventHideResult || !eventShowResult) {
                 return;
             }
-
-            this.$navElm.data('cfw.tab.inTransition', true);
 
             if ($previous.length) {
                 $previous
@@ -1758,7 +1753,6 @@ if (typeof jQuery === 'undefined') {
                     });
                     $node.CFW_mutateTrigger();
                     $prevActive.CFW_mutateTrigger();
-                    $selfRef.$navElm.removeData('cfw.tab.inTransition');
                 }
             };
 

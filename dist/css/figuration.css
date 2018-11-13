@@ -1885,6 +1885,10 @@ textarea.form-control:not([rows="1"]) {
   content: "Browse";
 }
 
+.custom-file-input ~ .custom-file-label[data-browse]::after {
+  content: attr(data-browse) !important;
+}
+
 .custom-file-label {
   position: absolute;
   top: 0;
@@ -6723,11 +6727,11 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
 .modal {
   position: fixed;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
   z-index: 1060;
   display: none;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   direction: ltr /*rtl:ignore*/;
   outline: 0;
@@ -6799,10 +6803,10 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
 .modal-backdrop {
   position: fixed;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
   z-index: 1050;
+  width: 100vw;
+  height: 100vh;
   background-color: #343e48;
 }
 
