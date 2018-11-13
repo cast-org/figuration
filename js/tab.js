@@ -111,8 +111,8 @@
                 e.preventDefault();
             }
 
-            //var inTransition = this.$navElm.data('cfw.tab.inTransition');
-            //if (inTransition) { return; }
+            var inTransition = this.$navElm.data('cfw.tab.inTransition');
+            if (inTransition) { return; }
 
             if (this.$element.hasClass('active') ||
                 this.$element.hasClass('disabled') ||
@@ -138,7 +138,7 @@
                 return;
             }
 
-            //this.$navElm.data('cfw.tab.inTransition', true);
+            this.$navElm.data('cfw.tab.inTransition', true);
 
             if ($previous.length) {
                 $previous
