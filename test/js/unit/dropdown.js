@@ -552,4 +552,129 @@ $(function() {
             which: 27 // Esc
         }));
     });
+
+    QUnit.test('should fire afterShow and afterHidden events with a relatedTarget', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
+            '<ul class="dropdown-menu">' +
+            '<li><a href="#" id="focusable">Menu link</a></li>' +
+            '</ul>' +
+            '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+
+        $dropdown.parent('.dropdown')
+            .on('afterShow.cfw.dropdown', function(e) {
+                assert.strictEqual(e.relatedTarget, $dropdown[0]);
+                $(document.body).trigger('click');
+            })
+            .on('afterHide.cfw.dropdown', function(e) {
+                assert.strictEqual(e.relatedTarget, $dropdown[0]);
+                done();
+            });
+
+        $dropdown.trigger('click');
+    });
+
+    QUnit.test('submenu toggles should also fire afterShow and afterHidden events with a relatedTarget independent of main toggle', function(assert) {
+        assert.expect(4);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
+            '<ul class="dropdown-menu">' +
+            '<li>' +
+            '<a href="#" id="subtoggle">Menu link</a>' +
+            '<ul>' +
+            '<li><a href="#">Sub-menu link</a></li>' +
+            '</ul>' +
+            '</li>' +
+            '</ul>' +
+            '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+        var $subtoggle = $('#subtoggle');
+
+        $dropdown.parent('.dropdown')
+            .on('afterShow.cfw.dropdown', function(e) {
+                assert.strictEqual(e.relatedTarget, $dropdown[0]);
+                $subtoggle.parent('li')
+                    .on('afterShow.cfw.dropdown', function(e) {
+                        e.stopPropagation();
+                        assert.strictEqual(e.relatedTarget, $subtoggle[0]);
+                        $(document.body).trigger('click');
+                    })
+                    .on('afterHide.cfw.dropdown', function(e) {
+                        e.stopPropagation();
+                        assert.strictEqual(e.relatedTarget, $subtoggle[0]);
+                    });
+
+                $subtoggle.trigger('click');
+            })
+            .on('afterHide.cfw.dropdown', function(e) {
+                assert.strictEqual(e.relatedTarget, $dropdown[0]);
+                done();
+            });
+
+        $dropdown.trigger('click');
+    });
+
+    QUnit.test('should fire beforeHide and afterHide events with a clickEvent if event type is click', function(assert) {
+        assert.expect(3);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
+            '<ul class="dropdown-menu">' +
+            '<li><a href="#" id="focusable">Menu link</a></li>' +
+            '</ul>' +
+            '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+
+        $dropdown.parent('.dropdown')
+            .on('afterShow.cfw.dropdown', function() {
+                assert.ok(true, 'afterShow was fired');
+                $(document.body).trigger('click');
+            })
+            .on('beforeHide.cfw.dropdown', function(e) {
+                assert.ok(e.clickEvent);
+            })
+            .on('afterHide.cfw.dropdown', function(e) {
+                assert.ok(e.clickEvent);
+                done();
+            });
+
+        $dropdown.trigger('click');
+    });
+
+    QUnit.test('should fire beforeHide and afterHide event without a clickEvent if event type is not click', function(assert) {
+        assert.expect(3);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
+            '<ul class="dropdown-menu">' +
+            '<li><a href="#" id="focusable">Menu link</a></li>' +
+            '</ul>' +
+            '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown();
+
+        $dropdown.parent('.dropdown')
+            .on('afterShow.cfw.dropdown', function() {
+                assert.ok(true, 'shown was fired');
+                $dropdown.trigger($.Event('keydown', {
+                    which: 27 // Esc
+                }));
+            })
+            .on('beforeHide.cfw.dropdown', function(e) {
+                assert.notOk(e.clickEvent);
+            })
+            .on('afterHide.cfw.dropdown', function(e) {
+                assert.notOk(e.clickEvent);
+                done();
+            });
+
+        $dropdown.trigger('click');
+    });
 });

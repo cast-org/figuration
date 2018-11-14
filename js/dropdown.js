@@ -73,7 +73,7 @@
         $('[data-cfw="dropdown"]').each(function() {
             var $parent = getParent($(this));
             if (!$parent.hasClass('open')) { return; }
-            $(this).CFW_Dropdown('hideRev');
+            $(this).CFW_Dropdown('hideRev', e);
         });
     };
 
@@ -286,7 +286,11 @@
             var showing = $parent.hasClass('open');
             if (showing) { return; }
 
-            if (!$trigger.CFW_trigger('beforeShow.cfw.dropdown')) {
+            var eventProperties = {
+                relatedTarget: $trigger[0]
+            };
+
+            if (!$trigger.CFW_trigger('beforeShow.cfw.dropdown', eventProperties)) {
                 return;
             }
 
@@ -351,7 +355,7 @@
             //  .children('a').attr('tabIndex', 0);
             this.$target.find('li').redraw();
 
-            $trigger.CFW_trigger('afterShow.cfw.dropdown');
+            $trigger.CFW_trigger('afterShow.cfw.dropdown', eventProperties);
         },
 
         hideMenu : function(e, $trigger, $menu, triggerFocus) {
@@ -363,7 +367,14 @@
             var showing = $parent.hasClass('open');
             if (!showing) { return; }
 
-            if (!$trigger.CFW_trigger('beforeHide.cfw.dropdown')) {
+            var eventProperties = {
+                relatedTarget: $trigger[0]
+            };
+            if (e && e.type === 'click') {
+                eventProperties.clickEvent = e;
+            }
+
+            if (!$trigger.CFW_trigger('beforeHide.cfw.dropdown', eventProperties)) {
                 return;
             }
 
@@ -412,7 +423,7 @@
                 $trigger.trigger('focus');
             }
             $parent.removeClass(this.c.hover);
-            $trigger.CFW_trigger('afterHide.cfw.dropdown');
+            $trigger.CFW_trigger('afterHide.cfw.dropdown', eventProperties);
         },
 
         toggle : function() {
@@ -427,8 +438,8 @@
             this.hideMenu(null, this.$element, this.$target);
         },
 
-        hideRev : function() {
-            this.hideMenu(null, this.$element, this.$target, false);
+        hideRev : function(e) {
+            this.hideMenu(e, this.$element, this.$target, false);
         },
 
         closeUp : function($node) {
