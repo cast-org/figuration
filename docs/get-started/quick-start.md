@@ -46,11 +46,11 @@ Essentially something like this:
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>Hello, world!</title>
-
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Hello, world!</title>
 
     <!-- Figuration CSS -->
     <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
@@ -92,11 +92,11 @@ When complete, the basic template for a right-to-left markup should look like th
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
-    <title>Hello, world!</title>
-
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Hello, world!</title>
 
     <!-- Figuration RTL CSS -->
     <link rel="stylesheet" href="{{ site.cdn.css_rtl }}" integrity="{{ site.cdn.css_rtl_hash }}" crossorigin="anonymous">
