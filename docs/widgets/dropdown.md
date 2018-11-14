@@ -673,6 +673,10 @@ Hides the root menu element and disconnect all the event listeners and data from
 
 Event callbacks for the root menu happen on the toggle element. Callbacks for the submenus occur on the submenu's sibling anchor (toggle).
 
+Show and hide, both before and after, events have an added `relatedTarget` property, whose value is the toggling anchor element.
+
+Before and after hide events have a `clickEvent` property (only when the original event type is `click`) that contains an event object for the click event.
+
 <div class="table-scroll">
     <table class="table table-bordered table-striped">
         <thead>
