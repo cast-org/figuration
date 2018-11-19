@@ -20,12 +20,10 @@ group: get-started
       <div class="card card-download">
         <h3 class="h4 card-header text-light" style="background-color: #246;">Compiled</h3>
         <div class="card-body">
-{% markdown %}
-Download just the compiled and minified CSS and JavaScript. Doesn't include any documentation or original source files.
-{% endmarkdown %}
+            Download just the compiled and minified CSS and JavaScript. Doesn't include any documentation or original source files.
         </div>
         <div class="card-footer text-sm-center">
-<a href="{{ site.download.dist }}" class="btn btn-info" onclick="ga('send', 'event', 'Get Started', 'Download', 'Download compiled {{ site.current_version }}');">Download Figuration</a>
+            <a href="{{ site.download.dist }}" class="btn btn-info" onclick="ga('send', 'event', 'Get Started', 'Download', 'Download compiled {{ site.current_version }}');">Download Figuration</a>
         </div> <!-- /.card-footer -->
       </div> <!-- /.card -->
     </div>
@@ -33,12 +31,10 @@ Download just the compiled and minified CSS and JavaScript. Doesn't include any 
       <div class="card card-download">
         <h3 class="h4 card-header text-light" style="background-color: #246;">Source Files</h3>
         <div class="card-body">
-{% markdown %}
-Download everything: source Sass, JavaScript, and documentation files. **Requires a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes), and [some setup]({{ site.baseurl }}/get-started/build-tools/#tooling-setup).**
-{% endmarkdown %}
+            Download everything: source Sass, JavaScript, and documentation files. **Requires a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes), and [some setup]({{ site.baseurl }}/get-started/build-tools/#tooling-setup).**
         </div>
         <div class="card-footer text-sm-center">
-<a href="{{ site.download.source }}" class="btn" onclick="ga('send', 'event', 'Get Started', 'Download', 'Download source {{ site.current_version }}');">Download source</a>
+            <a href="{{ site.download.source }}" class="btn" onclick="ga('send', 'event', 'Get Started', 'Download', 'Download source {{ site.current_version }}');">Download source</a>
         </div> <!-- /.card-footer -->
       </div> <!-- /.card -->
     </div>  <!-- /.col -->
