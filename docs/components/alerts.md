@@ -17,12 +17,7 @@ Provide contextual feedback messages for typical user actions with the handful o
 
 Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use of the contextual classes (e.g., `.alert-success`) is **required**. For inline dismissal, use the [Alert jQuery widget]({{ site.baseurl }}/widgets/alert/).
 
-{% callout warning %}
-Conveying Meaning to Assistive Technologies
-{:.h5}
-
-Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
-{% endcallout %}
+{% include callout-warning-color-assistive-technologies.md %}
 
 {% example html %}
 <div class="alert alert-primary" role="alert">

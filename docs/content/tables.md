@@ -742,12 +742,13 @@ A `<caption>` functions like a heading for a table. It helps users with screen r
 
 Having an issue with tables becoming too wide for their containers? Add a `.table-scroll` wrapper to any `.table` to make them scroll horizontally if they become wider than their container.
 
-{% callout warning %}
+{% capture callout %}
 Vertical Clipping
-{:.h5}
+{:.h5 .no_toc}
 
 Scrolling tables make use of `overflow-y: hidden`, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off dropdown menus and other third-party widgets.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 ### Always Scrolling
 
@@ -1100,12 +1101,7 @@ Responsive variants are:
 
 Use [color utility classes]({{ site.baseurl }}/utilities/color/) to style tables with color.
 
-{% callout warning %}
-Conveying Meaning to Assistive Technologies
-{:.h5}
-
-Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
-{% endcallout %}
+{% include callout-warning-color-assistive-technologies.md %}
 
 ### Inverse Table
 

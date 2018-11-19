@@ -16,31 +16,34 @@ Player is a way to enable customized controls while using the browser's built in
 
 Currently, there is no base CSS provided by Figuration in either the `figuration.css` or `figuration.min.css` files.  The examples below use CSS that is specific to our docs pages.
 
-{% callout info %}
+{% capture callout %}
 HTML5 Audio/Video Support
-{:.h5}
+{:.h5 .no_toc}
 
 Player builds on top of the browser's built in HTML5 `<audio>`/`<video>` player. The limits and supported media types are determined by the browser itself.
 
 W3School's HTML [`<audio>`](https://www.w3schools.com/tags/tag_audio.asp) and [`<video>`](https://www.w3schools.com/tags/tag_video.asp) pages have additional information. The [audio/video DOM reference](https://www.w3schools.com/tags/ref_av_dom.asp) page might also be useful.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 
-{% callout info %}
+{% capture callout %}
 Widget Dependencies
-{:.h5}
+{:.h5 .no_toc}
 
 Player requires the following:
 
 - [Dropdown widget]({{ site.baseurl}}/widgets/dropdown/) for caption and transcript selection menu.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 {:.cf-callout-dep}
 
-{% callout warning %}
+{% capture callout %}
 No Media Service Support
-{:.h5}
+{:.h5 .no_toc}
 
 Player does not support media services such as YouTube, Vimeo, SoundCloud, and others.  There are currently no plans to support these types of services.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 ## Contents
 {:.no_toc}

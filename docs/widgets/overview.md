@@ -7,26 +7,29 @@ redirect_from: "/widgets/"
 
 Add more functionality and interactivity to to Figuration with our optional jQuery powered widgets.  Each one is designed with accessibility already built-in.
 
-{% callout warning %}
+{% capture callout %}
 Using the compiled JavaScript
-{:.h5}
+{:.h5 .no_toc}
 
 Both `figuration.js` and `figuration.min.js` contain all widgets and helper utilities in a single file. **Include only one.**
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
-{% callout danger %}
+{% capture callout %}
 One Widget per Element
-{:.h5}
+{:.h5 .no_toc}
 
 Don't use multiple widgets on the same element. For example, a button should not both have a tooltip and toggle a modal. Doing so would cause a conflict in functionality and with the <abbr title="Accessible Rich Internet Applications">ARIA</abbr> attributes.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="danger" %}
 
-{% callout info %}
+{% capture callout %}
 Widget Dependencies
-{:.h5}
+{:.h5 .no_toc}
 
 Some widgets and CSS components depend on other widgets. If you include widgets individually, make sure to check for these dependencies in the docs. Also note that all widgets depend on jQuery (this means jQuery must be included **before** the widget files). Figuration is currently only tested/supported on the latest version of jQuery.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 
 ## Contents
 {:.no_toc}
@@ -180,9 +183,10 @@ To provide screen readers with high levels of accessibility the widgets will aut
 
 This was done to alleviate the complexity of any generated source code&mdash;the data api adds enough on its own&mdash;and remove concerns over which attributes are needed for the developers and content authors.
 
-{% callout warning %}
+{% capture callout %}
 `role` Attributes on Container Items
-{:.h5}
+{:.h5 .no_toc}
 
 Container items at a higher level from a widget component might need to have a `role` specificied.  These are not handled by the widget code and will need to be used as needed.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}

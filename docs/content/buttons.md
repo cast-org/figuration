@@ -23,12 +23,7 @@ Use Figuration's custom button styles for actions in forms, dialogs, and more. I
 
 Figuration includes a few predefined button styles, each serving its own semantic purpose.
 
-{% callout warning %}
-Conveying Meaning to Assistive Technologies
-{:.h5}
-
-Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
-{% endcallout %}
+{% include callout-warning-color-assistive-technologies.md %}
 
 {% example html %}
 <button type="button" class="btn">Default</button>
@@ -207,12 +202,7 @@ Make buttons look inactive by adding the `disabled` boolean attribute to any `<b
 
 Disabled buttons using the `<a>` element behave a bit different:
 
-{% callout warning %}
-Disabling Anchors
-{:.h5}
-
-Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl }}/get-started/accessibility/#disabled-anchors).
-{% endcallout %}
+{% include callout-warning-disabling-anchors.md %}
 
 {% example html %}
 <strong>Anchor Standard Buttons:</strong>

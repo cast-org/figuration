@@ -18,12 +18,7 @@ If you are using navs to provide a navigation bar, be sure to add a `role="navig
 
 Note that navigation bars, even if visually styled as tabs with the `.nav-tabs` class, should **not** be given `role="tablist"`, `role="tab"` or `role="tabpanel"` attributes. These are only appropriate for dynamic tabbed interfaces, as described in the [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel). See our [Tab widget]({{ site.baseurl }}/widgets/tab/) for an example and additional details.
 
-{% callout warning %}
-Disabling Anchors
-{:.h5}
-
-Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl }}/get-started/accessibility/#disabled-anchors).
-{% endcallout %}
+{% include callout-warning-disabling-anchors.md %}
 
 ## Base Nav
 
@@ -265,12 +260,13 @@ If you need responsive nav variations, consider using a series of [flexbox utili
 
 Add dropdown menus with a little extra HTML and the [Dropdown JavaScript widget]({{ site.baseurl }}/widgets/dropdown/).
 
-{% callout warning %}
+{% capture callout %}
 Incompatible Widgets
-{:.h5}
+{:.h5 .no_toc}
 
 For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}/widgets/tab/) and [Dropdown widget]({{ site.baseurl }}/widgets/dropdown/) in the same nav item.  This will cause navigation and usability issues.  One or the other, but not both.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 ### Tabs with Dropdowns
 

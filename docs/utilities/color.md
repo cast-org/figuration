@@ -6,19 +6,15 @@ group: utilities
 
 Add a little, or a lot of, color to your site or application.
 
-{% callout info %}
+{% capture callout %}
 Dealing with Specificity
-{:.h5}
+{:.h5 .no_toc}
 
 Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a `<div>` with the class.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 
-{% callout warning %}
-Conveying Meaning to Assistive Technologies
-{:.h5}
-
-Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
-{% endcallout %}
+{% include callout-warning-color-assistive-technologies.md %}
 
 ## Contents
 {:.no_toc}

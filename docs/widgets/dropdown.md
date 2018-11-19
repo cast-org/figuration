@@ -14,11 +14,13 @@ group: widgets
 
 Add a context menu or list of links to a control item.  Support for nested lists is included automatically.  There is also an expand on hover option, even though we recommend that you use the default click to toggle mode for consitent usability across devices.
 
-{% callout warning %}
+{% capture callout %}
 Incompatible Widgets
-{:.h5}
+{:.h5 .no_toc}
+
 For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}/widgets/tab/) and [Dropdown widget]({{ site.baseurl }}/widgets/dropdown/) in the same nav item.  This will cause navigation and usability issues.  One or the other, but not both.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 ## Contents
 {:.no_toc}
@@ -208,12 +210,7 @@ Separate groups of related menu items with a divider by using `.dropdown-divider
 
 Add `.disabled` to the `a` item in the dropdown to make them visually _appear_ disabled.
 
-{% callout warning %}
-Disabling Anchors
-{:.h5}
-
-Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl }}/get-started/accessibility/#disabled-anchors).
-{% endcallout %}
+{% include callout-warning-disabling-anchors.md %}
 
 {% example html %}
 <ul class="dropdown-menu">

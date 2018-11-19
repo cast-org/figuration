@@ -88,12 +88,7 @@ By setting a `height` value on the outer `.progress`, you change the height acco
 
 Use our [color utility]({{ site.baseurl }}/utilities/color/) classes to change the appearance of individual progress bars.
 
-{% callout warning %}
-Conveying Meaning to Assistive Technologies
-{:.h5}
-
-Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
-{% endcallout %}
+{% include callout-warning-color-assistive-technologies.md %}
 
 {% example html %}
 <div class="progress">

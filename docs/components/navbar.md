@@ -464,12 +464,7 @@ You can also use utility classes to align navbar text to other navbar elements l
 
 Add `.disabled` to a `.nav-link` to indicate a disabled state.
 
-{% callout warning %}
-Disabling Anchors
-{:.h5}
-
-Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl }}/get-started/accessibility/#disabled-anchors).
-{% endcallout %}
+{% include callout-warning-disabling-anchors.md %}
 
 <div class="cf-example">
   <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between mb-1">

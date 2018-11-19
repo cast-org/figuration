@@ -8,12 +8,7 @@ Figuration offers some simple color palettes extended from our base colors, simi
 
 More information and examples about using the color palette and related utilities is available on the [color utilities page]({{ site.baseurl }}/utilities/color/).
 
-{% callout warning %}
-Conveying Meaning to Assistive Technologies
-{:.h5}
-
-Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
-{% endcallout %}
+{% include callout-warning-color-assistive-technologies.md %}
 
 <div class="row text-black">
      <div class="palette col-sm-6 col-md-4">

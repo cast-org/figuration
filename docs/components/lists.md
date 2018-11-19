@@ -366,12 +366,7 @@ Add `.active` to a `.list-item` to indicate the current active selection.
 
 Add `.disabled` to a `<li>` or `.list-item` to make it out to _appear_ disabled. Note that some elements with `.disabled` will also require custom JavaScript to fully disable their click events (e.g., links).
 
-{% callout warning %}
-Disabling Anchors
-{:.h5}
-
-Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl }}/get-started/accessibility/#disabled-anchors).
-{% endcallout %}
+{% include callout-warning-disabling-anchors.md %}
 
 {% example html %}
 <ul class="list">
@@ -471,12 +466,7 @@ Add nearly any HTML within, even for linked lists like the one below, using [fle
 
 Use [color utility classes]({{ site.baseurl }}/utilities/color/) to style lists with color.
 
-{% callout warning %}
-Conveying Meaning to Assistive Technologies
-{:.h5}
-
-Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
-{% endcallout %}
+{% include callout-warning-color-assistive-technologies.md %}
 
 ### Rule Color
 

@@ -233,21 +233,23 @@ Scrollspy requires the use of a `ul`, `ol`, or `nav` as the target element conta
 
 No matter the implementation method, scrollspy requires the use of `position: relative;` on the element you're spying on. In most cases this is the `<body>`. When scrollspying on elements other than the `<body>`, be sure to have a `height` set and `overflow-y: scroll;` applied.
 
-{% callout danger %}
+{% capture callout %}
 Resolvable ID targets required
-{:.h5}
+{:.h5 .no_toc}
 
 Navigation links must have resolvable id targets. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`.
 
 In those, hopefully rare, cases where you do not need a working link, use a `data-cfw-scrollspy-target` attribute on the indicator item. For example, using the attribute `data-cfw-scrollspy-target="#home"` would a correspond to the DOM target `<div id="home"></div>`.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="danger" %}
 
-{% callout info %}
+{% capture callout %}
 Non-`:visible` target elements ignored
-{:.h5}
+{:.h5 .no_toc}
 
 Target elements that are not [`:visible` according to jQuery](https://api.jquery.com/visible-selector/) will be ignored and their corresponding nav items will never be highlighted.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 
 ### Via Data Attributes
 

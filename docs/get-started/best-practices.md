@@ -13,9 +13,10 @@ We have adopted many of Bootstrap's suggestions, with a few tweaks, to keep most
 * ToC goes here
 {:toc}
 
-{% callout info %}
+{% capture callout %}
 **Heads up!** This copy is a work in progress.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 
 ### General Outline
 - Working with CSS

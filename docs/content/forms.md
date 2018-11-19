@@ -18,12 +18,13 @@ Figuration's form controls expand on [the Rebooted form styles]({{ site.baseurl 
 
 Be sure to use an appropriate type attribute on all inputs (e.g., `email` for email address or `number` for numerical information) to take advantage of newer input controls like email verification, number selection, and more.
 
-{% callout warning %}
+{% capture callout %}
 Alternatives to Hidden Labels
-{:.h5}
+{:.h5 .no_toc}
 
 Assistive technologies such as screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the `.sr-only` class. There are further alternative methods of providing a label for assistive technologies, such as the `aria-label`, `aria-labelledby` or `title` attribute. If none of these are present, assistive technologies may resort to using the `placeholder` attribute, if present, but note that use of `placeholder` as a replacement for other labelling methods is not advised.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 The example form below demonstrates Figuration's form styles.
 
@@ -310,12 +311,13 @@ Set horizontally scrollable range inputs using `.form-control-range`.
 
 For color inputs, use `.form-control-color` instead of `.form-control`.
 
-{% callout danger %}
+{% capture callout %}
 Browser Compatibility
-{:.h5}
+{:.h5 .no_toc}
 
 While Figuration supports styling `<input type="color">` elements, some browsers don't. Use custom JavaScript to handle it in these browsers.  For support details, see [Can I Use](https://caniuse.com/#feat=input-color).
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="danger" %}
 
 
 {% example html %}
@@ -442,30 +444,32 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
 </form>
 {% endexample %}
 
-{% callout warning %}
+{% capture callout %}
 Caveat About Link Functionality of `<a>`
-{:.h5}
+{:.h5 .no_toc}
 
 By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`. As noted in the section about [disabled state for buttons](../buttons/#disabled-state) (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in all browsers, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
-{% callout danger %}
+{% capture callout %}
 Cross-browser Compatibility
-{:.h5}
+{:.h5 .no_toc}
 
 While Figuration will apply these styles in all browsers, Internet Explorer 11 and below don't fully support the `disabled` attribute on a `<fieldset>`. Use custom JavaScript to disable the fieldset in these browsers.
-{% endcallout %}
-
+{% endcapture %}
+{% include callout.html content=callout type="danger" %}
 ## Help Text
 
 Block-level help text in forms can be created using `.form-text`. Inline help text can be flexibly implemented using any inline HTML element and utility classes like `.text-muted`.
 
-{% callout warning %}
+{% capture callout %}
 Associating Help Text With Form Controls
-{:.h5}
+{:.h5 .no_toc}
 
 Help text should be explicitly associated with the form control it relates to using the `aria-describedby` attribute. This will ensure that assistive technologies---such as screen readers---will announce this help text when the user focuses or enters the control.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 Help text below inputs can be styled with `.form-text`. This class includes `display: block;` and adds some top margin for easy spacing from the inputs above.
 
@@ -1070,9 +1074,10 @@ This method uses the `!important` CSS rule to override any SCSS designated trans
 
 Provide valuable, actionable feedback to your users with HTML5 form validation–[available in all our supported browsers](https://caniuse.com/#feat=form-validation). Choose from the browser default validation feedback, or implement custom messages with our built-in classes and starter JavaScript.
 
-{% callout warning %}
+{% capture callout %}
 We currently recommend using custom validation styles, as native browser default validation messages are not consistently exposed to assistive technologies in all browsers (most notably, Chrome on desktop and mobile).
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 ### How It Works
 

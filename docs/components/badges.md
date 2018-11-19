@@ -48,12 +48,7 @@ Unless the context is clear (as with the "Notifications" example, where it is un
 
 Add any of the below mentioned modifier classes to change the appearance of a badge.
 
-{% callout warning %}
-Conveying Meaning to Assistive Technologies
-{:.h5}
-
-Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
-{% endcallout %}
+{% include callout-warning-color-assistive-technologies.md %}
 
 {% example html %}
 <strong>Basic Badges:</strong>

@@ -7,15 +7,16 @@ group: widgets
 
 A more robust version of a tooltip, that allows for larger pieces of content or interactive functionality.
 
-{% callout info %}
+{% capture callout %}
 Widget Dependencies
-{:.h5}
+{:.h5 .no_toc}
 
 Popover requires the following:
 
 * [Tooltip widget]({{ site.baseurl}}/widgets/tooltip/) for the base functionality.
 * [Drag widget]({{ site.baseurl}}/widgets/drag/) for drag functionality.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 {:.cf-callout-dep}
 
 ## Contents

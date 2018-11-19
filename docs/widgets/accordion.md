@@ -7,14 +7,15 @@ group: widgets
 
 Accordion extends upon the Collapse widget to associate multiple collapse items in the same container.
 
-{% callout info %}
+{% capture callout %}
 Widget Dependencies
-{:.h5}
+{:.h5 .no_toc}
 
 Accordion requires the following:
 
 * [Collapse widget]({{ site.baseurl}}/widgets/collapse/) for the base functionality.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 {:.cf-callout-dep}
 
 ## Contents

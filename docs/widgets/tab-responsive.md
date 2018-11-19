@@ -7,15 +7,16 @@ group: widgets
 
 The primary goal with this widget is to provide a method of communication between the [Collapse]({{ site.baseurl }}/widgets/collapse/) and [Tab]({{ site.baseurl }}/widgets/tab/) widgets.  It does not take into account the visual aspects itself, this needs to be handled by CSS.
 
-{% callout info %}
+{% capture callout %}
 Widget Dependencies
-{:.h5}
+{:.h5 .no_toc}
 
 Sideshow requires the following:
 
 * [Tab widget]({{ site.baseurl}}/widgets/tab/) for base functionality.
 * [Collapse widget]({{ site.baseurl}}/widgets/collapse/) for base functionality.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 {:.cf-callout-dep}
 
 ## Contents
