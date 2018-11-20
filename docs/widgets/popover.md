@@ -16,8 +16,7 @@ Popover requires the following:
 * [Tooltip widget]({{ site.baseurl}}/widgets/tooltip/) for the base functionality.
 * [Drag widget]({{ site.baseurl}}/widgets/drag/) for drag functionality.
 {% endcapture %}
-{% include callout.html content=callout type="info" %}
-{:.cf-callout-dep}
+{% include callout.html content=callout type="info" class="cf-callout-dep" %}
 
 ## Contents
 {:.no_toc}

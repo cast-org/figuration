@@ -34,8 +34,7 @@ Player requires the following:
 
 - [Dropdown widget]({{ site.baseurl}}/widgets/dropdown/) for caption and transcript selection menu.
 {% endcapture %}
-{% include callout.html content=callout type="info" %}
-{:.cf-callout-dep}
+{% include callout.html content=callout type="info" class="cf-callout-dep" %}
 
 {% capture callout %}
 No Media Service Support

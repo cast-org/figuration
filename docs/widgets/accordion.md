@@ -15,8 +15,7 @@ Accordion requires the following:
 
 * [Collapse widget]({{ site.baseurl}}/widgets/collapse/) for the base functionality.
 {% endcapture %}
-{% include callout.html content=callout type="info" %}
-{:.cf-callout-dep}
+{% include callout.html content=callout type="info" class="cf-callout-dep" %}
 
 ## Contents
 {:.no_toc}

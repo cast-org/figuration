@@ -16,8 +16,7 @@ Sideshow requires the following:
 * [Tab widget]({{ site.baseurl}}/widgets/tab/) for base functionality.
 * [Collapse widget]({{ site.baseurl}}/widgets/collapse/) for base functionality.
 {% endcapture %}
-{% include callout.html content=callout type="info" %}
-{:.cf-callout-dep}
+{% include callout.html content=callout type="info" class="cf-callout-dep" %}
 
 ## Contents
 {:.no_toc}
