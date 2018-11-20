@@ -134,7 +134,7 @@ The most basic example of a `.navbar` is one that never expands, no matter the s
 
 Be default, navbars start out collapsed, but when the target breakpoint is reached, the navbar will expand into a horizontal row of elements.
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
   <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarR0">
@@ -159,11 +159,12 @@ Be default, navbars start out collapsed, but when the target breakpoint is reach
     </form>
   </div>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 With the `.navbar-brand` in the collapsing area.
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbarR1">
     <span aria-hidden="true">&#8801;</span>
@@ -188,7 +189,8 @@ With the `.navbar-brand` in the collapsing area.
     </form>
   </div>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Supported Content
 
@@ -203,7 +205,7 @@ Navbars come with built-in support for a handful of sub-components. Mix and matc
 
 Here's an example of some sub-components included in a default, light navbar:
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
   <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar0">
@@ -228,7 +230,8 @@ Here's an example of some sub-components included in a default, light navbar:
     </form>
   </div>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Brand
 
@@ -255,16 +258,17 @@ The `.navbar-brand` can be applied to most elements, but an anchor works best as
 
 Adding images to the `.navbar-brand` will likely always require custom styles or utilities to properly size. Here are some examples to demonstrate.
 
-{% example html %}
+{% capture example %}
 <!-- Just an image -->
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
     <img src="{{ site.baseurl }}/assets/img/home.svg" width="30" height="30" alt="">
   </a>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <!-- Image and text -->
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
@@ -272,7 +276,8 @@ Adding images to the `.navbar-brand` will likely always require custom styles or
     Navbar
   </a>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Nav
 
@@ -280,7 +285,7 @@ Navbar navigation builds on some of the `.nav` options with their own modifier c
 
 Add `.active` directly to a `.nav-link`, to indicate a certain state, such as the current page.
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <div class="navbar-brand">Navbar</div>
   <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar1">
@@ -304,11 +309,12 @@ Add `.active` directly to a `.nav-link`, to indicate a certain state, such as th
     </ul>
   </div>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 And because we use classes for our navs, you can avoid the list-based approach entirely if you like.
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
  <div class="navbar-brand">Navbar</div>
   <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar2">
@@ -324,7 +330,8 @@ And because we use classes for our navs, you can avoid the list-based approach e
     </div>
   </div>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Dropdowns
 
@@ -332,7 +339,7 @@ You may also utilize the [Dropdown widget]({{ site.baseurl}}/widgets/dropdown/) 
 
 If a dropdown is displayed in a non-expanded navbar, they will display 'inline' with the rest of the navbar menu.
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
   <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar3">
@@ -361,24 +368,26 @@ If a dropdown is displayed in a non-expanded navbar, they will display 'inline' 
     </ul>
   </div>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Forms and Buttons
 
 Place various form controls and components within a navbar with `.form-inline`.
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-light bg-light">
   <form class="form-inline">
     <input class="form-control me-0_25" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-primary" type="submit">Search</button>
   </form>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Align the contents of your inline forms with utilities as needed.
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
   <form class="form-inline">
@@ -386,11 +395,12 @@ Align the contents of your inline forms with utilities as needed.
     <button class="btn btn-outline-primary" type="submit">Search</button>
   </form>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Input groups work, too:
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-light bg-light">
   <form class="form-inline">
     <div class="input-group">
@@ -399,42 +409,46 @@ Input groups work, too:
     </div>
   </form>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Various buttons are supported as part of these navbar forms, too. This is also a great reminder that vertical alignment utilities can be used to align different sized elements.
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-light bg-light">
   <form class="form-inline">
     <button type="button" class="btn btn-outline-success me-0_25">Main button</button>
     <button type="button" class="btn btn-sm align-middle btn-outline-secondary">Smaller button</button>
   </form>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Text
 
 Add normal text to your navbars with the help of `.navbar-text`.  This class adjusts vertical alignment for strings of text.
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-light bg-light">
     <span class="navbar-text">Navbar text example</span>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Using the utility classes, you can change the alignment and appearance of your navbar text.
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-light bg-light flex-end">
     <span class="navbar-text text-danger">
         Navbar text aligned right
     </span>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 You can also use utility classes to align navbar text to other navbar elements like the brand and navigation.
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light flex-between">
   <a href="#" class="navbar-brand">Navbar</a>
   <button class="navbar-toggle collapsed" type="button" data-cfw="collapse" data-cfw-collapse-target="#navbar6">
@@ -458,7 +472,8 @@ You can also use utility classes to align navbar text to other navbar elements l
     </span>
   </div>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Disabled Links
 
@@ -649,7 +664,7 @@ Place a visual separator between segments of the navbar.
 
 Our [Collapse widget]({{ site.baseurl }}/widgets/collapse/) can also to toggle hidden content elsewhere on the page.
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-light bg-light">
   <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#exCollapsingNavbar" aria-label="Toggle navigation">
     <span aria-hidden="true">&#8801;</span>
@@ -661,7 +676,8 @@ Our [Collapse widget]({{ site.baseurl }}/widgets/collapse/) can also to toggle h
     </div>
   </div>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Color Schemes
 
@@ -762,21 +778,23 @@ Here are some examples to show what we mean.
 
 Although it's not required, you can wrap a navbar in a `.container` to center it on a page or add one within to only center the contents of a [fixed or static top navbar](#placement).
 
-{% example html %}
+{% capture example %}
 <div class="container">
   <nav class="navbar navbar-light bg-light">
     <a href="#" class="navbar-brand">Navbar</a>
   </nav>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-light bg-light">
   <div class="container">
     <a href="#" class="navbar-brand">Navbar</a>
   </div>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Placement
 
@@ -784,29 +802,33 @@ Use our [position utilities]({{ site.baseurl }}/utilities/position/) to place na
 
 **Note: `position: sticky`, used for `.sticky-top`, [isn't fully supported in every browser](https://caniuse.com/#feat=css-sticky).**
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-light bg-light">
   <a href="#" class="navbar-brand">Static default</a>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-light bg-light fixed-top">
   <a href="#" class="navbar-brand">Fixed top</a>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-light bg-light fixed-bottom">
   <a href="#" class="navbar-brand">Fixed bottom</a>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-light bg-light sticky-top">
   <a href="#" class="navbar-brand">Sticky top</a>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## SASS Reference
 

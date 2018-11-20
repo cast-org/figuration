@@ -19,7 +19,7 @@ Alerts are available for any length of text, as well as an optional dismiss butt
 
 {% include callout-warning-color-assistive-technologies.md %}
 
-{% example html %}
+{% capture example %}
 <div class="alert alert-primary" role="alert">
   <strong>Primary!</strong> You read this important alert message.
 </div>
@@ -38,13 +38,14 @@ Alerts are available for any length of text, as well as an optional dismiss butt
 <div class="alert alert-danger" role="alert">
   <strong>Danger!</strong> There is definitely some error now.
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Link Color
 
 Use the `.alert-link` utility class to quickly provide matching colored links within any alert.
 
-{% example html %}
+{% capture example %}
 <div class="alert alert-primary" role="alert">
   <strong>Primary!</strong> You read <a href="#" class="alert-link">this important alert message</a>.
 </div>
@@ -63,20 +64,22 @@ Use the `.alert-link` utility class to quickly provide matching colored links wi
 <div class="alert alert-danger" role="alert">
   <strong>Danger!</strong> There is definitely <a href="#" class="alert-link">some error</a> now.
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Additional Content
 
 Alerts can also contain additional HTML elements like headings, paragraphs, and dividers.
 
-{% example html %}
+{% capture example %}
 <div class="alert alert-success" role="alert">
   <h4 class="alert-heading">Well done!</h4>
   <p>You successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
   <hr />
   <p class="mb-0">Whenever you need to, use the margin utilities to keep things nice and tidy.</p>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## SASS Reference
 
