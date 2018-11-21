@@ -25,12 +25,12 @@ Responsive display utilities:
 {% capture example %}
 <div class="d-flex p-0_5">A flexbox container!</div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 {% capture example %}
 <div class="d-inline-flex p-0_5">An inline flexbox container!</div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 ## Direction
 
@@ -56,7 +56,7 @@ Use `.flex-row` to set a horizontal direction (the browser default), or `.flex-r
   <div class="p-0_5">Flex item 3</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 Use `.flex-column` to set a vertical direction, or `.flex-column-reverse` to start the vertical direction from the opposite side.
 
@@ -72,7 +72,7 @@ Use `.flex-column` to set a vertical direction, or `.flex-column-reverse` to sta
   <div class="p-0_5">Flex item 3</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 ## Justify Content
 
@@ -112,7 +112,7 @@ Responsive justify utilities:
   <div class="p-0_5">Justify the space between</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 ## Align Items
 
@@ -152,7 +152,7 @@ Responsive item alignment utilities:
   <div class="p-0_5">Stretch items</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 ## Align Self
 
@@ -192,7 +192,7 @@ Responsive self alignment utilities:
 <div class="p-0_5">Flex item</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 ## Auto Margins
 
@@ -221,7 +221,7 @@ Shown below are three examples of controlling flex items via auto margins: defau
   <div class="ms-auto p-0_5">Flex item</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 ### With align-items
 
@@ -240,7 +240,7 @@ Vertically, move one flex item to the top or bottom of a container by mixing `al
   <div class="mt-auto p-0_5">Flex item</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 ## Wrap
 
@@ -270,7 +270,7 @@ Responsive wrap utilities:
   <div class="p-0_5">Flex item</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 {% capture example %}
 <div class="d-flex flex-wrap">
@@ -291,7 +291,7 @@ Responsive wrap utilities:
   <div class="p-0_5">Flex item</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 {% capture example %}
 <div class="d-flex flex-wrap-reverse">
@@ -312,7 +312,7 @@ Responsive wrap utilities:
   <div class="p-0_5">Flex item</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 ## Order
 
@@ -344,7 +344,7 @@ Even greater control is available with responsive order classes that match the c
     </div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-row"%}
+{% include example.html content=example class="cf-example-row" %}
 
 {% capture example %}
 <div class="row">
@@ -365,7 +365,7 @@ Even greater control is available with responsive order classes that match the c
     </div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-row"%}
+{% include example.html content=example class="cf-example-row" %}
 
 ## Align Content
 
@@ -400,7 +400,7 @@ Responsive align content utilities:
   <div class="p-0_5">Flex item</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 {% capture example %}
 <div class="d-flex flex-content-center flex-wrap" style="min-height: 12rem;">
@@ -421,7 +421,7 @@ Responsive align content utilities:
   <div class="p-0_5">Flex item</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 {% capture example %}
 <div class="d-flex flex-content-end flex-wrap" style="min-height: 12rem;">
@@ -442,7 +442,7 @@ Responsive align content utilities:
   <div class="p-0_5">Flex item</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 {% capture example %}
 <div class="d-flex flex-content-between flex-wrap" style="min-height: 12rem;">
@@ -463,7 +463,7 @@ Responsive align content utilities:
   <div class="p-0_5">Flex item</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 {% capture example %}
 <div class="d-flex flex-content-around flex-wrap" style="min-height: 12rem;">
@@ -484,7 +484,7 @@ Responsive align content utilities:
   <div class="p-0_5">Flex item</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 {% capture example %}
 <div class="d-flex flex-content-stretch flex-wrap" style="min-height: 12rem;">
@@ -505,7 +505,7 @@ Responsive align content utilities:
   <div class="p-0_5">Flex item</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 ## Sizing
 
@@ -530,7 +530,7 @@ To make an element grow or shrink as needed, use the `.flex-fill` utility.
   <div class="p-0_5">Flex item</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 Use `.flex-grow-0/1` utilities to toggle a flex item's ability to grow to fill available space. In the example below, the `.flex-grow-1` elements uses all available space it can, while allowing the remaining two flex items their necessary space.
 
@@ -541,7 +541,7 @@ Use `.flex-grow-0/1` utilities to toggle a flex item's ability to grow to fill a
   <div class="p-0_5">Flex item</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 To make an element grow, but not shrink, use the `.flex-grow` utility.
 
@@ -552,7 +552,7 @@ To make an element grow, but not shrink, use the `.flex-grow` utility.
   <div class="p-0_5">Flex item</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 Use `.flex-shrink-0/1` utilities to toggle a flex item's ability to shrink if necessary. In the example below, the second flex item with `.flex-shrink-1` is forced to wrap it's contents to a new line, "shrinking" to allow more space for the previous flex item with `.w-100`.
 
@@ -562,7 +562,7 @@ Use `.flex-shrink-0/1` utilities to toggle a flex item's ability to shrink if ne
   <div class="p-0_5 flex-shrink-1">Flex item</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 To make an element shrink, but not grow, use the `.flex-shrink` utility.
 
@@ -573,7 +573,7 @@ To make an element shrink, but not grow, use the `.flex-shrink` utility.
   <div class="p-0_5">Flex item</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 To prevent an element from growing or shrinking, use the `.flex-none` utility.
 
@@ -584,7 +584,7 @@ To prevent an element from growing or shrinking, use the `.flex-none` utility.
   <div class="p-0_5">Flex item</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-flex"%}
+{% include example.html content=example class="cf-example-flex" %}
 
 ## SASS Reference
 

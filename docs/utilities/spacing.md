@@ -126,7 +126,7 @@ Here is a comparison and example of customizing the grid at the medium (`md`) br
     <div class="col py-1 px-md-2">Custom horizontal column padding</div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-row"%}
+{% include example.html content=example class="cf-example-row" %}
 
 In some cases, you may also have to adjust the padding on the parent container of the `.row` element to prevent horizontal scrollbars from occuring.  For example, using the custom negative margin example above, you may find the need to use `.px-md-2` on the parent `.container-fluid`.
 
@@ -138,7 +138,7 @@ In some cases, you may also have to adjust the padding on the parent container o
     </div>
 </div>
 {% endcapture %}
-{% include example.html content=example class="cf-example-row"%}
+{% include example.html content=example class="cf-example-row" %}
 
 ## SASS Reference
 
