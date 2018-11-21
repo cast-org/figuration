@@ -22,11 +22,12 @@ These classes are exceptionally useful helping to follow [accessibility best pra
 
 **Heads up!** There is no `.sr-only-*` class created for the smallest breakpoint and no `.sr-only-*-down` class created for the largest breakpoint, `.sr-only-xs` and `.sr-only-xl-down` respectively, since they are functionally equivalent to using `.sr-only`.
 
-{% example html %}
+{% capture example %}
 <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
 <span class="sr-only-sm-down">...</span>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 {% highlight scss %}
 // Usage as a mixin
@@ -40,11 +41,12 @@ These classes are exceptionally useful helping to follow [accessibility best pra
 
 Visually hide the text and show an image replacement by using a `background-image`.
 
-{% example html %}
+{% capture example %}
 <h1 style="background-image: url('{{ site.baseurl}}/assets/brand/figuration-solid.svg'); width: 3rem; height: 3rem;">
     <span class="sr-only">CAST Figuration</span>
 </h1>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Hiding Content
 

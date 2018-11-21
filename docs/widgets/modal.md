@@ -35,7 +35,7 @@ $('#myModal').on('afterShow.cfw.modal', function() {
 
 Below is a static modal example (meaning its `position` and `display` have been overridden). Included are the modal header, modal body (required for `padding`), and modal footer (optional). It is highly suggested to include modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.
 
-{% example html %}
+{% capture example %}
 <div class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -53,7 +53,8 @@ Below is a static modal example (meaning its `position` and `display` have been 
         </div>
     </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Live Demo
 

@@ -28,21 +28,24 @@ Available utilities:
 
 These classes are also available in responsive variants, in the form of `.d{-breakpoint}-{value}`, such as `.d-lg-block`. Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) is used.
 
-{% example html %}
+{% capture example %}
 <div class="d-inline bg-success">d-inline</div>
 <div class="d-inline bg-success">d-inline</div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <span class="d-block bg-primary">d-block</span>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <div class="d-inline-block bg-warning">d-inline-block</div>
 <div class="d-inline-block bg-warning">d-inline-block</div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <div class="d-table bg-info">
     d-table
     <div class="d-table-row">
@@ -50,7 +53,8 @@ These classes are also available in responsive variants, in the form of `.d{-bre
         <div class="d-table-cell bg-danger">d-table-cell</div>
     </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ##  Responsively Hiding Content
 

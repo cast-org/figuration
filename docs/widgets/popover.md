@@ -76,7 +76,7 @@ Four options are available: top, forward( right), bottom, and reverse (left) ali
 
 ### Four Directions
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn" data-cfw="popover" data-cfw-popover-container="body" data-cfw-popover-placement="top" data-cfw-popover-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
   Popover on top
 </button>
@@ -92,19 +92,22 @@ Four options are available: top, forward( right), bottom, and reverse (left) ali
 <button type="button" class="btn" data-cfw="popover" data-cfw-popover-container="body" data-cfw-popover-placement="reverse" data-cfw-popover-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
   Reverse popover
 </button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Default Toggle Example
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn btn-info" data-cfw="popover" title="Click Popover Example" data-cfw-popover-content="Click the trigger or close button to close me." data-cfw-popover-placement="forward">Click to toggle popover</button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Hover Example
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn btn-info" id="cf-example-hover-popover" data-cfw="popover" title="Hover Popover Example" data-cfw-popover-content="Stop hovering over the trigger or the popover to auto-close." data-cfw-popover-placement="forward" data-cfw-popover-trigger="hover focus">Hover/focus to show popover</button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 <script>
     $('#cf-example-hover-popover').on('click', function(){
@@ -116,19 +119,21 @@ Four options are available: top, forward( right), bottom, and reverse (left) ali
 
 Allow users to move popovers around the screen by enabling the `drag` option.  Drag support mouse, keyboard (with arrow keys), and touch movement.
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn btn-info" data-cfw="popover" title="Draggable Popover Example" data-cfw-popover-content="Click the trigger or close link to close me." data-cfw-popover-placement="forward" data-cfw-popover-drag="true">Draggable popover</button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Popover with HTML
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-html="true" data-cfw-popover-placement="forward" data-cfw-popover-content="<em>Popover</em> <u>with</u> <b>HTML</b>" title="<em>Popover</em> <u>with</u> <b>HTML</b>">Popover with HTML</button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 If using more complex HTML, using a data attribute might not be optimal.  A better option would be to use the Javascript options, or with a pre-generated popover, as shown in the following example.
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn btn-info" id="html-popover">Popover with HTML</button>
 
 <script>
@@ -138,13 +143,14 @@ $('#html-popover').CFW_Popover({
     content: '<span aria-hidden="true">&middot;</span> <em>Popover</em> <u>with</u> <b>HTML</b>'
 });
 </script>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Pre-generated Popover
 
 Have a complex content that you would like to show in a popover, or one that is updated dynamically?  Create the popover and then link to it with the `target` option.
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn btn-info" data-cfw="popover" data-cfw-popover-target="#popoverExample0" data-cfw-popover-placement="forward">Show Popover</button>
 
 <div class="popover" id="popoverExample0">
@@ -158,13 +164,14 @@ Have a complex content that you would like to show in a popover, or one that is 
     </div>
     <div class="popover-arrow"></div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Custom Placement
 
 Locate a popover anywhere you need with the `placement` option.
 
-{% example html js %}
+{% capture example %}
 <button type="button" class="btn btn-info" id="cf-example-placed-popover" title="Custom placed popover" data-cfw-popover-content="Look, I am way over here!">Custom Placement Popover</button>
 <script>
     $('#cf-example-placed-popover').CFW_Popover({
@@ -178,13 +185,14 @@ Locate a popover anywhere you need with the `placement` option.
         }
     });
 </script>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Viewport Constrainment
 
 Keep popovers in their place with the `viewport` option.
 
-{% example html js %}
+{% capture example %}
 <div class="container-viewport" id="viewport-popover">
     <p class="viewport-text">Viewport constraints for popovers.</p>
 
@@ -215,7 +223,8 @@ Keep popovers in their place with the `viewport` option.
         padding: 2
     });
 </script>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Disabled Elements
 
@@ -223,11 +232,12 @@ Elements with the `disabled` attribute aren't interactive, meaning users cannot 
 
 For disabled popover triggers, you may also prefer `data-cfw-popover-trigger="hover"` so that the popover appears as immediate visual feedback to your users as they may not expect to _click_ on a disabled element.
 
-{% example html %}
+{% capture example %}
 <span class="d-inline-block" data-cfw="popover" data-cfw-popover-content="Popover for disabled item">
   <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button>
 </span>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Usage
 

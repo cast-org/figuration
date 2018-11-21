@@ -18,8 +18,7 @@ While shadows on components are disabled by default in Figuration and can be ena
 
 `.shadow-0` will remove all inset or outset shadows from an element.
 
-{% example html %}
-
+{% capture example %}
 <div class="shadow-0 radius p-1 mb-2">No shadow</div>
 <div class="shadow-d1 radius p-1 mb-2">Shadow depth 1</div>
 <div class="shadow-d2 radius p-1 mb-2">Shadow depth 2</div>
@@ -31,7 +30,8 @@ While shadows on components are disabled by default in Figuration and can be ena
 <div class="shadow-i3 radius p-1 mb-2">Shadow inset 3</div>
 <div class="shadow-i4 radius p-1 mb-2">Shadow inset 4</div>
 <div class="shadow-i5 radius p-1 mb-2">Shadow inset 5</div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## SASS Reference
 

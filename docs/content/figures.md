@@ -17,21 +17,23 @@ Anytime you need to display a piece of content---like an image---with an optiona
 
 Use the included `.figure` , `.figure-img` and `.figure-caption` classes to provide some baseline styles for the HTML5 `<figure>` and `<figcaption>` elements. Images in figures have no explicit size, so be sure to add the `.img-fluid` class to your `<img>` to make it resize automatically.
 
-{% example html %}
+{% capture example %}
 <figure class="figure">
   <img data-src="holder.js/400x300" class="figure-img img-fluid radius" alt="A generic square placeholder image with rounded corners in a figure.">
   <figcaption class="figure-caption">A caption for the above image.</figcaption>
 </figure>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Aligning the figure's caption is easy with our [text utilities]({{ site.baseurl }}/utilities/typography/#text-alignment).
 
-{% example html %}
+{% capture example %}
 <figure class="figure">
   <img data-src="holder.js/400x300" class="figure-img img-fluid radius" alt="A generic square placeholder image with rounded corners in a figure.">
   <figcaption class="figure-caption text-end">A caption for the above image.</figcaption>
 </figure>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## SASS Reference
 

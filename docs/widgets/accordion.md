@@ -29,7 +29,7 @@ Accordion requires the following:
 
 A simple accordion.
 
-{% example html %}
+{% capture example %}
 <div data-cfw="accordion">
     <h4><a href="#accordion0" data-cfw="collapse" class="open">Collapse Toggle #1</a></h4>
     <div id="accordion0" class="collapse">
@@ -44,13 +44,14 @@ A simple accordion.
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.
     </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Using Cards
 
 Here some cards are used to add a bit of layout.
 
-{% example html %}
+{% capture example %}
 <div data-cfw="accordion">
     <div class="card mb-0">
         <div class="card-header">
@@ -89,7 +90,8 @@ Here some cards are used to add a bit of layout.
         </div>
     </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Usage
 

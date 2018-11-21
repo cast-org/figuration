@@ -18,7 +18,7 @@ Use carets to indicate some meaning of functionality or direction. Note that the
 
 If inside of an element marked as `.open` the caret will reverse direction accordingly to indicate state.
 
-{% example html %}
+{% capture example %}
 <span class="caret" aria-hidden="true"></span>
 <span class="open">
     <span class="caret" aria-hidden="true"></span>
@@ -30,7 +30,8 @@ If inside of an element marked as `.open` the caret will reverse direction accor
 <span class="dropup open">
     <span class="caret" aria-hidden="true"></span>
 </span>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Mixins
 
@@ -74,35 +75,38 @@ The *start/end directions* are designated as follows depending on which version 
 }
 {% endhighlight %}
 
-{% example html %}
+{% capture example %}
 Hover over, or focus on the following button to change caret direction:<br />
 <button type="button" class="btn">
     Caret example
     <span class="example-caret" aria-hidden="true"></span>
 </button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 
 ## Close Icon
 
 Use a generic close icon for dismissing content like alerts, modals, tooltips, and popovers. **Be sure to include text for screen readers**, as we've done with `aria-label`.
 
-{% example html %}
+{% capture example %}
 <button type="button" class="close" aria-label="Close">
     <span aria-hidden="true">&times;</span>
 </button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 
 ## Drag Icon
 
 Figuration also uses a drag icon with draggable popovers. **Be sure to include text for screen readers**, as we've done with `aria-label`.
 
-{% example html %}
+{% capture example %}
 <button type="button" class="drag" aria-label="Drag">
     <span aria-hidden="true">+</span>
 </button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## SASS Reference
 

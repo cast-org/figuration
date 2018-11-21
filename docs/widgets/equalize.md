@@ -141,7 +141,7 @@ Creating nested Equalize behaviour is as simple as creating another Equalize set
 
 When using `row` mode, Equalize looks for items at the same starting top offset and will set the heights the same for each specified item.
 
-{% example html %}
+{% capture example %}
 <div class="row" data-cfw="equalize" data-cfw-equalize-target=".card" data-cfw-equalize-row="true">
     <div class="col-md-4 col-lg-3">
         <div class="card card-body">
@@ -172,13 +172,14 @@ When using `row` mode, Equalize looks for items at the same starting top offset 
         </div>
     </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Stacked Equalize
 
 When using `stack` mode, when items are stacked, they will all be given the same height, regardless of their top offset.
 
-{% example html %}
+{% capture example %}
 <div data-cfw="equalize" data-cfw-equalize-target=".card" data-cfw-equalize-stack="true">
     <div class="card card-body">
         <h4>Card 1</h4>
@@ -194,7 +195,8 @@ When using `stack` mode, when items are stacked, they will all be given the same
         Three<br>Three<br>Three
     </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Usage
 

@@ -92,9 +92,10 @@ By default the `xsmall` and `small` sizes are the same radius.  Also the `large`
 
 There is also the special case size of `0` (zero) to remove  a radius.
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn radius-s-0">Button</button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Circles
 
@@ -138,7 +139,7 @@ The *start/end sides* are designated as follows depending on which version of th
   - `start` refers to the `right` side
   - `end` refers to the `left` side
 
-{% example html %}
+{% capture example %}
 <div class="border bg-gray-50 p-0_5 mb-1">
   This div container has a border on all sides, and some padding added.
 </div>
@@ -155,8 +156,8 @@ The *start/end sides* are designated as follows depending on which version of th
 <span class="border-e bg-gray-50 p-0_5" style="width: 3rem;">'end'</span>
 <span class="border-b bg-gray-50 p-0_5" style="width: 3rem;">'bottom'</span>
 <span class="border-s bg-gray-50 p-0_5" style="width: 3rem;">'start'</span>
-
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Removing Borders
 
@@ -182,7 +183,7 @@ The *start/end sides* are designated as follows depending on which version of th
 
 See the following example of removing various borders from some buttons.
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn radius-0 border-0">all</button>
 <button type="button" class="btn radius-0 border-t-0">top</button>
 <button type="button" class="btn radius-0 border-e-0">'end'</button>
@@ -191,7 +192,8 @@ See the following example of removing various borders from some buttons.
 <br />
 <button type="button" class="btn radius-0 border-x-0">left and right</button>
 <button type="button" class="btn radius-0 border-y-0">top and bottom</button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Responsive Borders
 
@@ -199,11 +201,12 @@ Add or remove borders with responsive border utility classes in the form of `.bo
 
 For example to have a border on the sides of an element up to and including the `md` breakpoint, and then at the `lg` breakpoint switch to only having top and bottom borders, you would do the following:
 
-{% example html %}
+{% capture example %}
 <div class="border-x border-lg-x-0 border-lg-y bg-light p-0_5" style="max-width: 18rem;">
     Sample container
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## SASS Reference
 

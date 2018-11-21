@@ -19,7 +19,7 @@ Using the most basic table markup, a `.table` will result in a mostly unstyled t
 Nested tables are not explicitly supported by Figuration as they can create usability and accessibility issues for screen reader users.  The recommendation would be to break up complex tables into multiple simpler tables.
 Check out [MDN's HTML table advanced features and accessibility document](https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced) for additional help when building tables.
 
-{% example html %}
+{% capture example %}
 <table class="table">
   <thead>
     <tr>
@@ -57,7 +57,8 @@ Check out [MDN's HTML table advanced features and accessibility document](https:
     </tr>
   </tfoot>
 </table>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Styled Tables
 
@@ -704,7 +705,7 @@ Put a border around the table and every cell with `.table-bordered`.
 
 A `<caption>` functions like a heading for a table. It helps users with screen readers to find a table and understand what it’s about and decide if they want to read it.
 
-{% example html %}
+{% capture example %}
 <table class="table">
   <caption>List of users</caption>
   <thead>
@@ -736,7 +737,8 @@ A `<caption>` functions like a heading for a table. It helps users with screen r
     </tr>
   </tbody>
 </table>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Scrolling Tables
 
@@ -1492,7 +1494,7 @@ You may also use [text or background utilities]({{ site.baseurl }}/utilities/col
 
 You can also use [text or background utilities]({{ site.baseurl }}/utilities/color/) to achieve multiple styles.
 
-{% example html %}
+{% capture example %}
 <table class="table">
   <thead class="text-light bg-primary">
     <tr>
@@ -1530,7 +1532,8 @@ You can also use [text or background utilities]({{ site.baseurl }}/utilities/col
     </tr>
   </tfoot>
 </table>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## SASS Reference
 

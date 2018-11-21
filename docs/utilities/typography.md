@@ -16,15 +16,16 @@ Quick and easy utilities to add some style to your text.
 
 Easily realign text to components with text alignment classes.
 
-{% example html %}
+{% capture example %}
 <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit et mauris suscipit fermentum. Mauris massa dolor, mollis id augue ac, pretium faucibus massa. Ut posuere efficitur justo et luctus. Integer eget aliquam magna. In in vulputate nulla. Vivamus tristique leo id odio efficitur interdum eu ut metus.</p>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 For left, right, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.  Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) is used.
 
 Instead of using `left/right` designators, the text alignment utilities use `start/end` designators to match up with the [flexbox utilities]({{ site.baseurl }}/utilities/flexbox/).
 
-{% example html %}
+{% capture example %}
 <p class="text-start">Start aligned text on all viewport sizes.</p>
 <p class="text-center">Center aligned text on all viewport sizes.</p>
 <p class="text-end">End aligned text on all viewport sizes.</p>
@@ -33,21 +34,23 @@ Instead of using `left/right` designators, the text alignment utilities use `sta
 <p class="text-md-end">End aligned text on viewports sized MD (medium) or wider.</p>
 <p class="text-lg-end">End aligned text on viewports sized LG (large) or wider.</p>
 <p class="text-xl-end">End aligned text on viewports sized XL (extra-large) or wider.</p>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Text Wrap and Truncate
 
 Prevent text from wrapping with a `.text-nowrap` class.
 
-{% example html %}
+{% capture example %}
 <div class="card card-body text-nowrap" style="width: 8rem;">
     This text should overflow the parent.
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 For longer content, you can add a `.text-truncate` class to truncate the text with an ellipsis.  **Requires `display: block;` or `display: inline-block;`.**
 
-{% example html %}
+{% capture example %}
 <!-- Block -->
 <div class="row">
   <div class="col-2 text-truncate">
@@ -59,17 +62,19 @@ For longer content, you can add a `.text-truncate` class to truncate the text wi
 <div class="d-inline-block text-truncate" style="max-width: 150px;">
   Praeterea iter est quasdam res quas ex communi.
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Text Transform
 
 Transform text in components with text capitalization classes.
 
-{% example html %}
+{% capture example %}
 <p class="text-lowercase">Lowercased text.</p>
 <p class="text-uppercase">Uppercased text.</p>
 <p class="text-capitalize">CapiTaliZed text.</p>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Note how `.text-capitalize` only changes the first letter of each word, leaving the case of any other letters unaffected.
 
@@ -79,31 +84,34 @@ Quickly change the weight (boldness) of text.
 
 The `.font-weight-lighter` and `.font-weight-bolder` classes are relative by default, with `lighter` and `bolder` values respectively, but can be configured with numeric weights by overriding their values in the `_settings.scss`.
 
-{% example html %}
+{% capture example %}
 <p class="font-weight-light">Light weight text.</p>
 <p class="font-weight-normal">Normal weight text.</p>
 <p class="font-weight-bold">Bold text.</p>
 <p class="font-weight-light">Light weight with <span class="font-weight-bolder">bolder weight</span> text.</p>
 <p class="font-weight-bold">Bold weight with <span class="font-weight-lighter">lighter weight</span> text.</p>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Italics
 
 Italicize text with `.font-italic`.
 
-{% example html %}
+{% capture example %}
 <p class="font-italic">Italic text.</p>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Font Family
 
 Alter the font family for a section of text with
 
-{% example html %}
+{% capture example %}
 <p class="font-family-sans-serif">This is an example of the sans serif font.</p>
 <p class="font-family-serif">This is an example of the serif font.</p>
 <p class="font-family-monospace">This is an example of the monospace font.</p>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## SASS Reference
 
