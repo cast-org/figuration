@@ -86,7 +86,7 @@ In some situations it may be desirable to turn this functionality off. The data 
 
 When using both data attributes and JavaScript options, the JavaScript options take precendence over any element attributes.
 
-{% example html js %}
+{% capture example %}
 <!-- Override the HTML attribute -->
 <button type="button" id="optionOrder0" class="btn" title="ignored title">Show Tooltip</button>
 <script>
@@ -104,7 +104,8 @@ $('#optionOrder1').CFW_Tooltip({
     container: 'body'
 });
 </script>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Programmatic API
 
