@@ -18,18 +18,13 @@ If you are using navs to provide a navigation bar, be sure to add a `role="navig
 
 Note that navigation bars, even if visually styled as tabs with the `.nav-tabs` class, should **not** be given `role="tablist"`, `role="tab"` or `role="tabpanel"` attributes. These are only appropriate for dynamic tabbed interfaces, as described in the [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel). See our [Tab widget]({{ site.baseurl }}/widgets/tab/) for an example and additional details.
 
-{% callout warning %}
-Disabling Anchors
-{:.h5}
-
-Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl }}/get-started/accessibility/#disabled-anchors).
-{% endcallout %}
+{% include callout-warning-disabling-anchors.md %}
 
 ## Base Nav
 
 The base .nav component is built with flexbox and provides a strong foundation for building all types of navigation components. It includes some style overrides (for working with lists), some link padding for larger hit areas, and basic disabled styling. No active states are included in the base nav.
 
-{% example html %}
+{% capture example %}
 <ul class="nav">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -44,18 +39,20 @@ The base .nav component is built with flexbox and provides a strong foundation f
     <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
   </li>
 </ul>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, or roll your own with say a `<nav>` element. Because the `.nav` uses `display: flex`, the nav links behave the same as nav items would, but without the extra markup.
 
-{% example html %}
+{% capture example %}
 <nav class="nav">
   <a href="#" class="nav-link active">Active</a>
   <a href="#" class="nav-link">Link</a>
   <a href="#" class="nav-link">Link</a>
   <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Available Styles
 
@@ -67,7 +64,7 @@ Change the horizontal alignment of your nav with [flexbox utilities]({{ site.bas
 
 Centered with `.flex-center`:
 
-{% example html %}
+{% capture example %}
 <ul class="nav flex-center">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -82,11 +79,12 @@ Centered with `.flex-center`:
     <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
   </li>
 </ul>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Right-aligned with `.flex-end`:
 
-{% example html %}
+{% capture example %}
 <ul class="nav flex-end">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -101,13 +99,14 @@ Right-aligned with `.flex-end`:
     <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
   </li>
 </ul>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Vertical Alignment
 
 Stack your navigation by changing the flex item direction with the `.flex-column` utility. Need to stack them on some viewports but not others? Use the responsive versions (e.g., `.flex-sm-column`).
 
-{% example html %}
+{% capture example %}
 <ul class="nav flex-column">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -122,24 +121,26 @@ Stack your navigation by changing the flex item direction with the `.flex-column
     <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
   </li>
 </ul>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 As always, vertical navigation is possible without <ul>s, too.
 
-{% example html %}
+{% capture example %}
 <nav class="nav flex-column">
   <a href="#" class="nav-link active">Active</a>
   <a href="#" class="nav-link">Link</a>
   <a href="#" class="nav-link">Link</a>
   <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Tabs
 
 Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabbed interface. Use them to create tabbable regions with our [Tab JavaScript widget]({{ site.baserl}}/widgets/tab/).
 
-{% example html %}
+{% capture example %}
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -154,13 +155,14 @@ Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabb
     <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
   </li>
 </ul>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Pills
 
 Take that same HTML, but use `.nav-pills` instead:
 
-{% example html %}
+{% capture example %}
 <ul class="nav nav-pills">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -175,13 +177,14 @@ Take that same HTML, but use `.nav-pills` instead:
     <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
   </li>
 </ul>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Vertical Pills
 
 Add `.flex-column` to the `.nav.nav-pills` to stack them vertically. Each `.nav-link` becomes block-level, allowing for larger hit areas.
 
-{% example html %}
+{% capture example %}
 <ul class="nav nav-pills flex-column">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -196,24 +199,26 @@ Add `.flex-column` to the `.nav.nav-pills` to stack them vertically. Each `.nav-
     <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
   </li>
 </ul>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 As always, vertical pills are possible without `<ul>`s.
 
-{% example html %}
+{% capture example %}
 <nav class="nav nav-pills flex-column">
   <a href="#" class="nav-link active">Active</a>
   <a href="#" class="nav-link">Link</a>
   <a href="#" class="nav-link">Link</a>
   <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Fill and Justify
 
 Force your `.nav`’s contents to extend the full available width one of two modifier classes. To proportionately fill all available space with your `.nav-items`, use `.nav-fill`. Notice that all horizontal space is occupied, but not every nav item has the same width.
 
-{% example html %}
+{% capture example %}
 <ul class="nav nav-pills nav-fill">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -228,11 +233,12 @@ Force your `.nav`’s contents to extend the full available width one of two mod
     <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
   </li>
 </ul>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 For equal-width elements, use `.nav-justify`. All horizontal space will be occupied by nav links, but unlike the `.nav-fill` above, every nav item will be the same width.
 
-{% example html %}
+{% capture example %}
 <ul class="nav nav-pills nav-justify">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -247,34 +253,37 @@ For equal-width elements, use `.nav-justify`. All horizontal space will be occup
     <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
   </li>
 </ul>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Working with Flex Utilities
 If you need responsive nav variations, consider using a series of [flexbox utilities]({{ site.baseurl}}/utilities/flexbox/). While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, the nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.
 
-{% example html %}
+{% capture example %}
 <nav class="nav nav-pills flex-column flex-sm-row">
   <a class="flex-sm-fill text-sm-center nav-link active" href="#">Active</a>
   <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
   <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
   <a class="flex-sm-fill text-sm-center nav-link disabled" href="#">Disabled</a>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Using Dropdowns
 
 Add dropdown menus with a little extra HTML and the [Dropdown JavaScript widget]({{ site.baseurl }}/widgets/dropdown/).
 
-{% callout warning %}
+{% capture callout %}
 Incompatible Widgets
-{:.h5}
+{:.h5 .no_toc}
 
 For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}/widgets/tab/) and [Dropdown widget]({{ site.baseurl }}/widgets/dropdown/) in the same nav item.  This will cause navigation and usability issues.  One or the other, but not both.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 ### Tabs with Dropdowns
 
-{% example html %}
+{% capture example %}
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -296,11 +305,12 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}
     <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
   </li>
 </ul>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Pills with Dropdowns
 
-{% example html %}
+{% capture example %}
 <ul class="nav nav-pills">
   <li class="nav-item">
     <a href="#" class="nav-link active">Active</a>
@@ -322,7 +332,8 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}
     <a href="#" class="nav-link disabled" tabindex="-1">Disabled</a>
   </li>
 </ul>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## SASS Reference
 

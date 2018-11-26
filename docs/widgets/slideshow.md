@@ -7,15 +7,15 @@ group: widgets
 
 A simple widget that extends on the [Tab widget]({{ site.baseurl }}/widgets/tab/) to add previous and next navigation items that update their disabled state based on the currently active tab/slide.
 
-{% callout info %}
+{% capture callout %}
 Widget Dependencies
-{:.h5}
+{:.h5 .no_toc}
 
 Sideshow requires the following:
 
 * [Tab widget]({{ site.baseurl}}/widgets/tab/) for base functionality.
-{% endcallout %}
-{:.cf-callout-dep}
+{% endcapture %}
+{% include callout.html content=callout type="info" class="cf-callout-dep" %}
 
 ## Contents
 {:.no_toc}

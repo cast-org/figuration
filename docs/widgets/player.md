@@ -16,31 +16,33 @@ Player is a way to enable customized controls while using the browser's built in
 
 Currently, there is no base CSS provided by Figuration in either the `figuration.css` or `figuration.min.css` files.  The examples below use CSS that is specific to our docs pages.
 
-{% callout info %}
+{% capture callout %}
 HTML5 Audio/Video Support
-{:.h5}
+{:.h5 .no_toc}
 
 Player builds on top of the browser's built in HTML5 `<audio>`/`<video>` player. The limits and supported media types are determined by the browser itself.
 
 W3School's HTML [`<audio>`](https://www.w3schools.com/tags/tag_audio.asp) and [`<video>`](https://www.w3schools.com/tags/tag_video.asp) pages have additional information. The [audio/video DOM reference](https://www.w3schools.com/tags/ref_av_dom.asp) page might also be useful.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 
-{% callout info %}
+{% capture callout %}
 Widget Dependencies
-{:.h5}
+{:.h5 .no_toc}
 
 Player requires the following:
 
 - [Dropdown widget]({{ site.baseurl}}/widgets/dropdown/) for caption and transcript selection menu.
-{% endcallout %}
-{:.cf-callout-dep}
+{% endcapture %}
+{% include callout.html content=callout type="info" class="cf-callout-dep" %}
 
-{% callout warning %}
+{% capture callout %}
 No Media Service Support
-{:.h5}
+{:.h5 .no_toc}
 
 Player does not support media services such as YouTube, Vimeo, SoundCloud, and others.  There are currently no plans to support these types of services.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 ## Contents
 {:.no_toc}
@@ -54,7 +56,7 @@ The icons shown in the examples are from [Font Awesome](https://fontawesome.com/
 
 ### Simple Audio Player
 
-{% example html %}
+{% capture example %}
 <p><small>Source: <a href="https://freesound.org/people/Heigh-hoo/sounds/19433/">Drumroll by Heigh-hoo</a></small></p>
 
 <div data-cfw="player">
@@ -81,13 +83,14 @@ The icons shown in the examples are from [Font Awesome](https://fontawesome.com/
         <p>HTML5 audio not supported</p>
     </audio>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Robust Audio Player
 
 Available seek and volume sliders.
 
-{% example html %}
+{% capture example %}
 <p><small>Source: <a href="https://freesound.org/people/StrangerEight/sounds/148695/">Ambient Acoustic by StrangerEight</a></small></p>
 
 <div data-cfw="player">
@@ -118,12 +121,12 @@ Available seek and volume sliders.
         <p>HTML5 audio not supported</p>
     </audio>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Video Example
 
-{% example html %}
-
+{% capture example %}
 <p><small>Source: <a href="https://videos.pexels.com/videos/tourists-looking-at-niagara-falls-333">Tourists Looking at Niagara Falls</a></small></p>
 
 <div data-cfw="player" class="video-wrapper">
@@ -169,13 +172,14 @@ Available seek and volume sliders.
         </div>
     </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Interactive Transcript
 
 Add an interactive transcript to your video using the `transcript` control.  The content will be taken from the selected item and placed in another container.  This content will highlight the current caption, and also allow seeking within the media item if one of the passages is clicked.
 
-{% example html %}
+{% capture example %}
 <p><small>Source: <a href="https://videos.pexels.com/videos/tourists-looking-at-niagara-falls-333">Tourists Looking at Niagara Falls</a></small></p>
 
 <div data-cfw="player" data-cfw-player-transcript="0" class="video-wrapper" role="region" aria-label="video player">
@@ -221,13 +225,14 @@ Add an interactive transcript to your video using the `transcript` control.  The
         </div>
     </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Audio Description
 
 Improve accessibility for blind and visually impaired users by including an audio description with your video. Extend the `<source>` elements with a `data-src-describe=""` attribute pointing to the video source that contains the additional narration  description. Also add a control with a `data-cfw-player="description"` attribute.  This will allow the user to toggle the audio description version of the video on and off.
 
-{% example html %}
+{% capture example %}
 <div data-cfw="player" data-cfw-player-media-describe="true" class="video-wrapper" role="region" aria-label="video player">
     <div class="embed-fluid">
         <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
@@ -254,13 +259,14 @@ Improve accessibility for blind and visually impaired users by including an audi
         </div>
     </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Transcript Description
 
 Further improve accessibility for blind and visually impaired users by including the audio description narration within the interactive transcript. Add a `<track kind="descriptions">`with the content of the description narration.  Also add matching `srclang` attributes to both the caption (or subtitle) track, and to the descriptions track.  For example, to specify the English language, use `srclang="en"` on both elements.
 
-{% example html %}
+{% capture example %}
 <div data-cfw="player" data-cfw-player-transcript="0" data-cfw-player-media-describe="true" class="video-wrapper" role="region" aria-label="video player">
     <div class="embed-fluid">
         <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
@@ -293,13 +299,14 @@ Further improve accessibility for blind and visually impaired users by including
         </div>
     </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Text-based Description
 
 By using the same `<track kind="descriptions">` as the above example, we can provide text-based descriptions outside of the transcript, and optionally make them announced by screen readers. In this case the `srclang` attribute will be used to set the `lang` attribute for screen readers.
 
-{% example html %}
+{% capture example %}
 <div data-cfw="player" data-cfw-player-text-describe="2" class="video-wrapper" role="region" aria-label="video player">
     <div class="embed-fluid">
         <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
@@ -327,13 +334,14 @@ By using the same `<track kind="descriptions">` as the above example, we can pro
         </div>
     </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Custom Captions
 
 Take control over how captions are displayed by adding a container with a `data-cfw-player="caption-display"` attribute.  This will hide the default browser captions, and instead place the content in the designated container.
 
-{% example html %}
+{% capture example %}
 <div data-cfw="player" class="video-wrapper">
     <div class="embed-fluid">
         <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
@@ -365,7 +373,8 @@ Take control over how captions are displayed by adding a container with a `data-
         </div>
     </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Usage
 

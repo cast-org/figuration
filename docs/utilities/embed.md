@@ -20,22 +20,24 @@ Rules are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<object>` e
 
 **Pro-Tip!** You don't need to include `frameborder="0"` in your `<iframe>`s as we override that for you.
 
-{% example html %}
+{% capture example %}
 <div class="embed-fluid embed-fluid-16x9">
     <iframe class="embed-fluid-item" src="https://www.youtube.com/embed/MbGkL06EU90?rel=0" allowfullscreen></iframe>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Video Element
 
-{% example html %}
+{% capture example %}
 <div class="embed-fluid">
     <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
         <source src="{{ site.baseurl }}/assets/video/niagara_falls.mp4">
         <track src="{{ site.baseurl }}/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" default />
     </video>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Aspect Ratios
 

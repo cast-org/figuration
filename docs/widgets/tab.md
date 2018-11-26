@@ -14,12 +14,13 @@ group: widgets
 
 Add quick, dynamic tab functionality to transition through panes of content.
 
-{% callout warning %}
+{% capture callout %}
 Incompatible Widgets
-{:.h5}
+{:.h5 .no_toc}
 
 For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}/widgets/tab/) and [Dropdown widget]({{ site.baseurl }}/widgets/dropdown/) in the same nav item.  This will cause navigation and usability issues.  One or the other, but not both.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 ## Contents
 {:.no_toc}

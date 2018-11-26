@@ -14,11 +14,13 @@ group: widgets
 
 Add a context menu or list of links to a control item.  Support for nested lists is included automatically.  There is also an expand on hover option, even though we recommend that you use the default click to toggle mode for consitent usability across devices.
 
-{% callout warning %}
+{% capture callout %}
 Incompatible Widgets
-{:.h5}
+{:.h5 .no_toc}
+
 For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}/widgets/tab/) and [Dropdown widget]({{ site.baseurl }}/widgets/dropdown/) in the same nav item.  This will cause navigation and usability issues.  One or the other, but not both.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 ## Contents
 {:.no_toc}
@@ -67,7 +69,7 @@ Here is a static example showing the dropdown layout and content pieces.
 
 Wrap the dropdown's trigger and the dropdown menu within `.dropdown`, or another element that declares `position: relative;`. Then, add the menu's HTML.
 
-{% example html %}
+{% capture example %}
 <div class="dropdown">
   <a href="#" role="button" data-cfw="dropdown">
     Toggle Dropdown
@@ -78,7 +80,8 @@ Wrap the dropdown's trigger and the dropdown menu within `.dropdown`, or another
     <li><a href="#">Something else here</a></li>
   </ul>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Toggle Indicator
 
@@ -86,7 +89,7 @@ Optionally use the `.caret` utility icon and add it as an element within the con
 
 We use this method instead of using a class placed on the control so that you can use your own icons as needed, and not have interference from hard-coded functionality.
 
-{% example html %}
+{% capture example %}
 <div class="dropdown">
   <a href="#" role="button" data-cfw="dropdown">
     Toggle Dropdown<span class="caret ms-0_25" aria-hidden="true"></span>
@@ -97,13 +100,14 @@ We use this method instead of using a class placed on the control so that you ca
     <li><a href="#">Something else here</a></li>
   </ul>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Single Button Dropdown
 
 You can also use `<button>` elements in your dropdowns instead of `<a>`s.  You can also use swap out the `.dropdown` class on the parent container with `.btn-group` if desired.
 
-{% example html %}
+{% capture example %}
 <div class="btn-group">
   <button type="button" class="btn btn-group-end" data-cfw="dropdown">
     Dropdown <span class="caret" aria-hidden="true"></span>
@@ -114,7 +118,8 @@ You can also use `<button>` elements in your dropdowns instead of `<a>`s.  You c
     <li><a href="#">Something else here</a></li>
   </ul>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Split Button Dropdown
 
@@ -122,7 +127,7 @@ Similarly, create split button dropdowns with virtually the same markup as singl
 
 The use of the `.btn-group-end` class allows us to place the dropdown within the `.btn-group` itself and not reset the `border-radius` on the end side of the button.
 
-{% example html %}
+{% capture example %}
 <div class="btn-group">
   <button type="button" class="btn">Default</button>
   <button type="button" class="btn btn-icon btn-group-end" data-cfw="dropdown" aria-label="Toggle Dropdown">
@@ -134,13 +139,14 @@ The use of the `.btn-group-end` class allows us to place the dropdown within the
     <li><a href="#">Something else here</a></li>
   </ul>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Within a Navbar
 
 Dropdowns also work in a navbar, but require the use of a wrapping element for positioning.  Make sure to use seperate and nested `.nav-item` and `.nav-link` elements as in the following example.
 
-{% example html %}
+{% capture example %}
 <nav class="navbar navbar-expand navbar-light bg-light">
     <a href="#" class="navbar-brand">Navbar</a>
     <ul class="navbar-nav">
@@ -156,7 +162,8 @@ Dropdowns also work in a navbar, but require the use of a wrapping element for p
         </li>
     </ul>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Components
 
@@ -164,7 +171,7 @@ Dropdowns also work in a navbar, but require the use of a wrapping element for p
 
 Add a header to label sections of actions in any dropdown menu with `.dropdown-header`.
 
-{% example html %}
+{% capture example %}
 <ul class="dropdown-menu">
   <li class="dropdown-header">Dropdown header</li>
   <li><a href="#">Action</a></li>
@@ -176,25 +183,27 @@ Add a header to label sections of actions in any dropdown menu with `.dropdown-h
   <li><a href="#">Action</a></li>
   <li><a href="#">Another action</a></li>
 </ul>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Menu Text
 
 Add a non-interactive text item to a dropdown menu with `.dropdown-text`.
 
-{% example html %}
+{% capture example %}
 <ul class="dropdown-menu">
   <li class="dropdown-text">Non-interactive text</li>
   <li><a href="#">Action</a></li>
   <li><a href="#">Another action</a></li>
 </ul>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Menu Dividers
 
 Separate groups of related menu items with a divider by using `.dropdown-divider`.
 
-{% example html %}
+{% capture example %}
 <ul class="dropdown-menu">
   <li><a href="#">Action</a></li>
   <li><a href="#">Another action</a></li>
@@ -202,69 +211,67 @@ Separate groups of related menu items with a divider by using `.dropdown-divider
   <li class="dropdown-divider"></li>
   <li><a href="#">Separated link</a></li>
 </ul>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Disabled Menu Items
 
 Add `.disabled` to the `a` item in the dropdown to make them visually _appear_ disabled.
 
-{% callout warning %}
-Disabling Anchors
-{:.h5}
+{% include callout-warning-disabling-anchors.md %}
 
-Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl }}/get-started/accessibility/#disabled-anchors).
-{% endcallout %}
-
-{% example html %}
+{% capture example %}
 <ul class="dropdown-menu">
   <li><a href="#">Regular link</a></li>
   <li><a href="#" class="disabled">Disabled link</a></li>
   <li><a href="#">Another link</a></li>
 </ul>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Active Menu Items
 
 Add `.active` to the `li` item in the dropdown to show a visual emphasis.
 
-{% example html %}
+{% capture example %}
 <ul class="dropdown-menu">
   <li><a href="#">Regular link</a></li>
   <li><a href="#" class="active">Active link</a></li>
   <li><a href="#">Another link</a></li>
 </ul>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Submenus
 
 You can nest submenus by adding a nested list along side it's toggle.
 
-{% example html %}
+{% capture example %}
 <div class="dropdown">
-        <button type="button" class="btn btn-info" data-cfw="dropdown">
-            Dropdown <span class="caret" aria-hidden="true"></span>
-        </button>
-        <ul class="dropdown-menu">
-            <li class="dropdown-header">Sample Header</li>
-            <li><a href="#">Action</a></li>
-            <li>
-                <a href="#">Something else here</a>
-                <ul>
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Another action</a></li>
-        </ul>
-    </div>
-
-{% endexample %}
+    <button type="button" class="btn btn-info" data-cfw="dropdown">
+        Dropdown <span class="caret" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li class="dropdown-header">Sample Header</li>
+        <li><a href="#">Action</a></li>
+        <li>
+            <a href="#">Something else here</a>
+            <ul>
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Another action</a></li>
+    </ul>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
 
 ### 'Back' Menu Items
 
 Using the [`backlink` option](#options), you can have 'back' menu items automatically inserted into all submenus.  These links will close the current submenu and move focus back onto the parent menu item.  This can be useful if the parent menu/submenu item is being hidden, or obscured by the current submenu.
 
-{% example html %}
+{% capture example %}
 <div class="dropdown">
     <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
         Dropdown <span class="caret" aria-hidden="true"></span>
@@ -290,7 +297,8 @@ Using the [`backlink` option](#options), you can have 'back' menu items automati
         <li><a href="#" class="disabled">Disabled item</a></li>
     </ul>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Special Items
 
@@ -302,7 +310,7 @@ However, there is some support for handling `<button>`, `<input>`, and `<textare
 
 You can optionally use `<button>` elements in your dropdowns instead of just `<a>`s.
 
-{% example html %}
+{% capture example %}
 <div class="dropdown">
   <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
     Dropdown <span class="caret" aria-hidden="true"></span>
@@ -316,13 +324,14 @@ You can optionally use `<button>` elements in your dropdowns instead of just `<a
     <li><button type="button" class="dropdown-item" disabled>Disabled button</button></li>
   </ul>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 #### Checkbox and Radio Inputs
 
 Checkbox and radio inputs are allowed, but only **one per menu item**.
 
-{% example html %}
+{% capture example %}
 <div class="dropdown">
   <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
     Dropdown <span class="caret" aria-hidden="true"></span>
@@ -348,9 +357,10 @@ Checkbox and radio inputs are allowed, but only **one per menu item**.
     </li>
   </ul>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <div class="dropdown">
   <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
     Dropdown <span class="caret" aria-hidden="true"></span>
@@ -376,7 +386,8 @@ Checkbox and radio inputs are allowed, but only **one per menu item**.
     </li>
   </ul>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 #### Textual Inputs
 
@@ -384,7 +395,7 @@ Add `<input type="text">` or `textarea` items to your dropdown menu.  Other type
 
 Since keyboard navigation needs to change once you enter one of these elements, for ease of editing, they use the <kbd>tab</kbd> key to navigate out.
 
-{% example html %}
+{% capture example %}
 <div class="dropdown">
   <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
     Dropdown <span class="caret" aria-hidden="true"></span>
@@ -407,7 +418,8 @@ Since keyboard navigation needs to change once you enter one of these elements, 
     <li><a href="#">Action</a></li>
   </ul>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Variants
 
@@ -415,7 +427,7 @@ Since keyboard navigation needs to change once you enter one of these elements, 
 
 Trigger dropdown menus above elements by adding `.dropup` to the parent element.  The visual `.caret` for the toggle control will reverse direction automatically.
 
-{% example html %}
+{% capture example %}
 <div class="dropdown dropup">
     <button type="button" class="btn btn-primary" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
         Dropup <span class="caret" aria-hidden="true"></span>
@@ -444,7 +456,8 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
         <li><a href="#" class="disabled">Disabled link</a></li>
     </ul>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Menu Alignment
 
@@ -454,7 +467,7 @@ Add `.dropdown-menu-reverse` to a `.dropdown-menu` to align the dropdown menu to
 
 **Heads up!** When using the right-to-left, `rtl`, variant of Figuration all horizontal directions will be reversed.  Meaning left becomes right, and vice-versa.
 
-{% example html %}
+{% capture example %}
 <div class="dropdown dropdown-menu-reverse float-end">
     <button type="button" class="btn btn-primary" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
         Reverse Dropdown <span class="caret" aria-hidden="true"></span>
@@ -483,13 +496,14 @@ Add `.dropdown-menu-reverse` to a `.dropdown-menu` to align the dropdown menu to
         <li><a href="#" class="disabled">Disabled link</a></li>
     </ul>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Submenu Alignment
 
 The menu alignment class of `.dropdown-menu-reverse` will also work with submenu items, and you can use the available `.dropdown-menu-forward` to switch submenu directions if needed.  Simply place either class on the `li` parent of the submenu list.
 
-{% example html %}
+{% capture example %}
 <div class="dropdown">
     <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
         Dropdown <span class="caret" aria-hidden="true"></span>
@@ -539,7 +553,8 @@ The menu alignment class of `.dropdown-menu-reverse` will also work with submenu
         <li><a href="#" class="disabled">Separated link</a></li>
     </ul>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Usage
 

@@ -59,7 +59,7 @@ Four options are available: top, forward (right), bottom, and reverse (left) ali
 
 ### Four Directions
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn" data-cfw="tooltip" data-cfw-tooltip-container="body" data-cfw-tooltip-placement="top" title="Tooltip on top">
     Tooltip on top
 </button>
@@ -75,7 +75,8 @@ Four options are available: top, forward (right), bottom, and reverse (left) ali
 <button type="button" class="btn" data-cfw="tooltip" data-cfw-tooltip-container="body" data-cfw-tooltip-placement="reverse" title="Reverse tooltip">
     Reverse tooltip
 </button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Live Demo
 
@@ -93,19 +94,21 @@ Four options are available: top, forward (right), bottom, and reverse (left) ali
 
 ### Toggle Example
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn btn-info" data-cfw="tooltip" title="Click the trigger or close button to close me." data-cfw-tooltip-placement="forward" data-cfw-tooltip-trigger="click">Click to toggle tooltip</button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Tooltip with HTML
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn btn-info" data-cfw="tooltip" data-cfw-tooltip-html="true" data-cfw-tooltip-placement="forward" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Tooltip with HTML</button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 When using more complex HTML, using a data attribute might not be optimal.  A better option would be to use the Javascript options.
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn btn-info" id="html-tooltip">Tooltip with HTML</button>
 
 <script>
@@ -115,13 +118,14 @@ $('#html-tooltip').CFW_Tooltip({
     title: '<span aria-hidden="true">&middot;</span> <em>Tooltip</em> <u>with</u> <b>HTML</b>'
 });
 </script>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Viewport Constrainment
 
 Keep tooltips in their place with the `viewport` option.
 
-{% example html js %}
+{% capture example %}
 <div class="container-viewport" id="viewport-tooltip">
     <p class="viewport-text">Test viewport constraints for tooltips.</p>
 
@@ -145,17 +149,19 @@ Keep tooltips in their place with the `viewport` option.
         padding: 2
     });
 </script>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Disabled Elements
 
 Elements with the `disabled` attribute aren't interactive, meaning users cannot hover or click them to trigger a tooltip (or popover). As a workaround, you'll want to trigger the tooltip from a wrapper `<div>` or `<span>` and override the `pointer-events` on the disabled element.
 
-{% example html %}
+{% capture example %}
 <span class="d-inline-block" data-cfw="tooltip" title="Tooltip for disabled item">
     <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button>
 </span>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Usage
 

@@ -23,49 +23,53 @@ Click the buttons below to show and hide another element via class changes.
 
 ### Basic
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn btn-outline-primary" data-cfw="collapse" data-cfw-collapse-target="#collapseEx1">Collapse <span class="caret"></span></button>
 <div id="collapseEx1" class="collapse">
     <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem.</p>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 
 ### Multiple Triggers
 
 You can assign multiple triggers to control one collapse target. It is required to use either the `data-cfw-collapse-target` or `href` attributes in order for all the control triggers, and target states to become synchronised.
 
-{% example html %}
+{% capture example %}
 <a href="#" role="button" class="btn btn-outline-primary" data-cfw="collapse" data-cfw-collapse-target="#multi-collapse">Trigger 1 <span class="caret"></span></a>
 <button type="button" class="btn btn-outline-primary" data-cfw="collapse" data-cfw-collapse-target="#multi-collapse">Trigger 2 <span class="caret"></span></button>
 <div id="multi-collapse">
     <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Using `id` and matching `href` attributes.
 
-{% example html %}
+{% capture example %}
 <a href="#href-collapse" role="button" class="btn btn-outline-primary" data-cfw="collapse">ID Trigger 1 <span class="caret"></span></a>
 <a href="#href-collapse" role="button" class="btn btn-outline-primary" data-cfw="collapse">ID Trigger 2 <span class="caret"></span></a>
 <div id="href-collapse" class="collapse">
     <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem. In sed sem et diam condimentum malesuada? Nam cursus venenatis posuere. Praesent id purus turpis. Curabitur pretium arcu nec diam interdum, id elementum sapien ultricies. Fusce ornare magna et risus rhoncus; eu consectetur sem vulputate.</p>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 
 ### Horizonal
 
 A horizontal variant of a collapse can be invoked by placing a class of `width` on the collapse target, or by using the data attribute `data-cfw-collapse-horizontal="true"` on the trigger.  A child container with a fixed dimension width (not a percentage) is needed for proper animation.
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn btn-outline-primary" data-cfw="collapse" data-cfw-collapse-target="#collapseEx2" data-cfw-collapse-horizontal="true">Collapse <span class="caret"></span></button>
 <div id="collapseEx2" class="collapse width">
     <div style="width: 20em">
         <p>Fusce vel posuere nulla. Cras urna enim, tristique a diam quis, suscipit euismod ante. Praesent fringilla tincidunt augue facilisis condimentum. Nam eget congue nisl. Sed hendrerit, arcu convallis gravida scelerisque, purus lectus scelerisque enim, nec gravida sapien diam eget sem.</p>
     </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Usage
 

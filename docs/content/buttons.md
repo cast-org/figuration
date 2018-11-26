@@ -23,14 +23,9 @@ Use Figuration's custom button styles for actions in forms, dialogs, and more. I
 
 Figuration includes a few predefined button styles, each serving its own semantic purpose.
 
-{% callout warning %}
-Conveying Meaning to Assistive Technologies
-{:.h5}
+{% include callout-warning-color-assistive-technologies.md %}
 
-Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
-{% endcallout %}
-
-{% example html %}
+{% capture example %}
 <button type="button" class="btn">Default</button>
 <button type="button" class="btn btn-primary">Primary</button>
 <button type="button" class="btn btn-secondary">Secondary</button>
@@ -41,7 +36,8 @@ Please refer to the [Accessiblity notes about conveying meaning with color]({{ s
 <button type="button" class="btn btn-light">Light</button>
 <button type="button" class="btn btn-dark">Dark</button>
 <button type="button" class="btn btn-link">Link</button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Button Tags
 
@@ -49,19 +45,20 @@ The `.btn` classes are designed to be used with the `<button>` element. However,
 
 When using button classes on `<a>` elements that are used to trigger in-page functionality (like collapsing content), rather than linking to new pages or sections within the current page, these links should be given a `role="button"` to appropriately convey their purpose to assistive technologies such as screen readers.
 
-{% example html %}
+{% capture example %}
 <a class="btn btn-primary" href="#" role="button">Link</a>
 <button class="btn btn-primary" type="submit">Button</button>
 <input class="btn btn-primary" type="button" value="Input">
 <input class="btn btn-primary" type="submit" value="Submit">
 <input class="btn btn-primary" type="reset" value="Reset">
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Outline Buttons
 
 In need of a button, but not the hefty background colors they bring? Replace the default modifier classes with the `.btn-outline-*` ones to remove all background images and colors on any button.
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn btn-outline">Default</button>
 <button type="button" class="btn btn-outline-primary">Primary</button>
 <button type="button" class="btn btn-outline-secondary">Secondary</button>
@@ -71,7 +68,8 @@ In need of a button, but not the hefty background colors they bring? Replace the
 <button type="button" class="btn btn-outline-danger">Danger</button>
 <button type="button" class="btn btn-outline-light">Light</button>
 <button type="button" class="btn btn-outline-dark">Dark</button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Sizes
 
@@ -79,7 +77,7 @@ In need of a button, but not the hefty background colors they bring? Replace the
 
 Fancy larger or smaller buttons? Add `.btn-xsmall`, `.btn-small`, `.btn-large`, or `.btn-xlarge` for additional sizes.
 
-{% example html %}
+{% capture example %}
 <p>
   <button type="button" class="btn btn-primary btn-xlarge">Extra Large button</button>
   <button type="button" class="btn btn-xlarge">Extra Large button</button>
@@ -100,7 +98,8 @@ Fancy larger or smaller buttons? Add `.btn-xsmall`, `.btn-small`, `.btn-large`, 
   <button type="button" class="btn btn-primary btn-xsmall">Extra small button</button>
   <button type="button" class="btn btn-xsmall">Extra small button</button>
 </p>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Icon Button
 
@@ -108,7 +107,7 @@ If a button only contains an icon, you can use `.btn-icon` to reduce the horizon
 
 The icons shown in the examples are from [Font Awesome](https://fontawesome.com/), and not included with Figuration.
 
-{% example html %}
+{% capture example %}
 <p>
   <button type="button" class="btn btn-icon btn-xlarge" aria-label="Extra large icon button"><span class="fas fa-fw fa-info-circle" aria-hidden="true"></span></button>
 </p>
@@ -124,26 +123,28 @@ The icons shown in the examples are from [Font Awesome](https://fontawesome.com/
 <p>
   <button type="button" class="btn btn-icon btn-xsmall" aria-label="Extra small icon button"><span class="fas fa-fw fa-info-circle" aria-hidden="true"></span></button>
 </p>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Block Buttons
 
 Create block level buttons---those that span the full width of a parent---by adding `.btn-block`.
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn btn-primary btn-xlarge btn-block">Extra Large Block level button</button>
 <button type="button" class="btn btn-secondary btn-large btn-block">Large Block level button</button>
 <button type="button" class="btn btn-success btn-block">Default block level button</button>
 <button type="button" class="btn btn-warning btn-small btn-block">Small Block level button</button>
 <button type="button" class="btn btn-danger btn-xsmall btn-block">Extra Small Block level button</button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 
 ## Active State
 
 Buttons will appear pressed (with a darker background and border) when active. **There's no need to add a class to `<button>`s as they use the `:active` pseudo-class**. However, you can still force the same active appearance with `.active` (and include the <code>aria-pressed="true"</code> attribute) should you need to replicate the state programmatically.
 
-{% example html %}
+{% capture example %}
 <strong>Standard Buttons:</strong>
 <p>
 <button type="button" class="btn active">Default</button>
@@ -170,13 +171,14 @@ Buttons will appear pressed (with a darker background and border) when active. *
 <button type="button" class="btn btn-outline-light active">Light</button>
 <button type="button" class="btn btn-outline-dark active">Dark</button>
 </p>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Disabled State
 
 Make buttons look inactive by adding the `disabled` boolean attribute to any `<button>` element.
 
-{% example html %}
+{% capture example %}
 <strong>Standard Buttons:</strong>
 <p>
 <button type="button" class="btn" disabled>Default</button>
@@ -203,18 +205,14 @@ Make buttons look inactive by adding the `disabled` boolean attribute to any `<b
 <button type="button" class="btn btn-outline-light" disabled>Light</button>
 <button type="button" class="btn btn-outline-dark" disabled>Dark</button>
 </p>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Disabled buttons using the `<a>` element behave a bit different:
 
-{% callout warning %}
-Disabling Anchors
-{:.h5}
+{% include callout-warning-disabling-anchors.md %}
 
-Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl }}/get-started/accessibility/#disabled-anchors).
-{% endcallout %}
-
-{% example html %}
+{% capture example %}
 <strong>Anchor Standard Buttons:</strong>
 <p>
 <a href="#" role="button" class="btn disabled" aria-disabled="true">Default</a>
@@ -242,7 +240,8 @@ Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl 
 <a href="#" role="button" class="btn btn-outline-light disabled" aria-disabled="true">Light</a>
 <a href="#" role="button" class="btn btn-outline-dark disabled" aria-disabled="true">Dark</a>
 </p>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Checkbox and Radio Input Buttons
 
@@ -253,16 +252,17 @@ The `<input>`s and `<label>`s are sibling elements as opposed to an `<input>` wi
 
 ### Checkbox Input Button
 
-{% example html %}
+{% capture example %}
 <div class="btn-check">
     <input id="checkbox0" type="checkbox" class="btn-check-input">
     <label for="checkbox0" class="btn">Checkbox Button</label>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Radio Input Buttons
 
-{% example html %}
+{% capture example %}
 <div class="btn-check">
     <input id="radio0-0" type="radio" name="radio0" class="btn-check-input" checked>
     <label for="radio0-0" class="btn">Radio 1</label>
@@ -275,13 +275,14 @@ The `<input>`s and `<label>`s are sibling elements as opposed to an `<input>` wi
     <input id="radio0-2" type="radio" name="radio0" class="btn-check-input">
     <label for="radio0-2" class="btn">Radio 3</label>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Disabled Input Buttons
 
 Disabled checkboxes and radios are supported, you will need to add the `disabled` attribute to the `.btn-check-input`. This will also apply the disabled `.btn` styling to indicate the input's state.
 
-{% example html %}
+{% capture example %}
 <div class="btn-check">
     <input id="checkbox1" type="checkbox" class="btn-check-input" disabled>
     <label for="checkbox1" class="btn">Disabled Checkbox</label>
@@ -291,13 +292,14 @@ Disabled checkboxes and radios are supported, you will need to add the `disabled
     <input id="radio1-0" type="radio" name="radio1" class="btn-check-input" disabled>
     <label for="radio1-0" class="btn">Disabled Radio</label>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Grouped Input Buttons
 
 You can also use `.btn-check`s inside a `.btn-group` for grouping controls together.
 
-{% example html %}
+{% capture example %}
 <div class="btn-group">
     <div class="btn-check">
         <input id="radio2-0" type="radio" name="radio2" class="btn-check-input" checked>
@@ -312,7 +314,8 @@ You can also use `.btn-check`s inside a `.btn-group` for grouping controls toget
         <label for="radio2-2" class="btn btn-outline-info">Radio 3</label>
     </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## SASS Reference
 

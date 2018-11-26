@@ -115,8 +115,7 @@ The syntax is nearly the same as the default, positive margin utilities, but wit
 
 Here is a comparison and example of customizing the grid at the medium (`md`) breakpoint and above. The the `.col` horizontal padding is increased with `.px-md-2` and then counteracted that with negative horizontal margin `.mx-md-n2` on the parent `.row`.
 
-<div class="cf-example-row">
-{% example html %}
+{% capture example %}
 <div class="row mb-1">
     <div class="col py-1">Standard horizontal column padding</div>
     <div class="col py-1">Standard horizontal column padding</div>
@@ -126,21 +125,20 @@ Here is a comparison and example of customizing the grid at the medium (`md`) br
     <div class="col py-1 px-md-2">Custom horizontal column padding</div>
     <div class="col py-1 px-md-2">Custom horizontal column padding</div>
 </div>
-{% endexample %}
-</div>
+{% endcapture %}
+{% include example.html content=example class="cf-example-row" %}
 
 In some cases, you may also have to adjust the padding on the parent container of the `.row` element to prevent horizontal scrollbars from occuring.  For example, using the custom negative margin example above, you may find the need to use `.px-md-2` on the parent `.container-fluid`.
 
-<div class="cf-example-row">
-{% example html %}
+{% capture example %}
 <div class="container-fluid px-md-2">
     <div class="row mx-md-n2">
         <div class="col py-1 px-md-2">Custom horizontal column padding</div>
         <div class="col py-1 px-md-2">Custom horizontal column padding</div>
     </div>
 </div>
-{% endexample %}
-</div>
+{% endcapture %}
+{% include example.html content=example class="cf-example-row" %}
 
 ## SASS Reference
 

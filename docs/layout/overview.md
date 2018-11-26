@@ -57,9 +57,9 @@ Since Figuration is developed to be mobile first, we use a handful of [media que
 
 For accessibility reasons, the Sass internally maps the pixel defined breakpoints into `em` values.  We assume a 16px default root font size, since this is the default for most browsers.
 
-{% callout info %}
+{% capture callout %}
 PX vs EM Controversy
-{:.h5}
+{:.h5 .no_toc}
 
 While this is a very opinionated topic, Figuration has chosen the `em` route for greater accessibility. We believe strongly that this is the correct direction moving forward.
 
@@ -68,8 +68,8 @@ Some reference material - may be competing points of view:
 - [https://zellwk.com/blog/media-query-units/](https://zellwk.com/blog/media-query-units/)
 - [https://github.com/twbs/bootstrap/pull/17403](https://github.com/twbs/bootstrap/pull/17403)
 - [https://nicolas-hoizey.com/2016/03/people-don-t-change-the-default-16px-font-size-in-their-browser.html](https://nicolas-hoizey.com/2016/03/people-don-t-change-the-default-16px-font-size-in-their-browser.html)
-
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 
 Figuration primarily uses the following media query ranges---or breakpoints---in our source Sass files for our layout, grid system, and components.
 
@@ -202,13 +202,14 @@ The only special case is where there are `*-up` or `*-down` variants for certain
 
 A quick example using some of Figuration's [Typography utility classes]({{ site.baseurl }}/utilities/typography).
 
-{% example html %}
+{% capture example %}
 <p class="text-end">Right aligned text on all viewport sizes. (<strong>No <code>xs</code> class designation!</strong>)</p>
 <p class="text-sm-end">Right aligned text on viewports sized SM (small) or wider.</p>
 <p class="text-md-end">Right aligned text on viewports sized MD (medium) or wider.</p>
 <p class="text-lg-end">Right aligned text on viewports sized LG (large) or wider.</p>
 <p class="text-xl-end">Right aligned text on viewports sized XL (extra-large) or wider.</p>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Z-index
 

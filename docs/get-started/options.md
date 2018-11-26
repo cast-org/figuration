@@ -187,15 +187,15 @@ The button, button group, pagination, form-control and input-group components al
 
 By using a map, we can be sure the components are all the same height when horizontally aligned.
 
-{% callout info %}
+{% capture callout %}
 `<select>` Sizing Caveat
-{:.h5}
+{:.h5 .no_toc}
 
 Currently there is a minor issue with vertical sizing and `<select>` elements with Internet Explorer.  IE will render `<select>` elements slightly shorter in vertical height than other browsers.
 
 This has not undergone stringent testing on mobile devices yet.
-
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 
 You can modify, remove, or add additional sizes, beyond the default sizing, by redefining the `$component-sizes` variable and
 Below is the default additional settings for reference.  Try not to confuse the size designations (`sm`, `lg`, etc.) with the grid breakpoints designations.

@@ -18,7 +18,7 @@ Note that the float utilities do not have any affect on items inside flex contai
 
 Instead of using `left/right` designators, the float utilities use `start/end` designators to match up with the [flexbox utilities]({{ site.baseurl }}/utilities/flexbox/).
 
-{% example html %}
+{% capture example %}
 <div class="float-start">Float start aligned on all viewport sizes</div><br>
 <div class="float-end">Float end aligned on all viewport sizes</div><br>
 <div class="float-none">Don't float on all viewport sizes</div><br>
@@ -27,7 +27,8 @@ Instead of using `left/right` designators, the float utilities use `start/end` d
 <div class="float-md-end">Float end aligned on viewports sized MD (medium) or wider</div><br>
 <div class="float-lg-end">Float end aligned on viewports sized LG (large) or wider</div><br>
 <div class="float-xl-end">Float end aligned on viewports sized XL (extra-large) or wider</div><br>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 {% highlight scss %}
 // Related simple non-responsive mixins

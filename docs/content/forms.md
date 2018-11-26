@@ -18,16 +18,17 @@ Figuration's form controls expand on [the Rebooted form styles]({{ site.baseurl 
 
 Be sure to use an appropriate type attribute on all inputs (e.g., `email` for email address or `number` for numerical information) to take advantage of newer input controls like email verification, number selection, and more.
 
-{% callout warning %}
+{% capture callout %}
 Alternatives to Hidden Labels
-{:.h5}
+{:.h5 .no_toc}
 
 Assistive technologies such as screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the `.sr-only` class. There are further alternative methods of providing a label for assistive technologies, such as the `aria-label`, `aria-labelledby` or `title` attribute. If none of these are present, assistive technologies may resort to using the `placeholder` attribute, if present, but note that use of `placeholder` as a replacement for other labelling methods is not advised.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 The example form below demonstrates Figuration's form styles.
 
-{% example html %}
+{% capture example %}
 <form>
   <div class="form-group">
     <label for="overview-email">Email Address</label>
@@ -44,7 +45,8 @@ The example form below demonstrates Figuration's form styles.
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Form Controls
 
@@ -52,7 +54,7 @@ Textual form controls---like `<input>`s, `<select>`s, and `<textarea>`s---are st
 
 Check out our [custom forms](#custom-forms) for additonal `<select>` styling.
 
-{% example html %}
+{% capture example %}
 <form>
   <div class="form-group">
     <label for="example-input">Example text input</label>
@@ -83,13 +85,14 @@ Check out our [custom forms](#custom-forms) for additonal `<select>` styling.
     <textarea class="form-control" id="example-texarea" rows="3"></textarea>
   </div>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Textual Inputs
 
 Here are examples of `.form-control` applied to each textual HTML5 `<input>` `type`.
 
-{% example html %}
+{% capture example %}
 <div class="form-group row">
   <label for="example-text-input" class="col-2 form-control-label">Text</label>
   <div class="col-10">
@@ -162,18 +165,20 @@ Here are examples of `.form-control` applied to each textual HTML5 `<input>` `ty
     <input class="form-control" type="time" value="13:45:00" id="example-time-input">
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### File Input
 
 For file inputs, use `.form-control-file` instead of `.form-control`.
 
-{% example html %}
+{% capture example %}
 <div class="form-group">
   <label for="example-file">Example file input</label>
   <input type="file" class="form-control-file" id="example-file">
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Control Sizing
 
@@ -184,17 +189,18 @@ Set heights and font-sizes using component sizing classes, such as:
 - `.form-control-large`
 - `.form-control-xlarge`
 
-{% example html %}
+{% capture example %}
 <input class="form-control form-control-xlarge" type="text" placeholder=".form-control-xlarge">
 <input class="form-control form-control-large" type="text" placeholder=".form-control-large">
 <input class="form-control" type="text" placeholder="Default input">
 <input class="form-control form-control-small" type="text" placeholder=".form-control-small">
 <input class="form-control form-control-xsmall" type="text" placeholder=".form-control-xsmall">
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 The sizing classes also work on other inputs such as `<select>`s and `<textarea>`s.
 
-{% example html %}
+{% capture example %}
 <select class="form-control form-control-xlarge">
   <option>Extra large select</option>
 </select>
@@ -210,7 +216,8 @@ The sizing classes also work on other inputs such as `<select>`s and `<textarea>
 <select class="form-control form-control-xsmall">
   <option>Extra small select</option>
 </select>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Checkboxes and Radios
 
@@ -222,7 +229,7 @@ Disabled checkboxes and radios are supported by using the `disabled` attribute o
 
 By default, any number of checkboxes and radios that are immediate sibling will be vertically stacked and appropriately spaced with `.form-check`.
 
-{% example html %}
+{% capture example %}
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="default-checkbox-1">
   <label class="form-check-label" for="default-checkbox-1">Default checkbox</label>
@@ -231,9 +238,10 @@ By default, any number of checkboxes and radios that are immediate sibling will 
   <input class="form-check-input" type="checkbox" value="" id="default-checkbox-2" disabled>
   <label class="form-check-label" for="default-checkbox-2">Disabled checkbox</label>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <div class="form-check">
   <input class="form-check-input" type="radio" name="default-radio" value="" id="default-radio-1">
   <label class="form-check-label" for="default-radio-1">First default radio</label>
@@ -246,13 +254,14 @@ By default, any number of checkboxes and radios that are immediate sibling will 
   <input class="form-check-input" type="radio" name="default-radio" value="" id="default-radio-3" disabled>
   <label class="form-check-label" for="default-radio-3">Disabled radio</label>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Inline
 
 Group checkboxes or radios on the same horizontal row by adding `.form-check-inline` to any `.form-check`.
 
-{% example html %}
+{% capture example %}
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="checkbox" value="" id="inline-checkbox-1">
   <label class="form-check-label" for="inline-checkbox-1">1</label>
@@ -265,9 +274,10 @@ Group checkboxes or radios on the same horizontal row by adding `.form-check-inl
   <input class="form-check-input" type="checkbox" value="" id="inline-checkbox-3" disabled>
   <label class="form-check-label" for="inline-checkbox-3">3 (disabled)</label>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" name="inline-radio" value="" id="inline-radio-1">
   <label class="form-check-label" for="inline-radio-1">1</label>
@@ -280,64 +290,70 @@ Group checkboxes or radios on the same horizontal row by adding `.form-check-inl
   <input class="form-check-input" type="radio" name="inline-radio" value="" id="inline-radio-3" disabled>
   <label class="form-check-label" for="inline-radio-3">3 (disabled)</label>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Without Labels
 
 Add `.position-static` to inputs within `.form-check` that don't have any label text. Remember to still provide some form of label for assistive technologies (for instance, using `aria-label`).
 
-{% example html %}
+{% capture example %}
 <div class="form-check">
   <input class="form-check-input position-static" type="checkbox" id="nolabel-checkbox" value="" aria-label="...">
 </div>
 <div class="form-check">
   <input class="form-check-input position-static" type="radio" name="nolabel-radio" id="nolabel-checkbox-1" value="" aria-label="...">
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Range Input
 
 Set horizontally scrollable range inputs using `.form-control-range`.
 
-{% example html %}
+{% capture example %}
 <div class="form-group">
   <label for="example-range">Example range input</label>
   <input type="range" class="form-control-range" id="example-range">
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Color Input
 
 For color inputs, use `.form-control-color` instead of `.form-control`.
 
-{% callout danger %}
+{% capture callout %}
 Browser Compatibility
-{:.h5}
+{:.h5 .no_toc}
 
 While Figuration supports styling `<input type="color">` elements, some browsers don't. Use custom JavaScript to handle it in these browsers.  For support details, see [Can I Use](https://caniuse.com/#feat=input-color).
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="danger" %}
 
 
-{% example html %}
+{% capture example %}
 <div class="form-group">
   <label for="example-color">Example color input</label>
   <input type="color" class="form-control-range" id="example-color" value="#0055e9">
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Readonly Inputs
 
 Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
 
-{% example html %}
+{% capture example %}
 <input class="form-control" type="text" placeholder="Readonly input" readonly>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Static Inputs
 
 When you want to have `readonly` fields in your form styled as plain text, use the `.form-control-static` class to remove the default form field styling and preserve the correct margin and padding.
 
-{% example html %}
+{% capture example %}
 <form>
   <div class="form-group row">
     <label for="static-email" class="col-sm-2 form-control-label">Email</label>
@@ -352,9 +368,10 @@ When you want to have `readonly` fields in your form styled as plain text, use t
     </div>
   </div>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <form class="form-inline">
   <div class="form-group me-0_5">
     <label for="inputEmail2" class="sr-only">Email</label>
@@ -366,7 +383,8 @@ When you want to have `readonly` fields in your form styled as plain text, use t
   </div>
   <button type="submit" class="btn btn-primary">Confirm identity</button>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Label, Legend, and Static Sizing
 
@@ -377,7 +395,7 @@ Just like sizing the form inputs, you can size `<label>`s, `<legends>`, and stat
 - `.form-control-label-large`
 - `.form-control-label-xlarge`
 
-{% example html %}
+{% capture example %}
 <div class="form-group flex-items-center row">
     <label class="col-sm-2 form-control-label form-control-label-xsmall" for="labelstatic-1">Email</label>
     <div class="col-sm-10">
@@ -408,19 +426,21 @@ Just like sizing the form inputs, you can size `<label>`s, `<legends>`, and stat
         <input type="text" class="form-control-static form-control-label-xlarge" id="labelstatic-5" value="email@example.com">
     </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Disabled States
 
 Add the `disabled` attribute on an input to prevent user interactions and make it appear lighter in color.
 
-{% example html %}
+{% capture example %}
 <input class="form-control" id="disabled-input" type="text" placeholder="Disabled input" disabled>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Add the `disabled` attribute to a `<fieldset>` to disable all the controls within.
 
-{% example html %}
+{% capture example %}
 <form>
   <fieldset disabled>
     <div class="form-group">
@@ -440,46 +460,50 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
     <button type="submit" class="btn btn-primary">Submit</button>
   </fieldset>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% callout warning %}
+{% capture callout %}
 Caveat About Link Functionality of `<a>`
-{:.h5}
+{:.h5 .no_toc}
 
 By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`. As noted in the section about [disabled state for buttons](../buttons/#disabled-state) (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in all browsers, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
-{% callout danger %}
+{% capture callout %}
 Cross-browser Compatibility
-{:.h5}
+{:.h5 .no_toc}
 
 While Figuration will apply these styles in all browsers, Internet Explorer 11 and below don't fully support the `disabled` attribute on a `<fieldset>`. Use custom JavaScript to disable the fieldset in these browsers.
-{% endcallout %}
-
+{% endcapture %}
+{% include callout.html content=callout type="danger" %}
 ## Help Text
 
 Block-level help text in forms can be created using `.form-text`. Inline help text can be flexibly implemented using any inline HTML element and utility classes like `.text-muted`.
 
-{% callout warning %}
+{% capture callout %}
 Associating Help Text With Form Controls
-{:.h5}
+{:.h5 .no_toc}
 
 Help text should be explicitly associated with the form control it relates to using the `aria-describedby` attribute. This will ensure that assistive technologies---such as screen readers---will announce this help text when the user focuses or enters the control.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 Help text below inputs can be styled with `.form-text`. This class includes `display: block;` and adds some top margin for easy spacing from the inputs above.
 
-{% example html %}
+{% capture example %}
 <label for="help-pass">Password</label>
 <input type="password" id="help-pass" class="form-control" aria-describedby="help-pass-text">
 <small id="help-pass-text" class="form-text text-muted">
   Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
 </small>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`, or something else), optionally using utility classes.
 
-{% example html %}
+{% capture example %}
 <form class="form-inline">
   <div class="form-group">
     <label for="inline-pass" class="me-0_5">Password</label>
@@ -489,7 +513,8 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
     </small>
   </div>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Layout
 
@@ -499,7 +524,7 @@ Since Figuration applies `display: block` and `width: 100%` to almost all our fo
 
 The `.form-group` class is the easiest way to add some structure to forms. It provides a flexible class that encourages proper grouping of labels, controls, optional help text, and form validation messaging. By default it only applies `margin-bottom`, but it picks up additional styles in `.form-inline` as needed. Use it with `<fieldset>`s, `<div>`s, or nearly any other element.
 
-{% example html %}
+{% capture example %}
 <form>
   <div class="form-group">
     <label class="form-control-label" for="formGroupExampleInput">Example label</label>
@@ -510,7 +535,8 @@ The `.form-group` class is the easiest way to add some structure to forms. It pr
     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
   </div>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Form Grid
 
@@ -518,7 +544,7 @@ More complex forms can be built using our [grid classes]({{ site.baseurl }}/layo
 
 Grid-based form layouts also support [control sizing]({{ site.baseurl }}/content/forms/#control-sizing).
 
-{% example html %}
+{% capture example %}
 <form>
   <div class="row">
     <div class="col">
@@ -529,13 +555,14 @@ Grid-based form layouts also support [control sizing]({{ site.baseurl }}/content
     </div>
   </div>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Form Row
 
 You may also swap `.row` for `.form-row`, a variation of our standard grid row that overrides the default column gutters for tighter and more compact layouts.
 
-{% example html %}
+{% capture example %}
 <form>
   <div class="form-row">
     <div class="col">
@@ -546,11 +573,12 @@ You may also swap `.row` for `.form-row`, a variation of our standard grid row t
     </div>
   </div>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 More complex layouts can also be created with the grid system.
 
-{% example html %}
+{% capture example %}
 <form>
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -595,7 +623,8 @@ More complex layouts can also be created with the grid system.
   </div>
   <button type="submit" class="btn btn-primary">Sign in</button>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 #### Horizontal Form
 
@@ -603,7 +632,7 @@ Create horizontal forms with the grid by adding the `.row` class to form groups 
 
 At times, you maybe need to use margin or padding utilities to create that perfect alignment you need. For example, we've removed the `padding-top` on our stacked radio inputs label to better align the text baseline.
 
-{% example html %}
+{% capture example %}
 <form>
   <div class="form-group row">
     <label for="hform-email" class="col-sm-2 form-control-label">Email</label>
@@ -659,13 +688,14 @@ At times, you maybe need to use margin or padding utilities to create that perfe
     </div>
   </div>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 #### Column Sizing
 
 As shown in the previous examples, our grid system allows you to place any number of `.col`s within a `.row`. They will split the available width equally between them. You may also pick a subset of your columns to take up more or less space, while the remaining `.col`s equally split the rest, with specific column classes like `.col-7`.
 
-{% example html %}
+{% capture example %}
 <form>
   <div class="form-row">
     <div class="col-7">
@@ -679,13 +709,14 @@ As shown in the previous examples, our grid system allows you to place any numbe
     </div>
   </div>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 #### Auto-sizing
 
 The example below uses a flexbox utility to vertically center the contents and changes `.col` to `.col-auto` so that your columns only take up as much space as needed. Put another way, the column sizes itself based on the contents.
 
-{% example html %}
+{% capture example %}
 <form>
   <div class="form-row flex-items-center">
     <div class="col-auto mb-0_5">
@@ -712,11 +743,12 @@ The example below uses a flexbox utility to vertically center the contents and c
     </div>
   </div>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Here is the same form, but this time using specified column widths
 
-{% example html %}
+{% capture example %}
 <form>
   <div class="form-row flex-items-center">
     <div class="col-sm-3">
@@ -743,11 +775,12 @@ Here is the same form, but this time using specified column widths
     </div>
   </div>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 You can also use [custom form controls](#custom-forms) as needed.
 
-{% example html %}
+{% capture example %}
 <form>
   <div class="form-row flex-items-center">
     <div class="col">
@@ -771,7 +804,8 @@ You can also use [custom form controls](#custom-forms) as needed.
     </div>
   </div>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Inline Forms
 
@@ -783,7 +817,7 @@ Use the `.form-inline` class to display a series of labels, form controls, and b
 
 You may need to manually address the width and alignment of individual form controls with [spacing utilities]({{ site.baseurl }}/utilities/spacing/) (as shown below). Lastly, as shown below, you should always include a `<label>` with each form control, even if you need to hide it from non-screenreader users with `.sr-only`.
 
-{% example html %}
+{% capture example %}
 <form class="form-inline">
   <label class="sr-only" for="inline-name">Name</label>
   <input type="text" class="form-control mb-0_5 me-sm-0_5" id="inline-name" placeholder="Jane Doe">
@@ -803,11 +837,12 @@ You may need to manually address the width and alignment of individual form cont
 
   <button type="submit" class="btn btn-primary mb-0_5">Submit</button>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Custom form controls and selects are also supported.
 
-{% example html %}
+{% capture example %}
 <form class="form-inline">
   <label class="mb-0_5 me-0_5" for="inlineFormCustomSelectPref">Preference</label>
   <select class="custom-select mb-0_5 me-sm-0_5" id="inlineFormCustomSelectPref">
@@ -825,7 +860,8 @@ Custom form controls and selects are also supported.
 
   <button type="submit" class="btn btn-primary mb-0_5">Submit</button>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Custom Forms
 
@@ -845,13 +881,14 @@ In the checked and indeterminate states, we use **base64 embedded SVG icons** fr
 
 Checkboxes use the `.custom-checkbox` modifier class.
 
-{% example html %}
+{% capture example %}
 <div class="custom-control custom-checkbox">
   <input type="checkbox" class="custom-control-input" id="custom-control-checkbox">
   <label class="custom-control-indicator" for="custom-control-checkbox"></label>
   <label class="custom-control-label" for="custom-control-checkbox">Check this custom checkbox</label>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Custom checkboxes can also utilize the `:indeterminate` pseudo class when manually set via JavaScript (there is no available HTML attribute for specifying it).
 
@@ -873,7 +910,7 @@ $('.your-checkbox').prop('indeterminate', true)
 
 Radios use the `.custom-radio` modifier class.
 
-{% example html %}
+{% capture example %}
 <div class="custom-control custom-radio">
   <input type="radio" class="custom-control-input" name="custom-control-radio" id="custom-control-radio-1">
   <label class="custom-control-indicator" for="custom-control-radio-1"></label>
@@ -884,13 +921,14 @@ Radios use the `.custom-radio` modifier class.
   <label class="custom-control-indicator" for="custom-control-radio-2"></label>
   <label class="custom-control-label" for="custom-control-radio-2">Or toggle this other custom radio</label>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 #### Switches
 
 Make custom checkboxes or custom radios look like toggle switches with the `.custom-switch` modifier class.
 
-{% example html %}
+{% capture example %}
 <div class="custom-control custom-switch mb-1">
   <input type="checkbox" class="custom-control-input" id="custom-control-switch-0">
   <label class="custom-control-indicator" for="custom-control-switch-0"></label>
@@ -907,13 +945,14 @@ Make custom checkboxes or custom radios look like toggle switches with the `.cus
   <label class="custom-control-indicator" for="custom-control-switch-2"></label>
   <label class="custom-control-label" for="custom-control-switch-2">Or toggle this other custom radio</label>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 #### Inline
 
 Group custom controls on a horizontal row by using the `.custom-control-inline` modifier class on the `.custom-control` container.
 
-{% example html %}
+{% capture example %}
 <div class="custom-control custom-control-inline custom-radio">
   <input type="radio" class="custom-control-input" name="custom-control-inline" id="custom-control-radio-3">
   <label class="custom-control-indicator" for="custom-control-radio-3"></label>
@@ -924,14 +963,15 @@ Group custom controls on a horizontal row by using the `.custom-control-inline` 
   <label class="custom-control-indicator" for="custom-control-radio-4"></label>
   <label class="custom-control-label" for="custom-control-radio-4">Or toggle this other custom radio</label>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 
 #### Disabled
 
 Custom checkboxes and radios can also be disabled. Add the `disabled` boolean attribute to the `<input>` and the custom indicator and label description will be automatically styled.
 
-{% example html %}
+{% capture example %}
 <div class="custom-control custom-checkbox">
   <input type="checkbox" class="custom-control-input" id="custom-checkbox-disabled" disabled>
   <label class="custom-control-indicator" for="custom-checkbox-disabled"></label>
@@ -949,25 +989,27 @@ Custom checkboxes and radios can also be disabled. Add the `disabled` boolean at
   <label class="custom-control-indicator" for="custom-switch-disabled"></label>
   <label class="custom-control-label" for="custom-switch-disabled">Toggle this custom switch</label>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 
 ### Select Menu
 
 Custom `<select>` menus need only a custom class, `.custom-select` to trigger the custom styles. Custom styles are limited to the `<select>`'s initial appearance and cannot modify the `<option>`s due to browser limitations.
 
-{% example html %}
+{% capture example %}
 <select class="custom-select">
   <option selected>Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
   <option value="3">Three</option>
 </select>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Multiple size are also available.
 
-{% example html %}
+{% capture example %}
 <select class="custom-select custom-select-xlarge">
   <option>Extra large select</option>
 </select>
@@ -983,7 +1025,8 @@ Multiple size are also available.
 <select class="custom-select custom-select-xsmall">
   <option>Extra small select</option>
 </select>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Color Picker
 
@@ -991,43 +1034,48 @@ Multiple size are also available.
 
 Please refer to the note regarding browser compatibility in the [color input](#color-input) section above.
 
-{% example html %}
+{% capture example %}
 <input class="custom-color" type="color" value="#117dba" id="color">
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Range
 
 Create custom `<input type="range">` controls with `.custom-range`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only IE and Firefox support "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.  We also hide the tooltip provided only by IE to maintain cross-browser consistency.
 
-{% example html %}
+{% capture example %}
 <label for="customRange1">Example range</label>
 <input type="range" class="custom-range" id="customRange1">
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Range inputs have implicit values for `min` and `max`—`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
 
-{% example html %}
+{% capture example %}
 <label for="customRange2">Example range</label>
 <input type="range" class="custom-range" min="0" max="5" id="customRange2">
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 By default, range inputs "snap" to integer values. To change this, you can specify a `step` value. In the example below, we double the number of steps by using `step="0.5"`.
 
-{% example html %}
+{% capture example %}
 <label for="customRange3">Example range</label>
 <input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### File Browser
 
 The file input is the most gnarly of the bunch and requires additional JavaScript if you'd like to hook them up with functional *Choose file...* and selected file name text.
 
-{% example html %}
+{% capture example %}
 <div class="custom-file">
   <input type="file" class="custom-file-input" id="custom-file">
   <label class="custom-file-label" for="custom-file">Choose file</label>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 We hide the default file `<input>` via `opacity` and instead style the `<label>`. The button is generated and positioned with `::after`. Lastly, we declare a `width` and `height` on the `<input>` for proper spacing for surrounding content.
 
@@ -1044,12 +1092,13 @@ $custom-file-text: (
 
 This example shows `lang="es"` in action on the custom file input for a Spanish translation:
 
-{% example html %}
+{% capture example %}
 <div class="custom-file">
   <input type="file" class="custom-file-input" id="custom-file-lang" lang="es">
   <label class="custom-file-label" for="custom-file-lang">Seleccionar Archivo</label>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 You'll need to set the language of your document (or subtree thereof) correctly in order for the correct text to be shown. This can be done using [the `lang` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) on the `<html>` element or the [`Content-Language` HTTP header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.12), among other methods.
 
@@ -1059,20 +1108,22 @@ We also provide a way to translate the "Browse" text in HTML with the `data-brow
 
 This method uses the `!important` CSS rule to override any SCSS designated translation, otherwise the browser's, or a page's, language setting would override the data attribute value.
 
-{% example html %}
+{% capture example %}
 <div class="custom-file">
   <input type="file" class="custom-file-input" id="custom-file-lang-html">
   <label class="custom-file-label" for="custom-file-lang-html" data-browse="Bestand kiezen">Voeg je document toe</label>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Validation
 
 Provide valuable, actionable feedback to your users with HTML5 form validation–[available in all our supported browsers](https://caniuse.com/#feat=form-validation). Choose from the browser default validation feedback, or implement custom messages with our built-in classes and starter JavaScript.
 
-{% callout warning %}
+{% capture callout %}
 We currently recommend using custom validation styles, as native browser default validation messages are not consistently exposed to assistive technologies in all browsers (most notably, Chrome on desktop and mobile).
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 ### How It Works
 
@@ -1097,7 +1148,7 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
 
 Custom feedback styles apply custom colors, borders, focus styles, feedback messages, and optional background icons to better communicate feedback. Background icons for `<select>`s are only available with `.custom-select`, and not `.form-control`.
 
-{% example html %}
+{% capture example %}
 <form class="needs-validation" novalidate>
   <div class="form-row">
     <div class="col-md-4 mb-1">
@@ -1168,7 +1219,8 @@ Custom feedback styles apply custom colors, borders, focus styles, feedback mess
   }, false);
 })();
 </script>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Browser Defaults
 
@@ -1176,7 +1228,7 @@ Not interested in custom validation feedback messages or writing JavaScript to c
 
 While these feedback styles cannot be styled with CSS, you can still customize the feedback text through JavaScript.
 
-{% example html %}
+{% capture example %}
 <form>
   <div class="form-row">
     <div class="col-md-4 mb-1">
@@ -1219,13 +1271,14 @@ While these feedback styles cannot be styled with CSS, you can still customize t
   </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Server Side
 
 We recommend using client side validation, but in case you require server side, you can indicate invalid and valid form fields with `.is-invalid` and `.is-valid`. Note that `.invalid-feedback` is also supported with these classes.
 
-{% example html %}
+{% capture example %}
 <form>
   <div class="form-row">
     <div class="col-md-4 mb-1">
@@ -1275,13 +1328,14 @@ We recommend using client side validation, but in case you require server side, 
   </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Supported Elements
 
 Our example forms show native textual `<input>`s above, but form validation styles are also available for `<textarea>`s and custom form controls.
 
-{% example html %}
+{% capture example %}
 <form class="was-validated">
   <div class="mb-1">
     <label for="validate-textarea">Textarea</label>
@@ -1331,13 +1385,14 @@ Our example forms show native textual `<input>`s above, but form validation styl
     <div class="invalid-feedback">Example invalid custom file feedback</div>
   </div>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Tooltips
 
 If your form layout allows it, you can swap the `.{valid|invalid}-feedback` classes for `.{valid|invalid}-tooltip` classes to display validation feedback in a styled tooltip. Be sure to have a parent with `position: relative` on it for tooltip positioning. In the example below, our column classes have this already, but your project may require an alternative setup.
 
-{% example html %}
+{% capture example %}
 <form class="needs-validation" novalidate>
   <div class="form-row">
     <div class="col-md-4 mb-1">
@@ -1380,7 +1435,8 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
   </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Icons
 
@@ -1390,7 +1446,7 @@ Optional visual icon representations of the validation state can be added to _te
 - You may use your own base64 PNGs or SVGs by updating the Sass variables and recompiling.
 - Icons can also be disabled entirely by setting the `$enable-validation-icons` variable to `false` in the [Sass global options]({{ site.baseurl }}/get-started/options/#global-options).
 
-{% example html %}
+{% capture example %}
 <form class="needs-validation" novalidate>
   <div class="form-row">
     <div class="col-md-4 mb-1">
@@ -1448,7 +1504,8 @@ Optional visual icon representations of the validation state can be added to _te
     </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## SASS Reference
 

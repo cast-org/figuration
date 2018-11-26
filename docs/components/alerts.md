@@ -17,14 +17,9 @@ Provide contextual feedback messages for typical user actions with the handful o
 
 Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use of the contextual classes (e.g., `.alert-success`) is **required**. For inline dismissal, use the [Alert jQuery widget]({{ site.baseurl }}/widgets/alert/).
 
-{% callout warning %}
-Conveying Meaning to Assistive Technologies
-{:.h5}
+{% include callout-warning-color-assistive-technologies.md %}
 
-Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
-{% endcallout %}
-
-{% example html %}
+{% capture example %}
 <div class="alert alert-primary" role="alert">
   <strong>Primary!</strong> You read this important alert message.
 </div>
@@ -43,13 +38,14 @@ Please refer to the [Accessiblity notes about conveying meaning with color]({{ s
 <div class="alert alert-danger" role="alert">
   <strong>Danger!</strong> There is definitely some error now.
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Link Color
 
 Use the `.alert-link` utility class to quickly provide matching colored links within any alert.
 
-{% example html %}
+{% capture example %}
 <div class="alert alert-primary" role="alert">
   <strong>Primary!</strong> You read <a href="#" class="alert-link">this important alert message</a>.
 </div>
@@ -68,20 +64,22 @@ Use the `.alert-link` utility class to quickly provide matching colored links wi
 <div class="alert alert-danger" role="alert">
   <strong>Danger!</strong> There is definitely <a href="#" class="alert-link">some error</a> now.
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Additional Content
 
 Alerts can also contain additional HTML elements like headings, paragraphs, and dividers.
 
-{% example html %}
+{% capture example %}
 <div class="alert alert-success" role="alert">
   <h4 class="alert-heading">Well done!</h4>
   <p>You successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
   <hr />
   <p class="mb-0">Whenever you need to, use the margin utilities to keep things nice and tidy.</p>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## SASS Reference
 

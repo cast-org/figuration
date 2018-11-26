@@ -6,19 +6,15 @@ group: utilities
 
 Add a little, or a lot of, color to your site or application.
 
-{% callout info %}
+{% capture callout %}
 Dealing with Specificity
-{:.h5}
+{:.h5 .no_toc}
 
 Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a `<div>` with the class.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 
-{% callout warning %}
-Conveying Meaning to Assistive Technologies
-{:.h5}
-
-Please refer to the [Accessiblity notes about conveying meaning with color]({{ site.baseurl }}/get-started/accessibility/#conveying-meaning-with-color).
-{% endcallout %}
+{% include callout-warning-color-assistive-technologies.md %}
 
 ## Contents
 {:.no_toc}
@@ -30,7 +26,7 @@ Please refer to the [Accessiblity notes about conveying meaning with color]({{ s
 
 Change your text color with contextual color utility classes.
 
-{% example html %}
+{% capture example %}
 <p class="text-primary">.text-primary</p>
 <p class="text-success">.text-success</p>
 <p class="text-info">.text-info</p>
@@ -42,14 +38,15 @@ Change your text color with contextual color utility classes.
 <p class="text-muted">.text-muted</p>
 <p class="text-white bg-dark">.text-white</p>
 <p class="text-black">.text-black</p>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Links
 
 Contextual text color classes also work well on anchors with the provided hover and focus states.
 Note: The `.text-body`, `.text-muted`, `.text-white`, and `.text-black` classes have no link styling, other than the default underline.
 
-{% example html %}
+{% capture example %}
 <p><a href="#" class="text-primary">.text-primary</a></p>
 <p><a href="#" class="text-success">.text-success</a></p>
 <p><a href="#" class="text-info">.text-info</a></p>
@@ -61,7 +58,8 @@ Note: The `.text-body`, `.text-muted`, `.text-white`, and `.text-black` classes 
 <p><a href="#" class="text-muted">.text-muted</a></p>
 <p><a href="#" class="text-white bg-dark">.text-white</a></p>
 <p><a href="#" class="text-black">.text-black</a></p>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Backgrounds
 
@@ -71,7 +69,7 @@ Background utilities **do not set** `color`, so in some cases you will want to u
 
 There is also a `.bg-transparent` for removing the background color for an element.
 
-{% example html %}
+{% capture example %}
 <div class="p-0_5 mb-1 bg-primary text-white">.bg-primary</div>
 <div class="p-0_5 mb-1 bg-success text-black">.bg-success</div>
 <div class="p-0_5 mb-1 bg-info text-white">.bg-info</div>
@@ -83,14 +81,15 @@ There is also a `.bg-transparent` for removing the background color for an eleme
 <div class="p-0_5 mb-1 bg-white text-black">.bg-white</div>
 <div class="p-0_5 mb-1 bg-black text-white">.bg-black</div>
 <div class="p-0_5 mb-1 bg-transparent text-black">.bg-transparent</div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Link Backgrounds
 
 Also similar to the contextual text color classes, the background color classes also work well on anchors with the provided hover and focus states.
 Note: The `.bg-body`, `.bg-white`, `.bg-black`, and `bg-transparent` classes have no link styling.
 
-{% example html %}
+{% capture example %}
 <p><a href="#" class="p-0_5 d-inline-block bg-primary text-white">.bg-primary</a></p>
 <p><a href="#" class="p-0_5 d-inline-block bg-success text-black">.bg-success</a></p>
 <p><a href="#" class="p-0_5 d-inline-block bg-info text-white">.bg-info</a></p>
@@ -102,7 +101,8 @@ Note: The `.bg-body`, `.bg-white`, `.bg-black`, and `bg-transparent` classes hav
 <p><a href="#" class="p-0_5 d-inline-block bg-white text-black">.bg-white</a></p>
 <p><a href="#" class="p-0_5 d-inline-block bg-black text-white">.bg-black</a></p>
 <p><a href="#" class="p-0_5 d-inline-block bg-transparent text-black">.bg-transparent</a></p>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Borders
 
@@ -110,8 +110,7 @@ Borders also be colored with their own set of contextual classes. Borders do not
 
 There is also a `.border-transparent` that removes the border color for an element, but keeps the border width in place.
 
-<div class="cf-example-border">
-{% example html%}
+{% capture example %}
 <span class="border border-primary"></span>
 <span class="border border-secondary"></span>
 <span class="border border-info"></span>
@@ -120,21 +119,20 @@ There is also a `.border-transparent` that removes the border color for an eleme
 <span class="border border-light"></span>
 <span class="border border-dark"></span>
 <span class="border border-transparent"></span>
-{% endexample %}
-</div>
+{% endcapture %}
+{% include example.html content=example class="cf-example-border" %}
 
 ## Palette Colors
 
 If the [color palette]({{ site.baseurl }}/content/color/) is enabled, any color theme that is added to the `$palette-themes` Sass map will become available for use.  For example the theme named `primary`, then becomes available as `.text-primary-[level]`, `.bg-primary-[level]`, and `border-primary-[level]`, where `level` is in the set defined by the `$palette-levels` variable.
 
-<div class="cf-example-border">
-{% example html %}
+{% capture example %}
 <p class="text-primary-700">.text-primary-700 text</p>
 <p><a href="#" class="text-primary-400">.text-primary-400 link</a></p>
 <div class="bg-primary-100 text-primary-900 mb-0_5 p-0_5">.bg-primary-100 background with .text-primary-900</div>
 <span class="border border-primary-200"></span>
-{% endexample %}
-</div>
+{% endcapture %}
+{% include example.html content=example class="cf-example-border" %}
 
 
 ## SASS Reference

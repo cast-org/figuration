@@ -16,7 +16,7 @@ The media object helps build complex and repetitive components where some media 
 
 Below is an example of a single media object. Only two classes are required—the wrapping `.media` and the `.media-body` around your content. Optional padding and margin can be controlled through [spacing utilities]({{ site.baseurl }}/utilities/spacing/).
 
-{% example html %}
+{% capture example %}
 <div class="media">
   <img class="me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
@@ -24,22 +24,24 @@ Below is an example of a single media object. Only two classes are required—th
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% callout warning %}
+{% capture callout %}
 Flexbug #12: Inline elements aren't treated as flex items
-{:.h5}
+{:.h5 .no_toc}
 
 Internet Explorer 10-11 do not render inline elements like links or images (or `::before` and `::after` pseudo-elements) as flex items. The only workaround is to set a non-inline `display` value (e.g., `block`, `inline-block`, or `flex`). You can also use one of our [display utilities]({{ site.baseurl }}/utilities/display/), such as `.d-flex`, for an easy fix.
 
 **Source:** [Flexbugs on GitHub](https://github.com/philipwalton/flexbugs#12-inline-elements-are-not-treated-as-flex-items)
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 ## Nesting
 
 Media components can also be nested as many times as needed. Place nested `.media` within the `.media-body` of a parent media object.
 
-{% example html %}
+{% capture example %}
 <div class="media">
   <img class="me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
@@ -56,13 +58,14 @@ Media components can also be nested as many times as needed. Place nested `.medi
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Alignment
 
 Media in a media object can be aligned with [flexbox utilities]({{ site.baseurl }}/utilities/flexbox/) to the top (default), middle, or end of your `.media-body` content.
 
-{% example html %}
+{% capture example %}
 <div class="media">
   <img class="me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
@@ -71,9 +74,10 @@ Media in a media object can be aligned with [flexbox utilities]({{ site.baseurl 
     <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <div class="media">
   <img class="flex-self-center me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
@@ -82,9 +86,10 @@ Media in a media object can be aligned with [flexbox utilities]({{ site.baseurl 
     <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <div class="media">
   <img class="flex-self-end me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
@@ -93,13 +98,14 @@ Media in a media object can be aligned with [flexbox utilities]({{ site.baseurl 
     <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Order
 
 Change the order of content in media objects by modifying the HTML itself, or by adding some custom flexbox CSS to set the `order` property (to an integer of your choosing).
 
-{% example html %}
+{% capture example %}
 <div class="media">
   <div class="media-body">
     <h5>Media heading</h5>
@@ -107,13 +113,14 @@ Change the order of content in media objects by modifying the HTML itself, or by
   </div>
   <img class="ms-1" data-src="holder.js/64x64" alt="Generic placeholder image">
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Media List
 
 Because the media object has so few structural requirements, you can also use these classes on list HTML elements. On your `<ul>` or `<ol>`, add the `.list-unstyled` to remove any browser default list styles, and then apply `.media` to your `<li>`s. As always, use spacing utilities wherever needed to fine tune.
 
-{% example html %}
+{% capture example %}
 <ul class="list-unstyled">
   <li class="media">
     <img class="me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
@@ -137,13 +144,14 @@ Because the media object has so few structural requirements, you can also use th
     </div>
   </li>
 </ul>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Other Content
 
 You can include many other components, such as forms, buttons, and more.
 
-{% example html %}
+{% capture example %}
 <div class="media">
   <img class="me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
@@ -162,11 +170,12 @@ You can include many other components, such as forms, buttons, and more.
     </form>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Put media items on the both sides.
 
-{% example html %}
+{% capture example %}
 <div class="media">
   <img class="me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
@@ -175,11 +184,12 @@ Put media items on the both sides.
   </div>
   <img class="ms-1" data-src="holder.js/64x64" alt="Generic placeholder image">
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Even create your own social media layout.
 
-{% example html %}
+{% capture example %}
 <div class="media">
   <img class="me-1" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
@@ -217,7 +227,8 @@ Even create your own social media layout.
     </form>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## SASS Reference
 

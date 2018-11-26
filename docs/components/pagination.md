@@ -16,7 +16,7 @@ Pagination links indicate a series of related content exists across multiple pag
 
 Pagination is built with list HTML elements so screen readers can announce the number of available links. Use a wrapping `<nav>` element to identify it as a navigation section to screen readers and other assistive technologies.
 
-{% example html %}
+{% capture example %}
 <nav aria-label="Page navigation">
     <ul class="pagination">
         <li class="page-item"><a href="#" class="page-link">Previous</a></li>
@@ -26,7 +26,8 @@ Pagination is built with list HTML elements so screen readers can announce the n
         <li class="page-item"><a href="#" class="page-link">Next</a></li>
     </ul>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Styled Pagination
 
@@ -36,7 +37,7 @@ Add some visual style to lists with a couple of modifier classes.
 
 Add a border around each `.page-link` and spaced them out a bit with `.pagination-spaced`.
 
-{% example html %}
+{% capture example %}
 <nav aria-label="Page navigation">
     <ul class="pagination pagination-spaced">
         <li class="page-item"><a href="#" class="page-link">Previous</a></li>
@@ -46,13 +47,14 @@ Add a border around each `.page-link` and spaced them out a bit with `.paginatio
         <li class="page-item"><a href="#" class="page-link">Next</a></li>
     </ul>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Group
 
 Group pagination together in a large block of connected items that is hard to miss with `.pagination-group`.
 
-{% example html %}
+{% capture example %}
 <nav aria-label="Page navigation">
     <ul class="pagination pagination-group">
         <li class="page-item"><a href="#" class="page-link">Previous</a></li>
@@ -62,13 +64,14 @@ Group pagination together in a large block of connected items that is hard to mi
         <li class="page-item"><a href="#" class="page-link">Next</a></li>
     </ul>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Using Icons
 
 Want to use an icon or symbol in place of text for some pagination links? Be sure to provide proper screen reader support with `aria-` attributes.
 
-{% example html %}
+{% capture example %}
 <nav aria-label="Page navigation">
     <ul class="pagination">
         <li class="page-item">
@@ -122,20 +125,16 @@ Want to use an icon or symbol in place of text for some pagination links? Be sur
         </li>
     </ul>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Disabled and Active States
 
 Links are customizable for different circumstances. Use `.disabled` for unclickable links and `.active` to indicate the current page.
 
-{% callout warning %}
-Disabling Anchors
-{:.h5}
+{% include callout-warning-disabling-anchors.md %}
 
-Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl }}/get-started/accessibility/#disabled-anchors).
-{% endcallout %}
-
-{% example html %}
+{% capture example %}
 <nav aria-label="...">
     <ul class="pagination">
         <li class="page-item">
@@ -177,11 +176,12 @@ Please refer to the [Accessiblity notes about disabled anchors]({{ site.baseurl 
         <li class="page-item"><a href="#" class="page-link">Next</a></li>
     </ul>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 You can optionally swap out active or disabled anchors for `<span>`, or omit the anchor in the case of the prev/next arrows, to remove click functionality and prevent keyboard focus while retaining intended styles.
 
-{% example html %}
+{% capture example %}
 <nav aria-label="...">
     <ul class="pagination">
         <li class="page-item">
@@ -198,13 +198,14 @@ You can optionally swap out active or disabled anchors for `<span>`, or omit the
         <li class="page-item"><a href="#" class="page-link">Next</a></li>
     </ul>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## With Text
 
 Add normal text to your pagination navigation by using `.page-text`.  This class will adjust the alignment, spacing, and size the text to match the controls.
 
-{% example html %}
+{% capture example %}
 <nav aria-label="...">
     <ul class="pagination">
         <li class="page-item"><span class="page-link disabled">Previous</span></li>
@@ -240,7 +241,8 @@ Add normal text to your pagination navigation by using `.page-text`.  This class
         <li class="page-item"><a href="#" class="page-link">Next</a></li>
     </ul>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Sizes
 
@@ -349,7 +351,7 @@ Fancy larger or smaller pagination? Add `.pagination-xsmall`, `.pagination-small
 
 Change the alignment of pagination components using the [flexbox utilities]({{ sitebaseurl }}/utilities/flexbox/).
 
-{% example html %}
+{% capture example %}
 <nav aria-label="...">
     <ul class="pagination pagination-group flex-center">
         <li class="page-item"><a href="#" class="page-link">Previous</a></li>
@@ -359,9 +361,10 @@ Change the alignment of pagination components using the [flexbox utilities]({{ s
         <li class="page-item"><a href="#" class="page-link">Next</a></li>
     </ul>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <nav aria-label="...">
     <ul class="pagination pagination-group flex-end">
         <li class="page-item"><a href="#" class="page-link">Previous</a></li>
@@ -371,9 +374,10 @@ Change the alignment of pagination components using the [flexbox utilities]({{ s
         <li class="page-item"><a href="#" class="page-link">Next</a></li>
     </ul>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <nav aria-label="..." class="d-flex flex-between">
     <ul class="pagination pagination-group">
         <li class="page-item"><a href="#" class="page-link">1</a></li>
@@ -386,7 +390,8 @@ Change the alignment of pagination components using the [flexbox utilities]({{ s
         <li class="page-item"><a href="#" class="page-link">Next</a></li>
     </ul>
 </nav>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## SASS Reference
 

@@ -30,7 +30,7 @@ The alignments consist of the items in the following list and are also available
 
 Example with inline elements.
 
-{% example html %}
+{% capture example %}
 <div class="bg-gray-50">
     <span class="bg-cyan-100 valign-baseline">baseline</span>
     -
@@ -44,11 +44,12 @@ Example with inline elements.
     -
     <span class="bg-cyan-100 valign-text-bottom">text-bottom</span>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Using table cells.
 
-{% example html %}
+{% capture example %}
 <table class="table table-bordered" style="height: 100px;">
     <tbody>
     <tr>
@@ -61,11 +62,12 @@ Using table cells.
     </tr>
     </tbody>
 </table>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Slightly more complex uses, such as being able to align items in a row, become quick and easy.
 
-{% example html %}
+{% capture example %}
 <div class="bg-gray-50 w-100 d-table">
     <div class="d-table-cell valign-bottom">
         <a href="#">View more in teacher's guide</a> |
@@ -75,7 +77,8 @@ Slightly more complex uses, such as being able to align items in a row, become q
         <button type="button" class="btn btn-primary btn-lg">Continue</button>
     </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## SASS Reference
 
