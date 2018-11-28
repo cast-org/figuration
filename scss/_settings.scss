@@ -1060,14 +1060,14 @@ $card-subtitle-margin-top:  -.5rem !default;
 $card-header-padding-y:     .75rem !default;
 $card-header-padding-x:     1rem !default;
 $card-header-bg:            $component-section-bg !default;
-$card-header-color:         $body-color !default;
+$card-header-color:         inherit !default;
 $card-header-border-color:  $component-section-border-color !default;
 $card-header-border-width:  $card-border-width !default;
 
 $card-footer-padding-y:     .75rem !default;
 $card-footer-padding-x:     1rem !default;
 $card-footer-bg:            $component-section-bg !default;
-$card-footer-color:         $body-color !default;
+$card-footer-color:         inherit !default;
 $card-footer-border-color:  $component-section-border-color !default;
 $card-footer-border-width:  $card-border-width !default;
 
