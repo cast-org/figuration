@@ -287,7 +287,7 @@ The `<address>` element is updated to reset the browser default `font-style` fro
 
   <address>
     <strong>Full Name</strong><br>
-    <a href="mailto:#">first.last@example.com</a>
+    <a href="mailto:first.last@example.com">first.last@example.com</a>
   </address>
 </div>
 
@@ -308,6 +308,22 @@ The `<abbr>` element receives basic styling to make it stand out amongst paragra
 
 <div class="cf-example cf-example-bottom">
   Nulla <abbr title="attribute">attr</abbr> vitae elit libero, a pharetra augue.
+</div>
+
+### Summary
+
+The default `cursor` on summary is `text`, so we reset that to `pointer` to convey that the element can be interacted with by clicking on it.
+
+<div class="cf-example cf-example-bottom">
+    <details>
+        <summary>Some details</summary>
+        <p>More info about the details.</p>
+    </details>
+
+    <details open>
+        <summary>Even more details</summary>
+        <p>Here are even more details about the details.</p>
+    </details>
 </div>
 
 ## HTML5 `[hidden]` Attribute
