@@ -28,87 +28,36 @@ Sideshow requires the following:
 
 This example uses a breakpoint of 62em/992px.  Larger widths will see the tab style navigation, smaller widths will see a simple accordion using headers as the collapse triggers.  If you change the browser width between the two sides of the breakpoint, you will see the active tab becomes the active collapse, and vice-versa.
 
-<div class="cf-example">
-    <div data-cfw="tabResponsive" class="cf-example-tabResponsive">
-        <ul class="nav nav-tabs">
-            <li class="nav-item"><a href="#tabr0" class="nav-link" data-cfw="tab">First Tab</a></li>
-            <li class="nav-item"><a href="#tabr1" class="nav-link" data-cfw="tab">Second Tab</a></li>
-            <li class="nav-item"><a href="#tabr2" class="nav-link" data-cfw="tab">Third Tab</a></li>
-        </ul>
-        <div class="tab-content">
-            <div id="tabr0" class="tab-pane">
-                <h4><a href="#tabr0_collapse" data-cfw="collapse">First Tab <span class="caret"></span></a></h4>
-                <div  id="tabr0_collapse" class="collapse">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.</p>
-                </div>
-            </div>
-            <div id="tabr1" class="tab-pane">
-                <h4><a href="#tabr1_collapse" data-cfw="collapse">Second Tab <span class="caret"></span></a></h4>
-                <div id="tabr1_collapse" class="collapse">
-                    <p>Praesent tristique dolor quis condimentum lobortis. Phasellus accumsan lacus vitae quam elementum, non euismod urna adipiscing. Suspendisse sodales enim non sem consequat dictum. Ut sit amet elementum purus, mattis rhoncus elit.</p>
-                </div>
-            </div>
-            <div id="tabr2" class="tab-pane">
-                <h4><a href="#tabr2_collapse" data-cfw="collapse">Third Tab <span class="caret"></span></a></h4>
-                <div id="tabr2_collapse" class="collapse">
-                    <p>Nullam malesuada massa urna, non gravida odio scelerisque sit amet. Donec sit amet rutrum quam, vel faucibus ante. Sed iaculis aliquet tortor vel tristique? In ligula nisi, suscipit vel ipsum id; elementum iaculis dui.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-{% highlight html %}
-<div data-cfw="tabResponsive" class="cf-example-tabResponsive">
-    <ul class="nav nav-tabs">
+{% capture example %}
+<div data-cfw="tabResponsive">
+    <ul class="nav nav-tabs d-md-down-none">
         <li class="nav-item"><a href="#tabr0" class="nav-link" data-cfw="tab">First Tab</a></li>
         <li class="nav-item"><a href="#tabr1" class="nav-link" data-cfw="tab">Second Tab</a></li>
         <li class="nav-item"><a href="#tabr2" class="nav-link" data-cfw="tab">Third Tab</a></li>
     </ul>
     <div class="tab-content">
-        <div id="tabr0" class="tab-pane">
-            <h4><a href="#tabr0_collapse" data-cfw="collapse">First Tab <span class="caret"></span></a></h4>
-            <div  id="tabr0_collapse" class="collapse">
-                ...
+        <div id="tabr0" class="tab-pane d-block">
+            <h4><a href="#tabr0_collapse" class="d-lg-none" data-cfw="collapse">First Tab <span class="caret"></span></a></h4>
+            <div id="tabr0_collapse" class="collapse">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non nisi ipsum. Quisque feugiat, arcu in pulvinar varius; risus odio interdum diam; a hendrerit urna sem vitae enim. Aenean fermentum iaculis nibh sodales consectetur.</p>
             </div>
         </div>
-        <div id="tabr1" class="tab-pane">
-            <h4><a href="#tabr1_collapse" data-cfw="collapse">Second Tab <span class="caret"></span></a></h4>
-            <div  id="tabr1_collapse" class="collapse">
-                ...
+        <div id="tabr1" class="tab-pane d-block">
+            <h4><a href="#tabr1_collapse" class="d-lg-none" data-cfw="collapse">Second Tab <span class="caret"></span></a></h4>
+            <div id="tabr1_collapse" class="collapse">
+                <p>Praesent tristique dolor quis condimentum lobortis. Phasellus accumsan lacus vitae quam elementum, non euismod urna adipiscing. Suspendisse sodales enim non sem consequat dictum. Ut sit amet elementum purus, mattis rhoncus elit.</p>
             </div>
         </div>
-        <div id="tabr2" class="tab-pane">
-            <h4><a href="#tabr2_collapse" data-cfw="collapse">Third Tab <span class="caret"></span></a></h4>
-            <div  id="tabr2_collapse" class="collapse">
-                ...
+        <div id="tabr2" class="tab-pane d-block">
+            <h4><a href="#tabr2_collapse" class="d-lg-none" data-cfw="collapse">Third Tab <span class="caret"></span></a></h4>
+            <div id="tabr2_collapse" class="collapse">
+                <p>Nullam malesuada massa urna, non gravida odio scelerisque sit amet. Donec sit amet rutrum quam, vel faucibus ante. Sed iaculis aliquet tortor vel tristique? In ligula nisi, suscipit vel ipsum id; elementum iaculis dui.</p>
             </div>
         </div>
     </div>
 </div>
-{% endhighlight %}
-
-{% highlight css %}
-/* Example CSS */
-@media (min-width: 62em) {
-    .cf-example-tabResponsive h4 {
-        display: none;
-    }
-    .cf-example-tabResponsive .collapse {
-        display: block;
-        visibility: visible;
-    }
-}
-@media (max-width: 61.98em) {
-    .cf-example-tabResponsive .nav-tabs {
-        display: none;
-    }
-    .cf-example-tabResponsive .tab-pane {
-        display: block;
-        visibility: visible;
-    }
-}
-{% endhighlight %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Usage
 
