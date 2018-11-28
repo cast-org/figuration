@@ -1,42 +1,3 @@
-// Container illustrations
-.cf-example-container {
-    min-width: 16rem;
-    max-width: 25rem;
-    margin-right: auto;
-    margin-left: auto;
-}
-.cf-example-container-fluid {
-    max-width: none;
-}
-.cf-example-container-header {
-    height: 3rem;
-    margin-bottom: .5rem;
-    background-color: lighten(map-get($base-colors, "primary"), 50%);
-    border-radius: .25rem;
-}
-.cf-example-container-sidebarL {
-    float: left;
-    width: 4rem;
-    height: 8rem;
-    background-color: lighten(map-get($base-colors, "warning"), 25%);
-    border-radius: .25rem;
-}
-.cf-example-container-sidebarR {
-    float: right;
-    width: 8rem;
-    height: 8rem;
-    background-color: lighten(map-get($base-colors, "danger"), 25%);
-    border-radius: .25rem;
-}
-.cf-example-container-body {
-    height: 8rem;
-    margin-right: 8.5rem;
-    margin-left: 4.5rem;
-    background-color: lighten($docs-color, 25%);
-    border-radius: .25rem;
-}
-
-
 // Grid
 .cf-example-row {
     .row + .row {
@@ -309,26 +270,6 @@ $custom-file-text: (
     height: 20rem;
     margin-top: .5rem;
     overflow: auto;
-}
-
-// Tab-Responsive
-@media (min-width: 62em) {
-    .cf-example-tabResponsive h4 {
-        display: none;
-    }
-    .cf-example-tabResponsive .collapse {
-        display: block;
-        visibility: visible;
-    }
-}
-@media (max-width: 61.98em) {
-    .cf-example-tabResponsive .nav-tabs {
-        display: none;
-    }
-    .cf-example-tabResponsive .tab-pane {
-        display: block;
-        visibility: visible;
-    }
 }
 
 // Border utilities

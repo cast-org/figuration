@@ -19,12 +19,16 @@ Containers are the most basic layout element in Figuration and are **required wh
 
 While containers *can* be nested, most layouts do not require a nested container.
 
+Use `.container` for a fixed-width container with a defined `max-width` per breakpoint.
+
 <div class="cf-example">
-    <div class="cf-example-container">
-        <div class="cf-example-container-header"></div>
-        <div class="cf-example-container-sidebarL"></div>
-        <div class="cf-example-container-sidebarR"></div>
-        <div class="cf-example-container-body"></div>
+    <div class="container" style="min-width: 16rem; max-width: 25rem;">
+        <div class="row">
+            <div class="col-12 radius p-1 mb-0_5 bg-info-300"></div>
+            <div class="col-2 radius px-1 py-2 bg-warning-300"></div>
+            <div class="col radius px-1 py-2 mx-0_5 bg-primary-300"></div>
+            <div class="col-3 radius px-1 py-2 bg-danger-300"></div>
+        </div>
     </div>
 </div>
 
@@ -37,12 +41,14 @@ While containers *can* be nested, most layouts do not require a nested container
 Use `.container-fluid` for a full width container, spanning the entire width of the viewport.
 
 <div class="cf-example">
-  <div class="cf-example-container cf-example-container-fluid">
-    <div class="cf-example-container-header"></div>
-    <div class="cf-example-container-sidebarL"></div>
-    <div class="cf-example-container-sidebarR"></div>
-    <div class="cf-example-container-body"></div>
-  </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 radius p-1 mb-0_5 bg-info-300"></div>
+            <div class="col-2 radius px-1 py-2 bg-warning-300"></div>
+            <div class="col radius px-1 py-2 mx-0_5 bg-primary-300"></div>
+            <div class="col-3 radius px-1 py-2 bg-danger-300"></div>
+        </div>
+    </div>
 </div>
 
 {% highlight html %}
