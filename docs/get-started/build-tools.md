@@ -52,6 +52,8 @@ Our Gruntfile includes the following commands and tasks:
 
 Figuration is compiled with [libsass][libsass] via [grunt-sass][grunt-sass]. There are no alternative options at this time.
 
+In order to reduce potential issues with browser rounding, our build process has increased the [Sass rounding precision](http://sass-lang.com/documentation/Sass/Script/Value/Number.html#precision-class_method) to 6 (by default it's 5).
+
 ## Autoprefixer
 
 Figuration uses [Autoprefixer][autoprefixer] (included in our Gruntfile and build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins.
