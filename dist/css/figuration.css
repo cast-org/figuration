@@ -96,6 +96,7 @@ abbr[data-cfw-popover-original-title] {
           text-decoration: underline dotted;
   cursor: help;
   border-bottom: 0;
+  text-decoration-skip-ink: none;
 }
 
 address {
@@ -5734,7 +5735,7 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
 .card-header {
   padding: 0.75rem 1rem;
   margin-bottom: 0;
-  color: #262d34;
+  color: inherit;
   background-color: rgba(38, 45, 52, 0.0875);
   border-bottom: 1px solid rgba(38, 45, 52, 0.3);
 }
@@ -5745,7 +5746,7 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
 
 .card-footer {
   padding: 0.75rem 1rem;
-  color: #262d34;
+  color: inherit;
   background-color: rgba(38, 45, 52, 0.0875);
   border-top: 1px solid rgba(38, 45, 52, 0.3);
 }

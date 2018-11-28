@@ -587,7 +587,7 @@ h4 > code {
   margin-bottom: .25rem;
 }
 
-.topLink a {
+.toplink a {
   display: inline-block;
   padding: .15rem .5rem;
   font-size: 0.875rem;
@@ -598,29 +598,27 @@ h4 > code {
   border-radius: .5rem .5rem 0 0;
 }
 
-.topLink a:hover,
-.topLink a:focus {
+.toplink a:hover, .toplink a:focus {
   color: #fff;
 }
 
-.topLink .caret::after {
+.toplink .caret::after {
   border-top: 0;
   border-bottom: 0.3125rem solid;
 }
 
-.topLink.affix-top,
-.topLink.affix {
+.toplink.affix-top, .toplink.affix {
   position: fixed;
   bottom: 0;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
 
-.topLink.affix-top {
+.toplink.affix-top {
   visibility: hidden;
 }
 
-.topLink.affix-bottom {
+.toplink.affix-bottom {
   position: absolute;
 }
 
@@ -815,48 +813,6 @@ h4 > code {
 
 .algolia-autocomplete .algolia-docsearch-footer {
   margin-top: 8px;
-}
-
-.cf-example-container {
-  min-width: 16rem;
-  max-width: 25rem;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.cf-example-container-fluid {
-  max-width: none;
-}
-
-.cf-example-container-header {
-  height: 3rem;
-  margin-bottom: .5rem;
-  background-color: #e9f1ff;
-  border-radius: .25rem;
-}
-
-.cf-example-container-sidebarL {
-  float: left;
-  width: 4rem;
-  height: 8rem;
-  background-color: #fce49f;
-  border-radius: .25rem;
-}
-
-.cf-example-container-sidebarR {
-  float: right;
-  width: 8rem;
-  height: 8rem;
-  background-color: #f27f75;
-  border-radius: .25rem;
-}
-
-.cf-example-container-body {
-  height: 8rem;
-  margin-right: 8.5rem;
-  margin-left: 4.5rem;
-  background-color: #4684c1;
-  border-radius: .25rem;
 }
 
 .cf-example-row .row + .row {
@@ -1224,26 +1180,6 @@ h4 > code {
   overflow: auto;
 }
 
-@media (min-width: 62em) {
-  .cf-example-tabResponsive h4 {
-    display: none;
-  }
-  .cf-example-tabResponsive .collapse {
-    display: block;
-    visibility: visible;
-  }
-}
-
-@media (max-width: 61.98em) {
-  .cf-example-tabResponsive .nav-tabs {
-    display: none;
-  }
-  .cf-example-tabResponsive .tab-pane {
-    display: block;
-    visibility: visible;
-  }
-}
-
 .cf-example-border [class^="border"] {
   display: inline-block;
   width: 4rem;
@@ -1256,7 +1192,7 @@ h4 > code {
   overflow: auto;
 }
 
-.cf-example-flex > div div {
+.cf-example-flex div {
   background-color: rgba(34, 68, 102, 0.05);
   border: 1px solid rgba(34, 68, 102, 0.2);
 }
