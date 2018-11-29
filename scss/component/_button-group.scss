@@ -2,7 +2,7 @@
     // Placeholder for buttons inside a button group
     %btn-group-btn-base {
         position: relative;
-        flex: 0 1 auto;
+        flex: 1 1 auto;
         margin-bottom: 0; // Override default `<label>` value
     }
 
@@ -30,6 +30,8 @@
 
         @if $enable-btn-check {
             > .btn-check {
+                flex: 1 1 auto;
+
                 > .btn {
                     @extend %btn-group-btn-base;
                 }
