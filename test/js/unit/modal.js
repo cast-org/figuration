@@ -711,4 +711,25 @@ $(function() {
             .CFW_Modal('show')
             .CFW_Modal('hide');
     });
+
+     QUnit.test('should enforce focus', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal"><span class="close" data-cfw-dismiss="modal" /></div>').appendTo(document.body);
+
+        $target.one('afterShow.cfw.modal', function() {
+            $(document).one('focusin', function() {
+                assert.ok($(document.activeElement).is($target), 'target element is once again focused');
+                done();
+            });
+
+            $(document).trigger('focus');
+        });
+
+        $trigger
+            .CFW_Modal()
+            .CFW_Modal('show');
+    });
 });
