@@ -720,12 +720,15 @@ $(function() {
         var $target = $('<div class="modal" id="modal"><span class="close" data-cfw-dismiss="modal" /></div>').appendTo(document.body);
 
         $target.one('afterShow.cfw.modal', function() {
-            $(document).one('focusin', function() {
+            $target.one('focusin', function() {
                 assert.ok($(document.activeElement).is($target), 'target element is once again focused');
                 done();
             });
 
-            $(document).trigger('focus');
+            var event = $.Event('focusin', {
+                target: $('#qunit-fixture')[0]
+            });
+            $(document).trigger(event);
         });
 
         $trigger
