@@ -712,7 +712,7 @@ $(function() {
             .CFW_Modal('hide');
     });
 
-     QUnit.test('should enforce focus', function(assert) {
+    QUnit.test('should enforce focus', function(assert) {
         assert.expect(1);
         var done = assert.async();
 
