@@ -144,6 +144,7 @@
             this.$target
                 .removeClass('in')
                 .attr('aria-hidden', true)
+                .removeAttr('aria-modal')
                 .off('.dismiss.cfw.modal');
 
             this.$dialog.off('mousedown.dismiss.cfw.modal');
@@ -174,7 +175,10 @@
 
             $.CFW_reflow(this.$target[0]); // Force Reflow
 
-            this.$target.addClass('in').removeAttr('aria-hidden');
+            this.$target
+                .addClass('in')
+                .removeAttr('aria-hidden')
+                .attr('aria-modal', true);
 
             // Mutation handler
             this.$target

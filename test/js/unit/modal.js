@@ -735,4 +735,27 @@ $(function() {
             .CFW_Modal()
             .CFW_Modal('show');
     });
+
+    QUnit.test('should add aria-modal attribute when shown, remove it again when hidden', function(assert) {
+        assert.expect(3);
+        var done = assert.async();
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal"><span class="close" data-cfw-dismiss="modal" /></div>').appendTo(document.body);
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                assert.ok($('#modal').is('[aria-modal]'), 'aria-modal attribute added');
+                assert.strictEqual($('#modal').attr('aria-modal'), 'true', 'correct aria-modal="true" added');
+                $(this).CFW_Modal('hide');
+            })
+            .on('afterHide.cfw.modal', function() {
+                assert.notOk($('#modal').is('[aria-modal]'), 'aria-modal attribute removed');
+                done();
+            });
+
+        $trigger
+            .CFW_Modal()
+            .CFW_Modal('show');
+    });
 });
