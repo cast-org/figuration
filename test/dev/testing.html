@@ -989,6 +989,58 @@ $(window).ready(function() {
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-sm-3">
+                    <div id="target" title="Test tooltip on transformed element"></div>
+                </div>
+            </div>
+            <style>
+                #target {
+                    border: 1px solid;
+                    width: 100px;
+                    height: 50px;
+                    border: 1px solid;
+                    margin-left: 50px;
+                    -webkit-transform: rotate(270deg);
+                    -ms-transform: rotate(270deg);
+                    transform: rotate(270deg);
+                    margin-top: 100px;
+                }
+            </style>
+            <script>
+                $(function() {
+                    $('#target').CFW_Tooltip({
+                        placement : 'top',
+                        trigger : 'manual'
+                    }).CFW_Tooltip('show');
+                });
+            </script>
+
+            <div class="row">
+                <div id="shadow" class="pt-2"></div>
+            </div>
+            <div id="customContainer"></div>
+            <script>
+                $(function() {
+                    if (typeof document.body.attachShadow === 'function') {
+                        var shadowRoot = $('#shadow')[0].attachShadow({mode: 'open'});
+
+                        shadowRoot.innerHTML =
+                            '<button type="button" class="btn btn-secondary" data-cfw="tooltip" data-placement="top" title="Tooltip on top in a shadow dom">' +
+                            '  Tooltip on top in a shadow dom' +
+                            '</button>' +
+                            '<button id="secondTooltip" type="button" class="btn btn-secondary" data-cfw="tooltip" data-placement="top" title="Tooltip on top in a shadow dom with container option">' +
+                            '  Tooltip on top in a shadow dom' +
+                            '</button>';
+                        $(shadowRoot.firstChild).CFW_Tooltip();
+                        $(shadowRoot.getElementById('secondTooltip')).CFW_Tooltip({
+                            container: shadowRoot
+                        });
+                    }
+                });
+            </script>
+
+
             <hr />
 
             <h2 id="tab">Tab:</h2>
