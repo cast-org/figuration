@@ -73,6 +73,13 @@
     platform: "Linux",
     browserName: "android",
     deviceName: "Android Emulator",
+    version: "5.1",
+    deviceType: "phone"
+  },
+  {
+    platform: "Linux",
+    browserName: "chrome",
+    deviceName: "Android Emulator",
     version: "latest",
     deviceType: "phone"
   }
