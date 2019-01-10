@@ -70,14 +70,13 @@
 
   # Android
   {
-    platform: "Android",
+    platform: "Linux",
     browserName: "browser",
     deviceName: "Android Emulator",
     version: "5.1",
     deviceType: "phone"
   },
   {
-    platform: "Android",
     browserName: "chrome",
     deviceName: "Android Emulator",
     version: "latest",
