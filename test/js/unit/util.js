@@ -14,6 +14,16 @@ $(function() {
         assert.strictEqual($el2.CFW_getSelectorFromElement('test'), null);
     });
 
+    QUnit.test('CFW_getSelectorFromElement should return null when there is a bad selector', function(assert) {
+        assert.expect(2);
+
+        var $el = $('<div data-test-target="#1"></div>').appendTo($('#qunit-fixture'));
+        assert.strictEqual($el.CFW_getSelectorFromElement('test'), null);
+
+        var $el2 = $('<a href="/posts"></a>').appendTo($('#qunit-fixture'));
+        assert.strictEqual($el2.CFW_getSelectorFromElement('test'), null);
+    });
+
     QUnit.test('CFW_transitionCssDuration should accept transition durations in milliseconds', function(assert) {
         assert.expect(1);
         var $div = $('<div style="transition: all 300ms ease-out;"></div>').appendTo($('#qunit-fixture'));
