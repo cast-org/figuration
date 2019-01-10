@@ -118,6 +118,8 @@ Responsive justify utilities:
 
 Use `flex-items` utilities on flexbox containers to change the alignment of flex items on the *cross axis* (the y-axis to start, x-axis if `flex-direction: column`). Choose from `start`, `center` , `end`, `baseline`, or `stretch` (browser default).
 
+**Internet Explorer 10 and 11 do not support vertical alignment of flex items when the flex container has a `min-height`.** [See Flexbugs #3 for more details.](https://github.com/philipwalton/flexbugs#flexbug-3)
+
 Responsive item alignment utilities:
 - `.flex{-breakpoint}-items-start`
 - `.flex{-breakpoint}-items-center`
@@ -157,6 +159,8 @@ Responsive item alignment utilities:
 ## Align Self
 
 Use `flex-self` utilities on flexbox items to individually change their alignment on the cross axis (the y-axis to start, x-axis if `flex-direction: column`). Choose from the same options as `flex-items`: `start`, `center`, `end`, `baseline`, or `stretch` (browser default).
+
+**Internet Explorer 10 and 11 do not support vertical alignment of flex items when the flex container has a `min-height`.** [See Flexbugs #3 for more details.](https://github.com/philipwalton/flexbugs#flexbug-3)
 
 Responsive self alignment utilities:
 - `.flex{-breakpoint}-self-start`

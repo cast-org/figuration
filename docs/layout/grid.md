@@ -332,6 +332,8 @@ Don't want your columns to simply stack in some grid tiers. Use a combination of
 
 Use [Flexbox alignment utilities]({{ site.baseurl }}/utilities/flexbox/) to vertically and horizontally align columns.
 
+**Internet Explorer 10 and 11 do not support vertical alignment of flex items when the flex container has a `min-height`.** [See Flexbugs #3 for more details.](https://github.com/philipwalton/flexbugs#flexbug-3)
+
 ### Vertical Alignment
 
 {% capture example %}
