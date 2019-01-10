@@ -80,7 +80,7 @@
     platform: "Android",
     browserName: "chrome",
     deviceName: "Android Emulator",
-    version: "latest",
+    version: "8.0",
     deviceType: "phone"
   }
 ]
