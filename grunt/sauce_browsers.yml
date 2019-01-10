@@ -77,7 +77,7 @@
     deviceType: "phone"
   },
   {
-    platformName: "Android",
+    platform: "Android",
     browserName: "chrome",
     deviceName: "Android Emulator",
     version: "latest",
