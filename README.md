@@ -122,4 +122,4 @@ See [the Releases section of our GitHub project](https://github.com/cast-org/fig
 
 ## Copyright and License
 
-Code and documentation copyright 2013-2018 [CAST, Inc.](http://www.cast.org/) Code released under [the MIT license](https://github.com/cast-org/figuration/tree/v4-dev/LICENSE). Docs released under [Creative Commons](https://github.com/cast-org/figuration/tree/v4-dev/docs/LICENSE).
+Code and documentation copyright 2013-2019 [CAST, Inc.](http://www.cast.org/) Code released under [the MIT license](https://github.com/cast-org/figuration/tree/v4-dev/LICENSE). Docs released under [Creative Commons](https://github.com/cast-org/figuration/tree/v4-dev/docs/LICENSE).
