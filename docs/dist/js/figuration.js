@@ -1,10 +1,10 @@
 /*!
  * Figuration (v4.0.0-alpha.3)
  * http://figuration.org
- * Copyright 2013-2018 CAST, Inc.
+ * Copyright 2013-2019 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * -----
- * Portions Copyright 2011-2018  the Bootstrap Authors and Twitter, Inc.
+ * Portions Copyright 2011-2019  the Bootstrap Authors and Twitter, Inc.
  * Used under MIT License (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -3551,6 +3551,7 @@ if (typeof jQuery === 'undefined') {
             this.$target
                 .removeClass('in')
                 .attr('aria-hidden', true)
+                .removeAttr('aria-modal')
                 .off('.dismiss.cfw.modal');
 
             this.$dialog.off('mousedown.dismiss.cfw.modal');
@@ -3581,7 +3582,10 @@ if (typeof jQuery === 'undefined') {
 
             $.CFW_reflow(this.$target[0]); // Force Reflow
 
-            this.$target.addClass('in').removeAttr('aria-hidden');
+            this.$target
+                .addClass('in')
+                .removeAttr('aria-hidden')
+                .attr('aria-modal', true);
 
             // Mutation handler
             this.$target
