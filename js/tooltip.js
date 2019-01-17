@@ -603,6 +603,7 @@
         /* eslint-disable complexity */
         locateTip : function() {
             var $tip = this.$target;
+            var window = this.$element[0].ownerDocument.defaultView;
 
             $tip
                 .removeClass('top reverse bottom forward')
@@ -783,6 +784,9 @@
             var el = $element[0];
             var isBody = el.tagName === 'BODY';
 
+            var window = this.$element[0].ownerDocument.defaultView;
+            var document = this.$element[0].ownerDocument;
+
             var elRect = el.getBoundingClientRect();
             elRect = $.extend({}, elRect, {
                 top: elRect.top + window.pageYOffset,
@@ -916,6 +920,7 @@
         },
 
         getScreenSpaceBounds : function($viewport) {
+            var window = this.$element[0].ownerDocument.defaultView;
             return {
                 top: $viewport.scrollTop(),
                 left: $viewport.scrollLeft(),
@@ -1089,6 +1094,8 @@
 
         _tabItems : function($node) {
             var $selfRef = this;
+            var document = this.$element[0].ownerDocument;
+
             if (typeof $node === 'undefined') { $node = $(document); }
             var items = $node.find('*').filter(function() {
                 var tabIndex = $(this).attr('tabindex');
