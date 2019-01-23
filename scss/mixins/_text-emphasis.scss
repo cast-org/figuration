@@ -5,9 +5,11 @@
     #{$parent} {
         color: $color !important;
     }
-    a#{$parent} {
-        @include hover-focus() {
-            color: palette($color, 500 + $level-delta) !important;
+    @if $level-delta != 0 {
+        a#{$parent} {
+            @include hover-focus() {
+                color: palette($color, 500 + $level-delta) !important;
+            }
         }
     }
 }
@@ -17,9 +19,11 @@
     #{$parent} {
         color: palette($color, $level) !important;
     }
-    a#{$parent} {
-        @include hover-focus() {
-            color: palette($color, $level + $level-delta) !important;
+    @if $level-delta != 0 {
+        a#{$parent} {
+            @include hover-focus() {
+                color: palette($color, $level + $level-delta) !important;
+            }
         }
     }
 }
