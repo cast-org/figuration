@@ -44,7 +44,7 @@
     font-weight: $font-weight-bold;
     line-height: 1.1;
     text-align: center;
-    border-radius: .25rem;
+    @include border-radius(.25rem);
 }
 .visible-on,
 .hidden-on {
