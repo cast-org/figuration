@@ -23,7 +23,7 @@
             @include font-size($tooltip-font-size);
             color: color-auto-contrast($color);
             background-color: rgba($color, $tooltip-opacity);
-            border-radius: $tooltip-border-radius;
+            @include border-radius($tooltip-border-radius);
         }
     }
 

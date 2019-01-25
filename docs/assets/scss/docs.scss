@@ -436,7 +436,7 @@ h4 {
     padding: 1rem;
     background-color: #fff;
     border: 1px solid #e1e1e8;
-    border-radius: .25rem .25rem 0 0;
+    @include border-radius($border-radius $border-radius 0 0);
 
     + .cf-clipboard + .highlight {
         border-top: 0;
@@ -461,7 +461,7 @@ h4 {
     color: #393939;
     background-color: #f8f8f8;
     border: 1px solid #e1e1e8;
-    border-radius: .25rem;
+    @include border-radius($border-radius);
 
     // Use SASS interpolation syntax, for passing comment as string
     pre {
@@ -532,7 +532,7 @@ h4 {
     margin: 1rem 0;
     border: $border-width solid $uibase-300;
     border-left-width: .5rem;
-    border-radius: $border-radius;
+    @include border-radius($border-radius);
 
     .h3,
     .h4,
@@ -610,7 +610,7 @@ $callout-themes: _mix-context-colors($callout-colors, $level-context);
         text-decoration: none;
         white-space: nowrap;
         background: #424242;
-        border-radius: .5rem .5rem 0 0;
+        @include border-radius(.5rem .5rem 0 0);
 
         @include hover-focus() {
             color: #fff;

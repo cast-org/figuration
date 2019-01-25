@@ -1,7 +1,12 @@
+// stylelint-disable property-blacklist
+
 // All
-@mixin border-radius($radius: $border-radius) {
+@mixin border-radius($radius: $border-radius, $fallback-radius: false) {
     @if $enable-rounded {
         border-radius: $radius;
+    }
+    @else if $fallback-radius != false {
+        border-radius: $fallback-radius;
     }
 }
 
@@ -66,19 +71,23 @@
     $sizerule: if($size, -#{$size}, "");
 
     .radius#{$sizerule} {
-        @include border-radius($radius);
+        border-radius: $radius;
     }
     .radius-t#{$sizerule} {
-        @include border-top-radius($radius);
+        border-top-left-radius: $radius;
+        border-top-right-radius: $radius;
     }
     .radius-e#{$sizerule} {
-        @include border-end-radius($radius);
+        border-top-right-radius: $radius;
+        border-bottom-right-radius: $radius;
     }
     .radius-b#{$sizerule} {
-        @include border-bottom-radius($radius);
+        border-bottom-right-radius: $radius;
+        border-bottom-left-radius: $radius;
     }
     .radius-s#{$sizerule} {
-        @include border-start-radius($radius);
+        border-top-left-radius: $radius;
+        border-bottom-left-radius: $radius;
     }
 }
 
@@ -88,15 +97,15 @@
     $sizerule: if($size, -#{$size}, "");
 
     .radius-te#{$sizerule} {
-        @include border-top-end-radius($radius);
+        border-top-right-radius: $radius;
     }
     .radius-ts#{$sizerule} {
-        @include border-top-start-radius($radius);
+        border-top-left-radius: $radius;
     }
     .radius-be#{$sizerule} {
-        @include border-bottom-end-radius($radius);
+        border-bottom-right-radius: $radius;
     }
     .radius-bs#{$sizerule} {
-        @include border-bottom-start-radius($radius);
+        border-bottom-left-radius: $radius;
     }
 }

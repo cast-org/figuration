@@ -68,29 +68,31 @@
             }
 
             // Reset rounded corners
-            %btn-group-btn-not-last-radius {
-                @include border-end-radius(0);
-            }
-            > .btn:not(:last-child):not(.btn-group-end),
-            > .btn-group:not(:last-child) > .btn {
-                @extend %btn-group-btn-not-last-radius;
-            }
-            @if $enable-btn-check {
-                > .btn-check:not(:last-child) > .btn {
+            @if $enable-rounded {
+                %btn-group-btn-not-last-radius {
+                    @include border-end-radius(0);
+                }
+                > .btn:not(:last-child):not(.btn-group-end),
+                > .btn-group:not(:last-child) > .btn {
                     @extend %btn-group-btn-not-last-radius;
                 }
-            }
+                @if $enable-btn-check {
+                    > .btn-check:not(:last-child) > .btn {
+                        @extend %btn-group-btn-not-last-radius;
+                    }
+                }
 
-            %btn-group-btn-not-first-radius {
-                @include border-start-radius(0);
-            }
-            > .btn:not(:first-child),
-            > .btn-group:not(:first-child) > .btn {
-                @extend %btn-group-btn-not-first-radius;
-            }
-            @if $enable-btn-check {
-                > .btn-check:not(:first-child) > .btn {
+                %btn-group-btn-not-first-radius {
+                    @include border-start-radius(0);
+                }
+                > .btn:not(:first-child),
+                > .btn-group:not(:first-child) > .btn {
                     @extend %btn-group-btn-not-first-radius;
+                }
+                @if $enable-btn-check {
+                    > .btn-check:not(:first-child) > .btn {
+                        @extend %btn-group-btn-not-first-radius;
+                    }
                 }
             }
         }
@@ -157,29 +159,31 @@
             }
 
             // Reset rounded corners
-            %btn-group-vertical-btn-not-last-radius {
-                @include border-bottom-radius(0);
-            }
-            > .btn:not(:last-child):not(.btn-group-end),
-            > .btn-group:not(:last-child) > .btn {
-                @extend %btn-group-vertical-btn-not-last-radius;
-            }
-            @if $enable-btn-check {
-                > .btn-check:not(:last-child) > .btn {
+            @if $enable-rounded {
+                %btn-group-vertical-btn-not-last-radius {
+                    @include border-bottom-radius(0);
+                }
+                > .btn:not(:last-child):not(.btn-group-end),
+                > .btn-group:not(:last-child) > .btn {
                     @extend %btn-group-vertical-btn-not-last-radius;
                 }
-            }
+                @if $enable-btn-check {
+                    > .btn-check:not(:last-child) > .btn {
+                        @extend %btn-group-vertical-btn-not-last-radius;
+                    }
+                }
 
-            %btn-group-vertical-btn-not-first-radius {
-                @include border-top-radius(0);
-            }
-            > .btn:not(:first-child),
-            > .btn-group:not(:first-child) > .btn {
-                @extend %btn-group-vertical-btn-not-first-radius;
-            }
-            @if $enable-btn-check {
-                > .btn-check:not(:first-child) > .btn {
+                %btn-group-vertical-btn-not-first-radius {
+                    @include border-top-radius(0);
+                }
+                > .btn:not(:first-child),
+                > .btn-group:not(:first-child) > .btn {
                     @extend %btn-group-vertical-btn-not-first-radius;
+                }
+                @if $enable-btn-check {
+                    > .btn-check:not(:first-child) > .btn {
+                        @extend %btn-group-vertical-btn-not-first-radius;
+                    }
                 }
             }
         }

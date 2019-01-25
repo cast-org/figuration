@@ -130,6 +130,7 @@
         @if $enable-custom-radio {
             .custom-radio {
                 .custom-control-indicator::before {
+                    // stylelint-disable-next-line property-blacklist
                     border-radius: $custom-radio-radius;
                 }
 
@@ -167,7 +168,8 @@
                         height: $custom-switch-thumb-height;
                         background-color: $custom-switch-thumb-bg;
                         border: $custom-switch-thumb-border-width solid $custom-switch-thumb-border-color;
-                        @include border-radius($custom-switch-thumb-radius);
+                        // stylelint-disable-next-line property-blacklist
+                        border-radius: $custom-switch-thumb-radius;
                         @include box-shadow($custom-switch-thumb-box-shadow);
                     }
 
@@ -178,7 +180,8 @@
                         height: $custom-switch-track-height;
                         background-color: $custom-switch-track-bg;
                         border: $custom-switch-track-border-width solid $custom-switch-track-border-color;
-                        @include border-radius($custom-switch-track-radius);
+                        // stylelint-disable-next-line property-blacklist
+                        border-radius: $custom-switch-track-radius;
                         @include box-shadow($custom-switch-track-box-shadow);
                     }
                 }
@@ -248,11 +251,8 @@
             background: $input-bg $custom-select-indicator-image no-repeat right $custom-select-indicator-offset center;
             background-size: $custom-select-indicator-width $custom-select-indicator-height;
             border: $input-border-width solid $input-border-color;
-            @if $enable-rounded {
-                border-radius: $input-border-radius;
-            } @else {
-                border-radius: 0;
-            }
+            // Provide a fallback to override to the browser default
+            @include border-radius($input-border-radius, 0);
             @include box-shadow($input-box-shadow);
             appearance: none;
             @include transition($input-transition);
