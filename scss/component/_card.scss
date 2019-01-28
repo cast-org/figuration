@@ -439,88 +439,65 @@
 
                             // Handle rounded corners
                             @if $enable-rounded {
-                                &:first-child:not(:only-child) {
+                                &:not(:last-child) {
                                     @include border-end-radius(0);
 
-                                    %card-group-first-top-end#{$bprule} {
+                                    %card-group-reset-top-end#{$bprule} {
                                         @include border-top-end-radius(0);
                                     }
                                     @if $enable-card-header {
                                         .card-header {
-                                            @extend %card-group-first-top-end#{$bprule};
+                                            @extend %card-group-reset-top-end#{$bprule};
                                         }
                                     }
                                     @if $enable-card-img {
                                         .card-img-top {
-                                            @extend %card-group-first-top-end#{$bprule};
+                                            @extend %card-group-reset-top-end#{$bprule};
                                         }
                                     }
 
-                                    %card-group-first-bottom-end#{$bprule} {
+                                    %card-group-reset-bottom-end#{$bprule} {
                                         @include border-bottom-end-radius(0);
                                     }
                                     @if $enable-card-footer {
                                         .card-footer {
-                                            @extend %card-group-first-bottom-end#{$bprule};
+                                            @extend %card-group-reset-bottom-end#{$bprule};
                                         }
                                     }
                                     @if $enable-card-img {
                                         .card-img-bottom {
-                                            @extend %card-group-first-bottom-end#{$bprule};
+                                            @extend %card-group-reset-bottom-end#{$bprule};
                                         }
                                     }
                                 }
-                                &:last-child:not(:only-child) {
+                                &:not(:first-child) {
                                     @include border-start-radius(0);
 
-                                    %card-group-last-top-start#{$bprule} {
+                                    %card-group-reset-top-start#{$bprule} {
                                         @include border-top-start-radius(0);
                                     }
                                     @if $enable-card-header {
                                         .card-header {
-                                            @extend %card-group-last-top-start#{$bprule};
+                                            @extend %card-group-reset-top-start#{$bprule};
                                         }
                                     }
                                     @if $enable-card-img {
                                         .card-img-top {
-                                            @extend %card-group-last-top-start#{$bprule};
+                                            @extend %card-group-reset-top-start#{$bprule};
                                         }
                                     }
 
-                                    %card-group-last-bottom-start#{$bprule} {
+                                    %card-group-reset-bottom-start#{$bprule} {
                                         @include border-bottom-start-radius(0);
                                     }
                                     @if $enable-card-footer {
                                         .card-footer {
-                                            @extend %card-group-last-bottom-start#{$bprule};
+                                            @extend %card-group-reset-bottom-start#{$bprule};
                                         }
                                     }
                                     @if $enable-card-img {
                                         .card-img-bottom {
-                                            @extend %card-group-last-bottom-start#{$bprule};
-                                        }
-                                    }
-                                }
-                                &:not(:first-child):not(:last-child):not(:only-child) {
-                                    @include border-radius(0);
-
-                                    %card-group-middle#{$bprule} {
-                                        @include border-radius(0);
-                                    }
-                                    @if $enable-card-header {
-                                        .card-header {
-                                            @extend %card-group-middle#{$bprule};
-                                        }
-                                    }
-                                    @if $enable-card-footer {
-                                        .card-footer {
-                                            @extend %card-group-middle#{$bprule};
-                                        }
-                                    }
-                                    @if $enable-card-img {
-                                        .card-img-top,
-                                        .card-img-bottom {
-                                            @extend %card-group-middle#{$bprule};
+                                            @extend %card-group-reset-bottom-start#{$bprule};
                                         }
                                     }
                                 }
