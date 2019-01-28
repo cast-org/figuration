@@ -12,15 +12,16 @@ Responsively control an element's `display` property.  Also included are some cl
 * ToC goes here
 {:toc}
 
-## Common Utilities
+## Notation
 
 While there is a large number of [`display` properties](https://developer.mozilla.org/en-US/docs/Web/CSS/display) available, we only support a handful of the more commonly used ones.  Sorry, but we can't support all of them, so if you need one that is not in the list below, you will need to use custom CSS.
 
 Available utilities:
 - `.d-none` sets `display: none;`
 - `.d-block` sets `display: block;`
-- `.d-inline` sets `display: inline;`
 - `.d-flex` sets `display: flex;`
+- `.d-inline` sets `display: inline;`
+- `.d-inline-block` sets `display: inline-block;`
 - `.d-inline-flex` sets `display: inline-flex;`
 - `.d-table` sets `display: table;`
 - `.d-table-row` sets `display: table-row;`
@@ -28,31 +29,17 @@ Available utilities:
 
 These classes are also available in responsive variants, in the form of `.d{-breakpoint}-{value}`, such as `.d-lg-block`. Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) is used.
 
+## Examples
+
 {% capture example %}
-<div class="d-inline bg-success">d-inline</div>
-<div class="d-inline bg-success">d-inline</div>
+<div class="d-inline p-0_5 bg-primary text-white">d-inline</div>
+<div class="d-inline p-0_5 bg-secondary text-white">d-inline</div>
 {% endcapture %}
 {% include example.html content=example %}
 
 {% capture example %}
-<span class="d-block bg-primary">d-block</span>
-{% endcapture %}
-{% include example.html content=example %}
-
-{% capture example %}
-<div class="d-inline-block bg-warning">d-inline-block</div>
-<div class="d-inline-block bg-warning">d-inline-block</div>
-{% endcapture %}
-{% include example.html content=example %}
-
-{% capture example %}
-<div class="d-table bg-info">
-    d-table
-    <div class="d-table-row">
-        <div class="d-table-cell bg-danger">d-table-cell</div>
-        <div class="d-table-cell bg-danger">d-table-cell</div>
-    </div>
-</div>
+<div class="d-block p-0_5 bg-primary text-white">d-block</div>
+<div class="d-block p-0_5 bg-secondary text-white">d-block</div>
 {% endcapture %}
 {% include example.html content=example %}
 
@@ -254,8 +241,8 @@ You will need to take into account any other CSS properties, such as `visibility
 - `.print-none`
 - `.print-block`
 - `.print-flex`
-- `.print-inline-block`
 - `.print-inline`
+- `.print-inline-block`
 - `.print-inline-flex`
 - `.print-table`
 - `.print-table-row`
@@ -288,28 +275,11 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-utility-display-common</code></td>
+                <td><code>$enable-utility-display-down-none</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
-                    <p>Enable the generation of the more common display rules as utility classes.</p>
-                    <p>This encompases the rules of <code>display: {none, block, flex, inline, inline-block, inline-flex}</code>.</p>
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-utility-display-table</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the table display rules as utility classes.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-utility-display-down</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the `down` variant of the responsive hiding display rules as utility classes.
+                    Enable the generation of the `down-none` responsive hiding display rules as utility classes.
                 </td>
             </tr>
             <tr>
@@ -318,6 +288,22 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td><code>true</code></td>
                 <td>
                     Enable the generation of the print display utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$utility-display-breakpoints</code></td>
+                <td>string</td>
+                <td><code>map-keys($grid-breakpoints)</code></td>
+                <td>
+                    Map of breakpoints that will be used to generate responsive display utilities.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$utility-display</code></td>
+                <td>string</td>
+                <td><code>none, block, flex, inline, inline-block, inline-flex, table, table-row, table-cell</code></td>
+                <td>
+                    List of display values that will be used to generate responsive display utilities.
                 </td>
             </tr>
         </tbody>

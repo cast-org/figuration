@@ -1,0 +1,8 @@
+// stylelint-disable declaration-no-important
+
+// Overflow utilties
+@if $enable-utility-overflow {
+    @each $value in $utility-overflow {
+        .overflow-#{$value} { overflow: $value !important; }
+    }
+}
