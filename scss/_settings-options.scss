@@ -242,9 +242,7 @@ $enable-utility-border-radius-removal:      true !default;
 $enable-utility-clearfix:                   true !default;
 
 $enable-utility-display:                    true !default;
-$enable-utility-display-common:             true !default;
-$enable-utility-display-table:              true !default;
-$enable-utility-display-down:               true !default;
+$enable-utility-display-down-none:          true !default;
 $enable-utility-display-print:              true !default;
 
 $enable-utility-embed:                      true !default;
@@ -267,12 +265,11 @@ $enable-utility-caret:                      true !default;
 $enable-utility-close:                      true !default;
 $enable-utility-drag:                       true !default;
 
+$enable-utility-overflow:                   true !default;
+
 $enable-utility-position:                   true !default;
-$enable-utility-position-common:            true !default;
-$enable-utility-position-fixed:             true !default;
 $enable-utility-position-fixed-top:         true !default;
 $enable-utility-position-fixed-bottom:      true !default;
-$enable-utility-position-sticky:            true !default;
 $enable-utility-position-sticky-top:        true !default;
 
 $enable-utility-sronly:                     true !default;

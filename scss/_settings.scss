@@ -1201,3 +1201,10 @@ $zindex-popover:           1030 !default;
 $zindex-tooltip:           1040 !default;
 $zindex-modal-backdrop:    1050 !default;
 $zindex-modal:             1060 !default;
+
+
+// Utilities
+
+$utility-display:   none, block, flex, inline, inline-block, inline-flex, table, table-row, table-cell !default;
+$utility-overflow:  auto, hidden !default;
+$utility-position:  static, relative, absolute, fixed, sticky !default;

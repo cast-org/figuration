@@ -16,13 +16,9 @@ Place a component outside the normal document flow.
 
 Be sure you understand the ramifications of fixed and absolute position in your project; you may need to add aditional CSS.
 
-The sticky utilities uses CSS's `position: sticky`, which isn't fully supported in all browsers.  Additional support information can be found over at [Can I Use](https://caniuse.com/#feat=css-sticky).
-
-**IE11 and IE10 will render `position: sticky` as `position: relative`.** As such, we wrap the styles in a `@supports` query, limiting the stickiness to only browsers that can render it properly.
-
 ## Common Positioning
 
-Responsive variants of common positioning types can be used in the form of `.position{breakpoint}-(type}`. Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) is used.
+The following utilities are available for positioning.
 
 {% highlight html %}
 <div class="position-static">...</div>
@@ -31,6 +27,8 @@ Responsive variants of common positioning types can be used in the form of `.pos
 <div class="position-fixed">...</div>
 <div class="position-sticky">...</div>
 {% endhighlight %}
+
+Responsive variants are also available in the form of `.position{breakpoint}-{type}`, such as `.position-md-relative`. Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) is used.
 
 ## Quick Positioning
 
@@ -55,6 +53,9 @@ Position an element at the bottom of the viewport, from edge to edge.
 ### Sticky Top
 
 Position an element at the top of the viewport, from edge to edge, but only after you scroll past it.
+This sticky utility uses CSS's `position: sticky`, which isn't fully supported in all browsers.  Additional support information can be found at [Can I Use - CSS position:sticky](https://caniuse.com/#feat=css-sticky).
+
+**IE11 and IE10 will render `position: sticky` as `position: relative`.** As such, we wrap the styles in a `@supports` query, limiting the stickiness to only browsers that can render it properly.
 
 {% highlight html %}
 <div class="sticky-top">...</div>
@@ -87,22 +88,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-utility-position-common</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the common position utility classes.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-utility-position-fixed</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the fixed position utility classes.
-                </td>
-            </tr>
-            <tr>
                 <td><code>$enable-utility-position-fixed-top</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>
@@ -119,19 +104,27 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-utility-position-sticky</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the sticky position utility classes.
-                </td>
-            </tr>
-            <tr>
                 <td><code>$enable-utility-position-sticky-top</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
                     Enable the generation of the sticky top position utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$utility-position-breakpoints</code></td>
+                <td>string</td>
+                <td><code>map-keys($grid-breakpoints)</code></td>
+                <td>
+                    Map of breakpoints that will be used to generate responsive position utilities.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$utility-position</code></td>
+                <td>string</td>
+                <td><code>static, relative, absolute, fixed, sticky</code></td>
+                <td>
+                    List of position values that will be used to generate responsive position utilities.
                 </td>
             </tr>
         </tbody>
