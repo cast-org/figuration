@@ -579,22 +579,17 @@
             var $tip = this.$target;
             $tip.detach();
 
-            /* eslint-disable no-lonely-if */
             if (typeof placement === 'object') {
                 // Custom placement
                 this.settings.container = 'body';
                 $tip.appendTo(this.settings.container);
-                $tip.offset(placement);
-                $tip.addClass('in');
+            } if (this.settings.container) {
+                // Container placement
+                $tip.appendTo(this.settings.container);
             } else {
-                // Standard Placement
-                if (this.settings.container) {
-                    $tip.appendTo(this.settings.container);
-                } else {
-                    $tip.insertAfter(this.$element);
-                }
+                // Default placement
+                $tip.insertAfter(this.$element);
             }
-            /* eslint-enable no-lonely-if */
 
             this.inserted = true;
             this.$element.CFW_trigger('inserted.cfw.' + this.type);
@@ -622,6 +617,8 @@
 
             if (typeof placement === 'object') {
                 // Custom placement
+                $tip.offset(placement);
+                $tip.addClass('in');
                 return;
             }
 
