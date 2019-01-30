@@ -2558,22 +2558,17 @@ if (typeof jQuery === 'undefined') {
             var $tip = this.$target;
             $tip.detach();
 
-            /* eslint-disable no-lonely-if */
             if (typeof placement === 'object') {
                 // Custom placement
                 this.settings.container = 'body';
                 $tip.appendTo(this.settings.container);
-                $tip.offset(placement);
-                $tip.addClass('in');
+            } if (this.settings.container) {
+                // Container placement
+                $tip.appendTo(this.settings.container);
             } else {
-                // Standard Placement
-                if (this.settings.container) {
-                    $tip.appendTo(this.settings.container);
-                } else {
-                    $tip.insertAfter(this.$element);
-                }
+                // Default placement
+                $tip.insertAfter(this.$element);
             }
-            /* eslint-enable no-lonely-if */
 
             this.inserted = true;
             this.$element.CFW_trigger('inserted.cfw.' + this.type);
@@ -2582,6 +2577,7 @@ if (typeof jQuery === 'undefined') {
         /* eslint-disable complexity */
         locateTip : function() {
             var $tip = this.$target;
+            var window = this.$element[0].ownerDocument.defaultView;
 
             $tip
                 .removeClass('top reverse bottom forward')
@@ -2600,6 +2596,8 @@ if (typeof jQuery === 'undefined') {
 
             if (typeof placement === 'object') {
                 // Custom placement
+                $tip.offset(placement);
+                $tip.addClass('in');
                 return;
             }
 
@@ -2762,6 +2760,9 @@ if (typeof jQuery === 'undefined') {
             var el = $element[0];
             var isBody = el.tagName === 'BODY';
 
+            var window = this.$element[0].ownerDocument.defaultView;
+            var document = this.$element[0].ownerDocument;
+
             var elRect = el.getBoundingClientRect();
             elRect = $.extend({}, elRect, {
                 top: elRect.top + window.pageYOffset,
@@ -2895,6 +2896,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         getScreenSpaceBounds : function($viewport) {
+            var window = this.$element[0].ownerDocument.defaultView;
             return {
                 top: $viewport.scrollTop(),
                 left: $viewport.scrollLeft(),
@@ -3068,6 +3070,8 @@ if (typeof jQuery === 'undefined') {
 
         _tabItems : function($node) {
             var $selfRef = this;
+            var document = this.$element[0].ownerDocument;
+
             if (typeof $node === 'undefined') { $node = $(document); }
             var items = $node.find('*').filter(function() {
                 var tabIndex = $(this).attr('tabindex');
