@@ -92,7 +92,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
-                    Enable the generation of the fixed top position utility classes.
+                    Enable the generation of the fixed top position utility class.
                 </td>
             </tr>
             <tr>
@@ -100,7 +100,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
-                    Enable the generation of the fixed bottom position utility classes.
+                    Enable the generation of the fixed bottom position utility class.
                 </td>
             </tr>
             <tr>
@@ -108,7 +108,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
-                    Enable the generation of the sticky top position utility classes.
+                    Enable the generation of the sticky top position utility class.
                 </td>
             </tr>
             <tr>
