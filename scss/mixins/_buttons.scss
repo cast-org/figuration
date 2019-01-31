@@ -68,19 +68,17 @@
     }
 
     // Active focus state
-    %btn-variant-#{$parent}-active-focus {
-        @include box-shadow($btn-active-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha));
-    }
-    #{$parent}:not(:disabled):not(.disabled):active:focus,
-    #{$parent}:not(:disabled):not(.disabled).active:focus,
-    .open > #{$parent}:focus {
-        @if $enable-shadows { // Dirty check for placeholder
+    @if $enable-shadows and $btn-active-box-shadow != none{
+        %btn-variant-#{$parent}-active-focus {
+            box-shadow: $btn-active-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha);
+        }
+        #{$parent}:not(:disabled):not(.disabled):active:focus,
+        #{$parent}:not(:disabled):not(.disabled).active:focus,
+        .open > #{$parent}:focus {
             @extend %btn-variant-#{$parent}-active-focus;
         }
-    }
-    @if $enable-btn-check {
-        .btn-check-input:not(:disabled):checked:focus ~ #{$parent} {
-            @if $enable-shadows { // Dirty check for placeholder
+        @if $enable-btn-check {
+            .btn-check-input:not(:disabled):checked:focus ~ #{$parent} {
                 @extend %btn-variant-#{$parent}-active-focus;
             }
         }
