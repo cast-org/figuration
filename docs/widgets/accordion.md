@@ -49,14 +49,14 @@ A simple accordion.
 
 ### Using Cards
 
-Here some cards are used to add a bit of layout.
+Here some cards are used along with a bit of added styling to provide some layout.
 
 {% capture example %}
-<div data-cfw="accordion">
+<div data-cfw="accordion" class="accordion">
     <div class="card mb-0">
         <div class="card-header">
             <h4 class="mb-0">
-                <a href="#card0" data-cfw="collapse" class="open">Collapse Toggle #1</a>
+                <a href="#card0" role="button" data-cfw="collapse" class="open">Collapse Toggle #1</a>
             </h4>
         </div>
         <div id="card0" class="collapse">
@@ -68,7 +68,7 @@ Here some cards are used to add a bit of layout.
     <div class="card mb-0">
         <div class="card-header">
             <h4 class="mb-0">
-                <a href="#card1" data-cfw="collapse">Collapse Toggle #2</a>
+                <a href="#card1" role="button" data-cfw="collapse">Collapse Toggle #2</a>
             </h4>
         </div>
         <div id="card1" class="collapse">
@@ -80,7 +80,7 @@ Here some cards are used to add a bit of layout.
     <div class="card mb-0">
         <div class="card-header">
             <h4 class="mb-0">
-                <a href="#card2" data-cfw="collapse">Collapse Toggle #3</a>
+                <a href="#card2" role="button" data-cfw="collapse">Collapse Toggle #3</a>
             </h4>
         </div>
         <div id="card2" class="collapse">
@@ -92,6 +92,40 @@ Here some cards are used to add a bit of layout.
 </div>
 {% endcapture %}
 {% include example.html content=example %}
+
+To achieve the above layout, the following styling was used.
+
+{% highlight scss %}
+.accordion {
+    > .card {
+        overflow: hidden;
+
+        &:not(:first-of-type) {
+            .card-header:first-child {
+                @include border-radius(0);
+            }
+
+            &:not(:last-of-type) {
+                border-bottom: 0;
+                @include border-radius(0);
+            }
+        }
+
+        &:first-of-type {
+            border-bottom: 0;
+            @include border-bottom-radius(0);
+        }
+
+        &:last-of-type {
+            @include border-top-radius(0);
+        }
+
+        .card-header {
+            margin-bottom: -$card-border-width;
+        }
+    }
+}
+{% endhighlight %}
 
 ## Usage
 
