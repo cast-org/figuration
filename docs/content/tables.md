@@ -1660,7 +1660,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
             <tr>
                 <td><code>$table-bg</code></td>
                 <td>boolean</td>
-                <td><code>$component-bg</code></td>
+                <td><code>null</code></td>
                 <td>
                     Table background color.
                 </td>

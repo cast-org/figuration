@@ -342,10 +342,10 @@ $font-size-h5:  ($font-size-base * 1.25) !default;
 $font-size-h6:  ($font-size-base * 1) !default;
 
 $headings-margin-bottom:    ($spacer / 2) !default;
-$headings-font-family:      inherit !default;
+$headings-font-family:      null !default;
 $headings-font-weight:      600 !default;
 $headings-line-height:      1.25 !default;
-$headings-color:            inherit !default;
+$headings-color:            null !default;
 
 $lead-font-size:    ($font-size-base * 1.25) !default;
 $lead-font-weight:  600 !default;
@@ -604,7 +604,7 @@ $table-cell-padding:            .75rem !default;
 $table-condensed-cell-padding:  .3125rem .5rem !default;
 $table-caption-color:           $uibase-500 !default;
 
-$table-bg:                  $component-bg !default;
+$table-bg:                  null !default;
 $table-bg-active:           $component-hover-bg !default;
 $table-bg-active-hover:     $uibase-200 !default;
 
@@ -902,6 +902,7 @@ $divider-spacer:        ($spacer / 2) !default;
 $dropdown-min-width:            10rem !default;
 $dropdown-padding-y:            .3125rem !default;
 $dropdown-spacer:               .125rem !default;
+$dropdown-font-size:            $font-size-base !default;
 $dropdown-bg:                   $component-bg !default;
 $dropdown-border-color:         $component-border-color !default;
 $dropdown-border-width:         $border-width !default;
@@ -1076,14 +1077,14 @@ $card-subtitle-margin-top:  -.5rem !default;
 $card-header-padding-y:     .75rem !default;
 $card-header-padding-x:     1rem !default;
 $card-header-bg:            $component-section-bg !default;
-$card-header-color:         inherit !default;
+$card-header-color:         null !default;
 $card-header-border-color:  $component-section-border-color !default;
 $card-header-border-width:  $card-border-width !default;
 
 $card-footer-padding-y:     .75rem !default;
 $card-footer-padding-x:     1rem !default;
 $card-footer-bg:            $component-section-bg !default;
-$card-footer-color:         inherit !default;
+$card-footer-color:         null !default;
 $card-footer-border-color:  $component-section-border-color !default;
 $card-footer-border-width:  $card-border-width !default;
 
