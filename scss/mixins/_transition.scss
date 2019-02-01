@@ -4,7 +4,7 @@
         transition: $transition;
 
         @if $enable-transitions-reduced {
-            @media screen and (prefers-reduced-motion: reduce) {
+            @media (prefers-reduced-motion: reduce) {
                 transition: none;
             }
         }
