@@ -231,7 +231,7 @@
   transition: opacity 0.2s ease-in-out 0.1s;
 }
 
-@media screen and (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {
   .anchorjs-link {
     transition: none;
   }
@@ -1031,6 +1031,34 @@ h4 > code {
   }
 }
 
+.accordion > .card {
+  overflow: hidden;
+}
+
+.accordion > .card:not(:first-of-type) .card-header:first-child {
+  border-radius: 0;
+}
+
+.accordion > .card:not(:first-of-type):not(:last-of-type) {
+  border-bottom: 0;
+  border-radius: 0;
+}
+
+.accordion > .card:first-of-type {
+  border-bottom: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.accordion > .card:last-of-type {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.accordion > .card .card-header {
+  margin-bottom: -1px;
+}
+
 .cf-example .fixed-top,
 .cf-example .sticky-top {
   position: static;
@@ -1781,7 +1809,7 @@ h4 > code {
   transition: visibility 1s, opacity 1s;
 }
 
-@media screen and (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {
   .player-fulldisplay.player-inactive .player {
     transition: none;
   }
@@ -1793,7 +1821,7 @@ h4 > code {
   transition: all 0.15s;
 }
 
-@media screen and (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {
   .player-fulldisplay.player-inactive.player-paused .player {
     transition: none;
   }
