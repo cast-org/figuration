@@ -1434,7 +1434,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
             <tr>
                 <td><code>$card-header-color</code></td>
                 <td>string</td>
-                <td><code>$body-color</code></td>
+                <td><code>null</code></td>
                 <td>
                     Text color for card header.
                 </td>
@@ -1482,7 +1482,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
             <tr>
                 <td><code>$card-footer-color</code></td>
                 <td>string</td>
-                <td><code>$body-color</code></td>
+                <td><code>null</code></td>
                 <td>
                     Text color for card footer.
                 </td>

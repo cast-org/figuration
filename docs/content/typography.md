@@ -614,7 +614,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
             <tr>
                 <td><code>$headings-font-family</code></td>
                 <td>string</td>
-                <td><code>inherit</code></td>
+                <td><code>null</code></td>
                 <td>
                     Headings font family.
                 </td>
@@ -638,7 +638,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
             <tr>
                 <td><code>$headings-color</code></td>
                 <td>string</td>
-                <td><code>inherit</code></td>
+                <td><code>null</code></td>
                 <td>
                     Headings text color.
                 </td>
