@@ -253,8 +253,9 @@ $input-height-outer:    calc(#{$input-height-inner} + #{($input-border-width * 2
     // pseudo-classes but also includes `.is-invalid` and `.is-valid` classes for
     // server side validation.
     @if $enable-form-validation {
-        @include form-validation-state("valid", $form-feedback-valid-color, $form-feedback-icon-valid-image);
-        @include form-validation-state("invalid", $form-feedback-invalid-color, $form-feedback-icon-invalid-image);
+        @each $state, $data in $form-validation-states {
+            @include form-validation-state($state, map-get($data, color), map-get($data, icon));
+        }
     }
 
 
