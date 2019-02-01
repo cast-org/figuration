@@ -172,4 +172,4 @@ This is not shown in the Basic Template shown above, but if you require supporti
 
 We are just getting started so there is not much of a community yet.  Please spread the word and help us expand.
 
-- Follow [@figuration_org on Twitter](https://twitter.com/figuration_org)
+- Follow [@figuration_org on Twitter]({{ site.twitter}})
