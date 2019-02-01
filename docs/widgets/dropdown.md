@@ -863,17 +863,9 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
             <tr>
                 <td><code>$dropdown-padding-y</code></td>
                 <td>string</td>
-                <td><code>10rem</code></td>
+                <td><code>.3135rem</code></td>
                 <td>
                     Vertical padding for dropdown menus.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$dropdown-spacer</code></td>
-                <td>string</td>
-                <td><code>.3125rem</code></td>
-                <td>
-                    Top vertical spacing for dropdown menus.
                 </td>
             </tr>
             <tr>
@@ -882,6 +874,14 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td><code>.125rem</code></td>
                 <td>
                     Top vertical spacing for dropdown menus.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$dropdown-font-size</code></td>
+                <td>string</td>
+                <td><code>$font-size-base</code></td>
+                <td>
+                    Font size for dropdown menus.
                 </td>
             </tr>
             <tr>
