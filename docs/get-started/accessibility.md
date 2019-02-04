@@ -76,6 +76,7 @@ Some solutions include:
 - In some cases, an acceptable solution would be to replace the `<a>` element with a `<span>` to allow for a similar layout.  This is due to `<span>`s also having a default `display: inline` and are not clickable or focusable through keyboard interaction.
 - Disabled links, especially buttons and navigation items, would benefit from the inclusion of an `aria-disabled="true"` attribute to indicate the state of the element to assistive technologies.
 - Add a `tabindex="-1"` attribute on disabled links to prevent them from receiving keyboard focus.
+- Add an `aria-disabled="true"` attribute to indicate the state of the element to assistive technologies.
 - Use custom JavaScript to disable their functionality. For example:
 {% highlight js %}
 $('.disabled').on('click', function(e) {
