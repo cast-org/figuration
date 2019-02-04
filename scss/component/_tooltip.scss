@@ -48,28 +48,28 @@
                 bottom: 0;
                 left: 50% #{"/*rtl:ignore*/"};
                 margin-left: -$tooltip-arrow-width;
-                border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
                 border-top-color: $tooltip-arrow-color;
+                border-bottom-width: 0;
             }
             &.forward .tooltip-arrow {
                 top: 50%;
                 left: 0;
                 margin-top: -$tooltip-arrow-width;
-                border-width: $tooltip-arrow-width $tooltip-arrow-width $tooltip-arrow-width 0;
                 border-right-color: $tooltip-arrow-color;
+                border-left-width: 0;
             }
             &.reverse .tooltip-arrow {
                 top: 50%;
                 right: 0;
                 margin-top: -$tooltip-arrow-width;
-                border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
+                border-right-width: 0;
                 border-left-color: $tooltip-arrow-color;
             }
             &.bottom .tooltip-arrow {
                 top: 0;
                 left: 50% #{"/*rtl:ignore*/"};
                 margin-left: -$tooltip-arrow-width;
-                border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
+                border-top-width: 0;
                 border-bottom-color: $tooltip-arrow-color;
             }
         }
@@ -115,6 +115,7 @@
             height: 0;
             border-color: transparent;
             border-style: solid;
+            border-width: $tooltip-arrow-width;
         }
     }
 }
