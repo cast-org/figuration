@@ -215,30 +215,30 @@ Disabled buttons using the `<a>` element behave a bit different:
 {% capture example %}
 <strong>Anchor Standard Buttons:</strong>
 <p>
-<a href="#" role="button" class="btn disabled" aria-disabled="true">Default</a>
-<a href="#" role="button" class="btn btn-primary disabled" aria-disabled="true">Primary</a>
-<a href="#" role="button" class="btn btn-secondary disabled" aria-disabled="true">Secondary</a>
-<a href="#" role="button" class="btn btn-success disabled" aria-disabled="true">Success</a>
-<a href="#" role="button" class="btn btn-info disabled" aria-disabled="true">Info</a>
-<a href="#" role="button" class="btn btn-warning disabled" aria-disabled="true">Warning</a>
-<a href="#" role="button" class="btn btn-danger disabled" aria-disabled="true">Danger</a>
-<a href="#" role="button" class="btn btn-light disabled" aria-disabled="true">Light</a>
-<a href="#" role="button" class="btn btn-dark disabled" aria-disabled="true">Dark</a>
-<a href="#" role="button" class="btn btn-link disabled" aria-disabled="true">Link</a>
+<a href="#" role="button" class="btn disabled" tabindex="-1" aria-disabled="true">Default</a>
+<a href="#" role="button" class="btn btn-primary disabled" tabindex="-1" aria-disabled="true">Primary</a>
+<a href="#" role="button" class="btn btn-secondary disabled" tabindex="-1" aria-disabled="true">Secondary</a>
+<a href="#" role="button" class="btn btn-success disabled" tabindex="-1" aria-disabled="true">Success</a>
+<a href="#" role="button" class="btn btn-info disabled" tabindex="-1" aria-disabled="true">Info</a>
+<a href="#" role="button" class="btn btn-warning disabled" tabindex="-1" aria-disabled="true">Warning</a>
+<a href="#" role="button" class="btn btn-danger disabled" tabindex="-1" aria-disabled="true">Danger</a>
+<a href="#" role="button" class="btn btn-light disabled" tabindex="-1" aria-disabled="true">Light</a>
+<a href="#" role="button" class="btn btn-dark disabled" tabindex="-1" aria-disabled="true">Dark</a>
+<a href="#" role="button" class="btn btn-link disabled" tabindex="-1" aria-disabled="true">Link</a>
 
 </p>
 
 <strong>Anchor Outline Buttons:</strong>
 <p>
-<a href="#" role="button" class="btn btn-outline disabled" aria-disabled="true">Default</a>
-<a href="#" role="button" class="btn btn-outline-primary disabled" aria-disabled="true">Primary</a>
-<a href="#" role="button" class="btn btn-outline-secondary disabled" aria-disabled="true">Secondary</a>
-<a href="#" role="button" class="btn btn-outline-success disabled" aria-disabled="true">Success</a>
-<a href="#" role="button" class="btn btn-outline-info disabled" aria-disabled="true">Info</a>
-<a href="#" role="button" class="btn btn-outline-warning disabled" aria-disabled="true">Warning</a>
-<a href="#" role="button" class="btn btn-outline-danger disabled" aria-disabled="true">Danger</a>
-<a href="#" role="button" class="btn btn-outline-light disabled" aria-disabled="true">Light</a>
-<a href="#" role="button" class="btn btn-outline-dark disabled" aria-disabled="true">Dark</a>
+<a href="#" role="button" class="btn btn-outline disabled" tabindex="-1" aria-disabled="true">Default</a>
+<a href="#" role="button" class="btn btn-outline-primary disabled" tabindex="-1" aria-disabled="true">Primary</a>
+<a href="#" role="button" class="btn btn-outline-secondary disabled" tabindex="-1" aria-disabled="true">Secondary</a>
+<a href="#" role="button" class="btn btn-outline-success disabled" tabindex="-1" aria-disabled="true">Success</a>
+<a href="#" role="button" class="btn btn-outline-info disabled" tabindex="-1" aria-disabled="true">Info</a>
+<a href="#" role="button" class="btn btn-outline-warning disabled" tabindex="-1" aria-disabled="true">Warning</a>
+<a href="#" role="button" class="btn btn-outline-danger disabled" tabindex="-1" aria-disabled="true">Danger</a>
+<a href="#" role="button" class="btn btn-outline-light disabled" tabindex="-1" aria-disabled="true">Light</a>
+<a href="#" role="button" class="btn btn-outline-dark disabled" tabindex="-1" aria-disabled="true">Dark</a>
 </p>
 {% endcapture %}
 {% include example.html content=example %}

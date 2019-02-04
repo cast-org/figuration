@@ -396,7 +396,7 @@ Add `.disabled` to a `<li>` or `.list-item` to make it out to _appear_ disabled.
 
 {% capture example %}
 <ul class="list">
-    <li class="disabled">Disabled list item</li>
+    <li class="disabled" aria-disabled="true">Disabled list item</li>
     <li class="list-item">List item 2</li>
     <li class="list-item">List item 3</li>
 </ul>
@@ -405,7 +405,7 @@ Add `.disabled` to a `<li>` or `.list-item` to make it out to _appear_ disabled.
 
 {% capture example %}
 <div class="list">
-    <div class="list-item disabled">Disabled list item</div>
+    <div class="list-item disabled" aria-disabled="true">Disabled list item</div>
     <div class="list-item">List item 2</div>
     <div class="list-item">List item 3</div>
 </div>
@@ -422,7 +422,7 @@ Be sure to **not use the standard `.btn` classes here**.
 <div class="list">
     <a href="#" class="list-item list-item-action active">Active list item</a>
     <a href="#" class="list-item list-item-action">List item 2</a>
-    <a href="#" class="list-item list-item-action disabled" tabindex="-1">Disabled list item</a>
+    <a href="#" class="list-item list-item-action disabled" tabindex="-1" aria-disabled="true">Disabled list item</a>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
@@ -433,7 +433,7 @@ With `<button>`s, you can also make use of the `disabled` attribute instead of t
 <div class="list">
     <button type="button" class="list-item list-item-action active">Active list item</button>
     <button type="button" class="list-item list-item-action">List item 2</button>
-    <button type="button" class="list-item list-item-action" disabled>Disabled list item</button>
+    <button type="button" class="list-item list-item-action" disabled aria-disabled="true">Disabled list item</button>
 </div>
 {% endcapture %}
 {% include example.html content=example %}

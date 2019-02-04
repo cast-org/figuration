@@ -39,7 +39,7 @@ The tab widget works with [tab]({{ site.baseurl }}/components/navs/#tabs) style 
         <li class="nav-item"><a href="#tab1" class="nav-link" data-cfw="tab">Tab 1</a></li>
         <li class="nav-item"><a href="#tab2" class="nav-link active" data-cfw="tab">Tab 2</a></li>
         <li class="nav-item"><a href="#tab3" class="nav-link" data-cfw="tab">Tab 3</a></li>
-        <li class="nav-item"><a href="#tab4" class="nav-link disabled" data-cfw="tab">Tab 4</a></li>
+        <li class="nav-item"><a href="#tab4" class="nav-link disabled" data-cfw="tab" tabindex="-1" aria-disabled="true">Tab 4</a></li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" id="tab1">
@@ -62,7 +62,7 @@ The tab widget works with [tab]({{ site.baseurl }}/components/navs/#tabs) style 
     <li class="nav-item"><a href="#tab1" class="nav-link" data-cfw="tab">Tab 1</a></li>
     <li class="nav-item"><a href="#tab2" class="nav-link active" data-cfw="tab">Tab 2</a></li>
     <li class="nav-item"><a href="#tab3" class="nav-link" data-cfw="tab">Tab 3</a></li>
-    <li class="nav-item"><a href="#tab4" class="nav-link disabled" data-cfw="tab">Tab 4</a></li>
+    <li class="nav-item"><a href="#tab4" class="nav-link disabled" data-cfw="tab" tabindex="-1" aria-disabled="true">Tab 4</a></li>
 </ul>
 <div class="tab-content">
     <div class="tab-pane" id="tab1">...</div>
@@ -81,7 +81,7 @@ The tab widget also works with [pill]({{ site.baseurl }}/components/navs/#pills)
         <li class="nav-item"><a href="#pill1" class="nav-link" data-cfw="tab">Tab 1</a></li>
         <li class="nav-item"><a href="#pill2" class="nav-link active" data-cfw="tab">Tab 2</a></li>
         <li class="nav-item"><a href="#pill3" class="nav-link" data-cfw="tab">Tab 3</a></li>
-        <li class="nav-item"><a href="#pill4" class="nav-link disabled" data-cfw="tab">Tab 4</a></li>
+        <li class="nav-item"><a href="#pill4" class="nav-link disabled" data-cfw="tab" tabindex="-1" aria-disabled="true">Tab 4</a></li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" id="pill1">
@@ -104,7 +104,7 @@ The tab widget also works with [pill]({{ site.baseurl }}/components/navs/#pills)
     <li class="nav-item"><a href="#pill1" class="nav-link" data-cfw="tab">Pill 1</a></li>
     <li class="nav-item"><a href="#pill2" class="nav-link active" data-cfw="tab">Pill 2</a></li>
     <li class="nav-item"><a href="#pill3" class="nav-link" data-cfw="tab">Pill 3</a></li>
-    <li class="nav-item"><a href="#pill4" class="nav-link disabled" data-cfw="tab">Pill 4</a></li>
+    <li class="nav-item"><a href="#pill4" class="nav-link disabled" data-cfw="tab" tabindex="-1" aria-disabled="true">Pill 4</a></li>
 </ul>
 <div class="tab-content">
     <div class="tab-pane" id="pill1">...</div>
@@ -125,7 +125,7 @@ The tab widget even work with the [`.list` component]({{ site.baseurl }}/compone
                 <a href="#list1" data-cfw="tab" class="list-item list-item-action">List Item 1</a>
                 <a href="#list2" data-cfw="tab" class="list-item list-item-action active">List Item 2</a>
                 <a href="#list3" data-cfw="tab" class="list-item list-item-action">List Item 3</a>
-                <a href="#list4" data-cfw="tab" class="list-item list-item-action disabled">List Item 4</a>
+                <a href="#list4" data-cfw="tab" class="list-item list-item-action disabled" tabindex="-1" aria-disabled="true">List Item 4</a>
             </nav>
         </div>
         <div class="col-md-8">
@@ -154,7 +154,7 @@ The tab widget even work with the [`.list` component]({{ site.baseurl }}/compone
             <a href="#list1" class="list-item list-item-action">List Item 1</a>
             <a href="#list2" class="list-item list-item-action active">List Item 2</a>
             <a href="#list3" class="list-item list-item-action">List Item 3</a>
-            <a href="#list4" class="list-item list-item-action disabled">List Item 4</a>
+            <a href="#list4" class="list-item list-item-action disabled" tabindex="-1" aria-disabled="true">List Item 4</a>
         </nav>
     </div>
     <div class="col-md-8">

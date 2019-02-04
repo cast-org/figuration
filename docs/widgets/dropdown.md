@@ -49,7 +49,7 @@ Here is a static example showing the dropdown layout and content pieces.
         <ul class="dropdown-menu">
             <li class="dropdown-header">Sample Header</li>
             <li><a href="#">Action</a></li>
-            <li><a href="#" class="disabled">Disabled action</a></li>
+            <li><a href="#" class="disabled" tabindex="-1" aria-disabled="true">Disabled action</a></li>
             <li class="dropdown-submenu open">
                 <a href="#">Something else here</a>
                 <ul class="dropdown-menu">
@@ -223,7 +223,7 @@ Add `.disabled` to the `a` item in the dropdown to make them visually _appear_ d
 {% capture example %}
 <ul class="dropdown-menu">
   <li><a href="#">Regular link</a></li>
-  <li><a href="#" class="disabled">Disabled link</a></li>
+  <li><a href="#" class="disabled" tabindex="-1" aria-disabled="true">Disabled link</a></li>
   <li><a href="#">Another link</a></li>
 </ul>
 {% endcapture %}
@@ -294,7 +294,7 @@ Using the [`backlink` option](#options), you can have 'back' menu items automati
             </ul>
         </li>
         <li class="dropdown-divider"></li>
-        <li><a href="#" class="disabled">Disabled item</a></li>
+        <li><a href="#" class="disabled" tabindex="-1" aria-disabled="true">Disabled item</a></li>
     </ul>
 </div>
 {% endcapture %}
@@ -320,7 +320,6 @@ You can optionally use `<button>` elements in your dropdowns instead of just `<a
     <li><button type="button" class="dropdown-item active">Active button</button></li>
     <li><button type="button" class="dropdown-item">Another button</button></li>
     <li class="dropdown-divider"></li>
-    <li><button type="button" class="dropdown-item disabled">Disabled button</button></li>
     <li><button type="button" class="dropdown-item" disabled>Disabled button</button></li>
   </ul>
 </div>
@@ -453,7 +452,7 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
             </ul>
         </li>
         <li class="dropdown-divider"></li>
-        <li><a href="#" class="disabled">Disabled link</a></li>
+        <li><a href="#" class="disabled" tabindex="-1" aria-disabled="true">Disabled link</a></li>
     </ul>
 </div>
 {% endcapture %}
@@ -493,7 +492,7 @@ Add `.dropdown-menu-reverse` to a `.dropdown-menu` to align the dropdown menu to
             </ul>
         </li>
         <li class="dropdown-divider"></li>
-        <li><a href="#" class="disabled">Disabled link</a></li>
+        <li><a href="#" class="disabled" tabindex="-1" aria-disabled="true">Disabled link</a></li>
     </ul>
 </div>
 {% endcapture %}
@@ -550,7 +549,7 @@ The menu alignment class of `.dropdown-menu-reverse` will also work with submenu
             </ul>
         </li>
         <li class="dropdown-divider"></li>
-        <li><a href="#" class="disabled">Separated link</a></li>
+        <li><a href="#" class="disabled" tabindex="-1" aria-disabled="true">Separated link</a></li>
     </ul>
 </div>
 {% endcapture %}
