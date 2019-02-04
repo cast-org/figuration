@@ -1,6 +1,6 @@
 @if $enable-progress {
 
-    @if $enable-progress-animated {
+    @if $enable-transitions and $enable-progress-animated {
         @keyframes progress-bar-stripes {
             from { background-position: $progress-height 0; }
             to { background-position: 0 0; }
@@ -36,9 +36,15 @@
         }
     }
 
-    @if $enable-progress-animated {
+    @if $enable-transitions and $enable-progress-animated {
         .progress-bar-animated {
             animation: progress-bar-stripes $progress-bar-animation-timing;
+
+            @if $enable-transitions-reduced {
+                @media (prefers-reduced-motion: reduce) {
+                    animation: none;
+                }
+            }
         }
     }
 }
