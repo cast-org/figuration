@@ -433,7 +433,7 @@ With `<button>`s, you can also make use of the `disabled` attribute instead of t
 <div class="list">
     <button type="button" class="list-item list-item-action active">Active list item</button>
     <button type="button" class="list-item list-item-action">List item 2</button>
-    <button type="button" class="list-item list-item-action" disabled aria-disabled="true">Disabled list item</button>
+    <button type="button" class="list-item list-item-action" disabled>Disabled list item</button>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
