@@ -30,7 +30,6 @@
                     &::after {
                         bottom: $popover-border-width;
                         margin-left: -$popover-arrow-width;
-                        content: "";
                         border-top-color: $popover-arrow-color;
                         border-bottom-width: 0;
                     }
@@ -48,7 +47,6 @@
                     &::after {
                         bottom: -$popover-arrow-width;
                         left: $popover-border-width;
-                        content: "";
                         border-right-color: $popover-arrow-color;
                         border-left-width: 0;
                     }
@@ -66,7 +64,6 @@
                     &::after {
                         top: $popover-border-width;
                         margin-left: -$popover-arrow-width;
-                        content: "";
                         border-top-width: 0;
                         border-bottom-color: $popover-arrow-color;
                     }
@@ -85,7 +82,6 @@
                     &::after {
                         right: $popover-border-width;
                         bottom: -$popover-arrow-width;
-                        content: "";
                         border-right-width: 0;
                         border-left-color: $popover-arrow-color;
                     }
