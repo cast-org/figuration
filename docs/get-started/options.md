@@ -78,6 +78,8 @@ With that setup in place, you can begin to modify any of the Sass variables and 
 
 Every Sass variable, or setting, in Figuration includes the `!default` flag allowing you to override the variable's default value in your own Sass without modifying Figuration's source code. Copy and paste variables as needed, modify their values, and remove the `!default` flag. If a variable has already been assigned, then it won't be re-assigned by the default values.
 
+You will find the complete list of Figuration's setting variables in `scss/_settings.scss`. Some variables are set to `null`, these variables don't output the property unless they are overridden in your configuration.
+
 Variable overrides within the same Sass file can come before or after the default variables. However, when overriding across Sass files, your overrides must come before you import Figuration's Sass files.
 
 Here's an example that changes the `background-color` and `color` for the `<body>` when importing and compiling Figuration via grunt:

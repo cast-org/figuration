@@ -344,6 +344,7 @@
     .list-item {
         position: relative;
         display: block;
+        color: $list-item-color;
         // Override `<button>` background and border.
         background-color: $list-item-bg;
         border: 0 solid;
