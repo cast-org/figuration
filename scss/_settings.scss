@@ -909,6 +909,7 @@ $dropdown-color:                $body-color !default;
 $dropdown-border-color:         $component-border-color !default;
 $dropdown-border-width:         $border-width !default;
 $dropdown-border-radius:        $border-radius !default;
+$dropdown-inner-border-radius:  calc(#{$dropdown-border-radius} - #{$dropdown-border-width}) !default;
 $dropdown-divider-width:        $border-width !default;
 $dropdown-divider-color:        $component-section-border-color !default;
 $dropdown-divider-spacer:       .5rem !default;
