@@ -213,7 +213,7 @@
             }
 
             var complete = function() {
-                $prevActive.removeClass('active');
+                $prevActive.removeClass('active in');
                 $node.addClass('active');
 
                 if (isPanel) {
@@ -226,8 +226,6 @@
             };
 
             $node.CFW_transition(null, complete);
-
-            $prevActive.removeClass('in');
         },
 
         dispose : function() {
