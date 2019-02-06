@@ -479,8 +479,8 @@ Here is an example of customizing the grid at the large (`lg`) breakpoint and ab
 
 {% capture example %}
 <div class="row mx-lg-n2">
-  <div class="col py-1 px-lg-2">Custom column padding</div>
-  <div class="col py-1 px-lg-2">Custom column padding</div>
+  <div class="col px-lg-2">Custom column padding</div>
+  <div class="col px-lg-2">Custom column padding</div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
@@ -490,8 +490,8 @@ In some cases, you may also have to adjust the padding on the parent container o
 {% capture example %}
 <div class="container-fluid px-lg-2">
     <div class="row mx-lg-n2">
-        <div class="col py-1 px-lg-2">Custom horizontal column padding</div>
-        <div class="col py-1 px-lg-2">Custom horizontal column padding</div>
+        <div class="col px-lg-2">Custom horizontal column padding</div>
+        <div class="col px-lg-2">Custom horizontal column padding</div>
     </div>
 </div>
 {% endcapture %}
