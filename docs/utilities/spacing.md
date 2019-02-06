@@ -117,13 +117,13 @@ Here is a comparison and example of customizing the grid at the medium (`md`) br
 
 {% capture example %}
 <div class="row mb-1">
-    <div class="col py-1">Standard horizontal column padding</div>
-    <div class="col py-1">Standard horizontal column padding</div>
+    <div class="col">Standard horizontal column padding</div>
+    <div class="col">Standard horizontal column padding</div>
 </div>
 
 <div class="row mx-md-n2">
-    <div class="col py-1 px-md-2">Custom horizontal column padding</div>
-    <div class="col py-1 px-md-2">Custom horizontal column padding</div>
+    <div class="col px-md-2">Custom horizontal column padding</div>
+    <div class="col px-md-2">Custom horizontal column padding</div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
@@ -133,8 +133,8 @@ In some cases, you may also have to adjust the padding on the parent container o
 {% capture example %}
 <div class="container-fluid px-md-2">
     <div class="row mx-md-n2">
-        <div class="col py-1 px-md-2">Custom horizontal column padding</div>
-        <div class="col py-1 px-md-2">Custom horizontal column padding</div>
+        <div class="col px-md-2">Custom horizontal column padding</div>
+        <div class="col px-md-2">Custom horizontal column padding</div>
     </div>
 </div>
 {% endcapture %}
