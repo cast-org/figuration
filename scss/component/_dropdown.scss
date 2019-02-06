@@ -132,6 +132,17 @@
         background: none; // 1
         border: 0; // 1
 
+        // Prevent item from overflowing when no horizontal menu padding
+        @if $dropdown-padding-y == 0 {
+            &:first-child {
+                @include border-top-radius($dropdown-inner-border-radius);
+            }
+
+            &:last-child {
+                @include border-bottom-radius($dropdown-inner-border-radius);
+            }
+        }
+
         &.active {
             color: $dropdown-link-active-color;
             text-decoration: none;
