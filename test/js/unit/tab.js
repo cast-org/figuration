@@ -247,4 +247,88 @@ $(function() {
 
         $last.CFW_Tab('show');
     });
+
+    QUnit.test('should add `.in` to tab panes if animation is enabled (default)', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
+            '</ul>' +
+            '<ul class="panes">' +
+            '<li id="home" />' +
+            '<li id="profile" />' +
+            '</ul>';
+        $(tabsHTML).appendTo('#qunit-fixture');
+
+        var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+        var $panes = $('.panes').find('li');
+        var $last = $tabs.last();
+
+        $last
+            .on('afterShow.cfw.tab', function() {
+                assert.strictEqual($panes.filter('.in').length, 1);
+                done();
+            });
+
+        $last.CFW_Tab('show');
+    });
+
+    QUnit.test('should not add `.in` to tab panes if animation is disabled', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab" data-cfw-tab-animate=false>Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab" data-cfw-tab-animate=false>Profile</a></li>' +
+            '</ul>' +
+            '<ul class="panes">' +
+            '<li id="home" />' +
+            '<li id="profile" />' +
+            '</ul>';
+        $(tabsHTML).appendTo('#qunit-fixture');
+
+        var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+        var $panes = $('.panes').find('li');
+        var $last = $tabs.last();
+
+        $last
+            .on('afterShow.cfw.tab', function() {
+                assert.strictEqual($panes.filter('.in').length, 0);
+                done();
+            });
+
+        $last.CFW_Tab('show');
+    });
+
+    QUnit.test('should remove `.in` from tab panes when they become inactive', function(assert) {
+        assert.expect(4);
+        var done = assert.async();
+
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
+            '</ul>' +
+            '<ul class="panes">' +
+            '<li id="home" />' +
+            '<li id="profile" />' +
+            '</ul>';
+        $(tabsHTML).appendTo('#qunit-fixture');
+
+        var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+        var $panes = $('.panes').find('li');
+        var $last = $tabs.last();
+
+        $last
+            .on('afterShow.cfw.tab', function() {
+                assert.strictEqual($panes.first().hasClass('in'), false);
+                assert.strictEqual($panes.last().hasClass('in'), true);
+                done();
+            });
+
+        assert.strictEqual($panes.first().hasClass('in'), true);
+        assert.strictEqual($panes.last().hasClass('in'), false);
+        $last.CFW_Tab('show');
+    });
 });
