@@ -19,8 +19,8 @@
     // User input typically entered via keyboard
     @if $enable-code-kbd {
         kbd {
-            padding: $code-padding-y $code-padding-x;
-            @include font-size($code-font-size);
+            padding: $kbd-padding-y $kbd-padding-x;
+            @include font-size($kbd-font-size);
             color: $kbd-color;
             background-color: $kbd-bg;
             @include border-radius($kbd-border-radius);
