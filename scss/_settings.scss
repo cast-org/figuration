@@ -550,10 +550,11 @@ $embed-fluid-aspect-ratios: (
 // Code
 // =====
 $code-font-size:            87.5% !default;
-$code-padding-x:            .4375rem !default;
-$code-padding-y:            .125rem !default;
+$code-padding-x:            null !default;
+$code-padding-y:            null !default;
 $code-color:                palette($red, 550) !default;
-$code-bg:                   $uibase-50 !default;
+$code-bg:                   null !default;
+$code-border-radius:        null !default;
 
 $kbd-color:                 $uibase-50 !default;
 $kbd-bg:                    $uibase-900 !default;
