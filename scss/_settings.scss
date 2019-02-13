@@ -556,8 +556,11 @@ $code-color:                palette($red, 550) !default;
 $code-bg:                   null !default;
 $code-border-radius:        null !default;
 
-$kbd-color:                 $uibase-50 !default;
+$kbd-font-size:             87.5% !default;
+$kbd-padding-x:             .4375rem !default;
+$kbd-padding-y:             .125rem !default;
 $kbd-bg:                    $uibase-900 !default;
+$kbd-color:                 $uibase-50 !default;
 $kbd-box-shadow:            inset 0 -.1rem 0 rgba($black, .25) !default;
 $kbd-nested-font-weight:    $font-weight-bold !default;
 $kbd-border-radius:         .1875rem !default;
