@@ -5,8 +5,14 @@
             padding: $code-padding-y $code-padding-x;
             @include font-size($code-font-size);
             color: $code-color;
+            word-break: break-word;
             background-color: $code-bg;
-            @include border-radius($border-radius);
+            @include border-radius($code-border-radius);
+
+            // Inherit link color when inside anchors to avoid mis-matched underline
+            a > & {
+                color: inherit;
+            }
         }
     }
 
