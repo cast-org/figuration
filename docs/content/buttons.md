@@ -440,6 +440,14 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
+                <td><code>$btn-font-family</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
+                <td>
+                    Base button font family.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$btn-font-size</code></td>
                 <td>string</td>
                 <td><code>$font-size-base</code></td>
