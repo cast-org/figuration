@@ -1,17 +1,10 @@
 // Ascending
-// Used to evaluate grid breakpoint Sass map.
-@mixin _assert-ascending($map, $map-type, $map-name) {
+// Used to evaluate Sass maps, such as grid breakpoints.
+@mixin _assert-ascending($map, $map-name) {
     $prev-key: null;
     $prev-num: null;
     @each $key, $num in $map {
-        // Handle %-based container max-width by using the breakpoint dimension
-        // to generate a rem-based size to compare with.
-        @if $map-type == "container" and unit($num) == "%" {
-            $bp-num: map-get($grid-breakpoints, $key);
-            $num: strip-unit(($num / 100%) * $bp-num) * 1rem;
-        }
-
-        @if $prev-num == null {
+        @if $prev-num == null or unit($num) == "%" {
             // Do nothing
         } @else if not comparable($prev-num, $num) {
             @warn "Potentially invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} whose unit makes it incomparable to #{$prev-num}, the value of the previous key '#{$prev-key}' !";
@@ -24,11 +17,11 @@
 }
 
 // Starts at zero
-// Grid related mixin that ensures the min-width of the lowest breakpoint starts at 0.
-@mixin _assert-starts-at-zero($map) {
+// Ensure that the min-width of the lowest breakpoint starts at 0.
+@mixin _assert-starts-at-zero($map, $map-name: "$grid-breakpoints") {
     $values: map-values($map);
     $first-value: nth($values, 1);
     @if $first-value != 0 {
-        @warn "First breakpoint in `$grid-breakpoints` must start at 0, but starts at #{$first-value}.";
+        @warn "First breakpoint in `{$map-name}` must start at 0, but starts at #{$first-value}.";
     }
 }

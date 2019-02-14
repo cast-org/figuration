@@ -217,8 +217,8 @@ $grid-breakpoints: map-merge(
     ),
     $grid-breakpoints
 );
-@include _assert-ascending($grid-breakpoints, "breakpoint", "$grid-breakpoints");
-@include _assert-starts-at-zero($grid-breakpoints);
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
 
 // Component and utility breakpoints
 // =====
@@ -256,7 +256,7 @@ $container-max-widths: map-merge(
     ),
     $container-max-widths
 );
-@include _assert-ascending($container-max-widths, "container", "$container-max-widths");
+@include _assert-ascending($container-max-widths, "$container-max-widths");
 
 
 // Grid columns
