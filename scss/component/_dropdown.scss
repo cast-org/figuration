@@ -181,7 +181,7 @@
     }
 
     // Dropdown non-interactive text item
-    @if $enable-dropdown-header {
+    @if $enable-dropdown-text {
         .dropdown-text {
             display: block;
             padding: $dropdown-item-padding-y $dropdown-item-padding-x;
