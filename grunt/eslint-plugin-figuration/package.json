@@ -10,6 +10,6 @@
   "author": "CAST, Inc.",
   "license": "MIT",
   "peerDependencies": {
-    "eslint": "^4.19.1"
+    "eslint": "^5.0.0"
   }
 }
