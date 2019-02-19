@@ -1755,7 +1755,7 @@ if (typeof jQuery === 'undefined') {
             }
 
             var complete = function() {
-                $prevActive.removeClass('active');
+                $prevActive.removeClass('active in');
                 $node.addClass('active');
 
                 if (isPanel) {
@@ -1768,8 +1768,6 @@ if (typeof jQuery === 'undefined') {
             };
 
             $node.CFW_transition(null, complete);
-
-            $prevActive.removeClass('in');
         },
 
         dispose : function() {

@@ -442,11 +442,13 @@ mark,
 }
 
 code {
-  padding: 0.125rem 0.4375rem;
   font-size: 87.5%;
   color: #c42013;
-  background-color: #eff1f3;
-  border-radius: 0.25rem;
+  word-break: break-word;
+}
+
+a > code {
+  color: inherit;
 }
 
 kbd {
@@ -1802,7 +1804,7 @@ textarea.form-control:not([rows="1"]) {
 }
 
 .custom-select::-ms-expand {
-  opacity: 0;
+  display: none;
 }
 
 .custom-select-xsmall {
@@ -3738,6 +3740,13 @@ a.drag.disabled {
 .progress-bar-animated {
   -webkit-animation: progress-bar-stripes 1s linear infinite;
           animation: progress-bar-stripes 1s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar-animated {
+    -webkit-animation: none;
+            animation: none;
+  }
 }
 
 .list {
@@ -6918,23 +6927,23 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
   bottom: 0;
   left: 50% ;
   margin-right: -0.375rem;
-  border-width: 0.375rem 0.375rem 0;
   border-top-color: #262d34;
+  border-bottom-width: 0;
 }
 
 .tooltip.forward .tooltip-arrow {
   top: 50%;
   right: 0;
   margin-top: -0.375rem;
-  border-width: 0.375rem 0 0.375rem 0.375rem;
   border-left-color: #262d34;
+  border-right-width: 0;
 }
 
 .tooltip.reverse .tooltip-arrow {
   top: 50%;
   left: 0;
   margin-top: -0.375rem;
-  border-width: 0.375rem 0.375rem 0.375rem 0;
+  border-left-width: 0;
   border-right-color: #262d34;
 }
 
@@ -6942,7 +6951,7 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
   top: 0;
   left: 50% ;
   margin-right: -0.375rem;
-  border-width: 0 0.375rem 0.375rem;
+  border-top-width: 0;
   border-bottom-color: #262d34;
 }
 
@@ -6976,6 +6985,7 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
   height: 0;
   border-color: transparent;
   border-style: solid;
+  border-width: 0.375rem;
 }
 
 .popover {
@@ -7020,7 +7030,6 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
 .popover.top .popover-arrow::after {
   bottom: 1px;
   margin-right: -0.625rem;
-  content: "";
   border-top-color: #fff;
   border-bottom-width: 0;
 }
@@ -7040,7 +7049,6 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
 .popover.forward .popover-arrow::after {
   bottom: -0.625rem;
   right: 1px;
-  content: "";
   border-left-color: #fff;
   border-right-width: 0;
 }
@@ -7060,7 +7068,6 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
 .popover.bottom .popover-arrow::after {
   top: 1px;
   margin-right: -0.625rem;
-  content: "";
   border-top-width: 0;
   border-bottom-color: #fff;
 }
@@ -7080,7 +7087,6 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
 .popover.reverse .popover-arrow::after {
   left: 1px;
   bottom: -0.625rem;
-  content: "";
   border-left-width: 0;
   border-right-color: #fff;
 }
