@@ -201,23 +201,38 @@
 
 
     CFW_Widget_Popover.prototype.viewportDragLimit = function() {
-        var $tip = this.$target;
         var $viewport = this.$viewport;
-
+        var scrollbarWidth = this.viewportScrollbarWidth($viewport);
         var limit = $viewport.offset();
-        limit.bottom = limit.top + $viewport.outerHeight() - $tip.outerHeight();
-        limit.right = limit.left + $viewport.outerWidth() - $tip.outerWidth();
+
+        limit.bottom = limit.top + $viewport.outerHeight();
+        limit.right = limit.left + $viewport.outerWidth() - scrollbarWidth;
 
         // Allow dragging around entire window if body is smaller than window
         if ($viewport.is('body')) {
             if (document.body.clientHeight < window.innerHeight) {
-                limit.bottom = limit.top + window.innerHeight - $tip.outerHeight();
+                limit.bottom = window.innerHeight;
             }
             if (document.body.clientWidth < window.innerWidth) {
-                limit.right = limit.left + window.innerWidth - $tip.outerWidth();
+                limit.right = window.innerWidth - scrollbarWidth;
             }
         }
         return limit;
+    };
+
+    CFW_Widget_Popover.prototype.viewportScrollbarWidth = function($viewport) {
+        // Check to see if a scrollbar is possible
+        var compStyle = window.getComputedStyle($viewport[0]);
+        var hasScrollY = /^(visible|auto|scroll)$/.test(compStyle.overflow) || /^(visible|auto|scroll)$/.test(compStyle.overflowY);
+        var scrollHeight = $viewport[0].scrollHeight;
+
+        // Return width of scrollbar if there seems to be one
+        if ($viewport.is('body') && hasScrollY && scrollHeight > window.innerHeight) {
+            return $.CFW_measureScrollbar();
+        } else if (hasScrollY && scrollHeight > $viewport[0].clientHeight) {
+            return $.CFW_measureScrollbar();
+        }
+        return 0;
     };
 
     CFW_Widget_Popover.prototype.locateDragTip = function(offsetY, offsetX) {
@@ -226,8 +241,8 @@
         var viewportPadding = this.settings.padding;
 
         $tip.css({
-            top: Math.min(limit.bottom - viewportPadding, Math.max(limit.top + viewportPadding, offsetY)),
-            left: Math.min(limit.right - viewportPadding, Math.max(limit.left + viewportPadding, offsetX))
+            top: Math.min(limit.bottom - viewportPadding - $tip.outerHeight(), Math.max(limit.top + viewportPadding, offsetY)),
+            left: Math.min(limit.right - viewportPadding - $tip.outerWidth(), Math.max(limit.left + viewportPadding, offsetX))
         });
     };
 

@@ -350,10 +350,10 @@
         var scrollP = document.createElement('p');
         $(scrollDiv).append(scrollP);
         $node.append(scrollDiv);
-        var scrollWidth = $.CFW_measureScrollbar();
+        var scrollbarWidth = $.CFW_measureScrollbar();
         var posLeft = scrollP.getBoundingClientRect().left;
         $node[0].removeChild(scrollDiv);
-        return posLeft < scrollWidth ? 'right' : 'left';
+        return posLeft < scrollbarWidth ? 'right' : 'left';
     };
 
     $.CFW_throttle = function(fn, threshhold, scope) {
