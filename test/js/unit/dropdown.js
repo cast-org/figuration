@@ -472,25 +472,28 @@ $(function() {
         $dropdown.trigger('click');
     });
 
-    QUnit.test('should not close menu if clicking on <input type="text"> or <textarea>', function(assert) {
-        assert.expect(3);
+    QUnit.test('should not close menu if clicking on <label>, <input type="text">, or <textarea>', function(assert) {
+        assert.expect(4);
         var done = assert.async();
         var dropdownHTML = '<div class="dropdown">' +
             '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
-            '<li><input id="input" /></a></li>' +
+            '<li><label id="label" for="input"><input id="input" /></label></li>' +
             '<li><textarea id="textarea"></textarea></a></li>' +
             '</ul>' +
             '</div>';
         var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
         $dropdown.CFW_Dropdown();
 
+        var $label = $('#label');
         var $input = $('#input');
         var $textarea = $('#textarea');
 
         $dropdown
             .on('afterShow.cfw.dropdown', function() {
                 assert.ok(true, 'menu opened');
+                $label.trigger('click');
+                assert.ok($dropdown.parent('.dropdown').hasClass('open'), 'menu still open');
                 $input.trigger('click');
                 assert.ok($dropdown.parent('.dropdown').hasClass('open'), 'menu still open');
                 $textarea.trigger('click');

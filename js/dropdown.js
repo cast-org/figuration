@@ -65,7 +65,7 @@
         if (e && e.which === RIGHT_MOUSE_BUTTON_WHICH) { return; }
 
         // Ignore clicks into input areas
-        if (e && e.type === 'click' && /input|textarea/i.test(e.target.tagName)) {
+        if (e && e.type === 'click' && /label|input|textarea/i.test(e.target.tagName)) {
             return;
         }
 
