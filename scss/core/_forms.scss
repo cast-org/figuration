@@ -104,7 +104,7 @@ $input-height-outer:    calc(#{$input-height-inner} + #{($input-border-width * 2
             padding-top: calc(#{$input-padding-y} + #{$input-border-width});
             padding-bottom: calc(#{$input-padding-y} + #{$input-border-width});
             margin-bottom: 0; // Override the `<label>/<legend>` default
-            font-size: inherit; // Override the `<legend>` default
+            @include font-size(inherit); // Override the `<legend>` default
             font-weight: $input-label-font-weight;
             line-height: $input-line-height;
         }

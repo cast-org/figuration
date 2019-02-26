@@ -28,7 +28,7 @@
 
             kbd {
                 padding: 0;
-                font-size: 100%;
+                @include font-size(100%);
                 font-weight: $kbd-nested-font-weight;
                 @include box-shadow(none);
             }
@@ -45,7 +45,7 @@
             // Account for some code outputs that place code tags in pre tags
             code {
                 padding: 0;
-                font-size: inherit;
+                @include font-size(inherit);
                 color: inherit;
                 background-color: transparent;
                 @include border-radius(0);

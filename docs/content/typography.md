@@ -231,10 +231,10 @@ Benefits of using Figuration's responsive typography options include:
 - Font sizes will adjust with the size of the device, which can help reduce the chance of overflow for long words.
 - Font sizes of text elements will always remain in relation to one another.
 - The minimum font size (configuration setting) will prevent the font size from becoming too small so readability can be assured.
-- Does not use the `font-size` of the `<html>` element, allowing for a greater level of accessibility for user's who change the default font size of their browser.
+- Does not use the `font-size` of the `<html>` element, and outputs sizes in `rem` units, allowing for a greater level of accessibility for users who change the default font size of their browser.
 
 Possible drawbacks include:
-- Can generate a large amount of CSS.  Disabling the `$responsive-font-size-generate-static` setting will also help with reducing the overall size of the CSS.  Also using compressing the CSS, with gzip or other methods, will reduce the CSS file size impact due to the large amount of repeating strings.
+- Can generate a large amount of CSS.  Enabling the `$responsive-font-size-generate-static` setting will generate a large amount of the CSS.  Compressing the CSS, with gzip or other methods, will reduce the CSS file size impact due to the large amount of repeating strings.
 
 ### Common Settings
 
@@ -261,7 +261,7 @@ Possible drawbacks include:
             <tr>
                 <td><code>$responsive-font-size-generate-static</code></td>
                 <td>boolean</td>
-                <td>true</td>
+                <td>false</td>
                 <td>
                     <p>Generates the <code>.font-size-static</code> utility classes to disable the responsive font sizes for an element and it's descendant elements. This does not apply to font sizes which are inherited from parent elements.</p>
                     <p>If you are not using these utilities, it would be worthwhile to disable this setting to stop the generation of a potentially large amount of unused CSS.</p>

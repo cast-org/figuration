@@ -10,15 +10,14 @@ $fs-minimum: strip-unit($fs-minimum);
 // stylelint-enable scss/dollar-variable-default
 
 @mixin font-size($fs, $important: false) {
-    $fs-append: "";
+    // Cache $fs unit
+    $fs-unit: if(type-of($fs) == "number", unit($fs), false);
 
     // Add !important rule to the append if set
-    @if $important {
-        $fs-append: " !important";
-    }
+    $fs-append: if($important, " !important", "");
 
     // If $fs isn't a number (like inherit) or $fs has a unit (not px or rem, like 1.5em) or $fs is 0, just print the value.
-    @if type-of($fs) != "number" or (not unitless($fs) and unit($fs) != "px" and unit($fs) != "rem") or $fs == 0 {
+    @if not $fs-unit or $fs-unit != "" and $fs-unit != "px" and $fs-unit != "rem" or $fs == 0 {
         font-size: #{$fs}#{$fs-append};
     } @else if ($enable-rfs-fluid) {
         // Use fluid variant
@@ -60,29 +59,22 @@ $fs-minimum: strip-unit($fs-minimum);
     // If $responsive-font-size-fluid-factor == 1, no rescaling will take place.
     $fs-fluid: null;
     @if $fs > $fs-minimum and $responsive-font-size-fluid-factor != 1 {
-        $min-width: $responsive-font-size-fluid-breakpoint;
-        $variable-unit: null;
-
         // Calculate minimum font-size for given font-size.
         $fs-min: $fs-minimum + ($fs - $fs-minimum) / $responsive-font-size-fluid-factor;
         // Calculate difference between given font-size and minimum font-size for given font-size.
         $fs-diff: $fs - $fs-min;
 
         // Minimum font-size formatting.
-        $min-width: #{$fs-min}rem;
+        $fs-min: #{$fs-min}rem;
 
         // If two-dimensional, use smallest of screen width and height.
-        @if $responsive-font-size-fluid-two-dimensional {
-            $variable-unit: vmin;
-        } @else {
-            $variable-unit: vw;
-        }
+        $variable-unit: if($responsive-font-size-fluid-two-dimensional, vmin, vw);
 
         // Calculate the variable width between 0 and $fs-breakpoint.
         $variable-width: #{$fs-diff * 100 / $fs-breakpoint}#{$variable-unit};
 
         // Set the calculated font-size.
-        $fs-fluid: calc(#{$min-width} + #{$variable-width}) #{$fs-append};
+        $fs-fluid: calc(#{$fs-min} + #{$variable-width}) #{$fs-append};
     }
 
     // Render output.
