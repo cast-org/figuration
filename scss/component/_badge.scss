@@ -30,7 +30,7 @@
                 padding-right: $badge-close-padding-x;
                 padding-left: $badge-close-padding-x;
                 margin-right: -$badge-close-padding-x;
-                font-size: $badge-close-font-size;
+                @include font-size($badge-close-font-size);
             }
         }
 

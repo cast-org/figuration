@@ -387,7 +387,7 @@ $dt-font-weight:    $font-weight-bold !default;
 // Common settings
 // Only used when one of Responsive Typography methods is enabled.
 $responsive-font-size-minimum-size:     1rem !default;
-$responsive-font-size-generate-static:  true !default;
+$responsive-font-size-generate-static:  false !default;
 
 // Ratioed Responsive Typography
 // Fluidly scales font size ratio by viewport dimension.
