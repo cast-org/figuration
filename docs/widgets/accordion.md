@@ -111,12 +111,12 @@ To achieve the above layout, the following styling was used.
             }
         }
 
-        &:first-of-type {
+        &:first-of-type:not(:last-of-type) {
             border-bottom: 0;
             @include border-bottom-radius(0);
         }
 
-        &:last-of-type {
+        &:last-of-type:not(:first-of-type) {
             @include border-top-radius(0);
         }
 
