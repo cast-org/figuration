@@ -110,10 +110,7 @@
             $('a', this.$target).attr('tabIndex', -1).not('.disabled, :disabled');
 
             // Set ARIA on trigger
-            this.$element.attr({
-                'aria-haspopup': 'true',
-                'aria-expanded': 'false'
-            });
+            this.$element.attr('aria-expanded', 'false');
 
             if (this.settings.backlink && this.settings.backtop) {
                 var $backTop = $('<li class="' + this.c.backLink + '"><a href="#">' + this.settings.backtext + '</a></li>')
@@ -154,10 +151,7 @@
                     .addClass($selfRef.c.isMenu)
                     .closest('li').addClass($selfRef.c.hasSubMenu);
 
-                $subLink.attr({
-                    'aria-haspopup': 'true',
-                    'aria-expanded': 'false'
-                });
+                $subLink.attr('aria-expanded', 'false');
             });
 
             // Set role on dividers
