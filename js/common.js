@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Figuration (v4.0.0-alpha.3): common.js
+ * Figuration (v4.0.0-alpha.4): common.js
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
