@@ -132,14 +132,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-alert-hr</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the alert horizontal rule styles.
-                </td>
-            </tr>
-            <tr>
                 <td><code>$enable-alert-colors</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>

@@ -4,12 +4,6 @@
     background-color: $bg;
     border-color: $border;
 
-    @if $enable-alert-hr {
-        hr {
-            border-top-color: $border;
-        }
-    }
-
     @if $enable-alert-link {
         .alert-link {
             color: $color;
