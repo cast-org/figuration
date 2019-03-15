@@ -64,7 +64,7 @@ body {
   background-color: #fff;
 }
 
-[tabindex="-1"]:focus {
+[tabindex="-1"]:focus:not(:focus-visible) {
   outline: none !important;
 }
 
@@ -6552,10 +6552,6 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
   border-color: #99bbf6;
 }
 
-.alert-primary hr {
-  border-top-color: #99bbf6;
-}
-
 .alert-primary .alert-link {
   color: #002f80;
 }
@@ -6568,10 +6564,6 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
   color: #343e48;
   background-color: #dfe3e6;
   border-color: #bfc6cd;
-}
-
-.alert-secondary hr {
-  border-top-color: #bfc6cd;
 }
 
 .alert-secondary .alert-link {
@@ -6588,10 +6580,6 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
   border-color: #a2ccdb;
 }
 
-.alert-info hr {
-  border-top-color: #a2ccdb;
-}
-
 .alert-info .alert-link {
   color: #0c465a;
 }
@@ -6604,10 +6592,6 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
   color: #084c0c;
   background-color: #cfe8d0;
   border-color: #9fd0a2;
-}
-
-.alert-success hr {
-  border-top-color: #9fd0a2;
 }
 
 .alert-success .alert-link {
@@ -6624,10 +6608,6 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
   border-color: #fce7a7;
 }
 
-.alert-warning hr {
-  border-top-color: #fce7a7;
-}
-
 .alert-warning .alert-link {
   color: #886b13;
 }
@@ -6640,10 +6620,6 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
   color: #75130b;
   background-color: #f6d3d0;
   border-color: #eea7a1;
-}
-
-.alert-danger hr {
-  border-top-color: #eea7a1;
 }
 
 .alert-danger .alert-link {
@@ -6660,10 +6636,6 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
   border-color: #f9f9fa;
 }
 
-.alert-light hr {
-  border-top-color: #f9f9fa;
-}
-
 .alert-light .alert-link {
   color: #262d34;
 }
@@ -6676,10 +6648,6 @@ a.badge-outline-dark:hover, a.badge-outline-dark:focus {
   color: #1d2228;
   background-color: #d6d8da;
   border-color: #aeb2b6;
-}
-
-.alert-dark hr {
-  border-top-color: #aeb2b6;
 }
 
 .alert-dark .alert-link {
@@ -9325,6 +9293,10 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
   border-radius: 50% !important;
 }
 
+.radius-pill {
+  border-radius: 50rem !important;
+}
+
 .radius {
   border-radius: 0.25rem;
 }
@@ -10268,6 +10240,7 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
   width: 1px;
   height: 1px;
   padding: 0;
+  margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -10289,6 +10262,7 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
     width: 1px;
     height: 1px;
     padding: 0;
+    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
@@ -10302,6 +10276,7 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
     width: 1px;
     height: 1px;
     padding: 0;
+    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
@@ -10315,6 +10290,7 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
     width: 1px;
     height: 1px;
     padding: 0;
+    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
@@ -10328,6 +10304,7 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
     width: 1px;
     height: 1px;
     padding: 0;
+    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
@@ -10341,6 +10318,7 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
     width: 1px;
     height: 1px;
     padding: 0;
+    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
@@ -10354,6 +10332,7 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
     width: 1px;
     height: 1px;
     padding: 0;
+    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
@@ -10367,6 +10346,7 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
     width: 1px;
     height: 1px;
     padding: 0;
+    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
@@ -10380,6 +10360,7 @@ a.bg-gray-900:hover, a.bg-gray-900:focus {
     width: 1px;
     height: 1px;
     padding: 0;
+    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
