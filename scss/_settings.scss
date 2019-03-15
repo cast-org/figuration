@@ -500,27 +500,27 @@ $shadows: map-merge(
 
 // Component pieces
 // =====
-$caret-width:           1rem !default;
-$caret-border-width:    .3125rem !default;
+$caret-width:               1rem !default;
+$caret-border-width:        .3125rem !default;
 
-$close-font-size:       ($font-size-base * 1.5) !default;
-$close-font-weight:     $font-weight-bold !default;
-$close-opacity:         .65 !default;
-$close-hover-opacity:   .85 !default;
+$close-font-size:           ($font-size-base * 1.5) !default;
+$close-font-weight:         $font-weight-bold !default;
+$close-opacity:             .65 !default;
+$close-hover-opacity:       .85 !default;
 
-$drag-font-size:        ($font-size-base * 1.5) !default;
-$drag-font-weight:      $font-weight-bold !default;
-$drag-opacity:          .65 !default;
-$drag-hover-opacity:    .85 !default;
+$drag-font-size:            ($font-size-base * 1.5) !default;
+$drag-font-weight:          $font-weight-bold !default;
+$drag-opacity:              .65 !default;
+$drag-hover-opacity:        .85 !default;
 
 
 // Transitions
 // =====
 // Widget animations
-$transition-fade:       opacity .15s linear !default;
-$transition-lazy-fade:  opacity .3s linear !default;
-$transition-collapse-y: height .3s ease !default;
-$transition-collapse-x: width .3s ease !default;
+$transition-fade:           opacity .15s linear !default;
+$transition-lazy-fade:      opacity .3s linear !default;
+$transition-collapse-y:     height .3s ease !default;
+$transition-collapse-x:     width .3s ease !default;
 
 // Component transitions
 $btn-transition:            color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
@@ -532,17 +532,18 @@ $switch-transition:         all .15s ease !default;
 
 // Radius utility
 // =====
-$radius-border-radius: $border-radius !default;
+$radius-border-radius:      $border-radius !default;
+$radius-pill:               50rem !default;
 
 
 // Image thumbnails
 // =====
-$thumbnail-padding:             .25rem !default;
-$thumbnail-bg:                  $body-bg !default;
-$thumbnail-border-width:        $border-width !default;
-$thumbnail-border-color:        $uibase-300 !default;
-$thumbnail-border-radius:       $border-radius !default;
-$thumbnail-box-shadow:          0 .0625rem .125rem rgba($black, .075) !default;
+$thumbnail-padding:         .25rem !default;
+$thumbnail-bg:              $body-bg !default;
+$thumbnail-border-width:    $border-width !default;
+$thumbnail-border-color:    $uibase-300 !default;
+$thumbnail-border-radius:   $border-radius !default;
+$thumbnail-box-shadow:      0 .0625rem .125rem rgba($black, .075) !default;
 
 
 // Fluid embed

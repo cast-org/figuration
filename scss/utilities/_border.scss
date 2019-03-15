@@ -8,6 +8,12 @@
         }
     }
 
+    @if $enable-utility-border-radius-pill {
+        .radius-pill {
+            border-radius: $radius-pill !important;
+        }
+    }
+
     // Radius addition - Default size
     @if $enable-utility-border-radius-addition {
         @include radius-sides($radius-border-radius);
