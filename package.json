@@ -35,10 +35,10 @@
     "jquery": "1.9.1 - 3"
   },
   "devDependencies": {
-    "autoprefixer": "^9.4.7",
+    "autoprefixer": "^9.5.0",
     "broken-link-checker": "^0.7.8",
-    "eslint": "^5.14.1",
-    "eslint-plugin-compat": "^2.7.0",
+    "eslint": "^5.15.2",
+    "eslint-plugin-compat": "^3.0.1",
     "eslint-plugin-figuration": "file:./grunt/eslint-plugin-figuration",
     "glob": "^7.1.3",
     "grunt": "^1.0.3",
@@ -62,13 +62,13 @@
     "load-grunt-tasks": "^4.0.0",
     "node-sass": "^4.11.0",
     "postcss-flexbugs-fixes": "^4.1.0",
-    "qunit": "^2.9.1",
+    "qunit": "^2.9.2",
     "shelljs": "^0.8.3",
     "stylelint": "^9.10.1",
     "stylelint-config-recommended-scss": "^3.2.0",
     "stylelint-config-standard": "^18.2.0",
-    "stylelint-order": "^2.0.0",
-    "stylelint-scss": "^3.5.3",
+    "stylelint-order": "^2.1.0",
+    "stylelint-scss": "^3.5.4",
     "time-grunt": "^2.0.0"
   },
   "engines": {
