@@ -1,5 +1,5 @@
 /* eslint-disable no-implicit-globals, no-magic-numbers */
-/* global Clipboard, Holder, anchors */
+/* global ClipboardJS, Holder, anchors */
 
 /*!
  * Figuration (v4.0.0-alpha.4)
@@ -44,7 +44,7 @@
                 animate: false
             });
 
-        var clipboard = new Clipboard('.btn-clipboard', {
+        var clipboard = new ClipboardJS('.btn-clipboard', {
             target: function(trigger) {
                 return trigger.parentNode.nextElementSibling;
             }
