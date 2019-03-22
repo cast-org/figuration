@@ -5,7 +5,9 @@
     @if $enable-utility-bg-colors {
         @if (type-of($utility-bg-colors) == "map" and length($utility-bg-colors) != 0) {
             @each $theme, $color in $utility-bg-colors {
-                @include bg-variant(".bg-#{$theme}", $color, $level-delta-hover-bg);
+                .bg-#{$theme} {
+                    background-color: $color !important;
+                }
             }
         }
     }
@@ -17,7 +19,9 @@
 
         @each $theme, $color in $palette-colors-bg {
             @each $level in $palette-levels-bg {
-                @include bg-palette-variant(".bg-#{$theme}-#{$level}", $color, $level, $level-delta-hover-bg);
+                .bg-#{$theme}-#{$level} {
+                    background-color: palette($color, $level) !important;
+                }
             }
         }
     }
