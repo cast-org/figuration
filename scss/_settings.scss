@@ -146,8 +146,6 @@ $color-contrast-base-dark:  $uibase-900 !default;
 // =====
 $root-colors:           map-merge($base-colors, $palette-colors) !default;
 $alert-colors:          $base-colors !default;
-$badge-colors:          $base-colors !default;
-$badge-outline-colors:  $base-colors !default;
 $btn-colors:            $base-colors !default;
 $btn-outline-colors:    $base-colors !default;
 $list-colors:           $base-colors !default;
@@ -157,8 +155,6 @@ $utility-border-colors: $base-colors !default;
 $utility-text-colors:   $base-colors !default;
 
 $alert-levels:          $level-context !default;
-$badge-levels:          $level-control !default;
-$badge-outline-levels:  $level-control !default;
 $btn-levels:            $level-control !default;
 $btn-outline-levels:    $level-control !default;
 $list-levels:           $level-context !default;
@@ -171,8 +167,6 @@ $table-levels:          $level-context !default;
 // inside each of their component sources.  They are included here
 // for including additional color themes.
 $alert-themes:          () !default;
-$badge-themes:          () !default;
-$badge-outline-themes:  () !default;
 $btn-themes:            () !default;
 $btn-outline-themes:    () !default;
 $list-themes:           () !default;
@@ -1035,30 +1029,19 @@ $jumbotron-breakpoint:      sm !default;
 
 // Badges
 // =====
+$badge-bg:                  $uibase-500 !default;
+$badge-color:               $white !default;
+$badge-font-family:         null !default;
 $badge-font-size:           75% !default;
 $badge-font-weight:         $font-weight-bold !default;
-$badge-padding-x:           .375em !default;
-$badge-padding-y:           0 !default;
-$badge-line-height:         $line-height-base !default;
+$badge-padding-x:           .4375em !default;
+$badge-padding-y:           .25em !default;
+$badge-line-height:         1 !default;
 $badge-border-radius:       .25em !default;
 $badge-border-width:        $border-width !default;
 
-$badge-close-padding-x:     .375rem !default;
+$badge-close-padding-x:     .375em !default;
 $badge-close-font-size:     1.25em !default;
-
-$badge-pill-padding-x:      .5em !default;
-// Use a higher than normal value to ensure completely rounded edges when
-// customizing padding or font-size on badges.
-$badge-pill-border-radius:  10rem !default;
-
-$badge-outline-bg:          transparent !default;
-
-$badge-default-bg:              $white !default;
-$badge-default-color:           color-if-contrast($uibase-500, $badge-default-bg) !default;
-$badge-default-border:          $uibase-300 !default;
-$badge-default-hover-bg:        $uibase-50 !default;
-$badge-default-hover-color:     color-if-contrast($uibase-600, $badge-default-hover-bg) !default;
-$badge-default-hover-border:    $uibase-400 !default;
 
 
 // Alerts
