@@ -30,7 +30,7 @@ Badges can be used as part of links or buttons to provide a counter.
 
 {% capture example %}
 <button type="button" class="btn btn-primary">
-    Notifications <span class="badge">4</span>
+    Notifications <span class="badge bg-light text-dark">4</span>
 </button>
 {% endcapture %}
 {% include example.html content=example %}
@@ -41,7 +41,7 @@ Unless the context is clear (as with the "Notifications" example, where it is un
 
 {% capture example %}
 <button type="button" class="btn btn-primary">
-    Profile <span class="badge badge-danger">9</span>
+    Profile <span class="badge bg-danger">9</span>
     <span class="sr-only">unread messages</span>
 </button>
 {% endcapture %}
@@ -49,76 +49,63 @@ Unless the context is clear (as with the "Notifications" example, where it is un
 
 ## Contextual Variations
 
-Add any of the below mentioned modifier classes to change the appearance of a badge.
+Use our [background and text color utility]({{ site.baseurl }}/utilities/color/) classes to quckly change the appearance of a badge.
 
 {% include callout-warning-color-assistive-technologies.md %}
 
 {% capture example %}
-<strong>Basic Badges:</strong>
-<p>
-<span class="badge">Default</span>
-<span class="badge badge-primary">Primary</span>
-<span class="badge badge-secondary">Secondary</span>
-<span class="badge badge-success">Success</span>
-<span class="badge badge-info">Info</span>
-<span class="badge badge-warning">Warning</span>
-<span class="badge badge-danger">Danger</span>
-</p>
-
-<strong>Anchor Badges:</strong>
-<p>
-<a href="#" class="badge">Default</a>
-<a href="#" class="badge badge-primary">Primary</a>
-<a href="#" class="badge badge-secondary">Secondary</a>
-<a href="#" class="badge badge-success">Success</a>
-<a href="#" class="badge badge-info">Info</a>
-<a href="#" class="badge badge-warning">Warning</a>
-<a href="#" class="badge badge-danger">Danger</a>
-</p>
-{% endcapture %}
-{% include example.html content=example %}
-
-## Pill Badges
-
-Use the `.badge-pill` modifier class to make badges more rounded (with a larger `border-radius` and additional horizontal `padding`).
-
-{% capture example %}
-<span class="badge badge-pill">Default</span>
-<span class="badge badge-pill badge-primary">Primary</span>
-<span class="badge badge-pill badge-secondary">Secondary</span>
-<span class="badge badge-pill badge-success">Success</span>
-<span class="badge badge-pill badge-info">Info</span>
-<span class="badge badge-pill badge-warning">Warning</span>
-<span class="badge badge-pill badge-danger">Danger</span>
+<span class="badge bg-primary">Primary</span>
+<span class="badge bg-secondary">Secondary</span>
+<span class="badge bg-success">Success</span>
+<span class="badge bg-info">Info</span>
+<span class="badge bg-warning text-body">Warning</span>
+<span class="badge bg-danger">Danger</span>
+<span class="badge bg-light text-dark">Light</span>
+<span class="badge bg-dark">Dark</span>
 {% endcapture %}
 {% include example.html content=example %}
 
 ## Outline Badges
 
-Just like our buttons, you can get badges that are not quite as bold by using the `.badge-outline-*` contextual color modifier classes.  You can also combine this with the `.badge-pill` class.
+Since badges have a transparent border by default, it is easy to create outline badges with the addition of [border color utility]({{ site.baseurl }}/utilities/color/) classes, in combination with the background and text color utilities.
 
 {% capture example %}
-<strong>Outline Badges:</strong>
-<p>
-<span class="badge badge-outline">Default</span>
-<span class="badge badge-outline-primary">Primary</span>
-<span class="badge badge-outline-secondary">Secondary</span>
-<span class="badge badge-outline-success">Success</span>
-<span class="badge badge-outline-info">Info</span>
-<span class="badge badge-outline-warning">Warning</span>
-<span class="badge badge-outline-danger">Danger</span>
-</p>
+<span class="badge bg-transparent border-primary text-primary">Primary</span>
+<span class="badge bg-transparent border-secondary text-secondary">Secondary</span>
+<span class="badge bg-transparent border-success text-success">Success</span>
+<span class="badge bg-transparent border-info text-info">Info</span>
+<span class="badge bg-transparent border-warning text-warning">Warning</span>
+<span class="badge bg-transparent border-danger text-danger">Danger</span>
+<span class="badge bg-transparent border-light text-light">Light</span>
+<span class="badge bg-transparent border-dark text-dark">Dark</span>
+{% endcapture %}
+{% include example.html content=example %}
 
-<strong>Anchor Outline Badges:</strong>
-<p>
-<a href="#" class="badge badge-outline">Default</a>
-<a href="#" class="badge badge-outline-primary">Primary</a>
-<a href="#" class="badge badge-outline-secondary">Secondary</a>
-<a href="#" class="badge badge-outline-success">Success</a>
-<a href="#" class="badge badge-outline-info">Info</a>
-<a href="#" class="badge badge-outline-warning">Warning</a>
-<a href="#" class="badge badge-outline-danger">Danger</a>
-</p>
+## Pill Badges
+
+Use the `.radius-pill` utility class to make badges more rounded.
+
+{% capture example %}
+<span class="badge radius-pill bg-primary">Primary</span>
+<span class="badge radius-pill bg-secondary">Secondary</span>
+<span class="badge radius-pill bg-success">Success</span>
+<span class="badge radius-pill bg-info">Info</span>
+<span class="badge radius-pill bg-warning text-body">Warning</span>
+<span class="badge radius-pill bg-danger">Danger</span>
+<span class="badge radius-pill bg-light text-dark">Light</span>
+<span class="badge radius-pill bg-dark">Dark</span>
+{% endcapture %}
+{% include example.html content=example %}
+
+{% capture example %}
+<span class="badge radius-pill bg-transparent border-primary text-primary">Primary</span>
+<span class="badge radius-pill bg-transparent border-secondary text-secondary">Secondary</span>
+<span class="badge radius-pill bg-transparent border-success text-success">Success</span>
+<span class="badge radius-pill bg-transparent border-info text-info">Info</span>
+<span class="badge radius-pill bg-transparent border-warning text-warning">Warning</span>
+<span class="badge radius-pill bg-transparent border-danger text-danger">Danger</span>
+<span class="badge radius-pill bg-transparent border-light text-light">Light</span>
+<span class="badge radius-pill bg-transparent border-dark text-dark">Dark</span>
 {% endcapture %}
 {% include example.html content=example %}
 
@@ -127,34 +114,20 @@ Just like our buttons, you can get badges that are not quite as bold by using th
 Create "dismissable" badges by adding the `.close` icon within a badge. Note that `<button>` and `<a>` elements are not supported _within_ another `<a>`.
 
 {% capture example %}
-<p>
-    <span class="badge badge-primary">
-        Dismissable badge
-        <button type="button" class="close" aria-label="Dismiss">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </span>
-    <a href="#" role="button" class="badge badge-secondary">
-        Dismissable anchor badge
-        <span class="close" aria-label="Dismiss">
-            <span aria-hidden="true">&times;</span>
-        </span>
-    </a>
-</p>
-<p>
-    <span class="badge badge-pill badge-warning">
-        Dismissable badge
-        <button type="button" class="close" aria-label="Dismiss">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </span>
-    <a href="#" role="button" class="badge badge-pill badge-success">
-        Dismissable anchor badge
-        <span class="close" aria-label="Dismiss">
-            <span aria-hidden="true">&times;</span>
-        </span>
-    </a>
-</p>
+<span class="badge bg-primary">
+    Dismissable badge
+    <button type="button" class="close" aria-label="Dismiss">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</span>
+
+<span class="badge radius-pill bg-success">
+    Dismissable badge
+    <button type="button" class="close" aria-label="Dismiss">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</span>
+
 {% endcapture %}
 {% include example.html content=example %}
 
@@ -165,7 +138,7 @@ Currently, no specific JavaScript is included with Figuration to do the dismissi
 However, you can use the [Alert widget]({{ site.baseurl }}/widgets/alert/) with a `target` option as a quick implementation.
 
 {% capture example %}
-<span class="badge badge-info" id="alert-badge">
+<span class="badge bg-info" id="alert-badge">
     Dismissable badge
     <button type="button" class="close" aria-label="Dismiss" data-cfw-dismiss="alert" data-cfw-alert-target="#alert-badge">
         <span aria-hidden="true">&times;</span>
@@ -180,23 +153,23 @@ Group badges together using `.badge-group`.
 
 {% capture example %}
 <div class="badge-group me-1">
-    <span class="badge badge-dark">version</span>
-    <span class="badge badge-success">v4.0.0</span>
+    <span class="badge bg-dark">version</span>
+    <span class="badge bg-success">v4.0.0</span>
 </div>
 
 <div class="badge-group me-1">
-    <span class="badge badge-dark">build</span>
-    <span class="badge badge-danger">error</span>
+    <span class="badge bg-dark">build</span>
+    <span class="badge bg-danger">error</span>
 </div>
 
 <div class="badge-group me-1">
-    <span class="badge badge-dark">response</span>
-    <span class="badge badge-light">none</span>
+    <span class="badge radius-pill radius-e-0 bg-dark">response</span>
+    <span class="badge radius-pill radius-s-0 bg-light text-dark">none</span>
 </div>
 
 <div class="badge-group">
-    <span class="badge badge-primary">comments</span>
-    <span class="badge badge-outline-primary">9</span>
+    <span class="badge bg-primary">comments</span>
+    <span class="badge bg-white border-primary text-primary">9</span>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
@@ -236,14 +209,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-badge-pill</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the badge pill variant.
-                </td>
-            </tr>
-            <tr>
                 <td><code>$enable-badge-group</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>
@@ -252,35 +217,28 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-badge-default</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
+                <td><code>$badge-bg</code></td>
+                <td>string</td>
+                <td><code>$uibase-500</code></td>
                 <td>
-                    Enable the generation of the default badge color variant.
+                    Badge default background color.
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-badge-colors</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
+                <td><code>$badge-color</code></td>
+                <td>string</td>
+                <td><code>$white</code></td>
                 <td>
-                    Enable the generation of the badge contextual color variants.
+                    Badge default text color.
                 </td>
             </tr>
+
             <tr>
-                <td><code>$enable-badge-outline</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
+                <td><code>$badge-font-family</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
                 <td>
-                    Enable the generation of the default outline badge color variant.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-badge-outline-colors</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the outline badge contextual color variants.
+                    Badge font family.
                 </td>
             </tr>
             <tr>
@@ -302,7 +260,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
             <tr>
                 <td><code>$badge-line-height</code></td>
                 <td>string</td>
-                <td><code>$line-height-base</code></td>
+                <td><code>1</code></td>
                 <td>
                     Badge line height.
                 </td>
@@ -310,7 +268,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
             <tr>
                 <td><code>$badge-padding-y</code></td>
                 <td>string</td>
-                <td><code>0</code></td>
+                <td><code>.25em</code></td>
                 <td>
                     Badge vertical padding.
                 </td>
@@ -318,7 +276,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
             <tr>
                 <td><code>$badge-padding-x</code></td>
                 <td>string</td>
-                <td><code>.375em</code></td>
+                <td><code>.4375em</code></td>
                 <td>
                     Badge horizontal padding.
                 </td>
@@ -342,7 +300,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
             <tr>
                 <td><code>$badge-close-padding-x</code></td>
                 <td>string</td>
-                <td><code>.375rem</code></td>
+                <td><code>.375em</code></td>
                 <td>
                     Badge close button horizontal padding.
                 </td>
@@ -355,126 +313,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                     Badge close button font size.
                 </td>
             </tr>
-            <tr>
-                <td><code>$badge-pill-padding-x</code></td>
-                <td>string</td>
-                <td><code>.5em</code></td>
-                <td>
-                    Badge pill variant horizontal padding.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$badge-pill-border-radius</code></td>
-                <td>string</td>
-                <td><code>10rem</code></td>
-                <td>
-                    Badge pill variant border radius.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$badge-outline-bg</code></td>
-                <td>string</td>
-                <td><code>transparent</code></td>
-                <td>
-                    Background color for outline badge variant.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$badge-default-bg</code></td>
-                <td>string</td>
-                <td><code>$white</code></td>
-                <td>
-                    Default badge background color.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$badge-default-color</code></td>
-                <td>string</td>
-                <td><code>color-if-contrast($uibase-500, $badge-default-bg)</code></td>
-                <td>
-                    Default badge text color.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$badge-default-border</code></td>
-                <td>string</td>
-                <td><code>$uibase-300</code></td>
-                <td>
-                    Default badge border color.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$badge-default-hover-bg</code></td>
-                <td>string</td>
-                <td><code>$uibase-50</code></td>
-                <td>
-                    Default badge background color for hover and focus states.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$badge-default-hover-color</code></td>
-                <td>string</td>
-                <td><code>color-if-contrast($uibase-600, $badge-default-hover-bg)</code></td>
-                <td>
-                    Default badge text color for hover and focus states.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$badge-default-hover-border</code></td>
-                <td>string</td>
-                <td><code>$uibase-400</code></td>
-                <td>
-                    Default badge border color for hover and focus states.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$badge-themes</code></td>
-                <td>map</td>
-                <td><code>()</code></td>
-                <td>
-                    Map of color schemes for badges.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$badge-colors</code></td>
-                <td>list</td>
-                <td><code>$base-colors</code></td>
-                <td>
-                    Colors to mix and merge into <code>$badge-themes</code>
-                </td>
-            </tr>
-            <tr>
-                <td><code>$badge-levels</code></td>
-                <td>map</td>
-                <td><code>$level-context</code></td>
-                <td>
-                    Levels to mix badge colors with.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$badge-outline-themes</code></td>
-                <td>map</td>
-                <td><code>()</code></td>
-                <td>
-                    Map of color schemes for outline badges.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$badge-outline-colors</code></td>
-                <td>list</td>
-                <td><code>$base-colors</code></td>
-                <td>
-                    Colors to mix and merge into <code>$badge-outline-themes</code>
-                </td>
-            </tr>
-            <tr>
-                <td><code>$badge-outline-levels</code></td>
-                <td>map</td>
-                <td><code>$level-control</code></td>
-                <td>
-                    Levels to mix outline badge colors with.
-                </td>
-            </tr>
         </tbody>
     </table>
 </div>
@@ -482,76 +320,4 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
 
 ### Mixins
 
-Here are the mixins related to badges that we use to help generate our CSS. You can also uses these mixins to generate your own custom components or utilities.
-
-#### badge-variant
-{:.no_toc}
-
-Generate a badge color variant.
-
-{% highlight sass %}
-@include badge-variant($color, $bg, $border, $hover-color, $hover-bg, $hover-border);
-{% endhighlight %}
-
-<div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th style="width: 100px;">Argument</th>
-                <th style="width: 50px;">Type</th>
-                <th style="width: 50px;">Default</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>$color</code></td>
-                <td>number</td>
-                <td>none</td>
-                <td>
-                    Text color for a badge.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$bg</code></td>
-                <td>number</td>
-                <td>none</td>
-                <td>
-                    Background color for a badge.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$border</code></td>
-                <td>number</td>
-                <td>none</td>
-                <td>
-                    Border color for a badge.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$hover-color</code></td>
-                <td>number</td>
-                <td>none</td>
-                <td>
-                    Text color for a badge in hover or focus state.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$hover-bg</code></td>
-                <td>number</td>
-                <td>none</td>
-                <td>
-                    Background color for a badge in hover or focus state.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$hover-border</code></td>
-                <td>number</td>
-                <td>none</td>
-                <td>
-                    Border color for a badge in hover or focus state.
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+No mixins available.
