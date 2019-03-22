@@ -63,11 +63,9 @@ Note: The `.text-body`, `.text-muted`, `.text-white`, and `.text-black` classes 
 
 ## Backgrounds
 
-Similar to the contextual text color classes, easily set the background color of an element to any contextual class. Anchor components will darken on hover, just like the text classes.
+Similar to the contextual text color classes, easily set the background color of an element to any contextual class. Background utilities **do not set** `color`, so in some cases you will want to use `.text-*` utilities.
 
-Background utilities **do not set** `color`, so in some cases you will want to use `.text-*` utilities.
-
-There is also a `.bg-transparent` for removing the background color for an element.
+There is also a `.bg-transparent` for removing the background color of an element.
 
 {% capture example %}
 <div class="p-0_5 mb-1 bg-primary text-white">.bg-primary</div>
@@ -84,31 +82,11 @@ There is also a `.bg-transparent` for removing the background color for an eleme
 {% endcapture %}
 {% include example.html content=example %}
 
-## Link Backgrounds
-
-Also similar to the contextual text color classes, the background color classes also work well on anchors with the provided hover and focus states.
-Note: The `.bg-body`, `.bg-white`, `.bg-black`, and `bg-transparent` classes have no link styling.
-
-{% capture example %}
-<p><a href="#" class="p-0_5 d-inline-block bg-primary text-white">.bg-primary</a></p>
-<p><a href="#" class="p-0_5 d-inline-block bg-success text-black">.bg-success</a></p>
-<p><a href="#" class="p-0_5 d-inline-block bg-info text-white">.bg-info</a></p>
-<p><a href="#" class="p-0_5 d-inline-block bg-warning text-black">.bg-warning</a></p>
-<p><a href="#" class="p-0_5 d-inline-block bg-danger text-white">.bg-danger</a></p>
-<p><a href="#" class="p-0_5 d-inline-block bg-light text-black">.bg-light</a></p>
-<p><a href="#" class="p-0_5 d-inline-block bg-dark text-white">.bg-dark</a></p>
-<p><a href="#" class="p-0_5 d-inline-block bg-body text-black">.bg-body</a></p>
-<p><a href="#" class="p-0_5 d-inline-block bg-white text-black">.bg-white</a></p>
-<p><a href="#" class="p-0_5 d-inline-block bg-black text-white">.bg-black</a></p>
-<p><a href="#" class="p-0_5 d-inline-block bg-transparent text-black">.bg-transparent</a></p>
-{% endcapture %}
-{% include example.html content=example %}
-
 ## Borders
 
 Borders also be colored with their own set of contextual classes. Borders do not change color on hover and focus state.
 
-There is also a `.border-transparent` that removes the border color for an element, but keeps the border width in place.
+There is also a `.border-transparent` that removes the border color of an element, but keeps the border width in place.
 
 {% capture example %}
 <span class="border border-primary"></span>
