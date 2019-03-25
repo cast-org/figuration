@@ -14,7 +14,7 @@ Figuration supports a wide variety of modern browsers and devices, and some olde
 
 ## Supported Browsers
 
-Figuration supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 10-11 / Microsoft Edge**.
+Figuration supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 11 / Microsoft Edge**.
 
 Alternative browsers which use the latest version of WebKit, Blink, or Gecko, whether directly or via the platform's web view API, are not explicitly supported. However, Figuration should (in most cases) display and function correctly in these browsers as well. More specific support information is provided below.
 
@@ -31,7 +31,7 @@ not dead
 Chrome >= 49
 Firefox >= 45
 Edge >= 12
-Explorer >= 10
+Explorer >= 11
 iOS >= 9
 Safari >= 9
 Android >= 4.4
@@ -129,11 +129,11 @@ Unofficially, Figuration should look and behave well enough in Chromium and Chro
 
 ## Internet Explorer
 
-Internet Explorer 10+ is also supported, IE9 and down are not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit [Can I use…](https://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
+Internet Explorer 11+ is also supported, IE 10 and down are not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit [Can I use…](https://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
 
 ### MutationObserver
 
-Some of Figuration's [JavaScript Widgets]({{ site.baseurl }}/widgets/overview/) have some support for the use of [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) to watch for and respond to changes in the DOM.  Internet Explorer 10 does not support MutationObserver, but this can be mitigated with the use of a Polyfill.  Check out the [Quick Start page]({{ site.baseurl }}/get-started/quick-start/#mutationobserver) for more details.
+Some of Figuration's [JavaScript Widgets]({{ site.baseurl }}/widgets/overview/) have some support for the use of [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) to watch for and respond to changes in the DOM.
 
 ## Modals and Dropdowns on Mobile
 

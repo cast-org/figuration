@@ -142,7 +142,7 @@
     // Mutation Helper
     // =====
 
-    // Not available in IE 10-, need polyfill (see docs for recommendation)
+    // Not available in IE 10-, need a polyfill
     var CFW_MutationObserverTest = (function() {
         return 'MutationObserver' in window ? window.MutationObserver : false;
     }());

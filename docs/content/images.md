@@ -24,14 +24,6 @@ Images can be made to scale with their container width by using `.img-fluid`. Th
 <img src="..." class="img-fluid" alt="Fluidly sized image">
 {% endhighlight %}
 
-{% capture callout %}
-SVG Images and IE 10
-{:.h5 .no_toc}
-
-In Internet Explorer 10, SVG images with `.img-fluid` are disproportionately sized. To fix this, add `width: 100% \9;` where necessary. This fix improperly sizes other image formats, so we do not apply it automatically.
-{% endcapture %}
-{% include callout.html content=callout type="warning" %}
-
 ## Image Thumbnail
 
 Use `.img-thumbnail` to give an image a bordered appearance.
