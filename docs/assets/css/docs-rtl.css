@@ -83,10 +83,8 @@
 }
 
 .cf-header-social {
-  -ms-flex-direction: row;
-      flex-direction: row;
-  -ms-flex-align: center;
-      align-items: center;
+  flex-direction: row;
+  align-items: center;
 }
 
 .cf-header-social .nav-link {
@@ -317,8 +315,7 @@
 }
 
 .cf-toc {
-  -ms-flex-order: 2;
-      order: 2;
+  order: 2;
   padding-top: 1rem;
   padding-bottom: 1rem;
   font-size: 0.875rem;
@@ -851,10 +848,8 @@ h4 > code {
 }
 
 .example-row {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   margin-left: -1rem;
   margin-right: -1rem;
 }
@@ -896,16 +891,14 @@ h4 > code {
 
 @media (min-width: 36em) {
   .example-content-main {
-    -ms-flex: 0 0 50%;
-        flex: 0 0 50%;
+    flex: 0 0 50%;
     max-width: 50%;
   }
 }
 
 @media (min-width: 62em) {
   .example-content-main {
-    -ms-flex: 0 0 66.666667%;
-        flex: 0 0 66.666667%;
+    flex: 0 0 66.666667%;
     max-width: 66.666667%;
   }
 }
@@ -947,16 +940,14 @@ h4 > code {
 
 @media (min-width: 36em) {
   .example-content-secondary {
-    -ms-flex: 0 0 50%;
-        flex: 0 0 50%;
+    flex: 0 0 50%;
     max-width: 50%;
   }
 }
 
 @media (min-width: 62em) {
   .example-content-secondary {
-    -ms-flex: 0 0 33.333333%;
-        flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
     max-width: 33.333333%;
   }
 }
@@ -999,20 +990,16 @@ h4 > code {
 }
 
 .card-deck-col {
-  -ms-flex-flow: row wrap;
-      flex-flow: row wrap;
-  -ms-flex-align: stretch;
-      align-items: stretch;
-  -ms-flex-pack: start;
-      justify-content: flex-start;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: flex-start;
   margin-left: -1rem;
   margin-bottom: 0;
   margin-right: -1rem;
 }
 
 .card-deck-col > .card {
-  -ms-flex-preferred-size: auto;
-      flex-basis: auto;
+  flex-basis: auto;
   width: calc(100% - 2rem);
   margin-left: 1rem;
   margin-bottom: 1rem;
@@ -1602,14 +1589,12 @@ h4 > code {
 
 .player {
   display: none;
-  -ms-flex-align: center;
-      align-items: center;
+  align-items: center;
   margin-bottom: 20px;
   white-space: nowrap;
 }
 
 .player.ready {
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -1632,7 +1617,6 @@ h4 > code {
 }
 
 .player-seek {
-  display: -ms-inline-flexbox;
   display: inline-flex;
   width: 100px;
   vertical-align: middle;
@@ -1741,7 +1725,6 @@ h4 > code {
 }
 
 .player-fulldisplay .player {
-  display: -ms-inline-flexbox;
   display: inline-flex;
   padding: 5px;
   margin: 0;
