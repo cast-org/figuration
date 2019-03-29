@@ -190,8 +190,10 @@ $spacers: map-merge(
     $spacers
 );
 
-$spacers-negative:          $spacers !default;
-$spacers-negative-prepend:   n !default;
+$spacers-padding:                   $spacers !default;
+$spacers-margin:                    $spacers !default;
+$spacers-margin-negative:           $spacers !default;
+$spacers-margin-negative-prepend:   n !default;
 
 
 // Grid breakpoints
