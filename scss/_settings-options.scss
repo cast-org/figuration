@@ -287,6 +287,7 @@ $enable-utility-spacing-margin-negative:    true !default;
 
 $enable-utility-text:                       true !default;
 $enable-utility-text-justify:               true !default;
+$enable-utility-text-wrap:                  true !default;
 $enable-utility-text-nowrap:                true !default;
 $enable-utility-text-align:                 true !default;
 $enable-utility-text-transform:             true !default;
@@ -294,9 +295,12 @@ $enable-utility-text-weight:                true !default;
 $enable-utility-text-style:                 true !default;
 $enable-utility-text-family:                true !default;
 $enable-utility-text-truncate:              true !default;
+$enable-utility-text-decoration:            true !default;
+$enable-utility-text-break:                 true !default;
 $enable-utility-text-colors:                true !default;
 $enable-utility-text-palette:               true !default;
 $enable-utility-text-special:               true !default;
+$enable-utility-text-reset:                 true !default;
 
 $enable-utility-valign:                     true !default;
 

@@ -39,6 +39,15 @@ Instead of using `left/right` designators, the text alignment utilities use `sta
 
 ## Text Wrap and Truncate
 
+Allow text to wrap with a `.text-wrap` class.
+
+{% capture example %}
+<div class="badge badge-secondary text-wrap" style="width: 6rem;">
+    This text should wrap.
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
 Prevent text from wrapping with a `.text-nowrap` class.
 
 {% capture example %}
@@ -61,6 +70,17 @@ For longer content, you can add a `.text-truncate` class to truncate the text wi
 <!-- Inline block -->
 <div class="d-inline-block text-truncate" style="max-width: 150px;">
   Praeterea iter est quasdam res quas ex communi.
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+## Word Break
+
+Prevent long strings of text from breaking your layout by using `.text-break` to set `overflow-wrap: break-word` (and `word-break: break-word` for IE & Edge compatibility).
+
+{% capture example %}
+<div class="border p-0_5 text-break" style="width: 8rem;">
+    ABCDEFGHIJKLMNOPQRSTUVWXYZ
 </div>
 {% endcapture %}
 {% include example.html content=example %}
@@ -113,6 +133,26 @@ Alter the font family for a section of text with
 {% endcapture %}
 {% include example.html content=example %}
 
+## Color Reset
+
+Reset the text color with `.text-reset`, so that it inherits the color from its parent.
+
+{% capture example %}
+<p class="text-muted">
+    Muted text with a <a href="#" class="text-reset">reset link</a>.
+</p>
+{% endcapture %}
+{% include example.html content=example %}
+
+## Text Decoration
+
+Remove a text decoration with the `.text-decoration-none` class.
+
+{% capture example %}
+<a href="#" class="text-decoration-none">Non-underlined link</a>
+{% endcapture %}
+{% include example.html content=example %}
+
 ## SASS Reference
 
 ### Variables
@@ -147,11 +187,19 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
+                <td><code>$enable-utility-text-wrap</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the `.text-wrap` utility class.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$enable-utility-text-nowrap</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
-                    Enable the generation of the text nowrap utility class.
+                    Enable the generation of the `.text-nowrap` utility class.
                 </td>
             </tr>
             <tr>
@@ -176,6 +224,22 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td><code>true</code></td>
                 <td>
                     Enable the generation of the text truncate utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-text-decoration</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the text decoration utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-text-break</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the `.text-break` utility class.
                 </td>
             </tr>
             <tr>
@@ -226,6 +290,15 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                     Enable the generation of the body, black, white, and muted background color utility classes.
                 </td>
             </tr>
+            <tr>
+                <td><code>$enable-utility-text-reset</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the reset color utility class.
+                </td>
+            </tr>
+
             <tr>
                 <td><code>$utility-text-colors</code></td>
                 <td>map</td>
