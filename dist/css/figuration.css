@@ -11155,11 +11155,15 @@ a.page-link {
 }
 
 .text-justify {
-  text-align: justify;
+  text-align: justify !important;
+}
+
+.text-wrap {
+  white-space: normal !important;
 }
 
 .text-nowrap {
-  white-space: nowrap;
+  white-space: nowrap !important;
 }
 
 .text-start {
@@ -11274,6 +11278,15 @@ a.page-link {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.text-decoration-none {
+  text-decoration: none !important;
+}
+
+.text-break {
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
 }
 
 .text-primary {
@@ -11994,6 +12007,10 @@ a.text-gray-900:hover, a.text-gray-900:focus {
 
 .text-black {
   color: #000 !important;
+}
+
+.text-reset {
+  color: inherit !important;
 }
 
 .valign-baseline {
