@@ -2,10 +2,13 @@
 
 @if $enable-utility-text {
     @if $enable-utility-text-justify {
-        .text-justify { text-align: justify; }
+        .text-justify { text-align: justify !important; }
+    }
+    @if $enable-utility-text-wrap {
+        .text-wrap  { white-space: normal !important; }
     }
     @if $enable-utility-text-nowrap {
-        .text-nowrap  { white-space: nowrap; }
+        .text-nowrap  { white-space: nowrap !important; }
     }
 
     // Responsive alignment
@@ -54,6 +57,19 @@
         }
     }
 
+    // Text decoration
+    @if $enable-utility-text-decoration {
+        .text-decoration-none { text-decoration: none !important; }
+    }
+
+    // Word break
+    @if $enable-utility-text-break {
+        .text-break {
+            word-break: break-word !important; // IE & < Edge 18
+            overflow-wrap: break-word !important;
+        }
+    }
+
     // Contextual colors
     @if $enable-utility-text-colors {
         @if (type-of($utility-text-colors) == "map" and length($utility-text-colors) != 0) {
@@ -82,4 +98,10 @@
         .text-white { color: $white !important; }
         .text-black { color: $black !important; }
     }
+
+    // Reset text color
+    @if $enable-utility-text-reset {
+        .text-reset { color: inherit !important; }
+    }
+
 }
