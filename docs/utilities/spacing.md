@@ -220,15 +220,31 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$spacers-negative</code></td>
+                <td><code>$spacers-padding</code></td>
                 <td>map</td>
                 <td><code>$spacers</code></td>
                 <td>
-                    Map of negative margin sizing append names and rules to be generated.
+                    Map of padding sizing rules to be generated.
                 </td>
             </tr>
             <tr>
-                <td><code>$spacers-negative-prepend</code></td>
+                <td><code>$spacers-margin</code></td>
+                <td>map</td>
+                <td><code>$spacers</code></td>
+                <td>
+                    Map of margin sizing rules to be generated.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$spacers-margin-negative</code></td>
+                <td>map</td>
+                <td><code>$spacers</code></td>
+                <td>
+                    Map of negative margin sizing rules to be generated.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$spacers-margin-negative-prepend</code></td>
                 <td>string</td>
                 <td><code>n</code></td>
                 <td>
