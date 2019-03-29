@@ -264,6 +264,7 @@
       "border-top-right-radius",
       "border-bottom-right-radius",
       "border-bottom-left-radius",
+      "font-size",
       "transition"
     ],
     "property-no-vendor-prefix": true,
