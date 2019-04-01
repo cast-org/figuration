@@ -196,6 +196,26 @@ $spacers-margin-negative:           $spacers !default;
 $spacers-margin-negative-prepend:   n !default;
 
 
+// Sizing
+// =====
+// Set values for width and height utility classes for sizing.
+$sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$sizes: map-merge(
+    (
+        "25":   25%,
+        "50":   50%,
+        "75":   75%,
+        "100":  100%,
+        "auto": auto
+    ),
+    $sizes
+);
+
+$sizes-width:                       $sizes !default;
+$sizes-height:                      $sizes !default;
+
+
 // Grid breakpoints
 // =====
 // Define the minimum dimensions at which your layout will change,

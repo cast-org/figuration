@@ -12,52 +12,64 @@ Adjust the width or height of an element with some utilities.
 * ToC goes here
 {:toc}
 
-## 100% Width/Height
+## Relative to the Parent
 
-Easily make an element as wide as its parent using the `.w-100` utility class, which sets `width: 100%`.
+Width and height utilities are generated from the `$sizes` Sass map in `_settings.scss`. Available values are `25%`, `50%`, `75%`, `100%`, and `auto` by default. You can modify the map values if other values are needed.
+
+### Width
+
+Width utilities use the format `.w-{width}`, for example `.w-25` sets an element to `25%` width.
 
 {% capture example %}
-<img class="w-100" data-src="holder.js/200px100?text=Width%20%3D%20100%25" alt="Width = 100%">
+<div class="w-25 p-0_5 border bg-light">25% width</div>
+<div class="w-50 p-0_5 border bg-light">50% width</div>
+<div class="w-75 p-0_5 border bg-light">75% width</div>
+<div class="w-100 p-0_5 border bg-light">100% width</div>
+<div class="w-auto p-0_5 border bg-light">Auto width</div>
 {% endcapture %}
 {% include example.html content=example %}
 
-There is also a `.h-100` utility class, which sets `height: 100%`.  However, it probabaly won't always work the way you think it should.  Some good information can be found in this article &mdash; [How to USE CSS to Set the Height of an HTML Element to 100%](https://www.lifewire.com/set-height-html-element-100-percent-3467075)
+### Height
+
+Height utilities use the format `.h-{height}`, for example `.h-25` sets an element to `25%` height.
 
 {% capture example %}
-<div class="cf-example-height">
-    <div class="bg-gray-50 px-2 d-inline-block" style="height: 150px;">
-        <div class="h-100 bg-gray-300 text-center p-1 d-inline-block">
-            Full height<br />
-            <code>.h-100</code>
-        </div>
-    </div>
+<div class="bg-dark" style="height: 100px;">
+    <div class="h-25 px-0_5 bg-light d-inline-block">25% height</div>
+    <div class="h-50 px-0_5 bg-light d-inline-block">50% height</div>
+    <div class="h-75 px-0_5 bg-light d-inline-block">75% height</div>
+    <div class="h-100 px-0_5 bg-light d-inline-block">100% height</div>
+    <div class="h-auto px-0_5 bg-light d-inline-block">Auto height</div>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
 
-## Max Width/Height
+### Max Width/Height
 
 You can also use the `.mw-100` and `.mh-100`, to set `max-width: 100%;` or `max-height: 100%;`, utilities as needed.
 
 {% capture example %}
-<img class="mw-100" data-src="holder.js/1000px100?text=Max-width%20%3D%20100%25" alt="Max-width 100%">
+<div style="width: 200%;" class="mw-100 p-0_5 border bg-light">100% max-width</div>
 {% endcapture %}
 {% include example.html content=example %}
 
 {% capture example %}
-<div class="cf-example-height">
-    <div class="bg-gray-50 px-2 d-inline-block" style="height: 150px;">
-        <div class="mh-100 bg-gray-300 text-center p-1 d-inline-block" style="width: 100px; height: 200px;">
-            Max-height 100%
-         </div>
-    </div>
+<div class="bg-dark" style="height: 100px;">
+    <div style="height: 200%" class="mh-100 px-0_5 bg-light d-inline-block">100% max-height</div>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
 
-## Auto Width/Height
+## Relative to the Viewport
 
-In those cases when you need to reset the dimension of an element to `auto`, you can use `.w-auto` or `.h-auto`.
+You can also use utilities to set the width and height relative to the viewport.
+
+{% highlight html %}
+<div class="min-vw-100">100vw min-width</div>
+<div class="min-vh-100">100vh min-height</div>
+<div class="vw-100">100vw width</div>
+<div class="vh-100">100vh height</div>
+{% endhighlight %}
 
 ## SASS Reference
 
@@ -98,6 +110,14 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td><code>true</code></td>
                 <td>
                     Enable the generation of the height sizing utility classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-utility-sizing-viewport</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the viewport sizing utility classes.
                 </td>
             </tr>
         </tbody>
