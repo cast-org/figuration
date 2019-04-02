@@ -45,17 +45,17 @@ Examples further down the page add some color, padding, and borders, to the rows
 
 {% capture example %}
 <div class="container">
-  <div class="row">
-    <div class="col-sm-4">
-      Fisrt column
+    <div class="row">
+        <div class="col-sm-4">
+            First column
+        </div>
+        <div class="col-sm-4">
+            Second column
+        </div>
+        <div class="col-sm-4">
+            Third column
+        </div>
     </div>
-    <div class="col-sm-4">
-      Second column
-    </div>
-    <div class="col-sm-4">
-      Third column
-    </div>
-  </div>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
@@ -150,31 +150,33 @@ Equal-width columns are easliy done by adding any number of `.col-{breakpoint}`s
 For example, here's are some grid layouts that apply to every device and viewport possible, from `xs` to `xl`.
 
 {% capture example %}
-<div class="row">
-    <div class="col">
-        1 of 2
+<div class="container">
+    <div class="row">
+        <div class="col">
+            1 of 2
+        </div>
+        <div class="col">
+            1 of 2
+        </div>
     </div>
-    <div class="col">
-        1 of 2
-    </div>
-</div>
 
-<div class="row">
-    <div class="col">
-        1 of 3
+    <div class="row">
+        <div class="col">
+            1 of 3
+        </div>
+        <div class="col">
+            1 of 3
+        </div>
+        <div class="col">
+            1 of 3
+        </div>
     </div>
-    <div class="col">
-        1 of 3
-    </div>
-    <div class="col">
-        1 of 3
-    </div>
-</div>
 
-<div class="row no-gutters">
-  <div class="col">Columns</div>
-  <div class="col">with no</div>
-  <div class="col">gutters</div>
+    <div class="row no-gutters">
+        <div class="col">Columns</div>
+        <div class="col">with no</div>
+        <div class="col">gutters</div>
+    </div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
@@ -186,27 +188,29 @@ Auto-layout for flexbox grid columns also means you can set the width of one col
 Note that the other columns will resize no matter the width of the center column.
 
 {% capture example %}
-<div class="row">
-    <div class="col">
-        1 of 3
+<div class="container">
+    <div class="row">
+        <div class="col">
+            1 of 3
+        </div>
+        <div class="col-6">
+            2 of 3 (wider)
+        </div>
+        <div class="col">
+            3 of 3
+        </div>
     </div>
-    <div class="col-6">
-        2 of 3 (wider)
-    </div>
-    <div class="col">
-        3 of 3
-    </div>
-</div>
 
-<div class="row">
-    <div class="col">
-        1 of 3
-    </div>
-    <div class="col-5">
-        2 of 3 (wider)
-    </div>
-    <div class="col">
-        3 of 3
+    <div class="row">
+        <div class="col">
+            1 of 3
+        </div>
+        <div class="col-5">
+            2 of 3 (wider)
+        </div>
+        <div class="col">
+            3 of 3
+        </div>
     </div>
 </div>
 {% endcapture %}
@@ -253,12 +257,14 @@ Note there was a [Safari flexbox bug](https://github.com/philipwalton/flexbugs#1
 These workarounds have been documented in a [reduced test case](https://output.jsbin.com/micohor), though if the browser is up to date this shouldn't be necessary.
 
 {% capture example %}
-<div class="row">
-  <div class="col">1 of 4</div>
-  <div class="col">2 of 4</div>
-  <div class="w-100"></div>
-  <div class="col">3 of 4</div>
-  <div class="col">4 of 4</div>
+<div class="container">
+    <div class="row">
+        <div class="col">1 of 4</div>
+        <div class="col">2 of 4</div>
+        <div class="w-100"></div>
+        <div class="col">3 of 4</div>
+        <div class="col">4 of 4</div>
+    </div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
@@ -272,15 +278,17 @@ Figuration's grid includes five tiers of predefined classes for building complex
 For grids that are the same from the smallest of devices to the largest, use the `.col` and `.col-*` classes. Specify a numbered class when you need a particularly sized column; otherwise, feel free to stick to `.col`.
 
 {% capture example %}
-<div class="row">
-  <div class="col">col</div>
-  <div class="col">col</div>
-  <div class="col">col</div>
-  <div class="col">col</div>
-</div>
-<div class="row">
-  <div class="col-8">col-8</div>
-  <div class="col-4">col-4</div>
+<div class="container">
+    <div class="row">
+        <div class="col">col</div>
+        <div class="col">col</div>
+        <div class="col">col</div>
+        <div class="col">col</div>
+    </div>
+    <div class="row">
+        <div class="col-8">col-8</div>
+        <div class="col-4">col-4</div>
+    </div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
@@ -290,14 +298,16 @@ For grids that are the same from the smallest of devices to the largest, use the
 Using a single set of `.col-sm-*` classes, you can create a basic grid system that starts out stacked and becomes horizontal at the small breakpoint (`sm`).
 
 {% capture example %}
-<div class="row">
-  <div class="col-sm-8">.col-sm-8</div>
-  <div class="col-sm-4">.col-sm-4</div>
-</div>
-<div class="row">
-  <div class="col-sm">.col-sm</div>
-  <div class="col-sm">.col-sm</div>
-  <div class="col-sm">.col-sm</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">.col-sm-8</div>
+        <div class="col-sm-4">.col-sm-4</div>
+    </div>
+    <div class="row">
+        <div class="col-sm">.col-sm</div>
+        <div class="col-sm">.col-sm</div>
+        <div class="col-sm">.col-sm</div>
+    </div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
@@ -307,23 +317,25 @@ Using a single set of `.col-sm-*` classes, you can create a basic grid system th
 Don't want your columns to simply stack in some grid tiers. Use a combination of different classes for each tier as needed. See the example below for a better idea of how it all works.
 
 {% capture example %}
-<!-- Stack the columns on mobile by making one full-width and the other half-width -->
-<div class="row">
-  <div class="col-12 col-md-8">.col-12 .col-md-8</div>
-  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
-</div>
+<div class="container">
+    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+    <div class="row">
+        <div class="col-12 col-md-8">.col-12 .col-md-8</div>
+        <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+    </div>
 
-<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-<div class="row">
-  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
-  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
-  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
-</div>
+    <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+    <div class="row">
+        <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+        <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+        <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+    </div>
 
-<!-- Columns are always 50% wide, on mobile and desktop -->
-<div class="row">
-  <div class="col-6">.col-6</div>
-  <div class="col-6">.col-6</div>
+    <!-- Columns are always 50% wide, on mobile and desktop -->
+    <div class="row">
+        <div class="col-6">.col-6</div>
+        <div class="col-6">.col-6</div>
+    </div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
@@ -338,56 +350,56 @@ Use [Flexbox alignment utilities]({{ site.baseurl }}/utilities/flexbox/) to vert
 
 {% capture example %}
 <div class="container">
-  <div class="row flex-items-start">
-    <div class="col">
-      One of three columns
+    <div class="row flex-items-start">
+        <div class="col">
+            One of three columns
+        </div>
+        <div class="col">
+            One of three columns
+        </div>
+        <div class="col">
+            One of three columns
+        </div>
     </div>
-    <div class="col">
-      One of three columns
+    <div class="row flex-items-center">
+        <div class="col">
+            One of three columns
+        </div>
+        <div class="col">
+            One of three columns
+        </div>
+        <div class="col">
+            One of three columns
+        </div>
     </div>
-    <div class="col">
-      One of three columns
+    <div class="row flex-items-end">
+        <div class="col">
+            One of three columns
+        </div>
+        <div class="col">
+            One of three columns
+        </div>
+        <div class="col">
+            One of three columns
+        </div>
     </div>
-  </div>
-  <div class="row flex-items-center">
-    <div class="col">
-      One of three columns
-    </div>
-    <div class="col">
-      One of three columns
-    </div>
-    <div class="col">
-      One of three columns
-    </div>
-  </div>
-  <div class="row flex-items-end">
-    <div class="col">
-      One of three columns
-    </div>
-    <div class="col">
-      One of three columns
-    </div>
-    <div class="col">
-      One of three columns
-    </div>
-  </div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row cf-example-row-grid cf-example-row-flex-v" %}
 
 {% capture example %}
 <div class="container">
-  <div class="row">
-    <div class="col flex-self-start">
-      One of three columns
+    <div class="row">
+        <div class="col flex-self-start">
+            One of three columns
+        </div>
+        <div class="col flex-self-center">
+            One of three columns
+        </div>
+        <div class="col flex-self-end">
+            One of three columns
+        </div>
     </div>
-    <div class="col flex-self-center">
-      One of three columns
-    </div>
-    <div class="col flex-self-end">
-      One of three columns
-    </div>
-  </div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row cf-example-row-grid cf-example-row-flex-v" %}
@@ -396,46 +408,46 @@ Use [Flexbox alignment utilities]({{ site.baseurl }}/utilities/flexbox/) to vert
 
 {% capture example %}
 <div class="container">
-  <div class="row flex-start">
-    <div class="col-4">
-      One of two columns
+    <div class="row flex-start">
+        <div class="col-4">
+            One of two columns
+        </div>
+        <div class="col-4">
+            One of two columns
+        </div>
     </div>
-    <div class="col-4">
-      One of two columns
+    <div class="row flex-center">
+        <div class="col-4">
+            One of two columns
+        </div>
+        <div class="col-4">
+            One of two columns
+        </div>
     </div>
-  </div>
-  <div class="row flex-center">
-    <div class="col-4">
-      One of two columns
+    <div class="row flex-end">
+        <div class="col-4">
+            One of two columns
+        </div>
+        <div class="col-4">
+            One of two columns
+        </div>
     </div>
-    <div class="col-4">
-      One of two columns
+    <div class="row flex-around">
+        <div class="col-4">
+            One of two columns
+        </div>
+        <div class="col-4">
+            One of two columns
+        </div>
     </div>
-  </div>
-  <div class="row flex-end">
-    <div class="col-4">
-      One of two columns
+    <div class="row flex-between">
+        <div class="col-4">
+            One of two columns
+        </div>
+        <div class="col-4">
+            One of two columns
+        </div>
     </div>
-    <div class="col-4">
-      One of two columns
-    </div>
-  </div>
-  <div class="row flex-around">
-    <div class="col-4">
-      One of two columns
-    </div>
-    <div class="col-4">
-      One of two columns
-    </div>
-  </div>
-  <div class="row flex-between">
-    <div class="col-4">
-      One of two columns
-    </div>
-    <div class="col-4">
-      One of two columns
-    </div>
-  </div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
@@ -464,9 +476,11 @@ Here's the source code for creating these styles. Note that column overrides are
 In practice, here's how it looks. Note you can continue to use this with all other predefined grid classes (including column widths, responsive tiers, reorders, and more).
 
 {% capture example %}
-<div class="row no-gutters">
-  <div class="col-12 col-sm-6 col-md-8">.col-12 .col-sm-6 .col-md-8</div>
-  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+<div class="container">
+    <div class="row no-gutters">
+        <div class="col-12 col-sm-6 col-md-8">.col-12 .col-sm-6 .col-md-8</div>
+        <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+    </div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
@@ -478,9 +492,11 @@ Gutters can be responsively adjusted by breakpoint-specific padding and negative
 Here is an example of customizing the grid at the large (`lg`) breakpoint and above. The the `.col` horizontal padding is increased with `.px-lg-2` and then counteracted that with negative horizontal margin `.mx-lg-n2` on the parent `.row`.
 
 {% capture example %}
-<div class="row mx-lg-n2">
-  <div class="col px-lg-2">Custom column padding</div>
-  <div class="col px-lg-2">Custom column padding</div>
+<div class="container">
+    <div class="row mx-lg-n2">
+        <div class="col px-lg-2">Custom column padding</div>
+        <div class="col px-lg-2">Custom column padding</div>
+    </div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
@@ -502,10 +518,12 @@ In some cases, you may also have to adjust the padding on the parent container o
 If more than 12 columns are placed within a single row, each group of extra columns will, as one unit, wrap onto a new line.
 
 {% capture example %}
-<div class="row">
-  <div class="col-9">.col-9</div>
-  <div class="col-4">.col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
-  <div class="col-6">.col-6<br>Subsequent columns continue along the new line.</div>
+<div class="container">
+    <div class="row">
+        <div class="col-9">.col-9</div>
+        <div class="col-4">.col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
+        <div class="col-6">.col-6<br>Subsequent columns continue along the new line.</div>
+    </div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
@@ -515,15 +533,17 @@ If more than 12 columns are placed within a single row, each group of extra colu
 Resetting, or breaking, columns to a new line in flexbox requires a small hack: add an element with `width: 100%` wherever you want to wrap your columns to a new line. This can also be accomplished with multiple `.row`s.  You may need to try both implementation methods to see which works best for your layout.
 
 {% capture example %}
-<div class="row">
-  <div class="col-6 col-md-3">.col-6 .col-md-3</div>
-  <div class="col-6 col-md-3">.col-6 .col-md-3<br>taller</div>
+<div class="container">
+    <div class="row">
+        <div class="col-6 col-md-3">.col-6 .col-md-3</div>
+        <div class="col-6 col-md-3">.col-6 .col-md-3<br>taller</div>
 
-  <!-- Force next columns to break to a new line -->
-  <div class="w-100"></div>
+        <!-- Force next columns to break to a new line -->
+        <div class="w-100"></div>
 
-  <div class="col-6 col-md-3">.col-6 .col-md-3</div>
-  <div class="col-6 col-md-3">.col-6 .col-md-3</div>
+        <div class="col-6 col-md-3">.col-6 .col-md-3</div>
+        <div class="col-6 col-md-3">.col-6 .col-md-3</div>
+    </div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
@@ -531,30 +551,17 @@ Resetting, or breaking, columns to a new line in flexbox requires a small hack: 
 You can also apply a break at specific breakpoints with our [responsive display utilities]({{ site.baseurl }}/utilities/display/).
 
 {% capture example %}
-<div class="row">
-  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
-  <div class="col-6 col-md-4">.col-6 .col-md-4<br>taller</div>
+<div class="container">
+    <div class="row">
+        <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+        <div class="col-6 col-md-4">.col-6 .col-md-4<br>taller</div>
 
-  <!-- Force next columns to break to a new line at md breakpoint and up-->
-  <div class="w-100 d-none d-md-block"></div>
+        <!-- Force next columns to break to a new line at md breakpoint and up-->
+        <div class="w-100 d-none d-md-block"></div>
 
-  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
-  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
-</div>
-{% endcapture %}
-{% include example.html content=example class="cf-example-row" %}
-
-In addition to column clearing at responsive breakpoints, you may need to **reset offsets**. See this in action in [the grid example]({{ site.baseurl }}/examples/grid/).
-
-{% capture example %}
-<div class="row">
-  <div class="col-sm-5 col-md-6">.col-sm-5 .col-md-6</div>
-  <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
-</div>
-
-<div class="row">
-  <div class="col-sm-6 col-md-5 col-lg-6">.col-sm-6 .col-md-5 .col-lg-6</div>
-  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
+        <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+        <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+    </div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
@@ -567,17 +574,17 @@ Use [flexbox order utilities]({{ site.baseurl }}/utilities/flexbox/#order) for c
 
 {% capture example %}
 <div class="container">
-  <div class="row">
-    <div class="col">
-      First, but unordered
+    <div class="row">
+        <div class="col">
+            First, but unordered
+        </div>
+        <div class="col order-last">
+            Second, but last
+        </div>
+        <div class="col order-first">
+            Third, but first
+        </div>
     </div>
-    <div class="col order-last">
-      Second, but last
-    </div>
-    <div class="col order-first">
-      Third, but first
-    </div>
-  </div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
@@ -586,36 +593,80 @@ Order utilities are also available in column counts.
 
 {% capture example %}
 <div class="container">
-  <div class="row">
-    <div class="col order-2">
-      First, but second
+    <div class="row">
+        <div class="col order-2">
+            First, but second
+        </div>
+        <div class="col order-12">
+            Second, but last
+        </div>
+        <div class="col order-1">
+            Third, but first
+        </div>
     </div>
-    <div class="col order-12">
-      Second, but last
-    </div>
-    <div class="col order-1">
-      Third, but first
-    </div>
-  </div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
 
 ### Offsetting Columns
 
+You can offset grid columns in two ways: our responsive `.offset-` grid classes and our [margin utilities]({{ site.baseurl }}/utilities/spacing). Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.
+
+#### Offset Classes
+
 Move columns to the right using `.offset-*` classes. These classes increase the left margin of a column by `*` columns. For example, `.offset-md-4` moves a column over four columns on medium and larger devices.
 
 {% capture example %}
-<div class="row">
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4 offset-md-4">.col-md-4 .offset-md-4</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">.col-md-4</div>
+        <div class="col-md-4 offset-md-4">.col-md-4 .offset-md-4</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+        <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">.col-md-6 .offset-md-3</div>
+    </div>
 </div>
-<div class="row">
-  <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
-  <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+{% endcapture %}
+{% include example.html content=example class="cf-example-row" %}
+
+In addition to column clearing at responsive breakpoints, you may need to reset offsets. See this in action in [the grid example]({{ site.baseurl }}/examples/grid/).
+
+{% capture example %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5 col-md-6">.col-sm-5 .col-md-6</div>
+        <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-5 col-lg-6">.col-sm-6 .col-md-5 .col-lg-6</div>
+        <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
+    </div>
 </div>
-<div class="row">
-  <div class="col-md-6 offset-md-3">.col-md-6 .offset-md-3</div>
+{% endcapture %}
+{% include example.html content=example class="cf-example-row" %}
+
+#### Margin Utilities
+
+You can also use margin utilities like `.ms-auto`, and `.me-auto`, to force sibling columns away from one another.
+
+{% capture example %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">.col-md-4</div>
+        <div class="col-md-4 ms-auto">.col-md-4 .ms-auto</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 ms-md-auto">.col-md-3 .ms-md-auto</div>
+        <div class="col-md-3 ms-md-auto">.col-md-3 .ms-md-auto</div>
+    </div>
+    <div class="row">
+        <div class="col-auto me-auto">.col-auto .me-auto</div>
+        <div class="col-auto">.col-auto</div>
+    </div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
@@ -625,18 +676,20 @@ Move columns to the right using `.offset-*` classes. These classes increase the 
 To nest your content with the default grid, add a new `.row` and set of `.col-sm-*` columns within an existing `.col-sm-*` column. Nested rows should include a set of columns that add up to 12 or fewer (it is not required that you use all 12 available columns).
 
 {% capture example %}
-<div class="row">
-  <div class="col-sm-9">
-    Level 1: .col-sm-9
+<div class="container">
     <div class="row">
-      <div class="col-8 col-sm-6">
-        Level 2: .col-8 .col-sm-6
-      </div>
-      <div class="col-4 col-sm-6">
-        Level 2: .col-4 .col-sm-6
-      </div>
+        <div class="col-sm-9">
+            Level 1: .col-sm-9
+            <div class="row">
+                <div class="col-8 col-sm-6">
+                    Level 2: .col-8 .col-sm-6
+                </div>
+                <div class="col-4 col-sm-6">
+                    Level 2: .col-4 .col-sm-6
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
@@ -647,23 +700,16 @@ Using our built-in grid Sass variables and maps, it's possible to completely cus
 
 ### Columns and Gutters
 
-The number of grid columns and their horizontal padding (aka, gutters) can be modified via Sass variables. `$grid-columns` is used to generate the widths (in percent) of each individual column while `$grid-gutter-widths` allows breakpoint-specific widths that are divided evenly across `padding-left` and `padding-right` for the column gutters.
+The number of grid columns and their horizontal padding (aka, gutters) can be modified via Sass variables. `$grid-columns` is used to generate the widths (in percent) of each individual column while `$grid-gutter-width` sets the width for the column gutters.
 
 {% highlight scss %}
 $grid-columns: 12;
 $grid-gutter-width: 2rem;
-$grid-gutter-widths: (
-    xs: $grid-gutter-width,
-    sm: $grid-gutter-width,
-    md: $grid-gutter-width,
-    lg: $grid-gutter-width,
-    xl: $grid-gutter-width
-);
 {% endhighlight %}
 
 ### Grid Tiers
 
-Moving beyond the columns themselves, you may also customize the number of grid tiers. If you wanted just four grid tiers, you would update the `$grid-breakpoints`, `$container-max-widths`, and `$grid-gutter-widths` to something like this:
+Moving beyond the columns themselves, you may also customize the number of grid tiers. If you wanted just four grid tiers, you would update the `$grid-breakpoints` and `$container-max-widths` to something like this:
 
 {% highlight scss %}
 $grid-breakpoints: (
@@ -677,13 +723,6 @@ $container-max-widths: (
   sm: rem(420px),
   md: rem(720px),
   lg: rem(940px)
-);
-
-$grid-gutter-widths: (
-    xs: 1.5rem,
-    sm: 1.5rem,
-    md: 2rem,
-    lg: 2rem
 );
 {% endhighlight %}
 
@@ -723,13 +762,6 @@ $container-max-widths: (
 );
 
 $grid-gutter-width: 2rem;
-$grid-gutter-widths: (
-    xs: $grid-gutter-width,
-    sm: $grid-gutter-width,
-    md: $grid-gutter-width,
-    lg: $grid-gutter-width,
-    xl: $grid-gutter-width
-);
 {% endhighlight %}
 
 ### Mixins
@@ -738,10 +770,10 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 
 {% highlight scss %}
 // Creates a wrapper for a series of columns
-@include make-row($gutters: $grid-gutter-widths);
+@include make-row($gutter: $grid-gutter-width);
 
 // Make the element grid-ready (applying everything but the width)
-@include make-col-ready($gutters: $grid-gutter-widths);
+@include make-col-ready($gutter: $grid-gutter-width);
 @include make-col($size, $columns: $grid-columns);
 
 // Get fancy by offsetting
@@ -784,10 +816,10 @@ You can modify the variables to your own custom values, or just use the mixins w
 
 {% capture example %}
 <div class="example-container">
-  <div class="example-row">
-    <div class="example-content-main">Main</div>
-    <div class="example-content-secondary">Secondary</div>
-  </div>
+    <div class="example-row">
+        <div class="example-content-main">Main</div>
+        <div class="example-content-secondary">Secondary</div>
+    </div>
 </div>
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}

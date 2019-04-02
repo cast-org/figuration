@@ -1512,9 +1512,9 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$card-deck-gutter-widths</code></td>
+                <td><code>$card-deck-gutter-width</code></td>
                 <td>string</td>
-                <td><code>$grid-gutter-widths</code></td>
+                <td><code>$grid-gutter-width</code></td>
                 <td>
                     Horizontal spacing between cards in a card deck.
                 </td>
