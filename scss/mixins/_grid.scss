@@ -2,21 +2,13 @@
 // Generate semantic grid columns with these mixins.
 
 // Containers
-@mixin make-container($gutters: $grid-gutter-widths) {
+@mixin make-container($padding-x: $container-padding-x) {
     width: 100%;  // Prevent too narrow
     max-width: 100%; // Prevent too wide
+    padding-right: $padding-x;
+    padding-left: $padding-x;
     margin-right: auto;
     margin-left: auto;
-
-    @each $breakpoint in map-keys($gutters) {
-        @include check-gutter-change($breakpoint, $gutters) {
-            @include media-breakpoint-up($breakpoint) {
-                $gutter: map-get($gutters, $breakpoint);
-                padding-right: ($gutter / 2);
-                padding-left: ($gutter / 2);
-            }
-        }
-    }
 }
 
 // For each breakpoint, define the maximum width of the container in a media query
@@ -30,34 +22,20 @@
 
 
 // Rows
-@mixin make-row($gutters: $grid-gutter-widths) {
+@mixin make-row($gutter: $grid-gutter-width) {
     display: flex;
     flex-wrap: wrap;
-
-    @each $breakpoint in map-keys($gutters) {
-        @include check-gutter-change($breakpoint, $gutters) {
-            @include media-breakpoint-up($breakpoint) {
-                $gutter: map-get($gutters, $breakpoint);
-                margin-right: ($gutter / -2);
-                margin-left: ($gutter / -2);
-            }
-        }
-    }
+    margin-right: ($gutter / -2);
+    margin-left: ($gutter / -2);
 }
 
 
 // Columns
-@mixin make-col-ready($gutters: $grid-gutter-widths) {
+@mixin make-col-ready($gutter: $grid-gutter-width) {
     position: relative;
     width: 100%; // Prevent too narrow
-
-    @each $breakpoint in map-keys($gutters) {
-        @include media-breakpoint-up($breakpoint) {
-            $gutter: map-get($gutters, $breakpoint);
-            padding-right: ($gutter / 2);
-            padding-left: ($gutter / 2);
-        }
-    }
+    padding-right: ($gutter / 2);
+    padding-left: ($gutter / 2);
 }
 
 @mixin make-col($size, $columns: $grid-columns) {
@@ -73,61 +51,16 @@
     margin-left: if($num == 0, 0, percentage($num));
 }
 
-
-// Gutters
-@mixin check-gutter-change($breakpoint, $gutters: $grid-gutter-widths) {
-    $prev-breakpoint: breakpoint-prev($breakpoint, $gutters);
-
-    @if $prev-breakpoint {
-        $prev-gutter: map-get($gutters, $prev-breakpoint);
-        $curr-gutter: map-get($gutters, $breakpoint);
-
-        @if $prev-gutter != $curr-gutter {
-            @content;
-        }
-    } @else {
-        @content;
-    }
-}
-
-@mixin make-grid-gutters($gutters: $grid-gutter-widths) {
-    // Create responsive grid gutters
-    @each $breakpoint in map-keys($grid-breakpoints) {
-        $bprule: breakpoint-designator($breakpoint);
-
-        @include check-gutter-change($breakpoint, $grid-gutter-widths) {
-            %col-gutter {
-                @include media-breakpoint-up($breakpoint) {
-                    $gutter: map-get($grid-gutter-widths, $breakpoint);
-                    padding-right: ($gutter / 2);
-                    padding-left: ($gutter / 2);
-                }
-            }
-        }
-
-        .col#{$bprule},
-        .col#{$bprule}-auto {
-            @extend %col-gutter;
-        }
-
-        @for $i from 1 through $grid-columns {
-            .col#{$bprule}-#{$i} {
-                @extend %col-gutter;
-            }
-        }
-    }
-}
-
 // Grid generation
 // Generate the correct number of grid classes given any value of `$grid-columns`
-@mixin make-grid-columns($columns: $grid-columns, $breakpoints: $grid-breakpoints) {
+@mixin make-grid-columns($columns: $grid-columns, $breakpoints: $grid-breakpoints, $gutter: $grid-gutter-width) {
     // Use a placeholder selector to extend upon
     %col {
         position: relative;
         width: 100%; // Prevent too narrow
+        padding-right: ($gutter / 2);
+        padding-left: ($gutter / 2);
     }
-
-    @include make-grid-gutters();
 
     @each $breakpoint in map-keys($breakpoints) {
         $bprule: breakpoint-designator($breakpoint);

@@ -278,35 +278,19 @@ $container-max-widths: map-merge(
 
 // stylelint-disable-next-line scss/dollar-variable-default
 $container-max-widths: map-sort-by-values($container-max-widths);
-
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 
 
-// Grid columns
+// Grid
 // =====
-// Set the number of columns.
+// Set the number of columns and pecify the width of the gutter.
 $grid-columns:      12 !default;
-
-
-// Grid gutters
-// =====
-// Specify the width of the gutters for each breakpoint.
-// These settings affect container, row, and col components.
-// If modifying, you will also have to adjust the `$container-max-widths`
-// values also to prevent horizontal scrolling.
 $grid-gutter-width: 2rem !default;
-$grid-gutter-widths: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$grid-gutter-widths: map-merge(
-    (
-        xs: $grid-gutter-width,
-        sm: $grid-gutter-width,
-        md: $grid-gutter-width,
-        lg: $grid-gutter-width,
-        xl: $grid-gutter-width
-    ),
-    $grid-gutter-widths
-);
+
+
+// Container Padding
+// =====
+$container-padding-x:   $grid-gutter-width / 2 !default;
 
 
 // Borders
@@ -1114,7 +1098,7 @@ $card-footer-border-width:  $card-border-width !default;
 
 $card-img-overlay-padding:  $card-padding-y $card-padding-x !default;
 
-$card-deck-gutter-widths:   $grid-gutter-widths !default;
+$card-deck-gutter:          $grid-gutter-width !default;
 
 $card-columns-count:            3 !default;
 $card-columns-column-gap:       1.25rem !default;

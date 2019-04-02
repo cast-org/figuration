@@ -357,6 +357,13 @@
         %card-deck-base {
             display: flex;
             flex-direction: column;
+            margin-right: -($card-deck-gutter / 2);
+            margin-left: -($card-deck-gutter / 2);
+
+            > .card {
+                margin-right: ($card-deck-gutter / 2);
+                margin-left: ($card-deck-gutter / 2);
+            }
         }
 
         @each $breakpoint in $card-deck-breakpoints {
@@ -374,32 +381,6 @@
                             // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
                             flex: 1 0 0%;
                             margin-bottom: 0; // 1
-                        }
-                    }
-                }
-            }
-        }
-
-        // Card deck gutters
-        @each $breakpoint, $gutter in $card-deck-gutter-widths {
-            @include check-gutter-change($breakpoint, $card-deck-gutter-widths) {
-                @include media-breakpoint-up($breakpoint) {
-                    %card-deck-gutter {
-                        margin-right: -($gutter / 2);
-                        margin-left: -($gutter / 2);
-
-                        > .card {
-                            margin-right: ($gutter / 2);
-                            margin-left: ($gutter / 2);
-                        }
-                    }
-                }
-
-                @each $bp-inner in map-keys($grid-breakpoints) {
-                    $bprule-inner: breakpoint-designator($bp-inner);
-                    @if $bprule-inner == "" or ($enable-card-deck-responsive and $bprule-inner != "") {
-                        .card-deck#{$bprule-inner} {
-                            @extend %card-deck-gutter;
                         }
                     }
                 }
