@@ -215,6 +215,18 @@ $sizes: map-merge(
 $sizes-width:                       $sizes !default;
 $sizes-height:                      $sizes !default;
 
+// Border radius
+// =====
+// Set values for border radius utility classes.
+$radii: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$radii: map-merge(
+    (
+        "small":   .1875rem,
+        "large":   .3125rem,
+    ),
+    $radii
+);
 
 // Grid breakpoints
 // =====

@@ -70,11 +70,9 @@ The *start/end sides* are designated as follows depending on which version of th
 <img src="..." class="round-bs" alt="...">
 {% endhighlight %}
 
-### Using Component Sizes
+### Sizes
 
-A few sizes are available using the [component sizing options]({{ site.baseurl }}/get-started/options/#component-sizes).  Classes are built in the form `.radius{-side}-{size}`.
-
-By default the `xsmall` and `small` sizes are the same radius.  Also the `large` and `xlarge` sizes are the same radius.
+A few sizes are available, the default border-radius size, along with `small` and `large` variants. Responsive classes are built in the form `.radius{-side}-{size}`.
 
 <div class="cf-example">
     <img data-src="holder.js/100x100?text=Small" class="radius-small" alt="Placeholder iamge slightly rounded corners" />
@@ -204,7 +202,6 @@ See the following example of removing various borders from some buttons.
 <button type="button" class="btn radius-0 border-e-0">'end'</button>
 <button type="button" class="btn radius-0 border-b-0">bottom</button>
 <button type="button" class="btn radius-0 border-s-0">'start'</button>
-<br />
 <button type="button" class="btn radius-0 border-x-0">left and right</button>
 <button type="button" class="btn radius-0 border-y-0">top and bottom</button>
 {% endcapture %}
@@ -314,11 +311,11 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-utility-border-radius-component</code></td>
+                <td><code>$enable-utility-border-radius-sizing</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
-                    Enable the generation of the additive component size border radius utility classes.
+                    Enable the generation of the additive border radius size variant utility classes.
                 </td>
             </tr>
             <tr>
@@ -338,11 +335,14 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$utility-radius-sizes</code></td>
+                <td><code>$radii</code></td>
                 <td>map</td>
-                <td><code>$component-sizes</code></td>
                 <td>
-                    Component border radius size variants.
+<pre><code>("small": .1875rem,
+"large": .3125rem)</code></pre>
+                </td>
+                <td>
+                    Border radius size variants.
                 </td>
             </tr>
             <tr>
