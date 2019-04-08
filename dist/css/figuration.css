@@ -2841,10 +2841,10 @@ input[type="button"].btn-block {
 .container {
   width: 100%;
   max-width: 100%;
-  margin-right: auto;
-  margin-left: auto;
   padding-right: 1rem;
   padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 @media (min-width: 36em) {
@@ -2874,10 +2874,10 @@ input[type="button"].btn-block {
 .container-fluid {
   width: 100%;
   max-width: 100%;
-  margin-right: auto;
-  margin-left: auto;
   padding-right: 1rem;
   padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .row {
@@ -2906,14 +2906,6 @@ input[type="button"].btn-block {
 .col-xl-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12 {
   position: relative;
   width: 100%;
-}
-
-.col,
-.col-auto, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col-sm,
-.col-sm-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md,
-.col-md-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg,
-.col-lg-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-xl,
-.col-xl-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12 {
   padding-right: 1rem;
   padding-left: 1rem;
 }
@@ -5687,6 +5679,13 @@ a.page-link {
 .card-deck, .card-deck-sm, .card-deck-md, .card-deck-lg, .card-deck-xl {
   display: flex;
   flex-direction: column;
+  margin-right: -1rem;
+  margin-left: -1rem;
+}
+
+.card-deck > .card, .card-deck-sm > .card, .card-deck-md > .card, .card-deck-lg > .card, .card-deck-xl > .card {
+  margin-right: 1rem;
+  margin-left: 1rem;
 }
 
 .card-deck {
@@ -5741,16 +5740,6 @@ a.page-link {
     flex: 1 0;
     margin-bottom: 0;
   }
-}
-
-.card-deck, .card-deck-sm, .card-deck-md, .card-deck-lg, .card-deck-xl {
-  margin-right: -1rem;
-  margin-left: -1rem;
-}
-
-.card-deck > .card, .card-deck-sm > .card, .card-deck-md > .card, .card-deck-lg > .card, .card-deck-xl > .card {
-  margin-right: 1rem;
-  margin-left: 1rem;
 }
 
 .card-group, .card-group-sm, .card-group-md, .card-group-lg, .card-group-xl {
@@ -8243,46 +8232,6 @@ a.page-link {
   border-bottom-left-radius: 0.25rem;
 }
 
-.radius-xsmall {
-  border-radius: 0.1875rem;
-}
-
-.radius-t-xsmall {
-  border-top-left-radius: 0.1875rem;
-  border-top-right-radius: 0.1875rem;
-}
-
-.radius-e-xsmall {
-  border-top-right-radius: 0.1875rem;
-  border-bottom-right-radius: 0.1875rem;
-}
-
-.radius-b-xsmall {
-  border-bottom-right-radius: 0.1875rem;
-  border-bottom-left-radius: 0.1875rem;
-}
-
-.radius-s-xsmall {
-  border-top-left-radius: 0.1875rem;
-  border-bottom-left-radius: 0.1875rem;
-}
-
-.radius-te-xsmall {
-  border-top-right-radius: 0.1875rem;
-}
-
-.radius-ts-xsmall {
-  border-top-left-radius: 0.1875rem;
-}
-
-.radius-be-xsmall {
-  border-bottom-right-radius: 0.1875rem;
-}
-
-.radius-bs-xsmall {
-  border-bottom-left-radius: 0.1875rem;
-}
-
 .radius-small {
   border-radius: 0.1875rem;
 }
@@ -8360,46 +8309,6 @@ a.page-link {
 }
 
 .radius-bs-large {
-  border-bottom-left-radius: 0.3125rem;
-}
-
-.radius-xlarge {
-  border-radius: 0.3125rem;
-}
-
-.radius-t-xlarge {
-  border-top-left-radius: 0.3125rem;
-  border-top-right-radius: 0.3125rem;
-}
-
-.radius-e-xlarge {
-  border-top-right-radius: 0.3125rem;
-  border-bottom-right-radius: 0.3125rem;
-}
-
-.radius-b-xlarge {
-  border-bottom-right-radius: 0.3125rem;
-  border-bottom-left-radius: 0.3125rem;
-}
-
-.radius-s-xlarge {
-  border-top-left-radius: 0.3125rem;
-  border-bottom-left-radius: 0.3125rem;
-}
-
-.radius-te-xlarge {
-  border-top-right-radius: 0.3125rem;
-}
-
-.radius-ts-xlarge {
-  border-top-left-radius: 0.3125rem;
-}
-
-.radius-be-xlarge {
-  border-bottom-right-radius: 0.3125rem;
-}
-
-.radius-bs-xlarge {
   border-bottom-left-radius: 0.3125rem;
 }
 
@@ -9318,28 +9227,68 @@ a.page-link {
   box-shadow: inset 0 0.125rem 1.25rem rgba(0, 0, 0, 0.15) !important;
 }
 
-.w-auto {
-  width: auto !important;
+.w-25 {
+  width: 25% !important;
+}
+
+.w-50 {
+  width: 50% !important;
+}
+
+.w-75 {
+  width: 75% !important;
 }
 
 .w-100 {
   width: 100% !important;
 }
 
-.mw-100 {
-  max-width: 100% !important;
+.w-auto {
+  width: auto !important;
 }
 
-.h-auto {
-  height: auto !important;
+.h-25 {
+  height: 25% !important;
+}
+
+.h-50 {
+  height: 50% !important;
+}
+
+.h-75 {
+  height: 75% !important;
 }
 
 .h-100 {
   height: 100% !important;
 }
 
+.h-auto {
+  height: auto !important;
+}
+
+.mw-100 {
+  max-width: 100% !important;
+}
+
 .mh-100 {
   max-height: 100% !important;
+}
+
+.min-vw-100 {
+  min-width: 100vw !important;
+}
+
+.min-vh-100 {
+  min-height: 100vh !important;
+}
+
+.vw-100 {
+  width: 100vw !important;
+}
+
+.vh-100 {
+  height: 100vh !important;
 }
 
 .m-0 {
@@ -12011,6 +11960,162 @@ a.text-gray-900:hover, a.text-gray-900:focus {
 
 .text-reset {
   color: inherit !important;
+}
+
+.fs-xsmall {
+  font-size: 0.75rem !important;
+}
+
+.fs-small {
+  font-size: 0.875rem !important;
+}
+
+.fs-base {
+  font-size: 1rem !important;
+}
+
+.fs-large {
+  font-size: 1.125rem !important;
+}
+
+.fs-xlarge {
+  font-size: 1.25rem !important;
+}
+
+.fs-2xlarge {
+  font-size: 1.5rem !important;
+}
+
+.fs-3xlarge {
+  font-size: 1.75rem !important;
+}
+
+.fs-4xlarge {
+  font-size: 2rem !important;
+}
+
+.fs-5xlarge {
+  font-size: 2.5rem !important;
+}
+
+@media (min-width: 36em) {
+  .fs-sm-xsmall {
+    font-size: 0.75rem !important;
+  }
+  .fs-sm-small {
+    font-size: 0.875rem !important;
+  }
+  .fs-sm-base {
+    font-size: 1rem !important;
+  }
+  .fs-sm-large {
+    font-size: 1.125rem !important;
+  }
+  .fs-sm-xlarge {
+    font-size: 1.25rem !important;
+  }
+  .fs-sm-2xlarge {
+    font-size: 1.5rem !important;
+  }
+  .fs-sm-3xlarge {
+    font-size: 1.75rem !important;
+  }
+  .fs-sm-4xlarge {
+    font-size: 2rem !important;
+  }
+  .fs-sm-5xlarge {
+    font-size: 2.5rem !important;
+  }
+}
+
+@media (min-width: 48em) {
+  .fs-md-xsmall {
+    font-size: 0.75rem !important;
+  }
+  .fs-md-small {
+    font-size: 0.875rem !important;
+  }
+  .fs-md-base {
+    font-size: 1rem !important;
+  }
+  .fs-md-large {
+    font-size: 1.125rem !important;
+  }
+  .fs-md-xlarge {
+    font-size: 1.25rem !important;
+  }
+  .fs-md-2xlarge {
+    font-size: 1.5rem !important;
+  }
+  .fs-md-3xlarge {
+    font-size: 1.75rem !important;
+  }
+  .fs-md-4xlarge {
+    font-size: 2rem !important;
+  }
+  .fs-md-5xlarge {
+    font-size: 2.5rem !important;
+  }
+}
+
+@media (min-width: 62em) {
+  .fs-lg-xsmall {
+    font-size: 0.75rem !important;
+  }
+  .fs-lg-small {
+    font-size: 0.875rem !important;
+  }
+  .fs-lg-base {
+    font-size: 1rem !important;
+  }
+  .fs-lg-large {
+    font-size: 1.125rem !important;
+  }
+  .fs-lg-xlarge {
+    font-size: 1.25rem !important;
+  }
+  .fs-lg-2xlarge {
+    font-size: 1.5rem !important;
+  }
+  .fs-lg-3xlarge {
+    font-size: 1.75rem !important;
+  }
+  .fs-lg-4xlarge {
+    font-size: 2rem !important;
+  }
+  .fs-lg-5xlarge {
+    font-size: 2.5rem !important;
+  }
+}
+
+@media (min-width: 75em) {
+  .fs-xl-xsmall {
+    font-size: 0.75rem !important;
+  }
+  .fs-xl-small {
+    font-size: 0.875rem !important;
+  }
+  .fs-xl-base {
+    font-size: 1rem !important;
+  }
+  .fs-xl-large {
+    font-size: 1.125rem !important;
+  }
+  .fs-xl-xlarge {
+    font-size: 1.25rem !important;
+  }
+  .fs-xl-2xlarge {
+    font-size: 1.5rem !important;
+  }
+  .fs-xl-3xlarge {
+    font-size: 1.75rem !important;
+  }
+  .fs-xl-4xlarge {
+    font-size: 2rem !important;
+  }
+  .fs-xl-5xlarge {
+    font-size: 2.5rem !important;
+  }
 }
 
 .valign-baseline {
