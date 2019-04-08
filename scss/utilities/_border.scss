@@ -20,15 +20,11 @@
         @include radius-corners($radius-border-radius);
     }
 
-    // Radius addition - Component sizes
-    @if $enable-sizing {
-        @each $size, $dims in $utility-radius-sizes {
-            $sz-border-radius: map-get($dims, "border-radius");
-
-            @if $enable-utility-border-radius-component {
-                @include radius-sides($sz-border-radius, $size);
-                @include radius-corners($sz-border-radius, $size);
-            }
+    // Radius addition - Size variants
+    @if $enable-utility-border-radius-sizing {
+        @each $size, $dim in $radii {
+            @include radius-sides($dim, $size);
+            @include radius-corners($dim, $size);
         }
     }
 
