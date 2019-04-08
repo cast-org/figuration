@@ -98,6 +98,72 @@ Transform text in components with text capitalization classes.
 
 Note how `.text-capitalize` only changes the first letter of each word, leaving the case of any other letters unaffected.
 
+## Font Size
+
+Responsive font size utilities use the format `.fs{-breakpoint}-{size}`.
+
+Where *size* is one of the following:
+- `xsmall` - `.75rem`
+- `small` - `.875rem`
+- `normal` - `1rem`
+- `large` - `1.125rem`
+- `xlarge` - `1.25rem`
+- `2xlarge` - `1.5rem`
+- `3xlarge` - `1.75rem`
+- `4xlarge` - `2rem`
+- `5xlarge` - `2.5rem`
+
+<div class="cf-example">
+    <div class="mb-1_5">
+        <div class="fs-small text-muted">.fs-xsmall</div>
+        <p class="fs-xsmall text-truncate">The quick brown fox jumped over the lazy dog.</p>
+    </div>
+    <div class="mb-1_5">
+        <div class="fs-small text-muted">.fs-small</div>
+        <p class="fs-small text-truncate">The quick brown fox jumped over the lazy dog.</p>
+    </div>
+    <div class="mb-1_5">
+        <div class="fs-small text-muted">.fs-base</div>
+        <p class="fs-base text-truncate">The quick brown fox jumped over the lazy dog.</p>
+    </div>
+    <div class="mb-1_5">
+        <div class="fs-small text-muted">.fs-large</div>
+        <p class="fs-large text-truncate">The quick brown fox jumped over the lazy dog.</p>
+    </div>
+    <div class="mb-1_5">
+        <div class="fs-small text-muted">.fs-xlarge</div>
+        <p class="fs-xlarge text-truncate">The quick brown fox jumped over the lazy dog.</p>
+    </div>
+    <div class="mb-1_5">
+        <div class="fs-small text-muted">.fs-2xlarge</div>
+        <p class="fs-2xlarge text-truncate">The quick brown fox jumped over the lazy dog.</p>
+    </div>
+    <div class="mb-1_5">
+        <div class="fs-small text-muted">.fs-3xlarge</div>
+        <p class="fs-3xlarge text-truncate">The quick brown fox jumped over the lazy dog.</p>
+    </div>
+    <div class="mb-1_5">
+        <div class="fs-small text-muted">.fs-4xlarge</div>
+        <p class="fs-4xlarge text-truncate">The quick brown fox jumped over the lazy dog.</p>
+    </div>
+    <div class="mb-1_5">
+        <div class="fs-small text-muted">.fs-5xlarge</div>
+        <p class="fs-5xlarge text-truncate">The quick brown fox jumped over the lazy dog.</p>
+    </div>
+</div>
+
+{% highlight html %}
+<p class="fs-xsmall">The quick brown fox ...</p>
+<p class="fs-small">The quick brown fox ...</p>
+<p class="fs-base">The quick brown fox ...</p>
+<p class="fs-large">The quick brown fox ...</p>
+<p class="fs-xlarge">The quick brown fox ...</p>
+<p class="fs-2xlarge">The quick brown fox ...</p>
+<p class="fs-3xlarge">The quick brown fox ...</p>
+<p class="fs-4xlarge">The quick brown fox ...</p>
+<p class="fs-5xlarge">The quick brown fox ...</p>
+{% endhighlight %}
+
 ## Font Weight
 
 Quickly change the weight (boldness) of text.
