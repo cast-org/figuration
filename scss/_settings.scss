@@ -259,6 +259,7 @@ $utility-position-breakpoints:      map-keys($grid-breakpoints) !default;
 $utility-screen-reader-breakpoints: map-keys($grid-breakpoints) !default;
 $utility-spacing-breakpoints:       map-keys($grid-breakpoints) !default;
 $utility-text-align-breakpoints:    map-keys($grid-breakpoints) !default;
+$utility-text-size-breakpoints:     map-keys($grid-breakpoints) !default;
 $utility-valign-breakpoints:        map-keys($grid-breakpoints) !default;
 
 // Grid containers
@@ -333,6 +334,24 @@ $font-family-base:          $font-family-sans-serif !default;
 
 $font-size-base:    1rem !default;
 $line-height-base:  1.5 !default;
+
+// Font size utility classes
+$font-sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$font-sizes: map-merge(
+    (
+        "xsmall":   ($font-size-base * .75),
+        "small":    ($font-size-base * .875),
+        "base":     $font-size-base,
+        "large":    ($font-size-base * 1.125),
+        "xlarge":   ($font-size-base * 1.25),
+        "2xlarge":  ($font-size-base * 1.5),
+        "3xlarge":  ($font-size-base * 1.75),
+        "4xlarge":  ($font-size-base * 2),
+        "5xlarge":  ($font-size-base * 2.5)
+    ),
+    $font-sizes
+);
 
 $font-weight-lighter:   lighter !default;
 $font-weight-light:     300 !default;

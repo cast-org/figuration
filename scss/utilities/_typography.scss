@@ -104,4 +104,16 @@
         .text-reset { color: inherit !important; }
     }
 
+    // Font sizes
+    @if $enable-utility-text-size {
+        @each $breakpoint in $utility-text-size-breakpoints {
+            $bprule: breakpoint-designator($breakpoint);
+
+            @include media-breakpoint-up($breakpoint) {
+                @each $size, $dim in $font-sizes {
+                    .fs#{$bprule}-#{$size} { @include font-size(#{$dim}, true); }
+                }
+            }
+        }
+    }
 }
