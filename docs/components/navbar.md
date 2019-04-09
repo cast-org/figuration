@@ -660,22 +660,22 @@ Place a visual separator between segments of the navbar.
 </nav>
 {% endhighlight %}
 
-### Collapsible Content
+## Collapsible Content
 
 Our [Collapse widget]({{ site.baseurl }}/widgets/collapse/) can also to toggle hidden content elsewhere on the page.
 
 {% capture example %}
 <nav class="navbar navbar-light bg-light">
-  <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#exCollapsingNavbar" aria-label="Toggle navigation">
-    <span aria-hidden="true">&#8801;</span>
-  </button>
-  <div class="collapse w-100 mt-0_5" id="exCollapsingNavbar">
-    <div class="bg-dark p-1">
-      <h4>Collapsed content</h4>
-      Toggleable via the navbar button.
-    </div>
-  </div>
+    <button class="navbar-toggle" type="button" data-cfw="collapse" data-cfw-collapse-target="#exCollapsingNavbar" aria-label="Toggle navigation">
+        <span aria-hidden="true">&#8801;</span>
+    </button>
 </nav>
+<div class="collapse" id="exCollapsingNavbar">
+    <div class="bg-dark text-light p-1">
+        <h4>Collapsed content</h4>
+        Toggleable via the navbar button.
+    </div>
+</div>
 {% endcapture %}
 {% include example.html content=example %}
 
@@ -795,6 +795,21 @@ Although it's not required, you can wrap a navbar in a `.container` to center it
 </nav>
 {% endcapture %}
 {% include example.html content=example %}
+
+There may also be instances where you may need to reset the padding on the `.navbar` to align with other `.container` wrapped content.
+
+{% capture example %}
+<nav class="navbar navbar-light bg-light px-0">
+  <div class="container">
+    <a href="#" class="navbar-brand">Navbar</a>
+  </div>
+</nav>
+<div class="container">
+    <p>The quick brown fox jumped over the lazy dog.</p>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
 
 ## Placement
 
