@@ -7,7 +7,6 @@
         display: flex;
         flex-wrap: wrap; // allow us to do the line break for collapsing content
         align-items: center;
-        // justify-content: space-between; // space out brand from logo
         padding: $navbar-padding-y $navbar-padding-x;
 
         // Because flex properties aren't inherited, we need to redeclare these first
@@ -18,7 +17,6 @@
                 display: flex;
                 flex-wrap: wrap;
                 align-items: center;
-                justify-content: space-between;
             }
         }
 
@@ -153,14 +151,6 @@
                                     position: static;
                                     float: none;
                                 }
-                            }
-                        }
-
-                        @if $enable-grid-classes {
-                            > .container,
-                            > .container-fluid {
-                                padding-right: 0;
-                                padding-left: 0;
                             }
                         }
 
