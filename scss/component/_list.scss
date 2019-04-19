@@ -343,7 +343,6 @@
     // Use on `<li>`s or `<div>`s within the `.list` parent.
     .list-item {
         position: relative;
-        display: block;
         color: $list-item-color;
         // Override `<button>` background and border.
         background-color: $list-item-bg;
