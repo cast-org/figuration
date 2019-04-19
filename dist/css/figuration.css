@@ -3847,7 +3847,6 @@ button.list-item-action {
 
 .list-item {
   position: relative;
-  display: block;
   background-color: transparent;
   border: 0 solid;
 }
@@ -4763,7 +4762,6 @@ a.page-link {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
 }
 
 .navbar:not([class*="navbar-expand"]) .navbar-nav .dropdown-menu {
@@ -4882,11 +4880,6 @@ a.page-link {
     position: static;
     float: none;
   }
-  .navbar-expand-sm > .container,
-  .navbar-expand-sm > .container-fluid {
-    padding-right: 0;
-    padding-left: 0;
-  }
   .navbar-expand-sm .navbar-divider {
     margin: 0.5rem 0;
     border-top: 1px solid rgba(0, 0, 0, 0.65);
@@ -4927,11 +4920,6 @@ a.page-link {
   .navbar-expand-md .navbar-nav .dropdown-menu {
     position: static;
     float: none;
-  }
-  .navbar-expand-md > .container,
-  .navbar-expand-md > .container-fluid {
-    padding-right: 0;
-    padding-left: 0;
   }
   .navbar-expand-md .navbar-divider {
     margin: 0.5rem 0;
@@ -4974,11 +4962,6 @@ a.page-link {
     position: static;
     float: none;
   }
-  .navbar-expand-lg > .container,
-  .navbar-expand-lg > .container-fluid {
-    padding-right: 0;
-    padding-left: 0;
-  }
   .navbar-expand-lg .navbar-divider {
     margin: 0.5rem 0;
     border-top: 1px solid rgba(0, 0, 0, 0.65);
@@ -5019,11 +5002,6 @@ a.page-link {
   .navbar-expand-xl .navbar-nav .dropdown-menu {
     position: static;
     float: none;
-  }
-  .navbar-expand-xl > .container,
-  .navbar-expand-xl > .container-fluid {
-    padding-right: 0;
-    padding-left: 0;
   }
   .navbar-expand-xl .navbar-divider {
     margin: 0.5rem 0;
@@ -5944,6 +5922,7 @@ a.page-link {
   margin-top: 1rem;
   margin-bottom: 0;
   -webkit-column-break-inside: avoid;
+     -moz-column-break-inside: avoid;
           break-inside: avoid;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
@@ -5969,6 +5948,7 @@ a.page-link {
     margin-top: 1rem;
     margin-bottom: 0;
     -webkit-column-break-inside: avoid;
+       -moz-column-break-inside: avoid;
             break-inside: avoid;
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
@@ -5994,6 +5974,7 @@ a.page-link {
     margin-top: 1rem;
     margin-bottom: 0;
     -webkit-column-break-inside: avoid;
+       -moz-column-break-inside: avoid;
             break-inside: avoid;
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
@@ -6019,6 +6000,7 @@ a.page-link {
     margin-top: 1rem;
     margin-bottom: 0;
     -webkit-column-break-inside: avoid;
+       -moz-column-break-inside: avoid;
             break-inside: avoid;
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
@@ -6044,6 +6026,7 @@ a.page-link {
     margin-top: 1rem;
     margin-bottom: 0;
     -webkit-column-break-inside: avoid;
+       -moz-column-break-inside: avoid;
             break-inside: avoid;
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
