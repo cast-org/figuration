@@ -146,7 +146,7 @@
     // Make a button look and behave like a link
     @if $enable-btn-link {
         .btn-link {
-            color: $link-color;
+            color: $btn-link-color;
             text-decoration: $link-decoration;
             background-color: transparent;
             border-color: transparent;
@@ -160,7 +160,7 @@
             }
 
             &:hover {
-                color: $link-hover-color;
+                color: $btn-link-hover-color;
             }
 
             // stylelint-disable declaration-block-no-duplicate-properties
@@ -172,7 +172,7 @@
 
             &.disabled,
             &:disabled {
-                color: $link-color;
+                color: $btn-link-disabled-color;
                 text-decoration: none;
                 pointer-events: none;
                 background-color: transparent;
@@ -182,7 +182,7 @@
             &:not(:disabled):not(.disabled):active,
             &:not(:disabled):not(.disabled).active,
             .open > & {
-                color: $link-hover-color;
+                color: $btn-link-hover-color;
                 background-color: transparent;
                 border-color: transparent;
                 box-shadow: none;
