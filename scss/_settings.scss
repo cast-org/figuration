@@ -700,6 +700,10 @@ $btn-default-active-bg:             $uibase-200 !default;
 $btn-default-active-color:          color-if-contrast($btn-default-hover-color, $btn-default-active-bg) !default;
 $btn-default-active-border-color:   $uibase-400 !default;
 
+$btn-link-color:                    $link-color !default;
+$btn-link-hover-color:              $link-hover-color !default;
+$btn-link-disabled-color:           $btn-link-color !default;
+
 // Forms
 // =====
 // Padding and line-height should add up to buttons for inputs and selects
