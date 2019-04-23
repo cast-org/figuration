@@ -648,6 +648,30 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
+                <td><code>$btn-link-color</code></td>
+                <td>string</td>
+                <td><code>$link-color</code></td>
+                <td>
+                    Text color for link buttons.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-link-hover-color</code></td>
+                <td>string</td>
+                <td><code>$link-hover-color</code></td>
+                <td>
+                    Text color for link buttons in hover/focus state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$btn-link-disabled-color</code></td>
+                <td>string</td>
+                <td><code>$btn-link-color</code></td>
+                <td>
+                    Text color for link buttons in disabled state.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$btn-themes</code></td>
                 <td>map</td>
                 <td><code>()</code></td>
