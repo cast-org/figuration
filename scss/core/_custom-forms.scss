@@ -9,7 +9,7 @@
         .custom-control {
             position: relative;
             display: block;
-            min-height: ($font-size-base * $line-height-base);
+            min-height: calc(1em * #{$line-height-base});
             padding-left: $custom-control-gutter;
         }
 
@@ -64,7 +64,7 @@
             position: absolute;
             width: $custom-control-indicator-size;
             height: $custom-control-indicator-size;
-            //min-height: (1rem * $line-height-base);
+            //min-height: (1em * $line-height-base);
             margin-bottom: 0; // Undo label margin
 
             // Background (color and border)
@@ -297,7 +297,7 @@
             $sz-padding-y:     map-get($dims, "padding-y");
             $sz-padding-x:     map-get($dims, "padding-x");
             $sz-border-radius: map-get($dims, "border-radius");
-            $sz-inner-height:  (($sz-font-size * $sz-line-height) + ($sz-padding-y * 2));
+            $sz-inner-height:  ((1em * #{$sz-line-height}) + (#{$sz-padding-y * 2}));
             $sz-outer-height:  calc(#{$sz-inner-height} + #{($border-width * 2)});
 
             @if $enable-custom-select and $enable-custom-select-sizing {
