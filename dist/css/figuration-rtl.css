@@ -841,8 +841,8 @@ pre code {
 .form-control {
   display: block;
   width: 100%;
-  height: calc(2rem + 2px);
-  padding: 0.25rem 0.75rem;
+  height: calc(2em + 2px);
+  padding: 0.25em 0.75em;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -927,8 +927,8 @@ textarea.form-control:not([rows="1"]) {
 }
 
 .form-control-label {
-  padding-top: calc(0.25rem + 1px);
-  padding-bottom: calc(0.25rem + 1px);
+  padding-top: calc(0.25em + 1px);
+  padding-bottom: calc(0.25em + 1px);
   margin-bottom: 0;
   font-size: inherit;
   font-weight: 400;
@@ -938,8 +938,8 @@ textarea.form-control:not([rows="1"]) {
 .form-control-static {
   display: block;
   width: 100%;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
   margin-bottom: 0;
   line-height: 1.5;
   border: solid transparent;
@@ -949,69 +949,45 @@ textarea.form-control:not([rows="1"]) {
 .form-control-xsmall, .input-group-xsmall > .form-control,
 .input-group-xsmall > .custom-select,
 .input-group-xsmall > .input-group-addon > .input-group-text {
-  height: calc(1.375rem + 2px);
-  padding: 0.125rem 0.375rem;
   font-size: 0.75rem;
-  line-height: 1.5;
   border-radius: 0.1875rem;
 }
 
 .form-control-label-xsmall {
-  padding-top: calc(0.125rem + 1px);
-  padding-bottom: calc(0.125rem + 1px);
   font-size: 0.75rem;
-  line-height: 1.5;
 }
 
 .form-control-small, .input-group-small > .form-control,
 .input-group-small > .custom-select,
 .input-group-small > .input-group-addon > .input-group-text {
-  height: calc(1.6875rem + 2px);
-  padding: 0.1875rem 0.5rem;
   font-size: 0.875rem;
-  line-height: 1.5;
   border-radius: 0.1875rem;
 }
 
 .form-control-label-small {
-  padding-top: calc(0.1875rem + 1px);
-  padding-bottom: calc(0.1875rem + 1px);
   font-size: 0.875rem;
-  line-height: 1.5;
 }
 
 .form-control-large, .input-group-large > .form-control,
 .input-group-large > .custom-select,
 .input-group-large > .input-group-addon > .input-group-text {
-  height: calc(2.3125rem + 2px);
-  padding: 0.3125rem 1.125rem;
   font-size: 1.125rem;
-  line-height: 1.5;
   border-radius: 0.3125rem;
 }
 
 .form-control-label-large {
-  padding-top: calc(0.3125rem + 1px);
-  padding-bottom: calc(0.3125rem + 1px);
   font-size: 1.125rem;
-  line-height: 1.5;
 }
 
 .form-control-xlarge, .input-group-xlarge > .form-control,
 .input-group-xlarge > .custom-select,
 .input-group-xlarge > .input-group-addon > .input-group-text {
-  height: calc(2.625rem + 2px);
-  padding: 0.375rem 1.25rem;
   font-size: 1.25rem;
-  line-height: 1.5;
   border-radius: 0.3125rem;
 }
 
 .form-control-label-xlarge {
-  padding-top: calc(0.375rem + 1px);
-  padding-bottom: calc(0.375rem + 1px);
   font-size: 1.25rem;
-  line-height: 1.5;
 }
 
 .form-group {
@@ -1133,19 +1109,19 @@ textarea.form-control:not([rows="1"]) {
 }
 
 .was-validated .form-control:not(textarea).has-validation-icon:valid, .form-control:not(textarea).has-validation-icon.is-valid {
-  padding-left: calc(0.75rem + 16px + 0.375rem);
+  padding-left: calc(0.75em + 16px + 0.375rem);
 }
 
 .was-validated textarea.form-control.has-validation-icon:valid, textarea.form-control.has-validation-icon.is-valid {
-  padding-right: calc(0.75rem + 16px + 0.375rem);
+  padding-right: calc(0.75em + 16px + 0.375rem);
   background-position: right 0.375rem center;
 }
 
 .was-validated .custom-select.has-validation-icon:valid, .custom-select.has-validation-icon.is-valid {
-  padding-left: calc(0.75rem + 16px + 0.375rem + 10px + 0.375rem);
+  padding-left: calc(0.75em + 16px + 0.375rem + 10px + 0.375rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23333' d='M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z'/%3e%3c/svg%3e"), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%230e8a16' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
   background-repeat: no-repeat, no-repeat;
-  background-position: left 0.375rem center, left calc(0.375rem + 10px + 0.375rem) center;
+  background-position: left 0.375rem center, left calc(0.75rem + 10px) center;
   background-size: 10px 10px, 16px 16px;
 }
 
@@ -1207,78 +1183,6 @@ textarea.form-control:not([rows="1"]) {
   box-shadow: 0 0 0 0.1875rem rgba(14, 138, 22, 0.35);
 }
 
-.was-validated .form-control-xsmall:not(textarea).has-validation-icon:valid, .form-control-xsmall:not(textarea).has-validation-icon.is-valid, .was-validated
-.input-group-xsmall > .form-control:not(textarea).has-validation-icon:valid,
-.input-group-xsmall > .form-control:not(textarea).has-validation-icon.is-valid {
-  padding-left: calc(0.375rem + 16px + 0.375rem);
-}
-
-.was-validated textarea.form-control-xsmall.has-validation-icon:valid, textarea.form-control-xsmall.has-validation-icon.is-valid, .was-validated
-.input-group-xsmall > textarea.form-control.has-validation-icon:valid,
-.input-group-xsmall > textarea.form-control.has-validation-icon.is-valid {
-  padding-right: calc(0.375rem + 16px + 0.375rem);
-}
-
-.was-validated .custom-select-xsmall.has-validation-icon:valid, .custom-select-xsmall.has-validation-icon.is-valid, .was-validated
-.input-group-xsmall > .custom-select.has-validation-icon:valid,
-.input-group-xsmall > .custom-select.has-validation-icon.is-valid {
-  padding-left: calc(0.375rem + 16px + 0.375rem + 10px + 0.375rem);
-}
-
-.was-validated .form-control-small:not(textarea).has-validation-icon:valid, .form-control-small:not(textarea).has-validation-icon.is-valid, .was-validated
-.input-group-small > .form-control:not(textarea).has-validation-icon:valid,
-.input-group-small > .form-control:not(textarea).has-validation-icon.is-valid {
-  padding-left: calc(0.5rem + 16px + 0.375rem);
-}
-
-.was-validated textarea.form-control-small.has-validation-icon:valid, textarea.form-control-small.has-validation-icon.is-valid, .was-validated
-.input-group-small > textarea.form-control.has-validation-icon:valid,
-.input-group-small > textarea.form-control.has-validation-icon.is-valid {
-  padding-right: calc(0.5rem + 16px + 0.375rem);
-}
-
-.was-validated .custom-select-small.has-validation-icon:valid, .custom-select-small.has-validation-icon.is-valid, .was-validated
-.input-group-small > .custom-select.has-validation-icon:valid,
-.input-group-small > .custom-select.has-validation-icon.is-valid {
-  padding-left: calc(0.5rem + 16px + 0.375rem + 10px + 0.375rem);
-}
-
-.was-validated .form-control-large:not(textarea).has-validation-icon:valid, .form-control-large:not(textarea).has-validation-icon.is-valid, .was-validated
-.input-group-large > .form-control:not(textarea).has-validation-icon:valid,
-.input-group-large > .form-control:not(textarea).has-validation-icon.is-valid {
-  padding-left: calc(1.125rem + 16px + 0.375rem);
-}
-
-.was-validated textarea.form-control-large.has-validation-icon:valid, textarea.form-control-large.has-validation-icon.is-valid, .was-validated
-.input-group-large > textarea.form-control.has-validation-icon:valid,
-.input-group-large > textarea.form-control.has-validation-icon.is-valid {
-  padding-right: calc(1.125rem + 16px + 0.375rem);
-}
-
-.was-validated .custom-select-large.has-validation-icon:valid, .custom-select-large.has-validation-icon.is-valid, .was-validated
-.input-group-large > .custom-select.has-validation-icon:valid,
-.input-group-large > .custom-select.has-validation-icon.is-valid {
-  padding-left: calc(1.125rem + 16px + 0.375rem + 10px + 0.375rem);
-}
-
-.was-validated .form-control-xlarge:not(textarea).has-validation-icon:valid, .form-control-xlarge:not(textarea).has-validation-icon.is-valid, .was-validated
-.input-group-xlarge > .form-control:not(textarea).has-validation-icon:valid,
-.input-group-xlarge > .form-control:not(textarea).has-validation-icon.is-valid {
-  padding-left: calc(1.25rem + 16px + 0.375rem);
-}
-
-.was-validated textarea.form-control-xlarge.has-validation-icon:valid, textarea.form-control-xlarge.has-validation-icon.is-valid, .was-validated
-.input-group-xlarge > textarea.form-control.has-validation-icon:valid,
-.input-group-xlarge > textarea.form-control.has-validation-icon.is-valid {
-  padding-right: calc(1.25rem + 16px + 0.375rem);
-}
-
-.was-validated .custom-select-xlarge.has-validation-icon:valid, .custom-select-xlarge.has-validation-icon.is-valid, .was-validated
-.input-group-xlarge > .custom-select.has-validation-icon:valid,
-.input-group-xlarge > .custom-select.has-validation-icon.is-valid {
-  padding-left: calc(1.25rem + 16px + 0.375rem + 10px + 0.375rem);
-}
-
 .invalid-feedback {
   display: none;
   width: 100%;
@@ -1335,19 +1239,19 @@ textarea.form-control:not([rows="1"]) {
 }
 
 .was-validated .form-control:not(textarea).has-validation-icon:invalid, .form-control:not(textarea).has-validation-icon.is-invalid {
-  padding-left: calc(0.75rem + 16px + 0.375rem);
+  padding-left: calc(0.75em + 16px + 0.375rem);
 }
 
 .was-validated textarea.form-control.has-validation-icon:invalid, textarea.form-control.has-validation-icon.is-invalid {
-  padding-right: calc(0.75rem + 16px + 0.375rem);
+  padding-right: calc(0.75em + 16px + 0.375rem);
   background-position: right 0.375rem center;
 }
 
 .was-validated .custom-select.has-validation-icon:invalid, .custom-select.has-validation-icon.is-invalid {
-  padding-left: calc(0.75rem + 16px + 0.375rem + 10px + 0.375rem);
+  padding-left: calc(0.75em + 16px + 0.375rem + 10px + 0.375rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23333' d='M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z'/%3e%3c/svg%3e"), url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23d42314' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23d42314' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3e");
   background-repeat: no-repeat, no-repeat;
-  background-position: left 0.375rem center, left calc(0.375rem + 10px + 0.375rem) center;
+  background-position: left 0.375rem center, left calc(0.75rem + 10px) center;
   background-size: 10px 10px, 16px 16px;
 }
 
@@ -1407,78 +1311,6 @@ textarea.form-control:not([rows="1"]) {
 .was-validated .custom-file-input:invalid:focus-within ~ .custom-file-label, .was-validated .custom-file-input:invalid:focus ~ .custom-file-label, .custom-file-input.is-invalid:focus-within ~ .custom-file-label, .custom-file-input.is-invalid:focus ~ .custom-file-label {
   border-color: #d42314;
   box-shadow: 0 0 0 0.1875rem rgba(212, 35, 20, 0.35);
-}
-
-.was-validated .form-control-xsmall:not(textarea).has-validation-icon:invalid, .form-control-xsmall:not(textarea).has-validation-icon.is-invalid, .was-validated
-.input-group-xsmall > .form-control:not(textarea).has-validation-icon:invalid,
-.input-group-xsmall > .form-control:not(textarea).has-validation-icon.is-invalid {
-  padding-left: calc(0.375rem + 16px + 0.375rem);
-}
-
-.was-validated textarea.form-control-xsmall.has-validation-icon:invalid, textarea.form-control-xsmall.has-validation-icon.is-invalid, .was-validated
-.input-group-xsmall > textarea.form-control.has-validation-icon:invalid,
-.input-group-xsmall > textarea.form-control.has-validation-icon.is-invalid {
-  padding-right: calc(0.375rem + 16px + 0.375rem);
-}
-
-.was-validated .custom-select-xsmall.has-validation-icon:invalid, .custom-select-xsmall.has-validation-icon.is-invalid, .was-validated
-.input-group-xsmall > .custom-select.has-validation-icon:invalid,
-.input-group-xsmall > .custom-select.has-validation-icon.is-invalid {
-  padding-left: calc(0.375rem + 16px + 0.375rem + 10px + 0.375rem);
-}
-
-.was-validated .form-control-small:not(textarea).has-validation-icon:invalid, .form-control-small:not(textarea).has-validation-icon.is-invalid, .was-validated
-.input-group-small > .form-control:not(textarea).has-validation-icon:invalid,
-.input-group-small > .form-control:not(textarea).has-validation-icon.is-invalid {
-  padding-left: calc(0.5rem + 16px + 0.375rem);
-}
-
-.was-validated textarea.form-control-small.has-validation-icon:invalid, textarea.form-control-small.has-validation-icon.is-invalid, .was-validated
-.input-group-small > textarea.form-control.has-validation-icon:invalid,
-.input-group-small > textarea.form-control.has-validation-icon.is-invalid {
-  padding-right: calc(0.5rem + 16px + 0.375rem);
-}
-
-.was-validated .custom-select-small.has-validation-icon:invalid, .custom-select-small.has-validation-icon.is-invalid, .was-validated
-.input-group-small > .custom-select.has-validation-icon:invalid,
-.input-group-small > .custom-select.has-validation-icon.is-invalid {
-  padding-left: calc(0.5rem + 16px + 0.375rem + 10px + 0.375rem);
-}
-
-.was-validated .form-control-large:not(textarea).has-validation-icon:invalid, .form-control-large:not(textarea).has-validation-icon.is-invalid, .was-validated
-.input-group-large > .form-control:not(textarea).has-validation-icon:invalid,
-.input-group-large > .form-control:not(textarea).has-validation-icon.is-invalid {
-  padding-left: calc(1.125rem + 16px + 0.375rem);
-}
-
-.was-validated textarea.form-control-large.has-validation-icon:invalid, textarea.form-control-large.has-validation-icon.is-invalid, .was-validated
-.input-group-large > textarea.form-control.has-validation-icon:invalid,
-.input-group-large > textarea.form-control.has-validation-icon.is-invalid {
-  padding-right: calc(1.125rem + 16px + 0.375rem);
-}
-
-.was-validated .custom-select-large.has-validation-icon:invalid, .custom-select-large.has-validation-icon.is-invalid, .was-validated
-.input-group-large > .custom-select.has-validation-icon:invalid,
-.input-group-large > .custom-select.has-validation-icon.is-invalid {
-  padding-left: calc(1.125rem + 16px + 0.375rem + 10px + 0.375rem);
-}
-
-.was-validated .form-control-xlarge:not(textarea).has-validation-icon:invalid, .form-control-xlarge:not(textarea).has-validation-icon.is-invalid, .was-validated
-.input-group-xlarge > .form-control:not(textarea).has-validation-icon:invalid,
-.input-group-xlarge > .form-control:not(textarea).has-validation-icon.is-invalid {
-  padding-left: calc(1.25rem + 16px + 0.375rem);
-}
-
-.was-validated textarea.form-control-xlarge.has-validation-icon:invalid, textarea.form-control-xlarge.has-validation-icon.is-invalid, .was-validated
-.input-group-xlarge > textarea.form-control.has-validation-icon:invalid,
-.input-group-xlarge > textarea.form-control.has-validation-icon.is-invalid {
-  padding-right: calc(1.25rem + 16px + 0.375rem);
-}
-
-.was-validated .custom-select-xlarge.has-validation-icon:invalid, .custom-select-xlarge.has-validation-icon.is-invalid, .was-validated
-.input-group-xlarge > .custom-select.has-validation-icon:invalid,
-.input-group-xlarge > .custom-select.has-validation-icon.is-invalid {
-  padding-left: calc(1.25rem + 16px + 0.375rem + 10px + 0.375rem);
 }
 
 .form-inline {
@@ -1548,7 +1380,7 @@ textarea.form-control:not([rows="1"]) {
 .custom-control {
   position: relative;
   display: block;
-  min-height: 1.5rem;
+  min-height: 1.5em;
   padding-right: 1.5rem;
 }
 
@@ -1696,7 +1528,7 @@ textarea.form-control:not([rows="1"]) {
 }
 
 .custom-switch .custom-control-input:checked ~ .custom-control-indicator::before {
-  right: calc(2rem - 1rem - 2.5rem);
+  right: -1.5rem;
   background-color: #0055e9;
   border-color: #0055e9;
 }
@@ -1736,8 +1568,8 @@ textarea.form-control:not([rows="1"]) {
 .custom-select {
   display: block;
   width: 100%;
-  height: calc(2rem + 2px);
-  padding: 0.25rem 0.75rem 0.25rem calc(0.75rem + 10px + 0.375rem);
+  height: calc(2em + 2px);
+  padding: 0.25em 0.75em 0.25em calc(0.75em + 10px + 0.375rem);
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -1787,38 +1619,22 @@ textarea.form-control:not([rows="1"]) {
 }
 
 .custom-select-xsmall {
-  height: calc(1.375rem + 2px);
-  padding: 0.125rem 0.375rem;
-  padding-left: calc(0.375rem + 10px + 0.375rem);
   font-size: 0.75rem;
-  line-height: 1.5;
   border-radius: 0.1875rem;
 }
 
 .custom-select-small {
-  height: calc(1.6875rem + 2px);
-  padding: 0.1875rem 0.5rem;
-  padding-left: calc(0.5rem + 10px + 0.375rem);
   font-size: 0.875rem;
-  line-height: 1.5;
   border-radius: 0.1875rem;
 }
 
 .custom-select-large {
-  height: calc(2.3125rem + 2px);
-  padding: 0.3125rem 1.125rem;
-  padding-left: calc(1.125rem + 10px + 0.375rem);
   font-size: 1.125rem;
-  line-height: 1.5;
   border-radius: 0.3125rem;
 }
 
 .custom-select-xlarge {
-  height: calc(2.625rem + 2px);
-  padding: 0.375rem 1.25rem;
-  padding-left: calc(1.25rem + 10px + 0.375rem);
   font-size: 1.25rem;
-  line-height: 1.5;
   border-radius: 0.3125rem;
 }
 
@@ -1826,7 +1642,7 @@ textarea.form-control:not([rows="1"]) {
   position: relative;
   display: inline-block;
   width: 100%;
-  height: calc(2rem + 2px);
+  height: calc(2em + 2px);
   margin-bottom: 0;
 }
 
@@ -1834,7 +1650,7 @@ textarea.form-control:not([rows="1"]) {
   position: relative;
   z-index: 2;
   width: 100%;
-  height: calc(2rem + 2px);
+  height: calc(2em + 2px);
   margin: 0;
   opacity: 0;
 }
@@ -1876,8 +1692,8 @@ textarea.form-control:not([rows="1"]) {
   left: 0;
   right: 0;
   z-index: 1;
-  height: calc(2rem + 2px);
-  padding: 0.25rem 0.75rem;
+  height: calc(2em + 2px);
+  padding: 0.25em 0.75em;
   overflow: hidden;
   font-size: 1rem;
   font-weight: 400;
@@ -1901,8 +1717,8 @@ textarea.form-control:not([rows="1"]) {
   left: 0;
   z-index: 2;
   display: block;
-  height: calc(2rem + 2px);
-  padding: 0.25rem 0.75rem;
+  height: calc(2em + 2px);
+  padding: 0.25em 0.75em;
   line-height: 1.5;
   color: #50606f;
   content: "Browse";
@@ -1913,8 +1729,8 @@ textarea.form-control:not([rows="1"]) {
 .custom-color {
   display: block;
   width: auto;
-  min-width: 2rem;
-  height: 2rem;
+  min-width: 2em;
+  height: 2em;
   font-size: 1rem;
   line-height: 1.5;
   color: #424f5b;
@@ -2120,7 +1936,7 @@ textarea.form-control:not([rows="1"]) {
       -ms-user-select: none;
           user-select: none;
   border: 1px solid transparent;
-  padding: 0.25rem 0.75rem;
+  padding: 0.25em 0.75em;
   font-size: 1rem;
   line-height: 1.5;
   border-radius: 0.25rem;
@@ -2755,56 +2571,28 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 }
 
 .btn-icon {
-  padding-left: 0.46875rem;
-  padding-right: 0.46875rem;
+  padding-left: 0.375em;
+  padding-right: 0.375em;
 }
 
 .btn-xsmall, .btn-group-xsmall > .btn, .btn-group-xsmall > .btn-check > .btn, .input-group-xsmall > .input-group-addon > .btn, .input-group-xsmall > .input-group-addon > .btn-check > .btn {
-  padding: 0.125rem 0.375rem;
   font-size: 0.75rem;
-  line-height: 1.5;
   border-radius: 0.1875rem;
-}
-
-.btn-xsmall.btn-icon, .btn-group-xsmall > .btn-icon, .input-group-xsmall > .input-group-addon > .btn-icon {
-  padding-left: 0.234375rem;
-  padding-right: 0.234375rem;
 }
 
 .btn-small, .btn-group-small > .btn, .btn-group-small > .btn-check > .btn, .input-group-small > .input-group-addon > .btn, .input-group-small > .input-group-addon > .btn-check > .btn {
-  padding: 0.1875rem 0.5rem;
   font-size: 0.875rem;
-  line-height: 1.5;
   border-radius: 0.1875rem;
 }
 
-.btn-small.btn-icon, .btn-group-small > .btn-icon, .input-group-small > .input-group-addon > .btn-icon {
-  padding-left: 0.3125rem;
-  padding-right: 0.3125rem;
-}
-
 .btn-large, .btn-group-large > .btn, .btn-group-large > .btn-check > .btn, .input-group-large > .input-group-addon > .btn, .input-group-large > .input-group-addon > .btn-check > .btn {
-  padding: 0.3125rem 1.125rem;
   font-size: 1.125rem;
-  line-height: 1.5;
   border-radius: 0.3125rem;
-}
-
-.btn-large.btn-icon, .btn-group-large > .btn-icon, .input-group-large > .input-group-addon > .btn-icon {
-  padding-left: 0.703125rem;
-  padding-right: 0.703125rem;
 }
 
 .btn-xlarge, .btn-group-xlarge > .btn, .btn-group-xlarge > .btn-check > .btn, .input-group-xlarge > .input-group-addon > .btn, .input-group-xlarge > .input-group-addon > .btn-check > .btn {
-  padding: 0.375rem 1.25rem;
   font-size: 1.25rem;
-  line-height: 1.5;
   border-radius: 0.3125rem;
-}
-
-.btn-xlarge.btn-icon, .btn-group-xlarge > .btn-icon, .input-group-xlarge > .input-group-addon > .btn-icon {
-  padding-left: 0.78125rem;
-  padding-right: 0.78125rem;
 }
 
 .btn-block {
@@ -4211,7 +3999,7 @@ button.list-item-action {
 .input-group-text {
   display: flex;
   align-items: center;
-  padding: 0.25rem 0.75rem;
+  padding: 0.25em 0.75em;
   margin-bottom: 0;
   font-size: 1rem;
   font-weight: 400;
@@ -4295,7 +4083,7 @@ button.list-item-action {
   align-items: center;
   justify-content: center;
   min-width: 2.25em;
-  padding: 0.25rem 0.5em;
+  padding: 0.25em 0.5em;
   line-height: 1.5;
   border: 0 solid #9eaab4;
   border-radius: 0.25rem;
@@ -4336,33 +4124,29 @@ a.page-link {
 
 .pagination-xsmall .page-text,
 .pagination-xsmall .page-link {
-  padding: 0.125rem 0.5em;
+  padding: 0.25em 0.5em;
   font-size: 0.75rem;
-  line-height: 1.5;
   border-radius: 0.1875rem;
 }
 
 .pagination-small .page-text,
 .pagination-small .page-link {
-  padding: 0.1875rem 0.5em;
+  padding: 0.25em 0.5em;
   font-size: 0.875rem;
-  line-height: 1.5;
   border-radius: 0.1875rem;
 }
 
 .pagination-large .page-text,
 .pagination-large .page-link {
-  padding: 0.3125rem 0.5em;
+  padding: 0.25em 0.5em;
   font-size: 1.125rem;
-  line-height: 1.5;
   border-radius: 0.3125rem;
 }
 
 .pagination-xlarge .page-text,
 .pagination-xlarge .page-link {
-  padding: 0.375rem 0.5em;
+  padding: 0.25em 0.5em;
   font-size: 1.25rem;
-  line-height: 1.5;
   border-radius: 0.3125rem;
 }
 
@@ -4826,7 +4610,7 @@ a.page-link {
 }
 
 .navbar-toggle {
-  padding: 0.25rem 0.75rem;
+  padding: 0.25em 0.75em;
   font-size: 1.25rem;
   line-height: 1;
   background-color: transparent;
@@ -6490,7 +6274,7 @@ a.page-link {
 }
 
 .popover.top .popover-arrow {
-  bottom: calc((0.625rem + 1px) * -1);
+  bottom: calc(-0.625rem + -1px);
   right: 50%;
   margin-right: -0.625rem;
   border-top-color: rgba(38, 45, 52, 0.4);
@@ -6510,7 +6294,7 @@ a.page-link {
 
 .popover.forward .popover-arrow {
   top: 50%;
-  right: calc((0.625rem + 1px) * -1);
+  right: calc(-0.625rem + -1px);
   margin-top: -0.625rem;
   border-left-color: rgba(38, 45, 52, 0.4);
   border-right-width: 0;
@@ -6528,7 +6312,7 @@ a.page-link {
 }
 
 .popover.bottom .popover-arrow {
-  top: calc((0.625rem + 1px) * -1);
+  top: calc(-0.625rem + -1px);
   left: 50% ;
   margin-right: -0.625rem;
   border-top-width: 0;
@@ -6548,7 +6332,7 @@ a.page-link {
 
 .popover.reverse .popover-arrow {
   top: 50%;
-  left: calc((0.625rem + 1px) * -1);
+  left: calc(-0.625rem + -1px);
   margin-top: -0.625rem;
   border-left-width: 0;
   border-right-color: rgba(38, 45, 52, 0.4);
