@@ -426,7 +426,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
             <tr>
                 <td><code>$btn-padding-y</code></td>
                 <td>string</td>
-                <td><code>.25rem</code></td>
+                <td><code>.25em</code></td>
                 <td>
                     Base button vertical padding.
                 </td>
@@ -434,7 +434,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
             <tr>
                 <td><code>$btn-padding-x</code></td>
                 <td>string</td>
-                <td><code>.75rem</code></td>
+                <td><code>.75em</code></td>
                 <td>
                     Base button horizontal padding.
                 </td>
@@ -562,7 +562,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
             <tr>
                 <td><code>$btn-icon-multiplier</code></td>
                 <td>string</td>
-                <td><code>.625</code></td>
+                <td><code>.5</code></td>
                 <td>
                     Multiplier for horizontal padding of icon button variants.
                 </td>
