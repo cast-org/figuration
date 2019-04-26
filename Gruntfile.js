@@ -26,6 +26,7 @@ module.exports = function(grunt) {
 
     var autoprefixer = require('autoprefixer');
     var flexbugs = require('postcss-flexbugs-fixes');
+    var calc = require('postcss-calc');
     var sass = require('node-sass');
 
     grunt.initConfig({
@@ -202,13 +203,13 @@ module.exports = function(grunt) {
             core: {
                 options: {
                     map: true,
-                    processors: [flexbugs, autoprefixer]
+                    processors: [flexbugs, calc, autoprefixer]
                 },
                 src: ['dist/css/*.css', '!dist/css/*.min.css']
             },
             docs: {
                 options: {
-                    processors: [flexbugs, autoprefixer]
+                    processors: [flexbugs, calc, autoprefixer]
                 },
                 src: ['docs/assets/css/*.css', '!docs/assets/css/*.min.css']
             }
