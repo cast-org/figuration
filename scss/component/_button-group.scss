@@ -113,7 +113,7 @@
                 }
                 @if $enable-btn-icon {
                     .btn-group-#{$size} > .btn-icon {
-                        @extend %btn-icon-#{$size};
+                        @extend %btn-icon-#{$size} !optional;
                     }
                 }
             }

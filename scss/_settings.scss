@@ -467,31 +467,31 @@ $component-sizes: () !default;
 $component-sizes: map-merge(
     (
         "xsmall": (
-            "padding-y":     .125rem,
-            "padding-x":     .375rem,
+            "padding-y":     null,
+            "padding-x":     null,
             "font-size":     ($font-size-base * .75),
-            "line-height":   1.5,
+            "line-height":   null,
             "border-radius": .1875rem
         ),
         "small": (
-            "padding-y":     .1875rem,
-            "padding-x":     .5rem,
+            "padding-y":     null,
+            "padding-x":     null,
             "font-size":     ($font-size-base * .875),
-            "line-height":   1.5,
+            "line-height":   null,
             "border-radius": .1875rem
         ),
         "large": (
-            "padding-y":     .3125rem,
-            "padding-x":     1.125rem,
+            "padding-y":     null,
+            "padding-x":     null,
             "font-size":     ($font-size-base * 1.125),
-            "line-height":    1.5,
+            "line-height":   null,
             "border-radius": .3125rem
         ),
         "xlarge": (
-            "padding-y":     .375rem,
-            "padding-x":     1.25rem,
+            "padding-y":     null,
+            "padding-x":     null,
             "font-size":     ($font-size-base * 1.25),
-            "line-height":    1.5,
+            "line-height":   null,
             "border-radius": .3125rem
         )
     ),
@@ -667,8 +667,8 @@ $table-hover-alt-box-shadow:    inset 0 0 0 999rem rgba($white, .2) !default;
 
 // Buttons
 // =====
-$btn-padding-y:             .25rem !default;
-$btn-padding-x:             .75rem !default;
+$btn-padding-y:             .25em !default;
+$btn-padding-x:             .75em !default;
 $btn-font-family:           null !default;
 $btn-font-size:             $font-size-base !default;
 $btn-font-weight:           $font-weight-normal !default;
@@ -687,7 +687,7 @@ $btn-outline-bg:            transparent !default;
 $btn-disabled-opacity:      .6 !default;
 
 $btn-block-spacing-y:       .25rem !default;
-$btn-icon-multiplier:       .625 !default;
+$btn-icon-multiplier:       .5 !default;
 
 $btn-default-bg:                    $white !default;
 $btn-default-color:                 color-if-contrast($uibase-500, $btn-default-bg) !default;

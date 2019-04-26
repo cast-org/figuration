@@ -1,3 +1,31 @@
+// Calculate input height
+// Make inputs the height of their button counterpart (line-height + padding + border)
+@function calc-input-height-inner($padding-y, $line-height) {
+    @if $padding-y == null and $line-height == null {
+        @return null;
+    }
+    $height-font:    1em * if($line-height != null, $line-height, $input-line-height);
+    $height-padding: 2 * if($padding-y != null, $padding-y, $input-padding-y);
+
+    $height-inner: #{$height-font} unquote("+") #{$height-padding};
+
+    @return calc(#{$height-inner});
+}
+
+@function calc-input-height-outer($padding-y, $line-height) {
+    @if $padding-y == null and $line-height == null {
+        @return null;
+    }
+    $height-font:    1em * if($line-height != null, $line-height, $input-line-height);
+    $height-padding: 2 * if($padding-y != null, $padding-y, $input-padding-y);
+    $height-border:  $input-border-width * 2;
+
+    $height-inner: #{$height-font} unquote("+") #{$height-padding};
+    $height-outer: #{$height-inner} unquote("+") #{$height-border};
+
+    @return calc(#{$height-outer});
+}
+
 // Form validation states
 // Generate the form validation CSS for valid and invalid states.
 @mixin form-validation-state($state, $color, $icon) {
@@ -188,32 +216,34 @@
         @each $size, $dims in $input-sizes {
             $sz-padding-x:     map-get($dims, "padding-x");
 
-            @if $enable-validation-icons {
-                @if $enable-form-control {
-                    .form-control-#{$size}:not(textarea),
-                    .input-group-#{$size} > .form-control:not(textarea) {
-                        .was-validated &.has-validation-icon:#{$state},
-                        &.has-validation-icon.is-#{$state} {
-                            padding-right: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+            @if $sz-padding-x != null {
+                @if $enable-validation-icons {
+                    @if $enable-form-control {
+                        .form-control-#{$size}:not(textarea),
+                        .input-group-#{$size} > .form-control:not(textarea) {
+                            .was-validated &.has-validation-icon:#{$state},
+                            &.has-validation-icon.is-#{$state} {
+                                padding-right: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+                            }
+                        }
+
+                        // stylelint-disable-next-line selector-no-qualifying-type
+                        textarea.form-control-#{$size},
+                        .input-group-#{$size} > textarea.form-control {
+                            .was-validated &.has-validation-icon:#{$state},
+                            &.has-validation-icon.is-#{$state} {
+                                padding-left: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+                            }
                         }
                     }
 
-                    // stylelint-disable-next-line selector-no-qualifying-type
-                    textarea.form-control-#{$size},
-                    .input-group-#{$size} > textarea.form-control {
-                        .was-validated &.has-validation-icon:#{$state},
-                        &.has-validation-icon.is-#{$state} {
-                            padding-left: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
-                        }
-                    }
-                }
-
-                @if $enable-custom-select {
-                    .custom-select-#{$size},
-                    .input-group-#{$size} > .custom-select {
-                        .was-validated &.has-validation-icon:#{$state},
-                        &.has-validation-icon.is-#{$state} {
-                            padding-right: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset});
+                    @if $enable-custom-select {
+                        .custom-select-#{$size},
+                        .input-group-#{$size} > .custom-select {
+                            .was-validated &.has-validation-icon:#{$state},
+                            &.has-validation-icon.is-#{$state} {
+                                padding-right: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset});
+                            }
                         }
                     }
                 }
