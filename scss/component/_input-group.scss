@@ -160,7 +160,7 @@
                 }
                 @if $enable-btn-icon {
                     .input-group-#{$size} > .input-group-addon > .btn-icon {
-                        @extend %btn-icon-#{$size};
+                        @extend %btn-icon-#{$size} !optional;
                     }
                 }
             }

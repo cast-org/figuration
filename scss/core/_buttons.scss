@@ -212,8 +212,10 @@
             }
 
             %btn-icon-#{$size} {
-                padding-right: $sz-padding-x * $btn-icon-multiplier;
-                padding-left: $sz-padding-x * $btn-icon-multiplier;
+                @if $sz-padding-x != null {
+                    padding-right: $sz-padding-x * $btn-icon-multiplier;
+                    padding-left: $sz-padding-x * $btn-icon-multiplier;
+                }
             }
 
             .btn-#{$size} {
@@ -223,7 +225,7 @@
 
                 &.btn-icon {
                     @if $enable-btn-icon and $enable-btn-icon-sizing {
-                        @extend %btn-icon-#{$size};
+                        @extend %btn-icon-#{$size} !optional;
                     }
                 }
             }

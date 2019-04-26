@@ -1,18 +1,12 @@
 // stylelint-disable selector-no-qualifying-type
 
-// Base input/select height calculation
-// Additional ones for each size are done during size processing generation
-$input-height-inner:    (1em * #{$input-line-height}) + (#{$input-padding-y * 2}) !default;
-$input-height-outer:    calc(#{$input-height-inner} + #{($input-border-width * 2)}) !default;
-
 @if $enable-form {
     // Textual form controls
     @if $enable-form-control {
         .form-control {
             display: block;
             width: 100%;
-            // Make inputs the height of their button counterpart (line-height + padding + border)
-            height: $input-height-outer;
+            height: calc-input-height-outer($input-padding-y, $input-line-height);
             padding: $input-padding-y $input-padding-x;
             font-family: $input-font-family;
             @include font-size($input-font-size);
@@ -137,12 +131,14 @@ $input-height-outer:    calc(#{$input-height-inner} + #{($input-border-width * 2
             $sz-padding-y:     map-get($dims, "padding-y");
             $sz-padding-x:     map-get($dims, "padding-x");
             $sz-border-radius: map-get($dims, "border-radius");
-            $sz-inner-height:  ((1em * #{$sz-line-height}) + (#{$sz-padding-y * 2}));
-            $sz-outer-height:  calc(#{$sz-inner-height} + #{($input-border-width * 2)});
 
             %form-control-#{$size} {
-                height: $sz-outer-height;
-                padding: $sz-padding-y $sz-padding-x;
+                height: calc-input-height-outer($sz-padding-y, $sz-line-height);
+                @if $sz-padding-y != null and $sz-padding-x != null {
+                    $my-padding-y: if($sz-padding-y != null, $sz-padding-y, $input-padding-y);
+                    $my-padding-x: if($sz-padding-x != null, $sz-padding-x, $input-padding-x);
+                    padding: $my-padding-y $my-padding-x;
+                }
                 @include font-size($sz-font-size);
                 line-height: $sz-line-height;
                 @include border-radius($sz-border-radius);
@@ -155,8 +151,10 @@ $input-height-outer:    calc(#{$input-height-inner} + #{($input-border-width * 2
             }
 
             %form-control-label-#{$size} {
-                padding-top: calc(#{$sz-padding-y} + #{$input-border-width});
-                padding-bottom: calc(#{$sz-padding-y} + #{$input-border-width});
+                @if $sz-padding-y != null {
+                    padding-top: calc(#{$sz-padding-y} + #{$input-border-width});
+                    padding-bottom: calc(#{$sz-padding-y} + #{$input-border-width});
+                }
                 @include font-size($sz-font-size);
                 line-height: $sz-line-height;
             }

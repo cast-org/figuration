@@ -116,7 +116,15 @@
 
 // Button sizes
 @mixin button-size($padding-y, $padding-x, $font-size, $line-height, $border-radius) {
-    padding: $padding-y $padding-x;
+    @if $padding-y == null and $padding-x == null {
+        // No padding output
+    } @else if $padding-y == null or $padding-x == null {
+        $padding-y: if($padding-y != null, $padding-y, $btn-padding-y);
+        $padding-x: if($padding-x != null, $padding-x, $btn-padding-x);
+        padding: $padding-y $padding-x;
+    } @else {
+        padding: $padding-y $padding-x;
+    }
     @include font-size($font-size);
     line-height: $line-height;
     // Provide a fallback to override to the browser default

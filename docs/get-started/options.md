@@ -185,45 +185,72 @@ There are additional options in our `_settings_options.scss` that can be used to
 
 ## Component Sizes
 
-The button, button group, pagination, form-control and input-group components all use the same base sizing settings for consitency.
+The button, button group, pagination, form-control and input-group components all use the same base sizing settings for consistency.
 
 By using a map, we can be sure the components are all the same height when horizontally aligned.
 
-{% capture callout %}
-`<select>` Sizing Caveat
-{:.h5 .no_toc}
+You can modify, remove, or add additional sizes, beyond the default sizing, by redefining the `$component-sizes` map.  The `null` values will use the component's default line-height and `em` padding for the that particular size variant.
 
-Currently there is a minor issue with vertical sizing and `<select>` elements with Internet Explorer.  IE will render `<select>` elements slightly shorter in vertical height than other browsers.
-
-This has not undergone stringent testing on mobile devices yet.
-{% endcapture %}
-{% include callout.html content=callout type="info" %}
-
-You can modify, remove, or add additional sizes, beyond the default sizing, by redefining the `$component-sizes` variable and
-Below is the default additional settings for reference.  Try not to confuse the size designations (`sm`, `lg`, etc.) with the grid breakpoints designations.
+Below is the default additional settings for reference.
 
 {% highlight scss %}
 // Used for button, button groups, pagination, form-control, and input-group
 $component-sizes: (
-    xs: (
+    "xsmall": (
+        "padding-y":     null,
+        "padding-x":     null,
+        "font-size":     ($font-size-base * .75),
+        "line-height":   null,
+        "border-radius": .1875rem
+    ),
+    "small": (
+        "padding-y":     null,
+        "padding-x":     null,
+        "font-size":     ($font-size-base * .875),
+        "line-height":   null,
+        "border-radius": .1875rem
+    ),
+    "large": (
+        "padding-y":     null,
+        "padding-x":     null,
+        "font-size":     ($font-size-base * 1.125),
+        "line-height":   null,
+        "border-radius": .3125rem
+    ),
+    "xlarge": (
+        "padding-y":     null,
+        "padding-x":     null,
+        "font-size":     ($font-size-base * 1.25),
+        "line-height":   null,
+        "border-radius": .3125rem
+    )
+);
+{% endhighlight %}
+
+If you wish to have more concise control over components, you can always force the sizing values to fit your needs.
+
+{% highlight scss %}
+// Used for button, button groups, pagination, form-control, and input-group
+$component-sizes: (
+    xsmall: (
         font-size:      .75rem,
         padding-y:      .1875rem,
         padding-x:      .375rem,
         border-radius:  .1875rem
     ),
-    sm: (
+    small: (
         font-size:      .875rem,
         padding-y:      .25rem,
         padding-x:      .5rem,
         border-radius:  .1875rem
    ),
-    lg: (
+    large: (
         font-size:      1.25rem,
         padding-y:      .625rem,
         padding-x:      1.25rem,
         border-radius:  .3125rem
     ),
-    xl: (
+    xlarge: (
         font-size:      1.5rem,
         padding-y:      .75rem,
         padding-x:      1.5rem,
