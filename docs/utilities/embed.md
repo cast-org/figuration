@@ -70,11 +70,23 @@ It is possible to alter the available aspect ratios. These are the default aspec
 {% highlight scss %}
 $embed-fluid-default-ratio: percentage(9 / 16) !default;
 $embed-fluid-aspect-ratios: (
-    (21, 9),
-    (16, 9),
-    (4, 3),
-    (1, 1)
-) !default;
+    "21x9": (
+        x: 21,
+        y: 9
+    ),
+    "16x9": (
+        x: 16,
+        y: 9
+    ),
+    "4x4": (
+        x: 4,
+        y: 3
+    ),
+    "1x1": (
+        x: 1,
+        y: 1
+    )
+);
 {% endhighlight %}
 
 Additional aspect ratio classes can also be disabled in your custom settings using:
