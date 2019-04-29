@@ -28,6 +28,32 @@
 
 // Form validation states
 // Generate the form validation CSS for valid and invalid states.
+@mixin form-validation-state-selector($state) {
+    @if ($state == "valid" or $state == "invalid") {
+        .was-validated &:#{$state},
+        &.is-#{$state} {
+            @content;
+        }
+    } @else {
+        &.is-#{$state} {
+            @content;
+        }
+    }
+}
+
+@mixin form-validation-state-selector-icon($state) {
+    @if ($state == "valid" or $state == "invalid") {
+        .was-validated &.has-validation-icon:#{$state},
+        &.has-validation-icon.is-#{$state} {
+            @content;
+        }
+    } @else {
+        &.has-validation-icon.is-#{$state} {
+            @content;
+        }
+    }
+}
+
 @mixin form-validation-state($state, $color, $icon) {
     @if $enable-form-validation-feedback {
         .#{$state}-feedback {
@@ -57,8 +83,7 @@
 
     .form-control,
     .custom-select {
-        .was-validated &:#{$state},
-        &.is-#{$state} {
+        @include form-validation-state-selector($state) {
             border-color: $color;
 
             &:focus {
@@ -73,8 +98,7 @@
         }
 
         @if $enable-validation-icons {
-            .was-validated &.has-validation-icon:#{$state},
-            &.has-validation-icon.is-#{$state} {
+            @include form-validation-state-selector-icon($state) {
                 //background: $icon no-repeat right $form-feedback-icon-offset center / $form-feedback-icon-width $form-feedback-icon-height;
                 background-image: $icon;
                 background-repeat: no-repeat;
@@ -87,8 +111,7 @@
     @if $enable-validation-icons {
         @if $enable-form-control {
             .form-control:not(textarea) {
-                .was-validated &.has-validation-icon:#{$state},
-                &.has-validation-icon.is-#{$state} {
+                @include form-validation-state-selector-icon($state) {
                     padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
                 }
             }
@@ -99,8 +122,7 @@
         @if $enable-form-control {
             // stylelint-disable-next-line selector-no-qualifying-type
             textarea.form-control {
-                .was-validated &.has-validation-icon:#{$state},
-                &.has-validation-icon.is-#{$state} {
+                @include form-validation-state-selector-icon($state) {
                     padding-left: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
                     background-position: left $form-feedback-icon-offset center;
                 }
@@ -110,8 +132,7 @@
         // Apply both the select indicator and validaton icons.
         @if $enable-custom-select {
             .custom-select {
-                .was-validated &.has-validation-icon:#{$state},
-                &.has-validation-icon.is-#{$state} {
+                @include form-validation-state-selector-icon($state) {
                     padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset});
                     background-image: $custom-select-indicator-image, $icon;
                     background-repeat: no-repeat, no-repeat;
@@ -124,8 +145,7 @@
 
     @if $enable-form-control-special {
         .form-control-file {
-            .was-validated &:#{$state},
-            &.is-#{$state} {
+            @include form-validation-state-selector($state) {
                 ~ .#{$state}-feedback,
                 ~ .#{$state}-tooltip {
                     display: block;
@@ -136,8 +156,7 @@
 
     @if $enable-form-check {
         .form-check-input {
-            .was-validated &:#{$state},
-            &.is-#{$state} {
+            @include form-validation-state-selector($state) {
                 ~ .form-check-label {
                     color: $color;
                 }
@@ -152,8 +171,7 @@
 
     @if $enable-custom-control {
         .custom-control-input {
-            .was-validated &:#{$state},
-            &.is-#{$state} {
+            @include form-validation-state-selector($state) {
                 ~ .custom-control-label {
                     color: $color;
                 }
@@ -188,8 +206,7 @@
     // custom file
     @if $enable-custom-file {
         .custom-file-input {
-            .was-validated &:#{$state},
-            &.is-#{$state} {
+            @include form-validation-state-selector($state) {
                 ~ .custom-file-label {
                     border-color: $color;
 
@@ -221,8 +238,7 @@
                     @if $enable-form-control {
                         .form-control-#{$size}:not(textarea),
                         .input-group-#{$size} > .form-control:not(textarea) {
-                            .was-validated &.has-validation-icon:#{$state},
-                            &.has-validation-icon.is-#{$state} {
+                            @include form-validation-state-selector-icon($state) {
                                 padding-right: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
                             }
                         }
@@ -230,8 +246,7 @@
                         // stylelint-disable-next-line selector-no-qualifying-type
                         textarea.form-control-#{$size},
                         .input-group-#{$size} > textarea.form-control {
-                            .was-validated &.has-validation-icon:#{$state},
-                            &.has-validation-icon.is-#{$state} {
+                            @include form-validation-state-selector-icon($state) {
                                 padding-left: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
                             }
                         }
@@ -240,8 +255,7 @@
                     @if $enable-custom-select {
                         .custom-select-#{$size},
                         .input-group-#{$size} > .custom-select {
-                            .was-validated &.has-validation-icon:#{$state},
-                            &.has-validation-icon.is-#{$state} {
+                            @include form-validation-state-selector-icon($state) {
                                 padding-right: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset});
                             }
                         }
