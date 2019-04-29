@@ -579,12 +579,29 @@ $thumbnail-box-shadow:      0 .0625rem .125rem rgba($black, .075) !default;
 // Fluid embed
 // =====
 $embed-fluid-default-ratio: percentage(9 / 16) !default;
-$embed-fluid-aspect-ratios: (
-    (21, 9),
-    (16, 9),
-    (4, 3),
-    (1, 1)
-) !default;
+$embed-fluid-aspect-ratios: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$embed-fluid-aspect-ratios: map-merge(
+    (
+        "21x9": (
+            x: 21,
+            y: 9
+        ),
+        "16x9": (
+            x: 16,
+            y: 9
+        ),
+        "4x3": (
+            x: 4,
+            y: 3
+        ),
+        "1x1": (
+            x: 1,
+            y: 1
+        )
+    ),
+    $embed-fluid-aspect-ratios
+);
 
 // Code
 // =====

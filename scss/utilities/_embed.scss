@@ -28,15 +28,11 @@
                 border: 0;
             }
         }
-        @if (type-of($embed-fluid-aspect-ratios) == "list" and length($embed-fluid-aspect-ratios) != 0) {
-            @each $embed-fluid-aspect-ratio in $embed-fluid-aspect-ratios {
-                $embed-fluid-x: nth($embed-fluid-aspect-ratio, 1);
-                $embed-fluid-y: nth($embed-fluid-aspect-ratio, 2);
 
-                .embed-fluid-#{$embed-fluid-x}x#{$embed-fluid-y} {
-                    &::before {
-                        padding-top: percentage($embed-fluid-y / $embed-fluid-x);
-                    }
+        @each $key, $ratio in $embed-fluid-aspect-ratios {
+            .embed-fluid-#{$key} {
+                &::before {
+                    padding-top: percentage(map-get($ratio, y) / map-get($ratio, x));
                 }
             }
         }
