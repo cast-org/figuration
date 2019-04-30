@@ -81,8 +81,7 @@
         }
     }
 
-    .form-control,
-    .custom-select {
+    .form-control {
         @include form-validation-state-selector($state) {
             border-color: $color;
 
@@ -117,9 +116,9 @@
             }
         }
 
-        // Icon is placed on left, what should hopefully be the opposite side of the scrollbar,
-        // otherwise icon can become obscured by the scrollbar.
         @if $enable-form-control {
+            // Icon is placed on left, what should hopefully be the opposite side of the scrollbar,
+            // otherwise icon can become obscured by the scrollbar.
             // stylelint-disable-next-line selector-no-qualifying-type
             textarea.form-control {
                 @include form-validation-state-selector-icon($state) {
@@ -127,17 +126,16 @@
                     background-position: left $form-feedback-icon-offset center;
                 }
             }
-        }
 
-        // Apply both the select indicator and validaton icons.
-        @if $enable-custom-select {
-            .custom-select {
+            // Apply both the select indicator and validaton icons.
+            // stylelint-disable-next-line selector-no-qualifying-type
+            select.form-control {
                 @include form-validation-state-selector-icon($state) {
-                    padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset});
-                    background-image: $custom-select-indicator-image, $icon;
+                    padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$form-select-indicator-width} + #{$form-select-indicator-offset});
+                    background-image: $form-select-indicator-image, $icon;
                     background-repeat: no-repeat, no-repeat;
-                    background-position: right $custom-select-indicator-offset center, right calc(#{$form-feedback-icon-offset} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset}) center;
-                    background-size: $custom-select-indicator-width $custom-select-indicator-height, $form-feedback-icon-width $form-feedback-icon-height;
+                    background-position: right $form-select-indicator-offset center, right calc(#{$form-feedback-icon-offset} + #{$form-select-indicator-width} + #{$form-select-indicator-offset}) center;
+                    background-size: $form-select-indicator-width $form-select-indicator-height, $form-feedback-icon-width $form-feedback-icon-height;
                 }
             }
         }
@@ -250,13 +248,12 @@
                                 padding-left: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
                             }
                         }
-                    }
 
-                    @if $enable-custom-select {
-                        .custom-select-#{$size},
-                        .input-group-#{$size} > .custom-select {
+                        // stylelint-disable-next-line selector-no-qualifying-type
+                        select.form-control-#{$size},
+                        .input-group-#{$size} > select.form-control {
                             @include form-validation-state-selector-icon($state) {
-                                padding-right: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset});
+                                padding-right: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$form-select-indicator-width} + #{$form-select-indicator-offset});
                             }
                         }
                     }

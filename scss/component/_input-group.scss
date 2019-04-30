@@ -9,7 +9,6 @@
         width: 100%;
 
         > .form-control,
-        > .custom-select,
         > .custom-file {
             position: relative;  // Needed for z-index on focus/active state
             flex: 1 1 auto;
@@ -24,7 +23,6 @@
             }
 
             + .form-control,
-            + .custom-select,
             + .custom-file {
                 margin-left: -$input-border-width;
             }
@@ -32,7 +30,6 @@
 
         // Bring the "active" form control to the top of surrounding elements
         > .form-control:focus,
-        > .custom-select:focus,
         > .custom-file .custom-file-input:focus ~ .custom-file-label {
             z-index: 3;
         }
@@ -43,8 +40,7 @@
             z-index: 4;
         }
 
-        > .form-control,
-        > .custom-select {
+        > .form-control {
             &:not(:first-child) { @include border-start-radius(0); }
             &:not(:last-child):not(.input-group-end) { @include border-end-radius(0); }
         }
@@ -143,7 +139,6 @@
             $sz-padding-x:     map-get($dims, "padding-x");
 
             .input-group-#{$size} > .form-control,
-            .input-group-#{$size} > .custom-select,
             .input-group-#{$size} > .input-group-addon > .input-group-text {
                 @extend %form-control-#{$size};
             }

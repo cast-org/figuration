@@ -33,7 +33,7 @@
 
     <h2>Text Input, Checkbox, and Button</h2>
 
-    <form class="form-inline form-inline-checkbox mb-1">
+    <form class="form-inline mb-1">
         <div class="form-group mb-0_5 me-sm-0_5 mb-sm-0">
             <label class="sr-only" for="inlineEmail1">Email address</label>
             <input type="email" class="form-control" id="inlineEmail1" placeholder="Email Address">
@@ -43,9 +43,8 @@
             <input type="password" class="form-control" id="inlinePassword1" placeholder="Password">
         </div>
         <div class="form-check mb-0_5 me-sm-0_5 mb-sm-0">
-            <label class="form-check-label">
-                <input class="form-check-input" type="checkbox"> Remember me
-            </label>
+            <input id="checkbox-0" class="form-check-input" type="checkbox">
+            <label for="checkbox-0" class="form-check-label" >Remember me</label>
         </div>
         <button type="submit" class="btn btn-primary">Sign in</button>
     </form>
@@ -68,7 +67,7 @@
         <button type="submit" class="btn btn-primary">Transfer cash</button>
     </form>
 
-    <h2>Standard Select</h2>
+    <h2>Select</h2>
 
     <form class="form-inline mb-1">
         <label class="me-sm-0_5" for="inlinePref4">Preference</label>
@@ -79,25 +78,9 @@
             <option value="3">Three</option>
         </select>
         <div class="custom-control custom-checkbox mb-0_5 me-sm-0_5 mb-sm-0">
-            <input type="checkbox" class="custom-control-input">
-            <label class="custom-control-label">Remember my preference</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-
-    <h2>Custom Select</h2>
-
-    <form class="form-inline mb-1">
-        <label class="me-sm-0_5" for="inlinePref5">Preference</label>
-        <select class="custom-select mb-0_5 me-sm-0_5 mb-sm-0" id="inlinePref5">
-            <option selected>Choose...</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-        <div class="custom-control custom-checkbox mb-0_5 me-sm-0_5 mb-sm-0">
-            <input type="checkbox" class="custom-control-input">
-            <label class="custom-control-label">Remember my preference</label>
+            <input id="checkbox-1" class="custom-control-input" type="checkbox">
+            <label for="checkbox-1" class="custom-control-indicator"></label>
+            <label for="checkbox-1" class="custom-control-label">Remember my preference</label>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

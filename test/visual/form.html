@@ -16,8 +16,7 @@
     vertical-align: top;
 }
 
-.form-control + .form-control,
-.custom-select + .custom-select {
+.form-control + .form-control {
     margin-top: .5rem;
 }
 </style>
@@ -243,16 +242,6 @@
           <option>5</option>
         </select>
       </fieldset>
-      <fieldset class="form-group col-md-3">
-        <label for="size0-2" class="sr-only">Example select</label>
-        <select class="custom-select custom-select-xsmall" id="size0-2">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </fieldset>
     </form>
     <form class="row">
       <div class="col-md-2 text-end">
@@ -268,16 +257,6 @@
       <fieldset class="form-group col-md-3">
         <label for="size1-1" class="sr-only">Example select</label>
         <select class="form-control form-control-small" id="size1-1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </fieldset>
-      <fieldset class="form-group col-md-3">
-        <label for="size1-2" class="sr-only">Example select</label>
-        <select class="custom-select custom-select-small" id="size1-2">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -307,16 +286,6 @@
           <option>5</option>
         </select>
       </fieldset>
-      <fieldset class="form-group col-md-3">
-        <label for="size2-2" class="sr-only">Example select</label>
-        <select class="custom-select" id="size2-2">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </fieldset>
     </form>
     <form class="row">
       <div class="col-md-2 text-end">
@@ -339,16 +308,6 @@
           <option>5</option>
         </select>
       </fieldset>
-      <fieldset class="form-group col-md-3">
-        <label for="size3-2" class="sr-only">Example select</label>
-        <select class="custom-select custom-select-large" id="size3-2">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </fieldset>
     </form>
     <form class="row">
       <div class="col-md-2 text-end">
@@ -364,16 +323,6 @@
       <fieldset class="form-group col-md-3">
         <label for="size4-1" class="sr-only">Example select</label>
         <select class="form-control form-control-xlarge" id="size4-1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </fieldset>
-      <fieldset class="form-group col-md-3">
-        <label for="size4-2" class="sr-only">Example select</label>
-        <select class="custom-select custom-select-xlarge" id="size4-2">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -407,38 +356,17 @@
 
 <hr />
 
-<h2>Custom Select Sizing:</h2>
-<div class="mb-1">
-    <select class="custom-select custom-select-xlarge">
-        <option>Extra large select</option>
-    </select>
-    <select class="custom-select custom-select-large">
-        <option>Large select</option>
-    </select>
-    <select class="custom-select">
-        <option>Default select</option>
-    </select>
-    <select class="custom-select custom-select-small">
-        <option>Small select</option>
-    </select>
-    <select class="custom-select custom-select-xsmall">
-        <option>Extra small select</option>
-    </select>
-</div>
-
-<hr />
-
 <h2>Static and Label Sizing:</h2>
 <div class="form-group row">
     <label class="col-sm-2 form-control-label form-control-label-xsmall">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-static-xsmall">email@example.com</p>
+        <p class="form-control-static form-control-label-xsmall">email@example.com</p>
     </div>
 </div>
 <div class="form-group row">
     <label class="col-sm-2 form-control-label form-control-label-small">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-static-small">email@example.com</p>
+        <p class="form-control-static form-control-label-small">email@example.com</p>
     </div>
 </div>
 <div class="form-group row">
@@ -450,13 +378,13 @@
 <div class="form-group row">
     <label class="col-sm-2 form-control-label form-control-label-large">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-static-large">email@example.com</p>
+        <p class="form-control-static form-control-label-large">email@example.com</p>
     </div>
 </div>
 <div class="form-group row">
     <label class="col-sm-2 form-control-label form-control-label-xlarge">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-static-xlarge">email@example.com</p>
+        <p class="form-control-static form-control-label-xlarge">email@example.com</p>
     </div>
 </div>
 
@@ -477,15 +405,15 @@
         <div class="p-0_5 bg-dark"><input type="text" class="form-control" placeholder="something"></div>
     </div>
     <div class="col">
-        <div class="p-0_5"><select class="custom-select"><option>Select</option></select></div>
-        <div class="p-0_5 bg-primary"><select class="custom-select"><option>Select</option></select></div>
-        <div class="p-0_5 bg-secondary"><select class="custom-select"><option>Select</option></select></div>
-        <div class="p-0_5 bg-success"><select class="custom-select"><option>Select</option></select></div>
-        <div class="p-0_5 bg-info"><select class="custom-select"><option>Select</option></select></div>
-        <div class="p-0_5 bg-warning"><select class="custom-select"><option>Select</option></select></div>
-        <div class="p-0_5 bg-danger"><select class="custom-select"><option>Select</option></select></div>
-        <div class="p-0_5 bg-light"><select class="custom-select"><option>Select</option></select></div>
-        <div class="p-0_5 bg-dark"><select class="custom-select"><option>Select</option></select></div>
+        <div class="p-0_5"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-primary"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-secondary"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-success"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-info"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-warning"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-danger"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-light"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-dark"><select class="form-control"><option>Select</option></select></div>
     </div>
 </div>
 <div class="row mb-1">

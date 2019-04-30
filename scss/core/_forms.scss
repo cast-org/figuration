@@ -47,8 +47,7 @@
             &:disabled,
             &[readonly] {
                 background-color: $input-disabled-bg;
-                // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
-                opacity: 1;
+                opacity: $input-disabled-opacity;
             }
 
             &:disabled {
@@ -57,19 +56,36 @@
         }
 
         select.form-control {
+            padding: $input-padding-y calc(#{$input-padding-x} + #{$form-select-indicator-width} + #{$form-select-indicator-offset}) $input-padding-y $input-padding-x;
+            vertical-align: middle;
+            background: $input-bg $form-select-indicator-image no-repeat right $form-select-indicator-offset center;
+            background-size: $form-select-indicator-width $form-select-indicator-height;
+            appearance: none;
+
+            :disabled {
+                pointer-events: none;
+            }
+
             &[size]:not([size="1"]),
             &[multiple] {
                 height: auto;
+                padding-left: $input-padding-x;
+                background-image: none;
             }
 
             &:focus::-ms-value {
                 // Suppress the nested default white text on blue background highlight given to
                 // the selected option text when the (still closed) <select> receives focus
-                // in IE and (under certain conditions) Edge, as it looks bad and cannot be made to
+                // in IE and (under certain conditions) Edge, as it cannot be made to
                 // match the appearance of the native widget.
                 // See https://github.com/twbs/bootstrap/issues/19398.
                 color: $input-focus-color;
                 background-color: $input-focus-bg;
+            }
+
+            // Hide the default caret in IE11
+            &::-ms-expand {
+                display: none;
             }
         }
 
@@ -147,6 +163,13 @@
             @if $enable-form-control and $enable-form-control-sizing {
                 .form-control-#{$size} {
                     @extend %form-control-#{$size};
+                }
+
+                // Adjust right padding for select items due to indicator
+                @if $sz-padding-x != null {
+                    select.form-control-#{$size} {
+                        padding-right: calc(#{$sz-padding-x} + #{$form-select-indicator-width} + #{$form-select-indicator-offset});
+                    }
                 }
             }
 
@@ -310,11 +333,6 @@
                 }
                 @if $enable-form-control {
                     .form-control {
-                        @extend %form-no-group;
-                    }
-                }
-                @if $enable-custom-select {
-                    .custom-select {
                         @extend %form-no-group;
                     }
                 }

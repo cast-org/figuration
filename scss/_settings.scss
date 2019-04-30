@@ -746,6 +746,7 @@ $input-focus-box-shadow:        $input-focus-box-shadow-size rgba($component-act
 
 $input-disabled-color:          $component-disabled-color !default;
 $input-disabled-bg:             $uibase-50 !default;
+$input-disabled-opacity:        1 !default;
 
 $input-placeholder-color:       #999 !default;
 
@@ -827,12 +828,13 @@ $custom-switch-active-thumb-bg:             palette($primary, 400) !default;
 $custom-switch-disabled-thumb-bg:           $uibase-200 !default;
 $custom-switch-disabled-checked-thumb-bg:   palette($primary, 200) !default;
 
-// Custom select
-$custom-select-indicator-offset:    .375rem !default;
-$custom-select-indicator-width:     10px !default; // In pixels because image dimensions
-$custom-select-indicator-height:    10px !default; // In pixels because image dimensions
-$custom-select-indicator-image:     str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23333' d='M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z'/%3e%3c/svg%3e"), "#", "%23") !default;
-$custom-select-indicator:           $custom-select-indicator-image no-repeat right $custom-select-indicator-offset center / $custom-select-indicator-width $custom-select-indicator-height !default; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
+// Form select
+$form-select-indicator-offset:      .375rem !default;
+$form-select-indicator-width:       .625rem !default;
+$form-select-indicator-height:      .625rem !default;
+$form-select-indicator-color:       rgba($uibase-700, .85) !default;
+$form-select-indicator-image:       str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='#{$form-select-indicator-color}' d='M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z'/%3e%3c/svg%3e"), "#", "%23") !default;
+$form-select-indicator:             $form-select-indicator-image no-repeat right $form-select-indicator-offset center / $form-select-indicator-width $form-select-indicator-height !default; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
 
 // Custom file
 $custom-file-button-color:          $uibase-600 !default;
