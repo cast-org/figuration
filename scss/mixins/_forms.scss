@@ -254,6 +254,11 @@
                         .input-group-#{$size} > select.form-control {
                             @include form-validation-state-selector-icon($state) {
                                 padding-right: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$form-select-indicator-width} + #{$form-select-indicator-offset});
+
+                                &[size]:not([size="1"]),
+                                &[multiple] {
+                                    padding-right: $sz-padding-x;
+                                }
                             }
                         }
                     }
