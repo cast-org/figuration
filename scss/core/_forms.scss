@@ -109,13 +109,13 @@
     // Labels
     // For use with horizontal and inline forms, when you need the label
     // (or legend) text to align with the form controls.
-    @if $enable-form-control-label {
-        .form-control-label {
+    @if $enable-form-label {
+        .form-label {
             padding-top: calc(#{$input-padding-y} + #{$input-border-width});
             padding-bottom: calc(#{$input-padding-y} + #{$input-border-width});
             margin-bottom: 0; // Override the `<label>/<legend>` default
             @include font-size(inherit); // Override the `<legend>` default
-            font-weight: $input-label-font-weight;
+            font-weight: $form-label-font-weight;
             line-height: $input-line-height;
         }
     }
@@ -173,7 +173,7 @@
                 }
             }
 
-            %form-control-label-#{$size} {
+            %form-label-#{$size} {
                 @if $sz-padding-y != null {
                     padding-top: calc(#{$sz-padding-y} + #{$input-border-width});
                     padding-bottom: calc(#{$sz-padding-y} + #{$input-border-width});
@@ -182,9 +182,9 @@
                 line-height: $sz-line-height;
             }
 
-            @if $enable-form-control-label and $enable-form-control-label-sizing {
-                .form-control-label-#{$size} {
-                    @extend %form-control-label-#{$size};
+            @if $enable-form-label and $enable-form-label-sizing {
+                .form-label-#{$size} {
+                    @extend %form-label-#{$size};
                 }
             }
         }
@@ -355,8 +355,8 @@
                     }
                 }
 
-                @if $enable-form-control-label {
-                    .form-control-label {
+                @if $enable-form-label {
+                    .form-label {
                         margin-bottom: 0;
                         vertical-align: middle;
                     }

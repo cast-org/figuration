@@ -94,73 +94,73 @@ Here are examples of `.form-control` applied to each textual HTML5 `<input>` `ty
 
 {% capture example %}
 <div class="form-group row">
-  <label for="example-text-input" class="col-2 form-control-label">Text</label>
+  <label for="example-text-input" class="col-2 form-label">Text</label>
   <div class="col-10">
     <input class="form-control" type="text" value="awesome frameworks" id="example-text-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-search-input" class="col-2 form-control-label">Search</label>
+  <label for="example-search-input" class="col-2 form-label">Search</label>
   <div class="col-10">
     <input class="form-control" type="search" value="How do I move mountains" id="example-search-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-email-input" class="col-2 form-control-label">Email</label>
+  <label for="example-email-input" class="col-2 form-label">Email</label>
   <div class="col-10">
     <input class="form-control" type="email" value="name@example.com" id="example-email-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-url-input" class="col-2 form-control-label">URL</label>
+  <label for="example-url-input" class="col-2 form-label">URL</label>
   <div class="col-10">
     <input class="form-control" type="url" value="http://cast.org/" id="example-url-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-tel-input" class="col-2 form-control-label">Telephone</label>
+  <label for="example-tel-input" class="col-2 form-label">Telephone</label>
   <div class="col-10">
     <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-password-input" class="col-2 form-control-label">Password</label>
+  <label for="example-password-input" class="col-2 form-label">Password</label>
   <div class="col-10">
     <input class="form-control" type="password" value="hunter2" id="example-password-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-number-input" class="col-2 form-control-label">Number</label>
+  <label for="example-number-input" class="col-2 form-label">Number</label>
   <div class="col-10">
     <input class="form-control" type="number" value="42" id="example-number-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-datetime-local-input" class="col-2 form-control-label">Date and time</label>
+  <label for="example-datetime-local-input" class="col-2 form-label">Date and time</label>
   <div class="col-10">
     <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-date-input" class="col-2 form-control-label">Date</label>
+  <label for="example-date-input" class="col-2 form-label">Date</label>
   <div class="col-10">
     <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-month-input" class="col-2 form-control-label">Month</label>
+  <label for="example-month-input" class="col-2 form-label">Month</label>
   <div class="col-10">
     <input class="form-control" type="month" value="2011-08" id="example-month-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-week-input" class="col-2 form-control-label">Week</label>
+  <label for="example-week-input" class="col-2 form-label">Week</label>
   <div class="col-10">
     <input class="form-control" type="week" value="2011-W33" id="example-week-input">
   </div>
 </div>
 <div class="form-group row">
-  <label for="example-time-input" class="col-2 form-control-label">Time</label>
+  <label for="example-time-input" class="col-2 form-label">Time</label>
   <div class="col-10">
     <input class="form-control" type="time" value="13:45:00" id="example-time-input">
   </div>
@@ -356,13 +356,13 @@ When you want to have `readonly` fields in your form styled as plain text, use t
 {% capture example %}
 <form>
   <div class="form-group row">
-    <label for="static-email" class="col-sm-2 form-control-label">Email</label>
+    <label for="static-email" class="col-sm-2 form-label">Email</label>
     <div class="col-sm-10">
       <input type="text" readonly class="form-control-static" id="static-email" value="email@example.com">
     </div>
   </div>
   <div class="form-group row">
-    <label for="static-password" class="col-sm-2 form-control-label">Password</label>
+    <label for="static-password" class="col-sm-2 form-label">Password</label>
     <div class="col-sm-10">
       <input type="password" class="form-control" id="static-password" placeholder="Password">
     </div>
@@ -390,40 +390,40 @@ When you want to have `readonly` fields in your form styled as plain text, use t
 
 Just like sizing the form inputs, you can size `<label>`s, `<legends>`, and static controls with:
 
-- `.form-control-label-xsmall`
-- `.form-control-label-small`
-- `.form-control-label-large`
-- `.form-control-label-xlarge`
+- `.form-label-xsmall`
+- `.form-label-small`
+- `.form-label-large`
+- `.form-label-xlarge`
 
 {% capture example %}
 <div class="form-group flex-items-center row">
-    <label class="col-sm-2 form-control-label form-control-label-xsmall" for="labelstatic-1">Email</label>
+    <label class="col-sm-2 form-label form-label-xsmall" for="labelstatic-1">Email</label>
     <div class="col-sm-10">
-        <input type="text" class="form-control-static form-control-label-xsmall" id="labelstatic-1" value="email@example.com">
+        <input type="text" class="form-control-static form-label-xsmall" id="labelstatic-1" value="email@example.com">
     </div>
 </div>
 <div class="form-group flex-items-center row">
-    <label class="col-sm-2 form-control-label form-control-label-small" for="labelstatic-2">Email</label>
+    <label class="col-sm-2 form-label form-label-small" for="labelstatic-2">Email</label>
     <div class="col-sm-10">
-        <input type="text" class="form-control-static form-control-label-small" id="labelstatic-2" value="email@example.com">
+        <input type="text" class="form-control-static form-label-small" id="labelstatic-2" value="email@example.com">
     </div>
 </div>
 <div class="form-group flex-items-center row">
-    <label class="col-sm-2 form-control-label" for="labelstatic-3">Email</label>
+    <label class="col-sm-2 form-label" for="labelstatic-3">Email</label>
     <div class="col-sm-10">
         <input type="text" class="form-control-static" id="labelstatic-3" value="email@example.com">
     </div>
 </div>
 <div class="form-group flex-items-center row">
-    <label class="col-sm-2 form-control-label form-control-label-large" for="labelstatic-4">Email</label>
+    <label class="col-sm-2 form-label form-label-large" for="labelstatic-4">Email</label>
     <div class="col-sm-10">
-        <input type="text" class="form-control-static form-control-label-large" id="labelstatic-4" value="email@example.com">
+        <input type="text" class="form-control-static form-label-large" id="labelstatic-4" value="email@example.com">
     </div>
 </div>
 <div class="form-group flex-items-center row">
-    <label class="col-sm-2 form-control-label form-control-label-xlarge" for="labelstatic-5">Email</label>
+    <label class="col-sm-2 form-label form-label-xlarge" for="labelstatic-5">Email</label>
     <div class="col-sm-10">
-        <input type="text" class="form-control-static form-control-label-xlarge" id="labelstatic-5" value="email@example.com">
+        <input type="text" class="form-control-static form-label-xlarge" id="labelstatic-5" value="email@example.com">
     </div>
 </div>
 {% endcapture %}
@@ -527,11 +527,11 @@ The `.form-group` class is the easiest way to add some structure to forms. It pr
 {% capture example %}
 <form>
   <div class="form-group">
-    <label class="form-control-label" for="formGroupExampleInput">Example label</label>
+    <label class="form-label" for="formGroupExampleInput">Example label</label>
     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
   </div>
   <div class="form-group">
-    <label class="form-control-label" for="formGroupExampleInput2">Another label</label>
+    <label class="form-label" for="formGroupExampleInput2">Another label</label>
     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
   </div>
 </form>
@@ -628,27 +628,27 @@ More complex layouts can also be created with the grid system.
 
 #### Horizontal Form
 
-Create horizontal forms with the grid by adding the `.row` class to form groups and using the `.col-*-*` classes to specify the width of your labels and controls. Be sure to add `.form-control-label` to your `<label>`s as well so they're vertically centered with their associated form controls.
+Create horizontal forms with the grid by adding the `.row` class to form groups and using the `.col-*-*` classes to specify the width of your labels and controls. Be sure to add `.form-label` to your `<label>`s as well so they're vertically centered with their associated form controls.
 
 At times, you maybe need to use margin or padding utilities to create that perfect alignment you need. For example, we've removed the `padding-top` on our stacked radio inputs label to better align the text baseline.
 
 {% capture example %}
 <form>
   <div class="form-group row">
-    <label for="hform-email" class="col-sm-2 form-control-label">Email</label>
+    <label for="hform-email" class="col-sm-2 form-label">Email</label>
     <div class="col-sm-10">
       <input type="email" class="form-control" id="hform-email" placeholder="Email">
     </div>
   </div>
   <div class="form-group row">
-    <label for="hform-pass" class="col-sm-2 form-control-label">Password</label>
+    <label for="hform-pass" class="col-sm-2 form-label">Password</label>
     <div class="col-sm-10">
       <input type="password" class="form-control" id="hform-pass" placeholder="Password">
     </div>
   </div>
   <fieldset class="form-group">
     <div class="row">
-      <legend class="form-control-label col-sm-2 pt-0">Radios</legend>
+      <legend class="form-label col-sm-2 pt-0">Radios</legend>
       <div class="col-sm-10">
         <div class="form-check">
           <input class="form-check-input" type="radio" name="hform-radio" id="gridRadios1" value="option1" checked>
@@ -1589,7 +1589,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-form-control-label</code></td>
+                <td><code>$enable-form-label</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
@@ -1597,7 +1597,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-form-control-label-sizes</code></td>
+                <td><code>$enable-form-label-sizes</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
@@ -1941,11 +1941,11 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$input-label-font-weight</code></td>
+                <td><code>$form-label-font-weight</code></td>
                 <td>string</td>
                 <td><code>$font-weight-normal</code></td>
                 <td>
-                    Font weight for <code>.form-control-label</code>.
+                    Font weight for <code>.form-label</code>.
                 </td>
             </tr>
             <tr>

@@ -124,13 +124,13 @@
 <h2>Readonly Static Controls</h2>
 <form>
     <div class="form-group row">
-        <label for="inputEmail" class="col-sm-2 form-control-label">Email</label>
+        <label for="inputEmail" class="col-sm-2 form-label">Email</label>
         <div class="col-sm-10">
             <input type="text" readonly class="form-control-static" id="inputEmail" value="email@example.com">
         </div>
     </div>
     <div class="form-group row">
-        <label for="inputPassword" class="col-sm-2 form-control-label">Password</label>
+        <label for="inputPassword" class="col-sm-2 form-label">Password</label>
         <div class="col-sm-10">
             <input type="password" class="form-control" id="inputPassword" placeholder="Password">
         </div>
@@ -226,7 +226,7 @@
         <button type="button" class="btn btn-primary btn-xsmall">Test</button>
       </div>
       <div class="col-md-1">
-        <label class="form-control-label form-control-label-xsmall">Label</label>
+        <label class="form-label form-label-xsmall">Label</label>
       </div>
       <fieldset class="form-group col-md-3">
         <label for="size0-0" class="sr-only">Example label</label>
@@ -248,7 +248,7 @@
         <button type="button" class="btn btn-primary btn-small">Test</button>
       </div>
       <div class="col-md-1">
-        <label class="form-control-label form-control-label-small">Label</label>
+        <label class="form-label form-label-small">Label</label>
       </div>
       <fieldset class="form-group col-md-3">
         <label for="size1-0" class="sr-only">Example label</label>
@@ -270,7 +270,7 @@
         <button type="button" class="btn btn-primary">Test</button>
       </div>
       <div class="col-md-1">
-        <label class="form-control-label">Label</label>
+        <label class="form-label">Label</label>
       </div>
       <fieldset class="form-group col-md-3">
         <label for="size2-0" class="sr-only">Example label</label>
@@ -292,7 +292,7 @@
         <button type="button" class="btn btn-primary btn-large">Test</button>
       </div>
       <div class="col-md-1">
-        <label class="form-control-label form-control-label-large">Label</label>
+        <label class="form-label form-label-large">Label</label>
       </div>
       <fieldset class="form-group col-md-3">
         <label for="size3-0" class="sr-only">Example label</label>
@@ -314,7 +314,7 @@
         <button type="button" class="btn btn-primary btn-xlarge">Test</button>
       </div>
       <div class="col-md-1">
-        <label class="form-control-label form-control-label-xlarge">Label</label>
+        <label class="form-label form-label-xlarge">Label</label>
       </div>
       <fieldset class="form-group col-md-3">
         <label for="size4-0" class="sr-only">Example label</label>
@@ -356,35 +356,84 @@
 
 <hr />
 
+<h2>Select Sizing w/ validation icons:</h2>
+<form class="needs-validation" novalidate>
+    <div class="form-group">
+        <select class="form-control form-control-xlarge has-validation-icon" aria-describedby="ifb-sel-0 vfb-sel-0" required>
+            <option value="">Extra large select</option>
+            <option value="1">one</option>
+        </select>
+        <div id="ifb-sel-0" class="invalid-feedback">Example invalid custom select feedback</div>
+        <div id="vfb-sel-0" class="valid-feedback">Example valid custom select feedback</div>
+    </div>
+    <div class="form-group">
+        <select class="form-control form-control-large has-validation-icon" aria-describedby="ifb-sel-1 vfb-sel-1" required>
+            <option value="">Large select</option>
+            <option value="1">one</option>
+        </select>
+        <div id="ifb-sel-1" class="invalid-feedback">Example invalid custom select feedback</div>
+        <div id="vfb-sel-1" class="valid-feedback">Example valid custom select feedback</div>
+    </div>
+    <div class="form-group">
+        <select class="form-control has-validation-icon" aria-describedby="ifb-sel-2 vfb-sel-2" required>
+            <option value="">Default select</option>
+            <option value="1">one</option>
+        </select>
+        <div id="ifb-sel-2" class="invalid-feedback">Example invalid custom select feedback</div>
+        <div id="vfb-sel-2" class="valid-feedback">Example valid custom select feedback</div>
+    </div>
+    <div class="form-group">
+        <select class="form-control form-control-small has-validation-icon" aria-describedby="ifb-sel-3 vfb-sel-3" required>
+            <option value="">Small select</option>
+            <option value="1">one</option>
+        </select>
+        <div id="ifb-sel-3" class="invalid-feedback">Example invalid custom select feedback</div>
+        <div id="vfb-sel-3" class="valid-feedback">Example valid custom select feedback</div>
+    </div>
+    <div class="form-group">
+        <select class="form-control form-control-xsmall has-validation-icon" aria-describedby="ifb-sel-4 vfb-sel-4" required>
+            <option value="">Extra small select</option>
+            <option value="1">one</option>
+        </select>
+        <div id="ifb-sel-4" class="invalid-feedback">Example invalid custom select feedback</div>
+        <div id="vfb-sel-4" class="valid-feedback">Example valid custom select feedback</div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+</form>
+
+<hr />
+
 <h2>Static and Label Sizing:</h2>
 <div class="form-group row">
-    <label class="col-sm-2 form-control-label form-control-label-xsmall">Email</label>
+    <label class="col-sm-2 form-label form-label-xsmall">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-label-xsmall">email@example.com</p>
+        <p class="form-control-static form-label-xsmall">email@example.com</p>
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-sm-2 form-control-label form-control-label-small">Email</label>
+    <label class="col-sm-2 form-label form-label-small">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-label-small">email@example.com</p>
+        <p class="form-control-static form-label-small">email@example.com</p>
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-sm-2 form-control-label">Email</label>
+    <label class="col-sm-2 form-label">Email</label>
     <div class="col-sm-10">
         <p class="form-control-static">email@example.com</p>
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-sm-2 form-control-label form-control-label-large">Email</label>
+    <label class="col-sm-2 form-label form-label-large">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-label-large">email@example.com</p>
+        <p class="form-control-static form-label-large">email@example.com</p>
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-sm-2 form-control-label form-control-label-xlarge">Email</label>
+    <label class="col-sm-2 form-label form-label-xlarge">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-label-xlarge">email@example.com</p>
+        <p class="form-control-static form-label-xlarge">email@example.com</p>
     </div>
 </div>
 
@@ -443,5 +492,25 @@
 
 </div>
 
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
 </body>
 </html>
