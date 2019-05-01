@@ -1030,11 +1030,11 @@ Please refer to the note regarding browser compatibility in the [color input](#c
 
 ### Range
 
-Create custom `<input type="range">` controls with `.custom-range`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only IE and Firefox support "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.  We also hide the tooltip provided only by IE to maintain cross-browser consistency.
+Create custom `<input type="range">` controls with `.form-range`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only IE and Firefox support "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.  We also hide the tooltip provided only by IE to maintain cross-browser consistency.
 
 {% capture example %}
 <label for="customRange1">Example range</label>
-<input type="range" class="custom-range" id="customRange1">
+<input type="range" class="form-range" id="customRange1">
 {% endcapture %}
 {% include example.html content=example %}
 
@@ -1042,7 +1042,7 @@ Range inputs have implicit values for `min` and `max`—`0` and `100`, respectiv
 
 {% capture example %}
 <label for="customRange2">Example range</label>
-<input type="range" class="custom-range" min="0" max="5" id="customRange2">
+<input type="range" class="form-range" min="0" max="5" id="customRange2">
 {% endcapture %}
 {% include example.html content=example %}
 
@@ -1050,7 +1050,7 @@ By default, range inputs "snap" to integer values. To change this, you can speci
 
 {% capture example %}
 <label for="customRange3">Example range</label>
-<input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
+<input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
 {% endcapture %}
 {% include example.html content=example %}
 
@@ -1714,22 +1714,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-custom-select</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the classes for custom select inputs.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-custom-select-sizes</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the classes for custom select sizing.
-                </td>
-            </tr>
-            <tr>
                 <td><code>$enable-custom-file</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>
@@ -1746,7 +1730,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-custom-range</code></td>
+                <td><code>$enable-form-range</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
@@ -2410,7 +2394,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-select-indicator-offset</code></td>
+                <td><code>$form-select-indicator-offset</code></td>
                 <td>string</td>
                 <td><code>.375rem</code></td>
                 <td>
@@ -2418,7 +2402,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-select-indicator-width</code></td>
+                <td><code>$form-select-indicator-width</code></td>
                 <td>string</td>
                 <td><code>10px</code></td>
                 <td>
@@ -2426,7 +2410,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-select-indicator-height</code></td>
+                <td><code>$form-select-indicator-height</code></td>
                 <td>string</td>
                 <td><code>10px</code></td>
                 <td>
@@ -2434,7 +2418,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-select-indicator-image</code></td>
+                <td><code>$form-select-indicator-image</code></td>
                 <td>string</td>
                 <td><code>str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23333' d='M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z'/%3e%3c/svg%3e"), "#", "%23")</code></td>
                 <td>
@@ -2442,9 +2426,9 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-select-indicator</code></td>
+                <td><code>$form-select-indicator</code></td>
                 <td>string</td>
-                <td><code>$custom-select-indicator-image no-repeat right $custom-select-indicator-offset center / $custom-select-indicator-width $custom-select-indicator-height</code></td>
+                <td><code>$form-select-indicator-image no-repeat right $form-select-indicator-offset center / $form-select-indicator-width $form-select-indicator-height</code></td>
                 <td>
                     Used so we can have multiple background elements (e.g., arrow and feedback icon).
                 </td>
@@ -2484,7 +2468,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-range-track-height</code></td>
+                <td><code>$form-range-track-height</code></td>
                 <td>string</td>
                 <td><code>.5rem</code></td>
                 <td>
@@ -2492,7 +2476,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-range-track-cursor</code></td>
+                <td><code>$form-range-track-cursor</code></td>
                 <td>string</td>
                 <td><code>pointer</code></td>
                 <td>
@@ -2500,7 +2484,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-range-track-bg</code></td>
+                <td><code>$form-range-track-bg</code></td>
                 <td>string</td>
                 <td><code>$uibase-100</code></td>
                 <td>
@@ -2508,7 +2492,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-range-border</code></td>
+                <td><code>$form-range-border</code></td>
                 <td>string</td>
                 <td><code>0</code></td>
                 <td>
@@ -2516,15 +2500,15 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-range-track-border-radius</code></td>
+                <td><code>$form-range-track-border-radius</code></td>
                 <td>string</td>
-                <td><code>$custom-range-track-height</code></td>
+                <td><code>$form-range-track-height</code></td>
                 <td>
                     Border radius of track for custom range input.
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-range-track-box-shadow</code></td>
+                <td><code>$form-range-track-box-shadow</code></td>
                 <td>string</td>
                 <td><code>map-get($shadows, "i1")</code></td>
                 <td>
@@ -2532,7 +2516,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-range-thumb-width</code></td>
+                <td><code>$form-range-thumb-width</code></td>
                 <td>string</td>
                 <td><code>1.125rem</code></td>
                 <td>
@@ -2540,15 +2524,15 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-range-thumb-height</code></td>
+                <td><code>$form-range-thumb-height</code></td>
                 <td>string</td>
-                <td><code>$custom-range-thumb-width</code></td>
+                <td><code>$form-range-thumb-width</code></td>
                 <td>
                     Height of thumb for custom range input.
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-range-thumb-bg</code></td>
+                <td><code>$form-range-thumb-bg</code></td>
                 <td>string</td>
                 <td><code>$component-active-bg</code></td>
                 <td>
@@ -2556,7 +2540,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-range-thumb-border</code></td>
+                <td><code>$form-range-thumb-border</code></td>
                 <td>string</td>
                 <td><code>0</code></td>
                 <td>
@@ -2564,7 +2548,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-range-thumb-border-radius</code></td>
+                <td><code>$form-range-thumb-border-radius</code></td>
                 <td>string</td>
                 <td><code>50%</code></td>
                 <td>
@@ -2572,7 +2556,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-range-thumb-box-shadow</code></td>
+                <td><code>$form-range-thumb-box-shadow</code></td>
                 <td>string</td>
                 <td><code>map-get($shadows, "d1")</code></td>
                 <td>
@@ -2580,7 +2564,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-range-thumb-focus-box-shadow</code></td>
+                <td><code>$form-range-thumb-focus-box-shadow</code></td>
                 <td>string</td>
                 <td><code>$input-focus-box-shadow</code></td>
                 <td>
@@ -2588,7 +2572,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-range-thumb-focus-box-shadow-width</code></td>
+                <td><code>$form-range-thumb-focus-box-shadow-width</code></td>
                 <td>string</td>
                 <td><code>.1875rem</code></td>
                 <td>
@@ -2596,7 +2580,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-range-thumb-active-bg</code></td>
+                <td><code>$form-range-thumb-active-bg</code></td>
                 <td>string</td>
                 <td><code>palette($component-active-bg, 600)</code></td>
                 <td>
@@ -2604,7 +2588,7 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-range-thumb-disabled-bg</code></td>
+                <td><code>$form-range-thumb-disabled-bg</code></td>
                 <td>string</td>
                 <td><code>$uibase-300</code></td>
                 <td>
@@ -2612,15 +2596,15 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-range-height</code></td>
+                <td><code>$form-range-height</code></td>
                 <td>string</td>
-                <td><code>$custom-range-thumb-height + ($custom-range-thumb-focus-box-shadow-width * 2)</code></td>
+                <td><code>$form-range-thumb-height + ($form-range-thumb-focus-box-shadow-width * 2)</code></td>
                 <td>
                     Height of custom range input.
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-range-min-width</code></td>
+                <td><code>$form-range-min-width</code></td>
                 <td>string</td>
                 <td><code>8rem</code></td>
                 <td>
@@ -2797,20 +2781,20 @@ Add the focus state to a form control or input.
 @include form-control-focus()
 {% endhighlight %}
 
-#### custom-range-track()
+#### form-range-track()
 {:.no_toc}
 
 Add the common, cross-browser rules for track of a range input.
 
 {% highlight sass %}
-@include custom-range-track()
+@include form-range-track()
 {% endhighlight %}
 
-#### custom-range-thumb
+#### form-range-thumb
 {:.no_toc}
 
 Add the common, cross-browser rules for thumb of a range input.
 
 {% highlight sass %}
-@include custom-range-thumb()
+@include form-range-thumb()
 {% endhighlight %}
