@@ -307,17 +307,6 @@ Add `.position-static` to inputs within `.form-check` that don't have any label 
 {% endcapture %}
 {% include example.html content=example %}
 
-## Range Input
-
-Set horizontally scrollable range inputs using `.form-control-range`.
-
-{% capture example %}
-<div class="form-group">
-  <label for="example-range">Example range input</label>
-  <input type="range" class="form-control-range" id="example-range">
-</div>
-{% endcapture %}
-{% include example.html content=example %}
 
 ## Color Input
 

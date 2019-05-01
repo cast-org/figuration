@@ -99,8 +99,7 @@
     // Make color, file, range inputs better match text inputs by forcing them to new lines.
     @if $enable-form-control-special {
         .form-control-color,
-        .form-control-file,
-        .form-control-range {
+        .form-control-file {
             display: block;
             width: 100%;
         }
