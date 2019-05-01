@@ -109,27 +109,15 @@
 
     @if $enable-validation-icons {
         @if $enable-form-control {
-            .form-control:not(textarea) {
+            .form-control:not(textarea):not(select) {
                 @include form-validation-state-selector-icon($state) {
                     padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
-                }
-            }
-        }
-
-        @if $enable-form-control {
-            // Icon is placed on left, what should hopefully be the opposite side of the scrollbar,
-            // otherwise icon can become obscured by the scrollbar.
-            // stylelint-disable-next-line selector-no-qualifying-type
-            textarea.form-control {
-                @include form-validation-state-selector-icon($state) {
-                    padding-left: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
-                    background-position: left $form-feedback-icon-offset center;
                 }
             }
 
             // Apply both the select indicator and validaton icons.
             // stylelint-disable-next-line selector-no-qualifying-type
-            select.form-control {
+            select.form-control:not([size]:not([size="1"])):not([multiple]) {
                 @include form-validation-state-selector-icon($state) {
                     padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$form-select-indicator-width} + #{$form-select-indicator-offset});
                     background-image: $form-select-indicator-image, $icon;
@@ -138,6 +126,19 @@
                     background-size: $form-select-indicator-width $form-select-indicator-height, $form-feedback-icon-width $form-feedback-icon-height;
                 }
             }
+
+            // Icon is placed on left, what should hopefully be the opposite side of the scrollbar,
+            // otherwise icon can become obscured by the scrollbar.
+            // stylelint-disable selector-no-qualifying-type
+            select.form-control[size]:not([size="1"]),
+            select.form-control[multiple],
+            textarea.form-control {
+                @include form-validation-state-selector-icon($state) {
+                    padding-left: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+                    background-position: left $form-feedback-icon-offset center;
+                }
+            }
+            // stylelint-enable selector-no-qualifying-type
         }
     }
 
