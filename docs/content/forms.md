@@ -168,18 +168,6 @@ Here are examples of `.form-control` applied to each textual HTML5 `<input>` `ty
 {% endcapture %}
 {% include example.html content=example %}
 
-### File Input
-
-For file inputs, use `.form-control-file` instead of `.form-control`.
-
-{% capture example %}
-<div class="form-group">
-  <label for="example-file">Example file input</label>
-  <input type="file" class="form-control-file" id="example-file">
-</div>
-{% endcapture %}
-{% include example.html content=example %}
-
 ### Control Sizing
 
 Set heights and font-sizes using component sizing classes, such as:
@@ -303,28 +291,6 @@ Add `.position-static` to inputs within `.form-check` that don't have any label 
 </div>
 <div class="form-check">
   <input class="form-check-input position-static" type="radio" name="nolabel-radio" id="nolabel-checkbox-1" value="" aria-label="...">
-</div>
-{% endcapture %}
-{% include example.html content=example %}
-
-
-## Color Input
-
-For color inputs, use `.form-control-color` instead of `.form-control`.
-
-{% capture callout %}
-Browser Compatibility
-{:.h5 .no_toc}
-
-While Figuration supports styling `<input type="color">` elements, some browsers don't. Use custom JavaScript to handle it in these browsers.  For support details, see [Can I Use](https://caniuse.com/#feat=input-color).
-{% endcapture %}
-{% include callout.html content=callout type="danger" %}
-
-
-{% capture example %}
-<div class="form-group">
-  <label for="example-color">Example color input</label>
-  <input type="color" class="form-control-range" id="example-color" value="#0055e9">
 </div>
 {% endcapture %}
 {% include example.html content=example %}
@@ -1019,9 +985,15 @@ Multiple size are also available.
 
 ### Color Picker
 
-`<input type="color">` element need only a custom class, `.custom-color` to trigger the custom styles.
+`<input type="color">` element need only a custom class, `.form-color` to trigger the custom styles.
 
-Please refer to the note regarding browser compatibility in the [color input](#color-input) section above.
+{% capture callout %}
+Browser Compatibility
+{:.h5 .no_toc}
+
+While Figuration supports styling `<input type="color">` elements, some browsers don't. Use custom JavaScript to handle it in these browsers.  For support details, see [Can I Use](https://caniuse.com/#feat=input-color).
+{% endcapture %}
+{% include callout.html content=callout type="danger" %}
 
 {% capture example %}
 <input class="custom-color" type="color" value="#117dba" id="color">
@@ -1562,14 +1534,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-form-control-special</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the form control classes for color, file, and range inputs.
-                </td>
-            </tr>
-            <tr>
                 <td><code>$enable-form-control-sizes</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>
@@ -1599,14 +1563,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 <td><code>true</code></td>
                 <td>
                     Enable the generation of the static form control class.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-form-control-static</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the static form controls.
                 </td>
             </tr>
             <tr>
@@ -1986,9 +1942,9 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$form-row-gutter</code></td>
+                <td><code>$form-row-gutter-width</code></td>
                 <td>string</td>
-                <td><code>.3125rem</code></td>
+                <td><code>.625rem</code></td>
                 <td>
                     Gutter spacing for form row.
                 </td>

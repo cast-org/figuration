@@ -142,17 +142,6 @@
         }
     }
 
-    @if $enable-form-control-special {
-        .form-control-file {
-            @include form-validation-state-selector($state) {
-                ~ .#{$state}-feedback,
-                ~ .#{$state}-tooltip {
-                    display: block;
-                }
-            }
-        }
-    }
-
     @if $enable-form-check {
         .form-check-input {
             @include form-validation-state-selector($state) {
@@ -203,7 +192,7 @@
     }
 
     // custom file
-    @if $enable-custom-file {
+    @if $enable-form-file {
         .custom-file-input {
             @include form-validation-state-selector($state) {
                 ~ .custom-file-label {

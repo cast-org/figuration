@@ -96,29 +96,6 @@
         }
     }
 
-    // Make color, file, range inputs better match text inputs by forcing them to new lines.
-    @if $enable-form-control-special {
-        .form-control-color,
-        .form-control-file {
-            display: block;
-            width: 100%;
-        }
-    }
-
-    // Labels
-    // For use with horizontal and inline forms, when you need the label
-    // (or legend) text to align with the form controls.
-    @if $enable-form-label {
-        .form-label {
-            padding-top: calc(#{$input-padding-y} + #{$input-border-width});
-            padding-bottom: calc(#{$input-padding-y} + #{$input-border-width});
-            margin-bottom: 0; // Override the `<label>/<legend>` default
-            @include font-size(inherit); // Override the `<legend>` default
-            font-weight: $form-label-font-weight;
-            line-height: $input-line-height;
-        }
-    }
-
     // Static form control text
     // Apply class to an element to make any string of text align with labels
     // in a horizontal form layout.
@@ -171,31 +148,6 @@
                     }
                 }
             }
-
-            %form-label-#{$size} {
-                @if $sz-padding-y != null {
-                    padding-top: calc(#{$sz-padding-y} + #{$input-border-width});
-                    padding-bottom: calc(#{$sz-padding-y} + #{$input-border-width});
-                }
-                @include font-size($sz-font-size);
-                line-height: $sz-line-height;
-            }
-
-            @if $enable-form-label and $enable-form-label-sizing {
-                .form-label-#{$size} {
-                    @extend %form-label-#{$size};
-                }
-            }
-        }
-    }
-
-    // Form groups
-    //
-    // Designed to help with the organization and spacing of vertical forms. For
-    // horizontal forms, use the predefined grid classes.
-    @if $enable-form-group {
-        .form-group {
-            margin-bottom: $form-group-margin-bottom;
         }
     }
 
@@ -203,25 +155,6 @@
         .form-text {
             display: block;
             margin-top: $form-text-margin-top;
-        }
-    }
-
-
-    // Form grid
-    //
-    // Special replacement for our grid system's `.row` for tighter form layouts.
-    @if $enable-form-row {
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            margin-right: -$form-row-gutter;
-            margin-left: -$form-row-gutter;
-
-            > .col,
-            > [class*="col-"] {
-                padding-right: $form-row-gutter;
-                padding-left: $form-row-gutter;
-            }
         }
     }
 
@@ -266,131 +199,11 @@
             }
         }
     }
-
-    // Form validation
-    //
-    // Provide feedback to users when form field values are valid or invalid. Works
-    // primarily for client-side validation via scoped `:invalid` and `:valid`
-    // pseudo-classes but also includes `.is-invalid` and `.is-valid` classes for
-    // server side validation.
-    @if $enable-form-validation {
-        @each $state, $data in $form-validation-states {
-            @include form-validation-state($state, map-get($data, color), map-get($data, icon));
-        }
-    }
-
-
-    // Inline forms
-    //
-    // Make forms appear inline(-block) by adding the `.form-inline` class. Inline
-    // forms begin stacked on extra small (mobile) devices and then go inline when
-    // viewports reach > 36em/576px.
-    //
-    // Requires wrapping inputs and labels with `.form-group` for proper display of
-    // default HTML form controls and our custom form controls (e.g., input groups).
-    @if $enable-form-inline {
-        .form-inline {
-            display: flex;
-            flex-flow: row wrap;
-            align-items: center; // Prevent shorter elements from growing to same height as others (e.g., small buttons growing to normal sized button height)
-
-            // Because we use flex, the initial sizing of some items is collapsed,
-            // such as groups and checkboxes, and don't occupy the full-width
-            // (which is what we want for xs grid tier), so we force that here.
-            .form-check,
-            .form-group {
-                width: 100%;
-            }
-
-            // Kick in the inline
-            @include media-breakpoint-up(#{$form-inline-breakpoint}) {
-                label {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin-bottom: 0;
-                }
-
-
-                // Inline-block all the things for "inline"
-                @if $enable-form-group {
-                    .form-group {
-                        display: flex;
-                        flex: 0 0 auto;
-                        flex-flow: row wrap;
-                        align-items: center;
-                        width: auto;
-                        margin-bottom: 0;
-                    }
-                }
-
-                // Allow folks to *not* use `.form-group`
-                %form-no-group {
-                    display: inline-block;
-                    width: auto; // Prevent labels from stacking above inputs in `.form-group`
-                    vertical-align: middle;
-                }
-                @if $enable-form-control {
-                    .form-control {
-                        @extend %form-no-group;
-                    }
-                }
-                @if $enable-form-range {
-                    .form-range {
-                        @extend %form-no-group;
-                    }
-                }
-
-                // Make static controls behave like regular ones
-                @if $enable-form-control-static {
-                    .form-control-static {
-                        display: inline-block;
-                    }
-                }
-
-                @if $enable-input-group {
-                    .input-group {
-                        width: auto;
-                    }
-                }
-
-                @if $enable-form-label {
-                    .form-label {
-                        margin-bottom: 0;
-                        vertical-align: middle;
-                    }
-                }
-
-                // Remove default margin on radios/checkboxes that were used for stacking, and
-                // then undo the floating of radios and checkboxes to match.
-                @if $enable-form-check {
-                    .form-check {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        width: auto;
-                        padding-left: 0;
-                    }
-                    .form-check-input {
-                        position: relative;
-                        flex-shrink: 0;
-                        margin-top: 0;
-                        margin-right: $form-check-input-margin-x;
-                        margin-left: 0;
-                    }
-                }
-
-                // Custom form controls
-                @if $enable-custom-control {
-                    .custom-control {
-                        align-items: center;
-                        justify-content: center;
-                    }
-                    .custom-control-label {
-                        margin-bottom: 0;
-                    }
-                }
-            }
-        }
-    }
 }
+
+@import "forms/form-label";
+@import "forms/form-file";
+@import "forms/form-range";
+@import "forms/form-color";
+@import "forms/form-layout";
+@import "forms/form-validation";

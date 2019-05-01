@@ -47,7 +47,7 @@
 
         // Custom file inputs have more complex markup,
         // needing special overrides.
-        @if $enable-custom-file {
+        @if $enable-form-file {
             > .custom-file {
                 display: flex;
                 align-items: center;

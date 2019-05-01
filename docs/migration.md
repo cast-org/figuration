@@ -48,7 +48,7 @@ Some changes will most likely have been missed, so please refer to the documenta
 
 - Validation icons have been re-implemented.  The `.form-control-icon` has been replaced with `.has-validation-icon`. The icons are still optional and can now be used with textual `<input class="form-control">`, `<textarea class="form-control">`, and `<select class="form-control">` elements.  Icons can be used within `.input-groups` but they no longer scale with the input sizing.
 
-- Dropped `.form-control-range`. Use the updated `.form-range` instead to get a consistent visual input.
+- Dropped `.form-control-color`, `.form-control-range`, and `.form-control-file` . Use the updated `.form-color`, `.form-range` or `.form-file`  classes instead to get a consistent visual input.
 
 {% comment %}
 ## Sizing
