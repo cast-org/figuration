@@ -66,6 +66,7 @@ $enable-form-text:                          true !default;
 $enable-form-row:                           true !default;
 $enable-form-check:                         true !default;
 $enable-form-check-inline:                  true !default;
+$enable-form-range:                         true !default;
 $enable-form-validation:                    true !default;
 $enable-form-validation-feedback:           true !default;
 $enable-form-validation-tooltip:            true !default;
@@ -78,7 +79,6 @@ $enable-custom-radio:                       true !default;
 $enable-custom-switch:                      true !default;
 $enable-custom-file:                        true !default;
 $enable-custom-color:                       true !default;
-$enable-custom-range:                       true !default;
 
 // Alert
 $enable-alert:                              true !default;

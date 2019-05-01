@@ -844,27 +844,27 @@ $custom-file-text: (
     en: "Browse"
 ) !default;
 
-// Custom range
-$custom-range-track-height:         .5rem !default;
-$custom-range-track-cursor:         pointer !default;
-$custom-range-track-bg:             $uibase-100 !default;
-$custom-range-track-border:         0 !default;
-$custom-range-track-border-radius:  $custom-range-track-height !default;
-$custom-range-track-box-shadow:     map-get($shadows, "i1") !default;
+// Form range input
+$form-range-track-height:           .5rem !default;
+$form-range-track-cursor:           pointer !default;
+$form-range-track-bg:               $uibase-100 !default;
+$form-range-track-border:           0 !default;
+$form-range-track-border-radius:    $form-range-track-height !default;
+$form-range-track-box-shadow:       map-get($shadows, "i1") !default;
 
-$custom-range-thumb-width:                  1.125rem !default;
-$custom-range-thumb-height:                 $custom-range-thumb-width !default;
-$custom-range-thumb-bg:                     $component-active-bg !default;
-$custom-range-thumb-border:                 0 !default;
-$custom-range-thumb-border-radius:          50% !default;
-$custom-range-thumb-box-shadow:             map-get($shadows, "d1") !default;
-$custom-range-thumb-focus-box-shadow:       $input-focus-box-shadow !default;
-$custom-range-thumb-focus-box-shadow-width: .1875rem !default;
-$custom-range-thumb-active-bg:              palette($component-active-bg, 600) !default;
-$custom-range-thumb-disabled-bg:            $uibase-300 !default;
+$form-range-thumb-width:                  1.125rem !default;
+$form-range-thumb-height:                 $form-range-thumb-width !default;
+$form-range-thumb-bg:                     $component-active-bg !default;
+$form-range-thumb-border:                 0 !default;
+$form-range-thumb-border-radius:          50% !default;
+$form-range-thumb-box-shadow:             map-get($shadows, "d1") !default;
+$form-range-thumb-focus-box-shadow:       $input-focus-box-shadow !default;
+$form-range-thumb-focus-box-shadow-width: .1875rem !default;
+$form-range-thumb-active-bg:              palette($component-active-bg, 600) !default;
+$form-range-thumb-disabled-bg:            $uibase-300 !default;
 
-$custom-range-height:               $custom-range-thumb-height + ($custom-range-thumb-focus-box-shadow-width * 2) !default;
-$custom-range-min-width:            8rem !default;  // Browser default seems to be 129px/~8rem for IE/Chrome/Safari
+$form-range-height:                 $form-range-thumb-height + ($form-range-thumb-focus-box-shadow-width * 2) !default;
+$form-range-min-width:              8rem !default;  // Browser default seems to be 129px/~8rem for IE/Chrome/Safari
 
 // Form validation
 // =====

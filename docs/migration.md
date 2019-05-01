@@ -46,7 +46,9 @@ Some changes will most likely have been missed, so please refer to the documenta
 
 - Added custom styling for `input type="range"`.  The Slider widget has been removed from Figuration and moved into it's own repository: [Figuration Slider](https://github.com/cast-org/figuration-slider).
 
-- Validation icons have been re-implemented.  The `.form-control-icon` has been replaced with `.has-validation-icon`. The icons are still optional and can now be used with textual `<input class="form-control">`, `<textarea class="form-control">`, and `<select class="custom-select">` elements.  Icons can be used within `.input-groups` but they no longer scale with the input sizing.
+- Validation icons have been re-implemented.  The `.form-control-icon` has been replaced with `.has-validation-icon`. The icons are still optional and can now be used with textual `<input class="form-control">`, `<textarea class="form-control">`, and `<select class="form-control">` elements.  Icons can be used within `.input-groups` but they no longer scale with the input sizing.
+
+- Dropped `.form-control-range`. Use the updated `.form-range` instead to get a consistent visual input.
 
 {% comment %}
 ## Sizing
@@ -108,7 +110,7 @@ Some changes will most likely have been missed, so please refer to the documenta
 - Dropped support for jQuery animations as the slim build does not support them.  Added an optional fade-in CSSS animation.
 
 ### Slider
-- Dropped the slider widget as a bundled plugin.  This has been replaced with the `.custom-range` styled `<input type="range">` element.
+- Dropped the slider widget as a bundled plugin.  This has been replaced with the `.form-range` styled `<input type="range">` element.
 
 ### Player
 - Dropped support for sliders using the Slider widget, and added support for `<input type="range">` elements.  A few improvements on the accesibility of the sliders were also added.

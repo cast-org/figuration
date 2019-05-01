@@ -103,7 +103,7 @@ Available seek and volume sliders.
         <span class="player-time me-0_25" data-cfw-player="time">
             <span class="player-time-remainder" data-cfw-player="time-remainder"></span>
             <span class="player-seek" data-cfw-player="seek">
-            	<input type="range" class="custom-range" aria-label="Seek">
+            	<input type="range" class="form-range" aria-label="Seek">
             </span>
             <span class="player-time-duration" data-cfw-player="time-duration"></span>
         </span>
@@ -112,7 +112,7 @@ Available seek and volume sliders.
             <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up" aria-hidden="true"></span></button>
         </span>
         <span class="player-volume me-0_25" data-cfw-player="volume">
-            <input type="range" class="custom-range" aria-label="Volume">
+            <input type="range" class="form-range" aria-label="Volume">
         </span>
         <button type="button" class="btn btn-icon" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fas fa-fw fa-redo"></span></button>
     </div>
@@ -149,7 +149,7 @@ Available seek and volume sliders.
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
                     <span class="player-seek" data-cfw-player="seek">
-                    	<input type="range" class="custom-range" aria-label="Seek">
+                    	<input type="range" class="form-range" aria-label="Seek">
                     </span>
                     <span class="player-time-duration" data-cfw-player="time-duration"></span>
                 </span>
@@ -160,7 +160,7 @@ Available seek and volume sliders.
                     <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up" aria-hidden="true"></span></button>
                 </span>
                 <span class="player-volume" data-cfw-player="volume">
-                    <input type="range" class="custom-range" aria-label="Volume">
+                    <input type="range" class="form-range" aria-label="Volume">
                 </span>
                 <button type="button" class="btn btn-icon" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fas fa-fw fa-redo" aria-hidden="true"></span></button>
                 <button type="button" class="btn btn-icon" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fas fa-fw fa-closed-captioning" aria-hidden="true"></span></button>
@@ -202,7 +202,7 @@ Add an interactive transcript to your video using the `transcript` control.  The
                 <span class="player-time" data-cfw-player="time">
                     <span class="player-time-current" data-cfw-player="time-current"></span>
                     <span class="player-seek" data-cfw-player="seek">
-                    	<input type="range" class="custom-range" aria-label="Seek">
+                    	<input type="range" class="form-range" aria-label="Seek">
                     </span>
                     <span class="player-time-duration" data-cfw-player="time-duration"></span>
                 </span>
@@ -213,7 +213,7 @@ Add an interactive transcript to your video using the `transcript` control.  The
                     <button type="button" class="btn btn-icon player-mute-off" title="Mute" aria-label="Mute"><span class="fas fa-fw fa-volume-up" aria-hidden="true"></span></button>
                 </span>
                 <span class="player-volume" data-cfw-player="volume">
-                    <input type="range" class="custom-range" aria-label="Volume">
+                    <input type="range" class="form-range" aria-label="Volume">
                 </span>
                 <button type="button" class="btn btn-icon" data-cfw-player="caption" title="Closed captions" aria-label="Closed captions"><span class="fas fa-fw fa-closed-captioning" aria-hidden="true"></span></button>
                 <button type="button" class="btn btn-icon" data-cfw-player="transcript" title="Transcript captions" aria-label="Closed captions"><span class="far fa-fw fa-file-alt" aria-hidden="true"></span></button>
@@ -248,7 +248,7 @@ Improve accessibility for blind and visually impaired users by including an audi
             <span class="player-time me-0_5" data-cfw-player="time">
                 <span class="player-time-current" data-cfw-player="time-current"></span>
                 <span class="player-seek" data-cfw-player="seek">
-                	<input type="range" class="custom-range" aria-label="Seek">
+                	<input type="range" class="form-range" aria-label="Seek">
                 </span>
                 <span class="player-time-duration" data-cfw-player="time-duration"></span>
             </span>
@@ -286,7 +286,7 @@ Further improve accessibility for blind and visually impaired users by including
             <span class="player-time me-0_5" data-cfw-player="time">
                 <span class="player-time-current" data-cfw-player="time-current"></span>
                 <span class="player-seek" data-cfw-player="seek">
-                	<input type="range" class="custom-range" aria-label="Seek">
+                	<input type="range" class="form-range" aria-label="Seek">
                 </span>
                 <span class="player-time-duration" data-cfw-player="time-duration"></span>
             </span>
@@ -326,7 +326,7 @@ By using the same `<track kind="descriptions">` as the above example, we can pro
             <span class="player-time me-0_5" data-cfw-player="time">
                 <span class="player-time-current" data-cfw-player="time-current"></span>
                 <span class="player-seek" data-cfw-player="seek">
-                	<input type="range" class="custom-range" aria-label="Seek">
+                	<input type="range" class="form-range" aria-label="Seek">
                 </span>
                 <span class="player-time-duration" data-cfw-player="time-duration"></span>
             </span>
@@ -361,7 +361,7 @@ Take control over how captions are displayed by adding a container with a `data-
             <span class="player-time me-0_5" data-cfw-player="time">
                 <span class="player-time-current" data-cfw-player="time-current"></span>
                 <span class="player-seek" data-cfw-player="seek">
-                	<input type="range" class="custom-range" aria-label="Seek">
+                	<input type="range" class="form-range" aria-label="Seek">
                 </span>
                 <span class="player-time-duration" data-cfw-player="time-duration"></span>
             </span>

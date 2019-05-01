@@ -296,30 +296,30 @@
     }
 }
 
-// Custom Range
-@mixin custom-range-track() {
+// Form Range
+@mixin form-range-track() {
     box-sizing: border-box;
     width: 100%;
-    height: $custom-range-track-height;
-    margin: 0 $custom-range-thumb-focus-box-shadow-width;
+    height: $form-range-track-height;
+    margin: 0 $form-range-thumb-focus-box-shadow-width;
     color: transparent;
-    border: $custom-range-track-border;
-    @include border-radius($custom-range-track-border-radius);
-    @include box-shadow($custom-range-track-box-shadow);
+    border: $form-range-track-border;
+    @include border-radius($form-range-track-border-radius);
+    @include box-shadow($form-range-track-box-shadow);
 }
 
-@mixin custom-range-thumb() {
+@mixin form-range-thumb() {
     box-sizing: border-box;
-    width: $custom-range-thumb-width;
-    height: $custom-range-thumb-height;
-    background-color: $custom-range-thumb-bg;
-    border: $custom-range-thumb-border;
-    @include border-radius($custom-range-thumb-border-radius);
-    @include box-shadow($custom-range-thumb-box-shadow);
+    width: $form-range-thumb-width;
+    height: $form-range-thumb-height;
+    background-color: $form-range-thumb-bg;
+    border: $form-range-thumb-border;
+    @include border-radius($form-range-thumb-border-radius);
+    @include box-shadow($form-range-thumb-box-shadow);
     @include transition($input-transition);
     appearance: none;
 
     &:active {
-        background-color: $custom-range-thumb-active-bg;
+        background-color: $form-range-thumb-active-bg;
     }
 }

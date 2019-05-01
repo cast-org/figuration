@@ -335,8 +335,8 @@
                         @extend %form-no-group;
                     }
                 }
-                @if $enable-custom-range {
-                    .custom-range {
+                @if $enable-form-range {
+                    .form-range {
                         @extend %form-no-group;
                     }
                 }

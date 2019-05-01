@@ -357,12 +357,12 @@
     // Each browser's pseudo-elements need to be seperate and cannot be
     // combined to provide for shared state support. Duplication is handled
     // with mixins.  Also some additional rules per browser.
-    @if $enable-custom-range {
-        .custom-range {
+    @if $enable-form-range {
+        .form-range {
             width: 100%;
             // Min width needed for inline use in IE to keep from crushing to unusable width
-            min-width: $custom-range-min-width;
-            height: $custom-range-height;
+            min-width: $form-range-min-width;
+            height: $form-range-height;
             padding: 0;
             margin: 0;
             vertical-align: middle;
@@ -372,13 +372,13 @@
             &:focus {
                 outline: none;
                 &::-webkit-slider-thumb {
-                    box-shadow: $custom-range-thumb-focus-box-shadow;
+                    box-shadow: $form-range-thumb-focus-box-shadow;
                 }
                 &::-moz-range-thumb {
-                    box-shadow: $custom-range-thumb-focus-box-shadow;
+                    box-shadow: $form-range-thumb-focus-box-shadow;
                 }
                 &::-ms-thumb {
-                    box-shadow: $custom-range-thumb-focus-box-shadow;
+                    box-shadow: $form-range-thumb-focus-box-shadow;
                 }
             }
 
@@ -392,64 +392,64 @@
 
             // Track
             &::-webkit-slider-runnable-track {
-                @include custom-range-track();
-                background-color: $custom-range-track-bg;
+                @include form-range-track();
+                background-color: $form-range-track-bg;
             }
             &::-moz-range-track {
-                @include custom-range-track();
-                background-color: $custom-range-track-bg;
+                @include form-range-track();
+                background-color: $form-range-track-bg;
             }
             &::-ms-track {
-                @include custom-range-track();
+                @include form-range-track();
                 background-color: transparent;
             }
             &::-ms-fill-lower {
-                background-color: $custom-range-track-bg;
-                @include border-radius($custom-range-track-border-radius);
+                background-color: $form-range-track-bg;
+                @include border-radius($form-range-track-border-radius);
             }
             &::-ms-fill-upper {
-                margin-right: $custom-range-thumb-width / 2;
-                background-color: $custom-range-track-bg;
-                @include border-radius($custom-range-track-border-radius);
+                margin-right: $form-range-thumb-width / 2;
+                background-color: $form-range-track-bg;
+                @include border-radius($form-range-track-border-radius);
             }
 
             &:not(:disabled) {
                 &::-webkit-slider-runnable-track {
-                    cursor: $custom-range-track-cursor;
+                    cursor: $form-range-track-cursor;
                 }
                 &::-moz-range-track {
-                    cursor: $custom-range-track-cursor;
+                    cursor: $form-range-track-cursor;
                 }
                 // Cursor does seem to have affect in IE/Edge so no rules set.
             }
 
             // Thumb
             &::-webkit-slider-thumb {
-                @include custom-range-thumb();
+                @include form-range-thumb();
                 // Vertically align thumb
-                margin-top: (($custom-range-track-height - $custom-range-thumb-height) / 2);
+                margin-top: (($form-range-track-height - $form-range-thumb-height) / 2);
             }
             &::-moz-range-thumb {
-                @include custom-range-thumb();
+                @include form-range-thumb();
             }
             &::-ms-thumb {
-                @include custom-range-thumb();
+                @include form-range-thumb();
                 // Vertically align thumb
                 margin-top: 0;
                 // Stop clipping focus box-shadow
-                margin-right: $custom-range-thumb-focus-box-shadow-width;
-                margin-left: $custom-range-thumb-focus-box-shadow-width;
+                margin-right: $form-range-thumb-focus-box-shadow-width;
+                margin-left: $form-range-thumb-focus-box-shadow-width;
             }
 
             &:disabled {
                 &::-webkit-slider-thumb {
-                    background-color: $custom-range-thumb-disabled-bg;
+                    background-color: $form-range-thumb-disabled-bg;
                 }
                 &::-moz-range-thumb {
-                    background-color: $custom-range-thumb-disabled-bg;
+                    background-color: $form-range-thumb-disabled-bg;
                 }
                 &::-ms-thumb {
-                    background-color: $custom-range-thumb-disabled-bg;
+                    background-color: $form-range-thumb-disabled-bg;
                 }
             }
         }
