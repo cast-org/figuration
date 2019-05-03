@@ -829,20 +829,19 @@ $custom-switch-disabled-thumb-bg:           $uibase-200 !default;
 $custom-switch-disabled-checked-thumb-bg:   palette($primary, 200) !default;
 
 // Form select
-$form-select-indicator-offset:      .375rem !default;
-$form-select-indicator-width:       .625rem !default;
-$form-select-indicator-height:      .625rem !default;
+$form-select-indicator-offset:      .375em !default;
+$form-select-indicator-width:       .75em !default;
+$form-select-indicator-height:      .75em !default;
 $form-select-indicator-color:       rgba($uibase-700, .85) !default;
 $form-select-indicator-image:       str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='#{$form-select-indicator-color}' d='M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z'/%3e%3c/svg%3e"), "#", "%23") !default;
 $form-select-indicator:             $form-select-indicator-image no-repeat right $form-select-indicator-offset center / $form-select-indicator-width $form-select-indicator-height !default; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
 
-// Custom file
-$custom-file-button-color:          $uibase-600 !default;
-$custom-file-button-bg:             $uibase-50 !default;
-$custom-file-button-disabled-opacity: .6 !default;
-$custom-file-text: (
-    en: "Browse"
-) !default;
+// Form file
+$form-file-button-color:            $uibase-600 !default;
+$form-file-button-bg:               $uibase-50 !default;
+$form-file-button-disabled-color:   $component-disabled-color !default;
+$form-file-button-disabled-bg:      $uibase-50 !default;
+$form-file-button-disabled-opacity: 1 !default;
 
 // Form range input
 $form-range-track-height:           .5rem !default;
@@ -874,9 +873,9 @@ $form-feedback-font-size:       $small-font-size !default;
 $form-feedback-valid-color:     map-get($base-colors, "success") !default;
 $form-feedback-invalid-color:   map-get($base-colors, "danger") !default;
 
-$form-feedback-icon-offset:         .375rem !default;
-$form-feedback-icon-width:          16px !default; // In pixels because image dimensions
-$form-feedback-icon-height:         16px !default; // In pixels because image dimensions
+$form-feedback-icon-offset:         .25em !default;
+$form-feedback-icon-width:          1em !default;
+$form-feedback-icon-height:         1em !default;
 
 $form-feedback-icon-valid-color:    $form-feedback-valid-color !default;
 $form-feedback-icon-valid-image:    str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='#{$form-feedback-icon-valid-color}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e"), "#", "%23") !default;

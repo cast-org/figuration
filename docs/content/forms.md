@@ -733,14 +733,12 @@ Here is the same form, but this time using specified column widths
 {% endcapture %}
 {% include example.html content=example %}
 
-You can also use [custom form controls](#custom-forms) as needed.
-
 {% capture example %}
 <form>
   <div class="form-row flex-items-center">
     <div class="col">
-      <label class="sr-only" for="customsize-select">Preference</label>
-      <select class="custom-select" id="customsize-select">
+      <label class="sr-only" for="form-select">Preference</label>
+      <select class="form-control" id="form-select">
         <option selected>Choose...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -799,8 +797,8 @@ Custom form controls and selects are also supported.
 
 {% capture example %}
 <form class="form-inline">
-  <label class="mb-0_5 me-0_5" for="inlineFormCustomSelectPref">Preference</label>
-  <select class="custom-select mb-0_5 me-sm-0_5" id="inlineFormCustomSelectPref">
+  <label class="mb-0_5 me-0_5" for="inlineFormSelectPref">Preference</label>
+  <select class="form-control mb-0_5 me-sm-0_5" id="inlineFormSelectPref">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -950,10 +948,10 @@ Custom checkboxes and radios can also be disabled. Add the `disabled` boolean at
 
 ### Select Menu
 
-Custom `<select>` menus need only a custom class, `.custom-select` to trigger the custom styles. Custom styles are limited to the `<select>`'s initial appearance and cannot modify the `<option>`s due to browser limitations.
+Styled `<select>` menus need to add the `.form-control` class to trigger the custom styles. Custom styles are limited to the `<select>`'s initial appearance and cannot modify the `<option>`s due to browser limitations.
 
 {% capture example %}
-<select class="custom-select">
+<select class="form-control">
   <option selected>Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
@@ -965,19 +963,19 @@ Custom `<select>` menus need only a custom class, `.custom-select` to trigger th
 Multiple size are also available.
 
 {% capture example %}
-<select class="custom-select custom-select-xlarge">
+<select class="form-control form-control-xlarge">
   <option>Extra large select</option>
 </select>
-<select class="custom-select custom-select-large">
+<select class="form-control form-control-large">
   <option>Large select</option>
 </select>
-<select class="custom-select">
+<select class="form-control">
   <option>Default select</option>
 </select>
-<select class="custom-select custom-select-small">
+<select class="form-control form-control-small">
   <option>Small select</option>
 </select>
-<select class="custom-select custom-select-xsmall">
+<select class="form-control form-control-xsmall">
   <option>Extra small select</option>
 </select>
 {% endcapture %}
@@ -1028,51 +1026,30 @@ By default, range inputs "snap" to integer values. To change this, you can speci
 
 ### File Browser
 
-The file input is the most gnarly of the bunch and requires additional JavaScript if you'd like to hook them up with functional *Choose file...* and selected file name text.
+Using `.form-file` as a wrapper, we hide the default file `<input>` via `opacity` and instead style the `<label>` with some additional child elements to recreate the filename text and button portions of the input.  A `width` and `height` are also set on the `<input>` for proper spacing for surrounding content.
+
+The file input requires additional JavaScript if you would like to have a functional *Choose file...* and selected file name text.
 
 {% capture example %}
-<div class="custom-file">
-  <input type="file" class="custom-file-input" id="custom-file">
-  <label class="custom-file-label" for="custom-file">Choose file</label>
+<div class="form-file">
+  <input type="file" class="form-file-input" id="formFile">
+  <label class="form-file-label" for="formFile">
+    <span class="form-file-text">Choose file...</span>
+    <span class="form-file-button">Browse</span>
+  </label>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
 
-We hide the default file `<input>` via `opacity` and instead style the `<label>`. The button is generated and positioned with `::after`. Lastly, we declare a `width` and `height` on the `<input>` for proper spacing for surrounding content.
-
-#### Translating or Customizing the Strings with SCSS
-
-The [`:lang()` pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:lang) is used to allow for translation of the "Browse" text into other languages. Override or add entries to the `$custom-file-text` Sass variable with the relevant [language tag](https://en.wikipedia.org/wiki/IETF_language_tag) and localized strings. The English strings can be customized the same way. For example, here's how one might add a Spanish translation (Spanish's language code is `es`):
-
-{% highlight scss %}
-$custom-file-text: (
-  en: "Browse",
-  es: "Elegir"
-);
-{% endhighlight %}
-
-This example shows `lang="es"` in action on the custom file input for a Spanish translation:
+Longer filename text is truncated and an ellipsis is added when there's not enough space.
 
 {% capture example %}
-<div class="custom-file">
-  <input type="file" class="custom-file-input" id="custom-file-lang" lang="es">
-  <label class="custom-file-label" for="custom-file-lang">Seleccionar Archivo</label>
-</div>
-{% endcapture %}
-{% include example.html content=example %}
-
-You'll need to set the language of your document (or subtree thereof) correctly in order for the correct text to be shown. This can be done using [the `lang` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) on the `<html>` element or the [`Content-Language` HTTP header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.12), among other methods.
-
-#### Translating or Customizing the Strings with HTML
-
-We also provide a way to translate the "Browse" text in HTML with the `data-browse` attribute which can be added to the custom input label (example in Dutch):
-
-This method uses the `!important` CSS rule to override any SCSS designated translation, otherwise the browser's, or a page's, language setting would override the data attribute value.
-
-{% capture example %}
-<div class="custom-file">
-  <input type="file" class="custom-file-input" id="custom-file-lang-html">
-  <label class="custom-file-label" for="custom-file-lang-html" data-browse="Bestand kiezen">Voeg je document toe</label>
+<div class="form-file">
+  <input type="file" class="form-file-input" id="formFileLong">
+  <label class="form-file-label" for="formFileLong">
+    <span class="form-file-text">Lorem ipsum posuere consectetur est at lobortis nulla vitae elit libero a pharetra augue fusce dapibus tellus ac cursus commodo tortor mauris condimentum nibh ut fermentum massa justo sit amet risus cras mattis consectetur purus sit amet fermentum</span>
+    <span class="form-file-button">Browse</span>
+  </label>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
@@ -1107,7 +1084,7 @@ For custom form validation messages, you'll need to add the `novalidate` boolean
 
 When attempting to submit, you'll see the `:invalid` and `:valid` styles applied to the form controls.
 
-Custom feedback styles apply custom colors, borders, focus styles, feedback messages, and optional background icons to better communicate feedback. Background icons for `<select>`s are only available with `.custom-select`, and not `.form-control`.
+Custom feedback styles apply custom colors, borders, focus styles, feedback messages, and optional background icons to better communicate feedback.
 
 {% capture example %}
 <form class="needs-validation" novalidate>
@@ -1331,7 +1308,7 @@ Our example forms show native textual `<input>`s above, but form validation styl
   </div>
 
   <div class="form-group">
-    <select class="custom-select" required>
+    <select class="form-control" required>
       <option value="">Open this select menu</option>
       <option value="1">One</option>
       <option value="2">Two</option>
@@ -1340,9 +1317,12 @@ Our example forms show native textual `<input>`s above, but form validation styl
     <div class="invalid-feedback">Example invalid custom select feedback</div>
   </div>
 
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="validate-support-5" required>
-    <label class="custom-file-label" for="validate-support-5">Choose file...</label>
+  <div class="form-file">
+    <input type="file" class="form-file-input is-invalid" id="validatedCustomFile" required>
+    <label class="form-file-label" for="validatedCustomFile">
+      <span class="form-file-text">Choose file...</span>
+      <span class="form-file-button">Browse</span>
+    </label>
     <div class="invalid-feedback">Example invalid custom file feedback</div>
   </div>
 </form>
@@ -1401,7 +1381,7 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
 
 ### Icons
 
-Optional visual icon representations of the validation state can be added to _textual_ `<input class="form-control">`, `<textarea class="form-control">`, and `<select class="custom-select">` elements by adding a `.has-validation-icon` class.
+Optional visual icon representations of the validation state can be added to _textual_ `<input class="form-control">`, `<textarea class="form-control">`, and `<select class="form-control">` elements by adding a `.has-validation-icon` class.
 
 - Validation icons are `url()`s configured via Sass variables that are applied to `background-image` rules for each state.
 - You may use your own base64 PNGs or SVGs by updating the Sass variables and recompiling.
@@ -1450,7 +1430,7 @@ Optional visual icon representations of the validation state can be added to _te
   </div>
   <div class="form-group">
     <label for="validate-icon-8">Options</label>
-    <select class="custom-select has-validation-icon" id="validate-icon-8" required>
+    <select class="form-control has-validation-icon" id="validate-icon-8" required>
       <option value="">Choose one...</option>
       <option value="1">One</option>
       <option value="2">Two</option>
@@ -1670,11 +1650,11 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-custom-file</code></td>
+                <td><code>$enable-for-file</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
-                    Enable the generation of the classes for custom file inputs.
+                    Enable the generation of the classes for file inputs.
                 </td>
             </tr>
             <tr>
@@ -2390,37 +2370,43 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-file-button-color</code></td>
+                <td><code>$form-file-button-color</code></td>
                 <td>string</td>
                 <td><code>$uibase-600</code></td>
                 <td>
-                    Button text color for custom file input.
+                    Button text color for file input.
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-file-button-bg</code></td>
+                <td><code>$form-file-button-bg</code></td>
                 <td>string</td>
                 <td><code>$uibase-50</code></td>
                 <td>
-                    Button background color for custom file input.
+                    Button background color for file input.
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-file-button-disabled-opacity</code></td>
+                <td><code>$form-file-button-disabled-color</code></td>
                 <td>string</td>
-                <td><code>.6</code></td>
+                <td><code>$component-disabled-color</code></td>
                 <td>
-                    Button opacity for custom file input when in disabled state.
+                    Button text color for file input when in disabled state.
                 </td>
             </tr>
             <tr>
-                <td><code>$custom-file-button-disabled-opacity</code></td>
+                <td><code>$form-file-button-disabled-bg</code></td>
                 <td>string</td>
-                <td><pre><code>$custom-file-text: (
-    en: "Browse"
-)</code></pre></td>
+                <td><code>$uibase-50</code></td>
                 <td>
-                    Visual text label for custom file input.
+                    Button background color for file input when in disabled state.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$form-file-button-disabled-opacity</code></td>
+                <td>string</td>
+                <td><code>1</code></td>
+                <td>
+                    Button opacity for file input when in disabled state.
                 </td>
             </tr>
             <tr>

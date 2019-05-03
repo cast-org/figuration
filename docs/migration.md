@@ -42,7 +42,9 @@ Some changes will most likely have been missed, so please refer to the documenta
 
 - Removed `.col-form-legend` in favor of a slightly improved `.col-form-label`. This way the sizing variants, such as `.col-form-label-sm` and `.col-form-label-lg`, can be used on `<legend>` elements also.
 
-- Custom file inputs received a change to their `$custom-file-text` Sass variable. It is no longer a nested Sass map and now only powers one string---the `Browse` button as that is now the only pseudo-element generated from our Sass. The `Choose file` text now comes from the `.custom-file-label`.
+- Custom file inputs have been reworked with a new `.form-file` class and markup, replacing `.custom-file`. Along with removing the SCSS map and psuedo-elements. Using children elements in the `<label>`, the `Choose file` text now comes from the `.form-file-text`, and the `Browse` button is now a `.form-file-button` element, allowing for translations right in the HTML.
+
+- Custom select inputs have been reworked also, dropping the `.custom-select`, resulting in a merge into `.form-control`.
 
 - Added custom styling for `input type="range"`.  The Slider widget has been removed from Figuration and moved into it's own repository: [Figuration Slider](https://github.com/cast-org/figuration-slider).
 

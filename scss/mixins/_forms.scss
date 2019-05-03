@@ -117,7 +117,7 @@
 
             // Apply both the select indicator and validaton icons.
             // stylelint-disable-next-line selector-no-qualifying-type
-            select.form-control:not([size]:not([size="1"])):not([multiple]) {
+            select.form-control:not([size]):not([size="1"]):not([multiple]) {
                 @include form-validation-state-selector-icon($state) {
                     padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$form-select-indicator-width} + #{$form-select-indicator-offset});
                     background-image: $form-select-indicator-image, $icon;
@@ -191,14 +191,12 @@
         }
     }
 
-    // custom file
+    // Form file
     @if $enable-form-file {
-        .custom-file-input {
+        .form-file-input {
             @include form-validation-state-selector($state) {
-                ~ .custom-file-label {
+                ~ .form-file-label {
                     border-color: $color;
-
-                    &::after { border-color: inherit; }
                 }
 
                 ~ .#{$state}-feedback,
@@ -208,7 +206,7 @@
 
                 &:focus-within, // Firefox workaround
                 &:focus {
-                    ~ .custom-file-label {
+                    ~ .form-file-label {
                         border-color: $color;
                         box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
                     }

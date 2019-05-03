@@ -13,8 +13,8 @@
     }
 
     // Form label sizing
-    // Build on `.form-control` with modifier classes to decrease or increase the
-    // height and font-size of form controls.
+    // Build on `.form-label` with modifier classes to decrease or increase the
+    // height and font-size of form labels.
     @if $enable-sizing {
         @each $size, $dims in $input-sizes {
             $sz-font-size:     map-get($dims, "font-size");

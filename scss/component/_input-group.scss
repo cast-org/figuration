@@ -9,7 +9,7 @@
         width: 100%;
 
         > .form-control,
-        > .custom-file {
+        > .form-file {
             position: relative;  // Needed for z-index on focus/active state
             flex: 1 1 auto;
             // Add width 1% and flex-basis auto to ensure that button will not wrap out
@@ -23,20 +23,22 @@
             }
 
             + .form-control,
-            + .custom-file {
+            + .form-file {
                 margin-left: -$input-border-width;
             }
         }
 
         // Bring the "active" form control to the top of surrounding elements
         > .form-control:focus,
-        > .custom-file .custom-file-input:focus ~ .custom-file-label {
+        > .form-file .form-file-input:focus-within ~ .form-file-label,
+        > .form-file .form-file-input:focus ~ .form-file-label {
             z-index: 3;
         }
 
         // Bring input back above label for drag and drop to work if
         // the custom file input is focused.
-        > .custom-file .custom-file-input:focus {
+        > .form-file .form-file-input:focus-within,
+        > .form-file .form-file-input:focus {
             z-index: 4;
         }
 
@@ -48,13 +50,14 @@
         // Custom file inputs have more complex markup,
         // needing special overrides.
         @if $enable-form-file {
-            > .custom-file {
+            > .form-file {
                 display: flex;
                 align-items: center;
 
-                &:not(:last-child) .custom-file-label,
-                &:not(:last-child) .custom-file-label::after { @include border-end-radius(0); }
-                &:not(:first-child) .custom-file-label { @include border-start-radius(0); }
+                &:not(:last-child) .form-file-label,
+                &:not(:last-child) .form-file-button { @include border-end-radius(0); }
+                &:not(:first-child) .form-file-label,
+                &:not(:first-child) .form-file-text { @include border-start-radius(0); }
             }
         }
     }

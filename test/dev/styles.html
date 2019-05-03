@@ -840,7 +840,7 @@ Showing a <kbd>kdb sample</kbd>
   </fieldset>
   <fieldset class="form-group">
     <label for="exampleInputFile">File input</label>
-    <input type="file" class="form-control-file" id="exampleInputFile" />
+    <input type="file" id="exampleInputFile" />
     <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
   </fieldset>
   <div class="form-check">
@@ -1488,9 +1488,21 @@ Showing a <kbd>kdb sample</kbd>
 
 <h3>Custom Forms: File Browser</h3>
 <div class="mb-1">
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="customFile">
-    <label class="custom-file-label" for="customFile">Choose file...</label>
+  <div class="form-file">
+    <input type="file" class="form-file-input" id="customFile">
+    <label class="form-file-label" for="customFile">
+        <span class="form-file-text">Choose file...</span>
+        <span class="form-file-button">Browse</span>
+    </label>
+  </div>
+</div>
+<div class="mb-1">
+  <div class="form-file">
+    <input type="file" class="form-file-input" id="customFileDis" disabled>
+    <label class="form-file-label" for="customFileDis">
+        <span class="form-file-text">Choose file...</span>
+        <span class="form-file-button">Browse</span>
+    </label>
   </div>
 </div>
 
