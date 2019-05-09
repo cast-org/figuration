@@ -32,21 +32,19 @@ Some changes will most likely have been missed, so please refer to the documenta
 - `.table-scroll-*` has dropped the `down` portion of the class name, and is now meant to used as a wrapper to prevent conflict with screen-readers due to the use of `display: block`.
 
 ## Form
-- Rewrote both custom and default checkboxes and radios. Now, both have matching HTML structure (outer `<div>` with sibling `<input>` and `<label>`, and an additional `<label>` for custom controls) and the same layout styles (stacked default, inline with modifier class). This allows us to style the label based on the input's state, simplifying support for the `disabled` attribute (previously requiring a parent class) and better support for form validation.
+- Rewrote both custom and default checkboxes and radios into a consolidated `.form-check`. Now, both have matching HTML structure (outer `<div>` with sibling `<input>` and `<label>`, and the same layout styles (stacked default, inline with utilitiy classes). This allows us to style the label based on the input's state, simplifying support for the `disabled` attribute (previously requiring a parent class) and better support for form validation.
+  - `.custom-control` is replaced with `.form-check`.
+  - `.custom-checkbox` and `.custom-radio` modifiers are replaced with `.form-checkradio`, the styling is now determined by the input `type`.
+  - added `.form-switch` modifier to make checkbox or radio look like a toggle switch.
 
-  For custom checkboxes and radios, the re-implemented `.custom-control-indicator` has changed to being an additional `<label>` element and to use the `.custom-control-label::before` for the background and border colors, and `.custom-control-label::after` controls the icon.
 
-  In the case of switches the roles are altered to where the `::before` pseudo-element becomes the thumb instead of the background, and the `::after` becomes the track.
-
-  To make a custom check inline, add `.custom-control-inline`.
-
-- Removed `.col-form-legend` in favor of a slightly improved `.col-form-label`. This way the sizing variants, such as `.col-form-label-sm` and `.col-form-label-lg`, can be used on `<legend>` elements also.
+- Removed `.col-form-legend` in favor of an improved `.form-label`. This way the sizing variants, such as `.form-label-sm` and `.form-label-lg`, can be used on `<legend>` elements also.
 
 - Custom file inputs have been reworked with a new `.form-file` class and markup, replacing `.custom-file`. Along with removing the SCSS map and psuedo-elements. Using children elements in the `<label>`, the `Choose file` text now comes from the `.form-file-text`, and the `Browse` button is now a `.form-file-button` element, allowing for translations right in the HTML.
 
 - Custom select inputs have been reworked also, dropping the `.custom-select`, resulting in a merge into `.form-control`.
 
-- Added custom styling for `input type="range"`.  The Slider widget has been removed from Figuration and moved into it's own repository: [Figuration Slider](https://github.com/cast-org/figuration-slider).
+- Added custom styling for `input type="range"` with the use for `.form-range`.  The Slider widget has been removed from Figuration and moved into it's own repository: [Figuration Slider](https://github.com/cast-org/figuration-slider).
 
 - Validation icons have been re-implemented.  The `.form-control-icon` has been replaced with `.has-validation-icon`. The icons are still optional and can now be used with textual `<input class="form-control">`, `<textarea class="form-control">`, and `<select class="form-control">` elements.  Icons can be used within `.input-groups` but they no longer scale with the input sizing.
 
@@ -91,7 +89,7 @@ Some changes will most likely have been missed, so please refer to the documenta
 - Pagination has been modified with a couple of style modifier classes for greater flexibility.  The use of the `.pagination-group` modifier class on the `.pagination` element is needed to keep the same look as the older pagination component.
 
 ### Switch
-- Dropped Switch component and consolidated with the `.custom-control` radio and checkbox controls. Check out the [new switch custom control]({{ site.baseurl }}/content/forms/#switches).
+- Dropped Switch component and consolidated with the `.form-check` radio and checkbox controls, through the use of the `.form-switch` modifier class. Check out the [new switch custom control]({{ site.baseurl }}/content/forms/#switches).
 
 
 ## Utilities

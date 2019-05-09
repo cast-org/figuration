@@ -46,6 +46,7 @@
             &:disabled,
             &[readonly] {
                 background-color: $input-disabled-bg;
+                border-color: $input-disabled-border-color;
                 opacity: $input-disabled-opacity;
             }
 
@@ -96,19 +97,18 @@
     }
 
     // Static form control text
-    // Apply class to an element to make any string of text align with labels
-    // in a horizontal form layout.
+    // Reset some styling to make the input look like normal text again,
+    // but keep the vertical aligning properties.
     @if $enable-form-control-static {
-        .form-control-static {
-            // Size it appropriately next to real form controls
-            display: block;
-            width: 100%;
-            padding-top: $input-padding-y;
-            padding-bottom: $input-padding-y;
+        .form-control.form-control-static {
+            padding-right: 0;
+            padding-left: 0;
             margin-bottom: 0;
-            line-height: $input-line-height;
-            border: solid transparent;
-            border-width: $input-border-width 0;
+            background-color: transparent;
+            border-color: transparent;
+            border-right-width: 0;
+            border-left-width: 0;
+            box-shadow: none;
         }
     }
 

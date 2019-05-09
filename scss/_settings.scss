@@ -1,3 +1,7 @@
+// Embedded icons from Open Iconic.
+// Released under MIT and copyright 2014 Waybury.
+// https://github.com/iconic/open-iconic
+
 // Options
 // =====
 // Quickly modify global styling by enabling or disabling optional features.
@@ -556,8 +560,7 @@ $btn-transition:            color .15s ease-in-out, background-color .15s ease-i
 $input-transition:          background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 $modal-transition:          transform .3s ease-out !default;
 $progress-bar-transition:   width .3s ease !default;
-$switch-transition:         all .15s ease !default;
-
+$switch-transition:         all .15s ease-in-out !default;
 
 // Radius utility
 // =====
@@ -746,6 +749,7 @@ $input-focus-box-shadow:        $input-focus-box-shadow-size rgba($component-act
 
 $input-disabled-color:          $component-disabled-color !default;
 $input-disabled-bg:             $uibase-50 !default;
+$input-disabled-border-color:   null !default;
 $input-disabled-opacity:        1 !default;
 
 $input-placeholder-color:       #999 !default;
@@ -754,79 +758,72 @@ $form-label-font-weight:        $font-weight-normal !default;
 
 $form-text-margin-top:          .25rem !default;
 
-$form-check-input-gutter:       1.25rem !default;
-$form-check-input-margin-y:     .3125rem !default;
-$form-check-input-margin-x:     .25rem !default;
-$form-check-inline-margin-x:    .75rem !default;
-$form-check-disabled-color:     $component-disabled-color !default;
-$form-check-inline-input-margin-x: .3125rem !default;
-
 $form-group-margin-bottom:      1rem !default;
 $form-row-gutter-width:         .625rem !default;
 
-$form-inline-breakpoint:         sm !default;
+$form-inline-breakpoint:        sm !default;
+$form-inline-check-margin-x:    .25em !default;
 
-// Custom form controls
-// =====
-// Custom checkbox/radio
-$custom-control-gutter:                 1.5rem !default;
-$custom-control-inline-margin-x:        .75rem !default;
+// Form check
+$form-check-gutter:                 1.25em !default;
+$form-check-margin-bottom:          .25rem !default;
+$form-check-label-disabled-opacity: .6 !default;
 
-$custom-control-indicator-size:         1rem !default;
-$custom-control-indicator-bg:           $uibase-50 !default;
-$custom-control-indicator-bg-size:      50% 50% !default;
-$custom-control-indicator-box-shadow:   map-get($shadows, "i1") !default;
-$custom-control-indicator-border-width: $border-width !default;
-$custom-control-indicator-border-color: $input-border-color !default;
+// Form checkradio
+$form-checkradio-size:                      1em !default;
+$form-checkradio-gutter:                    calc(#{$form-checkradio-size} + .375em) !default;
+$form-checkradio-bg:                        $white !default;
+$form-checkradio-border-width:              $border-width !default;
+$form-checkradio-border-color:              $input-border-color !default;
+$form-checkradio-icon-size:                 calc(#{$form-checkradio-size} - .375em) !default;
 
-$custom-control-disabled-indicator-opacity:  .6 !default;
-$custom-control-disabled-description-color:  $uibase-400 !default;
+$form-checkradio-focus-border-color:        $input-focus-border-color !default;
+$form-checkradio-focus-box-shadow:          $input-focus-box-shadow !default;
 
-$custom-control-checked-indicator-bg:         $primary !default;
-$custom-control-checked-indicator-color:      color-if-contrast($white, $custom-control-checked-indicator-bg) !default;
-$custom-control-checked-indicator-box-shadow: none !default;
-$custom-control-checked-indicator-border-color: $primary !default;
+$form-checkradio-checked-bg:                $primary !default;
+$form-checkradio-checked-color:             $white !default;
+$form-checkradio-checked-border-color:      $primary !default;
 
-$custom-control-focus-indicator-box-shadow:  $input-focus-box-shadow !default;
+$form-checkradio-checkbox-radius:           $border-radius !default;
+$form-checkradio-checkbox-icon:             str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='#{$form-checkradio-checked-color}' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e"), "#", "%23") !default;
 
-$custom-control-active-indicator-bg:         $custom-control-checked-indicator-bg !default;
-$custom-control-active-indicator-color:      $custom-control-checked-indicator-color !default;
+$form-checkradio-radio-radius:              50% !default;
+$form-checkradio-radio-icon:                str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#{$form-checkradio-checked-color}'/%3e%3c/svg%3e"), "#", "%23") !default;
 
-$custom-checkbox-radius:                    $border-radius !default;
-$custom-checkbox-checked-icon:              str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e"), "#", "%23") !default;
-$custom-checkbox-indeterminate-bg:          $primary !default;
-$custom-checkbox-indeterminate-icon:        str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3e%3cpath stroke='%23fff' d='M0 2h4'/%3e%3c/svg%3e"), "#", "%23") !default;
-$custom-checkbox-indeterminate-box-shadow:  none !default;
+$form-checkradio-indeterminate-bg:          $primary !default;
+$form-checkradio-indeterminate-icon:        str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3e%3cpath stroke='#{$form-checkradio-checked-color}' d='M0 2h4'/%3e%3c/svg%3e"), "#", "%23") !default;
 
-$custom-radio-radius:               50% !default;
-$custom-radio-checked-icon:         str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e"), "#", "%23") !default;
+// Form switch
+$form-switch-width:                         2em !default;
+$form-switch-gutter:                        calc(#{$form-switch-width} + .375em) !default;
 
-$custom-switch-gutter:              2.5rem !default;
-$custom-switch-width:               2rem !default;
-$custom-switch-track-height:        1rem !default;
-$custom-switch-track-bg:            $uibase-50 !default;
-$custom-switch-track-radius:        1rem !default;
-$custom-switch-track-border-width:  $border-width !default;
-$custom-switch-track-border-color:  $input-border-color !default;
-$custom-switch-track-box-shadow:    map-get($shadows, "i1") !default;
+$form-switch-track-height:                  1em !default;
+$form-switch-track-bg:                      $white !default;
+$form-switch-track-radius:                  1em !default;
+$form-switch-track-border-width:            $border-width !default;
+$form-switch-track-border-color:            $input-border-color !default;
 
-$custom-switch-thumb-width:         1rem !default;
-$custom-switch-thumb-height:        1rem !default;
-$custom-switch-thumb-bg:            $uibase-300 !default;
-$custom-switch-thumb-radius:        10rem !default;
-$custom-switch-thumb-border-width:  $border-width !default;
-$custom-switch-thumb-border-color:  $custom-switch-thumb-bg !default;
-$custom-switch-thumb-box-shadow:    none !default;
+$form-switch-track-focus-bg:                null !default;
+$form-switch-track-focus-border-color:      $input-focus-border-color !default;
+$form-switch-track-focus-box-shadow:        $input-focus-box-shadow !default;
 
-$custom-switch-checked-track-bg:            $uibase-50 !default;
-$custom-switch-checked-track-border-color:  $uibase-300 !default;
-$custom-switch-active-track-bg:             $uibase-50 !default;
+$form-switch-track-checked-bg:              $primary !default;
+$form-switch-track-checked-border-color:    $primary !default;
 
-$custom-switch-checked-thumb-bg:            $primary !default;
-$custom-switch-checked-thumb-border-color:  $primary !default;
-$custom-switch-active-thumb-bg:             palette($primary, 400) !default;
-$custom-switch-disabled-thumb-bg:           $uibase-200 !default;
-$custom-switch-disabled-checked-thumb-bg:   palette($primary, 200) !default;
+$form-switch-thumb-offset:                  calc(.25em - #{$form-switch-track-border-width}) !default;
+$form-switch-thumb-width:                   .75em !default;
+$form-switch-thumb-height:                  .75em !default;
+$form-switch-thumb-bg:                      $uibase-300 !default;
+$form-switch-thumb-radius:                  50% !default;
+$form-switch-thumb-border-width:            $border-width !default;
+$form-switch-thumb-border-color:            $form-switch-thumb-bg !default;
+
+$form-switch-thumb-focus-bg:                palette($primary, 300) !default;
+$form-switch-thumb-focus-border-color:      $form-switch-thumb-focus-bg !default;
+$form-switch-thumb-focus-box-shadow:        null !default;
+
+$form-switch-thumb-checked-bg:              $white !default;
+$form-switch-thumb-checked-border-color:    $white !default;
 
 // Form select
 $form-select-indicator-offset:      .375em !default;

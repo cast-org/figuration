@@ -50,7 +50,7 @@
 
         // Kick in the inline
         @include media-breakpoint-up(#{$form-inline-breakpoint}) {
-            label {
+            label:not(.form-check-label) {
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -87,13 +87,6 @@
                 }
             }
 
-            // Make static controls behave like regular ones
-            @if $enable-form-control-static {
-                .form-control-static {
-                    display: inline-block;
-                }
-            }
-
             @if $enable-input-group {
                 .input-group {
                     width: auto;
@@ -115,25 +108,10 @@
                     align-items: center;
                     justify-content: center;
                     width: auto;
-                    padding-left: 0;
-                }
-                .form-check-input {
-                    position: relative;
-                    flex-shrink: 0;
-                    margin-top: 0;
-                    margin-right: $form-check-input-margin-x;
-                    margin-left: 0;
-                }
-            }
 
-            // Custom form controls
-            @if $enable-custom-control {
-                .custom-control {
-                    align-items: center;
-                    justify-content: center;
-                }
-                .custom-control-label {
-                    margin-bottom: 0;
+                    > input {
+                        margin-right: $form-inline-check-margin-x;
+                    }
                 }
             }
         }

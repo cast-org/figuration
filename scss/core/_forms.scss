@@ -1,50 +1,6 @@
-@if $enable-form {
-
-    // Checkboxes and radios
-    //
-    // Indent the labels to position radios/checkboxes as hanging controls.
-    @if $enable-form-check {
-        .form-check {
-            position: relative;
-            display: block;
-            padding-left: $form-check-input-gutter;
-        }
-        .form-check-label {
-            margin-bottom: 0; // Override default `<label>` bottom margin
-        }
-        .form-check-input {
-            position: absolute;
-            margin-top: $form-check-input-margin-y;
-            margin-left: -$form-check-input-gutter;
-            @include transition($input-transition);
-
-            &:disabled ~ .form-check-label {
-                color: $form-check-disabled-color;
-            }
-        }
-    }
-
-    // Radios and checkboxes on same line
-    @if $enable-form-check and $enable-form-check-inline {
-        .form-check-inline {
-            display: inline-flex;
-            align-items: center;
-            padding-left: 0; // Override base .form-check
-            margin-right: $form-check-inline-margin-x;
-
-            // Undo .form-check-input defaults and add some `margin-right`.
-            .form-check-input {
-                position: static;
-                margin-top: 0;
-                margin-right: $form-check-inline-input-margin-x;
-                margin-left: 0;
-            }
-        }
-    }
-}
-
 @import "forms/form-control";
 @import "forms/form-label";
+@import "forms/form-check";
 @import "forms/form-file";
 @import "forms/form-range";
 @import "forms/form-color";
