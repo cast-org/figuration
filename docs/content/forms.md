@@ -26,37 +26,14 @@ Assistive technologies such as screen readers will have trouble with your forms 
 {% endcapture %}
 {% include callout.html content=callout type="warning" %}
 
-The example form below demonstrates Figuration's form styles.
 
-{% capture example %}
-<form>
-  <div class="form-group">
-    <label for="overview-email">Email Address</label>
-    <input type="email" class="form-control" id="overview-email" aria-describedby="overview-help" placeholder="Enter email">
-    <small id="overview-help" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="overview-pass">Password</label>
-    <input type="password" class="form-control" id="overview-pass" placeholder="Password">
-  </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="overview-check">
-    <label class="form-check-label" for="overview-check">Remember me</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-{% endcapture %}
-{% include example.html content=example %}
-
-## Form Controls
+## Text Inputs
 
 Textual form controls---like `<input>`s, `<select>`s, and `<textarea>`s---are styled with the `.form-control` class.  Included are styles for general appearance, focus state, sizing, and more.
 
-Check out our [custom forms](#custom-forms) for additonal `<select>` styling.
-
 {% capture example %}
 <form>
-  <div class="form-group">
+    <div class="form-group">
     <label for="example-input">Example text input</label>
     <input type="text" class="form-control" id="example-input" placeholder="Input text here">
   </div>
@@ -88,89 +65,11 @@ Check out our [custom forms](#custom-forms) for additonal `<select>` styling.
 {% endcapture %}
 {% include example.html content=example %}
 
-### Textual Inputs
-
-Here are examples of `.form-control` applied to each textual HTML5 `<input>` `type`.
-
-{% capture example %}
-<div class="form-group row">
-  <label for="example-text-input" class="col-2 form-label">Text</label>
-  <div class="col-10">
-    <input class="form-control" type="text" value="awesome frameworks" id="example-text-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-search-input" class="col-2 form-label">Search</label>
-  <div class="col-10">
-    <input class="form-control" type="search" value="How do I move mountains" id="example-search-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-email-input" class="col-2 form-label">Email</label>
-  <div class="col-10">
-    <input class="form-control" type="email" value="name@example.com" id="example-email-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-url-input" class="col-2 form-label">URL</label>
-  <div class="col-10">
-    <input class="form-control" type="url" value="http://cast.org/" id="example-url-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-tel-input" class="col-2 form-label">Telephone</label>
-  <div class="col-10">
-    <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-password-input" class="col-2 form-label">Password</label>
-  <div class="col-10">
-    <input class="form-control" type="password" value="hunter2" id="example-password-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-number-input" class="col-2 form-label">Number</label>
-  <div class="col-10">
-    <input class="form-control" type="number" value="42" id="example-number-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-datetime-local-input" class="col-2 form-label">Date and time</label>
-  <div class="col-10">
-    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-date-input" class="col-2 form-label">Date</label>
-  <div class="col-10">
-    <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-month-input" class="col-2 form-label">Month</label>
-  <div class="col-10">
-    <input class="form-control" type="month" value="2011-08" id="example-month-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-week-input" class="col-2 form-label">Week</label>
-  <div class="col-10">
-    <input class="form-control" type="week" value="2011-W33" id="example-week-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-time-input" class="col-2 form-label">Time</label>
-  <div class="col-10">
-    <input class="form-control" type="time" value="13:45:00" id="example-time-input">
-  </div>
-</div>
-{% endcapture %}
-{% include example.html content=example %}
-
 ### Control Sizing
 
-Set heights and font-sizes using component sizing classes, such as:
+By default, `.form-control` uses `em` units for sizing so that they will scale with their explicit `font-size`.
+
+You can also set heights and font-sizes using component sizing classes, such as:
 
 - `.form-control-xsmall`
 - `.form-control-small`
@@ -178,11 +77,13 @@ Set heights and font-sizes using component sizing classes, such as:
 - `.form-control-xlarge`
 
 {% capture example %}
-<input class="form-control form-control-xlarge" type="text" placeholder=".form-control-xlarge">
-<input class="form-control form-control-large" type="text" placeholder=".form-control-large">
-<input class="form-control" type="text" placeholder="Default input">
-<input class="form-control form-control-small" type="text" placeholder=".form-control-small">
-<input class="form-control form-control-xsmall" type="text" placeholder=".form-control-xsmall">
+<input class="form-control form-control-xlarge" type="text" placeholder="Extra large form control">
+<input class="form-control form-control-large" type="text" placeholder="Large form control">
+<input class="form-control" type="text" placeholder="Default form control">
+<input class="form-control form-control-small" type="text" placeholder="Small form control">
+<input class="form-control form-control-xsmall mb-2" type="text" placeholder="Extra small form control">
+<input class="form-control fs-large" type="text" placeholder="Explicit large font size">
+<input class="form-control fs-small" type="text" placeholder="Explicit small font size">
 {% endcapture %}
 {% include example.html content=example %}
 
@@ -207,95 +108,7 @@ The sizing classes also work on other inputs such as `<select>`s and `<textarea>
 {% endcapture %}
 {% include example.html content=example %}
 
-## Checkboxes and Radios
-
-Default checkboxes and radios are improved upon with the help of `.form-check`, **a single class for both input types that improves the layout and behavior of their HTML elements**. Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.
-
-Disabled checkboxes and radios are supported by using the `disabled` attribute on the `.form-check-input`, or by being inside a disabled `<fieldset>`, and will lighten the text color of a sibling `.form-check-label` to help indicate the input's state.
-
-### Default (stacked)
-
-By default, any number of checkboxes and radios that are immediate sibling will be vertically stacked and appropriately spaced with `.form-check`.
-
-{% capture example %}
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="default-checkbox-1">
-  <label class="form-check-label" for="default-checkbox-1">Default checkbox</label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="default-checkbox-2" disabled>
-  <label class="form-check-label" for="default-checkbox-2">Disabled checkbox</label>
-</div>
-{% endcapture %}
-{% include example.html content=example %}
-
-{% capture example %}
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="default-radio" value="" id="default-radio-1">
-  <label class="form-check-label" for="default-radio-1">First default radio</label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="default-radio" value="" id="default-radio-2">
-  <label class="form-check-label" for="default-radio-2">Second default radio</label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="default-radio" value="" id="default-radio-3" disabled>
-  <label class="form-check-label" for="default-radio-3">Disabled radio</label>
-</div>
-{% endcapture %}
-{% include example.html content=example %}
-
-### Inline
-
-Group checkboxes or radios on the same horizontal row by adding `.form-check-inline` to any `.form-check`.
-
-{% capture example %}
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" value="" id="inline-checkbox-1">
-  <label class="form-check-label" for="inline-checkbox-1">1</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" value="" id="inline-checkbox-2">
-  <label class="form-check-label" for="inline-checkbox-2">2</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="checkbox" value="" id="inline-checkbox-3" disabled>
-  <label class="form-check-label" for="inline-checkbox-3">3 (disabled)</label>
-</div>
-{% endcapture %}
-{% include example.html content=example %}
-
-{% capture example %}
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inline-radio" value="" id="inline-radio-1">
-  <label class="form-check-label" for="inline-radio-1">1</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inline-radio" value="" id="inline-radio-2">
-  <label class="form-check-label" for="inline-radio-2">2</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inline-radio" value="" id="inline-radio-3" disabled>
-  <label class="form-check-label" for="inline-radio-3">3 (disabled)</label>
-</div>
-{% endcapture %}
-{% include example.html content=example %}
-
-### Without Labels
-
-Add `.position-static` to inputs within `.form-check` that don't have any label text. Remember to still provide some form of label for assistive technologies (for instance, using `aria-label`).
-
-{% capture example %}
-<div class="form-check">
-  <input class="form-check-input position-static" type="checkbox" id="nolabel-checkbox" value="" aria-label="...">
-</div>
-<div class="form-check">
-  <input class="form-check-input position-static" type="radio" name="nolabel-radio" id="nolabel-checkbox-1" value="" aria-label="...">
-</div>
-{% endcapture %}
-{% include example.html content=example %}
-
-## Readonly Inputs
+### Readonly Inputs
 
 Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
 
@@ -304,7 +117,7 @@ Add the `readonly` boolean attribute on an input to prevent modification of the 
 {% endcapture %}
 {% include example.html content=example %}
 
-## Static Inputs
+### Static Inputs
 
 When you want to have `readonly` fields in your form styled as plain text, use the `.form-control-static` class to remove the default form field styling and preserve the correct margin and padding.
 
@@ -433,6 +246,7 @@ Cross-browser Compatibility
 While Figuration will apply these styles in all browsers, Internet Explorer 11 and below don't fully support the `disabled` attribute on a `<fieldset>`. Use custom JavaScript to disable the fieldset in these browsers.
 {% endcapture %}
 {% include callout.html content=callout type="danger" %}
+
 ## Help Text
 
 Block-level help text in forms can be created using `.form-text`. Inline help text can be flexibly implemented using any inline HTML element and utility classes like `.text-muted`.
@@ -468,6 +282,270 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
     </small>
   </div>
 </form>
+{% endcapture %}
+{% include example.html content=example %}
+
+## Checkboxes and Radios
+
+Default checkboxes and radios are improved upon with the help of `.form-check`, **a single class for both input types that improves the layout and behavior of their HTML elements**. Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.
+
+Disabled checkboxes and radios are supported by using the `disabled` attribute on the `<input>`, or by being inside a disabled `<fieldset>`, and will lighten the text color of a sibling `.form-check-label` to help indicate the input's state.
+
+The `.form-check` container has a `padding-left` so that the siblings of the `<input>` (such as `<label>`, help text, or validation feedback) are easily aligned.
+
+By default, any number of checkboxes and radios that are immediate sibling will be vertically stacked and appropriately spaced with `.form-check`.
+
+{% capture example %}
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="default-checkbox-1">
+  <label class="form-check-label" for="default-checkbox-1">Default checkbox</label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="default-checkbox-2">
+  <label class="form-check-label" for="default-checkbox-2">Default checkbox</label>
+  <small class="text-muted d-block">Some additional help text could appear right here.</small>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="default-checkbox-3" disabled>
+  <label class="form-check-label" for="default-checkbox-3">Disabled checkbox</label>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+{% capture example %}
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="default-radio" value="" id="default-radio-1">
+  <label class="form-check-label" for="default-radio-1">First default radio</label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="default-radio" value="" id="default-radio-2">
+  <label class="form-check-label" for="default-radio-2">Second default radio</label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="default-radio" value="" id="default-radio-3" disabled>
+  <label class="form-check-label" for="default-radio-3">Disabled radio</label>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+### Custom Style
+
+For even more customization and cross browser consistency, use our stylized form elements to replace the browser defaults.
+
+Add the `.form-checkradio` modifier class to a `.form-check` to enable the stylized inputs.  The visual treatment is determined from the `type` attribute on the `<input>`.
+
+We hide the default `<input>` with `opacity` and use a `<label>` element with `.form-check-label` to build the stylized indicator in its place with `::before` and `::after`. Unfortunately we can't build a custom one from just the `<input>` because CSS does not support `content`, `appearance` in IE 11, or pseudo-elements on that element.
+
+We also use the sibling selector (`~`) and the `<input>` states---like `:checked`---to style the form indicator and `<label>` text for each item.
+
+Stylized checkboxes can also utilize the `:indeterminate` pseudo class when manually set via JavaScript (there is no available HTML attribute for specifying it).
+
+In the checked and indeterminate states, we use icons from [Open Iconic](https://github.com/iconic/open-iconic). This provides us the best control for styling and positioning across browsers and devices.
+
+{% capture example %}
+<div class="form-check form-checkradio">
+  <input class="form-check-input" type="checkbox" id="check0" checked>
+  <label class="form-check-label" for="check0">Custom checkbox</label>
+  <small class="text-muted d-block">Some additional help text could appear right here.</small>
+</div>
+<div class="form-check form-checkradio">
+  <input class="form-check-input" type="checkbox" id="check1">
+  <label class="form-check-label" for="check1">Indeterminate custom checkbox</label>
+  <small class="text-muted d-block">Indeterminate checkboxes must be toggled via JavaScript—there's no HTML attribute for this.</small>
+</div>
+<div class="form-check form-checkradio">
+  <input class="form-check-input" type="checkbox" id="check2">
+  <label class="form-check-label" for="check2">Custom checkbox with a really long label to see what layout becomes when the text content wraps to the next line, but this needs a large amount of text to make sure the wrapping occurs.</label>
+</div>
+<div class="form-check form-checkradio">
+  <input class="form-check-input" type="checkbox" id="check3" disabled>
+  <label class="form-check-label" for="check3">Disabled custom checkbox</label>
+</div>
+<div class="form-check form-checkradio">
+  <input class="form-check-input" type="checkbox" id="check4" disabled checked>
+  <label class="form-check-label" for="check4">Disabled checked custom checkbox</label>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+{% capture example %}
+<div class="form-check form-checkradio">
+  <input class="form-check-input" type="radio" id="radio0" name="radios" checked>
+  <label class="form-check-label" for="radio0">Custom radio</label>
+</div>
+<div class="form-check form-checkradio">
+  <input class="form-check-input" type="radio" id="radio1" name="radios">
+  <label class="form-check-label" for="radio1">Custom radio</label>
+</div>
+<div class="form-check form-checkradio">
+  <input class="form-check-input" type="radio" id="radio2" name="radios" disabled>
+  <label class="form-check-label" for="radio2">Disabled custom radio</label>
+</div>
+<div class="form-check form-checkradio">
+  <input class="form-check-input" type="radio" id="radio3" name="radiosdis" disabled checked>
+  <label class="form-check-label" for="radio3">Disabled checked custom radio</label>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+For the indeterminate checkbox above we are using the following script:
+
+{% highlight js %}
+document.getElementById("check1").indeterminate = true;
+{% endhighlight %}
+<script>
+    document.getElementById("check1").indeterminate = true;
+</script>
+
+### Switch
+
+In similar fashion to the stylized checkbox and radio input, transform either of the input types to a stylized toggle switch by the using the `.form-switch` modifier class instead.
+
+{% capture example %}
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" id="switch0">
+  <label class="form-check-label" for="switch0">Custom switch checkbox</label>
+  <small class="text-muted d-block">Some additional help text could appear right here.</small>
+</div>
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" id="switch1" disabled>
+  <label class="form-check-label" for="switch1">Disabled custom switch checkbox</label>
+  <small class="text-muted d-block">Some additional help text could appear right here.</small>
+</div>
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" id="switch2" disabled checked>
+  <label class="form-check-label" for="switch2">Disabled checked custom switch checkbox</label>
+  <small class="text-muted d-block">Some additional help text could appear right here.</small>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+{% capture example %}
+<div class="form-check form-switch">
+  <input class="form-check-input" type="radio" id="switchradio0" name="switchradio" checked>
+  <label class="form-check-label" for="switchradio0">Custom switch radio</label>
+</div>
+<div class="form-check form-switch">
+  <input class="form-check-input" type="radio" id="switchradio1" name="switchradio">
+  <label class="form-check-label" for="switchradio1">Custom switch radio</label>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+### Without Labels
+
+You can use `.form-check` without labels, but you will still need to provide some form of label for assistive technologies (for instance, using `aria-label`).
+
+However, the stylized inputs will need to keep their label in order for the visual input to appear.
+
+{% capture example %}
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" id="nolabel0" value="" aria-label="...">
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="nolabel-radio" id="nolabel-1" value="" aria-label="...">
+</div>
+<div class="form-check form-checkradio">
+  <input class="form-check-input" type="checkbox" id="nolabel2" value="">
+  <label class="form-check-label" for="nolabel2">
+    <span class="sr-only">Visually hidden label text</span>
+  </label>
+</div>
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" id="nolabel3" value="">
+  <label class="form-check-label" for="nolabel3">
+    <span class="sr-only">Visually hidden label text</span>
+  </label>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+### External Labels
+
+Label can be supplied outside of the `.form-check` container also.
+
+{% capture example %}
+<div class="row">
+    <label class="col-md-auto" for="extlabel0">External label</label>
+    <div class="col">
+        <div class="form-check form">
+            <input class="form-check-input" type="checkbox" id="extlabel0" checked>
+            <label class="form-check-label" for="extlabel0"></label>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <label class="col-md-auto" for="extlabel1">External label</label>
+    <div class="col">
+        <div class="form-check form-checkradio">
+            <input class="form-check-input" type="checkbox" id="extlabel1" checked>
+            <label class="form-check-label" for="extlabel1"></label>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <label class="col-md-auto" for="extlabel2">External label</label>
+    <div class="col">
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="extlabel2" checked>
+            <label class="form-check-label" for="extlabel2"></label>
+        </div>
+    </div>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+### Inline
+
+Group checkboxes or radios on the same horizontal row by using `display` and `margin` utility classes, such as `.d-inline-block` and `.me-1`.
+
+{% capture example %}
+<div class="form-check d-inline-block me-1">
+    <input class="form-check-input" type="checkbox" id="inline0" checked>
+    <label class="form-check-label" for="inline0">Inline checkbox</label>
+</div>
+<div class="form-check form-checkradio d-inline-block me-1">
+    <input class="form-check-input" type="checkbox" id="inline1" checked>
+    <label class="form-check-label" for="inline1">Inline custom checkbox</label>
+</div>
+<div class="form-check form-checkradio d-inline-block me-1">
+    <input class="form-check-input" type="radio" id="inline2" checked>
+    <label class="form-check-label" for="inline2">Inline custom radio</label>
+</div>
+<div class="form-check form-switch d-inline-block">
+    <input class="form-check-input" type="checkbox" id="inline3" checked>
+    <label class="form-check-label" for="inline3">Inline custom switch</label>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+### Sizing
+
+Our custom checkbox, radio, and switch inputs use `em` for sizing, so that they will scale with their explicit or inherited `font-size`.
+
+{% capture example %}
+<div class="form-check form-checkradio fs-xlarge">
+    <input class="form-check-input" type="checkbox" id="resize0" checked>
+    <label class="form-check-label" for="resize0">Resized custom checkbox</label>
+</div>
+<div class="form-check form-checkradio fs-large">
+    <input class="form-check-input" type="radio" id="resize1" checked>
+    <label class="form-check-label" for="resize1">Resized custom radio</label>
+</div>
+<div class="form-check form-switch fs-small">
+    <input class="form-check-input" type="checkbox" id="resize2" checked>
+    <label class="form-check-label" for="resize2">Resized custom switch</label>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+You can also set a `font-size` on the `.form-check` container, then reset `font-size` of content **inside** the `<label>`.
+
+{% capture example %}
+<div class="form-check form-checkradio fs-xlarge">
+    <input class="form-check-input" type="checkbox" id="resizealt0" checked>
+    <label class="form-check-label" for="resize0"><span class="fs-base">Resized custom checkbox</span></label>
+</div>
 {% endcapture %}
 {% include example.html content=example %}
 
@@ -826,7 +904,7 @@ Each checkbox and radio is wrapped in a block-level container with consolidated 
 
 We hide the default `<input>` with `opacity` and use a `<label>` element with `.custom-control-indicator` to build a new custom form indicator in its place with `::before` and `::after`. Unfortunately we can't build a custom one from just the `<input>` because CSS's `content` doesn't work on that element.  Additionally, we use a second `<label>` with `.custom-control-label` to provde for a textual label for the input. We use this additional label element to provide some gains in layout possibilities, and the ability to *visually hide* the input's textual label, and not break the layout.
 
-We also use the sibling selector (`~`) for all our `<input>` states—like `:checked`—to properly style our custom form indicator. When combined with the `.custom-control-label` class, we can also style the text for each item based on the `<input>`'s state.
+We also use the sibling selector (`~`) for all our `<input>` states---like `:checked`---to properly style our custom form indicator. When combined with the `.custom-control-label` class, we can also style the text for each item based on the `<input>`'s state.
 
 In the checked and indeterminate states, we use **base64 embedded SVG icons** from [Open Iconic](https://github.com/iconic/open-iconic). This provides us the best control for styling and positioning across browsers and devices.
 
@@ -1008,7 +1086,7 @@ Create custom `<input type="range">` controls with `.form-range`. The track (the
 {% endcapture %}
 {% include example.html content=example %}
 
-Range inputs have implicit values for `min` and `max`—`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
+Range inputs have implicit values for `min` and `max`---`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
 
 {% capture example %}
 <label for="customRange2">Example range</label>

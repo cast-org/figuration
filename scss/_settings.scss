@@ -796,7 +796,7 @@ $form-checkradio-indeterminate-bg:          $primary !default;
 $form-checkradio-indeterminate-icon:        str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3e%3cpath stroke='#{$form-checkradio-checked-color}' d='M0 2h4'/%3e%3c/svg%3e"), "#", "%23") !default;
 
 // Form switch
-$form-switch-width:                         2em !default;
+$form-switch-width:                         1.75em !default;
 $form-switch-gutter:                        calc(#{$form-switch-width} + .375em) !default;
 
 $form-switch-track-height:                  1em !default;
@@ -813,8 +813,8 @@ $form-switch-track-checked-bg:              $primary !default;
 $form-switch-track-checked-border-color:    $primary !default;
 
 $form-switch-thumb-offset:                  calc(.25em - #{$form-switch-track-border-width}) !default;
-$form-switch-thumb-width:                   .75em !default;
-$form-switch-thumb-height:                  .75em !default;
+$form-switch-thumb-width:                   .625em !default;
+$form-switch-thumb-height:                  .625em !default;
 $form-switch-thumb-bg:                      $uibase-300 !default;
 $form-switch-thumb-radius:                  50% !default;
 $form-switch-thumb-border-width:            $border-width !default;

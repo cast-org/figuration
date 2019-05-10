@@ -15,6 +15,9 @@ Some changes will most likely have been missed, so please refer to the documenta
 * ToC goes here
 {:toc}
 
+## Browser Support
+- **Support for Internet Explorer 10 has been dropped!** IE 10 is getting old, and the market share is less than 0.1% in terms of global usage according to many trackers.  Plus our use of MutationObservers in the Widgets either needs a polyfill, or things just don't work right.
+
 ## Color
 - Reworked the colors, internal palette system, and consolidated the re-used component colors.
 - Added functions to check, and/or determine the best color, these can be found in `/scss/functions/_color-util.scss`.
@@ -32,11 +35,13 @@ Some changes will most likely have been missed, so please refer to the documenta
 - `.table-scroll-*` has dropped the `down` portion of the class name, and is now meant to used as a wrapper to prevent conflict with screen-readers due to the use of `display: block`.
 
 ## Form
+**Forms have recieved a major overhaul.**  Almost everything has been changed, from using `em` sizing by default, along with a simplification in terms of class names and their reusability across multiple input types and visual styles.  A few of the changes are listed below, but there are many that have probably been missed, so it might be better to just review the [forms documentation section]({{ site.baseurl }}/content/forms/) for a better understanding.
+
 - Rewrote both custom and default checkboxes and radios into a consolidated `.form-check`. Now, both have matching HTML structure (outer `<div>` with sibling `<input>` and `<label>`, and the same layout styles (stacked default, inline with utilitiy classes). This allows us to style the label based on the input's state, simplifying support for the `disabled` attribute (previously requiring a parent class) and better support for form validation.
   - `.custom-control` is replaced with `.form-check`.
   - `.custom-checkbox` and `.custom-radio` modifiers are replaced with `.form-checkradio`, the styling is now determined by the input `type`.
   - added `.form-switch` modifier to make checkbox or radio look like a toggle switch.
-
+  - `.form-check-inline` has been dropped in favor of utility classes.
 
 - Removed `.col-form-legend` in favor of an improved `.form-label`. This way the sizing variants, such as `.form-label-sm` and `.form-label-lg`, can be used on `<legend>` elements also.
 
