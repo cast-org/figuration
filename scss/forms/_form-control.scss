@@ -100,15 +100,17 @@
     // Reset some styling to make the input look like normal text again,
     // but keep the vertical aligning properties.
     @if $enable-form-control-static {
-        .form-control.form-control-static {
-            padding-right: 0;
-            padding-left: 0;
+        .form-control-static {
+            display: block;
+            width: 100%;
+            padding: $input-padding-y 0;
             margin-bottom: 0;
+            @include font-size($input-font-size);
+            color: $input-static-color;
+            line-height: $input-line-height;
             background-color: transparent;
-            border-color: transparent;
-            border-right-width: 0;
-            border-left-width: 0;
-            box-shadow: none;
+            border: solid transparent;
+            border-width: $input-border-width 0;
         }
     }
 
