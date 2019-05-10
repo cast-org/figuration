@@ -161,11 +161,44 @@
                 color: $color;
             }
         }
+    }
 
+    @if $enable-form-check and ($enable-form-check-checkradio or $enable-form-check-switch) {
         .form-check-input {
             @include form-validation-state-selector($state) {
                 ~ .form-check-label {
                     &::before {
+                        border-color: $color;
+                    }
+                }
+
+                &:checked {
+                    ~ .form-check-label {
+                        &::before {
+                            background-color: $color;
+                            border-color: $color;
+                        }
+                    }
+                }
+
+                &:focus {
+                    ~ .form-check-label {
+                        &::before {
+                            box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+    @if $enable-form-check and $enable-form-check-switch {
+        .form-switch .form-check-input {
+            @include form-validation-state-selector($state) {
+                ~ .form-check-label {
+                    &::before {
+                        background-color: color-auto-contrast($color);
                         border-color: $color;
                     }
                     &::after {
@@ -177,12 +210,12 @@
                 &:checked {
                     ~ .form-check-label {
                         &::before {
-                            background-color: $color;
+                            background-color: color-auto-contrast($color);
                             border-color: $color;
                         }
                         &::after {
-                            background-color: $form-switch-thumb-checked-bg;
-                            border-color: $form-switch-thumb-checked-border-color;
+                            background-color: $color;
+                            border-color: $color;
                         }
                     }
                 }
@@ -190,7 +223,16 @@
                 &:focus {
                     ~ .form-check-label {
                         &::before {
-                            box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                            @if $form-switch-track-focus-box-shadow != null {
+                                box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                            } @else {
+                                box-shadow: none;
+                            }
+                        }
+                        @if $form-switch-thumb-focus-box-shadow != null {
+                            &::after {
+                                box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                            }
                         }
                     }
                 }

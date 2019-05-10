@@ -37,7 +37,6 @@
             padding-left: $form-checkradio-gutter;
 
             .form-check-input {
-                //margin-left: calc(#{$form-checkradio-gutter} * -1);
                 @extend %form-check-input-hide;
             }
 
@@ -125,40 +124,38 @@
             padding-left: $form-switch-gutter;
 
             .form-check-input {
-                //margin-left: calc(#{$form-switch-gutter} * -1);
                 @extend %form-check-input-hide;
             }
 
             .form-check-label {
+                &::before,
+                &::after {
+                    position: absolute;
+                    display: inline-block;
+                    content: "";
+                    @include transition($switch-transition);
+                }
+
                 // Track
                 &::before {
-                    position: absolute;
                     top: calc(((1em * #{$line-height-base}) - #{$form-switch-track-height}) / 2);
                     left: 0;
-                    display: inline-block;
                     width: $form-switch-width;
                     height: $form-switch-track-height;
-                    content: "";
                     background-color: $form-switch-track-bg;
                     border: $form-switch-track-border-width solid $form-switch-track-border-color;
                     @include border-radius($form-switch-track-radius);
-                    @include transition($switch-transition);
                 }
 
                 // Thumb
                 &::after {
-                    position: absolute;
                     top: calc(((1em * #{$line-height-base}) - #{$form-switch-thumb-height}) / 2);
                     left: $form-switch-thumb-offset;
-                    display: inline-block;
                     width: $form-switch-thumb-width;
                     height: $form-switch-thumb-height;
-                    content: "";
                     background-color: $form-switch-thumb-bg;
                     border: $form-switch-thumb-border-width solid $form-switch-thumb-border-color;
                     @include border-radius($form-switch-thumb-radius);
-                    @include transition($switch-transition);
-
                 }
             }
 
