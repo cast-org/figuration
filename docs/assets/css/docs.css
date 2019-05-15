@@ -915,17 +915,8 @@ h4 > code {
   border-left: 0.5rem solid  #000;
 }
 
-.cf-example > .form-control + .form-control,
-.cf-example > .custom-select + .custom-select {
+.cf-example > .form-control + .form-control {
   margin-top: .5rem;
-}
-
-.custom-file-input:lang(en) ~ .custom-file-label::after {
-  content: "Browse";
-}
-
-.custom-file-input:lang(es) ~ .custom-file-label::after {
-  content: "Elegir";
 }
 
 .cf-example > .btn-group + .btn-group,
