@@ -1,4 +1,5 @@
 ﻿addons:
+  sauce_connect: true
   chrome: stable
 
 language: node_js
