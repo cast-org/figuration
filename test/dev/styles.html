@@ -840,7 +840,7 @@ Showing a <kbd>kdb sample</kbd>
   </fieldset>
   <fieldset class="form-group">
     <label for="exampleInputFile">File input</label>
-    <input type="file" class="form-control-file" id="exampleInputFile" />
+    <input type="file" id="exampleInputFile" />
     <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
   </fieldset>
   <div class="form-check">
@@ -925,13 +925,13 @@ Showing a <kbd>kdb sample</kbd>
 <h3>Form using grid</h3>
 <form>
   <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 form-control-label">Email</label>
+    <label for="inputEmail3" class="col-sm-2 form-label">Email</label>
     <div class="col-sm-10">
       <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
     </div>
   </div>
   <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 form-control-label">Password</label>
+    <label for="inputPassword3" class="col-sm-2 form-label">Password</label>
     <div class="col-sm-10">
       <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
     </div>
@@ -1015,101 +1015,45 @@ Showing a <kbd>kdb sample</kbd>
 
 <h3>Inline checkbox/radio</h3>
 <div>
-  <div class="form-check form-check-inline">
-    <label class="form-check-label">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
-    </label>
+  <div class="form-check d-inline-block me-1">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+    <label class="form-check-label" for="inlineCheckbox1">1</label>
   </div>
-  <div class="form-check form-check-inline">
-    <label class="form-check-label">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
-    </label>
+  <div class="form-check d-inline-block me-1">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+    <label class="form-check-label" for="inlineCheckbox2">2</label>
   </div>
-  <div class="form-check form-check-inline disabled">
-    <label class="form-check-label">
-      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled> 3
-    </label>
+  <div class="form-check d-inline-block">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
+    <label class="form-check-label" for="inlineCheckbox3">3</label>
   </div>
 </div>
 
 <div>
-  <div class="form-check form-check-inline">
-    <label class="form-check-label">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
-    </label>
+  <div class="form-check d-inline-block me-1">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+    <label class="form-check-label" for="inlineRadio1">1</label>
   </div>
-  <div class="form-check form-check-inline">
-    <label class="form-check-label">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
-    </label>
+  <div class="form-check d-inline-block me-1">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+    <label class="form-check-label" for="inlineRadio2">2</label>
   </div>
-  <div class="form-check form-check-inline disabled">
-    <label class="form-check-label">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled> 3
-    </label>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="form-group row">
-        <div class="col-sm-2">Criteria 1:
-        </div>
-        <div class="col-sm-10 form-check-inline">
-          <label class="form-check-label"><input class="form-check-input" type="checkbox" value="yes"> Yes, I want!</label>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-2">Criteria 2:
-        </div>
-        <div class="col-sm-10 form-check-inline">
-          <label class="form-check-label"><input class="form-check-input" type="checkbox" value="yes"> Yes, it's me: <a href="mailto:john@doe.com">john@doe.com</a></label>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-2">Criteria 3:
-        </div>
-        <div class="col-sm-10 form-check-inline">
-          <label class="form-check-label"><input class="form-check-input" type="checkbox" value="yes"> Yes, I <em>really</em> want it!</label>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-2">Criteria 4:
-        </div>
-        <div class="col-sm-10 form-check-inline">
-          <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox4-1" value="option1"> 1
-          </label>
-          <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox4-2" value="option2"> 2<em>italic</em>
-          </label>
-          <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox4-3" value="option3"> 3
-          </label>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-2">Criteria 5:
-        </div>
-        <div class="col-sm-10 form-check-inline">
-          <label class="form-check-label disabled"><input class="form-check-input" type="checkbox" value="yes" disabled> Yes, I <em>really</em> want it!</label>
-        </div>
-      </div>
-    </div>
+  <div class="form-check d-inline-block">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
+    <label class="form-check-label" for="inlineRadio3">3</label>
   </div>
 </div>
 
 <h3>Static controls</h3>
 <form>
   <div class="form-group row">
-    <label for="inputEmail" class="col-sm-2 form-control-label">Email</label>
+    <label for="inputEmail" class="col-sm-2 form-label">Email</label>
     <div class="col-sm-10">
       <input type="text" readonly class="form-control-static" id="inputEmail" value="email@example.com">
     </div>
   </div>
   <div class="form-group row">
-    <label for="inputPassword" class="col-sm-2 form-control-label">Password</label>
+    <label for="inputPassword" class="col-sm-2 form-label">Password</label>
     <div class="col-sm-10">
       <input type="password" class="form-control" id="inputPassword" placeholder="Password">
     </div>
@@ -1294,15 +1238,15 @@ Showing a <kbd>kdb sample</kbd>
 
 <h3>Form validation</h3>
 <div class="form-group has-success">
-  <label class="form-control-label" for="inputSuccess1">Input with success</label>
+  <label class="form-label" for="inputSuccess1">Input with success</label>
   <input type="text" class="form-control form-control-icon" id="inputSuccess1">
 </div>
 <div class="form-group has-warning">
-  <label class="form-control-label" for="inputWarning1">Input with warning</label>
+  <label class="form-label" for="inputWarning1">Input with warning</label>
   <input type="text" class="form-control form-control-icon" id="inputWarning1">
 </div>
 <div class="form-group has-danger">
-  <label class="form-control-label" for="inputDanger1">Input with danger</label>
+  <label class="form-label" for="inputDanger1">Input with danger</label>
   <input type="text" class="form-control form-control-icon" id="inputDanger1">
 </div>
 
@@ -1326,7 +1270,7 @@ Showing a <kbd>kdb sample</kbd>
 </div>
 
 <div class="form-group row has-success">
-  <label for="inputHorizontalSuccess" class="col-sm-2 form-control-label">Email</label>
+  <label for="inputHorizontalSuccess" class="col-sm-2 form-label">Email</label>
   <div class="col-sm-10">
     <input type="email" class="form-control form-control-success" id="inputHorizontalSuccess" placeholder="name@example.com">
     <div class="form-control-feedback">Success! You've done it.</div>
@@ -1334,7 +1278,7 @@ Showing a <kbd>kdb sample</kbd>
   </div>
 </div>
 <div class="form-group row has-warning">
-  <label for="inputHorizontalWarning" class="col-sm-2 form-control-label">Email</label>
+  <label for="inputHorizontalWarning" class="col-sm-2 form-label">Email</label>
   <div class="col-sm-10">
     <input type="email" class="form-control form-control-warning" id="inputHorizontalWarning" placeholder="name@example.com">
     <div class="form-control-feedback">Shucks, check the formatting of that and try again.</div>
@@ -1342,7 +1286,7 @@ Showing a <kbd>kdb sample</kbd>
   </div>
 </div>
 <div class="form-group row has-danger">
-  <label for="inputHorizontalDnger" class="col-sm-2 form-control-label">Email</label>
+  <label for="inputHorizontalDnger" class="col-sm-2 form-label">Email</label>
   <div class="col-sm-10">
     <input type="email" class="form-control form-control-danger" id="inputHorizontalDnger" placeholder="name@example.com">
     <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
@@ -1352,156 +1296,140 @@ Showing a <kbd>kdb sample</kbd>
 
 <h3>Form validation - native for reference (colors not Figuration controlled)</h3>
 <div class="form-group">
-  <label class="form-control-label" for="inputNative0">Name</label>
+  <label class="form-label" for="inputNative0">Name</label>
   <input type="text" required class="form-control" id="inputNative0" placeholder="Name" />
 </div>
 <div class="form-group">
-  <label class="form-control-label" for="inputNative1">Email</label>
+  <label class="form-label" for="inputNative1">Email</label>
   <input type="email" required class="form-control" id="inputNative1" placeholder="Email"/>
 </div>
 <div class="form-group">
-  <label class="form-control-label" for="inputNative2">URL</label>
+  <label class="form-label" for="inputNative2">URL</label>
   <input type="url" class="form-control" id="inputNative2" placeholder="http://">
 </div>
 
 <h3>Custom Forms: Checkbox</h3>
 <div class="mb-1">
-  <div class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input" id="customControl0">
-    <label class="custom-control-indicator" for="customControl0"></label>
-    <label class="custom-control-label" for="customControl0">Check this custom checkbox</label>
+  <div class="form-check form-checkradio">
+    <input type="checkbox" class="form-check-input" id="customControl0">
+    <label class="form-check-label" for="customControl0">Check this custom checkbox</label>
   </div>
 </div>
 
 <div class="mb-1">
-  <div class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input" id="customControl1">
-    <label class="custom-control-indicator" for="customControl1"></label>
-    <label class="custom-control-label" for="customControl1">Curabitur vel pulvinar arcu? Donec commodo iaculis varius. In malesuada volutpat magna nec blandit. Quisque sit amet nisl scelerisque, tristique odio at, dignissim quam. Aenean molestie imperdiet nisi. Vestibulum mattis posuere dui a luctus. Cras suscipit urna et pulvinar dapibus. Cras efficitur aliquet mi ut cursus.</label>
+  <div class="form-check form-checkradio">
+    <input type="checkbox" class="form-check-input" id="customControl1">
+    <label class="form-check-label" for="customControl1">Curabitur vel pulvinar arcu? Donec commodo iaculis varius. In malesuada volutpat magna nec blandit. Quisque sit amet nisl scelerisque, tristique odio at, dignissim quam. Aenean molestie imperdiet nisi. Vestibulum mattis posuere dui a luctus. Cras suscipit urna et pulvinar dapibus. Cras efficitur aliquet mi ut cursus.</label>
   </div>
 </div>
 
 <h3>Custom Forms: Radio</h3>
 <div class="mb-1">
-  <div class="custom-control custom-radio">
-    <input name="radio" type="radio" class="custom-control-input" id="customControl2">
-    <label class="custom-control-indicator" for="customControl2"></label>
-    <label class="custom-control-label" for="customControl2">Toggle this custom radio</label>
+  <div class="form-check form-checkradio">
+    <input name="radio" type="radio" class="form-check-input" id="customControl2" checked>
+    <label class="form-check-label" for="customControl2">Toggle this custom radio</label>
   </div>
-  <div class="custom-control custom-radio">
-    <input name="radio" type="radio" class="custom-control-input" id="customControl3">
-    <label class="custom-control-indicator" for="customControl3"></label>
-    <label class="custom-control-label" for="customControl3">Or toggle this other custom radio</label>
+  <div class="form-check form-checkradio">
+    <input name="radio" type="radio" class="form-check-input" id="customControl3">
+    <label class="form-check-label" for="customControl3">Or toggle this other custom radio</label>
   </div>
 </div>
 
 <h3>Custom Forms: Switch</h3>
 <div class="mb-1">
-  <div class="custom-control custom-switch">
-    <input type="checkbox" class="custom-control-input" id="customSwitch0">
-    <label class="custom-control-indicator" for="customSwitch0"></label>
-    <label class="custom-control-label" for="customSwitch0">Toggle this custom switch</label>
+  <div class="form-check form-switch">
+    <input type="checkbox" class="form-check-input" id="customSwitch0">
+    <label class="form-check-label" for="customSwitch0">Toggle this custom switch</label>
   </div>
 </div>
 <div class="mb-1">
-  <div class="custom-control custom-switch">
-    <input type="radio" class="custom-control-input" name="customSwitch" id="customSwitch1" checked>
-    <label class="custom-control-indicator" for="customSwitch1"></label>
-    <label class="custom-control-label" for="customSwitch1">Toggle this custom radio switch</label>
+  <div class="form-check form-switch">
+    <input type="radio" class="form-check-input" name="customSwitch" id="customSwitch1" checked>
+    <label class="form-check-label" for="customSwitch1">Toggle this custom radio switch</label>
   </div>
-  <div class="custom-control custom-switch">
-    <input type="radio" class="custom-control-input" name="customSwitch" id="customSwitch2">
-    <label class="custom-control-indicator" for="customSwitch2"></label>
-    <label class="custom-control-label" for="customSwitch2">Toggle this custom radio switch</label>
+  <div class="form-check form-switch">
+    <input type="radio" class="form-check-input" name="customSwitch" id="customSwitch2">
+    <label class="form-check-label" for="customSwitch2">Toggle this custom radio switch</label>
   </div>
 </div>
 
 <h3>Custom Forms: Disabled</h3>
 <div class="mb-1">
-  <div class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input" id="customControl4" disabled>
-    <label class="custom-control-indicator" for="customControl4"></label>
-    <label class="custom-control-label" for="customControl4">Check this custom checkbox</label>
+  <div class="form-check form-checkradio">
+    <input type="checkbox" class="form-check-input" id="customControl4" disabled>
+    <label class="form-check-label" for="customControl4">Check this custom checkbox</label>
   </div>
-  <div class="custom-control custom-radio">
-    <input name="radioDisabled0" type="radio" class="custom-control-input" id="customControl5" disabled>
-    <label class="custom-control-indicator" for="customControl5"></label>
-    <label class="custom-control-label" for="customControl5">Toggle this custom radio</label>
+  <div class="form-check form-checkradio">
+    <input name="radioDisabled0" type="radio" class="form-check-input" id="customControl5" disabled>
+    <label class="form-check-label" for="customControl5">Toggle this custom radio</label>
   </div>
 </div>
 <div class="mb-1">
-  <div class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input" id="customControl6" checked disabled>
-    <label class="custom-control-indicator" for="customControl6"></label>
-    <label class="custom-control-label" for="customControl6">Check this custom checkbox</label>
+  <div class="form-check form-checkradio">
+    <input type="checkbox" class="form-check-input" id="customControl6" checked disabled>
+    <label class="form-check-label" for="customControl6">Check this custom checkbox</label>
   </div>
-  <div class="custom-control custom-radio">
-    <input name="radioDisabled1" type="radio" class="custom-control-input" id="customControl7" checked disabled>
-    <label class="custom-control-indicator" for="customControl7"></label>
-    <label class="custom-control-label" for="customControl7">Toggle this custom radio</label>
+  <div class="form-check form-checkradio">
+    <input name="radioDisabled1" type="radio" class="form-check-input" id="customControl7" checked disabled>
+    <label class="form-check-label" for="customControl7">Toggle this custom radio</label>
   </div>
 </div>
 <div class="mb-1">
-  <div class="custom-control custom-switch">
-    <input type="checkbox" class="custom-control-input" id="customControl8" disabled>
-    <label class="custom-control-indicator" for="customControl8"></label>
-    <label class="custom-control-label" for="customControl8">Toggle this custom switch</label>
+  <div class="form-check form-switch">
+    <input type="checkbox" class="form-check-input" id="customControl8" disabled>
+    <label class="form-check-label" for="customControl8">Toggle this custom switch</label>
   </div>
-  <div class="custom-control custom-switch">
-    <input type="checkbox" class="custom-control-input" id="customControl9" checked disabled>
-    <label class="custom-control-indicator" for="customControl9"></label>
-    <label class="custom-control-label" for="customControl9">Toggle this custom switch</label>
+  <div class="form-check form-switch">
+    <input type="checkbox" class="form-check-input" id="customControl9" checked disabled>
+    <label class="form-check-label" for="customControl9">Toggle this custom switch</label>
   </div>
 </div>
 
 <h3>Custom Forms: Inline</h3>
 <div class="mb-1">
-  <div class="custom-control custom-radio custom-control-inline">
-    <input id="customInline0" name="radio-stacked" type="radio" class="custom-control-input">
-    <label class="custom-control-indicator" for="customInline0"></label>
-    <label class="custom-control-label" for="customInline0">Toggle this custom radio</label>
+  <div class="form-check form-checkradio d-inline-block me-1">
+    <input id="customInline0" name="radio-inline" type="radio" class="form-check-input">
+    <label class="form-check-label" for="customInline0">Toggle this custom radio</label>
   </div>
-  <div class="custom-control custom-radio custom-control-inline">
-    <input id="customInline1" name="radio-stacked" type="radio" class="custom-control-input">
-    <label class="custom-control-indicator" for="customInline1"></label>
-    <label class="custom-control-label" for="customInline1">Or toggle this other custom radio</label>
+  <div class="form-check form-checkradio d-inline-block">
+    <input id="customInline1" name="radio-inline" type="radio" class="form-check-input">
+    <label class="form-check-label" for="customInline1">Or toggle this other custom radio</label>
   </div>
 </div>
 
 <div class=" mb-1">
-  <div class="custom-control custom-radio custom-control-inline">
-    <input id="customInline3" type="checkbox" class="custom-control-input">
-    <label class="custom-control-indicator" for="customInline3"></label>
-    <label class="custom-control-label" for="customInline3">Curabitur vel pulvinar arcu? Donec commodo iaculis varius. In malesuada volutpat magna nec blandit. Quisque sit amet nisl scelerisque, tristique odio at, dignissim quam. Aenean molestie imperdiet nisi. Vestibulum mattis posuere dui a luctus. Cras suscipit urna et pulvinar dapibus. Cras efficitur aliquet mi ut cursus.</label>
+  <div class="form-check form-checkradio d-inline-block me-1">
+    <input id="customInline3" type="checkbox" class="form-check-input">
+    <label class="form-check-label" for="customInline3">Curabitur vel pulvinar arcu? Donec commodo iaculis varius. In malesuada volutpat magna nec blandit. Quisque sit amet nisl scelerisque, tristique odio at, dignissim quam. Aenean molestie imperdiet nisi. Vestibulum mattis posuere dui a luctus. Cras suscipit urna et pulvinar dapibus. Cras efficitur aliquet mi ut cursus.</label>
   </div>
-  <div class="custom-control custom-radio custom-control-inline">
-    <input id="customInline4" type="checkbox" class="custom-control-input">
-    <label class="custom-control-indicator" for="customInline4"></label>
-    <label class="custom-control-label" for="customInline4">Curabitur vel pulvinar arcu? Donec commodo iaculis varius. In malesuada volutpat magna nec blandit. Quisque sit amet nisl scelerisque, tristique odio at, dignissim quam. Aenean molestie imperdiet nisi. Vestibulum mattis posuere dui a luctus. Cras suscipit urna et pulvinar dapibus. Cras efficitur aliquet mi ut cursus.</label>
+  <div class="form-check form-checkradio d-inline-block">
+    <input id="customInline4" type="checkbox" class="form-check-input">
+    <label class="form-check-label" for="customInline4">Curabitur vel pulvinar arcu? Donec commodo iaculis varius. In malesuada volutpat magna nec blandit. Quisque sit amet nisl scelerisque, tristique odio at, dignissim quam. Aenean molestie imperdiet nisi. Vestibulum mattis posuere dui a luctus. Cras suscipit urna et pulvinar dapibus. Cras efficitur aliquet mi ut cursus.</label>
   </div>
-</div>
-
-
-<h3>Custom Forms: Select Menu</h3>
-<div class="mb-1">
-  <select class="custom-select">
-    <option selected>Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>
 </div>
 
 <h3>Custom Forms: Color Picker</h3>
 <div class="mb-1">
-  <input class="custom-color" type="color" value="#117dba" id="color">
+  <input class="form-color" type="color" value="#117dba" id="color">
 </div>
 
 <h3>Custom Forms: File Browser</h3>
 <div class="mb-1">
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="customFile">
-    <label class="custom-file-label" for="customFile">Choose file...</label>
+  <div class="form-file">
+    <input type="file" class="form-file-input" id="customFile">
+    <label class="form-file-label" for="customFile">
+        <span class="form-file-text">Choose file...</span>
+        <span class="form-file-button">Browse</span>
+    </label>
+  </div>
+</div>
+<div class="mb-1">
+  <div class="form-file">
+    <input type="file" class="form-file-input" id="customFileDis" disabled>
+    <label class="form-file-label" for="customFileDis">
+        <span class="form-file-text">Choose file...</span>
+        <span class="form-file-button">Browse</span>
+    </label>
   </div>
 </div>
 

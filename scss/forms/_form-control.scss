@@ -1,0 +1,161 @@
+// stylelint-disable selector-no-qualifying-type
+@if $enable-form {
+    // Textual form controls
+    @if $enable-form-control {
+        .form-control {
+            display: block;
+            width: 100%;
+            height: calc-input-height-outer($input-padding-y, $input-line-height);
+            padding: $input-padding-y $input-padding-x;
+            font-family: $input-font-family;
+            @include font-size($input-font-size);
+            font-weight: $input-font-weight;
+            line-height: $input-line-height;
+            color: $input-color;
+            background-color: $input-bg;
+            border: $input-border-width solid $input-border-color;
+
+            // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+            // Provide a fallback to override to the iOS default
+            @include border-radius($input-border-radius, 0);
+
+            @include box-shadow($input-box-shadow);
+            @include transition($input-transition);
+
+            // Unstyle the caret on `<select>`s in IE10+.
+            &::-ms-expand {
+                background-color: transparent;
+                border: 0;
+            }
+
+            // Customize the `:focus` state to imitate native WebKit styles.
+            @include form-control-focus();
+
+            // Placeholder
+            &::placeholder {
+                color: $input-placeholder-color;
+                // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+                opacity: 1;
+            }
+
+            // Disabled and read-only inputs
+            //
+            // HTML5 says that controls under a fieldset > legend:first-child won't be
+            // disabled if the fieldset is disabled. Due to implementation difficulty, we
+            // don't honor that edge case; we style them as disabled anyway.
+            &:disabled,
+            &[readonly] {
+                background-color: $input-disabled-bg;
+                border-color: $input-disabled-border-color;
+                opacity: $input-disabled-opacity;
+            }
+
+            &:disabled {
+                color: $input-disabled-color;
+            }
+        }
+
+        select.form-control {
+            padding-right: calc(#{$input-padding-x} + #{$form-select-indicator-width} + #{$form-select-indicator-offset});
+            vertical-align: middle;
+            background: $input-bg $form-select-indicator-image no-repeat right $form-select-indicator-offset center;
+            background-size: $form-select-indicator-width $form-select-indicator-height;
+            appearance: none;
+
+            &:disabled {
+                pointer-events: none;
+            }
+
+            &[size]:not([size="1"]),
+            &[multiple] {
+                height: auto;
+                padding-right: $input-padding-x;
+                background-image: none;
+            }
+
+            &:focus::-ms-value {
+                // Suppress the nested default white text on blue background highlight given to
+                // the selected option text when the (still closed) <select> receives focus
+                // in IE and (under certain conditions) Edge, as it cannot be made to
+                // match the appearance of the native widget.
+                // See https://github.com/twbs/bootstrap/issues/19398.
+                color: $input-focus-color;
+                background-color: $input-focus-bg;
+            }
+
+            // Hide the default caret in IE11
+            &::-ms-expand {
+                display: none;
+            }
+        }
+
+        textarea.form-control {
+            &:not([rows="1"]) {
+                height: auto;
+            }
+        }
+    }
+
+    // Static form control text
+    // Reset some styling to make the input look like normal text again,
+    // but keep the vertical aligning properties.
+    @if $enable-form-control-static {
+        .form-control-static {
+            display: block;
+            width: 100%;
+            padding: $input-padding-y 0;
+            margin-bottom: 0;
+            @include font-size($input-font-size);
+            line-height: $input-line-height;
+            color: $input-static-color;
+            background-color: transparent;
+            border: solid transparent;
+            border-width: $input-border-width 0;
+        }
+    }
+
+    // Form control sizing
+    // Build on `.form-control` with modifier classes to decrease or increase the
+    // height and font-size of form controls.
+    @if $enable-sizing {
+        @each $size, $dims in $input-sizes {
+            $sz-font-size:     map-get($dims, "font-size");
+            $sz-line-height:   map-get($dims, "line-height");
+            $sz-padding-y:     map-get($dims, "padding-y");
+            $sz-padding-x:     map-get($dims, "padding-x");
+            $sz-border-radius: map-get($dims, "border-radius");
+
+            %form-control-#{$size} {
+                height: calc-input-height-outer($sz-padding-y, $sz-line-height);
+                @if $sz-padding-y != null and $sz-padding-x != null {
+                    $my-padding-y: if($sz-padding-y != null, $sz-padding-y, $input-padding-y);
+                    $my-padding-x: if($sz-padding-x != null, $sz-padding-x, $input-padding-x);
+                    padding: $my-padding-y $my-padding-x;
+                }
+                @include font-size($sz-font-size);
+                line-height: $sz-line-height;
+                @include border-radius($sz-border-radius);
+            }
+
+            @if $enable-form-control and $enable-form-control-sizing {
+                .form-control-#{$size} {
+                    @extend %form-control-#{$size};
+                }
+
+                // Adjust right padding for select items due to indicator
+                @if $sz-padding-x != null {
+                    select.form-control-#{$size} {
+                        padding-right: calc(#{$sz-padding-x} + #{$form-select-indicator-width} + #{$form-select-indicator-offset});
+                    }
+                }
+            }
+        }
+    }
+
+    @if $enable-form-text {
+        .form-text {
+            display: block;
+            margin-top: $form-text-margin-top;
+        }
+    }
+}

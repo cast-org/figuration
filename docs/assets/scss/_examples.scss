@@ -72,23 +72,8 @@
 }
 
 // Form
-.cf-example > .form-control + .form-control,
-.cf-example > .custom-select + .custom-select {
+.cf-example > .form-control + .form-control {
     margin-top: .5rem;
-}
-
-// Custom file language example
-// stylelint-disable-next-line scss/dollar-variable-default
-$custom-file-text: (
-    en: "Browse",
-    es: "Elegir"
-);
-.custom-file-input {
-    @each $lang, $text in $custom-file-text {
-        &:lang(#{$lang}) ~ .custom-file-label::after {
-            content: $text;
-        }
-    }
 }
 
 // Button groups

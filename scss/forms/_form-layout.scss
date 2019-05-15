@@ -1,0 +1,119 @@
+// Form group
+//
+// Designed to help with the organization and spacing of vertical forms. For
+// horizontal forms, use the predefined grid classes.
+@if $enable-form and $enable-form-group {
+    .form-group {
+        margin-bottom: $form-group-margin-bottom;
+    }
+}
+
+// Form grid
+//
+// Special replacement for our grid system's `.row` for tighter form layouts.
+@if $enable-form and $enable-form-row {
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -$form-row-gutter-width / 2;
+        margin-left: -$form-row-gutter-width / 2;
+
+        > .col,
+        > [class*="col-"] {
+            padding-right: $form-row-gutter-width / 2;
+            padding-left: $form-row-gutter-width / 2;
+        }
+    }
+}
+
+// Inline forms
+//
+// Make forms appear inline(-block) by adding the `.form-inline` class. Inline
+// forms begin stacked on extra small (mobile) devices and then go inline when
+// viewports reach > 36em/576px.
+//
+// Requires wrapping inputs and labels with `.form-group` for proper display of
+// default HTML form controls and our custom form controls (e.g., input groups).
+@if $enable-form and $enable-form-inline {
+    .form-inline {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center; // Prevent shorter elements from growing to same height as others (e.g., small buttons growing to normal sized button height)
+
+        // Because we use flex, the initial sizing of some items is collapsed,
+        // such as groups and checkboxes, and don't occupy the full-width
+        // (which is what we want for xs grid tier), so we force that here.
+        .form-check,
+        .form-group {
+            width: 100%;
+        }
+
+        // Kick in the inline
+        @include media-breakpoint-up(#{$form-inline-breakpoint}) {
+            label:not(.form-check-label) {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 0;
+            }
+
+
+            // Inline-block all the things for "inline"
+            @if $enable-form-group {
+                .form-group {
+                    display: flex;
+                    flex: 0 0 auto;
+                    flex-flow: row wrap;
+                    align-items: center;
+                    width: auto;
+                    margin-bottom: 0;
+                }
+            }
+
+            // Allow folks to *not* use `.form-group`
+            %form-no-group {
+                display: inline-block;
+                width: auto; // Prevent labels from stacking above inputs in `.form-group`
+                vertical-align: middle;
+            }
+            @if $enable-form-control {
+                .form-control {
+                    @extend %form-no-group;
+                }
+            }
+            @if $enable-form-range {
+                .form-range {
+                    @extend %form-no-group;
+                }
+            }
+
+            @if $enable-input-group {
+                .input-group {
+                    width: auto;
+                }
+            }
+
+            @if $enable-form-label {
+                .form-label {
+                    margin-bottom: 0;
+                    vertical-align: middle;
+                }
+            }
+
+            // Remove default margin on radios/checkboxes that were used for stacking, and
+            // then undo the floating of radios and checkboxes to match.
+            @if $enable-form-check {
+                .form-check {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: auto;
+
+                    > input {
+                        margin-right: $form-inline-check-margin-x;
+                    }
+                }
+            }
+        }
+    }
+}

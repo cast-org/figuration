@@ -16,8 +16,7 @@
     vertical-align: top;
 }
 
-.form-control + .form-control,
-.custom-select + .custom-select {
+.form-control + .form-control {
     margin-top: .5rem;
 }
 </style>
@@ -67,47 +66,38 @@
     </div>
     <div class="form-group">
         <label for="exampleInputFile">File input</label>
-        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+        <input type="file" id="exampleInputFile" aria-describedby="fileHelp">
         <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
     </div>
     <div class="form-group">
         <label for="exampleInputColor">Color input</label>
-        <input type="color" class="form-control-color" value="#117dba" id="exampleInputColor">
+        <input type="color" value="#117dba" id="exampleInputColor">
     </div>
     <fieldset class="form-group">
         <legend>Radio buttons</legend>
         <div class="form-check">
-            <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                Option one is this and that&mdash;be sure to include why it's great
-            </label>
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+            <label for="optionsRadios1" class="form-check-label">Option one is this and that&mdash;be sure to include why it's great</label>
         </div>
         <div class="form-check">
-            <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-                Option two can be something else and selecting it will deselect option one
-            </label>
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+            <label for="optionsRadios2" class="form-check-label">Option two can be something else and selecting it will deselect option one</label>
         </div>
         <div class="form-check disabled">
-            <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
-                Option three is disabled
-            </label>
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+            <label for="optionsRadios3" class="form-check-label">Option three is disabled</label>
+        </div>
+    </fieldset>
+    <fieldset class="form-group">
+        <legend>Checkbox</legend>
+        <div class="form-check">
+            <input id="check1" type="checkbox" class="form-check-input">
+            <label for="check"1" class="form-check-label"> Check me out</label>
         </div>
     </fieldset>
     <div class="form-group">
-        <div class="form-check">
-            <fieldset>
-                <legend>Checkbox</legend>
-                <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input"> Check me out
-                </label>
-            </fieldset>
-        </div>
-    </div>
-    <div class="form-group">
         <label for="formControlRange">Example Range input</label>
-        <input type="range" class="form-control-range" id="formControlRange">
+        <input type="range" id="formControlRange">
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -125,13 +115,13 @@
 <h2>Readonly Static Controls</h2>
 <form>
     <div class="form-group row">
-        <label for="inputEmail" class="col-sm-2 form-control-label">Email</label>
+        <label for="inputEmail" class="col-sm-2 form-label">Email</label>
         <div class="col-sm-10">
             <input type="text" readonly class="form-control-static" id="inputEmail" value="email@example.com">
         </div>
     </div>
     <div class="form-group row">
-        <label for="inputPassword" class="col-sm-2 form-control-label">Password</label>
+        <label for="inputPassword" class="col-sm-2 form-label">Password</label>
         <div class="col-sm-10">
             <input type="password" class="form-control" id="inputPassword" placeholder="Password">
         </div>
@@ -154,15 +144,11 @@
 <div class="mb-1">
     <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-        <label class="form-check-label" for="defaultCheck1">
-            Default checkbox
-        </label>
+        <label class="form-check-label" for="defaultCheck1">Default checkbox</label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
-        <label class="form-check-label" for="defaultCheck2">
-            Disabled checkbox
-        </label>
+        <input class="form-check-input" type="checkbox" value="" id="defaultCheck3" disabled>
+        <label class="form-check-label" for="defaultCheck3">Disabled checkbox</label>
     </div>
 </div>
 
@@ -170,35 +156,29 @@
 <div class="mb-1">
     <div class="form-check">
         <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-        <label class="form-check-label" for="exampleRadios1">
-            Default radio
-        </label>
+        <label class="form-check-label" for="exampleRadios1">Default radio</label>
     </div>
     <div class="form-check">
         <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-        <label class="form-check-label" for="exampleRadios2">
-            Second default radio
-        </label>
+        <label class="form-check-label" for="exampleRadios2">Second default radio</label>
     </div>
     <div class="form-check disabled">
         <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
-        <label class="form-check-label" for="exampleRadios3">
-            Disabled radio
-        </label>
+        <label class="form-check-label" for="exampleRadios3">Disabled radio</label>
     </div>
 </div>
 
 <h2>Checkbox (inline)</h2>
 <div class="mb-1">
-    <div class="form-check form-check-inline">
+    <div class="form-check d-inline-block me-1">
         <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
         <label class="form-check-label">1</label>
     </div>
-    <div class="form-check form-check-inline">
+    <div class="form-check d-inline-block me-1">
         <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
         <label class="form-check-label">2</label>
     </div>
-    <div class="form-check form-check-inline disabled">
+    <div class="form-check d-inline-block">
         <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
         <label class="form-check-label">3</label>
     </div>
@@ -206,15 +186,15 @@
 
 <h2>Radio (inline)</h2>
 <div class="mb-1">
-    <div class="form-check form-check-inline">
+    <div class="form-check d-inline-block me-1">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
         <label class="form-check-label">1</label>
     </div>
-    <div class="form-check form-check-inline">
+    <div class="form-check d-inline-block me-1">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
         <label class="form-check-label">2</label>
     </div>
-    <div class="form-check form-check-inline disabled">
+    <div class="form-check d-inline-block">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
         <label class="form-check-label">3</label>
     </div>
@@ -227,8 +207,12 @@
         <button type="button" class="btn btn-primary btn-xsmall">Test</button>
       </div>
       <div class="col-md-1">
-        <label class="form-control-label form-control-label-xsmall">Label</label>
+        <label class="form-label form-label-xsmall">Label</label>
       </div>
+      <fieldset class="form-group col-md-1">
+        <label for="size0-2" class="sr-only">Example label</label>
+        <input type="text" class="form-control-static form-control-xsmall" id="size0-2" value="Static">
+      </fieldset>
       <fieldset class="form-group col-md-3">
         <label for="size0-0" class="sr-only">Example label</label>
         <input type="text" class="form-control form-control-xsmall" id="size0-0" placeholder="Example input">
@@ -243,24 +227,18 @@
           <option>5</option>
         </select>
       </fieldset>
-      <fieldset class="form-group col-md-3">
-        <label for="size0-2" class="sr-only">Example select</label>
-        <select class="custom-select custom-select-xsmall" id="size0-2">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </fieldset>
     </form>
     <form class="row">
       <div class="col-md-2 text-end">
         <button type="button" class="btn btn-primary btn-small">Test</button>
       </div>
       <div class="col-md-1">
-        <label class="form-control-label form-control-label-small">Label</label>
+        <label class="form-label form-label-small">Label</label>
       </div>
+      <fieldset class="form-group col-md-1">
+        <label for="size1-2" class="sr-only">Example label</label>
+        <input type="text" class="form-control-static form-control-small" id="size1-2" value="Static">
+      </fieldset>
       <fieldset class="form-group col-md-3">
         <label for="size1-0" class="sr-only">Example label</label>
         <input type="text" class="form-control form-control-small" id="size1-0" placeholder="Example input">
@@ -275,24 +253,18 @@
           <option>5</option>
         </select>
       </fieldset>
-      <fieldset class="form-group col-md-3">
-        <label for="size1-2" class="sr-only">Example select</label>
-        <select class="custom-select custom-select-small" id="size1-2">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </fieldset>
     </form>
     <form class="row">
       <div class="col-md-2 text-end">
         <button type="button" class="btn btn-primary">Test</button>
       </div>
       <div class="col-md-1">
-        <label class="form-control-label">Label</label>
+        <label class="form-label">Label</label>
       </div>
+      <fieldset class="form-group col-md-1">
+        <label for="size2-2" class="sr-only">Example label</label>
+        <input type="text" class="form-control-static" id="size2-2" value="Static">
+      </fieldset>
       <fieldset class="form-group col-md-3">
         <label for="size2-0" class="sr-only">Example label</label>
         <input type="text" class="form-control" id="size2-0" placeholder="Example input">
@@ -307,24 +279,18 @@
           <option>5</option>
         </select>
       </fieldset>
-      <fieldset class="form-group col-md-3">
-        <label for="size2-2" class="sr-only">Example select</label>
-        <select class="custom-select" id="size2-2">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </fieldset>
     </form>
     <form class="row">
       <div class="col-md-2 text-end">
         <button type="button" class="btn btn-primary btn-large">Test</button>
       </div>
       <div class="col-md-1">
-        <label class="form-control-label form-control-label-large">Label</label>
+        <label class="form-label form-label-large">Label</label>
       </div>
+      <fieldset class="form-group col-md-1">
+        <label for="size3-2" class="sr-only">Example label</label>
+        <input type="text" class="form-control-static form-control-large" id="size3-2" value="Static">
+      </fieldset>
       <fieldset class="form-group col-md-3">
         <label for="size3-0" class="sr-only">Example label</label>
         <input type="text" class="form-control form-control-large" id="size3-0" placeholder="Example input">
@@ -339,24 +305,18 @@
           <option>5</option>
         </select>
       </fieldset>
-      <fieldset class="form-group col-md-3">
-        <label for="size3-2" class="sr-only">Example select</label>
-        <select class="custom-select custom-select-large" id="size3-2">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </fieldset>
     </form>
     <form class="row">
       <div class="col-md-2 text-end">
         <button type="button" class="btn btn-primary btn-xlarge">Test</button>
       </div>
       <div class="col-md-1">
-        <label class="form-control-label form-control-label-xlarge">Label</label>
+        <label class="form-label form-label-xlarge">Label</label>
       </div>
+      <fieldset class="form-group col-md-1">
+        <label for="size4-2" class="sr-only">Example label</label>
+        <input type="text" class="form-control-static form-control-xlarge" id="size4-2" value="Static">
+      </fieldset>
       <fieldset class="form-group col-md-3">
         <label for="size4-0" class="sr-only">Example label</label>
         <input type="text" class="form-control form-control-xlarge" id="size4-0" placeholder="Example input">
@@ -364,16 +324,6 @@
       <fieldset class="form-group col-md-3">
         <label for="size4-1" class="sr-only">Example select</label>
         <select class="form-control form-control-xlarge" id="size4-1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </fieldset>
-      <fieldset class="form-group col-md-3">
-        <label for="size4-2" class="sr-only">Example select</label>
-        <select class="custom-select custom-select-xlarge" id="size4-2">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -407,56 +357,96 @@
 
 <hr />
 
-<h2>Custom Select Sizing:</h2>
-<div class="mb-1">
-    <select class="custom-select custom-select-xlarge">
-        <option>Extra large select</option>
-    </select>
-    <select class="custom-select custom-select-large">
-        <option>Large select</option>
-    </select>
-    <select class="custom-select">
-        <option>Default select</option>
-    </select>
-    <select class="custom-select custom-select-small">
-        <option>Small select</option>
-    </select>
-    <select class="custom-select custom-select-xsmall">
-        <option>Extra small select</option>
-    </select>
-</div>
+<h2>Select Sizing w/ validation icons:</h2>
+<form class="needs-validation" novalidate>
+    <div class="form-group">
+        <select class="form-control form-control-xlarge has-validation-icon" aria-describedby="ifb-sel-0 vfb-sel-0" required>
+            <option value="">Extra large select</option>
+            <option value="1">one</option>
+        </select>
+        <div id="ifb-sel-0" class="invalid-feedback">Example invalid custom select feedback</div>
+        <div id="vfb-sel-0" class="valid-feedback">Example valid custom select feedback</div>
+    </div>
+    <div class="form-group">
+        <select class="form-control form-control-large has-validation-icon" aria-describedby="ifb-sel-1 vfb-sel-1" required>
+            <option value="">Large select</option>
+            <option value="1">one</option>
+        </select>
+        <div id="ifb-sel-1" class="invalid-feedback">Example invalid custom select feedback</div>
+        <div id="vfb-sel-1" class="valid-feedback">Example valid custom select feedback</div>
+    </div>
+    <div class="form-group">
+        <select class="form-control has-validation-icon" aria-describedby="ifb-sel-2 vfb-sel-2" required>
+            <option value="">Default select</option>
+            <option value="1">one</option>
+        </select>
+        <div id="ifb-sel-2" class="invalid-feedback">Example invalid custom select feedback</div>
+        <div id="vfb-sel-2" class="valid-feedback">Example valid custom select feedback</div>
+    </div>
+    <div class="form-group">
+        <select class="form-control form-control-small has-validation-icon" aria-describedby="ifb-sel-3 vfb-sel-3" required>
+            <option value="">Small select</option>
+            <option value="1">one</option>
+        </select>
+        <div id="ifb-sel-3" class="invalid-feedback">Example invalid custom select feedback</div>
+        <div id="vfb-sel-3" class="valid-feedback">Example valid custom select feedback</div>
+    </div>
+    <div class="form-group">
+        <select class="form-control form-control-xsmall has-validation-icon" aria-describedby="ifb-sel-4 vfb-sel-4" required>
+            <option value="">Extra small select</option>
+            <option value="1">one</option>
+        </select>
+        <div id="ifb-sel-4" class="invalid-feedback">Example invalid custom select feedback</div>
+        <div id="vfb-sel-4" class="valid-feedback">Example valid custom select feedback</div>
+    </div>
+    <div class="form-group">
+        <select class="form-control has-validation-icon" aria-describedby="ifb-sel-5 vfb-sel-5" size="3" required>
+            <option value="">Default select</option>
+            <option value="1">one</option>
+            <option value="2">two</option>
+            <option value="3">three</option>
+            <option value="4">four</option>
+            <option value="5">five</option>
+        </select>
+        <div id="ifb-sel-5" class="invalid-feedback">Example invalid custom select feedback</div>
+        <div id="vfb-sel-5" class="valid-feedback">Example valid custom select feedback</div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+</form>
 
 <hr />
 
 <h2>Static and Label Sizing:</h2>
 <div class="form-group row">
-    <label class="col-sm-2 form-control-label form-control-label-xsmall">Email</label>
+    <label for="staticSize0" class="col-sm-2 form-label form-label-xsmall">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-static-xsmall">email@example.com</p>
+        <input id="staticSize0" type="text" readonly class="form-control-static form-control-xsmall" value="email@example.com">
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-sm-2 form-control-label form-control-label-small">Email</label>
+    <label for="staticSize1" class="col-sm-2 form-label form-label-small">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-static-small">email@example.com</p>
+        <input id="staticSize1" type="text" readonly class="form-control-static form-control-small" value="email@example.com">
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-sm-2 form-control-label">Email</label>
+    <label for="staticSize2" class="col-sm-2 form-label">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static">email@example.com</p>
+        <input id="staticSize2" type="text" readonly class="form-control-static" value="email@example.com">
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-sm-2 form-control-label form-control-label-large">Email</label>
+    <label for="staticSize3" class="col-sm-2 form-label form-label-large">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-static-large">email@example.com</p>
+        <input id="staticSize3" type="text" readonly class="form-control-static form-control-large" value="email@example.com">
     </div>
 </div>
 <div class="form-group row">
-    <label class="col-sm-2 form-control-label form-control-label-xlarge">Email</label>
+    <label for="staticSize4" class="col-sm-2 form-label form-label-xlarge">Email</label>
     <div class="col-sm-10">
-        <p class="form-control-static form-control-static-xlarge">email@example.com</p>
+        <input id="staticSize4" type="text" readonly class="form-control-static form-control-xlarge" value="email@example.com">
     </div>
 </div>
 
@@ -477,28 +467,28 @@
         <div class="p-0_5 bg-dark"><input type="text" class="form-control" placeholder="something"></div>
     </div>
     <div class="col">
-        <div class="p-0_5"><select class="custom-select"><option>Select</option></select></div>
-        <div class="p-0_5 bg-primary"><select class="custom-select"><option>Select</option></select></div>
-        <div class="p-0_5 bg-secondary"><select class="custom-select"><option>Select</option></select></div>
-        <div class="p-0_5 bg-success"><select class="custom-select"><option>Select</option></select></div>
-        <div class="p-0_5 bg-info"><select class="custom-select"><option>Select</option></select></div>
-        <div class="p-0_5 bg-warning"><select class="custom-select"><option>Select</option></select></div>
-        <div class="p-0_5 bg-danger"><select class="custom-select"><option>Select</option></select></div>
-        <div class="p-0_5 bg-light"><select class="custom-select"><option>Select</option></select></div>
-        <div class="p-0_5 bg-dark"><select class="custom-select"><option>Select</option></select></div>
+        <div class="p-0_5"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-primary"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-secondary"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-success"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-info"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-warning"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-danger"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-light"><select class="form-control"><option>Select</option></select></div>
+        <div class="p-0_5 bg-dark"><select class="form-control"><option>Select</option></select></div>
     </div>
 </div>
 <div class="row mb-1">
     <div class="col">
-        <div class="p-0_5"><div class="custom-file"><input type="file" class="custom-file-input" id="customFile0"><label class="custom-file-label" for="customFile0">Choose file...</label></div></div>
-        <div class="p-0_5 bg-primary"><div class="custom-file"><input type="file" class="custom-file-input" id="customFile1"><label class="custom-file-label" for="customFile1">Choose file...</label></div></div>
-        <div class="p-0_5 bg-secondary"><div class="custom-file"><input type="file" class="custom-file-input" id="customFile2"><label class="custom-file-label" for="customFile2">Choose file...</label></div></div>
-        <div class="p-0_5 bg-success"><div class="custom-file"><input type="file" class="custom-file-input" id="customFile3"><label class="custom-file-label" for="customFile3">Choose file...</label></div></div>
-        <div class="p-0_5 bg-info"><div class="custom-file"><input type="file" class="custom-file-input" id="customFile4"><label class="custom-file-label" for="customFile4">Choose file...</label></div></div>
-        <div class="p-0_5 bg-warning"><div class="custom-file"><input type="file" class="custom-file-input" id="customFile5"><label class="custom-file-label" for="customFile5">Choose file...</label></div></div>
-        <div class="p-0_5 bg-danger"><div class="custom-file"><input type="file" class="custom-file-input" id="customFile6"><label class="custom-file-label" for="customFile6">Choose file...</label></div></div>
-        <div class="p-0_5 bg-light"><div class="custom-file"><input type="file" class="custom-file-input" id="customFile7"><label class="custom-file-label" for="customFile7">Choose file...</label></div></div>
-        <div class="p-0_5 bg-dark"><div class="custom-file"><input type="file" class="custom-file-input" id="customFile8"><label class="custom-file-label" for="customFile8">Choose file...</label></div></div>
+        <div class="p-0_5"><div class="form-file"><input type="file" class="form-file-input" id="customFile0"><label class="form-file-label" for="customFile0"><span class="form-file-text">Choose file...</span><span class="form-file-button">Browse</span></label></div></div>
+        <div class="p-0_5 bg-primary"><div class="form-file"><input type="file" class="form-file-input" id="customFile1"><label class="form-file-label" for="customFile1"><span class="form-file-text">Choose file...</span><span class="form-file-button">Browse</span></label></div></div>
+        <div class="p-0_5 bg-secondary"><div class="form-file"><input type="file" class="form-file-input" id="customFile2"><label class="form-file-label" for="customFile2"><span class="form-file-text">Choose file...</span><span class="form-file-button">Browse</span></label></div></div>
+        <div class="p-0_5 bg-success"><div class="form-file"><input type="file" class="form-file-input" id="customFile3"><label class="form-file-label" for="customFile3"><span class="form-file-text">Choose file...</span><span class="form-file-button">Browse</span></label></div></div>
+        <div class="p-0_5 bg-info"><div class="form-file"><input type="file" class="form-file-input" id="customFile4"><label class="form-file-label" for="customFile4"><span class="form-file-text">Choose file...</span><span class="form-file-button">Browse</span></label></div></div>
+        <div class="p-0_5 bg-warning"><div class="form-file"><input type="file" class="form-file-input" id="customFile5"><label class="form-file-label" for="customFile5"><span class="form-file-text">Choose file...</span><span class="form-file-button">Browse</span></label></div></div>
+        <div class="p-0_5 bg-danger"><div class="form-file"><input type="file" class="form-file-input" id="customFile6"><label class="form-file-label" for="customFile6"><span class="form-file-text">Choose file...</span><span class="form-file-button">Browse</span></label></div></div>
+        <div class="p-0_5 bg-light"><div class="form-file"><input type="file" class="form-file-input" id="customFile7"><label class="form-file-label" for="customFile7"><span class="form-file-text">Choose file...</span><span class="form-file-button">Browse</span></label></div></div>
+        <div class="p-0_5 bg-dark"><div class="form-file"><input type="file" class="form-file-input" id="customFile8"><label class="form-file-label" for="customFile8"><span class="form-file-text">Choose file...</span><span class="form-file-button">Browse</span></label></div></div>
     </div>
     <div class="col">
         <div class="p-0_5"><div class="input-group"><div class="input-group-addon"><div class="input-group-text" id="color-addon0">@</div></div><input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="color-addon0"><span class="input-group-addon"><button class="btn" type="button">Button</button></span></div></div>
@@ -515,5 +505,25 @@
 
 </div>
 
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
 </body>
 </html>

@@ -81,146 +81,176 @@
         }
     }
 
-    .form-control,
-    .custom-select {
-        @include form-validation-state-selector($state) {
-            border-color: $color;
+    %validation-feedback-tooltip-show-#{$state} {
+        display: block;
+    }
 
-            &:focus {
-                border-color: $color;
-                box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
-            }
-
-            ~ .#{$state}-feedback,
-            ~ .#{$state}-tooltip {
-                display: block;
+    @include form-validation-state-selector($state) {
+        @if $enable-form-validation-feedback {
+            ~ .#{$state}-feedback {
+                @extend %validation-feedback-tooltip-show-#{$state};
             }
         }
 
-        @if $enable-validation-icons {
-            @include form-validation-state-selector-icon($state) {
-                //background: $icon no-repeat right $form-feedback-icon-offset center / $form-feedback-icon-width $form-feedback-icon-height;
-                background-image: $icon;
-                background-repeat: no-repeat;
-                background-position: right $form-feedback-icon-offset center;
-                background-size: $form-feedback-icon-width $form-feedback-icon-height;
+        @if $enable-form-validation-tooltip {
+            ~ .#{$state}-tooltip {
+                @extend %validation-feedback-tooltip-show-#{$state};
             }
         }
     }
 
-    @if $enable-validation-icons {
-        @if $enable-form-control {
-            .form-control:not(textarea) {
-                @include form-validation-state-selector-icon($state) {
-                    padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+    @if $enable-form-control {
+        .form-control {
+            @include form-validation-state-selector($state) {
+                border-color: $color;
+
+                &:focus {
+                    border-color: $color;
+                    box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
                 }
+            }
+
+            @if $enable-validation-icons {
+                @include form-validation-state-selector-icon($state) {
+                    //background: $icon no-repeat right $form-feedback-icon-offset center / $form-feedback-icon-width $form-feedback-icon-height;
+                    background-image: $icon;
+                    background-repeat: no-repeat;
+                    background-position: right $form-feedback-icon-offset center;
+                    background-size: $form-feedback-icon-width $form-feedback-icon-height;
+                }
+            }
+        }
+    }
+
+    @if $enable-form-control and $enable-validation-icons {
+        .form-control:not(textarea):not(select) {
+            @include form-validation-state-selector-icon($state) {
+                padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+            }
+        }
+
+        // Apply both the select indicator and validaton icons.
+        // stylelint-disable-next-line selector-no-qualifying-type
+        select.form-control:not([size]):not([size="1"]):not([multiple]) {
+            @include form-validation-state-selector-icon($state) {
+                padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$form-select-indicator-width} + #{$form-select-indicator-offset});
+                background-image: $form-select-indicator-image, $icon;
+                background-repeat: no-repeat, no-repeat;
+                background-position: right $form-select-indicator-offset center, right calc(#{$form-feedback-icon-offset} + #{$form-select-indicator-width} + #{$form-select-indicator-offset}) center;
+                background-size: $form-select-indicator-width $form-select-indicator-height, $form-feedback-icon-width $form-feedback-icon-height;
             }
         }
 
         // Icon is placed on left, what should hopefully be the opposite side of the scrollbar,
         // otherwise icon can become obscured by the scrollbar.
-        @if $enable-form-control {
-            // stylelint-disable-next-line selector-no-qualifying-type
-            textarea.form-control {
-                @include form-validation-state-selector-icon($state) {
-                    padding-left: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
-                    background-position: left $form-feedback-icon-offset center;
-                }
+        // stylelint-disable selector-no-qualifying-type
+        select.form-control[size]:not([size="1"]),
+        select.form-control[multiple],
+        textarea.form-control {
+            @include form-validation-state-selector-icon($state) {
+                padding-left: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
+                background-position: left $form-feedback-icon-offset center;
             }
         }
-
-        // Apply both the select indicator and validaton icons.
-        @if $enable-custom-select {
-            .custom-select {
-                @include form-validation-state-selector-icon($state) {
-                    padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset});
-                    background-image: $custom-select-indicator-image, $icon;
-                    background-repeat: no-repeat, no-repeat;
-                    background-position: right $custom-select-indicator-offset center, right calc(#{$form-feedback-icon-offset} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset}) center;
-                    background-size: $custom-select-indicator-width $custom-select-indicator-height, $form-feedback-icon-width $form-feedback-icon-height;
-                }
-            }
-        }
-    }
-
-    @if $enable-form-control-special {
-        .form-control-file {
-            @include form-validation-state-selector($state) {
-                ~ .#{$state}-feedback,
-                ~ .#{$state}-tooltip {
-                    display: block;
-                }
-            }
-        }
+        // stylelint-enable selector-no-qualifying-type
     }
 
     @if $enable-form-check {
-        .form-check-input {
-            @include form-validation-state-selector($state) {
-                ~ .form-check-label {
-                    color: $color;
-                }
-
-                ~ .#{$state}-feedback,
-                ~ .#{$state}-tooltip {
-                    display: block;
-                }
+        @include form-validation-state-selector($state) {
+            ~ .form-check-label {
+                color: $color;
             }
         }
     }
 
-    @if $enable-custom-control {
-        .custom-control-input {
+    @if $enable-form-check and ($enable-form-check-checkradio or $enable-form-check-switch) {
+        .form-check-input {
             @include form-validation-state-selector($state) {
-                ~ .custom-control-label {
-                    color: $color;
-                }
-
-                ~ .custom-control-indicator {
+                ~ .form-check-label {
                     &::before {
                         border-color: $color;
                     }
                 }
 
-                ~ .#{$state}-feedback,
-                ~ .#{$state}-tooltip {
-                    display: block;
-                }
-
                 &:checked {
-                    ~ .custom-control-indicator::before {
-                        background-color: $color;
-                        border-color: $color;
+                    ~ .form-check-label {
+                        &::before {
+                            background-color: $color;
+                            border-color: $color;
+                        }
                     }
                 }
 
                 &:focus {
-                    ~ .custom-control-indicator::before {
-                        box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                    ~ .form-check-label {
+                        &::before {
+                            box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                        }
+
                     }
                 }
             }
         }
     }
 
-    // custom file
-    @if $enable-custom-file {
-        .custom-file-input {
+    @if $enable-form-check and $enable-form-check-switch {
+        .form-switch .form-check-input {
             @include form-validation-state-selector($state) {
-                ~ .custom-file-label {
-                    border-color: $color;
-
-                    &::after { border-color: inherit; }
+                ~ .form-check-label {
+                    &::before {
+                        background-color: color-auto-contrast($color);
+                        border-color: $color;
+                    }
+                    &::after {
+                        background-color: $color;
+                        border-color: $color;
+                    }
                 }
 
-                ~ .#{$state}-feedback,
-                ~ .#{$state}-tooltip {
-                    display: block;
+                &:checked {
+                    ~ .form-check-label {
+                        &::before {
+                            background-color: color-auto-contrast($color);
+                            border-color: $color;
+                        }
+                        &::after {
+                            background-color: $color;
+                            border-color: $color;
+                        }
+                    }
+                }
+
+                &:focus {
+                    ~ .form-check-label {
+                        &::before {
+                            @if $form-switch-track-focus-box-shadow != null {
+                                box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                            } @else {
+                                box-shadow: none;
+                            }
+                        }
+                        @if $form-switch-thumb-focus-box-shadow != null {
+                            &::after {
+                                box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Form file
+    @if $enable-form-file {
+        .form-file-input {
+            @include form-validation-state-selector($state) {
+                ~ .form-file-label {
+                    border-color: $color;
                 }
 
                 &:focus-within, // Firefox workaround
                 &:focus {
-                    ~ .custom-file-label {
+                    ~ .form-file-label {
                         border-color: $color;
                         box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
                     }
@@ -250,13 +280,17 @@
                                 padding-left: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
                             }
                         }
-                    }
 
-                    @if $enable-custom-select {
-                        .custom-select-#{$size},
-                        .input-group-#{$size} > .custom-select {
+                        // stylelint-disable-next-line selector-no-qualifying-type
+                        select.form-control-#{$size},
+                        .input-group-#{$size} > select.form-control {
                             @include form-validation-state-selector-icon($state) {
-                                padding-right: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$custom-select-indicator-width} + #{$custom-select-indicator-offset});
+                                padding-right: calc(#{$sz-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$form-select-indicator-width} + #{$form-select-indicator-offset});
+
+                                &[size]:not([size="1"]),
+                                &[multiple] {
+                                    padding-right: $sz-padding-x;
+                                }
                             }
                         }
                     }
@@ -293,30 +327,30 @@
     }
 }
 
-// Custom Range
-@mixin custom-range-track() {
+// Form Range
+@mixin form-range-track() {
     box-sizing: border-box;
     width: 100%;
-    height: $custom-range-track-height;
-    margin: 0 $custom-range-thumb-focus-box-shadow-width;
+    height: $form-range-track-height;
+    margin: 0 $form-range-thumb-focus-box-shadow-width;
     color: transparent;
-    border: $custom-range-track-border;
-    @include border-radius($custom-range-track-border-radius);
-    @include box-shadow($custom-range-track-box-shadow);
+    border: $form-range-track-border;
+    @include border-radius($form-range-track-border-radius);
+    @include box-shadow($form-range-track-box-shadow);
 }
 
-@mixin custom-range-thumb() {
+@mixin form-range-thumb() {
     box-sizing: border-box;
-    width: $custom-range-thumb-width;
-    height: $custom-range-thumb-height;
-    background-color: $custom-range-thumb-bg;
-    border: $custom-range-thumb-border;
-    @include border-radius($custom-range-thumb-border-radius);
-    @include box-shadow($custom-range-thumb-box-shadow);
+    width: $form-range-thumb-width;
+    height: $form-range-thumb-height;
+    background-color: $form-range-thumb-bg;
+    border: $form-range-thumb-border;
+    @include border-radius($form-range-thumb-border-radius);
+    @include box-shadow($form-range-thumb-box-shadow);
     @include transition($input-transition);
     appearance: none;
 
     &:active {
-        background-color: $custom-range-thumb-active-bg;
+        background-color: $form-range-thumb-active-bg;
     }
 }
