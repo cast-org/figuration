@@ -44,8 +44,8 @@ cdn:
   js_hash:      "sha384-m6RN6xIpDZ/PgXIlV4qDlWld0LZuHeZpp07ajAFy/OB8vD+CssIbMnVLySvNVgw3"
   css_rtl:      https://cdn.jsdelivr.net/npm/figuration@4.0.0-alpha.4/dist/css/figuration-rtl.min.css
   css_rtl_hash: "sha384-UjNnePr+K3rlamqWcvcfv8QLD41URRhGSwoBSrTo2Dj6ByPRwq2iy6LuVo/yg8n1"
-  jquery:       https://code.jquery.com/jquery-3.3.1.slim.min.js
-  jquery_hash:  "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  jquery:       https://code.jquery.com/jquery-3.4.1.slim.min.js
+  jquery_hash:  "sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
   fontawe:      https://use.fontawesome.com/releases/v5.0.1/css/all.css
   fontawe_hash: "sha384-VVoO3UHXsmXwXvf1kJx2jV3b1LbOfTqKL46DdeLG8z4pImkQ4GAP9GMy+MxHMDYG"
   mutate:       https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.24/MutationObserver.min.js
