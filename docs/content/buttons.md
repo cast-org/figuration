@@ -126,7 +126,7 @@ The icons shown in the examples are from [Font Awesome](https://fontawesome.com/
 {% endcapture %}
 {% include example.html content=example %}
 
-### Block Buttons
+## Block Buttons
 
 Create block level buttons---those that span the full width of a parent---by adding `.btn-block`.
 

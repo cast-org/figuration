@@ -733,22 +733,22 @@ $input-line-height:             $btn-line-height !default;
 $input-padding-y:               $btn-padding-y !default;
 $input-padding-x:               $btn-padding-x !default;
 
-$input-color:                   $uibase-700 !default;
 $input-bg:                      $white !default;
+$input-color:                   $uibase-700 !default;
 $input-border-color:            $uibase-200 !default;
 $input-border-width:            $border-width !default;
 $input-border-radius:           $border-radius !default;
 $input-box-shadow:              map-get($shadows, "i1") !default;
 
-$input-focus-color:             $input-color !default;
 $input-focus-bg:                $input-bg !default;
+$input-focus-color:             $input-color !default;
 $input-focus-border-color:      palette($primary, 300) !default;
 $input-focus-box-shadow-size:   0 0 0 .1875rem !default;
 $input-focus-box-shadow-alpha:  .35 !default;
 $input-focus-box-shadow:        $input-focus-box-shadow-size rgba($component-active-bg, $input-focus-box-shadow-alpha) !default;
 
-$input-disabled-color:          $component-disabled-color !default;
 $input-disabled-bg:             $uibase-50 !default;
+$input-disabled-color:          $component-disabled-color !default;
 $input-disabled-border-color:   null !default;
 $input-disabled-opacity:        1 !default;
 
@@ -777,6 +777,7 @@ $form-checkradio-gutter:                    calc(#{$form-checkradio-size} + .375
 $form-checkradio-bg:                        $white !default;
 $form-checkradio-border-width:              $border-width !default;
 $form-checkradio-border-color:              $input-border-color !default;
+$form-checkradio-box-shadow:                null !default;
 $form-checkradio-icon-size:                 calc(#{$form-checkradio-size} - .375em) !default;
 
 $form-checkradio-focus-border-color:        $input-focus-border-color !default;
@@ -786,10 +787,10 @@ $form-checkradio-checked-bg:                $primary !default;
 $form-checkradio-checked-color:             $white !default;
 $form-checkradio-checked-border-color:      $primary !default;
 
-$form-checkradio-checkbox-radius:           $border-radius !default;
+$form-checkradio-checkbox-border-radius:    $border-radius !default;
 $form-checkradio-checkbox-icon:             str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='#{$form-checkradio-checked-color}' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e"), "#", "%23") !default;
 
-$form-checkradio-radio-radius:              50% !default;
+$form-checkradio-radio-border-radius:       50% !default;
 $form-checkradio-radio-icon:                str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#{$form-checkradio-checked-color}'/%3e%3c/svg%3e"), "#", "%23") !default;
 
 $form-checkradio-indeterminate-bg:          $primary !default;
@@ -801,31 +802,33 @@ $form-switch-gutter:                        calc(#{$form-switch-width} + .375em)
 
 $form-switch-track-height:                  1em !default;
 $form-switch-track-bg:                      $white !default;
-$form-switch-track-radius:                  1em !default;
-$form-switch-track-border-width:            $border-width !default;
+$form-switch-track-border-width:            $input-border-width !default;
 $form-switch-track-border-color:            $input-border-color !default;
+$form-switch-track-border-radius:           1em !default;
+$form-switch-track-box-shadow:              null !default;
 
 $form-switch-track-focus-bg:                null !default;
 $form-switch-track-focus-border-color:      $input-focus-border-color !default;
 $form-switch-track-focus-box-shadow:        $input-focus-box-shadow !default;
 
-$form-switch-track-checked-bg:              $primary !default;
+$form-switch-track-checked-bg:              $white !default;
 $form-switch-track-checked-border-color:    $primary !default;
 
 $form-switch-thumb-offset:                  calc(.25em - #{$form-switch-track-border-width}) !default;
 $form-switch-thumb-width:                   .625em !default;
 $form-switch-thumb-height:                  .625em !default;
 $form-switch-thumb-bg:                      $uibase-300 !default;
-$form-switch-thumb-radius:                  50% !default;
 $form-switch-thumb-border-width:            $border-width !default;
 $form-switch-thumb-border-color:            $form-switch-thumb-bg !default;
+$form-switch-thumb-border-radius:           50% !default;
+$form-switch-thumb-box-shadow:              null !default;
 
 $form-switch-thumb-focus-bg:                palette($primary, 300) !default;
 $form-switch-thumb-focus-border-color:      $form-switch-thumb-focus-bg !default;
 $form-switch-thumb-focus-box-shadow:        null !default;
 
-$form-switch-thumb-checked-bg:              $white !default;
-$form-switch-thumb-checked-border-color:    $white !default;
+$form-switch-thumb-checked-bg:              $primary !default;
+$form-switch-thumb-checked-border-color:    $primary !default;
 
 // Form select
 $form-select-indicator-offset:      .375em !default;
@@ -843,25 +846,25 @@ $form-file-button-disabled-bg:      $uibase-50 !default;
 $form-file-button-disabled-opacity: 1 !default;
 
 // Form range input
-$form-range-track-height:           .5rem !default;
+$form-range-track-height:           .5em !default;
 $form-range-track-cursor:           pointer !default;
 $form-range-track-bg:               $uibase-100 !default;
 $form-range-track-border:           0 !default;
 $form-range-track-border-radius:    $form-range-track-height !default;
 $form-range-track-box-shadow:       map-get($shadows, "i1") !default;
 
-$form-range-thumb-width:                  1.125rem !default;
+$form-range-thumb-width:                  1.125em !default;
 $form-range-thumb-height:                 $form-range-thumb-width !default;
-$form-range-thumb-bg:                     $component-active-bg !default;
+$form-range-thumb-bg:                     $primary !default;
 $form-range-thumb-border:                 0 !default;
 $form-range-thumb-border-radius:          50% !default;
 $form-range-thumb-box-shadow:             map-get($shadows, "d1") !default;
 $form-range-thumb-focus-box-shadow:       $input-focus-box-shadow !default;
 $form-range-thumb-focus-box-shadow-width: .1875rem !default;
-$form-range-thumb-active-bg:              palette($component-active-bg, 600) !default;
+$form-range-thumb-active-bg:              palette($primary, 600) !default;
 $form-range-thumb-disabled-bg:            $uibase-300 !default;
 
-$form-range-height:                 $form-range-thumb-height + ($form-range-thumb-focus-box-shadow-width * 2) !default;
+$form-range-height:                 calc(#{$form-range-thumb-height} + (#{$form-range-thumb-focus-box-shadow-width} * 2)) !default;
 $form-range-min-width:              8rem !default;  // Browser default seems to be 129px/~8rem for IE/Chrome/Safari
 
 // Form validation
