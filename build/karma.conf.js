@@ -100,7 +100,7 @@ const conf = {
 // Some test to go here later
 if (sauce) {
     conf.sauceLabs = {
-        build: env.TRAVIS_BUILD_NUMBER ? env.TRAVIS_BUILD_NUMBER : `figuration-${new Date().toISOString()}`
+        build: env.TRAVIS_BUILD_NUMBER ? env.TRAVIS_BUILD_NUMBER + '-' + TRAVIS_JOB_ID : `figuration-${new Date().toISOString()}`
     };
     plugins.push('karma-sauce-launcher');
     conf.customLaunchers = browsers;
