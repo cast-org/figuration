@@ -349,6 +349,15 @@ module.exports = function(grunt) {
                     }
                 }
             }
+        },
+
+        run: {
+            npmJsTestKarma: {
+                exec: 'npm run js-test-karma'
+            },
+            npmJsTestloud: {
+                exec: 'npm run js-test-cloud'
+            }
         }
     });
 
@@ -371,9 +380,11 @@ module.exports = function(grunt) {
     // Test - JS subtasks
     var jsTestTasks = ['eslint:core', 'eslint:test', 'eslint:grunt', 'connect'];
     if (saucekey !== null && process.env.TEST_SAUCE === 'true') {
-        jsTestTasks.push('saucelabs-qunit');
+        // jsTestTasks.push('saucelabs-qunit');
+        jsTestTasks.push('run:npmJsTestloud');
     } else {
-        jsTestTasks.push('qunit');
+        // jsTestTasks.push('qunit');
+        jsTestTasks.push('run:npmJsTestKarma');
     }
     grunt.registerTask('test-js', jsTestTasks);
 

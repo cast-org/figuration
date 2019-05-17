@@ -1,5 +1,14 @@
+/* eslint-env node */
+/* eslint no-process-env: 0 */
+
 const { env } = process;
 const debug = env.DEBUG === 'true';
+const sauce = env.BROWSER === 'true';
+
+const {
+    browsers,
+    browsersKeys
+} = require('./browsers');
 
 const jqueryFile = 'node_modules/jquery/dist/jquery.slim.min.js';
 
@@ -59,25 +68,51 @@ let files = [
     'js/equalize.js',
     'js/player.js',
     'js/common.js',
-    'test/js/unit/*.js'
+    'test/js/unit/!(bridge).js',
+    { pattern: 'test/js/assets/*',
+        watched: false,
+        included: false,
+        served: true
+    }
 ]
+
+const proxies = {
+  '/assets/': '/base/test/js/assets/'
+};
 
 const conf = {
     basePath: '..',
     port: 9876,
     colors: true,
     autoWatch: false,
-    singleRun: false,
+    singleRun: true,
     concurrency: Infinity,
     client: {
+        clearContext: false,
+        //useIframe: false,
         qunit: {
+            //hidepassed: false,
             showUI: true
         }
     }
 };
 
 // Some test to go here later
-if (true) {
+if (sauce) {
+    conf.sauceLabs = {
+        testName: `figuration-${new Date().toISOString()}`
+    };
+    plugins.push('karma-sauce-launcher');
+    conf.customLaunchers = browsers;
+    conf.browsers = browsersKeys;
+    reporters.push('saucelabs');
+    conf.concurrency = Infinity;
+    // Work around concurrecy issue - set to 5 minute
+    conf.browserDisconnectTimeout = 3 * 60 * 1000;
+    //conf.browserNoActivityTimeout = 5 * 60 * 1000;
+    //conf.client.qunit.hidepassed = true;
+    //conf.client.useIframe = false;
+} else {
     frameworks.push('detectBrowsers');
     plugins.push(
         'karma-chrome-launcher',
@@ -86,10 +121,10 @@ if (true) {
     );
     conf.customLaunchers = customLaunchers;
     conf.detectBrowsers = detectBrowsers;
-    
+
     if (debug) {
-        conf.singleRun = false;
         conf.autoWatch = true;
+        conf.singleRun = false;
     }
 }
 
@@ -97,6 +132,7 @@ conf.frameworks = frameworks;
 conf.plugins = plugins;
 conf.reporters = reporters;
 conf.files = files;
+conf.proxies = proxies;
 
 module.exports = function(config) {
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
