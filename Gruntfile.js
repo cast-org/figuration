@@ -139,9 +139,6 @@ module.exports = function(grunt) {
 
         uglify: {
             options: {
-                compress: {
-                    warnings: false
-                },
                 mangle: true,
                 output: {
                     comments: /^!|@preserve|@license|@cc_on/i
