@@ -1,7 +1,14 @@
 $(function() {
     'use strict';
 
-    QUnit.module('CFW_Player');
+    QUnit.module('CFW_Player', {
+        beforeEach: function() {
+            $(window).scrollTop(0);
+        },
+        afterEach: function() {
+            $('#qunit-fixture').empty();
+        }
+    });
 
     QUnit.test('should be defined on jquery object', function(assert) {
         assert.expect(1);

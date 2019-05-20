@@ -5,6 +5,9 @@
 <title>CAST Figuration Widget Tests</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+</head>
+<body>
+
 <!-- jQuery -->
 <script src="../../docs/assets/js/vendor/jquery.slim.min.js"></script>
 <script>
@@ -77,7 +80,6 @@
     });
 
     QUnit.testStart(function (testDetails) {
-        $(window).scrollTop(0);
         QUnit.log(function (details) {
             if (!details.result) {
                 details.name = testDetails.name;
@@ -88,7 +90,7 @@
 
     // Cleanup
     QUnit.testDone(function () {
-        $('#qunit-fixture').empty();
+        //$('#qunit-fixture').empty();
     });
 
     // Display fixture on-screen on iOS to avoid false positives
@@ -146,8 +148,6 @@
 <script src="unit/tooltip.js"></script>
 <script src="unit/util.js"></script>
 
-</head>
-<body>
     <div id="qunit-container">
         <div id="qunit"></div>
         <div id="qunit-fixture"></div>

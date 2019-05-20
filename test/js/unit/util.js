@@ -1,7 +1,14 @@
 $(function() {
     'use strict';
 
-    QUnit.module('util');
+    QUnit.module('util', {
+        beforeEach: function() {
+            $(window).scrollTop(0);
+        },
+        afterEach: function() {
+            $('#qunit-fixture').empty();
+        }
+    });
 
     QUnit.test('CFW_getSelectorFromElement should return the correct element', function(assert) {
         assert.expect(2);

@@ -114,18 +114,6 @@ module.exports = function(grunt) {
             }
         },
 
-        qunit: {
-            all: {
-                options: {
-                    inject: 'test/js/unit/bridge.js',
-                    puppeteer: {
-                        args: ['--no-sandbox']
-                    },
-                    urls: ['http://localhost:3000/test/js/index.html']
-                }
-            }
-        },
-
         concat: {
             options: {
                 banner: '<%= banner %>\n<%= jqueryCheck %>\n<%= jqueryVersionCheck %>',
@@ -139,9 +127,6 @@ module.exports = function(grunt) {
 
         uglify: {
             options: {
-                compress: {
-                    warnings: false
-                },
                 mangle: true,
                 output: {
                     comments: /^!|@preserve|@license|@cc_on/i
@@ -314,7 +299,7 @@ module.exports = function(grunt) {
         watch: {
             src: {
                 files: '<%= eslint.core.src %>',
-                tasks: ['eslint:core', 'qunit', 'concat']
+                tasks: ['eslint:core', 'concat']
             },
             sass: {
                 files: 'scss/**/*.scss',
@@ -326,28 +311,12 @@ module.exports = function(grunt) {
             }
         },
 
-        connect: {
-            server: {
-                options: {
-                    port: 3000,
-                    base: '.'
-                }
-            }
-        },
-
-        'saucelabs-qunit': {
-            all: {
-                options: {
-                    build: process.env.TRAVIS_JOB_ID,
-                    throttled: 3,
-                    maxRetries: 3,
-                    maxPollRetries: 4,
-                    urls: ['http://localhost:3000/test/js/index.html?hidepassed'],
-                    browsers: grunt.file.readYAML('grunt/sauce_browsers.yml'),
-                    sauceConfig: {
-                        'video-upload-on-pass': false
-                    }
-                }
+        run: {
+            npmJsTestKarma: {
+                exec: 'npm run js-test-karma'
+            },
+            npmJsTestCloud: {
+                exec: 'npm run js-test-cloud'
             }
         }
     });
@@ -369,11 +338,11 @@ module.exports = function(grunt) {
     grunt.registerTask('test-html', ['htmllint:test']);
 
     // Test - JS subtasks
-    var jsTestTasks = ['eslint:core', 'eslint:test', 'eslint:grunt', 'connect'];
+    var jsTestTasks = ['eslint:core', 'eslint:test', 'eslint:grunt'];
     if (saucekey !== null && process.env.TEST_SAUCE === 'true') {
-        jsTestTasks.push('saucelabs-qunit');
+        jsTestTasks.push('run:npmJsTestCloud');
     } else {
-        jsTestTasks.push('qunit');
+        jsTestTasks.push('run:npmJsTestKarma');
     }
     grunt.registerTask('test-js', jsTestTasks);
 
