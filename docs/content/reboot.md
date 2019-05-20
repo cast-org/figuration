@@ -506,6 +506,14 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
+                <td><code>$headings-font-style</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
+                <td>
+                    Headings font style.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$headings-font-weight</code></td>
                 <td>string/integer</td>
                 <td><code>600</code></td>
