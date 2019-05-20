@@ -665,12 +665,11 @@ $(function() {
                 '</style>';
             var $styles = $(styles).appendTo('head');
 
-            var $container = $('<div/>').appendTo('#qunit-fixture');
-            var $target = $('<a href="#" class="trigger" title="tip" style="bottom: 0px; left: 0px;"/>')
+            var $container = $('<div/>').appendTo(document.body);
+            var $target = $('<a href="#" class="trigger" title="tip" style="bottom: 0px; left: 0px;">test</a>')
                 .appendTo($container)
                 .CFW_Tooltip({
                     placement: 'forward',
-                    viewport: 'body',
                     padding: 12
                 });
 

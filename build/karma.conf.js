@@ -89,9 +89,8 @@ const conf = {
     concurrency: Infinity,
     client: {
         clearContext: false,
-        //useIframe: false,
         qunit: {
-            //hidepassed: false,
+            hidepassed: false,
             showUI: true
         }
     }
@@ -107,11 +106,8 @@ if (sauce) {
     conf.browsers = browsersKeys;
     reporters.push('saucelabs');
     conf.concurrency = Infinity;
-    // Work around concurrecy issue - set to 5 minute
     conf.browserDisconnectTimeout = 3 * 60 * 1000;
-    //conf.browserNoActivityTimeout = 5 * 60 * 1000;
-    //conf.client.qunit.hidepassed = true;
-    //conf.client.useIframe = false;
+    conf.client.qunit.hidepassed = true;
 } else {
     frameworks.push('detectBrowsers');
     plugins.push(
@@ -125,6 +121,7 @@ if (sauce) {
     if (debug) {
         conf.autoWatch = true;
         conf.singleRun = false;
+        conf.client.qunit.hidepassed = true;
     }
 }
 
