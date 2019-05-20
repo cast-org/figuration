@@ -564,86 +564,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$font-size-h1</code></td>
-                <td>string</td>
-                <td><code>($font-size-base * 2.5)</code></td>
-                <td>
-                    <code>&lt;h1&gt;</code> font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-size-h2</code></td>
-                <td>string</td>
-                <td><code>($font-size-base * 2)</code></td>
-                <td>
-                    <code>&lt;h2&gt;</code> font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-size-h3</code></td>
-                <td>string</td>
-                <td><code>($font-size-base * 1.75)</code></td>
-                <td>
-                    <code>&lt;h3&gt;</code> font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-size-h4</code></td>
-                <td>string</td>
-                <td><code>($font-size-base * 1.5)</code></td>
-                <td>
-                    <code>&lt;h4&gt;</code> font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-size-h5</code></td>
-                <td>string</td>
-                <td><code>($font-size-base * 1.25)</code></td>
-                <td>
-                    <code>&lt;h5&gt;</code> font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-size-h6</code></td>
-                <td>string</td>
-                <td><code>($font-size-base * 1)</code></td>
-                <td>
-                    <code>&lt;h6&gt;</code> font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$headings-font-family</code></td>
-                <td>string</td>
-                <td><code>null</code></td>
-                <td>
-                    Headings font family.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$headings-font-weight</code></td>
-                <td>string/integer</td>
-                <td><code>600</code></td>
-                <td>
-                    Headings font weight.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$headings-line-height</code></td>
-                <td>float</td>
-                <td><code>1.25</code></td>
-                <td>
-                    Headings line height.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$headings-color</code></td>
-                <td>string</td>
-                <td><code>null</code></td>
-                <td>
-                    Headings text color.
-                </td>
-            </tr>
-            <tr>
                 <td><code>$lead-font-size</code></td>
                 <td>string</td>
                 <td><code>($font-size-base * 1.25)</code></td>
@@ -668,14 +588,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$small-font-size</code></td>
-                <td>percent</td>
-                <td><code>80%</code></td>
-                <td>
-                    Small font size.
-                </td>
-            </tr>
-            <tr>
                 <td><code>$text-muted</code></td>
                 <td>string</td>
                 <td><code>$uibase-500</code></td>
@@ -683,47 +595,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                     Muted text color.
                 </td>
             </tr>
-            <tr>
-                <td><code>$mark-padding-x</code></td>
-                <td>string</td>
-                <td><code>.25rem</code></td>
-                <td>
-                    Mark element padding.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$mark-bg</code></td>
-                <td>string</td>
-                <td><code>#ff0</code></td>
-                <td>
-                    Mark element background color.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$hr-spacer-y</code></td>
-                <td>string</td>
-                <td><code>1rem</code></td>
-                <td>
-                    Horizontal rule vertical spacing.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$hr-border-color</code></td>
-                <td>string</td>
-                <td><code>rgba($black, .1)</code></td>
-                <td>
-                    Horizontal rule border color.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$hr-border-width</code></td>
-                <td>string</td>
-                <td><code>$border-width</code></td>
-                <td>
-                    Horizontal rule border width.
-                </td>
-            </tr>
-
             <tr>
                 <td><code>$blockquote-font-size</code></td>
                 <td>string</td>

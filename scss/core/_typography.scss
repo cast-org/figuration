@@ -3,25 +3,25 @@
 @if $enable-typography {
     // Headings
     @if $enable-typography-headings {
-        h1, .h1,
-        h2, .h2,
-        h3, .h3,
-        h4, .h4,
-        h5, .h5,
-        h6, .h6 {
-            margin-bottom: $headings-margin-bottom;
-            font-family: $headings-font-family;
-            font-weight: $headings-font-weight;
-            line-height: $headings-line-height;
-            color: $headings-color;
+        .h1 {
+            @extend h1;
         }
 
-        h1, .h1 { @include font-size($font-size-h1); }
-        h2, .h2 { @include font-size($font-size-h2); }
-        h3, .h3 { @include font-size($font-size-h3); }
-        h4, .h4 { @include font-size($font-size-h4); }
-        h5, .h5 { @include font-size($font-size-h5); }
-        h6, .h6 { @include font-size($font-size-h6); }
+        .h2 {
+            @extend h2;
+        }
+
+        .h3 {
+            @extend h3;
+        }
+
+        .h4 {
+            @extend h4;
+        }
+
+        .h5 {
+            @extend h5;
+        }
     }
 
     // Lead in
@@ -33,31 +33,16 @@
         }
     }
 
-    // Horizontal Rule
-    @if $enable-typography-hr {
-        hr {
-            margin-top: $hr-spacer-y;
-            margin-bottom: $hr-spacer-y;
-            border: 0;
-            border-top: $hr-border-width solid $hr-border-color;
-        }
-    }
-
     // Emphasis
     @if $enable-typography-small {
-        small,
         .small {
-            @include font-size($small-font-size);
-            font-weight: $font-weight-normal;
+            @extend small;
         }
     }
 
     @if $enable-typography-mark {
-        mark,
         .mark {
-            padding-right: $mark-padding-x;
-            padding-left: $mark-padding-x;
-            background-color: $mark-bg;
+            @extend mark;
         }
     }
 
