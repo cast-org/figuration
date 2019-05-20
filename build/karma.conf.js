@@ -102,7 +102,8 @@ if (sauce) {
         build: env.TRAVIS_BUILD_NUMBER ? env.TRAVIS_BUILD_NUMBER + '-' + env.TRAVIS_JOB_ID : `figuration-${new Date().toISOString()}`,
         tunnelIdentifier: env.TRAVIS_JOB_NUMBER,
         username: env.SAUCE_USERNAME,
-        accessKey: env.SAUCE_ACCESS_KEY
+        accessKey: env.SAUCE_ACCESS_KEY,
+        startConnect: env.TRAVIS !== 'true'
     };
     plugins.push('karma-sauce-launcher');
     conf.customLaunchers = browsers;
