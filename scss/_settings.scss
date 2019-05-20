@@ -376,15 +376,16 @@ $font-weight-bold:      700 !default;
 $font-weight-bolder:    bolder !default;
 $font-weight-base:      $font-weight-normal !default;
 
-$font-size-h1:  ($font-size-base * 2.5) !default;
-$font-size-h2:  ($font-size-base * 2) !default;
-$font-size-h3:  ($font-size-base * 1.75) !default;
-$font-size-h4:  ($font-size-base * 1.5) !default;
-$font-size-h5:  ($font-size-base * 1.25) !default;
-$font-size-h6:  ($font-size-base * 1) !default;
+$h1-font-size:  ($font-size-base * 2.5) !default;
+$h2-font-size:  ($font-size-base * 2) !default;
+$h3-font-size:  ($font-size-base * 1.75) !default;
+$h4-font-size:  ($font-size-base * 1.5) !default;
+$h5-font-size:  ($font-size-base * 1.25) !default;
+$h6-font-size:  ($font-size-base * 1) !default;
 
 $headings-margin-bottom:    ($spacer / 2) !default;
 $headings-font-family:      null !default;
+$headings-font-style:       null !default;
 $headings-font-weight:      600 !default;
 $headings-line-height:      1.25 !default;
 $headings-color:            null !default;
@@ -397,12 +398,13 @@ $small-font-size:   80% !default;
 
 $text-muted:        $uibase-500 !default;
 
-$mark-padding-x:    .25rem !default;
+$mark-padding:      .125em .25em !default;
 $mark-bg:           #ff0 !default;
 
-$hr-spacer-y:       1rem !default;
-$hr-border-color:   rgba($black, .1) !default;
-$hr-border-width:   $border-width !default;
+$hr-margin-y:       1rem !default;
+$hr-color:          inherit !default;
+$hr-height:         $border-width !default;
+$hr-opacity:        .25 !default;
 
 $blockquote-font-size:          ($font-size-base * 1.1875) !default;
 $blockquote-color:              $body-color !default;

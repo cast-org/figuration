@@ -553,14 +553,6 @@ The available [Customization options]({{ site.baseurl }}/get-started/options/), 
                 </td>
             </tr>
             <tr>
-                <td><code>$enable-typography-hr</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the horizontal rule typography class.
-                </td>
-            </tr>
-            <tr>
                 <td><code>$enable-typography-small</code></td>
                 <td>boolean</td>
                 <td><code>true</code></td>
