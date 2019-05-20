@@ -99,7 +99,11 @@ const conf = {
 // Some test to go here later
 if (sauce) {
     conf.sauceLabs = {
-        build: env.TRAVIS_BUILD_NUMBER ? env.TRAVIS_BUILD_NUMBER + '-' + env.TRAVIS_JOB_ID : `figuration-${new Date().toISOString()}`
+        build: env.TRAVIS_BUILD_NUMBER ? env.TRAVIS_BUILD_NUMBER + '-' + env.TRAVIS_JOB_ID : `figuration-${new Date().toISOString()}`,
+        tunnelIdentifier: env.TRAVIS_JOB_NUMBER,
+        username: env.SAUCE_USERNAME,
+        accessKey: env.SAUCE_ACCESS_KEY,
+        startConnect: false
     };
     plugins.push('karma-sauce-launcher');
     conf.customLaunchers = browsers;
@@ -121,7 +125,6 @@ if (sauce) {
     if (debug) {
         conf.autoWatch = true;
         conf.singleRun = false;
-        conf.client.qunit.hidepassed = true;
     }
 }
 

@@ -19,7 +19,7 @@
     "blc": "blc --exclude-external --filter-level 3 --get --ordered --recursive --host-requests 4 --input http://localhost:3000/",
     "http-server": "http-server --silent -p 3000",
     "check-broken-links": "npm-run-all --parallel --race \"http-server -- _gh_pages/\" blc",
-    "js-debug": "cross-env DEBUG=true karma start build/karma.conf.js",
+    "js-test-debug": "cross-env DEBUG=true karma start build/karma.conf.js",
     "js-test-karma": "karma start build/karma.conf.js",
     "js-test-cloud": "cross-env BROWSER=true npm run js-test-karma"
   },
