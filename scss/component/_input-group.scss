@@ -54,10 +54,8 @@
                 display: flex;
                 align-items: center;
 
-                &:not(:last-child) .form-file-label,
-                &:not(:last-child) .form-file-button { @include border-end-radius(0); }
-                &:not(:first-child) .form-file-label,
-                &:not(:first-child) .form-file-text { @include border-start-radius(0); }
+                &:not(:last-child) .form-file-label { @include border-end-radius(0); }
+                &:not(:first-child) .form-file-label { @include border-start-radius(0); }
             }
         }
     }
