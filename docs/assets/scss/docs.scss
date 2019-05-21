@@ -11,24 +11,19 @@ $docs-color: #246;
 // Skipnav
 .skipnav {
     position: absolute;
-    top: -100px;
+    top: .5rem;
+    left: 50%;
     z-index: 1200;
     display: block;
     width: 12em;
     max-width: 100%;
+    margin-left: -6em;
     @include font-size(1rem);
     font-weight: $font-weight-bold;
     color: $black;
     text-align: center;
     background: $uibase-50;
     border: 2px solid $uibase-700;
-
-    &:focus {
-        top: .5rem;
-        left: 50%;
-        margin-left: -6em;
-        color: $black;
-    }
 }
 
 .v4-warning {

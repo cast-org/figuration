@@ -20,6 +20,8 @@ It is possible to create projects that meet the [<abbr title="Web Content Access
 
 ## Skip Navigation
 
+For visually hidden interactive controls, such as traditional "skip" links, use the `.sr-only-focusable` class. This will ensure that the control becomes visible once focused (for sighted keyboard users). **Do not use the `.sr-only-focusable` class in combination with the `.sr-only` class.**
+
 If your navigation contains many links and comes before the main content in the DOM, add a `Skip to main content` link before the navigation (for a simple explanation, see this [A11Y Project article on skip navigation links](https://a11yproject.com/posts/skip-nav-links/)). Using the `.sr-only` class will visually hide the skip link, and the <code>.sr-only-focusable</code> class will ensure that the link becomes visible once focused (for sighted keyboard users).
 
 {% capture callout %}
@@ -33,7 +35,7 @@ Note that this bug will also affect any other in-page links your site may be usi
 
 {% highlight html %}
 <body>
-  <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+  <a href="#content" class="sr-only-focusable">Skip to main content</a>
   ...
   <div class="container" id="content" tabindex="-1">
     <!-- The main page content -->
