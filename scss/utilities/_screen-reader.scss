@@ -1,14 +1,18 @@
 // Screenreaders
 @if $enable-utility-sronly {
+    %sr-only-base {
+        @include sr-only();
+    }
+
     @if $enable-utility-sronly-common {
         .sr-only {
-            @include sr-only();
+            @extend %sr-only-base;
         }
     }
 
     @if $enable-utility-sronly-focusable {
-        .sr-only-focusable {
-            @include sr-only-focusable();
+        .sr-only-focusable:not(:focus) {
+            @extend %sr-only-base;
         }
     }
 
@@ -17,9 +21,19 @@
         // Skip smallest breakpoint for up (equivalent to `.sr-only`)
         @if $enable-utility-sronly-responsive {
             @if breakpoint-min($bp, $grid-breakpoints) != null {
-                .sr-only-#{$bp} {
-                    @include media-breakpoint-up($bp) {
+                @include media-breakpoint-up($bp) {
+                    %sr-only-#{$bp} {
                         @include sr-only();
+                    }
+
+                    .sr-only-#{$bp} {
+                        @extend %sr-only-#{$bp};
+                    }
+
+                    @if $enable-utility-sronly-focusable {
+                        .sr-only-#{$bp}-focusable:not(:focus) {
+                            @extend %sr-only-#{$bp};
+                        }
                     }
                 }
             }
@@ -28,9 +42,19 @@
         // Skip largest breakpoint for down (equivalent to `.sr-only`)
         @if $enable-utility-sronly-responsive-down {
             @if breakpoint-max($bp, $grid-breakpoints) != null {
-                .sr-only-#{$bp}-down {
-                    @include media-breakpoint-down($bp) {
+                @include media-breakpoint-up($bp) {
+                    %sr-only-#{$bp}-down {
                         @include sr-only();
+                    }
+
+                    .sr-only-#{$bp}-down {
+                        @extend %sr-only-#{$bp}-down;
+                    }
+
+                    @if $enable-utility-sronly-focusable {
+                        .sr-only-#{$bp}-down-focusable:not(:focus) {
+                            @extend %sr-only-#{$bp}-down;
+                        }
                     }
                 }
             }

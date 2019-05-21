@@ -18,6 +18,9 @@ Some changes will most likely have been missed, so please refer to the documenta
 ## Browser Support
 - **Support for Internet Explorer 10 has been dropped!** IE 10 is getting old, and the market share is less than 0.1% in terms of global usage according to many trackers.  Plus our use of MutationObservers in the Widgets either needs a polyfill, or things just don't work right.
 
+## Accessibility
+- `.sr-only-focusable` does not require `.sr-only` anymore, and elements should not use a combination of the two classes.
+
 ## Color
 - Reworked the colors, internal palette system, and consolidated the re-used component colors.
 - Added functions to check, and/or determine the best color, these can be found in `/scss/functions/_color-util.scss`.

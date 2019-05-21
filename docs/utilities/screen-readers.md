@@ -14,25 +14,24 @@ Hide content without sacrificing accessibility.
 
 ## Screen Reader Only Content
 
-Hide an element to all devices **except screen readers** with `.sr-only`. Combine `.sr-only` with `.sr-only-focusable` to show the element again when it's focused (e.g. by a keyboard-only user). Can also be used as mixins.
+Hide an element to all devices **except screen readers** with `.sr-only`. Use `.sr-only-focusable` to show an element only when it becomes focused (e.g. by a keyboard-only user). Can also be used as mixins.
 
-There are also responsive variants available in the form `.sr-only{-breakpoint}-{up/down}`.  For example, to visually hide content, **except for screen readers**, for a `sm` or smaller screens you would use `.sr-only-sm-down`.
+There are also responsive variants available in the forms `.sr-only{-breakpoint}`, `.sr-only{-breakpoint}-down`, `.sr-only{-breakpoint}-focusable`, and `.sr-only{-breakpoint}-down-focusable`.  For example, to visually hide content, **except for screen readers**, for a `sm` or smaller screens you would use `.sr-only-sm-down`, or `.sr-only-sm-down-focusable` when the element should be shown only when focused for smaller screens.
 
 These classes are exceptionally useful helping to follow [accessibility best practices]({{ site.baseurl }}/get-started/accessibility).
 
-**Heads up!** There is no `.sr-only-*` class created for the smallest breakpoint and no `.sr-only-*-down` class created for the largest breakpoint, `.sr-only-xs` and `.sr-only-xl-down` respectively, since they are functionally equivalent to using `.sr-only`.
+**Heads up!** There is no `.sr-only-*` classes created for the smallest breakpoint and no `.sr-only-*-down` classes created for the largest breakpoint, `.sr-only-xs`, `.sr-only-xs-focusable`, `.sr-only-xl-down`, `.sr-only-xl-focusable-down`, since they are functionally equivalent to using `.sr-only` or `.sr-only-focusable`.
 
 {% capture example %}
-<a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+<h3 class="sr-only-sm-down">Title for Screen Readers</h3>
 
-<span class="sr-only-sm-down">...</span>
+<a class="sr-only-focusable" href="#content">Skip to main content</a>
 {% endcapture %}
 {% include example.html content=example %}
 
 {% highlight scss %}
 // Usage as a mixin
 .skip-navigation {
-  @include sr-only;
   @include sr-only-focusable;
 }
 {% endhighlight %}
