@@ -31,8 +31,8 @@ CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end
 [![JS gzip size](http://img.badgesize.io/cast-org/figuration/v4.0.0-alpha.4/dist/js/figuration.min.js?compression=gzip&label=JS+gzip+size)](https://github.com/cast-org/figuration/tree/v4.0.0-alpha.4/dist/js/figuration.min.js)
 
 **Dependencies**
-[![peerDependencies Status](https://img.shields.io/david/peer/cast-org/figuration/v4-dev.svg)](https://david-dm.org/cast-org/figuration/v4-dev?type=peer)
-[![devDependencies Status](https://img.shields.io/david/dev/cast-org/figuration/v4-dev.svg)](https://david-dm.org/cast-org/figuration/v4-dev?type=dev)
+[![peerDependencies Status](https://david-dm.org/cast-org/figuration/v4-dev/peer-status.svg)](https://david-dm.org/cast-org/figuration/v4-dev?type=peer)
+[![devDependencies Status](https://david-dm.org/cast-org/figuration/v4-dev/dev-status.svg)](https://david-dm.org/cast-org/figuration/v4-dev?type=dev)
 
 **Development Build Status**
 [![Build Status](https://img.shields.io/travis/cast-org/figuration/master.svg)](https://travis-ci.org/cast-org/figuration)
