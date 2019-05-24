@@ -2,49 +2,49 @@
 /* eslint-disable camelcase */
 
 const browsers = {
-    'safariMac': {
+    safariMac: {
         base: 'SauceLabs',
         platform: 'macOS 10.13',
         browserName: 'safari',
         version: 'latest'
     },
-    'chromeMac': {
+    chromeMac: {
         base: 'SauceLabs',
         platform: 'macOS 10.13',
         browserName: 'chrome',
         version: 'latest'
     },
-    'firefoxMac': {
+    firefoxMac: {
         base: 'SauceLabs',
         platform: 'macOS 10.13',
         browserName: 'firefox',
         version: 'latest'
     },
-    'edgeWin10': {
+    edgeWin10: {
         base: 'SauceLabs',
         platform: 'Windows 10',
         browserName: 'MicrosoftEdge',
         version: 'latest'
     },
-    'ie11Win10': {
+    ie11Win10: {
         base: 'SauceLabs',
         platform: 'Windows 10',
         browserName: 'internet explorer',
         version: 'latest'
     },
-    'chromeWin10': {
+    chromeWin10: {
         base: 'SauceLabs',
         platform: 'Windows 10',
         browserName: 'chrome',
         version: 'latest'
     },
-    'firefoxWin10': {
+    firefoxWin10: {
         base: 'SauceLabs',
         platform: 'Windows 10',
         browserName: 'firefox',
         version: 'latest'
     },
-    'iPhone': {
+    iPhone: {
         base: 'SauceLabs',
         deviceName: 'iPhone X Simulator',
         deviceOrientation: 'portrait',
@@ -52,7 +52,7 @@ const browsers = {
         platformName: 'iOS',
         browserName: 'Safari'
     },
-    'android': {
+    android: {
         base: 'SauceLabs',
         deviceName: 'Android Emulator',
         deviceOrientation: 'portrait',
@@ -65,6 +65,6 @@ const browsers = {
 const browsersKeys = Object.keys(browsers);
 
 module.exports = {
-  browsers,
-  browsersKeys
+    browsers,
+    browsersKeys
 };

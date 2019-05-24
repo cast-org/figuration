@@ -1,7 +1,9 @@
 /* eslint-env node */
 /* eslint no-process-env: 0 */
 
-const { env } = process;
+const {
+    env
+} = process;
 const debug = env.DEBUG === 'true';
 const sauce = env.BROWSER === 'true';
 
@@ -46,7 +48,7 @@ const customLaunchers = {
     }
 };
 
-let files = [
+const files = [
     jqueryFile,
     'js/util.js',
     'js/drag.js',
@@ -69,15 +71,16 @@ let files = [
     'js/player.js',
     'js/common.js',
     'test/js/unit/!(bridge).js',
-    { pattern: 'test/js/assets/*',
+    {
+        pattern: 'test/js/assets/*',
         watched: false,
         included: false,
         served: true
     }
-]
+];
 
 const proxies = {
-  '/assets/': '/base/test/js/assets/'
+    '/assets/': '/base/test/js/assets/'
 };
 
 const conf = {

@@ -1,0 +1,15 @@
+{
+  "env": {
+    "browser": false,
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "sourceType": "script"
+  },
+  "rules": {
+    "no-magic-numbers": "off",
+    "strict": "off"
+  },
+  "extends": "../.eslintrc.json"
+}
