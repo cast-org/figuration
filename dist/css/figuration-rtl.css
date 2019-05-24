@@ -3709,8 +3709,7 @@ button.list-item-action {
 .input-group > .form-control,
 .input-group > .form-file {
   position: relative;
-  flex: 1 1 auto;
-  width: 1%;
+  flex: 1 1;
   margin-bottom: 0;
   margin-right: -1px;
 }
