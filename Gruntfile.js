@@ -100,6 +100,12 @@ module.exports = function(grunt) {
                 },
                 src: ['Gruntfile.js', 'grunt/*.js']
             },
+            build: {
+                options: {
+                    config: 'build/.eslintrc.json'
+                },
+                src: 'build/*.js'
+            },
             core: {
                 src: '<%= jsCore %>'
             },
@@ -338,7 +344,7 @@ module.exports = function(grunt) {
     grunt.registerTask('test-html', ['htmllint:test']);
 
     // Test - JS subtasks
-    var jsTestTasks = ['eslint:core', 'eslint:test', 'eslint:grunt'];
+    var jsTestTasks = ['eslint:core', 'eslint:test', 'eslint:grunt', 'eslint:build'];
     if (saucekey !== null && process.env.TEST_SAUCE === 'true') {
         jsTestTasks.push('run:npmJsTestCloud');
     } else {
