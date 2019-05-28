@@ -3,19 +3,12 @@ layout: home
 title: CAST Figuration - A feature rich, responsive, mobile first, accessible, front-end framework.
 ---
 
-<!-- Font CSS -->
-{% if site.github %}
-  <link href="{{ site.cdn.fontawe }}" integrity="{{ site.cdn.fontawe_hash }}" crossorigin="anonymous" rel="stylesheet" property="stylesheet">
-{% else %}
-  <link href="{{ site.baseurl }}/assets/fonts/fontawesome/css/fontawesome-all.css" rel="stylesheet" property="stylesheet">
-{% endif %}
-
 <main id="content" role="main">
     <div class="jumbotron jumbotron-fluid jumbotron-home">
         <div class="container">
             <div class="splash-home row flex-md-center flex-md-items-center pb-2 mb-2">
                 <div class="col-6 col-sm-4 col-xl-3 mx-auto mx-md-0">
-                    <img src="{{ site.baseurl }}/assets/brand/figuration-solid.svg" class="logo-home img-fluid" alt="" aria-hidden="true" />
+                    <img src="{{ site.baseurl }}/{{ site.docs_version }}/assets/brand/figuration-solid.svg" class="logo-home img-fluid" alt="" aria-hidden="true" />
                 </div>
                 <div class="w-100 d-md-none"></div>
                 <div class="col col-sm-9 col-md-7 col-lg-6 mx-auto mx-md-0 text-center text-md-start">
@@ -26,7 +19,7 @@ title: CAST Figuration - A feature rich, responsive, mobile first, accessible, f
 
                     <div class="row text-center text-md-start">
                         <div class="col col-md-auto">
-                            <a href="{{ site.baseurl }}/get-started/download/" class="btn btn-lg btn-start" onclick="ga('send', 'event', 'Homepage', 'Download', 'Download {{ site.current_version }}');">Download</a>
+                            <a href="{{ site.baseurl }}/{{ site.docs_version }}/get-started/download/" class="btn btn-lg btn-start" onclick="ga('send', 'event', 'Homepage', 'Download', 'Download {{ site.current_version }}');">Download</a>
                         </div>
                         <div class="w-100 d-md-none"></div>
                         <div class="col col-md-auto">
@@ -94,7 +87,7 @@ title: CAST Figuration - A feature rich, responsive, mobile first, accessible, f
             <div class="col-md-6">
                 <h2>Get Started Now</h2>
                 <p>Quickly get up and running with Figuration by including the compiled CSS and JavaScript in your document. Add the following CDN links in the <code>&lt;head&gt;</code> of your HTML document.</p>
-                <p>More information is available on the <a href="{{ site.baseurl }}/get-started/quick-start/">Quick Start page</a>.</p>
+                <p>More information is available on the <a href="{{ site.baseurl }}/{{ site.docs_version }}/get-started/quick-start/">Quick Start page</a>.</p>
             </div>
             <div class="col-md-6 home-feature">
 {% highlight html %}
@@ -116,7 +109,7 @@ title: CAST Figuration - A feature rich, responsive, mobile first, accessible, f
             <div class="col-md-6 container-divider pt-2 pt-md-0 mt-2 mt-md-0">
                 <h2>Sass Source</h2>
                 <div class="media">
-                    <img src="{{ site.baseurl }}/assets/img/sass.svg" class="d-flex me-1" width="64" alt="Sass logo">
+                    <img src="{{ site.baseurl }}/{{ site.docs_version }}/assets/img/sass.svg" class="d-flex me-1" width="64" alt="Sass logo">
                     <div class="media-body">
                         <p class="mb-0">Figuration compiles and uses standard CSS for it's output, but on the source side we use the power of <a href="http://sass-lang.com/">Sass</a> and <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> for faster and consistent development.</p>
                     </div>
@@ -129,17 +122,17 @@ title: CAST Figuration - A feature rich, responsive, mobile first, accessible, f
         <div class="row text-center text-md-start">
             <div class="col-sm-6 col-lg-4">
                 <h2>Browser Support</h2>
-                <p>Most current browers are supported.  Additional details can be found on the <a href="{{ site.baseurl }}/get-started/browsers-devices/">Browsers &amp; Devices page</a>.</p>
+                <p>Most current browers are supported.  Additional details can be found on the <a href="{{ site.baseurl }}/{{ site.docs_version }}/get-started/browsers-devices/">Browsers &amp; Devices page</a>.</p>
             </div>
             <div class="col-sm-6 col-lg-8 home-feature">
                 <ul class="list list-horizontal flex-wrap flex-center text-center small">
-                    <li class="list-item"><img src="{{ site.baseurl }}/assets/img/chrome.png" class="d-block" alt="" />Chrome</li>
-                    <li class="list-item"><img src="{{ site.baseurl }}/assets/img/firefox.png" class="d-block" alt="" />Firefox</li>
-                    <li class="list-item"><img src="{{ site.baseurl }}/assets/img/internet-explorer.png" class="d-block" alt="" />IE 11+</li>
-                    <li class="list-item"><img src="{{ site.baseurl }}/assets/img/edge.png" class="d-block" alt="" />Edge</li>
-                    <li class="list-item"><img src="{{ site.baseurl }}/assets/img/safari.png" class="d-block" alt="" />Safari</li>
-                    <li class="list-item"><img src="{{ site.baseurl }}/assets/img/android.png" class="d-block" alt="" />Android 5+</li>
-                    <li class="list-item"><img src="{{ site.baseurl }}/assets/img/opera.png" class="d-block" alt="" />Opera</li>
+                    <li class="list-item"><img src="{{ site.baseurl }}/{{ site.docs_version }}/assets/img/chrome.png" class="d-block" alt="" />Chrome</li>
+                    <li class="list-item"><img src="{{ site.baseurl }}/{{ site.docs_version }}/assets/img/firefox.png" class="d-block" alt="" />Firefox</li>
+                    <li class="list-item"><img src="{{ site.baseurl }}/{{ site.docs_version }}/assets/img/internet-explorer.png" class="d-block" alt="" />IE 11+</li>
+                    <li class="list-item"><img src="{{ site.baseurl }}/{{ site.docs_version }}/assets/img/edge.png" class="d-block" alt="" />Edge</li>
+                    <li class="list-item"><img src="{{ site.baseurl }}/{{ site.docs_version }}/assets/img/safari.png" class="d-block" alt="" />Safari</li>
+                    <li class="list-item"><img src="{{ site.baseurl }}/{{ site.docs_version }}/assets/img/android.png" class="d-block" alt="" />Android 5+</li>
+                    <li class="list-item"><img src="{{ site.baseurl }}/{{ site.docs_version }}/assets/img/opera.png" class="d-block" alt="" />Opera</li>
                 </ul>
             </div>
         </div>

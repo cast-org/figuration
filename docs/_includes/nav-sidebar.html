@@ -18,9 +18,11 @@
         {% endif %}
 
         <li class="nav-item">
-          <a href="{{ site.baseurl }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link {{ active }}">
-            {{ doc.title }} {{ current }}
-          </a>
+          {% if page.group == 'about' %}
+              <a href="{{ site.baseurl }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link {{ active }}"> {{ doc.title }} {{ current }}</a>
+            {% else %}
+              <a href="{{ site.baseurl }}/{{ site.docs_version }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link {{ active }}"> {{ doc.title }} {{ current }}</a>
+            {% endif %}
         </li>
       {% endfor %}
     </ul>

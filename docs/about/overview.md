@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Overview
+title: About
 group: about
 redirect_from: "/about/"
 ---
@@ -24,7 +24,7 @@ CAST took a slightly different approach towards adding accessibility to the fram
 
 ## FAQ
 
-- **Is Figuration better then Bootstrap?**
+- **Is Figuration better than Bootstrap?**
   - Figuration is based on Bootstrap so many pieces are similar, but we take a different approach with our interactive widgets.  So the best answer would be that Figuration is different.
 - **Is Figuration just another Bootstrap clone?**
   - Bootstrap is currently seen as a major inspiration and resource for Figuration.  Since Figuration is still getting 'out of the blocks', Bootstrap is an invaluable resource and also considered an upstream provider of technology. Figuration has already changed how many pieces of the framework are designed and integrated.  As time goes on, the differences between the two frameworks may become more diverse.
