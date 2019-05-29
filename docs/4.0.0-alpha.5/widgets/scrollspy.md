@@ -2,10 +2,9 @@
 layout: docs
 title: Scrollspy
 subtitle: scrollspy.js
+description: The Scrollspy widget is for automatically updating nav targets based on scroll position.
 group: widgets
 ---
-
-The Scrollspy widget is for automatically updating nav targets based on scroll position.
 
 ## Contents
 {:.no_toc}

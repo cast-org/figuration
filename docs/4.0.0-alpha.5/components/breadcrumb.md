@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Breadcrumb
+description: Indicate the current page's location within a navigational hierarchy.
 group: components
 ---
-
-Indicate the current page's location within a navigational hierarchy.
 
 ## Contents
 {:.no_toc}

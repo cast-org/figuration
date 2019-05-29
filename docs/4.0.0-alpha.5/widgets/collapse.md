@@ -2,10 +2,9 @@
 layout: docs
 title: Collapse
 subtitle: collapse.js
+description: Get base styles and flexible support for toggling content on your page.
 group: widgets
 ---
-
-Get base styles and flexible support for toggling content on your page.
 
 ## Contents
 {:.no_toc}

@@ -2,10 +2,9 @@
 layout: docs
 title: Tab
 subtitle: tab.js
+description: Add quick, dynamic tab functionality to transition through panes of content.
 group: widgets
 ---
-
-Add quick, dynamic tab functionality to transition through panes of content.
 
 {% capture callout %}
 Incompatible Widgets

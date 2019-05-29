@@ -1,16 +1,19 @@
 ---
 layout: docs
 title: Tables
+description: Apply various visual styles to tabular content, with various border, color, and responsive layout options.
 group: content
 ---
-
-Due to the widespread use of tables across third-party widgets like calendars and date pickers, we've designed our tables to be **opt-in**. Just add the base class `.table` to any `<table>`, then extend with custom styles or our various included modifier classes.
 
 ## Contents
 {:.no_toc}
 
 * ToC goes here
 {:toc}
+
+## Overview
+
+Due to the widespread use of tables across third-party widgets like calendars and date pickers, we've designed our tables to be **opt-in**. Just add the base class `.table` to any `<table>`, then extend with custom styles or our various included modifier classes.
 
 ## Basic Table
 

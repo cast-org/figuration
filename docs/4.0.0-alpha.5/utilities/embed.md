@@ -1,16 +1,17 @@
 ---
 layout: docs
 title: Embed
+description: Determine embedded media dimensions based on the width of their containing block by creating an intrinsic ratio that will scale on any device.
 group: utilities
 ---
-
-Allow browsers to determine embedded media dimensions based on the width of their containing block by creating an intrinsic ratio that will properly scale on any device.
 
 ## Contents
 {:.no_toc}
 
 * ToC goes here
 {:toc}
+
+## Overview
 
 Rules are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<object>` elements; optionally use an explicit descendant class `.embed-fluid-item` when you want to match the styling for other attributes.
 
@@ -31,9 +32,9 @@ Rules are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<object>` e
 
 {% capture example %}
 <div class="embed-fluid">
-    <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
-        <source src="{{ site.baseurl }}/assets/video/niagara_falls.mp4">
-        <track src="{{ site.baseurl }}/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" default />
+    <video poster="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls.jpg" controls>
+        <source src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls.mp4">
+        <track src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" default />
     </video>
 </div>
 {% endcapture %}

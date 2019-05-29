@@ -1,15 +1,12 @@
 ---
 layout: docs
 title: Reboot
+description: Built upon Bootstrap's Reboot, a collection of element-specific CSS to provide a consistent visual baseline across browsers.
 group: content
 redirect_from:
   - "/content/"
   - "/4.0.0-alpha.5/content/"
 ---
-
-Part of Figuration's job is to provide an elegant, consistent, and simple baseline to build upon. We use Reboot, a collection of element-specific CSS changes in a single file, to kickstart that.
-
-Borrowed from Bootstrap, Reboot heavily builds upon Normalize.css, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some `<table>` styles for a simpler baseline and later provide `.table`, `.table-bordered`, and more.
 
 ## Contents
 {:.no_toc}
@@ -18,6 +15,10 @@ Borrowed from Bootstrap, Reboot heavily builds upon Normalize.css, providing man
 {:toc}
 
 ## Approach
+
+Part of Figuration's job is to provide an elegant, consistent, and simple baseline to build upon. We use Reboot, a collection of element-specific CSS changes in a single file, to kickstart that.
+
+Borrowed from Bootstrap, Reboot heavily builds upon Normalize.css, providing many HTML elements with somewhat opinionated styles using only element selectors. Additional styling is done only with classes. For example, we reboot some `<table>` styles for a simpler baseline and later provide `.table`, `.table-bordered`, and more.
 
 Here are our guidelines and reasons for choosing what to override in Reboot:
 

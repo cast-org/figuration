@@ -2,17 +2,9 @@
 layout: docs
 title: Player
 subtitle: player.js
+description: Player is a way to enable customized controls while using the browser's built in HTML5 audio/video player.
 group: widgets
 ---
-
-<!-- Font CSS -->
-{% if site.github %}
-  <link href="{{ site.cdn.fontawe }}" integrity="{{ site.cdn.fontawe_hash }}" crossorigin="anonymous" rel="stylesheet" property="stylesheet">
-{% else %}
-  <link href="{{ site.baseurl }}/assets/fonts/fontawesome/css/fontawesome-all.css" rel="stylesheet" property="stylesheet">
-{% endif %}
-
-Player is a way to enable customized controls while using the browser's built in HTML5 audio/video player.
 
 Currently, there is no base CSS provided by Figuration in either the `figuration.css` or `figuration.min.css` files.  The examples below use CSS that is specific to our docs pages.
 
@@ -79,7 +71,7 @@ The icons shown in the examples are from [Font Awesome](https://fontawesome.com/
         <button type="button" class="btn btn-icon" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fas fa-fw fa-redo" aria-hidden="true"></span></button>
     </div>
     <audio controls>
-        <source src="{{ site.baseurl }}/assets/audio/Drumroll-Heigh-hoo.mp3" type="audio/mpeg" />
+        <source src="{{ site.baseurl }}/{{ site.docs_version }}/assets/audio/Drumroll-Heigh-hoo.mp3" type="audio/mpeg" />
         <p>HTML5 audio not supported</p>
     </audio>
 </div>
@@ -117,7 +109,7 @@ Available seek and volume sliders.
         <button type="button" class="btn btn-icon" title="Repeat" aria-label="Repeat" data-cfw-player="loop"><span class="fas fa-fw fa-redo"></span></button>
     </div>
     <audio controls>
-        <source src="{{ site.baseurl }}/assets/audio/Ambient_Acoustic-StrangerEight.mp3" type="audio/mpeg" />
+        <source src="{{ site.baseurl }}/{{ site.docs_version }}/assets/audio/Ambient_Acoustic-StrangerEight.mp3" type="audio/mpeg" />
         <p>HTML5 audio not supported</p>
     </audio>
 </div>
@@ -131,10 +123,10 @@ Available seek and volume sliders.
 
 <div data-cfw="player" class="video-wrapper">
     <div class="embed-fluid">
-        <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
-            <source src="{{ site.baseurl }}/assets/video/niagara_falls.mp4" type="video/mp4" />
-            <track src="{{ site.baseurl }}/assets/video/niagara_falls-en.vtt" label="English subtitles" kind="subtitles" srclang="en" default />
-            <track src="{{ site.baseurl }}/assets/video/niagara_falls-es.vtt" label="Subt&iacute;tulos en espa&ntilde;ol" kind="subtitles" srclang="es" />
+        <video poster="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls.jpg" controls>
+            <source src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls.mp4" type="video/mp4" />
+            <track src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls-en.vtt" label="English subtitles" kind="subtitles" srclang="en" default />
+            <track src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls-es.vtt" label="Subt&iacute;tulos en espa&ntilde;ol" kind="subtitles" srclang="es" />
             <p>HTML5 video not supported</p>
         </video>
     </div>
@@ -184,10 +176,10 @@ Add an interactive transcript to your video using the `transcript` control.  The
 
 <div data-cfw="player" data-cfw-player-transcript="0" class="video-wrapper" role="region" aria-label="video player">
     <div class="embed-fluid">
-        <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
-            <source src="{{ site.baseurl }}/assets/video/niagara_falls.mp4" type="video/mp4" />
-            <track src="{{ site.baseurl }}/assets/video/niagara_falls-en.vtt" label="English subtitles" kind="subtitles" srclang="en" />
-            <track src="{{ site.baseurl }}/assets/video/niagara_falls-es.vtt" label="Subt&iacute;tulos en espa&ntilde;ol" kind="subtitles" srclang="es" />
+        <video poster="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls.jpg" controls>
+            <source src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls.mp4" type="video/mp4" />
+            <track src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls-en.vtt" label="English subtitles" kind="subtitles" srclang="en" />
+            <track src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls-es.vtt" label="Subt&iacute;tulos en espa&ntilde;ol" kind="subtitles" srclang="es" />
             <p>HTML5 video not supported</p>
         </video>
     </div>
@@ -235,8 +227,8 @@ Improve accessibility for blind and visually impaired users by including an audi
 {% capture example %}
 <div data-cfw="player" data-cfw-player-media-describe="true" class="video-wrapper" role="region" aria-label="video player">
     <div class="embed-fluid">
-        <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
-            <source src="{{ site.baseurl }}/assets/video/niagara_falls.mp4" data-src-describe="{{ site.baseurl }}/assets/video/niagara_falls-describe-en.mp4">
+        <video poster="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls.jpg" controls>
+            <source src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls.mp4" data-src-describe="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls-describe-en.mp4">
         </video>
     </div>
     <div class="player-wrapper">
@@ -269,12 +261,12 @@ Further improve accessibility for blind and visually impaired users by including
 {% capture example %}
 <div data-cfw="player" data-cfw-player-transcript="0" data-cfw-player-media-describe="true" class="video-wrapper" role="region" aria-label="video player">
     <div class="embed-fluid">
-        <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
-            <source src="{{ site.baseurl }}/assets/video/niagara_falls.mp4" data-src-describe="{{ site.baseurl }}/assets/video/niagara_falls-describe-en.mp4">
-            <track src="{{ site.baseurl }}/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" default />
-            <track src="{{ site.baseurl }}/assets/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es" />
-            <track src="{{ site.baseurl }}/assets/video/niagara_falls-describe-en.vtt" label="English Description" kind="descriptions" srclang="en" />
-            <track src="{{ site.baseurl }}/assets/video/niagara_falls-describe-es.vtt" label="Descripción Espa&ntilde;ola" kind="descriptions" srclang="es" />
+        <video poster="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls.jpg" controls>
+            <source src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls.mp4" data-src-describe="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls-describe-en.mp4">
+            <track src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" default />
+            <track src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es" />
+            <track src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls-describe-en.vtt" label="English Description" kind="descriptions" srclang="en" />
+            <track src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls-describe-es.vtt" label="Descripción Espa&ntilde;ola" kind="descriptions" srclang="es" />
         </video>
     </div>
     <div class="player-wrapper">
@@ -309,12 +301,12 @@ By using the same `<track kind="descriptions">` as the above example, we can pro
 {% capture example %}
 <div data-cfw="player" data-cfw-player-text-describe="2" class="video-wrapper" role="region" aria-label="video player">
     <div class="embed-fluid">
-        <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
-            <source src="{{ site.baseurl }}/assets/video/niagara_falls.mp4">
-            <track src="{{ site.baseurl }}/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" default />
-            <track src="{{ site.baseurl }}/assets/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es" />
-            <track src="{{ site.baseurl }}/assets/video/niagara_falls-describe-en.vtt" label="English Description" kind="descriptions" srclang="en" />
-            <track src="{{ site.baseurl }}/assets/video/niagara_falls-describe-es.vtt" label="Descripción Espa&ntilde;ola" kind="descriptions" srclang="es" />
+        <video poster="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls.jpg" controls>
+            <source src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls.mp4">
+            <track src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls-en.vtt" label="English" kind="subtitles" srclang="en" default />
+            <track src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls-es.vtt" label="Espa&ntilde;ol" kind="subtitles" srclang="es" />
+            <track src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls-describe-en.vtt" label="English Description" kind="descriptions" srclang="en" />
+            <track src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls-describe-es.vtt" label="Descripción Espa&ntilde;ola" kind="descriptions" srclang="es" />
         </video>
     </div>
     <div class="player-wrapper">
@@ -344,10 +336,10 @@ Take control over how captions are displayed by adding a container with a `data-
 {% capture example %}
 <div data-cfw="player" class="video-wrapper">
     <div class="embed-fluid">
-        <video poster="{{ site.baseurl }}/assets/video/niagara_falls.jpg" controls>
-            <source src="{{ site.baseurl }}/assets/video/niagara_falls.mp4" type="video/mp4" />
-            <track src="{{ site.baseurl }}/assets/video/niagara_falls-en.vtt" label="English subtitles" kind="subtitles" srclang="en" default />
-            <track src="{{ site.baseurl }}/assets/video/niagara_falls-es.vtt" label="Subt&iacute;tulos en espa&ntilde;ol" kind="subtitles" srclang="es" />
+        <video poster="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls.jpg" controls>
+            <source src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls.mp4" type="video/mp4" />
+            <track src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls-en.vtt" label="English subtitles" kind="subtitles" srclang="en" default />
+            <track src="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls-es.vtt" label="Subt&iacute;tulos en espa&ntilde;ol" kind="subtitles" srclang="es" />
             <p>HTML5 video not supported</p>
         </video>
         <div class="player-caption-display" data-cfw-player="caption-display"></div>

@@ -31,7 +31,7 @@
                     {% endif %}
                 </h1>
 
-                <p>{{ page.description }}</p>
+                <p class="fs-large">{{ page.description }}</p>
 
                 {{ content }}
             </main>
@@ -45,7 +45,7 @@
     {% include footer.html %}
 
     {% if site.github %}
-    {% include algolia-config.html %}
+        {% include algolia-config.html %}
     {% endif %}
 </body>
 </html>

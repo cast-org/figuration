@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Accessibility
+description: A brief overview of Figurations’s features and limitations for the creation of accessible content.
 group: get-started
 ---
 

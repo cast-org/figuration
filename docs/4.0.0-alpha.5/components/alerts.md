@@ -1,13 +1,12 @@
 ---
 layout: docs
 title: Alerts
+description: Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
 group: components
 redirect_from:
   - "/components/"
   - "/4.0.0-alpha.5/components/"
 ---
-
-Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
 
 ## Contents
 {:.no_toc}

@@ -2,6 +2,7 @@
 layout: docs
 title: Tooltip
 subtitle: tooltip.js
+description: Add stylized tooltips to items for contextual or informational support.
 group: widgets
 ---
 

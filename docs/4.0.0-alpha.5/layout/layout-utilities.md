@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Layout Utilities
+description: For faster mobile-friendly and responsive development, Figuration includes utility classes for showing, hiding, aligning, and spacing content.
 group: layout
 ---
-
-For faster mobile-friendly and responsive development, Figuration includes utility classes for showing, hiding, aligning, and spacing content. Below is a primer on what's included, and how these utilities can help you with layout.
 
 ## Contents
 {:.no_toc}

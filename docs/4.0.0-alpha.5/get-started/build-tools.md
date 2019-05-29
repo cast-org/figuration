@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Build Tools
+description: A quick overview of our build system used to test and compile our source code into documentation, CSS, and JS.
 group: get-started
 ---
 

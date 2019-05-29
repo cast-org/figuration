@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Progress
+description: Progress bars featuring support for stacked bars, animated backgrounds, and text labels.
 group: components
 ---
-
-Use the custom progress component for displaying simple or complex progress bars. We don't use [the HTML5 `<progress>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress), allowing you to stack progress bars, animate them, and place text labels over them.
 
 ## Contents
 {:.no_toc}
@@ -13,6 +12,8 @@ Use the custom progress component for displaying simple or complex progress bars
 {:toc}
 
 ## How It Works
+
+Use the custom progress component for displaying simple or complex progress bars. We don't use [the HTML5 `<progress>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress), allowing you to stack progress bars, animate them, and place text labels over them.
 
 Progress components are built with two HTML elements, some CSS to set the width, and a few attributes.
 

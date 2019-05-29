@@ -2,10 +2,9 @@
 layout: docs
 title: Accordion
 subtitle: accordion.js
+description: Accordion extends upon the Collapse widget to associate multiple collapse items in the same container.
 group: widgets
 ---
-
-Accordion extends upon the Collapse widget to associate multiple collapse items in the same container.
 
 {% capture callout %}
 Widget Dependencies

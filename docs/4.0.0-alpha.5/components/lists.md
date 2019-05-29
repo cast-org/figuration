@@ -1,16 +1,19 @@
 ---
 layout: docs
 title: Lists
+description: Lists allow for multiple ways to visually organize a series of content or navigation.
 group: components
 ---
-
-Lists are a flexible component for displaying a series of content with various styling options. List items can be modified and extended to support just about any content within. They can also be used as navigation with the right modifier class.
 
 ## Contents
 {:.no_toc}
 
 * ToC goes here
 {:toc}
+
+## Overview
+
+Lists are a flexible component for displaying a series of content with various styling options. List items can be modified and extended to support just about any content within. They can also be used as navigation with the right modifier class.
 
 ## Basic List
 

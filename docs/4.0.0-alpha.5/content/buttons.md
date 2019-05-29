@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Buttons
+description: Use Figuration's custom button styles for actions in forms, dialogs, and more. Includes support for a handful of contextual variations, sizes, states, and more.
 group: content
 ---
-
-Use Figuration's custom button styles for actions in forms, dialogs, and more. Includes support for a handful of contextual variations, sizes, states, and more.
 
 ## Contents
 {:.no_toc}

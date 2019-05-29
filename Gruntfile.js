@@ -76,18 +76,18 @@ module.exports = function(grunt) {
         ],
 
         jsDocs: [
-            'docs/assets/js/vendor/anchor.min.js',
-            'docs/assets/js/vendor/clipboard.min.js',
-            'docs/assets/js/vendor/holder.min.js',
-            'docs/assets/js/src/docs.js'
+            'docs/<%= pkg.version %>/assets/js/vendor/anchor.min.js',
+            'docs/<%= pkg.version %>/assets/js/vendor/clipboard.min.js',
+            'docs/<%= pkg.version %>/assets/js/vendor/holder.min.js',
+            'docs/<%= pkg.version %>/assets/js/src/docs.js'
         ],
 
         // Task configs
         // ==========
         clean: {
             dist: 'dist',
-            docs: 'docs/dist',
-            docscss: 'docs/assets/css'
+            docs: 'docs/<%= pkg.version %>/dist',
+            docscss: 'docs/<%= pkg.version %>/assets/css'
         },
 
         eslint: {
@@ -116,7 +116,7 @@ module.exports = function(grunt) {
                 src: 'test/js/unit/*.js'
             },
             docs : {
-                src: ['docs/assets/js/src/*.js', 'docs/assets/js/*.js', '!docs/assets/js/*.min.js']
+                src: ['docs/<%= pkg.version %>/assets/js/src/*.js', 'docs/<%= pkg.version %>/assets/js/*.js', '!docs/<%= pkg.version %>/assets/js/*.min.js']
             }
         },
 
@@ -144,7 +144,7 @@ module.exports = function(grunt) {
             },
             docs: {
                 src: '<%= jsDocs %>',
-                dest: 'docs/assets/js/docs.min.js'
+                dest: 'docs/<%= pkg.version %>/assets/js/docs.min.js'
             }
         },
 
@@ -153,7 +153,7 @@ module.exports = function(grunt) {
                 expand: true,
                 cwd: 'dist/',
                 src: ['**/*'],
-                dest: 'docs/dist/'
+                dest: 'docs//<%= pkg.version %>/dist/'
             }
         },
 
@@ -165,7 +165,7 @@ module.exports = function(grunt) {
                 src: ['scss/**/*.scss']
             },
             docs: {
-                src: ['docs/assets/scss/*.scss']
+                src: ['docs/<%= pkg.version %>/assets/scss/*.scss']
             }
         },
 
@@ -185,7 +185,7 @@ module.exports = function(grunt) {
             },
             docs: {
                 files: {
-                    'docs/assets/css/docs.css': 'docs/assets/scss/docs.scss'
+                    'docs/<%= pkg.version %>/assets/css/docs.css': 'docs/<%= pkg.version %>/assets/scss/docs.scss'
                 }
             }
         },
@@ -202,7 +202,7 @@ module.exports = function(grunt) {
                 options: {
                     processors: [flexbugs, calc, autoprefixer]
                 },
-                src: ['docs/assets/css/*.css', '!docs/assets/css/*.min.css']
+                src: ['docs/<%= pkg.version %>/assets/css/*.css', '!docs/<%= pkg.version %>/assets/css/*.min.css']
             }
         },
 
@@ -222,9 +222,9 @@ module.exports = function(grunt) {
                     clean: false
                 },
                 expand: true,
-                cwd: 'docs/assets/css',
+                cwd: 'docs/<%= pkg.version %>/assets/css',
                 src: ['*.css', '!*.min.css', '!*-rtl.css'],
-                dest: 'docs/assets/css',
+                dest: 'docs/<%= pkg.version %>/assets/css',
                 ext: '-rtl.css'
             }
         },
@@ -251,9 +251,9 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'docs/assets/css',
+                        cwd: 'docs/<%= pkg.version %>/assets/css',
                         src: ['*.css', '!*.min.css'],
-                        dest: 'docs/assets/css',
+                        dest: 'docs/<%= pkg.version %>/assets/css',
                         ext: '.min.css'
                     }
                 ]
@@ -312,7 +312,7 @@ module.exports = function(grunt) {
                 tasks: ['dist-css', 'docs']
             },
             docs: {
-                files: 'docs/assets/scss/**/*.scss',
+                files: 'docs/<%= pkg.version %>/assets/scss/**/*.scss',
                 tasks: ['dist-css', 'docs']
             }
         },

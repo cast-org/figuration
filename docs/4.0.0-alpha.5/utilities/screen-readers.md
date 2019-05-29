@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Screen Readers
+description: Visually hide content without sacrificing screen reader accessibility.
 group: utilities
 ---
-
-Hide content without sacrificing accessibility.
 
 ## Contents
 {:.no_toc}

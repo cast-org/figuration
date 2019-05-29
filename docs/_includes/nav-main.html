@@ -32,7 +32,21 @@
         </ul>
     </div>
 
-    <ul class="navbar-nav ms-auto cf-header-social">
+    <ul class="navbar-nav cf-header-social">
+        <li class="nav-item dropdown dropdown-menu-reverse me-1">
+            <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
+                v{{ site.docs_version }}
+                <span class="caret" aria-hidden="true"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="http://figuration.org">Latest (v3.0.5)</a></li>
+                <li class="dropdown-divider"></li>
+                <li class="dropdown-header">Development</li>
+                <li><a href="{{ site.baseurl }}/docs/{{ site.docs_version }}">v4.0.0-alpha.5</a></li>
+                <li><a href="http://figuration.org/docs/4.0.0-alpha.4">v4.0.0-alpha.4</a></li>
+
+            </ul>
+        </li>
         <li class="nav-item">
             <a href="{{ site.twitter }}" class="nav-link" aria-label="Twitter" title="Twitter">
                 {% include icons/twitter.svg class="cf-header-icon" %}
@@ -53,12 +67,5 @@
                 <li><button type="button" class="dropdown-item" id="dir-rtl">Right-to-left</button></li>
             </ul>
         </li>
-        {% if site.github %}
-        <li class="nav-item">
-            <form class="form-inline docsearch-wrapper">
-                <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
-            </form>
-        </li>
-        {% endif %}
     </ul>
 </header>

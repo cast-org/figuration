@@ -2,10 +2,9 @@
 layout: docs
 title: Equalize
 subtitle: equalize.js
+description: Equalize is a way to create equal height content blocks.
 group: widgets
 ---
-
-Equalize is a way to create equal height content blocks.
 
 ## Contents
 {:.no_toc}
@@ -42,7 +41,7 @@ Create equal height containers using a few data attributes. Apply the `data-cfw=
                 <div class="card-body">
                     <h4>Card 3</h4>
                     <p>Nam porta malesuada mi, quis hendrerit purus.</p>
-                    <img src="{{ site.baseurl }}/assets/img/test.gif" alt="test pattern" class="img-fluid" />
+                    <img src="{{ site.baseurl }}/{{ site.docs_version }}/assets/img/test.gif" alt="test pattern" class="img-fluid" />
                 </div>
             </div>
         </div>

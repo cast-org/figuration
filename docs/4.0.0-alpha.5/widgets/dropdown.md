@@ -2,10 +2,9 @@
 layout: docs
 title: Dropdown
 subtitle: dropdown.js
+description: Add a context menu or list of links to a control item.  Support for nested lists is included automatically.
 group: widgets
 ---
-
-Add a context menu or list of links to a control item.  Support for nested lists is included automatically.  There is also an expand on hover option, even though we recommend that you use the default click to toggle mode for consitent usability across devices.
 
 {% capture callout %}
 Incompatible Widgets
@@ -26,6 +25,8 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}
 Wrap the dropdown's toggle (your button or link) and the dropdown menu within `.dropdown`, or another element that declares `position: relative;`. Dropdowns can be triggered from `<a>` or `<button>` elements.
 
 Because of the support for nested dropdown menus, it is currently **required to use a `ul` element** to build your dropdown menus.
+
+There is an expand on hover option available, even though we recommend that you use the default click to toggle mode for consitent usability across devices.
 
 ## Examples
 

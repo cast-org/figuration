@@ -1,7 +1,7 @@
 {
   "name": "figuration",
   "description": "A feature rich, responsive, mobile first, accessible, front-end framework inspired by Bootstrap.",
-  "version": "4.0.0-alpha.4",
+  "version": "4.0.0-alpha.5",
   "keywords": [
     "css",
     "sass",
@@ -38,6 +38,7 @@
     "jquery": "1.9.1 - 3"
   },
   "devDependencies": {
+    "@lodder/grunt-postcss": "^1.0.8",
     "autoprefixer": "^9.5.0",
     "broken-link-checker": "^0.7.8",
     "cross-env": "^5.2.0",
@@ -55,7 +56,6 @@
     "grunt-eslint": "^21.0.0",
     "grunt-html": "^10.1.0",
     "grunt-jekyll": "^1.0.0",
-    "grunt-postcss": "^0.9.0",
     "grunt-rtlcss": "^2.0.1",
     "grunt-run": "^0.8.1",
     "grunt-sass": "^3.0.2",

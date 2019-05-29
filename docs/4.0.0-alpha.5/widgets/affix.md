@@ -2,10 +2,9 @@
 layout: docs
 title: Affix
 subtitle: affix.js
+description: Affix is used to handle the positioning of components based on the scroll position of the window with top and bottom boundaries.
 group: widgets
 ---
-
-Affix is used to handle the positioning of components based on the scroll position of the window with top and bottom boundaries.
 
 ## Contents
 {:.no_toc}

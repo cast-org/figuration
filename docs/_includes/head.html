@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="CAST Figuration - A feature rich, responsive, mobile first, accessible, front-end framework.">
+<meta name="description" content="{{ page.description | default: site.description | smartify }}">
 <meta name="generator" content="Jekyll v{{ jekyll.version }}">
 
 <meta name="docsearch:language" content="en">
@@ -8,9 +8,9 @@
 
 <title>
   {%- if page.layout == "home" -%}
-    {{ page.title }}
+    {{ site.title }} - {{ site.description }}
   {%- else -%}
-    {{ page.title }} &#124; CAST Figuration
+    {{ page.title }} &#124; {{ site.title }}
   {%- endif -%}
 </title>
 

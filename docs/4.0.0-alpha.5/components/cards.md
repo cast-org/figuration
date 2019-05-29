@@ -1,16 +1,19 @@
 ---
 layout: docs
 title: Cards
+description: A flexible container for grouping content with multiple layout options available.
 group: components
 ---
-
-A **card** is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options.
 
 ## Contents
 {:.no_toc}
 
 * ToC goes here
 {:toc}
+
+## Overview
+
+A **card** is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options.
 
 ## Example
 
@@ -108,7 +111,7 @@ Images can help add some visual interest to your cards.
 <div class="card" style="max-width: 18rem;">
   <h4 class="card-header">Sample Card</h4>
   <div class="card-img">
-    <img class="img-fluid" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image">
+    <img class="img-fluid" src="{{ site.baseurl }}/{{ site.docs_version }}/assets/img/test.gif" alt="Card image">
   </div>
   <div class="card-body">
     <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
@@ -124,7 +127,7 @@ Images can help add some visual interest to your cards.
     <h4 class="card-title">Card title</h4>
     <p class="card-text">This is a card with text and a nested image.</p>
     <div class="card-img mb-0_5">
-      <img class="img-fluid" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image">
+      <img class="img-fluid" src="{{ site.baseurl }}/{{ site.docs_version }}/assets/img/test.gif" alt="Card image">
     </div>
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
@@ -141,7 +144,7 @@ Use `.card-img-top` on the image, or embedded element, to round over the top cor
 {% capture example %}
 <div class="card" style="max-width: 18rem;">
   <div class="card-img">
-    <img class="img-fluid card-img-top" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image cap">
+    <img class="img-fluid card-img-top" src="{{ site.baseurl }}/{{ site.docs_version }}/assets/img/test.gif" alt="Card image cap">
   </div>
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
@@ -162,7 +165,7 @@ Use `.card-img-bottom` on the image, or embedded element, to round over the bott
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
   <div class="card-img">
-    <img class="img-fluid card-img-bottom" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image cap">
+    <img class="img-fluid card-img-bottom" src="{{ site.baseurl }}/{{ site.docs_version }}/assets/img/test.gif" alt="Card image cap">
   </div>
 </div>
 {% endcapture %}
@@ -817,7 +820,7 @@ When using card groups with footers, they will automatically line up along the b
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This is a card with text and an image.</p>
       <div class="card-img">
-        <img class="img-fluid" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image">
+        <img class="img-fluid" src="{{ site.baseurl }}/{{ site.docs_version }}/assets/img/test.gif" alt="Card image">
       </div>
     </div>
     <div class="card-footer">
@@ -904,7 +907,7 @@ Just like with card groups, card footers in decks will automatically line up.
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This is a card with text and an image.</p>
       <div class="card-img mb-0_5">
-        <img class="img-fluid" src="{{ site.baseurl }}/assets/img/test.gif" alt="Card image">
+        <img class="img-fluid" src="{{ site.baseurl }}/{{ site.docs_version }}/assets/img/test.gif" alt="Card image">
       </div>
     </div>
     <div class="card-footer">

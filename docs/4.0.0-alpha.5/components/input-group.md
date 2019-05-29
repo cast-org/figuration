@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Input Group
+description: Easily extend form controls by adding text, buttons, and more, on either side of textual inputs, selects, and custom file inputs.
 group: components
 ---
-
-Easily extend form controls by adding text, buttons, and more, on either side of textual inputs, custom selects, and custom file inputs
 
 ## Contents
 {:.no_toc}

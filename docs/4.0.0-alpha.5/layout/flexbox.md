@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Flexbox
+description: Flexbox is now a full-time part of Figuration. Many components, but not all, are flexbox enabled. Flexbox allows for greater layout flexibility, making sizing and alignment of elements much easier.
 group: layout
 ---
-
-Flexbox is now a full-time part of Figuration. Many components, but not all, are flexbox enabled. Flexbox allows for greater layout flexibility, making sizing and alignment of elements much easier.
 
 ## Contents
 {:.no_toc}

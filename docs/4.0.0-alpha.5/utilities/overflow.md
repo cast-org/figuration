@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Overflow
+description: Easily adjust how content overflows within a container.
 group: utilities
 ---
-
-Easily adjust how content overflows within a container.
 
 ## Contents
 {:.no_toc}

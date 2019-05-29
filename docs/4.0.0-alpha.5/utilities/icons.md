@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Icons
+description: A few simple icons to indicate state or function.
 group: utilities
 ---
-
-A few simple icons to indicate state or function.
 
 ## Contents
 {:.no_toc}

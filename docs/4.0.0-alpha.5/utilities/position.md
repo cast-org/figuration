@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Position
+description: Place a component outside the normal document flow.
 group: utilities
 ---
-
-Place a component outside the normal document flow.
 
 ## Contents
 {:.no_toc}

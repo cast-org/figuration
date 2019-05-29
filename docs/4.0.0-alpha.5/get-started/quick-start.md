@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Quick Start
+description: Get started using Figuration today with our CDN links and starter templates.
 group: get-started
 redirect_from:
   - "/get-started/"

@@ -1,13 +1,12 @@
 ---
 layout: docs
 title: Widgets
+description: Add more functionality and interactivity to Figuration with our optional jQuery powered widgets. Each one is designed with accessibility already built-in.
 group: widgets
 redirect_from:
   - "/widgets/"
   - "/4.0.0-alpha.5/widgets/"
 ---
-
-Add more functionality and interactivity to to Figuration with our optional jQuery powered widgets.  Each one is designed with accessibility already built-in.
 
 {% capture callout %}
 Using the compiled JavaScript

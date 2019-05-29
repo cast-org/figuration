@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Media Object
+description: The media object helps build complex and repetitive components where some media is positioned alongside content that doesn't wrap around said media.
 group: components
 ---
-
-The media object helps build complex and repetitive components where some media is positioned alongside content that doesn't wrap around said media.
 
 ## Contents
 {:.no_toc}

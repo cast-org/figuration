@@ -1,13 +1,12 @@
 ---
 layout: docs
 title: Borders
+description: Easily manipulate borders on your images or other elements.
 group: utilities
 redirect_from:
   - "/utilities/"
   - "/4.0.0-alpha.5/utilities/"
 ---
-
-Easily manipulate borders on your images or other elements.
 
 ## Contents
 {:.no_toc}

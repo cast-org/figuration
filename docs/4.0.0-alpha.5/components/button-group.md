@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Button Group
+description: Group a series of buttons together on a single line with the button group.
 group: components
 ---
-
-Group a series of buttons together on a single line with the button group.
 
 ## Contents
 {:.no_toc}

@@ -1,16 +1,19 @@
 ---
 layout: docs
 title: Pagination
+description: Pagination provides multiple visual styles for grouping navigation of a series of related content.
 group: components
 ---
-
-Pagination links indicate a series of related content exists across multiple pages. Typically these are used where a multi-page approach to long lists of content improves general performance, such as in search results.
 
 ## Contents
 {:.no_toc}
 
 * ToC goes here
 {:toc}
+
+## Overview
+
+Pagination links indicate a series of related content exists across multiple pages. Typically these are used where a multi-page approach to long lists of content improves general performance, such as in search results.
 
 ## Basic Pagination
 

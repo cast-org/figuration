@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Images
+description: Allow images to become responsively resized, or add a bit of style to them.
 group: content
 ---
-
-Allow images to become responsively resized, or add a bit of style to them.
 
 ## Contents
 {:.no_toc}

@@ -1,16 +1,19 @@
 ---
 layout: docs
 title: Clearfix
+description: Clear floated content within a container with the clearfix utility.
 group: utilities
 ---
-
-Easily clear `float`s by adding `.clearfix` **to the parent element**. A detailed explanation of [how the clearfix works](http://cssmojo.com/the-very-latest-clearfix-reloaded/) is available.
 
 ## Contents
 {:.no_toc}
 
 * ToC goes here
 {:toc}
+
+## Overview
+
+Easily clear `float`s by adding `.clearfix` **to the parent element**. A detailed explanation of [how the clearfix works](http://cssmojo.com/the-very-latest-clearfix-reloaded/) is available.
 
 ## Usage
 

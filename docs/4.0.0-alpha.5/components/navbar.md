@@ -1,16 +1,19 @@
 ---
 layout: docs
 title: Navbar
+description: Create a navigation header, with support for responsive layout, branding, navigation links and more.
 group: components
 ---
-
-The navbar is a simple wrapper for positioning branding, navigation, and other elements into a concise navigation header. It's easily extensible and, with the help of our [Collapse widget]({{ site.baseurl }}/widgets/collapse/), it can easily integrate offscreen content.
 
 ## Contents
 {:.no_toc}
 
 * ToC goes here
 {:toc}
+
+## Overview
+
+The navbar is a simple wrapper for positioning branding, navigation, and other elements into a concise navigation header. It's easily extensible and, with the help of our [Collapse widget]({{ site.baseurl }}/widgets/collapse/).
 
 ## Basics
 
@@ -262,7 +265,7 @@ Adding images to the `.navbar-brand` will likely always require custom styles or
 <!-- Just an image -->
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
-    <img src="{{ site.baseurl }}/assets/img/home.svg" width="30" height="30" alt="">
+    <img src="{{ site.baseurl }}/{{ site.docs_version }}/assets/img/home.svg" width="30" height="30" alt="">
   </a>
 </nav>
 {% endcapture %}
@@ -272,7 +275,7 @@ Adding images to the `.navbar-brand` will likely always require custom styles or
 <!-- Image and text -->
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
-    <img src="{{ site.baseurl }}/assets/img/home.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+    <img src="{{ site.baseurl }}/{{ site.docs_version }}/assets/img/home.svg" width="30" height="30" class="d-inline-block align-top" alt="">
     Navbar
   </a>
 </nav>

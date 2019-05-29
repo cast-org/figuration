@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Figures
+description: Display related images and text with the figure component.
 group: content
 ---
-
-Anytime you need to display a piece of content---like an image---with an optional caption, consider using a `<figure>`.
 
 
 ## Contents
@@ -13,9 +12,13 @@ Anytime you need to display a piece of content---like an image---with an optiona
 * ToC goes here
 {:toc}
 
-## Examples
+## How it Works
+
+Anytime you need to display a piece of content---like an image---with an optional caption, consider using a `<figure>`.
 
 Use the included `.figure` , `.figure-img` and `.figure-caption` classes to provide some baseline styles for the HTML5 `<figure>` and `<figcaption>` elements. Images in figures have no explicit size, so be sure to add the `.img-fluid` class to your `<img>` to make it resize automatically.
+
+## Examples
 
 {% capture example %}
 <figure class="figure">

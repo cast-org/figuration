@@ -1,3 +1,9 @@
+{% if site.github %}
+<form class="cf-search">
+    <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
+</form>
+{% endif %}
+
 <nav class="cf-links" aria-label="Section navigation">
 
 {% for group in site.data.nav %}

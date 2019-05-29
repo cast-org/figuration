@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Grid System
+description: A powerful mobile-first grid system for building layouts of all shapes and sizes. Based on a twelve column layout with multiple responsive tiers, Sass mixins, and predefined classes.
 group: layout
 ---
-
-Figuration includes a powerful mobile-first grid system for building layouts of all shapes and sizes. It's based on a 12 column layout and has multiple tiers, one for each [media query range]({{ site.baseurl }}/layout/overview/#responsive-breakpoints). You can use it with Sass mixins or our predefined classes.
 
 ## Contents
 {:.no_toc}
@@ -13,6 +12,8 @@ Figuration includes a powerful mobile-first grid system for building layouts of 
 {:toc}
 
 ## How It Works
+
+Figuration includes a powerful mobile-first grid system for building layouts of all shapes and sizes. It's based on a 12 column layout and has multiple tiers, one for each [media query range]({{ site.baseurl }}/layout/overview/#responsive-breakpoints). You can use it with Sass mixins or our predefined classes.
 
 At a high level, here's how the grid system works:
 

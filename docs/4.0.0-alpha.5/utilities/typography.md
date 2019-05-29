@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Typography
+description: Quick and easy utilities to add some style to your text.
 group: utilities
 ---
-
-Quick and easy utilities to add some style to your text.
 
 ## Contents
 {:.no_toc}

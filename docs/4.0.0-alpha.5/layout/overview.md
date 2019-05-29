@@ -1,13 +1,12 @@
 ---
 layout: docs
 title: Layout
+description: Figuration includes several components and options for laying out your project, including wrapping containers, a powerful grid system, and responsive utility classes.
 group: layout
 redirect_from:
   - "/layout/"
   - "/4.0.0-alpha.5/layout/"
 ---
-
-Figuration includes several components and options for laying out your project, including wrapping containers, a powerful grid system, and responsive utility classes.
 
 ## Contents
 {:.no_toc}

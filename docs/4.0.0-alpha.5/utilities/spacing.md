@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Spacing
+description: Shorthand responsive margin and padding utility classes to modify an element’s appearance.
 group: utilities
 ---
-
-Shorthand responsive margin and padding utility classes to modify an element’s appearance.
 
 ## Contents
 {:.no_toc}

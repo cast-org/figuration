@@ -2,10 +2,9 @@
 layout: docs
 title: Tab-Responsive
 subtitle: tab-responsive.js
+description: Combine the use of Collapse and Tab control elements.
 group: widgets
 ---
-
-The primary goal with this widget is to provide a method of communication between the [Collapse]({{ site.baseurl }}/widgets/collapse/) and [Tab]({{ site.baseurl }}/widgets/tab/) widgets.  It does not take into account the visual aspects itself, this needs to be handled by CSS.
 
 {% capture callout %}
 Widget Dependencies
@@ -23,6 +22,10 @@ Sideshow requires the following:
 
 * ToC goes here
 {:toc}
+
+## Overview
+
+The primary goal with this widget is to provide a method of communication between the [Collapse]({{ site.baseurl }}/widgets/collapse/) and [Tab]({{ site.baseurl }}/widgets/tab/) widgets.  It does not take into account the visual aspects itself, this needs to be handled by CSS.
 
 ## Example
 

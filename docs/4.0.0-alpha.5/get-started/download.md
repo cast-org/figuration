@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Download
+description: Figuration is available for download in several ways. Choose from multiple options to get what you need.
 group: get-started
 ---
-
-**Figuration v{{ site.current_version}}** is available for download in several ways. Choose from the options below get what you need.
 
 ## Contents
 {:.no_toc}

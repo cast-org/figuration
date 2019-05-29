@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Sizing
+description: Adjust the width or height of an element with sizing utilities.
 group: utilities
 ---
-
-Adjust the width or height of an element with some utilities.
 
 ## Contents
 {:.no_toc}

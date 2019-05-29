@@ -2,10 +2,9 @@
 layout: docs
 title: Modal
 subtitle: modal.js
+description: The Modal widget allows you to add dialog style windows to your site or application.
 group: widgets
 ---
-
-The modal widget allows you to add dialog style windows to your site or application.
 
 ## Contents
 {:.no_toc}

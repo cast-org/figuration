@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Examples
+description: Get a project underway with examples showing concepts from basic framework components up to custom layouts.
 group: get-started
 ---
-
-Get a project underway with examples showing concepts from basic framework components up to custom layouts.
 
 [Download the source code]({{ site.baseurl }}/get-started/download/) to get all the files used in the examples.  They can be found in the `docs/examples/` directory.
 

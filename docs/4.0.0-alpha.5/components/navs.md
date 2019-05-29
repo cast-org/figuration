@@ -1,16 +1,19 @@
 ---
 layout: docs
 title: Navs
+description: Create grouped navigation controls in various visual layouts.
 group: components
 ---
-
-Navigation share general markup and styles, from the base `.nav` class to the active and disabled states. Swap modifier classes to switch between each style.
 
 ## Contents
 {:.no_toc}
 
 * ToC goes here
 {:toc}
+
+## Overview
+
+Navigation share general markup and styles, from the base `.nav` class to the active and disabled states. Swap modifier classes to switch between each style.
 
 ## Regarding Accessibility
 

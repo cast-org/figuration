@@ -2,23 +2,10 @@
 
 // Some wacky hacky stuff to rework the search result look a bit
 
-.docsearch {
-    width: 100% !important;
-    padding-left: 1.5rem;
-}
-.docsearch-wrapper {
+.cf-search {
     position: relative;
-    width: 11rem;
-    margin-left: .5rem;
-    clear: both;
-
-    @media (max-width: 66em) {
-        width: 10rem;
-    }
-
-    @include media-breakpoint-down(xs) {
-        width: 5.5rem;
-    }
+    padding: .5rem 0;
+    border-bottom: 1px solid $border-color;
 
     &::before {
         position: absolute;
@@ -30,26 +17,41 @@
         height: 1rem;
         margin-top: -.5rem;
         content: " ";
-        background: url("/assets/img/magnifying-glass.svg") no-repeat center;
+        background: url("../img/magnifying-glass.svg") no-repeat center;
         background-size: 1rem 1rem;
     }
 }
 
+.docsearch {
+    max-width: 20rem;
+    padding-left: 1.5rem;
+}
+
 .algolia-autocomplete {
+    width: 100%;
+
     .ds-dropdown-menu {
+        box-shadow: map-get($shadows, "d2");
+
+        @include media-breakpoint-down(md) {
+            min-width: auto;
+        }
 
         @include media-breakpoint-up(sm) {
             min-width: 450px;
         }
 
         .ds-suggestions {
-            margin-top: 6px;
+            //margin-top: 6px;
             border-bottom: 1px solid #858585;
         }
-        .ds-suggestion.ds-cursor {
-            .algolia-docsearch-suggestion.suggestion-layout-simple,
-            .algolia-docsearch-suggestion:not(.suggestion-layout-simple) .algolia-docsearch-suggestion--content {
-                background-color: rgba(69, 142, 225, .1);
+
+        .ds-suggestion {
+            &.ds-cursor {
+                .algolia-docsearch-suggestion.suggestion-layout-simple,
+                .algolia-docsearch-suggestion:not(.suggestion-layout-simple) .algolia-docsearch-suggestion--content {
+                    background-color: rgba(69, 142, 225, .1);
+                }
             }
         }
     }
@@ -70,6 +72,10 @@
     .algolia-docsearch-suggestion--wrapper {
         display: table !important;
         padding: 0;
+
+        @media (max-width: 768px) {
+            display: block !important;
+        }
     }
     .algolia-docsearch-suggestion--subcategory-column {
         display: table-cell !important;
@@ -81,6 +87,15 @@
         &::before {
             background: #858585;
         }
+
+        @media (max-width: 768px) {
+            display: block !important;
+
+            &::after {
+                content: none !important;
+            }
+        }
+
     }
     .algolia-docsearch-suggestion--content {
         display: table-cell !important;
@@ -91,7 +106,14 @@
         &::before {
             background: #858585;
         }
+
+        @media (max-width: 768px) {
+            display: block !important;
+            padding-bottom: .25rem !important;
+            margin-bottom: .5rem;
+        }
     }
+
     .algolia-docsearch-suggestion--highlight {
         background-color: rgba(143, 187, 237, .2);
     }

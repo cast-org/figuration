@@ -1,10 +1,10 @@
 ---
 layout: docs
 title: Alerts
+subtitle: alert.js
+description: Enable dismiss functionality for alert messages.
 group: widgets
 ---
-
-Enable dismiss functionality for alert messages.
 
 ## Contents
 {:.no_toc}

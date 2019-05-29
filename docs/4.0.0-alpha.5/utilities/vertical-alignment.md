@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Vertical Alignment
+description: Adjust the vertical alignment of inlined or table cell content.
 group: utilities
 ---
-
-Give some vertical alignment to elements by manipulating their [`vertical-align` property](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align).
 
 ## Contents
 {:.no_toc}
@@ -12,7 +11,9 @@ Give some vertical alignment to elements by manipulating their [`vertical-align`
 * ToC goes here
 {:toc}
 
-## Examples
+## Overview
+
+Give some vertical alignment to elements by manipulating their [`vertical-align` property](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align).
 
 Note that only items with the following display properties can be vertically aligned:
 - inline
@@ -27,6 +28,8 @@ The alignments consist of the items in the following list and are also available
 - `.valign-bottom`
 - `.valign-text-top`
 - `.valign-text-bottom`
+
+## Examples
 
 Example with inline elements.
 

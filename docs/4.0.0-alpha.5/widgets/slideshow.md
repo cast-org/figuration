@@ -2,10 +2,9 @@
 layout: docs
 title: Slideshow
 subtitle: slideshow.js
+description: Extend the Tab widget with slide navigation controls.
 group: widgets
 ---
-
-A simple widget that extends on the [Tab widget]({{ site.baseurl }}/widgets/tab/) to add previous and next navigation items that update their disabled state based on the currently active tab/slide.
 
 {% capture callout %}
 Widget Dependencies
@@ -22,6 +21,10 @@ Sideshow requires the following:
 
 * ToC goes here
 {:toc}
+
+## Overview
+
+A simple widget that extends on the [Tab widget]({{ site.baseurl }}/widgets/tab/) to add previous and next navigation items that update their disabled state based on the currently active tab/slide.
 
 ## Examples
 

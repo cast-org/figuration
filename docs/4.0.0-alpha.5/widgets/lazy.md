@@ -2,16 +2,19 @@
 layout: docs
 title: Lazy
 subtitle: lazy.js
+description: Load images or embedded content only when they become visible within the viewport.
 group: widgets
 ---
-
-Lazy delays loading of images outside of the viewport (visible part of the page) until the user scrolls them into view.  In some cases this can help reduce both server load and overall bandwidth use.
 
 ## Contents
 {:.no_toc}
 
 * ToC goes here
 {:toc}
+
+## Overview
+
+Lazy delays the loading of images outside of the viewport (visible part of the page) until the user scrolls them into view.  In some cases this can help reduce both server load and overall bandwidth use.
 
 ## Example
 

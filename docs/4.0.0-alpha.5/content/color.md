@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Color
+description: Palette system for consitent control of colors used within Figuration.
 group: content
 ---
 

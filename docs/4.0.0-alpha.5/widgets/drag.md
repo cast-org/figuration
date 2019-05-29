@@ -2,10 +2,9 @@
 layout: docs
 title: Drag
 subtitle: drag.js
+description: A simple widget that allows for both mouse and touch drag handling for use by other Figuration widgets.
 group: widgets
 ---
-
-A simple widget that allows for both mouse and touch drag handling for use by other Figuration widgets.
 
 ## Contents
 {:.no_toc}

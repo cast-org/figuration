@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Typography
+description: Simple and easily customized typography for headings, body text, lists, and more.
 group: content
 ---
-
-Figuration includes simple and easily customized typography for headings, body text, lists, and more. For even more control, check out the [utility classes]({{ site.baseurl }}/utilities/typography/).
 
 ## Contents
 {:.no_toc}
@@ -14,7 +13,7 @@ Figuration includes simple and easily customized typography for headings, body t
 
 ## Global Settings
 
-Figuration sets basic global display, typography, and link styles. Specifically, we:
+Figuration sets basic global display, typography, and link styles. For even more control, check out the [utility classes]({{ site.baseurl }}/utilities/typography/).
 
 - Use a [native font stack]({{ site.baseurl }}/content/reboot/#native-font-stack) that selects the best `font-family` for each OS and device.
 - Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base applied to the `<body>`.

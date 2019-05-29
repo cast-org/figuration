@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Badges
+description: Small and adaptive badges for adding context to just about any content.
 group: components
 ---
-
-Small and adaptive badges for adding context to just about any content.
 
 ## Contents
 {:.no_toc}

@@ -1,16 +1,19 @@
 ---
 layout: docs
 title: Display
+description: Responsively control an element's display property.
 group: utilities
 ---
-
-Responsively control an element's `display` property.  Also included are some classes to control `display` for printing.
 
 ## Contents
 {:.no_toc}
 
 * ToC goes here
 {:toc}
+
+## Overview
+
+Responsively control an element's `display` property.  Also included are some classes to control `display` for printing.
 
 ## Notation
 

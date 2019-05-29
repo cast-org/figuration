@@ -1,16 +1,19 @@
 ---
 layout: docs
 title: Floating
+description: Toggle float on elements with responsive float utilities.
 group: utilities
 ---
-
-These utility classes float an element to the enable or disable floating, based on the current viewport size using the [CSS `float` property](https://developer.mozilla.org/en-US/docs/Web/CSS/float).
 
 ## Contents
 {:.no_toc}
 
 * ToC goes here
 {:toc}
+
+## Overview
+
+These utility classes float an element to the enable or disable floating, based on the current viewport size using the [CSS `float` property](https://developer.mozilla.org/en-US/docs/Web/CSS/float).
 
 ## Usage
 

@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Color
+description: Add a little, or a lot of, color to your site or application.
 group: utilities
 ---
-
-Add a little, or a lot of, color to your site or application.
 
 {% capture callout %}
 Dealing with Specificity

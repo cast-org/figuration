@@ -1,16 +1,19 @@
 ---
 layout: docs
 title: Visibility
+description: Control an element's visibility without changing the display property.
 group: utilities
 ---
-
-Set the `visibility` of an element, meaning its `display` is not modified and will not affect layout. `.invisible` elements still take up space in the page. Content will be hidden both visually and for assistive technology/screen reader users.
 
 ## Contents
 {:.no_toc}
 
 * ToC goes here
 {:toc}
+
+## Overview
+
+Set the `visibility` of an element, meaning its `display` is not modified and will not affect layout. `.invisible` elements still take up space in the page. Content will be hidden both visually and for assistive technology/screen reader users.
 
 ## Examples
 

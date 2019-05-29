@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Customization Options
+description: Customize Figuration using Sass variables for global style preferences, color themes, and component adjustments.
 group: get-started
 ---
-
-Customize Figuration using Sass variables for global style preferences, color themes, and component adjustments.
 
 ## Contents
 {:.no_toc}

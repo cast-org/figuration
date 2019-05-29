@@ -1,10 +1,9 @@
 ---
 layout: docs
 title: Browsers & Devices
+description: Figuration supports a wide variety of modern browsers and devices, and some older ones. See which exact ones below, as well as detailed information on known quirks and bugs.
 group: get-started
 ---
-
-Figuration supports a wide variety of modern browsers and devices, and some older ones. See which exact ones below, as well as detailed information on known quirks and bugs.
 
 ## Contents
 {:.no_toc}
