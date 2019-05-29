@@ -353,7 +353,7 @@
         },
 
         hideMenu : function(e, $trigger, $menu, triggerFocus) {
-            if (e) { e.preventDefault(); }
+            // if (e) { e.preventDefault(); }
 
             if (typeof triggerFocus === 'undefined') { triggerFocus = true; }
 
