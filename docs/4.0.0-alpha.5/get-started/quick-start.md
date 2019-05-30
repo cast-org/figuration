@@ -5,10 +5,11 @@ description: Get started using Figuration today with our CDN links and starter t
 group: get-started
 redirect_from:
   - "/get-started/"
+  - "/4.0.0-alpha.5/"
   - "/4.0.0-alpha.5/get-started/"
 ---
 
-Looking to quickly add Figuration to your project? Use the CDN links. Using a package manager or need to download the source files? [Head to the downloads page.]({{ site.baseurl }}/get-started/download/)
+Looking to quickly add Figuration to your project? Use the CDN links. Using a package manager or need to download the source files? [Head to the downloads page.]({{ site.baseurl }}/{{ site.docs_version }}/get-started/download/)
 
 ## Contents
 {:.no_toc}
@@ -18,7 +19,7 @@ Looking to quickly add Figuration to your project? Use the CDN links. Using a pa
 
 ## Using the CDN
 
-Quickly add Figuration to your project by using the CDN services provided for free by the awesome folks over at [jsDelivr](https://www.jsdelivr.com/).  If you are using a package manager, or need to download the source files, more information can be found on the [download page.]({{ site.baseurl }}/get-started/download/)
+Quickly add Figuration to your project by using the CDN services provided for free by the awesome folks over at [jsDelivr](https://www.jsdelivr.com/).  If you are using a package manager, or need to download the source files, more information can be found on the [download page.]({{ site.baseurl }}/{{ site.docs_version }}/get-started/download/)
 
 ### CSS
 
@@ -30,7 +31,7 @@ Copy-paste the stylesheet `<link>` into your `<head>` before all other styleshee
 
 ### JavaScript
 
-[Figuration's widgets]({{ site.baseurl}}/widgets/overview/), our interactive components, require [jQuery](https://jquery.com/), along with our own JavaScript library to function. Add our JavaScript widgets and jQuery, either in the `<head>`, or near the end of your pages, right before the closing `</body>` tag. Be sure to place jQuery first, as our code depends on it.
+[Figuration's widgets]({{ site.baseurl }}/{{ site.docs_version }}/widgets/overview/), our interactive components, require [jQuery](https://jquery.com/), along with our own JavaScript library to function. Add our JavaScript widgets and jQuery, either in the `<head>`, or near the end of your pages, right before the closing `</body>` tag. Be sure to place jQuery first, as our code depends on it.
 
 Our widgets work with either the full version of jQuery, or the [jQuery's slim build](https://blog.jquery.com/2016/06/09/jquery-3-0-final-released/).
 
@@ -68,7 +69,7 @@ Essentially something like this:
 </html>
 {% endhighlight %}
 
-That should be all you need for overall page requirements. Visit the [Layout docs]({{ site.baseurl }}/layout/overview/) to begin building out your content and components.
+That should be all you need for overall page requirements. Visit the [Layout docs]({{ site.baseurl }}/{{ site.docs_version }}/layout/overview/) to begin building out your content and components.
 
 ## Right-to-left Support
 

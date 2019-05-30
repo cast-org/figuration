@@ -10,7 +10,7 @@ group: widgets
 Incompatible Widgets
 {:.h5 .no_toc}
 
-For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}/widgets/tab/) and [Dropdown widget]({{ site.baseurl }}/widgets/dropdown/) in the same nav item.  This will cause navigation and usability issues.  One or the other, but not both.
+For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/tab/) and [Dropdown widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/dropdown/) in the same nav item.  This will cause navigation and usability issues.  One or the other, but not both.
 {% endcapture %}
 {% include callout.html content=callout type="warning" %}
 
@@ -24,7 +24,7 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}
 
 ### Tabs
 
-The tab widget works with [tab]({{ site.baseurl }}/components/navs/#tabs) style navigation.
+The tab widget works with [tab]({{ site.baseurl }}/{{ site.docs_version }}/components/navs/#tabs) style navigation.
 
 <div class="cf-example cf-example-tabs">
     <ul class="nav nav-tabs">
@@ -66,7 +66,7 @@ The tab widget works with [tab]({{ site.baseurl }}/components/navs/#tabs) style 
 
 ### Pills
 
-The tab widget also works with [pill]({{ site.baseurl }}/components/navs/#pills) style navigation.
+The tab widget also works with [pill]({{ site.baseurl }}/{{ site.docs_version }}/components/navs/#pills) style navigation.
 
 <div class="cf-example cf-example-tabs">
     <ul class="nav nav-pills">
@@ -108,7 +108,7 @@ The tab widget also works with [pill]({{ site.baseurl }}/components/navs/#pills)
 
 ### List
 
-The tab widget even work with the [`.list` component]({{ site.baseurl }}/components/lists/).
+The tab widget even work with the [`.list` component]({{ site.baseurl }}/{{ site.docs_version }}/components/lists/).
 
 <div class="cf-example cf-example-tabs">
     <div class="row">

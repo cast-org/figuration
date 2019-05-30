@@ -63,7 +63,7 @@ For indicating sample output from a program use the `<samp>` tag.
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the code CSS styles.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for the code CSS styles.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

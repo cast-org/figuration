@@ -225,7 +225,7 @@ For example to have a border on the sides of an element up to and including the 
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

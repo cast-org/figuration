@@ -19,7 +19,7 @@ These utility classes float an element to the enable or disable floating, based 
 
 Note that the float utilities do not have any affect on items inside flex container.  Please refer to the [flexbox specification](https://www.w3.org/TR/css-flexbox-1/#flex-containers) for details.
 
-Instead of using `left/right` designators, the float utilities use `start/end` designators to match up with the [flexbox utilities]({{ site.baseurl }}/utilities/flexbox/).
+Instead of using `left/right` designators, the float utilities use `start/end` designators to match up with the [flexbox utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/flexbox/).
 
 {% capture example %}
 <div class="float-start">Float start aligned on all viewport sizes</div><br>
@@ -50,7 +50,7 @@ Instead of using `left/right` designators, the float utilities use `start/end` d
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

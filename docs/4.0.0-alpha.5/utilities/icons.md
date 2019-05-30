@@ -13,7 +13,7 @@ group: utilities
 
 ## Caret Icon
 
-Use carets to indicate some meaning of functionality or direction. Note that the default caret will reverse automatically in [dropup menus]({{ site.baseurl }}/widgets/dropdown/).
+Use carets to indicate some meaning of functionality or direction. Note that the default caret will reverse automatically in [dropup menus]({{ site.baseurl }}/{{ site.docs_version }}/widgets/dropdown/).
 
 If inside of an element marked as `.open` the caret will reverse direction accordingly to indicate state.
 
@@ -111,7 +111,7 @@ Figuration also uses a drag icon with draggable popovers. **Be sure to include t
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

@@ -13,7 +13,7 @@ group: components
 
 ## Basic Example
 
-Below is an example of a single media object. Only two classes are required—the wrapping `.media` and the `.media-body` around your content. Optional padding and margin can be controlled through [spacing utilities]({{ site.baseurl }}/utilities/spacing/).
+Below is an example of a single media object. Only two classes are required—the wrapping `.media` and the `.media-body` around your content. Optional padding and margin can be controlled through [spacing utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/spacing/).
 
 {% capture example %}
 <div class="media">
@@ -30,7 +30,7 @@ Below is an example of a single media object. Only two classes are required—th
 Flexbug #12: Inline elements aren't treated as flex items
 {:.h5 .no_toc}
 
-Internet Explorer 10-11 do not render inline elements like links or images (or `::before` and `::after` pseudo-elements) as flex items. The only workaround is to set a non-inline `display` value (e.g., `block`, `inline-block`, or `flex`). You can also use one of our [display utilities]({{ site.baseurl }}/utilities/display/), such as `.d-flex`, for an easy fix.
+Internet Explorer 10-11 do not render inline elements like links or images (or `::before` and `::after` pseudo-elements) as flex items. The only workaround is to set a non-inline `display` value (e.g., `block`, `inline-block`, or `flex`). You can also use one of our [display utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/display/), such as `.d-flex`, for an easy fix.
 
 **Source:** [Flexbugs on GitHub](https://github.com/philipwalton/flexbugs#12-inline-elements-are-not-treated-as-flex-items)
 {% endcapture %}
@@ -62,7 +62,7 @@ Media components can also be nested as many times as needed. Place nested `.medi
 
 ## Alignment
 
-Media in a media object can be aligned with [flexbox utilities]({{ site.baseurl }}/utilities/flexbox/) to the top (default), middle, or end of your `.media-body` content.
+Media in a media object can be aligned with [flexbox utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/flexbox/) to the top (default), middle, or end of your `.media-body` content.
 
 {% capture example %}
 <div class="media">
@@ -233,7 +233,7 @@ Even create your own social media layout.
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the media object component.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for the media object component.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

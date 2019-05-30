@@ -20,9 +20,9 @@ Easily realign text to components with text alignment classes.
 {% endcapture %}
 {% include example.html content=example %}
 
-For left, right, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.  Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) is used.
+For left, right, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.  Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/{{ site.docs_version }}/layout/overview/#breakpoint-nomenclature) is used.
 
-Instead of using `left/right` designators, the text alignment utilities use `start/end` designators to match up with the [flexbox utilities]({{ site.baseurl }}/utilities/flexbox/).
+Instead of using `left/right` designators, the text alignment utilities use `start/end` designators to match up with the [flexbox utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/flexbox/).
 
 {% capture example %}
 <p class="text-start">Start aligned text on all viewport sizes.</p>
@@ -222,7 +222,7 @@ Remove a text decoration with the `.text-decoration-none` class.
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">
@@ -513,7 +513,7 @@ Generate a text color rule with a hover/focus state when used as an anchor using
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the typography.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for the typography.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

@@ -13,7 +13,7 @@ group: content
 
 ## Overview
 
-Figuration's form controls expand on [the Rebooted form styles]({{ site.baseurl }}/content/reboot/#forms) with classes. Use these classes to opt into their customized displays for a more consistent rendering across browsers and devices.
+Figuration's form controls expand on [the Rebooted form styles]({{ site.baseurl }}/{{ site.docs_version }}/content/reboot/#forms) with classes. Use these classes to opt into their customized displays for a more consistent rendering across browsers and devices.
 
 Be sure to use an appropriate type attribute on all inputs (e.g., `email` for email address or `number` for numerical information) to take advantage of newer input controls like email verification, number selection, and more.
 
@@ -647,9 +647,9 @@ The `.form-group` class is the easiest way to add some structure to forms. It pr
 
 ### Form Grid
 
-More complex forms can be built using our [grid classes]({{ site.baseurl }}/layout/grid/). Use these for form layouts that require multiple columns, varied widths, and additional alignment options.
+More complex forms can be built using our [grid classes]({{ site.baseurl }}/{{ site.docs_version }}/layout/grid/). Use these for form layouts that require multiple columns, varied widths, and additional alignment options.
 
-Grid-based form layouts also support [control sizing]({{ site.baseurl }}/content/forms/#control-sizing).
+Grid-based form layouts also support [control sizing]({{ site.baseurl }}/{{ site.docs_version }}/content/forms/#control-sizing).
 
 {% capture example %}
 <form>
@@ -917,11 +917,11 @@ Here is the same form, but this time using specified column widths
 
 Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms vary slightly from their default states.
 
-- Controls are `display: flex`, collapsing any HTML white space and allowing you to provide alignment control with [spacing]({{ site.baseurl }}/utilities/spacing/) and [flexbox]({{ site.baseurl }}/utilities/flexbox/) utilities.
+- Controls are `display: flex`, collapsing any HTML white space and allowing you to provide alignment control with [spacing]({{ site.baseurl }}/{{ site.docs_version }}/utilities/spacing/) and [flexbox]({{ site.baseurl }}/{{ site.docs_version }}/utilities/flexbox/) utilities.
 - Controls and input groups receive `width: auto` to override the Figuration default `width: 100%`.
 - Controls **only appear inline in viewports that are at least 36em/576px wide** to account for narrow viewports on mobile devices.
 
-You may need to manually address the width and alignment of individual form controls with [spacing utilities]({{ site.baseurl }}/utilities/spacing/) (as shown below). Lastly, as shown below, you should always include a `<label>` with each form control, even if you need to hide it from non-screenreader users with `.sr-only`.
+You may need to manually address the width and alignment of individual form controls with [spacing utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/spacing/) (as shown below). Lastly, as shown below, you should always include a `<label>` with each form control, even if you need to hide it from non-screenreader users with `.sr-only`.
 
 {% capture example %}
 <form class="form-inline">
@@ -1299,7 +1299,7 @@ Optional visual icon representations of the validation state can be added to _te
 
 - Validation icons are `url()`s configured via Sass variables that are applied to `background-image` rules for each state.
 - You may use your own base64 PNGs or SVGs by updating the Sass variables and recompiling.
-- Icons can also be disabled entirely by setting the `$enable-validation-icons` variable to `false` in the [Sass global options]({{ site.baseurl }}/get-started/options/#global-options).
+- Icons can also be disabled entirely by setting the `$enable-validation-icons` variable to `false` in the [Sass global options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/#global-options).
 
 {% capture example %}
 <form class="needs-validation" novalidate>
@@ -1397,7 +1397,7 @@ $form-validation-states: map-merge(
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for forms.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for forms.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

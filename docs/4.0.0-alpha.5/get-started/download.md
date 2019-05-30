@@ -30,7 +30,7 @@ group: get-started
       <div class="card card-download">
         <h3 class="h4 card-header text-light" style="background-color: #246;">Source Files</h3>
         <div class="card-body">
-            Download everything: source Sass, JavaScript, and documentation files. **Requires a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes), and [some setup]({{ site.baseurl }}/get-started/build-tools/#tooling-setup).**
+            Download everything: source Sass, JavaScript, and documentation files. **Requires a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes), and [some setup]({{ site.baseurl }}/{{ site.docs_version }}/get-started/build-tools/#tooling-setup).**
         </div>
         <div class="card-footer text-sm-center">
             <a href="{{ site.download.source }}" class="btn" onclick="ga('send', 'event', 'Get Started', 'Download', 'Download source {{ site.current_version }}');">Download source</a>

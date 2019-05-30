@@ -21,7 +21,7 @@ Note that only items with the following display properties can be vertically ali
 - inline-table
 - table-cell
 
-The alignments consist of the items in the following list and are also available in responsive variants, in the form `.visible-{breakpoint}-{alignment}`. Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) is used.
+The alignments consist of the items in the following list and are also available in responsive variants, in the form `.visible-{breakpoint}-{alignment}`. Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/{{ site.docs_version }}/layout/overview/#breakpoint-nomenclature) is used.
 - `.valign-baseline`
 - `.valign-top`
 - `.valign-middle`
@@ -87,7 +87,7 @@ Slightly more complex uses, such as being able to align items in a row, become q
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

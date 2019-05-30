@@ -17,7 +17,7 @@ Hide an element to all devices **except screen readers** with `.sr-only`. Use `.
 
 There are also responsive variants available in the forms `.sr-only{-breakpoint}`, `.sr-only{-breakpoint}-down`, `.sr-only{-breakpoint}-focusable`, and `.sr-only{-breakpoint}-down-focusable`.  For example, to visually hide content, **except for screen readers**, for a `sm` or smaller screens you would use `.sr-only-sm-down`, or `.sr-only-sm-down-focusable` when the element should be shown only when focused for smaller screens.
 
-These classes are exceptionally useful helping to follow [accessibility best practices]({{ site.baseurl }}/get-started/accessibility).
+These classes are exceptionally useful helping to follow [accessibility best practices]({{ site.baseurl }}/{{ site.docs_version }}/get-started/accessibility).
 
 **Heads up!** There is no `.sr-only-*` classes created for the smallest breakpoint and no `.sr-only-*-down` classes created for the largest breakpoint, `.sr-only-xs`, `.sr-only-xs-focusable`, `.sr-only-xl-down`, `.sr-only-xl-focusable-down`, since they are functionally equivalent to using `.sr-only` or `.sr-only-focusable`.
 
@@ -40,7 +40,7 @@ These classes are exceptionally useful helping to follow [accessibility best pra
 Visually hide the text and show an image replacement by using a `background-image`.
 
 {% capture example %}
-<h1 style="background-image: url('{{ site.baseurl}}/assets/brand/figuration-solid.svg'); width: 3rem; height: 3rem;">
+<h1 style="background-image: url('{{ site.baseurl }}/{{ site.docs_version }}/assets/brand/figuration-solid.svg'); width: 3rem; height: 3rem;">
     <span class="sr-only">CAST Figuration</span>
 </h1>
 {% endcapture %}
@@ -50,23 +50,23 @@ Visually hide the text and show an image replacement by using a `background-imag
 
 Force an element to be hidden (including for screen readers) with the use of `.d{-breakpoint}-none` and `.d{-breakpoint}-down-none` classes.
 
-A section on the [display utilities page]({{ site.baseurl }}/utilities/display/#responsively-hiding-content) gives more detail about how these classes and breakpoints are related.
+A section on the [display utilities page]({{ site.baseurl }}/{{ site.docs_version }}/utilities/display/#responsively-hiding-content) gives more detail about how these classes and breakpoints are related.
 
 ## Invisible Content
 
 The `.invisible` and `.visible` classes can be used to toggle only the `visibility` of an element, meaning its `display` is not modified and the element can still affect the flow of the document.
 
-The [visibility utilities page]({{ site.baseurl }}/utilities/visibility/) gives more detail.
+The [visibility utilities page]({{ site.baseurl }}/{{ site.docs_version }}/utilities/visibility/) gives more detail.
 
 ## Useful Resources
 
-Still have questions?  There are some links to external resources avaiable in the [screen reader section on the Accessibility page]({{ site.baseurl }}/get-started/accessibility/#screen-reader-only-content)
+Still have questions?  There are some links to external resources avaiable in the [screen reader section on the Accessibility page]({{ site.baseurl }}/{{ site.docs_version }}/get-started/accessibility/#screen-reader-only-content)
 
 ## SASS Reference
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

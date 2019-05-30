@@ -16,9 +16,7 @@
   "author": "CAST, Inc.",
   "scripts": {
     "test": "grunt test",
-    "blc": "blc --exclude-external --filter-level 3 --get --ordered --recursive --host-requests 4 --input http://localhost:3000/",
-    "http-server": "http-server --silent -p 3000",
-    "check-broken-links": "npm-run-all --parallel --race \"http-server -- _gh_pages/\" blc",
+    "linkinator": "linkinator _gh_pages --recurse --silent --skip \"^(?!http://localhost)\"",
     "js-test-karma": "karma start build/karma.conf.js",
     "js-test-debug": "cross-env DEBUG=true npm run js-test-karma",
     "js-test-cloud": "cross-env BROWSER=true npm run js-test-karma"
@@ -40,7 +38,6 @@
   "devDependencies": {
     "@lodder/grunt-postcss": "^1.0.8",
     "autoprefixer": "^9.5.0",
-    "broken-link-checker": "^0.7.8",
     "cross-env": "^5.2.0",
     "eslint": "^5.15.3",
     "eslint-plugin-compat": "^3.1.0",
@@ -60,7 +57,6 @@
     "grunt-run": "^0.8.1",
     "grunt-sass": "^3.0.2",
     "grunt-stylelint": "^0.11.0",
-    "http-server": "^0.11.1",
     "jquery": "^3.4.1",
     "karma": "^4.1.0",
     "karma-chrome-launcher": "^2.2.0",
@@ -69,6 +65,7 @@
     "karma-firefox-launcher": "^1.1.0",
     "karma-qunit": "^3.1.2",
     "karma-sauce-launcher": "^2.0.2",
+    "linkinator": "^1.4.2",
     "load-grunt-tasks": "^5.0.0",
     "node-sass": "^4.12.0",
     "postcss-calc": "^7.0.1",

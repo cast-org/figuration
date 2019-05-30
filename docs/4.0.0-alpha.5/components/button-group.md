@@ -268,7 +268,7 @@ In addition, groups and toolbars should be given an explicit label, as most assi
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the button group component.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for the button group component.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

@@ -11,7 +11,7 @@ permalink:          pretty
 # Server
 source:             ./docs
 destination:        ./_gh_pages
-host:               0.0.0.0
+host:               localhost
 port:               9001
 baseurl:            ""
 url:                http://figuration.org
@@ -29,28 +29,28 @@ twitter_name:       figuration_org
 twitter_logo:       /4.0.0-alpha.5/assets/brand/figuration-social.png
 
 # Custom vars
-current_version:    4.0.0-alpha.4
+current_version:    4.0.0-alpha.5
 docs_version:       4.0.0-alpha.5
 repo:               https://github.com/cast-org/figuration
-changelog:          https://github.com/cast-org/figuration/releases/tag/v4.0.0-alpha.4
+changelog:          https://github.com/cast-org/figuration/releases/tag/v4.0.0-alpha.5
 twitter:            https://twitter.com/figuration_org
 
 
 # Downloads
 download:
-  source:           https://github.com/cast-org/figuration/archive/v4.0.0-alpha.4.zip
-  dist:             https://github.com/cast-org/figuration/releases/download/v4.0.0-alpha.4/figuration-4.0.0-alpha.4-dist.zip
+  source:           https://github.com/cast-org/figuration/archive/v4.0.0-alpha.5.zip
+  dist:             https://github.com/cast-org/figuration/releases/download/v4.0.0-alpha.5/figuration-4.0.0-alpha.5-dist.zip
 
 
 # CDN settings
 # See https://www.srihash.org for info on how to generate the hashes
 cdn:
-  css:              https://cdn.jsdelivr.net/npm/figuration@4.0.0-alpha.4/dist/css/figuration.min.css
-  css_hash:         "sha384-ruVwy3Votl/u+i9XkE/c6nB9GY8x6vco90ZhAn8DxIAMzc/ReGAl5ZMgoXehck0o"
-  js:               https://cdn.jsdelivr.net/npm/figuration@4.0.0-alpha.4/dist/js/figuration.min.js
-  js_hash:          "sha384-m6RN6xIpDZ/PgXIlV4qDlWld0LZuHeZpp07ajAFy/OB8vD+CssIbMnVLySvNVgw3"
-  css_rtl:          https://cdn.jsdelivr.net/npm/figuration@4.0.0-alpha.4/dist/css/figuration-rtl.min.css
-  css_rtl_hash:     "sha384-UjNnePr+K3rlamqWcvcfv8QLD41URRhGSwoBSrTo2Dj6ByPRwq2iy6LuVo/yg8n1"
+  css:              https://cdn.jsdelivr.net/npm/figuration@4.0.0-alpha.5/dist/css/figuration.min.css
+  css_hash:         "sha384-qJbBMnmYsbPFFn2NosvmHHA1xvrcpJPz4dvqOd9+Bqa+2TDVxx1Ee/F5DiUnktjR"
+  js:               https://cdn.jsdelivr.net/npm/figuration@4.0.0-alpha.5/dist/js/figuration.min.js
+  js_hash:          "sha384-PRBBZlLFtbdWIV3gl041BgvHRCw941KLwQdD98ZkYJNjXzR0VPQ5r+V264UQCsKs"
+  css_rtl:          https://cdn.jsdelivr.net/npm/figuration@4.0.0-alpha.5/dist/css/figuration-rtl.min.css
+  css_rtl_hash:     "sha384-yUvcmk0mCi4HTopROz1/jNtV+rnsuOfEVEqg6LE43sA53+n4KplG96XOVrBX7dvv"
   jquery:           https://code.jquery.com/jquery-3.4.1.slim.min.js
   jquery_hash:      "sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
   fontawe:          https://use.fontawesome.com/releases/v5.8.2/css/all.css

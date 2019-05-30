@@ -7,7 +7,7 @@ group: content
 
 Figuration offers some simple color palettes extended from our base colors, similar to the concept by [Google's Material color palettes](https://www.google.com/design/spec/style/color.html#color-color-palette).
 
-More information and examples about using the color palette and related utilities is available on the [color utilities page]({{ site.baseurl }}/utilities/color/).
+More information and examples about using the color palette and related utilities is available on the [color utilities page]({{ site.baseurl }}/{{ site.docs_version }}/utilities/color/).
 
 {% include callout-warning-color-assistive-technologies.md %}
 

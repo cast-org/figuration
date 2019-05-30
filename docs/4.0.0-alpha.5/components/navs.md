@@ -19,7 +19,7 @@ Navigation share general markup and styles, from the base `.nav` class to the ac
 
 If you are using navs to provide a navigation bar, be sure to add a `role="navigation"` to the most logical parent container of the `<ul>`, or wrap a `<nav>` element around the whole navigation. Do not add the role to the `<ul>` itself, as this would prevent it from being announced as an actual list by assistive technologies.
 
-Note that navigation bars, even if visually styled as tabs with the `.nav-tabs` class, should **not** be given `role="tablist"`, `role="tab"` or `role="tabpanel"` attributes. These are only appropriate for dynamic tabbed interfaces, as described in the [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel). See our [Tab widget]({{ site.baseurl }}/widgets/tab/) for an example and additional details.
+Note that navigation bars, even if visually styled as tabs with the `.nav-tabs` class, should **not** be given `role="tablist"`, `role="tab"` or `role="tabpanel"` attributes. These are only appropriate for dynamic tabbed interfaces, as described in the [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel). See our [Tab widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/tab/) for an example and additional details.
 
 {% include callout-warning-disabling-anchors.md %}
 
@@ -63,7 +63,7 @@ Change the style of `.nav` components with modifiers and utilities. Mix and matc
 
 ### Horizontal Alignment
 
-Change the horizontal alignment of your nav with [flexbox utilities]({{ site.baseurl }}/utilities/flexbox/). By default, navs are left-aligned, but you can easily change them to center or right aligned.
+Change the horizontal alignment of your nav with [flexbox utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/flexbox/). By default, navs are left-aligned, but you can easily change them to center or right aligned.
 
 Centered with `.flex-center`:
 
@@ -141,7 +141,7 @@ As always, vertical navigation is possible without <ul>s, too.
 
 ### Tabs
 
-Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabbed interface. Use them to create tabbable regions with our [Tab JavaScript widget]({{ site.baserl}}/widgets/tab/).
+Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabbed interface. Use them to create tabbable regions with our [Tab JavaScript widget]({{ site.baseurl}}/{{ site.docs_version }}/widgets/tab/).
 
 {% capture example %}
 <ul class="nav nav-tabs">
@@ -260,7 +260,7 @@ For equal-width elements, use `.nav-justify`. All horizontal space will be occup
 {% include example.html content=example %}
 
 ## Working with Flex Utilities
-If you need responsive nav variations, consider using a series of [flexbox utilities]({{ site.baseurl}}/utilities/flexbox/). While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, the nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.
+If you need responsive nav variations, consider using a series of [flexbox utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/flexbox/). While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, the nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.
 
 {% capture example %}
 <nav class="nav nav-pills flex-column flex-sm-row">
@@ -274,13 +274,13 @@ If you need responsive nav variations, consider using a series of [flexbox utili
 
 ## Using Dropdowns
 
-Add dropdown menus with a little extra HTML and the [Dropdown JavaScript widget]({{ site.baseurl }}/widgets/dropdown/).
+Add dropdown menus with a little extra HTML and the [Dropdown JavaScript widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/dropdown/).
 
 {% capture callout %}
 Incompatible Widgets
 {:.h5 .no_toc}
 
-For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}/widgets/tab/) and [Dropdown widget]({{ site.baseurl }}/widgets/dropdown/) in the same nav item.  This will cause navigation and usability issues.  One or the other, but not both.
+For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/tab/) and [Dropdown widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/dropdown/) in the same nav item.  This will cause navigation and usability issues.  One or the other, but not both.
 {% endcapture %}
 {% include callout.html content=callout type="warning" %}
 
@@ -342,7 +342,7 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for nav components.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for nav components.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

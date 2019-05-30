@@ -14,7 +14,7 @@ group: widgets
 
 ## Examples
 
-An example can be found with the draggable popover on the [Popover widget]({{ site.baseurl}}/widgets/popover/#draggable-example) page.
+An example can be found with the draggable popover on the [Popover widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/popover/#draggable-example) page.
 
 ## Disabled
 

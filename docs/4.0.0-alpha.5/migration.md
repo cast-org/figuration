@@ -30,7 +30,7 @@ Some changes will most likely have been missed, so please refer to the documenta
 - Added two methods of Responsive Typography support.
   - Ratio scaling - variable sizing based on viewport dimension
   - Stepped scaling - one defined size per breakpoint
-- Inline lists, `.list-inline`, has been dropped and replaced with the `.list-horizontal` modifier in the new [List component]({{ site.baseurl }}/components/lists/).
+- Inline lists, `.list-inline`, has been dropped and replaced with the `.list-horizontal` modifier in the new [List component]({{ site.baseurl }}/{{ site.docs_version }}/components/lists/).
 
 ## Table
 - `.table` now creates a visually simple table, borders are controlled through a selection of modifier classes.
@@ -38,7 +38,7 @@ Some changes will most likely have been missed, so please refer to the documenta
 - `.table-scroll-*` has dropped the `down` portion of the class name, and is now meant to used as a wrapper to prevent conflict with screen-readers due to the use of `display: block`.
 
 ## Form
-**Forms have recieved a major overhaul.**  Almost everything has been changed, from using `em` sizing by default, along with a simplification in terms of class names and their reusability across multiple input types and visual styles.  A few of the changes are listed below, but there are many that have probably been missed, so it might be better to just review the [forms documentation section]({{ site.baseurl }}/content/forms/) for a better understanding.
+**Forms have recieved a major overhaul.**  Almost everything has been changed, from using `em` sizing by default, along with a simplification in terms of class names and their reusability across multiple input types and visual styles.  A few of the changes are listed below, but there are many that have probably been missed, so it might be better to just review the [forms documentation section]({{ site.baseurl }}/{{ site.docs_version }}/content/forms/) for a better understanding.
 
 - Rewrote both custom and default checkboxes and radios into a consolidated `.form-check`. Now, both have matching HTML structure (outer `<div>` with sibling `<input>` and `<label>`, and the same layout styles (stacked default, inline with utilitiy classes). This allows us to style the label based on the input's state, simplifying support for the `disabled` attribute (previously requiring a parent class) and better support for form validation.
   - `.custom-control` is replaced with `.form-check`.
@@ -88,7 +88,7 @@ Some changes will most likely have been missed, so please refer to the documenta
 - Sizing classes must be on the parent `.input-group` and not the individual form elements.
 
 ### List Group
-- The List Group is no longer a stand-alone component, and is now modifier within the new [List component]({{ site.baseurl }}/components/lists/).
+- The List Group is no longer a stand-alone component, and is now modifier within the new [List component]({{ site.baseurl }}/{{ site.docs_version }}/components/lists/).
 
 ### List
 - A new component that allows for greater styling options for lists, or pseudo-lists using `<div>`s.
@@ -97,7 +97,7 @@ Some changes will most likely have been missed, so please refer to the documenta
 - Pagination has been modified with a couple of style modifier classes for greater flexibility.  The use of the `.pagination-group` modifier class on the `.pagination` element is needed to keep the same look as the older pagination component.
 
 ### Switch
-- Dropped Switch component and consolidated with the `.form-check` radio and checkbox controls, through the use of the `.form-switch` modifier class. Check out the [new switch custom control]({{ site.baseurl }}/content/forms/#switches).
+- Dropped Switch component and consolidated with the `.form-check` radio and checkbox controls, through the use of the `.form-switch` modifier class. Check out the [new switch custom control]({{ site.baseurl }}/{{ site.docs_version }}/content/forms/#switch).
 
 
 ## Utilities

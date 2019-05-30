@@ -13,9 +13,9 @@ group: content
 
 ## Global Settings
 
-Figuration sets basic global display, typography, and link styles. For even more control, check out the [utility classes]({{ site.baseurl }}/utilities/typography/).
+Figuration sets basic global display, typography, and link styles. For even more control, check out the [utility classes]({{ site.baseurl }}/{{ site.docs_version }}/utilities/typography/).
 
-- Use a [native font stack]({{ site.baseurl }}/content/reboot/#native-font-stack) that selects the best `font-family` for each OS and device.
+- Use a [native font stack]({{ site.baseurl }}/{{ site.docs_version }}/content/reboot/#native-font-stack) that selects the best `font-family` for each OS and device.
 - Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base applied to the `<body>`.
 - Use `$font-size-base` to scale the font size of text across all components.
 - Convert all `font-size` CSS rules to `rem` units, assuming the typical browser default of `1rem`=`16px` through the use of our `font-size()` Sass mixin.  While *highly opinionated*, Figuration believes, this offers better accessibility than using `px` to define font sizes.
@@ -103,7 +103,7 @@ While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant
 
 ## Text Utilities
 
-Change text alignment, transform, style, weight, and color with our [text utilities]({{ site.baseurl }}/utilities/typography/#text-alignment).
+Change text alignment, transform, style, weight, and color with our [text utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/typography/#text-alignment).
 
 ## Abbreviations
 
@@ -142,7 +142,7 @@ Add a `<footer class="blockquote-footer">` for identifying the source. Wrap the 
 
 ### Alignment
 
-Use [text alignment utilities]({{ site.baseurl }}/utilities/typography/#text-alignment) to alter the layout of the blockquote.
+Use [text alignment utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/typography/#text-alignment) to alter the layout of the blockquote.
 
 {% capture example %}
 <blockquote class="blockquote text-center">
@@ -162,7 +162,7 @@ Use [text alignment utilities]({{ site.baseurl }}/utilities/typography/#text-ali
 
 ## Lists
 
-See the [rebooted list styles]({{ site.baseurl }}/content/reboot/#lists) for the default layouts.
+See the [rebooted list styles]({{ site.baseurl }}/{{ site.docs_version }}/content/reboot/#lists) for the default layouts.
 
 ### Unstyled
 
@@ -184,7 +184,7 @@ Remove the default `list-style` and left margin on list items (immediate childre
 
 ### Styled
 
-Even more layout and style options are available for lists with Figuration's [list component]({{ site.baseurl }}/components/lists/).  This component includes indented unstyled lists, stylized bulleted and ordered lists, horizontal lists, and lists with dividers between items.
+Even more layout and style options are available for lists with Figuration's [list component]({{ site.baseurl }}/{{ site.docs_version }}/components/lists/).  This component includes indented unstyled lists, stylized bulleted and ordered lists, horizontal lists, and lists with dividers between items.
 
 ### Description List Alignment
 
@@ -222,9 +222,9 @@ Align terms and descriptions horizontally by using our grid system's predefined 
 
 Figuration, by default, does not have responsive typography enabled. However, we have included two different methods to enable this functionality.
 - *Fluid* sizing based on the dimensions of the viewport.  Based on the [Responsive font-size mixin](https://github.com/MartijnCuppens/rfs) by [Martijn Cuppens](https://github.com/MartijnCuppens).
-- *Scaled* sizing is scaling based on current [responsive breakpoint]({{ site.baseurl }}/layout/overview/#responsive-breakpoints).
+- *Scaled* sizing is scaling based on current [responsive breakpoint]({{ site.baseurl }}/{{ site.docs_version }}/layout/overview/#responsive-breakpoints).
 
-See the [Global Options]({{ site.baseurl }}/get-started/options/#global-options) on how the enable either method.  **Note that only one of these methods can be enabled at a time.**
+See the [Global Options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/#global-options) on how the enable either method.  **Note that only one of these methods can be enabled at a time.**
 
 Benefits of using Figuration's responsive typography options include:
 - Font sizes will adjust with the size of the device, which can help reduce the chance of overflow for long words.
@@ -384,7 +384,7 @@ Will generate the CSS output:
 
 #### Settings
 
-Scaled responsive typography only has one setting, `$responsive-font-size-scale-factor`, a Sass map that aligns with Figuration's [grid breakpoints]({{ site.baseurl }}/layout/grid/#grid-options).  Each breakpoint level gets an associated scaling value.  The following example shows the default settings for the scaling values.
+Scaled responsive typography only has one setting, `$responsive-font-size-scale-factor`, a Sass map that aligns with Figuration's [grid breakpoints]({{ site.baseurl }}/{{ site.docs_version }}/layout/grid/#grid-options).  Each breakpoint level gets an associated scaling value.  The following example shows the default settings for the scaling values.
 
 {% highlight scss %}
 $responsive-font-size-scale-factor: (
@@ -412,7 +412,7 @@ $responsive-font-size-scale-factor: (
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the typography CSS styles.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for the typography CSS styles.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

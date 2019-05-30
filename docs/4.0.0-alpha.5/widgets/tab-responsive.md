@@ -12,8 +12,8 @@ Widget Dependencies
 
 Sideshow requires the following:
 
-* [Tab widget]({{ site.baseurl}}/widgets/tab/) for base functionality.
-* [Collapse widget]({{ site.baseurl}}/widgets/collapse/) for base functionality.
+* [Tab widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/tab/) for base functionality.
+* [Collapse widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/collapse/) for base functionality.
 {% endcapture %}
 {% include callout.html content=callout type="info" class="cf-callout-dep" %}
 
@@ -25,7 +25,7 @@ Sideshow requires the following:
 
 ## Overview
 
-The primary goal with this widget is to provide a method of communication between the [Collapse]({{ site.baseurl }}/widgets/collapse/) and [Tab]({{ site.baseurl }}/widgets/tab/) widgets.  It does not take into account the visual aspects itself, this needs to be handled by CSS.
+The primary goal with this widget is to provide a method of communication between the [Collapse]({{ site.baseurl }}/{{ site.docs_version }}/widgets/collapse/) and [Tab]({{ site.baseurl }}/{{ site.docs_version }}/widgets/tab/) widgets.  It does not take into account the visual aspects itself, this needs to be handled by CSS.
 
 ## Example
 
@@ -124,7 +124,7 @@ $('#myTabResponsive').CFW_TabResponsive();
 
 Event callbacks happen on the responsive tab element.
 
-You can also get the collapse and tab events as indicated in the [Collapse]({{ site.baseurl }}/widgets/collapse/) and [Tab]({{ site.baseurl }}/widgets/tab/) widgets due to event bubbling.
+You can also get the collapse and tab events as indicated in the [Collapse]({{ site.baseurl }}/{{ site.docs_version }}/widgets/collapse/) and [Tab]({{ site.baseurl }}/{{ site.docs_version }}/widgets/tab/) widgets due to event bubbling.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

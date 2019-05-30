@@ -312,7 +312,7 @@ Add `.table-condensed` to make tables more compact by reducing the cell padding.
 
 ### Narrow Table
 
-Use our [sizing utilities]({{ site.baseurl }}/utilities/sizing/), such as `w-auto`, to control a table's width.
+Use our [sizing utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/sizing/), such as `w-auto`, to control a table's width.
 
 <div class="cf-example">
   <table class="table w-auto">
@@ -1104,7 +1104,7 @@ Responsive variants are:
 
 ## Color Variants
 
-Use [color utility classes]({{ site.baseurl }}/utilities/color/) to style tables with color.
+Use [color utility classes]({{ site.baseurl }}/{{ site.docs_version }}/utilities/color/) to style tables with color.
 
 {% include callout-warning-color-assistive-technologies.md %}
 
@@ -1159,7 +1159,7 @@ Easily create an inverted table with light text on a dark background.
 
 ### Header/Footer Color
 
-Use [text or background utilities]({{ site.baseurl }}/utilities/color/) to alter the look of the header and/or footer.
+Use [text or background utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/color/) to alter the look of the header and/or footer.
 
 <div class="cf-example">
   <table class="table">
@@ -1398,7 +1398,7 @@ Use contextual classes to color table rows or individual cells.
 </tr>
 {% endhighlight %}
 
-You may also use [text or background utilities]({{ site.baseurl }}/utilities/color/).
+You may also use [text or background utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/color/).
 
 <div class="cf-example">
   <table class="table">
@@ -1495,7 +1495,7 @@ You may also use [text or background utilities]({{ site.baseurl }}/utilities/col
 </tr>
 {% endhighlight %}
 
-You can also use [text or background utilities]({{ site.baseurl }}/utilities/color/) to achieve multiple styles.
+You can also use [text or background utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/color/) to achieve multiple styles.
 
 {% capture example %}
 <table class="table">
@@ -1542,7 +1542,7 @@ You can also use [text or background utilities]({{ site.baseurl }}/utilities/col
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for tables.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for tables.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

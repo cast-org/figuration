@@ -15,20 +15,20 @@ group: layout
 
 Flexbox support is available for a number of Figuration's components:
 
-- [Grid Layout]({{ site.baseurl }}/layout/grid/)
-- [Breadcrumb]({{ site.baseurl }}/components/breadcrumb/)
-- [Button Group]({{ site.baseurl }}/components/button-group/)
-- [Button Toolbar]({{ site.baseurl }}/components/button-group/#button-toolbar)
-- [Card Deck]({{ site.baseurl }}/components/cards/#card-decks)
-- [Card Group]({{ site.baseurl }}/components/cards/#card-groups)
-- [Inline Forms]({{ site.baseurl }}/content/forms/#inline-forms)
-- [Input Group]({{ site.baseurl }}/components/input-group/)
-- [Media Object]({{ site.baseurl }}/components/media-object/)
-- [Navs]({{ site.baseurl }}/components/navs/)
-- [Navbar]({{ site.baseurl }}/components/navbar/)
-- [Pagination]({{ site.baseurl }}/components/pagination/)
-- [Progress]({{ site.baseurl }}/components/progress/)
-- [Flexbox Utilities]({{ site.baseurl }}/utilities/flexbox/)
+- [Grid Layout]({{ site.baseurl }}/{{ site.docs_version }}/layout/grid/)
+- [Breadcrumb]({{ site.baseurl }}/{{ site.docs_version }}/components/breadcrumb/)
+- [Button Group]({{ site.baseurl }}/{{ site.docs_version }}/components/button-group/)
+- [Button Toolbar]({{ site.baseurl }}/{{ site.docs_version }}/components/button-group/#button-toolbar)
+- [Card Deck]({{ site.baseurl }}/{{ site.docs_version }}/components/cards/#card-decks)
+- [Card Group]({{ site.baseurl }}/{{ site.docs_version }}/components/cards/#card-groups)
+- [Inline Forms]({{ site.baseurl }}/{{ site.docs_version }}/content/forms/#inline-forms)
+- [Input Group]({{ site.baseurl }}/{{ site.docs_version }}/components/input-group/)
+- [Media Object]({{ site.baseurl }}/{{ site.docs_version }}/components/media-object/)
+- [Navs]({{ site.baseurl }}/{{ site.docs_version }}/components/navs/)
+- [Navbar]({{ site.baseurl }}/{{ site.docs_version }}/components/navbar/)
+- [Pagination]({{ site.baseurl }}/{{ site.docs_version }}/components/pagination/)
+- [Progress]({{ site.baseurl }}/{{ site.docs_version }}/components/progress/)
+- [Flexbox Utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/flexbox/)
 
 Vendor prefixes are provided in our compiled CSS with [Autoprefixer](https://github.com/postcss/autoprefixer) via Grunt. Some bugs in IE10-11's Flexbox implementation are worked around via [postcss-flexbugs-fixes](https://github.com/luisrudge/postcss-flexbugs-fixes).
 

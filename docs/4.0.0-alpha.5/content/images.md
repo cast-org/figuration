@@ -27,7 +27,7 @@ Images can be made to scale with their container width by using `.img-fluid`. Th
 
 Use `.img-thumbnail` to give an image a bordered appearance.
 
-You might also want to check the [border utilites]({{ site.baseurl }}/utilities/borders) for additional options.
+You might also want to check the [border utilites]({{ site.baseurl }}/{{ site.docs_version }}/utilities/borders) for additional options.
 
 <div class="cf-example">
   <img data-src="holder.js/200x200" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
@@ -39,7 +39,7 @@ You might also want to check the [border utilites]({{ site.baseurl }}/utilities/
 
 ## Aligning Images
 
-Align images with the [helper float classes]({{ site.baseurl }}/utilities/floating/) or [text alignment classes]({{ site.baseurl }}/utilities/typography/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/utilities/spacing/#horizontal-centering).
+Align images with the [helper float classes]({{ site.baseurl }}/{{ site.docs_version }}/utilities/floating/) or [text alignment classes]({{ site.baseurl }}/{{ site.docs_version }}/utilities/typography/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/{{ site.docs_version }}/utilities/spacing/#horizontal-centering).
 
 <div class="cf-example clearfix">
   <img data-src="holder.js/200x200" class="radius float-start" alt="A generic square placeholder image with rounded corners">
@@ -86,7 +86,7 @@ If you are using the `<picture>` element to specify multiple `<source>` elements
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the image CSS styles.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for the image CSS styles.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

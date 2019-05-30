@@ -48,7 +48,7 @@ Unless the context is clear (as with the "Notifications" example, where it is un
 
 ## Contextual Variations
 
-Use our [background and text color utility]({{ site.baseurl }}/utilities/color/) classes to quckly change the appearance of a badge.
+Use our [background and text color utility]({{ site.baseurl }}/{{ site.docs_version }}/utilities/color/) classes to quckly change the appearance of a badge.
 
 {% include callout-warning-color-assistive-technologies.md %}
 
@@ -66,7 +66,7 @@ Use our [background and text color utility]({{ site.baseurl }}/utilities/color/)
 
 ## Outline Badges
 
-Since badges have a transparent border by default, it is easy to create outline badges with the addition of [border color utility]({{ site.baseurl }}/utilities/color/) classes, in combination with the background and text color utilities.
+Since badges have a transparent border by default, it is easy to create outline badges with the addition of [border color utility]({{ site.baseurl }}/{{ site.docs_version }}/utilities/color/) classes, in combination with the background and text color utilities.
 
 {% capture example %}
 <span class="badge bg-transparent border-primary text-primary">Primary</span>
@@ -134,7 +134,7 @@ Create "dismissable" badges by adding the `.close` icon within a badge. Note tha
 
 Currently, no specific JavaScript is included with Figuration to do the dismissing for you, so it may be more beneficial to write your own to implement any desired behaviors.
 
-However, you can use the [Alert widget]({{ site.baseurl }}/widgets/alert/) with a `target` option as a quick implementation.
+However, you can use the [Alert widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/alert/) with a `target` option as a quick implementation.
 
 {% capture example %}
 <span class="badge bg-info" id="alert-badge">
@@ -177,7 +177,7 @@ Group badges together using `.badge-group`.
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the badge component.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for the badge component.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

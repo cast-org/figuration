@@ -36,7 +36,7 @@ To make the jumbotron full width, and without rounded corners, add the `.jumbotr
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for jumbotrons.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for jumbotrons.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

@@ -199,15 +199,15 @@ The Sass mixin for targeting the same screen size range would be:
 
 ## Breakpoint Nomenclature
 
-Since Figuration is built as a mobile first framework, by default, we have created our class naming structure to **not** use the smallest breakpoint designation, except for a few certain instances.  However, this is configurable for custom builds by overriding `$enable-bp-smallest` option referenced in the [Global Options]({{ site.baseurl }}/get-started/options/#global-options) settings.
+Since Figuration is built as a mobile first framework, by default, we have created our class naming structure to **not** use the smallest breakpoint designation, except for a few certain instances.  However, this is configurable for custom builds by overriding `$enable-bp-smallest` option referenced in the [Global Options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/#global-options) settings.
 
 Classes that apply to all breakpoints, from `xs` to `xl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
 
-Building from the base component or utility name, most classes are named using the format `.base-{direction}-{dimension}` for `xs` and `.base-{breakpoint}-{direction}-{dimension}` for `sm`, `md`, `lg`, and `xl`.  In the case of some utilites that have abbreviated names, such as the [spacing utilities]({{ site.baseurl }}/utilities/spacing), the format is `.abbr{direction}-{breakpoint}-{dimension}`.
+Building from the base component or utility name, most classes are named using the format `.base-{direction}-{dimension}` for `xs` and `.base-{breakpoint}-{direction}-{dimension}` for `sm`, `md`, `lg`, and `xl`.  In the case of some utilites that have abbreviated names, such as the [spacing utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/spacing), the format is `.abbr{direction}-{breakpoint}-{dimension}`.
 
 The only special case is where there are `*-up` or `*-down` variants for certain components or classes, the breakpoint designation.  Only then is the minimum breakpoint designation used in the class name.
 
-A quick example using some of Figuration's [Typography utility classes]({{ site.baseurl }}/utilities/typography).
+A quick example using some of Figuration's [Typography utility classes]({{ site.baseurl }}/{{ site.docs_version }}/utilities/typography).
 
 {% capture example %}
 <p class="text-end">Right aligned text on all viewport sizes. (<strong>No <code>xs</code> class designation!</strong>)</p>

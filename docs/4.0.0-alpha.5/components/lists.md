@@ -443,7 +443,7 @@ With `<button>`s, you can also make use of the `disabled` attribute instead of t
 
 ### Adding Badges
 
-Add badges to any list item to show unread counts, activity, and more with the help of some [flexbox utility classes]({{ site.baseurl }}/utilities/flexbox/).
+Add badges to any list item to show unread counts, activity, and more with the help of some [flexbox utility classes]({{ site.baseurl }}/{{ site.docs_version }}/utilities/flexbox/).
 
 {% capture example %}
 <ul class="list list-spaced list-group" style="max-width: 25rem;">
@@ -465,7 +465,7 @@ Add badges to any list item to show unread counts, activity, and more with the h
 
 ### Custom Content
 
-Add nearly any HTML within, even for linked lists like the one below, using [flexbox utilities]({{ sitebaseurl }}/utilities/flexbox/) for layout.
+Add nearly any HTML within, even for linked lists like the one below, using [flexbox utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/flexbox/) for layout.
 
 {% capture example %}
 <div class="list list-spaced list-group" style="max-width: 25rem;">
@@ -499,7 +499,7 @@ Add nearly any HTML within, even for linked lists like the one below, using [fle
 
 ## Color Variants
 
-Use [color utility classes]({{ site.baseurl }}/utilities/color/) to style lists with color.
+Use [color utility classes]({{ site.baseurl }}/{{ site.docs_version }}/utilities/color/) to style lists with color.
 
 {% include callout-warning-color-assistive-technologies.md %}
 
@@ -518,7 +518,7 @@ Divided and Ruled list items are defined with `border-{side}-color: inherit;`, a
 
 ### Inverse List
 
-Set a background color on a list. In some cases you may want to use additional [color utility classes]({{ site.baseurl }}/utilities/color/) to adjust text or border color.
+Set a background color on a list. In some cases you may want to use additional [color utility classes]({{ site.baseurl }}/{{ site.docs_version }}/utilities/color/) to adjust text or border color.
 
 {% capture example %}
 <ul class="list list-spaced list-divided bg-dark text-light border-secondary">
@@ -585,7 +585,7 @@ Contextual classes also work with `.list-item-action`. Note the addition of the 
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for list component.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for list component.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

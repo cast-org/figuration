@@ -196,7 +196,7 @@ Note that content should not be larger than the height of the image.  If content
 
 ### Lists
 
-Create lists of content in a card with [`.list` component]({{ site.baseurl }}/components/lists/) and it's modifiers.
+Create lists of content in a card with [`.list` component]({{ site.baseurl }}/{{ site.docs_version }}/components/lists/) and it's modifiers.
 Adding `.card-list` to a `.list` will automatically add a border radius and will also remove the bottom margin from the **last child** in a section.
 
 Cards do not currently have support for proper border radius handling for horizontal lists, or for lists within horizontal cards.
@@ -401,7 +401,7 @@ Use custom CSS in your stylesheets or as inline styles to set a width.
 
 ## Text Alignment
 
-You can quickly change the text alignment of any card---in its entirety or specific parts---with our [text align classes]({{ site.baseurl }}/utilities/typography/#text-alignment).
+You can quickly change the text alignment of any card---in its entirety or specific parts---with our [text align classes]({{ site.baseurl }}/{{ site.docs_version }}/utilities/typography/#text-alignment).
 
 {% capture example %}
 <div class="card" style="max-width: 18rem;">
@@ -432,7 +432,7 @@ You can quickly change the text alignment of any card---in its entirety or speci
 
 ## Navigation
 
-Add navigation items within a card's header (or block) with Figuration's [navigation components]({{ site.baseurl }}/components/navs/).
+Add navigation items within a card's header (or block) with Figuration's [navigation components]({{ site.baseurl }}/{{ site.docs_version }}/components/navs/).
 
 {% capture example %}
 <div class="card text-center">
@@ -490,7 +490,7 @@ Cards include various options for customizing their backgrounds, borders, and te
 
 ### Background and Text
 
-Use the [text and background color utilities]({{ site.baseurl }}/utilities/color/) to change the look of a card.
+Use the [text and background color utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/color/) to change the look of a card.
 
 {% capture example %}
 <div class="card bg-primary text-light" style="max-width: 18rem;">
@@ -569,7 +569,7 @@ Use the [text and background color utilities]({{ site.baseurl }}/utilities/color
 
 ### Border and Content
 
-Use the [border color utilities]({{ site.baseurl }}/utilities/color/#border) to change just the `border-color` of a card. Note that you can put `.text-{color}` classes on the parent `.card` or a subset of the card's contents as shown below.
+Use the [border color utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/color/#border) to change just the `border-color` of a card. Note that you can put `.text-{color}` classes on the parent `.card` or a subset of the card's contents as shown below.
 
 {% capture example %}
 <div class="card border-primary" style="max-width: 18rem;">
@@ -648,7 +648,7 @@ Use the [border color utilities]({{ site.baseurl }}/utilities/color/#border) to 
 
 ### Header and Footer Variants
 
-Recolor the header and footer sections of your cards by using the background context colors. Additional use of [text color utilities]({{ site.baseurl }}/utilities/color/#text) might be needed.
+Recolor the header and footer sections of your cards by using the background context colors. Additional use of [text color utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/color/#text) might be needed.
 
 {% capture example %}
 <div class="card">
@@ -1140,7 +1140,7 @@ If you are using responsive variants of the card columns, you may need to includ
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the card component.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for the card component.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

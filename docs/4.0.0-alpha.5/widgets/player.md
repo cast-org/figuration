@@ -24,7 +24,7 @@ Widget Dependencies
 
 Player requires the following:
 
-- [Dropdown widget]({{ site.baseurl}}/widgets/dropdown/) for caption and transcript selection menu.
+- [Dropdown widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/dropdown/) for caption and transcript selection menu.
 {% endcapture %}
 {% include callout.html content=callout type="info" class="cf-callout-dep" %}
 
@@ -119,7 +119,7 @@ Available seek and volume sliders.
 ### Video Example
 
 {% capture example %}
-<p><small>Source: <a href="https://videos.pexels.com/videos/tourists-looking-at-niagara-falls-333">Tourists Looking at Niagara Falls</a></small></p>
+<p><small>Source: <a href="https://www.pexels.com/video/tourists-looking-at-niagara-falls-852305/">Tourists Looking at Niagara Falls</a></small></p>
 
 <div data-cfw="player" class="video-wrapper">
     <div class="embed-fluid">
@@ -172,8 +172,6 @@ Available seek and volume sliders.
 Add an interactive transcript to your video using the `transcript` control.  The content will be taken from the selected item and placed in another container.  This content will highlight the current caption, and also allow seeking within the media item if one of the passages is clicked.
 
 {% capture example %}
-<p><small>Source: <a href="https://videos.pexels.com/videos/tourists-looking-at-niagara-falls-333">Tourists Looking at Niagara Falls</a></small></p>
-
 <div data-cfw="player" data-cfw-player-transcript="0" class="video-wrapper" role="region" aria-label="video player">
     <div class="embed-fluid">
         <video poster="{{ site.baseurl }}/{{ site.docs_version }}/assets/video/niagara_falls.jpg" controls>

@@ -166,18 +166,18 @@ You can find and customize these variables for key global options in our `_setti
 
 | Variable                      | Values                             | Description                                                                                      |
 | ------------------------------| ---------------------------------- | -------------------------------------------------------------------------------------------------|
-| `$spacer`                     | `1rem` (default), or any value > 0 | Specifies the default spacer value used to programmatically generate the [Spacing utilities]({{ site.baseurl }}/utilities/spacing/). |
+| `$spacer`                     | `1rem` (default), or any value > 0 | Specifies the default spacer value used to programmatically generate the [Spacing utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/spacing/). |
 | `$enable-rounded`             | `true` (default) or `false`        | Enables predefined `border-radius` styles on various components.                                 |
 | `$enable-shadows`             | `true` or `false` (default)        | Enables predefined `box-shadow` styles on various components.                                    |
 | `$enable-transitions`         | `true` (default) or `false`        | Enables predefined `transition`s on various components.                                          |
-| `$enable-transitions-reduced` | `true` (default) or `false`        | Enables the generation of [`prefers-reduced-motion` media query]({{ site.baseurl }}/getting-started/accessibility/#reduced-motion), which suppresses certain animations/transitions based on the users' browser/operating system preferences.|
+| `$enable-transitions-reduced` | `true` (default) or `false`        | Enables the generation of [`prefers-reduced-motion` media query]({{ site.baseurl }}/{{ site.docs_version }}/get-started/accessibility/#reduced-motion), which suppresses certain animations/transitions based on the users' browser/operating system preferences.|
 | `$enable-grid-classes`        | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g. `.container`, `.row`, `.col-md-1`, etc.). |
 | `$enable-print-styles`        | `true` (default) or `false`        | Enables predefined style overrides used when printing.                                           |
 | `$enable-palette`             | `true` (default) or `false`        | Enables the generation of CSS classes for the palette color themes (e.g. `.text-blue-500`, etc.). |
 | `$enable-sizing`              | `true` (default) or `false`        | Enables the generation of CSS classes for component sizes, and also for some utilites. (e.g. `.btn-small`, `.radius-t-xsmall`, etc.). |
-| `$enable-bp-smallest`         | `true` or `false` (default)        | Enables the generation of CSS classes for breakpoint sizes that include the smallest breakpoint designator. (e.g. `.col-xs-12`).  Also refer to the [Breakpoint Nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) section. |
-| `$enable-rfs-fluid`           | `true` or `false` (default)        | Enables the *fluid* Responsive typography option, , which fluidly scales element's `font-size` based on the dimensions of the viewport.  See the [Responsive Typography]({{ site.baseurl}}/content/typography/#responsive-typography) section for more details. |
-| `$enable-rfs-scale`           | `true` or `false` (default)        | Enables the *scaled* Responsive typography option, which scales element's `font-size` on a per breakpoint basis.  See the [Responsive Typography]({{ site.baseurl}}/content/typography/#responsive-typography) section for more details. |
+| `$enable-bp-smallest`         | `true` or `false` (default)        | Enables the generation of CSS classes for breakpoint sizes that include the smallest breakpoint designator. (e.g. `.col-xs-12`).  Also refer to the [Breakpoint Nomenclature]({{ site.baseurl }}/{{ site.docs_version }}/layout/overview/#breakpoint-nomenclature) section. |
+| `$enable-rfs-fluid`           | `true` or `false` (default)        | Enables the *fluid* Responsive typography option, , which fluidly scales element's `font-size` based on the dimensions of the viewport.  See the [Responsive Typography]({{ site.baseurl }}/{{ site.docs_version }}/content/typography/#responsive-typography) section for more details. |
+| `$enable-rfs-scale`           | `true` or `false` (default)        | Enables the *scaled* Responsive typography option, which scales element's `font-size` on a per breakpoint basis.  See the [Responsive Typography]({{ site.baseurl }}/{{ site.docs_version }}/content/typography/#responsive-typography) section for more details. |
 | `$enable-validation-icons`    | `true` (default) or `false`        | Enables the generation of CSS classes for the optional `background-image` icons within textual inputs and some custom forms for validation states. |
 
 There are additional options in our `_settings_options.scss` that can be used to optionally disable the CSS generation for certain sets, or subsets, of components and utilities.  More information about these setting options can be found on the respective pages for each component and utility.
@@ -432,7 +432,7 @@ And here's an example of **what is supported:**
 
 #### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for generating the root CSS variables.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for generating the root CSS variables.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

@@ -132,7 +132,7 @@ Internet Explorer 11+ is also supported, IE 10 and down are not. Please be aware
 
 ### MutationObserver
 
-Some of Figuration's [JavaScript Widgets]({{ site.baseurl }}/widgets/overview/) have some support for the use of [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) to watch for and respond to changes in the DOM.
+Some of Figuration's [JavaScript Widgets]({{ site.baseurl }}/{{ site.docs_version }}/widgets/overview/) have some support for the use of [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) to watch for and respond to changes in the DOM.
 
 ## Modals and Dropdowns on Mobile
 

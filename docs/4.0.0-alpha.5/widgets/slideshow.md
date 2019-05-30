@@ -12,7 +12,7 @@ Widget Dependencies
 
 Sideshow requires the following:
 
-* [Tab widget]({{ site.baseurl}}/widgets/tab/) for base functionality.
+* [Tab widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/tab/) for base functionality.
 {% endcapture %}
 {% include callout.html content=callout type="info" class="cf-callout-dep" %}
 
@@ -24,13 +24,13 @@ Sideshow requires the following:
 
 ## Overview
 
-A simple widget that extends on the [Tab widget]({{ site.baseurl }}/widgets/tab/) to add previous and next navigation items that update their disabled state based on the currently active tab/slide.
+A simple widget that extends on the [Tab widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/tab/) to add previous and next navigation items that update their disabled state based on the currently active tab/slide.
 
 ## Examples
 
 ### Using Tabs
 
-The slideshow works well with [tab navigation]({{ site.baseurl }}/components/navs/#tabs).
+The slideshow works well with [tab navigation]({{ site.baseurl }}/{{ site.docs_version }}/components/navs/#tabs).
 
 <div class="cf-example">
     <ul class="nav nav-tabs" data-cfw="slideshow">
@@ -84,7 +84,7 @@ The slideshow works well with [tab navigation]({{ site.baseurl }}/components/nav
 
 ### Using Pills
 
-The slideshow also works with [pill navigation]({{ site.baseurl }}/components/navs/#pills).
+The slideshow also works with [pill navigation]({{ site.baseurl }}/{{ site.docs_version }}/components/navs/#pills).
 
 <div class="cf-example">
     <nav class="nav nav-pills" data-cfw="slideshow">
@@ -138,7 +138,7 @@ The slideshow also works with [pill navigation]({{ site.baseurl }}/components/na
 
 ### Using Pagination
 
-You can even use the [pagination componenent]({{ site.baseurl }}/components/pagination/).
+You can even use the [pagination componenent]({{ site.baseurl }}/{{ site.docs_version }}/components/pagination/).
 
 <div class="cf-example">
     <ul class="pagination" data-cfw="slideshow">
@@ -386,7 +386,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 Event callbacks happen on the slideshow element.
 
-You can also get the tab events as indicated in the [Tab widget]({{ site.baseurl }}/widgets/tab/) due to event bubbling.
+You can also get the tab events as indicated in the [Tab widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/tab/) due to event bubbling.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

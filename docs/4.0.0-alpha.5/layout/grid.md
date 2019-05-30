@@ -13,7 +13,7 @@ group: layout
 
 ## How It Works
 
-Figuration includes a powerful mobile-first grid system for building layouts of all shapes and sizes. It's based on a 12 column layout and has multiple tiers, one for each [media query range]({{ site.baseurl }}/layout/overview/#responsive-breakpoints). You can use it with Sass mixins or our predefined classes.
+Figuration includes a powerful mobile-first grid system for building layouts of all shapes and sizes. It's based on a 12 column layout and has multiple tiers, one for each [media query range]({{ site.baseurl }}/{{ site.docs_version }}/layout/overview/#responsive-breakpoints). You can use it with Sass mixins or our predefined classes.
 
 At a high level, here's how the grid system works:
 
@@ -27,7 +27,7 @@ At a high level, here's how the grid system works:
 - Column `width`s are set in percentages, so they're always fluid and sized relative to their parent element.
 - Columns have horizontal `padding` to create the gutters between individual columns.
 - You can remove the `margin` from rows and `padding` from columns with `.no-gutters` on the `.row`.
-- To make the grid responsive, there are five grid breakpoints, one for each [responsive breakpoint]({{ site.baseurl }}/layout/overview/#responsive-breakpoints): all breakpoints (extra small), small, medium, large, and extra large.
+- To make the grid responsive, there are five grid breakpoints, one for each [responsive breakpoint]({{ site.baseurl }}/{{ site.docs_version }}/layout/overview/#responsive-breakpoints): all breakpoints (extra small), small, medium, large, and extra large.
 - Grid breakpoints are based on minimum width media queries, meaning **they apply to that one breakpoint and all those above it** (e.g., `.col-sm-4` applies to small, medium, large, and extra large devices, but not the first `xs` breakpoint).
 - You can use predefined grid classes (like `.col-4`) or [Sass mixins](#mixins) for more semantic markup.
 
@@ -251,11 +251,7 @@ Use `col-{breakpoint}-auto` classes to size columns based on the natural width o
 
 ### Equal Width with Multiple Rows
 
-Create equal-width columns that span multiple rows by inserting a `.w-100` where you want the columns to break to a new line. Make the breaks responsive by mixing the `.w-100` with some [responsive display utilities]({{ site.baseurl }}/utilities/display/#responsively-hiding-content).
-
-Note there was a [Safari flexbox bug](https://github.com/philipwalton/flexbugs#11-min-and-max-size-declarations-are-ignored-when-wrapping-flex-items) that prevented this from working without an explicit `flex-basis` or `border`. Our example works thanks to the `border` being set; you can do the same with `.col { border: 1px solid transparent; }`. Alternatively, you can set the flex-basis to the width of the column (e.g., `.col { flex: 1 0 50%; }`).
-
-These workarounds have been documented in a [reduced test case](https://output.jsbin.com/micohor), though if the browser is up to date this shouldn't be necessary.
+Create equal-width columns that span multiple rows by inserting a `.w-100` where you want the columns to break to a new line. Make the breaks responsive by mixing the `.w-100` with some [responsive display utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/display/#responsively-hiding-content).
 
 {% capture example %}
 <div class="container">
@@ -343,7 +339,7 @@ Don't want your columns to simply stack in some grid tiers. Use a combination of
 
 ## Alignment
 
-Use [Flexbox alignment utilities]({{ site.baseurl }}/utilities/flexbox/) to vertically and horizontally align columns.
+Use [Flexbox alignment utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/flexbox/) to vertically and horizontally align columns.
 
 **Internet Explorer 10 and 11 do not support vertical alignment of flex items when the flex container has a `min-height`.** [See Flexbugs #3 for more details.](https://github.com/philipwalton/flexbugs#flexbug-3)
 
@@ -457,7 +453,7 @@ Use [Flexbox alignment utilities]({{ site.baseurl }}/utilities/flexbox/) to vert
 
 The gutters between columns in our default, predefined grid classes can be removed with `.no-gutters`. This removes the negative `margin`s from `.row` and the horizontal `padding` from all immediate children columns.
 
-Here's the source code for creating these styles. Note that column overrides are scoped to only the first children columns and are targeted via [attribute selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors). While this generates a more specific selector, column padding can still be further customized with [spacing utilities]({{ site.baseurl }}/utilities/spacing/).
+Here's the source code for creating these styles. Note that column overrides are scoped to only the first children columns and are targeted via [attribute selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors). While this generates a more specific selector, column padding can still be further customized with [spacing utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/spacing/).
 
 **Need an edge-to-edge design?** Drop the parent `.container` or `.container-fluid`.
 
@@ -488,7 +484,7 @@ In practice, here's how it looks. Note you can continue to use this with all oth
 
 ### Custom Gutters
 
-Gutters can be responsively adjusted by breakpoint-specific padding and negative margin utility classes. To change the gutters in a given row, pair a [negative margin utility]({{ site.baseurl }}/utilities/spacing/#negative-margins) on the `.row` and matching [padding utilities]({{ site.baseurl }}/utilities/spacing/) on the `.col`s.
+Gutters can be responsively adjusted by breakpoint-specific padding and negative margin utility classes. To change the gutters in a given row, pair a [negative margin utility]({{ site.baseurl }}/{{ site.docs_version }}/utilities/spacing/#negative-margins) on the `.row` and matching [padding utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/spacing/) on the `.col`s.
 
 Here is an example of customizing the grid at the large (`lg`) breakpoint and above. The the `.col` horizontal padding is increased with `.px-lg-2` and then counteracted that with negative horizontal margin `.mx-lg-n2` on the parent `.row`.
 
@@ -549,7 +545,7 @@ Resetting, or breaking, columns to a new line in flexbox requires a small hack: 
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
 
-You can also apply a break at specific breakpoints with our [responsive display utilities]({{ site.baseurl }}/utilities/display/).
+You can also apply a break at specific breakpoints with our [responsive display utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/display/).
 
 {% capture example %}
 <div class="container">
@@ -571,7 +567,7 @@ You can also apply a break at specific breakpoints with our [responsive display 
 
 ### Flex Order
 
-Use [flexbox order utilities]({{ site.baseurl }}/utilities/flexbox/#order) for controlling the **visual order** of your content.
+Use [flexbox order utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/flexbox/#order) for controlling the **visual order** of your content.
 
 {% capture example %}
 <div class="container">
@@ -611,7 +607,7 @@ Order utilities are also available in column counts.
 
 ### Offsetting Columns
 
-You can offset grid columns in two ways: our responsive `.offset-` grid classes and our [margin utilities]({{ site.baseurl }}/utilities/spacing). Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.
+You can offset grid columns in two ways: our responsive `.offset-` grid classes and our [margin utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/spacing). Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.
 
 #### Offset Classes
 
@@ -634,7 +630,7 @@ Move columns to the right using `.offset-*` classes. These classes increase the 
 {% endcapture %}
 {% include example.html content=example class="cf-example-row" %}
 
-In addition to column clearing at responsive breakpoints, you may need to reset offsets. See this in action in [the grid example]({{ site.baseurl }}/examples/grid/).
+In addition to column clearing at responsive breakpoints, you may need to reset offsets. See this in action in [the grid example]({{ site.baseurl }}/{{ site.docs_version }}/examples/grid/).
 
 {% capture example %}
 <div class="container">

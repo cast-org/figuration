@@ -91,7 +91,7 @@ By setting a `height` value on the outer `.progress`, you change the height acco
 
 ### Color Variants
 
-Use our [color utility]({{ site.baseurl }}/utilities/color/) classes to change the appearance of individual progress bars.
+Use our [color utility]({{ site.baseurl }}/{{ site.docs_version }}/utilities/color/) classes to change the appearance of individual progress bars.
 
 {% include callout-warning-color-assistive-technologies.md %}
 
@@ -175,7 +175,7 @@ Include multiple progress bars in a progress component if you need.
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for progress component.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for progress component.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

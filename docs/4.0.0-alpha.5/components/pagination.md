@@ -352,7 +352,7 @@ Fancy larger or smaller pagination? Add `.pagination-xsmall`, `.pagination-small
 
 ## Alignment
 
-Change the alignment of pagination components using the [flexbox utilities]({{ sitebaseurl }}/utilities/flexbox/).
+Change the alignment of pagination components using the [flexbox utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/flexbox/).
 
 {% capture example %}
 <nav aria-label="...">
@@ -400,7 +400,7 @@ Change the alignment of pagination components using the [flexbox utilities]({{ s
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for pagination component.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for pagination component.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

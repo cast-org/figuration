@@ -16,7 +16,7 @@ redirect_from:
 
 ## Examples
 
-Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use of the contextual classes (e.g., `.alert-success`) is **required**. For inline dismissal, use the [Alert jQuery widget]({{ site.baseurl }}/widgets/alert/).
+Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use of the contextual classes (e.g., `.alert-success`) is **required**. For inline dismissal, use the [Alert jQuery widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/alert/).
 
 {% include callout-warning-color-assistive-technologies.md %}
 
@@ -86,7 +86,7 @@ Alerts can also contain additional HTML elements like headings, paragraphs, and 
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the alert component.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for the alert component.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

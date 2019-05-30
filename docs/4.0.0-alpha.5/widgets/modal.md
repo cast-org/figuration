@@ -18,7 +18,7 @@ group: widgets
 - By default, clicking on the modal "backdrop" will automatically close the modal.
 - Figuration only supports one modal at a time.  Nested modals are not supported, as this can cause difficult usability and accessibility issues.
 - Modals use `position: fixed`. Always try to place modal HTML code in a top-level position in your document, such as a direct chld of the `<body>` element. Putting modal HTML within a fixed position element will adversely affect placement.
-- There are some caveats regarding using modals on mobile devices. See [our browser support docs]({{ site.baseurl }}/get-started/browsers-devices/#modals-and-dropdowns-on-mobile) for details.
+- There are some caveats regarding using modals on mobile devices. See [our browser support docs]({{ site.baseurl }}/{{ site.docs_version }}/get-started/browsers-devices/#modals-and-dropdowns-on-mobile) for details.
 - Embedding YouTube videos in modals requires additional JavaScript not in Figuration to automatically stop playback and more. [See this helpful Stack Overflow post](https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal) for more information.
 - The [`autofocus`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-autofocus) HTML attribute has no effect in modals. To achieve the same effect you will need some custom JavaScript:
 {% highlight js %}
@@ -400,7 +400,7 @@ To take advantage of the grid system within a modal, just nest `.container-fluid
 
 ### Tooltips and Popovers
 
-[Tooltips]({{ site.baseurl }}/widgets/tooltip/) and [popovers]({{ site.baseurl }}/widgets/popover/) can be placed within modal as needed.  When modals are closed, any tooltips or popovers within are also automatically dismissed.
+[Tooltips]({{ site.baseurl }}/{{ site.docs_version }}/widgets/tooltip/) and [popovers]({{ site.baseurl }}/{{ site.docs_version }}/widgets/popover/) can be placed within modal as needed.  When modals are closed, any tooltips or popovers within are also automatically dismissed.
 
 <div class="modal" id="modalTips">
     <div class="modal-dialog">
@@ -534,7 +534,7 @@ If the height of a modal changes while it is open, you will need to call `$('#my
 
 ### With Fixed Position Content
 
-Since the scrollbar is removed from the `<body>` when a modal is shown, there can be some shifting of content in fixed position elements.  To help with this issue, when a modal is shown, any elements using the [fixed positioning utility]({{ site.baseurl }}/utilities/position/) classes, (`.fixed-top` and `.fixed-bottom`), will have additional padding added to their right side.  This padding width should match the width of the scrollbar that becomes hidden.  When the modal is hidden, the `padding-right` CSS value will be reset.
+Since the scrollbar is removed from the `<body>` when a modal is shown, there can be some shifting of content in fixed position elements.  To help with this issue, when a modal is shown, any elements using the [fixed positioning utility]({{ site.baseurl }}/{{ site.docs_version }}/utilities/position/) classes, (`.fixed-top` and `.fixed-bottom`), will have additional padding added to their right side.  This padding width should match the width of the scrollbar that becomes hidden.  When the modal is hidden, the `padding-right` CSS value will be reset.
 
 There is also an additional special classname that the modal widget will look for when adjusting padding values.  Simply add the `.is-fixed` class to your element, and it will automatically be handled.
 
@@ -771,7 +771,7 @@ $.fn.CFW_Modal.Constructor.prototype.enforceFocus = function() {
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the modal component.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for the modal component.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

@@ -12,8 +12,8 @@ Widget Dependencies
 
 Popover requires the following:
 
-* [Tooltip widget]({{ site.baseurl}}/widgets/tooltip/) for the base functionality.
-* [Drag widget]({{ site.baseurl}}/widgets/drag/) for drag functionality.
+* [Tooltip widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/tooltip/) for the base functionality.
+* [Drag widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/drag/) for drag functionality.
 {% endcapture %}
 {% include callout.html content=callout type="info" class="cf-callout-dep" %}
 
@@ -261,7 +261,7 @@ Any element with a data attribute of `data-cfw-dismiss="popover"` within the pop
 
 ### Draggable Popovers
 
-The added functionality from the [Drag widget]({{ site.baseurl}}/widgets/drag/) allows for touch and mouse dragging to be available.
+The added functionality from the [Drag widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/drag/) allows for touch and mouse dragging to be available.
 
 The drag event handlers will auto-enable when a `data-cfw-drag="popover"` trigger item is found within the popover item.  The `drag` option will insert a drag trigger into the popover element, resulting in invoking the drag handlers.
 
@@ -592,7 +592,7 @@ This will not necessarily work with some assistive technologies reading modes.
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the popover component.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for the popover component.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

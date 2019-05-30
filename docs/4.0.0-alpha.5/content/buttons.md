@@ -313,7 +313,7 @@ You can also use `.btn-check`s inside a `.btn-group` for grouping controls toget
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the button component.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for the button component.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

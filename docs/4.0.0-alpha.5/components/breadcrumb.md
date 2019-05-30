@@ -91,7 +91,7 @@ For more information, see the [WAI-ARIA Authoring Practices for the breadcrumb p
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the breadcrumb component.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for the breadcrumb component.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

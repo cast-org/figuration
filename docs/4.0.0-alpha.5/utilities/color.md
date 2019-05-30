@@ -101,7 +101,7 @@ There is also a `.border-transparent` that removes the border color of an elemen
 
 ## Palette Colors
 
-If the [color palette]({{ site.baseurl }}/content/color/) is enabled, any color theme that is added to the `$palette-themes` Sass map will become available for use.  For example the theme named `primary`, then becomes available as `.text-primary-[level]`, `.bg-primary-[level]`, and `border-primary-[level]`, where `level` is in the set defined by the `$palette-levels` variable.
+If the [color palette]({{ site.baseurl }}/{{ site.docs_version }}/content/color/) is enabled, any color theme that is added to the `$palette-themes` Sass map will become available for use.  For example the theme named `primary`, then becomes available as `.text-primary-[level]`, `.bg-primary-[level]`, and `border-primary-[level]`, where `level` is in the set defined by the `$palette-levels` variable.
 
 {% capture example %}
 <p class="text-primary-700">.text-primary-700 text</p>
@@ -116,7 +116,7 @@ If the [color palette]({{ site.baseurl }}/content/color/) is enabled, any color 
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

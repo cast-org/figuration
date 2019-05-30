@@ -28,7 +28,7 @@ Use the included `.figure` , `.figure-img` and `.figure-caption` classes to prov
 {% endcapture %}
 {% include example.html content=example %}
 
-Aligning the figure's caption is easy with our [text utilities]({{ site.baseurl }}/utilities/typography/#text-alignment).
+Aligning the figure's caption is easy with our [text utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/typography/#text-alignment).
 
 {% capture example %}
 <figure class="figure">
@@ -42,7 +42,7 @@ Aligning the figure's caption is easy with our [text utilities]({{ site.baseurl 
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the figure CSS styles.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for the figure CSS styles.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

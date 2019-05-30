@@ -13,7 +13,7 @@ group: components
 
 ## Overview
 
-The navbar is a simple wrapper for positioning branding, navigation, and other elements into a concise navigation header. It's easily extensible and, with the help of our [Collapse widget]({{ site.baseurl }}/widgets/collapse/).
+The navbar is a simple wrapper for positioning branding, navigation, and other elements into a concise navigation header. It's easily extensible and, with the help of our [Collapse widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/collapse/).
 
 ## Basics
 
@@ -21,8 +21,8 @@ Here's what you need to know before getting started with the navbar:
 
 - Navbars require a wrapping `.navbar`, with `.navbar-expand{-sm|-md|-lg|-xl}` for responsive collapsing, and [color scheme](#color-schemes) classes.
 - Navbars and their contents are fluid by default. Use [optional containers](#containers) to limit their horizontal width.
-- Navbars and their contents are built with flexbox, providing easy alignment options via [flexbox utility]({{ site.baseurl }}/utilities/flexbox/) and [margin utility]({{ site.baseurl }}/utilities/spacing/) classes.
-- Navbars are responsive by default, but you can easily modify them to change that. Responsive behavior depends on our [Collapse widget]({{ site.baseurl }}/widgets/collapse/).
+- Navbars and their contents are built with flexbox, providing easy alignment options via [flexbox utility]({{ site.baseurl }}/{{ site.docs_version }}/utilities/flexbox/) and [margin utility]({{ site.baseurl }}/{{ site.docs_version }}/utilities/spacing/) classes.
+- Navbars are responsive by default, but you can easily modify them to change that. Responsive behavior depends on our [Collapse widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/collapse/).
 - Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
 
 ## Responsive Behaviors
@@ -38,7 +38,7 @@ The following list gives a quick run-down of how the breakpoints are utilized.
 - `.navbar-expand-lg` expands at `lg` and up
 - `.navbar-expand-xl` expands at `xl` and up
 
-Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/layout/overview/#breakpoint-nomenclature) is used.
+Please refer to how our [breakpoint nomenclature]({{ site.baseurl }}/{{ site.docs_version }}/layout/overview/#breakpoint-nomenclature) is used.
 
 For the examples throughout this page, you will need to resize your browser window below/above the `lg` breakpoint to see the navbars switch between modes.
 
@@ -203,7 +203,7 @@ Navbars come with built-in support for a handful of sub-components. Mix and matc
 - `.navbar-nav` for navigation links (including support for dropdowns).
 - `.form-inline` for any form controls and actions.
 - `.navbar-text` for adding vertically aligned text content with support for recoloring, using [color scheme](#color-schemes).
-- `.navbar-toggle` for use with our [Collapse widget]({{ site.baseurl }}/widgets/collapse/) and other [navigation toggling](#collapsible-content) behaviors.
+- `.navbar-toggle` for use with our [Collapse widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/collapse/) and other [navigation toggling](#collapsible-content) behaviors.
 - `.collapse.navbar-collapse` for grouping and hiding navbar contents by a parent breakpoint.
 
 Here's an example of some sub-components included in a default, light navbar:
@@ -338,7 +338,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
 
 ### Dropdowns
 
-You may also utilize the [Dropdown widget]({{ site.baseurl}}/widgets/dropdown/) in your navbar nav. Dropdown menus require a wrapping element for positioning, so be sure to use separate and nested elements for `.nav-item` and `.nav-link` as shown below.
+You may also utilize the [Dropdown widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/dropdown/) in your navbar nav. Dropdown menus require a wrapping element for positioning, so be sure to use separate and nested elements for `.nav-item` and `.nav-link` as shown below.
 
 If a dropdown is displayed in a non-expanded navbar, they will display 'inline' with the rest of the navbar menu.
 
@@ -665,7 +665,7 @@ Place a visual separator between segments of the navbar.
 
 ## Collapsible Content
 
-Our [Collapse widget]({{ site.baseurl }}/widgets/collapse/) can also to toggle hidden content elsewhere on the page.
+Our [Collapse widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/collapse/) can also to toggle hidden content elsewhere on the page.
 
 {% capture example %}
 <nav class="navbar navbar-light bg-light">
@@ -816,7 +816,7 @@ There may also be instances where you may need to reset the padding on the `.nav
 
 ## Placement
 
-Use our [position utilities]({{ site.baseurl }}/utilities/position/) to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, or stickied to the top (scrolls with the page until it reaches the top, then stays there). Fixed navbars use `position: fixed`, meaning they're pulled from the normal flow of the DOM and may require custom CSS (e.g., `padding-top` on the `<body>`) to prevent overlap with other elements.
+Use our [position utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/position/) to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, or stickied to the top (scrolls with the page until it reaches the top, then stays there). Fixed navbars use `position: fixed`, meaning they're pulled from the normal flow of the DOM and may require custom CSS (e.g., `padding-top` on the `<body>`) to prevent overlap with other elements.
 
 **Note: `position: sticky`, used for `.sticky-top`, [isn't fully supported in every browser](https://caniuse.com/#feat=css-sticky).**
 
@@ -852,7 +852,7 @@ Use our [position utilities]({{ site.baseurl }}/utilities/position/) to place na
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for navbar components.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for navbar components.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

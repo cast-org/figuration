@@ -461,7 +461,7 @@ There is also an issue when placing buttons before inputs, as this can cause a c
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for input groups.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for input groups.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

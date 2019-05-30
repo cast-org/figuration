@@ -12,7 +12,7 @@ Widget Dependencies
 
 Accordion requires the following:
 
-* [Collapse widget]({{ site.baseurl}}/widgets/collapse/) for the base functionality.
+* [Collapse widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/collapse/) for the base functionality.
 {% endcapture %}
 {% include callout.html content=callout type="info" class="cf-callout-dep" %}
 
@@ -158,7 +158,7 @@ Removes the accordion listener and data from the element. Falls back to non-asso
 
 Event callbacks happen on the accordion element.
 
-You can also get the collapse events as indicated in the [Collapse widget]({{ site.baseurl}}/widgets/collapse/) due to event bubbling.
+You can also get the collapse events as indicated in the [Collapse widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/collapse/) due to event bubbling.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

@@ -10,7 +10,7 @@ group: widgets
 Incompatible Widgets
 {:.h5 .no_toc}
 
-For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}/widgets/tab/) and [Dropdown widget]({{ site.baseurl }}/widgets/dropdown/) in the same nav item.  This will cause navigation and usability issues.  One or the other, but not both.
+For accessibility reasons, do not mix use of the [Tab widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/tab/) and [Dropdown widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/dropdown/) in the same nav item.  This will cause navigation and usability issues.  One or the other, but not both.
 {% endcapture %}
 {% include callout.html content=callout type="warning" %}
 
@@ -79,7 +79,7 @@ Wrap the dropdown's trigger and the dropdown menu within `.dropdown`, or another
 
 ### Toggle Indicator
 
-Optionally use the `.caret` utility icon and add it as an element within the control element. Use [spacing utilities]({{ site.baseurl }}/utilities/spacing/) as needed.
+Optionally use the `.caret` utility icon and add it as an element within the control element. Use [spacing utilities]({{ site.baseurl }}/{{ site.docs_version }}/utilities/spacing/) as needed.
 
 We use this method instead of using a class placed on the control so that you can use your own icons as needed, and not have interference from hard-coded functionality.
 
@@ -296,7 +296,7 @@ Using the [`backlink` option](#options), you can have 'back' menu items automati
 
 ### Special Items
 
-The Dropdown widget in Figuration is primarily designed for menus and navigation, not a container for forms or editable content, such as a login or registration.  You might want to consider using the [Popover widget]({{ site.baseurl }}/widgets/popover/) instead, or reworking the workflow or interface design.
+The Dropdown widget in Figuration is primarily designed for menus and navigation, not a container for forms or editable content, such as a login or registration.  You might want to consider using the [Popover widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/popover/) instead, or reworking the workflow or interface design.
 
 However, there is some support for handling `<button>`, `<input>`, and `<textarea>` elements within a menu.  Each of these special items require the use of either the `.dropdown-item` or `.dropdown-text` class when inside the menu to adjust their layout .
 
@@ -384,7 +384,7 @@ Checkbox and radio inputs are allowed, but only **one per menu item**.
 
 #### Textual Inputs
 
-Add `<input type="text">` or `textarea` items to your dropdown menu.  Other types of [textual inputs]({{ site.baseurl }}/content/forms/#textual-inputs) have not been tested, and may cause issues.  Again, use only **one per menu item**.
+Add `<input type="text">` or `textarea` items to your dropdown menu.  Other types of [textual inputs]({{ site.baseurl }}/{{ site.docs_version }}/content/forms/#textual-inputs) have not been tested, and may cause issues.  Again, use only **one per menu item**.
 
 Since keyboard navigation needs to change once you enter one of these elements, for ease of editing, they use the <kbd>tab</kbd> key to navigate out.
 
@@ -783,7 +783,7 @@ The dropdown widget provided by Figuration is intended be generic and apply to a
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/get-started/options/), or Sass variables, that can be customized for the dropdown component.
+The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for the dropdown component.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">
