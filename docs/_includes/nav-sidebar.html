@@ -1,3 +1,9 @@
+{% if site.github %}
+<form class="cf-search">
+    <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
+</form>
+{% endif %}
+
 <nav class="cf-links" aria-label="Section navigation">
 
 {% for group in site.data.nav %}
@@ -18,9 +24,11 @@
         {% endif %}
 
         <li class="nav-item">
-          <a href="{{ site.baseurl }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link {{ active }}">
-            {{ doc.title }} {{ current }}
-          </a>
+          {% if page.group == 'about' %}
+              <a href="{{ site.baseurl }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link {{ active }}"> {{ doc.title }} {{ current }}</a>
+            {% else %}
+              <a href="{{ site.baseurl }}/{{ site.docs_version }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link {{ active }}"> {{ doc.title }} {{ current }}</a>
+            {% endif %}
         </li>
       {% endfor %}
     </ul>

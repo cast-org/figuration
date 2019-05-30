@@ -1,0 +1,12 @@
+- major: v3.x
+  baseurl: http://figuration.org/docs
+  description: Current major release.
+  versions:
+    - v: 3.0.5
+
+- major: v4.x
+  baseurl: http://figuration.org/docs
+  description: Current development releases.
+  versions:
+    - v: 4.0.0-alpha.4
+    - v: 4.0.0-alpha.5
