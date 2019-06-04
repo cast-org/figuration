@@ -117,6 +117,21 @@
             margin-bottom: -$card-header-padding-y;
             margin-left: -($card-header-padding-x / 2);
             border-bottom: 0;
+
+            .nav-link.active {
+                @if $nav-tabs-active-bg != $card-bg {
+                    background-color: $card-bg;
+                    border-bottom-color: $card-bg;
+                }
+
+                @if $nav-tabs-border-color != $card-header-border-color {
+                    border-color: $card-header-border-color;
+                }
+
+                @if $nav-tabs-border-color != $card-header-border-color or $nav-tabs-active-bg != $card-bg {
+                    border-bottom-color: $card-bg;
+                }
+            }
         }
     }
     @if $enable-card-header-pills {
