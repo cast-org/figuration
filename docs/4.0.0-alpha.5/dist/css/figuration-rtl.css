@@ -4901,6 +4901,11 @@ a.page-link {
   border-bottom: 0;
 }
 
+.card-header-tabs .nav-link.active {
+  border-color: rgba(38, 45, 52, 0.3);
+  border-bottom-color: #fff;
+}
+
 .card-header-pills {
   margin-left: -0.5rem;
   margin-right: -0.5rem;
@@ -6769,10 +6774,7 @@ a.page-link {
 
 .embed-fluid {
   position: relative;
-  display: block;
   width: 100%;
-  padding: 0;
-  overflow: hidden;
 }
 
 .embed-fluid::before {
@@ -6788,7 +6790,6 @@ a.page-link {
 .embed-fluid > video {
   position: absolute;
   top: 0;
-  bottom: 0;
   right: 0;
   width: 100%;
   height: 100%;
@@ -8617,16 +8618,18 @@ a.page-link {
   border: 0 !important;
 }
 
-.sr-only-xs-down, .sr-only-xs-down-focusable:not(:focus) {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
+@media (max-width: 35.98em) {
+  .sr-only-xs-down, .sr-only-xs-down-focusable:not(:focus) {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
 }
 
 @media (min-width: 36em) {
@@ -8643,7 +8646,7 @@ a.page-link {
   }
 }
 
-@media (min-width: 36em) {
+@media (max-width: 47.98em) {
   .sr-only-sm-down, .sr-only-sm-down-focusable:not(:focus) {
     position: absolute !important;
     width: 1px !important;
@@ -8671,7 +8674,7 @@ a.page-link {
   }
 }
 
-@media (min-width: 48em) {
+@media (max-width: 61.98em) {
   .sr-only-md-down, .sr-only-md-down-focusable:not(:focus) {
     position: absolute !important;
     width: 1px !important;
@@ -8699,7 +8702,7 @@ a.page-link {
   }
 }
 
-@media (min-width: 62em) {
+@media (max-width: 74.98em) {
   .sr-only-lg-down, .sr-only-lg-down-focusable:not(:focus) {
     position: absolute !important;
     width: 1px !important;
