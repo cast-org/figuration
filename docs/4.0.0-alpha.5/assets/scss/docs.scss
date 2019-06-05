@@ -10,7 +10,7 @@ $docs-color: #246;
 
 // Skipnav
 .skipnav {
-    position: absolute;
+    position: absolute !important;
     top: .5rem;
     left: 50%;
     z-index: 1200;

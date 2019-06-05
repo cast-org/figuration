@@ -29,22 +29,17 @@ Holder.addTheme("gray", {
     display: inline-block;
     width: 400px;
 }
+
 .dropdown-sample {
     height: 19em;
 }
-.dropdown-sample > .btn {
-    float: left;
-}
+
 .dropdown-sample > .dropdown-menu {
     display: block;
-    margin-bottom: 5px;
-    position: static;
+    margin-bottom: .25rem;
     clear: left;
 }
-.dropdown-single,
-.dropdown-single .dropdown {
-    display: inline-block;
-}
+
 .navbar-sample {
     position: relative;
     margin: 0 0 1rem 0;
@@ -1664,27 +1659,29 @@ Showing a <kbd>kdb sample</kbd>
 </nav>
 
 <h3>Dropdown</h3>
-<div class="dropdown-sample open clearfix">
-    <button class="btn btn-info" type="button">
-        Dropdown <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu">
-        <li class="dropdown-header">Sample Header</li>
-        <li><a href="#">Action</a></li>
-        <li class="active"><a href="#">Active action</a></li>
-        <li class="disabled"><a href="#">Disabled action</a></li>
-        <li class="dropdown-submenu open">
-            <a href="#">Something else here</a>
-            <ul class="dropdown-menu">
-                <li class="dropdown-back"><a href="#">Back</a></li>
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-            </ul>
-        </li>
-        <li class="dropdown-divider"></li>
-        <li><a href="#">Separated link</a></li>
-    </ul>
+<div class="dropdown-sample">
+    <div class="dropdown open">
+        <button class="btn btn-info" type="button">
+            Dropdown <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li class="dropdown-header">Sample Header</li>
+            <li><a href="#">Action</a></li>
+            <li class="active"><a href="#">Active action</a></li>
+            <li class="disabled"><a href="#">Disabled action</a></li>
+            <li class="dropdown-submenu open">
+                <a href="#">Something else here</a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-back"><a href="#">Back</a></li>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                </ul>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li><a href="#">Separated link</a></li>
+        </ul>
+    </div>
 </div>
 
 <h3>Dropdown - single button</h3>
