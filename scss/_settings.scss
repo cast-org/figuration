@@ -447,7 +447,7 @@ $responsive-font-size-scale-factor: (
 $component-bg:                  $white !default;
 $component-border-color:        $border-color !default;
 
-$component-hover-bg:            $uibase-50 !default;
+$component-hover-bg:            $uibase-100 !default;
 
 $component-action-color:        $uibase-700 !default;
 $component-action-hover-color:  $uibase-800 !default;
@@ -982,11 +982,8 @@ $dropdown-border-radius:        $border-radius !default;
 $dropdown-inner-border-radius:  calc(#{$dropdown-border-radius} - #{$dropdown-border-width}) !default;
 $dropdown-divider-width:        $border-width !default;
 $dropdown-divider-color:        $component-section-border-color !default;
-$dropdown-divider-spacer:       .5rem !default;
+$dropdown-divider-spacer:       .3125rem !default;
 $dropdown-box-shadow:           map-get($shadows, "d2") !default;
-
-// Border radius where menu/submenu aligns or 'attaches' to control item.
-$dropdown-attach-border-radius: 0 !default;
 
 $dropdown-link-color:           $component-action-color !default;
 $dropdown-link-hover-color:     $component-action-hover-color !default;
@@ -998,8 +995,8 @@ $dropdown-link-active-bg:       $component-active-bg !default;
 $dropdown-link-disabled-color:  $component-disabled-color !default;
 $dropdown-link-disabled-bg:     $component-disabled-bg !default;
 
-$dropdown-item-padding-x:       1.25rem !default;
-$dropdown-item-padding-y:       .1875rem !default;
+$dropdown-item-padding-x:       1.125rem !default;
+$dropdown-item-padding-y:       .125rem !default;
 
 $dropdown-header-font-size:     ($font-size-base * .875) !default;
 $dropdown-header-font-weight:   $font-weight-bold !default;
@@ -1007,12 +1004,12 @@ $dropdown-header-color:         $uibase-500 !default;
 
 $dropdown-text-color:           $body-color !default;
 
-$dropdown-caret-width:          .4375rem !default;
+$dropdown-caret-width:          $caret-border-width !default;
 $dropdown-caret-color:          $uibase-400 !default;
 $dropdown-caret-active-color:   $component-active-color !default;
 $dropdown-caret-spacer-x:       .375rem !default;
 
-$dropdown-back-width:           .4375rem !default;
+$dropdown-back-width:           $caret-border-width !default;
 $dropdown-back-color:           $uibase-400 !default;
 $dropdown-back-spacer-x:        .375rem !default;
 
