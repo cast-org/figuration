@@ -5463,7 +5463,6 @@ a.page-link {
   margin-top: 1rem;
   margin-bottom: 0;
   -webkit-column-break-inside: avoid;
-     -moz-column-break-inside: avoid;
           break-inside: avoid;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
@@ -5489,7 +5488,6 @@ a.page-link {
     margin-top: 1rem;
     margin-bottom: 0;
     -webkit-column-break-inside: avoid;
-       -moz-column-break-inside: avoid;
             break-inside: avoid;
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
@@ -5515,7 +5513,6 @@ a.page-link {
     margin-top: 1rem;
     margin-bottom: 0;
     -webkit-column-break-inside: avoid;
-       -moz-column-break-inside: avoid;
             break-inside: avoid;
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
@@ -5541,7 +5538,6 @@ a.page-link {
     margin-top: 1rem;
     margin-bottom: 0;
     -webkit-column-break-inside: avoid;
-       -moz-column-break-inside: avoid;
             break-inside: avoid;
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
@@ -5567,7 +5563,6 @@ a.page-link {
     margin-top: 1rem;
     margin-bottom: 0;
     -webkit-column-break-inside: avoid;
-       -moz-column-break-inside: avoid;
             break-inside: avoid;
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
