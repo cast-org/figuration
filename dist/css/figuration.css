@@ -646,7 +646,7 @@ pre code {
 .table-active,
 .table-active > th,
 .table-active > td {
-  background-color: #eff1f3;
+  background-color: #dfe3e6;
 }
 
 [class*="table-hover"] .table-active:hover,
@@ -3434,7 +3434,7 @@ button.list-item-action {
   z-index: 2;
   color: #424f5b;
   text-decoration: none;
-  background-color: #eff1f3;
+  background-color: #dfe3e6;
 }
 
 .list-item {
@@ -3998,14 +3998,17 @@ a.page-link {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #bfc6cd;
-  border-radius: 0 0.25rem 0.25rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.dropdown-menu.open {
+  display: block;
 }
 
 .dropdown-submenu > .dropdown-menu {
   top: 0;
   left: 100%;
   margin-top: calc(-0.4375rem + 1px);
-  border-radius: 0 0.25rem 0.25rem 0.25rem;
 }
 
 .dropdown-submenu > a::after,
@@ -4013,34 +4016,29 @@ a.page-link {
   position: absolute;
   top: 50%;
   right: 0.375rem;
-  margin-top: -0.4375rem;
+  margin-top: -0.3125rem;
   display: inline-block;
   width: 0;
   height: 0;
   vertical-align: middle;
   content: "";
-  border-top: 0.4375rem solid transparent;
+  border-top: 0.3125rem solid transparent;
   border-right: 0;
-  border-bottom: 0.4375rem solid transparent;
-  border-left: 0.4375rem solid  #7e8d9b;
+  border-bottom: 0.3125rem solid transparent;
+  border-left: 0.3125rem solid  #7e8d9b;
 }
 
 .dropdown-submenu > a.active:not(:hover):not(:focus)::after,
 .dropdown-submenu > .dropdown-item.active:not(:hover):not(:focus)::after {
-  border-top: 0.4375rem solid transparent;
+  border-top: 0.3125rem solid transparent;
   border-right: 0;
-  border-bottom: 0.4375rem solid transparent;
-  border-left: 0.4375rem solid  #fff;
-}
-
-.open > .dropdown-menu {
-  display: block;
+  border-bottom: 0.3125rem solid transparent;
+  border-left: 0.3125rem solid  #fff;
 }
 
 .dropdown-menu-reverse .dropdown-menu {
   right: 0;
   left: auto;
-  border-radius: 0.25rem 0 0.25rem 0.25rem;
 }
 
 .dropdown-subalign-forward > .dropdown-menu {
@@ -4048,7 +4046,6 @@ a.page-link {
   left: 100%;
   margin-right: -2px;
   margin-left: 0;
-  border-radius: 0 0.25rem 0.25rem 0.25rem;
 }
 
 .dropdown-subalign-reverse > .dropdown-menu {
@@ -4056,32 +4053,13 @@ a.page-link {
   left: auto;
   margin-right: 0;
   margin-left: -2px;
-  border-radius: 0.25rem 0 0.25rem 0.25rem;
-}
-
-.dropdown-subalign-reverse > a::after,
-.dropdown-subalign-reverse > .dropdown-item::after {
-  right: auto;
-  left: 0.375rem;
-  border-top: 0.4375rem solid transparent;
-  border-right: 0.4375rem solid  #7e8d9b;
-  border-bottom: 0.4375rem solid transparent;
-  border-left: 0;
-}
-
-.dropdown-subalign-reverse > a.active:not(:hover):not(:focus)::after,
-.dropdown-subalign-reverse > .dropdown-item.active:not(:hover):not(:focus)::after {
-  border-top: 0.4375rem solid transparent;
-  border-right: 0;
-  border-bottom: 0.4375rem solid transparent;
-  border-left: 0.4375rem solid  #7e8d9b;
 }
 
 .dropdown-menu a,
 .dropdown-item {
   display: block;
   width: 100%;
-  padding: 0.1875rem 1.25rem;
+  padding: 0.125rem 1.125rem;
   margin: 0;
   clear: both;
   font-weight: 400;
@@ -4105,7 +4083,7 @@ a.page-link {
 .dropdown-item:focus {
   color: #343e48;
   text-decoration: none;
-  background-color: #eff1f3;
+  background-color: #dfe3e6;
   outline: 0;
 }
 
@@ -4121,7 +4099,7 @@ a.page-link {
 
 .dropdown-header {
   display: block;
-  padding: 0.1875rem 1.25rem;
+  padding: 0.125rem 1.125rem;
   margin-bottom: 0;
   font-size: 0.875rem;
   font-weight: 700;
@@ -4132,13 +4110,13 @@ a.page-link {
 
 .dropdown-text {
   display: block;
-  padding: 0.1875rem 1.25rem;
+  padding: 0.125rem 1.125rem;
   color: #262d34;
 }
 
 .dropdown-divider {
   height: 0;
-  margin: 0.5rem 0;
+  margin: 0.3125rem 0;
   overflow: hidden;
   border-top: 1px solid rgba(38, 45, 52, 0.3);
 }
@@ -4164,7 +4142,6 @@ a.page-link {
   bottom: 100%;
   margin-top: 0;
   margin-bottom: 0.125rem;
-  border-radius: 0.25rem 0.25rem 0.25rem 0;
 }
 
 .dropup .dropdown-submenu > .dropdown-menu {
@@ -4172,48 +4149,35 @@ a.page-link {
   bottom: 0;
   margin-top: 0;
   margin-bottom: calc(-0.4375rem + 1px);
-  border-radius: 0.25rem 0.25rem 0.25rem 0;
-}
-
-.dropup.dropdown-menu-reverse .dropdown-menu {
-  border-radius: 0.25rem 0.25rem 0 0.25rem;
-}
-
-.dropup .dropdown-subalign-forward > .dropdown-menu {
-  border-radius: 0.25rem 0.25rem 0.25rem 0;
-}
-
-.dropup .dropdown-subalign-reverse > .dropdown-menu {
-  border-radius: 0.25rem 0.25rem 0 0.25rem;
 }
 
 .dropdown-back {
   position: relative;
 }
 
-.dropdown-back > a::before {
+.dropdown-back > button::before {
   position: absolute;
   top: 50%;
   left: 0.375rem;
-  margin-top: -0.4375rem;
+  margin-top: -0.3125rem;
   display: inline-block;
   width: 0;
   height: 0;
   vertical-align: middle;
   content: "";
-  border-top: 0.4375rem solid transparent;
-  border-right: 0.4375rem solid  #7e8d9b;
-  border-bottom: 0.4375rem solid transparent;
+  border-top: 0.3125rem solid transparent;
+  border-right: 0.3125rem solid  #7e8d9b;
+  border-bottom: 0.3125rem solid transparent;
   border-left: 0;
 }
 
 .dropdown-back-reverse > a::before {
   right: 0.375rem;
   left: auto;
-  border-top: 0.4375rem solid transparent;
+  border-top: 0.3125rem solid transparent;
   border-right: 0;
-  border-bottom: 0.4375rem solid transparent;
-  border-left: 0.4375rem solid  #7e8d9b;
+  border-bottom: 0.3125rem solid transparent;
+  border-left: 0.3125rem solid  #7e8d9b;
 }
 
 .nav {
@@ -4253,8 +4217,8 @@ a.page-link {
 
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
   text-decoration: none;
-  background-color: #eff1f3;
-  border-color: #eff1f3 #eff1f3 #bfc6cd;
+  background-color: #dfe3e6;
+  border-color: #dfe3e6 #dfe3e6 #bfc6cd;
 }
 
 .nav-tabs .nav-link.disabled {
@@ -4288,7 +4252,7 @@ a.page-link {
 .nav-pills .nav-link:hover, .nav-pills .nav-link:focus {
   color: inherit;
   text-decoration: none;
-  background-color: #eff1f3;
+  background-color: #dfe3e6;
 }
 
 .nav-pills .nav-link.disabled {
