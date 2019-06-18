@@ -36,18 +36,18 @@ Here is a static example showing the dropdown layout and content pieces.
 
 <div class="cf-example cf-example-bottom cf-example-dropdown">
     <div class="dropdown open">
-        <button type="button" class="btn btn-info">
+        <button type="button open" class="btn btn-info">
             Dropdown
             <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu open">
             <li class="dropdown-header">Sample Header</li>
             <li><a href="#">Action</a></li>
             <li><a href="#" class="disabled" tabindex="-1" aria-disabled="true">Disabled action</a></li>
-            <li class="dropdown-submenu open">
-                <a href="#">Something else here</a>
-                <ul class="dropdown-menu">
-                    <li class="dropdown-back"><a href="#">Back</a></li>
+            <li class="dropdown-submenu">
+                <a href="#" class="open">Something else here</a>
+                <ul class="dropdown-menu open">
+                    <li class="dropdown-back"><button type="button" class="dropdown-item">Back</button></li>
                     <li><a href="#">Action</a></li>
                     <li><a href="#">Another action</a></li>
                     <li><a href="#">Something else here</a></li>
@@ -385,8 +385,6 @@ Checkbox and radio inputs are allowed, but only **one per menu item**.
 #### Textual Inputs
 
 Add `<input type="text">` or `textarea` items to your dropdown menu.  Other types of [textual inputs]({{ site.baseurl }}/{{ site.docs_version }}/content/forms/#textual-inputs) have not been tested, and may cause issues.  Again, use only **one per menu item**.
-
-Since keyboard navigation needs to change once you enter one of these elements, for ease of editing, they use the <kbd>tab</kbd> key to navigate out.
 
 {% capture example %}
 <div class="dropdown">
@@ -736,14 +734,7 @@ The dropdown widget provided by Figuration is intended be generic and apply to a
 
 <dl class="cf-docs-keys">
     <dt>
-        <kbd>tab</kbd>
-    </dt>
-    <dd>
-        Closes the currently focused menu, and moves focus to the next focusable items in the document.
-        If current focus is on an input or textarea in the menu, the focus moves to the next focusable item in the menu.
-    </dd>
-    <dt>
-        <kbd>enter</kbd>
+        <kbd>enter</kbd>/<br /><kbd>space</kbd>
     </dt>
     <dd>
         When the focus is on the main trigger item, the menu is opened, and the menu items can be navigated using the arrow keys.

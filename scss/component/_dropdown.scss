@@ -30,8 +30,12 @@
         background-color: $dropdown-bg;
         background-clip: padding-box;
         border: $dropdown-border-width solid $dropdown-border-color;
-        @include border-radius($dropdown-attach-border-radius $dropdown-border-radius $dropdown-border-radius $dropdown-border-radius);
+        @include border-radius($dropdown-border-radius);
         @include box-shadow($dropdown-box-shadow);
+
+        &.open {
+            display: block;
+        }
     }
 
     // Dropdown submenu additions
@@ -40,7 +44,6 @@
             top: 0;
             left: 100%;
             margin-top: calc(-#{($dropdown-spacer + $dropdown-padding-y)} + #{$border-width});
-            @include border-radius($dropdown-attach-border-radius $dropdown-border-radius $dropdown-border-radius $dropdown-border-radius);
         }
 
         > a,
@@ -60,19 +63,18 @@
     }
 
     // Open state for the dropdown
-    .open {
-        // Show the menu
-        > .dropdown-menu {
-            display: block;
-        }
-    }
+    // .open {
+    //     // Show the menu
+    //     > .dropdown-menu {
+    //         display: block;
+    //     }
+    // }
 
     // Allow for menus to go left - aligning to right side of the control
     .dropdown-menu-reverse {
         .dropdown-menu {
             right: 0;
             left: auto;
-            @include border-radius($dropdown-border-radius $dropdown-attach-border-radius $dropdown-border-radius $dropdown-border-radius);
         }
     }
 
@@ -85,7 +87,6 @@
             left: 100%;
             margin-right: -($border-width * 2);
             margin-left: 0;
-            @include border-radius($dropdown-attach-border-radius $dropdown-border-radius $dropdown-border-radius $dropdown-border-radius);
         }
     }
 
@@ -95,19 +96,6 @@
             left: auto;
             margin-right: 0;
             margin-left: -($border-width * 2);
-            @include border-radius($dropdown-border-radius $dropdown-attach-border-radius $dropdown-border-radius $dropdown-border-radius);
-        }
-        > a,
-        > .dropdown-item {
-            &::after {
-                right: auto;
-                left: $dropdown-caret-spacer-x;
-                @include caret-start($dropdown-caret-width, $dropdown-caret-color);
-            }
-
-            &.active:not(:hover):not(:focus)::after {
-                @include caret-end($dropdown-caret-width, $dropdown-caret-color);
-            }
         }
     }
 
@@ -219,7 +207,6 @@
                 bottom: 100%;
                 margin-top: 0;
                 margin-bottom: $dropdown-spacer;
-                @include border-radius($dropdown-border-radius $dropdown-border-radius $dropdown-border-radius $dropdown-attach-border-radius);
             }
 
             .dropdown-submenu {
@@ -228,24 +215,6 @@
                     bottom: 0;
                     margin-top: 0;
                     margin-bottom: calc(-#{($dropdown-spacer + $dropdown-padding-y)} + #{$border-width});
-                    @include border-radius($dropdown-border-radius $dropdown-border-radius $dropdown-border-radius $dropdown-attach-border-radius);
-                }
-            }
-
-            // Dropup corner overrides
-            &.dropdown-menu-reverse {
-                .dropdown-menu {
-                    @include border-radius($dropdown-border-radius $dropdown-border-radius $dropdown-attach-border-radius $dropdown-border-radius);
-                }
-            }
-            .dropdown-subalign-forward {
-                > .dropdown-menu {
-                    @include border-radius($dropdown-border-radius $dropdown-border-radius $dropdown-border-radius $dropdown-attach-border-radius);
-                }
-            }
-            .dropdown-subalign-reverse {
-                > .dropdown-menu {
-                    @include border-radius($dropdown-border-radius $dropdown-border-radius $dropdown-attach-border-radius $dropdown-border-radius);
                 }
             }
         }
@@ -256,7 +225,7 @@
         .dropdown-back {
             position: relative;
 
-            > a::before {
+            > button::before {
                 position: absolute;
                 top: 50%;
                 left: $dropdown-back-spacer-x;
