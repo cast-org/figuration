@@ -325,12 +325,12 @@ Responsive wrap utilities:
 
 Change the *visual* order of specific flex items with a handful of `order` utilities. We provide quick options for making an item first or last, as well as a reset to use the DOM order.
 
-Responsive order utilities:
+Quick responsive order utilities:
 - `.order-{breakpoint}-first`
 - `.order-{breakpoint}-last`
 - `.order-{breakpoint}-unordered`
 
-Even greater control is available with responsive order classes that match the column counts.  These are in the form of `.order-{breakpoint}-{col}`, such as `.order-2.order-md-4`.
+Even greater control is available with responsive order classes that set a specific order value.  These are in the form of `.order-{breakpoint}-{col}`, such as `.order-2.order-md-4`. Available order values include `1` through `6` across all breakpoints.
 
 {% capture example %}
 <div class="row">
@@ -355,13 +355,13 @@ Even greater control is available with responsive order classes that match the c
 
 {% capture example %}
 <div class="row">
-    <div class="col-1 order-12">
+    <div class="col-1 order-6">
         1
     </div>
     <div class="col-1">
         2
     </div>
-    <div class="col-1 order-10">
+    <div class="col-1 order-5">
         3
     </div>
     <div class="col-1 order-1">

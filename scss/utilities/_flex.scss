@@ -13,7 +13,7 @@
                 .order#{$bprule}-last { order: 1; }
                 .order#{$bprule}-unordered { order: 0; }
 
-                @for $col from 0 through $grid-columns {
+                @for $col from 0 through $utility-order-max {
                     .order#{$bprule}-#{$col} {
                         order: $col;
                     }
