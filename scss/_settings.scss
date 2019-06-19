@@ -1050,8 +1050,8 @@ $navbar-brand-font-weight:          $font-weight-bold !default;
 
 $navbar-divider-width:              $border-width !default;
 $navbar-divider-color:              rgba($black, .65) !default;
-$navbar-divider-margin-x:           $navbar-item-padding-x !default;
-$navbar-divider-margin-y:           $navbar-item-padding-y !default;
+$navbar-divider-margin-x:           .25rem !default;
+$navbar-divider-margin-y:           .25rem !default;
 
 $navbar-toggle-font-size:           ($font-size-base * 1.25) !default;
 $navbar-toggle-padding-y:           $btn-padding-y !default;
@@ -1064,6 +1064,8 @@ $navbar-dark-active-color:          rgba($white, .95) !default;
 $navbar-dark-disabled-color:        rgba($white, .5) !default;
 $navbar-dark-divider-color:         rgba($white, .7) !default;
 $navbar-dark-toggle-border:         rgba($white, .35) !default;
+$navbar-dark-brand-color:           $navbar-dark-active-color !default;
+$navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
 
 $navbar-light-color:                rgba($black, .6) !default;
 $navbar-light-hover-color:          rgba($black, .85) !default;
@@ -1071,6 +1073,8 @@ $navbar-light-active-color:         rgba($black, .95) !default;
 $navbar-light-disabled-color:       rgba($black, .5) !default;
 $navbar-light-divider-color:        rgba($black, .65) !default;
 $navbar-light-toggle-border:        rgba($black, .35) !default;
+$navbar-light-brand-color:          $navbar-light-active-color !default;
+$navbar-light-brand-hover-color:    $navbar-light-active-color !default;
 
 
 // Jumbotron

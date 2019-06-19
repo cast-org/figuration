@@ -919,7 +919,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             <tr>
                 <td><code>$dropdown-divider-spacer</code></td>
                 <td>string</td>
-                <td><code>.5rem</code></td>
+                <td><code>.3125rem</code></td>
                 <td>
                     Vertical spacing for dropdown menu dividers.
                 </td>
@@ -930,14 +930,6 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 <td><code>map-get($shadows, "d2")</code></td>
                 <td>
                     Box shadow for dropdown menus.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$dropdown-attach-border-radius</code></td>
-                <td>string</td>
-                <td><code>0</code></td>
-                <td>
-                    Border radius where menu/submenu aligns or 'attaches' to control item.
                 </td>
             </tr>
             <tr>
@@ -999,7 +991,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             <tr>
                 <td><code>$dropdown-item-padding-y</code></td>
                 <td>string</td>
-                <td><code>.1875rem</code></td>
+                <td><code>.125rem</code></td>
                 <td>
                     Vertical padding for dropdown menu links.
                 </td>
@@ -1007,7 +999,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             <tr>
                 <td><code>$dropdown-item-padding-x</code></td>
                 <td>string</td>
-                <td><code>1.25rem</code></td>
+                <td><code>1.125rem</code></td>
                 <td>
                     Horizontal padding for dropdown menu links.
                 </td>
@@ -1047,7 +1039,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             <tr>
                 <td><code>$dropdown-caret-width</code></td>
                 <td>string</td>
-                <td><code>.4375rem</code></td>
+                <td><code>$caret-border-width</code></td>
                 <td>
                     Border width for dropdown submenu indicator.
                 </td>
@@ -1079,7 +1071,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             <tr>
                 <td><code>$dropdown-back-width</code></td>
                 <td>string</td>
-                <td><code>.4375rem</code></td>
+                <td><code>$caret-border-width</code></td>
                 <td>
                     Border width for dropdown menu 'back' indicator.
                 </td>

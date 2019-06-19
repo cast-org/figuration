@@ -683,6 +683,14 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                     Enable the generation of the flex sizing utility classes.
                 </td>
             </tr>
+            <tr>
+                <td><code>$utility-order-max</code></td>
+                <td>integer</td>
+                <td><code>6</code></td>
+                <td>
+                    Maximum value to use for generation of order utilities.
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

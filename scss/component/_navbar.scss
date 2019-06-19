@@ -90,7 +90,7 @@
     @if $enable-navbar-divider {
         .navbar-divider {
             align-self: stretch;
-            margin: 0 $navbar-divider-margin-y;
+            margin: $navbar-divider-margin-x $navbar-divider-margin-y;
             overflow: hidden;
             border-left: $navbar-divider-width solid $navbar-divider-color;
         }
@@ -214,10 +214,10 @@
     @if $enable-navbar-light {
         .navbar-light {
             .navbar-brand {
-                color: $navbar-light-active-color;
+                color: $navbar-light-brand-color;
 
                 @include hover-focus() {
-                    color: $navbar-light-active-color;
+                    color: $navbar-light-brand-hover-color;
                 }
             }
 
@@ -285,10 +285,10 @@
     @if $enable-navbar-dark {
         .navbar-dark {
             .navbar-brand {
-                color: $navbar-dark-active-color;
+                color: $navbar-dark-brand-color;
 
                 @include hover-focus() {
-                    color: $navbar-dark-hover-color;
+                    color: $navbar-dark-brand-hover-color;
                 }
             }
 
