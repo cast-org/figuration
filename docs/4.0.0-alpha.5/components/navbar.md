@@ -1021,7 +1021,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             <tr>
                 <td><code>$navbar-divider-margin-y</code></td>
                 <td>string</td>
-                <td><code>$navbar-item-padding-y</code></td>
+                <td><code>.25rem</code></td>
                 <td>
                     Vertical spacing for navbar divider.
                 </td>
@@ -1029,7 +1029,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             <tr>
                 <td><code>$navbar-divider-margin-x</code></td>
                 <td>string</td>
-                <td><code>$navbar-item-padding-x</code></td>
+                <td><code>.25rem</code></td>
                 <td>
                     Horizontal spacing for navbar divider.
                 </td>
@@ -1123,6 +1123,22 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 </td>
             </tr>
             <tr>
+                <td><code>$navbar-light-brand-color</code></td>
+                <td>string</td>
+                <td><code>$navbar-light-active-color</code></td>
+                <td>
+                    Brand text color override for use on a navbar with a light background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-light-disabled-color</code></td>
+                <td>string</td>
+                <td><code>$navbar-light-active-color</code></td>
+                <td>
+                    Brand text color override in hover or focus state for use on a navbar with a light background color.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$navbar-dark-color</code></td>
                 <td>string</td>
                 <td><code>rgba($white, .65)</code></td>
@@ -1168,6 +1184,22 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 <td><code>rgba($white, .35)</code></td>
                 <td>
                     Toggle border color override for use on a navbar with a dark background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-dark-brand-color</code></td>
+                <td>string</td>
+                <td><code>$navbar-dark-active-color</code></td>
+                <td>
+                    Brand text color override for use on a navbar with a dark background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$navbar-dark-disabled-color</code></td>
+                <td>string</td>
+                <td><code>$navbar-dark-active-color</code></td>
+                <td>
+                    Brand text color override in hover or focus state for use on a navbar with a dark background color.
                 </td>
             </tr>
         </tbody>
