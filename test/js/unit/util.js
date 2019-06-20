@@ -82,4 +82,33 @@ $(function() {
         assert.strictEqual($().CFW_transitionDuration($div0), 300);
         assert.strictEqual($().CFW_transitionDuration($div1), 450);
     });
+
+    QUnit.test('CFW_findShadowRoot should find the shadow DOM root', function(assert) {
+        // Only for newer browsers
+        if (!document.documentElement.attachShadow) {
+            assert.expect(0);
+            return;
+        }
+
+        assert.expect(2);
+        var $div = $('<div id="test"></div>').appendTo($('#qunit-fixture'));
+        var shadowRoot = $div[0].attachShadow({
+            mode: 'open'
+        });
+
+        assert.equal(shadowRoot, $().CFW_findShadowRoot(shadowRoot));
+        shadowRoot.innerHTML = '<button>Shadow Button</button>';
+        assert.equal(shadowRoot, $().CFW_findShadowRoot(shadowRoot.firstChild));
+    });
+
+    QUnit.test('CFW_findShadowRoot should return null when attachShadow is not available', function(assert) {
+        assert.expect(1);
+
+        var $div = $('<div id="test"></div>').appendTo($('#qunit-fixture'));
+        if (!document.documentElement.attachShadow) {
+            assert.equal(null, $().CFW_findShadowRoot($div[0]));
+        } else {
+            assert.equal(null, $().CFW_findShadowRoot($div[0]));
+        }
+    });
 });

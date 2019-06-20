@@ -579,11 +579,17 @@
             var $tip = this.$target;
             $tip.detach();
 
+            var shadowRoot = $().CFW_findShadowRoot(this.$element[0]);
+            if (shadowRoot !== null && !this.settings.container) {
+                this.settings.container = 'body';
+            }
+
             if (typeof placement === 'object') {
                 // Custom placement
                 this.settings.container = 'body';
                 $tip.appendTo(this.settings.container);
-            } if (this.settings.container) {
+            }
+            if (this.settings.container) {
                 // Container placement
                 $tip.appendTo(this.settings.container);
             } else {
