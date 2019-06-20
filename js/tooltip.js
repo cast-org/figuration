@@ -36,6 +36,11 @@
 
     CFW_Widget_Tooltip.prototype = {
         _init : function(type, element, options) {
+
+            if (typeof Popper === 'undefined') {
+                throw new TypeError('Figurations\'s tooltips require Popper.js (https://popper.js.org)')
+            }
+
             this.type = type;
             this.$element = $(element);
             this.$target = null;
