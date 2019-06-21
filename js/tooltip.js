@@ -22,7 +22,7 @@
             hide        : 100               // Delay for hiding tooltip (milliseconds)
         },
         container       : false,            // Where to place tooltip if moving is needed
-        viewport        : 'body',           // Viewport to constrain tooltip within
+        viewport        : 'scrollParent',   // Viewport to constrain tooltip within
         padding         : 0,                // Padding from viewport edge
         html            : false,            // Use HTML or text insertion mode
         closetext       : '<span aria-hidden="true">&times;</span>', // Text for close links
@@ -62,6 +62,7 @@
                 keyShift: false,
                 keyTab : false
             };
+            this.popper = null;
 
             this.settings = this.getSettings(options);
 
@@ -132,11 +133,10 @@
         },
 
         getTitle : function() {
-            var title;
             var $e = this.$element;
             var s = this.settings;
 
-            title = typeof s.title === 'function' ? s.title.call($e[0]) : s.title || $e.attr('data-cfw-' + this.type + '-original-title');
+            var title = typeof s.title === 'function' ? s.title.call($e[0]) : s.title || $e.attr('data-cfw-' + this.type + '-original-title');
 
             return title;
         },
@@ -147,7 +147,6 @@
 
             if (this.dynamicTip) {
                 var title = this.getTitle();
-
                 if (this.settings.html) {
                     $inner.html(title);
                 } else {
@@ -155,7 +154,7 @@
                 }
             }
 
-            $tip.removeClass('fade in top bottom reverse forward');
+            $tip.removeClass('fade in');
         },
 
         linkTip : function() {
@@ -464,7 +463,7 @@
             }
 
             // Basic resize handler
-            $(window).on('resize.cfw.' + this.type + '.' + this.instance, this.locateTip.bind(this));
+            $(window).on('resize.cfw.' + this.type + '.' + this.instance, this.locateUpdate.bind(this));
 
             this.$target.CFW_transition(null, this._showComplete.bind(this));
         },
@@ -555,6 +554,10 @@
             this.dynamicTip = null;
             this.inserted = null;
             this.flags = null;
+            if (this.popper !== null) {
+                this.popper.destroy();
+            }
+            this.popper = null;
 
             this._unlinkCompleteExt();
 
@@ -606,73 +609,130 @@
             this.$element.CFW_trigger('inserted.cfw.' + this.type);
         },
 
+        locateUpdate : function() {
+            if (this.popper !== null) {
+                this.popper.scheduleUpdate();
+            }
+        },
+
         /* eslint-disable complexity */
         locateTip : function() {
-            var $tip = this.$target;
-
-            $tip
-                .removeClass('top reverse bottom forward')
-                .css({
-                    top: 0,
-                    left: 0,
-                    display: 'block'
-                });
 
             var placement = typeof this.settings.placement === 'function'
                 ? this.settings.placement.call(this, this.$target[0], this.$element[0])
                 : this.settings.placement;
-            var directionVal = window.getComputedStyle($('html')[0], null).getPropertyValue('direction').toLowerCase();
 
             this._insertTip(placement);
 
             if (typeof placement === 'object') {
                 // Custom placement
-                $tip.offset(placement);
-                $tip.addClass('in');
+                this.$target.offset(placement);
+                this.$target.addClass('in');
                 return;
             }
 
             // Standard Placement
             var autoToken = /\s?auto?\s?/i;
-            var autoPlace = autoToken.test(placement);
-            if (autoPlace) {
-                placement = placement.replace(autoToken, '') || CFW_Widget_Tooltip.DEFAULTS.placement;
+            var autoFlip = autoToken.test(this.settings.placement);
+            var placement = this.settings.placement.replace(autoToken, '');
+            // Allow for 'auto' placement
+            if (!placement.trim().length) {
+                placement = 'auto';
             }
+            var attachment = this._getAttachment(placement);
+            this._addAttachmentClass(attachment);
 
-            $tip.addClass(placement);
+            this.$target.addClass('in');
 
-            var pos          = this._getPosition();
-            var actualWidth  = $tip[0].getBoundingClientRect().width;
-            var actualHeight = $tip[0].getBoundingClientRect().height;
+            this._popper = new Popper(this.$element[0], this.$target[0], {
+                placement: attachment,
+                modifiers: {
+                    //offset: this._getOffset(),
+                    flip: {
+                        enabled: autoFlip,
+                        behavior: 'flip'
+                    },
+                    arrow: {
+                        element: '.' + this.type + '-arrow'
+                    },
+                    preventOverflow: {
+                        padding: this.settings.padding,
+                        boundariesElement: this.$viewport.length ? this.$viewport[0] : this.settings.viewport
+                    }
+                },
+                onCreate: data => {
+                    if (data.originalPlacement !== data.placement) {
+                        this._handlePopperPlacementChange(data);
+                    }
+                },
+                onUpdate: data => this._handlePopperPlacementChange(data)
+            });
 
-            if (autoPlace) {
-                var orgPlacement = placement;
-
-                var viewportDim = this.getViewportBounds();
-
-                /* eslint-disable indent, no-multi-spaces, no-nested-ternary, operator-linebreak */
-                if (directionVal === 'rtl') {
-                    placement = placement === 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
-                                placement === 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
-                                placement === 'reverse' && pos.left   - actualWidth  > viewportDim.left   ? 'forward' :
-                                placement === 'forward' && pos.right  + actualWidth  < viewportDim.width  ? 'reverse' :
-                                placement;
-                } else {
-                    placement = placement === 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
-                                placement === 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
-                                placement === 'forward' && pos.right  + actualWidth  > viewportDim.width  ? 'reverse' :
-                                placement === 'reverse' && pos.left   - actualWidth  < viewportDim.left   ? 'forward' :
-                                placement;
-                }
-                /* eslint-enable indent, no-multi-spaces, no-nested-ternary, operator-linebreak */
-
-                $tip.removeClass(orgPlacement)
-                    .addClass(placement);
-            }
-
-            var calculatedOffset = this._getCalculatedOffset(placement, pos, actualWidth, actualHeight, directionVal);
-
-            this._applyPlacement(calculatedOffset, placement);
+//            var $tip = this.$target;
+//
+//            $tip
+//                .removeClass('top reverse bottom forward')
+//                .css({
+//                    top: 0,
+//                    left: 0,
+//                    display: 'block'
+//                });
+//
+//            var placement = typeof this.settings.placement === 'function'
+//                ? this.settings.placement.call(this, this.$target[0], this.$element[0])
+//                : this.settings.placement;
+//            var directionVal = window.getComputedStyle($('html')[0], null).getPropertyValue('direction').toLowerCase();
+//
+//            this._insertTip(placement);
+//
+//            if (typeof placement === 'object') {
+//                // Custom placement
+//                $tip.offset(placement);
+//                $tip.addClass('in');
+//                return;
+//            }
+//
+//            // Standard Placement
+//            var autoToken = /\s?auto?\s?/i;
+//            var autoPlace = autoToken.test(placement);
+//            if (autoPlace) {
+//                placement = placement.replace(autoToken, '') || CFW_Widget_Tooltip.DEFAULTS.placement;
+//            }
+//
+//            $tip.addClass(placement);
+//
+//            var pos          = this._getPosition();
+//            var actualWidth  = $tip[0].getBoundingClientRect().width;
+//            var actualHeight = $tip[0].getBoundingClientRect().height;
+//
+//            if (autoPlace) {
+//                var orgPlacement = placement;
+//
+//                var viewportDim = this.getViewportBounds();
+//
+//                /* eslint-disable indent, no-multi-spaces, no-nested-ternary, operator-linebreak */
+//                if (directionVal === 'rtl') {
+//                    placement = placement === 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
+//                                placement === 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
+//                                placement === 'reverse' && pos.left   - actualWidth  > viewportDim.left   ? 'forward' :
+//                                placement === 'forward' && pos.right  + actualWidth  < viewportDim.width  ? 'reverse' :
+//                                placement;
+//                } else {
+//                    placement = placement === 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
+//                                placement === 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
+//                                placement === 'forward' && pos.right  + actualWidth  > viewportDim.width  ? 'reverse' :
+//                                placement === 'reverse' && pos.left   - actualWidth  < viewportDim.left   ? 'forward' :
+//                                placement;
+//                }
+//                /* eslint-enable indent, no-multi-spaces, no-nested-ternary, operator-linebreak */
+//
+//                $tip.removeClass(orgPlacement)
+//                    .addClass(placement);
+//            }
+//
+//            var calculatedOffset = this._getCalculatedOffset(placement, pos, actualWidth, actualHeight, directionVal);
+//
+//            this._applyPlacement(calculatedOffset, placement);
         },
         /* eslint-enable complexity */
 
@@ -691,7 +751,7 @@
                 .attr('data-cfw-mutate', '')
                 .CFW_mutationListen()
                 .on('mutate.cfw.mutate', function() {
-                    $selfRef.locateTip();
+                    $selfRef.locateUpdate();
                 });
             this.$element
                 .attr('data-cfw-mutate', '')
@@ -768,6 +828,10 @@
             }
 
             this.$element.CFW_trigger('afterHide.cfw.' + this.type);
+
+            if (this.popper !== null) {
+                this.popper.destroy();
+            }
         },
 
         _removeDynamicTip : function() {
@@ -784,6 +848,45 @@
             // remove dynamic tip extend
             this.$target.remove();
             this.$target = null;
+        },
+
+        _cleanTipClass : function() {
+            var regex = new RegExp(`(^|\\s)cfw-` + this.type + `\\S+`, 'g')
+            if (this.$target) {
+                var items = this.$target[0].className.match(regex);
+                for (var i = items.length; i--;) {
+                    this.$target[0].classList.remove(items[i].trim());
+                }
+            }
+        },
+
+        _handlePopperPlacementChange : function(popperData) {
+            var popperInstance = popperData.instance;
+            //this.tip = popperInstance.popper;
+            this._cleanTipClass();
+            this._addAttachmentClass(this._getAttachment(popperData.placement));
+        },
+
+        _addAttachmentClass : function(attachment) {
+            if (this.$target) {
+                this.$target.addClass('cfw-' + this.type + '-' + attachment);
+            }
+        },
+
+        _getAttachment : function(placement) {
+            if (!this.$element) { return; }
+            var directionVal = window.getComputedStyle(this.$element[0], null).getPropertyValue('direction').toLowerCase();
+            var isRTL = Boolean(directionVal === 'rtl');
+            var attachmentMap = {
+                AUTO: 'auto',
+                TOP: 'top',
+                FORWARD: isRTL ? 'left' : 'right',
+                RIGHT: 'right',
+                BOTTOM: 'bottom',
+                REVERSE: isRTL ? 'right' : 'left',
+                LEFT: 'left'
+            };
+            return attachmentMap[placement.toUpperCase()];
         },
 
         _getPosition : function() {

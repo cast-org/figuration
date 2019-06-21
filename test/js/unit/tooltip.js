@@ -105,7 +105,7 @@ $(function() {
             });
 
         $tooltip.CFW_Tooltip('show');
-        assert.ok($('.tooltip').is('.fade.bottom.in'), 'has correct classes applied');
+        assert.ok($('.tooltip').is('.fade.cfw-tooltip-bottom.in'), 'has correct classes applied');
 
         $tooltip.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed');
@@ -312,8 +312,8 @@ $(function() {
     QUnit.test('should add position class before positioning so that position-specific styles are taken into account', function(assert) {
         assert.expect(1);
         var styles = '<style>' +
-            '.tooltip.forward { white-space: nowrap; }' +
-            '.tooltip.forward .tooltip-body { max-width: none; }' +
+            '.tooltip.cfw-tooltip-right { white-space: nowrap; }' +
+            '.tooltip.cfw-tooltip-right .tooltip-body { max-width: none; }' +
             '</style>';
         var $styles = $(styles).appendTo('head');
 
@@ -398,12 +398,13 @@ $(function() {
         var $topTooltip = $('<div class="trigger" style="left: 0; top: 0;" title="Top tooltip">Top Dynamic Tooltip</div>')
             .appendTo($container)
             .CFW_Tooltip({
-                placement: 'auto',
+                placement: 'auto top',
                 viewport: '#qunit-fixture'
             });
 
         $topTooltip.CFW_Tooltip('show');
-        assert.ok($('.tooltip').is('.bottom'), 'top positioned tooltip is dynamically positioned to bottom');
+console.log($('.tooltip').attr('class'));
+        assert.ok($('.tooltip').is('.cfw-tooltip-bottom'), 'top positioned tooltip is dynamically positioned to bottom');
 
         $topTooltip.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'top positioned tooltip removed from dom');
@@ -416,7 +417,7 @@ $(function() {
             });
 
         $forwardTooltip.CFW_Tooltip('show');
-        assert.ok($('.tooltip').is('.reverse'), 'forward positioned tooltip is dynamically positioned reverse');
+        assert.ok($('.tooltip').is('.cfw-tooltip-left'), 'forward positioned tooltip is dynamically positioned reverse');
 
         $forwardTooltip.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'forward positioned tooltip removed from dom');
@@ -429,7 +430,7 @@ $(function() {
             });
 
         $reverseTooltip.CFW_Tooltip('show');
-        assert.ok($('.tooltip').is('.forward'), 'reverse positioned tooltip is dynamically positioned forward');
+        assert.ok($('.tooltip').is('.cfw-tooltip-right'), 'reverse positioned tooltip is dynamically positioned forward');
 
         $reverseTooltip.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'reverse positioned tooltip removed from dom');
@@ -456,7 +457,7 @@ $(function() {
             });
 
         $target.CFW_Tooltip('show');
-        assert.ok($('.tooltip').is('.top'), 'top positioned tooltip is dynamically positioned to top');
+        assert.ok($('.tooltip').is('.cfw-tooltip-top'), 'top positioned tooltip is dynamically positioned to top');
 
         $target.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -481,7 +482,7 @@ $(function() {
             });
 
         $target.CFW_Tooltip('show');
-        assert.ok($('.tooltip').is('.top'), 'top positioned tooltip is dynamically positioned to top');
+        assert.ok($('.tooltip').is('.cfw-tooltip-top'), 'top positioned tooltip is dynamically positioned to top');
 
         $target.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -507,7 +508,7 @@ $(function() {
             });
 
         $target.CFW_Tooltip('show');
-        assert.ok($('.tooltip').is('.bottom'), 'top positioned tooltip is dynamically positioned to bottom');
+        assert.ok($('.tooltip').is('.cfw-tooltip-bottom'), 'top positioned tooltip is dynamically positioned to bottom');
 
         $target.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -534,7 +535,7 @@ $(function() {
         $('#scrollable-div').scrollTop(100);
 
         $target.CFW_Tooltip('show');
-        assert.ok($('.tooltip').is('.fade.top.in'), 'has correct classes applied');
+        assert.ok($('.tooltip').is('.fade.cfw-tooltip-top.in'), 'has correct classes applied');
 
         $target.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -561,7 +562,7 @@ $(function() {
         $('#scrollable-div').scrollTop(200);
 
         $target.CFW_Tooltip('show');
-        assert.ok($('.tooltip').is('.fade.bottom.in'), 'has correct classes applied');
+        assert.ok($('.tooltip').is('.fade.cfw-tooltip-bottom.in'), 'has correct classes applied');
 
         $target.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -592,7 +593,7 @@ $(function() {
         $('#scrollable-div').scrollTop(200);
 
         $target.CFW_Tooltip('show');
-        assert.ok($('.tooltip').is('.fade.bottom.in'), 'has correct classes applied');
+        assert.ok($('.tooltip').is('.fade.cfw-tooltip-bottom.in'), 'has correct classes applied');
 
         $target.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');
@@ -619,7 +620,7 @@ $(function() {
         $('#scrollable-div').scrollTop(400);
 
         $target.CFW_Tooltip('show');
-        assert.ok($('.tooltip').is('.fade.top.in'), 'has correct classes applied');
+        assert.ok($('.tooltip').is('.fade.cfw-tooltip-top.in'), 'has correct classes applied');
 
         $target.CFW_Tooltip('hide');
         assert.strictEqual($('.tooltip').length, 0, 'tooltip removed from dom');

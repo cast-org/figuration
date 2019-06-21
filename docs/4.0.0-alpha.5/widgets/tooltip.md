@@ -661,9 +661,17 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             <tr>
                 <td><code>$tooltip-arrow-width</code></td>
                 <td>string</td>
+                <td><code>.75rem</code></td>
+                <td>
+                    Width for tooltip arrow, when placed on top or bottom. Height when used on sides.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$tooltip-arrow-height</code></td>
+                <td>string</td>
                 <td><code>.375rem</code></td>
                 <td>
-                    Width for tooltip arrow.
+                    Height for tooltip arrow, when placed on top or bottom. Width when used on sides.
                 </td>
             </tr>
             <tr>

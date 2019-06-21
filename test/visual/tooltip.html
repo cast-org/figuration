@@ -9,11 +9,12 @@
 <link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
 
 <!--
-<script src="../../docs/4.0.0-alpha.5/assets/js/vendor/jquery.slim.min.js"></script>
+<script src="../../node_modules/jquery/dist/jquery.slim.min.js"></script>
 <script src="../../dist/js/figuration.js"></script>
 -->
 
-<script src="../../docs/4.0.0-alpha.5/assets/js/vendor/jquery.slim.min.js"></script>
+<script src="../../node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
 <script src="../../js/util.js"></script>
 <script src="../../js/drag.js"></script>
 <script src="../../js/collapse.js"></script>
@@ -43,7 +44,7 @@
 </head>
 <body>
 
-<button class="btn float-start" title="Tooltip at start" data-cfw="tooltip" data-cfw-tooltip-placement="reverse auto">Tooltip at start</button>
+<button class="btn float-start" title="Tooltip at start" data-cfw="tooltip" data-cfw-tooltip-placement="reverse auto" data-cfw-tooltip-trigger="click">Tooltip at start</button>
 
 <button class="btn" title="Tooltip at top" data-cfw="tooltip" data-cfw-tooltip-placement="top auto">Tooltip at top</button>
 
