@@ -1,3 +1,4 @@
+
 /**
  * --------------------------------------------------------------------------
  * Figuration (v4.0.0-alpha.5): tooltip.js
@@ -36,9 +37,8 @@
 
     CFW_Widget_Tooltip.prototype = {
         _init : function(type, element, options) {
-
             if (typeof Popper === 'undefined') {
-                throw new TypeError('Figurations\'s tooltips require Popper.js (https://popper.js.org)')
+                throw new TypeError('Figurations\'s tooltips require Popper.js (https://popper.js.org)');
             }
 
             this.type = type;
@@ -617,6 +617,7 @@
 
         /* eslint-disable complexity */
         locateTip : function() {
+            var $selfRef = this;
 
             var placement = typeof this.settings.placement === 'function'
                 ? this.settings.placement.call(this, this.$target[0], this.$element[0])
@@ -634,7 +635,7 @@
             // Standard Placement
             var autoToken = /\s?auto?\s?/i;
             var autoFlip = autoToken.test(this.settings.placement);
-            var placement = this.settings.placement.replace(autoToken, '');
+            placement = this.settings.placement.replace(autoToken, '');
             // Allow for 'auto' placement
             if (!placement.trim().length) {
                 placement = 'auto';
@@ -644,10 +645,9 @@
 
             this.$target.addClass('in');
 
-            this._popper = new Popper(this.$element[0], this.$target[0], {
+            this.popper = new Popper(this.$element[0], this.$target[0], {
                 placement: attachment,
                 modifiers: {
-                    //offset: this._getOffset(),
                     flip: {
                         enabled: autoFlip,
                         behavior: 'flip'
@@ -660,12 +660,14 @@
                         boundariesElement: this.$viewport.length ? this.$viewport[0] : this.settings.viewport
                     }
                 },
-                onCreate: data => {
+                onCreate: function(data) {
                     if (data.originalPlacement !== data.placement) {
-                        this._handlePopperPlacementChange(data);
+                        $selfRef._handlePopperPlacementChange(data);
                     }
                 },
-                onUpdate: data => this._handlePopperPlacementChange(data)
+                onUpdate: function(data) {
+                    $selfRef._handlePopperPlacementChange(data);
+                }
             });
 
 //            var $tip = this.$target;
@@ -783,6 +785,7 @@
         },
 
         _hideComplete : function() {
+            this._cleanTipClass();
             this.$element
                 .off('.cfw.' + this.type + '.focusStart')
                 .off('mutate.cfw.mutate')
@@ -793,7 +796,6 @@
                 .off('.cfw.' + this.type)
                 .off('mutate.cfw.mutate')
                 .removeClass('in')
-                .css('display', 'none')
                 .attr('aria-hidden', true)
                 .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore();
@@ -851,7 +853,7 @@
         },
 
         _cleanTipClass : function() {
-            var regex = new RegExp(`(^|\\s)cfw-` + this.type + `\\S+`, 'g')
+            var regex = new RegExp('(^|\\s)cfw-' + this.type + '\\S+', 'g');
             if (this.$target) {
                 var items = this.$target[0].className.match(regex);
                 for (var i = items.length; i--;) {
@@ -861,8 +863,6 @@
         },
 
         _handlePopperPlacementChange : function(popperData) {
-            var popperInstance = popperData.instance;
-            //this.tip = popperInstance.popper;
             this._cleanTipClass();
             this._addAttachmentClass(this._getAttachment(popperData.placement));
         },
@@ -874,19 +874,21 @@
         },
 
         _getAttachment : function(placement) {
-            if (!this.$element) { return; }
-            var directionVal = window.getComputedStyle(this.$element[0], null).getPropertyValue('direction').toLowerCase();
-            var isRTL = Boolean(directionVal === 'rtl');
-            var attachmentMap = {
-                AUTO: 'auto',
-                TOP: 'top',
-                FORWARD: isRTL ? 'left' : 'right',
-                RIGHT: 'right',
-                BOTTOM: 'bottom',
-                REVERSE: isRTL ? 'right' : 'left',
-                LEFT: 'left'
-            };
-            return attachmentMap[placement.toUpperCase()];
+            if (this.$element) {
+                var directionVal = window.getComputedStyle(this.$element[0], null).getPropertyValue('direction').toLowerCase();
+                var isRTL = Boolean(directionVal === 'rtl');
+                var attachmentMap = {
+                    AUTO: 'auto',
+                    TOP: 'top',
+                    FORWARD: isRTL ? 'left' : 'right',
+                    RIGHT: 'right',
+                    BOTTOM: 'bottom',
+                    REVERSE: isRTL ? 'right' : 'left',
+                    LEFT: 'left'
+                };
+                return attachmentMap[placement.toUpperCase()];
+            }
+            return CFW_Widget_Tooltip.DEFAULTS.placement;
         },
 
         _getPosition : function() {

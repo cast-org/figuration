@@ -679,6 +679,14 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 </td>
             </tr>
             <tr>
+                <td><code>$popover-margin</code></td>
+                <td>string</td>
+                <td><code>.125rem</code></td>
+                <td>
+                    Spacing offset for popover container.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$popover-max-width</code></td>
                 <td>string</td>
                 <td><code>rem(288px)</code> (18rem)</td>
@@ -825,9 +833,17 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             <tr>
                 <td><code>$popover-arrow-width</code></td>
                 <td>string</td>
+                <td><code>1.25rem</code></td>
+                <td>
+                    Width for popover arrow, when placed on top or bottom. Height when used on sides.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$popover-arrow-height</code></td>
+                <td>string</td>
                 <td><code>.625rem</code></td>
                 <td>
-                    Width for popover arrow.
+                    Height for popover arrow, when placed on top or bottom. Width when used on sides.
                 </td>
             </tr>
             <tr>

@@ -46,51 +46,72 @@
             display: block;
             width: $tooltip-arrow-width;
             height: $tooltip-arrow-height;
-            border-color: transparent;
-            border-style: solid;
-        }
-    }
 
-    // Directions
-    @if $enable-tooltip-arrow {
+            &::before {
+                position: absolute;
+                content: "";
+                border-color: transparent;
+                border-style: solid;
+            }
+        }
+
+        /* rtl:begin:ignore */
+
+        // Directions
         .cfw-tooltip-top {
-            padding: $tooltip-arrow-height 0;
+            padding-bottom: $tooltip-arrow-height;
 
             .tooltip-arrow {
                 bottom: 0;
-                border-width: $tooltip-arrow-height ($tooltip-arrow-width / 2) 0;
-                border-top-color: $tooltip-arrow-color;
+
+                &::before {
+                    top: 0;
+                    border-width: $tooltip-arrow-height ($tooltip-arrow-width / 2) 0;
+                    border-top-color: $tooltip-arrow-color;
+                }
             }
         }
         .cfw-tooltip-right {
-            padding: 0 $tooltip-arrow-height;
+            padding-left: $tooltip-arrow-height;
 
             .tooltip-arrow {
                 left: 0;
                 width: $tooltip-arrow-height;
                 height: $tooltip-arrow-width;
-                border-width: ($tooltip-arrow-width / 2) $tooltip-arrow-height ($tooltip-arrow-width / 2) 0;
-                border-right-color: $tooltip-arrow-color;
+
+                &::before {
+                    right: 0;
+                    border-width: ($tooltip-arrow-width / 2) $tooltip-arrow-height ($tooltip-arrow-width / 2) 0;
+                    border-right-color: $tooltip-arrow-color;
+                }
             }
         }
         .cfw-tooltip-bottom {
-            padding: $tooltip-arrow-height 0;
+            padding-top: $tooltip-arrow-height;
 
             .tooltip-arrow {
                 top: 0;
-                border-width: 0 ($tooltip-arrow-width / 2) $tooltip-arrow-height;
-                border-bottom-color: $tooltip-arrow-color;
+
+                &::before {
+                    bottom: 0;
+                    border-width: 0 ($tooltip-arrow-width / 2) $tooltip-arrow-height;
+                    border-bottom-color: $tooltip-arrow-color;
+                }
             }
         }
         .cfw-tooltip-left {
-            padding: 0 $tooltip-arrow-height;
+            padding-right: $tooltip-arrow-height;
 
             .tooltip-arrow {
                 right: 0;
                 width: $tooltip-arrow-height;
                 height: $tooltip-arrow-width;
-                border-width: ($tooltip-arrow-width / 2) 0 ($tooltip-arrow-width / 2) $tooltip-arrow-height;
-                border-left-color: $tooltip-arrow-color;
+
+                &::before {
+                    left: 0;
+                    border-width: ($tooltip-arrow-width / 2) 0 ($tooltip-arrow-width / 2) $tooltip-arrow-height;
+                    border-left-color: $tooltip-arrow-color;
+                }
             }
         }
 
@@ -108,6 +129,8 @@
                 @extend .cfw-tooltip-left;
             }
         }
+
+        /* rtl:end:ignore */
     }
 
     // Wrapper for the tooltip content

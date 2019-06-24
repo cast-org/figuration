@@ -565,7 +565,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             <tr>
                 <td><code>$tooltip-margin</code></td>
                 <td>string</td>
-                <td><code>.5rem</code></td>
+                <td><code>.125rem</code></td>
                 <td>
                     Spacing offset for tooltip container.
                 </td>

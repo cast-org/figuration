@@ -375,7 +375,9 @@
         if (!element.parentNode) {
             return null;
         }
-    }
+
+        return null;
+    };
 
     $.CFW_throttle = function(fn, threshhold, scope) {
         /* From: http://remysharp.com/2010/07/21/throttling-function-calls/ */
