@@ -403,7 +403,7 @@ $(function() {
             });
 
         $topTooltip.CFW_Tooltip('show');
-console.log($('.tooltip').attr('class'));
+
         assert.ok($('.tooltip').is('.cfw-tooltip-bottom'), 'top positioned tooltip is dynamically positioned to bottom');
 
         $topTooltip.CFW_Tooltip('hide');
