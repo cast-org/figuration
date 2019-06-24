@@ -113,6 +113,10 @@
 
     CFW_Widget_Dropdown.prototype = {
         _init : function() {
+            if (typeof Popper === 'undefined') {
+                throw new TypeError('Figurations\'s Dropdown widget requires Popper.js (https://popper.js.org)');
+            }
+
             var $selfRef = this;
 
             // Get target menu

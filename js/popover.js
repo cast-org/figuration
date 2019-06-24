@@ -207,6 +207,9 @@
 
     CFW_Widget_Popover.prototype.viewportDragLimit = function() {
         var $viewport = this.$viewport;
+        if (!$viewport.length) {
+            $viewport = $(document.body);
+        }
         var scrollbarWidth = this.viewportScrollbarWidth($viewport);
         var limit = $viewport.offset();
 

@@ -39,7 +39,7 @@
     CFW_Widget_Tooltip.prototype = {
         _init : function(type, element, options) {
             if (typeof Popper === 'undefined') {
-                throw new TypeError('Figurations\'s tooltips require Popper.js (https://popper.js.org)');
+                throw new TypeError('Figurations\'s Tooltip widget requires Popper.js (https://popper.js.org)');
             }
 
             this.type = type;
@@ -789,8 +789,10 @@
             var regex = new RegExp('(^|\\s)cfw-' + this.type + '\\S+', 'g');
             if (this.$target) {
                 var items = this.$target[0].className.match(regex);
-                for (var i = items.length; i--;) {
-                    this.$target[0].classList.remove(items[i].trim());
+                if (items !== null) {
+                    for (var i = items.length; i--;) {
+                        this.$target[0].classList.remove(items[i].trim());
+                    }
                 }
             }
         },
