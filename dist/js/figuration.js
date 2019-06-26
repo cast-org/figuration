@@ -377,6 +377,29 @@ if (typeof jQuery === 'undefined') {
         return posLeft < scrollbarWidth ? 'right' : 'left';
     };
 
+    $.fn.CFW_findShadowRoot = function(element) {
+        if (!document.documentElement.attachShadow) {
+            return null;
+        }
+
+        // Can find the shadow root otherwise it'll return the document
+        if (typeof element.getRootNode === 'function') {
+            var root = element.getRootNode();
+            return root instanceof ShadowRoot ? root : null;
+        }
+
+        if (element instanceof ShadowRoot) {
+            return element;
+        }
+
+        // when we don't find a shadow root
+        if (!element.parentNode) {
+            return null;
+        }
+
+        return null;
+    };
+
     $.CFW_throttle = function(fn, threshhold, scope) {
         /* From: http://remysharp.com/2010/07/21/throttling-function-calls/ */
         var THRESHHOLD_DEFAULT = 250;
@@ -893,7 +916,10 @@ if (typeof jQuery === 'undefined') {
         backtop   : false,  // Should back links start at top level
         backtext  : 'Back', // Text for back links
         container : false,   // Where to place dropdown in DOM
-        variants  : 'dropdown-menu-reverse dropup'
+        reference : 'toggle',
+        boundary  : 'scollParent',
+        flip      : true,
+        display   : 'dynamic'
     };
 
     var clearMenus = function(e) {
@@ -949,7 +975,9 @@ if (typeof jQuery === 'undefined') {
             $itemMenu
                 .removeClass('open');
 
-            $trigger.CFW_Dropdown('containerReset');
+            $trigger
+                .CFW_Dropdown('containerReset')
+                .CFW_Dropdown('popperReset');
 
             $trigger.CFW_trigger('afterHide.cfw.dropdown', eventProperties);
         }
@@ -958,6 +986,7 @@ if (typeof jQuery === 'undefined') {
     CFW_Widget_Dropdown.prototype = {
         _init : function() {
             var $selfRef = this;
+            this.popper = null;
 
             // Get target menu
             var selector = this.$element.CFW_getSelectorFromChain('dropdown', this.settings.target);
@@ -1024,8 +1053,8 @@ if (typeof jQuery === 'undefined') {
                 }
 
                 // Manipulate directions of submenus
-                var $dirNode = $this.closest('.dropdown-menu-reverse, .dropdown-menu-forward');
-                if ($dirNode.hasClass('dropdown-menu-reverse')) {
+                var $dirNode = $this.closest('.dropdown-reverse, .dropdown-forward');
+                if ($dirNode.hasClass('dropdown-reverse')) {
                     $this.addClass('dropdown-subalign-reverse');
                 } else {
                     $this.addClass('dropdown-subalign-forward');
@@ -1295,6 +1324,88 @@ if (typeof jQuery === 'undefined') {
             }
         },
 
+        _isElement : function(node) {
+            return (node[0] || node).nodeType;
+        },
+
+        _getReference : function() {
+            var reference = this.$element[0];
+
+            if (this.settings.reference === 'parent') {
+                reference = this.$element.parent().get(0);
+            } else if (this._isElement(this.settings.reference)) {
+                reference = this.settings.reference;
+
+                // Check for jQuery element
+                if (typeof this.settings.reference.jquery !== 'undefined') {
+                    reference = this.settings.reference[0];
+                }
+            }
+
+            return reference;
+        },
+
+        _getPlacement : function() {
+            var directionVal = window.getComputedStyle(this.$element[0], null).getPropertyValue('direction').toLowerCase();
+            var isRTL = Boolean(directionVal === 'rtl');
+            var attachmentMap = {
+                AUTO: 'auto',
+                TOP: 'top-start',
+                FORWARD: isRTL ? 'left-start' : 'right-start',
+                FORWARDEND: isRTL ? 'left-end' : 'right-end',
+                RIGHT: 'right-start',
+                RIGHTEND: 'right-end',
+                BOTTOM: 'bottom-start',
+                BOTTOMEND: 'bottom-end',
+                REVERSE: isRTL ? 'right-start' : 'left-start',
+                REVERSEEND: isRTL ? 'right-end' : 'left-end',
+                LEFT: 'left-start',
+                LEFTEND: 'left-end'
+            };
+
+            var $dirNode = this.$element.closest('.dropdown-reverse, .dropdown-forward, .dropup');
+            var dirH = $dirNode.hasClass('dropup') ? 'TOP' : 'BOTTOM';
+            var appendH = $dirNode.hasClass('dropdown-reverse') ? 'END' : '';
+            var dirV = $dirNode.hasClass('dropdown-reverse') ? 'REVERSE' : 'FORWARD';
+            var appendV = $dirNode.hasClass('dropup') ? 'END' : '';
+
+            var placement = attachmentMap[dirH + appendH];
+            if (this.settings.isSubmenu) {
+                placement = attachmentMap[dirV + appendV];
+            }
+            return placement;
+        },
+
+        popperReset : function() {
+            if (this.popper !== null) {
+                this.popper.destroy();
+            }
+        },
+
+        _popperLocate: function() {
+            var isStatic = Boolean(window.getComputedStyle(this.$target[0], null).getPropertyValue('position').toLowerCase() === 'static');
+
+            if (this.settings.display !== 'dynamic') { return; }
+            if (isStatic) { return; }
+
+            if (typeof Popper === 'undefined') {
+                throw new TypeError('Figurations\'s Dropdown widget requires Popper.js (https://popper.js.org)');
+            }
+
+            this.popper = new Popper(this._getReference(), this.$target[0], {
+                placement: this._getPlacement(),
+                modifiers: {
+                    flip: {
+                        enabled: this.settings.flip,
+                        behavior: 'flip'
+                    },
+                    preventOverflow: {
+                        boundariesElement: this.settings.boundary
+                    }
+                }
+            });
+        },
+
         toggle : function(e) {
             if (e) {
                 e.preventDefault();
@@ -1348,6 +1459,8 @@ if (typeof jQuery === 'undefined') {
                     }
                 });
 
+            this._popperLocate();
+
             this.$element.CFW_trigger('afterShow.cfw.dropdown', eventProperties);
         },
 
@@ -1372,6 +1485,7 @@ if (typeof jQuery === 'undefined') {
                 .removeClass('open');
 
             this.containerReset();
+            this.popperReset();
 
             this.$element
                 .CFW_trigger('afterHide.cfw.dropdown', eventProperties);
@@ -1401,6 +1515,10 @@ if (typeof jQuery === 'undefined') {
             this.hasContainer = null;
             this.inNavbar = null;
             this.settings = null;
+            if (this.popper !== null) {
+                this.popper.destroy();
+            }
+            this.popper = null;
         }
     };
 
@@ -1868,6 +1986,7 @@ if (typeof jQuery === 'undefined') {
     $.fn.CFW_Affix.Constructor = CFW_Widget_Affix;
 }(jQuery));
 
+
 /**
  * --------------------------------------------------------------------------
  * Figuration (v4.0.0-alpha.5): tooltip.js
@@ -1892,7 +2011,7 @@ if (typeof jQuery === 'undefined') {
             hide        : 100               // Delay for hiding tooltip (milliseconds)
         },
         container       : false,            // Where to place tooltip if moving is needed
-        viewport        : 'body',           // Viewport to constrain tooltip within
+        viewport        : 'scrollParent',   // Viewport to constrain tooltip within
         padding         : 0,                // Padding from viewport edge
         html            : false,            // Use HTML or text insertion mode
         closetext       : '<span aria-hidden="true">&times;</span>', // Text for close links
@@ -1901,11 +2020,16 @@ if (typeof jQuery === 'undefined') {
         show            : false,            // Auto show after init
         unlink          : false,            // If on hide to remove events and attributes from tooltip and trigger
         dispose         : false,            // If on hide to unlink, then remove tooltip from DOM
-        template        : '<div class="tooltip"><div class="tooltip-body"></div><div class="tooltip-arrow"></div></div>'
+        template        : '<div class="tooltip"><div class="tooltip-body"></div><div class="tooltip-arrow"></div></div>',
+        gpuAcceleration : true
     };
 
     CFW_Widget_Tooltip.prototype = {
         _init : function(type, element, options) {
+            if (typeof Popper === 'undefined') {
+                throw new TypeError('Figurations\'s Tooltip widget requires Popper.js (https://popper.js.org)');
+            }
+
             this.type = type;
             this.$element = $(element);
             this.$target = null;
@@ -1927,10 +2051,9 @@ if (typeof jQuery === 'undefined') {
                 keyShift: false,
                 keyTab : false
             };
+            this.popper = null;
 
             this.settings = this.getSettings(options);
-
-            this.$viewport = this.settings.viewport && $(typeof this.settings.viewport === 'function' ? this.settings.viewport.call(this, this.$element) : this.settings.viewport.selector || this.settings.viewport);
 
             this.inState = {
                 click: false,
@@ -1997,11 +2120,10 @@ if (typeof jQuery === 'undefined') {
         },
 
         getTitle : function() {
-            var title;
             var $e = this.$element;
             var s = this.settings;
 
-            title = typeof s.title === 'function' ? s.title.call($e[0]) : s.title || $e.attr('data-cfw-' + this.type + '-original-title');
+            var title = typeof s.title === 'function' ? s.title.call($e[0]) : s.title || $e.attr('data-cfw-' + this.type + '-original-title');
 
             return title;
         },
@@ -2012,7 +2134,6 @@ if (typeof jQuery === 'undefined') {
 
             if (this.dynamicTip) {
                 var title = this.getTitle();
-
                 if (this.settings.html) {
                     $inner.html(title);
                 } else {
@@ -2020,7 +2141,7 @@ if (typeof jQuery === 'undefined') {
                 }
             }
 
-            $tip.removeClass('fade in top bottom reverse forward');
+            $tip.removeClass('fade in');
         },
 
         linkTip : function() {
@@ -2328,9 +2449,6 @@ if (typeof jQuery === 'undefined') {
                 $('body').children().on('mouseover', null, $.noop);
             }
 
-            // Basic resize handler
-            $(window).on('resize.cfw.' + this.type + '.' + this.instance, this.locateTip.bind(this));
-
             this.$target.CFW_transition(null, this._showComplete.bind(this));
         },
 
@@ -2401,7 +2519,6 @@ if (typeof jQuery === 'undefined') {
 
             this.$element = null;
             this.$target = null;
-            this.$viewport = null;
             this.$arrow = null;
             this.$focusFirst = null;
             this.$focusLast = null;
@@ -2420,6 +2537,10 @@ if (typeof jQuery === 'undefined') {
             this.dynamicTip = null;
             this.inserted = null;
             this.flags = null;
+            if (this.popper !== null) {
+                this.popper.destroy();
+            }
+            this.popper = null;
 
             this._unlinkCompleteExt();
 
@@ -2449,11 +2570,17 @@ if (typeof jQuery === 'undefined') {
             var $tip = this.$target;
             $tip.detach();
 
+            var shadowRoot = $().CFW_findShadowRoot(this.$element[0]);
+            if (shadowRoot !== null && !this.settings.container) {
+                this.settings.container = 'body';
+            }
+
             if (typeof placement === 'object') {
                 // Custom placement
                 this.settings.container = 'body';
                 $tip.appendTo(this.settings.container);
-            } if (this.settings.container) {
+            }
+            if (this.settings.container) {
                 // Container placement
                 $tip.appendTo(this.settings.container);
             } else {
@@ -2465,75 +2592,69 @@ if (typeof jQuery === 'undefined') {
             this.$element.CFW_trigger('inserted.cfw.' + this.type);
         },
 
-        /* eslint-disable complexity */
-        locateTip : function() {
-            var $tip = this.$target;
+        locateUpdate : function() {
+            if (this.popper !== null) {
+                this.popper.scheduleUpdate();
+            }
+        },
 
-            $tip
-                .removeClass('top reverse bottom forward')
-                .css({
-                    top: 0,
-                    left: 0,
-                    display: 'block'
-                });
+        locateTip : function() {
+            var $selfRef = this;
 
             var placement = typeof this.settings.placement === 'function'
                 ? this.settings.placement.call(this, this.$target[0], this.$element[0])
                 : this.settings.placement;
-            var directionVal = window.getComputedStyle($('html')[0], null).getPropertyValue('direction').toLowerCase();
 
             this._insertTip(placement);
 
             if (typeof placement === 'object') {
                 // Custom placement
-                $tip.offset(placement);
-                $tip.addClass('in');
+                this.$target.offset(placement);
+                this.$target.addClass('in');
                 return;
             }
 
             // Standard Placement
             var autoToken = /\s?auto?\s?/i;
-            var autoPlace = autoToken.test(placement);
-            if (autoPlace) {
-                placement = placement.replace(autoToken, '') || CFW_Widget_Tooltip.DEFAULTS.placement;
+            var autoFlip = autoToken.test(this.settings.placement);
+            placement = this.settings.placement.replace(autoToken, '');
+            // Allow for 'auto' placement
+            if (!placement.trim().length) {
+                placement = 'auto';
             }
+            var attachment = this._getAttachment(placement);
+            this._addAttachmentClass(attachment);
 
-            $tip.addClass(placement);
+            this.$target.addClass('in');
 
-            var pos          = this._getPosition();
-            var actualWidth  = $tip[0].getBoundingClientRect().width;
-            var actualHeight = $tip[0].getBoundingClientRect().height;
-
-            if (autoPlace) {
-                var orgPlacement = placement;
-
-                var viewportDim = this.getViewportBounds();
-
-                /* eslint-disable indent, no-multi-spaces, no-nested-ternary, operator-linebreak */
-                if (directionVal === 'rtl') {
-                    placement = placement === 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
-                                placement === 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
-                                placement === 'reverse' && pos.left   - actualWidth  > viewportDim.left   ? 'forward' :
-                                placement === 'forward' && pos.right  + actualWidth  < viewportDim.width  ? 'reverse' :
-                                placement;
-                } else {
-                    placement = placement === 'bottom'  && pos.bottom + actualHeight > viewportDim.bottom ? 'top'     :
-                                placement === 'top'     && pos.top    - actualHeight < viewportDim.top    ? 'bottom'  :
-                                placement === 'forward' && pos.right  + actualWidth  > viewportDim.width  ? 'reverse' :
-                                placement === 'reverse' && pos.left   - actualWidth  < viewportDim.left   ? 'forward' :
-                                placement;
+            this.popper = new Popper(this.$element[0], this.$target[0], {
+                placement: attachment,
+                modifiers: {
+                    flip: {
+                        enabled: autoFlip,
+                        behavior: 'flip'
+                    },
+                    arrow: {
+                        element: '.' + this.type + '-arrow'
+                    },
+                    preventOverflow: {
+                        padding: this.settings.padding,
+                        boundariesElement: this._getViewport()
+                    },
+                    computeStyle : {
+                        gpuAcceleration: this.settings.gpuAcceleration
+                    }
+                },
+                onCreate: function(data) {
+                    if (data.originalPlacement !== data.placement) {
+                        $selfRef._handlePopperPlacementChange(data);
+                    }
+                },
+                onUpdate: function(data) {
+                    $selfRef._handlePopperPlacementChange(data);
                 }
-                /* eslint-enable indent, no-multi-spaces, no-nested-ternary, operator-linebreak */
-
-                $tip.removeClass(orgPlacement)
-                    .addClass(placement);
-            }
-
-            var calculatedOffset = this._getCalculatedOffset(placement, pos, actualWidth, actualHeight, directionVal);
-
-            this._applyPlacement(calculatedOffset, placement);
+            });
         },
-        /* eslint-enable complexity */
 
         _showComplete : function() {
             var $selfRef = this;
@@ -2550,7 +2671,7 @@ if (typeof jQuery === 'undefined') {
                 .attr('data-cfw-mutate', '')
                 .CFW_mutationListen()
                 .on('mutate.cfw.mutate', function() {
-                    $selfRef.locateTip();
+                    $selfRef.locateUpdate();
                 });
             this.$element
                 .attr('data-cfw-mutate', '')
@@ -2582,6 +2703,7 @@ if (typeof jQuery === 'undefined') {
         },
 
         _hideComplete : function() {
+            this._cleanTipClass();
             this.$element
                 .off('.cfw.' + this.type + '.focusStart')
                 .off('mutate.cfw.mutate')
@@ -2592,7 +2714,6 @@ if (typeof jQuery === 'undefined') {
                 .off('.cfw.' + this.type)
                 .off('mutate.cfw.mutate')
                 .removeClass('in')
-                .css('display', 'none')
                 .attr('aria-hidden', true)
                 .removeAttr('data-cfw-mutate')
                 .CFW_mutationIgnore();
@@ -2626,6 +2747,10 @@ if (typeof jQuery === 'undefined') {
                 this._removeDynamicTip();
             }
 
+            if (this.popper !== null) {
+                this.popper.destroy();
+            }
+
             this.$element.CFW_trigger('afterHide.cfw.' + this.type);
         },
 
@@ -2645,196 +2770,65 @@ if (typeof jQuery === 'undefined') {
             this.$target = null;
         },
 
-        _getPosition : function() {
-            var $element = this.$element;
-            var el = $element[0];
-            var isBody = el.tagName === 'BODY';
-
-            var elRect = el.getBoundingClientRect();
-            elRect = $.extend({}, elRect, {
-                top: elRect.top + window.pageYOffset,
-                left: elRect.left + window.pageXOffset
-            });
-
-            var elOffset = isBody
-                ? {
-                    top: 0,
-                    left: 0
-                }
-                : $element.offset();
-            // SVG/Chrome issue: https://github.com/jquery/jquery/issues/2895
-            if ($element[0].className instanceof SVGAnimatedString) {
-                elOffset = {};
-            }
-
-            var scroll = {
-                scroll: isBody
-                    ? document.documentElement.scrollTop || document.body.scrollTop
-                    : $element.scrollTop()
-            };
-            var outerDims = isBody
-                ? {
-                    width: $(window).width(),
-                    height: $(window).height()
-                }
-                : null;
-            return $.extend({}, elRect, scroll, outerDims, elOffset);
-        },
-
-        _getCalculatedOffset : function(placement, pos, actualWidth, actualHeight, directionVal) {
-            /* eslint-disable indent, no-multi-spaces, no-nested-ternary, operator-linebreak, object-curly-newline, object-property-newline, no-magic-numbers, no-else-return */
-            if (directionVal === 'rtl') {
-                return placement === 'bottom'   ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement === 'top'      ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement === 'forward'  ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-                    /* placement === 'reverse' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
-            } else {
-                return placement === 'bottom'   ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement === 'top'      ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }  :
-                       placement === 'reverse'  ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-                    /* placement === 'forward' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width };
-            }
-            /* eslint-enable indent, no-multi-spaces, no-nested-ternary, operator-linebreak, object-curly-newline, object-property-newline, no-magic-numbers, no-else-return */
-        },
-
-        _applyPlacement : function(offset, placement) {
-            var $tip   = this.$target;
-            var width  = $tip[0].getBoundingClientRect().width;
-            var height = $tip[0].getBoundingClientRect().height;
-
-            // manually read margins because getBoundingClientRect includes difference
-            // includes protection against NaN
-            var marginTop = parseInt($tip.css('margin-top'), 10) || 0;
-            var marginLeft = parseInt($tip.css('margin-left'), 10) || 0;
-
-            offset.top += marginTop;
-            offset.left += marginLeft;
-
-            // $.fn.offset doesn't round pixel values
-            // so we use setOffset directly with our own function B-0
-            $.offset.setOffset($tip[0], $.extend({
-                using: function(props) {
-                    $tip.css({
-                        top: Math.round(props.top),
-                        left: Math.round(props.left)
-                    });
-                }
-            }, offset), 0);
-
-            $tip.addClass('in');
-
-            // check to see if placing tip in new offset caused the tip to resize itself
-            var actualWidth  = $tip[0].getBoundingClientRect().width;
-            var actualHeight = $tip[0].getBoundingClientRect().height;
-
-            if (placement === 'top' && actualHeight !== height) {
-                offset.top = offset.top + height - actualHeight;
-            }
-
-            var delta = this._getViewportAdjustedDelta(placement, offset, actualWidth, actualHeight);
-
-            if (delta.left) {
-                offset.left += delta.left;
-            } else {
-                offset.top += delta.top;
-            }
-
-            var isVertical          = /top|bottom/.test(placement);
-            /* eslint-disable-next-line no-magic-numbers */
-            var arrowDelta          = isVertical ? delta.left * 2 - width + actualWidth : delta.top * 2 - height + actualHeight;
-            var arrowOffsetPosition = isVertical ? 'offsetWidth' : 'offsetHeight';
-
-            $tip.offset(offset);
-            this._replaceArrow(arrowDelta, $tip[0][arrowOffsetPosition], isVertical);
-        },
-
-        getViewportBounds : function() {
-            var $viewport = this.$viewport;
-            var elRect = $viewport[0].getBoundingClientRect();
-
-
-            if ($viewport.is('body') && (/fixed|absolute/).test(this.$element.css('position'))) {
-                // fixed and absolute elements should be tested against the window
-                return $.extend({}, elRect, this.getScreenSpaceBounds($viewport));
-            }
-
-            var viewportBoundary = $.extend({}, $viewport.offset(), {
-                width: $viewport.outerWidth(),
-                height: $viewport.outerHeight()
-            });
-
-            // Double check elements inside fixed and aboslute elements against the viewport
-            if ($viewport.is('body')) {
-                var $node = this.$element;
-                while ($node.length && !($node.is('body') || $node.is('html'))) {
-                    if ((/fixed|absolute/).test($node.css('position'))) {
-                        var screenBounds = this.getScreenSpaceBounds($viewport);
-                        viewportBoundary = $.extend({}, viewportBoundary, {
-                            width : Math.max(viewportBoundary.width, screenBounds.width),
-                            height: Math.max(viewportBoundary.height, screenBounds.height)
-                        });
-                        break;
+        _cleanTipClass : function() {
+            var regex = new RegExp('(^|\\s)cfw-' + this.type + '\\S+', 'g');
+            if (this.$target) {
+                var items = this.$target[0].className.match(regex);
+                if (items !== null) {
+                    for (var i = items.length; i--;) {
+                        this.$target[0].classList.remove(items[i].trim());
                     }
-                    $node = $node.offsetParent();
                 }
             }
-
-            return $.extend({}, elRect, viewportBoundary);
         },
 
-        getScreenSpaceBounds : function($viewport) {
-            return {
-                top: $viewport.scrollTop(),
-                left: $viewport.scrollLeft(),
-                width: $(window).width(),
-                height: $(window).height()
-            };
+        _handlePopperPlacementChange : function(popperData) {
+            this._cleanTipClass();
+            this._addAttachmentClass(this._getAttachment(popperData.placement));
         },
 
-        _getViewportAdjustedDelta : function(placement, pos, actualWidth, actualHeight) {
-            var delta = {
-                top: 0,
-                left: 0
-            };
-            if (!this.$viewport) { return delta; }
+        _addAttachmentClass : function(attachment) {
+            if (this.$target) {
+                this.$target.addClass('cfw-' + this.type + '-' + attachment);
+            }
+        },
 
-            var viewportPadding = this.settings.padding;
-            var viewportDimensions = this.getViewportBounds();
+        _isElement : function(node) {
+            return (node[0] || node).nodeType;
+        },
 
-            if (/forward|reverse/.test(placement)) {
-                var topEdgeOffset    = pos.top - viewportPadding;
-                var bottomEdgeOffset = pos.top + viewportPadding + actualHeight;
+        _getViewport : function() {
+            var viewport = this.settings.viewport;
 
-                if (topEdgeOffset < viewportDimensions.top) { // top overflow
-                    delta.top = viewportDimensions.top - topEdgeOffset;
-                } else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) { // bottom overflow
-                    delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset;
-                }
-            } else {
-                var leftEdgeOffset  = pos.left - viewportPadding;
-                var rightEdgeOffset = pos.left + viewportPadding + actualWidth;
-                if (leftEdgeOffset < viewportDimensions.left) { // left overflow
-                    delta.left = viewportDimensions.left - leftEdgeOffset;
-                } else if (rightEdgeOffset > viewportDimensions.right) { // right overflow
-                    delta.left = viewportDimensions.left + viewportDimensions.width - rightEdgeOffset;
-                }
+            if (typeof viewport === 'function') {
+                viewport = this.settings.viewport.call(this, this.$element);
             }
 
-            return delta;
-        },
+            var $viewportElm = $(viewport);
 
-        _replaceArrow : function(delta, dimension, isVertical) {
-            var PCT_MIDPOINT = 50;
-            this._arrow()
-                .css(isVertical ? 'left' : 'top', PCT_MIDPOINT * (1 - delta / dimension) + '%')
-                .css(isVertical ? 'top' : 'left', '');
-        },
-
-        _arrow : function() {
-            if (!this.$arrow) {
-                this.$arrow = this.$target.find('.tooltip-arrow');
+            if (this._isElement($viewportElm)) {
+                viewport = $viewportElm[0];
             }
-            return this.$arrow;
+
+            return viewport;
+        },
+
+        _getAttachment : function(placement) {
+            if (this.$element) {
+                var directionVal = window.getComputedStyle(this.$element[0], null).getPropertyValue('direction').toLowerCase();
+                var isRTL = Boolean(directionVal === 'rtl');
+                var attachmentMap = {
+                    AUTO: 'auto',
+                    TOP: 'top',
+                    FORWARD: isRTL ? 'left' : 'right',
+                    RIGHT: 'right',
+                    BOTTOM: 'bottom',
+                    REVERSE: isRTL ? 'right' : 'left',
+                    LEFT: 'left'
+                };
+                return attachmentMap[placement.toUpperCase()];
+            }
+            return CFW_Widget_Tooltip.DEFAULTS.placement;
         },
 
         _isInState : function() {
@@ -3079,8 +3073,6 @@ if (typeof jQuery === 'undefined') {
             this.enableDrag();
         }
 
-        $tip.removeClass('fade in top bottom reverse forward');
-
         if (!$title.html()) { $title.hide(); }
 
         if (this.isDialog && !this.docAdded) {
@@ -3116,6 +3108,10 @@ if (typeof jQuery === 'undefined') {
 
         // Remove mutation handler and replace resize location handler
         this.$element.on('afterShow.cfw.' + this.type, function() {
+            if ($selfRef.popper !== null) {
+                $selfRef.popper.disableEventListeners();
+            }
+
             $selfRef.$target
                 .off('mutate.cfw.mutate')
                 .removeAttr('data-cfw-mutate')
@@ -3128,6 +3124,9 @@ if (typeof jQuery === 'undefined') {
                     $selfRef.locateDragTip(offset.top, offset.left);
                 });
         });
+
+        // Use top/left instead of transforms to position popover
+        this.settings.gpuAcceleration = false;
 
         // Unset any previous drag events
         this.$target.off('.cfw.drag');
@@ -3193,6 +3192,9 @@ if (typeof jQuery === 'undefined') {
 
     CFW_Widget_Popover.prototype.viewportDragLimit = function() {
         var $viewport = this.$viewport;
+        if (!$viewport.length) {
+            $viewport = $(document.body);
+        }
         var scrollbarWidth = this.viewportScrollbarWidth($viewport);
         var limit = $viewport.offset();
 

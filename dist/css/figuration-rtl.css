@@ -1807,7 +1807,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn:not(:disabled):not(.disabled):active,
 .btn.active:not(:disabled):not(.disabled),
-.open > .btn, .btn-check-input:not(:disabled):checked ~ .btn {
+.btn.open, .btn-check-input:not(:disabled):checked ~ .btn {
   color: #262d34;
   background-color: #bfc6cd;
   border-color: #7e8d9b;
@@ -1838,7 +1838,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn-primary:not(:disabled):not(.disabled):active,
 .btn-primary.active:not(:disabled):not(.disabled),
-.open > .btn-primary, .btn-check-input:not(:disabled):checked ~ .btn-primary {
+.btn-primary.open, .btn-check-input:not(:disabled):checked ~ .btn-primary {
   color: #fff;
   background-color: #003ca3;
   border-color: #003ca3;
@@ -1869,7 +1869,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn-secondary:not(:disabled):not(.disabled):active,
 .btn-secondary.active:not(:disabled):not(.disabled),
-.open > .btn-secondary, .btn-check-input:not(:disabled):checked ~ .btn-secondary {
+.btn-secondary.open, .btn-check-input:not(:disabled):checked ~ .btn-secondary {
   color: #fff;
   background-color: #424f5b;
   border-color: #424f5b;
@@ -1900,7 +1900,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn-info:not(:disabled):not(.disabled):active,
 .btn-info.active:not(:disabled):not(.disabled),
-.open > .btn-info, .btn-check-input:not(:disabled):checked ~ .btn-info {
+.btn-info.open, .btn-check-input:not(:disabled):checked ~ .btn-info {
   color: #fff;
   background-color: #0f5a73;
   border-color: #0f5a73;
@@ -1931,7 +1931,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn-success:not(:disabled):not(.disabled):active,
 .btn-success.active:not(:disabled):not(.disabled),
-.open > .btn-success, .btn-check-input:not(:disabled):checked ~ .btn-success {
+.btn-success.open, .btn-check-input:not(:disabled):checked ~ .btn-success {
   color: #fff;
   background-color: #0a610f;
   border-color: #0a610f;
@@ -1962,7 +1962,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn-warning:not(:disabled):not(.disabled):active,
 .btn-warning.active:not(:disabled):not(.disabled),
-.open > .btn-warning, .btn-check-input:not(:disabled):checked ~ .btn-warning {
+.btn-warning.open, .btn-check-input:not(:disabled):checked ~ .btn-warning {
   color: #000;
   background-color: #ae8819;
   border-color: #ae8819;
@@ -1993,7 +1993,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn-danger:not(:disabled):not(.disabled):active,
 .btn-danger.active:not(:disabled):not(.disabled),
-.open > .btn-danger, .btn-check-input:not(:disabled):checked ~ .btn-danger {
+.btn-danger.open, .btn-check-input:not(:disabled):checked ~ .btn-danger {
   color: #fff;
   background-color: #94190e;
   border-color: #94190e;
@@ -2024,7 +2024,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn-light:not(:disabled):not(.disabled):active,
 .btn-light.active:not(:disabled):not(.disabled),
-.open > .btn-light, .btn-check-input:not(:disabled):checked ~ .btn-light {
+.btn-light.open, .btn-check-input:not(:disabled):checked ~ .btn-light {
   color: #262d34;
   background-color: #a7a9aa;
   border-color: #a7a9aa;
@@ -2055,7 +2055,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn-dark:not(:disabled):not(.disabled):active,
 .btn-dark.active:not(:disabled):not(.disabled),
-.open > .btn-dark, .btn-check-input:not(:disabled):checked ~ .btn-dark {
+.btn-dark.open, .btn-check-input:not(:disabled):checked ~ .btn-dark {
   color: #fff;
   background-color: #242b32;
   border-color: #242b32;
@@ -2086,7 +2086,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn-outline:not(:disabled):not(.disabled):active,
 .btn-outline.active:not(:disabled):not(.disabled),
-.open > .btn-outline, .btn-check-input:not(:disabled):checked ~ .btn-outline {
+.btn-outline.open, .btn-check-input:not(:disabled):checked ~ .btn-outline {
   color: #262d34;
   background-color: #bfc6cd;
   border-color: #7e8d9b;
@@ -2117,7 +2117,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn-outline-primary:not(:disabled):not(.disabled):active,
 .btn-outline-primary.active:not(:disabled):not(.disabled),
-.open > .btn-outline-primary, .btn-check-input:not(:disabled):checked ~ .btn-outline-primary {
+.btn-outline-primary.open, .btn-check-input:not(:disabled):checked ~ .btn-outline-primary {
   color: #fff;
   background-color: #0048c6;
   border-color: #003ca3;
@@ -2148,7 +2148,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn-outline-secondary:not(:disabled):not(.disabled):active,
 .btn-outline-secondary.active:not(:disabled):not(.disabled),
-.open > .btn-outline-secondary, .btn-check-input:not(:disabled):checked ~ .btn-outline-secondary {
+.btn-outline-secondary.open, .btn-check-input:not(:disabled):checked ~ .btn-outline-secondary {
   color: #fff;
   background-color: #50606f;
   border-color: #424f5b;
@@ -2179,7 +2179,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn-outline-info:not(:disabled):not(.disabled):active,
 .btn-outline-info.active:not(:disabled):not(.disabled),
-.open > .btn-outline-info, .btn-check-input:not(:disabled):checked ~ .btn-outline-info {
+.btn-outline-info.open, .btn-check-input:not(:disabled):checked ~ .btn-outline-info {
   color: #fff;
   background-color: #136d8b;
   border-color: #0f5a73;
@@ -2210,7 +2210,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn-outline-success:not(:disabled):not(.disabled):active,
 .btn-outline-success.active:not(:disabled):not(.disabled),
-.open > .btn-outline-success, .btn-check-input:not(:disabled):checked ~ .btn-outline-success {
+.btn-outline-success.open, .btn-check-input:not(:disabled):checked ~ .btn-outline-success {
   color: #fff;
   background-color: #0c7513;
   border-color: #0a610f;
@@ -2241,7 +2241,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn-outline-warning:not(:disabled):not(.disabled):active,
 .btn-outline-warning.active:not(:disabled):not(.disabled),
-.open > .btn-outline-warning, .btn-check-input:not(:disabled):checked ~ .btn-outline-warning {
+.btn-outline-warning.open, .btn-check-input:not(:disabled):checked ~ .btn-outline-warning {
   color: #262d34;
   background-color: #d3a51e;
   border-color: #ae8819;
@@ -2272,7 +2272,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn-outline-danger:not(:disabled):not(.disabled):active,
 .btn-outline-danger.active:not(:disabled):not(.disabled),
-.open > .btn-outline-danger, .btn-check-input:not(:disabled):checked ~ .btn-outline-danger {
+.btn-outline-danger.open, .btn-check-input:not(:disabled):checked ~ .btn-outline-danger {
   color: #fff;
   background-color: #b41e11;
   border-color: #94190e;
@@ -2303,7 +2303,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn-outline-light:not(:disabled):not(.disabled):active,
 .btn-outline-light.active:not(:disabled):not(.disabled),
-.open > .btn-outline-light, .btn-check-input:not(:disabled):checked ~ .btn-outline-light {
+.btn-outline-light.open, .btn-check-input:not(:disabled):checked ~ .btn-outline-light {
   color: #262d34;
   background-color: #cbcdcf;
   border-color: #a7a9aa;
@@ -2334,7 +2334,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn-outline-dark:not(:disabled):not(.disabled):active,
 .btn-outline-dark.active:not(:disabled):not(.disabled),
-.open > .btn-outline-dark, .btn-check-input:not(:disabled):checked ~ .btn-outline-dark {
+.btn-outline-dark.open, .btn-check-input:not(:disabled):checked ~ .btn-outline-dark {
   color: #fff;
   background-color: #2c353d;
   border-color: #242b32;
@@ -2372,8 +2372,7 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
   border-color: transparent;
 }
 
-.btn-link:not(:disabled):not(.disabled):active, .btn-link:not(:disabled):not(.disabled).active,
-.open > .btn-link {
+.btn-link:not(:disabled):not(.disabled):active, .btn-link:not(:disabled):not(.disabled).active, .btn-link.open {
   color: #003ca3;
   background-color: transparent;
   border-color: transparent;
@@ -3989,7 +3988,7 @@ a.page-link {
   display: none;
   min-width: 10rem;
   padding: 0.3125rem 0;
-  margin: 0.125rem 0 0;
+  margin: 0.125rem 0;
   font-size: 1rem;
   color: #262d34;
   text-align: right;
@@ -4036,7 +4035,7 @@ a.page-link {
   border-right: 0.3125rem solid  #fff;
 }
 
-.dropdown-menu-reverse .dropdown-menu {
+.dropdown-reverse .dropdown-menu {
   left: 0;
   right: auto;
 }
@@ -4149,6 +4148,12 @@ a.page-link {
   bottom: 0;
   margin-top: 0;
   margin-bottom: calc(-0.4375rem + 1px);
+}
+
+.dropdown-menu[x-placement],
+.dropdown-submenu > .dropdown-menu[x-placement] {
+  left: auto;
+  bottom: auto;
 }
 
 .dropdown-back {
@@ -5886,6 +5891,7 @@ a.page-link {
   position: absolute;
   z-index: 1040;
   display: block;
+  margin: 0.125rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
@@ -5902,63 +5908,12 @@ a.page-link {
   white-space: normal;
   font-size: 0.875rem;
   word-wrap: break-word;
+  outline: 0;
   opacity: 0;
 }
 
 .tooltip.in {
   opacity: 0.9;
-}
-
-.tooltip.top {
-  padding: 0.375rem 0;
-  margin-top: -0.125rem;
-}
-
-.tooltip.forward {
-  padding: 0 0.375rem;
-  margin-left: -0.125rem;
-}
-
-.tooltip.bottom {
-  padding: 0.375rem 0;
-  margin-top: 0.125rem;
-}
-
-.tooltip.reverse {
-  padding: 0 0.375rem;
-  margin-left: 0.125rem;
-}
-
-.tooltip.top .tooltip-arrow {
-  bottom: 0;
-  left: 50% ;
-  margin-right: -0.375rem;
-  border-top-color: #262d34;
-  border-bottom-width: 0;
-}
-
-.tooltip.forward .tooltip-arrow {
-  top: 50%;
-  right: 0;
-  margin-top: -0.375rem;
-  border-left-color: #262d34;
-  border-right-width: 0;
-}
-
-.tooltip.reverse .tooltip-arrow {
-  top: 50%;
-  left: 0;
-  margin-top: -0.375rem;
-  border-left-width: 0;
-  border-right-color: #262d34;
-}
-
-.tooltip.bottom .tooltip-arrow {
-  top: 0;
-  left: 50% ;
-  margin-right: -0.375rem;
-  border-top-width: 0;
-  border-bottom-color: #262d34;
 }
 
 .tooltip .close {
@@ -5976,6 +5931,78 @@ a.page-link {
   opacity: 0.85;
 }
 
+.tooltip-arrow {
+  position: absolute;
+  display: block;
+  width: 0.75rem;
+  height: 0.375rem;
+}
+
+.tooltip-arrow::before {
+  position: absolute;
+  content: "";
+  border-color: transparent;
+  border-style: solid;
+}
+.cfw-tooltip-top, .cfw-tooltip-auto[x-placement^="top"] {
+  padding-bottom: 0.375rem;
+}
+
+.cfw-tooltip-top .tooltip-arrow, .cfw-tooltip-auto[x-placement^="top"] .tooltip-arrow {
+  bottom: 0;
+}
+
+.cfw-tooltip-top .tooltip-arrow::before, .cfw-tooltip-auto[x-placement^="top"] .tooltip-arrow::before {
+  top: 0;
+  border-width: 0.375rem 0.375rem 0;
+  border-top-color: #262d34;
+}
+
+.cfw-tooltip-right, .cfw-tooltip-auto[x-placement^="right"] {
+  padding-left: 0.375rem;
+}
+
+.cfw-tooltip-right .tooltip-arrow, .cfw-tooltip-auto[x-placement^="right"] .tooltip-arrow {
+  left: 0;
+  width: 0.375rem;
+  height: 0.75rem;
+}
+
+.cfw-tooltip-right .tooltip-arrow::before, .cfw-tooltip-auto[x-placement^="right"] .tooltip-arrow::before {
+  right: 0;
+  border-width: 0.375rem 0.375rem 0.375rem 0;
+  border-right-color: #262d34;
+}
+
+.cfw-tooltip-bottom, .cfw-tooltip-auto[x-placement^="bottom"] {
+  padding-top: 0.375rem;
+}
+
+.cfw-tooltip-bottom .tooltip-arrow, .cfw-tooltip-auto[x-placement^="bottom"] .tooltip-arrow {
+  top: 0;
+}
+
+.cfw-tooltip-bottom .tooltip-arrow::before, .cfw-tooltip-auto[x-placement^="bottom"] .tooltip-arrow::before {
+  bottom: 0;
+  border-width: 0 0.375rem 0.375rem;
+  border-bottom-color: #262d34;
+}
+
+.cfw-tooltip-left, .cfw-tooltip-auto[x-placement^="left"] {
+  padding-right: 0.375rem;
+}
+
+.cfw-tooltip-left .tooltip-arrow, .cfw-tooltip-auto[x-placement^="left"] .tooltip-arrow {
+  right: 0;
+  width: 0.375rem;
+  height: 0.75rem;
+}
+
+.cfw-tooltip-left .tooltip-arrow::before, .cfw-tooltip-auto[x-placement^="left"] .tooltip-arrow::before {
+  left: 0;
+  border-width: 0.375rem 0 0.375rem 0.375rem;
+  border-left-color: #262d34;
+}
 .tooltip-body {
   max-width: 13rem;
   padding: 0.25rem 0.5rem;
@@ -5985,20 +6012,12 @@ a.page-link {
   border-radius: 0.25rem;
 }
 
-.tooltip-arrow {
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 0.375rem;
-}
-
 .popover {
   position: absolute;
   z-index: 1030;
   display: none;
   max-width: 18rem;
+  margin: 0.125rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
@@ -6019,84 +6038,113 @@ a.page-link {
   background-clip: padding-box;
   border: 1px solid rgba(38, 45, 52, 0.4);
   border-radius: 0.3125rem;
+  outline: 0;
 }
 
-.popover.top {
-  margin-top: -0.625rem;
+.popover.in {
+  display: block;
 }
 
-.popover.top .popover-arrow {
+.popover-arrow {
+  position: absolute;
+  display: block;
+  width: 1.25rem;
+  height: 0.625rem;
+  margin: 0 0.3125rem;
+}
+
+.popover-arrow::before, .popover-arrow::after {
+  position: absolute;
+  display: block;
+  content: "";
+  border-color: transparent;
+  border-style: solid;
+}
+.cfw-popover-top, .cfw-popover-auto[x-placement^="top"] {
+  margin-bottom: 0.75rem;
+}
+
+.cfw-popover-top > .popover-arrow, .cfw-popover-auto[x-placement^="top"] > .popover-arrow {
   bottom: calc(-0.625rem + -1px);
-  right: 50%;
-  margin-right: -0.625rem;
+}
+
+.cfw-popover-top > .popover-arrow::before, .cfw-popover-auto[x-placement^="top"] > .popover-arrow::before {
+  bottom: 0;
+  border-width: 0.625rem 0.625rem 0;
   border-top-color: rgba(38, 45, 52, 0.4);
-  border-bottom-width: 0;
 }
 
-.popover.top .popover-arrow::after {
+.cfw-popover-top > .popover-arrow::after, .cfw-popover-auto[x-placement^="top"] > .popover-arrow::after {
   bottom: 1px;
-  margin-right: -0.625rem;
+  border-width: 0.625rem 0.625rem 0;
   border-top-color: #fff;
-  border-bottom-width: 0;
 }
 
-.popover.forward {
-  margin-left: -0.625rem;
+.cfw-popover-right, .cfw-popover-auto[x-placement^="right"] {
+  margin-left: 0.75rem;
 }
 
-.popover.forward .popover-arrow {
-  top: 50%;
-  right: calc(-0.625rem + -1px);
-  margin-top: -0.625rem;
-  border-left-color: rgba(38, 45, 52, 0.4);
-  border-right-width: 0;
-}
-
-.popover.forward .popover-arrow::after {
-  bottom: -0.625rem;
-  right: 1px;
-  border-left-color: #fff;
-  border-right-width: 0;
-}
-
-.popover.bottom {
-  margin-top: 0.625rem;
-}
-
-.popover.bottom .popover-arrow {
-  top: calc(-0.625rem + -1px);
-  left: 50% ;
-  margin-right: -0.625rem;
-  border-top-width: 0;
-  border-bottom-color: rgba(38, 45, 52, 0.4);
-}
-
-.popover.bottom .popover-arrow::after {
-  top: 1px;
-  margin-right: -0.625rem;
-  border-top-width: 0;
-  border-bottom-color: #fff;
-}
-
-.popover.reverse {
-  margin-left: 0.625rem;
-}
-
-.popover.reverse .popover-arrow {
-  top: 50%;
+.cfw-popover-right > .popover-arrow, .cfw-popover-auto[x-placement^="right"] > .popover-arrow {
   left: calc(-0.625rem + -1px);
-  margin-top: -0.625rem;
-  border-left-width: 0;
+  width: 0.625rem;
+  height: 1.25rem;
+  margin: 0.3125rem 0;
+}
+
+.cfw-popover-right > .popover-arrow::before, .cfw-popover-auto[x-placement^="right"] > .popover-arrow::before {
+  left: 0;
+  border-width: 0.625rem 0.625rem 0.625rem 0;
   border-right-color: rgba(38, 45, 52, 0.4);
 }
 
-.popover.reverse .popover-arrow::after {
+.cfw-popover-right > .popover-arrow::after, .cfw-popover-auto[x-placement^="right"] > .popover-arrow::after {
   left: 1px;
-  bottom: -0.625rem;
-  border-left-width: 0;
+  border-width: 0.625rem 0.625rem 0.625rem 0;
   border-right-color: #fff;
 }
 
+.cfw-popover-bottom, .cfw-popover-auto[x-placement^="bottom"] {
+  margin-top: 0.75rem;
+}
+
+.cfw-popover-bottom > .popover-arrow, .cfw-popover-auto[x-placement^="bottom"] > .popover-arrow {
+  top: calc(-0.625rem + -1px);
+}
+
+.cfw-popover-bottom > .popover-arrow::before, .cfw-popover-auto[x-placement^="bottom"] > .popover-arrow::before {
+  top: 0;
+  border-width: 0 0.625rem 0.625rem 0.625rem;
+  border-bottom-color: rgba(38, 45, 52, 0.4);
+}
+
+.cfw-popover-bottom > .popover-arrow::after, .cfw-popover-auto[x-placement^="bottom"] > .popover-arrow::after {
+  top: 1px;
+  border-width: 0 0.625rem 0.625rem 0.625rem;
+  border-bottom-color: #fff;
+}
+
+.cfw-popover-left, .cfw-popover-auto[x-placement^="left"] {
+  margin-right: 0.75rem;
+}
+
+.cfw-popover-left > .popover-arrow, .cfw-popover-auto[x-placement^="left"] > .popover-arrow {
+  right: calc(-0.625rem + -1px);
+  width: 0.625rem;
+  height: 1.25rem;
+  margin: 0.3125rem 0;
+}
+
+.cfw-popover-left > .popover-arrow::before, .cfw-popover-auto[x-placement^="left"] > .popover-arrow::before {
+  right: 0;
+  border-width: 0.625rem 0 0.625rem 0.625rem;
+  border-left-color: rgba(38, 45, 52, 0.4);
+}
+
+.cfw-popover-left > .popover-arrow::after, .cfw-popover-auto[x-placement^="left"] > .popover-arrow::after {
+  right: 1px;
+  border-width: 0.625rem 0 0.625rem 0.625rem;
+  border-left-color: #fff;
+}
 .popover-header {
   padding: 0.5rem 0.75rem;
   padding-left: 1.5rem;
@@ -6114,24 +6162,6 @@ a.page-link {
 .popover-body {
   padding: 0.5rem 0.75rem;
   color: #262d34;
-}
-
-.popover-arrow {
-  border-width: 0.625rem;
-}
-
-.popover-arrow::after {
-  content: "";
-  border-width: 0.625rem;
-}
-
-.popover-arrow, .popover-arrow::after {
-  position: absolute;
-  display: block;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
 }
 
 .popover .close, .popover .drag {
