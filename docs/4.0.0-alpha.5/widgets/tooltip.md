@@ -6,6 +6,16 @@ description: Add stylized tooltips to items for contextual or informational supp
 group: widgets
 ---
 
+{% capture callout %}
+Widget Dependencies
+{:.h5 .no_toc}
+
+Tooltip requires the following:
+
+* The third-party library [Popper.js](https://popper.js.org/) to provide dynamic positioning and viewport detection.
+{% endcapture %}
+{% include callout.html content=callout type="info" class="cf-callout-dep" %}
+
 ## Contents
 {:.no_toc}
 

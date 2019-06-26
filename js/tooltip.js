@@ -762,11 +762,11 @@
                 this._removeDynamicTip();
             }
 
-            this.$element.CFW_trigger('afterHide.cfw.' + this.type);
-
             if (this.popper !== null) {
                 this.popper.destroy();
             }
+
+            this.$element.CFW_trigger('afterHide.cfw.' + this.type);
         },
 
         _removeDynamicTip : function() {

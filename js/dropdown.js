@@ -49,7 +49,10 @@
         backtop   : false,  // Should back links start at top level
         backtext  : 'Back', // Text for back links
         container : false,   // Where to place dropdown in DOM
-        variants  : 'dropdown-menu-reverse dropup'
+        reference : 'toggle',
+        boundary  : 'scollParent',
+        flip      : true,
+        display   : 'dynamic'
     };
 
     var clearMenus = function(e) {
@@ -105,7 +108,9 @@
             $itemMenu
                 .removeClass('open');
 
-            $trigger.CFW_Dropdown('containerReset');
+            $trigger
+                .CFW_Dropdown('containerReset')
+                .CFW_Dropdown('popperReset');
 
             $trigger.CFW_trigger('afterHide.cfw.dropdown', eventProperties);
         }
@@ -113,11 +118,8 @@
 
     CFW_Widget_Dropdown.prototype = {
         _init : function() {
-            if (typeof Popper === 'undefined') {
-                throw new TypeError('Figurations\'s Dropdown widget requires Popper.js (https://popper.js.org)');
-            }
-
             var $selfRef = this;
+            this.popper = null;
 
             // Get target menu
             var selector = this.$element.CFW_getSelectorFromChain('dropdown', this.settings.target);
@@ -184,8 +186,8 @@
                 }
 
                 // Manipulate directions of submenus
-                var $dirNode = $this.closest('.dropdown-menu-reverse, .dropdown-menu-forward');
-                if ($dirNode.hasClass('dropdown-menu-reverse')) {
+                var $dirNode = $this.closest('.dropdown-reverse, .dropdown-forward');
+                if ($dirNode.hasClass('dropdown-reverse')) {
                     $this.addClass('dropdown-subalign-reverse');
                 } else {
                     $this.addClass('dropdown-subalign-forward');
@@ -455,6 +457,88 @@
             }
         },
 
+        _isElement : function(node) {
+            return (node[0] || node).nodeType;
+        },
+
+        _getReference : function() {
+            var reference = this.$element[0];
+
+            if (this.settings.reference === 'parent') {
+                reference = this.$element.parent().get(0);
+            } else if (this._isElement(this.settings.reference)) {
+                reference = this.settings.reference;
+
+                // Check for jQuery element
+                if (typeof this.settings.reference.jquery !== 'undefined') {
+                    reference = this.settings.reference[0];
+                }
+            }
+
+            return reference;
+        },
+
+        _getPlacement : function() {
+            var directionVal = window.getComputedStyle(this.$element[0], null).getPropertyValue('direction').toLowerCase();
+            var isRTL = Boolean(directionVal === 'rtl');
+            var attachmentMap = {
+                AUTO: 'auto',
+                TOP: 'top-start',
+                FORWARD: isRTL ? 'left-start' : 'right-start',
+                FORWARDEND: isRTL ? 'left-end' : 'right-end',
+                RIGHT: 'right-start',
+                RIGHTEND: 'right-end',
+                BOTTOM: 'bottom-start',
+                BOTTOMEND: 'bottom-end',
+                REVERSE: isRTL ? 'right-start' : 'left-start',
+                REVERSEEND: isRTL ? 'right-end' : 'left-end',
+                LEFT: 'left-start',
+                LEFTEND: 'left-end'
+            };
+
+            var $dirNode = this.$element.closest('.dropdown-reverse, .dropdown-forward, .dropup');
+            var dirH = $dirNode.hasClass('dropup') ? 'TOP' : 'BOTTOM';
+            var appendH = $dirNode.hasClass('dropdown-reverse') ? 'END' : '';
+            var dirV = $dirNode.hasClass('dropdown-reverse') ? 'REVERSE' : 'FORWARD';
+            var appendV = $dirNode.hasClass('dropup') ? 'END' : '';
+
+            var placement = attachmentMap[dirH + appendH];
+            if (this.settings.isSubmenu) {
+                placement = attachmentMap[dirV + appendV];
+            }
+            return placement;
+        },
+
+        popperReset : function() {
+            if (this.popper !== null) {
+                this.popper.destroy();
+            }
+        },
+
+        _popperLocate: function() {
+            var isStatic = Boolean(window.getComputedStyle(this.$target[0], null).getPropertyValue('position').toLowerCase() === 'static');
+
+            if (this.settings.display !== 'dynamic') { return; }
+            if (isStatic) { return; }
+
+            if (typeof Popper === 'undefined') {
+                throw new TypeError('Figurations\'s Dropdown widget requires Popper.js (https://popper.js.org)');
+            }
+
+            this.popper = new Popper(this._getReference(), this.$target[0], {
+                placement: this._getPlacement(),
+                modifiers: {
+                    flip: {
+                        enabled: this.settings.flip,
+                        behavior: 'flip'
+                    },
+                    preventOverflow: {
+                        boundariesElement: this.settings.boundary
+                    }
+                }
+            });
+        },
+
         toggle : function(e) {
             if (e) {
                 e.preventDefault();
@@ -508,6 +592,8 @@
                     }
                 });
 
+            this._popperLocate();
+
             this.$element.CFW_trigger('afterShow.cfw.dropdown', eventProperties);
         },
 
@@ -532,6 +618,7 @@
                 .removeClass('open');
 
             this.containerReset();
+            this.popperReset();
 
             this.$element
                 .CFW_trigger('afterHide.cfw.dropdown', eventProperties);
@@ -561,6 +648,10 @@
             this.hasContainer = null;
             this.inNavbar = null;
             this.settings = null;
+            if (this.popper !== null) {
+                this.popper.destroy();
+            }
+            this.popper = null;
         }
     };
 

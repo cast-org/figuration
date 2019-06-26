@@ -7,6 +7,16 @@ group: widgets
 ---
 
 {% capture callout %}
+Widget Dependencies
+{:.h5 .no_toc}
+
+Dropdown requires the following:
+
+* The third-party library [Popper.js](https://popper.js.org/) to provide dynamic positioning and viewport detection.  Static positioning does not require the use of Popper.js.
+{% endcapture %}
+{% include callout.html content=callout type="info" class="cf-callout-dep" %}
+
+{% capture callout %}
 Incompatible Widgets
 {:.h5 .no_toc}
 
@@ -454,12 +464,12 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
 
 By default, a dropdown menu is automatically positioned 100% from the top and aligned to the left side of its parent.  While submenu items are aligned 100% from the left and to the top of its parent.
 
-Add `.dropdown-menu-reverse` to a `.dropdown-menu` to align the dropdown menu to the right side of the parent. This will also make all submenus open out to the left side.  This can also be combined with `.dropup`.
+Add `.dropdown-reverse` to a `.dropdown-menu` to align the dropdown menu to the right side of the parent. This will also make all submenus open out to the left side.  This can also be combined with `.dropup`.
 
 **Heads up!** When using the right-to-left, `rtl`, variant of Figuration all horizontal directions will be reversed.  Meaning left becomes right, and vice-versa.
 
 {% capture example %}
-<div class="dropdown dropdown-menu-reverse float-end">
+<div class="dropdown dropdown-reverse float-end">
     <button type="button" class="btn btn-primary" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
         Reverse Dropdown <span class="caret" aria-hidden="true"></span>
     </button>
@@ -492,7 +502,7 @@ Add `.dropdown-menu-reverse` to a `.dropdown-menu` to align the dropdown menu to
 
 ### Submenu Alignment
 
-The menu alignment class of `.dropdown-menu-reverse` will also work with submenu items, and you can use the available `.dropdown-menu-forward` to switch submenu directions if needed.  Simply place either class on the `li` parent of the submenu list.
+The menu alignment class of `.dropdown-reverse` will also work with submenu items, and you can use the available `.dropdown-forward` to switch submenu directions if needed.  Simply place either class on the `li` parent of the submenu list.
 
 {% capture example %}
 <div class="dropdown">
@@ -502,17 +512,17 @@ The menu alignment class of `.dropdown-menu-reverse` will also work with submenu
     <ul class="dropdown-menu">
         <li class="dropdown-header">Dropdown header</li>
         <li><a href="#">Action</a></li>
-        <li class="dropdown-menu-reverse">
+        <li class="dropdown-reverse">
             <a href="#">Reverse menu</a>
             <ul>
-                <li class="dropdown-menu-reverse">
+                <li class="dropdown-reverse">
                     <a href="#">Reverse menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-menu-forward">
+                <li class="dropdown-forward">
                     <a href="#">Forward menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
@@ -521,17 +531,17 @@ The menu alignment class of `.dropdown-menu-reverse` will also work with submenu
                 </li>
             </ul>
         </li>
-        <li class="dropdown-menu-forward">
+        <li class="dropdown-forward">
             <a href="#">Forward menu</a>
             <ul>
-                <li class="dropdown-menu-reverse">
+                <li class="dropdown-reverse">
                     <a href="#">Reverse menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-menu-forward">
+                <li class="dropdown-forward">
                     <a href="#">Forward menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
@@ -543,6 +553,39 @@ The menu alignment class of `.dropdown-menu-reverse` will also work with submenu
         <li class="dropdown-divider"></li>
         <li><a href="#" class="disabled" tabindex="-1" aria-disabled="true">Separated link</a></li>
     </ul>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+### Using a Reference
+
+Use the `reference` option to help control the location of a dropdown menu.
+
+{% capture example %}
+<div class="d-flex">
+    <div class="btn-group me-1">
+        <button type="button" class="btn">Default</button>
+        <button type="button" class="btn btn-icon btn-group-end" data-cfw="dropdown" aria-label="Toggle Dropdown">
+            <span class="caret" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+        </ul>
+    </div>
+
+    <div class="btn-group">
+        <button type="button" class="btn">Reference</button>
+        <button type="button" class="btn btn-icon btn-group-end" data-cfw="dropdown" data-cfw-dropdown-reference="parent" aria-label="Toggle Dropdown">
+            <span class="caret" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+        </ul>
+    </div>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
@@ -596,46 +639,77 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
             <tr>
                 <td>target</td>
                 <td>string</td>
-                <td>null</td>
+                <td><code>null</code></td>
                 <td>Either the selector (jQuery style), or the string related to the target dropdown having a <code>data-cfw-dropdown-target</code> attribute.</td>
             </tr>
             <tr>
                 <td>delay</td>
                 <td>integer</td>
-                <td>350</td>
+                <td><code>350</code></td>
                 <td>Delay for hiding menu on loss of focus or hover when not in click only mode (milliseconds).</td>
             </tr>
             <tr>
                 <td>hover</td>
                 <td>boolean</td>
-                <td>false</td>
+                <td><code>false</code></td>
                 <td>If hover style navigation should be enabled in addition to click/key navigation.  If a touch capable device is found, this setting is overruled.</td>
             </tr>
             <tr>
                 <td>backlink</td>
                 <td>boolean</td>
-                <td>false</td>
+                <td><code>false</code></td>
                 <td>Insert back links into submenus.</td>
             </tr>
             <tr>
                 <td>backtop</td>
                 <td>boolean</td>
-                <td>false</td>
+                <td><code>false</code></td>
                 <td>If back links should be applied at the top level menu as opposed to only submenus.</td>
             </tr>
             <tr>
                 <td>backtext</td>
                 <td>string</td>
-                <td>Back</td>
+                <td><code>Back</code></td>
                 <td>Text to be used for back links.</td>
             </tr>
             <tr>
                 <td>container</td>
-                <td>string | false</td>
-                <td>false</td>
+                <td>element | false</td>
+                <td><code>false</code></td>
                 <td>
                     <p>Appends the dropdown menu to a specific element. Example: <code>container: 'body'</code></p>
-                    <p>This does not apply when the dropdown is inside of a `.navbar-collapse`.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>reference</td>
+                <td>string | element</td>
+                <td><code>'toggle'</code></td>
+                <td>
+                    <p>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, or an HTMLElement reference. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#referenceObject">referenceObject docs</a>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>boundary</td>
+                <td>string | element</td>
+                <td><code>'scrollParent'</code></td>
+                <td>
+                    <p>Overflow constraint boundary of the dropdown menu. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>flip</td>
+                <td>boolean</td>
+                <td><code>'true'</code></td>
+                <td>
+                    <p>Allow Dropdown to flip in case of an overlapping on the reference element. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..flip.enabled">flip docs</a>.</p>
+                </td>
+            </tr>
+            <tr>
+                <td>display</td>
+                <td>string</td>
+                <td><code>'dynamic'</code></td>
+                <td>
+                    <p>By default, we use Popper.js for dynamic positioning. Disable this with <code>'static'</code>.</p>
                 </td>
             </tr>
         </tbody>

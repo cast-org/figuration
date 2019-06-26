@@ -14,6 +14,7 @@ Popover requires the following:
 
 * [Tooltip widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/tooltip/) for the base functionality.
 * [Drag widget]({{ site.baseurl }}/{{ site.docs_version }}/widgets/drag/) for drag functionality.
+* The third-party library [Popper.js](https://popper.js.org/) to provide dynamic positioning and viewport detection.
 {% endcapture %}
 {% include callout.html content=callout type="info" class="cf-callout-dep" %}
 

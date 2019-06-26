@@ -28,7 +28,7 @@ Don't use multiple widgets on the same element. For example, a button should not
 Widget Dependencies
 {:.h5 .no_toc}
 
-Some widgets and CSS components depend on other widgets. If you include widgets individually, make sure to check for these dependencies in the docs. Also note that all widgets depend on jQuery (this means jQuery must be included **before** the widget files). Figuration is currently only tested/supported on the latest version of jQuery.
+Some widgets and CSS components depend on other widgets. If you include widgets individually, make sure to check for these dependencies in the docs. Also note that all widgets depend on [jQuery](https://jquery.com/), while the Tooltip, Popover, and Dropdown widgets also require [Popper.js](https://popper.js.org/) This means jQuery and Popper.js must be included **before** the widget files. Figuration is currently only tested/supported on the latest version of jQuery.
 {% endcapture %}
 {% include callout.html content=callout type="info" %}
 
@@ -165,7 +165,7 @@ $('#myCollapse').CFW_Collapse('hide'); // ** Will be ignored, as the opening tra
 
 Figuration's widgets don't fallback or degrade gracefully when JavaScript is disabled. If you care about the user experience in this case, use `<noscript>` to explain the situation (and how to re-enable JavaScript) to your users, and/or add your own custom fallbacks.
 
-## Dipose Methods
+## Dispose Methods
 
 Every widget has a `dispose` method that should remove any event listeners and data, as well as nullify any constructed JavaScript variables associated with a given widget.  Certain widgets will also remove their dynamically created content or controls from the DOM.
 
