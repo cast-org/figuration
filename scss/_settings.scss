@@ -1180,7 +1180,8 @@ $tooltip-close-opacity:         $close-opacity !default;
 $tooltip-close-hover-color:     $tooltip-color !default;
 $tooltip-close-hover-opacity:   $close-hover-opacity !default;
 
-$tooltip-arrow-width:           .375rem !default;
+$tooltip-arrow-width:           .75rem !default;
+$tooltip-arrow-height:          .375rem !default;
 $tooltip-arrow-color:           $tooltip-bg !default;
 
 
@@ -1188,6 +1189,7 @@ $tooltip-arrow-color:           $tooltip-bg !default;
 // =====
 $popover-font-size:             .9375rem !default;
 $popover-bg:                    $component-bg !default;
+$popover-margin:                .125rem !default;
 $popover-max-width:             rem(288px) !default;  // 288px=>18rem
 $popover-border-width:          $border-width !default;
 $popover-border-color:          $component-overlay-border-color !default;
@@ -1212,7 +1214,8 @@ $popover-body-padding-x:        .75rem !default;
 
 $popover-body-color:            $body-color !default;
 
-$popover-arrow-width:           .625rem !default;
+$popover-arrow-width:           1.25rem !default;
+$popover-arrow-height:          .625rem !default;
 $popover-arrow-color:           $popover-bg !default;
 $popover-arrow-outer-color:     $popover-border-color !default;
 

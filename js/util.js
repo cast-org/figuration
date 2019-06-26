@@ -356,6 +356,29 @@
         return posLeft < scrollbarWidth ? 'right' : 'left';
     };
 
+    $.fn.CFW_findShadowRoot = function(element) {
+        if (!document.documentElement.attachShadow) {
+            return null;
+        }
+
+        // Can find the shadow root otherwise it'll return the document
+        if (typeof element.getRootNode === 'function') {
+            var root = element.getRootNode();
+            return root instanceof ShadowRoot ? root : null;
+        }
+
+        if (element instanceof ShadowRoot) {
+            return element;
+        }
+
+        // when we don't find a shadow root
+        if (!element.parentNode) {
+            return null;
+        }
+
+        return null;
+    };
+
     $.CFW_throttle = function(fn, threshhold, scope) {
         /* From: http://remysharp.com/2010/07/21/throttling-function-calls/ */
         var THRESHHOLD_DEFAULT = 250;

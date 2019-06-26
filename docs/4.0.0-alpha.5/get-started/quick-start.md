@@ -31,12 +31,13 @@ Copy-paste the stylesheet `<link>` into your `<head>` before all other styleshee
 
 ### JavaScript
 
-[Figuration's widgets]({{ site.baseurl }}/{{ site.docs_version }}/widgets/overview/), our interactive components, require [jQuery](https://jquery.com/), along with our own JavaScript library to function. Add our JavaScript widgets and jQuery, either in the `<head>`, or near the end of your pages, right before the closing `</body>` tag. Be sure to place jQuery first, as our code depends on it.
+[Figuration's widgets]({{ site.baseurl }}/{{ site.docs_version }}/widgets/overview/), our interactive components, require [jQuery](https://jquery.com/) and [Popper.js](https://popper.js.org/), along with our own JavaScript library to function. Add jQuery Popper, and our JavaScript widgets either in the `<head>`, or near the end of your pages, right before the closing `</body>` tag. Be sure to place jQuery and Popper first, as our code depends on them.
 
 Our widgets work with either the full version of jQuery, or the [jQuery's slim build](https://blog.jquery.com/2016/06/09/jquery-3-0-final-released/).
 
 {% highlight html %}
 <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
+<script src="{{ site.cdn.popper }}" integrity="{{ site.cdn.popper_hash }}" crossorigin="anonymous"></script>
 <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
 {% endhighlight %}
 
@@ -61,6 +62,7 @@ Essentially something like this:
 
     <!-- jQuery and Figuration JS -->
     <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
+    <script src="{{ site.cdn.popper }}" integrity="{{ site.cdn.popper_hash }}" crossorigin="anonymous"></script>
     <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -107,6 +109,7 @@ When complete, the basic template for a right-to-left markup should look like th
 
     <!-- jQuery and Figuration JS -->
     <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
+    <script src="{{ site.cdn.popper }}" integrity="{{ site.cdn.popper_hash }}" crossorigin="anonymous"></script>
     <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
   </head>
   <body>

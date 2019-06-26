@@ -8,12 +8,8 @@
 
 <link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
 
-<!--
-<script src="../../docs/4.0.0-alpha.5/assets/js/vendor/jquery.slim.min.js"></script>
-<script src="../../dist/js/figuration.js"></script>
--->
-
-<script src="../../docs/4.0.0-alpha.5/assets/js/vendor/jquery.slim.min.js"></script>
+<script src="../../node_modules/jquery/dist/jquery.slim.min.js"></script>
+<script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
 <script src="../../js/util.js"></script>
 <script src="../../js/drag.js"></script>
 <script src="../../js/collapse.js"></script>
@@ -33,7 +29,7 @@
 <script src="../../js/common.js"></script>
 
 </head>
-<body class="m-1">
+<body class="m-1" style="height: 100rem;">
 
 <div class="dropdown mb-1">
     <button id="dropdown0" class="btn btn-info" type="button" data-cfw="dropdown">
@@ -135,23 +131,23 @@
 
 <div class="d-flex flex-center">
     <div class="dropdown">
-        <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+        <button type="button" class="btn" data-cfw="dropdown">
             Dropdown <span class="caret" aria-hidden="true"></span>
         </button>
         <ul class="dropdown-menu">
             <li class="dropdown-header">Dropdown header</li>
             <li><a href="#">Action</a></li>
-            <li class="dropdown-menu-reverse">
+            <li class="dropdown-reverse">
                 <a href="#">Reverse menu</a>
                 <ul>
-                    <li class="dropdown-menu-reverse">
+                    <li class="dropdown-reverse">
                         <a href="#">Reverse menu</a>
                         <ul>
                             <li><a href="#">Action</a></li>
                             <li><a href="#">Another action</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown-menu-forward">
+                    <li class="dropdown-forward">
                         <a href="#">Forward menu</a>
                         <ul>
                             <li><a href="#">Action</a></li>
@@ -160,17 +156,17 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown-menu-forward">
+            <li class="dropdown-forward">
                 <a href="#">Forward menu</a>
                 <ul>
-                    <li class="dropdown-menu-reverse">
+                    <li class="dropdown-reverse">
                         <a href="#">Reverse menu</a>
                         <ul>
                             <li><a href="#">Action</a></li>
                             <li><a href="#">Another action</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown-menu-forward">
+                    <li class="dropdown-forward">
                         <a href="#">Forward menu</a>
                         <ul>
                             <li><a href="#">Action</a></li>
@@ -187,6 +183,59 @@
 
 <div class="mb-1">
     <a href="#">Outer link</a>
+</div>
+
+<div class="dropdown dropdown-reverse float-end">
+    <button type="button" class="btn btn-primary" data-cfw="dropdown">
+        Reverse Dropdown YY <span class="caret" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li class="dropdown-header">Dropdown header</li>
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li>
+           <a href="#">Something else here</a>
+            <ul>
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li>
+                    <a href="#">Something else here</a>
+                    <ul>
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown-divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </li>
+        <li class="dropdown-divider"></li>
+        <li><a href="#" class="disabled" tabindex="-1" aria-disabled="true">Disabled link</a></li>
+    </ul>
+</div>
+
+<div class="btn-group">
+    <button type="button" class="btn">Default</button>
+    <button type="button" class="btn btn-icon btn-group-end" data-cfw="dropdown" aria-label="Toggle Dropdown">
+        <span class="caret" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+    </ul>
+</div>
+
+<div class="btn-group">
+    <button type="button" class="btn">Default</button>
+    <button type="button" class="btn btn-icon btn-group-end" data-cfw="dropdown" data-cfw-dropdown-reference="parent" aria-label="Toggle Dropdown">
+        <span class="caret" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+    </ul>
 </div>
 
 </body>

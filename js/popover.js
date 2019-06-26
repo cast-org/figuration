@@ -88,8 +88,6 @@
             this.enableDrag();
         }
 
-        $tip.removeClass('fade in top bottom reverse forward');
-
         if (!$title.html()) { $title.hide(); }
 
         if (this.isDialog && !this.docAdded) {
@@ -125,6 +123,10 @@
 
         // Remove mutation handler and replace resize location handler
         this.$element.on('afterShow.cfw.' + this.type, function() {
+            if ($selfRef.popper !== null) {
+                $selfRef.popper.disableEventListeners();
+            }
+
             $selfRef.$target
                 .off('mutate.cfw.mutate')
                 .removeAttr('data-cfw-mutate')
@@ -137,6 +139,9 @@
                     $selfRef.locateDragTip(offset.top, offset.left);
                 });
         });
+
+        // Use top/left instead of transforms to position popover
+        this.settings.gpuAcceleration = false;
 
         // Unset any previous drag events
         this.$target.off('.cfw.drag');
@@ -202,6 +207,9 @@
 
     CFW_Widget_Popover.prototype.viewportDragLimit = function() {
         var $viewport = this.$viewport;
+        if (!$viewport.length) {
+            $viewport = $(document.body);
+        }
         var scrollbarWidth = this.viewportScrollbarWidth($viewport);
         var limit = $viewport.offset();
 

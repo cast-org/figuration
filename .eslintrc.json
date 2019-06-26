@@ -7,7 +7,8 @@
   "extends": ["eslint:recommended"],
   "plugins": ["compat", "figuration"],
   "globals": {
-    "CFW_API": true
+    "CFW_API": true,
+    "Popper": true
   },
   "rules": {
     // Plugins

@@ -57,7 +57,7 @@
     }
     .btn:not(:disabled):not(.disabled):active,
     .btn:not(:disabled):not(.disabled).active,
-    .open > .btn {
+    .btn.open {
         @if $enable-shadows {
             @extend %btn-common-active;
         }
@@ -75,7 +75,7 @@
     }
     .btn:not(:disabled):not(.disabled):active:focus,
     .btn:not(:disabled):not(.disabled).active:focus,
-    .open > .btn:focus {
+    .btn.open:focus {
         @if $enable-shadows {
             @extend %btn-common-active-focus;
         }
@@ -181,7 +181,7 @@
 
             &:not(:disabled):not(.disabled):active,
             &:not(:disabled):not(.disabled).active,
-            .open > & {
+            &.open {
                 color: $btn-link-hover-color;
                 background-color: transparent;
                 border-color: transparent;
