@@ -289,25 +289,26 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
             <tr>
                 <td>target</td>
                 <td>string</td>
-                <td>null</td>
+                <td><code>null</code></td>
                 <td>The selector (jQuery style) of the target popover.</td>
             </tr>
             <tr>
                 <td>animate</td>
                 <td>boolean</td>
-                <td>true</td>
+                <td><code>true</code></td>
                 <td>If popover items should fade in and out.</td>
             </tr>
             <tr>
                 <td>placement</td>
                 <td>string | object | function</td>
-                <td>'top'</td>
+                <td><code>'top'</code></td>
                 <td>
                     <p>
                         <strong>string:</strong><br />
                         How to position the popover - top | bottom | reverse | forward | auto.
                         <br />
-                        When "auto" is specified, it will dynamically reorient the popover. For example, if placement is "auto reverse", the popover will display to the left when possible, otherwise it will display right. (Opposite horizontal directions apply for <code>rtl</code> mode.)
+                        When "auto" is specified with a directional value, it will dynamically reorient the popover. For example, if placement is "auto reverse", the popover will display to the left when possible, otherwise it will display right. (Opposite horizontal directions apply for <code>rtl</code> mode.)
+                        When just "auto" is specified, a best fit approach will be used.
                     </p>
                     <p>
                         <strong>object:</strong><br />
@@ -332,13 +333,13 @@ function myPopoverAlign(tip, trigger) {
             <tr>
                 <td>trigger</td>
                 <td>string</td>
-                <td>'hover focus'</td>
+                <td><code>'click'</code></td>
                 <td>How popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. <code>manual</code> cannot be combined with any other trigger.</td>
             </tr>
             <tr>
                 <td>delay</td>
                 <td>number| object</td>
-                <td>show:0, hide:250</td>
+                <td><code>show:0, hide:250</code></td>
                 <td>
                     <p>Delay showing and hiding the popover (ms) - does not apply to manual trigger type.</p>
                     <p>If a number is supplied, delay is applied to both hide/show.</p>
@@ -348,94 +349,95 @@ function myPopoverAlign(tip, trigger) {
             <tr>
                 <td>container</td>
                 <td>string | false</td>
-                <td>false</td>
+                <td><code>false</code></td>
                 <td>Appends the popover to a specific element. Example: <code>container: 'body'</code></td>
             </tr>
             <tr>
                 <td>viewport</td>
-                <td>string | function</td>
-                <td>'body'</td>
+                <td>string | element | function</td>
+                <td><code>'scrollParent'</code></td>
                 <td>
                     <p>Keeps the popover within the bounds of this element. Example: <code>viewport: '#viewport'</code>.</p>
                     <p>If a function is given, it is called with the triggering element DOM node as its only argument. The <code>this</code> context is set to the popover instance.</p>
+                    <p>This option maps to the <code>.boundariesElement</code> option in Popper.js, so it will accept values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</p>
                 </td>
             </tr>
             <tr>
                 <td>padding</td>
                 <td>integer</td>
-                <td>0</td>
+                <td><code>0</code></td>
                 <td>Spacing, in pixels, to keep the popover away from the viewport edge.</td>
             </tr>
             <tr>
                 <td>html</td>
                 <td>boolean</td>
-                <td>false</td>
+                <td><code>false</code></td>
                 <td>Insert HTML into the popover. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
             </tr>
             <tr>
                 <td>closetext</td>
                 <td>string</td>
-                <td>'&lt;span aria-hidden="true" &gt;&amp;times;&lt;/span&gt;'</td>
+                <td><code>'&lt;span aria-hidden="true" &gt;&amp;times;&lt;/span&gt;'</code></td>
                 <td>Visible text for close links when using option <code>trigger: 'click'</code></td>
             </tr>
             <tr>
                 <td>closesrtext</td>
                 <td>string</td>
-                <td>'Close'</td>
+                <td><code>'Close'</code></td>
                 <td>Screen reader only text alternative for close links when using option <code>trigger: 'click'</code></td>
             </tr>
             <tr>
                 <td>title</td>
                 <td>string | function</td>
-                <td>''</td>
+                <td><code>''</code></td>
                 <td>Default title value if <code>title</code> attribute isn't present.</td>
             </tr>
             <tr>
                 <td>content</td>
                 <td>string | function</td>
-                <td>''</td>
+                <td><code>''</code></td>
                 <td>Default title value if <code>data-cfw-popover-content</code> attribute isn't present.</td>
             </tr>
             <tr>
                 <td>unlink</td>
                 <td>boolean</td>
-                <td>false</td>
+                <td><code>false</code></td>
                 <td>If the <code>unlink</code> method should be called when the popover is hidden.  This leaves the popover behind in the DOM.</td>
             </tr>
             <tr>
                 <td>dispose</td>
                 <td>boolean</td>
-                <td>false</td>
+                <td><code>false</code></td>
                 <td>If the <code>dispose</code> method should be called when the popover is hidden. This will remove the popover from the DOM.</td>
             </tr>
             <tr>
                 <td>drag</td>
                 <td>boolean</td>
-                <td>false</td>
+                <td><code>false</code></td>
                 <td>If the popover should have a drag handle inserted.</td>
             </tr>
             <tr>
                 <td>dragtext</td>
                 <td>string</td>
-                <td>'&lt;span aria-hidden="true" &gt;+&lt;/span&gt;'</td>
+                <td><code>'&lt;span aria-hidden="true" &gt;+&lt;/span&gt;'</code></td>
                 <td>Visible text for the auto-inserted drag handle.</td>
             </tr>
             <tr>
                 <td>dragsrtext</td>
                 <td>string</td>
-                <td>'Drag'</td>
+                <td><code>'Drag'</code></td>
                 <td>Screen reader only text alternative for the auto-inserted drag handle.</td>
             </tr>
             <tr>
                 <td>dragstep</td>
                 <td>integer</td>
-                <td>10</td>
+                <td><code>10</code></td>
                 <td>Pixel increment to move the popover when using arrow keys on a drag handle.</td>
             </tr>
             <tr>
                 <td>show</td>
                 <td>boolean</td>
-                <td>false</td>
+                <td><code>false</code></td>
                 <td>Show the popover automatically at the end of initialization. This will force the <code>trigger</code> option to a setting of <code>'click'</code>.</td>
             </tr>
         </tbody>

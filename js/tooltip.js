@@ -67,8 +67,6 @@
 
             this.settings = this.getSettings(options);
 
-            this.$viewport = this.settings.viewport && $(typeof this.settings.viewport === 'function' ? this.settings.viewport.call(this, this.$element) : this.settings.viewport.selector || this.settings.viewport);
-
             this.inState = {
                 click: false,
                 hover: false,
@@ -533,7 +531,6 @@
 
             this.$element = null;
             this.$target = null;
-            this.$viewport = null;
             this.$arrow = null;
             this.$focusFirst = null;
             this.$focusLast = null;
@@ -654,7 +651,7 @@
                     },
                     preventOverflow: {
                         padding: this.settings.padding,
-                        boundariesElement: this.$viewport.length ? this.$viewport[0] : this.settings.viewport
+                        boundariesElement: this._getViewport()
                     },
                     computeStyle : {
                         gpuAcceleration: this.settings.gpuAcceleration
@@ -806,6 +803,26 @@
             if (this.$target) {
                 this.$target.addClass('cfw-' + this.type + '-' + attachment);
             }
+        },
+
+        _isElement : function(node) {
+            return (node[0] || node).nodeType;
+        },
+
+        _getViewport : function() {
+            var viewport = this.settings.viewport;
+
+            if (typeof viewport === 'function') {
+                viewport = this.settings.viewport.call(this, this.$element);
+            }
+
+            var $viewportElm = $(viewport);
+
+            if (this._isElement($viewportElm)) {
+                viewport = $viewportElm[0];
+            }
+
+            return viewport;
         },
 
         _getAttachment : function(placement) {
