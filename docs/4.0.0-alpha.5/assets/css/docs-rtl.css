@@ -1221,6 +1221,11 @@ h4 > code {
   content: none;
 }
 
+.has-link-stretch a:not(.link-stretch) {
+  position: relative;
+  z-index: 2;
+}
+
 .hll {
   background-color: #ffc;
 }
