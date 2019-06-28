@@ -192,7 +192,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             <tr>
                 <td><code>$pre-color</code></td>
                 <td>string</td>
-                <td><code>$uibase-700</code></td>
+                <td><code>null</code></td>
                 <td>
                     Pre element text color.
                 </td>
