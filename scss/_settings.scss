@@ -327,10 +327,13 @@ $body-color:            $uibase-900 !default;
 // Links
 // =====
 // Style anchor elements
-$link-color:            $primary !default;
-$link-decoration:       underline !default;
-$link-hover-color:      palette($primary, 700) !default;
-$link-hover-decoration: underline !default;
+$link-color:                    $primary !default;
+$link-decoration:               underline !default;
+$link-hover-color:              palette($primary, 700) !default;
+$link-hover-decoration:         underline !default;
+
+$link-stretch-pseudo-element:   after !default;
+$link-stretch-z-index:          1 !default;
 
 
 // Paragraph

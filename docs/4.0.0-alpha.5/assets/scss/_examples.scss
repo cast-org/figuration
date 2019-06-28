@@ -320,3 +320,11 @@
 .breadcrumb-none .breadcrumb-item + .breadcrumb-item::before {
     content: none;
 }
+
+// Stretched links
+.has-link-stretch {
+    a:not(.link-stretch) {
+        position: relative;
+        z-index: 2;
+    }
+}
