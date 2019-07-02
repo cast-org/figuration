@@ -165,20 +165,78 @@ When modals become too long for the user's viewport or device, they scroll indep
 </div>
 
 <div class="cf-example">
-    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalScroll">
+    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalScrollBody">
         Scrolling modal
     </button>
 </div>
 
 {% highlight html %}
 <!-- Button trigger -->
-<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalScroll">
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalScrollBody">
     Scrolling modal
 </button>
 
 <!-- Modal -->
 <div class="modal" id="modalScroll">
     <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modal title</h4>
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endhighlight %}
+
+### Scrollable Body
+
+Add `.modal-dialog-scrollable` to `.modal-dialog` where the `.modal-body` is the scrollable region, and the entire modal fits within the viewport height.
+
+<div class="modal" id="modalScrollBody">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modal title</h4>
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h5>Overflowing text to show scroll behavior</h5>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cf-example">
+  <button type="button" class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalScrollBody">
+      Scrollable modal body
+    </button>
+</div>
+
+{% highlight html %}
+<!-- Button trigger -->
+<button type="button" class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalScrollBody">
+    Scrollable modal body
+</button>
+
+<!-- Modal -->
+<div class="modal" id="modalScrollBody">
+    <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Modal title</h4>
@@ -297,6 +355,62 @@ A vertically centered dialog will also scroll when the content is longer than th
 <!-- Modal -->
 <div class="modal" id="modalCenterScroll">
     <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modal title</h4>
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endhighlight %}
+
+You can also combine `.modal-dialog-centered` with `.modal-dialog-scrollable` to keep the modal within the viewport height.
+
+<div class="modal" id="modalCenterBody">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modal title</h4>
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h5>Overflowing text to show scroll behavior</h5>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cf-example">
+  <button type="button" class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalCenterBody">
+      Centered, scrolling modal body
+    </button>
+</div>
+
+{% highlight html %}
+<!-- Button trigger -->
+<button type="button" class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalCenterBody">
+    Centered, scrolling modal body
+</button>
+
+<!-- Modal -->
+<div class="modal" id="modalCenterBody">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Modal title</h4>
@@ -842,7 +956,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 </td>
             </tr>
             <tr>
-                <td><code>$modal-dialog-sm-up-margin-y</code></td>
+                <td><code>$modal-dialog-bp-up-margin-y</code></td>
                 <td>string</td>
                 <td><code>.625rem</code></td>
                 <td>
@@ -882,7 +996,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 </td>
             </tr>
             <tr>
-                <td><code>$modal-content-sm-up-box-shadow</code></td>
+                <td><code>$modal-content-bp-up-box-shadow</code></td>
                 <td>string</td>
                 <td><code>0 .25rem 1rem rgba($black, .5)</code></td>
                 <td>
