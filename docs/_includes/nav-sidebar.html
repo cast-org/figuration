@@ -1,6 +1,6 @@
 {% if site.github %}
-<form class="cf-search">
-    <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" />
+<form class="cf-search" role="search">
+    <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="{{ site.docs_version }}"/>
 </form>
 {% endif %}
 
