@@ -1185,39 +1185,55 @@ We recommend using client side validation, but in case you require server side, 
 
 ### Supported Elements
 
-Our example forms show native textual `<input>`s above, but form validation styles are also available for `<textarea>`s and custom form controls.
+Validation styles are supported for the following form controls and components:
+
+- `<input>`s, `<textarea>`s, and `<select>`s using `.form-control` (only supports one `.form-control` in input groups)
+- `.form-check`s with either native of custom variants
+- `.form-file`
 
 {% capture example %}
 <form class="was-validated">
   <div class="mb-1">
     <label for="validate-textarea">Textarea</label>
-    <textarea class="form-control is-invalid" id="validate-textarea" rows="3" placeholder="Required example textarea" required></textarea>
+    <textarea class="form-control" id="validate-textarea" rows="3" placeholder="Required example textarea" required></textarea>
     <div class="invalid-feedback">Please enter a message in the textarea.</div>
   </div>
 
-  <div class="custom-control custom-checkbox mb-1">
-    <input type="checkbox" class="custom-control-input" id="validate-support-1" required>
-    <label class="custom-control-indicator" for="validate-support-1"></label>
-    <label class="custom-control-label" for="validate-support-1">Check this custom checkbox</label>
+  <div class="form-check mb-1">
+    <input type="checkbox" class="form-check-input" id="validate-support-1" required>
+    <label class="form-check-label" for="validate-support-1">Check this native checkbox</label>
     <div class="invalid-feedback">Example invalid feedback text</div>
   </div>
 
-  <div class="custom-control custom-radio">
-    <input type="radio" class="custom-control-input" id="validate-support-2" name="radio-stacked" required>
-    <label class="custom-control-indicator" for="validate-support-2"></label>
-    <label class="custom-control-label" for="validate-support-2">Toggle this custom radio</label>
+  <div class="form-check">
+    <input type="radio" class="form-check-input" id="validate-support-2" name="radio-stacked" required>
+    <label class="form-check-label" for="validate-support-2">Toggle this native radio</label>
   </div>
-  <div class="custom-control custom-radio mb-1">
-    <input type="radio" class="custom-control-input" id="validate-support-3" name="radio-stacked" required>
-    <label class="custom-control-indicator" for="validate-support-3"></label>
-    <label class="custom-control-label" for="validate-support-3">Or toggle this other custom radio</label>
+  <div class="form-check mb-1">
+    <input type="radio" class="form-check-input" id="validate-support-3" name="radio-stacked" required>
+    <label class="form-check-label" for="validate-support-3">Or toggle this other native radio</label>
     <div class="invalid-feedback">More example invalid feedback text</div>
   </div>
 
-  <div class="custom-control custom-switch mb-1">
-    <input type="checkbox" class="custom-control-input" id="validate-support-4" required>
-    <label class="custom-control-indicator" for="validate-support-4"></label>
-    <label class="custom-control-label" for="validate-support-4">Check this custom checkbox</label>
+  <div class="form-check form-checkradio mb-1">
+    <input type="checkbox" class="form-check-input" id="validate-support-4" required>
+    <label class="form-check-label" for="validate-support-4">Check this custom checkbox</label>
+    <div class="invalid-feedback">Example invalid feedback text</div>
+  </div>
+
+  <div class="form-check form-checkradio">
+    <input type="radio" class="form-check-input" id="validate-support-5" name="radio-stacked" required>
+    <label class="form-check-label" for="validate-support-5">Toggle this custom radio</label>
+  </div>
+  <div class="form-check form-checkradio mb-1">
+    <input type="radio" class="form-check-input" id="validate-support-6" name="radio-stacked" required>
+    <label class="form-check-label" for="validate-support-6">Or toggle this other custom radio</label>
+    <div class="invalid-feedback">More example invalid feedback text</div>
+  </div>
+
+  <div class="form-check form-switch mb-1">
+    <input type="checkbox" class="form-check-input" id="validate-support-7" required>
+    <label class="form-check-label" for="validate-support-7">Check this custom checkbox</label>
     <div class="invalid-feedback">Example invalid feedback text</div>
   </div>
 
@@ -1231,13 +1247,23 @@ Our example forms show native textual `<input>`s above, but form validation styl
     <div class="invalid-feedback">Example invalid custom select feedback</div>
   </div>
 
-  <div class="form-file">
-    <input type="file" class="form-file-input is-invalid" id="validatedCustomFile" required>
-    <label class="form-file-label" for="validatedCustomFile">
-      <span class="form-file-text">Choose file...</span>
-      <span class="form-file-button">Browse</span>
-    </label>
-    <div class="invalid-feedback">Example invalid custom file feedback</div>
+  <div class="form-group mb-1">
+    <div class="form-file">
+      <input type="file" class="form-file-input is-invalid" id="validatedCustomFile" required>
+      <label class="form-file-label" for="validatedCustomFile">
+        <span class="form-file-text">Choose file...</span>
+        <span class="form-file-button">Browse</span>
+      </label>
+      <div class="invalid-feedback">Example invalid custom file feedback</div>
+    </div>
+  </div>
+
+  <div class="input-group">
+    <div class="input-group-addon">
+        <span class="input-group-text" id="validate-support-ig">@</span>
+    </div>
+    <input type="text" class="form-control input-group-end" placeholder="Username" aria-label="Username" aria-describedby="validate-support-ig" required>
+    <div class="invalid-feedback">Please choose a unique and valid username.</div>
   </div>
 </form>
 {% endcapture %}
@@ -1302,7 +1328,7 @@ Optional visual icon representations of the validation state can be added to _te
 - Icons can also be disabled entirely by setting the `$enable-validation-icons` variable to `false` in the [Sass global options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/#global-options).
 
 {% capture example %}
-<form class="needs-validation" novalidate>
+<form class="was-validated">
   <div class="form-row">
     <div class="col-md-4 mb-1">
       <label for="validate-icon-1">First name</label>
@@ -1357,7 +1383,6 @@ Optional visual icon representations of the validation state can be added to _te
     <textarea class="form-control has-validation-icon" id="validate-icon-9" rows="3" placeholder="Required example textarea" required></textarea>
     <div class="invalid-feedback">Please enter a message in the textarea.</div>
     </div>
-  <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
 {% endcapture %}
 {% include example.html content=example %}
