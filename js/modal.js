@@ -169,7 +169,13 @@
                 this.$target.appendTo(this.$body); // don't move modals dom position
             }
 
-            this.$target.show().scrollTop(0);
+            this.$target.show();
+
+            if (this.$dialog.hasClass('modal-dialog-scrollable')) {
+                this.$dialog.find('.modal-body').scrollTop(0);
+            } else {
+                this.$target.scrollTop(0);
+            }
 
             this.adjustDialog();
 
@@ -389,6 +395,13 @@
         },
 
         _scrollBlock : function(e) {
+            // Allow scrolling for scrollable modal body
+            var $content = this.$target.find('.modal-dialog-scrollable');
+            if ($content && $content[0] === e.target || $content.find('.modal-body')[0].contains(e.target)) {
+                e.stopPropagation();
+                return;
+            }
+
             var top = this.$target[0].scrollTop;
             var totalScroll = this.$target[0].scrollHeight;
             var currentScroll = top + this.$target[0].offsetHeight;

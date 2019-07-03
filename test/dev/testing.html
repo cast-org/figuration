@@ -408,8 +408,11 @@ $(window).ready(function() {
                 <button class="btn btn-info" data-cfw="modal" data-cfw-modal-target="#modalCenter">
                     Centered modal
                 </button>
+                <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-target="#modalScroll">
+                    Scrollable modal
+                </button>
                 <button type="button" class="btn btn-info" data-cfw="modal" data-cfw-modal-target="#modalCenterScroll">
-                    Scrolling centered modal
+                    Scrollable centered modal
                 </button>
             </p>
 
@@ -431,8 +434,8 @@ $(window).ready(function() {
                 </div>
             </div>
 
-            <div class="modal" id="modalCenterScroll">
-                <div class="modal-dialog modal-dialog-centered">
+            <div class="modal" id="modalScroll">
+                <div class="modal-dialog modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Modal title</h4>
@@ -461,7 +464,35 @@ $(window).ready(function() {
                 </div>
             </div>
 
-
+            <div class="modal" id="modalCenterScroll">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Modal title</h4>
+                            <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <h4>Overflowing text to show scroll behavior</h4>
+                            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <p>
                 <button type="button" onclick="javascript:console.log($('html').CFW_getScrollbarSide()); return false;">Scrollbar check</button>
@@ -1726,13 +1757,18 @@ $(window).ready(function() {
             <hr />
 
             <h2 id="lazy">Lazy:</h2>
-            <img src="" data-cfw="lazy" data-cfw-lazy-src="../../docs/4.0.0-alpha.5/assets/img/test.gif" alt="test pattern" style="border: 1px solid blue;" data-cfw-lazy-trigger="click" width="320" height="180" />
-            <img src="" data-cfw="lazy" data-cfw-lazy-src="../../docs/4.0.0-alpha.5/assets/img/test.gif" alt="test pattern" style="border: 1px solid blue;" width="320" height="180" />
-            <img src="" data-cfw="lazy" data-cfw-lazy-src="../../docs/4.0.0-alpha.5/assets/img/test.gif" alt="test pattern" style="border: 1px solid blue;" width="320" height="180" />
-            <img src="" data-cfw="lazy" data-cfw-lazy-src="../../docs/4.0.0-alpha.5/assets/img/test.gif" alt="test pattern" style="border: 1px solid blue; display: none;" width="320" height="180" />
+            <div>
+                <img src="" data-cfw="lazy" data-cfw-lazy-src="../../docs/4.0.0-alpha.5/assets/img/test.gif" alt="test pattern" style="border: 1px solid blue;" data-cfw-lazy-trigger="click" width="320" height="180" style="max-width: 100%" />
+                <br />
+                <img src="" data-cfw="lazy" data-cfw-lazy-src="../../docs/4.0.0-alpha.5/assets/img/test.gif" alt="test pattern" style="border: 1px solid blue;" width="320" height="180" style="max-width: 100%" />
+                <br />
+                <img src="" data-cfw="lazy" data-cfw-lazy-src="../../docs/4.0.0-alpha.5/assets/img/test.gif" alt="test pattern" style="border: 1px solid blue;" width="320" height="180" style="max-width: 100%" />
+                <br />
+                <img src="" data-cfw="lazy" data-cfw-lazy-src="../../docs/4.0.0-alpha.5/assets/img/test.gif" alt="test pattern" style="border: 1px solid blue; display: none;" width="320" height="180" style="max-width: 100%" />
+            </div>
 
-            <div id="lazytest" class="my-1" style="height: 125px; overflow: scroll;">
-                <p style="margin-top: 65px; margin-bottom: 65px; text-align: center;">
+            <div id="lazytest" class="my-1 border" style="height: 125px; overflow-y: scroll;">
+                <p style="margin-top: 50px; margin-bottom: 60px; text-align: center;">
                     \/ Scroll down \/
                 </p>
                 <p>
