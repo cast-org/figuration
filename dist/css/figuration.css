@@ -5770,29 +5770,54 @@ a.page-link {
 
 .modal-dialog {
   position: relative;
+  display: flex;
   width: auto;
   margin: 0.625rem;
   direction: ltr;
   pointer-events: none;
 }
 
+.modal-dialog-scrollable {
+  max-height: calc(100% - 1.25rem);
+}
+
+.modal-dialog-scrollable .modal-content {
+  max-height: calc(100vh - 1.25rem);
+  overflow: hidden;
+}
+
+.modal-dialog-scrollable .modal-header,
+.modal-dialog-scrollable .modal-footer {
+  flex-shrink: 0;
+}
+
+.modal-dialog-scrollable .modal-body {
+  overflow-y: auto;
+}
+
 .modal-dialog-centered {
-  display: flex;
   align-items: center;
-  min-height: 100%;
-  margin-top: 0;
-  margin-bottom: 0;
+  min-height: calc(100% - 1.25rem);
 }
 
 .modal-dialog-centered::before {
   display: block;
-  height: 100vh;
+  height: calc(100vh - 1.25rem);
   content: "";
 }
 
-.modal-dialog-centered .modal-content {
-  margin-top: 0.625rem;
-  margin-bottom: 0.625rem;
+.modal-dialog-centered.modal-dialog-scrollable {
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.modal-dialog-centered.modal-dialog-scrollable .modal-content {
+  max-height: none;
+}
+
+.modal-dialog-centered.modal-dialog-scrollable::before {
+  content: none;
 }
 
 .modal-content {
@@ -5836,12 +5861,6 @@ a.page-link {
   border-top-right-radius: calc(0.375rem - 1px);
 }
 
-.modal-header::after {
-  display: block;
-  clear: both;
-  content: "";
-}
-
 .modal-header .close {
   order: 1;
   padding: 0.75rem 0.75rem;
@@ -5882,13 +5901,17 @@ a.page-link {
     max-width: 33rem;
     margin: 1.875rem auto;
   }
-  .modal-dialog-centered {
-    margin-top: 0;
-    margin-bottom: 0;
+  .modal-dialog-scrollable {
+    max-height: calc(100% - 3.75rem);
   }
-  .modal-dialog-centered .modal-content {
-    margin-top: 1.875rem;
-    margin-bottom: 1.875rem;
+  .modal-dialog-scrollable .modal-content {
+    max-height: calc(100vh - 3.75rem);
+  }
+  .modal-dialog-centered {
+    min-height: calc(100% - 3.75rem);
+  }
+  .modal-dialog-centered::before {
+    height: calc(100vh - 3.75rem);
   }
   .modal-sm {
     max-width: 19rem;
