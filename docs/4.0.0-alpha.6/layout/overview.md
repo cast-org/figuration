@@ -5,7 +5,7 @@ description: Figuration includes several components and options for laying out y
 group: layout
 redirect_from:
   - "/layout/"
-  - "/4.0.0-alpha.5/layout/"
+  - "/4.0.0-alpha.6/layout/"
 ---
 
 ## Contents

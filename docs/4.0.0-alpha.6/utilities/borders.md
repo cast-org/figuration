@@ -5,7 +5,7 @@ description: Easily manipulate borders on your images or other elements.
 group: utilities
 redirect_from:
   - "/utilities/"
-  - "/4.0.0-alpha.5/utilities/"
+  - "/4.0.0-alpha.6/utilities/"
 ---
 
 ## Contents

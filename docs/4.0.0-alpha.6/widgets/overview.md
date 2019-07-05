@@ -5,7 +5,7 @@ description: Add more functionality and interactivity to Figuration with our opt
 group: widgets
 redirect_from:
   - "/widgets/"
-  - "/4.0.0-alpha.5/widgets/"
+  - "/4.0.0-alpha.6/widgets/"
 ---
 
 {% capture callout %}

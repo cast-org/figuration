@@ -5,7 +5,7 @@ description: Provide contextual feedback messages for typical user actions with 
 group: components
 redirect_from:
   - "/components/"
-  - "/4.0.0-alpha.5/components/"
+  - "/4.0.0-alpha.6/components/"
 ---
 
 ## Contents

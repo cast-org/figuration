@@ -5,7 +5,7 @@ description: Built upon Bootstrap's Reboot, a collection of element-specific CSS
 group: content
 redirect_from:
   - "/content/"
-  - "/4.0.0-alpha.5/content/"
+  - "/4.0.0-alpha.6/content/"
 ---
 
 ## Contents

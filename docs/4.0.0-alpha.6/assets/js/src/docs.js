@@ -2,7 +2,7 @@
 /* global ClipboardJS, Holder, anchors */
 
 /*!
- * Figuration (v4.0.0-alpha.5)
+ * Figuration (v4.0.0-alpha.6)
  * http://figuration.org
  * Copyright 2013-2019 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)

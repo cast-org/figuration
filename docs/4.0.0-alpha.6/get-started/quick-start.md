@@ -5,8 +5,8 @@ description: Get started using Figuration today with our CDN links and starter t
 group: get-started
 redirect_from:
   - "/get-started/"
-  - "/4.0.0-alpha.5/"
-  - "/4.0.0-alpha.5/get-started/"
+  - "/4.0.0-alpha.6/"
+  - "/4.0.0-alpha.6/get-started/"
 ---
 
 Looking to quickly add Figuration to your project? Use the CDN links. Using a package manager or need to download the source files? [Head to the downloads page.]({{ site.baseurl }}/{{ site.docs_version }}/get-started/download/)
