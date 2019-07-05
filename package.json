@@ -37,11 +37,11 @@
     "popper.js": "^1.15.0"
   },
   "devDependencies": {
-    "@lodder/grunt-postcss": "^1.0.8",
+    "@lodder/grunt-postcss": "^1.0.9",
     "autoprefixer": "^9.6.0",
     "cross-env": "^5.2.0",
-    "eslint": "^5.15.3",
-    "eslint-plugin-compat": "^3.1.2",
+    "eslint": "^6.0.1",
+    "eslint-plugin-compat": "^3.2.0",
     "eslint-plugin-figuration": "file:./grunt/eslint-plugin-figuration",
     "glob": "^7.1.4",
     "grunt": "^1.0.4",
@@ -51,7 +51,7 @@
     "grunt-contrib-cssmin": "^3.0.0",
     "grunt-contrib-uglify": "^4.0.1",
     "grunt-contrib-watch": "^1.1.0",
-    "grunt-eslint": "^21.1.0",
+    "grunt-eslint": "^22.0.0",
     "grunt-html": "^11.0.0",
     "grunt-jekyll": "^1.0.0",
     "grunt-rtlcss": "^2.0.1",
@@ -66,7 +66,7 @@
     "karma-firefox-launcher": "^1.1.0",
     "karma-qunit": "^3.1.2",
     "karma-sauce-launcher": "^2.0.2",
-    "linkinator": "^1.4.3",
+    "linkinator": "^1.5.0",
     "load-grunt-tasks": "^5.0.0",
     "node-sass": "^4.12.0",
     "popper.js": "^1.15.0",
@@ -78,7 +78,7 @@
     "stylelint-config-recommended-scss": "^3.2.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-order": "^3.0.0",
-    "stylelint-scss": "^3.8.0",
+    "stylelint-scss": "^3.9.0",
     "time-grunt": "^2.0.0"
   },
   "engines": {
