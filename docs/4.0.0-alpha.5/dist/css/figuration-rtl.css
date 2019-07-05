@@ -4097,7 +4097,6 @@ a.page-link {
   color: #343e48;
   text-decoration: none;
   background-color: #dfe3e6;
-  outline: 0;
 }
 
 .dropdown-menu a.disabled, .dropdown-menu a:disabled,
@@ -5482,6 +5481,7 @@ a.page-link {
   margin-top: 1rem;
   margin-bottom: 0;
   -webkit-column-break-inside: avoid;
+     -moz-column-break-inside: avoid;
           break-inside: avoid;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
@@ -5507,6 +5507,7 @@ a.page-link {
     margin-top: 1rem;
     margin-bottom: 0;
     -webkit-column-break-inside: avoid;
+       -moz-column-break-inside: avoid;
             break-inside: avoid;
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
@@ -5532,6 +5533,7 @@ a.page-link {
     margin-top: 1rem;
     margin-bottom: 0;
     -webkit-column-break-inside: avoid;
+       -moz-column-break-inside: avoid;
             break-inside: avoid;
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
@@ -5557,6 +5559,7 @@ a.page-link {
     margin-top: 1rem;
     margin-bottom: 0;
     -webkit-column-break-inside: avoid;
+       -moz-column-break-inside: avoid;
             break-inside: avoid;
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
@@ -5582,6 +5585,7 @@ a.page-link {
     margin-top: 1rem;
     margin-bottom: 0;
     -webkit-column-break-inside: avoid;
+       -moz-column-break-inside: avoid;
             break-inside: avoid;
     -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
