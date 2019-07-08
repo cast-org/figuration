@@ -26,7 +26,6 @@
     %form-check-input-hide {
         position: absolute;
         z-index: -1;
-        clip: rect(0, 0, 0, 0);
         pointer-events: none;
         opacity: 0;
     }
@@ -37,6 +36,10 @@
             padding-left: $form-checkradio-gutter;
 
             .form-check-input {
+                width: $form-checkradio-size;
+                height: $form-checkradio-size;
+                margin-top: calc(((1em * #{$line-height-base}) - #{$form-checkradio-size}) / 2);
+                margin-left: calc(#{$form-checkradio-gutter} * -1);
                 @extend %form-check-input-hide;
             }
 
@@ -125,6 +128,12 @@
 
             .form-check-input {
                 @extend %form-check-input-hide;
+                top: 0;
+                left: 0;
+                width: $form-switch-width;
+                height: $form-switch-track-height;
+                margin-left: 0;
+                transform: translateY(.5em * $line-height-base) translateY($form-switch-track-height / -2);
             }
 
             .form-check-label {
