@@ -1003,19 +1003,13 @@ textarea.form-control:not([rows="1"]) {
 .form-checkradio .form-check-input, .form-switch .form-check-input {
   position: absolute;
   z-index: -1;
+  clip: rect(0, 0, 0, 0);
   pointer-events: none;
   opacity: 0;
 }
 
 .form-checkradio {
   padding-left: 1.375em;
-}
-
-.form-checkradio .form-check-input {
-  width: 1em;
-  height: 1em;
-  margin-top: 0.25em;
-  margin-left: -1.375em;
 }
 
 .form-checkradio .form-check-label::before {
@@ -1084,16 +1078,6 @@ textarea.form-control:not([rows="1"]) {
 .form-switch {
   position: relative;
   padding-left: 2.125em;
-}
-
-.form-switch .form-check-input {
-  top: 0;
-  left: 0;
-  margin-left: 0;
-  width: 1.75em;
-  height: 1em;
-  -webkit-transform: translateY(0.75em) translateY(-0.5em);
-          transform: translateY(0.75em) translateY(-0.5em);
 }
 
 .form-switch .form-check-label::before, .form-switch .form-check-label::after {
