@@ -243,15 +243,6 @@
                 margin-top: $btn-block-spacing-y;
             }
         }
-
-        // Specificity overrides
-        input[type="submit"],
-        input[type="reset"],
-        input[type="button"] {
-            &.btn-block {
-                width: 100%;
-            }
-        }
     }
 
     // Checkbox and radio button
