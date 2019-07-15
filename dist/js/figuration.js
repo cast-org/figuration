@@ -1350,13 +1350,14 @@ if (typeof jQuery === 'undefined') {
             var isRTL = Boolean(directionVal === 'rtl');
             var attachmentMap = {
                 AUTO: 'auto',
-                TOP: 'top-start',
+                TOP: isRTL ? 'top-end' : 'top-start',
+                TOPEND: isRTL ? 'top-start' : 'top-end',
                 FORWARD: isRTL ? 'left-start' : 'right-start',
                 FORWARDEND: isRTL ? 'left-end' : 'right-end',
                 RIGHT: 'right-start',
                 RIGHTEND: 'right-end',
-                BOTTOM: 'bottom-start',
-                BOTTOMEND: 'bottom-end',
+                BOTTOM: isRTL ? 'bottom-end' : 'bottom-start',
+                BOTTOMEND: isRTL ? 'bottom-start' : 'bottom-end',
                 REVERSE: isRTL ? 'right-start' : 'left-start',
                 REVERSEEND: isRTL ? 'right-end' : 'left-end',
                 LEFT: 'left-start',
