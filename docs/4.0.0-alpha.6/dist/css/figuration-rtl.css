@@ -53,7 +53,6 @@ body {
   font-weight: 400;
   line-height: 1.5;
   color: #262d34;
-  text-align: right;
   background-color: #fff;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -2426,12 +2425,6 @@ fieldset:disabled a.btn, .btn-check-input:disabled ~ .btn {
 
 .btn-block + .btn-block {
   margin-top: 0.25rem;
-}
-
-input[type="submit"].btn-block,
-input[type="reset"].btn-block,
-input[type="button"].btn-block {
-  width: 100%;
 }
 
 .btn-check {
