@@ -280,7 +280,7 @@ Since the dropdown toggle button is not the last item within the addon container
 
 <div class="input-group">
   <input type="text" class="form-control" aria-label="Text input with dropdown button">
-  <div class="input-group-addon dropdown-menu-reverse">
+  <div class="input-group-addon dropdown-reverse">
     <button type="button" class="btn input-group-end" data-cfw="dropdown">Dropdown <span class="caret" aria-hidden="true"></span></button>
     <ul class="dropdown-menu">
       <li><a class="dropdown-item" href="#">Action</a></li>
@@ -317,7 +317,7 @@ Since the dropdown toggle button is not the last item within the addon container
 
 <div class="input-group">
   <input type="text" class="form-control" aria-label="Text input with segmented button dropdown">
-  <div class="input-group-addon dropdown-menu-reverse">
+  <div class="input-group-addon dropdown-reverse">
     <button type="button" class="btn">Action</button>
     <button type="button" class="btn btn-icon input-group-end" data-cfw="dropdown">
       <span class="sr-only">Toggle Dropdown</span>
