@@ -413,6 +413,14 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 </td>
             </tr>
             <tr>
+                <td><code>$body-text-align</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
+                <td>
+                    Base text alignment for body.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$link-color</code></td>
                 <td>string</td>
                 <td><code>$primary</code></td>
