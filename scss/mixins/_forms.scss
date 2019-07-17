@@ -248,8 +248,14 @@
                     border-color: $color;
                 }
 
-                &:focus-within, // Firefox workaround
                 &:focus {
+                    ~ .form-file-label {
+                        border-color: $color;
+                        box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                    }
+                }
+
+                &:focus-within {
                     ~ .form-file-label {
                         border-color: $color;
                         box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
