@@ -27,15 +27,19 @@
 
         // Bring the "active" form control to the top of surrounding elements
         > .form-control:focus,
-        > .form-file .form-file-input:focus-within ~ .form-file-label,
         > .form-file .form-file-input:focus ~ .form-file-label {
+            z-index: 3;
+        }
+        > .form-file .form-file-input:focus-within ~ .form-file-label {
             z-index: 3;
         }
 
         // Bring input back above label for drag and drop to work if
         // the custom file input is focused.
-        > .form-file .form-file-input:focus-within,
         > .form-file .form-file-input:focus {
+            z-index: 4;
+        }
+        > .form-file .form-file-input:focus-within {
             z-index: 4;
         }
 
