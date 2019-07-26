@@ -5,7 +5,7 @@
             padding: $code-padding-y $code-padding-x;
             @include font-size($code-font-size);
             color: $code-color;
-            word-break: break-word;
+            word-wrap: break-word;
             background-color: $code-bg;
             @include border-radius($code-border-radius);
 
