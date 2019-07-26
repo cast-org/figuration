@@ -72,6 +72,9 @@
             }
 
             var $itemMenu = itemData.$target;
+            if ($itemMenu === null ) {
+                continue;
+            }
             if (!$itemMenu.hasClass('open')) {
                 continue;
             }
