@@ -1853,6 +1853,14 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 </td>
             </tr>
             <tr>
+                <td><code>$form-check-label-font-weight</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
+                <td>
+                    Font weight for `.form-check-label`.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$form-check-label-disabled-opacity</code></td>
                 <td>string</td>
                 <td><code>.6</code></td>
