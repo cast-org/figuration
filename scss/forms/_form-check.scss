@@ -20,6 +20,7 @@
 
         .form-check-label {
             margin-bottom: 0; // Override default `<label>` bottom margin
+            font-weight: $form-check-label-font-weight;
         }
     }
 
