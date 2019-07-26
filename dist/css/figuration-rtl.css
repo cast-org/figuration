@@ -420,7 +420,7 @@ template {
 code {
   font-size: 87.5%;
   color: #c42013;
-  word-break: break-word;
+  word-wrap: break-word;
 }
 
 a > code {
@@ -1177,7 +1177,15 @@ textarea.form-control:not([rows="1"]) {
   opacity: 0;
 }
 
-.form-file-input:focus-within ~ .form-file-label, .form-file-input:focus ~ .form-file-label {
+.form-file-input:focus ~ .form-file-label {
+  color: #424f5b;
+  background-color: #fff;
+  border-color: #6699f2;
+  outline: 0;
+  box-shadow: 0 0 0 0.1875rem rgba(0, 85, 233, 0.35);
+}
+
+.form-file-input:focus-within ~ .form-file-label {
   color: #424f5b;
   background-color: #fff;
   border-color: #6699f2;
@@ -1628,7 +1636,12 @@ textarea.form-control.has-validation-icon.is-valid {
   border-color: #0e8a16;
 }
 
-.was-validated .form-file-input:valid:focus-within ~ .form-file-label, .was-validated .form-file-input:valid:focus ~ .form-file-label, .form-file-input.is-valid:focus-within ~ .form-file-label, .form-file-input.is-valid:focus ~ .form-file-label {
+.was-validated .form-file-input:valid:focus ~ .form-file-label, .form-file-input.is-valid:focus ~ .form-file-label {
+  border-color: #0e8a16;
+  box-shadow: 0 0 0 0.1875rem rgba(14, 138, 22, 0.35);
+}
+
+.was-validated .form-file-input:valid:focus-within ~ .form-file-label, .form-file-input.is-valid:focus-within ~ .form-file-label {
   border-color: #0e8a16;
   box-shadow: 0 0 0 0.1875rem rgba(14, 138, 22, 0.35);
 }
@@ -1744,7 +1757,12 @@ textarea.form-control.has-validation-icon.is-invalid {
   border-color: #d42314;
 }
 
-.was-validated .form-file-input:invalid:focus-within ~ .form-file-label, .was-validated .form-file-input:invalid:focus ~ .form-file-label, .form-file-input.is-invalid:focus-within ~ .form-file-label, .form-file-input.is-invalid:focus ~ .form-file-label {
+.was-validated .form-file-input:invalid:focus ~ .form-file-label, .form-file-input.is-invalid:focus ~ .form-file-label {
+  border-color: #d42314;
+  box-shadow: 0 0 0 0.1875rem rgba(212, 35, 20, 0.35);
+}
+
+.was-validated .form-file-input:invalid:focus-within ~ .form-file-label, .form-file-input.is-invalid:focus-within ~ .form-file-label {
   border-color: #d42314;
   box-shadow: 0 0 0 0.1875rem rgba(212, 35, 20, 0.35);
 }
@@ -3749,13 +3767,19 @@ button.list-item-action {
 }
 
 .input-group > .form-control:focus,
-.input-group > .form-file .form-file-input:focus-within ~ .form-file-label,
 .input-group > .form-file .form-file-input:focus ~ .form-file-label {
   z-index: 3;
 }
 
-.input-group > .form-file .form-file-input:focus-within,
+.input-group > .form-file .form-file-input:focus-within ~ .form-file-label {
+  z-index: 3;
+}
+
 .input-group > .form-file .form-file-input:focus {
+  z-index: 4;
+}
+
+.input-group > .form-file .form-file-input:focus-within {
   z-index: 4;
 }
 
