@@ -704,6 +704,44 @@ Put a border around the table and every cell with `.table-bordered`.
 </table>
 {% endhighlight %}
 
+## Cell Alignment
+
+By default, table cells of `<thead>` are vertically aligned to the `bottom`. Table cells in `<tbody>` inherit their alignment from `<table>` and are aligned to the the `top` by default.
+
+{% capture example %}
+<table class="table table-bordered">
+  <thead>
+    <tr>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+        <th scope="col">Header 4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>This cell inherits <code>vertical-align: top;</code> from the table</td>
+      <td>This cell inherits <code>vertical-align: top;</code> from the table</td>
+      <td>This cell inherits <code>vertical-align: top;</code> from the table</td>
+      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae ipsum ut metus elementum ultricies sit amet et velit. In pharetra magna at euismod fringilla.</td>
+    </tr>
+    <tr class="valign-bottom">
+      <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+      <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+      <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae ipsum ut metus elementum ultricies sit amet et velit. In pharetra magna at euismod fringilla.</td>
+    </tr>
+    <tr>
+      <td>This cell inherits <code>vertical-align: top;</code> from the table</td>
+      <td>This cell inherits <code>vertical-align: top;</code> from the table</td>
+      <td class="valign-middle">This cell is aligned to the middle.</td>
+      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae ipsum ut metus elementum ultricies sit amet et velit. In pharetra magna at euismod fringilla.</td>
+    </tr>
+  </tbody>
+</table>
+{% endcapture %}
+{% include example.html content=example %}
+
 ## Captions
 
 A `<caption>` functions like a heading for a table. It helps users with screen readers to find a table and understand what it’s about and decide if they want to read it.
@@ -1639,7 +1677,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             <tr>
                 <td><code>$table-cell-padding</code></td>
                 <td>boolean</td>
-                <td><code>.75rem</code></td>
+                <td><code>.5rem</code></td>
                 <td>
                     Table cell padding.
                 </td>
@@ -1647,7 +1685,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             <tr>
                 <td><code>$table-condensed-cell-padding</code></td>
                 <td>boolean</td>
-                <td><code>.3125rem .5rem</code></td>
+                <td><code>.25rem</code></td>
                 <td>
                     Cell padding for condensed table variant.
                 </td>
@@ -1658,6 +1696,30 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 <td><code>$uibase-500</code></td>
                 <td>
                     Table caption text color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$table-cell-vertical-align</code></td>
+                <td>string</td>
+                <td><code>top</code></td>
+                <td>
+                    Vertical alignment for table cells.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$table-head-vertical-align</code></td>
+                <td>string</td>
+                <td><code>bottom</code></td>
+                <td>
+                    Vertical alignment for header cells.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$table-cell-vertical-align</code></td>
+                <td>string</td>
+                <td><code>left</code></td>
+                <td>
+                    Horizontal alignment for header cells.
                 </td>
             </tr>
             <tr>
@@ -1724,6 +1786,8 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                     Border width between table body and footer.
                 </td>
             </tr>
+
+
             <tr>
                 <td><code>$table-striped-selector</code></td>
                 <td>boolean</td>
