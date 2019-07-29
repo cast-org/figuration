@@ -3,6 +3,7 @@
     .table {
         width: 100%;
         margin-bottom: $table-margin-bottom;
+        vertical-align: $table-cell-vertical-align;
         background-color: $table-bg;
         border: 0 solid;
         border-color: $table-border-color;
@@ -22,13 +23,17 @@
         th,
         td {
             padding: $table-cell-padding;
-            vertical-align: top;
         }
 
         thead {
             th {
-                vertical-align: bottom;
+                text-align: $table-head-horizontal-align;
+                vertical-align: $table-head-vertical-align;
             }
+        }
+
+        tbody {
+            vertical-align: inherit;
         }
     }
 

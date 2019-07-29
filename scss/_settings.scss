@@ -669,21 +669,25 @@ $list-spaced-item-padding-x:    1rem !default;
 // Tables
 // =====
 $table-margin-bottom:           $spacer !default;
-$table-cell-padding:            .75rem !default;
-$table-condensed-cell-padding:  .3125rem .5rem !default;
+$table-cell-padding:            .5rem !default;
+$table-condensed-cell-padding:  .25rem !default;
 $table-caption-color:           $uibase-500 !default;
 
-$table-bg:                  null !default;
-$table-bg-active:           $component-hover-bg !default;
-$table-bg-active-hover:     $uibase-200 !default;
+$table-cell-vertical-align:     top !default;
+$table-head-vertical-align:     bottom !default;
+$table-head-horizontal-align:   left !default;
 
-$table-border-width:        $border-width !default;
-$table-border-color:        $component-border-color !default;
-$table-head-border-width:   2 * $table-border-width !default;
-$table-body-border-width:   2 * $table-border-width !default;
-$table-foot-border-width:   2 * $table-border-width !default;
+$table-bg:                      null !default;
+$table-bg-active:               $component-hover-bg !default;
+$table-bg-active-hover:         $uibase-200 !default;
 
-$table-striped-selector:    odd !default;
+$table-border-width:            $border-width !default;
+$table-border-color:            $component-border-color !default;
+$table-head-border-width:       2 * $table-border-width !default;
+$table-body-border-width:       2 * $table-border-width !default;
+$table-foot-border-width:       2 * $table-border-width !default;
+
+$table-striped-selector:        odd !default;
 $table-striped-box-shadow:      inset 0 0 0 999rem rgba($uibase-900, .075) !default;
 $table-striped-alt-box-shadow:  inset 0 0 0 999rem rgba($white, .125) !default;
 
