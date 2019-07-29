@@ -636,6 +636,38 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                     Mark element background color.
                 </td>
             </tr>
+            <tr>
+                <td><code>$label-margin-bottom</code></td>
+                <td>string</td>
+                <td><code>.5rem</code></td>
+                <td>
+                    Bottom margin for form labels.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$legend-margin-bottom</code></td>
+                <td>string</td>
+                <td><code>.5rem</code></td>
+                <td>
+                    Bottom margin for form legends.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$legend-font-size</code></td>
+                <td>string</td>
+                <td><code>1.5rem</code></td>
+                <td>
+                    Font size for form legends.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$legend-font-weight</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
+                <td>
+                    Font weight for form legends.
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>
