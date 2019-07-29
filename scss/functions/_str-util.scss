@@ -14,3 +14,16 @@
 
     @return $string;
 }
+
+// Encode SVG data URLs into CSS friendly versions, otherwise
+// pass through the original string.
+// From https://codepen.io/kevinweber/pen/dXWoRw
+@function encode-svg($string) {
+    @if str-index($string, "data:image/svg+xml") {
+        @each $char, $encoded in $encode-svg-chars{
+            $string: str-replace($string, $char, $encoded);
+        }
+    }
+
+    @return $string;
+}

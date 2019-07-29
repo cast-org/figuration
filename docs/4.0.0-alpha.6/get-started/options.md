@@ -361,6 +361,13 @@ The default setting for the color levels to be generated is defined as the follo
 $palette-levels: 50 100 200 300 400 500 600 700 800 900;
 {% endhighlight %}
 
+## Encoding SVG
+
+An `encode-svg` function is available in our SASS to encode the `<`, `>` and `#` characters for SVG images provided through data URLs. These characters need to be encoded to properly render the background images in some browsers, such as IE.
+
+{% highlight css %}
+$form-checkradio-radio-icon: encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle fill='#{$form-checkradio-checked-color}' r='3'/></svg>")) !default;
+{% endhighlight %}
 
 ## CSS Variables
 
@@ -428,9 +435,9 @@ And here's an example of **what is supported:**
 }
 {% endhighlight %}
 
-### SASS Reference
+## SASS Reference
 
-#### Variables
+### Variables
 
 The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for generating the root CSS variables.
 
@@ -490,6 +497,6 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
     </table>
 </div>
 
-#### Mixins
+### Mixins
 
 No mixins available.
