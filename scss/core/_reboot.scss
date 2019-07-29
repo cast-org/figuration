@@ -11,8 +11,6 @@
 
 
 // Document
-//
-
 // Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
 *,
 *::before,
@@ -87,9 +85,7 @@ hr:not([size]) {
 }
 
 
-//
 // Typography
-//
 
 // Remove top margins from headings
 //
@@ -151,8 +147,7 @@ p {
 // 1. Duplicate behavior to the data-* attribute for our tooltip and popover widgets.
 // 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
 // 3. Add explicit cursor to indicate changed behavior.
-// 4. Remove the bottom border in Firefox 39-.
-// 5. Prevent the text-decoration to be skipped.
+// 4. Prevent the text-decoration to be skipped.
 // stylelint-disable declaration-block-no-duplicate-properties
 abbr[title],
 abbr[data-cfw-tooltip-original-title],  // 1
@@ -160,8 +155,7 @@ abbr[data-cfw-popover-original-title] { // 1
     text-decoration: underline; // 2
     text-decoration: underline dotted; // 2
     cursor: help; // 3
-    border-bottom: 0; // 4
-    text-decoration-skip-ink: none; // 5
+    text-decoration-skip-ink: none; // 4
 }
 // stylelint-enable declaration-block-no-duplicate-properties
 
@@ -214,10 +208,8 @@ mark {
     background-color: $mark-bg;
 }
 
-//
 // Prevent `sub` and `sup` elements from affecting the line height in
 // all browsers.
-//
 sub,
 sup {
     position: relative;
@@ -233,15 +225,10 @@ sup {
     top: -.5em;
 }
 
-
-//
 // Links
-//
-
 a {
     color: $link-color;
     text-decoration: $link-decoration;
-    background-color: transparent; // Remove the gray background on active links in IE 10.
 
     @include hover() {
         color: $link-hover-color;
@@ -253,24 +240,19 @@ a {
 // which have not been made explicitly keyboard-focusable (without tabindex).
 // It would be more straightforward to just use a[href] in previous block, but that
 // causes specificity issues in many other styles that are too complex to fix.
-a:not([href]):not([tabindex]) {
+a:not([href]) {
     color: inherit;
     text-decoration: none;
 
-    @include hover-focus() {
+    &,
+    &:hover {
         color: inherit;
         text-decoration: none;
-    }
-
-    &:focus {
-        outline: 0;
     }
 }
 
 
-//
 // Code
-//
 pre,
 code,
 kbd,
@@ -286,20 +268,15 @@ pre {
 }
 
 
-//
 // Figures
-//
 figure {
     margin: 0 0 1rem; // Apply a consistent margin strategy (matches our type styles).
 }
 
 
-//
 // Images
-//
 img {
     vertical-align: middle;
-    border-style: none; // Remove the border on images inside links in IE 10-.
 }
 
 svg {
@@ -307,9 +284,7 @@ svg {
     vertical-align: middle;
 }
 
-//
 // Tables
-//
 table {
     border-collapse: collapse; // Prevent double borders
 }
@@ -329,12 +304,10 @@ th {
 }
 
 
-//
 // Forms
-//
 label {
     display: inline-block;
-    margin-bottom: .5rem; // Allow labels to use `margin` for spacing.
+    margin-bottom: $label-margin-bottom; // Allow labels to use `margin` for spacing.
 }
 
 // Remove the default `border-radius` that macOS Chrome adds.
@@ -394,10 +367,7 @@ button,
 }
 
 // Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
+::-moz-focus-inner {
     padding: 0;
     border-style: none;
 }
@@ -408,22 +378,23 @@ input[type="checkbox"] {
     padding: 0; // 2. Remove the padding in IE 10-
 }
 
+// Remove the default appearance of temporal inputs to avoid a Mobile Safari
+// bug where setting a custom line-height prevents text from being vertically
+// centered within the input.
+// See https://bugs.webkit.org/show_bug.cgi?id=139848
+// and https://github.com/twbs/bootstrap/issues/11266
 input[type="date"],
 input[type="time"],
 input[type="datetime-local"],
 input[type="month"] {
-    // Remove the default appearance of temporal inputs to avoid a Mobile Safari
-    // bug where setting a custom line-height prevents text from being vertically
-    // centered within the input.
-    // See https://bugs.webkit.org/show_bug.cgi?id=139848
-    // and https://github.com/twbs/bootstrap/issues/11266
-    -webkit-appearance: listbox;
+    -webkit-appearance: textfield;
 }
 
 textarea {
     overflow: auto; // Remove the default vertical scrollbar in IE.
     // Textareas should really only resize vertically so they don't break their (horizontal) containers.
     resize: vertical;
+    -webkit-appearance: textfield;
 }
 
 fieldset {
@@ -438,28 +409,29 @@ fieldset {
     border: 0;
 }
 
-// 1. Correct the text wrapping in Edge and IE.
+// 1. By using `float: left`, the legend will behave like a block element
 // 2. Correct the color inheritance from `fieldset` elements in IE.
+// 3. Correct the text wrapping in Edge and IE.
 legend {
-    display: block;
+    float: left; //1
     width: 100%;
-    max-width: 100%; // 1
     padding: 0;
-    margin-bottom: .5rem;
-    @include font-size(1.5rem);
+    margin-bottom: $legend-margin-bottom;
+    @include font-size($legend-font-size);
+    font-weight: $legend-font-weight;
     line-height: inherit;
     color: inherit; // 2
-    white-space: normal; // 1
+    white-space: normal; // 3
 }
 
 progress {
     vertical-align: baseline; // Add the correct vertical alignment in Chrome, Firefox, and Opera.
 }
 
-// Correct the cursor style of increment and decrement buttons in Chrome.
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
-    height: auto;
+// Fix height of inputs with a type of datetime-local, date, month, week, or time
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+    height: 0;
 }
 
 [type="search"] {
@@ -467,26 +439,22 @@ progress {
     // `.form-control` class can properly style them. Note that this cannot simply
     // be added to `.form-control` as it's not specific enough. For details, see
     outline-offset: -2px; // 2. Correct the outline style in Safari.
-    -webkit-appearance: none;
+    -webkit-appearance: textfield;
 }
 
 // Remove the inner padding in Chrome and Safari on macOS.
-[type="search"]::-webkit-search-decoration {
+::-webkit-search-decoration {
     -webkit-appearance: none;
 }
 
-//
-// 1. Correct the inability to style clickable types in iOS and Safari.
-// 2. Change font properties to `inherit` in Safari.
-//
+// 1. Change font properties to `inherit` in Safari.
+// 2. Correct the inability to style clickable types in iOS and Safari.
 ::-webkit-file-upload-button {
-    font: inherit; // 2
-    -webkit-appearance: button; // 1
+    font: inherit; // 1
+    -webkit-appearance: button; // 2
 }
 
-//
 // Correct element displays
-//
 output {
     display: inline-block;
 }
