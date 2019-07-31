@@ -68,7 +68,7 @@
                 .CFW_Tooltip('hide')
                 .attr('data-cfw-tooltip-original-title', fallbackMsg)
                 .CFW_Tooltip('show')
-                .attr('data-cfw-tooltip-original-title', 'Copy to clipboard')
+                .attr('data-cfw-tooltip-original-title', 'Copy to clipboard');
         });
     };
 
