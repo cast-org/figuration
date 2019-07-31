@@ -53,11 +53,9 @@
         clipboard.on('success', function(e) {
             $(e.trigger)
                 .CFW_Tooltip('hide')
-                .attr('title', 'Copied!')
-                .CFW_Tooltip('fixTitle')
+                .attr('data-cfw-tooltip-original-title', 'Copied!')
                 .CFW_Tooltip('show')
-                .attr('title', 'Copy to clipboard')
-                .CFW_Tooltip('fixTitle');
+                .attr('data-cfw-tooltip-original-title', 'Copy to clipboard');
 
             e.clearSelection();
         });
@@ -68,11 +66,9 @@
 
             $(e.trigger)
                 .CFW_Tooltip('hide')
-                .attr('title', fallbackMsg)
-                .CFW_Tooltip('fixTitle')
+                .attr('data-cfw-tooltip-original-title', fallbackMsg)
                 .CFW_Tooltip('show')
-                .attr('title', 'Copy to clipboard')
-                .CFW_Tooltip('fixTitle');
+                .attr('data-cfw-tooltip-original-title', 'Copy to clipboard')
         });
     };
 
