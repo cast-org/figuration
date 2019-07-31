@@ -17,7 +17,7 @@
 }
 
 // Row
-// Rows contain and clear the floats of your columns.
+// Rows contain columns.
 @if $enable-grid-classes {
     .row {
         @include make-row();
