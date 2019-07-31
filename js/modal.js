@@ -160,6 +160,7 @@
 
         _showComplete : function() {
             var $selfRef = this;
+            var $modalBody = this.$dialog.find('.modal-body');
 
             if (this.settings.animate) {
                 this.$target.addClass('fade');
@@ -171,8 +172,8 @@
 
             this.$target.show();
 
-            if (this.$dialog.hasClass('modal-dialog-scrollable')) {
-                this.$dialog.find('.modal-body').scrollTop(0);
+            if (this.$dialog.hasClass('modal-dialog-scrollable') && $modalBody.length) {
+                $modalBody.scrollTop(0);
             } else {
                 this.$target.scrollTop(0);
             }

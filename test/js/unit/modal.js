@@ -754,4 +754,22 @@ $(function() {
             .CFW_Modal()
             .CFW_Modal('show');
     });
+
+    QUnit.test('should set .modal scrollTop to 0 if using .modal-dialog-scrollable but modal body does not exist', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal"><div class="modal-dialog modal-dialog-scrollable"></div></div>').appendTo(document.body);
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                assert.strictEqual($('#modal').scrollTop(), 0, 'scrollTop is 0');
+                done();
+            });
+
+        $trigger
+            .CFW_Modal()
+            .CFW_Modal('show');
+    });
 });
