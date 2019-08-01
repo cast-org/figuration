@@ -90,6 +90,8 @@
         }
 
         textarea.form-control {
+            min-height: calc-input-height-outer($input-padding-y, $input-line-height);
+
             &:not([rows="1"]) {
                 height: auto;
             }
@@ -135,6 +137,13 @@
                 @include font-size($sz-font-size);
                 line-height: $sz-line-height;
                 @include border-radius($sz-border-radius);
+            }
+
+            @if $sz-padding-y != null and $sz-line-height != null {
+                $my-padding-y: if($sz-padding-y != null, $sz-padding-y, $input-padding-y);
+                textarea.form-control {
+                    min-height: calc-input-height-outer($my-padding-y, $sz-line-height);
+                }
             }
 
             @if $enable-form-control and $enable-form-control-sizing {
