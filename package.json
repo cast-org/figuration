@@ -1,6 +1,6 @@
 {
   "name": "figuration",
-  "description": "A feature rich, responsive, mobile first, accessible, front-end framework inspired by Bootstrap.",
+  "description": "A feature rich, responsive, mobile first, accessible, front-end framework.",
   "version": "4.0.0-alpha.6",
   "keywords": [
     "css",
@@ -57,7 +57,7 @@
     "grunt-rtlcss": "^2.0.1",
     "grunt-run": "^0.8.1",
     "grunt-sass": "^3.0.2",
-    "grunt-stylelint": "^0.11.0",
+    "grunt-stylelint": "^0.11.1",
     "jquery": "^3.4.1",
     "karma": "^4.2.0",
     "karma-chrome-launcher": "^3.0.0",
