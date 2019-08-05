@@ -45,7 +45,7 @@
         @extend %btn-variant-#{$parent}-disable;
     }
     @if $enable-btn-check {
-        .btn-check-input:disabled ~ #{$parent} {
+        .btn-check-input[disabled] ~ #{$parent} {
             @extend %btn-variant-#{$parent}-disable;
         }
     }
@@ -62,7 +62,7 @@
         @extend %btn-variant-#{$parent}-active;
     }
     @if $enable-btn-check {
-        .btn-check-input:not(:disabled):checked ~ #{$parent} {
+        .btn-check-input:not([disabled]):checked ~ #{$parent} {
             @extend %btn-variant-#{$parent}-active;
         }
     }
@@ -78,7 +78,7 @@
             @extend %btn-variant-#{$parent}-active-focus;
         }
         @if $enable-btn-check {
-            .btn-check-input:not(:disabled):checked:focus ~ #{$parent} {
+            .btn-check-input:not([disabled]):checked:focus ~ #{$parent} {
                 @extend %btn-variant-#{$parent}-active-focus;
             }
         }
