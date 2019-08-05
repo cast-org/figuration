@@ -51,10 +51,8 @@
         &:disabled {
             & ~ .form-file-label {
                 color: $input-disabled-color;
+                background-color: $input-disabled-bg;
 
-                .form-file-text {
-                    background-color: $input-disabled-bg;
-                }
                 .form-file-button {
                     color: $form-file-button-disabled-color;
                     background-color: $form-file-button-disabled-bg;
@@ -73,6 +71,7 @@
         display: flex;
         height: calc-input-height-outer($input-padding-y, $input-line-height);
         color: $input-color;
+        background-color: $input-bg;
         border-color: $input-border-color;
         @include border-radius($input-border-radius);
         @include box-shadow($input-box-shadow);
@@ -90,7 +89,6 @@
         line-height: $input-line-height;
         text-overflow: ellipsis;
         white-space: nowrap;
-        background-color: $input-bg;
         border: $input-border-width solid;
         border-color: inherit;
         @include border-start-radius(inherit);

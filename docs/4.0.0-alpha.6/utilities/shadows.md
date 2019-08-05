@@ -62,16 +62,16 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 <td>map</td>
                 <td>
 <pre><code>("0":  none,
-"d1": 0 .125rem .25rem rgba($black, .15),
-"d2": 0 .125rem .5rem rgba($black, .15),
-"d3": 0 .125rem .75rem rgba($black, .15),
-"d4": 0 .125rem 1rem rgba($black, .15),
-"d5": 0 .125rem 1.25rem rgba($black, .15),
-"i1": inset 0 .125rem .25rem rgba($black, .15),
-"i2": inset 0 .125rem .5rem rgba($black, .15),
-"i3": inset 0 .125rem .75rem rgba($black, .15),
-"i4": inset 0 .125rem 1rem rgba($black, .15),
-"i5": inset 0 .125rem 1.25rem rgba($black, .15)</code></pre>
+"d1": 0 .125rem .1875rem rgba($black, .15),
+"d2": 0 .125rem .25rem rgba($black, .15),
+"d3": 0 .125rem .5rem rgba($black, .15),
+"d4": 0 .125rem .75rem rgba($black, .15),
+"d5": 0 .125rem 1rem rgba($black, .15),
+"i1": inset 0 .125rem .1875rem rgba($black, .15),
+"i2": inset 0 .125rem .25rem rgba($black, .15),
+"i3": inset 0 .125rem .5rem rgba($black, .15),
+"i4": inset 0 .125rem .75rem rgba($black, .15),
+"i5": inset 0 .125rem 1rem rgba($black, .15))</code></pre>
                 </td>
                 <td>
                     Map of shadow append names and rules to be generated.
