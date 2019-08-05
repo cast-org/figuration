@@ -990,7 +990,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             <tr>
                 <td><code>$modal-content-box-shadow</code></td>
                 <td>string</td>
-                <td><code>0 .25rem .5rem rgba($black, .5)</code></td>
+                <td><code>map-get($shadows, "d3")</code></td>
                 <td>
                     Box shadow for modal content container.
                 </td>
@@ -998,7 +998,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             <tr>
                 <td><code>$modal-content-bp-up-box-shadow</code></td>
                 <td>string</td>
-                <td><code>0 .25rem 1rem rgba($black, .5)</code></td>
+                <td><code>map-get($shadows, "d4")</code></td>
                 <td>
                     Box shadow for modal content container at the breakpoint defined by <code>$modal-breakpoint</code>.
                 </td>
