@@ -12,6 +12,7 @@
         > .form-file {
             position: relative;  // Needed for z-index on focus/active state
             flex: 1 1 0%;
+            min-width: 0; // https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
             margin-bottom: 0;
             margin-left: -$input-border-width;
 
