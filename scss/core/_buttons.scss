@@ -58,15 +58,11 @@
     .btn:not(:disabled):not(.disabled):active,
     .btn:not(:disabled):not(.disabled).active,
     .btn.open {
-        @if $enable-shadows {
-            @extend %btn-common-active;
-        }
+        @extend %btn-common-active !optional;
     }
     @if $enable-btn-check {
         .btn-check-input:not(:disabled):checked ~ .btn {
-            @if $enable-shadows {
-                @extend %btn-common-active;
-            }
+            @extend %btn-common-active !optional;
         }
     }
 
@@ -76,15 +72,11 @@
     .btn:not(:disabled):not(.disabled):active:focus,
     .btn:not(:disabled):not(.disabled).active:focus,
     .btn.open:focus {
-        @if $enable-shadows {
-            @extend %btn-common-active-focus;
-        }
+        @extend %btn-common-active-focus !optional;
     }
     @if $enable-btn-check {
         .btn-check-input:not(:disabled):checked:focus ~ .btn {
-            @if $enable-shadows {
-                @extend %btn-common-active-focus;
-            }
+            @extend %btn-common-active-focus !optional;
         }
     }
 

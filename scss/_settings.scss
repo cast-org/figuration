@@ -530,16 +530,16 @@ $shadows: () !default;
 $shadows: map-merge(
     (
         "0":  none,
-        "d1": 0 .125rem .25rem rgba($black, .15),
-        "d2": 0 .125rem .5rem rgba($black, .15),
-        "d3": 0 .125rem .75rem rgba($black, .15),
-        "d4": 0 .125rem 1rem rgba($black, .15),
-        "d5": 0 .125rem 1.25rem rgba($black, .15),
-        "i1": inset 0 .125rem .25rem rgba($black, .15),
-        "i2": inset 0 .125rem .5rem rgba($black, .15),
-        "i3": inset 0 .125rem .75rem rgba($black, .15),
-        "i4": inset 0 .125rem 1rem rgba($black, .15),
-        "i5": inset 0 .125rem 1.25rem rgba($black, .15)
+        "d1": 0 .125rem .1875rem rgba($black, .15),
+        "d2": 0 .125rem .25rem rgba($black, .15),
+        "d3": 0 .125rem .5rem rgba($black, .15),
+        "d4": 0 .125rem .75rem rgba($black, .15),
+        "d5": 0 .125rem 1rem rgba($black, .15),
+        "i1": inset 0 .125rem .1875rem rgba($black, .15),
+        "i2": inset 0 .125rem .25rem rgba($black, .15),
+        "i3": inset 0 .125rem .5rem rgba($black, .15),
+        "i4": inset 0 .125rem .75rem rgba($black, .15),
+        "i5": inset 0 .125rem 1rem rgba($black, .15)
     ),
     $shadows
 );
@@ -1253,8 +1253,8 @@ $modal-content-bg:               $component-bg !default;
 $modal-content-color:            null !default;
 $modal-content-border-color:     $component-overlay-border-color !default;
 $modal-content-border-width:     $border-width !default;
-$modal-content-box-shadow:       0 .25rem .5rem rgba($black, .5) !default;
-$modal-content-bp-up-box-shadow: 0 .25rem 1rem rgba($black, .5) !default;
+$modal-content-box-shadow:       map-get($shadows, "d3") !default;
+$modal-content-bp-up-box-shadow: map-get($shadows, "d4") !default;
 
 $modal-border-radius:           .375rem !default;
 $modal-inner-border-radius:     calc(#{$modal-border-radius} - #{$modal-content-border-width}) !default;
