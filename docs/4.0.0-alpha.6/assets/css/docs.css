@@ -773,7 +773,7 @@ h4 > code {
 }
 
 .algolia-autocomplete .ds-dropdown-menu {
-  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15);
 }
 
 @media (max-width: 61.98em) {

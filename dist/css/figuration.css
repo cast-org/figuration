@@ -325,8 +325,9 @@ fieldset {
 }
 
 legend {
-  float: left;
+  display: block;
   width: 100%;
+  max-width: 100%;
   padding: 0;
   margin-bottom: 0.5rem;
   font-size: 1.5rem;
@@ -905,6 +906,10 @@ select.form-control::-ms-expand {
   display: none;
 }
 
+textarea.form-control {
+  min-height: calc(2em + 2px);
+}
+
 textarea.form-control:not([rows="1"]) {
   height: auto;
 }
@@ -1190,9 +1195,6 @@ textarea.form-control:not([rows="1"]) {
 
 .form-file-input:disabled ~ .form-file-label {
   color: #9eaab4;
-}
-
-.form-file-input:disabled ~ .form-file-label .form-file-text {
   background-color: #eff1f3;
 }
 
@@ -1211,6 +1213,7 @@ textarea.form-control:not([rows="1"]) {
   display: flex;
   height: calc(2em + 2px);
   color: #424f5b;
+  background-color: #fff;
   border-color: #bfc6cd;
   border-radius: 0.25rem;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -1232,7 +1235,6 @@ textarea.form-control:not([rows="1"]) {
   line-height: 1.5;
   text-overflow: ellipsis;
   white-space: nowrap;
-  background-color: #fff;
   border: 1px solid;
   border-color: inherit;
   border-top-left-radius: inherit;
@@ -8715,43 +8717,43 @@ a.page-link {
 }
 
 .shadow-d1 {
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.15) !important;
 }
 
 .shadow-d2 {
-  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15) !important;
 }
 
 .shadow-d3 {
-  box-shadow: 0 0.125rem 0.75rem rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.15) !important;
 }
 
 .shadow-d4 {
-  box-shadow: 0 0.125rem 1rem rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 0.125rem 0.75rem rgba(0, 0, 0, 0.15) !important;
 }
 
 .shadow-d5 {
-  box-shadow: 0 0.125rem 1.25rem rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 0.125rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
 .shadow-i1 {
-  box-shadow: inset 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15) !important;
+  box-shadow: inset 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.15) !important;
 }
 
 .shadow-i2 {
-  box-shadow: inset 0 0.125rem 0.5rem rgba(0, 0, 0, 0.15) !important;
+  box-shadow: inset 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15) !important;
 }
 
 .shadow-i3 {
-  box-shadow: inset 0 0.125rem 0.75rem rgba(0, 0, 0, 0.15) !important;
+  box-shadow: inset 0 0.125rem 0.5rem rgba(0, 0, 0, 0.15) !important;
 }
 
 .shadow-i4 {
-  box-shadow: inset 0 0.125rem 1rem rgba(0, 0, 0, 0.15) !important;
+  box-shadow: inset 0 0.125rem 0.75rem rgba(0, 0, 0, 0.15) !important;
 }
 
 .shadow-i5 {
-  box-shadow: inset 0 0.125rem 1.25rem rgba(0, 0, 0, 0.15) !important;
+  box-shadow: inset 0 0.125rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
 .w-25 {
