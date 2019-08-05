@@ -5,6 +5,7 @@
     // Indent the labels to position radios/checkboxes as hanging controls.
     @if $enable-form-check {
         .form-check {
+            display: block;
             min-height: calc(1em * #{$line-height-base});
             padding-left: $form-check-gutter;
             margin-bottom: $form-check-margin-bottom;
@@ -20,6 +21,7 @@
         }
 
         .form-check-label {
+            display: inline;
             margin-bottom: 0; // Override default `<label>` bottom margin
             font-weight: $form-check-label-font-weight;
         }
