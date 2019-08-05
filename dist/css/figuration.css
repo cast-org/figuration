@@ -982,6 +982,7 @@ textarea.form-control:not([rows="1"]) {
 }
 
 .form-check {
+  display: block;
   min-height: 1.5em;
   padding-left: 1.25em;
   margin-bottom: 0.25rem;
@@ -996,6 +997,7 @@ textarea.form-control:not([rows="1"]) {
 }
 
 .form-check-label {
+  display: inline;
   margin-bottom: 0;
 }
 
@@ -3747,6 +3749,7 @@ button.list-item-action {
 .input-group > .form-file {
   position: relative;
   flex: 1 1;
+  min-width: 0;
   margin-bottom: 0;
   margin-left: -1px;
 }
