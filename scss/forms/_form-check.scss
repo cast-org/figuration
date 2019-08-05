@@ -13,7 +13,8 @@
                 margin-left: -$form-check-gutter;
             }
 
-            > input:disabled ~ .form-check-label {
+            // stylelint-disable-next-line selector-no-qualifying-type
+            > input[disabled] ~ .form-check-label {
                 opacity: $form-check-label-disabled-opacity;
             }
         }
@@ -72,7 +73,7 @@
                 }
             }
 
-            .form-check-input:active:not(:disabled) ~ .form-check-label {
+            .form-check-input:active:not([disabled]) ~ .form-check-label {
                 &::before {
                     filter: brightness(92.5%);
                 }
@@ -175,7 +176,7 @@
                 }
             }
 
-            .form-check-input:active:not(:disabled) ~ .form-check-label {
+            .form-check-input:active:not([disabled]) ~ .form-check-label {
                 &::before,
                 &::after {
                     filter: brightness(92.5%);
