@@ -125,9 +125,10 @@
 
 // =====
 
-// Calculate color contrasts and luminance using the WCAG 2.0 spec.
+// Calculate color contrasts and luminance using the WCAG 2.1 spec.
 // Formulas from:
-// https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+// https://www.w3.org/TR/WCAG21/#dfn-contrast-ratio
+// https://www.w3.org/TR/WCAG21/#dfn-relative-luminance
 
 // Color luminance
 @function color-get-luminance($color) {

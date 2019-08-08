@@ -129,7 +129,7 @@ $base-colors: (
 To add another color option to `$base-colors`, add a new key-value pair.
 
 {% highlight scss %}
-$control-colors: (
+$base-colors: (
     "new-color": #990099
 );
 {% endhighlight %}
@@ -181,6 +181,10 @@ You can find and customize these variables for key global options in our `_setti
 | `$enable-validation-icons`    | `true` (default) or `false`        | Enables the generation of CSS classes for the optional `background-image` icons within textual inputs and some custom forms for validation states. |
 
 There are additional options in our `_settings_options.scss` that can be used to optionally disable the CSS generation for certain sets, or subsets, of components and utilities.  More information about these setting options can be found on the respective pages for each component and utility.
+
+## Color
+
+Learn about Figuration's colors, themes, palette system, and how to more about customizing it over on the [color documentation page]({{ site.baseurl }}/{{ site.docs_version }}/content/color/).
 
 ## Component Sizes
 
@@ -258,108 +262,7 @@ $component-sizes: (
 );
 {% endhighlight %}
 
-## Color Themes
 
-Colors that are defined in the `$control-color` and
-
-### Adding a Theme
-
-Extend the default contextual color map with your own custom colors.
-
-Yes, it is a substantial and confusing piece of SCSS, but allows for reasonable flexibility.
-
-The `$control-themes` map is used by mainly by control items---specifically---buttons, badges, and switches.
-
-The `$context-themes` map is used for contextual items---specifically---alerts, lists, and tables.
-
-You can also add a single color map without all the additional color mixing functions with something a bit simpler.
-
-{% highlight scss %}
-// Adding a color theme
-$single-color: (
-    "purple": (
-        "bg":                        #990099,
-        "color":                     #fff,
-        "border-color":              #800080,
-        "hover-bg":                  #770077,
-        "hover-color":               #fff,
-        "hover-border-color":        #660066,
-        "active-hover-bg":           #ffb3ff,
-        "active-hover-color":        #990099,
-        "active-hover-border-color": #ff29ff
-    );
-);
-{% endhighlight %}
-
-{% highlight scss %}
-// Required - functions
-@import "../node_modules/figuration/scss/functions";
-
-// Required - settings and mixins
-@import "../node_modules/figuration/scss/settings";
-@import "../node_modules/figuration/scss/mixins";
-
-// Custom theme addition/removal go in this location
-$btn-themes: map-merge($btn-themes, $single-color);
-
-// Core and Components
-@import "../node_modules/figuration/scss/reboot";
-@import "../node_modules/figuration/scss/typography";
-...
-{% endhighlight %}
-
-### Removing a Theme
-
-Just like removing from the color maps, use `map-remove()` to remove themes from `$btn-themes`.
-
-As before, insert this setting after the *Required* sections and before the *Core and Components* section.
-
-{% highlight scss %}
-// Required - functions
-@import "../node_modules/figuration/scss/functions";
-
-// Required - settings and mixins
-@import "../node_modules/figuration/scss/settings";
-@import "../node_modules/figuration/scss/mixins";
-
-// Custom theme addition/removal go in this location
-$btn-themes: map-remove('warning', 'light', 'dark');
-
-// Core and Components
-@import "../node_modules/figuration/scss/reboot";
-@import "../node_modules/figuration/scss/typography";
-...
-{% endhighlight %}
-
-## Palette Variables
-
-When enabled, any theme in the `$palette-themes` map get CSS generated for each defined level for both text and background variants.
-
-{% highlight scss %}
-// Palette Colors
-$red:       #c81d0e;
-$green:     #108918;
-$blue:      #1242ba;
-$cyan:      #117dba;
-$yellow:    #c98800;
-$gray:      #666;
-
-// Palette Map
-$palette-themes: (
-    "red":      $red,
-    "green":    $green,
-    "blue":     $blue,
-    "cyan":     $cyan,
-    "yellow":   $yellow,
-    "gray":     $gray
-);
-{% endhighlight %}
-
-The default setting for the color levels to be generated is defined as the following.
-
-{% highlight scss %}
-$palette-levels: 50 100 200 300 400 500 600 700 800 900;
-{% endhighlight %}
 
 ## Encoding SVG
 
@@ -439,7 +342,7 @@ And here's an example of **what is supported:**
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for generating the root CSS variables.
+Here are some Customization options, or Sass variables, that can be customized for generating the root CSS variables.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">
@@ -483,14 +386,6 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 <td><code>true</code></td>
                 <td>
                     Enable the generation of the font CSS variables.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$root-colors</code></td>
-                <td>map</td>
-                <td><code> map-merge($base-colors, $palette-colors)</code></td>
-                <td>
-                    Colors to output as CSS variables.
                 </td>
             </tr>
         </tbody>
