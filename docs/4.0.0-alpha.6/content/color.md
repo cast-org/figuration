@@ -11,11 +11,9 @@ group: content
 * ToC goes here
 {:toc}
 
-## Theme Colors
+## Themes
 
-Here are the names and base color values for the color scheme used throughout Figuration.  These colors are used to expand into a palette style color system, as seen below.
-
-There is more information about working with the themes over in the Get Started section, under [Options: Color Themes]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/#color-themes).
+Here are the names and base color values for the color themes used throughout Figuration.  These colors are used to expand into a palette style color system, as seen below.
 
 <div class="row text-black">
      <div class="palette col-sm-6 col-md-4">
@@ -68,8 +66,7 @@ The pre-defined color variables are available when building your own components.
 }
 {% endhighlight %}
 
-
-## Palette Colors
+## Palette
 
 Figuration uses a simplified color palettes extended from our base colors, similar to the concept by [Google's Material color palettes](https://www.google.com/design/spec/style/color.html#color-color-palette).
 
@@ -266,7 +263,7 @@ Sample usage within SASS:
 }
 {% endhighlight %}
 
-## Color Contrast Functions
+## Contrast
 
 Figuration includes a handful of color contrast functions based the [WCAG 2.1 minimum contrast specification](https://www.w3.org/TR/WCAG21/#contrast-minimum), using the related [contrast ratio](https://www.w3.org/TR/WCAG21/#dfn-contrast-ratio) and [relative luminance](https://www.w3.org/TR/WCAG21#dfn-relative-luminance) formulas to determine contrast ratios.
 
@@ -452,6 +449,142 @@ color-if-contrast($colorfore, $colorback, $light: $color-contrast-base-light, $d
     </table>
 </div>
 
+## Adjusting Themes
+
+### Add Color
+
+Add a color to all themes by appending it to the `$base-colors` map.
+
+{% highlight scss %}
+$base-colors: (
+    "new-color": #990099
+);
+{% endhighlight %}
+
+### Add Mixed Theme
+
+Figuration uses mixed themes to build out our components. This way color stays consitent across all aspects of the component.
+
+You can mix your own theme by using the
+
+_mix-context-colors($colors, $levels)
+
+{% highlight sass %}
+_mix-context-colors($colors, $levels)
+{% endhighlight %}
+
+<div class="table-scroll">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th style="width: 100px;">Argument</th>
+                <th style="width: 50px;">Type</th>
+                <th style="width: 50px;">Default</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>$color</code></td>
+                <td>string</td>
+                <td><code>''</code></td>
+                <td>
+                    The base color to mix with.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$levels</code></td>
+                <td>map</td>
+                <td><code>''</code></td>
+                <td>
+                Palette levels for each state of a contextual element.  Refer to the <code>$level-control</code> variable for the map specifications.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+{% highlight scss %}
+// Adding a mixed theme with custom mix levels
+$mix-levels: (
+    "bg":                   550,
+    "color":                -1,
+    "border-color":         650,
+    "hover-bg":             650,
+    "hover-color":          -1,
+    "hover-border-color":   750,
+    "active-bg":            750,
+    "active-color":         -1,
+    "active-border-color":  750
+);
+
+$mixed-theme = _mix-context-colors(#990099, $mix-levels)
+$btn-themes: map-merge($btn-themes, $mixed-theme);
+{% endhighlight %}
+
+
+### Add Custom Theme
+
+You can also add a color map without using the color mixing function, allowing for greater customization.
+
+{% highlight scss %}
+// Adding a custom theme
+$custom-theme: (
+    "purple": (
+        "base":                 #990099,
+        "bg":                   #990099,
+        "color":                #fff,
+        "border-color":         #800080,
+        "hover-bg":             #770077,
+        "hover-color":          #fff,
+        "hover-border-color":   #660066,
+        "active-bg":            #ffb3ff,
+        "active-color":         #990099,
+        "active-border-color":  #ff29ff
+    );
+);
+{% endhighlight %}
+
+{% highlight scss %}
+// Required - functions
+@import "../node_modules/figuration/scss/functions";
+
+// Required - settings and mixins
+@import "../node_modules/figuration/scss/settings";
+@import "../node_modules/figuration/scss/mixins";
+
+// Custom theme addition/removal go in this location
+$btn-themes: map-merge($btn-themes, $custom-theme);
+
+// Core and Components
+@import "../node_modules/figuration/scss/reboot";
+@import "../node_modules/figuration/scss/typography";
+...
+{% endhighlight %}
+
+### Remove Theme
+
+Just like removing from the color maps, use `map-remove()` to remove themes from `$btn-themes`.
+
+As before, insert this setting after the *Required* sections and before the *Core and Components* section.
+
+{% highlight scss %}
+// Required - functions
+@import "../node_modules/figuration/scss/functions";
+
+// Required - settings and mixins
+@import "../node_modules/figuration/scss/settings";
+@import "../node_modules/figuration/scss/mixins";
+
+// Custom theme addition/removal go in this location
+$btn-themes: map-remove('warning', 'light', 'dark');
+
+// Core and Components
+@import "../node_modules/figuration/scss/reboot";
+@import "../node_modules/figuration/scss/typography";
+...
+{% endhighlight %}
+
 ## SASS Reference
 
 ### Variables
@@ -571,6 +704,14 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 </td>
                 <td>
                     Base color map used to generate the palette utility variants.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$root-colors</code></td>
+                <td>map</td>
+                <td><code> map-merge($base-colors, $palette-colors)</code></td>
+                <td>
+                    Colors to output as CSS variables.
                 </td>
             </tr>
             <tr>
