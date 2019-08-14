@@ -114,14 +114,25 @@ Some changes will most likely have been missed, so please refer to the documenta
 ### Button
 - Dropped button widget in favor of CSS input buttons.  Single state toggles can be replaced with checkbox `.btn-check` variant.
 
+### Dropdown
+- Dropdown has been reworked to use a recursive model, and now requires [Popper.js](https://popper.js.org/) for positioning, meaning changes to the available options.
+- Horizontal menu direction classes have been updated to use the following alternates: `.dropend`, `.dropstart`, replacing the previous `.dropdown-menu-reverse` and `.dropdown-menu-forward` classes.
+- The classed used to show menus, `.open`, is now used on the `.dropdown-menu` iteself, instead of the parent container.
+
 ### Lazy
 - Dropped support for jQuery animations as the slim build does not support them.  Added an optional fade-in CSSS animation.
+
+### Player
+- Dropped support for sliders using the Slider widget, and added support for `<input type="range">` elements.  A few improvements on the accesibility of the sliders were also added.
+
+### Popover
+- Popover now require [Popper.js](https://popper.js.org/) for positioning, replacing our custom code.  This also means changes to the available options.
 
 ### Slider
 - Dropped the slider widget as a bundled plugin.  This has been replaced with the `.form-range` styled `<input type="range">` element.
 
-### Player
-- Dropped support for sliders using the Slider widget, and added support for `<input type="range">` elements.  A few improvements on the accesibility of the sliders were also added.
+### Tooltip
+- Tooltip now require [Popper.js](https://popper.js.org/) for positioning, replacing our custom code.  This also means changes to the available options.
 
 
 ## Build Tools

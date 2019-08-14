@@ -58,7 +58,7 @@
     }
     #{$parent}:not(:disabled):not(.disabled):active,
     #{$parent}:not(:disabled):not(.disabled).active,
-    #{$parent}.open {
+    #{$parent}.open[data-cfw="dropdown"] {
         @extend %btn-variant-#{$parent}-active;
     }
     @if $enable-btn-check {
@@ -74,7 +74,7 @@
         }
         #{$parent}:not(:disabled):not(.disabled):active:focus,
         #{$parent}:not(:disabled):not(.disabled).active:focus,
-        #{$parent}.open:focus {
+        #{$parent}.open[data-cfw="dropdown"]:focus {
             @extend %btn-variant-#{$parent}-active-focus;
         }
         @if $enable-btn-check {
