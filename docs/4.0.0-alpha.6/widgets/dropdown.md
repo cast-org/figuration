@@ -464,12 +464,12 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
 
 By default, a dropdown menu is automatically positioned 100% from the top and aligned to the left side of its parent.  While submenu items are aligned 100% from the left and to the top of its parent.
 
-Add `.dropdown-reverse` to a `.dropdown-menu` to align the dropdown menu to the right side of the parent. This will also make all submenus open out to the left side.  This can also be combined with `.dropup`.
+Add `.dropend` to a `.dropdown-menu` to align the dropdown menu to the right side of the parent. This will also make all submenus open out to the left side.  This can also be combined with `.dropup`.
 
 **Heads up!** When using the right-to-left, `rtl`, variant of Figuration all horizontal directions will be reversed.  Meaning left becomes right, and vice-versa.
 
 {% capture example %}
-<div class="dropdown dropdown-reverse float-end">
+<div class="dropdown dropend float-end">
     <button type="button" class="btn btn-primary" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
         Reverse Dropdown <span class="caret" aria-hidden="true"></span>
     </button>
@@ -502,7 +502,7 @@ Add `.dropdown-reverse` to a `.dropdown-menu` to align the dropdown menu to the 
 
 ### Submenu Alignment
 
-The menu alignment class of `.dropdown-reverse` will also work with submenu items, and you can use the available `.dropdown-forward` to switch submenu directions if needed.  Simply place either class on the `li` parent of the submenu list.
+The menu alignment class of `.dropend` will also work with submenu items, and you can use the available `.dropstart` to switch submenu directions if needed.  Simply place either class on the `li` parent of the submenu list.
 
 {% capture example %}
 <div class="dropdown">
@@ -512,17 +512,17 @@ The menu alignment class of `.dropdown-reverse` will also work with submenu item
     <ul class="dropdown-menu">
         <li class="dropdown-header">Dropdown header</li>
         <li><a href="#">Action</a></li>
-        <li class="dropdown-reverse">
+        <li class="dropend">
             <a href="#">Reverse menu</a>
             <ul>
-                <li class="dropdown-reverse">
+                <li class="dropend">
                     <a href="#">Reverse menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-forward">
+                <li class="dropstart">
                     <a href="#">Forward menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
@@ -531,17 +531,17 @@ The menu alignment class of `.dropdown-reverse` will also work with submenu item
                 </li>
             </ul>
         </li>
-        <li class="dropdown-forward">
+        <li class="dropstart">
             <a href="#">Forward menu</a>
             <ul>
-                <li class="dropdown-reverse">
+                <li class="dropend">
                     <a href="#">Reverse menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                     </ul>
                 </li>
-                <li class="dropdown-forward">
+                <li class="dropstart">
                     <a href="#">Forward menu</a>
                     <ul>
                         <li><a href="#">Action</a></li>
