@@ -1056,8 +1056,8 @@ if (typeof jQuery === 'undefined') {
                 }
 
                 // Manipulate directions of submenus
-                var $dirNode = $this.closest('.dropdown-reverse, .dropdown-forward');
-                if ($dirNode.hasClass('dropdown-reverse')) {
+                var $dirNode = $this.closest('.dropend, .dropstart');
+                if ($dirNode.hasClass('dropend')) {
                     $this.addClass('dropdown-subalign-reverse');
                 } else {
                     $this.addClass('dropdown-subalign-forward');
@@ -1367,10 +1367,10 @@ if (typeof jQuery === 'undefined') {
                 LEFTEND: 'left-end'
             };
 
-            var $dirNode = this.$element.closest('.dropdown-reverse, .dropdown-forward, .dropup');
+            var $dirNode = this.$element.closest('.dropend, .dropstart, .dropup');
             var dirH = $dirNode.hasClass('dropup') ? 'TOP' : 'BOTTOM';
-            var appendH = $dirNode.hasClass('dropdown-reverse') ? 'END' : '';
-            var dirV = $dirNode.hasClass('dropdown-reverse') ? 'REVERSE' : 'FORWARD';
+            var appendH = $dirNode.hasClass('dropend') ? 'END' : '';
+            var dirV = $dirNode.hasClass('dropend') ? 'REVERSE' : 'FORWARD';
             var appendV = $dirNode.hasClass('dropup') ? 'END' : '';
 
             var placement = attachmentMap[dirH + appendH];
