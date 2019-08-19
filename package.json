@@ -40,7 +40,7 @@
     "@lodder/grunt-postcss": "^1.0.9",
     "autoprefixer": "^9.6.1",
     "cross-env": "^5.2.0",
-    "eslint": "^6.1.0",
+    "eslint": "^6.2.0",
     "eslint-plugin-compat": "^3.3.0",
     "eslint-plugin-figuration": "file:./grunt/eslint-plugin-figuration",
     "glob": "^7.1.4",
