@@ -428,9 +428,9 @@ progress {
 }
 
 // Fix height of inputs with a type of datetime-local, date, month, week, or time
-::-webkit-inner-spin-button,
-::-webkit-outer-spin-button {
-    height: 0;
+::-webkit-datetime-edit {
+    overflow: visible;
+    line-height: 0;
 }
 
 [type="search"] {
