@@ -52,7 +52,8 @@
         reference : 'toggle',
         boundary  : 'scollParent',
         flip      : true,
-        display   : 'dynamic'
+        display   : 'dynamic',
+        popperConfig    : null
     };
 
     var clearMenus = function(e) {
@@ -513,8 +514,26 @@
             return placement;
         },
 
+        _getPopperConfig : function() {
+            var defaultConfig = {
+                placement: this._getPlacement(),
+                modifiers: {
+                    flip: {
+                        enabled: this.settings.flip,
+                        behavior: 'flip'
+                    },
+                    preventOverflow: {
+                        boundariesElement: this.settings.boundary
+                    }
+                }
+            };
+
+            var returnConfig = $.extend({}, defaultConfig, this.settings.popperConfig);
+            return returnConfig;
+        },
+
         popperReset : function() {
-            if (this.popper !== null) {
+            if (this.popper) {
                 this.popper.destroy();
             }
         },
@@ -529,18 +548,7 @@
                 throw new TypeError('Figurations\'s Dropdown widget requires Popper.js (https://popper.js.org)');
             }
 
-            this.popper = new Popper(this._getReference(), this.$target[0], {
-                placement: this._getPlacement(),
-                modifiers: {
-                    flip: {
-                        enabled: this.settings.flip,
-                        behavior: 'flip'
-                    },
-                    preventOverflow: {
-                        boundariesElement: this.settings.boundary
-                    }
-                }
-            });
+            this.popper = new Popper(this._getReference(), this.$target[0], this._getPopperConfig());
         },
 
         toggle : function(e) {
@@ -652,7 +660,7 @@
             this.hasContainer = null;
             this.inNavbar = null;
             this.settings = null;
-            if (this.popper !== null) {
+            if (this.popper) {
                 this.popper.destroy();
             }
             this.popper = null;
