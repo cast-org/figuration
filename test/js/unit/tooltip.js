@@ -889,4 +889,24 @@ $(function() {
             })
             .trigger('click');
     });
+
+    QUnit.test('should allow passing of config to popper.js using popperConfig', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+
+        var $trigger = $('<a href="#" title="Another tooltip"/>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({
+                popperConfig: {
+                    placement: 'left'
+                }
+            });
+
+        $trigger
+            .on('afterShow.cfw.tooltip', function() {
+                assert.strictEqual($('.tooltip').attr('x-placement'), 'left');
+                done();
+            })
+            .CFW_Tooltip('show');
+    });
 });

@@ -712,6 +712,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
                     <p>By default, we use Popper.js for dynamic positioning. Disable this with <code>'static'</code>.</p>
                 </td>
             </tr>
+            <tr>
+                <td>popperConfig</td>
+                <td>null | object</td>
+                <td><code>null</code></td>
+                <td>Pass a customized <a href="https://popper.js.org/popper-documentation.html#Popper.Defaults">Popper.js configuration</a> that will override the default Popper.js configuration.</td>
+            </tr>
         </tbody>
     </table>
 </div>

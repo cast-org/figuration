@@ -33,7 +33,9 @@
         unlink          : false,            // If on hide to remove events and attributes from tooltip and trigger
         dispose         : false,            // If on hide to unlink, then remove tooltip from DOM
         template        : '<div class="tooltip"><div class="tooltip-body"></div><div class="tooltip-arrow"></div></div>',
-        gpuAcceleration : true
+        gpuAcceleration : true,
+        popperConfig    : null
+
     };
 
     CFW_Widget_Tooltip.prototype = {
@@ -549,7 +551,7 @@
             this.dynamicTip = null;
             this.inserted = null;
             this.flags = null;
-            if (this.popper !== null) {
+            if (this.popper) {
                 this.popper.destroy();
             }
             this.popper = null;
@@ -611,8 +613,6 @@
         },
 
         locateTip : function() {
-            var $selfRef = this;
-
             var placement = typeof this.settings.placement === 'function'
                 ? this.settings.placement.call(this, this.$target[0], this.$element[0])
                 : this.settings.placement;
@@ -639,33 +639,7 @@
 
             this.$target.addClass('in');
 
-            this.popper = new Popper(this.$element[0], this.$target[0], {
-                placement: attachment,
-                modifiers: {
-                    flip: {
-                        enabled: autoFlip,
-                        behavior: 'flip'
-                    },
-                    arrow: {
-                        element: '.' + this.type + '-arrow'
-                    },
-                    preventOverflow: {
-                        padding: this.settings.padding,
-                        boundariesElement: this._getViewport()
-                    },
-                    computeStyle : {
-                        gpuAcceleration: this.settings.gpuAcceleration
-                    }
-                },
-                onCreate: function(data) {
-                    if (data.originalPlacement !== data.placement) {
-                        $selfRef._handlePopperPlacementChange(data);
-                    }
-                },
-                onUpdate: function(data) {
-                    $selfRef._handlePopperPlacementChange(data);
-                }
-            });
+            this.popper = new Popper(this.$element[0], this.$target[0], this._getPopperConfig(attachment, autoFlip));
         },
 
         _showComplete : function() {
@@ -759,7 +733,7 @@
                 this._removeDynamicTip();
             }
 
-            if (this.popper !== null) {
+            if (this.popper) {
                 this.popper.destroy();
             }
 
@@ -841,6 +815,40 @@
                 return attachmentMap[placement.toUpperCase()];
             }
             return CFW_Widget_Tooltip.DEFAULTS.placement;
+        },
+
+        _getPopperConfig : function(attachment, autoFlip) {
+            var $selfRef = this;
+            var defaultConfig = {
+                placement: attachment,
+                modifiers: {
+                    flip: {
+                        enabled: autoFlip,
+                        behavior: 'flip'
+                    },
+                    arrow: {
+                        element: '.' + this.type + '-arrow'
+                    },
+                    preventOverflow: {
+                        padding: this.settings.padding,
+                        boundariesElement: this._getViewport()
+                    },
+                    computeStyle : {
+                        gpuAcceleration: this.settings.gpuAcceleration
+                    }
+                },
+                onCreate: function(data) {
+                    if (data.originalPlacement !== data.placement) {
+                        $selfRef._handlePopperPlacementChange(data);
+                    }
+                },
+                onUpdate: function(data) {
+                    $selfRef._handlePopperPlacementChange(data);
+                }
+            };
+
+            var returnConfig = $.extend({}, defaultConfig, this.settings.popperConfig);
+            return returnConfig;
         },
 
         _isInState : function() {

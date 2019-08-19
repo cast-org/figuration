@@ -344,6 +344,12 @@ function myTipAlign(tip, trigger) {
                 <td><code>false</code></td>
                 <td>Show the tooltip automatically at the end of initialization. This will force the <code>trigger</code> option to a setting of <code>'click'</code>.</td>
             </tr>
+            <tr>
+                <td>popperConfig</td>
+                <td>null | object</td>
+                <td><code>null</code></td>
+                <td>Pass a customized <a href="https://popper.js.org/popper-documentation.html#Popper.Defaults">Popper.js configuration</a> that will override the default Popper.js configuration.</td>
+            </tr>
         </tbody>
     </table>
 </div>

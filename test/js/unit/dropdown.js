@@ -671,4 +671,29 @@ $(function() {
 
         $dropdown.trigger('click');
     });
+
+    QUnit.test('should allow passing of config to popper.js using popperConfig', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        var dropdownHTML = '<div class="dropdown">' +
+            '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
+            '<ul class="dropdown-menu" style="position: absolute;">' +
+            '<li><a href="#" id="focusable">Menu link</a></li>' +
+            '</ul>' +
+            '</div>';
+        var $dropdown = $(dropdownHTML).appendTo('#qunit-fixture').find('[data-cfw="dropdown"]');
+        $dropdown.CFW_Dropdown({
+            popperConfig: {
+                placement: 'left'
+            }
+        });
+
+        $dropdown
+            .on('afterShow.cfw.dropdown', function() {
+                assert.strictEqual($('.dropdown-menu').attr('x-placement'), 'left');
+                done();
+            });
+
+        $dropdown.trigger('click');
+    });
 });
