@@ -340,9 +340,9 @@ progress {
   vertical-align: baseline;
 }
 
-::-webkit-inner-spin-button,
-::-webkit-outer-spin-button {
-  height: 0;
+::-webkit-datetime-edit {
+  overflow: visible;
+  line-height: 0;
 }
 
 [type="search"] {

@@ -919,7 +919,8 @@ if (typeof jQuery === 'undefined') {
         reference : 'toggle',
         boundary  : 'scollParent',
         flip      : true,
-        display   : 'dynamic'
+        display   : 'dynamic',
+        popperConfig    : null
     };
 
     var clearMenus = function(e) {
@@ -1380,8 +1381,26 @@ if (typeof jQuery === 'undefined') {
             return placement;
         },
 
+        _getPopperConfig : function() {
+            var defaultConfig = {
+                placement: this._getPlacement(),
+                modifiers: {
+                    flip: {
+                        enabled: this.settings.flip,
+                        behavior: 'flip'
+                    },
+                    preventOverflow: {
+                        boundariesElement: this.settings.boundary
+                    }
+                }
+            };
+
+            var returnConfig = $.extend({}, defaultConfig, this.settings.popperConfig);
+            return returnConfig;
+        },
+
         popperReset : function() {
-            if (this.popper !== null) {
+            if (this.popper) {
                 this.popper.destroy();
             }
         },
@@ -1396,18 +1415,7 @@ if (typeof jQuery === 'undefined') {
                 throw new TypeError('Figurations\'s Dropdown widget requires Popper.js (https://popper.js.org)');
             }
 
-            this.popper = new Popper(this._getReference(), this.$target[0], {
-                placement: this._getPlacement(),
-                modifiers: {
-                    flip: {
-                        enabled: this.settings.flip,
-                        behavior: 'flip'
-                    },
-                    preventOverflow: {
-                        boundariesElement: this.settings.boundary
-                    }
-                }
-            });
+            this.popper = new Popper(this._getReference(), this.$target[0], this._getPopperConfig());
         },
 
         toggle : function(e) {
@@ -1519,7 +1527,7 @@ if (typeof jQuery === 'undefined') {
             this.hasContainer = null;
             this.inNavbar = null;
             this.settings = null;
-            if (this.popper !== null) {
+            if (this.popper) {
                 this.popper.destroy();
             }
             this.popper = null;
@@ -2025,7 +2033,9 @@ if (typeof jQuery === 'undefined') {
         unlink          : false,            // If on hide to remove events and attributes from tooltip and trigger
         dispose         : false,            // If on hide to unlink, then remove tooltip from DOM
         template        : '<div class="tooltip"><div class="tooltip-body"></div><div class="tooltip-arrow"></div></div>',
-        gpuAcceleration : true
+        gpuAcceleration : true,
+        popperConfig    : null
+
     };
 
     CFW_Widget_Tooltip.prototype = {
@@ -2541,7 +2551,7 @@ if (typeof jQuery === 'undefined') {
             this.dynamicTip = null;
             this.inserted = null;
             this.flags = null;
-            if (this.popper !== null) {
+            if (this.popper) {
                 this.popper.destroy();
             }
             this.popper = null;
@@ -2603,8 +2613,6 @@ if (typeof jQuery === 'undefined') {
         },
 
         locateTip : function() {
-            var $selfRef = this;
-
             var placement = typeof this.settings.placement === 'function'
                 ? this.settings.placement.call(this, this.$target[0], this.$element[0])
                 : this.settings.placement;
@@ -2631,33 +2639,7 @@ if (typeof jQuery === 'undefined') {
 
             this.$target.addClass('in');
 
-            this.popper = new Popper(this.$element[0], this.$target[0], {
-                placement: attachment,
-                modifiers: {
-                    flip: {
-                        enabled: autoFlip,
-                        behavior: 'flip'
-                    },
-                    arrow: {
-                        element: '.' + this.type + '-arrow'
-                    },
-                    preventOverflow: {
-                        padding: this.settings.padding,
-                        boundariesElement: this._getViewport()
-                    },
-                    computeStyle : {
-                        gpuAcceleration: this.settings.gpuAcceleration
-                    }
-                },
-                onCreate: function(data) {
-                    if (data.originalPlacement !== data.placement) {
-                        $selfRef._handlePopperPlacementChange(data);
-                    }
-                },
-                onUpdate: function(data) {
-                    $selfRef._handlePopperPlacementChange(data);
-                }
-            });
+            this.popper = new Popper(this.$element[0], this.$target[0], this._getPopperConfig(attachment, autoFlip));
         },
 
         _showComplete : function() {
@@ -2751,7 +2733,7 @@ if (typeof jQuery === 'undefined') {
                 this._removeDynamicTip();
             }
 
-            if (this.popper !== null) {
+            if (this.popper) {
                 this.popper.destroy();
             }
 
@@ -2833,6 +2815,40 @@ if (typeof jQuery === 'undefined') {
                 return attachmentMap[placement.toUpperCase()];
             }
             return CFW_Widget_Tooltip.DEFAULTS.placement;
+        },
+
+        _getPopperConfig : function(attachment, autoFlip) {
+            var $selfRef = this;
+            var defaultConfig = {
+                placement: attachment,
+                modifiers: {
+                    flip: {
+                        enabled: autoFlip,
+                        behavior: 'flip'
+                    },
+                    arrow: {
+                        element: '.' + this.type + '-arrow'
+                    },
+                    preventOverflow: {
+                        padding: this.settings.padding,
+                        boundariesElement: this._getViewport()
+                    },
+                    computeStyle : {
+                        gpuAcceleration: this.settings.gpuAcceleration
+                    }
+                },
+                onCreate: function(data) {
+                    if (data.originalPlacement !== data.placement) {
+                        $selfRef._handlePopperPlacementChange(data);
+                    }
+                },
+                onUpdate: function(data) {
+                    $selfRef._handlePopperPlacementChange(data);
+                }
+            };
+
+            var returnConfig = $.extend({}, defaultConfig, this.settings.popperConfig);
+            return returnConfig;
         },
 
         _isInState : function() {
