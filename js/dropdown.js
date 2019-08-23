@@ -81,12 +81,12 @@
             }
 
             // Ignore clicks into input areas and tab navigation movement inside a menu
-            if (e && (e.type === 'click' && /label|input|textarea/i.test(e.target.tagName) || e.type === 'keyup' && e.which !== KEYCODE_TAB)) {
+            if (e && ((e.type === 'click' && /label|input|textarea/i.test(e.target.tagName)) || (e.type === 'keyup' && e.which !== KEYCODE_TAB))) {
                 continue;
             }
 
             // Ignore if focus if still inside menu
-            if (e && this === e.target || $itemMenu[0].contains(e.target)) {
+            if (e && (this === e.target || $itemMenu[0].contains(e.target))) {
                 continue;
             }
 
@@ -226,8 +226,8 @@
 
         _addBacklink : function() {
             var $selfRef = this;
-            if (this.settings.backlink && this.settings.backtop && !this.settings.isSubmenu ||
-                this.settings.backlink && this.settings.isSubmenu) {
+            if ((this.settings.backlink && this.settings.backtop && !this.settings.isSubmenu) ||
+                (this.settings.backlink && this.settings.isSubmenu)) {
                 var $backItem = $('<li class="' + this.c.backLink + '"><button type="button" class="dropdown-item">' + this.settings.backtext + '</button></li>')
                     .prependTo(this.$target);
 
@@ -274,7 +274,7 @@
             if (isInput && !isCheck && REGEX_ARROWS.test(e.which)) { return; }
 
             // Allow ESC and LEFT to propagate if menu is closed
-            if (!showing && e.which === KEYCODE_ESC || e.which === KEYCODE_LEFT && $(e.target).is(this.$element)) {
+            if (!showing && (e.which === KEYCODE_ESC || e.which === KEYCODE_LEFT) && $(e.target).is(this.$element)) {
                 return;
             }
 
