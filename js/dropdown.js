@@ -85,8 +85,8 @@
                 continue;
             }
 
-            // Ignore if focus if still inside menu
-            if (e && (this === e.target || $itemMenu[0].contains(e.target))) {
+            // Ignore if target is a nested menu trigger
+            if (e && (this === e.target || $(e.target).is('[data-cfw="dropdown"]'))) {
                 continue;
             }
 
