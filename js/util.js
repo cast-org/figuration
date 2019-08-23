@@ -133,7 +133,7 @@
     /* global DocumentTouch */
     var msTouch = typeof window.navigator.msMaxTouchPoints === 'undefined' ? false : window.navigator.msMaxTouchPoints;
     var isTouch = false;
-    if (('ontouchstart' in window) || msTouch || window.DocumentTouch && document instanceof DocumentTouch) {
+    if (('ontouchstart' in window) || msTouch || (window.DocumentTouch && document instanceof DocumentTouch)) {
         isTouch = true;
     }
     $.CFW_isTouch = isTouch;
