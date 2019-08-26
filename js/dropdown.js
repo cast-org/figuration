@@ -56,6 +56,7 @@
         popperConfig    : null
     };
 
+    /* eslint-disable complexity */
     var clearMenus = function(e) {
         var KEYCODE_TAB = 9;    // Tab
 
@@ -80,19 +81,35 @@
                 continue;
             }
 
-            // Ignore clicks into input areas and tab navigation movement inside a menu
-            if (e && ((e.type === 'click' && /label|input|textarea/i.test(e.target.tagName)) || (e.type === 'keyup' && e.which !== KEYCODE_TAB))) {
-                continue;
-            }
+            if (e) {
+                // Ignore key event
+                // - tab navigation movement inside a menu
+                if (e.type === 'keyup') {
+                    if (e.which !== KEYCODE_TAB) {
+                        continue;
+                    }
+                }
 
-            // Ignore if hover/mouse target if still inside menu
-            if (e && e.type === "mouseenter" && (this === e.target || $itemMenu[0].contains(e.target))) {
-                continue;
-            }
+                // Ignore clicks for
+                // - input areas
+                // - menu triggers
+                // - 'back' buttons
+                if (e.type === 'click') {
+                    if (/label|input|textarea/i.test(e.target.tagName) ||
+                    this === e.target ||
+                    $(e.target).is('[data-cfw="dropdown"]') ||
+                    $(e.target).closest('.dropdown-back').length) {
+                        continue;
+                    }
+                }
 
-            // Ignore if click target is a nested menu trigger or 'back' button
-            if (e && e.type === "click" && (this === e.target || $(e.target).is('[data-cfw="dropdown"]') || $(e.target).closest('.dropdown-back').length)) {
-                continue;
+                // Ignore if hover/mouse
+                // - if still inside menu
+                if (e.type === 'mouseenter') {
+                    if (this === e.target || $itemMenu[0].contains(e.target)) {
+                        continue;
+                    }
+                }
             }
 
             var eventProperties = {
@@ -124,6 +141,7 @@
             $trigger.CFW_trigger('afterHide.cfw.dropdown', eventProperties);
         }
     };
+    /* eslint-enable complexity */
 
     CFW_Widget_Dropdown.prototype = {
         _init : function() {
