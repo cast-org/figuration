@@ -85,8 +85,13 @@
                 continue;
             }
 
-            // Ignore if target is a nested menu trigger
-            if (e && (this === e.target || $(e.target).is('[data-cfw="dropdown"]'))) {
+            // Ignore if hover/mouse target if still inside menu
+            if (e && e.type === "mouseenter" && (this === e.target || $itemMenu[0].contains(e.target))) {
+                continue;
+            }
+
+            // Ignore if click target is a nested menu trigger or 'back' button
+            if (e && e.type === "click" && (this === e.target || $(e.target).is('[data-cfw="dropdown"]') || $(e.target).closest('.dropdown-back').length)) {
                 continue;
             }
 
