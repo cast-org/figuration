@@ -154,7 +154,7 @@ if (typeof jQuery === 'undefined') {
     /* global DocumentTouch */
     var msTouch = typeof window.navigator.msMaxTouchPoints === 'undefined' ? false : window.navigator.msMaxTouchPoints;
     var isTouch = false;
-    if (('ontouchstart' in window) || msTouch || window.DocumentTouch && document instanceof DocumentTouch) {
+    if (('ontouchstart' in window) || msTouch || (window.DocumentTouch && document instanceof DocumentTouch)) {
         isTouch = true;
     }
     $.CFW_isTouch = isTouch;
@@ -917,12 +917,13 @@ if (typeof jQuery === 'undefined') {
         backtext  : 'Back', // Text for back links
         container : false,   // Where to place dropdown in DOM
         reference : 'toggle',
-        boundary  : 'scollParent',
+        boundary  : 'viewport',
         flip      : true,
         display   : 'dynamic',
         popperConfig    : null
     };
 
+    /* eslint-disable complexity */
     var clearMenus = function(e) {
         var KEYCODE_TAB = 9;    // Tab
 
@@ -947,14 +948,35 @@ if (typeof jQuery === 'undefined') {
                 continue;
             }
 
-            // Ignore clicks into input areas and tab navigation movement inside a menu
-            if (e && (e.type === 'click' && /label|input|textarea/i.test(e.target.tagName) || e.type === 'keyup' && e.which !== KEYCODE_TAB)) {
-                continue;
-            }
+            if (e) {
+                // Ignore key event
+                // - tab navigation movement inside a menu
+                if (e.type === 'keyup') {
+                    if (e.which !== KEYCODE_TAB) {
+                        continue;
+                    }
+                }
 
-            // Ignore if focus if still inside menu
-            if (e && this === e.target || $itemMenu[0].contains(e.target)) {
-                continue;
+                // Ignore clicks for
+                // - input areas
+                // - menu triggers
+                // - 'back' buttons
+                if (e.type === 'click') {
+                    if (/label|input|textarea/i.test(e.target.tagName) ||
+                    this === e.target ||
+                    $(e.target).is('[data-cfw="dropdown"]') ||
+                    $(e.target).closest('.dropdown-back').length) {
+                        continue;
+                    }
+                }
+
+                // Ignore if hover/mouse
+                // - if still inside menu
+                if (e.type === 'mouseenter') {
+                    if (this === e.target || $itemMenu[0].contains(e.target)) {
+                        continue;
+                    }
+                }
             }
 
             var eventProperties = {
@@ -986,6 +1008,7 @@ if (typeof jQuery === 'undefined') {
             $trigger.CFW_trigger('afterHide.cfw.dropdown', eventProperties);
         }
     };
+    /* eslint-enable complexity */
 
     CFW_Widget_Dropdown.prototype = {
         _init : function() {
@@ -1093,8 +1116,8 @@ if (typeof jQuery === 'undefined') {
 
         _addBacklink : function() {
             var $selfRef = this;
-            if (this.settings.backlink && this.settings.backtop && !this.settings.isSubmenu ||
-                this.settings.backlink && this.settings.isSubmenu) {
+            if ((this.settings.backlink && this.settings.backtop && !this.settings.isSubmenu) ||
+                (this.settings.backlink && this.settings.isSubmenu)) {
                 var $backItem = $('<li class="' + this.c.backLink + '"><button type="button" class="dropdown-item">' + this.settings.backtext + '</button></li>')
                     .prependTo(this.$target);
 
@@ -1141,7 +1164,7 @@ if (typeof jQuery === 'undefined') {
             if (isInput && !isCheck && REGEX_ARROWS.test(e.which)) { return; }
 
             // Allow ESC and LEFT to propagate if menu is closed
-            if (!showing && e.which === KEYCODE_ESC || e.which === KEYCODE_LEFT && $(e.target).is(this.$element)) {
+            if (!showing && (e.which === KEYCODE_ESC || e.which === KEYCODE_LEFT) && $(e.target).is(this.$element)) {
                 return;
             }
 
@@ -1334,6 +1357,10 @@ if (typeof jQuery === 'undefined') {
 
         _getReference : function() {
             var reference = this.$element[0];
+
+            if (this.hasContainer.helper !== null) {
+                reference = this.hasContainer.helper;
+            }
 
             if (this.settings.reference === 'parent') {
                 reference = this.$element.parent().get(0);
@@ -3730,7 +3757,7 @@ if (typeof jQuery === 'undefined') {
         _scrollBlock : function(e) {
             // Allow scrolling for scrollable modal body
             var $content = this.$target.find('.modal-dialog-scrollable');
-            if ($content && $content[0] === e.target || $content.find('.modal-body')[0].contains(e.target)) {
+            if ($content && ($content[0] === e.target || $content.find('.modal-body')[0].contains(e.target))) {
                 e.stopPropagation();
                 return;
             }

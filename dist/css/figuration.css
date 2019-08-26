@@ -3076,7 +3076,6 @@ fieldset:disabled a.btn, .btn-check-input[disabled] ~ .btn {
 }
 
 .collapsing {
-  position: relative;
   height: 0;
   overflow: hidden;
   transition: height 0.3s ease;
