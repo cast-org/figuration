@@ -473,6 +473,10 @@
         _getReference : function() {
             var reference = this.$element[0];
 
+            if (this.hasContainer.helper !== null) {
+                reference = this.hasContainer.helper;
+            }
+
             if (this.settings.reference === 'parent') {
                 reference = this.$element.parent().get(0);
             } else if (this._isElement(this.settings.reference)) {
