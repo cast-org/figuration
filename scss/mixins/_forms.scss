@@ -340,6 +340,7 @@
     height: $form-range-track-height;
     margin: 0 $form-range-thumb-focus-box-shadow-width;
     color: transparent;
+    cursor: $form-range-track-cursor;
     border: $form-range-track-border;
     @include border-radius($form-range-track-border-radius);
     @include box-shadow($form-range-track-box-shadow);
