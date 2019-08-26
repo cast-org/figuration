@@ -373,6 +373,14 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 </td>
             </tr>
             <tr>
+                <td><code>$font-size-root</code></td>
+                <td>string</td>
+                <td><code>null</code></td>
+                <td>
+                    Root font size. Impacts <code>rem</code> value.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$font-size-base</code></td>
                 <td>string</td>
                 <td><code>1rem</code></td>

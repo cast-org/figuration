@@ -33,6 +33,14 @@ section {
     display: block;
 }
 
+// Root
+//
+// 1. Ability to the value of the root font sizes, affecting the value of `rem`.
+//    null by default, thus nothing is generated.
+:root {
+    // stylelint-disable-next-line property-blacklist
+    font-size: $font-size-root; // 1
+}
 
 // Body
 //

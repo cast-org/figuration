@@ -360,6 +360,9 @@ $font-family-monospace:     SFMono-Regular, Menlo, Monaco, Consolas, "Liberation
 $font-family-base:          $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
 
+// `$font-size-root` effects the value of `rem`, which is used for as well font sizes, paddings and margins
+// `$font-size-base` effects the font size of the body text
+$font-size-root:    null !default;
 $font-size-base:    1rem !default;
 $line-height-base:  1.5 !default;
 
