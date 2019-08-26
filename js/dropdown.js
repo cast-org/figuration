@@ -50,7 +50,7 @@
         backtext  : 'Back', // Text for back links
         container : false,   // Where to place dropdown in DOM
         reference : 'toggle',
-        boundary  : 'scollParent',
+        boundary  : 'viewport',
         flip      : true,
         display   : 'dynamic',
         popperConfig    : null
