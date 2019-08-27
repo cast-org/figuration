@@ -208,6 +208,9 @@ module.exports = function(grunt) {
 
         rtlcss: {
             core: {
+                options: {
+                    map: true
+                },
                 opts: {
                     clean: false
                 },
@@ -218,6 +221,9 @@ module.exports = function(grunt) {
                 ext: '-rtl.css'
             },
             docs: {
+                options: {
+                    map: true
+                },
                 opts: {
                     clean: false
                 },
