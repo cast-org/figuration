@@ -43,7 +43,6 @@
         &.disabled {
             color: $pagination-disabled-color;
             pointer-events: none;
-            cursor: auto;
             background-color: $pagination-disabled-bg;
         }
 

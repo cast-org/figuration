@@ -59,16 +59,6 @@
             @include border-radius($form-range-track-border-radius);
         }
 
-        &:not(:disabled) {
-            &::-webkit-slider-runnable-track {
-                cursor: $form-range-track-cursor;
-            }
-            &::-moz-range-track {
-                cursor: $form-range-track-cursor;
-            }
-            // Cursor does seem to have affect in IE/Edge so no rules set.
-        }
-
         // Thumb
         &::-webkit-slider-thumb {
             @include form-range-thumb();
@@ -88,6 +78,8 @@
         }
 
         &:disabled {
+            pointer-events: none;
+
             &::-webkit-slider-thumb {
                 background-color: $form-range-thumb-disabled-bg;
             }

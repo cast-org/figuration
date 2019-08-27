@@ -56,8 +56,8 @@
         background-color: $active-bg;
         border-color: $active-border;
     }
-    #{$parent}:not(:disabled):not(.disabled):active,
-    #{$parent}:not(:disabled):not(.disabled).active,
+    #{$parent}:active,
+    #{$parent}.active,
     #{$parent}.open[data-cfw="dropdown"] {
         @extend %btn-variant-#{$parent}-active;
     }
@@ -72,8 +72,8 @@
         %btn-variant-#{$parent}-active-focus {
             box-shadow: $btn-active-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha);
         }
-        #{$parent}:not(:disabled):not(.disabled):active:focus,
-        #{$parent}:not(:disabled):not(.disabled).active:focus,
+        #{$parent}:active:focus,
+        #{$parent}.active:focus,
         #{$parent}.open[data-cfw="dropdown"]:focus {
             @extend %btn-variant-#{$parent}-active-focus;
         }

@@ -1,4 +1,3 @@
-// stylelint-disable selector-no-qualifying-type
 @if $enable-btn {
     // Base button
     .btn {
@@ -8,6 +7,7 @@
         text-align: center;
         text-decoration: none;
         vertical-align: middle;
+        cursor: pointer;
         user-select: none;
         border: $btn-border-width solid transparent;
         @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
@@ -35,6 +35,7 @@
 
     // Disabled comes first so active can restyle
     %btn-common-disabled {
+        pointer-events: none;
         opacity: $btn-disabled-opacity;
         @include box-shadow(none);
     }
@@ -48,15 +49,11 @@
         }
     }
 
-    .btn:not(:disabled):not(.disabled) {
-        cursor: pointer;
-    }
-
     %btn-common-active {
         @include box-shadow($btn-active-box-shadow);
     }
-    .btn:not(:disabled):not(.disabled):active,
-    .btn:not(:disabled):not(.disabled).active,
+    .btn:active,
+    .btn.active,
     .btn.open[data-cfw="dropdown"] {
         @extend %btn-common-active !optional;
     }
@@ -69,8 +66,8 @@
     %btn-common-active-focus {
         @include box-shadow($btn-active-box-shadow, $btn-focus-box-shadow);
     }
-    .btn:not(:disabled):not(.disabled):active:focus,
-    .btn:not(:disabled):not(.disabled).active:focus,
+    .btn:active:focus,
+    .btn.active:focus,
     .btn.open[data-cfw="dropdown"]:focus {
         @extend %btn-common-active-focus !optional;
     }
@@ -84,7 +81,7 @@
     %btn-common-disabled-pointer {
         pointer-events: none;
     }
-    a.btn.disabled,
+    // stylelint-disable-next-line selector-no-qualifying-type
     fieldset:disabled a.btn {
         @extend %btn-common-disabled-pointer;
     }
@@ -166,13 +163,12 @@
             &:disabled {
                 color: $btn-link-disabled-color;
                 text-decoration: none;
-                pointer-events: none;
                 background-color: transparent;
                 border-color: transparent;
             }
 
-            &:not(:disabled):not(.disabled):active,
-            &:not(:disabled):not(.disabled).active,
+            &:active,
+            &.active,
             &.open[data-cfw="dropdown"] {
                 color: $btn-link-hover-color;
                 background-color: transparent;

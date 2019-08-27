@@ -2341,7 +2341,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 </td>
             </tr>
             <tr>
-                <td><code>$form-range-border</code></td>
+                <td><code>$form-range-track-border</code></td>
                 <td>string</td>
                 <td><code>0</code></td>
                 <td>
