@@ -27,14 +27,14 @@ You can find our supported range of browsers and their versions [in our `.browse
 >= 1%
 last 1 major version
 not dead
-Chrome >= 49
-Firefox >= 45
-Edge >= 12
+Chrome >= 57
+Firefox >= 52
+Edge >= 15
 Explorer >= 11
-iOS >= 9
-Safari >= 9
-Android >= 4.4
-Opera >= 36
+iOS >= 10
+Safari >= 10
+Android >= 6
+Opera >= 44
 ```
 
 ### Mobile Devices
@@ -59,7 +59,7 @@ Generally speaking, Figuration supports the latest versions of each major platfo
                 <td class="text-success">Supported</td>
                 <td class="text-success">Supported</td>
                 <td class="text-muted">N/A</td>
-                <td class="text-success">Android v5.0+ supported</td>
+                <td class="text-success">v6.0+</td>
                 <td class="text-success">Supported</td>
             </tr>
             <tr>
@@ -122,7 +122,7 @@ Similarly, the latest versions of most desktop browsers are supported.
     </table>
 </div>
 
-For Firefox, in addition to the latest normal stable release, we also support the latest [Extended Support Release (ESR)](https://www.mozilla.org/en-US/firefox/organizations/faq/) version of Firefox.
+For Firefox, in addition to the latest normal stable release, we also support the latest [Extended Support Release (ESR)](https://www.mozilla.org/en-US/firefox/organizations/#faq) version of Firefox.
 
 Unofficially, Figuration should look and behave well enough in Chromium and Chrome for Linux, and Firefox for Linux, though they are not officially supported.
 
@@ -148,10 +148,6 @@ As of iOS 9.2, while a modal is open, if the initial touch of a scroll gesture i
 
 Page zooming inevitably presents rendering artifacts in some components, both in Figuration and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.
 
-## Sticky `:hover`/`:focus` on iOS
-
-While `:hover` isn't possible on most touch devices, iOS emulates this behavior, resulting in "sticky" hover styles that persist after tapping one element. These hover styles are only removed when users tap another element. This behavior is considered largely undesirable and appears to not be an issue on Android or Windows devices.
-
 ## Printing
 
 Even in some modern browsers, printing can be quirky.
@@ -165,28 +161,6 @@ As of Safari v8.0, use of the fixed-width `.container` class can cause Safari to
   }
 }
 {% endhighlight %}
-
-## Android Stock Browser
-
-Out of the box, Android 4.1 (and even some newer releases apparently) ship with the Browser app as the default web browser of choice (as opposed to Chrome). Unfortunately, the Browser app has lots of bugs and inconsistencies with CSS in general.
-
-#### Select Menu
-
-On `<select>` elements, the Android stock browser will not display the side controls if there is a `border-radius` and/or `border` applied. (See [this StackOverflow question](https://stackoverflow.com/questions/14744437/html-select-box-not-showing-drop-down-arrow-on-android-version-4-0-when-set-with) for details.) Use the snippet of code below to remove the offending CSS and render the `<select>` as an unstyled element on the Android stock browser. The user agent sniffing avoids interference with Chrome, Safari, and Mozilla browsers.
-
-{% highlight html %}
-<script>
-$(function () {
-  var nua = navigator.userAgent
-  var isAndroid = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1 && nua.indexOf('Chrome') === -1)
-  if (isAndroid) {
-    $('select.form-control').removeClass('form-control').css('width', '100%')
-  }
-})
-</script>
-{% endhighlight %}
-
-Want to see an example? [Check out this JS Bin demo.](http://jsbin.com/OyaqoDO/2)
 
 ## Validators
 
