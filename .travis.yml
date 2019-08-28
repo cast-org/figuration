@@ -16,7 +16,7 @@ before_install:
 
 install:
     - gem install bundler -v "$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)"
-    - bundle install --jobs=3
+    - bundle install --jobs=3 --path vendor/bundle
     - npm install
 
 cache:
