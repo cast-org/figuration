@@ -111,8 +111,8 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             </tr>
             <tr>
                 <td><code>$code-font-size</code></td>
-                <td>percent</td>
-                <td><code>87.5%</code></td>
+                <td>string</td>
+                <td><code>.875em</code></td>
                 <td>
                     Code and pre element font size.
                 </td>
@@ -147,6 +147,14 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 <td><code>$uibase-50</code></td>
                 <td>
                     Code element background color.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$kbd-font-size</code></td>
+                <td>string</td>
+                <td><code>.875em</code></td>
+                <td>
+                    Keyboard element font size.
                 </td>
             </tr>
             <tr>

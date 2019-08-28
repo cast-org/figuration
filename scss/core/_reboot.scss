@@ -221,7 +221,7 @@ mark {
 sub,
 sup {
     position: relative;
-    @include font-size(75%);
+    @include font-size($sub-sup-font-size);
     line-height: 0;
     vertical-align: baseline;
 }

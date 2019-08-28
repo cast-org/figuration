@@ -243,7 +243,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             <tr>
                 <td><code>$badge-font-size</code></td>
                 <td>string</td>
-                <td><code>75%</code></td>
+                <td><code>.75em</code></td>
                 <td>
                     Badge font size.
                 </td>

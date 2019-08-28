@@ -691,7 +691,7 @@ $callout-themes: _mix-context-colors($callout-colors, $level-context);
 // Footer
 .cf-footer {
     padding: .75rem 0;
-    @include font-size(85%);
+    @include font-size(.875rem);
     text-align: center;
     background-color: $uibase-50;
     border-top: 2px solid $uibase-700;
