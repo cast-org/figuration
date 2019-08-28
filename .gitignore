@@ -12,6 +12,7 @@ vendor/bundle
 
 # Jekyll metadata
 docs/.jekyll-metadata
+docs/.jekyll-cache
 
 # Ignore extensions
 *.diff
