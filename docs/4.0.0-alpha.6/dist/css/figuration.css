@@ -160,7 +160,7 @@ strong {
 }
 
 small, .small {
-  font-size: 80%;
+  font-size: 0.875em;
 }
 
 mark, .mark {
@@ -171,7 +171,7 @@ mark, .mark {
 sub,
 sup {
   position: relative;
-  font-size: 75%;
+  font-size: 0.75em;
   line-height: 0;
   vertical-align: baseline;
 }
@@ -388,7 +388,7 @@ template {
 }
 
 .initialism {
-  font-size: 90%;
+  font-size: 0.875em;
   text-transform: uppercase;
 }
 
@@ -409,7 +409,7 @@ template {
 }
 
 code {
-  font-size: 87.5%;
+  font-size: 0.875em;
   color: #c42013;
   word-wrap: break-word;
 }
@@ -420,7 +420,7 @@ a > code {
 
 kbd {
   padding: 0.125rem 0.4375rem;
-  font-size: 87.5%;
+  font-size: 0.875em;
   color: #eff1f3;
   background-color: #262d34;
   border-radius: 0.1875rem;
@@ -434,7 +434,7 @@ kbd kbd {
 
 pre {
   display: block;
-  font-size: 87.5%;
+  font-size: 0.875em;
 }
 
 pre code {
@@ -469,7 +469,7 @@ pre code {
 }
 
 .figure-caption {
-  font-size: 87.5%;
+  font-size: 0.875em;
   color: #5e7182;
 }
 
@@ -1524,7 +1524,7 @@ textarea.form-control:not([rows="1"]) {
   display: none;
   width: 100%;
   margin-top: 0.25rem;
-  font-size: 80%;
+  font-size: 0.875em;
   color: #0e8a16;
 }
 
@@ -1645,7 +1645,7 @@ textarea.form-control.has-validation-icon.is-valid {
   display: none;
   width: 100%;
   margin-top: 0.25rem;
-  font-size: 80%;
+  font-size: 0.875em;
   color: #d42314;
 }
 
@@ -4750,7 +4750,7 @@ a.page-link {
 .badge {
   display: inline-block;
   padding: 0.25em 0.4375em;
-  font-size: 75%;
+  font-size: 0.75em;
   font-weight: 700;
   line-height: 1;
   color: #fff;
