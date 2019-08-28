@@ -16,7 +16,8 @@ port:               9001
 baseurl:            ""
 url:                http://figuration.org
 encoding:           UTF-8
-exclude:            [assets/scss/]
+exclude:
+  - assets/scss/
 
 plugins:
   - jekyll-redirect-from
