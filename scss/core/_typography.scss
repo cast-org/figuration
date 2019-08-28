@@ -56,7 +56,7 @@
     //  Abbr extension
     @if $enable-typography-initialism {
         .initialism {
-            @include font-size(90%);
+            @include font-size($initialism-font-size);
             text-transform: uppercase;
         }
     }

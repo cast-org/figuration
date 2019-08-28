@@ -65,7 +65,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             </tr>
             <tr>
                 <td><code>$figure-spacer-y</code></td>
-                <td>percent</td>
+                <td>string</td>
                 <td><code>.5rem</code></td>
                 <td>
                     Figure element vertical spacing between image and caption.
@@ -73,8 +73,8 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             </tr>
             <tr>
                 <td><code>$figure-caption-font-size</code></td>
-                <td>percent</td>
-                <td><code>87.5%</code></td>
+                <td>string</td>
+                <td><code>.875em</code></td>
                 <td>
                     Figure caption font size.
                 </td>

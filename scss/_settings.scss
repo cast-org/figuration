@@ -405,11 +405,13 @@ $headings-font-weight:      600 !default;
 $headings-line-height:      1.25 !default;
 $headings-color:            null !default;
 
-$lead-font-size:    ($font-size-base * 1.25) !default;
-$lead-font-weight:  600 !default;
-$lead-line-height:  $line-height-base !default;
+$lead-font-size:        ($font-size-base * 1.25) !default;
+$lead-font-weight:      600 !default;
+$lead-line-height:      $line-height-base !default;
 
-$small-font-size:   80% !default;
+$small-font-size:       .875em !default;
+$sub-sup-font-size:     .75em !default;
+$initialism-font-size:  .875em !default;
 
 $text-muted:        $uibase-500 !default;
 
@@ -624,14 +626,14 @@ $embed-fluid-aspect-ratios: map-merge(
 
 // Code
 // =====
-$code-font-size:            87.5% !default;
+$code-font-size:            .875em !default;
 $code-padding-x:            null !default;
 $code-padding-y:            null !default;
 $code-color:                palette($red, 550) !default;
 $code-bg:                   null !default;
 $code-border-radius:        null !default;
 
-$kbd-font-size:             87.5% !default;
+$kbd-font-size:             .875em !default;
 $kbd-padding-x:             .4375rem !default;
 $kbd-padding-y:             .125rem !default;
 $kbd-bg:                    $uibase-900 !default;
@@ -646,7 +648,7 @@ $pre-color:                 null !default;
 // Figures
 // =====
 $figure-spacer-y:           .5rem !default;
-$figure-caption-font-size:  87.5% !default;
+$figure-caption-font-size:  .875em !default;
 $figure-caption-color:      $uibase-500 !default;
 
 
@@ -1120,7 +1122,7 @@ $jumbotron-breakpoint:      sm !default;
 $badge-bg:                  $uibase-500 !default;
 $badge-color:               $white !default;
 $badge-font-family:         null !default;
-$badge-font-size:           75% !default;
+$badge-font-size:           .75em !default;
 $badge-font-weight:         $font-weight-bold !default;
 $badge-padding-x:           .4375em !default;
 $badge-padding-y:           .25em !default;

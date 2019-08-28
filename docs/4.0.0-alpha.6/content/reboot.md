@@ -622,10 +622,18 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
             </tr>
             <tr>
                 <td><code>$small-font-size</code></td>
-                <td>percent</td>
-                <td><code>80%</code></td>
+                <td>string</td>
+                <td><code>.875em</code></td>
                 <td>
                     Small font size.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$sub-sup-font-size</code></td>
+                <td>string</td>
+                <td><code>.875em</code></td>
+                <td>
+                    Font size for subscript and superscript text.
                 </td>
             </tr>
             <tr>

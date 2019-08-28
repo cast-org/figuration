@@ -595,6 +595,14 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 </td>
             </tr>
             <tr>
+                <td><code>$initialism-font-size</code></td>
+                <td>string</td>
+                <td><code>.875em</code></td>
+                <td>
+                    Initialism font size.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$blockquote-font-size</code></td>
                 <td>string</td>
                 <td><code>($font-size-base * 1.1875)</code></td>
