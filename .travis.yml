@@ -15,6 +15,7 @@ before_install:
   - google-chrome-stable --product-version
 
 install:
+    - gem update
     - bundle install --jobs=3
     - npm install
 
