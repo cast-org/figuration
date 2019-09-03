@@ -1325,7 +1325,7 @@ Optional visual icon representations of the validation state can be added to _te
 
 - Validation icons are `url()`s configured via Sass variables that are applied to `background-image` rules for each state.
 - You may use your own base64 PNGs or SVGs by updating the Sass variables and recompiling.
-- Icons can also be disabled entirely by setting the `$enable-validation-icons` variable to `false` in the [Sass global options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/#global-options).
+- Icons can also be disabled entirely by setting the `$enable-form-validation-icon` variable to `false` in the Sass.
 
 {% capture example %}
 <form class="was-validated">
@@ -1379,8 +1379,18 @@ Optional visual icon representations of the validation state can be added to _te
     <div class="invalid-feedback">Example invalid custom select feedback</div>
   </div>
   <div class="form-group">
-    <label for="validate-icon-9">Textarea</label>
-    <textarea class="form-control has-validation-icon" id="validate-icon-9" rows="3" placeholder="Required example textarea" required></textarea>
+    <label for="validate-icon-9">Options</label>
+    <select class="form-control has-validation-icon" id="validate-icon-9" size="4" required>
+      <option value="">Choose one...</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <div class="invalid-feedback">Example invalid custom select feedback</div>
+  </div>
+  <div class="form-group">
+    <label for="validate-icon-10">Textarea</label>
+    <textarea class="form-control has-validation-icon" id="validate-icon-10" rows="3" placeholder="Required example textarea" required></textarea>
     <div class="invalid-feedback">Please enter a message in the textarea.</div>
     </div>
 </form>
@@ -1586,6 +1596,14 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 <td><code>true</code></td>
                 <td>
                     Enable the generation of the form validation tooltip classes.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-form-validation-icon</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the form validation icon class.
                 </td>
             </tr>
             <tr>
