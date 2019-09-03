@@ -2,7 +2,7 @@
 // IT'S JUST JUNK FOR OUR DOCS!
 // ++++++++++++++++++++++++++++++++++++++++++
 
-/* eslint-disable no-alert, no-magic-numbers, no-new-func, spaced-comment */
+/* eslint-disable no-alert, no-magic-numbers, no-new-func */
 
 /*!
  * Copyright 2014-2015 The Bootstrap Authors

@@ -92,7 +92,8 @@ module.exports = function(grunt) {
 
         eslint: {
             options: {
-                config: '.eslintrc.json'
+                config: '.eslintrc.json',
+                reportUnusedDisableDirectives: 'true'
             },
             grunt: {
                 options: {
