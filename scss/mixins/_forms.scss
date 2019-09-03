@@ -110,7 +110,7 @@
                 }
             }
 
-            @if $enable-validation-icons {
+            @if $enable-form-validation-icon {
                 @include form-validation-state-selector-icon($state) {
                     //background: $icon no-repeat right $form-feedback-icon-offset center / $form-feedback-icon-width $form-feedback-icon-height;
                     background-image: $icon;
@@ -122,7 +122,7 @@
         }
     }
 
-    @if $enable-form-control and $enable-validation-icons {
+    @if $enable-form-control and $enable-form-validation-icon {
         .form-control:not(textarea):not(select) {
             @include form-validation-state-selector-icon($state) {
                 padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset});
@@ -270,7 +270,7 @@
             $sz-padding-x:     map-get($dims, "padding-x");
 
             @if $sz-padding-x != null {
-                @if $enable-validation-icons {
+                @if $enable-form-validation-icon {
                     @if $enable-form-control {
                         .form-control-#{$size}:not(textarea),
                         .input-group-#{$size} > .form-control:not(textarea) {
