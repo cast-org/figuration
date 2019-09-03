@@ -325,6 +325,12 @@ module.exports = function(grunt) {
         },
 
         run: {
+            npmCssLintVarsCore: {
+                exec: 'npm run css-lint-vars-core'
+            },
+            npmCssLintVarsDocs: {
+                exec: 'npm run css-lint-vars-docs'
+            },
             npmJsTestKarma: {
                 exec: 'npm run js-test-karma'
             },
@@ -347,7 +353,7 @@ module.exports = function(grunt) {
 
     // Test
     grunt.registerTask('test', ['dist-css', 'dist-js', 'test-css', 'test-js']);
-    grunt.registerTask('test-css', ['stylelint:core']);
+    grunt.registerTask('test-css', ['stylelint:core', 'run:npmCssLintVarsCore']);
     grunt.registerTask('test-html', ['htmllint:test']);
 
     // Test - JS subtasks
@@ -370,7 +376,7 @@ module.exports = function(grunt) {
 
     // Docs tasks
     grunt.registerTask('docs-test-html', ['jekyll:docs', 'htmllint:docs']);
-    grunt.registerTask('docs-test-css', ['stylelint:docs']);
+    grunt.registerTask('docs-test-css', ['stylelint:docs', 'run:npmCssLintVarsDocs']);
     grunt.registerTask('docs-dist-css', ['sass:docs', 'postcss:docs', 'rtlcss:docs', 'cssmin:docs']);
     grunt.registerTask('docs-test-js', ['eslint:docs']);
     grunt.registerTask('docs-dist-js', ['uglify:docs']);

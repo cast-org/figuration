@@ -16,6 +16,9 @@
   "author": "CAST, Inc.",
   "scripts": {
     "test": "grunt test",
+    "css-lint-vars": "npm-run-all --continue-on-error --parallel css-lint-vars*",
+    "css-lint-vars-core": "fusv scss/ ",
+    "css-lint-vars-docs": "fusv docs/4.0.0-alpha.6/assets/scss/",
     "linkinator": "linkinator _gh_pages --recurse --silent --skip \"^(?!http://localhost)\"",
     "js-test-karma": "karma start build/karma.conf.js",
     "js-test-debug": "cross-env DEBUG=true npm run js-test-karma",
@@ -43,6 +46,7 @@
     "eslint": "^6.2.2",
     "eslint-plugin-compat": "^3.3.0",
     "eslint-plugin-figuration": "file:./grunt/eslint-plugin-figuration",
+    "find-unused-sass-variables": "^0.5.0",
     "glob": "^7.1.4",
     "grunt": "^1.0.4",
     "grunt-contrib-clean": "^2.0.0",
