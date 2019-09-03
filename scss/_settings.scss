@@ -866,7 +866,6 @@ $form-select-indicator-width:       .75em !default;
 $form-select-indicator-height:      .75em !default;
 $form-select-indicator-color:       rgba($uibase-700, .85) !default;
 $form-select-indicator-image:       encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$form-select-indicator-color}' d='M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z'/></svg>")) !default;
-$form-select-indicator:             $form-select-indicator-image no-repeat right $form-select-indicator-offset center / $form-select-indicator-width $form-select-indicator-height !default; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
 
 // Form file
 $form-file-button-color:            $uibase-600 !default;
