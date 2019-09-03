@@ -1,4 +1,4 @@
-/* eslint-disable no-implicit-globals, no-magic-numbers */
+/* eslint-disable no-magic-numbers */
 /* global ClipboardJS, Holder, anchors */
 
 /*!
