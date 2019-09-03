@@ -42,8 +42,8 @@
   "devDependencies": {
     "@lodder/grunt-postcss": "^1.0.9",
     "autoprefixer": "^9.6.1",
-    "cross-env": "^5.2.0",
-    "eslint": "^6.2.2",
+    "cross-env": "^5.2.1",
+    "eslint": "^6.3.0",
     "eslint-plugin-compat": "^3.3.0",
     "eslint-plugin-figuration": "file:./grunt/eslint-plugin-figuration",
     "find-unused-sass-variables": "^0.5.0",
@@ -81,7 +81,7 @@
     "stylelint": "^10.1.0",
     "stylelint-config-recommended-scss": "^3.2.0",
     "stylelint-config-standard": "^18.2.0",
-    "stylelint-order": "^3.0.1",
+    "stylelint-order": "^3.1.0",
     "stylelint-scss": "^3.10.0",
     "time-grunt": "^2.0.0"
   },
