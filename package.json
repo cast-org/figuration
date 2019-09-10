@@ -17,7 +17,7 @@
   "scripts": {
     "test": "grunt test",
     "css-lint-vars": "npm-run-all --continue-on-error --parallel css-lint-vars*",
-    "css-lint-vars-core": "fusv scss/ ",
+    "css-lint-vars-core": "fusv scss/",
     "css-lint-vars-docs": "fusv docs/4.0.0-alpha.6/assets/scss/",
     "linkinator": "linkinator _gh_pages --recurse --silent --skip \"^(?!http://localhost)\"",
     "js-test-karma": "karma start build/karma.conf.js",
