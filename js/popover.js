@@ -204,12 +204,56 @@
         this.$target.CFW_Drag(dragOpt);
     };
 
+    CFW_Widget_Popover.prototype.getParentNode = function(element) {
+        if (element.nodeName === 'HTML') {
+            return element;
+        }
+        return element.parentNode || element.host;
+    };
+
+    CFW_Widget_Popover.prototype.getScrollParent = function(element) {
+        if (!element) { return document.body; }
+
+        switch (element.nodeName) {
+            case 'HTML':
+            case 'BODY':
+                return element.ownerDocument.body;
+            case '#document':
+                return element.body;
+            default:
+                // Nothing for default
+        }
+
+        var compStyle = window.getComputedStyle(element);
+        if (/^(auto|scroll|overlay)$/.test(compStyle.overflow + compStyle.overflowX + compStyle.overflowY)) {
+            return element;
+        }
+
+        return this.getScrollParent(this.getParentNode(element));
+    };
+
+
+    CFW_Widget_Popover.prototype.getOwnerBody = function(element) {
+        var ownerDocument = element.ownerDocument;
+        return ownerDocument ? ownerDocument.body : document.body;
+    };
 
     CFW_Widget_Popover.prototype.viewportDragLimit = function() {
-        var $viewport = this.$viewport;
+        var viewport = this._getViewport();
+        var $viewport = null;
+
+        if (viewport === 'scrollParent') {
+            viewport = this.getScrollParent(this.$target[0]);
+        }
+        if (viewport === 'window' || viewport === window) {
+            $viewport = this.getOwnerBody(this.$target[0]);
+        }
+
+        $viewport = $(viewport);
         if (!$viewport.length) {
             $viewport = $(document.body);
         }
+
         var scrollbarWidth = this.viewportScrollbarWidth($viewport);
         var limit = $viewport.offset();
 
