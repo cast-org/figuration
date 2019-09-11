@@ -5772,10 +5772,6 @@ a.page-link {
   }
 }
 
-.modal.in .modal-dialog {
-  transform: none;
-}
-
 .modal-dialog {
   position: relative;
   display: flex;
@@ -5828,6 +5824,36 @@ a.page-link {
   content: none;
 }
 
+.modal-dialog-side-start {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  margin: 0 !important;
+}
+
+.modal.fade .modal-dialog-side-start {
+  transform: translate(-5rem, 0);
+}
+
+.modal-dialog-side-end {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  min-height: 100%;
+  margin: 0 !important;
+}
+
+.modal.fade .modal-dialog-side-end {
+  transform: translate(5rem, 0);
+}
+
+.modal.in .modal-dialog {
+  transform: none;
+}
+
 .modal-content {
   position: relative;
   display: flex;
@@ -5839,6 +5865,24 @@ a.page-link {
   border: 1px solid rgba(38, 45, 52, 0.4);
   border-radius: 0.375rem;
   outline: 0;
+}
+
+.modal-dialog-side-start .modal-content, .modal-dialog-side-end .modal-content {
+  border-radius: 0;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .modal-dialog-side-start .modal-content, .modal-dialog-side-end .modal-content {
+    min-height: 100vh;
+  }
+}
+
+.modal-dialog-side-start .modal-content {
+  border-width: 0 1px 0 0;
+}
+
+.modal-dialog-side-end .modal-content {
+  border-width: 0 0 0 1px;
 }
 
 .modal-backdrop {
@@ -5886,6 +5930,10 @@ a.page-link {
   padding: 0.75rem 1rem;
 }
 
+.modal-dialog-side-start .modal-body, .modal-dialog-side-end .modal-body {
+  flex-shrink: 0;
+}
+
 .modal-footer {
   display: flex;
   align-items: center;
@@ -5930,6 +5978,18 @@ a.page-link {
   .modal-lg {
     max-width: 56rem;
   }
+}
+
+.modal-dialog-side-start.modal-dialog-scrollable, .modal-dialog-side-end.modal-dialog-scrollable {
+  max-height: 100%;
+}
+
+.modal-dialog-side-start.modal-dialog-scrollable .modal-content, .modal-dialog-side-end.modal-dialog-scrollable .modal-content {
+  max-height: 100vh;
+}
+
+.modal-dialog-side-start.modal-dialog-scrollable .modal-body, .modal-dialog-side-end.modal-dialog-scrollable .modal-body {
+  flex-shrink: 1;
 }
 
 .tooltip {
