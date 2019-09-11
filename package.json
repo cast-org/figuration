@@ -56,7 +56,7 @@
     "grunt-contrib-uglify": "^4.0.1",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-eslint": "^22.0.0",
-    "grunt-html": "^11.0.0",
+    "grunt-html": "^11.1.0",
     "grunt-jekyll": "^1.0.1",
     "grunt-rtlcss": "^2.0.1",
     "grunt-run": "^0.8.1",
@@ -82,7 +82,7 @@
     "stylelint-config-recommended-scss": "^3.2.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-order": "^3.1.0",
-    "stylelint-scss": "^3.10.0",
+    "stylelint-scss": "^3.10.1",
     "time-grunt": "^2.0.0"
   },
   "engines": {
