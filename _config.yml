@@ -27,29 +27,29 @@ plugins:
 title:              CAST Figuration
 description:        "A feature rich, responsive, mobile first, accessible, front-end framework."
 twitter_name:       figuration_org
-twitter_logo:       /4.0.0-alpha.6/assets/brand/figuration-social.png
+twitter_logo:       /4.0.0-beta.1/assets/brand/figuration-social.png
 
 # Custom vars
-current_version:    4.0.0-alpha.6
-docs_version:       4.0.0-alpha.6
+current_version:    4.0.0-beta.1
+docs_version:       4.0.0-beta.1
 repo:               https://github.com/cast-org/figuration
-changelog:          https://github.com/cast-org/figuration/releases/tag/v4.0.0-alpha.6
+changelog:          https://github.com/cast-org/figuration/releases/tag/v4.0.0-beta.1
 twitter:            https://twitter.com/figuration_org
 
 # Downloads
 download:
-  source:           https://github.com/cast-org/figuration/archive/v4.0.0-alpha.6.zip
-  dist:             https://github.com/cast-org/figuration/releases/download/v4.0.0-alpha.6/figuration-4.0.0-alpha.6-dist.zip
+  source:           https://github.com/cast-org/figuration/archive/v4.0.0-beta.1.zip
+  dist:             https://github.com/cast-org/figuration/releases/download/v4.0.0-beta.1/figuration-4.0.0-beta.1-dist.zip
 
 # CDN settings
 # See https://www.srihash.org for info on how to generate the hashes
 cdn:
-  css:              https://cdn.jsdelivr.net/npm/figuration@4.0.0-alpha.6/dist/css/figuration.min.css
-  css_hash:         "sha384-nSe+rZXsmGqrw2q0Ahhc9wVgwWvItYJx/ACOKjMTAlYZW8xW79DgTb7HWZRGQvDc"
-  js:               https://cdn.jsdelivr.net/npm/figuration@4.0.0-alpha.6/dist/js/figuration.min.js
-  js_hash:          "sha384-HtTWRB3XrbUefBllWJfn3abpCrMwmgcZn+cgqUdKbd6T4CRdnxKCjpItOvRGEk8A"
-  css_rtl:          https://cdn.jsdelivr.net/npm/figuration@4.0.0-alpha.6/dist/css/figuration-rtl.min.css
-  css_rtl_hash:     "sha384-QRzCuyhGnPZ8ephbEiAr94TQn82M7K8CscozxmkhCQPZCjkGVlwUm0hQIOuZ5xiM"
+  css:              https://cdn.jsdelivr.net/npm/figuration@4.0.0-beta.1/dist/css/figuration.min.css
+  css_hash:         "sha384-r0FvWEmtxc7WDVqqPJhWfn8xrV3x/f5DNM2a+n0gLkp9vTFsek3ZcZYitGYCXziX"
+  js:               https://cdn.jsdelivr.net/npm/figuration@4.0.0-beta.1/dist/js/figuration.min.js
+  js_hash:          "sha384-DrdWrMNeApnhVY4UgXQhKObnNAhkqMxJra/LyQTa2BHGg8XFsv+PlMWenTy0K1ZP"
+  css_rtl:          https://cdn.jsdelivr.net/npm/figuration@4.0.0-beta.1/dist/css/figuration-rtl.min.css
+  css_rtl_hash:     "sha384-Zabjo2mu5AqAchEuldUcV68ZA0fO0c80owZtIeQJ2+LIuOm4Q2QDell9auW2u6qq"
   jquery:           https://code.jquery.com/jquery-3.4.1.slim.min.js
   jquery_hash:      "sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
   popper:           https://cdn.jsdelivr.net/npm/popper.js@1.15.0/dist/umd/popper.min.js
