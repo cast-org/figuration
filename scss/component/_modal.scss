@@ -233,15 +233,15 @@
     }
 
     %modal-side-body {
-        flex: 1 0 auto;
+        flex-shrink: 0;
     }
     @if $enable-modal-side-start {
-        .modal-dialog-side-start:not(.modal-dialog-scrollable) .modal-body {
+        .modal-dialog-side-start .modal-body {
             @extend %modal-side-body;
         }
     }
     @if $enable-modal-side-end {
-        .modal-dialog-side-end:not(.modal-dialog-scrollable) .modal-body {
+        .modal-dialog-side-end .modal-body {
             @extend %modal-side-body;
         }
     }
@@ -308,6 +308,10 @@
 
             .modal-content {
                 max-height: 100vh;
+            }
+
+            .modal-body {
+                flex-shrink: 1;
             }
         }
         @if $enable-modal-side-start {
