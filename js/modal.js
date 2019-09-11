@@ -398,7 +398,7 @@
         _scrollBlock : function(e) {
             // Allow scrolling for scrollable modal body
             var $content = this.$target.find('.modal-dialog-scrollable');
-            if ($content && ($content[0] === e.target || $content.find('.modal-body')[0].contains(e.target))) {
+            if ($content.length && ($content[0] === e.target || $content.find('.modal-body')[0].contains(e.target))) {
                 e.stopPropagation();
                 return;
             }
