@@ -1293,6 +1293,7 @@ $modal-lg-breakpoint:           lg !default; // The minimum breakpoint to allow 
 // When fading in the modal, animate it to slide down
 $modal-transform-fade:          translate(0, -3rem) !default;
 $modal-transform-in:            none !default;
+$modal-transform-side-offset:   -5rem !default;
 
 
 // Player

@@ -37,9 +37,6 @@
             @include transition($modal-transition);
             transform: $modal-transform-fade;
         }
-        &.in .modal-dialog {
-            transform: $modal-transform-in;
-        }
     }
 
     // Shell div to position the modal
@@ -53,7 +50,7 @@
         pointer-events: none;
     }
 
-    @if $enable-modal-scrollable  {
+    @if $enable-modal-scrollable {
         .modal-dialog-scrollable {
             max-height: calc(100% - #{$modal-dialog-margin * 2});
 
@@ -73,7 +70,7 @@
         }
     }
 
-    @if $enable-modal-centered  {
+    @if $enable-modal-centered {
         .modal-dialog-centered {
             align-items: center;
             min-height: calc(100% - #{$modal-dialog-margin * 2});
@@ -86,7 +83,7 @@
                 content: "";
             }
 
-            @if $enable-modal-scrollable  {
+            @if $enable-modal-scrollable {
                 // Ensure `.modal-body` shows scrollbar (IE10/11)
                 &.modal-dialog-scrollable {
                     flex-direction: column;
@@ -105,6 +102,42 @@
         }
     }
 
+    @if $enable-modal-side-start {
+        .modal-dialog-side-start {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100%;
+            // stylelint-disable-next-line declaration-no-important
+            margin: 0 !important;
+
+            .modal.fade & {
+                transform: translate($modal-transform-side-offset, 0);
+            }
+        }
+    }
+
+    @if $enable-modal-side-end {
+        .modal-dialog-side-end {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            min-height: 100%;
+            // stylelint-disable-next-line declaration-no-important
+            margin: 0 !important;
+
+            .modal.fade & {
+                transform: translate(-$modal-transform-side-offset, 0);
+            }
+        }
+    }
+
+    .modal.in .modal-dialog {
+        transform: $modal-transform-in;
+    }
+
     // Actual modal
     .modal-content {
         position: relative;
@@ -121,6 +154,26 @@
         @include box-shadow($modal-content-box-shadow);
         // Remove focus outline from opened modal
         outline: 0;
+    }
+
+    %modal-side-content {
+        // IE fix to get modal full height
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+            min-height: 100vh;
+        }
+        @include border-radius(0);
+    }
+    @if $enable-modal-side-start {
+        .modal-dialog-side-start .modal-content {
+            border-width: 0 $modal-content-border-width 0 0;
+            @extend %modal-side-content;
+        }
+    }
+    @if $enable-modal-side-end {
+        .modal-dialog-side-end .modal-content {
+            border-width: 0 0 0 $modal-content-border-width;
+            @extend %modal-side-content;
+        }
     }
 
     // Modal background
@@ -179,6 +232,20 @@
         }
     }
 
+    %modal-side-body {
+        flex: 1 0 auto;
+    }
+    @if $enable-modal-side-start {
+        .modal-dialog-side-start:not(.modal-dialog-scrollable) .modal-body {
+            @extend %modal-side-body;
+        }
+    }
+    @if $enable-modal-side-end {
+        .modal-dialog-side-end:not(.modal-dialog-scrollable) .modal-body {
+            @extend %modal-side-body;
+        }
+    }
+
     // Footer (for actions)
     @if $enable-modal-footer {
         .modal-footer {
@@ -217,7 +284,7 @@
             }
         }
 
-        @if $enable-modal-centered  {
+        @if $enable-modal-centered {
             .modal-dialog-centered {
                 min-height: calc(100% - #{$modal-dialog-bp-up-margin-y * 2});
 
@@ -232,5 +299,26 @@
 
     @include media-breakpoint-up(#{$modal-lg-breakpoint}) {
         .modal-lg { max-width: $modal-lg; }
+    }
+
+    // Ovveride heights for scrollable side variant
+    @if $enable-modal-scrollable {
+        %modal-side-scrollable {
+            max-height: 100%;
+
+            .modal-content {
+                max-height: 100vh;
+            }
+        }
+        @if $enable-modal-side-start {
+            .modal-dialog-side-start.modal-dialog-scrollable {
+                @extend %modal-side-scrollable;
+            }
+        }
+        @if $enable-modal-side-end {
+            .modal-dialog-side-end.modal-dialog-scrollable {
+                @extend %modal-side-scrollable;
+            }
+        }
     }
 }

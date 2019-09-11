@@ -152,9 +152,6 @@ When modals become too long for the user's viewport or device, they scroll indep
                 <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
                 <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
                 <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
@@ -165,14 +162,14 @@ When modals become too long for the user's viewport or device, they scroll indep
 </div>
 
 <div class="cf-example">
-    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalScrollBody">
+    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalScroll">
         Scrolling modal
     </button>
 </div>
 
 {% highlight html %}
 <!-- Button trigger -->
-<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalScrollBody">
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalScroll">
     Scrolling modal
 </button>
 
@@ -213,6 +210,11 @@ Add `.modal-dialog-scrollable` to `.modal-dialog` where the `.modal-body` is the
                 <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
                 <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
                 <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
@@ -328,9 +330,6 @@ A vertically centered dialog will also scroll when the content is longer than th
                 <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
                 <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
                 <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
@@ -387,6 +386,11 @@ You can also combine `.modal-dialog-centered` with `.modal-dialog-scrollable` to
                 <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
                 <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
                 <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
@@ -605,6 +609,75 @@ Modals have two optional sizes, provided by Figuration's base CSS, available via
 
 <div class="modal" id="modalSm">
     <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            ...
+        </div>
+    </div>
+</div>
+{% endhighlight %}
+
+### Side Aligned
+
+Position a modal to the side of the page with a `.modal-dialog-side-start` or `.modal-dialog-side-end` modifier class placed on a the `.modal-dialog`. Side aligned modals can be used with `.modal-dialog-scrollable`, and can also use the sizing classes.
+
+<div class="modal" id="modalSideStart">
+    <div class="modal-dialog modal-dialog-side-start">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel">Start side modal</h4>
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h5>Overflowing text to show scroll behavior</h5>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modalSideEnd">
+    <div class="modal-dialog modal-dialog-side-end modal-dialog-scrollable modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="mySmallModalLabel">End side modal</h4>
+                <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h5>Overflowing text to show scroll behavior</h5>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cf-example">
+    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalSideStart">Start side modal</button>
+    <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalSideEnd">End side modal</button>
+</div>
+
+{% highlight html %}
+<!-- Large modal -->
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalSideStart">Start side modal</button>
+
+<div class="modal" id="modalSideStart">
+    <div class="modal-dialog modal-dialog-side-start">
+        <div class="modal-content">
+            ...
+        </div>
+    </div>
+</div>
+
+<!-- Small modal -->
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalSideEnd">End side modal</button>
+
+<div class="modal" id="modalStartEnd">
+    <div class="modal-dialog modal-dialog-start-end modal-dialog-scrollable modal-sm">
         <div class="modal-content">
             ...
         </div>
@@ -912,7 +985,31 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 <td>boolean</td>
                 <td><code>true</code></td>
                 <td>
-                    Enable the generation of the vertically centered modal header variant.
+                    Enable the generation of the vertically centered modal variant.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-modal-scrollable</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the scrollable body modal variant.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-modal-side-start</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the start side aligned modal variant.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$enable-modal-side-end</code></td>
+                <td>boolean</td>
+                <td><code>true</code></td>
+                <td>
+                    Enable the generation of the end side aligned modal variant.
                 </td>
             </tr>
             <tr>
@@ -1184,7 +1281,7 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 <td>string</td>
                 <td><code>translate(0, -3rem)</code></td>
                 <td>
-                    Transform state of `.modal-dialog` before the modal fade-in animation
+                    Transform state of <code>.modal-dialog</code> before the modal fade-in animation
                 </td>
             </tr>
             <tr>
@@ -1193,6 +1290,14 @@ The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}
                 <td><code>none</code></td>
                 <td>
                     Transform state of <code>.modal-dialog</code> at the end of the modal fade-in animation.
+                </td>
+            </tr>
+            <tr>
+                <td><code>$modal-transform-side-offset</code></td>
+                <td>string</td>
+                <td><code>-5rem</code></td>
+                <td>
+                    Transform state offset of <code>.modal-dialog</code> before the modal fade-in animation for side variant modals.
                 </td>
             </tr>
             <tr>

@@ -71,7 +71,7 @@
         .table-celled,
         .table-divided {
             thead {
-                tr:first-child  {
+                tr:first-child {
                     th,
                     td {
                         border-top-width: 0;
@@ -120,7 +120,7 @@
         .table-celled {
             th,
             td {
-                &:first-child  {
+                &:first-child {
                     border-left-width: 0;
                 }
                 &:last-child {
