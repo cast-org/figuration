@@ -2,6 +2,7 @@
   "name": "figuration",
   "description": "A feature rich, responsive, mobile first, accessible, front-end framework.",
   "version": "4.0.0-beta.1",
+  "versionShort": "4.0",
   "keywords": [
     "css",
     "sass",
@@ -16,9 +17,12 @@
   "author": "CAST, Inc.",
   "scripts": {
     "test": "grunt test",
-    "css-lint-vars": "npm-run-all --continue-on-error --parallel css-lint-vars*",
+    "css-lint-vars": "npm-run-all --continue-on-error --parallel css-lint-vars-*",
     "css-lint-vars-core": "fusv scss/",
     "css-lint-vars-docs": "fusv docs/4.0.0-beta.1/assets/scss/",
+    "docs-serve": "npm-run-all --parallel docs-serve-*",
+    "docs-serve-clean": "rimraf _siteout",
+    "docs-serve-11ty": "npx @11ty/eleventy --serve --port=8080",
     "linkinator": "linkinator _gh_pages --recurse --silent --skip \"^(?!http://localhost)\"",
     "js-test-karma": "karma start build/karma.conf.js",
     "js-test-debug": "cross-env DEBUG=true npm run js-test-karma",
@@ -40,6 +44,8 @@
     "popper.js": "^1.15.0"
   },
   "devDependencies": {
+    "@11ty/eleventy": "^0.9.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^2.0.3",
     "@lodder/grunt-postcss": "^1.0.9",
     "autoprefixer": "^9.6.1",
     "cross-env": "^5.2.1",
@@ -72,7 +78,11 @@
     "karma-sauce-launcher": "^2.0.2",
     "linkinator": "^1.5.0",
     "load-grunt-tasks": "^5.1.0",
+    "markdown-it": "^9.1.0",
+    "markdown-it-anchor": "^5.2.4",
+    "markdown-it-toc-done-right": "^4.0.2",
     "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.5",
     "popper.js": "^1.15.0",
     "postcss-calc": "^7.0.1",
     "postcss-flexbugs-fixes": "^4.1.0",
