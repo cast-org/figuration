@@ -1,0 +1,19 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{{ page.description | default: site.description | smartify }}">
+<meta name="author" content="{{ site.author }}">
+
+<title>
+  {%- if page.layout == "home" -%}
+    {{ site.title }} - {{ site.description }}
+  {%- else -%}
+    {{ title }} &#124; {{ site.title }}
+  {%- endif -%}
+</title>
+
+<link rel="canonical" href="{{site.url }}{{ page.url }}">
+
+{% include ./partials/head_favicon.liquid %}
+{% include ./partials/head_social.liquid %}
+{% include ./partials/head_analytics.liquid %}
+{% include ./partials/head_styles.liquid %}

@@ -28,7 +28,7 @@ module.exports = function(eleventyConfig) {
         .use(markdownItAnchor, opts)
     );
 
-     // // BrowserSync configuration and 404 page
+     // BrowserSync configuration and 404 page
     eleventyConfig.setBrowserSyncConfig({
         notify: true,
         callbacks: {
@@ -45,11 +45,12 @@ module.exports = function(eleventyConfig) {
     });
 
     // Layout aliases
-    //eleventyConfig.addLayoutAlias('default', 'layouts/default.njk');
-    //eleventyConfig.addLayoutAlias('post', 'layouts/post.njk');
+    eleventyConfig.addLayoutAlias('home', 'layouts/home.liquid');
+    eleventyConfig.addLayoutAlias('doc', 'layouts/doc.liquid');
 
     // Static assets
-    eleventyConfig.addPassthroughCopy("4.0/assets", "assets");
+    eleventyConfig.addPassthroughCopy("site/assets", "assets");
+    eleventyConfig.addPassthroughCopy("site/4.0/assets", "4.0/assets");
 
     return {
         templateFormats: ["md", "html", "liquid"],

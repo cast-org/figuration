@@ -7,7 +7,7 @@ sitemapIgnore: true
 {%- for page in collections.all %}
 {%- unless page.data.sitemapIgnore == true %}
   <url>
-    <loc>{{ page.url | httpUrl }}</loc>
+    <loc>{{ site.url | append: page.url }}</loc>
     <lastmod>{{ page.date | sitemapDateString }}</lastmod>
     {%- if page.data.changefreq %}
     <changefreq>{{ page.data.changefreq }}</changefreq>

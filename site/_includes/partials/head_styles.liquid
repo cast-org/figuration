@@ -1,0 +1,6 @@
+<!-- Figuration CSS -->
+{% if site.environment == "production" %}
+<link href="/{{ site.version.docs }}/assets/dist/css/figuration.min.css" rel="stylesheet" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
+{%- else -%}
+<link href="/{{ site.version.docs }}/assets/dist/css/figuration.css" rel="stylesheet">
+{%- endif %}
