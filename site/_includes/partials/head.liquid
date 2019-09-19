@@ -3,6 +3,12 @@
 <meta name="description" content="{{ page.description | default: site.description | smartify }}">
 <meta name="author" content="{{ site.author }}">
 
+{%- comment -%}
+<!-- Use faceted search ? -->
+<meta name="docsearch:language" content="en">
+<meta name="docsearch:version" content="{{ site.version.docs }}">
+{%- endcomment -%}
+
 <title>
   {%- if page.layout == "home" -%}
     {{ site.title }} - {{ site.description }}
@@ -14,6 +20,7 @@
 <link rel="canonical" href="{{site.url }}{{ page.url }}">
 
 {% include ./partials/head_favicon.liquid %}
-{% include ./partials/head_social.liquid %}
-{% include ./partials/head_analytics.liquid %}
-{% include ./partials/head_styles.liquid %}
+{%- include ./partials/head_social.liquid %}
+{%- include ./partials/head_analytics.liquid %}
+{%- include ./partials/head_styles.liquid %}
+{%- include ./partials/head_scripts.liquid %}

@@ -4,4 +4,4 @@
 <meta name="twitter:creator" content="@{{ site.twitter.name }}">
 <meta name="twitter:title" content="{{ page.title | default: site.title | smartify }}">
 <meta name="twitter:description" content="{{ page.description | default: site.description | smartify }}">
-<meta name="twitter:image" content="{{ site.url | append: site.twitter.logo }}">
+<meta name="twitter:image" content="{{ site.url | append: site.path | append: site.twitter.logo }}">

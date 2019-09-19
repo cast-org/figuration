@@ -1,5 +1,5 @@
 ---
-permalink: /sitemap.xml
+permalink: "{{ site.path }}/sitemap.xml"
 sitemapIgnore: true
 ---
 <?xml version="1.0" encoding="UTF-8"?>
@@ -7,7 +7,7 @@ sitemapIgnore: true
 {%- for page in collections.all %}
 {%- unless page.data.sitemapIgnore == true %}
   <url>
-    <loc>{{ site.url | append: page.url }}</loc>
+    <loc>{{ site.url | append: site.path | append: page.url }}</loc>
     <lastmod>{{ page.date | sitemapDateString }}</lastmod>
     {%- if page.data.changefreq %}
     <changefreq>{{ page.data.changefreq }}</changefreq>

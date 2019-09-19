@@ -6,6 +6,7 @@ module.exports = {
   "description":    "A feature rich, responsive, mobile first, accessible, front-end framework.",
 
   "url":            "http://www.figuration.org",
+  "path":           "",
   "language":       "en-us",
 
   "twitter": {
@@ -14,7 +15,7 @@ module.exports = {
   },
 
   "version": {
-    "current":      "4.0",
+    "current":      "4.0.0-beta.1",
     "docs":         "4.0"
   },
 

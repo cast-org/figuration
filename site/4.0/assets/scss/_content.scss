@@ -1,0 +1,27 @@
+// Content
+.cf-content {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+
+    @include media-breakpoint-up(md) {
+        padding-top: 1.5rem;
+        padding-right: 2.5rem;
+        padding-left: 2.5rem;
+    }
+
+    > h2 {
+        margin-top: 2.5rem;
+    }
+
+    > h3 {
+        margin-top: 1.5rem;
+    }
+}
+
+h2,
+h3,
+h4 {
+    > code {
+        font-weight: 500;
+    }
+}

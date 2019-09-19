@@ -1,0 +1,84 @@
+.home-icons {
+    .far,
+    .fas {
+        @include font-size(3.5rem);
+        vertical-align: middle;
+    }
+
+    .fa-mobile-alt {
+        @include font-size(2.5rem);
+    }
+    .fa-tablet-alt {
+        @include font-size(3rem);
+    }
+
+    .far + .far,
+    .fas + .fas,
+    .far + .fas,
+    .fas + .far {
+        margin-left: .5rem;
+    }
+}
+
+.home-feature {
+    > .small {
+        margin-top: -.75rem;
+    }
+    @include media-breakpoint-up(md) {
+        margin-top: 2.2rem;
+    }
+}
+
+.home-splash {
+    padding: 2rem 1.5rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, .9);
+    // text-align: center;
+    // background-color: $docs-color;
+    background-image: linear-gradient(135deg, #0c5782 0%, #117cba 100%);
+
+    .logo-home {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        filter: drop-shadow(0 0 7px rgba(255, 255, 255, .15));
+    }
+
+    h1,
+    h2 {
+        font-weight: $font-weight-bold;
+        color: $white;
+    }
+
+    .lead {
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+        @include font-size(1.5rem);
+    }
+
+    .splash-home {
+        border-bottom: 1px solid rgba(255, 255, 255, .5);
+    }
+
+    @include media-breakpoint-down(md) {
+        .container {
+            width: 100%;
+        }
+    }
+}
+
+.btn-start {
+    padding: .75rem 2rem;
+    margin-bottom: .25rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: rgba(255, 255, 255, .15);
+    border-color: rgba(255, 255, 255, .8);
+    border-width: 2px;
+    box-shadow: 2px 2px .2rem rgba(0, 0, 0, .35);
+
+    @include hover-focus() {
+        color: #222;
+        background-color: rgba(255, 255, 255, .9);
+    }
+}

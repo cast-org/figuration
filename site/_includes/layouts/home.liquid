@@ -4,7 +4,13 @@
 {% include ./partials/head.liquid -%}
 </head>
 <body>
+{% include ./partials/skiplink.liquid %}
+{% include ./partials/notification.liquid %}
+{% include ./partials/topnav.liquid %}
+
+<main id="content">
 {{ content }}
+</main>
 
 {% include ./partials/footer.liquid -%}
 </body>

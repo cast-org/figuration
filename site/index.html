@@ -2,5 +2,59 @@
 layout: home
 ---
 
-<p>Hi from the index</p>
+<div class="home-splash">
+    <div class="container">
+        <div class="row flex-md-center flex-md-items-center pb-2 mb-2 border-b">
+            <div class="col-6 col-sm-4 col-xl-3 mx-auto mx-md-0">
+                <img src="{{ site.path }}/assets/brand/figuration-solid.svg" class="logo-home img-fluid" alt="" aria-hidden="true" />
+            </div>
+            <div class="w-100 d-md-none"></div>
+            <div class="col col-sm-9 col-md-7 col-lg-6 mx-auto mx-md-0 text-center text-md-start">
+                <h1>CAST Figuration</h1>
+                <p class="lead">
+                    A feature rich, responsive, mobile first, accessible, front-end framework.
+                </p>
 
+                <div class="row text-center text-md-start">
+                    <div class="col col-md-auto">
+                        <a href="{{ site.path }}/{{ site.version.docs }}/get-started/download/" class="btn btn-lg btn-start" onclick="ga('send', 'event', 'Homepage', 'Download', 'Download {{ site.version.current }}');">Download</a>
+                    </div>
+                    <div class="w-100 d-md-none"></div>
+                    <div class="col col-md-auto">
+                        Current version: <strong>{{ site.version.current }}</strong>
+                        <br />
+                        <a href="{{ site.changelog }}" class="text-light small">Read the Changelog</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-sm-4">
+                <h2>Responsive</h2>
+                <p class="home-icons" aria-hidden="true">
+                    <span class="fas fa-mobile-alt"></span>
+                    <span class="fas fa-tablet-alt"></span>
+                    <span class="fas fa-desktop"></span>
+                </p>
+                <p>Mobile first design for phones, tablets, and desktops.</p>
+            </div>
+            <div class="col-sm-4">
+                <h2>Accessible</h2>
+                <p class="home-icons" aria-hidden="true">
+                    <span class="far fa-keyboard"></span>
+                    <span class="fas fa-users"></span>
+                </p>
+                <p>Accessibility for keyboard and screen reader users.</p>
+            </div>
+            <div class="col-sm-4">
+                <h2>Flexible</h2>
+                <p class="home-icons" aria-hidden="true">
+                    <span class="far fa-hand-pointer"></span>
+                    <span class="fas fa-mouse-pointer"></span>
+                </p>
+                <p>Usable with both touch and mouse driven navigation.</p>
+            </div>
+        </div>
+    </div>
+</div>

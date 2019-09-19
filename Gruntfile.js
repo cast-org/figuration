@@ -76,18 +76,18 @@ module.exports = function(grunt) {
         ],
 
         jsDocs: [
-            'docs/<%= pkg.version %>/assets/js/vendor/anchor.min.js',
-            'docs/<%= pkg.version %>/assets/js/vendor/clipboard.min.js',
-            'docs/<%= pkg.version %>/assets/js/vendor/holder.min.js',
-            'docs/<%= pkg.version %>/assets/js/src/docs.js'
+            'site/<%= pkg.versionShort %>/assets/js/vendor/anchor.min.js',
+            'site/<%= pkg.versionShort %>/assets/js/vendor/clipboard.min.js',
+            'site/<%= pkg.versionShort %>/assets/js/vendor/holder.min.js',
+            'site/<%= pkg.versionShort %>/assets/js/src/docs.js'
         ],
 
         // Task configs
         // ==========
         clean: {
             dist: 'dist',
-            docs: 'docs/<%= pkg.version %>/dist',
-            docscss: 'docs/<%= pkg.version %>/assets/css'
+            docs: 'site/<%= pkg.versionShort %>/dist',
+            docscss: 'site/<%= pkg.versionShort %>/assets/css'
         },
 
         eslint: {
@@ -117,7 +117,7 @@ module.exports = function(grunt) {
                 src: 'test/js/unit/*.js'
             },
             docs : {
-                src: ['docs/<%= pkg.version %>/assets/js/src/*.js', 'docs/<%= pkg.version %>/assets/js/*.js', '!docs/<%= pkg.version %>/assets/js/*.min.js']
+                src: ['site/<%= pkg.versionShort %>/assets/js/src/*.js', 'site/<%= pkg.versionShort %>/assets/js/*.js', '!site/<%= pkg.versionShort %>/assets/js/*.min.js']
             }
         },
 
@@ -145,7 +145,7 @@ module.exports = function(grunt) {
             },
             docs: {
                 src: '<%= jsDocs %>',
-                dest: 'docs/<%= pkg.version %>/assets/js/docs.min.js'
+                dest: 'site/<%= pkg.versionShort %>/assets/js/docs.min.js'
             }
         },
 
@@ -154,7 +154,7 @@ module.exports = function(grunt) {
                 expand: true,
                 cwd: 'dist/',
                 src: ['**/*'],
-                dest: 'docs//<%= pkg.version %>/dist/'
+                dest: 'site/<%= pkg.versionShort %>/dist/'
             }
         },
 
@@ -166,7 +166,7 @@ module.exports = function(grunt) {
                 src: ['scss/**/*.scss']
             },
             docs: {
-                src: ['docs/<%= pkg.version %>/assets/scss/*.scss']
+                src: ['site/<%= pkg.versionShort %>/assets/scss/*.scss']
             }
         },
 
@@ -186,7 +186,7 @@ module.exports = function(grunt) {
             },
             docs: {
                 files: {
-                    'docs/<%= pkg.version %>/assets/css/docs.css': 'docs/<%= pkg.version %>/assets/scss/docs.scss'
+                    'site/<%= pkg.versionShort %>/assets/css/docs.css': 'site/<%= pkg.versionShort %>/assets/scss/docs.scss'
                 }
             }
         },
@@ -203,7 +203,7 @@ module.exports = function(grunt) {
                 options: {
                     processors: [flexbugs, calc, autoprefixer]
                 },
-                src: ['docs/<%= pkg.version %>/assets/css/*.css', '!docs/<%= pkg.version %>/assets/css/*.min.css']
+                src: ['site/<%= pkg.versionShort %>/assets/css/*.css', '!site/<%= pkg.versionShort %>/assets/css/*.min.css']
             }
         },
 
@@ -229,9 +229,9 @@ module.exports = function(grunt) {
                     clean: false
                 },
                 expand: true,
-                cwd: 'docs/<%= pkg.version %>/assets/css',
+                cwd: 'site/<%= pkg.versionShort %>/assets/css',
                 src: ['*.css', '!*.min.css', '!*-rtl.css'],
-                dest: 'docs/<%= pkg.version %>/assets/css',
+                dest: 'site/<%= pkg.versionShort %>/assets/css',
                 ext: '-rtl.css'
             }
         },
@@ -258,9 +258,9 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'docs/<%= pkg.version %>/assets/css',
+                        cwd: 'site/<%= pkg.versionShort %>/assets/css',
                         src: ['*.css', '!*.min.css'],
-                        dest: 'docs/<%= pkg.version %>/assets/css',
+                        dest: 'site/<%= pkg.versionShort %>/assets/css',
                         ext: '.min.css'
                     }
                 ]
@@ -319,7 +319,7 @@ module.exports = function(grunt) {
                 tasks: ['dist-css', 'docs']
             },
             docs: {
-                files: 'docs/<%= pkg.version %>/assets/scss/**/*.scss',
+                files: 'site/<%= pkg.versionShort %>/assets/scss/**/*.scss',
                 tasks: ['dist-css', 'docs']
             }
         },

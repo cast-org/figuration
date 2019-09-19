@@ -4,6 +4,13 @@
 {% include ./partials/head.liquid %}
 </head>
 <body>
+{% include ./partials/skiplink.liquid %}
+{% include ./partials/notification.liquid %}
+{% include ./partials/topnav.liquid %}
+
+<main id="content" class="cf-content">
 {{ content }}
+</main>
+
 </body>
 </html>

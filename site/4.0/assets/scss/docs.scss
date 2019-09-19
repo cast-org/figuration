@@ -1,0 +1,13 @@
+// stylelint-disable scss/dollar-variable-default
+
+@import "../../../../scss/functions";
+@import "../../../../scss/settings";
+@import "../../../../scss/mixins";
+
+$docs-primary:          #246;
+
+@import "skiplink";
+@import "notification";
+@import "topnav";
+@import "home";
+@import "content";
