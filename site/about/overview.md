@@ -1,17 +1,31 @@
 ---
 layout: doc
 title: About
+group: about
 ---
 
-<h1>Header 1</h1>
-<p>About Page</p>
-<h2>Header 2</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis placerat risus quis ante laoreet tempus. Suspendisse rhoncus est felis, nec pellentesque ante scelerisque vitae. Curabitur quis ultricies dolor. Maecenas varius, turpis vel facilisis laoreet, leo neque vehicula purus, eget suscipit velit ex non quam. Nunc luctus tempus nisi at consequat. Sed nec ex at tortor tempus ornare. Sed blandit bibendum tempor. Donec ullamcorper felis nec est aliquam lacinia. Aenean imperdiet nibh odio, a ultricies sem placerat vel. Donec nisi mauris, rhoncus pharetra sapien aliquet, ullamcorper commodo arcu. Ut fermentum venenatis lorem, in scelerisque risus tempor in.</p>
-<h3>Header 3</h3>
-<p>Donec id metus blandit, ultrices tellus vitae, ullamcorper ligula. Nunc porta metus sapien, nec vulputate nulla cursus vitae. Maecenas sagittis tristique eros eu volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin mattis arcu ullamcorper rhoncus vehicula. Praesent pellentesque est eu nisi convallis venenatis. Donec tincidunt malesuada odio, nec viverra nibh facilisis ut. Etiam egestas placerat ligula vitae tempor. Morbi blandit imperdiet venenatis. Sed et tincidunt neque. Morbi velit elit, ultricies nec eros sit amet, fermentum pulvinar diam. In eleifend luctus est, non porttitor massa porta vel. Nulla tempor dui nec lacus sagittis, nec pretium orci vestibulum. Ut gravida ultricies rhoncus. Donec consectetur elementum laoreet.</p>
-<h4>Header 4</h4>
-<p>Donec nec elit a orci condimentum interdum. In vel nibh vel lorem malesuada semper at nec odio. Praesent vel purus risus. Nulla tempor elit vitae tempor malesuada. Aenean et metus augue. Ut sed felis eu velit varius interdum. Mauris efficitur tellus non arcu accumsan mattis. Phasellus at mattis mauris, in dapibus arcu. Mauris posuere at ligula nec tempor. Maecenas libero nisl, accumsan non neque ut, vestibulum tincidunt ante. Nunc dictum ultricies nisl lacinia ullamcorper. Nullam fermentum metus a hendrerit volutpat. Cras feugiat suscipit dui sed cursus. Integer vehicula, tortor in scelerisque bibendum, tortor est sodales ligula, vitae molestie lectus lacus at urna.</p>
-<h5>Header 5</h5>
-<p>Integer id tellus ac odio ullamcorper rutrum. Vestibulum tincidunt dolor vel nulla fringilla egestas. Proin ut neque sit amet libero volutpat vehicula et quis ex. Donec pretium quam fermentum justo tempor, non placerat erat consequat. Etiam viverra mi id augue commodo blandit. Nulla malesuada semper lacus tristique luctus. Donec at libero eleifend tellus feugiat tincidunt. Vestibulum consequat, tellus vel eleifend tincidunt, nibh nulla tincidunt neque, et bibendum erat massa et magna. Curabitur egestas leo ut lorem imperdiet, ac consequat tortor sollicitudin. In ultrices aliquet est in placerat. Duis facilisis quam ut lorem sollicitudin, in consectetur lacus pellentesque. Aliquam velit elit, malesuada et ante eu, molestie rutrum sapien. Nam molestie, arcu gravida rhoncus imperdiet, diam nisi sagittis diam, ac pretium enim sapien eu tellus. Etiam in tristique neque, vitae viverra neque. Duis ornare sodales eros et tincidunt. Quisque ultrices ex ultrices lacus volutpat accumsan.</p>
-<h6>Header 6</h6>
-<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum vulputate, purus at semper scelerisque, enim ligula blandit elit, sed tincidunt enim ligula non arcu. Cras vestibulum neque non nunc mattis sagittis. Cras pretium, nulla ac fringilla aliquam, magna mi ornare ante, quis consequat mi nisl sit amet lectus. Phasellus finibus ipsum sit amet urna lacinia egestas. Aliquam aliquam congue dui et dictum. Nullam sed nulla et lacus dapibus posuere vitae ac ipsum. Aenean lacinia sollicitudin neque sed elementum. Donec pretium lorem et libero dictum, ut cursus quam commodo.</p>
+## Figuration <small>\[fig-yuh-**rey**-shuhn\]</small>
+
+- the act of marking or adorning with a design
+- ornamentation of a musical passage by using decorative and usually repetitive figures
+
+The goal is to make Figuration a consistent, robust, but easy to use front-end framework for developing web sites and applications.
+
+## About
+
+Figuration was started as an in-house project at [CAST, Inc](http://www.cast.org/) based off Bootstrap v.3.
+
+At the time Bootstrap did not have the level of accessibility that it does now.  They have made amazing strides in accessibility and usability since then.
+
+Since CAST is a small, nonprofit education research and development organization, our work is mostly funded through grants, some private and some from the U.S. Federal Government.  This requires us to comply to Section 508 laws regarding our web-based research tools, which were not being met by the released versions of Bootstrap at that time.
+
+CAST took a slightly different approach towards adding accessibility to the framework than Bootstrap and their developers.  We decided to embed most of the accessibility functionality into the widgets so it is automatically applied as needed.  This decision allows us to make functionality updates without having to revisit each research project and make individual updates.  Also our small development teams did not have to worry about accessibility if the primary focus was not on the front-end development.
+
+## FAQ
+
+- **Is Figuration better than Bootstrap?**
+  - Figuration is based on Bootstrap so many pieces are similar, but we take a different approach with our interactive widgets.  So the best answer would be that Figuration is different.
+- **Is Figuration just another Bootstrap clone?**
+  - Bootstrap is currently seen as a major inspiration and resource for Figuration.  Since Figuration is still getting 'out of the blocks', Bootstrap is an invaluable resource and also considered an upstream provider of technology. Figuration has already changed how many pieces of the framework are designed and integrated.  As time goes on, the differences between the two frameworks may become more diverse.
+- **Why do you call Figuration accessible?**
+  - We aim to build the interactive widgets with all the needed accessibility functionality included.  This elimates the need for pre-setting attributes on elements, and allows the widgets to keep a consistent usability and interactivity model.  This also eliminates setting accessibility attributes for features that might not be currently enabled, resulting in confusion to those using Assistive Technology (AT).

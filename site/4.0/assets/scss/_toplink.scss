@@ -1,0 +1,41 @@
+// Top of page item
+.toplink {
+    a {
+        display: inline-block;
+        padding: .15rem .5rem;
+        @include font-size(.875rem);
+        color: #c3c3c3;
+        text-decoration: none;
+        white-space: nowrap;
+        background: #424242;
+        @include border-radius(.5rem .5rem 0 0);
+
+        @include hover-focus() {
+            color: #fff;
+        }
+    }
+
+    .caret {
+        &::after {
+            border-top: 0;
+            border-bottom: $caret-border-width solid;
+        }
+    }
+
+    &.affix-top,
+    &.affix {
+        position: fixed;
+        bottom: 0;
+        backface-visibility: hidden;
+
+        @include media-breakpoint-up(md) {
+            left: 2.5rem;
+        }
+    }
+    &.affix-top {
+        visibility: hidden;
+    }
+    &.affix-bottom {
+        position: absolute;
+    }
+}

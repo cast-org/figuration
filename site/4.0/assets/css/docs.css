@@ -44,6 +44,51 @@
   line-height: .75;
 }
 
+.cf-footer {
+  border-top: 2px solid #424f5b;
+}
+
+.toplink a {
+  display: inline-block;
+  padding: .15rem .5rem;
+  font-size: 0.875rem;
+  color: #c3c3c3;
+  text-decoration: none;
+  white-space: nowrap;
+  background: #424242;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.toplink a:hover, .toplink a:focus {
+  color: #fff;
+}
+
+.toplink .caret::after {
+  border-top: 0;
+  border-bottom: 0.3125rem solid;
+}
+
+.toplink.affix-top, .toplink.affix {
+  position: fixed;
+  bottom: 0;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+@media (min-width: 48em) {
+  .toplink.affix-top, .toplink.affix {
+    left: 2.5rem;
+  }
+}
+
+.toplink.affix-top {
+  visibility: hidden;
+}
+
+.toplink.affix-bottom {
+  position: absolute;
+}
+
 .home-icons {
   white-space: nowrap;
 }
