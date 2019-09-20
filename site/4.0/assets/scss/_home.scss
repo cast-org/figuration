@@ -1,4 +1,6 @@
 .home-icons {
+    white-space: nowrap;
+
     .far,
     .fas {
         @include font-size(3.5rem);
@@ -33,8 +35,7 @@
     padding: 2rem 1.5rem;
     margin-bottom: 2rem;
     color: rgba(255, 255, 255, .9);
-    // text-align: center;
-    // background-color: $docs-color;
+    background-color: #0f6a9e;
     background-image: linear-gradient(135deg, #0c5782 0%, #117cba 100%);
 
     .logo-home {
@@ -72,13 +73,30 @@
     margin-bottom: .25rem;
     font-weight: 600;
     color: #fff;
-    background-color: rgba(255, 255, 255, .15);
-    border-color: rgba(255, 255, 255, .8);
+    background-color: #2a75a0;
+    border-color: #dee;
     border-width: 2px;
     box-shadow: 2px 2px .2rem rgba(0, 0, 0, .35);
 
     @include hover-focus() {
         color: #222;
-        background-color: rgba(255, 255, 255, .9);
+        background-color: #e7f0f5;
+    }
+}
+
+// Feed
+.cf-feed {
+    padding: 2rem 0;
+    margin-top: 2rem;
+    text-align: center;
+    background-color: #0f6a9e;
+    background-image: linear-gradient(135deg, #117cba 0%, #0c5782 100%);
+
+    a {
+        color: rgba(255, 255, 255, .9);
+
+        @include hover-focus() {
+            color: rgba(255, 255, 255, 1);
+        }
     }
 }

@@ -11,12 +11,14 @@ module.exports = {
 
   "twitter": {
     "name":         "figuration_org",
-    "logo":         "/assets/brand/figuration-social.png"
+    "logo":         "/assets/brand/figuration-social.png",
+    "home":         "https://twitter.com/figuration_org"
   },
 
   "version": {
     "current":      "4.0.0-beta.1",
-    "docs":         "4.0"
+    "docs":         "4.0.0-beta.1",
+    "path":         "4.0"
   },
 
   "repo":           "https://github.com/cast-org/figuration",

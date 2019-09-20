@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+{% include ./partials/head.html %}
+</head>
+<body>
+{% include ./partials/skiplink.html %}
+{% include ./partials/notification.html %}
+{% include ./partials/topnav.html %}
+
+<main id="content" class="cf-content">
+{{ content }}
+</main>
+
+{% include ./partials/footer.html -%}
+
+</body>
+</html>

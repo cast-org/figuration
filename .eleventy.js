@@ -45,8 +45,8 @@ module.exports = function(eleventyConfig) {
     });
 
     // Layout aliases
-    eleventyConfig.addLayoutAlias('home', 'layouts/home.liquid');
-    eleventyConfig.addLayoutAlias('doc', 'layouts/doc.liquid');
+    eleventyConfig.addLayoutAlias('home', 'layouts/home.html');
+    eleventyConfig.addLayoutAlias('doc', 'layouts/doc.html');
 
     // Static assets
     eleventyConfig.addPassthroughCopy("site/assets", "assets");

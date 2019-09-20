@@ -1,0 +1,115 @@
+// stylelint-disable selector-no-qualifying-type, declaration-block-no-duplicate-properties
+
+// Modified version of:
+// GHColors theme by Avi Aryan (http://aviaryan.in)
+// Inspired by Github syntax coloring
+// Found at: https://ourcodeworld.com/articles/read/477/collection-of-the-best-open-source-prism-js-code-highlight-themes
+
+code[class*="language-"],
+pre[class*="language-"] {
+    font-family: Consolas, "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+    hyphens: none;
+    line-height: 1.25;
+    color: #3f3f3f; // #393a34;
+    text-align: left;
+    word-break: normal;
+    word-spacing: normal;
+    tab-size: 4;
+    white-space: pre;
+    direction: ltr;
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+    background: #b3d4fc;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1.65rem 1rem .5rem;
+    margin-bottom: 1rem;
+    overflow: auto;
+    background-color: #f8f8f8;
+    border: 1px solid #e1e1e8;
+    @include border-radius(.25rem);
+
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: 1.65rem 1rem .5rem;
+    background-color: #f8f8f8;
+    border: 1px solid #e1e1e8;
+    @include border-radius(.25rem);
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    font-style: italic;
+    color: #707070; //#998;
+}
+
+.token.namespace {
+    opacity: .7;
+}
+
+.token.string,
+.token.attr-value {
+    color: #dd0f54; //#da0f67; // #e3116c;
+}
+.token.punctuation,
+.token.operator {
+    color: #393a34; /* no highlight */
+}
+
+.token.entity,
+.token.url,
+.token.symbol,
+.token.number,
+.token.boolean,
+.token.variable,
+.token.constant,
+.token.property,
+.token.regex,
+.token.inserted {
+    color: #36acaa;
+}
+
+.token.atrule,
+.token.attr-name,
+.language-autohotkey .token.selector {
+    color: #007b97; // #0079a1; // #00a4db;
+}
+
+.token.keyword {
+    color: #dd0f54;
+}
+
+.token.function {
+    color: #2f6f9f;
+}
+
+.token.deleted,
+.language-autohotkey .token.tag {
+    color: #9a050f;
+}
+
+.token.tag,
+.token.selector,
+.language-autohotkey .token.keyword {
+    color: #01b; // #009; // #00009f;
+}
+
+.token.important,
+.token.function,
+.token.bold {
+    font-weight: $font-weight-bold;
+}
+
+.token.italic {
+    font-style: italic;
+}

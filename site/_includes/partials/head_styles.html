@@ -1,0 +1,20 @@
+<!-- Font CSS -->
+{% if site.github -%}
+  <link href="{{ site.cdn.fontawe }}" integrity="{{ site.cdn.fontawe_hash }}" crossorigin="anonymous" rel="stylesheet" property="stylesheet">
+{% else -%}
+  <link href="{{ site.path }}/{{ site.version.path }}/assets/fonts/fontawesome/css/all.min.css" rel="stylesheet" property="stylesheet">
+{% endif %}
+
+<!-- Figuration CSS -->
+{% if site.environment == "production" -%}
+<link href="{{ site.path }}/{{ site.version.path }}/assets/dist/css/figuration.min.css" rel="stylesheet" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
+{%- else -%}
+<link href="{{ site.path }}/{{ site.version.path }}/assets/dist/css/figuration.css" rel="stylesheet">
+{% endif -%}
+
+<!-- Docs CSS -->
+{% if site.environment == "production" -%}
+<link href="{{ site.path }}/{{ site.version.path }}/assets/css/docs.min.css" rel="stylesheet">
+{%- else -%}
+<link href="{{ site.path }}/{{ site.version.path }}/assets/css/docs.css" rel="stylesheet">
+{% endif -%}
