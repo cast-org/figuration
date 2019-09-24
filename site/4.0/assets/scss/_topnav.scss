@@ -1,11 +1,33 @@
+// stylelint-disable selector-no-qualifying-type
+
 .cf-header {
     background-color: #246;
+}
 
-    @include media-breakpoint-up(md) {
-        @supports (position: sticky) {
+@include media-breakpoint-up(md) {
+    @supports (position: sticky) {
+        .cf-header {
             position: sticky;
             top: 0;
             z-index: $zindex-sticky;
+        }
+
+        .cf-content {
+            > h1[id],
+            > h2[id],
+            > h3[id],
+            > h4[id],
+            > h5[id] {
+                &::before {
+                    position: relative;
+                    z-index: -1;
+                    display: block;
+                    height: 4.5rem;
+                    margin-top: -4.5rem;
+                    visibility: hidden;
+                    content: "";
+                }
+            }
         }
     }
 }

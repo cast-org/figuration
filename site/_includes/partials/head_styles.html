@@ -1,5 +1,5 @@
 <!-- Font CSS -->
-{% if site.github -%}
+{% if site.environment == "production" -%}
   <link href="{{ site.cdn.fontawe }}" integrity="{{ site.cdn.fontawe_hash }}" crossorigin="anonymous" rel="stylesheet" property="stylesheet">
 {% else -%}
   <link href="{{ site.path }}/{{ site.version.path }}/assets/fonts/fontawesome/css/all.min.css" rel="stylesheet" property="stylesheet">
@@ -7,9 +7,9 @@
 
 <!-- Figuration CSS -->
 {% if site.environment == "production" -%}
-<link href="{{ site.path }}/{{ site.version.path }}/assets/dist/css/figuration.min.css" rel="stylesheet" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
+<link href="{{ site.path }}/{{ site.version.path }}/assets/dist/css/figuration.min.css" rel="stylesheet" id="cssCore">
 {%- else -%}
-<link href="{{ site.path }}/{{ site.version.path }}/assets/dist/css/figuration.css" rel="stylesheet">
+<link href="{{ site.path }}/{{ site.version.path }}/assets/dist/css/figuration.css" rel="stylesheet" id="cssCore">
 {% endif -%}
 
 <!-- Docs CSS -->

@@ -2,6 +2,6 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@{{ site.twitter.name }}">
 <meta name="twitter:creator" content="@{{ site.twitter.name }}">
-<meta name="twitter:title" content="{{ page.title | default: site.title | smartify }}">
-<meta name="twitter:description" content="{{ page.description | default: site.description | smartify }}">
+<meta name="twitter:title" content="{{ title | default: site.title | smartify }}">
+<meta name="twitter:description" content="{{ description | default: site.description | smartify }}">
 <meta name="twitter:image" content="{{ site.url | append: site.path | append: site.twitter.logo }}">

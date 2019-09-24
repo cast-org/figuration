@@ -11,19 +11,12 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3 col-xl-2 cf-sidebar">
-            {% comment %}
-            {% include nav-sidebar.html %}
-            {% endcomment %}
+            {% include ./partials/sidebar-nav.html %}
         </div>
         <main class="col-md-9 col-xl-8 cf-content" role="main">
-            <h1 class="cf-title" id="content">
-                {{ page.title }}
-                {% if page.subtitle %}
-                    <small class="text-muted">{{ page.subtitle }}</small>
-                {% endif %}
-            </h1>
+            <h1 class="cf-title" id="content">{{ title }}{%if subtitle %} <small class="text-muted">{{ subtitle }}</small>{% endif %}</h1>
 
-            <p class="fs-large">{{ page.description }}</p>
+            {%if wdescription %}<p class="fs-large">{{ description }}</p>{% endif %}
 
             {{ content }}
         </main>

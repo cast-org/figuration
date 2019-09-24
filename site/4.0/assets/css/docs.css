@@ -1,5 +1,5 @@
 .skiplink {
-  position: absolute;
+  position: absolute !important;
   top: .25rem;
   left: 50%;
   padding: .25rem .5rem;
@@ -27,6 +27,19 @@
       position: sticky;
       top: 0;
       z-index: 1010;
+    }
+    .cf-content > h1[id]::before,
+    .cf-content > h2[id]::before,
+    .cf-content > h3[id]::before,
+    .cf-content > h4[id]::before,
+    .cf-content > h5[id]::before {
+      position: relative;
+      z-index: -1;
+      display: block;
+      height: 4.5rem;
+      margin-top: -4.5rem;
+      visibility: hidden;
+      content: "";
     }
   }
 }
@@ -71,14 +84,9 @@
 .toplink.affix-top, .toplink.affix {
   position: fixed;
   bottom: 0;
+  left: 2.5rem;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-}
-
-@media (min-width: 48em) {
-  .toplink.affix-top, .toplink.affix {
-    left: 2.5rem;
-  }
 }
 
 .toplink.affix-top {
@@ -219,6 +227,34 @@ h2 > code,
 h3 > code,
 h4 > code {
   font-weight: 500;
+}
+
+@font-face {
+  font-family: "link-icons";
+  src: url(data:n/a;base64,AAEAAAALAIAAAwAwT1MvMg8yG2cAAAE4AAAAYGNtYXDp3gC3AAABpAAAAExnYXNwAAAAEAAAA9wAAAAIZ2x5ZlQCcfwAAAH4AAABCGhlYWQHFvHyAAAAvAAAADZoaGVhBnACFwAAAPQAAAAkaG10eASAADEAAAGYAAAADGxvY2EACACEAAAB8AAAAAhtYXhwAAYAVwAAARgAAAAgbmFtZQGOH9cAAAMAAAAAunBvc3QAAwAAAAADvAAAACAAAQAAAAEAAHzE2p9fDzz1AAkEAAAAAADRecUWAAAAANQA6R8AAAAAAoACwAAAAAgAAgAAAAAAAAABAAADwP/AAAACgAAA/9MCrQABAAAAAAAAAAAAAAAAAAAAAwABAAAAAwBVAAIAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAMCQAGQAAUAAAKZAswAAACPApkCzAAAAesAMwEJAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAAAAAAAAAAAAAAQAAg//0DwP/AAEADwABAAAAAAQAAAAAAAAAAAAAAIAAAAAAAAAIAAAACgAAxAAAAAwAAAAMAAAAcAAEAAwAAABwAAwABAAAAHAAEADAAAAAIAAgAAgAAACDpy//9//8AAAAg6cv//f///+EWNwADAAEAAAAAAAAAAAAAAAAACACEAAEAAAAAAAAAAAAAAAAxAAACAAQARAKAAsAAKwBUAAABIiYnJjQ3NzY2MzIWFxYUBwcGIicmNDc3NjQnJiYjIgYHBwYUFxYUBwYGIwciJicmNDc3NjIXFhQHBwYUFxYWMzI2Nzc2NCcmNDc2MhcWFAcHBgYjARQGDAUtLXoWOR8fORYtLTgKGwoKCjgaGg0gEhIgDXoaGgkJBQwHdR85Fi0tOAobCgoKOBoaDSASEiANehoaCQkKGwotLXoWOR8BMwUFLYEuehYXFxYugC44CQkKGwo4GkoaDQ0NDXoaShoKGwoFBe8XFi6ALjgJCQobCjgaShoNDQ0NehpKGgobCgoKLYEuehYXAAAADACWAAEAAAAAAAEACAAAAAEAAAAAAAIAAwAIAAEAAAAAAAMACAAAAAEAAAAAAAQACAAAAAEAAAAAAAUAAQALAAEAAAAAAAYACAAAAAMAAQQJAAEAEAAMAAMAAQQJAAIABgAcAAMAAQQJAAMAEAAMAAMAAQQJAAQAEAAMAAMAAQQJAAUAAgAiAAMAAQQJAAYAEAAMYW5jaG9yanM0MDBAAGEAbgBjAGgAbwByAGoAcwA0ADAAMABAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAH//wAP) format("truetype");
+}
+
+.direct-link {
+  font: 1em/1 link-icons;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out 0.1s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .direct-link {
+    transition: none;
+  }
+}
+
+.direct-link:hover, .direct-link:focus {
+  color: inherit;
+  text-decoration: none;
+}
+
+:hover > .direct-link,
+.direct-link:focus {
+  opacity: 1;
 }
 
 code[class*="language-"],

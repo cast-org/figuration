@@ -11,7 +11,7 @@ group: about
 
 The goal is to make Figuration a consistent, robust, but easy to use front-end framework for developing web sites and applications.
 
-## About
+## History
 
 Figuration was started as an in-house project at [CAST, Inc](http://www.cast.org/) based off Bootstrap v.3.
 

@@ -1,0 +1,34 @@
+{% if site.environment == "production" -%}
+<form class="cf-search" role="search">
+    <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="{{ site.docs_version }}"/>
+</form>
+{%- endif %}
+
+<nav class="cf-links" aria-label="Section">
+{% for navgroup in nav -%}
+  {%- assign group_slug = navgroup.title | slug -%}
+  {%- assign page_slug = page.url | pathLast -%}
+
+  {% if group == group_slug %}
+    <div class="h4 cf-sidebar-header">{{ navgroup.title }}</div>
+    <ul class="nav flex-column">
+      {% for doc in navgroup.pages %}
+        {%- assign doc_slug = doc.title | slug -%}
+        {%- assign active = nil -%}
+        {%- assign current = nil -%}
+        {%- if doc_slug == page_slug -%}
+          {%- assign active = 'active' -%}
+          {%- assign current = '<span class="sr-only">(current page)</span>' -%}
+        {%- endif -%}
+        <li class="nav-item">
+          {%- if group == 'about' -%}
+              <a href="{{ site.baseurl }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link {{ active }}"> {{ doc.title }} {{ current }}</a>
+            {%- else -%}
+              <a href="{{ site.baseurl }}/{{ site.docs_version }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link {{ active }}"> {{ doc.title }} {{ current }}</a>
+            {%- endif -%}
+        </li>
+      {% endfor -%}
+    </ul>
+  {% endif -%}
+{%- endfor %}
+</nav>

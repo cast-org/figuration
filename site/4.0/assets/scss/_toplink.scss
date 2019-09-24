@@ -26,11 +26,8 @@
     &.affix {
         position: fixed;
         bottom: 0;
+        left: 2.5rem;
         backface-visibility: hidden;
-
-        @include media-breakpoint-up(md) {
-            left: 2.5rem;
-        }
     }
     &.affix-top {
         visibility: hidden;

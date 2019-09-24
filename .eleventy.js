@@ -9,6 +9,11 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addFilter('sitemapDateString', (dateObj) => {
         return new Date(dateObj).toISOString();
     });
+    eleventyConfig.addFilter('pathLast', (str) => {
+        let array = str.replace(/\/$/, "").split("/");
+        let val = array[array.length - 1];
+        return (typeof val === undefined) ? "" : val;
+    });
 
     // Markdown plugins
     let markdownIt = require("markdown-it");
@@ -21,7 +26,7 @@ module.exports = function(eleventyConfig) {
     let opts = {
         permalink: true,
         permalinkClass: "direct-link",
-        permalinkSymbol: "#"
+        permalinkSymbol: "\ue9cb"
     };
 
     eleventyConfig.setLibrary("md", markdownIt(options)

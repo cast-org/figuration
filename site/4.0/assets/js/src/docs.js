@@ -57,6 +57,7 @@
 
 (function($) {
     'use strict';
+
     Holder.addTheme('gray', {
         bg: '#999',
         fg: '#111',
@@ -64,6 +65,11 @@
         font: 'sans-serif',
         fontweight: 'normal'
     });
+
+    var addAnchors = function() {
+        var selector = '.cf-content > h2, .cf-content > h3, .cf-content > h4, .cf-content > h5';
+        $(selector).wrapInner('<div></div>');
+    };
 
     var addClipboard = function() {
         // Insert copy to clipboard button before .highlight
@@ -239,6 +245,7 @@
     });
 
     $(window).ready(function() {
+        addAnchors();
         addClipboard();
         toplinkAffix();
         paletteHex();
