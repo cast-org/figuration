@@ -18,19 +18,19 @@ module.exports = function(eleventyConfig) {
     // Markdown plugins
     let markdownIt = require("markdown-it");
     let markdownItAnchor = require("markdown-it-anchor");
-    let options = {
+    let markdownItOptions = {
         html: true,
         breaks: true,
         linkify: true
     };
-    let opts = {
+    let markdownItAnchorOptions = {
         permalink: true,
         permalinkClass: "direct-link",
         permalinkSymbol: "\ue9cb"
     };
 
-    eleventyConfig.setLibrary("md", markdownIt(options)
-        .use(markdownItAnchor, opts)
+    eleventyConfig.setLibrary("md", markdownIt(markdownItOptions)
+        .use(markdownItAnchor, markdownItAnchorOptions)
     );
 
      // BrowserSync configuration and 404 page

@@ -1,4 +1,15 @@
 // Footer
 .cf-footer {
+    @include font-size(map-get($font-sizes, "small"));
+    color: $black;
+    background-color: palette($uibase, 150);
     border-top: 2px solid $uibase-700;
+
+    a {
+        color: palette($primary, 600);
+
+        @include hover-focus() {
+            color: palette($primary, 800);
+        }
+    }
 }

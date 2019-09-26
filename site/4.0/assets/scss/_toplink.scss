@@ -26,7 +26,8 @@
     &.affix {
         position: fixed;
         bottom: 0;
-        left: 2.5rem;
+        left: 1.5rem;
+        z-index: 1;
         backface-visibility: hidden;
     }
     &.affix-top {
@@ -34,5 +35,6 @@
     }
     &.affix-bottom {
         position: absolute;
+        left: 1.5rem;
     }
 }

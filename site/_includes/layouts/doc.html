@@ -29,5 +29,8 @@
 
 {% include ./partials/footer.html -%}
 
+{% if site.environment == "production" -%}
+{% include ./partials/algolia_config.html %}
+{% endif -%}
 </body>
 </html>

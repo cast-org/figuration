@@ -5,6 +5,11 @@
   <link href="{{ site.path }}/{{ site.version.path }}/assets/fonts/fontawesome/css/all.min.css" rel="stylesheet" property="stylesheet">
 {% endif %}
 
+<!-- Algolia DocSearch CSS -->
+{% if site.environment == "production" -%}
+ <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+{% endif -%}
+
 <!-- Figuration CSS -->
 {% if site.environment == "production" -%}
 <link href="{{ site.path }}/{{ site.version.path }}/assets/dist/css/figuration.min.css" rel="stylesheet" id="cssCore">
