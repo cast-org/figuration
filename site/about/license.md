@@ -1,6 +1,7 @@
 ---
 layout: doc
 title: License
+description: Information regarding Figuration's open source license.
 group: about
 ---
 

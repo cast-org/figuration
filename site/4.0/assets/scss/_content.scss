@@ -1,3 +1,7 @@
+.font-weight-sbold {
+    font-weight: 600;
+}
+
 // Content
 .cf-content {
     padding-top: 1rem;
@@ -43,8 +47,29 @@ h4 {
         text-decoration: none;
     }
 }
-
 :hover > .direct-link,
 .direct-link:focus {
     opacity: 1;
+}
+
+// ClipboardJS
+.cf-clipboard {
+    position: relative;
+    z-index: 2;
+    display: block;
+    float: right #{"/*rtl:ignore*/"};
+    line-height: 1;
+
+    + .highlight {
+        margin-top: 0;
+    }
+
+    .tooltip {
+        white-space: nowrap;
+    }
+}
+.btn-clipboard {
+    position: absolute;
+    top: 0;
+    right: 0 #{"/*rtl:ignore*/"};
 }

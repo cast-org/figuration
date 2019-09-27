@@ -446,6 +446,10 @@
   margin-left: 1.625rem;
 }
 
+.font-weight-sbold {
+  font-weight: 600;
+}
+
 .cf-content {
   padding-top: 1rem;
   padding-bottom: 2rem;
@@ -501,6 +505,28 @@ h4 > code {
   opacity: 1;
 }
 
+.cf-clipboard {
+  position: relative;
+  z-index: 2;
+  display: block;
+  float: right /*rtl:ignore*/;
+  line-height: 1;
+}
+
+.cf-clipboard + .highlight {
+  margin-top: 0;
+}
+
+.cf-clipboard .tooltip {
+  white-space: nowrap;
+}
+
+.btn-clipboard {
+  position: absolute;
+  top: 0;
+  right: 0 /*rtl:ignore*/;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   font-family: Consolas, "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
@@ -535,7 +561,7 @@ code[class*="language-"] ::selection {
 
 /* Code blocks */
 pre[class*="language-"] {
-  padding: 1.65rem 1rem .5rem;
+  padding: 1.75em 1rem .5rem;
   margin-bottom: 1rem;
   overflow: auto;
   background-color: #f8f8f8;

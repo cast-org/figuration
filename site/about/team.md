@@ -1,6 +1,7 @@
 ---
 layout: doc
 title: Team
+description: An overview of who the core contributors are for Figuration.
 group: about
 ---
 

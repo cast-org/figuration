@@ -18,6 +18,7 @@ module.exports = function(eleventyConfig) {
     // Markdown plugins
     let markdownIt = require("markdown-it");
     let markdownItAnchor = require("markdown-it-anchor");
+    let markdownItToc = require("markdown-it-toc-done-right");
     let markdownItOptions = {
         html: true,
         breaks: true,
@@ -28,10 +29,30 @@ module.exports = function(eleventyConfig) {
         permalinkClass: "direct-link",
         permalinkSymbol: "\ue9cb"
     };
+    let markdownItTocOptions = {
+        containerClass: "cf-toc",
+        listClass: "cf-toc-list",
+        itemClass: "cf-toc-item",
+        linkClass: "cf-toc-link",
+        listType: "ul",
+        level: 2
+    };
 
     eleventyConfig.setLibrary("md", markdownIt(markdownItOptions)
         .use(markdownItAnchor, markdownItAnchorOptions)
+        .use(markdownItToc, markdownItTocOptions)
     );
+
+    // Concept for paired shortcode hack
+    /*
+    let md = new markdownIt();
+	eleventyConfig.addPairedShortcode("callout", function(content, level = "warn", format = "html") {
+		if( format === "md" ) {
+			content = md.renderInline(content);
+		}
+		return `<div class="elv-callout elv-callout-${level}">${content}</div>`;
+	});
+	*/
 
      // BrowserSync configuration and 404 page
     eleventyConfig.setBrowserSyncConfig({

@@ -32,7 +32,7 @@
               {%- assign current_page = ' <span class="sr-only">(current page)</span>' -%}
             {%- endif -%}
             <li class="nav-item">
-              {%- if group == 'about' -%}
+              {%- if group_slug == 'about' -%}
                   <a href="{{ site.path }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link {{ active }}">{{ doc.title }}{{ current_page }}</a>
                 {%- else -%}
                   <a href="{{ site.path }}/{{ site.version.path }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link {{ active }}"> {{ doc.title }} {{ current }}</a>
