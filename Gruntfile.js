@@ -210,10 +210,12 @@ module.exports = function(grunt) {
         rtlcss: {
             core: {
                 options: {
-                    map: true
-                },
-                opts: {
-                    clean: false
+                    map: {
+                        inline: false
+                    },
+                    opts: {
+                        clean: true
+                    }
                 },
                 expand: true,
                 cwd: 'dist/css',
@@ -223,10 +225,12 @@ module.exports = function(grunt) {
             },
             docs: {
                 options: {
-                    map: true
-                },
-                opts: {
-                    clean: false
+                    map: {
+                        inline: false
+                    },
+                    opts: {
+                        clean: true
+                    }
                 },
                 expand: true,
                 cwd: 'docs/<%= pkg.version %>/assets/css',
