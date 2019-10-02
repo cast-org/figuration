@@ -5,35 +5,37 @@ description: Get started using Figuration today with our CDN links and starter t
 group: get-started
 ---
 
-Looking to quickly add Figuration to your project? Use the CDN links. Using a package manager or need to download the source files? [Head to the downloads page.]({{ site.path }}/{{ site.version.path }}/get-started/download/)
+Looking to quickly add Figuration to your project? Use the CDN links. Using a package manager or need to download the source files? [Head to the downloads page.]({{ site.path }}{{ site.version.path }}/get-started/download/)
 
-<div class="h3">Page Contents</div>
+<div class="h3 cf-toc-header">Page Contents</div>
 
 ${toc}
 
 ## Using the CDN
 
-Quickly add Figuration to your project by using the CDN services provided for free by the awesome folks over at [jsDelivr](https://www.jsdelivr.com/).  If you are using a package manager, or need to download the source files, more information can be found on the [download page.]({{ site.path }}/{{ site.version.path }}/get-started/download/)
+Quickly add Figuration to your project by using the CDN services provided for free by the awesome folks over at [jsDelivr](https://www.jsdelivr.com/).  If you are using a package manager, or need to download the source files, more information can be found on the [download page.]({{ site.path }}{{ site.version.path }}/get-started/download/)
 
 ### CSS
 
 Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets to load our CSS.
 
-{% highlight html %}
+{% capture example %}
 <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
-{% endhighlight %}
+{% endcapture %}
+{% renderHighlight example, "html" %}
 
 ### JavaScript
 
-[Figuration's widgets]({{ site.path }}/{{ site.version.path }}/widgets/overview/), our interactive components, require [jQuery](https://jquery.com/) and [Popper.js](https://popper.js.org/), along with our own JavaScript library to function. Add jQuery Popper, and our JavaScript widgets either in the `<head>`, or near the end of your pages, right before the closing `</body>` tag. Be sure to place jQuery and Popper first, as our code depends on them.
+[Figuration's widgets]({{ site.path }}{{ site.version.path }}/widgets/overview/), our interactive components, require [jQuery](https://jquery.com/) and [Popper.js](https://popper.js.org/), along with our own JavaScript library to function. Add jQuery Popper, and our JavaScript widgets either in the `<head>`, or near the end of your pages, right before the closing `</body>` tag. Be sure to place jQuery and Popper first, as our code depends on them.
 
 Our widgets work with either the full version of jQuery, or the [jQuery's slim build](https://blog.jquery.com/2016/06/09/jquery-3-0-final-released/).
 
-{% highlight html %}
+{% capture example %}
 <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
 <script src="{{ site.cdn.popper }}" integrity="{{ site.cdn.popper_hash }}" crossorigin="anonymous"></script>
 <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
-{% endhighlight %}
+{% endcapture %}
+{% renderHighlight example, "html" %}
 
 ## Basic Template
 
@@ -41,7 +43,7 @@ Be sure to have your pages set up with the latest design and development standar
 
 Essentially something like this:
 
-{% highlight html %}
+{% capture example %}
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
@@ -54,7 +56,7 @@ Essentially something like this:
     <!-- Figuration CSS -->
     <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
 
-    <!-- jQuery and Figuration JS -->
+    <!-- Figuration JS and dependencies -->
     <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
     <script src="{{ site.cdn.popper }}" integrity="{{ site.cdn.popper_hash }}" crossorigin="anonymous"></script>
     <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
@@ -63,9 +65,10 @@ Essentially something like this:
     <h1>Hello, world!</h1>
   </body>
 </html>
-{% endhighlight %}
+{% endcapture %}
+{% renderHighlight example, "html" %}
 
-That should be all you need for overall page requirements. Visit the [Layout docs]({{ site.path }}/{{ site.version.path }}/layout/overview/) to begin building out your content and components.
+That should be all you need for overall page requirements. Visit the [Layout docs]({{ site.path }}{{ site.version.path }}/layout/overview/) to begin building out your content and components.
 
 ## Right-to-left Support
 
@@ -77,18 +80,20 @@ The steps needed to switch from `ltr` to `rtl` mode are:
 - Add the `dir="rtl"` attribute to the `<html>` tag.
 - Update the `lang` attribute on the `<html>` tag to match the language being used.
     - Refer to this [list of language codes](https://www.loc.gov/standards/iso639-2/php/code_list.php) provided by the US Library of Congress to find the one you require.
-    {% highlight html %}
+    {% capture example %}
     <!-- This example is for a right-to-left Arabic layout -->
     <html lang="ar" dir="rtl">
-    {% endhighlight %}
+    {% endcapture %}
+    {% renderHighlight example, "html" %}
 - Load the `rtl` version of the Figuration CSS.  Load this **in place of** the default Figuration CSS.
-    {% highlight html %}
+    {% capture example %}
     <!-- Figuration RTL CSS -->
     <link rel="stylesheet" href="{{ site.cdn.css_rtl }}" integrity="{{ site.cdn.css_rtl_hash }}" crossorigin="anonymous">
-    {% endhighlight %}
+    {% endcapture %}
+    {% renderHighlight example, "html" %}
 
 When complete, the basic template for a right-to-left markup should look like the following example.
-{% highlight html %}
+{% capture example %}
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
@@ -101,7 +106,7 @@ When complete, the basic template for a right-to-left markup should look like th
     <!-- Figuration RTL CSS -->
     <link rel="stylesheet" href="{{ site.cdn.css_rtl }}" integrity="{{ site.cdn.css_rtl_hash }}" crossorigin="anonymous">
 
-    <!-- jQuery and Figuration JS -->
+    <!-- Figuration JS and dependencies  -->
     <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
     <script src="{{ site.cdn.popper }}" integrity="{{ site.cdn.popper_hash }}" crossorigin="anonymous"></script>
     <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
@@ -110,7 +115,8 @@ When complete, the basic template for a right-to-left markup should look like th
     <h1>Hello, world!</h1>
   </body>
 </html>
-{% endhighlight %}
+{% endcapture %}
+{% renderHighlight example, "html" %}
 
 ## Important Markup
 
@@ -120,20 +126,22 @@ Figuration depends a handful of important global styles and settings that you'll
 
 Figuration requires the use of the HTML5 doctype. Without it, you'll see some incomplete styling.
 
-{% highlight html %}
+{% capture example %}
 <!DOCTYPE html>
 <html lang="en-us">
   ...
 </html>
-{% endhighlight %}
+{% endcapture %}
+{% renderHighlight example, "html" %}
 
 ### Responsive Meta Tag
 
 Figuration is developed *mobile first*, a strategy in which we optimize code for mobile devices first and then scale up components as necessary using CSS media queries. To ensure proper rendering and touch zooming for all devices, **add the responsive viewport meta tag** to your `<head>`.
 
-{% highlight html %}
+{% capture example %}
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{% endhighlight %}
+{% endcapture %}
+{% renderHighlight example, "html" %}
 
 You can see an example of this in action in the [basic template](#basic-template).
 
@@ -143,13 +151,14 @@ For more straightforward sizing in CSS, we switch the global `box-sizing` value 
 
 On the rare occasion you need to override it, use something like the following:
 
-{% highlight scss %}
+{% capture example %}
 .selector-for-some-widget {
   -webkit-box-sizing: content-box;
      -moz-box-sizing: content-box;
           box-sizing: content-box;
 }
-{% endhighlight %}
+{% endcapture %}
+{% renderHighlight example, "sass" %}
 
 With the above snippet, nested elements---including generated content via `::before` and `::after`---will all inherit the specified `box-sizing` for that `.selector-for-some-widget`.
 

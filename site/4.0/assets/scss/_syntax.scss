@@ -9,7 +9,7 @@ code[class*="language-"],
 pre[class*="language-"] {
     font-family: Consolas, "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
     hyphens: none;
-    line-height: 1.25;
+    line-height: 1.375;
     color: #3f3f3f; // #393a34;
     text-align: left;
     word-break: normal;
@@ -26,13 +26,19 @@ code[class*="language-"] ::selection {
     background: #b3d4fc;
 }
 
+code.language-bash::before {
+    color: #009;
+    content: "$ ";
+    user-select: none;
+}
+
 /* Code blocks */
 pre[class*="language-"] {
     padding: 1.75em 1rem .5rem;
     margin-bottom: 1rem;
     overflow: auto;
-    background-color: #f8f8f8;
-    border: 1px solid #e1e1e8;
+    background-color: palette($uibase, 25);
+    border: 1px solid palette($uibase, 100);
     @include border-radius(.25rem);
 
 }
@@ -47,10 +53,13 @@ pre[class*="language-"] {
 
 .token.comment,
 .token.prolog,
-.token.doctype,
 .token.cdata {
     font-style: italic;
     color: #707070; //#998;
+}
+
+.token.doctype {
+    color: #007e7e;
 }
 
 .token.namespace {

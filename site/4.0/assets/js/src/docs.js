@@ -150,24 +150,18 @@
     };
 
     var sectionToc = function() {
-        var $toc = $('#markdown-toc');
+        var $toc = $('.cf-toc').eq(0);
         if (!$toc.length) { return; }
 
+        $toc.attr('aria-label', 'Page');
         var $clone = $toc.clone();
-        $clone.find('ul li').addClass('section-toc-h3');
-        $clone.find('ul ul li').addClass('section-toc-h4').removeClass('section-toc-h3');
-        $clone.find('ul ul ul li').addClass('section-toc-h5').removeClass('section-toc-h4');
-        $clone.find('a').removeAttr('id');
 
         // Ouput new section toc
-        var $section = $('<ul class="section-toc"></ul>');
-        var $items = $clone.find('li');
-        $section.append($items);
-        $('.cf-toc').append($section);
+        $('.cf-toc-side').append($clone);
 
         // Add scrollspy here - using <body> data attributes comes too early
         $('body').CFW_Scrollspy({
-            target: '.section-toc'
+            target: '.cf-toc-side'
         });
     };
 

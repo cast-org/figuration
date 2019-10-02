@@ -2,7 +2,7 @@
 {% if site.environment == "production" -%}
   <link href="{{ site.cdn.fontawe }}" integrity="{{ site.cdn.fontawe_hash }}" crossorigin="anonymous" rel="stylesheet" property="stylesheet">
 {% else -%}
-  <link href="{{ site.path }}/{{ site.version.path }}/assets/fonts/fontawesome/css/all.min.css" rel="stylesheet" property="stylesheet">
+  <link href="{{ site.path }}{{ site.version.path }}/assets/fonts/fontawesome/css/all.min.css" rel="stylesheet" property="stylesheet">
 {% endif %}
 
 <!-- Algolia DocSearch CSS -->
@@ -12,14 +12,14 @@
 
 <!-- Figuration CSS -->
 {% if site.environment == "production" -%}
-<link href="{{ site.path }}/{{ site.version.path }}/assets/dist/css/figuration.min.css" rel="stylesheet" id="cssCore">
+<link href="{{ site.path }}{{ site.version.path }}/assets/dist/css/figuration.min.css" rel="stylesheet" id="cssCore">
 {%- else -%}
-<link href="{{ site.path }}/{{ site.version.path }}/assets/dist/css/figuration.css" rel="stylesheet" id="cssCore">
+<link href="{{ site.path }}{{ site.version.path }}/assets/dist/css/figuration.css" rel="stylesheet" id="cssCore">
 {% endif -%}
 
 <!-- Docs CSS -->
 {% if site.environment == "production" -%}
-<link href="{{ site.path }}/{{ site.version.path }}/assets/css/docs.min.css" rel="stylesheet">
+<link href="{{ site.path }}{{ site.version.path }}/assets/css/docs.min.css" rel="stylesheet" id="cssDocs">
 {%- else -%}
-<link href="{{ site.path }}/{{ site.version.path }}/assets/css/docs.css" rel="stylesheet">
+<link href="{{ site.path }}{{ site.version.path }}/assets/css/docs.css" rel="stylesheet" id="cssDocs">
 {% endif -%}

@@ -17,7 +17,7 @@ layout: home
 
                 <div class="row text-center text-md-start">
                     <div class="col-md-auto">
-                        <a href="{{ site.path }}/{{ site.version.path }}/get-started/download/" class="btn btn-lg btn-start" onclick="ga('send', 'event', 'Homepage', 'Download', 'Download {{ site.version.current }}');">Download</a>
+                        <a href="{{ site.path }}{{ site.version.path }}/get-started/download/" class="btn btn-lg btn-start" onclick="ga('send', 'event', 'Homepage', 'Download', 'Download {{ site.version.current }}');">Download</a>
                     </div>
                     <!--<div class="w-100 d-md-none"></div> -->
                     <div class="col-md-auto">
@@ -85,10 +85,17 @@ layout: home
         <div class="col-md-6">
             <h2>Get Started Now</h2>
             <p>Quickly get up and running with Figuration by including the compiled CSS and JavaScript in your document. Add the following CDN links in the <code>&lt;head&gt;</code> of your HTML document.</p>
-            <p>More information is available on the <a href="{{ site.baseurl }}/{{ site.version.path }}/get-started/quick-start/">Quick Start page</a>.</p>
+            <p>More information is available on the <a href="{{ site.path }}{{ site.version.path }}/get-started/quick-start/">Quick Start page</a>.</p>
         </div>
         <div class="col-md-6 home-feature">
-            {%- include ./syntax/home_quickstart.md %}
+{% capture example %}
+<link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
+<script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
+<script src="{{ site.cdn.popper }}" integrity="{{ site.cdn.popper_hash }}" crossorigin="anonymous"></script>
+<script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
+{% endcapture %}
+{% renderHighlight example, "html" %}
+
             <div class="small">CDN services are provided for free by the awesome folks over at <a href="https://www.jsdelivr.com/">jsDelivr</a>.</div>
         </div>
     </div>
@@ -116,7 +123,7 @@ layout: home
     <div class="row text-center text-md-start">
         <div class="col-sm-6 col-lg-4">
             <h2>Browser Support</h2>
-            <p>Most current browers are supported.  Additional details can be found on the <a href="{{ site.path }}/{{ site.version.path }}/get-started/browsers-devices/">Browsers &amp; Devices page</a>.</p>
+            <p>Most current browers are supported.  Additional details can be found on the <a href="{{ site.path }}{{ site.version.path }}/get-started/browsers-devices/">Browsers &amp; Devices page</a>.</p>
         </div>
         <div class="col-sm-6 col-lg-8 home-feature">
             <ul class="list list-horizontal flex-wrap flex-center text-center small">

@@ -1,8 +1,8 @@
 const fs = require("fs");
-const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const Prism = require("prismjs");
+const PrismLoader = require("prismjs/components/index.js");
 
 module.exports = function(eleventyConfig) {
-    eleventyConfig.addPlugin(pluginSyntaxHighlight);
     eleventyConfig.setDataDeepMerge(true);
 
     // Filters
@@ -37,24 +37,60 @@ module.exports = function(eleventyConfig) {
         listType: "ul",
         level: 2
     };
-
     eleventyConfig.setLibrary("md", markdownIt(markdownItOptions)
         .use(markdownItAnchor, markdownItAnchorOptions)
         .use(markdownItToc, markdownItTocOptions)
     );
 
-    // Concept for paired shortcode hack
-    /*
-    let md = new markdownIt();
-	eleventyConfig.addPairedShortcode("callout", function(content, level = "warn", format = "html") {
-		if( format === "md" ) {
-			content = md.renderInline(content);
-		}
-		return `<div class="elv-callout elv-callout-${level}">${content}</div>`;
-	});
-	*/
+    // Use singular short codes for syntax highlights and examples
+    // Work around issue with no parsing between paired shortcodes.
+    eleventyConfig.addShortcode("renderHighlight", function(content, language) {
+        let highlightedContent = content.trim();
+        if(language !== "text") {
+            if(!Prism.languages[language]) {
+                PrismLoader([language]);
+            }
+            highlightedContent = Prism.highlight(highlightedContent, Prism.languages[language]);
+        }
+        //let lines = highlightedContent.split("\n");
+        //return `<pre class="language-${language}"><code class="language-${language}">` + lines.join("<br>") + "</code></pre>";
+        return `<pre class="language-${language}"><code class="language-${language}">` + highlightedContent + "</code></pre>";
+    });
 
-     // BrowserSync configuration and 404 page
+    eleventyConfig.addShortcode("renderExample", function(content, language, id) {
+        let highlightedContent = content.trim();
+        let lines = {};
+        let output = "";
+        let outputId = "";
+        let parsedContent = "";
+
+        // Strip out `holder.js` reference
+        if (highlightedContent.includes('data-src="holder.js')) {
+            parsedContent = highlightedContent.replace('data-src="holder.js', 'src="✂️holder.js');
+            parsedContent = parsedContent.replace(/\" /g, '✂️" ');
+            parsedContent = parsedContent.split('✂️');
+            highlightedContent = "";
+            parsedContent.forEach(function(str) {
+                highlightedContent += str.includes('holder.js') ? '...' : str;
+            });
+        }
+
+        // Send through Prism
+        if(language !== "text") {
+            if(!Prism.languages[language]) {
+                PrismLoader([language]);
+            }
+            highlightedContent = Prism.highlight(highlightedContent, Prism.languages[language]);
+        }
+        if (typeof id !== 'undefined') {
+            outputId = ' id="' + id + '"';
+        }
+        output += '<div class="cf-example"' + outputId +'>' + content + '</div>\n';
+        output += `<pre class="language-${language}"><code class="language-${language}">` + highlightedContent + "</code></pre>";
+        return output;
+    });
+
+    // BrowserSync configuration and 404 page
     eleventyConfig.setBrowserSyncConfig({
         notify: true,
         callbacks: {

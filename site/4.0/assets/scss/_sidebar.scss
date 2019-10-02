@@ -44,11 +44,14 @@
     }
 
     a {
-        display: inline-block;
-        padding: .125rem .5rem;
-        margin-left: .5rem;
+        display: block;
+        padding: 0;
         color: $uibase-700;
         text-decoration: none;
+
+        .nav-link-inner {
+            padding: .125rem .5rem;
+        }
 
         &.active {
             font-weight: $font-weight-bolder;
@@ -56,10 +59,14 @@
         }
 
         @include hover-focus() {
-            color: $white;
-            text-decoration: none;
-            background-color: $info;
-            @include border-radius($border-radius);
+            outline: 0;
+
+            .nav-link-inner {
+                color: $white;
+                text-decoration: none;
+                background-color: $info;
+                @include border-radius($border-radius);
+            }
         }
 
         &.disabled {
@@ -84,7 +91,7 @@
             }
         }
         .nav-link {
-            margin-left: 1.625rem;
+            margin-left: 1rem;
         }
     }
 }
