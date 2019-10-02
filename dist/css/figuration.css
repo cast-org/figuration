@@ -4044,7 +4044,7 @@ a.page-link {
 .dropdown-submenu > .dropdown-menu {
   top: 0;
   left: 100%;
-  margin-top: calc(-0.4375rem + 1px);
+  margin-top: calc(1px - 0.4375rem);
 }
 
 .dropdown-submenu > a::after,
@@ -4183,7 +4183,7 @@ a.page-link {
   top: auto;
   bottom: 0;
   margin-top: 0;
-  margin-bottom: calc(-0.4375rem + 1px);
+  margin-bottom: calc(1px - 0.4375rem);
 }
 
 .dropdown-menu[x-placement],

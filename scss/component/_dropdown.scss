@@ -43,7 +43,7 @@
         > .dropdown-menu {
             top: 0;
             left: 100%;
-            margin-top: calc(-#{($dropdown-spacer + $dropdown-padding-y)} + #{$dropdown-border-width});
+            margin-top: calc(#{$dropdown-border-width} - #{$dropdown-spacer} - #{$dropdown-padding-y});
         }
 
         > a,
@@ -213,7 +213,7 @@
                     top: auto;
                     bottom: 0;
                     margin-top: 0;
-                    margin-bottom: calc(-#{($dropdown-spacer + $dropdown-padding-y)} + #{$dropdown-border-width});
+                    margin-bottom: calc(#{$dropdown-border-width} - #{$dropdown-spacer} - #{$dropdown-padding-y});
                 }
             }
         }

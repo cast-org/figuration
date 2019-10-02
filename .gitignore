@@ -1,7 +1,7 @@
 # Ignore docs files
 _gh_pages
 _siteout
-site/**/assets/dist
+site/**/dist
 
 # Ignore folders
 node_modules
