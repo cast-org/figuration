@@ -109,10 +109,14 @@ module.exports = function(eleventyConfig) {
     // Layout aliases
     eleventyConfig.addLayoutAlias('home', 'layouts/home.html');
     eleventyConfig.addLayoutAlias('doc', 'layouts/doc.html');
+    eleventyConfig.addLayoutAlias('alias', 'layouts/alias.html');
 
     // Static assets
     eleventyConfig.addPassthroughCopy("site/assets", "assets");
-    eleventyConfig.addPassthroughCopy("site/4.0/assets", "4.0/assets");
+
+    eleventyConfig.setLiquidOptions({
+        dynamicPartials: true
+    });
 
     return {
         templateFormats: ["md", "html", "liquid"],

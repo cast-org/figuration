@@ -1,3 +1,11 @@
+{%- comment -%}`partials` is assigned in the parent layout template{%- endcomment -%}
+
+{%- assign head_favicon = pathPartials | append: "/head_favicon.html" -%}
+{%- assign head_social = pathPartials | append: "/head_social.html" -%}
+{%- assign head_analytics = pathPartials | append: "/head_analytics.html" -%}
+{%- assign head_styles = pathPartials | append: "/head_styles.html" -%}
+{%- assign head_scripts = pathPartials | append: "/head_scripts.html" -%}
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="{{ description | default: site.description | smartify }}">
@@ -19,8 +27,8 @@
 
 <link rel="canonical" href="{{site.url }}{{ url }}">
 
-{% include ./partials/head_favicon.html %}
-{%- include ./partials/head_social.html %}
-{%- include ./partials/head_analytics.html %}
-{%- include ./partials/head_styles.html %}
-{%- include ./partials/head_scripts.html %}
+{% include head_favicon %}
+{%- include head_social %}
+{%- include head_analytics %}
+{%- include head_styles %}
+{%- include head_scripts %}

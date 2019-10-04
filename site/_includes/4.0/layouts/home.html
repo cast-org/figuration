@@ -1,0 +1,25 @@
+{%- assign pathPartials = site.version.path | prepend: "." | append: "/partials" -%}
+
+{%- assign head = pathPartials | append: "/head.html" -%}
+{%- assign skiplink = pathPartials | append: "/skiplink.html" -%}
+{%- assign notification = pathPartials | append: "/notification.html" -%}
+{%- assign topnav = pathPartials | append: "/topnav.html" -%}
+{%- assign footer = pathPartials | append: "/footer.html" -%}
+
+<!doctype html>
+<html lang="en-us">
+<head>
+{%- include head -%}
+</head>
+<body>
+{% include skiplink %}
+{% include notification %}
+{% include topnav %}
+
+<main id="content">
+{{ content }}
+</main>
+
+{% include footer -%}
+</body>
+</html>

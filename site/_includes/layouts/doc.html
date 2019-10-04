@@ -1,38 +1,4 @@
-<!doctype html>
-<html lang="en-us">
-<head>
-{% include ./partials/head.html %}
-</head>
-<body>
-{% include ./partials/skiplink.html %}
-{% include ./partials/notification.html %}
-{% include ./partials/topnav.html %}
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-3 col-xl-2 cf-sidebar">
-            {% include ./partials/sidebar-nav.html %}
-        </div>
-        <nav class="d-none d-xl-block col-xl-2 cf-toc-side" aria-label="Page">
-        </nav>
-        <main class="col-md-9 col-xl-8 cf-content" role="main">
-            <h1 class="cf-title" id="content">{{ title }}{%if subtitle %} <small class="text-muted">{{ subtitle }}</small>{% endif %}</h1>
-
-            {%if description %}<p class="fs-large font-weight-sbold">{{ description }}</p>{% endif %}
-
-            {{ content }}
-        </main>
-    </div>
-
-    <div class="toplink">
-        <a href="#content">Top of Page <span class="caret"></span></a>
-    </div>
-</div>
-
-{% include ./partials/footer.html -%}
-
-{% if site.environment == "production" -%}
-{% include ./partials/algolia_config.html %}
-{% endif -%}
-</body>
-</html>
+{%- assign pathIncludes = site.version.path -%}
+{%- assign pathLayouts = pathIncludes | prepend: "." | append: "/layouts" -%}
+{%- assign templateDoc = pathLayouts | append: "/doc.html" -%}
+{% include templateDoc %}

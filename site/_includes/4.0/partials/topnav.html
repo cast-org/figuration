@@ -1,6 +1,6 @@
 <header class="navbar navbar-expand-lg navbar-dark print-hide cf-header">
     <a href="{{ site.path }}/" class="navbar-brand me-0_5" aria-label="{{ site.title }}">
-        {% include icons/figuration-outline.svg, class: "cf-header-logo" %}
+        {% include "./icons/figuration-outline.svg", class: "cf-header-logo" %}
         <span class="sr-only-xs-down">CAST Figuration</span>
     </a>
     <button class="navbar-toggle me-0_5" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
@@ -31,20 +31,20 @@
 
     <ul class="navbar-nav ms-auto cf-header-social flex-row">
         <li class="nav-item me-1">
-            {%- include ./partials/version_menu.html %}
+            {%- include "./partials/version_menu.html" %}
         </li>
         <li class="nav-item">
             <a href="{{ site.twitter }}" class="nav-link px-0_5" aria-label="Twitter" title="Twitter">
-                {% include icons/twitter.svg, width: "1rem", height: "1rem" %}
+                {% include "./icons/twitter.svg", width: "1rem", height: "1rem" %}
             </a>
         </li>
         <li class="nav-item">
             <a href="{{ site.repo }}" class="nav-link px-0_5" aria-label="Github" title="GitHub">
-                {% include icons/github.svg, width: "1rem", height: "1rem" %}
+                {% include "./icons/github.svg", width: "1rem", height: "1rem" %}
             </a>
         </li>
         <li class="nav-item">
-            {%- include ./partials/settings_menu.html %}
+            {%- include "./partials/settings_menu.html" %}
         </li>
     </ul>
 </header>

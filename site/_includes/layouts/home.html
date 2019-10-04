@@ -1,17 +1,4 @@
-<!doctype html>
-<html lang="en-us">
-<head>
-{% include ./partials/head.html -%}
-</head>
-<body>
-{% include ./partials/skiplink.html %}
-{% include ./partials/notification.html %}
-{% include ./partials/topnav.html %}
-
-<main id="content">
-{{ content }}
-</main>
-
-{% include ./partials/footer.html -%}
-</body>
-</html>
+{%- assign pathIncludes = site.version.path -%}
+{%- assign pathLayouts = pathIncludes | prepend: "." | append: "/layouts" -%}
+{%- assign templateHome = pathLayouts | append: "/home.html" -%}
+{% include templateHome %}
