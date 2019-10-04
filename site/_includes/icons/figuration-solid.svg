@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 240" focusable="false" role="img" {% if class %} class="{{ class }}"{% endif %}{% if width %} width="{{ width }}"{% endif %}{% if height %} height="{{ height }}"{% endif %}>
-  <title>{% if title %}{{title}{% else %}Figuration{% endif %}</title>
+  <title>{% if title %}{{ title }}{% else %}Figuration{% endif %}</title>
   <path fill="#246" d="M33.2 45L0 87l12 51.7c6.6 28.4 12.3 52 12.7 52.4.4.3 22.2 10.9 48.3 23.3l47.4 22.6 48-23.3 48-23.3 11.7-51.9c6.4-28.6 11.4-52.5 11-53-.4-.6-15.5-19.3-33.5-41.8L172.9 3H66.4L33.2 45zM162 55v10h-58v38h49v21h-49v58H81V45h81v10z"/>
   <path fill="#fff" d="M81 113.5V182h22v-58h50v-21h-50l.2-18.8.3-18.7 29.3-.3L162 65V45H81v68.5z"/>
 </svg>

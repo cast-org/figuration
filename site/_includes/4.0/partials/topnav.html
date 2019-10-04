@@ -34,17 +34,18 @@
             {%- include "./partials/version_menu.html" %}
         </li>
         <li class="nav-item">
-            <a href="{{ site.twitter }}" class="nav-link px-0_5" aria-label="Twitter" title="Twitter">
+            <a href="{{ site.twitter }}" class="nav-link px-0_5" aria-label="Twitter">
                 {% include "./icons/twitter.svg", width: "1rem", height: "1rem" %}
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ site.repo }}" class="nav-link px-0_5" aria-label="Github" title="GitHub">
+            <a href="{{ site.repo }}" class="nav-link px-0_5" aria-label="Github">
                 {% include "./icons/github.svg", width: "1rem", height: "1rem" %}
             </a>
         </li>
         <li class="nav-item">
-            {%- include "./partials/settings_menu.html" %}
+            {%- assign settings_menu = pathPartials | append: "/settings_menu.html" -%}
+            {%- include settings_menu %}
         </li>
     </ul>
 </header>
