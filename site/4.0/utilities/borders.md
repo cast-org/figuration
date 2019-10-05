@@ -91,7 +91,7 @@ There is also the special case size of `0` (zero) to remove  a radius.
 {% capture example %}
 <button type="button" class="btn radius-s-0">Button</button>
 {% endcapture %}
-{% renderExample example, "html" %}
+{% renderExample example %}
 
 ### Circles
 
@@ -166,7 +166,7 @@ The *start/end sides* are designated as follows depending on which version of th
 <span class="border-b bg-gray-50 p-0_5" style="width: 3rem;">'bottom'</span>
 <span class="border-s bg-gray-50 p-0_5" style="width: 3rem;">'start'</span>
 {% endcapture %}
-{% renderExample example, "html" %}
+{% renderExample example %}
 
 ### Removing Borders
 
@@ -201,7 +201,7 @@ See the following example of removing various borders from some buttons.
 <button type="button" class="btn radius-0 border-x-0">left and right</button>
 <button type="button" class="btn radius-0 border-y-0">top and bottom</button>
 {% endcapture %}
-{% renderExample example, "html" %}
+{% renderExample example %}
 
 ### Responsive Borders
 
@@ -214,13 +214,13 @@ For example to have a border on the sides of an element up to and including the 
     Sample container
 </div>
 {% endcapture %}
-{% renderExample example, "html" %}
+{% renderExample example %}
 
 ## SASS Reference
 
 ### Variables
 
-The available [Customization options]({{ site.path }}{{ pathVersion }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
+The available [Customization options]({{ site.path }}/{{ version.docs }}/get-started/options/), or Sass variables, that can be customized for this grouping of utility classes.
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

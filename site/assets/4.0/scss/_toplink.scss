@@ -25,8 +25,8 @@
     &.affix-top,
     &.affix {
         position: fixed;
-        bottom: 0;
         right: 0;
+        bottom: 0;
         z-index: 2;
         backface-visibility: hidden;
     }

@@ -1,0 +1,58 @@
+// stylelint-disable scss/dollar-variable-default
+
+// Callouts
+.cf-callout {
+    padding: 1rem;
+    margin: 1rem 0;
+    border: $border-width solid $uibase-300;
+    border-left-width: .5rem;
+    @include border-radius($border-radius);
+
+    .h3,
+    .h4,
+    .h5,
+    .h6 {
+        margin-top: 0;
+        margin-bottom: .5rem;
+        @include font-size(1.25rem);
+    }
+
+    p:last-child,
+    ul:last-child {
+        margin-bottom: 0;
+    }
+
+    + .cf-callout {
+        margin-top: -.25rem;
+    }
+}
+// Callout Contextual modifiers
+@mixin callout-variant($bg, $color, $border-color) {
+    background-color: $bg;
+    border-color: $border-color;
+
+    .h3,
+    .h4,
+    .h5,
+    .h6 {
+        color: $color;
+    }
+}
+
+$callout-colors: (
+    "info" : $info,
+    "warning" : $warning,
+    "danger" : $danger
+);
+@each $theme, $color in $callout-colors {
+    $cv-bg:           palette($color, 25);
+    $cv-color:        palette($color, 500);
+    $cv-border-color: palette($color, 600);
+
+    .cf-callout-#{$theme} {
+        @include callout-variant($cv-bg, $cv-color, $cv-border-color);
+    }
+}
+.cf-callout-dep > p + ul {
+    margin-top: -1rem;
+}

@@ -1,3 +1,5 @@
+// stylelint-disable selector-max-type
+
 .font-weight-sbold {
     font-weight: 600;
 }
@@ -19,6 +21,15 @@
 
     > h3 {
         margin-top: 1.5rem;
+    }
+
+    table {
+        td,
+        th {
+            &:first-child > code {
+                white-space: nowrap;
+            }
+        }
     }
 }
 

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Blog Example for Figuration</title>
+
+        <!-- Figuration CSS -->
+        <link rel="stylesheet" href="../../dist/css/figuration.min.css">
+
+        <!-- jQuery and Figuration JS -->
+        <script src="../../assets/js/vendor/jquery.slim.min.js"></script>
+        <script src="../../assets/js/vendor/popper.min.js"></script>
+        <script src="../../dist/js/figuration.min.js"></script>
+        <script src="../../assets/js/vendor/holder.min.js"></script>
+
+        <script>
+             Holder.addTheme('gray', {
+                bg: '#999',
+                fg: '#111',
+                size: 12,
+                font: 'sans-serif',
+                fontweight: 'normal'
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <header class="blog-header py-1">
+                <div class="row flex-nowrap flex-between flex-items-center no-gutters border-b pb-0_5">
+                    <div class="col-4">
+                        <a class="text-muted" href="#">Subscribe</a>
+                    </div>
+                    <div class="col-4 text-center">
+                        <span class="h2">Blog News</span>
+                    </div>
+                    <div class="col-4 text-end">
+                        <a href="#" class="btn btn-sm btn-icon btn-link btn-outline-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 8 8">
+                                <path d="M3.5 0c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5c.59 0 1.17-.14 1.66-.41a1 1 0 0 0 .13.13l1 1a1.02 1.02 0 1 0 1.44-1.44l-1-1a1 1 0 0 0-.16-.13c.27-.49.44-1.06.44-1.66 0-1.93-1.57-3.5-3.5-3.5zm0 1c1.39 0 2.5 1.11 2.5 2.5 0 .66-.24 1.27-.66 1.72-.01.01-.02.02-.03.03a1 1 0 0 0-.13.13c-.44.4-1.04.63-1.69.63-1.39 0-2.5-1.11-2.5-2.5s1.11-2.5 2.5-2.5z" />
+                            </svg>
+                        </a>
+                        <a role="button" href="#" class="btn btn-small btn-outline-secondary">Sign Up</a>
+                    </div>
+                </div>
+                <nav class="nav flex-center border-b py-0_5">
+                    <a href="#" class="nav-link">Science</a>
+                    <a href="#" class="nav-link">Technology</a>
+                    <a href="#" class="nav-link">Engineering</a>
+                    <a href="#" class="nav-link">Math</a>
+                    <a href="#" class="nav-link">Career Skills</a>
+                </nav>
+            </header>
+        </div>
+
+        <div class="container">
+            <div class="alert alert-info pb-1">
+                This example relies heavily on utility classes to adjust layout and formatting.
+                You will need to consider your use-case and possibly use custom CSS to decrease or eliminate the use of utility classes.
+            </div>
+
+            <article class="jumbotron bg-dark text-light mb-2">
+                <div class="col-md-6 p-0">
+                    <h1 class="text-white font-italic">
+                        <a href="#" class="text-white font-weight-lighter">Featured article with a longer title</a>
+                    </h1>
+                    <div class="mb-0_5 font-weight-bold">Today by <a href="#" class="text-white">Author's Name</a></div>
+                    <p class="lead font-weight-normal">Example teaser text for the featured article, to engage readers and generate interest about the article's contents.</p>
+                </div>
+            </article>
+
+            <div class="card-deck-md mb-2">
+                <article class="card card-horizontal-lg shadow-d1">
+                    <div class="card-col col-lg-5">
+                        <div class="card-img">
+                            <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px225/?text=Thumbnail" alt="Card image cap">
+                        </div>
+                    </div>
+                    <div class="card-col col-lg">
+                        <div class="card-body">
+                            <div class="text-primary font-weight-bold mb-0_25">Science</div>
+                            <h2 class="card-title h3 font-italic mb-0">
+                                <a href="#" class="text-body">Featured post</a>
+                            </h2>
+                            <div class="mb-0_5 text-muted">Yesterday by <a href="#">Author's Name</a></div>
+                            <p class="card-text">This card layout will display the image cap on the <strong>top</strong> of the card, then on the <strong>start</strong> side for <code>lg</code> screens and above.</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="card card-horizontal-lg card-horizontal-lg-reverse shadow-d1">
+                    <div class="card-col col-lg-5">
+                        <div class="card-img">
+                            <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px225/?text=Thumbnail" alt="Card image cap">
+                        </div>
+                    </div>
+                    <div class="card-col col-lg">
+                        <div class="card-body">
+                            <div class="text-danger font-weight-bold mb-0_25">Technology</div>
+                            <h2 class="card-title h3 font-italic mb-0">
+                                <a href="#" class="text-body">Featured post</a>
+                            </h2>
+                            <div class="mb-0_5 text-muted">Yesterday by <a href="#">Author's Name</a></div>
+                            <p class="card-text">This card layout will display the image cap on the <strong>top</strong> of the card, then on the <strong>end</strong> side for <code>lg</code> screens and above.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="card-deck-md mb-2">
+                <article class="card shadow-d1">
+                    <div class="card-body">
+                        <div class="text-success font-weight-bold mb-0_25">Engineering</div>
+                        <h2 class="card-title h3 mb-0">
+                            <a href="#" class="text-body">Secondary post</a>
+                        </h2>
+                        <div class="mb-0_5 text-muted">Oct 31 by <a href="#">Author's Name</a></div>
+                        <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet.</p>
+                    </div>
+                </article>
+                <article class="card shadow-d1">
+                    <div class="card-body">
+                        <div class="text-info font-weight-bold mb-0_25">Math</div>
+                        <h2 class="card-title h3 mb-0">
+                            <a href="#" class="text-body">Secondary post</a>
+                        </h2>
+                        <div class="mb-0_5 text-muted">Oct 30 by <a href="#">Author's Name</a></div>
+                        <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet.</p>
+                    </div>
+                </article>
+                <article class="card shadow-d1">
+                    <div class="card-body">
+                        <div class="text-warning font-weight-bold mb-0_25">Career Skills</div>
+                        <h2 class="card-title h3 mb-0">
+                            <a href="#" class="text-body">Secondary post</a>
+                        </h2>
+                        <div class="mb-0_5 text-muted">Oct 29 by <a href="#">Author's Name</a></div>
+                        <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <main role="main" class="container">
+            <div class="border-b mb-1 pb-0_5">
+                <h2 class="h3 mb-0">Example Article</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <article class="pb-1 mb-2">
+                        <h2>Sample article title</h2>
+                        <div class="mb-1 text-muted">
+                            <span class="font-weight-bold text-primary">Science</span>
+                            October 28, 2018 by <a href="#">Author's Name</a>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent cursus vulputate arcu, ut malesuada justo convallis et. <a href="#">Suspendisse tempor nunc id</a> augue elementum vestibulum. Praesent mattis, nunc at tristique vestibulum, arcu mauris consectetur felis, ac commodo quam lorem vel neque. Vivamus vitae hendrerit eros. Quisque vitae mi eros. Suspendisse vehicula, est non tristique interdum, lacus massa accumsan nulla, vitae molestie leo metus id arcu. Integer ut leo diam.</p>
+
+                        <h3>Heading</h3>
+                        <p>Class aptent taciti sociosqu <strong>ad litora torquent</strong> per conubia nostra, per inceptos himenaeos. Fusce <em>malesuada blandit dolor</em>, eget sollicitudin urna bibendum vel. Integer porttitor auctor convallis. Praesent et sem eget quam eleifend commodo. Aenean accumsan vitae lorem gravida fermentum. Suspendisse consectetur lorem non tempor consequat. Proin ante mi, fringilla quis risus vel, condimentum egestas dolor.</p>
+
+                        <h4>Sub-heading</h4>
+                        <p>Proin vestibulum, urna in imperdiet posuere, justo neque porta sem, quis varius dui metus non leo.</p>
+                        <pre><code>Nullam id neque urna. Vivamus in molestie est.
+Curabitur vel ipsum at eros pharetra elementum sit amet vulputate ante.</code></pre>
+                        <p>Aliquam sed bibendum neque. Maecenas vel faucibus diam. Curabitur pellentesque augue nulla, et ultrices sapien mollis quis. Etiam dapibus eu tortor pulvinar auctor.</p>
+
+                        <h4>Sub-heading</h4>
+                        <p>Proin malesuada interdum orci, in dictum augue lacinia sed.</p>
+                        <ul class="list list-bulleted">
+                            <li class="list-item">Mauris et maximus nunc</li>
+                            <li class="list-item">Maecenas posuere nibh nec suscipit mattis</li>
+                            <li class="list-item">Nullam quis pharetra lorem, et ornare velit.</li>
+                        </ul>
+                        <p>Sed porta, ipsum sed lobortis ultrices, purus magna egestas orci, vel maximus risus sapien a tellus. Phasellus feugiat mattis elementum. Sed quis nunc nisl. In in consectetur augue. Aliquam suscipit elit posuere nibh varius, eu gravida ex varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </article>
+
+                    <article class="pb-1 mb-2">
+                        <h2>Another article</h2>
+                        <div class="mb-1 text-muted">
+                            <span class="font-weight-bold text-danger">Technology</span>
+                            October 28, 2018 by <a href="#">Author's Name</a>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent cursus vulputate arcu, ut malesuada justo convallis et. <a href="#">Suspendisse tempor nunc id</a> augue elementum vestibulum. Praesent mattis, nunc at tristique vestibulum, arcu mauris consectetur felis, ac commodo quam lorem vel neque. Vivamus vitae hendrerit eros. Quisque vitae mi eros. Suspendisse vehicula, est non tristique interdum, lacus massa accumsan nulla, vitae molestie leo metus id arcu. Integer ut leo diam.</p>
+                        <p>Class aptent taciti sociosqu <strong>ad litora torquent</strong> per conubia nostra, per inceptos himenaeos. Fusce <em>malesuada blandit dolor</em>, eget sollicitudin urna bibendum vel. Integer porttitor auctor convallis. Praesent et sem eget quam eleifend commodo. Aenean accumsan vitae lorem gravida fermentum. Suspendisse consectetur lorem non tempor consequat. Proin ante mi, fringilla quis risus vel, condimentum egestas dolor.</p>
+                    </article>
+
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination pagination-spaced mb-2">
+                            <li class="page-item me-1"><a href="#" class="page-link">Older</a></li>
+                            <li class="page-item"><a href="#" class="page-link disabled" tabindex="-1" aria-disabled="true">Newer</a></li>
+                        </ul>
+                    </nav>
+
+                </div>
+
+                <aside class="col-md-4">
+                    <div class="bg-light radius p-1 mb-1_5">
+                        <h4>About the Author</h4>
+                        <p class="card-text">Praesent cursus vulputate arcu, ut malesuada justo convallis et. Suspendisse tempor nunc id augue elementum vestibulum. Praesent mattis, nunc at tristique vestibulum, arcu mauris consectetur felis.</p>
+                    </div>
+                    <div class="mb-1_5">
+                        <h4>Archives</h4>
+                        <ol class="list">
+                            <li class="list-item"><a href="#">October 2018</a></li>
+                            <li class="list-item"><a href="#">September 2018</a></li>
+                            <li class="list-item"><a href="#">August 2018</a></li>
+                            <li class="list-item"><a href="#">July 2018</a></li>
+                            <li class="list-item"><a href="#">June 2018</a></li>
+                            <li class="list-item"><a href="#">May 2018</a></li>
+                            <li class="list-item"><a href="#">April 2018</a></li>
+                            <li class="list-item"><a href="#">March 2018</a></li>
+                            <li class="list-item"><a href="#">February 2018</a></li>
+                            <li class="list-item"><a href="#">January 2018</a></li>
+                        </ol>
+                    </div>
+                    <div class="mb-1_5">
+                        <h4>Social</h4>
+                        <ol class="list">
+                            <li class="list-item"><a href="#">Twitter</a></li>
+                            <li class="list-item"><a href="#">Facebook</a></li>
+                            <li class="list-item"><a href="#">Instagram</a></li>
+                        </ol>
+                    </div>
+                </aside>
+            </div>
+        </main>
+
+        <footer class="bg-light border-t p-1">
+            <div class="container">
+                <div class="row flex-items-center">
+                    <div class="col-md">
+                        <ul class="list list-horizontal list-bulleted small mb-md-0">
+                            <li class="list-item"><a href="#">About Us</a></li>
+                            <li class="list-item"><a href="#">Privacy</a></li>
+                            <li class="list-item"><a href="#">Terms</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-auto">
+                        <img src="../../assets/brand/figuration-social.png" width="24" height="24" alt="CAST Figuration" class="text-primary">
+                        <small>Copyright &copy; 2019</small>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

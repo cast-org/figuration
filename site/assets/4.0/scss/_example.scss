@@ -18,3 +18,35 @@
     margin-bottom: 1rem;
     @include border-bottom-radius(.25rem);
 }
+
+.cf-example-row {
+    .row + .row {
+        margin-top: 1rem;
+    }
+
+    .row {
+        > [class^="col-"],
+        .col {
+            padding-top: .75rem;
+            padding-bottom: .75rem;
+            background-color: rgba(34, 68, 102, .15);
+            border: $border-width solid rgba(34, 68, 102, .2);
+        }
+    }
+}
+.cf-example-row-grid {
+    .row {
+        background-color: rgba(34, 68, 102, .05);
+    }
+}
+.cf-example-row-flex {
+    .row {
+        border: $border-width solid rgba(34, 68, 102, .5);
+    }
+}
+.cf-example-row-flex-v {
+    .row {
+        height: 7rem;
+        border: $border-width solid rgba(34, 68, 102, .5);
+    }
+}

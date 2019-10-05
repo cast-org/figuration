@@ -26,6 +26,7 @@ module.exports = function(eleventyConfig) {
 
     // Markdown plugins
     let markdownIt = require("markdown-it");
+    let markdownItAttrs = require('markdown-it-attrs');
     let markdownItAnchor = require("markdown-it-anchor");
     let markdownItToc = require("markdown-it-toc-done-right");
     let markdownItOptions = {
@@ -46,7 +47,9 @@ module.exports = function(eleventyConfig) {
         listType: "ul",
         level: 2
     };
+    let md = new markdownIt();
     eleventyConfig.setLibrary("md", markdownIt(markdownItOptions)
+        .use(markdownItAttrs)
         .use(markdownItAnchor, markdownItAnchorOptions)
         .use(markdownItToc, markdownItTocOptions)
     );
@@ -66,12 +69,13 @@ module.exports = function(eleventyConfig) {
         return `<pre class="language-${language}"><code class="language-${language}">` + highlightedContent + "</code></pre>";
     });
 
-    eleventyConfig.addShortcode("renderExample", function(content, language, id) {
+    eleventyConfig.addShortcode("renderExample", function(content, addClass, id) {
         let highlightedContent = content.trim();
         let lines = {};
         let output = "";
         let outputId = "";
         let parsedContent = "";
+        addClass = (typeof addClass !== 'undefined') ? " " + addClass : "";
 
         // Strip out `holder.js` reference
         if (highlightedContent.includes('data-src="holder.js')) {
@@ -85,18 +89,23 @@ module.exports = function(eleventyConfig) {
         }
 
         // Send through Prism
-        if(language !== "text") {
-            if(!Prism.languages[language]) {
-                PrismLoader([language]);
-            }
-            highlightedContent = Prism.highlight(highlightedContent, Prism.languages[language]);
+        if(!Prism.languages["html"]) {
+            PrismLoader(["html"]);
         }
+        highlightedContent = Prism.highlight(highlightedContent, Prism.languages["html"]);
         if (typeof id !== 'undefined') {
             outputId = ' id="' + id + '"';
         }
-        output += '<div class="cf-example"' + outputId +'>' + content + '</div>\n';
-        output += `<pre class="language-${language}"><code class="language-${language}">` + highlightedContent + "</code></pre>";
+        output += `<div class="cf-example${addClass}"${outputId}>` + content + '</div>\n';
+        output += `<pre class="language-html"><code class="language-html">` + highlightedContent + "</code></pre>";
         return output;
+    });
+
+    eleventyConfig.addShortcode("renderCallout", function(content, level, addClass) {
+        addClass = (typeof addClass !== 'undefined') ? " " + addClass : "";
+        // Add preceding newline improve markup output
+        content = md.renderInline('\n' + content);
+        return `<div class="cf-callout cf-callout-${level}${addClass}">${content}</div>`;
     });
 
     // BrowserSync configuration and 404 page

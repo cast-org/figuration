@@ -95,8 +95,8 @@
 
 .toplink.affix-top, .toplink.affix {
   position: fixed;
-  bottom: 0;
   left: 0;
+  bottom: 0;
   z-index: 2;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
@@ -378,7 +378,7 @@
 }
 
 .cf-links {
-  padding-top: 0.5rem;
+  padding-top: .5rem;
   border-top: 1px solid #bfc6cd;
 }
 
@@ -565,6 +565,11 @@
 
 .cf-content > h3 {
   margin-top: 1.5rem;
+}
+
+.cf-content table td:first-child > code,
+.cf-content table th:first-child > code {
+  white-space: nowrap;
 }
 
 h2 > code,
@@ -779,5 +784,96 @@ pre[class*="language-"] {
   margin-bottom: 1rem;
   border-bottom-left-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
+}
+
+.cf-example-row .row + .row {
+  margin-top: 1rem;
+}
+
+.cf-example-row .row > [class^="col-"],
+.cf-example-row .row .col {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  background-color: rgba(34, 68, 102, 0.15);
+  border: 1px solid rgba(34, 68, 102, 0.2);
+}
+
+.cf-example-row-grid .row {
+  background-color: rgba(34, 68, 102, 0.05);
+}
+
+.cf-example-row-flex .row {
+  border: 1px solid rgba(34, 68, 102, 0.5);
+}
+
+.cf-example-row-flex-v .row {
+  height: 7rem;
+  border: 1px solid rgba(34, 68, 102, 0.5);
+}
+
+.cf-callout {
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 1px solid #9eaab4;
+  border-right-width: .5rem;
+  border-radius: 0.25rem;
+}
+
+.cf-callout .h3,
+.cf-callout .h4,
+.cf-callout .h5,
+.cf-callout .h6 {
+  margin-top: 0;
+  margin-bottom: .5rem;
+  font-size: 1.25rem;
+}
+
+.cf-callout p:last-child,
+.cf-callout ul:last-child {
+  margin-bottom: 0;
+}
+
+.cf-callout + .cf-callout {
+  margin-top: -.25rem;
+}
+
+.cf-callout-info {
+  background-color: #f3f9fa;
+  border-color: #136d8b;
+}
+
+.cf-callout-info .h3,
+.cf-callout-info .h4,
+.cf-callout-info .h5,
+.cf-callout-info .h6 {
+  color: #1680a4;
+}
+
+.cf-callout-warning {
+  background-color: #fffcf4;
+  border-color: #d3a51e;
+}
+
+.cf-callout-warning .h3,
+.cf-callout-warning .h4,
+.cf-callout-warning .h5,
+.cf-callout-warning .h6 {
+  color: #f8c223;
+}
+
+.cf-callout-danger {
+  background-color: #fdf4f3;
+  border-color: #b41e11;
+}
+
+.cf-callout-danger .h3,
+.cf-callout-danger .h4,
+.cf-callout-danger .h5,
+.cf-callout-danger .h6 {
+  color: #d42314;
+}
+
+.cf-callout-dep > p + ul {
+  margin-top: -1rem;
 }
 /*# sourceMappingURL=docs-rtl.css.map */
