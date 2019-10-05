@@ -5,7 +5,7 @@ description: Get started using Figuration today with our CDN links and starter t
 group: get-started
 ---
 
-Looking to quickly add Figuration to your project? Use the CDN links. Using a package manager or need to download the source files? [Head to the downloads page.]({{ site.path }}{{ site.version.path }}/get-started/download/)
+Looking to quickly add Figuration to your project? Use the CDN links. Using a package manager or need to download the source files? [Head to the downloads page.]({{ site.path }}{{ pathVersion }}/get-started/download/)
 
 <div class="h3 cf-toc-header">Page Contents</div>
 
@@ -13,7 +13,7 @@ ${toc}
 
 ## Using the CDN
 
-Quickly add Figuration to your project by using the CDN services provided for free by the awesome folks over at [jsDelivr](https://www.jsdelivr.com/).  If you are using a package manager, or need to download the source files, more information can be found on the [download page.]({{ site.path }}{{ site.version.path }}/get-started/download/)
+Quickly add Figuration to your project by using the CDN services provided for free by the awesome folks over at [jsDelivr](https://www.jsdelivr.com/).  If you are using a package manager, or need to download the source files, more information can be found on the [download page.]({{ site.path }}{{ pathVersion }}/get-started/download/)
 
 ### CSS
 
@@ -26,7 +26,7 @@ Copy-paste the stylesheet `<link>` into your `<head>` before all other styleshee
 
 ### JavaScript
 
-[Figuration's widgets]({{ site.path }}{{ site.version.path }}/widgets/overview/), our interactive components, require [jQuery](https://jquery.com/) and [Popper.js](https://popper.js.org/), along with our own JavaScript library to function. Add jQuery Popper, and our JavaScript widgets either in the `<head>`, or near the end of your pages, right before the closing `</body>` tag. Be sure to place jQuery and Popper first, as our code depends on them.
+[Figuration's widgets]({{ site.path }}{{ pathVersion }}/widgets/overview/), our interactive components, require [jQuery](https://jquery.com/) and [Popper.js](https://popper.js.org/), along with our own JavaScript library to function. Add jQuery Popper, and our JavaScript widgets either in the `<head>`, or near the end of your pages, right before the closing `</body>` tag. Be sure to place jQuery and Popper first, as our code depends on them.
 
 Our widgets work with either the full version of jQuery, or the [jQuery's slim build](https://blog.jquery.com/2016/06/09/jquery-3-0-final-released/).
 
@@ -68,7 +68,7 @@ Essentially something like this:
 {% endcapture %}
 {% renderHighlight example, "html" %}
 
-That should be all you need for overall page requirements. Visit the [Layout docs]({{ site.path }}{{ site.version.path }}/layout/overview/) to begin building out your content and components.
+That should be all you need for overall page requirements. Visit the [Layout docs]({{ site.path }}{{ pathVersion }}/layout/overview/) to begin building out your content and components.
 
 ## Right-to-left Support
 
@@ -172,4 +172,4 @@ For improved cross-browser rendering, we use [Bootstrap's Reboot](https://getboo
 
 We are just getting started so there is not much of a community yet.  Please spread the word and help us expand.
 
-- Follow [@figuration_org on Twitter]({{ site.twitter}})
+- Follow [@figuration_org on Twitter]({{ site.twitter.home }})

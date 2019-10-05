@@ -28,7 +28,7 @@ ${toc}
       <div class="card card-download">
         <h3 class="h4 card-header text-light" style="background-color: #246;">Source Files</h3>
         <div class="card-body">
-            Download everything: source Sass, JavaScript, and documentation files. <strong>Requires a Sass compiler, <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, <a href="https://github.com/luisrudge/postcss-flexbugs-fixes">postcss-flexbugs-fixes</a>, <a href="https://github.com/postcss/postcss-calc">postcss-calc</a>, and <a href="{{ site.path }}{{ site.version.path }}/get-started/build-tools/#tooling-setup">some setup</a>.</strong>
+            Download everything: source Sass, JavaScript, and documentation files. <strong>Requires a Sass compiler, <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, <a href="https://github.com/luisrudge/postcss-flexbugs-fixes">postcss-flexbugs-fixes</a>, <a href="https://github.com/postcss/postcss-calc">postcss-calc</a>, and <a href="{{ site.path }}{{ pathVersion }}/get-started/build-tools/#tooling-setup">some setup</a>.</strong>
         </div>
         <div class="card-footer text-sm-center">
             <a href="{{ site.download.source }}" class="btn" onclick="ga('send', 'event', 'Get Started', 'Download', 'Download source {{ site.version.docs }}');">Download source</a>

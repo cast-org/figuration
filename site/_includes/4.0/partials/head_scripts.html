@@ -1,23 +1,23 @@
 <!-- jQuery -->
 <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="{{ site.path }}/assets{{ site.version.path }}/js/vendor/jquery.slim.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="{{ site.path }}/assets{{ pathVersion }}/js/vendor/jquery.slim.min.js"><\/script>')</script>
 
 <!-- Popper.js -->
 <script src="{{ site.cdn.popper }}" integrity="{{ site.cdn.popper_hash }}" crossorigin="anonymous"></script>
-<script>window.Popper || document.write('<script src="{{ site.path }}/assets{{ site.version.path }}/js/vendor/popper.min.js"><\/script>')</script>
+<script>window.Popper || document.write('<script src="{{ site.path }}/assets{{ pathVersion }}/js/vendor/popper.min.js"><\/script>')</script>
 
 <!-- Figuration JS -->
 {% if site.environment == "production" -%}
-<script src="{{ site.path }}/assets{{ site.version.path }}/dist/js/figuration.min.js" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
+<script src="{{ site.path }}/assets{{ pathVersion }}/dist/js/figuration.min.js" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
 {%- else -%}
-<script src="{{ site.path }}/assets{{ site.version.path }}/dist/js/figuration.js"></script>
+<script src="{{ site.path }}/assets{{ pathVersion }}/dist/js/figuration.js"></script>
 {% endif -%}
 
 <!-- Docs Js -->
 {% if site.environment == "production" -%}
-<script src="{{ site.path }}/assets{{ site.version.path }}/js/docs.min.js"></script>
+<script src="{{ site.path }}/assets{{ pathVersion }}/js/docs.min.js"></script>
 {%- else -%}
-<script src="{{ site.path }}/assets{{ site.version.path }}/js/vendor/clipboard.min.js"></script>
-<script src="{{ site.path }}/assets{{ site.version.path }}/js/vendor/holder.min.js"></script>
-<script src="{{ site.path }}/assets{{ site.version.path }}/js/src/docs.js"></script>
+<script src="{{ site.path }}/assets{{ pathVersion }}/js/vendor/clipboard.min.js"></script>
+<script src="{{ site.path }}/assets{{ pathVersion }}/js/vendor/holder.min.js"></script>
+<script src="{{ site.path }}/assets{{ pathVersion }}/js/src/docs.js"></script>
 {% endif -%}

@@ -14,6 +14,15 @@ module.exports = function(eleventyConfig) {
         let val = array[array.length - 1];
         return (typeof val === undefined) ? "" : val;
     });
+    eleventyConfig.addFilter('valueIfEmpty', function() {
+        let len = arguments.length;
+        for (let i = 0; i < len; i++) {
+            if (typeof arguments[i] !== 'undefined') {
+                return arguments[i];
+            }
+        }
+        return false;
+    });
 
     // Markdown plugins
     let markdownIt = require("markdown-it");

@@ -81,7 +81,7 @@
   text-decoration: none;
   white-space: nowrap;
   background: #424242;
-  border-radius: 0.5rem 0.5rem 0 0;
+  border-radius: 0 0.5rem 0 0;
 }
 
 .toplink a:hover, .toplink a:focus {
@@ -96,8 +96,8 @@
 .toplink.affix-top, .toplink.affix {
   position: fixed;
   bottom: 0;
-  right: 1.5rem;
-  z-index: 1;
+  left: 0;
+  z-index: 2;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
@@ -108,7 +108,7 @@
 
 .toplink.affix-bottom {
   position: absolute;
-  right: 1.5rem;
+  left: 0;
 }
 
 .home-icons {
@@ -350,11 +350,19 @@
 .cf-sidebar {
   position: relative;
   z-index: 1;
+  padding-top: .5rem;
+  padding-bottom: 0;
   background-color: #eff1f3;
   border-bottom: 1px solid #bfc6cd;
 }
 
 @media (min-width: 48em) {
+  .cf-sidebar {
+    padding-top: 0;
+    padding-bottom: 1rem;
+    border-left: 1px solid #bfc6cd;
+    border-bottom: 0;
+  }
   @supports ((position: -webkit-sticky) or (position: sticky)) {
     .cf-sidebar {
       position: -webkit-sticky;
@@ -365,29 +373,26 @@
   }
 }
 
-@media (min-width: 48em) {
-  .cf-sidebar {
-    padding-bottom: 1rem;
-    border-left: 1px solid #bfc6cd;
-    border-bottom: 0;
-  }
-}
-
 .cf-sidebar-header {
   margin-bottom: .125rem;
 }
 
 .cf-links {
-  padding: 1rem 1rem 0;
-  margin-left: -1rem;
-  margin-right: -1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #bfc6cd;
 }
 
 @media (min-width: 48em) {
+  .cf-links {
+    display: block !important;
+    border-top: 0;
+  }
   @supports ((position: -webkit-sticky) or (position: sticky)) {
     .cf-links {
       max-height: calc(100vh - 3.375rem);
-      padding-bottom: 2rem;
+      padding-left: 1rem;
+      padding-bottom: 1rem;
+      margin-left: -1rem;
       overflow-x: visible;
       overflow-y: auto;
     }

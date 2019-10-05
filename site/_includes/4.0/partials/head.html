@@ -13,8 +13,8 @@
 
 {%- comment -%}
 <!-- Use faceted search ? -->
-<meta name="docsearch:language" content="en">
-<meta name="docsearch:version" content="{{ site.version.docs }}">
+<meta name="docsearch:language" content=""{{ site.language }}">
+<meta name="docsearch:version" content="{{ version.docs | valueIfEmpty: site.version.docs }}">
 {%- endcomment -%}
 
 <title>

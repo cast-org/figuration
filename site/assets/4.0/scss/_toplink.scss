@@ -8,7 +8,7 @@
         text-decoration: none;
         white-space: nowrap;
         background: #424242;
-        @include border-radius(.5rem .5rem 0 0);
+        @include border-radius(.5rem 0 0 0);
 
         @include hover-focus() {
             color: #fff;
@@ -26,8 +26,8 @@
     &.affix {
         position: fixed;
         bottom: 0;
-        left: 1.5rem;
-        z-index: 1;
+        right: 0;
+        z-index: 2;
         backface-visibility: hidden;
     }
     &.affix-top {
@@ -35,6 +35,6 @@
     }
     &.affix-bottom {
         position: absolute;
-        left: 1.5rem;
+        right: 0;
     }
 }

@@ -1,4 +1,4 @@
-{%- assign pathPartials = site.version.path | prepend: "." | append: "/partials" -%}
+{%- assign pathPartials = pathVersion | prepend: "." | append: "/partials" -%}
 
 {%- assign head = pathPartials | append: "/head.html" -%}
 {%- assign skiplink = pathPartials | append: "/skiplink.html" -%}
@@ -9,7 +9,7 @@
 {%- assign algolia = pathPartials | append: "/algolia.html" -%}
 
 <!doctype html>
-<html lang="en-us">
+<html lang=""{{ site.language }}">
 <head>
 {% include head %}
 </head>
