@@ -13,7 +13,12 @@
     @include media-breakpoint-up(sm) {
         padding: 1.5rem;
     }
+
+    & > .form-control + .form-control {
+        margin-top: .5rem;
+    }
 }
+
 .cf-example-bottom {
     margin-bottom: 1rem;
     @include border-bottom-radius(.25rem);
@@ -48,5 +53,32 @@
     .row {
         height: 7rem;
         border: $border-width solid rgba(34, 68, 102, .5);
+    }
+}
+
+// Grid mixins
+.example-container {
+    width: 800px;
+    @include make-container();
+}
+.example-row {
+    @include make-row();
+}
+.example-content-main {
+    @include make-col-ready();
+    @include media-breakpoint-up(sm) {
+        @include make-col(6);
+    }
+    @include media-breakpoint-up(lg) {
+        @include make-col(8);
+    }
+}
+.example-content-secondary {
+    @include make-col-ready();
+    @include media-breakpoint-up(sm) {
+        @include make-col(6);
+    }
+    @include media-breakpoint-up(lg) {
+        @include make-col(4);
     }
 }

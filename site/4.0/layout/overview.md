@@ -106,13 +106,13 @@ Since we write our source CSS in Sass, all our media queries are available via S
 
 // Example: Hide starting at `min-width: 0`, and then show at the `sm` breakpoint
 .custom-class {
-    display: none;
+  display: none;
 }
 
 @include media-breakpoint-up(sm) {
-    .custom-class {
-        display: block;
-    }
+  .custom-class {
+    display: block;
+  }
 }
 {% endcapture %}
 {% renderHighlight example, "sass" %}
@@ -148,9 +148,9 @@ Once again, these media queries are also available via Sass mixins:
 
 // Example: Style from medium breakpoint and down
 @include media-breakpoint-down(md) {
-    .custom-class {
-        display: block;
-    }
+  .custom-class {
+    display: block;
+  }
 }
 {% endcapture %}
 {% renderHighlight example, "sass" %}

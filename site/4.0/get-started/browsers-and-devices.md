@@ -19,7 +19,7 @@ We use [Autoprefixer](https://github.com/postcss/autoprefixer) to handle intende
 
 You can find our supported range of browsers and their versions [in our `.browserslistrc`]({{ site.repo }}/blob/v4-dev/.browserslistrc):
 
-```
+{% capture example %}
 # https://github.com/browserslist/browserslist#readme
 
 >= 1%
@@ -33,7 +33,8 @@ iOS >= 10
 Safari >= 10
 Android >= 6
 Opera >= 44
-```
+{% endcapture %}
+{% renderHighlight example, "text" %}
 
 ### Mobile Devices
 

@@ -84,3 +84,16 @@ h4 {
     top: 0;
     right: 0 #{"/*rtl:ignore*/"};
 }
+
+// Palettes
+.palette {
+    margin-bottom: 1rem;
+}
+.palette-base,
+.palette-item {
+    padding: .5rem 1rem;
+    @include font-size(.875rem);
+}
+.palette-base {
+    margin-bottom: .25rem;
+}

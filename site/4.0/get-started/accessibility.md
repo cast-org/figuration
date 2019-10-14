@@ -82,7 +82,7 @@ Some solutions include:
 - Use custom JavaScript to disable their functionality. For example:
 {% capture example %}
 $('.disabled').on('click', function(e) {
-    e.preventDefault();
+  e.preventDefault();
 });
 {% endcapture %}
 {% renderHighlight example, "js" %}

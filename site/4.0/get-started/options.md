@@ -121,8 +121,8 @@ Change a pre-defined color in the `$base-colors` map, by adding the following to
 
 {% capture example %}
 $base-colors: (
-    "primary": #004dd1,
-    "danger": #bb1f11
+  "primary": #004dd1,
+  "danger": #bb1f11
 );
 {% endcapture %}
 {% renderHighlight example, "sass" %}
@@ -133,7 +133,7 @@ To add another color option to `$base-colors`, add a new key-value pair.
 
 {% capture example %}
 $base-colors: (
-    "new-color": #990099
+  "new-color": #990099
 );
 {% endcapture %}
 {% renderHighlight example, "sass" %}
@@ -261,34 +261,34 @@ Below is the default additional settings for reference.
 {% capture example %}
 // Used for button, button groups, pagination, form-control, and input-group
 $component-sizes: (
-    "xsmall": (
-        "padding-y":     null,
-        "padding-x":     null,
-        "font-size":     ($font-size-base * .75),
-        "line-height":   null,
-        "border-radius": .1875rem
-    ),
-    "small": (
-        "padding-y":     null,
-        "padding-x":     null,
-        "font-size":     ($font-size-base * .875),
-        "line-height":   null,
-        "border-radius": .1875rem
-    ),
-    "large": (
-        "padding-y":     null,
-        "padding-x":     null,
-        "font-size":     ($font-size-base * 1.125),
-        "line-height":   null,
-        "border-radius": .3125rem
-    ),
-    "xlarge": (
-        "padding-y":     null,
-        "padding-x":     null,
-        "font-size":     ($font-size-base * 1.25),
-        "line-height":   null,
-        "border-radius": .3125rem
-    )
+  "xsmall": (
+    "padding-y":     null,
+    "padding-x":     null,
+    "font-size":     ($font-size-base * .75),
+    "line-height":   null,
+    "border-radius": .1875rem
+  ),
+  "small": (
+    "padding-y":     null,
+    "padding-x":     null,
+    "font-size":     ($font-size-base * .875),
+    "line-height":   null,
+    "border-radius": .1875rem
+  ),
+  "large": (
+    "padding-y":     null,
+    "padding-x":     null,
+    "font-size":     ($font-size-base * 1.125),
+    "line-height":   null,
+    "border-radius": .3125rem
+  ),
+  "xlarge": (
+    "padding-y":     null,
+    "padding-x":     null,
+    "font-size":     ($font-size-base * 1.25),
+    "line-height":   null,
+    "border-radius": .3125rem
+  )
 );
 {% endcapture %}
 {% renderHighlight example, "sass" %}
@@ -298,30 +298,34 @@ If you wish to have more concise control over components, you can always force t
 {% capture example %}
 // Used for button, button groups, pagination, form-control, and input-group
 $component-sizes: (
-    xsmall: (
-        font-size:      .75rem,
-        padding-y:      .1875rem,
-        padding-x:      .375rem,
-        border-radius:  .1875rem
-    ),
-    small: (
-        font-size:      .875rem,
-        padding-y:      .25rem,
-        padding-x:      .5rem,
-        border-radius:  .1875rem
-   ),
-    large: (
-        font-size:      1.25rem,
-        padding-y:      .625rem,
-        padding-x:      1.25rem,
-        border-radius:  .3125rem
-    ),
-    xlarge: (
-        font-size:      1.5rem,
-        padding-y:      .75rem,
-        padding-x:      1.5rem,
-        border-radius:  .3125rem
-    )
+  "xsmall": (
+    "padding-y":     .1875rem,
+    "padding-x":     .375rem,
+    "font-size":     .75rem,
+    "line-height":   1.5,
+    "border-radius": .1875rem
+  ),
+  "small": (
+    "padding-y":     .25rem,
+    "padding-x":     .5rem,
+    "font-size":     .875rem,
+    "line-height":   1.5,
+    "border-radius": .1875rem
+  ),
+  "large": (
+    "padding-y":     .625rem,
+    "padding-x":     1.25rem,
+    "font-size":     1.25rem,
+    "line-height":   1.5,
+    "border-radius": .3125rem
+  ),
+  "xlarge": (
+    "padding-y":     .75rem,
+    "padding-x":     1.5rem,
+    "font-size":     1.5rem,
+    "line-height":   1.5,
+    "border-radius": .3125rem
+  )
 );
 {% endcapture %}
 {% renderHighlight example, "sass" %}

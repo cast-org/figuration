@@ -628,6 +628,20 @@ h4 > code {
   right: 0 /*rtl:ignore*/;
 }
 
+.palette {
+  margin-bottom: 1rem;
+}
+
+.palette-base,
+.palette-item {
+  padding: .5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.palette-base {
+  margin-bottom: .25rem;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   font-family: Consolas, "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
@@ -780,6 +794,10 @@ pre[class*="language-"] {
   }
 }
 
+.cf-example > .form-control + .form-control {
+  margin-top: .5rem;
+}
+
 .cf-example-bottom {
   margin-bottom: 1rem;
   border-bottom-right-radius: 0.25rem;
@@ -809,6 +827,65 @@ pre[class*="language-"] {
 .cf-example-row-flex-v .row {
   height: 7rem;
   border: 1px solid rgba(34, 68, 102, 0.5);
+}
+
+.example-container {
+  width: 800px;
+  width: 100%;
+  max-width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.example-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -1rem;
+  margin-left: -1rem;
+}
+
+.example-content-main {
+  position: relative;
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+@media (min-width: 36em) {
+  .example-content-main {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 62em) {
+  .example-content-main {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+}
+
+.example-content-secondary {
+  position: relative;
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+@media (min-width: 36em) {
+  .example-content-secondary {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 62em) {
+  .example-content-secondary {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
 }
 
 .cf-callout {
