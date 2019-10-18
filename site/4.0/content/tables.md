@@ -1128,27 +1128,27 @@ Responsive variants are:
 
 {% capture highlight %}
 <div class="table-scroll-xs">
-    <table class="table table-bordered">
-        ...
-    </table>
+  <table class="table table-bordered">
+    ...
+  </table>
 </div>
 
 <div class="table-scroll-sm">
-    <table class="table table-bordered">
-        ...
-    </table>
+  <table class="table table-bordered">
+    ...
+  </table>
 </div>
 
 <div class="table-scroll-md">
-    <table class="table table-bordered">
-        ...
-    </table>
+  <table class="table table-bordered">
+    ...
+  </table>
 </div>
 
 <div class="table-scroll-lg">
-    <table class="table table-bordered">
-        ...
-    </table>
+  <table class="table table-bordered">
+    ...
+  </table>
 </div>
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
@@ -1380,60 +1380,60 @@ All cells use `border-left` for their vertical ones, unless they are the last on
 Use contextual classes to color table rows or individual cells.
 
 <div class="cf-example">
-    <table class="table table-bordered">
-        <tbody>
-            <tr>
-                <th scope="row">Default</th>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr class="table-active">
-                <th scope="row">Active</th>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr class="table-primary">
-                <th scope="row">Primary</th>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr class="table-secondary">
-                <th scope="row">Secondary</th>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr class="table-success">
-                <th scope="row">Success</th>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr class="table-info">
-                <th scope="row">Info</th>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr class="table-warning">
-                <th scope="row">Warning</th>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr class="table-danger">
-                <th scope="row">Danger</th>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr class="table-light">
-                <th scope="row">Light</th>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr class="table-dark">
-                <th scope="row">Dark</th>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th scope="row">Default</th>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr class="table-active">
+        <th scope="row">Active</th>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr class="table-primary">
+        <th scope="row">Primary</th>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr class="table-secondary">
+        <th scope="row">Secondary</th>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr class="table-success">
+        <th scope="row">Success</th>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr class="table-info">
+        <th scope="row">Info</th>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr class="table-warning">
+        <th scope="row">Warning</th>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr class="table-danger">
+        <th scope="row">Danger</th>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr class="table-light">
+        <th scope="row">Light</th>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr class="table-dark">
+        <th scope="row">Dark</th>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 {% capture highlight %}
@@ -1911,7 +1911,7 @@ Build a color variant to be applied to a table row, `<tr>`, element.
         <td>string</td>
         <td><code>''</code></td>
         <td>
-            The value appended to generate the class <code>.table-#{$state}</code>.
+          The value appended to generate the class <code>.table-#{$state}</code>.
         </td>
       </tr>
       <tr>
@@ -1919,7 +1919,7 @@ Build a color variant to be applied to a table row, `<tr>`, element.
         <td>string</td>
         <td><code>none</code></td>
         <td>
-            Background color for a table row and it's direct <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> cells.
+          Background color for a table row and it's direct <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> cells.
         </td>
       </tr>
       <tr>
@@ -1927,7 +1927,7 @@ Build a color variant to be applied to a table row, `<tr>`, element.
         <td>string</td>
         <td><code>none</code></td>
         <td>
-            Hover activated background color for a table row and it's direct <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> cells, when used in a table with <code>.table-hover</code>.
+          Hover activated background color for a table row and it's direct <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> cells, when used in a table with <code>.table-hover</code>.
         </td>
       </tr>
     </tbody>

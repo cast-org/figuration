@@ -14,46 +14,46 @@ ${toc}
 Here are the names and base color values for the color themes used throughout Figuration.  These colors are used to expand into a palette style color system, as seen below.
 
 <div class="row text-black">
-     <div class="palette col-sm-6 col-md-4">
-        <div class="palette-base bg-primary text-white">
-            primary
-        </div>
+  <div class="palette col-sm-6 col-md-4">
+    <div class="palette-base bg-primary text-white">
+        primary
     </div>
-    <div class="palette col-sm-6 col-md-4">
-        <div class="palette-base bg-secondary text-white">
-            secondary
-        </div>
+  </div>
+  <div class="palette col-sm-6 col-md-4">
+    <div class="palette-base bg-secondary text-white">
+        secondary
     </div>
-    <div class="palette col-sm-6 col-md-4">
-        <div class="palette-base bg-success">
-            success
-        </div>
+  </div>
+  <div class="palette col-sm-6 col-md-4">
+    <div class="palette-base bg-success">
+        success
     </div>
-    <div class="palette col-sm-6 col-md-4">
-        <div class="palette-base bg-info text-white">
-            info
-        </div>
+  </div>
+  <div class="palette col-sm-6 col-md-4">
+    <div class="palette-base bg-info text-white">
+        info
     </div>
-    <div class="palette col-sm-6 col-md-4">
-        <div class="palette-base bg-warning">
-            warning
-        </div>
+  </div>
+  <div class="palette col-sm-6 col-md-4">
+    <div class="palette-base bg-warning">
+        warning
     </div>
-    <div class="palette col-sm-6 col-md-4">
-        <div class="palette-base bg-danger text-white">
-            danger
-        </div>
+  </div>
+  <div class="palette col-sm-6 col-md-4">
+    <div class="palette-base bg-danger text-white">
+        danger
     </div>
-    <div class="palette col-sm-6 col-md-4">
-        <div class="palette-base bg-light">
-            light
-        </div>
+  </div>
+  <div class="palette col-sm-6 col-md-4">
+    <div class="palette-base bg-light">
+        light
     </div>
-    <div class="palette col-sm-6 col-md-4">
-        <div class="palette-base bg-dark text-white">
-            dark
-        </div>
+  </div>
+  <div class="palette col-sm-6 col-md-4">
+    <div class="palette-base bg-dark text-white">
+        dark
     </div>
+  </div>
 </div>
 
 The pre-defined color variables are available when building your own components.
@@ -226,34 +226,34 @@ palette($color, $level)
 {% renderHighlight highlight, "sass" %}
 
 <div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th style="width: 100px;">Argument</th>
-                <th style="width: 50px;">Type</th>
-                <th style="width: 50px;">Default</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>$color</code></td>
-                <td>string</td>
-                <td><code>''</code></td>
-                <td>
-                    The base color to mix against.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$level</code></td>
-                <td>integer</td>
-                <td><code>500</code></td>
-                <td>
-                     Valid levels are integer values 0-1000, with 0 being the lightest, 1000 being the darkest, 500 results in an unchanged color. Special values: level < 0 = <code>#fff</code>, level > 1000 = <code>#000</code>.
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 100px;">Argument</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>$color</code></td>
+        <td>string</td>
+        <td><code>''</code></td>
+        <td>
+          The base color to mix against.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$level</code></td>
+        <td>integer</td>
+        <td><code>500</code></td>
+        <td>
+           Valid levels are integer values 0-1000, with 0 being the lightest, 1000 being the darkest, 500 results in an unchanged color. Special values: level < 0 = <code>#fff</code>, level > 1000 = <code>#000</code>.
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 Sample usage within SASS:
@@ -274,47 +274,47 @@ Figuration includes a handful of color contrast functions based the [WCAG 2.1 mi
 Returns either a light (`#fff`) or dark (`#262d34`) color compared against a given one based on the minimum contrast ratio setting.
 
 {% capture highlight %}
-color-contrast($color, $light: $color-contrast-base-light, $dark: $color-contrast-base-dark)
+color-contrast($color, $light: $color-contrast-base-light, $dark: $color-contrast-base-dark);
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 
 <div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th style="width: 100px;">Argument</th>
-                <th style="width: 50px;">Type</th>
-                <th style="width: 50px;">Default</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>$color</code></td>
-                <td>string</td>
-                <td><code>''</code></td>
-                <td>
-                    The base color to compare against.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$light</code></td>
-                <td>string</td>
-                <td><code>$color-contrast-base-light</code></td>
-                <td>
-                    Light color to use for auto-determination result.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$dark</code></td>
-                <td>string</td>
-                <td><code>$color-contrast-base-dark</code></td>
-                <td>
-                    Dark color to use for auto-determination result.
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 100px;">Argument</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>$color</code></td>
+        <td>string</td>
+        <td><code>''</code></td>
+        <td>
+          The base color to compare against.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$light</code></td>
+        <td>string</td>
+        <td><code>$color-contrast-base-light</code></td>
+        <td>
+          Light color to use for auto-determination result.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$dark</code></td>
+        <td>string</td>
+        <td><code>$color-contrast-base-dark</code></td>
+        <td>
+          Dark color to use for auto-determination result.
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 ### color-max-contrast()
@@ -322,31 +322,31 @@ color-contrast($color, $light: $color-contrast-base-light, $dark: $color-contras
 Returns either white (`#fff`) or black (`#000`) depending on which color has the maximum contrast ratio based against the given color.
 
 {% capture highlight %}
-color-max-contrast($color)
+color-max-contrast($color);
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 
 <div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th style="width: 100px;">Argument</th>
-                <th style="width: 50px;">Type</th>
-                <th style="width: 50px;">Default</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>$color</code></td>
-                <td>string</td>
-                <td><code>''</code></td>
-                <td>
-                    The base color to compare against.
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 100px;">Argument</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>$color</code></td>
+        <td>string</td>
+        <td><code>''</code></td>
+        <td>
+          The base color to compare against.
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 ### color-auto-contrast()
@@ -354,47 +354,47 @@ color-max-contrast($color)
 Check to see if the defined light (`#fff`) or dark (`#262d34`) color meet minimum contrast against a given color.  If neither meet minumum contrast, then return white or black depending on the best contrast ratio.
 
 {% capture highlight %}
-color-auto-contrast($color, $light: $color-contrast-base-light, $dark: $color-contrast-base-dark)
+color-auto-contrast($color, $light: $color-contrast-base-light, $dark: $color-contrast-base-dark);
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 
 <div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th style="width: 100px;">Argument</th>
-                <th style="width: 50px;">Type</th>
-                <th style="width: 50px;">Default</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>$color</code></td>
-                <td>string</td>
-                <td><code>''</code></td>
-                <td>
-                    The base color to compare against.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$light</code></td>
-                <td>string</td>
-                <td><code>$color-contrast-base-light</code></td>
-                <td>
-                    Light color to use for auto-determination result.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$dark</code></td>
-                <td>string</td>
-                <td><code>$color-contrast-base-dark</code></td>
-                <td>
-                    Dark color to use for auto-determination result.
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 100px;">Argument</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>$color</code></td>
+        <td>string</td>
+        <td><code>''</code></td>
+        <td>
+          The base color to compare against.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$light</code></td>
+        <td>string</td>
+        <td><code>$color-contrast-base-light</code></td>
+        <td>
+          Light color to use for auto-determination result.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$dark</code></td>
+        <td>string</td>
+        <td><code>$color-contrast-base-dark</code></td>
+        <td>
+          Dark color to use for auto-determination result.
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 ### color-if-contrast()
@@ -404,55 +404,55 @@ Compare a foreground color against a background color.  Returns the foreground c
 Check to see if the defined light (`#fff`) or dark (`#262d34`) color meet minimum contrast against a given color.  If neither meet minumum contrast, then return white or black depending on the best contrast ratio.
 
 {% capture highlight %}
-color-if-contrast($colorfore, $colorback, $light: $color-contrast-base-light, $dark: $color-contrast-base-dark) {
+color-if-contrast($colorfore, $colorback, $light: $color-contrast-base-light, $dark: $color-contrast-base-dark);
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 
 <div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th style="width: 100px;">Argument</th>
-                <th style="width: 50px;">Type</th>
-                <th style="width: 50px;">Default</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>$colorfore</code></td>
-                <td>string</td>
-                <td><code>''</code></td>
-                <td>
-                    Foreground color to use in comparison.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$colorback</code></td>
-                <td>string</td>
-                <td><code>''</code></td>
-                <td>
-                    Background color to use in comparison.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$light</code></td>
-                <td>string</td>
-                <td><code>$color-contrast-base-light</code></td>
-                <td>
-                    Light color to use for auto-determination result.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$dark</code></td>
-                <td>string</td>
-                <td><code>$color-contrast-base-dark</code></td>
-                <td>
-                    Dark color to use for auto-determination result.
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 100px;">Argument</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>$colorfore</code></td>
+        <td>string</td>
+        <td><code>''</code></td>
+        <td>
+          Foreground color to use in comparison.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$colorback</code></td>
+        <td>string</td>
+        <td><code>''</code></td>
+        <td>
+          Background color to use in comparison.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$light</code></td>
+        <td>string</td>
+        <td><code>$color-contrast-base-light</code></td>
+        <td>
+          Light color to use for auto-determination result.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$dark</code></td>
+        <td>string</td>
+        <td><code>$color-contrast-base-dark</code></td>
+        <td>
+          Dark color to use for auto-determination result.
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 ## Adjusting Themes
@@ -477,39 +477,39 @@ You can mix your own theme by using the
 _mix-context-colors($colors, $levels)
 
 {% capture highlight %}
-_mix-context-colors($colors, $levels)
+_mix-context-colors($colors, $levels);
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 
 <div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th style="width: 100px;">Argument</th>
-                <th style="width: 50px;">Type</th>
-                <th style="width: 50px;">Default</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>$color</code></td>
-                <td>string</td>
-                <td><code>''</code></td>
-                <td>
-                    The base color to mix with.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$levels</code></td>
-                <td>map</td>
-                <td><code>''</code></td>
-                <td>
-                Palette levels for each state of a contextual element.  Refer to the <code>$level-control</code> variable for the map specifications.
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 100px;">Argument</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>$color</code></td>
+        <td>string</td>
+        <td><code>''</code></td>
+        <td>
+            The base color to mix with.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$levels</code></td>
+        <td>map</td>
+        <td><code>''</code></td>
+        <td>
+          Palette levels for each state of a contextual element.  Refer to the <code>$level-control</code> variable for the map specifications.
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 {% capture highlight %}
@@ -538,18 +538,18 @@ You can also add a color map without using the color mixing function, allowing f
 {% capture highlight %}
 // Adding a custom theme
 $custom-theme: (
-    "purple": (
-        "base":                 #990099,
-        "bg":                   #990099,
-        "color":                #fff,
-        "border-color":         #800080,
-        "hover-bg":             #770077,
-        "hover-color":          #fff,
-        "hover-border-color":   #660066,
-        "active-bg":            #ffb3ff,
-        "active-color":         #990099,
-        "active-border-color":  #ff29ff
-    );
+  "purple": (
+    "base":                 #990099,
+    "bg":                   #990099,
+    "color":                #fff,
+    "border-color":         #800080,
+    "hover-bg":             #770077,
+    "hover-color":          #fff,
+    "hover-border-color":   #660066,
+    "active-bg":            #ffb3ff,
+    "active-color":         #990099,
+    "active-border-color":  #ff29ff
+  );
 );
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
@@ -603,44 +603,44 @@ $btn-themes: map-remove('warning', 'light', 'dark');
 The available [Customization options]({{ site.path }}/{{ version.docs }}/get-started/options/), or Sass variables, that can be customized for colors.
 
 <div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th style="width: 100px;">Name</th>
-                <th style="width: 50px;">Type</th>
-                <th style="width: 50px;">Default</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>$palette-levels</code></td>
-                <td>string</td>
-                <td><code>50 100 200 300 400 500 600 700 800 900</code></td>
-                <td>
-                    Levels used to generate colors within the palettes.  Valid levels are integer values 0-1000, with 0 being the lightest, 1000 being the darkest, 500 results in an unchanged color.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$palette-interval-light</code></td>
-                <td>percentage</td>
-                <td><code>.2%</code></td>
-                <td>
-                    The percentage per palette level, less than 500, used to <a href="https://sass-lang.com/documentation/functions/color#mix">mix</a> a color against pure white (<code>#fff</code>).
-                </td>
-            </tr>
-            <tr>
-                <td><code>$palette-interval-dark</code></td>
-                <td>percentage</td>
-                <td><code>.15%</code></td>
-                <td>
-                    The percentage per palette level used, greater than 500, to <a href="https://sass-lang.com/documentation/functions/color#mix">mix</a> a color against pure black (<code>#000</code>).
-                </td>
-            </tr>
-            <tr>
-                <td><code>$level-control</code></td>
-                <td>string</td>
-                <td>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>$palette-levels</code></td>
+        <td>string</td>
+        <td><code>50 100 200 300 400 500 600 700 800 900</code></td>
+        <td>
+          Levels used to generate colors within the palettes.  Valid levels are integer values 0-1000, with 0 being the lightest, 1000 being the darkest, 500 results in an unchanged color.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$palette-interval-light</code></td>
+        <td>percentage</td>
+        <td><code>.2%</code></td>
+        <td>
+          The percentage per palette level, less than 500, used to <a href="https://sass-lang.com/documentation/functions/color#mix">mix</a> a color against pure white (<code>#fff</code>).
+        </td>
+      </tr>
+      <tr>
+        <td><code>$palette-interval-dark</code></td>
+        <td>percentage</td>
+        <td><code>.15%</code></td>
+        <td>
+          The percentage per palette level used, greater than 500, to <a href="https://sass-lang.com/documentation/functions/color#mix">mix</a> a color against pure black (<code>#000</code>).
+        </td>
+      </tr>
+      <tr>
+        <td><code>$level-control</code></td>
+        <td>string</td>
+        <td>
 <code><pre>("bg": 500,
 "color": -1,
 "border-color": 600,
@@ -650,16 +650,16 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
 "active-bg": 700,
 "active-color": -1,
 "active-border-color": 700)</pre></code>
-                </td>
-                <td>
-                    <p>Palette levels for use in _mix-context-colors() to determine standardized color mapping for control items, such as buttons.</p>
-                    <p>Special values: level < 0 = <code>#fff</code>, level > 1000 = <code>#000</code>.</p>
-                </td>
-            </tr>
-            <tr>
-                <td><code>$level-context</code></td>
-                <td>string</td>
-                <td>
+        </td>
+        <td>
+          <p>Palette levels for use in _mix-context-colors() to determine standardized color mapping for control items, such as buttons.</p>
+          <p>Special values: level < 0 = <code>#fff</code>, level > 1000 = <code>#000</code>.</p>
+        </td>
+      </tr>
+      <tr>
+        <td><code>$level-context</code></td>
+        <td>string</td>
+        <td>
 <code><pre>("bg": 100,
 "color": 800,
 "border-color": 200,
@@ -669,24 +669,24 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
 "active-bg": 300,
 "active-color": 900,
 "active-border-color":300)</pre></code>
-                </td>
-                <td>
-                    <p>Palette levels for use in _mix-context-colors() to determine standardized color mapping for contextual items, such as alerts, lists, and tables.</p>
-                    <p>Special values: level < 0 = <code>#fff</code>, level > 1000 = <code>#000</code>.</p>
-                </td>
-            </tr>
-            <tr>
-                <td><code>$level-delta-hover-color</code></td>
-                <td>integer</td>
-                <td><code>100</code></td>
-                <td>
-                    Increase (or decrease with negative number) to alter color for the hover state of <code>.text-{color}-(palette-level}</code> utility classes.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$base-colors</code></td>
-                <td>string</td>
-                <td>
+        </td>
+        <td>
+          <p>Palette levels for use in _mix-context-colors() to determine standardized color mapping for contextual items, such as alerts, lists, and tables.</p>
+          <p>Special values: level < 0 = <code>#fff</code>, level > 1000 = <code>#000</code>.</p>
+        </td>
+      </tr>
+      <tr>
+        <td><code>$level-delta-hover-color</code></td>
+        <td>integer</td>
+        <td><code>100</code></td>
+        <td>
+          Increase (or decrease with negative number) to alter color for the hover state of <code>.text-{color}-(palette-level}</code> utility classes.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$base-colors</code></td>
+        <td>string</td>
+        <td>
 <code><pre>("primary": $primary,
 "secondary": $secondary,
 "info": $info,
@@ -695,15 +695,15 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
 "danger": $danger,
 "light": $light,
 "dark": $dark)</pre></code>
-                </td>
-                <td>
-                    Base color map used to generate the control and contextual variants.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$palette-colors</code></td>
-                <td>string</td>
-                <td>
+        </td>
+        <td>
+          Base color map used to generate the control and contextual variants.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$palette-colors</code></td>
+        <td>string</td>
+        <td>
 <code><pre>("uibase": $uibase,
 "primary": $primary,
 "secondary": $secondary,
@@ -712,46 +712,46 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
 "warning": $warning,
 "danger": $danger,
 "gray": $gray)</pre></code>
-                </td>
-                <td>
-                    Base color map used to generate the palette utility variants.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$root-colors</code></td>
-                <td>map</td>
-                <td><code> map-merge($base-colors, $palette-colors)</code></td>
-                <td>
-                    Colors to output as CSS variables.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$color-contrast-min-ratio</code></td>
-                <td>float</td>
-                <td><code>4.5</code></td>
-                <td>
-                    Minimum contrast ratio to use in Figuration's color contrast SASS functions.
-                    <code>4.5</code> is the <a href="https://www.w3.org/TR/WCAG21/#contrast-minimum">WCAG 2.1 level AA specification for contrast</a>.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$color-contrast-base-light</code></td>
-                <td>string</td>
-                <td><code>$white</code></td>
-                <td>
-                    Default light color to be used with the color contrast functions.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$color-contrast-base-dark</code></td>
-                <td>string</td>
-                <td><code>$uibase-900</code></td>
-                <td>
-                    Default dark color to be used with the color contrast functions.
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        </td>
+        <td>
+          Base color map used to generate the palette utility variants.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$root-colors</code></td>
+        <td>map</td>
+        <td><code> map-merge($base-colors, $palette-colors)</code></td>
+        <td>
+          Colors to output as CSS variables.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$color-contrast-min-ratio</code></td>
+        <td>float</td>
+        <td><code>4.5</code></td>
+        <td>
+          Minimum contrast ratio to use in Figuration's color contrast SASS functions.
+          <code>4.5</code> is the <a href="https://www.w3.org/TR/WCAG21/#contrast-minimum">WCAG 2.1 level AA specification for contrast</a>.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$color-contrast-base-light</code></td>
+        <td>string</td>
+        <td><code>$white</code></td>
+        <td>
+          Default light color to be used with the color contrast functions.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$color-contrast-base-dark</code></td>
+        <td>string</td>
+        <td><code>$uibase-900</code></td>
+        <td>
+          Default dark color to be used with the color contrast functions.
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 ### Mixins

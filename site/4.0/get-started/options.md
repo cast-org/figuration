@@ -13,7 +13,7 @@ ${toc}
 
 Whenever possible, avoid modifying Figurations's core files. For Sass, that means creating your own stylesheet that imports Figuration so you can modify and extend it. Assuming you've downloaded our source files or are using a package manager, you'll have a file structure that looks like this:
 
-{% capture example %}
+{% capture highlight %}
 your-project/
 +-- scss
 |   +-- custom.scss
@@ -22,11 +22,11 @@ your-project/
         +-- js
         +-- scss
 {% endcapture %}
-{% renderHighlight example, "text" %}
+{% renderHighlight highlight, "text" %}
 
 If you are using a download version of our source files, you may need to manually setup something similar to that structure, keeping Figuration's source files separate from your own.
 
-{% capture example %}
+{% capture highlight %}
 your-project/
 +-- scss
 |   +-- custom.scss
@@ -34,13 +34,13 @@ your-project/
     +-- js
     +-- scss
 {% endcapture %}
-{% renderHighlight example, "text" %}
+{% renderHighlight highlight, "text" %}
 
 ## Importing
 
 In your `custom.scss`, you will import Figuration's source Sass files. Our recommended structure is to pick the parts you need, but you can include everything if desired. Be aware there are some requirements and dependencies across our components, so you may need to include slightly more than you need. Some of our components will also need have our JavaScript included in order to become interactive.
 
-{% capture example %}
+{% capture highlight %}
 // custom.scss
 // Recommended structure for importing Figuration into your
 // project allowing for use of Figuration's Sass functions
@@ -70,7 +70,7 @@ In your `custom.scss`, you will import Figuration's source Sass files. Our recom
 @import "../node_modules/figuration/scss/grid";
 ...
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 With that setup in place, you can begin to modify any of the Sass variables and maps in your `custom.scss`. You can also start to add parts of Figuration under the `// Optional` section as needed.
 
@@ -84,7 +84,7 @@ Variable overrides within the same Sass file can come before or after the defaul
 
 Here's an example that changes the `background-color` and `color` for the `<body>` when importing and compiling Figuration via grunt:
 
-{% capture example %}
+{% capture highlight %}
 // Required - functions
 @import "../node_modules/figuration/scss/functions";
 
@@ -101,7 +101,7 @@ $body-color: #fff;
 @import "../node_modules/figuration/scss/typography";
 ...
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 Repeat as necessary for any variable in Figuration, including the global options below.
 
@@ -119,24 +119,24 @@ Some of our Sass maps are merged into empty ones by default. This is done to all
 
 Change a pre-defined color in the `$base-colors` map, by adding the following to your custom Sass file:
 
-{% capture example %}
+{% capture highlight %}
 $base-colors: (
   "primary": #004dd1,
   "danger": #bb1f11
 );
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 ### Adding to a Map
 
 To add another color option to `$base-colors`, add a new key-value pair.
 
-{% capture example %}
+{% capture highlight %}
 $base-colors: (
   "new-color": #990099
 );
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 ### Removing from a Map
 
@@ -146,7 +146,7 @@ However, you will need to insert this setting after the *Required* sections and 
 
 Also note, that each component will inherit the `$base-colors` map, unless previously overridden, before the removal occurs.  This means is you may need to remove the colors again for each component where desired.
 
-{% capture example %}
+{% capture highlight %}
 // Required - functions
 @import "../node_modules/figuration/scss/functions";
 
@@ -163,84 +163,84 @@ $btn-colors: map-remove($btn-colors, "warning", "light", "dark");
 @import "../node_modules/figuration/scss/typography";
 ...
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 ## Global Options
 
 You can find and customize these variables for key global options in our `_settings.scss` file.
 
 <div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Variable</th>
-                <th>Values</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>$spacer</code></td>
-                <td><code>1rem</code> (default), or any value > 0</td>
-                <td>Specifies the default spacer value used to programmatically generate the <a href="{{ site.path }}/{{ version.docs }}/utilities/spacing/">Spacing utilities</a>.</td>
-            </tr>
-            <tr>
-                <td><code>$enable-rounded</code></td>
-                <td><code>true</code> (default) or <code>false</code></td>
-                <td>Enables predefined <code>border-radius</code> styles on various components.</td>
-            </tr>
-            <tr>
-                <td><code>$enable-shadows</code></td>
-                <td><code>true</code> or <code>false</code> (default)</td>
-                <td>Enables predefined <code>box-shadow</code> styles on various components.</td>
-            </tr>
-            <tr>
-                <td><code>$enable-transitions</code></td>
-                <td><code>true</code> (default) or <code>false</code></td>
-                <td>Enables predefined <code>transition</code>s on various components.</td>
-            </tr>
-            <tr>
-                <td><code>$enable-transitions-reduced</code></td>
-                <td><code>true</code> (default) or <code>false</code></td>
-                <td>Enables the generation of <a href="{{ site.path }}/{{ version.docs }}/get-started/accessibility/#reduced-motion"><code>prefers-reduced-motion</code> media query</a>, which suppresses certain animations/transitions based on the users' browser/operating system preferences.</td>
-            </tr>
-            <tr>
-                <td><code>$enable-grid-classes</code></td>
-                <td><code>true</code> (default) or <code>false</code></td>
-                <td>Enables the generation of CSS classes for the grid system (e.g. <code>.container</code>, <code>.row</code>, <code>.col-md-1</code>, etc.).</td>
-            </tr>
-            <tr>
-                <td><code>$enable-print-styles</code></td>
-                <td><code>true</code> (default) or <code>false</code></td>
-                <td>Enables predefined style overrides used when printing.</td>
-            </tr>
-            <tr>
-                <td><code>$enable-palette</code></td>
-                <td><code>true</code> (default) or <code>false</code></td>
-                <td>Enables the generation of CSS classes for the palette color themes (e.g. <code>.text-blue-500</code>, etc.).</td>
-            </tr>
-            <tr>
-                <td><code>$enable-sizing</code></td>
-                <td><code>true</code> (default) or <code>false</code></td>
-                <td>Enables the generation of CSS classes for component sizes, and also for some utilites. (e.g. <code>.btn-small</code>, <code>.radius-t-xsmall</code>, etc.).</td>
-            </tr>
-            <tr>
-                <td><code>$enable-bp-smallest</code></td>
-                <td><code>true</code> or <code>false</code> (default)</td>
-                <td>Enables the generation of CSS classes for breakpoint sizes that include the smallest breakpoint designator. (e.g. <code>.col-xs-12</code>).  Also refer to the <a href="{{ site.path }}/{{ version.docs }}/layout/overview/#breakpoint-nomenclature">Breakpoint Nomenclature</a> section.</td>
-            </tr>
-            <tr>
-                <td><code>$enable-rfs-fluid</code></td>
-                <td><code>true</code> or <code>false</code> (default)</td>
-                <td>Enables the *fluid* Responsive typography option, , which fluidly scales element's <code>font-size</code> based on the dimensions of the viewport.  See the <a href="{{ site.path }}/{{ version.docs }}/content/typography/#responsive-typography">Responsive Typography</a> section for more details.</td>
-            </tr>
-            <tr>
-                <td><code>$enable-rfs-scale</code></td>
-                <td><code>true</code> or <code>false</code> (default)</td>
-                <td>Enables the *scaled* Responsive typography option, which scales element's <code>font-size</code> on a per breakpoint basis.  See the <a href="{{ site.path }}/{{ version.docs }}/content/typography/#responsive-typography">Responsive Typography</a> section for more details.</td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Variable</th>
+        <th>Values</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>$spacer</code></td>
+        <td><code>1rem</code> (default), or any value > 0</td>
+        <td>Specifies the default spacer value used to programmatically generate the <a href="{{ site.path }}/{{ version.docs }}/utilities/spacing/">Spacing utilities</a>.</td>
+      </tr>
+      <tr>
+        <td><code>$enable-rounded</code></td>
+        <td><code>true</code> (default) or <code>false</code></td>
+        <td>Enables predefined <code>border-radius</code> styles on various components.</td>
+      </tr>
+      <tr>
+        <td><code>$enable-shadows</code></td>
+        <td><code>true</code> or <code>false</code> (default)</td>
+        <td>Enables predefined <code>box-shadow</code> styles on various components.</td>
+      </tr>
+      <tr>
+        <td><code>$enable-transitions</code></td>
+        <td><code>true</code> (default) or <code>false</code></td>
+        <td>Enables predefined <code>transition</code>s on various components.</td>
+      </tr>
+      <tr>
+        <td><code>$enable-transitions-reduced</code></td>
+        <td><code>true</code> (default) or <code>false</code></td>
+        <td>Enables the generation of <a href="{{ site.path }}/{{ version.docs }}/get-started/accessibility/#reduced-motion"><code>prefers-reduced-motion</code> media query</a>, which suppresses certain animations/transitions based on the users' browser/operating system preferences.</td>
+      </tr>
+      <tr>
+        <td><code>$enable-grid-classes</code></td>
+        <td><code>true</code> (default) or <code>false</code></td>
+        <td>Enables the generation of CSS classes for the grid system (e.g. <code>.container</code>, <code>.row</code>, <code>.col-md-1</code>, etc.).</td>
+      </tr>
+      <tr>
+        <td><code>$enable-print-styles</code></td>
+        <td><code>true</code> (default) or <code>false</code></td>
+        <td>Enables predefined style overrides used when printing.</td>
+      </tr>
+      <tr>
+        <td><code>$enable-palette</code></td>
+        <td><code>true</code> (default) or <code>false</code></td>
+        <td>Enables the generation of CSS classes for the palette color themes (e.g. <code>.text-blue-500</code>, etc.).</td>
+      </tr>
+      <tr>
+        <td><code>$enable-sizing</code></td>
+        <td><code>true</code> (default) or <code>false</code></td>
+        <td>Enables the generation of CSS classes for component sizes, and also for some utilites. (e.g. <code>.btn-small</code>, <code>.radius-t-xsmall</code>, etc.).</td>
+      </tr>
+      <tr>
+        <td><code>$enable-bp-smallest</code></td>
+        <td><code>true</code> or <code>false</code> (default)</td>
+        <td>Enables the generation of CSS classes for breakpoint sizes that include the smallest breakpoint designator. (e.g. <code>.col-xs-12</code>).  Also refer to the <a href="{{ site.path }}/{{ version.docs }}/layout/overview/#breakpoint-nomenclature">Breakpoint Nomenclature</a> section.</td>
+      </tr>
+      <tr>
+        <td><code>$enable-rfs-fluid</code></td>
+        <td><code>true</code> or <code>false</code> (default)</td>
+        <td>Enables the *fluid* Responsive typography option, , which fluidly scales element's <code>font-size</code> based on the dimensions of the viewport.  See the <a href="{{ site.path }}/{{ version.docs }}/content/typography/#responsive-typography">Responsive Typography</a> section for more details.</td>
+      </tr>
+      <tr>
+        <td><code>$enable-rfs-scale</code></td>
+        <td><code>true</code> or <code>false</code> (default)</td>
+        <td>Enables the *scaled* Responsive typography option, which scales element's <code>font-size</code> on a per breakpoint basis.  See the <a href="{{ site.path }}/{{ version.docs }}/content/typography/#responsive-typography">Responsive Typography</a> section for more details.</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 There are additional options in our `_settings_options.scss` that can be used to optionally disable the CSS generation for certain sets, or subsets, of components and utilities.  More information about these setting options can be found on the respective pages for each component and utility.
 
@@ -258,7 +258,7 @@ You can modify, remove, or add additional sizes, beyond the default sizing, by r
 
 Below is the default additional settings for reference.
 
-{% capture example %}
+{% capture highlight %}
 // Used for button, button groups, pagination, form-control, and input-group
 $component-sizes: (
   "xsmall": (
@@ -291,11 +291,11 @@ $component-sizes: (
   )
 );
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 If you wish to have more concise control over components, you can always force the sizing values to fit your needs.
 
-{% capture example %}
+{% capture highlight %}
 // Used for button, button groups, pagination, form-control, and input-group
 $component-sizes: (
   "xsmall": (
@@ -328,16 +328,16 @@ $component-sizes: (
   )
 );
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 ## Encoding SVG
 
 An `encode-svg` function is available in our SASS to encode the `<`, `>` and `#` characters for SVG images provided through data URLs. These characters need to be encoded to properly render the background images in some browsers, such as IE.
 
-{% capture example %}
+{% capture highlight %}
 $form-checkradio-radio-icon: encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle fill='#{$form-checkradio-checked-color}' r='3'/></svg>")) !default;
 {% endcapture %}
-{% renderHighlight example, "css" %}
+{% renderHighlight highlight, "css" %}
 
 ## CSS Variables
 
@@ -347,7 +347,7 @@ Figuration includes some [CSS custom properties (variables)](https://developer.m
 
 Here are the variables we include (note that the `:root` is required). They're located in our `_root.scss` file.
 
-{% capture example %}
+{% capture highlight %}
 :root {
   --color-primary: #0055e9;
   --color-secondary: #5e7182;
@@ -369,13 +369,13 @@ Here are the variables we include (note that the `:root` is required). They're l
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 {% endcapture %}
-{% renderHighlight example, "css" %}
+{% renderHighlight highlight, "css" %}
 
 ### Examples
 
 CSS variables offer similar flexibility to Sass's variables, but without the need for compilation before being served to the browser. For example, here we are resetting the font and link styles with CSS variables.
 
-{% capture example %}
+{% capture highlight %}
 body {
   font: 1rem/1.5 var(--font-family-sans-serif);
 }
@@ -383,7 +383,7 @@ a {
   color: var(--color-primary);
 }
 {% endcapture %}
-{% renderHighlight example, "css" %}
+{% renderHighlight highlight, "css" %}
 
 ### Breakpoint Variables
 
@@ -391,23 +391,23 @@ While breakpoints are included in the CSS variables (e.g., `--breakpoint-md`), *
 
 Here's an example of **what's not supported:**
 
-{% capture example %}
+{% capture highlight %}
 @media (min-width: var(--breakpoint-sm)) {
   ...
 }
 {% endcapture %}
-{% renderHighlight example, "css" %}
+{% renderHighlight highlight, "css" %}
 
 And here's an example of **what is supported:**
 
-{% capture example %}
+{% capture highlight %}
 @media (min-width: 48em) {
   .custom-element {
     color: var(--color-primary);
   }
 }
 {% endcapture %}
-{% renderHighlight example, "css" %}
+{% renderHighlight highlight, "css" %}
 
 ## SASS Reference
 
@@ -416,51 +416,51 @@ And here's an example of **what is supported:**
 Here are some Customization options, or Sass variables, that can be customized for generating the root CSS variables.
 
 <div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th style="width: 100px;">Name</th>
-                <th style="width: 50px;">Type</th>
-                <th style="width: 50px;">Default</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>$enable-root</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of root CSS variables.
-                    Smaller segements of the root CSS variables can be disabled with the following <code>$enable-*</code> variables.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-root-colors</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the color CSS variables.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-root-breakpoints</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the breakpoint CSS variables.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-root-fonts</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the font CSS variables.
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>$enable-root</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of root CSS variables.
+          Smaller segements of the root CSS variables can be disabled with the following <code>$enable-*</code> variables.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-root-colors</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the color CSS variables.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-root-breakpoints</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the breakpoint CSS variables.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-root-fonts</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the font CSS variables.
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 ### Mixins

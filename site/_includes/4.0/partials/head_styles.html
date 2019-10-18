@@ -1,13 +1,13 @@
 <!-- Font CSS -->
 {% if site.environment == "production" -%}
-  <link href="{{ site.cdn.fontawe }}" integrity="{{ site.cdn.fontawe_hash }}" crossorigin="anonymous" rel="stylesheet" property="stylesheet">
+<link href="{{ site.cdn.fontawe }}" integrity="{{ site.cdn.fontawe_hash }}" crossorigin="anonymous" rel="stylesheet" property="stylesheet">
 {% else -%}
-  <link href="{{ site.path }}/assets{{ pathVersion }}/fonts/fontawesome/css/all.min.css" rel="stylesheet" property="stylesheet">
+<link href="{{ site.path }}/assets{{ pathVersion }}/fonts/fontawesome/css/all.min.css" rel="stylesheet" property="stylesheet">
 {% endif %}
 
 <!-- Algolia DocSearch CSS -->
 {% if site.environment == "production" -%}
- <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
 {% endif -%}
 
 <!-- Figuration CSS -->

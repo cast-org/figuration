@@ -18,42 +18,42 @@ While containers *can* be nested, most layouts do not require a nested container
 Use `.container` for a fixed-width container with a defined `max-width` per breakpoint.
 
 <div class="cf-example">
-    <div class="container" style="min-width: 16rem; max-width: 25rem;">
-        <div class="row">
-            <div class="col-12 radius p-1 mb-0_5 bg-info-300"></div>
-            <div class="col-2 radius px-1 py-2 bg-warning-300"></div>
-            <div class="col radius px-1 py-2 mx-0_5 bg-primary-300"></div>
-            <div class="col-3 radius px-1 py-2 bg-danger-300"></div>
-        </div>
+  <div class="container" style="min-width: 16rem; max-width: 25rem;">
+    <div class="row">
+      <div class="col-12 radius p-1 mb-0_5 bg-info-300"></div>
+      <div class="col-2 radius px-1 py-2 bg-warning-300"></div>
+      <div class="col radius px-1 py-2 mx-0_5 bg-primary-300"></div>
+      <div class="col-3 radius px-1 py-2 bg-danger-300"></div>
     </div>
+  </div>
 </div>
 
-{% capture example %}
+{% capture highlight %}
 <div class="container">
   <!-- Content here -->
 </div>
 {% endcapture %}
-{% renderHighlight example, "html" %}
+{% renderHighlight highlight, "html" %}
 
 Use `.container-fluid` for a full width container, spanning the entire width of the viewport.
 
 <div class="cf-example">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 radius p-1 mb-0_5 bg-info-300"></div>
-            <div class="col-2 radius px-1 py-2 bg-warning-300"></div>
-            <div class="col radius px-1 py-2 mx-0_5 bg-primary-300"></div>
-            <div class="col-3 radius px-1 py-2 bg-danger-300"></div>
-        </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 radius p-1 mb-0_5 bg-info-300"></div>
+      <div class="col-2 radius px-1 py-2 bg-warning-300"></div>
+      <div class="col radius px-1 py-2 mx-0_5 bg-primary-300"></div>
+      <div class="col-3 radius px-1 py-2 bg-danger-300"></div>
     </div>
+  </div>
 </div>
 
-{% capture example %}
+{% capture highlight %}
 <div class="container-fluid">
   ...
 </div>
 {% endcapture %}
-{% renderHighlight example, "html" %}
+{% renderHighlight highlight, "html" %}
 
 ## Responsive Breakpoints
 
@@ -77,7 +77,7 @@ Some reference material - may be competing points of view:
 
 Figuration primarily uses the following media query ranges---or breakpoints---in our source Sass files for our layout, grid system, and components.
 
-{% capture example %}
+{% capture highlight %}
 // Extra small devices (portrait phones, less than 36em/576px)
 // No media query for `xs` since this is the default in Figuration
 
@@ -93,11 +93,11 @@ Figuration primarily uses the following media query ranges---or breakpoints---in
 // Extra large devices (large desktops, 75em/1200px and up)
 @media (min-width: 75em) { ... }
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 Since we write our source CSS in Sass, all our media queries are available via Sass mixins.
 
-{% capture example %}
+{% capture highlight %}
 // No media query needed since the `xs` breakpoint is effectively `@media (min-width: 0) { ... }`
 @include media-breakpoint-up(sm) { ... }
 @include media-breakpoint-up(md) { ... }
@@ -115,11 +115,11 @@ Since we write our source CSS in Sass, all our media queries are available via S
   }
 }
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 We occasionally use media queries that go in the other direction (the given screen size *or smaller*):
 
-{% capture example %}
+{% capture highlight %}
 // Extra small devices (portrait phones, less than 36em/576px)
 @media (max-width: 35.98em) { ... }
 
@@ -135,11 +135,11 @@ We occasionally use media queries that go in the other direction (the given scre
 // Extra large devices (large desktops)
 // No media query since the `xl` breakpoint has no upper bound on its width
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 Once again, these media queries are also available via Sass mixins:
 
-{% capture example %}
+{% capture highlight %}
 @include media-breakpoint-down(xs) { ... }
 @include media-breakpoint-down(sm) { ... }
 @include media-breakpoint-down(md) { ... }
@@ -153,11 +153,11 @@ Once again, these media queries are also available via Sass mixins:
   }
 }
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 There are also media queries and mixins for targeting a single segment of screen sizes using the minimum and maximum breakpoint widths.
 
-{% capture example %}
+{% capture highlight %}
 // Extra small devices (portrait phones, less than 36em/576px)
 @media (max-width: 35.98em) { ... }
 
@@ -173,34 +173,34 @@ There are also media queries and mixins for targeting a single segment of screen
 // Extra large devices (large desktops, 75em/1200px and up)
 @media (min-width: 75em) { ... }
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 These media queries are also available via Sass mixins:
 
-{% capture example %}
+{% capture highlight %}
 @include media-breakpoint-only(xs) { ... }
 @include media-breakpoint-only(sm) { ... }
 @include media-breakpoint-only(md) { ... }
 @include media-breakpoint-only(lg) { ... }
 @include media-breakpoint-only(xl) { ... }
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 Similarly, media queries may span multiple breakpoint widths:
 
-{% capture example %}
+{% capture highlight %}
 // Example
 // Medium devices (tablets, 48em/768px) up to Extra Large devices (desktops, 75em/1200px)
 @media (min-width: 48em) and (max-width: 74.98em) { ... }
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 The Sass mixin for targeting the same screen size range would be:
 
-{% capture example %}
+{% capture highlight %}
 @include media-breakpoint-between(md, xl) { ... }
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 ## Breakpoint Nomenclature
 
@@ -231,7 +231,7 @@ We use a defined set because of the layered components---tooltips, popovers, nav
 
 Customizing these values is most likely not needed, and we don't recommend adjusting the values.  However, if you change one, you will need to review and possibly update all of the other values.
 
-{% capture example %}
+{% capture highlight %}
 $zindex-dropdown:          1000 !default;
 $zindex-sticky:            1010 !default;
 $zindex-fixed:             1020 !default;
@@ -240,7 +240,7 @@ $zindex-tooltip:           1040 !default;
 $zindex-modal-backdrop:    1050 !default;
 $zindex-modal:             1060 !default;
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 Background elements&mdash;like the backdrops that allow click-dismissing&mdash;tend to reside on a lower `z-index`s, while navigation and popovers utilize higher `z-index`s to ensure they overlay surrounding content.  Modals get a higher z-index so they are placed above popover/tooltip items, in the case that one or more of those items is held open.
 

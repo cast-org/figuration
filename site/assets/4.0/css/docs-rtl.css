@@ -737,7 +737,7 @@ pre[class*="language-"] {
 .token.property,
 .token.regex,
 .token.inserted {
-  color: #36acaa;
+  color: #1d8250;
 }
 
 .token.atrule,
@@ -796,6 +796,80 @@ pre[class*="language-"] {
 
 .cf-example > .form-control + .form-control {
   margin-top: .5rem;
+}
+
+.cf-example > .btn-group + .btn-group,
+.cf-example > .btn-group + br + .btn-group {
+  margin-top: .5rem;
+}
+
+.cf-example > .navbar + .navbar {
+  margin-top: 1rem;
+}
+
+.cf-example .fixed-top,
+.cf-example .sticky-top {
+  position: static;
+  margin: -1rem -1rem 1rem;
+}
+
+@media (min-width: 36em) {
+  .cf-example .fixed-top,
+  .cf-example .sticky-top {
+    margin: -1.5rem -1.5rem 1rem;
+  }
+}
+
+.cf-example .fixed-bottom {
+  position: static;
+  margin: 1rem -1rem -1rem;
+}
+
+@media (min-width: 36em) {
+  .cf-example .fixed-bottom {
+    margin: 1rem -1.5rem -1.5rem;
+  }
+}
+
+.cf-example .pagination {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+.cf-example > .progress + .progress,
+.cf-example > .progress + .btn {
+  margin-top: 1rem;
+}
+
+.cf-example > .close {
+  float: none;
+}
+
+.cf-example > .valign-top,
+.cf-example > .valign-middle,
+.cf-example > .valign-bottom {
+  padding: .25em;
+  margin-bottom: .5em;
+  background-color: #f0f0f0;
+}
+
+.cf-example > .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: .25rem;
+  clear: right;
+}
+
+.cf-example > .dropdown + .dropdown,
+.cf-example > .btn-group + .btn-group,
+.cf-example > .dropdown + .btn-group,
+.cf-example > .btn-group + .dropdown {
+  margin-top: .5rem;
+}
+
+.cf-example > .modal {
+  position: static;
+  display: block;
 }
 
 .cf-example-bottom {
@@ -888,6 +962,200 @@ pre[class*="language-"] {
   }
 }
 
+.btn .example-caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  content: "";
+  border-top: 0.5rem solid transparent;
+  border-left: 0.5rem solid  #000;
+  border-bottom: 0.5rem solid transparent;
+  border-right: 0;
+}
+
+.btn:hover .example-caret, .btn:focus .example-caret {
+  border-top: 0.5rem solid transparent;
+  border-left: 0;
+  border-bottom: 0.5rem solid transparent;
+  border-right: 0.5rem solid  #000;
+}
+
+.card-deck-col {
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  margin-left: -1rem;
+  margin-bottom: 0;
+  margin-right: -1rem;
+}
+
+.card-deck-col > .card {
+  flex-basis: auto;
+  width: calc(100% - 2rem);
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+}
+
+@media (min-width: 35em) {
+  .card-deck-col > .card {
+    width: calc(50% - 2rem);
+  }
+}
+
+@media (min-width: 62em) {
+  .card-deck-col > .card {
+    width: calc(25% - 2rem);
+  }
+}
+
+.accordion > .card {
+  overflow: hidden;
+}
+
+.accordion > .card:not(:first-of-type) .card-header:first-child {
+  border-radius: 0;
+}
+
+.accordion > .card:not(:first-of-type):not(:last-of-type) {
+  border-bottom: 0;
+  border-radius: 0;
+}
+
+.accordion > .card:first-of-type:not(:last-of-type) {
+  border-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.accordion > .card:last-of-type:not(:first-of-type) {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.accordion > .card .card-header {
+  margin-bottom: -1px;
+}
+
+.cf-example-dropdown {
+  height: 19em;
+}
+
+.cf-example-dropdown > .dropdown > .dropdown-menu {
+  display: block;
+  margin-bottom: .25rem;
+  clear: right;
+}
+
+.cf-example-tooltip,
+.cf-example-popover {
+  background-color: #f0f0f0;
+}
+
+.cf-example-tooltip .tooltip,
+.cf-example-popover .popover {
+  position: relative;
+  display: block;
+  float: right;
+  width: 16rem;
+  margin: 1.25rem;
+}
+
+.cf-example-tooltip .tooltip {
+  width: auto;
+  padding: 4px;
+  margin: 1rem;
+  opacity: .9;
+}
+
+.container-viewport {
+  position: relative;
+  height: 150px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+.container-viewport .viewport-text {
+  position: absolute;
+  top: 65px;
+  right: 50px;
+  font-weight: 700;
+}
+
+.container-viewport .tooltip,
+.container-viewport .popover {
+  min-width: 250px;
+  max-width: 500px;
+}
+
+.container-viewport .tooltip .tooltip-body {
+  min-width: 250px;
+  max-width: 500px;
+  min-height: 100px;
+  text-align: right;
+}
+
+.container-viewport .btn-bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.container-viewport .btn-drag {
+  position: absolute;
+  bottom: 0;
+  right: 120px;
+}
+
+.cf-example-scrollspy {
+  position: relative;
+  height: 12rem;
+  margin-top: .5rem;
+  overflow: auto;
+}
+
+.cf-example-scrollspy2 {
+  position: relative;
+  height: 20rem;
+  margin-top: .5rem;
+  overflow: auto;
+}
+
+.cf-example-border [class^="border"] {
+  display: inline-block;
+  width: 4rem;
+  height: 4rem;
+  margin: .25rem;
+  background-color: #eff1f3;
+}
+
+.cf-example-flex .cf-example {
+  overflow: auto;
+}
+
+.cf-example-flex div {
+  background-color: rgba(34, 68, 102, 0.05);
+  border: 1px solid rgba(34, 68, 102, 0.2);
+}
+
+.breadcrumb-chevron .breadcrumb-item + .breadcrumb-item::before {
+  content: ">";
+}
+
+.breadcrumb-icon .breadcrumb-item + .breadcrumb-item::before {
+  content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik0xLjUgMGwtMS41IDEuNSAyLjUgMi41LTIuNSAyLjUgMS41IDEuNSA0LTQtNC00eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMSkiIC8+Cjwvc3ZnPg==");
+}
+
+.breadcrumb-none .breadcrumb-item + .breadcrumb-item::before {
+  content: none;
+}
+
+.has-link-stretch a:not(.link-stretch) {
+  position: relative;
+  z-index: 2;
+}
+
 .cf-callout {
   padding: 1rem;
   margin: 1rem 0;
@@ -923,7 +1191,7 @@ pre[class*="language-"] {
 .cf-callout-info .h4,
 .cf-callout-info .h5,
 .cf-callout-info .h6 {
-  color: #1680a4;
+  color: #0c465a;
 }
 
 .cf-callout-warning {
@@ -935,7 +1203,7 @@ pre[class*="language-"] {
 .cf-callout-warning .h4,
 .cf-callout-warning .h5,
 .cf-callout-warning .h6 {
-  color: #f8c223;
+  color: #886b13;
 }
 
 .cf-callout-danger {
@@ -947,7 +1215,7 @@ pre[class*="language-"] {
 .cf-callout-danger .h4,
 .cf-callout-danger .h5,
 .cf-callout-danger .h6 {
-  color: #d42314;
+  color: #75130b;
 }
 
 .cf-callout-dep > p + ul {

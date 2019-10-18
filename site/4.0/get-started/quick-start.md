@@ -19,10 +19,10 @@ Quickly add Figuration to your project by using the CDN services provided for fr
 
 Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets to load our CSS.
 
-{% capture example %}
+{% capture highlight %}
 <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
 {% endcapture %}
-{% renderHighlight example, "html" %}
+{% renderHighlight highlight, "html" %}
 
 ### JavaScript
 
@@ -30,12 +30,12 @@ Copy-paste the stylesheet `<link>` into your `<head>` before all other styleshee
 
 Our widgets work with either the full version of jQuery, or the [jQuery's slim build](https://blog.jquery.com/2016/06/09/jquery-3-0-final-released/).
 
-{% capture example %}
+{% capture highlight %}
 <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
 <script src="{{ site.cdn.popper }}" integrity="{{ site.cdn.popper_hash }}" crossorigin="anonymous"></script>
 <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
 {% endcapture %}
-{% renderHighlight example, "html" %}
+{% renderHighlight highlight, "html" %}
 
 ## Basic Template
 
@@ -43,7 +43,7 @@ Be sure to have your pages set up with the latest design and development standar
 
 Essentially something like this:
 
-{% capture example %}
+{% capture highlight %}
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
@@ -66,7 +66,7 @@ Essentially something like this:
   </body>
 </html>
 {% endcapture %}
-{% renderHighlight example, "html" %}
+{% renderHighlight highlight, "html" %}
 
 That should be all you need for overall page requirements. Visit the [Layout docs]({{ site.path }}/{{ version.docs }}/layout/overview/) to begin building out your content and components.
 
@@ -78,22 +78,21 @@ Working with a language that reads from right to left? Use the `rtl` version of 
 
 The steps needed to switch from `ltr` to `rtl` mode are:
 - Add the `dir="rtl"` attribute to the `<html>` tag.
-- Update the `lang` attribute on the `<html>` tag to match the language being used.
-    - Refer to this [list of language codes](https://www.loc.gov/standards/iso639-2/php/code_list.php) provided by the US Library of Congress to find the one you require.
-    {% capture example %}
-    <!-- This example is for a right-to-left Arabic layout -->
-    <html lang="ar" dir="rtl">
-    {% endcapture %}
-    {% renderHighlight example, "html" %}
+- Update the `lang` attribute on the `<html>` tag to match the language being used. Refer to this [list of language codes](https://www.loc.gov/standards/iso639-2/php/code_list.php) provided by the US Library of Congress to find the one you require.
+  {% capture highlight %}
+<!-- This example is for a right-to-left Arabic layout -->
+<html lang="ar" dir="rtl">
+  {% endcapture %}
+  {% renderHighlight highlight, "html" %}
 - Load the `rtl` version of the Figuration CSS.  Load this **in place of** the default Figuration CSS.
-    {% capture example %}
-    <!-- Figuration RTL CSS -->
-    <link rel="stylesheet" href="{{ site.cdn.css_rtl }}" integrity="{{ site.cdn.css_rtl_hash }}" crossorigin="anonymous">
-    {% endcapture %}
-    {% renderHighlight example, "html" %}
+  {% capture highlight %}
+<!-- Figuration RTL CSS -->
+<link rel="stylesheet" href="{{ site.cdn.css_rtl }}" integrity="{{ site.cdn.css_rtl_hash }}" crossorigin="anonymous">
+  {% endcapture %}
+  {% renderHighlight highlight, "html" %}
 
 When complete, the basic template for a right-to-left markup should look like the following example.
-{% capture example %}
+{% capture highlight %}
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
@@ -116,7 +115,7 @@ When complete, the basic template for a right-to-left markup should look like th
   </body>
 </html>
 {% endcapture %}
-{% renderHighlight example, "html" %}
+{% renderHighlight highlight, "html" %}
 
 ## Important Markup
 
@@ -126,22 +125,22 @@ Figuration depends a handful of important global styles and settings that you'll
 
 Figuration requires the use of the HTML5 doctype. Without it, you'll see some incomplete styling.
 
-{% capture example %}
+{% capture highlight %}
 <!DOCTYPE html>
 <html lang="en-us">
   ...
 </html>
 {% endcapture %}
-{% renderHighlight example, "html" %}
+{% renderHighlight highlight, "html" %}
 
 ### Responsive Meta Tag
 
 Figuration is developed *mobile first*, a strategy in which we optimize code for mobile devices first and then scale up components as necessary using CSS media queries. To ensure proper rendering and touch zooming for all devices, **add the responsive viewport meta tag** to your `<head>`.
 
-{% capture example %}
+{% capture highlight %}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {% endcapture %}
-{% renderHighlight example, "html" %}
+{% renderHighlight highlight, "html" %}
 
 You can see an example of this in action in the [basic template](#basic-template).
 
@@ -151,14 +150,14 @@ For more straightforward sizing in CSS, we switch the global `box-sizing` value 
 
 On the rare occasion you need to override it, use something like the following:
 
-{% capture example %}
+{% capture highlight %}
 .selector-for-some-widget {
   -webkit-box-sizing: content-box;
      -moz-box-sizing: content-box;
           box-sizing: content-box;
 }
 {% endcapture %}
-{% renderHighlight example, "css" %}
+{% renderHighlight highlight, "css" %}
 
 With the above snippet, nested elements---including generated content via `::before` and `::after`---will all inherit the specified `box-sizing` for that `.selector-for-some-widget`.
 

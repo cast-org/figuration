@@ -86,32 +86,32 @@ All lists---`<ul>`, `<ol>`, and `<dl>`---have their `margin-top` removed and a `
 
 <div class="cf-example cf-example-bottom">
 <ul>
-    <li>Lorem ipsum dolor sit amet</li>
-    <li>Consectetur adipiscing elit</li>
-    <li>Integer molestie lorem at massa</li>
-    <li>Facilisis in pretium nisl aliquet</li>
-    <li>Nulla volutpat aliquam velit
-        <ul>
-            <li>Phasellus iaculis neque</li>
-            <li>Purus sodales ultricies</li>
-            <li>Vestibulum laoreet porttitor sem</li>
-            <li>Ac tristique libero volutpat at</li>
-        </ul>
-    </li>
-    <li>Faucibus porta lacus fringilla vel</li>
-    <li>Aenean sit amet erat nunc</li>
-    <li>Eget porttitor lorem</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing elit</li>
+  <li>Integer molestie lorem at massa</li>
+  <li>Facilisis in pretium nisl aliquet</li>
+  <li>Nulla volutpat aliquam velit
+    <ul>
+      <li>Phasellus iaculis neque</li>
+      <li>Purus sodales ultricies</li>
+      <li>Vestibulum laoreet porttitor sem</li>
+      <li>Ac tristique libero volutpat at</li>
+    </ul>
+  </li>
+  <li>Faucibus porta lacus fringilla vel</li>
+  <li>Aenean sit amet erat nunc</li>
+  <li>Eget porttitor lorem</li>
 </ul>
 
 <ol>
-    <li>Lorem ipsum dolor sit amet</li>
-    <li>Consectetur adipiscing elit</li>
-    <li>Integer molestie lorem at massa</li>
-    <li>bFacilisis in pretium nisl aliquet</li>
-    <li>Nulla volutpat aliquam velit</li>
-    <li>Faucibus porta lacus fringilla vel</li>
-    <li>Aenean sit amet erat nunc</li>
-    <li>Eget porttitor lorem</li>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>Consectetur adipiscing elit</li>
+  <li>Integer molestie lorem at massa</li>
+  <li>bFacilisis in pretium nisl aliquet</li>
+  <li>Nulla volutpat aliquam velit</li>
+  <li>Faucibus porta lacus fringilla vel</li>
+  <li>Aenean sit amet erat nunc</li>
+  <li>Eget porttitor lorem</li>
 </ol>
 </div>
 
@@ -119,13 +119,13 @@ For simpler styling, clear hierarchy, and better spacing, description lists have
 
 <div class="cf-example cf-example-bottom">
 <dl>
-    <dt>Description lists</dt>
-    <dd>A description list is perfect for defining terms.</dd>
-    <dt>Euismod</dt>
-    <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem.</dd>
-    <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-    <dt>Malesuada porta</dt>
-    <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+  <dt>Description lists</dt>
+  <dd>A description list is perfect for defining terms.</dd>
+  <dt>Euismod</dt>
+  <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem.</dd>
+  <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+  <dt>Malesuada porta</dt>
+  <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
 </dl>
 </div>
 
@@ -136,7 +136,7 @@ The `<pre>` element is reset to remove its `margin-top` and use `rem` units for 
 <div class="cf-example cf-example-bottom">
 <pre>
 .example-element {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 </pre>
 </div>
@@ -318,7 +318,7 @@ The default `cursor` on summary is `text`, so we reset that to `pointer` to conv
 
 ## HTML5 `[hidden]` Attribute
 
-HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden), which is styled as `display: none` by default. Borrowing an idea from [PureCSS](https://purecss.io/), we improve upon this default by making `[hidden] { display: none !important; }` to help prevent its `display` from getting accidentally overridden. While `[hidden]` isn't natively supported by IE10, the explicit declaration in our CSS gets around that problem.
+HTML5 adds <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden">a new global attribute named <code>[hidden]</code></a>, which is styled as `display: none` by default. Borrowing an idea from [PureCSS](https://purecss.io/), we improve upon this default by making `[hidden] { display: none !important; }` to help prevent its `display` from getting accidentally overridden. While `[hidden]` isn't natively supported by IE10, the explicit declaration in our CSS gets around that problem.
 
 {% capture highlight %}
 <input type="text" hidden>
@@ -342,338 +342,338 @@ To merely toggle the visibility of an element, meaning its `display` is not modi
 The available [Customization options]({{ site.path }}/{{ version.docs }}/get-started/options/), or Sass variables, that can be customized for the reboot CSS styles.
 
 <div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th style="width: 100px;">Name</th>
-                <th style="width: 50px;">Type</th>
-                <th style="width: 50px;">Default</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>$font-family-base</code></td>
-                <td>string</td>
-                <td><code>$font-family-sans-serif</code></td>
-                <td>
-                    Base font family stack, used for the body and many component resets.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-size-root</code></td>
-                <td>string</td>
-                <td><code>null</code></td>
-                <td>
-                    Root font size. Impacts <code>rem</code> value.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-size-base</code></td>
-                <td>string</td>
-                <td><code>1rem</code></td>
-                <td>
-                    Base font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-weight-base</code></td>
-                <td>string</td>
-                <td><code>$font-weight-normal</code></td>
-                <td>
-                    Base font weight.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$line-height-base</code></td>
-                <td>float</td>
-                <td><code>1.5</code></td>
-                <td>
-                    Base line height.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$body-bg</code></td>
-                <td>string</td>
-                <td><code>$white</code></td>
-                <td>
-                    Base background color for body.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$body-color</code></td>
-                <td>string</td>
-                <td><code>$uibase-900</code></td>
-                <td>
-                    Base text color for body.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$body-text-align</code></td>
-                <td>string</td>
-                <td><code>null</code></td>
-                <td>
-                    Base text alignment for body.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$link-color</code></td>
-                <td>string</td>
-                <td><code>$primary</code></td>
-                <td>
-                    Text color for links.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$link-decoration</code></td>
-                <td>string</td>
-                <td><code>underline</code></td>
-                <td>
-                    Text decoration for links.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$link-hover-color</code></td>
-                <td>string</td>
-                <td><code>palette($primary, 700)</code></td>
-                <td>
-                    Color for hovered or focused links.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$link-hover-decoration</code></td>
-                <td>string</td>
-                <td><code>underline</code></td>
-                <td>
-                    Text decoration for hovered or focused links.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-size-h1</code></td>
-                <td>string</td>
-                <td><code>($font-size-base * 2.5)</code></td>
-                <td>
-                    <code>&lt;h1&gt;</code> font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-size-h2</code></td>
-                <td>string</td>
-                <td><code>($font-size-base * 2)</code></td>
-                <td>
-                    <code>&lt;h2&gt;</code> font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-size-h3</code></td>
-                <td>string</td>
-                <td><code>($font-size-base * 1.75)</code></td>
-                <td>
-                    <code>&lt;h3&gt;</code> font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-size-h4</code></td>
-                <td>string</td>
-                <td><code>($font-size-base * 1.5)</code></td>
-                <td>
-                    <code>&lt;h4&gt;</code> font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-size-h5</code></td>
-                <td>string</td>
-                <td><code>($font-size-base * 1.25)</code></td>
-                <td>
-                    <code>&lt;h5&gt;</code> font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-size-h6</code></td>
-                <td>string</td>
-                <td><code>($font-size-base * 1)</code></td>
-                <td>
-                    <code>&lt;h6&gt;</code> font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$headings-margin-bottom</code></td>
-                <td>string</td>
-                <td><code>($spacer / 2)</code></td>
-                <td>
-                    Bottom margin for <code>&lt;hN&gt;</code> headings and heading classes.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$headings-font-family</code></td>
-                <td>string</td>
-                <td><code>null</code></td>
-                <td>
-                    Headings font family.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$headings-font-style</code></td>
-                <td>string</td>
-                <td><code>null</code></td>
-                <td>
-                    Headings font style.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$headings-font-weight</code></td>
-                <td>string/integer</td>
-                <td><code>600</code></td>
-                <td>
-                    Headings font weight.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$headings-line-height</code></td>
-                <td>float</td>
-                <td><code>1.25</code></td>
-                <td>
-                    Headings line height.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$headings-color</code></td>
-                <td>string</td>
-                <td><code>null</code></td>
-                <td>
-                    Headings text color.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$paragraph-spacer-y</code></td>
-                <td>string</td>
-                <td><code>1rem</code></td>
-                <td>
-                    Bottom padding for paragraphs.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$dt-font-weight</code></td>
-                <td>string</td>
-                <td><code>$font-weight-bold</code></td>
-                <td>
-                    Font weight for definition terms.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$hr-color</code></td>
-                <td>string</td>
-                <td><code>inherit</code></td>
-                <td>
-                    Horizontal rule color.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$hr-height</code></td>
-                <td>string</td>
-                <td><code>$border-width</code></td>
-                <td>
-                    Horizontal rule height.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$hr-opacity</code></td>
-                <td>string</td>
-                <td><code>.25</code></td>
-                <td>
-                    Horizontal rule opacity.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$table-cell-padding</code></td>
-                <td>string</td>
-                <td><code>.75rem</code></td>
-                <td>
-                    Padding for table cells.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$table-caption-color</code></td>
-                <td>string</td>
-                <td><code>$uibase-500</code></td>
-                <td>
-                    Text color for table captions.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$hr-margin-y</code></td>
-                <td>string</td>
-                <td><code>1rem</code></td>
-                <td>
-                    Horizontal rule vertical spacing.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$small-font-size</code></td>
-                <td>string</td>
-                <td><code>.875em</code></td>
-                <td>
-                    Small font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$sub-sup-font-size</code></td>
-                <td>string</td>
-                <td><code>.875em</code></td>
-                <td>
-                    Font size for subscript and superscript text.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$mark-padding</code></td>
-                <td>string</td>
-                <td><code>.125em .25em</code></td>
-                <td>
-                    Mark element padding.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$mark-bg</code></td>
-                <td>string</td>
-                <td><code>#ff0</code></td>
-                <td>
-                    Mark element background color.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$label-margin-bottom</code></td>
-                <td>string</td>
-                <td><code>.5rem</code></td>
-                <td>
-                    Bottom margin for form labels.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$legend-margin-bottom</code></td>
-                <td>string</td>
-                <td><code>.5rem</code></td>
-                <td>
-                    Bottom margin for form legends.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$legend-font-size</code></td>
-                <td>string</td>
-                <td><code>1.5rem</code></td>
-                <td>
-                    Font size for form legends.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$legend-font-weight</code></td>
-                <td>string</td>
-                <td><code>null</code></td>
-                <td>
-                    Font weight for form legends.
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>$font-family-base</code></td>
+        <td>string</td>
+        <td><code>$font-family-sans-serif</code></td>
+        <td>
+          Base font family stack, used for the body and many component resets.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-size-root</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Root font size. Impacts <code>rem</code> value.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-size-base</code></td>
+        <td>string</td>
+        <td><code>1rem</code></td>
+        <td>
+          Base font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-weight-base</code></td>
+        <td>string</td>
+        <td><code>$font-weight-normal</code></td>
+        <td>
+          Base font weight.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$line-height-base</code></td>
+        <td>float</td>
+        <td><code>1.5</code></td>
+        <td>
+          Base line height.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$body-bg</code></td>
+        <td>string</td>
+        <td><code>$white</code></td>
+        <td>
+          Base background color for body.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$body-color</code></td>
+        <td>string</td>
+        <td><code>$uibase-900</code></td>
+        <td>
+          Base text color for body.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$body-text-align</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Base text alignment for body.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$link-color</code></td>
+        <td>string</td>
+        <td><code>$primary</code></td>
+        <td>
+          Text color for links.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$link-decoration</code></td>
+        <td>string</td>
+        <td><code>underline</code></td>
+        <td>
+          Text decoration for links.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$link-hover-color</code></td>
+        <td>string</td>
+        <td><code>palette($primary, 700)</code></td>
+        <td>
+          Color for hovered or focused links.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$link-hover-decoration</code></td>
+        <td>string</td>
+        <td><code>underline</code></td>
+        <td>
+          Text decoration for hovered or focused links.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-size-h1</code></td>
+        <td>string</td>
+        <td><code>($font-size-base * 2.5)</code></td>
+        <td>
+          <code>&lt;h1&gt;</code> font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-size-h2</code></td>
+        <td>string</td>
+        <td><code>($font-size-base * 2)</code></td>
+        <td>
+          <code>&lt;h2&gt;</code> font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-size-h3</code></td>
+        <td>string</td>
+        <td><code>($font-size-base * 1.75)</code></td>
+        <td>
+          <code>&lt;h3&gt;</code> font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-size-h4</code></td>
+        <td>string</td>
+        <td><code>($font-size-base * 1.5)</code></td>
+        <td>
+          <code>&lt;h4&gt;</code> font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-size-h5</code></td>
+        <td>string</td>
+        <td><code>($font-size-base * 1.25)</code></td>
+        <td>
+          <code>&lt;h5&gt;</code> font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-size-h6</code></td>
+        <td>string</td>
+        <td><code>($font-size-base * 1)</code></td>
+        <td>
+          <code>&lt;h6&gt;</code> font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$headings-margin-bottom</code></td>
+        <td>string</td>
+        <td><code>($spacer / 2)</code></td>
+        <td>
+          Bottom margin for <code>&lt;hN&gt;</code> headings and heading classes.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$headings-font-family</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Headings font family.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$headings-font-style</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Headings font style.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$headings-font-weight</code></td>
+        <td>string/integer</td>
+        <td><code>600</code></td>
+        <td>
+          Headings font weight.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$headings-line-height</code></td>
+        <td>float</td>
+        <td><code>1.25</code></td>
+        <td>
+          Headings line height.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$headings-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Headings text color.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$paragraph-spacer-y</code></td>
+        <td>string</td>
+        <td><code>1rem</code></td>
+        <td>
+          Bottom padding for paragraphs.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$dt-font-weight</code></td>
+        <td>string</td>
+        <td><code>$font-weight-bold</code></td>
+        <td>
+          Font weight for definition terms.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$hr-color</code></td>
+        <td>string</td>
+        <td><code>inherit</code></td>
+        <td>
+          Horizontal rule color.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$hr-height</code></td>
+        <td>string</td>
+        <td><code>$border-width</code></td>
+        <td>
+          Horizontal rule height.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$hr-opacity</code></td>
+        <td>string</td>
+        <td><code>.25</code></td>
+        <td>
+          Horizontal rule opacity.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$table-cell-padding</code></td>
+        <td>string</td>
+        <td><code>.75rem</code></td>
+        <td>
+          Padding for table cells.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$table-caption-color</code></td>
+        <td>string</td>
+        <td><code>$uibase-500</code></td>
+        <td>
+          Text color for table captions.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$hr-margin-y</code></td>
+        <td>string</td>
+        <td><code>1rem</code></td>
+        <td>
+          Horizontal rule vertical spacing.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$small-font-size</code></td>
+        <td>string</td>
+        <td><code>.875em</code></td>
+        <td>
+          Small font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$sub-sup-font-size</code></td>
+        <td>string</td>
+        <td><code>.875em</code></td>
+        <td>
+          Font size for subscript and superscript text.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$mark-padding</code></td>
+        <td>string</td>
+        <td><code>.125em .25em</code></td>
+        <td>
+          Mark element padding.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$mark-bg</code></td>
+        <td>string</td>
+        <td><code>#ff0</code></td>
+        <td>
+          Mark element background color.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$label-margin-bottom</code></td>
+        <td>string</td>
+        <td><code>.5rem</code></td>
+        <td>
+          Bottom margin for form labels.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$legend-margin-bottom</code></td>
+        <td>string</td>
+        <td><code>.5rem</code></td>
+        <td>
+          Bottom margin for form legends.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$legend-font-size</code></td>
+        <td>string</td>
+        <td><code>1.5rem</code></td>
+        <td>
+          Font size for form legends.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$legend-font-weight</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Font weight for form legends.
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 ### Mixins

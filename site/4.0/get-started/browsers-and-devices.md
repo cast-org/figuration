@@ -19,7 +19,7 @@ We use [Autoprefixer](https://github.com/postcss/autoprefixer) to handle intende
 
 You can find our supported range of browsers and their versions [in our `.browserslistrc`]({{ site.repo }}/blob/v4-dev/.browserslistrc):
 
-{% capture example %}
+{% capture highlight %}
 # https://github.com/browserslist/browserslist#readme
 
 >= 1%
@@ -34,51 +34,51 @@ Safari >= 10
 Android >= 6
 Opera >= 44
 {% endcapture %}
-{% renderHighlight example, "text" %}
+{% renderHighlight highlight, "text" %}
 
 ### Mobile Devices
 
 Generally speaking, Figuration supports the latest versions of each major platform's default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile's Turbo mode, UC Browser Mini, Amazon Silk) are not supported.
 
 <div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <td></td>
-                <th>Chrome</th>
-                <th>Firefox</th>
-                <th>Safari</th>
-                <th>Android Browser &amp; WebView</th>
-                <th>Microsoft Edge</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">Android</th>
-                <td class="text-success">Supported</td>
-                <td class="text-success">Supported</td>
-                <td class="text-muted">N/A</td>
-                <td class="text-success">v6.0+</td>
-                <td class="text-success">Supported</td>
-            </tr>
-            <tr>
-                <th scope="row">iOS</th>
-                <td class="text-success">Supported</td>
-                <td class="text-success">Supported</td>
-                <td class="text-success">Supported</td>
-                <td class="text-muted">N/A</td>
-                <td class="text-success">Supported</td>
-            </tr>
-            <tr>
-                <th scope="row">Windows 10 Mobile</th>
-                <td class="text-muted">N/A</td>
-                <td class="text-muted">N/A</td>
-                <td class="text-muted">N/A</td>
-                <td class="text-muted">N/A</td>
-                <td class="text-success">Supported</td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <td></td>
+        <th>Chrome</th>
+        <th>Firefox</th>
+        <th>Safari</th>
+        <th>Android Browser &amp; WebView</th>
+        <th>Microsoft Edge</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Android</th>
+        <td class="text-success">Supported</td>
+        <td class="text-success">Supported</td>
+        <td class="text-muted">N/A</td>
+        <td class="text-success">v6.0+</td>
+        <td class="text-success">Supported</td>
+      </tr>
+      <tr>
+        <th scope="row">iOS</th>
+        <td class="text-success">Supported</td>
+        <td class="text-success">Supported</td>
+        <td class="text-success">Supported</td>
+        <td class="text-muted">N/A</td>
+        <td class="text-success">Supported</td>
+      </tr>
+      <tr>
+        <th scope="row">Windows 10 Mobile</th>
+        <td class="text-muted">N/A</td>
+        <td class="text-muted">N/A</td>
+        <td class="text-muted">N/A</td>
+        <td class="text-muted">N/A</td>
+        <td class="text-success">Supported</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 ### Desktop Browsers
@@ -86,39 +86,39 @@ Generally speaking, Figuration supports the latest versions of each major platfo
 Similarly, the latest versions of most desktop browsers are supported.
 
 <div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <td></td>
-                <th>Chrome</th>
-                <th>Firefox</th>
-                <th>Internet Explorer</th>
-                <th>Microsoft Edge</th>
-                <th>Opera</th>
-                <th>Safari</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">Mac</th>
-                <td class="text-success">Supported</td>
-                <td class="text-success">Supported</td>
-                <td class="text-muted">N/A</td>
-                <td class="text-muted">N/A</td>
-                <td class="text-success">Supported</td>
-                <td class="text-success">Supported</td>
-            </tr>
-            <tr>
-                <th scope="row">Windows</th>
-                <td class="text-success">Supported</td>
-                <td class="text-success">Supported</td>
-                <td class="text-success">Supported, IE11+</td>
-                <td class="text-success">Supported</td>
-                <td class="text-success">Supported</td>
-                <td class="text-danger">Not supported</td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <td></td>
+        <th>Chrome</th>
+        <th>Firefox</th>
+        <th>Internet Explorer</th>
+        <th>Microsoft Edge</th>
+        <th>Opera</th>
+        <th>Safari</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Mac</th>
+        <td class="text-success">Supported</td>
+        <td class="text-success">Supported</td>
+        <td class="text-muted">N/A</td>
+        <td class="text-muted">N/A</td>
+        <td class="text-success">Supported</td>
+        <td class="text-success">Supported</td>
+      </tr>
+      <tr>
+        <th scope="row">Windows</th>
+        <td class="text-success">Supported</td>
+        <td class="text-success">Supported</td>
+        <td class="text-success">Supported, IE11+</td>
+        <td class="text-success">Supported</td>
+        <td class="text-success">Supported</td>
+        <td class="text-danger">Not supported</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 For Firefox, in addition to the latest normal stable release, we also support the latest [Extended Support Release (ESR)](https://www.mozilla.org/en-US/firefox/organizations/#faq) version of Firefox.
@@ -153,14 +153,14 @@ Even in some modern browsers, printing can be quirky.
 
 As of Safari v8.0, use of the fixed-width `.container` class can cause Safari to use an unusually small font size when printing. See [Bootstrap issue #14868](https://github.com/twbs/bootstrap/issues/14868) and [WebKit bug #138192](https://bugs.webkit.org/show_bug.cgi?id=138192) for more details. One potential workaround is the following CSS:
 
-{% capture example %}
+{% capture highlight %}
 @media print {
   .container {
     width: auto;
   }
 }
 {% endcapture %}
-{% renderHighlight example, "css" %}
+{% renderHighlight highlight, "css" %}
 
 ## Validators
 

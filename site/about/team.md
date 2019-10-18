@@ -10,9 +10,9 @@ Figuration is maintained by a small team. Hopefully soon we can generate support
 <div class="list list-spaced list-ruled">
 {% for member in team %}
 <a class="list-item list-item-action d-flex flex-items-center" href="https://github.com/{{ member.user }}">
-    <img src="https://github.com/{{ member.user }}.png" alt="@{{ member.user }}" width="32" height="32" class="radius me-0_5">
-    <strong class="me-0_25">{{ member.name }}</strong>
-    <small>@{{ member.user }}</small>
+  <img src="https://github.com/{{ member.user }}.png" alt="@{{ member.user }}" width="32" height="32" class="radius me-0_5">
+  <strong class="me-0_25">{{ member.name }}</strong>
+  <small>@{{ member.user }}</small>
 </a>
 {% endfor %}
 </div>

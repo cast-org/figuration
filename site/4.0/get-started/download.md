@@ -46,21 +46,21 @@ Pull in Figuration's **source files** into nearly any project with some of the m
 
 Install Figuration in your Node.js powered apps with [the npm package](https://www.npmjs.com/package/figuration):
 
-{% capture example %}
+{% capture highlight %}
 npm install figuration@{{ site.version.docs }}
 {% endcapture %}
-{% renderHighlight example, "bash" %}
+{% renderHighlight highlight, "bash" %}
 
 ### Yarn
 
-{% capture example %}
+{% capture highlight %}
 yarn add figuration@{{ site.version.docs }}
 {% endcapture %}
-{% renderHighlight example, "bash" %}
+{% renderHighlight highlight, "bash" %}
 
 Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
 
-{% capture example %}
+{% capture highlight %}
 figuration/
 +-- dist/
 |   +-- css/
@@ -69,7 +69,7 @@ figuration/
 +-- js/
 +-- scss/
 {% endcapture %}
-{% renderHighlight example, "text" %}
+{% renderHighlight highlight, "text" %}
 
 Basically just the dist, along with the source `js` and `scss` files, and just enough to build the dist. If you need the docs and all the tests for local dev, then download the source version, or clone the [Figuration repository from GitHub]({{ site.repo }}).
 
@@ -81,7 +81,7 @@ The [quick download versions](#quick-download) listed above, contain the followi
 
 Once downloaded, unzip the compressed folder to see the structure of (the compiled) Figuration. You'll see something like this:
 
-{% capture example %}
+{% capture highlight %}
 figuration/
 +-- dist/
     +-- css/
@@ -93,7 +93,7 @@ figuration/
         +-- figuration.js
         +-- figuration.min.js
 {% endcapture %}
-{% renderHighlight example, "text" %}
+{% renderHighlight highlight, "text" %}
 
 This is the most basic form of Figuration: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JavaScript (`figuration.*`), as well as compiled and minified CSS and JavaScript (`figuration.min.*`). CSS <a href="https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps">source maps</a> (`figuration.*.map`) are available for use with certain browsers' developer tools.
 
@@ -101,7 +101,7 @@ This is the most basic form of Figuration: precompiled files for quick drop-in u
 
 The Figuration source code download includes the precompiled CSS and JavaScript, along with source Sass, JavaScript, and documentation. More specifically, it includes the following and more:
 
-{% capture example %}
+{% capture highlight %}
 figuration/
 +-- dist/
 |   +-- css/
@@ -112,6 +112,6 @@ figuration/
 +-- scss/
 +-- test/
 {% endcapture %}
-{% renderHighlight example, "text" %}
+{% renderHighlight highlight, "text" %}
 
 The `scss/`, and `js/` folders are the source code for our CSS and JavaScript (respectively). The `dist/` folder includes everything listed in the precompiled download section above. The `docs/` folder includes the source code for our documentation. Beyond that, any other included file provides support for packages, license information, and development.

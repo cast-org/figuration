@@ -51,7 +51,7 @@ The *start/end sides* are designated as follows depending on which version of th
     </div>
 </div>
 
-{% capture example %}
+{% capture highlight %}
 <!-- Sides -->
 <img src="..." class="radius" alt="...">
 <img src="..." class="radius-t" alt="...">
@@ -65,7 +65,7 @@ The *start/end sides* are designated as follows depending on which version of th
 <img src="..." class="round-be" alt="...">
 <img src="..." class="round-bs" alt="...">
 {% endcapture %}
-{% renderHighlight example, "html" %}
+{% renderHighlight highlight, "html" %}
 
 ### Sizes
 
@@ -77,12 +77,12 @@ A few sizes are available, the default border-radius size, along with `small` an
     <img data-src="holder.js/100x100?text=Large" class="radius-large" alt="Placeholder image with more rounded corners" />
 </div>
 
-{% capture example %}
+{% capture highlight %}
 <img src="..." class="radius-small" alt="...">
 <img src="..." class="radius" alt="...">
 <img src="..." class="radius-large" alt="...">
 {% endcapture %}
-{% renderHighlight example, "html" %}
+{% renderHighlight highlight, "html" %}
 
 ### Removing
 
@@ -103,12 +103,12 @@ When elements are of a square (1:1) aspect ratio, you can create a circle using 
     <img data-src="holder.js/50x100/?text=Elipse" class="radius-circle" width="50" height="100" alt="Vertical elipse" />
 </div>
 
-{% capture example %}
+{% capture highlight %}
 <img src="..." class="radius-circle" width="100" height="100" alt="...">
 <img src="..." class="radius-circle" width="100" height="50" alt="...">
 <img src="..." class="radius-circle" width="50" height="100" alt="...">
 {% endcapture %}
-{% renderHighlight example, "html" %}
+{% renderHighlight highlight, "html" %}
 
 ### Pills
 
@@ -119,11 +119,11 @@ Create a 'pill' shape with `.radius-pill`.
     <img data-src="holder.js/75x32/?text=Pill" class="radius-pill" width="75" height="32" alt="Rounded pill image" />
 </div>
 
-{% capture example %}
+{% capture highlight %}
 <img src="..." class="radius-pill" width="100" height="50" alt="...">
 <img src="..." class="radius-pill" width="75" height="32" alt="...">
 {% endcapture %}
-{% renderHighlight example, "html" %}
+{% renderHighlight highlight, "html" %}
 
 ## Borders
 
@@ -385,10 +385,10 @@ Here are the mixins related to this grouping of utility classes that we use to h
 
 Apply a border radius to an element.
 
-{% capture example %}
+{% capture highlight %}
 @include border-radius($radius);
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">
@@ -417,10 +417,10 @@ Apply a border radius to an element.
 
 Apply a border radius the corners on the top side of an element.
 
-{% capture example %}
+{% capture highlight %}
 @include border-top-radius($radius);
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">
@@ -449,10 +449,10 @@ Apply a border radius the corners on the top side of an element.
 
 Apply a border radius the corners on the end side of an element.
 
-{% capture example %}
+{% capture highlight %}
 @include border-end-radius($radius);
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">
@@ -481,10 +481,10 @@ Apply a border radius the corners on the end side of an element.
 
 Apply a border radius the corners on the bottom side of an element.
 
-{% capture example %}
+{% capture highlight %}
 @include border-bottom-radius($radius);
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">
@@ -513,10 +513,10 @@ Apply a border radius the corners on the bottom side of an element.
 
 Apply a border radius the corners on the start side of an element.
 
-{% capture example %}
+{% capture highlight %}
 @include border-start-radius($radius);
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">
@@ -545,10 +545,10 @@ Apply a border radius the corners on the start side of an element.
 
 Apply a border radius on the top start corner of an element.
 
-{% capture example %}
+{% capture highlight %}
 @include border-top-start-radius($radius);
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">
@@ -577,10 +577,10 @@ Apply a border radius on the top start corner of an element.
 
 Apply a border radius on the top end corner of an element.
 
-{% capture example %}
+{% capture highlight %}
 @include border-top-end-radius($radius);
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">
@@ -609,10 +609,10 @@ Apply a border radius on the top end corner of an element.
 
 Apply a border radius on the bottom start corner of an element.
 
-{% capture example %}
+{% capture highlight %}
 @include border-bottom-start-radius($radius);
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">
@@ -641,10 +641,10 @@ Apply a border radius on the bottom start corner of an element.
 
 Apply a border radius on the bottom end corner of an element.
 
-{% capture example %}
+{% capture highlight %}
 @include border-bottom-end-radius($radius);
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">
@@ -673,10 +673,10 @@ Apply a border radius on the bottom end corner of an element.
 
 Generate component size border radius utility classes for use with an element's sides.
 
-{% capture example %}
+{% capture highlight %}
 @include radius-sides($radius, $size);
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">
@@ -713,10 +713,10 @@ Generate component size border radius utility classes for use with an element's 
 
 Generate component size border radius utility classes for use with an element's individual corners.
 
-{% capture example %}
+{% capture highlight %}
 @include radius-corners($radius, $size);
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 <div class="table-scroll">
     <table class="table table-bordered table-striped">

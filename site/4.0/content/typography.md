@@ -170,12 +170,12 @@ Remove the default `list-style` and left margin on list items (immediate childre
 <ul class="list-unstyled">
   <li>Unstyled List Item</li>
   <li>Unstyled List Item
-        <ul>
-            <li>Nested List Item</li>
-            <li>Nested List Item</li>
-        </ul>
-    </li>
-    <li>Unstyled List Item</li>
+    <ul>
+      <li>Nested List Item</li>
+      <li>Nested List Item</li>
+    </ul>
+  </li>
+  <li>Unstyled List Item</li>
 </ul>
 {% endcapture %}
 {% renderExample example %}
@@ -236,36 +236,36 @@ Possible drawbacks include:
 ### Common Settings
 
 <div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th style="width: 100px;">Name</th>
-                <th style="width: 50px;">Type</th>
-                <th style="width: 50px;">Default</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>$responsive-font-size-minimum-size</code></td>
-                <td>font size in <code>px</code> or <code>rem</code></td>
-                <td>1em</td>
-                <td>
-                    <p>Calculated font sizes will never be smaller than this size. However, you can still pass a smaller font size, but then it won't be responsively sized.</p>
-                    <p>For example: <code>font-size(1.5rem)</code> will trigger responsive sizing, with <code>font-size(.875rem)</code> will remain staticly sized at <code>.875rem</code>.</p>
-                </td>
-            </tr>
-            <tr>
-                <td><code>$responsive-font-size-generate-static</code></td>
-                <td>boolean</td>
-                <td>false</td>
-                <td>
-                    <p>Generates the <code>.font-size-static</code> utility classes to disable the responsive font sizes for an element and it's descendant elements. This does not apply to font sizes which are inherited from parent elements.</p>
-                    <p>If you are not using these utilities, it would be worthwhile to disable this setting to stop the generation of a potentially large amount of unused CSS.</p>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>$responsive-font-size-minimum-size</code></td>
+        <td>font size in <code>px</code> or <code>rem</code></td>
+        <td>1em</td>
+        <td>
+          <p>Calculated font sizes will never be smaller than this size. However, you can still pass a smaller font size, but then it won't be responsively sized.</p>
+          <p>For example: <code>font-size(1.5rem)</code> will trigger responsive sizing, with <code>font-size(.875rem)</code> will remain staticly sized at <code>.875rem</code>.</p>
+        </td>
+      </tr>
+      <tr>
+        <td><code>$responsive-font-size-generate-static</code></td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>
+          <p>Generates the <code>.font-size-static</code> utility classes to disable the responsive font sizes for an element and it's descendant elements. This does not apply to font sizes which are inherited from parent elements.</p>
+          <p>If you are not using these utilities, it would be worthwhile to disable this setting to stop the generation of a potentially large amount of unused CSS.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 ### Fluid Responsive Typography
@@ -298,36 +298,36 @@ Will generate the CSS output:
 #### Settings
 
 <div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th style="width: 100px;">Name</th>
-                <th style="width: 50px;">Type</th>
-                <th style="width: 50px;">Default</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>$responsive-font-size-fluid-breakpoint</code></td>
-                <td><code>em</code> unit breakpoint dimension</td>
-                <td>75em</td>
-                <td>Above this breakpoint, the font size will be equal to the font size you passed to the mixin; below the breakpoint, the font size will dynamically scale.</td>
-            </tr>
-            <tr>
-                <td><code>$responsive-font-size-fluid-factor</code></td>
-                <td>integer</td>
-                <td>5</td>
-                <td>This value determines the strength of font size resizing. The higher $rfs-factor, the less difference there is between font sizes on small screens. The lower the factor, the less influence the responsive scaling has, which results in bigger font sizes for small screens. <code>$responsive-font-size-fluid-factor</code> must be greater than 1, and setting it to 1 will disable responsive scaling.</td>
-            </tr>
-            <tr>
-                <td><code>$responsive-font-size-fluid-two-dimensional</code></td>
-                <td>boolean</td>
-                <td>false</td>
-                <td>Enabling the two dimensional media queries will determine the font size based on the smallest side of the screen with <code>vmin</code>. This prevents the font size from changing if the device toggles between portrait and landscape mode.</td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>$responsive-font-size-fluid-breakpoint</code></td>
+        <td><code>em</code> unit breakpoint dimension</td>
+        <td>75em</td>
+        <td>Above this breakpoint, the font size will be equal to the font size you passed to the mixin; below the breakpoint, the font size will dynamically scale.</td>
+      </tr>
+      <tr>
+        <td><code>$responsive-font-size-fluid-factor</code></td>
+        <td>integer</td>
+        <td>5</td>
+        <td>This value determines the strength of font size resizing. The higher $rfs-factor, the less difference there is between font sizes on small screens. The lower the factor, the less influence the responsive scaling has, which results in bigger font sizes for small screens. <code>$responsive-font-size-fluid-factor</code> must be greater than 1, and setting it to 1 will disable responsive scaling.</td>
+      </tr>
+      <tr>
+        <td><code>$responsive-font-size-fluid-two-dimensional</code></td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>Enabling the two dimensional media queries will determine the font size based on the smallest side of the screen with <code>vmin</code>. This prevents the font size from changing if the device toggles between portrait and landscape mode.</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 #### Safari Issue
@@ -390,11 +390,11 @@ Scaled responsive typography only has one setting, `$responsive-font-size-scale-
 
 {% capture highlight %}
 $responsive-font-size-scale-factor: (
-    xs: .625,
-    sm: .71875,
-    md: .8125,
-    lg: .90625,
-    xl: 1
+  xs: .625,
+  sm: .71875,
+  md: .8125,
+  lg: .90625,
+  xl: 1
 )
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
@@ -403,11 +403,11 @@ It is also possible to change the settings so font size grows as the breakpoint 
 
 {% capture highlight %}
 $responsive-font-size-scale-factor: (
-    xs: 1,
-    sm: 1.09375,
-    md: 1.1875,
-    lg: 1.28125,
-    xl: 1.375
+  xs: 1,
+  sm: 1.09375,
+  md: 1.1875,
+  lg: 1.28125,
+  xl: 1.375
 );
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
@@ -419,235 +419,235 @@ $responsive-font-size-scale-factor: (
 The available [Customization options]({{ site.path }}/{{ version.docs }}/get-started/options/), or Sass variables, that can be customized for the typography CSS styles.
 
 <div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th style="width: 100px;">Name</th>
-                <th style="width: 50px;">Type</th>
-                <th style="width: 50px;">Default</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>$enable-typography</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the typography classes.
-                    Smaller segements of the typography classes can be disabled with the following <code>$enable-*</code> variables.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-typography-headings</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the <code>&lt;hN&gt;</code> headings and heading classes.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-typography-lead</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the lead in typography class.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-typography-hr</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the reset for horizontal rules.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-typography-small</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of CSS for the small element and associated class.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-typography-mark</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of CSS for the mark element and associated class.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-typography-list-unstyled</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the unstyled list class.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-typography-initialism</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the initialism class.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$enable-typography-blockquote</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the blockquote classes.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-family-sans-serif</code></td>
-                <td>string</td>
-                <td><code>-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"</code></td>
-                <td>
-                    Sans-serif font stack.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-family-serif</code></td>
-                <td>string</td>
-                <td><code>Georgia, "Times New Roman", Times, serif</code></td>
-                <td>
-                    Serif font stack.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-family-monospace</code></td>
-                <td>string</td>
-                <td><code>Georgia, "Times New Roman", Times, serif</code></td>
-                <td>
-                    Monospace font stack.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-weight-lighter</code></td>
-                <td>string/integer</td>
-                <td><code>lighter</code></td>
-                <td>
-                    Lighter font weight
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-weight-light</code></td>
-                <td>string/integer</td>
-                <td><code>300</code></td>
-                <td>
-                    Light font weight
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-weight-normal</code></td>
-                <td>string/integer</td>
-                <td><code>400</code></td>
-                <td>
-                    Standard font weight
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-weight-bold</code></td>
-                <td>string/integer</td>
-                <td><code>700</code></td>
-                <td>
-                    Bold font weight
-                </td>
-            </tr>
-            <tr>
-                <td><code>$font-weight-bolder</code></td>
-                <td>string/integer</td>
-                <td><code>bolder</code></td>
-                <td>
-                    Bolder font weight
-                </td>
-            </tr>
-            <tr>
-                <td><code>$lead-font-size</code></td>
-                <td>string</td>
-                <td><code>($font-size-base * 1.25)</code></td>
-                <td>
-                    Lead in font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$lead-font-weight</code></td>
-                <td>string</td>
-                <td><code>inherit</code></td>
-                <td>
-                    Lead in font weight.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$lead-line-height</code></td>
-                <td>string</td>
-                <td><code>$line-height-base</code></td>
-                <td>
-                    Lead in line height.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$text-muted</code></td>
-                <td>string</td>
-                <td><code>$uibase-500</code></td>
-                <td>
-                    Muted text color.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$initialism-font-size</code></td>
-                <td>string</td>
-                <td><code>.875em</code></td>
-                <td>
-                    Initialism font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$blockquote-font-size</code></td>
-                <td>string</td>
-                <td><code>($font-size-base * 1.1875)</code></td>
-                <td>
-                    Blockquote font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$blockquote-color</code></td>
-                <td>string</td>
-                <td><code>$body-color</code></td>
-                <td>
-                    Blockquote font color.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$blockquote-footer-font-size</code></td>
-                <td>string</td>
-                <td><code>$font-size-base</code></td>
-                <td>
-                    Blockquote footer font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$blockquote-footer-color</code></td>
-                <td>string</td>
-                <td><code>$uibase-500</code></td>
-                <td>
-                    Blockquote footer text color.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$blockquote-footer-content</code></td>
-                <td>string</td>
-                <td><code>"\2014\00a0"</code> (em dash and non-breaking space)</td>
-                <td>
-                    Prefix for blockquote footer.
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>$enable-typography</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the typography classes.
+          Smaller segements of the typography classes can be disabled with the following <code>$enable-*</code> variables.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-typography-headings</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the <code>&lt;hN&gt;</code> headings and heading classes.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-typography-lead</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the lead in typography class.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-typography-hr</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the reset for horizontal rules.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-typography-small</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of CSS for the small element and associated class.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-typography-mark</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of CSS for the mark element and associated class.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-typography-list-unstyled</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the unstyled list class.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-typography-initialism</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the initialism class.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-typography-blockquote</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the blockquote classes.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-family-sans-serif</code></td>
+        <td>string</td>
+        <td><code>-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"</code></td>
+        <td>
+          Sans-serif font stack.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-family-serif</code></td>
+        <td>string</td>
+        <td><code>Georgia, "Times New Roman", Times, serif</code></td>
+        <td>
+          Serif font stack.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-family-monospace</code></td>
+        <td>string</td>
+        <td><code>Georgia, "Times New Roman", Times, serif</code></td>
+        <td>
+          Monospace font stack.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-weight-lighter</code></td>
+        <td>string/integer</td>
+        <td><code>lighter</code></td>
+        <td>
+          Lighter font weight
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-weight-light</code></td>
+        <td>string/integer</td>
+        <td><code>300</code></td>
+        <td>
+          Light font weight
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-weight-normal</code></td>
+        <td>string/integer</td>
+        <td><code>400</code></td>
+        <td>
+          Standard font weight
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-weight-bold</code></td>
+        <td>string/integer</td>
+        <td><code>700</code></td>
+        <td>
+          Bold font weight
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-weight-bolder</code></td>
+        <td>string/integer</td>
+        <td><code>bolder</code></td>
+        <td>
+          Bolder font weight
+        </td>
+      </tr>
+      <tr>
+        <td><code>$lead-font-size</code></td>
+        <td>string</td>
+        <td><code>($font-size-base * 1.25)</code></td>
+        <td>
+          Lead in font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$lead-font-weight</code></td>
+        <td>string</td>
+        <td><code>inherit</code></td>
+        <td>
+          Lead in font weight.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$lead-line-height</code></td>
+        <td>string</td>
+        <td><code>$line-height-base</code></td>
+        <td>
+          Lead in line height.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$text-muted</code></td>
+        <td>string</td>
+        <td><code>$uibase-500</code></td>
+        <td>
+          Muted text color.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$initialism-font-size</code></td>
+        <td>string</td>
+        <td><code>.875em</code></td>
+        <td>
+          Initialism font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$blockquote-font-size</code></td>
+        <td>string</td>
+        <td><code>($font-size-base * 1.1875)</code></td>
+        <td>
+          Blockquote font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$blockquote-color</code></td>
+        <td>string</td>
+        <td><code>$body-color</code></td>
+        <td>
+          Blockquote font color.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$blockquote-footer-font-size</code></td>
+        <td>string</td>
+        <td><code>$font-size-base</code></td>
+        <td>
+          Blockquote footer font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$blockquote-footer-color</code></td>
+        <td>string</td>
+        <td><code>$uibase-500</code></td>
+        <td>
+          Blockquote footer text color.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$blockquote-footer-content</code></td>
+        <td>string</td>
+        <td><code>"\2014\00a0"</code> (em dash and non-breaking space)</td>
+        <td>
+          Prefix for blockquote footer.
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 ### Mixins

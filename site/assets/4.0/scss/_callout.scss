@@ -46,7 +46,7 @@ $callout-colors: (
 );
 @each $theme, $color in $callout-colors {
     $cv-bg:           palette($color, 25);
-    $cv-color:        palette($color, 500);
+    $cv-color:        palette($color, 800);
     $cv-border-color: palette($color, 600);
 
     .cf-callout-#{$theme} {

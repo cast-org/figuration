@@ -42,50 +42,50 @@ Aligning the figure's caption is easy with our [text utilities]({{ site.path }}/
 The available [Customization options]({{ site.path }}/{{ version.docs }}/get-started/options/), or Sass variables, that can be customized for the figure CSS styles.
 
 <div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th style="width: 100px;">Name</th>
-                <th style="width: 50px;">Type</th>
-                <th style="width: 50px;">Default</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><code>$enable-figure</code></td>
-                <td>boolean</td>
-                <td><code>true</code></td>
-                <td>
-                    Enable the generation of the figure CSS classes.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$figure-spacer-y</code></td>
-                <td>string</td>
-                <td><code>.5rem</code></td>
-                <td>
-                    Figure element vertical spacing between image and caption.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$figure-caption-font-size</code></td>
-                <td>string</td>
-                <td><code>.875em</code></td>
-                <td>
-                    Figure caption font size.
-                </td>
-            </tr>
-            <tr>
-                <td><code>$figure-caption-color</code></td>
-                <td>string</td>
-                <td><code>$uibase-500</code></td>
-                <td>
-                    Figure caption text color.
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>$enable-figure</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the figure CSS classes.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$figure-spacer-y</code></td>
+        <td>string</td>
+        <td><code>.5rem</code></td>
+        <td>
+          Figure element vertical spacing between image and caption.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$figure-caption-font-size</code></td>
+        <td>string</td>
+        <td><code>.875em</code></td>
+        <td>
+          Figure caption font size.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$figure-caption-color</code></td>
+        <td>string</td>
+        <td><code>$uibase-500</code></td>
+        <td>
+          Figure caption text color.
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 ### Mixins

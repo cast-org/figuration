@@ -66,76 +66,76 @@ See how aspects of the Figuration grid system work across multiple devices with 
 The example pixel values are calculated based upon assumption where the average user has a 16px root font size.
 
 <div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th></th>
-                <th class="text-center">
-                    Extra small<br>
-                    <small>&lt;576px</small><br>
-                    <small>&lt;36em</small>
-                </th>
-                <th class="text-center">
-                    Small<br>
-                    <small>&ge;576px</small><br>
-                    <small>&ge;36em</small>
-                </th>
-                <th class="text-center">
-                    Medium<br>
-                    <small>&ge;768px</small><br>
-                    <small>&ge;48em</small>
-                </th>
-                <th class="text-center">
-                    Large<br>
-                    <small>&ge;992px</small><br>
-                    <small>&ge;62em</small>
-                </th>
-                <th class="text-center">
-                    Extra large<br>
-                    <small>&ge;1200px</small><br>
-                    <small>&ge;75em</small>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th class="text-nowrap" scope="row">Max container width</th>
-                <td>None (auto)</td>
-                <td>544px (33.75rem)</td>
-                <td>720px (45rem)</td>
-                <td>960px (60rem)</td>
-                <td>1152px (72rem)</td>
-            </tr>
-            <tr>
-                <th class="text-nowrap" scope="row">Class prefix</th>
-                <td><code>.col-</code></td>
-                <td><code>.col-sm-</code></td>
-                <td><code>.col-md-</code></td>
-                <td><code>.col-lg-</code></td>
-                <td><code>.col-xl-</code></td>
-            </tr>
-            <tr>
-                <th class="text-nowrap" scope="row"># of columns</th>
-                <td colspan="5">12</td>
-            </tr>
-            <tr>
-                <th class="text-nowrap" scope="row">Gutter width</th>
-                <td colspan="5">2rem / 32px (16px on each side of a column)</td>
-            </tr>
-            <tr>
-                <th class="text-nowrap" scope="row">Nestable</th>
-                <td colspan="5">Yes</td>
-            </tr>
-            <tr>
-                <th class="text-nowrap" scope="row">Offsets</th>
-                <td colspan="5">Yes</td>
-            </tr>
-            <tr>
-                <th class="text-nowrap" scope="row">Column ordering</th>
-                <td colspan="5">Yes</td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="text-center">
+          Extra small<br>
+          <small>&lt;576px</small><br>
+          <small>&lt;36em</small>
+        </th>
+        <th class="text-center">
+          Small<br>
+          <small>&ge;576px</small><br>
+          <small>&ge;36em</small>
+        </th>
+        <th class="text-center">
+          Medium<br>
+          <small>&ge;768px</small><br>
+          <small>&ge;48em</small>
+        </th>
+        <th class="text-center">
+          Large<br>
+          <small>&ge;992px</small><br>
+          <small>&ge;62em</small>
+        </th>
+        <th class="text-center">
+          Extra large<br>
+          <small>&ge;1200px</small><br>
+          <small>&ge;75em</small>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="text-nowrap" scope="row">Max container width</th>
+        <td>None (auto)</td>
+        <td>544px (33.75rem)</td>
+        <td>720px (45rem)</td>
+        <td>960px (60rem)</td>
+        <td>1152px (72rem)</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">Class prefix</th>
+        <td><code>.col-</code></td>
+        <td><code>.col-sm-</code></td>
+        <td><code>.col-md-</code></td>
+        <td><code>.col-lg-</code></td>
+        <td><code>.col-xl-</code></td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row"># of columns</th>
+        <td colspan="5">12</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">Gutter width</th>
+        <td colspan="5">2rem / 32px (16px on each side of a column)</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">Nestable</th>
+        <td colspan="5">Yes</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">Offsets</th>
+        <td colspan="5">Yes</td>
+      </tr>
+      <tr>
+        <th class="text-nowrap" scope="row">Column ordering</th>
+        <td colspan="5">Yes</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 ## Auto-Layout Columns
@@ -464,7 +464,7 @@ Here's the source code for creating these styles. Note that column overrides are
 
 **Need an edge-to-edge design?** Drop the parent `.container` or `.container-fluid`.
 
-{% capture example %}
+{% capture highlight %}
 .no-gutters {
   margin-right: 0;
   margin-left: 0;
@@ -476,7 +476,7 @@ Here's the source code for creating these styles. Note that column overrides are
   }
 }
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 In practice, here's how it looks. Note you can continue to use this with all other predefined grid classes (including column widths, responsive tiers, reorders, and more).
 
@@ -707,17 +707,17 @@ Using our built-in grid Sass variables and maps, it's possible to completely cus
 
 The number of grid columns and their horizontal padding (aka, gutters) can be modified via Sass variables. `$grid-columns` is used to generate the widths (in percent) of each individual column while `$grid-gutter-width` sets the width for the column gutters.
 
-{% capture example %}
+{% capture highlight %}
 $grid-columns: 12;
 $grid-gutter-width: 2rem;
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 ### Grid Tiers
 
 Moving beyond the columns themselves, you may also customize the number of grid tiers. If you wanted just four grid tiers, you would update the `$grid-breakpoints` and `$container-max-widths` to something like this:
 
-{% capture example %}
+{% capture highlight %}
 $grid-breakpoints: (
   xs: 0,
   sm: bp-to-em(480px),
@@ -731,7 +731,7 @@ $container-max-widths: (
   lg: rem(940px)
 );
 {% endcapture %}
-{% renderHighlight example, "text" %}
+{% renderHighlight highlight, "text" %}
 
 Save your changes and recompile to have a brand new set of predefined grid classes for column widths and offsets. Responsive visibility utilities will also be updated to use the custom breakpoints.
 
@@ -745,7 +745,7 @@ Variables and maps determine the number of columns, the gutter width, and the me
 
 Some Sass functions are in use here.  Simply put `bp-to-em()` converts a pixel value to em assuming 16px root font size, while `rem()` converts a pixel value to rem, but checks the defined `$font-size-root` variable in the Sass and uses that for conversion.
 
-{% capture example %}
+{% capture highlight %}
 $grid-columns:      12;
 
 $grid-breakpoints: (
@@ -770,13 +770,13 @@ $container-max-widths: (
 
 $grid-gutter-width: 2rem;
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 ### Mixins
 
 Mixins are used in conjunction with the grid variables to generate semantic CSS for individual grid columns.
 
-{% capture example %}
+{% capture highlight %}
 // Creates a wrapper for a series of columns
 @include make-row($gutter: $grid-gutter-width);
 
@@ -787,13 +787,13 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 // Get fancy by offsetting
 @include make-col-offset($size, $columns: $grid-columns);
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 ### Example Usage
 
 You can modify the variables to your own custom values, or just use the mixins with their default values. Here's an example of using the default settings to create a two-column layout with a gap between.
 
-{% capture example %}
+{% capture highlight %}
 .example-container {
   width: 800px;
   @include make-container();
@@ -822,7 +822,7 @@ You can modify the variables to your own custom values, or just use the mixins w
   }
 }
 {% endcapture %}
-{% renderHighlight example, "sass" %}
+{% renderHighlight highlight, "sass" %}
 
 {% capture example %}
 <div class="example-container">

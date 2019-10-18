@@ -1,12 +1,12 @@
 {% if site.environment == "production" -%}
 <form class="cf-search" role="search">
-    <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="{{ site.version.docs }}"/>
+  <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="{{ site.version.docs }}"/>
 </form>
 {%- endif %}
 
 {%- assign page_slug = page.url | pathLast -%}
 <button class="btn btn-default mb-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
-    <span aria-hidden="true">Pages <span class="caret" ></span></span>
+  <span aria-hidden="true">Pages <span class="caret" ></span></span>
 </button>
 <nav id="cf-links-nav" class="cf-links collapse" aria-label="Page">
   <ul class="list-unstyled">
@@ -20,11 +20,11 @@
     {%- endif -%}
     <li class="mb-0_25{% if page_count > 0 %} has-children{% endif %}">
       <a href="{{ site.path }}{{ pathVersion }}/{{ group_slug }}/{{ first_slug }}/" class="cf-sidebar-header fs-large font-weight-sbold{% if group == group_slug %} active open{% endif %}" data-cfw="collapse" data-cfw-collapse-target="#sidenav{{ forloop.index }}">
-          <span class="nav-link-inner">
-            {%- if page_count > 0 -%}<span class="caret" aria-hidden="true"></span>{%- endif -%}
-            <span class="cf-sidebar-header-title">{{- navgroup.title -}}</span>
-            {{- current_sect -}}
-          </span>
+        <span class="nav-link-inner">
+          {%- if page_count > 0 -%}<span class="caret" aria-hidden="true"></span>{%- endif -%}
+          <span class="cf-sidebar-header-title">{{- navgroup.title -}}</span>
+          {{- current_sect -}}
+        </span>
       </a>
       <div id="sidenav{{ forloop.index }}">
         <ul class="nav flex-column mb-0 pb-0_25">
@@ -38,10 +38,10 @@
             {%- endif -%}
             <li class="nav-item">
               {%- if group_slug == 'about' -%}
-                  <a href="{{ site.path }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link {{ active }}"><span class="nav-link-inner">{{ doc.title }}{{ current_page }}</span></a>
-                {%- else -%}
-                  <a href="{{ site.path }}{{ pathVersion }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link {{ active }}"><span class="nav-link-inner">{{ doc.title }} {{ current }}</span></a>
-                {%- endif -%}
+                <a href="{{ site.path }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link {{ active }}"><span class="nav-link-inner">{{ doc.title }}{{ current_page }}</span></a>
+              {%- else -%}
+                <a href="{{ site.path }}{{ pathVersion }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link {{ active }}"><span class="nav-link-inner">{{ doc.title }} {{ current }}</span></a>
+              {%- endif -%}
             </li>
           {% endfor -%}
         </ul>

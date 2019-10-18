@@ -32,7 +32,7 @@ Note that this bug will also affect any other in-page links your site may be usi
 {% endcapture %}
 {% renderCallout, callout, "danger" %}
 
-{% capture example %}
+{% capture highlight %}
 <body>
   <a href="#content" class="sr-only-focusable">Skip to main content</a>
   ...
@@ -41,7 +41,7 @@ Note that this bug will also affect any other in-page links your site may be usi
   </div>
 </body>
 {% endcapture %}
-{% renderHighlight example, "html" %}
+{% renderHighlight highlight, "html" %}
 
 ## Nested Headings
 
@@ -80,12 +80,12 @@ Some solutions include:
 - Add a `tabindex="-1"` attribute on disabled links to prevent them from receiving keyboard focus.
 - Add an `aria-disabled="true"` attribute to indicate the state of the element to assistive technologies.
 - Use custom JavaScript to disable their functionality. For example:
-{% capture example %}
+{% capture highlight %}
 $('.disabled').on('click', function(e) {
   e.preventDefault();
 });
 {% endcapture %}
-{% renderHighlight example, "js" %}
+{% renderHighlight highlight, "js" %}
 
 ## Conveying Meaning With Color
 

@@ -14,8 +14,85 @@
         padding: 1.5rem;
     }
 
+    // Form
     & > .form-control + .form-control {
         margin-top: .5rem;
+    }
+
+    // Button groups
+    & > .btn-group + .btn-group,
+    & > .btn-group + br + .btn-group {
+        margin-top: .5rem;
+    }
+
+    // Navbar
+    & > .navbar + .navbar {
+        margin-top: 1rem;
+    }
+
+    & .fixed-top,
+    & .sticky-top {
+        position: static;
+        margin: -1rem -1rem 1rem;
+
+        @include media-breakpoint-up(sm) {
+            margin: -1.5rem -1.5rem 1rem;
+        }
+    }
+    & .fixed-bottom {
+        position: static;
+        margin: 1rem -1rem -1rem;
+
+        @include media-breakpoint-up(sm) {
+            margin: 1rem -1.5rem -1.5rem;
+        }
+    }
+
+    // Pagination
+    & .pagination {
+        margin-top: .5rem;
+        margin-bottom: .5rem;
+    }
+
+    // Progress
+    & > .progress {
+        + .progress,
+        + .btn {
+            margin-top: 1rem;
+        }
+    }
+
+    // Utilities
+    & > .close {
+        float: none;
+    }
+    & > .valign-top,
+    & > .valign-middle,
+    & > .valign-bottom {
+        padding: .25em;
+        margin-bottom: .5em;
+        background-color: #f0f0f0;
+    }
+
+    // Dropdown
+    & > .dropdown-menu {
+        position: static;
+        display: block;
+        margin-bottom: .25rem;
+        clear: left;
+    }
+
+    & > .dropdown + .dropdown,
+    & > .btn-group + .btn-group,
+    & > .dropdown + .btn-group,
+    & > .btn-group + .dropdown {
+        margin-top: .5rem;
+    }
+
+    // Modal
+    & > .modal {
+        position: static;
+        display: block;
     }
 }
 
@@ -80,5 +157,200 @@
     }
     @include media-breakpoint-up(lg) {
         @include make-col(4);
+    }
+}
+
+// Caret mixins
+.btn {
+    .example-caret {
+        @include caret(start, .5rem, #000);
+    }
+
+    @include hover-focus() {
+        .example-caret {
+            @include caret-end(.5rem, #000);
+        }
+    }
+}
+
+// Card deck
+.card-deck-col {
+    flex-flow: row wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin-right: -1rem;
+    margin-bottom: 0;
+    margin-left: -1rem;
+}
+.card-deck-col > .card {
+    flex-basis: auto;
+    width: calc(100% - 2rem);
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+}
+@media (min-width: 35em) {
+    .card-deck-col > .card {
+        width: calc(50% - 2rem);
+    }
+}
+@media (min-width: 62em) {
+    .card-deck-col > .card {
+        width: calc(25% - 2rem);
+    }
+}
+
+// Accordion Cards
+.accordion {
+    > .card {
+        overflow: hidden;
+
+        &:not(:first-of-type) {
+            .card-header:first-child {
+                @include border-radius(0);
+            }
+
+            &:not(:last-of-type) {
+                border-bottom: 0;
+                @include border-radius(0);
+            }
+        }
+
+        &:first-of-type:not(:last-of-type) {
+            border-bottom: 0;
+            @include border-bottom-radius(0);
+        }
+
+        &:last-of-type:not(:first-of-type) {
+            @include border-top-radius(0);
+        }
+
+        .card-header {
+            margin-bottom: -$card-border-width;
+        }
+    }
+}
+
+// Dropdown
+.cf-example-dropdown {
+    height: 19em;
+
+    > .dropdown {
+        > .dropdown-menu {
+            display: block;
+            margin-bottom: .25rem;
+            clear: left;
+        }
+    }
+}
+
+// Tooltips & Popovers
+.cf-example-tooltip,
+.cf-example-popover {
+    background-color: #f0f0f0;
+}
+.cf-example-tooltip .tooltip,
+.cf-example-popover .popover {
+    position: relative;
+    display: block;
+    float: left;
+    width: 16rem;
+    margin: 1.25rem;
+}
+.cf-example-tooltip .tooltip {
+    width: auto;
+    padding: 4px;
+    margin: 1rem;
+    opacity: .9;
+}
+
+// Viewport Examples
+.container-viewport {
+    position: relative;
+    height: 150px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+}
+.container-viewport .viewport-text {
+    position: absolute;
+    top: 65px;
+    left: 50px;
+    font-weight: $font-weight-bold;
+}
+.container-viewport .tooltip,
+.container-viewport .popover {
+    min-width: 250px;
+    max-width: 500px;
+}
+.container-viewport .tooltip .tooltip-body {
+    min-width: 250px;
+    max-width: 500px;
+    min-height: 100px;
+    text-align: left;
+}
+.container-viewport .btn-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.container-viewport .btn-drag {
+    position: absolute;
+    bottom: 0;
+    left: 120px;
+}
+
+
+// Scrollspy
+.cf-example-scrollspy {
+    position: relative;
+    height: 12rem;
+    margin-top: .5rem;
+    overflow: auto;
+}
+.cf-example-scrollspy2 {
+    position: relative;
+    height: 20rem;
+    margin-top: .5rem;
+    overflow: auto;
+}
+
+// Border utilities
+.cf-example-border {
+    [class^="border"] {
+        display: inline-block;
+        width: 4rem;
+        height: 4rem;
+        margin: .25rem;
+        background-color: $uibase-50;
+    }
+}
+
+// Flex utilities
+.cf-example-flex {
+    .cf-example {
+        overflow: auto;
+    }
+    div {
+        background-color: rgba(34, 68, 102, .05);
+        border: $border-width solid rgba(34, 68, 102, .2);
+    }
+}
+
+// Breadcrumb
+.breadcrumb-chevron .breadcrumb-item + .breadcrumb-item::before {
+    content: quote(">");
+}
+.breadcrumb-icon .breadcrumb-item + .breadcrumb-item::before {
+    content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik0xLjUgMGwtMS41IDEuNSAyLjUgMi41LTIuNSAyLjUgMS41IDEuNSA0LTQtNC00eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMSkiIC8+Cjwvc3ZnPg==");
+}
+.breadcrumb-none .breadcrumb-item + .breadcrumb-item::before {
+    content: none;
+}
+
+// Stretched links
+.has-link-stretch {
+    a:not(.link-stretch) {
+        position: relative;
+        z-index: 2;
     }
 }
