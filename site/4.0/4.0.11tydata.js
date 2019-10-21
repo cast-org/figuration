@@ -103,14 +103,6 @@ module.exports = {
              { "title": "Tab-Responsive" },
              { "title": "Tooltip" }
           ]
-       },
-       {
-          "title": "About",
-          "pages": [
-             { "title": "Overview" },
-             { "title": "Team" },
-             { "title": "License" }
-          ]
        }
     ]
 };

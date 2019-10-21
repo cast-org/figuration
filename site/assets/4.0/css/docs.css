@@ -1156,6 +1156,93 @@ pre[class*="language-"] {
   z-index: 2;
 }
 
+.cfw-table th small,
+.responsive-utilities th small {
+  display: block;
+  font-weight: 400;
+  color: #999;
+}
+
+.responsive-utilities tbody th {
+  font-weight: 400;
+}
+
+.responsive-utilities td {
+  text-align: center;
+}
+
+.responsive-utilities .is-visible {
+  color: #084c0c;
+  background-color: #cfe8d0 !important;
+}
+
+.responsive-utilities .is-hidden {
+  color: #5e7182;
+  background-color: #f8f8f8 !important;
+}
+
+.responsive-utilities-test {
+  margin-top: .25rem;
+}
+
+.responsive-utilities-test .col-6 {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+.responsive-utilities-test span {
+  display: block;
+  padding: 1rem .5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  border-radius: 0.25rem;
+}
+
+.visible-on .col-6 > .not-visible,
+.hidden-on .col-6 > .not-visible {
+  color: #5e7182;
+  border: 1px solid #9eaab4;
+}
+
+.visible-on .col-6 .visible,
+.hidden-on .col-6 .visible {
+  color: #084c0c;
+  background-color: #cfe8d0;
+  border: 1px solid #9fd0a2;
+}
+
+@media (max-width: 35.98em) {
+  .d-xs-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 36em) and (max-width: 47.98em) {
+  .d-sm-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 48em) and (max-width: 61.98em) {
+  .d-md-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 62em) and (max-width: 74.98em) {
+  .d-lg-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 75em) {
+  .d-xl-only {
+    display: none !important;
+  }
+}
+
 .cf-callout {
   padding: 1rem;
   margin: 1rem 0;
