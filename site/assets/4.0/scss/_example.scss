@@ -244,26 +244,6 @@
     }
 }
 
-// Tooltips & Popovers
-.cf-example-tooltip,
-.cf-example-popover {
-    background-color: #f0f0f0;
-}
-.cf-example-tooltip .tooltip,
-.cf-example-popover .popover {
-    position: relative;
-    display: block;
-    float: left;
-    width: 16rem;
-    margin: 1.25rem;
-}
-.cf-example-tooltip .tooltip {
-    width: auto;
-    padding: 4px;
-    margin: 1rem;
-    opacity: .9;
-}
-
 // Viewport Examples
 .container-viewport {
     position: relative;
@@ -371,11 +351,11 @@
 }
 .responsive-utilities .is-visible {
     color: palette($success, 800);
-    background-color: palette($success, 100) !important;
+    background-color: palette($success, 100);
 }
 .responsive-utilities .is-hidden {
     color: $uibase-500;
-    background-color: #f8f8f8 !important;
+    background-color: #f8f8f8;
 }
 
 // Responsive tests
@@ -413,26 +393,26 @@
 
 @include media-breakpoint-only(xs) {
     .d-xs-only {
-        display: none !important;
+        display: none !important; // stylelint-disable-line declaration-no-important
     }
 }
 @include media-breakpoint-only(sm) {
     .d-sm-only {
-        display: none !important;
+        display: none !important; // stylelint-disable-line declaration-no-important
     }
 }
 @include media-breakpoint-only(md) {
     .d-md-only {
-        display: none !important;
+        display: none !important; // stylelint-disable-line declaration-no-important
     }
 }
 @include media-breakpoint-only(lg) {
     .d-lg-only {
-        display: none !important;
+        display: none !important; // stylelint-disable-line declaration-no-important
     }
 }
 @include media-breakpoint-only(xl) {
     .d-xl-only {
-        display: none !important;
+        display: none !important; // stylelint-disable-line declaration-no-important
     }
 }
