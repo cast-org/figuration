@@ -8,7 +8,7 @@ group: widgets
 
 {% capture callout %}
 Widget Dependencies
-{:.h5 .no_toc}
+{.h5}
 
 Sideshow requires the following:
 

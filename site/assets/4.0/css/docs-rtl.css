@@ -1063,34 +1063,6 @@ pre[class*="language-"] {
   clear: right;
 }
 
-.cf-example-tooltip,
-.cf-example-popover {
-  background-color: #f0f0f0;
-}
-
-.cf-example-tooltip::after,
-.cf-example-popover::after {
-  display: block;
-  clear: both;
-  content: "";
-}
-
-.cf-example-tooltip .tooltip,
-.cf-example-popover .popover {
-  position: relative;
-  display: block;
-  float: right;
-  width: 16rem;
-  margin: 1.25rem;
-}
-
-.cf-example-tooltip .tooltip {
-  width: auto;
-  padding: 4px;
-  margin: 1rem;
-  opacity: .9;
-}
-
 .container-viewport {
   position: relative;
   height: 150px;

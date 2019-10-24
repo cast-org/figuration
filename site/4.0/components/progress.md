@@ -146,7 +146,7 @@ Animated progress bars are not available in browsers that do not support CSS3 an
   <div class="progress">
     <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
   </div>
-  <button type="button" class="btn btn-outline-secondary cf-toggle-animated-progress" data-toggle="button" aria-pressed="false" autocomplete="off">
+  <button type="button" class="btn btn-outline-secondary cf-toggle-animated-progress" data-toggle="button" aria-pressed="false">
     Toggle animation
   </button>
 </div>

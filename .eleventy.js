@@ -2,6 +2,10 @@ const fs = require('fs');
 const prism = require('prismjs');
 const prismLoader = require('prismjs/components/index.js');
 const slugify = require('slugify');
+const markdownIt = require('markdown-it');
+const markdownItAttrs = require('markdown-it-attrs');
+const markdownItAnchor = require('markdown-it-anchor');
+const markdownItToc = require('markdown-it-toc-done-right');
 
 module.exports = function(eleventyConfig) {
     eleventyConfig.setDataDeepMerge(true);
@@ -26,11 +30,7 @@ module.exports = function(eleventyConfig) {
     });
 
     // Markdown plugins
-    const slugifyHeading = s => slugify(s, {lower: true, remove: /[*+~.()'"!:@\/]/g});
-    const markdownIt = require('markdown-it');
-    const markdownItAttrs = require('markdown-it-attrs');
-    const markdownItAnchor = require('markdown-it-anchor');
-    const markdownItToc = require('markdown-it-toc-done-right');
+    const slugifyHeading = s => slugify(s, {lower: true, remove: /[*+~.()'"!:@\[\]\/]/g});
     const markdownItOptions = {
         html: true,
         breaks: true,
@@ -40,7 +40,7 @@ module.exports = function(eleventyConfig) {
         slugify: slugifyHeading,
         permalink: true,
         permalinkClass: 'direct-link',
-        permalinkSymbol: '\ue9cb'
+        permalinkSymbol: '#'
     };
     const markdownItTocOptions = {
         slugify: slugifyHeading,

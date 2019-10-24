@@ -288,25 +288,15 @@ module.exports = function(grunt) {
         htmllint: {
             options: {
                 ignore: [
-                    'Attribute "autocomplete" is only allowed when the input type is "color", "date", "datetime", "datetime-local", "email", "hidden", "month", "number", "password", "range", "search", "tel", "text", "time", "url", or "week".',
-                    'Attribute "autocomplete" not allowed on element "button" at this point.',
-                    'Attribute "focusable" not allowed on element "svg" at this point.',
                     'Consider using the "h1" element as a top-level heading only (all "h1" elements are treated as top-level headings by many screen readers and other tools).',
-                    'Element "div" not allowed as child of element "progress" in this context. (Suppressing further errors from this subtree.)',
                     'Element "legend" not allowed as child of element "div" in this context. (Suppressing further errors from this subtree.)',
                     'Element "img" is missing required attribute "src".',
                     'The "color" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-                    'The "date" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-                    'The "datetime" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-                    'The "datetime-local" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-                    'The "month" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-                    'The "time" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-                    'The "week" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-                    'The "main" role is unnecessary for element "main".'
+                    'The "datetime-local" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.'
                 ]
             },
             docs: {
-                src: ['_gh_pages/**/*.html']
+                src: ['_siteout/**/*.html']
             },
             test: {
                 src: ['test/visual/*.html']
@@ -340,6 +330,12 @@ module.exports = function(grunt) {
             },
             npmJsTestCloud: {
                 exec: 'npm run js-test-cloud'
+            },
+            npmDocsBuild: {
+                exec: 'npm run docs-build'
+            },
+            npmLinkinator: {
+                exec: 'npm run linkinator'
             }
         }
     });
@@ -379,7 +375,7 @@ module.exports = function(grunt) {
     grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js']);
 
     // Docs tasks
-    grunt.registerTask('docs-test-html', ['jekyll:docs', 'htmllint:docs']);
+    grunt.registerTask('docs-test-html', ['run:npmDocsBuild', 'htmllint:docs', 'run:npmLinkinator']);
     grunt.registerTask('docs-test-css', ['stylelint:docs', 'run:npmCssLintVarsDocs']);
     grunt.registerTask('docs-dist-css', ['sass:docs', 'postcss:docs', 'rtlcss:docs', 'cssmin:docs']);
     grunt.registerTask('docs-test-js', ['eslint:docs']);

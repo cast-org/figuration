@@ -233,7 +233,7 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
 Due to their specific implementation (and some other components), a bit of special casing is required for tooltips and popovers within button groups. **You'll have to specify the option `container: 'body'`** to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).
 
 {% capture example %}
-<div class="btn-toolbar" aria-label="Toolbar with tooltip buttons">
+<div class="btn-toolbar" role="group" aria-label="Toolbar with tooltip buttons">
   <div class="btn-group me-1">
     <button type="button" class="btn" data-cfw="tooltip" data-cfw-tooltip-title="I have a long sentence to be crushed inside a tooltip.">Tooltip</button>
   </div>
@@ -245,7 +245,7 @@ Due to their specific implementation (and some other components), a bit of speci
 {% renderExample example %}
 
 {% capture example %}
-<div class="btn-toolbar" aria-label="Toolbar with popover buttons">
+<div class="btn-toolbar" role="group" aria-label="Toolbar with popover buttons">
   <div class="btn-group me-1">
     <button type="button" class="btn" data-cfw="popover" data-cfw-popover-title="Popover title" data-cfw-popover-content="I have a long sentence to be crushed inside a popover.">Popover</button>
   </div>

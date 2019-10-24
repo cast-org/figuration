@@ -1275,7 +1275,7 @@ Use [text or background utilities]({{ site.path }}/{{ version.docs }}/utilities/
 All cells use `border-top` for their horizontal borders,  while `<thead>` adds a `border-bottom` to `<th>` elements.
 All cells use `border-left` for their vertical ones, unless they are the last ones in a row, then they potentially add a `border-right` depending on the modifier used.
 
-<div class="cf-example"
+<div class="cf-example">
   <table class="table table-bordered border-primary">
     <thead>
       <tr>

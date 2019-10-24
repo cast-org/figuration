@@ -19,7 +19,11 @@
       {%- assign current_sect = ' <span class="sr-only">(current section)</span>' -%}
     {%- endif -%}
     <li class="mb-0_25{% if page_count > 0 %} has-children{% endif %}">
+      {%- if group_slug == 'about' -%}
+      <a href="{{ site.path }}/{{ group_slug }}/{{ first_slug }}/" class="cf-sidebar-header fs-large font-weight-sbold{% if group == group_slug %} active open{% endif %}" data-cfw="collapse" data-cfw-collapse-target="#sidenav{{ forloop.index }}">
+      {%- else -%}
       <a href="{{ site.path }}{{ pathVersion }}/{{ group_slug }}/{{ first_slug }}/" class="cf-sidebar-header fs-large font-weight-sbold{% if group == group_slug %} active open{% endif %}" data-cfw="collapse" data-cfw-collapse-target="#sidenav{{ forloop.index }}">
+      {%- endif -%}
         <span class="nav-link-inner">
           {%- if page_count > 0 -%}<span class="caret" aria-hidden="true"></span>{%- endif -%}
           <span class="cf-sidebar-header-title">{{- navgroup.title -}}</span>

@@ -249,7 +249,7 @@ palette($color, $level)
         <td>integer</td>
         <td><code>500</code></td>
         <td>
-           Valid levels are integer values 0-1000, with 0 being the lightest, 1000 being the darkest, 500 results in an unchanged color. Special values: level < 0 = <code>#fff</code>, level > 1000 = <code>#000</code>.
+           Valid levels are integer values 0-1000, with 0 being the lightest, 1000 being the darkest, 500 results in an unchanged color. Special values: level &lt; 0 = <code>#fff</code>, level &gt; 1000 = <code>#000</code>.
         </td>
       </tr>
     </tbody>
@@ -641,7 +641,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$level-control</code></td>
         <td>string</td>
         <td>
-<code><pre>("bg": 500,
+<pre><code>("bg": 500,
 "color": -1,
 "border-color": 600,
 "hover-bg": 600,
@@ -649,18 +649,18 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
 "hover-border-color": 700,
 "active-bg": 700,
 "active-color": -1,
-"active-border-color": 700)</pre></code>
+"active-border-color": 700)</code></pre>
         </td>
         <td>
           <p>Palette levels for use in _mix-context-colors() to determine standardized color mapping for control items, such as buttons.</p>
-          <p>Special values: level < 0 = <code>#fff</code>, level > 1000 = <code>#000</code>.</p>
+          <p>Special values: level &lt; 0 = <code>#fff</code>, level &gt; 1000 = <code>#000</code>.</p>
         </td>
       </tr>
       <tr>
         <td><code>$level-context</code></td>
         <td>string</td>
         <td>
-<code><pre>("bg": 100,
+<pre><code>("bg": 100,
 "color": 800,
 "border-color": 200,
 "hover-bg": 200,
@@ -668,11 +668,11 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
 "hover-border-color": 300,
 "active-bg": 300,
 "active-color": 900,
-"active-border-color":300)</pre></code>
+"active-border-color":300)</code></pre>
         </td>
         <td>
           <p>Palette levels for use in _mix-context-colors() to determine standardized color mapping for contextual items, such as alerts, lists, and tables.</p>
-          <p>Special values: level < 0 = <code>#fff</code>, level > 1000 = <code>#000</code>.</p>
+          <p>Special values: level &lt; 0 = <code>#fff</code>, level &gt; 1000 = <code>#000</code>.</p>
         </td>
       </tr>
       <tr>
@@ -687,14 +687,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$base-colors</code></td>
         <td>string</td>
         <td>
-<code><pre>("primary": $primary,
+<pre><code>("primary": $primary,
 "secondary": $secondary,
 "info": $info,
 "success": $success,
 "warning": $warning,
 "danger": $danger,
 "light": $light,
-"dark": $dark)</pre></code>
+"dark": $dark)</code></pre>
         </td>
         <td>
           Base color map used to generate the control and contextual variants.
@@ -704,14 +704,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$palette-colors</code></td>
         <td>string</td>
         <td>
-<code><pre>("uibase": $uibase,
+<pre><code>("uibase": $uibase,
 "primary": $primary,
 "secondary": $secondary,
 "info": $info,
 "success": $success,
 "warning": $warning,
 "danger": $danger,
-"gray": $gray)</pre></code>
+"gray": $gray)</code></pre>
         </td>
         <td>
           Base color map used to generate the palette utility variants.

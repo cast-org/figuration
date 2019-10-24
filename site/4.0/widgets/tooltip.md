@@ -465,7 +465,7 @@ This will not necessarily work with some assistive technologies reading modes.
 
 ### Variables
 
-The available [Customization options]({{ site.baseurl }}/{{ site.docs_version }}/get-started/options/), or Sass variables, that can be customized for the tooltip component.
+The available [Customization options]({{ site.path }}/{{ version.docs }}/get-started/options/), or Sass variables, that can be customized for the tooltip component.
 
 <div class="table-scroll">
   <table class="table table-bordered table-striped">

@@ -15,7 +15,7 @@ Use the [display utilities]({{ site.path }}/{{ version.docs }}/utilities/display
 
 ## Flexbox options
 
-Figuration is built with some flexbox support, but not every element's `display` been changed to `display: flex` as this would add many unnecessary overrides and unexpectedly change key browser behaviors. Many of [the components]({{ site.path }}/{{ version.docs }}/components/) are built with support for [flexbox enabled modes]({{ site.path }}/{{ version.docs }}/utilities/flexbox/).
+Figuration is built with some flexbox support, but not every element's `display` been changed to `display: flex` as this would add many unnecessary overrides and unexpectedly change key browser behaviors. Many of Figuration's components are built with support for [flexbox enabled modes]({{ site.path }}/{{ version.docs }}/utilities/flexbox/).
 
 Should you need to add `display: flex` to an element, do so with `.d-flex` or one of the responsive variants (e.g., `.d-sm-flex`). You'll need this class or `display` value to allow the use of our extra [flexbox utilities]({{ site.path }}/{{ version.docs }}/utilities/flexbox/) for sizing, alignment, spacing, and more.
 
