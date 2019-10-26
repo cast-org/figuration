@@ -78,7 +78,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
 
 Here are the mixins related to this grouping of utility classes that we use to help generate our CSS.  You can also uses these mixins to generate your own custom components or utilities.
 
-#### float-start
+#### float-start()
 
 Apply a float to the 'start' side.
 
@@ -87,7 +87,7 @@ Apply a float to the 'start' side.
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 
-#### float-end
+#### float-end()
 
 Apply a float to the 'end' side.
 
@@ -96,7 +96,7 @@ Apply a float to the 'end' side.
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 
-#### float-none
+#### float-none()
 
 Disable float.
 

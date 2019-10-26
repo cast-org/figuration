@@ -49,7 +49,6 @@ The following example shows how the clearfix can be used. Without the clearfix t
     <button type="button" class="btn float-start">Button floated to start</button>
     <button type="button" class="btn float-end">Button floated to end</button>
   </div>
-
   <strong>Without <code>.clearfix</code></strong>
   <div class="bg-info">
     <button type="button" class="btn float-start">Button floated to start</button>
@@ -104,7 +103,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
 
 Here are the mixins related to this grouping of utility classes that we use to help generate our CSS.  You can also uses these mixins to generate your own custom components or utilities.
 
-#### clearfix
+#### clearfix()
 
 Apply a clearfix to an element.
 
@@ -113,7 +112,7 @@ Apply a clearfix to an element.
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 
-#### clearfix-disable
+#### clearfix-disable()
 
 Disable the clearfix on an element.
 

@@ -78,14 +78,12 @@ Working with a language that reads from right to left? Use the `rtl` version of 
 
 The steps needed to switch from `ltr` to `rtl` mode are:
 - Add the `dir="rtl"` attribute to the `<html>` tag.
-- Update the `lang` attribute on the `<html>` tag to match the language being used. Refer to this [list of language codes](https://www.loc.gov/standards/iso639-2/php/code_list.php) provided by the US Library of Congress to find the one you require.
-  {% capture highlight %}
+- Update the `lang` attribute on the `<html>` tag to match the language being used. Refer to this [list of language codes](https://www.loc.gov/standards/iso639-2/php/code_list.php) provided by the US Library of Congress to find the one you require.{% capture highlight %}
 <!-- This example is for a right-to-left Arabic layout -->
 <html lang="ar" dir="rtl">
   {% endcapture %}
   {% renderHighlight highlight, "html" %}
-- Load the `rtl` version of the Figuration CSS.  Load this **in place of** the default Figuration CSS.
-  {% capture highlight %}
+- Load the `rtl` version of the Figuration CSS.  Load this **in place of** the default Figuration CSS.{% capture highlight %}
 <!-- Figuration RTL CSS -->
 <link rel="stylesheet" href="{{ site.cdn.css_rtl }}" integrity="{{ site.cdn.css_rtl_hash }}" crossorigin="anonymous">
   {% endcapture %}

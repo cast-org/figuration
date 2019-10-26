@@ -380,7 +380,7 @@ Various buttons are supported as part of these navbar forms, too. This is also a
 <nav class="navbar navbar-light bg-light">
   <form class="form-inline">
     <button type="button" class="btn btn-outline-success me-0_25">Main button</button>
-    <button type="button" class="btn btn-sm align-middle btn-outline-secondary">Smaller button</button>
+    <button type="button" class="btn btn-small align-middle btn-outline-secondary">Smaller button</button>
   </form>
 </nav>
 {% endcapture %}

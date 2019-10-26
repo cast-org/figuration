@@ -271,20 +271,6 @@ module.exports = function(grunt) {
             }
         },
 
-        jekyll: {
-            options: {
-                bundleExec: true,
-                config: '_config.yml',
-                incremental: false
-            },
-            docs: {},
-            github: {
-                options: {
-                    raw: 'github: true'
-                }
-            }
-        },
-
         htmllint: {
             options: {
                 ignore: [
@@ -334,6 +320,9 @@ module.exports = function(grunt) {
             npmDocsBuild: {
                 exec: 'npm run docs-build'
             },
+            npmDocsServe: {
+                exec: 'npm run docs-serve'
+            },
             npmLinkinator: {
                 exec: 'npm run linkinator'
             }
@@ -380,6 +369,6 @@ module.exports = function(grunt) {
     grunt.registerTask('docs-dist-css', ['sass:docs', 'postcss:docs', 'rtlcss:docs', 'cssmin:docs']);
     grunt.registerTask('docs-test-js', ['eslint:docs']);
     grunt.registerTask('docs-dist-js', ['uglify:docs']);
-    grunt.registerTask('docs', ['docs-test-css', 'clean:docscss', 'docs-dist-css', 'docs-test-js', 'docs-dist-js', 'clean:docs', 'copy:docs']);
-    grunt.registerTask('docs-github', ['jekyll:github']);
+    grunt.registerTask('docs-test', ['docs-test-css', 'docs-test-js', 'docs-test-html']);
+    grunt.registerTask('docs', ['run:npmDocsServe']);
 };

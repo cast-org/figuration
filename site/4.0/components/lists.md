@@ -17,7 +17,7 @@ Lists are a flexible component for displaying a series of content with various s
 
 In the basic form, a `.list` removes the default `list-style` and left margin on list items, but nested lists will be indented.
 
-The **use of the `.list-item` class required** for each `<li>` or simulated list item, for proper styling.
+The **use of the `.list-item` class is required** for each `<li>` or simulated list item, for proper styling.
 
 {% capture example %}
 <ul class="list">
@@ -879,7 +879,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
 
 Here are the mixins related to lists that we use to help generate our CSS.  You can also uses these mixins to generate your own custom components or utilities.
 
-#### list-unstyled
+#### list-unstyled()
 
 List with no left padding or list item markers.
 
@@ -888,7 +888,7 @@ List with no left padding or list item markers.
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 
-#### list-item-variant
+#### list-item-variant()
 
 Create a contextual color variant for a list item.
 

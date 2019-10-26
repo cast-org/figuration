@@ -481,11 +481,9 @@ Here's the source code for creating these styles. Note that column overrides are
 In practice, here's how it looks. Note you can continue to use this with all other predefined grid classes (including column widths, responsive tiers, reorders, and more).
 
 {% capture example %}
-<div class="container">
-  <div class="row no-gutters">
-    <div class="col-sm-6 col-md-8">.col-sm-6 .col-md-8</div>
-    <div class="col-6 col-md-4">.col-6 .col-md-4</div>
-  </div>
+<div class="row no-gutters">
+  <div class="col-sm-6 col-md-8">.col-sm-6 .col-md-8</div>
+  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
 </div>
 {% endcapture %}
 {% renderExample example, "cf-example-row" %}
@@ -498,9 +496,9 @@ Here is an example of customizing the grid at the large (`lg`) breakpoint and ab
 
 {% capture example %}
 <div class="container">
-  <div class="row mx-lg-n2">
-    <div class="col px-lg-2">Custom column padding</div>
-    <div class="col px-lg-2">Custom column padding</div>
+  <div class="row mx-md-n2">
+    <div class="col px-md-2">Custom column padding</div>
+    <div class="col px-md-2">Custom column padding</div>
   </div>
 </div>
 {% endcapture %}
@@ -509,10 +507,10 @@ Here is an example of customizing the grid at the large (`lg`) breakpoint and ab
 In some cases, you may also have to adjust the padding on the parent container of the `.row` element to prevent horizontal scrollbars from occuring.  For example, using the custom negative margin example above, you may find the need to use `.px-lg-2` on the parent `.container-fluid`.
 
 {% capture example %}
-<div class="container-fluid px-lg-2">
-  <div class="row mx-lg-n2">
-    <div class="col px-lg-2">Custom horizontal column padding</div>
-    <div class="col px-lg-2">Custom horizontal column padding</div>
+<div class="container-fluid px-md-2">
+  <div class="row mx-md-n2">
+    <div class="col px-md-2">Custom horizontal column padding</div>
+    <div class="col px-md-2">Custom horizontal column padding</div>
   </div>
 </div>
 {% endcapture %}
@@ -594,7 +592,7 @@ Use [flexbox order utilities]({{ site.path }}/{{ version.docs }}/utilities/flexb
 {% endcapture %}
 {% renderExample example, "cf-example-row" %}
 
-Order utilities are also available in column counts.
+Order utilities are also available in responsive order values from values `0` through `6` .
 
 {% capture example %}
 <div class="container">
@@ -602,7 +600,7 @@ Order utilities are also available in column counts.
     <div class="col order-2">
       First, but second
     </div>
-    <div class="col order-12">
+    <div class="col order-6">
       Second, but last
     </div>
     <div class="col order-1">

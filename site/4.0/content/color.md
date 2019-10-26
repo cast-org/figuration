@@ -472,9 +472,7 @@ $base-colors: (
 
 Figuration uses mixed themes to build out our components. This way color stays consitent across all aspects of the component.
 
-You can mix your own theme by using the
-
-_mix-context-colors($colors, $levels)
+You can mix your own theme by using the `_mix-context-colors()` function.
 
 {% capture highlight %}
 _mix-context-colors($colors, $levels);

@@ -29,9 +29,9 @@
     </ul>
   </nav>
 
-  <ul class="navbar-nav ms-auto cf-header-social flex-row me-1">
+  <ul class="navbar-nav ms-auto cf-header-social flex-row">
     {%- if site.environment == "production" %}
-    <li class="nav-item">
+    <li class="nav-item me-1">
       {%- include "./partials/version_menu.html" %}
     </li>
     {%- endif -%}
@@ -45,7 +45,6 @@
         {% include "./icons/github.svg", width: "1rem", height: "1rem" %}
       </a>
     </li>
-    <li class="navbar-divider" role="presentation"></li>
     <li class="nav-item">
       {%- assign settings_menu = pathPartials | append: "/settings_menu.html" -%}
       {%- include settings_menu %}

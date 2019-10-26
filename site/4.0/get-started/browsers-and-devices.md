@@ -129,7 +129,7 @@ Unofficially, Figuration should look and behave well enough in Chromium and Chro
 
 Internet Explorer 11+ is also supported, IE 10 and down are not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit [Can I use…](https://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
 
-### MutationObserver
+## MutationObserver
 
 Some of Figuration's [JavaScript Widgets]({{ site.path }}/{{ version.docs }}/widgets/overview/) have some support for the use of [MutationObserver](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) to watch for and respond to changes in the DOM.
 

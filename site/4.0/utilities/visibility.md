@@ -73,7 +73,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
 
 ### Mixins
 
-#### invisible
+#### invisible()
 
 Set an element to be invisible.
 
@@ -82,7 +82,7 @@ Set an element to be invisible.
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 
-#### visible
+#### visible()
 
 Set an element to be visible.
 

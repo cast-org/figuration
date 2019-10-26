@@ -381,7 +381,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
 
 Here are the mixins related to this grouping of utility classes that we use to help generate our CSS.  You can also uses these mixins to generate your own custom components or utilities.
 
-#### border-radius
+#### border-radius()
 
 Apply a border radius to an element.
 
@@ -413,7 +413,7 @@ Apply a border radius to an element.
   </table>
 </div>
 
-#### border-top-radius
+#### border-top-radius()
 
 Apply a border radius the corners on the top side of an element.
 
@@ -445,7 +445,7 @@ Apply a border radius the corners on the top side of an element.
   </table>
 </div>
 
-#### border-end-radius
+#### border-end-radius()
 
 Apply a border radius the corners on the end side of an element.
 
@@ -477,7 +477,7 @@ Apply a border radius the corners on the end side of an element.
   </table>
 </div>
 
-#### border-bottom-radius
+#### border-bottom-radius()
 
 Apply a border radius the corners on the bottom side of an element.
 
@@ -509,7 +509,7 @@ Apply a border radius the corners on the bottom side of an element.
   </table>
 </div>
 
-#### border-start-radius
+#### border-start-radius()
 
 Apply a border radius the corners on the start side of an element.
 
@@ -541,7 +541,7 @@ Apply a border radius the corners on the start side of an element.
   </table>
 </div>
 
-#### border-top-start-radius
+#### border-top-start-radius()
 
 Apply a border radius on the top start corner of an element.
 
@@ -573,7 +573,7 @@ Apply a border radius on the top start corner of an element.
   </table>
 </div>
 
-#### border-top-end-radius
+#### border-top-end-radius()
 
 Apply a border radius on the top end corner of an element.
 
@@ -605,7 +605,7 @@ Apply a border radius on the top end corner of an element.
   </table>
 </div>
 
-#### border-bottom-start-radius
+#### border-bottom-start-radius()
 
 Apply a border radius on the bottom start corner of an element.
 
@@ -637,7 +637,7 @@ Apply a border radius on the bottom start corner of an element.
   </table>
 </div>
 
-#### border-bottom-end-radius
+#### border-bottom-end-radius()
 
 Apply a border radius on the bottom end corner of an element.
 
@@ -669,7 +669,7 @@ Apply a border radius on the bottom end corner of an element.
   </table>
 </div>
 
-#### radius-sides
+#### radius-sides()
 
 Generate component size border radius utility classes for use with an element's sides.
 
@@ -709,7 +709,7 @@ Generate component size border radius utility classes for use with an element's 
   </table>
 </div>
 
-#### radius-corners
+#### radius-corners()
 
 Generate component size border radius utility classes for use with an element's individual corners.
 

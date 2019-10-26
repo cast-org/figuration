@@ -725,7 +725,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
 
 Here are the mixins related to buttons that we use to help generate our CSS.  You can also uses these mixins to generate your own custom components or utilities.
 
-#### button-variant
+#### button-variant()
 
 Build a color variant to be applied to a button.
 
@@ -837,7 +837,7 @@ Build a color variant to be applied to a button.
   </table>
 </div>
 
-#### button-variant-control
+#### button-variant-control()
 
 Build a button color variant, using a pre-mixed color map.
 
@@ -877,7 +877,7 @@ Build a button color variant, using a pre-mixed color map.
   </table>
 </div>
 
-#### button-variant-control-outline
+#### button-variant-control-outline()
 
 Build a outline button color variant, using a pre-mixed color map, with a special override for the inactive background color.
 
@@ -925,7 +925,7 @@ Build a outline button color variant, using a pre-mixed color map, with a specia
   </table>
 </div>
 
-#### button-size
+#### button-size()
 
 Build a button size variant.
 

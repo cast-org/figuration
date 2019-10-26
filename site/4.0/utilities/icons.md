@@ -238,7 +238,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
 
 Here are the mixins related to this grouping of utility classes that we use to help generate our CSS.  You can also uses these mixins to generate your own custom components or utilities.
 
-#### caret
+#### caret()
 
 Build the base caret icon.
 
@@ -286,7 +286,7 @@ Build the base caret icon.
   </table>
 </div>
 
-#### caret-up
+#### caret-up()
 
 Alter the base caret to point in the up direction. Uuseful for a `hover` or `active` state.
 
@@ -326,7 +326,7 @@ Alter the base caret to point in the up direction. Uuseful for a `hover` or `act
   </table>
 </div>
 
-#### caret-down
+#### caret-down()
 
 Alter the base caret to point in the down direction. Uuseful for a `hover` or `active` state.
 
@@ -366,7 +366,7 @@ Alter the base caret to point in the down direction. Uuseful for a `hover` or `a
   </table>
 </div>
 
-#### caret-start
+#### caret-start()
 
 Alter the base caret to point in the start direction. Uuseful for a `hover` or `active` state.
 
@@ -406,7 +406,7 @@ Alter the base caret to point in the start direction. Uuseful for a `hover` or `
   </table>
 </div>
 
-#### caret-end
+#### caret-end()
 
 Alter the base caret to point in the end direction. Uuseful for a `hover` or `active` state.
 

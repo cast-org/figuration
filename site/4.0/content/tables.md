@@ -1474,50 +1474,26 @@ You may also use [text or background utilities]({{ site.path }}/{{ version.docs 
         <td>Column content</td>
         <td>Column content</td>
       </tr>
-      <tr>
+      <tr class="bg-success">
         <th scope="row">2</th>
         <td>Column content</td>
         <td>Column content</td>
         <td>Column content</td>
       </tr>
-      <tr class="bg-success">
+      <tr class="bg-info text-white">
         <th scope="row">3</th>
         <td>Column content</td>
         <td>Column content</td>
         <td>Column content</td>
       </tr>
-      <tr>
+      <tr class="bg-warning">
         <th scope="row">4</th>
         <td>Column content</td>
         <td>Column content</td>
         <td>Column content</td>
       </tr>
-      <tr class="bg-info text-white">
-        <th scope="row">5</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-      </tr>
-      <tr>
-        <th scope="row">6</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-      </tr>
-      <tr class="bg-warning">
-        <th scope="row">7</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-      </tr>
-      <tr>
-        <th scope="row">8</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-      </tr>
       <tr class="bg-danger text-white">
-        <th scope="row">9</th>
+        <th scope="row">5</th>
         <td>Column content</td>
         <td>Column content</td>
         <td>Column content</td>
@@ -1536,19 +1512,19 @@ You may also use [text or background utilities]({{ site.path }}/{{ version.docs 
 
 {% capture highlight %}
 <!-- On rows -->
-<tr class="bg-primary">...</tr>
+<tr class="bg-primary text-white">...</tr>
 <tr class="bg-success">...</tr>
-<tr class="bg-info">...</tr>
+<tr class="bg-info text-white">...</tr>
 <tr class="bg-warning">...</tr>
-<tr class="bg-danger">...</tr>
+<tr class="bg-danger text-white">...</tr>
 
 <!-- On cells (`td` or `th`) -->
 <tr>
-  <td class="bg-primary">...</td>
+  <td class="bg-primary text-white">...</td>
   <td class="bg-success">...</td>
-  <td class="bg-info">...</td>
+  <td class="bg-info text-white">...</td>
   <td class="bg-warning">...</td>
-  <td class="bg-danger">...</td>
+  <td class="bg-danger text-white">...</td>
 </tr>
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
@@ -1886,7 +1862,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
 
 Here are the mixins related to tables that we use to help generate our CSS.  You can also uses these mixins to generate your own custom components or utilities.
 
-#### table-row-variant
+#### table-row-variant()
 
 Build a color variant to be applied to a table row, `<tr>`, element.
 
@@ -1934,7 +1910,7 @@ Build a color variant to be applied to a table row, `<tr>`, element.
   </table>
 </div>
 
-#### table-scroll
+#### table-scroll()
 
 Enable horizontal scrolling on a `<table>` element.
 

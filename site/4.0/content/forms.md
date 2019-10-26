@@ -219,8 +219,8 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
       </select>
     </div>
     <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="disabled-check">
-        <label class="form-check-label" for="disabled-check">Can't check this</label>
+      <input type="checkbox" class="form-check-input" id="disabled-check">
+      <label class="form-check-label" for="disabled-check">Can't check this</label>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </fieldset>
@@ -2591,7 +2591,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
 
 Here are the mixins related to forms that we use to help generate our CSS.  You can also uses these mixins to generate your own custom components or utilities.
 
-#### form-validation-state
+#### form-validation-state()
 
 Build form validation rules.
 
@@ -2639,7 +2639,7 @@ Build form validation rules.
   </table>
 </div>
 
-#### form-control-focus
+#### form-control-focus()
 
 Add the focus state to a form control or input.
 
@@ -2657,7 +2657,7 @@ Add the common, cross-browser rules for track of a range input.
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 
-#### form-range-thumb
+#### form-range-thumb()
 
 Add the common, cross-browser rules for thumb of a range input.
 

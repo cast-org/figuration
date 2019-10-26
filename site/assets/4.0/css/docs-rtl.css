@@ -469,6 +469,7 @@
   min-width: 0;
   margin-bottom: 1rem;
   margin-right: 1.25rem;
+  font-size: 0.9735rem;
   padding-right: 0;
   list-style: none;
 }
@@ -553,7 +554,6 @@
 
 @media (min-width: 48em) {
   .cf-content {
-    padding-top: 1.5rem;
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }
@@ -576,6 +576,10 @@ h2 > code,
 h3 > code,
 h4 > code {
   font-weight: 500;
+}
+
+.cf-title {
+  font-size: 3rem;
 }
 
 .direct-link {
@@ -655,6 +659,34 @@ h4 > code {
   display: block;
   clear: both;
   content: "";
+}
+
+.cf-content > table:not(.table) {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  border: 1px solid #bfc6cd;
+}
+
+.cf-content > table:not(.table) th,
+.cf-content > table:not(.table) td {
+  padding: 0.5rem;
+  vertical-align: top;
+  border: 1px solid #bfc6cd;
+}
+
+.cf-content > table:not(.table) thead th,
+.cf-content > table:not(.table) thead td {
+  vertical-align: bottom;
+  border-bottom-width: 2px;
+}
+
+.cf-content > table:not(.table) tbody + tbody {
+  border-top: 2px solid #bfc6cd;
+}
+
+.cf-content > table:not(.table) .table {
+  background-color: #fff;
 }
 
 code[class*="language-"],

@@ -328,7 +328,7 @@ Quick responsive order utilities:
 - `.order-{breakpoint}-last`
 - `.order-{breakpoint}-unordered`
 
-Even greater control is available with responsive order classes that set a specific order value.  These are in the form of `.order-{breakpoint}-{col}`, such as `.order-2.order-md-4`. Available order values include `1` through `6` across all breakpoints.
+Even greater control is available with responsive order classes that set a specific order value.  These are in the form of `.order-{breakpoint}-{col}`, such as `.order-2.order-md-4`. Available order values include `0` through `6` across all breakpoints.
 
 {% capture example %}
 <div class="row">

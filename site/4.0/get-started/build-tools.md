@@ -6,8 +6,6 @@ group: get-started
 ---
 
 [sass]: http://sass-lang.com/
-[install-ruby]: https://www.ruby-lang.org/en/documentation/installation/
-[gembundler]: https://bundler.io/
 [node-sass]: https://github.com/sass/node-sass
 [grunt-sass]: https://github.com/sindresorhus/grunt-sass
 [autoprefixer]: https://github.com/postcss/autoprefixer
@@ -17,7 +15,7 @@ group: get-started
 [eslint]: https://eslint.org/
 [stylelint]: https://stylelint.io/
 
-Figuration uses [Node.js](https://nodejs.org/) and [Grunt](https://gruntjs.com/) for its CSS and JavaScript build system and Jekyll for the written documentation. Our Gruntfile includes convenient methods for working with the framework, including compiling code, running tests, and more.
+Figuration uses [Node.js](https://nodejs.org/) and [Grunt](https://gruntjs.com/) for its CSS and JavaScript build system and [Eleventy](http://11ty.io) for the written documentation. This provides convenient methods for working with the framework, including compiling code, running tests, and more.
 
 <div class="h3 cf-toc-header">Page Contents</div>
 
@@ -30,8 +28,6 @@ To use our Gruntfile and run our documentation locally, you'll need a copy of Fi
 1. [Download and install Node.js](https://nodejs.org/en/download/), which we use to manage our dependencies.
 2. Install the Grunt command line tools, `grunt-cli`, with `npm install -g grunt-cli`.
 3. Navigate to the root `/figuration` directory and run `npm install` to install our local dependencies listed in [package.json](https://github.com/cast-org/figuration/blob/master/package.json).
-4. [Install Ruby][install-ruby], install [Bundler][gembundler] with `gem install bundler`, and finally run `bundle install`. This will install all Ruby dependencies, such as Jekyll and plugins.
-  - **Windows users:** Read [this guide](https://jekyllrb.com/docs/windows/) to get Jekyll up and running without problems.
 
 When completed, you'll be able to run the various Grunt commands provided from the command line.
 
@@ -44,8 +40,11 @@ Our Gruntfile includes the following commands and tasks:
 | `grunt` | Run `grunt` to run tests locally and compile the CSS and JavaScript into `/dist`. **Uses [Sass][sass], [Autoprefixer][autoprefixer], [postcss-flexbugs-fixes][postcss-flexbugs-fixes], [postcss-calc][post-css-calc], and [UglifyJS](http://lisperator.net/uglifyjs/).** |
 | `grunt dist` | `grunt dist` creates the `/dist` directory with compiled files. **Uses [Sass][sass], [Autoprefixer][autoprefixer], [postcss-flexbugs-fixes][postcss-flexbugs-fixes], [postcss-calc][postcss-calc], and [UglifyJS](http://lisperator.net/uglifyjs/).** |
 | `grunt test` | Runs [stylelint][stylelint], [eslint][eslint] and [QUnit][qunit] tests headlessly in [Karma](https://karma-runner.github.io/). |
-| `grunt docs` | Builds and tests CSS, JavaScript, and other assets which are used when running the documentation locally via `bundle exec jekyll serve`. |
+| `grunt docs-test` | Tests CSS, JavaScript, and other assets which are used when running the documentation. |
+| `grunt docs` | Builds and runs the documentation so it can be viewed locally. |
+{% comment %}
 | `grunt watch` | This is a convenience method for watching just Sass files and automatically building them whenever you save. |
+{% endcomment %}
 
 ## Sass Compiler
 
@@ -69,14 +68,14 @@ Also included in our Gruntfile and build process is [postcss-flexbugs-fixes][pos
 
 ## Local Documentation
 
-Running our documentation locally requires the use of Jekyll, a decently flexible static site generator that provides us: basic includes, Markdown-based files, templates, and more. Here's how to get it started:
+Running our documentation with Eleventy, a static site generator that provides us with: templating, Markdown-based files, and more. Here's how to get it started:
 
-1. Run through the [tooling setup](#tooling-setup) above to install Jekyll (the site builder) and other Ruby dependencies with `bundle install`.
-2. From the root `/figuration` directory, run `bundle exec jekyll serve` in the command line.
+1. Run through the [tooling setup](#tooling-setup) above to install all necessary development dependencies.
+2. From the root `/figuration` directory, run `npm run docs-serve` in the command line.
 3. Open `http://localhost:9001` in your browser, and enjoy.
 
-Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/home/).
+Learn more about using Eleventy by reading their [documentation](https://www.11ty.io/docs/).
 
 ## Troubleshooting
 
-Should you encounter problems with installing dependencies or running Grunt commands, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
+Should you encounter problems with installing dependencies or running Grunt commands or npm scripts, uninstall all previous dependency versions (global and local). Then, rerun `npm install`.
