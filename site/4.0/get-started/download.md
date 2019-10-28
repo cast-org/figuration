@@ -106,12 +106,12 @@ figuration/
 +-- dist/
 |   +-- css/
 |   +-- js/
-+-- docs/
 +-- grunt/
 +-- js/
 +-- scss/
++-- site/
 +-- test/
 {% endcapture %}
 {% renderHighlight highlight, "text" %}
 
-The `scss/`, and `js/` folders are the source code for our CSS and JavaScript (respectively). The `dist/` folder includes everything listed in the precompiled download section above. The `docs/` folder includes the source code for our documentation. Beyond that, any other included file provides support for packages, license information, and development.
+The `scss/`, and `js/` folders are the source code for our CSS and JavaScript (respectively). The `dist/` folder includes everything listed in the precompiled download section above. The `site/` folder includes the source code for our documentation. Beyond that, any other included file provides support for packages, license information, and development.

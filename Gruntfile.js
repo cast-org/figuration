@@ -296,11 +296,11 @@ module.exports = function(grunt) {
             },
             sass: {
                 files: 'scss/**/*.scss',
-                tasks: ['dist-css', 'docs']
+                tasks: ['dist-css', 'docs-dist-css']
             },
             docs: {
                 files: 'site/assets/<%= pkg.versionShort %>/scss/**/*.scss',
-                tasks: ['dist-css', 'docs']
+                tasks: ['docs-dist-css', 'docs']
             }
         },
 
@@ -341,7 +341,7 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['clean:dist', 'test', 'docs']);
 
     // Test
-    grunt.registerTask('test', ['dist-css', 'dist-js', 'test-css', 'test-js']);
+    grunt.registerTask('test', ['dist-css', 'dist-js', 'test-css', 'test-js', 'docs-test']);
     grunt.registerTask('test-css', ['stylelint:core', 'run:npmCssLintVarsCore']);
     grunt.registerTask('test-html', ['htmllint:test']);
 
