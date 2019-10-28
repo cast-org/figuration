@@ -62,6 +62,18 @@ This sticky utility uses CSS's `position: sticky`, which isn't fully supported i
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
+### Responsive Sticky Top
+
+Responsive variations also exist for `.sticky-top` utility.
+
+{% capture highlight %}
+<div class="sticky-sm-top">Stick to the top on viewports sized SM (small) or wider</div>
+<div class="sticky-md-top">Stick to the top on viewports sized MD (medium) or wider</div>
+<div class="sticky-lg-top">Stick to the top on viewports sized LG (large) or wider</div>
+<div class="sticky-xl-top">Stick to the top on viewports sized XL (extra-large) or wider</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
 ## SASS Reference
 
 ### Variables
@@ -113,11 +125,28 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$enable-utility-position-sticky-top-responsive</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the additional responsive sticky top position utility class.
+        <code>$enable-utility-position-sticky-top</code> needs to be <code>true</code> for this setting be be observed.
+        </td>
+      </tr>
+      <tr>
         <td><code>$utility-position-breakpoints</code></td>
         <td>string</td>
         <td><code>map-keys($grid-breakpoints)</code></td>
         <td>
           Map of breakpoints that will be used to generate responsive position utilities.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$utility-sticky-top-breakpoints</code></td>
+        <td>string</td>
+        <td><code>map-keys($grid-breakpoints)</code></td>
+        <td>
+          Map of breakpoints that will be used to generate responsive sticky-top utilities.
         </td>
       </tr>
       <tr>
