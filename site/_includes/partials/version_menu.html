@@ -1,0 +1,14 @@
+<div class="dropdown">
+  <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
+    v{{ version.current | valueIfEmpty: site.version.current }}
+    <span class="caret" aria-hidden="true"></span>
+  </a>
+  <ul class="dropdown-menu position-absolute">
+    <li class="dropdown-header">Latest</li>
+    <li><a href="{{ site.path }}{{ pathVersion }}/" class="active">v{{ site.version.current }}</a></li>
+    <li class="dropdown-divider"></li>
+    <li class="dropdown-header">Older</li>
+    <li><a href="{{ site.path }}/3.0/">v3.0.5</a></li>
+    <!--<a href="{{ site.path }}/versions/">Other Versions</a> -->
+  </ul>
+</div>

@@ -1,0 +1,10 @@
+{%- if site.environment == "production" %}
+<!-- Google Analytics -->
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-9130143-15', 'figuration.org');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+{%- endif %}

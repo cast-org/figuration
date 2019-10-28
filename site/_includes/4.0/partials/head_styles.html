@@ -1,0 +1,25 @@
+<!-- Font CSS -->
+{% if site.environment == "production" -%}
+<link href="{{ site.cdn.fontawe }}" integrity="{{ site.cdn.fontawe_hash }}" crossorigin="anonymous" rel="stylesheet" property="stylesheet">
+{% else -%}
+<link href="{{ site.path }}/assets{{ pathVersion }}/fonts/fontawesome/css/all.min.css" rel="stylesheet" property="stylesheet">
+{% endif %}
+
+<!-- Algolia DocSearch CSS -->
+{% if site.environment == "production" -%}
+<link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+{% endif -%}
+
+<!-- Figuration CSS -->
+{% if site.environment == "production" -%}
+<link href="{{ site.path }}/assets{{ pathVersion }}/dist/css/figuration.min.css" rel="stylesheet" id="cssCore">
+{%- else -%}
+<link href="{{ site.path }}/assets{{ pathVersion }}/dist/css/figuration.css" rel="stylesheet" id="cssCore">
+{% endif -%}
+
+<!-- Docs CSS -->
+{% if site.environment == "production" -%}
+<link href="{{ site.path }}/assets{{ pathVersion }}/css/docs.min.css" rel="stylesheet" id="cssDocs">
+{%- else -%}
+<link href="{{ site.path }}/assets{{ pathVersion }}/css/docs.css" rel="stylesheet" id="cssDocs">
+{% endif -%}

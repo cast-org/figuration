@@ -1,0 +1,53 @@
+<header class="navbar navbar-expand-lg navbar-dark print-hide cf-header">
+  <a href="{{ site.path }}/" class="navbar-brand me-0_5" aria-label="{{ site.title }}">
+    {% include "./icons/figuration-outline.svg", class: "cf-header-logo" %}
+    <span class="sr-only-xs-down">CAST Figuration</span>
+  </a>
+  <button class="navbar-toggle me-0_5" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
+    <span class="cf-header-menu" aria-hidden="true">&#8801;</span>
+  </button>
+  <nav class="navbar-collapse collapse order-last order-lg-unordered text-nowrap" id="cf-topnav" aria-label="Main">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="{{ site.path }}{{ pathVersion }}/get-started/quick-start/" class="nav-link {% if group == "get-started" %}active{% endif %}">Get Started{% if group == "get-started" %} <span class="sr-only">(current section)</span>{% endif %}</a>
+      </li>
+      <li class="nav-item">
+        <a href="{{ site.path }}{{ pathVersion }}/layout/overview/" class="nav-link {% if group == "layout" %}active{% endif %}">Layout{% if group == "layout" %} <span class="sr-only">(current section)</span>{% endif %}</a>
+      </li>
+      <li class="nav-item">
+        <a href="{{ site.path }}{{ pathVersion }}/content/reboot/" class="nav-link {% if group == "content" %}active{% endif %}">Content{% if group == "content" %} <span class="sr-only">(current section)</span>{% endif %}</a>
+      </li>
+      <li class="nav-item">
+        <a href="{{ site.path }}{{ pathVersion }}/components/alerts/" class="nav-link {% if group == "components" %}active{% endif %}">Components{% if group == "components" %} <span class="sr-only">(current section)</span>{% endif %}</a>
+      </li>
+      <li class="nav-item">
+        <a href="{{ site.path }}{{ pathVersion }}/utilities/borders/" class="nav-link {% if group == "utilities" %}active{% endif %}">Utilities{% if group == "utilities" %} <span class="sr-only">(current section)</span>{% endif %}</a>
+      </li>
+      <li class="nav-item">
+        <a href="{{ site.path }}{{ pathVersion }}/widgets/overview/" class="nav-link {% if group == "widgets" %}active{% endif %}">Widgets{% if group == "widgets" %} <span class="sr-only">(current section)</span>{% endif %}</a>
+      </li>
+    </ul>
+  </nav>
+
+  <ul class="navbar-nav ms-auto cf-header-social flex-row">
+    {%- if site.environment == "production" %}
+    <li class="nav-item me-1">
+      {%- include "./partials/version_menu.html" %}
+    </li>
+    {%- endif -%}
+    <li class="nav-item">
+      <a href="{{ site.twitter.home }}" class="nav-link px-0_5" aria-label="Twitter">
+        {% include "./icons/twitter.svg", width: "1rem", height: "1rem" %}
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ site.repo }}" class="nav-link px-0_5" aria-label="Github">
+        {% include "./icons/github.svg", width: "1rem", height: "1rem" %}
+      </a>
+    </li>
+    <li class="nav-item">
+      {%- assign settings_menu = pathPartials | append: "/settings_menu.html" -%}
+      {%- include settings_menu %}
+    </li>
+  </ul>
+</header>

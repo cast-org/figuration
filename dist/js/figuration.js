@@ -917,7 +917,7 @@ if (typeof jQuery === 'undefined') {
         backtext  : 'Back', // Text for back links
         container : false,   // Where to place dropdown in DOM
         reference : 'toggle',
-        boundary  : 'viewport',
+        boundary  : 'scrollParent',
         flip      : true,
         display   : 'dynamic',
         popperConfig    : null

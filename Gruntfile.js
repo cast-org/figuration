@@ -76,18 +76,18 @@ module.exports = function(grunt) {
         ],
 
         jsDocs: [
-            'docs/<%= pkg.version %>/assets/js/vendor/anchor.min.js',
-            'docs/<%= pkg.version %>/assets/js/vendor/clipboard.min.js',
-            'docs/<%= pkg.version %>/assets/js/vendor/holder.min.js',
-            'docs/<%= pkg.version %>/assets/js/src/docs.js'
+            'site/assets/<%= pkg.versionShort %>/js/vendor/anchor.min.js',
+            'site/assets/<%= pkg.versionShort %>/js/vendor/clipboard.min.js',
+            'site/assets/<%= pkg.versionShort %>/js/vendor/holder.min.js',
+            'site/assets/<%= pkg.versionShort %>/js/src/docs.js'
         ],
 
         // Task configs
         // ==========
         clean: {
             dist: 'dist',
-            docs: 'docs/<%= pkg.version %>/dist',
-            docscss: 'docs/<%= pkg.version %>/assets/css'
+            docs: 'site/<%= pkg.versionShort %>/dist',
+            docscss: 'site/assets/<%= pkg.versionShort %>/css'
         },
 
         eslint: {
@@ -117,7 +117,7 @@ module.exports = function(grunt) {
                 src: 'test/js/unit/*.js'
             },
             docs : {
-                src: ['docs/<%= pkg.version %>/assets/js/src/*.js', 'docs/<%= pkg.version %>/assets/js/*.js', '!docs/<%= pkg.version %>/assets/js/*.min.js']
+                src: ['site/assets/<%= pkg.versionShort %>/js/src/*.js', 'site/assets/<%= pkg.versionShort %>/js/*.js', '!site/assets/<%= pkg.versionShort %>/js/*.min.js']
             }
         },
 
@@ -145,7 +145,7 @@ module.exports = function(grunt) {
             },
             docs: {
                 src: '<%= jsDocs %>',
-                dest: 'docs/<%= pkg.version %>/assets/js/docs.min.js'
+                dest: 'site/assets/<%= pkg.versionShort %>/js/docs.min.js'
             }
         },
 
@@ -154,7 +154,7 @@ module.exports = function(grunt) {
                 expand: true,
                 cwd: 'dist/',
                 src: ['**/*'],
-                dest: 'docs//<%= pkg.version %>/dist/'
+                dest: 'site/<%= pkg.versionShort %>/dist/'
             }
         },
 
@@ -166,7 +166,7 @@ module.exports = function(grunt) {
                 src: ['scss/**/*.scss']
             },
             docs: {
-                src: ['docs/<%= pkg.version %>/assets/scss/*.scss']
+                src: ['site/assets/<%= pkg.versionShort %>/scss/*.scss']
             }
         },
 
@@ -186,7 +186,7 @@ module.exports = function(grunt) {
             },
             docs: {
                 files: {
-                    'docs/<%= pkg.version %>/assets/css/docs.css': 'docs/<%= pkg.version %>/assets/scss/docs.scss'
+                    'site/assets/<%= pkg.versionShort %>/css/docs.css': 'site/assets/<%= pkg.versionShort %>/scss/docs.scss'
                 }
             }
         },
@@ -203,7 +203,7 @@ module.exports = function(grunt) {
                 options: {
                     processors: [flexbugs, calc, autoprefixer]
                 },
-                src: ['docs/<%= pkg.version %>/assets/css/*.css', '!docs/<%= pkg.version %>/assets/css/*.min.css']
+                src: ['site/assets/<%= pkg.versionShort %>/css/*.css', '!site/assets/<%= pkg.versionShort %>/css/*.min.css']
             }
         },
 
@@ -233,9 +233,9 @@ module.exports = function(grunt) {
                     }
                 },
                 expand: true,
-                cwd: 'docs/<%= pkg.version %>/assets/css',
+                cwd: 'site/assets/<%= pkg.versionShort %>/css',
                 src: ['*.css', '!*.min.css', '!*-rtl.css'],
-                dest: 'docs/<%= pkg.version %>/assets/css',
+                dest: 'site/assets/<%= pkg.versionShort %>/css',
                 ext: '-rtl.css'
             }
         },
@@ -262,51 +262,27 @@ module.exports = function(grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'docs/<%= pkg.version %>/assets/css',
+                        cwd: 'site/assets/<%= pkg.versionShort %>/css',
                         src: ['*.css', '!*.min.css'],
-                        dest: 'docs/<%= pkg.version %>/assets/css',
+                        dest: 'site/assets/<%= pkg.versionShort %>/css',
                         ext: '.min.css'
                     }
                 ]
             }
         },
 
-        jekyll: {
-            options: {
-                bundleExec: true,
-                config: '_config.yml',
-                incremental: false
-            },
-            docs: {},
-            github: {
-                options: {
-                    raw: 'github: true'
-                }
-            }
-        },
-
         htmllint: {
             options: {
                 ignore: [
-                    'Attribute "autocomplete" is only allowed when the input type is "color", "date", "datetime", "datetime-local", "email", "hidden", "month", "number", "password", "range", "search", "tel", "text", "time", "url", or "week".',
-                    'Attribute "autocomplete" not allowed on element "button" at this point.',
-                    'Attribute "focusable" not allowed on element "svg" at this point.',
                     'Consider using the "h1" element as a top-level heading only (all "h1" elements are treated as top-level headings by many screen readers and other tools).',
-                    'Element "div" not allowed as child of element "progress" in this context. (Suppressing further errors from this subtree.)',
                     'Element "legend" not allowed as child of element "div" in this context. (Suppressing further errors from this subtree.)',
                     'Element "img" is missing required attribute "src".',
                     'The "color" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-                    'The "date" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-                    'The "datetime" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-                    'The "datetime-local" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-                    'The "month" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-                    'The "time" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-                    'The "week" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
-                    'The "main" role is unnecessary for element "main".'
+                    'The "datetime-local" input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.'
                 ]
             },
             docs: {
-                src: ['_gh_pages/**/*.html']
+                src: ['_siteout/**/*.html']
             },
             test: {
                 src: ['test/visual/*.html']
@@ -320,11 +296,11 @@ module.exports = function(grunt) {
             },
             sass: {
                 files: 'scss/**/*.scss',
-                tasks: ['dist-css', 'docs']
+                tasks: ['dist-css', 'docs-dist-css']
             },
             docs: {
-                files: 'docs/<%= pkg.version %>/assets/scss/**/*.scss',
-                tasks: ['dist-css', 'docs']
+                files: 'site/assets/<%= pkg.versionShort %>/scss/**/*.scss',
+                tasks: ['docs-dist-css', 'docs']
             }
         },
 
@@ -340,6 +316,15 @@ module.exports = function(grunt) {
             },
             npmJsTestCloud: {
                 exec: 'npm run js-test-cloud'
+            },
+            npmDocsBuild: {
+                exec: 'npm run docs-build'
+            },
+            npmDocsServe: {
+                exec: 'npm run docs-serve'
+            },
+            npmLinkinator: {
+                exec: 'npm run linkinator'
             }
         }
     });
@@ -356,7 +341,7 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['clean:dist', 'test', 'docs']);
 
     // Test
-    grunt.registerTask('test', ['dist-css', 'dist-js', 'test-css', 'test-js']);
+    grunt.registerTask('test', ['dist-css', 'dist-js', 'test-css', 'test-js', 'docs-test']);
     grunt.registerTask('test-css', ['stylelint:core', 'run:npmCssLintVarsCore']);
     grunt.registerTask('test-html', ['htmllint:test']);
 
@@ -379,11 +364,11 @@ module.exports = function(grunt) {
     grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js']);
 
     // Docs tasks
-    grunt.registerTask('docs-test-html', ['jekyll:docs', 'htmllint:docs']);
+    grunt.registerTask('docs-test-html', ['run:npmDocsBuild', 'htmllint:docs', 'run:npmLinkinator']);
     grunt.registerTask('docs-test-css', ['stylelint:docs', 'run:npmCssLintVarsDocs']);
     grunt.registerTask('docs-dist-css', ['sass:docs', 'postcss:docs', 'rtlcss:docs', 'cssmin:docs']);
     grunt.registerTask('docs-test-js', ['eslint:docs']);
     grunt.registerTask('docs-dist-js', ['uglify:docs']);
-    grunt.registerTask('docs', ['docs-test-css', 'clean:docscss', 'docs-dist-css', 'docs-test-js', 'docs-dist-js', 'clean:docs', 'copy:docs']);
-    grunt.registerTask('docs-github', ['jekyll:github']);
+    grunt.registerTask('docs-test', ['docs-test-css', 'docs-test-js', 'docs-test-html']);
+    grunt.registerTask('docs', ['run:npmDocsServe']);
 };
