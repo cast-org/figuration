@@ -370,5 +370,6 @@ module.exports = function(grunt) {
     grunt.registerTask('docs-test-js', ['eslint:docs']);
     grunt.registerTask('docs-dist-js', ['uglify:docs']);
     grunt.registerTask('docs-test', ['docs-test-css', 'docs-test-js', 'docs-test-html']);
+    grunt.registerTask('docs-dist', ['docs-dist-css', 'docs-dist-js']);
     grunt.registerTask('docs', ['run:npmDocsServe']);
 };
