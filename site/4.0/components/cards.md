@@ -21,9 +21,7 @@ Below is an example of a basic card with mixed content and a fixed width. Cards 
 
 {% capture example %}
 <div class="card" style="max-width: 18rem;">
-  <div class="card-img">
-    <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
-  </div>
+  <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -99,7 +97,7 @@ Links can placed next to each other with some spacing by adding `.card-link` to 
 
 Cards include a few options for working with images. Choose from embedding an image in a card, appending "image caps" at either end of a card, or overlaying images with card content.
 
-Images need to be wrapped with `.card-img` to prevent additional whitespace from appearing in some browsers, such as IE.
+Images need to be classed with `.card-img`, or the `.card-img-top`/`.card-img-bottom` variants, to prevent additional whitespace or altered aspect ratios from appearing in some browsers, such as IE.
 
 #### Standard Images
 
@@ -108,9 +106,7 @@ Images can help add some visual interest to your cards.
 {% capture example %}
 <div class="card" style="max-width: 18rem;">
   <h4 class="card-header">Sample Card</h4>
-  <div class="card-img">
-    <img class="img-fluid" src="{{ site.path }}/assets/{{ version.docs }}/img/test.gif" alt="Card image">
-  </div>
+  <img class="img-fluid card-img" src="{{ site.path }}/assets/{{ version.docs }}/img/test.gif" alt="Card image">
   <div class="card-body">
     <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
@@ -124,9 +120,7 @@ Images can help add some visual interest to your cards.
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">This is a card with text and a nested image.</p>
-    <div class="card-img mb-0_5">
-      <img class="img-fluid" src="{{ site.path }}/assets/{{ version.docs }}/img/test.gif" alt="Card image">
-    </div>
+    <img class="img-fluid card-img mb-0_5" src="{{ site.path }}/assets/{{ version.docs }}/img/test.gif" alt="Card image">
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
 </div>
@@ -141,9 +135,7 @@ Use `.card-img-top` on the image, or embedded element, to round over the top cor
 
 {% capture example %}
 <div class="card" style="max-width: 18rem;">
-  <div class="card-img">
-    <img class="img-fluid card-img-top" src="{{ site.path }}/assets/{{ version.docs }}/img/test.gif" alt="Card image cap">
-  </div>
+  <img class="img-fluid card-img-top" src="{{ site.path }}/assets/{{ version.docs }}/img/test.gif" alt="Card image cap">
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
@@ -162,9 +154,7 @@ Use `.card-img-bottom` on the image, or embedded element, to round over the bott
     <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
-  <div class="card-img">
-    <img class="img-fluid card-img-bottom" src="{{ site.path }}/assets/{{ version.docs }}/img/test.gif" alt="Card image cap">
-  </div>
+  <img class="img-fluid card-img-bottom" src="{{ site.path }}/assets/{{ version.docs }}/img/test.gif" alt="Card image cap">
 </div>
 {% endcapture %}
 {% renderExample example %}
@@ -180,9 +170,7 @@ Note that content should not be larger than the height of the image.  If content
 
 {% capture example %}
 <div class="card text-white" style="max-width: 18rem;">
-  <div class="card-img">
-    <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px225/?text=Image background" alt="Card image">
-  </div>
+  <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px225/?text=Image background" alt="Card image">
   <div class="card-img-overlay">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
@@ -264,9 +252,7 @@ The multiple content types can be easily combined to create the card you need.
 
 {% capture example %}
 <div class="card" style="max-width: 18rem;">
-  <div class="card-img">
-    <img class="img-fluid card-img-top" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
-  </div>
+  <img class="img-fluid card-img-top" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur.</p>
@@ -677,9 +663,7 @@ For basic use cases, `border-radius` updates are handled for switching from colu
 {% capture example %}
 <div class="card card-horizontal">
   <div class="card-col col-5">
-    <div class="card-img">
-      <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
   </div>
   <!-- using `.col-sm` due to pixel rounding -->
   <div class="card-col col">
@@ -699,17 +683,13 @@ For basic use cases, `border-radius` updates are handled for switching from colu
     </div>
   </div>
   <div class="card-col col-md-5">
-    <div class="card-img">
-      <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
   </div>
 </div>
 
 <div class="card card-horizontal-md">
   <div class="card-col col-md-5">
-    <div class="card-img">
-      <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px225/?text=Image cap" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px225/?text=Image cap" alt="Card image cap">
   </div>
   <!-- using `.col-md` due to pixel rounding -->
   <div class="card-col col-md">
@@ -734,9 +714,7 @@ In the examples below, the card will display the image cap **above** the body co
 {% capture example %}
 <div class="card card-horizontal-sm-reverse">
   <div class="card-col col-sm-5">
-    <div class="card-img">
-      <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
   </div>
   <!-- using `.col-sm` due to pixel rounding -->
   <div class="card-col col-sm">
@@ -749,9 +727,7 @@ In the examples below, the card will display the image cap **above** the body co
 
 <div class="card card-horizontal-md-reverse">
   <div class="card-col col-md-5">
-    <div class="card-img">
-      <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px225/?text=Image cap" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top card-img-bottom" data-src="holder.js/100px225/?text=Image cap" alt="Card image cap">
   </div>
   <!-- using `.col-md` due to pixel rounding -->
   <div class="card-col col-md">
@@ -774,9 +750,7 @@ Use card groups to render cards as a single, attached element with equal width a
 {% capture example %}
 <div class="card-group-sm">
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -784,9 +758,7 @@ Use card groups to render cards as a single, attached element with equal width a
     </div>
   </div>
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Some sample text to build out the size of the card.</p>
@@ -794,9 +766,7 @@ Use card groups to render cards as a single, attached element with equal width a
     </div>
   </div>
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Some sample text to build out the size of the card. This card has even longer content than the first to show that equal height action.</p>
@@ -812,24 +782,18 @@ When using card groups with footers, they will automatically line up along the b
 {% capture example %}
 <div class="card-group-sm">
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This is a card with text and an image.</p>
-      <div class="card-img">
-        <img class="img-fluid" src="{{ site.path }}/assets/{{ version.docs }}/img/test.gif" alt="Card image">
-      </div>
+      <img class="img-fluid card-img" src="{{ site.path }}/assets/{{ version.docs }}/img/test.gif" alt="Card image">
     </div>
     <div class="card-footer">
       <small class="text-muted">Last updated 3 mins ago</small>
     </div>
   </div>
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -839,9 +803,7 @@ When using card groups with footers, they will automatically line up along the b
     </div>
   </div>
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Some sample text to build out the size of the card. This card has even longer content than the first to show that equal height action.</p>
@@ -861,9 +823,7 @@ Need a set of equal width and height cards that aren't attached to one another? 
 {% capture example %}
 <div class="card-deck-sm">
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -871,9 +831,7 @@ Need a set of equal width and height cards that aren't attached to one another? 
     </div>
   </div>
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Some sample text to build out the size of the card.</p>
@@ -881,9 +839,7 @@ Need a set of equal width and height cards that aren't attached to one another? 
     </div>
   </div>
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit. This card has even longer content than the first to show that equal height action.</p>
@@ -899,9 +855,7 @@ Just like with card groups, card footers in decks will automatically line up.
 {% capture example %}
 <div class="card-deck-sm">
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This is a card with text and an image.</p>
@@ -914,9 +868,7 @@ Just like with card groups, card footers in decks will automatically line up.
     </div>
   </div>
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -926,9 +878,7 @@ Just like with card groups, card footers in decks will automatically line up.
     </div>
   </div>
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Some sample text to build out the size of the card. This card has even longer content than the first to show that equal height action.</p>
@@ -981,36 +931,28 @@ Controlling the number of cards in a row, based on the screen width is also poss
 {% capture example %}
 <div class="card-deck-sm card-deck-col">
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
   </div>
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -1029,9 +971,7 @@ Responsive variants are available with the class syntax of `.card-columns{-break
 {% capture example %}
 <div class="card-columns-sm">
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top" data-src="holder.js/100px150/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title that wraps to a new line</h4>
       <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -1050,9 +990,7 @@ Responsive variants are available with the class syntax of `.card-columns{-break
     </div>
   </div>
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid card-img-top" data-src="holder.js/100px160/" alt="Card image cap">
-    </div>
+    <img class="img-fluid card-img-top" data-src="holder.js/100px160/" alt="Card image cap">
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">Some sample text to build out the size of the card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -1079,9 +1017,7 @@ Responsive variants are available with the class syntax of `.card-columns{-break
     </div>
   </div>
   <div class="card">
-    <div class="card-img">
-      <img class="img-fluid" data-src="holder.js/100px260/" alt="Card image">
-    </div>
+    <img class="img-fluid" data-src="holder.js/100px260/" alt="Card image">
   </div>
   <div class="card text-end">
     <div class="card-body">

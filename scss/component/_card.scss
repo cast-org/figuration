@@ -155,8 +155,11 @@
 
     // Card images
     @if $enable-card-img {
-        .card-img {
-            min-height: 1px;  // Stop stretch/white-space due to flexbox
+        .card-img,
+        .card-img-top,
+        .card-img-bottom {
+            flex-shrink: 0; // Stop stretch/white-space due to flexbox w/ images in IE
+            min-height: 1px;  // Stop stretch/white-space due to flexbox w/ images in IE
         }
         .card-img-top {
             @include border-top-radius($card-inner-border-radius);
@@ -214,7 +217,7 @@
                                     }
                                 }
                                 @if $enable-card-img {
-                                    > .card-img > .card-img-top {
+                                    > .card-img-top {
                                         @extend %card-hz-col-not-first-down#{$bprule};
                                     }
                                 }
@@ -229,7 +232,7 @@
                                     }
                                 }
                                 @if $enable-card-img {
-                                    > .card-img > .card-img-bottom {
+                                    > .card-img-bottom {
                                         @extend %card-hz-col-not-last-down#{$bprule};
                                     }
                                 }
@@ -250,7 +253,7 @@
                                 }
                             }
                             @if $enable-card-img {
-                                > .card-img > .card-img-top {
+                                > .card-img-top {
                                     @extend %card-hz-col-not-first-top-start-up#{$bprule};
                                 }
                             }
@@ -264,7 +267,7 @@
                                 }
                             }
                             @if $enable-card-img {
-                                > .card-img > .card-img-bottom {
+                                > .card-img-bottom {
                                     @extend %card-hz-col-not-first-bottom-start-up#{$bprule};
                                 }
                             }
@@ -279,7 +282,7 @@
                                 }
                             }
                             @if $enable-card-img {
-                                > .card-img > .card-img-top {
+                                > .card-img-top {
                                     @extend %card-hz-col-not-last-top-end-up#{$bprule};
                                 }
                             }
@@ -293,7 +296,7 @@
                                 }
                             }
                             @if $enable-card-img {
-                                > .card-img > .card-img-bottom {
+                                > .card-img-bottom {
                                     @extend %card-hz-col-not-last-bottom-end-up#{$bprule};
                                 }
                             }
@@ -311,7 +314,7 @@
                                 }
                             }
                             @if $enable-card-img {
-                                > .card-img > .card-img-top {
+                                > .card-img-top {
                                     @extend %card-hzrev-col-not-first-top-end-up#{$bprule};
                                 }
                             }
@@ -325,7 +328,7 @@
                                 }
                             }
                             @if $enable-card-img {
-                                > .card-img > .card-img-bottom {
+                                > .card-img-bottom {
                                     @extend %card-hzrev-col-not-first-bottom-end-up#{$bprule};
                                 }
                             }
@@ -340,7 +343,7 @@
                                 }
                             }
                             @if $enable-card-img {
-                                > .card-img > .card-img-top {
+                                > .card-img-top {
                                     @extend %card-hzrev-col-not-last-top-start-up#{$bprule};
                                 }
                             }
@@ -354,7 +357,7 @@
                                 }
                             }
                             @if $enable-card-img {
-                                > .card-img > .card-img-bottom {
+                                > .card-img-bottom {
                                     @extend %card-hzrev-col-not-last-bottom-start-up#{$bprule};
                                 }
                             }

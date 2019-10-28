@@ -76,7 +76,7 @@ ${toc}
 ### Card
 - Contextually colored cards have been removed. Now you will need to use the with text, background, and border color utilities.
 - Cards have been converted to flexbox layout.
-- Images now need to be wrapped with `.card-img` to keep aspect ratio and scaling in check due to flexbox.
+- Images need to use some variant of `.card-img{-top/bottom}`, or sometimes it can be a wrapper, to keep aspect ratio and scaling in check due to flexbox, especially with IE.
 - List and table sub-components now use a `.card-list` or `.card-table` respectively.
 - Responsive horizontal card layouts have been added with `.card-horizontal{breakpoint}`, `.card-horizontal{breakpoint}-reverse`, and child `.card-col` elements.
 
