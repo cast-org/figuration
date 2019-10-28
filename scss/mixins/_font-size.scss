@@ -2,7 +2,7 @@
 
 // Make sure only one responsive typography method is enabled.
 @if $enable-rfs-fluid and $enable-rfs-scale {
-    @error "More than one Responsive Typography (font-size) method has been selected. Please update your settings to only use one of the available Repsonsive Typography methods.";
+    @error "More than one Responsive Typography (font-size) method has been selected. Please update your settings to only use one of the available Responsive Typography methods.";
 }
 
 // Calculate minimum font size as unitless rem equivalent.
