@@ -24,7 +24,7 @@
     "docs-serve": "npm-run-all --parallel docs-serve-*",
     "docs-serve-copy": "cross-env-shell \"shx rm -rf site/assets/$npm_package_versionShort/dist/ && shx cp -r dist/ site/assets/$npm_package_versionShort/\"",
     "docs-serve-clean": "rimraf _siteout",
-    "docs-serve-11ty": "eleventy --serve --port=8080",
+    "docs-serve-11ty": "eleventy --serve --port=9001",
     "docs-prod": "npm run docs-serve-clean && cross-env ELEVENTY_ENV=production eleventy",
     "linkinator": "linkinator _siteout --recurse --silent --skip \"^(?!http://localhost)\"",
     "js-test-karma": "karma start build/karma.conf.js",
