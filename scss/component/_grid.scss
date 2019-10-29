@@ -42,3 +42,8 @@
 @if $enable-grid-classes {
     @include make-grid-columns();
 }
+
+// Responsive Row Columns
+@if $enable-grid-classes  and $enable-grid-row-cols {
+    @include make-row-columns();
+}

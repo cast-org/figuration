@@ -1074,6 +1074,140 @@ If you are using responsive variants of the card columns, you may need to includ
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 
+### Grid Cards
+
+Use the grid system and its [`.row-cols` classes]({{ site.path}}/{{ version.docs }}/layout/grid#row-columns) to control how many grid columns (wrapped around your cards) you show per row. For example, here's `.row-cols-1` laying out the cards on one column, and `.row-cols-md-2` splitting four cards to equal width across multiple rows, from the medium breakpoint up.
+
+{% capture example %}
+<div class="row row-cols-1 row-cols-md-2">
+  <div class="col">
+    <div class="card">
+      <img class="img-fluid card-img-top" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img class="img-fluid card-img-top" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img class="img-fluid card-img-top" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img class="img-fluid card-img-top" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
+Change it to `.row-cols-3` and you'll see the fourth card wrap.
+
+{% capture example %}
+<div class="row row-cols-1 row-cols-md-3">
+  <div class="col">
+    <div class="card">
+      <img class="img-fluid card-img-top" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img class="img-fluid card-img-top" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img class="img-fluid card-img-top" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <img class="img-fluid card-img-top" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
+When you need equal height, add `.h-100` to the cards.  You may also have to adjust the margins on the columns and cards to achive any desired spacing.
+
+{% capture example %}
+<div class="row row-cols-1 row-cols-md-3">
+  <div class="col mb-1">
+    <div class="card h-100 mb-0">
+      <img class="img-fluid card-img-top" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-1">
+    <div class="card h-100 mb-0">
+      <img class="img-fluid card-img-top" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a short card.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-1">
+    <div class="card h-100 mb-0">
+      <img class="img-fluid card-img-top" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-1">
+    <div class="card h-100 mb-0">
+      <img class="img-fluid card-img-top" data-src="holder.js/100px150/?text=Image cap" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
 # SASS Reference
 
 ### Variables
