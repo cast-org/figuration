@@ -4,6 +4,9 @@ $enable-root-colors:                        true !default;
 $enable-root-breakpoints:                   true !default;
 $enable-root-fonts:                         true !default;
 
+// Grid layout
+$enable-grid-row-cols:                      true !default;
+
 // Base Typography
 $enable-typography:                         true !default;
 $enable-typography-headings:                true !default;

@@ -51,6 +51,19 @@
     margin-left: if($num == 0, 0, percentage($num));
 }
 
+
+// Row Columns
+//
+// Specify on a parent element(e.g., .row) to force immediate children into NN
+// numberof columns. Supports wrapping to new lines, but does not do a Masonry
+// style grid.
+@mixin row-cols($count) {
+    & > * {
+        flex: 0 0 100% / $count;
+        max-width: 100% / $count;
+    }
+}
+
 // Grid generation
 // Generate the correct number of grid classes given any value of `$grid-columns`
 @mixin make-grid-columns($columns: $grid-columns, $breakpoints: $grid-breakpoints, $gutter: $grid-gutter-width) {
@@ -108,6 +121,21 @@
                     .offset#{$bprule}-#{$i} {
                         @include make-col-offset($i, $columns);
                     }
+                }
+            }
+        }
+    }
+}
+
+// Responsive Row Columns
+@mixin make-row-columns($columns: $grid-row-columns, $breakpoints: $grid-breakpoints) {
+    @each $breakpoint in $row-columns-breakpoints {
+        $bprule: breakpoint-designator($breakpoint);
+
+        @include media-breakpoint-up($breakpoint, $breakpoints) {
+            @for $i from 1 through $columns {
+                .row-cols#{$bprule}-#{$i} {
+                    @include row-cols($i);
                 }
             }
         }

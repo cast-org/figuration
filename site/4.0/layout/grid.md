@@ -338,6 +338,88 @@ Don't want your columns to simply stack in some grid tiers. Use a combination of
 {% endcapture %}
 {% renderExample example, "cf-example-row" %}
 
+### Row Columns
+
+Use the responsive `.row-cols-*` classes to quickly set the number of columns that best render your content and layout. Whereas normal `.col-*` classes apply to the individual columns (e.g., `.col-md-4`), the row columns classes are set on the parent `.row` as a shortcut.
+
+Use these row columns classes to quickly create basic grid layouts or to control your card layouts.
+
+{% capture example %}
+<div class="container">
+  <div class="row row-cols-2">
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example, "cf-example-row" %}
+
+{% capture example %}
+<div class="container">
+  <div class="row row-cols-3">
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example, "cf-example-row" %}
+
+{% capture example %}
+<div class="container">
+  <div class="row row-cols-4">
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example, "cf-example-row" %}
+
+{% capture example %}
+<div class="container">
+  <div class="row row-cols-4">
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col-6">Column</div>
+    <div class="col">Column</div>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example, "cf-example-row" %}
+
+{% capture example %}
+<div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example, "cf-example-row" %}
+
+You can also use the accompanying Sass mixin, `row-cols()`:
+
+{% capture highlight %}
+.element {
+  // Three columns to start
+  @include row-cols(3);
+
+  // Five columns from medium breakpoint up
+  @include media-breakpoint-up(md) {
+    @include row-cols(5);
+  }
+}
+{% endcapture %}
+{% renderHighlight highlight, "sass" %}
+
+
 ## Alignment
 
 Use [Flexbox alignment utilities]({{ site.path }}/{{ version.docs }}/utilities/flexbox/) to vertically and horizontally align columns.
@@ -767,8 +849,103 @@ $container-max-widths: (
 );
 
 $grid-gutter-width: 2rem;
+
+$grid-row-columns: 6;
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
+
+The available [Customization options]({{ site.path }}/{{ version.docs }}/get-started/options/), or Sass variables, that can be customized for the grid.
+
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><code>$enable-grid-classes</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the grid layout classes.
+          Smaller segements of the grid layout classes can be disabled with the following <code>$enable-*</code> variables.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-grid-row-cols</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the responsive row columns layout classes.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$grid-breakpoints</code></td>
+        <td>map</td>
+        <td><pre><code>(
+    xs: 0,
+    sm: bp-to-em(576px),
+    md: bp-to-em(768px),
+    lg: bp-to-em(992px),
+    xl: bp-to-em(1200px)
+)</code></pre></td>
+        <td>
+          Maximum container widths for given breakpoints.  The <code>bp-to-em()</code> function converts a pixel value to an <code>em</code> value.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$container-max-widths</code></td>
+        <td>map</td>
+        <td><pre><code>(
+    sm: rem(544px),
+    md: rem(720px),
+    lg: rem(960px),
+    xl: rem(1152px)
+)</code></pre></td>
+        <td>
+          Grid breakpoints widths.  The <code>rem()</code> function converts a pixel value to a <code>rem</code> value.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$row-columns-breakpoints</code></td>
+        <td>list</td>
+        <td><code>map-keys($grid-breakpoints)</code></td>
+        <td>
+          Breakpoint list for the responsive row columns.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$grid-columns</code></td>
+        <td>integer</td>
+        <td><code>12</code></td>
+        <td>
+          The number of columns to build the grid with.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$grid-columns</code></td>
+        <td>string</td>
+        <td><code>2rem</code></td>
+        <td>
+          The visual width to apply between columns.  This is a value twice the size of the horizontal margins for each column.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$grid-row-columns</code></td>
+        <td>integer</td>
+        <td><code>6</code></td>
+        <td>
+          The maximum number of columns to build the responsive grid column classes with.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ### Mixins
 
