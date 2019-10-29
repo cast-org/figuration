@@ -496,6 +496,64 @@ Add nearly any HTML within, even for linked lists like the one below, using [fle
 {% endcapture %}
 {% renderExample example %}
 
+### Checkbox and Radio Inputs
+
+Use `<label>`s as the `.list-item` and place checkboxes and radios within them to create large hit areas, then customize as needed.
+
+{% capture example %}
+<div class="list list-spaced list-group">
+  <label class="list-item">
+    <input class="form-check-input" type="checkbox" value="">
+    Cras justo odio
+  </label>
+  <label class="list-item ps-2">
+    <input class="form-check-input ms-n1" type="checkbox" value="">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed suscipit volutpat quam id dictum in fermentum libero vel orci hendrerit fermentum
+  </label>
+  <label class="list-item">
+    <input class="form-check-input" type="checkbox" value="">
+    Morbi leo risus
+  </label>
+  <label class="list-item">
+    <input class="form-check-input" type="checkbox" value="">
+    Porta ac consectetur ac
+  </label>
+  <label class="list-item">
+    <input class="form-check-input float-left mr-2" type="checkbox" value="">
+    Vestibulum at eros
+  </label>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
+You can also use them without `<label>`s, but you should include an `aria-label` attribute and value for accessibility.
+
+{% capture example %}
+<ul class="list list-spaced list-group">
+  <li class="list-item">
+    <input class="form-check-input" type="checkbox" value="" aria-label="...">
+    Cras justo odio
+  </li>
+  <li class="list-item">
+    <input class="form-check-input" type="checkbox" value="" aria-label="...">
+    Dapibus ac facilisis in
+  </li>
+  <li class="list-item">
+    <input class="form-check-input" type="checkbox" value="" aria-label="...">
+    Morbi leo risus
+  </li>
+  <li class="list-item">
+    <input class="form-check-input" type="checkbox" value="" aria-label="...">
+    Porta ac consectetur ac
+  </li>
+  <li class="list-item">
+    <input class="form-check-input" type="checkbox" value="" aria-label="...">
+    Vestibulum at eros
+  </li>
+</ul>
+{% endcapture %}
+{% renderExample example %}
+
 ## Color Variants
 
 Use [color utility classes]({{ site.path }}/{{ version.docs }}/utilities/color/) to style lists with color.
