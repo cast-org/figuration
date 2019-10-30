@@ -62,6 +62,10 @@ In need of a button, but not the hefty background colors they bring? Replace the
 {% endcapture %}
 {% renderExample example %}
 
+## Disable Text Wrapping
+
+If you don't want the button text to wrap, you can add the `.text-nowrap` class to the button. In Sass, you can set `$btn-white-space: nowrap` to disable text wrapping for each button.
+
 ## Sizes
 
 ### Available Sizes
@@ -459,6 +463,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>1.5</code></td>
         <td>
           Base button line height.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$btn-white-space</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Button white space.
         </td>
       </tr>
       <tr>
