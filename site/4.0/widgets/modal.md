@@ -709,6 +709,45 @@ Position a modal to the side of the page with a `.modal-dialog-side-start` or `.
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
+### Static Backdrop
+
+When `backdrop` option is set to `static`, the modal will not close when clicking outside it. Click the button below to try it.
+
+<div class="modal" id="modalStaticBackdrop">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Static backdrop modal</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <p>I will not close if you click outside me.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cf-example">
+  <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-backdrop="static" data-cfw-modal-target="#modalStaticBackdrop">Static backdrop modal</button>
+</div>
+
+{% capture highlight %}
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-backdrop="static" data-cfw-modal-target="#modalStaticBackdrop">Static backdrop modal</button>
+
+<div class="modal" id="modalStaticBackdrop">
+  <div class="modal-dialog modal-dialog-side-end modal-dialog-scrollable modal-sm">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
 ## Usage
 
 The modal widget toggles your hidden content on demand, via data attributes or JavaScript. It also adds `.modal-open` to the `<body>` to override default scrolling behavior and generates a `.modal-backdrop` to provide a click area for dismissing shown modals when clicking outside the modal.
@@ -803,7 +842,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>keyboard</td>
         <td>boolean</td>
         <td><code>true</code></td>
-        <td>Closes the modal when escape key is pressed</td>
+        <td>Closes the modal when escape key is pressed.</td>
       </tr>
       <tr>
         <td>show</td>
@@ -1325,11 +1364,19 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$modal-transform-blocked</code></td>
+        <td>string</td>
+        <td><code>scale(1.01)</code></td>
+        <td>
+          Transform state of <code>.modal-dialog</code> for the close is blocked animation.
+        </td>
+      </tr>
+      <tr>
         <td><code>$modal-transition</code></td>
         <td>string</td>
-        <td><code>transform .3s ease-out</code></td>
+        <td><code>transform .15s linear</code></td>
         <td>
-          Transition settings for the <code>.modal-dialog</code> fade-in animation.
+          Transition settings for the <code>.modal-dialog</code> animations.
         </td>
       </tr>
     </tbody>

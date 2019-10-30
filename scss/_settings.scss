@@ -579,7 +579,7 @@ $transition-collapse-x:     width .3s ease !default;
 // Component transitions
 $btn-transition:            color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 $input-transition:          background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
-$modal-transition:          transform .3s ease-out !default;
+$modal-transition:          transform .15s linear !default;
 $progress-bar-transition:   width .3s ease !default;
 $switch-transition:         all .15s ease-in-out !default;
 
@@ -1300,6 +1300,7 @@ $modal-lg-breakpoint:           lg !default; // The minimum breakpoint to allow 
 $modal-transform-fade:          translate(0, -3rem) !default;
 $modal-transform-in:            none !default;
 $modal-transform-side-offset:   -5rem !default;
+$modal-transform-blocked:       scale(1.01) !default;
 
 
 // Player
