@@ -122,6 +122,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$breadcrumb-font-size</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Font size for breadcrumb.
+        </td>
+      </tr>
+      <tr>
         <td><code>$breadcrumb-item-padding-x</code></td>
         <td>string</td>
         <td><code>.5rem</code></td>
