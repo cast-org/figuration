@@ -46,6 +46,12 @@
     max-width: percentage($size / $columns);
 }
 
+@mixin make-col-auto() {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 100%;
+}
+
 @mixin make-col-offset($size, $columns: $grid-columns) {
     $num: $size / $columns;
     margin-left: if($num == 0, 0, percentage($num));
@@ -98,9 +104,7 @@
             }
 
             %col-flex-auto-#{$breakpoint} {
-                flex: 0 0 auto;
-                width: auto;
-                max-width: 100%;
+                @include make-col-auto();
             }
 
             .col#{$bprule} {
