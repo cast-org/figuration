@@ -37,6 +37,12 @@ h2 {
     background-color: rgba(34,68,102,.15);
     border: 1px solid rgba(34,68,102,.2);
 }
+.example-container {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background-color: rgba(34,68,102,.15);
+    border: 1px solid rgba(34,68,102,.2);
+}
 </style>
 </head>
 <body>
@@ -44,6 +50,30 @@ h2 {
 
     <h1>Figuration Grid Examples</h1>
     <p class="lead">Basic grid layouts to help get you familiar with building within the grid system.</p>
+
+    <h2 id="containers">Containers</h2>
+
+    <h3>Fixed-Width Container</h3>
+</div>
+<div class="container example-container">.container-sm</div>
+
+<div class="container">
+    <h3>Fluid-Width Container</h3>
+</div>
+<div class="container-fluid example-container">.container-sm</div>
+
+<div class="container">
+    <h3>Responsive Containers</h3>
+    <p>Additional classes to create containers that are 100% wide until a particular breakpoint.</p>
+</div>
+
+<div class="container-sm example-container">.container-sm</div>
+<div class="container-md example-container">.container-md</div>
+<div class="container-lg example-container">.container-lg</div>
+<div class="container-xl example-container">.container-xl</div>
+
+<div class="container">
+    <hr />
 
     <h2>Five grid tiers</h2>
     <p>There are five tiers to the grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the larger devices unless overridden.</p>

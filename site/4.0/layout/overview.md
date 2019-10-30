@@ -11,22 +11,109 @@ ${toc}
 
 ## Containers
 
-Containers are the most basic layout element in Figuration and are **required when using the grid system**. Choose from a responsive, fixed-width container (meaning its `max-width` changes at each breakpoint) or fluid-width (meaning it's `100%` wide all the time).
+Containers are the most basic layout element in Figuration and are **required when using the grid system**. Containers are used to contain, pad, and (sometimes) center the content within them.
 
 While containers *can* be nested, most layouts do not require a nested container.
 
-Use `.container` for a fixed-width container with a defined `max-width` per breakpoint.
+There are three different container types available:
+- `.container`, which sets a `max-width` at each responsive breakpoint
+- `.container-fluid`, which is `width: 100%` at all breakpoints
+- `.container-{breakpoint}`, which is `width: 100%` until the specified breakpoint
 
-<div class="cf-example">
-  <div class="container" style="min-width: 16rem; max-width: 25rem;">
-    <div class="row">
-      <div class="col-12 radius p-1 mb-0_5 bg-info-300"></div>
-      <div class="col-2 radius px-1 py-2 bg-warning-300"></div>
-      <div class="col radius px-1 py-2 mx-0_5 bg-primary-300"></div>
-      <div class="col-3 radius px-1 py-2 bg-danger-300"></div>
-    </div>
-  </div>
+See them in action and compare them in our [Grid example]({{ site.path }}/{{ version.docs }}/examples/grid/#containers).
+
+The table below illustrates how each container's `max-width` compares to the original `.container` and `.container-fluid` across each breakpoint.
+
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <tr>
+          <th></th>
+          <th class="text-center">
+            Extra small<br>
+            <small>&lt;576px</small><br>
+            <small>&lt;36em</small>
+          </th>
+          <th class="text-center">
+            Small<br>
+            <small>&ge;576px</small><br>
+            <small>&ge;36em</small>
+          </th>
+          <th class="text-center">
+            Medium<br>
+            <small>&ge;768px</small><br>
+            <small>&ge;48em</small>
+          </th>
+          <th class="text-center">
+            Large<br>
+            <small>&ge;992px</small><br>
+            <small>&ge;62em</small>
+          </th>
+          <th class="text-center">
+            Extra large<br>
+            <small>&ge;1200px</small><br>
+            <small>&ge;75em</small>
+          </th>
+        </tr>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>.container</code></td>
+        <td class="text-muted">100%</td>
+        <td>544px (33.75rem)</td>
+        <td>720px (45rem)</td>
+        <td>960px (60rem)</td>
+        <td>1152px (72rem)</td>
+      </tr>
+      <tr>
+        <td><code>.container-sm</code></td>
+        <td class="text-muted">100%</td>
+        <td>544px (33.75rem)</td>
+        <td>720px (45rem)</td>
+        <td>960px (60rem)</td>
+        <td>1152px (72rem)</td>
+      </tr>
+      <tr>
+        <td><code>.container-md</code></td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td>720px (45rem)</td>
+        <td>960px (60rem)</td>
+        <td>1152px (72rem)</td>
+      </tr>
+      <tr>
+        <td><code>.container-lg</code></td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td>960px (60rem)</td>
+        <td>1152px (72rem)</td>
+      </tr>
+      <tr>
+        <td><code>.container-xl</code></td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td>1152px (72rem)</td>
+      </tr>
+      <tr>
+        <td><code>.container-fluid</code></td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
+### Fixed Width
+
+Use `.container` for a fixed-width container with a defined `max-width` per breakpoint.
 
 {% capture highlight %}
 <div class="container">
@@ -35,23 +122,26 @@ Use `.container` for a fixed-width container with a defined `max-width` per brea
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
-Use `.container-fluid` for a full width container, spanning the entire width of the viewport.
+### Fluid
 
-<div class="cf-example">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12 radius p-1 mb-0_5 bg-info-300"></div>
-      <div class="col-2 radius px-1 py-2 bg-warning-300"></div>
-      <div class="col radius px-1 py-2 mx-0_5 bg-primary-300"></div>
-      <div class="col-3 radius px-1 py-2 bg-danger-300"></div>
-    </div>
-  </div>
-</div>
+Use `.container-fluid` for a full width container, spanning the entire width of the viewport.
 
 {% capture highlight %}
 <div class="container-fluid">
   ...
 </div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+### Responsive
+
+Responsive containers allow you to specify a class that is 100% wide until the specified breakpoint is reached, after which we apply `max-width`s for each of the higher breakpoints. For example, `.container-sm` is 100% wide to start until the `sm` breakpoint is reached, where it will scale up with `md`, `lg`, and `xl`.
+
+{% capture highlight %}
+<div class="container-sm">100% wide until small breakpoint</div>
+<div class="container-md">100% wide until medium breakpoint</div>
+<div class="container-lg">100% wide until large breakpoint</div>
+<div class="container-xl">100% wide until extra large breakpoint</div>
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 

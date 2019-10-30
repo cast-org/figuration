@@ -652,7 +652,7 @@ Here are some examples to show what we mean.
 
 ## Containers
 
-Although it's not required, you can wrap a navbar in a `.container` to center it on a page or add one within to only center the contents of a [fixed or static top navbar](#placement).
+Although it's not required, you can wrap a navbar in a `.container` to center it on a page, or add one within to center the contents of navbar.
 
 {% capture example %}
 <div class="container">
