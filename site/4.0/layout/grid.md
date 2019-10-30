@@ -959,6 +959,9 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 @include make-col-ready($gutter: $grid-gutter-width);
 @include make-col($size, $columns: $grid-columns);
 
+// Make an auto sizing column
+@include make-col-auto();
+
 // Get fancy by offsetting
 @include make-col-offset($size, $columns: $grid-columns);
 {% endcapture %}
