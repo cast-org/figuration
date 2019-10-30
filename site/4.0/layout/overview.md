@@ -28,34 +28,32 @@ The table below illustrates how each container's `max-width` compares to the ori
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <tr>
-          <th></th>
-          <th class="text-center">
-            Extra small<br>
-            <small>&lt;576px</small><br>
-            <small>&lt;36em</small>
-          </th>
-          <th class="text-center">
-            Small<br>
-            <small>&ge;576px</small><br>
-            <small>&ge;36em</small>
-          </th>
-          <th class="text-center">
-            Medium<br>
-            <small>&ge;768px</small><br>
-            <small>&ge;48em</small>
-          </th>
-          <th class="text-center">
-            Large<br>
-            <small>&ge;992px</small><br>
-            <small>&ge;62em</small>
-          </th>
-          <th class="text-center">
-            Extra large<br>
-            <small>&ge;1200px</small><br>
-            <small>&ge;75em</small>
-          </th>
-        </tr>
+        <th></th>
+        <th class="text-center">
+          Extra small<br>
+          <small>&lt;576px</small><br>
+          <small>&lt;36em</small>
+        </th>
+        <th class="text-center">
+          Small<br>
+          <small>&ge;576px</small><br>
+          <small>&ge;36em</small>
+        </th>
+        <th class="text-center">
+          Medium<br>
+          <small>&ge;768px</small><br>
+          <small>&ge;48em</small>
+        </th>
+        <th class="text-center">
+          Large<br>
+          <small>&ge;992px</small><br>
+          <small>&ge;62em</small>
+        </th>
+        <th class="text-center">
+          Extra large<br>
+          <small>&ge;1200px</small><br>
+          <small>&ge;75em</small>
+        </th>
       </tr>
     </thead>
     <tbody>
