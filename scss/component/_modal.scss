@@ -138,6 +138,11 @@
         transform: $modal-transform-in;
     }
 
+    // Close is blocked animation
+    .modal.modal-blocked .modal-dialog {
+        transform: $modal-transform-blocked;
+    }
+
     // Actual modal
     .modal-content {
         position: relative;

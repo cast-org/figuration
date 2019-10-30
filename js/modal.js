@@ -266,15 +266,22 @@
         escape : function() {
             var $selfRef = this;
             var KEYCODE_ESC = 27;
-            if (this.isShown && this.settings.keyboard) {
+
+            if (!this.isShown) {
+                this.$target.off('keydown.dismiss.cfw.modal');
+            }
+
+            if (this.isShown) {
                 this.$target.on('keydown.dismiss.cfw.modal', function(e) {
                     if (e.which === KEYCODE_ESC) {
-                        e.preventDefault();
-                        $selfRef.hide();
+                        if ($selfRef.settings.keyboard) {
+                            e.preventDefault();
+                            $selfRef.hide();
+                        } else {
+                            $selfRef.hideBlocked();
+                        }
                     }
                 });
-            } else if (!this.isShown) {
-                this.$target.off('keydown.dismiss.cfw.modal');
             }
         },
 
@@ -433,7 +440,7 @@
                     }
                     if (e.target !== e.currentTarget) { return; }
                     if ($selfRef.settings.backdrop === 'static') {
-                        $selfRef.$target.trigger('focus');
+                        $selfRef.hideBlocked();
                     } else {
                         $selfRef.hide();
                     }
@@ -463,6 +470,21 @@
                 this.$backdrop.remove();
                 this.$backdrop = null;
             }
+        },
+
+        hideBlocked : function() {
+            var $selfRef = this;
+            if (!this.$target.CFW_trigger('beforeHide.cfw.modal')) {
+                return;
+            }
+
+            var complete = function() {
+                $selfRef.$target.trigger('focus');
+                $selfRef.$target.removeClass('modal-blocked');
+            };
+
+            this.$target.addClass('modal-blocked');
+            this.$dialog.CFW_transition(null, complete);
         },
 
         unlink : function() {

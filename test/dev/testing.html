@@ -405,6 +405,28 @@ $(window).ready(function() {
 
             <h2 id="modal">Modal:</h2>
             <p>
+                <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-backdrop="static" data-cfw-modal-keyboard="false" data-cfw-modal-target="#modalStaticBackdrop">Static backdrop modal</button>
+            </p>
+            <div class="modal" id="modalStaticBackdrop">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Static backdrop modal</h4>
+                    <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>I will not close if you click outside me. Don't even try to press escape key.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            </p>
+            <p>
                 <button class="btn btn-info" data-cfw="modal" data-cfw-modal-target="#modalCenter">
                     Centered modal
                 </button>

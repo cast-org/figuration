@@ -249,6 +249,30 @@ $(function() {
         $trigger.CFW_Modal('show');
     });
 
+    QUnit.test('should not close modal when escape key is pressed via keydown with "keyboard:false"', function(assert) {
+        assert.expect(2);
+        var done = assert.async();
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal" data-cfw-modal-keyboard="false">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal"/>').appendTo(document.body);
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                assert.ok($target.is(':visible'), 'modal visible');
+                $target.trigger($.Event('keydown', {
+                    which: 27 // Esc
+                }));
+
+                setTimeout(function() {
+                    assert.ok($target.is(':visible'), 'modal still visible');
+                    done();
+                }, 0);
+            });
+
+        $trigger.CFW_Modal();
+        $trigger.CFW_Modal('show');
+    });
+
     QUnit.test('should not close modal when clicking outside of modal-content with "backdrop:static"', function(assert) {
         assert.expect(1);
         var done = assert.async();
