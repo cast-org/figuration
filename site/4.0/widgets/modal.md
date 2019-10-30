@@ -699,8 +699,8 @@ Position a modal to the side of the page with a `.modal-dialog-side-start` or `.
 <!-- Small modal -->
 <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalSideEnd">End side modal</button>
 
-<div class="modal" id="modalStartEnd">
-  <div class="modal-dialog modal-dialog-start-end modal-dialog-scrollable modal-sm">
+<div class="modal" id="modalSideEnd">
+  <div class="modal-dialog modal-dialog-side-end modal-dialog-scrollable modal-sm">
     <div class="modal-content">
       ...
     </div>
