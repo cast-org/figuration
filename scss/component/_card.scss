@@ -4,6 +4,7 @@
         display: flex;
         flex-direction: column;
         min-width: 0;
+        height: $card-height;
         margin-bottom: $card-margin-bottom;
         color: $card-color;
         word-wrap: break-word;

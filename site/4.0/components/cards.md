@@ -1164,7 +1164,7 @@ Change it to `.row-cols-3` and you'll see the fourth card wrap.
 {% endcapture %}
 {% renderExample example %}
 
-When you need equal height, add `.h-100` to the cards.  You may also have to adjust the margins on the columns and cards to achive any desired spacing.
+When you need equal height, add `.h-100` to the cards.  If you want equal heights by default, you can set `$card-height: 100%` in Sass. You may also have to adjust the margins on the columns and cards to achive any desired spacing.
 
 {% capture example %}
 <div class="row row-cols-1 row-cols-md-3">
@@ -1416,6 +1416,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>1rem</code></td>
         <td>
           Card vertical spacing.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$card-height</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Card height.
         </td>
       </tr>
       <tr>
