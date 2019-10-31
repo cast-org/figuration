@@ -228,9 +228,9 @@
         }
 
         var _doCallback = function() {
-            $img
-                .add($proxyImg)
-                .off('load.cfw.imageLoaded' + instance);
+            $proxyImg
+                .off('load.cfw.imageLoaded' + instance)
+                .remove();
             callback();
         };
 
@@ -243,8 +243,7 @@
             return;
         }
 
-        $img
-            .add($proxyImg)
+        $proxyImg
             .off('load.cfw.imageLoaded' + instance)
             .one('load.cfw.imageLoaded' + instance, _doCallback);
         proxyImg.src = img.src;
