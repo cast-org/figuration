@@ -16,6 +16,35 @@
     }
 }
 
+// Responsive containers
+// Containers that are 100% wide until a breakpoint
+@if $enable-grid-classes and $enable-grid-responsive-containers {
+    @each $breakpoint in $responsive-container-breakpoints {
+        $rc-max-width: map-get($container-max-widths, $breakpoint);
+
+        @if $rc-max-width != null {
+            .container-#{$breakpoint} {
+                @extend .container-fluid;
+            }
+
+            @include media-breakpoint-up($breakpoint) {
+                %responsive-container-#{$breakpoint} {
+                    max-width: $rc-max-width;
+                }
+
+                @each $name, $width in $grid-breakpoints {
+                    @if (rem($rc-max-width) > rem($width) or $breakpoint == $name) {
+                        $bprule: breakpoint-designator($name);
+                        .container#{$bprule} {
+                            @extend %responsive-container-#{$breakpoint};
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 // Row
 // Rows contain columns.
 @if $enable-grid-classes {
