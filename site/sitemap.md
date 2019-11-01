@@ -1,5 +1,5 @@
 ---
-permalink: "{{ site.path }}/sitemap.xml"
+permalink: "/sitemap.xml"
 sitemapIgnore: true
 ---
 <?xml version="1.0" encoding="UTF-8"?>

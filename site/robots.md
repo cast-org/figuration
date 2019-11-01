@@ -1,5 +1,5 @@
 ---
-permalink: "{{ site.path }}/robots.txt"
+permalink: "/robots.txt"
 sitemapIgnore: true
 templateEngineOverride: liquid
 ---
