@@ -1351,6 +1351,7 @@ textarea.form-control:not([rows="1"]) {
   background-color: #0055e9;
   border: 0;
   border-radius: 50%;
+  -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -webkit-appearance: none;
           appearance: none;
@@ -1359,6 +1360,7 @@ textarea.form-control:not([rows="1"]) {
 
 @media (prefers-reduced-motion: reduce) {
   .form-range::-webkit-slider-thumb {
+    -webkit-transition: none;
     transition: none;
   }
 }
@@ -1374,6 +1376,7 @@ textarea.form-control:not([rows="1"]) {
   background-color: #0055e9;
   border: 0;
   border-radius: 50%;
+  -moz-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -moz-appearance: none;
        appearance: none;
@@ -1381,6 +1384,7 @@ textarea.form-control:not([rows="1"]) {
 
 @media (prefers-reduced-motion: reduce) {
   .form-range::-moz-range-thumb {
+    -moz-transition: none;
     transition: none;
   }
 }
@@ -1396,6 +1400,7 @@ textarea.form-control:not([rows="1"]) {
   background-color: #0055e9;
   border: 0;
   border-radius: 50%;
+  -ms-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   appearance: none;
   margin-top: 0;
@@ -1405,6 +1410,7 @@ textarea.form-control:not([rows="1"]) {
 
 @media (prefers-reduced-motion: reduce) {
   .form-range::-ms-thumb {
+    -ms-transition: none;
     transition: none;
   }
 }
@@ -10980,10 +10986,6 @@ a.page-link {
   text-transform: capitalize !important;
 }
 
-.font-weight-lighter {
-  font-weight: lighter !important;
-}
-
 .font-weight-light {
   font-weight: 300 !important;
 }
@@ -10992,8 +10994,20 @@ a.page-link {
   font-weight: 400 !important;
 }
 
+.font-weight-semibold {
+  font-weight: 600 !important;
+}
+
 .font-weight-bold {
   font-weight: 700 !important;
+}
+
+.font-weight-black {
+  font-weight: 900 !important;
+}
+
+.font-weight-lighter {
+  font-weight: lighter !important;
 }
 
 .font-weight-bolder {
@@ -11753,6 +11767,18 @@ a.text-gray-900:hover, a.text-gray-900:focus {
 
 .text-reset {
   color: inherit !important;
+}
+
+.lh-small {
+  line-height: 1.25 !important;
+}
+
+.lh-base {
+  line-height: 1.5 !important;
+}
+
+.lh-large {
+  line-height: 1.75 !important;
 }
 
 .fs-xsmall {
