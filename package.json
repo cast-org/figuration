@@ -102,7 +102,7 @@
     "time-grunt": "^2.0.0"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
