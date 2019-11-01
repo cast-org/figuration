@@ -1,5 +1,6 @@
+{%- assign pathVersion = version.docs | valueIfEmpty: site.version.docs | prepend: "/" -%}
 {%- capture aliasURL -%}
-{{ "/" | append: site.path | append: destination }}
+{{ site.path }}{%- if usePathVersion %}{{ pathVersion }}{% endif -%}/{{ destination }}
 {%- endcapture -%}
 <!doctype html>
 <html lang="{{ site.language }}">
