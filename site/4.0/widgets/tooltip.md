@@ -346,6 +346,10 @@ Shows an element's tooltip.
 
 Hides an element's tooltip.
 
+#### `.CFW_Tooltip('locateUpdate')`
+
+Update the positioning of a tooltip. Can be useful after an AJAX content update.
+
 #### `.CFW_Tooltip('unlink')`
 
 Hides the tooltip, removes events and attributes from both trigger and tooltip.

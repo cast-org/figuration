@@ -438,6 +438,10 @@ Shows an element's popover.
 
 Hides an element's popover.
 
+#### `.CFW_Popover('locateUpdate')`
+
+Update the positioning of a popover. Can be useful after an AJAX content update.
+
 #### `.CFW_Popover('unlink')`
 
 Hides the popover, removes events and attributes from both trigger and popover.
