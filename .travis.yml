@@ -7,8 +7,8 @@ git:
     depth: 3
 
 node_js:
-    - "8"
     - "10"
+    - "12"
 
 before_install:
   - google-chrome-stable --product-version
@@ -29,10 +29,10 @@ env:
 matrix:
     fast_finish: true
     exclude:
-        - node_js: "10"
+        - node_js: "12"
           env: TEST_SAUCE="false"
     include:
-        - node_js: "10"
+        - node_js: "12"
           env: TEST_SAUCE="true"
           addons:
             sauce_connect: true
