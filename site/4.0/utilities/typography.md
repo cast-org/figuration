@@ -95,6 +95,37 @@ Transform text in components with text capitalization classes.
 
 Note how `.text-capitalize` only changes the first letter of each word, leaving the case of any other letters unaffected.
 
+## Line Height
+
+A few line height adjustment classes are available, `.lh-{size}`.
+
+Where *size* is one of the following:
+- `small` - `1.25`;
+- `base` - `1.5`;
+- `large` - `1.75`;
+
+<div class="cf-example">
+  <div class="mb-1_5">
+    <div class="lh-small text-muted">.lh-small</div>
+    <p class="lh-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit et mauris suscipit fermentum. Mauris massa dolor, mollis id augue ac, pretium faucibus massa. Ut posuere efficitur justo et luctus. Integer eget aliquam magna. In in vulputate nulla. Vivamus tristique leo id odio efficitur interdum eu ut metus.</p>
+  </div>
+  <div class="mb-1_5">
+    <div class="lh-base text-muted">.lh-base</div>
+    <p class="lh-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit et mauris suscipit fermentum. Mauris massa dolor, mollis id augue ac, pretium faucibus massa. Ut posuere efficitur justo et luctus. Integer eget aliquam magna. In in vulputate nulla. Vivamus tristique leo id odio efficitur interdum eu ut metus.</p>
+  </div>
+  <div class="mb-1_5">
+    <div class="lh-large text-muted">.lh-large</div>
+    <p class="lh-large">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit et mauris suscipit fermentum. Mauris massa dolor, mollis id augue ac, pretium faucibus massa. Ut posuere efficitur justo et luctus. Integer eget aliquam magna. In in vulputate nulla. Vivamus tristique leo id odio efficitur interdum eu ut metus.</p>
+  </div>
+</div>
+
+{% capture highlight %}
+<p class="lh-small">Lorem ipsum dolor sit amet ...</p>
+<p class="lh-base">Lorem ipsum dolor sit amet ...</p>
+<p class="lh-large">Lorem ipsum dolor sit amet ...</p>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
 ## Font Size
 
 Responsive font size utilities use the format `.fs{-breakpoint}-{size}`.
@@ -171,7 +202,9 @@ The `.font-weight-lighter` and `.font-weight-bolder` classes are relative by def
 {% capture example %}
 <p class="font-weight-light">Light weight text.</p>
 <p class="font-weight-normal">Normal weight text.</p>
-<p class="font-weight-bold">Bold text.</p>
+<p class="font-weight-semibold">Semi-bold weight text.</p>
+<p class="font-weight-bold">Bold weight text.</p>
+<p class="font-weight-black">Black weight text.</p>
 <p class="font-weight-light">Light weight with <span class="font-weight-bolder">bolder weight</span> text.</p>
 <p class="font-weight-bold">Bold weight with <span class="font-weight-lighter">lighter weight</span> text.</p>
 {% endcapture %}
@@ -363,6 +396,22 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$enable-utility-text-height</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the line-height utility classes.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-utility-text-size</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the font-size utility classes.
+        </td>
+      </tr>
+      <tr>
         <td><code>$utility-text-colors</code></td>
         <td>map</td>
         <td><code>$base-colors</code></td>
@@ -384,6 +433,52 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$palette-levels</code></td>
         <td>
           List of palette levels to use with palette text colors.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$line-heights</code></td>
+        <td>map</td>
+        <td><pre><code>(
+  "small":    1.25,
+  "base":     $line-height-base,
+  "large":    1.75
+)</code></pre></td>
+        <td>
+          Map used to generate the line-height utility classes.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-sizes</code></td>
+        <td>map</td>
+        <td><pre><code>(
+  "xsmall":   ($font-size-base * .75),
+  "small":    ($font-size-base * .875),
+  "base":     $font-size-base,
+  "large":    ($font-size-base * 1.125),
+  "xlarge":   ($font-size-base * 1.25),
+  "2xlarge":  ($font-size-base * 1.5),
+  "3xlarge":  ($font-size-base * 1.75),
+  "4xlarge":  ($font-size-base * 2),
+  "5xlarge":  ($font-size-base * 2.5)
+)</code></pre></td>
+        <td>
+          Map used to generate the font-size utility classes.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$font-weights</code></td>
+        <td>map</td>
+        <td><pre><code>(
+  "light":    $font-weight-light,
+  "normal":   $font-weight-normal,
+  "semibold": 600,
+  "bold":     $font-weight-bold,
+  "black":    900,
+  "lighter":  $font-weight-lighter,
+  "bolder":   $font-weight-bolder
+)</code></pre></td>
+        <td>
+          Map used to generate the font-weight utility classes.
         </td>
       </tr>
     </tbody>
@@ -501,92 +596,6 @@ Generate a text color rule with a hover/focus state when used as an anchor using
         <td><code>null</code></td>
         <td>
           Alter palette <code>$level</code> to mix base color to for hover/focus states when used as an anchor.
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-## SASS Reference
-
-### Variables
-
-The available [Customization options]({{ site.path }}/{{ version.docs }}/get-started/options/), or Sass variables, that can be customized for the typography.
-
-<div class="table-scroll">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th style="width: 100px;">Name</th>
-        <th style="width: 50px;">Type</th>
-        <th style="width: 50px;">Default</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>$enable-typography</code></td>
-        <td>boolean</td>
-        <td><code>true</code></td>
-        <td>
-          Enable the generation of the typography CSS ruless.
-          Smaller segements of the border utilities can be disabled with the following <code>$enable-*</code> variables.
-        </td>
-      </tr>
-      <tr>
-        <td><code>$enable-typography-headings</code></td>
-        <td>boolean</td>
-        <td><code>true</code></td>
-        <td>
-          Enable the generation of the headings typography classes.
-        </td>
-      </tr>
-      <tr>
-        <td><code>$enable-typography-lead</code></td>
-        <td>boolean</td>
-        <td><code>true</code></td>
-        <td>
-          Enable the generation of the lead typography class.
-        </td>
-      </tr>
-      <tr>
-        <td><code>$enable-typography-small</code></td>
-        <td>boolean</td>
-        <td><code>true</code></td>
-        <td>
-          Enable the generation of the small typography class.
-        </td>
-      </tr>
-      <tr>
-        <td><code>$enable-typography-mark</code></td>
-        <td>boolean</td>
-        <td><code>true</code></td>
-        <td>
-          Enable the generation of the mark typography class.
-        </td>
-      </tr>
-      <tr>
-        <td><code>$enable-typography-list-unstyled</code></td>
-        <td>boolean</td>
-        <td><code>true</code></td>
-        <td>
-          Enable the generation of the unstyled list typography class.
-        </td>
-      </tr>
-      <tr>
-        <td><code>$enable-typography-initialism</code></td>
-        <td>boolean</td>
-        <td><code>true</code></td>
-        <td>
-          Enable the generation of the initialism typography class.
-        </td>
-      </tr>
-      <tr>
-        <td><code>$enable-typography-blockquote</code></td>
-        <td>boolean</td>
-        <td><code>true</code></td>
-        <td>
-          Enable the generation of the blockquote typography classes.
         </td>
       </tr>
     </tbody>

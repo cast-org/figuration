@@ -33,11 +33,9 @@
 
     // Weight and italics
     @if $enable-utility-text-weight {
-        .font-weight-lighter { font-weight: $font-weight-lighter !important; }
-        .font-weight-light   { font-weight: $font-weight-light !important; }
-        .font-weight-normal  { font-weight: $font-weight-normal !important; }
-        .font-weight-bold    { font-weight: $font-weight-bold !important; }
-        .font-weight-bolder  { font-weight: $font-weight-bolder !important; }
+        @each $size, $dim in $font-weights {
+            .font-weight-#{$size} { font-weight: #{$dim} !important; }
+        }
     }
     @if $enable-utility-text-style {
         .font-italic         { font-style: italic !important; }
@@ -102,6 +100,13 @@
     // Reset text color
     @if $enable-utility-text-reset {
         .text-reset { color: inherit !important; }
+    }
+
+    // Line heights
+    @if $enable-utility-text-height {
+        @each $size, $dim in $line-heights {
+            .lh-#{$size} { line-height: #{$dim} !important; }
+        }
     }
 
     // Font sizes

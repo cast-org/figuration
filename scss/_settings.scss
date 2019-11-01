@@ -387,12 +387,40 @@ $font-sizes: map-merge(
     $font-sizes
 );
 
+// Line height utility classes
+$line-heights: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$line-heights: map-merge(
+    (
+        "small":    1.25,
+        "base":     $line-height-base,
+        "large":    1.75
+    ),
+    $line-heights
+);
+
 $font-weight-lighter:   lighter !default;
 $font-weight-light:     300 !default;
 $font-weight-normal:    400 !default;
 $font-weight-bold:      700 !default;
 $font-weight-bolder:    bolder !default;
 $font-weight-base:      $font-weight-normal !default;
+
+// Font weight utility classes
+$font-weights: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$font-weights: map-merge(
+    (
+        "light":    $font-weight-light,
+        "normal":   $font-weight-normal,
+        "semibold": 600,
+        "bold":     $font-weight-bold,
+        "black":    900,
+        "lighter":  $font-weight-lighter,
+        "bolder":   $font-weight-bolder
+    ),
+    $font-weights
+);
 
 $h1-font-size:  ($font-size-base * 2.5) !default;
 $h2-font-size:  ($font-size-base * 2) !default;
