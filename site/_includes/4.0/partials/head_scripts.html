@@ -8,7 +8,7 @@
 
 <!-- Figuration JS -->
 {% if site.environment == "production" -%}
-<script src="{{ site.path }}/assets{{ pathVersion }}/dist/js/figuration.min.js" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
+<script src="{{ site.path }}/assets{{ pathVersion }}/dist/js/figuration.min.js"></script>
 {%- else -%}
 <script src="{{ site.path }}/assets{{ pathVersion }}/dist/js/figuration.js"></script>
 {% endif -%}
