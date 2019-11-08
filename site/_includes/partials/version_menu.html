@@ -1,14 +1,22 @@
+{%- assign currVersion = version.docs | valueIfEmpty: site.version.docs -%}
 <div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
     v{{ version.current | valueIfEmpty: site.version.current }}
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
-    <li class="dropdown-header">Latest</li>
-    <li><a href="{{ site.path }}{{ pathVersion }}/" class="active">v{{ site.version.current }}</a></li>
+{%- for group in versions %}
+    <li class="dropdown-header">{{ group.set}}</li>
+    {%- for subver in group.versions -%}
+    {% assign isActive = '' %}
+    {%- if subver.path == currVersion %}
+    {% assign isActive = 'class="active"' %}
+    {% endif -%}
+    <li><a href="{{ site.path }}/{{ subver.path }}/"{{ isActive }}>{{ subver.ver}}</a></li>
+    {% endfor -%}
+    {%- if forloop.last != true %}
     <li class="dropdown-divider"></li>
-    <li class="dropdown-header">Older</li>
-    <li><a href="{{ site.path }}/3.0/">v3.0.5</a></li>
-    <!--<a href="{{ site.path }}/versions/">Other Versions</a> -->
+    {% endif -%}
+{% endfor -%}
   </ul>
 </div>

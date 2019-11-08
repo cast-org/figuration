@@ -163,7 +163,7 @@ Some reference material - may be competing points of view:
 {% endcapture %}
 {% renderCallout, callout, "info" %}
 
-Figuration primarily uses the following media query ranges---or breakpoints---in our source Sass files for our layout, grid system, and components.
+Figuration primarily uses the following media query ranges—or breakpoints—in our source Sass files for our layout, grid system, and components.
 
 {% capture highlight %}
 // Extra small devices (portrait phones, less than 36em/576px)
@@ -315,7 +315,7 @@ A quick example using some of Figuration's [Typography utility classes]({{ site.
 
 Several Figuration components utilize `z-index`, the CSS property that helps control layout by providing a third axis to arrange content. We utilize a default z-index scale in Figuration that's been designed to properly layer navigation, tooltips and popovers, modals, and more.
 
-We use a defined set because of the layered components---tooltips, popovers, navbars, dropdowns, modals---so they remain consistent in terms of behavior.
+We use a defined set because of the layered components—tooltips, popovers, navbars, dropdowns, modals—so they remain consistent in terms of behavior.
 
 Customizing these values is most likely not needed, and we don't recommend adjusting the values.  However, if you change one, you will need to review and possibly update all of the other values.
 

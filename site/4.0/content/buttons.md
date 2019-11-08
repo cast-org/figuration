@@ -123,7 +123,7 @@ The icons shown in the examples are from [Font Awesome](https://fontawesome.com/
 
 ## Block Buttons
 
-Create block level buttons---those that span the full width of a parent---by adding `.btn-block`.
+Create block level buttons—those that span the full width of a parent—by adding `.btn-block`.
 
 {% capture example %}
 <button type="button" class="btn btn-primary btn-xlarge btn-block">Extra Large Block level button</button>

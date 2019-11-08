@@ -157,7 +157,7 @@ On the rare occasion you need to override it, use something like the following:
 {% endcapture %}
 {% renderHighlight highlight, "css" %}
 
-With the above snippet, nested elements---including generated content via `::before` and `::after`---will all inherit the specified `box-sizing` for that `.selector-for-some-widget`.
+With the above snippet, nested elements—including generated content via `::before` and `::after`—will all inherit the specified `box-sizing` for that `.selector-for-some-widget`.
 
 Learn more about [box model and sizing at CSS Tricks](https://css-tricks.com/box-sizing/).
 

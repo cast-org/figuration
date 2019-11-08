@@ -86,7 +86,7 @@ Input groups wrap by default in order to accommodate the use of custom form fiel
 
 ## Sizing
 
-Add the relative form sizing classes to the `.input-group` itself and contents within will automatically resize---no need for repeating the form control size classes on each element.
+Add the relative form sizing classes to the `.input-group` itself and contents within will automatically resize—no need for repeating the form control size classes on each element.
 
 **Sizing on the individual input group elements is not supported.**
 

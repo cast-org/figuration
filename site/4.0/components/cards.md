@@ -385,7 +385,7 @@ Use custom CSS in your stylesheets or as inline styles to set a width.
 
 ## Text Alignment
 
-You can quickly change the text alignment of any card---in its entirety or specific parts---with our [text align classes]({{ site.path }}/{{ version.docs }}/utilities/typography/#text-alignment).
+You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]({{ site.path }}/{{ version.docs }}/utilities/typography/#text-alignment).
 
 {% capture example %}
 <div class="card" style="max-width: 18rem;">

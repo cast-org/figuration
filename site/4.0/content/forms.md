@@ -26,7 +26,7 @@ Assistive technologies such as screen readers will have trouble with your forms 
 
 ## Text Inputs
 
-Textual form controls---like `<input>`s, `<select>`s, and `<textarea>`s---are styled with the `.form-control` class.  Included are styles for general appearance, focus state, sizing, and more.
+Textual form controls—like `<input>`s, `<select>`s, and `<textarea>`s—are styled with the `.form-control` class.  Included are styles for general appearance, focus state, sizing, and more.
 
 {% capture example %}
 <form>
@@ -232,7 +232,7 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
 Caveat About Link Functionality of `<a>`
 {.h5}
 
-By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`. As noted in the section about [disabled state for buttons](../buttons/#disabled-state) (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in all browsers, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.
+By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`. As noted in the section about [disabled state for buttons]({{ site.path }}/{{ version.docs }}/content/buttons/#disabled-state) (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in all browsers, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.
 {% endcapture %}
 {% renderCallout, callout, "warning" %}
 
@@ -252,7 +252,7 @@ Block-level help text in forms can be created using `.form-text`. Inline help te
 Associating Help Text With Form Controls
 {.h5}
 
-Help text should be explicitly associated with the form control it relates to using the `aria-describedby` attribute. This will ensure that assistive technologies---such as screen readers---will announce this help text when the user focuses or enters the control.
+Help text should be explicitly associated with the form control it relates to using the `aria-describedby` attribute. This will ensure that assistive technologies—such as screen readers—will announce this help text when the user focuses or enters the control.
 {% endcapture %}
 {% renderCallout, callout, "warning" %}
 
@@ -333,7 +333,7 @@ Add the `.form-checkradio` modifier class to a `.form-check` to enable the styli
 
 We hide the default `<input>` with `opacity` and use a `<label>` element with `.form-check-label` to build the stylized indicator in its place with `::before` and `::after`. Unfortunately we can't build a custom one from just the `<input>` because CSS does not support `content`, `appearance` in IE 11, or pseudo-elements on that element.
 
-We also use the sibling selector (`~`) and the `<input>` states---like `:checked`---to style the form indicator and `<label>` text for each item.
+We also use the sibling selector (`~`) and the `<input>` states—like `:checked`—to style the form indicator and `<label>` text for each item.
 
 Stylized checkboxes can also utilize the `:indeterminate` pseudo class when manually set via JavaScript (there is no available HTML attribute for specifying it).
 
@@ -589,7 +589,7 @@ Create custom `<input type="range">` controls with `.form-range`. The track (the
 {% endcapture %}
 {% renderExample example %}
 
-Range inputs have implicit values for `min` and `max`---`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
+Range inputs have implicit values for `min` and `max`—`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
 
 {% capture example %}
 <label for="customRange2">Example range</label>
