@@ -32,7 +32,7 @@ Vendor prefixes are provided in our compiled CSS with [Autoprefixer](https://git
 
 If you need a reference for working with flexbox, there is an excellent resource over at CSS Tricks with [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/).
 
-## Why Flexbox
+## Why Flexbox?
 
 In a nutshell, flexbox provides simpler and more flexible layout options in CSS. More specifically, it provides:
 

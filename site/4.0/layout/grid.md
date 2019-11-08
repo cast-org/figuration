@@ -15,7 +15,7 @@ Figuration includes a powerful mobile-first grid system for building layouts of 
 
 At a high level, here's how the grid system works:
 
-- There are three major components---containers, rows, and columns.
+- There are three major components—containers, rows, and columns.
 - The grid is built with [flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes) and is fully responsive.
 - Containers provide a means to center and horizontally pad your site's contents. Use `.container` for a responsive fixed width or `.container-fluid` for `width: 100%` across all viewport and device sizes.
 - Rows are wrappers for columns. Each column has horizontal `padding` (called a gutter) for controlling the space between them. This `padding` is then counteracted on the rows with negative margins. This way, all the content in your columns is visually aligned down the left side (right side in `rtl` mode).
@@ -781,7 +781,7 @@ To nest your content with the default grid, add a new `.row` and set of `.col-sm
 
 ## Customizing the Grid
 
-Using our built-in grid Sass variables and maps, it's possible to completely customize the predefined grid classes. Change the number of tiers, the media query dimensions, the container widths, and the grid gutter widths---then recompile.
+Using our built-in grid Sass variables and maps, it's possible to completely customize the predefined grid classes. Change the number of tiers, the media query dimensions, the container widths, and the grid gutter widths—then recompile.
 
 ### Columns and Gutters
 

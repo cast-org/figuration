@@ -30,7 +30,7 @@ module.exports = function(eleventyConfig) {
     });
 
     // Markdown plugins
-    const slugifyHeading = s => slugify(s, {lower: true, remove: /[*+~.()'"!:@\[\]\/]/g});
+    const slugifyHeading = s => slugify(s, {lower: true, remove: /[*+~.()'"!?:@\[\]\/]/g});
     const markdownItOptions = {
         html: true,
         breaks: true,
