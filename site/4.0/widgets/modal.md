@@ -821,20 +821,20 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>unlink</td>
         <td>boolean</td>
         <td><code>false</code></td>
-        <td>If the `unlink` method should be called when the modal is hidden.  This leaves the modal behind in the DOM.</td>
+        <td>If the <code>unlink</code> method should be called when the modal is hidden.  This leaves the modal behind in the DOM.</td>
       </tr>
       <tr>
         <td>dispose</td>
         <td>boolean</td>
         <td><code>false</code></td>
-        <td>If the `dispose` method should be called when the modal is hidden. This will remove the modal from the DOM.</td>
+        <td>If the <code>dispose</code> method should be called when the modal is hidden. This will remove the modal from the DOM.</td>
       </tr>
       <tr>
         <td>backdrop</td>
-        <td>boolean or the string `'static'`</td>
+        <td>boolean or the string <code>'static'</code></td>
         <td><code>true</code></td>
         <td>
-          <p>Includes a modal-backdrop element. Alternatively, specify `static` for a backdrop which doesn't close the modal on click.</p>
+          <p>Includes a modal-backdrop element. Alternatively, specify <code>'static'</code> for a backdrop which doesn't close the modal on click.</p>
           <p>The backdrop is the semi-opaque overlay used to visually seperate the modal from the page content.</p>
          </td>
       </tr>

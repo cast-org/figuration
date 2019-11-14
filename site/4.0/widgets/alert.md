@@ -110,7 +110,7 @@ $('#myAlert').CFW_Alert({
 
 Closes an alert.
 
-#### `.CFW_Alert('dipose')`
+#### `.CFW_Alert('dispose')`
 
 Removes the click event listener from a trigger. This will not disable a dismiss item if the Figuration widget API is enabled.
 

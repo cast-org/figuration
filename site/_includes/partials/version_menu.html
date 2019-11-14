@@ -10,7 +10,7 @@
     {%- for subver in group.versions -%}
     {% assign isActive = '' %}
     {%- if subver.path == currVersion %}
-    {% assign isActive = 'class="active"' %}
+    {% assign isActive = ' class="active"' %}
     {% endif -%}
     <li><a href="{{ site.path }}/{{ subver.path }}/"{{ isActive }}>{{ subver.ver}}</a></li>
     {% endfor -%}

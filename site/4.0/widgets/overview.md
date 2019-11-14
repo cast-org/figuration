@@ -17,7 +17,7 @@ Both `figuration.js` and `figuration.min.js` contain all widgets and helper util
 One Widget per Element
 {.h5}
 
-Don't use multiple widgets on the same element. For example, a button should not both have a tooltip and toggle a modal. Doing so would cause a conflict in functionality and with the <abbr title="Accessible Rich Internet Applications">ARIA</abbr> attributes.
+Don't use multiple widgets on the same element. For example, a button should not both have a tooltip and toggle a modal. Doing so would cause a conflict in functionality and accessibility.
 {% endcapture %}
 {% renderCallout, callout, "danger" %}
 
