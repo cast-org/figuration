@@ -82,7 +82,9 @@
         if (this.$target.find('[data-cfw-drag="' + this.type + '"]').length) {
             this.$target.addClass('draggable');
             // Force settings
-            this.settings.trigger = 'click';
+            if (this.settings.trigger !== 'manual') {
+                this.settings.trigger = 'click';
+            }
             this.settings.container = 'body';
             // Enable drag handlers
             this.enableDrag();
