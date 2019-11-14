@@ -168,7 +168,7 @@ You can also get the collapse events as indicated in the [Collapse widget]({{ si
     </thead>
     <tbody>
       <tr>
-        <td><code>init.cfw.accordion</code></td>
+        <td>init.cfw.accordion</td>
         <td>This event fires after the accordion item is initialized.</td>
       </tr>
     </tbody>

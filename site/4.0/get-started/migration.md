@@ -132,6 +132,8 @@ ${toc}
 ### Tooltip
 - Tooltip now require [Popper.js](https://popper.js.org/) for positioning, replacing our custom code.  This also means changes to the available options.
 
+## Documentation
+- We have stopped using Jekyll, and changed to using [Eleventy](https://11ty.io) to generate the documentation.
 
 ## Build Tools
-- Figuration now requires Node.js v8 or newer if using our build tools.  This is due to the minimum Node.js requirement for `grunt-sass`.
+- Figuration now requires Node.js v10 or newer if using our build tools.  This is due to the minimum Node.js requirement for `grunt-sass`.

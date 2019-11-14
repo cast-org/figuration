@@ -105,13 +105,9 @@ Keep tooltips in their place with the `viewport` option.
 {% capture example %}
 <div class="container-viewport" id="viewport-tooltip">
   <p class="viewport-text">Test viewport constraints for tooltips.</p>
-
   <button type="button" class="btn tooltip-viewport-bottom" title="This should be shifted to the right">Shift Right</button>
-
   <button type="button" class="btn tooltip-viewport-right" title="This should be shifted down">Shift Down</button>
-
   <button type="button" class="btn float-end tooltip-viewport-bottom" title="This should be shifted to the left">Shift Left</button>
-
   <button type="button" class="btn tooltip-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
 </div>
 <script>

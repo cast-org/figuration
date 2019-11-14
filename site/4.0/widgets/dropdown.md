@@ -670,7 +670,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <tr>
         <td>backtext</td>
         <td>string</td>
-        <td><code>Back</code></td>
+        <td><code>'Back'</code></td>
         <td>Text to be used for back links.</td>
       </tr>
       <tr>
@@ -700,7 +700,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <tr>
         <td>flip</td>
         <td>boolean</td>
-        <td><code>'true'</code></td>
+        <td><code>true</code></td>
         <td>
           <p>Allow Dropdown to flip in case of an overlapping on the reference element. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..flip.enabled">flip docs</a>.</p>
         </td>
