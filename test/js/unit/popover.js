@@ -335,4 +335,16 @@ $(function() {
 
         $popover.trigger($.Event('click'));
     });
+
+    QUnit.test('should not force "trigger=\'clicked\'" when drag enabled and "trigger=\'manual\'"', function(assert) {
+        assert.expect(1);
+        var $popover = $('<a href="#" title="popover title" data-cfw-popover-content="popover content">Popover</a>')
+            .appendTo('#qunit-fixture')
+            .CFW_Popover({
+                drag: true,
+                trigger: 'manual'
+            });
+
+        assert.strictEqual($popover.data('cfw.popover').settings.trigger, 'manual', 'trigger is manual');
+    });
 });

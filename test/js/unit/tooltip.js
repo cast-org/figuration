@@ -909,4 +909,33 @@ $(function() {
             })
             .CFW_Tooltip('show');
     });
+
+    QUnit.test('should not show/hide tooltip on click if "trigger=\'manual\'"', function(assert) {
+        assert.expect(4);
+        var $el = $('<a href="#" rel="tooltip" title="Test tooltip"/>')
+            .appendTo('#qunit-fixture')
+            .CFW_Tooltip({
+                trigger: 'manual',
+                animate: false
+            });
+
+        function showingTooltip() {
+            var tooltip = $el.data('cfw.tooltip');
+            var $tooltip = tooltip.$target;
+            var hasIn = $tooltip !== null ? $tooltip.hasClass('in') : false;
+            return hasIn || tooltip.hoverState === 'in';
+        }
+
+        $el.trigger('click');
+        assert.ok(!showingTooltip(), 'tooltip is hidden');
+
+        $el.CFW_Tooltip('show');
+        assert.ok(showingTooltip(), 'tooltip is shown');
+
+        $el.trigger('click');
+        assert.ok(showingTooltip(), 'tooltip is shown');
+
+        $el.CFW_Tooltip('hide');
+        assert.ok(!showingTooltip(), 'tooltip is hidden');
+    });
 });
