@@ -15,7 +15,7 @@ group: get-started
 [eslint]: https://eslint.org/
 [stylelint]: https://stylelint.io/
 
-Figuration uses [Node.js](https://nodejs.org/) and [Grunt](https://gruntjs.com/) for its CSS and JavaScript build system and [Eleventy](http://11ty.io) for the written documentation. This provides convenient methods for working with the framework, including compiling code, running tests, and more.
+Figuration uses [Node.js](https://nodejs.org/) and [Grunt](https://gruntjs.com/) for its CSS and JavaScript build system and [Eleventy](http://11ty.dev) for the written documentation. This provides convenient methods for working with the framework, including compiling code, running tests, and more.
 
 <div class="h3 cf-toc-header">Page Contents</div>
 
@@ -74,7 +74,7 @@ Running our documentation with Eleventy, a static site generator that provides u
 2. From the root `/figuration` directory, run `npm run docs-serve` in the command line.
 3. Open `http://localhost:9001` in your browser, and enjoy.
 
-Learn more about using Eleventy by reading their [documentation](https://www.11ty.io/docs/).
+Learn more about using Eleventy by reading their [documentation](https://www.11ty.dev/docs/).
 
 ## Troubleshooting
 
