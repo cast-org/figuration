@@ -153,7 +153,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$caret-width</code></td>
         <td>string</td>
-        <td><code>1rem</code></td>
+        <td><code>.75rem</code></td>
         <td>
           Caret element width.
         </td>

@@ -80,6 +80,9 @@ ${toc}
 - List and table sub-components now use a `.card-list` or `.card-table` respectively.
 - Responsive horizontal card layouts have been added with `.card-horizontal{breakpoint}`, `.card-horizontal{breakpoint}-reverse`, and child `.card-col` elements.
 
+### Grid Lines
+- Grid lines were dropped in favor the updated [Border utility classes]({{ site.path }}/{{ version.docs }}/utilities/borders/#borders).
+
 ### Input Group
 - Input group addons have been revised, simplifying much of the related CSS. Within an addon, place your buttons as they would exist anywhere else, but wrap text in `.input-group-text`.
 - Validation styles are now supported, as are multiple inputs (though you can only validate one input per group).
