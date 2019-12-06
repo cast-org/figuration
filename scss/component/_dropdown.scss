@@ -220,7 +220,6 @@
     }
 
     // When using Popper, reset basic dropdown position
-    // stylelint-disable-next-line no-duplicate-selectors
     .dropdown-menu,
     .dropdown-submenu > .dropdown-menu {
         &[x-placement] {

@@ -281,7 +281,6 @@
                             }
                         }
 
-                        // stylelint-disable-next-line selector-no-qualifying-type
                         textarea.form-control-#{$size},
                         .input-group-#{$size} > textarea.form-control {
                             @include form-validation-state-selector-icon($state) {
@@ -289,7 +288,6 @@
                             }
                         }
 
-                        // stylelint-disable-next-line selector-no-qualifying-type
                         select.form-control-#{$size},
                         .input-group-#{$size} > select.form-control {
                             @include form-validation-state-selector-icon($state) {
