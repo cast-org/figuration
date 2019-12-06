@@ -583,7 +583,7 @@ $shadows: map-merge(
 
 // Component pieces
 // =====
-$caret-width:               1rem !default;
+$caret-width:               .75rem !default;
 $caret-border-width:        .3125rem !default;
 
 $close-font-size:           ($font-size-base * 1.5) !default;
