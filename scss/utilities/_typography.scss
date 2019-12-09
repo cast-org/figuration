@@ -39,6 +39,7 @@
     }
     @if $enable-utility-text-style {
         .font-italic         { font-style: italic !important; }
+        .font-normal         { font-style: normal !important; }
     }
 
     // Font families
