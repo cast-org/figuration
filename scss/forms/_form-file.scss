@@ -48,7 +48,8 @@
             }
         }
 
-        &[disabled] {
+        &[disabled],
+        &:disabled {
             & ~ .form-file-label {
                 color: $input-disabled-color;
                 background-color: $input-disabled-bg;

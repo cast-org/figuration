@@ -45,8 +45,13 @@
         @extend %btn-common-disabled;
     }
     @if $enable-btn-check {
-        .btn-check-input[disabled] ~ .btn {
-            @extend %btn-common-disabled;
+        .btn-check-input {
+            &[disabled],
+            &:disabled {
+                ~ .btn {
+                    @extend %btn-common-disabled;
+                }
+            }
         }
     }
 
@@ -59,7 +64,7 @@
         @extend %btn-common-active !optional;
     }
     @if $enable-btn-check {
-        .btn-check-input:not([disabled]):checked ~ .btn {
+        .btn-check-input:not([disabled]):not(:disabled):checked ~ .btn {
             @extend %btn-common-active !optional;
         }
     }
@@ -73,7 +78,7 @@
         @extend %btn-common-active-focus !optional;
     }
     @if $enable-btn-check {
-        .btn-check-input:not([disabled]):checked:focus ~ .btn {
+        .btn-check-input:not([disabled]):not(:disabled):checked:focus ~ .btn {
             @extend %btn-common-active-focus !optional;
         }
     }
@@ -87,8 +92,13 @@
         @extend %btn-common-disabled-pointer;
     }
     @if $enable-btn-check {
-        .btn-check-input[disabled] ~ .btn {
-            @extend %btn-common-disabled-pointer;
+        .btn-check-input {
+            &[disabled],
+            &:disabled {
+                ~ .btn {
+                    @extend %btn-common-disabled-pointer;
+                }
+            }
         }
     }
 
