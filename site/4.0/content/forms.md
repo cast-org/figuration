@@ -362,6 +362,17 @@ In the checked and indeterminate states, we use icons from [Open Iconic](https:/
   <input class="form-check-input" type="checkbox" id="check4" disabled checked>
   <label class="form-check-label" for="check4">Disabled checked custom checkbox</label>
 </div>
+<fieldset class="mt-1" disabled>
+  <legend class="form-label">Disabled fieldset</legend>
+  <div class="form-check form-checkradio">
+    <input class="form-check-input" type="checkbox" id="check5">
+    <label class="form-check-label" for="check5">Custom checkbox in a disabled fieldset</label>
+  </div>
+  <div class="form-check form-checkradio">
+    <input class="form-check-input" type="checkbox" id="check6" checked>
+    <label class="form-check-label" for="check6">Checked custom checkbox in a disabled fieldset</label>
+  </div>
+</fieldset>
 {% endcapture %}
 {% renderExample example %}
 
@@ -382,6 +393,17 @@ In the checked and indeterminate states, we use icons from [Open Iconic](https:/
   <input class="form-check-input" type="radio" id="radio3" name="radiosdis" disabled checked>
   <label class="form-check-label" for="radio3">Disabled checked custom radio</label>
 </div>
+<fieldset class="mt-1" disabled>
+  <legend class="form-label">Disabled fieldset</legend>
+  <div class="form-check form-checkradio">
+    <input class="form-check-input" type="radio" id="radio4" name="radiosfsdisfs">
+    <label class="form-check-label" for="radio4">Custom radio in a disabled fieldset</label>
+  </div>
+  <div class="form-check form-checkradio">
+    <input class="form-check-input" type="radio" id="radio5" name="radiosfsdisfs" checked>
+    <label class="form-check-label" for="radio5">Checked custom radio in a disabled fieldset</label>
+  </div>
+</fieldset>
 {% endcapture %}
 {% renderExample example %}
 
@@ -415,6 +437,17 @@ In similar fashion to the stylized checkbox and radio input, transform either of
   <label class="form-check-label" for="switch2">Disabled checked custom switch checkbox</label>
   <small class="text-muted d-block">Some additional help text could appear right here.</small>
 </div>
+<fieldset class="mt-1" disabled>
+  <legend class="form-label">Disabled fieldset</legend>
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="switch3">
+    <label class="form-check-label" for="switch3">Custom switch checkbox in a disabled fieldset</label>
+  </div>
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="switch4" checked>
+    <label class="form-check-label" for="switch4">Checked switch checkbox in a disabled fieldset</label>
+  </div>
+</fieldset>
 {% endcapture %}
 {% renderExample example %}
 
@@ -427,6 +460,25 @@ In similar fashion to the stylized checkbox and radio input, transform either of
   <input class="form-check-input" type="radio" id="switchradio1" name="switchradio">
   <label class="form-check-label" for="switchradio1">Custom switch radio</label>
 </div>
+<div class="form-check form-switch">
+  <input class="form-check-input" type="radio" id="switchradiods0" name="switchradiods" disabled checked>
+  <label class="form-check-label" for="switchradiods0">Disabled checked custom switch radio</label>
+</div>
+<div class="form-check form-switch">
+  <input class="form-check-input" type="radio" id="switchradiods1" name="switchradiods" disabled>
+  <label class="form-check-label" for="switchradiods1">Disabled custom switch radio</label>
+</div>
+<fieldset class="mt-1" disabled>
+  <legend class="form-label">Disabled fieldset</legend>
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="radio" id="switchradiofs0" name="switchradiofs" checked>
+    <label class="form-check-label" for="switchradiofs0">Custom switch radio in a disabled fieldset</label>
+  </div>
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="radio" id="switchradiofs1" name="switchradiofs">
+    <label class="form-check-label" for="switchradiofs1">Custom switch radio in a disabled fieldset</label>
+  </div>
+</fieldset>
 {% endcapture %}
 {% renderExample example %}
 

@@ -289,6 +289,23 @@ Disabled checkboxes and radios are supported, you will need to add the `disabled
 {% endcapture %}
 {% renderExample example %}
 
+Disabled sytling will also be applied if the input buttons are contained within a disabled `<fieldset>`.
+
+{% capture example %}
+<fieldset disabled>
+  <legend class="form-label">Disabled fieldset</legend>
+  <div class="btn-check">
+    <input id="fieldset0" type="checkbox" class="btn-check-input">
+    <label for="fieldset0" class="btn">Disabled Checkbox</label>
+  </div>
+  <div class="btn-check">
+    <input id="fieldset1" type="radio" name="fieldset1" class="btn-check-input">
+    <label for="fieldset1-0" class="btn">Disabled Radio</label>
+  </div>
+</fieldset>
+{% endcapture %}
+{% renderExample example %}
+
 ### Grouped Input Buttons
 
 You can also use `.btn-check`s inside a `.btn-group` for grouping controls together.

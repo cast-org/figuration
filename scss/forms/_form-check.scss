@@ -12,11 +12,21 @@
 
             > input {
                 margin-left: -$form-check-gutter;
-            }
 
-            // stylelint-disable-next-line selector-no-qualifying-type
-            > input[disabled] ~ .form-check-label {
-                opacity: $form-check-label-disabled-opacity;
+                // stylelint-disable selector-no-qualifying-type
+                &[disabled],
+                &:disabled {
+                    ~ .form-check-label {
+                        opacity: $form-check-label-disabled-opacity;
+                    }
+                    // Get custom input to roughly match the parent label's opacity
+                    // Fixes issue with not going semi-transparent in disabled fieldsets
+                    ~ .form-check-label::before,
+                    ~ .form-check-label::after {
+                        opacity: .999;
+                    }
+                }
+                // stylelint-enable selector-no-qualifying-type
             }
         }
 
@@ -75,7 +85,7 @@
                 }
             }
 
-            .form-check-input:active:not([disabled]) ~ .form-check-label {
+            .form-check-input:active:not([disabled]):not(:disabled) ~ .form-check-label {
                 &::before {
                     filter: brightness(92.5%);
                 }
@@ -178,7 +188,7 @@
                 }
             }
 
-            .form-check-input:active:not([disabled]) ~ .form-check-label {
+            .form-check-input:active:not([disabled]):not(:disabled) ~ .form-check-label {
                 &::before,
                 &::after {
                     filter: brightness(92.5%);

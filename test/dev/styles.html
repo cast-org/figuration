@@ -1328,6 +1328,17 @@ Showing a <kbd>kdb sample</kbd>
   </div>
 </div>
 
+<button type="button" class="btn btn-primary" onclick="toggleRadio()">toggle disable</button>
+<script>
+var disabled = false;
+function toggleRadio () {
+    disabled = !disabled;
+    $("#customControl0").prop('disabled', disabled);
+    $("#customControl1").prop('disabled', disabled);
+}
+</script>
+
+
 <h3>Custom Forms: Radio</h3>
 <div class="mb-1">
   <div class="form-check form-checkradio">
