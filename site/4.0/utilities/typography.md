@@ -210,18 +210,19 @@ The `.font-weight-lighter` and `.font-weight-bolder` classes are relative by def
 {% endcapture %}
 {% renderExample example %}
 
-## Italics
+## Font Style
 
-Italicize text with `.font-italic`.
+Italicize or reset the font style for a section of text.
 
 {% capture example %}
 <p class="font-italic">Italic text.</p>
+<p class="font-normal">Text without font style</p>
 {% endcapture %}
 {% renderExample example %}
 
 ## Font Family
 
-Alter the font family for a section of text with
+Alter the font family for a section of text.
 
 {% capture example %}
 <p class="font-family-sans-serif">This is an example of the sans serif font.</p>
