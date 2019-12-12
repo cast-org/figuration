@@ -59,6 +59,8 @@
     // Text decoration
     @if $enable-utility-text-decoration {
         .text-decoration-none { text-decoration: none !important; }
+        .text-decoration-underline { text-decoration: underline !important; }
+        .text-decoration-line-through { text-decoration: line-through !important; }
     }
 
     // Word break
