@@ -75,7 +75,7 @@
         // Insert copy to clipboard button before .highlight
         // $('.highlight').each(function() {
         $('pre[class*="language-"]').each(function() {
-            var btnHtml = '<div class="cf-clipboard"><button type="button" class="btn btn-xsmall btn-secondary btn-clipboard" title="Copy to clipboard">Copy</button></div>';
+            var btnHtml = '<div class="cf-clipboard"><button type="button" class="btn btn-xsmall btn-secondary btn-clipboard print-none" title="Copy to clipboard">Copy</button></div>';
             $(this).before(btnHtml);
         });
 
