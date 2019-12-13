@@ -70,6 +70,7 @@
                     border: $form-checkradio-border-width solid $form-checkradio-border-color;
                     box-shadow: $form-checkradio-box-shadow;
                     @include transition($input-transition);
+                    color-adjust: exact;
                 }
             }
 
@@ -157,6 +158,7 @@
                     display: inline-block;
                     content: "";
                     @include transition($switch-transition);
+                    color-adjust: exact;
                 }
 
                 // Track
