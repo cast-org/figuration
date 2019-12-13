@@ -17,6 +17,10 @@ pre[class*="language-"] {
     tab-size: 4;
     white-space: pre;
     direction: ltr;
+
+    @media print {
+        white-space: pre-wrap !important; // stylelint-disable-line declaration-no-important
+    }
 }
 
 pre[class*="language-"]::selection,
