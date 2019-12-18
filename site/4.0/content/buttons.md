@@ -328,6 +328,26 @@ You can also use `.btn-check`s inside a `.btn-group` for grouping controls toget
 {% endcapture %}
 {% renderExample example %}
 
+Or group the buttons vertically with `.btn-group-vertical`.
+
+{% capture example %}
+<div class="btn-group-vertical">
+  <div class="btn-check">
+    <input id="radio3-0" type="radio" name="radio3" class="btn-check-input" checked>
+    <label for="radio3-0" class="btn btn-outline-info">Radio 1</label>
+  </div>
+  <div class="btn-check">
+    <input id="radio3-1" type="radio" name="radio3" class="btn-check-input">
+    <label for="radio3-1" class="btn btn-outline-info">Radio 2</label>
+  </div>
+  <div class="btn-check">
+    <input id="radio3-2" type="radio" name="radio3" class="btn-check-input">
+    <label for="radio3-2" class="btn btn-outline-info">Radio 3</label>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
 ## SASS Reference
 
 ### Variables
