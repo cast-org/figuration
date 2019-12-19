@@ -1038,7 +1038,7 @@ textarea.form-control:not([rows="1"]) {
   margin-right: -1.375em;
   content: "";
   background-color: #fff;
-  border: 1px solid #bfc6cd;
+  border: 1px solid #9eaab4;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -webkit-print-color-adjust: exact;
           color-adjust: exact;
@@ -1129,7 +1129,7 @@ textarea.form-control:not([rows="1"]) {
   width: 1.75em;
   height: 1em;
   background-color: #fff;
-  border: 1px solid #bfc6cd;
+  border: 1px solid #9eaab4;
   border-radius: 1em;
   transform: translateY(0.75em) translateY(-0.5em);
 }
@@ -4549,7 +4549,6 @@ a.page-link {
   margin-left: 1rem;
   font-size: 1.25rem;
   font-weight: 700;
-  line-height: inherit;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -4581,7 +4580,6 @@ a.page-link {
 }
 
 .navbar-text {
-  display: inline-block;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
 }
@@ -4594,7 +4592,7 @@ a.page-link {
 }
 
 .navbar-collapse {
-  flex: 1 1 100%;
+  flex: 1 0 100%;
   align-items: center;
 }
 
