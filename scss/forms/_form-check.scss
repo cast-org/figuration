@@ -68,7 +68,7 @@
                     content: "";
                     background-color: $form-checkradio-bg;
                     border: $form-checkradio-border-width solid $form-checkradio-border-color;
-                    box-shadow: $form-checkradio-box-shadow;
+                    @include box-shadow($form-checkradio-box-shadow);
                     @include transition($input-transition);
                     color-adjust: exact;
                 }
@@ -96,7 +96,11 @@
                 &::before {
                     border-color: $form-checkradio-focus-border-color;
                     outline: 0;
-                    box-shadow: $form-checkradio-focus-box-shadow;
+                    @if $enable-shadows {
+                        box-shadow: $form-checkradio-box-shadow, $form-checkradio-focus-box-shadow;
+                    } @else {
+                        box-shadow: $form-checkradio-focus-box-shadow;
+                    }
                 }
             }
 
@@ -107,6 +111,15 @@
                     background-position: center center;
                     background-size: $form-checkradio-icon-size;
                     border-color: $form-checkradio-checked-border-color;
+                    @include box-shadow($form-checkradio-checked-box-shadow);
+                }
+            }
+
+            .form-check-input:checked:focus ~ .form-check-label {
+                &::before {
+                    @if $form-checkradio-checked-box-shadow != null {
+                        @include box-shadow($form-checkradio-checked-box-shadow, $form-checkradio-focus-box-shadow);
+                    }
                 }
             }
 
@@ -171,7 +184,7 @@
                     background-color: $form-switch-track-bg;
                     border: $form-switch-track-border-width solid $form-switch-track-border-color;
                     @include border-radius($form-switch-track-border-radius);
-                    box-shadow: $form-switch-track-box-shadow;
+                    @include box-shadow($form-switch-track-box-shadow);
                     transform: translateY(.5em * $line-height-base) translateY($form-switch-track-height / -2);
                 }
 
@@ -185,7 +198,7 @@
                     background-color: $form-switch-thumb-bg;
                     border: $form-switch-thumb-border-width solid $form-switch-thumb-border-color;
                     @include border-radius($form-switch-thumb-border-radius);
-                    box-shadow: $form-switch-thumb-box-shadow;
+                    @include box-shadow($form-switch-thumb-box-shadow);
                     transform: translateY(.5em * $line-height-base) translateY($form-switch-thumb-height / -2);
                 }
             }
@@ -202,13 +215,22 @@
                     background-color: $form-switch-track-focus-bg;
                     border-color: $form-switch-track-focus-border-color;
                     outline: 0;
-                    box-shadow: $form-switch-track-focus-box-shadow;
+                    @if $enable-shadows {
+                        box-shadow: $form-switch-track-box-shadow, $form-switch-track-focus-box-shadow;
+                    } @else {
+                        box-shadow: $form-switch-track-focus-box-shadow;
+                    }
                 }
                 &::after {
                     background-color: $form-switch-thumb-focus-bg;
                     border-color: $form-switch-thumb-focus-border-color;
                     outline: 0;
                     box-shadow: $form-switch-thumb-focus-box-shadow;
+                    @if $enable-shadows {
+                        box-shadow: $form-switch-thumb-box-shadow, $form-switch-thumb-focus-box-shadow;
+                    } @else {
+                        box-shadow: $form-switch-thumb-focus-box-shadow;
+                    }
                 }
             }
 
@@ -216,11 +238,26 @@
                 &::before {
                     background-color: $form-switch-track-checked-bg;
                     border-color: $form-switch-track-checked-border-color;
+                    @include box-shadow($form-switch-track-checked-box-shadow);
                 }
                 &::after {
                     left: calc(#{$form-switch-width} - #{$form-switch-thumb-width} - #{$form-switch-thumb-offset});
                     background-color: $form-switch-thumb-checked-bg;
                     border-color: $form-switch-thumb-checked-border-color;
+                    @include box-shadow($form-switch-thumb-checked-box-shadow);
+                }
+            }
+
+            .form-check-input:checked:focus ~ .form-check-label {
+                &::before {
+                    @if $form-switch-track-checked-box-shadow != null {
+                        @include box-shadow($form-switch-track-checked-box-shadow, $form-switch-track-focus-box-shadow);
+                    }
+                }
+                &::after {
+                    @if $form-switch-thumb-checked-box-shadow != null {
+                        @include box-shadow($form-switch-thumb-checked-box-shadow, $form-switch-thumb-focus-box-shadow);
+                    }
                 }
             }
         }

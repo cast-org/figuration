@@ -1973,7 +1973,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$form-checkradio-border-color</code></td>
         <td>string</td>
-        <td><code>$input-border-color</code></td>
+        <td><code>$uibase-300</code></td>
         <td>
           Border color for custom styled checkbox and radio inputs in inactive state.
         </td>
@@ -1981,7 +1981,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$form-checkradio-box-shadow</code></td>
         <td>string</td>
-        <td><code>$input-box-shadow</code></td>
+        <td><code>map-get($shadows, "i1")</code></td>
         <td>
           Box shadow for custom styled checkbox and radio inputs in inactive state.
         </td>
@@ -2032,6 +2032,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$primary</code></td>
         <td>
           Border color for custom styled checkbox and radio inputs in checked state.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$form-checkradio-checked-box-shadow</code></td>
+        <td>string</td>
+        <td><code>map-get($shadows, "i1")</code></td>
+        <td>
+          Box shadow for custom styled checkbox and radio inputs in checked state.
         </td>
       </tr>
       <tr>
@@ -2125,7 +2133,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$form-switch-track-border-color</code></td>
         <td>string</td>
-        <td><code>$input-border-color</code></td>
+        <td><code>$uibase-300</code></td>
         <td>
           Border color for track of custom styled switch inputs in inactive state.
         </td>
@@ -2141,7 +2149,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$form-switch-track-box-shadow</code></td>
         <td>string</td>
-        <td><code>$input-box-shadow</code></td>
+        <td><code>map-get($shadows, "i1")</code></td>
         <td>
           Box shadow for track of custom styled switch inputs.
         </td>
@@ -2184,6 +2192,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$primary</code></td>
         <td>
           Border color for track of custom styled switch inputs in checked state.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$form-switch-track-checked-box-shadow</code></td>
+        <td>string</td>
+        <td><code>$form-switch-track-box-shadow</code></td>
+        <td>
+          Box shadow for track of custom styled switch inputs in checked state.
         </td>
       </tr>
       <tr>
@@ -2245,7 +2261,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$form-switch-thumb-box-shadow</code></td>
         <td>string</td>
-        <td><code>$input-box-shadow</code></td>
+        <td><code>none</code></td>
         <td>
           Box shadow for thumb of custom styled switch inputs.
         </td>
@@ -2277,7 +2293,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$form-switch-thumb-focus-box-shadow</code></td>
         <td>string</td>
-        <td><code>$input-focus-box-shadow</code></td>
+        <td><code>null</code></td>
         <td>
           Box shadow for thumb of custom styled switch inputs in focused state.
         </td>
@@ -2296,6 +2312,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$white</code></td>
         <td>
           Border color for thumb of custom styled switch inputs in checked state.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$form-switch-thumb-checked-box-shadow</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Box shadow for thumb of custom styled switch inputs in checked state.
         </td>
       </tr>
       <tr>
