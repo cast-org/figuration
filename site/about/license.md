@@ -5,7 +5,7 @@ description: Information regarding Figuration's open source license.
 group: about
 ---
 
-Figuration is released under the MIT license and is copyright {{ site.time | date: "%Y" }} CAST, Inc. Portions: copyright 2011-2019 the Bootstrap Authors and Twitter, Inc. Licensed under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE).
+Figuration is released under the MIT license and is copyright {{ site.time | date: "%Y" }} CAST, Inc. Portions: copyright 2011-{{ 'now' | date: "%Y" }} the Bootstrap Authors and Twitter, Inc. Licensed under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE).
 
 Broken down to smaller chunks, it can be described with the following conditions.
 
