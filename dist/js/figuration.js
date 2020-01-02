@@ -1,10 +1,10 @@
 /*!
  * Figuration (v4.0.0-beta.1)
  * http://figuration.org
- * Copyright 2013-2019 CAST, Inc.
+ * Copyright 2013-2020 CAST, Inc.
  * Licensed under MIT (https://github.com/cast-org/figuration/blob/master/LICENSE)
  * -----
- * Portions Copyright 2011-2019  the Bootstrap Authors and Twitter, Inc.
+ * Portions Copyright 2011-2020  the Bootstrap Authors and Twitter, Inc.
  * Used under MIT License (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
