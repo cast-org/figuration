@@ -303,8 +303,6 @@ $container-max-widths: map-merge(
     $container-max-widths
 );
 
-// stylelint-disable-next-line scss/dollar-variable-default
-$container-max-widths: map-sort-by-values($container-max-widths);
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 
 
