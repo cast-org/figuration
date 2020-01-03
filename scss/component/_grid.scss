@@ -32,12 +32,22 @@
                     max-width: $rc-max-width;
                 }
 
+                // Extend each breakpoint which should be smaller or
+                // equal to the current breakpoint
+                $extend-breakpoint: true;
+
                 @each $name, $width in $grid-breakpoints {
-                    @if (rem($rc-max-width) > rem($width) or $breakpoint == $name) {
+                    //@if (rem($rc-max-width) > rem($width) or $breakpoint == $name) {
+                    @if ($extend-breakpoint) {
                         $bprule: breakpoint-designator($name);
                         .container#{$bprule} {
                             @extend %responsive-container-#{$breakpoint};
                         }
+                    }
+
+                    // Once the current breakpoint is reached, stop extending
+                    @if ($breakpoint == $name) {
+                        $extend-breakpoint: false;
                     }
                 }
             }
