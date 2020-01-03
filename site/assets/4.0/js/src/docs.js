@@ -185,7 +185,7 @@
                 fileRename('cssCore', 'figuration');
                 fileRename('cssDocs', 'docs');
             }
-            document.cookie = 'docsDir=';
+            document.cookie = 'docsDir=;path=/;';
         };
 
         var setRTL = function() {
@@ -194,7 +194,7 @@
             $('html').attr('dir', 'rtl');
             fileRename('cssCore', 'figuration-rtl');
             fileRename('cssDocs', 'docs-rtl');
-            document.cookie = 'docsDir=rtl';
+            document.cookie = 'docsDir=rtl;path=/;';
         };
 
         var getCookie = function(cname) {
