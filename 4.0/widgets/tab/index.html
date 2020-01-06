@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Add quick, dynamic tab functionality to transition through panes of content.">
+<meta name="author" content="CAST, Inc.">
+
+<meta name="docsearch:language" content="en-us">
+<meta name="docsearch:version" content="4.0">
+
+<title>Tab &#124; CAST Figuration</title>
+
+<link rel="canonical" href="http://figuration.org/4.0/widgets/tab/">
+
+<!-- Favicons -->
+<link sizes="180x180" rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png"/>
+<link sizes="32x32" rel="icon" href="/assets/favicon/favicon-32x32.png" type="image/png"/>
+<link sizes="16x16" rel="icon" href="/assets/favicon/favicon-16x16.png" type="image/png"/>
+<link rel="manifest" href="/assets/favicon/site.webmanifest"/>
+<link color="#5bbad5" rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg"/>
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico"/>
+<meta name="msapplication-TileColor" content="#117cba"/>
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml"/>
+<meta name="theme-color" content="#ffffff"/>
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@figuration_org">
+<meta name="twitter:creator" content="@figuration_org">
+<meta name="twitter:title" content="Tab">
+<meta name="twitter:description" content="Add quick, dynamic tab functionality to transition through panes of content.">
+<meta name="twitter:image" content="http://figuration.org/assets/brand/figuration-social.png">
+
+<!-- Google Analytics -->
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-9130143-15', 'figuration.org');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- Font CSS -->
+<link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous" rel="stylesheet">
+
+
+<!-- Algolia DocSearch CSS -->
+<link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+<!-- Figuration CSS -->
+<link href="/assets/4.0/dist/css/figuration.min.css" rel="stylesheet" id="cssCore"><!-- Docs CSS -->
+<link href="/assets/4.0/css/docs.min.css" rel="stylesheet" id="cssDocs"><!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/assets/4.0/js/vendor/jquery.slim.min.js"><\/script>')</script>
+
+<!-- Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script>window.Popper || document.write('<script src="/assets/4.0/js/vendor/popper.min.js"><\/script>')</script>
+
+<!-- Figuration JS -->
+<script src="/assets/4.0/dist/js/figuration.min.js"></script><!-- Docs Js -->
+<script src="/assets/4.0/js/docs.min.js"></script>
+
+</head>
+<body>
+<a class="skiplink sr-only-focusable" href="#content">Skip to main content</a>
+<div class="bg-success-200 text-black text-center py-0_25 px-1">
+  <span class="font-weight-bold">v4 Beta now available! Try it out! Feedback welcome!</span><br />
+  <a href="/3.0/" class="text-black">Looking for v3 docs?</a>
+</div>
+<header class="navbar navbar-expand-lg navbar-dark print-none cf-header">
+  <a href="/" class="navbar-brand me-0_5" aria-label="CAST Figuration">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 240" focusable="false" role="img"  class="cf-header-logo">
+  <title>Figuration</title>
+  <path fill="currentColor" d="M33.2 45L0 87l12 51.7c6.6 28.4 12.3 52 12.7 52.4.5.4 22.2 10.9 48.3 23.3l47.4 22.6 48-23.3 48-23.3 11.7-51.9c6.4-28.6 11.4-52.5 11-53-.4-.6-15.5-19.3-33.5-41.8L172.9 3H66.4L33.2 45zM197 52c17.1 21.4 29.4 37.7 29.3 38.7-.6 4.9-20.3 90.7-21 91.4-1.1 1.1-83.6 41.1-84.8 41.2-1.8 0-85-40.2-85.8-41.5-.4-.7-5.5-21.7-11.2-46.6L13 90l28.7-36.3C57.4 33.8 71 16.9 71.8 16.2c1.2-.9 12.4-1.2 48.6-1.1h47.1L197 52z"/>
+  <path fill="currentColor" d="M81 113.5V182h22v-58h50v-21h-50l.2-18.8.3-18.7 29.3-.3L162 65V45H81v68.5z"/>
+</svg>
+
+    <span class="sr-only-xs-down">CAST Figuration</span>
+  </a>
+  <button class="navbar-toggle me-0_5" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
+    <span class="cf-header-menu" aria-hidden="true">&#8801;</span>
+  </button>
+  <nav class="navbar-collapse collapse order-last order-lg-unordered text-nowrap" id="cf-topnav" aria-label="Main">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="/4.0/get-started/quick-start/" class="nav-link ">Get Started</a>
+      </li>
+      <li class="nav-item">
+        <a href="/4.0/layout/overview/" class="nav-link ">Layout</a>
+      </li>
+      <li class="nav-item">
+        <a href="/4.0/content/reboot/" class="nav-link ">Content</a>
+      </li>
+      <li class="nav-item">
+        <a href="/4.0/components/alerts/" class="nav-link ">Components</a>
+      </li>
+      <li class="nav-item">
+        <a href="/4.0/utilities/borders/" class="nav-link ">Utilities</a>
+      </li>
+      <li class="nav-item">
+        <a href="/4.0/widgets/overview/" class="nav-link active">Widgets <span class="sr-only">(current section)</span></a>
+      </li>
+    </ul>
+  </nav>
+
+  <ul class="navbar-nav ms-auto cf-header-social flex-row">
+    <li class="nav-item me-1"><div class="dropdown">
+  <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
+    v4.0.0-beta.2
+    <span class="caret" aria-hidden="true"></span>
+  </a>
+  <ul class="dropdown-menu position-absolute">
+    <li class="dropdown-header">Latest</li>
+    
+    <li><a href="/4.0/" class="active">v4.0.0-beta.2</a></li>
+    
+    <li class="dropdown-divider"></li>
+    
+    <li class="dropdown-header">Older</li><li><a href="/3.0/">v3.0.5</a></li>
+    </ul>
+</div>
+    </li><li class="nav-item">
+      <a href="https://twitter.com/figuration_org" class="nav-link px-0_5" aria-label="Twitter">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" focusable="false" role="img"  width="1rem" height="1rem">
+  <title>Twitter</title>
+  <path fill="currentColor" d="M512 97.2c-18.84 8.36-39.08 14-60.33 16.55 21.7-13 38.34-33.58 46.2-58.1-20.3 12.03-42.8 20.77-66.72 25.48C412 60.7 384.7 47.96 354.48 47.96c-58 0-105.04 47.03-105.04 105.03 0 8.23.93 16.25 2.72 23.93-87.3-4.38-164.7-46.2-216.5-109.75-9.05 15.5-14.24 33.56-14.24 52.8 0 36.45 18.55 68.6 46.73 87.44-17.2-.54-33.4-5.27-47.57-13.14v1.32c0 50.9 36.2 93.35 84.25 103-8.8 2.4-18.1 3.7-27.68 3.7-6.76 0-13.34-.67-19.76-1.9 13.36 41.73 52.15 72.1 98.12 72.95-35.95 28.18-81.25 44.97-130.46 44.97-8.48 0-16.84-.5-25.06-1.47 46.5 29.8 101.7 47.2 161.02 47.2 193.2 0 298.87-160.07 298.87-298.88 0-4.55-.1-9.08-.32-13.6 20.53-14.8 38.34-33.3 52.42-54.36z"/>
+</svg>
+
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="https://github.com/cast-org/figuration" class="nav-link px-0_5" aria-label="Github">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" focusable="false" role="img"  width="1rem" height="1rem">
+  <title>Github</title>
+  <path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.3 6.53 5.47 7.6.4.06.55-.18.55-.4v-1.48c-2.02.37-2.54-.5-2.7-.94-.1-.23-.48-.94-.82-1.13-.28-.15-.68-.52 0-.53.62 0 1.07.58 1.22.82.72 1.2 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.77-.2-3.63-.9-3.63-3.95 0-.87.3-1.6.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.2 2.2.83.64-.18 1.32-.27 2-.27.68 0 1.36.1 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.93.08 2.13.5.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.3.25.54.73.54 1.48v2.2c0 .22.15.47.55.4C13.7 14.52 16 11.52 16 8c0-4.42-3.58-8-8-8z"/>
+</svg>
+
+      </a>
+    </li>
+    <li class="nav-item"><div class="dropdown dropend">
+  <a href="#" role="button" class="nav-link px-0_5" aria-label="Settings" data-cfw="dropdown">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 8 8" focusable="false" role="img"  width="1rem" height="1rem">
+  <title>Settings</title>
+  <path fill="currentColor" d="M3.5 0l-.5 1.19c-.1.03-.19.08-.28.13l-1.19-.5-.72.72.5 1.19c-.05.1-.09.18-.13.28l-1.19.5v1l1.19.5c.04.1.08.18.13.28l-.5 1.19.72.72 1.19-.5c.09.04.18.09.28.13l.5 1.19h1l.5-1.19c.09-.04.19-.08.28-.13l1.19.5.72-.72-.5-1.19c.04-.09.09-.19.13-.28l1.19-.5v-1l-1.19-.5c-.03-.09-.08-.19-.13-.28l.5-1.19-.72-.72-1.19.5c-.09-.04-.19-.09-.28-.13l-.5-1.19h-1zm.5 2.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z"/>
+</svg>
+  </a>
+  <ul class="dropdown-menu position-absolute">
+    <li class="dropdown-header">Direction</li>
+    <li><button type="button" class="dropdown-item" id="dir-ltr">Left-to-right</button></li>
+    <li><button type="button" class="dropdown-item" id="dir-rtl">Right-to-left</button></li>
+  </ul>
+</div>
+    </li>
+  </ul>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 col-xl-2 cf-sidebar print-none">
+      <form class="cf-search" role="search">
+  <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="4.0"/>
+</form><button class="btn btn-default mb-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
+  <span aria-hidden="true">Pages <span class="caret" ></span></span>
+</button>
+<nav id="cf-links-nav" class="cf-links collapse" aria-label="Page">
+  <ul class="list-unstyled">
+    <li class="mb-0_25 has-children"><a href="/4.0/get-started/quick-start/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span></span>
+      </a>
+      <div id="sidenav1">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/4.0/get-started/quick-start/" class="nav-link"><span class="nav-link-inner">Quick Start</span></a></li>
+          <li class="nav-item"><a href="/4.0/get-started/download/" class="nav-link"><span class="nav-link-inner">Download</span></a></li>
+          <li class="nav-item"><a href="/4.0/get-started/browsers-and-devices/" class="nav-link"><span class="nav-link-inner">Browsers & Devices</span></a></li>
+          <li class="nav-item"><a href="/4.0/get-started/options/" class="nav-link"><span class="nav-link-inner">Options</span></a></li>
+          <li class="nav-item"><a href="/4.0/get-started/build-tools/" class="nav-link"><span class="nav-link-inner">Build Tools</span></a></li>
+          <li class="nav-item"><a href="/4.0/get-started/accessibility/" class="nav-link"><span class="nav-link-inner">Accessibility</span></a></li>
+          <li class="nav-item"><a href="/4.0/get-started/examples/" class="nav-link"><span class="nav-link-inner">Examples</span></a></li>
+          <li class="nav-item"><a href="/4.0/get-started/migration/" class="nav-link"><span class="nav-link-inner">Migration</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children"><a href="/4.0/layout/overview/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span></span>
+      </a>
+      <div id="sidenav2">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/4.0/layout/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
+          <li class="nav-item"><a href="/4.0/layout/grid/" class="nav-link"><span class="nav-link-inner">Grid</span></a></li>
+          <li class="nav-item"><a href="/4.0/layout/layout-utilities/" class="nav-link"><span class="nav-link-inner">Layout Utilities</span></a></li>
+          <li class="nav-item"><a href="/4.0/layout/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children"><a href="/4.0/content/reboot/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span></span>
+      </a>
+      <div id="sidenav3">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/4.0/content/reboot/" class="nav-link"><span class="nav-link-inner">Reboot</span></a></li>
+          <li class="nav-item"><a href="/4.0/content/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
+          <li class="nav-item"><a href="/4.0/content/typography/" class="nav-link"><span class="nav-link-inner">Typography</span></a></li>
+          <li class="nav-item"><a href="/4.0/content/code/" class="nav-link"><span class="nav-link-inner">Code</span></a></li>
+          <li class="nav-item"><a href="/4.0/content/images/" class="nav-link"><span class="nav-link-inner">Images</span></a></li>
+          <li class="nav-item"><a href="/4.0/content/figures/" class="nav-link"><span class="nav-link-inner">Figures</span></a></li>
+          <li class="nav-item"><a href="/4.0/content/tables/" class="nav-link"><span class="nav-link-inner">Tables</span></a></li>
+          <li class="nav-item"><a href="/4.0/content/buttons/" class="nav-link"><span class="nav-link-inner">Buttons</span></a></li>
+          <li class="nav-item"><a href="/4.0/content/forms/" class="nav-link"><span class="nav-link-inner">Forms</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children"><a href="/4.0/components/alerts/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span></span>
+      </a>
+      <div id="sidenav4">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/4.0/components/alerts/" class="nav-link"><span class="nav-link-inner">Alerts</span></a></li>
+          <li class="nav-item"><a href="/4.0/components/badges/" class="nav-link"><span class="nav-link-inner">Badges</span></a></li>
+          <li class="nav-item"><a href="/4.0/components/breadcrumb/" class="nav-link"><span class="nav-link-inner">Breadcrumb</span></a></li>
+          <li class="nav-item"><a href="/4.0/components/button-group/" class="nav-link"><span class="nav-link-inner">Button Group</span></a></li>
+          <li class="nav-item"><a href="/4.0/components/cards/" class="nav-link"><span class="nav-link-inner">Cards</span></a></li>
+          <li class="nav-item"><a href="/4.0/components/input-group/" class="nav-link"><span class="nav-link-inner">Input Group</span></a></li>
+          <li class="nav-item"><a href="/4.0/components/jumbotron/" class="nav-link"><span class="nav-link-inner">Jumbotron</span></a></li>
+          <li class="nav-item"><a href="/4.0/components/lists/" class="nav-link"><span class="nav-link-inner">Lists</span></a></li>
+          <li class="nav-item"><a href="/4.0/components/media-object/" class="nav-link"><span class="nav-link-inner">Media Object</span></a></li>
+          <li class="nav-item"><a href="/4.0/components/navbar/" class="nav-link"><span class="nav-link-inner">Navbar</span></a></li>
+          <li class="nav-item"><a href="/4.0/components/navs/" class="nav-link"><span class="nav-link-inner">Navs</span></a></li>
+          <li class="nav-item"><a href="/4.0/components/pagination/" class="nav-link"><span class="nav-link-inner">Pagination</span></a></li>
+          <li class="nav-item"><a href="/4.0/components/progress/" class="nav-link"><span class="nav-link-inner">Progress</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children"><a href="/4.0/utilities/borders/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span></span>
+      </a>
+      <div id="sidenav5">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/4.0/utilities/borders/" class="nav-link"><span class="nav-link-inner">Borders</span></a></li>
+          <li class="nav-item"><a href="/4.0/utilities/clearfix/" class="nav-link"><span class="nav-link-inner">Clearfix</span></a></li>
+          <li class="nav-item"><a href="/4.0/utilities/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
+          <li class="nav-item"><a href="/4.0/utilities/display/" class="nav-link"><span class="nav-link-inner">Display</span></a></li>
+          <li class="nav-item"><a href="/4.0/utilities/embed/" class="nav-link"><span class="nav-link-inner">Embed</span></a></li>
+          <li class="nav-item"><a href="/4.0/utilities/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
+          <li class="nav-item"><a href="/4.0/utilities/floating/" class="nav-link"><span class="nav-link-inner">Floating</span></a></li>
+          <li class="nav-item"><a href="/4.0/utilities/icons/" class="nav-link"><span class="nav-link-inner">Icons</span></a></li>
+          <li class="nav-item"><a href="/4.0/utilities/links/" class="nav-link"><span class="nav-link-inner">Links</span></a></li>
+          <li class="nav-item"><a href="/4.0/utilities/overflow/" class="nav-link"><span class="nav-link-inner">Overflow</span></a></li>
+          <li class="nav-item"><a href="/4.0/utilities/position/" class="nav-link"><span class="nav-link-inner">Position</span></a></li>
+          <li class="nav-item"><a href="/4.0/utilities/screen-readers/" class="nav-link"><span class="nav-link-inner">Screen Readers</span></a></li>
+          <li class="nav-item"><a href="/4.0/utilities/shadows/" class="nav-link"><span class="nav-link-inner">Shadows</span></a></li>
+          <li class="nav-item"><a href="/4.0/utilities/sizing/" class="nav-link"><span class="nav-link-inner">Sizing</span></a></li>
+          <li class="nav-item"><a href="/4.0/utilities/spacing/" class="nav-link"><span class="nav-link-inner">Spacing</span></a></li>
+          <li class="nav-item"><a href="/4.0/utilities/typography/" class="nav-link"><span class="nav-link-inner">Typography</span></a></li>
+          <li class="nav-item"><a href="/4.0/utilities/vertical-alignment/" class="nav-link"><span class="nav-link-inner">Vertical Alignment</span></a></li>
+          <li class="nav-item"><a href="/4.0/utilities/visibility/" class="nav-link"><span class="nav-link-inner">Visibility</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children"><a href="/4.0/widgets/overview/" class="cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav6"><span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Widgets</span> <span class="sr-only">(current section)</span></span>
+      </a>
+      <div id="sidenav6">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/4.0/widgets/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
+          <li class="nav-item"><a href="/4.0/widgets/accordion/" class="nav-link"><span class="nav-link-inner">Accordion</span></a></li>
+          <li class="nav-item"><a href="/4.0/widgets/affix/" class="nav-link"><span class="nav-link-inner">Affix</span></a></li>
+          <li class="nav-item"><a href="/4.0/widgets/alert/" class="nav-link"><span class="nav-link-inner">Alert</span></a></li>
+          <li class="nav-item"><a href="/4.0/widgets/collapse/" class="nav-link"><span class="nav-link-inner">Collapse</span></a></li>
+          <li class="nav-item"><a href="/4.0/widgets/drag/" class="nav-link"><span class="nav-link-inner">Drag</span></a></li>
+          <li class="nav-item"><a href="/4.0/widgets/dropdown/" class="nav-link"><span class="nav-link-inner">Dropdown</span></a></li>
+          <li class="nav-item"><a href="/4.0/widgets/equalize/" class="nav-link"><span class="nav-link-inner">Equalize</span></a></li>
+          <li class="nav-item"><a href="/4.0/widgets/lazy/" class="nav-link"><span class="nav-link-inner">Lazy</span></a></li>
+          <li class="nav-item"><a href="/4.0/widgets/modal/" class="nav-link"><span class="nav-link-inner">Modal</span></a></li>
+          <li class="nav-item"><a href="/4.0/widgets/player/" class="nav-link"><span class="nav-link-inner">Player</span></a></li>
+          <li class="nav-item"><a href="/4.0/widgets/popover/" class="nav-link"><span class="nav-link-inner">Popover</span></a></li>
+          <li class="nav-item"><a href="/4.0/widgets/scrollspy/" class="nav-link"><span class="nav-link-inner">Scrollspy</span></a></li>
+          <li class="nav-item"><a href="/4.0/widgets/slideshow/" class="nav-link"><span class="nav-link-inner">Slideshow</span></a></li>
+          <li class="nav-item"><a href="/4.0/widgets/tab/" class="nav-link active"><span class="nav-link-inner">Tab <span class="sr-only">(current page)</span></span></a></li>
+          <li class="nav-item"><a href="/4.0/widgets/tab-responsive/" class="nav-link"><span class="nav-link-inner">Tab-Responsive</span></a></li>
+          <li class="nav-item"><a href="/4.0/widgets/tooltip/" class="nav-link"><span class="nav-link-inner">Tooltip</span></a></li>
+          </ul>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+    </div>
+    <nav class="d-none d-xl-block col-xl-2 cf-toc-side" aria-label="Page"></nav>
+    <main class="col-md-9 col-xl-8 cf-content">
+      <h1 class="cf-title" id="content">Tab <small class="text-muted">tab.js</small></h1>
+
+      <p class="fs-large font-weight-sbold">Add quick, dynamic tab functionality to transition through panes of content.</p>
+
+      <div class="cf-callout cf-callout-warning">
+<p class="h5">Incompatible Widgets</p>
+<p>For accessibility reasons, do not mix use of the <a href="/4.0/widgets/tab/">Tab widget</a> and <a href="/4.0/widgets/dropdown/">Dropdown widget</a> in the same nav item.  This will cause navigation and usability issues.  One or the other, but not both.</p>
+</div>
+<div class="h3 cf-toc-header">Page Contents</div>
+<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#examples">Examples </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#tabs">Tabs </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#pills">Pills </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#list">List </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#usage">Usage </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#via-data-attributes">Via Data Attributes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#via-javascript">Via JavaScript </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#options">Options </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#methods">Methods </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_taboptions">.CFW_Tab(options) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_tabshow">.CFW_Tab(&#39;show&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_tabdispose">.CFW_Tab(&#39;dispose&#39;) </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#events">Events </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#accessibility">Accessibility </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#keyboard-navigation">Keyboard Navigation </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#aria-and-role-attributes">ARIA and Role Attributes </a></li></ul></li></ul></nav><h2 id="examples">Examples <a class="direct-link" href="#examples">#</a></h2>
+<h3 id="tabs">Tabs <a class="direct-link" href="#tabs">#</a></h3>
+<p>The tab widget works with <a href="/4.0/components/navs/#tabs">tab</a> style navigation.</p>
+<div class="cf-example">
+  <ul class="nav nav-tabs">
+    <li class="nav-item"><a href="#tab1" class="nav-link" data-cfw="tab">Tab 1</a></li>
+    <li class="nav-item"><a href="#tab2" class="nav-link active" data-cfw="tab">Tab 2</a></li>
+    <li class="nav-item"><a href="#tab3" class="nav-link" data-cfw="tab">Tab 3</a></li>
+    <li class="nav-item"><a href="#tab4" class="nav-link disabled" data-cfw="tab" tabindex="-1" aria-disabled="true">Tab 4</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane" id="tab1">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pulvinar ligula ac sapien auctor viverra. Aliquam elit tortor, consequat at ultrices sit amet, vehicula eu leo. In fermentum lacus purus, ac dictum orci placerat ut. Integer magna lacus, adipiscing sed justo ut, sollicitudin rhoncus libero. Pellentesque accumsan pretium sem eu euismod? Nunc id facilisis sem? Quisque quis laoreet mi.</p>
+    </div>
+    <div class="tab-pane" id="tab2">
+      <p>Phasellus at nisl et arcu tincidunt sagittis et nec nunc. Fusce ultrices venenatis felis, in faucibus mauris egestas nec. Etiam malesuada dictum nisi, at pulvinar orci. Aenean venenatis metus in pharetra aliquam. Mauris ac odio tortor! Maecenas eget orci in ipsum ullamcorper malesuada. Nunc interdum lobortis velit sed accumsan.</p>
+    </div>
+    <div class="tab-pane" id="tab3">
+      <p> Praesent laoreet augue sed mauris vulputate, ut commodo justo malesuada. Pellentesque adipiscing; lorem vel convallis dignissim, leo est condimentum sapien, nec viverra dui risus at metus! Phasellus tellus magna, hendrerit eget tempor quis, fringilla id sem.</p>
+    </div>
+    <div class="tab-pane" id="tab4">
+      <p>Duis pharetra suscipit felis, id congue purus tempus sed. Nunc porttitor nec arcu at interdum. Nulla placerat odio luctus malesuada dapibus. Suspendisse et auctor metus. Suspendisse fringilla commodo cursus. Suspendisse sodales vitae enim ut commodo. Nunc ut nibh quis tellus varius fermentum at et nibh. Nulla nisl leo, hendrerit ut rutrum faucibus, ullamcorper ut lectus. Donec tristique justo justo, nec imperdiet leo porttitor non. Donec vehicula purus dapibus hendrerit ornare.</p>
+    </div>
+  </div>
+</div>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav nav-tabs<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#tab1<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-link<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Tab 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#tab2<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-link active<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Tab 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#tab3<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-link<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Tab 3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#tab4<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-link disabled<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span> <span class="token attr-name">tabindex</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>-1<span class="token punctuation">"</span></span> <span class="token attr-name">aria-disabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Tab 4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-pane<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-pane<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-pane<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-pane<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<h3 id="pills">Pills <a class="direct-link" href="#pills">#</a></h3>
+<p>The tab widget also works with <a href="/4.0/components/navs/#pills">pill</a> style navigation.</p>
+<div class="cf-example">
+  <ul class="nav nav-pills">
+    <li class="nav-item"><a href="#pill1" class="nav-link" data-cfw="tab">Tab 1</a></li>
+    <li class="nav-item"><a href="#pill2" class="nav-link active" data-cfw="tab">Tab 2</a></li>
+    <li class="nav-item"><a href="#pill3" class="nav-link" data-cfw="tab">Tab 3</a></li>
+    <li class="nav-item"><a href="#pill4" class="nav-link disabled" data-cfw="tab" tabindex="-1" aria-disabled="true">Tab 4</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane" id="pill1">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pulvinar ligula ac sapien auctor viverra. Aliquam elit tortor, consequat at ultrices sit amet, vehicula eu leo. In fermentum lacus purus, ac dictum orci placerat ut. Integer magna lacus, adipiscing sed justo ut, sollicitudin rhoncus libero. Pellentesque accumsan pretium sem eu euismod? Nunc id facilisis sem? Quisque quis laoreet mi.</p>
+    </div>
+    <div class="tab-pane" id="pill2">
+      <p>Phasellus at nisl et arcu tincidunt sagittis et nec nunc. Fusce ultrices venenatis felis, in faucibus mauris egestas nec. Etiam malesuada dictum nisi, at pulvinar orci. Aenean venenatis metus in pharetra aliquam. Mauris ac odio tortor! Maecenas eget orci in ipsum ullamcorper malesuada. Nunc interdum lobortis velit sed accumsan.</p>
+    </div>
+    <div class="tab-pane" id="pill3">
+      <p> Praesent laoreet augue sed mauris vulputate, ut commodo justo malesuada. Pellentesque adipiscing; lorem vel convallis dignissim, leo est condimentum sapien, nec viverra dui risus at metus! Phasellus tellus magna, hendrerit eget tempor quis, fringilla id sem.</p>
+    </div>
+    <div class="tab-pane" id="pill4">
+      <p>Duis pharetra suscipit felis, id congue purus tempus sed. Nunc porttitor nec arcu at interdum. Nulla placerat odio luctus malesuada dapibus. Suspendisse et auctor metus. Suspendisse fringilla commodo cursus. Suspendisse sodales vitae enim ut commodo. Nunc ut nibh quis tellus varius fermentum at et nibh. Nulla nisl leo, hendrerit ut rutrum faucibus, ullamcorper ut lectus. Donec tristique justo justo, nec imperdiet leo porttitor non. Donec vehicula purus dapibus hendrerit ornare.</p>
+    </div>
+  </div>
+</div>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav nav-tabs<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#pill1<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-link<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Pill 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#pill2<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-link active<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Pill 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#pill3<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-link<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Pill 3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#pill4<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-link disabled<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span> <span class="token attr-name">tabindex</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>-1<span class="token punctuation">"</span></span> <span class="token attr-name">aria-disabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Pill 4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-pane<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>pill1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-pane<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>pill2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-pane<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>pill3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-pane<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>pill4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<h3 id="list">List <a class="direct-link" href="#list">#</a></h3>
+<p>The tab widget even work with the <a href="/4.0/components/lists/"><code>.list</code> component</a>.</p>
+<div class="cf-example">
+  <div class="row">
+    <div class="col-md-4">
+      <nav class="list list-spaced list-ruled">
+        <a href="#list1" data-cfw="tab" class="list-item list-item-action">List Item 1</a>
+        <a href="#list2" data-cfw="tab" class="list-item list-item-action active">List Item 2</a>
+        <a href="#list3" data-cfw="tab" class="list-item list-item-action">List Item 3</a>
+        <a href="#list4" data-cfw="tab" class="list-item list-item-action disabled" tabindex="-1" aria-disabled="true">List Item 4</a>
+        </nav>
+    </div>
+    <div class="col-md-8">
+      <div class="tab-content">
+        <div class="tab-pane" id="list1">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pulvinar ligula ac sapien auctor viverra. Aliquam elit tortor, consequat at ultrices sit amet, vehicula eu leo. In fermentum lacus purus, ac dictum orci placerat ut. Integer magna lacus, adipiscing sed justo ut, sollicitudin rhoncus libero. Pellentesque accumsan pretium sem eu euismod? Nunc id facilisis sem? Quisque quis laoreet mi.</p>
+        </div>
+        <div class="tab-pane" id="list2">
+          <p>Phasellus at nisl et arcu tincidunt sagittis et nec nunc. Fusce ultrices venenatis felis, in faucibus mauris egestas nec. Etiam malesuada dictum nisi, at pulvinar orci. Aenean venenatis metus in pharetra aliquam. Mauris ac odio tortor! Maecenas eget orci in ipsum ullamcorper malesuada. Nunc interdum lobortis velit sed accumsan.</p>
+        </div>
+        <div class="tab-pane" id="list3">
+          <p> Praesent laoreet augue sed mauris vulputate, ut commodo justo malesuada. Pellentesque adipiscing; lorem vel convallis dignissim, leo est condimentum sapien, nec viverra dui risus at metus! Phasellus tellus magna, hendrerit eget tempor quis, fringilla id sem.</p>
+        </div>
+        <div class="tab-pane" id="list4">
+          <p>Duis pharetra suscipit felis, id congue purus tempus sed. Nunc porttitor nec arcu at interdum. Nulla placerat odio luctus malesuada dapibus. Suspendisse et auctor metus. Suspendisse fringilla commodo cursus. Suspendisse sodales vitae enim ut commodo. Nunc ut nibh quis tellus varius fermentum at et nibh. Nulla nisl leo, hendrerit ut rutrum faucibus, ullamcorper ut lectus. Donec tristique justo justo, nec imperdiet leo porttitor non. Donec vehicula purus dapibus hendrerit ornare.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>row<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-md-4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nav</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>list list-spaced list-ruled<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#list1<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>list-item list-item-action<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>List Item 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#list2<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>list-item list-item-action active<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>List Item 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#list3<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>list-item list-item-action<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>List Item 3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#list4<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>list-item list-item-action disabled<span class="token punctuation">"</span></span> <span class="token attr-name">tabindex</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>-1<span class="token punctuation">"</span></span> <span class="token attr-name">aria-disabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>List Item 4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nav</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>col-md-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-pane<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>list1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-pane<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>list2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-pane<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>list3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-pane<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>list4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<h2 id="usage">Usage <a class="direct-link" href="#usage">#</a></h2>
+<p>Tabs need to be activated individually, and require the use of a <code>ul</code>, <code>ol</code>, or <code>nav</code> as an ancestor item of all tab triggers, especially if they are to be grouped together.</p>
+<h3 id="via-data-attributes">Via Data Attributes <a class="direct-link" href="#via-data-attributes">#</a></h3>
+<p>Add <code>data-cfw=&quot;tab&quot;</code> to each tab element. The target tab pane can be specified either by the data attribue <code>data-cfw-tab-target=&quot;#tabPane0&quot;</code> or from the <code>&lt;a href=&quot;#tabPane0&quot;&gt;</code>, where the target pane has an <code>id=&quot;tabPane0&quot;</code>.</p>
+<p>To set a default active tab, add the class <code>.active</code> to the trigger item.</p>
+<pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- Nav tabs --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav nav-tabs<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#home<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-link active<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Home<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#profile<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-link<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Profile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-link<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-tab-target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#messages<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Messages<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>nav-link<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-tab-target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#settings<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Settings<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><br><br><span class="token comment">&lt;!-- Tab panes --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-pane<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>home<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-pane<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>profile<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-pane<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>messages<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>tab-pane<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>settings<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<h3 id="via-javascript">Via JavaScript <a class="direct-link" href="#via-javascript">#</a></h3>
+<p>You can activate individual tabs in several ways:</p>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myTab a[href="#profile"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Tab</span><span class="token punctuation">(</span><span class="token string">'show'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Select tab by name</span><br><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myTab a:first'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Tab</span><span class="token punctuation">(</span><span class="token string">'show'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// Select first tab</span><br><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myTab a:last'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Tab</span><span class="token punctuation">(</span><span class="token string">'show'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment">// Select last tab</span><br><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myTab a:nth-child(3)'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Tab</span><span class="token punctuation">(</span><span class="token string">'show'</span><span class="token punctuation">)</span>      <span class="token comment">// Select third tab</span></code></pre>
+<h3 id="options">Options <a class="direct-link" href="#options">#</a></h3>
+<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code>data-cfw-tab</code>, as in <code>data-cfw-tab-animate=&quot;false&quot;</code>.</p>
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 100px;">Name</th>
+        <th style="width: 50px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>animate</td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>If the tab pane target should fade in and out.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h3 id="methods">Methods <a class="direct-link" href="#methods">#</a></h3>
+<h4 id="cfw_taboptions"><code>.CFW_Tab(options)</code> <a class="direct-link" href="#cfw_taboptions">#</a></h4>
+<p>Activates the content as a tab element. Accepts an optional options <code>object</code>.</p>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myTab a'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Tab</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>  animate<span class="token operator">:</span> <span class="token boolean">false</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="cfw_tabshow"><code>.CFW_Tab('show')</code> <a class="direct-link" href="#cfw_tabshow">#</a></h4>
+<p>Shows the <code>tab-pane</code> for a given tab, and hides all sibling <code>tab-pane</code> items.</p>
+<h4 id="cfw_tabdispose"><code>.CFW_Tab('dispose')</code> <a class="direct-link" href="#cfw_tabdispose">#</a></h4>
+<p>Will disable the listen events for the given tab, but leave it otherwise unchanged.</p>
+<h3 id="events">Events <a class="direct-link" href="#events">#</a></h3>
+<p>Event callbacks happen on the toggle/trigger element.</p>
+<p>When showing a new tab, the events fire in the following order:</p>
+<ul>
+<li><code>beforeHide.cfw.tab</code> (on the current active tab)</li>
+<li><code>beforeShow.cfw.tab</code> (on the to-be-shown tab)</li>
+<li><code>afterHidden.cfw.tab</code> (on the previous active tab, the same one as for the <code>beforeHide.cfw.tab</code> event)</li>
+<li><code>afterShow.cfw.tab</code> (on the newly-active just-shown tab, the same one as for the <code>beforeShow.cfw.tab</code> event)</li>
+</ul>
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Event Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>init.cfw.tab</td>
+        <td>This event fires after the tab item is initialized.</td>
+      </tr>
+      <tr>
+        <td>beforeShow.cfw.tab</td>
+        <td>This event fires on tab show, but before the new tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
+      </tr>
+      <tr>
+        <td>afterShow.cfw.tab</td>
+        <td>This event fires on tab show after a tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
+      </tr>
+      <tr>
+        <td>beforeHide.cfw.tab</td>
+        <td>This event fires when a new tab is to be shown (and thus the previous active tab is to be hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the current active tab and the new soon-to-be-active tab, respectively.</td>
+      </tr>
+      <tr>
+        <td>afterHide.cfw.tab</td>
+        <td>This event fires after a new tab is shown (and thus the previous active tab is hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the previous active tab and the new active tab, respectively.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'a[data-cfw="tab"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'afterShow.cfw.tab'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  e<span class="token punctuation">.</span>target <span class="token comment">// newly activated tab</span><br>  e<span class="token punctuation">.</span>relatedTarget <span class="token comment">// previous active tab</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="accessibility">Accessibility <a class="direct-link" href="#accessibility">#</a></h2>
+<h3 id="keyboard-navigation">Keyboard Navigation <a class="direct-link" href="#keyboard-navigation">#</a></h3>
+<dl class="cf-docs-keys">
+  <dt>
+    <kbd>tab</kbd>
+  </dt>
+  <dd>
+    When the tab list if recieving focus, the active tab element becomes focused.
+    When the tab list has the focus, moves the focus to the next focusable item on the page.
+  </dd>
+  <dt>
+    <kbd title="right arrow"><span class="fas fa-arrow-right" aria-hidden="true"></span></kbd> /
+    <kbd title="down arrow"><span class="fas fa-arrow-down" aria-hidden="true"></span></kbd>
+  </dt>
+  <dd>
+    Moves focus to the next tab and activates it, displaying the related tabpanel content.
+  </dd>
+  <dt>
+    <kbd title="left arrow"><span class="fas fa-arrow-left" aria-hidden="true"></span></kbd> /
+    <kbd title="up arrow"><span class="fas fa-arrow-up" aria-hidden="true"></span></kbd>
+  </dt>
+  <dd>
+    Moves focus to the previous tab and activates it, displaying the related tabpanel content.
+  </dd>
+</dl>
+<h3 id="aria-and-role-attributes">ARIA and Role Attributes <a class="direct-link" href="#aria-and-role-attributes">#</a></h3>
+<p>Dynamic tabbed interfaces, as described in the <a href="https://www.w3.org/TR/wai-aria-practices/#tabpanel"><abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices</a>, require <code>role=&quot;tablist&quot;</code>, <code>role=&quot;tab&quot;</code>, <code>role=&quot;tabpanel&quot;</code>, and additional <code>aria-</code> attributes in order to convey their structure, functionality and current state to users of assistive technologies (such as screen readers).</p>
+<p>All of these requirements are automatically added by the Tab widget, and will update automatically as the user interacts with the tabbed interface.</p>
+
+    </main>
+  </div>
+
+  <div class="toplink">
+    <a href="#content">Top of Page <span class="caret"></span></a>
+  </div>
+</div>
+<footer class="cf-footer fs-small py-1">
+  <div class="container">
+    <ul class="list list-horizontal font-weight-bold">
+      <li class="pe-0_5"><a href="/about/overview/">About <span class="sr-only">Figuration</span></a></li>
+      <li class="px-0_5"><a href="https://github.com/cast-org/figuration">GitHub</a></li>
+      <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
+    </ul>
+    <p>
+      <strong>Latest version:</strong> 4.0.0-beta.2
+      <br>
+      &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
+      <br>
+      Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+    </p>
+    <p>
+      Code licensed <a rel="license" href="https://github.com/cast-org/figuration/blob/master/LICENSE">MIT</a>,
+      docs <a rel="license" href="https://github.com/cast-org/figuration/blob/master/site/LICENSE">CC BY 4.0</a>.
+    </p>
+
+    <div class="border-t pt-1">
+      <p class="font-weight-bold mb-0_25">Funding generously provided by:</p>
+      <div class="row">
+        <div class="media col">
+          <div class="d-flex me-0_5">
+            <img src="/assets/aem/aem-logo.png" width="40" height="40" alt="AEM logo" />
+          </div>
+          <div class="media-body">
+            <span class="font-weight-bold"><a href="http://aem.cast.org/">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
+            <small>Disclaimer: This does not necessarily represent endorsement by or the policies of the National Center on Accessible Educational Materials, the US Department of Education, and the US Federal Government.</small>
+          </div>
+        </div>
+        <div class="col-md-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 119 37" focusable="false" role="img"  width="9.645rem" height="3rem">
+  <title>CAST</title>
+  <path fill="currentColor" d="M17.83 36.48c-.013 0-.025-.003-.032-.003 0 0-.006 0 .01-2.31l.023-3.223s.016-2.31-2.294-2.326L5.36 28.547s-2.31-.016-3.283-1.463C1.103 25.636-.026 22.148 0 18.396.07 8.49 8.143.518 15.73.554c0 0 2.309.012 2.293 2.321L18 6.277s-.016 2.31 2.294 2.326l10.373.073s2.31.016 3.247 1.445c.937 1.43 2.021 4.851 1.995 8.526-.068 9.918-8.164 17.902-18.08 17.833m.057-8.037c5.43.038 9.865-4.335 9.902-9.767.038-5.432-4.334-9.867-9.765-9.905-5.431-.038-9.865 4.335-9.903 9.767-.037 5.432 4.335 9.867 9.766 9.905"/>
+  <path fill="currentColor" d="M60.73 24.958c-2.246 2.8-5.195 4.2-8.85 4.2-1.53 0-2.93-.258-4.2-.774-1.272-.516-2.36-1.231-3.263-2.145-.904-.914-1.609-2.006-2.115-3.277-.507-1.272-.76-2.671-.76-4.201 0-1.51.248-2.906.745-4.186a9.853 9.853 0 0 1 2.115-3.337 9.621 9.621 0 0 1 3.278-2.205c1.27-.526 2.67-.79 4.2-.79 1.729 0 3.327.288 4.798.864 1.469.577 2.71 1.579 3.723 3.01l-3.485 3.515a6.688 6.688 0 0 0-1.996-1.817c-.776-.457-1.66-.685-2.653-.685-.833 0-1.578.139-2.234.416a4.622 4.622 0 0 0-1.654 1.163 5.197 5.197 0 0 0-1.027 1.743 6.362 6.362 0 0 0-.358 2.16c0 .794.124 1.53.373 2.204.248.676.6 1.262 1.058 1.758a4.786 4.786 0 0 0 1.653 1.162c.645.278 1.365.417 2.16.417 1.152 0 2.09-.203 2.815-.61.725-.408 1.435-1.048 2.13-1.922l3.546 3.337zM73.301 20.697l-2.204-7.3-2.294 7.3h4.498zM68.267 8.78h6.047l7.032 19.872h-5.69l-1.281-4.111H67.73l-1.311 4.111h-5.453l7.3-19.872zM85.025 22.366c.556.556 1.281 1.062 2.175 1.52.894.456 1.877.684 2.95.684.257 0 .526-.024.804-.074.278-.05.526-.134.745-.253.218-.12.397-.278.536-.477.14-.199.209-.457.209-.774 0-.517-.263-.944-.79-1.282-.526-.337-1.296-.675-2.309-1.013l-1.102-.358a12.649 12.649 0 0 1-1.862-.774 7.71 7.71 0 0 1-1.683-1.147 5.387 5.387 0 0 1-1.207-1.58c-.308-.605-.462-1.315-.462-2.13 0-.913.168-1.762.507-2.547a5.894 5.894 0 0 1 1.475-2.055c.644-.586 1.444-1.044 2.398-1.371.953-.328 2.056-.492 3.307-.492.973 0 1.857.09 2.652.268.793.18 1.49.398 2.085.656a8.246 8.246 0 0 1 1.52.834c.416.298.734.566.953.804l-2.681 3.397a10.956 10.956 0 0 0-2.176-1.266 5.77 5.77 0 0 0-2.324-.492c-.258 0-.516.03-.774.09-.258.059-.492.148-.7.268-.209.119-.378.273-.506.461-.13.19-.194.423-.194.7 0 .298.074.557.223.775.149.219.352.407.611.566.258.16.57.304.938.433s.76.263 1.178.401l.953.299c.675.218 1.36.471 2.056.76.695.288 1.32.675 1.877 1.162a5.774 5.774 0 0 1 1.37 1.817c.358.725.536 1.614.536 2.666 0 .914-.214 1.758-.64 2.533a6.372 6.372 0 0 1-1.729 1.996c-.725.556-1.578.988-2.562 1.296-.983.308-2.03.462-3.143.462-1.986 0-3.65-.264-4.99-.79-1.34-.526-2.479-1.236-3.412-2.13l3.188-3.843zM105.669 13.398H99.56V8.779h17.49v4.619H111v15.254h-5.332z"/>
+</svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+(function () {
+    'use strict';
+
+    if (!window.docsearch) {
+        return;
+    }
+
+    var inputElement = document.getElementById('docsearch');
+    var siteDocsVersion = inputElement.getAttribute('data-docs-version');
+
+    window.docsearch({
+        apiKey: '3b9b6e000775400f4833a14c4daa6049',
+        indexName: 'figuration',
+        inputSelector: '#docsearch',
+        algoliaOptions: {
+            facetFilters: ['version:' + siteDocsVersion]
+        },
+        transformData: function (hits) {
+            return hits.map(function (hit) {
+                // Prevent jumping to first header
+                if (hit.anchor === 'content') {
+                    hit.url = hit.url.replace(/#content$/, '');
+                    hit.anchor = null;
+                }
+                return hit;
+            });
+        },
+        // Set debug to true if you want to inspect the dropdown
+        debug: true
+    });
+}());
+</script>
+
+</body>
+</html>

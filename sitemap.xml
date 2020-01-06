@@ -1,252 +1,347 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-<loc>http://figuration.org/get-started/accessibility/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/accordion/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/affix/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/alert/</loc>
-</url>
-<url>
-<loc>http://figuration.org/components/alerts/</loc>
-</url>
-<url>
-<loc>http://figuration.org/components/badges/</loc>
-</url>
-<url>
-<loc>http://figuration.org/get-started/best-practices/</loc>
-</url>
-<url>
-<loc>http://figuration.org/utilities/borders/</loc>
-</url>
-<url>
-<loc>http://figuration.org/components/breadcrumb/</loc>
-</url>
-<url>
-<loc>http://figuration.org/get-started/browsers-devices/</loc>
-</url>
-<url>
-<loc>http://figuration.org/get-started/build-tools/</loc>
-</url>
-<url>
-<loc>http://figuration.org/components/button-group/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/button/</loc>
-</url>
-<url>
-<loc>http://figuration.org/content/buttons/</loc>
-</url>
-<url>
-<loc>http://figuration.org/components/cards/</loc>
-</url>
-<url>
-<loc>http://figuration.org/utilities/clearfix/</loc>
-</url>
-<url>
-<loc>http://figuration.org/content/code/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/collapse/</loc>
-</url>
-<url>
-<loc>http://figuration.org/content/color/</loc>
-</url>
-<url>
-<loc>http://figuration.org/utilities/color/</loc>
-</url>
-<url>
-<loc>http://figuration.org/utilities/display/</loc>
-</url>
-<url>
-<loc>http://figuration.org/get-started/download/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/drag/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/dropdown/</loc>
-</url>
-<url>
-<loc>http://figuration.org/utilities/embed/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/equalize/</loc>
-</url>
-<url>
-<loc>http://figuration.org/get-started/examples/</loc>
-</url>
-<url>
-<loc>http://figuration.org/content/figures/</loc>
-</url>
-<url>
-<loc>http://figuration.org/utilities/flexbox/</loc>
-</url>
-<url>
-<loc>http://figuration.org/layout/flexbox/</loc>
-</url>
-<url>
-<loc>http://figuration.org/utilities/floating/</loc>
-</url>
-<url>
-<loc>http://figuration.org/content/forms/</loc>
-</url>
-<url>
-<loc>http://figuration.org/components/grid-lines/</loc>
-</url>
-<url>
-<loc>http://figuration.org/layout/grid/</loc>
-</url>
-<url>
-<loc>http://figuration.org/utilities/icons/</loc>
-</url>
-<url>
-<loc>http://figuration.org/utilities/image-replacement/</loc>
-</url>
-<url>
-<loc>http://figuration.org/content/images/</loc>
-</url>
-<url>
-<loc>http://figuration.org/</loc>
-</url>
-<url>
-<loc>http://figuration.org/components/input-group/</loc>
-</url>
-<url>
-<loc>http://figuration.org/components/jumbotron/</loc>
-</url>
-<url>
-<loc>http://figuration.org/layout/layout-utilities/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/lazy/</loc>
-</url>
-<url>
-<loc>http://figuration.org/about/license/</loc>
-</url>
-<url>
-<loc>http://figuration.org/components/list-group/</loc>
-</url>
-<url>
-<loc>http://figuration.org/components/media-object/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/modal/</loc>
-</url>
-<url>
-<loc>http://figuration.org/components/navbar/</loc>
-</url>
-<url>
-<loc>http://figuration.org/components/navs/</loc>
-</url>
-<url>
-<loc>http://figuration.org/get-started/options/</loc>
-</url>
-<url>
-<loc>http://figuration.org/about/overview/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/overview/</loc>
-</url>
-<url>
-<loc>http://figuration.org/layout/overview/</loc>
-</url>
-<url>
-<loc>http://figuration.org/components/pagination/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/player/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/popover/</loc>
-</url>
-<url>
-<loc>http://figuration.org/utilities/position/</loc>
-</url>
-<url>
-<loc>http://figuration.org/components/progress/</loc>
-</url>
-<url>
-<loc>http://figuration.org/get-started/quick-start/</loc>
-</url>
-<url>
-<loc>http://figuration.org/content/reboot/</loc>
-</url>
-<url>
-<loc>http://figuration.org/utilities/screen-readers/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/scrollspy/</loc>
-</url>
-<url>
-<loc>http://figuration.org/utilities/sizing/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/slider/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/slideshow/</loc>
-</url>
-<url>
-<loc>http://figuration.org/utilities/spacing/</loc>
-</url>
-<url>
-<loc>http://figuration.org/components/switch/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/tab-responsive/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/tab/</loc>
-</url>
-<url>
-<loc>http://figuration.org/content/tables/</loc>
-</url>
-<url>
-<loc>http://figuration.org/about/team/</loc>
-</url>
-<url>
-<loc>http://figuration.org/widgets/tooltip/</loc>
-</url>
-<url>
-<loc>http://figuration.org/content/typography/</loc>
-</url>
-<url>
-<loc>http://figuration.org/utilities/typography/</loc>
-</url>
-<url>
-<loc>http://figuration.org/utilities/vertical-alignment/</loc>
-</url>
-<url>
-<loc>http://figuration.org/utilities/visibility/</loc>
-</url>
-<url>
-<loc>http://figuration.org/examples/grid/index.html</loc>
-<lastmod>2018-01-12T11:47:58-05:00</lastmod>
-</url>
-<url>
-<loc>http://figuration.org/examples/navbar-fixed-bottom/index.html</loc>
-<lastmod>2018-01-12T11:47:58-05:00</lastmod>
-</url>
-<url>
-<loc>http://figuration.org/examples/navbar-fixed-top/index.html</loc>
-<lastmod>2018-01-12T11:47:58-05:00</lastmod>
-</url>
-<url>
-<loc>http://figuration.org/examples/navbar-static-top/index.html</loc>
-<lastmod>2018-01-12T11:47:58-05:00</lastmod>
-</url>
-<url>
-<loc>http://figuration.org/examples/navbars/index.html</loc>
-<lastmod>2018-01-12T11:47:58-05:00</lastmod>
-</url>
-<url>
-<loc>http://figuration.org/examples/starter-template/index.html</loc>
-<lastmod>2018-01-12T11:47:58-05:00</lastmod>
-</url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://figuration.org/</loc>
+    <lastmod>2020-01-02T14:48:02.606Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/3.0/examples/grid/</loc>
+    <lastmod>2020-01-02T14:48:02.641Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/3.0/examples/navbar-fixed-bottom/</loc>
+    <lastmod>2020-01-02T14:48:02.644Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/3.0/examples/navbar-fixed-top/</loc>
+    <lastmod>2020-01-02T14:48:02.646Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/3.0/examples/navbar-static-top/</loc>
+    <lastmod>2020-01-02T14:48:02.648Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/3.0/examples/navbars/</loc>
+    <lastmod>2020-01-02T14:48:02.650Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/3.0/examples/starter-template/</loc>
+    <lastmod>2020-01-02T14:48:02.652Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/components/alerts/</loc>
+    <lastmod>2020-01-02T14:48:02.709Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/components/badges/</loc>
+    <lastmod>2020-01-02T14:48:02.710Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/components/breadcrumb/</loc>
+    <lastmod>2020-01-02T14:48:02.711Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/components/button-group/</loc>
+    <lastmod>2020-01-02T14:48:02.712Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/components/cards/</loc>
+    <lastmod>2020-01-02T14:48:02.713Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/components/input-group/</loc>
+    <lastmod>2020-01-02T14:48:02.715Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/components/jumbotron/</loc>
+    <lastmod>2020-01-02T14:48:02.716Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/components/lists/</loc>
+    <lastmod>2020-01-02T14:48:02.717Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/components/media-object/</loc>
+    <lastmod>2020-01-02T14:48:02.718Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/components/navbar/</loc>
+    <lastmod>2020-01-02T14:48:02.719Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/components/navs/</loc>
+    <lastmod>2020-01-02T14:48:02.720Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/components/pagination/</loc>
+    <lastmod>2020-01-02T14:48:02.721Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/components/progress/</loc>
+    <lastmod>2020-01-02T14:48:02.722Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/content/buttons/</loc>
+    <lastmod>2020-01-02T14:48:02.724Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/content/code/</loc>
+    <lastmod>2020-01-02T14:48:02.725Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/content/color/</loc>
+    <lastmod>2020-01-02T14:48:02.726Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/content/figures/</loc>
+    <lastmod>2020-01-02T14:48:02.727Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/content/forms/</loc>
+    <lastmod>2020-01-02T14:48:02.728Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/content/images/</loc>
+    <lastmod>2020-01-02T14:48:02.729Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/content/reboot/</loc>
+    <lastmod>2020-01-02T14:48:02.731Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/content/tables/</loc>
+    <lastmod>2020-01-02T14:48:02.732Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/content/typography/</loc>
+    <lastmod>2020-01-02T14:48:02.733Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/examples/blog/</loc>
+    <lastmod>2020-01-02T14:48:02.738Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/examples/grid/</loc>
+    <lastmod>2020-01-02T14:48:02.740Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/examples/navbar-fixed-bottom/</loc>
+    <lastmod>2020-01-02T14:48:02.742Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/examples/navbar-fixed-top/</loc>
+    <lastmod>2020-01-02T14:48:02.744Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/examples/navbar-static-top/</loc>
+    <lastmod>2020-01-02T14:48:02.746Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/examples/navbars/</loc>
+    <lastmod>2020-01-02T14:48:02.748Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/examples/starter-template/</loc>
+    <lastmod>2020-01-02T14:48:02.750Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/get-started/accessibility/</loc>
+    <lastmod>2020-01-02T14:48:02.753Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/get-started/browsers-and-devices/</loc>
+    <lastmod>2020-01-02T14:48:02.754Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/get-started/build-tools/</loc>
+    <lastmod>2020-01-02T14:48:02.755Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/get-started/download/</loc>
+    <lastmod>2020-01-02T14:48:02.756Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/get-started/examples/</loc>
+    <lastmod>2020-01-02T14:48:02.757Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/get-started/migration/</loc>
+    <lastmod>2020-01-02T14:48:02.759Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/get-started/options/</loc>
+    <lastmod>2020-01-02T14:48:02.760Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/get-started/quick-start/</loc>
+    <lastmod>2020-01-02T14:48:02.761Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/layout/flexbox/</loc>
+    <lastmod>2020-01-02T14:48:02.764Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/layout/grid/</loc>
+    <lastmod>2020-01-02T14:48:02.764Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/layout/layout-utilities/</loc>
+    <lastmod>2020-01-02T14:48:02.766Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/layout/overview/</loc>
+    <lastmod>2020-01-02T14:48:02.767Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/utilities/borders/</loc>
+    <lastmod>2020-01-02T14:48:02.769Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/utilities/clearfix/</loc>
+    <lastmod>2020-01-02T14:48:02.770Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/utilities/color/</loc>
+    <lastmod>2020-01-02T14:48:02.771Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/utilities/display/</loc>
+    <lastmod>2020-01-02T14:48:02.772Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/utilities/embed/</loc>
+    <lastmod>2020-01-02T14:48:02.773Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/utilities/flexbox/</loc>
+    <lastmod>2020-01-02T14:48:02.774Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/utilities/floating/</loc>
+    <lastmod>2020-01-02T14:48:02.776Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/utilities/icons/</loc>
+    <lastmod>2020-01-02T14:48:02.776Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/utilities/links/</loc>
+    <lastmod>2020-01-02T14:48:02.778Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/utilities/overflow/</loc>
+    <lastmod>2020-01-02T14:48:02.779Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/utilities/position/</loc>
+    <lastmod>2020-01-02T14:48:02.781Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/utilities/screen-readers/</loc>
+    <lastmod>2020-01-02T14:48:02.782Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/utilities/shadows/</loc>
+    <lastmod>2020-01-02T14:48:02.783Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/utilities/sizing/</loc>
+    <lastmod>2020-01-02T14:48:02.784Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/utilities/spacing/</loc>
+    <lastmod>2020-01-02T14:48:02.785Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/utilities/typography/</loc>
+    <lastmod>2020-01-02T14:48:02.786Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/utilities/vertical-alignment/</loc>
+    <lastmod>2020-01-02T14:48:02.787Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/utilities/visibility/</loc>
+    <lastmod>2020-01-02T14:48:02.788Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/widgets/accordion/</loc>
+    <lastmod>2020-01-02T14:48:02.791Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/widgets/affix/</loc>
+    <lastmod>2020-01-02T14:48:02.792Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/widgets/alert/</loc>
+    <lastmod>2020-01-02T14:48:02.793Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/widgets/collapse/</loc>
+    <lastmod>2020-01-02T14:48:02.793Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/widgets/drag/</loc>
+    <lastmod>2020-01-02T14:48:02.795Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/widgets/dropdown/</loc>
+    <lastmod>2020-01-02T14:48:02.795Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/widgets/equalize/</loc>
+    <lastmod>2020-01-02T14:48:02.796Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/widgets/lazy/</loc>
+    <lastmod>2020-01-02T14:48:02.798Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/widgets/modal/</loc>
+    <lastmod>2020-01-02T14:48:02.800Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/widgets/overview/</loc>
+    <lastmod>2020-01-02T14:48:02.800Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/widgets/player/</loc>
+    <lastmod>2020-01-02T14:48:02.801Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/widgets/popover/</loc>
+    <lastmod>2020-01-02T14:48:02.802Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/widgets/scrollspy/</loc>
+    <lastmod>2020-01-02T14:48:02.803Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/widgets/slideshow/</loc>
+    <lastmod>2020-01-02T14:48:02.804Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/widgets/tab-responsive/</loc>
+    <lastmod>2020-01-02T14:48:02.805Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/widgets/tab/</loc>
+    <lastmod>2020-01-02T14:48:02.806Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/4.0/widgets/tooltip/</loc>
+    <lastmod>2020-01-02T14:48:02.807Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/about/license/</loc>
+    <lastmod>2020-01-02T14:48:02.811Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/about/overview/</loc>
+    <lastmod>2020-01-02T14:48:02.812Z</lastmod>
+  </url>
+  <url>
+    <loc>http://figuration.org/about/team/</loc>
+    <lastmod>2020-01-02T14:48:02.813Z</lastmod>
+  </url>
 </urlset>

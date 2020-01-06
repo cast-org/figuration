@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A feature rich, responsive, mobile first, accessible, front-end framework.">
+<meta name="author" content="CAST, Inc.">
+
+<meta name="docsearch:language" content="en-us">
+<meta name="docsearch:version" content="3.0">
+
+<title>Overview &#124; CAST Figuration</title>
+
+<link rel="canonical" href="http://figuration.org/3.0/widgets/overview/">
+
+<!-- Favicons -->
+<link sizes="180x180" rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png"/>
+<link sizes="32x32" rel="icon" href="/assets/favicon/favicon-32x32.png" type="image/png"/>
+<link sizes="16x16" rel="icon" href="/assets/favicon/favicon-16x16.png" type="image/png"/>
+<link rel="manifest" href="/assets/favicon/site.webmanifest"/>
+<link color="#5bbad5" rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg"/>
+<link rel="shortcut icon" href="/assets/favicon/favicon.ico"/>
+<meta name="msapplication-TileColor" content="#117cba"/>
+<meta name="msapplication-config" content="/assets/favicon/browserconfig.xml"/>
+<meta name="theme-color" content="#ffffff"/>
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@figuration_org">
+<meta name="twitter:creator" content="@figuration_org">
+<meta name="twitter:title" content="Overview">
+<meta name="twitter:description" content="A feature rich, responsive, mobile first, accessible, front-end framework.">
+<meta name="twitter:image" content="http://figuration.org/assets/brand/figuration-social.png">
+
+<!-- Google Analytics -->
+<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-9130143-15', 'figuration.org');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+<!-- Font CSS -->
+<link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" integrity="sha384-VVoO3UHXsmXwXvf1kJx2jV3b1LbOfTqKL46DdeLG8z4pImkQ4GAP9GMy+MxHMDYG" crossorigin="anonymous" rel="stylesheet" property="stylesheet">
+
+
+<!-- Algolia DocSearch CSS -->
+<link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+<!-- Figuration CSS -->
+<link href="/assets/3.0/dist/css/figuration.min.css" rel="stylesheet" id="cssCore"><!-- Docs CSS -->
+<link href="/assets/3.0/css/docs.min.css" rel="stylesheet" id="cssDocs"><link href="/assets/3.0/css/docs_patch.css" rel="stylesheet"><!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/assets/3.0/js/vendor/jquery.min.js"><\/script>')</script>
+
+<!-- MutationObserver Polyfill -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.24/MutationObserver.min.js" integrity="sha384-8HHYYRe45k4Xq40fi/cZaaby4FJgnOOVmnRzX3OWtwpfiUPfx7tnK2QkDPuIRGm0" crossorigin="anonymous"></script><!-- Figuration JS -->
+<script src="/assets/3.0/dist/js/figuration.min.js"></script><!-- Docs Js -->
+
+<script src="/assets/3.0/js/vendor/clipboard.min.js"></script>
+<script src="/assets/3.0/js/vendor/holder.min.js"></script>
+<script src="/assets/3.0/js/src/docs.js"></script>
+
+
+</head>
+<body>
+<a class="skipnav" href="#content">Skip to main content</a>
+<div class="bg-cyan-200 text-center text-cyan-900 py-0_25 px-1">
+  <a href="/4.0/" class="text-primary-800 font-weight-bold">v4 Beta now available! Try it out!</a>
+</div>
+<header class="navbar navbar-expand-lg navbar-dark print-hide cf-header">
+  <a class="navbar-brand" href="/" aria-label="CAST Figuration">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 240 240" focusable="false" role="img"  class="navbar-brand-logo">
+  <title>Figuration</title>
+  <path fill="currentColor" d="M33.2 45L0 87l12 51.7c6.6 28.4 12.3 52 12.7 52.4.5.4 22.2 10.9 48.3 23.3l47.4 22.6 48-23.3 48-23.3 11.7-51.9c6.4-28.6 11.4-52.5 11-53-.4-.6-15.5-19.3-33.5-41.8L172.9 3H66.4L33.2 45zM197 52c17.1 21.4 29.4 37.7 29.3 38.7-.6 4.9-20.3 90.7-21 91.4-1.1 1.1-83.6 41.1-84.8 41.2-1.8 0-85-40.2-85.8-41.5-.4-.7-5.5-21.7-11.2-46.6L13 90l28.7-36.3C57.4 33.8 71 16.9 71.8 16.2c1.2-.9 12.4-1.2 48.6-1.1h47.1L197 52z"/>
+  <path fill="currentColor" d="M81 113.5V182h22v-58h50v-21h-50l.2-18.8.3-18.7 29.3-.3L162 65V45H81v68.5z"/>
+</svg>
+
+    <span class="sr-only-xs-down">CAST Figuration</span>
+  </a>
+  <button class="navbar-toggle me-0_5" type="button" data-cfw="collapse" data-cfw-collapse-target="#cf-topnav" aria-label="Toggle navigation">
+    <span class="cf-header-menu" aria-hidden="true">&#8801;</span>
+  </button>
+  <nav class="navbar-collapse collapse order-last order-lg-unordered text-nowrap" id="cf-topnav" aria-label="Main">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a href="/3.0/get-started/quick-start/" class="nav-link ">Get Started</a>
+      </li>
+      <li class="nav-item">
+        <a href="/3.0/layout/overview/" class="nav-link ">Layout</a>
+      </li>
+      <li class="nav-item">
+        <a href="/3.0/content/reboot/" class="nav-link ">Content</a>
+      </li>
+      <li class="nav-item">
+        <a href="/3.0/components/alerts/" class="nav-link ">Components</a>
+      </li>
+      <li class="nav-item">
+        <a href="/3.0/utilities/borders/" class="nav-link ">Utilities</a>
+      </li>
+      <li class="nav-item">
+        <a href="/3.0/widgets/overview/" class="nav-link active">Widgets <span class="sr-only">(current section)</span></a>
+      </li>
+    </ul>
+  </nav>
+
+  <ul class="navbar-nav ms-auto cf-header-social flex-row">
+    <li class="nav-item me-1"><div class="dropdown">
+  <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
+    v3.0.5
+    <span class="caret" aria-hidden="true"></span>
+  </a>
+  <ul class="dropdown-menu position-absolute">
+    <li class="dropdown-header">Latest</li><li><a href="/4.0/">v4.0.0-beta.2</a></li>
+    
+    <li class="dropdown-divider"></li>
+    
+    <li class="dropdown-header">Older</li>
+    
+    <li><a href="/3.0/" class="active">v3.0.5</a></li>
+    </ul>
+</div>
+    </li>
+    <li class="nav-item">
+      <a href="https://twitter.com/figuration_org" class="nav-link px-0_5" aria-label="Twitter">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" focusable="false" role="img"  width="1rem" height="1rem">
+  <title>Twitter</title>
+  <path fill="currentColor" d="M512 97.2c-18.84 8.36-39.08 14-60.33 16.55 21.7-13 38.34-33.58 46.2-58.1-20.3 12.03-42.8 20.77-66.72 25.48C412 60.7 384.7 47.96 354.48 47.96c-58 0-105.04 47.03-105.04 105.03 0 8.23.93 16.25 2.72 23.93-87.3-4.38-164.7-46.2-216.5-109.75-9.05 15.5-14.24 33.56-14.24 52.8 0 36.45 18.55 68.6 46.73 87.44-17.2-.54-33.4-5.27-47.57-13.14v1.32c0 50.9 36.2 93.35 84.25 103-8.8 2.4-18.1 3.7-27.68 3.7-6.76 0-13.34-.67-19.76-1.9 13.36 41.73 52.15 72.1 98.12 72.95-35.95 28.18-81.25 44.97-130.46 44.97-8.48 0-16.84-.5-25.06-1.47 46.5 29.8 101.7 47.2 161.02 47.2 193.2 0 298.87-160.07 298.87-298.88 0-4.55-.1-9.08-.32-13.6 20.53-14.8 38.34-33.3 52.42-54.36z"/>
+</svg>
+
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="https://github.com/cast-org/figuration" class="nav-link px-0_5" aria-label="Github">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" focusable="false" role="img"  width="1rem" height="1rem">
+  <title>Github</title>
+  <path fill="currentColor" fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.3 6.53 5.47 7.6.4.06.55-.18.55-.4v-1.48c-2.02.37-2.54-.5-2.7-.94-.1-.23-.48-.94-.82-1.13-.28-.15-.68-.52 0-.53.62 0 1.07.58 1.22.82.72 1.2 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.77-.2-3.63-.9-3.63-3.95 0-.87.3-1.6.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.2 2.2.83.64-.18 1.32-.27 2-.27.68 0 1.36.1 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.93.08 2.13.5.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.3.25.54.73.54 1.48v2.2c0 .22.15.47.55.4C13.7 14.52 16 11.52 16 8c0-4.42-3.58-8-8-8z"/>
+</svg>
+
+      </a>
+    </li>
+    <li class="nav-item"><div class="dropdown dropend dropdown-menu-reverse">
+  <a href="#" role="button" class="nav-link px-0_5" aria-label="Settings" data-cfw="dropdown">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 8 8" focusable="false" role="img"  width="1rem" height="1rem">
+  <title>Settings</title>
+  <path fill="currentColor" d="M3.5 0l-.5 1.19c-.1.03-.19.08-.28.13l-1.19-.5-.72.72.5 1.19c-.05.1-.09.18-.13.28l-1.19.5v1l1.19.5c.04.1.08.18.13.28l-.5 1.19.72.72 1.19-.5c.09.04.18.09.28.13l.5 1.19h1l.5-1.19c.09-.04.19-.08.28-.13l1.19.5.72-.72-.5-1.19c.04-.09.09-.19.13-.28l1.19-.5v-1l-1.19-.5c-.03-.09-.08-.19-.13-.28l.5-1.19-.72-.72-1.19.5c-.09-.04-.19-.09-.28-.13l-.5-1.19h-1zm.5 2.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z"/>
+</svg>
+  </a>
+  <ul class="dropdown-menu">
+    <li class="dropdown-header">Direction</li>
+    <li><button type="button" class="dropdown-item" id="dir-ltr">Left-to-right</button></li>
+    <li><button type="button" class="dropdown-item" id="dir-rtl">Right-to-left</button></li>
+  </ul>
+</div>
+    </li>
+  </ul>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 col-xl-2 cf-sidebar print-hide">
+      <form class="cf-search docsearch-wrapper" style="width: 100%;" role="search">
+  <input type="search" class="docsearch form-control form-control-sm" id="docsearch" placeholder="Search docs..." aria-label="Search the documentation" data-docs-version="3.0"/>
+</form><button class="btn btn-default mt-0_5 mb-0_5 d-md-none" aria-label="Toggle page navigation" data-cfw="collapse" data-cfw-collapse-target="#cf-links-nav">
+  <span aria-hidden="true">Pages <span class="caret"></span></span>
+</button>
+<nav id="cf-links-nav" class="cf-links collapse d-md-block mt-0_5" aria-label="Page">
+  <ul class="list-unstyled">
+    <li class="mb-0_25 has-children">
+      <a href="/3.0/get-started/quick-start/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav1">
+        <span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Get Started</span></span>
+      </a>
+      <div id="sidenav1">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/3.0/get-started/quick-start/" class="nav-link"><span class="nav-link-inner">Quick Start</span></a></li>
+          <li class="nav-item"><a href="/3.0/get-started/download/" class="nav-link"><span class="nav-link-inner">Download</span></a></li>
+          <li class="nav-item"><a href="/3.0/get-started/browsers-and-devices/" class="nav-link"><span class="nav-link-inner">Browsers & Devices</span></a></li>
+          <li class="nav-item"><a href="/3.0/get-started/options/" class="nav-link"><span class="nav-link-inner">Options</span></a></li>
+          <li class="nav-item"><a href="/3.0/get-started/build-tools/" class="nav-link"><span class="nav-link-inner">Build Tools</span></a></li>
+          <li class="nav-item"><a href="/3.0/get-started/accessibility/" class="nav-link"><span class="nav-link-inner">Accessibility</span></a></li>
+          <li class="nav-item"><a href="/3.0/get-started/examples/" class="nav-link"><span class="nav-link-inner">Examples</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children">
+      <a href="/3.0/layout/overview/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav2">
+        <span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Layout</span></span>
+      </a>
+      <div id="sidenav2">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/3.0/layout/overview/" class="nav-link"><span class="nav-link-inner">Overview</span></a></li>
+          <li class="nav-item"><a href="/3.0/layout/grid/" class="nav-link"><span class="nav-link-inner">Grid</span></a></li>
+          <li class="nav-item"><a href="/3.0/layout/layout-utilities/" class="nav-link"><span class="nav-link-inner">Layout Utilities</span></a></li>
+          <li class="nav-item"><a href="/3.0/layout/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children">
+      <a href="/3.0/content/reboot/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav3">
+        <span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Content</span></span>
+      </a>
+      <div id="sidenav3">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/3.0/content/reboot/" class="nav-link"><span class="nav-link-inner">Reboot</span></a></li>
+          <li class="nav-item"><a href="/3.0/content/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
+          <li class="nav-item"><a href="/3.0/content/typography/" class="nav-link"><span class="nav-link-inner">Typography</span></a></li>
+          <li class="nav-item"><a href="/3.0/content/code/" class="nav-link"><span class="nav-link-inner">Code</span></a></li>
+          <li class="nav-item"><a href="/3.0/content/images/" class="nav-link"><span class="nav-link-inner">Images</span></a></li>
+          <li class="nav-item"><a href="/3.0/content/figures/" class="nav-link"><span class="nav-link-inner">Figures</span></a></li>
+          <li class="nav-item"><a href="/3.0/content/tables/" class="nav-link"><span class="nav-link-inner">Tables</span></a></li>
+          <li class="nav-item"><a href="/3.0/content/buttons/" class="nav-link"><span class="nav-link-inner">Buttons</span></a></li>
+          <li class="nav-item"><a href="/3.0/content/forms/" class="nav-link"><span class="nav-link-inner">Forms</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children">
+      <a href="/3.0/components/alerts/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav4">
+        <span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Components</span></span>
+      </a>
+      <div id="sidenav4">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/3.0/components/alerts/" class="nav-link"><span class="nav-link-inner">Alerts</span></a></li>
+          <li class="nav-item"><a href="/3.0/components/badges/" class="nav-link"><span class="nav-link-inner">Badges</span></a></li>
+          <li class="nav-item"><a href="/3.0/components/breadcrumb/" class="nav-link"><span class="nav-link-inner">Breadcrumb</span></a></li>
+          <li class="nav-item"><a href="/3.0/components/button-group/" class="nav-link"><span class="nav-link-inner">Button Group</span></a></li>
+          <li class="nav-item"><a href="/3.0/components/cards/" class="nav-link"><span class="nav-link-inner">Cards</span></a></li>
+          <li class="nav-item"><a href="/3.0/components/grid-lines/" class="nav-link"><span class="nav-link-inner">Grid Lines</span></a></li>
+          <li class="nav-item"><a href="/3.0/components/input-group/" class="nav-link"><span class="nav-link-inner">Input Group</span></a></li>
+          <li class="nav-item"><a href="/3.0/components/jumbotron/" class="nav-link"><span class="nav-link-inner">Jumbotron</span></a></li>
+          <li class="nav-item"><a href="/3.0/components/list-group/" class="nav-link"><span class="nav-link-inner">List Group</span></a></li>
+          <li class="nav-item"><a href="/3.0/components/media-object/" class="nav-link"><span class="nav-link-inner">Media Object</span></a></li>
+          <li class="nav-item"><a href="/3.0/components/navbar/" class="nav-link"><span class="nav-link-inner">Navbar</span></a></li>
+          <li class="nav-item"><a href="/3.0/components/navs/" class="nav-link"><span class="nav-link-inner">Navs</span></a></li>
+          <li class="nav-item"><a href="/3.0/components/pagination/" class="nav-link"><span class="nav-link-inner">Pagination</span></a></li>
+          <li class="nav-item"><a href="/3.0/components/progress/" class="nav-link"><span class="nav-link-inner">Progress</span></a></li>
+          <li class="nav-item"><a href="/3.0/components/switch/" class="nav-link"><span class="nav-link-inner">Switch</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children">
+      <a href="/3.0/utilities/borders/" class="cf-sidebar-header fs-large font-weight-sbold" data-cfw="collapse" data-cfw-collapse-target="#sidenav5">
+        <span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title">Utilities</span></span>
+      </a>
+      <div id="sidenav5">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/3.0/utilities/borders/" class="nav-link"><span class="nav-link-inner">Borders</span></a></li>
+          <li class="nav-item"><a href="/3.0/utilities/clearfix/" class="nav-link"><span class="nav-link-inner">Clearfix</span></a></li>
+          <li class="nav-item"><a href="/3.0/utilities/color/" class="nav-link"><span class="nav-link-inner">Color</span></a></li>
+          <li class="nav-item"><a href="/3.0/utilities/display/" class="nav-link"><span class="nav-link-inner">Display</span></a></li>
+          <li class="nav-item"><a href="/3.0/utilities/embed/" class="nav-link"><span class="nav-link-inner">Embed</span></a></li>
+          <li class="nav-item"><a href="/3.0/utilities/flexbox/" class="nav-link"><span class="nav-link-inner">Flexbox</span></a></li>
+          <li class="nav-item"><a href="/3.0/utilities/floating/" class="nav-link"><span class="nav-link-inner">Floating</span></a></li>
+          <li class="nav-item"><a href="/3.0/utilities/icons/" class="nav-link"><span class="nav-link-inner">Icons</span></a></li>
+          <li class="nav-item"><a href="/3.0/utilities/image-replacement/" class="nav-link"><span class="nav-link-inner">Image Replacement</span></a></li>
+          <li class="nav-item"><a href="/3.0/utilities/position/" class="nav-link"><span class="nav-link-inner">Position</span></a></li>
+          <li class="nav-item"><a href="/3.0/utilities/screen-readers/" class="nav-link"><span class="nav-link-inner">Screen Readers</span></a></li>
+          <li class="nav-item"><a href="/3.0/utilities/sizing/" class="nav-link"><span class="nav-link-inner">Sizing</span></a></li>
+          <li class="nav-item"><a href="/3.0/utilities/spacing/" class="nav-link"><span class="nav-link-inner">Spacing</span></a></li>
+          <li class="nav-item"><a href="/3.0/utilities/typography/" class="nav-link"><span class="nav-link-inner">Typography</span></a></li>
+          <li class="nav-item"><a href="/3.0/utilities/vertical-alignment/" class="nav-link"><span class="nav-link-inner">Vertical Alignment</span></a></li>
+          <li class="nav-item"><a href="/3.0/utilities/visibility/" class="nav-link"><span class="nav-link-inner">Visibility</span></a></li>
+          </ul>
+      </div>
+    </li><li class="mb-0_25 has-children">
+      <a href="/3.0/widgets/overview/" class="cf-sidebar-header fs-large font-weight-sbold active open" data-cfw="collapse" data-cfw-collapse-target="#sidenav6">
+        <span class="nav-link-inner"><span class="caret" aria-hidden="true"></span><span class="cf-sidebar-header-title active-section">Widgets</span> <span class="sr-only">(current section)</span></span>
+      </a>
+      <div id="sidenav6">
+        <ul class="nav flex-column mb-0 pb-0_25">
+          <li class="nav-item"><a href="/3.0/widgets/overview/" class="nav-link active"><span class="nav-link-inner">Overview <span class="sr-only">(current page)</span></span></a></li>
+          <li class="nav-item"><a href="/3.0/widgets/accordion/" class="nav-link"><span class="nav-link-inner">Accordion</span></a></li>
+          <li class="nav-item"><a href="/3.0/widgets/affix/" class="nav-link"><span class="nav-link-inner">Affix</span></a></li>
+          <li class="nav-item"><a href="/3.0/widgets/alert/" class="nav-link"><span class="nav-link-inner">Alert</span></a></li>
+          <li class="nav-item"><a href="/3.0/widgets/button/" class="nav-link"><span class="nav-link-inner">Button</span></a></li>
+          <li class="nav-item"><a href="/3.0/widgets/collapse/" class="nav-link"><span class="nav-link-inner">Collapse</span></a></li>
+          <li class="nav-item"><a href="/3.0/widgets/drag/" class="nav-link"><span class="nav-link-inner">Drag</span></a></li>
+          <li class="nav-item"><a href="/3.0/widgets/dropdown/" class="nav-link"><span class="nav-link-inner">Dropdown</span></a></li>
+          <li class="nav-item"><a href="/3.0/widgets/equalize/" class="nav-link"><span class="nav-link-inner">Equalize</span></a></li>
+          <li class="nav-item"><a href="/3.0/widgets/lazy/" class="nav-link"><span class="nav-link-inner">Lazy</span></a></li>
+          <li class="nav-item"><a href="/3.0/widgets/modal/" class="nav-link"><span class="nav-link-inner">Modal</span></a></li>
+          <li class="nav-item"><a href="/3.0/widgets/player/" class="nav-link"><span class="nav-link-inner">Player</span></a></li>
+          <li class="nav-item"><a href="/3.0/widgets/popover/" class="nav-link"><span class="nav-link-inner">Popover</span></a></li>
+          <li class="nav-item"><a href="/3.0/widgets/scrollspy/" class="nav-link"><span class="nav-link-inner">Scrollspy</span></a></li>
+          <li class="nav-item"><a href="/3.0/widgets/slider/" class="nav-link"><span class="nav-link-inner">Slider</span></a></li>
+          <li class="nav-item"><a href="/3.0/widgets/slideshow/" class="nav-link"><span class="nav-link-inner">Slideshow</span></a></li>
+          <li class="nav-item"><a href="/3.0/widgets/tab/" class="nav-link"><span class="nav-link-inner">Tab</span></a></li>
+          <li class="nav-item"><a href="/3.0/widgets/tab-responsive/" class="nav-link"><span class="nav-link-inner">Tab-Responsive</span></a></li>
+          <li class="nav-item"><a href="/3.0/widgets/tooltip/" class="nav-link"><span class="nav-link-inner">Tooltip</span></a></li>
+          </ul>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+    </div>
+    <nav class="d-none d-xl-block col-xl-2 cf-toc-side" aria-label="Page"></nav>
+    <main class="col-md-9 col-xl-8 cf-content">
+      <div class="jumbotron jumbotron-full jumbotron-docs">
+        <div class="container-fluid">
+          
+<div class="h1">Widgets</div>
+<p class="lead">
+  Bring interactivity to your site with a selection of jQuery widgets (plugins) all built with accessibility and usability in mind.
+</p>
+
+
+        </div>
+      </div>
+
+      <h1 class="cf-title" id="content">Overview</h1>
+
+      
+
+      <p>Add more functionality and interactivity to to Figuration with our optional jQuery powered widgets.  Each one is designed with accessibility already built-in.</p>
+<div class="cf-callout cf-callout-warning">
+<p class="h5">Using the compiled JavaScript</p>
+<p>Both <code>figuration.js</code> and <code>figuration.min.js</code> contain all widgets and helper utilities in a single file. <strong>Include only one.</strong></p>
+</div>
+<div class="cf-callout cf-callout-danger">
+<p class="h5">One Widget per Element</p>
+<p>Don't use multiple widgets on the same element. For example, a button should not both have a tooltip and toggle a modal. Doing so would cause a conflict in functionality and accessibility.</p>
+</div>
+<div class="cf-callout cf-callout-info">
+<p class="h5">Widget Dependencies</p>
+<p>Some widgets and CSS components depend on other widgets. If you include widgets individually, make sure to check for these dependencies in the docs. Also note that all widgets depend on jQuery (this means jQuery must be included <strong>before</strong> the widget files). Figuration is currently only tested/supported on the latest version of jQuery.</p>
+</div>
+<div class="h3 cf-toc-header">Page Contents</div>
+<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#util">Util </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#no-conflict">No Conflict </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#scoped-initilization">Scoped Initilization </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#scoped-dispose">Scoped Dispose </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#data-attributes">Data Attributes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#option-inheritance">Option Inheritance </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#programmatic-api">Programmatic API </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#events">Events </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#asynchronous-functions-and-transitions">Asynchronous Functions and Transitions </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#no-fallbacks">No Fallbacks </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#dispose-methods">Dispose Methods </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#accessibility">Accessibility </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#best-practices-approach">Best Practices Approach </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#automatic-attribute-generation">Automatic Attribute Generation </a></li></ul></li></ul></nav><h2 id="util">Util <a class="direct-link" href="#util">#</a></h2>
+<p>All of Figuration's widgets depend on <code>util.js</code> and it has to be included alongside the other JavaScript files. If you're using the compiled (or minified) <code>figuration.js</code>, there is no need to include this—it's already there.</p>
+<p><code>util.js</code> includes utility functions and a basic helper for <code>transitionEnd</code> events as well as a CSS transition emulator. It's used by the other plugins to check for CSS transition support and to catch hanging transitions.</p>
+<p>Also, some of the widgets use <a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver</a> utilities to watch for and respond to DOM changes.</p>
+<h2 id="no-conflict">No Conflict <a class="direct-link" href="#no-conflict">#</a></h2>
+<p>Figuration has opted to not go with a .noConflict mode.  Due to crosstalk between some of the widgets, we extended the namespaces by marking all functionalty with <code>CFW</code> or <code>cfw</code>, as in <strong>C</strong>AST <strong>F</strong>iguration <strong>W</strong>idget.</p>
+<p>The structure is: <code>CFW_WidgetName</code> for widgets, <code>data.cfw.widgetName</code> for data storage, <code>data-cfw-widgetName-option</code> for data attributes, <code>event.cfw.widgetName</code> for events.</p>
+<p>This is to hopefully reduce the chance of conflicting with other frameworks and plugins.</p>
+<h2 id="scoped-initilization">Scoped Initilization <a class="direct-link" href="#scoped-initilization">#</a></h2>
+<p>Initializing the widgets in AJAX inserted content can be accomplished easily by calling the <code>$().CFW_Init()</code> function.  Widgets set with data attributes on both the specified element, and it's descendants, will be initialized.</p>
+<p>This function that also called at page load using <code>document.body</code> as the initial scope.</p>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#myContainer"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token comment">// Where '#myContainer' is the region of new content to initialize the Figuration widgets.</span></code></pre>
+<h2 id="scoped-dispose">Scoped Dispose <a class="direct-link" href="#scoped-dispose">#</a></h2>
+<p>In those cases where you are need to call the <code>dispose</code> method on every Figuration widget for a given region, you can use the <code>$().CFW_Dispose()</code> function.  Any widget encountered on the specified element, and it's descendants, will have their <code>dispose</code> methods invoked.</p>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#myContainer"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Dispose</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token comment">// Where '#myContainer' is the region to `dispose` of Figuration widgets.</span></code></pre>
+<h2 id="data-attributes">Data Attributes <a class="direct-link" href="#data-attributes">#</a></h2>
+<p>You can use most Figuration widgets purely through the markup API without writing a single line of JavaScript.</p>
+<p>In some situations it may be desirable to turn this functionality off. The data attribute API auto-initialize can be disabled by inserting a global variable in the <code>&lt;head&gt;</code> of the document, before loading the <code>figuration.js</code>, to stop the initial call to <code>$().CFW_Init()</code> from occuring.</p>
+<pre class="language-js"><code class="language-js"><span class="token operator">&lt;</span>script<span class="token operator">></span><span class="token keyword">var</span> <span class="token constant">CFW_API</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<h2 id="option-inheritance">Option Inheritance <a class="direct-link" href="#option-inheritance">#</a></h2>
+<p>When using both data attributes and JavaScript options, the JavaScript options take precendence over any element attributes.</p>
+<div class="cf-example">
+<!-- Override the HTML attribute -->
+<button type="button" id="optionOrder0" class="btn" title="ignored title">Show Tooltip</button>
+<script>
+$('#optionOrder0').CFW_Tooltip({
+  title: 'tooltip title',
+  container: 'body'
+});
+</script>
+<!-- Override the data attribute -->
+<button type="button" id="optionOrder1" class="btn" data-cfw-tootltip-title="ignored title">Show Tooltip</button>
+<script>
+$('#optionOrder1').CFW_Tooltip({
+  title: 'tooltip title',
+  container: 'body'
+});
+</script>
+</div>
+<pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- Override the HTML attribute --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>optionOrder0<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ignored title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Show Tooltip<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#optionOrder0'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Tooltip</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>  title<span class="token operator">:</span> <span class="token string">'tooltip title'</span><span class="token punctuation">,</span><br>  container<span class="token operator">:</span> <span class="token string">'body'</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><br><br><span class="token comment">&lt;!-- Override the data attribute --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>optionOrder1<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-tootltip-title</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>ignored title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Show Tooltip<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"><br><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#optionOrder1'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Tooltip</span><span class="token punctuation">(</span><span class="token punctuation">{</span><br>  title<span class="token operator">:</span> <span class="token string">'tooltip title'</span><span class="token punctuation">,</span><br>  container<span class="token operator">:</span> <span class="token string">'body'</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+<h2 id="programmatic-api">Programmatic API <a class="direct-link" href="#programmatic-api">#</a></h2>
+<p>You can also use all Figuration widgets purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.</p>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myCollapse'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Collapse</span><span class="token punctuation">(</span><span class="token string">'hide'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeClass</span><span class="token punctuation">(</span><span class="token string">'aClass'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a widget with default behavior):</p>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myPop'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Popover</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                          <span class="token comment">// initialized with defaults</span><br><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myPop'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Popover</span><span class="token punctuation">(</span><span class="token punctuation">{</span> placement<span class="token operator">:</span> <span class="token string">'bottom'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// initialized with bottom alignment</span><br><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myPop'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Popover</span><span class="token punctuation">(</span><span class="token string">'show'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                    <span class="token comment">// invokes show method</span></code></pre>
+<p>Each widget also exposes its raw constructor on a <code>Constructor</code> property: <code>$.fn.CFW_Popover.Constructor</code>. If you'd like to get a particular widget instance, retrieve it directly from an element: <code>$('[rel=popover]').data('CFW_Popover')</code>.</p>
+<h2 id="events">Events <a class="direct-link" href="#events">#</a></h2>
+<p>Figuration provides custom events for most widgets' unique actions. Generally, these typically come in a before and after form - where the before form (ex. <code>beforeShow</code>) is triggered at the start of an event, and its after form (ex. <code>afterShow</code>) is trigger on the completion of an action.</p>
+<p>All before events provide <code>preventDefault</code> functionality. This provides the ability to stop the execution of an action before it starts.</p>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myModal'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'beforeShow.cfw.modal'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>data<span class="token punctuation">)</span> <span class="token keyword">return</span> e<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// stops modal from being shown</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="asynchronous-functions-and-transitions">Asynchronous Functions and Transitions <a class="direct-link" href="#asynchronous-functions-and-transitions">#</a></h2>
+<p>All programmatic API methods are <strong>asynchronous</strong> and returns to the caller once the transition is started but <strong>before it ends</strong>.</p>
+<p>In order to execute an action once the transition is complete, you can listen to the corresponding event.</p>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myCollapse'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'afterShow.cfw.collapse'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token comment">// Action to execute once the collapsible area is expanded</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>In addition a method call on a <strong>transitioning component will be ignored</strong>.</p>
+<pre class="language-js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myCollapse'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'afterShow.cfw.carousel'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><br>  <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myCollapse'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Collapse</span><span class="token punctuation">(</span><span class="token string">'hide'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Will hide the collapsible area as soon as the transition for opening the area is finished</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><br><br><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myCollapse'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Collapse</span><span class="token punctuation">(</span><span class="token string">'show'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Will start opening the collapsible area and returns to the caller</span><br><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#myCollapse'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CFW_Collapse</span><span class="token punctuation">(</span><span class="token string">'hide'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ** Will be ignored, as the opening transition has not completed **</span></code></pre>
+<h2 id="no-fallbacks">No Fallbacks <a class="direct-link" href="#no-fallbacks">#</a></h2>
+<p>Figuration's widgets don't fallback or degrade gracefully when JavaScript is disabled. If you care about the user experience in this case, use <code>&lt;noscript&gt;</code> to explain the situation (and how to re-enable JavaScript) to your users, and/or add your own custom fallbacks.</p>
+<h2 id="dispose-methods">Dispose Methods <a class="direct-link" href="#dispose-methods">#</a></h2>
+<p>Every widget has a <code>dispose</code> method that should remove any event listeners and data, as well as nullify any constructed JavaScript variables associated with a given widget.  Certain widgets will also remove their dynamically created content or controls from the DOM.</p>
+<p>While most likely not needed in everyday use, there may be specific circumstances when this might be useful.  For example, if you are doing large amounts of dynamic content, in order to help with memory garbage collection, it might be beneficial to call the <code>dispose</code> on a widget before you remove the content from the DOM.</p>
+<h2 id="accessibility">Accessibility <a class="direct-link" href="#accessibility">#</a></h2>
+<h3 id="best-practices-approach">Best Practices Approach <a class="direct-link" href="#best-practices-approach">#</a></h3>
+<p>Figuration attempts to take a best practices approach to providing as much accessibility and usability to the widgets.</p>
+<p>All widgets take into account keyboard, mouse, and touch navigation methods where possible to provide usability across a wide array of platforms.  In come cases functionality is forced on or off depending on the presence of touch devices.</p>
+<h3 id="automatic-attribute-generation">Automatic Attribute Generation <a class="direct-link" href="#automatic-attribute-generation">#</a></h3>
+<p>To provide screen readers with high levels of accessibility the widgets will automatically generate the neccessary <code>id</code>, <code>tabindex</code>, <code>role</code>, and <code>aria-*</code> attributes that best fit the functionality.  If an <code>id</code> is already provided the widgets will keep the existing one and use it accordingly.</p>
+<p>This was done to alleviate the complexity of any generated source code—the data api adds enough on its own—and remove concerns over which attributes are needed for the developers and content authors.</p>
+<div class="cf-callout cf-callout-warning">
+<p class="h5"><code>role</code> Attributes on Container Items</p>
+<p>Container items at a higher level from a widget component might need to have a <code>role</code> specificied.  These are not handled by the widget code and will need to be used as needed.</p>
+</div>
+
+    </main>
+  </div>
+
+  <div class="toplink">
+    <a href="#content">Top of Page <span class="caret"></span></a>
+  </div>
+</div>
+<footer class="cf-footer fs-small py-1">
+  <div class="container">
+    <ul class="list list-horizontal font-weight-bold">
+      <li class="pe-0_5"><a href="/about/overview/">About <span class="sr-only">Figuration</span></a></li>
+      <li class="px-0_5"><a href="https://github.com/cast-org/figuration">GitHub</a></li>
+      <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
+    </ul>
+    <p>
+      <strong>Latest version:</strong> 4.0.0-beta.2
+      <br>
+      &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
+      <br>
+      Portions: &copy; 2011-2020 the Bootstrap Authors and Twitter, Inc. Licensed under <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE">the MIT license</a> or <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+    </p>
+    <p>
+      Code licensed <a rel="license" href="https://github.com/cast-org/figuration/blob/master/LICENSE">MIT</a>,
+      docs <a rel="license" href="https://github.com/cast-org/figuration/blob/master/site/LICENSE">CC BY 4.0</a>.
+    </p>
+
+    <div class="border-t pt-1">
+      <p class="font-weight-bold mb-0_25">Funding generously provided by:</p>
+      <div class="row">
+        <div class="media col">
+          <div class="d-flex me-0_5">
+            <img src="/assets/aem/aem-logo.png" width="40" height="40" alt="AEM logo" />
+          </div>
+          <div class="media-body">
+            <span class="font-weight-bold"><a href="http://aem.cast.org/">National Center on Accessible Educational Materials at CAST, Inc.</a></span><br />
+            <small>Disclaimer: This does not necessarily represent endorsement by or the policies of the National Center on Accessible Educational Materials, the US Department of Education, and the US Federal Government.</small>
+          </div>
+        </div>
+        <div class="col-md-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 119 37" focusable="false" role="img"  width="9.645rem" height="3rem">
+  <title>CAST</title>
+  <path fill="currentColor" d="M17.83 36.48c-.013 0-.025-.003-.032-.003 0 0-.006 0 .01-2.31l.023-3.223s.016-2.31-2.294-2.326L5.36 28.547s-2.31-.016-3.283-1.463C1.103 25.636-.026 22.148 0 18.396.07 8.49 8.143.518 15.73.554c0 0 2.309.012 2.293 2.321L18 6.277s-.016 2.31 2.294 2.326l10.373.073s2.31.016 3.247 1.445c.937 1.43 2.021 4.851 1.995 8.526-.068 9.918-8.164 17.902-18.08 17.833m.057-8.037c5.43.038 9.865-4.335 9.902-9.767.038-5.432-4.334-9.867-9.765-9.905-5.431-.038-9.865 4.335-9.903 9.767-.037 5.432 4.335 9.867 9.766 9.905"/>
+  <path fill="currentColor" d="M60.73 24.958c-2.246 2.8-5.195 4.2-8.85 4.2-1.53 0-2.93-.258-4.2-.774-1.272-.516-2.36-1.231-3.263-2.145-.904-.914-1.609-2.006-2.115-3.277-.507-1.272-.76-2.671-.76-4.201 0-1.51.248-2.906.745-4.186a9.853 9.853 0 0 1 2.115-3.337 9.621 9.621 0 0 1 3.278-2.205c1.27-.526 2.67-.79 4.2-.79 1.729 0 3.327.288 4.798.864 1.469.577 2.71 1.579 3.723 3.01l-3.485 3.515a6.688 6.688 0 0 0-1.996-1.817c-.776-.457-1.66-.685-2.653-.685-.833 0-1.578.139-2.234.416a4.622 4.622 0 0 0-1.654 1.163 5.197 5.197 0 0 0-1.027 1.743 6.362 6.362 0 0 0-.358 2.16c0 .794.124 1.53.373 2.204.248.676.6 1.262 1.058 1.758a4.786 4.786 0 0 0 1.653 1.162c.645.278 1.365.417 2.16.417 1.152 0 2.09-.203 2.815-.61.725-.408 1.435-1.048 2.13-1.922l3.546 3.337zM73.301 20.697l-2.204-7.3-2.294 7.3h4.498zM68.267 8.78h6.047l7.032 19.872h-5.69l-1.281-4.111H67.73l-1.311 4.111h-5.453l7.3-19.872zM85.025 22.366c.556.556 1.281 1.062 2.175 1.52.894.456 1.877.684 2.95.684.257 0 .526-.024.804-.074.278-.05.526-.134.745-.253.218-.12.397-.278.536-.477.14-.199.209-.457.209-.774 0-.517-.263-.944-.79-1.282-.526-.337-1.296-.675-2.309-1.013l-1.102-.358a12.649 12.649 0 0 1-1.862-.774 7.71 7.71 0 0 1-1.683-1.147 5.387 5.387 0 0 1-1.207-1.58c-.308-.605-.462-1.315-.462-2.13 0-.913.168-1.762.507-2.547a5.894 5.894 0 0 1 1.475-2.055c.644-.586 1.444-1.044 2.398-1.371.953-.328 2.056-.492 3.307-.492.973 0 1.857.09 2.652.268.793.18 1.49.398 2.085.656a8.246 8.246 0 0 1 1.52.834c.416.298.734.566.953.804l-2.681 3.397a10.956 10.956 0 0 0-2.176-1.266 5.77 5.77 0 0 0-2.324-.492c-.258 0-.516.03-.774.09-.258.059-.492.148-.7.268-.209.119-.378.273-.506.461-.13.19-.194.423-.194.7 0 .298.074.557.223.775.149.219.352.407.611.566.258.16.57.304.938.433s.76.263 1.178.401l.953.299c.675.218 1.36.471 2.056.76.695.288 1.32.675 1.877 1.162a5.774 5.774 0 0 1 1.37 1.817c.358.725.536 1.614.536 2.666 0 .914-.214 1.758-.64 2.533a6.372 6.372 0 0 1-1.729 1.996c-.725.556-1.578.988-2.562 1.296-.983.308-2.03.462-3.143.462-1.986 0-3.65-.264-4.99-.79-1.34-.526-2.479-1.236-3.412-2.13l3.188-3.843zM105.669 13.398H99.56V8.779h17.49v4.619H111v15.254h-5.332z"/>
+</svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+(function () {
+    'use strict';
+
+    if (!window.docsearch) {
+        return;
+    }
+
+    var inputElement = document.getElementById('docsearch');
+    var siteDocsVersion = inputElement.getAttribute('data-docs-version');
+
+    window.docsearch({
+        apiKey: '3b9b6e000775400f4833a14c4daa6049',
+        indexName: 'figuration',
+        inputSelector: '#docsearch',
+        algoliaOptions: {
+            facetFilters: ['version:' + siteDocsVersion]
+        },
+        transformData: function (hits) {
+            return hits.map(function (hit) {
+                // Prevent jumping to first header
+                if (hit.anchor === 'content') {
+                    hit.url = hit.url.replace(/#content$/, '');
+                    hit.anchor = null;
+                }
+                return hit;
+            });
+        },
+        // Set debug to true if you want to inspect the dropdown
+        debug: true
+    });
+}());
+</script>
+
+</body>
+</html>
