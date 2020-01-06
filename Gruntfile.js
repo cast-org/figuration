@@ -341,7 +341,7 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['clean:dist', 'test', 'docs-test-html']);
 
     // Test
-    grunt.registerTask('test', ['dist-css', 'dist-js', 'test-css', 'test-js', 'docs-test']);
+    grunt.registerTask('test', ['dist-css', 'dist-js', 'docs-dist', 'test-css', 'test-js', 'docs-test']);
     grunt.registerTask('test-css', ['stylelint:core', 'run:npmCssLintVarsCore']);
     grunt.registerTask('test-html', ['htmllint:test']);
 
@@ -361,7 +361,7 @@ module.exports = function(grunt) {
     grunt.registerTask('dist-js', ['concat', 'uglify:core']);
 
     // Full distribution
-    grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js']);
+    grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js', 'docs-dist']);
 
     // Docs tasks
     grunt.registerTask('docs-test-html', ['run:npmDocsBuild', 'htmllint:docs', 'run:npmLinkinator']);
