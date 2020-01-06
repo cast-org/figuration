@@ -11,11 +11,13 @@
 <nav id="cf-links-nav" class="cf-links collapse" aria-label="Page">
   <ul class="list-unstyled">
     {% for navgroup in nav -%}
+    {%- assign active_sect = nil -%}
     {%- assign current_sect = nil -%}
     {%- assign group_slug = navgroup.title | slug -%}
     {%- assign first_slug = navgroup.pages[0].title | slug -%}
     {%- assign page_count = navgroup.pages | size -%}
     {% if group == group_slug %}
+      {%- assign active_sect = ' active-section' -%}
       {%- assign current_sect = ' <span class="sr-only">(current section)</span>' -%}
     {%- endif -%}
     <li class="mb-0_25{% if page_count > 0 %} has-children{% endif %}">
@@ -26,7 +28,7 @@
       {%- endif -%}
         <span class="nav-link-inner">
           {%- if page_count > 0 -%}<span class="caret" aria-hidden="true"></span>{%- endif -%}
-          <span class="cf-sidebar-header-title">{{- navgroup.title -}}</span>
+          <span class="cf-sidebar-header-title{{ active_sect }}">{{- navgroup.title -}}</span>
           {{- current_sect -}}
         </span>
       </a>
@@ -34,17 +36,17 @@
         <ul class="nav flex-column mb-0 pb-0_25">
           {% for doc in navgroup.pages %}
             {%- assign doc_slug = doc.title | slug -%}
-            {%- assign active = nil -%}
+            {%- assign active_page = nil -%}
             {%- assign current_page = nil -%}
             {%- if doc_slug == page_slug and group == group_slug-%}
-              {%- assign active = 'active' -%}
+              {%- assign active_page = ' active' -%}
               {%- assign current_page = ' <span class="sr-only">(current page)</span>' -%}
             {%- endif -%}
             <li class="nav-item">
               {%- if group_slug == 'about' -%}
-                <a href="{{ site.path }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link {{ active }}"><span class="nav-link-inner">{{ doc.title }}{{ current_page }}</span></a>
+                <a href="{{ site.path }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link{{ active_page }}"><span class="nav-link-inner">{{ doc.title }}{{ current_page }}</span></a>
               {%- else -%}
-                <a href="{{ site.path }}{{ pathVersion }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link {{ active }}"><span class="nav-link-inner">{{ doc.title }} {{ current }}</span></a>
+                <a href="{{ site.path }}{{ pathVersion }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link{{ active_page }}"><span class="nav-link-inner">{{ doc.title }}{{ current_page }}</span></a>
               {%- endif -%}
             </li>
           {% endfor -%}
