@@ -3,7 +3,7 @@ module.exports = [
     "set": "Latest",
     "versions": [
       {
-        "ver": "v4.0.0-beta.1",
+        "ver": "v4.0.0-beta.2",
         "path": "4.0"
       }
     ]

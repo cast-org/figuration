@@ -85,6 +85,7 @@ function main(args) {
     var EXCLUDED_DIRS = new Set([
         '.git',
         '_gh_pages',
+        '_siteout',
         'node_modules',
         'vendor'
     ]);
