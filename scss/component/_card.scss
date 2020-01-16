@@ -206,35 +206,35 @@
                 // Skip smallest breakpoint
                 @if breakpoint-min($breakpoint, $grid-breakpoints) != null {
                     @include media-breakpoint-down($prev) {
+                        %card-hz-col-reset-top-#{$bprule} {
+                            @include border-top-radius(0);
+                        }
+                        %card-hz-col-reset-bottom-#{$bprule} {
+                            @include border-bottom-radius(0);
+                        }
                         .card-horizontal#{$bprule},
                         .card-horizontal#{$bprule}-reverse {
                             > .card-col:not(:first-child) {
-                                %card-hz-col-not-first-down#{$bprule} {
-                                    @include border-top-radius(0);
-                                }
                                 @if $enable-card-header {
-                                    > .card-header {
-                                        @extend %card-hz-col-not-first-down#{$bprule};
+                                    .card-header {
+                                        @extend %card-hz-col-reset-top-#{$bprule};
                                     }
                                 }
                                 @if $enable-card-img {
-                                    > .card-img-top {
-                                        @extend %card-hz-col-not-first-down#{$bprule};
+                                    .card-img-top {
+                                        @extend %card-hz-col-reset-top-#{$bprule};
                                     }
                                 }
                             }
                             > .card-col:not(:last-child) {
-                                %card-hz-col-not-last-down#{$bprule} {
-                                    @include border-bottom-radius(0);
-                                }
                                 @if $enable-card-footer {
-                                    > .card-footer {
-                                        @extend %card-hz-col-not-last-down#{$bprule};
+                                    .card-footer {
+                                        @extend %card-hz-col-reset-bottom-#{$bprule};
                                     }
                                 }
                                 @if $enable-card-img {
-                                    > .card-img-bottom {
-                                        @extend %card-hz-col-not-last-down#{$bprule};
+                                    .card-img-bottom {
+                                        @extend %card-hz-col-reset-bottom-#{$bprule};
                                     }
                                 }
                             }
@@ -243,123 +243,98 @@
                 }
 
                 @include media-breakpoint-up($breakpoint) {
+                    %card-hz-reset-top-start-#{$bprule} {
+                        @include border-top-start-radius(0);
+                    }
+                    %card-hz-reset-bottom-start-#{$bprule} {
+                        @include border-bottom-start-radius(0);
+                    }
+                    %card-hz-reset-top-end-#{$bprule} {
+                        @include border-top-end-radius(0);
+                    }
+                    %card-hz-reset-bottom-end-#{$bprule} {
+                        @include border-bottom-end-radius(0);
+                    }
                     .card-horizontal#{$bprule} {
                         > .card-col:not(:first-child) {
-                            %card-hz-col-not-first-top-start-up#{$bprule} {
-                                @include border-top-start-radius(0);
-                            }
                             @if $enable-card-header {
-                                > .card-header {
-                                    @extend %card-hz-col-not-first-top-start-up#{$bprule};
+                                .card-header {
+                                    @extend %card-hz-reset-top-start-#{$bprule};
                                 }
-                            }
-                            @if $enable-card-img {
-                                > .card-img-top {
-                                    @extend %card-hz-col-not-first-top-start-up#{$bprule};
-                                }
-                            }
-
-                            %card-hz-col-not-first-bottom-start-up#{$bprule} {
-                                @include border-bottom-start-radius(0);
                             }
                             @if $enable-card-footer {
-                                > .card-footer {
-                                    @extend %card-hz-col-not-first-bottom-start-up#{$bprule};
+                                .card-footer {
+                                    @extend %card-hz-reset-bottom-start-#{$bprule};
                                 }
                             }
                             @if $enable-card-img {
-                                > .card-img-bottom {
-                                    @extend %card-hz-col-not-first-bottom-start-up#{$bprule};
+                                .card-img-top {
+                                    @extend %card-hz-reset-top-start-#{$bprule};
+                                }
+                                .card-img-bottom {
+                                    @extend %card-hz-reset-bottom-start-#{$bprule};
                                 }
                             }
                         }
                         > .card-col:not(:last-child) {
-                            %card-hz-col-not-last-top-end-up#{$bprule} {
-                                @include border-top-end-radius(0);
-                            }
                             @if $enable-card-header {
-                                > .card-header {
-                                    @extend %card-hz-col-not-last-top-end-up#{$bprule};
+                                .card-header {
+                                    @extend %card-hz-reset-top-end-#{$bprule};
                                 }
-                            }
-                            @if $enable-card-img {
-                                > .card-img-top {
-                                    @extend %card-hz-col-not-last-top-end-up#{$bprule};
-                                }
-                            }
-
-                            %card-hz-col-not-last-bottom-end-up#{$bprule} {
-                                @include border-bottom-end-radius(0);
                             }
                             @if $enable-card-footer {
-                                > .card-footer {
-                                    @extend %card-hz-col-not-last-bottom-end-up#{$bprule};
+                                .card-footer {
+                                    @extend %card-hz-reset-bottom-end-#{$bprule};
                                 }
                             }
                             @if $enable-card-img {
-                                > .card-img-bottom {
-                                    @extend %card-hz-col-not-last-bottom-end-up#{$bprule};
+                                .card-img-top {
+                                    @extend %card-hz-reset-top-end-#{$bprule};
+                                }
+                                .card-img-bottom {
+                                    @extend %card-hz-reset-bottom-end-#{$bprule};
                                 }
                             }
                         }
                     }
-
                     .card-horizontal#{$bprule}-reverse {
                         > .card-col:not(:first-child) {
-                            %card-hzrev-col-not-first-top-end-up#{$bprule} {
-                                @include border-top-end-radius(0);
-                            }
                             @if $enable-card-header {
-                                > .card-header{
-                                    @extend %card-hzrev-col-not-first-top-end-up#{$bprule};
+                                .card-header {
+                                    @extend %card-hz-reset-top-end-#{$bprule};
                                 }
-                            }
-                            @if $enable-card-img {
-                                > .card-img-top {
-                                    @extend %card-hzrev-col-not-first-top-end-up#{$bprule};
-                                }
-                            }
-
-                            %card-hzrev-col-not-first-bottom-end-up#{$bprule} {
-                                @include border-bottom-end-radius(0);
                             }
                             @if $enable-card-footer {
-                                > .card-footer {
-                                    @extend %card-hzrev-col-not-first-bottom-end-up#{$bprule};
+                                .card-footer {
+                                    @extend %card-hz-reset-bottom-end-#{$bprule};
                                 }
                             }
                             @if $enable-card-img {
-                                > .card-img-bottom {
-                                    @extend %card-hzrev-col-not-first-bottom-end-up#{$bprule};
+                                .card-img-top {
+                                    @extend %card-hz-reset-top-end-#{$bprule};
+                                }
+                                .card-img-bottom {
+                                    @extend %card-hz-reset-bottom-end-#{$bprule};
                                 }
                             }
                         }
                         > .card-col:not(:last-child) {
-                            %card-hzrev-col-not-last-top-start-up#{$bprule} {
-                                @include border-top-start-radius(0);
-                            }
                             @if $enable-card-header {
-                                > .card-header {
-                                    @extend %card-hzrev-col-not-last-top-start-up#{$bprule};
+                                .card-header {
+                                    @extend %card-hz-reset-top-start-#{$bprule};
                                 }
-                            }
-                            @if $enable-card-img {
-                                > .card-img-top {
-                                    @extend %card-hzrev-col-not-last-top-start-up#{$bprule};
-                                }
-                            }
-
-                            %card-hzrev-col-not-last-bottom-start-up#{$bprule} {
-                                @include border-bottom-start-radius(0);
                             }
                             @if $enable-card-footer {
-                                > .card-footer {
-                                    @extend %card-hzrev-col-not-last-bottom-start-up#{$bprule};
+                                .card-footer {
+                                    @extend %card-hz-reset-bottom-start-#{$bprule};
                                 }
                             }
                             @if $enable-card-img {
-                                > .card-img-bottom {
-                                    @extend %card-hzrev-col-not-last-bottom-start-up#{$bprule};
+                                .card-img-top {
+                                    @extend %card-hz-reset-top-start-#{$bprule};
+                                }
+                                .card-img-bottom {
+                                    @extend %card-hz-reset-bottom-start-#{$bprule};
                                 }
                             }
                         }
