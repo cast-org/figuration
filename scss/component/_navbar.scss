@@ -15,7 +15,7 @@
             > .container,
             > .container-fluid {
                 display: flex;
-                flex-wrap: wrap;
+                flex-wrap: inherit;
                 align-items: center;
             }
         }
@@ -161,7 +161,7 @@
                 }
 
                 @include media-breakpoint-up($bp) {
-                    flex-flow: row nowrap;
+                    flex-wrap: nowrap;
                     justify-content: flex-start;
 
                     @if $enable-navbar-nav {
@@ -179,14 +179,6 @@
                                 padding-right: $navbar-item-padding-x;
                                 padding-left: $navbar-item-padding-x;
                             }
-                        }
-                    }
-
-                    // For nesting containers, have to redeclare for alignment purposes
-                    @if $enable-grid-classes {
-                        > .container,
-                        > .container-fluid {
-                            flex-wrap: nowrap;
                         }
                     }
 
