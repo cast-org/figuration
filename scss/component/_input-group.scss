@@ -16,6 +16,15 @@
             margin-bottom: 0;
             margin-left: -$input-border-width;
 
+            // Add width 1% and flex-basis auto to ensure proper sizing in IE
+            // when inline or auto-sizing column.
+            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                & {
+                    flex-basis: auto;
+                    width: 1%;
+                }
+            }
+
             &:first-child {
                 margin-left: 0;
             }
