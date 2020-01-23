@@ -24,11 +24,27 @@
                     hit.url = hit.url.replace(/#content$/, '');
                     hit.anchor = null;
                 }
+                // Remove anchor symbols
+                if (hit.hierarchy.lvl2 !== null) {
+                    hit._highlightResult.hierarchy.lvl2.value = hit._highlightResult.hierarchy.lvl2.value.replace(/\s.#$/, '');
+                }
+                if (hit.hierarchy.lvl3 !== null) {
+                    hit._highlightResult.hierarchy.lvl3.value = hit._highlightResult.hierarchy.lvl3.value.replace(/\s.#$/, '');
+                }
+                if (hit.hierarchy.lvl4 !== null) {
+                    hit._highlightResult.hierarchy.lvl4.value = hit._highlightResult.hierarchy.lvl4.value.replace(/\s.#$/, '');
+                }
+                if (hit.hierarchy.lvl5 !== null) {
+                    hit._highlightResult.hierarchy.lvl5.value = hit._highlightResult.hierarchy.lvl5.value.replace(/\s.#$/, '');
+                }
+                if (hit.hierarchy.lvl6 !== null) {
+                    hit._highlightResult.hierarchy.lvl6.value = hit._highlightResult.hierarchy.lvl6.value.replace(/\s.#$/, '');
+                }
                 return hit;
             });
         },
         // Set debug to true if you want to inspect the dropdown
-        debug: true
+        debug: false
     });
 }());
 </script>
