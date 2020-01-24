@@ -95,12 +95,6 @@ module.exports = function(grunt) {
                 config: '.eslintrc.json',
                 reportUnusedDisableDirectives: 'true'
             },
-            grunt: {
-                options: {
-                    config: 'grunt/.eslintrc.json'
-                },
-                src: ['Gruntfile.js', 'grunt/*.js']
-            },
             build: {
                 options: {
                     config: 'build/.eslintrc.json'
@@ -346,7 +340,7 @@ module.exports = function(grunt) {
     grunt.registerTask('test-html', ['htmllint:test']);
 
     // Test - JS subtasks
-    var jsTestTasks = ['eslint:core', 'eslint:test', 'eslint:grunt', 'eslint:build'];
+    var jsTestTasks = ['eslint:core', 'eslint:test', 'eslint:build'];
     if (saucekey !== null && process.env.TEST_SAUCE === 'true') {
         jsTestTasks.push('run:npmJsTestCloud');
     } else {
