@@ -7,9 +7,11 @@
   "parserOptions": {
     "sourceType": "script"
   },
+  "extends": "../.eslintrc.json",
   "rules": {
+    "func-style": "off",
     "no-magic-numbers": "off",
+    "no-process-exit": "off",
     "strict": "off"
-  },
-  "extends": "../.eslintrc.json"
+  }
 }
