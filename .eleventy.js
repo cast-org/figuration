@@ -118,6 +118,7 @@ module.exports = function(eleventyConfig) {
 
     // BrowserSync configuration and 404 page
     eleventyConfig.setBrowserSyncConfig({
+        ghostMode: false,
         notify: true,
         callbacks: {
             ready: function(err, browserSync) {
