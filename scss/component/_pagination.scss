@@ -6,6 +6,10 @@
         list-style: none;
     }
 
+    .page-item {
+        display: flex;
+    }
+
     .page-text,
     .page-link {
         display: inline-flex;
@@ -89,6 +93,8 @@
             }
 
             .page-item {
+                margin: 0;
+
                 &:not(:first-child) {
                     .page-text,
                     .page-link {
