@@ -2706,12 +2706,18 @@ if (typeof jQuery === 'undefined') {
                 $selfRef.$element.attr('aria-describedby', $selfRef.targetID);
             }
 
+            this._showExt();
+
             if (!this.activate) {
                 this.$element.CFW_trigger('afterShow.cfw.' + this.type);
             }
             this.activate = false;
 
             if (prevHoverState === 'out') { this.leave(); }
+        },
+
+        _showExt : function() {
+            // intentionally empty - show complete extend
         },
 
         _hideComplete : function() {
@@ -2763,7 +2769,13 @@ if (typeof jQuery === 'undefined') {
                 this.popper.destroy();
             }
 
+            this._hideExt();
+
             this.$element.CFW_trigger('afterHide.cfw.' + this.type);
+        },
+
+        _hideExt : function() {
+            // intentionally empty - hide complete extend
         },
 
         _removeDynamicTip : function() {
@@ -3169,6 +3181,11 @@ if (typeof jQuery === 'undefined') {
                 .off('resize.cfw.' + $selfRef.type + '.' + $selfRef.instance)
                 .on('resize.cfw.' + $selfRef.type + '.' + $selfRef.instance, function() {
                     var offset = $selfRef.$target.offset();
+                    if ($selfRef._isFixed()) {
+                        var compStyle = window.getComputedStyle($selfRef.$target[0]);
+                        offset.top = parseInt(compStyle.top, 10);
+                        offset.left = parseInt(compStyle.left, 10);
+                    }
                     $selfRef.locateDragTip(offset.top, offset.left);
                 });
         });
@@ -3214,6 +3231,13 @@ if (typeof jQuery === 'undefined') {
                 var nodeOffset = $selfRef.$target.offset();
                 var offsetY = Math.round(nodeOffset.top);
                 var offsetX = Math.round(nodeOffset.left);
+
+                // If popover is 'fixed' position, use the current coords
+                if ($selfRef._isFixed()) {
+                    var compStyle = window.getComputedStyle($selfRef.$target[0]);
+                    offsetY = parseInt(compStyle.top, 10);
+                    offsetX = parseInt(compStyle.left, 10);
+                }
 
                 // Revise offset
                 var step = $selfRef.settings.dragstep;
@@ -3272,23 +3296,25 @@ if (typeof jQuery === 'undefined') {
     };
 
     CFW_Widget_Popover.prototype.viewportDragLimit = function() {
-        var viewport = this._getViewport();
-        var $viewport = null;
-
-        if (viewport === 'scrollParent') {
-            viewport = this.getScrollParent(this.$target[0]);
-        }
-        if (viewport === 'window' || viewport === window) {
-            $viewport = this.getOwnerBody(this.$target[0]);
-        }
-
-        $viewport = $(viewport);
-        if (!$viewport.length) {
-            $viewport = $(document.body);
-        }
+        var limit = {};
+        var $viewport = this._getDragViewport();
 
         var scrollbarWidth = this.viewportScrollbarWidth($viewport);
-        var limit = $viewport.offset();
+        limit = $viewport.offset();
+
+        // If popover is 'fixed' position
+        if (this._isFixed()) {
+            var rect = $viewport[0].getBoundingClientRect();
+            limit.top = rect.top;
+            limit.bottom = rect.bottom;
+
+            // Use window and update limits if drag viewport is body
+            if ($viewport.is('body')) {
+                $viewport = $(window);
+                limit.top = rect.top + window.pageYOffset;
+                limit.left = rect.left + window.pageXOffset;
+            }
+        }
 
         limit.bottom = limit.top + $viewport.outerHeight();
         limit.right = limit.left + $viewport.outerWidth() - scrollbarWidth;
@@ -3341,6 +3367,18 @@ if (typeof jQuery === 'undefined') {
         $.fn.CFW_Tooltip.Constructor.prototype.hide.call(this, force);
     };
 
+    CFW_Widget_Popover.prototype._showExt = function() {
+        if (this.$target.find('[data-cfw-drag="' + this.type + '"]').length && this._isFixed()) {
+            this._handleFixedDragScroll();
+        }
+    };
+
+    CFW_Widget_Popover.prototype._hideExt = function() {
+        $(window)
+            .off('resize.cfw.' + this.type + '.' + this.instance)
+            .off('scroll.cfw.' + this.type + '.' + this.instance);
+    };
+
     CFW_Widget_Popover.prototype._removeDynamicTipExt = function() {
         this.$target.detach();
         this.$target = null;
@@ -3377,6 +3415,45 @@ if (typeof jQuery === 'undefined') {
         this.docAdded = null;
         this.keyTimer = null;
         this.keyDelay = null;
+    };
+
+    CFW_Widget_Popover.prototype._getDragViewport = function() {
+        var viewport = this._getViewport();
+        var $viewport = null;
+
+        if (viewport === 'scrollParent') {
+            viewport = this.getScrollParent(this.$target[0]);
+        }
+        if (viewport === 'window' || viewport === window) {
+            viewport = this.getOwnerBody(this.$target[0]);
+        }
+
+        $viewport = $(viewport);
+        if (!$viewport.length) {
+            $viewport = $(document.body);
+        }
+
+        return $viewport;
+    };
+
+    CFW_Widget_Popover.prototype._isFixed = function() {
+        var compStyle = window.getComputedStyle(this.$target[0]);
+        return /^(fixed)$/.test(compStyle.position);
+    };
+
+    CFW_Widget_Popover.prototype._doFixedDragScroll = function() {
+        var offset = this.$target.offset();
+        this.locateDragTip(offset.top, offset.left);
+    };
+
+    CFW_Widget_Popover.prototype._handleFixedDragScroll = function() {
+        var $viewport = this._getDragViewport();
+
+        $(window).off('scroll.cfw.' + this.type + '.' + this.instance);
+
+        if (!$viewport.is('body')) {
+            $(window).on('scroll.cfw.' + this.type + '.' + this.instance, this._doFixedDragScroll.bind(this));
+        }
     };
 
     var Plugin = function(option) {

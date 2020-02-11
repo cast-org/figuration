@@ -4109,6 +4109,10 @@ button.list-item-action {
   list-style: none;
 }
 
+.page-item {
+  display: flex;
+}
+
 .page-text,
 .page-link {
   display: inline-flex;
@@ -4192,6 +4196,10 @@ a.page-link {
 .pagination-group .page-text,
 .pagination-group .page-link {
   border-width: 1px;
+}
+
+.pagination-group .page-item {
+  margin: 0;
 }
 
 .pagination-group .page-item:not(:first-child) .page-text,

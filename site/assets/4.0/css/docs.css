@@ -870,11 +870,6 @@ pre[class*="language-"] {
   }
 }
 
-.cf-example .pagination {
-  margin-top: .5rem;
-  margin-bottom: .5rem;
-}
-
 .cf-example > .progress + .progress,
 .cf-example > .progress + .btn {
   margin-top: 1rem;
