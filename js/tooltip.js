@@ -680,12 +680,18 @@
                 $selfRef.$element.attr('aria-describedby', $selfRef.targetID);
             }
 
+            this._showExt();
+
             if (!this.activate) {
                 this.$element.CFW_trigger('afterShow.cfw.' + this.type);
             }
             this.activate = false;
 
             if (prevHoverState === 'out') { this.leave(); }
+        },
+
+        _showExt : function() {
+            // intentionally empty - show complete extend
         },
 
         _hideComplete : function() {
@@ -737,7 +743,13 @@
                 this.popper.destroy();
             }
 
+            this._hideExt();
+
             this.$element.CFW_trigger('afterHide.cfw.' + this.type);
+        },
+
+        _hideExt : function() {
+            // intentionally empty - hide complete extend
         },
 
         _removeDynamicTip : function() {

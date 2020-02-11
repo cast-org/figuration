@@ -117,6 +117,13 @@ $(window).ready(function() {
     left: 120px;
 }
 
+.container-viewport .btn-drag-fixed {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+
 .well {
   min-height: 20px;
   padding: 19px;
@@ -743,6 +750,8 @@ $(window).ready(function() {
                 <button class="btn popover-viewport-right btn-bottom" title="This should be shifted up">Shift Up</button>
 
                 <button class="btn popover-viewport-drag btn-drag" title="This should be confined to the viewport box">Drag Test (click)</button>
+
+                <button class="btn popover-viewport-drag-fixed btn-drag-fixed" title="This should be confined to the viewport box">Fixed Drag</button>
             </div>
             <script type="text/javascript">
                 $('.popover-viewport-right').CFW_Popover({
@@ -762,8 +771,31 @@ $(window).ready(function() {
                     viewport: '#viewport-popover',
                     padding: 2
                 });
+                $('.popover-viewport-drag-fixed').CFW_Popover({
+                    placement: 'reverse',
+                    drag: true,
+                    viewport: '#viewport-popover',
+                    popperConfig: {
+                        positionFixed: true,
+                        computeStyle: {
+                            gpuAcceleration: false
+                        }
+                    }
+                });
             </script>
 
+            <div class="mb-1">
+                <button class="btn popover-drag-fixed btn-secondary" title="This should be confined to the body">Fixed Drag</button>
+                <script>
+                $('.popover-drag-fixed').CFW_Popover({
+                    drag: true,
+                    popperConfig: {
+                        positionFixed: true,
+                        eventsEnabled: false
+                    }
+                });
+                </script>
+            </div>
 
             <div class="mb-1">
                 <button type="button" class="btn btn-info" id="pop_manual" data-cfw="popover" data-cfw-popover-trigger="manual" data-cfw-popover-target="#popman" data-cfw-popover-drag=true>Popover Manual</button>
