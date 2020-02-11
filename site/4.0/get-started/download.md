@@ -20,7 +20,7 @@ ${toc}
             Download just the compiled and minified CSS and JavaScript. Doesn't include any documentation or original source files.
         </div>
         <div class="card-footer text-sm-center">
-            <a href="{{ site.download.dist }}" class="btn btn-info" onclick="ga('send', 'event', 'Get Started', 'Download', 'Download compiled {{ site.version.docs }}');">Download Figuration</a>
+            <a href="{{ site.download.dist }}" class="btn btn-info" onclick="ga('send', 'event', 'Get Started', 'Download', 'Download compiled {{ version.current }}');">Download Figuration</a>
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@ ${toc}
             Download everything: source Sass, JavaScript, and documentation files. <strong>Requires a Sass compiler, <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, <a href="https://github.com/luisrudge/postcss-flexbugs-fixes">postcss-flexbugs-fixes</a>, <a href="https://github.com/postcss/postcss-calc">postcss-calc</a>, and <a href="{{ site.path }}/{{ version.docs }}/get-started/build-tools/#tooling-setup">some setup</a>.</strong>
         </div>
         <div class="card-footer text-sm-center">
-            <a href="{{ site.download.source }}" class="btn" onclick="ga('send', 'event', 'Get Started', 'Download', 'Download source {{ site.version.docs }}');">Download source</a>
+            <a href="{{ site.download.source }}" class="btn" onclick="ga('send', 'event', 'Get Started', 'Download', 'Download source {{ version.current }}');">Download source</a>
         </div>
       </div>
     </div>
