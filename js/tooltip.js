@@ -859,7 +859,8 @@
                 }
             };
 
-            var returnConfig = $.extend({}, defaultConfig, this.settings.popperConfig);
+            // Use deep merge
+            var returnConfig = $.extend(true, defaultConfig, this.settings.popperConfig);
             return returnConfig;
         },
 
