@@ -37,7 +37,6 @@ matrix:
         - node_js: "12"
           env: TEST_SAUCE="true"
           addons:
-            hostname: lh
             sauce_connect:
               enabled: true
               tunnel_domains: lh
