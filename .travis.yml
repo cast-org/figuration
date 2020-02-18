@@ -1,6 +1,5 @@
 ﻿addons:
   chrome: stable
-  hostname: lh
   hosts:
     - lh
 
@@ -38,5 +37,6 @@ matrix:
         - node_js: "12"
           env: TEST_SAUCE="true"
           addons:
+            hostname: lh
             sauce_connect:
               tunnel_domains: lh
