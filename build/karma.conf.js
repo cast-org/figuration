@@ -86,7 +86,6 @@ const proxies = {
 
 const conf = {
     basePath: '..',
-    hostname: 'lh',
     port: 9876,
     colors: true,
     autoWatch: false,
