@@ -95,6 +95,13 @@ $(window).ready(function() {
     left: 50px;
     font-weight: bold;
 }
+.container-viewport-scroll {
+    overflow: auto;
+}
+.container-viewport-scroll .viewport-text {
+    height: 300px;
+}
+
 .container-viewport .tooltip,
 .container-viewport .popover {
   min-width: 250px;
@@ -739,6 +746,24 @@ $(window).ready(function() {
                 <div class="card" style="width: 25%;" id="card-popover"></div>
                 <button type="button" class="btn btn-info" title="Yay, you clicked me!" data-cfw="popover" data-cfw-popover-content="blah" data-cfw-popover-container="#card-popover">Popover Custom Placement</button>
             </div>
+
+            <div class="container-viewport container-viewport-scroll" id="viewport-popover-scroll">
+                <p class="viewport-text">Test viewport constraints for popovers.</p>
+                <button class="btn popover-viewport-drag-fixed-scroll btn-drag-fixed" title="This should be confined to the viewport box">Fixed Drag</button>
+            </div>
+            <script>
+                $('.popover-viewport-drag-fixed-scroll').CFW_Popover({
+                    placement: 'reverse',
+                    drag: true,
+                    viewport: '#viewport-popover-scroll',
+                    popperConfig: {
+                        positionFixed: true,
+                        computeStyle: {
+                            gpuAcceleration: false
+                        }
+                    }
+                });
+            </script>
 
             <div class="container-viewport" id="viewport-popover">
                 <p class="viewport-text">Test viewport constraints for popovers.</p>
