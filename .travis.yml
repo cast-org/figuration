@@ -38,5 +38,4 @@ matrix:
           env: TEST_SAUCE="true"
           addons:
             sauce_connect:
-              enabled: true
               tunnel_domains: lh
