@@ -40,4 +40,4 @@ matrix:
             hostname: lh
             sauce_connect:
               enabled: true
-              tunnel_domains: lh, localhost
+              tunnel_domains: lh
