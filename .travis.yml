@@ -1,5 +1,6 @@
 ﻿addons:
   chrome: stable
+  hostname: lh
   hosts:
     - lh
 
