@@ -36,8 +36,6 @@ matrix:
     exclude:
         - node_js: "12"
           env: TEST_SAUCE="false"
-          addons:
-            sauce_connect: false
     include:
         - node_js: "12"
           env: TEST_SAUCE="true"
