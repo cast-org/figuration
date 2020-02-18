@@ -37,3 +37,5 @@ matrix:
           addons:
             sauce_connect: true
             tunnel_domains: lh
+          hosts:
+            - lh
