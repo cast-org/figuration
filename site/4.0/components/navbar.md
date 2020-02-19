@@ -22,6 +22,7 @@ Here's what you need to know before getting started with the navbar:
 - Navbars and their contents are built with flexbox, providing easy alignment options via [flexbox utility]({{ site.path }}/{{ version.docs }}/utilities/flexbox/) and [margin utility]({{ site.path }}/{{ version.docs }}/utilities/spacing/) classes.
 - Navbars are responsive by default, but you can easily modify them to change that. Responsive behavior depends on our [Collapse widget]({{ site.path }}/{{ version.docs }}/widgets/collapse/).
 - Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
+- Indicate the current item by using `aria-current="page"` for the current page or `aria-current="true"` for the current item in a set.
 
 ## Responsive Behaviors
 
@@ -54,7 +55,7 @@ The most basic example of a `.navbar` is one that never expands, no matter the s
   <div class="navbar-collapse collapse" id="navbarB0">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+        <a href="#" class="nav-link active" aria-current="page">Home</a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">Link</a>
@@ -75,7 +76,7 @@ The most basic example of a `.navbar` is one that never expands, no matter the s
   <div class="navbar-collapse collapse" id="navbarB1">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+        <a href="#" class="nav-link active" aria-current="page">Home</a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">Link</a>
@@ -103,7 +104,7 @@ Be default, navbars start out collapsed, but when the target breakpoint is reach
   <div class="navbar-collapse collapse" id="navbarR0">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+        <a href="#" class="nav-link active" aria-current="page">Home</a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">Link</a>
@@ -133,7 +134,7 @@ With the `.navbar-brand` in the collapsing area.
     <a href="#" class="navbar-brand">Navbar</a>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+        <a href="#" class="nav-link active" aria-current="page">Home</a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">Link</a>
@@ -174,7 +175,7 @@ Here's an example of some sub-components included in a default, light navbar:
   <div class="navbar-collapse collapse" id="navbar0">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+        <a href="#" class="nav-link active" aria-current="page">Home</a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">Link</a>
@@ -255,7 +256,7 @@ Add `.active` directly to a `.nav-link`, to indicate a certain state, such as th
   <div class="navbar-collapse collapse" id="navbar1">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+        <a href="#" class="nav-link active" aria-current="page">Home</a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">Features</a>
@@ -283,7 +284,7 @@ And because we use classes for our navs, you can avoid the list-based approach e
 
   <div class="navbar-collapse collapse" id="navbar2">
     <div class="navbar-nav">
-      <a href="#" class="nav-item nav-link active">Home <span class="sr-only">(current)</span></a>
+      <a href="#" class="nav-item nav-link active" aria-current="page">Home</a>
       <a href="#" class="nav-item nav-link">Features</a>
       <a href="#" class="nav-item nav-link">Pricing</a>
       <a href="#" class="nav-item nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -309,7 +310,7 @@ If a dropdown is displayed in a non-expanded navbar, they will display 'inline' 
   <div class="navbar-collapse collapse" id="navbar3">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+        <a href="#" class="nav-link active" aria-current="page">Home</a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">Link</a>
@@ -420,7 +421,7 @@ You can also use utility classes to align navbar text to other navbar elements l
   <div class="navbar-collapse collapse flex-between" id="navbar6">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+        <a href="#" class="nav-link active" aria-current="page">Home</a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">Link</a>
@@ -502,7 +503,7 @@ Place a visual separator between segments of the navbar.
 
   <div class="navbar-collapse collapse flex-between" id="navbar9">
     <div class="navbar-nav">
-      <a href="#" class="nav-item nav-link active">Home <span class="sr-only">(current)</span></a>
+      <a href="#" class="nav-item nav-link active" aria-current="page">Home</a>
       <a href="#" class="nav-item nav-link">Features</a>
       <span class="navbar-divider"></span>
       <a href="#" class="nav-item nav-link">Pricing</a>
@@ -520,7 +521,7 @@ Place a visual separator between segments of the navbar.
   <div class="navbar-collapse collapse flex-between" id="navbar10">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+        <a href="#" class="nav-link active" aria-current="page">Home</a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-item nav-link">Features</a>
@@ -572,7 +573,7 @@ Here are some examples to show what we mean.
     <div class="navbar-collapse collapse flex-between" id="navbar11">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+          <a href="#" class="nav-link active" aria-current="page">Home</a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">Link</a>
@@ -595,7 +596,7 @@ Here are some examples to show what we mean.
     <div class="navbar-collapse collapse flex-between" id="navbar12">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+          <a href="#" class="nav-link active" aria-current="page">Home</a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">Link</a>
@@ -618,7 +619,7 @@ Here are some examples to show what we mean.
     <div class="navbar-collapse collapse flex-between" id="navbar13">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a href="#" class="nav-link active">Home <span class="sr-only">(current)</span></a>
+          <a href="#" class="nav-link active" aria-current="page">Home</a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">Link</a>

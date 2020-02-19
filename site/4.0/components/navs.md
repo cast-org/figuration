@@ -17,6 +17,8 @@ Navigation share general markup and styles, from the base `.nav` class to the ac
 
 If you are using navs to provide a navigation bar, be sure to add a `role="navigation"` to the most logical parent container of the `<ul>`, or wrap a `<nav>` element around the whole navigation. Do not add the role to the `<ul>` itself, as this would prevent it from being announced as an actual list by assistive technologies.
 
+To convey the active state to assistive technologies, use the `aria-current` attribute — using the `page` value for current page, or `true` for the current item in a set.
+
 Note that navigation bars, even if visually styled as tabs with the `.nav-tabs` class, should **not** be given `role="tablist"`, `role="tab"` or `role="tabpanel"` attributes. These are only appropriate for dynamic tabbed interfaces, as described in the [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel). See our [Tab widget]({{ site.path }}/{{ version.docs }}/widgets/tab/) for an example and additional details.
 
 {%- assign calloutAnchors = version.docs | valueIfEmpty: site.version.docs | prepend: "./" | append: "/partials/callout-warning-disabling-anchors.md" -%}
@@ -24,12 +26,12 @@ Note that navigation bars, even if visually styled as tabs with the `.nav-tabs` 
 
 ## Base Nav
 
-The base .nav component is built with flexbox and provides a strong foundation for building all types of navigation components. It includes some style overrides (for working with lists), some link padding for larger hit areas, and basic disabled styling. No active states are included in the base nav.
+The base `.nav` component is built with flexbox and provides a strong foundation for building all types of navigation components. It includes some style overrides (for working with lists), some link padding for larger hit areas, and basic disabled styling. No visual active states are included in the base nav.
 
 {% capture example %}
 <ul class="nav">
   <li class="nav-item">
-    <a href="#" class="nav-link active">Active</a>
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
   </li>
   <li class="nav-item">
     <a href="#" class="nav-link">Link</a>
@@ -48,7 +50,7 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
 
 {% capture example %}
 <nav class="nav">
-  <a href="#" class="nav-link active">Active</a>
+  <a href="#" class="nav-link active" aria-current="page">Active</a>
   <a href="#" class="nav-link">Link</a>
   <a href="#" class="nav-link">Link</a>
   <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -69,7 +71,7 @@ Centered with `.flex-center`:
 {% capture example %}
 <ul class="nav flex-center">
   <li class="nav-item">
-    <a href="#" class="nav-link active">Active</a>
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
   </li>
   <li class="nav-item">
     <a href="#" class="nav-link">Link</a>
@@ -89,7 +91,7 @@ Right-aligned with `.flex-end`:
 {% capture example %}
 <ul class="nav flex-end">
   <li class="nav-item">
-    <a href="#" class="nav-link active">Active</a>
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
   </li>
   <li class="nav-item">
     <a href="#" class="nav-link">Link</a>
@@ -111,7 +113,7 @@ Stack your navigation by changing the flex item direction with the `.flex-column
 {% capture example %}
 <ul class="nav flex-column">
   <li class="nav-item">
-    <a href="#" class="nav-link active">Active</a>
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
   </li>
   <li class="nav-item">
     <a href="#" class="nav-link">Link</a>
@@ -130,7 +132,7 @@ As always, vertical navigation is possible without `<ul>`s, too.
 
 {% capture example %}
 <nav class="nav flex-column">
-  <a href="#" class="nav-link active">Active</a>
+  <a href="#" class="nav-link active" aria-current="page">Active</a>
   <a href="#" class="nav-link">Link</a>
   <a href="#" class="nav-link">Link</a>
   <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -145,7 +147,7 @@ Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabb
 {% capture example %}
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a href="#" class="nav-link active">Active</a>
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
   </li>
   <li class="nav-item">
     <a href="#" class="nav-link">Link</a>
@@ -167,7 +169,7 @@ Take that same HTML, but use `.nav-pills` instead:
 {% capture example %}
 <ul class="nav nav-pills">
   <li class="nav-item">
-    <a href="#" class="nav-link active">Active</a>
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
   </li>
   <li class="nav-item">
     <a href="#" class="nav-link">Link</a>
@@ -189,7 +191,7 @@ Add `.flex-column` to the `.nav.nav-pills` to stack them vertically. Each `.nav-
 {% capture example %}
 <ul class="nav nav-pills flex-column">
   <li class="nav-item">
-    <a href="#" class="nav-link active">Active</a>
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
   </li>
   <li class="nav-item">
     <a href="#" class="nav-link">Link</a>
@@ -208,7 +210,7 @@ As always, vertical pills are possible without `<ul>`s.
 
 {% capture example %}
 <nav class="nav nav-pills flex-column">
-  <a href="#" class="nav-link active">Active</a>
+  <a href="#" class="nav-link active" aria-current="page">Active</a>
   <a href="#" class="nav-link">Link</a>
   <a href="#" class="nav-link">Link</a>
   <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -223,7 +225,7 @@ Force your `.nav`’s contents to extend the full available width one of two mod
 {% capture example %}
 <ul class="nav nav-pills nav-fill">
   <li class="nav-item">
-    <a href="#" class="nav-link active">Active</a>
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
   </li>
   <li class="nav-item">
     <a href="#" class="nav-link">Longer link nav</a>
@@ -243,7 +245,7 @@ For equal-width elements, use `.nav-justify`. All horizontal space will be occup
 {% capture example %}
 <ul class="nav nav-pills nav-justify">
   <li class="nav-item">
-    <a href="#" class="nav-link active">Active</a>
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
   </li>
   <li class="nav-item">
     <a href="#" class="nav-link">Longer link nav</a>
@@ -263,7 +265,7 @@ If you need responsive nav variations, consider using a series of [flexbox utili
 
 {% capture example %}
 <nav class="nav nav-pills flex-column flex-sm-row">
-  <a href="#" class="flex-sm-fill text-sm-center nav-link active">Active</a>
+  <a href="#" class="flex-sm-fill text-sm-center nav-link active" aria-current="page">Active</a>
   <a href="#" class="flex-sm-fill text-sm-center nav-link">Link</a>
   <a href="#" class="flex-sm-fill text-sm-center nav-link">Link</a>
   <a href="#" class="flex-sm-fill text-sm-center nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -288,7 +290,7 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.path }}/{{
 {% capture example %}
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a href="#" class="nav-link active">Active</a>
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
   </li>
   <li class="nav-item dropdown">
     <a href="#" role="button" class="nav-link" data-cfw="dropdown">Dropdown<span class="caret" aria-hidden="true"></span></a>
@@ -315,7 +317,7 @@ For accessibility reasons, do not mix use of the [Tab widget]({{ site.path }}/{{
 {% capture example %}
 <ul class="nav nav-pills">
   <li class="nav-item">
-    <a href="#" class="nav-link active">Active</a>
+    <a href="#" class="nav-link active" aria-current="page">Active</a>
   </li>
   <li class="nav-item dropdown">
     <a href="#" role="button" class="nav-link" data-cfw="dropdown">Dropdown<span class="caret" aria-hidden="true"></span></a>

@@ -371,9 +371,11 @@ Add the `.flex-wrap` utility class onto a horizontal list to wrap to the next ro
 
 Add `.active` to a `.list-item` to indicate the current active selection.
 
+To convey the active state to assistive technologies, use the `aria-current` attribute — using the `page` value for the current page, or `true` for the current item in a set.
+
 {% capture example %}
 <ul class="list">
-  <li class="list-item active">Active list item</li>
+  <li class="list-item active" aria-current="true">Active list item</li>
   <li class="list-item">List item 2</li>
   <li class="list-item">List item 3</li>
 </ul>
@@ -382,7 +384,7 @@ Add `.active` to a `.list-item` to indicate the current active selection.
 
 {% capture example %}
 <div class="list">
-  <div class="list-item active">Active list item</div>
+  <div class="list-item active" aria-current="true">Active list item</div>
   <div class="list-item">List item 2</div>
   <div class="list-item">List item 3</div>
 </div>
@@ -422,7 +424,7 @@ Be sure to **not use the standard `.btn` classes here**.
 
 {% capture example %}
 <div class="list">
-  <a href="#" class="list-item list-item-action active">Active list item</a>
+  <a href="#" class="list-item list-item-action active" aria-current="true">Active list item</a>
   <a href="#" class="list-item list-item-action">List item 2</a>
   <a href="#" class="list-item list-item-action disabled" tabindex="-1" aria-disabled="true">Disabled list item</a>
 </div>
@@ -433,7 +435,7 @@ With `<button>`s, you can also make use of the `disabled` attribute instead of t
 
 {% capture example %}
 <div class="list">
-  <button type="button" class="list-item list-item-action active">Active list item</button>
+  <button type="button" class="list-item list-item-action active" aria-current="true">Active list item</button>
   <button type="button" class="list-item list-item-action">List item 2</button>
   <button type="button" class="list-item list-item-action" disabled>Disabled list item</button>
 </div>
@@ -468,7 +470,7 @@ Add nearly any HTML within, even for linked lists like the one below, using [fle
 
 {% capture example %}
 <div class="list list-spaced list-group" style="max-width: 25rem;">
-  <a href="#" class="list-item list-item-action flex-column flex-start active">
+  <a href="#" class="list-item list-item-action flex-column flex-start active" aria-current="true">
     <div class="d-flex w-100 flex-between flex-items-center mb-0_5">
       <h5 class="mb-0">List item heading</h5>
       <small>3 days ago</small>

@@ -236,10 +236,12 @@ Add `.disabled` to the `a` item in the dropdown to make them visually _appear_ d
 
 Add `.active` to the `li` item in the dropdown to show a visual emphasis.
 
+To convey the active state to assistive technologies, use the `aria-current` attribute — using the `page` value for the current page, or `true` for the current item in a set.
+
 {% capture example %}
 <ul class="dropdown-menu">
   <li><a href="#">Regular link</a></li>
-  <li><a href="#" class="active">Active link</a></li>
+  <li><a href="#" class="active" aria-current="true">Active link</a></li>
   <li><a href="#">Another link</a></li>
 </ul>
 {% endcapture %}
