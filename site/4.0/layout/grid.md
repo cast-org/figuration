@@ -215,23 +215,6 @@ Note that the other columns will resize no matter the width of the center column
 {% endcapture %}
 {% renderExample example, "cf-example-row" %}
 
-### Equal Width with Multiple Rows
-
-Create equal-width columns that span multiple rows by inserting a `.w-100` where you want the columns to break to a new line. Make the breaks responsive by mixing the `.w-100` with some [responsive display utilities]({{ site.path }}/{{ version.docs }}/utilities/display/#responsively-hiding-content).
-
-{% capture example %}
-<div class="container">
-  <div class="row">
-    <div class="col">1 of 4</div>
-    <div class="col">2 of 4</div>
-    <div class="w-100"></div>
-    <div class="col">3 of 4</div>
-    <div class="col">4 of 4</div>
-  </div>
-</div>
-{% endcapture %}
-{% renderExample example, "cf-example-row" %}
-
 ### Variable Width Content
 
 Use `col-{breakpoint}-auto` classes to size columns based on the natural width of their content. Use these classes in conjunction with [horizontal alignment](#horizontal-alignment) classes for centering layouts with uneven column sizes as viewport width changes.
