@@ -423,7 +423,7 @@ Add navigation items within a card's header (or block) with Figuration's [naviga
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
-        <a href="#" class="nav-link active">Active</a>
+        <a href="#" class="nav-link active" aria-current="true">Active</a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">Link</a>
@@ -447,7 +447,7 @@ Add navigation items within a card's header (or block) with Figuration's [naviga
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
       <li class="nav-item">
-        <a href="#" class="nav-link active">Active</a>
+        <a href="#" class="nav-link active" aria-current="true">Active</a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link">Link</a>

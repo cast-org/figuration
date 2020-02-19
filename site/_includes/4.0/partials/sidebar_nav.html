@@ -18,18 +18,17 @@
     {%- assign page_count = navgroup.pages | size -%}
     {% if group == group_slug %}
       {%- assign active_sect = ' active-section' -%}
-      {%- assign current_sect = ' <span class="sr-only">(current section)</span>' -%}
+      {%- assign current_sect = ' aria-current="true"' -%}
     {%- endif -%}
     <li class="mb-0_25{% if page_count > 0 %} has-children{% endif %}">
       {%- if group_slug == 'about' -%}
-      <a href="{{ site.path }}/{{ group_slug }}/{{ first_slug }}/" class="cf-sidebar-header fs-large font-weight-sbold{% if group == group_slug %} active open{% endif %}" data-cfw="collapse" data-cfw-collapse-target="#sidenav{{ forloop.index }}">
+      <a href="{{ site.path }}/{{ group_slug }}/{{ first_slug }}/" class="cf-sidebar-header fs-large font-weight-sbold{% if group == group_slug %} active open{% endif %}" data-cfw="collapse" data-cfw-collapse-target="#sidenav{{ forloop.index }}"{{- current_sect -}}>
       {%- else -%}
-      <a href="{{ site.path }}{{ pathVersion }}/{{ group_slug }}/{{ first_slug }}/" class="cf-sidebar-header fs-large font-weight-sbold{% if group == group_slug %} active open{% endif %}" data-cfw="collapse" data-cfw-collapse-target="#sidenav{{ forloop.index }}">
+      <a href="{{ site.path }}{{ pathVersion }}/{{ group_slug }}/{{ first_slug }}/" class="cf-sidebar-header fs-large font-weight-sbold{% if group == group_slug %} active open{% endif %}" data-cfw="collapse" data-cfw-collapse-target="#sidenav{{ forloop.index }}"{{- current_sect -}}>
       {%- endif -%}
         <span class="nav-link-inner">
           {%- if page_count > 0 -%}<span class="caret" aria-hidden="true"></span>{%- endif -%}
           <span class="cf-sidebar-header-title{{ active_sect }}">{{- navgroup.title -}}</span>
-          {{- current_sect -}}
         </span>
       </a>
       <div id="sidenav{{ forloop.index }}">
@@ -40,13 +39,13 @@
             {%- assign current_page = nil -%}
             {%- if doc_slug == page_slug and group == group_slug-%}
               {%- assign active_page = ' active' -%}
-              {%- assign current_page = ' <span class="sr-only">(current page)</span>' -%}
+              {%- assign current_page = ' aria-current="page"' -%}
             {%- endif -%}
             <li class="nav-item">
               {%- if group_slug == 'about' -%}
-                <a href="{{ site.path }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link{{ active_page }}"><span class="nav-link-inner">{{ doc.title }}{{ current_page }}</span></a>
+                <a href="{{ site.path }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link{{ active_page }}"{{ current_page }}><span class="nav-link-inner">{{ doc.title }}</span></a>
               {%- else -%}
-                <a href="{{ site.path }}{{ pathVersion }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link{{ active_page }}"><span class="nav-link-inner">{{ doc.title }}{{ current_page }}</span></a>
+                <a href="{{ site.path }}{{ pathVersion }}/{{ group_slug }}/{{ doc_slug }}/" class="nav-link{{ active_page }}"{{ current_page }}><span class="nav-link-inner">{{ doc.title }}</span></a>
               {%- endif -%}
             </li>
           {% endfor -%}
