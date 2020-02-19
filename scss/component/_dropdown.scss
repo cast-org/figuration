@@ -156,7 +156,7 @@
     @if $enable-dropdown-header {
         .dropdown-header {
             display: block;
-            padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+            padding: $dropdown-header-padding;
             margin-bottom: 0;
             @include font-size($dropdown-header-font-size);
             font-weight: $dropdown-header-font-weight;

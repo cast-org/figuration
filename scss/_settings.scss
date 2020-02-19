@@ -1066,6 +1066,7 @@ $dropdown-link-disabled-bg:     $component-disabled-bg !default;
 $dropdown-item-padding-x:       1.125rem !default;
 $dropdown-item-padding-y:       .125rem !default;
 
+$dropdown-header-padding:       $dropdown-item-padding-y $dropdown-item-padding-x !default;
 $dropdown-header-font-size:     ($font-size-base * .875) !default;
 $dropdown-header-font-weight:   $font-weight-bold !default;
 $dropdown-header-color:         $uibase-500 !default;
