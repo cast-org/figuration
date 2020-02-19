@@ -1085,6 +1085,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
                 </td>
             </tr>
             <tr>
+                <td><code>$dropdown-header-padding</code></td>
+                <td>string</td>
+                <td><code>$dropdown-item-padding-y $dropdown-item-padding-x</code></td>
+                <td>
+                    Padding for dropdown menu headers.
+                </td>
+            </tr>
+            <tr>
                 <td><code>$dropdown-header-font-size</code></td>
                 <td>string</td>
                 <td><code>($font-size-base * .875)</code></td>
