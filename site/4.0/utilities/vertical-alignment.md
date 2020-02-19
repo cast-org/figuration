@@ -27,6 +27,8 @@ The alignments consist of the items in the following list and are also available
 - `.valign-text-top`
 - `.valign-text-bottom`
 
+To align non-inline content, such as `<div>` containers, refer to the [flexbox utilites]({{ site.path }}/{{ version.docs }}/utilities/flexbox).
+
 ## Examples
 
 Example with inline elements.
