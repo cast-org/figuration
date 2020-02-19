@@ -720,36 +720,38 @@ Put a border around the table and every cell with `.table-bordered`.
 By default, table cells of `<thead>` are vertically aligned to the `bottom`. Table cells in `<tbody>` inherit their alignment from `<table>` and are aligned to the the `top` by default.
 
 {% capture example %}
-<table class="table table-bordered">
-  <thead>
-    <tr>
-        <th scope="col">Header 1</th>
-        <th scope="col">Header 2</th>
-        <th scope="col">Header 3</th>
-        <th scope="col">Header 4</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>This cell inherits <code>vertical-align: top;</code> from the table</td>
-      <td>This cell inherits <code>vertical-align: top;</code> from the table</td>
-      <td>This cell inherits <code>vertical-align: top;</code> from the table</td>
-      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae ipsum ut metus elementum ultricies sit amet et velit. In pharetra magna at euismod fringilla.</td>
-    </tr>
-    <tr class="valign-bottom">
-      <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
-      <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
-      <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
-      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae ipsum ut metus elementum ultricies sit amet et velit. In pharetra magna at euismod fringilla.</td>
-    </tr>
-    <tr>
-      <td>This cell inherits <code>vertical-align: top;</code> from the table</td>
-      <td>This cell inherits <code>vertical-align: top;</code> from the table</td>
-      <td class="valign-middle">This cell is aligned to the middle.</td>
-      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae ipsum ut metus elementum ultricies sit amet et velit. In pharetra magna at euismod fringilla.</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-scroll">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+          <th scope="col">Header 1</th>
+          <th scope="col">Header 2</th>
+          <th scope="col">Header 3</th>
+          <th scope="col">Header 4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>This cell inherits <code>vertical-align: top;</code> from the table</td>
+        <td>This cell inherits <code>vertical-align: top;</code> from the table</td>
+        <td>This cell inherits <code>vertical-align: top;</code> from the table</td>
+        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae ipsum ut metus elementum ultricies sit amet et velit. In pharetra magna at euismod fringilla.</td>
+      </tr>
+      <tr class="valign-bottom">
+        <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+        <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+        <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae ipsum ut metus elementum ultricies sit amet et velit. In pharetra magna at euismod fringilla.</td>
+      </tr>
+      <tr>
+        <td>This cell inherits <code>vertical-align: top;</code> from the table</td>
+        <td>This cell inherits <code>vertical-align: top;</code> from the table</td>
+        <td class="valign-middle">This cell is aligned to the middle.</td>
+        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae ipsum ut metus elementum ultricies sit amet et velit. In pharetra magna at euismod fringilla.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 {% endcapture %}
 {% renderExample example %}
 
