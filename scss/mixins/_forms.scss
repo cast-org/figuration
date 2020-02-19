@@ -138,7 +138,7 @@
                 padding-right: calc(#{$input-padding-x} + #{$form-feedback-icon-width} + #{$form-feedback-icon-offset} + #{$form-select-indicator-width} + #{$form-select-indicator-offset});
                 background-image: $form-select-indicator-image, $icon;
                 background-repeat: no-repeat, no-repeat;
-                background-position: right $form-select-indicator-offset center, right calc(#{$form-feedback-icon-offset} + #{$form-select-indicator-width} + #{$form-select-indicator-offset}) center;
+                background-position: $form-select-indicator-position, $form-feedback-select-icon-position;
                 background-size: $form-select-indicator-width $form-select-indicator-height, $form-feedback-icon-width $form-feedback-icon-height;
             }
         }

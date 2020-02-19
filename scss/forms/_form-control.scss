@@ -58,7 +58,10 @@
         select.form-control {
             padding-right: calc(#{$input-padding-x} + #{$form-select-indicator-width} + #{$form-select-indicator-offset});
             vertical-align: middle;
-            background: $input-bg $form-select-indicator-image no-repeat right $form-select-indicator-offset center;
+            background-color: $input-bg;
+            background-image: $form-select-indicator-image;
+            background-repeat: no-repeat;
+            background-position: $form-select-indicator-position;
             background-size: $form-select-indicator-width $form-select-indicator-height;
             appearance: none;
 
