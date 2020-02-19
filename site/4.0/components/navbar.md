@@ -940,6 +940,22 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$navbar-toggle-focus-box-shadow</code></td>
+        <td>string</td>
+        <td><code>0 0 0 .1875rem</code></td>
+        <td>
+          Box shadow for navbar toggle in focus state.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$navbar-toggle-transition</code></td>
+        <td>string</td>
+        <td><code>box-shadow .15s ease-in-out</code></td>
+        <td>
+          Transition effect for navbar toggle button.
+        </td>
+      </tr>
+      <tr>
         <td><code>$navbar-expand-breakpoints</code></td>
         <td>list</td>
         <td><code>map-keys($grid-breakpoints)</code></td>

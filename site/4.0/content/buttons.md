@@ -760,7 +760,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       </tr>
       <tr>
         <td><code>$btn-transition</code></td>
-        <td>map</td>
+        <td>string</td>
         <td><code>color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out</code></td>
         <td>
           Transition effect for buttons.

@@ -120,9 +120,16 @@
             background-color: transparent; // Remove default button style
             border: $border-width solid transparent; // Remove default button style
             @include border-radius($navbar-toggle-border-radius);
+            @include transition($navbar-toggle-transition);
 
-            @include hover-focus() {
+            &:hover {
                 text-decoration: none;
+            }
+
+            &:focus {
+                text-decoration: none;
+                outline: 0;
+                box-shadow: $navbar-toggle-focus-box-shadow;
             }
 
             &:not(:disabled):not(.disabled) {

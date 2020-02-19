@@ -609,6 +609,7 @@ $transition-collapse-x:     width .3s ease !default;
 $btn-transition:            color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 $input-transition:          background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 $modal-transition:          transform .15s linear !default;
+$navbar-toggle-transition:  box-shadow .15s ease-in-out !default;
 $progress-bar-transition:   width .3s ease !default;
 $switch-transition:         all .15s ease-in-out !default;
 
@@ -1121,6 +1122,7 @@ $navbar-toggle-font-size:           ($font-size-base * 1.25) !default;
 $navbar-toggle-padding-y:           $btn-padding-y !default;
 $navbar-toggle-padding-x:           $btn-padding-x !default;
 $navbar-toggle-border-radius:       $btn-border-radius !default;
+$navbar-toggle-focus-box-shadow:    0 0 0 .1875rem !default;
 
 $navbar-dark-color:                 rgba($white, .65) !default;
 $navbar-dark-hover-color:           rgba($white, .9) !default;
