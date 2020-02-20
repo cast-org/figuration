@@ -200,7 +200,7 @@ $('.popover-drag-fixed').CFW_Popover({
 {% endcapture %}
 {% renderExample example %}
 
-If a `fixed` position draggable popover is constrained by a container, then it will not move when the container is scrolled, but will attempt to stay inside the viewport if the body is scrolled.
+If a `fixed` position draggable popover is constrained by a viewport, then it will not move when the container is scrolled, but will attempt to stay inside the viewport if the body is scrolled.
 
 {% capture example %}
 <div class="container-viewport container-viewport-scroll" id="viewport-popover-scroll">
