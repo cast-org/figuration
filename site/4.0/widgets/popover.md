@@ -188,7 +188,7 @@ Keep popovers in their place with the `viewport` option.
 Create a `fixed` position draggable popover by overriding the popperConfig options with a `positionFixed: true` setting.
 
 {% capture example %}
-<button class="btn popover-drag-fixed btn-secondary" title="This should be confined to the viewport">Fixed Drag</button>
+<button class="btn popover-drag-fixed btn-secondary" title="This should be confined to the window">Fixed Drag</button>
 <script>
 $('.popover-drag-fixed').CFW_Popover({
   drag: true,
