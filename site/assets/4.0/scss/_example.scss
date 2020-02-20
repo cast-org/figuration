@@ -272,7 +272,12 @@
     bottom: 0;
     left: 120px;
 }
-
+.container-viewport-scroll {
+    overflow: auto;
+}
+.container-viewport-scroll .viewport-text {
+    height: 300px;
+}
 
 // Scrollspy
 .cf-example-scrollspy {

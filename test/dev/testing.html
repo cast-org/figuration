@@ -757,10 +757,7 @@ $(window).ready(function() {
                     drag: true,
                     viewport: '#viewport-popover-scroll',
                     popperConfig: {
-                        positionFixed: true,
-                        computeStyle: {
-                            gpuAcceleration: false
-                        }
+                        positionFixed: true
                     }
                 });
             </script>
@@ -801,22 +798,18 @@ $(window).ready(function() {
                     drag: true,
                     viewport: '#viewport-popover',
                     popperConfig: {
-                        positionFixed: true,
-                        computeStyle: {
-                            gpuAcceleration: false
-                        }
+                        positionFixed: true
                     }
                 });
             </script>
 
             <div class="mb-1">
-                <button class="btn popover-drag-fixed btn-secondary" title="This should be confined to the body">Fixed Drag</button>
+                <button class="btn popover-drag-fixed btn-secondary" title="This should be confined to the viewport">Fixed Drag</button>
                 <script>
                 $('.popover-drag-fixed').CFW_Popover({
                     drag: true,
                     popperConfig: {
-                        positionFixed: true,
-                        eventsEnabled: false
+                        positionFixed: true
                     }
                 });
                 </script>
