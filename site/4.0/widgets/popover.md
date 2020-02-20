@@ -183,6 +183,43 @@ Keep popovers in their place with the `viewport` option.
 {% endcapture %}
 {% renderExample example %}
 
+### Fixed Draggable
+
+Create a `fixed` position draggable popover by overriding the popperConfig options with a `positionFixed: true` setting.
+
+{% capture example %}
+<button class="btn popover-drag-fixed btn-secondary" title="This should be confined to the window">Fixed Drag</button>
+<script>
+$('.popover-drag-fixed').CFW_Popover({
+  drag: true,
+  popperConfig: {
+    positionFixed: true
+  }
+});
+</script>
+{% endcapture %}
+{% renderExample example %}
+
+If a `fixed` position draggable popover is constrained by a viewport, then it will not move when the container is scrolled, but will attempt to stay inside the viewport if the body is scrolled.
+
+{% capture example %}
+<div class="container-viewport container-viewport-scroll" id="viewport-popover-scroll">
+  <p class="viewport-text">Test viewport constraints for popovers.</p>
+  <button class="btn popover-viewport-drag-fixed-scroll btn-drag" title="This should be confined to the viewport box">Fixed Drag</button>
+</div>
+<script>
+$('.popover-viewport-drag-fixed-scroll').CFW_Popover({
+  placement: 'reverse',
+  drag: true,
+  viewport: '#viewport-popover-scroll',
+  popperConfig: {
+    positionFixed: true
+  }
+});
+</script>
+{% endcapture %}
+{% renderExample example %}
+
 ### Disabled Elements
 
 Elements with the `disabled` attribute aren't interactive, meaning users cannot hover or click them to trigger a popover (or tooltip). As a workaround, you'll want to trigger the popover from a wrapper `<div>` or `<span>` and override the `pointer-events` on the disabled element.
