@@ -1421,7 +1421,8 @@ if (typeof jQuery === 'undefined') {
                 }
             };
 
-            var returnConfig = $.extend({}, defaultConfig, this.settings.popperConfig);
+            // Use deep merge
+            var returnConfig = $.extend(true, defaultConfig, this.settings.popperConfig);
             return returnConfig;
         },
 
@@ -2885,7 +2886,8 @@ if (typeof jQuery === 'undefined') {
                 }
             };
 
-            var returnConfig = $.extend({}, defaultConfig, this.settings.popperConfig);
+            // Use deep merge
+            var returnConfig = $.extend(true, defaultConfig, this.settings.popperConfig);
             return returnConfig;
         },
 
@@ -3442,7 +3444,10 @@ if (typeof jQuery === 'undefined') {
     };
 
     CFW_Widget_Popover.prototype._doFixedDragScroll = function() {
-        var offset = this.$target.offset();
+        var offset = {};
+        var compStyle = window.getComputedStyle(this.$target[0]);
+        offset.top = parseInt(compStyle.top, 10);
+        offset.left = parseInt(compStyle.left, 10);
         this.locateDragTip(offset.top, offset.left);
     };
 
