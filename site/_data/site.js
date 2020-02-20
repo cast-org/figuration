@@ -37,8 +37,8 @@ module.exports = {
       "css_rtl_hash":   "sha384-7e4ep8TcxjoaFny5x8gPpW8JXlnQX6p8h8dVFX4QjFFR5ufRMkf2Stw58ItxGeB0",
       "jquery":         "https://code.jquery.com/jquery-3.4.1.slim.min.js",
       "jquery_hash":    "sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n",
-      "popper":         "https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js",
-      "popper_hash":    "sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo",
+      "popper":         "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js",
+      "popper_hash":    "sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN",
       "fontawe":        "https://use.fontawesome.com/releases/v5.8.2/css/all.css",
       "fontawe_hash":   "sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
    }
