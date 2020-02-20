@@ -2,6 +2,7 @@
   position: absolute !important;
   top: .25rem;
   left: 50%;
+  z-index: 1200;
   padding: .25rem .5rem;
   color: #fff;
   text-align: center;
@@ -870,11 +871,6 @@ pre[class*="language-"] {
   }
 }
 
-.cf-example .pagination {
-  margin-top: .5rem;
-  margin-bottom: .5rem;
-}
-
 .cf-example > .progress + .progress,
 .cf-example > .progress + .btn {
   margin-top: 1rem;
@@ -1124,6 +1120,14 @@ pre[class*="language-"] {
   position: absolute;
   bottom: 0;
   left: 120px;
+}
+
+.container-viewport-scroll {
+  overflow: auto;
+}
+
+.container-viewport-scroll .viewport-text {
+  height: 300px;
 }
 
 .cf-example-scrollspy {
