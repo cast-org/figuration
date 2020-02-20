@@ -16,25 +16,25 @@ module.exports = {
   },
 
   "version": {
-    "current":      "4.0.0-beta.2",
+    "current":      "4.0.0-beta.3",
     "docs":         "4.0"
   },
 
   "repo":           "https://github.com/cast-org/figuration",
-  "changelog":      "https://github.com/cast-org/figuration/releases/tag/v4.0.0-beta.2",
+  "changelog":      "https://github.com/cast-org/figuration/releases/tag/v4.0.0-beta.3",
 
   "download": {
-    "source":       "https://github.com/cast-org/figuration/archive/v4.0.0-beta.2.zip",
-    "dist":         "https://github.com/cast-org/figuration/releases/download/v4.0.0-beta.2/figuration-4.0.0-beta.2-dist.zip"
+    "source":       "https://github.com/cast-org/figuration/archive/v4.0.0-beta.3.zip",
+    "dist":         "https://github.com/cast-org/figuration/releases/download/v4.0.0-beta.3/figuration-4.0.0-beta.3-dist.zip"
   },
 
   "cdn": {
-      "css":            "https://cdn.jsdelivr.net/npm/figuration@4.0.0-beta.2/dist/css/figuration.min.css",
-      "css_hash":       "sha384-76nGBn7o6RY82Cfyqz00Gqcru69AsOx9qwAJ9+c5MWw3Tcx4LuOVOG+4rXEpvV+Z",
-      "js":             "https://cdn.jsdelivr.net/npm/figuration@4.0.0-beta.2/dist/js/figuration.min.js",
-      "js_hash":        "sha384-vXQ8My+UDac/qwS3tBgLTL6tgQLjivwdMSZnScJ1//SIPF1T4XM6uaItSZN/+Ye0",
-      "css_rtl":        "https://cdn.jsdelivr.net/npm/figuration@4.0.0-beta.2/dist/css/figuration-rtl.min.css",
-      "css_rtl_hash":   "sha384-7e4ep8TcxjoaFny5x8gPpW8JXlnQX6p8h8dVFX4QjFFR5ufRMkf2Stw58ItxGeB0",
+      "css":            "https://cdn.jsdelivr.net/npm/figuration@4.0.0-beta.3/dist/css/figuration.min.css",
+      "css_hash":       "sha384-FxI8IvAmVlzB9xYQlzBh6R4Qb+XOxlgUSpA0LqjaeUrNoyQeO4zPXL6wgwjFHB82",
+      "js":             "https://cdn.jsdelivr.net/npm/figuration@4.0.0-beta.3/dist/js/figuration.min.js",
+      "js_hash":        "sha384-5+C6I6Gf1bWSmbIANEj6halK5ku2CFrkqQJkEfLxjRWqLDVIbvElrjq71gmkRGKT",
+      "css_rtl":        "https://cdn.jsdelivr.net/npm/figuration@4.0.0-beta.3/dist/css/figuration-rtl.min.css",
+      "css_rtl_hash":   "sha384-hq5k+0EVgnQoFDoDK4f8g1jknFUdWh+i7BQ7Azkl7HkyTVX/nB/WrnqGNqWypcra",
       "jquery":         "https://code.jquery.com/jquery-3.4.1.slim.min.js",
       "jquery_hash":    "sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n",
       "popper":         "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js",

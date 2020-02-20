@@ -371,7 +371,7 @@ Add the `.flex-wrap` utility class onto a horizontal list to wrap to the next ro
 
 Add `.active` to a `.list-item` to indicate the current active selection.
 
-To convey the active state to assistive technologies, use the `aria-current` attribute — using the `page` value for the current page, or `true` for the current item in a set.
+To convey the active state to assistive technologies, use the `aria-current` attribute &mdash; using the `page` value for the current page, or `true` for the current item in a set.
 
 {% capture example %}
 <ul class="list">
