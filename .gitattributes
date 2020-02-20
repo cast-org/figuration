@@ -4,7 +4,6 @@
 *.js    text eol=lf
 *.json  text eol=lf
 *.md    text eol=lf
-*.rb    text eol=lf
 *.scss  text eol=lf
 *.svg   text eol=lf
 *.txt   text eol=lf
