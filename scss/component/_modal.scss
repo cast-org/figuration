@@ -80,6 +80,8 @@
             &::before {
                 display: block;
                 height: calc(100vh - #{$modal-dialog-margin * 2});
+                //stylelint-disable-next-line declaration-block-no-duplicate-properties
+                height: min-content; // Reset height to 0 except on IE
                 content: "";
             }
 
@@ -295,6 +297,8 @@
 
                 &::before {
                     height: calc(100vh - #{$modal-dialog-bp-up-margin-y * 2});
+                    //stylelint-disable-next-line declaration-block-no-duplicate-properties
+                    height: min-content; // Reset height to 0 except on IE
                 }
             }
         }
