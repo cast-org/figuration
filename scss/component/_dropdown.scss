@@ -51,8 +51,8 @@
                 position: absolute;
                 top: 50%;
                 right: $dropdown-caret-spacer-x;
-                margin-top: -$dropdown-caret-width;
                 @include caret(end, $dropdown-caret-width, $dropdown-caret-color);
+                transform: translateY(-25%);
             }
 
             &.active:not(:hover):not(:focus)::after {
@@ -237,8 +237,8 @@
                 position: absolute;
                 top: 50%;
                 left: $dropdown-back-spacer-x;
-                margin-top: -$dropdown-caret-width;
                 @include caret(start, $dropdown-back-width, $dropdown-back-color);
+                transform: translateY(-25%);
             }
         }
 
