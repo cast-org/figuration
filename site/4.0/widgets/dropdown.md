@@ -54,7 +54,7 @@ Here is a static example showing the dropdown layout and content pieces.
       <li><a href="#" class="disabled" tabindex="-1" aria-disabled="true">Disabled action</a></li>
       <li class="dropdown-submenu">
         <a href="#" class="open">Something else here</a>
-        <ul class="dropdown-menu open">
+        <ul class="dropdown-menu dropdown-subalign-forward open">
           <li class="dropdown-back"><button type="button" class="dropdown-item">Back</button></li>
           <li><a href="#">Action</a></li>
           <li><a href="#">Another action</a></li>
@@ -111,7 +111,7 @@ You can also use `<button>` elements in your dropdowns instead of `<a>`s.  You c
 
 {% capture example %}
 <div class="btn-group">
-  <button type="button" class="btn btn-group-end" data-cfw="dropdown">
+  <button type="button" class="btn btn-info btn-group-end" data-cfw="dropdown">
     Dropdown <span class="caret" aria-hidden="true"></span>
   </button>
   <ul class="dropdown-menu">
@@ -131,8 +131,8 @@ The use of the `.btn-group-end` class allows us to place the dropdown within the
 
 {% capture example %}
 <div class="btn-group">
-  <button type="button" class="btn">Default</button>
-  <button type="button" class="btn btn-icon btn-group-end" data-cfw="dropdown" aria-label="Toggle Dropdown">
+  <button type="button" class="btn btn-info">Default</button>
+  <button type="button" class="btn btn-info btn-icon btn-group-end" data-cfw="dropdown" aria-label="Toggle Dropdown">
     <span class="caret" aria-hidden="true"></span>
   </button>
   <ul class="dropdown-menu">
@@ -234,7 +234,7 @@ Add `.disabled` to the `a` item in the dropdown to make them visually _appear_ d
 
 ### Active Menu Items
 
-Add `.active` to the `li` item in the dropdown to show a visual emphasis.
+Add `.active` to the child of the `li` item in the dropdown to show a visual emphasis.
 
 To convey the active state to assistive technologies, use the `aria-current` attribute &mdash; using the `page` value for the current page, or `true` for the current item in a set.
 
@@ -278,7 +278,7 @@ Using the [`backlink` option](#options), you can have 'back' menu items automati
 
 {% capture example %}
 <div class="dropdown">
-  <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+  <button type="button" class="btn btn-info" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
     Dropdown <span class="caret" aria-hidden="true"></span>
   </button>
   <ul class="dropdown-menu">
@@ -317,7 +317,7 @@ You can optionally use `<button>` elements in your dropdowns instead of just `<a
 
 {% capture example %}
 <div class="dropdown">
-  <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+  <button type="button" class="btn btn-info" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
     Dropdown <span class="caret" aria-hidden="true"></span>
   </button>
   <ul class="dropdown-menu">
@@ -337,7 +337,7 @@ Checkbox and radio inputs are allowed, but only **one per menu item**.
 
 {% capture example %}
 <div class="dropdown">
-  <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+  <button type="button" class="btn btn-info" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
     Dropdown <span class="caret" aria-hidden="true"></span>
   </button>
   <ul class="dropdown-menu">
@@ -366,7 +366,7 @@ Checkbox and radio inputs are allowed, but only **one per menu item**.
 
 {% capture example %}
 <div class="dropdown">
-  <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+  <button type="button" class="btn btn-info" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
     Dropdown <span class="caret" aria-hidden="true"></span>
   </button>
   <ul class="dropdown-menu">
@@ -399,7 +399,7 @@ Add `<input type="text">` or `textarea` items to your dropdown menu.  Other type
 
 {% capture example %}
 <div class="dropdown">
-  <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+  <button type="button" class="btn btn-info" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
     Dropdown <span class="caret" aria-hidden="true"></span>
   </button>
   <ul class="dropdown-menu">
@@ -425,56 +425,20 @@ Add `<input type="text">` or `textarea` items to your dropdown menu.  Other type
 
 ## Variants
 
-### Dropup
-
-Trigger dropdown menus above elements by adding `.dropup` to the parent element.  The visual `.caret` for the toggle control will reverse direction automatically.
-
-{% capture example %}
-<div class="dropdown dropup">
-  <button type="button" class="btn btn-primary" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
-    Dropup <span class="caret" aria-hidden="true"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li class="dropdown-header">Dropdown header</li>
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li>
-      <a href="#">Something else here</a>
-      <ul>
-        <li><a href="#">Action</a></li>
-        <li><a href="#">Another action</a></li>
-        <li>
-          <a href="#">Something else here</a>
-          <ul>
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-          </ul>
-        </li>
-        <li class="dropdown-divider"></li>
-        <li><a href="#">Separated link</a></li>
-      </ul>
-    </li>
-    <li class="dropdown-divider"></li>
-    <li><a href="#" class="disabled" tabindex="-1" aria-disabled="true">Disabled link</a></li>
-  </ul>
-</div>
-{% endcapture %}
-{% renderExample example %}
-
-### Menu Alignment
+### Reverse Alignment
 
 By default, a dropdown menu is automatically positioned 100% from the top and aligned to the left side of its parent.  While submenu items are aligned 100% from the left and to the top of its parent.
 
-Add `.dropend` to a `.dropdown-menu` to align the dropdown menu to the right side of the parent. This will also make all submenus open out to the left side.  This can also be combined with `.dropup`.
+Add `.dropreverse` to a `.dropdown-menu` to align the dropdown menu to the right side of the parent. This will also make all submenus open out to the left side.  This can also be combined with `.dropup`.
 
 **Heads up!** When using the right-to-left, `rtl`, variant of Figuration all horizontal directions will be reversed.  Meaning left becomes right, and vice-versa.
 
 {% capture example %}
-<div class="dropdown dropend float-end">
-  <button type="button" class="btn btn-primary" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+<div class="dropdown float-end">
+  <button type="button" class="btn btn-info" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
     Reverse Dropdown <span class="caret" aria-hidden="true"></span>
   </button>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu dropreverse">
     <li class="dropdown-header">Dropdown header</li>
     <li><a href="#">Action</a></li>
     <li><a href="#">Another action</a></li>
@@ -501,50 +465,225 @@ Add `.dropend` to a `.dropdown-menu` to align the dropdown menu to the right sid
 {% endcapture %}
 {% renderExample example, "clearfix" %}
 
-### Submenu Alignment
+### Dropup
 
-The menu alignment class of `.dropend` will also work with submenu items, and you can use the available `.dropstart` to switch submenu directions if needed.  Simply place either class on the `li` parent of the submenu list.
+Trigger dropdown menus above elements by adding `.dropup` to the `.dropdown-menu` element.  The visual caret for the toggle control can be reversed in direction by switching to `.caretup`.
 
-{% capture example %}
+<div class="cf-example">
+  <div class="dropdown">
+    <button type="button" class="btn btn-info" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+      Dropup <span class="caretup" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu dropup">
+      <li class="dropdown-header">Dropdown header</li>
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li>
+        <a href="#">Something else here</a>
+        <ul>
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li>
+            <a href="#">Something else here</a>
+            <ul>
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </li>
+      <li class="dropdown-divider"></li>
+      <li><a href="#" class="disabled" tabindex="-1" aria-disabled="true">Disabled link</a></li>
+    </ul>
+  </div>
+</div>
+
+{% capture highlight %}
 <div class="dropdown">
-  <button type="button" class="btn" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
-    Dropdown <span class="caret" aria-hidden="true"></span>
+  <button type="button" class="btn btn-info" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
+    Dropup <span class="caretup" aria-hidden="true"></span>
   </button>
-  <ul class="dropdown-menu">
-    <li class="dropdown-header">Dropdown header</li>
-    <li><a href="#">Action</a></li>
-    <li class="dropend">
-      <a href="#">Reverse menu</a>
-      <ul>
-        <li class="dropend">
-          <a href="#">Reverse menu</a>
-          <ul>
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-          </ul>
-        </li>
-        <li class="dropstart">
-          <a href="#">Forward menu</a>
+  <ul class="dropdown-menu dropup">
+    ...
+  </ul>
+</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+### Side Aligned
+
+Use `.dropstart` and `.dropend` to attach the menu to the side of the trigger.  As indicated by the classnames, `.dropstart` attaches the submenu to the start side of the parent menu, while `.dropend` attaches on the end side. Simply place either class on the `.dropdown-menu` element. This can also be combined with `.dropup`.
+
+Submenus will continue to open in the same direction as the parent, unless [Submenu Alignment](#submenu-alignment) overrides are used.
+
+<div class="cf-example">
+  <div class="btn-toolbar flex-center">
+    <div class="btn-group me-1">
+      <button type="button" class="btn btn-info btn-group-end" data-cfw="dropdown">
+        <span class="caretstart" aria-hidden="true"></span> Dropstart
+      </button>
+      <ul class="dropdown-menu dropstart">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li>
+          <a href="#">Something else here</a>
           <ul>
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
           </ul>
         </li>
       </ul>
-    </li>
-    <li class="dropstart">
-      <a href="#">Forward menu</a>
-      <ul>
-        <li class="dropend">
-          <a href="#">Reverse menu</a>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-info btn-group-end" data-cfw="dropdown">
+        Dropend <span class="caretend" aria-hidden="true"></span>
+      </button>
+      <ul class="dropdown-menu dropend">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li>
+          <a href="#">Something else here</a>
           <ul>
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
           </ul>
         </li>
-        <li class="dropstart">
-          <a href="#">Forward menu</a>
-          <ul>
+      </ul>
+    </div>
+  </div>
+  <div class="btn-toolbar flex-center mt-1">
+    <div class="btn-group me-1">
+      <div class="btn-group">
+        <button type="button" class="btn btn-info btn-icon btn-group-end" data-cfw="dropdown" aria-label="Toggle Dropdown">
+          <span class="caretstart" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu dropstart">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li>
+            <a href="#">Something else here</a>
+            <ul>
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <button type="button" class="btn btn-info">Split Dropstart</button>
+    </div>
+    <div class="btn-group">
+      <button type="button" class="btn btn-info">Split Dropend</button>
+      <div class="btn-group">
+        <button type="button" class="btn btn-info btn-icon btn-group-end" data-cfw="dropdown" aria-label="Toggle Dropdown">
+          <span class="caretend" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu dropend">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li>
+            <a href="#">Something else here</a>
+            <ul>
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% capture highlight %}
+<div class="btn-group">
+  <button type="button" class="btn btn-info btn-group-end" data-cfw="dropdown">
+    <span class="caret" aria-hidden="true"></span> Dropstart
+  </button>
+  <ul class="dropdown-menu dropstart">
+    ...
+  </ul>
+</div>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-info btn-group-end" data-cfw="dropdown">
+    Dropend <span class="caret" aria-hidden="true"></span>
+  </button>
+  <ul class="dropdown-menu dropend">
+    ...
+  </ul>
+</div>
+
+<div class="btn-group">
+  <div class="btn-group">
+    <button type="button" class="btn btn-info" data-cfw="dropdown" aria-label="Toggle Dropdown">
+      <span class="caret" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu">
+      ...
+    </ul>
+  </div>
+  <button type="button" class="btn btn-info">Split Dropstart</button>
+</div>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-info">Split Dropend</button>
+  <div class="btn-group">
+    <button type="button" class="btn btn-info" data-cfw="dropdown" aria-label="Toggle Dropdown">
+      <span class="caret" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu">
+      ...
+    </ul>
+  </div>
+</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+### Submenu Alignment
+
+You can also use the available `.dropstart` and `.dropend` to switch submenu directions if needed.  Place either class on the `ol` or `ul` submenu list element.
+
+{% capture example %}
+<div class="dropdown">
+  <button type="button" class="btn btn-info" data-cfw="dropdown">
+    Dropdown <span class="caret" aria-hidden="true"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li class="dropdown-header">Dropdown header</li>
+    <li><a href="#">Action</a></li>
+    <li>
+      <a href="#">Start side menu</a>
+      <ul class="dropstart">
+        <li>
+          <a href="#">Start side menu</a>
+          <ul class="dropstart">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">End side menu</a>
+          <ul class="dropend">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">End side menu</a>
+      <ul class="dropend">
+        <li>
+          <a href="#">Start side menu</a>
+          <ul class="dropstart">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">End side menu</a>
+          <ul class="dropend">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
           </ul>
@@ -565,8 +704,8 @@ Use the `reference` option to help control the location of a dropdown menu.
 {% capture example %}
 <div class="d-flex">
   <div class="btn-group me-1">
-    <button type="button" class="btn">Default</button>
-    <button type="button" class="btn btn-icon btn-group-end" data-cfw="dropdown" aria-label="Toggle Dropdown">
+    <button type="button" class="btn btn-info">Default</button>
+    <button type="button" class="btn btn-info btn-icon btn-group-end" data-cfw="dropdown" aria-label="Toggle Dropdown">
       <span class="caret" aria-hidden="true"></span>
     </button>
     <ul class="dropdown-menu">
@@ -577,8 +716,8 @@ Use the `reference` option to help control the location of a dropdown menu.
   </div>
 
   <div class="btn-group">
-    <button type="button" class="btn">Reference</button>
-    <button type="button" class="btn btn-icon btn-group-end" data-cfw="dropdown" data-cfw-dropdown-reference="parent" aria-label="Toggle Dropdown">
+    <button type="button" class="btn btn-info">Reference</button>
+    <button type="button" class="btn btn-info btn-icon btn-group-end" data-cfw="dropdown" data-cfw-dropdown-reference="parent" aria-label="Toggle Dropdown">
       <span class="caret" aria-hidden="true"></span>
     </button>
     <ul class="dropdown-menu">

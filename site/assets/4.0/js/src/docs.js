@@ -233,9 +233,7 @@
 
     // Direction for player dropdown menus
     $(document, '[data-cfw="player"]').on('ready.cfw.player', function(e) {
-        $(e.target).closest('[data-cfw="player"]').find('.player-caption-wrapper').addClass('dropup dropend');
-        $(e.target).closest('[data-cfw="player"]').find('.player-script-wrapper').addClass('dropup dropend');
-        $(e.target).closest('[data-cfw="player"]').find('.player-text-describe-wrapper').addClass('dropup dropend');
+        $(e.target).closest('[data-cfw="player"]').find('.dropdown-menu').addClass('dropup dropreverse');
     });
 
     $(window).ready(function() {

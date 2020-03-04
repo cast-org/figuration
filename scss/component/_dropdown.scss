@@ -1,7 +1,6 @@
 // stylelint-disable selector-no-qualifying-type
 @if $enable-dropdown {
     // The dropdown wrapper (`<div>`) and submenu (`<ul>`)
-    .dropup,
     .dropdown,
     .dropdown-submenu {
         position: relative;
@@ -42,7 +41,7 @@
     .dropdown-submenu {
         > .dropdown-menu {
             top: 0;
-            left: 100%;
+            //left: 100%;
             margin-top: calc(#{$dropdown-border-width} - #{$dropdown-spacer} - #{$dropdown-padding-y});
         }
 
@@ -52,8 +51,8 @@
                 position: absolute;
                 top: 50%;
                 right: $dropdown-caret-spacer-x;
-                margin-top: -$dropdown-caret-width;
                 @include caret(end, $dropdown-caret-width, $dropdown-caret-color);
+                transform: translateY(-25%);
             }
 
             &.active:not(:hover):not(:focus)::after {
@@ -62,41 +61,10 @@
         }
     }
 
-    // Open state for the dropdown
-    // .open {
-    //     // Show the menu
-    //     > .dropdown-menu {
-    //         display: block;
-    //     }
-    // }
-
-    // Allow for menus to go left - aligning to right side of the control
-    .dropend {
-        .dropdown-menu {
-            right: 0;
-            left: auto;
-        }
-    }
-
-    // Submenu alignment
-    // The `.dropdown-subalign-*` classes are added automatically by the dropdown.js widget
-    // This removes the need for overly convoluted CSS rules
-    .dropdown-subalign-forward {
-        > .dropdown-menu {
-            right: auto;
-            left: 100%;
-            margin-right: -($dropdown-border-width * 2);
-            margin-left: 0;
-        }
-    }
-
-    .dropdown-subalign-reverse {
-        > .dropdown-menu {
-            right: 100%;
-            left: auto;
-            margin-right: 0;
-            margin-left: -($dropdown-border-width * 2);
-        }
+    // Allow for menus to in reverse direction - aligning to end side of the control
+    .dropreverse {
+        right: 0;
+        left: auto;
     }
 
     // Links within a dropdown menu
@@ -182,31 +150,42 @@
         }
     }
 
-    // Allow for dropdowns to go bottom up (aka, dropup-menu)
-    // Add .dropup after the standard .dropdown class
+    // Submenu and side alignments
+    // The `.dropdown-subalign-*` classes are added automatically by the dropdown.js widget
+    // This removes the need for overly convoluted CSS rules
+
+    .dropdown-subalign-reverse,
+    .dropstart {
+        top: 0;
+        right: 100%;
+        left: auto;
+        margin-top: 0;
+        margin-right: $dropdown-spacer;
+    }
+    .dropdown-subalign-reverse {
+        margin-right: 0;
+    }
+
+    .dropdown-subalign-forward,
+    .dropend {
+        top: 0;
+        right: auto;
+        left: 100%;
+        margin-top: 0;
+        margin-left: $dropdown-spacer;
+    }
+    .dropdown-subalign-forward {
+        margin-left: 0;
+    }
+
+    // Allow for dropdowns to go bottom up (aka, dropup menu)
+    // Add .dropup onto the .dropdown-menu element
     @if $enable-dropdown-dropup {
         .dropup {
-            // Reverse the caret
-            .caret {
-                &::after {
-                    @include caret-up();
-                }
-            }
-            &.open {
-                .caret {
-                    &::after {
-                        @include caret-down();
-                    }
-                }
-            }
-
-            // Different positioning for bottom up menu
-            .dropdown-menu {
-                top: auto;
-                bottom: 100%;
-                margin-top: 0;
-                margin-bottom: $dropdown-spacer;
-            }
+            top: auto;
+            bottom: 100%;
+            margin-top: 0;
+            margin-bottom: $dropdown-spacer;
 
             .dropdown-submenu {
                 > .dropdown-menu {
@@ -216,6 +195,13 @@
                     margin-bottom: calc(#{$dropdown-border-width} - #{$dropdown-spacer} - #{$dropdown-padding-y});
                 }
             }
+
+            &.dropstart,
+            &.dropend {
+                bottom: 0;
+                margin-bottom: 0;
+            }
+
         }
     }
 
@@ -237,8 +223,8 @@
                 position: absolute;
                 top: 50%;
                 left: $dropdown-back-spacer-x;
-                margin-top: -$dropdown-caret-width;
                 @include caret(start, $dropdown-back-width, $dropdown-back-color);
+                transform: translateY(-25%);
             }
         }
 

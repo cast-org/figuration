@@ -126,51 +126,119 @@
                 <li><a href="#3-3-2">Something else here</a></li>
             </ul>
         </li>
-        <li class="dropdown-divider"></li>
-        <li><a href="#3-4">Separated link</a></li>
+    </ul>
+</div>
+
+<div class="dropdown mb-1">
+    <a href="#" id="dropdown4" class="btn btn-info" role="button" data-cfw="dropdown" data-cfw-dropdown-container="#container">
+        Container Dropup <span class="caretup" aria-hidden="true"></span>
+    </a>
+    <ul class="dropdown-menu dropup">
+        <li class="dropdown-header">Sample Header</li>
+        <li><a href="#3-0">Action</a></li>
+        <li><a href="#3-1" class="active">Active action</a></li>
+        <li><a href="#3-2" class="disabled" tabindex="-1">Disabled action</a></li>
+        <li>
+            <a href="#3-3">Something else here</a>
+            <ul>
+                <li><a href="#3-3-0">Action</a></li>
+                <li><a href="#3-3-1">Another action</a></li>
+                <li><a href="#3-3-2">Something else here</a></li>
+            </ul>
+        </li>
     </ul>
 </div>
 
 <div class="d-flex flex-center">
-    <div class="dropdown">
+    <div class="dropdown me-0_25">
         <button type="button" class="btn" data-cfw="dropdown">
-            Dropdown <span class="caret" aria-hidden="true"></span>
+            Dropdown Dir Parent <span class="caret" aria-hidden="true"></span>
         </button>
         <ul class="dropdown-menu">
             <li class="dropdown-header">Dropdown header</li>
             <li><a href="#">Action</a></li>
-            <li class="dropend">
-                <a href="#">Reverse menu</a>
-                <ul>
-                    <li class="dropend">
-                        <a href="#">Reverse menu</a>
-                        <ul>
+            <li>
+                <a href="#">Start side menu</a>
+                <ul class="dropstart">
+                    <li>
+                        <a href="#">Start side menu</a>
+                        <ul class="dropstart">
                             <li><a href="#">Action</a></li>
                             <li><a href="#">Another action</a></li>
                         </ul>
                     </li>
-                    <li class="dropstart">
-                        <a href="#">Forward menu</a>
-                        <ul>
+                    <li>
+                        <a href="#">End side menu</a>
+                        <ul class="dropend">
                             <li><a href="#">Action</a></li>
                             <li><a href="#">Another action</a></li>
                         </ul>
                     </li>
                 </ul>
             </li>
-            <li class="dropstart">
-                <a href="#">Forward menu</a>
-                <ul>
-                    <li class="dropend">
-                        <a href="#">Reverse menu</a>
-                        <ul>
+            <li>
+                <a href="#">End side menu</a>
+                <ul class="dropend">
+                    <li>
+                        <a href="#">Start side menu</a>
+                        <ul class="dropstart">
                             <li><a href="#">Action</a></li>
                             <li><a href="#">Another action</a></li>
                         </ul>
                     </li>
-                    <li class="dropstart">
-                        <a href="#">Forward menu</a>
-                        <ul>
+                    <li>
+                        <a href="#">End side menu</a>
+                        <ul class="dropend">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li><a href="#" class="disabled" tabindex="-1" aria-disabled="true">Separated link</a></li>
+        </ul>
+    </div>
+
+    <div class="dropdown">
+        <button type="button" class="btn" data-cfw="dropdown">
+            Dropdown Dir <span class="caret" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li class="dropdown-header">Dropdown header</li>
+            <li><a href="#">Action</a></li>
+            <li>
+                <a href="#">Start side menu</a>
+                <ul class="dropstart">
+                    <li>
+                        <a href="#">Start side menu</a>
+                        <ul class="dropstart">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">End side menu</a>
+                        <ul class="dropend">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">End side menu</a>
+                <ul class="dropend">
+                    <li>
+                        <a href="#">Start side menu</a>
+                        <ul class="dropstart">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">End side menu</a>
+                        <ul class="dropend">
                             <li><a href="#">Action</a></li>
                             <li><a href="#">Another action</a></li>
                         </ul>
@@ -187,13 +255,41 @@
     <a href="#">Outer link</a>
 </div>
 
-<div class="dropdown dropend float-end">
+<div class="dropdown float-end">
     <button type="button" class="btn btn-primary" data-cfw="dropdown">
-        Reverse Dropdown YY <span class="caret" aria-hidden="true"></span>
+        Reverse Dropup <span class="caretup" aria-hidden="true"></span>
     </button>
-    <ul class="dropdown-menu">
+    <ul class="dropdown-menu dropup dropreverse">
         <li class="dropdown-header">Dropdown header</li>
-        <li><a href="#">Action</a></li>
+        <li><a href="#">Action UR</a></li>
+        <li><a href="#">Another action</a></li>
+        <li>
+           <a href="#">Something else here</a>
+            <ul>
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li>
+                    <a href="#">Something else here</a>
+                    <ul>
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown-divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </li>
+        <li class="dropdown-divider"></li>
+        <li><a href="#" class="disabled" tabindex="-1" aria-disabled="true">Disabled link</a></li>
+    </ul>
+</div>
+<div class="dropdown float-end">
+    <button type="button" class="btn btn-primary" data-cfw="dropdown">
+        Reverse Dropdown <span class="caret" aria-hidden="true"></span>
+    </button>
+    <ul class="dropdown-menu dropreverse">
+        <li class="dropdown-header">Dropdown header</li>
+        <li><a href="#">Action R</a></li>
         <li><a href="#">Another action</a></li>
         <li>
            <a href="#">Something else here</a>
@@ -238,6 +334,148 @@
         <li><a href="#">Another action</a></li>
         <li><a href="#">Something else here</a></li>
     </ul>
+</div>
+
+<div class="text-center p-1 m-2 border">
+    Directions:<br>
+
+    <span class="dropdown d-inline-block">
+        <button type="button" class="btn" data-cfw="dropdown">
+            Default <span class="caret" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li>
+                <a href="#">Something else here</a>
+                <ul>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                </ul>
+            </li>
+        </ul>
+    </span>
+
+    <span class="dropdown d-inline-block">
+        <button type="button" class="btn" data-cfw="dropdown">
+            Up <span class="caretup" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu dropup">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li>
+                <a href="#">Something else here</a>
+                <ul>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                </ul>
+            </li>
+        </ul>
+    </span>
+
+    <span class="dropdown d-inline-block">
+        <button type="button" class="btn" data-cfw="dropdown">
+            Reverse <span class="caret" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu dropreverse">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li>
+                <a href="#">Something else here</a>
+                <ul>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                </ul>
+            </li>
+        </ul>
+    </span>
+
+    <span class="dropdown d-inline-block">
+        <button type="button" class="btn" data-cfw="dropdown">
+            Up Reverse <span class="caretup" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu dropup dropreverse">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li>
+                <a href="#">Something else here</a>
+                <ul>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                </ul>
+            </li>
+        </ul>
+    </span>
+
+    <br>
+
+    <span class="dropdown d-inline-block">
+        <button type="button" class="btn" data-cfw="dropdown">
+            Start <span class="caretstart" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu dropstart">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li>
+                <a href="#">Something else here</a>
+                <ul>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                </ul>
+            </li>
+        </ul>
+    </span>
+
+    <span class="dropdown d-inline-block">
+        <button type="button" class="btn" data-cfw="dropdown">
+            Start Up <span class="caretup" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu dropup dropstart">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li>
+                <a href="#">Something else here</a>
+                <ul>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                </ul>
+            </li>
+        </ul>
+    </span>
+
+    <span class="dropdown d-inline-block">
+        <button type="button" class="btn" data-cfw="dropdown">
+            End <span class="caretend" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu dropend">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li>
+                <a href="#">Something else here</a>
+                <ul>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                </ul>
+            </li>
+        </ul>
+    </span>
+
+    <span class="dropdown d-inline-block">
+        <button type="button" class="btn" data-cfw="dropdown">
+            End Up <span class="caretup" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu dropup dropend">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li>
+                <a href="#">Something else here</a>
+                <ul>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                </ul>
+            </li>
+        </ul>
+    </span>
 </div>
 
 </body>
