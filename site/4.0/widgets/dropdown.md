@@ -234,7 +234,7 @@ Add `.disabled` to the `a` item in the dropdown to make them visually _appear_ d
 
 ### Active Menu Items
 
-Add `.active` to the `li` item in the dropdown to show a visual emphasis.
+Add `.active` to the child of the `li` item in the dropdown to show a visual emphasis.
 
 To convey the active state to assistive technologies, use the `aria-current` attribute &mdash; using the `page` value for the current page, or `true` for the current item in a set.
 
