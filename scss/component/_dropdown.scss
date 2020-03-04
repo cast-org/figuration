@@ -67,23 +67,6 @@
         left: auto;
     }
 
-    // Submenu alignment
-    // The `.dropdown-subalign-*` classes are added automatically by the dropdown.js widget
-    // This removes the need for overly convoluted CSS rules
-    .dropdown-subalign-forward {
-        right: auto;
-        left: 100%;
-        margin-right: 0;
-        margin-left: 0;
-    }
-
-    .dropdown-subalign-reverse {
-        right: 100%;
-        left: auto;
-        margin-right: 0;
-        margin-left: 0;
-    }
-
     // Links within a dropdown menu
     // Because we support nested dropdowns, it is currently required to use a
     // list for semantic markup, but we include a `.dropdown-item`
@@ -167,29 +150,32 @@
         }
     }
 
+    // Submenu and side alignments
+    // The `.dropdown-subalign-*` classes are added automatically by the dropdown.js widget
+    // This removes the need for overly convoluted CSS rules
 
+    .dropdown-subalign-reverse,
     .dropstart {
         top: 0;
         right: 100%;
         left: auto;
         margin-top: 0;
         margin-right: $dropdown-spacer;
-
-        .dropdown-menu {
-            margin-right: 0;
-        }
+    }
+    .dropdown-subalign-reverse {
+        margin-right: 0;
     }
 
+    .dropdown-subalign-forward,
     .dropend {
         top: 0;
         right: auto;
         left: 100%;
         margin-top: 0;
         margin-left: $dropdown-spacer;
-
-        .dropdown-menu {
-            margin-left: 0;
-        }
+    }
+    .dropdown-subalign-forward {
+        margin-left: 0;
     }
 
     // Allow for dropdowns to go bottom up (aka, dropup menu)
