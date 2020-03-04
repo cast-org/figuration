@@ -482,14 +482,6 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
-        <td><code>$enable-input-group-addon</code></td>
-        <td>boolean</td>
-        <td><code>true</code></td>
-        <td>
-          Enable the generation of input group addon classes.
-        </td>
-      </tr>
-      <tr>
         <td><code>$enable-input-group-text</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
@@ -506,27 +498,27 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
-        <td><code>$input-group-addon-color</code></td>
+        <td><code>$input-group-text-color</code></td>
         <td>string</td>
         <td><code>$input-color</code></td>
         <td>
-          Input group addon text color.
+          Input group textual addon color.
         </td>
       </tr>
       <tr>
-        <td><code>$input-group-addon-bg</code></td>
+        <td><code>$input-group-text-bg</code></td>
         <td>string</td>
         <td><code>$uibase-50</code></td>
         <td>
-          Input group addon background color.
+          Input group textual addon background color.
         </td>
       </tr>
       <tr>
-        <td><code>$input-group-addon-border-color</code></td>
+        <td><code>$input-group-text-border-color</code></td>
         <td>string</td>
         <td><code>$input-border-color</code></td>
         <td>
-          Input group addon border color.
+          Input group textual addon border color.
         </td>
       </tr>
     </tbody>
