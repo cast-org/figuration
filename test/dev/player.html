@@ -28,9 +28,7 @@ function myLog(item) {
 
 // Direction for player dropdown menus
 $(document, '[data-cfw="player"]').on('ready.cfw.player', function(e) {
-    $(e.target).closest('[data-cfw="player"]').find('.player-caption-wrapper').addClass('dropup dropend');
-    $(e.target).closest('[data-cfw="player"]').find('.player-script-wrapper').addClass('dropup dropend');
-    $(e.target).closest('[data-cfw="player"]').find('.player-text-describe-wrapper').addClass('dropup dropend');
+    $(e.target).closest('[data-cfw="player"]').find('.dropdown-menu').addClass('dropup dropreverse');
 });
 </script>
 
@@ -514,7 +512,7 @@ body {
             <span class="player-volume" data-cfw-player="volume">
                 <input type="range" class="form-range" aria-label="Volume">
             </span>
-            <div class="dropup dropleft" style="display: inline-block; position: relative;">
+            <div style="display: inline-block; position: relative;">
                 <button type="button" class="btn btn-icon player-speed" data-cfw="dropdown" data-cfw-dropdown-target="#speed0" title="Playback speed" aria-label="Playback speed"><span class="fas fa-fw fa-sort"></span></button>
                 <ul class="dropdown" id="speed0" style="min-width: 75px; width: 75px; text-align: center;">
                     <li><a href="#" onclick="javascript:$(this).closest('[data-cfw]').CFW_Player('speed', 0.25); return false;">0.25&times;</a></li>

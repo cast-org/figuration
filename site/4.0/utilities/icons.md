@@ -9,24 +9,17 @@ group: utilities
 
 ${toc}
 
-## Caret Icon
+## Caret Icons
 
-Use carets to indicate some meaning of functionality or direction. Note that the default caret will reverse automatically in [dropup menus]({{ site.path }}/{{ version.docs }}/widgets/dropdown/).
+Use carets to indicate some meaning of functionality or direction.
 
-If inside of an element marked as `.open` the caret will reverse direction accordingly to indicate state.
+If used inside of an element marked as `.open` the caret will reverse direction accordingly to indicate state.
 
 {% capture example %}
 <span class="caret" aria-hidden="true"></span>
-<span class="open">
-  <span class="caret" aria-hidden="true"></span>
-</span>
-&mdash;
-<span class="dropup">
-  <span class="caret" aria-hidden="true"></span>
-</span>
-<span class="dropup open">
-  <span class="caret" aria-hidden="true"></span>
-</span>
+<span class="caretup" aria-hidden="true"></span>
+<span class="caretstart" aria-hidden="true"></span>
+<span class="caretend" aria-hidden="true"></span>
 {% endcapture %}
 {% renderExample example %}
 
@@ -129,7 +122,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td>boolean</td>
         <td><code>true</code></td>
         <td>
-          Enable generation of the caret icon utility class.
+          Enable generation of the caret icon utility classes.
         </td>
       </tr>
       <tr>

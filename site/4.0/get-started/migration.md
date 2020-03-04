@@ -116,9 +116,14 @@ ${toc}
 - Dropped button widget in favor of CSS input buttons.  Single state toggles can be replaced with checkbox `.btn-check` variant.
 
 ### Dropdown
-- Dropdown has been reworked to use a recursive model, and now requires [Popper.js](https://popper.js.org/) for positioning, meaning changes to the available options.
-- Horizontal menu direction classes have been updated to use the following alternates: `.dropend`, `.dropstart`, replacing the previous `.dropdown-menu-reverse` and `.dropdown-menu-forward` classes.
-- The classed used to show menus, `.open`, is now used on the `.dropdown-menu` iteself, instead of the parent container.
+- Dropdown has been reworked to use a recursive model, and now uses [Popper.js](https://popper.js.org/) for advanced positioning.  This also had an affect of changing all the available options.
+  - There are positioning fallbacks in place if dynamic placement is disabled, or Popper is not available.
+- Menu direction classes have been expanded to use the following alternates: `.dropup`, `.dropreverse`, `.dropend`, `.dropstart`, replacing the previous `.dropdown-menu-reverse` and `.dropdown-menu-forward` classes.
+  - The directions classes are now applied directly to the `.dropdown-menu` element, or the submenu `ol`/`ul` list elements, rather than it's parent container.
+  - `.dropreverse` replaces `.dropdown-menu-reverse` on primary menus.
+  - `.dropend` replaces `.dropdown-menu-reverse` on submenus.
+  - `.dropstart` replaces `.dropdown-menu-forward` on all menus.
+- The class used to show menus, `.open`, is now used on the `.dropdown-menu` iteself, instead of the parent container.
 
 ### Lazy
 - Dropped support for jQuery animations as the slim build does not support them.  Added an optional fade-in CSSS animation.
@@ -127,16 +132,17 @@ ${toc}
 - Dropped support for sliders using the Slider widget, and added support for `<input type="range">` elements.  A few improvements on the accesibility of the sliders were also added.
 
 ### Popover
-- Popover now require [Popper.js](https://popper.js.org/) for positioning, replacing our custom code.  This also means changes to the available options.
+- Popover now requires [Popper.js](https://popper.js.org/) for positioning, replacing our custom code.  This also means changes to the available options.
 
 ### Slider
 - Dropped the slider widget as a bundled plugin.  This has been replaced with the `.form-range` styled `<input type="range">` element.
 
 ### Tooltip
-- Tooltip now require [Popper.js](https://popper.js.org/) for positioning, replacing our custom code.  This also means changes to the available options.
+- Tooltip now requires [Popper.js](https://popper.js.org/) for positioning, replacing our custom code.  This also means changes to the available options.
 
 ## Documentation
 - We have stopped using Jekyll, and changed to using [Eleventy](https://11ty.dev) to generate the documentation.
 
 ## Build Tools
 - Figuration now requires Node.js v10 or newer if using our build tools.  This is due to the minimum Node.js requirement for `grunt-sass`.
+- The `grunt` directory has been removed, and replaced with a `build` directory.

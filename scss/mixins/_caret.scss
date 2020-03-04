@@ -24,6 +24,7 @@
 }
 
 @mixin caret-start($width: $caret-border-width, $color: null) {
+    margin-top: $width / -2;
     @if ($color != null) {
         $color:  #{" " + $color};
     }
@@ -34,6 +35,7 @@
 }
 
 @mixin caret-end($width: $caret-border-width, $color: null) {
+    margin-top: $width / -2;
     @if ($color != null) {
         $color:  #{" " + $color};
     }
