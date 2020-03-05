@@ -11,45 +11,33 @@ ${toc}
 
 ## Basic Example
 
-Place one add-on or button on either side of an input. You may also place one on both sides of an input. Remember to place `<label>`s outside the input group.
+Place one textual addon or button on either side of an input. You may also place one on both sides of an input. Remember to place `<label>`s outside the input group.
 
 {% capture example %}
 <div class="input-group mb-1">
-  <div class="input-group-addon">
-    <span class="input-group-text" id="basic-addon1">@</span>
-  </div>
+  <span class="input-group-text" id="basic-addon1">@</span>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
 </div>
 
 <div class="input-group mb-1">
   <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-  <div class="input-group-addon">
-     <span class="input-group-text" id="basic-addon2">@example.com</span>
-   </div>
+  <span class="input-group-text" id="basic-addon2">@example.com</span>
 </div>
 
 <label for="basic-url">Your vanity URL</label>
 <div class="input-group mb-1">
-  <div class="input-group-addon">
-    <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-  </div>
+  <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
   <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
 </div>
 
 <div class="input-group mb-1">
-  <div class="input-group-addon">
-    <span class="input-group-text">$</span>
-  </div>
+  <span class="input-group-text">$</span>
   <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-  <div class="input-group-addon">
-    <span class="input-group-text">.00</span>
-  </div>
+  <span class="input-group-text">.00</span>
 </div>
 
 <div class="input-group">
-  <div class="input-group-addon">
-    <span class="input-group-text">With textarea</span>
-  </div>
+  <span class="input-group-text">With textarea</span>
   <textarea class="form-control" aria-label="With textarea"></textarea>
 </div>
 {% endcapture %}
@@ -61,9 +49,7 @@ While multiple `<input>`s are supported visually, validation styles are only ava
 
 {% capture example %}
 <div class="input-group">
-  <div class="input-group-addon">
-    <span class="input-group-text">First and last name</span>
-  </div>
+  <span class="input-group-text">First and last name</span>
   <input type="text" aria-label="First name" class="form-control">
   <input type="text" aria-label="Last name" class="form-control">
 </div>
@@ -76,9 +62,7 @@ Input groups wrap by default in order to accommodate the use of custom form fiel
 
 {% capture example %}
 <div class="input-group flex-nowrap">
-  <div class="input-group-addon">
-    <span class="input-group-text" id="wrap-addon">@</span>
-  </div>
+  <span class="input-group-text" id="wrap-addon">@</span>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="wrap-addon">
 </div>
 {% endcapture %}
@@ -92,146 +76,114 @@ Add the relative form sizing classes to the `.input-group` itself and contents w
 
 {% capture example %}
 <div class="input-group input-group-xsmall mb-1">
-  <div class="input-group-addon">
-    <span class="input-group-text" id="inputGroup-sizing-xs">Extra Small</span>
-  </div>
+  <span class="input-group-text" id="inputGroup-sizing-xs">Extra Small</span>
   <input type="text" class="form-control" aria-label="Extra Small" aria-describedby="inputGroup-sizing-xs">
 </div>
 
 <div class="input-group input-group-small mb-1">
-  <div class="input-group-addon">
-    <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
-  </div>
+  <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
   <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
 </div>
 
 <div class="input-group mb-1">
-  <div class="input-group-addon">
-    <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
-  </div>
+  <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
   <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
 </div>
 
 <div class="input-group input-group-large mb-1">
-  <div class="input-group-addon">
-    <span class="input-group-text" id="inputGroup-sizing-large">Large</span>
-  </div>
+  <span class="input-group-text" id="inputGroup-sizing-large">Large</span>
   <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-large">
 </div>
 
 <div class="input-group input-group-xlarge mb-1">
-  <div class="input-group-addon">
-    <span class="input-group-text" id="inputGroup-sizing-xlarge">Extra Large</span>
-  </div>
+  <span class="input-group-text" id="inputGroup-sizing-xlarge">Extra Large</span>
   <input type="text" class="form-control" aria-label="Extra Large" aria-describedby="inputGroup-sizing-xlarge">
 </div>
 {% endcapture  %}
 {% renderExample example %}
 
-## Addons
+## Textual Addon
 
-Place an add-on on either side of an input by using the `.input-group-addon` container.
+Use `.input-group-text` to size and align text, with some additional background color and border.
 
-### Text
-
-Inside the addon container, use `.input-group-text` to size and align text, with some additional background color and border.
+Sometimes an addon or control, like a button, is not the last item within the input group. You can add `.input-group-end` to the item to keep its `border-radius` from being reset.
 
 {% capture example %}
 <div class="input-group mb-1">
-  <div class="input-group-addon">
-    <span class="input-group-text" id="text-addon-start">Start side addon</span>
-  </div>
+  <span class="input-group-text" id="text-addon-start">Start side addon</span>
   <input type="text" class="form-control" aria-label="Start side addon" aria-describedby="text-addon-start">
 </div>
 
 <div class="input-group">
   <input type="text" class="form-control" aria-label="End side addon" aria-describedby="text-addon-end">
-  <div class="input-group-addon">
-    <span class="input-group-text" id="text-addon-end">End side addon</span>
-  </div>
+  <span class="input-group-text" id="text-addon-end">End side addon</span>
 </div>
 {% endcapture %}
 {% renderExample example %}
 
-### Checkbox and Radio Inputs
+## Checkbox and Radio Inputs
 
-Place any checkbox or radio option within an input group's addon instead of text.
+Place any checkbox or radio option within an input group's textual addon instead of text.
 
 {% capture example %}
 <div class="input-group mb-1">
-  <div class="input-group-addon">
-    <span class="input-group-text">
-      <input type="checkbox" aria-label="Checkbox for following text input">
-    </span>
-  </div>
+  <span class="input-group-text">
+    <input type="checkbox" aria-label="Checkbox for following text input">
+  </span>
   <input type="text" class="form-control" aria-label="Text input with checkbox">
 </div>
 
 <div class="input-group">
-  <div class="input-group-addon">
-    <span class="input-group-text">
-      <input type="radio" aria-label="Radio button for following text input">
-    </span>
-  </div>
+  <span class="input-group-text">
+    <input type="radio" aria-label="Radio button for following text input">
+  </span>
   <input type="text" class="form-control" aria-label="Text input with radio button">
 </div>
 {% endcapture %}
 {% renderExample example %}
 
-### Multiple Addons
+## Multiple Addons
 
-Multiple add-ons are supported and can be mixed with checkbox and radio input versions.
+Multiple textual addons are supported and can be mixed with checkbox and radio input versions.
 
 {% capture example %}
 <div class="input-group mb-1">
-  <div class="input-group-addon">
-    <span class="input-group-text">$</span>
-    <span class="input-group-text">0.00</span>
-  </div>
+  <span class="input-group-text">$</span>
+  <span class="input-group-text">0.00</span>
   <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
 </div>
 
 <div class="input-group">
   <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
-  <div class="input-group-addon">
-    <span class="input-group-text">$</span>
-    <span class="input-group-text">0.00</span>
-  </div>
+  <span class="input-group-text">$</span>
+  <span class="input-group-text">0.00</span>
 </div>
 {% endcapture %}
 {% renderExample example %}
 
-### Buttons
+## Buttons
 
 {% capture example %}
 <div class="input-group mb-1">
-  <div class="input-group-addon">
-    <button class="btn btn-outline-secondary" type="button" id="button-addon-1">Button</button>
-  </div>
+  <button class="btn btn-outline-secondary" type="button" id="button-addon-1">Button</button>
   <input type="text" class="form-control" placeholder="" aria-label="Text input with button addon" aria-describedby="button-addon-1">
 </div>
 
 <div class="input-group mb-1">
   <input type="text" class="form-control" placeholder="" aria-label="Text input with button addon" aria-describedby="button-addon-2">
-  <div class="input-group-addon">
-    <button class="btn btn-outline-secondary" type="button" id="button-addon-2">Button</button>
-  </div>
+  <button class="btn btn-outline-secondary" type="button" id="button-addon-2">Button</button>
 </div>
 
 <div class="input-group mb-1">
-  <div class="input-group-addon" id="button-addon-3">
-    <button class="btn btn-outline-secondary" type="button">Button</button>
-    <button class="btn btn-outline-secondary" type="button">Button</button>
-  </div>
-  <input type="text" class="form-control" placeholder="" aria-label="Text input with two button addons" aria-describedby="button-addon-3">
+  <button id="button-addon-3a" class="btn btn-outline-secondary" type="button">Button</button>
+  <button id="button-addon-3b" class="btn btn-outline-secondary" type="button">Button</button>
+  <input type="text" class="form-control" placeholder="" aria-label="Text input with two button addons" aria-describedby="button-addon-3a button-addon-3b">
 </div>
 
 <div class="input-group">
-  <input type="text" class="form-control" placeholder="" aria-label="Text input with two button addons" aria-describedby="button-addon-4">
-  <div class="input-group-addon" id="button-addon-4">
-    <button class="btn btn-outline-secondary" type="button">Button</button>
-    <button class="btn btn-outline-secondary" type="button">Button</button>
-  </div>
+  <input type="text" class="form-control" placeholder="" aria-label="Text input with two button addons" aria-describedby="button-addon-4a button-addon-4b">
+  <button id="button-addon-4a" class="btn btn-outline-secondary" type="button">Button</button>
+  <button id="button-addon-4b" class="btn btn-outline-secondary" type="button">Button</button>
 </div>
 {% endcapture %}
 {% renderExample example %}
@@ -240,18 +192,14 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
 
 {% capture example %}
 <div class="input-group">
-  <div class="input-group-addon">
-    <div class="btn-check">
-      <input id="btn-check-0" type="checkbox" class="btn-check-input">
-      <label for="btn-check-0" class="btn">Checkbox Button</label>
-    </div>
+  <div class="btn-check">
+    <input id="btn-check-0" type="checkbox" class="btn-check-input">
+    <label for="btn-check-0" class="btn">Checkbox Button</label>
   </div>
   <input type="text" aria-label="Text input with checkbox buttons" class="form-control">
-  <div class="input-group-addon">
-    <div class="btn-check">
-      <input id="btn-check-1" type="checkbox" class="btn-check-input">
-      <label for="btn-check-1" class="btn">Checkbox Button</label>
-    </div>
+  <div class="btn-check">
+    <input id="btn-check-1" type="checkbox" class="btn-check-input">
+    <label for="btn-check-1" class="btn">Checkbox Button</label>
   </div>
 </div>
 {% endcapture %}
@@ -259,35 +207,29 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
 
 ### Buttons with Dropdowns
 
-Since the dropdown toggle button is not the last item within the addon container. You can add `.input-group-end` to the toggle button to keep its `border-radius` from being reset.
-
 {% capture example %}
 <div class="input-group mb-1">
-  <div class="input-group-addon">
-    <button type="button" class="btn" data-cfw="dropdown">Dropdown <span class="caret" aria-hidden="true"></span></button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li role="separator" class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
-  </div>
+  <button type="button" class="btn" data-cfw="dropdown">Dropdown <span class="caret" aria-hidden="true"></span></button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li role="separator" class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">Separated link</a></li>
+  </ul>
   <input type="text" class="form-control" aria-label="Text input with dropdown button">
 </div>
 
 <div class="input-group">
   <input type="text" class="form-control" aria-label="Text input with dropdown button">
-  <div class="input-group-addon dropend">
-    <button type="button" class="btn input-group-end" data-cfw="dropdown">Dropdown <span class="caret" aria-hidden="true"></span></button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li role="separator" class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
-  </div>
+  <button type="button" class="btn input-group-end" data-cfw="dropdown">Dropdown <span class="caret" aria-hidden="true"></span></button>
+  <ul class="dropdown-menu dropreverse">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li role="separator" class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">Separated link</a></li>
+  </ul>
 </div>
 {% endcapture %}
 {% renderExample example %}
@@ -296,39 +238,35 @@ Since the dropdown toggle button is not the last item within the addon container
 
 {% capture example %}
 <div class="input-group mb-1">
-  <div class="input-group-addon">
-    <button type="button" class="btn">Action</button>
-    <button type="button" class="btn btn-icon" data-cfw="dropdown">
-      <span class="sr-only">Toggle Dropdown</span>
-      <span class="caret" aria-hidden="true"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li role="separator" class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
-  </div>
+  <button type="button" class="btn">Action</button>
+  <button type="button" class="btn btn-icon" data-cfw="dropdown">
+    <span class="sr-only">Toggle Dropdown</span>
+    <span class="caret" aria-hidden="true"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li role="separator" class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">Separated link</a></li>
+  </ul>
   <input type="text" class="form-control" aria-label="Text input with segmented button dropdown">
 </div>
 
 <div class="input-group">
   <input type="text" class="form-control" aria-label="Text input with segmented button dropdown">
-  <div class="input-group-addon dropend">
-    <button type="button" class="btn">Action</button>
-    <button type="button" class="btn btn-icon input-group-end" data-cfw="dropdown">
-      <span class="sr-only">Toggle Dropdown</span>
-      <span class="caret" aria-hidden="true"></span>
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li role="separator" class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Separated link</a></li>
-    </ul>
-  </div>
+  <button type="button" class="btn">Action</button>
+  <button type="button" class="btn btn-icon input-group-end" data-cfw="dropdown">
+    <span class="sr-only">Toggle Dropdown</span>
+    <span class="caret" aria-hidden="true"></span>
+  </button>
+  <ul class="dropdown-menu dropreverse">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li role="separator" class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">Separated link</a></li>
+  </ul>
 </div>
 {% endcapture %}
 {% renderExample example %}
@@ -341,9 +279,7 @@ Input groups include support for styled selects and file inputs. Browser default
 
 {% capture example %}
 <div class="input-group mb-1">
-  <div class="input-group-addon">
-    <span class="input-group-text" id="form-select-1-addon">Options</span>
-  </div>
+  <span class="input-group-text" id="form-select-1-addon">Options</span>
   <select class="form-control" id="form-select-1" aria-describedby="form-select-1-addon">
     <option selected>Choose...</option>
     <option value="1">One</option>
@@ -359,15 +295,11 @@ Input groups include support for styled selects and file inputs. Browser default
     <option value="2">Two</option>
     <option value="3">Three</option>
   </select>
-  <div class="input-group-addon">
-    <span class="input-group-text" id="form-select-2-addon">Options</span>
-  </div>
+  <span class="input-group-text" id="form-select-2-addon">Options</span>
 </div>
 
 <div class="input-group mb-1">
-  <span class="input-group-addon">
-    <button class="btn btn-primary" type="button">Button</button>
-  </span>
+  <button class="btn btn-primary" type="button">Button</button>
   <select class="form-control" id="form-select-3" aria-label="Example select with button addon">
     <option selected>Choose...</option>
     <option value="1">One</option>
@@ -383,9 +315,7 @@ Input groups include support for styled selects and file inputs. Browser default
     <option value="2">Two</option>
     <option value="3">Three</option>
   </select>
-  <span class="input-group-addon">
-    <button class="btn btn-primary" type="button">Button</button>
-  </span>
+  <button class="btn btn-primary" type="button">Button</button>
 </div>
 {% endcapture %}
 {% renderExample example %}
@@ -394,9 +324,7 @@ Input groups include support for styled selects and file inputs. Browser default
 
 {% capture example %}
 <div class="input-group mb-1">
-  <div class="input-group-addon">
-    <span class="input-group-text">Upload</span>
-  </div>
+  <span class="input-group-text">Upload</span>
   <div class="form-file">
     <input type="file" class="form-file-input" id="form-file-1">
     <label class="form-file-label" for="form-file-1">
@@ -414,15 +342,11 @@ Input groups include support for styled selects and file inputs. Browser default
       <span class="form-file-button">Browse</span>
     </label>
   </div>
-  <div class="input-group-addon">
-    <span class="input-group-text">Upload</span>
-  </div>
+  <span class="input-group-text">Upload</span>
 </div>
 
 <div class="input-group mb-1">
-  <span class="input-group-addon">
-    <button class="btn btn-primary" type="button">Button</button>
-  </span>
+  <button class="btn btn-primary" type="button">Button</button>
   <div class="form-file">
     <input type="file" class="form-file-input" id="form-file-3">
     <label class="form-file-label" for="form-file-3">
@@ -440,9 +364,7 @@ Input groups include support for styled selects and file inputs. Browser default
       <span class="form-file-button">Browse</span>
     </label>
   </div>
-  <span class="input-group-addon">
-    <button class="btn btn-primary" type="button">Button</button>
-  </span>
+  <button class="btn btn-primary" type="button">Button</button>
 </div>
 {% endcapture %}
 {% renderExample example %}

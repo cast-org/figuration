@@ -76,9 +76,7 @@ Mix input groups with button groups in your toolbars. Similar to the example abo
     <button type="button" class="btn">4</button>
   </div>
   <div class="input-group">
-    <div class="input-group-addon">
-      <span class="input-group-text" id="btnGroupAddon">@</span>
-    </div>
+    <span class="input-group-text" id="btnGroupAddon">@</span>
     <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon">
   </div>
 </div>
@@ -91,9 +89,7 @@ Mix input groups with button groups in your toolbars. Similar to the example abo
     <button type="button" class="btn">4</button>
   </div>
   <div class="input-group">
-    <div class="input-group-addon">
-      <span class="input-group-text" id="btnGroupAddon2">@</span>
-    </div>
+    <span class="input-group-text" id="btnGroupAddon2">@</span>
     <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
   </div>
 </div>

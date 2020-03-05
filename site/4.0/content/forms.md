@@ -886,9 +886,7 @@ The example below uses a flexbox utility to vertically center the contents and c
     <div class="col-auto mb-0_5">
       <label class="sr-only" for="autosize-user">Username</label>
       <div class="input-group">
-        <div class="input-group-addon">
-          <div class="input-group-text">@</div>
-        </div>
+        <div class="input-group-text">@</div>
         <input type="text" class="form-control" id="autosize-user" placeholder="Username">
       </div>
     </div>
@@ -918,9 +916,7 @@ Here is the same form, but this time using specified column widths
     <div class="col-sm-3 mb-0_5">
       <label class="sr-only" for="specsize-user">Username</label>
       <div class="input-group">
-        <div class="input-group-addon">
-          <div class="input-group-text">@</div>
-        </div>
+        <div class="input-group-text">@</div>
         <input type="text" class="form-control" id="specsize-user" placeholder="Username">
       </div>
     </div>
@@ -981,9 +977,7 @@ You may need to manually address the width and alignment of individual form cont
 
   <label class="sr-only" for="inline-user">Username</label>
   <div class="input-group mb-0_5 me-sm-0_5">
-    <div class="input-group-addon">
-      <div class="input-group-text">@</div>
-    </div>
+    <div class="input-group-text">@</div>
     <input type="text" class="form-control" id="inline-user" placeholder="Username">
   </div>
 
@@ -1067,9 +1061,7 @@ Custom feedback styles apply custom colors, borders, focus styles, feedback mess
     <div class="col-md-4 mb-1">
       <label for="validate-custom-3">Username</label>
       <div class="input-group">
-        <div class="input-group-addon">
-          <span class="input-group-text" id="validate-custom-4">@</span>
-        </div>
+        <span class="input-group-text" id="validate-custom-4">@</span>
         <input type="text" class="form-control input-group-end" id="validate-custom-3" placeholder="Username" aria-describedby="validate-custom-4" required>
         <div class="invalid-feedback">Please choose a username.</div>
       </div>
@@ -1145,9 +1137,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
     <div class="col-md-4 mb-1">
       <label for="validate-browser-3">Username</label>
       <div class="input-group">
-        <div class="input-group-addon">
-          <span class="input-group-text" id="validate-browser-4">@</span>
-        </div>
+        <span class="input-group-text" id="validate-browser-4">@</span>
         <input type="text" class="form-control input-group-end" id="validate-browser-3" placeholder="Username" aria-describedby="validate-browser-4" required>
       </div>
     </div>
@@ -1197,9 +1187,7 @@ We recommend using client side validation, but in case you require server side, 
     <div class="col-md-4 mb-1">
       <label for="validate-server-3">Username</label>
       <div class="input-group">
-        <div class="input-group-addon">
-          <span class="input-group-text" id="validate-server-4">@</span>
-        </div>
+        <span class="input-group-text" id="validate-server-4">@</span>
         <input type="text" class="form-control input-group-end is-invalid" id="validate-server-3" placeholder="Username" aria-describedby="validate-server-4" required>
         <div class="invalid-feedback">Please choose a username.</div>
       </div>
@@ -1310,9 +1298,7 @@ Validation styles are supported for the following form controls and components:
   </div>
 
   <div class="input-group">
-    <div class="input-group-addon">
-        <span class="input-group-text" id="validate-support-ig">@</span>
-    </div>
+    <span class="input-group-text" id="validate-support-ig">@</span>
     <input type="text" class="form-control input-group-end" placeholder="Username" aria-label="Username" aria-describedby="validate-support-ig" required>
     <div class="invalid-feedback">Please choose a unique and valid username.</div>
   </div>
@@ -1340,9 +1326,7 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
     <div class="col-md-4 mb-1">
       <label for="validate-tooltip-3">Username</label>
       <div class="input-group">
-        <div class="input-group-addon">
-          <span class="input-group-text" id="validate-tooltip-4">@</span>
-        </div>
+        <span class="input-group-text" id="validate-tooltip-4">@</span>
         <input type="text" class="form-control input-group-end" id="validate-tooltip-3" placeholder="Username" aria-describedby="validate-tooltip-4" required>
         <div class="invalid-tooltip">Please choose a unique and valid username.</div>
       </div>
@@ -1394,9 +1378,7 @@ Optional visual icon representations of the validation state can be added to _te
     <div class="col-md-4 mb-1">
       <label for="validate-icon-3">Username</label>
       <div class="input-group">
-        <div class="input-group-addon">
-          <span class="input-group-text" id="validate-icon-4">@</span>
-        </div>
+        <span class="input-group-text" id="validate-icon-4">@</span>
         <input type="text" class="form-control has-validation-icon input-group-end" id="validate-icon-3" placeholder="Username" aria-describedby="validate-icon-4" required>
         <div class="invalid-feedback">Please choose a unique and valid username.</div>
       </div>
