@@ -972,9 +972,9 @@ $form-validation-states: map-merge(
 
 // Input group
 // =====
-$input-group-addon-color:        $input-color !default;
-$input-group-addon-bg:           $uibase-50 !default;
-$input-group-addon-border-color: $input-border-color !default;
+$input-group-text-color:        $input-color !default;
+$input-group-text-bg:           $uibase-50 !default;
+$input-group-text-border-color: $input-border-color !default;
 
 
 // Progress bars

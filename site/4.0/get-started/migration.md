@@ -117,7 +117,7 @@ ${toc}
 
 ### Dropdown
 - Dropdown has been reworked to use a recursive model, and now uses [Popper.js](https://popper.js.org/) for advanced positioning.  This also had an affect of changing all the available options.
-  - There are positioning fallbacks in place if dynamic placement is disabled, or Popper is not available.
+  - There are positioning fallbacks in place if dynamic placement is disabled.
 - Menu direction classes have been expanded to use the following alternates: `.dropup`, `.dropreverse`, `.dropend`, `.dropstart`, replacing the previous `.dropdown-menu-reverse` and `.dropdown-menu-forward` classes.
   - The directions classes are now applied directly to the `.dropdown-menu` element, or the submenu `ol`/`ul` list elements, rather than it's parent container.
   - `.dropreverse` replaces `.dropdown-menu-reverse` on primary menus.

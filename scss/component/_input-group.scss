@@ -1,4 +1,3 @@
-// stylelint-disable selector-no-qualifying-type
 @if $enable-input-group {
     // Base styles
     .input-group {
@@ -14,7 +13,6 @@
             flex: 1 1 0%;
             min-width: 0; // https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
             margin-bottom: 0;
-            margin-left: -$input-border-width;
 
             // Add width 1% and flex-basis auto to ensure proper sizing in IE
             // when inline or auto-sizing column.
@@ -24,44 +22,34 @@
                     width: 1%;
                 }
             }
-
-            &:first-child {
-                margin-left: 0;
-            }
-
-            + .form-control,
-            + .form-file {
-                margin-left: -$input-border-width;
-            }
         }
 
         // Bring the "active" form control to the top of surrounding elements
-        > .form-control:focus,
-        > .form-file .form-file-input:focus ~ .form-file-label {
+        > .form-control:focus {
             z-index: 3;
-        }
-        > .form-file .form-file-input:focus-within ~ .form-file-label {
-            z-index: 3;
-        }
-
-        // Bring input back above label for drag and drop to work if
-        // the custom file input is focused.
-        > .form-file .form-file-input:focus {
-            z-index: 4;
-        }
-        > .form-file .form-file-input:focus-within {
-            z-index: 4;
-        }
-
-        > .form-control {
-            &:not(:first-child) { @include border-start-radius(0); }
-            &:not(:last-child):not(.input-group-end) { @include border-end-radius(0); }
         }
 
         // Custom file inputs have more complex markup,
         // needing special overrides.
         @if $enable-form-file {
             > .form-file {
+                // Bring input back above label for drag and drop to work if
+                // the custom file input is focused.
+                .form-file-input:focus {
+                    z-index: 4;
+
+                    ~ .form-file-label {
+                        z-index: 3;
+                    }
+                }
+                .form-file-input:focus-within {
+                    z-index: 4;
+
+                    ~ .form-file-label {
+                        z-index: 3;
+                    }
+                }
+
                 display: flex;
                 align-items: center;
 
@@ -69,45 +57,23 @@
                 &:not(:first-child) .form-file-label { @include border-start-radius(0); }
             }
         }
-    }
 
-    // Addon
-    // While it requires one extra layer of HTML for each, dedicated addon element allows for:
-    // 1) be less clever
-    // 2) simplify our selectors
-    // 3) support HTML5 form validation
-    @if $enable-input-group-addon {
-        .input-group-addon {
-            display: flex;
-            margin-left: -$input-border-width;
+        // Ensure buttons are always above inputs for more visually pleasing borders.
+        // This isn't needed for `.input-group-text` since it shares the same border-color
+        // as our inputs.
+        @if $enable-btn {
+            .btn {
+                position: relative;
+                z-index: 2;
 
-            &:first-child {
-                margin-left: 0;
+                &:hover,
+                &:focus {
+                    z-index: 3;
+                }
             }
-
-            // Ensure buttons are always above inputs for more visually pleasing borders.
-            // This isn't needed for `.input-group-text` since it shares the same border-color
-            // as our inputs.
-            @if $enable-btn {
-                .btn {
-                    position: relative;
-                    z-index: 2;
-
-                    &:hover,
-                    &:focus {
-                        z-index: 3;
-                    }
-                }
-                @if $enable-btn-check {
-                    .btn-check-input:focus ~ .btn {
-                        z-index: 3;
-                    }
-                }
-
-                .btn + .btn,
-                .btn + .input-group-text,
-                .input-group-text + .btn {
-                    margin-left: -$input-border-width;
+            @if $enable-btn-check {
+                .btn-check-input:focus ~ .btn {
+                    z-index: 3;
                 }
             }
         }
@@ -125,22 +91,12 @@
             @include font-size($input-font-size); // Match inputs
             font-weight: $font-weight-normal;
             line-height: $input-line-height;
-            color: $input-group-addon-color;
+            color: $input-group-text-color;
             text-align: center;
             white-space: nowrap;
-            background-color: $input-group-addon-bg;
-            border: $input-border-width solid $input-group-addon-border-color;
+            background-color: $input-group-text-bg;
+            border: $input-border-width solid $input-group-text-border-color;
             @include border-radius($input-border-radius);
-
-            & + .input-group-text {
-                margin-left: -$input-border-width;
-            }
-
-            // Nuke default margins from checkboxes and radios to vertically center within.
-            input[type="radio"],
-            input[type="checkbox"] {
-                margin-top: 0;
-            }
         }
     }
 
@@ -151,22 +107,22 @@
             $sz-padding-x:     map-get($dims, "padding-x");
 
             .input-group-#{$size} > .form-control,
-            .input-group-#{$size} > .input-group-addon > .input-group-text {
+            .input-group-#{$size} > .input-group-text {
                 @extend %form-control-#{$size};
             }
 
             @if $enable-btn {
-                .input-group-#{$size} > .input-group-addon > .btn {
+                .input-group-#{$size} > .btn {
                     @extend %btn-#{$size};
                 }
 
                 @if $enable-btn-check {
-                    .input-group-#{$size} > .input-group-addon > .btn-check > .btn {
+                    .input-group-#{$size} > .btn-check > .btn {
                         @extend %btn-#{$size};
                     }
                 }
                 @if $enable-btn-icon {
-                    .input-group-#{$size} > .input-group-addon > .btn-icon {
+                    .input-group-#{$size} > .btn-icon {
                         @extend %btn-icon-#{$size} !optional;
                     }
                 }
@@ -179,21 +135,22 @@
     // These rulesets must come after the sizing ones to properly override sizing
     // border-radius values when extending. They're more specific than we'd like
     // with the `.input-group >` part, but without it, we cannot override the sizing.
-    @if $enable-input-group-addon {
-        .input-group > .input-group-addon:not(:last-child) > .btn:not(.input-group-end),
-        .input-group > .input-group-addon:not(:last-child) > .input-group-text:not(.input-group-end),
-        .input-group > .input-group-addon:not(:last-child) > .btn-check:not(.input-group-end) > .btn,
-        .input-group > .input-group-addon:last-child > .btn:not(:last-child):not(.input-group-end),
-        .input-group > .input-group-addon:last-child > .input-group-text:not(:last-child) {
+    // stylelint-disable-next-line no-duplicate-selectors
+    .input-group {
+        > :not(:last-child):not(.dropdown-menu):not(.input-group-end):not([data-cfw="dropdown"]),
+        > .btn-check:not(:last-child):not(.input-group-end) > .btn,
+        > [data-cfw="dropdown"]:nth-last-child(n + 3) {
             @include border-end-radius(0);
         }
 
-        .input-group > .input-group-addon:not(:first-child) > .btn,
-        .input-group > .input-group-addon:not(:first-child) > .input-group-text,
-        .input-group > .input-group-addon:not(:first-child) > .btn-check > .btn,
-        .input-group > .input-group-addon:first-child > .btn:not(:first-child),
-        .input-group > .input-group-addon:first-child > .input-group-text:not(:first-child) {
+        > :not(:first-child):not(.dropdown-menu),
+        > .btn-check:not(:first-child) > .btn {
+            margin-left: -$input-border-width;
             @include border-start-radius(0);
+        }
+        > .btn-check:not(:first-child) > .btn {
+            margin-left: 0;
         }
     }
 }
+
