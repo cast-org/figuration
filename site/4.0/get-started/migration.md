@@ -84,7 +84,7 @@ ${toc}
 - Grid lines were dropped in favor the updated [Border utility classes]({{ site.path }}/{{ version.docs }}/utilities/borders/#borders).
 
 ### Input Group
-- Input group addons have been revised, simplifying much of the related CSS. Within an addon, place your buttons as they would exist anywhere else, but wrap text in `.input-group-text`.
+- Input group addons have been removed, simplifying much of the related CSS. Place your buttons as they would exist anywhere else, but wrap text in `.input-group-text`.
 - Validation styles are now supported, as are multiple inputs (though you can only validate one input per group).
 - Sizing classes must be on the parent `.input-group` and not the individual form elements.
 
