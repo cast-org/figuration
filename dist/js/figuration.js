@@ -1018,9 +1018,9 @@ if (typeof jQuery === 'undefined') {
             var selector = this.$element.CFW_getSelectorFromChain('dropdown', this.settings.target);
             var $target = $(selector);
 
-            // Target by sibling class
+            // Target by next sibling class
             if (!$target.length) {
-                $target = $(this.$element.siblings('.dropdown-menu, ul, ol')[0]);
+                $target = $(this.$element.next('.dropdown-menu, ul, ol')[0]);
             }
             if (!$target.length) { return; }
             this.$target = $target;
@@ -1079,11 +1079,11 @@ if (typeof jQuery === 'undefined') {
                 }
 
                 // Manipulate directions of submenus
-                var $dirNode = $this.closest('.dropend, .dropstart');
-                if ($dirNode.hasClass('dropend')) {
-                    $this.addClass('dropdown-subalign-reverse');
+                var $dirNode = $subTarget.closest('.dropreverse, .dropend, .dropstart');
+                if ($dirNode.hasClass('dropreverse') || $dirNode.hasClass('dropstart')) {
+                    $subTarget.addClass('dropdown-subalign-reverse');
                 } else {
-                    $this.addClass('dropdown-subalign-forward');
+                    $subTarget.addClass('dropdown-subalign-forward');
                 }
             });
 
@@ -1384,25 +1384,26 @@ if (typeof jQuery === 'undefined') {
                 TOPEND: isRTL ? 'top-start' : 'top-end',
                 FORWARD: isRTL ? 'left-start' : 'right-start',
                 FORWARDEND: isRTL ? 'left-end' : 'right-end',
-                RIGHT: 'right-start',
-                RIGHTEND: 'right-end',
                 BOTTOM: isRTL ? 'bottom-end' : 'bottom-start',
                 BOTTOMEND: isRTL ? 'bottom-start' : 'bottom-end',
                 REVERSE: isRTL ? 'right-start' : 'left-start',
-                REVERSEEND: isRTL ? 'right-end' : 'left-end',
-                LEFT: 'left-start',
-                LEFTEND: 'left-end'
+                REVERSEEND: isRTL ? 'right-end' : 'left-end'
             };
 
-            var $dirNode = this.$element.closest('.dropend, .dropstart, .dropup');
-            var dirH = $dirNode.hasClass('dropup') ? 'TOP' : 'BOTTOM';
-            var appendH = $dirNode.hasClass('dropend') ? 'END' : '';
-            var dirV = $dirNode.hasClass('dropend') ? 'REVERSE' : 'FORWARD';
-            var appendV = $dirNode.hasClass('dropup') ? 'END' : '';
+            var $dirNode = this.$target.closest('.dropup, .dropreverse, .dropstart, .dropend');
+            var dirV = $dirNode.hasClass('dropup') ? 'TOP' : 'BOTTOM';
+            var appendV = $dirNode.hasClass('dropreverse') ? 'END' : '';
+            var dirH = $dirNode.hasClass('dropstart') || $dirNode.hasClass('dropreverse') ? 'REVERSE' : 'FORWARD';
+            var appendH = $dirNode.hasClass('dropup') ? 'END' : '';
 
-            var placement = attachmentMap[dirH + appendH];
+            var placement = attachmentMap[dirV + appendV];
+
+            if ($dirNode.hasClass('dropstart') || $dirNode.hasClass('dropend')) {
+                placement = attachmentMap[dirH + appendH];
+            }
+
             if (this.settings.isSubmenu) {
-                placement = attachmentMap[dirV + appendV];
+                placement = attachmentMap[dirH + appendH];
             }
             return placement;
         },

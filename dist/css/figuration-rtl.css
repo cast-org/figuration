@@ -936,25 +936,25 @@ textarea.form-control:not([rows="1"]) {
 }
 
 .form-control-xsmall, .input-group-xsmall > .form-control,
-.input-group-xsmall > .input-group-addon > .input-group-text {
+.input-group-xsmall > .input-group-text {
   font-size: 0.75rem;
   border-radius: 0.1875rem;
 }
 
 .form-control-small, .input-group-small > .form-control,
-.input-group-small > .input-group-addon > .input-group-text {
+.input-group-small > .input-group-text {
   font-size: 0.875rem;
   border-radius: 0.1875rem;
 }
 
 .form-control-large, .input-group-large > .form-control,
-.input-group-large > .input-group-addon > .input-group-text {
+.input-group-large > .input-group-text {
   font-size: 1.125rem;
   border-radius: 0.3125rem;
 }
 
 .form-control-xlarge, .input-group-xlarge > .form-control,
-.input-group-xlarge > .input-group-addon > .input-group-text {
+.input-group-xlarge > .input-group-text {
   font-size: 1.25rem;
   border-radius: 0.3125rem;
 }
@@ -2431,22 +2431,22 @@ fieldset:disabled a.btn, .btn-check-input[disabled] ~ .btn, .btn-check-input:dis
   padding-right: 0.375em;
 }
 
-.btn-xsmall, .btn-group-xsmall > .btn, .btn-group-xsmall > .btn-check > .btn, .input-group-xsmall > .input-group-addon > .btn, .input-group-xsmall > .input-group-addon > .btn-check > .btn {
+.btn-xsmall, .btn-group-xsmall > .btn, .btn-group-xsmall > .btn-check > .btn, .input-group-xsmall > .btn, .input-group-xsmall > .btn-check > .btn {
   font-size: 0.75rem;
   border-radius: 0.1875rem;
 }
 
-.btn-small, .btn-group-small > .btn, .btn-group-small > .btn-check > .btn, .input-group-small > .input-group-addon > .btn, .input-group-small > .input-group-addon > .btn-check > .btn {
+.btn-small, .btn-group-small > .btn, .btn-group-small > .btn-check > .btn, .input-group-small > .btn, .input-group-small > .btn-check > .btn {
   font-size: 0.875rem;
   border-radius: 0.1875rem;
 }
 
-.btn-large, .btn-group-large > .btn, .btn-group-large > .btn-check > .btn, .input-group-large > .input-group-addon > .btn, .input-group-large > .input-group-addon > .btn-check > .btn {
+.btn-large, .btn-group-large > .btn, .btn-group-large > .btn-check > .btn, .input-group-large > .btn, .input-group-large > .btn-check > .btn {
   font-size: 1.125rem;
   border-radius: 0.3125rem;
 }
 
-.btn-xlarge, .btn-group-xlarge > .btn, .btn-group-xlarge > .btn-check > .btn, .input-group-xlarge > .input-group-addon > .btn, .input-group-xlarge > .input-group-addon > .btn-check > .btn {
+.btn-xlarge, .btn-group-xlarge > .btn, .btn-group-xlarge > .btn-check > .btn, .input-group-xlarge > .btn, .input-group-xlarge > .btn-check > .btn {
   font-size: 1.25rem;
   border-radius: 0.3125rem;
 }
@@ -3282,18 +3282,21 @@ fieldset:disabled a.btn, .btn-check-input[disabled] ~ .btn, .btn-check-input:dis
   }
 }
 
-.caret {
+.caret, .caretup, .caretstart, .caretend {
   display: inline-block;
   width: 0.75rem;
   text-align: center;
 }
 
-.caret::after {
+.caret::after, .caretup::after, .caretstart::after, .caretend::after {
   display: inline-block;
   width: 0;
   height: 0;
   vertical-align: middle;
   content: "";
+}
+
+.caret::after {
   margin-top: -0.15625rem;
   border-top: 0.3125rem solid;
   border-left: 0.3125rem solid transparent;
@@ -3307,6 +3310,54 @@ fieldset:disabled a.btn, .btn-check-input[disabled] ~ .btn, .btn-check-input:dis
   border-left: 0.3125rem solid transparent;
   border-bottom: 0.3125rem solid;
   border-right: 0.3125rem solid transparent;
+}
+
+.caretup::after {
+  margin-top: -0.15625rem;
+  border-top: 0;
+  border-left: 0.3125rem solid transparent;
+  border-bottom: 0.3125rem solid;
+  border-right: 0.3125rem solid transparent;
+}
+
+.open .caretup::after {
+  margin-top: -0.15625rem;
+  border-top: 0.3125rem solid;
+  border-left: 0.3125rem solid transparent;
+  border-bottom: 0;
+  border-right: 0.3125rem solid transparent;
+}
+
+.caretstart::after {
+  margin-top: -0.15625rem;
+  border-top: 0.3125rem solid transparent;
+  border-left: 0.3125rem solid;
+  border-bottom: 0.3125rem solid transparent;
+  border-right: 0;
+}
+
+.open .caretstart::after {
+  margin-top: -0.15625rem;
+  border-top: 0.3125rem solid transparent;
+  border-left: 0;
+  border-bottom: 0.3125rem solid transparent;
+  border-right: 0.3125rem solid;
+}
+
+.caretend::after {
+  margin-top: -0.15625rem;
+  border-top: 0.3125rem solid transparent;
+  border-left: 0;
+  border-bottom: 0.3125rem solid transparent;
+  border-right: 0.3125rem solid;
+}
+
+.open .caretend::after {
+  margin-top: -0.15625rem;
+  border-top: 0.3125rem solid transparent;
+  border-left: 0.3125rem solid;
+  border-bottom: 0.3125rem solid transparent;
+  border-right: 0;
 }
 
 .close {
@@ -3935,7 +3986,6 @@ button.list-item-action {
   flex: 1 1;
   min-width: 0;
   margin-bottom: 0;
-  margin-right: -1px;
 }
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
@@ -3946,48 +3996,29 @@ button.list-item-action {
   }
 }
 
-.input-group > .form-control:first-child,
-.input-group > .form-file:first-child {
-  margin-right: 0;
-}
-
-.input-group > .form-control + .form-control,
-.input-group > .form-control + .form-file,
-.input-group > .form-file + .form-control,
-.input-group > .form-file + .form-file {
-  margin-right: -1px;
-}
-
-.input-group > .form-control:focus,
-.input-group > .form-file .form-file-input:focus ~ .form-file-label {
+.input-group > .form-control:focus {
   z-index: 3;
 }
 
-.input-group > .form-file .form-file-input:focus-within ~ .form-file-label {
-  z-index: 3;
+.input-group > .form-file {
+  display: flex;
+  align-items: center;
 }
 
 .input-group > .form-file .form-file-input:focus {
   z-index: 4;
 }
 
+.input-group > .form-file .form-file-input:focus ~ .form-file-label {
+  z-index: 3;
+}
+
 .input-group > .form-file .form-file-input:focus-within {
   z-index: 4;
 }
 
-.input-group > .form-control:not(:first-child) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.input-group > .form-control:not(:last-child):not(.input-group-end) {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.input-group > .form-file {
-  display: flex;
-  align-items: center;
+.input-group > .form-file .form-file-input:focus-within ~ .form-file-label {
+  z-index: 3;
 }
 
 .input-group > .form-file:not(:last-child) .form-file-label {
@@ -4000,32 +4031,17 @@ button.list-item-action {
   border-bottom-right-radius: 0;
 }
 
-.input-group-addon {
-  display: flex;
-  margin-right: -1px;
-}
-
-.input-group-addon:first-child {
-  margin-right: 0;
-}
-
-.input-group-addon .btn {
+.input-group .btn {
   position: relative;
   z-index: 2;
 }
 
-.input-group-addon .btn:hover, .input-group-addon .btn:focus {
+.input-group .btn:hover, .input-group .btn:focus {
   z-index: 3;
 }
 
-.input-group-addon .btn-check-input:focus ~ .btn {
+.input-group .btn-check-input:focus ~ .btn {
   z-index: 3;
-}
-
-.input-group-addon .btn + .btn,
-.input-group-addon .btn + .input-group-text,
-.input-group-addon .input-group-text + .btn {
-  margin-right: -1px;
 }
 
 .input-group-text {
@@ -4044,31 +4060,22 @@ button.list-item-action {
   border-radius: 0.25rem;
 }
 
-.input-group-text + .input-group-text {
-  margin-right: -1px;
-}
-
-.input-group-text input[type="radio"],
-.input-group-text input[type="checkbox"] {
-  margin-top: 0;
-}
-
-.input-group > .input-group-addon:not(:last-child) > .btn:not(.input-group-end),
-.input-group > .input-group-addon:not(:last-child) > .input-group-text:not(.input-group-end),
-.input-group > .input-group-addon:not(:last-child) > .btn-check:not(.input-group-end) > .btn,
-.input-group > .input-group-addon:last-child > .btn:not(:last-child):not(.input-group-end),
-.input-group > .input-group-addon:last-child > .input-group-text:not(:last-child) {
+.input-group > :not(:last-child):not(.dropdown-menu):not(.input-group-end):not([data-cfw="dropdown"]),
+.input-group > .btn-check:not(:last-child):not(.input-group-end) > .btn,
+.input-group > [data-cfw="dropdown"]:nth-last-child(n + 3) {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.input-group > .input-group-addon:not(:first-child) > .btn,
-.input-group > .input-group-addon:not(:first-child) > .input-group-text,
-.input-group > .input-group-addon:not(:first-child) > .btn-check > .btn,
-.input-group > .input-group-addon:first-child > .btn:not(:first-child),
-.input-group > .input-group-addon:first-child > .input-group-text:not(:first-child) {
+.input-group > :not(:first-child):not(.dropdown-menu),
+.input-group > .btn-check:not(:first-child) > .btn {
+  margin-right: -1px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.input-group > .btn-check:not(:first-child) > .btn {
+  margin-right: 0;
 }
 
 .breadcrumb {
@@ -4219,7 +4226,6 @@ a.page-link {
   border-bottom-left-radius: 0;
 }
 
-.dropup,
 .dropdown,
 .dropdown-submenu {
   position: relative;
@@ -4256,7 +4262,6 @@ a.page-link {
 
 .dropdown-submenu > .dropdown-menu {
   top: 0;
-  right: 100%;
   margin-top: calc(1px - 0.4375rem);
 }
 
@@ -4265,43 +4270,31 @@ a.page-link {
   position: absolute;
   top: 50%;
   left: 0.375rem;
-  margin-top: -0.3125rem;
   display: inline-block;
   width: 0;
   height: 0;
   vertical-align: middle;
   content: "";
+  margin-top: -0.15625rem;
   border-top: 0.3125rem solid transparent;
   border-left: 0;
   border-bottom: 0.3125rem solid transparent;
   border-right: 0.3125rem solid  #7e8d9b;
+  transform: translateY(-25%);
 }
 
 .dropdown-submenu > a.active:not(:hover):not(:focus)::after,
 .dropdown-submenu > .dropdown-item.active:not(:hover):not(:focus)::after {
+  margin-top: -0.15625rem;
   border-top: 0.3125rem solid transparent;
   border-left: 0;
   border-bottom: 0.3125rem solid transparent;
   border-right: 0.3125rem solid  #fff;
 }
 
-.dropend .dropdown-menu {
+.dropreverse {
   left: 0;
   right: auto;
-}
-
-.dropdown-subalign-forward > .dropdown-menu {
-  left: auto;
-  right: 100%;
-  margin-left: -2px;
-  margin-right: 0;
-}
-
-.dropdown-subalign-reverse > .dropdown-menu {
-  left: 100%;
-  right: auto;
-  margin-left: 0;
-  margin-right: -2px;
 }
 
 .dropdown-menu a,
@@ -4369,23 +4362,33 @@ a.page-link {
   border-top: 1px solid rgba(38, 45, 52, 0.3);
 }
 
-.dropup .caret::after {
-  margin-top: -0.15625rem;
-  border-top: 0;
-  border-left: 0.3125rem solid transparent;
-  border-bottom: 0.3125rem solid;
-  border-right: 0.3125rem solid transparent;
+.dropdown-subalign-reverse,
+.dropstart {
+  top: 0;
+  left: 100%;
+  right: auto;
+  margin-top: 0;
+  margin-left: 0.125rem;
 }
 
-.dropup.open .caret::after {
-  margin-top: -0.15625rem;
-  border-top: 0.3125rem solid;
-  border-left: 0.3125rem solid transparent;
-  border-bottom: 0;
-  border-right: 0.3125rem solid transparent;
+.dropdown-subalign-reverse {
+  margin-left: 0;
 }
 
-.dropup .dropdown-menu {
+.dropdown-subalign-forward,
+.dropend {
+  top: 0;
+  left: auto;
+  right: 100%;
+  margin-top: 0;
+  margin-right: 0.125rem;
+}
+
+.dropdown-subalign-forward {
+  margin-right: 0;
+}
+
+.dropup {
   top: auto;
   bottom: 100%;
   margin-top: 0;
@@ -4397,6 +4400,11 @@ a.page-link {
   bottom: 0;
   margin-top: 0;
   margin-bottom: calc(1px - 0.4375rem);
+}
+
+.dropup.dropstart, .dropup.dropend {
+  bottom: 0;
+  margin-bottom: 0;
 }
 
 .dropdown-menu[x-placement],
@@ -4413,21 +4421,23 @@ a.page-link {
   position: absolute;
   top: 50%;
   right: 0.375rem;
-  margin-top: -0.3125rem;
   display: inline-block;
   width: 0;
   height: 0;
   vertical-align: middle;
   content: "";
+  margin-top: -0.15625rem;
   border-top: 0.3125rem solid transparent;
   border-left: 0.3125rem solid  #7e8d9b;
   border-bottom: 0.3125rem solid transparent;
   border-right: 0;
+  transform: translateY(-25%);
 }
 
 .dropdown-back-reverse > a::before {
   left: 0.375rem;
   right: auto;
+  margin-top: -0.15625rem;
   border-top: 0.3125rem solid transparent;
   border-left: 0;
   border-bottom: 0.3125rem solid transparent;

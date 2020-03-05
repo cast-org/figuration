@@ -441,6 +441,7 @@
 }
 
 .cf-links .has-children .caret::after {
+  margin-top: -0.15625rem;
   border-top: 0.3125rem solid transparent;
   border-left: 0;
   border-bottom: 0.3125rem solid transparent;
@@ -1003,6 +1004,7 @@ pre[class*="language-"] {
   height: 0;
   vertical-align: middle;
   content: "";
+  margin-top: -0.25rem;
   border-top: 0.5rem solid transparent;
   border-left: 0.5rem solid  #000;
   border-bottom: 0.5rem solid transparent;
@@ -1010,6 +1012,7 @@ pre[class*="language-"] {
 }
 
 .btn:hover .example-caret, .btn:focus .example-caret {
+  margin-top: -0.25rem;
   border-top: 0.5rem solid transparent;
   border-left: 0;
   border-bottom: 0.5rem solid transparent;
