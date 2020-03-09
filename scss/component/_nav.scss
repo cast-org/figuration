@@ -31,12 +31,9 @@
             flex-flow: row wrap;
             border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
 
-            .nav-item {
+            .nav-link {
                 // Make the list-items overlay the bottom border
                 margin-bottom: -$nav-tabs-border-width;
-            }
-
-            .nav-link {
                 text-decoration: none;
                 border: $nav-tabs-border-width solid transparent;
                 @include border-radius($border-radius $border-radius 0 0);
