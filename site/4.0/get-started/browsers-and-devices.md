@@ -69,14 +69,6 @@ Generally speaking, Figuration supports the latest versions of each major platfo
         <td class="text-muted">N/A</td>
         <td class="text-success">Supported</td>
       </tr>
-      <tr>
-        <th scope="row">Windows 10 Mobile</th>
-        <td class="text-muted">N/A</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-muted">N/A</td>
-        <td class="text-success">Supported</td>
-      </tr>
     </tbody>
   </table>
 </div>
@@ -127,7 +119,7 @@ Unofficially, Figuration should look and behave well enough in Chromium and Chro
 
 ## Internet Explorer
 
-Internet Explorer 11+ is also supported, IE 10 and down are not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit [Can I use…](https://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
+Internet Explorer 11+ is also supported, IE 10 and down are not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in Internet Explorer, or require prefixed properties for full functionality. Visit [Can I use…](https://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
 
 ## MutationObserver
 
