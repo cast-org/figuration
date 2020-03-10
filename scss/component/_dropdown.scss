@@ -40,8 +40,6 @@
     // Dropdown submenu additions
     .dropdown-submenu {
         > .dropdown-menu {
-            top: 0;
-            //left: 100%;
             margin-top: calc(#{$dropdown-border-width} - #{$dropdown-spacer} - #{$dropdown-padding-y});
         }
 
@@ -49,10 +47,9 @@
         > .dropdown-item {
             &::after {
                 position: absolute;
-                top: 50%;
+                top: calc((#{$line-height-base} * #{$dropdown-font-size}) / 2);
                 right: $dropdown-caret-spacer-x;
                 @include caret(end, $dropdown-caret-width, $dropdown-caret-color);
-                transform: translateY(-25%);
             }
 
             &.active:not(:hover):not(:focus)::after {
@@ -221,10 +218,9 @@
 
             > button::before {
                 position: absolute;
-                top: 50%;
+                top: calc((#{$line-height-base} * #{$dropdown-font-size}) / 2);
                 left: $dropdown-back-spacer-x;
                 @include caret(start, $dropdown-back-width, $dropdown-back-color);
-                transform: translateY(-25%);
             }
         }
 
