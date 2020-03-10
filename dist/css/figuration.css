@@ -4261,14 +4261,13 @@ a.page-link {
 }
 
 .dropdown-submenu > .dropdown-menu {
-  top: 0;
   margin-top: calc(1px - 0.4375rem);
 }
 
 .dropdown-submenu > a::after,
 .dropdown-submenu > .dropdown-item::after {
   position: absolute;
-  top: 50%;
+  top: 0.75rem;
   right: 0.375rem;
   display: inline-block;
   width: 0;
@@ -4280,7 +4279,6 @@ a.page-link {
   border-right: 0;
   border-bottom: 0.3125rem solid transparent;
   border-left: 0.3125rem solid  #7e8d9b;
-  transform: translateY(-25%);
 }
 
 .dropdown-submenu > a.active:not(:hover):not(:focus)::after,
@@ -4419,7 +4417,7 @@ a.page-link {
 
 .dropdown-back > button::before {
   position: absolute;
-  top: 50%;
+  top: 0.75rem;
   left: 0.375rem;
   display: inline-block;
   width: 0;
@@ -4431,7 +4429,6 @@ a.page-link {
   border-right: 0.3125rem solid  #7e8d9b;
   border-bottom: 0.3125rem solid transparent;
   border-left: 0;
-  transform: translateY(-25%);
 }
 
 .dropdown-back-reverse > a::before {
@@ -4469,11 +4466,8 @@ a.page-link {
   border-bottom: 1px solid #bfc6cd;
 }
 
-.nav-tabs .nav-item {
-  margin-bottom: -1px;
-}
-
 .nav-tabs .nav-link {
+  margin-bottom: -1px;
   text-decoration: none;
   border: 1px solid transparent;
   border-radius: 0.25rem 0.25rem 0 0;
@@ -4575,6 +4569,7 @@ a.page-link {
 
 .navbar:not([class*="navbar-expand"]) .navbar-nav .dropdown-menu {
   position: static;
+  margin: 0;
 }
 
 .navbar-brand {
@@ -4692,6 +4687,7 @@ a.page-link {
 @media (max-width: 35.98em) {
   .navbar-expand-sm .navbar-nav .dropdown-menu {
     position: static;
+    margin: 0;
   }
   .navbar-expand-sm .navbar-divider {
     margin: 0.25rem 0;
@@ -4728,6 +4724,7 @@ a.page-link {
 @media (max-width: 47.98em) {
   .navbar-expand-md .navbar-nav .dropdown-menu {
     position: static;
+    margin: 0;
   }
   .navbar-expand-md .navbar-divider {
     margin: 0.25rem 0;
@@ -4764,6 +4761,7 @@ a.page-link {
 @media (max-width: 61.98em) {
   .navbar-expand-lg .navbar-nav .dropdown-menu {
     position: static;
+    margin: 0;
   }
   .navbar-expand-lg .navbar-divider {
     margin: 0.25rem 0;
@@ -4800,6 +4798,7 @@ a.page-link {
 @media (max-width: 74.98em) {
   .navbar-expand-xl .navbar-nav .dropdown-menu {
     position: static;
+    margin: 0;
   }
   .navbar-expand-xl .navbar-divider {
     margin: 0.25rem 0;
