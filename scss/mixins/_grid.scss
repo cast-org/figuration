@@ -12,23 +12,19 @@
 
 // Columns
 @mixin make-col-ready($gutter: $grid-gutter-width) {
-    width: 100%; // Prevent too narrow
+    flex: 0 0 auto;
+    width: 100%; // Prevent too narrow - width is reset later
+    max-width: 100%; // Prevent too wide
     padding-right: ($gutter / 2);
     padding-left: ($gutter / 2);
 }
 
 @mixin make-col($size, $columns: $grid-columns) {
-    flex: 0 0 percentage($size / $columns);
-    // Add a `max-width` to ensure content within each column does not blow out
-    // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
-    // do not appear to require this.
-    max-width: percentage($size / $columns);
+    width: percentage($size / $columns);
 }
 
 @mixin make-col-auto() {
-    flex: 0 0 auto;
     width: auto;
-    max-width: 100%;
 }
 
 @mixin make-col-offset($size, $columns: $grid-columns) {
@@ -44,8 +40,8 @@
 // style grid.
 @mixin row-cols($count) {
     & > * {
-        flex: 0 0 100% / $count;
-        max-width: 100% / $count;
+        flex: 0 0 auto;
+        width: 100% / $count;
     }
 }
 
@@ -54,10 +50,7 @@
 @mixin make-grid-columns($columns: $grid-columns, $breakpoints: $grid-breakpoints, $gutter: $grid-gutter-width) {
     // Use a placeholder selector to extend upon
     %col {
-        position: relative;
-        width: 100%; // Prevent too narrow
-        padding-right: ($gutter / 2);
-        padding-left: ($gutter / 2);
+        @include make-col-ready();
     }
 
     @each $breakpoint in map-keys($breakpoints) {
@@ -76,22 +69,13 @@
 
         @include media-breakpoint-up($breakpoint, $breakpoints) {
             // Provide basic `.col-{bp}` classes for equal-width flexbox columns
-            %col-flex-basic-#{$breakpoint} {
+            .col#{$bprule} {
                 flex-basis: 0;
                 flex-grow: 1;
                 min-width: 0;
-                max-width: 100%;
-            }
-
-            %col-flex-auto-#{$breakpoint} {
-                @include make-col-auto();
-            }
-
-            .col#{$bprule} {
-                @extend %col-flex-basic-#{$breakpoint};
             }
             .col#{$bprule}-auto {
-                @extend %col-flex-auto-#{$breakpoint};
+                @include make-col-auto();
             }
             @for $i from 1 through $columns {
                 .col#{$bprule}-#{$i} {
@@ -113,10 +97,15 @@
 
 // Responsive Row Columns
 @mixin make-row-columns($columns: $grid-row-columns, $breakpoints: $grid-breakpoints) {
+
     @each $breakpoint in $row-columns-breakpoints {
         $bprule: breakpoint-designator($breakpoint);
 
         @include media-breakpoint-up($breakpoint, $breakpoints) {
+            .row-cols#{$bprule}-auto > * {
+                @include make-col-auto();
+            }
+
             @for $i from 1 through $columns {
                 .row-cols#{$bprule}-#{$i} {
                     @include row-cols($i);
