@@ -12,7 +12,6 @@
 
 // Columns
 @mixin make-col-ready($gutter: $grid-gutter-width) {
-    position: relative;
     width: 100%; // Prevent too narrow
     padding-right: ($gutter / 2);
     padding-left: ($gutter / 2);
