@@ -62,7 +62,7 @@ ${toc}
 
 ## Grid
 - Dropped the `.push` and `.pull` modifiers in favor of `.offset-*` and flex utilities.
-
+- Dropped the `position: relative` from grid columns.
 
 ## Components
 
