@@ -1,26 +1,6 @@
 /// Grid system
 // Generate semantic grid columns with these mixins.
 
-// Containers
-@mixin make-container($padding-x: $container-padding-x) {
-    width: 100%;  // Prevent too narrow
-    max-width: 100%; // Prevent too wide
-    padding-right: $padding-x;
-    padding-left: $padding-x;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-// For each breakpoint, define the maximum width of the container in a media query
-@mixin make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
-    @each $breakpoint, $container-max-width in $max-widths {
-        @include media-breakpoint-up($breakpoint, $breakpoints) {
-            max-width: $container-max-width;
-        }
-    }
-}
-
-
 // Rows
 @mixin make-row($gutter: $grid-gutter-width) {
     display: flex;
