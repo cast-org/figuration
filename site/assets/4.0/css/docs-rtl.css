@@ -957,44 +957,42 @@ pre[class*="language-"] {
 }
 
 .example-content-main {
-  position: relative;
+  flex: 0 0 auto;
   width: 100%;
+  max-width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
 @media (min-width: 36em) {
   .example-content-main {
-    flex: 0 0 50%;
-    max-width: 50%;
+    width: 50%;
   }
 }
 
 @media (min-width: 62em) {
   .example-content-main {
-    flex: 0 0 66.666667%;
-    max-width: 66.666667%;
+    width: 66.666667%;
   }
 }
 
 .example-content-secondary {
-  position: relative;
+  flex: 0 0 auto;
   width: 100%;
+  max-width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
 @media (min-width: 36em) {
   .example-content-secondary {
-    flex: 0 0 50%;
-    max-width: 50%;
+    width: 50%;
   }
 }
 
 @media (min-width: 62em) {
   .example-content-secondary {
-    flex: 0 0 33.333333%;
-    max-width: 33.333333%;
+    width: 33.333333%;
   }
 }
 
