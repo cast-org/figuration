@@ -323,7 +323,7 @@ Don't want your columns to simply stack in some grid tiers. Use a combination of
 
 ### Row Columns
 
-Use the responsive `.row-cols-*` classes to quickly set the number of columns that best render your content and layout. Whereas normal `.col-*` classes apply to the individual columns (e.g., `.col-md-4`), the row columns classes are set on the parent `.row` as a shortcut.
+Use the responsive `.row-cols-*` classes to quickly set the number of columns that best render your content and layout. Whereas normal `.col-*` classes apply to the individual columns (e.g., `.col-md-4`), the row columns classes are set on the parent `.row` as a shortcut. With `.row-cols-*-auto` you can give the columns their natural width.
 
 Use these row columns classes to quickly create basic grid layouts or to control your card layouts.
 
@@ -342,6 +342,18 @@ Use these row columns classes to quickly create basic grid layouts or to control
 {% capture example %}
 <div class="container">
   <div class="row row-cols-3">
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example, "cf-example-row" %}
+
+{% capture example %}
+<div class="container">
+  <div class="row row-cols-auto">
     <div class="col">Column</div>
     <div class="col">Column</div>
     <div class="col">Column</div>
