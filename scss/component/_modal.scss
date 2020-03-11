@@ -141,7 +141,8 @@
     }
 
     // Close is blocked animation
-    .modal.modal-blocked .modal-dialog {
+    .modal.modal-blocked .modal-content {
+        @include transition($modal-transition);
         transform: $modal-transform-blocked;
     }
 
