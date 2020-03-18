@@ -88,6 +88,14 @@
         <div class="col-md-4">.col-md-4</div>
     </div>
 
+    <h2>Three equal columns alternative</h2>
+    <p>By using the <code>.row-cols-*</code> classes, you can easily create a grid with equal columns.</p>
+    <div class="row row-cols-md-3">
+        <div class="col"><code>.col</code> child of <code>.row-cols-md-3</code></div>
+        <div class="col"><code>.col</code> child of <code>.row-cols-md-3</code></div>
+        <div class="col"><code>.col</code> child of <code>.row-cols-md-3</code></div>
+    </div>
+
     <h2>Three unequal columns</h2>
     <p>Get three columns <strong>starting at desktops and scaling to extra large desktops</strong> of various widths. Remember, grid columns should add up to twelve for a single horizontal block. More than that, and columns start stacking no matter the viewport.</p>
     <div class="row">
@@ -354,15 +362,46 @@
 
     <h2>No Gutters</h2>
 
-    <div class="row no-gutters">
+    <div class="row g-0">
         <div class="col-4">.col-4</div>
         <div class="col-4">.col-4</div>
         <div class="col-4">.col-4</div>
     </div>
 
+    <h2>Responsive Gutters</h2>
+    <p>With <code>.gx-*</code> classes, the horizontal gutters can be adjusted.</p>
+    <div class="row row-cols-1 row-cols-md-3 gx-2">
+        <div class="col themed-grid-col"><code>.col</code> with <code>.gx-2</code> gutters</div>
+        <div class="col themed-grid-col"><code>.col</code> with <code>.gx-2</code> gutters</div>
+        <div class="col themed-grid-col"><code>.col</code> with <code>.gx-2</code> gutters</div>
+        <div class="col themed-grid-col"><code>.col</code> with <code>.gx-2</code> gutters</div>
+        <div class="col themed-grid-col"><code>.col</code> with <code>.gx-2</code> gutters</div>
+        <div class="col themed-grid-col"><code>.col</code> with <code>.gx-2</code> gutters</div>
+    </div>
+
+    <p class="mt-4">Use the <code>.gy-*</code> classes to control the vertical gutters.</p>
+    <div class="row row-cols-1 row-cols-md-3 gy-2">
+        <div class="col themed-grid-col"><code>.col</code> with <code>.gy-2</code> gutters</div>
+        <div class="col themed-grid-col"><code>.col</code> with <code>.gy-2</code> gutters</div>
+        <div class="col themed-grid-col"><code>.col</code> with <code>.gy-2</code> gutters</div>
+        <div class="col themed-grid-col"><code>.col</code> with <code>.gy-2</code> gutters</div>
+        <div class="col themed-grid-col"><code>.col</code> with <code>.gy-2</code> gutters</div>
+        <div class="col themed-grid-col"><code>.col</code> with <code>.gy-2</code> gutters</div>
+    </div>
+
+    <p class="mt-4">With <code>.g-*</code> classes, the gutters in both directions can be adjusted.</p>
+    <div class="row row-cols-1 row-cols-md-3 g-1">
+        <div class="col themed-grid-col"><code>.col</code> with <code>.g-1</code> gutters</div>
+        <div class="col themed-grid-col"><code>.col</code> with <code>.g-1</code> gutters</div>
+        <div class="col themed-grid-col"><code>.col</code> with <code>.g-1</code> gutters</div>
+        <div class="col themed-grid-col"><code>.col</code> with <code>.g-1</code> gutters</div>
+        <div class="col themed-grid-col"><code>.col</code> with <code>.g-1</code> gutters</div>
+        <div class="col themed-grid-col"><code>.col</code> with <code>.g-1</code> gutters</div>
+    </div>
+
 </div> <!-- /container -->
 
-<h2>Responsive Gutters with Spacing Utilities</h2>
+<h2>Custom Gutters with Spacing Utilities</h2>
 
 <div class="container">
     <div class="row mx-lg-n2">

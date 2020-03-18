@@ -24,10 +24,13 @@ At a high level, here's how the grid system works:
 - Column classes indicate the number of columns you'd like to use out of the possible 12 per row. So, if you want three equal-width columns across, you would use `.col-4`.
 - Column `width`s are set in percentages, so they're always fluid and sized relative to their parent element.
 - Columns have horizontal `padding` to create the gutters between individual columns.
-- You can remove the `margin` from rows and `padding` from columns with `.no-gutters` on the `.row`.
+- You can remove the `margin` from rows and `padding` from columns with `.g-0` on the `.row`.
 - To make the grid responsive, there are five grid breakpoints, one for each [responsive breakpoint]({{ site.path }}/{{ version.docs }}/layout/overview/#responsive-breakpoints): all breakpoints (extra small), small, medium, large, and extra large.
 - Grid breakpoints are based on minimum width media queries, meaning **they apply to that one breakpoint and all those above it** (e.g., `.col-sm-4` applies to small, medium, large, and extra large devices, but not the first `xs` breakpoint).
 - You can use predefined grid classes (like `.col-4`) or [Sass mixins](#mixins) for more semantic markup.
+- The horizontal gutter width can be changed with `.gx-*` classes like `.gx-1` (smaller horizontal gutters) or `.gx-xl-2` (larger horizontal gutters on viewports larger than the `xl` breakpoint).
+- The vertical gutter width can be changed with `.gy-*` classes like `.gy-1` (smaller vertical gutters) or `.gy-xl-2` (larger vertical gutters on viewports larger than the `xl` breakpoint). To achieve vertical gutters, additional margin is added to the top of each column. The `.row` counteracts this margin to the top with a negative margin.
+- The gutter width in both directions can be changed with `.g-*` classes like `.g-1` (smaller gutters) or `.g-xl-2` (larger gutters on viewports larger than the `xl` breakpoint).
 
 
 If you need a reference for working with flexbox, there is an excellent resource over at CSS Tricks with [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/).
@@ -259,15 +262,15 @@ For grids that are the same from the smallest of devices to the largest, use the
 {% capture example %}
 <div class="container">
   <div class="row">
-    <div class="col">col</div>
-    <div class="col">col</div>
-    <div class="col">col</div>
-    <div class="col">col</div>
+    <div class="col">.col</div>
+    <div class="col">.col</div>
+    <div class="col">.col</div>
+    <div class="col">.col</div>
   </div>
 
   <div class="row">
-    <div class="col-8">col-8</div>
-    <div class="col-4">col-4</div>
+    <div class="col-8">.col-8</div>
+    <div class="col-4">.col-4</div>
   </div>
 </div>
 {% endcapture %}
@@ -414,6 +417,206 @@ You can also use the accompanying Sass mixin, `row-cols()`:
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 
+## Gutters
+
+Gutters can be responsively adjusted by breakpoint-specific gutter classes in as well horizontal, vertical and both directions. By default, `.row`s have a horizontal gutter of `2rem`. Removing this default gutter is possible by adding the `.g-0` class.
+
+### Changing Gutters
+
+Classes are built from the `$gutters` setting.
+
+{% capture highlight %}
+$grid-gutter-width: 2rem;
+$gutters: (
+  "0":    0,
+  "0_5":  .5rem,
+  "1":    1rem,
+  "1_5":  1.5rem,
+  "2":    2rem,
+  "2_5":  2.5rem
+);
+{% endcapture %}
+{% renderHighlight highlight, "sass" %}
+
+### Horizontal Gutters
+
+`.gx-*` classes can be used to control the horizontal gutter widths. The `.container` or `.container-fluid` parent may need to be adjusted if larger gutters are used too to avoid unwanted overflow, using a matching padding utility. For example, in the following example we've increased the padding with `.px-1_5`:
+
+{% capture example %}
+<div class="container px-1_5">
+  <div class="row gx-2_5">
+    <div class="col-6">
+     <div class="p-0_5 bg-light border">Custom column padding</div>
+    </div>
+    <div class="col-6">
+      <div class="p-0_5 bg-light border">Custom column padding</div>
+    </div>
+    <div class="col-6">
+      <div class="p-0_5 bg-light border">Custom column padding</div>
+    </div>
+    <div class="col-6">
+      <div class="p-0_5 bg-light border">Custom column padding</div>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example%}
+
+An alternative solution is to add a wrapper around the `.row` with the `.overflow-hidden` class:
+
+{% capture example %}
+<div class="container overflow-hidden">
+  <div class="row gx-2_5">
+    <div class="col-6">
+     <div class="p-0_5 bg-light border">Column overflow hidden</div>
+    </div>
+    <div class="col-6">
+      <div class="p-0_5 bg-light border">Column overflow hidden</div>
+    </div>
+    <div class="col-6">
+      <div class="p-0_5 bg-light border">Column overflow hidden</div>
+    </div>
+    <div class="col-6">
+      <div class="p-0_5 bg-light border">Column overflow hidden</div>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
+### Vertical Gutters
+
+`.gy-*` classes can be used to control the vertical gutter widths. Like the horizontal gutters, the vertical gutters can cause some overflow below the `.row` at the end of a page. If this occurs, you add a wrapper around `.row` with the `.overflow-hidden` class:
+
+{% capture example %}
+<div class="container overflow-hidden">
+  <div class="row gy-2">
+    <div class="col-6">
+      <div class="p-0_5 bg-light border">Custom column padding</div>
+    </div>
+    <div class="col-6">
+      <div class="p-0_5 bg-light border">Custom column padding</div>
+    </div>
+    <div class="col-6">
+      <div class="p-0_5 bg-light border">Custom column padding</div>
+    </div>
+    <div class="col-6">
+      <div class="p-0_5 bg-light border">Custom column padding</div>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
+### Horizontal & Vertical Gutters
+
+`.g-*` classes can be used to control the horizontal gutter widths, for the following example we use a smaller gutter width, so there won't be a need to add the `.overflow-hidden` wrapper class.
+
+{% capture example %}
+<div class="container">
+  <div class="row g-0_5">
+    <div class="col-6">
+      <div class="p-0_5 border bg-light">Custom column padding</div>
+    </div>
+    <div class="col-6">
+      <div class="p-0_5 border bg-light">Custom column padding</div>
+    </div>
+    <div class="col-6">
+      <div class="p-0_5 border bg-light">Custom column padding</div>
+    </div>
+    <div class="col-6">
+      <div class="p-0_5 border bg-light">Custom column padding</div>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
+### Row Columns Gutters
+
+Gutter classes can also be added to [row columns](#row-columns). In the following example, we use responsive row columns and responsive gutter classes.
+
+{% capture example %}
+<div class="container">
+  <div class="row row-cols-2 row-cols-lg-5 g-0_5 g-lg-1">
+    <div class="col">
+      <div class="p-0_5 border bg-light">Row column</div>
+    </div>
+    <div class="col">
+      <div class="p-0_5 border bg-light">Row column</div>
+    </div>
+    <div class="col">
+      <div class="p-0_5 border bg-light">Row column</div>
+    </div>
+    <div class="col">
+      <div class="p-0_5 border bg-light">Row column</div>
+    </div>
+    <div class="col">
+      <div class="p-0_5 border bg-light">Row column</div>
+    </div>
+    <div class="col">
+      <div class="p-0_5 border bg-light">Row column</div>
+    </div>
+    <div class="col">
+      <div class="p-0_5 border bg-light">Row column</div>
+    </div>
+    <div class="col">
+      <div class="p-0_5 border bg-light">Row column</div>
+    </div>
+    <div class="col">
+      <div class="p-0_5 border bg-light">Row column</div>
+    </div>
+    <div class="col">
+      <div class="p-0_5 border bg-light">Row column</div>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
+### No Gutters
+
+The gutters between columns in our default, predefined grid classes can be removed with `.g-0`. This removes the negative `margin`s from `.row` and the horizontal `padding` from all immediate children columns.
+
+**Need an edge-to-edge design?** Drop the parent `.container` or `.container-fluid`.
+
+In practice, here's how it looks. Note you can continue to use this with all other predefined grid classes (including column widths, responsive tiers, reorders, and more).
+
+{% capture example %}
+<div class="row no-gutters">
+  <div class="col-sm-6 col-md-8">.col-sm-6 .col-md-8</div>
+  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+</div>
+{% endcapture %}
+{% renderExample example, "cf-example-row" %}
+
+### Custom Gutters
+
+Gutters can also be responsively adjusted by breakpoint-specific padding and negative margin utility classes. To change the gutters in a given row, pair a [negative margin utility]({{ site.path }}/{{ version.docs }}/utilities/spacing/#negative-margins) on the `.row` and matching [padding utilities]({{ site.path }}/{{ version.docs }}/utilities/spacing/) on the `.col`s.
+
+Here is an example of customizing the grid at the large (`lg`) breakpoint and above. The the `.col` horizontal padding is increased with `.px-lg-2` and then counteracted that with negative horizontal margin `.mx-lg-n2` on the parent `.row`.
+
+{% capture example %}
+<div class="container">
+  <div class="row mx-md-n2">
+    <div class="col px-md-2">Custom column padding</div>
+    <div class="col px-md-2">Custom column padding</div>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example, "cf-example-row" %}
+
+In some cases, you may also have to adjust the padding on the parent container of the `.row` element to prevent horizontal scrollbars from occuring.  For example, using the custom negative margin example above, you may find the need to use `.px-lg-2` on the parent `.container-fluid`.  Again, an alternative solution is to add a wrapper around the `.row` with the `.overflow-hidden` class.
+
+{% capture example %}
+<div class="container-fluid px-md-2">
+  <div class="row mx-md-n2">
+    <div class="col px-md-2">Custom horizontal column padding</div>
+    <div class="col px-md-2">Custom horizontal column padding</div>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example, "cf-example-row" %}
 
 ## Alignment
 
@@ -528,66 +731,6 @@ Use [Flexbox alignment utilities]({{ site.path }}/{{ version.docs }}/utilities/f
     <div class="col-4">
       One of two columns
     </div>
-  </div>
-</div>
-{% endcapture %}
-{% renderExample example, "cf-example-row" %}
-
-### No Gutters
-
-The gutters between columns in our default, predefined grid classes can be removed with `.no-gutters`. This removes the negative `margin`s from `.row` and the horizontal `padding` from all immediate children columns.
-
-Here's the source code for creating these styles. Note that column overrides are scoped to only the first children columns and are targeted via [attribute selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors). While this generates a more specific selector, column padding can still be further customized with [spacing utilities]({{ site.path }}/{{ version.docs }}/utilities/spacing/).
-
-**Need an edge-to-edge design?** Drop the parent `.container` or `.container-fluid`.
-
-{% capture highlight %}
-.no-gutters {
-  margin-right: 0;
-  margin-left: 0;
-
-  > [class*="col-"],
-  > .col {
-    padding-right: 0;
-    padding-left: 0;
-  }
-}
-{% endcapture %}
-{% renderHighlight highlight, "sass" %}
-
-In practice, here's how it looks. Note you can continue to use this with all other predefined grid classes (including column widths, responsive tiers, reorders, and more).
-
-{% capture example %}
-<div class="row no-gutters">
-  <div class="col-sm-6 col-md-8">.col-sm-6 .col-md-8</div>
-  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
-</div>
-{% endcapture %}
-{% renderExample example, "cf-example-row" %}
-
-### Custom Gutters
-
-Gutters can be responsively adjusted by breakpoint-specific padding and negative margin utility classes. To change the gutters in a given row, pair a [negative margin utility]({{ site.path }}/{{ version.docs }}/utilities/spacing/#negative-margins) on the `.row` and matching [padding utilities]({{ site.path }}/{{ version.docs }}/utilities/spacing/) on the `.col`s.
-
-Here is an example of customizing the grid at the large (`lg`) breakpoint and above. The the `.col` horizontal padding is increased with `.px-lg-2` and then counteracted that with negative horizontal margin `.mx-lg-n2` on the parent `.row`.
-
-{% capture example %}
-<div class="container">
-  <div class="row mx-md-n2">
-    <div class="col px-md-2">Custom column padding</div>
-    <div class="col px-md-2">Custom column padding</div>
-  </div>
-</div>
-{% endcapture %}
-{% renderExample example, "cf-example-row" %}
-
-In some cases, you may also have to adjust the padding on the parent container of the `.row` element to prevent horizontal scrollbars from occuring.  For example, using the custom negative margin example above, you may find the need to use `.px-lg-2` on the parent `.container-fluid`.
-
-{% capture example %}
-<div class="container-fluid px-md-2">
-  <div class="row mx-md-n2">
-    <div class="col px-md-2">Custom horizontal column padding</div>
-    <div class="col px-md-2">Custom horizontal column padding</div>
   </div>
 </div>
 {% endcapture %}
@@ -809,6 +952,34 @@ $container-max-widths: (
 {% renderHighlight highlight, "text" %}
 
 Save your changes and recompile to have a brand new set of predefined grid classes for column widths and offsets. Responsive visibility utilities will also be updated to use the custom breakpoints.
+
+## Standalone Column Classes
+
+The `.col-*` classes can also be used outside a `.row` to give an element a specific width. Whenever column classes are used as non direct children of a row, the paddings are omitted.
+
+{% capture example%}
+<div class="col-3 bg-light p-0_5 border">
+  .col-3: width of 25%
+</div>
+<div class="col-sm-9 bg-light p-0_5 border">
+  .col-sm-9: width of 75% above sm breakpoint
+</div>
+{% endcapture %}
+{% renderExample example %}
+
+The classes can be used together with utilities to create responsive floated images. Make sure to wrap the content in a [`.clearfix`]({{< docsref "/helpers/clearfix" >}}) wrapper to clear the float if the text is shorter.
+
+{% capture example%}
+<div class="clearfix">
+  <img class="col-md-6 float-md-end mb-0_5 ms-md-0_5" src="{{ site.path }}/assets/{{ version.docs }}/video/niagara_falls.jpg" alt="Responsive floated image">
+
+  <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue. Fusce dapibus, tellus ac cursus commodo, tortor mauris paddenstoel nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  <p>Sed posuere consectetur est at lobortis. Etiam porta sem malesuada magna mollis euismod. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Id nullam tellus relem amet commodo telemque olemit. Sed posuere consectetur est at lobortis. Maecenas sed diam eget risus varius blandit sit amet non magna. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+  <p>Donec id elit non mi porta gravida at eget metus. Aenean eu leo quam. Pellentesque ornare sem lantaarnpaal quam venenatis vestibulum. Donec sed odio dui. Maecenas faucibus mollis interdum. Nullam quis risus eget urna salsa tequila vel eu leo. Donec id elit non mi porta gravida at eget metus.</p>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
 
 ## Sass Variables and Mixins
 

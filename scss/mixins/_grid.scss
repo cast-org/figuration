@@ -58,21 +58,20 @@
         $bprule: breakpoint-designator($breakpoint);
 
         // Allow columns to stretch full width below their breakpoints
-        .col#{$bprule},
-        .col#{$bprule}-auto {
-            @extend %col;
-        }
-        @for $i from 1 through $grid-columns {
-            .col#{$bprule}-#{$i} {
-                @extend %col;
-            }
-        }
+        //.col#{$bprule},
+        //.col#{$bprule}-auto {
+        //    @extend %col;
+        //}
+        //@for $i from 1 through $grid-columns {
+        //    .col#{$bprule}-#{$i} {
+        //        @extend %col;
+        //    }
+        //}
 
         @include media-breakpoint-up($breakpoint, $breakpoints) {
             // Provide basic `.col-{bp}` classes for equal-width flexbox columns
             .col#{$bprule} {
-                flex-basis: 0;
-                flex-grow: 1;
+                flex: 1 0 0%;
                 min-width: 0;
             }
         }
