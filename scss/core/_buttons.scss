@@ -5,7 +5,7 @@
         font-family: $btn-font-family;
         font-weight: $btn-font-weight;
         text-align: center;
-        text-decoration: none;
+        text-decoration: if($link-decoration == none, null, none);
         white-space: $btn-white-space;
         vertical-align: middle;
         cursor: pointer;
@@ -17,7 +17,7 @@
     }
 
     .btn:hover {
-        text-decoration: none;
+        text-decoration: if($link-hover-decoration == underline, none, null);
     }
 
     %btn-common-focus {
