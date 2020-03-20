@@ -191,7 +191,6 @@ a {
 
 a:hover {
   color: #003ca3;
-  text-decoration: underline;
 }
 
 a:not([href]) {
@@ -340,9 +339,18 @@ progress {
   vertical-align: baseline;
 }
 
-::-webkit-datetime-edit {
-  overflow: visible;
-  line-height: 0;
+::-webkit-datetime-edit-fields-wrapper,
+::-webkit-datetime-edit-text,
+::-webkit-datetime-edit-minute,
+::-webkit-datetime-edit-hour-field,
+::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-year-field {
+  padding: 0;
+}
+
+::-webkit-inner-spin-button {
+  height: auto;
 }
 
 [type="search"] {
@@ -1807,10 +1815,6 @@ textarea.form-control.has-validation-icon.is-invalid {
   }
 }
 
-.btn:hover {
-  text-decoration: none;
-}
-
 .btn:focus, .btn-check-input:focus ~ .btn {
   text-decoration: none;
   outline: 0;
@@ -2393,7 +2397,6 @@ fieldset:disabled a.btn, .btn-check-input[disabled] ~ .btn, .btn-check-input:dis
 }
 
 .btn-link:hover, .btn-link:focus {
-  text-decoration: underline;
   background-color: transparent;
   border-color: transparent;
   box-shadow: none;
@@ -4656,7 +4659,6 @@ button.list-item-action {
 .page-link:hover, .page-link:focus {
   z-index: 2;
   color: #50606f;
-  text-decoration: none;
   background-color: #dfe3e6;
   border-color: #9eaab4;
 }
@@ -4824,7 +4826,6 @@ a.page-link {
 .dropdown-menu a.active,
 .dropdown-item.active {
   color: #fff;
-  text-decoration: none;
   background-color: #0055e9;
 }
 
@@ -4832,7 +4833,6 @@ a.page-link {
 .dropdown-item:hover,
 .dropdown-item:focus {
   color: #343e48;
-  text-decoration: none;
   background-color: #dfe3e6;
 }
 
@@ -4962,10 +4962,12 @@ a.page-link {
 .nav-link {
   display: block;
   padding: 0.3125rem 1rem;
+  text-decoration: none;
 }
 
 .nav-link.disabled {
   color: #9eaab4;
+  text-decoration: none;
   pointer-events: none;
   cursor: default;
   opacity: 0.6;
