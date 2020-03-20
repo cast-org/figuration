@@ -63,6 +63,9 @@ ${toc}
 ## Grid
 - Dropped the `.push` and `.pull` modifiers in favor of `.offset-*` and flex utilities.
 - Dropped the `position: relative` from grid columns.
+- Horizontal padding is added to the columns only when they are direct children of a row, instead of being added to the columns themselves.
+- The column classes can now also be used as stand alone classes to control width, without the additional horizontal padding when used outside a `.row`.
+- Responsive gutter classes have been added, to allow control of the gutter size in horizontal and/or vertical directions.
 
 ## Components
 
