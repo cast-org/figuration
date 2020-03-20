@@ -2,10 +2,6 @@
 @if $enable-form and $enable-form-file {
     .form-file {
         position: relative;
-        display: inline-block;
-        width: 100%;
-        height: calc-input-height-outer($input-padding-y, $input-line-height);
-        margin-bottom: 0;
     }
 
     .form-file-input {
