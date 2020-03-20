@@ -745,7 +745,7 @@ In the examples below, the card will display the image cap **above** the body co
 
 ### Card Groups
 
-Use card groups to render cards as a single, attached element with equal width and height columns. Card groups use `display: flex;` to achieve their uniform sizing.  Card groups are available with the class syntax of `.card-group{-breakpoint}`, such as `.card-group-md` to enable the group layout for `md` screens and above.
+Use card groups to render cards as a single, attached element with equal width and height columns. Card groups start off as stacked separated cards and use `display: flex;` to become attached with uniform dimensions starting at the given breakpoint.  Card groups are available with the class syntax of `.card-group{-breakpoint}`, such as `.card-group-md` to enable the group layout for `md` screens and above.
 
 {% capture example %}
 <div class="card-group-sm">
