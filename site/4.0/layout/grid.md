@@ -1051,6 +1051,22 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code$enable-grid-responsive-containers</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the responsive container classes.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-grid-responsive-gutters</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the responsive gutter classes.
+        </td>
+      </tr>
+      <tr>
         <td><code>$grid-breakpoints</code></td>
         <td>map</td>
         <td><pre><code>(
@@ -1062,6 +1078,22 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
 )</code></pre></td>
         <td>
           Maximum container widths for given breakpoints.  The <code>bp-to-em()</code> function converts a pixel value to an <code>em</code> value.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$responsive-container-breakpoints</code></td>
+        <td>list</td>
+        <td><code>map-keys($grid-breakpoints)</code></td>
+        <td>
+          Subset of breakpoints to generate responsive container classes for.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$responsive-gutter-breakpoints</code></td>
+        <td>list</td>
+        <td><code>map-keys($grid-breakpoints)</code></td>
+        <td>
+          Subset of breakpoints to generate responsive gutter classes for.
         </td>
       </tr>
       <tr>
@@ -1094,7 +1126,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
-        <td><code>$grid-columns</code></td>
+        <td><code>$grid-gutter-width</code></td>
         <td>string</td>
         <td><code>2rem</code></td>
         <td>
@@ -1107,6 +1139,21 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>6</code></td>
         <td>
           The maximum number of columns to build the responsive grid column classes with.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$gutters</code></td>
+        <td>map</td>
+        <td><pre><code>(
+    "0":    0,
+    "0_5":  .5rem,
+    "1":    1rem,
+    "1_5":  1.5rem,
+    "2":    2rem,
+    "2_5":  2.5rem
+)</code></pre></td>
+        <td>
+          Map of gutter append names and sizes to be generated.
         </td>
       </tr>
     </tbody>
