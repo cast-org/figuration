@@ -25,14 +25,14 @@
     .page-link {
         position: relative;
         color: $pagination-color;
-        text-decoration: none;
+        text-decoration: if($link-decoration == none, null, none);
         background-color: $pagination-bg;
 
         &:hover,
         &:focus {
             z-index: 2;
             color: $pagination-hover-color;
-            text-decoration: none;
+            text-decoration: if($link-hover-decoration == underline, none, null);
             background-color: $pagination-hover-bg;
             border-color: $pagination-hover-border-color;
         }

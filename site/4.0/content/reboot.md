@@ -507,7 +507,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$link-hover-decoration</code></td>
         <td>string</td>
-        <td><code>underline</code></td>
+        <td><code>null</code></td>
         <td>
           Text decoration for hovered or focused links.
         </td>

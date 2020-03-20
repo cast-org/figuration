@@ -430,6 +430,22 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$nav-link-decoration</code></td>
+        <td>string</td>
+        <td><code>if($link-decoration == none, null, none)</code></td>
+        <td>
+          Text decoration for base nav links.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$nav-link-hover-decoration</code></td>
+        <td>string</td>
+        <td><code>if($link-hover-decoration == underline, none, null)</code></td>
+        <td>
+          Text decoration for base nav links in hover or focus state.
+        </td>
+      </tr>
+      <tr>
         <td><code>$nav-link-disabled-opacity</code></td>
         <td>string</td>
         <td><code>.6</code></td>
@@ -518,7 +534,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
-        <td><code>$component-active-color</code></td>
+        <td><code>$nav-pills-active-color</code></td>
         <td>string</td>
         <td><code>$component-active-color</code></td>
         <td>
@@ -526,7 +542,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
-        <td><code>$component-active-bg</code></td>
+        <td><code>$nav-pills-active-bg</code></td>
         <td>string</td>
         <td><code>$component-active-bg</code></td>
         <td>

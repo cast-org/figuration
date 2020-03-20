@@ -352,7 +352,7 @@ $body-text-align:       null !default;
 $link-color:                    $primary !default;
 $link-decoration:               underline !default;
 $link-hover-color:              palette($primary, 700) !default;
-$link-hover-decoration:         underline !default;
+$link-hover-decoration:         null !default;
 
 $link-stretch-pseudo-element:   after !default;
 $link-stretch-z-index:          1 !default;
@@ -1097,8 +1097,11 @@ $dropdown-back-spacer-x:        .375rem !default;
 // =====
 $nav-link-padding-x:            1rem !default;
 $nav-link-padding-y:            .3125rem !default;
+$nav-link-decoration:           if($link-decoration == none, null, none) !default;
+$nav-link-hover-decoration:     if($link-hover-decoration == underline, none, null) !default;
 $nav-link-disabled-opacity:     .6 !default;
 $nav-link-disabled-color:       $component-disabled-color !default;
+
 
 $nav-tabs-border-color:         $component-border-color !default;
 $nav-tabs-border-width:         $border-width !default;
