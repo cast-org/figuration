@@ -60,18 +60,40 @@
 @if $enable-grid-classes {
     .row {
         @include make-row();
+
+        > * {
+            @include make-col-ready();
+        }
     }
+}
 
-    // Remove the negative margin from default .row, then the horizontal padding
-    // from all immediate children columns (to prevent runaway style inheritance).
-    .no-gutters {
-        margin-right: 0;
-        margin-left: 0;
+// Responsive gutters
+@if $enable-grid-classes and $enable-grid-responsive-gutters {
+    @each $breakpoint in $responsive-gutter-breakpoints {
+        $bprule: breakpoint-designator($breakpoint);
 
-        > .col,
-        > [class*="col-"] {
-            padding-right: 0;
-            padding-left: 0;
+        @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+            @each $key, $value in $gutters {
+                .g#{$bprule}-#{$key},
+                .gx#{$bprule}-#{$key} {
+                    margin-right: -$value / 2;
+                    margin-left: -$value / 2;
+
+                    > * {
+                        padding-right: $value / 2;
+                        padding-left: $value / 2;
+                    }
+                }
+
+                .g#{$bprule}-#{$key},
+                .gy#{$bprule}-#{$key} {
+                    margin-top: -$value;
+
+                    > * {
+                        margin-top: $value;
+                    }
+                }
+            }
         }
     }
 }

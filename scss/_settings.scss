@@ -271,6 +271,7 @@ $grid-breakpoints: map-sort-by-values($grid-breakpoints);
 // This way each the CSS for each of the items can be controlled and reduced as needed.
 // The items in the following lists *must* be in the keys for the `$grid-breakpoints` map.
 $responsive-container-breakpoints:  map-keys($grid-breakpoints) !default;
+$responsive-gutter-breakpoints:     map-keys($grid-breakpoints) !default;
 $row-columns-breakpoints:           map-keys($grid-breakpoints) !default;
 $card-horizontal-breakpoints:       map-keys($grid-breakpoints) !default;
 $card-deck-breakpoints:             map-keys($grid-breakpoints) !default;
@@ -310,10 +311,19 @@ $container-max-widths: map-merge(
 
 // Grid
 // =====
-// Set the number of columns and pecify the width of the gutter.
+// Set the number of columns and specify the width of the gutter.
 $grid-columns:      12 !default;
 $grid-gutter-width: 2rem !default;
 $grid-row-columns:  6 !default;
+
+$gutters: (
+    "0":    0,
+    "0_5":  .5rem,
+    "1":    1rem,
+    "1_5":  1.5rem,
+    "2":    2rem,
+    "2_5":  2.5rem
+) !default;
 
 
 // Container Padding
