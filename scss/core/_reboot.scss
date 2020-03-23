@@ -415,19 +415,23 @@ fieldset {
     border: 0;
 }
 
-// 1. Correct the text wrapping in Edge and IE.
-// 2. Correct the color inheritance from `fieldset` elements in IE.
+// 1. By using `float: left`, the legend will behave like a block element.
+//    This way the border of a fieldset wraps around the legend if present.
+// 2. Correct the text wrapping in Edge.
+// 3. Fix wrapping issue.
 legend {
-    display: block; // 1
+    float: left; // 1
     width: 100%;
-    max-width: 100%; // 1
     padding: 0;
     margin-bottom: $legend-margin-bottom;
     @include font-size($legend-font-size);
     font-weight: $legend-font-weight;
     line-height: inherit;
-    color: inherit; // 2
-    white-space: normal; // 1
+    white-space: normal; // 2
+
+    + * {
+        clear: left; // 3
+    }
 }
 
 progress {
