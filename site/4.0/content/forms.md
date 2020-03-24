@@ -631,6 +631,42 @@ Longer filename text is truncated and an ellipsis is added when there's not enou
 {% endcapture %}
 {% renderExample example %}
 
+### Sizing
+
+Use `.form-file-*` sizing modifiers to adjust the file input to match the textual inputs.
+
+{% capture example %}
+<div class="form-file form-file-xsmall mb-1">
+  <input type="file" class="form-file-input" id="formFileSize0">
+  <label class="form-file-label" for="formFileSize0">
+    <span class="form-file-text">Extra small choose file...</span>
+    <span class="form-file-button">Browse</span>
+  </label>
+</div>
+<div class="form-file form-file-small mb-1">
+  <input type="file" class="form-file-input" id="formFileSize1">
+  <label class="form-file-label" for="formFileSize1">
+    <span class="form-file-text">Small choose file...</span>
+    <span class="form-file-button">Browse</span>
+  </label>
+</div>
+<div class="form-file form-file-large mb-1">
+  <input type="file" class="form-file-input" id="formFileSize2">
+  <label class="form-file-label" for="formFileSize2">
+    <span class="form-file-text">Large choose file...</span>
+    <span class="form-file-button">Browse</span>
+  </label>
+</div>
+<div class="form-file form-file-xlarge">
+  <input type="file" class="form-file-input" id="formFileSize3">
+  <label class="form-file-label" for="formFileSize3">
+    <span class="form-file-text">Extra large choose file...</span>
+    <span class="form-file-button">Browse</span>
+  </label>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
 ## Range
 
 Create custom `<input type="range">` controls with `.form-range`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only IE and Firefox support "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.  We also hide the tooltip provided only by IE to maintain cross-browser consistency.
@@ -1565,7 +1601,15 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td>boolean</td>
         <td><code>true</code></td>
         <td>
-          Enable the generation of the classes for file inputs.
+          Enable the generation of the classes for custom file inputs.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-form-file-sizing</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the sizing classes for custom file inputs.
         </td>
       </tr>
       <tr>
@@ -1902,6 +1946,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>.3125rem</code></td>
         <td>
           Vertical adjustment for inputs within <code>.form-check</code>.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$form-check-label-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Text color for `.form-check-label`.
         </td>
       </tr>
       <tr>
@@ -2374,6 +2426,22 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td><code>$uibase-50</code></td>
         <td>
           Button background color for file input.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$form-file-button-font-family</code></td>
+        <td>string</td>
+        <td><code>$btn-font-family</code></td>
+        <td>
+          Button font-family for file input.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$form-file-button-font-weight</code></td>
+        <td>string</td>
+        <td><code>$btn-font-weight</code></td>
+        <td>
+          Button font-weight for file input.
         </td>
       </tr>
       <tr>
