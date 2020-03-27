@@ -152,7 +152,7 @@
             box-shadow: none;
 
             @include hover-focus() {
-                text-decoration: if($link-hover-decoration == null, null, $link-hover);
+                text-decoration: $link-hover-decoration;
                 background-color: transparent;
                 border-color: transparent;
             }
