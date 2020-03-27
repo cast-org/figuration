@@ -827,7 +827,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>string | element</td>
         <td><code>'toggle'</code></td>
         <td>
-          <p>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, or an HTMLElement reference. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#referenceObject">referenceObject docs</a>.</p>
+          <p>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, or an HTMLElement reference. For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#referenceObject">referenceObject docs</a>.</p>
         </td>
       </tr>
       <tr>
@@ -835,7 +835,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>string | element</td>
         <td><code>'scrollParent'</code></td>
         <td>
-          <p>Overflow constraint boundary of the dropdown menu. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</p>
+          <p>Overflow constraint boundary of the dropdown menu. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</p>
         </td>
       </tr>
       <tr>
@@ -843,7 +843,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>boolean</td>
         <td><code>true</code></td>
         <td>
-          <p>Allow Dropdown to flip in case of an overlapping on the reference element. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..flip.enabled">flip docs</a>.</p>
+          <p>Allow Dropdown to flip in case of an overlapping on the reference element. For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..flip.enabled">flip docs</a>.</p>
         </td>
       </tr>
       <tr>
@@ -858,7 +858,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <td>popperConfig</td>
         <td>null | object</td>
         <td><code>null</code></td>
-        <td>Pass a customized <a href="https://popper.js.org/popper-documentation.html#Popper.Defaults">Popper.js configuration</a> that will override the default Popper.js configuration.</td>
+        <td>Pass a customized <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper.js configuration</a> that will override the default Popper.js configuration.</td>
       </tr>
     </tbody>
   </table>

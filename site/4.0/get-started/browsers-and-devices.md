@@ -44,12 +44,12 @@ Generally speaking, Figuration supports the latest versions of each major platfo
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <td></td>
-        <th>Chrome</th>
-        <th>Firefox</th>
-        <th>Safari</th>
-        <th>Android Browser &amp; WebView</th>
-        <th>Microsoft Edge</th>
+        <th scope="col"></th>
+        <th scope="col">Chrome</th>
+        <th scope="col">Firefox</th>
+        <th scope="col">Safari</th>
+        <th scope="col">Android Browser &amp; WebView</th>
+        <th scope="col">Microsoft Edge</th>
       </tr>
     </thead>
     <tbody>
@@ -81,13 +81,13 @@ Similarly, the latest versions of most desktop browsers are supported.
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <td></td>
-        <th>Chrome</th>
-        <th>Firefox</th>
-        <th>Internet Explorer</th>
-        <th>Microsoft Edge</th>
-        <th>Opera</th>
-        <th>Safari</th>
+        <th scope="col"></th>
+        <th scope="col">Chrome</th>
+        <th scope="col">Firefox</th>
+        <th scope="col">Internet Explorer</th>
+        <th scope="col">Microsoft Edge</th>
+        <th scope="col">Opera</th>
+        <th scope="col">Safari</th>
       </tr>
     </thead>
     <tbody>
@@ -113,7 +113,7 @@ Similarly, the latest versions of most desktop browsers are supported.
   </table>
 </div>
 
-For Firefox, in addition to the latest normal stable release, we also support the latest [Extended Support Release (ESR)](https://www.mozilla.org/en-US/firefox/organizations/#faq) version of Firefox.
+For Firefox, in addition to the latest normal stable release, we also support the latest [Extended Support Release (ESR)](https://https://www.mozilla.org/en-US/firefox/enterprise/) version of Firefox.
 
 Unofficially, Figuration should look and behave well enough in Chromium and Chrome for Linux, and Firefox for Linux, though they are not officially supported.
 
