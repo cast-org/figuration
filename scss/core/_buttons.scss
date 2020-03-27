@@ -21,7 +21,6 @@
     }
 
     %btn-common-focus {
-        text-decoration: none;
         // Turn off outline due to focus box-shadow set by button-variant()
         outline: 0;
     }
@@ -153,22 +152,14 @@
             box-shadow: none;
 
             @include hover-focus() {
-                text-decoration: $link-hover-decoration;
+                text-decoration: if($link-hover-decoration == null, null, $link-hover);
                 background-color: transparent;
                 border-color: transparent;
-                box-shadow: none;
             }
 
             &:hover {
                 color: $btn-link-hover-color;
             }
-
-            // stylelint-disable declaration-block-no-duplicate-properties
-            &:focus {
-                outline: 1px dotted;
-                outline: 5px auto -webkit-focus-ring-color;
-            }
-            // stylelint-enable declaration-block-no-duplicate-properties
 
             &.disabled,
             &:disabled {
