@@ -624,7 +624,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td>percentage</td>
         <td><code>.2%</code></td>
         <td>
-          The percentage per palette level, less than 500, used to <a href="https://sass-lang.com/documentation/functions/color#mix">mix</a> a color against pure white (<code>#fff</code>).
+          The percentage per palette level, less than 500, used to <a href="https://sass-lang.com/documentation/modules/color#mix">mix</a> a color against pure white (<code>#fff</code>).
         </td>
       </tr>
       <tr>
@@ -632,7 +632,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td>percentage</td>
         <td><code>.15%</code></td>
         <td>
-          The percentage per palette level used, greater than 500, to <a href="https://sass-lang.com/documentation/functions/color#mix">mix</a> a color against pure black (<code>#000</code>).
+          The percentage per palette level used, greater than 500, to <a href="https://sass-lang.com/documentation/modules/color#mix">mix</a> a color against pure black (<code>#000</code>).
         </td>
       </tr>
       <tr>
