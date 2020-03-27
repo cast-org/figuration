@@ -141,10 +141,16 @@
 
 // Color contrast ratio
 @function color-get-contrast-ratio($colorfore, $colorback) {
-    $lumfore: color-get-luminance($colorfore) + .05;
+    $lumfore: color-get-luminance(color-get-opaque($colorfore, $colorback)) + .05;
     $lumback: color-get-luminance($colorback) + .05;
 
     @return max($lumfore, $lumback) / min($lumfore, $lumback);
+}
+
+// Opaque color
+// color-get-opaque(rgba(0, 0, 0, .5), #fff) => #808080
+@function color-get-opaque($colorfore, $colorback) {
+    @return mix(rgba($colorfore, 1), $colorback, opacity($colorfore) * 100);
 }
 
 // Lookup table for channel color values in sRGB space
