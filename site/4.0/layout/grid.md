@@ -72,28 +72,28 @@ The example pixel values are calculated based upon assumption where the average 
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th></th>
-        <th class="text-center">
+        <th scope="col"></th>
+        <th scope="col" class="text-center">
           Extra small<br>
           <small>&lt;576px</small><br>
           <small>&lt;36em</small>
         </th>
-        <th class="text-center">
+        <th scope="col" class="text-center">
           Small<br>
           <small>&ge;576px</small><br>
           <small>&ge;36em</small>
         </th>
-        <th class="text-center">
+        <th scope="col" class="text-center">
           Medium<br>
           <small>&ge;768px</small><br>
           <small>&ge;48em</small>
         </th>
-        <th class="text-center">
+        <th scope="col" class="text-center">
           Large<br>
           <small>&ge;992px</small><br>
           <small>&ge;62em</small>
         </th>
-        <th class="text-center">
+        <th scope="col" class="text-center">
           Extra large<br>
           <small>&ge;1200px</small><br>
           <small>&ge;75em</small>

@@ -21,7 +21,7 @@ Rules are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<object>` e
 
 {% capture example %}
 <div class="embed-fluid embed-fluid-16x9">
-  <iframe class="embed-fluid-item" src="https://www.youtube.com/embed/MbGkL06EU90?rel=0" allowfullscreen></iframe>
+  <iframe class="embed-fluid-item" src="https://www.youtube.com/embed/MbGkL06EU90?rel=0" title="YouTube video" allowfullscreen></iframe>
 </div>
 {% endcapture %}
 {% renderExample example %}
