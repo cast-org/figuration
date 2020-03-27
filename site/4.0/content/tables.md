@@ -794,6 +794,43 @@ A `<caption>` functions like a heading for a table. It helps users with screen r
 {% endcapture %}
 {% renderExample example %}
 
+Use `.caption-top` to place the `<caption>`above the table.
+
+{% capture example %}
+<table class="table caption-top">
+  <caption>List of users</caption>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>John</td>
+      <td>Doe</td>
+      <td>jdoe</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jane</td>
+      <td>Smith</td>
+      <td>jsmith</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>James</td>
+      <td>White</td>
+      <td>jwhite</td>
+    </tr>
+  </tbody>
+</table>
+{% endcapture %}
+{% renderExample example %}
+
 ## Scrolling Tables
 
 Having an issue with tables becoming too wide for their containers? Add a `.table-scroll` wrapper to any `.table` to make them scroll horizontally if they become wider than their container.
