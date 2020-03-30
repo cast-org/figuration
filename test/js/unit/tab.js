@@ -182,6 +182,20 @@ $(function() {
         $last.CFW_Tab('show');
     });
 
+    QUnit.test('parent list items should get role="presentation"', function(assert) {
+        assert.expect(2);
+        var tabsHTML = '<ul class="tabs">' +
+            '<li><a href="#home" data-cfw="tab">Home</a></li>' +
+            '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
+            '</ul>';
+        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        $(tabsHTML).appendTo('#qunit-fixture');
+
+        assert.strictEqual($('#qunit-fixture').find('li[role="presentation"]').length, 0, 'both parent <li> do not have role="presentation"');
+        $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
+        assert.strictEqual($('#qunit-fixture').find('li[role="presentation"]').length, 2, 'both parent <li> have role="presentation"');
+    });
+
     QUnit.test('selected tab should have aria-selected', function(assert) {
         assert.expect(8);
         var tabsHTML = '<ul class="tabs">' +
