@@ -29,36 +29,34 @@ Assistive technologies such as screen readers will have trouble with your forms 
 Textual form controls—like `<input>`s, `<select>`s, and `<textarea>`s—are styled with the `.form-control` class.  Included are styles for general appearance, focus state, sizing, and more.
 
 {% capture example %}
-<form>
-    <div class="form-group">
-    <label for="example-input">Example text input</label>
-    <input type="text" class="form-control" id="example-input" placeholder="Input text here">
-  </div>
-  <div class="form-group">
-    <label for="example-select-1">Example select</label>
-    <select class="form-control" id="example-select-1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="example-select-2">Example multiple select</label>
-    <select multiple class="form-control" id="example-select-2">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="example-texarea">Example textarea</label>
-    <textarea class="form-control" id="example-texarea" rows="3"></textarea>
-  </div>
-</form>
+<div class="form-group">
+  <label for="example-input">Example text input</label>
+  <input type="text" class="form-control" id="example-input" placeholder="Input text here">
+</div>
+<div class="form-group">
+  <label for="example-select-1">Example select</label>
+  <select class="form-control" id="example-select-1">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+</div>
+<div class="form-group">
+  <label for="example-select-2">Example multiple select</label>
+  <select multiple class="form-control" id="example-select-2">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+</div>
+<div class="form-group">
+  <label for="example-texarea">Example textarea</label>
+  <textarea class="form-control" id="example-texarea" rows="3"></textarea>
+</div>
 {% endcapture %}
 {% renderExample example %}
 
@@ -74,13 +72,13 @@ You can also set heights and font-sizes using component sizing classes, such as:
 - `.form-control-xlarge`
 
 {% capture example %}
-<input class="form-control form-control-xlarge" type="text" placeholder="Extra large form control">
-<input class="form-control form-control-large" type="text" placeholder="Large form control">
-<input class="form-control" type="text" placeholder="Default form control">
-<input class="form-control form-control-small" type="text" placeholder="Small form control">
-<input class="form-control form-control-xsmall mb-2" type="text" placeholder="Extra small form control">
-<input class="form-control fs-large" type="text" placeholder="Explicit large font size">
-<input class="form-control fs-small" type="text" placeholder="Explicit small font size">
+<input class="form-control form-control-xlarge" type="text" placeholder="Extra large form control" aria-label=".form-control-xlarge size example">
+<input class="form-control form-control-large" type="text" placeholder="Large form control" aria-label=".form-control-large size example">
+<input class="form-control" type="text" placeholder="Default form control" aria-label="default size example">
+<input class="form-control form-control-small" type="text" placeholder="Small form control" aria-label=".form-control-small size example">
+<input class="form-control form-control-xsmall mb-2" type="text" placeholder="Extra small form control" aria-label=".form-control-xsmall size example">
+<input class="form-control fs-large" type="text" placeholder="Explicit large font size" aria-label=".fs-large size example">
+<input class="form-control fs-small" type="text" placeholder="Explicit small font size" aria-label=".fs-small size example">
 {% endcapture %}
 {% renderExample example %}
 
@@ -110,7 +108,7 @@ The sizing classes also work on other inputs such as `<select>`s and `<textarea>
 Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
 
 {% capture example %}
-<input class="form-control" type="text" placeholder="Readonly input" readonly>
+<input class="form-control" type="text" placeholder="Readonly input" aria-label="Readonly input example" readonly>
 {% endcapture %}
 {% renderExample example %}
 
@@ -119,20 +117,18 @@ Add the `readonly` boolean attribute on an input to prevent modification of the 
 When you want to have `readonly` fields in your form styled as plain text, use the `.form-control-static` class to remove the default form field styling and preserve the correct margin and padding.
 
 {% capture example %}
-<form>
-  <div class="form-group row">
-    <label for="static-email" class="col-sm-2 form-label">Email</label>
-    <div class="col-sm-10">
-      <input type="text" readonly class="form-control-static" id="static-email" value="email@example.com">
-    </div>
+<div class="form-group row">
+  <label for="static-email" class="col-sm-2 form-label">Email</label>
+  <div class="col-sm-10">
+    <input type="text" readonly class="form-control-static" id="static-email" value="email@example.com">
   </div>
-  <div class="form-group row">
-    <label for="static-password" class="col-sm-2 form-label">Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="static-password" placeholder="Password">
-    </div>
+</div>
+<div class="form-group row">
+  <label for="static-password" class="col-sm-2 form-label">Password</label>
+  <div class="col-sm-10">
+    <input type="password" class="form-control" id="static-password" placeholder="Password">
   </div>
-</form>
+</div>
 {% endcapture %}
 {% renderExample example %}
 
@@ -199,7 +195,7 @@ Just like sizing the form inputs, you can size `<label>`s, `<legends>`, and stat
 Add the `disabled` attribute on an input to prevent user interactions and make it appear lighter in color.
 
 {% capture example %}
-<input class="form-control" id="disabled-input" type="text" placeholder="Disabled input" disabled>
+<input class="form-control" id="disabled-input" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled>
 {% endcapture %}
 {% renderExample example %}
 
@@ -207,7 +203,7 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
 
 {% capture example %}
 <form>
-  <fieldset disabled>
+  <fieldset disabled aria-label="Disabled fieldset example">
     <div class="form-group">
       <label for="disabled-text">Disabled input</label>
       <input type="text" id="disabled-text" class="form-control" placeholder="Disabled input">
@@ -270,7 +266,7 @@ Help text below inputs can be styled with `.form-text`. This class includes `dis
 Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`, or something else), optionally using utility classes.
 
 {% capture example %}
-<form class="form-inline">
+<div class="form-inline">
   <div class="form-group">
     <label for="inline-pass" class="me-0_5">Password</label>
     <input type="password" id="inline-pass" class="form-control me-0_5" aria-describedby="inline-pass-text">
@@ -278,7 +274,7 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
       Must be 8-20 characters long.
     </small>
   </div>
-</form>
+</div>
 {% endcapture %}
 {% renderExample example %}
 
@@ -706,7 +702,8 @@ While Figuration supports styling `<input type="color">` elements, some browsers
 {% renderCallout, callout, "danger" %}
 
 {% capture example %}
-<input class="form-color" type="color" value="#117dba" id="color">
+<label for="customColor">Example color</label>
+<input class="form-color" type="color" value="#117dba" id="customColor">
 {% endcapture %}
 {% renderExample example %}
 
@@ -719,16 +716,14 @@ Since Figuration applies `display: block` and `width: 100%` to almost all our fo
 The `.form-group` class is the easiest way to add some structure to forms. It provides a flexible class that encourages proper grouping of labels, controls, optional help text, and form validation messaging. By default it only applies `margin-bottom`, but it picks up additional styles in `.form-inline` as needed. Use it with `<fieldset>`s, `<div>`s, or nearly any other element.
 
 {% capture example %}
-<form>
-  <div class="form-group">
-    <label class="form-label" for="formGroupExampleInput">Example label</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
-  </div>
-  <div class="form-group">
-    <label class="form-label" for="formGroupExampleInput2">Another label</label>
-    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
-  </div>
-</form>
+<div class="form-group">
+  <label class="form-label" for="formGroupExampleInput">Example label</label>
+  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+</div>
+<div class="form-group">
+  <label class="form-label" for="formGroupExampleInput2">Another label</label>
+  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+</div>
 {% endcapture %}
 {% renderExample example %}
 
@@ -739,18 +734,16 @@ More complex forms can be built using our [grid classes]({{ site.path }}/{{ vers
 Grid-based form layouts also support [control sizing]({{ site.path }}/{{ version.docs }}/content/forms/#control-sizing).
 
 {% capture example %}
-<form>
-  <div class="row">
-    <div class="col">
-      <label for="formGridExampleInput">First Name</label>
-      <input type="text" class="form-control" id="formGridExampleInput" placeholder="First name">
-    </div>
-    <div class="col">
-      <label for="formGridExampleInput2">Last Name</label>
-      <input type="text" class="form-control" id="formGridExampleInput2" placeholder="Last name">
-    </div>
+<div class="row">
+  <div class="col">
+    <label for="formGridExampleInput">First Name</label>
+    <input type="text" class="form-control" id="formGridExampleInput" placeholder="First name">
   </div>
-</form>
+  <div class="col">
+    <label for="formGridExampleInput2">Last Name</label>
+    <input type="text" class="form-control" id="formGridExampleInput2" placeholder="Last name">
+  </div>
+</div>
 {% endcapture %}
 {% renderExample example %}
 
@@ -759,16 +752,14 @@ Grid-based form layouts also support [control sizing]({{ site.path }}/{{ version
 You may also swap `.row` for `.form-row`, a variation of our standard grid row that overrides the default column gutters for tighter and more compact layouts.
 
 {% capture example %}
-<form>
-  <div class="form-row">
-    <div class="col">
-      <input type="text" class="form-control" placeholder="First name">
-    </div>
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Last name">
-    </div>
+<div class="form-row">
+  <div class="col">
+    <input type="text" class="form-control" placeholder="First name" aria-label="First name">
   </div>
-</form>
+  <div class="col">
+    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+  </div>
+</div>
 {% endcapture %}
 {% renderExample example %}
 
@@ -892,19 +883,17 @@ At times, you maybe need to use margin or padding utilities to create that perfe
 As shown in the previous examples, our grid system allows you to place any number of `.col`s within a `.row`. They will split the available width equally between them. You may also pick a subset of your columns to take up more or less space, while the remaining `.col`s equally split the rest, with specific column classes like `.col-7`.
 
 {% capture example %}
-<form>
-  <div class="form-row">
-    <div class="col-7">
-      <input type="text" class="form-control" placeholder="City">
-    </div>
-    <div class="col">
-      <input type="text" class="form-control" placeholder="State">
-    </div>
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Zip">
-    </div>
+<div class="form-row">
+  <div class="col-7">
+    <input type="text" class="form-control" placeholder="City" aria-label="City">
   </div>
-</form>
+  <div class="col">
+    <input type="text" class="form-control" placeholder="State" aria-label="State">
+  </div>
+  <div class="col">
+    <input type="text" class="form-control" placeholder="Zip" aria-label="Zip">
+  </div>
+</div>
 {% endcapture %}
 {% renderExample example %}
 
@@ -1313,7 +1302,7 @@ Validation styles are supported for the following form controls and components:
   </div>
 
   <div class="form-group">
-    <select class="form-control" required>
+    <select class="form-control" aria-label="Select example" required>
       <option value="">Open this select menu</option>
       <option value="1">One</option>
       <option value="2">Two</option>
@@ -1333,11 +1322,13 @@ Validation styles are supported for the following form controls and components:
     </div>
   </div>
 
-  <div class="input-group">
+  <div class="input-group mb-1">
     <span class="input-group-text" id="validate-support-ig">@</span>
     <input type="text" class="form-control input-group-end" placeholder="Username" aria-label="Username" aria-describedby="validate-support-ig" required>
     <div class="invalid-feedback">Please choose a unique and valid username.</div>
   </div>
+
+  <button class="btn btn-primary" type="submit" disabled>Submit form</button>
 </form>
 {% endcapture %}
 {% renderExample example %}
@@ -1461,7 +1452,8 @@ Optional visual icon representations of the validation state can be added to _te
     <label for="validate-icon-10">Textarea</label>
     <textarea class="form-control has-validation-icon" id="validate-icon-10" rows="3" placeholder="Required example textarea" required></textarea>
     <div class="invalid-feedback">Please enter a message in the textarea.</div>
-    </div>
+  </div>
+  <button class="btn btn-primary" type="submit" disabled>Submit form</button>
 </form>
 {% endcapture %}
 {% renderExample example %}
