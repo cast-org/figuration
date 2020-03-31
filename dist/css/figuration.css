@@ -756,8 +756,6 @@ pre code {
 }
 
 .table-scroll {
-  display: block;
-  width: 100%;
   margin-bottom: 1rem;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -769,8 +767,6 @@ pre code {
 
 @media (max-width: 35.98em) {
   .table-scroll-xs {
-    display: block;
-    width: 100%;
     margin-bottom: 1rem;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -782,8 +778,6 @@ pre code {
 
 @media (max-width: 47.98em) {
   .table-scroll-sm {
-    display: block;
-    width: 100%;
     margin-bottom: 1rem;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -795,8 +789,6 @@ pre code {
 
 @media (max-width: 61.98em) {
   .table-scroll-md {
-    display: block;
-    width: 100%;
     margin-bottom: 1rem;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -808,8 +800,6 @@ pre code {
 
 @media (max-width: 74.98em) {
   .table-scroll-lg {
-    display: block;
-    width: 100%;
     margin-bottom: 1rem;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;

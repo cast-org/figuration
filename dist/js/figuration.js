@@ -1656,6 +1656,7 @@ if (typeof jQuery === 'undefined') {
                 'aria-selected': 'false',
                 'aria-controls': this.$target.attr('id')
             });
+            this.$element.parent('li').attr('role', 'presentation');
 
             // Bind click handler
             this.$element.on('click.cfw.tab', function(e) {
@@ -1710,7 +1711,7 @@ if (typeof jQuery === 'undefined') {
                 return;
             }
 
-            var $previous = this.$navElm.find('.active:last');
+            var $previous = this.$navElm.find('.active').last();
             var eventHideResult;
             var eventShowResult;
 
