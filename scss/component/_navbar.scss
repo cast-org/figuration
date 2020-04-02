@@ -42,11 +42,11 @@
             margin-right: $navbar-brand-margin-x;
             @include font-size($navbar-brand-font-size);
             font-weight: $navbar-brand-font-weight;
-            text-decoration: none;
+            text-decoration: if($link-decoration == none, null, none);
             white-space: nowrap;
 
             @include hover-focus() {
-                text-decoration: none;
+                text-decoration: if($link-hover-decoration == underline, none, null);
             }
 
             > img {
@@ -68,10 +68,10 @@
             .nav-link {
                 padding-right: 0;
                 padding-left: 0;
-                text-decoration: none;
+                text-decoration: if($link-decoration == none, null, none);
 
                 @include hover-focus() {
-                    text-decoration: none;
+                    text-decoration: if($link-hover-decoration == underline, none, null);
                 }
             }
         }
@@ -118,17 +118,18 @@
             padding: $navbar-toggle-padding-y $navbar-toggle-padding-x;
             @include font-size($navbar-toggle-font-size);
             line-height: 1;
+            text-decoration: if($link-decoration == none, null, none);
             background-color: transparent; // Remove default button style
             border: $border-width solid transparent; // Remove default button style
             @include border-radius($navbar-toggle-border-radius);
             @include transition($navbar-toggle-transition);
 
             &:hover {
-                text-decoration: none;
+                text-decoration: if($link-hover-decoration == underline, none, null);
             }
 
             &:focus {
-                text-decoration: none;
+                text-decoration: if($link-hover-decoration == underline, none, null);
                 outline: 0;
                 box-shadow: $navbar-toggle-focus-box-shadow;
             }
@@ -262,11 +263,9 @@
 
                     a {
                         color: $navbar-light-hover-color;
-                        text-decoration: none;
 
                         @include hover-focus() {
                             color: $navbar-light-active-color;
-                            text-decoration: none;
                         }
                     }
                 }
@@ -333,11 +332,9 @@
 
                     a {
                         color: $navbar-dark-hover-color;
-                        text-decoration: none;
 
                         @include hover-focus() {
                             color: $navbar-dark-active-color;
-                            text-decoration: none;
                         }
                     }
                 }
