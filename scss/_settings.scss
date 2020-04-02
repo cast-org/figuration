@@ -610,6 +610,7 @@ $drag-hover-opacity:        .85 !default;
 // Transitions
 // =====
 // Widget animations
+$transition-base:           all .15s ease-in-out !default;
 $transition-fade:           opacity .15s linear !default;
 $transition-lazy-fade:      opacity .3s linear !default;
 $transition-collapse-y:     height .3s ease !default;
