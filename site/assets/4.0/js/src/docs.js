@@ -253,8 +253,8 @@
         });
 
         // Toggle animated progress bar
-        $('.cf-toggle-animated-progress').on('click', function() {
-            $(this).siblings('.progress').find('.progress-bar-striped').toggleClass('progress-bar-animated');
+        $('#animToggle').on('click', function() {
+            $('#animTarget').toggleClass('progress-bar-animated');
         });
     });
 }(jQuery));

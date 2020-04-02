@@ -144,11 +144,12 @@ Animated progress bars are not available in browsers that do not support CSS3 an
 
 <div class="cf-example">
   <div class="progress">
-    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+    <div id="animTarget" class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
   </div>
-  <button type="button" class="btn btn-outline-secondary cf-toggle-animated-progress" data-toggle="button" aria-pressed="false">
-    Toggle animation
-  </button>
+  <div class="btn-check mt-0_5 cf-toggle-animated-progress">
+    <input id="animToggle" type="checkbox" class="btn-check-input">
+    <label for="animToggle" class="btn btn-outilne-secondary">Toggle animation</label>
+  </div>
 </div>
 
 {% capture highlight %}
