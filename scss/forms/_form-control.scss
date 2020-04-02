@@ -14,6 +14,7 @@
             color: $input-color;
             background-color: $input-bg;
             border: $input-border-width solid $input-border-color;
+            appearance: none; // Fix appearance for date inputs in Safari
 
             // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
             // Provide a fallback to override to the iOS default
@@ -63,7 +64,6 @@
             background-repeat: no-repeat;
             background-position: $form-select-indicator-position;
             background-size: $form-select-indicator-width $form-select-indicator-height;
-            appearance: none;
 
             &:disabled {
                 pointer-events: none;
