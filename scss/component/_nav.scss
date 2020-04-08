@@ -14,6 +14,7 @@
         display: block;
         padding: $nav-link-padding-y $nav-link-padding-x;
         text-decoration: $nav-link-decoration;
+        @include transition($nav-link-transition);
 
         @include hover-focus() {
             text-decoration: $nav-link-hover-decoration;

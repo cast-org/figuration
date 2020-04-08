@@ -462,6 +462,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$nav-link-transition</code></td>
+        <td>string</td>
+        <td><code>color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out</code></td>
+        <td>
+          Transition for navs links.
+        </td>
+      </tr>
+      <tr>
         <td><code>$nav-tabs-border-color</code></td>
         <td>string</td>
         <td><code>$component-border-color</code></td>
