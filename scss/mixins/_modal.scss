@@ -1,0 +1,20 @@
+// Modal
+
+// Allow modal to fill viewport
+@mixin modal-fullscreen {
+    width: 100vw;
+    max-width: none;
+    height: 100vh;
+    max-height: 100vh;
+    margin: 0;
+
+    @at-root .modal.fade #{&} {
+        transform: $modal-transform-fullscreen;
+    }
+
+    .modal-content {
+        max-height: 100vh;
+        border: 0;
+        @include border-radius(0);
+    }
+}
