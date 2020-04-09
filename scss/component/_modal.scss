@@ -152,7 +152,6 @@
         display: flex;
         flex-direction: column;
         width: 100%; // Ensure `.modal-content` extends the full width of the parent `.modal-dialog`
-        height: 100%;
         color: $modal-content-color;
         // Override the `pointer-events: none;` in the .modal-dialog
         pointer-events: auto;
@@ -238,7 +237,6 @@
             // Make body as tall as possible if there is a height defined on `.modal-content`
             flex: 1 1 auto;
             padding: $modal-body-padding-y $modal-body-padding-x;
-            overflow-y: auto;
         }
     }
 

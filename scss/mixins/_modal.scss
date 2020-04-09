@@ -4,17 +4,30 @@
 @mixin modal-fullscreen {
     width: 100vw;
     max-width: none;
-    height: 100vh;
     max-height: 100vh;
     margin: 0;
+    overflow-y: auto; // Scroll here to not overlap the side of `.modal-content`
 
     @at-root .modal.fade #{&} {
         transform: $modal-transform-fullscreen;
     }
 
     .modal-content {
-        max-height: 100vh;
+        height: min-content;
+        min-height: 100vh;
         border: 0;
         @include border-radius(0);
+    }
+
+    @if $enable-modal-scrollable {
+        &.modal-dialog-scrollable {
+            overflow-y: hidden;
+        }
+    }
+
+    @if $enable-modal-centered {
+        &.modal-dialog-centered {
+            align-items: stretch;
+        }
     }
 }

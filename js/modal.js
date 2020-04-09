@@ -172,11 +172,11 @@
 
             this.$target.show();
 
-            if (this.$dialog.hasClass('modal-dialog-scrollable') && $modalBody.length) {
-                $modalBody.scrollTop(0);
-            } else {
-                this.$target.scrollTop(0);
+            if ($modalBody.length) {
+                $modalBody.scrollTop(0); // scrollable body variant
             }
+            this.$dialog.scrollTop(0); // fullscreen variant
+            this.$target.scrollTop(0);
 
             this.adjustDialog();
 
