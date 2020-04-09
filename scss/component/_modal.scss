@@ -335,4 +335,24 @@
             }
         }
     }
+
+    @if $enable-modal-fullscreen {
+        .modal-fullscreen {
+            @include modal-fullscreen();
+        }
+    }
+
+    @if $enable-modal-fullscreen-responsive {
+        @each $bp in $modal-fullscreen-breakpoints {
+
+            // Skip largest for down (equivalent to `.modal-fullscreen`)
+            @if breakpoint-max($bp, $grid-breakpoints) != null {
+                @include media-breakpoint-down($bp) {
+                    .modal-fullscreen-#{$bp}-down {
+                        @include modal-fullscreen();
+                    }
+                }
+            }
+        }
+    }
 }

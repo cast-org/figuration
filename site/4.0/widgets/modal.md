@@ -748,6 +748,274 @@ When `backdrop` option is set to `static`, the modal will not close when clickin
 {% endcapture %}
 {% renderHighlight highlight, "html" %}
 
+### Fullscreen Modal
+
+Enlarge a modal to fill the entire viewport with a `.modal-fullscreen` modifider class placed on the `.modal-dialog`.
+
+<div class="modal" id="modalFullscreen">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Fullscreen modal</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h4>Overflowing text to show scroll behavior</h4>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cf-example">
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalFullscreen">Fullscreen modal</button>
+</div>
+
+{% capture highlight %}
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalFullscreen">Fullscreen modal</button>
+
+<div class="modal" id="modalFullscreen">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+Responsive variants are also available. These work for a given breakpoint and below with the form `.modal-fullscreen-{breakpoint}-down`.
+
+**Heads up!** There is no `.modal-fullscreen-*-down` class created for the largest breakpoint since it is functionally equivalent to using `.modal-fullscreen`.
+
+<div class="modal" id="modalFullscreenXs">
+  <div class="modal-dialog modal-fullscreen-xs-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Fullscreen modal at `xs`</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modalFullscreenSm">
+  <div class="modal-dialog modal-fullscreen-sm-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Fullscreen modal at `sm` and below</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modalFullscreenMd">
+  <div class="modal-dialog modal-fullscreen-md-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Fullscreen modal at `md` and below</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modalFullscreenLg">
+  <div class="modal-dialog modal-fullscreen-lg-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Fullscreen modal at `lg` and below</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cf-example">
+<button class="btn btn-primary my-0_25" data-cfw="modal" data-cfw-modal-target="#modalFullscreenXs">Fullscreen `xs` modal</button>
+<button class="btn btn-primary my-0_25" data-cfw="modal" data-cfw-modal-target="#modalFullscreenSm">Fullscreen `sm` modal</button>
+<button class="btn btn-primary my-0_25" data-cfw="modal" data-cfw-modal-target="#modalFullscreenMd">Fullscreen `md` modal</button>
+<button class="btn btn-primary my-0_25" data-cfw="modal" data-cfw-modal-target="#modalFullscreenLg">Fullscreen `lg` modal</button>
+</div>
+
+{% capture highlight %}
+<!-- Fullscreen modal at `xs` breakpoint -->
+<div class="modal-dialog modal-fullscreen-xs-down">
+  ...
+</div>
+
+<!-- Fullscreen modal at `sm` breakpoint and below -->
+<div class="modal-dialog modal-fullscreen-sm-down">
+  ...
+</div>
+
+<!-- Fullscreen modal at `md` breakpoint and below -->
+<div class="modal-dialog modal-fullscreen-md-down">
+  ...
+</div>
+
+<!-- Fullscreen modal at `lg` breakpoint and below -->
+<div class="modal-dialog modal-fullscreen-lg-down">
+  ...
+</div>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+You can also combine fullscreen variants with the centered and scrollable variants.  The fullscreen version of the modal will then assume a similar scrolling behavior to match, but centering will not occur since the modal will be stretched to the size of the viewport.
+
+<div class="modal" id="modalFullMdScroll">
+  <div class="modal-dialog modal-fullscreen-md-down modal-dialog-scrollable">
+      <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h4>Overflowing text to show scroll behavior</h4>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modalFullMdCenter">
+  <div class="modal-dialog modal-fullscreen-md-down modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h4>Overflowing text to show scroll behavior</h4>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="modalFullMdCenterScroll">
+  <div class="modal-dialog modal-fullscreen-md-down modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h4>Overflowing text to show scroll behavior</h4>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="cf-example">
+<button class="btn btn-primary my-0_25" data-cfw="modal" data-cfw-modal-target="#modalFullMdScroll">Fullscreen scrolling body</button>
+<button class="btn btn-primary my-0_25" data-cfw="modal" data-cfw-modal-target="#modalFullMdCenter">Fullscreen centered</button>
+<button class="btn btn-primary my-0_25" data-cfw="modal" data-cfw-modal-target="#modalFullMdCenterScroll">Fullscreen centered, scrolling body</button>
+</div>
+
+{% capture highlight %}
+<!-- Fullscreen modals at `md` breakpoint and below -->
+
+<!-- Scrollable body above `md` breakpoint -->
+<div class="modal-dialog modal-fullscreen-md-down modal-dialog-scrollable">
+  ...
+</div>
+
+<!-- Centered above `md` breakpoint -->
+<div class="modal-dialog modal-fullscreen-md-down modal-dialog-centered">
+  ...
+</div>
+
+<!-- Centered and scrollable body above `md` breakpoint -->
+<div class="modal-dialog modal-fullscreen-md-down modal-dialog-centered modal-dialog-scrollable">
+  ...
+</div>
+
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
 ## Usage
 
 The modal widget toggles your hidden content on demand, via data attributes or JavaScript. It also adds `.modal-open` to the `<body>` to override default scrolling behavior and generates a `.modal-backdrop` to provide a click area for dismissing shown modals when clicking outside the modal.
@@ -1076,6 +1344,22 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$enable-modal-fullscreen</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the fullscreen modal variant.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-modal-fullscreen-responsive</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the responsive fullscreen modal variants.
+        </td>
+      </tr>
+      <tr>
         <td><code>$enable-modal-header</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
@@ -1368,7 +1652,15 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         <td>string</td>
         <td><code>scale(1.01)</code></td>
         <td>
-          Transform state of <code>.modal-dialog</code> for the close is blocked animation.
+          Transform state of <code>.modal-dialog</code> for when the close is blocked animation.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$modal-transform-fullscreen</code></td>
+        <td>string</td>
+        <td><code>none</code></td>
+        <td>
+          Transform state of <code>.modal-dialog</code> for the slide animation when the modal in fullscreen mode.
         </td>
       </tr>
       <tr>
@@ -1379,10 +1671,25 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
           Transition settings for the <code>.modal-dialog</code> animations.
         </td>
       </tr>
+      <tr>
+        <td><code>$modal-fullscreen-breakpoints</code></td>
+        <td>list</td>
+        <td><code>map-keys($grid-breakpoints)</code></td>
+        <td>
+          Breakpoint list for responsive fullscreen modals.
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
 
 ### Mixins
 
-No mixins available.
+#### modal-fullscreen()
+
+Enable fullscreen mode on a `.modal-dialog`.
+
+{% capture highlight %}
+@include modal-fullscreen();
+{% endcapture %}
+{% renderHighlight highlight, "sass" %}

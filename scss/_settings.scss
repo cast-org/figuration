@@ -279,6 +279,7 @@ $card-group-breakpoints:            map-keys($grid-breakpoints) !default;
 $card-columns-breakpoints:          map-keys($grid-breakpoints) !default;
 $navbar-expand-breakpoints:         map-keys($grid-breakpoints) !default;
 $table-scroll-breakpoints:          map-keys($grid-breakpoints) !default;
+$modal-fullscreen-breakpoints:      map-keys($grid-breakpoints) !default;
 $utility-border-breakpoints:        map-keys($grid-breakpoints) !default;
 $utility-display-breakpoints:       map-keys($grid-breakpoints) !default;
 $utility-flex-breakpoints:          map-keys($grid-breakpoints) !default;
@@ -1358,6 +1359,8 @@ $modal-transform-fade:          translate(0, -3rem) !default;
 $modal-transform-in:            none !default;
 $modal-transform-side-offset:   -5rem !default;
 $modal-transform-blocked:       scale(1.01) !default;
+// Remove slide when using fullscreen variant
+$modal-transform-fullscreen:    none !default;
 
 
 // Player
