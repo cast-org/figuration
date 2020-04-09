@@ -304,13 +304,6 @@ input[type="checkbox"] {
   padding: 0;
 }
 
-input[type="date"],
-input[type="time"],
-input[type="datetime-local"],
-input[type="month"] {
-  -webkit-appearance: textfield;
-}
-
 textarea {
   overflow: auto;
   resize: vertical;
@@ -824,6 +817,9 @@ pre code {
   color: #424f5b;
   background-color: #fff;
   border: 1px solid #bfc6cd;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   border-radius: 0.25rem;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -889,9 +885,6 @@ select.form-control {
   background-repeat: no-repeat;
   background-position: right 0.375em center;
   background-size: 0.75em 0.75em;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
 }
 
 select.form-control:disabled {
@@ -4982,6 +4975,13 @@ a.page-link {
   display: block;
   padding: 0.3125rem 1rem;
   text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link {
+    transition: none;
+  }
 }
 
 .nav-link.disabled {
@@ -5114,10 +5114,6 @@ a.page-link {
   white-space: nowrap;
 }
 
-.navbar-brand:hover, .navbar-brand:focus {
-  text-decoration: none;
-}
-
 .navbar-brand > img {
   display: block;
 }
@@ -5133,10 +5129,6 @@ a.page-link {
 .navbar-nav .nav-link {
   padding-right: 0;
   padding-left: 0;
-  text-decoration: none;
-}
-
-.navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus {
   text-decoration: none;
 }
 
@@ -5161,6 +5153,7 @@ a.page-link {
   padding: 0.25em 0.75em;
   font-size: 1.25rem;
   line-height: 1;
+  text-decoration: none;
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 0.25rem;
@@ -5173,12 +5166,7 @@ a.page-link {
   }
 }
 
-.navbar-toggle:hover {
-  text-decoration: none;
-}
-
 .navbar-toggle:focus {
-  text-decoration: none;
   outline: 0;
   box-shadow: 0 0 0 0.1875rem;
 }
@@ -5407,12 +5395,10 @@ a.page-link {
 
 .navbar-light .navbar-text a {
   color: rgba(0, 0, 0, 0.85);
-  text-decoration: none;
 }
 
 .navbar-light .navbar-text a:hover, .navbar-light .navbar-text a:focus {
   color: rgba(0, 0, 0, 0.95);
-  text-decoration: none;
 }
 
 .navbar-light .navbar-divider {
@@ -5463,12 +5449,10 @@ a.page-link {
 
 .navbar-dark .navbar-text a {
   color: rgba(255, 255, 255, 0.9);
-  text-decoration: none;
 }
 
 .navbar-dark .navbar-text a:hover, .navbar-dark .navbar-text a:focus {
   color: rgba(255, 255, 255, 0.95);
-  text-decoration: none;
 }
 
 .navbar-dark .navbar-divider {
@@ -6693,6 +6677,169 @@ a.page-link {
 
 .modal-dialog-side-start.modal-dialog-scrollable .modal-body, .modal-dialog-side-end.modal-dialog-scrollable .modal-body {
   flex-shrink: 1;
+}
+
+.modal-fullscreen {
+  width: 100vw;
+  max-width: none;
+  max-height: 100vh;
+  margin: 0;
+  overflow-y: auto;
+}
+
+.modal.fade .modal-fullscreen {
+  transform: none;
+}
+
+@supports (-ms-ime-align: auto) {
+  .modal-fullscreen .modal-content {
+    height: 100%;
+  }
+}
+
+.modal-fullscreen .modal-content {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  min-height: 100vh;
+  border: 0;
+  border-radius: 0;
+}
+
+.modal-fullscreen.modal-dialog-scrollable {
+  overflow-y: hidden;
+}
+
+.modal-fullscreen.modal-dialog-centered {
+  align-items: stretch;
+}
+
+@media (max-width: 35.98em) {
+  .modal-fullscreen-xs-down {
+    width: 100vw;
+    max-width: none;
+    max-height: 100vh;
+    margin: 0;
+    overflow-y: auto;
+  }
+  .modal.fade .modal-fullscreen-xs-down {
+    transform: none;
+  }
+  @supports (-ms-ime-align: auto) {
+    .modal-fullscreen-xs-down .modal-content {
+      height: 100%;
+    }
+  }
+  .modal-fullscreen-xs-down .modal-content {
+    height: -webkit-min-content;
+    height: -moz-min-content;
+    height: min-content;
+    min-height: 100vh;
+    border: 0;
+    border-radius: 0;
+  }
+  .modal-fullscreen-xs-down.modal-dialog-scrollable {
+    overflow-y: hidden;
+  }
+  .modal-fullscreen-xs-down.modal-dialog-centered {
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 47.98em) {
+  .modal-fullscreen-sm-down {
+    width: 100vw;
+    max-width: none;
+    max-height: 100vh;
+    margin: 0;
+    overflow-y: auto;
+  }
+  .modal.fade .modal-fullscreen-sm-down {
+    transform: none;
+  }
+  @supports (-ms-ime-align: auto) {
+    .modal-fullscreen-sm-down .modal-content {
+      height: 100%;
+    }
+  }
+  .modal-fullscreen-sm-down .modal-content {
+    height: -webkit-min-content;
+    height: -moz-min-content;
+    height: min-content;
+    min-height: 100vh;
+    border: 0;
+    border-radius: 0;
+  }
+  .modal-fullscreen-sm-down.modal-dialog-scrollable {
+    overflow-y: hidden;
+  }
+  .modal-fullscreen-sm-down.modal-dialog-centered {
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 61.98em) {
+  .modal-fullscreen-md-down {
+    width: 100vw;
+    max-width: none;
+    max-height: 100vh;
+    margin: 0;
+    overflow-y: auto;
+  }
+  .modal.fade .modal-fullscreen-md-down {
+    transform: none;
+  }
+  @supports (-ms-ime-align: auto) {
+    .modal-fullscreen-md-down .modal-content {
+      height: 100%;
+    }
+  }
+  .modal-fullscreen-md-down .modal-content {
+    height: -webkit-min-content;
+    height: -moz-min-content;
+    height: min-content;
+    min-height: 100vh;
+    border: 0;
+    border-radius: 0;
+  }
+  .modal-fullscreen-md-down.modal-dialog-scrollable {
+    overflow-y: hidden;
+  }
+  .modal-fullscreen-md-down.modal-dialog-centered {
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 74.98em) {
+  .modal-fullscreen-lg-down {
+    width: 100vw;
+    max-width: none;
+    max-height: 100vh;
+    margin: 0;
+    overflow-y: auto;
+  }
+  .modal.fade .modal-fullscreen-lg-down {
+    transform: none;
+  }
+  @supports (-ms-ime-align: auto) {
+    .modal-fullscreen-lg-down .modal-content {
+      height: 100%;
+    }
+  }
+  .modal-fullscreen-lg-down .modal-content {
+    height: -webkit-min-content;
+    height: -moz-min-content;
+    height: min-content;
+    min-height: 100vh;
+    border: 0;
+    border-radius: 0;
+  }
+  .modal-fullscreen-lg-down.modal-dialog-scrollable {
+    overflow-y: hidden;
+  }
+  .modal-fullscreen-lg-down.modal-dialog-centered {
+    align-items: stretch;
+  }
 }
 
 .tooltip {
