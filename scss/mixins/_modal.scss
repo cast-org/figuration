@@ -1,7 +1,7 @@
 // Modal
 
 // Allow modal to fill viewport
-@mixin modal-fullscreen {
+@mixin modal-fullscreen() {
     width: 100vw;
     max-width: none;
     max-height: 100vh;
@@ -12,6 +12,12 @@
         transform: $modal-transform-fullscreen;
     }
 
+    // Fix content height in legacy Edge
+    @supports (-ms-ime-align: auto) {
+        .modal-content {
+            height: 100%;
+        }
+    }
     .modal-content {
         height: min-content;
         min-height: 100vh;
