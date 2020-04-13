@@ -1270,11 +1270,11 @@ Validation styles are supported for the following form controls and components:
   </div>
 
   <div class="form-check">
-    <input type="radio" class="form-check-input" id="validate-support-2" name="radio-stacked" required>
+    <input type="radio" class="form-check-input" id="validate-support-2" name="radio-stacked0" required>
     <label class="form-check-label" for="validate-support-2">Toggle this native radio</label>
   </div>
   <div class="form-check mb-1">
-    <input type="radio" class="form-check-input" id="validate-support-3" name="radio-stacked" required>
+    <input type="radio" class="form-check-input" id="validate-support-3" name="radio-stacked0" required>
     <label class="form-check-label" for="validate-support-3">Or toggle this other native radio</label>
     <div class="invalid-feedback">More example invalid feedback text</div>
   </div>
@@ -1286,11 +1286,11 @@ Validation styles are supported for the following form controls and components:
   </div>
 
   <div class="form-check form-checkradio">
-    <input type="radio" class="form-check-input" id="validate-support-5" name="radio-stacked" required>
+    <input type="radio" class="form-check-input" id="validate-support-5" name="radio-stacked1" required>
     <label class="form-check-label" for="validate-support-5">Toggle this custom radio</label>
   </div>
   <div class="form-check form-checkradio mb-1">
-    <input type="radio" class="form-check-input" id="validate-support-6" name="radio-stacked" required>
+    <input type="radio" class="form-check-input" id="validate-support-6" name="radio-stacked1" required>
     <label class="form-check-label" for="validate-support-6">Or toggle this other custom radio</label>
     <div class="invalid-feedback">More example invalid feedback text</div>
   </div>
@@ -1313,7 +1313,7 @@ Validation styles are supported for the following form controls and components:
 
   <div class="form-group mb-1">
     <div class="form-file">
-      <input type="file" class="form-file-input is-invalid" id="validatedCustomFile" required>
+      <input type="file" class="form-file-input" id="validatedCustomFile" required>
       <label class="form-file-label" for="validatedCustomFile">
         <span class="form-file-text">Choose file...</span>
         <span class="form-file-button">Browse</span>

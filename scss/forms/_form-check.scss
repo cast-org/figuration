@@ -99,7 +99,7 @@
                     border-color: $form-checkradio-focus-border-color;
                     outline: 0;
                     @if $enable-shadows {
-                        box-shadow: $form-checkradio-box-shadow, $form-checkradio-focus-box-shadow;
+                        @include box-shadow($form-checkradio-box-shadow, $form-checkradio-focus-box-shadow);
                     } @else {
                         box-shadow: $form-checkradio-focus-box-shadow;
                     }
@@ -119,9 +119,7 @@
 
             .form-check-input:checked:focus ~ .form-check-label {
                 &::before {
-                    @if $form-checkradio-checked-box-shadow != null {
-                        @include box-shadow($form-checkradio-checked-box-shadow, $form-checkradio-focus-box-shadow);
-                    }
+                    @include box-shadow($form-checkradio-checked-box-shadow, $form-checkradio-focus-box-shadow);
                 }
             }
 
@@ -218,7 +216,7 @@
                     border-color: $form-switch-track-focus-border-color;
                     outline: 0;
                     @if $enable-shadows {
-                        box-shadow: $form-switch-track-box-shadow, $form-switch-track-focus-box-shadow;
+                        @include box-shadow($form-switch-track-box-shadow, $form-switch-track-focus-box-shadow);
                     } @else {
                         box-shadow: $form-switch-track-focus-box-shadow;
                     }
@@ -229,7 +227,7 @@
                     outline: 0;
                     box-shadow: $form-switch-thumb-focus-box-shadow;
                     @if $enable-shadows {
-                        box-shadow: $form-switch-thumb-box-shadow, $form-switch-thumb-focus-box-shadow;
+                        @include box-shadow($form-switch-thumb-box-shadow, $form-switch-thumb-focus-box-shadow);
                     } @else {
                         box-shadow: $form-switch-thumb-focus-box-shadow;
                     }
@@ -252,14 +250,10 @@
 
             .form-check-input:checked:focus ~ .form-check-label {
                 &::before {
-                    @if $form-switch-track-checked-box-shadow != null {
-                        @include box-shadow($form-switch-track-checked-box-shadow, $form-switch-track-focus-box-shadow);
-                    }
+                    @include box-shadow($form-switch-track-checked-box-shadow, $form-switch-track-focus-box-shadow);
                 }
                 &::after {
-                    @if $form-switch-thumb-checked-box-shadow != null {
-                        @include box-shadow($form-switch-thumb-checked-box-shadow, $form-switch-thumb-focus-box-shadow);
-                    }
+                    @include box-shadow($form-switch-thumb-checked-box-shadow, $form-switch-thumb-focus-box-shadow);
                 }
             }
         }

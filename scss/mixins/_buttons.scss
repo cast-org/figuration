@@ -22,7 +22,7 @@
     %btn-variant-#{$extender}-focus {
         // No mixin use, so feedback is always present
         @if $enable-shadows {
-            box-shadow: $btn-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha);
+            @include box-shadow($btn-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha));
         } @else {
             box-shadow: $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha);
         }
@@ -75,9 +75,9 @@
     }
 
     // Active focus state
-    @if $enable-shadows and $btn-active-box-shadow != none{
+    @if $enable-shadows {
         %btn-variant-#{$parent}-active-focus {
-            box-shadow: $btn-active-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha);
+            @include box-shadow($btn-active-box-shadow, $btn-focus-box-shadow-size rgba($focus-shadow, $btn-focus-box-shadow-alpha));
         }
         #{$parent}:active:focus,
         #{$parent}.active:focus,
