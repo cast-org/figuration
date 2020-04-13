@@ -108,7 +108,11 @@
 
                 &:focus {
                     border-color: $color;
-                    box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                    @if $enable-shadows {
+                        @include box-shadow($input-box-shadow, $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha));
+                    } @else {
+                        box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                    }
                 }
             }
 
@@ -186,9 +190,12 @@
                 &:focus {
                     ~ .form-check-label {
                         &::before {
-                            box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                            @if $enable-shadows {
+                                @include box-shadow($input-box-shadow, $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha));
+                            } @else {
+                                box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                            }
                         }
-
                     }
                 }
             }
@@ -225,16 +232,14 @@
                 &:focus {
                     ~ .form-check-label {
                         &::before {
-                            @if $form-switch-track-focus-box-shadow != null {
-                                box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                            @if $enable-shadows {
+                                @include box-shadow($form-switch-track-box-shadow, $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha));
                             } @else {
-                                box-shadow: none;
+                                box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
                             }
                         }
-                        @if $form-switch-thumb-focus-box-shadow != null {
-                            &::after {
-                                box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
-                            }
+                        &::after {
+                            box-shadow: $form-switch-thumb-focus-box-shadow;
                         }
                     }
                 }
@@ -253,14 +258,22 @@
                 &:focus {
                     ~ .form-file-label {
                         border-color: $color;
-                        box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                        @if $enable-shadows {
+                            @include box-shadow($input-box-shadow, $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha));
+                        } @else {
+                            box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                        }
                     }
                 }
 
                 &:focus-within {
                     ~ .form-file-label {
                         border-color: $color;
-                        box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                        @if $enable-shadows {
+                            @include box-shadow($input-box-shadow, $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha));
+                        } @else {
+                            box-shadow: $input-focus-box-shadow-size rgba($color, $input-focus-box-shadow-alpha);
+                        }
                     }
                 }
             }
@@ -324,10 +337,10 @@
         background-color: $input-focus-bg;
         border-color: $input-focus-border-color;
         outline: 0;
-        // Avoid using mixin so we can pass custom focus shadow properly
         @if $enable-shadows {
-            box-shadow: $input-box-shadow, $input-focus-box-shadow;
+            @include box-shadow($input-box-shadow, $input-focus-box-shadow);
         } @else {
+            // Avoid using mixin so we can pass custom focus shadow properly
             box-shadow: $input-focus-box-shadow;
         }
     }
