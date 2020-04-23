@@ -834,6 +834,10 @@ $input-static-color:            $body-color !default;
 $form-label-font-weight:        $font-weight-normal !default;
 
 $form-text-margin-top:          .25rem !default;
+$form-text-font-size:           $small-font-size !default;
+$form-text-font-style:          null !default;
+$form-text-font-weight:         null !default;
+$form-text-color:               $text-muted !default;
 
 $form-group-margin-bottom:      1rem !default;
 $form-row-gutter-width:         .625rem !default;
@@ -954,7 +958,7 @@ $form-range-min-width:              8rem !default;  // Browser default seems to 
 // =====
 // Icons from OpenIconic: https://github.com/iconic/open-iconic
 $form-feedback-margin-top:      $form-text-margin-top !default;
-$form-feedback-font-size:       $small-font-size !default;
+$form-feedback-font-size:       $form-text-font-size !default;
 $form-feedback-valid-color:     map-get($base-colors, "success") !default;
 $form-feedback-invalid-color:   map-get($base-colors, "danger") !default;
 

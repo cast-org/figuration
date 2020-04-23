@@ -257,13 +257,13 @@ Help text below inputs can be styled with `.form-text`. This class includes `dis
 {% capture example %}
 <label for="help-pass">Password</label>
 <input type="password" id="help-pass" class="form-control" aria-describedby="help-pass-text">
-<small id="help-pass-text" class="form-text text-muted">
+<div id="help-pass-text" class="form-text">
   Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-</small>
+</div>
 {% endcapture %}
 {% renderExample example %}
 
-Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`, or something else), optionally using utility classes.
+Inline text can use any typical inline HTML element (be it a `<span>`, `<small>`, or something else), optionally using utility classes.
 
 {% capture example %}
 <div class="form-inline">
@@ -1893,6 +1893,38 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$form-text-font-size</code></td>
+        <td>string</td>
+        <td><code>.$small-font-size</code></td>
+        <td>
+          Font size for support text.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$form-text-font-style</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Font style for support text.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$form-text-font-weight</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Font weight for support text.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$form-text-color</code></td>
+        <td>string</td>
+        <td><code>$text-muted</code></td>
+        <td>
+          Color for support text.
+        </td>
+      </tr>
+      <tr>
         <td><code>$form-group-margin-bottom</code></td>
         <td>string</td>
         <td><code>1rem</code></td>
@@ -2616,7 +2648,7 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
       <tr>
         <td><code>$form-feedback-font-size</code></td>
         <td>string</td>
-        <td><code>$small-font-size</code></td>
+        <td><code>$form-text-font-size</code></td>
         <td>
           Font size for feedback text.
         </td>
