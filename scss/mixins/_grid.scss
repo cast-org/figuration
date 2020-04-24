@@ -57,17 +57,6 @@
     @each $breakpoint in map-keys($breakpoints) {
         $bprule: breakpoint-designator($breakpoint);
 
-        // Allow columns to stretch full width below their breakpoints
-        //.col#{$bprule},
-        //.col#{$bprule}-auto {
-        //    @extend %col;
-        //}
-        //@for $i from 1 through $grid-columns {
-        //    .col#{$bprule}-#{$i} {
-        //        @extend %col;
-        //    }
-        //}
-
         @include media-breakpoint-up($breakpoint, $breakpoints) {
             // Provide basic `.col-{bp}` classes for equal-width flexbox columns
             .col#{$bprule} {
@@ -108,17 +97,19 @@
                 @include make-col-auto();
             }
 
-            @for $i from 1 through $columns {
-                .col#{$bprule}-#{$i} {
-                    @include make-col($i, $columns);
+            @if $columns > 0 {
+                @for $i from 1 through $columns {
+                    .col#{$bprule}-#{$i} {
+                        @include make-col($i, $columns);
+                    }
                 }
-            }
 
-            // `$columns - 1` because offsetting by the width of an entire row isn't possible
-            @for $i from 0 through ($columns - 1) {
-                @if not($bprule == "" and $i == 0) { // Avoid emitting useless .offset-0
-                    .offset#{$bprule}-#{$i} {
-                        @include make-col-offset($i, $columns);
+                // `$columns - 1` because offsetting by the width of an entire row isn't possible
+                @for $i from 0 through ($columns - 1) {
+                    @if not($bprule == "" and $i == 0) { // Avoid emitting useless .offset-0
+                        .offset#{$bprule}-#{$i} {
+                            @include make-col-offset($i, $columns);
+                        }
                     }
                 }
             }

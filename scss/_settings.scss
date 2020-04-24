@@ -245,6 +245,7 @@ $radii: map-merge(
 // =====
 // Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
+// If only one breakpoint is desired, use: $grid-breakpoints: (xs: 0);
 $grid-breakpoints: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $grid-breakpoints: map-merge(

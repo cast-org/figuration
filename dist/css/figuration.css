@@ -959,6 +959,8 @@ textarea.form-control:not([rows="1"]) {
 .form-text {
   display: block;
   margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: #5e7182;
 }
 
 .form-label {
@@ -1039,6 +1041,9 @@ textarea.form-control:not([rows="1"]) {
   margin-left: -1.375em;
   content: "";
   background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 0.625em;
   border: 1px solid #9eaab4;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -webkit-print-color-adjust: exact;
@@ -1072,9 +1077,6 @@ textarea.form-control:not([rows="1"]) {
 
 .form-checkradio .form-check-input:checked ~ .form-check-label::before {
   background-color: #0055e9;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 0.625em;
   border-color: #0055e9;
 }
 
@@ -1089,9 +1091,6 @@ textarea.form-control:not([rows="1"]) {
 .form-checkradio .form-check-input[type="checkbox"]:indeterminate ~ .form-check-label::before {
   background-color: #0055e9;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3e%3cpath stroke='%23fff' d='M0 2h4'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 0.625em;
   border-color: #0055e9;
 }
 
@@ -3911,9 +3910,6 @@ button.close {
   padding: 0;
   background-color: transparent;
   border: 0;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
 }
 
 a.close.disabled {
@@ -3947,9 +3943,6 @@ button.drag {
   padding: 0;
   background-color: transparent;
   border: 0;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
 }
 
 a.drag.disabled {
