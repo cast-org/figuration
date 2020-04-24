@@ -2149,6 +2149,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$form-checkradio-indeterminate-border-color</code></td>
+        <td>string</td>
+        <td><code>$form-checkradio-indeterminate-bg</code></td>
+        <td>
+          Border color for custom styled checkbox inputs when in indeterminate state.
+        </td>
+      </tr>
+      <tr>
         <td><code>$form-checkradio-indeterminate-icon</code></td>
         <td>string</td>
         <td><code>encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'><path stroke='#{$form-checkradio-checked-color}' d='M0 2h4'/></svg>"))</code></td>

@@ -876,8 +876,9 @@ $form-checkradio-checkbox-icon:             encode-svg(url("data:image/svg+xml,<
 $form-checkradio-radio-border-radius:       50% !default;
 $form-checkradio-radio-icon:                encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle fill='#{$form-checkradio-checked-color}' r='3'/></svg>")) !default;
 
-$form-checkradio-indeterminate-bg:          $primary !default;
-$form-checkradio-indeterminate-icon:        encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'><path stroke='#{$form-checkradio-checked-color}' d='M0 2h4'/></svg>")) !default;
+$form-checkradio-indeterminate-bg:              $primary !default;
+$form-checkradio-indeterminate-border-color:    $form-checkradio-indeterminate-bg !default;
+$form-checkradio-indeterminate-icon:            encode-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'><path stroke='#{$form-checkradio-checked-color}' d='M0 2h4'/></svg>")) !default;
 
 // Form switch
 $form-switch-width:                         1.75em !default;
