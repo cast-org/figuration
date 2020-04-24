@@ -310,6 +310,17 @@ th {
     text-align: -webkit-match-parent; // 1
 }
 
+// Allow border color to inherit all the way down.
+// Only need `border-*-width` later to turn border on/off.
+thead,
+tbody,
+tfoot,
+tr,
+th,
+td {
+    border: 0 solid;
+    border-color: inherit;
+}
 
 // Forms
 label {
