@@ -69,6 +69,9 @@
                     margin-left: calc(#{$form-checkradio-gutter} * -1);
                     content: "";
                     background-color: $form-checkradio-bg;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: $form-checkradio-icon-size;
                     border: $form-checkradio-border-width solid $form-checkradio-border-color;
                     @include box-shadow($form-checkradio-box-shadow);
                     @include transition($input-transition);
@@ -109,9 +112,6 @@
             .form-check-input:checked ~ .form-check-label {
                 &::before {
                     background-color: $form-checkradio-checked-bg;
-                    background-repeat: no-repeat;
-                    background-position: center center;
-                    background-size: $form-checkradio-icon-size;
                     border-color: $form-checkradio-checked-border-color;
                     @include box-shadow($form-checkradio-checked-box-shadow);
                 }
@@ -139,10 +139,7 @@
                 &::before {
                     background-color: $form-checkradio-indeterminate-bg;
                     background-image: $form-checkradio-indeterminate-icon;
-                    background-repeat: no-repeat;
-                    background-position: center center;
-                    background-size: $form-checkradio-icon-size;
-                    border-color: $form-checkradio-checked-border-color;
+                    border-color: $form-checkradio-indeterminate-border-color;
                 }
             }
         }
@@ -225,7 +222,6 @@
                     background-color: $form-switch-thumb-focus-bg;
                     border-color: $form-switch-thumb-focus-border-color;
                     outline: 0;
-                    box-shadow: $form-switch-thumb-focus-box-shadow;
                     @if $enable-shadows {
                         @include box-shadow($form-switch-thumb-box-shadow, $form-switch-thumb-focus-box-shadow);
                     } @else {
