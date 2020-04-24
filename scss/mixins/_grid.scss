@@ -87,9 +87,11 @@
                     @include make-col-auto();
                 }
 
-                @for $i from 1 through $grid-row-columns {
-                    .row-cols#{$bprule}-#{$i} {
-                        @include row-cols($i);
+                @if $grid-row-columns > 0 {
+                    @for $i from 1 through $grid-row-columns {
+                        .row-cols#{$bprule}-#{$i} {
+                            @include row-cols($i);
+                        }
                     }
                 }
             }
