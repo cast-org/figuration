@@ -247,6 +247,16 @@ th {
   text-align: -webkit-match-parent;
 }
 
+thead,
+tbody,
+tfoot,
+tr,
+th,
+td {
+  border: 0 solid;
+  border-color: inherit;
+}
+
 label {
   display: inline-block;
   margin-bottom: 0.5rem;
@@ -482,16 +492,6 @@ pre code {
   vertical-align: top;
   border: 0 solid;
   border-color: #bfc6cd;
-}
-
-.table thead,
-.table tbody,
-.table tfoot,
-.table tr,
-.table th,
-.table td {
-  border: 0 solid;
-  border-color: inherit;
 }
 
 .table th,
