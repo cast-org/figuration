@@ -11,6 +11,7 @@
         th,
         td {
             padding: $table-cell-padding;
+            box-shadow: none;
         }
 
         thead {
@@ -31,24 +32,26 @@
         .table-celled,
         .table-divided,
         .table-ruled {
-            th,
-            td {
-                border-top-width: $table-border-width;
+            > * > * {
+                > th,
+                > td {
+                    border-top-width: $table-border-width;
+                }
             }
 
-            thead {
-                th {
+            > thead > tr {
+                > th {
                     border-bottom-width: $table-head-border-width;
                 }
             }
 
-            tbody + tbody {
+            > tbody + tbody {
                 border-top-width: $table-body-border-width;
             }
 
-            tfoot {
-                th,
-                td {
+            > tfoot > tr {
+                > th,
+                > td {
                     border-top-width: $table-foot-border-width;
                     border-bottom-width: 0;
                 }
@@ -58,10 +61,10 @@
         // stylelint-disable selector-max-type
         .table-celled,
         .table-divided {
-            thead {
-                tr:first-child {
-                    th,
-                    td {
+            > thead {
+                > tr:first-child {
+                    > th,
+                    > td {
                         border-top-width: 0;
                     }
                 }
@@ -71,9 +74,9 @@
 
         .table-bordered,
         .table-ruled {
-            tfoot {
-                th,
-                td {
+            > tfoot {
+                > th,
+                > td {
                     border-bottom-width: $table-border-width;
                 }
             }
@@ -82,11 +85,8 @@
         .table-bordered,
         .table-wrapped,
         .table-ruled {
-            &,
-            & .table {
-                border-top-width: $table-border-width;
-                border-bottom-width: $table-border-width;
-            }
+            border-top-width: $table-border-width;
+            border-bottom-width: $table-border-width;
         }
 
         // Vertical borders
@@ -94,25 +94,29 @@
         .table-celled,
         .table-pillared,
         .table-walled {
-            th,
-            td {
-                border-left-width: $table-border-width;
+            > * > * {
+                > th,
+                > td {
+                    border-left-width: $table-border-width;
 
-                &:last-child {
-                    border-right-width: $table-border-width;
+                    &:last-child {
+                        border-right-width: $table-border-width;
+                    }
                 }
             }
         }
 
         .table-pillared,
         .table-celled {
-            th,
-            td {
-                &:first-child {
-                    border-left-width: 0;
-                }
-                &:last-child {
-                    border-right-width: 0;
+            > * > * {
+                > th,
+                > td {
+                    &:first-child {
+                        border-left-width: 0;
+                    }
+                    &:last-child {
+                        border-right-width: 0;
+                    }
                 }
             }
         }
@@ -120,11 +124,8 @@
         .table-bordered,
         .table-wrapped,
         .table-walled {
-            &,
-            & .table {
-                border-right-width: $table-border-width;
-                border-left-width: $table-border-width;
-            }
+            border-right-width: $table-border-width;
+            border-left-width: $table-border-width;
         }
     }
 
@@ -132,7 +133,7 @@
     // Striped table
     @if $enable-table-striped {
         .table-striped {
-            tbody tr:nth-of-type(#{$table-striped-selector}) {
+            > tbody > tr:nth-of-type(#{$table-striped-selector}) {
                 > th,
                 > td {
                     box-shadow: $table-striped-box-shadow;
@@ -140,7 +141,7 @@
             }
         }
         .table-striped-alt {
-            tbody tr:nth-of-type(#{$table-striped-selector}) {
+            > tbody > tr:nth-of-type(#{$table-striped-selector}) {
                 > th,
                 > td {
                     box-shadow: $table-striped-alt-box-shadow;
@@ -153,7 +154,7 @@
     // Needs to be after striped table in order to overrule background.
     @if $enable-table-hover {
         .table-hover {
-            tbody tr {
+            > tbody > tr {
                 @include hover() {
                     > th,
                     > td {
@@ -163,7 +164,7 @@
             }
         }
         .table-hover-alt {
-            tbody tr {
+            > tbody > tr {
                 @include hover() {
                     > th,
                     > td {
