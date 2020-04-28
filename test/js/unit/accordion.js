@@ -28,21 +28,21 @@ $(function() {
         var done = assert.async();
 
         var $accordion = $('<div id="test" data-cfw="accordion">' +
-            '<div />' +
-            '<div />' +
-            '<div />' +
+            '<div></div>' +
+            '<div></div>' +
+            '<div></div>' +
             '</div>');
 
         var $groups = $accordion.appendTo('#qunit-fixture').children('div');
 
-        var $trigger1 = $('<a href="#body1" role="button" class="open" data-cfw="collapse" />').appendTo($groups.eq(0));
-        var $target1 = $('<div id="body1" class="collapse in" />').appendTo($groups.eq(0));
+        var $trigger1 = $('<a href="#body1" role="button" class="open" data-cfw="collapse">1</a>').appendTo($groups.eq(0));
+        var $target1 = $('<div id="body1" class="collapse in"></div>').appendTo($groups.eq(0));
 
-        var $trigger2 = $('<a href="#body2" role="button" data-cfw="collapse" />').appendTo($groups.eq(1));
-        var $target2 = $('<div id="body2" class="collapse" />').appendTo($groups.eq(1));
+        var $trigger2 = $('<a href="#body2" role="button" data-cfw="collapse">2</a>').appendTo($groups.eq(1));
+        var $target2 = $('<div id="body2" class="collapse"></div>').appendTo($groups.eq(1));
 
-        var $trigger3 = $('<a href="#body3" role="button" data-cfw="collapse" />').appendTo($groups.eq(2));
-        var $target3 = $('<div id="body3" class="collapse" />').appendTo($groups.eq(2));
+        var $trigger3 = $('<a href="#body3" role="button" data-cfw="collapse">3</a>').appendTo($groups.eq(2));
+        var $target3 = $('<div id="body3" class="collapse"></div>').appendTo($groups.eq(2));
 
         $trigger3
             .on('afterShow.cfw.collapse', function() {
@@ -64,20 +64,20 @@ $(function() {
         var done = assert.async();
 
         var $accordion = $('<div id="test" data-cfw="accordion">' +
-            '<div />' +
-            '<div />' +
-            '<div />' +
+            '<div></div>' +
+            '<div></div>' +
+            '<div></div>' +
             '</div>');
 
         var $groups = $accordion.appendTo('#qunit-fixture').children('div');
 
-        var $trigger1 = $('<a href="#body1" role="button" class="open" data-cfw="collapse" />').appendTo($groups.eq(0));
-        /* var $target1 = */ $('<div id="body1" class="collapse in" />').appendTo($groups.eq(0));
+        var $trigger1 = $('<a href="#body1" role="button" class="open" data-cfw="collapse">1</a>').appendTo($groups.eq(0));
+        /* var $target1 = */ $('<div id="body1" class="collapse in"></div>').appendTo($groups.eq(0));
 
-        var $trigger2 = $('<a href="#body2" role="button" data-cfw="collapse" />').appendTo($groups.eq(1));
-        /* var $target2 = */ $('<div id="body2" class="collapse" />').appendTo($groups.eq(1));
+        var $trigger2 = $('<a href="#body2" role="button" data-cfw="collapse">2</a>').appendTo($groups.eq(1));
+        /* var $target2 = */ $('<div id="body2" class="collapse"></div>').appendTo($groups.eq(1));
 
-        var $trigger3 = $('<a href="#body3" role="button" data-cfw="collapse" />').appendTo($groups.eq(2));
+        var $trigger3 = $('<a href="#body3" role="button" data-cfw="collapse">3</a>').appendTo($groups.eq(2));
         /* var $target3 = */ $('<div id="body3" class="collapse" />').appendTo($groups.eq(2));
 
         $trigger3
@@ -100,21 +100,21 @@ $(function() {
         var done = assert.async();
 
         var $accordion = $('<div id="test" data-cfw="accordion">' +
-            '<div />' +
-            '<div />' +
-            '<div />' +
+            '<div></div>' +
+            '<div></div>' +
+            '<div></div>' +
             '</div>');
 
         var $groups = $accordion.appendTo('#qunit-fixture').children('div');
 
-        var $trigger1 = $('<a href="#body1" role="button" class="open" data-cfw="collapse" aria-expanded="true"/>').appendTo($groups.eq(0));
-        /* var $target1 = */ $('<div id="body1" class="collapse in" />').appendTo($groups.eq(0));
+        var $trigger1 = $('<a href="#body1" role="button" class="open" data-cfw="collapse" aria-expanded="true">1</a>').appendTo($groups.eq(0));
+        /* var $target1 = */ $('<div id="body1" class="collapse in"></div>').appendTo($groups.eq(0));
 
-        var $trigger2 = $('<a href="#body2" role="button" data-cfw="collapse" aria-expanded="false" />').appendTo($groups.eq(1));
-        /* var $target2 = */ $('<div id="body2" class="collapse" />').appendTo($groups.eq(1));
+        var $trigger2 = $('<a href="#body2" role="button" data-cfw="collapse" aria-expanded="false">2</a>').appendTo($groups.eq(1));
+        /* var $target2 = */ $('<div id="body2" class="collapse"></div>').appendTo($groups.eq(1));
 
-        var $trigger3 = $('<a href="#body3" role="button" data-cfw="collapse" aria-expanded="false" />').appendTo($groups.eq(2));
-        /* var $target3 = */ $('<div id="body3" class="collapse" />').appendTo($groups.eq(2));
+        var $trigger3 = $('<a href="#body3" role="button" data-cfw="collapse" aria-expanded="false">3</a>').appendTo($groups.eq(2));
+        /* var $target3 = */ $('<div id="body3" class="collapse"></div>').appendTo($groups.eq(2));
 
         $trigger3
             .on('afterShow.cfw.collapse', function() {
@@ -137,17 +137,17 @@ $(function() {
         var showFired = false;
 
         var $accordion = $('<div id="test" data-cfw="accordion">' +
-            '<div />' +
-            '<div />' +
+            '<div></div>' +
+            '<div></div>' +
             '</div>');
 
         var $groups = $accordion.appendTo('#qunit-fixture').children('div');
 
-        var $trigger1 = $('<a href="#body1" class="open" role="button" data-cfw="collapse" />').appendTo($groups.eq(0));
-        var $target1 = $('<div id="body1" class="collapse in" />').appendTo($groups.eq(0));
+        var $trigger1 = $('<a href="#body1" class="open" role="button" data-cfw="collapse">1</a>').appendTo($groups.eq(0));
+        var $target1 = $('<div id="body1" class="collapse in"></div>').appendTo($groups.eq(0));
 
-        var $trigger2 = $('<a href="#body2" role="button" data-cfw="collapse" />').appendTo($groups.eq(1));
-        /* var $target2 = */ $('<div id="body2" class="collapse" />').appendTo($groups.eq(1));
+        var $trigger2 = $('<a href="#body2" role="button" data-cfw="collapse">2</a>').appendTo($groups.eq(1));
+        /* var $target2 = */ $('<div id="body2" class="collapse"></div>').appendTo($groups.eq(1));
 
         $trigger1.CFW_Collapse();
         $trigger2.CFW_Collapse();
