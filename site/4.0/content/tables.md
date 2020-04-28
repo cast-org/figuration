@@ -13,12 +13,11 @@ ${toc}
 
 Due to the widespread use of tables across third-party widgets like calendars and date pickers, we've designed our tables to be **opt-in**. Just add the base class `.table` to any `<table>`, then extend with custom styles or our various included modifier classes.
 
+Check out [MDN's HTML table advanced features and accessibility document](https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced) for additional help when building tables.
+
 ## Basic Table
 
 Using the most basic table markup, a `.table` will result in a mostly unstyled table, and will use all available width.
-
-Nested tables are not explicitly supported by Figuration as they can create usability and accessibility issues for screen reader users.  The recommendation would be to break up complex tables into multiple simpler tables.
-Check out [MDN's HTML table advanced features and accessibility document](https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced) for additional help when building tables.
 
 {% capture example %}
 <table class="table">
@@ -1309,7 +1308,7 @@ Use [text or background utilities]({{ site.path }}/{{ version.docs }}/utilities/
 
 ### Border Color
 
-`.table`s are defined with `border-{side}-color: inherit;`, allowing for easy recoloring of the borders by setting the `border-color` on the `.table` itself.  Setting a `border-color` on a table row or cell will affect the border color for that specific element and it's descendants.
+Easily recolor borders by setting the `border-color` on the `.table` itself.  Setting a `border-color` on a table row or cell will affect the border color for that specific element.  Be aware that using utility classes to recolor borders can result in descendants will have their border color updated as well.
 
 All cells use `border-top` for their horizontal borders,  while `<thead>` adds a `border-bottom` to `<th>` elements.
 All cells use `border-left` for their vertical ones, unless they are the last ones in a row, then they potentially add a `border-right` depending on the modifier used.
@@ -1611,6 +1610,98 @@ You can also use [text or background utilities]({{ site.path }}/{{ version.docs 
 {% endcapture %}
 {% renderExample example %}
 
+## Nested Tables
+
+Figuration does have a general recommendation against the use of nested tables as they can create usability and accessibility issues for screen reader users.  One recommendation would be to break up complex tables into multiple simpler tables.
+
+Our table styles are not intended to be inherited, meaning that nested tables can be styled independent from the parent.
+
+<div class="cf-example">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Header 1</th>
+        <th scope="col">Header 2</th>
+        <th scope="col">Header 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <table class="table table-divided mb-0">
+            <thead>
+              <tr>
+                <th scope="col">Header A</th>
+                <th scope="col">Header B</th>
+                <th scope="col">Header C</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">A</th>
+                <td>Cell</td>
+                <td>Cell</td>
+              </tr>
+              <tr>
+                <th scope="row">B</th>
+                <td>Cell</td>
+                <td>Cell</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th>Footer 1</th>
+        <th>Footer 2</th>
+        <th>Footer 3</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+{% capture highlight %}
+<table class="table table-bordered table-striped">
+  <thead>
+    ...
+  </thead>
+  <tbody>
+    ...
+    <tr>
+      <td colspan="4">
+        <table class="table table-divided mb-0">
+          ...
+        </table>
+      </td>
+    </tr>
+    ...
+  </tbody>
+</table>
+{% endcapture %}
+{% renderHighlight highlight, "html" %}
+
+### Notes About Nesting
+
+Most `.table` styles and variants are built using a `.table > :not(caption) > * > *` selector syntax.  The use of the child combinator (`>`) and univeral selector (`*`) allow for reduced CSS output since there is the need to style each `td` and `th` within a given `thead`, `tbody`, or `tfoot` container.  This has the added benefit of preventing *most* styles from leaking to nested tables.
+
+In pretty much every modern browser, when a table is created with `<tr>`s as direct children, those `<tr>` will be wrapped in a `<tbody>` by default, allowing our table styles to work.
+
+
 ## SASS Reference
 
 ### Variables
@@ -1806,6 +1897,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$table-head-border-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Border color between table header and body.
+        </td>
+      </tr>
+      <tr>
         <td><code>$table-body-border-width</code></td>
         <td>boolean</td>
         <td><code>2 * $table-border-width</code></td>
@@ -1814,11 +1913,27 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$table-body-border-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Border color between table sibling table bodies.
+        </td>
+      </tr>
+      <tr>
         <td><code>$table-foot-border-width</code></td>
         <td>boolean</td>
         <td><code>2 * $table-border-width</code></td>
         <td>
           Border width between table body and footer.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$table-foot-border-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Border color between table body and footer.
         </td>
       </tr>
       <tr>

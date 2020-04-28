@@ -743,8 +743,11 @@ $table-bg-active-hover:         $uibase-200 !default;
 $table-border-width:            $border-width !default;
 $table-border-color:            $component-border-color !default;
 $table-head-border-width:       2 * $table-border-width !default;
+$table-head-border-color:       null !default;
 $table-body-border-width:       2 * $table-border-width !default;
+$table-body-border-color:       null !default;
 $table-foot-border-width:       2 * $table-border-width !default;
+$table-foot-border-color:       null !default;
 
 $table-striped-selector:        odd !default;
 $table-striped-box-shadow:      inset 0 0 0 999rem rgba($uibase-900, .075) !default;
