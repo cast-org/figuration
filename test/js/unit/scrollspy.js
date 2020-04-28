@@ -17,7 +17,7 @@ $(function() {
 
     QUnit.test('should return jquery collection containing the element', function(assert) {
         assert.expect(2);
-        var $el = $('<div/>');
+        var $el = $('<div></div>');
         var $col = $el.CFW_Scrollspy();
         assert.ok($col instanceof $, 'returns jquery collection');
         assert.strictEqual($col[0], $el[0], 'collection contains element');
@@ -368,11 +368,11 @@ $(function() {
         $(sectionHTML).appendTo('#qunit-fixture');
 
         var scrollspyHTML = '<div id="content" style="height: 200px; overflow-y: auto;">' +
-            '<div id="spacer" style="height: 100px;"/>' +
-            '<div id="div-1" style="height: 100px;"/>' +
-            '<div id="div-2" style="height: 100px;"/>' +
-            '<div id="div-3" style="height: 100px;"/>' +
-            '<div id="spacer" style="height: 100px;"/>' +
+            '<div id="spacer" style="height: 100px;"></div>' +
+            '<div id="div-1" style="height: 100px;"></div>' +
+            '<div id="div-2" style="height: 100px;"></div>' +
+            '<div id="div-3" style="height: 100px;"></div>' +
+            '<div id="spacer" style="height: 100px;"></div>' +
             '</div>';
         var $scrollspy = $(scrollspyHTML).appendTo('#qunit-fixture');
 
@@ -414,10 +414,10 @@ $(function() {
         var startOfSectionTwo = 101;
 
         var scrollspyHTML = '<div id="content" style="height: 200px; overflow-y: auto;">' +
-            '<div id="div-1" style="height: 100px;"/>' +
-            '<div id="div-2" style="height: 100px;"/>' +
-            '<div id="div-3" style="height: 100px;"/>' +
-            '<div id="spacer" style="height: 100px;"/>' +
+            '<div id="div-1" style="height: 100px;"></div>' +
+            '<div id="div-2" style="height: 100px;"></div>' +
+            '<div id="div-3" style="height: 100px;"></div>' +
+            '<div id="spacer" style="height: 100px;"></div>' +
             '</div>';
         var $scrollspy = $(scrollspyHTML).appendTo('#qunit-fixture');
 
