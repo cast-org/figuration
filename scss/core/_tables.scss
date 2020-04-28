@@ -1,3 +1,15 @@
+// Targeting th & td with universal selectors
+// Using:  `> :not(caption) > * > *`
+//
+// Advantages:
+// - Stops styles from inheriting in nested tables from use of child combinators.
+// - Creates less generated CSS - removes need a possible 6 nested selector pairs.
+// - Easier to override since the selector is less specific.
+// Disdvantages:
+// - Possible performance hit?
+// - Confusing syntax.
+
+
 @if $enable-table {
     // Basic table
     .table {
@@ -8,8 +20,8 @@
         border: 0 solid;
         border-color: $table-border-color;
 
-        th,
-        td {
+        // stylelint-disable-next-line selector-max-universal
+        > :not(caption) > * > * {
             padding: $table-cell-padding;
             box-shadow: none;
         }
@@ -32,53 +44,43 @@
         .table-celled,
         .table-divided,
         .table-ruled {
-            > * > * {
-                > th,
-                > td {
-                    border-top-width: $table-border-width;
-                }
+            // stylelint-disable-next-line selector-max-universal
+            > :not(caption) > * > * {
+                border-top-width: $table-border-width;
             }
 
-            > thead > tr {
-                > th {
-                    border-bottom-width: $table-head-border-width;
-                }
+            // stylelint-disable-next-line selector-max-universal
+            > thead > * > * {
+                border-bottom-color: $table-head-border-color;
+                border-bottom-width: $table-head-border-width;
             }
 
-            > tbody + tbody {
+            > tbody + tbody > :first-child {
+                border-top-color: $table-body-border-color;
                 border-top-width: $table-body-border-width;
             }
 
-            > tfoot > tr {
-                > th,
-                > td {
-                    border-top-width: $table-foot-border-width;
-                    border-bottom-width: 0;
-                }
+            // stylelint-disable-next-line selector-max-universal
+            > tfoot > :first-child > * {
+                border-top-color: $table-foot-border-color;
+                border-top-width: $table-foot-border-width;
+                border-bottom-width: 0;
             }
         }
 
-        // stylelint-disable selector-max-type
         .table-celled,
         .table-divided {
-            > thead {
-                > tr:first-child {
-                    > th,
-                    > td {
-                        border-top-width: 0;
-                    }
-                }
+            // stylelint-disable-next-line selector-max-universal
+            > thead > :first-child > * {
+                border-top-width: 0;
             }
         }
-        // stylelint-enable selector-max-type
 
         .table-bordered,
         .table-ruled {
-            > tfoot {
-                > th,
-                > td {
-                    border-bottom-width: $table-border-width;
-                }
+            // stylelint-disable-next-line selector-max-universal
+            > tfoot > * > * {
+                border-bottom-width: $table-border-width;
             }
         }
 
@@ -94,31 +96,29 @@
         .table-celled,
         .table-pillared,
         .table-walled {
-            > * > * {
-                > th,
-                > td {
-                    border-left-width: $table-border-width;
+            // stylelint-disable selector-max-universal
+            > :not(caption) > * > * {
+                border-left-width: $table-border-width;
 
-                    &:last-child {
-                        border-right-width: $table-border-width;
-                    }
+                &:last-child {
+                    border-right-width: $table-border-width;
                 }
             }
+            // stylelint-enable selector-max-universal
         }
 
         .table-pillared,
         .table-celled {
-            > * > * {
-                > th,
-                > td {
-                    &:first-child {
-                        border-left-width: 0;
-                    }
-                    &:last-child {
-                        border-right-width: 0;
-                    }
+            // stylelint-disable selector-max-universal
+            > :not(caption) > * > * {
+                &:first-child {
+                    border-left-width: 0;
+                }
+                &:last-child {
+                    border-right-width: 0;
                 }
             }
+            // stylelint-enable selector-max-universal
         }
 
         .table-bordered,
@@ -133,19 +133,15 @@
     // Striped table
     @if $enable-table-striped {
         .table-striped {
-            > tbody > tr:nth-of-type(#{$table-striped-selector}) {
-                > th,
-                > td {
-                    box-shadow: $table-striped-box-shadow;
-                }
+            // stylelint-disable-next-line selector-max-universal
+            > tbody > tr:nth-of-type(#{$table-striped-selector}) > * {
+                box-shadow: $table-striped-box-shadow;
             }
         }
         .table-striped-alt {
-            > tbody > tr:nth-of-type(#{$table-striped-selector}) {
-                > th,
-                > td {
-                    box-shadow: $table-striped-alt-box-shadow;
-                }
+            // stylelint-disable-next-line selector-max-universal
+            > tbody > tr:nth-of-type(#{$table-striped-selector}) > * {
+                box-shadow: $table-striped-alt-box-shadow;
             }
         }
     }
@@ -154,23 +150,15 @@
     // Needs to be after striped table in order to overrule background.
     @if $enable-table-hover {
         .table-hover {
-            > tbody > tr {
-                @include hover() {
-                    > th,
-                    > td {
-                        box-shadow: $table-hover-box-shadow;
-                    }
-                }
+            // stylelint-disable-next-line selector-max-universal
+            > tbody > tr:hover > * {
+                box-shadow: $table-hover-box-shadow;
             }
         }
         .table-hover-alt {
-            > tbody > tr {
-                @include hover() {
-                    > th,
-                    > td {
-                        box-shadow: $table-hover-alt-box-shadow;
-                    }
-                }
+            // stylelint-disable-next-line selector-max-universal
+            > tbody > tr:hover > * {
+                box-shadow: $table-hover-alt-box-shadow;
             }
         }
     }
@@ -179,8 +167,8 @@
     // Condensed table
     @if $enable-table-condensed {
         .table-condensed {
-            th,
-            td {
+            // stylelint-disable-next-line selector-max-universal
+            > :not(caption) > * > * {
                 padding: $table-condensed-cell-padding;
             }
         }

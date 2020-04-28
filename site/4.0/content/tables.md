@@ -1806,6 +1806,14 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$table-head-border-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Border color between table header and body.
+        </td>
+      </tr>
+      <tr>
         <td><code>$table-body-border-width</code></td>
         <td>boolean</td>
         <td><code>2 * $table-border-width</code></td>
@@ -1814,11 +1822,27 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$table-body-border-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Border color between table sibling table bodies.
+        </td>
+      </tr>
+      <tr>
         <td><code>$table-foot-border-width</code></td>
         <td>boolean</td>
         <td><code>2 * $table-border-width</code></td>
         <td>
           Border width between table body and footer.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$table-foot-border-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Border color between table body and footer.
         </td>
       </tr>
       <tr>
