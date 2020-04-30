@@ -315,8 +315,6 @@ These changes, and more, are demonstrated below.
   </fieldset>
 </form>
 
-
-
 {% capture callout %}
 Date, Time, and Color Input Support
 {.h5}
@@ -363,6 +361,10 @@ The `<abbr>` element receives basic styling to make it stand out amongst paragra
 <div class="cf-example cf-example-bottom">
   Nulla <abbr title="attribute">attr</abbr> vitae elit libero, a pharetra augue.
 </div>
+
+### Inline Frame
+
+`<iframe>`s have are set to `border: 0;` so there is no need for a `frameborder="0"` attribute.
 
 ### Summary
 

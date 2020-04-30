@@ -270,6 +270,9 @@ pre {
     margin-top: 0; // Remove browser default top margin
     margin-bottom: 1rem; // Reset browser default of `1em` to use `rem`s
     overflow: auto; // Don't allow content to break outside
+    // Disable auto-hiding scrollbar in legacy Edge to avoid overlap,
+    // making it impossible to interact with the content
+    -ms-overflow-style: scrollbar;
 }
 
 
@@ -475,6 +478,11 @@ progress {
 // Correct element displays
 output {
     display: inline-block;
+}
+
+// Remove border from iframe
+iframe {
+    border: 0;
 }
 
 summary {
