@@ -238,7 +238,10 @@
             return img.complete && typeof img.naturalWidth !== 'undefined';
         };
 
-        if (_isImageComplete() && img.naturalWidth !== 0) {
+        // Firefox reports img.naturalWidth=0 for SVG
+        // Also currently borked in most browsers: https://github.com/whatwg/html/issues/3510
+        // if (_isImageComplete() && img.naturalWidth !== 0) {
+        if (_isImageComplete()) {
             _doCallback();
             return;
         }
