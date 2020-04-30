@@ -17,7 +17,7 @@ Rules are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<object>` e
 
 ### Inline Frames
 
-**Pro-Tip!** You don't need to include `frameborder="0"` in your `<iframe>`s as we override that for you.
+**Pro-Tip!** You don't need to include `frameborder="0"` in your `<iframe>`s as we override that for you in the [Reboot styles]({{ site.path }}/{{ version.docs }}/content/reboot/#inline-frame).
 
 {% capture example %}
 <div class="embed-fluid embed-fluid-16x9">
