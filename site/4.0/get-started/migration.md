@@ -109,6 +109,9 @@ ${toc}
 ### Flexbox
 - Renamed `.flex-order` to `.order` to both shorten and also match standard rule name.
 
+### Icons
+- The caret utilities have been upgraded to a 4-way style. Since `.dropup` is no longer on the parent container, you may have to change from `.caret` to `.caretup`.
+
 ### Image Replacement
 - Dropped the `.text-hide` util and `.text-hide()` mixin—in favor of using `.sr-only` as the replacement.
 
