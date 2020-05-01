@@ -48,7 +48,7 @@
 <!-- Figuration CSS -->
 <link href="/assets/4.0/dist/css/figuration.min.css" rel="stylesheet" id="cssCore"><!-- Docs CSS -->
 <link href="/assets/4.0/css/docs.min.css" rel="stylesheet" id="cssDocs"><!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.0.slim.min.js" integrity="sha384-/IFzzQmt1S744I+IQO4Mc1uphkxbXt1tEwjQ/qSw2p8pXWck09sLvqHmKDYYwReJ" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/4.0/js/vendor/jquery.slim.min.js"><\/script>')</script>
 
 <!-- Popper.js -->
@@ -105,13 +105,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.0.0-beta.3
+    v4.0.0-beta.4
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0-beta.3</a></li>
+    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0-beta.4</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -136,14 +136,14 @@
 
       </a>
     </li>
-    <li class="nav-item"><div class="dropdown dropend">
+    <li class="nav-item"><div class="dropdown">
   <a href="#" role="button" class="nav-link px-0_5" aria-label="Settings" data-cfw="dropdown">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 8 8" focusable="false" role="img"  width="1rem" height="1rem">
   <title>Settings</title>
   <path fill="currentColor" d="M3.5 0l-.5 1.19c-.1.03-.19.08-.28.13l-1.19-.5-.72.72.5 1.19c-.05.1-.09.18-.13.28l-1.19.5v1l1.19.5c.04.1.08.18.13.28l-.5 1.19.72.72 1.19-.5c.09.04.18.09.28.13l.5 1.19h1l.5-1.19c.09-.04.19-.08.28-.13l1.19.5.72-.72-.5-1.19c.04-.09.09-.19.13-.28l1.19-.5v-1l-1.19-.5c-.03-.09-.08-.19-.13-.28l.5-1.19-.72-.72-1.19.5c-.09-.04-.19-.09-.28-.13l-.5-1.19h-1zm.5 2.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z"/>
 </svg>
   </a>
-  <ul class="dropdown-menu position-absolute">
+  <ul class="dropdown-menu dropreverse position-absolute">
     <li class="dropdown-header">Direction</li>
     <li><button type="button" class="dropdown-item" id="dir-ltr">Left-to-right</button></li>
     <li><button type="button" class="dropdown-item" id="dir-rtl">Right-to-left</button></li>
@@ -286,23 +286,16 @@
       <p class="fs-large font-weight-sbold">A few simple icons to indicate state or function.</p>
 
       <div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#caret-icon">Caret Icon </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#mixins">Mixins </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#example">Example </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#close-icon">Close Icon </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#drag-icon">Drag Icon </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#sass-reference">SASS Reference </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#variables">Variables </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#mixins-2">Mixins </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#caret">caret() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#caret-up">caret-up() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#caret-down">caret-down() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#caret-start">caret-start() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#caret-end">caret-end() </a></li></ul></li></ul></li></ul></nav><h2 id="caret-icon">Caret Icon <a class="direct-link" href="#caret-icon">#</a></h2>
-<p>Use carets to indicate some meaning of functionality or direction. Note that the default caret will reverse automatically in <a href="/4.0/widgets/dropdown/">dropup menus</a>.</p>
-<p>If inside of an element marked as <code>.open</code> the caret will reverse direction accordingly to indicate state.</p>
+<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#caret-icons">Caret Icons </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#mixins">Mixins </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#example">Example </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#close-icon">Close Icon </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#drag-icon">Drag Icon </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#sass-reference">SASS Reference </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#variables">Variables </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#mixins-2">Mixins </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#caret">caret() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#caret-up">caret-up() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#caret-down">caret-down() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#caret-start">caret-start() </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#caret-end">caret-end() </a></li></ul></li></ul></li></ul></nav><h2 id="caret-icons">Caret Icons <a class="direct-link" href="#caret-icons">#</a></h2>
+<p>Use carets to indicate some meaning of functionality or direction.</p>
+<p>If used inside of an element marked as <code>.open</code> the caret will reverse direction accordingly to indicate state.</p>
 <div class="cf-example">
 <span class="caret" aria-hidden="true"></span>
-<span class="open">
-  <span class="caret" aria-hidden="true"></span>
-</span>
-&mdash;
-<span class="dropup">
-  <span class="caret" aria-hidden="true"></span>
-</span>
-<span class="dropup open">
-  <span class="caret" aria-hidden="true"></span>
-</span>
+<span class="caretup" aria-hidden="true"></span>
+<span class="caretstart" aria-hidden="true"></span>
+<span class="caretend" aria-hidden="true"></span>
 </div>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>caret<span class="token punctuation">"</span></span> <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>open<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>caret<span class="token punctuation">"</span></span> <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br><span class="token entity" title="&mdash;">&amp;mdash;</span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dropup<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>caret<span class="token punctuation">"</span></span> <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dropup open<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>caret<span class="token punctuation">"</span></span> <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>caret<span class="token punctuation">"</span></span> <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>caretup<span class="token punctuation">"</span></span> <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>caretstart<span class="token punctuation">"</span></span> <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>caretend<span class="token punctuation">"</span></span> <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span></code></pre>
 <h3 id="mixins">Mixins <a class="direct-link" href="#mixins">#</a></h3>
 <p>Create custom uses of the caret with the Sass mixins.</p>
 <p>Four directions are available, with the following names: down, up, start, and end.</p>
@@ -367,7 +360,7 @@ Hover over, or focus on the following button to change caret direction:<br />
         <td>boolean</td>
         <td><code>true</code></td>
         <td>
-          Enable generation of the caret icon utility class.
+          Enable generation of the caret icon utility classes.
         </td>
       </tr>
       <tr>
@@ -661,7 +654,7 @@ Hover over, or focus on the following button to change caret direction:<br />
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.0-beta.3
+      <strong>Latest version:</strong> 4.0.0-beta.4
       <br>
       &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
       <br>

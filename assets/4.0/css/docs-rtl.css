@@ -441,6 +441,7 @@
 }
 
 .cf-links .has-children .caret::after {
+  margin-top: -0.15625rem;
   border-top: 0.3125rem solid transparent;
   border-left: 0;
   border-bottom: 0.3125rem solid transparent;
@@ -595,10 +596,6 @@ h4 > code {
 
 .cf-clipboard {
   position: relative;
-  z-index: 2;
-  display: block;
-  float: right ;
-  line-height: 1;
 }
 
 .cf-clipboard + .highlight {
@@ -726,8 +723,6 @@ code.language-bash::before {
 /* Code blocks */
 pre[class*="language-"] {
   padding: 1.75em 1rem .5rem;
-  margin-bottom: 1rem;
-  overflow: auto;
   background-color: #f7f8f9;
   border: 1px solid #dfe3e6;
   border-radius: 0.25rem;
@@ -956,44 +951,42 @@ pre[class*="language-"] {
 }
 
 .example-content-main {
-  position: relative;
+  flex: 0 0 auto;
   width: 100%;
+  max-width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
 @media (min-width: 36em) {
   .example-content-main {
-    flex: 0 0 50%;
-    max-width: 50%;
+    width: 50%;
   }
 }
 
 @media (min-width: 62em) {
   .example-content-main {
-    flex: 0 0 66.666667%;
-    max-width: 66.666667%;
+    width: 66.666667%;
   }
 }
 
 .example-content-secondary {
-  position: relative;
+  flex: 0 0 auto;
   width: 100%;
+  max-width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
 @media (min-width: 36em) {
   .example-content-secondary {
-    flex: 0 0 50%;
-    max-width: 50%;
+    width: 50%;
   }
 }
 
 @media (min-width: 62em) {
   .example-content-secondary {
-    flex: 0 0 33.333333%;
-    max-width: 33.333333%;
+    width: 33.333333%;
   }
 }
 
@@ -1003,6 +996,7 @@ pre[class*="language-"] {
   height: 0;
   vertical-align: middle;
   content: "";
+  margin-top: -0.25rem;
   border-top: 0.5rem solid transparent;
   border-left: 0.5rem solid  #000;
   border-bottom: 0.5rem solid transparent;
@@ -1010,6 +1004,7 @@ pre[class*="language-"] {
 }
 
 .btn:hover .example-caret, .btn:focus .example-caret {
+  margin-top: -0.25rem;
   border-top: 0.5rem solid transparent;
   border-left: 0;
   border-bottom: 0.5rem solid transparent;

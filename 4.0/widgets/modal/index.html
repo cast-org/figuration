@@ -48,7 +48,7 @@
 <!-- Figuration CSS -->
 <link href="/assets/4.0/dist/css/figuration.min.css" rel="stylesheet" id="cssCore"><!-- Docs CSS -->
 <link href="/assets/4.0/css/docs.min.css" rel="stylesheet" id="cssDocs"><!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.0.slim.min.js" integrity="sha384-/IFzzQmt1S744I+IQO4Mc1uphkxbXt1tEwjQ/qSw2p8pXWck09sLvqHmKDYYwReJ" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/4.0/js/vendor/jquery.slim.min.js"><\/script>')</script>
 
 <!-- Popper.js -->
@@ -105,13 +105,13 @@
   <ul class="navbar-nav ms-auto cf-header-social flex-row">
     <li class="nav-item me-1"><div class="dropdown">
   <a href="#" role="button" class="nav-link pe-0" data-cfw="dropdown">
-    v4.0.0-beta.3
+    v4.0.0-beta.4
     <span class="caret" aria-hidden="true"></span>
   </a>
   <ul class="dropdown-menu position-absolute">
     <li class="dropdown-header">Latest</li>
     
-    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0-beta.3</a></li>
+    <li><a href="/4.0/" class="active" aria-current="true">v4.0.0-beta.4</a></li>
     
     <li class="dropdown-divider"></li>
     
@@ -136,14 +136,14 @@
 
       </a>
     </li>
-    <li class="nav-item"><div class="dropdown dropend">
+    <li class="nav-item"><div class="dropdown">
   <a href="#" role="button" class="nav-link px-0_5" aria-label="Settings" data-cfw="dropdown">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 8 8" focusable="false" role="img"  width="1rem" height="1rem">
   <title>Settings</title>
   <path fill="currentColor" d="M3.5 0l-.5 1.19c-.1.03-.19.08-.28.13l-1.19-.5-.72.72.5 1.19c-.05.1-.09.18-.13.28l-1.19.5v1l1.19.5c.04.1.08.18.13.28l-.5 1.19.72.72 1.19-.5c.09.04.18.09.28.13l.5 1.19h1l.5-1.19c.09-.04.19-.08.28-.13l1.19.5.72-.72-.5-1.19c.04-.09.09-.19.13-.28l1.19-.5v-1l-1.19-.5c-.03-.09-.08-.19-.13-.28l.5-1.19-.72-.72-1.19.5c-.09-.04-.19-.09-.28-.13l-.5-1.19h-1zm.5 2.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5-1.5-.67-1.5-1.5.67-1.5 1.5-1.5z"/>
 </svg>
   </a>
-  <ul class="dropdown-menu position-absolute">
+  <ul class="dropdown-menu dropreverse position-absolute">
     <li class="dropdown-header">Direction</li>
     <li><button type="button" class="dropdown-item" id="dir-ltr">Left-to-right</button></li>
     <li><button type="button" class="dropdown-item" id="dir-rtl">Right-to-left</button></li>
@@ -286,7 +286,7 @@
       <p class="fs-large font-weight-sbold">The Modal widget allows you to add dialog style windows to your site or application.</p>
 
       <div class="h3 cf-toc-header">Page Contents</div>
-<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#important-notes">Important Notes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#examples">Examples </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#modal-components">Modal Components </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#live-demo">Live Demo </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#scrolling-long-content">Scrolling Long Content </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#scrollable-body">Scrollable Body </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#vertically-centered">Vertically Centered </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#grid-usage">Grid Usage </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#tooltips-and-popovers">Tooltips and Popovers </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#optional-sizes">Optional Sizes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#side-aligned">Side Aligned </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#static-backdrop">Static Backdrop </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#usage">Usage </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#via-data-attributes">Via Data Attributes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#via-javascript">Via JavaScript </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#close-triggers">Close Triggers </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#alter-animation">Alter Animation </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#dynamic-heights">Dynamic Heights </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#with-fixed-position-content">With Fixed Position Content </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#options">Options </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#methods">Methods </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_modaloptions">.CFW_Modal(options) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_modaltoggle">.CFW_Modal(&#39;toggle&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_modalshow">.CFW_Modal(&#39;show&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_modalhide">.CFW_Modal(&#39;hide&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_modalunlink">.CFW_Modal(&#39;unlink&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_modaldispose">.CFW_Modal(&#39;dispose&#39;) </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#events">Events </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#server-side-apps">Server-side Apps </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#accessibility">Accessibility </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#key-commands">Key Commands </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#enforced-focus">Enforced Focus </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#sass-reference">SASS Reference </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#variables">Variables </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#mixins">Mixins </a></li></ul></li></ul></nav><h2 id="important-notes">Important Notes <a class="direct-link" href="#important-notes">#</a></h2>
+<nav class="cf-toc"><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#important-notes">Important Notes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#examples">Examples </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#modal-components">Modal Components </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#live-demo">Live Demo </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#scrolling-long-content">Scrolling Long Content </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#scrollable-body">Scrollable Body </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#vertically-centered">Vertically Centered </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#grid-usage">Grid Usage </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#tooltips-and-popovers">Tooltips and Popovers </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#optional-sizes">Optional Sizes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#side-aligned">Side Aligned </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#static-backdrop">Static Backdrop </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#fullscreen-modal">Fullscreen Modal </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#usage">Usage </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#via-data-attributes">Via Data Attributes </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#via-javascript">Via JavaScript </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#close-triggers">Close Triggers </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#alter-animation">Alter Animation </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#dynamic-heights">Dynamic Heights </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#with-fixed-position-content">With Fixed Position Content </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#options">Options </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#methods">Methods </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_modaloptions">.CFW_Modal(options) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_modaltoggle">.CFW_Modal(&#39;toggle&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_modalshow">.CFW_Modal(&#39;show&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_modalhide">.CFW_Modal(&#39;hide&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_modalunlink">.CFW_Modal(&#39;unlink&#39;) </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#cfw_modaldispose">.CFW_Modal(&#39;dispose&#39;) </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#events">Events </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#server-side-apps">Server-side Apps </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#accessibility">Accessibility </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#key-commands">Key Commands </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#enforced-focus">Enforced Focus </a></li></ul></li><li class="cf-toc-item"><a class="cf-toc-link" href="#sass-reference">SASS Reference </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#variables">Variables </a></li><li class="cf-toc-item"><a class="cf-toc-link" href="#mixins">Mixins </a><ul class="cf-toc-list"><li class="cf-toc-item"><a class="cf-toc-link" href="#modal-fullscreen">modal-fullscreen() </a></li></ul></li></ul></li></ul></nav><h2 id="important-notes">Important Notes <a class="direct-link" href="#important-notes">#</a></h2>
 <ul>
 <li>Modals get positioned over everything else in the document and remove scroll from the <code>&lt;body&gt;</code> so that modal content scrolls instead.</li>
 <li>By default, clicking on the modal &quot;backdrop&quot; will automatically close the modal.</li>
@@ -713,6 +713,204 @@
   <button class="btn btn-primary" data-cfw="modal" data-cfw-modal-backdrop="static" data-cfw-modal-target="#modalStaticBackdrop">Static backdrop modal</button>
 </div>
 <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-modal-backdrop</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>static<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-modal-target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#modalStaticBackdrop<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Static backdrop modal<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modalStaticBackdrop<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-dialog-side-end modal-dialog-scrollable modal-sm<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      ...<br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<h3 id="fullscreen-modal">Fullscreen Modal <a class="direct-link" href="#fullscreen-modal">#</a></h3>
+<p>Enlarge a modal to fill the entire viewport with a <code>.modal-fullscreen</code> modifider class placed on the <code>.modal-dialog</code>.</p>
+<div class="modal" id="modalFullscreen">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Fullscreen modal</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h4>Overflowing text to show scroll behavior</h4>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cf-example">
+<button class="btn btn-primary" data-cfw="modal" data-cfw-modal-target="#modalFullscreen">Fullscreen modal</button>
+</div>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">data-cfw-modal-target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#modalFullscreen<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Fullscreen modal<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modalFullscreen<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-fullscreen<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>      ...<br>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>Responsive variants are also available. These work for a given breakpoint and below with the form <code>.modal-fullscreen-{breakpoint}-down</code>.</p>
+<p><strong>Heads up!</strong> There is no <code>.modal-fullscreen-*-down</code> class created for the largest breakpoint since it is functionally equivalent to using <code>.modal-fullscreen</code>.</p>
+<div class="modal" id="modalFullscreenXs">
+  <div class="modal-dialog modal-fullscreen-xs-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Fullscreen modal at `xs`</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="modalFullscreenSm">
+  <div class="modal-dialog modal-fullscreen-sm-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Fullscreen modal at `sm` and below</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="modalFullscreenMd">
+  <div class="modal-dialog modal-fullscreen-md-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Fullscreen modal at `md` and below</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="modalFullscreenLg">
+  <div class="modal-dialog modal-fullscreen-lg-down">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Fullscreen modal at `lg` and below</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cf-example">
+<button class="btn btn-primary my-0_25" data-cfw="modal" data-cfw-modal-target="#modalFullscreenXs">Fullscreen `xs` modal</button>
+<button class="btn btn-primary my-0_25" data-cfw="modal" data-cfw-modal-target="#modalFullscreenSm">Fullscreen `sm` modal</button>
+<button class="btn btn-primary my-0_25" data-cfw="modal" data-cfw-modal-target="#modalFullscreenMd">Fullscreen `md` modal</button>
+<button class="btn btn-primary my-0_25" data-cfw="modal" data-cfw-modal-target="#modalFullscreenLg">Fullscreen `lg` modal</button>
+</div>
+<pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- Fullscreen modal at `xs` breakpoint --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-fullscreen-xs-down<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  ...<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><br><span class="token comment">&lt;!-- Fullscreen modal at `sm` breakpoint and below --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-fullscreen-sm-down<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  ...<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><br><span class="token comment">&lt;!-- Fullscreen modal at `md` breakpoint and below --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-fullscreen-md-down<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  ...<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><br><span class="token comment">&lt;!-- Fullscreen modal at `lg` breakpoint and below --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-fullscreen-lg-down<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  ...<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>You can also combine fullscreen variants with the centered and scrollable variants.  The fullscreen version of the modal will then assume a similar scrolling behavior to match, but centering will not occur since the modal will be stretched to the size of the viewport.</p>
+<div class="modal" id="modalFullMdScroll">
+  <div class="modal-dialog modal-fullscreen-md-down modal-dialog-scrollable">
+      <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h4>Overflowing text to show scroll behavior</h4>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="modalFullMdCenter">
+  <div class="modal-dialog modal-fullscreen-md-down modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h4>Overflowing text to show scroll behavior</h4>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="modalFullMdCenterScroll">
+  <div class="modal-dialog modal-fullscreen-md-down modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="close" data-cfw-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h4>Overflowing text to show scroll behavior</h4>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-cfw-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+    </div>
+  </div>
+</div>
+<div class="cf-example">
+<button class="btn btn-primary my-0_25" data-cfw="modal" data-cfw-modal-target="#modalFullMdScroll">Fullscreen scrolling body</button>
+<button class="btn btn-primary my-0_25" data-cfw="modal" data-cfw-modal-target="#modalFullMdCenter">Fullscreen centered</button>
+<button class="btn btn-primary my-0_25" data-cfw="modal" data-cfw-modal-target="#modalFullMdCenterScroll">Fullscreen centered, scrolling body</button>
+</div>
+<pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- Fullscreen modals at `md` breakpoint and below --></span><br><br><span class="token comment">&lt;!-- Scrollable body above `md` breakpoint --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-fullscreen-md-down modal-dialog-scrollable<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  ...<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><br><span class="token comment">&lt;!-- Centered above `md` breakpoint --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-fullscreen-md-down modal-dialog-centered<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  ...<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><br><br><span class="token comment">&lt;!-- Centered and scrollable body above `md` breakpoint --></span><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>modal-dialog modal-fullscreen-md-down modal-dialog-centered modal-dialog-scrollable<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>  ...<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <h2 id="usage">Usage <a class="direct-link" href="#usage">#</a></h2>
 <p>The modal widget toggles your hidden content on demand, via data attributes or JavaScript. It also adds <code>.modal-open</code> to the <code>&lt;body&gt;</code> to override default scrolling behavior and generates a <code>.modal-backdrop</code> to provide a click area for dismissing shown modals when clicking outside the modal.</p>
 <h3 id="via-data-attributes">Via Data Attributes <a class="direct-link" href="#via-data-attributes">#</a></h3>
@@ -945,6 +1143,22 @@
         <td><code>true</code></td>
         <td>
           Enable the generation of the end side aligned modal variant.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-modal-fullscreen</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the fullscreen modal variant.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$enable-modal-fullscreen-responsive</code></td>
+        <td>boolean</td>
+        <td><code>true</code></td>
+        <td>
+          Enable the generation of the responsive fullscreen modal variants.
         </td>
       </tr>
       <tr>
@@ -1240,7 +1454,15 @@
         <td>string</td>
         <td><code>scale(1.01)</code></td>
         <td>
-          Transform state of <code>.modal-dialog</code> for the close is blocked animation.
+          Transform state of <code>.modal-dialog</code> for when the close is blocked animation.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$modal-transform-fullscreen</code></td>
+        <td>string</td>
+        <td><code>none</code></td>
+        <td>
+          Transform state of <code>.modal-dialog</code> for the slide animation when the modal in fullscreen mode.
         </td>
       </tr>
       <tr>
@@ -1251,11 +1473,21 @@
           Transition settings for the <code>.modal-dialog</code> animations.
         </td>
       </tr>
+      <tr>
+        <td><code>$modal-fullscreen-breakpoints</code></td>
+        <td>list</td>
+        <td><code>map-keys($grid-breakpoints)</code></td>
+        <td>
+          Breakpoint list for responsive fullscreen modals.
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
 <h3 id="mixins">Mixins <a class="direct-link" href="#mixins">#</a></h3>
-<p>No mixins available.</p>
+<h4 id="modal-fullscreen">modal-fullscreen() <a class="direct-link" href="#modal-fullscreen">#</a></h4>
+<p>Enable fullscreen mode on a <code>.modal-dialog</code>.</p>
+<pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@include</span> modal-fullscreen();</span></code></pre>
 
     </main>
   </div>
@@ -1272,7 +1504,7 @@
       <li class="ps-0_5"><a href="https://twitter.com/figuration_org">Twitter</a></li>
     </ul>
     <p>
-      <strong>Latest version:</strong> 4.0.0-beta.3
+      <strong>Latest version:</strong> 4.0.0-beta.4
       <br>
       &copy; 2013-2020 <a href="http://www.cast.org/">CAST, Inc.</a>
       <br>
