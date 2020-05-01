@@ -63,10 +63,6 @@ h4 {
 // ClipboardJS
 .cf-clipboard {
     position: relative;
-    z-index: 2;
-    display: block;
-    float: right #{"/*rtl:ignore*/"};
-    line-height: 1;
 
     + .highlight {
         margin-top: 0;
