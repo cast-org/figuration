@@ -19,6 +19,12 @@ const browsers = {
         browserName: 'firefox',
         version: 'latest'
     },
+    edgeWin10Legacy: {
+        base: 'SauceLabs',
+        platform: 'Windows 10',
+        browserName: 'MicrosoftEdge',
+        version: '16'
+    },
     edgeWin10: {
         base: 'SauceLabs',
         platform: 'Windows 10',
