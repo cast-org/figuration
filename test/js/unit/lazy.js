@@ -17,7 +17,7 @@ $(function() {
 
     QUnit.test('should return jquery collection containing the element', function(assert) {
         assert.expect(2);
-        var $el = $('<div/>');
+        var $el = $('<div></div>');
         var $col = $el.CFW_Lazy();
         assert.ok($col instanceof $, 'returns jquery collection');
         assert.strictEqual($col[0], $el[0], 'collection contains element');
@@ -25,7 +25,7 @@ $(function() {
 
     QUnit.test('should change src to placeholder at load', function(assert) {
         assert.expect(1);
-        var $imgHtml = $('<img src="" data-cfw="lazy" data-cfw-lazy-src="./assets/test.gif" />');
+        var $imgHtml = $('<img src="" data-cfw="lazy" data-cfw-lazy-src="./assets/test.gif">');
         var placeholder = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
         $imgHtml
             .appendTo('#qunit-fixture')
@@ -40,9 +40,9 @@ $(function() {
             '.container-viewport { position: absolute; top: 50px; left: 60px; width: 300px; height: 300px; }' +
             '</style>';
         var $styles = $(styles).appendTo('head');
-        var $container = $('<div class="container-viewport"/>').appendTo(document.body);
+        var $container = $('<div class="container-viewport"></div>').appendTo(document.body);
 
-        var $imgHtml = $('<img src="" id="img-1" data-cfw="lazy" data-cfw-lazy-src="./assets/test.gif" />');
+        var $imgHtml = $('<img src="" id="img-1" data-cfw="lazy" data-cfw-lazy-src="./assets/test.gif">');
         $imgHtml
             .appendTo($container)
             .one('afterShow.cfw.lazy', function() {

@@ -17,7 +17,7 @@ $(function() {
 
     QUnit.test('should return jquery collection containing the element', function(assert) {
         assert.expect(2);
-        var $el = $('<div/>');
+        var $el = $('<div></div>');
         var $col = $el.CFW_Affix();
         assert.ok($col instanceof $, 'returns jquery collection');
         assert.strictEqual($col[0], $el[0], 'collection contains element');
@@ -25,7 +25,7 @@ $(function() {
 
     QUnit.test('should exit early if element is not visible', function(assert) {
         assert.expect(1);
-        var $affix = $('<div style="display: none"/>').CFW_Affix();
+        var $affix = $('<div style="display: none"></div>').CFW_Affix();
         $affix.data('cfw.affix').checkPosition();
         assert.ok(!$affix.hasClass('affix'), 'affix class was not added');
     });
@@ -44,7 +44,7 @@ $(function() {
     //            '<li>And unaffix</li>' +
     //            '</ul>' +
     //            '</div>' +
-    //            '<div id="affixAfter" style="height: 20000px; display: block;"/>';
+    //            '<div id="affixAfter" style="height: 20000px; display: block;"></div>';
     //        $(templateHTML).appendTo(document.body);
     //
     //        $('#affixTarget')
@@ -76,7 +76,7 @@ $(function() {
     //            '<div id="affixTopTarget">' +
     //            '<p>Testing affix-top class is added</p>' +
     //            '</div>' +
-    //            '<div style="height: 1000px; display: block;"/>' +
+    //            '<div style="height: 1000px; display: block;"></div>' +
     //            '</div>';
     //        $(templateHTML).appendTo(document.body);
     //

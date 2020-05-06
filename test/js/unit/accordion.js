@@ -17,7 +17,7 @@ $(function() {
 
     QUnit.test('should return jquery collection containing the element', function(assert) {
         assert.expect(2);
-        var $el = $('<div/>');
+        var $el = $('<div></div>');
         var $col = $el.CFW_Accordion();
         assert.ok($col instanceof $, 'returns jquery collection');
         assert.strictEqual($col[0], $el[0], 'collection contains element');
@@ -78,7 +78,7 @@ $(function() {
         /* var $target2 = */ $('<div id="body2" class="collapse"></div>').appendTo($groups.eq(1));
 
         var $trigger3 = $('<a href="#body3" role="button" data-cfw="collapse">3</a>').appendTo($groups.eq(2));
-        /* var $target3 = */ $('<div id="body3" class="collapse" />').appendTo($groups.eq(2));
+        /* var $target3 = */ $('<div id="body3" class="collapse"></div>').appendTo($groups.eq(2));
 
         $trigger3
             .on('afterShow.cfw.collapse', function() {

@@ -17,7 +17,7 @@ $(function() {
 
     QUnit.test('should return jquery collection containing the element', function(assert) {
         assert.expect(2);
-        var $el = $('<div/>');
+        var $el = $('<div></div>');
         var $col = $el.CFW_Dropdown();
         assert.ok($col instanceof $, 'returns jquery collection');
         assert.strictEqual($col[0], $el[0], 'collection contains element');
@@ -434,7 +434,7 @@ $(function() {
         var dropdownHTML = '<div class="dropdown">' +
             '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
-            '<li><input id="input" /></a></li>' +
+            '<li><input id="input"></li>' +
             '<li><textarea id="textarea"></textarea></a></li>' +
             '</ul>' +
             '</div>';
@@ -470,7 +470,7 @@ $(function() {
         var dropdownHTML = '<div class="dropdown">' +
             '<button type="button" class="btn" data-cfw="dropdown">Dropdown</button>' +
             '<ul class="dropdown-menu">' +
-            '<li><label id="label" for="input"><input id="input" /></label></li>' +
+            '<li><label id="label" for="input"><input id="input"></label></li>' +
             '<li><textarea id="textarea"></textarea></a></li>' +
             '</ul>' +
             '</div>';

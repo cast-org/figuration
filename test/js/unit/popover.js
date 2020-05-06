@@ -17,7 +17,7 @@ $(function() {
 
     QUnit.test('should return jquery collection containing the element', function(assert) {
         assert.expect(2);
-        var $el = $('<div/>');
+        var $el = $('<div></div>');
         var $col = $el.CFW_Popover();
         assert.ok($col instanceof $, 'returns jquery collection');
         assert.strictEqual($col[0], $el[0], 'collection contains element');
@@ -79,7 +79,7 @@ $(function() {
 
     QUnit.test('should not duplicate HTML object', function(assert) {
         assert.expect(6);
-        var $div = $('<div/>').html('i has content');
+        var $div = $('<div></div>').html('i has content');
 
         var $popover = $('<a href="#">popover</a>')
             .appendTo('#qunit-fixture')
@@ -144,7 +144,7 @@ $(function() {
             .CFW_Popover({
                 title: 'Test',
                 content: 'Test',
-                template: '<div class="popover foobar"><div class="popover-arrow"></div><div class="inner"><h3 class="title"/><div class="content"><p/></div></div></div>'
+                template: '<div class="popover foobar"></div>'
             })
             .CFW_Popover('show');
 
@@ -157,7 +157,7 @@ $(function() {
 
     QUnit.test('should dispose popover', function(assert) {
         assert.expect(7);
-        var $popover = $('<div />')
+        var $popover = $('<div></div>')
             .appendTo('#qunit-fixture')
             .CFW_Popover({
                 trigger: 'hover'
@@ -298,7 +298,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        $('<a href="#" />')
+        $('<a href="#"></a>')
             .appendTo('#qunit-fixture')
             .on('afterShow.cfw.popover', function() {
                 assert.strictEqual($('.popover .popover-header').text(), '4', 'title number has been converted to string');

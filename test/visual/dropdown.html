@@ -6,7 +6,7 @@
 
 <title>Figuration - Dropdown</title>
 
-<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css" />
+<link type="text/css" rel="stylesheet" href="../../dist/css/figuration.css">
 
 <script src="../../node_modules/jquery/dist/jquery.slim.min.js"></script>
 <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
@@ -33,9 +33,9 @@
 
 <div class="dropdown mb-1">
     <button id="dropdown0" class="btn btn-info" type="button" data-cfw="dropdown">
-        Base Dropdown <span class="caret"></span>
+        Base Dropdown <span class="caret" aria-hidden="true"></span>
     </button>
-    <ul id="dropdown0_menu "class="dropdown-menu">
+    <ul id="dropdown0_menu" class="dropdown-menu">
         <li class="dropdown-header">Sample Header</li>
         <li><a href="#0-0">Action</a></li>
         <li><a href="#0-1" class="active">Active action</a></li>
@@ -58,9 +58,9 @@
 
 <div class="dropdown mb-1">
     <a href="#" id="dropdown1" class="btn btn-info" role="button" data-cfw="dropdown" data-cfw-dropdown-backlink="true">
-        Back Dropdown <span class="caret"></span>
+        Back Dropdown <span class="caret" aria-hidden="true"></span>
     </a>
-    <ul id="dropdown1_menu "class="dropdown-menu">
+    <ul id="dropdown1_menu" class="dropdown-menu">
         <li class="dropdown-header">Sample Header</li>
         <li><a href="#1-0">Action</a></li>
         <li><a href="#1-1" class="active">Active action</a></li>
@@ -81,9 +81,9 @@
 <div class="d-flex flex-center">
     <div class="dropdown mb-1">
         <a href="#" id="dropdown2" class="btn btn-info" role="button" data-cfw="dropdown" data-cfw-dropdown-hover="true">
-            Hover Dropdown <span class="caret"></span>
+            Hover Dropdown <span class="caret" aria-hidden="true"></span>
         </a>
-        <ul id="dropdown2_menu "class="dropdown-menu">
+        <ul id="dropdown2_menu" class="dropdown-menu">
             <li class="dropdown-header">Sample Header</li>
             <li><a href="#2-0">Action</a></li>
             <li class="active"><a href="#1-1" class="active">Active action</a></li>
@@ -111,9 +111,9 @@
 
 <div class="dropdown mb-1">
     <a href="#" id="dropdown3" class="btn btn-info" role="button" data-cfw="dropdown" data-cfw-dropdown-container="#container">
-        Container Dropdown <span class="caret"></span>
+        Container Dropdown <span class="caret" aria-hidden="true"></span>
     </a>
-    <ul id="dropdown3_menu "class="dropdown-menu">
+    <ul id="dropdown3_menu" class="dropdown-menu">
         <li class="dropdown-header">Sample Header</li>
         <li><a href="#3-0">Action</a></li>
         <li><a href="#3-1" class="active">Active action</a></li>
@@ -339,7 +339,7 @@
 <div class="text-center p-1 m-2 border">
     Directions:<br>
 
-    <span class="dropdown d-inline-block">
+    <div class="dropdown d-inline-block">
         <button type="button" class="btn" data-cfw="dropdown">
             Default <span class="caret" aria-hidden="true"></span>
         </button>
@@ -354,9 +354,9 @@
                 </ul>
             </li>
         </ul>
-    </span>
+    </div>
 
-    <span class="dropdown d-inline-block">
+    <div class="dropdown d-inline-block">
         <button type="button" class="btn" data-cfw="dropdown">
             Up <span class="caretup" aria-hidden="true"></span>
         </button>
@@ -371,9 +371,9 @@
                 </ul>
             </li>
         </ul>
-    </span>
+    </div>
 
-    <span class="dropdown d-inline-block">
+    <div class="dropdown d-inline-block">
         <button type="button" class="btn" data-cfw="dropdown">
             Reverse <span class="caret" aria-hidden="true"></span>
         </button>
@@ -388,9 +388,9 @@
                 </ul>
             </li>
         </ul>
-    </span>
+    </div>
 
-    <span class="dropdown d-inline-block">
+    <div class="dropdown d-inline-block">
         <button type="button" class="btn" data-cfw="dropdown">
             Up Reverse <span class="caretup" aria-hidden="true"></span>
         </button>
@@ -405,11 +405,11 @@
                 </ul>
             </li>
         </ul>
-    </span>
+    </div>
 
     <br>
 
-    <span class="dropdown d-inline-block">
+    <div class="dropdown d-inline-block">
         <button type="button" class="btn" data-cfw="dropdown">
             Start <span class="caretstart" aria-hidden="true"></span>
         </button>
@@ -424,9 +424,9 @@
                 </ul>
             </li>
         </ul>
-    </span>
+    </div>
 
-    <span class="dropdown d-inline-block">
+    <div class="dropdown d-inline-block">
         <button type="button" class="btn" data-cfw="dropdown">
             Start Up <span class="caretup" aria-hidden="true"></span>
         </button>
@@ -441,9 +441,9 @@
                 </ul>
             </li>
         </ul>
-    </span>
+    </div>
 
-    <span class="dropdown d-inline-block">
+    <div class="dropdown d-inline-block">
         <button type="button" class="btn" data-cfw="dropdown">
             End <span class="caretend" aria-hidden="true"></span>
         </button>
@@ -458,9 +458,9 @@
                 </ul>
             </li>
         </ul>
-    </span>
+    </div>
 
-    <span class="dropdown d-inline-block">
+    <div class="dropdown d-inline-block">
         <button type="button" class="btn" data-cfw="dropdown">
             End Up <span class="caretup" aria-hidden="true"></span>
         </button>
@@ -475,7 +475,7 @@
                 </ul>
             </li>
         </ul>
-    </span>
+    </div>
 </div>
 
 </body>

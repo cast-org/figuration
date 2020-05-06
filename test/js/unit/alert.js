@@ -17,7 +17,7 @@ $(function() {
 
     QUnit.test('should return jquery collection containing the element', function(assert) {
         assert.expect(2);
-        var $el = $('<div/>');
+        var $el = $('<div></div>');
         var $col = $el.CFW_Alert();
         assert.ok($col instanceof $, 'returns jquery collection');
         assert.strictEqual($col[0], $el[0], 'collection contains element');
@@ -94,7 +94,7 @@ $(function() {
     QUnit.test('should not fire afterClose when beforeClose is prevented', function(assert) {
         assert.expect(1);
         var done = assert.async();
-        $('<div class="alert"/>')
+        $('<div class="alert"></div>')
             .on('beforeClose.cfw.alert', function(e) {
                 e.preventDefault();
                 assert.ok(true, 'beforeClose event fired');

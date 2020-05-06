@@ -18,7 +18,7 @@ $(function() {
 
     QUnit.test('should return jquery collection containing the element', function(assert) {
         assert.expect(2);
-        var $el = $('<div/>');
+        var $el = $('<div></div>');
         var $col = $el.CFW_Tooltip();
         assert.ok($col instanceof $, 'returns jquery collection');
         assert.strictEqual($col[0], $el[0], 'collection contains element');
@@ -26,13 +26,13 @@ $(function() {
 
     QUnit.test('should empty title attribute', function(assert) {
         assert.expect(1);
-        var $trigger = $('<a href="#" title="Another tooltip"/>').CFW_Tooltip();
+        var $trigger = $('<a href="#" title="Another tooltip"></a>').CFW_Tooltip();
         assert.strictEqual($trigger.attr('title'), '', 'title attribute was emptied');
     });
 
     QUnit.test('should add data attribute for referencing original title', function(assert) {
         assert.expect(1);
-        var $trigger = $('<a href="#" title="Another tooltip"/>').CFW_Tooltip();
+        var $trigger = $('<a href="#" title="Another tooltip"></a>').CFW_Tooltip();
         assert.strictEqual($trigger.attr('data-cfw-tooltip-original-title'), 'Another tooltip', 'original title preserved in data attribute');
     });
 
@@ -40,7 +40,7 @@ $(function() {
         assert.expect(3);
         var done = assert.async();
 
-        var $trigger = $('<a href="#" title="Another tooltip"/>')
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 trigger: 'manual'
@@ -62,7 +62,7 @@ $(function() {
     QUnit.test('should remove aria-describedby from trigger on hide', function(assert) {
         assert.expect(2);
         var done = assert.async();
-        var $trigger = $('<a href="#" title="Another tooltip"/>')
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 trigger: 'manual'
@@ -84,7 +84,7 @@ $(function() {
 
     QUnit.test('should assign a unique id tooltip element', function(assert) {
         assert.expect(2);
-        $('<a href="#" title="Another tooltip"/>')
+        $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip('show');
 
@@ -96,7 +96,7 @@ $(function() {
 
     QUnit.test('should place tooltips relative to placement option', function(assert) {
         assert.expect(2);
-        var $tooltip = $('<a href="#" title="Another tooltip"/>')
+        var $tooltip = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 placement: 'bottom'
@@ -111,7 +111,7 @@ $(function() {
 
     QUnit.test('should allow html entities', function(assert) {
         assert.expect(2);
-        var $tooltip = $('<a href="#" title="&lt;b&gt;test&lt;/b&gt;"/>')
+        var $tooltip = $('<a href="#" title="&lt;b&gt;test&lt;/b&gt;"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 html: true
@@ -126,10 +126,10 @@ $(function() {
 
     QUnit.test('should respect custom classes', function(assert) {
         assert.expect(2);
-        var $tooltip = $('<a href="#" title="Another tooltip"/>')
+        var $tooltip = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
-                template: '<div class="tooltip some-class"><div class="tooltip-arrow"/><div class="tooltip-body"/></div>'
+                template: '<div class="tooltip some-class"></div>'
             });
 
         $tooltip.CFW_Tooltip('show');
@@ -143,7 +143,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        $('<div title="tooltip title"/>')
+        $('<div title="tooltip title"></div>')
             .on('beforeShow.cfw.tooltip', function() {
                 assert.ok(true, 'beforeShow event fired');
                 done();
@@ -155,7 +155,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        $('<div title="tooltip title"/>')
+        $('<div title="tooltip title"></div>')
             .appendTo('#qunit-fixture')
             .on('inserted.cfw.tooltip', function() {
                 assert.notEqual($('.tooltip').length, 0, 'tooltip was inserted');
@@ -182,7 +182,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        $('<div title="tooltip title"/>')
+        $('<div title="tooltip title"></div>')
             .on('beforeShow.cfw.tooltip', function(e) {
                 e.preventDefault();
                 assert.ok(true, 'beforeShow event fired');
@@ -198,7 +198,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        $('<div title="tooltip title"/>')
+        $('<div title="tooltip title"></div>')
             .appendTo('#qunit-fixture')
             .on('afterShow.cfw.tooltip', function() {
                 $(this).CFW_Tooltip('hide');
@@ -214,7 +214,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        $('<div title="tooltip title"/>')
+        $('<div title="tooltip title"></div>')
             .appendTo('#qunit-fixture')
             .on('afterShow.cfw.tooltip', function() {
                 $(this).CFW_Tooltip('hide');
@@ -230,7 +230,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        $('<div title="tooltip title"/>')
+        $('<div title="tooltip title"></div>')
             .appendTo('#qunit-fixture')
             .on('afterShow.cfw.tooltip', function() {
                 $(this).CFW_Tooltip('hide');
@@ -248,7 +248,7 @@ $(function() {
 
     QUnit.test('should dispose tooltip', function(assert) {
         assert.expect(7);
-        var $tooltip = $('<div/>')
+        var $tooltip = $('<div></div>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip()
             .on('click.foo', function() {}); // eslint-disable-line no-empty-function
@@ -268,7 +268,7 @@ $(function() {
 
     QUnit.test('should show tooltip when toggle is called', function(assert) {
         assert.expect(1);
-        $('<a href="#" title="tooltip on toggle"/>')
+        $('<a href="#" title="tooltip on toggle"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 trigger: 'manual'
@@ -280,7 +280,7 @@ $(function() {
 
     QUnit.test('should hide previously shown tooltip when toggle is called on tooltip', function(assert) {
         assert.expect(1);
-        $('<a href="#" title="tooltip on toggle">@ResentedHook</a>')
+        $('<a href="#" title="tooltip on toggle"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 trigger: 'manual'
@@ -293,7 +293,7 @@ $(function() {
 
     QUnit.test('should place tooltips inside body when container is body', function(assert) {
         assert.expect(3);
-        var $tooltip = $('<a href="#" title="Another tooltip"/>')
+        var $tooltip = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 container: 'body'
@@ -309,7 +309,7 @@ $(function() {
 
     QUnit.test('should use title attribute for tooltip text', function(assert) {
         assert.expect(2);
-        var $tooltip = $('<a href="#" title="Simple tooltip"/>')
+        var $tooltip = $('<a href="#" title="Simple tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip();
 
@@ -322,7 +322,7 @@ $(function() {
 
     QUnit.test('should use title option', function(assert) {
         assert.expect(2);
-        var $tooltip = $('<a href="#"/>')
+        var $tooltip = $('<a href="#"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 title: 'tooltip title'
@@ -337,7 +337,7 @@ $(function() {
 
     QUnit.test('should prefer title option over title attribute', function(assert) {
         assert.expect(2);
-        var $tooltip = $('<a href="#" title="ignored title"/>')
+        var $tooltip = $('<a href="#" title="ignored title"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 title: 'tooltip title'
@@ -359,8 +359,8 @@ $(function() {
             '</style>';
         var $styles = $(styles).appendTo('head');
 
-        var $container = $('<div id="section"/>').appendTo('#qunit-fixture');
-        var $target = $('<div class="trigger" title="tip"/>')
+        var $container = $('<div id="section"></div>').appendTo('#qunit-fixture');
+        var $target = $('<div class="trigger" title="tip"></div>')
             .appendTo($container)
             .CFW_Tooltip({
                 placement: 'auto top',
@@ -384,8 +384,8 @@ $(function() {
             '</style>';
         var $styles = $(styles).appendTo('head');
 
-        var $container = $('<div id="section"/>').appendTo('#qunit-fixture');
-        var $target = $('<div class=""trigger" title="tip"/>')
+        var $container = $('<div id="section"></div>').appendTo('#qunit-fixture');
+        var $target = $('<div class=""trigger" title="tip"></div>')
             .appendTo($container)
             .CFW_Tooltip({
                 placement: 'auto top',
@@ -404,7 +404,7 @@ $(function() {
     QUnit.test('should not error when trying to show an auto-placed tooltip that has been removed from the dom', function(assert) {
         assert.expect(1);
         var passed = true;
-        var $tooltip = $('<a href="#" title="Another tooltip"/>')
+        var $tooltip = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .one('beforeShow.cfw.tooltip', function() {
                 $(this).remove();
@@ -427,7 +427,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $tooltip = $('<a href="#" title="Another tooltip"/>')
+        var $tooltip = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 delay: 150
@@ -449,7 +449,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $tooltip = $('<a href="#" title="Another tooltip"/>')
+        var $tooltip = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 delay: 150
@@ -472,7 +472,7 @@ $(function() {
         assert.expect(3);
         var done = assert.async();
 
-        var $tooltip = $('<a href="#" title="Another tooltip"/>')
+        var $tooltip = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 delay: {
@@ -503,7 +503,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $tooltip = $('<a href="#" title="Another tooltip"/>')
+        var $tooltip = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 delay: 150
@@ -526,7 +526,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $tooltip = $('<a href="#" title="Another tooltip"/>')
+        var $tooltip = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 delay: {
@@ -552,7 +552,7 @@ $(function() {
         assert.expect(3);
         var done = assert.async();
 
-        var $tooltip = $('<a href="#" title="Another tooltip"/>')
+        var $tooltip = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 delay: {
@@ -631,7 +631,7 @@ $(function() {
         assert.expect(1);
         var oldID;
         var newID;
-        var $trigger = $('<a href="#" title="Another tooltip"/>')
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture');
 
         $trigger.CFW_Tooltip({
@@ -654,7 +654,7 @@ $(function() {
 
     QUnit.test('should not reload the tooltip if the mouse leaves and re-enters before hiding', function(assert) {
         assert.expect(4);
-        var $trigger = $('<a href="#" title="Another tooltip"/>')
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture');
 
         $trigger.CFW_Tooltip({
@@ -686,7 +686,7 @@ $(function() {
     QUnit.test('should do nothing when an attempt is made to hide an uninitialized tooltip', function(assert) {
         assert.expect(1);
 
-        var $tooltip = $('<a href="#" title="Another tooltip"/>')
+        var $tooltip = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .on('afterHide.cfw.tooltip afterShow.cfw.tooltip', function() {
                 assert.ok(false, 'should not fire any tooltip events');
@@ -784,7 +784,7 @@ $(function() {
 
     QUnit.test('should show on first trigger after hide', function(assert) {
         assert.expect(3);
-        var $el = $('<a href="#" rel="tooltip" title="Test tooltip"/>')
+        var $el = $('<a href="#" rel="tooltip" title="Test tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 trigger: 'click hover focus',
@@ -812,7 +812,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        $('<a href="#" />')
+        $('<a href="#"></a>')
             .appendTo('#qunit-fixture')
             .on('afterShow.cfw.tooltip', function() {
                 assert.strictEqual($('.tooltip .tooltip-body').text(), '4', 'title number has been converted to string');
@@ -828,7 +828,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $trigger = $('<a href="#" title="Another tooltip"/>')
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 trigger: 'click'
@@ -850,7 +850,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $trigger = $('<a href="#" title="Another tooltip"/>')
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 trigger: 'click'
@@ -872,7 +872,7 @@ $(function() {
         assert.expect(2);
         var done = assert.async();
 
-        var $trigger = $('<a href="#" title="Another tooltip"/>')
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 trigger: 'click'
@@ -894,7 +894,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        var $trigger = $('<a href="#" title="Another tooltip"/>')
+        var $trigger = $('<a href="#" title="Another tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 popperConfig: {
@@ -912,7 +912,7 @@ $(function() {
 
     QUnit.test('should not show/hide tooltip on click if "trigger=\'manual\'"', function(assert) {
         assert.expect(4);
-        var $el = $('<a href="#" rel="tooltip" title="Test tooltip"/>')
+        var $el = $('<a href="#" rel="tooltip" title="Test tooltip"></a>')
             .appendTo('#qunit-fixture')
             .CFW_Tooltip({
                 trigger: 'manual',

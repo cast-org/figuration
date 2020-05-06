@@ -17,7 +17,7 @@ $(function() {
 
     QUnit.test('should return jquery collection containing the element', function(assert) {
         assert.expect(2);
-        var $el = $('<div/>');
+        var $el = $('<div></div>');
         var $col = $el.CFW_Tab();
         assert.ok($col instanceof $, 'returns jquery collection');
         assert.strictEqual($col[0], $el[0], 'collection contains element');
@@ -29,7 +29,7 @@ $(function() {
             '<li><a href="#home">Home</a></li>' +
             '<li><a href="#profile">Profile</a></li>' +
             '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
 
         $(tabsHTML).find('li:last a').CFW_Tab('show');
         assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile');
@@ -44,7 +44,7 @@ $(function() {
             '<li><a href="#home">Home</a></li>' +
             '<li><a href="#profile">Profile</a></li>' +
             '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
 
         $(pillsHTML).find('li:last a').CFW_Tab('show');
         assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile');
@@ -57,7 +57,7 @@ $(function() {
         assert.expect(1);
         var done = assert.async();
 
-        $('<div class="tab"/>')
+        $('<div class="tab"></div>')
             .on('beforeShow.cfw.tab', function(e) {
                 e.preventDefault();
                 assert.ok(true, 'beforeShow event fired');
@@ -77,7 +77,7 @@ $(function() {
             '<li><a href="#home" data-cfw="tab">Home</a></li>' +
             '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
             '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 
         var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
@@ -105,7 +105,7 @@ $(function() {
             '<li><a href="#home" data-cfw="tab">Home</a></li>' +
             '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
             '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 
         var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
@@ -133,7 +133,7 @@ $(function() {
             '<li><a href="#home" data-cfw="tab">Home</a></li>' +
             '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
             '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 
         var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
@@ -162,7 +162,7 @@ $(function() {
             '<li><a href="#home" data-cfw="tab">Home</a></li>' +
             '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
             '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 
         var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
@@ -188,7 +188,7 @@ $(function() {
             '<li><a href="#home" data-cfw="tab">Home</a></li>' +
             '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
             '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 
         assert.strictEqual($('#qunit-fixture').find('li[role="presentation"]').length, 0, 'both parent <li> do not have role="presentation"');
@@ -202,7 +202,7 @@ $(function() {
             '<li><a href="#home" data-cfw="tab">Home</a></li>' +
             '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
             '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
         var $tabsObj = $('.tabs');
 
@@ -234,7 +234,7 @@ $(function() {
             '<li><a href="#home" data-cfw="tab">Home</a></li>' +
             '<li><a href="#profile" data-cfw="tab" class="disabled">Profile</a></li>' +
             '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 
         var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
@@ -255,7 +255,7 @@ $(function() {
             '<li><a href="#home" data-cfw="tab">Home</a></li>' +
             '<li><a href="#profile" data-cfw="tab" disabled>Profile</a></li>' +
             '</ul>';
-        $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture');
+        $('<ul><li id="home"></li><li id="profile"></li></ul>').appendTo('#qunit-fixture');
         $(tabsHTML).appendTo('#qunit-fixture');
 
         var $tabs = $('#qunit-fixture').find('[data-cfw="tab"]').CFW_Tab();
@@ -278,8 +278,8 @@ $(function() {
             '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
             '</ul>' +
             '<ul class="panes">' +
-            '<li id="home" />' +
-            '<li id="profile" />' +
+            '<li id="home"></li>' +
+            '<li id="profile"></li>' +
             '</ul>';
         $(tabsHTML).appendTo('#qunit-fixture');
 
@@ -305,8 +305,8 @@ $(function() {
             '<li><a href="#profile" data-cfw="tab" data-cfw-tab-animate=false>Profile</a></li>' +
             '</ul>' +
             '<ul class="panes">' +
-            '<li id="home" />' +
-            '<li id="profile" />' +
+            '<li id="home"></li>' +
+            '<li id="profile"></li>' +
             '</ul>';
         $(tabsHTML).appendTo('#qunit-fixture');
 
@@ -332,8 +332,8 @@ $(function() {
             '<li><a href="#profile" data-cfw="tab">Profile</a></li>' +
             '</ul>' +
             '<ul class="panes">' +
-            '<li id="home" />' +
-            '<li id="profile" />' +
+            '<li id="home"></li>' +
+            '<li id="profile"></li>' +
             '</ul>';
         $(tabsHTML).appendTo('#qunit-fixture');
 
