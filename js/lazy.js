@@ -39,6 +39,11 @@
 
             this.$element.attr('data-cfw', 'lazy');
 
+            this.settings.delay = parseInt(this.settings.delay, 10);
+            if (isNaN(this.settings.delay) || this.settings.delay < 0) {
+                this.settings.delay = CFW_Widget_Lazy.DEFAULTS.delay;
+            }
+
             // Add placholder if src is not defined
             if (this.$element.attr('src') === '' || typeof this.$element.attr('src') === 'undefined' || this.$element.attr('src') === false) {
                 if (this.$element.is('img')) {

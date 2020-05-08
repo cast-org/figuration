@@ -54,4 +54,24 @@ $(function() {
             })
             .CFW_Lazy();
     });
+
+    QUnit.test('should use default delay if option cannot be converted to integer', function(assert) {
+        assert.expect(1);
+        var $imgHtml = $('<img src="" data-cfw="lazy" data-cfw-lazy-src="./assets/test.gif" data-cfw-lazy-delay="noint">');
+
+        $imgHtml
+            .appendTo('#qunit-fixture')
+            .CFW_Lazy();
+        assert.equal($imgHtml.data('cfw.lazy').settings.delay, 0, 'delay option reset to default');
+    });
+
+    QUnit.test('should use default delay if option is a negative integer', function(assert) {
+        assert.expect(1);
+        var $imgHtml = $('<img src="" data-cfw="lazy" data-cfw-lazy-src="./assets/test.gif" data-cfw-lazy-delay="-10">');
+
+        $imgHtml
+            .appendTo('#qunit-fixture')
+            .CFW_Lazy();
+        assert.equal($imgHtml.data('cfw.lazy').settings.delay, 0, 'delay option reset to default');
+    });
 });
