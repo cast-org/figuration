@@ -367,14 +367,8 @@
                 if (!this.$focusFirst) {
                     this.$focusFirst = $(document.createElement('span'))
                         .addClass(this.type + '-focusfirst')
-                        .attr('tabindex', 0);
-
-                    var $dialog =  this.isDialog ? this.$target.find('[role="document"]').first() : {};
-                    if ($dialog.length) {
-                        this.$focusFirst.prependTo($dialog);
-                    } else {
-                        this.$focusFirst.prependTo(this.$target);
-                    }
+                        .attr('tabindex', 0)
+                        .prependTo(this.$target);
                 }
                 if (this.$focusFirst) {
                     this.$focusFirst
