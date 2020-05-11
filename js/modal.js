@@ -68,7 +68,6 @@
                 'aria-hidden': 'true',
                 'tabindex': -1
             });
-            this.$dialog.attr('role', 'document');
 
             // Bind click handler
             this.$element.on('click.cfw.modal', this.toggle.bind(this));

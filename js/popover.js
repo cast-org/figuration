@@ -12,7 +12,6 @@
 
     var CFW_Widget_Popover = function(element, options) {
         this.dragAdded = false;
-        this.docAdded = false;
         this.keyTimer = null;
         this.keyDelay = 750;
 
@@ -91,20 +90,6 @@
         }
 
         if (!$title.html()) { $title.hide(); }
-
-        if (this.isDialog && !this.docAdded) {
-            if (!this.$target.find('[role="document"]').length) {
-                // Inject a role="document" container
-                var $children = this.$target.children().not(this.$arrow);
-                var docDiv = document.createElement('div');
-                docDiv.setAttribute('role', 'document');
-                $children.wrapAll(docDiv);
-                // Make sure arrow is at end of popover for roles to work properly with screen readers
-                this._arrow();
-                this.$arrow.appendTo(this.$target);
-            }
-            this.docAdded = true;
-        }
     };
 
     CFW_Widget_Popover.prototype.getContent = function() {
@@ -340,7 +325,6 @@
         this.$target.detach();
         this.$target = null;
         this.dragAdded = false;
-        this.docAdded = false;
     };
 
     CFW_Widget_Popover.prototype._updateZ = function() {
@@ -369,7 +353,6 @@
 
     CFW_Widget_Popover.prototype._unlinkCompleteExt = function() {
         this.dragAdded = null;
-        this.docAdded = null;
         this.keyTimer = null;
         this.keyDelay = null;
     };
