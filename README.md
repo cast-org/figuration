@@ -21,10 +21,10 @@ CAST Figuration: A feature rich, responsive, mobile first, accessible, front-end
 
 **Latest Release**
 [![npm version](https://img.shields.io/npm/v/figuration.svg)](https://www.npmjs.com/package/figuration)
-[![CSS size](http://img.badgesize.io/cast-org/figuration/v4.0.0-beta.4/dist/css/figuration.min.css?label=CSS+size)](https://github.com/cast-org/figuration/tree/v4.0.0-beta.4/dist/css/figuration.min.css)
-[![CSS gzip size](http://img.badgesize.io/cast-org/figuration/v4.0.0-beta.4/dist/css/figuration.min.css?compression=gzip&label=CSS+gzip+size)](https://github.com/cast-org/figuration/tree/v4.0.0-beta.4/dist/css/figuration.min.css)
-[![JS size](http://img.badgesize.io/cast-org/figuration/v4.0.0-beta.4/dist/js/figuration.min.js?label=JS+size)](https://github.com/cast-org/figuration/tree/v4.0.0-beta.4/dist/js/figuration.min.js)
-[![JS gzip size](http://img.badgesize.io/cast-org/figuration/v4.0.0-beta.4/dist/js/figuration.min.js?compression=gzip&label=JS+gzip+size)](https://github.com/cast-org/figuration/tree/v4.0.0-beta.4/dist/js/figuration.min.js)
+[![CSS size](http://img.badgesize.io/cast-org/figuration/v4.0.0-beta.5/dist/css/figuration.min.css?label=CSS+size)](https://github.com/cast-org/figuration/tree/v4.0.0-beta.5/dist/css/figuration.min.css)
+[![CSS gzip size](http://img.badgesize.io/cast-org/figuration/v4.0.0-beta.5/dist/css/figuration.min.css?compression=gzip&label=CSS+gzip+size)](https://github.com/cast-org/figuration/tree/v4.0.0-beta.5/dist/css/figuration.min.css)
+[![JS size](http://img.badgesize.io/cast-org/figuration/v4.0.0-beta.5/dist/js/figuration.min.js?label=JS+size)](https://github.com/cast-org/figuration/tree/v4.0.0-beta.5/dist/js/figuration.min.js)
+[![JS gzip size](http://img.badgesize.io/cast-org/figuration/v4.0.0-beta.5/dist/js/figuration.min.js?compression=gzip&label=JS+gzip+size)](https://github.com/cast-org/figuration/tree/v4.0.0-beta.5/dist/js/figuration.min.js)
 
 **Dependencies**
 [![peerDependencies Status](https://david-dm.org/cast-org/figuration/v4-dev/peer-status.svg)](https://david-dm.org/cast-org/figuration/v4-dev?type=peer)
@@ -41,10 +41,10 @@ Several quick start options are available:
 
 Nothing has been released yet, as this is a development version.
 
-- [Download the latest release.](https://github.com/cast-org/figuration/archive/v4.0.0-beta.4.zip)
+- [Download the latest release.](https://github.com/cast-org/figuration/archive/v4.0.0-beta.5.zip)
 - Clone the repo: `git clone https://github.com/cast-org/figuration.git`
-- Install with [npm](https://www.npmjs.com/): `npm install figuration@4.0.0-beta.4`
-- Install with [yarn](https://yarnpkg.com/): `yarn add figuration@4.0.0-beta.4`
+- Install with [npm](https://www.npmjs.com/): `npm install figuration@4.0.0-beta.5`
+- Install with [yarn](https://yarnpkg.com/): `yarn add figuration@4.0.0-beta.5`
 
 Read the [Get Started page](http://figuration.org/get-started/quick-start/) for information on the framework, templates, and examples.
 
