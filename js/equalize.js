@@ -52,12 +52,12 @@
                         $selfRef._equalize();
                     }
                 });
-            } else {
-                this.$target.CFW_mutationListen();
-                this.$element
-                    .attr('data-cfw-mutate', '')
-                    .on('mutate.cfw.mutate', this._equalize.bind(this));
             }
+
+            this.$target.CFW_mutationListen();
+            this.$element
+                .attr('data-cfw-mutate', '')
+                .on('mutate.cfw.mutate', this._equalize.bind(this));
 
             this.$window.on('resize.cfw.equalize.' + this.instance, $.CFW_throttle(this._equalize.bind(this), this.settings.throttle));
 
