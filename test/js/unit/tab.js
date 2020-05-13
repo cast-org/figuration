@@ -289,8 +289,10 @@ $(function() {
 
         $last
             .on('afterShow.cfw.tab', function() {
-                assert.strictEqual($panes.filter('.in').length, 1);
-                done();
+                setTimeout(function() {
+                    assert.strictEqual($panes.filter('.in').length, 1);
+                    done();
+                }, 1);
             });
 
         $last.CFW_Tab('show');
@@ -316,8 +318,10 @@ $(function() {
 
         $last
             .on('afterShow.cfw.tab', function() {
-                assert.strictEqual($panes.filter('.in').length, 0);
-                done();
+                setTimeout(function() {
+                    assert.strictEqual($panes.filter('.in').length, 0);
+                    done();
+                }, 1);
             });
 
         $last.CFW_Tab('show');
@@ -343,9 +347,11 @@ $(function() {
 
         $last
             .on('afterShow.cfw.tab', function() {
-                assert.strictEqual($panes.first().hasClass('in'), false);
-                assert.strictEqual($panes.last().hasClass('in'), true);
-                done();
+                setTimeout(function() {
+                    assert.strictEqual($panes.first().hasClass('in'), false);
+                    assert.strictEqual($panes.last().hasClass('in'), true);
+                    done();
+                }, 1);
             });
 
         assert.strictEqual($panes.first().hasClass('in'), true);

@@ -118,18 +118,18 @@
                 return;
             }
 
-            var $previous = this.$navElm.find('.active').last();
+            var $previous = this.$navElm.find('.active');
             var eventHideResult;
             var eventShowResult;
 
             if ($previous.length) {
-                eventHideResult = $previous.CFW_trigger('beforeHide.cfw.tab', {
+                eventHideResult = $previous.last().CFW_trigger('beforeHide.cfw.tab', {
                     relatedTarget: this.$element[0]
                 });
             }
 
             eventShowResult = this.$element.CFW_trigger('beforeShow.cfw.tab', {
-                relatedTarget: $previous[0]
+                relatedTarget: $previous.last()[0]
             });
 
             if (!eventHideResult || !eventShowResult) {
@@ -141,9 +141,6 @@
                     .attr({
                         'tabindex': -1,
                         'aria-selected': 'false'
-                    })
-                    .CFW_trigger('afterHide.cfw.tab', {
-                        relatedTarget: this.$element[0]
                     });
             }
 
@@ -152,8 +149,7 @@
                 'aria-selected': 'true'
             });
 
-            this._activateTab(this.$element, this.$navElm, false, $previous);
-            this._activateTab(this.$target, this.$target.parent(), true, $previous);
+            this._activateTab();
         },
 
         animEnable : function() {
@@ -195,38 +191,44 @@
             nextTab.CFW_Tab('show').trigger('focus');
         },
 
-        _activateTab : function($node, container, isPanel, $previous) {
+        _activateTab : function() {
             var $selfRef = this;
-            var $prevActive = container.find('.active');
-            var doTransition = false;
-            if (isPanel && this.settings.animate) {
-                doTransition = true;
+            var $items = this.$navElm.find('[role="tab"]');
+            var $previous = this.$navElm.find('[role="tab"].active');
+
+            $items.removeClass('active');
+            $items.each(function() {
+                var $pane = $(this).data('cfw.tab').$target;
+                $pane.removeClass('active in');
+            });
+
+            if (this.settings.animate) {
+                this.animEnable();
+            } else {
+                this.animDisable();
             }
 
-            if (doTransition) {
-                $.CFW_reflow($node[0]); // Reflow for transition
-                $node.addClass('in');
-            } else {
-                if (isPanel) {
-                    $selfRef.settings.animate = false;
-                }
-                $node.removeClass('fade');
-            }
+            this.$element.addClass('active');
+            this.$target.addClass('active');
 
             var complete = function() {
-                $prevActive.removeClass('active in');
-                $node.addClass('active');
-
-                if (isPanel) {
-                    $selfRef.$element.CFW_trigger('afterShow.cfw.tab', {
-                        relatedTarget: $previous[0]
-                    });
-                    $node.CFW_mutateTrigger();
-                    $prevActive.CFW_mutateTrigger();
-                }
+                $previous.last().CFW_trigger('afterHide.cfw.tab', {
+                    relatedTarget: $selfRef.$element[0]
+                });
+                $selfRef.$element.CFW_trigger('afterShow.cfw.tab', {
+                    relatedTarget: $previous.last()[0]
+                });
+                $selfRef.$element.CFW_mutateTrigger();
+                $selfRef.$target.CFW_mutateTrigger();
             };
 
-            $node.CFW_transition(null, complete);
+            if (this.settings.animate) {
+                this.$target.CFW_transition(null, complete);
+                $.CFW_reflow(this.$target); // Reflow for transition
+                this.$target.addClass('in');
+            } else {
+                complete();
+            }
         },
 
         dispose : function() {
