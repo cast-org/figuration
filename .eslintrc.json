@@ -4,7 +4,7 @@
     "browser": true,
     "jquery": true
   },
-  "extends": ["eslint:recommended"],
+  "extends": ["eslint:recommended", "plugin:node/recommended"],
   "plugins": ["compat", "figuration"],
   "globals": {
     "CFW_API": true,
@@ -111,7 +111,7 @@
     "yoda": "error",
 
     // Strict Mode
-    "strict": "error",
+    "strict": ["error", "function"],
 
     // Variables
     "init-declarations": "off",
@@ -125,16 +125,16 @@
     "no-use-before-define": "error",
 
     // Node.js and CommonJS
-    "callback-return": "off",
-    "global-require": "error",
-    "handle-callback-err": "error",
-    "no-mixed-requires": "error",
-    "no-new-require": "error",
-    "no-path-concat": "error",
-    "no-process-env": "error",
-    "no-process-exit": "error",
-    "no-restricted-modules": "error",
-    "no-sync": "error",
+    "node/callback-return": "off",
+    "node/global-require": "error",
+    "node/handle-callback-err": "error",
+    "node/no-mixed-requires": "error",
+    "node/no-new-require": "error",
+    "node/no-path-concat": "error",
+    "node/no-process-env": "error",
+    "node/no-process-exit": "error",
+    "node/no-restricted-require": "error",
+    "node/no-sync": "error",
 
      // Stylistic Issues
     "array-bracket-spacing": ["error", "never"],

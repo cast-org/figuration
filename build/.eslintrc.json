@@ -11,6 +11,8 @@
   "rules": {
     "func-style": "off",
     "no-magic-numbers": "off",
+    "node/no-process-exit": "off",
+    "node/shebang": "off",
     "no-process-exit": "off",
     "strict": "off"
   }
