@@ -40,8 +40,10 @@
                     //@if (rem($rc-max-width) > rem($width) or $breakpoint == $name) {
                     @if ($extend-breakpoint) {
                         $bprule: breakpoint-designator($name);
-                        .container#{$bprule} {
-                            @extend %responsive-container-#{$breakpoint};
+                        @if ($bprule != "") {
+                            .container#{$bprule} {
+                                @extend %responsive-container-#{$breakpoint};
+                            }
                         }
                     }
 
