@@ -670,6 +670,44 @@ $(function() {
         $trigger.CFW_Modal('show');
     });
 
+
+    QUnit.test('should not adjust the inline body padding when it does not overflow', function(assert) {
+        assert.expect(1);
+        var done = assert.async();
+        var $body = $(document.body);
+        var originalPadding = $body.css('padding-right');
+
+        // Hide scrollbars to prevent the body overflowing
+        $body.css('overflow', 'hidden');
+        // Remove body margin per Figuration default layout
+        $body.css('margin', '0');
+        // Add floating point padding to fake a scaled/zoomed display
+        $('html').css('padding-right', '.45px');
+
+        var $trigger = $('<button type="button" class="btn" data-cfw="modal" data-cfw-modal-target="#modal">Modal</button>').appendTo('#qunit-fixture');
+        var $target = $('<div class="modal" id="modal"></div>').appendTo(document.body);
+
+        $target
+            .on('afterShow.cfw.modal', function() {
+                var currentPadding = $body.css('padding-right');
+                assert.strictEqual(currentPadding, originalPadding, 'body padding should not be adjusted');
+                $(this).CFW_Modal('hide');
+
+                // restore scrollbars
+                $body
+                    .css({
+                        overflow: '',
+                        margin: ''
+                    })
+                    .removeAttr('style');
+                $('html').css('padding-right', '16px');
+                done();
+            });
+
+        $trigger.CFW_Modal();
+        $trigger.CFW_Modal('show');
+    });
+
     QUnit.test('should not parse target as html', function(assert) {
         assert.expect(1);
         var done = assert.async();
