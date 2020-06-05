@@ -3,11 +3,8 @@ layout: doc
 title: Navbar
 description: Create a navigation header, with support for responsive layout, branding, navigation links and more.
 group: components
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Overview
 

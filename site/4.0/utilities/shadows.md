@@ -3,11 +3,8 @@ layout: doc
 title: Shadows
 description: Add or remove box shadows from elements with shadow utilities.
 group: utilities
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Examples
 

@@ -3,11 +3,8 @@ layout: doc
 title: Floating
 description: Toggle float on elements with responsive float utilities.
 group: utilities
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Overview
 

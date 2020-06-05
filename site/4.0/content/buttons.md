@@ -3,11 +3,8 @@ layout: doc
 title: Buttons
 description: Use Figuration's custom button styles for actions in forms, dialogs, and more. Includes support for a handful of contextual variations, sizes, states, and more.
 group: content
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Examples
 

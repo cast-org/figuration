@@ -4,11 +4,8 @@ title: Scrollspy
 subtitle: scrollspy.js
 description: The Scrollspy widget is for automatically updating nav targets based on scroll position.
 group: widgets
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Examples
 

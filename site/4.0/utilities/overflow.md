@@ -3,11 +3,8 @@ layout: doc
 title: Overflow
 description: Easily adjust how content overflows within a container.
 group: utilities
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Notation
 

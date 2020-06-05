@@ -3,11 +3,8 @@ layout: doc
 title: Breadcrumb
 description: Indicate the current page's location within a navigational hierarchy.
 group: components
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Example
 
@@ -88,7 +85,7 @@ Since breadcrumbs provide a navigation, it is a good idea to add a meaningful la
 
 For more information, see the [WAI-ARIA Authoring Practices for the breadcrumb pattern](https://www.w3.org/TR/wai-aria-practices/#breadcrumb).
 
-# SASS Reference
+## SASS Reference
 
 ### Variables
 

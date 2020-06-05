@@ -3,11 +3,8 @@ layout: doc
 title: Browsers & Devices
 description: Figuration supports a wide variety of modern browsers and devices, and some older ones. See which exact ones below, as well as detailed information on known quirks and bugs.
 group: get-started
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Supported Browsers
 

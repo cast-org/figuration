@@ -3,11 +3,8 @@ layout: doc
 title: Reboot
 description: Built upon Bootstrap's Reboot, a collection of element-specific CSS to provide a consistent visual baseline across browsers.
 group: content
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Approach
 

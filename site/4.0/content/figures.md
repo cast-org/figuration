@@ -3,11 +3,8 @@ layout: doc
 title: Figures
 description: Display related images and text with the figure component.
 group: content
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## How it Works
 

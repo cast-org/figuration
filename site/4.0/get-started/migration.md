@@ -3,15 +3,14 @@ layout: doc
 title: Migration from v3 to v4
 description: A brief rundown of major changes to get you started upgrading from v3 to v4.
 group: get-started
+toc: true
 ---
+
+## Notice
 
 Figuration v4 is a considerable rework, and there are a large number of breaking changes across the entire framework.  We will try to explain the changes below.
 
 Some changes will most likely have been missed, so please refer to the documentation pages to see the revised/new implementations.
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Browser Support
 - **Support for Internet Explorer 10 has been dropped!** IE 10 is getting old, and the market share is less than 0.1% in terms of global usage according to many trackers.  Plus our use of MutationObservers in the Widgets either needs a polyfill, or things just don't work right.

@@ -4,11 +4,8 @@ title: Alerts
 subtitle: alert.js
 description: Enable dismiss functionality for alert messages.
 group: widgets
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Examples
 

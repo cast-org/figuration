@@ -3,11 +3,8 @@ layout: doc
 title: Typography
 description: Quick and easy utilities to add some style to your text.
 group: utilities
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Text Alignment
 

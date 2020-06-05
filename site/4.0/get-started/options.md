@@ -3,11 +3,8 @@ layout: doc
 title: Customization Options
 description: Customize Figuration using Sass variables for global style preferences, color themes, and component adjustments.
 group: get-started
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Customizing Options
 

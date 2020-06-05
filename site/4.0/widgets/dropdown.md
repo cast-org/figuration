@@ -4,7 +4,10 @@ title: Dropdown
 subtitle: dropdown.js
 description: Add a context menu or list of links to a control item.  Support for nested lists is included automatically.
 group: widgets
+toc: true
 ---
+
+## Notices
 
 {% capture callout %}
 Widget Dependencies
@@ -12,7 +15,7 @@ Widget Dependencies
 
 Dropdown requires the following:
 
-* The third-party library [Popper.js](https://popper.js.org/) to provide dynamic positioning and viewport detection.  Static positioning does not require the use of Popper.js.
+- The third-party library [Popper.js](https://popper.js.org/) to provide dynamic positioning and viewport detection.  Static positioning does not require the use of Popper.js.
 {% endcapture %}
 {% renderCallout, callout, "info", "cf-callout-dep" %}
 
@@ -23,10 +26,6 @@ Incompatible Widgets
 For accessibility reasons, do not mix use of the [Tab widget]({{ site.path }}/{{ version.docs }}/widgets/tab/) and [Dropdown widget]({{ site.path }}/{{ version.docs }}/widgets/dropdown/) in the same nav item.  This will cause navigation and usability issues.  One or the other, but not both.
 {% endcapture %}
 {% renderCallout, callout, "warning" %}
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Overview
 

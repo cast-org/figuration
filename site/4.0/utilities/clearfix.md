@@ -3,11 +3,8 @@ layout: doc
 title: Clearfix
 description: Clear floated content within a container with the clearfix utility.
 group: utilities
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Overview
 

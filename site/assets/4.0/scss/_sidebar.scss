@@ -20,10 +20,15 @@
             max-height: calc(100vh - 3.375rem);
         }
     }
+
+    @include media-breakpoint-up(lg) {
+        max-width: 20.75%;
+    }
 }
 
 .cf-sidebar-header {
     margin-bottom: .125rem;
+    white-space: nowrap;
 }
 
 .cf-links {
@@ -56,6 +61,7 @@
         text-decoration: none;
 
         .nav-link-inner {
+            display: inline-block;
             padding: .125rem .5rem;
         }
 

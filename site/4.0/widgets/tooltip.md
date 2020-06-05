@@ -4,7 +4,10 @@ title: Tooltip
 subtitle: tooltip.js
 description: Add stylized tooltips to items for contextual or informational support.
 group: widgets
+toc: true
 ---
+
+## Notices
 
 {% capture callout %}
 Widget Dependencies
@@ -12,15 +15,12 @@ Widget Dependencies
 
 Tooltip requires the following:
 
-* The third-party library [Popper.js](https://popper.js.org/) to provide dynamic positioning and viewport detection.
+- The third-party library [Popper.js](https://popper.js.org/) to provide dynamic positioning and viewport detection.
 {% endcapture %}
 {% renderCallout, callout, "info", "cf-callout-dep" %}
 
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
-
 ## Overview
+
 Important notes about using the tooltip widget:
 
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).

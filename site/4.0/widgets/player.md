@@ -4,7 +4,10 @@ title: Player
 subtitle: player.js
 description: Player is a way to enable customized controls while using the browser's built in HTML5 audio/video player.
 group: widgets
+toc: true
 ---
+
+## Notices
 
 Currently, there is no base CSS provided by Figuration in either the `figuration.css` or `figuration.min.css` files.  The examples below use CSS that is specific to our docs pages.
 
@@ -35,10 +38,6 @@ No Media Service Support
 Player does not support media services such as YouTube, Vimeo, SoundCloud, and others.  There are currently no plans to support these types of services.
 {% endcapture %}
 {% renderCallout, callout, "warning" %}
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Examples
 

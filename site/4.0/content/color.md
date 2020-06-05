@@ -3,11 +3,8 @@ layout: doc
 title: Color
 description: Theme colors, quick overview of the palette system for consitent control of colors used within Figuration, and the available color contrast SASS functions.
 group: content
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Themes
 

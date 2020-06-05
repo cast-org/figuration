@@ -2,17 +2,30 @@
 
 <div class="container-fluid">
   <div class="row">
+    <!-- <div class="col-md-3 col-lg-2 cf-sidebar print-none"> -->
     <div class="col-md-3 col-xl-2 cf-sidebar print-none">
       {% include sidebar %}
     </div>
-    <nav class="d-none d-xl-block col-xl-2 cf-toc-side" aria-label="Page"></nav>
-    <main class="col-md-9 col-xl-8 cf-content">
-      <h1 class="cf-title" id="content">{{ title }}{%if subtitle %} <small class="text-muted">{{ subtitle }}</small>{% endif %}</h1>
 
-      {%if description %}<p class="fs-large font-weight-sbold">{{ description }}</p>{% endif %}
+    <!-- <main class="col-md-9 col-lg-10 "> -->
+    <main class="col ">
+        <div class="cf-toc-align">
+            <div class="cf-content-lead">
+                <h1 class="cf-title" id="content">{{ title }}{%if subtitle %} <small class="text-muted">{{ subtitle }}</small>{% endif %}</h1>
 
-      {{ content }}
-    </main>
+                {% if description %}<p class="fs-large font-weight-sbold">{{ description }}</p>{% endif %}
+            </div>
+            {% if toc %}
+            <div class="cf-content-toc">
+                <div class="h6 font-weight-semibold pb-0_25 border-b">Page Contents</div>
+                {{ content | contentWrap | toc }}
+            </div>
+            {% endif %}
+            <div class="cf-content">
+                {{ content }}
+            </div>
+        </div>
+    </div>
   </div>
 
   <div class="toplink">

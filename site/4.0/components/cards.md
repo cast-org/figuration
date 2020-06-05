@@ -3,11 +3,8 @@ layout: doc
 title: Cards
 description: A flexible container for grouping content with multiple layout options available.
 group: components
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Overview
 
@@ -1208,7 +1205,7 @@ When you need equal height, add `.h-100` to the cards.  If you want equal height
 {% endcapture %}
 {% renderExample example %}
 
-# SASS Reference
+## SASS Reference
 
 ### Variables
 

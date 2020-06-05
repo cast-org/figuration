@@ -4,11 +4,8 @@ title: Modal
 subtitle: modal.js
 description: The Modal widget allows you to add dialog style windows to your site or application.
 group: widgets
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Important Notes
 

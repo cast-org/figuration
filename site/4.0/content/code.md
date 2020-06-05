@@ -3,11 +3,8 @@ layout: doc
 title: Code
 description: Styles for inline code snippets and longer, multiline blocks of code.
 group: content
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Inline Code
 

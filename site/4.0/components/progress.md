@@ -3,11 +3,8 @@ layout: doc
 title: Progress
 description: Progress bars featuring support for stacked bars, animated backgrounds, and text labels.
 group: components
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## How It Works
 

@@ -3,11 +3,8 @@ layout: doc
 title: Images
 description: Allow images to become responsively resized, or add a bit of style to them.
 group: content
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Responsive Images
 

@@ -3,11 +3,8 @@ layout: doc
 title: Sizing
 description: Adjust the width or height of an element with sizing utilities.
 group: utilities
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Relative to the Parent
 

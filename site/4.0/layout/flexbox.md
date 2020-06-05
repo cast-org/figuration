@@ -3,11 +3,8 @@ layout: doc
 title: Flexbox
 description: Flexbox is now a full-time part of Figuration. Many components, but not all, are flexbox enabled. Flexbox allows for greater layout flexibility, making sizing and alignment of elements much easier.
 group: layout
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## What's Included
 

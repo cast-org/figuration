@@ -4,11 +4,8 @@ title: Collapse
 subtitle: collapse.js
 description: Get base styles and flexible support for toggling content on your page.
 group: widgets
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## How It Works
 
@@ -72,10 +69,10 @@ A horizontal variant of a collapse can be invoked by placing a class of `width` 
 
 The collapse widget utilizes a few classes to handle the heavy lifting:
 
-* `.collapse` hides the content
-* `.collapse.in` shows the content
-* `.collapsing` is added when the transition starts, and removed when it finishes
-* `.collapsing.width` uses the horizontal transition instead of the default vertical transition
+- `.collapse` hides the content
+- `.collapse.in` shows the content
+- `.collapsing` is added when the transition starts, and removed when it finishes
+- `.collapsing.width` uses the horizontal transition instead of the default vertical transition
 
 These classes can be found in `_animation.scss`.
 

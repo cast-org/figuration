@@ -3,11 +3,8 @@ layout: doc
 title: Visibility
 description: Control an element's visibility without changing the display property.
 group: utilities
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Overview
 

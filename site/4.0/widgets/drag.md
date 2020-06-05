@@ -4,11 +4,8 @@ title: Drag
 subtitle: drag.js
 description: A simple widget that allows for both mouse and touch drag handling for use by other Figuration widgets.
 group: widgets
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Examples
 

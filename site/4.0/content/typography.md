@@ -3,11 +3,8 @@ layout: doc
 title: Typography
 description: Simple and easily customized typography for headings, body text, lists, and more.
 group: content
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Global Settings
 
@@ -98,17 +95,17 @@ The exmple below shows inline HTML5 tags that are used to provide semantic meani
 While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant to highlight words or phrases without conveying additional importance while `<i>` is mostly for voice, technical terms, etc.
 
 Whereas:
-* `<mark>` represents text which is marked or highlighted for reference or notation purposes.
-* `<small>` represents side-comments and small print, like copyright and legal text.
-* `<u>` represents a span of inline text which should be rendered in a way that indicates that it has a non-textual annotation.
-* `<s>` represents an element that is no longer relevant or no longer accurate.
+- `<mark>` represents text which is marked or highlighted for reference or notation purposes.
+- `<small>` represents side-comments and small print, like copyright and legal text.
+- `<u>` represents a span of inline text which should be rendered in a way that indicates that it has a non-textual annotation.
+- `<s>` represents an element that is no longer relevant or no longer accurate.
 
 If you only want to visually style your text, you should use the following classes instead:
 
-* `.mark` will apply the same visual styles as `<mark>`.
-* `.small` will apply the same visual styles as `<small>`.
-* `.text-decoration-underline` will apply the same visual styles as `<u>`.
-* `.text-decoration-line-through` will apply the same visual styles as `<s>`.
+- `.mark` will apply the same visual styles as `<mark>`.
+- `.small` will apply the same visual styles as `<small>`.
+- `.text-decoration-underline` will apply the same visual styles as `<u>`.
+- `.text-decoration-line-through` will apply the same visual styles as `<s>`.
 
 ## Text Utilities
 

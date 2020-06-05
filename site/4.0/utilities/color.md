@@ -3,6 +3,7 @@ layout: doc
 title: Color
 description: Add a little, or a lot of, color to your site or application.
 group: utilities
+toc: true
 ---
 
 {% capture callout %}
@@ -15,10 +16,6 @@ Sometimes contextual classes cannot be applied due to the specificity of another
 
 {%- assign calloutColor = version.docs | valueIfEmpty: site.version.docs | prepend: "./" | append: "/partials/callout-warning-color-assistive-technologies.md" -%}
 {% include calloutColor %}
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Text
 

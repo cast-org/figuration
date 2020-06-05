@@ -3,11 +3,8 @@ layout: doc
 title: Embed
 description: Determine embedded media dimensions based on the width of their containing block by creating an intrinsic ratio that will scale on any device.
 group: utilities
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Overview
 

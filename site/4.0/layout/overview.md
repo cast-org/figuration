@@ -3,11 +3,8 @@ layout: doc
 title: Layout
 description: Figuration includes several components and options for laying out your project, including wrapping containers, a powerful grid system, and responsive utility classes.
 group: layout
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Containers
 

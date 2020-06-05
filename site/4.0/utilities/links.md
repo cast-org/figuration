@@ -3,11 +3,8 @@ layout: doc
 title: Links
 description: Various design treatments for anchor elements.
 group: utilities
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Stretchable Links
 

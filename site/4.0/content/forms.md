@@ -3,11 +3,8 @@ layout: doc
 title: Forms
 description: Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms.
 group: content
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Overview
 

@@ -3,11 +3,8 @@ layout: doc
 title: Borders
 description: Easily manipulate borders on your images or other elements.
 group: utilities
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Border Radius
 
@@ -15,15 +12,15 @@ Add a class to your element to round the corners.  You can target various sides 
 
 Where *sides* is one of:
 
-* blank - for `all` 4 corners of the element
-* `t` - for both corners on the `top` side
-* `b` - for both corners on the `bottom` side
-* `e` - for both corners on the `end` side
-* `s` - for both corners on the `start` side
-* `te` - for the `top end` corner
-* `ts` - for the `top start` corner
-* `be` - for the `bottom end` corner
-* `bs` - for the `bottom start` corner
+- blank - for `all` 4 corners of the element
+- `t` - for both corners on the `top` side
+- `b` - for both corners on the `bottom` side
+- `e` - for both corners on the `end` side
+- `s` - for both corners on the `start` side
+- `te` - for the `top end` corner
+- `ts` - for the `top start` corner
+- `be` - for the `bottom end` corner
+- `bs` - for the `bottom start` corner
 
 The *start/end sides* are designated as follows depending on which version of the Figuration CSS you are using.  The default `figuration.*.css` uses the `ltr` mode, where `figuration-rtl.*.css` uses the `rtl` mode.
 
@@ -134,13 +131,13 @@ Add or remove borders on all or just one side with border utilities
 Quickly add the default component border to an element with the `.border{-side}` utility classes.
 
 Available border addition utilities are:
-* `.border` - for all sides
-* `.border-t` - for the `top` side
-* `.border-b` - for the `bottom` side
-* `.border-e` - for the `end` side
-* `.border-s` - for the `start` side
-* `.border-x` - for both `start` and `end` sides
-* `.border-y` - for both `top` and `bottom` sides
+- `.border` - for all sides
+- `.border-t` - for the `top` side
+- `.border-b` - for the `bottom` side
+- `.border-e` - for the `end` side
+- `.border-s` - for the `start` side
+- `.border-x` - for both `start` and `end` sides
+- `.border-y` - for both `top` and `bottom` sides
 
 The *start/end sides* are designated as follows depending on which version of the Figuration CSS you are using.  The default `figuration.*.css` uses the `ltr` mode, where `figuration-rtl.*.css` uses the `rtl` mode.
 
@@ -173,13 +170,13 @@ The *start/end sides* are designated as follows depending on which version of th
 Remove the border on a given side of an element with the `.border{-side}-0` utility classes.
 
 Available border removal utilities are:
-* `.border-0` - for `all` 4 sides of the element
-* `.border-t-0` - for the `top` side
-* `.border-b-0` - for the `bottom` side
-* `.border-e-0` - for the `end` side
-* `.border-s-0` - for the `start` side
-* `.border-x-0` - for both `start` and `end` sides
-* `.border-y-0` - for both `top` and `bottom` sides
+- `.border-0` - for `all` 4 sides of the element
+- `.border-t-0` - for the `top` side
+- `.border-b-0` - for the `bottom` side
+- `.border-e-0` - for the `end` side
+- `.border-s-0` - for the `start` side
+- `.border-x-0` - for both `start` and `end` sides
+- `.border-y-0` - for both `top` and `bottom` sides
 
 The *start/end sides* are designated as follows depending on which version of the Figuration CSS you are using.  The default `figuration.*.css` uses the `ltr` mode, where `figuration-rtl.*.css` uses the `rtl` mode.
 

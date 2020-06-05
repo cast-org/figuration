@@ -3,11 +3,8 @@ layout: doc
 title: Grid System
 description: A powerful mobile-first grid system for building layouts of all shapes and sizes. Based on a twelve column layout with multiple responsive tiers, Sass mixins, and predefined classes.
 group: layout
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## How It Works
 

@@ -3,11 +3,8 @@ layout: doc
 title: Badges
 description: Small and adaptive badges for adding context to just about any content.
 group: components
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Example
 

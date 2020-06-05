@@ -3,11 +3,8 @@ layout: doc
 title: Download
 description: Figuration is available for download in several ways. Choose from multiple options to get what you need.
 group: get-started
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Quick Download
 

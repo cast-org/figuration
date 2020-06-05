@@ -3,11 +3,8 @@ layout: doc
 title: Position
 description: Place a component outside the normal document flow.
 group: utilities
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Warnings
 

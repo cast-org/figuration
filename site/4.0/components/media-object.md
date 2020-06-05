@@ -3,11 +3,8 @@ layout: doc
 title: Media Object
 description: The media object helps build complex and repetitive components where some media is positioned alongside content that doesn't wrap around said media.
 group: components
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Basic Example
 

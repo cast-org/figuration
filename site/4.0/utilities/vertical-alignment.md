@@ -3,11 +3,8 @@ layout: doc
 title: Vertical Alignment
 description: Adjust the vertical alignment of inlined or table cell content.
 group: utilities
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Overview
 

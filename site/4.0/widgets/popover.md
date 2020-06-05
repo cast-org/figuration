@@ -4,7 +4,10 @@ title: Popover
 subtitle: popover.js
 description: A more robust version of a tooltip, that allows for larger pieces of content or interactive functionality.
 group: widgets
+toc: true
 ---
+
+## Notices
 
 {% capture callout %}
 Widget Dependencies
@@ -12,15 +15,11 @@ Widget Dependencies
 
 Popover requires the following:
 
-* [Tooltip widget]({{ site.path }}/{{ version.docs }}/widgets/tooltip/) for the base functionality.
-* [Drag widget]({{ site.path }}/{{ version.docs }}/widgets/drag/) for drag functionality.
-* The third-party library [Popper.js](https://popper.js.org/) to provide dynamic positioning and viewport detection.
+- [Tooltip widget]({{ site.path }}/{{ version.docs }}/widgets/tooltip/) for the base functionality.
+- [Drag widget]({{ site.path }}/{{ version.docs }}/widgets/drag/) for drag functionality.
+- The third-party library [Popper.js](https://popper.js.org/) to provide dynamic positioning and viewport detection.
 {% endcapture %}
 {% renderCallout, callout, "info", "cf-callout-dep" %}
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Overview
 Important notes about using the popover widget:

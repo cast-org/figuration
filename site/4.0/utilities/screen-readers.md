@@ -3,11 +3,8 @@ layout: doc
 title: Screen Readers
 description: Visually hide content without sacrificing screen reader accessibility.
 group: utilities
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Screen Reader Only Content
 

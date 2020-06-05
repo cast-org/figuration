@@ -3,11 +3,8 @@ layout: doc
 title: Tables
 description: Apply various visual styles to tabular content, with various border, color, and responsive layout options.
 group: content
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Overview
 

@@ -3,11 +3,8 @@ layout: doc
 title: Pagination
 description: Pagination provides multiple visual styles for grouping navigation of a series of related content.
 group: components
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Overview
 

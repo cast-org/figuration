@@ -3,11 +3,8 @@ layout: doc
 title: Input Group
 description: Easily extend form controls by adding text, buttons, and more, on either side of textual inputs, selects, and custom file inputs.
 group: components
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Basic Example
 

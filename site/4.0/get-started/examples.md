@@ -3,13 +3,10 @@ layout: doc
 title: Examples
 description: Get a project underway with examples showing concepts from basic framework components up to custom layouts.
 group: get-started
+toc: true
 ---
 
 [Download the source code]({{ site.path }}/{{ version.docs }}/get-started/download/) to get all the files used in the examples.  They can be found in the `docs/examples/` directory.
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## The Basics
 

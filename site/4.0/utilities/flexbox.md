@@ -3,11 +3,8 @@ layout: doc
 title: Flexbox
 description: Use responsive flexbox utilites to control content layout.
 group: utilities
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Overview
 

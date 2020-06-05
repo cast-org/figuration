@@ -3,6 +3,7 @@ layout: doc
 title: Build Tools
 description: A quick overview of our build system used to test and compile our source code into documentation, CSS, and JS.
 group: get-started
+toc: true
 ---
 
 [sass]: http://sass-lang.com/
@@ -15,13 +16,9 @@ group: get-started
 [eslint]: https://eslint.org/
 [stylelint]: https://stylelint.io/
 
-Figuration uses [Node.js](https://nodejs.org/) and [Grunt](https://gruntjs.com/) for its CSS and JavaScript build system and [Eleventy](http://11ty.dev) for the written documentation. This provides convenient methods for working with the framework, including compiling code, running tests, and more.
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
-
 ## Tooling Setup
+
+Figuration uses [Node.js](https://nodejs.org/) and [Grunt](https://gruntjs.com/) for its CSS and JavaScript build system and [Eleventy](http://11ty.dev) for the written documentation. This provides convenient methods for working with the framework, including compiling code, running tests, and more.
 
 To use our Gruntfile and run our documentation locally, you'll need a copy of Figuration's source files, Node.js, and Grunt. Follow these steps and you should be ready to rock:
 
@@ -37,7 +34,7 @@ Our Gruntfile includes the following commands and tasks:
 
 | Task | Description |
 | --- | --- |
-| `grunt` | Run `grunt` to run tests locally and compile the CSS and JavaScript into `/dist`. **Uses [Sass][sass], [Autoprefixer][autoprefixer], [postcss-flexbugs-fixes][postcss-flexbugs-fixes], [postcss-calc][post-css-calc], and [UglifyJS](http://lisperator.net/uglifyjs/).** |
+| `grunt` | Run `grunt` to run tests locally and compile the CSS and JavaScript into `/dist`. **Uses [Sass][sass], [Autoprefixer][autoprefixer], [postcss-flexbugs-fixes][postcss-flexbugs-fixes], [postcss-calc][postcss-calc], and [UglifyJS](http://lisperator.net/uglifyjs/).** |
 | `grunt dist` | `grunt dist` creates the `/dist` directory with compiled files. **Uses [Sass][sass], [Autoprefixer][autoprefixer], [postcss-flexbugs-fixes][postcss-flexbugs-fixes], [postcss-calc][postcss-calc], and [UglifyJS](http://lisperator.net/uglifyjs/).** |
 | `grunt test` | Runs [stylelint][stylelint], [eslint][eslint] and [QUnit][qunit] tests headlessly in [Karma](https://karma-runner.github.io/). |
 | `grunt docs-test` | Tests CSS, JavaScript, and other assets which are used when running the documentation. |

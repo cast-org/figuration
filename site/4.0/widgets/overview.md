@@ -3,7 +3,10 @@ layout: doc
 title: Widgets
 description: Add more functionality and interactivity to Figuration with our optional jQuery powered widgets. Each one is designed with accessibility already built-in.
 group: widgets
+toc: true
 ---
+
+## Notices
 
 {% capture callout %}
 Using the compiled JavaScript
@@ -28,10 +31,6 @@ Widget Dependencies
 Some widgets and CSS components depend on other widgets. If you include widgets individually, make sure to check for these dependencies in the docs. Also note that all widgets depend on [jQuery](https://jquery.com/), while the Tooltip, Popover, and Dropdown widgets also require [Popper.js](https://popper.js.org/) This means jQuery and Popper.js must be included **before** the widget files. Figuration is currently only tested/supported on the latest version of jQuery.
 {% endcapture %}
 {% renderCallout, callout, "info" %}
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Util
 

@@ -3,11 +3,8 @@ layout: doc
 title: Navs
 description: Create grouped navigation controls in various visual layouts.
 group: components
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Overview
 

@@ -3,11 +3,8 @@ layout: doc
 title: Spacing
 description: Shorthand responsive margin and padding utility classes to modify an element’s appearance.
 group: utilities
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## How It Works
 
@@ -19,20 +16,20 @@ The classes are named using the format: `{property}{sides}{-breakpoint}-{size}`.
 
 Where *property* is one of:
 
-* `m` - for classes that set `margin`
-* `p` - for classes that set `padding`
+- `m` - for classes that set `margin`
+- `p` - for classes that set `padding`
 
 Where *breakpoint* is one of the responsive breakpoints, if above the minimum `xs` size.  Please refer to how our [breakpoint nomenclature]({{ site.path }}/{{ version.docs }}/layout/overview/#breakpoint-nomenclature) is used.
 
 Where *sides* is one of:
 
-* blank - for classes that set a `margin` or `padding` on all 4 sides of the element
-* `t` - for classes that set `margin-top` or `padding-top`
-* `b` - for classes that set `margin-bottom` or `padding-bottom`
-* `s` - for classes that set `margin` or `padding` on the `start` side
-* `e` - for classes that set `margin` or `padding` on the `end` side
-* `x` - for classes that set both `*-left` and `*-right`
-* `y` - for classes that set both `*-top` and `*-bottom`
+- blank - for classes that set a `margin` or `padding` on all 4 sides of the element
+- `t` - for classes that set `margin-top` or `padding-top`
+- `b` - for classes that set `margin-bottom` or `padding-bottom`
+- `s` - for classes that set `margin` or `padding` on the `start` side
+- `e` - for classes that set `margin` or `padding` on the `end` side
+- `x` - for classes that set both `*-left` and `*-right`
+- `y` - for classes that set both `*-top` and `*-bottom`
 
 The *start/end sides* are designated as follows depending on which version of the Figuration CSS you are using.  The default `figuration.*.css` uses the `ltr` mode, where `figuration-rtl.*.css` uses the `rtl` mode.
 
@@ -45,13 +42,13 @@ The *start/end sides* are designated as follows depending on which version of th
 
 Where *size* is one of:
 
-* `0` - for classes that eliminate the `margin` or `padding` by setting it to `0`
-* `0_25` - for classes that set the property to `$spacer * 0.25`
-* `0_5` - for classes that set the property to `$spacer * 0.5`
-* `1` - for classes that set the property to `$spacer`
-* `1_5` - for classes that set the property to `$spacer * 1.5`
-* `2` - for classes that set the property to `$spacer * 2`
-* `auto` - for classes that set the `margin` to auto
+- `0` - for classes that eliminate the `margin` or `padding` by setting it to `0`
+- `0_25` - for classes that set the property to `$spacer * 0.25`
+- `0_5` - for classes that set the property to `$spacer * 0.5`
+- `1` - for classes that set the property to `$spacer`
+- `1_5` - for classes that set the property to `$spacer * 1.5`
+- `2` - for classes that set the property to `$spacer * 2`
+- `auto` - for classes that set the `margin` to auto
 
 (You can add more sizes by adding entries to the `$spacers` Sass map variable.)
 

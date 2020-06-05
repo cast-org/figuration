@@ -3,11 +3,8 @@ layout: doc
 title: Layout Utilities
 description: For faster mobile-friendly and responsive development, Figuration includes utility classes for showing, hiding, aligning, and spacing content.
 group: layout
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Changing `display`
 

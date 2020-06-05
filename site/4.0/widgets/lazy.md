@@ -4,11 +4,8 @@ title: Lazy
 subtitle: lazy.js
 description: Load images or embedded content only when they become visible within the viewport.
 group: widgets
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Overview
 

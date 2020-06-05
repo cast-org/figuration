@@ -5,10 +5,18 @@ const slugify = require('slugify');
 const markdownIt = require('markdown-it');
 const markdownItAttrs = require('markdown-it-attrs');
 const markdownItAnchor = require('markdown-it-anchor');
-const markdownItToc = require('markdown-it-toc-done-right');
+const nestingToc = require('eleventy-plugin-nesting-toc');
 
 module.exports = function(eleventyConfig) {
     eleventyConfig.setDataDeepMerge(true);
+
+    // Plugins
+    eleventyConfig.addPlugin(nestingToc,
+        {
+            tags: ['.cf-content > h2', '.cf-content > h3', '.cf-content > h4'],
+            wrapperClass: 'cf-toc'
+        }
+    );
 
     // Filters
     eleventyConfig.addFilter('sitemapDateString', (dateObj) => {
@@ -28,6 +36,10 @@ module.exports = function(eleventyConfig) {
         }
         return false;
     });
+    // Fake a `.cf-content` wrapper for TOC tag selectors
+    eleventyConfig.addFilter('contentWrap', (content) => {
+        return '<div class="cf-content">' + content + '</div>';
+    });
 
     // Markdown plugins
     const slugifyHeading = s => slugify(s, {lower: true, remove: /[*+~.()'"!?:@\[\]\/]/g});
@@ -40,22 +52,12 @@ module.exports = function(eleventyConfig) {
         slugify: slugifyHeading,
         permalink: true,
         permalinkClass: 'direct-link',
-        permalinkSymbol: '#'
-    };
-    const markdownItTocOptions = {
-        slugify: slugifyHeading,
-        containerClass: 'cf-toc',
-        listClass: 'cf-toc-list',
-        itemClass: 'cf-toc-item',
-        linkClass: 'cf-toc-link',
-        listType: 'ul',
-        level: 2
+        permalinkSymbol: ''
     };
     const md = new markdownIt();
     eleventyConfig.setLibrary('md', markdownIt(markdownItOptions)
         .use(markdownItAttrs)
         .use(markdownItAnchor, markdownItAnchorOptions)
-        .use(markdownItToc, markdownItTocOptions)
     );
 
     // Use singular short codes for syntax highlights and examples

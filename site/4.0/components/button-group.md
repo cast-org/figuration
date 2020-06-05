@@ -3,11 +3,8 @@ layout: doc
 title: Button Group
 description: Group a series of buttons together on a single line with the button group.
 group: components
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Basic Example
 

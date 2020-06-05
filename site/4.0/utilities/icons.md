@@ -3,11 +3,8 @@ layout: doc
 title: Icons
 description: A few simple icons to indicate state or function.
 group: utilities
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Caret Icons
 

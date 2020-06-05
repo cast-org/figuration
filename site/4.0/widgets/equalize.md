@@ -4,11 +4,8 @@ title: Equalize
 subtitle: equalize.js
 description: Equalize is a way to create equal height content blocks.
 group: widgets
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Examples
 

@@ -3,13 +3,12 @@ layout: doc
 title: Quick Start
 description: Get started using Figuration today with our CDN links and starter templates.
 group: get-started
+toc: true
 ---
 
-Looking to quickly add Figuration to your project? Use the CDN links. Using a package manager or need to download the source files? [Head to the downloads page.]({{ site.path }}/{{ version.docs }}/get-started/download/)
+## Get Started
 
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
+Looking to quickly add Figuration to your project? Use the CDN links found below. Prefer using a package manager or need to download the source files? [Head to the downloads page]({{ site.path }}/{{ version.docs }}/get-started/download/) for more options.
 
 ## Using the CDN
 

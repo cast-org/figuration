@@ -3,15 +3,12 @@ layout: doc
 title: Accessibility
 description: A brief overview of Figurations’s features and limitations for the creation of accessible content.
 group: get-started
+toc: true
 ---
 
-Figuration follows common web standards and—with minimal extra effort—can be used to create sites that are accessible to those using <abbr title="Assistive Technology" class="initialism">AT</abbr>.
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
-
 ## Disclaimer
+
+Figuration follows common web standards and—with minimal extra effort—can be used to create sites that are accessible to those using <abbr title="Assistive Technology" class="initialism">AT</abbr>.
 
 As stated on our [about page]({{ site.path }}/about/overview/), our goal is to make Figuration a consistent, robust, but easy to use front-end framework for developing web sites and applications. Figuration includes generalized components and functionality designed to work for keyboard, mouse, and touch users, while providing basic accessibility requirements.
 

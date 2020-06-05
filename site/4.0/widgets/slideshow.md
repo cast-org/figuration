@@ -4,7 +4,10 @@ title: Slideshow
 subtitle: slideshow.js
 description: Extend the Tab widget with slide navigation controls.
 group: widgets
+toc: true
 ---
+
+## Notices
 
 {% capture callout %}
 Widget Dependencies
@@ -12,13 +15,9 @@ Widget Dependencies
 
 Sideshow requires the following:
 
-* [Tab widget]({{ site.path }}/{{ version.docs }}/widgets/tab/) for base functionality.
+- [Tab widget]({{ site.path }}/{{ version.docs }}/widgets/tab/) for base functionality.
 {% endcapture %}
 {% renderCallout, callout, "info", "cf-callout-dep" %}
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Overview
 

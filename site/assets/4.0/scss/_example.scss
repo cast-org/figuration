@@ -306,9 +306,8 @@
 
 // Flex utilities
 .cf-example-flex {
-    .cf-example {
-        overflow: auto;
-    }
+    overflow: auto;
+
     div {
         background-color: rgba(34, 68, 102, .05);
         border: $border-width solid rgba(34, 68, 102, .2);

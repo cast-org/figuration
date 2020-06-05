@@ -3,11 +3,8 @@ layout: doc
 title: Lists
 description: Lists allow for multiple ways to visually organize a series of content or navigation.
 group: components
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Overview
 

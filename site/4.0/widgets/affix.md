@@ -4,11 +4,8 @@ title: Affix
 subtitle: affix.js
 description: Affix is used to handle the positioning of components based on the scroll position of the window with top and bottom boundaries.
 group: widgets
+toc: true
 ---
-
-<div class="h3 cf-toc-header">Page Contents</div>
-
-${toc}
 
 ## Example
 The 'floating' of the 'top of page' link at the bottom of the screen, is a live demo of the widget.
