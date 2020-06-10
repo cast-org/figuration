@@ -4,6 +4,7 @@
 // Rows
 @mixin make-row($gutter: $grid-gutter-width) {
     display: flex;
+    flex: 1 0 100%;
     flex-wrap: wrap;
     margin-right: ($gutter / -2);
     margin-left: ($gutter / -2);
@@ -61,7 +62,6 @@
             // Provide basic `.col-{bp}` classes for equal-width flexbox columns
             .col#{$bprule} {
                 flex: 1 0 0%;
-                min-width: 0;
             }
         }
     }
