@@ -35,7 +35,7 @@ Responsive display utilities:
 Set the direction of flex items in a flex container with direction utilities. In most cases you can omit the horizontal class here as the browser default is `row`. However, you may encounter situations where you needed to explicitly set this value (like responsive layouts).
 
 Responsive direction utilities:
-- `.flex{-breakpoint}-row`
+- `.flex{-breakpoint}-row` - browser default
 - `.flex{-breakpoint}-row-reverse`
 - `.flex{-breakpoint}-column`
 - `.flex{-breakpoint}-column-reverse`
@@ -77,11 +77,12 @@ Use `.flex-column` to set a vertical direction, or `.flex-column-reverse` to sta
 Use the justify utilities on flexbox containers to change the `justify-content` property for the alignment of flex items on the *main axis* (the x-axis to start, y-axis if `flex-direction: column`). Choose from `start` (browser default), `center`, `end`, `around`, or `between`.
 
 Responsive justify utilities:
-- `.flex{-breakpoint}-start`
+- `.flex{-breakpoint}-start` - browser default
 - `.flex{-breakpoint}-center`
 - `.flex{-breakpoint}-end`
 - `.flex{-breakpoint}-around`
 - `.flex{-breakpoint}-between`
+- `.flex{-breakpoint}-evenly`
 
 {% capture example %}
 <div class="d-flex flex-start mb-1">
@@ -104,10 +105,15 @@ Responsive justify utilities:
   <div class="p-0_5">Flex item</div>
   <div class="p-0_5">Justify the space around</div>
 </div>
-<div class="d-flex flex-between">
+<div class="d-flex flex-between mb-1">
   <div class="p-0_5"><code>.flex-between</code></div>
   <div class="p-0_5">Flex item</div>
   <div class="p-0_5">Justify the space between</div>
+</div>
+<div class="d-flex flex-evenly">
+  <div class="p-0_5"><code>.flex-evenly</code></div>
+  <div class="p-0_5">Flex item</div>
+  <div class="p-0_5">Justify the space evenly</div>
 </div>
 {% endcapture %}
 {% renderExample example, "cf-example-flex" %}
@@ -123,7 +129,7 @@ Responsive item alignment utilities:
 - `.flex{-breakpoint}-items-center`
 - `.flex{-breakpoint}-items-end`
 - `.flex{-breakpoint}-items-baseline`
-- `.flex{-breakpoint}-items-stretch`
+- `.flex{-breakpoint}-items-stretch` - browser default
 
 {% capture example %}
 <div class="d-flex flex-items-start mb-1" style="min-height: 8rem;">
@@ -165,7 +171,7 @@ Responsive self alignment utilities:
 - `.flex{-breakpoint}-self-center`
 - `.flex{-breakpoint}-self-end`
 - `.flex{-breakpoint}-self-baseline`
-- `.flex{-breakpoint}-self-stretch`
+- `.flex{-breakpoint}-self-stretch` - browser default
 
 {% capture example %}
 <div class="d-flex mb-1" style="min-height: 8rem;">
@@ -249,7 +255,7 @@ Vertically, move one flex item to the top or bottom of a container by mixing `al
 Change how flex items wrap in a flex container. Choose from no wrapping at all (the browser default) with `.flex-nowrap`, wrapping with `.flex-wrap`, or reverse wrapping with `.flex-wrap-reverse`.
 
 Responsive wrap utilities:
-- `.flex{-breakpoint}-nowrap`
+- `.flex{-breakpoint}-nowrap` - browser default
 - `.flex{-breakpoint}-wrap`
 - `.flex{-breakpoint}-wrap-reverse`
 
@@ -376,7 +382,7 @@ Use `flex-content` utilities on flexbox containers to align flex items *together
 **Heads up!** This property has no effect on single rows of flex items.
 
 Responsive align content utilities:
-- `.flex{-breakpoint}-content-start`
+- `.flex{-breakpoint}-content-start` - browser default
 - `.flex{-breakpoint}-content-center`
 - `.flex{-breakpoint}-content-end`
 - `.flex{-breakpoint}-content-between`
