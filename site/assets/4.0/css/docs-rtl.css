@@ -525,6 +525,7 @@
       display: grid;
       grid-template-areas: "lead toc" "content toc";
       grid-template-columns: 3.25fr 1fr;
+      grid-template-rows: auto 1fr;
     }
   }
   @media (min-width: 75em) {
@@ -996,6 +997,7 @@ pre[class*="language-"] {
 
 .example-row {
   display: flex;
+  flex: 1 0 100%;
   flex-wrap: wrap;
   margin-left: -1rem;
   margin-right: -1rem;
