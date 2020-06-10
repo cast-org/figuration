@@ -56,13 +56,13 @@
                     background-color: transparent;
                     border-color: transparent;
                 }
-            }
 
-            .nav-link.active,
-            .nav-item.open .nav-link {
-                color: $nav-tabs-active-color;
-                background-color: $nav-tabs-active-bg;
-                border-color: $nav-tabs-active-border-color $nav-tabs-active-border-color $nav-tabs-active-bg;
+                &.active,
+                &.open {
+                    color: $nav-tabs-active-color;
+                    background-color: $nav-tabs-active-bg;
+                    border-color: $nav-tabs-active-border-color $nav-tabs-active-border-color $nav-tabs-active-bg;
+                }
             }
 
             @if $enable-dropdown {
@@ -97,12 +97,12 @@
                     background-color: transparent;
                     border-color: transparent;
                 }
-            }
 
-            .nav-link.active,
-            .nav-item.open .nav-link {
-                color: $nav-pills-active-color;
-                background-color: $nav-pills-active-bg;
+                &.active,
+                &.open {
+                    color: $nav-pills-active-color;
+                    background-color: $nav-pills-active-bg;
+                }
             }
         }
     }

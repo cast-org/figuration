@@ -16,7 +16,7 @@
             @include caret-down($caret-border-width);
         }
     }
-    .open .caret {
+    .open > .caret {
         &::after {
             @include caret-up($caret-border-width);
         }
@@ -30,7 +30,7 @@
             @include caret-up($caret-border-width);
         }
     }
-    .open .caretup {
+    .open > .caretup {
         &::after {
             @include caret-down($caret-border-width);
         }
@@ -44,7 +44,7 @@
             @include caret-start($caret-border-width);
         }
     }
-    .open .caretstart {
+    .open > .caretstart {
         &::after {
             @include caret-end($caret-border-width);
         }
@@ -58,7 +58,7 @@
             @include caret-end($caret-border-width);
         }
     }
-    .open .caretend {
+    .open > .caretend {
         &::after {
             @include caret-start($caret-border-width);
         }
