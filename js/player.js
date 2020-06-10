@@ -707,8 +707,8 @@
             if (this.type === 'audio') { return; }
             if (this.isFullScreen()) {
                 // Exit fullscreen
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
+                if (document.exitFullscreen) { // eslint-disable-line compat/compat
+                    document.exitFullscreen(); // eslint-disable-line compat/compat
                 } else if (document.mozCancelFullScreen) {
                     document.mozCancelFullScreen();
                 } else if (document.webkitCancelFullScreen) {
