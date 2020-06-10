@@ -42,6 +42,7 @@
                 .flex#{$bprule}-end { justify-content: flex-end !important; }
                 .flex#{$bprule}-around { justify-content: space-around !important; }
                 .flex#{$bprule}-between { justify-content: space-between !important; }
+                .flex#{$bprule}-evenly { justify-content: space-evenly !important; }
             }
 
             // Alignment of child items

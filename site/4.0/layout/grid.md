@@ -729,6 +729,15 @@ Use [Flexbox alignment utilities]({{ site.path }}/{{ version.docs }}/utilities/f
       One of two columns
     </div>
   </div>
+
+  <div class="row flex-evenly">
+    <div class="col-4">
+      One of two columns
+    </div>
+    <div class="col-4">
+      One of two columns
+    </div>
+  </div>
 </div>
 {% endcapture %}
 {% renderExample example, "cf-example-row" %}
