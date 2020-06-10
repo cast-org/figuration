@@ -281,10 +281,10 @@ And because we use classes for our navs, you can avoid the list-based approach e
 
   <div class="navbar-collapse collapse" id="navbar2">
     <div class="navbar-nav">
-      <a href="#" class="nav-item nav-link active" aria-current="page">Home</a>
-      <a href="#" class="nav-item nav-link">Features</a>
-      <a href="#" class="nav-item nav-link">Pricing</a>
-      <a href="#" class="nav-item nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+      <a href="#" class="nav-link active" aria-current="page">Home</a>
+      <a href="#" class="nav-link">Features</a>
+      <a href="#" class="nav-link">Pricing</a>
+      <a href="#" class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
     </div>
   </div>
 </nav>
@@ -498,11 +498,11 @@ Place a visual separator between segments of the navbar.
 
   <div class="navbar-collapse collapse flex-between" id="navbar9">
     <div class="navbar-nav">
-      <a href="#" class="nav-item nav-link active" aria-current="page">Home</a>
-      <a href="#" class="nav-item nav-link">Features</a>
+      <a href="#" class="nav-link active" aria-current="page">Home</a>
+      <a href="#" class="nav-link">Features</a>
       <span class="navbar-divider"></span>
-      <a href="#" class="nav-item nav-link">Pricing</a>
-      <a href="#" class="nav-item nav-link">About</a>
+      <a href="#" class="nav-link">Pricing</a>
+      <a href="#" class="nav-link">About</a>
     </div>
   </div>
 </nav>
@@ -519,14 +519,14 @@ Place a visual separator between segments of the navbar.
         <a href="#" class="nav-link active" aria-current="page">Home</a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-item nav-link">Features</a>
+        <a href="#" class="nav-link">Features</a>
       </li>
       <li class="navbar-divider"></li>
       <li class="nav-item">
-        <a href="#" class="nav-item nav-link">Pricing</a>
+        <a href="#" class="nav-link">Pricing</a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-item nav-link">About</a>
+        <a href="#" class="nav-link">About</a>
       </li>
     </ul>
   </div>

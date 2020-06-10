@@ -86,12 +86,12 @@ The slideshow also works with [pill navigation]({{ site.path }}/{{ version.docs 
 
 <div class="cf-example">
   <nav class="nav nav-pills" data-cfw="slideshow">
-    <a href="#" class="nav-item nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a>
-    <a href="#pill-slide0" class="nav-item nav-link" data-cfw="tab">Slide 1</a>
-    <a href="#pill-slide1" class="nav-item nav-link" data-cfw="tab">Slide 2</a>
-    <a href="#pill-slide2" class="nav-item nav-link" data-cfw="tab">Slide 3</a>
-    <a href="#pill-slide3" class="nav-item nav-link" data-cfw="tab">Slide 4</a>
-    <a href="#" class="nav-item nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a>
+    <a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a>
+    <a href="#pill-slide0" class="nav-link" data-cfw="tab">Slide 1</a>
+    <a href="#pill-slide1" class="nav-link" data-cfw="tab">Slide 2</a>
+    <a href="#pill-slide2" class="nav-link" data-cfw="tab">Slide 3</a>
+    <a href="#pill-slide3" class="nav-link" data-cfw="tab">Slide 4</a>
+    <a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a>
   </nav>
   <div class="tab-content">
     <div class="tab-pane" id="pill-slide0">
@@ -111,12 +111,12 @@ The slideshow also works with [pill navigation]({{ site.path }}/{{ version.docs 
 
 {% capture highlight %}
 <nav class="nav nav-pills" data-cfw="slideshow">
-   <a href="#" class="nav-item nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a>
-  <a href="#pill-slide0" class="nav-item nav-link" data-cfw="tab">Slide 1</a>
-  <a href="#pill-slide1" class="nav-item nav-link" data-cfw="tab">Slide 2</a>
-  <a href="#pill-slide2" class="nav-item nav-link" data-cfw="tab">Slide 3</a>
-  <a href="#pill-slide3" class="nav-item nav-link" data-cfw="tab">Slide 4</a>
-  <a href="#" class="nav-item nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a>
+   <a href="#" class="nav-link" data-cfw-slideshow-nav="prev" title="Previous Slide" aria-label="Previous Slide"><span aria-hidden="true">&laquo;</span></a>
+  <a href="#pill-slide0" class="nav-link" data-cfw="tab">Slide 1</a>
+  <a href="#pill-slide1" class="nav-link" data-cfw="tab">Slide 2</a>
+  <a href="#pill-slide2" class="nav-link" data-cfw="tab">Slide 3</a>
+  <a href="#pill-slide3" class="nav-link" data-cfw="tab">Slide 4</a>
+  <a href="#" class="nav-link" data-cfw-slideshow-nav="next" title="Next Slide" aria-label="Next Slide"><span aria-hidden="true">&raquo;</span></a>
 </nav>
 <div class="tab-content">
   <div class="tab-pane" id="pill-slide0">

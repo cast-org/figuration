@@ -118,6 +118,7 @@
     // Justified variants
     @if $enable-nav-fill {
         .nav-fill {
+            > .nav-link,
             .nav-item {
                 flex: 1 1 auto;
                 text-align: center;
@@ -127,6 +128,7 @@
 
     @if $enable-nav-justify {
         .nav-justify {
+            > .nav-link,
             .nav-item {
                 flex-basis: 0;
                 flex-grow: 1;
