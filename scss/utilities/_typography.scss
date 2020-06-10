@@ -66,8 +66,8 @@
     // Word break
     @if $enable-utility-text-break {
         .text-break {
-            word-wrap: break-word !important;
             word-break: break-word !important;
+            word-wrap: break-word !important;
         }
     }
 
