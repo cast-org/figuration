@@ -152,7 +152,7 @@
 
         // Add scrollspy here - using <body> data attributes comes too early
         $('body').CFW_Scrollspy({
-            offset: 65,
+            offset: 75,
             target: '.cf-toc ol'
         });
     };
