@@ -60,7 +60,6 @@
                 border-top-width: $table-body-border-width;
             }
 
-            // stylelint-disable-next-line selector-max-universal
             > tfoot > :first-child > * {
                 border-top-color: $table-foot-border-color;
                 border-top-width: $table-foot-border-width;
@@ -70,7 +69,6 @@
 
         .table-celled,
         .table-divided {
-            // stylelint-disable-next-line selector-max-universal
             > thead > :first-child > * {
                 border-top-width: 0;
             }
@@ -129,17 +127,14 @@
         }
     }
 
-    // stylelint-disable selector-max-type
     // Striped table
     @if $enable-table-striped {
         .table-striped {
-            // stylelint-disable-next-line selector-max-universal
             > tbody > tr:nth-of-type(#{$table-striped-selector}) > * {
                 box-shadow: $table-striped-box-shadow;
             }
         }
         .table-striped-alt {
-            // stylelint-disable-next-line selector-max-universal
             > tbody > tr:nth-of-type(#{$table-striped-selector}) > * {
                 box-shadow: $table-striped-alt-box-shadow;
             }
@@ -150,19 +145,16 @@
     // Needs to be after striped table in order to overrule background.
     @if $enable-table-hover {
         .table-hover {
-            // stylelint-disable-next-line selector-max-universal
             > tbody > tr:hover > * {
                 box-shadow: $table-hover-box-shadow;
             }
         }
         .table-hover-alt {
-            // stylelint-disable-next-line selector-max-universal
             > tbody > tr:hover > * {
                 box-shadow: $table-hover-alt-box-shadow;
             }
         }
     }
-    // stylelint-enable selector-max-type
 
     // Condensed table
     @if $enable-table-condensed {
