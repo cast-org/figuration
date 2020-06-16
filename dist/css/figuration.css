@@ -2438,40 +2438,12 @@ fieldset:disabled a.btn, .btn-check-input[disabled] ~ .btn, .btn-check-input:dis
   margin-bottom: 0;
 }
 
-.container {
-  width: 100%;
-  max-width: 100%;
-  padding-right: 1rem;
-  padding-left: 1rem;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-@media (min-width: 36em) {
-  .container {
-    max-width: 34rem;
-  }
-}
-
-@media (min-width: 48em) {
-  .container {
-    max-width: 45rem;
-  }
-}
-
-@media (min-width: 62em) {
-  .container {
-    max-width: 60rem;
-  }
-}
-
-@media (min-width: 75em) {
-  .container {
-    max-width: 72rem;
-  }
-}
-
-.container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+.container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl {
   width: 100%;
   max-width: 100%;
   padding-right: 1rem;
