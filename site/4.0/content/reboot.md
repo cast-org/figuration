@@ -320,6 +320,15 @@ Be aware that not all browsers support the [date and time](https://caniuse.com/#
 {% endcapture %}
 {% renderCallout, callout, "warning" %}
 
+## Pointers On Buttons
+
+Reboot includes an enhancement for `role="button"` to change the default cursor to `pointer`. Add this attribute to elements to help indicate elements are interactive. This role isn't necessary for `<button>` elements, which gets it's own `cursor` change.
+
+{% capture example %}
+<span role="button">Non-button element button</span>
+{% endcapture %}
+{% renderExample example %}
+
 ## Misc Elements
 
 ### Address
