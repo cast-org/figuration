@@ -49,10 +49,6 @@
             pointer-events: none;
             background-color: $pagination-disabled-bg;
         }
-
-        @at-root a#{&} {
-            cursor: pointer;
-        }
     }
 
     // Sizing

@@ -14,8 +14,6 @@
         }
 
         &:not(:disabled):not(.disabled) {
-            cursor: pointer;
-
             @include hover-focus() {
                 opacity: $close-hover-opacity;
             }

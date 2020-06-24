@@ -326,11 +326,6 @@
     // Use anchor or button elements instead of `<li>`s or `<div>`s to create
     // interactive list items.
     @if $enable-list-item-action {
-        // stylelint-disable selector-no-qualifying-type
-        button.list-item-action {
-            cursor: pointer;
-        }
-        // stylelint-enable selector-no-qualifying-type
         .list-item-action {
             width: 100%; // For `<button>`s (anchors become 100% by default though)
             padding: 0; // Reset `<button>` padding
