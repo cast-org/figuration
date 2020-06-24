@@ -133,10 +133,6 @@
                 outline: 0;
                 box-shadow: $navbar-toggle-focus-box-shadow;
             }
-
-            &:not(:disabled):not(.disabled) {
-                cursor: pointer;
-            }
         }
     }
 
