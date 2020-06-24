@@ -293,6 +293,10 @@ select {
   text-transform: none;
 }
 
+[role="button"] {
+  cursor: pointer;
+}
+
 select {
   word-wrap: normal;
 }
@@ -302,6 +306,13 @@ button,
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
+}
+
+button:not(:disabled),
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled),
+[type="submit"]:not(:disabled) {
+  cursor: pointer;
 }
 
 ::-moz-focus-inner {
@@ -3818,10 +3829,6 @@ fieldset:disabled a.btn, .btn-check-input[disabled] ~ .btn, .btn-check-input:dis
   text-decoration: none;
 }
 
-.close:not(:disabled):not(.disabled) {
-  cursor: pointer;
-}
-
 .close:not(:disabled):not(.disabled):hover, .close:not(:disabled):not(.disabled):focus {
   opacity: 0.85;
 }
@@ -4119,10 +4126,6 @@ a.drag.disabled {
 .list-horizontal.list-spaced-x > .list-item {
   padding-right: 1rem;
   padding-left: 1rem;
-}
-
-button.list-item-action {
-  cursor: pointer;
 }
 
 .list-item-action {
@@ -4587,10 +4590,6 @@ button.list-item-action {
   color: #9eaab4;
   pointer-events: none;
   background-color: transparent;
-}
-
-a.page-link {
-  cursor: pointer;
 }
 
 .pagination-xsmall .page-text,
@@ -5070,10 +5069,6 @@ a.page-link {
 .navbar-toggle:focus {
   outline: 0;
   box-shadow: 0 0 0 0.1875rem;
-}
-
-.navbar-toggle:not(:disabled):not(.disabled) {
-  cursor: pointer;
 }
 
 .navbar-expand {
