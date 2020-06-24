@@ -64,7 +64,7 @@ The pre-defined color variables are available when building your own components.
 
 ## Palette
 
-Figuration uses a simplified color palettes extended from our base colors, similar to the concept by [Google's Material color palettes](https://www.google.com/design/spec/style/color.html#color-color-palette).
+Figuration uses a simplified color palettes, extended from our base colors, similar to the concept by [Google's Material color palettes](https://www.google.com/design/spec/style/color.html#color-color-palette).
 
 By 'simplified' we mean the base colors are simply mixed against white or black in stepped levels to create a color scale.
 
@@ -264,7 +264,7 @@ Sample usage within SASS:
 
 ## Contrast
 
-Figuration includes a handful of color contrast functions based the [WCAG 2.1 minimum contrast specification](https://www.w3.org/TR/WCAG21/#contrast-minimum), using the related [contrast ratio](https://www.w3.org/TR/WCAG21/#dfn-contrast-ratio) and [relative luminance](https://www.w3.org/TR/WCAG21#dfn-relative-luminance) formulas to determine contrast ratios.
+Figuration includes a handful of color contrast functions based on the [WCAG 2.1 minimum contrast specification](https://www.w3.org/TR/WCAG21/#contrast-minimum) formulas for determining [contrast ratio](https://www.w3.org/TR/WCAG21/#dfn-contrast-ratio) and [relative luminance](https://www.w3.org/TR/WCAG21#dfn-relative-luminance).
 
 ### color-contrast()
 

@@ -740,6 +740,8 @@ $table-bg:                      null !default;
 $table-bg-active:               $component-hover-bg !default;
 $table-bg-active-hover:         $uibase-200 !default;
 
+$table-th-font-weight:          null !default;
+
 $table-border-width:            $border-width !default;
 $table-border-color:            $component-border-color !default;
 $table-head-border-width:       2 * $table-border-width !default;

@@ -322,10 +322,10 @@ Be aware that not all browsers support the [date and time](https://caniuse.com/#
 
 ## Pointers On Buttons
 
-Reboot includes an enhancement for `role="button"` to change the default cursor to `pointer`. Add this attribute to elements to help indicate elements are interactive. This role isn't necessary for `<button>` elements, which gets it's own `cursor` change.
+Reboot includes an enhancement for `role="button"` to change the default cursor to `pointer`. Add this attribute to elements to help indicate elements are interactive. This role isn't necessary for `<button>` elements, which get their own `cursor` change.
 
 {% capture example %}
-<span role="button">Non-button element button</span>
+<span role="button" tabindex="0">Non-button element button</span>
 {% endcapture %}
 {% renderExample example %}
 
@@ -665,11 +665,11 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
-        <td><code>$table-caption-color</code></td>
+        <td><code>$table-th-font-weight</code></td>
         <td>string</td>
-        <td><code>$uibase-500</code></td>
+        <td><code>null</code></td>
         <td>
-          Text color for table captions.
+        Font weight for <code>th</code> cells.
         </td>
       </tr>
       <tr>
