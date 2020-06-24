@@ -19,6 +19,17 @@ Wrap a series of buttons with `.btn` in `.btn-group`.
 {% endcapture %}
 {% renderExample example %}
 
+A button group can also be used with links, as an alternative to the [`.nav` navigation components]({{ site.path }}/{{ version.docs }}/components/navs/).
+
+{% capture example %}
+<div class="btn-group">
+  <a href="#" class="btn btn-outline-info active" aria-current="page">Active link</a>
+  <a href="#" class="btn btn-outline-info">Link</a>
+  <a href="#" class="btn btn-outline-info">Link</a>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
 ## Button Toolbar
 
 Combine sets of button groups into button toolbars for more complex components. Use utility classes as needed to space out groups, buttons, and more.

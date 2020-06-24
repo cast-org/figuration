@@ -959,7 +959,7 @@ $container-max-widths: (
 
 Save your changes and recompile to have a brand new set of predefined grid classes for column widths and offsets. Responsive visibility utilities will also be updated to use the custom breakpoints.
 
-If the desire is to have only a single breakpoint for a non-repsonsive site or application, the following setting can be used:
+If the desire is to have only a single breakpoint for a non-responsive site or application, the following setting can be used:
 
 {% capture highlight %}
 $grid-breakpoints: (xs: 0);

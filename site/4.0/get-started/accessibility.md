@@ -12,7 +12,11 @@ Figuration follows common web standards and—with minimal extra effort—can be
 
 As stated on our [about page]({{ site.path }}/about/overview/), our goal is to make Figuration a consistent, robust, but easy to use front-end framework for developing web sites and applications. Figuration includes generalized components and functionality designed to work for keyboard, mouse, and touch users, while providing basic accessibility requirements.
 
-It is possible to create projects that meet the [<abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.0](https://www.w3.org/TR/WCAG20/) (A/AA/AAA), [Section 508](https://www.section508.gov/), or other accessibility requirements. However, creators may need to include additional styling, JavaScript functionality, and markup, along with additional <abbr title="Accessible Rich Internet Applications">ARIA</abbr> roles and attributes to meet certain requirements.
+It is possible to create projects that meet the [<abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.0](https://www.w3.org/TR/WCAG21/) (A/AA/AAA), [Section 508](https://www.section508.gov/), or other accessibility requirements. However, creators may need to include additional styling, JavaScript functionality, and markup, along with additional <abbr title="Accessible Rich Internet Applications">ARIA</abbr> roles and attributes to meet certain requirements.
+
+## Color Contrast
+
+Some combinations of colors that currently make up Figuration's default palette—used throughout the framework for things such as button variations, alert variations, form validation indicators—may lead to *insufficient* color contrast (below the recommended [WCAG 2.1 text color contrast ratio of 4.5:1](https://www.w3.org/TR/WCAG21/#contrast-minimum) and the [WCAG 2.1 non-text color contrast ratio of 3:1](https://www.w3.org/TR/WCAG21/#non-text-contrast)). Authors are encouraged to test their specific uses of color and, where necessary, manually modify/extend these default colors to ensure adequate color contrast ratios.
 
 ## Skip Navigation
 
@@ -94,7 +98,7 @@ Figuration includes support for the [`prefers-reduced-motion` media feature](htt
 
 ## Additional Resources
 
-- [Web Content Accessibility Guidelines (WCAG) 2.0](https://www.w3.org/TR/WCAG20/)
+- [Web Content Accessibility Guidelines (WCAG) 2.1](https://www.w3.org/TR/WCAG21/)
 - [The A11Y Project](https://a11yproject.com/)
 - [MDN accessibility documentation](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
 - [Colour Contrast Check](https://snook.ca/technical/colour_contrast/colour.html)
