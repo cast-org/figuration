@@ -112,39 +112,29 @@ $light:     palette($uibase, 50) !default;
 $dark:      palette($uibase, 800) !default;
 
 // Base Color Map - used for generating contextual variants
-$base-colors: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$base-colors: map-merge(
-    (
-        "primary":   $primary,
-        "secondary": $secondary,
-        "info":      $info,
-        "success":   $success,
-        "warning":   $warning,
-        "danger":    $danger,
-        "light":     $light,
-        "dark":      $dark
-    ),
-    $base-colors
-);
+$base-colors: (
+    "primary":   $primary,
+    "secondary": $secondary,
+    "info":      $info,
+    "success":   $success,
+    "warning":   $warning,
+    "danger":    $danger,
+    "light":     $light,
+    "dark":      $dark
+) !default;
 
 // Palette Colors
 // =====
-$palette-colors: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$palette-colors: map-merge(
-    (
-        "uibase":    $uibase,
-        "primary":   $primary,
-        "secondary": $secondary,
-        "info":      $info,
-        "success":   $success,
-        "warning":   $warning,
-        "danger":    $danger,
-        "gray":      $gray
-    ),
-    $palette-colors
-);
+$palette-colors: (
+    "uibase":    $uibase,
+    "primary":   $primary,
+    "secondary": $secondary,
+    "info":      $info,
+    "success":   $success,
+    "warning":   $warning,
+    "danger":    $danger,
+    "gray":      $gray
+) !default;
 
 // Color Contrast
 // =====
@@ -189,19 +179,14 @@ $table-themes:          () !default;
 // =====
 // Control the default spacing of most elements by modifying these variables.
 $spacer:   1rem !default;
-$spacers: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$spacers: map-merge(
-    (
-        "0":    0,
-        "0_25": ($spacer * .25),
-        "0_5":  ($spacer * .5),
-        "1":    $spacer,
-        "1_5":  ($spacer * 1.5),
-        "2":    ($spacer * 2)
-    ),
-    $spacers
-);
+$spacers: (
+    "0":    0,
+    "0_25": ($spacer * .25),
+    "0_5":  ($spacer * .5),
+    "1":    $spacer,
+    "1_5":  ($spacer * 1.5),
+    "2":    ($spacer * 2)
+) !default;
 
 $spacers-padding:                   $spacers !default;
 $spacers-margin:                    $spacers !default;
@@ -212,18 +197,13 @@ $spacers-margin-negative-prepend:   n !default;
 // Sizing
 // =====
 // Set values for width and height utility classes for sizing.
-$sizes: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$sizes: map-merge(
-    (
-        "25":   25%,
-        "50":   50%,
-        "75":   75%,
-        "100":  100%,
-        "auto": auto
-    ),
-    $sizes
-);
+$sizes: (
+    "25":   25%,
+    "50":   50%,
+    "75":   75%,
+    "100":  100%,
+    "auto": auto
+) !default;
 
 $sizes-width:                       $sizes !default;
 $sizes-height:                      $sizes !default;
@@ -231,33 +211,23 @@ $sizes-height:                      $sizes !default;
 // Border radius
 // =====
 // Set values for border radius utility classes.
-$radii: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$radii: map-merge(
-    (
-        "small":   .1875rem,
-        "large":   .3125rem,
-    ),
-    $radii
-);
+$radii: (
+    "small":   .1875rem,
+    "large":   .3125rem
+) !default;
 
 // Grid breakpoints
 // =====
 // Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
 // If only one breakpoint is desired, use: $grid-breakpoints: (xs: 0);
-$grid-breakpoints: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$grid-breakpoints: map-merge(
-    (
-        xs: 0,
-        sm: bp-to-em(576px),
-        md: bp-to-em(768px),
-        lg: bp-to-em(992px),
-        xl: bp-to-em(1200px)
-    ),
-    $grid-breakpoints
-);
+$grid-breakpoints: (
+    xs: 0,
+    sm: bp-to-em(576px),
+    md: bp-to-em(768px),
+    lg: bp-to-em(992px),
+    xl: bp-to-em(1200px)
+) !default;
 
 // stylelint-disable-next-line scss/dollar-variable-default
 $grid-breakpoints: map-sort-by-values($grid-breakpoints);
@@ -296,17 +266,12 @@ $utility-valign-breakpoints:        map-keys($grid-breakpoints) !default;
 // Grid containers
 // =====
 // Define the maximum width of `.container` for different screen sizes.
-$container-max-widths: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$container-max-widths: map-merge(
-    (
-        sm: rem(544px),
-        md: rem(720px),
-        lg: rem(960px),
-        xl: rem(1152px)
-    ),
-    $container-max-widths
-);
+$container-max-widths: (
+    sm: rem(544px),
+    md: rem(720px),
+    lg: rem(960px),
+    xl: rem(1152px)
+) !default;
 
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 
@@ -382,34 +347,24 @@ $font-size-base:    1rem !default;
 $line-height-base:  1.5 !default;
 
 // Font size utility classes
-$font-sizes: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$font-sizes: map-merge(
-    (
-        "xsmall":   ($font-size-base * .75),
-        "small":    ($font-size-base * .875),
-        "base":     $font-size-base,
-        "large":    ($font-size-base * 1.125),
-        "xlarge":   ($font-size-base * 1.25),
-        "2xlarge":  ($font-size-base * 1.5),
-        "3xlarge":  ($font-size-base * 1.75),
-        "4xlarge":  ($font-size-base * 2),
-        "5xlarge":  ($font-size-base * 2.5)
-    ),
-    $font-sizes
-);
+$font-sizes: (
+    "xsmall":   ($font-size-base * .75),
+    "small":    ($font-size-base * .875),
+    "base":     $font-size-base,
+    "large":    ($font-size-base * 1.125),
+    "xlarge":   ($font-size-base * 1.25),
+    "2xlarge":  ($font-size-base * 1.5),
+    "3xlarge":  ($font-size-base * 1.75),
+    "4xlarge":  ($font-size-base * 2),
+    "5xlarge":  ($font-size-base * 2.5)
+) !default;
 
 // Line height utility classes
-$line-heights: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$line-heights: map-merge(
-    (
-        "small":    1.25,
-        "base":     $line-height-base,
-        "large":    1.75
-    ),
-    $line-heights
-);
+$line-heights: (
+    "small":    1.25,
+    "base":     $line-height-base,
+    "large":    1.75
+) !default;
 
 $font-weight-lighter:   lighter !default;
 $font-weight-light:     300 !default;
@@ -419,20 +374,15 @@ $font-weight-bolder:    bolder !default;
 $font-weight-base:      $font-weight-normal !default;
 
 // Font weight utility classes
-$font-weights: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$font-weights: map-merge(
-    (
-        "light":    $font-weight-light,
-        "normal":   $font-weight-normal,
-        "semibold": 600,
-        "bold":     $font-weight-bold,
-        "black":    900,
-        "lighter":  $font-weight-lighter,
-        "bolder":   $font-weight-bolder
-    ),
-    $font-weights
-);
+$font-weights: (
+    "light":    $font-weight-light,
+    "normal":   $font-weight-normal,
+    "semibold": 600,
+    "bold":     $font-weight-bold,
+    "black":    900,
+    "lighter":  $font-weight-lighter,
+    "bolder":   $font-weight-bolder
+) !default;
 
 $h1-font-size:  ($font-size-base * 2.5) !default;
 $h2-font-size:  ($font-size-base * 2) !default;
@@ -528,41 +478,36 @@ $component-section-border-color:    rgba($uibase-900, .3) !default;
 // =====
 // Used for button, button groups, pagination, form-control, and input-group
 // 'md' is considered to be the default size, so no classes for this size designator are generated, as in *no* `.btn-md`.
-$component-sizes: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$component-sizes: map-merge(
-    (
-        "xsmall": (
-            "padding-y":     null,
-            "padding-x":     null,
-            "font-size":     ($font-size-base * .75),
-            "line-height":   null,
-            "border-radius": .1875rem
-        ),
-        "small": (
-            "padding-y":     null,
-            "padding-x":     null,
-            "font-size":     ($font-size-base * .875),
-            "line-height":   null,
-            "border-radius": .1875rem
-        ),
-        "large": (
-            "padding-y":     null,
-            "padding-x":     null,
-            "font-size":     ($font-size-base * 1.125),
-            "line-height":   null,
-            "border-radius": .3125rem
-        ),
-        "xlarge": (
-            "padding-y":     null,
-            "padding-x":     null,
-            "font-size":     ($font-size-base * 1.25),
-            "line-height":   null,
-            "border-radius": .3125rem
-        )
+$component-sizes: (
+    "xsmall": (
+        "padding-y":     null,
+        "padding-x":     null,
+        "font-size":     ($font-size-base * .75),
+        "line-height":   null,
+        "border-radius": .1875rem
     ),
-    $component-sizes
-);
+    "small": (
+        "padding-y":     null,
+        "padding-x":     null,
+        "font-size":     ($font-size-base * .875),
+        "line-height":   null,
+        "border-radius": .1875rem
+    ),
+    "large": (
+        "padding-y":     null,
+        "padding-x":     null,
+        "font-size":     ($font-size-base * 1.125),
+        "line-height":   null,
+        "border-radius": .3125rem
+    ),
+    "xlarge": (
+        "padding-y":     null,
+        "padding-x":     null,
+        "font-size":     ($font-size-base * 1.25),
+        "line-height":   null,
+        "border-radius": .3125rem
+    )
+) !default;
 
 // Per component/utility sizing
 $btn-sizes:             $component-sizes !default;
@@ -573,24 +518,19 @@ $pagination-sizes:      $component-sizes !default;
 // Shadows
 // =====
 // Control the `box-shadow` depth.
-$shadows: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$shadows: map-merge(
-    (
-        "0":  none,
-        "d1": 0 .125rem .1875rem rgba($black, .15),
-        "d2": 0 .125rem .25rem rgba($black, .15),
-        "d3": 0 .125rem .5rem rgba($black, .15),
-        "d4": 0 .125rem .75rem rgba($black, .15),
-        "d5": 0 .125rem 1rem rgba($black, .15),
-        "i1": inset 0 .125rem .1875rem rgba($black, .15),
-        "i2": inset 0 .125rem .25rem rgba($black, .15),
-        "i3": inset 0 .125rem .5rem rgba($black, .15),
-        "i4": inset 0 .125rem .75rem rgba($black, .15),
-        "i5": inset 0 .125rem 1rem rgba($black, .15)
-    ),
-    $shadows
-);
+$shadows: (
+    "0":  none,
+    "d1": 0 .125rem .1875rem rgba($black, .15),
+    "d2": 0 .125rem .25rem rgba($black, .15),
+    "d3": 0 .125rem .5rem rgba($black, .15),
+    "d4": 0 .125rem .75rem rgba($black, .15),
+    "d5": 0 .125rem 1rem rgba($black, .15),
+    "i1": inset 0 .125rem .1875rem rgba($black, .15),
+    "i2": inset 0 .125rem .25rem rgba($black, .15),
+    "i3": inset 0 .125rem .5rem rgba($black, .15),
+    "i4": inset 0 .125rem .75rem rgba($black, .15),
+    "i5": inset 0 .125rem 1rem rgba($black, .15)
+) !default;
 
 
 // Component pieces
@@ -646,29 +586,24 @@ $thumbnail-box-shadow:      0 .0625rem .125rem rgba($black, .075) !default;
 // Fluid embed
 // =====
 $embed-fluid-default-ratio: percentage(9 / 16) !default;
-$embed-fluid-aspect-ratios: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$embed-fluid-aspect-ratios: map-merge(
-    (
-        "21x9": (
-            x: 21,
-            y: 9
-        ),
-        "16x9": (
-            x: 16,
-            y: 9
-        ),
-        "4x3": (
-            x: 4,
-            y: 3
-        ),
-        "1x1": (
-            x: 1,
-            y: 1
-        )
+$embed-fluid-aspect-ratios: (
+    "21x9": (
+        x: 21,
+        y: 9
     ),
-    $embed-fluid-aspect-ratios
-);
+    "16x9": (
+        x: 16,
+        y: 9
+    ),
+    "4x3": (
+        x: 4,
+        y: 3
+    ),
+    "1x1": (
+        x: 1,
+        y: 1
+    )
+) !default;
 
 // Code
 // =====
@@ -980,21 +915,16 @@ $form-feedback-icon-invalid-image:  encode-svg(url("data:image/svg+xml,<svg xmln
 
 $form-feedback-select-icon-position: right calc(#{$form-feedback-icon-offset} + #{$form-select-indicator-width} + #{$form-select-indicator-offset}) center !default;
 
-$form-validation-states: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$form-validation-states: map-merge(
-    (
-        "valid": (
-            "color": $form-feedback-valid-color,
-            "icon": $form-feedback-icon-valid-image
-        ),
-        "invalid": (
-            "color": $form-feedback-invalid-color,
-            "icon": $form-feedback-icon-invalid-image
-        )
+$form-validation-states: (
+    "valid": (
+        "color": $form-feedback-valid-color,
+        "icon": $form-feedback-icon-valid-image
     ),
-    $form-validation-states
-);
+    "invalid": (
+        "color": $form-feedback-invalid-color,
+        "icon": $form-feedback-icon-invalid-image
+    )
+) !default;
 
 
 // Input group

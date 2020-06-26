@@ -521,7 +521,7 @@ $mix-levels: (
     "active-border-color":  750
 );
 
-$mixed-theme = _mix-context-colors(#990099, $mix-levels)
+$mixed-theme = _mix-context-colors(#990099, $mix-levels);
 $btn-themes: map-merge($btn-themes, $mixed-theme);
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
@@ -555,6 +555,7 @@ $custom-theme: (
 
 // Required - settings and mixins
 @import "../node_modules/figuration/scss/settings";
+@import "../node_modules/figuration/scss/settings-options";
 @import "../node_modules/figuration/scss/mixins";
 
 // Custom theme addition/removal go in this location
@@ -579,6 +580,7 @@ As before, insert this setting after the *Required* sections and before the *Cor
 
 // Required - settings and mixins
 @import "../node_modules/figuration/scss/settings";
+@import "../node_modules/figuration/scss/settings-options";
 @import "../node_modules/figuration/scss/mixins";
 
 // Custom theme addition/removal go in this location

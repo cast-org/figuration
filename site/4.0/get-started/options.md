@@ -51,6 +51,7 @@ In your `custom.scss`, you will import Figuration's source Sass files. Our recom
 
 // Required - settings
 @import "../node_modules/figuration/scss/settings";
+@import "../node_modules/figuration/scss/settings-options";
 
 // Custom - your setting removals
 // typically go in this location
@@ -91,6 +92,7 @@ $body-color: #fff;
 
 // Required - settings and mixins
 @import "../node_modules/figuration/scss/settings";
+@import "../node_modules/figuration/scss/settings-options";
 @import "../node_modules/figuration/scss/mixins";
 
 // Core and Components
@@ -126,12 +128,16 @@ $base-colors: (
 
 ### Adding to a Map
 
-To add another color option to `$base-colors`, add a new key-value pair.
+Add new colors to `$base-colors`, or any other map, by creating a new Sass map with your custom values and merging it with the original map. In this case, we'll create a new `$custom-colors` map and merge it with `$base-colors`.
 
 {% capture highlight %}
-$base-colors: (
-  "new-color": #990099
+// Create your own map
+$custom-colors: (
+  "custom-color": #909
 );
+
+// Merge the maps
+$base-colors: map-merge($base-colors, $custom-colors);
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 
@@ -149,6 +155,7 @@ Also note, that each component will inherit the `$base-colors` map, unless previ
 
 // Required - settings and mixins
 @import "../node_modules/figuration/scss/settings";
+@import "../node_modules/figuration/scss/settings-options";
 @import "../node_modules/figuration/scss/mixins";
 
 // Custom map removals go in this location
