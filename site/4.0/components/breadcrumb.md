@@ -34,7 +34,7 @@ toc: true
 
 ## Changing the Separator
 
-Separators are automatically added in CSS through [`::before`](https://developer.mozilla.org/en-US/docs/Web/CSS/::before) and [`content`](https://developer.mozilla.org/en-US/docs/Web/CSS/content). They can be changed by changing `$breadcrumb-divider` settings variable in the SCSS. The [quote](https://sass-lang.com/documentation/modules/string#quote) function is needed to generate the quotes around a string, so if you want `>` as seperator, you can use this:
+Separators are automatically added in CSS through [`::before`](https://developer.mozilla.org/en-US/docs/Web/CSS/::before) and [`content`](https://developer.mozilla.org/en-US/docs/Web/CSS/content). They can be changed by changing `$breadcrumb-divider` settings variable in the SCSS. The [quote](https://sass-lang.com/documentation/modules/string#quote) function is needed to generate the quotes around a string, so if you want `>` as the separator, you can use this:
 
 <div class="cf-example">
   <nav aria-label="breadcrumb">
