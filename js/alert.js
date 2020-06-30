@@ -46,6 +46,10 @@
         handleClose : function(e) {
             e.preventDefault();
 
+            if (e.currentTarget === this.$parent[0]) {
+                return;
+            }
+
             if ($(e.currentTarget).not('.disabled, :disabled').length) {
                 this.close();
             }
