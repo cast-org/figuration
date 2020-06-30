@@ -45,7 +45,8 @@
 
         handleClose : function(e) {
             e.preventDefault();
-            if ($(e.currentTarget).closest(dismiss, this.$element).not('.disabled, :disabled').length) {
+
+            if ($(e.currentTarget).not('.disabled, :disabled').length) {
                 this.close();
             }
         },

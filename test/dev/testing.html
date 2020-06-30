@@ -326,6 +326,8 @@ $(window).ready(function() {
 
             <h2 id="alert">Alert:</h2>
 
+            <p>Via Data</p>
+
             <div class="alert alert-warning" id="alert0">
                 <button type="button" class="close" data-cfw-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <strong>Hey!</strong> Remove this alert with the default fade animation.
@@ -335,12 +337,60 @@ $(window).ready(function() {
                 <button type="button" class="close" data-cfw-dismiss="alert" data-cfw-alert-animate=false aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <strong>Boom!</strong> Remove this alert without the animation.
             </div>
-
             <!--
             <script type="text/javascript">
                 $('#alert0').CFW_Alert();
             </script>
             -->
+
+            <p>Via JS</p>
+
+            <div class="alert alert-primary" role="alert">
+                <button id="alertBtn2" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Hey!</strong> Remove this alert with the default fade animation.
+            </div>
+            <div class="alert alert-secondary" role="alert">
+                <button id="alertBtn3" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Boom!</strong> Remove this alert without the animation.
+            </div>
+
+            <p>Disabled button</p>
+
+            <div class="alert alert-danger" role="alert">
+                <button type="button" class="close" data-cfw-dismiss="alert" aria-label="Close" disabled><span aria-hidden="true">&times;</span></button>
+                <strong>Sorry!</strong> You can't close me. (Data attribute)
+            </div>
+
+            <div class="alert alert-danger" role="alert">
+                <button id="alertBtn4" type="button" class="close" aria-label="Close" disabled><span aria-hidden="true">&times;</span></button>
+                <strong>Sorry!</strong> You can't close me. (JS)
+            </div>
+
+            <div class="alert alert-danger" role="alert">
+                <a style="pointer-events: auto;" href="#" role ="button" class="close disabled" data-cfw-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+                <strong>Sorry!</strong> You can't close me. (Anchor - pointer-events overriden)
+            </div>
+
+            <script>
+                $('#alertBtn2').CFW_Alert();
+                $('#alertBtn3').CFW_Alert({ animate: false });
+                $('#alertBtn4').CFW_Alert();
+            </script>
+
+            <p>External button</p>
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-primary" role="alert" id="alert5">
+                        <strong>Hey!</strong> Remove this alert with the default fade animation.
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <button id="alertBtn5" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+            </div>
+            <script>
+                $('#alertBtn5').CFW_Alert({ target: '#alert5' });
+            </script>
 
             <hr>
 
