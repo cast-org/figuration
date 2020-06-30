@@ -26,6 +26,11 @@
                     max-width: $rc-max-width;
                 }
 
+                // Extend base container
+                .container {
+                    @extend %responsive-container-#{$breakpoint};
+                }
+
                 // Extend each breakpoint which should be smaller or
                 // equal to the current breakpoint
                 $extend-breakpoint: true;
