@@ -778,43 +778,43 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </thead>
     <tbody>
       <tr>
-        <td>target</td>
+        <td><code>target</code></td>
         <td>string</td>
         <td><code>null</code></td>
-        <td>Either the selector (jQuery style), or the string related to the target dropdown having a <code>data-cfw-dropdown-target</code> attribute.</td>
+        <td>Either the selector, or the string related to the target dropdown having a <code>data-cfw-dropdown-target</code> attribute.</td>
       </tr>
       <tr>
-        <td>delay</td>
+        <td><code>delay</code></td>
         <td>integer</td>
         <td><code>350</code></td>
         <td>Delay for hiding menu on loss of focus or hover when not in click only mode (milliseconds).</td>
       </tr>
       <tr>
-        <td>hover</td>
+        <td><code>hover</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>If hover style navigation should be enabled in addition to click/key navigation.  If a touch capable device is found, this setting is overruled.</td>
       </tr>
       <tr>
-        <td>backlink</td>
+        <td><code>backlink</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>Insert back links into submenus.</td>
       </tr>
       <tr>
-        <td>backtop</td>
+        <td><code>backtop</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>If back links should be applied at the top level menu as opposed to only submenus.</td>
       </tr>
       <tr>
-        <td>backtext</td>
+        <td><code>backtext</code></td>
         <td>string</td>
         <td><code>'Back'</code></td>
         <td>Text to be used for back links.</td>
       </tr>
       <tr>
-        <td>container</td>
+        <td><code>container</code></td>
         <td>element | false</td>
         <td><code>false</code></td>
         <td>
@@ -822,7 +822,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         </td>
       </tr>
       <tr>
-        <td>reference</td>
+        <td><code>reference</code></td>
         <td>string | element</td>
         <td><code>'toggle'</code></td>
         <td>
@@ -830,7 +830,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         </td>
       </tr>
       <tr>
-        <td>boundary</td>
+        <td><code>boundary</code></td>
         <td>string | element</td>
         <td><code>'scrollParent'</code></td>
         <td>
@@ -838,7 +838,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         </td>
       </tr>
       <tr>
-        <td>flip</td>
+        <td><code>flip</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
         <td>
@@ -846,7 +846,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         </td>
       </tr>
       <tr>
-        <td>display</td>
+        <td><code>display</code></td>
         <td>string</td>
         <td><code>'dynamic'</code></td>
         <td>
@@ -854,7 +854,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         </td>
       </tr>
       <tr>
-        <td>popperConfig</td>
+        <td><code>popperConfig</code></td>
         <td>null | object</td>
         <td><code>null</code></td>
         <td>Pass a customized <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper.js configuration</a> that will override the default Popper.js configuration.</td>
@@ -863,12 +863,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </table>
 </div>
 
-### Methods
-
-#### `.CFW_Dropdown(options)`
-
-Activates the dropdown menu. Accepts an optional options `object`.
-
 {% capture highlight %}
 $('#myDropdown').CFW_Dropdown({
     backlink: true
@@ -876,21 +870,43 @@ $('#myDropdown').CFW_Dropdown({
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
 
-#### `.CFW_Dropdown('toggle')`
+### Methods
 
-Toggles a root menu to be shown or hidden.
+Event callbacks happen on the dropdown trigger element.
 
-#### `.CFW_Dropdown('show')`
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Method Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>toggle</code></td>
+        <td>Toggles a root menu to be shown or hidden.</td>
+      </tr>
+      <tr>
+        <td><code>show</code></td>
+        <td>Shows the root menu element.</td>
+      </tr>
+      <tr>
+        <td><code>hide</code></td>
+        <td>Hides the root menu element, and any open submenus.</td>
+      </tr>
+      <tr>
+        <td><code>dispose</code></td>
+        <td>Hides the root menu element and disconnect all the event listeners and data from the menu items and the trigger element.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-Shows the root menu element.
-
-#### `.CFW_Dropdown('hide')`
-
-Hides the root menu element.
-
-#### `.CFW_Dropdown('dispose')`
-
-Hides the root menu element and disconnect all the event listeners and data from the menu items and the trigger element.
+{% capture highlight %}
+$('#myDropdown').CFW_Dropdown('show');
+{% endcapture %}
+{% renderHighlight highlight, "js" %}
 
 ### Events
 
@@ -901,40 +917,40 @@ Show and hide, both before and after, events have an added `relatedTarget` prope
 Before and after hide events have a `clickEvent` property (only when the original event type is `click`) that contains an event object for the click event.
 
 <div class="table-scroll">
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th style="width: 150px;">Event Type</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>init.cfw.dropdown</td>
-                <td>This event fires after the menu item is initialized.</td>
-            </tr>
-            <tr>
-                <td>beforeShow.cfw.dropdown</td>
-                <td>This event is fired immediately when the internal <code>showMenu</code> method is called.</td>
-            </tr>
-            <tr>
-                <td>afterShow.cfw.dropdown</td>
-                <td>This event is fired when a menu element has been made visible to the user.</td>
-            </tr>
-            <tr>
-                <td>beforeHide.cfw.dropdown</td>
-                <td>This event is fired immediately when the internal <code>hideMenu</code> method is called.</td>
-            </tr>
-            <tr>
-                <td>afterHide.cfw.dropdown</td>
-                <td>This event is fired when a menu element has been hidden from the user.</td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Event Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>init.cfw.dropdown</code></td>
+        <td>This event fires after the menu item is initialized.</td>
+      </tr>
+      <tr>
+        <td><code>beforeShow.cfw.dropdown</code></td>
+        <td>This event is fired immediately when the internal <code>showMenu</code> method is called.</td>
+      </tr>
+      <tr>
+        <td><code>afterShow.cfw.dropdown</code></td>
+        <td>This event is fired when a menu element has been made visible to the user.</td>
+      </tr>
+      <tr>
+        <td><code>beforeHide.cfw.dropdown</code></td>
+        <td>This event is fired immediately when the internal <code>hideMenu</code> method is called.</td>
+      </tr>
+      <tr>
+        <td><code>afterHide.cfw.dropdown</code></td>
+        <td>This event is fired when a menu element has been hidden from the user.</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 {% capture highlight  %}
-$('#mDropdown').on('afterHide.cfw.dropdown', function () {
+$('#mDropdown').on('afterHide.cfw.dropdown', function() {
   // do something...
 });
 {% endcapture %}
@@ -951,41 +967,41 @@ The dropdown widget provided by Figuration is intended be generic and apply to a
 ### Keyboard Navigation
 
 <dl class="cf-docs-keys">
-    <dt>
-        <kbd>enter</kbd> / <kbd>space</kbd>
-    </dt>
-    <dd>
-        When the focus is on the main trigger item, the menu is opened, and the menu items can be navigated using the arrow keys.
-    </dd>
-    <dt>
-        <kbd>esc</kbd>
-    </dt>
-    <dd>
-        Closes the currently focused menu, and moved focus to the main trigger.
-    </dd>
-    <dt>
-        <kbd title="up arrow"><span class="fas fa-arrow-up" aria-hidden="true"></span></kbd> /
-        <kbd title="down arrow"><span class="fas fa-arrow-down" aria-hidden="true"></span></kbd>
-    </dt>
-    <dd>
-        Moves focus to the previous or next item in the menu list.
-        If current focus is in a textarea, the text caret will move accordingly.
-        If current focus is on a checkbox or radio input, moves focus to the previous or next item in the menu list.
-    </dd>
-    <dt>
-        <kbd title="right arrow"><span class="fas fa-arrow-right" aria-hidden="true"></span></kbd>
-    </dt>
-    <dd>
-        Opens the submenu if one exists.
-        If current focus is in a text input or textarea, the text caret will move accordingly.
-    </dd>
-    <dt>
-        <kbd title="left arrow"><span class="fas fa-arrow-left" aria-hidden="true"></span></kbd>
-    </dt>
-    <dd>
-        Closes the currently focused submenu, and returns focus back to the triggering element.  If there are no submenus open, focus will be returned to the main trigger.
-        If current focus is in a text input or textarea, the text caret will move accordingly.
-    </dd>
+  <dt>
+    <kbd>enter</kbd> / <kbd>space</kbd>
+  </dt>
+  <dd>
+    When the focus is on the main trigger item, the menu is opened, and the menu items can be navigated using the arrow keys.
+  </dd>
+  <dt>
+    <kbd>esc</kbd>
+  </dt>
+  <dd>
+    Closes the currently focused menu, and moved focus to the main trigger.
+  </dd>
+  <dt>
+    <kbd title="up arrow"><span class="fas fa-arrow-up" aria-hidden="true"></span></kbd> /
+    <kbd title="down arrow"><span class="fas fa-arrow-down" aria-hidden="true"></span></kbd>
+  </dt>
+  <dd>
+    Moves focus to the previous or next item in the menu list.
+    If current focus is in a textarea, the text caret will move accordingly.
+    If current focus is on a checkbox or radio input, moves focus to the previous or next item in the menu list.
+  </dd>
+  <dt>
+    <kbd title="right arrow"><span class="fas fa-arrow-right" aria-hidden="true"></span></kbd>
+  </dt>
+  <dd>
+    Opens the submenu if one exists.
+    If current focus is in a text input or textarea, the text caret will move accordingly.
+  </dd>
+  <dt>
+    <kbd title="left arrow"><span class="fas fa-arrow-left" aria-hidden="true"></span></kbd>
+  </dt>
+  <dd>
+    Closes the currently focused submenu, and returns focus back to the triggering element.  If there are no submenus open, focus will be returned to the main trigger.
+    If current focus is in a text input or textarea, the text caret will move accordingly.
+  </dd>
 </dl>
 
 ## SASS Reference

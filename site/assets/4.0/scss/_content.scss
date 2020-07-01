@@ -24,13 +24,16 @@
     > h3 {
         margin-top: 1.5rem;
     }
+}
 
-    table {
-        td,
-        th {
-            &:first-child > code {
-                white-space: nowrap;
-            }
+
+:not(.cf-example) table {
+    @include font-size(.875rem);
+
+    th,
+    td{
+        &:first-child {
+            white-space: nowrap;
         }
     }
 }
@@ -104,10 +107,11 @@ h4 {
     float: left;
     width: 4.5rem;
     min-height: 1.75rem;
+    margin-right: .5rem;
     overflow: hidden;
     clear: left;
     text-align: center;
-    white-space: nowrap;
+    //white-space: nowrap;
 }
 .cf-docs-keys dd {
     min-height: 1.75rem;

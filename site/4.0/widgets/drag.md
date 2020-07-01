@@ -44,11 +44,11 @@ Options can be passed via JavaScript.
     </thead>
     <tbody>
       <tr>
-        <td>handle</td>
+        <td><code>handle</code></td>
         <td>string</td>
         <td><code>null</code></td>
         <td>
-          <p>The selector (jQuery style) for the element where dragging is allow to begin.</p>
+          <p>The selector for the element where dragging is allow to begin.</p>
           <p>The handle must be a descendant of the element where the drag is attached.</p>
         </td>
       </tr>
@@ -56,15 +56,38 @@ Options can be passed via JavaScript.
   </table>
 </div>
 
+{% capture highlight %}
+$('#myDrag').CFW_Drag({
+  handle: '#myDragHandle'
+});
+{% endcapture %}
+{% renderHighlight highlight, "js" %}
+
 ### Methods
 
-#### `.CFW_Drag(options)`
+Method calls should be made on the drag element.
 
-Activates the equalizer widget. Accepts an optional options `object`.
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Method Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>dispose</code></td>
+        <td>Disables the drag functionality.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-#### `.CFW_Drag('dispose')`
-
-Disables the drag functionality.
+{% capture highlight %}
+$('#myDrag').CFW_Drag('dispose');
+{% endcapture %}
+{% renderHighlight highlight, "js" %}
 
 ### Events
 
@@ -80,19 +103,19 @@ Event callbacks happen on the item where the drag is attached.
     </thead>
     <tbody>
       <tr>
-        <td>init.cfw.drag</td>
+        <td><code>init.cfw.drag</code></td>
         <td>This event fires after the drag widget is initialized.</td>
       </tr>
       <tr>
-        <td>dragStart.cfw.drag</td>
+        <td><code>dragStart.cfw.drag</code></td>
         <td>This event fires when the drag item or handle is activated.</td>
       </tr>
       <tr>
-        <td>drag.cfw.drag</td>
+        <td><code>drag.cfw.drag</code></td>
         <td>This event fires as the item is being moved.</td>
       </tr>
       <tr>
-        <td>dragEnd.cfw.drag</td>
+        <td><code>dragEnd.cfw.drag</code></td>
         <td>This event fires when the drag item or handle is released.</td>
       </tr>
     </tbody>
@@ -100,7 +123,7 @@ Event callbacks happen on the item where the drag is attached.
 </div>
 
 {% capture highlight %}
-$('#myDrag').on('drag.cfw.drag', function () {
+$('#myDrag').on('drag.cfw.drag', function() {
   // do something...
 });
 {% endcapture %}
@@ -120,45 +143,54 @@ Each event callback, except for `init.cfw.drag`, returns the following additiona
     </thead>
     <tbody>
       <tr>
-        <td>startX</td>
+        <td><code>startX</code></td>
         <td>The horizontal location of the <code>dragStart.cfw.drag</code> event.</td>
       </tr>
       <tr>
-        <td>startY</td>
+        <td><code>startY</code></td>
         <td>The vertical location of the <code>dragStart.cfw.drag</code> event.</td>
       </tr>
       <tr>
-        <td>pageX</td>
+        <td><code>pageX</code></td>
         <td>The horizontal location of the <code>drag.cfw.drag</code> event.</td>
       </tr>
       <tr>
-        <td>pageY</td>
+        <td><code>pageY</code></td>
         <td>The vertical location of the <code>drag.cfw.drag</code> event.</td>
       </tr>
       <tr>
-        <td>deltaX</td>
+        <td><code>deltaX</code></td>
         <td>The horizontal distance moved from <code>startX</code>.</td>
       </tr>
       <tr>
-        <td>deltaY</td>
+        <td><code>deltaY</code></td>
         <td>The vertical distance moved from <code>startX</code>.</td>
       </tr>
       <tr>
-        <td>originalX</td>
+        <td><code>originalX</code></td>
         <td>The starting horizontal position of the drag "target" element..</td>
       </tr>
       <tr>
-        <td>originalY</td>
+        <td><code>originalY</code></td>
         <td>The starting vertical position of the drag "target" element.</td>
       </tr>
       <tr>
-        <td>offsetX</td>
-        <td>The moved horizontal position of the drag "target" element..</td>
+        <td><code>offsetX</code></td>
+        <td>The moved horizontal position of the drag "target" element, the sum of <code>originalX</code> and <code>deltaX</code>.</td>
       </tr>
       <tr>
-        <td>offsetY</td>
-        <td>The moved vertical position of the drag "target" element.</td>
+        <td><code>offsetY</td>
+        <td>The moved vertical position of the drag "target" element, the sum of <code>originalY</code> and <code>deltaY</code>.</td>
       </tr>
     </tbody>
   </table>
 </div>
+
+{% capture highlight %}
+$('#myDrag').on('drag.cfw.drag', function(e) {
+    someFunction(e.offsetY, e.offsetX);
+});
+{% endcapture %}
+{% renderHighlight highlight, "js" %}
+
+

@@ -78,46 +78,6 @@ $('#myTabResponsive').CFW_TabResponsive();
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
 
-### Options
-
-None.
-
-{% comment %}
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-cfw-tabResponsive`, as in `data-cfw-tabResponsive-active=true`.
-
-<div class="table-scroll">
-  <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th style="width: 100px;">Name</th>
-        <th style="width: 50px;">Type</th>
-        <th style="width: 50px;">Default</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>active</td>
-        <td>boolean</td>
-        <td><code>false</code></td>
-        <td>If the collapse item in the default tab should be opened on initialization. Mostly useful for mobile devices depending on CSS.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-{% endcomment %}
-
-### Methods
-
-#### `.CFW_TabResponsive()`
-
-Activates the responsive tab element.
-
-{% capture highlight %}
-$('#myTabResponsive').CFW_TabResponsive();
-{% endcapture %}
-{% renderHighlight highlight, "js" %}
-
 ### Events
 
 Event callbacks happen on the responsive tab element.
@@ -134,7 +94,7 @@ You can also get the collapse and tab events as indicated in the [Collapse]({{ s
     </thead>
     <tbody>
       <tr>
-        <td>init.cfw.tabResponsive</td>
+        <td><code>init.cfw.tabResponsive</code></td>
         <td>This event fires after the responsive tab item is initialized.</td>
       </tr>
     </tbody>

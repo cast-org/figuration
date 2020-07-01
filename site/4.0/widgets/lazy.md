@@ -75,19 +75,19 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </thead>
     <tbody>
       <tr>
-        <td>src</td>
+        <td><code>src</code></td>
         <td>string</td>
         <td><code>null</code></td>
         <td>The URL or path for the source image to be displayed.</td>
       </tr>
       <tr>
-        <td>throttle</td>
+        <td><code>throttle</code></td>
         <td>integer</td>
         <td><code>250</code></td>
         <td>Timeout rate (milliseconds) for the throttle function helps to decrease function calls through scroll or resize events.</td>
       </tr>
       <tr>
-        <td>trigger</td>
+        <td><code>trigger</code></td>
         <td>string</td>
         <td><code>'scroll resize'</code></td>
         <td>
@@ -96,19 +96,19 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         </td>
       </tr>
       <tr>
-        <td>delay</td>
+        <td><code>delay</code></td>
         <td>integer</td>
         <td><code>0</code></td>
         <td>Delay time (milliseconds) to wait before loading image once the `show` method has been called.</td>
       </tr>
       <tr>
-        <td>animate</td>
+        <td><code>animate</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>If the image should appear with a fade-in animation when loaded.</td>
       </tr>
       <tr>
-        <td>threshold</td>
+        <td><code>threshold</code></td>
         <td>integer</td>
         <td><code>0</code></td>
         <td>
@@ -117,13 +117,13 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         </td>
       </tr>
       <tr>
-        <td>container</td>
+        <td><code>container</code></td>
         <td>string | node</td>
         <td>the <code>window</code> object</td>
         <td>Specifies a containing element, such as div with scrollbar, where the <code>trigger</code> event callbacks should be listened for.</td>
       </tr>
       <tr>
-        <td>invisible</td>
+        <td><code>invisible</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>
@@ -138,12 +138,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </table>
 </div>
 
-### Methods
-
-#### `.CFW_Lazy(options)`
-
-Activates the image as a lazy loaded element. Accepts an optional options `object`.
-
 {% capture highlight %}
 $('#myImg').CFW_Lazy({
   src: 'image.png'
@@ -151,9 +145,35 @@ $('#myImg').CFW_Lazy({
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
 
-#### `.CFW_Lazy('show')`
+### Methods
 
-Load the specified image source.
+Method calls should be made on the image element.
+
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Method Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>show</code></td>
+        <td>Load the specified image source.</td>
+      </tr>
+      <tr>
+        <td><code>dispose</code></td>
+        <td>Removes the event handlers from the element, leaving the image is its current state.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% capture highlight %}
+$('#myImg').CFW_Lazy('show');
+{% endcapture %}
+{% renderHighlight highlight, "js" %}
 
 ### Events
 
@@ -169,15 +189,15 @@ Event callbacks happen on the image element.
     </thead>
     <tbody>
       <tr>
-        <td>init.cfw.lazy</td>
+        <td><code>init.cfw.lazy</code></td>
         <td>This event fires after the image item is initialized.</td>
       </tr>
       <tr>
-        <td>beforeShow.cfw.lazy</td>
+        <td><code>beforeShow.cfw.lazy</code></td>
         <td>This event is fired immediately when the <code>show</code> method is called.</td>
       </tr>
       <tr>
-        <td>afterShow.cfw.lazy</td>
+        <td><code>afterShow.cfw.lazy</code></td>
         <td>This event is fired when a lazy loaded image source has been made visible to the user (will wait for specified <code>effect</code> to complete).</td>
       </tr>
     </tbody>
@@ -185,7 +205,7 @@ Event callbacks happen on the image element.
 </div>
 
 {% capture highlight %}
-$('#myImg').on('afterShow.cfw.lazy', function () {
+$('#myImg').on('afterShow.cfw.lazy', function() {
   // do something...
 });
 {% endcapture %}

@@ -217,7 +217,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </thead>
     <tbody>
       <tr>
-        <td>animate</td>
+        <td><code>animate</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
         <td>If the tab pane target should fade in and out.</td>
@@ -226,12 +226,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </table>
 </div>
 
-### Methods
-
-#### `.CFW_Tab(options)`
-
-Activates the content as a tab element. Accepts an optional options `object`.
-
 {% capture highlight %}
 $('#myTab a').CFW_Tab({
   animate: false
@@ -239,13 +233,35 @@ $('#myTab a').CFW_Tab({
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
 
-#### `.CFW_Tab('show')`
+### Methods
 
-Shows the `tab-pane` for a given tab, and hides all sibling `tab-pane` items.
+Methods calls should be made on the toggle/trigger element.
 
-#### `.CFW_Tab('dispose')`
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Method Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>show</code></td>
+        <td>Shows the <code>tab-pane</code> for a given tab, and hides all sibling <code>tab-pane</code> items.</td>
+      </tr>
+      <tr>
+        <td><code>dispose</code></td>
+        <td>Will disable the listen events for the given tab, but leave it otherwise unchanged.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-Will disable the listen events for the given tab, but leave it otherwise unchanged.
+{% capture highlight %}
+$('#myTab a').CFW_Tab('show');
+{% endcapture %}
+{% renderHighlight highlight, "js" %}
 
 ### Events
 Event callbacks happen on the toggle/trigger element.
@@ -267,23 +283,23 @@ When showing a new tab, the events fire in the following order:
     </thead>
     <tbody>
       <tr>
-        <td>init.cfw.tab</td>
+        <td><code>init.cfw.tab</code></td>
         <td>This event fires after the tab item is initialized.</td>
       </tr>
       <tr>
-        <td>beforeShow.cfw.tab</td>
+        <td><code>beforeShow.cfw.tab</code></td>
         <td>This event fires on tab show, but before the new tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
       </tr>
       <tr>
-        <td>afterShow.cfw.tab</td>
+        <td><code>afterShow.cfw.tab</code></td>
         <td>This event fires on tab show after a tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
       </tr>
       <tr>
-        <td>beforeHide.cfw.tab</td>
+        <td><code>beforeHide.cfw.tab</code></td>
         <td>This event fires when a new tab is to be shown (and thus the previous active tab is to be hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the current active tab and the new soon-to-be-active tab, respectively.</td>
       </tr>
       <tr>
-        <td>afterHide.cfw.tab</td>
+        <td><code>afterHide.cfw.tab</code></td>
         <td>This event fires after a new tab is shown (and thus the previous active tab is hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the previous active tab and the new active tab, respectively.</td>
       </tr>
     </tbody>

@@ -295,19 +295,19 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </thead>
     <tbody>
       <tr>
-        <td>target</td>
+        <td><code>target</code></td>
         <td>string</td>
         <td><code>null</code></td>
-        <td>The selector (jQuery style) for the target container.</td>
+        <td>The selector for the target container.</td>
       </tr>
       <tr>
-        <td>offset</td>
+        <td><code>offset</code></td>
         <td>integer</td>
         <td><code>10</code></td>
         <td>Pixels to offset from top when calculating position of scroll.</td>
       </tr>
       <tr>
-        <td>throttle</td>
+        <td><code>throttle</code></td>
         <td>integer</td>
         <td><code>100</code></td>
         <td>Timeout rate (milliseconds) for the throttle function helps to decrease function calls through scroll event.</td>
@@ -316,12 +316,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </table>
 </div>
 
-### Methods
-
-#### `.CFW_Scrollspy(options)`
-
-Activates scrollspy widget. Accepts an optional options `object`.
-
 {% capture highlight %}
 $('#myScrollspy').CFW_Scrollspy({
   target: '#navbar-example'
@@ -329,20 +323,39 @@ $('#myScrollspy').CFW_Scrollspy({
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
 
-#### `.CFW_Scrollspy('refresh')`
+### Methods
 
-When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:
+Methods calls should be made on the scrollspy element.
+
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Method Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>refresh</code></td>
+        <td>Update the scrollspy active indicator status.</td>
+      </tr>
+      <tr>
+        <td><code>dispose</code></td>
+        <td>Removes the associated event listener for the given scrollspy element, leaving the target navigation in its current state.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+When using scrollspy in conjunction with adding or removing elements from the DOM, it may be useful to call the refresh method like so:
 
 {% capture highlight %}
 $('[data-cfw="scrollspy"]').each(function() {
-  var $spy = $(this).CFW_Scrollspy('refresh');
+  $(this).CFW_Scrollspy('refresh');
 });
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
-
-#### `.CFW_Scrollspy('dispose')`
-
-Removes the associated event listener for the given scrollspy element, leaving the target navigation in its current state.
 
 ### Events
 
@@ -358,11 +371,11 @@ Event callbacks happen on the or designated scrolling region (for `init.cfw.scro
     </thead>
     <tbody>
       <tr>
-        <td>init.cfw.scrollspy</td>
+        <td><code>init.cfw.scrollspy</code></td>
         <td>This event fires after the scrollspy is initialized.</td>
       </tr>
       <tr>
-        <td>activate.cfw.scrollspy</td>
+        <td><code>activate.cfw.scrollspy</code></td>
         <td>This event fires whenever a new item becomes activated by the scrollspy.</td>
       </tr>
     </tbody>
@@ -370,7 +383,7 @@ Event callbacks happen on the or designated scrolling region (for `init.cfw.scro
 </div>
 
 {% capture highlight %}
-$('#myScrollspy').on('activate.cfw.scrollspy', function () {
+$('#myScrollspy').on('activate.cfw.scrollspy', function() {
   // do something...
 });
 {% endcapture %}

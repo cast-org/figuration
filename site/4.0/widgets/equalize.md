@@ -226,34 +226,34 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </thead>
     <tbody>
       <tr>
-        <td>target</td>
+        <td><code>target</td>
         <td>string</td>
         <td><code>null</code></td>
         <td>
-          <p>Either the selector (jQuery style), or the string related to the target containers having a <code>data-cfw-equalize-group</code> attribute.</p>
+          <p>Either the selector, or the string related to the target containers having a <code>data-cfw-equalize-group</code> attribute.</p>
           <p>The containers to be equalized are scoped by the calling container, so same selector/groupID can be resused if needed.</p>
         </td>
       </tr>
       <tr>
-        <td>throttle</td>
+        <td><code>throttle</code></td>
         <td>integer</td>
         <td><code>250</code></td>
         <td>Timeout rate (milliseconds) for the throttle function helps to decrease function calls through resize events.</td>
       </tr>
       <tr>
-        <td>stack</td>
+        <td><code>stack</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>Whether or not the specified containers should be equalized in height when they become stacked, either due to responsive reflow, or wrapping.  Otherwise, the specified containers all need to have the same top offset in order to be equalized.</td>
       </tr>
       <tr>
-        <td>row</td>
+        <td><code>row</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>Whether or not the specified containers should be equalized in height by rows, by determining each container in a row by their top offset.</td>
       </tr>
       <tr>
-        <td>minimum</td>
+        <td><code>minimum</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>If set to true, the specified containers will be equalized to the shortest container.  In this case, you may want to use <code>overflow: hidden;</code> to deal with the overflowing content.</td>
@@ -262,12 +262,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </table>
 </div>
 
-### Methods
-
-#### `.CFW_Equalize(options)`
-
-Activates the equalizer widget. Accepts an optional options `object`.
-
 {% capture highlight %}
 $('#myContainer').CFW_Equalize({
     target : 'selector/groupID'
@@ -275,13 +269,35 @@ $('#myContainer').CFW_Equalize({
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
 
-#### `.CFW_Equalize('update')`
+### Methods
 
-Update the container heights. This will also bubble up the DOM to equalize any ancestor equalize widgets in the case of nesting.
+Method calls should be made on the parent equalize element.
 
-#### `.CFW_Equalize('dispose')`
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Method Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>update</code></td>
+        <td>Update the container heights. This will also bubble up the DOM to equalize any ancestor equalize widgets in the case of nesting.</td>
+      </tr>
+      <tr>
+        <td><code>dispose</code></td>
+        <td>Remove the data and global event listener for a given instance of equalize.  This does not alter any nested child equalize instances.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-Remove the data and global event listener for a given instance of equalize.  This does not alter any nested child equalize instances.
+{% capture highlight %}
+$('#myContainer').CFW_Equalize('update');
+{% endcapture %}
+{% renderHighlight highlight, "js" %}
 
 ### Events
 
@@ -297,15 +313,15 @@ Event callbacks happen on the parent equalize element.
     </thead>
     <tbody>
       <tr>
-        <td>init.cfw.equalize</td>
+        <td><code>init.cfw.equalize</code></td>
         <td>This event fires after the equalize widget is initialized.</td>
       </tr>
       <tr>
-        <td>beforeEqual.cfw.equalize</td>
+        <td><code>beforeEqual.cfw.equalize</code></td>
         <td>This event fires before the container heights are reset and the heights are adjusted.</td>
       </tr>
       <tr>
-        <td>afterEqual.cfw.equalize</td>
+        <td><code>afterEqual.cfw.equalize</code></td>
         <td>This event fires after the container heights are adjusted.</td>
       </tr>
     </tbody>
@@ -313,7 +329,7 @@ Event callbacks happen on the parent equalize element.
 </div>
 
 {% capture highlight %}
-$('#myContainer').on('afterEqual.cfw.equalize', function () {
+$('#myContainer').on('afterEqual.cfw.equalize', function() {
   // do something...
 });
 {% endcapture %}

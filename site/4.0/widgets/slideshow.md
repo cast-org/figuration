@@ -344,7 +344,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </thead>
     <tbody>
       <tr>
-        <td>loop</td>
+        <td><code>loop</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>Enable looping from the last slide to the first slide, and vice versa.</td>
@@ -353,33 +353,50 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </table>
 </div>
 
-### Methods
-
-#### `.CFW_Slideshow()`
-
-Activates the slideshow element.
-
 {% capture highlight %}
-$('#mySlideshow').CFW_Slideshow();
+$('#mySlideshow').CFW_Slideshow({\
+  loop: true
+});
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
 
-#### `.CFW_Slideshow('prev')`
+### Methods
 
-Shows the previous slide, unless the first slide is current.
+Method calls should be made on the slideshow element.
 
-#### `.CFW_Slideshow('next')`
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Method Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>prev</code></td>
+        <td>Shows the previous slide, unless the first slide is current.</td>
+      </tr>
+      <tr>
+        <td><code>next</code></td>
+        <td>Shows the next slide, unless the last slide is current.</td>
+      </tr>
+      <tr>
+        <td><code>update</code></td>
+        <td>Update the state of the navigation controls. Useful if there is a change to the tabs.</td>
+      </tr>
+      <tr>
+        <td><code>dispose</code></td>
+        <td>Disable the slideshow navigation controls and listeners.  This will leave the tab widget controls active.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-Shows the next slide, unless the last slide is current.
-
-#### `.CFW_Slideshow('update')`
-
-Update the state of the navigation controls. Useful if there is a change to the tabs.
-
-#### `.CFW_Slideshow('dispose')`
-
-Disable the slideshow navigation controls and listeners.  This will leave the tab widget controls active.
-
+{% capture highlight %}
+$('#mySlideshow').CFW_Slideshow('next');
+{% endcapture %}
+{% renderHighlight highlight, "js" %}
 
 ### Events
 
@@ -397,19 +414,19 @@ You can also get the tab events as indicated in the [Tab widget]({{ site.path }}
     </thead>
     <tbody>
      <tr>
-        <td>init.cfw.slideshow</td>
+        <td><code>init.cfw.slideshow</code></td>
         <td>This event fires after the slideshow item is initialized.</td>
       </tr>
       <tr>
-        <td>prev.cfw.slideshow</td>
+        <td><code>prev.cfw.slideshow</code></td>
         <td>This event fires before the call to activate the previous slide.</td>
       </tr>
       <tr>
-        <td>next.cfw.slideshow</td>
+        <td><code>next.cfw.slideshow</code></td>
         <td>This event fires before the call to activate the next slide.</td>
       </tr>
       <tr>
-        <td>update.cfw.slideshow</td>
+        <td><code>update.cfw.slideshow</code></td>
         <td>This event fires after the state of the navigation controls is updated.</td>
       </tr>
     </tbody>
