@@ -134,7 +134,7 @@ Add `data-cfw="accordion"` to the ancestor element that contains all the collaps
 
 ### Via JavaScript
 
-Call the accordion via JavaScript:
+Activates an element as an accordion listener.
 
 {% capture highlight %}
 $('#myAccordion').CFW_Accordion();
@@ -143,13 +143,29 @@ $('#myAccordion').CFW_Accordion();
 
 ### Methods
 
-#### `.CFW_Accordion()`
+Method calls should be made on the accordion container.
 
-Activates the element as an accordion listener.
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Method Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>dispose</code></td>
+        <td>Removes the event listeners and data from the accordion container element. Falls back to non-associated, or individual, collapse controls.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-#### `.CFW_Accordion('dispose')`
-
-Removes the accordion listener and data from the element. Falls back to non-associated, or individual, collapse controls.
+{% capture highlight %}
+$('#myAccordion').CFW_Accordion('dispose');
+{% endcapture %}
+{% renderHighlight highlight, "js" %}
 
 ### Events
 
@@ -167,9 +183,16 @@ You can also get the collapse events as indicated in the [Collapse widget]({{ si
     </thead>
     <tbody>
       <tr>
-        <td>init.cfw.accordion</td>
+        <td><code>init.cfw.accordion</code></td>
         <td>This event fires after the accordion item is initialized.</td>
       </tr>
     </tbody>
   </table>
 </div>
+
+{% capture highlight %}
+$('#myAccordion').on('init.cfw.accordion', function() {
+  // do something...
+});
+{% endcapture %}
+{% renderHighlight highlight, "js" %}

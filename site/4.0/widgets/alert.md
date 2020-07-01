@@ -11,6 +11,8 @@ toc: true
 
 For more examples of alert container layout and content, check out the [Alerts component page]({{ site.path }}/{{ version.docs }}/components/alerts/).
 
+These examples show the automatically attached alert dismiss triggers, enabled through data attributes.
+
 {% capture example %}
 <div class="alert alert-warning" role="alert">
   <strong>Warning!</strong> Objects in the mirror are closer than they appear.
@@ -44,6 +46,45 @@ The dismiss will work with dynamically inserted alerts.
   </script>
 </div>
 
+Enable an alert's dismiss trigger through scripting.
+
+{% capture example %}
+<div class="alert alert-primary" role="alert">
+  <button id="alertBtn0" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Hey!</strong> Remove this alert with the default fade animation.
+</div>
+
+<div class="alert alert-secondary" role="alert" id="alert1">
+  <button id="alertBtn1" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Boom!</strong> Remove this alert without the animation.
+</div>
+{% endcapture %}
+{% renderExample example %}
+
+{% capture highlight %}
+$('#alertBtn0').CFW_Alert();
+
+$('#alertBtn1').CFW_Alert({
+  animate: false
+});
+{% endcapture %}
+{% renderHighlight highlight, "js" %}
+
+<script>
+$('#alertBtn0').CFW_Alert();
+$('#alertBtn1').CFW_Alert({ animate: false });
+</script>
+
+If the dismiss button is disabled, then the close action will be blocked.
+
+{% capture example %}
+<div class="alert alert-danger" role="alert">
+  <button type="button" class="close" data-cfw-dismiss="alert" aria-label="Close" disabled><span aria-hidden="true">&times;</span></button>
+  <strong>Sorry!</strong> You can't close me.
+</div>
+{% endcapture %}
+{% renderExample example %}
+
 ## Usage
 
 ### Via Data Attributes
@@ -55,7 +96,7 @@ Just add `data-cfw-dismiss="alert"` to a close button **inside the alert contain
 Enable dismissal of an alert via JavaScript:
 
 {% capture highlight %}
-$(".alert").CFW_Alert();
+$("#myAlert").CFW_Alert();
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
 
@@ -75,13 +116,13 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </thead>
     <tbody>
       <tr>
-        <td>target</td>
+        <td><code>target</code></td>
         <td>string</td>
         <td><code>null</code></td>
-        <td>The selector (jQuery style) of the target item to be dismissed.</td>
+        <td>The selector of the target item to be dismissed, or the parent <code>.alert</code> container will be used.</td>
       </tr>
       <tr>
-        <td>animate</td>
+        <td><code>animate</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
         <td>If alert targets should fade out.</td>
@@ -90,12 +131,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </table>
 </div>
 
-### Methods
-
-#### `.CFW_Alert(options)`
-
-Activates the element as a dismiss trigger. (Not necessary when using the Figuration widget API is enabled.) Accepts an optional options `object`.
-
 {% capture highlight %}
 $('#myAlert').CFW_Alert({
     animate: false
@@ -103,13 +138,35 @@ $('#myAlert').CFW_Alert({
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
 
-#### `.CFW_Alert('close')`
+### Methods
 
-Closes an alert.
+Method calls should be made on the alert dismiss trigger.
 
-#### `.CFW_Alert('dispose')`
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Method Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>close</code></td>
+        <td>Closes an alert.</td>
+      </tr>
+      <tr>
+        <td><code>dispose</code></td>
+        <td>Removes the click event listener from a trigger. This will not disable a dismiss item if the Figuration widget API is enabled.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-Removes the click event listener from a trigger. This will not disable a dismiss item if the Figuration widget API is enabled.
+{% capture highlight %}
+$('#myAlertDismiss').CFW_Alert('close');
+{% endcapture %}
+{% renderHighlight highlight, "js" %}
 
 ### Events
 
@@ -125,11 +182,11 @@ Event callbacks happen on the target alert container.
     </thead>
     <tbody>
       <tr>
-        <td>beforeClose.cfw.alert</td>
+        <td><code>beforeClose.cfw.alert</code></td>
         <td>This event is fired immediately when the <code>close</code> method is called.</td>
       </tr>
       <tr>
-        <td>afterClose.cfw.alert</td>
+        <td><code>afterClose.cfw.alert</code></td>
         <td>This event is fired when an alert has been closed (will wait for CSS transitions to complete).</td>
       </tr>
     </tbody>
@@ -137,7 +194,7 @@ Event callbacks happen on the target alert container.
 </div>
 
 {% capture highlight %}
-$('#myAlert').on('beforeClose.cfw.alert', function () {
+$('#myAlert').on('beforeClose.cfw.alert', function() {
   // do something...
 });
 {% endcapture %}

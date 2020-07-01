@@ -80,6 +80,26 @@ In some situations it may be desirable to turn this functionality off. The data 
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
 
+## Programmatic API
+
+You can also use all Figuration widgets purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.
+
+{% capture highlight %}
+$('#myCollapse').CFW_Collapse('hide').removeClass('aClass');
+{% endcapture %}
+{% renderHighlight highlight, "js" %}
+
+All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a widget with default behavior):
+
+{% capture highlight %}
+$('#myPop').CFW_Popover();                          // initialized with defaults
+$('#myPop').CFW_Popover({ placement: 'bottom' });   // initialized with bottom alignment
+$('#myPop').CFW_Popover('show');                    // invokes show method
+{% endcapture %}
+{% renderHighlight highlight, "js" %}
+
+Each widget also exposes its raw constructor on a `Constructor` property: `$.fn.CFW_Popover.Constructor`. If you'd like to get a particular widget instance, retrieve it directly from an element: `$('#myPop').data('cfw.popover')`.
+
 ## Option Inheritance
 
 When using both data attributes and JavaScript options, the JavaScript options take precendence over any element attributes.
@@ -105,25 +125,16 @@ $('#optionOrder1').CFW_Tooltip({
 {% endcapture %}
 {% renderExample example %}
 
-## Programmatic API
+## Method Calls
 
-You can also use all Figuration widgets purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.
+Method are typically called on the trigger element, where the widget is initially attached.  Some widgets will also allow methods calls upon their target element.
 
-{% capture highlight %}
-$('#myCollapse').CFW_Collapse('hide').removeClass('aClass');
-{% endcapture %}
-{% renderHighlight highlight, "js" %}
-
-All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a widget with default behavior):
+Method calls are made by passing the method name as a `string` value through the widget function, as shown in the following example.
 
 {% capture highlight %}
-$('#myPop').CFW_Popover();                          // initialized with defaults
-$('#myPop').CFW_Popover({ placement: 'bottom' });   // initialized with bottom alignment
-$('#myPop').CFW_Popover('show');                    // invokes show method
+$('#myPop').CFW_Popover('show');
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
-
-Each widget also exposes its raw constructor on a `Constructor` property: `$.fn.CFW_Popover.Constructor`. If you'd like to get a particular widget instance, retrieve it directly from an element: `$('[rel=popover]').data('CFW_Popover')`.
 
 ## Events
 

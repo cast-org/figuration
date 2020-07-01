@@ -39,6 +39,8 @@ To easily add affix behavior to any element, just add `data-cfw="affix"` to the 
 
 ### Via JavaScript
 
+Activates an element to be affixed. Accepts an optional options object.
+
 Call the affix widget via JavaScript:
 {% capture highlight %}
 $('#myAffix').CFW_Affix({
@@ -59,26 +61,26 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     <thead>
       <tr>
         <th style="width: 100px;">Name</th>
-        <th style="width: 100px;">type</th>
-        <th style="width: 50px;">default</th>
-        <th>description</th>
+        <th style="width: 100px;">Type</th>
+        <th style="width: 50px;">Default</th>
+        <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>top</td>
+        <td><code>top</code></td>
         <td>number | function</td>
         <td><code>0</code></td>
         <td>Pixel offset from top of the `window` or `target` when calculating position of scroll. Use a function when you need to dynamically calculate an offset.</td>
       </tr>
       <tr>
-        <td>bottom</td>
+        <td><code>bottom</code></td>
         <td>number | function</td>
         <td><code>0</code></td>
         <td>Pixel offset from bottom of `window` or `target` when calculating position of scroll. Use a function when you need to dynamically calculate an offset.</td>
       </tr>
       <tr>
-        <td>target</td>
+        <td><code>target</code></td>
         <td>selector | node | jQuery element</td>
         <td><code>window</code></td>
         <td>Specifies the target element of the affix.</td>
@@ -87,12 +89,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </table>
 </div>
 
-### Methods
-
-#### `.CFW_Affix(options)`
-
-Activates an element to be affixed. Accepts an optional options object.
-
 {% capture highlight %}
 $('#myAffix').CFW_Affix({
     top: 10
@@ -100,18 +96,35 @@ $('#myAffix').CFW_Affix({
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
 
-#### `.CFW_Affix('checkPosition')`
+### Methods
 
-Recalculates the state of the affix based on the dimensions, position, and scroll position of the relevant elements. The `.affix`, `.affix-top`, and `.affix-bottom` classes are added to or removed from the affixed content according to the new state. This method needs to be called whenever the dimensions of the affixed content or the target element are changed, to ensure correct positioning of the affixed content.
+Method calls should be made on the affix element.
+
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Method Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>checkPosition</code></td>
+        <td>Recalculates the state of the affix based on the dimensions, position, and scroll position of the relevant elements. The <code>.affix</code>, <code>.affix-top</code>, and <code>.affix-bottom</code> classes are added to or removed from the affixed content according to the new state. This method needs to be called whenever the dimensions of the affixed content or the target element are changed, to ensure correct positioning of the affixed content.</td>
+      </tr>
+      <tr>
+        <td><code>dispose</code></td>
+        <td>Disables the affix functionality and removes any <code>.affix</code>, <code>.affix-top</code>, or <code>.affix-bottom</code> from the designated element.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 {% capture highlight %}
 $('#myAffix').CFW_Affix('checkPosition');
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
-
-#### `.CFW_Affix('dispose')`
-
-Disables the affix functionality and removes any `.affix`, `.affix-top`, or `.affix-bottom` from the designated element.
 
 ### Events
 
@@ -127,31 +140,31 @@ CFW's affix widget exposes a few events for hooking into affix functionality.
     </thead>
     <tbody>
       <tr>
-        <td>init.cfw.affix</td>
+        <td><code>init.cfw.affix</code></td>
         <td>This event is fired after the affix element has been initialized.</td>
       </tr>
       <tr>
-        <td>affix.cfw.affix</td>
+        <td><code>affix.cfw.affix</code></td>
         <td>This event is immediately before after the element is affixed.</td>
       </tr>
       <tr>
-        <td>affixed.cfw.affix</td>
+        <td><code>affixed.cfw.affix</code></td>
         <td>This event is after after the element has been affixed.</td>
       </tr>
       <tr>
-        <td>affix-top.cfw.affix</td>
+        <td><code>affix-top.cfw.affix</code></td>
         <td>This event is fired immediately before the element is affixed-top.</td>
       </tr>
       <tr>
-        <td>affixed-top.cfw.affix</td>
+        <td><code>affixed-top.cfw.affix</code></td>
         <td>This event is fired after the element has been affixed-top.</td>
       </tr>
       <tr>
-        <td>affix-bottom.cfw.affix</td>
+        <td><code>affix-bottom.cfw.affix</code></td>
         <td>This event is immediately before after the element is affixed-bottom.</td>
       </tr>
       <tr>
-        <td>affixed-bottom.cfw.affix</td>
+        <td><code>affixed-bottom.cfw.affix</code></td>
         <td>This event is fired after the element has been affixed-bottom.</td>
       </tr>
     </tbody>
@@ -159,7 +172,7 @@ CFW's affix widget exposes a few events for hooking into affix functionality.
 </div>
 
 {% capture highlight %}
-$('#myAffix').on('affix.cfw.affix', function () {
+$('#myAffix').on('affix.cfw.affix', function() {
   // do something...
 });
 {% endcapture %}

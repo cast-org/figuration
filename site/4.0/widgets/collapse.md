@@ -84,7 +84,7 @@ If you'd like it to default open, add the additional class `open` to the trigger
 
 ### Via JavaScript
 
-Enable manually with:
+Activate some content as a collapsible element.
 
 {% capture highlight %}
 $('#myCollapse').CFW_Collapse();
@@ -107,25 +107,25 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </thead>
     <tbody>
       <tr>
-        <td>target</td>
+        <td><code>target</code></td>
         <td>string</td>
         <td><code>null</code></td>
-        <td>The selector (jQuery style) of the target collapse item.</td>
+        <td>The selector of the target collapse item.</td>
       </tr>
       <tr>
-        <td>animate</td>
+        <td><code>animate</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
         <td>If collapse targets should expand and contract.</td>
       </tr>
       <tr>
-        <td>follow</td>
+        <td><code>follow</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>If browser focus should move when a collapse trigger is activated.</td>
       </tr>
       <tr>
-        <td>horizontal</td>
+        <td><code>horizontal</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>Use a horizontal transition instead of the default vertical transition.</td>
@@ -134,12 +134,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </table>
 </div>
 
-### Methods
-
-#### `.CFW_Collapse(options)`
-
-Activates the content as a collapsible element. Accepts an optional options `object`.
-
 {% capture highlight %}
 $('#myCollapse').CFW_Collapse({
   follow: false
@@ -147,21 +141,44 @@ $('#myCollapse').CFW_Collapse({
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
 
-#### `.CFW_Collapse('toggle')`
+### Methods
 
-Toggles a collapsible element to be shown or hidden.
+Method calls are made on the toggle/trigger element.
 
-#### `.CFW_Collapse('show')`
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Method Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>toggle</code></td>
+        <td>Toggles a collapsible element to be shown or hidden.</td>
+      </tr>
+      <tr>
+        <td><code>show</code></td>
+        <td>Shows a collapsible element.</td>
+      </tr>
+      <tr>
+        <td><code>hide</code></td>
+        <td>Hides a collapsible element.</td>
+      </tr>
+      <tr>
+        <td><code>dispose</code></td>
+        <td>Disables the collapse control functionality for a given element, leaving the collapse target is its current state.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-Shows a collapsible element.
+{% capture highlight %}
+$('#myCollapse').CFW_Collapse('show');
+{% endcapture %}
+{% renderHighlight highlight, "js" %}
 
-#### `.CFW_Collapse('hide')`
-
-Hides a collapsible element.
-
-#### `.CFW_Collapse('dispose')`
-
-Disables the collapse control functionality for a given element, leaving the collapse target is its current state.
 
 ### Events
 
@@ -177,23 +194,23 @@ Event callbacks happen on the toggle/trigger element.
     </thead>
     <tbody>
       <tr>
-        <td>init.cfw.collapse</td>
+        <td><code>init.cfw.collapse</code></td>
         <td>This event fires after the collapse item is initialized.</td>
       </tr>
       <tr>
-        <td>beforeShow.cfw.collapse</td>
+        <td><code>beforeShow.cfw.collapse</code></td>
         <td>This event is fired immediately when the <code>show</code> method is called.</td>
       </tr>
       <tr>
-        <td>afterShow.cfw.collapse</td>
+        <td><code>afterShow.cfw.collapse</code></td>
         <td>This event is fired when a collapse element has been made visible to the user (will wait for CSS transitions to complete).</td>
       </tr>
       <tr>
-        <td>beforeHide.cfw.collapse</td>
+        <td><code>beforeHide.cfw.collapse</code></td>
         <td>This event is fired immediately when the <code>hide</code> method is called.</td>
       </tr>
       <tr>
-        <td>afterHide.cfw.collapse</td>
+        <td><code>afterHide.cfw.collapse</code></td>
         <td>This event is fired when a collapse element has been hidden from the user (will wait for CSS transitions to complete).</td>
       </tr>
     </tbody>
@@ -201,7 +218,7 @@ Event callbacks happen on the toggle/trigger element.
 </div>
 
 {% capture highlight %}
-$('#myCollapse').on('afterHide.cfw.collapse', function () {
+$('#myCollapse').on('afterHide.cfw.collapse', function() {
   // do something...
 });
 {% endcapture %}

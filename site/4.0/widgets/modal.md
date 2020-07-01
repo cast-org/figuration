@@ -14,7 +14,7 @@ toc: true
 - Figuration only supports one modal at a time.  Nested modals are not supported, as this can cause difficult usability and accessibility issues.
 - Modals use `position: fixed`. Always try to place modal HTML code in a top-level position in your document, such as a direct chld of the `<body>` element. Putting modal HTML within a fixed position element will adversely affect placement.
 - There are some caveats regarding using modals on mobile devices. See [our browser support docs]({{ site.path }}/{{ version.docs }}/get-started/browsers-and-devices/#modals-and-dropdowns-on-mobile) for details.
-- Embedding YouTube videos in modals requires additional JavaScript not in Figuration to automatically stop playback and more. [See this helpful Stack Overflow post](https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal) for more information.
+- Embedding YouTube videos in modals requires additional JavaScript, not included in Figuration, to automatically stop playback and more. [See this helpful Stack Overflow post](https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal) for more information.
 - The [`autofocus`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-autofocus) HTML attribute has no effect in modals. To achieve the same effect you will need some custom JavaScript:
 {% capture highlight %}
 $('#myModal').on('afterShow.cfw.modal', function() {
@@ -1071,31 +1071,31 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </thead>
     <tbody>
       <tr>
-        <td>target</td>
+        <td><code>target</code></td>
         <td>string</td>
         <td><code>null</code></td>
-        <td>The selector (jQuery style) of the target modal.</td>
+        <td>The selector of the target modal.</td>
       </tr>
       <tr>
-        <td>animate</td>
+        <td><code>animate</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
         <td>If modal targets should fade and slide in.</td>
       </tr>
       <tr>
-        <td>unlink</td>
+        <td><code>unlink</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>If the <code>unlink</code> method should be called when the modal is hidden.  This leaves the modal behind in the DOM.</td>
       </tr>
       <tr>
-        <td>dispose</td>
+        <td><code>dispose</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>If the <code>dispose</code> method should be called when the modal is hidden. This will remove the modal from the DOM.</td>
       </tr>
       <tr>
-        <td>backdrop</td>
+        <td><code>backdrop</code></td>
         <td>boolean or the string <code>'static'</code></td>
         <td><code>true</code></td>
         <td>
@@ -1104,13 +1104,13 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
          </td>
       </tr>
       <tr>
-        <td>keyboard</td>
+        <td><code>keyboard</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
         <td>Closes the modal when escape key is pressed.</td>
       </tr>
       <tr>
-        <td>show</td>
+        <td><code>show</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>Shows the modal when initialized.</td>
@@ -1119,11 +1119,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </table>
 </div>
 
-### Methods
-
-#### `.CFW_Modal(options)`
-
-Activates a modal dialog. Accepts an optional options `object`.
 {% capture highlight %}
 $('#myModal').CFW_Modal({
   animate: false
@@ -1131,25 +1126,47 @@ $('#myModal').CFW_Modal({
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
 
-#### `.CFW_Modal('toggle')`
+### Methods
 
-Toggles a modal dialog to be shown or hidden.
+Method calls can be made on either the trigger or the target `<div class="modal">` element.
 
-#### `.CFW_Modal('show')`
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Method Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>toggle</code></td>
+        <td>Toggles a modal dialog to be shown or hidden.</td>
+      </tr>
+      <tr>
+        <td><code>show</code></td>
+        <td>Shows a modal dialog.</td>
+      </tr>
+      <tr>
+        <td><code>hide</code></td>
+        <td>Hides a modal dialog.</td>
+      </tr>
+      <tr>
+        <td><code>unlink</code></td>
+        <td>Hides the modal, removes events and attributes from both trigger and modal.</td>
+      </tr>
+      <tr>
+        <td><code>dispose</code></td>
+        <td>Calls the <code>unlink</code> method, and then removes the modal from the DOM.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-Shows a modal dialog.
-
-#### `.CFW_Modal('hide')`
-
-Hides a modal dialog.
-
-#### `.CFW_Modal('unlink')`
-
-Hides the modal, removes events and attributes from both trigger and modal.
-
-#### `.CFW_Modal('dispose')`
-
-Calls the `unlink` method, and then removes the modal from the DOM.
+{% capture highlight %}
+$('#myModal').CFW_Modal('show');
+{% endcapture %}
+{% renderHighlight highlight, "js" %}
 
 ### Events
 
@@ -1165,43 +1182,43 @@ Event callbacks happen on the target `<div class="modal">` element.
     </thead>
     <tbody>
       <tr>
-        <td>init.cfw.modal</td>
+        <td><code>init.cfw.modal</code></td>
         <td>This event fires after the modal item is initialized.</td>
       </tr>
       <tr>
-        <td>beforeShow.cfw.modal</td>
+        <td><code>beforeShow.cfw.modal</code></td>
         <td>This event is fired immediately when the <code>show</code> method is called.</td>
       </tr>
       <tr>
-        <td>scrollbarSet.cfw.modal</td>
+        <td><code>scrollbarSet.cfw.modal</code></td>
         <td>This event is fired immediately when the <code>&lt;body&gt;</code> padding is adjusted for the scrollbar width.</td>
       </tr>
       <tr>
-        <td>afterShow.cfw.modal</td>
+        <td><code>afterShow.cfw.modal</code></td>
         <td>This event is fired when a modal dialog has been made visible to the user (will wait for CSS transitions to complete).</td>
       </tr>
       <tr>
-        <td>scrollbarReset.cfw.modal</td>
+        <td><code>scrollbarReset.cfw.modal</code></td>
         <td>This event is fired immediately when the <code>&lt;body&gt;</code> padding adjustment for the scrollbar is removed.</td>
       </tr>
       <tr>
-        <td>beforeHide.cfw.modal</td>
+        <td><code>beforeHide.cfw.modal</code></td>
         <td>This event is fired immediately when the <code>hide</code> method is called.</td>
       </tr>
       <tr>
-        <td>afterHide.cfw.modal</td>
+        <td><code>afterHide.cfw.modal</code></td>
         <td>This event is fired when a modal dialog has been hidden from the user (will wait for CSS transitions to complete).</td>
       </tr>
       <tr>
-        <td>beforeUnlink.cfw.modal</td>
+        <td><code>beforeUnlink.cfw.modal</code></td>
         <td>This event is fired immediately when the <code>unlink</code> method is called. This event can occur after the `beforeHide` event if set to automatically unlink, or before if called via method.</td>
       </tr>
       <tr>
-        <td>afterUnlink.cfw.modal</td>
+        <td><code>afterUnlink.cfw.modal</code></td>
         <td>This event is fired when a modal item has been unlinked from its trigger item and the data-api removed. This event can occur after the <code>afterHide</code> event when invoked from the <code>unlink</code> method, or before if set to automatically unlink.</td>
       </tr>
       <tr>
-        <td>dispose.cfw.modal</td>
+        <td><code>dispose.cfw.modal</code></td>
         <td>This event is fired immediately before the modal item is removed from the DOM.</td>
       </tr>
     </tbody>
@@ -1209,7 +1226,7 @@ Event callbacks happen on the target `<div class="modal">` element.
 </div>
 
 {% capture highlight %}
-$('#myModal').on('afterHide.cfw.modal', function () {
+$('#myModal').on('afterHide.cfw.modal', function() {
   // do something...
 });
 {% endcapture %}

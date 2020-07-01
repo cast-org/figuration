@@ -439,43 +439,43 @@ Regions and controls are specified by data attributes `data-cfw-player="name"` t
     </thead>
     <tbody>
       <tr>
-        <td>player</td>
+        <td><code>player</code></td>
         <td>The main player container element.</td>
       </tr>
       <tr>
-        <td>control</td>
+        <td><code>control</code></td>
         <td>Wraps the play, pause, and stop control buttons.</td>
       </tr>
       <tr>
-        <td>play</td>
+        <td><code>play</code></td>
         <td>Play control button.</td>
       </tr>
       <tr>
-        <td>pause</td>
+        <td><code>pause</code></td>
         <td>Pause control button.</td>
       </tr>
       <tr>
-        <td>stop</td>
+        <td><code>stop</code></td>
         <td>Stop control button.</td>
       </tr>
       <tr>
-        <td>time</td>
+        <td><code>time</code></td>
         <td>Wraps the time displays and seek progress bar or slider.</td>
       </tr>
       <tr>
-        <td>current</td>
+        <td><code>current</code></td>
         <td>Current time location.</td>
       </tr>
       <tr>
-        <td>remainder</td>
+        <td><code>remainder</code></td>
         <td>Remaining playback time.</td>
       </tr>
       <tr>
-        <td>duration</td>
+        <td><code>duration</code></td>
         <td>Time playback duration.</td>
       </tr>
       <tr>
-        <td>seek</td>
+        <td><code>seek</code></td>
         <td>
           <p>Container for the seek progress bar or slider.</p>
           <p>If container has a class of <code>progress</code> a progress bar will be assumed. There must be a chlid <code>.progress-bar</code> element in order for the progress bar to display.  For example <code>&lt;span class="progress-bar" role="progressbar" data-cfw-player="seek-current"&gt;&lt;/span&gt;</code></p>
@@ -483,15 +483,15 @@ Regions and controls are specified by data attributes `data-cfw-player="name"` t
         </td>
       </tr>
       <tr>
-        <td>seek-current</td>
+        <td><code>seek-current</code></td>
         <td>Used for seek progress bar to display current time location.</td>
       </tr>
       <tr>
-        <td>seek-buffer</td>
+        <td><code>seek-buffer</code></td>
         <td>Unused.</td>
       </tr>
       <tr>
-        <td>mute</td>
+        <td><code>mute</code></td>
         <td>
           <p>Mute toggle button.</p>
           <p class="small mb-0">
@@ -500,7 +500,7 @@ Regions and controls are specified by data attributes `data-cfw-player="name"` t
         </td>
       </tr>
       <tr>
-        <td>volume</td>
+        <td><code>volume</code></td>
         <td>
           <p>Volume control.</p>
           <p>Use a child <code>&lt;input type="range"&gt;</code> element for a slider style control.</p>
@@ -510,11 +510,11 @@ Regions and controls are specified by data attributes `data-cfw-player="name"` t
         </td>
       </tr>
       <tr>
-        <td>loop</td>
+        <td><code>loop</code></td>
         <td>Loop toggle button.</td>
       </tr>
       <tr>
-        <td>caption</td>
+        <td><code>caption</code></td>
         <td>
           <p>Caption menu toggle button. Currently only supported for <code>&lt;video&gt;</code> elements.</p>
           <p>The menu is dynamically generated based on the <code>&lt;track&gt;</code> elements, and associated with the button automatically.</p>
@@ -523,14 +523,14 @@ Regions and controls are specified by data attributes `data-cfw-player="name"` t
         </td>
       </tr>
       <tr>
-        <td>caption-display</td>
+        <td><code>caption-display</code></td>
         <td>
           <p>Container for custom styling of captions.</p>
           <p>If this container is present, the default browser captions will be hidden. The currently active caption content will be displayed in this container, allowing for custom styling or placement of the captions.</p>
         </td>
       </tr>
       <tr>
-        <td>transcript</td>
+        <td><code>transcript</code></td>
         <td>
           <p>Transcript menu toggle button. Transcript text content is genereated from selected track item.</p>
           <p>The menu is dynamically generated based on the <code>&lt;track&gt;</code> elements, and associated with the button automatically.</p>
@@ -539,15 +539,15 @@ Regions and controls are specified by data attributes `data-cfw-player="name"` t
         </td>
       </tr>
       <tr>
-        <td>description</td>
+        <td><code>description</code></td>
         <td>Audio description, using an alternate video source, toggle button.</td>
       </tr>
       <tr>
-        <td>textdescription</td>
+        <td><code>textdescription</code></td>
         <td>Audio description, using text-based description content, toggle button.</td>
       </tr>
       <tr>
-        <td>fullscreen</td>
+        <td><code>fullscreen</code></td>
         <td>Fullscreen toggle button. Currently only supported for <code>&lt;video&gt;</code> elements.</td>
       </tr>
     </tbody>
@@ -583,49 +583,49 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </thead>
     <tbody>
       <tr>
-        <td>mediaDescribe</td>
+        <td><code>mediaDescribe</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>Use the description media source.</td>
       </tr>
       <tr>
-        <td>textDescribe</td>
+        <td><code>textDescribe</code></td>
         <td>integer</td>
         <td><code>-1</code></td>
         <td>Turn on the text-based description. The integer value reflects the track count (starting from 0) for the desired <code>&lt;track&gt;</code> element to enable.  Default value is -1 which leaves the description turned off. Currently only tracks of <strong>kind="descriptions"</strong> is supported.</td>
       </tr>
       <tr>
-        <td>textDescribeAnnounce</td>
+        <td><code>textDescribeAnnounce</code></td>
         <td>boolean</td>
         <td><code>false</code></td>
         <td>When a text-based description is selected, allow the description text to be announced by a screen reader.</td>
       </tr>
       <tr>
-        <td>textDescribeVisible</td>
+        <td><code>textDescribeVisible</code></td>
         <td>boolean</td>
         <td><code>true</code></td>
         <td>When a text-based description is selected, display the description text.</td>
       </tr>
       <tr>
-        <td>transcript</td>
+        <td><code>transcript</code></td>
         <td>integer</td>
         <td><code>-1</code></td>
         <td>Turn on the interactive transcript by default.  The integer value reflects the track count (starting from 0) for the desired <code>&lt;track&gt;</code> element to enable.  Default value is -1 which leaves the transcript turned off. Currently only tracks of type <strong>caption</strong> or <strong>subtitles</strong> are supported.</td>
       </tr>
       <tr>
-        <td>transcriptScroll</td>
+        <td><code>transcriptScroll</code></td>
         <td>booelan</td>
         <td><code>true</code></td>
         <td>If the transcript should automatically scroll to keep the current caption in the visible area.</td>
       </tr>
       <tr>
-        <td>transcriptDescribe</td>
+        <td><code>transcriptDescribe</code></td>
         <td>booelan</td>
         <td><code>true</code></td>
         <td>If the transcript should show the matching <code>descriptions</code> track for the currently active transcript.</td>
       </tr>
       <tr>
-        <td>transcriptOption</td>
+        <td><code>transcriptOption</code></td>
         <td>booelan</td>
         <td><code>true</code></td>
         <td>If the transcript options should be shown in the transcript menu.</td>
@@ -634,68 +634,97 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </table>
 </div>
 
-### Methods
-
-Note: The methods and properties as defined at [HTML Audio/Video DOM Reference](https://www.w3schools.com/tags/ref_av_dom.asp) can be called directly on the `<audio>`/`<video>` element and will update the custom player controls accordingly.
-
-#### `.CFW_Player()`
-
-Activate the custom player controls.
-
 {% capture highlight %}
 $('#myPlayer').CFW_Player();
 {% endcapture %}
 {% renderHighlight highlight, "js" %}
 
-#### `.CFW_Player('play')`
+### Methods
 
-Start playing the track from the current time location.
+Method calls should be made on the `data-cfw="player"` wrapping container.
 
-#### `.CFW_Player('pause')`
+Note: The methods and properties as defined at [HTML Audio/Video DOM Reference](https://www.w3schools.com/tags/ref_av_dom.asp) can be called directly on the `<audio>`/`<video>` element and will update the custom player controls accordingly.
 
-Pause the track at current time location.
+<div class="table-scroll">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th style="width: 150px;">Method Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>play</code></td>
+        <td>Start playing the track from the current time location.</td>
+      </tr>
+      <tr>
+        <td><code>pause</code></td>
+        <td>Pause the track at current time location.</td>
+      </tr>
+      <tr>
+        <td><code>stop</code></td>
+        <td>Stop playing the track and reset to the beginning.</td>
+      </tr>
+      <tr>
+        <td><code>mute</code></td>
+        <td>Toggle whether or not the volume is muted.</td>
+      </tr>
+      <tr>
+        <td><code>loop</code></td>
+        <td>
+          <p>Toggle the loop/repeat setting.  Looping will cause the the track to resume playing from the start when the end is reached.</p>
+          <p>An optional boolean value can be given as an argument to force the loop/repeat mode.</p>
+          Optional value is passed in the form: <code>$('#myPlayer').CFW_Player('loop', [boolean]);</code>
+        </td>
+      </tr>
+      <tr>
+        <td><code>speed</code></td>
+        <td>
+          <p>Change the playback rate to the media.</p>
+          <p>Called in the form: <code>`$('#myPlayer').CFW_Player('speed', rate);</code></p>
+          <code>rate</code> is a float value.
+          <ul>
+            <li><code>1.0</code> is normal speed</li>
+            <li><code>0.5</code> is half speed (slower)</li>
+            <li><code>2.0</code> is double speed (faster)</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td><code>trackSet</code></td>
+        <td>
+          <p>Change the caption/subtitle track. <code>trackID</code> is the 0-indexed array of track items defined in the <code>&lt;video&gt;</code> element. Setting <code>trackID</code> to <code>-1</code> will turn off the captions/subtitles.</p>
+          Called in the form: <code>$('#myPlayer').CFW_Player('trackSet', trackID);</code>
+        </td>
+      </tr>
+      <tr>
+        <td><code>scriptSet</code></td>
+        <td>
+          <p>Change the transcript track. <code>trackID</code> is the 0-indexed array of track items defined in the <code>&lt;video&gt;</code> element. Setting <code>trackID</code> to <code>-1</code> will turn off the transcript.</p>
+          Called in the form: <code>$('#myPlayer').CFW_Player('scriptSet', trackID);</code>
+        </td>
+      </tr>
+      <tr>
+        <td><code>fullscreen</code></td>
+        <td>Toggle the fullscreen mode of the player.</td>
+      </tr>
+      <tr>
+        <td><code>description</code></td>
+        <td>Toggle the use of the audio description video source.</td>
+      </tr>
+      <tr>
+        <td><code>dispose</code></td>
+        <td>Remove any associated transcript, dropdowns, data, and event listeners created by the player widget.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-#### `.CFW_Player('stop')`
-
-Stop playing the track and reset to the beginning.
-
-#### `.CFW_Player('mute')`
-
-Toggle whether or not the volume is muted.
-
-#### `.CFW_Player('loop', [boolean])`
-
-Toggle the loop/repeat setting.  Looping will cause the the track to resume playing from the start when the end is reached.
-
-An optional boolean value can be given as an argument to force the loop/repeat mode.
-
-#### `.CFW_Player('speed', rate)`
-
-Change the playback rate to the media. `rate` is a float value.
-
-- 1.0 is normal speed
-- 0.5 is half speed (slower)
-- 2.0 is double speed (faster)
-
-#### `.CFW_Player('trackSet', trackID)`
-
-Change the caption/subtitle track.  `trackID` is the 0-indexed array of track items defined in the `<video>` element. Setting `trackID` to `-1` will turn off the captions/subtitles.
-
-#### `.CFW_Player('scriptSet', trackID)`
-
-Change the transcript track.  `trackID` is the 0-indexed array of track items defined in the `<video>` element. Setting `trackID` to `-1` will turn off the transcript.
-
-#### `.CFW_Player('fullscreen')`
-
-Toggle the fullscreen mode of the player.
-
-#### `.CFW_Player('description')`
-
-Toggle the use of the audio description video source.
-
-#### `.CFW_Player('dispose')`
-
-Remove any associated transcript, dropdowns, data, and event listeners created by the player widget.
+{% capture highlight %}
+$('#myPlayer').CFW_Player('play');
+{% endcapture %}
+{% renderHighlight highlight, "js" %}
 
 ### Events
 
@@ -711,39 +740,39 @@ Event callbacks happen on the `<audio>`/`<video>` element, but will bubble up th
     </thead>
     <tbody>
       <tr>
-        <td>noSupport.cfw.player</td>
+        <td><code>noSupport.cfw.player</code></td>
         <td>This event fires if it is determined the browser does not support HTML5 audio or the specified MIME type.</td>
       </tr>
       <tr>
-        <td>ready.cfw.player</td>
+        <td><code>ready.cfw.player</code></td>
         <td>This event fires after the player item is initialized.</td>
       </tr>
       <tr>
-        <td>error.cfw.player</td>
+        <td><code>error.cfw.player</code></td>
         <td>This event fires when there is an error that cannot be handled.</td>
       </tr>
       <tr>
-        <td>beforeTranscriptShow.cfw.player</td>
+        <td><code>beforeTranscriptShow.cfw.player</code></td>
         <td>This event fires before the transcript is shown.</td>
       </tr>
       <tr>
-        <td>afterTranscriptShow.cfw.player</td>
+        <td><code>afterTranscriptShow.cfw.player</code></td>
         <td>This event fires after the transcript is shown.</td>
       </tr>
       <tr>
-        <td>beforeTranscriptHide.cfw.player</td>
+        <td><code>beforeTranscriptHide.cfw.player</code></td>
         <td>This event fires before the transcript is hidden/disabled.</td>
       </tr>
       <tr>
-        <td>afterTranscriptHide.cfw.player</td>
+        <td><code>afterTranscriptHide.cfw.player</code></td>
         <td>This event fires after the transcript is hidden/disabled.</td>
       </tr>
       <tr>
-        <td>enterFullscreen.cfw.player</td>
+        <td><code>enterFullscreen.cfw.player</code></td>
         <td>This event fires after the player is put into fullscreen mode.</td>
       </tr>
       <tr>
-        <td>exitFullscreen.cfw.player</td>
+        <td><code>exitFullscreen.cfw.player</code></td>
         <td>This event fires after the player exits fullscreen mode.</td>
       </tr>
     </tbody>
@@ -751,7 +780,7 @@ Event callbacks happen on the `<audio>`/`<video>` element, but will bubble up th
 </div>
 
 {% capture highlight %}
-$('#myPlayer').on('ready.cfw.player', function () {
+$('#myPlayer').on('ready.cfw.player', function() {
   // do something...
 });
 {% endcapture %}
