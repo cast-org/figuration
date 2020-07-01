@@ -2464,25 +2464,25 @@ fieldset:disabled a.btn, .btn-check-input[disabled] ~ .btn, .btn-check-input:dis
 }
 
 @media (min-width: 36em) {
-  .container-sm {
+  .container, .container-sm {
     max-width: 34rem;
   }
 }
 
 @media (min-width: 48em) {
-  .container-sm, .container-md {
+  .container, .container-sm, .container-md {
     max-width: 45rem;
   }
 }
 
 @media (min-width: 62em) {
-  .container-sm, .container-md, .container-lg {
+  .container, .container-sm, .container-md, .container-lg {
     max-width: 60rem;
   }
 }
 
 @media (min-width: 75em) {
-  .container-sm, .container-md, .container-lg, .container-xl {
+  .container, .container-sm, .container-md, .container-lg, .container-xl {
     max-width: 72rem;
   }
 }

@@ -4673,7 +4673,12 @@ if (typeof jQuery === 'undefined') {
 
         handleClose : function(e) {
             e.preventDefault();
-            if ($(e.currentTarget).closest(dismiss, this.$element).not('.disabled, :disabled').length) {
+
+            if (e.currentTarget === this.$parent[0]) {
+                return;
+            }
+
+            if ($(e.currentTarget).not('.disabled, :disabled').length) {
                 this.close();
             }
         },

@@ -49,8 +49,8 @@
 }
 
 .cf-nav-img {
-  width: 1rem;
-  height: 1rem;
+  width: 1.125rem;
+  height: 1.125rem;
 }
 
 .cf-footer {
@@ -614,8 +614,12 @@
   margin-top: 1.5rem;
 }
 
-.cf-content table td:first-child > code,
-.cf-content table th:first-child > code {
+:not(.cf-example) table {
+  font-size: 0.875rem;
+}
+
+:not(.cf-example) table th:first-child,
+:not(.cf-example) table td:first-child {
   white-space: nowrap;
 }
 
@@ -692,10 +696,10 @@ h4 > code {
   float: right;
   width: 4.5rem;
   min-height: 1.75rem;
+  margin-left: .5rem;
   overflow: hidden;
   clear: right;
   text-align: center;
-  white-space: nowrap;
 }
 
 .cf-docs-keys dd {
