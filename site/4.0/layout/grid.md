@@ -171,7 +171,7 @@ For example, here's are some grid layouts that apply to every device and viewpor
     </div>
   </div>
 
-  <div class="row no-gutters">
+  <div class="row g-0">
     <div class="col">Columns</div>
     <div class="col">with no</div>
     <div class="col">gutters</div>
@@ -580,7 +580,7 @@ The gutters between columns in our default, predefined grid classes can be remov
 In practice, here's how it looks. Note you can continue to use this with all other predefined grid classes (including column widths, responsive tiers, reorders, and more).
 
 {% capture example %}
-<div class="row no-gutters">
+<div class="row g-0">
   <div class="col-sm-6 col-md-8">.col-sm-6 .col-md-8</div>
   <div class="col-6 col-md-4">.col-6 .col-md-4</div>
 </div>
