@@ -41,6 +41,15 @@
     }
 }
 
+@include media-breakpoint-up(lg) {
+    .cf-sidebar {
+        width: 20%;
+    }
+    .cf-main {
+        width: 80%;
+    }
+}
+
 @supports (display: grid) {
     .cf-toc-align {
         @include media-breakpoint-up(lg) {

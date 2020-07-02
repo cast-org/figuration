@@ -53,7 +53,7 @@ Most custom components do not have `position: relative` by default, so we need t
 Columns are also `position: relative` by default, so clickable columns only require the `.link-stretch` class on a link. However, stretching a link over an entire `.row` requires `.position-static` on the column and `.position-relative` on the row.
 
 {% capture example %}
-<div class="row no-gutters bg-light position-relative">
+<div class="row g-0 bg-light position-relative">
   <div class="col-md-6 mb-md-0 p-md-1">
     <img class="me-1" data-src="holder.js/100px128" alt="Generic placeholder image">
   </div>

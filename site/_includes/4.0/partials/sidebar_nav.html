@@ -22,15 +22,19 @@
     {%- endif -%}
     <li class="mb-0_25{% if page_count > 0 %} has-children{% endif %}">
       {%- if group_slug == 'about' -%}
-      <a href="{{ site.path }}/{{ group_slug }}/{{ first_slug }}/" class="cf-sidebar-header fs-large font-weight-sbold{% if group == group_slug %} active open{% endif %}" data-cfw="collapse" data-cfw-collapse-target="#sidenav{{ forloop.index }}"{{- current_sect -}}>
+      <a href="{{ site.path }}/{{ group_slug }}/{{ first_slug }}/" class="nav-link cf-sidebar-header fs-large font-weight-sbold{% if group == group_slug %} active open{% endif %}" data-cfw="collapse" data-cfw-collapse-target="#sidenav{{ forloop.index }}"{{- current_sect -}}>
       {%- else -%}
-      <a href="{{ site.path }}{{ pathVersion }}/{{ group_slug }}/{{ first_slug }}/" class="cf-sidebar-header fs-large font-weight-sbold{% if group == group_slug %} active open{% endif %}" data-cfw="collapse" data-cfw-collapse-target="#sidenav{{ forloop.index }}"{{- current_sect -}}>
+      <button class="nav-link cf-sidebar-header fs-large font-weight-sbold{% if group == group_slug %} active open{% endif %}" data-cfw="collapse" data-cfw-collapse-target="#sidenav{{ forloop.index }}"{{- current_sect -}}>
       {%- endif -%}
         <span class="nav-link-inner">
           {%- if page_count > 0 -%}<span class="caret" aria-hidden="true"></span>{%- endif -%}
           <span class="cf-sidebar-header-title{{ active_sect }}">{{- navgroup.title -}}</span>
         </span>
+      {%- if group_slug == 'about' -%}
       </a>
+      {%- else -%}
+      </button>
+      {%- endif -%}
       <div id="sidenav{{ forloop.index }}">
         <ul class="nav flex-column mb-0 pb-0_25">
           {% for doc in navgroup.pages %}
