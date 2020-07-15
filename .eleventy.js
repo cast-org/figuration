@@ -141,8 +141,10 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addLayoutAlias('alias', 'layouts/alias.html');
 
     // Static assets
-    eleventyConfig.addPassthroughCopy('site/assets', 'assets');
-    eleventyConfig.addPassthroughCopy('LICENSE', '/');
+    eleventyConfig.addPassthroughCopy({
+        'site/assets': '/assets',
+        'LICENSE': 'LICENSE'
+    });
 
     eleventyConfig.setLiquidOptions({
         dynamicPartials: true
