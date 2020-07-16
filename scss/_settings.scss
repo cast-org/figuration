@@ -1047,11 +1047,14 @@ $dropdown-back-spacer-x:        .375rem !default;
 // =====
 $nav-link-padding-x:            1rem !default;
 $nav-link-padding-y:            .3125rem !default;
+$nav-link-font-size:            null !default;
+$nav-link-font-weight:          null !default;
+$nav-link-color:                null !default;
 $nav-link-decoration:           if($link-decoration == none, null, none) !default;
+$nav-link-hover-color:          null !default;
 $nav-link-hover-decoration:     if($link-hover-decoration == underline, none, null) !default;
 $nav-link-disabled-opacity:     .6 !default;
 $nav-link-disabled-color:       $component-disabled-color !default;
-
 
 $nav-tabs-border-color:         $component-border-color !default;
 $nav-tabs-border-width:         $border-width !default;

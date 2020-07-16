@@ -427,11 +427,43 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$nav-link-font-size</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Font size for base nav links.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$nav-link-font-weight</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Font weight for base nav links.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$nav-link-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Text color for base nav links.
+        </td>
+      </tr>
+      <tr>
         <td><code>$nav-link-decoration</code></td>
         <td>string</td>
         <td><code>if($link-decoration == none, null, none)</code></td>
         <td>
           Text decoration for base nav links.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$nav-link-hover-color</code></td>
+        <td>string</td>
+        <td><code>null</code></td>
+        <td>
+          Text color for base nav links in hover or focus state.
         </td>
       </tr>
       <tr>
