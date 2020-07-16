@@ -728,6 +728,9 @@ $btn-default-hover-border-color:    $uibase-400 !default;
 $btn-default-active-bg:             $uibase-200 !default;
 $btn-default-active-color:          color-if-contrast($btn-default-hover-color, $btn-default-active-bg) !default;
 $btn-default-active-border-color:   $uibase-400 !default;
+$btn-default-disabled-bg:           $btn-default-bg !default;
+$btn-default-disabled-color:        $btn-default-color !default;
+$btn-default-disabled-border-color: $btn-default-border-color !default;
 
 $btn-link-color:                    $link-color !default;
 $btn-link-hover-color:              $link-hover-color !default;

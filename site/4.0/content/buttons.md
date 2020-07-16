@@ -684,6 +684,30 @@ The available [Customization options]({{ site.path }}/{{ version.docs }}/get-sta
         </td>
       </tr>
       <tr>
+        <td><code>$btn-default-disabled-bg</code></td>
+        <td>string</td>
+        <td><code>$btn-default-bg</code></td>
+        <td>
+          Default button background color for disabled state.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$btn-default-disabled-color</code></td>
+        <td>string</td>
+        <td><code>$btn-default-color</code></td>
+        <td>
+          Default button text color for disabled state.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$btn-default-disabled-border-color</code></td>
+        <td>string</td>
+        <td><code>$btn-default-border-color</code></td>
+        <td>
+          Default button border color for disabled state.
+        </td>
+      </tr>
+      <tr>
         <td><code>$btn-link-color</code></td>
         <td>string</td>
         <td><code>$link-color</code></td>
@@ -776,7 +800,7 @@ Here are the mixins related to buttons that we use to help generate our CSS.  Yo
 Build a color variant to be applied to a button.
 
 {% capture highlight %}
-@include button-variant($parent, $color, $bg, $border, $focus-shadow, $hover-color, $hover-bg, $hover-border, $active-color, $active-bg, $active-border);
+@include button-variant($parent, $color, $bg, $border, $focus-shadow, $hover-color, $hover-bg, $hover-border, $active-color, $active-bg, $active-border, $disabled-color, $disabled-bg, $disabled-border);
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
 
@@ -877,6 +901,30 @@ Build a color variant to be applied to a button.
         <td>none</td>
         <td>
           Border color for the active button state.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$disabled-color</code></td>
+        <td>string</td>
+        <td>none</td>
+        <td>
+          Text color for the disabled button state.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$disabled-bg</code></td>
+        <td>string</td>
+        <td>none</td>
+        <td>
+          Background color for the disabled button state.
+        </td>
+      </tr>
+      <tr>
+        <td><code>$disabled-border</code></td>
+        <td>string</td>
+        <td>none</td>
+        <td>
+          Border color for the disabled button state.
         </td>
       </tr>
     </tbody>
