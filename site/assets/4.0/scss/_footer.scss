@@ -2,8 +2,8 @@
 .cf-footer {
     @include font-size(map-get($font-sizes, "small"));
     color: $black;
-    background-color: palette($uibase, 150);
-    border-top: 2px solid $uibase-700;
+    background-color: palette($uibase, 100);
+    border-top: 1px solid $uibase-400;
 
     a {
         color: palette($primary, 600);

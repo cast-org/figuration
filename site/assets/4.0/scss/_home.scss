@@ -1,10 +1,12 @@
 .home-icons {
+    color: $uibase-700;
     white-space: nowrap;
 
     .far,
     .fas {
         @include font-size(3.5rem);
         vertical-align: middle;
+        filter: drop-shadow(2px 2px .2rem rgba(0, 0, 0, .35));
     }
 
     .fa-mobile-alt {
@@ -26,6 +28,9 @@
     > .small {
         margin-top: -.75rem;
     }
+    .list-item img {
+        filter: drop-shadow(2px 2px .2rem rgba(0, 0, 0, .35));
+    }
     @include media-breakpoint-up(md) {
         margin-top: 2.2rem;
     }
@@ -35,14 +40,11 @@
     padding: 2rem 1.5rem;
     margin-bottom: 2rem;
     color: rgba(255, 255, 255, .9);
-    background-color: #0f6a9e;
-    background-image: linear-gradient(135deg, #0c5782 0%, #117cba 100%);
+    background-color: #116fa9;
+    background-image: linear-gradient(135deg, #0f6397 0%, #137abb 100%);
 
     .logo-home {
-        display: block;
-        width: 100%;
-        margin: 0 auto;
-        filter: drop-shadow(0 0 7px rgba(255, 255, 255, .15));
+        filter: drop-shadow(0 0 7px rgba(255, 255, 255, .175));
     }
 
     h1,
@@ -51,8 +53,17 @@
         color: $white;
     }
 
+    h1 {
+        @include font-size(3rem);
+        line-height: 1;
+    }
+
+    .home-icons {
+        color: $uibase-100;
+    }
+
     .lead {
-        margin-top: 1rem;
+        margin-top: .5rem;
         margin-bottom: 1.5rem;
         @include font-size(1.5rem);
     }
@@ -69,6 +80,7 @@
 }
 
 .btn-home {
+    max-width: 10rem;
     padding: .75rem 2rem;
     font-weight: 600;
     border-width: 2px;
@@ -77,17 +89,17 @@
 
 .btn-start {
     color: #fff;
-    background-color: #2a75a0;
+    background-color: #27517b;
     border-color: #dee;
 
     @include hover-focus() {
         color: #222;
-        background-color: #e7f0f5;
+        background-color: #bfdff8;
     }
 }
 .btn-download {
     color: #fff;
-    background-color: #2a75a0;
+    background-color: #2c7cb1;
     border-color: #dee;
 
     @include hover-focus() {
@@ -98,17 +110,9 @@
 
 // Feed
 .cf-feed {
-    padding: 2rem 0;
-    margin-top: 2rem;
+    padding: .375rem 0;
+    margin-top: 1rem;
     text-align: center;
-    background-color: #0f6a9e;
-    background-image: linear-gradient(135deg, #117cba 0%, #0c5782 100%);
-
-    a {
-        color: rgba(255, 255, 255, .9);
-
-        @include hover-focus() {
-            color: rgba(255, 255, 255, 1);
-        }
-    }
+    background-color: #116fa9;
+    background-image: linear-gradient(135deg, #137abb 0%, #0f6397 100%);
 }

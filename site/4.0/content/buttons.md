@@ -238,7 +238,6 @@ Disabled buttons using the `<a>` element behave a bit different:
 ## Checkbox and Radio Input Buttons
 
 Figuration's `.btn` styles can be applied to checkbox and radio inputs as well. By using a wrapping `.btn-check` class, visually hiding the `<input>` with `.btn-check-input`, and the sibling selector (`~`) to control `.btn` styling based on the `<input>`'s state.
-**A single class is used to consolidate layout and behavior of their HTML elements.**
 
 The `<input>`s and `<label>`s are sibling elements as opposed to an `<input>` within a `<label>`. You will need to use `id` and `for` attributes to associate the `<input>` and `<label>` elements.
 
@@ -306,6 +305,24 @@ Disabled sytling will also be applied if the input buttons are contained within 
 ### Grouped Input Buttons
 
 You can also use `.btn-check`s inside a `.btn-group` for grouping controls together.
+
+{% capture example %}
+<div class="btn-group">
+  <div class="btn-check">
+    <input id="check1-0" type="checkbox" class="btn-check-input" checked>
+    <label for="check1-0" class="btn btn-outline-info">Checkbox 1</label>
+  </div>
+  <div class="btn-check">
+    <input id="check1-1" type="checkbox" class="btn-check-input">
+    <label for="check1-1" class="btn btn-outline-info">Checkbox 2</label>
+  </div>
+  <div class="btn-check">
+    <input id="check1-2" type="checkbox" class="btn-check-input" disabled>
+    <label for="check1-2" class="btn btn-outline-info">Checkbox 3</label>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example %}
 
 {% capture example %}
 <div class="btn-group">

@@ -3,10 +3,13 @@ layout: home
 ---
 
 <div class="home-splash">
-  <div class="container">
+  <div class="container-md">
     <div class="row flex-md-center flex-md-items-center pb-2 mb-2 border-b">
-      <div class="col-6 col-sm-4 col-xl-3 mx-auto mx-md-0">
+      <div class="col-8 col-sm-4 col-xl-3 mx-auto mx-md-0 pb-0_5 pb-sm-0">
+        {%- comment -%}
         {% include "./icons/figuration-solid.svg", class: "logo-home img-fluid" %}
+        {% endcomment -%}
+        <img src="{{ site.path }}/assets/brand/figuration-solid.png" class="logo-home img-fluid" alt="Figuration">
       </div>
       <div class="w-100 d-md-none"></div>
       <div class="col-sm-9 col-md-7 col-lg-6 mx-auto mx-md-0 text-center text-md-start">
@@ -43,7 +46,7 @@ layout: home
         </div>
         <p>Mobile first design for phones, tablets, and desktops.</p>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4 mt-0_5 mt-sm-0">
         <h2>Accessible</h2>
         <div class="home-icons mb-0_5" aria-hidden="true">
           <span class="far fa-keyboard"></span>
@@ -51,7 +54,7 @@ layout: home
         </div>
         <p>Accessibility for keyboard and screen reader users.</p>
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4 mt-0_5 mt-sm-0">
         <h2>Flexible</h2>
         <div class="home-icons mb-0_5" aria-hidden="true">
           <span class="far fa-hand-pointer"></span>
@@ -63,7 +66,7 @@ layout: home
   </div>
 </div>
 
-<div class="container">
+<div class="container-md">
   <div class="row pb-1 border-b">
     <div class="col-sm-5 offset-sm-1 text-center">
       <h2>Faster Development</h2>
@@ -84,7 +87,7 @@ layout: home
   </div>
 </div>
 
-<div class="container border-b py-2">
+<div class="container-md border-b py-2">
   <div class="row text-center text-md-start">
     <div class="col-md-6">
       <h2>Get Started Now</h2>
@@ -104,7 +107,7 @@ layout: home
   </div>
 </div>
 
-<div class="container border-b py-2">
+<div class="container-md border-b py-2">
   <div class="row text-center text-md-start">
     <div class="col-md-6 pb-1 pb-md-0">
       <h2>Flexbox Enabled</h2>
@@ -128,7 +131,7 @@ layout: home
       <h2>Browser Support</h2>
       <p>Most current browers are supported.  Additional details can be found on the <a href="{{ site.path }}/{{ site.version.docs }}/get-started/browsers-and-devices/">Browsers &amp; Devices page</a>.</p>
     </div>
-    <div class="col-sm-6 col-lg-8 home-feature">
+    <div class="col-sm-6 col-lg-8 home-feature mt-1 mt-sm-0">
       <ul class="list list-horizontal flex-wrap flex-center text-center small">
         <li class="list-item"><img src="{{ site.path }}/assets/img/chrome.png" class="d-block" alt="" />Chrome</li>
         <li class="list-item"><img src="{{ site.path }}/assets/img/firefox.png" class="d-block" alt="" />Firefox</li>
@@ -143,6 +146,7 @@ layout: home
 </div>
 
 <div class="cf-feed">
+  <!---
   <div class="container">
     <div class="row">
       <div class="col-sm-8 offset-sm-2 col-md-6 offset-md-3">
@@ -150,4 +154,5 @@ layout: home
       </div>
     </div>
   </div>
+  -->
 </div>

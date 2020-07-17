@@ -39,7 +39,7 @@ module.exports = {
       "jquery_hash":    "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj",
       "popper":         "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js",
       "popper_hash":    "sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN",
-      "fontawe":        "https://use.fontawesome.com/releases/v5.8.2/css/all.css",
-      "fontawe_hash":   "sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      "fontawe":        "https://use.fontawesome.com/releases/v5.13.1/css/all.css",
+      "fontawe_hash":   "sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q"
    }
 };

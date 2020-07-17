@@ -225,7 +225,9 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
 Caveat About Link Functionality of `<a>`
 {.h5}
 
-By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`. As noted in the section about [disabled state for buttons]({{ site.path }}/{{ version.docs }}/content/buttons/#disabled-state) (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in all browsers, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.
+By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them.
+
+However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`. As noted in the accessibility section about [disabled anchors]({{ site.path }}/{{ version.docs }}/get-started/accessibility/#disabled-anchors), you must manually modify these controls by adding `tabindex="-1"` to prevent them from receiving focus and `aria-disabled="disabled"` to signal their state to assistive technologies.
 {% endcapture %}
 {% renderCallout, callout, "warning" %}
 
@@ -1040,7 +1042,7 @@ Custom form controls and selects are also supported.
 Provide valuable, actionable feedback to your users with HTML5 form validation–[available in all our supported browsers](https://caniuse.com/#feat=form-validation). Choose from the browser default validation feedback, or implement custom messages with our built-in classes and starter JavaScript.
 
 {% capture callout %}
-We currently recommend using custom validation styles, as native browser default validation messages are not consistently exposed to assistive technologies in all browsers (most notably, Chrome on desktop and mobile).
+We are aware that currently the client-side custom validation styles and tooltips are not accessible, since they are not exposed to assistive technologies. While we work on a solution, we'd recommend either using the server-side option or the default browser validation method.
 {% endcapture %}
 {% renderCallout, callout, "warning" %}
 
@@ -1191,7 +1193,9 @@ While these feedback styles cannot be styled with CSS, you can still customize t
 
 ### Server Side
 
-We recommend using client side validation, but in case you require server side, you can indicate invalid and valid form fields with `.is-invalid` and `.is-valid`. Note that `.invalid-feedback` is also supported with these classes.
+When using server side validation you can indicate invalid and valid form fields with `.is-invalid` and `.is-valid`. Note that `.invalid-feedback` is also supported with these classes.
+
+For invalid fields, ensure that the invalid feedback/error message is associated with the relevant form field using `aria-describedby` (noting that this attribute allows more than one `id` to be referenced, in case the field already points to additional form text).
 
 {% capture example %}
 <form>
@@ -1210,33 +1214,33 @@ We recommend using client side validation, but in case you require server side, 
       <label for="validate-server-3">Username</label>
       <div class="input-group">
         <span class="input-group-text" id="validate-server-4">@</span>
-        <input type="text" class="form-control input-group-end is-invalid" id="validate-server-3" placeholder="Username" aria-describedby="validate-server-4" required>
-        <div class="invalid-feedback">Please choose a username.</div>
+        <input type="text" class="form-control input-group-end is-invalid" id="validate-server-3" placeholder="Username" aria-describedby="validate-server-4 validate-server-4-fb" required>
+        <div id="validate-server-4-fb" class="invalid-feedback">Please choose a username.</div>
       </div>
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-6 mb-1">
       <label for="validate-server-5">City</label>
-      <input type="text" class="form-control is-invalid" id="validate-server-5" placeholder="City" required>
-      <div class="invalid-feedback">Please provide a valid city.</div>
+      <input type="text" class="form-control is-invalid" id="validate-server-5" placeholder="City" aria-describedby="validate-server-5-fb" required>
+      <div id="validate-server-5-fb" class="invalid-feedback">Please provide a valid city.</div>
     </div>
     <div class="col-md-3 mb-1">
       <label for="validate-server-6">State</label>
-      <input type="text" class="form-control is-invalid" id="validate-server-6" placeholder="State" required>
-      <div class="invalid-feedback">Please provide a valid state.</div>
+      <input type="text" class="form-control is-invalid" id="validate-server-6" placeholder="State" aria-describedby="validate-server-6-fb" required>
+      <div id="validate-server-6-fb" class="invalid-feedback">Please provide a valid state.</div>
     </div>
     <div class="col-md-3 mb-1">
       <label for="validate-server-7">Zip</label>
-      <input type="text" class="form-control is-invalid" id="validate-server-7" placeholder="Zip" required>
-      <div class="invalid-feedback">Please provide a valid zip.</div>
+      <input type="text" class="form-control is-invalid" id="validate-server-7" placeholder="Zip" aria-describedby="validate-server-7-fb" required>
+      <div id="validate-server-7-fb" class="invalid-feedback">Please provide a valid zip.</div>
     </div>
   </div>
   <div class="form-group">
     <div class="form-check">
-      <input class="form-check-input is-invalid" type="checkbox" value="" id="validate-server-8" required>
+      <input class="form-check-input is-invalid" type="checkbox" value="" id="validate-server-8" aria-describedby="validate-server-8-fb" required>
       <label class="form-check-label" for="validate-server-8">Agree to terms and conditions</label>
-      <div class="invalid-feedback">You must agree before submitting.</div>
+      <div id="validate-server-8-fb" class="invalid-feedback">You must agree before submitting.</div>
     </div>
   </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
@@ -1483,6 +1487,21 @@ $form-validation-states:
 }
 {% endcapture %}
 {% renderHighlight highlight, "sass" %}
+
+## Accessibility
+
+Ensure that all form controls have an appropriate accessible name so that their purpose can be conveyed to users of assistive technologies. The simplest way to achieve this is to use a `<label>` element, or—in the case of buttons—to include sufficiently descriptive text as part of the `<button>...</button>` content.
+
+For situations where it's not possible to include a visible `<label>` or appropriate text content, there are alternative ways of still providing an accessible name, such as:
+
+- `<label>` elements hidden using the `.sr-only` class
+- Pointing to an existing element that can act as a label using `aria-labelledby`
+- Providing a `title` attribute
+- Explicitly setting the accessible name on an element using `aria-label`
+
+If none of these are present, assistive technologies may resort to using the `placeholder` attribute as a fallback for the accessible name on `<input>` and `<textarea>` elements. The examples in this section provide a few suggested, case-specific approaches.
+
+While using visually hidden content (`.sr-only`, `aria-label`, and even `placeholder` content, which disappears once a form field has content) will benefit assistive technology users, a lack of visible label text may still be problematic for certain users. Some form of visible label is generally the best approach, both for accessibility and usability.
 
 ## SASS Reference
 

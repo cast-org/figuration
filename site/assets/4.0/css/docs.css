@@ -56,8 +56,8 @@
 .cf-footer {
   font-size: 0.875rem;
   color: #000;
-  background-color: #cfd4da;
-  border-top: 2px solid #424f5b;
+  background-color: #dfe3e6;
+  border-top: 1px solid #7e8d9b;
 }
 
 .cf-footer a {
@@ -112,6 +112,7 @@
 }
 
 .home-icons {
+  color: #424f5b;
   white-space: nowrap;
 }
 
@@ -119,6 +120,8 @@
 .home-icons .fas {
   font-size: 3.5rem;
   vertical-align: middle;
+  -webkit-filter: drop-shadow(2px 2px 0.2rem rgba(0, 0, 0, 0.35));
+          filter: drop-shadow(2px 2px 0.2rem rgba(0, 0, 0, 0.35));
 }
 
 .home-icons .fa-mobile-alt {
@@ -140,6 +143,11 @@
   margin-top: -.75rem;
 }
 
+.home-feature .list-item img {
+  -webkit-filter: drop-shadow(2px 2px 0.2rem rgba(0, 0, 0, 0.35));
+          filter: drop-shadow(2px 2px 0.2rem rgba(0, 0, 0, 0.35));
+}
+
 @media (min-width: 48em) {
   .home-feature {
     margin-top: 2.2rem;
@@ -150,16 +158,13 @@
   padding: 2rem 1.5rem;
   margin-bottom: 2rem;
   color: rgba(255, 255, 255, 0.9);
-  background-color: #0f6a9e;
-  background-image: linear-gradient(135deg, #0c5782 0%, #117cba 100%);
+  background-color: #116fa9;
+  background-image: linear-gradient(135deg, #0f6397 0%, #137abb 100%);
 }
 
 .home-splash .logo-home {
-  display: block;
-  width: 100%;
-  margin: 0 auto;
-  -webkit-filter: drop-shadow(0 0 7px rgba(255, 255, 255, 0.15));
-          filter: drop-shadow(0 0 7px rgba(255, 255, 255, 0.15));
+  -webkit-filter: drop-shadow(0 0 7px rgba(255, 255, 255, 0.175));
+          filter: drop-shadow(0 0 7px rgba(255, 255, 255, 0.175));
 }
 
 .home-splash h1,
@@ -168,8 +173,17 @@
   color: #fff;
 }
 
+.home-splash h1 {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.home-splash .home-icons {
+  color: #dfe3e6;
+}
+
 .home-splash .lead {
-  margin-top: 1rem;
+  margin-top: .5rem;
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
 }
@@ -185,6 +199,7 @@
 }
 
 .btn-home {
+  max-width: 10rem;
   padding: .75rem 2rem;
   font-weight: 600;
   border-width: 2px;
@@ -193,18 +208,18 @@
 
 .btn-start {
   color: #fff;
-  background-color: #2a75a0;
+  background-color: #27517b;
   border-color: #dee;
 }
 
 .btn-start:hover, .btn-start:focus {
   color: #222;
-  background-color: #e7f0f5;
+  background-color: #bfdff8;
 }
 
 .btn-download {
   color: #fff;
-  background-color: #2a75a0;
+  background-color: #2c7cb1;
   border-color: #dee;
 }
 
@@ -214,19 +229,11 @@
 }
 
 .cf-feed {
-  padding: 2rem 0;
-  margin-top: 2rem;
+  padding: .375rem 0;
+  margin-top: 1rem;
   text-align: center;
-  background-color: #0f6a9e;
-  background-image: linear-gradient(135deg, #117cba 0%, #0c5782 100%);
-}
-
-.cf-feed a {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.cf-feed a:hover, .cf-feed a:focus {
-  color: white;
+  background-color: #116fa9;
+  background-image: linear-gradient(135deg, #137abb 0%, #0f6397 100%);
 }
 
 .cf-search {

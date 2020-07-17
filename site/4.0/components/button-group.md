@@ -30,6 +30,51 @@ A button group can also be used with links, as an alternative to the [`.nav` nav
 {% endcapture %}
 {% renderExample example %}
 
+## Mixed Styles
+
+{% capture example %}
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-warning">Left</button>
+  <button type="button" class="btn btn-danger">Middle</button>
+  <button type="button" class="btn btn-success">Right</button>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
+## Outline Styles
+
+{% capture example %}
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-outline-info">Left</button>
+  <button type="button" class="btn btn-outline-info">Middle</button>
+  <button type="button" class="btn btn-outline-info">Right</button>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
+## Checkbox and Radio Button Groups
+
+Button groups can also be a great way to associate [checkbox and radio input button]({{ site.path }}/{{ version.docs }}/content/buttons/#grouped-input-buttons) controls together.
+
+{% capture example %}
+<div class="btn-group">
+  <div class="btn-check">
+    <input id="radio2-0" type="radio" name="radio2" class="btn-check-input" checked>
+    <label for="radio2-0" class="btn btn-outline-info">Radio 1</label>
+  </div>
+  <div class="btn-check">
+    <input id="radio2-1" type="radio" name="radio2" class="btn-check-input">
+    <label for="radio2-1" class="btn btn-outline-info">Radio 2</label>
+  </div>
+  <div class="btn-check">
+    <input id="radio2-2" type="radio" name="radio2" class="btn-check-input" disabled>
+    <label for="radio2-2" class="btn btn-outline-info">Radio 3</label>
+  </div>
+</div>
+{% endcapture %}
+{% renderExample example %}
+
+
 ## Button Toolbar
 
 Combine sets of button groups into button toolbars for more complex components. Use utility classes as needed to space out groups, buttons, and more.
