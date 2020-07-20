@@ -8,7 +8,12 @@ toc: true
 
 ## Overview
 
-Set the `visibility` of an element, meaning its `display` is not modified and will not affect layout. `.invisible` elements still take up space in the page. Content will be hidden both visually and for assistive technology/screen reader users.
+Set the `visibility` of an element, meaning its `display` is not modified and will not affect layout. `.invisible` elements still take up space in the page.
+
+{% capture callout %}
+Elements with the `.invisible` class will be hidden *both* visually and for assistive technology/screen reader users.
+{% endcapture %}
+{% renderCallout, callout, "warning" %}
 
 ## Examples
 
