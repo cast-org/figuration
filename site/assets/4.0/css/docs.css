@@ -196,11 +196,11 @@
 
 .home-icon-box {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 1.25em;
   height: 1.25em;
   line-height: 1;
-  align-items: center;
-  justify-content: center;
   vertical-align: text-bottom;
   border-radius: 0.25rem;
   box-shadow: 2px 2px 0.2rem rgba(0, 0, 0, 0.35);
