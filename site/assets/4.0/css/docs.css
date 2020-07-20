@@ -7,7 +7,7 @@
   color: #fff;
   text-align: center;
   text-decoration: none;
-  background-color: #246;
+  background-color: #116fa9;
   border: 2px solid #fff;
   outline: 0;
   transform: translateX(-50%);
@@ -139,10 +139,6 @@
   margin-left: .5rem;
 }
 
-.home-feature > .small {
-  margin-top: -.75rem;
-}
-
 .home-feature .list-item img {
   -webkit-filter: drop-shadow(2px 2px 0.2rem rgba(0, 0, 0, 0.35));
           filter: drop-shadow(2px 2px 0.2rem rgba(0, 0, 0, 0.35));
@@ -150,7 +146,7 @@
 
 @media (min-width: 48em) {
   .home-feature {
-    margin-top: 2.2rem;
+    margin-top: 2.25rem;
   }
 }
 
@@ -198,6 +194,24 @@
   }
 }
 
+.home-icon-box {
+  display: inline-flex;
+  width: 1.25em;
+  height: 1.25em;
+  line-height: 1;
+  align-items: center;
+  justify-content: center;
+  vertical-align: text-bottom;
+  border-radius: 0.25rem;
+  box-shadow: 2px 2px 0.2rem rgba(0, 0, 0, 0.35);
+}
+
+.home-icon-box .fab,
+.home-icon-box .far,
+.home-icon-box .fas {
+  font-size: 0.75em;
+}
+
 .btn-home {
   max-width: 10rem;
   padding: .75rem 2rem;
@@ -212,9 +226,14 @@
   border-color: #dee;
 }
 
+.btn-start:focus {
+  box-shadow: 0 0 0 0.1875rem rgba(34, 68, 102, 0.35), 2px 2px 0.2rem rgba(0, 0, 0, 0.35);
+}
+
 .btn-start:hover, .btn-start:focus {
   color: #222;
   background-color: #bfdff8;
+  border-color: #343e48;
 }
 
 .btn-download {
@@ -223,9 +242,14 @@
   border-color: #dee;
 }
 
+.btn-download:focus {
+  box-shadow: 0 0 0 0.1875rem rgba(34, 68, 102, 0.35), 2px 2px 0.2rem rgba(0, 0, 0, 0.35);
+}
+
 .btn-download:hover, .btn-download:focus {
   color: #222;
   background-color: #e7f0f5;
+  border-color: #343e48;
 }
 
 .cf-feed {

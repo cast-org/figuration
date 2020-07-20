@@ -25,14 +25,11 @@
 }
 
 .home-feature {
-    > .small {
-        margin-top: -.75rem;
-    }
     .list-item img {
         filter: drop-shadow(2px 2px .2rem rgba(0, 0, 0, .35));
     }
     @include media-breakpoint-up(md) {
-        margin-top: 2.2rem;
+        margin-top: 2.25rem;
     }
 }
 
@@ -79,6 +76,24 @@
     }
 }
 
+.home-icon-box {
+    display: inline-flex;
+    width: 1.25em;
+    height: 1.25em;
+    line-height: 1;
+    align-items: center;
+    justify-content: center;
+    vertical-align: text-bottom;
+    @include border-radius($border-radius);
+    box-shadow: 2px 2px .2rem rgba(0, 0, 0, .35);
+
+    .fab,
+    .far,
+    .fas {
+        @include font-size(.75em);
+    }
+}
+
 .btn-home {
     max-width: 10rem;
     padding: .75rem 2rem;
@@ -92,19 +107,30 @@
     background-color: #27517b;
     border-color: #dee;
 
+    &:focus {
+        box-shadow: 0 0 0 .1875rem rgba($docs-primary, .35), 2px 2px .2rem rgba(0, 0, 0, .35);
+    }
+
     @include hover-focus() {
         color: #222;
         background-color: #bfdff8;
+        border-color: $uibase-800;
     }
+
 }
 .btn-download {
     color: #fff;
     background-color: #2c7cb1;
     border-color: #dee;
 
+    &:focus {
+        box-shadow: 0 0 0 .1875rem rgba($docs-primary, .35), 2px 2px .2rem rgba(0, 0, 0, .35);
+    }
+
     @include hover-focus() {
         color: #222;
         background-color: #e7f0f5;
+        border-color: $uibase-800;
     }
 }
 
